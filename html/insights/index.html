@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-9FLQ963JXM');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="構造的思考による分析。肥料危機の硫黄トラップ、Anthropic裁判とウクライナの接続、35カ国連合の外交構造、AIの正しい使い方。">
+    <title>Insights — 構造分析 | 自然と対話する暮らし</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .insight-date {
+            font-size: 0.8rem;
+            color: var(--moss-green);
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+
+        .insight-card {
+            background: var(--cream);
+            border: 1px solid var(--root-tan);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            transition: var(--transition-base);
+        }
+
+        .insight-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--moss-green);
+        }
+
+        .insight-card:hover {
+            box-shadow: var(--shadow-soft);
+        }
+
+        .insight-card h3 {
+            color: var(--earth-dark);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .insight-card p {
+            color: var(--soil-rich);
+            font-size: 0.95rem;
+            line-height: 1.9;
+        }
+
+        .insight-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .insight-card li {
+            padding: 0.4rem 0 0.4rem 1.2rem;
+            position: relative;
+            color: var(--soil-rich);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .insight-card li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--moss-green);
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            padding: 0.2rem 0.8rem;
+            border: 1px solid var(--moss-green);
+            color: var(--moss-green);
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .chain-diagram {
+            background: var(--sand-light);
+            border-left: 4px solid var(--moss-green);
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+            line-height: 2;
+            color: var(--earth-dark);
+        }
+
+        .chain-diagram .arrow {
+            color: var(--moss-green);
+            font-weight: 700;
+            margin: 0 0.3rem;
+        }
+
+        .highlight-box {
+            background: rgba(122, 154, 109, 0.08);
+            border: 1px solid rgba(122, 154, 109, 0.2);
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo">
+                自然と対話する暮らし
+                <span>Natural Farming</span>
+            </a>
+            <nav class="nav">
+                <a href="/">ホーム</a>
+                <a href="/about/">自然農法とは</a>
+                <a href="/light-farming/">Light Farming</a>
+                <a href="/gallery/">畑の記録</a>
+                <a href="/insights/" class="active">Insights</a>
+                <a href="/contact/">お問い合わせ</a>
+            </nav>
+            <button class="nav-toggle" aria-label="メニュー">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-image" style="background-image: url('../images/IMG_3285.jpg');"></div>
+        <div class="page-hero-content">
+            <p class="hero-label">Structural Analysis</p>
+            <h1 class="hero-title">Insights — 構造分析</h1>
+            <p class="hero-subtitle">
+                自然農法・食料安全保障・AIを横断する構造的思考
+            </p>
+        </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="section">
+        <div class="container-narrow">
+            <div class="prose fade-in text-center">
+                <p>
+                    自然農法の実践は、土壌だけの問題ではありません。
+                    肥料の生産ルート、地政学的リスク、食料供給チェーン——
+                    これらは構造的に接続しています。
+                    AIを道具として使い、その構造を可視化する試みです。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fertilizer Crisis -->
+    <section class="section section-alt" id="fertilizer-crisis">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Food Security</p>
+                <h2 class="section-title">肥料危機と硫黄トラップ</h2>
+            </div>
+
+            <div class="insight-card fade-in">
+                <p class="insight-date">2025.04.03</p>
+                <div style="margin-bottom: 1rem;">
+                    <span class="tag">食料安全保障</span>
+                    <span class="tag">肥料</span>
+                    <span class="tag">地政学</span>
+                    <span class="tag">アジア太平洋</span>
+                </div>
+                <h3>石油精製停止が引き起こす肥料生産の連鎖崩壊</h3>
+                <p>
+                    核心の発見：石油精製施設の物理的破壊は、封鎖とは本質的に異なる問題を引き起こす。
+                    修復には3〜5年を要し、その間に三つの危機が同時発生する。
+                </p>
+
+                <div class="chain-diagram">
+                    石油精製停止 <span class="arrow">&rarr;</span> 副産物の硫黄が消失
+                    <span class="arrow">&rarr;</span> リン酸肥料が製造不能
+                    <span class="arrow">&rarr;</span> 食料生産への直撃
+                </div>
+
+                <p>破壊された施設から同時に発生する三つの危機：</p>
+                <ul>
+                    <li><strong>硫黄の消失</strong> — リン酸肥料の生産が停止。硫酸がなければリン鉱石を肥料に加工できない</li>
+                    <li><strong>尿素の消失</strong> — 窒素肥料の生産が停止。天然ガスから合成される尿素の供給が途絶</li>
+                    <li><strong>ナフサの消失</strong> — 食品包装材が消失。食料が生産できても流通できない</li>
+                </ul>
+
+                <div class="highlight-box">
+                    <p><strong>「封鎖で食料危機」は不正確。</strong></p>
+                    <p>
+                        IEA、FAO、国連事務総長、IFPRIが警告を発しているが、
+                        全て「封鎖」前提での分析。生産施設の物理的「破壊」の深刻さは過小評価されている。
+                        封鎖は解除できるが、破壊された施設は修復に3〜5年かかる。
+                    </p>
+                </div>
+
+                <h3>米国のシェールオイルでは代替できない</h3>
+                <p>
+                    「湾岸がなくても米国にシェールオイルがある」——これは構造を理解していない。
+                    米国のシェールオイルはライトスイート原油（硫黄0.1〜0.5%）。
+                    中東のサワー原油は硫黄2〜3%。世界の硫黄供給はサワー原油の精製に依存している。
+                    米国がいくら増産しても、リン酸肥料に必要な硫黄は賄えない。
+                    ヘリウムも同様に、特定のガス田からしか回収できず、合成不可能な元素だ。
+                    「エネルギー独立」は「素材独立」を意味しない。
+                </p>
+
+                <h3>アジア太平洋への連鎖</h3>
+                <p>
+                    豪州・NZはアジアの食料供給ハブ（NZ輸出の55%がアジア向け）。
+                    肥料供給の途絶はアジア太平洋全域に連鎖する。
+                </p>
+                <p>
+                    日本への到達順序：ナフサ（包装材）が先に影響し、肥料不足（食料生産そのもの）が後に到達する。
+                </p>
+
+                <div class="highlight-box">
+                    <p><strong>自然農法との接続：</strong></p>
+                    <p>
+                        福岡正信の「無肥料」の原則は、化学肥料サプライチェーンへの依存を
+                        そもそも持たない農業モデル。肥料危機は、リジェネラティブ農業の
+                        「レジリエンス」としての価値を改めて示している。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Anthropic-Ukraine -->
+    <section class="section" id="anthropic-ukraine">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">AI &amp; Geopolitics</p>
+                <h2 class="section-title">Anthropic裁判とウクライナの接続</h2>
+            </div>
+
+            <div class="insight-card fade-in">
+                <p class="insight-date">2025.04.03</p>
+                <div style="margin-bottom: 1rem;">
+                    <span class="tag">AI</span>
+                    <span class="tag">Anthropic</span>
+                    <span class="tag">ウクライナ</span>
+                    <span class="tag">安全保障</span>
+                </div>
+                <h3>誰も指摘していなかった接続</h3>
+                <p>
+                    Lin判事が43ページの判決でトランプのAnthropic排除を違法と認定（修正第1条・第5条違反）。
+                    DOJが4月2日に控訴し、仮処分は発効中。
+                </p>
+                <p>
+                    見落とされていた構造的接続：PalantirのMaven Smart Systems（Claude組み込み）は、
+                    米軍とウクライナ軍の両方に使われている。
+                    トランプの違法な排除は、ウクライナの防衛技術基盤を毀損する。
+                </p>
+                <p>
+                    ウクライナが第9巡回裁にamicus briefを提出できるという論点を提起。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 35-Country Coalition -->
+    <section class="section section-alt" id="coalition">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Diplomacy</p>
+                <h2 class="section-title">35カ国連合とホルムズ海峡</h2>
+            </div>
+
+            <div class="insight-card fade-in">
+                <p class="insight-date">2025.04.03</p>
+                <div style="margin-bottom: 1rem;">
+                    <span class="tag">外交</span>
+                    <span class="tag">安全保障</span>
+                    <span class="tag">エネルギー</span>
+                </div>
+                <h3>スターマー主導の外交枠組み</h3>
+                <p>
+                    35カ国会議が4月2日に開催。米国不参加。
+                    トランプの4月6日期限の72時間前に設定されており、
+                    どちらの結果も吸収できる外交枠組みとして設計されている。
+                </p>
+
+                <h3>ウクライナの転換</h3>
+                <p>
+                    ウクライナが湾岸3カ国と10年間の防衛協定を締結。
+                    「安全保障の受益者」から「供与者」への転換。
+                </p>
+                <p>
+                    Patriotミサイル1発400万ドル vs. ウクライナのドローン迎撃——
+                    「more vs. sufficient」の実証。コスト効率で安全保障のパラダイムが変わる。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Usage -->
+    <section class="section" id="ai-usage">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">AI &amp; Thinking</p>
+                <h2 class="section-title">AIの正しい使い方</h2>
+            </div>
+
+            <div class="insight-card fade-in">
+                <p class="insight-date">2025.04.03</p>
+                <div style="margin-bottom: 1rem;">
+                    <span class="tag">AI</span>
+                    <span class="tag">構造的思考</span>
+                    <span class="tag">方法論</span>
+                </div>
+                <h3>結論を聞くな。プロセスを調べさせろ。</h3>
+
+                <div class="chain-diagram">
+                    「肥料危機はどうなりますか」<span class="arrow">&rarr;</span> <strong>間違い。</strong>結論を聞いている<br>
+                    「肥料の生産ルートを調べて」<span class="arrow">&rarr;</span> <strong>正しい。</strong>プロセスを調べさせている
+                </div>
+
+                <p>
+                    硫黄トラップはGeminiが文献から発見した。構造展開はClaudeが実行した。
+                    どちらか一方では書けなかった。
+                </p>
+                <p>
+                    しかし、「生産ルートを調べろ」という指示を出せない人間が
+                    どちらのAIを使っても同じ結果には到達できなかった。
+                </p>
+
+                <div class="highlight-box">
+                    <p><strong>構造的思考の本質：</strong></p>
+                    <p>
+                        構造的思考者は少数。教育や報酬の問題ではなく、そもそも少数しか存在しない。
+                        学習しなくても理解できる。「専門外に口を出すな」と言われても口を出す。
+                    </p>
+                    <p>
+                        AIは構造的思考を増幅する道具。増幅するものがなければ何も増幅されない。
+                        普通の人にAIの使い方を教えるのは無意味。結果を直接ぶつける方が正しい。
+                    </p>
+                </div>
+
+                <h3>Claude Codeと構造的思考</h3>
+                <p>
+                    Claude Codeは構造的思考者のための道具。Copilotは言語的思考の道具。
+                    自然農法の観察と同じで、「何を見るか」を知っている人が使ってこそ力を発揮する。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Published Articles -->
+    <section class="section section-alt" id="articles">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Published</p>
+                <h2 class="section-title">公開記事</h2>
+            </div>
+
+            <div class="card-grid">
+                <div class="card fade-in">
+                    <p class="insight-date">2025.04.03</p>
+                    <h3 class="card-title">Anthropic-Ukraine接続</h3>
+                    <p class="card-text">
+                        Medium英語記事。Lin判事の判決とPalantir Maven Smart Systemsを通じた
+                        Anthropic-ウクライナの構造的接続を分析。
+                    </p>
+                    <span class="tag">Medium</span>
+                    <span class="tag">English</span>
+                </div>
+
+                <div class="card fade-in">
+                    <p class="insight-date">2025.04.03</p>
+                    <h3 class="card-title">肥料危機の構造分析</h3>
+                    <p class="card-text">
+                        Medium英語記事・note日本語記事。硫黄トラップ、
+                        AIの使い方、アジア太平洋セクション付き。
+                    </p>
+                    <span class="tag">Medium</span>
+                    <span class="tag">note</span>
+                    <span class="tag">日本語 / English</span>
+                </div>
+
+                <div class="card fade-in">
+                    <p class="insight-date">2025.04.03</p>
+                    <h3 class="card-title">Permaculture for Beginners</h3>
+                    <p class="card-text">
+                        Facebook投稿。英語Permacultureコミュニティ
+                        および日本語コミュニティに投稿。
+                    </p>
+                    <span class="tag">Facebook</span>
+                    <span class="tag">日本語 / English</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Structural Analysis Series -->
+    <section class="section" id="series">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Series</p>
+                <h2 class="section-title">構造分析シリーズ</h2>
+            </div>
+
+            <div class="prose fade-in text-center" style="margin-bottom: 3rem;">
+                <p>
+                    全て同じ方法論。生産ルートを追跡する。物理的プロセスを見る。分野の境界を越える。
+                </p>
+            </div>
+
+            <div class="activity-list">
+                <a href="/insights/agriculture/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">01</div>
+                        <div class="activity-content">
+                            <h3>農業の間違い — 自然農法はサバイバル戦略</h3>
+                            <p>
+                                化学肥料に依存した農業モデルは、製油所一つの破壊で崩壊する。
+                                土壌微生物が1年で回復するという事実。30年間の気候変動議論は順序が逆で、
+                                生物多様性と土壌が先だった。自然農法は理想論ではなくサバイバル戦略。
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/insights/fusion/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">02</div>
+                        <div class="activity-content">
+                            <h3>核融合の間違い — エネルギーは代替できるが素材は代替できない</h3>
+                            <p>
+                                核融合で電力を作っても硫黄は出てこない。ナフサも出てこない。
+                                エネルギー問題を解決しても食料問題は解決しない。問題の設定自体が間違っている。
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/insights/agi/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">03</div>
+                        <div class="activity-content">
+                            <h3>AGIの間違い — 仕事はいくらでもある</h3>
+                            <p>
+                                AGIが人間の仕事を奪うという議論は、「仕事」を言語的に定義している。
+                                構造的に見れば、土壌微生物の回復、地域の食料自給、生態系の再建、
+                                インフラの分散化——AIにはできない物理的な仕事が無限にある。
+                                AIは微生物と共存できない。人間の仕事は増える。
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/insights/microsoft/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">04</div>
+                        <div class="activity-content">
+                            <h3>Microsoftの破産 — Six Taxesの崩壊構造</h3>
+                            <p>
+                                Copilotの言語的思考 vs. Claudeの構造的思考。
+                                バンドルで払わされている「税」が剥がれる時。Six taxesの崩壊構造を追跡する。
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/insights/ubs/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">05</div>
+                        <div class="activity-content">
+                            <h3>UBSと金融崩壊 — 製油所から不動産ファンドへの連鎖</h3>
+                            <p>
+                                製油所の破壊がなぜ不動産ファンドに到達するのか。
+                                物理的因果関係を追跡すれば、エネルギー → インフレ → 金利
+                                → 不動産価格 → ファンド流動性の連鎖が見える。
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="highlight-box fade-in" style="margin-top: 2rem;">
+                <p><strong>方法論：</strong></p>
+                <p>
+                    生産ルートを追跡する。物理的プロセスを見る。分野の境界を越える。
+                    農業も、エネルギーも、金融も、AIも——構造は一つにつながっている。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="section">
+        <div class="container-narrow">
+            <div class="quote-block fade-in">
+                <p class="quote-text">
+                    AIは構造的思考を増幅する道具。<br>
+                    増幅するものがなければ、何も増幅されない。<br>
+                    自然農法も同じ。観る目がなければ、土は語りかけてこない。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section-green">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Explore</p>
+                <h2 class="section-title">構造を見る</h2>
+            </div>
+            <p class="cta-text">
+                肥料の生産ルートも、土壌微生物のネットワークも、<br>
+                構造を理解すれば見え方が変わる。
+            </p>
+            <div class="text-center">
+                <a href="/light-farming/" class="btn btn-light" style="margin-right: 1rem;">Light Farming</a>
+                <a href="/about/" class="btn btn-outline">自然農法とは</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>自然と対話する暮らし</h3>
+                <p>福岡正信氏の自然農法とリジェネラティブ農業の実践を通じて、土壌の再生と自然との共生を目指しています。</p>
+            </div>
+            <div class="footer-nav">
+                <h4>ページ</h4>
+                <ul>
+                    <li><a href="/">ホーム</a></li>
+                    <li><a href="/about/">自然農法とは</a></li>
+                    <li><a href="/light-farming/">Light Farming</a></li>
+                    <li><a href="/gallery/">畑の記録</a></li>
+                    <li><a href="/insights/">Insights</a></li>
+                    <li><a href="/contact/">お問い合わせ</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>関連リンク</h4>
+                <ul>
+                    <li><a href="https://www.amazingcarbon.com/">Amazing Carbon</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">&copy; 2025 自然と対話する暮らし</p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+</body>
+
+</html>

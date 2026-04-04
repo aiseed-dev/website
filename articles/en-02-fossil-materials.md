@@ -297,6 +297,52 @@ oil refining continues, and gasoline and diesel keep coming out.
 This is yet another reason why "going all-EV" is reckless.
 :::
 
+### Can bio-materials build a data center?
+
+The very IT companies waving the "decarbonization" flag are doing business atop a mass of fossil resources.
+
+:::compare
+| Component | Current material | Bio alternative | Feasibility |
+| --- | --- | --- | --- |
+| Server housings | ABS, polycarbonate (petroleum) | Bioplastics | Insufficient heat resistance and flame retardancy |
+| Circuit boards (PCB) | Epoxy resin + glass fiber (petroleum) | No alternative | Precision and heat resistance required for semiconductor mounting |
+| Semiconductor packaging | Epoxy mold compound (petroleum) | No alternative | Nanoscale precision required |
+| Photoresist | Photosensitive resin (petrochemical) | No alternative | The foundation of semiconductor fabrication |
+| Coolant hoses | Synthetic rubber, PVC (petroleum) | Natural rubber | Insufficient chemical resistance |
+| Cable insulation | PVC, polyethylene (petroleum) | Bioplastics | Cannot meet flame-retardancy standards |
+| Fiber optic coating | Acrylate (petroleum) | No alternative | Optical precision required |
+| Flooring (anti-static) | Petroleum-based vinyl | No alternative | Electrostatic discharge directly destroys equipment |
+:::
+
+AI, cloud computing, social media — all run inside boxes built from petrochemical materials. Semiconductor fabrication requires photoresist, which can only be made from petrochemicals. **Digital civilization sits on top of petroleum civilization.**
+
+### Can bio-materials build a fusion reactor?
+
+Nuclear fusion is called the "ultimate clean energy." But few have considered **what the reactor itself is made of**.
+
+:::compare
+| Component | Current material | Bio alternative | Feasibility |
+| --- | --- | --- | --- |
+| Plasma-facing wall | Tungsten, beryllium | — | Metals. Beyond the scope of substitution |
+| Blanket structural material | Reduced-activation ferritic steel | — | Metals |
+| Superconducting coil insulation | Epoxy resin + glass fiber (petroleum) | No alternative | Must function at cryogenic temperatures (-269°C) |
+| Vacuum vessel seals | Fluorocarbon rubber, synthetic rubber (petroleum) | No alternative | Maintains ultra-high vacuum. Natural rubber cannot |
+| Tritium piping seals | Specialized fluoropolymer (petroleum) | No alternative | Prevents radioactive tritium leakage |
+| Diagnostic optical windows | Synthetic quartz + petroleum-based coatings | No alternative | Optical measurement in high-radiation environments |
+| Control system cables | Radiation-resistant polyimide (petroleum) | No alternative | Standard plastics degrade under radiation |
+:::
+
+:::highlight
+**The fusion paradox:**
+Fusion is expected to replace oil as an energy source.
+But building a fusion reactor requires petrochemical materials.
+Superconducting coil insulation, vacuum seals, radiation-resistant cables —
+all can only be made from petrochemicals.
+**Without oil, you cannot even build the reactor meant to replace oil.**
+:::
+
+Cars, data centers, fusion reactors — every pillar of modern civilization's infrastructure cannot exist without petrochemical materials. Bio-materials can substitute only a fraction. This is the most fundamental reason why fossil resources must be used carefully.
+
 ## And Yet We Have No Choice
 
 But fossil resources are finite.

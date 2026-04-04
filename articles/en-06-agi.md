@@ -125,7 +125,11 @@ Biomass collection → Gathering and transporting agricultural waste is physical
 Quality control → Bio-derived materials have high quality variation. Human judgment essential
 :::
 
-Petrochemical plants can mass-produce with few workers. Bio-materials, dealing with living organisms, are difficult to automate and labor-intensive. There is no room to let people sit idle on UBI. **During the transition to bio-materials, we will be short on workers, not jobs.**
+Petrochemical plants can mass-produce with few workers. Bio-materials, dealing with living organisms, are difficult to automate and labor-intensive. There is no room to let people sit idle on UBI.
+**Bio-materials require human labor permanently — not just during the transition.**
+Petrochemical plants, once built, run with few workers.
+Bio-materials are different. Microbes are alive. Plants change with the seasons.
+Quality varies every time. This is not a "transition period problem" — it is **a permanent structure inherent to working with living organisms**.
 
 The problem is not "no work." The problem is that **physical work that must be done is not valued**.
 

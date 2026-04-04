@@ -229,16 +229,18 @@ policy support is needed.
 Prepare now, not after the transformation hits.
 That is the job of policy.
 
-## Fukuoka's Question
+## How Do We Live?
 
 All structural analysis converges on a single question.
 
 **How do we live?**
 
-Masanobu Fukuoka's natural farming was his answer.
+The answer already exists. Three different approaches have reached the same conclusion.
+
+### Masanobu Fukuoka's Natural Farming — The Ultimate Subtraction
 
 :::chain
-**The essence of Fukuoka's four principles:**
+**Fukuoka's four principles:**
 
 No tilling → Don't destroy soil structure → Microorganisms live
 No fertilizer → Zero external dependency → Free from supply chains
@@ -246,11 +248,9 @@ No pesticides → Don't kill the ecosystem → Use nature's defenses
 No weeding → Maximize photosynthesis area → The principle of Light Farming
 :::
 
-And Dr. Christine Jones's Light Farming gave this philosophy its scientific foundation.
+### Dr. Christine Jones's Light Farming — Scientific Proof
 
 :::chain
-**Light Farming — Fukuoka's scientific proof:**
-
 Sunlight → Photosynthesis → Plants produce sugars
 Sugars → Exuded from roots into soil (Liquid Carbon)
 Liquid Carbon → Energy source for soil microorganisms
@@ -261,6 +261,38 @@ Plants → More photosynthesis → (Positive feedback loop)
 Fukuoka's "no weeding" was a Light Farming maximization strategy.
 :::
 
+### Regenerative Agriculture — Subtraction at Scale
+
+As Chapter 3 showed, methods already exist for grains and beef.
+
+:::chain
+**Regenerative agriculture's subtractions:**
+
+Cover crops → Subtract chemical fertilizer → Soil microorganisms supply nutrients
+No-till farming → Subtract the plow → Preserve soil structure
+Planned grazing → Subtract purchased feed → Cattle and grass co-regenerate soil
+Multi-crop rotation → Subtract pesticides → Biodiversity suppresses pests
+
+Gabe Brown proved this on his North Dakota farm.
+Zero chemical fertilizer, zero pesticides — and profitability exceeds conventional farming.
+:::
+
+:::highlight
+**Three approaches, one conclusion:**
+Fukuoka → Started from philosophy → "Do-nothing" farming
+Christine Jones → Started from science → Discovery of Liquid Carbon
+Regenerative agriculture → Started from practice → Proven on large-scale farms
+
+Different starting points. Same conclusion.
+**Harness soil microorganisms, and external dependencies can be subtracted.**
+Chemical fertilizer, pesticides, heavy machinery — all become unnecessary.
+:::
+
+However, as Chapter 3 noted, **there is no method yet for vegetables.**
+Grains and beef have regenerative agriculture.
+Vegetables require cultivation research from scratch.
+This too is a policy priority that must begin immediately.
+
 :::quote
 With nature, we can live.
 The further from nature, the higher the cost of living.
@@ -268,5 +300,6 @@ Water exists. Land exists. Plants exist. Microorganisms exist.
 These are Japan's true resources.
 Fukuoka knew this.
 Light Farming proved it.
+Regenerative agriculture is practicing it.
 All that remains is to start subtracting.
 :::

@@ -101,9 +101,66 @@ This is not 10 or 20 years away. **It is already possible with current AI.**
 
 This connects to the UBI (Universal Basic Income) debate. But as Chapter 6 showed, UBI is wrong. Bio-material manufacturing, soil regeneration, ecosystem restoration — physical work requires human labor permanently. Desk workers will disappear, but **work itself will not disappear. It will change.**
 
-## Five Collapses Arriving Simultaneously
+## From Megacities to Land — The Great Population Migration
 
-The decline of the military industry. The decline of IT companies. The disappearance of desk workers. On top of these, healthcare and pension collapses proceed simultaneously.
+The military industry, IT companies, desk workers —
+where do the people displaced from these industries go?
+
+As Chapter 2 showed, bio-materials come after fossil resources.
+As Chapter 3 showed, food production without chemical fertilizer becomes necessary.
+As Chapter 6 showed, bio-material manufacturing requires human labor permanently.
+
+**The work exists. But that work cannot be done in megacities.**
+
+:::highlight
+**What bio-materials and food production require:**
+Microbial cultivation → Cultivation facilities need **land**
+Plant feedstock farming → **Farmland** is needed
+Mycelium production → Substrate storage and cultivation need **space**
+Regenerative agriculture → **Vast farmland** and grazing land needed
+Vegetable cultivation research → **Experimental plots** needed
+Biomass collection → Physical labor in rural areas
+**None of this can be done inside a Tokyo office building.**
+:::
+
+:::chain
+**Structure of population migration:**
+Military industry decline → Urban defense-related jobs disappear
+IT company decline → Urban office workers are displaced
+Desk worker reduction → No reason to concentrate people in cities
+→ Simultaneously, bio-materials and food production need workers
+→ This work requires land
+→ **Population moves from megacities to regions with land**
+:::
+
+This is not "recommending country life."
+**The transformation of industrial structure forces the transformation of population distribution.**
+
+:::compare
+| | Present | After transformation |
+| --- | --- | --- |
+| Population concentration | 36 million in Greater Tokyo | Distributed (near farmland and cultivation facilities) |
+| Primary employment | Desk work, IT, service industry | Bio-material manufacturing, food production, soil regeneration |
+| Required resources | Offices, data centers, electricity | Land, water, sunlight, soil |
+| Commuting | Packed trains to city center | Fields and facilities within walking distance |
+| Housing costs | 30%+ of income on Tokyo rent | Dramatically lower in regional areas |
+:::
+
+Japan has land. It has water. It has a warm, humid climate.
+The reason 36 million people live in Tokyo is that desk work was concentrated in city centers.
+When that premise collapses, population distribution fundamentally changes.
+
+:::highlight
+**A massive social transformation:**
+This population migration changes the structure of Japanese society at its foundation.
+Education, healthcare, infrastructure, governance — everything must be redesigned for distribution.
+Rural depopulation is not "a problem to be solved" —
+it becomes **a result solved by industrial transformation.**
+Tokyo's extreme concentration was a product of the fossil resource and desk work era.
+That era is ending.
+:::
+
+## These Transformations Proceed Alongside Healthcare and Pension Collapse
 
 :::chain
 1. Military industry → Fossil depletion + drones shrink conventional weapons market

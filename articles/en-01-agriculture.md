@@ -9,8 +9,8 @@ date: 2025.04.04
 label: Structural Analysis 01
 prev_slug:
 prev_title:
-next_slug: fossil-materials
-next_title: Fossil Materials and Modern Civilization
+next_slug: fusion
+next_title: The Nuclear Fusion Mistake
 cta_label: The Science
 cta_title: With nature, we can live.
 cta_text: Masanobu Fukuoka demonstrated it. Dr. Christine Jones explained the science. Now the crisis demands it.

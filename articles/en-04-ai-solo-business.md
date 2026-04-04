@@ -1,16 +1,16 @@
 ---
 slug: ai-solo-business
-number: "04"
+number: "08"
 lang: en
 title: AI and the Solo Business
 subtitle: The End of Corporate Advantage
 description: AI benefits individuals far more than large corporations. A 10-person team's work done by one person plus AI. Large organizations face structural disadvantages in the AI era.
 date: 2025.04.04
-label: Structural Analysis 04
+label: Structural Analysis 08
 prev_slug: drone-defense
 prev_title: Drones, AI, and Small Nation Defense
-next_slug:
-next_title:
+next_slug: healthcare-fiscal
+next_title: Society's Design Failure
 cta_label: Start Now
 cta_title: One person is enough.
 cta_text: No large organization needed. No large farm needed. Just the ability to see structure, and AI to amplify it.

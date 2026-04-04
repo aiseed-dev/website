@@ -94,44 +94,55 @@ This is what "fossil material dependency" means in human terms:
 "If every car goes electric, we won't need oil anymore" —
 this idea completely ignores the structure of materials.
 
-:::chain
-**Why going all-EV is reckless:**
-Plastics, medical devices, and fertilizer feedstock require naphtha
-→ Naphtha can only be obtained through crude oil refining
-→ Refining crude oil **inevitably** produces gasoline and diesel simultaneously
-→ Stop refining, and naphtha stops too
-→ As long as materials are needed, oil refining cannot stop
-→ **If oil refining cannot stop, gasoline will keep coming out**
+### Gasoline can be reduced. But diesel is unavoidable.
+
+Electrifying passenger cars is rational. Gasoline demand can decrease.
+But **diesel is a different matter entirely**.
+
+:::highlight
+**Sectors that are extremely difficult to electrify:**
+Heavy trucks (long-haul transport) → Battery weight destroys payload capacity. Charging time halts logistics.
+Ships → Electrifying large container ships is physically impossible. Heavy fuel oil and diesel are the only realistic options.
+Construction machinery → High-load, long-duration operation. Only small machines can go electric.
+Agricultural machinery → No charging infrastructure in fields. Diesel is the only option.
 :::
 
-So do we throw that gasoline away?
-Gasoline that could be used as energy in cars —
-discarded so we can generate a separate energy source (electricity) instead.
-This is not "decarbonization." It is **double investment in energy**.
+And when you refine crude oil for naphtha, diesel **inevitably** comes out as well.
+
+:::chain
+**The structural fact of refining:**
+Plastics, medical devices, and fertilizer feedstock require naphtha
+→ Naphtha can only be obtained through crude oil refining
+→ Refining crude oil produces gasoline, diesel, and heavy fuel oil simultaneously
+→ As long as materials are needed, oil refining cannot stop
+→ If refining cannot stop, **diesel will keep coming out no matter what**
+→ Trucks, ships, construction equipment, and farm machinery use it — this is the most rational outcome
+:::
+
+Reducing gasoline demand through passenger EV adoption makes sense.
+But diesel will not disappear — for two reasons:
+**The users cannot electrify.** And **refining inevitably produces it.**
 
 :::highlight
 **Structural fact:**
 Currently, refining costs are covered by revenue from the 86% of oil used as energy (gasoline, diesel).
 The remaining 14% used as chemical feedstock (naphtha, etc.) is supplied cheaply — essentially as a side product.
-If gasoline demand disappears, refineries must operate solely for materials.
+If fuel demand drops dramatically, refineries must operate solely for materials.
 Refining costs multiply several times over.
 Naphtha prices skyrocket — plastics, medical devices, fertilizer — everything gets more expensive.
 :::
 
-Going all-EV is an idea from people who don't understand the materials supply structure.
-As long as materials depend on fossil feedstock, oil refining continues.
-As long as refining continues, fuel comes out.
-Using that fuel is the most structurally rational choice.
-
 The question is not "gasoline cars or EVs."
 It is **how far along bio-material alternatives to naphtha have progressed**.
-Only when bio-materials can replace naphtha does the option to stop oil refining emerge.
-The order is backwards.
+Only when bio-materials can replace naphtha does the option
+to scale down oil refining emerge. The order is backwards.
 
 ## After Fossil Materials — Biology
 
-When fossil materials become scarce or prohibitively expensive,
-the replacement must come from biology:
+When fossil resources are depleted, or when material substitution
+advances enough for refining to scale down —
+either way, an era when naphtha-based materials become unavailable is coming.
+The replacement must come from biology:
 
 :::highlight
 **Microbial materials:**

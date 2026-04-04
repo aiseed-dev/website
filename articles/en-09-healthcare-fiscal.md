@@ -259,7 +259,7 @@ It is water, plants, and the wisdom of living.
 The Agriculture Mistake → Chemical dependence collapses with one refinery
 The Fusion Mistake → Energy replaces; materials do not
 The AGI Mistake → AI cannot do physical restoration work
-Microsoft's Collapse → Bundled systems break; distributed systems endure
+NVIDIA's Collapse → No gold mine, no shovel business
 UBS and Finance → Physical destruction cascades to financial collapse
 Fossil Materials → Post-plastic world needs biology
 Drones and Defense → Small beats large in warfare

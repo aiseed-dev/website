@@ -7,8 +7,8 @@ subtitle: From Refinery to Real Estate Fund — The Chain
 description: How does destroying a refinery reach a real estate fund? Follow the physical chain: energy → inflation → interest rates → real estate → fund liquidity → systemic crisis. UBS holds 2.5x Switzerland's GDP.
 date: 2025.04.04
 label: Structural Analysis 08
-prev_slug: microsoft
-prev_title: Microsoft's Collapse
+prev_slug: nvidia
+prev_title: NVIDIA's Collapse
 next_slug: healthcare-fiscal
 next_title: Society's Design Failure
 cta_label: Structure

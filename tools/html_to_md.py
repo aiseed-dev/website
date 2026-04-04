@@ -25,7 +25,7 @@ ARTICLE_ORDER = {
     "drone-defense": "04",
     "fusion": "05",
     "agi": "06",
-    "microsoft": "07",
+    "nvidia": "07",
     "ubs": "08",
     "healthcare-fiscal": "09",
     "subtraction-design": "10",

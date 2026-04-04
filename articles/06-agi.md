@@ -8,8 +8,8 @@ date: 2025.04.03
 label: Structural Analysis 06
 prev_slug: fusion
 prev_title: 核融合の間違い
-next_slug: microsoft
-next_title: Microsoftの破産
+next_slug: nvidia
+next_title: NVIDIAの崩壊
 ---
 
 ## 原油がなければデータセンターは動かなくなる

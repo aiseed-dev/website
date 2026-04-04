@@ -33,7 +33,7 @@ The previous nine articles examined the structural fragility of modern civilizat
 04. Drones + AI and small-nation defense → The age when superpowers cannot win.
 05. The fusion illusion → Replacing energy does not replace materials.
 06. The AGI illusion → AI cannot build soil. Human work increases.
-07. Microsoft's bankruptcy → The bundling tax is peeling away.
+07. NVIDIA's collapse → No gold mine, no shovel business.
 08. UBS and financial collapse → From refineries to real estate funds — a chain reaction.
 09. Society's design failure → Healthcare and pensions — the cost of departing from nature.
 :::
@@ -120,7 +120,7 @@ Your content → It stays until you choose to remove it
 
 Corporate platforms look "free," but they collect a tax
 in the form of your attention.
-The same structure as Microsoft's six taxes.
+The same structure as NVIDIA's GPU tax on the AI industry.
 
 Self-hosting is the act of subtracting that tax.
 

@@ -9,8 +9,8 @@ date: 2025.04.04
 label: Structural Analysis 06
 prev_slug: fusion
 prev_title: The Nuclear Fusion Mistake
-next_slug: microsoft
-next_title: Microsoft's Collapse
+next_slug: nvidia
+next_title: NVIDIA's Collapse
 cta_label: Work
 cta_title: With nature, we can live.
 cta_text: AI handles information. Humans handle soil. The division of labor is clear.

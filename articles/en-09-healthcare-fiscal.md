@@ -114,12 +114,12 @@ As Chapter 6 showed, bio-material manufacturing requires human labor permanently
 
 :::highlight
 **What bio-materials and food production require:**
-Microbial cultivation → Cultivation facilities need **land**
+Timber (construction, fiber, chemical feedstock) → **Forestland** management, logging, and replanting
 Plant feedstock farming → **Farmland** is needed
-Mycelium production → Substrate storage and cultivation need **space**
 Regenerative agriculture → **Vast farmland** and grazing land needed
 Vegetable cultivation research → **Experimental plots** needed
-Biomass collection → Physical labor in rural areas
+Microbial and mycelium cultivation → **Land and space** needed
+Biomass collection → Physical labor in rural areas and forests
 **None of this can be done inside a Tokyo office building.**
 :::
 
@@ -139,10 +139,10 @@ This is not "recommending country life."
 :::compare
 | | Present | After transformation |
 | --- | --- | --- |
-| Population concentration | 36 million in Greater Tokyo | Distributed (near farmland and cultivation facilities) |
-| Primary employment | Desk work, IT, service industry | Bio-material manufacturing, food production, soil regeneration |
-| Required resources | Offices, data centers, electricity | Land, water, sunlight, soil |
-| Commuting | Packed trains to city center | Fields and facilities within walking distance |
+| Population concentration | 36 million in Greater Tokyo | Distributed (near farmland and forestland) |
+| Primary employment | Desk work, IT, service industry | Bio-material manufacturing, food production, forestry, soil regeneration |
+| Required resources | Offices, data centers, electricity | Farmland, forestland, water, sunlight, soil |
+| Reason for concentration | Commuting to offices | **No reason to concentrate** |
 | Housing costs | 30%+ of income on Tokyo rent | Dramatically lower in regional areas |
 :::
 

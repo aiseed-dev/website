@@ -183,23 +183,38 @@ Only 14% is used as chemical feedstock (naphtha, etc.) for materials.
 We do not have the luxury of burning 86%.
 :::
 
-Energy can be replaced by solar, wind, and fusion.
-Materials cannot be easily replaced.
+But there is a structural contradiction here.
 
-Therefore, we should stop burning oil and preserve it as material feedstock.
+:::highlight
+**The structural constraint of refining:**
+When you refine crude oil, naphtha, gasoline, diesel, and heavy fuel oil come out **simultaneously**.
+You cannot extract naphtha alone.
+As long as we need the current volume of chemical feedstock (naphtha), oil refining continues.
+And if refining continues, fuel is inevitably produced as a co-product.
+In other words, "stop burning oil" is structurally impossible as long as material demand persists.
+:::
+
+So what do we do?
+
+**In the short term, use the fuel that refining produces — but change the demand structure.**
+Disposable plastic waste, excessive packaging, short-lifespan product design —
+reduce these, and naphtha demand drops, refining volume drops, and fuel byproducts drop with it.
+
+**In the medium to long term, reduce naphtha demand itself through bio-materials.**
+As naphtha demand falls, refining volume falls, and fuel byproducts fall.
+Combine this with expanding renewable energy,
+and oil refining can be scaled down step by step.
+
 The transition to renewable energy is not just "for the environment."
 It is also **to extend the usable life of finite fossil resources as materials**.
-
-Disposable plastic waste, excessive packaging, short-lifespan product design —
-all of these squander finite resources.
-While fossil resources are still "cheap," we must simultaneously
-develop bio-materials and conserve fossil resources.
+But as long as material demand exists, refining cannot stop —
+any vision of "post-oil" that ignores this structural constraint is empty rhetoric.
 
 :::compare
 | Strategy | Short-term (5 yrs) | Mid-term (20 yrs) | Long-term (50 yrs) |
 | --- | --- | --- | --- |
-| Energy | Expand renewables. Reduce oil burning | Renewables become primary | Stop burning oil entirely |
-| Materials | Reduce disposables. Conserve fossil resources | Scale up bio-materials | Bio-materials become primary |
+| Energy | Expand renewables. Reduce fuel byproduct dependence | Renewables become primary | Drastically reduce refining volume |
+| Materials | Reduce disposables. Lower naphtha demand | Scale up bio-materials | Bio-materials become primary |
 | Soil | Begin regenerative agriculture | Restore soil microbiology | Establish biological infrastructure |
 | Stockpiles | Create strategic naphtha/fertilizer reserves | Expand reserves | Reserves unnecessary (self-sufficient) |
 :::

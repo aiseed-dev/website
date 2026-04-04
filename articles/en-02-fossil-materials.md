@@ -105,7 +105,7 @@ Plastics, medical devices, and fertilizer feedstock require naphtha
 → Refining crude oil produces gasoline, diesel, and heavy fuel oil simultaneously
 → As long as materials are needed, oil refining cannot stop
 → If refining cannot stop, **both gasoline and diesel will keep coming out**
-→ Throw that fuel away? Using it is the rational choice.
+→ The fuel that comes out must be used. You cannot even discard it.
 :::
 
 ### Diesel — sectors that cannot electrify
@@ -128,7 +128,8 @@ Diesel will not disappear — for two reasons:
 Gasoline also comes out of refining. If it comes out, it should be used.
 
 If all passenger cars go fully electric, the gasoline produced has nowhere to go.
-Discard it, or let it distort markets as surplus — either way, it's waste.
+But gasoline is a hazardous material. It cannot be discarded.
+Fuel with nowhere to go keeps accumulating — this is a structural breakdown.
 
 :::highlight
 **Why hybrid vehicles are structurally rational:**
@@ -139,8 +140,9 @@ Refining for naphtha → Gasoline comes out
 → Overall optimization across refining, materials, and energy
 :::
 
-Going all-EV means discarding the gasoline that refining produces,
-then generating separate electricity to power cars — **double investment in energy**.
+Going all-EV eliminates the destination for gasoline that refining inevitably produces,
+then generates separate electricity to power cars — **double investment in energy**.
+And the gasoline cannot be discarded. Hazardous fuel with nowhere to go simply accumulates.
 Hybrid vehicles are the structurally rational choice: they use the fuel that comes out anyway.
 
 :::highlight
@@ -161,7 +163,8 @@ to scale down oil refining emerge. The order is backwards.
 Now you can see how wrong climate change policy has been all along.
 "Stop burning oil" → EVs, renewable energy — this has been mainstream climate policy.
 But as long as materials depend on fossil feedstock, refining cannot stop.
-Refining produces fuel. Discarding that fuel to generate electricity separately — double investment.
+Refining produces fuel. That fuel cannot be discarded. It must be used.
+Yet they generate electricity separately to power cars — double investment.
 They looked only at CO₂ emissions and ignored the structure of materials.
 They looked only at energy and ignored the full picture of the refining process.
 Climate policy should not have started with "stop burning oil."

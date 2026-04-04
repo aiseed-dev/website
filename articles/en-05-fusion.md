@@ -20,13 +20,42 @@ cta_btn2_text: All Insights
 cta_btn2_link: /en/insights/
 ---
 
-## The Wrong Question
+## Without Oil, Fusion Reactors Stop
 
-"When will nuclear fusion solve the energy crisis?"
+Nuclear fusion is hailed as the "ultimate energy source."
+Limitless fuel, zero CO₂ emissions, inherent safety —
+the technology expected to solve all energy problems.
 
-This question reveals a fundamental misunderstanding.
-Oil refining is not primarily an energy production process.
-It is a **materials production process**.
+But the fusion reactor itself cannot operate without petrochemical materials.
+
+:::highlight
+**Petrochemical materials essential to fusion reactors:**
+Superconducting coil insulation → Epoxy resin + glass fiber (petroleum). Must function at cryogenic temperatures (-269°C). No alternative.
+Vacuum vessel seals → Fluorocarbon rubber, synthetic rubber (petroleum). Maintains ultra-high vacuum. Natural rubber cannot.
+Tritium piping seals → Specialized fluoropolymer (petroleum). Prevents radioactive tritium leakage. No alternative.
+Control system cables → Radiation-resistant polyimide (petroleum). Standard plastics degrade under radiation. No alternative.
+Diagnostic optical windows → Synthetic quartz + petroleum-based coatings. No alternative.
+:::
+
+These components require periodic replacement.
+Insulation and seal materials that degrade under radiation
+must be continuously supplied as consumables.
+
+:::chain
+**The fatal dependency of fusion reactors:**
+Operating a fusion reactor → Components degrade under radiation
+→ Seals, insulation, cables need replacement
+→ All are petrochemical materials
+→ Petrochemical materials require naphtha
+→ Naphtha requires crude oil refining
+→ **When oil runs out, fusion reactor replacement parts cannot be made**
+→ The fusion reactor stops
+:::
+
+The reactor built to "replace oil" cannot be maintained without oil —
+this is the structural contradiction.
+
+And what a fusion reactor produces is electricity alone.
 
 :::chain
 **What oil refining actually produces:**

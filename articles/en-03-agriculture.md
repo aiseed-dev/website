@@ -272,17 +272,29 @@ Fukuoka's ultimate strategy. Let daikon and turnips grow among the weeds. Indivi
 
 ## Why We Must Start Now
 
-### The first reason — fossil resources will run out
+### The first reason — mass production of chemical fertilizer will become impossible
 
-The raw materials for chemical fertilizer are fossil resources. Nitrogen fertilizer comes from natural gas. Phosphate fertilizer requires sulfur, a byproduct of oil refining. Fossil resources are finite. Extract them, and they diminish. In 100 years, 200 years, they will inevitably run out.
+The raw materials for chemical fertilizer are fossil resources. Nitrogen fertilizer comes from natural gas. Phosphate fertilizer requires sulfur, a byproduct of oil refining. Fossil resources are finite. Extract them, and they diminish.
 
-Starting soil regeneration after depletion is too late. Soil microbial recovery takes a minimum of 1 to 3 years. Full-scale soil regeneration takes 10 to 20 years. If we don't begin the transition while fossil resources are still "cheap," food production capacity will collapse the moment they run out.
+But depletion does not arrive suddenly. **The cheapest fields are exhausted first, and extraction costs rise year after year.** Before oil "runs out," it becomes "too expensive to use." The same applies to chemical fertilizer.
+
+:::highlight
+**The structural problem of chemical fertilizer:**
+Rising natural gas prices → Rising ammonia (nitrogen fertilizer) production costs
+Depletion of cheap oil fields → Declining sulfur (phosphate fertilizer feedstock) supply, rising prices
+The rise in extraction costs is gradual but relentless.
+Beyond a certain threshold, mass production of chemical fertilizer becomes **economically impossible**.
+Fertilizer doesn't "disappear." **More and more farmers simply can't afford it.**
+:::
+
+When chemical fertilizer prices soar, food production collapses without alternatives. Transitioning to regenerative agriculture or natural farming takes 10 to 20 years. Soil microbial recovery alone takes a minimum of 1 to 3 years. If we don't begin the transition while chemical fertilizer is still "cheap," we won't make it in time.
 
 :::highlight
 **The asymmetry of time:**
-Fossil resource depletion → Unavoidable (timing uncertain, but inevitable)
-Soil regeneration → Minimum 1–3 years, full-scale 10–20 years
-If we start after chemical fertilizers become unavailable, **we cannot produce food for years**.
+Rising chemical fertilizer costs → Already underway. Accelerating
+Transition to regenerative agriculture → 10–20 years
+Soil microbial recovery → Minimum 1–3 years
+If we start after chemical fertilizers become unaffordable, **we cannot produce food for years**.
 :::
 
 ### The second reason — geopolitical risk can halt supply overnight

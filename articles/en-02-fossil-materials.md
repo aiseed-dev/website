@@ -89,6 +89,40 @@ Total national cost exploding from ¥1.6 trillion toward **¥2 trillion**.
 This is what "fossil material dependency" means in human terms:
 337,000 lives depend on petroleum-derived plastic and fossil-fuel electricity.
 
+## The Energy Transition Creates the Materials Crisis
+
+Suppose every car becomes electric.
+Gasoline demand disappears. Diesel demand disappears.
+Wonderful — CO₂ emissions drop dramatically.
+
+But then what happens?
+
+:::chain
+**Energy transition → materials crisis causal chain:**
+All vehicles go EV → Gasoline and diesel demand vanish
+→ The bulk of oil refining revenue disappears
+→ Refineries become economically unviable
+→ Refineries shut down
+→ Naphtha supply disappears with them
+→ Plastics, medical devices, fertilizer feedstock — gone
+:::
+
+The energy transition does not solve the energy problem.
+It **converts the energy problem into a materials problem**.
+
+:::highlight
+**The structural contradiction:**
+Currently, refining costs are covered by revenue from the 86% of oil used as energy (gasoline, diesel).
+The remaining 14% used as chemical feedstock (naphtha, etc.) is supplied cheaply — essentially as a side product.
+If energy demand disappears, refineries must operate solely for materials.
+Costs multiply several times over.
+EVs and renewables, **if pushed forward without a materials supply system in place, undermine their own foundation**.
+:::
+
+This is not "a problem that remains after the energy transition."
+**Advancing the energy transition itself accelerates the materials crisis.**
+The vast majority of people talking about decarbonization do not see this structure.
+
 ## After Fossil Materials — Biology
 
 When fossil materials become scarce or prohibitively expensive,

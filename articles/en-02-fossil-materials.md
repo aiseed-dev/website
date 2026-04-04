@@ -157,6 +157,17 @@ It is **how far along bio-material alternatives to naphtha have progressed**.
 Only when bio-materials can replace naphtha does the option
 to scale down oil refining emerge. The order is backwards.
 
+:::quote
+Now you can see how wrong climate change policy has been all along.
+"Stop burning oil" → EVs, renewable energy — this has been mainstream climate policy.
+But as long as materials depend on fossil feedstock, refining cannot stop.
+Refining produces fuel. Discarding that fuel to generate electricity separately — double investment.
+They looked only at CO₂ emissions and ignored the structure of materials.
+They looked only at energy and ignored the full picture of the refining process.
+Climate policy should not have started with "stop burning oil."
+It should have started with **"change the structure that makes materials depend on oil."**
+:::
+
 ## After Fossil Materials — Biology
 
 When fossil resources are depleted, or when material substitution

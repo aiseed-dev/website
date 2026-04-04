@@ -104,6 +104,57 @@ Corporate logic → Maximize short-term profit
 
 Corporate entry is not "efficiency." It is "fragility." It trades long-term food security for short-term profit.
 
+## Regenerative Agriculture — Grains and Beef Can Be Done This Way
+
+If natural farming is the world of "small-scale, multi-species," then regenerative agriculture is **the method for running large-scale grain and livestock production using nature's own systems**.
+
+:::chain
+**The basic structure of regenerative agriculture:**
+No-till → Soil structure preserved → Mycorrhizal fungal networks survive
+Cover crops → Soil always covered in green → Photosynthesis → liquid carbon → soil microbe cycle
+Multi-species rotation → Eliminates monoculture fragility
+Planned grazing → Cattle eat grass → roots regenerate → carbon fixed in soil
+:::
+
+### Grains — Cover Crops and No-Till Make It Work
+
+Conventional grain production depends on chemical fertilizers + herbicides + heavy machinery. Regenerative agriculture replaces this with cover crops and no-till cultivation.
+
+Grow clover or hairy vetch as cover crops to fix nitrogen. Direct-seed grains into that cover. Instead of herbicides, the cover crops suppress weeds.
+
+:::highlight
+**Gabe Brown's demonstration (North Dakota):**
+Over 20 years of regenerative agriculture on a 5,000-acre farm.
+Zero chemical fertilizer. Zero herbicides.
+Soil organic matter recovered from 1.7% to over 6%.
+Yields match or exceed conventional agriculture. Costs are dramatically lower.
+Profit margins exceed those of conventional farmers in the region.
+:::
+
+### Beef — Planned Grazing Regenerates Soil
+
+Beef production is synonymous with environmental destruction. But that refers to feedlot (grain-fed) operations.
+
+With Adaptive Multi-Paddock Grazing, cattle eat grass, move on, and the grass regenerates — this cycle rebuilds soil.
+
+:::chain
+**How planned grazing works:**
+Cattle eat grass → Some roots die off → Dead roots become soil organic matter
+Cattle move on → Grass regenerates → New roots grow deeper → More carbon enters soil
+Manure and urine → Feed for microorganisms → Nutrient cycling restored
+High-density, short-duration grazing → Replicates natural grassland disturbance patterns
+:::
+
+Grass-fed cattle don't eat grain. This eliminates the inefficient structure of feeding grain to cattle. Converting grass that humans cannot eat into meat that humans can eat — this is what livestock production was always meant to be.
+
+:::highlight
+**Where regenerative agriculture fits:**
+Natural farming (Fukuoka) → Small-scale, multi-species, ultimate self-reliance
+Regenerative agriculture → Large-scale grain and livestock using nature's systems
+They do not conflict. Only the scale differs. The principles are the same.
+Don't kill soil microbes. Don't depend on external inputs. Maximize photosynthesis.
+:::
+
 ## Natural Farming as a Survival Strategy
 
 Masanobu Fukuoka's four principles — no tilling, no fertilizer, no pesticides, no weeding — are often dismissed as "idealism" or "philosophy."
@@ -221,10 +272,27 @@ Fukuoka's ultimate strategy. Let daikon and turnips grow among the weeds. Indivi
 
 ## Why We Must Start Now
 
-Soil microbial recovery takes 1 to 3 years. Starting after a crisis hits is too late.
+### The first reason — fossil resources will run out
 
-Refinery destruction is not hypothetical. The 2026 Iran conflict is unfolding now. Strait of Hormuz blockades, airstrikes on refineries — the day chemical fertilizers become unavailable has already arrived.
+The raw materials for chemical fertilizer are fossil resources. Nitrogen fertilizer comes from natural gas. Phosphate fertilizer requires sulfur, a byproduct of oil refining. Fossil resources are finite. Extract them, and they diminish. In 100 years, 200 years, they will inevitably run out.
+
+Starting soil regeneration after depletion is too late. Soil microbial recovery takes a minimum of 1 to 3 years. Full-scale soil regeneration takes 10 to 20 years. If we don't begin the transition while fossil resources are still "cheap," food production capacity will collapse the moment they run out.
+
+:::highlight
+**The asymmetry of time:**
+Fossil resource depletion → Unavoidable (timing uncertain, but inevitable)
+Soil regeneration → Minimum 1–3 years, full-scale 10–20 years
+If we start after chemical fertilizers become unavailable, **we cannot produce food for years**.
+:::
+
+### The second reason — geopolitical risk can halt supply overnight
+
+We may not need to wait for depletion. Geopolitical risk can cut supply overnight. Refinery destruction is not hypothetical. The 2026 Iran conflict is unfolding now. Strait of Hormuz blockades, airstrikes on refineries — the day chemical fertilizers become unavailable has already arrived.
+
+### The third reason — soil degradation is accelerating now
+
+33% of the world's farmland is already degraded. America has lost roughly 50% of its topsoil in 150 years. The Ogallala Aquifer is heading toward depletion. If we don't regenerate soil while fossil resources are still available, there may be no soil left to regenerate when they're gone.
 
 :::quote
-Natural farming is not a method of "doing nothing." It is a method that "loses nothing" when external systems collapse. Being structurally correct and being easy to practice are two different things. Closing that gap is the most urgent work of our time.
+Natural farming is not a method of "doing nothing." It is a method that "loses nothing" when external systems collapse. Regenerative agriculture is the method for returning large-scale farming to nature's systems. Being structurally correct and being easy to practice are two different things. Closing that gap is the most urgent work of our time.
 :::

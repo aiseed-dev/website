@@ -92,17 +92,40 @@ Human work does not decrease. It increases. But it is no longer office work — 
 
 "If AI takes all jobs, Universal Basic Income will solve it." This argument stands on the same flawed premise.
 
-If the assumption "humans have no work to do" is wrong, then the solution "pay people who have no work" is also wrong.
+But UBI has an even more fundamental problem. **It assumes fossil resources are infinite.**
+
+:::highlight
+**UBI's hidden assumption:**
+Distribute money → People consume → The economy keeps turning
+But what are the consumed products made of?
+Food packaging → Plastic (petroleum)
+Clothing → Polyester (petroleum)
+Electronics → A mass of petrochemical materials
+Logistics → Trucks running on diesel
+**Running consumption through UBI means running petrochemical product consumption.**
+Since fossil resources are finite, this premise does not hold.
+:::
 
 :::chain
-**The AGI + UBI logic:**
+**The AGI + UBI logic (wrong on two levels):**
 AI takes jobs → Unemployment rises
 → Distribute money → Sustain economy through consumption
-**The structurally correct logic:**
-AI handles information processing → Humans shift to physical work
-→ Soil regeneration, ecosystem restoration, infrastructure decentralization
-→ More work than ever before
+→ But consumed products are made from petrochemical materials
+→ Fossil resources are finite → **The consumption economy itself is unsustainable**
 :::
+
+And manufacturing the bio-materials that come after fossil resources **requires massive human labor**.
+
+:::highlight
+**Human labor needed for bio-material production:**
+Microbial cultivation → Building, operating, and managing cultivation facilities requires people
+Plant feedstock farming → Preparing land, growing, harvesting requires people
+Mycelium production → Substrate preparation, growth condition management requires people
+Biomass collection → Gathering and transporting agricultural waste is physical labor
+Quality control → Bio-derived materials have high quality variation. Human judgment essential
+:::
+
+Petrochemical plants can mass-produce with few workers. Bio-materials, dealing with living organisms, are difficult to automate and labor-intensive. There is no room to let people sit idle on UBI. **During the transition to bio-materials, we will be short on workers, not jobs.**
 
 The problem is not "no work." The problem is that **physical work that must be done is not valued**.
 

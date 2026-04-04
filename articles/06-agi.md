@@ -1,11 +1,11 @@
 ---
 slug: agi
-number: "03"
+number: "06"
 title: AGIの間違い
 subtitle: 仕事はいくらでもある。人間の仕事は増える。
 description: AGIが人間の仕事を奪うという議論は仕事を言語的に定義している。土壌微生物の回復、生態系の再建——AIにはできない物理的な仕事が無限にある。
 date: 2025.04.03
-label: Structural Analysis 03
+label: Structural Analysis 06
 prev_slug: fusion
 prev_title: 核融合の間違い
 next_slug: microsoft

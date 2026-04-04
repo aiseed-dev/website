@@ -1,14 +1,14 @@
 ---
 slug: fusion
-number: "02"
+number: "05"
 lang: en
 title: The Nuclear Fusion Mistake
 subtitle: Energy Can Be Replaced — Materials Cannot
 description: Nuclear fusion produces electricity but not sulfur, naphtha, or plastics. Solving the energy problem does not solve the food problem. The question itself is wrong.
 date: 2025.04.04
-label: Structural Analysis 02
-prev_slug: agriculture
-prev_title: The Agriculture Mistake
+label: Structural Analysis 05
+prev_slug: drone-defense
+prev_title: Drones, AI, and Small Nation Defense
 next_slug: agi
 next_title: The AGI Mistake
 cta_label: Structure

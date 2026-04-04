@@ -1,13 +1,13 @@
 ---
 slug: fusion
-number: "02"
+number: "05"
 title: 核融合の間違い
 subtitle: エネルギーは代替できる。素材は代替できない。
 description: 核融合で電力を作っても硫黄は出てこない。ナフサも出てこない。エネルギーは代替できるが素材は代替できない。問題の設定自体が間違っている。
 date: 2025.04.03
-label: Structural Analysis 02
-prev_slug: agriculture
-prev_title: 農業の間違い
+label: Structural Analysis 05
+prev_slug: drone-defense
+prev_title: ドローン＋AIと小国防衛
 next_slug: agi
 next_title: AGIの間違い
 ---

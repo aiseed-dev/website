@@ -1,15 +1,15 @@
 ---
 slug: fossil-materials
-number: "06"
+number: "02"
 title: 化石資源と現代文明
 subtitle: 便利な生活の正体は、石油から作られた素材だった。
 description: 現代文明の便利さは化石資源の素材機能に依存している。プラスチック、医薬品、繊維、建材——エネルギーを代替しても素材は残る。化石資源後の世界では、微生物と植物が素材の源泉になる。
 date: 2025.04.03
-label: Structural Analysis 06
-prev_slug: ubs
-prev_title: UBSと金融崩壊
-next_slug: drone-defense
-next_title: ドローン＋AIと小国防衛
+label: Structural Analysis 02
+prev_slug: climate-mistake
+prev_title: 気候変動対策の過ち
+next_slug: agriculture
+next_title: 農業の間違い
 ---
 
 ## あなたの生活のほぼ全てが石油でできている

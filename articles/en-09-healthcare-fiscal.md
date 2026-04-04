@@ -7,10 +7,10 @@ subtitle: Healthcare, Pensions, and Agriculture Collapse Together
 description: Dialysis costs ¥1.6 trillion annually, entirely dependent on fossil fuels. Social insurance exceeds 30% of working-age income. American agriculture mines topsoil and depletes aquifers. The root is the same — departure from nature.
 date: 2025.04.04
 label: Structural Analysis 09
-prev_slug: ai-solo-business
-prev_title: AI and the Solo Business
-next_slug:
-next_title:
+prev_slug: ubs
+prev_title: UBS and Financial Collapse
+next_slug: subtraction-design
+next_title: Subtraction Design
 cta_label: Back to Life
 cta_title: With nature, we can live.
 cta_text: Not curing disease — preventing it. Not depending on pensions — not needing them.

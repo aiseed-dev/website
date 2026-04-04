@@ -1,12 +1,12 @@
 ---
 slug: microsoft
-number: "04"
+number: "07"
 lang: en
 title: Microsoft's Collapse
 subtitle: When Six Taxes Peel Off
 description: Microsoft extracts six layers of tax — OS, productivity, communication, cloud, developer, AI. Copilot is linguistic thinking. Claude is structural thinking. When the AI tax peels off, all six follow.
 date: 2025.04.04
-label: Structural Analysis 04
+label: Structural Analysis 07
 prev_slug: agi
 prev_title: The AGI Mistake
 next_slug: ubs

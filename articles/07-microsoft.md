@@ -1,11 +1,11 @@
 ---
 slug: microsoft
-number: "04"
+number: "07"
 title: Microsoftの破産
 subtitle: Six Taxesが剥がれる時、何が起きるか。
 description: Microsoftのバンドルモデルは6つの税をユーザーに課している。Copilotの言語的思考 vs. Claudeの構造的思考。Six taxesが剥がれる時、何が起きるか。
 date: 2025.04.03
-label: Structural Analysis 04
+label: Structural Analysis 07
 prev_slug: agi
 prev_title: AGIの間違い
 next_slug: ubs

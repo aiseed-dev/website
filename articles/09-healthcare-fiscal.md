@@ -6,10 +6,10 @@ subtitle: 年金・医療・農業が同時に崩壊する構造
 description: 透析医療は化石資源に完全依存し、年金は現役世代を圧殺し、アメリカ農業は土壌を破壊し続ける。全ての問題の根は同じ——自然から離れたことだ。
 date: 2025.04.04
 label: Structural Analysis 09
-prev_slug: ai-solo-business
-prev_title: AIと個人事業
-next_slug: 
-next_title: 
+prev_slug: ubs
+prev_title: UBSと金融崩壊
+next_slug: subtraction-design
+next_title: 引き算の設計
 ---
 
 ## 三つの崩壊が同時に来る

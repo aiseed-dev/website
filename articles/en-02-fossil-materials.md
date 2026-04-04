@@ -1,16 +1,16 @@
 ---
 slug: fossil-materials
-number: "06"
+number: "02"
 lang: en
 title: Fossil Materials and Modern Civilization
 subtitle: What Comes After Plastic
 description: Modern civilization's convenience depends on fossil resources as materials, not just energy. Energy can be replaced. Plastics, medical devices, and semiconductors cannot — unless we turn to microorganisms and plants.
 date: 2025.04.04
-label: Structural Analysis 06
-prev_slug: ubs
-prev_title: UBS and Financial Collapse
-next_slug: drone-defense
-next_title: Drones, AI, and Small Nation Defense
+label: Structural Analysis 02
+prev_slug: climate-mistake
+prev_title: The Climate Change Mistake
+next_slug: agriculture
+next_title: The Agriculture Mistake
 cta_label: Back to Soil
 cta_title: With nature, we can live.
 cta_text: The post-fossil world begins with rebuilding soil.

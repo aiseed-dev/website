@@ -1,16 +1,16 @@
 ---
 slug: ubs
-number: "05"
+number: "08"
 lang: en
 title: UBS and Financial Collapse
 subtitle: From Refinery to Real Estate Fund — The Chain
 description: How does destroying a refinery reach a real estate fund? Follow the physical chain: energy → inflation → interest rates → real estate → fund liquidity → systemic crisis. UBS holds 2.5x Switzerland's GDP.
 date: 2025.04.04
-label: Structural Analysis 05
+label: Structural Analysis 08
 prev_slug: microsoft
 prev_title: Microsoft's Collapse
-next_slug: fossil-materials
-next_title: Fossil Materials and Modern Civilization
+next_slug: healthcare-fiscal
+next_title: Society's Design Failure
 cta_label: Structure
 cta_title: With nature, we can live.
 cta_text: Financial risk originates in the physical world. Understanding structure is understanding survival.

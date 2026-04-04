@@ -1,15 +1,15 @@
 ---
 slug: ubs
-number: "05"
+number: "08"
 title: UBSと金融崩壊
 subtitle: 製油所の破壊がなぜ不動産ファンドに到達するのか。
 description: 製油所の破壊がなぜ不動産ファンドに到達するのか。エネルギー→インフレ→金利→不動産価格→ファンド流動性の物理的因果連鎖を追跡する。
 date: 2025.04.03
-label: Structural Analysis 05
+label: Structural Analysis 08
 prev_slug: microsoft
 prev_title: Microsoftの破産
-next_slug: fossil-materials
-next_title: 化石資源と現代文明
+next_slug: healthcare-fiscal
+next_title: 社会の設計ミス
 ---
 
 ## 金融アナリストが見ない因果連鎖

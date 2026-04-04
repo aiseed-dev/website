@@ -1,12 +1,12 @@
 ---
 slug: agi
-number: "03"
+number: "06"
 lang: en
 title: The AGI Mistake
 subtitle: There Is Infinite Work — Human Work Increases
 description: AGI will not eliminate human work. It redirects humans from information processing to physical restoration. 33% of global farmland is degraded. AI cannot work with microbes. The work ahead is enormous.
 date: 2025.04.04
-label: Structural Analysis 03
+label: Structural Analysis 06
 prev_slug: fusion
 prev_title: The Nuclear Fusion Mistake
 next_slug: microsoft

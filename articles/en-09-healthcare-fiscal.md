@@ -139,21 +139,27 @@ This is not "recommending country life."
 :::compare
 | | Present | After transformation |
 | --- | --- | --- |
-| Population concentration | 36 million in Greater Tokyo | Distributed (near farmland and forestland) |
+| Population concentration | 36 million in Greater Tokyo | Distributed in town-sized units near farmland and forestland |
 | Primary employment | Desk work, IT, service industry | Bio-material manufacturing, food production, forestry, soil regeneration |
 | Required resources | Offices, data centers, electricity | Farmland, forestland, water, sunlight, soil |
-| Reason for concentration | Commuting to offices | **No reason to concentrate** |
+| Reason for concentration | Commuting to offices | Maintaining services (shops, schools, clinics) |
 | Housing costs | 30%+ of income on Tokyo rent | Dramatically lower in regional areas |
 :::
 
-Japan has land. It has water. It has a warm, humid climate.
-The reason 36 million people live in Tokyo is that desk work was concentrated in city centers.
-When that premise collapses, population distribution fundamentally changes.
+This does not mean people scatter completely.
+Shops, schools, clinics — maintaining essential services requires a certain population.
+**The "town" becomes the basic unit of the transformed society.**
+
+Millions concentrated in a megacity are unnecessary.
+But thousands to tens of thousands forming a town can share services
+while living surrounded by farmland and forestland.
 
 :::highlight
 **A massive social transformation:**
-This population migration changes the structure of Japanese society at its foundation.
-Education, healthcare, infrastructure, governance — everything must be redesigned for distribution.
+The reason 36 million people live in Tokyo is that desk work was concentrated in city centers.
+When that premise collapses, population distribution fundamentally changes.
+Megacities → distributed into town-sized units, near farmland and forestland.
+Education, healthcare, governance — everything is redesigned at the scale of a town.
 Rural depopulation is not "a problem to be solved" —
 it becomes **a result solved by industrial transformation.**
 Tokyo's extreme concentration was a product of the fossil resource and desk work era.

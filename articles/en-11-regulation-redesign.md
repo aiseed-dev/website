@@ -182,6 +182,7 @@ The same structure exists across every domain.
 
 :::chain
 **Regulations to subtract:**
+EV mandates → As Chapter 2 showed, refining cannot stop because materials are needed, and fuel comes out regardless. Mandating all-EV is structurally reckless
 Strict farmland conversion rules → Make it difficult for urban migrants to acquire agricultural land
 Free trade agreement agricultural clauses → Cannot protect domestic farming from cheap imports
 Urban planning zoning laws → Block integration of agriculture, manufacturing, and housing

@@ -464,6 +464,38 @@ survivors will be those who can grow food on their own land.
 What they need is not cutting-edge technology.
 It is water, plants, and the wisdom of living.
 
+## Fukuoka's Philosophy — How to Survive
+
+All structural analysis converges on a single question.
+
+**How do we survive?**
+
+Fukuoka Masanobu's natural farming is the answer to that question.
+
+:::chain
+**The essence of Fukuoka's four principles:**
+
+No tillage → Do not destroy soil structure → Microorganisms survive
+No fertilizer → Zero external dependency → Not bound by supply chains
+No pesticides → Do not kill the ecosystem → Harness nature's defenses
+No weeding → Maximize photosynthetic surface area → The principle of Light Farming
+:::
+
+And Dr. Christine Jones's Light Farming provided the scientific basis for this philosophy.
+
+:::chain
+**Light Farming — The scientific proof of Fukuoka:**
+
+Sunlight → Photosynthesis → Plants produce sugars
+Sugars → Exuded from roots into soil (Liquid Carbon)
+Liquid Carbon → Energy source for soil microorganisms
+Soil microorganisms → Solubilize and supply minerals to plants
+Plants → More photosynthesis → (Positive feedback loop)
+
+**Weeds photosynthesize too. Leave the weeds, and Liquid Carbon supply increases.**
+Fukuoka's "no weeding" was a strategy to maximize Light Farming.
+:::
+
 ## A Very Different World Is Required
 
 Look back at the argument so far.

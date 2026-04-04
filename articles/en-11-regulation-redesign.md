@@ -254,7 +254,16 @@ Claude does all of this faster, cheaper, and more accurately than researchers.
 **This chapter itself is the proof.**
 The chemistry of phosphate fertilizer, sulfur supply structures, Peak Sulfur projections, the flaws of ADWO —
 content that would take researchers months to compile into a paper, Claude organized in minutes.
-The "tax" called agricultural researchers is one that Claude will break.
+
+**With Claude, farmers themselves become the researchers.**
+Observe in the field, hand data to Claude, receive analysis, apply to the next practice.
+The cycle of practice and analysis completes within a single farmer.
+No need for a specialized profession called "researcher" in between.
+
+Just as Claude made SIers unnecessary in Chapter 8,
+Claude makes agricultural researchers unnecessary.
+But this does not mean agricultural knowledge is lost.
+**It means knowledge returns from the laboratory to the field.**
 
 ## This Is What Regulation Redesign Means
 

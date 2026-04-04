@@ -202,12 +202,25 @@ What remains after subtraction:
 water, land, plants, microorganisms, and human hands.
 Japan has all of these.
 
-## The One Thing to Add
+## Policy — Regulations to Subtract, Support to Add
 
-In subtraction design, almost everything is subtracted.
-But **there is one thing that must be added.**
+By now, one thing should be clear.
+**Existing regulations are blocking the transformation.**
 
-**Policy.**
+Current regulations were all designed for the era of fossil resources and urban concentration.
+Free trade agreements, agricultural land laws, the healthcare system, the pension system, urban planning —
+these regulations themselves become barriers to the transition to a new society.
+
+:::chain
+**Regulations to subtract:**
+Strict farmland conversion rules → Make it difficult for urban migrants to acquire agricultural land
+Free trade agreement agricultural clauses → Cannot protect domestic farming from cheap imports
+Urban planning zoning laws → Block integration of agriculture, manufacturing, and housing
+Healthcare fee schedules → Biased toward "treatment," no incentive for "prevention"
+Pension system's age-65 assumption → Blocks diversification of working patterns
+:::
+
+Subtracting alone is not enough. New support is needed.
 
 :::highlight
 **Policies that must be added:**
@@ -219,12 +232,15 @@ Maintaining town services → Fiscal measures to sustain clinics, schools, and s
 Distributing research facilities → Place bio-material and vegetable cultivation research centers in regional areas
 :::
 
+Policy itself needs both subtraction and addition.
+**Subtract regulations from the old era. Add support for the new society.**
+
 The industrial transformation is inevitable.
 But for people to actually move, start new work, and build sustainable livelihoods,
-policy support is needed.
+regulations must change and support must be prepared.
 
 **Subtraction happens naturally. When fossil resources deplete, what was added collapses on its own.**
-**Addition — policy — does not happen without intention.**
+**But old regulations do not disappear naturally. They must be changed with intention.**
 
 Prepare now, not after the transformation hits.
 That is the job of policy.

@@ -3,8 +3,8 @@ slug: healthcare-fiscal
 number: "09"
 lang: en
 title: Society's Design Failure
-subtitle: Healthcare, Pensions, and Agriculture Collapse Together
-description: Dialysis costs ¥1.6 trillion annually, entirely dependent on fossil fuels. Social insurance exceeds 30% of working-age income. American agriculture mines topsoil and depletes aquifers. The root is the same — departure from nature.
+subtitle: Military, IT, Desk Workers, Healthcare, Pensions — All Collapsing Together
+description: Fossil depletion shrinks the military industry. AGI failure shrinks IT. AI eliminates desk workers. Dialysis depends on fossil fuels. Pensions crush the working generation. The root is the same — departure from nature.
 date: 2025.04.04
 label: Structural Analysis 09
 prev_slug: enterprise-tax
@@ -20,19 +20,100 @@ cta_btn2_text: All Insights
 cta_btn2_link: /en/insights/
 ---
 
-## Three Collapses Arriving Simultaneously
+## The Decline of the Military Industry
 
-Japan faces three structural collapses at once.
+Apply the structures examined in this series to the future of industries. The military industry collapses first.
 
-:::chain
-1. Healthcare → Dialysis alone costs ¥1.6 trillion/year. Entirely fossil-fuel dependent.
-2. Pensions → Working generation's social insurance exceeds 30% of income.
-3. Food → Dependent on chemical fertilizer. Supply chain leads to the Middle East.
+:::highlight
+**Military industry's fossil resource dependency:**
+Jet fighters → Jet fuel (kerosene fraction) + composite materials (petrochemical)
+Tanks → Diesel + synthetic rubber + high-performance plastics
+Warships → Heavy fuel oil + paint (petroleum-based) + wiring insulation (PVC)
+Missiles → Some solid propellants are petroleum-derived + electronics (photoresist)
+Logistics → Diesel-powered trucks and transport ships — all of it
 :::
 
-These are not separate problems.
-Structurally, they grow from the same root:
-**the cost of departing from nature.**
+As Chapter 4 showed, drones + AI are neutralizing conventional large weapons. And large weapons cannot operate without fossil resources.
+
+:::chain
+**Structure of military industry decline:**
+Drones + AI neutralize large weapons → Demand for fighters and tanks drops
+Fossil resource price increases → Operating costs of large weapons rise
+Fossil resource depletion → Manufacturing large weapons becomes difficult
+→ Lockheed Martin, Raytheon, BAE Systems —
+→ **The conventional military industry market structurally shrinks**
+:::
+
+Millions of jobs in the military industry will be affected.
+
+## The Decline of IT Companies
+
+IT companies collapse next. The conclusions of Chapters 6, 7, and 8 converge here.
+
+:::chain
+**Structure of IT company decline:**
+AGI doesn't break even (Ch. 6) → AI investment shrinks
+→ NVIDIA's GPU demand disappears (Ch. 7)
+→ Data center construction slows
+→ Cloud business growth stalls (AWS, Azure, GCP)
+CUDA lock-in collapses (Ch. 7) → GPU market becomes a price war
+Oracle/Microsoft taxes collapse (Ch. 8) → License revenue drops
+SIer taxes collapse (Ch. 8) → System integrator industry shrinks
+:::
+
+:::highlight
+**Companies affected:**
+NVIDIA → GPU demand plummets
+Oracle → License revenue vanishes as customers migrate to PostgreSQL
+Microsoft → Office/Azure/Windows taxes gradually collapse
+Salesforce → Migration to Claude + custom CRM
+Accenture, NTT Data, and other SIers → Claude replaces the bulk of person-hours
+Major consulting firms → Claude replaces structural analysis
+:::
+
+## The Disappearance of Desk Workers
+
+The decline of military and IT industries is industry-level. But a broader impact occurs inside every company — **the dramatic reduction of desk workers**.
+
+As Chapter 6 showed, AGI is unnecessary. **Current AI (Claude) can replace the majority of desk work.**
+
+:::compare
+| Desk work | Can Claude replace it? | What remains |
+| --- | --- | --- |
+| Document creation | Fully replaceable | — |
+| Data entry | Fully replaceable | — |
+| Report writing | Fully replaceable | — |
+| Accounting | Mostly replaceable | Final judgment only |
+| Legal review | Mostly replaceable | Final judgment only |
+| Translation | Fully replaceable | — |
+| Customer support | Mostly replaceable | Complex cases only |
+| Programming | Mostly replaceable | Design decisions only |
+| Marketing analysis | Mostly replaceable | Strategic judgment only |
+:::
+
+:::highlight
+**Scale of desk worker reduction:**
+Of Japan's ~67 million workers, approximately 13 million are office workers.
+Of these, routine tasks replaceable by AI are estimated at **more than half**.
+An era when millions of desk workers become "unnecessary" is coming.
+This is not 10 or 20 years away. **It is already possible with current AI.**
+:::
+
+This connects to the UBI (Universal Basic Income) debate. But as Chapter 6 showed, UBI is wrong. Bio-material manufacturing, soil regeneration, ecosystem restoration — physical work requires human labor permanently. Desk workers will disappear, but **work itself will not disappear. It will change.**
+
+## Five Collapses Arriving Simultaneously
+
+The decline of the military industry. The decline of IT companies. The disappearance of desk workers. On top of these, healthcare and pension collapses proceed simultaneously.
+
+:::chain
+1. Military industry → Fossil depletion + drones shrink conventional weapons market
+2. IT companies → AGI unprofitable + lock-in collapse destroys revenue structures
+3. Desk workers → Current AI can replace the majority
+4. Healthcare → Dialysis alone costs ¥1.6 trillion/year. Entirely fossil-fuel dependent
+5. Pensions → Working generation's social insurance exceeds 30% of income
+:::
+
+These are not separate problems. Structurally, they grow from the same root: **the cost of departing from nature.**
 
 ## Dialysis — Life Support on Fossil Fuels
 

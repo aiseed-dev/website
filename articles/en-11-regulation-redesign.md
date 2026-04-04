@@ -224,8 +224,25 @@ This is the same structure as Chapter 8's Oracle tax and SIer tax.
 The Oracle tax was maintained by people who profited from "continuing to use Oracle."
 Agricultural researchers maintain their relevance by "continuing to use chemical fertilizer."
 
+And what is the essence of an agricultural researcher's work?
+**It is desk work.**
+
 :::highlight
-**Fukuoka was not a researcher. He was a practitioner.**
+**Agricultural researchers are no different from software engineers:**
+Reading papers → Desk work → Claude is faster
+Analyzing data → Desk work → Claude is more accurate
+Calculating optimal conditions → Desk work → Claude is cheaper
+Writing reports → Desk work → Claude is faster
+Writing grant proposals → Desk work → Not needed at all
+
+As Chapter 9 showed, most desk work can be replaced by AI.
+Agricultural researchers are no exception.
+Just as software engineers are replaced by Claude,
+agricultural researchers are replaced by Claude.
+**There is no difference.**
+:::
+
+Fukuoka was not a researcher. He was a practitioner.
 Gabe Brown was not a researcher. He was a practitioner.
 Agriculture without chemical fertilizer was established not by people writing papers,
 but by **people who touched the soil in the field.**
@@ -234,7 +251,6 @@ What agriculture needs is practitioners, and AI to support them.
 Data analysis, knowledge synthesis, optimization of cultivation conditions —
 Claude does all of this faster, cheaper, and more accurately than researchers.
 The "tax" called agricultural researchers is one that Claude will break.
-:::
 
 ## This Is What Regulation Redesign Means
 

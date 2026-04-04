@@ -3,14 +3,14 @@ slug: healthcare-fiscal
 number: "09"
 lang: en
 title: Society's Design Failure
-subtitle: Healthcare, Pensions, and Agriculture Collapse Together
-description: Dialysis costs ¥1.6 trillion annually, entirely dependent on fossil fuels. Social insurance exceeds 30% of working-age income. American agriculture mines topsoil and depletes aquifers. The root is the same — departure from nature.
+subtitle: Military, IT, Desk Workers, Healthcare, Pensions — All Collapsing Together
+description: Fossil depletion shrinks the military industry. AGI failure shrinks IT. AI eliminates desk workers. Dialysis depends on fossil fuels. Pensions crush the working generation. The root is the same — departure from nature.
 date: 2025.04.04
 label: Structural Analysis 09
-prev_slug: ai-solo-business
-prev_title: AI and the Solo Business
-next_slug:
-next_title:
+prev_slug: enterprise-tax
+prev_title: Eliminating Enterprise IT Taxes
+next_slug: subtraction-design
+next_title: Subtraction Design
 cta_label: Back to Life
 cta_title: With nature, we can live.
 cta_text: Not curing disease — preventing it. Not depending on pensions — not needing them.
@@ -20,19 +20,215 @@ cta_btn2_text: All Insights
 cta_btn2_link: /en/insights/
 ---
 
-## Three Collapses Arriving Simultaneously
+## The Decline of the Military Industry
 
-Japan faces three structural collapses at once.
+Apply the structures examined in this series to the future of industries. The military industry collapses first.
 
-:::chain
-1. Healthcare → Dialysis alone costs ¥1.6 trillion/year. Entirely fossil-fuel dependent.
-2. Pensions → Working generation's social insurance exceeds 30% of income.
-3. Food → Dependent on chemical fertilizer. Supply chain leads to the Middle East.
+:::highlight
+**Military industry's fossil resource dependency:**
+Jet fighters → Jet fuel (kerosene fraction) + composite materials (petrochemical)
+Tanks → Diesel + synthetic rubber + high-performance plastics
+Warships → Heavy fuel oil + paint (petroleum-based) + wiring insulation (PVC)
+Missiles → Some solid propellants are petroleum-derived + electronics (photoresist)
+Logistics → Diesel-powered trucks and transport ships — all of it
 :::
 
-These are not separate problems.
-Structurally, they grow from the same root:
-**the cost of departing from nature.**
+As Chapter 4 showed, drones + AI are neutralizing conventional large weapons. And large weapons cannot operate without fossil resources.
+
+:::chain
+**Structure of military industry decline:**
+Drones + AI neutralize large weapons → Demand for fighters and tanks drops
+Fossil resource price increases → Operating costs of large weapons rise
+Fossil resource depletion → Manufacturing large weapons becomes difficult
+→ Lockheed Martin, Raytheon, BAE Systems —
+→ **The conventional military industry market structurally shrinks**
+:::
+
+Millions of jobs in the military industry will be affected.
+
+## The Decline of IT Companies
+
+IT companies collapse next. The conclusions of Chapters 6, 7, and 8 converge here.
+
+:::chain
+**Structure of IT company decline:**
+AGI doesn't break even (Ch. 6) → AI investment shrinks
+→ NVIDIA's GPU demand disappears (Ch. 7)
+→ Data center construction slows
+→ Cloud business growth stalls (AWS, Azure, GCP)
+CUDA lock-in collapses (Ch. 7) → GPU market becomes a price war
+Oracle/Microsoft taxes collapse (Ch. 8) → License revenue drops
+SIer taxes collapse (Ch. 8) → System integrator industry shrinks
+:::
+
+:::highlight
+**Companies affected:**
+NVIDIA → GPU demand plummets
+Oracle → License revenue vanishes as customers migrate to PostgreSQL
+Microsoft → Office/Azure/Windows taxes gradually collapse
+Salesforce → Migration to Claude + custom CRM
+Accenture, NTT Data, and other SIers → Claude replaces the bulk of person-hours
+Major consulting firms → Claude replaces structural analysis
+:::
+
+## The Disappearance of Desk Workers
+
+The decline of military and IT industries is industry-level. But a broader impact occurs inside every company — **the dramatic reduction of desk workers**.
+
+As Chapter 6 showed, AGI is unnecessary. **Current AI (Claude) can replace the majority of desk work.**
+
+:::compare
+| Desk work | Can Claude replace it? | What remains |
+| --- | --- | --- |
+| Document creation | Fully replaceable | — |
+| Data entry | Fully replaceable | — |
+| Report writing | Fully replaceable | — |
+| Accounting | Mostly replaceable | Final judgment only |
+| Legal review | Mostly replaceable | Final judgment only |
+| Translation | Fully replaceable | — |
+| Customer support | Mostly replaceable | Complex cases only |
+| Programming | Mostly replaceable | Design decisions only |
+| Marketing analysis | Mostly replaceable | Strategic judgment only |
+:::
+
+:::highlight
+**Scale of desk worker reduction:**
+Of Japan's ~67 million workers, approximately 13 million are office workers.
+Of these, routine tasks replaceable by AI are estimated at **more than half**.
+An era when millions of desk workers become "unnecessary" is coming.
+This is not 10 or 20 years away. **It is already possible with current AI.**
+:::
+
+This connects to the UBI (Universal Basic Income) debate. But as Chapter 6 showed, UBI is wrong. Bio-material manufacturing, soil regeneration, ecosystem restoration — physical work requires human labor permanently. Desk workers will disappear, but **work itself will not disappear. It will change.**
+
+## From Megacities to Land — The Great Population Migration
+
+The military industry, IT companies, desk workers —
+where do the people displaced from these industries go?
+
+As Chapter 2 showed, bio-materials come after fossil resources.
+As Chapter 3 showed, food production without chemical fertilizer becomes necessary.
+As Chapter 6 showed, bio-material manufacturing requires human labor permanently.
+
+**The work exists. But that work cannot be done in megacities.**
+
+:::highlight
+**What bio-materials and food production require:**
+Timber (construction, fiber, chemical feedstock) → **Forestland** management, logging, and replanting
+Plant feedstock farming → **Farmland** is needed
+Regenerative agriculture → **Vast farmland** and grazing land needed
+Vegetable cultivation practice → **Fields** needed (where practitioners experiment)
+Microbial and mycelium cultivation → **Land and space** needed
+Biomass collection → Physical labor in rural areas and forests
+**None of this can be done inside a Tokyo office building.**
+:::
+
+:::chain
+**Structure of population migration:**
+Military industry decline → Urban defense-related jobs disappear
+IT company decline → Urban office workers are displaced
+Desk worker reduction → No reason to concentrate people in cities
+→ Simultaneously, bio-materials and food production need workers
+→ This work requires land
+→ **Population moves from megacities to regions with land**
+:::
+
+Think about it — Japan's regional towns already exist at this scale.
+They have shops. Schools. Clinics. They are surrounded by farmland and forestland.
+**What changes dramatically is not rural Japan. It is Tokyo.**
+
+:::compare
+| | Present | After transformation |
+| --- | --- | --- |
+| Greater Tokyo | 36 million commuting to offices | No reason to concentrate |
+| Regional towns | Depopulation accelerating | People return (the infrastructure already exists) |
+| Primary employment | Desk work, IT, service industry | Bio-material manufacturing, food production, forestry, soil regeneration |
+| Required resources | Offices, data centers, electricity | Farmland, forestland, water, sunlight, soil |
+:::
+
+Tokyo's extreme concentration is a product of the fossil resource and desk work era.
+When desk work disappears and work becomes land-based, there is no reason for 36 million people to live in Tokyo.
+
+Rural life itself does not change much.
+Towns exist. Services exist. Farmland and forestland surround them — that structure becomes the ready-made destination.
+**What changes is that Tokyo's extreme concentration dissolves.**
+
+But having the destination does not mean people move on their own.
+**Policy support is needed.**
+
+:::highlight
+**Policies required:**
+Farmland and forestland acquisition support → Enable urban migrants to obtain land
+Job training → Programs for desk workers to learn bio-material manufacturing, agriculture, forestry
+Initial housing support → Utilize vacant houses, prepare housing for migrants
+Maintaining town services → Fiscal measures to sustain clinics, schools, and shops
+Establishing practice fields → Places for vegetable cultivation practice in regional areas. Practitioners needed, not researchers. AI handles analysis
+:::
+
+And one more — the most critical policy of all.
+**Rethinking free trade.**
+
+Free trade as we know it rested on a specific premise.
+
+:::chain
+**The premise of free trade:**
+Cheap oil → Cheap transportation → Shipping goods from the other side of the planet is profitable
+→ Produce where labor is cheapest, consume in developed nations
+→ Domestic agriculture and forestry dismissed as "inefficient"
+→ **Complete free trade accepted as correct**
+:::
+
+This premise itself depended on fossil resources.
+
+Even if Japan builds a domestic production system for bio-materials, food, and timber,
+under complete free trade, cheap imports will crush it.
+The livelihoods of people working in land-based industries cannot survive.
+
+:::chain
+**If free trade continues unchanged:**
+Domestic agriculture, forestry, and bio-material production begins
+→ Cheap agricultural products and timber are imported from abroad
+→ Domestic producers cannot compete on price
+→ No reason for people to stay in regional areas
+→ **The industrial transformation itself fails**
+:::
+
+As fossil resources deplete, transportation costs will eventually rise,
+and the model of shipping cheap goods from far away will become unviable.
+But if the domestic production base is destroyed before that happens, it is too late.
+**If the premise of free trade is collapsing, trade policy must change too.**
+
+The industrial transformation is inevitable.
+But rather than scrambling after the transformation hits,
+**preparing regional infrastructure and trade policy now** is the job of policy.
+
+:::highlight
+Rural depopulation is not "a problem to be solved" —
+it becomes **a result solved by industrial transformation.**
+But policies are needed to make that transition smooth.
+:::
+
+## Current Healthcare and Pensions Do Not Fit This Society
+
+Population disperses. Work becomes land-based.
+Against this structural transformation, current healthcare and pension systems are fundamentally mismatched.
+
+:::chain
+**Assumptions of the current system:**
+Population concentrated in cities → Large hospitals and dialysis centers consolidated in urban areas
+Most workers are salaried → Social insurance collected via payroll deduction
+Retire at 65 → Live on pension for the rest of life
+Desk work destroys the body → Medicine fixes it
+
+**The transformed society:**
+Population dispersed to regions → Urban-consolidated medical infrastructure cannot reach them
+Land-based work → Payroll deduction model does not fit
+Physical work continues for life → The premise of "retiring at 65" disappears
+Natural food and exercise → People are far less likely to get sick in the first place
+:::
+
+The current system was designed for the era of fossil resources and urban concentration.
+That era is ending, but the system remains.
 
 ## Dialysis — Life Support on Fossil Fuels
 
@@ -101,9 +297,12 @@ A social security system where 1.5 people support 1 person
 is mathematically bankrupt regardless of policy design.
 :::
 
-## A Society Where Retirees Play Cannot Sustain Itself
+## The Pension System — A Relic of the Desk Work Era
 
 The current social model: work until 65, retire, live on pension.
+
+Two assumptions underpinned this system when it was designed:
+"Retirement is short" and "the population keeps growing."
 
 When pension systems were designed, life expectancy was 65–67.
 Pension payments started at 55. Retirement lasted ~10 years.
@@ -122,21 +321,35 @@ Social insurance → Already over 30% of working income
 Fewer workers, more retirees → **Mathematical collapse**
 :::
 
-Humans want comfort. But the result of seeking comfort through
-institutional dependency is this collapse.
-"Having more" has not meant "living more easily."
-The further from nature, the higher the cost of living.
+But the problem is even more fundamental.
+**Is the very concept of "retiring at 65" not a product of the desk work era?**
 
 :::highlight
-**The inversion needed:**
+**The pension model of a desk work society:**
+Sit in an office all day → Sedentary lifestyle + processed food → Body breaks down
+Body breaks down → Depend on medicine → Medical costs explode
+Cannot work past 65 → Support with pension → Working generation bears the burden
+This was the social model of "advanced nations."
+:::
 
-Current model: Youth works → Pays taxes and insurance → Elderly receives healthcare and pension
-Inverted model: All generations have "the power to live" → Less need for medicine → Less need for pension
+In the transformed society, this premise collapses.
+
+:::chain
+**Structural change from land-based work:**
+Physical work → Exercise built into daily life
+Growing your own food → Less dependence on processed food
+Natural diet and movement → Lower risk of lifestyle diseases
+→ Less dependence on medicine
+→ No need to "retire" at 65
+→ Less dependence on pensions
+:::
 
 Not "curing disease" but **"not getting sick."**
 Not "living on pension" but **"not needing a pension."**
 This is the same structural inversion as Fukuoka's "do-nothing" farming.
-:::
+
+The further from nature, the higher the cost of living.
+The closer to nature, the less we need institutions to survive.
 
 ## American Agriculture — The Model That Is Destroying Itself
 
@@ -251,29 +464,63 @@ survivors will be those who can grow food on their own land.
 What they need is not cutting-edge technology.
 It is water, plants, and the wisdom of living.
 
-## All Paths Converge
+## Fukuoka's Philosophy — How to Survive
+
+All structural analysis converges on a single question.
+
+**How do we survive?**
+
+Fukuoka Masanobu's natural farming is the answer to that question.
 
 :::chain
-**Every article in this series connects to one structure:**
+**The essence of Fukuoka's four principles:**
 
-The Agriculture Mistake → Chemical dependence collapses with one refinery
-The Fusion Mistake → Energy replaces; materials do not
-The AGI Mistake → AI cannot do physical restoration work
-Microsoft's Collapse → Bundled systems break; distributed systems endure
-UBS and Finance → Physical destruction cascades to financial collapse
-Fossil Materials → Post-plastic world needs biology
-Drones and Defense → Small beats large in warfare
-AI and Solo Business → Individual beats corporation
-Society's Design Failure → Healthcare, pensions, agriculture — all broke by leaving nature
+No tillage → Do not destroy soil structure → Microorganisms survive
+No fertilizer → Zero external dependency → Not bound by supply chains
+No pesticides → Do not kill the ecosystem → Harness nature's defenses
+No weeding → Maximize photosynthetic surface area → The principle of Light Farming
 :::
 
-One conclusion:
+And Dr. Christine Jones's Light Farming provided the scientific basis for this philosophy.
+
+:::chain
+**Light Farming — The scientific proof of Fukuoka:**
+
+Sunlight → Photosynthesis → Plants produce sugars
+Sugars → Exuded from roots into soil (Liquid Carbon)
+Liquid Carbon → Energy source for soil microorganisms
+Soil microorganisms → Solubilize and supply minerals to plants
+Plants → More photosynthesis → (Positive feedback loop)
+
+**Weeds photosynthesize too. Leave the weeds, and Liquid Carbon supply increases.**
+Fukuoka's "no weeding" was a strategy to maximize Light Farming.
+:::
+
+## A Very Different World Is Required
+
+Look back at the argument so far.
+
+:::chain
+**Every premise of current society collapses:**
+Fossil resources → Deplete (Chapter 2)
+Food production → Must escape chemical fertilizer dependency (Chapter 3)
+Energy → Fusion does not solve the materials problem (Chapter 5)
+Industries → Military, IT, desk work all shrink (Chapters 6–8)
+Population distribution → No reason for Tokyo's extreme concentration
+Trade → The premise of free trade collapses
+Healthcare and pensions → Systems designed for urban salaried workers no longer fit
+:::
+
+Incremental fixes will not work.
+**A world quite different from today must be designed.**
+
+Work changes. Where people live changes. Trade changes. Healthcare and pensions change.
+But some things do not change.
 
 :::quote
-With nature, we can live.
-The further we move from nature, the higher the cost of living becomes.
-Water exists. Plants exist. Microorganisms exist.
-These are Japan's true resources.
-Fukuoka and Okada knew this. Dr. Christine Jones proved it.
-All that remains is to practice it.
+Water exists. Plants exist. Microorganisms exist. Land exists.
+Japan's true resources were at our feet all along.
 :::
+
+So what do we add, and what do we subtract?
+**The next chapter, "Subtraction Design," draws that concrete picture.**

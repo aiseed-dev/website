@@ -1,15 +1,15 @@
 ---
 slug: drone-defense
-number: "07"
+number: "04"
 title: ドローン＋AIと小国防衛
 subtitle: コスト非対称性が変える安全保障の構造
 description: ドローンとAIが小国の防衛を根本的に変える。Patriotミサイル1発400万ドル vs ドローン数万ドル。コスト非対称性が大国の軍事的優位を無効化する構造を分析。
 date: 2025.04.03
-label: Structural Analysis 07
-prev_slug: fossil-materials
-prev_title: 化石資源と現代文明
-next_slug: ai-solo-business
-next_title: AIと個人事業
+label: Structural Analysis 04
+prev_slug: agriculture
+prev_title: 農業の間違い
+next_slug: fusion
+next_title: 核融合の間違い
 ---
 
 ## 400万ドル vs 数万ドル

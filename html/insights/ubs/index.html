@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="製油所の破壊がなぜ不動産ファンドに到達するのか。エネルギー→インフレ→金利→不動産価格→ファンド流動性の物理的因果連鎖を追跡する。">
-    <title>UBSと金融崩壊 — 製油所から不動産ファンドへの連鎖 | Insights | 自然と対話する暮らし</title>
+    <title>UBSと金融崩壊 — 製油所の破壊がなぜ不動産ファンドに到達するのか。 | Insights | 自然と対話する暮らし</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
@@ -57,58 +57,26 @@
         }
         .highlight-box p { margin-bottom: 0.5rem; }
         .highlight-box p:last-child { margin-bottom: 0; }
-        .step-card {
-            background: var(--cream);
-            border: 1px solid var(--root-tan);
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-left: 5rem;
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
         }
-        .step-card .step-number {
-            position: absolute;
-            left: 1.5rem;
-            top: 2rem;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--leaf-green);
+        .comparison-table th {
+            background: var(--earth-dark);
             color: var(--cream);
-            font-family: var(--font-serif);
-            font-size: 1.1rem;
-            border-radius: 50%;
+            padding: 0.8rem 1rem;
+            text-align: left;
+            font-weight: 500;
         }
-        .step-card h4 {
-            font-size: 1.05rem;
-            color: var(--earth-dark);
-            margin-bottom: 0.8rem;
+        .comparison-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid var(--root-tan);
+            vertical-align: top;
         }
-        .step-card p {
-            font-size: 0.95rem;
-            color: var(--soil-rich);
-            margin-bottom: 0;
-            line-height: 1.8;
-        }
-        .connector {
-            width: 2px;
-            height: 1.5rem;
-            background: var(--moss-green);
-            margin: 0 auto;
-            position: relative;
-        }
-        .connector::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-top: 6px solid var(--moss-green);
+        .comparison-table tr:nth-child(even) {
+            background: var(--sand-light);
         }
         .article-nav {
             display: flex;
@@ -121,6 +89,18 @@
         }
         .article-nav a {
             color: var(--leaf-green);
+        }
+        .quote-block {
+            border-left: 4px solid var(--moss-green);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            background: var(--sand-light);
+        }
+        .quote-block .quote-text {
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--earth-dark);
         }
     </style>
 </head>
@@ -149,235 +129,152 @@
         </div>
     </header>
 
-    <!-- Page Hero -->
+    <!-- Article -->
     <section class="page-hero">
         <div class="page-hero-image" style="background-image: url('../../images/IMG_3285.jpg');"></div>
         <div class="page-hero-content">
-            <p class="hero-label">Structural Analysis 05</p>
+            <p class="hero-label">Structural Analysis 08</p>
             <h1 class="hero-title">UBSと金融崩壊</h1>
-            <p class="hero-subtitle">
-                製油所の破壊がなぜ不動産ファンドに到達するのか。
-            </p>
+            <p class="hero-subtitle">製油所の破壊がなぜ不動産ファンドに到達するのか。</p>
         </div>
     </section>
 
-    <!-- Article -->
     <section class="section">
         <div class="container-narrow">
             <div class="article-meta">
                 <p class="date">2025.04.03</p>
-                <p class="series">Insights — 構造分析シリーズ 05/05</p>
+                <p class="series">構造分析シリーズ 08</p>
             </div>
 
             <div class="prose fade-in">
-
                 <h2>金融アナリストが見ない因果連鎖</h2>
-
-                <p>
-                    金融の世界では、リスクを「金融変数」で分析する。
-                    金利、為替、信用スプレッド、VIX——
-                    すべて金融市場内部の数字だ。
-                </p>
-
-                <p>
-                    しかし、金融危機のトリガーは金融市場の外にある。
-                    物理的な事象——製油所の破壊、港湾の封鎖、パイプラインの損傷——が、
-                    金融システムに伝播する経路が存在する。
-                </p>
-
-                <p>
-                    この経路を追跡する。
-                </p>
-
+                <p>金融の世界では、リスクを「金融変数」で分析する。
+                金利、為替、信用スプレッド、VIX——
+                すべて金融市場内部の数字だ。</p>
+                <p>しかし、金融危機のトリガーは金融市場の外にある。
+                物理的な事象——製油所の破壊、港湾の封鎖、パイプラインの損傷——が、
+                金融システムに伝播する経路が存在する。</p>
+                <p>この経路を追跡する。</p>
                 <h2>6つのステップ：製油所から不動産ファンドへ</h2>
-
-                <div class="step-card">
-                    <span class="step-number">1</span>
-                    <h4>製油所の破壊 → エネルギー供給の途絶</h4>
-                    <p>
-                        ホルムズ海峡周辺の製油所が物理的に破壊される。
-                        封鎖ではなく破壊。修復に3〜5年。
-                        世界の石油精製能力が急落する。
-                        原油は存在しても、精製品（ガソリン、軽油、ナフサ、硫黄）が供給できない。
-                    </p>
-                </div>
-                <div class="connector"></div>
-
-                <div class="step-card">
-                    <span class="step-number">2</span>
-                    <h4>エネルギー価格の急騰 → コストプッシュ・インフレ</h4>
-                    <p>
-                        精製品の供給不足は、エネルギー価格を直撃する。
-                        ガソリン、軽油、ジェット燃料が高騰。
-                        輸送コストが上昇し、すべての商品価格に転嫁される。
-                        食料は肥料不足（硫黄トラップ）と輸送コスト上昇の二重打撃を受ける。
-                        コストプッシュ・インフレが世界同時に発生。
-                    </p>
-                </div>
-                <div class="connector"></div>
-
-                <div class="step-card">
-                    <span class="step-number">3</span>
-                    <h4>中央銀行の利上げ → 金利の急上昇</h4>
-                    <p>
-                        インフレに対して中央銀行は利上げで対応する。
-                        FRB、ECB、日銀——すべてが同時に金融引き締めに向かう。
-                        しかし、コストプッシュ・インフレに対して利上げは本質的に無力だ。
-                        供給不足が原因であり、需要を冷やしても供給は回復しない。
-                        それでも中央銀行は利上げする。他に手段がないからだ。
-                    </p>
-                </div>
-                <div class="connector"></div>
-
-                <div class="step-card">
-                    <span class="step-number">4</span>
-                    <h4>金利上昇 → 不動産価格の下落</h4>
-                    <p>
-                        不動産は金利に最も敏感な資産クラスだ。
-                        住宅ローン金利が上昇すれば、購入可能額が減り、需要が萎縮する。
-                        商業不動産は、テナント企業の業績悪化と金利上昇の二重圧力を受ける。
-                        不動産価格が20〜40%下落するシナリオが現実的になる。
-                    </p>
-                </div>
-                <div class="connector"></div>
-
-                <div class="step-card">
-                    <span class="step-number">5</span>
-                    <h4>不動産下落 → ファンドの流動性危機</h4>
-                    <p>
-                        ここでUBSが登場する。
-                        UBSは世界最大級の不動産ファンドを運用している。
-                        Credit Suisseの買収により、不動産エクスポージャーはさらに拡大した。
-                        不動産価格が下落すれば、ファンドの評価額が下がる。
-                        投資家が解約を申し出る。しかし不動産は即座に売却できない。
-                        流動性のミスマッチ——流動的な負債（投資家の解約請求）と非流動的な資産（不動産）。
-                    </p>
-                </div>
-                <div class="connector"></div>
-
-                <div class="step-card">
-                    <span class="step-number">6</span>
-                    <h4>流動性危機 → システミック・リスク</h4>
-                    <p>
-                        一つのファンドの解約停止は、他のファンドへの連鎖を引き起こす。
-                        「あのファンドが解約停止なら、うちも早く解約しよう」——パニックの伝播。
-                        銀行間の信用が収縮する。短期金融市場が機能不全に陥る。
-                        2008年のリーマン・ショックと同じ構造が、物理的トリガーから始まる。
-                    </p>
-                </div>
-
+                <p>1
+                製油所の破壊 → エネルギー供給の途絶
+                ホルムズ海峡周辺の製油所が物理的に破壊される。
+                封鎖ではなく破壊。修復に3〜5年。
+                世界の石油精製能力が急落する。
+                原油は存在しても、精製品（ガソリン、軽油、ナフサ、硫黄）が供給できない。
+                2
+                エネルギー価格の急騰 → コストプッシュ・インフレ
+                精製品の供給不足は、エネルギー価格を直撃する。
+                ガソリン、軽油、ジェット燃料が高騰。
+                輸送コストが上昇し、すべての商品価格に転嫁される。
+                食料は肥料不足（硫黄トラップ）と輸送コスト上昇の二重打撃を受ける。
+                コストプッシュ・インフレが世界同時に発生。
+                3
+                中央銀行の利上げ → 金利の急上昇
+                インフレに対して中央銀行は利上げで対応する。
+                FRB、ECB、日銀——すべてが同時に金融引き締めに向かう。
+                しかし、コストプッシュ・インフレに対して利上げは本質的に無力だ。
+                供給不足が原因であり、需要を冷やしても供給は回復しない。
+                それでも中央銀行は利上げする。他に手段がないからだ。
+                4
+                金利上昇 → 不動産価格の下落
+                不動産は金利に最も敏感な資産クラスだ。
+                住宅ローン金利が上昇すれば、購入可能額が減り、需要が萎縮する。
+                商業不動産は、テナント企業の業績悪化と金利上昇の二重圧力を受ける。
+                不動産価格が20〜40%下落するシナリオが現実的になる。
+                5
+                不動産下落 → ファンドの流動性危機
+                ここでUBSが登場する。
+                UBSは世界最大級の不動産ファンドを運用している。
+                Credit Suisseの買収により、不動産エクスポージャーはさらに拡大した。
+                不動産価格が下落すれば、ファンドの評価額が下がる。
+                投資家が解約を申し出る。しかし不動産は即座に売却できない。
+                流動性のミスマッチ——流動的な負債（投資家の解約請求）と非流動的な資産（不動産）。
+                6
+                流動性危機 → システミック・リスク
+                一つのファンドの解約停止は、他のファンドへの連鎖を引き起こす。
+                「あのファンドが解約停止なら、うちも早く解約しよう」——パニックの伝播。
+                銀行間の信用が収縮する。短期金融市場が機能不全に陥る。
+                2008年のリーマン・ショックと同じ構造が、物理的トリガーから始まる。</p>
                 <h2>なぜ金融アナリストはこの連鎖を見ないのか</h2>
-
-                <p>
-                    金融アナリストは、ステップ3以降——金利、不動産価格、ファンド流動性——は分析できる。
-                    しかし、ステップ1と2——製油所の物理的破壊とその波及——は分析の射程に入っていない。
-                </p>
-
+                <p>金融アナリストは、ステップ3以降——金利、不動産価格、ファンド流動性——は分析できる。
+                しかし、ステップ1と2——製油所の物理的破壊とその波及——は分析の射程に入っていない。</p>
                 <div class="highlight-box">
-                    <p><strong>分野の壁：</strong></p>
-                    <p>エネルギーアナリストは製油所と原油価格を見る。金融アナリストは金利と信用を見る。農業アナリストは作物と肥料を見る。</p>
-                    <p>しかし、製油所 → 肥料 → 食料 → インフレ → 金利 → 不動産 → ファンド という連鎖は、<strong>誰の専門分野にも属さない。</strong></p>
-                    <p>構造的思考だけが、この分野横断的な因果連鎖を追跡できる。</p>
+                <p><strong>分野の壁：</strong>
+                エネルギーアナリストは製油所と原油価格を見る。金融アナリストは金利と信用を見る。農業アナリストは作物と肥料を見る。
+                しかし、製油所 → 肥料 → 食料 → インフレ → 金利 → 不動産 → ファンド という連鎖は、<strong>誰の専門分野にも属さない。</strong>
+                構造的思考だけが、この分野横断的な因果連鎖を追跡できる。</p>
                 </div>
 
                 <h2>UBSの具体的な脆弱性</h2>
-
-                <p>
-                    なぜUBSを名指しするのか。構造的な理由がある。
-                </p>
-
-                <p>
-                    2023年、UBSはCredit Suisseを救済買収した。
-                    この買収により、UBSはCredit Suisseの問題資産を引き継いだ。
-                    その中には、商業不動産への大規模なエクスポージャーが含まれている。
-                </p>
-
+                <p>なぜUBSを名指しするのか。構造的な理由がある。</p>
+                <p>2023年、UBSはCredit Suisseを救済買収した。
+                この買収により、UBSはCredit Suisseの問題資産を引き継いだ。
+                その中には、商業不動産への大規模なエクスポージャーが含まれている。</p>
                 <div class="chain-diagram">
-                    <strong>UBSの脆弱性の構造：</strong><br><br>
-                    Credit Suisse買収 <span class="arrow">&rarr;</span> 問題資産の引き継ぎ<br>
-                    不動産エクスポージャーの拡大 <span class="arrow">&rarr;</span> リスク集中<br>
-                    スイスの「大きすぎて潰せない」問題 <span class="arrow">&rarr;</span> スイスGDPの2倍の資産規模<br>
-                    スイス政府の救済能力の限界 <span class="arrow">&rarr;</span> システミック・リスク
+                <strong>UBSの脆弱性の構造：</strong><br>
+                Credit Suisse買収 <span class="arrow">&rarr;</span> 問題資産の引き継ぎ<br>
+                不動産エクスポージャーの拡大 <span class="arrow">&rarr;</span> リスク集中<br>
+                スイスの「大きすぎて潰せない」問題 <span class="arrow">&rarr;</span> スイスGDPの2倍の資産規模<br>
+                スイス政府の救済能力の限界 <span class="arrow">&rarr;</span> システミック・リスク
                 </div>
 
-                <p>
-                    スイスのGDPは約8,000億ドル。UBSの総資産はその約2倍。
-                    UBSが流動性危機に陥った場合、スイス政府が単独で救済することは事実上不可能だ。
-                    これは2008年のAIGやリーマン・ブラザーズと同じ構造——
-                    一つの金融機関が、母国の救済能力を超える規模に膨張している。
-                </p>
-
+                <p>スイスのGDPは約8,000億ドル。UBSの総資産はその約2倍。
+                UBSが流動性危機に陥った場合、スイス政府が単独で救済することは事実上不可能だ。
+                これは2008年のAIGやリーマン・ブラザーズと同じ構造——
+                一つの金融機関が、母国の救済能力を超える規模に膨張している。</p>
                 <h2>物理的因果関係を追跡する意味</h2>
-
-                <p>
-                    このシリーズ全体を通じて、同じ方法論を使ってきた。
-                    生産ルートを追跡する。物理的プロセスを見る。分野の境界を越える。
-                </p>
-
+                <p>このシリーズ全体を通じて、同じ方法論を使ってきた。
+                生産ルートを追跡する。物理的プロセスを見る。分野の境界を越える。</p>
                 <div class="chain-diagram">
-                    <strong>5つの記事の接続：</strong><br><br>
-                    <a href="/insights/agriculture/">01. 農業の間違い</a>：化学肥料 → 石油精製 → 単一障害点<br>
-                    <a href="/insights/fusion/">02. 核融合の間違い</a>：エネルギー代替 ≠ 素材代替 → 硫黄トラップ<br>
-                    <a href="/insights/agi/">03. AGIの間違い</a>：情報処理 ≠ 物理的作業 → 人間の仕事は増える<br>
-                    <a href="/insights/microsoft/">04. Microsoftの破産</a>：バンドル構造 → 税の崩壊連鎖<br>
-                    05. UBSと金融崩壊：物理的破壊 → 金融システムへの伝播<br><br>
-                    <strong>全て同じ構造：</strong>物理的プロセスを追跡し、分野の境界を越えて因果連鎖を可視化する
+                <strong>5つの記事の接続：</strong><br>
+                [01. 農業の間違い](/insights/agriculture/)：化学肥料 <span class="arrow">&rarr;</span> 石油精製 <span class="arrow">&rarr;</span> 単一障害点<br>
+                [02. 核融合の間違い](/insights/fusion/)：エネルギー代替 ≠ 素材代替 <span class="arrow">&rarr;</span> 硫黄トラップ<br>
+                [03. AGIの間違い](/insights/agi/)：情報処理 ≠ 物理的作業 <span class="arrow">&rarr;</span> 人間の仕事は増える<br>
+                [04. Microsoftの破産](/insights/microsoft/)：バンドル構造 <span class="arrow">&rarr;</span> 税の崩壊連鎖<br>
+                05. UBSと金融崩壊：物理的破壊 <span class="arrow">&rarr;</span> 金融システムへの伝播<br>
+                <strong>全て同じ構造：</strong>物理的プロセスを追跡し、分野の境界を越えて因果連鎖を可視化する
                 </div>
 
-                <p>
-                    金融の世界は、自分たちの世界の中だけでリスクを分析している。
-                    しかし、本当のリスクは物理世界から来る。
-                    製油所の破壊は「地政学リスク」としてVIXに少し反映されるだけだ。
-                    その先の連鎖——肥料、食料、インフレ、金利、不動産、ファンド——は、
-                    誰もモデルに組み込んでいない。
-                </p>
-
+                <p>金融の世界は、自分たちの世界の中だけでリスクを分析している。
+                しかし、本当のリスクは物理世界から来る。
+                製油所の破壊は「地政学リスク」としてVIXに少し反映されるだけだ。
+                その先の連鎖——肥料、食料、インフレ、金利、不動産、ファンド——は、
+                誰もモデルに組み込んでいない。</p>
                 <div class="quote-block">
-                    <p class="quote-text">
-                        金融危機のトリガーは金融市場の外にある。<br>
-                        製油所の煙突が崩れた時、不動産ファンドの価値が崩れる。<br>
-                        この因果連鎖は、構造を見る者にしか見えない。
-                    </p>
+                <p class="quote-text">
+                金融危機のトリガーは金融市場の外にある。<br>
+                製油所の煙突が崩れた時、不動産ファンドの価値が崩れる。<br>
+                この因果連鎖は、構造を見る者にしか見えない。
+                </p>
                 </div>
 
                 <h2>構造分析シリーズの結論</h2>
-
-                <p>
-                    5つの記事を通じて、一つの方法論を示した。
-                </p>
-
+                <p>5つの記事を通じて、一つの方法論を示した。</p>
                 <div class="highlight-box">
-                    <p><strong>方法論：</strong></p>
-                    <p>1. 生産ルートを追跡する（原料→加工→製品→消費）</p>
-                    <p>2. 物理的プロセスを見る（エネルギーと素材を区別する）</p>
-                    <p>3. 分野の境界を越える（農業、エネルギー、AI、金融を接続する）</p>
-                    <p>4. 単一障害点を特定する（一点の破壊で全体が崩壊する箇所）</p>
-                    <p>5. 時間軸を追跡する（破壊は瞬時、回復は年単位）</p>
+                <p><strong>方法論：</strong>
+                1. 生産ルートを追跡する（原料→加工→製品→消費）
+                2. 物理的プロセスを見る（エネルギーと素材を区別する）
+                3. 分野の境界を越える（農業、エネルギー、AI、金融を接続する）
+                4. 単一障害点を特定する（一点の破壊で全体が崩壊する箇所）
+                5. 時間軸を追跡する（破壊は瞬時、回復は年単位）</p>
                 </div>
 
-                <p>
-                    この方法論は、AIの力を借りて誰でも実行できる——
-                    ただし、「何を追跡するか」を知っている人間だけが。
-                </p>
-
-                <p>
-                    「肥料の生産ルートを調べて」と指示できる人間が使えば、
-                    AIは硫黄トラップを発見する。
-                    「肥料危機はどうなりますか」と聞く人間が使っても、
-                    AIは一般的な解説を返すだけだ。
-                </p>
-
-                <p>
-                    構造的思考は、AIの前提条件だ。
-                    そして、構造的思考の最も実践的な応用は、
-                    自分の食料を自分で育てられるようにしておくことだ。
-                </p>
+                <p>この方法論は、AIの力を借りて誰でも実行できる——
+                ただし、「何を追跡するか」を知っている人間だけが。</p>
+                <p>「肥料の生産ルートを調べて」と指示できる人間が使えば、
+                AIは硫黄トラップを発見する。
+                「肥料危機はどうなりますか」と聞く人間が使っても、
+                AIは一般的な解説を返すだけだ。</p>
+                <p>構造的思考は、AIの前提条件だ。
+                そして、構造的思考の最も実践的な応用は、
+                自分の食料を自分で育てられるようにしておくことだ。</p>
 
                 <!-- Article Navigation -->
                 <div class="article-nav">
-                    <a href="/insights/microsoft/">&larr; 前: Microsoftの破産</a>
-                    <a href="/insights/fossil-materials/">次: 化石資源と現代文明 &rarr;</a>
-                </div>
+  <a href="/insights/microsoft/">&larr; 前: Microsoftの破産</a>
+  <a href="/insights/healthcare-fiscal/">次: 社会の設計ミス &rarr;</a>
+</div>
             </div>
         </div>
     </section>
@@ -386,13 +283,10 @@
     <section class="section section-green">
         <div class="container">
             <div class="section-header">
-                <p class="section-label">Full Circle</p>
-                <h2 class="section-title">構造の終着点は土壌</h2>
+                <p class="section-label">Back to Soil</p>
+                <h2 class="section-title">自然とともにあれば、生きられる</h2>
             </div>
-            <p class="cta-text">
-                製油所から不動産ファンドへの連鎖が示すのは、<br>
-                最終的に問われるのは「自分で食料を作れるか」だということ。
-            </p>
+            <p class="cta-text">全ての構造分析は、一つの結論に向かう。</p>
             <div class="text-center">
                 <a href="/about/" class="btn btn-light" style="margin-right: 1rem;">自然農法とは</a>
                 <a href="/light-farming/" class="btn btn-outline">Light Farming</a>
@@ -405,7 +299,7 @@
         <div class="footer-content">
             <div class="footer-about">
                 <h3>自然と対話する暮らし</h3>
-                <p>福岡正信氏の自然農法とリジェネラティブ農業の実践を通じて、土壌の再生と自然との共生を目指しています。</p>
+                <p>自然とともにあれば、生きられる。福岡正信の自然農法とLight Farmingの科学が示す、生きるための道。</p>
             </div>
             <div class="footer-nav">
                 <h4>ページ</h4>

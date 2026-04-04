@@ -13,7 +13,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="AGIが人間の仕事を奪うという議論は仕事を言語的に定義している。土壌微生物の回復、生態系の再建——AIにはできない物理的な仕事が無限にある。">
-    <title>AGIの間違い — 仕事はいくらでもある | Insights | 自然と対話する暮らし</title>
+    <title>AGIの間違い — 仕事はいくらでもある。人間の仕事は増える。 | Insights | 自然と対話する暮らし</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
@@ -57,35 +57,26 @@
         }
         .highlight-box p { margin-bottom: 0.5rem; }
         .highlight-box p:last-child { margin-bottom: 0; }
-        .work-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        .work-card {
-            padding: 1.5rem;
-            border: 1px solid var(--root-tan);
-        }
-        .work-card h4 {
-            font-size: 1rem;
-            color: var(--earth-dark);
-            margin-bottom: 0.8rem;
-        }
-        .work-card p {
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
             font-size: 0.9rem;
-            color: var(--soil-rich);
-            margin-bottom: 0;
         }
-        .work-card.ai {
+        .comparison-table th {
+            background: var(--earth-dark);
+            color: var(--cream);
+            padding: 0.8rem 1rem;
+            text-align: left;
+            font-weight: 500;
+        }
+        .comparison-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid var(--root-tan);
+            vertical-align: top;
+        }
+        .comparison-table tr:nth-child(even) {
             background: var(--sand-light);
-        }
-        .work-card.human {
-            background: rgba(122, 154, 109, 0.08);
-            border-color: var(--moss-green);
-        }
-        @media (max-width: 600px) {
-            .work-grid { grid-template-columns: 1fr; }
         }
         .article-nav {
             display: flex;
@@ -98,6 +89,18 @@
         }
         .article-nav a {
             color: var(--leaf-green);
+        }
+        .quote-block {
+            border-left: 4px solid var(--moss-green);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            background: var(--sand-light);
+        }
+        .quote-block .quote-text {
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--earth-dark);
         }
     </style>
 </head>
@@ -126,232 +129,147 @@
         </div>
     </header>
 
-    <!-- Page Hero -->
+    <!-- Article -->
     <section class="page-hero">
         <div class="page-hero-image" style="background-image: url('../../images/IMG_3285.jpg');"></div>
         <div class="page-hero-content">
-            <p class="hero-label">Structural Analysis 03</p>
+            <p class="hero-label">Structural Analysis 06</p>
             <h1 class="hero-title">AGIの間違い</h1>
-            <p class="hero-subtitle">
-                仕事はいくらでもある。人間の仕事は増える。
-            </p>
+            <p class="hero-subtitle">仕事はいくらでもある。人間の仕事は増える。</p>
         </div>
     </section>
 
-    <!-- Article -->
     <section class="section">
         <div class="container-narrow">
             <div class="article-meta">
                 <p class="date">2025.04.03</p>
-                <p class="series">Insights — 構造分析シリーズ 03/05</p>
+                <p class="series">構造分析シリーズ 06</p>
             </div>
 
             <div class="prose fade-in">
-
                 <h2>「AIに仕事を奪われる」の嘘</h2>
-
-                <p>
-                    AGI（汎用人工知能）が実現すれば、人間の仕事の大半が奪われる——
-                    この議論はテック業界の定番だ。
-                    McKinsey、Goldman Sachs、世界経済フォーラムが
-                    「何億人の雇用が影響を受ける」とレポートを出す。
-                </p>
-
-                <p>
-                    この議論には根本的な問題設定の誤りがある。
-                    「仕事」を言語的に定義しているのだ。
-                </p>
-
+                <p>AGI（汎用人工知能）が実現すれば、人間の仕事の大半が奪われる——
+                この議論はテック業界の定番だ。
+                McKinsey、Goldman Sachs、世界経済フォーラムが
+                「何億人の雇用が影響を受ける」とレポートを出す。</p>
+                <p>この議論には根本的な問題設定の誤りがある。
+                「仕事」を言語的に定義しているのだ。</p>
                 <div class="chain-diagram">
-                    <strong>言語的な「仕事」の定義：</strong><br>
-                    書類を作る、メールを書く、コードを書く、翻訳する、分析する、レポートを作る<br>
-                    <span class="arrow">&rarr;</span> これらはAIが代替できる <span class="arrow">&rarr;</span> 「仕事がなくなる」<br><br>
-                    <strong>構造的な「仕事」の定義：</strong><br>
-                    土壌を再生する、生態系を回復する、食料を育てる、インフラを修復する<br>
-                    <span class="arrow">&rarr;</span> これらはAIが代替できない <span class="arrow">&rarr;</span> 「仕事は無限にある」
+                <strong>言語的な「仕事」の定義：</strong><br>
+                書類を作る、メールを書く、コードを書く、翻訳する、分析する、レポートを作る<br>
+                <span class="arrow">&rarr;</span> これらはAIが代替できる <span class="arrow">&rarr;</span> 「仕事がなくなる」<br>
+                <strong>構造的な「仕事」の定義：</strong><br>
+                土壌を再生する、生態系を回復する、食料を育てる、インフラを修復する<br>
+                <span class="arrow">&rarr;</span> これらはAIが代替できない <span class="arrow">&rarr;</span> 「仕事は無限にある」
                 </div>
 
-                <p>
-                    「仕事がなくなる」と言っている人は、
-                    デスクで行う情報処理を「仕事」と定義している。
-                    それはオフィスワーカーの仕事であって、仕事そのものではない。
-                </p>
-
+                <p>「仕事がなくなる」と言っている人は、
+                デスクで行う情報処理を「仕事」と定義している。
+                それはオフィスワーカーの仕事であって、仕事そのものではない。</p>
                 <h2>AIにはできない仕事が無限にある</h2>
-
-                <p>
-                    構造的に世界を見れば、やるべき仕事は山のようにある。
-                    しかも、そのほとんどはAIにはできない。
-                </p>
-
-                <div class="work-grid">
-                    <div class="work-card human">
-                        <h4>土壌微生物の回復</h4>
-                        <p>化学肥料で劣化した農地の土壌を再生する。被覆作物を植え、菌根菌のネットワークを育てる。世界の農地の33%が劣化しており、全て回復が必要。</p>
-                    </div>
-                    <div class="work-card human">
-                        <h4>地域の食料自給</h4>
-                        <p>グローバルサプライチェーンに依存しない、地域ごとの食料生産システムを構築する。気候と土壌に合った作物を選定し、種を保存し、知識を伝承する。</p>
-                    </div>
-                    <div class="work-card human">
-                        <h4>生態系の再建</h4>
-                        <p>森林の再生、河川の回復、湿地の保全。生物多様性を取り戻す仕事は、物理的に人間の手と足が必要。ドローンで種を撒くだけでは生態系は回復しない。</p>
-                    </div>
-                    <div class="work-card human">
-                        <h4>インフラの分散化</h4>
-                        <p>中央集権型のエネルギー・水・食料インフラを、分散型に再設計・再構築する。各地域の特性に合わせた物理的な建設作業が必要。</p>
-                    </div>
-                    <div class="work-card human">
-                        <h4>建築物の断熱改修</h4>
-                        <p>既存の建物すべてのエネルギー効率を改善する。一軒一軒、構造が異なる建物に合わせた物理的な施工が必要。</p>
-                    </div>
-                    <div class="work-card human">
-                        <h4>水インフラの再構築</h4>
-                        <p>老朽化した上下水道の更新、雨水収集システムの設置、地下水の管理。全て物理的な設計と施工。</p>
-                    </div>
-                </div>
-
-                <p>
-                    これらの仕事に共通する特徴がある。
-                    物理的であること。場所固有であること。生態系と相互作用すること。
-                    AIはこれらの仕事を計画する手助けはできるが、実行することはできない。
-                </p>
-
+                <p>構造的に世界を見れば、やるべき仕事は山のようにある。
+                しかも、そのほとんどはAIにはできない。
+                土壌微生物の回復
+                化学肥料で劣化した農地の土壌を再生する。被覆作物を植え、菌根菌のネットワークを育てる。世界の農地の33%が劣化しており、全て回復が必要。
+                地域の食料自給
+                グローバルサプライチェーンに依存しない、地域ごとの食料生産システムを構築する。気候と土壌に合った作物を選定し、種を保存し、知識を伝承する。
+                生態系の再建
+                森林の再生、河川の回復、湿地の保全。生物多様性を取り戻す仕事は、物理的に人間の手と足が必要。ドローンで種を撒くだけでは生態系は回復しない。
+                インフラの分散化
+                中央集権型のエネルギー・水・食料インフラを、分散型に再設計・再構築する。各地域の特性に合わせた物理的な建設作業が必要。
+                建築物の断熱改修
+                既存の建物すべてのエネルギー効率を改善する。一軒一軒、構造が異なる建物に合わせた物理的な施工が必要。
+                水インフラの再構築
+                老朽化した上下水道の更新、雨水収集システムの設置、地下水の管理。全て物理的な設計と施工。</p>
+                <p>これらの仕事に共通する特徴がある。
+                物理的であること。場所固有であること。生態系と相互作用すること。
+                AIはこれらの仕事を計画する手助けはできるが、実行することはできない。</p>
                 <h2>AIは微生物と共存できない</h2>
-
-                <p>
-                    この一文が、AGI議論の本質的な盲点を突いている。
-                </p>
-
-                <p>
-                    土壌の再生は、微生物との共同作業だ。
-                    菌根菌は植物の根と共生し、地下にネットワークを形成する。
-                    このネットワークは、土壌の構造、養分循環、水の保持、炭素固定を担っている。
-                </p>
-
-                <p>
-                    このプロセスは、生物の時間で進む。
-                    菌根菌のネットワーク形成に数ヶ月。
-                    土壌構造の回復に1〜3年。
-                    生態系の安定化に5〜10年。
-                </p>
-
+                <p>この一文が、AGI議論の本質的な盲点を突いている。</p>
+                <p>土壌の再生は、微生物との共同作業だ。
+                菌根菌は植物の根と共生し、地下にネットワークを形成する。
+                このネットワークは、土壌の構造、養分循環、水の保持、炭素固定を担っている。</p>
+                <p>このプロセスは、生物の時間で進む。
+                菌根菌のネットワーク形成に数ヶ月。
+                土壌構造の回復に1〜3年。
+                生態系の安定化に5〜10年。</p>
                 <div class="highlight-box">
-                    <p><strong>AIの時間 vs. 生物の時間：</strong></p>
-                    <p>AIはナノ秒で処理する。微生物は月単位で増殖する。</p>
-                    <p>AIはスケールする。生態系はスケールしない（場所ごとに異なる）。</p>
-                    <p>AIはデジタルに複製できる。土壌は物理的に「育てる」しかない。</p>
-                    <p>この非対称性は、いかなる技術進歩でも解消できない。</p>
+                <p><strong>AIの時間 vs. 生物の時間：</strong>
+                AIはナノ秒で処理する。微生物は月単位で増殖する。
+                AIはスケールする。生態系はスケールしない（場所ごとに異なる）。
+                AIはデジタルに複製できる。土壌は物理的に「育てる」しかない。
+                この非対称性は、いかなる技術進歩でも解消できない。</p>
                 </div>
 
-                <p>
-                    AIがどれだけ賢くなっても、1ヘクタールの劣化した農地を再生するには、
-                    人間が土に触り、植物を植え、微生物が増殖するのを待つしかない。
-                    これは技術的制約ではなく、物理法則の制約だ。
-                </p>
-
+                <p>AIがどれだけ賢くなっても、1ヘクタールの劣化した農地を再生するには、
+                人間が土に触り、植物を植え、微生物が増殖するのを待つしかない。
+                これは技術的制約ではなく、物理法則の制約だ。</p>
                 <h2>UBI（ベーシックインカム）が間違いである理由</h2>
-
-                <p>
-                    「AIが仕事を奪うなら、ベーシックインカムで解決する」——
-                    これはAGI議論の延長線上にある提案だ。
-                </p>
-
-                <p>
-                    しかし、この提案も同じ問題設定の誤りを含んでいる。
-                    「人間にやるべき仕事がない」という前提が間違っているのだから、
-                    「仕事がない人に金を配る」という解決策も間違っている。
-                </p>
-
+                <p>「AIが仕事を奪うなら、ベーシックインカムで解決する」——
+                これはAGI議論の延長線上にある提案だ。</p>
+                <p>しかし、この提案も同じ問題設定の誤りを含んでいる。
+                「人間にやるべき仕事がない」という前提が間違っているのだから、
+                「仕事がない人に金を配る」という解決策も間違っている。</p>
                 <div class="chain-diagram">
-                    <strong>AGI + UBIの論理：</strong><br>
-                    AIが仕事を奪う <span class="arrow">&rarr;</span> 失業者が増える
-                    <span class="arrow">&rarr;</span> 金を配る <span class="arrow">&rarr;</span> 消費で経済を維持<br><br>
-                    <strong>構造的に正しい論理：</strong><br>
-                    AIが情報処理を代替する <span class="arrow">&rarr;</span> 人間は物理的な仕事に移行する
-                    <span class="arrow">&rarr;</span> 土壌再生・生態系回復・インフラ分散化<br>
-                    <span class="arrow">&rarr;</span> やるべき仕事は今より多い
+                <strong>AGI + UBIの論理：</strong><br>
+                AIが仕事を奪う <span class="arrow">&rarr;</span> 失業者が増える<br>
+                <span class="arrow">&rarr;</span> 金を配る <span class="arrow">&rarr;</span> 消費で経済を維持<br>
+                <strong>構造的に正しい論理：</strong><br>
+                AIが情報処理を代替する <span class="arrow">&rarr;</span> 人間は物理的な仕事に移行する<br>
+                <span class="arrow">&rarr;</span> 土壌再生・生態系回復・インフラ分散化<br>
+                <span class="arrow">&rarr;</span> やるべき仕事は今より多い
                 </div>
 
-                <p>
-                    問題は「仕事がないこと」ではない。
-                    問題は「やるべき物理的な仕事に価値が認められていないこと」だ。
-                    AIが情報処理を引き受けるなら、人間は物理世界の修復に集中できる。
-                    これは失業ではなく、仕事の再定義だ。
-                </p>
-
+                <p>問題は「仕事がないこと」ではない。
+                問題は「やるべき物理的な仕事に価値が認められていないこと」だ。
+                AIが情報処理を引き受けるなら、人間は物理世界の修復に集中できる。
+                これは失業ではなく、仕事の再定義だ。</p>
                 <h2>構造的に見えるAIの本当の役割</h2>
-
-                <p>
-                    AIは仕事を奪う道具ではない。
-                    構造を見る道具だ。
-                </p>
-
-                <div class="work-grid">
-                    <div class="work-card ai">
-                        <h4>AIがやるべきこと</h4>
-                        <p>データから構造を抽出する。生産ルートを追跡する。因果関係を可視化する。人間が見落としている接続を見つける。</p>
-                    </div>
-                    <div class="work-card human">
-                        <h4>人間がやるべきこと</h4>
-                        <p>土に触れる。植物を植える。微生物を育てる。壊れたインフラを直す。地域の食料を確保する。生態系を再建する。</p>
-                    </div>
-                </div>
-
-                <p>
-                    このサイトの実践がまさにそれだ。
-                    AIは観察データの分析を手伝う。気象パターンを読み解く。
-                    しかし、オリーブを植えるのは人間の手だ。
-                    アーティチョークの種を蒔くのは人間だ。
-                    土壌微生物が回復するのを見守るのは人間だ。
-                </p>
-
+                <p>AIは仕事を奪う道具ではない。
+                構造を見る道具だ。
+                AIがやるべきこと
+                データから構造を抽出する。生産ルートを追跡する。因果関係を可視化する。人間が見落としている接続を見つける。
+                人間がやるべきこと
+                土に触れる。植物を植える。微生物を育てる。壊れたインフラを直す。地域の食料を確保する。生態系を再建する。</p>
+                <p>このサイトの実践がまさにそれだ。
+                AIは観察データの分析を手伝う。気象パターンを読み解く。
+                しかし、オリーブを植えるのは人間の手だ。
+                アーティチョークの種を蒔くのは人間だ。
+                土壌微生物が回復するのを見守るのは人間だ。</p>
                 <div class="quote-block">
-                    <p class="quote-text">
-                        AGIは情報の世界を完成させるかもしれない。<br>
-                        しかし、物理の世界は壊れたままだ。<br>
-                        壊れた世界を直すのは、人間の手でしかできない。
-                    </p>
+                <p class="quote-text">
+                AGIは情報の世界を完成させるかもしれない。<br>
+                しかし、物理の世界は壊れたままだ。<br>
+                壊れた世界を直すのは、人間の手でしかできない。
+                </p>
                 </div>
 
                 <h2>人間の仕事は増える</h2>
-
-                <p>
-                    まとめよう。
-                </p>
-
+                <p>まとめよう。</p>
                 <div class="highlight-box">
-                    <p><strong>世界の農地の33%が劣化している。</strong>回復には人間の手が必要。</p>
-                    <p><strong>化学肥料依存のシステムが崩壊リスクを抱えている。</strong>代替の食料生産システムを各地域に構築する必要がある。</p>
-                    <p><strong>都市インフラの大半が老朽化している。</strong>分散型の再設計と物理的な施工が必要。</p>
-                    <p><strong>生態系が世界中で劣化している。</strong>森林、河川、湿地、海洋——すべて物理的な回復作業が必要。</p>
+                <p><strong>世界の農地の33%が劣化している。</strong>回復には人間の手が必要。
+                <strong>化学肥料依存のシステムが崩壊リスクを抱えている。</strong>代替の食料生産システムを各地域に構築する必要がある。
+                <strong>都市インフラの大半が老朽化している。</strong>分散型の再設計と物理的な施工が必要。
+                <strong>生態系が世界中で劣化している。</strong>森林、河川、湿地、海洋——すべて物理的な回復作業が必要。</p>
                 </div>
 
-                <p>
-                    これらの仕事は、数十億人が数十年かけても終わらない規模だ。
-                    AIが情報処理を引き受けてくれるなら、人間はこれらの仕事に集中できる。
-                </p>
-
-                <p>
-                    人間の仕事は減らない。増える。
-                    ただし、それはオフィスの仕事ではなく、土と水と生態系の仕事だ。
-                </p>
-
+                <p>これらの仕事は、数十億人が数十年かけても終わらない規模だ。
+                AIが情報処理を引き受けてくれるなら、人間はこれらの仕事に集中できる。</p>
+                <p>人間の仕事は減らない。増える。
+                ただし、それはオフィスの仕事ではなく、土と水と生態系の仕事だ。</p>
                 <div class="highlight-box">
-                    <p><strong>結論：</strong></p>
-                    <p>
-                        AGIが人間の仕事を奪うという議論は、「仕事」を言語的に定義している。
-                        構造的に見れば、土壌再生・生態系回復・インフラ分散化——
-                        AIにはできない物理的な仕事が無限にある。
-                        AIは微生物と共存できない。人間の仕事は増える。
-                    </p>
+                <p><strong>結論：</strong>
+                AGIが人間の仕事を奪うという議論は、「仕事」を言語的に定義している。
+                構造的に見れば、土壌再生・生態系回復・インフラ分散化——
+                AIにはできない物理的な仕事が無限にある。
+                AIは微生物と共存できない。人間の仕事は増える。</p>
                 </div>
 
                 <!-- Article Navigation -->
                 <div class="article-nav">
-                    <a href="/insights/fusion/">&larr; 前: 核融合の間違い</a>
-                    <a href="/insights/microsoft/">次: Microsoftの破産 &rarr;</a>
-                </div>
+  <a href="/insights/fusion/">&larr; 前: 核融合の間違い</a>
+  <a href="/insights/microsoft/">次: Microsoftの破産 &rarr;</a>
+</div>
             </div>
         </div>
     </section>
@@ -360,16 +278,13 @@
     <section class="section section-green">
         <div class="container">
             <div class="section-header">
-                <p class="section-label">Practice</p>
-                <h2 class="section-title">AIにできない仕事を始める</h2>
+                <p class="section-label">Back to Soil</p>
+                <h2 class="section-title">自然とともにあれば、生きられる</h2>
             </div>
-            <p class="cta-text">
-                土に触れることから始める。<br>
-                それがAI時代の最も合理的な選択だ。
-            </p>
+            <p class="cta-text">全ての構造分析は、一つの結論に向かう。</p>
             <div class="text-center">
                 <a href="/about/" class="btn btn-light" style="margin-right: 1rem;">自然農法とは</a>
-                <a href="/insights/" class="btn btn-outline">Insights トップ</a>
+                <a href="/light-farming/" class="btn btn-outline">Light Farming</a>
             </div>
         </div>
     </section>
@@ -379,7 +294,7 @@
         <div class="footer-content">
             <div class="footer-about">
                 <h3>自然と対話する暮らし</h3>
-                <p>福岡正信氏の自然農法とリジェネラティブ農業の実践を通じて、土壌の再生と自然との共生を目指しています。</p>
+                <p>自然とともにあれば、生きられる。福岡正信の自然農法とLight Farmingの科学が示す、生きるための道。</p>
             </div>
             <div class="footer-nav">
                 <h4>ページ</h4>

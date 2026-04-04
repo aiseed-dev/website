@@ -19,15 +19,18 @@ ARTICLES_DIR = SITE_ROOT / "articles"
 
 # Mapping of slugs to article numbers
 ARTICLE_ORDER = {
-    "agriculture": "01",
-    "fusion": "02",
-    "agi": "03",
-    "microsoft": "04",
-    "ubs": "05",
-    "fossil-materials": "06",
-    "drone-defense": "07",
-    "ai-solo-business": "08",
+    "climate-mistake": "01",
+    "fossil-materials": "02",
+    "agriculture": "03",
+    "drone-defense": "04",
+    "fusion": "05",
+    "agi": "06",
+    "nvidia": "07",
+    "enterprise-tax": "08",
     "healthcare-fiscal": "09",
+    "subtraction-design": "10",
+    "regulation-redesign": "11",
+    "ai-and-individual": "12",
 }
 
 

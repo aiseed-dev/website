@@ -1,16 +1,16 @@
 ---
 slug: drone-defense
-number: "07"
+number: "04"
 lang: en
 title: Drones, AI, and Small Nation Defense
 subtitle: Cost Asymmetry Changes Everything
 description: The 2026 Iran War proves superpowers cannot win asymmetric conflicts. 12,300+ targets struck, yet 50% of Iran's capability remains. Drones and AI give small nations self-reliant defense. The age of superpower dominance is ending.
 date: 2025.04.04
-label: Structural Analysis 07
-prev_slug: fossil-materials
-prev_title: Fossil Materials and Modern Civilization
-next_slug: ai-solo-business
-next_title: AI and the Solo Business
+label: Structural Analysis 04
+prev_slug: agriculture
+prev_title: The Agriculture Mistake
+next_slug: fusion
+next_title: The Nuclear Fusion Mistake
 cta_label: Structure
 cta_title: Small is a weapon.
 cta_text: In warfare, in agriculture, in business — distributed systems beat centralized ones.

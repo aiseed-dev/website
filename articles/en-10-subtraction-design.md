@@ -229,41 +229,19 @@ policy support is needed.
 Prepare now, not after the transformation hits.
 That is the job of policy.
 
-## How Do We Live?
+## What Will People Eat?
 
-All structural analysis converges on a single question.
+Beyond all the subtractions, the most fundamental question remains.
 
-**How do we live?**
+**When fossil resources are gone, what will people eat?**
 
-The answer already exists. Three different approaches have reached the same conclusion.
+Everything above is about restructuring society's systems.
+But if there is no food, people starve regardless of how systems change.
+**Without regenerative agriculture, subtraction design does not work.**
 
-### Masanobu Fukuoka's Natural Farming — The Ultimate Subtraction
+### Regenerative Agriculture — The Core of Food Supply
 
-:::chain
-**Fukuoka's four principles:**
-
-No tilling → Don't destroy soil structure → Microorganisms live
-No fertilizer → Zero external dependency → Free from supply chains
-No pesticides → Don't kill the ecosystem → Use nature's defenses
-No weeding → Maximize photosynthesis area → The principle of Light Farming
-:::
-
-### Dr. Christine Jones's Light Farming — Scientific Proof
-
-:::chain
-Sunlight → Photosynthesis → Plants produce sugars
-Sugars → Exuded from roots into soil (Liquid Carbon)
-Liquid Carbon → Energy source for soil microorganisms
-Soil microorganisms → Solubilize and supply minerals to plants
-Plants → More photosynthesis → (Positive feedback loop)
-
-**Weeds photosynthesize too. Leave the grass, and Liquid Carbon supply increases.**
-Fukuoka's "no weeding" was a Light Farming maximization strategy.
-:::
-
-### Regenerative Agriculture — Subtraction at Scale
-
-As Chapter 3 showed, methods already exist for grains and beef.
+As Chapter 3 showed, methods already exist for producing grains and beef without chemical fertilizer.
 
 :::chain
 **Regenerative agriculture's subtractions:**
@@ -277,29 +255,51 @@ Gabe Brown proved this on his North Dakota farm.
 Zero chemical fertilizer, zero pesticides — and profitability exceeds conventional farming.
 :::
 
-:::highlight
-**Three approaches, one conclusion:**
-Fukuoka → Started from philosophy → "Do-nothing" farming
-Christine Jones → Started from science → Discovery of Liquid Carbon
-Regenerative agriculture → Started from practice → Proven on large-scale farms
+This is not theory. **It already produces grains and beef at a scale feeding tens of millions.**
+It is the only realistic method for preventing starvation after fossil resources deplete.
 
-Different starting points. Same conclusion.
-**Harness soil microorganisms, and external dependencies can be subtracted.**
-Chemical fertilizer, pesticides, heavy machinery — all become unnecessary.
+### Why Regenerative Agriculture Works
+
+The principle that Fukuoka reached through philosophy, and Dr. Christine Jones proved through science, is the foundation of regenerative agriculture.
+
+:::chain
+**Light Farming — Symbiosis between soil microorganisms and plants:**
+
+Sunlight → Photosynthesis → Plants produce sugars
+Sugars → Exuded from roots into soil (Liquid Carbon)
+Liquid Carbon → Energy source for soil microorganisms
+Soil microorganisms → Solubilize and supply minerals to plants
+Plants → More photosynthesis → (Positive feedback loop)
 :::
 
-However, as Chapter 3 noted, **there is no method yet for vegetables.**
+:::highlight
+**Fukuoka's four principles anticipated this science:**
+No tilling → Don't destroy soil structure → Microorganisms live
+No fertilizer → Zero external dependency → Microorganisms supply nutrients
+No pesticides → Don't kill the ecosystem → Use nature's defenses
+No weeding → Maximize photosynthesis area → Maximize Liquid Carbon supply
+
+Regenerative agriculture applies this principle to large-scale farming.
+Philosophy (Fukuoka) → Science (Light Farming) → **Large-scale practice (Regenerative Agriculture)**
+:::
+
+### Only Vegetables Still Lack a Method
+
+However, as Chapter 3 noted, **there is no method yet for mass-producing vegetables without chemical fertilizer.**
 Grains and beef have regenerative agriculture.
 Vegetables require cultivation research from scratch.
-This too is a policy priority that must begin immediately.
+
+**This is the most urgent policy priority.**
+Regenerative agriculture's grains and beef prevent starvation.
+But without vegetables, health cannot be maintained.
+Research must begin now.
 
 :::quote
 With nature, we can live.
 The further from nature, the higher the cost of living.
 Water exists. Land exists. Plants exist. Microorganisms exist.
 These are Japan's true resources.
-Fukuoka knew this.
-Light Farming proved it.
-Regenerative agriculture is practicing it.
+Without regenerative agriculture, people starve.
+With regenerative agriculture, people survive.
 All that remains is to start subtracting.
 :::

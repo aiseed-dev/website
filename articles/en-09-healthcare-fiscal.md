@@ -133,37 +133,29 @@ Desk worker reduction → No reason to concentrate people in cities
 → **Population moves from megacities to regions with land**
 :::
 
-This is not "recommending country life."
-**The transformation of industrial structure forces the transformation of population distribution.**
+Think about it — Japan's regional towns already exist at this scale.
+They have shops. Schools. Clinics. They are surrounded by farmland and forestland.
+**What changes dramatically is not rural Japan. It is Tokyo.**
 
 :::compare
 | | Present | After transformation |
 | --- | --- | --- |
-| Population concentration | 36 million in Greater Tokyo | Distributed in town-sized units near farmland and forestland |
+| Greater Tokyo | 36 million commuting to offices | No reason to concentrate |
+| Regional towns | Depopulation accelerating | People return (the infrastructure already exists) |
 | Primary employment | Desk work, IT, service industry | Bio-material manufacturing, food production, forestry, soil regeneration |
 | Required resources | Offices, data centers, electricity | Farmland, forestland, water, sunlight, soil |
-| Reason for concentration | Commuting to offices | Maintaining services (shops, schools, clinics) |
-| Housing costs | 30%+ of income on Tokyo rent | Dramatically lower in regional areas |
 :::
 
-This does not mean people scatter completely.
-Shops, schools, clinics — maintaining essential services requires a certain population.
-**The "town" becomes the basic unit of the transformed society.**
+Tokyo's extreme concentration is a product of the fossil resource and desk work era.
+When desk work disappears and work becomes land-based, there is no reason for 36 million people to live in Tokyo.
 
-Millions concentrated in a megacity are unnecessary.
-But thousands to tens of thousands forming a town can share services
-while living surrounded by farmland and forestland.
+Rural life itself does not change much.
+Towns exist. Services exist. Farmland and forestland surround them — that structure becomes the ready-made destination.
+**What changes is that Tokyo's extreme concentration dissolves.**
 
 :::highlight
-**A massive social transformation:**
-The reason 36 million people live in Tokyo is that desk work was concentrated in city centers.
-When that premise collapses, population distribution fundamentally changes.
-Megacities → distributed into town-sized units, near farmland and forestland.
-Education, healthcare, governance — everything is redesigned at the scale of a town.
 Rural depopulation is not "a problem to be solved" —
 it becomes **a result solved by industrial transformation.**
-Tokyo's extreme concentration was a product of the fossil resource and desk work era.
-That era is ending.
 :::
 
 ## Current Healthcare and Pensions Do Not Fit This Society

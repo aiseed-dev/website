@@ -160,17 +160,27 @@ Tokyo's extreme concentration was a product of the fossil resource and desk work
 That era is ending.
 :::
 
-## These Transformations Proceed Alongside Healthcare and Pension Collapse
+## Current Healthcare and Pensions Do Not Fit This Society
+
+Population disperses. Work becomes land-based.
+Against this structural transformation, current healthcare and pension systems are fundamentally mismatched.
 
 :::chain
-1. Military industry → Fossil depletion + drones shrink conventional weapons market
-2. IT companies → AGI unprofitable + lock-in collapse destroys revenue structures
-3. Desk workers → Current AI can replace the majority
-4. Healthcare → Dialysis alone costs ¥1.6 trillion/year. Entirely fossil-fuel dependent
-5. Pensions → Working generation's social insurance exceeds 30% of income
+**Assumptions of the current system:**
+Population concentrated in cities → Large hospitals and dialysis centers consolidated in urban areas
+Most workers are salaried → Social insurance collected via payroll deduction
+Retire at 65 → Live on pension for the rest of life
+Desk work destroys the body → Medicine fixes it
+
+**The transformed society:**
+Population dispersed to regions → Urban-consolidated medical infrastructure cannot reach them
+Land-based work → Payroll deduction model does not fit
+Physical work continues for life → The premise of "retiring at 65" disappears
+Natural food and exercise → People are far less likely to get sick in the first place
 :::
 
-These are not separate problems. Structurally, they grow from the same root: **the cost of departing from nature.**
+The current system was designed for the era of fossil resources and urban concentration.
+That era is ending, but the system remains.
 
 ## Dialysis — Life Support on Fossil Fuels
 
@@ -239,9 +249,12 @@ A social security system where 1.5 people support 1 person
 is mathematically bankrupt regardless of policy design.
 :::
 
-## A Society Where Retirees Play Cannot Sustain Itself
+## The Pension System — A Relic of the Desk Work Era
 
 The current social model: work until 65, retire, live on pension.
+
+Two assumptions underpinned this system when it was designed:
+"Retirement is short" and "the population keeps growing."
 
 When pension systems were designed, life expectancy was 65–67.
 Pension payments started at 55. Retirement lasted ~10 years.
@@ -260,21 +273,35 @@ Social insurance → Already over 30% of working income
 Fewer workers, more retirees → **Mathematical collapse**
 :::
 
-Humans want comfort. But the result of seeking comfort through
-institutional dependency is this collapse.
-"Having more" has not meant "living more easily."
-The further from nature, the higher the cost of living.
+But the problem is even more fundamental.
+**Is the very concept of "retiring at 65" not a product of the desk work era?**
 
 :::highlight
-**The inversion needed:**
+**The pension model of a desk work society:**
+Sit in an office all day → Sedentary lifestyle + processed food → Body breaks down
+Body breaks down → Depend on medicine → Medical costs explode
+Cannot work past 65 → Support with pension → Working generation bears the burden
+This was the social model of "advanced nations."
+:::
 
-Current model: Youth works → Pays taxes and insurance → Elderly receives healthcare and pension
-Inverted model: All generations have "the power to live" → Less need for medicine → Less need for pension
+In the transformed society, this premise collapses.
+
+:::chain
+**Structural change from land-based work:**
+Physical work → Exercise built into daily life
+Growing your own food → Less dependence on processed food
+Natural diet and movement → Lower risk of lifestyle diseases
+→ Less dependence on medicine
+→ No need to "retire" at 65
+→ Less dependence on pensions
+:::
 
 Not "curing disease" but **"not getting sick."**
 Not "living on pension" but **"not needing a pension."**
 This is the same structural inversion as Fukuoka's "do-nothing" farming.
-:::
+
+The further from nature, the higher the cost of living.
+The closer to nature, the less we need institutions to survive.
 
 ## American Agriculture — The Model That Is Destroying Itself
 

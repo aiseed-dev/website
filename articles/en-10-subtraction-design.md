@@ -237,9 +237,9 @@ Beyond all the subtractions, the most fundamental question remains.
 
 Everything above is about restructuring society's systems.
 But if there is no food, people starve regardless of how systems change.
-**Without regenerative agriculture, subtraction design does not work.**
+Food production requires two scales.
 
-### Regenerative Agriculture — The Core of Food Supply
+### Regenerative Agriculture — Large-Scale Grains and Beef
 
 As Chapter 3 showed, methods already exist for producing grains and beef without chemical fertilizer.
 
@@ -256,11 +256,41 @@ Zero chemical fertilizer, zero pesticides — and profitability exceeds conventi
 :::
 
 This is not theory. **It already produces grains and beef at a scale feeding tens of millions.**
-It is the only realistic method for preventing starvation after fossil resources deplete.
+A realistic method for preventing starvation after fossil resources deplete.
 
-### Why Regenerative Agriculture Works
+### Fukuoka's Natural Farming — Small-Scale Self-Sufficiency
 
-The principle that Fukuoka reached through philosophy, and Dr. Christine Jones proved through science, is the foundation of regenerative agriculture.
+But large-scale agriculture alone is not enough.
+For individuals and families living in regional towns to **grow food on their own land**, a different method is needed.
+
+Without Fukuoka's natural farming, small-scale agriculture is not possible.
+
+:::chain
+**Fukuoka's four principles:**
+No tilling → Possible without a tractor
+No fertilizer → Possible without buying chemical fertilizer
+No pesticides → Possible without buying agrochemicals
+No weeding → Possible without a large labor force
+**The result:** An individual can produce food on their own land, with zero external dependency.
+:::
+
+Regenerative agriculture produces grains and beef on farms of hundreds of hectares.
+Fukuoka's natural farming allows one person to sustain a life on a small plot of land.
+**Without both, subtraction design does not work.**
+
+:::compare
+| | Regenerative Agriculture | Fukuoka's Natural Farming |
+| --- | --- | --- |
+| Scale | Large (hundreds of hectares) | Small (individual / family) |
+| Products | Grains, beef | Rice, vegetables, fruit trees |
+| Role | Food supply for society | Individual self-sufficiency, local food |
+| External dependency | Low (zero fertilizer/pesticides) | Zero (nothing needs to be purchased) |
+| Required knowledge | Soil science, grazing management | Nature observation, living wisdom |
+:::
+
+### Why Both Work — Light Farming
+
+Dr. Christine Jones's Light Farming provides the scientific foundation for both.
 
 :::chain
 **Light Farming — Symbiosis between soil microorganisms and plants:**
@@ -270,27 +300,23 @@ Sugars → Exuded from roots into soil (Liquid Carbon)
 Liquid Carbon → Energy source for soil microorganisms
 Soil microorganisms → Solubilize and supply minerals to plants
 Plants → More photosynthesis → (Positive feedback loop)
+
+**Weeds photosynthesize too. Leave the grass, and Liquid Carbon supply increases.**
+Fukuoka's "no weeding" was a Light Farming maximization strategy.
 :::
 
-:::highlight
-**Fukuoka's four principles anticipated this science:**
-No tilling → Don't destroy soil structure → Microorganisms live
-No fertilizer → Zero external dependency → Microorganisms supply nutrients
-No pesticides → Don't kill the ecosystem → Use nature's defenses
-No weeding → Maximize photosynthesis area → Maximize Liquid Carbon supply
-
-Regenerative agriculture applies this principle to large-scale farming.
-Philosophy (Fukuoka) → Science (Light Farming) → **Large-scale practice (Regenerative Agriculture)**
-:::
+At large scale or small, the principle is the same.
+**Harness soil microorganisms, and external dependencies can be subtracted.**
 
 ### Only Vegetables Still Lack a Method
 
 However, as Chapter 3 noted, **there is no method yet for mass-producing vegetables without chemical fertilizer.**
 Grains and beef have regenerative agriculture.
-Vegetables require cultivation research from scratch.
+Small-scale self-sufficiency has Fukuoka's method.
+But producing vegetables at a scale to supply an entire town has not been established.
 
 **This is the most urgent policy priority.**
-Regenerative agriculture's grains and beef prevent starvation.
+Grains and beef prevent starvation.
 But without vegetables, health cannot be maintained.
 Research must begin now.
 
@@ -299,7 +325,7 @@ With nature, we can live.
 The further from nature, the higher the cost of living.
 Water exists. Land exists. Plants exist. Microorganisms exist.
 These are Japan's true resources.
-Without regenerative agriculture, people starve.
-With regenerative agriculture, people survive.
-All that remains is to start subtracting.
+Without regenerative agriculture, society starves.
+Without Fukuoka's natural farming, individuals cannot survive.
+Only with both does subtraction design work.
 :::

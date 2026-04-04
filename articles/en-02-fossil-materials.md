@@ -89,39 +89,44 @@ Total national cost exploding from ¥1.6 trillion toward **¥2 trillion**.
 This is what "fossil material dependency" means in human terms:
 337,000 lives depend on petroleum-derived plastic and fossil-fuel electricity.
 
-## The Energy Transition Creates the Materials Crisis
+## Going All-EV Is Reckless
 
-Suppose every car becomes electric.
-Gasoline demand disappears. Diesel demand disappears.
-Wonderful — CO₂ emissions drop dramatically.
-
-But then what happens?
+"If every car goes electric, we won't need oil anymore" —
+this idea completely ignores the structure of materials.
 
 :::chain
-**Energy transition → materials crisis causal chain:**
-All vehicles go EV → Gasoline and diesel demand vanish
-→ The bulk of oil refining revenue disappears
-→ Refineries become economically unviable
-→ Refineries shut down
-→ Naphtha supply disappears with them
-→ Plastics, medical devices, fertilizer feedstock — gone
+**Why going all-EV is reckless:**
+Plastics, medical devices, and fertilizer feedstock require naphtha
+→ Naphtha can only be obtained through crude oil refining
+→ Refining crude oil **inevitably** produces gasoline and diesel simultaneously
+→ Stop refining, and naphtha stops too
+→ As long as materials are needed, oil refining cannot stop
+→ **If oil refining cannot stop, gasoline will keep coming out**
 :::
 
-The energy transition does not solve the energy problem.
-It **converts the energy problem into a materials problem**.
+So do we throw that gasoline away?
+Gasoline that could be used as energy in cars —
+discarded so we can generate a separate energy source (electricity) instead.
+This is not "decarbonization." It is **double investment in energy**.
 
 :::highlight
-**The structural contradiction:**
+**Structural fact:**
 Currently, refining costs are covered by revenue from the 86% of oil used as energy (gasoline, diesel).
 The remaining 14% used as chemical feedstock (naphtha, etc.) is supplied cheaply — essentially as a side product.
-If energy demand disappears, refineries must operate solely for materials.
-Costs multiply several times over.
-EVs and renewables, **if pushed forward without a materials supply system in place, undermine their own foundation**.
+If gasoline demand disappears, refineries must operate solely for materials.
+Refining costs multiply several times over.
+Naphtha prices skyrocket — plastics, medical devices, fertilizer — everything gets more expensive.
 :::
 
-This is not "a problem that remains after the energy transition."
-**Advancing the energy transition itself accelerates the materials crisis.**
-The vast majority of people talking about decarbonization do not see this structure.
+Going all-EV is an idea from people who don't understand the materials supply structure.
+As long as materials depend on fossil feedstock, oil refining continues.
+As long as refining continues, fuel comes out.
+Using that fuel is the most structurally rational choice.
+
+The question is not "gasoline cars or EVs."
+It is **how far along bio-material alternatives to naphtha have progressed**.
+Only when bio-materials can replace naphtha does the option to stop oil refining emerge.
+The order is backwards.
 
 ## After Fossil Materials — Biology
 

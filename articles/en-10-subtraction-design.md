@@ -3,8 +3,8 @@ slug: subtraction-design
 number: "10"
 lang: en
 title: Subtraction Design
-subtitle: Natural Farming, Direct Distribution, Self-Hosted Servers. What to Build After the Collapse.
-description: After the collapse, what do we build? The answer is not to add more — it is to subtract. Remove chemical fertilizer. Remove middlemen. Remove corporate infrastructure. What remains is self-reliance.
+subtitle: How to design a world quite different from today
+description: Fossil resources, free trade, Tokyo's concentration, urban healthcare and pensions — every premise of current society is collapsing. Incremental fixes won't work. What do we subtract? What do we keep? Redesigning society through subtraction.
 date: 2025.04.04
 label: Structural Analysis 10
 prev_slug: healthcare-fiscal
@@ -20,34 +20,23 @@ cta_btn2_text: All Insights
 cta_btn2_link: /en/insights/
 ---
 
-## What Nine Structural Analyses Revealed
+## The Question from the Previous Chapter
 
-The previous nine articles examined the structural fragility of modern civilization.
+Chapter 9 showed that every premise of current society is collapsing.
 
 :::chain
-**Nine collapse structures:**
-
-01. Climate policy failure → Obsessed with CO2. Soil is the real solution.
-02. Fossil resources and civilization → Oil is a material. We need it even unburned.
-03. Agriculture's fatal flaw → One refinery shutdown stops the food supply.
-04. Drones + AI and small-nation defense → The age when superpowers cannot win.
-05. The fusion illusion → Replacing energy does not replace materials.
-06. The AGI illusion → AI cannot build soil. Human work increases.
-07. NVIDIA's collapse → No gold mine, no shovel business.
-08. Eliminating enterprise IT taxes → Claude breaks Oracle, SIer, and consultant lock-in.
-09. Society's design failure → Healthcare and pensions — the cost of departing from nature.
+Fossil resources → Depleting
+Food production → Must escape chemical fertilizer dependency
+Industries → Military, IT, desk work all shrinking
+Population distribution → No reason for Tokyo's extreme concentration
+Trade → The premise of free trade is collapsing
+Healthcare and pensions → Systems designed for urban salaried workers no longer fit
 :::
 
-A single pattern runs through all of them.
-**They collapse because they kept adding.**
+Incremental fixes will not work.
+**A world quite different from today must be designed.**
 
-We added chemical fertilizer. Added heavy machinery. Added petrochemical products.
-Added financial instruments. Added social security layers. Added AI.
-The more we added, the more external dependencies multiplied, the more single points of failure appeared, and the more fragile everything became.
-
-So what do we build after the collapse?
-The answer is not to add more.
-It is to **subtract**.
+So what do we add, and what do we subtract?
 
 ## The Principle of Subtraction
 
@@ -65,21 +54,45 @@ No weeding → Subtract weeding labor → Subtract labor costs
 "Doing nothing" is not laziness.
 It is the minimum viable configuration — what remains after everything unnecessary has been removed.
 
-This principle does not apply only to farming.
-It applies to business, distribution, and information infrastructure.
+Apply this principle to all of society.
 
-## Direct Distribution — Subtract the Middlemen
+## Subtract #1: Tokyo's Extreme Concentration
 
-Modern food distribution is built on layer after layer of intermediaries.
+As Chapter 9 showed, 36 million people concentrated in Tokyo because of desk work.
+When desk work disappears, the reason for concentration disappears.
 
 :::chain
-**Conventional distribution:**
-Farmer → Agricultural cooperative → Wholesale market → Secondary wholesaler → Retailer → Consumer
-Each layer takes a margin → The farmer keeps only 20–30% of the retail price
-Each layer burns oil → Refrigerated transport, plastic packaging, climate-controlled warehouses
+**Subtract:**
+Commuting to Tokyo → Subtract
+Office buildings → Subtract
+Packed trains → Subtract
+30% of income on city-center rent → Subtract
+
+**What remains:**
+Regional towns → Shops, schools, clinics already exist
+Farmland and forestland → The foundation for bio-materials and food production
+Water, sunlight, and soil → Japan's true resources
 :::
 
-What happens when you subtract the middlemen?
+Regional towns are already the destination, as they are.
+**What we subtract is Tokyo's concentration — we do not need to add anything to rural Japan.**
+
+## Subtract #2: The Premise of Free Trade
+
+Free trade assumed cheap oil could ship goods from the other side of the planet.
+That premise is collapsing.
+
+:::chain
+**Subtract:**
+Cheap agricultural imports from abroad → Subtract
+Cheap foreign timber → Subtract
+The assumption that "domestic farming is inefficient" → Subtract
+
+**What remains:**
+Food and timber produced on domestic farmland and forestland
+Distribution that completes within the region
+**A local production, local consumption structure with near-zero transport costs**
+:::
 
 :::chain
 **Direct distribution:**
@@ -88,52 +101,53 @@ Direct online sales, farmers' markets, CSA (community-supported agriculture)
 Farmer's share → 100%
 Transport distance → Minimized
 Packaging → Minimized (face-to-face needs none)
-Oil dependency → Drastically reduced
+Subtract middlemen → Subtract oil dependency → Subtract cost
 :::
 
-Direct distribution is called "inefficient."
-Per-unit shipping costs are higher than industrial-scale logistics.
+## Subtract #3: Urban Healthcare and Pensions
 
-But industrial-scale logistics carries hidden costs:
-oil price volatility, plastic packaging, food waste,
-and the payroll of every intermediary.
-Strip all of those away, and direct distribution is
-structurally more resilient.
-
-## Self-Hosted Servers — Subtract Corporate Infrastructure
-
-This site — aiseed.dev — runs on its own domain.
-Why not use social media or a blogging platform?
+Current healthcare: "Desk work destroys the body → Hospitals fix it."
+Current pensions: "Retire at 65 → Pensions support you."
+Both are systems designed for urban salaried workers.
 
 :::chain
-**Platform dependency:**
-Twitter/X → Algorithm controls distribution → Account can be banned at any time
-YouTube → Monetization rules change unilaterally → You serve the advertisers
-note/Medium → Platform shuts down, your content vanishes
-Instagram → Algorithm decides visibility → You are the product being sold
-
-**Self-hosted infrastructure:**
-Your own domain → No one can shut it down
-Static HTML → Server costs a few dollars a month
-Your content → It stays until you choose to remove it
+**Subtract:**
+Sedentary desk work → Subtract (work becomes land-based)
+Processed food dependency → Subtract (replaced by food you grow yourself)
+Lifestyle diseases → Subtract (natural diet and exercise reduce them)
+Enormous medical costs → Subtract (unnecessary if you don't get sick)
+The premise of retiring at 65 → Subtract (physical work can continue longer)
+Pension dependency → Subtract (unnecessary if you don't retire)
 :::
 
-Corporate platforms look "free," but they collect a tax
-in the form of your attention.
-The same structure as NVIDIA's GPU tax on the AI industry.
+:::highlight
+**Desk work society's healthcare and pensions:**
+Sit and work → Body breaks down → Medicine fixes it → High cost
+Cannot work past 65 → Pensions support → Working generation bears the burden
 
-Self-hosting is the act of subtracting that tax.
+**Land-based society's healthcare and pensions:**
+Physical work → Health maintained → Less medical dependency
+Work continues longer → Less pension dependency → Less institutional burden
 
-## AI + the Individual — Subtract the Organization
+**Subtract "curing disease." Keep "not getting sick."**
+**Subtract "supporting with pensions." Keep "a life that doesn't need pensions."**
+:::
 
-For large corporations, AI is a cost-cutting tool.
-For individuals, it is a capability multiplier.
+## Subtract #4: Enterprise IT Taxes
+
+As Chapter 8 showed, companies pay enormous "IT taxes."
 
 :::chain
-Large corporation: 100 people → AI automates 80 people's tasks → 20 laid off
-**Efficiency gain: 20%**
-Individual: 1 person → AI enables the output of 10
-**Capability expansion: 1,000%**
+**Subtract:**
+Oracle/SQL Server license fees → Subtract (migrate to PostgreSQL + Claude)
+Microsoft tax → Subtract (migrate to open source)
+SaaS monthly subscriptions → Subtract (build your own)
+Systems integrator billable hours → Subtract (Claude replaces them)
+Consultant fees → Subtract (Claude handles structural analysis)
+
+**What remains:**
+A simple system run by 1 person + Claude
+A self-hosted server costing a few dollars a month
 :::
 
 This site is living proof.
@@ -148,6 +162,18 @@ Translation: Claude (Japanese–English bilingual)
 A web agency would charge tens of thousands of dollars. This was built for AI subscription fees alone.
 :::
 
+## Subtract #5: Large Organizations
+
+For large corporations, AI is a cost-cutting tool.
+For individuals, it is a capability multiplier.
+
+:::chain
+Large corporation: 100 people → AI automates 80 people's tasks → 20 laid off
+**Efficiency gain: 20%**
+Individual: 1 person → AI enables the output of 10
+**Capability expansion: 1,000%**
+:::
+
 Large organizations had three advantages: scale of personnel, scale of information, scale of capital.
 AI neutralizes personnel and information.
 Only capital remains. But knowledge work requires almost no capital.
@@ -157,63 +183,90 @@ pivots become frictionless, and fixed costs drop to nearly zero.
 
 ## The Subtraction Blueprint
 
-Bring it all together, and a single design emerges.
-
 :::compare
-| Domain | Addition design (present) | Subtraction design (future) |
+| What to subtract | Present | After subtraction |
 | --- | --- | --- |
-| Agriculture | Chemical fertilizer + heavy machinery + monoculture | Natural farming. Zero external dependency |
-| Distribution | Cooperative → wholesaler → secondary wholesaler → retailer (5 layers) | Farmer → Consumer (direct) |
-| Publishing | Social media + platform dependency | Own domain + static HTML |
-| Business | Large org + division of labor + management overhead | 1 person + AI. Zero fixed costs |
-| Energy | Centralized power grid | Distributed. Solar + battery storage |
-| Healthcare | Treat disease (high cost) | Prevent disease (natural diet + exercise) |
-| Defense | Superpower weapons + alliance dependency | Drones + AI. Self-reliant deterrence |
-| Finance | Complex financial products + intermediaries | Direct transactions. Simple structures |
+| Tokyo concentration | 36 million commuting to offices | Living in regional towns, surrounded by farmland and forestland |
+| Free trade premise | Shipping cheap goods from the other side of the planet | Local production, local consumption. Domestic farmland and forestland |
+| Middlemen | Farmer→Coop→Wholesaler→Secondary wholesaler→Retailer→Consumer | Farmer→Consumer (direct) |
+| Urban healthcare | Cure disease (¥1.6T/year on dialysis alone) | Prevent disease (natural diet and exercise) |
+| Pension dependency | Retire at 65 → Pensions support | Work continues → Pensions unnecessary |
+| Enterprise IT taxes | Oracle tax + Microsoft tax + SIer tax | PostgreSQL + Claude + self-hosted server |
+| Large organizations | 100 people + management overhead | 1 person + AI. Zero fixed costs |
+| Platforms | Social media dependency (algorithm-controlled) | Own domain + static HTML |
 :::
 
-The common thread: **subtract the middle layer.**
+The common thread: **subtract what was added during the era of fossil resources and urban concentration.**
 
-Middlemen, middleware platforms, middle management, intermediate infrastructure —
-all sustained by the economics of the oil age.
-When the oil age falters, the middle layers collapse first.
+What remains after subtraction:
+water, land, plants, microorganisms, and human hands.
+Japan has all of these.
 
-## Japan's True Resources
+## The One Thing to Add
 
-Subtraction design suits Japan better than almost anywhere.
+In subtraction design, almost everything is subtracted.
+But **there is one thing that must be added.**
+
+**Policy.**
+
+:::highlight
+**Policies that must be added:**
+Farmland and forestland acquisition support → Enable urban migrants to obtain land
+Job training → Programs for desk workers to learn bio-material manufacturing, agriculture, forestry
+Trade policy reform → Tariffs to protect the domestic production base
+Initial housing support → Utilize vacant houses, prepare housing for migrants
+Maintaining town services → Fiscal measures to sustain clinics, schools, and shops
+Distributing research facilities → Place bio-material and vegetable cultivation research centers in regional areas
+:::
+
+The industrial transformation is inevitable.
+But for people to actually move, start new work, and build sustainable livelihoods,
+policy support is needed.
+
+**Subtraction happens naturally. When fossil resources deplete, what was added collapses on its own.**
+**Addition — policy — does not happen without intention.**
+
+Prepare now, not after the transformation hits.
+That is the job of policy.
+
+## Fukuoka's Question
+
+All structural analysis converges on a single question.
+
+**How do we live?**
+
+Masanobu Fukuoka's natural farming was his answer.
 
 :::chain
-**What Japan already has:**
-Water → 1,700 mm annual rainfall (roughly double the global average)
-Plant diversity → Subtropical to subarctic across 3,000 km north to south
-A climate that regenerates soil → Warm and humid. Microorganisms thrive
-Traditional knowledge → Thousands of years of accumulated farming wisdom
-Work ethic → A culture that does not shy away from physical labor
+**The essence of Fukuoka's four principles:**
+
+No tilling → Don't destroy soil structure → Microorganisms live
+No fertilizer → Zero external dependency → Free from supply chains
+No pesticides → Don't kill the ecosystem → Use nature's defenses
+No weeding → Maximize photosynthesis area → The principle of Light Farming
 :::
 
-Even without oil, Japan has water.
-Where there is water, plants grow. Where plants grow, microorganisms flourish.
-Where microorganisms flourish, soil regenerates. Where soil regenerates, food follows.
+And Dr. Christine Jones's Light Farming gave this philosophy its scientific foundation.
 
-"Japan has no natural resources" — that is the view of people who recognize only oil and rare metals as "resources."
+:::chain
+**Light Farming — Fukuoka's scientific proof:**
 
-## The Collapse Has Already Begun
+Sunlight → Photosynthesis → Plants produce sugars
+Sugars → Exuded from roots into soil (Liquid Carbon)
+Liquid Carbon → Energy source for soil microorganisms
+Soil microorganisms → Solubilize and supply minerals to plants
+Plants → More photosynthesis → (Positive feedback loop)
 
-War with Iran threatens the Strait of Hormuz.
-Oil prices are surging, fertilizer costs are climbing, food prices keep rising.
-Dialysis costs are exploding, and social insurance premiums have crossed 30%.
-
-The collapse is not a future scenario. It is happening now.
-
-But collapse is also the greatest catalyst for subtraction design.
-When chemical fertilizer becomes expensive, the incentive to shift to natural farming appears.
-When platforms become unstable, the incentive to self-host appears.
-When large corporations falter, the incentive to start a one-person AI business appears.
+**Weeds photosynthesize too. Leave the grass, and Liquid Carbon supply increases.**
+Fukuoka's "no weeding" was a Light Farming maximization strategy.
+:::
 
 :::quote
 With nature, we can live.
-The farther we drift from nature, the higher the cost of living becomes.
-Masanobu Fukuoka knew this.
-Dr. Christine Jones proved it.
+The further from nature, the higher the cost of living.
+Water exists. Land exists. Plants exist. Microorganisms exist.
+These are Japan's true resources.
+Fukuoka knew this.
+Light Farming proved it.
 All that remains is to start subtracting.
 :::

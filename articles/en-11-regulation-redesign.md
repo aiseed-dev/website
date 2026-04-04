@@ -203,9 +203,45 @@ But the real question is "**why are we still using chemical fertilizer at all?**
 
 ## This Is What Regulation Redesign Means
 
+## Agricultural Researchers — Another Tax
+
+Who creates regulations like ADWO? **Agricultural researchers.**
+
+Agricultural researchers write papers. But they do not touch soil in the field.
+They calculate optimal chemical fertilizer application rates. But they do not study how to stop using chemical fertilizer.
+They continue "improving" within the chemical fertilizer system. But they never question the system itself.
+
+:::chain
+**The structure of agricultural researchers:**
+Employed at universities and research institutions → Evaluated by publishing papers
+→ Papers target "improvements" within the existing agricultural system
+→ Research budgets flow to chemical-fertilizer-based studies
+→ No budget for research on eliminating chemical fertilizer
+→ **Knowledge accumulates in the direction of maintaining chemical fertilizer dependency**
+:::
+
+This is the same structure as Chapter 8's Oracle tax and SIer tax.
+The Oracle tax was maintained by people who profited from "continuing to use Oracle."
+Agricultural researchers maintain their relevance by "continuing to use chemical fertilizer."
+
+:::highlight
+**Fukuoka was not a researcher. He was a practitioner.**
+Gabe Brown was not a researcher. He was a practitioner.
+Agriculture without chemical fertilizer was established not by people writing papers,
+but by **people who touched the soil in the field.**
+
+What agriculture needs is practitioners, and AI to support them.
+Data analysis, knowledge synthesis, optimization of cultivation conditions —
+Claude does all of this faster, cheaper, and more accurately than researchers.
+The "tax" called agricultural researchers is one that Claude will break.
+:::
+
+## This Is What Regulation Redesign Means
+
 EV mandates ignored the structure shown in Chapter 2.
 ADWO prolongs dependency on chemical fertilizer.
-Both are **regulations built on old system assumptions**, blocking the transformation.
+Public budgets for agricultural research are a tax that maintains the chemical fertilizer system.
+All are **regulations and institutions built on old system assumptions**, blocking the transformation.
 
 Regulation redesign does not mean prolonging old systems.
 It means **creating regulations that accelerate the transition to new systems.**

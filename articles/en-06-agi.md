@@ -163,25 +163,58 @@ Masanobu Fukuoka saw the problem of chemical fertilizer dependency 50 years ago.
 
 AI excels at "rapidly repeating past patterns." What humans need is "perceiving patterns that have never existed before." These are fundamentally different capabilities, and AGI cannot substitute the latter.
 
-## AI's True Role
+## Current AI Is Already Being Used
 
-AI is not a tool for replacing work. It is a tool for seeing structure.
+Before debating AGI, look at what current AI is already doing.
 
-:::compare
-| What AI should do | What humans should do |
-| --- | --- |
-| Extract structure from data | Touch the soil |
-| Trace production routes | Plant crops |
-| Visualize causal relationships | Nurture microorganisms |
-| Find connections humans miss | Repair broken infrastructure |
-| Accumulate "winning combinations" for cultivation | Secure local food supply |
+:::highlight
+**AI's track record:**
+**Military** — The Ukrainian military has deployed AI for drone control, intelligence analysis, and target selection in live combat. Current AI is already transforming the battlefield — no need to wait for AGI.
+**Software development** — Claude itself is developed using Claude. AI writes, tests, and improves AI code. Developer productivity has already multiplied several times over.
+**Structural analysis** — The analysis on this site was written in collaboration with AI (Claude). Oil refining structures, chemical fertilizer dependencies, fusion reactor materials — humans pose questions, AI organizes information and makes structure visible.
 :::
 
-AI cannot coexist with microbes. Soil regeneration is collaborative work with microorganisms. Mycorrhizal network formation takes months. Soil structure recovery takes 1–3 years. Ecosystem stabilization takes 5–10 years. AI processes in nanoseconds, but microbes reproduce on monthly timescales. No technological advance can eliminate this asymmetry.
+All of this is done by **current AI** — not AGI. Current AI is powerful enough and practical enough. There is no need to wait for AGI.
+
+## Can AGI Break Even?
+
+"Once AGI arrives, everything changes." But no one talks about AGI's economics.
+
+:::chain
+**AGI's economic structure:**
+Achieving AGI → Requires far larger data centers than current AI
+→ Data center construction costs → Trillions of yen (tens of billions of dollars)
+→ Operating costs (electricity, cooling, maintenance, chip replacement) → Hundreds of billions to trillions of yen annually
+→ **To recoup this investment, how much will companies pay?**
+:::
+
+The question is this: you trap geniuses inside a data center, feed them massive past data, and they produce answers. How much will companies pay for those answers?
+
+:::compare
+| | Current Claude | AGI (hypothetical) |
+| --- | --- | --- |
+| Development & operating cost | Large but manageable | Orders of magnitude larger |
+| Capabilities | Code generation, analysis, translation, document creation | Same + "smarter" |
+| What companies will pay | Tens to hundreds of dollars/month per user | ? |
+| Additional problems solved | — | **Unclear what they are** |
+:::
+
+With current Claude, you can write code, perform analysis, translate, and create documents. If AGI becomes "smarter," how much more will companies pay? If current AI is sufficient for most tasks, AGI's additional value may not justify its enormous additional cost.
+
+:::highlight
+**AGI's profitability problem:**
+Development costs → Trillions of yen (look at Google's and Microsoft's annual AI investments)
+Operating costs → Hundreds of billions to trillions of yen annually (electricity, cooling, semiconductors)
+Additional value → Only the delta from current AI
+**The more domains where "current AI is enough" expand, the harder it becomes to recoup AGI's additional investment**
+:::
+
+And all of this runs inside data centers built from petrochemical materials. Since fossil resources are finite, AGI's economic model is doubly unsustainable.
 
 :::quote
 AGI may complete the world of information.
 But the data center running AGI is itself built from oil.
 Past data holds no answers for the future.
+Current AI is already powerful enough.
 And repairing the broken physical world can only be done by human hands.
 :::

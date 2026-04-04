@@ -464,29 +464,31 @@ survivors will be those who can grow food on their own land.
 What they need is not cutting-edge technology.
 It is water, plants, and the wisdom of living.
 
-## All Paths Converge
+## A Very Different World Is Required
+
+Look back at the argument so far.
 
 :::chain
-**Every article in this series connects to one structure:**
-
-The Agriculture Mistake → Chemical dependence collapses with one refinery
-The Fusion Mistake → Energy replaces; materials do not
-The AGI Mistake → AI cannot do physical restoration work
-NVIDIA's Collapse → No gold mine, no shovel business
-Enterprise IT Taxes → Claude breaks Oracle, SIer, and consultant lock-in
-Fossil Materials → Post-plastic world needs biology
-Drones and Defense → Small beats large in warfare
-AI and Solo Business → Individual beats corporation
-Society's Design Failure → Healthcare, pensions, agriculture — all broke by leaving nature
+**Every premise of current society collapses:**
+Fossil resources → Deplete (Chapter 2)
+Food production → Must escape chemical fertilizer dependency (Chapter 3)
+Energy → Fusion does not solve the materials problem (Chapter 5)
+Industries → Military, IT, desk work all shrink (Chapters 6–8)
+Population distribution → No reason for Tokyo's extreme concentration
+Trade → The premise of free trade collapses
+Healthcare and pensions → Systems designed for urban salaried workers no longer fit
 :::
 
-One conclusion:
+Incremental fixes will not work.
+**A world quite different from today must be designed.**
+
+Work changes. Where people live changes. Trade changes. Healthcare and pensions change.
+But some things do not change.
 
 :::quote
-With nature, we can live.
-The further we move from nature, the higher the cost of living becomes.
-Water exists. Plants exist. Microorganisms exist.
-These are Japan's true resources.
-Fukuoka and Okada knew this. Dr. Christine Jones proved it.
-All that remains is to practice it.
+Water exists. Plants exist. Microorganisms exist. Land exists.
+Japan's true resources were at our feet all along.
 :::
+
+So what do we add, and what do we subtract?
+**The next chapter, "Subtraction Design," draws that concrete picture.**

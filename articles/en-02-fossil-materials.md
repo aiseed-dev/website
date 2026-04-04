@@ -94,10 +94,23 @@ This is what "fossil material dependency" means in human terms:
 "If every car goes electric, we won't need oil anymore" —
 this idea completely ignores the structure of materials.
 
-### Gasoline can be reduced. But diesel is unavoidable.
+### Refining produces fuel. So use it.
 
-Electrifying passenger cars is rational. Gasoline demand can decrease.
-But **diesel is a different matter entirely**.
+Refine crude oil for naphtha, and gasoline and diesel **inevitably** come out alongside it.
+
+:::chain
+**The structural fact of refining:**
+Plastics, medical devices, and fertilizer feedstock require naphtha
+→ Naphtha can only be obtained through crude oil refining
+→ Refining crude oil produces gasoline, diesel, and heavy fuel oil simultaneously
+→ As long as materials are needed, oil refining cannot stop
+→ If refining cannot stop, **both gasoline and diesel will keep coming out**
+→ Throw that fuel away? Using it is the rational choice.
+:::
+
+### Diesel — sectors that cannot electrify
+
+Diesel users cannot switch to electricity even if they wanted to.
 
 :::highlight
 **Sectors that are extremely difficult to electrify:**
@@ -107,21 +120,28 @@ Construction machinery → High-load, long-duration operation. Only small machin
 Agricultural machinery → No charging infrastructure in fields. Diesel is the only option.
 :::
 
-And when you refine crude oil for naphtha, diesel **inevitably** comes out as well.
+Diesel will not disappear — for two reasons:
+**The users cannot electrify.** And **refining inevitably produces it.**
 
-:::chain
-**The structural fact of refining:**
-Plastics, medical devices, and fertilizer feedstock require naphtha
-→ Naphtha can only be obtained through crude oil refining
-→ Refining crude oil produces gasoline, diesel, and heavy fuel oil simultaneously
-→ As long as materials are needed, oil refining cannot stop
-→ If refining cannot stop, **diesel will keep coming out no matter what**
-→ Trucks, ships, construction equipment, and farm machinery use it — this is the most rational outcome
+### Gasoline — the case for keeping hybrid vehicles
+
+Gasoline also comes out of refining. If it comes out, it should be used.
+
+If all passenger cars go fully electric, the gasoline produced has nowhere to go.
+Discard it, or let it distort markets as surplus — either way, it's waste.
+
+:::highlight
+**Why hybrid vehicles are structurally rational:**
+Refining for naphtha → Gasoline comes out
+→ Hybrid vehicles use that gasoline at high efficiency
+→ More gasoline consumption than EVs, but no refining byproduct goes to waste
+→ Less battery usage (eases resource constraints on lithium and cobalt)
+→ Overall optimization across refining, materials, and energy
 :::
 
-Reducing gasoline demand through passenger EV adoption makes sense.
-But diesel will not disappear — for two reasons:
-**The users cannot electrify.** And **refining inevitably produces it.**
+Going all-EV means discarding the gasoline that refining produces,
+then generating separate electricity to power cars — **double investment in energy**.
+Hybrid vehicles are the structurally rational choice: they use the fuel that comes out anyway.
 
 :::highlight
 **Structural fact:**

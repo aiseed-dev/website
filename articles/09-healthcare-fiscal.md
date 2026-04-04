@@ -6,8 +6,8 @@ subtitle: 年金・医療・農業が同時に崩壊する構造
 description: 透析医療は化石資源に完全依存し、年金は現役世代を圧殺し、アメリカ農業は土壌を破壊し続ける。全ての問題の根は同じ——自然から離れたことだ。
 date: 2025.04.04
 label: Structural Analysis 09
-prev_slug: ubs
-prev_title: UBSと金融崩壊
+prev_slug: enterprise-tax
+prev_title: 企業ITの税を引く
 next_slug: subtraction-design
 next_title: 引き算の設計
 ---
@@ -296,7 +296,7 @@ Liquid Carbon → 土壌微生物のエネルギー源
 核融合の間違い → エネルギーを代替しても素材は代替できない
 AGIの間違い → AIは微生物と共存できない。物理的な仕事は人間にしかできない
 NVIDIAの崩壊 → 金鉱がなければシャベル屋も潰れる
-UBSと金融崩壊 → 製油所から不動産ファンドまで連鎖する
+企業ITの税を引く → Oracle税、SIer税をClaudeが壊す
 化石資源と現代文明 → プラスチックの後は微生物と植物
 ドローン＋AIと小国防衛 → 小さいことが武器になる
 AIと個人事業 → 1人＋AIで大企業に勝てる

@@ -7,8 +7,8 @@ subtitle: Healthcare, Pensions, and Agriculture Collapse Together
 description: Dialysis costs ¥1.6 trillion annually, entirely dependent on fossil fuels. Social insurance exceeds 30% of working-age income. American agriculture mines topsoil and depletes aquifers. The root is the same — departure from nature.
 date: 2025.04.04
 label: Structural Analysis 09
-prev_slug: ubs
-prev_title: UBS and Financial Collapse
+prev_slug: enterprise-tax
+prev_title: Eliminating Enterprise IT Taxes
 next_slug: subtraction-design
 next_title: Subtraction Design
 cta_label: Back to Life
@@ -260,7 +260,7 @@ The Agriculture Mistake → Chemical dependence collapses with one refinery
 The Fusion Mistake → Energy replaces; materials do not
 The AGI Mistake → AI cannot do physical restoration work
 NVIDIA's Collapse → No gold mine, no shovel business
-UBS and Finance → Physical destruction cascades to financial collapse
+Enterprise IT Taxes → Claude breaks Oracle, SIer, and consultant lock-in
 Fossil Materials → Post-plastic world needs biology
 Drones and Defense → Small beats large in warfare
 AI and Solo Business → Individual beats corporation

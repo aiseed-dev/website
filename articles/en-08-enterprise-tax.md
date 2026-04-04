@@ -1,0 +1,219 @@
+---
+slug: enterprise-tax
+number: "08"
+lang: en
+title: Eliminating Enterprise IT Taxes
+subtitle: Oracle Tax, Microsoft Tax, SaaS Tax, SIer Tax, Consultant Tax. Claude Eliminates Them All.
+description: Companies unknowingly pay "taxes" to Oracle, Microsoft, SaaS vendors, system integrators, and consultants. Claude is the tool that structurally eliminates them.
+date: 2025.04.04
+label: Structural Analysis 08
+prev_slug: nvidia
+prev_title: NVIDIA's Collapse
+next_slug: healthcare-fiscal
+next_title: Society's Design Failure
+cta_label: Act Now
+cta_title: With nature, we can live.
+cta_text: Stop paying taxes to vendors. Start building what you actually need.
+cta_btn1_text: Light Farming
+cta_btn1_link: /light-farming/
+cta_btn2_text: All Insights
+cta_btn2_link: /en/insights/
+---
+
+## Companies Are Paying "Taxes"
+
+Look at enterprise IT spending structurally, and you see it is not investment in technology — it is **taxes**.
+
+You pay because there's no alternative. You pay out of inertia. You pay because switching is frightening. This is not technology investment. It is structural taxation.
+
+:::highlight
+**Five taxes companies pay:**
+1. **Oracle Tax / SQL Server Tax** — Database licensing
+2. **Microsoft Tax** — Windows, Office 365, Azure
+3. **SaaS Tax** — Accumulating monthly subscriptions
+4. **SIer Tax** — Outsourced system development and operations
+5. **Consultant Tax** — Paying outsiders to tell you what to do
+:::
+
+Claude is the tool that **structurally eliminates** these taxes.
+
+## Oracle Tax / SQL Server Tax — The Clearest Example
+
+Have you ever seen Oracle Database licensing costs?
+
+:::highlight
+**The Oracle tax structure:**
+Oracle Database Enterprise Edition → Millions of yen per processor per year
+Oracle RAC (high availability) → Additional license
+Oracle Partitioning → Additional license
+Oracle Advanced Security → Additional license
+Oracle support contract → 22% of license cost paid annually, forever
+**You're charged for every feature you use. You pay the base fee even for features you don't.**
+:::
+
+SQL Server has the same structure. Enterprise Edition costs hundreds of thousands of yen per core per year. Every feature addition adds another license.
+
+But PostgreSQL exists.
+
+:::compare
+| | Oracle / SQL Server | PostgreSQL |
+| --- | --- | --- |
+| License cost | Millions to tens of millions of yen/year | **Free** |
+| High availability | Additional license (millions of yen) | Build with Patroni etc. (free) |
+| Partitioning | Additional license | Built-in feature |
+| JSON support | Additional option | Built-in feature |
+| Full-text search | Additional option | Built-in feature |
+| Performance | High | Comparable (depends on use case) |
+| Migration barrier | — | **SQL dialect differences, stored procedure rewriting** |
+:::
+
+The migration barrier is "SQL dialect differences" and "stored procedure rewriting." This is why companies have paid the Oracle tax for decades.
+
+**Then Claude enters the picture.**
+
+:::chain
+**Database migration with Claude:**
+Hand Oracle SQL and stored procedures to Claude
+→ Claude rewrites them as PostgreSQL-compatible SQL
+→ Maps Oracle-specific functions to PostgreSQL equivalents
+→ Converts PL/SQL → PL/pgSQL
+→ Generates test cases
+→ **The migration barrier disappears**
+→ The Oracle tax disappears
+:::
+
+This is not hypothetical. Claude can comprehend and rewrite codebases of hundreds of thousands of lines. SQL dialect conversion is structural code transformation — exactly the kind of work AI excels at.
+
+Migration from SQL Server works the same way. T-SQL → PL/pgSQL. SSMS-dependent management scripts → standard SQL. Claude rewrites them, and the SQL Server tax disappears.
+
+## Microsoft Tax
+
+Windows, Office 365, Azure, Teams — Microsoft levies multiple "taxes" on enterprises simultaneously.
+
+:::highlight
+**Microsoft tax breakdown:**
+Windows → OEM license per PC. No choice.
+Office 365 → ¥1,000–4,000/user/month × all employees × 12 months
+Azure → Lock-in via "Windows compatibility"
+Teams → Bundled with Office 365. Looks "free" but it's part of the bundle
+**For a midsize company (500 employees): tens of millions of yen annually.**
+:::
+
+Microsoft taxes Claude can eliminate:
+
+:::chain
+**How to eliminate the Microsoft tax:**
+Document creation → Claude generates Markdown/HTML/PDF directly. Word becomes unnecessary.
+Spreadsheets → Claude writes data analysis code. Excel becomes unnecessary.
+Presentations → Claude generates HTML/Marp slides. PowerPoint becomes unnecessary.
+Email → AI drafts and organizes. Outlook's necessity decreases.
+Cloud → Migrate to AWS/GCP/self-hosted. Claude writes the configuration.
+:::
+
+You don't have to eliminate everything at once. Eliminate one at a time. Each one you eliminate reduces the Microsoft tax.
+
+## SaaS Tax — Accumulating Monthly Charges
+
+SaaS (Software as a Service) was sold as "you don't own it." But before you know it, monthly charges have piled up.
+
+:::highlight
+**SaaS tax reality (midsize company example):**
+Salesforce → Tens of thousands of yen/user/month × sales department
+Slack → Thousands of yen/user/month × all employees
+Zoom → Thousands of yen/license/month
+Notion → Thousands of yen/user/month
+Figma → Thousands of yen/user/month × design department
+Jira → Thousands of yen/user/month × development department
+10–20 other SaaS tools → Hundreds of thousands to millions of yen/month
+**Total: tens of millions of yen per year in "taxes" paid without even realizing it.**
+:::
+
+Many features these SaaS tools provide can be replaced with custom tools built with Claude's help.
+
+:::chain
+**How to eliminate the SaaS tax:**
+CRM → Claude builds a simple database + UI
+Chat → Open source (Mattermost, etc.) + self-hosted server
+Project management → Claude builds a tool tailored to your requirements
+Documentation → Markdown + Git + static site generation
+**You don't need to replace every SaaS. Start with the most expensive ones.**
+:::
+
+## SIer Tax — From "Built for You" to "Built by You"
+
+In Japan, the bulk of corporate IT investment flows to SIers (System Integrators).
+
+:::highlight
+**SIer tax structure:**
+Requirements gathering → SIer interviews you → Millions of yen
+Basic design → SIer designs → Millions of yen
+Detailed design → SIer documents → Millions of yen
+Development → SIer implements → Tens of millions of yen
+Testing → SIer tests → Millions of yen
+Operations & maintenance → SIer bills monthly → Millions to tens of millions/year
+**Total: tens of millions to hundreds of millions of yen for one system.**
+:::
+
+The bulk of SIer person-hours goes to "writing design documents" and "routine coding." Exactly what Claude does best.
+
+:::chain
+**How to eliminate the SIer tax:**
+Requirements → The person who knows the business tells Claude directly
+Design → Claude generates design documents
+Development → Claude writes the code
+Testing → Claude generates test code
+Operations → Claude builds monitoring and maintenance systems
+**Claude replaces the majority of the SIer's role.**
+:::
+
+The people who know the business best are your own employees. Not the SIer. When employees communicate requirements directly to Claude and Claude builds the system, the SIer as "translator" becomes unnecessary.
+
+## Consultant Tax — Think for Yourself
+
+McKinsey, BCG, Accenture — companies pay tens of millions to hundreds of millions of yen for outside consultants to tell them "what to do."
+
+:::highlight
+**Consultant tax structure:**
+"Develop our DX strategy" → Tens of millions of yen
+"Propose our AI adoption plan" → Tens of millions of yen
+"Identify cost reduction measures" → Tens of millions of yen
+Deliverable → A few dozen beautifully designed PowerPoint slides
+**Implementation not included. You pay tens of millions just for "thinking."**
+:::
+
+Claude is a structural thinking tool. The content consultants spend weeks producing in slides, Claude can structure in hours.
+
+:::chain
+**How to eliminate the consultant tax:**
+Industry analysis → Claude extracts structure from public data
+Competitive analysis → Claude traces production routes and dependencies
+Cost analysis → Claude decomposes spending structures
+Strategy proposals → Claude visualizes options and causal relationships
+**The bulk of what you pay consultants for can be replaced by Claude.**
+:::
+
+A consultant's real value is "an outside perspective." But the era of paying tens of millions for "an outside perspective" is ending. Claude is the ultimate outside perspective. Unconstrained by industry conventions. No politics. No deference.
+
+## The Total of Five Taxes
+
+:::compare
+| Tax | Annual cost (midsize company, 500 people) | Can Claude eliminate it? |
+| --- | --- | --- |
+| Oracle / SQL Server Tax | Millions to tens of millions of yen | Yes, via PostgreSQL migration |
+| Microsoft Tax | Tens of millions of yen | Gradually, yes |
+| SaaS Tax | Tens of millions of yen | Start with the expensive ones |
+| SIer Tax | Tens to hundreds of millions of yen (per project) | Most of it, yes |
+| Consultant Tax | Tens of millions of yen (per engagement) | Most of it, yes |
+| **Total** | **¥100M+ per year in "taxes"** | — |
+:::
+
+Claude's cost is orders of magnitude less than these taxes. A few tens of thousands of yen per month in Claude usage can eliminate tens to hundreds of millions of yen in annual taxes.
+
+:::quote
+The bulk of enterprise IT spending is not technology investment — it is "taxes."
+Oracle tax, Microsoft tax, SaaS tax, SIer tax, consultant tax —
+paid because there's no alternative, paid out of inertia, paid because switching is frightening.
+Claude is the tool that structurally eliminates these taxes.
+Just as NVIDIA's CUDA lock-in is broken by AI,
+Oracle's, Microsoft's, and SIer lock-in will be broken by AI too.
+:::

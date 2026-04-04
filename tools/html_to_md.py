@@ -26,7 +26,7 @@ ARTICLE_ORDER = {
     "fusion": "05",
     "agi": "06",
     "nvidia": "07",
-    "ubs": "08",
+    "enterprise-tax": "08",
     "healthcare-fiscal": "09",
     "subtraction-design": "10",
 }

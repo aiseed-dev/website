@@ -9,8 +9,8 @@ date: 2025.04.04
 label: Structural Analysis 07
 prev_slug: agi
 prev_title: The AGI Mistake
-next_slug: ubs
-next_title: UBS and Financial Collapse
+next_slug: enterprise-tax
+next_title: Eliminating Enterprise IT Taxes
 cta_label: Structure
 cta_title: With nature, we can live.
 cta_text: The AI gold rush will end. What remains is soil.

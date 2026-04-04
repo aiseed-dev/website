@@ -8,8 +8,8 @@ date: 2025.04.03
 label: Structural Analysis 07
 prev_slug: agi
 prev_title: AGIの間違い
-next_slug: ubs
-next_title: UBSと金融崩壊
+next_slug: enterprise-tax
+next_title: 企業ITの税を引く
 ---
 
 ## シャベル屋のビジネスモデル

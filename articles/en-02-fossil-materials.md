@@ -171,6 +171,39 @@ Climate policy should not have started with "stop burning oil."
 It should have started with **"change the structure that makes materials depend on oil."**
 :::
 
+## Fossil Resources Are Finite — Depletion Is Unavoidable
+
+So far, we have examined the structure of refining. As long as materials are needed, refining cannot stop. Fuel comes out. It must be used. That is the current structure.
+
+But this structure itself will not last forever.
+**Because fossil resources are finite.**
+
+:::highlight
+**Oil's remaining extractable years:**
+Approximately 50 years based on proven reserves. Including new discoveries, perhaps 100–150 years.
+But "years of extractable reserves" is a misleading number.
+Depletion does not arrive suddenly. **Extraction costs rise year after year.**
+The cheapest fields are exhausted first. What remains is deep-sea, arctic, oil sands —
+expensive to extract, with massive environmental costs.
+Before oil "runs out," it becomes **too expensive to use**.
+:::
+
+Natural gas faces the same fate. Ammonia, the basis of nitrogen fertilizer, is made from natural gas. Natural gas has roughly 50 years of extractable reserves. The era when chemical fertilizer feedstock becomes "too expensive to afford" arrives before depletion itself.
+
+:::chain
+**How fossil resources end:**
+Cheap fields depleted → Extraction costs rise
+→ Naphtha prices rise → Plastics and fertilizer get expensive
+→ Food prices soar → Social instability
+→ Even more costly fields developed → Environmental destruction accelerates
+→ Eventually extraction becomes economically impossible
+→ **This process has already begun**
+:::
+
+Geopolitical risks like the Hormuz crisis **fast-forward this process overnight**. Costs that would rise gradually over 50 years spike in a single night from a blockade or airstrike.
+
+The fact that fossil resources are finite is the foundation of every argument. The structure of depending on fossil resources for materials will inevitably end. The question is not "whether it ends" but "whether alternatives exist when it does."
+
 ## After Fossil Materials — Biology
 
 When fossil resources are depleted, or when material substitution

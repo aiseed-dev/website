@@ -78,7 +78,7 @@ Everything on the left is completed inside an office, inside a screen. Everythin
 :::highlight
 **Structurally speaking:**
 33% of global farmland is degraded → Recovery requires human hands
-Vegetable cultivation without chemical fertilizer → Research must start from scratch
+Vegetable cultivation without chemical fertilizer → Practice in the field must start from scratch
 Most urban infrastructure is aging → Distributed redesign and physical construction needed
 Ecosystems are deteriorating worldwide → Physical restoration of forests, rivers, wetlands needed
 This is work on a scale that billions of people cannot finish in decades.

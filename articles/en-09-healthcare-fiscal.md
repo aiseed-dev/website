@@ -117,7 +117,7 @@ As Chapter 6 showed, bio-material manufacturing requires human labor permanently
 Timber (construction, fiber, chemical feedstock) → **Forestland** management, logging, and replanting
 Plant feedstock farming → **Farmland** is needed
 Regenerative agriculture → **Vast farmland** and grazing land needed
-Vegetable cultivation research → **Experimental plots** needed
+Vegetable cultivation practice → **Fields** needed (where practitioners experiment)
 Microbial and mycelium cultivation → **Land and space** needed
 Biomass collection → Physical labor in rural areas and forests
 **None of this can be done inside a Tokyo office building.**
@@ -162,7 +162,7 @@ Farmland and forestland acquisition support → Enable urban migrants to obtain 
 Job training → Programs for desk workers to learn bio-material manufacturing, agriculture, forestry
 Initial housing support → Utilize vacant houses, prepare housing for migrants
 Maintaining town services → Fiscal measures to sustain clinics, schools, and shops
-Distributing research facilities → Place bio-material and cultivation research centers in regional areas
+Establishing practice fields → Places for vegetable cultivation practice in regional areas. Practitioners needed, not researchers. AI handles analysis
 :::
 
 And one more — the most critical policy of all.

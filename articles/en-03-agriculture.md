@@ -290,17 +290,18 @@ How to mass-produce vegetables without chemical fertilizer — the cultivation m
 :::
 
 :::chain
-**Research needed for vegetables:**
-Which varieties grow without chemical fertilizer → Variety selection
-Which cover crop combinations suppress weeds → Cultivation system design
-How many generations does rewilding take → Long-term breeding
-AI to accumulate "winning combinations" → Data-driven cultivation design
-**All of these must start with research**
+**Practice needed for vegetables:**
+Which varieties grow without chemical fertilizer → Selection through field trials
+Which cover crop combinations suppress weeds → Trial and error in cultivation systems
+How many generations does rewilding take → Long-term breeding practice
+AI to accumulate "winning combinations" → AI handles data analysis and knowledge synthesis
+**All of these must start with practice in the field**
 :::
 
 Grains and beef have a method. Vegetables do not.
-Because there is no method, research must begin immediately.
-If we wait to start research until chemical fertilizer becomes unaffordable,
+Because there is no method, practice must begin immediately.
+Fukuoka and Gabe Brown were not researchers — they were practitioners.
+If we wait until chemical fertilizer becomes unaffordable,
 **an era when vegetables simply cannot be grown will arrive**.
 
 ### The second reason — geopolitical risk can halt supply overnight

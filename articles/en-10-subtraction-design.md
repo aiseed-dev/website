@@ -299,10 +299,12 @@ Grains and beef have regenerative agriculture.
 Small-scale self-sufficiency has Fukuoka's method.
 But producing vegetables at a scale to supply an entire town has not been established.
 
-**This is the most urgent policy priority.**
+**This is the most urgent priority.**
 Grains and beef prevent starvation.
 But without vegetables, health cannot be maintained.
-Research must begin now.
+What is needed is not researchers. **It is practitioners in the field.**
+Fukuoka and Gabe Brown were both practitioners. Data analysis and knowledge synthesis are jobs for AI.
+Practice must begin now.
 
 :::quote
 With nature, we can live.

@@ -223,13 +223,12 @@ Pension system's age-65 assumption → Blocks diversification of working pattern
 :::highlight
 **Regulations and support to add:**
 Regenerative agriculture transition support → Accelerate escape from chemical fertilizer dependency
-Vegetable cultivation research → Establish mass production without chemical fertilizer (Chapter 3)
+Vegetable cultivation practice → Practitioners establish fertilizer-free methods in the field (Chapter 3). AI handles analysis and knowledge synthesis
 Farmland and forestland acquisition support → Enable urban migrants to obtain land
 Job training → Programs for desk workers to learn bio-material manufacturing, agriculture, forestry
 Trade policy reform → Tariffs to protect the domestic production base
 Initial housing support → Utilize vacant houses, prepare housing for migrants
 Maintaining town services → Fiscal measures to sustain clinics, schools, and shops
-Distributing research facilities → Place bio-material and cultivation research centers in regional areas
 :::
 
 ## Energy Policy and Agricultural Policy Must Not Be Separated

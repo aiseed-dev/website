@@ -153,9 +153,26 @@ Rural life itself does not change much.
 Towns exist. Services exist. Farmland and forestland surround them — that structure becomes the ready-made destination.
 **What changes is that Tokyo's extreme concentration dissolves.**
 
+But having the destination does not mean people move on their own.
+**Policy support is needed.**
+
+:::highlight
+**Policies required:**
+Farmland and forestland acquisition support → Enable urban migrants to obtain land
+Job training → Programs for desk workers to learn bio-material manufacturing, agriculture, forestry
+Initial housing support → Utilize vacant houses, prepare housing for migrants
+Maintaining town services → Fiscal measures to sustain clinics, schools, and shops
+Distributing research facilities → Place bio-material and cultivation research centers in regional areas
+:::
+
+The industrial transformation is inevitable.
+But rather than scrambling after the transformation hits,
+**preparing regional infrastructure now** is the job of policy.
+
 :::highlight
 Rural depopulation is not "a problem to be solved" —
 it becomes **a result solved by industrial transformation.**
+But policies are needed to make that transition smooth.
 :::
 
 ## Current Healthcare and Pensions Do Not Fit This Society

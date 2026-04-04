@@ -29,6 +29,7 @@ ARTICLE_ORDER = {
     "enterprise-tax": "08",
     "healthcare-fiscal": "09",
     "subtraction-design": "10",
+    "regulation-redesign": "11",
 }
 
 

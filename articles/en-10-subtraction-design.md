@@ -9,8 +9,8 @@ date: 2025.04.04
 label: Structural Analysis 10
 prev_slug: healthcare-fiscal
 prev_title: Society's Design Failure
-next_slug:
-next_title:
+next_slug: regulation-redesign
+next_title: Regulation Redesign
 cta_label: Start Now
 cta_title: With nature, we can live.
 cta_text: Subtract the unnecessary. What remains is enough.
@@ -202,48 +202,16 @@ What remains after subtraction:
 water, land, plants, microorganisms, and human hands.
 Japan has all of these.
 
-## Policy — Regulations to Subtract, Support to Add
+## Subtraction Alone Is Not Enough — Regulations Must Be Redesigned
 
-By now, one thing should be clear.
-**Existing regulations are blocking the transformation.**
+Subtraction happens naturally. When fossil resources deplete, what was added collapses on its own.
 
-Current regulations were all designed for the era of fossil resources and urban concentration.
-Free trade agreements, agricultural land laws, the healthcare system, the pension system, urban planning —
-these regulations themselves become barriers to the transition to a new society.
+But **old regulations do not disappear naturally.**
+Agricultural land laws, free trade agreements, the healthcare system, the pension system, urban planning —
+regulations designed for the era of fossil resources and urban concentration are blocking the transformation.
 
-:::chain
-**Regulations to subtract:**
-Strict farmland conversion rules → Make it difficult for urban migrants to acquire agricultural land
-Free trade agreement agricultural clauses → Cannot protect domestic farming from cheap imports
-Urban planning zoning laws → Block integration of agriculture, manufacturing, and housing
-Healthcare fee schedules → Biased toward "treatment," no incentive for "prevention"
-Pension system's age-65 assumption → Blocks diversification of working patterns
-:::
-
-Subtracting alone is not enough. New support is needed.
-
-:::highlight
-**Policies that must be added:**
-Farmland and forestland acquisition support → Enable urban migrants to obtain land
-Job training → Programs for desk workers to learn bio-material manufacturing, agriculture, forestry
-Trade policy reform → Tariffs to protect the domestic production base
-Initial housing support → Utilize vacant houses, prepare housing for migrants
-Maintaining town services → Fiscal measures to sustain clinics, schools, and shops
-Distributing research facilities → Place bio-material and vegetable cultivation research centers in regional areas
-:::
-
-Policy itself needs both subtraction and addition.
-**Subtract regulations from the old era. Add support for the new society.**
-
-The industrial transformation is inevitable.
-But for people to actually move, start new work, and build sustainable livelihoods,
-regulations must change and support must be prepared.
-
-**Subtraction happens naturally. When fossil resources deplete, what was added collapses on its own.**
-**But old regulations do not disappear naturally. They must be changed with intention.**
-
-Prepare now, not after the transformation hits.
-That is the job of policy.
+To realize subtraction design, regulation redesign is essential.
+**The next chapter draws the concrete regulatory reforms needed.**
 
 ## What Will People Eat?
 

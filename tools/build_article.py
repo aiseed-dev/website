@@ -176,6 +176,8 @@ def build_table(content):
 
 def build_html(meta, body_html):
     """Assemble full HTML page from template and content."""
+    lang = meta.get("lang", "ja")
+    is_en = lang == "en"
     slug = meta.get("slug", "article")
     number = meta.get("number", "")
     title = meta.get("title", "")
@@ -188,27 +190,54 @@ def build_html(meta, body_html):
     next_slug = meta.get("next_slug", "")
     next_title = meta.get("next_title", "")
     cta_label = meta.get("cta_label", "Back to Soil")
-    cta_title = meta.get("cta_title", "自然とともにあれば、生きられる")
-    cta_text = meta.get("cta_text", "全ての構造分析は、一つの結論に向かう。")
-    cta_btn1_text = meta.get("cta_btn1_text", "自然農法とは")
+    cta_title = meta.get("cta_title",
+                         "With nature, we can live." if is_en else "自然とともにあれば、生きられる")
+    cta_text = meta.get("cta_text",
+                        "Every structural analysis converges on one conclusion." if is_en
+                        else "全ての構造分析は、一つの結論に向かう。")
+    cta_btn1_text = meta.get("cta_btn1_text",
+                             "Natural Farming" if is_en else "自然農法とは")
     cta_btn1_link = meta.get("cta_btn1_link", "/about/")
     cta_btn2_text = meta.get("cta_btn2_text", "Light Farming")
     cta_btn2_link = meta.get("cta_btn2_link", "/light-farming/")
 
+    # Path prefix for English articles
+    insights_base = "/en/insights" if is_en else "/insights"
+    css_path = "../../../css/style.css" if is_en else "../../css/style.css"
+    js_path = "../../../js/main.js" if is_en else "../../js/main.js"
+    img_path = "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg"
+
+    # Navigation labels
+    home_label = "Home" if is_en else "ホーム"
+    about_label = "Natural Farming" if is_en else "自然農法とは"
+    lf_label = "Light Farming"
+    gallery_label = "Field Notes" if is_en else "畑の記録"
+    insights_label = "Insights"
+    contact_label = "Contact" if is_en else "お問い合わせ"
+    prev_prefix = "Prev: " if is_en else "前: "
+    next_prefix = "Next: " if is_en else "次: "
+    insights_top = "Insights Top" if is_en else "Insights トップ"
+    series_label = f"Structural Analysis Series {number}" if is_en else f"構造分析シリーズ {number}"
+    site_name = "Living with Nature" if is_en else "自然と対話する暮らし"
+    site_tagline = "Natural Farming" if is_en else "Natural Farming"
+    footer_about = ("With nature, we can live. The path shown by Masanobu Fukuoka's natural farming "
+                    "and the science of Light Farming." if is_en
+                    else "自然とともにあれば、生きられる。福岡正信の自然農法とLight Farmingの科学が示す、生きるための道。")
+
     # Article navigation
     nav_html = '<div class="article-nav">\n'
     if prev_slug:
-        nav_html += f'  <a href="/insights/{prev_slug}/">&larr; 前: {prev_title}</a>\n'
+        nav_html += f'  <a href="{insights_base}/{prev_slug}/">&larr; {prev_prefix}{prev_title}</a>\n'
     else:
         nav_html += '  <span></span>\n'
     if next_slug:
-        nav_html += f'  <a href="/insights/{next_slug}/">次: {next_title} &rarr;</a>\n'
+        nav_html += f'  <a href="{insights_base}/{next_slug}/">{next_prefix}{next_title} &rarr;</a>\n'
     else:
-        nav_html += '  <a href="/insights/">Insights トップ &rarr;</a>\n'
+        nav_html += f'  <a href="{insights_base}/">{insights_top} &rarr;</a>\n'
     nav_html += '</div>'
 
     return f'''<!DOCTYPE html>
-<html lang="ja">
+<html lang="{lang}">
 
 <head>
     <!-- Google tag (gtag.js) -->
@@ -222,11 +251,11 @@ def build_html(meta, body_html):
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{description}">
-    <title>{title} — {subtitle} | Insights | 自然と対話する暮らし</title>
+    <title>{title} — {subtitle} | Insights | {site_name}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="{css_path}">
     <style>
         .article-meta {{
             text-align: center;
@@ -319,16 +348,16 @@ def build_html(meta, body_html):
     <header class="header">
         <div class="header-inner">
             <a href="/" class="logo">
-                自然と対話する暮らし
-                <span>Natural Farming</span>
+                {site_name}
+                <span>{site_tagline}</span>
             </a>
             <nav class="nav">
-                <a href="/">ホーム</a>
-                <a href="/about/">自然農法とは</a>
-                <a href="/light-farming/">Light Farming</a>
-                <a href="/gallery/">畑の記録</a>
-                <a href="/insights/" class="active">Insights</a>
-                <a href="/contact/">お問い合わせ</a>
+                <a href="/">{home_label}</a>
+                <a href="/about/">{about_label}</a>
+                <a href="/light-farming/">{lf_label}</a>
+                <a href="/gallery/">{gallery_label}</a>
+                <a href="{insights_base}/" class="active">{insights_label}</a>
+                <a href="/contact/">{contact_label}</a>
             </nav>
             <button class="nav-toggle" aria-label="メニュー">
                 <span></span>
@@ -340,7 +369,7 @@ def build_html(meta, body_html):
 
     <!-- Article -->
     <section class="page-hero">
-        <div class="page-hero-image" style="background-image: url('../../images/IMG_3285.jpg');"></div>
+        <div class="page-hero-image" style="background-image: url('{img_path}');"></div>
         <div class="page-hero-content">
             <p class="hero-label">{label}</p>
             <h1 class="hero-title">{title}</h1>
@@ -352,7 +381,7 @@ def build_html(meta, body_html):
         <div class="container-narrow">
             <div class="article-meta">
                 <p class="date">{date}</p>
-                <p class="series">構造分析シリーズ {number}</p>
+                <p class="series">{series_label}</p>
             </div>
 
             <div class="prose fade-in">
@@ -383,18 +412,18 @@ def build_html(meta, body_html):
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-about">
-                <h3>自然と対話する暮らし</h3>
-                <p>自然とともにあれば、生きられる。福岡正信の自然農法とLight Farmingの科学が示す、生きるための道。</p>
+                <h3>{site_name}</h3>
+                <p>{footer_about}</p>
             </div>
             <div class="footer-nav">
-                <h4>ページ</h4>
+                <h4>{"Pages" if is_en else "ページ"}</h4>
                 <ul>
-                    <li><a href="/">ホーム</a></li>
-                    <li><a href="/about/">自然農法とは</a></li>
-                    <li><a href="/light-farming/">Light Farming</a></li>
-                    <li><a href="/gallery/">畑の記録</a></li>
-                    <li><a href="/insights/">Insights</a></li>
-                    <li><a href="/contact/">お問い合わせ</a></li>
+                    <li><a href="/">{home_label}</a></li>
+                    <li><a href="/about/">{about_label}</a></li>
+                    <li><a href="/light-farming/">{lf_label}</a></li>
+                    <li><a href="/gallery/">{gallery_label}</a></li>
+                    <li><a href="{insights_base}/">{insights_label}</a></li>
+                    <li><a href="/contact/">{contact_label}</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
@@ -409,7 +438,7 @@ def build_html(meta, body_html):
         </div>
     </footer>
 
-    <script src="../../js/main.js"></script>
+    <script src="{js_path}"></script>
 </body>
 
 </html>
@@ -449,8 +478,12 @@ def build_article(md_path):
     # Build full HTML
     html = build_html(meta, indented)
 
-    # Write output
-    out_dir = OUTPUT_BASE / meta["slug"]
+    # Write output — English articles go to html/en/insights/slug/
+    lang = meta.get("lang", "ja")
+    if lang == "en":
+        out_dir = SITE_ROOT / "html" / "en" / "insights" / meta["slug"]
+    else:
+        out_dir = OUTPUT_BASE / meta["slug"]
     out_dir.mkdir(parents=True, exist_ok=True)
     out_file = out_dir / "index.html"
     out_file.write_text(html, encoding="utf-8")

@@ -30,6 +30,7 @@ ARTICLE_ORDER = {
     "healthcare-fiscal": "09",
     "subtraction-design": "10",
     "regulation-redesign": "11",
+    "ai-and-individual": "12",
 }
 
 

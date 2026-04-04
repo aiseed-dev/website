@@ -8,8 +8,8 @@ date: 2025.04.04
 label: Structural Analysis 11
 prev_slug: subtraction-design
 prev_title: 引き算の設計
-next_slug: 
-next_title: 
+next_slug: ai-and-individual
+next_title: AIと個人事業
 ---
 
 ## なぜ規制の再設計が必要か

@@ -9,8 +9,8 @@ date: 2025.04.04
 label: Structural Analysis 11
 prev_slug: subtraction-design
 prev_title: Subtraction Design
-next_slug:
-next_title:
+next_slug: ai-and-individual
+next_title: AI and the Individual
 cta_label: Start Now
 cta_title: Redesign the rules. Redesign society.
 cta_text: Old regulations block the new world. Change the rules, and the transformation becomes possible.

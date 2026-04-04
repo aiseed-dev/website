@@ -166,15 +166,26 @@ Distributing research facilities → Place bio-material and cultivation research
 :::
 
 And one more — the most critical policy of all.
-**Tariffs on cheap agricultural products and timber from abroad.**
+**Rethinking free trade.**
 
-Even if Japan builds a domestic production system for bio-materials, food, and timber,
-cheap imports from overseas will make that livelihood impossible.
-To protect the lives of people working in land-based industries,
-trade policy that protects domestic production is essential.
+Free trade as we know it rested on a specific premise.
 
 :::chain
-**Without tariffs:**
+**The premise of free trade:**
+Cheap oil → Cheap transportation → Shipping goods from the other side of the planet is profitable
+→ Produce where labor is cheapest, consume in developed nations
+→ Domestic agriculture and forestry dismissed as "inefficient"
+→ **Complete free trade accepted as correct**
+:::
+
+This premise itself depended on fossil resources.
+
+Even if Japan builds a domestic production system for bio-materials, food, and timber,
+under complete free trade, cheap imports will crush it.
+The livelihoods of people working in land-based industries cannot survive.
+
+:::chain
+**If free trade continues unchanged:**
 Domestic agriculture, forestry, and bio-material production begins
 → Cheap agricultural products and timber are imported from abroad
 → Domestic producers cannot compete on price
@@ -182,10 +193,10 @@ Domestic agriculture, forestry, and bio-material production begins
 → **The industrial transformation itself fails**
 :::
 
-This is not "protectionism."
-As fossil resources deplete, transportation costs will rise.
-The model of shipping cheap goods from far away will itself become unviable.
-Tariffs are a transitional measure to protect the domestic production base until that shift completes.
+As fossil resources deplete, transportation costs will eventually rise,
+and the model of shipping cheap goods from far away will become unviable.
+But if the domestic production base is destroyed before that happens, it is too late.
+**If the premise of free trade is collapsing, trade policy must change too.**
 
 The industrial transformation is inevitable.
 But rather than scrambling after the transformation hits,

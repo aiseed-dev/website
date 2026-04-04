@@ -165,9 +165,31 @@ Maintaining town services → Fiscal measures to sustain clinics, schools, and s
 Distributing research facilities → Place bio-material and cultivation research centers in regional areas
 :::
 
+And one more — the most critical policy of all.
+**Tariffs on cheap agricultural products and timber from abroad.**
+
+Even if Japan builds a domestic production system for bio-materials, food, and timber,
+cheap imports from overseas will make that livelihood impossible.
+To protect the lives of people working in land-based industries,
+trade policy that protects domestic production is essential.
+
+:::chain
+**Without tariffs:**
+Domestic agriculture, forestry, and bio-material production begins
+→ Cheap agricultural products and timber are imported from abroad
+→ Domestic producers cannot compete on price
+→ No reason for people to stay in regional areas
+→ **The industrial transformation itself fails**
+:::
+
+This is not "protectionism."
+As fossil resources deplete, transportation costs will rise.
+The model of shipping cheap goods from far away will itself become unviable.
+Tariffs are a transitional measure to protect the domestic production base until that shift completes.
+
 The industrial transformation is inevitable.
 But rather than scrambling after the transformation hits,
-**preparing regional infrastructure now** is the job of policy.
+**preparing regional infrastructure and trade policy now** is the job of policy.
 
 :::highlight
 Rural depopulation is not "a problem to be solved" —

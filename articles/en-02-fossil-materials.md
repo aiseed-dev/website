@@ -265,6 +265,38 @@ They are physical and biological constraints.
 Microbial growth rates cannot match chemical plant processing speeds.
 Plant growth rates cannot keep up with demand growth.
 
+### Can bio-materials build a car?
+
+The car is the clearest illustration of bio-materials' limits.
+EV advocates say "just run on electricity," but they forget
+that **the vehicle itself is a mass of fossil-derived materials**.
+
+:::compare
+| Component | Current material | Bio alternative | Feasibility |
+| --- | --- | --- | --- |
+| Body panels | Steel, aluminum | — | Metals are not fossil-derived (but smelting requires massive energy) |
+| Bumpers | Polypropylene (petroleum) | Bioplastics | Insufficient impact absorption |
+| Interior (dashboard, etc.) | ABS, polyurethane (petroleum) | Bioplastics, mycelium | Partially possible, but heat resistance issues |
+| Seats | Polyurethane foam (petroleum) | Natural latex, mycelium | Several times the cost. Mass production difficult |
+| Tires | Synthetic rubber (petroleum) 60% + natural rubber 40% | 100% natural rubber | Rubber tree cultivation has limits. Full substitution impossible |
+| Paint | Petroleum-based solvents and resins | Plant oil-based paint | Inferior weathering resistance and gloss |
+| Wire insulation | PVC, polyethylene (petroleum) | Bioplastics | Insufficient heat resistance and flame retardancy |
+| Brake hoses | Synthetic rubber (petroleum) | Natural rubber | Insufficient heat and oil resistance. Safety-critical |
+| Windshield interlayer | PVB (petroleum) | No alternative | Essential for safety glass |
+:::
+
+Even an EV uses roughly the same amount of petroleum-derived materials as a combustion engine car, minus the battery.
+**An EV doesn't use oil "when driving," but it cannot be built without oil.**
+
+:::highlight
+**The reality cars force us to face:**
+Replacing all automotive components with bio-materials is currently impossible.
+Safety-critical parts (brake hoses, tires, safety glass interlayer) are especially difficult to substitute.
+As long as we keep building cars, petroleum-derived materials are needed,
+oil refining continues, and gasoline and diesel keep coming out.
+This is yet another reason why "going all-EV" is reckless.
+:::
+
 ## And Yet We Have No Choice
 
 But fossil resources are finite.

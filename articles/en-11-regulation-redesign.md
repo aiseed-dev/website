@@ -250,6 +250,10 @@ but by **people who touched the soil in the field.**
 What agriculture needs is practitioners, and AI to support them.
 Data analysis, knowledge synthesis, optimization of cultivation conditions —
 Claude does all of this faster, cheaper, and more accurately than researchers.
+
+**This chapter itself is the proof.**
+The chemistry of phosphate fertilizer, sulfur supply structures, Peak Sulfur projections, the flaws of ADWO —
+content that would take researchers months to compile into a paper, Claude organized in minutes.
 The "tax" called agricultural researchers is one that Claude will break.
 
 ## This Is What Regulation Redesign Means

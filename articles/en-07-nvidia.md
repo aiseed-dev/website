@@ -63,6 +63,43 @@ NVIDIA does not make end products. It does not sell AI services like Google does
 | Shovel seller's fate | Demand vanishes when the mine is exhausted | Demand vanishes when AI investment shrinks |
 :::
 
+## The CUDA Lock-In Collapses — AI Kills NVIDIA
+
+NVIDIA's real competitive advantage is not GPU hardware performance. It is **CUDA**.
+
+:::highlight
+**What is CUDA:**
+The software platform for running programs on NVIDIA GPUs.
+AI researchers have spent the past 15 years accumulating an enormous body of code, libraries, and tools written for CUDA.
+PyTorch, TensorFlow, and all major AI frameworks are designed with CUDA as their foundation.
+**"Even if you want to switch from NVIDIA, your CUDA code won't run elsewhere"** — this is the lock-in.
+:::
+
+AMD's GPUs approach NVIDIA in raw performance. Google's TPUs have their own strengths. But the massive wall of the CUDA ecosystem has prevented customers from switching.
+
+**Then Claude enters the picture.**
+
+:::chain
+**CUDA lock-in collapse scenario:**
+Hand CUDA code to Claude
+→ Claude rewrites it for AMD ROCm / Intel oneAPI / generic GPU targets
+→ Claude generates CUDA-compatible libraries for other hardware
+→ Existing CUDA code assets now run on non-NVIDIA hardware
+→ **CUDA lock-in disappears**
+→ There is no longer a reason to choose NVIDIA GPUs
+:::
+
+This is not hypothetical. Claude itself is developed using Claude. The ability to comprehend and rewrite codebases of hundreds of thousands of lines already exists. Porting from CUDA to ROCm is a structural code transformation — exactly the kind of work AI excels at.
+
+:::highlight
+**The ironic structure:**
+NVIDIA built the infrastructure for the AI industry.
+The AI (Claude) produced by that industry destroys NVIDIA's competitive advantage (CUDA lock-in).
+NVIDIA is undermined by the very industry it created.
+:::
+
+Once CUDA lock-in collapses, the GPU market becomes a price war. AMD, Intel, Google TPU, and Chinese custom chips all enter. NVIDIA's profit margins plummet, and the premise behind its $3 trillion market cap crumbles.
+
 ## GPU Raw Materials Are Petrochemical
 
 NVIDIA's problem is not just its business model. **Its products depend on petrochemical materials.**

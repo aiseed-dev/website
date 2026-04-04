@@ -141,44 +141,74 @@ Declining ore quality → Sulfur demand increases
 → **Supply decline and demand increase arrive simultaneously**
 :::
 
-## The Solution — Phosphorus Recovery from Sewage Sludge
+## The Wrong Solution — Phosphorus Recovery from Sewage Sludge
 
-There is another approach that does not depend on mining.
-**Phosphorus recovery from sewage sludge (P-Recovery).**
+In Germany and Switzerland, regulations (such as ADWO) mandate phosphorus recovery from sewage sludge.
+At first glance, this looks like the right circular approach.
 
-Phosphorus consumed by humans is ultimately discharged to wastewater treatment plants.
-Technology exists to recover phosphorus from this sewage sludge and reuse it as fertilizer.
-
-:::highlight
-**European precedent:**
-In Germany and Switzerland, regulations (such as ADWO)
-**mandate phosphorus recovery from sewage sludge.**
-The technology is maturing.
-:::
-
-But economic challenges remain.
+But it is **a waste of resources and energy.**
 
 :::compare
 | | Conventional phosphate fertilizer | Recovered phosphorus from sewage |
 | --- | --- | --- |
 | Feedstock | Phosphate rock + sulfuric acid | Sewage sludge |
 | Cost | $0.76/kg (after government subsidy) | $37–99/kg |
-| Sulfuric acid dependency | Complete | None |
-| Sustainability | Depleting | Circular |
+| Cost ratio | 1x | **50–130x** |
+| Energy | High consumption | Even higher consumption |
+| What it does | Make chemical fertilizer | **Make chemical fertilizer by a different method** |
 :::
 
-Recovered phosphorus costs 50–130x more than conventional fertilizer.
-**But this price gap assumes "cheap sulfur from fossil resources."**
-When sulfur prices surge, conventional fertilizer costs rise too, and the gap narrows.
+Spending $37–99/kg to recover phosphorus from sewage.
+And what is that recovered phosphorus used for? **To make chemical fertilizer.**
+This merely prolongs the chemical fertilizer system at enormous cost and energy.
+
+:::highlight
+**The fundamental error of ADWO:**
+Problem: Chemical fertilizer depends on fossil resources
+ADWO's solution: Recover fertilizer feedstock from sewage
+→ **Dependency on chemical fertilizer itself has not changed**
+→ Enormous energy and cost spent continuing the same mistake
+:::
+
+## The Real Solution — Stop Using Chemical Fertilizer
+
+As Chapters 3 and 10 showed, the answer already exists.
+
+**Transition to agriculture that does not need chemical fertilizer at all.**
+
+:::chain
+**Regenerative agriculture:**
+Cover crops + no-till farming → Soil microorganisms supply phosphorus and other minerals to plants
+→ Zero chemical fertilizer, zero sulfuric acid, zero phosphate rock
+→ Proven at scale by Gabe Brown
+
+**Fukuoka's natural farming:**
+No fertilizer → Minerals cycle through microbial-plant symbiosis
+→ Zero external dependency
+→ Individuals can produce food on their own land
+:::
+
+:::compare
+| | ADWO (sewage P-recovery) | Regenerative agriculture |
+| --- | --- | --- |
+| Chemical fertilizer dependency | Maintained (only feedstock changed) | **Eliminated** |
+| Cost | $37–99/kg | Zero (soil microorganisms supply) |
+| Energy consumption | High | Minimal |
+| Sulfur problem | Partially avoided | **Problem does not exist** |
+| Sustainability | Depends on sewage | Soil cycles autonomously |
+:::
+
+ADWO asks "how do we keep making chemical fertilizer?"
+But the real question is "**why are we still using chemical fertilizer at all?**"
 
 ## This Is What Regulation Redesign Means
 
-Germany and Switzerland's ADWO made phosphorus recovery **mandatory.**
-Left to market forces, cheap fossil-derived fertilizer wins indefinitely.
-**Without changing regulations, circular systems cannot get off the ground.**
+EV mandates ignored the structure shown in Chapter 2.
+ADWO prolongs dependency on chemical fertilizer.
+Both are **regulations built on old system assumptions**, blocking the transformation.
 
-This is not just about phosphorus.
-The same structure exists across every domain.
+Regulation redesign does not mean prolonging old systems.
+It means **creating regulations that accelerate the transition to new systems.**
 
 :::chain
 **Regulations to subtract:**
@@ -192,14 +222,14 @@ Pension system's age-65 assumption → Blocks diversification of working pattern
 
 :::highlight
 **Regulations and support to add:**
-Mandate phosphorus recovery from sewage sludge → Follow Germany/Switzerland's ADWO
+Regenerative agriculture transition support → Accelerate escape from chemical fertilizer dependency
+Vegetable cultivation research → Establish mass production without chemical fertilizer (Chapter 3)
 Farmland and forestland acquisition support → Enable urban migrants to obtain land
 Job training → Programs for desk workers to learn bio-material manufacturing, agriculture, forestry
 Trade policy reform → Tariffs to protect the domestic production base
 Initial housing support → Utilize vacant houses, prepare housing for migrants
 Maintaining town services → Fiscal measures to sustain clinics, schools, and shops
-Distributing research facilities → Place bio-material and vegetable cultivation research centers in regional areas
-Investment in non-sulfuric-acid phosphorus extraction → Electrochemical and biological approaches
+Distributing research facilities → Place bio-material and cultivation research centers in regional areas
 :::
 
 ## Energy Policy and Agricultural Policy Must Not Be Separated

@@ -272,30 +272,36 @@ Fukuoka's ultimate strategy. Let daikon and turnips grow among the weeds. Indivi
 
 ## Why We Must Start Now
 
-### The first reason — mass production of chemical fertilizer will become impossible
+### The first reason — mass production of vegetables will become impossible
 
-The raw materials for chemical fertilizer are fossil resources. Nitrogen fertilizer comes from natural gas. Phosphate fertilizer requires sulfur, a byproduct of oil refining. Fossil resources are finite. Extract them, and they diminish.
+The raw materials for chemical fertilizer are fossil resources. Nitrogen fertilizer comes from natural gas. Phosphate fertilizer requires sulfur, a byproduct of oil refining. Fossil resources are finite. The cheapest fields are exhausted first, and extraction costs rise year after year. Chemical fertilizer won't "disappear" — it will become **too expensive to afford**.
 
-But depletion does not arrive suddenly. **The cheapest fields are exhausted first, and extraction costs rise year after year.** Before oil "runs out," it becomes "too expensive to use." The same applies to chemical fertilizer.
+Grains and beef can be produced at scale without chemical fertilizer through regenerative agriculture. Cover crops and no-till for grains, planned grazing for beef — Gabe Brown and others have already demonstrated this.
 
-:::highlight
-**The structural problem of chemical fertilizer:**
-Rising natural gas prices → Rising ammonia (nitrogen fertilizer) production costs
-Depletion of cheap oil fields → Declining sulfur (phosphate fertilizer feedstock) supply, rising prices
-The rise in extraction costs is gradual but relentless.
-Beyond a certain threshold, mass production of chemical fertilizer becomes **economically impossible**.
-Fertilizer doesn't "disappear." **More and more farmers simply can't afford it.**
-:::
-
-When chemical fertilizer prices soar, food production collapses without alternatives. Transitioning to regenerative agriculture or natural farming takes 10 to 20 years. Soil microbial recovery alone takes a minimum of 1 to 3 years. If we don't begin the transition while chemical fertilizer is still "cheap," we won't make it in time.
+**But vegetables are a different story.**
 
 :::highlight
-**The asymmetry of time:**
-Rising chemical fertilizer costs → Already underway. Accelerating
-Transition to regenerative agriculture → 10–20 years
-Soil microbial recovery → Minimum 1–3 years
-If we start after chemical fertilizers become unaffordable, **we cannot produce food for years**.
+**The structural problem with vegetables:**
+Vegetables lose to weeds. Without chemical fertilizer and herbicides, mass cultivation of current varieties is not viable.
+Regenerative agriculture works for grains and livestock but does not directly apply to vegetables.
+Fukuoka's no-weeding strategies (weed-beating crops, seasonal timing, rewilding) are sound in principle, but
+**most modern vegetable varieties have been bred on the assumption of chemical fertilizer and weeding**.
+How to mass-produce vegetables without chemical fertilizer — the cultivation method itself has not been established.
 :::
+
+:::chain
+**Research needed for vegetables:**
+Which varieties grow without chemical fertilizer → Variety selection
+Which cover crop combinations suppress weeds → Cultivation system design
+How many generations does rewilding take → Long-term breeding
+AI to accumulate "winning combinations" → Data-driven cultivation design
+**All of these must start with research**
+:::
+
+Grains and beef have a method. Vegetables do not.
+Because there is no method, research must begin immediately.
+If we wait to start research until chemical fertilizer becomes unaffordable,
+**an era when vegetables simply cannot be grown will arrive**.
 
 ### The second reason — geopolitical risk can halt supply overnight
 

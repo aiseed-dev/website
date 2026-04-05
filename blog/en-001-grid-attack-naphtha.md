@@ -2,8 +2,8 @@
 slug: grid-attack-naphtha
 lang: en
 title: "When the Strait of Hormuz Closes, Food Disappears"
-subtitle: "How the Iran War Hits Japan's Dinner Table"
-description: "US-Israel strikes on Iran, Hormuz blockade, Gulf refinery and desalination attacks. This isn't a Middle East war. It's a food crisis — Japan's naphtha and fertilizer supply is cut off."
+subtitle: "How the Iran War Severs Global Supply Chains"
+description: "US-Israel strikes on Iran, Hormuz blockade, Gulf refinery and desalination attacks. Dual chokepoint failure with the Red Sea. Energy, chemicals, metals, pharmaceuticals, fertilizer — global supply chains collapse simultaneously."
 date: 2026.04.05
 label: Blog
 category: Structural Analysis Notes
@@ -113,13 +113,50 @@ Saudi Arabia, UAE, Kuwait, Qatar, Bahrain, Oman — these nations depend on desa
 **Attacking power plants is not about electricity. It's about drinking water for 62 million people.**
 :::
 
+### Dual Chokepoint Failure
+
+The Hormuz blockade is not happening in isolation. Since late 2023, Houthi forces have been attacking merchant vessels in the Red Sea and Bab el-Mandeb Strait. **Hormuz and the Red Sea are blocked simultaneously (Dual Chokepoint Failure)**.
+
+Most maritime trade between Asia and Europe has been forced onto the Cape of Good Hope route, adding 10–14 days of transit time and roughly $1 million in fuel costs per voyage. Spot freight rates on the Asia–Northern Europe route have surged over 30%.
+
+:::highlight
+**There is no detour left.** Hormuz is closed, the Red Sea is closed, and only the Cape of Good Hope remains. The world's shipping capacity is physically insufficient.
+:::
+
 ### Global Energy Supply
 
-Roughly **20–25% of the world's seaborne oil** passes through the Strait of Hormuz. If the blockade drags on and Gulf production infrastructure and oil fields are destroyed, the impact extends far beyond the Middle East.
+Roughly **20–25% of the world's seaborne oil** (~20 million barrels/day) and **~20% of LNG** passes through the Strait of Hormuz. If the blockade drags on and Gulf production infrastructure and oil fields are destroyed, the impact extends far beyond the Middle East.
 
-- **Crude oil prices** — already above $120/barrel. A power plant attack and full-scale retaliation would push prices far higher
+- **Crude oil** — already above $120/barrel. A power plant attack and full-scale retaliation would push prices far higher
 - **Natural gas** — Qatar is one of the world's largest LNG exporters. A Hormuz blockade cuts off LNG exports too
-- **Petrochemicals** — Naphtha, ethylene, propylene — the basic feedstocks of industry face global shortage
+- **Naphtha** — Asia depends on the Middle East for **50–60%** of naphtha imports. Plastics, synthetic fibers, packaging, and tire manufacturing lines stop
+- **LPG** — India depends on the Middle East for **~90%** of its LPG imports. Cooking fuel for hundreds of millions of people disappears
+- **Jet fuel** — **30–40%** of internationally traded jet fuel is Middle Eastern. Massive flight cancellations and air cargo paralysis
+- **Lubricant base oil (Group III)** — The Middle East dominates global production. Without this, factory machinery and truck engines cannot be maintained. **Logistics and manufacturing physically stop**
+
+### Petrochemicals and Global Industry
+
+The Middle East is also the "world's chemical factory," supplying basic chemical feedstocks using cheap natural gas.
+
+- **Methanol** — roughly **33%** of global seaborne methanol trade passes through Hormuz. Iran alone exports 9 million tons annually. China's MTO (methanol-to-olefins) plants are shutting down one after another
+- **Monoethylene glycol (MEG)** — roughly 6.5 million tons shipped annually from the Arabian Gulf. An essential feedstock for polyester fiber and PET resin. Asia's textile industry is under direct impact
+- **Ethylene / Polyethylene / Polypropylene** — food packaging, medical plastics, automotive parts. The Middle East accounts for roughly 20% of global ethylene exports
+
+### Minerals, Metals, and the Decarbonization Paradox
+
+There is an ironic reality: the disruption of fossil fuel supply is **directly blocking the green transition away from fossil fuels**.
+
+- **Aluminum** — The Middle East produces roughly **9%** of the world's primary aluminum. Essential for EV body lightweighting. Over 150,000 tons have been drawn from London Metal Exchange warehouses
+- **Helium** — Qatar controls roughly **33%** of global supply. A byproduct of natural gas processing. Air Liquide has declared force majeure and cut supply by 50%. **Essential for MRI scanner cooling and semiconductor manufacturing** — there is no substitute
+- **Sulfur** — roughly **50%** of the world's seaborne sulfur trade passes through Hormuz. The HPAL (high-pressure acid leach) process for extracting battery-grade nickel and cobalt requires massive amounts of sulfuric acid. Refining operations in Indonesia and Africa have already halted
+- **Synthetic graphite** — EV battery anode material. Its feedstock, petroleum coke, is an oil refining byproduct — supply collapses when refineries shut down
+- **Iron ore pellets** — Iran and Bahrain account for roughly **18%** of global seaborne pellet exports. Approximately 280 bulk carriers are stranded inside the Persian Gulf. **Even the steel needed for reconstruction can't get in**
+
+### Aviation Hub Collapse
+
+It's not just the sea lanes. The **Middle East aviation mega-hubs** — Dubai, Doha, Abu Dhabi — have ceased functioning. Military operations and airspace restrictions reduced Asia–Europe air capacity by **26%**, with over 3,400 flights cancelled in the first weekend alone.
+
+The most severe consequence is the disruption of the **pharmaceutical cold chain** (temperature-controlled transport). Middle East hubs were the critical junction for air cargo between Asian manufacturers and European markets. Rerouting extends transit times, sharply increasing the risk of temperature excursions that destroy medications. Hospitals worldwide face helium shortages for MRI diagnostics, and clinical trial schedules for new drugs are being delayed.
 
 ### Global Food Production
 
@@ -130,10 +167,12 @@ Naphtha / Natural gas → Hydrogen → Ammonia → **Nitrogen fertilizer**
 Nitrogen fertilizer → Supports roughly 50% of global food production
 :::
 
-An overlooked fact compounds this: Gulf countries account for **roughly 45% of global sulfur supply**. Sulfur is a byproduct of oil refining. As analyzed in [Chapter 11: Regulation Redesign](/en/insights/regulation-redesign/), phosphate fertilizer cannot be made without sulfuric acid.
+The Arabian Gulf supplies **46% of global urea trade** — the most widely used nitrogen fertilizer in the world. India (18% import dependency), Brazil (10%), and other major agricultural nations are directly hit.
+
+An overlooked fact compounds this: Gulf countries account for **roughly 45–50% of global sulfur supply**. Sulfur is a byproduct of oil refining. As analyzed in [Chapter 11: Regulation Redesign](/en/insights/regulation-redesign/), phosphate fertilizer cannot be made without sulfuric acid.
 
 :::chain
-Gulf oil production destroyed → Sulfur byproduct disappears (45% of world supply) → Sulfuric acid shortage → **Phosphate fertilizer production at risk**
+Gulf oil production destroyed → Sulfur byproduct disappears (45–50% of world supply) → Sulfuric acid shortage → **Phosphate fertilizer production at risk**
 :::
 
 Nitrogen fertilizer and phosphate fertilizer face crisis simultaneously. The "Peak Sulfur" warned about in Chapter 11 has been **made real not by decarbonization, but by war**.
@@ -156,7 +195,7 @@ Japan cannot provide its own crude oil, naphtha, fertilizer feedstocks, or food.
 :::highlight
 **If Trump attacks Iran's power plants on April 6, the chain of retaliation will extend the blockade and devastate Gulf production infrastructure.**
 
-The consequences reach 62 million people in the Gulf, global food production, and Japan's dinner table — all at once.
+The consequences reach 62 million people in the Gulf, global supply chains for energy, chemicals, metals, pharmaceuticals, and food, and Japan's dinner table — all at once.
 :::
 
 ## Connection to the Structural Analysis Series

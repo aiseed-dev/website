@@ -3,7 +3,7 @@ slug: grid-attack-naphtha
 lang: en
 title: "When the Strait of Hormuz Closes, Food Disappears"
 subtitle: "How the Iran War Hits Japan's Dinner Table"
-description: "Trump's attack on Iran's power grid. Iran's retaliation on Gulf oil facilities and mining of the Strait of Hormuz. This isn't a Middle East war. It's a food crisis — Japan's naphtha and fertilizer supply is cut off."
+description: "US-Israel strikes on Iran, Hormuz blockade, Gulf refinery and desalination attacks. This isn't a Middle East war. It's a food crisis — Japan's naphtha and fertilizer supply is cut off."
 date: 2026.04.05
 label: Blog
 category: Structural Analysis Notes
@@ -11,7 +11,18 @@ category: Structural Analysis Notes
 
 ## What Is Happening
 
-The Trump administration attacked Iran's power grid. Iran retaliated by attacking Gulf oil facilities and mining the Strait of Hormuz.
+On February 28, 2026, the United States and Israel launched coordinated strikes on Iran under "Operation Epic Fury." Supreme Leader Khamenei was killed.
+
+Iran retaliated with the following:
+
+- **Declared the Strait of Hormuz closed** (March 4) — began attacking ships attempting transit. By March 12, 21 merchant ships had been attacked
+- **Laid mines in the Strait of Hormuz** — the US sank 16 Iranian minelayers (March 10), but a dozen or more mines were deployed. Iran retains 80–90% of its small vessels and mine-laying capacity
+- **Attacked Gulf oil facilities** — daily drone swarms on Saudi Arabia's Shayba oil field; strikes on refineries and fuel storage in Bahrain, UAE, Kuwait, and Oman. On April 3–4, Kuwait's largest refinery caught fire; Saudi's SAMREF refinery in Yanbu was hit by drone
+- **Attacked desalination plants** — Bahrain's desalination plant damaged by drone (March 8); Kuwait's power and desalination plant hit by missile, killing one worker (March 30); indirect damage to facilities in UAE and Bahrain
+
+On March 22, Trump threatened to "obliterate" Iran's power plants if the strait wasn't fully reopened within 48 hours. The deadline has been extended twice — from March 23 to March 26, then to April 6.
+
+Brent crude has surged over 55% since February 28, reaching $126/barrel. The International Energy Agency called it "the greatest global energy security challenge in history."
 
 Most people see this as a "Middle East war."
 
@@ -70,7 +81,9 @@ Destroyed refining facilities take 3–5 years to rebuild. But the problem doesn
 
 The fatal weakness of Gulf nations is their **dependence on desalination for drinking water**.
 
-Saudi Arabia, UAE, Kuwait, Qatar — these countries have extremely low rainfall and cannot sustain human life without desalination plants. When desalination plants are destroyed:
+Bahrain's desalination plant was already damaged by drone (March 8). Kuwait's power and desalination plant was hit by missile, killing one worker (March 30). On April 3, Kuwait's desalination plant was struck again.
+
+Six Gulf states depend on desalination for drinking water for a combined 62 million people. When desalination plants are destroyed:
 
 :::chain
 Desalination destroyed → No drinking water → Region becomes uninhabitable → No one to manage or repair facilities → Oil production restart becomes impossible
@@ -99,6 +112,18 @@ This structure means everything is concentrated on a single chokepoint: the Stra
 A Middle East war is a dinner table problem for Japan.
 :::
 
+## Sulfur Stops Too — The Phosphate Fertilizer Crisis
+
+There is an overlooked fact. Gulf countries account for **roughly 45% of global sulfur supply**. Sulfur is a byproduct of oil refining.
+
+As analyzed in [Chapter 11: Regulation Redesign](/en/insights/regulation-redesign/), phosphate fertilizer cannot be made without sulfuric acid. Sulfuric acid requires sulfur.
+
+:::chain
+Hormuz blockade → Gulf sulfur exports stop (45% of world supply) → Sulfuric acid shortage → **Phosphate fertilizer production at risk**
+:::
+
+It's not just nitrogen fertilizer. Phosphate fertilizer faces crisis simultaneously. The "Peak Sulfur" warned about in Chapter 11 has been **made real not by decarbonization, but by war**.
+
 ## Connection to the Structural Analysis Series
 
 As [Chapter 1](/en/insights/climate-mistake/) pointed out, fossil resource depletion arrives before climate change.
@@ -107,11 +132,11 @@ As [Chapter 2](/en/insights/fossil-materials/) showed, crude oil distillation is
 
 As [Chapter 3](/en/insights/agriculture/) analyzed, conventional agriculture collapses without chemical fertilizer.
 
-As [Chapter 11](/en/insights/regulation-redesign/) discussed, decarbonization stops sulfur supply and puts phosphate fertilizer at risk.
+As [Chapter 11](/en/insights/regulation-redesign/) analyzed, when sulfur supply stops, phosphate fertilizer stops — Peak Sulfur.
 
 The Iran war is **making this structure real, right now**.
 
-Fossil resource depletion comes in decades. But the Hormuz blockade is **already happening today**. The future described in the Structural Analysis Series arrived sooner than expected.
+Fossil resource depletion was supposed to come in decades. But the Strait of Hormuz was blockaded on **March 4, 2026**. The future described in the Structural Analysis Series arrived first — in the form of war.
 
 ## Only Natural Farming Is Unaffected
 

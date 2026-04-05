@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ lang }}">
+<html lang="ja">
 
 <head>
     <!-- Google tag (gtag.js) -->
@@ -12,30 +12,30 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ meta_description }}">
+    <meta name="description" content="時事ニュースを構造分析の視点で読む。速報ノート。">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
-    <title>Insights — {{ structural_analysis_label }} | {{ site_name }}</title>
-    <link rel="canonical" href="{{ canonical_url }}">
-    <link rel="alternate" hreflang="ja" href="{{ hreflang_ja }}">
-    <link rel="alternate" hreflang="en" href="{{ hreflang_en }}">
+    <title>Insights — Blog | AI時代の暮らし</title>
+    <link rel="canonical" href="https://aiseed.dev/blog/">
+    <link rel="alternate" hreflang="ja" href="https://aiseed.dev/blog/">
+    <link rel="alternate" hreflang="en" href="https://aiseed.dev/en/blog/">
     <!-- OGP -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Insights — {{ structural_analysis_label }}">
-    <meta property="og:description" content="{{ meta_description }}">
-    <meta property="og:url" content="{{ canonical_url }}">
+    <meta property="og:title" content="Insights — Blog">
+    <meta property="og:description" content="時事ニュースを構造分析の視点で読む。速報ノート。">
+    <meta property="og:url" content="https://aiseed.dev/blog/">
     <meta property="og:site_name" content="aiseed.dev">
     <meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
-    <meta property="og:locale" content="{{ og_locale }}">
+    <meta property="og:locale" content="ja_JP">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Insights — {{ structural_analysis_label }}">
-    <meta name="twitter:description" content="{{ meta_description }}">
+    <meta name="twitter:title" content="Insights — Blog">
+    <meta name="twitter:description" content="時事ニュースを構造分析の視点で読む。速報ノート。">
     <meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-    <link rel="stylesheet" href="{{ css_path }}">
+    <link rel="stylesheet" href="../css/style.css">
     <style>
         .highlight-box {
             background: rgba(122, 154, 109, 0.08);
@@ -53,18 +53,18 @@
     <header class="header">
         <div class="header-inner">
             <a href="/" class="logo">
-                {{ site_name }}
+                AI時代の暮らし
                 <span>aiseed.dev</span>
             </a>
             <nav class="nav">
-                <a href="/">{{ home_label }}</a>
-                <a href="{{ insights_base }}/">Insights</a>
+                <a href="/">ホーム</a>
+                <a href="/insights/">Insights</a>
                 <a href="/blog/">Blog</a>
-                <a href="/about/">{{ about_label }}</a>
+                <a href="/about/">自然農法とは</a>
                 <a href="/light-farming/">Light Farming</a>
-                <a href="/gallery/">{{ gallery_label }}</a>
+                <a href="/gallery/">畑の記録</a>
             </nav>
-            <button class="nav-toggle" aria-label="{{ menu_label }}">
+            <button class="nav-toggle" aria-label="メニュー">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -74,11 +74,11 @@
 
     <!-- Page Hero -->
     <section class="page-hero">
-        <div class="page-hero-image" style="background-image: url('{{ img_path }}');"></div>
+        <div class="page-hero-image" style="background-image: url('../images/IMG_3285.jpg');"></div>
         <div class="page-hero-content">
             <p class="hero-label">Structural Analysis</p>
-            <h1 class="hero-title">{{ page_title }}</h1>
-            <p class="hero-subtitle">{{ page_subtitle }}</p>
+            <h1 class="hero-title">Blog</h1>
+            <p class="hero-subtitle">構造分析の視点で読む時事ノート</p>
         </div>
     </section>
 
@@ -86,9 +86,9 @@
     <section class="section">
         <div class="container-narrow">
             <div class="prose fade-in text-center">
-                <p>{{ intro_html }}</p>
+                <p>時事ニュースを構造分析の視点で読む。速報ノート。</p>
                 <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--moss-green);">
-                    <a href="{{ other_lang_link }}" style="color: var(--moss-green);">{{ other_lang_text }}</a>
+                    <a href="/en/blog/" style="color: var(--moss-green);">English version available →</a>
                 </p>
             </div>
         </div>
@@ -99,20 +99,30 @@
         <div class="container">
             <div class="section-header">
                 <p class="section-label">Series</p>
-                <h2 class="section-title">{{ series_title }}</h2>
+                <h2 class="section-title">Blog</h2>
             </div>
 
             <div class="prose fade-in text-center" style="margin-bottom: 3rem;">
-                <p>{{ series_description }}</p>
+                <p>時事ニュースと構造分析をつなぐ速報ノート。</p>
             </div>
 
             <div class="activity-list">
-{{ article_list_html }}
+
+                <a href="/blog/grid-attack-naphtha/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item">
+                        <div class="activity-number" style="font-size: 0.7rem;">2026.04.05</div>
+                        <div class="activity-content">
+                            <h3>電力網が止まると、食料が消える</h3>
+                            <p>電力網攻撃は停電ではない。製油所が止まればナフサも止まる。ナフサが止まれば肥料も止まる。日本の食料は電力網に依存している。</p>
+                        </div>
+                    </div>
+                </a>
+
             </div>
 
             <div class="highlight-box fade-in" style="margin-top: 2rem;">
-                <p><strong>{{ method_title }}</strong></p>
-                <p>{{ method_html }}</p>
+                <p><strong></strong></p>
+                <p></p>
             </div>
         </div>
     </section>
@@ -121,7 +131,8 @@
     <section class="section">
         <div class="container-narrow">
             <div class="quote-block fade-in">
-                <p class="quote-text">{{ quote_html }}</p>
+                <p class="quote-text">構造は嘘をつかない。<br>
+時事ニュースが、毎回それを証明する。</p>
             </div>
         </div>
     </section>
@@ -131,12 +142,12 @@
         <div class="container">
             <div class="section-header">
                 <p class="section-label">Explore</p>
-                <h2 class="section-title">{{ cta_title }}</h2>
+                <h2 class="section-title">構造分析シリーズ</h2>
             </div>
-            <p class="cta-text">{{ cta_html }}</p>
+            <p class="cta-text">完全な構造分析は、構造分析シリーズで。</p>
             <div class="text-center">
                 <a href="/light-farming/" class="btn btn-light" style="margin-right: 1rem;">Light Farming</a>
-                <a href="/about/" class="btn btn-outline">{{ about_label }}</a>
+                <a href="/about/" class="btn btn-outline">自然農法とは</a>
             </div>
         </div>
     </section>
@@ -145,21 +156,21 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-about">
-                <h3>{{ site_name }}</h3>
-                <p>{{ footer_about }}</p>
+                <h3>AI時代の暮らし</h3>
+                <p>AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。</p>
             </div>
             <div class="footer-nav">
-                <h4>{{ pages_label }}</h4>
+                <h4>ページ</h4>
                 <ul>
-                    <li><a href="/">{{ home_label }}</a></li>
-                    <li><a href="/about/">{{ about_label }}</a></li>
+                    <li><a href="/">ホーム</a></li>
+                    <li><a href="/about/">自然農法とは</a></li>
                     <li><a href="/light-farming/">Light Farming</a></li>
-                    <li><a href="/gallery/">{{ gallery_label }}</a></li>
-                    <li><a href="{{ insights_base }}/">Insights</a></li>
+                    <li><a href="/gallery/">畑の記録</a></li>
+                    <li><a href="/insights/">Insights</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
-                <h4>{{ links_label }}</h4>
+                <h4>関連リンク</h4>
                 <ul>
                     <li><a href="https://www.amazingcarbon.com/">Amazing Carbon (Dr. Christine Jones)</a></li>
                     <li><a href="https://github.com/aiseed-dev/website" target="_blank" rel="noopener noreferrer">GitHub</a></li>
@@ -167,11 +178,11 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p class="footer-copyright">&copy; 2025 {{ copyright_text }} — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">CC BY 4.0</a></p>
+            <p class="footer-copyright">&copy; 2025 AI時代の暮らし — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">CC BY 4.0</a></p>
         </div>
     </footer>
 
-    <script src="{{ js_path }}"></script>
+    <script src="../js/main.js"></script>
 </body>
 
 </html>

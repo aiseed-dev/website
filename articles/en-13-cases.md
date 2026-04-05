@@ -4,7 +4,7 @@ number: "13"
 lang: en
 title: Great Power Breeds Tragedy
 subtitle: The Dust Bowl, the Holodomor, Punjab, and Epstein — AI exposes what power has hidden
-description: A history of great power killing soil, killing people, and hiding truth. And the era when NVIDIA taxes, Oracle taxes, and SIer taxes vanish — when individuals plus AI expose the lies.
+description: A history of great power killing soil, killing people, and hiding truth. And the era when NVIDIA taxes, Oracle taxes, cloud taxes, and SIer taxes vanish — when individuals plus AI expose the lies.
 date: 2025.04.04
 label: Structural Analysis 13
 prev_slug: ai-and-individual
@@ -224,6 +224,7 @@ NVIDIA tax → CUDA lock-in monopolized the GPU market → Collapses as AI inves
 Oracle tax → Database licenses held companies captive → PostgreSQL + Claude liberates them (Ch. 8)
 Microsoft tax → Triple taxation via Office/Windows/Azure → Claude replaces it (Ch. 8)
 SIer tax → Selling person-hours under the name of "system development" → Claude eliminates person-hours (Ch. 8)
+Cloud tax → Monthly fees to AWS/Azure/GCP → A local Linux machine + Claude is sufficient
 Salesforce tax → Monthly subscription under the name of CRM → Claude + custom development makes it unnecessary
 Consulting tax → Premium fees under the name of "strategy" → Claude replaces structural analysis
 :::
@@ -246,6 +247,7 @@ But Claude is breaking this structure.
 Database → Build and operate with PostgreSQL + Claude → Oracle tax: zero
 Office software → Claude generates documents, spreadsheets, presentations → Microsoft tax: zero
 System development → Claude writes the code → SIer tax: zero
+Cloud → A local Linux machine + Claude is sufficient → Cloud tax: zero
 CRM → Claude designs and builds it → Salesforce tax: zero
 Management consulting → Claude does structural analysis → Consulting tax: zero
 GPU → AI investment stalls + competitors enter → NVIDIA tax collapses

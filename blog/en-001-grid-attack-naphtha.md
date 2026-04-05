@@ -1,92 +1,128 @@
 ---
 slug: grid-attack-naphtha
 lang: en
-title: "When the Grid Goes Down, Food Disappears"
-subtitle: "What Trump's Power Grid Attacks Really Mean"
-description: "A power grid attack isn't just a blackout. Refineries stop. Naphtha stops. Fertilizer stops. Japan's food supply depends on foreign power grids."
+title: "When the Strait of Hormuz Closes, Food Disappears"
+subtitle: "How the Iran War Hits Japan's Dinner Table"
+description: "Trump's attack on Iran's power grid. Iran's retaliation on Gulf oil facilities and mining of the Strait of Hormuz. This isn't a Middle East war. It's a food crisis — Japan's naphtha and fertilizer supply is cut off."
 date: 2026.04.05
 label: Blog
 category: Structural Analysis Notes
 ---
 
-## A Grid Attack Is Not a "Blackout"
+## What Is Happening
 
-Trump's attacks on power grids — most people think this is about blackouts.
+The Trump administration attacked Iran's power grid. Iran retaliated by attacking Gulf oil facilities and mining the Strait of Hormuz.
 
-It's not.
+Most people see this as a "Middle East war."
 
-What a grid shutdown really means is that **refineries stop**.
+It's not. **This is a food crisis for Japan.**
 
-## What Happens When Refineries Stop
+## What Stops When the Strait of Hormuz Closes
 
-Crude oil distillation is a continuous process. When power stops, distillation columns shut down.
-
-When distillation stops, **every fraction stops simultaneously**.
+Approximately 90% of Japan's crude oil imports come from the Middle East. Nearly all of it passes through the Strait of Hormuz.
 
 :::chain
-Crude oil → Distillation tower (requires power) → Gasoline + Naphtha + Kerosene + Diesel + Heavy oil
-**Power failure → Everything stops**
+Hormuz blockade → Crude oil imports stop → Refineries run out of feedstock → Naphtha, gasoline, kerosene, diesel — everything stops
 :::
 
-As explained in [Chapter 2: Fossil Resources and Materials](/en/insights/fossil-materials/), crude oil distillation is not optional. You can't make just gasoline or just naphtha. Everything comes out together, or nothing does.
+As explained in [Chapter 2: Fossil Resources and Materials](/en/insights/fossil-materials/), crude oil distillation is not optional. You can't make just gasoline or just naphtha. If crude oil stops coming, everything stops.
 
 ## No Naphtha Means No Fertilizer
 
-Naphtha is the feedstock for petrochemistry. And among the things made from naphtha is **ammonia**.
+Naphtha is the feedstock for petrochemistry. Plastics, synthetic fibers, pharmaceuticals — every material of modern civilization starts with naphtha.
+
+And among the things made from naphtha (or natural gas) is **ammonia**.
 
 :::chain
-Naphtha → Ethylene / Propylene → Plastics, synthetic fibers
-Natural gas or Naphtha → Hydrogen → Ammonia → **Nitrogen fertilizer**
+Naphtha / Natural gas → Hydrogen → Ammonia → **Nitrogen fertilizer**
+Nitrogen fertilizer → Supports roughly 50% of global food production
 :::
 
-Roughly half of global food production depends on chemical fertilizer. The raw material for that fertilizer is fossil resources.
+Japan depends on imports for virtually all fertilizer raw materials.
+
+- **Nitrogen fertilizer** feedstock: natural gas / naphtha (Middle East dependent)
+- **Phosphate fertilizer** feedstock: phosphate rock (imported from China, Morocco)
+- **Potassium fertilizer** feedstock: potash (imported from Canada, Russia)
+
+The Hormuz blockade directly hits nitrogen fertilizer feedstock.
 
 :::highlight
-Grid attack → Refinery shutdown → Naphtha stops → Fertilizer feedstock stops → Food production at risk
+Hormuz blockade → Crude oil and natural gas stop → Naphtha stops → Ammonia stops → Nitrogen fertilizer stops
 
-This is not a "blackout inconvenience" problem. This is a **structural risk to food supply**.
+This is not a "gasoline gets expensive" problem. This is a **food production stops** problem.
+:::
+
+## Mine Blockades Don't Clear Quickly
+
+Some assume a Hormuz blockade is temporary. It's not.
+
+Mine sweeping is an extremely slow operation. Ship by ship, nautical mile by nautical mile, detecting and removing mines one at a time. During wartime, minesweepers themselves become targets. If Iran continues laying new mines, sweeping never finishes.
+
+**Clearing a blockade takes months to years.**
+
+## Attacks on Gulf Facilities — Recovery Blocked by the Blockade
+
+What makes this even more severe is that Iran is attacking Gulf oil facilities.
+
+Destroyed refining facilities take 3–5 years to rebuild. But the problem doesn't stop there. **As long as the strait is blockaded, the materials and equipment needed for repairs can't be shipped in.** The blockade and facility destruction compound each other.
+
+## Desalination Plant Destruction — Making the Region Uninhabitable
+
+The fatal weakness of Gulf nations is their **dependence on desalination for drinking water**.
+
+Saudi Arabia, UAE, Kuwait, Qatar — these countries have extremely low rainfall and cannot sustain human life without desalination plants. When desalination plants are destroyed:
+
+:::chain
+Desalination destroyed → No drinking water → Region becomes uninhabitable → No one to manage or repair facilities → Oil production restart becomes impossible
+:::
+
+:::highlight
+**If facilities are destroyed but people remain, they can be rebuilt. Without water, people can't stay.**
+
+Desalination plant destruction is more severe than oil facility destruction. Oil facilities can be repaired. But if the people who would repair them can't live there, nothing starts. Recovery could take not years, but **a decade or more**.
 :::
 
 ## Japan's Vulnerability
 
-Japan is particularly vulnerable.
+The numbers for Japan:
 
-- Most naphtha is **imported**
-- Fertilizer raw materials (phosphorus, potassium) are **almost entirely imported**
-- Food self-sufficiency is **38%** (calorie basis)
+- Middle East dependency for crude oil: **~90%**
+- Most naphtha: **imported**
+- Fertilizer raw materials: **almost entirely imported**
+- Food self-sufficiency: **38%** (calorie basis)
 
-When you import from countries under grid attack, their power problem becomes your food problem.
+This structure means everything is concentrated on a single chokepoint: the Strait of Hormuz.
 
 :::highlight
-**Japan's food supply depends on foreign power grids.**
+**Japan's food supply depends on the Strait of Hormuz.**
 
-That is the conclusion of structural analysis. It's not a blackout problem. It's a food problem.
+A Middle East war is a dinner table problem for Japan.
 :::
 
-## The Structure Connects
+## Connection to the Structural Analysis Series
 
 As [Chapter 1](/en/insights/climate-mistake/) pointed out, fossil resource depletion arrives before climate change.
 
-As [Chapter 3](/en/insights/agriculture/) showed, conventional agriculture collapses without chemical fertilizer.
+As [Chapter 2](/en/insights/fossil-materials/) showed, crude oil distillation is not optional. When it stops, everything stops.
 
-As [Chapter 11](/en/insights/regulation-redesign/) analyzed, decarbonization stops sulfur supply and phosphate fertilizer with it.
+As [Chapter 3](/en/insights/agriculture/) analyzed, conventional agriculture collapses without chemical fertilizer.
 
-A power grid attack is the scenario that **makes this structure real, instantly**.
+As [Chapter 11](/en/insights/regulation-redesign/) discussed, decarbonization stops sulfur supply and puts phosphate fertilizer at risk.
 
-Fossil resource depletion comes in decades. Grid attacks can come **tomorrow**.
+The Iran war is **making this structure real, right now**.
 
-## Natural Farming as Insurance
+Fossil resource depletion comes in decades. But the Hormuz blockade is **already happening today**. The future described in the Structural Analysis Series arrived sooner than expected.
 
-As stated repeatedly in [Chapter 3](/en/insights/agriculture/) and [Light Farming](/light-farming/) —
+## Only Natural Farming Is Unaffected
 
 Only agriculture that doesn't depend on chemical fertilizer is free from this structural risk.
 
-Masanobu Fukuoka's natural farming. Dr. Christine Jones's Light Farming. No-till, no fertilizer, no pesticides. Symbiosis with soil microorganisms.
+Masanobu Fukuoka's natural farming. Dr. Christine Jones's Light Farming. No-till, no fertilizer, no pesticides. Nitrogen fixation through symbiosis with soil microorganisms.
 
-This is not idealism. It is **the only way to produce food when the grid goes down**.
+When the Strait of Hormuz closes, soil microbes don't stop working.
 
 :::highlight
 **The conclusion of structural analysis always converges on the same place.**
 
-The further we move from nature, the higher the cost of living. A grid attack is the scenario where that cost spikes instantly.
+The further we move from nature, the higher the cost of living. The Iran war just proved that cost can spike in an instant.
 :::

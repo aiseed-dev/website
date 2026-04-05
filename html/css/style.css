@@ -18,8 +18,8 @@
     --sky-pale: #e8ebe4;
     --olive: #808a5c;
 
-    --font-serif: 'Zen Old Mincho', 'Noto Serif JP', serif;
-    --font-sans: 'Noto Sans JP', sans-serif;
+    --font-serif: 'Georgia', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
 
     --transition-base: 0.3s ease;
     --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);

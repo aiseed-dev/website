@@ -1,9 +1,9 @@
 ---
 slug: grid-attack-naphtha
 lang: en
-title: "When the Strait of Hormuz Closes, Food Disappears"
-subtitle: "How the Iran War Severs Global Supply Chains"
-description: "US-Israel strikes on Iran, Hormuz blockade, Gulf refinery and desalination attacks. Dual chokepoint failure with the Red Sea. Energy, chemicals, metals, pharmaceuticals, fertilizer — global supply chains collapse simultaneously."
+title: "What If Trump Destroys Iran's Power Plants"
+subtitle: "\"All Hell will reign down\" — but it rains down on the world"
+description: "What happens if Trump attacks Iran's power plants on April 6. Chain of retaliation, dual chokepoint failure (Hormuz + Red Sea), Gulf infrastructure collapse. Energy, chemicals, metals, pharmaceuticals, fertilizer — global supply chains break simultaneously."
 date: 2026.04.05
 label: Blog
 category: Structural Analysis Notes

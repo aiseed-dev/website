@@ -8,19 +8,55 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
-
         gtag('config', 'G-9FLQ963JXM');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="自然農法とリジェネラティブ農業の実践。福岡正信氏の哲学に学び、土壌微生物と共に土を再生する取り組みを紹介します。">
-    <title>自然と対話する暮らし | 自然農法・リジェネラティブ農業</title>
+    <meta name="description" content="化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。全13章の構造分析シリーズ。">
+    <title>構造分析シリーズ | aiseed.dev</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .series-header {
+            text-align: center;
+            padding: 3rem 0 1rem;
+        }
+        .series-header h1 {
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 1.8rem;
+            color: var(--earth-dark);
+            margin-bottom: 0.5rem;
+        }
+        .series-header .lang-switch {
+            font-size: 0.85rem;
+            color: var(--moss-green);
+        }
+        .article-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .article-link:hover .activity-item {
+            background: var(--sand-light);
+        }
+        .article-link .activity-item {
+            transition: background 0.2s;
+            border-radius: 4px;
+            padding: 1rem 1.5rem;
+        }
+        .latest-badge {
+            display: inline-block;
+            background: var(--moss-green);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+    </style>
 </head>
 
 <body>
@@ -28,15 +64,14 @@
     <header class="header">
         <div class="header-inner">
             <a href="/" class="logo">
-                自然と対話する暮らし
-                <span>Natural Farming</span>
+                aiseed.dev
+                <span>構造分析</span>
             </a>
             <nav class="nav">
-                <a href="/" class="active">ホーム</a>
+                <a href="/" class="active">構造分析</a>
                 <a href="/about/">自然農法とは</a>
                 <a href="/light-farming/">Light Farming</a>
                 <a href="/gallery/">畑の記録</a>
-                <a href="/insights/">Insights</a>
                 <a href="/contact/">お問い合わせ</a>
             </nav>
             <button class="nav-toggle" aria-label="メニュー">
@@ -47,250 +82,153 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-image" style="background-image: url('images/IMG_3285.jpg');"></div>
-        <div class="hero-content">
-            <p class="hero-label">Structural Analysis Series</p>
-            <h1 class="hero-title">自然と対話する暮らし</h1>
-            <p class="hero-subtitle">
-                化石資源の枯渇、食料危機、AI、軍需産業、医療、年金——<br>
-                全ての構造分析は、一つの結論に向かう。<br>
-                自然とともにあれば、生きられる。
-            </p>
-            <div style="margin-top: 2rem;">
-                <a href="/insights/" class="btn btn-light" style="margin-right: 1rem;">構造分析シリーズを読む</a>
-                <a href="/en/insights/" class="btn btn-outline">Read in English</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Introduction -->
+    <!-- Series Header -->
     <section class="section">
-        <div class="container">
-            <div class="two-col">
-                <div class="two-col-content fade-in">
-                    <p class="section-label">Philosophy</p>
-                    <h2>自然に学ぶ、自然と歩む</h2>
-                    <p>
-                        葉の色や形、風や光のゆらぎを感じながら、環境を理解する感性を取り戻したい。
-                        AIが助けてくれるから、人間は自然との対話に時間を使えます。
-                    </p>
-                    <p>
-                        気候や土壌を知り、その場所に合った作物を見つける。
-                        これは、小さな実践であり、ささやかな冒険です。
-                    </p>
-                    <a href="/about/" class="btn btn-primary">自然農法について</a>
-                </div>
-                <div class="two-col-image fade-in">
-                    <img src="images/IMG_3276.jpg" alt="オリーブの木と青空">
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Quote -->
-    <section class="section section-alt">
         <div class="container-narrow">
-            <div class="quote-block fade-in">
-                <p class="quote-text">
-                    「何もしない」ことの中にこそ、自然の力が宿る。<br>
-                    土を耕さず、肥料を与えず、農薬を使わず——<br>
-                    それでも植物は育つ。なぜなら、土が生きているから。
-                </p>
-                <p class="quote-author">— 福岡正信の哲学より</p>
+            <div class="series-header">
+                <h1>構造分析シリーズ — 全13章</h1>
+                <p style="color: var(--soil-rich); margin-bottom: 1rem;">化石資源、食料、エネルギー、AI、軍需産業、医療、年金——全ての構造は一つに繋がっている。</p>
+                <p class="lang-switch"><a href="/en/insights/" style="color: var(--moss-green);">English version available →</a></p>
             </div>
         </div>
     </section>
 
-    <!-- Principles -->
-    <section class="section section-dark">
+    <!-- Article List -->
+    <section class="section section-alt" style="padding-top: 1rem;">
         <div class="container">
-            <div class="section-header">
-                <p class="section-label">Principles</p>
-                <h2 class="section-title">リジェネラティブ農業の原則</h2>
-            </div>
-
-            <div class="card-grid">
-                <div class="card fade-in">
-                    <h3 class="card-title" style="color: var(--sand-light);">不耕起</h3>
-                    <p class="card-text" style="color: var(--clay);">土を耕さないことで、菌根菌のネットワークを守り、土壌構造を維持します。</p>
-                </div>
-
-                <div class="card fade-in">
-                    <h3 class="card-title" style="color: var(--sand-light);">被覆作物</h3>
-                    <p class="card-text" style="color: var(--clay);">常に土を緑で覆い、光合成を最大化。根からの滲出液が土壌微生物を養います。</p>
-                </div>
-
-                <div class="card fade-in">
-                    <h3 class="card-title" style="color: var(--sand-light);">多様性</h3>
-                    <p class="card-text" style="color: var(--clay);">多種多様な植物を混植することで、土壌微生物の多様性が増します。</p>
-                </div>
-            </div>
-
-            <div class="text-center mt-3">
-                <a href="/light-farming/" class="btn btn-outline">Light Farming を詳しく</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Activities -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label">Activities</p>
-                <h2 class="section-title">私たちの取り組み</h2>
-            </div>
-
             <div class="activity-list">
-                <div class="activity-item fade-in">
-                    <div class="activity-content">
-                        <h3>AIを活かした観察と学び</h3>
-                        <p>植物の姿や変化を観察し、AIの力を借りながら自然のサインを読み解きます。画像認識や気象データの分析で、より深い理解へ。</p>
-                    </div>
-                </div>
 
-                <div class="activity-item fade-in">
-                    <div class="activity-content">
-                        <h3>風土に合った作物探し</h3>
-                        <p>アーティチョーク、オリーブ、ズッキーニ——この土地の気候に合う作物を探す実験を続けています。</p>
-                    </div>
-                </div>
-
-                <div class="activity-item fade-in">
-                    <div class="activity-content">
-                        <h3>再生的な土づくり</h3>
-                        <p>土壌微生物の多様性を尊重し、菌根菌のネットワークを育てる。炭素を土に還し、健康な生態系を再生します。</p>
-                    </div>
-                </div>
-
-                <div class="activity-item fade-in">
-                    <div class="activity-content">
-                        <h3>栽培記録アプリの開発</h3>
-                        <p>観察記録を残し、データから学ぶ。シンプルで使いやすい栽培記録アプリを開発中です。</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Insights Preview -->
-    <section class="section section-alt">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label">Structural Analysis Series — 全13章</p>
-                <h2 class="section-title">Insights — 構造分析</h2>
-            </div>
-
-            <div class="card-grid">
-                <a href="/insights/cases/" style="text-decoration: none; color: inherit;">
-                    <div class="card fade-in">
-                        <h3 class="card-title">13. 巨大な権力は悲劇を生む</h3>
-                        <p class="card-text">ダストボウル、ホロドモール、パンジャブ、ナチス、ソ連、プーチン——権力が隠してきたものをAIが暴く。エプスタインの闇に、1人＋AIが光を当てる。</p>
+                <a href="/insights/cases/" class="article-link">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">13</div>
+                        <div class="activity-content">
+                            <h3>巨大な権力は悲劇を生む<span class="latest-badge">NEW</span></h3>
+                            <p>ダストボウル、ホロドモール、パンジャブ、ナチス、ソ連、プーチン。NVIDIA税・Oracle税が消える。AIが嘘を暴く。エプスタインの闇に1人＋AIが光を当てる。</p>
+                        </div>
                     </div>
                 </a>
 
-                <a href="/insights/ai-and-individual/" style="text-decoration: none; color: inherit;">
-                    <div class="card fade-in">
-                        <h3 class="card-title">12. AIと個人事業</h3>
-                        <p class="card-text">1人＋Claudeで、農家が研究者に、個人が企業になる。経理、法務、翻訳、マーケティング、プログラミング——全てAI利用料だけで手に入る。</p>
+                <a href="/insights/ai-and-individual/" class="article-link">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">12</div>
+                        <div class="activity-content">
+                            <h3>AIと個人事業<span class="latest-badge">NEW</span></h3>
+                            <p>1人＋Claudeで、農家が研究者に、個人が企業になる。経理、法務、翻訳、マーケティング、プログラミング——全てAI利用料だけで手に入る時代。</p>
+                        </div>
                     </div>
                 </a>
 
-                <a href="/insights/regulation-redesign/" style="text-decoration: none; color: inherit;">
-                    <div class="card fade-in">
-                        <h3 class="card-title">11. 規制の再設計</h3>
-                        <p class="card-text">リン酸肥料は硫酸なしに作れない。硫黄の80%以上は化石資源の副産物。脱炭素が硫黄供給を止め、食料危機を起こす——ピーク・サルファー。</p>
-                    </div>
-                </a>
-            </div>
-
-            <div class="card-grid" style="margin-top: 1rem;">
-                <a href="/insights/healthcare-fiscal/" style="text-decoration: none; color: inherit;">
-                    <div class="card fade-in">
-                        <h3 class="card-title">09. 社会の設計ミス</h3>
-                        <p class="card-text">軍需産業、IT企業、デスクワーカーが同時に崩壊する。透析は化石資源で命を繋ぎ、年金は現役世代を圧殺する。人口は大都市から土地のある場所へ移動する。</p>
+                <a href="/insights/regulation-redesign/" class="article-link">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">11</div>
+                        <div class="activity-content">
+                            <h3>規制の再設計<span class="latest-badge">NEW</span></h3>
+                            <p>リン酸肥料は硫酸なしに作れない。硫黄の80%以上は化石資源の副産物。脱炭素が硫黄供給を止め、食料危機を起こす——ピーク・サルファー。</p>
+                        </div>
                     </div>
                 </a>
 
-                <a href="/insights/fossil-materials/" style="text-decoration: none; color: inherit;">
-                    <div class="card fade-in">
-                        <h3 class="card-title">02. 化石資源と素材</h3>
-                        <p class="card-text">原油の蒸留は「選べない」。ガソリンを止めればナフサも止まる。プラスチック、合成繊維、医薬品——現代文明の素材は全て石油精製の副産物。</p>
+                <a href="/insights/subtraction-design/" class="article-link">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">10</div>
+                        <div class="activity-content">
+                            <h3>引き算の設計<span class="latest-badge">NEW</span></h3>
+                            <p>東京一極集中、自由貿易の前提、都市型医療・年金、企業ITの税、大組織——5つの引き算で社会を再設計する。</p>
+                        </div>
                     </div>
                 </a>
 
-                <a href="/insights/agriculture/" style="text-decoration: none; color: inherit;">
-                    <div class="card fade-in">
-                        <h3 class="card-title">03. 農業の構造</h3>
-                        <p class="card-text">化学肥料は化石資源から作られる。化石資源が枯渇すれば、化学肥料も消える。福岡正信の自然農法とLight Farmingだけが、永続する農業の形だ。</p>
+                <a href="/insights/healthcare-fiscal/" class="article-link">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">09</div>
+                        <div class="activity-content">
+                            <h3>社会の設計ミス</h3>
+                            <p>軍需産業、IT企業、デスクワーカーが同時に崩壊する。透析は化石資源で命を繋ぎ、年金は現役世代を圧殺する。人口は大都市から土地のある場所へ。</p>
+                        </div>
                     </div>
                 </a>
-            </div>
 
-            <div class="text-center mt-3">
-                <a href="/insights/" class="btn btn-primary">全13章を読む</a>
-                <a href="/en/insights/" class="btn btn-outline" style="margin-left: 1rem;">Read in English</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Preview -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label">From the Field</p>
-                <h2 class="section-title">畑の記録</h2>
-            </div>
-
-            <div class="gallery-grid">
-                <div class="gallery-item fade-in">
-                    <img src="images/IMG_3308.jpg" alt="アーティチョーク">
-                    <div class="gallery-item-caption">
-                        <h4>アーティチョーク</h4>
-                        <p>地中海原産の多年草</p>
+                <a href="/insights/enterprise-tax/" class="article-link">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">08</div>
+                        <div class="activity-content">
+                            <h3>企業ITの税を引く</h3>
+                            <p>Oracle税、Microsoft税、SIer税——企業が払い続ける「見えない税金」をClaudeが壊す。PostgreSQLとAIで、IT部門は不要になる。</p>
+                        </div>
                     </div>
-                </div>
-                <div class="gallery-item fade-in">
-                    <img src="images/IMG_3298.jpg" alt="オリーブの実">
-                    <div class="gallery-item-caption">
-                        <h4>オリーブの実</h4>
-                        <p>徳島の気候に適応中</p>
-                    </div>
-                </div>
-                <div class="gallery-item fade-in">
-                    <img src="images/IMG_3250.jpg" alt="かぼちゃの成長">
-                    <div class="gallery-item-caption">
-                        <h4>バターナッツかぼちゃ</h4>
-                        <p>コンパニオンプランツと共に</p>
-                    </div>
-                </div>
-            </div>
+                </a>
 
-            <div class="text-center mt-3">
-                <a href="/gallery/" class="btn btn-primary">すべての写真を見る</a>
-            </div>
-        </div>
-    </section>
+                <a href="/insights/nvidia/" class="article-link">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">07</div>
+                        <div class="activity-content">
+                            <h3>NVIDIAの限界</h3>
+                            <p>CUDAロックインがGPU市場を独占してきた。しかしAI投資が採算に合わなければ、GPU需要ごと消える。NVIDIA税の終焉。</p>
+                        </div>
+                    </div>
+                </a>
 
-    <!-- CTA -->
-    <section class="section section-green">
-        <div class="container">
-            <div class="section-header">
-                <p class="section-label">Structural Analysis Series</p>
-                <h2 class="section-title">構造を知れば、見え方が変わる</h2>
+                <a href="/insights/agi/" class="article-link">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">06</div>
+                        <div class="activity-content">
+                            <h3>AGIは不要だ</h3>
+                            <p>AGIは採算に合わない。現在のAI（Claude）でデスクワークの大半は代替できる。必要なのは超知能ではなく、実用的な道具。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/insights/fusion/" class="article-link">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">05</div>
+                        <div class="activity-content">
+                            <h3>核融合でも解決しない</h3>
+                            <p>核融合はエネルギー問題を解決するが、素材問題は解決しない。電気があっても、石油化学製品は作れない。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/insights/drone-defense/" class="article-link">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">04</div>
+                        <div class="activity-content">
+                            <h3>ドローンが変える戦争</h3>
+                            <p>安価なドローン＋AIが、数十億ドルの戦闘機・戦車を無力化する。軍需産業の構造が根底から変わる。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/insights/agriculture/" class="article-link">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">03</div>
+                        <div class="activity-content">
+                            <h3>農業の構造</h3>
+                            <p>化学肥料は化石資源から作られる。化石資源が枯渇すれば、化学肥料も消える。福岡正信とLight Farmingだけが永続する農業の形。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/insights/fossil-materials/" class="article-link">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">02</div>
+                        <div class="activity-content">
+                            <h3>化石資源と素材</h3>
+                            <p>原油の蒸留は「選べない」。ガソリンを止めればナフサも止まる。プラスチック、合成繊維、医薬品——現代文明の素材は全て石油精製の副産物。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/insights/climate-mistake/" class="article-link">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">01</div>
+                        <div class="activity-content">
+                            <h3>気候変動の間違い</h3>
+                            <p>CO2削減だけを目標にすると、本当の問題を見失う。化石資源の枯渇は気候変動より先に来る。問題の立て方が間違っている。</p>
+                        </div>
+                    </div>
+                </a>
+
             </div>
-            <p class="cta-text">
-                化石資源、食料、エネルギー、AI、医療、年金——<br>
-                全ての構造は一つに繋がっている。<br>
-                全13章の構造分析シリーズで、その全体像を描く。
-            </p>
-            <div class="text-center">
-                <a href="/insights/" class="btn btn-light" style="margin-right: 1rem;">構造分析シリーズを読む</a>
-                <a href="/en/insights/" class="btn btn-outline">Read in English</a>
-            </div>
-            <p class="text-center" style="margin-top: 2rem;">
-                <a href="https://www.facebook.com/groups/vegitage" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.85); text-decoration: underline;">Vegitage — 自然農法コミュニティ（Facebook）</a>
-            </p>
         </div>
     </section>
 
@@ -298,29 +236,30 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-about">
-                <h3>自然と対話する暮らし</h3>
-                <p>自然とともにあれば、生きられる。福岡正信の自然農法とLight Farmingの科学が示す、生きるための道。</p>
+                <h3>aiseed.dev</h3>
+                <p>化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。構造分析シリーズ全13章。</p>
             </div>
             <div class="footer-nav">
                 <h4>ページ</h4>
                 <ul>
-                    <li><a href="/">ホーム</a></li>
+                    <li><a href="/">構造分析</a></li>
                     <li><a href="/about/">自然農法とは</a></li>
                     <li><a href="/light-farming/">Light Farming</a></li>
                     <li><a href="/gallery/">畑の記録</a></li>
-                    <li><a href="/insights/">Insights</a></li>
                     <li><a href="/contact/">お問い合わせ</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
-                <h4>関連リンク</h4>
+                <h4>コミュニティ</h4>
                 <ul>
-                    <li><a href="https://www.amazingcarbon.com/">Amazing Carbon</a></li>
+                    <li><a href="https://www.facebook.com/groups/vegitage" target="_blank" rel="noopener noreferrer">Vegitage — 自然農法コミュニティ</a></li>
+                    <li><a href="https://www.amazingcarbon.com/" target="_blank" rel="noopener noreferrer">Amazing Carbon</a></li>
+                    <li><a href="/en/insights/">English Version</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p class="footer-copyright">© 2025 自然と対話する暮らし</p>
+            <p class="footer-copyright">© 2025 aiseed.dev</p>
         </div>
     </footer>
 

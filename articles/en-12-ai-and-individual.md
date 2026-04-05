@@ -9,8 +9,8 @@ date: 2025.04.04
 label: Structural Analysis 12
 prev_slug: regulation-redesign
 prev_title: Regulation Redesign
-next_slug:
-next_title:
+next_slug: cases
+next_title: The Evidence Proves It
 cta_label: Start Now
 cta_title: One person plus AI.
 cta_text: Every specialist's knowledge, available to every individual. The era of 1 + AI has arrived.
@@ -173,4 +173,30 @@ Carpenters become legal advisors.
 Every individual commands every specialist's knowledge.
 Claude makes this possible.
 The era of 1 person + AI has arrived.
+:::
+
+## Great Power Breeds Tragedy
+
+What this entire series has revealed is the tragedy caused by massive power structures.
+
+The massive military industry burned fossil resources to build tools of killing.
+Massive IT corporations chained humans to screens to extract advertising revenue.
+Massive agricultural corporations killed soil with chemicals and drained aquifers dry.
+Massive bureaucracies maintained regulations disconnected from reality.
+Massive healthcare systems built structures that profit from "curing" disease.
+
+**The greater the concentration of power, the further from nature, and the greater the tragedy.**
+
+But nature has resilience.
+
+Farmland stripped of topsoil — stop the chemicals, and microbes return.
+Depleted soil — cover crops and Liquid Carbon regenerate it.
+Depopulated towns — when people return, they come back to life.
+
+:::quote
+Nature has the power to recover, even after being destroyed.
+So do humans.
+The era of great power is ending. The era of the individual is arriving.
+One person plus AI, on your own land, living by your own strength.
+That is a life aligned with nature.
 :::

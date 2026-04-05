@@ -409,6 +409,9 @@ def build_html(meta, body_html):
                 <a href="{cta_btn1_link}" class="btn btn-light" style="margin-right: 1rem;">{cta_btn1_text}</a>
                 <a href="{cta_btn2_link}" class="btn btn-outline">{cta_btn2_text}</a>
             </div>
+            <p class="text-center" style="margin-top: 2rem;">
+                <a href="https://www.facebook.com/groups/vegitage" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.85); text-decoration: underline;">Vegitage — {"Natural Farming Community" if is_en else "自然農法コミュニティ"}（Facebook）</a>
+            </p>
         </div>
     </section>
 

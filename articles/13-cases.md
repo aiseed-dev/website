@@ -352,3 +352,7 @@ LIBORの操作は何年も見過ごされた。
 自然は、壊されても回復する力を持っている。
 人間も同じだ。
 :::
+
+---
+
+[Vegitage — 自然農法コミュニティ（Facebook）](https://www.facebook.com/groups/vegitage)

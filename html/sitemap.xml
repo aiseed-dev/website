@@ -86,6 +86,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/insights/dev-story/</loc>
+    <lastmod>2026-04-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/en/insights/climate-mistake/</loc>
     <lastmod>2026-04-05</lastmod>
     <priority>0.6</priority>
@@ -147,6 +152,31 @@
   </url>
   <url>
     <loc>https://aiseed.dev/en/insights/cases/</loc>
+    <lastmod>2026-04-05</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/insights/dev-story/</loc>
+    <lastmod>2026-04-05</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/blog/</loc>
+    <lastmod>2026-04-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/blog/</loc>
+    <lastmod>2026-04-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/blog/grid-attack-naphtha/</loc>
+    <lastmod>2026-04-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/blog/grid-attack-naphtha/</loc>
     <lastmod>2026-04-05</lastmod>
     <priority>0.6</priority>
   </url>

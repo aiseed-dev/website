@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
 """
-Markdown → HTML article builder for aiseed.dev
+Markdown → HTML article/blog builder for aiseed.dev
 
 Usage:
     python3 tools/build_article.py articles/09-healthcare-fiscal.md
-    python3 tools/build_article.py --all          # Build all articles
+    python3 tools/build_article.py blog/001-grid-attack-naphtha.md
+    python3 tools/build_article.py --all          # Build all articles + blog
     python3 tools/build_article.py --list         # List available articles
 
 Dependencies: jinja2, markdown-it-py
 Templates are in tools/templates/:
-    article.html  — single article page (Jinja2)
-    index.html    — insights index page (Jinja2)
+    article.html  — single article/blog page (Jinja2)
+    index.html    — insights/blog index page (Jinja2)
 """
 
 import sys
@@ -23,7 +24,9 @@ from markdown_it import MarkdownIt
 
 SITE_ROOT = Path(__file__).parent.parent
 ARTICLES_DIR = SITE_ROOT / "articles"
+BLOG_DIR = SITE_ROOT / "blog"
 OUTPUT_BASE = SITE_ROOT / "html" / "insights"
+BLOG_OUTPUT_BASE = SITE_ROOT / "html" / "blog"
 TEMPLATES_DIR = Path(__file__).parent / "templates"
 SITE_URL = "https://aiseed.dev"
 
@@ -228,10 +231,10 @@ def article_vars(meta, body_html):
         # CTA
         "cta_label": meta.get("cta_label", "Back to Soil"),
         "cta_title": meta.get("cta_title", _text(is_en,
-            "With nature, we can live.", "自然とともにあれば、生きられる")),
+            "See the Structure", "構造を見る")),
         "cta_text": meta.get("cta_text", _text(is_en,
-            "Every structural analysis converges on one conclusion.",
-            "全ての構造分析は、一つの結論に向かう。")),
+            "From AI to agriculture — every structural analysis converges on one conclusion.",
+            "AIから農業まで——全ての構造分析は、一つの結論に向かう。")),
         "cta_btn1_text": meta.get("cta_btn1_text", _text(is_en, "Natural Farming", "自然農法とは")),
         "cta_btn1_link": meta.get("cta_btn1_link", "/about/"),
         "cta_btn2_text": meta.get("cta_btn2_text", "Light Farming"),
@@ -242,8 +245,8 @@ def article_vars(meta, body_html):
         "img_path": "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg",
         "insights_base": insights_base,
         # Navigation labels
-        "site_name": _text(is_en, "Living with Nature", "自然と対話する暮らし"),
-        "site_tagline": "Natural Farming",
+        "site_name": _text(is_en, "Living in the AI Era", "AI時代の暮らし"),
+        "site_tagline": _text(is_en, "aiseed.dev", "aiseed.dev"),
         "home_label": _text(is_en, "Home", "ホーム"),
         "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
         "lf_label": "Light Farming",
@@ -258,9 +261,9 @@ def article_vars(meta, body_html):
             f"構造分析シリーズ {number}"),
         "vegitage_label": _text(is_en, "Natural Farming Community", "自然農法コミュニティ"),
         "footer_about": _text(is_en,
-            "With nature, we can live. The path shown by Masanobu Fukuoka's natural farming "
-            "and the science of Light Farming.",
-            "自然とともにあれば、生きられる。福岡正信の自然農法とLight Farmingの科学が示す、生きるための道。"),
+            "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
+            "food, energy, AI, healthcare, and pensions — every structure connects.",
+            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
         # SEO
         "canonical_url": f"{SITE_URL}{insights_base}/{slug}/",
         "hreflang_ja": f"{SITE_URL}/insights/{slug}/",
@@ -275,17 +278,14 @@ def index_vars(lang, article_list_html):
     insights_base = "/en/insights" if is_en else "/insights"
 
     intro_text = _text(is_en,
-        "Masanobu Fukuoka's philosophy asks: \"How do we survive?\"\n"
-        "Light Farming provides the scientific answer.\n"
-        "Every article here converges on one conclusion — the further we move\n"
-        "from nature, the higher the cost of living becomes.\n"
-        "Agriculture, energy, finance, AI, defense, healthcare.\n"
+        "AI is changing everything — how we work, how we farm, how we live.\n"
+        "But the real question is: what structures remain when the hype fades?\n"
+        "Fossil resources, food, energy, AI, healthcare, pensions.\n"
         "Follow the structure, and the answer is always the same.",
 
-        "福岡正信の思想は「生きるためにどうするか」。\n"
-        "Light Farmingはその科学的根拠。\n"
-        "全ての記事は一つの結論に向かう——自然から離れるほど、生きるコストは上がる。\n"
-        "農業、エネルギー、金融、AI、医療、年金。\n"
+        "AIが全てを変える——仕事、農業、暮らし。\n"
+        "しかし本当の問いは、バブルが消えた後に何が残るか。\n"
+        "化石資源、食料、エネルギー、AI、医療、年金。\n"
         "構造を追跡すれば、答えは同じ場所に収束する。"
     )
 
@@ -298,26 +298,26 @@ def index_vars(lang, article_list_html):
     )
 
     quote_text = _text(is_en,
-        "With nature, we can live.<br>\n"
+        "AI replaces desk work. Natural farming replaces chemical agriculture.<br>\n"
         "The further we move from nature, the higher the cost of living becomes.<br>\n"
-        "Fukuoka and Okada knew this. Dr. Christine Jones proved it.",
+        "Structure doesn't lie.",
 
-        "自然とともにあれば、生きられる。<br>\n"
+        "AIがデスクワークを代替する。自然農法が化学農業を代替する。<br>\n"
         "自然から離れるほど、生きるコストは上がる。<br>\n"
-        "福岡正信はそれを知っていた。Light Farmingがそれを証明した。"
+        "構造は嘘をつかない。"
     )
 
     cta_text = _text(is_en,
-        "The production route of fertilizer, the network of soil microbes —<br>\n"
+        "From AI to agriculture, from energy to pensions —<br>\n"
         "understanding the structure changes how you see everything.",
 
-        "肥料の生産ルートも、土壌微生物のネットワークも、<br>\n"
+        "AIから農業まで、エネルギーから年金まで——<br>\n"
         "構造を理解すれば見え方が変わる。"
     )
 
     return {
         "lang": lang,
-        "site_name": _text(is_en, "Living with Nature", "自然と対話する暮らし"),
+        "site_name": _text(is_en, "Living in the AI Era", "AI時代の暮らし"),
         "home_label": _text(is_en, "Home", "ホーム"),
         "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
         "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
@@ -349,14 +349,143 @@ def index_vars(lang, article_list_html):
         "cta_title": _text(is_en, "See the Structure", "構造を見る"),
         "cta_html": cta_text,
         "footer_about": _text(is_en,
-            "With nature, we can live. The path shown by Masanobu Fukuoka's natural farming "
-            "and the science of Light Farming.",
-            "自然とともにあれば、生きられる。福岡正信の自然農法とLight Farmingの科学が示す、生きるための道。"),
-        "copyright_text": _text(is_en, "Living with Nature — aiseed.dev", "自然と対話する暮らし"),
+            "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
+            "food, energy, AI, healthcare, and pensions — every structure connects.",
+            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
+        "copyright_text": _text(is_en, "Living in the AI Era — aiseed.dev", "AI時代の暮らし"),
         # SEO
         "canonical_url": f"{SITE_URL}{insights_base}/",
         "hreflang_ja": f"{SITE_URL}/insights/",
         "hreflang_en": f"{SITE_URL}/en/insights/",
+        "og_locale": "en_US" if is_en else "ja_JP",
+    }
+
+
+# ---------------------------------------------------------------------------
+# Blog template variable builders
+# ---------------------------------------------------------------------------
+
+def blog_vars(meta, body_html):
+    """Build template variables for blog post pages."""
+    lang = meta.get("lang", "ja")
+    is_en = lang == "en"
+    slug = meta.get("slug", "")
+    blog_base = "/en/blog" if is_en else "/blog"
+
+    # Blog navigation — just link back to blog index
+    blog_top = "Blog Top" if is_en else "Blog トップ"
+    nav_html = '<div class="article-nav">\n'
+    nav_html += '  <span></span>\n'
+    nav_html += f'  <a href="{blog_base}/">{blog_top} &rarr;</a>\n'
+    nav_html += '</div>'
+
+    category = meta.get("category", _text(is_en, "Blog", "ブログ"))
+
+    return {
+        "lang": lang,
+        "title": meta.get("title", ""),
+        "subtitle": meta.get("subtitle", ""),
+        "description": meta.get("description", ""),
+        "date": meta.get("date", ""),
+        "number": "",
+        "label": meta.get("label", "Blog"),
+        "body_html": body_html,
+        "nav_html": nav_html,
+        # CTA
+        "cta_label": "Blog",
+        "cta_title": _text(is_en, "See the Structure", "構造を見る"),
+        "cta_text": _text(is_en,
+            "From AI to agriculture — every structural analysis converges on one conclusion.",
+            "AIから農業まで——全ての構造分析は、一つの結論に向かう。"),
+        "cta_btn1_text": _text(is_en, "Insights", "構造分析シリーズ"),
+        "cta_btn1_link": "/en/insights/" if is_en else "/insights/",
+        "cta_btn2_text": "Blog",
+        "cta_btn2_link": blog_base + "/",
+        # Paths
+        "css_path": "../../../css/style.css" if is_en else "../../css/style.css",
+        "js_path": "../../../js/main.js" if is_en else "../../js/main.js",
+        "img_path": "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg",
+        "insights_base": "/en/insights" if is_en else "/insights",
+        # Navigation labels
+        "site_name": _text(is_en, "Living in the AI Era", "AI時代の暮らし"),
+        "site_tagline": _text(is_en, "aiseed.dev", "aiseed.dev"),
+        "home_label": _text(is_en, "Home", "ホーム"),
+        "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
+        "lf_label": "Light Farming",
+        "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
+        "insights_label": "Insights",
+        "contact_label": _text(is_en, "Contact", "お問い合わせ"),
+        "menu_label": _text(is_en, "Menu", "メニュー"),
+        "pages_label": _text(is_en, "Pages", "ページ"),
+        "links_label": _text(is_en, "Links", "関連リンク"),
+        "series_label": category,
+        "vegitage_label": _text(is_en, "Natural Farming Community", "自然農法コミュニティ"),
+        "footer_about": _text(is_en,
+            "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
+            "food, energy, AI, healthcare, and pensions — every structure connects.",
+            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
+        # SEO
+        "canonical_url": f"{SITE_URL}{blog_base}/{slug}/",
+        "hreflang_ja": f"{SITE_URL}/blog/{slug}/",
+        "hreflang_en": f"{SITE_URL}/en/blog/{slug}/",
+        "og_locale": "en_US" if is_en else "ja_JP",
+    }
+
+
+def blog_index_vars(lang, post_list_html):
+    """Build template variables for blog index pages."""
+    is_en = lang == "en"
+    blog_base = "/en/blog" if is_en else "/blog"
+
+    intro_text = _text(is_en,
+        "Quick analysis notes on current events — connecting the dots with structural analysis.",
+        "時事ニュースを構造分析の視点で読む。速報ノート。")
+
+    return {
+        "lang": lang,
+        "site_name": _text(is_en, "Living in the AI Era", "AI時代の暮らし"),
+        "home_label": _text(is_en, "Home", "ホーム"),
+        "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
+        "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
+        "menu_label": _text(is_en, "Menu", "メニュー"),
+        "pages_label": _text(is_en, "Pages", "ページ"),
+        "links_label": _text(is_en, "Links", "関連リンク"),
+        "insights_base": "/en/insights" if is_en else "/insights",
+        "css_path": "../../css/style.css" if is_en else "../css/style.css",
+        "js_path": "../../js/main.js" if is_en else "../js/main.js",
+        "img_path": "../../images/IMG_3285.jpg" if is_en else "../images/IMG_3285.jpg",
+        "meta_description": intro_text,
+        "structural_analysis_label": "Blog",
+        "page_title": "Blog",
+        "page_subtitle": _text(is_en,
+            "Current events through the lens of structural analysis",
+            "構造分析の視点で読む時事ノート"),
+        "other_lang_link": "/blog/" if is_en else "/en/blog/",
+        "other_lang_text": _text(is_en, "日本語版はこちら →", "English version available →"),
+        "series_title": "Blog",
+        "series_description": _text(is_en,
+            "Quick analysis notes connecting current events to structural reality.",
+            "時事ニュースと構造分析をつなぐ速報ノート。"),
+        "article_list_html": post_list_html,
+        "intro_html": intro_text,
+        "method_title": "",
+        "method_html": "",
+        "quote_html": _text(is_en,
+            "Structure doesn't lie.<br>\nCurrent events prove it, every time.",
+            "構造は嘘をつかない。<br>\n時事ニュースが、毎回それを証明する。"),
+        "cta_title": _text(is_en, "See the Full Analysis", "構造分析シリーズ"),
+        "cta_html": _text(is_en,
+            "For the complete structural analysis, see the Insights series.",
+            "完全な構造分析は、構造分析シリーズで。"),
+        "footer_about": _text(is_en,
+            "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
+            "food, energy, AI, healthcare, and pensions — every structure connects.",
+            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
+        "copyright_text": _text(is_en, "Living in the AI Era — aiseed.dev", "AI時代の暮らし"),
+        # SEO
+        "canonical_url": f"{SITE_URL}{blog_base}/",
+        "hreflang_ja": f"{SITE_URL}/blog/",
+        "hreflang_en": f"{SITE_URL}/en/blog/",
         "og_locale": "en_US" if is_en else "ja_JP",
     }
 
@@ -388,6 +517,20 @@ def build_sitemap():
     for meta in collect_articles("en"):
         slug = meta.get("slug", "")
         urls.append((f"{SITE_URL}/en/insights/{slug}/", today, "0.6"))
+
+    # Blog index pages
+    urls.append((f"{SITE_URL}/blog/", today, "0.8"))
+    urls.append((f"{SITE_URL}/en/blog/", today, "0.7"))
+
+    # JP blog posts
+    for meta in collect_blog_posts("ja"):
+        slug = meta.get("slug", "")
+        urls.append((f"{SITE_URL}/blog/{slug}/", today, "0.7"))
+
+    # EN blog posts
+    for meta in collect_blog_posts("en"):
+        slug = meta.get("slug", "")
+        urls.append((f"{SITE_URL}/en/blog/{slug}/", today, "0.6"))
 
     xml_lines = ['<?xml version="1.0" encoding="UTF-8"?>']
     xml_lines.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
@@ -532,6 +675,100 @@ def build_index(lang="ja"):
 
 
 # ---------------------------------------------------------------------------
+# Blog build functions
+# ---------------------------------------------------------------------------
+
+def build_blog_post(md_path):
+    """Build a single blog post from Markdown file."""
+    md_path = Path(md_path)
+    if not md_path.exists():
+        print(f"Error: {md_path} not found")
+        return False
+
+    text = md_path.read_text(encoding="utf-8")
+    meta, body = parse_frontmatter(text)
+
+    if "slug" not in meta:
+        print(f"Error: {md_path} missing 'slug' in front matter")
+        return False
+
+    body = process_custom_blocks(body)
+    body_html = _md.render(body)
+
+    indented = "\n".join(
+        f"                {line}" if line.strip() else ""
+        for line in body_html.split("\n")
+    )
+
+    variables = blog_vars(meta, indented)
+    html = render("article.html", variables)
+
+    lang = meta.get("lang", "ja")
+    if lang == "en":
+        out_dir = SITE_ROOT / "html" / "en" / "blog" / meta["slug"]
+    else:
+        out_dir = BLOG_OUTPUT_BASE / meta["slug"]
+    out_dir.mkdir(parents=True, exist_ok=True)
+    out_file = out_dir / "index.html"
+    out_file.write_text(html, encoding="utf-8")
+
+    print(f"Built blog: {out_file}")
+    return True
+
+
+def collect_blog_posts(lang="ja"):
+    """Collect and sort blog post metadata for a given language."""
+    if not BLOG_DIR.exists():
+        return []
+    prefix = "en-" if lang == "en" else ""
+    pattern = f"{prefix}[0-9]*.md"
+    posts = []
+    for f in sorted(BLOG_DIR.glob(pattern)):
+        text = f.read_text(encoding="utf-8")
+        meta, _ = parse_frontmatter(text)
+        if meta.get("lang", "ja") == lang or (lang == "ja" and "lang" not in meta):
+            posts.append(meta)
+    return posts
+
+
+def build_blog_index(lang="ja"):
+    """Build the blog index page from post metadata."""
+    is_en = lang == "en"
+    posts = collect_blog_posts(lang)
+    blog_base = "/en/blog" if is_en else "/blog"
+
+    post_list = ""
+    for p in posts:
+        slug = p.get("slug", "")
+        title = p.get("title", "")
+        date = p.get("date", "")
+        description = p.get("description", "")
+        post_list += f'''
+                <a href="{blog_base}/{slug}/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item">
+                        <div class="activity-number" style="font-size: 0.7rem;">{date}</div>
+                        <div class="activity-content">
+                            <h3>{title}</h3>
+                            <p>{description}</p>
+                        </div>
+                    </div>
+                </a>
+'''
+
+    variables = blog_index_vars(lang, post_list)
+    html = render("index.html", variables)
+
+    if is_en:
+        out_file = SITE_ROOT / "html" / "en" / "blog" / "index.html"
+    else:
+        out_file = BLOG_OUTPUT_BASE / "index.html"
+    out_file.parent.mkdir(parents=True, exist_ok=True)
+    out_file.write_text(html, encoding="utf-8")
+    print(f"Built blog index: {out_file}")
+    return True
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -563,12 +800,27 @@ def main():
                 ok += 1
         build_index("ja")
         build_index("en")
+
+        # Build blog posts
+        blog_ok = 0
+        blog_files = sorted(BLOG_DIR.glob("*.md")) if BLOG_DIR.exists() else []
+        for f in blog_files:
+            if build_blog_post(f):
+                blog_ok += 1
+        if blog_files:
+            build_blog_index("ja")
+            build_blog_index("en")
+
         build_sitemap()
         build_robots()
-        print(f"\nBuilt {ok}/{len(files)} articles + 2 index pages + sitemap.xml + robots.txt.")
+        print(f"\nBuilt {ok}/{len(files)} articles + {blog_ok}/{len(blog_files)} blog posts + indexes + sitemap.xml + robots.txt.")
         return
 
-    build_article(arg)
+    # Auto-detect blog vs article
+    if "blog/" in arg or "blog\\" in arg:
+        build_blog_post(arg)
+    else:
+        build_article(arg)
 
 
 if __name__ == "__main__":

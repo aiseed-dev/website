@@ -9,8 +9,8 @@ date: 2025.04.04
 label: Structural Analysis 13
 prev_slug: ai-and-individual
 prev_title: AI and the Individual
-next_slug:
-next_title:
+next_slug: dev-story
+next_title: This Site Was Built by AI
 cta_label: Return to Nature
 cta_title: Nature recovers. So do we.
 cta_text: Great power does not last. Nature does. The era of the individual has arrived.

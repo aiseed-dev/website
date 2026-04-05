@@ -122,7 +122,11 @@ continue using features without realizing they're enabled.
 Users who do notice must hunt through settings to disable them.
 Updates sometimes reset those settings.
 **"Enabling features by default" means "levying taxes by default."**
-Users' data, attention, and freedom of choice — all taxed.
+Users' data, attention, and freedom of choice — and CPU cycles — all taxed.
+Copilot, Recall, OneDrive sync, Windows Update, telemetry —
+background processes constantly consuming CPU and memory.
+The hardware performance users paid for is being consumed by Microsoft without permission.
+**This is a CPU tax.**
 :::
 
 Microsoft taxes Claude can eliminate:

@@ -1,32 +1,22 @@
 ---
 slug: grid-attack-naphtha
 title: もしトランプ大統領が4月6日にイランの発電所を破壊したら
-subtitle: 「48時間以内に合意するか海峡を開け。さもなくば地獄が降り注ぐ」——実は世界に地獄が降り注ぐ
-description: 日本時間4月7日朝、トランプ大統領がイランの発電所を攻撃したら何が起きるか。報復の連鎖、ホルムズ海峡と紅海の二重封鎖、湾岸インフラの壊滅。エネルギー、化学、金属、医薬品、肥料——世界のサプライチェーンが同時に止まる。
+subtitle: 「ホルムズ海峡を開けろ。さもなくば地獄に住むことになる」——実は世界に地獄が降り注ぐ
+description: 2026年4月5日、トランプ大統領が「火曜日は発電所の日だ」と宣言した。もしイランの発電所が破壊されたら何が起きるか。報復の連鎖、6,200万人の飲料水消失、肥料危機——世界のサプライチェーンが同時に止まる。
 date: 2026.04.05
 label: Blog
 category: 構造分析ノート
 ---
 
-**4月6日午後8時（米東部時間）——日本時間4月7日午前9時。**
+2026年4月5日、イースターの朝。トランプ大統領がTruth Socialに投稿した。
 
-トランプ大統領がイランに突きつけた期限まで、あと2日を切った。交渉は進展していない。
+:::quote
+**Tuesday will be Power Plant Day, and Bridge Day, all wrapped up in one, in Iran. There will be nothing like it!!! Open the Fuckin' Strait, you crazy bastards, or you'll be living in Hell - JUST WATCH! Praise be to Allah. President DONALD J. TRUMP**
+:::
 
-もしこの期限どおりにイランの発電所が攻撃されたら、何が起きるか。これは「中東の戦争」ではない。ここに書くのは、あなたの生活に直結する話だ。
+「火曜日は発電所の日であり、橋の日だ。まとめてやる。ホルムズ海峡を開けろ。さもなくば地獄に住むことになる」
 
-### トランプ大統領の発言
-
-- **3月22日**：「48時間以内にホルムズ海峡を完全に開かなければ、イラン最大の発電所から破壊する」と威嚇 ([CBS News](https://www.cbsnews.com/news/trump-reminds-iran-ultimatum-reopen-strait-of-hormuz/))
-- **3月23日**：「非常に生産的な対話」があったとして攻撃を5日間延期 ([日本経済新聞](https://www.nikkei.com/article/DGXZQOGN239FY0T20C26A3000000/))
-- **3月26日**：攻撃期限を4月6日午後8時（米東部時間）まで再延期 ([Al Jazeera](https://www.aljazeera.com/news/2026/3/26/trump-postpones-us-strikes-on-iranian-power-grid-to-april-6-amid-talks))
-- **3月30日**：「合意に至らなければ、イランの発電所、油井、ハーグ島、そして淡水化プラントも全て吹き飛ばす」とTruth Socialに投稿 ([Al Jazeera](https://www.aljazeera.com/news/2026/3/30/trump-threatens-to-blow-up-all-desalination-plants-in-iran))。アムネスティ・インターナショナルは「戦争犯罪の威嚇」と非難 ([Amnesty International](https://www.amnesty.org/en/latest/news/2026/03/trump-warning-attack-iran-power-plants-is-threat-to-commit-war-crimes/))
-- **4月1日**：国民向けテレビ演説で「戦争は完了に近づいている」「今後2〜3週間で極めて激しく攻撃する」「石器時代に戻す」と発言 ([CNBC](https://www.cnbc.com/2026/04/01/trump-address-nation-iran-live-updates.html), [Al Jazeera](https://www.aljazeera.com/news/2026/4/2/trumps-primetime-speech-on-iran-war-key-takeaways))
-- **4月3日**：「米国はイランの残りの破壊をまだ始めてすらいない。次は橋、その次は発電所だ！」とTruth Socialに投稿 ([CNBC](https://www.cnbc.com/2026/04/03/trump-iran-threats-un-resolution-blocked-strait-of-hormuz-f35-shot-down.html))
-- **4月4日**：「48時間以内に合意するか海峡を開け。さもなくば地獄が降り注ぐ」（"Time is running out — 48 hours before all Hell will reign down on them"）([Axios](https://www.axios.com/2026/04/04/trump-iran-hell-threat-deadline))
-
-パキスタン、トルコ、エジプトによる間接交渉が行われているが、イランは一時停戦を拒否し、恒久的な戦争終結と再攻撃しない保証を要求している。
-
-ブレント原油は2月28日以降55%以上上昇し、126ドル/バレルに達した。国際エネルギー機関（IEA）は「史上最大のエネルギー安全保障上の危機」と評した ([Economic impact — Wikipedia](https://en.wikipedia.org/wiki/Economic_impact_of_the_2026_Iran_war))。
+これは「中東の戦争」ではない。ここに書くのは、あなたの生活に直結する話だ。
 
 ## なぜ発電所攻撃は今まで起きなかったのか
 
@@ -62,9 +52,7 @@ category: 構造分析ノート
 一度タブーが壊れれば、すべての当事者が同じ論理で相手のインフラを攻撃できる。**砂漠の中東で、それは核戦争と同義だ。**
 :::
 
-そしてトランプ大統領は4月4日、「Power Plant Day」「Bridge Day」を宣言し、ホルムズ海峡が開かなければイランは「地獄に住むことになる」と脅迫した ([The National](https://www.thenationalnews.com/news/mena/2026/04/04/trump-power-plant-day-iran/))。
-
-このタブーが完全に破壊されようとしている。
+そしてトランプ大統領は「Power Plant Day」を宣言した。このタブーが完全に破壊されようとしている。
 
 ## 報復の連鎖が始まる
 
@@ -195,22 +183,11 @@ category: 構造分析ノート
 
 ## Sources
 
-- [CNN: Iran begins laying mines in Strait of Hormuz](https://www.cnn.com/2026/03/10/politics/iran-begins-laying-mines-in-strait-of-hormuz)
-- [CNBC: U.S. forces sink 16 Iranian minelayers](https://www.cnbc.com/2026/03/11/us-strikes-iran-mine-ships-strait-of-hormuz-war-oil.html)
-- [NPR: Fear of Iranian mines in the Strait of Hormuz could further slow the flow of oil](https://www.npr.org/2026/03/12/g-s1-113471/strait-hormuz-mines-drones-missiles-oil-tankers)
-- [NPR: Iran hits Gulf refineries as Trump warns U.S. will attack Iranian bridges, power plants](https://www.npr.org/2026/04/03/g-s1-116314/iran-hits-gulf-refineries-as-trump-warns-u-s-will-attack-iranian-bridges-power-plants)
-- [Al Jazeera: Bahrain says water desalination plant damaged in Iranian drone attack](https://www.aljazeera.com/news/2026/3/8/bahrain-says-water-desalination-plant-damaged-in-iranian-drone-attack)
-- [Al Jazeera: Iranian attack damages Kuwait power and desalination plant](https://www.aljazeera.com/news/2026/3/30/iranian-attack-damages-kuwait-power-and-desalination-plant-kills-worker)
-- [Al Jazeera: Trump threatens to 'blow up' desalination plants in Iran](https://www.aljazeera.com/news/2026/3/30/trump-threatens-to-blow-up-all-desalination-plants-in-iran)
-- [Al Jazeera: Trump postpones US strikes on Iranian power grid to April 6](https://www.aljazeera.com/news/2026/3/26/trump-postpones-us-strikes-on-iranian-power-grid-to-april-6-amid-talks)
-- [Al Jazeera: Trump's primetime speech on Iran war: Key takeaways](https://www.aljazeera.com/news/2026/4/2/trumps-primetime-speech-on-iran-war-key-takeaways)
-- [CNBC: Trump threatens to destroy Iranian infrastructure](https://www.cnbc.com/2026/04/03/trump-iran-threats-un-hormuz-f35-shot-down.html)
-- [CNBC: Trump Iran speech recap — April 1](https://www.cnbc.com/2026/04/01/trump-address-nation-iran-live-updates.html)
-- [Axios: Trump threatens Iran with "hell" — 48-hour deadline](https://www.axios.com/2026/04/04/trump-iran-hell-threat-deadline)
-- [CBS News: Trump gives Iran 48-hour deadline to reopen Strait of Hormuz](https://www.cbsnews.com/news/trump-reminds-iran-ultimatum-reopen-strait-of-hormuz/)
-- [Amnesty International: Trump's warning is a threat to commit war crimes](https://www.amnesty.org/en/latest/news/2026/03/trump-warning-attack-iran-power-plants-is-threat-to-commit-war-crimes/)
-- [Time: The Risk of Targeting Water Desalination Plants In The Iran War](https://time.com/article/2026/04/01/water-desalination-plants-iran-war/)
-- [Bloomberg: トランプ氏、イランのエネルギー施設攻撃までの期限を4月6日に延長](https://www.bloomberg.com/jp/news/articles/2026-03-26/TCIWBFKJH6VC00)
-- [日本経済新聞: トランプ氏、イラン発電所の攻撃「5日間延期」](https://www.nikkei.com/article/DGXZQOGN239FY0T20C26A3000000/)
-- [Wikipedia: 2026 Strait of Hormuz crisis](https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis)
-- [Wikipedia: Economic impact of the 2026 Iran war](https://en.wikipedia.org/wiki/Economic_impact_of_the_2026_Iran_war)
+- [Arab News: Gulf water security and desalination dependency](https://www.arabnews.com/node/2591186/middle-east)
+- [Project Syndicate: Iran war and the destruction of civilian infrastructure taboos](https://www.project-syndicate.org/commentary/iran-war-unprecedented-destruction-of-civilian-infrastructure-by-shlomo-ben-ami-2026-04)
+- [Al Jazeera: Iran threatens regional energy infrastructure retaliation](https://www.aljazeera.com/news/2026/4/1/iran-threatens-regional-energy-infrastructure-retaliation)
+- [Al Jazeera: Bahrain desalination plant damaged in drone attack](https://www.aljazeera.com/news/2026/3/8/bahrain-says-water-desalination-plant-damaged-in-iranian-drone-attack)
+- [Al Jazeera: Kuwait power and desalination plant attacked](https://www.aljazeera.com/news/2026/3/30/iranian-attack-damages-kuwait-power-and-desalination-plant-kills-worker)
+- [euronews: Netanyahu — Iran steel production destroyed, power plants next](https://www.euronews.com/2026/04/03/netanyahu-iran-steel-production-destroyed-power-plants-next)
+- [Times of Israel: Iran targets Israel power plants](https://www.timesofisrael.com/iran-targets-israel-power-plants-orot-rabin-hadera/)
+- [NPR: Iran missiles breach Israeli defenses at Dimona and Arad](https://www.npr.org/2026/03/05/iran-missiles-dimona-arad-israel-damage)

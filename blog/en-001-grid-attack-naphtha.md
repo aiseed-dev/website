@@ -2,32 +2,22 @@
 slug: grid-attack-naphtha
 lang: en
 title: "What If Trump Destroys Iran's Power Plants on April 6"
-subtitle: "\"48 hours before all Hell will reign down on them\" — but it rains down on the world"
-description: "What happens if Trump attacks Iran's power plants on April 7 Japan Time (April 6 ET). Chain of retaliation, Hormuz blockade, Gulf infrastructure collapse. 62 million refugees, global fertilizer crisis, a decade of unrecoverable damage."
+subtitle: "\"Open the Fuckin' Strait, or you'll be living in Hell\" — but hell rains down on the world"
+description: "On April 5, 2026, Trump declared 'Tuesday will be Power Plant Day.' What happens if Iran's power plants are destroyed? Chain of retaliation, 62 million lose drinking water, global fertilizer crisis — the world's supply chains stop simultaneously."
 date: 2026.04.05
 label: Blog
 category: Structural Analysis Notes
 ---
 
-**April 6, 8:00 PM Eastern Time — April 7, 9:00 AM Japan Time.**
+April 5, 2026 — Easter morning. Trump posted on Truth Social:
 
-The deadline Trump gave Iran expires in less than two days. Negotiations have stalled.
+:::quote
+**Tuesday will be Power Plant Day, and Bridge Day, all wrapped up in one, in Iran. There will be nothing like it!!! Open the Fuckin' Strait, you crazy bastards, or you'll be living in Hell - JUST WATCH! Praise be to Allah. President DONALD J. TRUMP**
+:::
 
-If Iran's power plants are attacked on schedule, what happens next? This is not a "Middle East war." What follows will directly affect your life.
+"Open the Strait of Hormuz, or you'll live in hell."
 
-### Trump's Statements
-
-- **March 22**: Threatened to "obliterate" Iran's largest power plant if Hormuz not fully reopened within 48 hours ([CBS News](https://www.cbsnews.com/news/trump-reminds-iran-ultimatum-reopen-strait-of-hormuz/))
-- **March 23**: Postponed strikes by 5 days, citing "very productive conversations" ([Nikkei](https://www.nikkei.com/article/DGXZQOGN239FY0T20C26A3000000/))
-- **March 26**: Extended deadline to April 6, 8pm ET ([Al Jazeera](https://www.aljazeera.com/news/2026/3/26/trump-postpones-us-strikes-on-iranian-power-grid-to-april-6-amid-talks))
-- **March 30**: Posted on Truth Social that if no deal is reached, the US will "blow up and completely obliterate" Iran's power plants, oil wells, Kharg Island, and "possibly all desalination plants" ([Al Jazeera](https://www.aljazeera.com/news/2026/3/30/trump-threatens-to-blow-up-all-desalination-plants-in-iran)). Amnesty International called this "a threat to commit war crimes" ([Amnesty International](https://www.amnesty.org/en/latest/news/2026/03/trump-warning-attack-iran-power-plants-is-threat-to-commit-war-crimes/))
-- **April 1**: Primetime address to the nation — "war is nearing completion," vowed "extremely hard" strikes in coming weeks, threatened to "bring them back to the stone ages" ([CNBC](https://www.cnbc.com/2026/04/01/trump-address-nation-iran-live-updates.html), [Al Jazeera](https://www.aljazeera.com/news/2026/4/2/trumps-primetime-speech-on-iran-war-key-takeaways))
-- **April 3**: "The United States hasn't even started destroying what's left in Iran. Bridges next, then Electric Power Plants!" on Truth Social ([CNBC](https://www.cnbc.com/2026/04/03/trump-iran-threats-un-resolution-blocked-strait-of-hormuz-f35-shot-down.html))
-- **April 4**: "Time is running out — 48 hours before all Hell will reign down on them" ([Axios](https://www.axios.com/2026/04/04/trump-iran-hell-threat-deadline))
-
-Pakistan, Turkey, and Egypt are mediating indirect negotiations, but Iran has rejected any temporary ceasefire and demands a permanent end to the war with guarantees.
-
-Brent crude has surged over 55% since February 28, reaching $126/barrel. The International Energy Agency called it "the greatest global energy security challenge in history" ([Economic impact — Wikipedia](https://en.wikipedia.org/wiki/Economic_impact_of_the_2026_Iran_war)).
+This is not a "Middle East war." What follows will directly affect your life.
 
 ## Why Power Plant Attacks Have Never Happened Before
 
@@ -63,9 +53,7 @@ The fatal asymmetry: **Iran has 1.65 million km² and 90 million people. Israel 
 Once the taboo breaks, every party can attack the other's infrastructure with the same justification. **In the desert Middle East, this is equivalent to nuclear war.**
 :::
 
-On April 4, Trump declared "Power Plant Day" and "Bridge Day," threatening that if Hormuz doesn't open, Iran "will live in hell" ([The National](https://www.thenationalnews.com/news/mena/2026/04/04/trump-power-plant-day-iran/)).
-
-This taboo is about to be completely destroyed.
+And now Trump has declared "Power Plant Day." This taboo is about to be completely destroyed.
 
 ## The Chain of Retaliation Begins
 
@@ -196,20 +184,11 @@ The further we move from nature, the higher the cost of living. The Iran war jus
 
 ## Sources
 
-- [CNN: Iran begins laying mines in Strait of Hormuz](https://www.cnn.com/2026/03/10/politics/iran-begins-laying-mines-in-strait-of-hormuz)
-- [CNBC: U.S. forces sink 16 Iranian minelayers](https://www.cnbc.com/2026/03/11/us-strikes-iran-mine-ships-strait-of-hormuz-war-oil.html)
-- [NPR: Fear of Iranian mines in the Strait of Hormuz could further slow the flow of oil](https://www.npr.org/2026/03/12/g-s1-113471/strait-hormuz-mines-drones-missiles-oil-tankers)
-- [NPR: Iran hits Gulf refineries as Trump warns U.S. will attack Iranian bridges, power plants](https://www.npr.org/2026/04/03/g-s1-116314/iran-hits-gulf-refineries-as-trump-warns-u-s-will-attack-iranian-bridges-power-plants)
-- [Al Jazeera: Bahrain says water desalination plant damaged in Iranian drone attack](https://www.aljazeera.com/news/2026/3/8/bahrain-says-water-desalination-plant-damaged-in-iranian-drone-attack)
-- [Al Jazeera: Iranian attack damages Kuwait power and desalination plant](https://www.aljazeera.com/news/2026/3/30/iranian-attack-damages-kuwait-power-and-desalination-plant-kills-worker)
-- [Al Jazeera: Trump threatens to 'blow up' desalination plants in Iran](https://www.aljazeera.com/news/2026/3/30/trump-threatens-to-blow-up-all-desalination-plants-in-iran)
-- [Al Jazeera: Trump postpones US strikes on Iranian power grid to April 6](https://www.aljazeera.com/news/2026/3/26/trump-postpones-us-strikes-on-iranian-power-grid-to-april-6-amid-talks)
-- [Al Jazeera: Trump's primetime speech on Iran war: Key takeaways](https://www.aljazeera.com/news/2026/4/2/trumps-primetime-speech-on-iran-war-key-takeaways)
-- [CNBC: Trump threatens to destroy Iranian infrastructure](https://www.cnbc.com/2026/04/03/trump-iran-threats-un-resolution-blocked-strait-of-hormuz-f35-shot-down.html)
-- [CNBC: Trump Iran speech recap — April 1](https://www.cnbc.com/2026/04/01/trump-address-nation-iran-live-updates.html)
-- [Axios: Trump threatens Iran with "hell" — 48-hour deadline](https://www.axios.com/2026/04/04/trump-iran-hell-threat-deadline)
-- [CBS News: Trump gives Iran 48-hour deadline to reopen Strait of Hormuz](https://www.cbsnews.com/news/trump-reminds-iran-ultimatum-reopen-strait-of-hormuz/)
-- [Amnesty International: Trump's warning is a threat to commit war crimes](https://www.amnesty.org/en/latest/news/2026/03/trump-warning-attack-iran-power-plants-is-threat-to-commit-war-crimes/)
-- [Time: The Risk of Targeting Water Desalination Plants In The Iran War](https://time.com/article/2026/04/01/water-desalination-plants-iran-war/)
-- [Wikipedia: 2026 Strait of Hormuz crisis](https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis)
-- [Wikipedia: Economic impact of the 2026 Iran war](https://en.wikipedia.org/wiki/Economic_impact_of_the_2026_Iran_war)
+- [Arab News: Gulf water security and desalination dependency](https://www.arabnews.com/node/2591186/middle-east)
+- [Project Syndicate: Iran war and the destruction of civilian infrastructure taboos](https://www.project-syndicate.org/commentary/iran-war-unprecedented-destruction-of-civilian-infrastructure-by-shlomo-ben-ami-2026-04)
+- [Al Jazeera: Iran threatens regional energy infrastructure retaliation](https://www.aljazeera.com/news/2026/4/1/iran-threatens-regional-energy-infrastructure-retaliation)
+- [Al Jazeera: Bahrain desalination plant damaged in drone attack](https://www.aljazeera.com/news/2026/3/8/bahrain-says-water-desalination-plant-damaged-in-iranian-drone-attack)
+- [Al Jazeera: Kuwait power and desalination plant attacked](https://www.aljazeera.com/news/2026/3/30/iranian-attack-damages-kuwait-power-and-desalination-plant-kills-worker)
+- [euronews: Netanyahu — Iran steel production destroyed, power plants next](https://www.euronews.com/2026/04/03/netanyahu-iran-steel-production-destroyed-power-plants-next)
+- [Times of Israel: Iran targets Israel power plants](https://www.timesofisrael.com/iran-targets-israel-power-plants-orot-rabin-hadera/)
+- [NPR: Iran missiles breach Israeli defenses at Dimona and Arad](https://www.npr.org/2026/03/05/iran-missiles-dimona-arad-israel-damage)

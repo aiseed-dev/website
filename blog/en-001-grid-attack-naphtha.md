@@ -78,10 +78,12 @@ Six Gulf states depend on desalination for drinking water for a combined 62 mill
 Desalination destroyed → No drinking water → Region becomes uninhabitable → No one to manage or repair facilities → Oil production restart becomes impossible
 :::
 
-:::highlight
-**If facilities are destroyed but people remain, they can be rebuilt. Without water, people can't stay.**
+Recovery must follow a strict sequence. First, **mines must be cleared** — no supply ships can enter otherwise. Then **power plants and desalination facilities must be built** — without them, no one can live there. Only after people can inhabit the region can **refinery restoration** begin.
 
-Desalination plant destruction is more severe than oil facility destruction. Oil facilities can be repaired. But if the people who would repair them can't live there, nothing starts. Recovery could take not years, but **a decade or more**.
+:::highlight
+**Mine clearance → Power plant and desalination construction → Refinery restoration.**
+
+This sequence cannot be skipped. Without desalination, people cannot live there. Without people, nothing starts. Each stage takes years, so full recovery could take **a decade or more**.
 :::
 
 ## What This Means for Japan's Food

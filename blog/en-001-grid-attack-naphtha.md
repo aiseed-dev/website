@@ -52,16 +52,34 @@ Hormuz blockade → Crude oil and natural gas stop → Naphtha stops → Ammonia
 This is not a "gasoline gets expensive" problem. This is a **food production stops** problem.
 :::
 
-## Attacks on Gulf Facilities — Production Itself Stops
+## Mine Blockades Don't Clear Quickly
+
+Some assume a Hormuz blockade is temporary. It's not.
+
+Mine sweeping is an extremely slow operation. Ship by ship, nautical mile by nautical mile, detecting and removing mines one at a time. During wartime, minesweepers themselves become targets. If Iran continues laying new mines, sweeping never finishes.
+
+**Clearing a blockade takes months to years.**
+
+## Attacks on Gulf Facilities — Recovery Blocked by the Blockade
 
 What makes this even more severe is that Iran is attacking Gulf oil facilities.
 
-A Hormuz blockade is a "can't pass" problem. Facility attacks are a "can't produce" problem. Mines can be swept, but **destroyed refining facilities take years to rebuild**.
+Destroyed refining facilities take 3–5 years to rebuild. But the problem doesn't stop there. **As long as the strait is blockaded, the materials and equipment needed for repairs can't be shipped in.** The blockade and facility destruction compound each other.
+
+## Desalination Plant Destruction — Making the Region Uninhabitable
+
+The fatal weakness of Gulf nations is their **dependence on desalination for drinking water**.
+
+Saudi Arabia, UAE, Kuwait, Qatar — these countries have extremely low rainfall and cannot sustain human life without desalination plants. When desalination plants are destroyed:
+
+:::chain
+Desalination destroyed → No drinking water → Region becomes uninhabitable → No one to manage or repair facilities → Oil production restart becomes impossible
+:::
 
 :::highlight
-**A blockade can be lifted. Facility destruction takes 3–5 years to repair.**
+**If facilities are destroyed but people remain, they can be rebuilt. Without water, people can't stay.**
 
-This means supply doesn't come back even when the war ends.
+Desalination plant destruction is more severe than oil facility destruction. Oil facilities can be repaired. But if the people who would repair them can't live there, nothing starts. Recovery could take not years, but **a decade or more**.
 :::
 
 ## Japan's Vulnerability

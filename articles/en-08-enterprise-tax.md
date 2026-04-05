@@ -100,6 +100,31 @@ Teams → Bundled with Office 365. Looks "free" but it's part of the bundle
 **For a midsize company (500 employees): tens of millions of yen annually.**
 :::
 
+### Enabled by Default — The Automatic Tax Collection Mechanism
+
+Microsoft's tax has another structure.
+**Features are enabled by default, taxing users before they even notice.**
+
+:::chain
+**The reality of default-enable:**
+GitHub Copilot → Uses your code as AI training data. Enabled by default.
+OneDrive → Starts syncing files without asking. Enabled by default.
+Bing search → Windows Update changes your default browser.
+Edge → Repeatedly sets itself as default via "recommendations."
+Recall → AI records your screen at all times. Enabled by default.
+Copilot → Integrated into Windows. Appears without consent.
+:::
+
+:::highlight
+**This is a dark pattern:**
+By making opt-out the default, the vast majority of users
+continue using features without realizing they're enabled.
+Users who do notice must hunt through settings to disable them.
+Updates sometimes reset those settings.
+**"Enabling features by default" means "levying taxes by default."**
+Users' data, attention, and freedom of choice — all taxed.
+:::
+
 Microsoft taxes Claude can eliminate:
 
 :::chain

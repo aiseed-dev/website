@@ -29,7 +29,45 @@ Pakistan, Turkey, and Egypt are mediating indirect negotiations, but Iran has re
 
 Brent crude has surged over 55% since February 28, reaching $126/barrel. The International Energy Agency called it "the greatest global energy security challenge in history" ([Economic impact — Wikipedia](https://en.wikipedia.org/wiki/Economic_impact_of_the_2026_Iran_war)).
 
-## The Chain of Retaliation
+## Why Power Plant Attacks Have Never Happened Before
+
+Middle East conflicts have lasted for decades. Yet attacks on power plants and desalination facilities were a de facto **taboo**.
+
+University of Utah Middle East Center professor Michael Christopher Low notes this war "has introduced significant tensions to regional security that were previously considered taboo" ([Arab News](https://www.arabnews.com/node/2591186/middle-east)). A Project Syndicate analysis observed that "both sides' attacks have extended to all civilian infrastructure from hotels to airports, **erasing virtually all existing taboos and red lines**" ([Project Syndicate](https://www.project-syndicate.org/commentary/iran-war-unprecedented-destruction-of-civilian-infrastructure-by-shlomo-ben-ami-2026-04)).
+
+The taboo existed for a reason: **mutually assured destruction**.
+
+All Gulf oil-producing nations share the same vulnerability — dependence on desalination, concentrated oil infrastructure, desert environment. Kuwait depends on desalination for **90%** of its drinking water, Oman **86%**, Saudi Arabia **70%**, UAE **42%**. GCC nations operate **60% of the world's desalination capacity** ([Arab News](https://www.arabnews.com/node/2591186/middle-east)).
+
+Destroying a power plant shuts down desalination. **A power attack is a water attack.** Once this kind of attack is legitimized, your own infrastructure becomes a target. That is why no one did it.
+
+### The Real "Weapon of Mass Destruction" in the Middle East
+
+Nuclear weapons function as deterrence — using one ends the user internationally. But attacks on power plants and desalination facilities can be carried out with conventional weapons and justified as "military targets." **Yet in desert regions, their effect on civilian populations equals or exceeds nuclear weapons.**
+
+Iran's Parliament Speaker Ghalibaf explicitly stated: "If our power plants are targeted, we will irreversibly destroy energy and oil infrastructure across the entire region," warning of oil price increases "for a prolonged period" ([Al Jazeera](https://www.aljazeera.com/news/2026/4/1/iran-threatens-regional-energy-infrastructure-retaliation)).
+
+This replicates the logic of nuclear mutually assured destruction (MAD) — **using water and energy instead of warheads**.
+
+### Israel's Structural Contradiction
+
+This taboo destruction is structurally suicidal for Israel too.
+
+Prime Minister Netanyahu announced the destruction of 70% of Iran's steel production capacity and declared "bridges next, then power plants" ([euronews](https://www.euronews.com/2026/04/03/netanyahu-iran-steel-production-destroyed-power-plants-next)). But Iran has already targeted Israeli power plants. Ballistic missiles struck near Hadera, believed to target Israel's largest power plant, Orot Rabin. Iranian state media published target lists including Orot Rabin and Rutenberg (Israel's second-largest plant) ([Times of Israel](https://www.timesofisrael.com/iran-targets-israel-power-plants-orot-rabin-hadera/)).
+
+The fatal asymmetry: **Iran has 1.65 million km² and 90 million people. Israel has 22,000 km² and 10 million.** Israel's power, water, and refining infrastructure is extremely concentrated — a handful of direct hits could paralyze the nation. Iranian missiles have already breached Israeli air defenses at Dimona and Arad ([NPR](https://www.npr.org/2026/03/05/iran-missiles-dimona-arad-israel-damage)). The Iron Dome is not infallible.
+
+:::highlight
+**The side that legitimizes civilian infrastructure attacks is the most vulnerable.**
+
+Once the taboo breaks, every party can attack the other's infrastructure with the same justification. **In the desert Middle East, this is equivalent to nuclear war.**
+:::
+
+On April 4, Trump declared "Power Plant Day" and "Bridge Day," threatening that if Hormuz doesn't open, Iran "will live in hell" ([The National](https://www.thenationalnews.com/news/mena/2026/04/04/trump-power-plant-day-iran/)).
+
+This taboo is about to be completely destroyed.
+
+## The Chain of Retaliation Begins
 
 If Trump attacks Iran's power plants, Iran will retaliate with "equivalent" strikes against Gulf nations' power plants and desalination facilities. Bahrain's desalination plant was already damaged by drone (March 8). Kuwait's power and desalination plant was hit by missile, killing one worker (March 30). On April 3, Kuwait's desalination plant was struck again. These are still "warnings." A power plant attack pulls the trigger on full-scale retaliation.
 

@@ -8,8 +8,8 @@ date: 2025.04.04
 label: Structural Analysis 13
 prev_slug: ai-and-individual
 prev_title: AIと個人事業
-next_slug: 
-next_title: 
+next_slug: dev-story
+next_title: このサイトはAIが作った
 ---
 
 ## 巨大な権力が繰り返してきたこと

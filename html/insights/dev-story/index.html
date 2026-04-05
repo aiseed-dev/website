@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9FLQ963JXM');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="aiseed.devは、人間がコードを1行も書かずにClaude Codeだけで開発された。全13章の構造分析シリーズ、ビルドツール、SEO対策——全てAIが生成。これ自体が第8章の実証だ。">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+    <title>このサイトはAIが作った | 自然と対話する暮らし</title>
+    <link rel="canonical" href="https://aiseed.dev/insights/dev-story/">
+    <link rel="alternate" hreflang="ja" href="https://aiseed.dev/insights/dev-story/">
+    <link rel="alternate" hreflang="en" href="https://aiseed.dev/en/insights/dev-story/">
+    <!-- OGP -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="このサイトはAIが作った">
+    <meta property="og:description" content="aiseed.devは、人間がコードを1行も書かずにClaude Codeだけで開発された。全13章の構造分析シリーズ、ビルドツール、SEO対策——全てAIが生成。これ自体が第8章の実証だ。">
+    <meta property="og:url" content="https://aiseed.dev/insights/dev-story/">
+    <meta property="og:site_name" content="aiseed.dev">
+    <meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+    <meta property="og:locale" content="ja_JP">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="このサイトはAIが作った">
+    <meta name="twitter:description" content="aiseed.devは、人間がコードを1行も書かずにClaude Codeだけで開発された。全13章の構造分析シリーズ、ビルドツール、SEO対策——全てAIが生成。これ自体が第8章の実証だ。">
+    <meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .article-meta {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .article-meta .date {
+            font-size: 0.8rem;
+            color: var(--moss-green);
+            letter-spacing: 0.15em;
+        }
+        .article-meta .series {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--soil-rich);
+            margin-top: 0.5rem;
+        }
+        .chain-diagram {
+            background: var(--sand-light);
+            border-left: 4px solid var(--moss-green);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+            line-height: 2.2;
+            color: var(--earth-dark);
+        }
+        .chain-diagram .arrow {
+            color: var(--moss-green);
+            font-weight: 700;
+            margin: 0 0.3rem;
+        }
+        .highlight-box {
+            background: rgba(122, 154, 109, 0.08);
+            border: 1px solid rgba(122, 154, 109, 0.2);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+        .highlight-box p { margin-bottom: 0.5rem; }
+        .highlight-box p:last-child { margin-bottom: 0; }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+        .comparison-table th {
+            background: var(--earth-dark);
+            color: var(--cream);
+            padding: 0.8rem 1rem;
+            text-align: left;
+            font-weight: 500;
+        }
+        .comparison-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid var(--root-tan);
+            vertical-align: top;
+        }
+        .comparison-table tr:nth-child(even) {
+            background: var(--sand-light);
+        }
+        .article-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--root-tan);
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+        .article-nav a {
+            color: var(--leaf-green);
+        }
+        .quote-block {
+            border-left: 4px solid var(--moss-green);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            background: var(--sand-light);
+        }
+        .quote-block .quote-text {
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--earth-dark);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo">
+                自然と対話する暮らし
+                <span>Natural Farming</span>
+            </a>
+            <nav class="nav">
+                <a href="/">ホーム</a>
+                <a href="/about/">自然農法とは</a>
+                <a href="/light-farming/">Light Farming</a>
+                <a href="/gallery/">畑の記録</a>
+                <a href="/insights/" class="active">Insights</a>
+            </nav>
+            <button class="nav-toggle" aria-label="メニュー">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Article -->
+    <section class="page-hero">
+        <div class="page-hero-image" style="background-image: url('../../images/IMG_3285.jpg');"></div>
+        <div class="page-hero-content">
+            <p class="hero-label">Appendix A</p>
+            <h1 class="hero-title">このサイトはAIが作った</h1>
+            <p class="hero-subtitle">30,000行、42ページ、24時間。人間が書いたコードは0行。</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container-narrow">
+            <div class="article-meta">
+                <p class="date">2025.04.05</p>
+                <p class="series">構造分析シリーズ A</p>
+            </div>
+
+            <div class="prose">
+                <h2>人間はコードを1行も書いていない</h2>
+                <p><a href="https://aiseed.dev/">aiseed.dev</a>は、<strong>Claude Code</strong>（Anthropic社のAI開発ツール）だけで開発された。</p>
+                <p>HTML、CSS、JavaScript、Python、Markdown——全てClaudeが生成した。
+                人間がやったのは、何を作るかを決めて、Claudeに指示を出すことだけだ。</p>
+                <h2>数字で見る</h2>
+                <table class="comparison-table fade-in">
+                <tr>
+                  <th>項目</th>
+                  <th>数値</th>
+                </tr>
+                <tr>
+                  <td>---</td>
+                  <td>---</td>
+                </tr>
+                <tr>
+                  <td>総行数（コード＋コンテンツ）</td>
+                  <td>30,000+</td>
+                </tr>
+                <tr>
+                  <td>HTMLページ</td>
+                  <td>42</td>
+                </tr>
+                <tr>
+                  <td>記事数</td>
+                  <td>26（日本語13 + 英語13）</td>
+                </tr>
+                <tr>
+                  <td>開発期間</td>
+                  <td>約24時間</td>
+                </tr>
+                <tr>
+                  <td>gitコミット</td>
+                  <td>104</td>
+                </tr>
+                <tr>
+                  <td>人間が書いたコード</td>
+                  <td>**0行**</td>
+                </tr>
+                </table>
+                <h2>何が作られたか</h2>
+                <div class="chain-diagram">
+                <strong>サイトの構成：</strong><br>
+                全13章の構造分析シリーズ（日本語＋英語）<br>
+                Markdown <span class="arrow">&rarr;</span> HTML ビルドツール（Python / Jinja2 / markdown-it-py）<br>
+                カスタムブロック構文（:::chain, :::highlight, :::quote, :::compare）<br>
+                OGP / Twitter Card / hreflang / canonical / CSP 対応<br>
+                sitemap.xml / robots.txt 自動生成<br>
+                Cloudflare Pages でホスティング<br>
+                <strong>全てClaude Codeが生成</strong>
+                </div>
+                <h2>人間は何をしたか</h2>
+                <div class="highlight-box">
+                <p><strong>人間の役割：</strong>
+                構造分析のテーマを決めた（化石資源、農業、AI、NVIDIA、企業IT税……）
+                記事の方向性をClaudeに伝えた（「クラウド税も入れて」「エプスタインを最後に」）
+                出来上がったものを読んで、修正を指示した（「自宅→自社」「fade-inは不要」）
+                デプロイした（git push → Cloudflare Pages）
+                <strong>コードは一切書いていない。</strong></p>
+                </div>
+                <h2>これが第8章の実証だ</h2>
+                <p>第8章「<a href="/insights/enterprise-tax/">企業ITの税を引く</a>」で書いた構造は、このサイト自体が実証している。</p>
+                <div class="chain-diagram">
+                <strong>このサイトで消えた「税」：</strong><br>
+                SIer税 <span class="arrow">&rarr;</span> 外部委託ゼロ。Claudeがコードを全部書いた<br>
+                Microsoft税 <span class="arrow">&rarr;</span> Windows不使用。Linux＋Claude<br>
+                クラウド税 <span class="arrow">&rarr;</span> Cloudflare Pages（無料）。AWSもAzureも不要<br>
+                SaaS税 <span class="arrow">&rarr;</span> WordPress不使用。CMS不使用。Markdownとビルドツール<br>
+                コンサルタント税 <span class="arrow">&rarr;</span> 「何を作るべきか」もClaudeと対話して決めた
+                </div>
+                <p>かかったコストはClaudeの月額利用料だけだ。</p>
+                <h2>SIerに発注したら</h2>
+                <div class="highlight-box">
+                <p><strong>同じサイトをSIerに発注した場合の見積もり：</strong>
+                要件定義 → 数十万〜百万円
+                デザイン → 数十万円
+                コーディング（42ページ＋ビルドツール） → 数百万円
+                多言語対応（日英26記事） → 数百万円
+                SEO対策（OGP、sitemap、CSP等） → 数十万円
+                テスト・デプロイ → 数十万円
+                <strong>合計：500万〜1,000万円。納期：2〜3ヶ月。</strong>
+                Claudeでやったら：<strong>24時間。コストはほぼゼロ。</strong></p>
+                </div>
+                <h2>ビルドシステム——Claude自身が作ったツールチェーン</h2>
+                <p>このサイトのビルドシステム自体が、AIによるソフトウェア開発の実例だ。</p>
+                <div class="chain-diagram">
+                <strong>ビルドパイプライン：</strong><br>
+                記事をMarkdownで書く（カスタム拡張構文を含む）<br>
+                <span class="arrow">&rarr;</span> build_article.py がMarkdownを解析<br>
+                <span class="arrow">&rarr;</span> カスタムブロック（:::chain, :::highlight等）をHTMLに変換<br>
+                <span class="arrow">&rarr;</span> markdown-it-py（CommonMark準拠）で残りを変換<br>
+                <span class="arrow">&rarr;</span> Jinja2テンプレートに流し込む<br>
+                <span class="arrow">&rarr;</span> OGP、canonical、hreflang等のSEOタグを自動付与<br>
+                <span class="arrow">&rarr;</span> sitemap.xml、robots.txt を自動生成<br>
+                <span class="arrow">&rarr;</span> 全42ページを一括ビルド<br>
+                <strong>このパイプライン全体をClaudeが設計・実装した</strong>
+                </div>
+                <div class="highlight-box">
+                <p><strong>最初はPython-Markdownとf-string テンプレートだった。</strong>
+                開発途中でJinja2 + markdown-it-pyに移行した。
+                移行もClaude自身が行った。
+                テンプレートの構文変更、CSSブレース二重化の解消、ビルドスクリプトの書き換え——
+                人間は「この例を活かせるはずです」とリポジトリのURLを渡しただけだ。</p>
+                </div>
+                <h2>ソースコードは公開されている</h2>
+                <p>全てのコードは<a href="https://github.com/aiseed-dev/website">GitHub</a>で公開されている。
+                ライセンスは<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>。
+                誰でも使える。構造を見れば、AIで何ができるかが分かる。</p>
+                <div class="quote-block">
+                <p class="quote-text">
+                AIを「使う側」に必要なのはGPUではなく、知性だ。<br>
+                何を作るかを決められる人間と、それを実装できるAI。<br>
+                この組み合わせが、数百万円の「税」を24時間でゼロにする。
+                </p>
+                </div>
+
+                <!-- Article Navigation -->
+                <div class="article-nav">
+  <a href="/insights/cases/">&larr; 前: 巨大な権力は悲劇を生む</a>
+  <a href="/insights/">Insights トップ &rarr;</a>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section-green">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Back to Soil</p>
+                <h2 class="section-title">自然とともにあれば、生きられる</h2>
+            </div>
+            <p class="cta-text">全ての構造分析は、一つの結論に向かう。</p>
+            <div class="text-center">
+                <a href="/about/" class="btn btn-light" style="margin-right: 1rem;">自然農法とは</a>
+                <a href="/light-farming/" class="btn btn-outline">Light Farming</a>
+            </div>
+            <p class="text-center" style="margin-top: 2rem;">
+                <a href="https://www.facebook.com/groups/vegitage" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.85); text-decoration: underline;">Vegitage — 自然農法コミュニティ（Facebook）</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>自然と対話する暮らし</h3>
+                <p>自然とともにあれば、生きられる。福岡正信の自然農法とLight Farmingの科学が示す、生きるための道。</p>
+            </div>
+            <div class="footer-nav">
+                <h4>ページ</h4>
+                <ul>
+                    <li><a href="/">ホーム</a></li>
+                    <li><a href="/about/">自然農法とは</a></li>
+                    <li><a href="/light-farming/">Light Farming</a></li>
+                    <li><a href="/gallery/">畑の記録</a></li>
+                    <li><a href="/insights/">Insights</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>関連リンク</h4>
+                <ul>
+                    <li><a href="https://www.amazingcarbon.com/">Amazing Carbon</a></li>
+                    <li><a href="https://github.com/aiseed-dev/website" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">&copy; 2025 aiseed.dev — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">CC BY 4.0</a></p>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+
+</html>

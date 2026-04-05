@@ -113,7 +113,7 @@ Cloud → Migrate to AWS/GCP/self-hosted. Claude writes the configuration.
 
 You don't have to eliminate everything at once. Eliminate one at a time. Each one you eliminate reduces the Microsoft tax.
 
-## Cloud Tax — A Local Linux Machine Is Enough
+## Cloud Tax — Your Own Linux Server Is Enough
 
 "You should migrate to the cloud" — one of the most successful marketing messages of the past decade.
 
@@ -149,7 +149,8 @@ Need to instantly scale to 100 servers → Yes
 99.999% availability required by SLA → Yes
 **But most small and midsize company workloads do not fit the above.**
 Internal systems, websites, databases —
-a local Linux server + Claude handles all of it. Configuration is faster too.
+your own Linux server + Claude development handles all of it. Configuration is faster too.
+Few cases actually require running agents on a public cloud server.
 :::
 
 ## SaaS Tax — Accumulating Monthly Charges

@@ -244,6 +244,7 @@ def article_vars(meta, body_html):
         "js_path": "../../../js/main.js" if is_en else "../../js/main.js",
         "img_path": "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg",
         "insights_base": insights_base,
+        "blog_base": "/en/blog" if is_en else "/blog",
         # Navigation labels
         "site_name": _text(is_en, "Living in the AI Era", "AI時代の暮らし"),
         "site_tagline": _text(is_en, "aiseed.dev", "aiseed.dev"),
@@ -326,6 +327,7 @@ def index_vars(lang, article_list_html):
         "pages_label": _text(is_en, "Pages", "ページ"),
         "links_label": _text(is_en, "Links", "関連リンク"),
         "insights_base": insights_base,
+        "blog_base": "/en/blog" if is_en else "/blog",
         "css_path": "../../css/style.css" if is_en else "../css/style.css",
         "js_path": "../../js/main.js" if is_en else "../js/main.js",
         "img_path": "../../images/IMG_3285.jpg" if is_en else "../images/IMG_3285.jpg",
@@ -406,6 +408,7 @@ def blog_vars(meta, body_html):
         "js_path": "../../../js/main.js" if is_en else "../../js/main.js",
         "img_path": "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg",
         "insights_base": "/en/insights" if is_en else "/insights",
+        "blog_base": "/en/blog" if is_en else "/blog",
         # Navigation labels
         "site_name": _text(is_en, "Living in the AI Era", "AI時代の暮らし"),
         "site_tagline": _text(is_en, "aiseed.dev", "aiseed.dev"),
@@ -451,6 +454,7 @@ def blog_index_vars(lang, post_list_html):
         "pages_label": _text(is_en, "Pages", "ページ"),
         "links_label": _text(is_en, "Links", "関連リンク"),
         "insights_base": "/en/insights" if is_en else "/insights",
+        "blog_base": "/en/blog" if is_en else "/blog",
         "css_path": "../../css/style.css" if is_en else "../css/style.css",
         "js_path": "../../js/main.js" if is_en else "../js/main.js",
         "img_path": "../../images/IMG_3285.jpg" if is_en else "../images/IMG_3285.jpg",

@@ -33,14 +33,20 @@ articles/
   01-climate-mistake.md      # 日本語記事
   en-01-climate-mistake.md   # 英語記事（en- プレフィックス）
   ...
+blog/
+  001-grid-attack-naphtha.md     # 日本語ブログ記事
+  en-001-grid-attack-naphtha.md  # 英語ブログ記事（en- プレフィックス）
+  ...
 tools/
   build_article.py           # ビルドロジック
   templates/
-    article.html             # 記事ページテンプレート（Jinja2）
+    article.html             # 記事・ブログページテンプレート（Jinja2）
     index.html               # インデックスページテンプレート（Jinja2）
 html/
-  insights/                  # 日本語 HTML 出力先
-  en/insights/               # 英語 HTML 出力先
+  insights/                  # 日本語 Insights HTML 出力先
+  en/insights/               # 英語 Insights HTML 出力先
+  blog/                      # 日本語 Blog HTML 出力先
+  en/blog/                   # 英語 Blog HTML 出力先
 ```
 
 ## 出力先

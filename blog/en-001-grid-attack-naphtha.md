@@ -101,58 +101,62 @@ While recovery is stalled, the oil fields themselves continue to deteriorate. Oi
 The longer fields are left unmanaged, the more irreversible damage accumulates. If recovery takes a decade, the production capacity lost during that period may never return.
 :::
 
-## What This Means for Japan's Food
+## What Is Lost
 
-Approximately 90% of Japan's crude oil imports come from the Middle East, nearly all passing through the Strait of Hormuz.
+### The Lives of 62 Million People in the Gulf
 
-:::chain
-Hormuz blockade → Crude oil imports stop → Refineries run out of feedstock → Naphtha, gasoline, kerosene, diesel — everything stops
+If desalination plants and power stations are destroyed, 62 million people across six Gulf states lose drinking water and electricity. This is not an attack on military infrastructure. It is the **annihilation of civilian infrastructure**.
+
+Saudi Arabia, UAE, Kuwait, Qatar, Bahrain, Oman — these nations depend on desalination for most of their fresh water. Without power, desalination doesn't run. Without water, people can't live.
+
+:::highlight
+**Attacking power plants is not about electricity. It's about drinking water for 62 million people.**
 :::
 
-As explained in [Chapter 2: Fossil Resources and Materials](/en/insights/fossil-materials/), crude oil distillation is not optional. If crude oil stops coming, everything stops.
+### Global Energy Supply
 
-### No Naphtha Means No Fertilizer
+Roughly **20–25% of the world's seaborne oil** passes through the Strait of Hormuz. If the blockade drags on and Gulf production infrastructure and oil fields are destroyed, the impact extends far beyond the Middle East.
 
-Naphtha (or natural gas) is used to produce **ammonia** — the basis of nitrogen fertilizer.
+- **Crude oil prices** — already above $120/barrel. A power plant attack and full-scale retaliation would push prices far higher
+- **Natural gas** — Qatar is one of the world's largest LNG exporters. A Hormuz blockade cuts off LNG exports too
+- **Petrochemicals** — Naphtha, ethylene, propylene — the basic feedstocks of industry face global shortage
+
+### Global Food Production
+
+The energy crisis translates directly into a food crisis.
 
 :::chain
 Naphtha / Natural gas → Hydrogen → Ammonia → **Nitrogen fertilizer**
 Nitrogen fertilizer → Supports roughly 50% of global food production
 :::
 
-Japan depends on imports for virtually all fertilizer raw materials.
-
-- **Nitrogen fertilizer** feedstock: natural gas / naphtha (Middle East dependent)
-- **Phosphate fertilizer** feedstock: phosphate rock (imported from China, Morocco)
-- **Potassium fertilizer** feedstock: potash (imported from Canada, Russia)
-
-:::highlight
-This is not a "gasoline gets expensive" problem. This is a **food production stops** problem.
-:::
-
-### Sulfur Stops Too — The Phosphate Fertilizer Crisis
-
-An overlooked fact: Gulf countries account for **roughly 45% of global sulfur supply**. Sulfur is a byproduct of oil refining.
-
-As analyzed in [Chapter 11: Regulation Redesign](/en/insights/regulation-redesign/), phosphate fertilizer cannot be made without sulfuric acid.
+An overlooked fact compounds this: Gulf countries account for **roughly 45% of global sulfur supply**. Sulfur is a byproduct of oil refining. As analyzed in [Chapter 11: Regulation Redesign](/en/insights/regulation-redesign/), phosphate fertilizer cannot be made without sulfuric acid.
 
 :::chain
-Hormuz blockade → Gulf sulfur exports stop (45% of world supply) → Sulfuric acid shortage → **Phosphate fertilizer production at risk**
+Gulf oil production destroyed → Sulfur byproduct disappears (45% of world supply) → Sulfuric acid shortage → **Phosphate fertilizer production at risk**
 :::
 
-It's not just nitrogen fertilizer. Phosphate fertilizer faces crisis simultaneously. The "Peak Sulfur" warned about in Chapter 11 has been **made real not by decarbonization, but by war**.
+Nitrogen fertilizer and phosphate fertilizer face crisis simultaneously. The "Peak Sulfur" warned about in Chapter 11 has been **made real not by decarbonization, but by war**.
 
-### Japan's Numbers
+:::highlight
+This is not a "gasoline gets expensive" problem. This is a **the raw materials for the world's fertilizer disappear** problem.
+:::
+
+### Japan's Vulnerability
+
+Within this global crisis, Japan is particularly exposed.
 
 - Middle East dependency for crude oil: **~90%**
 - Most naphtha: **imported**
 - Fertilizer raw materials: **almost entirely imported**
 - Food self-sufficiency: **38%** (calorie basis)
 
-:::highlight
-**Japan's food supply depends on the Strait of Hormuz.**
+Japan cannot provide its own crude oil, naphtha, fertilizer feedstocks, or food. A Hormuz blockade hits all four dependencies simultaneously.
 
-If Trump attacks Iran's power plants on April 6, the chain of retaliation will extend the blockade and devastate Gulf production infrastructure. A Middle East war is a dinner table problem for Japan.
+:::highlight
+**If Trump attacks Iran's power plants on April 6, the chain of retaliation will extend the blockade and devastate Gulf production infrastructure.**
+
+The consequences reach 62 million people in the Gulf, global food production, and Japan's dinner table — all at once.
 :::
 
 ## Connection to the Structural Analysis Series

@@ -187,6 +187,34 @@ Companies pouring massive capital into cloud infrastructure are misreading this 
 The collapse of NVIDIA analyzed in Chapter 7 is born from this structural error.
 :::
 
+### The Market Is Overfitting — Not Just AI, Humans Overfit Too
+
+In machine learning, there is a concept called **overfitting**. The model over-adapts to patterns in the training data and fails to generalize to reality.
+
+**Right now, the AI market itself is overfitting.**
+
+:::chain
+**The market's overfitting:**
+Past pattern: IT demand grows → Servers sell → Data centers profit
+AI-era pattern: AI demand grows → GPU servers sell → Data centers profit
+→ The past pattern was applied directly
+→ The market overfitted to "AI = massive infrastructure investment"
+→ **Reality: AI's value is in development assistance, not in infrastructure volume**
+:::
+
+:::highlight
+**AI overfits. Humans overfit too.**
+Just as AI overfits to training data and loses generalization,
+humans overfit to past success patterns and misread new structures.
+Investors overfitted to "IT grew → servers sold" now assume
+"AI grows → GPU servers sell."
+Agriculture is the same. Overfitted to "chemical fertilizer increased yields,"
+continuing to kill soil microbes.
+**The essence of overfitting is failing to see the structure beneath the pattern.**
+GitHub trying to use users' code as AI training data is the same structure.
+"More data + bigger models = better performance" — this premise itself is overfitting.
+:::
+
 ## SaaS Tax — Accumulating Monthly Charges
 
 SaaS (Software as a Service) was sold as "you don't own it." But before you know it, monthly charges have piled up.

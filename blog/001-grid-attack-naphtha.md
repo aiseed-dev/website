@@ -180,21 +180,46 @@ category: 構造分析ノート
 これは「ガソリンが高くなる」問題ではない。**世界の食料生産を支える肥料の原料が消える**問題だ。
 :::
 
-### 日本の脆弱性
+### アジア・オセアニア各国の状況
+
+この危機はすでにアジア・オセアニア全域を直撃している。
+
+**インド** — LPG輸入の約**90%**がホルムズ海峡経由。3月のLPG輸入量は**40%減少**し、各地でガスボンベの行列が発生。政府はホテル・レストラン・食堂への供給を制限し、家庭用を優先。必需品法に基づき1万2,000件以上の捜索と1万5,000本以上のボンベを押収した。CNNは「サモサもチャイも消えた」と報じた ([CNN](https://www.cnn.com/2026/03/18/india/india-lpg-gas-impacts-restaurants-cooking-intl-hnk), [CNBC](https://www.cnbc.com/2026/03/10/-iran-war-lpg-disruption-india-restaurants.html))
+
+**韓国** — 原油輸入の**68%**（日量170万バレル）がホルムズ経由。政府は原油安全保障警報を「注意」から「**警戒**」に引き上げ、公用車の奇数偶数規制を導入。原子炉の前倒し再稼働を決定し、天然ガス供給逼迫に備え石炭火力の増強も検討 ([Seoul Economic Daily](https://en.sedaily.com/finance/2026/04/01/korea-raises-crude-oil-security-alert-to-warning-level), [Carnegie](https://carnegieendowment.org/emissary/2026/03/korea-hormuz-closure-iran-energy-lee-agenda))
+
+**中国** — 石油輸入の**半分**、LNG輸入の**約3分の1**がホルムズ経由。世界最大のメタノール購入国として、港湾在庫が「警戒水準以下」に急減するリスクに直面。3月26日にイランが中国・ロシア・インド・イラク・パキスタンの5カ国の船舶にホルムズ海峡の通過を許可 ([SCMP](https://www.scmp.com/economy/china-economy/article/3345276/iran-war-could-significantly-disrupt-chinas-methanol-imports-analysts))
+
+**フィリピン** — 原油の**95%**を輸入に依存。3月24日にマルコス大統領が**国家エネルギー非常事態**を宣言。ガソリン価格は1カ月で**50%以上**上昇、軽油は**ほぼ2倍**。政府機関は週4日勤務に移行 ([Foreign Policy](https://foreignpolicy.com/2026/03/31/southeast-asias-energy-emergency-begins/), [Al Jazeera](https://www.aljazeera.com/news/2026/3/12/southeast-asia-shuts-offices-limits-travel-as-oil-crisis-deepens))
+
+**タイ・ベトナム** — 政府職員に在宅勤務と移動制限を奨励。タイとフィリピンは食料・エネルギーコスト上昇に対して最も脆弱と国際金融協会（IIF）が分析 ([Fortune](https://fortune.com/2026/03/11/iran-war-fuel-crisis-asia-work-from-home-closed-schools-price-caps/))
+
+**パキスタン** — 1月にLNG余剰だったが、7週間後に海峡が閉鎖。**肥料部門へのLNG供給を停止**、学校・大学を閉鎖 ([The Diplomat](https://thediplomat.com/2026/03/south-asias-lng-strategy-was-built-for-the-last-crisis-not-this-one/))
+
+**バングラデシュ** — QatarEnergyとの15年契約で初めてLNG貨物を受け取った直後に海峡が閉鎖。**5つの肥料工場のうち4つを操業停止** ([Carnegie](https://carnegieendowment.org/emissary/2026/03/fertilizer-iran-hormuz-food-crisis))
+
+**スリランカ** — 2022年の債務危機から回復途上で再び打撃。**週4日勤務**を導入、ガソリンスタンドで長蛇の列 ([The Diplomat](https://thediplomat.com/2026/03/south-asias-lng-strategy-was-built-for-the-last-crisis-not-this-one/))
+
+**オーストラリア** — ディーゼル・ガソリンの**80%**を輸入に依存。南オーストラリア州とクイーンズランド州で一部のターミナルが配給制に。数百のガソリンスタンドで燃料不足が報告された ([The Energy](https://theenergy.co/article/iran-crisis-fears-hit-australia-hard))
+
+**ニュージーランド** — 国内に製油所がなく、シンガポールと韓国からの燃料輸入に依存（両国ともホルムズ封鎖の影響下）。**肥料輸入の22%**がペルシャ湾地域から。航空便のキャンセルも発生 ([University of Waikato](https://www.waikato.ac.nz/int/news-events/news/how-and-why-nz-could-be-drawn-into-the-iran-war-and-the-high-stakes-involved/))
+
+### 日本
 
 この世界的危機のなかで、日本は特に脆弱だ。
 
-- 原油の中東依存度：**約90%**
+- エネルギーの**87%**を輸入化石燃料に依存
+- 原油輸入の**95%**が中東から、うち**70%**がホルムズ海峡経由（日量**160万バレル**）
 - ナフサの大半を**輸入に依存**
 - 肥料原料：**ほぼ全量輸入**
 - 食料自給率：**38%**（カロリーベース）
 
-日本は原油、ナフサ、肥料原料、食料のいずれも自国でまかなえない。ホルムズ海峡の封鎖は、この4重の依存構造を同時に直撃する。
+政府は3月16日から戦略石油備蓄**8,000万バレル**（国内需要45日分）の放出を開始した。備蓄総量は4億7,000万バレル（254日分）と世界最大規模だが、封鎖が長期化すれば尽きる ([The Diplomat](https://thediplomat.com/2026/03/japans-response-to-the-de-facto-blockade-of-the-strait-of-hormuz/), [CSIS](https://www.csis.org/analysis/what-are-implications-iran-conflict-japan))。
 
 :::highlight
 **4月6日にトランプ大統領がイランの発電所を攻撃すれば、報復の連鎖で封鎖はさらに長期化し、湾岸の生産インフラが壊滅する。**
 
-その影響は、湾岸6,200万人の生活と、世界のエネルギー・化学・金属・医薬品・食料のサプライチェーンと、日本の食卓に同時に届く。
+その影響は、湾岸6,200万人の生活と、アジア・オセアニア数十億人のエネルギー・食料と、世界のサプライチェーンに同時に届く。
 :::
 
 ## 構造分析シリーズとの接続

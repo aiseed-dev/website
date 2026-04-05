@@ -181,21 +181,46 @@ Nitrogen fertilizer and phosphate fertilizer face crisis simultaneously. The "Pe
 This is not a "gasoline gets expensive" problem. This is a **the raw materials for the world's fertilizer disappear** problem.
 :::
 
-### Japan's Vulnerability
+### The Situation Across Asia and Oceania
+
+This crisis is already hitting the entire Asia-Oceania region.
+
+**India** — roughly **90%** of LPG imports transit through Hormuz. March LPG imports dropped by **40%**, with gas cylinder queues forming across the country. The government restricted supply to hotels, restaurants, and canteens, prioritizing households. Over 12,000 raids were conducted under the Essential Commodities Act, seizing more than 15,000 cylinders. CNN reported "samosas off the menu and chai lacking its usual aroma" ([CNN](https://www.cnn.com/2026/03/18/india/india-lpg-gas-impacts-restaurants-cooking-intl-hnk), [CNBC](https://www.cnbc.com/2026/03/10/-iran-war-lpg-disruption-india-restaurants.html))
+
+**South Korea** — **68%** of crude oil imports (1.7 million barrels/day) transit Hormuz. The government raised its crude oil security alert from "caution" to **"warning"** and imposed odd-even vehicle restrictions for government cars. Decided to restart nuclear reactors ahead of schedule; considering increased coal generation in case natural gas supply tightens ([Seoul Economic Daily](https://en.sedaily.com/finance/2026/04/01/korea-raises-crude-oil-security-alert-to-warning-level), [Carnegie](https://carnegieendowment.org/emissary/2026/03/korea-hormuz-closure-iran-energy-lee-agenda))
+
+**China** — **half** of oil imports and roughly **one-third** of LNG imports transit Hormuz. As the world's largest methanol buyer, port inventories risk falling "below warning thresholds." On March 26, Iran allowed ships from five nations — China, Russia, India, Iraq, and Pakistan — to transit the strait ([SCMP](https://www.scmp.com/economy/china-economy/article/3345276/iran-war-could-significantly-disrupt-chinas-methanol-imports-analysts))
+
+**Philippines** — depends on imports for **95%** of crude oil. President Marcos declared a **national energy emergency** on March 24. Gasoline prices surged **over 50%** in one month; diesel prices **nearly doubled**. Government offices moved to a four-day work week ([Foreign Policy](https://foreignpolicy.com/2026/03/31/southeast-asias-energy-emergency-begins/), [Al Jazeera](https://www.aljazeera.com/news/2026/3/12/southeast-asia-shuts-offices-limits-travel-as-oil-crisis-deepens))
+
+**Thailand and Vietnam** — government employees encouraged to work from home and limit travel. The Institute of International Finance (IIF) identified Thailand and the Philippines as most vulnerable to rising food and energy costs ([Fortune](https://fortune.com/2026/03/11/iran-war-fuel-crisis-asia-work-from-home-closed-schools-price-caps/))
+
+**Pakistan** — had an LNG surplus in January, but the strait closed seven weeks later. **Suspended LNG supply to the fertilizer sector**; closed schools and universities ([The Diplomat](https://thediplomat.com/2026/03/south-asias-lng-strategy-was-built-for-the-last-crisis-not-this-one/))
+
+**Bangladesh** — received its first LNG cargo under a new 15-year QatarEnergy contract just before the strait closed. **Shut down four out of five fertilizer factories** ([Carnegie](https://carnegieendowment.org/emissary/2026/03/fertilizer-iran-hormuz-food-crisis))
+
+**Sri Lanka** — still recovering from its 2022 sovereign debt crisis, hit again. Introduced a **four-day work week**; long petrol queues causing people to miss work ([The Diplomat](https://thediplomat.com/2026/03/south-asias-lng-strategy-was-built-for-the-last-crisis-not-this-one/))
+
+**Australia** — depends on imports for **80%** of diesel and gasoline. Some terminals in South Australia and Queensland have moved to rationing. Hundreds of gas stations reported fuel shortfalls ([The Energy](https://theenergy.co/article/iran-crisis-fears-hit-australia-hard))
+
+**New Zealand** — has no domestic oil refinery; depends on fuel imports from Singapore and South Korea (both under Hormuz impact). **22% of fertilizer imports** come from the Persian Gulf region. Flight cancellations reported ([University of Waikato](https://www.waikato.ac.nz/int/news-events/news/how-and-why-nz-could-be-drawn-into-the-iran-war-and-the-high-stakes-involved/))
+
+### Japan
 
 Within this global crisis, Japan is particularly exposed.
 
-- Middle East dependency for crude oil: **~90%**
+- **87%** of energy depends on imported fossil fuels
+- **95%** of crude oil imports from the Middle East, **70%** via the Strait of Hormuz (**1.6 million barrels/day**)
 - Most naphtha: **imported**
 - Fertilizer raw materials: **almost entirely imported**
 - Food self-sufficiency: **38%** (calorie basis)
 
-Japan cannot provide its own crude oil, naphtha, fertilizer feedstocks, or food. A Hormuz blockade hits all four dependencies simultaneously.
+On March 16, the government began releasing **80 million barrels** from the strategic petroleum reserve (45 days of domestic demand). Total reserves stand at 470 million barrels (254 days), among the world's largest — but they run out if the blockade persists ([The Diplomat](https://thediplomat.com/2026/03/japans-response-to-the-de-facto-blockade-of-the-strait-of-hormuz/), [CSIS](https://www.csis.org/analysis/what-are-implications-iran-conflict-japan)).
 
 :::highlight
 **If Trump attacks Iran's power plants on April 6, the chain of retaliation will extend the blockade and devastate Gulf production infrastructure.**
 
-The consequences reach 62 million people in the Gulf, global supply chains for energy, chemicals, metals, pharmaceuticals, and food, and Japan's dinner table — all at once.
+The consequences reach 62 million people in the Gulf, billions across Asia and Oceania, and global supply chains — all at once.
 :::
 
 ## Connection to the Structural Analysis Series

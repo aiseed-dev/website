@@ -86,6 +86,21 @@ Recovery must follow a strict sequence. First, **mines must be cleared** — no 
 This sequence cannot be skipped. Without desalination, people cannot live there. Without people, nothing starts. Each stage takes years, so full recovery could take **a decade or more**.
 :::
 
+### What Happens to Oil Fields in the Meantime
+
+While recovery is stalled, the oil fields themselves continue to deteriorate. Oil fields do not naturally recover when left alone. **Without continuous management, production capacity itself is permanently lost.**
+
+- **Wellbore collapse** — Casing (steel pipes) is continuously exposed to corrosive gases (hydrogen sulfide) and high temperatures. Without maintenance, wellbores collapse and must be re-drilled
+- **Water and gas encroachment into reservoirs** — When pressure control stops, water and gas invade the oil-bearing formation. Once invaded, original productivity cannot be restored
+- **Surface equipment degradation** — Pipelines, pumps, and separation equipment corrode rapidly in desert conditions. With no power, corrosion protection systems don't function
+- **Secondary and tertiary recovery shutdown** — Many mature Gulf oil fields maintain production through waterflooding and gas injection. When these stop, **reservoir pressure drops irreversibly**, and even after restart, previous production levels cannot be achieved
+
+:::highlight
+**Even if facilities are repaired, the oil fields may never produce the same volume again.**
+
+The longer fields are left unmanaged, the more irreversible damage accumulates. If recovery takes a decade, the production capacity lost during that period may never return.
+:::
+
 ## What This Means for Japan's Food
 
 Approximately 90% of Japan's crude oil imports come from the Middle East, nearly all passing through the Strait of Hormuz.

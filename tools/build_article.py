@@ -228,10 +228,10 @@ def article_vars(meta, body_html):
         # CTA
         "cta_label": meta.get("cta_label", "Back to Soil"),
         "cta_title": meta.get("cta_title", _text(is_en,
-            "With nature, we can live.", "自然とともにあれば、生きられる")),
+            "See the Structure", "構造を見る")),
         "cta_text": meta.get("cta_text", _text(is_en,
-            "Every structural analysis converges on one conclusion.",
-            "全ての構造分析は、一つの結論に向かう。")),
+            "From AI to agriculture — every structural analysis converges on one conclusion.",
+            "AIから農業まで——全ての構造分析は、一つの結論に向かう。")),
         "cta_btn1_text": meta.get("cta_btn1_text", _text(is_en, "Natural Farming", "自然農法とは")),
         "cta_btn1_link": meta.get("cta_btn1_link", "/about/"),
         "cta_btn2_text": meta.get("cta_btn2_text", "Light Farming"),
@@ -242,8 +242,8 @@ def article_vars(meta, body_html):
         "img_path": "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg",
         "insights_base": insights_base,
         # Navigation labels
-        "site_name": _text(is_en, "Living with Nature", "自然と対話する暮らし"),
-        "site_tagline": "Natural Farming",
+        "site_name": _text(is_en, "Living in the AI Era", "AI時代の暮らし"),
+        "site_tagline": _text(is_en, "aiseed.dev", "aiseed.dev"),
         "home_label": _text(is_en, "Home", "ホーム"),
         "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
         "lf_label": "Light Farming",
@@ -258,9 +258,9 @@ def article_vars(meta, body_html):
             f"構造分析シリーズ {number}"),
         "vegitage_label": _text(is_en, "Natural Farming Community", "自然農法コミュニティ"),
         "footer_about": _text(is_en,
-            "With nature, we can live. The path shown by Masanobu Fukuoka's natural farming "
-            "and the science of Light Farming.",
-            "自然とともにあれば、生きられる。福岡正信の自然農法とLight Farmingの科学が示す、生きるための道。"),
+            "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
+            "food, energy, AI, healthcare, and pensions — every structure connects.",
+            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
         # SEO
         "canonical_url": f"{SITE_URL}{insights_base}/{slug}/",
         "hreflang_ja": f"{SITE_URL}/insights/{slug}/",
@@ -275,17 +275,14 @@ def index_vars(lang, article_list_html):
     insights_base = "/en/insights" if is_en else "/insights"
 
     intro_text = _text(is_en,
-        "Masanobu Fukuoka's philosophy asks: \"How do we survive?\"\n"
-        "Light Farming provides the scientific answer.\n"
-        "Every article here converges on one conclusion — the further we move\n"
-        "from nature, the higher the cost of living becomes.\n"
-        "Agriculture, energy, finance, AI, defense, healthcare.\n"
+        "AI is changing everything — how we work, how we farm, how we live.\n"
+        "But the real question is: what structures remain when the hype fades?\n"
+        "Fossil resources, food, energy, AI, healthcare, pensions.\n"
         "Follow the structure, and the answer is always the same.",
 
-        "福岡正信の思想は「生きるためにどうするか」。\n"
-        "Light Farmingはその科学的根拠。\n"
-        "全ての記事は一つの結論に向かう——自然から離れるほど、生きるコストは上がる。\n"
-        "農業、エネルギー、金融、AI、医療、年金。\n"
+        "AIが全てを変える——仕事、農業、暮らし。\n"
+        "しかし本当の問いは、バブルが消えた後に何が残るか。\n"
+        "化石資源、食料、エネルギー、AI、医療、年金。\n"
         "構造を追跡すれば、答えは同じ場所に収束する。"
     )
 
@@ -298,26 +295,26 @@ def index_vars(lang, article_list_html):
     )
 
     quote_text = _text(is_en,
-        "With nature, we can live.<br>\n"
+        "AI replaces desk work. Natural farming replaces chemical agriculture.<br>\n"
         "The further we move from nature, the higher the cost of living becomes.<br>\n"
-        "Fukuoka and Okada knew this. Dr. Christine Jones proved it.",
+        "Structure doesn't lie.",
 
-        "自然とともにあれば、生きられる。<br>\n"
+        "AIがデスクワークを代替する。自然農法が化学農業を代替する。<br>\n"
         "自然から離れるほど、生きるコストは上がる。<br>\n"
-        "福岡正信はそれを知っていた。Light Farmingがそれを証明した。"
+        "構造は嘘をつかない。"
     )
 
     cta_text = _text(is_en,
-        "The production route of fertilizer, the network of soil microbes —<br>\n"
+        "From AI to agriculture, from energy to pensions —<br>\n"
         "understanding the structure changes how you see everything.",
 
-        "肥料の生産ルートも、土壌微生物のネットワークも、<br>\n"
+        "AIから農業まで、エネルギーから年金まで——<br>\n"
         "構造を理解すれば見え方が変わる。"
     )
 
     return {
         "lang": lang,
-        "site_name": _text(is_en, "Living with Nature", "自然と対話する暮らし"),
+        "site_name": _text(is_en, "Living in the AI Era", "AI時代の暮らし"),
         "home_label": _text(is_en, "Home", "ホーム"),
         "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
         "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
@@ -349,10 +346,10 @@ def index_vars(lang, article_list_html):
         "cta_title": _text(is_en, "See the Structure", "構造を見る"),
         "cta_html": cta_text,
         "footer_about": _text(is_en,
-            "With nature, we can live. The path shown by Masanobu Fukuoka's natural farming "
-            "and the science of Light Farming.",
-            "自然とともにあれば、生きられる。福岡正信の自然農法とLight Farmingの科学が示す、生きるための道。"),
-        "copyright_text": _text(is_en, "Living with Nature — aiseed.dev", "自然と対話する暮らし"),
+            "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
+            "food, energy, AI, healthcare, and pensions — every structure connects.",
+            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
+        "copyright_text": _text(is_en, "Living in the AI Era — aiseed.dev", "AI時代の暮らし"),
         # SEO
         "canonical_url": f"{SITE_URL}{insights_base}/",
         "hreflang_ja": f"{SITE_URL}/insights/",

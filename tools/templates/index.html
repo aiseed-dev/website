@@ -1,32 +1,32 @@
 <!DOCTYPE html>
-<html lang="{lang}">
+<html lang="{{ lang }}">
 
 <head>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag() {{ dataLayer.push(arguments); }}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-9FLQ963JXM');
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{meta_description}">
-    <title>Insights — {structural_analysis_label} | {site_name}</title>
+    <meta name="description" content="{{ meta_description }}">
+    <title>Insights — {{ structural_analysis_label }} | {{ site_name }}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{css_path}">
+    <link rel="stylesheet" href="{{ css_path }}">
     <style>
-        .highlight-box {{
+        .highlight-box {
             background: rgba(122, 154, 109, 0.08);
             border: 1px solid rgba(122, 154, 109, 0.2);
             padding: 1.5rem 2rem;
             margin: 1.5rem 0;
-        }}
-        .highlight-box p {{ margin-bottom: 0.5rem; }}
-        .highlight-box p:last-child {{ margin-bottom: 0; }}
+        }
+        .highlight-box p { margin-bottom: 0.5rem; }
+        .highlight-box p:last-child { margin-bottom: 0; }
     </style>
 </head>
 
@@ -35,18 +35,18 @@
     <header class="header">
         <div class="header-inner">
             <a href="/" class="logo">
-                {site_name}
+                {{ site_name }}
                 <span>Natural Farming</span>
             </a>
             <nav class="nav">
-                <a href="/">{home_label}</a>
-                <a href="/about/">{about_label}</a>
+                <a href="/">{{ home_label }}</a>
+                <a href="/about/">{{ about_label }}</a>
                 <a href="/light-farming/">Light Farming</a>
-                <a href="/gallery/">{gallery_label}</a>
-                <a href="{insights_base}/" class="active">Insights</a>
-                <a href="/contact/">{contact_label}</a>
+                <a href="/gallery/">{{ gallery_label }}</a>
+                <a href="{{ insights_base }}/" class="active">Insights</a>
+                <a href="/contact/">{{ contact_label }}</a>
             </nav>
-            <button class="nav-toggle" aria-label="{menu_label}">
+            <button class="nav-toggle" aria-label="{{ menu_label }}">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -56,11 +56,11 @@
 
     <!-- Page Hero -->
     <section class="page-hero">
-        <div class="page-hero-image" style="background-image: url('{img_path}');"></div>
+        <div class="page-hero-image" style="background-image: url('{{ img_path }}');"></div>
         <div class="page-hero-content">
             <p class="hero-label">Structural Analysis</p>
-            <h1 class="hero-title">{page_title}</h1>
-            <p class="hero-subtitle">{page_subtitle}</p>
+            <h1 class="hero-title">{{ page_title }}</h1>
+            <p class="hero-subtitle">{{ page_subtitle }}</p>
         </div>
     </section>
 
@@ -68,9 +68,9 @@
     <section class="section">
         <div class="container-narrow">
             <div class="prose fade-in text-center">
-                <p>{intro_html}</p>
+                <p>{{ intro_html }}</p>
                 <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--moss-green);">
-                    <a href="{other_lang_link}" style="color: var(--moss-green);">{other_lang_text}</a>
+                    <a href="{{ other_lang_link }}" style="color: var(--moss-green);">{{ other_lang_text }}</a>
                 </p>
             </div>
         </div>
@@ -81,20 +81,20 @@
         <div class="container">
             <div class="section-header">
                 <p class="section-label">Series</p>
-                <h2 class="section-title">{series_title}</h2>
+                <h2 class="section-title">{{ series_title }}</h2>
             </div>
 
             <div class="prose fade-in text-center" style="margin-bottom: 3rem;">
-                <p>{series_description}</p>
+                <p>{{ series_description }}</p>
             </div>
 
             <div class="activity-list">
-{article_list_html}
+{{ article_list_html }}
             </div>
 
             <div class="highlight-box fade-in" style="margin-top: 2rem;">
-                <p><strong>{method_title}</strong></p>
-                <p>{method_html}</p>
+                <p><strong>{{ method_title }}</strong></p>
+                <p>{{ method_html }}</p>
             </div>
         </div>
     </section>
@@ -103,7 +103,7 @@
     <section class="section">
         <div class="container-narrow">
             <div class="quote-block fade-in">
-                <p class="quote-text">{quote_html}</p>
+                <p class="quote-text">{{ quote_html }}</p>
             </div>
         </div>
     </section>
@@ -113,12 +113,12 @@
         <div class="container">
             <div class="section-header">
                 <p class="section-label">Explore</p>
-                <h2 class="section-title">{cta_title}</h2>
+                <h2 class="section-title">{{ cta_title }}</h2>
             </div>
-            <p class="cta-text">{cta_html}</p>
+            <p class="cta-text">{{ cta_html }}</p>
             <div class="text-center">
                 <a href="/light-farming/" class="btn btn-light" style="margin-right: 1rem;">Light Farming</a>
-                <a href="/about/" class="btn btn-outline">{about_label}</a>
+                <a href="/about/" class="btn btn-outline">{{ about_label }}</a>
             </div>
         </div>
     </section>
@@ -127,22 +127,22 @@
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-about">
-                <h3>{site_name}</h3>
-                <p>{footer_about}</p>
+                <h3>{{ site_name }}</h3>
+                <p>{{ footer_about }}</p>
             </div>
             <div class="footer-nav">
-                <h4>{pages_label}</h4>
+                <h4>{{ pages_label }}</h4>
                 <ul>
-                    <li><a href="/">{home_label}</a></li>
-                    <li><a href="/about/">{about_label}</a></li>
+                    <li><a href="/">{{ home_label }}</a></li>
+                    <li><a href="/about/">{{ about_label }}</a></li>
                     <li><a href="/light-farming/">Light Farming</a></li>
-                    <li><a href="/gallery/">{gallery_label}</a></li>
-                    <li><a href="{insights_base}/">Insights</a></li>
-                    <li><a href="/contact/">{contact_label}</a></li>
+                    <li><a href="/gallery/">{{ gallery_label }}</a></li>
+                    <li><a href="{{ insights_base }}/">Insights</a></li>
+                    <li><a href="/contact/">{{ contact_label }}</a></li>
                 </ul>
             </div>
             <div class="footer-contact">
-                <h4>{links_label}</h4>
+                <h4>{{ links_label }}</h4>
                 <ul>
                     <li><a href="https://www.amazingcarbon.com/">Amazing Carbon (Dr. Christine Jones)</a></li>
                     <li><a href="https://github.com/aiseed-dev/website" target="_blank" rel="noopener noreferrer">GitHub</a></li>
@@ -150,11 +150,11 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p class="footer-copyright">&copy; 2025 {copyright_text} — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">CC BY 4.0</a></p>
+            <p class="footer-copyright">&copy; 2025 {{ copyright_text }} — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">CC BY 4.0</a></p>
         </div>
     </footer>
 
-    <script src="{js_path}"></script>
+    <script src="{{ js_path }}"></script>
 </body>
 
 </html>

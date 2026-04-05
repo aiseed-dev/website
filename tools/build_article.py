@@ -7,21 +7,34 @@ Usage:
     python3 tools/build_article.py --all          # Build all articles
     python3 tools/build_article.py --list         # List available articles
 
+Dependencies: jinja2, markdown-it-py
 Templates are in tools/templates/:
-    article.html  — single article page
-    index.html    — insights index page
+    article.html  — single article page (Jinja2)
+    index.html    — insights index page (Jinja2)
 """
 
 import sys
 import re
-import markdown
 from pathlib import Path
+
+from jinja2 import Environment, FileSystemLoader
+from markdown_it import MarkdownIt
 
 
 SITE_ROOT = Path(__file__).parent.parent
 ARTICLES_DIR = SITE_ROOT / "articles"
 OUTPUT_BASE = SITE_ROOT / "html" / "insights"
 TEMPLATES_DIR = Path(__file__).parent / "templates"
+
+# Jinja2 environment
+_env = Environment(
+    loader=FileSystemLoader(str(TEMPLATES_DIR)),
+    autoescape=False,
+    keep_trailing_newline=True,
+)
+
+# markdown-it renderer (CommonMark + tables)
+_md = MarkdownIt("commonmark", {"html": True}).enable("table")
 
 
 # ---------------------------------------------------------------------------
@@ -117,7 +130,7 @@ def close_block(block_type, lines):
         return f'<div class="chain-diagram">\n{content}\n</div>'
 
     elif block_type == "highlight":
-        html = markdown.markdown(content)
+        html = _md.render(content)
         return f'<div class="highlight-box">\n{html}\n</div>'
 
     elif block_type == "quote":
@@ -337,19 +350,13 @@ def index_vars(lang, article_list_html):
 
 
 # ---------------------------------------------------------------------------
-# Template rendering
+# Template rendering (Jinja2)
 # ---------------------------------------------------------------------------
 
-def load_template(name):
-    """Load a template file and return its content."""
-    path = TEMPLATES_DIR / name
-    return path.read_text(encoding="utf-8")
-
-
 def render(template_name, variables):
-    """Load a template and fill in variables."""
-    template = load_template(template_name)
-    return template.format(**variables)
+    """Load a Jinja2 template and render with variables."""
+    tpl = _env.get_template(template_name)
+    return tpl.render(**variables)
 
 
 # ---------------------------------------------------------------------------
@@ -373,12 +380,8 @@ def build_article(md_path):
     # Process custom blocks first
     body = process_custom_blocks(body)
 
-    # Convert remaining Markdown to HTML
-    body_html = markdown.markdown(
-        body,
-        extensions=["tables", "attr_list"],
-        output_format="html5"
-    )
+    # Convert remaining Markdown to HTML (markdown-it-py, CommonMark)
+    body_html = _md.render(body)
 
     # Indent body HTML for template
     indented = "\n".join(

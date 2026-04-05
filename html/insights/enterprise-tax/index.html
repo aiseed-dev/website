@@ -153,14 +153,15 @@
                 <p>選択肢がないから払う。慣性で払う。乗り換えが怖いから払う。
                 これは技術投資ではない。構造的な税だ。</p>
                 <div class="highlight-box">
-                <p><strong>企業が払っている5つの税：</strong>
-                1. <strong>Oracle税 / SQL Server税</strong> — データベースライセンス
-                2. <strong>Microsoft税</strong> — Windows、Office 365、Azure
-                3. <strong>SaaS税</strong> — 月額サブスクリプションの積み重ね
-                4. <strong>SIer税</strong> — システム構築・運用の外部委託
-                5. <strong>コンサルタント税</strong> — 「何をすべきか」を外部に聞く費用</p>
+                <p><strong>企業が払っている5つの税：</strong></p>
+                <ol>
+                <li><strong>Oracle税 / SQL Server税</strong> — データベースライセンス</li>
+                <li><strong>Microsoft税</strong> — Windows、Office 365、Azure</li>
+                <li><strong>SaaS税</strong> — 月額サブスクリプションの積み重ね</li>
+                <li><strong>SIer税</strong> — システム構築・運用の外部委託</li>
+                <li><strong>コンサルタント税</strong> — 「何をすべきか」を外部に聞く費用</li>
+                </ol>
                 </div>
-
                 <p>Claudeは、これらの税を<strong>構造的に引く</strong>道具だ。</p>
                 <h2>Oracle税 / SQL Server税——最も分かりやすい税</h2>
                 <p>Oracle Database のライセンス費用を見たことがあるか。</p>
@@ -173,7 +174,6 @@
                 Oracle サポート契約 → ライセンス費の22%を毎年支払い続ける
                 <strong>機能を使うたびに課金される。使わなくても基本料を取られる。</strong></p>
                 </div>
-
                 <p>SQL Serverも同じ構造だ。Enterprise Editionは1コアあたり年間数十万円。
                 機能を追加するたびにライセンスが増える。</p>
                 <p>しかし、PostgreSQLが存在する。</p>
@@ -223,7 +223,6 @@
                   <td>**SQLの方言、ストアドプロシージャの書き換え**</td>
                 </tr>
                 </table>
-
                 <p>移行の壁は「SQLの方言の違い」と「ストアドプロシージャの書き換え」だ。
                 これが、企業がOracle税を何十年も払い続けてきた理由だ。</p>
                 <p><strong>ここにClaudeが来る。</strong></p>
@@ -237,7 +236,6 @@
                 <span class="arrow">&rarr;</span> <strong>移行の壁が消える</strong><br>
                 <span class="arrow">&rarr;</span> Oracle税が消える
                 </div>
-
                 <p>これは仮説ではない。
                 Claudeは数十万行のコードベースを理解し、書き換える能力がある。
                 SQLの方言変換はコードの構造変換であり、AIが最も得意とする仕事だ。</p>
@@ -255,7 +253,6 @@
                 Teams → Office 365にバンドル。「無料」に見えるが、バンドルの一部
                 <strong>中堅企業（500人）で年間数千万円。</strong></p>
                 </div>
-
                 <p>Claudeが引けるMicrosoft税：</p>
                 <div class="chain-diagram">
                 <strong>Microsoft税の引き方：</strong><br>
@@ -265,7 +262,6 @@
                 メール <span class="arrow">&rarr;</span> AIが下書き・整理。Outlookの必要性が低下。<br>
                 クラウド <span class="arrow">&rarr;</span> AWS/GCP/自前サーバーに移行。Claudeが設定を書く。
                 </div>
-
                 <p>全てを一度に引く必要はない。
                 一つずつ引けばいい。一つ引くたびに、Microsoft税は減る。</p>
                 <h2>SaaS税——月額課金の積み重ね</h2>
@@ -282,7 +278,6 @@
                 その他10〜20のSaaS → 月額数十万〜数百万円
                 <strong>合計：年間数千万円の「税」を、気づかないうちに払っている。</strong></p>
                 </div>
-
                 <p>これらのSaaSが提供する機能の多くは、
                 Claudeの支援で自前のツールに置き換えられる。</p>
                 <div class="chain-diagram">
@@ -293,7 +288,6 @@
                 ドキュメント <span class="arrow">&rarr;</span> Markdown＋Git＋静的サイト生成<br>
                 <strong>全てのSaaSを置き換える必要はない。高額なものから順に引けばいい。</strong>
                 </div>
-
                 <h2>SIer税——「作ってもらう」から「自分で作る」へ</h2>
                 <p>日本企業のIT投資の大部分は、SIer（システムインテグレーター）に流れている。</p>
                 <div class="highlight-box">
@@ -306,7 +300,6 @@
                 運用保守 → SIerが月額で請求 → 年間数百万〜数千万円
                 <strong>合計：一つのシステムで数千万〜数億円。</strong></p>
                 </div>
-
                 <p>SIerの工数の大半は「設計書の作成」と「定型的なコーディング」だ。
                 Claudeが最も得意とする仕事である。</p>
                 <div class="chain-diagram">
@@ -318,7 +311,6 @@
                 運用 <span class="arrow">&rarr;</span> Claudeが監視・保守の仕組みを構築<br>
                 <strong>SIerの役割の大半を、Claudeが代替する。</strong>
                 </div>
-
                 <p>社内の業務を最もよく知っているのは社員だ。SIerではない。
                 社員がClaudeに直接要件を伝え、Claudeがシステムを作る。
                 「翻訳者」としてのSIerが不要になる。</p>
@@ -334,7 +326,6 @@
                 成果物 → 美しいPowerPointのスライド数十枚
                 <strong>実装は含まれない。「考える」だけで数千万円。</strong></p>
                 </div>
-
                 <p>Claudeは構造的思考の道具だ。
                 コンサルタントが数週間かけて作るスライドの内容を、
                 Claudeは数時間で構造化できる。</p>
@@ -346,7 +337,6 @@
                 戦略提案 <span class="arrow">&rarr;</span> Claudeが選択肢と因果関係を可視化<br>
                 <strong>コンサルタントに払う数千万円の大半は、Claudeで代替できる。</strong>
                 </div>
-
                 <p>コンサルタントの本当の価値は「外部の目線」だ。
                 しかし、「外部の目線」に数千万円を払う時代は終わりつつある。
                 Claudeは究極の外部の目線だ。業界の慣習に囚われない。忖度しない。</p>
@@ -393,7 +383,6 @@
                   <td>—</td>
                 </tr>
                 </table>
-
                 <p>Claudeの利用料は、これらの税に比べれば桁違いに安い。
                 月額数万円のClaude利用で、年間数千万〜数億円の税が引ける。</p>
                 <div class="quote-block">

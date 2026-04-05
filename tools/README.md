@@ -18,14 +18,13 @@ python3 tools/build_article.py --list
 ## 依存ライブラリ
 
 ```bash
-pip install markdown
+pip install -r requirements.txt
 ```
 
-Python の [markdown](https://python-markdown.github.io/) ライブラリを使用。
-有効にしている拡張:
+- [Jinja2](https://jinja.palletsprojects.com/) — テンプレートエンジン（`{{ variable }}` 構文）
+- [markdown-it-py](https://markdown-it-py.readthedocs.io/) — CommonMark 準拠の Markdown パーサー
 
-- `tables` — パイプ `|` 記法のテーブル（カスタムブロック外で使う場合）
-- `attr_list` — `{.class #id}` 形式の属性指定
+markdown-it-py は `table` 拡張を有効化済み。
 
 ## ファイル構成
 
@@ -37,8 +36,8 @@ articles/
 tools/
   build_article.py           # ビルドロジック
   templates/
-    article.html             # 記事ページテンプレート
-    index.html               # インデックスページテンプレート
+    article.html             # 記事ページテンプレート（Jinja2）
+    index.html               # インデックスページテンプレート（Jinja2）
 html/
   insights/                  # 日本語 HTML 出力先
   en/insights/               # 英語 HTML 出力先

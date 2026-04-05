@@ -88,6 +88,28 @@ Recovery must follow a strict sequence. First, **mines must be cleared** — no 
 This sequence cannot be skipped. Without desalination, people cannot live there. Without people, nothing starts. Each stage takes years, so full recovery could take **a decade or more**.
 :::
 
+### 62 Million Refugees
+
+Without drinking water, people die within days. If desalination facilities are destroyed on a large scale, residents of the six Gulf states have only one option: **flee**.
+
+Saudi Arabia 36 million, UAE 10 million, Kuwait 4.7 million, Qatar 2.9 million, Bahrain 1.7 million, Oman 4.7 million. A combined 62 million people. A large share of them are foreign workers — roughly 88% of the UAE's population and 85% of Qatar's population are foreign nationals. They have no reason to stay and endure.
+
+:::chain
+Desalination destroyed → Drinking water gone → Region uninhabitable in days to weeks → **Refugee crisis on the scale of 62 million people**
+:::
+
+This is not hypothetical. Desalination plants in Bahrain and Kuwait have already been attacked. If Trump strikes Iran's power plants, retaliation will destroy Gulf desalination facilities on a far larger scale.
+
+Where do they go? Overland escape routes run through Saudi Arabia to Jordan or Iraq, or by sea to the Indian subcontinent. But airports and ports may not be functioning. The aviation mega-hubs of Dubai, Doha, and Abu Dhabi have already seen **air capacity drop 26%** due to military operations and airspace restrictions, with over 3,400 flights cancelled.
+
+:::highlight
+**The 2015 Syrian refugee crisis involved roughly 5.6 million people.** The Gulf's population is 62 million.
+
+If desalination destruction occurs at scale, the resulting humanitarian crisis would be **more than 10 times the magnitude** of the Syrian refugee crisis. And the countries that would receive these refugees are themselves in the grip of the energy and food crisis caused by the Hormuz blockade.
+:::
+
+The world does not have the capacity to absorb refugees at this scale. And the nations they would flee to — India, Pakistan, Jordan, Egypt — are themselves reeling from the energy and food crisis caused by the Hormuz blockade. Crisis amplifies crisis.
+
 ### What Happens to Oil Fields in the Meantime
 
 While recovery is stalled, the oil fields themselves continue to deteriorate. Oil fields do not naturally recover when left alone. **Without continuous management, production capacity itself is permanently lost.**

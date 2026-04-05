@@ -20,9 +20,19 @@ Iran retaliated with the following:
 - **Attacked Gulf oil facilities** — daily drone swarms on Saudi Arabia's Shayba oil field; strikes on refineries and fuel storage in Bahrain, UAE, Kuwait, and Oman. On April 3–4, Kuwait's largest refinery caught fire; Saudi's SAMREF refinery in Yanbu was hit by drone
 - **Attacked desalination plants** — Bahrain's desalination plant damaged by drone (March 8); Kuwait's power and desalination plant hit by missile, killing one worker (March 30); indirect damage to facilities in UAE and Bahrain
 
-On March 22, Trump threatened to "obliterate" Iran's power plants if the strait wasn't fully reopened within 48 hours. The deadline has been extended twice — from March 23 to March 26, then to April 6.
+### Trump's Statements
 
-Brent crude has surged over 55% since February 28, reaching $126/barrel. The International Energy Agency called it "the greatest global energy security challenge in history."
+- **March 22**: Threatened to "obliterate" Iran's largest power plant if Hormuz not fully reopened within 48 hours ([CBS News](https://www.cbsnews.com/news/trump-reminds-iran-ultimatum-reopen-strait-of-hormuz/))
+- **March 23**: Postponed strikes by 5 days, citing "very productive conversations" ([Nikkei](https://www.nikkei.com/article/DGXZQOGN239FY0T20C26A3000000/))
+- **March 26**: Extended deadline to April 6, 8pm ET ([Al Jazeera](https://www.aljazeera.com/news/2026/3/26/trump-postpones-us-strikes-on-iranian-power-grid-to-april-6-amid-talks))
+- **March 30**: Posted on Truth Social that if no deal is reached, the US will "blow up and completely obliterate" Iran's power plants, oil wells, Kharg Island, and "possibly all desalination plants" ([Al Jazeera](https://www.aljazeera.com/news/2026/3/30/trump-threatens-to-blow-up-all-desalination-plants-in-iran)). Amnesty International called this "a threat to commit war crimes" ([Amnesty International](https://www.amnesty.org/en/latest/news/2026/03/trump-warning-attack-iran-power-plants-is-threat-to-commit-war-crimes/))
+- **April 1**: Primetime address to the nation — "war is nearing completion," vowed "extremely hard" strikes in coming weeks, threatened to "bring them back to the stone ages" ([CNBC](https://www.cnbc.com/2026/04/01/trump-address-nation-iran-live-updates.html), [Al Jazeera](https://www.aljazeera.com/news/2026/4/2/trumps-primetime-speech-on-iran-war-key-takeaways))
+- **April 3**: "The United States hasn't even started destroying what's left in Iran. Bridges next, then Electric Power Plants!" on Truth Social ([CNBC](https://www.cnbc.com/2026/04/03/trump-iran-threats-un-resolution-blocked-strait-of-hormuz-f35-shot-down.html))
+- **April 4**: "Time is running out — 48 hours before all Hell will reign down on them" ([Axios](https://www.axios.com/2026/04/04/trump-iran-hell-threat-deadline))
+
+Pakistan, Turkey, and Egypt are mediating indirect negotiations, but Iran has rejected any temporary ceasefire and demands a permanent end to the war with guarantees. The April 6 deadline is approaching.
+
+Brent crude has surged over 55% since February 28, reaching $126/barrel. The International Energy Agency called it "the greatest global energy security challenge in history" ([Economic impact — Wikipedia](https://en.wikipedia.org/wiki/Economic_impact_of_the_2026_Iran_war)).
 
 Most people see this as a "Middle East war."
 
@@ -151,3 +161,25 @@ When the Strait of Hormuz closes, soil microbes don't stop working.
 
 The further we move from nature, the higher the cost of living. The Iran war just proved that cost can spike in an instant.
 :::
+
+---
+
+## Sources
+
+- [CNN: Iran begins laying mines in Strait of Hormuz](https://www.cnn.com/2026/03/10/politics/iran-begins-laying-mines-in-strait-of-hormuz)
+- [CNBC: U.S. forces sink 16 Iranian minelayers](https://www.cnbc.com/2026/03/11/us-strikes-iran-mine-ships-strait-of-hormuz-war-oil.html)
+- [NPR: Fear of Iranian mines in the Strait of Hormuz could further slow the flow of oil](https://www.npr.org/2026/03/12/g-s1-113471/strait-hormuz-mines-drones-missiles-oil-tankers)
+- [NPR: Iran hits Gulf refineries as Trump warns U.S. will attack Iranian bridges, power plants](https://www.npr.org/2026/04/03/g-s1-116314/iran-hits-gulf-refineries-as-trump-warns-u-s-will-attack-iranian-bridges-power-plants)
+- [Al Jazeera: Bahrain says water desalination plant damaged in Iranian drone attack](https://www.aljazeera.com/news/2026/3/8/bahrain-says-water-desalination-plant-damaged-in-iranian-drone-attack)
+- [Al Jazeera: Iranian attack damages Kuwait power and desalination plant](https://www.aljazeera.com/news/2026/3/30/iranian-attack-damages-kuwait-power-and-desalination-plant-kills-worker)
+- [Al Jazeera: Trump threatens to 'blow up' desalination plants in Iran](https://www.aljazeera.com/news/2026/3/30/trump-threatens-to-blow-up-all-desalination-plants-in-iran)
+- [Al Jazeera: Trump postpones US strikes on Iranian power grid to April 6](https://www.aljazeera.com/news/2026/3/26/trump-postpones-us-strikes-on-iranian-power-grid-to-april-6-amid-talks)
+- [Al Jazeera: Trump's primetime speech on Iran war: Key takeaways](https://www.aljazeera.com/news/2026/4/2/trumps-primetime-speech-on-iran-war-key-takeaways)
+- [CNBC: Trump threatens to destroy Iranian infrastructure](https://www.cnbc.com/2026/04/03/trump-iran-threats-un-resolution-blocked-strait-of-hormuz-f35-shot-down.html)
+- [CNBC: Trump Iran speech recap — April 1](https://www.cnbc.com/2026/04/01/trump-address-nation-iran-live-updates.html)
+- [Axios: Trump threatens Iran with "hell" — 48-hour deadline](https://www.axios.com/2026/04/04/trump-iran-hell-threat-deadline)
+- [CBS News: Trump gives Iran 48-hour deadline to reopen Strait of Hormuz](https://www.cbsnews.com/news/trump-reminds-iran-ultimatum-reopen-strait-of-hormuz/)
+- [Amnesty International: Trump's warning is a threat to commit war crimes](https://www.amnesty.org/en/latest/news/2026/03/trump-warning-attack-iran-power-plants-is-threat-to-commit-war-crimes/)
+- [Time: The Risk of Targeting Water Desalination Plants In The Iran War](https://time.com/article/2026/04/01/water-desalination-plants-iran-war/)
+- [Wikipedia: 2026 Strait of Hormuz crisis](https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis)
+- [Wikipedia: Economic impact of the 2026 Iran war](https://en.wikipedia.org/wiki/Economic_impact_of_the_2026_Iran_war)

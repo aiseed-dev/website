@@ -1,7 +1,7 @@
 ---
 slug: grid-attack-naphtha
-title: ホルムズ海峡が��まると、食料が消える
-subtitle: ���ラン戦争が日本の食卓を直撃する構造
+title: ホルムズ海峡が閉まると、食料が消える
+subtitle: イラン戦争が日本の食卓を直撃する構造
 description: 米・イスラエルのイラン攻撃、ホルムズ海峡封鎖、湾岸製油所・淡水化設備への攻撃。これは中東の戦争ではない。日本のナフサと肥料の供給が止まる食料危機だ。
 date: 2026.04.05
 label: Blog
@@ -19,9 +19,19 @@ category: 構造分析ノート
 - **湾岸の石油施設への攻撃**——サウジアラビアのシャイバ油田への連日のドローン攻撃、バーレーン・UAE・クウェート・オマーンの製油所・燃料貯蔵施設への攻撃。4月3〜4日にはクウェート最大の製油所が炎上、サウジのヤンブーSAMREF製油所がドローンで被弾
 - **淡水化設備への攻撃**——バーレーンの淡水化プラントがドローンで損傷（3月8日）、クウェートの発電・淡水化プラントがミサイルで被弾し作業員1名死亡（3月30日）、UAE・バーレーンの施設も間接被害
 
-トランプ大統領は3月22日、「48時間以内に海峡を完全に開かなければイランの発電所を破壊する」と威嚇。攻撃期限は3月23日、26日と延期を重ね、現在の期限は4月6日。
+### トランプ大統領の発言
 
-ブレント原油は2月28日以降55%以上上昇し、126ドル/バレルに達した。国際エネルギー機関（IEA）は「史上最大のエネルギー安全保障上の危機」と評した。
+- **3月22日**：「48時間以内にホルムズ海峡を完全に開かなければ、イラン最大の発電所から破壊する」と威嚇 ([CBS News](https://www.cbsnews.com/news/trump-reminds-iran-ultimatum-reopen-strait-of-hormuz/))
+- **3月23日**：「非常に生産的な対話」があったとして攻撃を5日間延期 ([日本経済新聞](https://www.nikkei.com/article/DGXZQOGN239FY0T20C26A3000000/))
+- **3月26日**：攻撃期限を4月6日午後8時（米東部時間）まで再延期 ([Al Jazeera](https://www.aljazeera.com/news/2026/3/26/trump-postpones-us-strikes-on-iranian-power-grid-to-april-6-amid-talks))
+- **3月30日**：「合意に至らなければ、イランの発電所、油井、ハーグ島、そして淡水化プラントも全て吹き飛ばす」とTruth Socialに投稿 ([Al Jazeera](https://www.aljazeera.com/news/2026/3/30/trump-threatens-to-blow-up-all-desalination-plants-in-iran))。アムネスティ・インターナショナルは「戦争犯罪の威嚇」と非難 ([Amnesty International](https://www.amnesty.org/en/latest/news/2026/03/trump-warning-attack-iran-power-plants-is-threat-to-commit-war-crimes/))
+- **4月1日**：国民向けテレビ演説で「戦争は完了に近づいている」「今後2〜3週間で極めて激しく攻撃する」「石器時代に戻す」と発言 ([CNBC](https://www.cnbc.com/2026/04/01/trump-address-nation-iran-live-updates.html), [Al Jazeera](https://www.aljazeera.com/news/2026/4/2/trumps-primetime-speech-on-iran-war-key-takeaways))
+- **4月3日**：「米国はイランの残りの破壊をまだ始めてすらいない。次は橋、その次は発電所だ！」とTruth Socialに投稿 ([CNBC](https://www.cnbc.com/2026/04/03/trump-iran-threats-un-resolution-blocked-strait-of-hormuz-f35-shot-down.html))
+- **4月4日**：「48時間以内に合意するか海峡を開け。さもなくば地獄が降り注ぐ」（"Time is running out — 48 hours before all Hell will reign down on them"）([Axios](https://www.axios.com/2026/04/04/trump-iran-hell-threat-deadline))
+
+パキスタン、トルコ、エジプトによる間接交渉が行われているが、イランは一時停戦を拒否し、恒久的な戦争終結と再攻撃しない保証を要求している。4月6日の期限が迫っている。
+
+ブレント原油は2月28日以降55%以上上昇し、126ドル/バレルに達した。国際エネルギー機関（IEA）は「史上最大のエネルギー安全保障上の危機」と評した ([Economic impact — Wikipedia](https://en.wikipedia.org/wiki/Economic_impact_of_the_2026_Iran_war))。
 
 多くの人はこれを「中東の戦争」として見ている。
 
@@ -150,3 +160,28 @@ category: 構造分析ノート
 
 自然から離れるほど、生きるコストは上がる。イラン戦争は、そのコストが一瞬で跳ね上がることを証明した。
 :::
+
+---
+
+## Sources
+
+- [CNN: Iran begins laying mines in Strait of Hormuz](https://www.cnn.com/2026/03/10/politics/iran-begins-laying-mines-in-strait-of-hormuz)
+- [CNBC: U.S. forces sink 16 Iranian minelayers](https://www.cnbc.com/2026/03/11/us-strikes-iran-mine-ships-strait-of-hormuz-war-oil.html)
+- [NPR: Fear of Iranian mines in the Strait of Hormuz could further slow the flow of oil](https://www.npr.org/2026/03/12/g-s1-113471/strait-hormuz-mines-drones-missiles-oil-tankers)
+- [NPR: Iran hits Gulf refineries as Trump warns U.S. will attack Iranian bridges, power plants](https://www.npr.org/2026/04/03/g-s1-116314/iran-hits-gulf-refineries-as-trump-warns-u-s-will-attack-iranian-bridges-power-plants)
+- [Al Jazeera: Bahrain says water desalination plant damaged in Iranian drone attack](https://www.aljazeera.com/news/2026/3/8/bahrain-says-water-desalination-plant-damaged-in-iranian-drone-attack)
+- [Al Jazeera: Iranian attack damages Kuwait power and desalination plant](https://www.aljazeera.com/news/2026/3/30/iranian-attack-damages-kuwait-power-and-desalination-plant-kills-worker)
+- [Al Jazeera: Trump threatens to 'blow up' desalination plants in Iran](https://www.aljazeera.com/news/2026/3/30/trump-threatens-to-blow-up-all-desalination-plants-in-iran)
+- [Al Jazeera: Trump postpones US strikes on Iranian power grid to April 6](https://www.aljazeera.com/news/2026/3/26/trump-postpones-us-strikes-on-iranian-power-grid-to-april-6-amid-talks)
+- [Al Jazeera: Trump's primetime speech on Iran war: Key takeaways](https://www.aljazeera.com/news/2026/4/2/trumps-primetime-speech-on-iran-war-key-takeaways)
+- [CNBC: Trump threatens to destroy Iranian infrastructure](https://www.cnbc.com/2026/04/03/trump-iran-threats-un-resolution-blocked-strait-of-hormuz-f35-shot-down.html)
+- [CNBC: Trump Iran speech recap — April 1](https://www.cnbc.com/2026/04/01/trump-address-nation-iran-live-updates.html)
+- [Axios: Trump threatens Iran with "hell" — 48-hour deadline](https://www.axios.com/2026/04/04/trump-iran-hell-threat-deadline)
+- [CBS News: Trump gives Iran 48-hour deadline to reopen Strait of Hormuz](https://www.cbsnews.com/news/trump-reminds-iran-ultimatum-reopen-strait-of-hormuz/)
+- [Amnesty International: Trump's warning is a threat to commit war crimes](https://www.amnesty.org/en/latest/news/2026/03/trump-warning-attack-iran-power-plants-is-threat-to-commit-war-crimes/)
+- [CNN: How targeting of desalination plants could disrupt water supply in the Gulf](https://www.cnn.co.jp/world/35244898.html)
+- [Time: The Risk of Targeting Water Desalination Plants In The Iran War](https://time.com/article/2026/04/01/water-desalination-plants-iran-war/)
+- [Bloomberg: トランプ氏、イランのエネルギー施設攻撃までの期限を4月6日に延長](https://www.bloomberg.com/jp/news/articles/2026-03-26/TCIWBFKJH6VC00)
+- [日本経済新聞: トランプ氏、イラン発電所の攻撃「5日間延期」](https://www.nikkei.com/article/DGXZQOGN239FY0T20C26A3000000/)
+- [Wikipedia: 2026 Strait of Hormuz crisis](https://en.wikipedia.org/wiki/2026_Strait_of_Hormuz_crisis)
+- [Wikipedia: Economic impact of the 2026 Iran war](https://en.wikipedia.org/wiki/Economic_impact_of_the_2026_Iran_war)

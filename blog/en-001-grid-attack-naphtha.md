@@ -1,24 +1,19 @@
 ---
 slug: grid-attack-naphtha
 lang: en
-title: "What If Trump Destroys Iran's Power Plants"
-subtitle: "\"All Hell will reign down\" — but it rains down on the world"
-description: "What happens if Trump attacks Iran's power plants on April 7 Japan Time (April 6 ET). Chain of retaliation, dual chokepoint failure (Hormuz + Red Sea), Gulf infrastructure collapse. Energy, chemicals, metals, pharmaceuticals, fertilizer — global supply chains break simultaneously."
+title: "What If Trump Destroys Iran's Power Plants on April 6"
+subtitle: "\"48 hours before all Hell will reign down on them\" — but it rains down on the world"
+description: "What happens if Trump attacks Iran's power plants on April 7 Japan Time (April 6 ET). Chain of retaliation, Hormuz blockade, Gulf infrastructure collapse. 62 million refugees, global fertilizer crisis, a decade of unrecoverable damage."
 date: 2026.04.05
 label: Blog
 category: Structural Analysis Notes
 ---
 
-## What Is Happening
+**April 6, 8:00 PM Eastern Time — April 7, 9:00 AM Japan Time.**
 
-On February 28, 2026, the United States and Israel launched coordinated strikes on Iran under "Operation Epic Fury." Supreme Leader Khamenei was killed.
+The deadline Trump gave Iran expires in less than two days. Negotiations have stalled.
 
-Iran retaliated with the following:
-
-- **Declared the Strait of Hormuz closed** (March 4) — began attacking ships attempting transit. By March 12, 21 merchant ships had been attacked
-- **Laid mines in the Strait of Hormuz** — the US sank 16 Iranian minelayers (March 10), but a dozen or more mines were deployed. Iran retains 80–90% of its small vessels and mine-laying capacity
-- **Attacked Gulf oil facilities** — daily drone swarms on Saudi Arabia's Shayba oil field; strikes on refineries and fuel storage in Bahrain, UAE, Kuwait, and Oman. On April 3–4, Kuwait's largest refinery caught fire; Saudi's SAMREF refinery in Yanbu was hit by drone
-- **Attacked desalination plants** — Bahrain's desalination plant damaged by drone (March 8); Kuwait's power and desalination plant hit by missile, killing one worker (March 30); indirect damage to facilities in UAE and Bahrain
+If Iran's power plants are attacked on schedule, what happens next? This is not a "Middle East war." What follows will directly affect your life.
 
 ### Trump's Statements
 
@@ -32,27 +27,11 @@ Iran retaliated with the following:
 
 Pakistan, Turkey, and Egypt are mediating indirect negotiations, but Iran has rejected any temporary ceasefire and demands a permanent end to the war with guarantees.
 
-The deadline is **April 6, 8:00 PM Eastern Time — April 7, 9:00 AM Japan Time**. Less than two days remain.
-
 Brent crude has surged over 55% since February 28, reaching $126/barrel. The International Energy Agency called it "the greatest global energy security challenge in history" ([Economic impact — Wikipedia](https://en.wikipedia.org/wiki/Economic_impact_of_the_2026_Iran_war)).
 
-Most people see this as a "Middle East war."
+## The Chain of Retaliation
 
-It's not. **This is a global supply chain crisis.**
-
-## April 7 Japan Time — What Happens If Trump Attacks Iran's Power Plants
-
-Negotiations have stalled. What happens if Trump attacks Iran's power plants?
-
-### Iran's Retaliation Will Escalate
-
-On March 30, Iran warned that "any attack on Iranian coastal territory would trigger mine-laying across all Gulf sea lanes." Current mines are concentrated in the Strait of Hormuz, but a power plant attack could expand mining to **the entire Persian Gulf**.
-
-Iran retains 80–90% of its small vessels and mine-laying capability. It can deploy hundreds of mines in a short period.
-
-### Gulf Power and Desalination Plants Become Retaliation Targets
-
-So far, Iran has attacked Gulf oil facilities and desalination plants. If Trump attacks Iran's power plants, it gives Iran justification for "equivalent retaliation" — large-scale attacks on Gulf nations' power plants and desalination facilities.
+If Trump attacks Iran's power plants, Iran will retaliate with "equivalent" strikes against Gulf nations' power plants and desalination facilities. Bahrain's desalination plant was already damaged by drone (March 8). Kuwait's power and desalination plant was hit by missile, killing one worker (March 30). On April 3, Kuwait's desalination plant was struck again. These are still "warnings." A power plant attack pulls the trigger on full-scale retaliation.
 
 :::highlight
 **Trump destroys Iran's power plants → Iran destroys Gulf power plants and desalination facilities**
@@ -60,204 +39,106 @@ So far, Iran has attacked Gulf oil facilities and desalination plants. If Trump 
 This is a chain of retaliation. Gulf nations depend on power generation for desalination. When power stops, water stops.
 :::
 
-### Mine Blockade Will Last Even Longer
+Simultaneously, Iran will mine the entire Persian Gulf. On March 30, Iran warned that "any attack on Iranian coastal territory would trigger mine-laying across all Gulf sea lanes." Iran retains 80–90% of its small vessels and mine-laying capability. It can deploy hundreds of mines in a short period.
 
-Mine sweeping is an extremely slow operation. Ship by ship, nautical mile by nautical mile, detecting and removing mines one at a time. During wartime, minesweepers themselves become targets. If Iran mines all Gulf sea lanes, **clearing the blockade could take years.**
+## 62 Million People Lose Their Water
 
-### Facility Recovery Is Blocked by the Blockade
+The fatal weakness of Gulf nations: **they depend on desalination for drinking water.**
 
-Destroyed refining facilities take 3–5 years to rebuild. But **as long as the strait is blockaded, the materials and equipment needed for repairs can't be shipped in.** The blockade and facility destruction compound each other.
-
-### Desalination Destruction Makes the Region Uninhabitable
-
-The fatal weakness of Gulf nations is their **dependence on desalination for drinking water**.
-
-Bahrain's desalination plant was already damaged by drone (March 8). Kuwait's power and desalination plant was hit by missile, killing one worker (March 30). On April 3, Kuwait's desalination plant was struck again.
-
-Six Gulf states depend on desalination for drinking water for a combined 62 million people. If power plant attacks trigger massive retaliation against desalination facilities:
-
-:::chain
-Desalination destroyed → No drinking water → Region becomes uninhabitable → No one to manage or repair facilities → Oil production restart becomes impossible
-:::
-
-Recovery must follow a strict sequence. First, **mines must be cleared** — no supply ships can enter otherwise. Then **power plants and desalination facilities must be built** — without them, no one can live there. Only after people can inhabit the region can **refinery restoration** begin.
-
-:::highlight
-**Mine clearance → Power plant and desalination construction → Refinery restoration.**
-
-This sequence cannot be skipped. Without desalination, people cannot live there. Without people, nothing starts. Each stage takes years, so full recovery could take **a decade or more**.
-:::
-
-### 62 Million Refugees
-
-Without drinking water, people die within days. If desalination facilities are destroyed on a large scale, residents of the six Gulf states have only one option: **flee**.
-
-Saudi Arabia 36 million, UAE 10 million, Kuwait 4.7 million, Qatar 2.9 million, Bahrain 1.7 million, Oman 4.7 million. A combined 62 million people. A large share of them are foreign workers — roughly 88% of the UAE's population and 85% of Qatar's population are foreign nationals. They have no reason to stay and endure.
-
-:::chain
-Desalination destroyed → Drinking water gone → Region uninhabitable in days to weeks → **Refugee crisis on the scale of 62 million people**
-:::
-
-This is not hypothetical. Desalination plants in Bahrain and Kuwait have already been attacked. If Trump strikes Iran's power plants, retaliation will destroy Gulf desalination facilities on a far larger scale.
-
-Where do they go? Overland escape routes run through Saudi Arabia to Jordan or Iraq, or by sea to the Indian subcontinent. But airports and ports may not be functioning. The aviation mega-hubs of Dubai, Doha, and Abu Dhabi have already seen **air capacity drop 26%** due to military operations and airspace restrictions, with over 3,400 flights cancelled.
-
-:::highlight
-**The 2015 Syrian refugee crisis involved roughly 5.6 million people.** The Gulf's population is 62 million.
-
-If desalination destruction occurs at scale, the resulting humanitarian crisis would be **more than 10 times the magnitude** of the Syrian refugee crisis. And the countries that would receive these refugees are themselves in the grip of the energy and food crisis caused by the Hormuz blockade.
-:::
-
-The world does not have the capacity to absorb refugees at this scale. And the nations they would flee to — India, Pakistan, Jordan, Egypt — are themselves reeling from the energy and food crisis caused by the Hormuz blockade. Crisis amplifies crisis.
-
-### What Happens to Oil Fields in the Meantime
-
-While recovery is stalled, the oil fields themselves continue to deteriorate. Oil fields do not naturally recover when left alone. **Without continuous management, production capacity itself is permanently lost.**
-
-- **Wellbore collapse** — Casing (steel pipes) is continuously exposed to corrosive gases (hydrogen sulfide) and high temperatures. Without maintenance, wellbores collapse and must be re-drilled
-- **Water and gas encroachment into reservoirs** — When pressure control stops, water and gas invade the oil-bearing formation. Once invaded, original productivity cannot be restored
-- **Surface equipment degradation** — Pipelines, pumps, and separation equipment corrode rapidly in desert conditions. With no power, corrosion protection systems don't function
-- **Secondary and tertiary recovery shutdown** — Many mature Gulf oil fields maintain production through waterflooding and gas injection. When these stop, **reservoir pressure drops irreversibly**, and even after restart, previous production levels cannot be achieved
-
-:::highlight
-**Even if facilities are repaired, the oil fields may never produce the same volume again.**
-
-The longer fields are left unmanaged, the more irreversible damage accumulates. If recovery takes a decade, the production capacity lost during that period may never return.
-:::
-
-## What Is Lost
-
-### The Lives of 62 Million People in the Gulf
-
-If desalination plants and power stations are destroyed, 62 million people across six Gulf states lose drinking water and electricity. This is not an attack on military infrastructure. It is the **annihilation of civilian infrastructure**.
-
-Saudi Arabia, UAE, Kuwait, Qatar, Bahrain, Oman — these nations depend on desalination for most of their fresh water. Without power, desalination doesn't run. Without water, people can't live.
+Saudi Arabia, UAE, Kuwait, Qatar, Bahrain, Oman — six Gulf states, **62 million people** depending on desalinated water. When power plants and desalination facilities are destroyed, these 62 million people lose their drinking water.
 
 :::highlight
 **Attacking power plants is not about electricity. It's about drinking water for 62 million people.**
 :::
 
-### Dual Chokepoint Failure
+Without drinking water, people die in days. In desert heat without air conditioning, dehydration comes even faster. The 62 million residents have only one option: **flee**.
 
-The Hormuz blockade is not happening in isolation. Since late 2023, Houthi forces have been attacking merchant vessels in the Red Sea and Bab el-Mandeb Strait. **Hormuz and the Red Sea are blocked simultaneously (Dual Chokepoint Failure)**.
+A large share of them are foreign workers. Roughly **88%** of the UAE's population and **85%** of Qatar's are foreign nationals. They have families back home. There is no reason to stay. They will leave first. And when they leave, there is no one left to operate the remaining infrastructure.
 
-Most maritime trade between Asia and Europe has been forced onto the Cape of Good Hope route, adding 10–14 days of transit time and roughly $1 million in fuel costs per voyage. Spot freight rates on the Asia–Northern Europe route have surged over 30%.
-
-:::highlight
-**There is no detour left.** Hormuz is closed, the Red Sea is closed, and only the Cape of Good Hope remains. The world's shipping capacity is physically insufficient.
+:::chain
+Desalination destroyed → Drinking water gone → Days to weeks before region becomes uninhabitable → Foreign workers leave → Infrastructure management collapses → **Refugee crisis on the scale of 62 million people**
 :::
 
-### Global Energy Supply
+Where do they go? Overland through Saudi Arabia to Jordan or Iraq. By sea to the Indian subcontinent. But airports and ports may not function. Dubai, Doha, and Abu Dhabi — the aviation mega-hubs — have already seen **air capacity drop 26%** with over 3,400 flights cancelled. Even the means of escape are limited.
 
-Roughly **20–25% of the world's seaborne oil** (~20 million barrels/day) and **~20% of LNG** passes through the Strait of Hormuz. If the blockade drags on and Gulf production infrastructure and oil fields are destroyed, the impact extends far beyond the Middle East.
+:::highlight
+**The 2015 Syrian refugee crisis involved roughly 5.6 million people.** The Gulf's population is 62 million.
 
-- **Crude oil** — already above $120/barrel. A power plant attack and full-scale retaliation would push prices far higher
-- **Natural gas** — Qatar is one of the world's largest LNG exporters. A Hormuz blockade cuts off LNG exports too
-- **Naphtha** — Asia depends on the Middle East for **50–60%** of naphtha imports. Plastics, synthetic fibers, packaging, and tire manufacturing lines stop
-- **LPG** — India depends on the Middle East for **~90%** of its LPG imports. Cooking fuel for hundreds of millions of people disappears
-- **Jet fuel** — **30–40%** of internationally traded jet fuel is Middle Eastern. Massive flight cancellations and air cargo paralysis
-- **Lubricant base oil (Group III)** — The Middle East dominates global production. Without this, factory machinery and truck engines cannot be maintained. **Logistics and manufacturing physically stop**
+If desalination destruction occurs at scale, the humanitarian crisis would be **more than 10 times the Syrian refugee crisis**. And the countries that would receive these refugees — India, Pakistan, Jordan, Egypt — are themselves in the grip of the energy and food crisis caused by the Hormuz blockade. Crisis amplifies crisis.
+:::
 
-### Petrochemicals and Global Industry
+## Why Recovery Takes a Decade
 
-The Middle East is also the "world's chemical factory," supplying basic chemical feedstocks using cheap natural gas.
+Even if the war ends, recovery does not start immediately. There is a strict sequence.
 
-- **Methanol** — roughly **33%** of global seaborne methanol trade passes through Hormuz. Iran alone exports 9 million tons annually. China's MTO (methanol-to-olefins) plants are shutting down one after another
-- **Monoethylene glycol (MEG)** — roughly 6.5 million tons shipped annually from the Arabian Gulf. An essential feedstock for polyester fiber and PET resin. Asia's textile industry is under direct impact
-- **Ethylene / Polyethylene / Polypropylene** — food packaging, medical plastics, automotive parts. The Middle East accounts for roughly 20% of global ethylene exports
+**Stage 1: Mine clearance.** Ship by ship, nautical mile by nautical mile. During wartime, minesweepers themselves are targets. Clearing mines across the entire Persian Gulf takes **years**. Until the mines are gone, no supply ships can enter.
 
-### Minerals, Metals, and the Decarbonization Paradox
+**Stage 2: Power plant and desalination construction.** Only after mines are cleared can materials be shipped in. Power and desalination must be built before people can live there. Without people, nothing proceeds.
 
-There is an ironic reality: the disruption of fossil fuel supply is **directly blocking the green transition away from fossil fuels**.
+**Stage 3: Refinery restoration.** Only after people can inhabit the region can refinery reconstruction begin. Destroyed refineries take 3–5 years to rebuild.
 
-- **Aluminum** — The Middle East produces roughly **9%** of the world's primary aluminum. Essential for EV body lightweighting. Over 150,000 tons have been drawn from London Metal Exchange warehouses
-- **Helium** — Qatar controls roughly **33%** of global supply. A byproduct of natural gas processing. Air Liquide has declared force majeure and cut supply by 50%. **Essential for MRI scanner cooling and semiconductor manufacturing** — there is no substitute
-- **Sulfur** — roughly **50%** of the world's seaborne sulfur trade passes through Hormuz. The HPAL (high-pressure acid leach) process for extracting battery-grade nickel and cobalt requires massive amounts of sulfuric acid. Refining operations in Indonesia and Africa have already halted
-- **Synthetic graphite** — EV battery anode material. Its feedstock, petroleum coke, is an oil refining byproduct — supply collapses when refineries shut down
-- **Iron ore pellets** — Iran and Bahrain account for roughly **18%** of global seaborne pellet exports. Approximately 280 bulk carriers are stranded inside the Persian Gulf. **Even the steel needed for reconstruction can't get in**
+:::highlight
+**Mine clearance → Power plant and desalination construction → Refinery restoration.**
 
-### Aviation Hub Collapse
+This sequence cannot be skipped. Each stage takes years. Full recovery takes **a decade or more**.
+:::
 
-It's not just the sea lanes. The **Middle East aviation mega-hubs** — Dubai, Doha, Abu Dhabi — have ceased functioning. Military operations and airspace restrictions reduced Asia–Europe air capacity by **26%**, with over 3,400 flights cancelled in the first weekend alone.
+### During That Decade, Oil Fields Die
 
-The most severe consequence is the disruption of the **pharmaceutical cold chain** (temperature-controlled transport). Middle East hubs were the critical junction for air cargo between Asian manufacturers and European markets. Rerouting extends transit times, sharply increasing the risk of temperature excursions that destroy medications. Hospitals worldwide face helium shortages for MRI diagnostics, and clinical trial schedules for new drugs are being delayed.
+While recovery stalls, oil fields continue to deteriorate. Oil fields do not recover naturally. **Without continuous management, production capacity itself is permanently lost.**
 
-### Global Food Production
+- **Wellbore collapse** — Casing corrodes from hydrogen sulfide and high temperatures. Without maintenance, wellbores collapse and must be re-drilled
+- **Water and gas encroachment** — Without pressure control, water and gas invade the oil-bearing formation. Once invaded, original productivity never returns
+- **Surface equipment degradation** — Pipelines, pumps, and separators corrode rapidly in desert conditions. No power means no corrosion protection
+- **Secondary recovery shutdown** — Mature Gulf fields use waterflooding and gas injection to maintain output. When these stop, **reservoir pressure drops irreversibly**
 
-The energy crisis translates directly into a food crisis.
+:::highlight
+**Even if facilities are repaired, the oil fields may never produce the same volume again.**
+
+If recovery takes a decade, the production capacity lost during that period may never return. The world's oil supply structure **changes irreversibly**.
+:::
+
+## The World's Food Disappears
+
+The Strait of Hormuz carries **20–25% of the world's seaborne oil**. When oil stops, it's not that gasoline gets expensive. **Food disappears.**
 
 :::chain
 Naphtha / Natural gas → Hydrogen → Ammonia → **Nitrogen fertilizer**
 Nitrogen fertilizer → Supports roughly 50% of global food production
 :::
 
-The Arabian Gulf supplies **46% of global urea trade** — the most widely used nitrogen fertilizer in the world. India (18% import dependency), Brazil (10%), and other major agricultural nations are directly hit.
+The Arabian Gulf supplies **46% of global urea trade** — the most widely used nitrogen fertilizer. India (18% import dependency), Brazil (10%), and other major agricultural nations are directly hit.
 
-An overlooked fact compounds this: Gulf countries account for **roughly 45–50% of global sulfur supply**. Sulfur is a byproduct of oil refining. As analyzed in [Chapter 11: Regulation Redesign](/en/insights/regulation-redesign/), phosphate fertilizer cannot be made without sulfuric acid.
+Gulf countries also account for **roughly 45–50% of global sulfur supply** — a byproduct of oil refining. Phosphate fertilizer cannot be made without sulfuric acid.
 
 :::chain
-Gulf oil production destroyed → Sulfur byproduct disappears (45–50% of world supply) → Sulfuric acid shortage → **Phosphate fertilizer production at risk**
+Gulf oil production destroyed → Sulfur byproduct disappears (45–50% of world supply) → Sulfuric acid shortage → **Phosphate fertilizer production stops**
 :::
 
-Nitrogen fertilizer and phosphate fertilizer face crisis simultaneously. The "Peak Sulfur" warned about in Chapter 11 has been **made real not by decarbonization, but by war**.
+Nitrogen fertilizer and phosphate fertilizer face crisis simultaneously. The "Peak Sulfur" warned about in [Chapter 11](/en/insights/regulation-redesign/) has been **made real not by decarbonization, but by war**.
 
 :::highlight
-This is not a "gasoline gets expensive" problem. This is a **the raw materials for the world's fertilizer disappear** problem.
+Without fertilizer, crops don't grow. Without crops, people don't eat.
+
+This is not an oil problem. **This is a problem for this year's food.** The impact on harvests months from now has already begun.
 :::
 
-### The Situation Across Asia and Oceania
+## Who Does "All Hell" Rain Down On?
 
-This crisis is already hitting the entire Asia-Oceania region.
+Trump said "all Hell will reign down on them."
 
-**India** — roughly **90%** of LPG imports transit through Hormuz. March LPG imports dropped by **40%**, with gas cylinder queues forming across the country. The government restricted supply to hotels, restaurants, and canteens, prioritizing households. Over 12,000 raids were conducted under the Essential Commodities Act, seizing more than 15,000 cylinders. CNN reported "samosas off the menu and chai lacking its usual aroma" ([CNN](https://www.cnn.com/2026/03/18/india/india-lpg-gas-impacts-restaurants-cooking-intl-hnk), [CNBC](https://www.cnbc.com/2026/03/10/-iran-war-lpg-disruption-india-restaurants.html))
+But if power plants are attacked, hell rains down not just on Iran.
 
-**South Korea** — **68%** of crude oil imports (1.7 million barrels/day) transit Hormuz. The government raised its crude oil security alert from "caution" to **"warning"** and imposed odd-even vehicle restrictions for government cars. Decided to restart nuclear reactors ahead of schedule; considering increased coal generation in case natural gas supply tightens ([Seoul Economic Daily](https://en.sedaily.com/finance/2026/04/01/korea-raises-crude-oil-security-alert-to-warning-level), [Carnegie](https://carnegieendowment.org/emissary/2026/03/korea-hormuz-closure-iran-energy-lee-agenda))
-
-**China** — **half** of oil imports and roughly **one-third** of LNG imports transit Hormuz. As the world's largest methanol buyer, port inventories risk falling "below warning thresholds." On March 26, Iran allowed ships from five nations — China, Russia, India, Iraq, and Pakistan — to transit the strait ([SCMP](https://www.scmp.com/economy/china-economy/article/3345276/iran-war-could-significantly-disrupt-chinas-methanol-imports-analysts))
-
-**Philippines** — depends on imports for **95%** of crude oil. President Marcos declared a **national energy emergency** on March 24. Gasoline prices surged **over 50%** in one month; diesel prices **nearly doubled**. Government offices moved to a four-day work week ([Foreign Policy](https://foreignpolicy.com/2026/03/31/southeast-asias-energy-emergency-begins/), [Al Jazeera](https://www.aljazeera.com/news/2026/3/12/southeast-asia-shuts-offices-limits-travel-as-oil-crisis-deepens))
-
-**Thailand and Vietnam** — government employees encouraged to work from home and limit travel. The Institute of International Finance (IIF) identified Thailand and the Philippines as most vulnerable to rising food and energy costs ([Fortune](https://fortune.com/2026/03/11/iran-war-fuel-crisis-asia-work-from-home-closed-schools-price-caps/))
-
-**Pakistan** — had an LNG surplus in January, but the strait closed seven weeks later. **Suspended LNG supply to the fertilizer sector**; closed schools and universities ([The Diplomat](https://thediplomat.com/2026/03/south-asias-lng-strategy-was-built-for-the-last-crisis-not-this-one/))
-
-**Bangladesh** — received its first LNG cargo under a new 15-year QatarEnergy contract just before the strait closed. **Shut down four out of five fertilizer factories** ([Carnegie](https://carnegieendowment.org/emissary/2026/03/fertilizer-iran-hormuz-food-crisis))
-
-**Sri Lanka** — still recovering from its 2022 sovereign debt crisis, hit again. Introduced a **four-day work week**; long petrol queues causing people to miss work ([The Diplomat](https://thediplomat.com/2026/03/south-asias-lng-strategy-was-built-for-the-last-crisis-not-this-one/))
-
-**Australia** — depends on imports for **80%** of diesel and gasoline. Some terminals in South Australia and Queensland have moved to rationing. Hundreds of gas stations reported fuel shortfalls ([The Energy](https://theenergy.co/article/iran-crisis-fears-hit-australia-hard))
-
-**New Zealand** — has no domestic oil refinery; depends on fuel imports from Singapore and South Korea (both under Hormuz impact). **22% of fertilizer imports** come from the Persian Gulf region. Flight cancellations reported ([University of Waikato](https://www.waikato.ac.nz/int/news-events/news/how-and-why-nz-could-be-drawn-into-the-iran-war-and-the-high-stakes-involved/))
-
-### Japan
-
-Within this global crisis, Japan is particularly exposed.
-
-- **87%** of energy depends on imported fossil fuels
-- **95%** of crude oil imports from the Middle East, **70%** via the Strait of Hormuz (**1.6 million barrels/day**)
-- Most naphtha: **imported**
-- Fertilizer raw materials: **almost entirely imported**
-- Food self-sufficiency: **38%** (calorie basis)
-
-On March 16, the government began releasing **80 million barrels** from the strategic petroleum reserve (45 days of domestic demand). Total reserves stand at 470 million barrels (254 days), among the world's largest — but they run out if the blockade persists ([The Diplomat](https://thediplomat.com/2026/03/japans-response-to-the-de-facto-blockade-of-the-strait-of-hormuz/), [CSIS](https://www.csis.org/analysis/what-are-implications-iran-conflict-japan)).
+- **62 million Gulf residents** lose drinking water — a refugee crisis 10 times larger than Syria
+- **The world's fertilizer feedstocks** disappear — food production for billions affected
+- **The world's oil supply structure** changes irreversibly
+- **The receiving countries** are themselves in the grip of energy and food crisis
 
 :::highlight
-**If Trump attacks Iran's power plants on April 6, the chain of retaliation will extend the blockade and devastate Gulf production infrastructure.**
+**"All hell rains down" not on Iran. On the world.**
 
-The consequences reach 62 million people in the Gulf, billions across Asia and Oceania, and global supply chains — all at once.
+By the morning of April 7 (Japan Time), we need to understand this.
 :::
-
-## Connection to the Structural Analysis Series
-
-[Chapter 1](/en/insights/climate-mistake/) — Fossil resource depletion arrives before climate change.
-
-[Chapter 2](/en/insights/fossil-materials/) — Crude oil distillation is not optional. When it stops, everything stops.
-
-[Chapter 3](/en/insights/agriculture/) — Conventional agriculture collapses without chemical fertilizer.
-
-[Chapter 11](/en/insights/regulation-redesign/) — When sulfur supply stops, phosphate fertilizer stops — Peak Sulfur.
-
-Fossil resource depletion was supposed to come in decades. But the Strait of Hormuz was blockaded on **March 4, 2026**. The future described in the Structural Analysis Series arrived first — in the form of war.
 
 ## Only Natural Farming Is Unaffected
 

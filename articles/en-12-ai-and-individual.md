@@ -9,8 +9,8 @@ date: 2025.04.04
 label: Structural Analysis 12
 prev_slug: regulation-redesign
 prev_title: Regulation Redesign
-next_slug:
-next_title:
+next_slug: cases
+next_title: The Evidence Proves It
 cta_label: Start Now
 cta_title: One person plus AI.
 cta_text: Every specialist's knowledge, available to every individual. The era of 1 + AI has arrived.

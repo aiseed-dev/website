@@ -8,8 +8,8 @@ date: 2025.04.04
 label: Structural Analysis 12
 prev_slug: regulation-redesign
 prev_title: 規制の再設計
-next_slug: 
-next_title: 
+next_slug: cases
+next_title: 事例が証明する
 ---
 
 ## 1人＋AIで何ができるか

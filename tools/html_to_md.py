@@ -31,6 +31,7 @@ ARTICLE_ORDER = {
     "subtraction-design": "10",
     "regulation-redesign": "11",
     "ai-and-individual": "12",
+    "cases": "13",
 }
 
 

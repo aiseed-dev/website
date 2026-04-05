@@ -25,6 +25,7 @@ SITE_ROOT = Path(__file__).parent.parent
 ARTICLES_DIR = SITE_ROOT / "articles"
 OUTPUT_BASE = SITE_ROOT / "html" / "insights"
 TEMPLATES_DIR = Path(__file__).parent / "templates"
+SITE_URL = "https://aiseed.dev"
 
 # Jinja2 environment
 _env = Environment(
@@ -196,6 +197,7 @@ def article_vars(meta, body_html):
     next_slug = meta.get("next_slug", "")
     next_title = meta.get("next_title", "")
 
+    slug = meta.get("slug", "")
     insights_base = "/en/insights" if is_en else "/insights"
     prev_prefix = "Prev: " if is_en else "前: "
     next_prefix = "Next: " if is_en else "次: "
@@ -259,6 +261,11 @@ def article_vars(meta, body_html):
             "With nature, we can live. The path shown by Masanobu Fukuoka's natural farming "
             "and the science of Light Farming.",
             "自然とともにあれば、生きられる。福岡正信の自然農法とLight Farmingの科学が示す、生きるための道。"),
+        # SEO
+        "canonical_url": f"{SITE_URL}{insights_base}/{slug}/",
+        "hreflang_ja": f"{SITE_URL}/insights/{slug}/",
+        "hreflang_en": f"{SITE_URL}/en/insights/{slug}/",
+        "og_locale": "en_US" if is_en else "ja_JP",
     }
 
 
@@ -346,7 +353,70 @@ def index_vars(lang, article_list_html):
             "and the science of Light Farming.",
             "自然とともにあれば、生きられる。福岡正信の自然農法とLight Farmingの科学が示す、生きるための道。"),
         "copyright_text": _text(is_en, "Living with Nature — aiseed.dev", "自然と対話する暮らし"),
+        # SEO
+        "canonical_url": f"{SITE_URL}{insights_base}/",
+        "hreflang_ja": f"{SITE_URL}/insights/",
+        "hreflang_en": f"{SITE_URL}/en/insights/",
+        "og_locale": "en_US" if is_en else "ja_JP",
     }
+
+
+# ---------------------------------------------------------------------------
+# Sitemap & robots.txt
+# ---------------------------------------------------------------------------
+
+def build_sitemap():
+    """Generate sitemap.xml from all articles."""
+    from datetime import date
+    today = date.today().isoformat()
+
+    urls = []
+    # Homepages
+    urls.append(("https://aiseed.dev/", today, "1.0"))
+    urls.append(("https://aiseed.dev/en/", today, "0.8"))
+
+    # Index pages
+    urls.append((f"{SITE_URL}/insights/", today, "0.9"))
+    urls.append((f"{SITE_URL}/en/insights/", today, "0.8"))
+
+    # JP articles
+    for meta in collect_articles("ja"):
+        slug = meta.get("slug", "")
+        urls.append((f"{SITE_URL}/insights/{slug}/", today, "0.7"))
+
+    # EN articles
+    for meta in collect_articles("en"):
+        slug = meta.get("slug", "")
+        urls.append((f"{SITE_URL}/en/insights/{slug}/", today, "0.6"))
+
+    xml_lines = ['<?xml version="1.0" encoding="UTF-8"?>']
+    xml_lines.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+    for loc, lastmod, priority in urls:
+        xml_lines.append("  <url>")
+        xml_lines.append(f"    <loc>{loc}</loc>")
+        xml_lines.append(f"    <lastmod>{lastmod}</lastmod>")
+        xml_lines.append(f"    <priority>{priority}</priority>")
+        xml_lines.append("  </url>")
+    xml_lines.append("</urlset>")
+
+    out = SITE_ROOT / "html" / "sitemap.xml"
+    out.write_text("\n".join(xml_lines) + "\n", encoding="utf-8")
+    print(f"Built: {out}")
+
+
+def build_robots():
+    """Generate robots.txt."""
+    content = (
+        "User-agent: *\n"
+        "Allow: /\n"
+        "Disallow: /tools/\n"
+        "Disallow: /articles/\n"
+        "\n"
+        f"Sitemap: {SITE_URL}/sitemap.xml\n"
+    )
+    out = SITE_ROOT / "html" / "robots.txt"
+    out.write_text(content, encoding="utf-8")
+    print(f"Built: {out}")
 
 
 # ---------------------------------------------------------------------------
@@ -493,7 +563,9 @@ def main():
                 ok += 1
         build_index("ja")
         build_index("en")
-        print(f"\nBuilt {ok}/{len(files)} articles + 2 index pages.")
+        build_sitemap()
+        build_robots()
+        print(f"\nBuilt {ok}/{len(files)} articles + 2 index pages + sitemap.xml + robots.txt.")
         return
 
     build_article(arg)

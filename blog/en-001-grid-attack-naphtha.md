@@ -3,7 +3,7 @@ slug: grid-attack-naphtha
 lang: en
 title: "What If Trump Destroys Iran's Power Plants"
 subtitle: "\"All Hell will reign down\" — but it rains down on the world"
-description: "What happens if Trump attacks Iran's power plants on April 6. Chain of retaliation, dual chokepoint failure (Hormuz + Red Sea), Gulf infrastructure collapse. Energy, chemicals, metals, pharmaceuticals, fertilizer — global supply chains break simultaneously."
+description: "What happens if Trump attacks Iran's power plants on April 7 Japan Time (April 6 ET). Chain of retaliation, dual chokepoint failure (Hormuz + Red Sea), Gulf infrastructure collapse. Energy, chemicals, metals, pharmaceuticals, fertilizer — global supply chains break simultaneously."
 date: 2026.04.05
 label: Blog
 category: Structural Analysis Notes
@@ -30,17 +30,19 @@ Iran retaliated with the following:
 - **April 3**: "The United States hasn't even started destroying what's left in Iran. Bridges next, then Electric Power Plants!" on Truth Social ([CNBC](https://www.cnbc.com/2026/04/03/trump-iran-threats-un-resolution-blocked-strait-of-hormuz-f35-shot-down.html))
 - **April 4**: "Time is running out — 48 hours before all Hell will reign down on them" ([Axios](https://www.axios.com/2026/04/04/trump-iran-hell-threat-deadline))
 
-Pakistan, Turkey, and Egypt are mediating indirect negotiations, but Iran has rejected any temporary ceasefire and demands a permanent end to the war with guarantees. The April 6 deadline is approaching.
+Pakistan, Turkey, and Egypt are mediating indirect negotiations, but Iran has rejected any temporary ceasefire and demands a permanent end to the war with guarantees.
+
+The deadline is **April 6, 8:00 PM Eastern Time — April 7, 9:00 AM Japan Time**. Less than two days remain.
 
 Brent crude has surged over 55% since February 28, reaching $126/barrel. The International Energy Agency called it "the greatest global energy security challenge in history" ([Economic impact — Wikipedia](https://en.wikipedia.org/wiki/Economic_impact_of_the_2026_Iran_war)).
 
 Most people see this as a "Middle East war."
 
-It's not. **This is a food crisis for Japan.**
+It's not. **This is a global supply chain crisis.**
 
-## What Happens If Trump Attacks Iran's Power Plants on April 6
+## April 7 Japan Time — What Happens If Trump Attacks Iran's Power Plants
 
-The April 6 deadline is tomorrow. Negotiations have stalled. What happens if Trump attacks Iran's power plants?
+Negotiations have stalled. What happens if Trump attacks Iran's power plants?
 
 ### Iran's Retaliation Will Escalate
 

@@ -38,21 +38,65 @@ Most people see this as a "Middle East war."
 
 It's not. **This is a food crisis for Japan.**
 
-## What Stops When the Strait of Hormuz Closes
+## What Happens If Trump Attacks Iran's Power Plants on April 6
 
-Approximately 90% of Japan's crude oil imports come from the Middle East. Nearly all of it passes through the Strait of Hormuz.
+The April 6 deadline is tomorrow. Negotiations have stalled. What happens if Trump attacks Iran's power plants?
+
+### Iran's Retaliation Will Escalate
+
+On March 30, Iran warned that "any attack on Iranian coastal territory would trigger mine-laying across all Gulf sea lanes." Current mines are concentrated in the Strait of Hormuz, but a power plant attack could expand mining to **the entire Persian Gulf**.
+
+Iran retains 80–90% of its small vessels and mine-laying capability. It can deploy hundreds of mines in a short period.
+
+### Gulf Power and Desalination Plants Become Retaliation Targets
+
+So far, Iran has attacked Gulf oil facilities and desalination plants. If Trump attacks Iran's power plants, it gives Iran justification for "equivalent retaliation" — large-scale attacks on Gulf nations' power plants and desalination facilities.
+
+:::highlight
+**Trump destroys Iran's power plants → Iran destroys Gulf power plants and desalination facilities**
+
+This is a chain of retaliation. Gulf nations depend on power generation for desalination. When power stops, water stops.
+:::
+
+### Mine Blockade Will Last Even Longer
+
+Mine sweeping is an extremely slow operation. Ship by ship, nautical mile by nautical mile, detecting and removing mines one at a time. During wartime, minesweepers themselves become targets. If Iran mines all Gulf sea lanes, **clearing the blockade could take years.**
+
+### Facility Recovery Is Blocked by the Blockade
+
+Destroyed refining facilities take 3–5 years to rebuild. But **as long as the strait is blockaded, the materials and equipment needed for repairs can't be shipped in.** The blockade and facility destruction compound each other.
+
+### Desalination Destruction Makes the Region Uninhabitable
+
+The fatal weakness of Gulf nations is their **dependence on desalination for drinking water**.
+
+Bahrain's desalination plant was already damaged by drone (March 8). Kuwait's power and desalination plant was hit by missile, killing one worker (March 30). On April 3, Kuwait's desalination plant was struck again.
+
+Six Gulf states depend on desalination for drinking water for a combined 62 million people. If power plant attacks trigger massive retaliation against desalination facilities:
+
+:::chain
+Desalination destroyed → No drinking water → Region becomes uninhabitable → No one to manage or repair facilities → Oil production restart becomes impossible
+:::
+
+:::highlight
+**If facilities are destroyed but people remain, they can be rebuilt. Without water, people can't stay.**
+
+Desalination plant destruction is more severe than oil facility destruction. Oil facilities can be repaired. But if the people who would repair them can't live there, nothing starts. Recovery could take not years, but **a decade or more**.
+:::
+
+## What This Means for Japan's Food
+
+Approximately 90% of Japan's crude oil imports come from the Middle East, nearly all passing through the Strait of Hormuz.
 
 :::chain
 Hormuz blockade → Crude oil imports stop → Refineries run out of feedstock → Naphtha, gasoline, kerosene, diesel — everything stops
 :::
 
-As explained in [Chapter 2: Fossil Resources and Materials](/en/insights/fossil-materials/), crude oil distillation is not optional. You can't make just gasoline or just naphtha. If crude oil stops coming, everything stops.
+As explained in [Chapter 2: Fossil Resources and Materials](/en/insights/fossil-materials/), crude oil distillation is not optional. If crude oil stops coming, everything stops.
 
-## No Naphtha Means No Fertilizer
+### No Naphtha Means No Fertilizer
 
-Naphtha is the feedstock for petrochemistry. Plastics, synthetic fibers, pharmaceuticals — every material of modern civilization starts with naphtha.
-
-And among the things made from naphtha (or natural gas) is **ammonia**.
+Naphtha (or natural gas) is used to produce **ammonia** — the basis of nitrogen fertilizer.
 
 :::chain
 Naphtha / Natural gas → Hydrogen → Ammonia → **Nitrogen fertilizer**
@@ -65,68 +109,15 @@ Japan depends on imports for virtually all fertilizer raw materials.
 - **Phosphate fertilizer** feedstock: phosphate rock (imported from China, Morocco)
 - **Potassium fertilizer** feedstock: potash (imported from Canada, Russia)
 
-The Hormuz blockade directly hits nitrogen fertilizer feedstock.
-
 :::highlight
-Hormuz blockade → Crude oil and natural gas stop → Naphtha stops → Ammonia stops → Nitrogen fertilizer stops
-
 This is not a "gasoline gets expensive" problem. This is a **food production stops** problem.
 :::
 
-## Mine Blockades Don't Clear Quickly
+### Sulfur Stops Too — The Phosphate Fertilizer Crisis
 
-Some assume a Hormuz blockade is temporary. It's not.
+An overlooked fact: Gulf countries account for **roughly 45% of global sulfur supply**. Sulfur is a byproduct of oil refining.
 
-Mine sweeping is an extremely slow operation. Ship by ship, nautical mile by nautical mile, detecting and removing mines one at a time. During wartime, minesweepers themselves become targets. If Iran continues laying new mines, sweeping never finishes.
-
-**Clearing a blockade takes months to years.**
-
-## Attacks on Gulf Facilities — Recovery Blocked by the Blockade
-
-What makes this even more severe is that Iran is attacking Gulf oil facilities.
-
-Destroyed refining facilities take 3–5 years to rebuild. But the problem doesn't stop there. **As long as the strait is blockaded, the materials and equipment needed for repairs can't be shipped in.** The blockade and facility destruction compound each other.
-
-## Desalination Plant Destruction — Making the Region Uninhabitable
-
-The fatal weakness of Gulf nations is their **dependence on desalination for drinking water**.
-
-Bahrain's desalination plant was already damaged by drone (March 8). Kuwait's power and desalination plant was hit by missile, killing one worker (March 30). On April 3, Kuwait's desalination plant was struck again.
-
-Six Gulf states depend on desalination for drinking water for a combined 62 million people. When desalination plants are destroyed:
-
-:::chain
-Desalination destroyed → No drinking water → Region becomes uninhabitable → No one to manage or repair facilities → Oil production restart becomes impossible
-:::
-
-:::highlight
-**If facilities are destroyed but people remain, they can be rebuilt. Without water, people can't stay.**
-
-Desalination plant destruction is more severe than oil facility destruction. Oil facilities can be repaired. But if the people who would repair them can't live there, nothing starts. Recovery could take not years, but **a decade or more**.
-:::
-
-## Japan's Vulnerability
-
-The numbers for Japan:
-
-- Middle East dependency for crude oil: **~90%**
-- Most naphtha: **imported**
-- Fertilizer raw materials: **almost entirely imported**
-- Food self-sufficiency: **38%** (calorie basis)
-
-This structure means everything is concentrated on a single chokepoint: the Strait of Hormuz.
-
-:::highlight
-**Japan's food supply depends on the Strait of Hormuz.**
-
-A Middle East war is a dinner table problem for Japan.
-:::
-
-## Sulfur Stops Too — The Phosphate Fertilizer Crisis
-
-There is an overlooked fact. Gulf countries account for **roughly 45% of global sulfur supply**. Sulfur is a byproduct of oil refining.
-
-As analyzed in [Chapter 11: Regulation Redesign](/en/insights/regulation-redesign/), phosphate fertilizer cannot be made without sulfuric acid. Sulfuric acid requires sulfur.
+As analyzed in [Chapter 11: Regulation Redesign](/en/insights/regulation-redesign/), phosphate fertilizer cannot be made without sulfuric acid.
 
 :::chain
 Hormuz blockade → Gulf sulfur exports stop (45% of world supply) → Sulfuric acid shortage → **Phosphate fertilizer production at risk**
@@ -134,17 +125,28 @@ Hormuz blockade → Gulf sulfur exports stop (45% of world supply) → Sulfuric 
 
 It's not just nitrogen fertilizer. Phosphate fertilizer faces crisis simultaneously. The "Peak Sulfur" warned about in Chapter 11 has been **made real not by decarbonization, but by war**.
 
+### Japan's Numbers
+
+- Middle East dependency for crude oil: **~90%**
+- Most naphtha: **imported**
+- Fertilizer raw materials: **almost entirely imported**
+- Food self-sufficiency: **38%** (calorie basis)
+
+:::highlight
+**Japan's food supply depends on the Strait of Hormuz.**
+
+If Trump attacks Iran's power plants on April 6, the chain of retaliation will extend the blockade and devastate Gulf production infrastructure. A Middle East war is a dinner table problem for Japan.
+:::
+
 ## Connection to the Structural Analysis Series
 
-As [Chapter 1](/en/insights/climate-mistake/) pointed out, fossil resource depletion arrives before climate change.
+[Chapter 1](/en/insights/climate-mistake/) — Fossil resource depletion arrives before climate change.
 
-As [Chapter 2](/en/insights/fossil-materials/) showed, crude oil distillation is not optional. When it stops, everything stops.
+[Chapter 2](/en/insights/fossil-materials/) — Crude oil distillation is not optional. When it stops, everything stops.
 
-As [Chapter 3](/en/insights/agriculture/) analyzed, conventional agriculture collapses without chemical fertilizer.
+[Chapter 3](/en/insights/agriculture/) — Conventional agriculture collapses without chemical fertilizer.
 
-As [Chapter 11](/en/insights/regulation-redesign/) analyzed, when sulfur supply stops, phosphate fertilizer stops — Peak Sulfur.
-
-The Iran war is **making this structure real, right now**.
+[Chapter 11](/en/insights/regulation-redesign/) — When sulfur supply stops, phosphate fertilizer stops — Peak Sulfur.
 
 Fossil resource depletion was supposed to come in decades. But the Strait of Hormuz was blockaded on **March 4, 2026**. The future described in the Structural Analysis Series arrived first — in the form of war.
 

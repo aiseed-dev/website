@@ -150,7 +150,41 @@ Need to instantly scale to 100 servers → Yes
 **But most small and midsize company workloads do not fit the above.**
 Internal systems, websites, databases —
 your own Linux server + Claude development handles all of it. Configuration is faster too.
-Few cases actually require running agents on a public cloud server.
+:::
+
+### Why This Matters — The Fundamental Error in AI Demand Forecasts
+
+**This is not just about cost savings.
+This is the very reason why demand forecasts for the entire AI industry are fundamentally wrong.**
+
+:::chain
+**The premise of current AI demand forecasts:**
+AI adoption spreads → Companies use AI → AI runs on the cloud
+→ Massive GPU servers needed in the cloud
+→ NVIDIA GPUs sell in enormous quantities
+→ Data center investment explodes
+**This premise underpins the entire AI investment boom**
+:::
+
+:::chain
+**But reality looks like this:**
+Companies use AI → They develop with Claude → Their own Linux machines are sufficient
+→ No need to run AI agents 24/7 on public servers
+→ Cloud GPU servers are far less needed than projected
+→ NVIDIA GPU demand falls far short of forecasts
+→ **Data center investment becomes excessive**
+:::
+
+:::highlight
+**The structure makes it obvious:**
+The essential value of AI is "assisting development" —
+not "running inference on the cloud around the clock."
+Talking with Claude to write code, create config files, convert SQL —
+none of this requires massive GPU clusters.
+A developer's local machine and API access are sufficient.
+**What the "users" of AI need is not GPUs — it is intelligence.**
+Companies pouring massive capital into cloud infrastructure are misreading this structure.
+The collapse of NVIDIA analyzed in Chapter 7 is born from this structural error.
 :::
 
 ## SaaS Tax — Accumulating Monthly Charges

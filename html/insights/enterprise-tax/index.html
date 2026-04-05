@@ -314,8 +314,37 @@
                 99.999%の可用性がSLAで求められている → 必要
                 <strong>しかし、大半の中小企業のワークロードは上記に該当しない。</strong>
                 社内システム、Webサイト、データベース——
-                自社のLinuxサーバー＋Claudeでの開発で十分回る。設定もその方が速い。
-                公開サーバーでエージェントを使う必要があるケースは少ない。</p>
+                自社のLinuxサーバー＋Claudeでの開発で十分回る。設定もその方が速い。</p>
+                </div>
+                <h3>なぜこれが重要か——AI需要予測の根本的な誤り</h3>
+                <p><strong>これは単なるコスト削減の話ではない。
+                AI産業全体の需要予測が根本的に間違っている理由そのものだ。</strong></p>
+                <div class="chain-diagram">
+                <strong>現在のAI需要予測の前提：</strong><br>
+                AIが普及する <span class="arrow">&rarr;</span> 企業がAIを使う <span class="arrow">&rarr;</span> クラウドでAIを動かす<br>
+                <span class="arrow">&rarr;</span> クラウドのGPUサーバーが大量に必要になる<br>
+                <span class="arrow">&rarr;</span> NVIDIAのGPUが大量に売れる<br>
+                <span class="arrow">&rarr;</span> データセンターへの投資が爆発的に増える<br>
+                <strong>この前提が、AI投資ブームの根拠になっている</strong>
+                </div>
+                <div class="chain-diagram">
+                <strong>しかし、現実はこうだ：</strong><br>
+                企業がAIを使う <span class="arrow">&rarr;</span> Claudeで開発する <span class="arrow">&rarr;</span> 自社のLinuxマシンで十分<br>
+                <span class="arrow">&rarr;</span> 公開サーバーでAIエージェントを常時稼働させる必要がない<br>
+                <span class="arrow">&rarr;</span> クラウドのGPUサーバーは想定ほど必要にならない<br>
+                <span class="arrow">&rarr;</span> NVIDIAのGPU需要は予測を大幅に下回る<br>
+                <span class="arrow">&rarr;</span> <strong>データセンター投資は過剰になる</strong>
+                </div>
+                <div class="highlight-box">
+                <p><strong>構造を見れば明らかだ：</strong>
+                AIの本質的な価値は「開発を支援すること」であり、
+                「24時間クラウドで推論を回し続けること」ではない。
+                Claudeと対話してコードを書き、設定ファイルを作り、SQLを変換する——
+                この作業に巨大なGPUクラスターは要らない。
+                開発者のローカルマシンとAPIアクセスがあれば十分だ。
+                <strong>AIを「使う側」に必要なのはGPUではなく、知性だ。</strong>
+                クラウドに巨額を投じる企業は、この構造を見誤っている。
+                第7章で分析したNVIDIAの崩壊は、この構造的誤りから生まれる。</p>
                 </div>
                 <h2>SaaS税——月額課金の積み重ね</h2>
                 <p>SaaS（Software as a Service）は「所有しない」ことが売りだった。

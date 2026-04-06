@@ -14,9 +14,12 @@ category: 構造分析ノート
 **Tuesday will be Power Plant Day, and Bridge Day, all wrapped up in one, in Iran. There will be nothing like it!!! Open the Fuckin' Strait, you crazy bastards, or you'll be living in Hell - JUST WATCH! Praise be to Allah. President DONALD J. TRUMP**
 :::
 
+![投稿画像](001-trump-power-plant-day.jpeg)
+
 「火曜日は発電所の日であり、橋の日だ。まとめてやる。ホルムズ海峡を開けろ。さもなくば地獄に住むことになる」
 
-これは「中東の戦争」ではない。ここに書くのは、あなたの生活に直結する話だ。
+これは大量虐殺であり、重大な国際法違反。アメリカ軍はトランプの命令に従うのだろうか？
+そして、これはもう「中東の戦争」ではない。ここに書くのは、世界を地獄に導くからだ」。
 
 ## なぜ発電所攻撃は今まで起きなかったのか
 

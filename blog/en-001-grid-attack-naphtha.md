@@ -1,7 +1,7 @@
 ---
 slug: grid-attack-naphtha
 lang: en
-title: "What If Trump Destroys Iran's Power Plants on April 6"
+title: "What If Trump Destroys Iran's Power Plants"
 subtitle: "\"Open the Fuckin' Strait, or you'll be living in Hell\" — but hell rains down on the world"
 description: "On April 5, 2026, Trump declared 'Tuesday will be Power Plant Day.' What happens if Iran's power plants are destroyed? Chain of retaliation, 62 million lose drinking water, global fertilizer crisis — the world's supply chains stop simultaneously."
 date: 2026.04.06
@@ -19,6 +19,8 @@ April 5, 2026 — Easter morning. Trump posted on Truth Social:
 ![Trump's post](001-trump-power-plant-day.jpeg)
 
 "Tuesday will be Power Plant Day, and Bridge Day, all wrapped up in one. Open the Strait, or you'll live in hell."
+
+**April 6 update:** Trump extended the deadline to **8:00 PM ET, April 7** (9:00 AM Japan Time, April 8).
 
 This is mass murder and a grave violation of international law. Will the U.S. military follow Trump's order?
 And this is no longer just a "Middle East war." What follows explains why it leads the world into hell.

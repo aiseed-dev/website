@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9FLQ963JXM');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="markdown-it-pyで日本語混在テキストの太字が壊れるバグを発見。Claude Codeが原因を特定し、6行の修正を書き、フォークを作り、PRを提出するまでを1セッションで完了した。">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+    <title>markdown-itの太字が**のまま残るバグをClaudeが修正してPull Requestまでした | AI時代の暮らし</title>
+    <link rel="canonical" href="https://aiseed.dev/blog/markdown-it-cjk-fix/">
+    <link rel="alternate" hreflang="ja" href="https://aiseed.dev/blog/markdown-it-cjk-fix/">
+    <link rel="alternate" hreflang="en" href="https://aiseed.dev/en/blog/markdown-it-cjk-fix/">
+    <!-- OGP -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="markdown-itの太字が**のまま残るバグをClaudeが修正してPull Requestまでした">
+    <meta property="og:description" content="markdown-it-pyで日本語混在テキストの太字が壊れるバグを発見。Claude Codeが原因を特定し、6行の修正を書き、フォークを作り、PRを提出するまでを1セッションで完了した。">
+    <meta property="og:url" content="https://aiseed.dev/blog/markdown-it-cjk-fix/">
+    <meta property="og:site_name" content="aiseed.dev">
+    <meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+    <meta property="og:locale" content="ja_JP">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="markdown-itの太字が**のまま残るバグをClaudeが修正してPull Requestまでした">
+    <meta name="twitter:description" content="markdown-it-pyで日本語混在テキストの太字が壊れるバグを発見。Claude Codeが原因を特定し、6行の修正を書き、フォークを作り、PRを提出するまでを1セッションで完了した。">
+    <meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .article-meta {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .article-meta .date {
+            font-size: 0.8rem;
+            color: var(--moss-green);
+            letter-spacing: 0.15em;
+        }
+        .article-meta .series {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--soil-rich);
+            margin-top: 0.5rem;
+        }
+        .chain-diagram {
+            background: var(--sand-light);
+            border-left: 4px solid var(--moss-green);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+            line-height: 2.2;
+            color: var(--earth-dark);
+        }
+        .chain-diagram .arrow {
+            color: var(--moss-green);
+            font-weight: 700;
+            margin: 0 0.3rem;
+        }
+        .highlight-box {
+            background: rgba(122, 154, 109, 0.08);
+            border: 1px solid rgba(122, 154, 109, 0.2);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+        .highlight-box p { margin-bottom: 0.5rem; }
+        .highlight-box p:last-child { margin-bottom: 0; }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+        .comparison-table th {
+            background: var(--earth-dark);
+            color: var(--cream);
+            padding: 0.8rem 1rem;
+            text-align: left;
+            font-weight: 500;
+        }
+        .comparison-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid var(--root-tan);
+            vertical-align: top;
+        }
+        .comparison-table tr:nth-child(even) {
+            background: var(--sand-light);
+        }
+        .article-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--root-tan);
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+        .article-nav a {
+            color: var(--leaf-green);
+        }
+        .quote-block {
+            border-left: 4px solid var(--moss-green);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            background: var(--sand-light);
+        }
+        .quote-block .quote-text {
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--earth-dark);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo">
+                AI時代の暮らし
+                <span>aiseed.dev</span>
+            </a>
+            <nav class="nav">
+                <a href="/">ホーム</a>
+                <a href="/insights/">Insights</a>
+                <a href="/blog/">Blog</a>
+                <a href="/about/">自然農法とは</a>
+                <a href="/light-farming/">Light Farming</a>
+                <a href="/gallery/">畑の記録</a>
+            </nav>
+            <button class="nav-toggle" aria-label="メニュー">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Article -->
+    <section class="page-hero">
+        <div class="page-hero-image" style="background-image: url('../../images/IMG_3285.jpg');"></div>
+        <div class="page-hero-content">
+            <p class="hero-label">Blog</p>
+            <h1 class="hero-title">markdown-itの太字が**のまま残るバグをClaudeが修正してPull Requestまでした</h1>
+            <p class="hero-subtitle">SIerに委託に出す必要は全くなくなりました</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container-narrow">
+            <div class="article-meta">
+                <p class="date">2026.04.06</p>
+                <p class="series">AI開発ノート</p>
+            </div>
+
+            <div class="prose">
+                <h2>何が起きたか</h2>
+                <p>ブログ記事を書いていて、おかしな表示に気づいた。</p>
+                <pre><code>ホルムズ海峡は世界の海上石油輸送の**20〜25%**が通過する。
+                </code></pre>
+                <p>これが太字にならず、<code>**</code> がそのまま表示される。</p>
+                <pre><code>ホルムズ海峡は世界の海上石油輸送の**20〜25%**が通過する。
+                </code></pre>
+                <p>スペースを入れれば動く。しかし日本語の文中にスペースを入れるのは不自然だ。</p>
+                <pre><code>ホルムズ海峡は世界の海上石油輸送の **20〜25%** が通過する。
+                </code></pre>
+                <p>これはバグだ。</p>
+                <h2>原因</h2>
+                <p><a href="https://github.com/executablebooks/markdown-it-py">markdown-it-py</a> の <code>scanDelims</code> 関数が原因だった。</p>
+                <p>CommonMarkの仕様では、<code>**</code> が太字の閉じとして機能するには <strong>right-flanking delimiter</strong> である必要がある。判定ロジンクはこうだ：</p>
+                <p><code>right_flanking = not (isLastPunctChar and not (isNextWhiteSpace or isNextPunctChar))</code></p>
+                <p><code>**46%**を</code> の閉じ <code>**</code> で：</p>
+                <ul>
+                <li><code>lastChar='%'</code> → 句読点 → <code>isLastPunctChar=True</code></li>
+                <li><code>nextChar='を'</code> → CJK文字 → スペースでも句読点でもない</li>
+                </ul>
+                <p>結果：<code>right_flanking = False</code>。閉じデリミタとして認識されない。</p>
+                <p><strong>つまり、CJK文字がASCII句読点の後に来ると、太字が壊れる。</strong> これは日本語・中国語・韓国語すべてに影響する。</p>
+                <h2>修正</h2>
+                <p><code>state_inline.py</code> の <code>scanDelims</code> に6行を追加した。CJK文字（U+2E80以上）を句読点として扱うことで、ワード境界として正しく認識させる。</p>
+                <pre><code class="language-python"># Treat CJK ideographs as punctuation for flanking delimiter checks
+                if not isNextPunctChar and ord(nextChar) &gt; 0x2E7F:
+                    isNextPunctChar = True
+                if not isLastPunctChar and ord(lastChar) &gt; 0x2E7F:
+                    isLastPunctChar = True
+                </code></pre>
+                <p>テスト結果：</p>
+                <table>
+                <thead>
+                <tr>
+                <th>入力</th>
+                <th>修正前</th>
+                <th>修正後</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><code>湾岸の**46%**を供給</code></td>
+                <td>**のまま残る</td>
+                <td><strong>46%</strong> が太字</td>
+                </tr>
+                <tr>
+                <td><code>の**20〜25%**が通過する</code></td>
+                <td>**のまま残る</td>
+                <td><strong>20〜25%</strong> が太字</td>
+                </tr>
+                <tr>
+                <td><code>日本語の**太字**テスト</code></td>
+                <td>正常</td>
+                <td>正常</td>
+                </tr>
+                <tr>
+                <td><code>English **bold** test</code></td>
+                <td>正常</td>
+                <td>正常</td>
+                </tr>
+                </tbody>
+                </table>
+                <p>英語のみのテキストへの影響はない。</p>
+                <h2>Claude Codeがやったこと</h2>
+                <p>バグの発見から修正、PRの提出まで、すべて1つのClaude Codeセッションで行った。</p>
+                <ol>
+                <li><strong>バグの発見</strong> — ブログ記事のビルド結果を確認して異常を検出</li>
+                <li><strong>原因の特定</strong> — <code>markdown-it-py</code> のソースを読み、<code>scanDelims</code> の flanking delimiter 判定ロジックを分析</li>
+                <li><strong>修正の実装</strong> — CJK文字を句読点として扱う6行の修正を作成</li>
+                <li><strong>テスト</strong> — 日本語・英語の両方で8パターンのテストを実施</li>
+                <li><strong>フォークの作成</strong> — <code>aiseed-dev/markdown-it-py</code> にフォークし、<code>fix/cjk-emphasis</code> ブランチにコミット</li>
+                <li><strong>PRの提出</strong> — <a href="https://github.com/executablebooks/markdown-it-py/pull/387">executablebooks/markdown-it-py#387</a> にPull Requestを作成</li>
+                <li><strong>自プロジェクトの更新</strong> — <code>requirements.txt</code> をフォーク版に切り替え、全ページをリビルド</li>
+                </ol>
+                <h2>SIerに委託する必要はない</h2>
+                <p>従来なら、この種の作業は：</p>
+                <ul>
+                <li>バグの報告と調査の委託</li>
+                <li>外部ライブラリの調査と修正方針の検討</li>
+                <li>フォークの管理とPRの作成</li>
+                <li>テストの作成と実行</li>
+                </ul>
+                <p>これらを外部に委託すれば、数日から数週間、数十万円のコストがかかる。</p>
+                <p>Claude Codeは、ブログ記事を書いている最中にバグを見つけ、原因を特定し、修正し、テストし、PRを提出するまでを<strong>1セッションで完了</strong>した。</p>
+                <div class="highlight-box">
+                <p><strong>SIerに委託に出す必要は、全くなくなりました。</strong></p>
+                <p>必要なのは、問題を正確に伝える力と、結果を判断する力だけだ。コードを書く能力は、もう人間側に必要ない。</p>
+                </div>
+                <h2>Links</h2>
+                <ul>
+                <li><a href="https://github.com/executablebooks/markdown-it-py/pull/387">Pull Request: Fix CJK emphasis delimiter detection</a></li>
+                <li><a href="https://github.com/aiseed-dev/markdown-it-py/tree/fix/cjk-emphasis">aiseed-dev/markdown-it-py (fork)</a></li>
+                </ul>
+
+
+                <!-- Article Navigation -->
+                <div class="article-nav">
+  <span></span>
+  <a href="/blog/">Blog トップ &rarr;</a>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section-green">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Blog</p>
+                <h2 class="section-title">構造を見る</h2>
+            </div>
+            <p class="cta-text">AIから農業まで——全ての構造分析は、一つの結論に向かう。</p>
+            <div class="text-center">
+                <a href="/insights/" class="btn btn-light" style="margin-right: 1rem;">構造分析シリーズ</a>
+                <a href="/blog/" class="btn btn-outline">Blog</a>
+            </div>
+            <p class="text-center" style="margin-top: 2rem;">
+                <a href="https://www.facebook.com/groups/vegitage" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.85); text-decoration: underline;">Vegitage — 自然農法コミュニティ（Facebook）</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>AI時代の暮らし</h3>
+                <p>AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。</p>
+            </div>
+            <div class="footer-nav">
+                <h4>ページ</h4>
+                <ul>
+                    <li><a href="/">ホーム</a></li>
+                    <li><a href="/about/">自然農法とは</a></li>
+                    <li><a href="/light-farming/">Light Farming</a></li>
+                    <li><a href="/gallery/">畑の記録</a></li>
+                    <li><a href="/insights/">Insights</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>関連リンク</h4>
+                <ul>
+                    <li><a href="https://www.facebook.com/groups/vegitage" target="_blank" rel="noopener noreferrer">Facebook Group</a></li>
+                    <li><a href="https://www.amazingcarbon.com/">Amazing Carbon</a></li>
+                    <li><a href="https://github.com/aiseed-dev/website" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">&copy; 2026 aiseed.dev — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">CC BY 4.0</a></p>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+
+</html>

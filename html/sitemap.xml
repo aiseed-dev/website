@@ -176,7 +176,17 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/blog/markdown-it-cjk-fix/</loc>
+    <lastmod>2026-04-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/en/blog/grid-attack-naphtha/</loc>
+    <lastmod>2026-04-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/blog/markdown-it-cjk-fix/</loc>
     <lastmod>2026-04-06</lastmod>
     <priority>0.6</priority>
   </url>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9FLQ963JXM');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Found a bug in markdown-it-py where bold fails in mixed CJK/ASCII text. Claude Code identified the root cause, wrote a 6-line fix, forked the repo, and submitted a PR — all in a single session.">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+    <title>Claude Fixed a Bold Rendering Bug in markdown-it and Submitted the Pull Request | Living in the AI Era</title>
+    <link rel="canonical" href="https://aiseed.dev/en/blog/markdown-it-cjk-fix/">
+    <link rel="alternate" hreflang="ja" href="https://aiseed.dev/blog/markdown-it-cjk-fix/">
+    <link rel="alternate" hreflang="en" href="https://aiseed.dev/en/blog/markdown-it-cjk-fix/">
+    <!-- OGP -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Claude Fixed a Bold Rendering Bug in markdown-it and Submitted the Pull Request">
+    <meta property="og:description" content="Found a bug in markdown-it-py where bold fails in mixed CJK/ASCII text. Claude Code identified the root cause, wrote a 6-line fix, forked the repo, and submitted a PR — all in a single session.">
+    <meta property="og:url" content="https://aiseed.dev/en/blog/markdown-it-cjk-fix/">
+    <meta property="og:site_name" content="aiseed.dev">
+    <meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+    <meta property="og:locale" content="en_US">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Claude Fixed a Bold Rendering Bug in markdown-it and Submitted the Pull Request">
+    <meta name="twitter:description" content="Found a bug in markdown-it-py where bold fails in mixed CJK/ASCII text. Claude Code identified the root cause, wrote a 6-line fix, forked the repo, and submitted a PR — all in a single session.">
+    <meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <style>
+        .article-meta {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .article-meta .date {
+            font-size: 0.8rem;
+            color: var(--moss-green);
+            letter-spacing: 0.15em;
+        }
+        .article-meta .series {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--soil-rich);
+            margin-top: 0.5rem;
+        }
+        .chain-diagram {
+            background: var(--sand-light);
+            border-left: 4px solid var(--moss-green);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+            line-height: 2.2;
+            color: var(--earth-dark);
+        }
+        .chain-diagram .arrow {
+            color: var(--moss-green);
+            font-weight: 700;
+            margin: 0 0.3rem;
+        }
+        .highlight-box {
+            background: rgba(122, 154, 109, 0.08);
+            border: 1px solid rgba(122, 154, 109, 0.2);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+        .highlight-box p { margin-bottom: 0.5rem; }
+        .highlight-box p:last-child { margin-bottom: 0; }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+        .comparison-table th {
+            background: var(--earth-dark);
+            color: var(--cream);
+            padding: 0.8rem 1rem;
+            text-align: left;
+            font-weight: 500;
+        }
+        .comparison-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid var(--root-tan);
+            vertical-align: top;
+        }
+        .comparison-table tr:nth-child(even) {
+            background: var(--sand-light);
+        }
+        .article-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--root-tan);
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+        .article-nav a {
+            color: var(--leaf-green);
+        }
+        .quote-block {
+            border-left: 4px solid var(--moss-green);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            background: var(--sand-light);
+        }
+        .quote-block .quote-text {
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--earth-dark);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo">
+                Living in the AI Era
+                <span>aiseed.dev</span>
+            </a>
+            <nav class="nav">
+                <a href="/">Home</a>
+                <a href="/en/insights/">Insights</a>
+                <a href="/en/blog/">Blog</a>
+                <a href="/about/">Natural Farming</a>
+                <a href="/light-farming/">Light Farming</a>
+                <a href="/gallery/">Field Notes</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Article -->
+    <section class="page-hero">
+        <div class="page-hero-image" style="background-image: url('../../../images/IMG_3285.jpg');"></div>
+        <div class="page-hero-content">
+            <p class="hero-label">Blog</p>
+            <h1 class="hero-title">Claude Fixed a Bold Rendering Bug in markdown-it and Submitted the Pull Request</h1>
+            <p class="hero-subtitle">No need to outsource to contractors anymore</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container-narrow">
+            <div class="article-meta">
+                <p class="date">2026.04.06</p>
+                <p class="series">AI Development Notes</p>
+            </div>
+
+            <div class="prose">
+                <h2>What Happened</h2>
+                <p>While writing a blog post, I noticed broken rendering:</p>
+                <pre><code>ホルムズ海峡は世界の海上石油輸送の**20〜25%**が通過する。
+                </code></pre>
+                <p>The <code>**</code> markers were displayed as plain text instead of rendering bold.</p>
+                <p>Adding spaces around the markers fixed it — but inserting spaces in Japanese text is unnatural. This was a bug.</p>
+                <h2>Root Cause</h2>
+                <p>The <code>scanDelims</code> function in <a href="https://github.com/executablebooks/markdown-it-py">markdown-it-py</a>.</p>
+                <p>In the CommonMark spec, <code>**</code> must be a <strong>right-flanking delimiter</strong> to close bold. The check:</p>
+                <p><code>right_flanking = not (isLastPunctChar and not (isNextWhiteSpace or isNextPunctChar))</code></p>
+                <p>For the closing <code>**</code> in <code>**46%**を</code>:</p>
+                <ul>
+                <li><code>lastChar='%'</code> → punctuation → <code>isLastPunctChar=True</code></li>
+                <li><code>nextChar='を'</code> → CJK character → neither whitespace nor punctuation</li>
+                </ul>
+                <p>Result: <code>right_flanking = False</code>. The closing <code>**</code> is rejected.</p>
+                <p><strong>CJK characters after ASCII punctuation break bold rendering.</strong> This affects Japanese, Chinese, and Korean text.</p>
+                <h2>The Fix</h2>
+                <p>6 lines added to <code>scanDelims</code> in <code>state_inline.py</code>. Treat CJK characters (U+2E80+) as punctuation so they are recognized as word boundaries:</p>
+                <pre><code class="language-python"># Treat CJK ideographs as punctuation for flanking delimiter checks
+                if not isNextPunctChar and ord(nextChar) &gt; 0x2E7F:
+                    isNextPunctChar = True
+                if not isLastPunctChar and ord(lastChar) &gt; 0x2E7F:
+                    isLastPunctChar = True
+                </code></pre>
+                <p>Test results:</p>
+                <table>
+                <thead>
+                <tr>
+                <th>Input</th>
+                <th>Before</th>
+                <th>After</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                <td><code>湾岸の**46%**を供給</code></td>
+                <td>** remains as text</td>
+                <td><strong>46%</strong> renders bold</td>
+                </tr>
+                <tr>
+                <td><code>の**20〜25%**が通過する</code></td>
+                <td>** remains as text</td>
+                <td><strong>20〜25%</strong> renders bold</td>
+                </tr>
+                <tr>
+                <td><code>日本語の**太字**テスト</code></td>
+                <td>works</td>
+                <td>works</td>
+                </tr>
+                <tr>
+                <td><code>English **bold** test</code></td>
+                <td>works</td>
+                <td>works</td>
+                </tr>
+                </tbody>
+                </table>
+                <p>No impact on English-only text.</p>
+                <h2>What Claude Code Did</h2>
+                <p>From bug discovery to PR submission — everything in one Claude Code session:</p>
+                <ol>
+                <li><strong>Found the bug</strong> — noticed broken rendering in blog build output</li>
+                <li><strong>Identified the cause</strong> — read markdown-it-py source, analyzed <code>scanDelims</code> flanking delimiter logic</li>
+                <li><strong>Wrote the fix</strong> — 6 lines treating CJK characters as punctuation</li>
+                <li><strong>Tested</strong> — 8 test patterns in both Japanese and English</li>
+                <li><strong>Created a fork</strong> — <code>aiseed-dev/markdown-it-py</code> with <code>fix/cjk-emphasis</code> branch</li>
+                <li><strong>Submitted a PR</strong> — <a href="https://github.com/executablebooks/markdown-it-py/pull/387">executablebooks/markdown-it-py#387</a></li>
+                <li><strong>Updated the project</strong> — switched <code>requirements.txt</code> to the fork, rebuilt all pages</li>
+                </ol>
+                <h2>No Need to Outsource</h2>
+                <p>Traditionally, this kind of work would require:</p>
+                <ul>
+                <li>Filing a bug report and commissioning investigation</li>
+                <li>External library research and fix strategy review</li>
+                <li>Fork management and PR creation</li>
+                <li>Test creation and execution</li>
+                </ul>
+                <p>Outsourcing this would cost days to weeks and thousands of dollars.</p>
+                <p>Claude Code found the bug while writing a blog post, identified the root cause, wrote the fix, tested it, and submitted the PR — <strong>all in a single session</strong>.</p>
+                <div class="highlight-box">
+                <p><strong>There is no longer any need to outsource to contractors.</strong></p>
+                <p>All you need is the ability to describe the problem accurately and judge the results. The ability to write code is no longer required on the human side.</p>
+                </div>
+                <h2>Links</h2>
+                <ul>
+                <li><a href="https://github.com/executablebooks/markdown-it-py/pull/387">Pull Request: Fix CJK emphasis delimiter detection</a></li>
+                <li><a href="https://github.com/aiseed-dev/markdown-it-py/tree/fix/cjk-emphasis">aiseed-dev/markdown-it-py (fork)</a></li>
+                </ul>
+
+
+                <!-- Article Navigation -->
+                <div class="article-nav">
+  <span></span>
+  <a href="/en/blog/">Blog Top &rarr;</a>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section-green">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Blog</p>
+                <h2 class="section-title">See the Structure</h2>
+            </div>
+            <p class="cta-text">From AI to agriculture — every structural analysis converges on one conclusion.</p>
+            <div class="text-center">
+                <a href="/en/insights/" class="btn btn-light" style="margin-right: 1rem;">Insights</a>
+                <a href="/en/blog/" class="btn btn-outline">Blog</a>
+            </div>
+            <p class="text-center" style="margin-top: 2rem;">
+                <a href="https://www.facebook.com/groups/vegitage" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.85); text-decoration: underline;">Vegitage — Natural Farming Community（Facebook）</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>Living in the AI Era</h3>
+                <p>AI changes how we work, farm, and live. Structural analysis of fossil resources, food, energy, AI, healthcare, and pensions — every structure connects.</p>
+            </div>
+            <div class="footer-nav">
+                <h4>Pages</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about/">Natural Farming</a></li>
+                    <li><a href="/light-farming/">Light Farming</a></li>
+                    <li><a href="/gallery/">Field Notes</a></li>
+                    <li><a href="/en/insights/">Insights</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="https://www.facebook.com/groups/vegitage" target="_blank" rel="noopener noreferrer">Facebook Group</a></li>
+                    <li><a href="https://www.amazingcarbon.com/">Amazing Carbon</a></li>
+                    <li><a href="https://github.com/aiseed-dev/website" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">&copy; 2026 aiseed.dev — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">CC BY 4.0</a></p>
+        </div>
+    </footer>
+
+    <script src="../../../js/main.js"></script>
+</body>
+
+</html>

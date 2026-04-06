@@ -14,6 +14,7 @@ Templates are in tools/templates/:
     index.html    — insights/blog index page (Jinja2)
 """
 
+import shutil
 import sys
 import re
 from pathlib import Path
@@ -39,6 +40,16 @@ _env = Environment(
 
 # markdown-it renderer (CommonMark + tables)
 _md = MarkdownIt("commonmark", {"html": True}).enable("table")
+
+
+IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".gif", ".svg", ".webp", ".avif"}
+
+
+def copy_images(src_dir, out_dir, prefix=""):
+    """Copy image files from src_dir to out_dir, optionally filtered by prefix."""
+    for f in src_dir.iterdir():
+        if f.suffix.lower() in IMAGE_EXTS and (not prefix or f.name.startswith(prefix)):
+            shutil.copy2(f, out_dir / f.name)
 
 
 # ---------------------------------------------------------------------------
@@ -620,6 +631,13 @@ def build_article(md_path):
     out_file = out_dir / "index.html"
     out_file.write_text(html, encoding="utf-8")
 
+    # Copy images from source directory
+    # e.g. articles/03-*.jpg → html/insights/slug/
+    num_prefix = md_path.name.split("-", 1)[0]  # "03", "en"
+    if num_prefix == "en":
+        num_prefix = md_path.name.split("-", 2)[1]  # "en-03-..." → "03"
+    copy_images(md_path.parent, out_dir, prefix=num_prefix)
+
     print(f"Built: {out_file}")
     return True
 
@@ -715,6 +733,13 @@ def build_blog_post(md_path):
     out_dir.mkdir(parents=True, exist_ok=True)
     out_file = out_dir / "index.html"
     out_file.write_text(html, encoding="utf-8")
+
+    # Copy images from source directory
+    # e.g. blog/001-*.jpeg → html/blog/slug/
+    num_prefix = md_path.name.split("-", 1)[0]  # "001", "en"
+    if num_prefix == "en":
+        num_prefix = md_path.name.split("-", 2)[1]  # "en-001-..." → "001"
+    copy_images(md_path.parent, out_dir, prefix=num_prefix)
 
     print(f"Built blog: {out_file}")
     return True

@@ -15,9 +15,12 @@ April 5, 2026 — Easter morning. Trump posted on Truth Social:
 **Tuesday will be Power Plant Day, and Bridge Day, all wrapped up in one, in Iran. There will be nothing like it!!! Open the Fuckin' Strait, you crazy bastards, or you'll be living in Hell - JUST WATCH! Praise be to Allah. President DONALD J. TRUMP**
 :::
 
-"Open the Strait of Hormuz, or you'll live in hell."
+![Trump's post](001-trump-power-plant-day.jpeg)
 
-This is not a "Middle East war." What follows will directly affect your life.
+"Tuesday will be Power Plant Day, and Bridge Day, all wrapped up in one. Open the Strait, or you'll live in hell."
+
+This is mass murder and a grave violation of international law. Will the U.S. military follow Trump's order?
+And this is no longer just a "Middle East war." What follows explains why it leads the world into hell.
 
 ## Why Power Plant Attacks Have Never Happened Before
 

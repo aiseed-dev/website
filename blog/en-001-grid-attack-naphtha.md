@@ -4,7 +4,7 @@ lang: en
 title: "What If Trump Destroys Iran's Power Plants on April 6"
 subtitle: "\"Open the Fuckin' Strait, or you'll be living in Hell\" — but hell rains down on the world"
 description: "On April 5, 2026, Trump declared 'Tuesday will be Power Plant Day.' What happens if Iran's power plants are destroyed? Chain of retaliation, 62 million lose drinking water, global fertilizer crisis — the world's supply chains stop simultaneously."
-date: 2026.04.05
+date: 2026.04.06
 label: Blog
 category: Structural Analysis Notes
 ---
@@ -169,22 +169,6 @@ But if power plants are attacked, hell rains down not just on Iran.
 By the morning of April 7 (Japan Time), we need to understand this.
 :::
 
-## Only Natural Farming Is Unaffected
-
-Only agriculture that doesn't depend on chemical fertilizer is free from this structural risk.
-
-Masanobu Fukuoka's natural farming. Dr. Christine Jones's Light Farming. No-till, no fertilizer, no pesticides. Nitrogen fixation through symbiosis with soil microorganisms.
-
-When the Strait of Hormuz closes, soil microbes don't stop working.
-
-:::highlight
-**The conclusion of structural analysis always converges on the same place.**
-
-The further we move from nature, the higher the cost of living. The Iran war just proved that cost can spike in an instant.
-:::
-
----
-
 ## Sources
 
 - [Arab News: Gulf water security and desalination dependency](https://www.arabnews.com/node/2591186/middle-east)
@@ -195,3 +179,7 @@ The further we move from nature, the higher the cost of living. The Iran war jus
 - [euronews: Netanyahu — Iran steel production destroyed, power plants next](https://www.euronews.com/2026/04/03/netanyahu-iran-steel-production-destroyed-power-plants-next)
 - [Times of Israel: Iran targets Israel power plants](https://www.timesofisrael.com/iran-targets-israel-power-plants-orot-rabin-hadera/)
 - [NPR: Iran missiles breach Israeli defenses at Dimona and Arad](https://www.npr.org/2026/03/05/iran-missiles-dimona-arad-israel-damage)
+
+## We created a Facebook group
+
+Facebook [AISeed - Biodiversity, Food & AI in Daily Life](https://www.facebook.com/groups/vegitage)

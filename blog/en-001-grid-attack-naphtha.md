@@ -170,6 +170,21 @@ But if power plants are attacked, hell rains down not just on Iran.
 By the morning of April 7 (Japan Time), we need to understand this.
 :::
 
+## Will the U.S. Military Follow the Order?
+
+Back to the opening question. Will the U.S. military follow Trump's order?
+
+U.S. military officers have a **duty to refuse clearly illegal orders**. The Uniform Code of Military Justice (UCMJ) does not grant immunity for obeying unlawful commands. "I was following orders" is not a defense.
+
+Deliberate attacks on civilian power plants and desalination facilities constitute **"destruction of objects indispensable to the survival of the civilian population"** — prohibited under Article 54 of the Geneva Conventions. International law experts have already called this "a threat to commit war crimes." Since Trump himself announced "Power Plant Day," the excuse of "collateral damage" does not apply. **This is a declared, premeditated destruction of civilian infrastructure.**
+
+:::highlight
+**Follow the order — become complicit in war crimes.**
+**Refuse the order — trigger a constitutional crisis.**
+
+Either choice leads to an unprecedented situation for the United States.
+:::
+
 ## Sources
 
 - [Arab News: Gulf water security and desalination dependency](https://www.arabnews.com/node/2591186/middle-east)

@@ -5,6 +5,7 @@ title: "What If Trump Destroys Iran's Power Plants on April 6"
 subtitle: "\"Open the Fuckin' Strait, or you'll be living in Hell\" — but hell rains down on the world"
 description: "On April 5, 2026, Trump declared 'Tuesday will be Power Plant Day.' What happens if Iran's power plants are destroyed? Chain of retaliation, 62 million lose drinking water, global fertilizer crisis — the world's supply chains stop simultaneously."
 date: 2026.04.06
+og_image: https://aiseed.dev/en/blog/grid-attack-naphtha/001-trump-power-plant-day.jpeg
 label: Blog
 category: Structural Analysis Notes
 ---

@@ -26,6 +26,7 @@ from markdown_it import MarkdownIt
 SITE_ROOT = Path(__file__).parent.parent
 ARTICLES_DIR = SITE_ROOT / "articles"
 BLOG_DIR = SITE_ROOT / "blog"
+DEFAULT_OG_IMAGE = "https://aiseed.dev/images/IMG_3285.jpg"
 OUTPUT_BASE = SITE_ROOT / "html" / "insights"
 BLOG_OUTPUT_BASE = SITE_ROOT / "html" / "blog"
 TEMPLATES_DIR = Path(__file__).parent / "templates"
@@ -281,6 +282,7 @@ def article_vars(meta, body_html):
         "hreflang_ja": f"{SITE_URL}/insights/{slug}/",
         "hreflang_en": f"{SITE_URL}/en/insights/{slug}/",
         "og_locale": "en_US" if is_en else "ja_JP",
+        "og_image": meta.get("og_image", DEFAULT_OG_IMAGE),
     }
 
 
@@ -371,6 +373,7 @@ def index_vars(lang, article_list_html):
         "hreflang_ja": f"{SITE_URL}/insights/",
         "hreflang_en": f"{SITE_URL}/en/insights/",
         "og_locale": "en_US" if is_en else "ja_JP",
+        "og_image": DEFAULT_OG_IMAGE,
     }
 
 
@@ -443,6 +446,7 @@ def blog_vars(meta, body_html):
         "hreflang_ja": f"{SITE_URL}/blog/{slug}/",
         "hreflang_en": f"{SITE_URL}/en/blog/{slug}/",
         "og_locale": "en_US" if is_en else "ja_JP",
+        "og_image": meta.get("og_image", DEFAULT_OG_IMAGE),
     }
 
 
@@ -502,6 +506,7 @@ def blog_index_vars(lang, post_list_html):
         "hreflang_ja": f"{SITE_URL}/blog/",
         "hreflang_en": f"{SITE_URL}/en/blog/",
         "og_locale": "en_US" if is_en else "ja_JP",
+        "og_image": DEFAULT_OG_IMAGE,
     }
 
 

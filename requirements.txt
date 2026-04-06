@@ -1,2 +1,2 @@
 jinja2
-markdown-it-py
+markdown-it-py==4.0.0

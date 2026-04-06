@@ -3,7 +3,7 @@ slug: grid-attack-naphtha
 title: もしトランプ大統領が4月6日にイランの発電所を破壊したら
 subtitle: 「ホルムズ海峡を開けろ。さもなくば地獄に住むことになる」——実は世界に地獄が降り注ぐ
 description: 2026年4月5日、トランプ大統領が「火曜日は発電所の日だ」と宣言した。もしイランの発電所が破壊されたら何が起きるか。報復の連鎖、6,200万人の飲料水消失、肥料危機——世界のサプライチェーンが同時に止まる。
-date: 2026.04.05
+date: 2026.04.06
 label: Blog
 category: 構造分析ノート
 ---
@@ -14,7 +14,7 @@ category: 構造分析ノート
 **Tuesday will be Power Plant Day, and Bridge Day, all wrapped up in one, in Iran. There will be nothing like it!!! Open the Fuckin' Strait, you crazy bastards, or you'll be living in Hell - JUST WATCH! Praise be to Allah. President DONALD J. TRUMP**
 :::
 
-![投稿画像](001-trump-power-plant-day.jpeg)
+![トランプ大統領投稿画像](001-trump-power-plant-day.jpeg)
 
 「火曜日は発電所の日であり、橋の日だ。まとめてやる。ホルムズ海峡を開けろ。さもなくば地獄に住むことになる」
 
@@ -168,22 +168,6 @@ category: 構造分析ノート
 4月7日（日本時間）の朝までに、私たちはこのことを理解しておく必要がある。
 :::
 
-## 自然農法だけが影響を受けない
-
-化学肥料に依存しない農業だけが、この構造的リスクから自由だ。
-
-福岡正信の自然農法、Christine Jones博士のLight Farming。不耕起、無肥料、無農薬。土壌微生物との共生による窒素固定。
-
-ホルムズ海峡が閉まっても、土壌微生物は止まらない。
-
-:::highlight
-**構造分析の結論は常に同じ場所に収束する。**
-
-自然から離れるほど、生きるコストは上がる。イラン戦争は、そのコストが一瞬で跳ね上がることを証明した。
-:::
-
----
-
 ## Sources
 
 - [Arab News: Gulf water security and desalination dependency](https://www.arabnews.com/node/2591186/middle-east)
@@ -194,3 +178,7 @@ category: 構造分析ノート
 - [euronews: Netanyahu — Iran steel production destroyed, power plants next](https://www.euronews.com/2026/04/03/netanyahu-iran-steel-production-destroyed-power-plants-next)
 - [Times of Israel: Iran targets Israel power plants](https://www.timesofisrael.com/iran-targets-israel-power-plants-orot-rabin-hadera/)
 - [NPR: Iran missiles breach Israeli defenses at Dimona and Arad](https://www.npr.org/2026/03/05/iran-missiles-dimona-arad-israel-damage)
+
+## Facebookのグループを作りました
+
+Facebook [AISeed - 生物多様性・食料・AIと暮らし](https://www.facebook.com/groups/vegitage)

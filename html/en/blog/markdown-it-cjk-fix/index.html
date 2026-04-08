@@ -224,11 +224,11 @@
                 </table>
                 <p>No impact on English-only text.</p>
                 <h2>What Claude Code Did</h2>
-                <p>From bug discovery to PR submission — everything in one Claude Code session:</p>
+                <p>From bug discovery to PR submission — I never looked at or read the code myself.</p>
                 <ol>
-                <li><strong>Found the bug</strong> — noticed broken rendering in blog build output</li>
+                <li><strong>Found the bug</strong> — noticed broken rendering in blog build output, instructed Claude</li>
                 <li><strong>Identified the cause</strong> — read markdown-it-py source, analyzed <code>scanDelims</code> flanking delimiter logic</li>
-                <li><strong>Wrote the fix</strong> — 6 lines treating CJK characters as punctuation</li>
+                <li><strong>Directed the fix</strong> — Claude initially suggested creating a patch script, but I instructed it to fix the package directly. Claude created the 6-line fix treating CJK characters as punctuation</li>
                 <li><strong>Tested</strong> — 8 test patterns in both Japanese and English</li>
                 <li><strong>Created a fork</strong> — <code>aiseed-dev/markdown-it-py</code> with <code>fix/cjk-emphasis</code> branch</li>
                 <li><strong>Submitted a PR</strong> — <a href="https://github.com/executablebooks/markdown-it-py/pull/387">executablebooks/markdown-it-py#387</a></li>
@@ -242,11 +242,11 @@
                 <li>Fork management and PR creation</li>
                 <li>Test creation and execution</li>
                 </ul>
-                <p>Outsourcing this would cost days to weeks and thousands of dollars.</p>
-                <p>Claude Code found the bug while writing a blog post, identified the root cause, wrote the fix, tested it, and submitted the PR — <strong>all in a single session</strong>.</p>
+                <p>Outsourcing this would cost days to weeks, plus the expense.</p>
+                <p>I found a bug while writing a blog post, instructed Claude Code, and it did exactly what outsourcing to a contractor would have done.</p>
                 <div class="highlight-box">
                 <p><strong>There is no longer any need to outsource to contractors.</strong></p>
-                <p>All you need is the ability to describe the problem accurately and judge the results. The ability to write code is no longer required on the human side.</p>
+                <p>All you need is the ability to describe the problem accurately and judge the results. The ability to read and write code is no longer required on the human side.</p>
                 </div>
                 <h2>Links</h2>
                 <ul>

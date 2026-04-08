@@ -62,11 +62,11 @@ No impact on English-only text.
 
 ## What Claude Code Did
 
-From bug discovery to PR submission — everything in one Claude Code session:
+From bug discovery to PR submission — I never looked at or read the code myself.
 
-1. **Found the bug** — noticed broken rendering in blog build output
+1. **Found the bug** — noticed broken rendering in blog build output, instructed Claude
 2. **Identified the cause** — read markdown-it-py source, analyzed `scanDelims` flanking delimiter logic
-3. **Wrote the fix** — 6 lines treating CJK characters as punctuation
+3. **Directed the fix** — Claude initially suggested creating a patch script, but I instructed it to fix the package directly. Claude created the 6-line fix treating CJK characters as punctuation
 4. **Tested** — 8 test patterns in both Japanese and English
 5. **Created a fork** — `aiseed-dev/markdown-it-py` with `fix/cjk-emphasis` branch
 6. **Submitted a PR** — [executablebooks/markdown-it-py#387](https://github.com/executablebooks/markdown-it-py/pull/387)
@@ -80,14 +80,14 @@ Traditionally, this kind of work would require:
 - Fork management and PR creation
 - Test creation and execution
 
-Outsourcing this would cost days to weeks and thousands of dollars.
+Outsourcing this would cost days to weeks, plus the expense.
 
-Claude Code found the bug while writing a blog post, identified the root cause, wrote the fix, tested it, and submitted the PR — **all in a single session**.
+I found a bug while writing a blog post, instructed Claude Code, and it did exactly what outsourcing to a contractor would have done.
 
 :::highlight
 **There is no longer any need to outsource to contractors.**
 
-All you need is the ability to describe the problem accurately and judge the results. The ability to write code is no longer required on the human side.
+All you need is the ability to describe the problem accurately and judge the results. The ability to read and write code is no longer required on the human side.
 :::
 
 ## Links

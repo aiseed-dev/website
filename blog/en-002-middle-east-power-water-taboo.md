@@ -21,7 +21,7 @@ Iran is one of the few Middle Eastern countries that can supply its own drinking
 
 The Zagros Mountains to the west and the Alborz Mountains to the north feed rivers and groundwater through snowmelt. Tehran's drinking water comes from mountain dam systems including the Karaj Dam in the Alborz range. The majority of Iran's population lives in highland cities along these mountain ranges.
 
-Southern Persian Gulf coastal cities do depend on desalination, but Iran's overall water supply is based on rivers, dams, and groundwater. Destroying power plants would stop water pumps, but the water sources themselves don't disappear. Even without electricity, gravity-fed supply and manual pumping can secure minimum water.
+Southern Persian Gulf coastal cities do depend on desalination, but Iran's overall dependence on desalinated water is limited to only about 3–5% of total demand. The country's water supply is based on rivers, dams, and groundwater. Destroying power plants would stop water pumps, but the water sources themselves don't disappear. Even without electricity, gravity-fed supply and manual pumping can secure minimum water.
 
 In other words, even if Iran's power plants are permanently destroyed, Iran's "civilization" can survive in terms of water. Painful, but not fatal.
 
@@ -41,11 +41,13 @@ These countries have no mountains. No rivers. No dams. When desalination stops, 
 
 ## Israel Has the Same Structural Vulnerability
 
-**Approximately 70% of Israel's drinking water comes from seawater desalination plants.**
+**Approximately 70–85% of Israel's drinking water comes from seawater desalination plants.**
 
-Sorek, Ashkelon, Hadera — large-scale desalination plants line the Mediterranean coast. These too are co-located and directly connected to power generation facilities.
+Five massive desalination plants — Sorek A & B, Hadera, Ashkelon, Palmachim, and Ashdod — line the Mediterranean coast as the nation's lifeline. Like the Gulf states, these facilities are intimately tied to energy infrastructure.
 
-Israel is a far smaller country than Iran, with a limited number of desalination plants. If a handful of facilities are destroyed, a national-level water crisis emerges within days.
+The Hadera desalination plant is built directly on the grounds of the "Orot Rabin" coal and gas power station, sharing infrastructure and supplying drinking water to over 1 million people. Sorek has a dedicated 70MW power plant co-located on-site. Ashkelon receives power directly from an adjacent dedicated combined-cycle co-generation plant.
+
+Israel is a far smaller country than Iran, and all these desalination plants are concentrated in a few locations along the Mediterranean coast. Unlike deep underground military bunkers, these plants — with their sea intake pipes, vast RO filter arrays, and adjacent power turbines — are physically impossible to conceal or armor. If a handful of facilities are destroyed, a national-level water crisis emerges within days.
 
 ## This Is Why Permanent Power Plant Destruction Was Taboo
 
@@ -71,7 +73,7 @@ But the issue here goes beyond legal debate.
 
 If Iran retaliates by attacking Gulf and Israeli power plant/desalination facilities, these countries face a water crisis within days. And Iran itself, with its mountains and rivers, can survive the same type of attack.
 
-**This asymmetry is the essence of the taboo.** If permanent power plant destruction becomes an "acceptable act of war," the most damaged parties will not be Iran, but the water-dependent U.S. allies and Israel.
+**This asymmetry is the essence of the taboo.** If permanent power plant destruction becomes an "acceptable act of war," it establishes a strategic equilibrium of "Mutually Assured Dehydration" — where even actors with asymmetric military power can seize the throat of highly developed desert nations. The most damaged parties will not be Iran, but the water-dependent U.S. allies and Israel.
 
 ## The Military May Not Follow the Order
 
@@ -118,3 +120,7 @@ In the end, **the side that physically held something beat the side with the gre
 The reason the threat of permanent power plant destruction failed is the very structure described in this article. In the Middle East, if you break the taboo on permanent power plant destruction, it is not Iran but America's allies and Israel that lose their drinking water. As long as this asymmetry exists, the threat cannot be executed.
 
 Iran knew this. That is why, even facing the threat that "a civilization dies tonight," it never let go of the Strait of Hormuz.
+
+---
+
+**Reference Material:** [Fact-Check: Power Plant Destruction and Water Supply (PDF)](en-002-factcheck-power-water.pdf)

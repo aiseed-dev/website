@@ -3,7 +3,7 @@ slug: markdown-it-cjk-fix
 title: markdown-itの太字が**のまま残るバグをClaudeが修正してPull Requestまでした
 subtitle: SIerに委託に出す必要は全くなくなりました
 description: markdown-it-pyで日本語混在テキストの太字が壊れるバグを発見。Claude Codeが原因を特定し、6行の修正を書き、フォークを作り、PRを提出するまでを1セッションで完了した。
-date: 2026.04.06
+date: 2026.04.08
 label: Blog
 category: AI開発ノート
 ---

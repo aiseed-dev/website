@@ -763,6 +763,8 @@ def collect_blog_posts(lang="ja"):
         meta, _ = parse_frontmatter(text)
         if meta.get("lang", "ja") == lang or (lang == "ja" and "lang" not in meta):
             posts.append(meta)
+    # Sort by date descending (newest first)
+    posts.sort(key=lambda p: p.get("date", ""), reverse=True)
     return posts
 
 

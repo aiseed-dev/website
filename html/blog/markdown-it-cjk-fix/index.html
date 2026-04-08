@@ -229,11 +229,11 @@
                 </table>
                 <p>英語のみのテキストへの影響はない。</p>
                 <h2>Claude Codeがやったこと</h2>
-                <p>バグの発見から修正、PRの提出まで、すべて1つのClaude Codeセッションで行った。</p>
+                <p>バグの発見から修正、PRの提出まで、私の方でコードを見ることも読むこともなかった。</p>
                 <ol>
-                <li><strong>バグの発見</strong> — ブログ記事のビルド結果を確認して異常を検出</li>
+                <li><strong>バグの発見</strong> — ブログ記事のビルド結果をみて、Claudeに指示</li>
                 <li><strong>原因の特定</strong> — <code>markdown-it-py</code> のソースを読み、<code>scanDelims</code> の flanking delimiter 判定ロジックを分析</li>
-                <li><strong>修正の実装</strong> — CJK文字を句読点として扱う6行の修正を作成</li>
+                <li><strong>修正の実装の指示</strong> — Claideは、バッチを作成するといったが、パッケージの修正を指示。Claideが、CJK文字を句読点として扱う6行の修正を作成</li>
                 <li><strong>テスト</strong> — 日本語・英語の両方で8パターンのテストを実施</li>
                 <li><strong>フォークの作成</strong> — <code>aiseed-dev/markdown-it-py</code> にフォークし、<code>fix/cjk-emphasis</code> ブランチにコミット</li>
                 <li><strong>PRの提出</strong> — <a href="https://github.com/executablebooks/markdown-it-py/pull/387">executablebooks/markdown-it-py#387</a> にPull Requestを作成</li>
@@ -247,11 +247,11 @@
                 <li>フォークの管理とPRの作成</li>
                 <li>テストの作成と実行</li>
                 </ul>
-                <p>これらを外部に委託すれば、数日から数週間、数十万円のコストがかかる。</p>
-                <p>Claude Codeは、ブログ記事を書いている最中にバグを見つけ、原因を特定し、修正し、テストし、PRを提出するまでを<strong>1セッションで完了</strong>した。</p>
+                <p>これらを外部に委託すれば、数日から数週間、それにコストがかかる。</p>
+                <p>ブログ記事を書いている最中にバグを見つけて、Claude Codeに指示をしたら、SIerに委託するのと同じことをしてくれました。</p>
                 <div class="highlight-box">
                 <p><strong>SIerに委託に出す必要は、全くなくなりました。</strong></p>
-                <p>必要なのは、問題を正確に伝える力と、結果を判断する力だけだ。コードを書く能力は、もう人間側に必要ない。</p>
+                <p>必要なのは、問題を正確に伝える力と、結果を判断する力だけだ。コードを読み書きする能力は、もう人間側に必要ない。</p>
                 </div>
                 <h2>Links</h2>
                 <ul>

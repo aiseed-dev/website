@@ -43,7 +43,7 @@ _env = Environment(
 _md = MarkdownIt("commonmark", {"html": True}).enable("table")
 
 
-IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".gif", ".svg", ".webp", ".avif"}
+IMAGE_EXTS = {".jpg", ".jpeg", ".png", ".gif", ".svg", ".webp", ".avif", ".pdf"}
 
 
 def copy_images(src_dir, out_dir, prefix=""):
@@ -744,6 +744,7 @@ def build_blog_post(md_path):
     num_prefix = md_path.name.split("-", 1)[0]  # "001", "en"
     if num_prefix == "en":
         num_prefix = md_path.name.split("-", 2)[1]  # "en-001-..." → "001"
+        copy_images(md_path.parent, out_dir, prefix=f"en-{num_prefix}")
     copy_images(md_path.parent, out_dir, prefix=num_prefix)
 
     print(f"Built blog: {out_file}")

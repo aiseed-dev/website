@@ -15,7 +15,7 @@ cta_label: The Science
 cta_title: With nature, we can live.
 cta_text: The answer to climate change is not in technology. It is in soil.
 cta_btn1_text: Light Farming
-cta_btn1_link: /light-farming/
+cta_btn1_link: /en/light-farming/
 cta_btn2_text: All Insights
 cta_btn2_link: /en/insights/
 ---

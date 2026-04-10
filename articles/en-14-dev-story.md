@@ -15,7 +15,7 @@ cta_label: See the Structure
 cta_title: Intelligence, not GPUs.
 cta_text: One person + AI eliminated millions in IT taxes in 24 hours.
 cta_btn1_text: Light Farming
-cta_btn1_link: /light-farming/
+cta_btn1_link: /en/light-farming/
 cta_btn2_text: All Insights
 cta_btn2_link: /en/insights/
 ---

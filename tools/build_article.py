@@ -248,9 +248,9 @@ def article_vars(meta, body_html):
             "From AI to agriculture — every structural analysis converges on one conclusion.",
             "AIから農業まで——全ての構造分析は、一つの結論に向かう。")),
         "cta_btn1_text": meta.get("cta_btn1_text", _text(is_en, "Natural Farming", "自然農法とは")),
-        "cta_btn1_link": meta.get("cta_btn1_link", "/about/"),
+        "cta_btn1_link": meta.get("cta_btn1_link", "/en/about/" if is_en else "/about/"),
         "cta_btn2_text": meta.get("cta_btn2_text", "Light Farming"),
-        "cta_btn2_link": meta.get("cta_btn2_link", "/light-farming/"),
+        "cta_btn2_link": meta.get("cta_btn2_link", "/en/light-farming/" if is_en else "/light-farming/"),
         # Paths
         "css_path": "../../../css/style.css" if is_en else "../../css/style.css",
         "js_path": "../../../js/main.js" if is_en else "../../js/main.js",
@@ -263,6 +263,8 @@ def article_vars(meta, body_html):
         "home_label": _text(is_en, "Home", "ホーム"),
         "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
         "lf_label": "Light Farming",
+        "about_link": "/en/about/" if is_en else "/about/",
+        "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
         "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
         "insights_label": "Insights",
         "contact_label": _text(is_en, "Contact", "お問い合わせ"),
@@ -334,6 +336,9 @@ def index_vars(lang, article_list_html):
         "site_name": _text(is_en, "Living in the AI Era", "AI時代の暮らし"),
         "home_label": _text(is_en, "Home", "ホーム"),
         "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
+        "lf_label": "Light Farming",
+        "about_link": "/en/about/" if is_en else "/about/",
+        "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
         "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
         "contact_label": _text(is_en, "Contact", "お問い合わせ"),
         "menu_label": _text(is_en, "Menu", "メニュー"),
@@ -429,6 +434,8 @@ def blog_vars(meta, body_html):
         "home_label": _text(is_en, "Home", "ホーム"),
         "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
         "lf_label": "Light Farming",
+        "about_link": "/en/about/" if is_en else "/about/",
+        "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
         "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
         "insights_label": "Insights",
         "contact_label": _text(is_en, "Contact", "お問い合わせ"),
@@ -464,6 +471,9 @@ def blog_index_vars(lang, post_list_html):
         "site_name": _text(is_en, "Living in the AI Era", "AI時代の暮らし"),
         "home_label": _text(is_en, "Home", "ホーム"),
         "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
+        "lf_label": "Light Farming",
+        "about_link": "/en/about/" if is_en else "/about/",
+        "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
         "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
         "menu_label": _text(is_en, "Menu", "メニュー"),
         "pages_label": _text(is_en, "Pages", "ページ"),
@@ -551,6 +561,12 @@ def build_sitemap():
     for meta in collect_blog_posts("en"):
         slug = meta.get("slug", "")
         urls.append((f"{SITE_URL}/en/blog/{slug}/", today, "0.6"))
+
+    # About / Light Farming (both JP and EN)
+    urls.append((f"{SITE_URL}/about/", today, "0.8"))
+    urls.append((f"{SITE_URL}/en/about/", today, "0.7"))
+    urls.append((f"{SITE_URL}/light-farming/", today, "0.8"))
+    urls.append((f"{SITE_URL}/en/light-farming/", today, "0.7"))
 
     xml_lines = ['<?xml version="1.0" encoding="UTF-8"?>']
     xml_lines.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')

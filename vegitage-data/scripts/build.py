@@ -5,13 +5,15 @@ Vegitage — 野菜辞典 静的サイトビルダー
 作物ごとフォルダー構造を入力として静的 HTML を生成する。
 
 入力:
-  data/deep_research/<category>/<crop>/
-    ├── history.md        (必須)
-    ├── cultivation.md    (任意)
-    ├── cuisine.md        (任意)
-    ├── meta.yaml         (任意 — 学名・サブタイトル・hero 画像)
-    ├── images/           (任意 — 画像ファイルを丸ごとコピー)
-    └── resources/        (任意 — 原稿の素材。ビルドでは無視される)
+  data/deep_research/<category>/
+    ├── _categories.yaml  (任意 — 植物学的カテゴリ分類)
+    └── <crop>/
+        ├── history.md        (必須)
+        ├── cultivation.md    (任意)
+        ├── cuisine.md        (任意)
+        ├── meta.yaml         (任意 — 学名・サブタイトル・hero 画像)
+        ├── images/           (任意 — 画像ファイルを丸ごとコピー)
+        └── resources/        (任意 — 原稿の素材。ビルドでは無視される)
 
 出力:
   <OUT>/<category>/
@@ -418,34 +420,126 @@ def build_crop(
     }
 
 
+# ── カテゴリ分類の読み込み ────────────────────────
+def load_category_groups(src_dir: Path) -> list[dict] | None:
+    """_categories.yaml を読んで植物学的カテゴリ分類を返す。
+
+    ファイルが無い・PyYAML 未インストールの場合は None を返し、
+    呼び出し側は単一グループとしてフラット描画する。
+    """
+    path = src_dir / "_categories.yaml"
+    if not path.exists() or not HAS_YAML:
+        return None
+    with open(path, encoding="utf-8") as f:
+        data = yaml.safe_load(f) or {}
+    return data.get("categories") or None
+
+
+# ── カード描画 ────────────────────────────────────
+def render_card(c: dict) -> str:
+    name = c["short_name"]
+    latin = c["latin"]
+    subtitle = c["subtitle"]
+    url = c["url"]
+    hero = c["hero_image"]
+    if hero:
+        img_html = (
+            f'<div class="card-image">'
+            f'<img src="{c["crop_name"]}/{hero}" alt="{name}" loading="lazy">'
+            f"</div>\n"
+        )
+    else:
+        img_html = ""
+    return (
+        f'<a href="{url}" class="vegetable-card">\n'
+        f"  {img_html}"
+        f'  <div class="card-name">{name}</div>\n'
+        f'  <div class="card-latin">{latin}</div>\n'
+        f'  <div class="card-desc">{subtitle}</div>\n'
+        f"</a>"
+    )
+
+
 # ── カテゴリ一覧ページ ────────────────────────────
-def build_index(crops: list[dict], out_dir: Path, cat: dict) -> None:
+def build_index(
+    crops: list[dict],
+    out_dir: Path,
+    cat: dict,
+    category_groups: list[dict] | None,
+) -> None:
     crops.sort(key=lambda c: c["short_name"])
-    cards = []
-    for c in crops:
-        name = c["short_name"]
-        latin = c["latin"]
-        subtitle = c["subtitle"]
-        url = c["url"]
-        hero = c["hero_image"]
-        if hero:
-            # hero image は各作物フォルダーからの相対パス → 一覧ページからの相対パスに変換
-            img_html = (
-                f'<div class="card-image">'
-                f'<img src="{c["crop_name"]}/{hero}" alt="{name}" loading="lazy">'
-                f"</div>\n"
+    crop_by_name = {c["crop_name"]: c for c in crops}
+
+    sections_html: list[str] = []
+    toc_links: list[str] = []
+    used: set[str] = set()
+
+    if category_groups:
+        for group in category_groups:
+            key = group.get("key", "")
+            label = group.get("label", "")
+            description = group.get("description", "")
+            names = group.get("crops", []) or []
+
+            section_crops = [crop_by_name[n] for n in names if n in crop_by_name]
+            if not section_crops:
+                continue
+            used.update(c["crop_name"] for c in section_crops)
+            section_crops.sort(key=lambda c: c["short_name"])
+
+            cards_html = "\n".join(render_card(c) for c in section_crops)
+            desc_html = (
+                f'  <p class="category-desc">{description}</p>\n' if description else ""
             )
-        else:
-            img_html = ""
-        cards.append(
-            f'<a href="{url}" class="vegetable-card">\n'
-            f"  {img_html}"
-            f'  <div class="card-name">{name}</div>\n'
-            f'  <div class="card-latin">{latin}</div>\n'
-            f'  <div class="card-desc">{subtitle}</div>\n'
-            f"</a>"
+            sections_html.append(
+                f'<section class="category-section" id="cat-{key}">\n'
+                f'  <h2 class="category-heading">{label} '
+                f'<span class="category-count">({len(section_crops)})</span></h2>\n'
+                f"{desc_html}"
+                f'  <div class="vegetable-grid">\n{cards_html}\n  </div>\n'
+                f"</section>"
+            )
+            toc_links.append(
+                f'<a href="#cat-{key}" class="category-toc-link">'
+                f'{label} <span>({len(section_crops)})</span></a>'
+            )
+
+    # カテゴリに分類されていない作物は「その他」に集約
+    uncategorized = [c for c in crops if c["crop_name"] not in used]
+    if uncategorized:
+        uncategorized.sort(key=lambda c: c["short_name"])
+        cards_html = "\n".join(render_card(c) for c in uncategorized)
+        sections_html.append(
+            f'<section class="category-section" id="cat-other">\n'
+            f'  <h2 class="category-heading">その他 '
+            f'<span class="category-count">({len(uncategorized)})</span></h2>\n'
+            f'  <div class="vegetable-grid">\n{cards_html}\n  </div>\n'
+            f"</section>"
+        )
+        toc_links.append(
+            f'<a href="#cat-other" class="category-toc-link">'
+            f'その他 <span>({len(uncategorized)})</span></a>'
+        )
+        print(
+            f"  注意: カテゴリ未分類の作物が {len(uncategorized)} 件あります: "
+            f"{', '.join(c['crop_name'] for c in uncategorized)}"
         )
 
+    # カテゴリ分類が存在しない（_categories.yaml が無い）場合のフォールバック：
+    # 従来通り単一グリッドでフラット表示する。
+    if not category_groups and not sections_html:
+        cards_html = "\n".join(render_card(c) for c in crops)
+        sections_html.append(f'<div class="vegetable-grid">\n{cards_html}\n</div>')
+
+    toc_html = ""
+    if toc_links:
+        toc_html = (
+            '<nav class="category-toc">\n'
+            + "\n".join(toc_links)
+            + "\n</nav>\n"
+        )
+
+    group_count = sum(1 for s in sections_html)
     body = f"""<div class="index-hero">
   <h1>{cat["title"]}</h1>
   <p class="subtitle">{cat["subtitle"]}</p>
@@ -453,12 +547,11 @@ def build_index(crops: list[dict], out_dir: Path, cat: dict) -> None:
 
 <p class="index-description">
   {cat["description"]}<br>
-  DOP・IGP認定品種から地方の在来品種まで、{len(crops)}種の野菜の世界をお楽しみください。
+  DOP・IGP認定品種から地方の在来品種まで、{group_count}分類・{len(crops)}種の野菜の世界をお楽しみください。
 </p>
 
-<div class="vegetable-grid">
-{"".join(cards)}
-</div>
+{toc_html}
+{"".join(sections_html)}
 """
     (out_dir / "index.html").write_text(
         html_page(
@@ -491,9 +584,14 @@ def build_category(
     if style_src.exists():
         shutil.copy2(style_src, out_dir / "style.css")
 
+    # カテゴリ分類の読み込み
+    category_groups = load_category_groups(src_dir)
+
     # 作物フォルダー一覧（name のアルファベット順ではなく発見順で処理し、最後にソート）
     crop_dirs = sorted(d for d in src_dir.iterdir() if d.is_dir())
     print(f"\n[{cat_key}] {cat['title']}: {len(crop_dirs)} 作物")
+    if category_groups:
+        print(f"  分類: {len(category_groups)} カテゴリ (_categories.yaml)")
 
     crops: list[dict] = []
     for crop_dir in crop_dirs:
@@ -508,7 +606,7 @@ def build_category(
             suffix = f" (+{','.join(subs)})" if subs else ""
             print(f"  ✓ {crop_dir.name}/{suffix}")
 
-    build_index(crops, out_dir, cat)
+    build_index(crops, out_dir, cat, category_groups)
     print(f"  ✓ {cat_key}/index.html (一覧ページ, {len(crops)} 作物)")
 
     # 作物数 * (1 history + サブガイド数) + 1 index

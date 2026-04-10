@@ -29,20 +29,52 @@
 
 ```
 vegitage-data/
-├── docs/                          # ドキュメント・計画書
 ├── data/
-│   ├── vegetables/                # 野菜データ (JSON)
-│   │   └── IT-VEG-TOM-001.json   # 例: サンマルツァーノトマト
-│   └── recipes/                   # 料理データ (JSON)
-│       └── IT-RCP-PIZ-001.json   # 例: ピッツァ・マルゲリータ
-├── src/
-│   ├── agents/                    # リサーチエージェント
-│   ├── schemas/                   # Pydantic スキーマ
-│   ├── api/                       # FastAPI バックエンド
-│   └── utils/                     # ユーティリティ
-├── prompts/                       # システムプロンプト
-└── tests/                         # テスト
+│   └── deep_research/
+│       └── italian/               # カテゴリ（国別）
+│           ├── そば/              # 作物ごとのフォルダー
+│           │   ├── history.md     # 歴史（必須）
+│           │   ├── cultivation.md # 栽培ガイド（任意）
+│           │   ├── cuisine.md     # 料理ガイド（任意）
+│           │   ├── meta.yaml      # 学名・サブタイトル・hero画像（任意）
+│           │   └── images/        # 写真（任意）
+│           │       ├── hero.jpg
+│           │       └── ...
+│           └── アーティチョーク/
+│               └── ...
+├── scripts/
+│   ├── build.py                   # 静的サイトビルダー (MD → HTML)
+│   ├── extract_varieties.py       # 品種抽出 (Claude)
+│   ├── extract_varieties_claude.py
+│   └── gen_icons.py               # アイコン生成 (Gemini)
+├── static/
+│   ├── style.css                  # サイト共通 CSS
+│   └── icons/                     # アイコン素材
+├── src/                           # リサーチエージェント等
+│   ├── agents/
+│   ├── schemas/
+│   └── validators/
+└── docs/                          # 計画書
 ```
+
+## ビルド
+
+```bash
+# 出力先デフォルト: ../html/vegitage/
+python scripts/build.py
+
+# 出力先を指定
+python scripts/build.py --out /path/to/output
+
+# カテゴリ指定（デフォルトは全て）
+python scripts/build.py --category italian
+
+# 出力先をクリーンアップしてからビルド
+python scripts/build.py --clean
+```
+
+生成された HTML は `.gitignore` 対象です。`data/deep_research/` 配下の
+Markdown ファイルのみをソースとして管理します。
 
 ## データスキーマ
 

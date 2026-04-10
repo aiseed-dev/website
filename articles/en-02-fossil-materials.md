@@ -15,7 +15,7 @@ cta_label: Back to Soil
 cta_title: With nature, we can live.
 cta_text: The post-fossil world begins with rebuilding soil.
 cta_btn1_text: Light Farming
-cta_btn1_link: /light-farming/
+cta_btn1_link: /en/light-farming/
 cta_btn2_text: All Insights
 cta_btn2_link: /en/insights/
 ---

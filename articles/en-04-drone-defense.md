@@ -17,7 +17,7 @@ cta_text: In warfare, in agriculture, in business — distributed systems beat c
 cta_btn1_text: All Insights
 cta_btn1_link: /en/insights/
 cta_btn2_text: Light Farming
-cta_btn2_link: /light-farming/
+cta_btn2_link: /en/light-farming/
 ---
 
 ## $4 Million vs $50,000

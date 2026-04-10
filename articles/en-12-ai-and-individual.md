@@ -15,7 +15,7 @@ cta_label: Start Now
 cta_title: One person plus AI.
 cta_text: Every specialist's knowledge, available to every individual. The era of 1 + AI has arrived.
 cta_btn1_text: Light Farming
-cta_btn1_link: /light-farming/
+cta_btn1_link: /en/light-farming/
 cta_btn2_text: All Insights
 cta_btn2_link: /en/insights/
 ---

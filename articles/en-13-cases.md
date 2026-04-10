@@ -15,7 +15,7 @@ cta_label: Return to Nature
 cta_title: Nature recovers. So do we.
 cta_text: Great power does not last. Nature does. The era of the individual has arrived.
 cta_btn1_text: Light Farming
-cta_btn1_link: /light-farming/
+cta_btn1_link: /en/light-farming/
 cta_btn2_text: All Insights
 cta_btn2_link: /en/insights/
 ---

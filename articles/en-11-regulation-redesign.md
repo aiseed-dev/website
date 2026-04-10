@@ -15,7 +15,7 @@ cta_label: Start Now
 cta_title: Redesign the rules. Redesign society.
 cta_text: Old regulations block the new world. Change the rules, and the transformation becomes possible.
 cta_btn1_text: Light Farming
-cta_btn1_link: /light-farming/
+cta_btn1_link: /en/light-farming/
 cta_btn2_text: All Insights
 cta_btn2_link: /en/insights/
 ---

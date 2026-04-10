@@ -135,8 +135,8 @@
                 <a href="/">{{ home_label }}</a>
                 <a href="{{ insights_base }}/">{{ insights_label }}</a>
                 <a href="{{ blog_base }}/">Blog</a>
-                <a href="/about/">{{ about_label }}</a>
-                <a href="/light-farming/">{{ lf_label }}</a>
+                <a href="{{ about_link }}">{{ about_label }}</a>
+                <a href="{{ lf_link }}">{{ lf_label }}</a>
                 <a href="/gallery/">{{ gallery_label }}</a>
             </nav>
             <button class="nav-toggle" aria-label="{{ menu_label }}">
@@ -202,8 +202,8 @@
                 <h4>{{ pages_label }}</h4>
                 <ul>
                     <li><a href="/">{{ home_label }}</a></li>
-                    <li><a href="/about/">{{ about_label }}</a></li>
-                    <li><a href="/light-farming/">{{ lf_label }}</a></li>
+                    <li><a href="{{ about_link }}">{{ about_label }}</a></li>
+                    <li><a href="{{ lf_link }}">{{ lf_label }}</a></li>
                     <li><a href="/gallery/">{{ gallery_label }}</a></li>
                     <li><a href="{{ insights_base }}/">{{ insights_label }}</a></li>
                 </ul>

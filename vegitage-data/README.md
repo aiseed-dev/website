@@ -33,29 +33,35 @@ vegitage-data/
 │   └── deep_research/
 │       └── italian/               # カテゴリ（国別）
 │           ├── そば/              # 作物ごとのフォルダー
-│           │   ├── history.md     # 歴史（必須）
-│           │   ├── cultivation.md # 栽培ガイド（任意）
-│           │   ├── cuisine.md     # 料理ガイド（任意）
+│           │   ├── history.md     # 歴史（必須、原稿）
+│           │   ├── cultivation.md # 栽培ガイド（任意、原稿）
+│           │   ├── cuisine.md     # 料理ガイド（任意、原稿）
 │           │   ├── meta.yaml      # 学名・サブタイトル・hero画像（任意）
-│           │   └── images/        # 写真（任意）
-│           │       ├── hero.jpg
-│           │       └── ...
+│           │   ├── images/        # 写真（任意、HTMLにコピー）
+│           │   │   ├── hero.jpg
+│           │   │   └── ...
+│           │   └── resources/     # 原稿の素材（任意、HTMLには出力されない）
+│           │       ├── gemini-deep-research.md
+│           │       ├── reference.pdf
+│           │       └── notes.md
 │           └── アーティチョーク/
 │               └── ...
 ├── scripts/
 │   ├── build.py                   # 静的サイトビルダー (MD → HTML)
-│   ├── extract_varieties.py       # 品種抽出 (Claude)
-│   ├── extract_varieties_claude.py
 │   └── gen_icons.py               # アイコン生成 (Gemini)
 ├── static/
 │   ├── style.css                  # サイト共通 CSS
 │   └── icons/                     # アイコン素材
-├── src/                           # リサーチエージェント等
-│   ├── agents/
-│   ├── schemas/
-│   └── validators/
 └── docs/                          # 計画書
 ```
+
+### 原稿作成のワークフロー
+
+1. **素材を集める**: 各作物フォルダーの `resources/` に Deep Research 出力・PDF・取材メモなどを配置する（ファイル名は自由、何ファイルでも可）
+2. **原稿を生成する**: Claude Code CLI を対話で起動し、`resources/` を読んで `history.md` / `cultivation.md` / `cuisine.md` の3本を作成するよう依頼する
+3. **HTML にビルドする**: `python scripts/build.py` で原稿から静的サイトを生成する
+
+`resources/` の中身は `build.py` では読まれないので、一次資料として自由に置いておける。
 
 ## ビルド
 

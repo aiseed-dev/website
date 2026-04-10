@@ -10,7 +10,8 @@ Vegitage — 野菜辞典 静的サイトビルダー
     ├── cultivation.md    (任意)
     ├── cuisine.md        (任意)
     ├── meta.yaml         (任意 — 学名・サブタイトル・hero 画像)
-    └── images/           (任意 — 画像ファイルを丸ごとコピー)
+    ├── images/           (任意 — 画像ファイルを丸ごとコピー)
+    └── resources/        (任意 — 原稿の素材。ビルドでは無視される)
 
 出力:
   <OUT>/<category>/

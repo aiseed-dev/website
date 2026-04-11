@@ -1,26 +1,60 @@
-New Era — The Forced Transformation of Food and Systems Has Begun
+---
+slug: new-era-forced-transformation-food-systems
+title: New Era — The Forced Transformation of Food and Systems Has Begun
+subtitle: The fertilizer crisis pushes a partial shift to natural farming, while Claude Mythos forces system development and defense back in-house
+description: Two forced transitions are unfolding at once. The fertilizer crisis pushes a partial shift to natural farming, while Claude Mythos forces companies to bring system development and defense in-house. Japan's survival strategy across technology, diplomacy, and networks.
+date: 2026.04.11
+lang: en
+label: Blog
+category: Structural Analysis Notes
+---
+
+## New Era — The Forced Transformation of Food and Systems Has Begun
 
 Two forced changes are happening simultaneously.
 
-① Food: The Fertilizer Crisis and Partial Transition to Natural Farming
+### ① Food: The Fertilizer Crisis and Partial Transition to Natural Farming
+
 The Iran war has caused widespread destruction of petrochemical facilities across the Persian Gulf. Traffic through the Strait of Hormuz has dropped by over 95%, and naphtha prices have nearly doubled from prewar levels. Natural gas supplies — the feedstock for nitrogen fertilizers — have been cut off, sending urea prices up 50% in just three weeks. The disruption of sulfur supplies is also severely impacting phosphate fertilizer production.
+
 Japan's crude oil reserves stand at a robust 254 days of domestic consumption. However, naphtha reserves — the lifeblood of the petrochemical industry — amount to only about 20 days, and even including related inventories and intermediate chemicals, Japan has roughly four months of supply. That said, the pivot to U.S. light crude is moving faster than expected, and the naphtha shortage is now likely to ease sooner than initially feared. As of April 7, eight tankers carrying approximately 12 million barrels of U.S. crude were en route to Japan, and May imports from the United States are projected to be roughly four times the year-earlier level. Prime Minister Takaichi stated that Japan has "secured oil supply through next year." U.S. light crude has a higher naphtha and gasoline yield than Middle Eastern medium crude, which makes it attractive for Japan in terms of both volume and product mix. Japan's refineries are optimized for Middle Eastern crude and will need to adjust operating conditions, but this can be handled on a timescale of months.
+
 The remaining problem is on the fertilizer side. Unlike petroleum, there is no strategic national stockpile system for fertilizers — only government subsidies for private-sector storage — leaving the supply chain extremely vulnerable to disruption. Moreover, the physical reconstruction of the destroyed Middle Eastern fertilizer plants will take three to five years because of the gas turbine backlog, so even once naphtha and other feedstocks become available, fertilizer production itself will not bounce back quickly.
+
 The critical structural issue here is that conventional agriculture simply cannot operate without petroleum products. Tractor fuel, plastic mulch, pesticide application, irrigation pumps, post-harvest packaging and transportation — all depend on petroleum. There is no middle ground of partially reducing inputs. It is all or nothing: either secure full petroleum supplies, or farm without them entirely.
+
 Precision agriculture (smart farming), once promoted as an alternative, is also untenable under naphtha scarcity. Its hardware — drones, sensors, autonomous tractors — depends on naphtha-derived plastics and polymers.
+
 Therefore, in response to declining fertilizer supplies, approximately 30% of farmland should be transitioned to natural farming. Natural farming is the only verified petroleum-free method of producing harvests without chemical fertilizers, pesticides, or petroleum-dependent machinery. Large-scale verification in Andhra Pradesh, India, demonstrated that natural farming increased yields by an average of 11% compared to conventional agriculture, while reducing input costs and boosting farmers' net income by 49%. Soil organic carbon increased by 5–18%, with measurable improvements in soil health. Natural farming's compatibility with Japan's temperate monsoon climate has been historically proven, with accumulated knowledge dating back to Masanobu Fukuoka. The remaining farmland should continue conventional agriculture as long as fertilizer supplies hold, with the proportion of natural farming expanding as conditions warrant. This phased transition is the most realistic food security strategy.
 
-② Systems: Forced Transition to In-House Operations
+### ② Systems: Forced Transition to In-House Operations
+
 The limited release of Anthropic's latest AI model, "Claude Mythos," is fundamentally changing how systems are built and defended.
+
 First, the foundation of cybersecurity has collapsed. Through Project Glasswing — a defensive initiative with Apple, Google, Microsoft, and other major technology companies — thousands of zero-day vulnerabilities have been discovered across every major operating system and web browser. These include a bug in OpenBSD that went undetected for 27 years, and a 16-year-old vulnerability in FFmpeg that survived 5 million automated test scans. Most alarmingly, Mythos autonomously chained multiple vulnerabilities in the Linux kernel to escalate from ordinary user privileges to full root access — without any human guidance. The window between vulnerability discovery and exploitation has compressed from months to minutes. The assumption that "systems are safe until patched" is dead.
+
 Simultaneously, AI agents can now execute the entire software development lifecycle — from requirements definition through coding, testing, and security — end to end. This eliminates the need for intermediaries: cloud providers, SaaS vendors, system integrators, consultants, and coding schools. Going through intermediaries becomes nothing more than unnecessary overhead and cost. As Mythos is adopted, open-source software will advance rapidly, enabling companies to handle sophisticated system development and security defense in-house.
+
 An essential part of this transition is making systems as simple as possible. The more complex a system, the more vulnerabilities it contains, the higher the inspection costs, and the larger the attack surface. Conversely, small, self-contained systems with only essential functions have fewer vulnerabilities, are easier to understand, and easier to defend. Simplicity itself becomes the strongest security.
+
 Once Mythos becomes generally available, companies will have no choice but to build and defend their own systems. In a world where vulnerabilities are exploited within minutes of discovery, outsourcing is simply too slow. The transition to in-house operations is not a choice — it is forced.
 
-New Era Survival Strategy for Japan: Technology, Diplomacy, and Networks
+## Japan's Survival Strategy in the New Era: Technology, Diplomacy, and Networks
+
 Japan's strengths exist on three layers.
+
 First, the world's highest-performance gas turbine technology. Mitsubishi Heavy Industries' J-class turbines achieve combustion temperatures of 1,600–1,700°C with combined-cycle thermal efficiency exceeding 64% — the global pinnacle. At their core are turbine blades made with "MGA1700," a rhenium-free single-crystal superalloy co-developed with the National Institute for Materials Science (NIMS). This alloy is so sensitive that contamination of just tens of ppm of sulfur drastically degrades performance. Manufacturing it requires extreme control of temperature gradients and solidification rates during casting — decades of accumulated metallurgical expertise that cannot be reproduced from blueprints alone. It is a black box.
+
 Iran's MAPNA Group has successfully reverse-engineered Siemens' older-generation F-class turbines (approximately 1,200°C combustion temperature, roughly 58% thermal efficiency), and can use these for immediate infrastructure recovery. However, when sanctions are lifted and Iran seeks to rebuild an internationally competitive petrochemical industry, F-class technology will fall short in efficiency, durability, and environmental standards. If Iran aims for the fastest and most efficient recovery, Mitsubishi's J-class technology becomes the optimal solution.
+
 Second, an irreplaceable diplomatic channel. Iran's Foreign Minister Abbas Araghchi served as Ambassador to Japan from 2008 to 2011, and was a visiting professor at the University of Tokyo. Even during the current conflict, Iran has signaled preferential treatment for Japanese vessels navigating the Strait of Hormuz. Prime Minister Takaichi is advancing coordination for summit-level talks with Iran's leadership, offering gas turbine technology and postwar reconstruction support as incentives to secure Japan's sea lanes.
+
 Third, a hub function for Asia-wide networks. As China and South Korea move toward export restrictions, Japan is emerging as the coordinator of a physical energy swap network spanning the entire Asia-Pacific region. Naphtha-LPG swaps with India, LNG-LPG exchanges with Indonesia, emergency fuel supplies to the Philippines and Vietnam. Japan's long-term investments in storage facilities and LNG/LPG infrastructure are enabling physical barter transactions independent of dollar-denominated markets.
+
 Japan possesses the world's highest-performance physical technology that AI cannot copy, an irreplaceable diplomatic channel, and the capacity to redistribute energy across Asia. If the government can deploy these strengths in an integrated and agile manner, Japan and Asia can survive.
+
+---
+
+### Reference
+
+- [Japan's National Survival Strategy in the 2026 Complex Crisis (PDF)](en-006-japan-national-survival-strategy.pdf)

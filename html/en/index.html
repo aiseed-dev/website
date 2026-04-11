@@ -53,6 +53,43 @@
             margin-left: 0.5rem;
             vertical-align: middle;
         }
+        .feature-card {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+            background: var(--sand-light, #f8f6f0);
+            border: 1px solid var(--earth-light, #e0ddd8);
+            border-left: 4px solid var(--moss-green, #4a7c59);
+            border-radius: 6px;
+            padding: 1.5rem 1.75rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .feature-card:hover {
+            background: #f0ede3;
+            transform: translateY(-2px);
+        }
+        .feature-card h3 {
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 1.3rem;
+            color: var(--earth-dark, #2c2c2c);
+            margin: 0 0 0.35rem;
+        }
+        .feature-card .feature-sub {
+            font-size: 0.85rem;
+            color: var(--moss-green, #4a7c59);
+            margin: 0 0 0.75rem;
+            font-style: italic;
+        }
+        .feature-card p {
+            font-size: 0.95rem;
+            color: var(--soil-rich, #5a5a5a);
+            margin: 0 0 0.5rem;
+            line-height: 1.7;
+        }
+        .feature-card .feature-more {
+            font-size: 0.85rem;
+            color: var(--moss-green, #4a7c59);
+        }
     </style>
 </head>
 
@@ -70,6 +107,7 @@
                 <a href="/en/blog/">Blog</a>
                 <a href="/en/about/">Natural Farming</a>
                 <a href="/en/light-farming/">Light Farming</a>
+                <a href="/vegitage/italian/">Italian Vegetables</a>
                 <a href="/gallery/">Field Notes</a>
             </nav>
             <button class="nav-toggle" aria-label="Menu">
@@ -125,6 +163,18 @@
         </div>
     </section>
 
+    <!-- Vegitage Feature -->
+    <section class="section" style="padding-top: 0; padding-bottom: 2rem;">
+        <div class="container-narrow">
+            <a href="/vegitage/italian/" class="feature-card">
+                <h3>Italian Vegetables — Vegitage 🌱</h3>
+                <p class="feature-sub">Le Verdure Italiane — Mediterranean bounty and the stories of its food culture</p>
+                <p>From DOP and IGP certified varieties to regional landraces, a structured database covering the history, cultivation, and cuisine of 69 traditional Italian vegetables — built with AI research agents. (Currently in Japanese.)</p>
+                <span class="feature-more">Browse the Italian vegetable index →</span>
+            </a>
+        </div>
+    </section>
+
     <!-- Series Header -->
     <section class="section" style="padding-bottom: 0;">
         <div class="container-narrow">
@@ -173,6 +223,7 @@
                     <li><a href="/en/blog/">Blog</a></li>
                     <li><a href="/en/about/">Natural Farming</a></li>
                     <li><a href="/en/light-farming/">Light Farming</a></li>
+                    <li><a href="/vegitage/italian/">Italian Vegetables</a></li>
                     <li><a href="/gallery/">Field Notes</a></li>
                 </ul>
             </div>

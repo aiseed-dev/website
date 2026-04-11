@@ -82,6 +82,7 @@
         </div>
     </section>
 
+{% if intro_html %}
     <!-- Intro -->
     <section class="section">
         <div class="container-narrow">
@@ -93,27 +94,40 @@
             </div>
         </div>
     </section>
+{% endif %}
 
     <!-- Structural Analysis Series -->
     <section class="section section-alt" id="series">
         <div class="container">
+{% if series_title %}
             <div class="section-header">
                 <p class="section-label">Series</p>
                 <h2 class="section-title">{{ series_title }}</h2>
             </div>
-
+{% endif %}
+{% if series_description %}
             <div class="prose fade-in text-center" style="margin-bottom: 3rem;">
                 <p>{{ series_description }}</p>
             </div>
+{% endif %}
+{% if not intro_html %}
+            <div class="prose fade-in text-center" style="margin-bottom: 2rem;">
+                <p style="font-size: 0.9rem; color: var(--moss-green);">
+                    <a href="{{ other_lang_link }}" style="color: var(--moss-green);">{{ other_lang_text }}</a>
+                </p>
+            </div>
+{% endif %}
 
             <div class="activity-list">
 {{ article_list_html }}
             </div>
 
+{% if method_title or method_html %}
             <div class="highlight-box fade-in" style="margin-top: 2rem;">
                 <p><strong>{{ method_title }}</strong></p>
                 <p>{{ method_html }}</p>
             </div>
+{% endif %}
         </div>
     </section>
 

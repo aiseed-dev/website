@@ -491,12 +491,11 @@ def blog_index_vars(lang, post_list_html):
             "構造分析の視点で読む時事ノート"),
         "other_lang_link": "/blog/" if is_en else "/en/blog/",
         "other_lang_text": _text(is_en, "日本語版はこちら →", "English version available →"),
-        "series_title": "Blog",
-        "series_description": _text(is_en,
-            "Quick analysis notes connecting current events to structural reality.",
-            "時事ニュースと構造分析をつなぐ速報ノート。"),
+        # Blog index skips duplicate Intro/Series headers — page-hero already shows "Blog"
+        "series_title": "",
+        "series_description": "",
         "article_list_html": post_list_html,
-        "intro_html": intro_text,
+        "intro_html": "",
         "method_title": "",
         "method_html": "",
         "quote_html": _text(is_en,
@@ -778,9 +777,15 @@ def collect_blog_posts(lang="ja"):
         text = f.read_text(encoding="utf-8")
         meta, _ = parse_frontmatter(text)
         if meta.get("lang", "ja") == lang or (lang == "ja" and "lang" not in meta):
+            # Extract numeric prefix from filename for ordering
+            stem = f.stem
+            if lang == "en" and stem.startswith("en-"):
+                stem = stem[3:]
+            num_match = re.match(r"(\d+)", stem)
+            meta["_file_number"] = int(num_match.group(1)) if num_match else 0
             posts.append(meta)
-    # Sort by date descending (newest first)
-    posts.sort(key=lambda p: p.get("date", ""), reverse=True)
+    # Sort by file number descending (newest first; 006 before 005...)
+    posts.sort(key=lambda p: p.get("_file_number", 0), reverse=True)
     return posts
 
 

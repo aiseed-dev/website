@@ -12,7 +12,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Companies unknowingly pay "taxes" to Oracle, Microsoft, AWS/Azure/GCP, SaaS vendors, system integrators, and consultants. Claude is the tool that structurally eliminates them.">
+    <meta name="description" content="Companies unknowingly pay "taxes" to Oracle, Microsoft, AWS/Azure/GCP, SaaS vendors, system integrators, and consultants. With the arrival of Mythos, these taxes have transformed from cost problems into structural vulnerabilities. They must be eliminated now.">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
     <title>Eliminating Enterprise IT Taxes | Living in the AI Era</title>
@@ -22,7 +22,7 @@
     <!-- OGP -->
     <meta property="og:type" content="article">
     <meta property="og:title" content="Eliminating Enterprise IT Taxes">
-    <meta property="og:description" content="Companies unknowingly pay "taxes" to Oracle, Microsoft, AWS/Azure/GCP, SaaS vendors, system integrators, and consultants. Claude is the tool that structurally eliminates them.">
+    <meta property="og:description" content="Companies unknowingly pay "taxes" to Oracle, Microsoft, AWS/Azure/GCP, SaaS vendors, system integrators, and consultants. With the arrival of Mythos, these taxes have transformed from cost problems into structural vulnerabilities. They must be eliminated now.">
     <meta property="og:url" content="https://aiseed.dev/en/insights/enterprise-tax/">
     <meta property="og:site_name" content="aiseed.dev">
     <meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
@@ -30,7 +30,7 @@
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Eliminating Enterprise IT Taxes">
-    <meta name="twitter:description" content="Companies unknowingly pay "taxes" to Oracle, Microsoft, AWS/Azure/GCP, SaaS vendors, system integrators, and consultants. Claude is the tool that structurally eliminates them.">
+    <meta name="twitter:description" content="Companies unknowingly pay "taxes" to Oracle, Microsoft, AWS/Azure/GCP, SaaS vendors, system integrators, and consultants. With the arrival of Mythos, these taxes have transformed from cost problems into structural vulnerabilities. They must be eliminated now.">
     <meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
@@ -153,7 +153,7 @@
         <div class="page-hero-content">
             <p class="hero-label">Structural Analysis 08</p>
             <h1 class="hero-title">Eliminating Enterprise IT Taxes</h1>
-            <p class="hero-subtitle">Oracle Tax, Microsoft Tax, Cloud Tax, SaaS Tax, SIer Tax, Consultant Tax. Claude Eliminates Them All.</p>
+            <p class="hero-subtitle">After Mythos, Oracle Tax, Microsoft Tax, Cloud Tax, SaaS Tax, SIer Tax, and Consultant Tax Are Not "Costs" — They Are Vulnerabilities.</p>
         </div>
     </section>
 
@@ -253,6 +253,20 @@
                 </div>
                 <p>This is not hypothetical. Claude can comprehend and rewrite codebases of hundreds of thousands of lines. SQL dialect conversion is structural code transformation — exactly the kind of work AI excels at.</p>
                 <p>Migration from SQL Server works the same way. T-SQL → PL/pgSQL. SSMS-dependent management scripts → standard SQL. Claude rewrites them, and the SQL Server tax disappears.</p>
+                <h3>SSMS + Copilot — AI Plugged Directly into the Database</h3>
+                <p>Is SSMS (SQL Server Management Studio) even necessary?</p>
+                <p>Microsoft has embedded Copilot into SSMS. When you open the query editor, Copilot automatically recognizes the connected database and can generate and execute SQL through a chat window.</p>
+                <div class="highlight-box">
+                <p><strong>What putting Copilot in SSMS means:</strong>
+                A non-deterministic LLM gains direct access to production database schemas and data.
+                A probabilistic AI writes SQL into a deterministic database.
+                If Office + Copilot is a backdoor to &quot;email, files, and chat,&quot;
+                SSMS + Copilot is a <strong>backdoor to the database itself</strong>.
+                Customer data, payment records, transaction histories — all directly accessible by a non-deterministic AI.</p>
+                </div>
+                <p>Compare this structurally to PostgreSQL + Claude Code. Claude Code runs in the developer's local environment. Generated SQL is reviewed by humans, and only code that passes tests is applied to production. Human judgment stands between AI and the production database.</p>
+                <p>SSMS + Copilot connects AI directly to the production database. Nothing in between. This is the exact same structural error as Office + Copilot.</p>
+                <p>And SSMS itself becomes unnecessary once you migrate to PostgreSQL. psql, pgAdmin, DBeaver — all open source, none designed to tightly couple AI into the interface. The SQL Server tax, the SSMS tax, and the Copilot risk all disappear simultaneously.</p>
                 <h2>Microsoft Tax</h2>
                 <p>Windows, Office 365, Azure, Teams — Microsoft levies multiple &quot;taxes&quot; on enterprises simultaneously.</p>
                 <div class="highlight-box">
@@ -288,16 +302,25 @@
                 The hardware performance users paid for is being consumed by Microsoft without permission.
                 <strong>This is a CPU tax.</strong></p>
                 </div>
-                <p>Microsoft taxes Claude can eliminate:</p>
+                <h3>Copilot — Not a Tax, a Backdoor</h3>
+                <p>In April 2026, the situation fundamentally changed. The Microsoft tax is no longer a cost problem. <strong>It is a security problem.</strong></p>
+                <div class="highlight-box">
+                <p><strong>The hole Copilot opened:</strong>
+                EchoLeak vulnerability (CVE-2025-32711, CVSS 9.3) — hidden prompts in emails can hijack Copilot. The user does not even need to open the email. The moment Copilot's RAG engine ingests the email as context, it collects confidential data using the legitimate user's permissions and exfiltrates it to an external server. Logs record it as normal activity.
+                <strong>Copilot's convenience features function directly as a backdoor for system compromise.</strong></p>
+                </div>
+                <p>What Claude Mythos Preview proved is that AI capable of exploiting this backdoor already exists. Exploits that once required state-sponsored hackers and months of work can now be generated overnight for under $50. The median patch window is 70 days. Mythos discovers and weaponizes vulnerabilities in hours. <strong>There is no longer time for &quot;gradual migration.&quot;</strong></p>
+                <p>Microsoft taxes Claude can eliminate — and this must begin immediately:</p>
                 <div class="chain-diagram">
                 <strong>How to eliminate the Microsoft tax:</strong><br>
                 Document creation <span class="arrow">&rarr;</span> Claude generates Markdown/HTML/PDF directly. Word becomes unnecessary.<br>
                 Spreadsheets <span class="arrow">&rarr;</span> Claude writes data analysis code. Excel becomes unnecessary.<br>
                 Presentations <span class="arrow">&rarr;</span> Claude generates HTML/Marp slides. PowerPoint becomes unnecessary.<br>
                 Email <span class="arrow">&rarr;</span> AI drafts and organizes. Outlook's necessity decreases.<br>
-                Cloud <span class="arrow">&rarr;</span> Migrate to AWS/GCP/self-hosted. Claude writes the configuration.
+                Cloud <span class="arrow">&rarr;</span> Migrate to AWS/GCP/self-hosted. Claude writes the configuration.<br>
+                <strong>Copilot <span class="arrow">&rarr;</span> Disable immediately. AI does not go in the product. Use it for development.</strong>
                 </div>
-                <p>You don't have to eliminate everything at once. Eliminate one at a time. Each one you eliminate reduces the Microsoft tax.</p>
+                <p>This is no longer something you can eliminate gradually. The moment Copilot was tightly coupled into the Microsoft monoculture, every user's data became part of the attack surface. The longer you wait to eliminate it, the more the risk expands.</p>
                 <h2>Cloud Tax — Your Own Linux Server Is Enough</h2>
                 <p>&quot;You should migrate to the cloud&quot; — one of the most successful marketing messages of the past decade.</p>
                 <div class="highlight-box">
@@ -383,7 +406,7 @@
                 GitHub trying to use users' code as AI training data is the same structure.
                 &quot;More data + bigger models = better performance&quot; — this premise itself is overfitting.</p>
                 </div>
-                <h2>SaaS Tax — Accumulating Monthly Charges</h2>
+                <h2>SaaS Tax — Accumulating Monthly Charges, Now with Built-in Backdoors</h2>
                 <p>SaaS (Software as a Service) was sold as &quot;you don't own it.&quot; But before you know it, monthly charges have piled up.</p>
                 <div class="highlight-box">
                 <p><strong>SaaS tax reality (midsize company example):</strong>
@@ -396,6 +419,26 @@
                 10–20 other SaaS tools → Hundreds of thousands to millions of yen/month
                 <strong>Total: tens of millions of yen per year in &quot;taxes&quot; paid without even realizing it.</strong></p>
                 </div>
+                <h3>SaaS + AI — The Tax Now Comes with a Backdoor</h3>
+                <p>In the reality of 2026, many of these SaaS tools have begun embedding AI agents.</p>
+                <div class="highlight-box">
+                <p><strong>The reality of AI-embedded SaaS:</strong>
+                Salesforce Einstein AI → Scans all customer data to generate &quot;suggestions&quot;
+                Notion AI → Accesses all documents in the workspace for summarization and generation
+                Slack AI → Reads all channel messages for search and summarization
+                HubSpot AI → Accesses customer email and transaction history for predictions
+                <strong>Common structure: AI has full access to business data, processed by external LLMs.</strong></p>
+                </div>
+                <p>This is the exact same structure as Office + Copilot and WordPress + AI plugins. A non-deterministic AI is being tightly coupled into deterministic systems (CRM, project management, documents).</p>
+                <div class="chain-diagram">
+                <strong>The vulnerability of SaaS + AI:</strong><br>
+                SaaS vendor embeds AI <span class="arrow">&rarr;</span> AI gains full access to business data<br>
+                <span class="arrow">&rarr;</span> AI inference is processed by an external LLM provider<br>
+                <span class="arrow">&rarr;</span> Data exits to both the SaaS vendor and the LLM provider<br>
+                <span class="arrow">&rarr;</span> Prompt injection, data leakage, loss of audit trail<br>
+                <span class="arrow">&rarr;</span> <strong>You completely lose control of your own data</strong>
+                </div>
+                <p>You are not just paying monthly fees. You are letting AI you do not control read your business data. This is not a tax — it is <strong>structural data leakage</strong>.</p>
                 <p>Many features these SaaS tools provide can be replaced with custom tools built with Claude's help.</p>
                 <div class="chain-diagram">
                 <strong>How to eliminate the SaaS tax:</strong><br>
@@ -403,7 +446,7 @@
                 Chat <span class="arrow">&rarr;</span> Open source (Mattermost, etc.) + self-hosted server<br>
                 Project management <span class="arrow">&rarr;</span> Claude builds a tool tailored to your requirements<br>
                 Documentation <span class="arrow">&rarr;</span> Markdown + Git + static site generation<br>
-                <strong>You don't need to replace every SaaS. Start with the most expensive ones.</strong>
+                <strong>SaaS with embedded AI is the top priority to eliminate. These carry the highest data exfiltration risk.</strong>
                 </div>
                 <h2>SIer Tax — From &quot;Built for You&quot; to &quot;Built by You&quot;</h2>
                 <p>In Japan, the bulk of corporate IT investment flows to SIers (System Integrators).</p>
@@ -448,12 +491,12 @@
                 <strong>The bulk of what you pay consultants for can be replaced by Claude.</strong>
                 </div>
                 <p>A consultant's real value is &quot;an outside perspective.&quot; But the era of paying tens of millions for &quot;an outside perspective&quot; is ending. Claude is the ultimate outside perspective. Unconstrained by industry conventions. No politics. No deference.</p>
-                <h2>The Total of Six Taxes</h2>
+                <h2>The Total of Six Taxes — From Cost to Vulnerability</h2>
                 <table class="comparison-table fade-in">
                 <tr>
                   <th>Tax</th>
-                  <th>Annual cost (midsize company, 500 people)</th>
-                  <th>Can Claude eliminate it?</th>
+                  <th>Annual cost (midsize, 500 people)</th>
+                  <th>Urgency (post-Mythos)</th>
                 </tr>
                 <tr>
                   <td>---</td>
@@ -463,48 +506,61 @@
                 <tr>
                   <td>Oracle / SQL Server Tax</td>
                   <td>Millions to tens of millions of yen</td>
-                  <td>Yes, via PostgreSQL migration</td>
+                  <td>High (black-box legacy = attack surface)</td>
                 </tr>
                 <tr>
                   <td>Microsoft Tax</td>
                   <td>Tens of millions of yen</td>
-                  <td>Gradually, yes</td>
+                  <td>**Top priority (Copilot is a backdoor. Act now)**</td>
                 </tr>
                 <tr>
                   <td>Cloud Tax</td>
                   <td>Millions to tens of millions of yen</td>
-                  <td>Yes, via local Linux servers</td>
+                  <td>High (self-managed to shrink attack surface)</td>
                 </tr>
                 <tr>
                   <td>SaaS Tax</td>
                   <td>Tens of millions of yen</td>
-                  <td>Start with the expensive ones</td>
+                  <td>Medium–High (SaaS with AI agents especially dangerous)</td>
                 </tr>
                 <tr>
                   <td>SIer Tax</td>
                   <td>Tens to hundreds of millions of yen (per project)</td>
-                  <td>Most of it, yes</td>
+                  <td>High (not understanding your own structure = vulnerability)</td>
                 </tr>
                 <tr>
                   <td>Consultant Tax</td>
                   <td>Tens of millions of yen (per engagement)</td>
-                  <td>Most of it, yes</td>
+                  <td>Medium (outsourcing structural judgment = delayed response risk)</td>
                 </tr>
                 <tr>
                   <td>**Total**</td>
                   <td>**¥100M+ per year in "taxes"**</td>
-                  <td>—</td>
+                  <td>**All: begin immediately**</td>
                 </tr>
                 </table>
                 <p>Claude's cost is orders of magnitude less than these taxes. A few tens of thousands of yen per month in Claude usage can eliminate tens to hundreds of millions of yen in annual taxes.</p>
+                <p>But this is no longer about cost reduction.</p>
+                <div class="highlight-box">
+                <p><strong>What Mythos changed:</strong>
+                Before 2026 → &quot;Eliminating taxes saves costs. Take your time, do it gradually.&quot;
+                After April 2026 → &quot;Taxes = dependency on monoculture = attack surface. Eliminate now or systems collapse.&quot;
+                Median patch window → 70 days. Mythos vulnerability discovery and weaponization → hours.
+                Expected public release → late 2026 to early 2027.
+                <strong>We have six months to one year.</strong></p>
+                </div>
                 <div class="quote-block">
                 <p class="quote-text">
                 The bulk of enterprise IT spending is not technology investment — it is "taxes."<br>
                 Oracle tax, Microsoft tax, cloud tax, SaaS tax, SIer tax, consultant tax —<br>
                 paid because there's no alternative, paid out of inertia, paid because switching is frightening.<br>
                 Claude is the tool that structurally eliminates these taxes.<br>
-                Just as NVIDIA's CUDA lock-in is broken by AI,<br>
-                Oracle's, Microsoft's, and SIer lock-in will be broken by AI too.
+                But with Mythos here, this is no longer about cost optimization.<br>
+                Dependency on monoculture is structural vulnerability.<br>
+                Eliminating taxes means reducing attack surface.<br>
+                Tight coupling to loose coupling. Black boxes to structures you understand.<br>
+                Use AI for development. Do not embed it in the product.<br>
+                Change the structure in the time remaining, or collapse is unavoidable.
                 </p>
                 </div>
 

@@ -9,7 +9,7 @@ category: 構造分析ノート
 hero_image: IMG_3414.jpg
 ---
 
-# Claude Mythos  -- 米財務省・FRBが金融界首脳を緊急招集した理由を深堀してみる
+# Claude Mythos -- 米財務省・FRBが金融界首脳を緊急招集した理由を深堀してみる
 
 2026年4月8日、ジェローム・パウエルFRB議長とスコット・ベセント財務長官が、ワシントンD.C.の財務省本省に主要銀行のCEOを緊急招集した。Financial Services Forumの取締役会に合わせて、極秘裏かつ急遽設定された会合だった（4月10日、CNBC・Bloomberg等が一斉報道）。
 

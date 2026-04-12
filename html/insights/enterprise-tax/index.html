@@ -261,6 +261,20 @@
                 <p>SQL Serverからの移行も同じだ。
                 T-SQL → PL/pgSQL。SSMS依存の管理スクリプト → 標準SQL。
                 Claudeが書き換えれば、SQL Server税も消える。</p>
+                <h3>SSMS＋Copilot——データベースに直結するAI</h3>
+                <p>そもそもSSMS（SQL Server Management Studio）は必要か。</p>
+                <p>MicrosoftはSSMSにCopilotを組み込んだ。クエリエディターを開くと、Copilotは接続先のデータベースを自動的に認識し、チャットウィンドウからSQLを生成・実行できる。</p>
+                <div class="highlight-box">
+                <p><strong>SSMSにCopilotを入れるとはどういうことか：</strong>
+                非決定的なLLMが、本番データベースのスキーマとデータに直接アクセスする。
+                確率論で動くAIが、決定的なデータベースにSQLを書き込む。
+                Office＋Copilotが「メール・ファイル・チャット」へのバックドアなら、
+                SSMS＋Copilotは**「データベースそのもの」へのバックドア**だ。
+                顧客データ、決済情報、取引履歴——全てに非決定的AIが直接触れる。</p>
+                </div>
+                <p>PostgreSQL＋Claude Codeとの構造的な違いを見ればいい。Claude Codeは開発者のローカル環境で動く。生成されたSQLは人間がレビューし、テストを通過したものだけが本番に適用される。AIと本番データベースの間に人間の判断が入る。</p>
+                <p>SSMS＋Copilotは、AIを本番データベースに直結させる。間に何もない。これはOffice＋Copilotと全く同じ構造的誤りだ。</p>
+                <p>そしてSSMS自体、PostgreSQLに移行すれば不要になる。psql、pgAdmin、DBeaver——全てオープンソースで、AIを密結合する設計にはなっていない。SQL Server税とSSMS税とCopilotリスクが同時に消える。</p>
                 <h2>Microsoft税</h2>
                 <p>Windows、Office 365、Azure、Teams——
                 Microsoftは企業に対して複数の「税」を同時に課している。</p>
@@ -404,7 +418,7 @@
                 GitHubがユーザーのコードをAIの学習データに使おうとしているのも同じ構造だ。
                 より多くのデータでより大きなモデルを作れば性能が上がる——この前提自体が過学習だ。</p>
                 </div>
-                <h2>SaaS税——月額課金の積み重ね</h2>
+                <h2>SaaS税——月額課金の積み重ね、そしてAI内蔵の罠</h2>
                 <p>SaaS（Software as a Service）は「所有しない」ことが売りだった。
                 しかし、気づけば月額課金が積み重なっている。</p>
                 <div class="highlight-box">
@@ -418,6 +432,26 @@
                 その他10〜20のSaaS → 月額数十万〜数百万円
                 <strong>合計：年間数千万円の「税」を、気づかないうちに払っている。</strong></p>
                 </div>
+                <h3>SaaS＋AI——税にバックドアが付いた</h3>
+                <p>2026年の現実では、これらのSaaSの多くにAIエージェントが組み込まれ始めている。</p>
+                <div class="highlight-box">
+                <p><strong>AIを組み込んだSaaSの実態：</strong>
+                Salesforce Einstein AI → 顧客データ全体をスキャンして「提案」を生成
+                Notion AI → ワークスペース内の全文書にアクセスして要約・生成
+                Slack AI → チャンネルの全メッセージを読み込んで検索・要約
+                HubSpot AI → 顧客のメール・取引履歴にアクセスして予測
+                <strong>共通構造：AIが業務データにフルアクセスし、外部のLLMで処理する。</strong></p>
+                </div>
+                <p>これはOffice＋Copilot、WordPress＋AIプラグインと全く同じ構造だ。決定的なシステム（CRM、プロジェクト管理、ドキュメント）の中に、非決定的なAIを密結合させている。</p>
+                <div class="chain-diagram">
+                <strong>SaaS＋AIの脆弱性：</strong><br>
+                SaaSベンダーがAIを組み込む <span class="arrow">&rarr;</span> AIが業務データにフルアクセスする<br>
+                <span class="arrow">&rarr;</span> AIの推論は外部のLLMプロバイダーで処理される<br>
+                <span class="arrow">&rarr;</span> データがSaaSベンダーとLLMプロバイダーの二重に外部へ出る<br>
+                <span class="arrow">&rarr;</span> プロンプトインジェクション、データ漏洩、監査証跡の喪失<br>
+                <span class="arrow">&rarr;</span> <strong>自社データの管理を完全に失う</strong>
+                </div>
+                <p>月額課金を払い続けるだけではない。自社の業務データを、自分が制御できないAIに読ませている。これは税ではなく、<strong>構造的な情報漏洩</strong>だ。</p>
                 <p>これらのSaaSが提供する機能の多くは、
                 Claudeの支援で自前のツールに置き換えられる。</p>
                 <div class="chain-diagram">
@@ -426,7 +460,7 @@
                 チャット <span class="arrow">&rarr;</span> オープンソース（Mattermost等）＋自前サーバー<br>
                 プロジェクト管理 <span class="arrow">&rarr;</span> Claudeが要件に合わせたツールを構築<br>
                 ドキュメント <span class="arrow">&rarr;</span> Markdown＋Git＋静的サイト生成<br>
-                <strong>全てのSaaSを置き換える必要はない。高額なものから順に引けばいい。</strong>
+                <strong>AIが内蔵されたSaaSは最優先で引く。データの外部流出リスクが最も高い。</strong>
                 </div>
                 <h2>SIer税——「作ってもらう」から「自分で作る」へ</h2>
                 <p>日本企業のIT投資の大部分は、SIer（システムインテグレーター）に流れている。</p>

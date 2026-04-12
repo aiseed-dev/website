@@ -87,6 +87,27 @@ This is not hypothetical. Claude can comprehend and rewrite codebases of hundred
 
 Migration from SQL Server works the same way. T-SQL → PL/pgSQL. SSMS-dependent management scripts → standard SQL. Claude rewrites them, and the SQL Server tax disappears.
 
+### SSMS + Copilot — AI Plugged Directly into the Database
+
+Is SSMS (SQL Server Management Studio) even necessary?
+
+Microsoft has embedded Copilot into SSMS. When you open the query editor, Copilot automatically recognizes the connected database and can generate and execute SQL through a chat window.
+
+:::highlight
+**What putting Copilot in SSMS means:**
+A non-deterministic LLM gains direct access to production database schemas and data.
+A probabilistic AI writes SQL into a deterministic database.
+If Office + Copilot is a backdoor to "email, files, and chat,"
+SSMS + Copilot is a **backdoor to the database itself**.
+Customer data, payment records, transaction histories — all directly accessible by a non-deterministic AI.
+:::
+
+Compare this structurally to PostgreSQL + Claude Code. Claude Code runs in the developer's local environment. Generated SQL is reviewed by humans, and only code that passes tests is applied to production. Human judgment stands between AI and the production database.
+
+SSMS + Copilot connects AI directly to the production database. Nothing in between. This is the exact same structural error as Office + Copilot.
+
+And SSMS itself becomes unnecessary once you migrate to PostgreSQL. psql, pgAdmin, DBeaver — all open source, none designed to tightly couple AI into the interface. The SQL Server tax, the SSMS tax, and the Copilot risk all disappear simultaneously.
+
 ## Microsoft Tax
 
 Windows, Office 365, Azure, Teams — Microsoft levies multiple "taxes" on enterprises simultaneously.
@@ -257,7 +278,7 @@ GitHub trying to use users' code as AI training data is the same structure.
 "More data + bigger models = better performance" — this premise itself is overfitting.
 :::
 
-## SaaS Tax — Accumulating Monthly Charges
+## SaaS Tax — Accumulating Monthly Charges, Now with Built-in Backdoors
 
 SaaS (Software as a Service) was sold as "you don't own it." But before you know it, monthly charges have piled up.
 
@@ -273,6 +294,32 @@ Jira → Thousands of yen/user/month × development department
 **Total: tens of millions of yen per year in "taxes" paid without even realizing it.**
 :::
 
+### SaaS + AI — The Tax Now Comes with a Backdoor
+
+In the reality of 2026, many of these SaaS tools have begun embedding AI agents.
+
+:::highlight
+**The reality of AI-embedded SaaS:**
+Salesforce Einstein AI → Scans all customer data to generate "suggestions"
+Notion AI → Accesses all documents in the workspace for summarization and generation
+Slack AI → Reads all channel messages for search and summarization
+HubSpot AI → Accesses customer email and transaction history for predictions
+**Common structure: AI has full access to business data, processed by external LLMs.**
+:::
+
+This is the exact same structure as Office + Copilot and WordPress + AI plugins. A non-deterministic AI is being tightly coupled into deterministic systems (CRM, project management, documents).
+
+:::chain
+**The vulnerability of SaaS + AI:**
+SaaS vendor embeds AI → AI gains full access to business data
+→ AI inference is processed by an external LLM provider
+→ Data exits to both the SaaS vendor and the LLM provider
+→ Prompt injection, data leakage, loss of audit trail
+→ **You completely lose control of your own data**
+:::
+
+You are not just paying monthly fees. You are letting AI you do not control read your business data. This is not a tax — it is **structural data leakage**.
+
 Many features these SaaS tools provide can be replaced with custom tools built with Claude's help.
 
 :::chain
@@ -281,7 +328,7 @@ CRM → Claude builds a simple database + UI
 Chat → Open source (Mattermost, etc.) + self-hosted server
 Project management → Claude builds a tool tailored to your requirements
 Documentation → Markdown + Git + static site generation
-**You don't need to replace every SaaS. Start with the most expensive ones.**
+**SaaS with embedded AI is the top priority to eliminate. These carry the highest data exfiltration risk.**
 :::
 
 ## SIer Tax — From "Built for You" to "Built by You"

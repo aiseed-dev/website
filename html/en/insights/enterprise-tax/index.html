@@ -253,6 +253,20 @@
                 </div>
                 <p>This is not hypothetical. Claude can comprehend and rewrite codebases of hundreds of thousands of lines. SQL dialect conversion is structural code transformation — exactly the kind of work AI excels at.</p>
                 <p>Migration from SQL Server works the same way. T-SQL → PL/pgSQL. SSMS-dependent management scripts → standard SQL. Claude rewrites them, and the SQL Server tax disappears.</p>
+                <h3>SSMS + Copilot — AI Plugged Directly into the Database</h3>
+                <p>Is SSMS (SQL Server Management Studio) even necessary?</p>
+                <p>Microsoft has embedded Copilot into SSMS. When you open the query editor, Copilot automatically recognizes the connected database and can generate and execute SQL through a chat window.</p>
+                <div class="highlight-box">
+                <p><strong>What putting Copilot in SSMS means:</strong>
+                A non-deterministic LLM gains direct access to production database schemas and data.
+                A probabilistic AI writes SQL into a deterministic database.
+                If Office + Copilot is a backdoor to &quot;email, files, and chat,&quot;
+                SSMS + Copilot is a <strong>backdoor to the database itself</strong>.
+                Customer data, payment records, transaction histories — all directly accessible by a non-deterministic AI.</p>
+                </div>
+                <p>Compare this structurally to PostgreSQL + Claude Code. Claude Code runs in the developer's local environment. Generated SQL is reviewed by humans, and only code that passes tests is applied to production. Human judgment stands between AI and the production database.</p>
+                <p>SSMS + Copilot connects AI directly to the production database. Nothing in between. This is the exact same structural error as Office + Copilot.</p>
+                <p>And SSMS itself becomes unnecessary once you migrate to PostgreSQL. psql, pgAdmin, DBeaver — all open source, none designed to tightly couple AI into the interface. The SQL Server tax, the SSMS tax, and the Copilot risk all disappear simultaneously.</p>
                 <h2>Microsoft Tax</h2>
                 <p>Windows, Office 365, Azure, Teams — Microsoft levies multiple &quot;taxes&quot; on enterprises simultaneously.</p>
                 <div class="highlight-box">
@@ -392,7 +406,7 @@
                 GitHub trying to use users' code as AI training data is the same structure.
                 &quot;More data + bigger models = better performance&quot; — this premise itself is overfitting.</p>
                 </div>
-                <h2>SaaS Tax — Accumulating Monthly Charges</h2>
+                <h2>SaaS Tax — Accumulating Monthly Charges, Now with Built-in Backdoors</h2>
                 <p>SaaS (Software as a Service) was sold as &quot;you don't own it.&quot; But before you know it, monthly charges have piled up.</p>
                 <div class="highlight-box">
                 <p><strong>SaaS tax reality (midsize company example):</strong>
@@ -405,6 +419,26 @@
                 10–20 other SaaS tools → Hundreds of thousands to millions of yen/month
                 <strong>Total: tens of millions of yen per year in &quot;taxes&quot; paid without even realizing it.</strong></p>
                 </div>
+                <h3>SaaS + AI — The Tax Now Comes with a Backdoor</h3>
+                <p>In the reality of 2026, many of these SaaS tools have begun embedding AI agents.</p>
+                <div class="highlight-box">
+                <p><strong>The reality of AI-embedded SaaS:</strong>
+                Salesforce Einstein AI → Scans all customer data to generate &quot;suggestions&quot;
+                Notion AI → Accesses all documents in the workspace for summarization and generation
+                Slack AI → Reads all channel messages for search and summarization
+                HubSpot AI → Accesses customer email and transaction history for predictions
+                <strong>Common structure: AI has full access to business data, processed by external LLMs.</strong></p>
+                </div>
+                <p>This is the exact same structure as Office + Copilot and WordPress + AI plugins. A non-deterministic AI is being tightly coupled into deterministic systems (CRM, project management, documents).</p>
+                <div class="chain-diagram">
+                <strong>The vulnerability of SaaS + AI:</strong><br>
+                SaaS vendor embeds AI <span class="arrow">&rarr;</span> AI gains full access to business data<br>
+                <span class="arrow">&rarr;</span> AI inference is processed by an external LLM provider<br>
+                <span class="arrow">&rarr;</span> Data exits to both the SaaS vendor and the LLM provider<br>
+                <span class="arrow">&rarr;</span> Prompt injection, data leakage, loss of audit trail<br>
+                <span class="arrow">&rarr;</span> <strong>You completely lose control of your own data</strong>
+                </div>
+                <p>You are not just paying monthly fees. You are letting AI you do not control read your business data. This is not a tax — it is <strong>structural data leakage</strong>.</p>
                 <p>Many features these SaaS tools provide can be replaced with custom tools built with Claude's help.</p>
                 <div class="chain-diagram">
                 <strong>How to eliminate the SaaS tax:</strong><br>
@@ -412,7 +446,7 @@
                 Chat <span class="arrow">&rarr;</span> Open source (Mattermost, etc.) + self-hosted server<br>
                 Project management <span class="arrow">&rarr;</span> Claude builds a tool tailored to your requirements<br>
                 Documentation <span class="arrow">&rarr;</span> Markdown + Git + static site generation<br>
-                <strong>You don't need to replace every SaaS. Start with the most expensive ones.</strong>
+                <strong>SaaS with embedded AI is the top priority to eliminate. These carry the highest data exfiltration risk.</strong>
                 </div>
                 <h2>SIer Tax — From &quot;Built for You&quot; to &quot;Built by You&quot;</h2>
                 <p>In Japan, the bulk of corporate IT investment flows to SIers (System Integrators).</p>

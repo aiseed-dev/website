@@ -179,7 +179,7 @@ This is not a technical argument. It is a question of civilizational design phil
 - AI-powered cyberattacks: +89% YoY, lateral movement compressed from 30 days to <1 day
 - Trend Micro, "EchoLeak" (2025/7) — CVE-2025-32711
 - CrowdStrike, median enterprise patch window: 70 days
-- Previous article: "Claude Mythos — A Deep Dive into Why the Treasury and Fed Urgently Summoned Financial Leaders" (aiseed.dev)
+- Previous article: "Claude Mythos — Why the U.S. Treasury and Fed Urgently Summoned Financial Leaders" (aiseed.dev)
 
 ---
 

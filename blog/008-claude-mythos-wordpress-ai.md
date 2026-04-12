@@ -1,6 +1,6 @@
 ---
 slug: claude-mythos-wordpress-ai
-title: Claude Mythos —— WordPress＋AIの危険性を深堀してみる
+title: Claude Mythos —— WordPress＋AIの脆弱性を深堀してみる
 subtitle: WordPressのmonoculture＋AIプラグイン密結合が金融と同じ構造的脆弱性を持つ
 description: WordPressは世界のウェブサイトの43%を占めるmonoculture。AIプラグインの密結合が金融システムのCopilot問題と同じ構造的脆弱性をウェブ全体にもたらす。
 date: 2026.04.12
@@ -9,7 +9,7 @@ category: 構造分析ノート
 hero_image: IMG_3415.jpg
 ---
 
-# Claude Mythos —— WordPress＋AIの危険性を深堀してみる
+# Claude Mythos —— WordPress＋AIの脆弱性を深堀してみる
 
 前回の記事で、パウエルFRB議長とベセント財務長官が銀行CEOを緊急招集した理由を分析した。金融システムの三層構造（COBOL・Copilot・SWIFT）が、Mythosクラスの自律型AIに対して構造的に脆弱であることを示した。
 

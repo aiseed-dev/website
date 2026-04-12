@@ -1,6 +1,6 @@
 ---
 slug: claude-mythos-wordpress-ai
-title: "Claude Mythos — The Danger of WordPress + AI"
+title: "Claude Mythos — The Vulnerability of WordPress + AI"
 subtitle: "WordPress monoculture + tightly coupled AI plugins carry the same structural vulnerability as the financial system"
 description: "WordPress powers 43% of all websites — a massive monoculture. Tightly coupled AI plugins bring the same structural vulnerability as the financial system's Copilot problem to the entire web."
 date: 2026.04.12
@@ -10,7 +10,7 @@ category: Structural Analysis Notes
 hero_image: IMG_3415.jpg
 ---
 
-# Claude Mythos — The Danger of WordPress + AI
+# Claude Mythos — The Vulnerability of WordPress + AI
 
 In my previous article, I analyzed why Fed Chair Powell and Treasury Secretary Bessent urgently summoned bank CEOs. I showed how the financial system's three-layer structure (COBOL, Copilot, SWIFT) is structurally vulnerable to Mythos-class autonomous AI.
 

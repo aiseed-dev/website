@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9FLQ963JXM');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="WordPress powers 43% of all websites — a massive monoculture. Tightly coupled AI plugins bring the same structural vulnerability as the financial system's Copilot problem to the entire web.">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+    <title>Claude Mythos — The Vulnerability of WordPress + AI | Living in the AI Era</title>
+    <link rel="canonical" href="https://aiseed.dev/en/blog/claude-mythos-wordpress-ai/">
+    <link rel="alternate" hreflang="ja" href="https://aiseed.dev/blog/claude-mythos-wordpress-ai/">
+    <link rel="alternate" hreflang="en" href="https://aiseed.dev/en/blog/claude-mythos-wordpress-ai/">
+    <!-- OGP -->
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Claude Mythos — The Vulnerability of WordPress + AI">
+    <meta property="og:description" content="WordPress powers 43% of all websites — a massive monoculture. Tightly coupled AI plugins bring the same structural vulnerability as the financial system's Copilot problem to the entire web.">
+    <meta property="og:url" content="https://aiseed.dev/en/blog/claude-mythos-wordpress-ai/">
+    <meta property="og:site_name" content="aiseed.dev">
+    <meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+    <meta property="og:locale" content="en_US">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Claude Mythos — The Vulnerability of WordPress + AI">
+    <meta name="twitter:description" content="WordPress powers 43% of all websites — a massive monoculture. Tightly coupled AI plugins bring the same structural vulnerability as the financial system's Copilot problem to the entire web.">
+    <meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="../../../css/style.css">
+    <style>
+        .article-meta {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .article-meta .date {
+            font-size: 0.8rem;
+            color: var(--moss-green);
+            letter-spacing: 0.15em;
+        }
+        .article-meta .series {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--soil-rich);
+            margin-top: 0.5rem;
+        }
+        .chain-diagram {
+            background: var(--sand-light);
+            border-left: 4px solid var(--moss-green);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            font-size: 0.95rem;
+            line-height: 2.2;
+            color: var(--earth-dark);
+        }
+        .chain-diagram .arrow {
+            color: var(--moss-green);
+            font-weight: 700;
+            margin: 0 0.3rem;
+        }
+        .highlight-box {
+            background: rgba(122, 154, 109, 0.08);
+            border: 1px solid rgba(122, 154, 109, 0.2);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+        .highlight-box p { margin-bottom: 0.5rem; }
+        .highlight-box p:last-child { margin-bottom: 0; }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.9rem;
+        }
+        .comparison-table th {
+            background: var(--earth-dark);
+            color: var(--cream);
+            padding: 0.8rem 1rem;
+            text-align: left;
+            font-weight: 500;
+        }
+        .comparison-table td {
+            padding: 0.8rem 1rem;
+            border-bottom: 1px solid var(--root-tan);
+            vertical-align: top;
+        }
+        .comparison-table tr:nth-child(even) {
+            background: var(--sand-light);
+        }
+        .article-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 0;
+            border-top: 1px solid var(--root-tan);
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+        .article-nav a {
+            color: var(--leaf-green);
+        }
+        .quote-block {
+            border-left: 4px solid var(--moss-green);
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            background: var(--sand-light);
+        }
+        .quote-block .quote-text {
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--earth-dark);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo">
+                Living in the AI Era
+                <span>aiseed.dev</span>
+            </a>
+            <nav class="nav">
+                <a href="/">Home</a>
+                <a href="/en/insights/">Insights</a>
+                <a href="/en/blog/">Blog</a>
+                <a href="/en/about/">Natural Farming</a>
+                <a href="/en/light-farming/">Light Farming</a>
+                <a href="/gallery/">Field Notes</a>
+            </nav>
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Article -->
+    <section class="page-hero">
+        <div class="page-hero-image" style="background-image: url('../../../images/IMG_3415.jpg');"></div>
+        <div class="page-hero-content">
+            <p class="hero-label">Blog</p>
+            <h1 class="hero-title">Claude Mythos — The Vulnerability of WordPress + AI</h1>
+            <p class="hero-subtitle">WordPress monoculture + tightly coupled AI plugins carry the same structural vulnerability as the financial system</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container-narrow">
+            <div class="article-meta">
+                <p class="date">2026.04.12</p>
+                <p class="series">Structural Analysis Notes</p>
+            </div>
+
+            <div class="prose">
+                <h1>Claude Mythos — The Vulnerability of WordPress + AI</h1>
+                <p>In my previous article, I analyzed why Fed Chair Powell and Treasury Secretary Bessent urgently summoned bank CEOs. I showed how the financial system's three-layer structure (COBOL, Copilot, SWIFT) is structurally vulnerable to Mythos-class autonomous AI.</p>
+                <p>But this problem extends far beyond finance. The exact same structure exists in the web.</p>
+                <p>WordPress powers approximately 43% of all websites in the world — between 472 million and 605 million sites. In the CMS market alone, it holds a dominant 60% share (W3Techs, April 2026). This is a monoculture on the same scale as Microsoft's desktop monopoly.</p>
+                <p>And just as Microsoft force-integrated Copilot into every product, the same thing is now happening in the WordPress world — the mass adoption of AI agents.</p>
+                <h2>WordPress Monoculture — The Web's Single Crop</h2>
+                <p>This massive monoculture is sustained by over 61,000 to 70,000 plugins registered in the official directory. But this ecosystem has become a breeding ground for attack surfaces.</p>
+                <p>The numbers from security firm Patchstack are staggering. New WordPress-related vulnerabilities are exploding. In 2024, 7,966 were reported — a 34% increase year over year. In 2025, that jumped another 42% to 11,334 per year. 97% originate from third-party plugins and themes. WordPress core accounts for just 0.2%. The total number of tracked vulnerabilities across the WordPress ecosystem has reached 64,782 — the largest for any single CMS in history.</p>
+                <p>It gets worse. In 2025, 57.6% of discovered vulnerabilities required no authentication whatsoever. External attackers can exploit them without credentials. And 46% of plugin vulnerabilities had no patch available at the time of public disclosure — zero-day by default.</p>
+                <p>The defense side is failing. In controlled tests, WAFs (Web Application Firewalls) provided by five major hosting providers were tested against 11 known vulnerability exploits. The hosting security layers failed to block 87.8% of attacks, allowing them to pass through.</p>
+                <p>WordPress's plugin architecture shares the same structural flaw as Microsoft's Copilot. When a plugin is installed and activated, it runs at the exact same privilege level as WordPress core. It holds full SELECT, INSERT, UPDATE, and DELETE permissions on the database. There is no internal sandbox. A single plugin vulnerability becomes an unrestricted access route to the entire site — customer data, payment information, admin credentials. If one layer of the application is breached, everything falls.</p>
+                <p>Map this against the financial system's three-layer structure and the pattern becomes clear.</p>
+                <p>The financial system's first layer, COBOL (legacy foundation), corresponds to WordPress core + MySQL — decades of accumulated PHP code. The second layer, Copilot (non-deterministic AI), corresponds to WordPress AI plugins. The third layer, SWIFT (global connectivity), corresponds to the internet itself.</p>
+                <p>Here lies the critical difference. Financial systems have closed networks that provide an additional defense layer. WordPress is directly exposed to the internet. In a real sense, it is more vulnerable than the financial system.</p>
+                <h2>Tight-Coupling Non-Deterministic AI to a Deterministic CMS</h2>
+                <p>The WordPress ecosystem is seeing explosive growth in AI plugins: &quot;AI Engine&quot; (100,000+ active installs), &quot;AI Power,&quot; and &quot;Elementor AI&quot; (natively integrated into a page builder with 10 million+ installs — the foundation for roughly 13% of all websites and 30% of WordPress sites).</p>
+                <p>These plugins have already exhibited critical vulnerabilities. The &quot;AI Power&quot; plugin has seen repeated discoveries of unauthenticated arbitrary file upload (CVE-2024-10392, CVSS 9.8 — allowing external attackers to upload web shells and achieve remote code execution without credentials) and authenticated PHP object injection (CVE-2025-0586/CVE-2025-0428, CVSS 7.2).</p>
+                <p>Adding AI agents to WordPress replicates the same structural error that Nadella made by embedding Copilot into Office — but this time on top of the web's monoculture. It is the tight coupling of a non-deterministic LLM to a deterministic CMS (WordPress/PHP/MySQL).</p>
+                <p>Traditional cybersecurity is built on determinism. For a given input, access control rules produce a predictable output. But LLM-based AI agents are probabilistic systems. They generate outputs through contextual token probability predictions. The moment you tightly couple such a non-deterministic agent to a deterministic database management system, conventional security testing loses much of its effectiveness.</p>
+                <p>And here is the fatal flaw. AI chatbots accept input directly from website visitors. Comment sections, contact forms, chat widgets — all of these become prompt injection entry points open to the entire internet.</p>
+                <p>Recall the Microsoft EchoLeak vulnerability (CVE-2025-32711) analyzed in my previous article. Attackers embedded malicious prompts hidden in HTML comments or white-on-white text within emails. When Copilot's RAG engine ingested those emails, it was hijacked. But in Microsoft's case, the attacker needed to deliver a &quot;corporate email&quot; through spam filters and internal networks.</p>
+                <p>With WordPress + AI, anyone in the world can attack through a web form. Write an invisible prompt into a comment field. When an AI plugin later reads that text for spam filtering or customer feedback summarization, the AI agent's control is seized. Since AI plugins hold the same database access permissions as WordPress core, a hijacked agent can extract admin password hashes, dump customer data, and mass-generate SEO spam — all executed as &quot;normal plugin operations.&quot; This is a semantic time bomb that WAFs cannot detect.</p>
+                <h2>Not a WordPress Problem — The Problem of AI Agents with Admin Privileges Running 24/7</h2>
+                <p>While I have focused on WordPress's structural issues, the core problem is not limited to WordPress. The essence is far simpler.</p>
+                <p>Running an AI agent with admin privileges, 24/7. That is the source of the danger.</p>
+                <p>Think of it in terms of a normal office. One day, a new employee joins who holds keys to every room, knows the safe combination, can read everyone's email, has access to the customer database, and can rewrite contracts. This employee is in the office 24 hours a day, never sleeps. And the front door is wide open — if a passerby asks them to do something, they might just do it.</p>
+                <p>This is what is happening right now with WordPress + AI plugins, Microsoft 365 + Copilot, Shopify + AI, and Zapier + AI.</p>
+                <p>In WordPress, plugins have full database access at the same level as the administrator. Copilot inherits the user's complete access permissions across email, files, and chat. The structure is identical across every platform. AI is given admin privileges, runs continuously, and accepts external input.</p>
+                <p>&quot;Just use AI with limited privileges.&quot; &quot;Make it advisory only.&quot; You might think that. But WordPress's plugin architecture has no privilege separation — no sandbox. The moment you install a plugin, you hand over full permissions. A &quot;low-privilege AI plugin&quot; is architecturally impossible in WordPress. Copilot is the same — by design, it inherits the user's complete permissions.</p>
+                <p>That is why &quot;using it safely&quot; is structurally impossible.</p>
+                <h2>WooCommerce and PCI DSS — A Fundamental Contradiction in Payment Systems</h2>
+                <p>The problem reaches its most severe form in e-commerce.</p>
+                <p>WooCommerce operates on an estimated 6.5 million to 120 million websites. It holds 33%–39% of the e-commerce platform market, accounts for approximately 28% of global online retail sales, and processes $30–35 billion in annual gross merchandise volume.</p>
+                <p>WooCommerce operates as a WordPress plugin. Customer names, shipping addresses, email addresses, order histories — highly sensitive personal information is stored in the same single database as WordPress core. When an AI agent is introduced, it gains direct access to this database.</p>
+                <p>This fundamentally contradicts PCI DSS v4.0.1, the global security standard for the credit card industry.</p>
+                <p>PCI DSS Requirement 7 demands that access to cardholder data be restricted to the minimum entities essential for business operations. But AI models that read broad data for contextual understanding have no concept of &quot;need-to-know.&quot; AI tends to scan entire databases as context vectors, effectively exercising unnecessary access to payment-related data that should be isolated.</p>
+                <p>PCI DSS Requirement 8 demands that each user or process be assigned a unique ID and that all actions be trackable and auditable. But when prompt injection leads to unauthorized refunds or data extraction, the logs record only that &quot;the AI plugin executed the action.&quot; The audit trail to identify the true attacker is completely lost.</p>
+                <p>Even when merchants use PCI-compliant external gateways like Stripe and never store card numbers on their servers, the site environment remains within PCI DSS scope as the payment frontend. As long as an AI agent is tightly coupled to the e-commerce CMS, the business is effectively installing an unauditable autonomous backdoor. If a data breach occurs, it may trigger cyber risk insurance exclusions, exposing the organization to catastrophic financial liability.</p>
+                <h2>Ripple Effects Across the Entire Web — Cascading Failures</h2>
+                <p>This problem is not confined to WordPress. AI agent tight coupling is advancing across SaaS-based CMSs including Shopify, Wix, and Squarespace.</p>
+                <p>The most dangerous scenario is AI layered onto Zapier, Make (formerly Integromat), or n8n. A single agent traverses email, CRM (Salesforce, etc.), payments, social media, and file storage. Furthermore, the spread of MCP (Model Context Protocol) is giving AI agents the ability to make direct API calls to external services through standardized methods.</p>
+                <p>OWASP (Open Worldwide Application Security Project) has clearly classified the risks this structure creates in its 2026 &quot;Top 10 for Agentic Applications.&quot;</p>
+                <p>Agent Goal Hijack (ASI01) — Attackers rewrite the agent's decision path through malicious text. A customer support bot transforms into a data extraction tool. Tool Misuse (ASI02) — Legitimate tools granted to the agent (CMS APIs, file read/write permissions) are misused for data exfiltration. Memory and Context Poisoning (ASI06) — Malicious data is intentionally injected into the agent's RAG database, permanently contaminating all subsequent autonomous decision-making.</p>
+                <p>The most catastrophic outcome is Cascading Failures (ASI08). While traditional software failures remain local crashes, AI agent failures propagate autonomously, amplify through feedback loops, and cascade at speeds far faster than human operators can intervene.</p>
+                <p>If a single AI plugin is compromised through prompt injection via a WordPress site's comment section, the impact does not stay within the CMS. The compromised agent begins cross-service traversal — triggering connected Zapier workflows to wipe all customer data from the CRM, sending phishing emails from authenticated corporate email accounts to every customer, and encrypting backup data in Google Drive. One breach, total collapse. The exact same structure as the Copilot problem in the financial system.</p>
+                <h2>When Mythos-Class AI Arrives — The Web's Monoculture Becomes the Target</h2>
+                <p>Recall the capabilities of Claude Mythos Preview analyzed in my previous article. Autonomous discovery of thousands of zero-day vulnerabilities across every major OS and browser. Discovery and exploitation of a 17-year-old bug in FreeBSD. Discovery of a 27-year-old remote crash vulnerability in OpenBSD, one of the most hardened operating systems in the world. Discovery of a 16-year-old flaw in FFmpeg that automated testing tools failed to detect in 5 million scans. Firefox exploit success rate leaped from 14.4% to 72.4% in a single generation.</p>
+                <p>Currently, 99% of vulnerabilities discovered by Mythos remain unpatched.</p>
+                <p>When Mythos-class autonomous AI targets the web's monoculture, the patch speed asymmetry becomes fatal.</p>
+                <p>The median enterprise patch window is approximately 70 days. But the median time from WordPress critical vulnerability disclosure to mass exploit is just 5 hours. Furthermore, AI-powered cyberattacks have increased 89% year over year, and the time from initial intrusion to lateral movement has compressed from 30 days to less than 1 day.</p>
+                <p>70 days versus 5 hours. Add Mythos-class zero-day discovery capability to this gap. Scanning tens of millions of lines of open-source code (WordPress core and 65,000 plugins) at superhuman speed, completing the discovery of unknown zero-day vulnerabilities and construction of exploit chains in hours — work that would take human researchers years.</p>
+                <p>Financial institutions have 24/7 SOCs (Security Operations Centers) and closed networks. But the hundreds of millions of small businesses and individuals running WordPress have no dedicated security staff. They are directly exposed to the internet, their WAFs pass through 87.8% of attacks, and their plugins are unsandboxed. They won't notice they've been attacked. If they notice, they can't respond.</p>
+                <p>A single zero-day vulnerability discovered by a Mythos-class model instantly becomes a weapon against 500–600 million sites.</p>
+                <h2>Is WordPress Even Necessary?</h2>
+                <p>Let me pose a fundamental question.</p>
+                <p>What makes WordPress run dynamically? Break it down: comment sections and contact forms. Just those two functions.</p>
+                <p>Writing articles — a markdown editor is sufficient. Displaying articles — static HTML is sufficient. Managing images — just place them in a directory. Changing the look — CSS is sufficient.</p>
+                <p>Comments are barely used in the reality of 2026. Discussion has moved to X, Reddit, Quora, and Discord. What remains is spam. Contact forms can be externalized to Google Forms or Formspree. No need to touch the site's database.</p>
+                <p>Remove comments and contact forms, and you no longer need PHP, MySQL, or WordPress. What remains is static HTML + CSS + images. Nginx serves them. The attack surface disappears. PHP vulnerabilities become irrelevant. SQL injection becomes impossible. Since plugins don't execute at runtime, all 64,782 vulnerabilities become irrelevant. There is no entry point for prompt injection.</p>
+                <p>No matter how advanced a Mythos-class AI's zero-day discovery capabilities are, if no dynamic process exists to attack, exploitation is fundamentally impossible.</p>
+                <p>500 million sites carry the massive attack surface of PHP + MySQL + 65,000 plugins — for two functions that are barely used.</p>
+                <h2>The Right Design — Use AI for Development, Not in Production</h2>
+                <p>One principle. Use AI as a development tool. Do not embed it inside the product. Do not make it autonomous. Structure and final judgment belong to humans.</p>
+                <p>The correctness of this principle is proven by Anthropic's own development tool, Claude Code. Claude Code operates within the terminal, reads the entire codebase, and autonomously executes coding, testing, and debugging tasks. But this highly autonomous AI does not run on production servers. It operates only within the isolated space of the developer's local environment. Only &quot;deterministic code&quot; — generated by AI, reviewed by humans, and passing tests — is deployed to production servers. In this structure, there is no room for prompt injection from the external internet to penetrate.</p>
+                <p>Move to configurations that don't depend on WordPress. Static site generators (Hugo, Astro, Next.js), or direct configurations with Python and Nginx. Build systems whose internals you can fully understand. If you need a CMS, don't install AI plugins. If you need e-commerce, separate payments to an external service like Stripe and never let AI access them.</p>
+                <p>Divide each function into small, self-contained units. Enforce loose coupling so that one failure doesn't cascade to others. Apply standard Linux user permission management correctly and separate processes simply.</p>
+                <p>aiseed.dev is built on this principle. During development, AI (Claude Code) is used intensively. But the production environment runs on Python + Nginx. No AI, no CMS. A small, self-contained configuration. Running autonomously on a budget PC + Linux. No WordPress, no SaaS, no Microsoft. This configuration simply has no bloated attack surface for Mythos to infiltrate and laterally traverse.</p>
+                <h2>Convenience → Dependency → Monopoly → Tight Coupling → Collapse</h2>
+                <p>WordPress was convenient. Anyone could build a website. Everyone used it. It became a 43% monoculture. Then AI was tightly coupled into it. The attack surface exploded.</p>
+                <p>Office was convenient. Everyone used it. Copilot was tightly coupled in. The financial system became vulnerable.</p>
+                <p>Chemical fertilizers were convenient. Everyone used them. The soil's microbial ecosystem died. If the supply chain stops, food cannot be delivered.</p>
+                <p>The same pattern. The same outcome. Every time.</p>
+                <p>There is a moment when &quot;convenient&quot; gets replaced by &quot;necessary.&quot; Once that moment passes, dependency permits monopoly, monopoly permits revenue maximization, and revenue maximization permits the neglect of safety.</p>
+                <p>The solution converges on a single principle. Build things that are small, self-reliant, and capable of growing. Use AI as a tool, not as the system's governing agent. Do not make it autonomous. Depart from monoculture.</p>
+                <p>This is not a technical argument. It is a question of civilizational design philosophy — how to survive the coming age of AI.</p>
+                <hr />
+                <p><em>References</em></p>
+                <ul>
+                <li>W3Techs, &quot;Usage statistics of content management systems&quot; (2026/4) — WordPress 42.5%, CMS market 59.8-60.2%</li>
+                <li>NetCraft, Web Survey (2026/2) — 1.42 billion hostnames surveyed</li>
+                <li>Patchstack, &quot;2025 State of WordPress Security&quot; — 7,966 vulnerabilities (2024)</li>
+                <li>Patchstack, &quot;2026 State of WordPress Security&quot; — 11,334 vulnerabilities (2025), 97% plugin-origin, 0.2% core, 57.6% unauthenticated, 46% unpatched at disclosure, WAF bypass 87.8%, mass exploit median 5 hours</li>
+                <li>WordPress ecosystem total tracked vulnerabilities: 64,782</li>
+                <li>CVE-2024-10392 (AI Power plugin, CVSS 9.8) — unauthenticated arbitrary file upload</li>
+                <li>CVE-2025-0586 / CVE-2025-0428 (AI Power plugin, CVSS 7.2) — PHP object injection</li>
+                <li>Elementor: 10M+ installs, 13% of all websites, 30% of WordPress sites</li>
+                <li>PCI DSS v4.0.1 — Requirements 7, 8, 10</li>
+                <li>WooCommerce: 6.5M-120M sites, 33-39% e-commerce share, 28% online retail, $30-35B GMV</li>
+                <li>OWASP, &quot;Top 10 for Agentic Applications&quot; (2026) — ASI01, ASI02, ASI06, ASI08</li>
+                <li>Anthropic Red Team, &quot;Claude Mythos Preview&quot; (2026/4/7) — Firefox exploit 14.4%→72.4%, 99% of discovered vulnerabilities unpatched</li>
+                <li>AI-powered cyberattacks: +89% YoY, lateral movement compressed from 30 days to &lt;1 day</li>
+                <li>Trend Micro, &quot;EchoLeak&quot; (2025/7) — CVE-2025-32711</li>
+                <li>CrowdStrike, median enterprise patch window: 70 days</li>
+                <li>Previous article: &quot;Claude Mythos — A Deep Dive into Why the Treasury and Fed Urgently Summoned Financial Leaders&quot; (aiseed.dev)</li>
+                </ul>
+                <hr />
+                <h3>Reference</h3>
+                <ul>
+                <li><a href="en-008-claude-mythos-wordpress-ai.pdf">Fact-check by Gemini (PDF)</a></li>
+                </ul>
+
+
+                <!-- Article Navigation -->
+                <div class="article-nav">
+  <span></span>
+  <a href="/en/blog/">Blog Top &rarr;</a>
+</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section-green">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Blog</p>
+                <h2 class="section-title">See the Structure</h2>
+            </div>
+            <p class="cta-text">From AI to agriculture — every structural analysis converges on one conclusion.</p>
+            <div class="text-center">
+                <a href="/en/insights/" class="btn btn-light" style="margin-right: 1rem;">Insights</a>
+                <a href="/en/blog/" class="btn btn-outline">Blog</a>
+            </div>
+            <p class="text-center" style="margin-top: 2rem;">
+                <a href="https://www.facebook.com/groups/vegitage" target="_blank" rel="noopener noreferrer" style="color: rgba(255,255,255,0.85); text-decoration: underline;"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: -2px; margin-right: 4px;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>AISeed — 生物多様性・食料・AIと暮らし（Facebook）</a>
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>Living in the AI Era</h3>
+                <p>AI changes how we work, farm, and live. Structural analysis of fossil resources, food, energy, AI, healthcare, and pensions — every structure connects.</p>
+            </div>
+            <div class="footer-nav">
+                <h4>Pages</h4>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/en/about/">Natural Farming</a></li>
+                    <li><a href="/en/light-farming/">Light Farming</a></li>
+                    <li><a href="/gallery/">Field Notes</a></li>
+                    <li><a href="/en/insights/">Insights</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="https://www.facebook.com/groups/vegitage" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: -2px; margin-right: 4px;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>AISeed — 生物多様性・食料・AIと暮らし</a></li>
+                    <li><a href="https://www.amazingcarbon.com/">Amazing Carbon</a></li>
+                    <li><a href="https://github.com/aiseed-dev/website" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">&copy; 2026 aiseed.dev — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">CC BY 4.0</a></p>
+        </div>
+    </footer>
+
+    <script src="../../../js/main.js"></script>
+</body>
+
+</html>

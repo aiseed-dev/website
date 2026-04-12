@@ -1,3 +1,14 @@
+---
+slug: mythos-copilot-financial-crisis
+title: Claude Mythos -- 米財務省・FRBが金融界首脳を緊急招集した理由を深堀してみる
+subtitle: COBOL＋Copilot＋SWIFTの三層構造とMythosクラスAIのシステミック・リスク
+description: パウエルFRB議長とベセント財務長官が銀行CEOを緊急招集。Mythosが金融システムにもたらすサイバー脅威を、COBOL・Copilot・SWIFTの三層構造から分析する。
+date: 2026.04.12
+label: Blog
+category: 構造分析ノート
+hero_image: IMG_3414.jpg
+---
+
 # Claude Mythos  -- 米財務省・FRBが金融界首脳を緊急招集した理由を深堀してみる
 
 2026年4月8日、ジェローム・パウエルFRB議長とスコット・ベセント財務長官が、ワシントンD.C.の財務省本省に主要銀行のCEOを緊急招集した。Financial Services Forumの取締役会に合わせて、極秘裏かつ急遽設定された会合だった（4月10日、CNBC・Bloomberg等が一斉報道）。
@@ -138,3 +149,9 @@ AIは開発のために使う。プロダクトの中には入れない。自律
 - Eternity Lab, "The world's default productivity tool is becoming a national security risk" (2026/2/23)
 - Phase Change / Rocket Software, COBOL infrastructure statistics
 - CrowdStrike, median patch window: 70 days
+
+---
+
+### 参考資料
+
+- [Geminiによるファクトチェック（PDF）](007-mythos-copilot-financial-crisis.pdf)

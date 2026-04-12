@@ -254,7 +254,11 @@ def article_vars(meta, body_html):
         # Paths
         "css_path": "../../../css/style.css" if is_en else "../../css/style.css",
         "js_path": "../../../js/main.js" if is_en else "../../js/main.js",
-        "img_path": "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg",
+        "img_path": (
+            f"../../../images/{meta['hero_image']}" if is_en else f"../../images/{meta['hero_image']}"
+        ) if meta.get("hero_image") else (
+            "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg"
+        ),
         "insights_base": insights_base,
         "blog_base": "/en/blog" if is_en else "/blog",
         # Navigation labels
@@ -425,7 +429,11 @@ def blog_vars(meta, body_html):
         # Paths
         "css_path": "../../../css/style.css" if is_en else "../../css/style.css",
         "js_path": "../../../js/main.js" if is_en else "../../js/main.js",
-        "img_path": "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg",
+        "img_path": (
+            f"../../../images/{meta['hero_image']}" if is_en else f"../../images/{meta['hero_image']}"
+        ) if meta.get("hero_image") else (
+            "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg"
+        ),
         "insights_base": "/en/insights" if is_en else "/insights",
         "blog_base": "/en/blog" if is_en else "/blog",
         # Navigation labels

@@ -3,8 +3,8 @@ slug: agi
 number: "06"
 lang: en
 title: The AGI Mistake
-subtitle: Data Centers Run on Oil. How Many Geniuses Do We Need? Does Past Data Show the Future?
-description: Data centers — AGI's foundation — cannot operate without petrochemical materials. The geniuses inside them can only do screen work. And past data holds no answers for unprecedented crises.
+subtitle: Data Centers Run on Oil. And Mythos Has Arrived. Change the Structure Now or Face Collapse.
+description: Data centers — AGI's foundation — cannot operate without petrochemical materials. And Claude Mythos has proven that AGI-level cyber capability can collapse systems built on monoculture and tight coupling — right now.
 date: 2025.04.04
 label: Structural Analysis 06
 prev_slug: fusion
@@ -176,6 +176,95 @@ Before debating AGI, look at what current AI is already doing.
 
 All of this is done by **current AI** — not AGI. Current AI is powerful enough and practical enough. There is no need to wait for AGI.
 
+## Mythos Has Arrived — The AGI-Level Threat Is Here Now
+
+On April 7, 2026, Anthropic announced "Claude Mythos Preview." The next day, Fed Chair Powell and Treasury Secretary Bessent urgently summoned the CEOs of America's megabanks to Washington. An extraordinary event not seen since the 2008 Lehman crisis. The agenda was neither interest rates nor inflation. It was the cyber threat Mythos poses to the financial system.
+
+Mythos autonomously discovered thousands of zero-day vulnerabilities across every major OS — Windows, macOS, Linux — and every major browser. It found a 17-year-old bug in the FreeBSD kernel, built an exploit, and achieved root access without authentication. It found a 27-year-old bug in OpenBSD and a 16-year-old FFmpeg bug that survived five million automated fuzz tests. Zero human intervention.
+
+:::highlight
+**What Mythos proved:**
+Cybersecurity benchmark (Cybench) → 100% (benchmark itself saturated)
+SWE-bench → 93.9% (previous generation: 80.8%)
+USAMO 2026 → 97.6% (previous generation: 42.3%)
+Firefox exploit success rate → Previous generation: 2 → Mythos: 181 (90x improvement)
+**This cyber capability emerged without deliberate hacking training. It was a "byproduct" of improved reasoning.**
+:::
+
+What state-sponsored elite hackers spent months and millions of dollars on can now be done overnight for under $50. The economics of cyberattacks have been fundamentally destroyed.
+
+Currently, Anthropic has deemed Mythos "too dangerous for public release" and provides it only to 11 defensive partners. But once other AI companies — OpenAI, Google DeepMind, Meta — reach equivalent capability, there is no reason to maintain the restriction. Public release in late 2026 to early 2027 is a realistic timeline.
+
+The debate over whether AGI will arrive is over. AGI-level cyber capability is already here. The question is no longer "AGI is unnecessary" — it is **"the world's structures are defenseless against AGI-level capability."**
+
+## Monoculture — Why the World Is Structurally Defenseless
+
+Why is the world defenseless against the reality Mythos has presented? The answer is monoculture.
+
+### The Financial System's Three-Layer Structure
+
+:::chain
+**Why finance is vulnerable:**
+Layer 1: COBOL (1960s language. 43% of core banking. Hundreds of millions of lines of black-box code)
+→ Layer 2: Microsoft Copilot (inherits full user permissions. Non-deterministic AI tightly coupled to deterministic systems)
+→ Layer 3: SWIFT (50 million international transfers per day. The bloodstream of global finance)
+→ **Three layers tightly coupled. If one collapses, everything collapses**
+:::
+
+Copilot's convenience features function as a backdoor for sophisticated AI-driven system compromise. The EchoLeak vulnerability (CVE-2025-32711, CVSS 9.3) demonstrated that hidden prompts in emails can hijack Copilot to exfiltrate confidential data without the user noticing. Logs record it as normal activity.
+
+### The Web's Monoculture
+
+:::chain
+**Why the web is vulnerable:**
+WordPress powers 43% of all websites (approximately 500 million sites)
+→ 65,000 plugins with no sandbox. Full access permissions
+→ 11,334 new vulnerabilities in 2025 alone. 57.6% require no authentication. 46% unpatched at disclosure
+→ WAFs pass through 87.8% of attacks
+→ AI plugins are being tightly coupled into this
+→ **More vulnerable than the financial system. Directly exposed to the internet**
+:::
+
+An invisible prompt planted in a comment field — the moment an AI plugin reads it, customer data dumps and password extraction execute as "normal plugin operations." Anyone in the world can attack through a web form.
+
+### Agriculture's Monoculture
+
+:::chain
+**Why agriculture is vulnerable:**
+Chemical fertilizers were convenient → Everyone used them
+→ The soil's microbial ecosystem died
+→ If the supply chain stops, fertilizer cannot be delivered
+→ Only soil that cannot produce without fertilizer remains
+→ **Convenience → dependency → monopoly → collapse. The same pattern**
+:::
+
+Finance, the web, agriculture. All the same structure. Everyone depends on a single system, and ever more complex layers are tightly coupled onto it. It is the same as a monoculture field that a single disease can wipe out.
+
+## Patching Cannot Keep Up — Change the Structure Now
+
+:::highlight
+**The time asymmetry:**
+Median enterprise patch window → **70 days**
+WordPress vulnerability disclosure to mass exploit → **5 hours**
+Mythos vulnerability discovery and weaponization → **Hours**
+Expected Mythos public release → **Late 2026 to early 2027**
+**We have six months to one year.**
+:::
+
+The problem is not that "vulnerabilities exist." The situation — "riddled with problems, but until now no one had the capability to attack them" — ended the moment Mythos appeared. The stopgap measure of accelerating patch deployment cannot overcome a structural crisis.
+
+:::highlight
+**Principles of structural transformation:**
+Tight coupling to loose coupling → Design so one failure does not cascade
+Monoculture to diversity → Break free from Microsoft dependency, WordPress dependency
+"Maximum AI" to "Sufficient AI" → Limit AI to non-deterministic tasks only
+**Use AI for development. Do not embed it in the product. Do not make it autonomous.**
+:::
+
+aiseed.dev is built on this principle. During development, AI (Claude Code) is used intensively. But the production environment runs on Python + Nginx. No AI, no CMS. Static HTML. There is simply no attack surface for Mythos to infiltrate and laterally traverse.
+
+This is not about "reducing enterprise IT costs." **This is about changing the structure now — before finance stops, the web collapses, and food cannot be delivered.**
+
 ## Can AGI Break Even?
 
 "Once AGI arrives, everything changes." But no one talks about AGI's economics.
@@ -216,5 +305,7 @@ AGI may complete the world of information.
 But the data center running AGI is itself built from oil.
 Past data holds no answers for the future.
 Current AI is already powerful enough.
-And repairing the broken physical world can only be done by human hands.
+And as Mythos has proven, already dangerous enough.
+Without changing the structures of tight coupling and monoculture, finance, the web, and agriculture will all collapse.
+We have six months to one year. Repairing the broken physical world can only be done by human hands.
 :::

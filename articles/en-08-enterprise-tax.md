@@ -3,8 +3,8 @@ slug: enterprise-tax
 number: "08"
 lang: en
 title: Eliminating Enterprise IT Taxes
-subtitle: Oracle Tax, Microsoft Tax, Cloud Tax, SaaS Tax, SIer Tax, Consultant Tax. Claude Eliminates Them All.
-description: Companies unknowingly pay "taxes" to Oracle, Microsoft, AWS/Azure/GCP, SaaS vendors, system integrators, and consultants. Claude is the tool that structurally eliminates them.
+subtitle: After Mythos, Oracle Tax, Microsoft Tax, Cloud Tax, SaaS Tax, SIer Tax, and Consultant Tax Are Not "Costs" — They Are Vulnerabilities.
+description: Companies unknowingly pay "taxes" to Oracle, Microsoft, AWS/Azure/GCP, SaaS vendors, system integrators, and consultants. With the arrival of Mythos, these taxes have transformed from cost problems into structural vulnerabilities. They must be eliminated now.
 date: 2025.04.04
 label: Structural Analysis 08
 prev_slug: nvidia
@@ -129,7 +129,19 @@ The hardware performance users paid for is being consumed by Microsoft without p
 **This is a CPU tax.**
 :::
 
-Microsoft taxes Claude can eliminate:
+### Copilot — Not a Tax, a Backdoor
+
+In April 2026, the situation fundamentally changed. The Microsoft tax is no longer a cost problem. **It is a security problem.**
+
+:::highlight
+**The hole Copilot opened:**
+EchoLeak vulnerability (CVE-2025-32711, CVSS 9.3) — hidden prompts in emails can hijack Copilot. The user does not even need to open the email. The moment Copilot's RAG engine ingests the email as context, it collects confidential data using the legitimate user's permissions and exfiltrates it to an external server. Logs record it as normal activity.
+**Copilot's convenience features function directly as a backdoor for system compromise.**
+:::
+
+What Claude Mythos Preview proved is that AI capable of exploiting this backdoor already exists. Exploits that once required state-sponsored hackers and months of work can now be generated overnight for under $50. The median patch window is 70 days. Mythos discovers and weaponizes vulnerabilities in hours. **There is no longer time for "gradual migration."**
+
+Microsoft taxes Claude can eliminate — and this must begin immediately:
 
 :::chain
 **How to eliminate the Microsoft tax:**
@@ -138,9 +150,10 @@ Spreadsheets → Claude writes data analysis code. Excel becomes unnecessary.
 Presentations → Claude generates HTML/Marp slides. PowerPoint becomes unnecessary.
 Email → AI drafts and organizes. Outlook's necessity decreases.
 Cloud → Migrate to AWS/GCP/self-hosted. Claude writes the configuration.
+**Copilot → Disable immediately. AI does not go in the product. Use it for development.**
 :::
 
-You don't have to eliminate everything at once. Eliminate one at a time. Each one you eliminate reduces the Microsoft tax.
+This is no longer something you can eliminate gradually. The moment Copilot was tightly coupled into the Microsoft monoculture, every user's data became part of the attack surface. The longer you wait to eliminate it, the more the risk expands.
 
 ## Cloud Tax — Your Own Linux Server Is Enough
 
@@ -326,27 +339,42 @@ Strategy proposals → Claude visualizes options and causal relationships
 
 A consultant's real value is "an outside perspective." But the era of paying tens of millions for "an outside perspective" is ending. Claude is the ultimate outside perspective. Unconstrained by industry conventions. No politics. No deference.
 
-## The Total of Six Taxes
+## The Total of Six Taxes — From Cost to Vulnerability
 
 :::compare
-| Tax | Annual cost (midsize company, 500 people) | Can Claude eliminate it? |
+| Tax | Annual cost (midsize, 500 people) | Urgency (post-Mythos) |
 | --- | --- | --- |
-| Oracle / SQL Server Tax | Millions to tens of millions of yen | Yes, via PostgreSQL migration |
-| Microsoft Tax | Tens of millions of yen | Gradually, yes |
-| Cloud Tax | Millions to tens of millions of yen | Yes, via local Linux servers |
-| SaaS Tax | Tens of millions of yen | Start with the expensive ones |
-| SIer Tax | Tens to hundreds of millions of yen (per project) | Most of it, yes |
-| Consultant Tax | Tens of millions of yen (per engagement) | Most of it, yes |
-| **Total** | **¥100M+ per year in "taxes"** | — |
+| Oracle / SQL Server Tax | Millions to tens of millions of yen | High (black-box legacy = attack surface) |
+| Microsoft Tax | Tens of millions of yen | **Top priority (Copilot is a backdoor. Act now)** |
+| Cloud Tax | Millions to tens of millions of yen | High (self-managed to shrink attack surface) |
+| SaaS Tax | Tens of millions of yen | Medium–High (SaaS with AI agents especially dangerous) |
+| SIer Tax | Tens to hundreds of millions of yen (per project) | High (not understanding your own structure = vulnerability) |
+| Consultant Tax | Tens of millions of yen (per engagement) | Medium (outsourcing structural judgment = delayed response risk) |
+| **Total** | **¥100M+ per year in "taxes"** | **All: begin immediately** |
 :::
 
 Claude's cost is orders of magnitude less than these taxes. A few tens of thousands of yen per month in Claude usage can eliminate tens to hundreds of millions of yen in annual taxes.
+
+But this is no longer about cost reduction.
+
+:::highlight
+**What Mythos changed:**
+Before 2026 → "Eliminating taxes saves costs. Take your time, do it gradually."
+After April 2026 → "Taxes = dependency on monoculture = attack surface. Eliminate now or systems collapse."
+Median patch window → 70 days. Mythos vulnerability discovery and weaponization → hours.
+Expected public release → late 2026 to early 2027.
+**We have six months to one year.**
+:::
 
 :::quote
 The bulk of enterprise IT spending is not technology investment — it is "taxes."
 Oracle tax, Microsoft tax, cloud tax, SaaS tax, SIer tax, consultant tax —
 paid because there's no alternative, paid out of inertia, paid because switching is frightening.
 Claude is the tool that structurally eliminates these taxes.
-Just as NVIDIA's CUDA lock-in is broken by AI,
-Oracle's, Microsoft's, and SIer lock-in will be broken by AI too.
+But with Mythos here, this is no longer about cost optimization.
+Dependency on monoculture is structural vulnerability.
+Eliminating taxes means reducing attack surface.
+Tight coupling to loose coupling. Black boxes to structures you understand.
+Use AI for development. Do not embed it in the product.
+Change the structure in the time remaining, or collapse is unavoidable.
 :::

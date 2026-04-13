@@ -134,8 +134,9 @@ Outsource to an SIer → A black-box system is delivered
 :::chain
 **With development independence:**
 You + AI develop → You understand all the code
-→ Static HTML + Nginx → Attack surface is zero
-→ No CMS, no DB, no API → No entry point
+→ Public sites → Static HTML + Nginx → Attack surface is zero
+→ Business tools → Locally-run code (Python, etc.) → No external communication
+→ No CMS, no external APIs, SQLite locally if needed
 → Even if Mythos arrives, there is no way in → **No need to defend at all**
 :::
 
@@ -171,7 +172,7 @@ SaaS-embedded AI → Vendor's AI accesses your data. Beyond your control
 
 The correct way to use AI is clear. **Use it for development. Never put it in production.**
 
-Generate code with Claude Code. Human reviews it. Build. Deploy only static HTML. AI exists only within the development process, completely excluded from production.
+Generate code with Claude Code. Human reviews it. Build. For public-facing sites, deploy static HTML. For business tools, run locally-executed code like Python. In both cases, AI exists only within the development process — completely excluded from production and runtime environments.
 
 ## The End of the SIer Model
 

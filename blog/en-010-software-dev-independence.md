@@ -311,7 +311,7 @@ This is not a job to hand off to AI agents. Letting AI agents autonomously handl
 
 And tasks that require no judgment do not need humans at all. Just turn them into code. Monthly sales aggregation, reports in fixed formats, periodic data backups — any task where no judgment is involved can be automated by writing a script with Claude Code. Humans only do work that requires judgment.
 
-The majority of desk workers had "being able to use Office" as their job skill. That skill becomes unnecessary. What replaces it is "the ability to decide what to instruct AI" — in other words, understanding the purpose of your own work.
+**This means the value of desk work drops to zero.** Instruct Claude to create reports, presentations, and emails, and any task that can be done as desk work is finished in an instant. Work that took 8 hours — building reports in Excel, polishing slides in PowerPoint, writing meeting notes in Word — is completed with a single instruction to Claude. The majority of desk workers had "being able to use Office" as their job skill. Now that skill is unnecessary. All that remains is "the ability to decide what to create and what to communicate."
 
 This may look like a high bar. But consider — aiseed.dev was built in 24 hours. Zero lines of human-written code. All you need is the ability to decide what to build.
 

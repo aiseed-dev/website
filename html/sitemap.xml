@@ -36,17 +36,17 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/insights/drone-defense/</loc>
-    <lastmod>2026-04-13</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://aiseed.dev/insights/fusion/</loc>
     <lastmod>2026-04-13</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/insights/agi/</loc>
+    <loc>https://aiseed.dev/insights/mythos/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/insights/microsoft/</loc>
     <lastmod>2026-04-13</lastmod>
     <priority>0.7</priority>
   </url>
@@ -61,22 +61,17 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/insights/healthcare-fiscal/</loc>
-    <lastmod>2026-04-13</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://aiseed.dev/insights/subtraction-design/</loc>
-    <lastmod>2026-04-13</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://aiseed.dev/insights/regulation-redesign/</loc>
-    <lastmod>2026-04-13</lastmod>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://aiseed.dev/insights/ai-and-individual/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/insights/drone-defense/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/insights/healthcare-fiscal/</loc>
     <lastmod>2026-04-13</lastmod>
     <priority>0.7</priority>
   </url>
@@ -86,7 +81,17 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/insights/dev-story/</loc>
+    <loc>https://aiseed.dev/insights/regulation-redesign/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/insights/subtraction-design/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/insights/security-design/</loc>
     <lastmod>2026-04-13</lastmod>
     <priority>0.7</priority>
   </url>
@@ -106,17 +111,17 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/en/insights/drone-defense/</loc>
-    <lastmod>2026-04-13</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://aiseed.dev/en/insights/fusion/</loc>
     <lastmod>2026-04-13</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/en/insights/agi/</loc>
+    <loc>https://aiseed.dev/en/insights/mythos/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/insights/microsoft/</loc>
     <lastmod>2026-04-13</lastmod>
     <priority>0.6</priority>
   </url>
@@ -131,22 +136,17 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/en/insights/healthcare-fiscal/</loc>
-    <lastmod>2026-04-13</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://aiseed.dev/en/insights/subtraction-design/</loc>
-    <lastmod>2026-04-13</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://aiseed.dev/en/insights/regulation-redesign/</loc>
-    <lastmod>2026-04-13</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://aiseed.dev/en/insights/ai-and-individual/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/insights/drone-defense/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/insights/healthcare-fiscal/</loc>
     <lastmod>2026-04-13</lastmod>
     <priority>0.6</priority>
   </url>
@@ -156,7 +156,17 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/en/insights/dev-story/</loc>
+    <loc>https://aiseed.dev/en/insights/regulation-redesign/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/insights/subtraction-design/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/insights/security-design/</loc>
     <lastmod>2026-04-13</lastmod>
     <priority>0.6</priority>
   </url>

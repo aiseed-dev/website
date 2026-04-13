@@ -214,6 +214,74 @@ No matter how powerful the defense's AI, if attackers vastly outnumber defenders
 
 **That is why "eliminating the attack surface" — not "defending" — is the only solution.**
 
+## The Biggest Problem Among Glasswing's 12 — Microsoft
+
+Looking at Glasswing's 12 companies structurally, Microsoft alone is fundamentally different.
+
+The other 11 use Mythos to "defend their own infrastructure." Patch and secure. Simple.
+
+:::compare
+| Company | What they do with Mythos | Structure |
+| --- | --- | --- |
+| AWS | Patch cloud infrastructure vulnerabilities | Focused on patching. Simple |
+| Apple | Patch iOS/macOS vulnerabilities | Focused on patching. Simple |
+| Google | Patch Chrome/Android vulnerabilities | Focused on patching. Simple |
+| Cisco | Patch network equipment vulnerabilities | Focused on patching. Simple |
+| **Microsoft** | Patch Windows/Office vulnerabilities | **Patching while simultaneously expanding the attack surface with Copilot** |
+:::
+
+**Microsoft alone is patching and expanding at the same time.**
+
+While patching vulnerabilities discovered by Mythos, Microsoft continues adding Windows Copilot and Microsoft 365 Copilot — new attack surfaces — across all products. Plugging holes with the right hand while drilling new ones with the left.
+
+:::chain
+**Microsoft's structural contradiction:**
+Joins Glasswing → Scans vulnerabilities with Mythos → Develops patches
+→ But simultaneously pushing Copilot integration into all products
+→ Copilot = OS-level AI agent = new attack surface
+→ Plus Windows + Entra ID + M365 + Azure tight coupling remains
+→ One breach collapses everything — that structure is unchanged
+→ Decades of legacy codebase = world's largest attack surface — unchanged
+→ **Even as Mythos patches vulnerabilities, Copilot integration keeps adding more**
+→ **Among the 12, Microsoft's patching will be the most difficult, slowest, and least complete**
+:::
+
+And when Mythos is released to the public, Microsoft will likely have the most unpatched vulnerabilities remaining. The codebase is too massive. The legacy runs too deep. The tight coupling is too complex.
+
+### The Decision to Abandon Windows and Office
+
+This raises a fundamental question.
+
+**Is continuing to use Microsoft Windows and Office a rational choice in the Mythos era?**
+
+:::highlight
+**Reasons to abandon Windows/Office:**
+Windows → 1,300+ CVEs per year + Copilot integration = the OS itself is the attack surface
+Office → Opening a file triggers attacks + Copilot sends all documents to external AI
+Tight coupling → Windows + Entra ID + M365 + Azure = one breach collapses all
+Legacy → Decades of backward compatibility = attack surface too large even for Mythos to fully patch
+**Will you continue depending on Microsoft — the slowest to patch among the 12 — for your security?**
+:::
+
+Alternatives exist.
+
+:::compare
+| | Microsoft dependency | Post-Microsoft |
+| --- | --- | --- |
+| OS | Windows (Copilot integrated, 1,300+ CVEs/year) | Linux (open source, auditable, no Copilot) |
+| Office | M365 + Copilot (all documents sent via external AI) | LibreOffice / Markdown + Claude (local processing) |
+| Email | Outlook (attack triggers from preview pane) | Thunderbird / self-hosted server |
+| Auth | Entra ID (the hub of tight coupling) | Self-managed auth / passkeys |
+| Development | VS Code + Copilot (code sent externally) | Claude Code (dev only. No AI in production) |
+| Attack surface | **Enormous. Too large even for Mythos to fully patch** | **Minimal. Under your own control** |
+:::
+
+Abandoning Windows/Office is a major decision. The resistance to leaving a familiar environment is strong. But the question is not "is it familiar" — it is "can you survive the Mythos era."
+
+Will you entrust your security to Microsoft — the most problematic among Glasswing's 12 — or take back control with Linux + Claude Code?
+
+**Convenience → dependency → monopoly → tight coupling → collapse. If you're going to escape this structure, now is the time.**
+
 ## Practice: 5 Principles for Development Independence
 
 :::highlight

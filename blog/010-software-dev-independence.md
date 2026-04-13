@@ -213,6 +213,74 @@ Glasswingの外側 → **自力で守るしかない**
 
 **だからこそ、「守る」のではなく「攻撃面をなくす」ことが唯一の解だ。**
 
+## Glasswing12社の中で最大の問題——Microsoft
+
+Glasswingの12社を構造的に見ると、Microsoftだけが異質だ。
+
+他の11社は「自社のインフラを守る」ためにMythosを使う。修正して、安全にする。シンプルだ。
+
+:::compare
+| 企業 | Mythosでやること | 構造 |
+| --- | --- | --- |
+| AWS | クラウドインフラの脆弱性を修正 | 修正に集中。シンプル |
+| Apple | iOS/macOSの脆弱性を修正 | 修正に集中。シンプル |
+| Google | Chrome/Androidの脆弱性を修正 | 修正に集中。シンプル |
+| Cisco | ネットワーク機器の脆弱性を修正 | 修正に集中。シンプル |
+| **Microsoft** | Windows/Officeの脆弱性を修正 | **修正しながらCopilotで攻撃面を拡大し続けている** |
+:::
+
+**Microsoftだけが、修正と拡大を同時にやっている。**
+
+Mythosで発見された脆弱性をパッチする一方で、Windows CopilotとMicrosoft 365 Copilotという新しい攻撃面を全製品に追加し続けている。右手で穴を塞ぎながら、左手で新しい穴を開けている。
+
+:::chain
+**Microsoftの構造的矛盾：**
+Glasswingに参加 → Mythosで脆弱性をスキャン → パッチを開発
+→ しかし同時にCopilotを全製品に統合推進中
+→ Copilot = OSレベルのAIエージェント = 新しい攻撃面
+→ さらにWindows + Entra ID + M365 + Azure の密結合
+→ 1箇所の突破で全体が崩壊する構造はそのまま
+→ 数十年のレガシーコードベース = 世界最大の攻撃面もそのまま
+→ **Mythosで修正しても、Copilot統合で攻撃面が増え続ける**
+→ **12社の中で修正が最も困難で、最も時間がかかり、最も不完全になる**
+:::
+
+そしてMythosが一般公開された時、最も多くの未修正脆弱性を抱えているのもMicrosoftだろう。コードベースが巨大すぎる。レガシーが深すぎる。密結合が複雑すぎる。
+
+### Windows、Officeを捨てる決断
+
+ここで根本的な問いが生まれる。
+
+**MicrosoftのWindowsとOfficeを使い続けることは、Mythos時代に合理的な選択なのか？**
+
+:::highlight
+**Windows/Officeを捨てる理由：**
+Windows → 年間1,300件以上の脆弱性 + Copilot統合 = OS自体が攻撃面
+Office → ファイルを開くだけで攻撃成立 + Copilotが全文書を外部送信
+密結合 → Windows + Entra ID + M365 + Azure = 1箇所突破で全崩壊
+レガシー → 数十年の後方互換性 = Mythosでも修正しきれない攻撃面
+**Glasswing12社の中で最も修正が遅れるMicrosoftに、自分のセキュリティを依存し続けるのか？**
+:::
+
+代替は存在する。
+
+:::compare
+| | Microsoft依存 | 脱Microsoft |
+| --- | --- | --- |
+| OS | Windows（Copilot統合、年間1,300件CVE） | Linux（オープンソース、監査可能、Copilotなし） |
+| オフィス | M365 + Copilot（全文書が外部AI経由） | LibreOffice / Markdown + Claude（ローカル処理） |
+| メール | Outlook（プレビューだけで攻撃成立） | Thunderbird / 自前サーバー |
+| 認証 | Entra ID（密結合の起点） | 自前の認証 / パスキー |
+| 開発 | VS Code + Copilot（コードが外部送信） | Claude Code（開発時のみ。本番にAIなし） |
+| 攻撃面 | **巨大。Mythosでも修正しきれない** | **最小。自分でコントロール可能** |
+:::
+
+Windows/Officeを捨てることは、大きな決断だ。慣れた環境を手放すことへの抵抗は大きい。しかし問うべきは「慣れているか」ではなく「Mythos時代に生き残れるか」だ。
+
+Glasswingの12社の中で最も問題を抱えているMicrosoftに自分のセキュリティを委ねるか、それともLinux＋Claude Codeで自分の手にコントロールを取り戻すか。
+
+**便利→依存→独占→密結合→崩壊。この構造から脱出するなら、今だ。**
+
 ## 実践：開発の自立のための5原則
 
 :::highlight

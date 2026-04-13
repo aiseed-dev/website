@@ -315,7 +315,7 @@ And tasks that require no judgment do not need humans at all. Just turn them int
 
 But what disappears is "Office operation," not desk work as a whole. Desk work that requires judgment remains. Executive decisions, negotiations, strategic planning, personnel evaluation, customer policy decisions — these can only be done by humans. Real-world jobs also remain in abundance: agriculture, manufacturing, construction, healthcare, caregiving, customer service, logistics. What disappears is only the part where "operating a tool was the job."
 
-And what disappears completely is **outsourced desk work.** Creating reports, data entry, organizing documents — many companies have been delegating these to temporary workers and outsourcing firms. But there is no reason to outsource work that finishes in an instant with a single instruction to Claude. The same structure as the collapse of SIer dependency in software development.
+And what disappears completely is **outsourced desk work.** In Japan, temporary staffing and outsourcing have been expanding since the 1990s. Creating reports, data entry, organizing documents, accounting tasks — the structure of delegating these to temporary workers and outsourcing firms has taken root over more than 30 years. But there is no reason to outsource work that finishes in an instant with a single instruction to Claude. A structure that took 30 years to build becomes unnecessary with AI. The same structure as the collapse of SIer dependency in software development.
 
 This may look like a high bar. But consider — aiseed.dev was built in 24 hours. Zero lines of human-written code. All you need is the ability to decide what to build.
 

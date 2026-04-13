@@ -333,6 +333,34 @@ Will you entrust your security to Microsoft — the most problematic among Glass
 
 **Convenience → dependency → monopoly → tight coupling → collapse. If you're going to escape this structure, now is the time.**
 
+## Mythos Will Be Released in the Near Future
+
+Mythos will not remain sealed forever.
+
+Anthropic's decision not to release it publicly is "a choice to buy time." As history shows, technologies deemed too powerful are initially restricted, then eventually released. Nuclear technology remains strictly controlled. Strong cryptography was released to the public. Which path will AI follow? Most likely, the path of cryptography.
+
+The reason is clear. **Once Glasswing's 12 companies finish patching, there is no reason to keep it sealed.**
+
+:::chain
+**The structure leading to Mythos release:**
+Glasswing's 12 companies scan their systems with Mythos
+→ Thousands of zero-day vulnerabilities are patched
+→ But Microsoft alone is anomalous — patching while expanding the attack surface with Copilot
+→ The Windows/Office legacy codebase is the world's largest. Patching takes the longest
+→ Glasswing completion depends on Microsoft's progress
+→ Still, once core infrastructure is secure, the reason to keep Mythos sealed disappears
+→ For Anthropic, release = revenue (Claude Code is $1B/year. Mythos is the tier above)
+→ For the industry, release = stronger collective defense
+→ Competitors (OpenAI, Google DeepMind) are also closing in
+→ **Glasswing patching complete = green light for Mythos release. The bottleneck is Microsoft**
+:::
+
+In other words, the Mythos seal is not a "permanent lock" — it is a "grace period until the 12 companies finish patching." After Glasswing participants have secured their systems, Mythos will be released to the public. At that moment, every organization that has not finished patching becomes a target.
+
+Claude Opus 4.6 already generates 70–90% of code and drives $1 billion in annual revenue. Mythos is the next stage. Not just writing code, but finding vulnerabilities in existing code and auto-generating exploit code. Given the timeline for Glasswing patching to complete, general availability should be expected between late 2026 and early 2027.
+
+**That means the preparation window is six months to one year.**
+
 ## Practice: 5 Principles for Development Independence
 
 :::highlight
@@ -384,32 +412,6 @@ Human → Verifies what the system does → Deploys
 As the transcript states — "The boundary between what AI can and cannot do is constantly shifting. But those who can answer the fundamental question of *why* a human does that work will not lose their purpose, even as the boundary moves."
 
 Software development independence is not about writing code. **It is about deciding what to build, designing the structure, co-developing with AI, and taking responsibility for the result.**
-
-## Mythos Will Be Released in the Near Future
-
-Mythos will not remain sealed forever.
-
-Anthropic's decision not to release it publicly is "a choice to buy time." As history shows, technologies deemed too powerful are initially restricted, then eventually released. Nuclear technology remains strictly controlled. Strong cryptography was released to the public. Which path will AI follow? Most likely, the path of cryptography.
-
-The reason is clear. **Once Glasswing's 12 companies finish patching, there is no reason to keep it sealed.**
-
-:::chain
-**The structure leading to Mythos release:**
-Glasswing's 12 companies scan their systems with Mythos
-→ Thousands of zero-day vulnerabilities are patched
-→ Once the 12 companies' core infrastructure is secure
-→ The reason to keep Mythos sealed disappears
-→ For Anthropic, release = revenue (Claude Code is $1B/year. Mythos is the tier above)
-→ For the industry, release = stronger collective defense
-→ Competitors (OpenAI, Google DeepMind) are also closing in
-→ **Glasswing patching complete = green light for Mythos release**
-:::
-
-In other words, the Mythos seal is not a "permanent lock" — it is a "grace period until the 12 companies finish patching." After Glasswing participants have secured their systems, Mythos will be released to the public. At that moment, every organization that has not finished patching becomes a target.
-
-Claude Opus 4.6 already generates 70–90% of code and drives $1 billion in annual revenue. Mythos is the next stage. Not just writing code, but finding vulnerabilities in existing code and auto-generating exploit code. Given the timeline for Glasswing patching to complete, general availability should be expected between late 2026 and early 2027.
-
-**That means the preparation window is six months to one year.**
 
 ## Preparing for Mythos Release — What to Do Now
 

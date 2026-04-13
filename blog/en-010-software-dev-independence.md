@@ -317,6 +317,12 @@ But what disappears is "Office operation," not desk work as a whole. Desk work t
 
 And what disappears completely is **outsourced desk work.** In Japan, temporary staffing and outsourcing have been expanding since the 1990s. Creating reports, data entry, organizing documents, accounting tasks — the structure of delegating these to temporary workers and outsourcing firms has taken root over more than 30 years. But there is no reason to outsource work that finishes in an instant with a single instruction to Claude. A structure that took 30 years to build becomes unnecessary with AI. The same structure as the collapse of SIer dependency in software development.
 
+"AI will destroy jobs" — this concern is misplaced. What disappears is Office operation and outsourced tasks. But at the same time, work increases from another direction.
+
+If naphtha (petrochemical feedstock) supply becomes unstable, the infrastructure supporting plastic packaging, chemical products, and modern mass distribution breaks down. The premise of big-box retail and mass production/consumption collapses. What returns is local commerce. Face-to-face sales, selling by weight, repair and reuse, local markets — the old forms of trade come back.
+
+The direction where AI eliminates desk work and the direction where naphtha scarcity revives local commerce converge at the same point: **work where humans are on-site, making judgments, and engaging with people face to face.** Jobs do not disappear. Their form changes. From Office operation and outsourcing to real-world work and judgment.
+
 This may look like a high bar. But consider — aiseed.dev was built in 24 hours. Zero lines of human-written code. All you need is the ability to decide what to build.
 
 **Building your own apps is easy.** Claude Code writes the code. Once Mythos is released, you can security-check your own apps yourself. Build → check → fix — this entire cycle is completed by you + AI. No external security audits. No SIer engagements. No waiting for vendor patches.

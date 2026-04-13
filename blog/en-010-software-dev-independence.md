@@ -325,6 +325,8 @@ The direction where AI eliminates desk work and the direction where naphtha scar
 
 And these two forces arrive simultaneously. The push out of desk work and the pull into real-world work happen at the same time. If only one came, the transition would be slow. But when both arrive at once, recovery is fast.
 
+The timing overlaps too. Mythos release is expected between late 2026 and early 2027. Naphtha shortages disrupting plastic product supply will become apparent during 2026. **The world's structure changes within this year.** The Industrial Revolution took decades. This time it takes months.
+
 This may look like a high bar. But consider — aiseed.dev was built in 24 hours. Zero lines of human-written code. All you need is the ability to decide what to build.
 
 **Building your own apps is easy.** Claude Code writes the code. Once Mythos is released, you can security-check your own apps yourself. Build → check → fix — this entire cycle is completed by you + AI. No external security audits. No SIer engagements. No waiting for vendor patches.

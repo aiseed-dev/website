@@ -1,15 +1,15 @@
 ---
 slug: ai-and-individual
-number: "12"
+number: "09"
 title: AIと個人事業
 subtitle: 1人＋AIで、農家が研究者に、個人が企業になる
 description: Claudeは経理をし、宣伝をし、法務をチェックし、翻訳をし、プログラミングをする。1人＋AIで大企業と同等の機能を持てる時代。農家は研究者になり、個人事業者はあらゆる専門職を兼ねる。
 date: 2025.04.04
-label: Structural Analysis 12
-prev_slug: regulation-redesign
-prev_title: 規制の再設計
-next_slug: cases
-next_title: 事例が証明する
+label: Structural Analysis 09
+prev_slug: enterprise-tax
+prev_title: 企業ITの脆弱性
+next_slug: drone-defense
+next_title: ドローン＋AIと小国防衛
 ---
 
 ## 1人＋AIで何ができるか

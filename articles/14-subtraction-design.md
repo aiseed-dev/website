@@ -1,15 +1,15 @@
 ---
 slug: subtraction-design
-number: "10"
+number: "14"
 title: 引き算の設計
 subtitle: 今とはかなり違う世界を、どう設計するか
 description: 化石資源、自由貿易、東京一極集中、都市型医療・年金——現在の社会の前提が全て崩れる。個別の修正では済まない。何を引き、何を残すか。引き算で社会を設計し直す。
 date: 2025.04.04
-label: Structural Analysis 10
-prev_slug: healthcare-fiscal
-prev_title: 社会の設計ミス
-next_slug: regulation-redesign
-next_title: 規制の再設計
+label: Structural Analysis 14
+prev_slug: regulation-redesign
+prev_title: 規制の再設計
+next_slug: security-design
+next_title: Mythos時代のセキュリティ設計
 ---
 
 ## 前章からの問い

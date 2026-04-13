@@ -9,8 +9,8 @@ date: 2025.04.04
 label: Structural Analysis 08
 prev_slug: nvidia
 prev_title: NVIDIA's Collapse
-next_slug: healthcare-fiscal
-next_title: Society's Design Failure
+next_slug: ai-and-individual
+next_title: AI and the Individual
 cta_label: Act Now
 cta_title: With nature, we can live.
 cta_text: Stop paying taxes to vendors. Start building what you actually need.

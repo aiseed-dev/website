@@ -1,15 +1,15 @@
 ---
 slug: healthcare-fiscal
-number: "09"
+number: "11"
 title: 社会の設計ミス
 subtitle: 軍需産業、IT企業、デスクワーカー、医療、年金——全てが同時に崩壊する
 description: 化石資源の枯渇で軍需産業が衰退し、AGI不採算でIT企業が縮小し、AIでデスクワーカーが激減する。そして透析は化石資源に依存し、年金は現役世代を圧殺する。全ての問題の根は同じだ。
 date: 2025.04.04
-label: Structural Analysis 09
-prev_slug: enterprise-tax
-prev_title: 企業ITの税を引く
-next_slug: subtraction-design
-next_title: 引き算の設計
+label: Structural Analysis 11
+prev_slug: drone-defense
+prev_title: ドローン＋AIと小国防衛
+next_slug: cases
+next_title: 巨大な権力は悲劇を生む
 ---
 
 ## 軍需産業の衰退

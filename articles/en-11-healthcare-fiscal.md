@@ -1,16 +1,16 @@
 ---
 slug: healthcare-fiscal
-number: "09"
+number: "11"
 lang: en
 title: Society's Design Failure
 subtitle: Military, IT, Desk Workers, Healthcare, Pensions — All Collapsing Together
 description: Fossil depletion shrinks the military industry. AGI failure shrinks IT. AI eliminates desk workers. Dialysis depends on fossil fuels. Pensions crush the working generation. The root is the same — departure from nature.
 date: 2025.04.04
-label: Structural Analysis 09
-prev_slug: enterprise-tax
-prev_title: Eliminating Enterprise IT Taxes
-next_slug: subtraction-design
-next_title: Subtraction Design
+label: Structural Analysis 11
+prev_slug: drone-defense
+prev_title: Drones, AI, and Small Nation Defense
+next_slug: cases
+next_title: Great Power Breeds Tragedy
 cta_label: Back to Life
 cta_title: With nature, we can live.
 cta_text: Not curing disease — preventing it. Not depending on pensions — not needing them.

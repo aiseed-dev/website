@@ -1,16 +1,16 @@
 ---
 slug: fusion
-number: "05"
+number: "04"
 lang: en
-title: The Nuclear Fusion Mistake
+title: The Nuclear Fusion and EV Mistake
 subtitle: Energy Can Be Replaced — Materials Cannot
-description: Nuclear fusion produces electricity but not sulfur, naphtha, or plastics. Solving the energy problem does not solve the food problem. The question itself is wrong.
+description: Nuclear fusion and EVs only solve "energy replacement." Fusion reactors depend on tungsten and beryllium. EVs depend on lithium and cobalt. Neither can be manufactured without fossil resources and rare minerals. The question itself is wrong.
 date: 2025.04.04
-label: Structural Analysis 05
-prev_slug: drone-defense
-prev_title: Drones, AI, and Small Nation Defense
-next_slug: agi
-next_title: The AGI Mistake
+label: Structural Analysis 04
+prev_slug: agriculture
+prev_title: The Agriculture Mistake
+next_slug: mythos
+next_title: Mythos Has Arrived
 cta_label: Structure
 cta_title: With nature, we can live.
 cta_text: Energy can be replaced. Materials cannot. But soil microbes can produce what refineries cannot.

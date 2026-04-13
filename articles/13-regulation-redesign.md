@@ -1,15 +1,15 @@
 ---
 slug: regulation-redesign
-number: "11"
+number: "13"
 title: 規制の再設計
 subtitle: 化石資源時代の規制が、転換を妨げている
 description: 農地法、自由貿易協定、医療・年金制度——全て化石資源時代に設計された。リン酸肥料の硫黄依存が示すように、エネルギーと食料は不可分だ。規制を再設計しなければ、引き算の設計は実現しない。
 date: 2025.04.04
-label: Structural Analysis 11
-prev_slug: subtraction-design
-prev_title: 引き算の設計
-next_slug: ai-and-individual
-next_title: AIと個人事業
+label: Structural Analysis 13
+prev_slug: cases
+prev_title: 巨大な権力は悲劇を生む
+next_slug: subtraction-design
+next_title: 引き算の設計
 ---
 
 ## なぜ規制の再設計が必要か

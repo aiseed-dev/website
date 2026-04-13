@@ -1,15 +1,15 @@
 ---
 slug: cases
-number: "13"
+number: "12"
 title: 巨大な権力は悲劇を生む
 subtitle: ダストボウル、ホロドモール、パンジャブ、そしてエプスタイン——権力が隠してきたものをAIが暴く
 description: 巨大な権力が土壌を殺し、人を殺し、真実を隠してきた歴史。そしてNVIDIA税、Oracle税、クラウド税、SIer税が消え、個人＋AIが嘘を暴く時代が来る。
 date: 2025.04.04
-label: Structural Analysis 13
-prev_slug: ai-and-individual
-prev_title: AIと個人事業
-next_slug: dev-story
-next_title: このサイトはAIが作った
+label: Structural Analysis 12
+prev_slug: healthcare-fiscal
+prev_title: 社会の設計ミス
+next_slug: regulation-redesign
+next_title: 規制の再設計
 ---
 
 ## 巨大な権力が繰り返してきたこと

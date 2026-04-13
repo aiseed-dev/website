@@ -1,16 +1,16 @@
 ---
 slug: cases
-number: "13"
+number: "12"
 lang: en
 title: Great Power Breeds Tragedy
 subtitle: The Dust Bowl, the Holodomor, Punjab, and Epstein — AI exposes what power has hidden
 description: A history of great power killing soil, killing people, and hiding truth. And the era when NVIDIA taxes, Oracle taxes, cloud taxes, and SIer taxes vanish — when individuals plus AI expose the lies.
 date: 2025.04.04
-label: Structural Analysis 13
-prev_slug: ai-and-individual
-prev_title: AI and the Individual
-next_slug: dev-story
-next_title: This Site Was Built by AI
+label: Structural Analysis 12
+prev_slug: healthcare-fiscal
+prev_title: Society's Design Failure
+next_slug: regulation-redesign
+next_title: Regulation Redesign
 cta_label: Return to Nature
 cta_title: Nature recovers. So do we.
 cta_text: Great power does not last. Nature does. The era of the individual has arrived.

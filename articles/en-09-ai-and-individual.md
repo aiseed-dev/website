@@ -1,16 +1,16 @@
 ---
 slug: ai-and-individual
-number: "12"
+number: "09"
 lang: en
 title: AI and the Individual
 subtitle: 1 person + AI — farmers become researchers, individuals become enterprises
 description: Claude handles accounting, marketing, legal review, translation, and programming. An era where one person plus AI commands the same capabilities as a corporation. Farmers become researchers. Sole proprietors encompass every specialist role.
 date: 2025.04.04
-label: Structural Analysis 12
-prev_slug: regulation-redesign
-prev_title: Regulation Redesign
-next_slug: cases
-next_title: The Evidence Proves It
+label: Structural Analysis 09
+prev_slug: enterprise-tax
+prev_title: Enterprise IT Vulnerability
+next_slug: drone-defense
+next_title: Drones, AI, and Small Nation Defense
 cta_label: Start Now
 cta_title: One person plus AI.
 cta_text: Every specialist's knowledge, available to every individual. The era of 1 + AI has arrived.

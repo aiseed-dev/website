@@ -1,16 +1,16 @@
 ---
 slug: regulation-redesign
-number: "11"
+number: "13"
 lang: en
 title: Regulation Redesign
 subtitle: Regulations from the fossil era are blocking the transformation
 description: Agricultural land laws, free trade agreements, healthcare and pension systems — all designed for the fossil era. As the sulfur dependency of phosphate fertilizer shows, energy and food are inseparable. Without regulation redesign, subtraction design cannot be realized.
 date: 2025.04.04
-label: Structural Analysis 11
-prev_slug: subtraction-design
-prev_title: Subtraction Design
-next_slug: ai-and-individual
-next_title: AI and the Individual
+label: Structural Analysis 13
+prev_slug: cases
+prev_title: Great Power Breeds Tragedy
+next_slug: subtraction-design
+next_title: Subtraction Design
 cta_label: Start Now
 cta_title: Redesign the rules. Redesign society.
 cta_text: Old regulations block the new world. Change the rules, and the transformation becomes possible.

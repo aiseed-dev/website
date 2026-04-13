@@ -1,13 +1,13 @@
 ---
-slug: dev-story
-number: "A"
-title: このサイトはAIが作った
-subtitle: 30,000行、42ページ、24時間。人間が書いたコードは0行。
-description: aiseed.devは、人間がコードを1行も書かずにClaude Codeだけで開発された。全13章の構造分析シリーズ、ビルドツール、SEO対策——全てAIが生成。これ自体が第8章の実証だ。
-date: 2025.04.05
-label: Appendix A
-prev_slug: cases
-prev_title: 巨大な権力は悲劇を生む
+slug: security-design
+number: "15"
+title: Mythos時代のセキュリティ設計
+subtitle: AIで開発し、プロダクトにはAIを入れない。攻撃面ゼロの実践。
+description: aiseed.devはClaude Codeで開発され、本番環境は静的HTML＋Nginx。AI無し、CMS無し、データベース無し。Mythos級AIが来ても侵入・横展開するエントリーポイントがない。これが構造分析シリーズの結論の実証だ。
+date: 2025.04.13
+label: Structural Analysis 15
+prev_slug: subtraction-design
+prev_title: 引き算の設計
 next_slug: 
 next_title: 
 ---

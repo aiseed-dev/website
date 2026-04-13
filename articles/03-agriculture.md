@@ -8,8 +8,8 @@ date: 2025.04.03
 label: Structural Analysis 03
 prev_slug: fossil-materials
 prev_title: 化石資源と現代文明
-next_slug: drone-defense
-next_title: ドローン＋AIと小国防衛
+next_slug: fusion
+next_title: 核融合・EV化の間違い
 ---
 
 ## 製油所一つで崩壊する農業モデル

@@ -1,14 +1,14 @@
 ---
-slug: dev-story
-number: "A"
+slug: security-design
+number: "15"
 lang: en
-title: This Site Was Built by AI
-subtitle: 30,000+ lines, 42 pages, 24 hours. Zero lines of human-written code.
-description: aiseed.dev was developed entirely by Claude Code with zero human-written code. 13 chapters of structural analysis, a build tool, SEO — all AI-generated. This site itself proves Chapter 8.
-date: 2025.04.05
-label: Appendix A
-prev_slug: cases
-prev_title: Great Power Breeds Tragedy
+title: Security Design for the Mythos Era
+subtitle: Use AI for development. Never embed AI in production. Zero attack surface in practice.
+description: aiseed.dev was developed by Claude Code. The production environment runs static HTML + Nginx. No AI, no CMS, no database. Even Mythos-class AI finds no entry point to infiltrate or laterally traverse. This is the proof of the structural analysis series conclusion.
+date: 2025.04.13
+label: Structural Analysis 15
+prev_slug: subtraction-design
+prev_title: Subtraction Design
 next_slug:
 next_title:
 cta_label: See the Structure

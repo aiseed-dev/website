@@ -1,16 +1,16 @@
 ---
 slug: subtraction-design
-number: "10"
+number: "14"
 lang: en
 title: Subtraction Design
 subtitle: How to design a world quite different from today
 description: Fossil resources, free trade, Tokyo's concentration, urban healthcare and pensions — every premise of current society is collapsing. Incremental fixes won't work. What do we subtract? What do we keep? Redesigning society through subtraction.
 date: 2025.04.04
-label: Structural Analysis 10
-prev_slug: healthcare-fiscal
-prev_title: Society's Design Failure
-next_slug: regulation-redesign
-next_title: Regulation Redesign
+label: Structural Analysis 14
+prev_slug: regulation-redesign
+prev_title: Regulation Redesign
+next_slug: security-design
+next_title: Security Design for the Mythos Era
 cta_label: Start Now
 cta_title: With nature, we can live.
 cta_text: Subtract the unnecessary. What remains is enough.

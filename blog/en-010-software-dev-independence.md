@@ -313,7 +313,7 @@ And tasks that require no judgment do not need humans at all. Just turn them int
 
 **This means the value of desk work drops to zero.** Instruct Claude to create reports, presentations, and emails, and any task that can be done as desk work is finished in an instant. Work that took 8 hours — building reports in Excel, polishing slides in PowerPoint, writing meeting notes in Word — is completed with a single instruction to Claude.
 
-But what disappears is desk work, not work itself. Agriculture, manufacturing, construction, healthcare, caregiving, customer service, logistics — real-world jobs remain in abundance. Growing crops, making products, building structures, caring for people. These are things AI cannot do. The time and energy once spent on desk work can now flow toward these truly valuable jobs.
+But what disappears is "Office operation," not desk work as a whole. Desk work that requires judgment remains. Executive decisions, negotiations, strategic planning, personnel evaluation, customer policy decisions — these can only be done by humans. Real-world jobs also remain in abundance: agriculture, manufacturing, construction, healthcare, caregiving, customer service, logistics. What disappears is only the part where "operating a tool was the job."
 
 This may look like a high bar. But consider — aiseed.dev was built in 24 hours. Zero lines of human-written code. All you need is the ability to decide what to build.
 

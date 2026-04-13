@@ -266,6 +266,57 @@ As the transcript states — "The boundary between what AI can and cannot do is 
 
 Software development independence is not about writing code. **It is about deciding what to build, designing the structure, co-developing with AI, and taking responsibility for the result.**
 
+## Mythos Will Be Released in the Near Future
+
+Mythos will not remain sealed forever.
+
+Anthropic's decision not to release it publicly is "a choice to buy time." As history shows, technologies deemed too powerful are initially restricted, then eventually released. Nuclear technology remains strictly controlled. Strong cryptography was released to the public. Which path will AI follow? Most likely, the path of cryptography.
+
+The reasons are clear.
+
+:::chain
+**Why Mythos will move toward release:**
+Even if Anthropic seals it → Equivalent models will be developed elsewhere
+→ Competitors (OpenAI, Google DeepMind, Chinese research labs) will catch up
+→ A defense-only restriction is unsustainable long-term
+→ Pressure from the open-source community will mount
+→ **Sealing is a time-buying measure, not a permanent lock**
+:::
+
+Claude Opus 4.6 already generates 70–90% of code and drives $1 billion in annual revenue. Mythos is the next stage. Not just writing code, but finding vulnerabilities in existing code and auto-generating exploit code. General availability should be expected between late 2026 and early 2027.
+
+**That means the preparation window is six months to one year.**
+
+## Preparing for Mythos Release — What to Do Now
+
+The moment Mythos is released, two things happen simultaneously:
+
+1. **Defenders can scan their own systems with Mythos**
+2. **Attackers begin scanning targets with Mythos**
+
+The time gap between discovery and patch determines survival. Whether that gap is zero depends on today's preparation.
+
+:::compare
+| | Prepared organizations | Unprepared organizations |
+| --- | --- | --- |
+| Source code | On hand. Fully understood | SIer's black box |
+| Structural understanding | Self-designed. Instant judgment | Nobody knows the full picture |
+| Vulnerability fixes | Self + AI, immediate | Re-engage SIer → weeks to months |
+| Attack surface | Static HTML. Nothing to scan | CMS + DB + API + admin panel + AI agents |
+| Survival after Mythos release | **Structurally safe** | **First targets** |
+:::
+
+:::highlight
+**What you can start today:**
+1. Keep your source code on hand. Publish everything on GitHub
+2. Understand your system's structure yourself. Eliminate black boxes
+3. Start practicing development with Claude Code. Build the ability to co-develop with AI
+4. Begin reducing your attack surface. CMS → static HTML, DB → file-based, API → minimal
+5. Remove AI agents from production
+**When Mythos is released, be ready to run security checks immediately.**
+**That requires having the source code and understanding the structure.**
+:::
+
 ## Surviving Outside Glasswing
 
 Glasswing's 12 companies will use Mythos to defend their systems.
@@ -276,10 +327,14 @@ The countless companies, municipalities, and individuals outside that circle mus
 
 That requires taking software development back into your own hands. Not outsourcing to SIers. Not accepting black boxes. Using AI as a tool to build simple, transparent structures.
 
+Mythos release is near. The preparation window is six months to one year. If you don't start today, it will be too late.
+
 :::quote
 Mythos has arrived. Only 12 companies are protected.
 The rest must protect themselves.
 But if the attack surface is zero, there is nothing to defend.
 Use AI for development. Never embed AI in production.
-This is the only way to survive outside Glasswing.
+Keep source code on hand. Understand the structure.
+When Mythos is released, be ready to act immediately.
+The preparation window is six months to one year. Start today.
 :::

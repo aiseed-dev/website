@@ -181,6 +181,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/blog/software-dev-independence/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/blog/claude-mythos-wordpress-ai/</loc>
     <lastmod>2026-04-13</lastmod>
     <priority>0.7</priority>
@@ -219,6 +224,11 @@
     <loc>https://aiseed.dev/blog/grid-attack-naphtha/</loc>
     <lastmod>2026-04-13</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/blog/software-dev-independence/</loc>
+    <lastmod>2026-04-13</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://aiseed.dev/en/blog/claude-mythos-wordpress-ai/</loc>

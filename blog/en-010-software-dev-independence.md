@@ -315,6 +315,8 @@ And tasks that require no judgment do not need humans at all. Just turn them int
 
 But what disappears is "Office operation," not desk work as a whole. Desk work that requires judgment remains. Executive decisions, negotiations, strategic planning, personnel evaluation, customer policy decisions — these can only be done by humans. Real-world jobs also remain in abundance: agriculture, manufacturing, construction, healthcare, caregiving, customer service, logistics. What disappears is only the part where "operating a tool was the job."
 
+And what disappears completely is **outsourced desk work.** Creating reports, data entry, organizing documents — many companies have been delegating these to temporary workers and outsourcing firms. But there is no reason to outsource work that finishes in an instant with a single instruction to Claude. The same structure as the collapse of SIer dependency in software development.
+
 This may look like a high bar. But consider — aiseed.dev was built in 24 hours. Zero lines of human-written code. All you need is the ability to decide what to build.
 
 **Building your own apps is easy.** Claude Code writes the code. Once Mythos is released, you can security-check your own apps yourself. Build → check → fix — this entire cycle is completed by you + AI. No external security audits. No SIer engagements. No waiting for vendor patches.

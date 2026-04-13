@@ -325,7 +325,7 @@ The direction where AI eliminates desk work and the direction where naphtha scar
 
 And these two forces arrive simultaneously. The push out of desk work and the pull into real-world work happen at the same time. If only one came, the transition would be slow. But when both arrive at once, recovery is fast.
 
-The timing overlaps too. Both Mythos release and naphtha shortage becoming apparent — **the goal is for this transition to be complete by the end of 2026.** The Industrial Revolution took decades. This time it takes months.
+The timing overlaps too. Both Mythos release and naphtha shortage arrive during 2026. The naphtha shortage is already confirmed. Naphtha processing plants around the world have been shut down, and shut-down plants do not restart quickly. Plastic product supply shortages will progress gradually but inevitably. **The goal is for this transition to be complete by the end of 2026.** The Industrial Revolution took decades. This time it takes months.
 
 This may look like a high bar. But consider — aiseed.dev was built in 24 hours. Zero lines of human-written code. All you need is the ability to decide what to build.
 

@@ -133,7 +133,7 @@ Outsource to an SIer → A black-box system is delivered
 
 :::chain
 **With development independence:**
-You + AI develop → You understand all the code
+You + AI develop → You understand what the system does
 → Public sites → Static HTML + Nginx → Attack surface is zero
 → Business tools → Locally-run code (Python, etc.) → No external communication
 → No CMS, no external APIs, SQLite locally if needed
@@ -185,7 +185,7 @@ But in a world where Claude Code writes 70–90% of code, the person-month busin
 | --- | --- | --- |
 | Development cost | ¥5–10 million | Claude's monthly subscription |
 | Development time | 2–3 months | 24 hours to a few days |
-| Code understanding | Black box | Full transparency |
+| Structural understanding | Black box | You understand what it does |
 | Vulnerability response | Re-engage SIer (weeks to months) | Fix it yourself, immediately |
 | Attack surface | CMS + DB + API + admin panel | Static HTML (zero) |
 | Survival in Mythos era | **Extremely difficult** | **Structurally safe** |
@@ -298,7 +298,7 @@ It was once common sense that "you can't work without Office." You couldn't buil
 "Can't present without PowerPoint" → Build it with HTML + Claude Code
 "Can't read email without Outlook" → Run your own server
 **Every "can't do without X" is solvable with Claude Code**
-→ And not as a black box, but as a system you fully understand
+→ And not as a black box, but as a system where you understand what it does
 :::
 
 This may look like a high bar. But consider — aiseed.dev was built in 24 hours. Zero lines of human-written code. All you need is the ability to decide what to build.
@@ -307,7 +307,7 @@ This may look like a high bar. But consider — aiseed.dev was built in 24 hours
 
 :::highlight
 **Massive software is unnecessary:**
-Office has thousands of features. But you use less than 5% of them. Build only the features you need, with you + AI. Lightweight, transparent tools that you fully understand.
+Office has thousands of features. But you use less than 5% of them. Build only the features you need, with you + AI. Lightweight, transparent tools where you understand what they do.
 Windows is the same. It holds 72% market share — and 72% of the attack surface. All you need is Linux and the applications you actually use.
 Legacy software should be rebuilt too. Instead of maintaining ancient systems, rebuild them with Claude Code. In 24 hours, you can reconstruct with a new architecture.
 Process locally as much as possible. If you don't depend on external services, data cannot leak. If you don't send to the cloud, it cannot be intercepted. Local processing = minimal attack surface = simpler systems.
@@ -362,9 +362,9 @@ One server, one application. Physically and logically loosely coupled.
 
 :::highlight
 **Principle 5: Eliminate black boxes.**
-A system you cannot understand is a system you cannot defend.
+A system you don't understand is a system you can't defend.
+Understanding does not mean reading every line of code. It means knowing what the system does — where data flows, what gets processed, what communicates externally. Leave the code to AI. Understanding the structure and purpose is the human's job.
 Not a black box delivered by an SIer, but a transparent system built by you and AI.
-All code visible. All configuration understood.
 :::
 
 ## Independence Is Not Isolation
@@ -377,8 +377,8 @@ Claude Code writes the code. Claude reviews the architecture. Claude checks for 
 **The structure of independence:**
 Human → Decides what to build → Instructs AI
 AI → Generates code → Tests → Iterates
-Human → Reviews the result → Deploys
-**The human writes zero lines of code. But controls everything.**
+Human → Verifies what the system does → Deploys
+**The human doesn't write code. Doesn't need to read code. But understands what the system does and controls everything.**
 :::
 
 As the transcript states — "The boundary between what AI can and cannot do is constantly shifting. But those who can answer the fundamental question of *why* a human does that work will not lose their purpose, even as the boundary moves."

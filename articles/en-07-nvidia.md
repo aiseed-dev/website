@@ -7,10 +7,10 @@ subtitle: Selling Shovels to Gold Miners. What If There's No Gold?
 description: NVIDIA's market cap is a bet on AGI demand. But AGI may not break even. GPUs themselves are made from petrochemical materials. No gold mine, no shovel business.
 date: 2025.04.04
 label: Structural Analysis 07
-prev_slug: agi
-prev_title: The AGI Mistake
+prev_slug: microsoft
+prev_title: Microsoft's Collapse
 next_slug: enterprise-tax
-next_title: Eliminating Enterprise IT Taxes
+next_title: Enterprise IT Vulnerability
 cta_label: Structure
 cta_title: With nature, we can live.
 cta_text: The AI gold rush will end. What remains is soil.

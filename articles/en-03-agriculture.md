@@ -9,8 +9,8 @@ date: 2025.04.04
 label: Structural Analysis 03
 prev_slug: fossil-materials
 prev_title: Fossil Materials and Modern Civilization
-next_slug: drone-defense
-next_title: Drones, AI, and Small Nation Defense
+next_slug: fusion
+next_title: The Nuclear Fusion and EV Mistake
 cta_label: The Science
 cta_title: With nature, we can live.
 cta_text: Fukuoka demonstrated it. Dr. Christine Jones explained the science. Now the crisis demands it.

@@ -31,5 +31,9 @@ npm-debug.log*
 # Logs
 *.log
 
-# Vegitage — ビルド成果物（scripts/build.py が生成）
+# ビルド成果物（tools/build_article.py, scripts/build.py が生成）
+html/insights/
+html/en/insights/
+html/blog/
+html/en/blog/
 html/vegitage/italian/

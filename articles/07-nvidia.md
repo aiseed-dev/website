@@ -6,10 +6,10 @@ subtitle: 金鉱掘りにシャベルを売る会社。金鉱がなければ？
 description: NVIDIAの時価総額はAGI需要に賭けた数字だ。しかしAGIは採算が取れない。半導体自体が石油化学素材で作られている。金鉱がなければ、シャベル屋も潰れる。
 date: 2025.04.03
 label: Structural Analysis 07
-prev_slug: agi
-prev_title: AGIの間違い
+prev_slug: microsoft
+prev_title: Microsoftの崩壊
 next_slug: enterprise-tax
-next_title: 企業ITの税を引く
+next_title: 企業ITの脆弱性
 ---
 
 ## シャベル屋のビジネスモデル

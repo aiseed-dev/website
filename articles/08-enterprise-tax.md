@@ -8,8 +8,8 @@ date: 2025.04.03
 label: Structural Analysis 08
 prev_slug: nvidia
 prev_title: NVIDIAの崩壊
-next_slug: healthcare-fiscal
-next_title: 社会の設計ミス
+next_slug: ai-and-individual
+next_title: AIと個人事業
 ---
 
 ## 企業は「税」を払っている

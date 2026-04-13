@@ -263,17 +263,67 @@ Legacy → Decades of backward compatibility = attack surface too large even for
 **Will you continue depending on Microsoft — the slowest to patch among the 12 — for your security?**
 :::
 
-Alternatives exist.
+### Abandoning Office = Building Your Own Apps
+
+Here is the crucial reality. Abandoning Office does not mean "switching to another off-the-shelf product." It means **building your own apps.**
+
+Switching to LibreOffice is simply moving your dependency to another black box. A massive codebase, opaque internals, unpatchable vulnerabilities — repeating the same structure as Microsoft, just in a different place.
+
+**True post-Microsoft means building the functionality you need, yourself, with AI.**
+
+And with Claude Code, this is now a realistic option.
+
+:::compare
+| Office function | Microsoft dependency | Built by you + AI |
+| --- | --- | --- |
+| Documents | Word + Copilot (via external AI) | Markdown + Claude Code → HTML/PDF generation |
+| Spreadsheets | Excel + Copilot (opening a file triggers attack) | Python + pandas + Claude Code → your own analysis tools |
+| Presentations | PowerPoint + Copilot (all slides sent externally) | HTML + CSS + Claude Code → your own slides |
+| Email | Outlook (preview pane triggers attack) | Self-hosted server + simple client |
+| Database | Access / SharePoint | SQLite + Python + Claude Code |
+| Attack surface | **Enormous. Cannot fix yourself** | **Self-built. Fully understood. Instantly fixable** |
+:::
+
+aiseed.dev is the proof. 42 HTML pages, 26 articles, a build system, SEO optimization — all built with Markdown, Python, and Claude Code. No Word. No PowerPoint. No Excel.
+
+**The functionality you need can now be built by you + AI.**
+
+It was once common sense that "you can't work without Office." You couldn't build systems without paying SIers millions of yen. But with Claude Code writing 70–90% of code, that conventional wisdom has collapsed.
+
+:::chain
+**Escaping Office dependency:**
+"Can't write documents without Word" → Write with Markdown + Claude Code
+"Can't analyze data without Excel" → Do it with Python + Claude Code
+"Can't present without PowerPoint" → Build it with HTML + Claude Code
+"Can't read email without Outlook" → Run your own server
+**Every "can't do without X" is solvable with Claude Code**
+→ And not as a black box, but as a system you fully understand
+:::
+
+This may look like a high bar. But consider — aiseed.dev was built in 24 hours. Zero lines of human-written code. All you need is the ability to decide what to build.
+
+**Building your own apps is easy.** Claude Code writes the code. Once Mythos is released, you can security-check your own apps yourself. Build → check → fix — this entire cycle is completed by you + AI. No external security audits. No SIer engagements. No waiting for vendor patches.
+
+:::highlight
+**Massive software is unnecessary:**
+Office has thousands of features. But you use less than 5% of them. Build only the features you need, with you + AI. Lightweight, transparent tools that you fully understand.
+Windows is the same. It holds 72% market share — and 72% of the attack surface. All you need is Linux and the applications you actually use.
+Legacy software should be rebuilt too. Instead of maintaining ancient systems, rebuild them with Claude Code. In 24 hours, you can reconstruct with a new architecture.
+Process locally as much as possible. If you don't depend on external services, data cannot leak. If you don't send to the cloud, it cannot be intercepted. Local processing = minimal attack surface = simpler systems.
+**If you have the will, you can do it. Claude Code has removed the technical barriers. All that remains is the decision to act.**
+:::
+
+Abandoning Microsoft does not mean finding a replacement for Microsoft. **It means having the capability to build what you need, yourself.** That is the essence of software development independence.
 
 :::compare
 | | Microsoft dependency | Post-Microsoft |
 | --- | --- | --- |
 | OS | Windows (Copilot integrated, 1,300+ CVEs/year) | Linux (open source, auditable, no Copilot) |
-| Office | M365 + Copilot (all documents sent via external AI) | LibreOffice / Markdown + Claude (local processing) |
-| Email | Outlook (attack triggers from preview pane) | Thunderbird / self-hosted server |
+| Documents/Analysis/Presentations | M365 + Copilot (all documents via external AI) | **Build the tools you need with Claude Code** |
+| Email | Outlook (preview pane triggers attack) | Self-hosted server |
 | Auth | Entra ID (the hub of tight coupling) | Self-managed auth / passkeys |
 | Development | VS Code + Copilot (code sent externally) | Claude Code (dev only. No AI in production) |
-| Attack surface | **Enormous. Too large even for Mythos to fully patch** | **Minimal. Under your own control** |
+| Attack surface | **Enormous. Too large even for Mythos to fully patch** | **Minimal. Everything under your control** |
 :::
 
 Abandoning Windows/Office is a major decision. The resistance to leaving a familiar environment is strong. But the question is not "is it familiar" — it is "can you survive the Mythos era."

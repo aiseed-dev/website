@@ -309,6 +309,8 @@ But creating reports, presentations, and emails does not become unnecessary. It 
 
 This is not a job to hand off to AI agents. Letting AI agents autonomously handle tasks in production is expanding the attack surface. Instead, the human gives instructions to Claude, reviews the result, and makes the judgment. **It is the same structure as development.**
 
+And tasks that require no judgment do not need humans at all. Just turn them into code. Monthly sales aggregation, reports in fixed formats, periodic data backups — any task where no judgment is involved can be automated by writing a script with Claude Code. Humans only do work that requires judgment.
+
 The majority of desk workers had "being able to use Office" as their job skill. That skill becomes unnecessary. What replaces it is "the ability to decide what to instruct AI" — in other words, understanding the purpose of your own work.
 
 This may look like a high bar. But consider — aiseed.dev was built in 24 hours. Zero lines of human-written code. All you need is the ability to decide what to build.

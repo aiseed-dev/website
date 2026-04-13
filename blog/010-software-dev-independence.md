@@ -466,3 +466,7 @@ AIで開発し、プロダクトにはAIを入れない。
 Mythosが公開されたとき、すぐに動ける体制を作る。
 準備の時間は半年から1年。今日始めろ。
 :::
+
+---
+
+コメント・議論は Facebook グループへ：[AISeed — 生物多様性・食料・AIと暮らし](https://www.facebook.com/groups/vegitage)

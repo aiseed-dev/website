@@ -467,3 +467,7 @@ Keep source code on hand. Understand the structure.
 When Mythos is released, be ready to act immediately.
 The preparation window is six months to one year. Start today.
 :::
+
+---
+
+Comments and discussion on Facebook: [AISeed — 生物多様性・食料・AIと暮らし](https://www.facebook.com/groups/vegitage)

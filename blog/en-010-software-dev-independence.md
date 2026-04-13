@@ -323,6 +323,8 @@ If naphtha (petrochemical feedstock) supply becomes unstable, the infrastructure
 
 The direction where AI eliminates desk work and the direction where naphtha scarcity revives local commerce converge at the same point: **work where humans are on-site, making judgments, and engaging with people face to face.** Jobs do not disappear. Their form changes. From Office operation and outsourcing to real-world work and judgment.
 
+And these two forces arrive simultaneously. The push out of desk work and the pull into real-world work happen at the same time. If only one came, the transition would be slow. But when both arrive at once, recovery is fast.
+
 This may look like a high bar. But consider — aiseed.dev was built in 24 hours. Zero lines of human-written code. All you need is the ability to decide what to build.
 
 **Building your own apps is easy.** Claude Code writes the code. Once Mythos is released, you can security-check your own apps yourself. Build → check → fix — this entire cycle is completed by you + AI. No external security audits. No SIer engagements. No waiting for vendor patches.

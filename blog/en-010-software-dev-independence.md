@@ -305,7 +305,7 @@ This may look like a high bar. But consider — aiseed.dev was built in 24 hours
 
 **Building your own apps is easy.** Claude Code writes the code. Once Mythos is released, you can security-check your own apps yourself. Build → check → fix — this entire cycle is completed by you + AI. No external security audits. No SIer engagements. No waiting for vendor patches.
 
-This is already happening. Anthropic's Claude Desktop has no official Linux version — only macOS and Windows. But [someone on GitHub has packaged it for Linux themselves](https://github.com/patrickjaja/claude-desktop-bin). Arch Linux, Debian/Ubuntu, Fedora, NixOS, AppImage, ARM64 — if the vendor won't support it, build it yourself. **Not "I can't use it because there's no official version" but "there's no official version, so I'll build it myself"** — this is software development independence.
+This is already happening. Anthropic's Claude Desktop has no official Linux version — only macOS and Windows. But on GitHub, multiple projects have already made it work on Linux. [claude-desktop-debian](https://github.com/aaddrick/claude-desktop-debian) is community-driven with 3,100 stars and 548 commits. [claude-desktop-bin](https://github.com/patrickjaja/claude-desktop-bin) is one developer who has added Computer Use, Cowork, and Dispatch support. If the vendor won't support it, build it yourself. **Not "I can't use it because there's no official version" but "there's no official version, so I'll build it myself"** — this is software development independence.
 
 :::highlight
 **Massive software is unnecessary:**

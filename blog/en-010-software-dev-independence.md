@@ -434,11 +434,12 @@ The time gap between discovery and patch determines survival. Whether that gap i
 
 :::highlight
 **What you can start today:**
-1. Keep your source code on hand. Publish everything on GitHub
-2. Understand your system's structure yourself. Eliminate black boxes
-3. Start practicing development with Claude Code. Build the ability to co-develop with AI
-4. Begin reducing your attack surface. CMS → static HTML, DB → file-based, API → minimal
-5. Remove AI agents from production
+1. Install Linux. Learn to use the terminal. This is the starting point for everything
+2. Start practicing development with Claude Code. Build the ability to co-develop with AI
+3. Keep your source code on hand. Publish everything on GitHub
+4. Understand what your system does. Eliminate black boxes
+5. Begin reducing your attack surface. CMS → static HTML, DB → file-based, API → minimal
+6. Remove AI agents from production
 **When Mythos is released, be ready to run security checks immediately.**
 **That requires having the source code and understanding the structure.**
 :::

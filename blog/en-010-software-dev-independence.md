@@ -133,9 +133,10 @@ Outsource to an SIer → A black-box system is delivered
 
 :::chain
 **With development independence:**
-You + AI develop → You understand all the code
-→ Static HTML + Nginx → Attack surface is zero
-→ No CMS, no DB, no API → No entry point
+You + AI develop → You understand what the system does
+→ Public sites → Static HTML + Nginx → Attack surface is zero
+→ Business tools → Locally-run code (Python, etc.) → No external communication
+→ No CMS, no external APIs, SQLite locally if needed
 → Even if Mythos arrives, there is no way in → **No need to defend at all**
 :::
 
@@ -171,7 +172,7 @@ SaaS-embedded AI → Vendor's AI accesses your data. Beyond your control
 
 The correct way to use AI is clear. **Use it for development. Never put it in production.**
 
-Generate code with Claude Code. Human reviews it. Build. Deploy only static HTML. AI exists only within the development process, completely excluded from production.
+Generate code with Claude Code. Human reviews it. Build. For public-facing sites, deploy static HTML. For business tools, run locally-executed code like Python. In both cases, AI exists only within the development process — completely excluded from production and runtime environments.
 
 ## The End of the SIer Model
 
@@ -184,7 +185,7 @@ But in a world where Claude Code writes 70–90% of code, the person-month busin
 | --- | --- | --- |
 | Development cost | ¥5–10 million | Claude's monthly subscription |
 | Development time | 2–3 months | 24 hours to a few days |
-| Code understanding | Black box | Full transparency |
+| Structural understanding | Black box | You understand what it does |
 | Vulnerability response | Re-engage SIer (weeks to months) | Fix it yourself, immediately |
 | Attack surface | CMS + DB + API + admin panel | Static HTML (zero) |
 | Survival in Mythos era | **Extremely difficult** | **Structurally safe** |
@@ -297,16 +298,48 @@ It was once common sense that "you can't work without Office." You couldn't buil
 "Can't present without PowerPoint" → Build it with HTML + Claude Code
 "Can't read email without Outlook" → Run your own server
 **Every "can't do without X" is solvable with Claude Code**
-→ And not as a black box, but as a system you fully understand
+→ And not as a black box, but as a system where you understand what it does
 :::
+
+What becomes visible here is that **when Office disappears, so does the job of "operating Office."**
+
+The majority of today's office work is Office operation. Creating reports in Excel. Making presentations in PowerPoint. Writing meeting notes in Word. Organizing email in Outlook. These are not "work" — they are "tool operation." When Office is no longer the premise, these tasks themselves become unnecessary.
+
+But creating reports, presentations, and emails does not become unnecessary. It becomes something you **create by instructing Claude.** "Analyze this sales data and compile a report." "Create a presentation from this week's meeting content." "Write an email to the client about this matter." — the human communicates the intent, AI gives it form.
+
+This is not a job to hand off to AI agents. Letting AI agents autonomously handle tasks in production is expanding the attack surface. Instead, the human gives instructions to Claude, reviews the result, and makes the judgment. **It is the same structure as development.**
+
+And tasks that require no judgment do not need humans at all. Just turn them into code. Monthly sales aggregation, reports in fixed formats, periodic data backups — any task where no judgment is involved can be automated by writing a script with Claude Code. Humans only do work that requires judgment.
+
+**This means the value of desk work drops to zero.** Instruct Claude to create reports, presentations, and emails, and any task that can be done as desk work is finished in an instant. Work that took 8 hours — building reports in Excel, polishing slides in PowerPoint, writing meeting notes in Word — is completed with a single instruction to Claude.
+
+But what disappears is "Office operation," not desk work as a whole. Desk work that requires judgment remains. Executive decisions, negotiations, strategic planning, personnel evaluation, customer policy decisions — these can only be done by humans. Real-world jobs also remain in abundance: agriculture, manufacturing, construction, healthcare, caregiving, customer service, logistics. What disappears is only the part where "operating a tool was the job."
+
+And what disappears completely is **outsourced desk work.** In Japan, temporary staffing and outsourcing have been expanding since the 1990s. Creating reports, data entry, organizing documents, accounting tasks — the structure of delegating these to temporary workers and outsourcing firms has taken root over more than 30 years. But there is no reason to outsource work that finishes in an instant with a single instruction to Claude. A structure that took 30 years to build becomes unnecessary with AI. The same structure as the collapse of SIer dependency in software development.
+
+"AI will destroy jobs" — this concern is misplaced. What disappears is Office operation and outsourced tasks. But at the same time, work increases from another direction.
+
+If naphtha (petrochemical feedstock) supply becomes unstable, the infrastructure supporting plastic packaging, chemical products, and modern mass distribution breaks down. The premise of big-box retail and mass production/consumption collapses. What returns is local commerce. Face-to-face sales, selling by weight, repair and reuse, local markets — the old forms of trade come back.
+
+The direction where AI eliminates desk work and the direction where naphtha scarcity revives local commerce converge at the same point: **work where humans are on-site, making judgments, and engaging with people face to face.** Jobs do not disappear. Their form changes. From Office operation and outsourcing to real-world work and judgment.
+
+And these two forces arrive simultaneously. The push out of desk work and the pull into real-world work happen at the same time. If only one came, the transition would be slow. But when both arrive at once, recovery is fast.
+
+The timing overlaps too. Both Mythos release and naphtha shortage arrive during 2026.
+
+The naphtha shortage is already confirmed. Geopolitical conflict in the Persian Gulf region in spring 2026 caused emergency shutdowns of petrochemical plants (crackers) across the Gulf. Plants in Japan were shut down in a planned manner and are easier to restart, but the Gulf situation is entirely different. Emergency-shutdown crackers must complete every step in sequence without shortcuts: removal of abnormally adhered coking, ultra-slow heating at 10–20°C per hour, and dynamic synchronization with cryogenic separation at minus 140°C. Reacquiring security clearances for evacuated specialist personnel alone takes months. From strait reopening to stable ethylene production: minimum 2 months, potentially over 3. Over 60% of Asia's naphtha imports depend on the Gulf, and crackers in South Korea and Japan have shut down in a chain reaction.
+
+Plastic product supply shortages will progress gradually but inevitably. **The goal is for this transition to be complete by the end of 2026.** The Industrial Revolution took decades. This time it takes months.
 
 This may look like a high bar. But consider — aiseed.dev was built in 24 hours. Zero lines of human-written code. All you need is the ability to decide what to build.
 
 **Building your own apps is easy.** Claude Code writes the code. Once Mythos is released, you can security-check your own apps yourself. Build → check → fix — this entire cycle is completed by you + AI. No external security audits. No SIer engagements. No waiting for vendor patches.
 
+This is already happening. Anthropic's Claude Desktop has no official Linux version — only macOS and Windows. But on GitHub, multiple projects have already made it work on Linux. [claude-desktop-debian](https://github.com/aaddrick/claude-desktop-debian) is community-driven with 3,100 stars and 548 commits. [claude-desktop-bin](https://github.com/patrickjaja/claude-desktop-bin) is one developer who has added Computer Use, Cowork, and Dispatch support. If the vendor won't support it, build it yourself. **Not "I can't use it because there's no official version" but "there's no official version, so I'll build it myself"** — this is software development independence.
+
 :::highlight
 **Massive software is unnecessary:**
-Office has thousands of features. But you use less than 5% of them. Build only the features you need, with you + AI. Lightweight, transparent tools that you fully understand.
+Office has thousands of features. But you use less than 5% of them. Build only the features you need, with you + AI. Lightweight, transparent tools where you understand what they do.
 Windows is the same. It holds 72% market share — and 72% of the attack surface. All you need is Linux and the applications you actually use.
 Legacy software should be rebuilt too. Instead of maintaining ancient systems, rebuild them with Claude Code. In 24 hours, you can reconstruct with a new architecture.
 Process locally as much as possible. If you don't depend on external services, data cannot leak. If you don't send to the cloud, it cannot be intercepted. Local processing = minimal attack surface = simpler systems.
@@ -331,6 +364,34 @@ Abandoning Windows/Office is a major decision. The resistance to leaving a famil
 Will you entrust your security to Microsoft — the most problematic among Glasswing's 12 — or take back control with Linux + Claude Code?
 
 **Convenience → dependency → monopoly → tight coupling → collapse. If you're going to escape this structure, now is the time.**
+
+## Mythos Will Be Released in the Near Future
+
+Mythos will not remain sealed forever.
+
+Anthropic's decision not to release it publicly is "a choice to buy time." As history shows, technologies deemed too powerful are initially restricted, then eventually released. Nuclear technology remains strictly controlled. Strong cryptography was released to the public. Which path will AI follow? Most likely, the path of cryptography.
+
+The reason is clear. **Once Glasswing's 12 companies finish patching, there is no reason to keep it sealed.**
+
+:::chain
+**The structure leading to Mythos release:**
+Glasswing's 12 companies scan their systems with Mythos
+→ Thousands of zero-day vulnerabilities are patched
+→ But Microsoft alone is anomalous — patching while expanding the attack surface with Copilot
+→ The Windows/Office legacy codebase is the world's largest. Patching takes the longest
+→ Glasswing completion depends on Microsoft's progress
+→ Still, once core infrastructure is secure, the reason to keep Mythos sealed disappears
+→ For Anthropic, release = revenue (Claude Code is $1B/year. Mythos is the tier above)
+→ For the industry, release = stronger collective defense
+→ Competitors (OpenAI, Google DeepMind) are also closing in
+→ **Glasswing patching complete = green light for Mythos release. The bottleneck is Microsoft**
+:::
+
+In other words, the Mythos seal is not a "permanent lock" — it is a "grace period until the 12 companies finish patching." After Glasswing participants have secured their systems, Mythos will be released to the public. At that moment, every organization that has not finished patching becomes a target.
+
+Claude Opus 4.6 already generates 70–90% of code and drives $1 billion in annual revenue. Mythos is the next stage. Not just writing code, but finding vulnerabilities in existing code and auto-generating exploit code. Given the timeline for Glasswing patching to complete, general availability should be expected between late 2026 and early 2027.
+
+**That means the preparation window is six months to one year.**
 
 ## Practice: 5 Principles for Development Independence
 
@@ -361,9 +422,9 @@ One server, one application. Physically and logically loosely coupled.
 
 :::highlight
 **Principle 5: Eliminate black boxes.**
-A system you cannot understand is a system you cannot defend.
+A system you don't understand is a system you can't defend.
+Understanding does not mean reading every line of code. It means knowing what the system does — where data flows, what gets processed, what communicates externally. Leave the code to AI. Understanding the structure and purpose is the human's job.
 Not a black box delivered by an SIer, but a transparent system built by you and AI.
-All code visible. All configuration understood.
 :::
 
 ## Independence Is Not Isolation
@@ -376,39 +437,21 @@ Claude Code writes the code. Claude reviews the architecture. Claude checks for 
 **The structure of independence:**
 Human → Decides what to build → Instructs AI
 AI → Generates code → Tests → Iterates
-Human → Reviews the result → Deploys
-**The human writes zero lines of code. But controls everything.**
+Human → Verifies what the system does → Deploys
+**The human doesn't write code. Doesn't need to read code. But understands what the system does and controls everything.**
 :::
+
+When software development is handled by AI, it means **humans can focus their time and energy on real-world work.**
+
+Growing crops. Making products. Running services that require face-to-face interaction. These are things AI cannot do. Touching soil, reading weather, judging quality, talking to customers — real-world work requires human bodies and human judgment.
+
+Leave software to AI. The tools you need can be built in 24 hours. Security checks are done by AI too. **That is precisely why humans can focus on truly valuable work — creating things in the real world.**
+
+This is the true meaning of software development independence. Not being chained to software. Using software as a tool and returning to your real work.
 
 As the transcript states — "The boundary between what AI can and cannot do is constantly shifting. But those who can answer the fundamental question of *why* a human does that work will not lose their purpose, even as the boundary moves."
 
 Software development independence is not about writing code. **It is about deciding what to build, designing the structure, co-developing with AI, and taking responsibility for the result.**
-
-## Mythos Will Be Released in the Near Future
-
-Mythos will not remain sealed forever.
-
-Anthropic's decision not to release it publicly is "a choice to buy time." As history shows, technologies deemed too powerful are initially restricted, then eventually released. Nuclear technology remains strictly controlled. Strong cryptography was released to the public. Which path will AI follow? Most likely, the path of cryptography.
-
-The reason is clear. **Once Glasswing's 12 companies finish patching, there is no reason to keep it sealed.**
-
-:::chain
-**The structure leading to Mythos release:**
-Glasswing's 12 companies scan their systems with Mythos
-→ Thousands of zero-day vulnerabilities are patched
-→ Once the 12 companies' core infrastructure is secure
-→ The reason to keep Mythos sealed disappears
-→ For Anthropic, release = revenue (Claude Code is $1B/year. Mythos is the tier above)
-→ For the industry, release = stronger collective defense
-→ Competitors (OpenAI, Google DeepMind) are also closing in
-→ **Glasswing patching complete = green light for Mythos release**
-:::
-
-In other words, the Mythos seal is not a "permanent lock" — it is a "grace period until the 12 companies finish patching." After Glasswing participants have secured their systems, Mythos will be released to the public. At that moment, every organization that has not finished patching becomes a target.
-
-Claude Opus 4.6 already generates 70–90% of code and drives $1 billion in annual revenue. Mythos is the next stage. Not just writing code, but finding vulnerabilities in existing code and auto-generating exploit code. Given the timeline for Glasswing patching to complete, general availability should be expected between late 2026 and early 2027.
-
-**That means the preparation window is six months to one year.**
 
 ## Preparing for Mythos Release — What to Do Now
 
@@ -431,11 +474,12 @@ The time gap between discovery and patch determines survival. Whether that gap i
 
 :::highlight
 **What you can start today:**
-1. Keep your source code on hand. Publish everything on GitHub
-2. Understand your system's structure yourself. Eliminate black boxes
-3. Start practicing development with Claude Code. Build the ability to co-develop with AI
-4. Begin reducing your attack surface. CMS → static HTML, DB → file-based, API → minimal
-5. Remove AI agents from production
+1. Install Linux. Learn to use the terminal. This is the starting point for everything
+2. Start practicing development with Claude Code. Build the ability to co-develop with AI
+3. Keep your source code on hand. Publish everything on GitHub
+4. Understand what your system does. Eliminate black boxes
+5. Begin reducing your attack surface. CMS → static HTML, DB → file-based, API → minimal
+6. Remove AI agents from production
 **When Mythos is released, be ready to run security checks immediately.**
 **That requires having the source code and understanding the structure.**
 :::
@@ -461,3 +505,7 @@ Keep source code on hand. Understand the structure.
 When Mythos is released, be ready to act immediately.
 The preparation window is six months to one year. Start today.
 :::
+
+---
+
+Comments and discussion on Facebook: [AISeed — 生物多様性・食料・AIと暮らし](https://www.facebook.com/groups/vegitage)

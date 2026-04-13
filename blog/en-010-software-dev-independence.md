@@ -301,6 +301,16 @@ It was once common sense that "you can't work without Office." You couldn't buil
 → And not as a black box, but as a system where you understand what it does
 :::
 
+What becomes visible here is that **when Office disappears, so does the job of "operating Office."**
+
+The majority of today's office work is Office operation. Creating reports in Excel. Making presentations in PowerPoint. Writing meeting notes in Word. Organizing email in Outlook. These are not "work" — they are "tool operation." When Office is no longer the premise, these tasks themselves become unnecessary.
+
+But creating reports, presentations, and emails does not become unnecessary. It becomes something you **create by instructing Claude.** "Analyze this sales data and compile a report." "Create a presentation from this week's meeting content." "Write an email to the client about this matter." — the human communicates the intent, AI gives it form.
+
+This is not a job to hand off to AI agents. Letting AI agents autonomously handle tasks in production is expanding the attack surface. Instead, the human gives instructions to Claude, reviews the result, and makes the judgment. **It is the same structure as development.**
+
+The majority of desk workers had "being able to use Office" as their job skill. That skill becomes unnecessary. What replaces it is "the ability to decide what to instruct AI" — in other words, understanding the purpose of your own work.
+
 This may look like a high bar. But consider — aiseed.dev was built in 24 hours. Zero lines of human-written code. All you need is the ability to decide what to build.
 
 **Building your own apps is easy.** Claude Code writes the code. Once Mythos is released, you can security-check your own apps yourself. Build → check → fix — this entire cycle is completed by you + AI. No external security audits. No SIer engagements. No waiting for vendor patches.

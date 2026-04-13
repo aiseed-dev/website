@@ -356,9 +356,63 @@ Great power protects crime and conceals truth.
 The ones who will unravel it are no longer insiders.
 **They are outsiders with AI.**
 
+## Carney's Declaration — "It's Time to Take Down the Sign"
+
+In 2026, Canadian Prime Minister Carney gave a speech in New York. He declared the end of the post-Cold War rules-based international order, citing Czech dissident Václav Havel's "The Power of the Powerless."
+
+:::highlight
+**Havel's greengrocer metaphor:**
+Every morning, the greengrocer places a sign in his window: "Workers of the world, unite!"
+No one believes it. The greengrocer himself doesn't believe it.
+But because everyone keeps displaying the sign, the system is maintained.
+Not by violence, but **by continued participation in the lie**.
+The moment one person takes down the sign, the illusion begins to crumble.
+:::
+
+This is what Carney said —
+
+**"The rules-based international order" was a pleasant fiction. An order where the most powerful conveniently exempted themselves. We kept displaying the sign. It no longer works. It's time to take it down.**
+
+:::chain
+**Carney's structural analysis:**
+Economic integration was mutual benefit → The great powers turned it into a weapon
+→ Tariffs used as threats, financial infrastructure used as coercion, supply chains exploited as vulnerabilities
+→ The moment integration became a source of subordination, we cannot live inside the lie of "mutual benefit"
+→ Middle powers must build strategic autonomy
+→ **In energy, food, critical minerals, finance, and supply chains — all of them**
+:::
+
+:::highlight
+**Carney's "values-based realism":**
+Nostalgia is not a strategy. The old order is not coming back.
+But simply building higher walls is not the answer either.
+A fortress world is poorer, more fragile, and more unsustainable.
+Build self-reliance while partnering with like-minded nations.
+If you're not at the table, you're on the menu.
+**Great powers can act alone. Middle powers cannot. But together, they can forge a third path.**
+:::
+
+This is exactly the same as the IT structural analysis.
+
+:::compare
+| IT | Nation-States |
+| --- | --- |
+| Microsoft dependency | Economic integration dependency on great powers |
+| Copilot's backdoor | Weaponization of economic integration |
+| WordPress monoculture | The fiction of the rules-based international order |
+| Static HTML + own server | Strategic autonomy (energy, food, minerals) |
+| Loosely coupled design | Flexible multilateral partnerships |
+| Taking down the sign | **Breaking free from dependency** |
+:::
+
+Convenience → dependency → monopoly → collapse. In IT, in agriculture, in the international order — the structure is the same.
+
 ---
 
 :::quote
 Nature has the power to recover, even after being destroyed.
 So do humans.
+Take down the sign.
+Break free from dependency.
+Build things that are small, self-reliant, and capable of growing.
 :::

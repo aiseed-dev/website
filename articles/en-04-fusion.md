@@ -169,9 +169,43 @@ Healthy soil → Requires natural farming → Light Farming mechanism
 **Fusion is irrelevant. Soil is essential.**
 :::
 
+## The EV Mistake — The Same Structure
+
+EVs (electric vehicles) carry the same structural error as nuclear fusion. They promise to "replace fossil fuels" while requiring massive amounts of fossil resources and rare minerals to manufacture.
+
+:::highlight
+**Rare resources required for EV manufacturing:**
+Lithium-ion batteries → Lithium, cobalt, nickel, manganese
+Motors → Rare earths (neodymium, dysprosium)
+Lightweight body → Aluminum (enormous energy for smelting)
+Charging infrastructure → Copper (global supply tightening)
+Tires → Synthetic rubber (petrochemical). Natural rubber insufficient for performance
+:::
+
+:::chain
+**EV material dependency:**
+Making EVs → Requires lithium, cobalt, copper, rare earths
+→ All depend on mining → Mining requires diesel-powered heavy equipment
+→ Refining requires massive energy and chemical reagents
+→ Chemical reagent manufacturing requires petrochemicals
+→ **EVs produce zero CO2 "while driving" — but manufacturing depends on fossil resources**
+:::
+
+Over 60% of cobalt is mined in the Democratic Republic of Congo — a supply chain built on child labor and environmental destruction. Lithium is concentrated in Chile, Australia, and China. China controls 90% of the world's rare earth refining.
+
+:::highlight
+**The shared structure of fusion and EVs:**
+Fusion → Reactor walls need tungsten and beryllium. Cooling needs lithium. All rare resources
+EVs → Batteries need lithium and cobalt. Motors need rare earths. All rare resources
+Both claim to "replace fossil fuels" while **requiring fossil resources and rare minerals to manufacture**
+Both replace "energy" but not "materials"
+**The same mistake. The same structure.**
+:::
+
 :::quote
 The question is not "when will fusion give us unlimited energy."
 The question is "when will we rebuild the soil biology that gives us materials."
 Energy can be replaced. Materials require microorganisms and plants.
+EVs eliminate tailpipe CO2 but cannot eliminate the mining and petrochemicals in their supply chain.
 Fukuoka knew this. The rest of the world is still asking the wrong question.
 :::

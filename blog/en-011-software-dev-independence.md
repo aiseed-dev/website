@@ -40,6 +40,12 @@ Glasswing remediation completes → Mythos released publicly
 
 Starting after the release does not give you enough time. Engaging an SI vendor takes weeks to months. **The attack surface must be zero before release.**
 
+### Windows / Office Won't Make It in Time
+
+This is the biggest reason for the urgency. Windows and Office carry decades of legacy code, and Copilot is now integrated across the OS and every Office product. Even with Mythos scanning, the surface to patch is too large to finish before public release. There is a structural contradiction, too: patching with one hand while Copilot keeps adding new attack surface with the other.
+
+**If you keep relying on Microsoft for your security, you will be working on an unpatched attack surface long after Mythos goes public.** That is why you must drive your own attack surface to zero.
+
 ## Split AI by Role
 
 Don't rank AIs by capability. **Split them by role.**
@@ -117,23 +123,6 @@ Approved logic → coded → executed with 100% reproducibility → recorded in 
 - **Don't let an AI agent decide.** What runs in production is logic a human approved.
 - **What can't be automated, a human does.** AI assists during that work.
 - **The human takes responsibility.** AI is a tool. Judgment and accountability stay with the human.
-
-## 70–90% of Code Is Already Written by AI
-
-Claude Code generates 70–90% of new code. The era of paying an SI firm ¥5M–10M and waiting months is over.
-
-:::compare
-| | SI vendor | One person + Claude Mythos + Gemma 4 |
-| --- | --- | --- |
-| Cost | ¥5M–10M | Claude subscription + own server |
-| Duration | 2–3 months | 24 hours to a few days |
-| Structure | Black box | Self-understood |
-| Routine processing | SaaS dependency | Local with Gemma 4 CLI |
-| Patching | Re-engage vendor (weeks–months) | Fix yourself with Claude |
-| Attack surface | CMS + DB + API + admin | Static HTML (zero) |
-:::
-
-aiseed.dev is the proof. 30,000 lines of code, 42 pages, 26 articles. Zero human-written code. About 24 hours of build time.
 
 ## Five Principles
 

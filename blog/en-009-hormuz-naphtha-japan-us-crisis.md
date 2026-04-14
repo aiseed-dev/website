@@ -200,20 +200,39 @@ Trump cannot afford a prolonged blockade. But he closed the negotiation door wit
 
 ## Even After the Blockade Ends — What Won't Recover Quickly
 
-**Gulf infrastructure destruction.** Israeli-American strikes and Iranian counterattacks have damaged petrochemical facilities across the Gulf states. Qatar's Ras Laffan Industrial City lost approximately 17% of gas production and export capacity from Iranian drone attacks. Saudi Arabia's SATORP refinery (TotalEnergies JV) was shut down by multiple attacks.
+**"Once Hormuz opens, feedstock arrives the next day" is an illusion.** Unlike crude oil, naphtha doesn't resume flowing until manufacturing processes restart. And a naphtha cracker that has stopped cannot be simply switched back on.
 
-**Circular Recovery Problem.** Restoring destroyed facilities requires anticorrosion coatings, specialty sealants, polyurethane insulation, industrial paints, and heavy-duty adhesives — all naphtha-derived petrochemical products. But the facilities that should supply that naphtha are themselves destroyed. There are no materials to rebuild the factories that make the materials needed for rebuilding.
+**Naphtha cracker restart takes weeks to months.** Gulf naphtha crackers have been forced into emergency shutdowns by feedstock loss or attack damage. Emergency shutdowns are fundamentally harder to recover from than planned shutdowns.
+
+- **Coke removal (decoking)**: Sudden shutdowns deposit carbon (coke) inside furnace tubes. Burning it off takes weeks
+- **Extremely slow ramp-up**: Cracking furnaces run above 800°C, but to prevent thermal shock from cracking the alloy tubes, temperature must rise at only 10–20°C per hour. Reaching operating temperature from ambient takes days
+- **Synchronized cryogenic column restart**: Product gases are separated at cryogenic distillation near -140°C. The refrigeration system must be cooled in stages and synchronized with the cracker itself
+- **Catalyst reactivation and commissioning**: Catalytic reformers and downstream polymerization plants must restart in concert. If any single stage is delayed, the whole train stalls
+- **Personnel redeployment**: Engineers and operators dispersed during shutdown must be recalled. In the Gulf, reissuing visas and security clearances for foreign workers adds further delay
+
+A restart from a planned shutdown typically takes 4–8 weeks. Restart after emergency shutdown or attack damage — including damage assessment, parts procurement, and safety verification — takes 3–6 months or longer.
+
+**Japanese domestic crackers face the same problem.** Crackers running at reduced utilization burn fuel inefficiently and, if this continues, are eventually forced into complete shutdown. Once fully stopped, even domestic plants require 4–8 weeks to restart from a planned shutdown, and several months from an unplanned one. Even if Hormuz reopens and crude arrives, products will not emerge until domestic crackers and their downstream (PVC, FRP resins, paints, adhesives) come back online in sequence.
+
+**Physical destruction of Gulf infrastructure.** Israeli-American strikes and Iranian counterattacks have damaged petrochemical facilities across the Gulf states. Qatar's Ras Laffan Industrial City lost approximately 17% of gas production and export capacity from Iranian drone attacks. Saudi Arabia's SATORP refinery (TotalEnergies JV) was shut down by multiple attacks. Destroyed equipment is not a target for restart — it is a target for reconstruction.
+
+**Circular Recovery Problem.** Restoring destroyed facilities requires anticorrosion coatings, specialty sealants, polyurethane insulation, industrial paints, and heavy-duty adhesives — all naphtha-derived. But the facilities that should supply that naphtha are themselves destroyed. There are no materials to rebuild the factories that make the materials needed for rebuilding.
+
+**Long-term contracts and logistics reconstruction.** Long-term supply contracts abandoned or modified during the blockade must be renegotiated. Tanker fleets must be repositioned. War-risk insurance must be reunderwritten. Terminal tank inventories must be rebuilt. Restoring commerce alone takes weeks to months.
 
 **Recovery timeline (post-blockade):**
 
 - Crude oil transport resumption: 2–4 weeks (mine clearing, insurance re-engagement)
-- Commodity plastics (PE, PP): 3–6 months
-- Aromatic-derived products (PET, synthetic rubber, paints): 6–12+ months (dependent on Gulf catalytic reformer recovery; constrained by Circular Recovery Problem)
+- Gulf naphtha cracker restart: 3–6 months or more (recovery from emergency shutdown or attack damage)
+- Domestic cracker normal operation: 1–3 months post-blockade (until feedstock inventories return and utilization recovers)
+- Commodity plastics (PE, PP): 3–6 months post-blockade
+- Aromatic-derived products (PET, synthetic rubber, paints, FRP resins): 6–12+ months (dependent on Gulf catalytic reformer recovery; constrained by Circular Recovery Problem)
+- Unit baths, residential fixtures, building materials: 6+ months after domestic cracker restart and component manufacturing
 - Pharmaceutical APIs (KSM): 6 months–3 years (Indian factory restart + China procurement route reconstruction)
 - Megaplants (methanol, urea, LNG): 1–3 years (physical reconstruction of Gulf complexes such as Qatar Ras Laffan)
 - Full Gulf infrastructure recovery: 1–3 years
 
-Crude oil can be shipped by sea. Destroyed plants cannot. "Once Hormuz opens, everything will be fine" is an illusion.
+Crude oil can be shipped by sea. Naphtha can only be made in factories. Factories that have stopped do not restart the day after crude arrives. "Once Hormuz opens, everything will be fine" is an illusion.
 
 ## What the Structure Reveals
 

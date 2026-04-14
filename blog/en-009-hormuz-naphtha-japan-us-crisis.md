@@ -198,33 +198,90 @@ The prolonged Hormuz blockade corners America itself.
 
 Trump cannot afford a prolonged blockade. But he closed the negotiation door with a "final offer." Moving in either direction makes things worse. He is trapped in a structure of his own making.
 
-## Even After the Blockade Ends — What Won't Recover Quickly
+## Even After the Blockade Ends — Naphtha Does Not Arrive Immediately
 
-**"Once Hormuz opens, feedstock arrives the next day" is an illusion.** Unlike crude oil, naphtha doesn't resume flowing until manufacturing processes restart. And a naphtha cracker that has stopped cannot be simply switched back on.
+**"Once Hormuz opens, feedstock arrives the next day" is an illusion.** Unlike crude oil, naphtha does not resume flowing until manufacturing processes restart. Even where plants appear physically "intact" and untouched by strikes, the wartime **emergency trips** — which replaced orderly planned shutdowns — demand a rigorous and lengthy technical sequence before restart. According to OPIS (Oil Price Information Service) analysis models, supply chain recovery after a ceasefire takes approximately **12 weeks (3 months)**, with each stage — crude arrival, personnel redeployment, CDU startup, cracker restart, and cryogenic synchronization — in serial dependency.
 
-**Naphtha cracker restart takes weeks to months.** Gulf naphtha crackers have been forced into emergency shutdowns by feedstock loss or attack damage. Emergency shutdowns are fundamentally harder to recover from than planned shutdowns.
+### Many Facilities Have Been Damaged by the War
 
-- **Coke removal (decoking)**: Sudden shutdowns deposit carbon (coke) inside furnace tubes. Burning it off takes weeks
-- **Extremely slow ramp-up**: Cracking furnaces run above 800°C, but to prevent thermal shock from cracking the alloy tubes, temperature must rise at only 10–20°C per hour. Reaching operating temperature from ambient takes days
-- **Synchronized cryogenic column restart**: Product gases are separated at cryogenic distillation near -140°C. The refrigeration system must be cooled in stages and synchronized with the cracker itself
-- **Catalyst reactivation and commissioning**: Catalytic reformers and downstream polymerization plants must restart in concert. If any single stage is delayed, the whole train stalls
-- **Personnel redeployment**: Engineers and operators dispersed during shutdown must be recalled. In the Gulf, reissuing visas and security clearances for foreign workers adds further delay
+Beyond that, many Gulf facilities are not "intact but emergency-stopped" at all. Physically destroyed equipment is not a target for restart sequences — it is an **entirely different category**: dismantling, new fabrication, and reconstruction.
 
-A restart from a planned shutdown typically takes 4–8 weeks. Restart after emergency shutdown or attack damage — including damage assessment, parts procurement, and safety verification — takes 3–6 months or longer.
+- **Qatar — Ras Laffan Industrial City**: Iranian drone and missile strikes hit LNG trains directly, removing **approximately 17% of gas production and export capacity** (French Industry Minister Roland Lescure). Full recovery is estimated at **approximately 3 years**. Roughly 20% of global LNG exports and 30–40% of world helium supply were concentrated at this single site
+- **Saudi Arabia — SATORP (TotalEnergies JV, Jubail)**: Shut down by multiple attacks. 400,000 bpd refining capacity
+- **Saudi Arabia — Ras Tanura and Abqaiq**: As demonstrated in 2019, precision strikes on processing facilities remove shipping capacity for weeks to months. Multiple reports during this conflict have indicated hits on associated facilities
+- **Iranian petrochemical facilities**: Bandar Abbas, Hormozgan, Assaluyeh (South Pars) and other Iranian facilities have been targets of counterstrikes, with parts of LPG, methanol, and PE units rendered inoperable
+- **Gulf ports, storage tanks, and jetties**: Loading equipment, cryogenic berths, seawater intake pumps, and pipeline racks have been attack targets alongside the plants themselves. Without these auxiliary facilities, even a running cracker cannot ship product
 
-**Japanese domestic crackers face the same problem.** Crackers running at reduced utilization burn fuel inefficiently and, if this continues, are eventually forced into complete shutdown. Once fully stopped, even domestic plants require 4–8 weeks to restart from a planned shutdown, and several months from an unplanned one. Even if Hormuz reopens and crude arrives, products will not emerge until domestic crackers and their downstream (PVC, FRP resins, paints, adhesives) come back online in sequence.
+Petrochemical complexes are tightly coupled systems where high temperature, high pressure, flammability, and cryogenics sit adjacent to each other. A single point of destruction inside a complex triggers cascading safety shutdowns. Even partial attack damage defers the restart decision for the whole site. On top of that, insurance and reinsurance on-site surveys, regulatory safety authorizations, major-company board investment reviews, and procurement of specialty parts for destroyed equipment (TLE heat exchangers, cracker coils, wrap compressor impellers) only begin after the blockade lifts, and each takes months to over a year.
 
-**Physical destruction of Gulf infrastructure.** Israeli-American strikes and Iranian counterattacks have damaged petrochemical facilities across the Gulf states. Qatar's Ras Laffan Industrial City lost approximately 17% of gas production and export capacity from Iranian drone attacks. Saudi Arabia's SATORP refinery (TotalEnergies JV) was shut down by multiple attacks. Destroyed equipment is not a target for restart — it is a target for reconstruction.
+The Phase 1–6 timeline below describes the **minimum** scenario for facilities that are **undamaged** and restarting from emergency shutdown. For war-damaged facilities, the premise of entering that sequence does not yet exist.
 
-**Circular Recovery Problem.** Restoring destroyed facilities requires anticorrosion coatings, specialty sealants, polyurethane insulation, industrial paints, and heavy-duty adhesives — all naphtha-derived. But the facilities that should supply that naphtha are themselves destroyed. There are no materials to rebuild the factories that make the materials needed for rebuilding.
+### Phase 1: Logistics and Crude Arrival (10–21 days)
 
-**Long-term contracts and logistics reconstruction.** Long-term supply contracts abandoned or modified during the blockade must be renegotiated. Tanker fleets must be repositioned. War-risk insurance must be reunderwritten. Terminal tank inventories must be rebuilt. Restoring commerce alone takes weeks to months.
+Mine clearance, repositioning of tankers that were rerouted via the Cape of Good Hope during the blockade, and re-underwriting of war-risk insurance — genuine commercial traffic cannot resume for 2–3 weeks. Approximately 20,000 seamen were stranded in the Gulf region during the conflict, with maritime logistics itself in complete dysfunction. Proposals for Iran and Oman to charge up to **US$2 million per vessel** as strait transit fees further extend the negotiation time with shipowners and insurers.
 
-**Recovery timeline (post-blockade):**
+Arriving crude is not fed directly into refineries. To gravity-separate seawater and impurities mixed in during sea transit, a **minimum 48-hour settling period** is required in crude tanks. Skipping this lets water slugs overload the desalter and trigger hydrochloric corrosion pipe ruptures.
 
-- Crude oil transport resumption: 2–4 weeks (mine clearing, insurance re-engagement)
-- Gulf naphtha cracker restart: 3–6 months or more (recovery from emergency shutdown or attack damage)
-- Domestic cracker normal operation: 1–3 months post-blockade (until feedstock inventories return and utilization recovers)
+### Phase 2: Personnel Redeployment and Security Clearances (14–30 days)
+
+As the conflict escalated, multinational operators, acting on Duty of Care obligations, evacuated their foreign process engineers, experienced operators, and technical consultants en masse. Thousands of specialists departed the Middle East on charter flights per US State Department advisories, leaving facilities staffed only at minimum caretaker levels.
+
+Return cannot happen immediately. Work visa reissuance, restoration of power / telecom / industrial water and other living infrastructure in the receiving area, and renewed **security clearances** — the process under the US DCSA (Defense Counterintelligence and Security Agency), including SF-86 and the e-QIP system, normally takes 9–12 months. Even existing clearance holders face weeks-to-month-long delays for insurance re-engagement and work permit reissuance when redeploying to a conflict zone. Without the engineers who direct the restart, the restart itself cannot begin.
+
+### Phase 3: CDU (Crude Distillation Unit) Restart and Naphtha Production (14–28 days)
+
+Going from a fully cold state to on-spec naphtha in steady output requires a strictly serial sequence:
+
+- **System purge and vacuum drawdown**: Oxygen inside piping is replaced with nitrogen and residual water completely removed. Water expands roughly **1,700-fold** when phase-shifting to vapor; sudden heating causes steam explosions and water hammer that shatter valves and piping
+- **Cold circulation**: Crude is pumped through the system unheated to verify flow-path integrity and calibrate instrumentation
+- **Desalter startup**: At 120–150°C, water and salt are electrically separated. Instability here causes severe downstream corrosion and catalyst poisoning
+- **Furnace ignition and fractionator thermal balance**: Crude is heated to 340–372°C, and flow rates for the top condenser, side strippers, and pump-arounds are precisely tuned
+- **On-spec production**: Until the tower's thermal balance reaches steady state, products fail cut-point and impurity specs and are reprocessed via slop tanks
+
+Plants that experienced wartime emergency shutdowns are further subject to Management of Change (MOC) safety reviews and the application of new crude assays, adding further delay to startup.
+
+### Phase 4: Cracker Decoking (7–21 days)
+
+When a plant emergency trips, hydrocarbons that had been at nearly 850°C inside the tubes, stripped of both cooling control and flow, **form thick, tenacious coke layers almost instantly** on the tube walls. Research has shown that in certain operating regimes, a single reaction coil can accumulate **over 110 kg of coke** in a single emergency trip after only a few weeks of operation.
+
+Before restart, this coke must be fully burned off. Transfer line valves (TLVs) are closed, decoking line valves (DLVs) opened, and air and steam injected to combust the coke via the water-gas shift reaction. Coke combustion is strongly exothermic — a slight miscalibration of oxygen supply or steam ratio produces **localized overheating (hotspots)**, and if the tube temperature exceeds the melting point of the alloy, the tube ruptures. Past incidents include cases where dilution-steam control failure during decoking ruptured a convection-section tube, pressurizing the firebox and triggering cascade destruction of refractory brick and adjacent tubes. Internal cleaning and safety verification alone take **weeks** — incomparable to routine decoking (hours to days).
+
+### Phase 5: Ultra-Slow Ramp-Up of Furnace Materials (4–7 days)
+
+Reaction tubes are made of special high-nickel, high-chromium heat-resistant alloys (austenitic stainless steels and similar) and are extremely vulnerable to thermal shock from rapid temperature changes. Cracking furnace tubes are typically designed for **100,000 hours of service**, but in practice, temperature excursions (deviations from rated temperature) can cut this to **around 30,000 hours**. A mere **56°C excursion above rated temperature can reduce tube life by up to 90%**. In carbonaceous gas environments between 450–900°C, metal dusting — the catastrophic powdering and flaking of metal surfaces — also accelerates.
+
+To prevent this, restart heating proceeds at an extraordinarily slow pace of **10–20°C per hour**. Simply heating from ambient to the 800°C operating temperature requires **40–80 hours (2–4 days)** of continuous heating. Throughout this period, thermal cameras and IR sensors continuously monitor Tube Metal Temperature (TMT) to prevent localized overheating from uneven burner flame distribution.
+
+### Phase 6: Dynamic Synchronization with Cryogenic Separation (7–14 days)
+
+Cracked gas exiting the furnace must be separated downstream into ethylene and propylene. This requires **cryogenic environments of -100 to -140°C**, produced by cascaded propylene and ethylene refrigeration systems.
+
+The hardest part of startup is dynamically synchronizing the upstream cracker at **+850°C** with the downstream cryogenic separation columns at **-140°C** — a temperature difference of roughly **1,000°C**. While establishing vapor-liquid equilibrium in each distillation column, the compressor train must absorb flow and pressure oscillations. Large volumes of off-spec gas are generated early in startup and burned at the flare stack. A single valve malfunction or small pressure upset can unbalance the whole system, triggering safety interlocks that trip the plant and force restart from the beginning.
+
+### Total Timeline
+
+| Phase | Content | Days |
+|---|---|---|
+| Phase 1 | Logistics & crude arrival | 10–21 |
+| Phase 2 | Personnel & clearances | 14–30 |
+| Phase 3 | CDU restart & naphtha production | 14–28 |
+| Phase 4 | Cracker decoking | 7–21 |
+| Phase 5 | Ultra-slow ramp-up | 4–7 |
+| Phase 6 | Cryogenic synchronization | 7–14 |
+| **Total** | Phases 1–2 partially parallel; Phase 3 onward strictly serial | **Minimum ~8 weeks, maximum 12–14 weeks** |
+
+### Additional Constraints
+
+**Physical destruction of Gulf infrastructure.** Qatar's Ras Laffan Industrial City lost approximately 17% of gas production and export capacity from Iranian drone strikes. The SATORP refinery was shut down by multiple attacks. **Destroyed equipment is not a target for restart — it is a target for reconstruction.**
+
+**Circular Recovery Problem.** Materials needed for repair (anticorrosion coatings, sealants, insulation, paints, adhesives) are all naphtha-derived. The very facilities that should supply that naphtha are themselves destroyed. There are no materials to rebuild the factories that make the materials needed for rebuilding.
+
+**Japanese and Korean domestic crackers face the same problem.** LG Chem — Korea's largest petrochemical producer — has indefinitely suspended its No.3 cracker at Yeosu (900,000 tonnes/year ethylene) and No.2 cracker (800,000 tonnes/year), declaring force majeure on product supply. YNCC (Yeochun NCC) has cut utilization to 60% and shut its olefin conversion unit. In Japan, Idemitsu Kosan (Tokuyama, 623,000 tonnes/year) is down from a gas leak, Mitsui Chemical (Sakai, 600,000 tonnes/year) has delayed restart due to technical issues, and Maruzen Petrochemical (Chiba, 525,000 tonnes/year) has postponed restart. Even after Hormuz reopens and crude arrives, products will not flow until these domestic crackers and their downstream (PVC, FRP resins, paints, adhesives) come back online in sequence.
+
+**Price reality.** The international naphtha benchmark, approximately US$480/tonne at the start of the year, reached **US$873/tonne** in March; Korea's domestic price hit **US$1,068/tonne**. The naphtha-ethylene refining spread has effectively vanished, putting petrochemical producers in a "negative spread" state where greater production means greater losses. Crackers running below 50% utilization are forced into complete shutdown for safety reasons, and many plants are already operating at that limit.
+
+**Downstream recovery is even slower:**
+
 - Commodity plastics (PE, PP): 3–6 months post-blockade
 - Aromatic-derived products (PET, synthetic rubber, paints, FRP resins): 6–12+ months (dependent on Gulf catalytic reformer recovery; constrained by Circular Recovery Problem)
 - Unit baths, residential fixtures, building materials: 6+ months after domestic cracker restart and component manufacturing

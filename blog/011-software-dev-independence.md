@@ -3,7 +3,7 @@ slug: software-dev-independence
 title: ソフトウェア開発の自立——Glasswingの外側で生き残る
 subtitle: Mythos時代、12社だけが守られる。残りの全ては自分で守るしかない。
 description: Project Glasswingに参加できるのはApple、Google、Microsoft等12社だけだ。それ以外の企業、自治体、個人は、修正されていない脆弱性を抱えたまま放置される。自立の構造を持つ者だけが生き残る。
-date: 2026.04.14
+date: 2026.04.13
 label: Blog
 category: 構造分析ノート
 hero_image: IMG_3415.jpg

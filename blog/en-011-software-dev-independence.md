@@ -3,7 +3,7 @@ slug: software-dev-independence
 title: Software Development Independence — Surviving Outside Glasswing
 subtitle: In the Mythos era, only 12 companies are protected. Everyone else must protect themselves.
 description: Only Apple, Google, Microsoft and 9 others can join Project Glasswing. Everyone else — companies, municipalities, individuals — is left with unpatched vulnerabilities. Only those with self-reliant structures will survive.
-date: 2026.04.14
+date: 2026.04.13
 lang: en
 label: Blog
 category: Structural Analysis Notes

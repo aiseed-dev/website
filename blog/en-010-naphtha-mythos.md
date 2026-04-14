@@ -1,4 +1,16 @@
-# Two Bombs Hitting America at Once: Naphtha and Mythos
+---
+slug: naphtha-mythos
+title: "Two Bombs Hitting America at Once — Naphtha and Mythos"
+subtitle: "Physical 'blood' is draining while digital 'nerves' are being paralyzed. Two crises are advancing simultaneously."
+description: "The Strait of Hormuz blockade is cutting off raw materials for medical supplies, semiconductors, and jet fuel. Meanwhile AI can now find vulnerabilities in hours and auto-generate attack code. These two crises are connected at the root."
+date: 2026.04.14
+lang: en
+label: Blog
+category: Structural Analysis Notes
+hero_image: IMG_3415.jpg
+---
+
+# Two Bombs Hitting America at Once — Naphtha and Mythos
 
 In April 2026, America is holding two bombs simultaneously. One: the raw materials for medical supplies, semiconductors, and jet fuel have stopped arriving due to the Strait of Hormuz blockade. Two: AI can now find security vulnerabilities that went undetected for decades and automatically generate attack code in hours. These two appear unrelated. They are connected at the root.
 

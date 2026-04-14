@@ -17,7 +17,7 @@ hero_image: IMG_3415.jpg
 In April 2026, two breakthrough tools arrived.
 
 - **Claude Mythos** (April 2026, restricted preview from Anthropic via Glasswing): advanced logical reasoning, abstract thinking, policy and strategy.
-- **Gemma 4** (April 2026, released by Google under Apache 2.0): a high-performance open-source model that **runs on your own server with zero external communication.** Fast processing, routine tasks, full privacy. Free.
+- **Gemma 4** (April 2026, released by Google under Apache 2.0): a high-performance open-source model that **runs on your own machine with zero external communication.** Fast processing, routine tasks, full privacy. Free.
 
 Mythos brought "the power to defend"; Gemma 4 brought "the power to process without sending data outside" — in the same month. You can use AI without sending confidential data outside. **One person plus these two can match an SI team.**
 
@@ -58,7 +58,7 @@ Coding, structural analysis, strategy, writing. Complex judgment and creativity.
 
 ### Gemma 4 CLI — Processing Work (fully local)
 
-Summaries, aggregation, transformation, routine analysis. **Zero external communication. Runs on your own server.**
+Summaries, aggregation, transformation, routine analysis. **Zero external communication. Runs on your own machine.**
 
 **Do not run it as a persistent agent. Invoke via CLI and finish in one shot.** No privileges. Input → process → output, done. This is the key to not forming an attack surface.
 
@@ -144,8 +144,8 @@ Use local SQLite if needed. No DB, no SQL injection.
 :::
 
 :::highlight
-**4. Own your server.**
-Linux + Nginx + static files. Run Gemma 4 on the same box as a CLI.
+**4. Keep the public site static.**
+Linux + Nginx + static files is enough. Run Gemma 4 locally as a CLI on your own machine.
 :::
 
 :::highlight
@@ -169,7 +169,7 @@ You have half a year to a year before release. **Start today or you won't make i
 **Start today:**
 1. Install Linux. Get comfortable with the terminal.
 2. Practice development with Claude Code.
-3. Run Gemma 4 on your own server as a CLI.
+3. Run Gemma 4 locally as a CLI.
 4. Build the habit of researching with Gemini.
 5. Put your source code on GitHub.
 6. Remove AI agents from production (CMS → static HTML).

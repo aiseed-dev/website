@@ -68,6 +68,30 @@ Modern manufacturing builds a single finished product from hundreds to thousands
 
 This is where the terror of the naphtha crisis lies. Even if the total feedstock drops by 20%, a specific part that is 100% missing makes 100% of the product impossible. The "254-day reserve" is a useful average for buying time, but at the level of individual parts, shortages have already begun. Manufacturing and construction together underpin roughly a quarter of Japan's employment. A single missing part cascades, and within months, production halts and construction stoppages could spread across broad sectors.
 
+### Lubricants and Cutting Oils — The Blood That Keeps Factories Running
+
+Even with every part on hand, factories stop the moment lubricants and cutting oils run out. And these "oils" are also facing serious shortages from the Hormuz blockade.
+
+Lubricants are made by blending additives (viscosity index improvers, detergent-dispersants, etc.) with **base oils** obtained during crude oil refining. High-performance Group II/III base oils are produced by hydrocracking specific fractions of Middle Eastern heavy sweet crude. Light paraffinic shale oil does not yield sufficient base oil fractions. "Crude oil quality" matters here too.
+
+Korea's **S-Oil** (a Saudi Aramco subsidiary, Ulsan) operates one of the world's largest Group III base oil plants, predicated on stable Saudi crude supply. Alongside LG Chem's Yeosu cracker shutdowns, lubricant base oil supply is beginning to show strain. The base oil units at Japan's ENEOS, Idemitsu, and Cosmo Oil are similarly constrained by the shift away from Middle Eastern crude.
+
+**Engine oils:** Automobiles, trucks, ships, aircraft, construction and agricultural machinery. Continuing operation without oil changes leads to engine seizure. Directly hits the foundations of logistics, agriculture, and construction. Marine lubricants in particular are the lifeblood of international shipping — their shortage can stop the very shipping that would otherwise bring the crude oil, creating a circular dependency.
+
+**Cutting oils and coolants:** Machining centers, lathes, grinders, press machines — without an oil film between tool and workpiece, cutting heat burns the tool, tolerances fail, and chips jam the machine. Machines literally cannot run. Manufacturing of automotive parts, dies and molds, aerospace parts, medical devices, and electronics depends entirely on cutting oil.
+
+**Hydraulic oils:** Construction equipment (excavators, cranes), presses, injection molding machines, machine tools, hydraulic elevators. Both construction sites and factories run on hydraulics.
+
+**Gear oils and turbine oils:** Bearings of rotating machinery in steel, power, and chemical plants; rolling mills; steam and gas turbines; hydroelectric generators. Prevents wear in all rotating elements across industry.
+
+**Transformer oils and insulating oils:** Cooling and insulation for grid transformers. A shortage halts maintenance of transmission and distribution infrastructure — steadily shortening the grid's effective life.
+
+**Greases:** Bearings, railway axle journals, wind turbine nacelles, food processing machinery, robotic joints. Present at every moving contact point.
+
+Japan's lubricant demand is approximately 2.2 million kiloliters per year. Domestic refining covers part of this, but high-performance base oils and specialty additives depend heavily on imports. **Most lubricant additives are oligopolized by four international majors — Lubrizol, Infineum, Chevron Oronite, and Afton** — with plants dispersed across North America, Europe, Singapore, and the Middle East. Middle East–based additive plants (UAE, Bahrain) are directly impacted by the Hormuz blockade.
+
+Unlike plastics, lubricants are used in small volumes, so stockpiles appear large by volume. But **varieties are extremely numerous and substitution across uses is rare**. A shortage of one cutting oil grade stops a specific factory; a shortage of one transformer oil grade stops specific substation upgrades. Combined with parts shortages, manufacturing faces a double constraint.
+
 ### Medical Consumables — All Made from Naphtha-Derived Plastics
 
 Look inside any hospital and nearly everything is plastic. And the feedstock for that plastic is naphtha.

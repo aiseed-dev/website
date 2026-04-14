@@ -23,6 +23,23 @@ But the breakthrough tools arrived at the same time.
 
 You can use AI without sending confidential data outside. **One person plus these two can match an SI team.**
 
+## Urgent — Finish Before Mythos Goes Public
+
+**This is not "do it eventually." There is a deadline.**
+
+Mythos will not stay locked up forever. As the 12 Glasswing companies finish their remediation, Mythos gets released. The moment that happens, **defenders and attackers start using Mythos at the same time.**
+
+:::chain
+**Time remaining:**
+Glasswing remediation completes → Mythos released publicly
+→ Attackers gain the same capability
+→ CMS, legacy DBs, resident AI agents in production — all get scanned
+→ Systems that can't patch in time become the first targets
+→ **You have half a year to a year. After release is too late.**
+:::
+
+Starting after the release does not give you enough time. Engaging an SI vendor takes weeks to months. **The attack surface must be zero before release.**
+
 ## Split AI by Role
 
 Don't rank AIs by capability. **Split them by role.**
@@ -153,9 +170,9 @@ You don't write code. You do understand the structure.
 
 Leave the software to AI, and humans focus on real-world work. Grow food. Build things. Face other people. **That is the real meaning of software development independence.**
 
-## Preparing for the Mythos Release
+## Preparing for the Mythos Release — Start Today
 
-Once Mythos is public, defenders and attackers start scanning at the same time. The gap until patches land decides who survives.
+You have half a year to a year before release. **Start today or you won't make it.**
 
 :::highlight
 **Start today:**
@@ -181,7 +198,7 @@ Run → No AI
 Leave binary. Doc as Code.
 Approved logic as code.
 The human takes responsibility.
-The tools are here. What remains is the decision.
+**Half a year to a year until Mythos goes public. Start today.**
 :::
 
 ---

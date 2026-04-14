@@ -1,8 +1,8 @@
 ---
 slug: software-dev-independence
-title: Desk Work and System Design in the AI Era — Independence with Claude Mythos and Gemma 4
-subtitle: Think, process, run. Split AI by role, and the attack surface is zero.
-description: Use Claude Mythos and Gemma 4 by role. Move off binary files. Adopt Doc as Code. Turn approved logic into code. A structurally safe stack that works today, outside Glasswing.
+title: Desk Work and System Design in the AI Era — Turn Excel / Word Operations into Code
+subtitle: Most desk work is Excel / Word operation. Systematize it with Claude and Gemma 4. Copilot-style automation won't work in the Mythos era.
+description: Most desk work is Excel / Word operation. Replace it with code using Claude and Gemma 4. Office Copilot's agent automation is fragile and will not survive the Mythos era.
 date: 2026.04.13
 lang: en
 label: Blog
@@ -10,16 +10,43 @@ category: Structural Analysis Notes
 hero_image: IMG_3415.jpg
 ---
 
-# Desk Work and System Design in the AI Era — Independence with Claude Mythos and Gemma 4
+# Desk Work and System Design in the AI Era — Turn Excel / Word Operations into Code
+
+## Most Desk Work Is Excel and Word Operation
+
+Picture today's desk work.
+
+- Paste data into Excel. Reshape it. Aggregate it.
+- Write reports in Word. Fix the layout.
+- Line up slides in PowerPoint.
+- Sort mail in Outlook.
+
+A large share of work hours goes to **manual work on binary files.** No judgment. Just operation.
+
+**Systematize that directly.** That is the design of desk work in the AI era.
+
+## Office Itself Won't Survive the AI Era
+
+Before Copilot even enters the picture, **Office (Word / Excel / PowerPoint) itself** is structurally mismatched with the AI era.
+
+- **Binary files**: hard for AI and humans alike to read. `git diff` produces nothing.
+- **No history**: who changed what, when, and why lives only in people's heads.
+- **Manual at the core**: filling cells, fixing formatting, adjusting layout — non-judgment operation eats most of the workday.
+- **Hundreds of CVEs a year**: zero-days that fire just by opening or previewing a file appear year after year.
+- **Tight coupling**: Windows + Office + Entra ID + Azure + SharePoint are so tightly bound that one breach cascades through the whole stack.
+
+Office grew big while still wearing the "document-centric, personal-PC era" design. It is not a shape AI can read and write, and it does not match how modern development, auditing, or collaboration actually works.
+
+**Copilot automation piles a fragile AI agent on top of this without fixing the underlying mismatch.** The foundation is wrong for the AI era, but convenience hides it. In the Mythos era, this structure will not hold.
 
 ## April 2026: The Tools Have Arrived
 
 In April 2026, two breakthrough tools arrived.
 
-- **Claude Mythos** (April 2026, restricted preview from Anthropic via Glasswing): advanced logical reasoning, abstract thinking, policy and strategy.
+- **Claude Mythos** (April 2026, restricted preview from Anthropic via Glasswing): advanced logical reasoning, abstract thinking, policy and strategy — and coding.
 - **Gemma 4** (April 2026, released by Google under Apache 2.0): a high-performance open-source model that **runs on your own machine with zero external communication.** Fast processing, routine tasks, full privacy. Free.
 
-Mythos brought "the power to defend"; Gemma 4 brought "the power to process without sending data outside" — in the same month. You can use AI without sending confidential data outside. **One person plus these two can match an SI team.**
+Claude turns logic into code. Gemma 4 handles routine processing on your machine. **Together, they replace Excel / Word operations with code.**
 
 ## Urgent — Finish Before Mythos Goes Public
 
@@ -31,9 +58,25 @@ Mythos will not stay locked up forever. As the 12 Glasswing companies finish the
 
 ### The Biggest Problem — Windows / Office Won't Make It in Time
 
-This is the main reason for the urgency. Windows and Office, which most organizations depend on, carry decades of legacy code, and Copilot is now integrated across the OS and every Office product. Even with Mythos scanning, the surface to patch is too large to finish before public release. There is a structural contradiction, too: patching with one hand while Copilot keeps adding new attack surface with the other.
+This is the main reason for the urgency. Windows and Office, which most organizations depend on, carry decades of legacy code, and Copilot is now integrated across the OS and every Office product. Even with Mythos scanning, the surface to patch is too large to finish before public release.
 
-**If you keep relying on Microsoft for your security, you will be working on an unpatched attack surface long after Mythos goes public.** That is why you must drive your own attack surface to zero.
+### Copilot-Style "AI Automation" Won't Work in the Mythos Era
+
+Microsoft is trying to solve the Excel / Word operation burden with **Copilot agent automation.** Structurally, that direction will not hold up in the Mythos era.
+
+:::chain
+**The shape of Copilot automation:**
+Office documents (mail, spreadsheets, contracts) → Copilot reads all of them
+→ Sent to an external AI service → response flows back into Office
+→ Instructions hidden in a document can hijack Copilot (prompt injection)
+→ **Attack surface grows with every document. When Mythos goes public, this becomes an immediate target.**
+:::
+
+- **Prompt injection**: instructions hidden in documents hijack Copilot.
+- **Loss of data sovereignty**: internal documents are sent to an external AI.
+- **Thinking atrophy**: outsourcing judgment erodes human judgment.
+
+Reducing Excel / Word operation is the right goal. But **the method matters.** Copilot multiplies "convenient but fragile, unverifiable automation." Once Mythos is public, all of that becomes an entryway.
 
 ### Time Remaining
 
@@ -41,12 +84,10 @@ This is the main reason for the urgency. Windows and Office, which most organiza
 **Countdown:**
 The 12 Glasswing companies finish remediation → Mythos released publicly
 → Attackers gain the same capability
-→ CMS, legacy DBs, resident AI agents in production — all get scanned
-→ Systems tied to Microsoft legacy become the first targets
+→ CMS, legacy DBs, Copilot-integrated documents — all get scanned
+→ Systems tied to Microsoft legacy and Copilot automation become the first targets
 → **You have half a year to a year. After release is too late.**
 :::
-
-Starting after the release does not give you enough time. Engaging an SI vendor takes weeks to months. **The attack surface must be zero before release.**
 
 ## Split AI by Role
 
@@ -56,11 +97,15 @@ Don't rank AIs by capability. **Split them by role.**
 
 Coding, structural analysis, strategy, writing. Complex judgment and creativity. Develop with Claude Code. Send only **material that deserves to be thought about.** No raw data, no secrets.
 
+**Observe an Excel task → extract the logic → ask Claude to turn it into code.** This systematizes most of desk work.
+
 ### Gemma 4 CLI — Processing Work (fully local)
 
 Summaries, aggregation, transformation, routine analysis. **Zero external communication. Runs on your own machine.**
 
-**Do not run it as a persistent agent. Invoke via CLI and finish in one shot.** No privileges. Input → process → output, done. This is the key to not forming an attack surface.
+**Do not run it as a persistent agent. Invoke via CLI and finish in one shot.** No privileges. Input → process → output, done.
+
+Daily sales aggregation, meeting-note summaries, CSV reshaping, draft email bodies — hand routine processing (including confidential data) to Gemma 4 CLI, one shot at a time. Unlike Copilot, it is not resident, so it does not form an attack surface.
 
 ### Gemini — Research Work
 
@@ -72,59 +117,48 @@ Static HTML, Python, SQLite. **Zero attack surface.**
 
 No AI agents in production. Always-on external comms + system privileges + unverifiable judgment — that is opening a door for a Mythos-class attacker.
 
-**Use AI in development. Not in production.**
-
 :::chain
 **Four principles:**
 Think → Claude Mythos (send only material)
-Process → Gemma 4 CLI (fully local; never resident)
+Process → Gemma 4 CLI (local; never resident)
 Research → Gemini (search-integrated)
 Run → No AI (production is static / local)
 **Human is the hub. Don't auto-chain AIs.**
 :::
 
-## Leaving Binary — Files in a Form AI Can Read
+## Systematize Desk Work
 
-Word / Excel binary files are inefficient and opaque in the AI era.
+### Leave Binary — Doc as Code
+
+Excel and Word binaries are hard on both AI and humans.
 
 :::compare
 | Binary-centric | Text-centric |
 | --- | --- |
-| Word / Excel / PowerPoint | Markdown / CSV / Python / JSON |
+| Excel aggregation macro | Python script |
+| Word report template | Markdown + generation script |
+| Boilerplate email | Email body generated by Gemma 4 CLI |
+| Manual reshaping | Intent → code → artifact (PDF etc.) generated directly |
 | Diffs invisible | Full history in Git |
-| Hard for AI to handle | AI reads and writes directly |
-| Manual reshaping | Intent → AI → artifact (PDF etc.) generated directly |
 :::
 
-### Doc as Code
+Manage documents in Git like code. **Who changed what, when, and why** — all preserved.
 
-Manage documents in Git like code. **Who changed what, when, and why** — all preserved. Organizational memory leaves the black box.
-
-### The Vanishing Intermediate Artifact
-
-Human "intent" turns into the final "artifact" through AI. The time spent hand-polishing files goes to zero.
-
-### A Note on Copilot Integration
-
-Three risks to know before using Windows / Office Copilot.
-
-- **Prompt injection**: instructions hidden in documents can hijack the AI.
-- **Loss of data sovereignty**: documents get sent to an external AI.
-- **Thinking atrophy**: outsourcing judgment itself erodes your ability to judge.
-
-Leaving binary is not "ditching Microsoft." It is **putting data into a form AI can read.** You naturally step out of Copilot dependency along the way.
-
-## System Design — Approved Logic as Code
+### System Design — Approved Logic Becomes Code
 
 :::chain
 **The design rule:**
-Approved logic → coded → executed with 100% reproducibility → recorded in Git
-**Claude Mythos writes the code. This is not hard.**
+Observe today's Excel / Word work → separate judgment from routine processing
+→ Let Claude turn the routine part into code (Python, SQL, shell)
+→ Execute with 100% reproducibility → record in Git
+→ **Claude does the coding. This is not hard.**
 :::
 
-- **Don't let an AI agent decide.** What runs in production is logic a human approved.
+- **Don't let an AI agent decide.** What runs is only the logic a human approved.
 - **What can't be automated, a human does.** AI assists during that work.
 - **The human takes responsibility.** AI is a tool. Judgment and accountability stay with the human.
+
+This is the essential difference from Copilot automation. Copilot delegates judgment to a black-box agent. Here, a human's approved logic runs as transparent code.
 
 ## Five Principles
 
@@ -151,15 +185,16 @@ Linux + Nginx + static files is enough. Run Gemma 4 locally as a CLI on your own
 :::highlight
 **5. Eliminate black boxes.**
 Leave code to AI. Understanding structure and intent is the human's job.
+Don't bring in "invisible automation" like Copilot.
 :::
 
 ## Independence Is Not Isolation
 
-Claude Mythos writes the code. Gemma 4 CLI processes locally. Gemini researches. **The human decides what to build, instructs the AI, and judges the result.**
+Claude Mythos writes code. Gemma 4 CLI processes locally. Gemini researches. **The human decides what to build, instructs the AI, and judges the result.**
 
 You don't write code. You do understand the structure.
 
-Leave the software to AI, and humans focus on real-world work. Grow food. Build things. Face other people. **That is the real meaning of software development independence.**
+Leave the software to AI, and humans focus on real-world work. Grow food. Build things. Face other people. **That is what lies on the other side of systematized desk work.**
 
 ## Preparing for the Mythos Release — Start Today
 
@@ -171,24 +206,25 @@ You have half a year to a year before release. **Start today or you won't make i
 2. Practice development with Claude Code.
 3. Run Gemma 4 locally as a CLI.
 4. Build the habit of researching with Gemini.
-5. Put your source code on GitHub.
-6. Remove AI agents from production (CMS → static HTML).
+5. Observe your Excel / Word work and start replacing routine parts with code.
+6. Put your source code on GitHub.
+7. Remove AI agents from production (CMS → static HTML, Copilot integration → retire).
 :::
 
 ## Independence Begins the Moment You Split the Roles
 
 **Think with Claude Mythos. Process locally with Gemma 4 CLI. Research with Gemini. Keep AI out of production.**
 
-That is the structure for surviving outside Glasswing. Drive the attack surface to zero and there is nothing to defend.
+Don't hand desk work to a Copilot agent. **Turn approved logic into code.** That is the only approach that works in the Mythos era.
 
 :::quote
+Most desk work is Excel / Word operation.
 Think → Claude Mythos
 Process → Gemma 4 CLI
 Research → Gemini
 Run → No AI
-Leave binary. Doc as Code.
-Approved logic as code.
-The human takes responsibility.
+Copilot automation won't work in the Mythos era.
+Approved logic becomes code.
 **Half a year to a year until Mythos goes public. Start today.**
 :::
 

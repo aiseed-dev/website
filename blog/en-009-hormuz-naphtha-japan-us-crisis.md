@@ -1,8 +1,16 @@
-# Hormuz Blockade — What Happens to Japan and America When Naphtha-Derived Products Run Out
-
-April 12, 2026 — aiseed.dev
-
 ---
+slug: hormuz-naphtha-japan-us-crisis
+title: "Hormuz Blockade — What Happens to Japan and America When Naphtha-Derived Products Run Out"
+subtitle: "The 'quality' of crude oil fundamentally divides how the crisis manifests in Japan, America, and China."
+description: "Naphtha shortages from the Hormuz blockade spread to food packaging, medical disposables, pharmaceuticals, and defense materials. Japan's reserves buy time but cannot save imported goods. America keeps commodity plastics with ethane but faces aromatic shortages that reach military supplies. China has relative advantage through coal chemistry but remains vulnerable on methanol, LNG, and sulfur."
+date: 2026.04.12
+lang: en
+label: Blog
+category: Structural Analysis Notes
+hero_image: IMG_3414.jpg
+---
+
+# Hormuz Blockade — What Happens to Japan and America When Naphtha-Derived Products Run Out
 
 Vice President Vance, accompanied by Special Envoy Steve Witkoff and former Senior Advisor Jared Kushner, spent 21 hours negotiating in Islamabad, presented what he called a "final and best offer," and left. No agreement. No timeline for reopening the Strait of Hormuz.
 

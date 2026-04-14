@@ -14,16 +14,16 @@ hero_image: IMG_3415.jpg
 
 ## April 2026: The Tools Have Arrived
 
-On April 7, 2026, Anthropic announced Project Glasswing. Claude Mythos is restricted to 12 companies and 40-plus infrastructure organizations. **Everyone else must protect themselves.**
+In April 2026, two breakthrough tools arrived.
 
-And at the same time, two breakthrough tools arrived.
-
-- **Claude Mythos** (April 2026, restricted preview via Glasswing): advanced logical reasoning, abstract thinking, policy and strategy.
+- **Claude Mythos** (April 2026, restricted preview from Anthropic via Glasswing): advanced logical reasoning, abstract thinking, policy and strategy.
 - **Gemma 4** (April 2026, released by Google under Apache 2.0): a high-performance open-source model that **runs on LGWAN (closed networks) or your own server with zero external communication.** Fast processing, routine tasks, full privacy. Free.
 
 Mythos brought "the power to defend"; Gemma 4 brought "the power to process without sending data outside" — in the same month. You can use AI without sending confidential data outside. **One person plus these two can match an SI team.**
 
 ## Urgent — Finish Before Mythos Goes Public
+
+On April 7, 2026, Anthropic announced Project Glasswing. Claude Mythos is restricted to 12 companies and 40-plus infrastructure organizations. **Everyone else must protect themselves.**
 
 **This is not "do it eventually." There is a deadline.**
 

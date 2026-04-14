@@ -16,12 +16,12 @@ hero_image: IMG_3415.jpg
 
 On April 7, 2026, Anthropic announced Project Glasswing. Claude Mythos is restricted to 12 companies and 40-plus infrastructure organizations. **Everyone else must protect themselves.**
 
-But the breakthrough tools arrived at the same time.
+And at the same time, two breakthrough tools arrived.
 
-- **Claude Mythos**: advanced logical reasoning, abstract thinking, policy and strategy.
-- **Gemma 4**: fast processing, routine tasks, and **full privacy via LGWAN (closed network) or local execution** (Apache 2.0, free).
+- **Claude Mythos** (April 2026, restricted preview via Glasswing): advanced logical reasoning, abstract thinking, policy and strategy.
+- **Gemma 4** (April 2026, released by Google under Apache 2.0): a high-performance open-source model that **runs on LGWAN (closed networks) or your own server with zero external communication.** Fast processing, routine tasks, full privacy. Free.
 
-You can use AI without sending confidential data outside. **One person plus these two can match an SI team.**
+Mythos brought "the power to defend"; Gemma 4 brought "the power to process without sending data outside" — in the same month. You can use AI without sending confidential data outside. **One person plus these two can match an SI team.**
 
 ## Urgent — Finish Before Mythos Goes Public
 
@@ -29,22 +29,24 @@ You can use AI without sending confidential data outside. **One person plus thes
 
 Mythos will not stay locked up forever. As the 12 Glasswing companies finish their remediation, Mythos gets released. The moment that happens, **defenders and attackers start using Mythos at the same time.**
 
+### The Biggest Problem — Windows / Office Won't Make It in Time
+
+This is the main reason for the urgency. Windows and Office, which most organizations depend on, carry decades of legacy code, and Copilot is now integrated across the OS and every Office product. Even with Mythos scanning, the surface to patch is too large to finish before public release. There is a structural contradiction, too: patching with one hand while Copilot keeps adding new attack surface with the other.
+
+**If you keep relying on Microsoft for your security, you will be working on an unpatched attack surface long after Mythos goes public.** That is why you must drive your own attack surface to zero.
+
+### Time Remaining
+
 :::chain
-**Time remaining:**
-Glasswing remediation completes → Mythos released publicly
+**Countdown:**
+The 12 Glasswing companies finish remediation → Mythos released publicly
 → Attackers gain the same capability
 → CMS, legacy DBs, resident AI agents in production — all get scanned
-→ Systems that can't patch in time become the first targets
+→ Systems tied to Microsoft legacy become the first targets
 → **You have half a year to a year. After release is too late.**
 :::
 
 Starting after the release does not give you enough time. Engaging an SI vendor takes weeks to months. **The attack surface must be zero before release.**
-
-### Windows / Office Won't Make It in Time
-
-This is the biggest reason for the urgency. Windows and Office carry decades of legacy code, and Copilot is now integrated across the OS and every Office product. Even with Mythos scanning, the surface to patch is too large to finish before public release. There is a structural contradiction, too: patching with one hand while Copilot keeps adding new attack surface with the other.
-
-**If you keep relying on Microsoft for your security, you will be working on an unpatched attack surface long after Mythos goes public.** That is why you must drive your own attack surface to zero.
 
 ## Split AI by Role
 

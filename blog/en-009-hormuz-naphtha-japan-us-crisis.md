@@ -3,7 +3,7 @@ slug: hormuz-naphtha-japan-us-crisis
 title: "Hormuz Blockade — What Happens to Japan and America When Naphtha-Derived Products Run Out"
 subtitle: "The 'quality' of crude oil fundamentally divides how the crisis manifests in Japan, America, and China."
 description: "Naphtha shortages from the Hormuz blockade spread to food packaging, medical disposables, pharmaceuticals, and defense materials. Japan's reserves buy time but cannot save imported goods. America keeps commodity plastics with ethane but faces aromatic shortages that reach military supplies. China has relative advantage through coal chemistry but remains vulnerable on methanol, LNG, and sulfur."
-date: 2026.04.12
+date: 2026.04.14
 lang: en
 label: Blog
 category: Structural Analysis Notes
@@ -49,6 +49,24 @@ A paint industry survey in the Kanto region found approximately 70% of companies
 **PET bottles:** Paraxylene → PTA → PET resin. Domestic production is possible, but PET preform imports from China are declining as China itself faces naphtha shortages. Shortages likely to materialize within months.
 
 **Paints and adhesives:** Already critical. Solvents (toluene, xylene) come from naphtha aromatics. Prices up 30–75%, some products unavailable. Direct impact on construction, automotive repair, and infrastructure maintenance.
+
+### Manufacturing and Construction — A Supply Chain That Stops When One Part Is Missing
+
+On April 14, 2026, TOTO announced a temporary suspension of new orders for its flagship unit baths and system kitchens. Unsaturated polyester resin for the bathtub FRP (fiber-reinforced plastic), PVC for the shower hose, resin components in the mixer tap, adhesives — each is only a small part of the finished product, but if any one is missing, the unit bath cannot ship. The company warned of delivery delays for housing handovers from May onward. LIXIL, Panasonic, and Cleanup have entered similar shipment adjustments.
+
+Modern manufacturing builds a single finished product from hundreds to thousands of parts. About 30,000 in a car. Thousands in residential fixtures. Hundreds in home appliances. If even one is missing, the entire line stops. The naphtha shortage is not simply "plastic gets more expensive" — it strikes manufacturing by cutting a single point somewhere in the parts supply network.
+
+**Housing and building:** PVC pipes, resin window frames, insulation (polyurethane foam, extruded polystyrene), flooring (vinyl tile, flooring adhesive), waterproof membranes, sealants, paints — roughly 200 types of petrochemical products go into a single house. Major home builders such as Sekisui House, Daiwa House, and Panasonic Housing are being forced to revise their procurement plans. Delivery delays on homes already under construction began in early April, and restraint on new orders is now under consideration.
+
+**Construction industry overall:** On buildings, roads, and bridges, waterproof membranes, paints, adhesives, piping, wire coating, flooring, and interior materials — naphtha-derived materials enter every stage. Cement and steel alone cannot complete a building. General contractors are being forced to overhaul project schedules, and public works deadline slippages are emerging nationwide. Renovation and maintenance (roof waterproofing, exterior repainting) are hit first as paints and sealants run out, and construction postponements are already widespread.
+
+**Automotive:** Bumpers, dashboards, wire insulation, seat fabric, tires, adhesives, paints — approximately 150 kg of plastic in a single car (10–15% of total weight). That a single missing part can halt an entire production line was proven repeatedly in the 2011 earthquake and the 2022 semiconductor shortage. Toyota, Honda, and Nissan have already begun production adjustments on certain models.
+
+**Home appliances:** ABS resin housings, PVC wire insulation, epoxy resin PCBs, expanded polystyrene packaging. Directly tied to shipments of refrigerators, washing machines, and air conditioners.
+
+**Food and beverage:** PET bottles, caps, labels, shrink film, corrugated box adhesives. Even if the contents can be produced, without packaging they cannot ship.
+
+This is where the terror of the naphtha crisis lies. Even if the total feedstock drops by 20%, a specific part that is 100% missing makes 100% of the product impossible. The "254-day reserve" is a useful average for buying time, but at the level of individual parts, shortages have already begun. Manufacturing and construction together underpin roughly a quarter of Japan's employment. A single missing part cascades, and within months, production halts and construction stoppages could spread across broad sectors.
 
 ### Medical Consumables — All Made from Naphtha-Derived Plastics
 

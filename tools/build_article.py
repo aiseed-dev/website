@@ -534,46 +534,71 @@ def blog_index_vars(lang, post_list_html):
 def build_sitemap():
     """Generate sitemap.xml from all articles."""
     from datetime import date
-    today = date.today().isoformat()
+
+    def norm_date(d):
+        """Convert YYYY.MM.DD or YYYY-MM-DD to ISO YYYY-MM-DD."""
+        if not d:
+            return date.today().isoformat()
+        return str(d).replace(".", "-")
+
+    ja_articles = collect_articles("ja")
+    en_articles = collect_articles("en")
+    ja_posts = collect_blog_posts("ja")
+    en_posts = collect_blog_posts("en")
+
+    all_dates = [
+        norm_date(m.get("date"))
+        for m in (*ja_articles, *en_articles, *ja_posts, *en_posts)
+        if m.get("date")
+    ]
+    latest = max(all_dates) if all_dates else date.today().isoformat()
 
     urls = []
     # Homepages
-    urls.append(("https://aiseed.dev/", today, "1.0"))
-    urls.append(("https://aiseed.dev/en/", today, "0.8"))
+    urls.append(("https://aiseed.dev/", latest, "1.0"))
+    urls.append(("https://aiseed.dev/en/", latest, "0.8"))
 
     # Index pages
-    urls.append((f"{SITE_URL}/insights/", today, "0.9"))
-    urls.append((f"{SITE_URL}/en/insights/", today, "0.8"))
+    urls.append((f"{SITE_URL}/insights/", latest, "0.9"))
+    urls.append((f"{SITE_URL}/en/insights/", latest, "0.8"))
 
     # JP articles
-    for meta in collect_articles("ja"):
+    for meta in ja_articles:
         slug = meta.get("slug", "")
-        urls.append((f"{SITE_URL}/insights/{slug}/", today, "0.7"))
+        if not slug:
+            continue
+        urls.append((f"{SITE_URL}/insights/{slug}/", norm_date(meta.get("date")), "0.7"))
 
     # EN articles
-    for meta in collect_articles("en"):
+    for meta in en_articles:
         slug = meta.get("slug", "")
-        urls.append((f"{SITE_URL}/en/insights/{slug}/", today, "0.6"))
+        if not slug:
+            continue
+        urls.append((f"{SITE_URL}/en/insights/{slug}/", norm_date(meta.get("date")), "0.6"))
 
     # Blog index pages
-    urls.append((f"{SITE_URL}/blog/", today, "0.8"))
-    urls.append((f"{SITE_URL}/en/blog/", today, "0.7"))
+    urls.append((f"{SITE_URL}/blog/", latest, "0.8"))
+    urls.append((f"{SITE_URL}/en/blog/", latest, "0.7"))
 
     # JP blog posts
-    for meta in collect_blog_posts("ja"):
+    for meta in ja_posts:
         slug = meta.get("slug", "")
-        urls.append((f"{SITE_URL}/blog/{slug}/", today, "0.7"))
+        if not slug:
+            continue
+        urls.append((f"{SITE_URL}/blog/{slug}/", norm_date(meta.get("date")), "0.7"))
 
     # EN blog posts
-    for meta in collect_blog_posts("en"):
+    for meta in en_posts:
         slug = meta.get("slug", "")
-        urls.append((f"{SITE_URL}/en/blog/{slug}/", today, "0.6"))
+        if not slug:
+            continue
+        urls.append((f"{SITE_URL}/en/blog/{slug}/", norm_date(meta.get("date")), "0.6"))
 
     # About / Light Farming (both JP and EN)
-    urls.append((f"{SITE_URL}/about/", today, "0.8"))
-    urls.append((f"{SITE_URL}/en/about/", today, "0.7"))
-    urls.append((f"{SITE_URL}/light-farming/", today, "0.8"))
-    urls.append((f"{SITE_URL}/en/light-farming/", today, "0.7"))
+    urls.append((f"{SITE_URL}/about/", latest, "0.8"))
+    urls.append((f"{SITE_URL}/en/about/", latest, "0.7"))
+    urls.append((f"{SITE_URL}/light-farming/", latest, "0.8"))
+    urls.append((f"{SITE_URL}/en/light-farming/", latest, "0.7"))
 
     xml_lines = ['<?xml version="1.0" encoding="UTF-8"?>']
     xml_lines.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')

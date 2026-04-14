@@ -17,7 +17,7 @@ hero_image: IMG_3415.jpg
 In April 2026, two breakthrough tools arrived.
 
 - **Claude Mythos** (April 2026, restricted preview from Anthropic via Glasswing): advanced logical reasoning, abstract thinking, policy and strategy.
-- **Gemma 4** (April 2026, released by Google under Apache 2.0): a high-performance open-source model that **runs on LGWAN (closed networks) or your own server with zero external communication.** Fast processing, routine tasks, full privacy. Free.
+- **Gemma 4** (April 2026, released by Google under Apache 2.0): a high-performance open-source model that **runs on your own server with zero external communication.** Fast processing, routine tasks, full privacy. Free.
 
 Mythos brought "the power to defend"; Gemma 4 brought "the power to process without sending data outside" — in the same month. You can use AI without sending confidential data outside. **One person plus these two can match an SI team.**
 
@@ -58,7 +58,7 @@ Coding, structural analysis, strategy, writing. Complex judgment and creativity.
 
 ### Gemma 4 CLI — Processing Work (fully local)
 
-Summaries, aggregation, transformation, routine analysis. **Zero external communication. Runs on LGWAN or your own server.**
+Summaries, aggregation, transformation, routine analysis. **Zero external communication. Runs on your own server.**
 
 **Do not run it as a persistent agent. Invoke via CLI and finish in one shot.** No privileges. Input → process → output, done. This is the key to not forming an attack surface.
 
@@ -77,7 +77,7 @@ No AI agents in production. Always-on external comms + system privileges + unver
 :::chain
 **Four principles:**
 Think → Claude Mythos (send only material)
-Process → Gemma 4 CLI (local / LGWAN; never resident)
+Process → Gemma 4 CLI (fully local; never resident)
 Research → Gemini (search-integrated)
 Run → No AI (production is static / local)
 **Human is the hub. Don't auto-chain AIs.**

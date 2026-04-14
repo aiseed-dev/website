@@ -325,11 +325,7 @@ The direction where AI eliminates desk work and the direction where naphtha scar
 
 And these two forces arrive simultaneously. The push out of desk work and the pull into real-world work happen at the same time. If only one came, the transition would be slow. But when both arrive at once, recovery is fast.
 
-The timing overlaps too. Both Mythos release and naphtha shortage arrive during 2026.
-
-The naphtha shortage is already confirmed. Geopolitical conflict in the Persian Gulf region in spring 2026 caused emergency shutdowns of petrochemical plants (crackers) across the Gulf. Plants in Japan were shut down in a planned manner and are easier to restart, but the Gulf situation is entirely different. Emergency-shutdown crackers must complete every step in sequence without shortcuts: removal of abnormally adhered coking, ultra-slow heating at 10–20°C per hour, and dynamic synchronization with cryogenic separation at minus 140°C. Reacquiring security clearances for evacuated specialist personnel alone takes months. From strait reopening to stable ethylene production: minimum 2 months, potentially over 3. Over 60% of Asia's naphtha imports depend on the Gulf, and crackers in South Korea and Japan have shut down in a chain reaction.
-
-Plastic product supply shortages will progress gradually but inevitably. **The goal is for this transition to be complete by the end of 2026.** The Industrial Revolution took decades. This time it takes months.
+The timing overlaps too. Both Mythos release and naphtha shortage arrive during 2026. As detailed in the [previous article](/en/blog/naphtha-mythos/), the naphtha shortage is already confirmed through emergency shutdowns of Gulf crackers. Plastic product supply shortages will progress gradually but inevitably. **The goal is for this transition to be complete by the end of 2026.** The Industrial Revolution took decades. This time it takes months.
 
 This may look like a high bar. But consider — aiseed.dev was built in 24 hours. Zero lines of human-written code. All you need is the ability to decide what to build.
 

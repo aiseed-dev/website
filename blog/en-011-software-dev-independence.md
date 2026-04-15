@@ -109,9 +109,9 @@ For organizations outside Glasswing, there are three domains to defend. The shap
 
 - **Don't leave it to an SI vendor. Rebuild it yourself with Claude.** Something working in 24 hours.
 - Observe the workflow → **turn only the logic a human approves into code** (Python, SQL, shell).
-- Keep data **on your own machine with SQLite.** Do not expose a production DB externally.
-- Hand routine processing to **Gemma 4 CLI,** one shot at a time. No resident agents.
+- **Data lives on your own machine as SQLite. Keep the central DB to the minimum.**
 - Manage source code in Git. Understand the structure yourself.
+- **No AI agents inside internal systems.** No Copilot, no resident Gemma 4. What runs is only the code a human approved.
 - **When Mythos arrives, having the source in hand means you can fix it yourself.**
 
 ### 3. Public Systems Problem

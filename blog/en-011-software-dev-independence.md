@@ -133,7 +133,7 @@ For organizations outside Glasswing, there are three domains to defend. The shap
 - One server, one app. Loosely coupled.
 - **Drive the attack surface to zero.** Build a state where a scan finds nothing.
 
-## Five Principles
+## Three Principles
 
 :::highlight
 **1. AI is used only by those with authority and responsibility.**
@@ -148,17 +148,6 @@ Markdown, CSV, Python, JSON. Everything in Git. A shape both AI and humans can d
 :::highlight
 **3. Stay in a state where Mythos can scan and you can patch.**
 Build a system where, the moment Mythos is public, you can scan your own code and patch what it finds yourself. Three things have to be true at once: the source code is in your hands, the structure is understood, and the code is small and transparent. Only then can you act on Mythos findings in hours to days. **Don't keep what you can't patch yourself — CMS, AI agents in production, SI-vendor black boxes.**
-:::
-
-:::highlight
-**4. Keep the public site static.**
-Linux + Nginx + static files is enough. Run Gemma 4 locally as a CLI on your own machine.
-:::
-
-:::highlight
-**5. Eliminate black boxes.**
-Leave code to AI. Understanding structure and intent is the human's job.
-Don't bring in "invisible automation."
 :::
 
 ## Independence Is Not Isolation

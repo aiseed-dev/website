@@ -860,6 +860,69 @@ def build_blog_index(lang="ja"):
 
 
 # ---------------------------------------------------------------------------
+# Home page: latest blog posts section
+# ---------------------------------------------------------------------------
+
+HOME_LATEST_COUNT = 5
+HOME_MARKER_START = "<!-- LATEST_BLOG_POSTS_START -->"
+HOME_MARKER_END = "<!-- LATEST_BLOG_POSTS_END -->"
+
+
+def update_home_latest_posts(lang="ja", count=HOME_LATEST_COUNT):
+    """Replace the 'Latest Blog Posts' block on the home page with the N
+    newest posts, sourced from the blog markdown frontmatter."""
+    is_en = lang == "en"
+    posts = collect_blog_posts(lang)[:count]
+    if not posts:
+        return False
+
+    blog_base = "/en/blog" if is_en else "/blog"
+    cards = []
+    for p in posts:
+        slug = p.get("slug", "")
+        title = p.get("title", "")
+        date = p.get("date", "")
+        description = p.get("description", "")
+        cards.append(
+            f'                <a href="{blog_base}/{slug}/" class="article-link">\n'
+            f'                    <div class="activity-item">\n'
+            f'                        <div class="activity-number" style="font-size: 0.7rem;">{date}</div>\n'
+            f'                        <div class="activity-content">\n'
+            f'                            <h3>{title}</h3>\n'
+            f'                            <p>{description}</p>\n'
+            f'                        </div>\n'
+            f'                    </div>\n'
+            f'                </a>'
+        )
+
+    home = SITE_ROOT / "html" / ("en/index.html" if is_en else "index.html")
+    if not home.exists():
+        print(f"Warning: home page not found: {home}")
+        return False
+
+    text = home.read_text(encoding="utf-8")
+    pattern = re.compile(
+        re.escape(HOME_MARKER_START) + r".*?" + re.escape(HOME_MARKER_END),
+        re.DOTALL,
+    )
+    if not pattern.search(text):
+        print(f"Warning: markers not found in {home}")
+        return False
+
+    block = (
+        HOME_MARKER_START
+        + "\n\n"
+        + "\n\n".join(cards)
+        + "\n\n                "
+        + HOME_MARKER_END
+    )
+    new_text = pattern.sub(block, text)
+    home.write_text(new_text, encoding="utf-8")
+    print(f"Updated home latest posts: {home}")
+    return True
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -901,6 +964,8 @@ def main():
         if blog_files:
             build_blog_index("ja")
             build_blog_index("en")
+            update_home_latest_posts("ja")
+            update_home_latest_posts("en")
 
         build_sitemap()
         build_robots()

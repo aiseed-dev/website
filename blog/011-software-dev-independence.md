@@ -1,8 +1,8 @@
 ---
 slug: software-dev-independence
 title: AI時代のデスクワークとシステム設計——Claude MythosとGemma 4
-subtitle: Mythos公開までに、デスクトップ・社内システム・公開システムの3領域を Claude と Gemma 4 で建て直す。
-description: 2026年4月、Claude Mythos と Gemma 4 が揃った。公開まで半年〜1年。Windows/Office、社内システム、公開システム——3つの問題領域を、役割で分けた AI と人間が認めたロジックで建て直す。
+subtitle: Mythos公開まで半年〜1年。対応は緊急——自らスキャンし修正できる環境を今すぐ整える。
+description: 2026年4月、Claude Mythos と Gemma 4 が揃った。Mythos 一般公開まで半年〜1年。公開と同時に攻撃側も同じ能力を手にする。Windows/Office 依存、社内システムのブラックボックス、CMS——対応は緊急。今すぐ着手しなければ間に合わない。
 date: 2026.04.13
 label: Blog
 category: 構造分析ノート

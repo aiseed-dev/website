@@ -18,7 +18,11 @@ The Strait of Hormuz carries approximately 20% of the world's seaborne crude oil
 
 Naphtha — the foundational petrochemical feedstock refined from crude oil — is now in critical shortage. Its absence is silently but steadily eroding food packaging, healthcare, paints, textiles, and electronics across every aspect of daily life.
 
-The crisis manifests differently in Japan and America. The reason is structural: the "quality" of their crude oil is fundamentally different.
+Tracking the impact on every individual product alone is beyond any one person. This article is the result of structural analysis done with Claude and Gemini. Even without being a specialist, analysis at this depth is possible with AI.
+
+The crisis manifests differently in Japan and America. The "quality" of the crude oil is also different — that became clear.
+
+At the same time, because this is AI-assisted analysis, factual errors or inaccurate figures may remain. Readers are encouraged to verify and examine the structure with AI themselves.
 
 ## What Is Naphtha — And Why It's Not the Same as Gasoline
 

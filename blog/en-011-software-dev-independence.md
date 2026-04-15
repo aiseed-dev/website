@@ -1,8 +1,8 @@
 ---
 slug: software-dev-independence
-title: Desk Work and System Design in the AI Era — Rebuild the Three Domains
-subtitle: Before Mythos goes public, rebuild desktop, internal systems, and public systems with Claude and Gemma 4.
-description: In April 2026, Claude Mythos and Gemma 4 arrived. Half a year to a year until release. Three problem domains — Windows/Office, internal systems, public systems — rebuilt with role-split AI and approved-logic-as-code.
+title: Desk Work and System Design in the AI Era — Claude Mythos and Gemma 4
+subtitle: Half a year to a year until Mythos goes public. The response is urgent — build your own scan-and-patch environment now.
+description: In April 2026, Claude Mythos and Gemma 4 arrived. Half a year to a year until Mythos is released publicly. The moment it is, attackers gain the same capability. Windows/Office dependency, internal-system black boxes, CMS — the response is urgent. Start today or it's too late.
 date: 2026.04.13
 lang: en
 label: Blog
@@ -10,187 +10,110 @@ category: Structural Analysis Notes
 hero_image: IMG_3415.jpg
 ---
 
-# Desk Work and System Design in the AI Era — Rebuild the Three Domains
+# Desk Work and System Design in the AI Era — Claude Mythos and Gemma 4
 
 ## April 2026: The Tools Have Arrived
 
 In April 2026, two breakthrough tools arrived.
 
-- **Claude Mythos** (April 2026, restricted preview from Anthropic via Glasswing): advanced logical reasoning, abstract thinking, policy, strategy, and coding.
-- **Gemma 4** (April 2026, released by Google under Apache 2.0): a high-performance open-source model that **runs on your own machine with zero external communication.** Fast processing, routine tasks, full privacy. Free.
+On April 7, 2026 (US time), Anthropic announced the restricted preview of its latest model, Claude Mythos Preview, through Project Glasswing. This release was unique in the history of AI. The official announcement was backed by the following facts.
 
-Claude turns logic into code. Gemma 4 handles routine processing on your machine. **Together, they replace your work with code.**
+* **Withheld from general release:** As a byproduct of its general reasoning and coding ability, Mythos exhibited an "emergent" capacity to autonomously discover and chain together unknown zero-day vulnerabilities in the Linux kernel and major operating systems and browsers — on the order of thousands.
+* **Why access was limited:** The potential damage if the capability were used by malicious actors (economic, public safety, national security) was judged catastrophic, and general release was canceled.
+* **Formation of Glasswing:** In its place, the project launched in partnership with more than ten initial partner companies — AWS, Google, Microsoft, Apple, CrowdStrike, and others — providing access strictly limited to "defensive security work (vulnerability discovery and remediation)."
 
-## Urgent — Finish Before Mythos Goes Public
+Gemma 4 is a high-efficiency, high-performance model that Google released as fully open source (Apache 2.0 license) on April 2, 2026, just before Mythos. Its essence is that top-tier reasoning capability is now available in an offline environment on your own machine.
 
-### Glasswing — Inside and Outside the 12
+* Complete confidentiality (zero-leak): because it never communicates with an external cloud, personal information, undisclosed financial data, and government-confidential information can all be processed safely.
 
-On April 7, 2026, Anthropic announced Project Glasswing. Claude Mythos is restricted to 12 companies and 40-plus infrastructure organizations. **Everyone else must protect themselves.**
+* Overwhelming speed and lightness: designs that minimize memory use (MoE architecture and similar) let it complete text parsing and code verification instantly on a local PC.
 
-Mythos will not stay locked up forever. As the 12 Glasswing companies finish their remediation, Mythos gets released. The moment that happens, **defenders and attackers start using Mythos at the same time.**
+* CLI-centric practicality: it rejects black-box agents and functions perfectly as a part of a "pipeline (Unix-style approach)" — text is piped directly through the terminal.
 
-### Windows / Office Won't Make It in Time
 
-Windows and Office carry decades of legacy code, and Copilot is now integrated across the OS and every Office product. Even with Mythos scanning, the surface to patch is too large to finish before public release. **If you keep relying on Microsoft for your security, you will be working on an unpatched attack surface long after Mythos goes public.**
+## Urgent Warning for the Mythos Era — Break Dependency Now
 
-### Copilot-Style Automation Won't Work in the Mythos Era
+A decisive event made the seriousness of the situation clear. On the same day Project Glasswing was announced, leaders of the US Treasury and the Federal Reserve convened the top executives of Wall Street's largest banks at Treasury headquarters in Washington and directly warned them about the catastrophic cybersecurity risks that Anthropic's Claude Mythos Preview could create.
 
-Microsoft is trying to solve the Excel / Word operation burden with **Copilot agent automation.** Structurally, this direction will not hold in the Mythos era.
+Anthropic's measure restricting Mythos to 12 initial partners and over 40 infrastructure organizations is only a temporary breakwater. Once the selected infrastructure set completes its vulnerability remediation, Mythos will inevitably be released publicly. At that moment, both defenders and attackers gain exactly the same capability. For organizations outside Glasswing, the grace period before systems begin to fall — the countdown — is only half a year to a year.
 
-- **Prompt injection**: instructions hidden in documents hijack Copilot.
-- **Loss of data sovereignty**: internal documents are sent to an external AI.
-- **Thinking atrophy**: outsourcing judgment erodes human judgment.
+The most fatal risk in this countdown is dependency on systems carrying decades of legacy code, like Windows and Office. These are internal black boxes, and once Mythos begins scanning, the volume of vulnerabilities to fix will be too large to patch in time for public release. Further, Microsoft's push for "automation via Copilot agents" carries structural defects — vulnerability to prompt injection, loss of data sovereignty — and becomes a massive entryway in the face of Mythos-level attack capability.
 
-Copilot multiplies "convenient but fragile, unverifiable automation." Once Mythos is public, all of it becomes an entryway.
+In other words, continuing to entrust your organization's security to a giant vendor's fragile ecosystem means you will be "working on an unpatched attack surface, defenseless" for a long time after public release.
 
-### Countdown
 
-:::chain
-The 12 Glasswing companies finish remediation → Mythos released publicly
-→ Attackers gain the same capability
-→ Windows / Office legacy, internal systems, public sites — all get scanned
-→ Systems that can't patch in time fall first
-→ **You have half a year to a year. After release is too late.**
-:::
+## Concrete Steps and Environment Migration for the Mythos Era
 
-## Split AI by Role
+For organizations outside Glasswing's protection, the public release of Mythos is an imminent threat. The moment it goes public, you must already have an environment in which you can scan your own systems and fix vulnerabilities immediately. Mythos-level code analysis and defense capability already surpasses human security specialists, so outsourcing this work to an external vendor is a fatal delay. With the current Claude (Opus 4.6, Sonnet 4.6, etc.), building this defensive environment yourself is by no means difficult. Below are the migration processes to begin immediately for each of three domains.
 
-Don't rank AIs by capability. **Split them by role.**
+### Local PC: Return to Text, Leave Office
 
-- **Claude Mythos**: thinking work. Coding, structural analysis, strategy, writing. Send only material.
-- **Gemma 4 CLI**: processing work. Summaries, aggregation, transformation, routine analysis. Zero external communication. Runs on your own machine. **Not resident. One shot per invocation.**
-- **Gemini**: research work. Source gathering, earnings analysis, deep research.
-- **Production**: no AI. Static HTML, Python, SQLite. **Zero attack surface.**
+The current office environment is dominated by the "black box" of Windows and Office products. Binary files like Excel and Word cannot be diffed with Git, so the history of "who changed what, when, and why" exists only in people's heads. On top of that, non-creative manual work — adjusting formulas and macros — consumes enormous amounts of time. Even more serious are the zero-day vulnerabilities that trigger merely on opening a file, and the cascading risks inherent to the tightly coupled Windows + Entra ID + Azure ecosystem. With Copilot integrated on top, the attack surface has expanded to an unprecedented scale.
 
-:::chain
-**Four principles:**
-Think → Claude Mythos
-Process → Gemma 4 CLI
-Research → Gemini
-Run → No AI
-**Human is the hub. Don't auto-chain AIs.**
-:::
+The best way out of this crisis is to move the desktop environment from Windows to Linux. Convert business documents to plain text — Markdown, CSV, JSON — and put everything under Git, enforcing "Doc as Code." For existing Excel workflows, observe the procedure, extract the logic, and have Claude rewrite it into code such as Python. Routine processing that includes confidential information should not be handed to a resident Copilot; run the local Gemma 4 as a CLI, one-shot per invocation, to complete the work.
 
-## Rebuild the Three Problem Domains
+### Internal Systems: End SI-Vendor Dependency, Achieve Deterministic Independence
 
-For organizations outside Glasswing, there are three domains to defend. The shape of the problem differs, so the shape of the rebuild differs.
+Many internal systems (legacy ERP, Access, on-premise apps) have become black boxes delivered by SI vendors, with no one understanding what's inside. No internal staff can explain the structure, and when a vulnerability is found, it takes weeks to months to re-engage the vendor and apply a fix. External API integrations and VPN access paths also remain, and the assumption that "it's safe because it's on the intranet" has already collapsed — VPN appliances themselves become attack targets, and intrusion through them will accelerate after Mythos goes public. Also, the recent trend of embedding AI agents inside internal systems under the banner of "efficiency" is a foolish move that only multiplies external attack paths (prompt injection, etc.).
 
-### 1. Windows / Office Problem (Desktop)
+What is required is to break dependency on SI vendors and rebuild the systems yourself, openly, through dialogue with Claude. With AI support, even legacy systems can be replaced with modern code in a short time. Automate only "deterministic logic that a human has approved (Python, SQL, shell scripts)"; do not let AI agents reside inside systems and make autonomous judgments. Manage data simply in local SQLite and keep dependence on any central database to a minimum. Keep the source code under Git locally and keep understanding of the structure in your own hands — then, even if Mythos uncovers an unknown vulnerability, you can apply the patch yourself immediately. Design the intranet with the same defensive assumptions as a public-facing system.
 
-**Problem:**
+### Public Systems: Eliminate the Attack Surface Through Static Sites
 
-- Binary files (Excel, Word, PowerPoint). `git diff` produces nothing.
-- No history. Who changed what, when, and why lives only in people's heads.
-- Manual at the core. Filling cells, fixing formatting — non-judgment operation eats the workday.
-- Hundreds of CVEs a year. Zero-days that fire on open or preview.
-- Tight coupling (Windows + Entra ID + Azure + SharePoint). One breach cascades through everything.
-- Copilot integration expands the attack surface further.
+The single largest vulnerability on the web is the existence of CMSs like WordPress and the databases attached to them. Plugin vulnerabilities and unauthenticated exploit paths never stop appearing, and even with a WAF (Web Application Firewall) deployed, the majority of sophisticated attacks pass right through. The recent fashion of integrating AI chatbots and AI search into public systems only adds more attack targets.
 
-**Rebuild:**
+The only correct answer is to "physically reduce the attack surface to zero." Completely discard CMSs and dynamic databases from production, and serve only "static HTML" generated by Markdown and a build tool. Keep the server configuration as simple as possible — Linux + Nginx + static files — with "one app per server" as a strict rule of loose coupling. Naturally, remove AI integrations from production entirely. The strongest defense in the coming era is to create a state in which, even when Mythos scans it, "no dynamic element is found to attack."
 
-- **Move to Linux.** Get your desktop off Windows.
-- **Binary → text:** Markdown, CSV, Python, JSON. Everything in Git (Doc as Code).
-- **Observe Excel / Word work → extract logic → ask Claude to turn it into code.**
-- **Hand routine processing — including confidential data — to Gemma 4 CLI, one shot at a time.** Not resident.
-- Don't use Copilot agents.
+For the parts that must receive information — order and inquiry processing systems — the following design is the optimal solution.
 
-### 2. Internal Systems Problem
+**1. Design it as a "one-way valve (Write-Only API)"**
 
-**Problem:**
+Do not colocate the order and inquiry processing system with the website (static HTML). Stand up a small, independent API server dedicated solely to input processing.
 
-- Legacy line-of-business systems, ERP, core operations, Access DBs, on-prem apps.
-- An SI vendor's black box. No one knows what's inside.
-- No one in-house can explain the structure.
-- When a vulnerability surfaces, re-engaging the vendor takes weeks to months.
-- External API links, VPN access, remote desktop — external paths remain.
-- AI agents are being pushed inside under the banner of "efficiency."
+- Static site side: place a form inside the HTML. When the submit button is pressed, use JavaScript's `fetch` or similar to "throw" the JSON data at an API on a different domain (or subdomain / different port) — nothing more.
+- API server side (receiving): run a minimal application written in Python (FastAPI etc.) on an independent Linux server. This server is specialized to a **single function (one app): "receive JSON of a specified format, write it to local SQLite or similar, and return 200 OK."**
 
-**Rebuild:**
+**2. Enforce deterministic validation**
 
-- **Don't leave it to an SI vendor. Rebuild it yourself with Claude.** Something working in 24 hours.
-- Observe the workflow → **turn only the logic a human approves into code** (Python, SQL, shell).
-- **Data lives on your own machine as SQLite. Keep the central DB to the minimum.**
-- Manage source code in Git. Understand the structure yourself.
-- **No AI agents inside internal systems.** No Copilot, no resident Gemma 4. What runs is only the code a human approved.
-- **When Mythos arrives, having the source in hand means you can fix it yourself.**
+This receiving API becomes the attack target, but its attack surface is on an entirely different order of magnitude from a CMS.
 
-### 3. Public Systems Problem
+- Strict input limits: validate the type and length of the incoming data (name, email address, order content, etc.) precisely with Python code (Pydantic etc.). Unexpected characters and oversized payloads are immediately discarded at the gate (HTTP 4xx errors).
+- Do not expose reads from the DB externally: this API server can be "written to" from outside, but it has zero capability to "look up database contents and return them" in response to external requests. This cuts SQL injection and data-leak risk off at the root.
 
-**Problem:**
+**3. Asynchronous processing and connection to local AI (Gemma 4)**
 
-- Public sites on CMS (WordPress etc.). 11,000+ CVEs per year.
-- 97% in third-party plugins. 57% exploitable without authentication.
-- Public APIs, admin consoles, databases — wide attack surface.
-- AI agent integrations (chatbots, AI search) widen it further.
-- WAFs let 87.8% of attacks through.
+The received data should not be left for long on the web-facing server.
 
-**Rebuild:**
+- After orders and inquiries accumulate in SQLite, periodically pull the data from a safe internal network (or an offline local PC).
+- Pass the pulled data to Gemma 4 (CLI) in the internal local environment and have it perform tasks like "spam classification," "summarizing the inquiry content," and "converting order data into the core-system format (CSV, etc.)."
 
-- **Drop the CMS.** Markdown + a build tool + static HTML.
-- **No DB in production.** Local SQLite if needed.
-- **No AI in production.** Retire chatbots and AI search.
-- Keep the server simple. **Linux + Nginx + static files,** nothing else.
-- One server, one app. Loosely coupled.
-- **Drive the attack surface to zero.** Build a state where a scan finds nothing.
+## Principles for Using AI in Business
 
-## Three Principles
+The core of AI use in business is preventing "the abdication of responsibility under the name of efficiency."
 
-:::highlight
-**1. AI is used only by those with authority and responsibility.**
-AI cannot take responsibility — a human takes responsibility for the result of any judgment. And AI is **itself a source of vulnerability** — external communication, prompt injection, unverifiable judgment. So an organization must decide *who* uses AI. The person with authority picks the material, judges the result, and carries the responsibility. **AI left to no one in particular diffuses accountability and widens the attack surface.**
-:::
+**Principle 1: Completely exclude autonomous agents (the non-autonomy principle)**
 
-:::highlight
-**2. Leave binary. Adopt Doc as Code.**
-Markdown, CSV, Python, JSON. Everything in Git. A shape both AI and humans can diff.
-:::
+In business, you must never grant AI the power to "judge on its own and operate systems on its own" (the autonomous agent function). AI's role is strictly limited to "translation and visualization" — organizing messy data, drafting code, and so on. The final execution functions — writing data, sending it externally, changing the system — must be physically isolated from AI's reach.
 
-:::highlight
-**3. Stay in a state where Mythos can scan and you can patch.**
-Build a system where, the moment Mythos is public, you can scan your own code and patch what it finds yourself. Three things have to be true at once: the source code is in your hands, the structure is understood, and the code is small and transparent. Only then can you act on Mythos findings in hours to days. **Don't keep what you can't patch yourself — CMS, AI agents in production, SI-vendor black boxes.**
-:::
+**Principle 2: Localize responsibility, keep human primacy absolute (the decision principle)**
 
-## Independence Is Not Isolation
+Leaving the flow of work to an autonomous AI turns accountability into a black box and collapses organizational governance. AI is at best a machine that produces "highly plausible predictions" — it cannot make "decisions" that carry business risk or ethics. By always interposing a process in which a human reviews the AI's draft or analysis and "approves it by their own will (pressing Enter, etc.)," the final accountability for the work stays 100% in human hands.
 
-Claude Mythos writes code. Gemma 4 CLI processes locally. Gemini researches. **The human decides what to build, instructs the AI, and judges the result.**
+**Principle 3: Reject black boxes and defend (the vulnerability-exclusion principle)**
 
-You don't write code. You do understand the structure.
+The invisible reasoning loops repeated inside autonomous AIs, and the tight coupling with massive external ecosystems like Copilot, bring uncontrollable vulnerabilities into the system (prompt injection, data leakage). To prevent this, AI use must be limited to "pipelines where input and output are fully traceable (CLIs, etc.)." AI output must always be emitted as plain text (Markdown or source code), and its change history must be physically recorded in Git or similar, so humans can always audit and correct it.
 
-Leave the software to AI, and humans focus on real-world work. Grow food. Build things. Face other people. **That is what lies on the other side of rebuilding the three domains.**
+**Principle 4: Return to deterministic automation (the execution principle)**
 
-## Preparing for the Mythos Release — Start Today
+AI should intervene only in the phase that translates a human's "ambiguous intent" into logic. Once a human has approved a procedure as the "correct answer," it is immediately separated from the AI and fixed as "deterministic code (Python, SQL, etc.)" with 100% reproducibility. Once fixed, routine processing leaves no room for AI (probability) to enter; it is operated as clean, machine-level automation.
 
-You have half a year to a year before release. **Start today or you won't make it.**
+## Prepare for the Mythos Release — Start Today
 
-:::highlight
-**Start today:**
-1. Install Linux. Get comfortable with the terminal.
-2. Practice development with Claude Code.
-3. Run Gemma 4 locally as a CLI.
-4. Build the habit of researching with Gemini.
-5. Observe your Excel / Word work and replace routine parts with code.
-6. Plan the rebuild of your internal systems. Keep an option that doesn't rely on an SI vendor.
-7. Make the public site static. Drop the CMS and the production DB.
-8. Put your source code on GitHub.
-9. Remove AI agents from production.
-:::
+Half a year to a year until public release. **Start today or you won't make it.**
 
-## Independence Begins the Moment You Split the Roles
+Recover the spirit of the builder — who thinks for themselves, writes their own code, and makes their own decisions. It is fine for AI to write the code. What matters is taking responsibility for the result.
 
-**Think with Claude Mythos. Process locally with Gemma 4 CLI. Research with Gemini. Keep AI out of production.**
-
-Windows / Office, internal systems, public systems — drive the attack surface to zero in each of the three domains. **That is the only approach that works in the Mythos era.**
-
-:::quote
-Leave Windows / Office.
-Rebuild internal systems yourself with Claude.
-Make the public site static HTML.
-Think → Claude Mythos
-Process → Gemma 4 CLI
-Research → Gemini
-Run → No AI
-**Half a year to a year until Mythos goes public. Start today.**
-:::
+Start by using a Linux PC.
 
 ---
 

@@ -133,7 +133,7 @@ For organizations outside Glasswing, there are three domains to defend. The shap
 - One server, one app. Loosely coupled.
 - **Drive the attack surface to zero.** Build a state where a scan finds nothing.
 
-## Six Principles
+## Five Principles
 
 :::highlight
 **1. AI is used only by those with authority and responsibility.**
@@ -141,27 +141,22 @@ AI cannot take responsibility — a human takes responsibility for the result of
 :::
 
 :::highlight
-**2. Split AI by role. No AI in production.**
-Think with Claude Mythos. Process with Gemma 4 CLI. Research with Gemini. Production stays static.
+**2. Leave binary. Adopt Doc as Code.**
+Markdown, CSV, Python, JSON. Everything in Git. A shape both AI and humans can diff.
 :::
 
 :::highlight
-**3. Leave binary. Adopt Doc as Code.**
-Markdown, CSV, Python, JSON. Everything in Git.
+**3. Stay in a state where Mythos can scan and you can patch.**
+Build a system where, the moment Mythos is public, you can scan your own code and patch what it finds yourself. Three things have to be true at once: the source code is in your hands, the structure is understood, and the code is small and transparent. Only then can you act on Mythos findings in hours to days. **Don't keep what you can't patch yourself — CMS, AI agents in production, SI-vendor black boxes.**
 :::
 
 :::highlight
-**4. No CMS, no DB in production.**
-Use local SQLite if needed. No DB, no SQL injection.
-:::
-
-:::highlight
-**5. Keep the public site static.**
+**4. Keep the public site static.**
 Linux + Nginx + static files is enough. Run Gemma 4 locally as a CLI on your own machine.
 :::
 
 :::highlight
-**6. Eliminate black boxes.**
+**5. Eliminate black boxes.**
 Leave code to AI. Understanding structure and intent is the human's job.
 Don't bring in "invisible automation."
 :::

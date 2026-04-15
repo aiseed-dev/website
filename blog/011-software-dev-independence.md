@@ -1,6 +1,6 @@
 ---
 slug: software-dev-independence
-title: AI時代のデスクワークとシステム設計——Windows/Office・社内・公開の3領域を建て直す
+title: AI時代のデスクワークとシステム設計——Claude MythosとGemma 4
 subtitle: Mythos公開までに、デスクトップ・社内システム・公開システムの3領域を Claude と Gemma 4 で建て直す。
 description: 2026年4月、Claude Mythos と Gemma 4 が揃った。公開まで半年〜1年。Windows/Office、社内システム、公開システム——3つの問題領域を、役割で分けた AI と人間が認めたロジックで建て直す。
 date: 2026.04.13
@@ -9,7 +9,7 @@ category: 構造分析ノート
 hero_image: IMG_3415.jpg
 ---
 
-# AI時代のデスクワークとシステム設計——Windows/Office・社内・公開の3領域を建て直す
+# AI時代のデスクワークとシステム設計——Claude MythosとGemma 4
 
 ## 2026年4月、道具が揃った
 

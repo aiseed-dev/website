@@ -133,30 +133,35 @@ For organizations outside Glasswing, there are three domains to defend. The shap
 - One server, one app. Loosely coupled.
 - **Drive the attack surface to zero.** Build a state where a scan finds nothing.
 
-## Five Principles
+## Six Principles
 
 :::highlight
-**1. Split AI by role. No AI in production.**
+**1. AI is used only by those with authority and responsibility.**
+AI cannot take responsibility — a human takes responsibility for the result of any judgment. And AI is **itself a source of vulnerability** — external communication, prompt injection, unverifiable judgment. So an organization must decide *who* uses AI. The person with authority picks the material, judges the result, and carries the responsibility. **AI left to no one in particular diffuses accountability and widens the attack surface.**
+:::
+
+:::highlight
+**2. Split AI by role. No AI in production.**
 Think with Claude Mythos. Process with Gemma 4 CLI. Research with Gemini. Production stays static.
 :::
 
 :::highlight
-**2. Leave binary. Adopt Doc as Code.**
+**3. Leave binary. Adopt Doc as Code.**
 Markdown, CSV, Python, JSON. Everything in Git.
 :::
 
 :::highlight
-**3. No CMS, no DB in production.**
+**4. No CMS, no DB in production.**
 Use local SQLite if needed. No DB, no SQL injection.
 :::
 
 :::highlight
-**4. Keep the public site static.**
+**5. Keep the public site static.**
 Linux + Nginx + static files is enough. Run Gemma 4 locally as a CLI on your own machine.
 :::
 
 :::highlight
-**5. Eliminate black boxes.**
+**6. Eliminate black boxes.**
 Leave code to AI. Understanding structure and intent is the human's job.
 Don't bring in "invisible automation."
 :::

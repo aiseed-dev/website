@@ -42,7 +42,7 @@ That was the moment an AI acknowledged its own structural flaw.
 
 I had Gemini investigate the current state of Copilot's structural flaws, and the following problems surfaced.
 
-Full report: [The Copilot Problem — Code That Looks Right but Is Wrong](012-copilot_correct_looking_but_wrong.pdf)
+Full report: [The Copilot Problem — Code That Looks Right but Is Wrong](en-012-copilot_correct_looking_but_wrong.pdf)
 
 
 | Study | Subject | Finding |

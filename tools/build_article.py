@@ -330,7 +330,7 @@ def article_vars(meta, body_html):
             "From AI to agriculture — every structural analysis converges on one conclusion.",
             "AIから農業まで——全ての構造分析は、一つの結論に向かう。")),
         "cta_btn1_text": meta.get("cta_btn1_text", _text(is_en, "Natural Farming", "自然農法とは")),
-        "cta_btn1_link": meta.get("cta_btn1_link", "/en/about/" if is_en else "/about/"),
+        "cta_btn1_link": meta.get("cta_btn1_link", "/en/natural-farming/" if is_en else "/natural-farming/"),
         "cta_btn2_text": meta.get("cta_btn2_text", "Light Farming"),
         "cta_btn2_link": meta.get("cta_btn2_link", "/en/light-farming/" if is_en else "/light-farming/"),
         # Paths
@@ -350,7 +350,7 @@ def article_vars(meta, body_html):
         "home_link": "/en/" if is_en else "/",
         "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
         "lf_label": "Light Farming",
-        "about_link": "/en/about/" if is_en else "/about/",
+        "about_link": "/en/natural-farming/" if is_en else "/natural-farming/",
         "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
         "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
         "insights_label": "Insights",
@@ -435,7 +435,7 @@ def index_vars(lang, article_list_html):
         "home_link": "/en/" if is_en else "/",
         "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
         "lf_label": "Light Farming",
-        "about_link": "/en/about/" if is_en else "/about/",
+        "about_link": "/en/natural-farming/" if is_en else "/natural-farming/",
         "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
         "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
         "contact_label": _text(is_en, "Contact", "お問い合わせ"),
@@ -540,7 +540,7 @@ def blog_vars(meta, body_html):
         "home_link": "/en/" if is_en else "/",
         "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
         "lf_label": "Light Farming",
-        "about_link": "/en/about/" if is_en else "/about/",
+        "about_link": "/en/natural-farming/" if is_en else "/natural-farming/",
         "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
         "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
         "insights_label": "Insights",
@@ -589,7 +589,7 @@ def blog_index_vars(lang, post_list_html):
         "home_link": "/en/" if is_en else "/",
         "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
         "lf_label": "Light Farming",
-        "about_link": "/en/about/" if is_en else "/about/",
+        "about_link": "/en/natural-farming/" if is_en else "/natural-farming/",
         "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
         "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
         "menu_label": _text(is_en, "Menu", "メニュー"),
@@ -706,9 +706,11 @@ def build_sitemap():
             continue
         urls.append((f"{SITE_URL}/en/blog/{slug}/", norm_date(meta.get("date")), "0.6"))
 
-    # About / Light Farming (both JP and EN)
-    urls.append((f"{SITE_URL}/about/", latest, "0.8"))
-    urls.append((f"{SITE_URL}/en/about/", latest, "0.7"))
+    # Natural Farming / About / Light Farming (both JP and EN)
+    urls.append((f"{SITE_URL}/natural-farming/", latest, "0.8"))
+    urls.append((f"{SITE_URL}/en/natural-farming/", latest, "0.7"))
+    urls.append((f"{SITE_URL}/about/", latest, "0.6"))
+    urls.append((f"{SITE_URL}/en/about/", latest, "0.5"))
     urls.append((f"{SITE_URL}/light-farming/", latest, "0.8"))
     urls.append((f"{SITE_URL}/en/light-farming/", latest, "0.7"))
 

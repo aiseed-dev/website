@@ -21,6 +21,7 @@ from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
 from markdown_it import MarkdownIt
+from PIL import Image, ImageOps
 
 
 SITE_ROOT = Path(__file__).parent.parent
@@ -31,6 +32,11 @@ OUTPUT_BASE = SITE_ROOT / "html" / "insights"
 BLOG_OUTPUT_BASE = SITE_ROOT / "html" / "blog"
 TEMPLATES_DIR = Path(__file__).parent / "templates"
 SITE_URL = "https://aiseed.dev"
+
+# OGP image: Facebook/X recommended 1.91:1, 1200x630 is the sweet spot.
+OGP_SIZE = (1200, 630)
+OGP_QUALITY = 85
+OGP_FILENAME = "og-image.jpg"
 
 # Jinja2 environment
 _env = Environment(
@@ -51,6 +57,66 @@ def copy_images(src_dir, out_dir, prefix=""):
     for f in src_dir.iterdir():
         if f.suffix.lower() in IMAGE_EXTS and (not prefix or f.name.startswith(prefix)):
             shutil.copy2(f, out_dir / f.name)
+
+
+def generate_ogp_image(src_path, out_path, size=OGP_SIZE, quality=OGP_QUALITY):
+    """Center-crop and resize an image to OGP dimensions (1200x630 JPEG).
+
+    Honours EXIF orientation so iPhone portrait photos come out upright.
+    Returns True on success, False if src does not exist or cannot be opened.
+    """
+    src_path = Path(src_path)
+    out_path = Path(out_path)
+    if not src_path.exists():
+        return False
+
+    with Image.open(src_path) as img:
+        img = ImageOps.exif_transpose(img)
+        if img.mode != "RGB":
+            img = img.convert("RGB")
+
+        target_w, target_h = size
+        src_w, src_h = img.size
+        target_ratio = target_w / target_h
+        src_ratio = src_w / src_h
+
+        # Center-crop to target aspect ratio, then resize
+        if src_ratio > target_ratio:
+            new_w = int(round(src_h * target_ratio))
+            left = (src_w - new_w) // 2
+            img = img.crop((left, 0, left + new_w, src_h))
+        elif src_ratio < target_ratio:
+            new_h = int(round(src_w / target_ratio))
+            top = (src_h - new_h) // 2
+            img = img.crop((0, top, src_w, top + new_h))
+
+        img = img.resize(size, Image.LANCZOS)
+        out_path.parent.mkdir(parents=True, exist_ok=True)
+        img.save(out_path, "JPEG", quality=quality, optimize=True, progressive=True)
+    return True
+
+
+def resolve_og_image(meta, out_dir, public_base_url):
+    """Decide og_image URL and (optionally) generate the OGP JPEG.
+
+    Precedence:
+      1. `og_image` frontmatter starting with http(s):// → used verbatim (manual override)
+      2. `hero_image` frontmatter → crop/resize to OGP_FILENAME in out_dir,
+         return public URL pointing at it
+      3. Fallback → DEFAULT_OG_IMAGE
+    """
+    explicit = meta.get("og_image", "").strip()
+    if explicit.startswith("http://") or explicit.startswith("https://"):
+        return explicit
+
+    hero = meta.get("hero_image", "").strip()
+    if hero:
+        src = Path(meta["_source_dir"]) / hero
+        if src.exists():
+            generate_ogp_image(src, out_dir / OGP_FILENAME)
+            return f"{public_base_url.rstrip('/')}/{OGP_FILENAME}"
+
+    return DEFAULT_OG_IMAGE
 
 
 # ---------------------------------------------------------------------------
@@ -288,7 +354,11 @@ def article_vars(meta, body_html):
         "hreflang_ja": f"{SITE_URL}/insights/{slug}/",
         "hreflang_en": f"{SITE_URL}/en/insights/{slug}/",
         "og_locale": "en_US" if is_en else "ja_JP",
-        "og_image": meta.get("og_image", DEFAULT_OG_IMAGE),
+        "og_image": resolve_og_image(
+            meta,
+            Path(meta.get("_out_dir", ".")),
+            f"{SITE_URL}{insights_base}/{slug}",
+        ),
     }
 
 
@@ -461,7 +531,11 @@ def blog_vars(meta, body_html):
         "hreflang_ja": f"{SITE_URL}/blog/{slug}/",
         "hreflang_en": f"{SITE_URL}/en/blog/{slug}/",
         "og_locale": "en_US" if is_en else "ja_JP",
-        "og_image": meta.get("og_image", DEFAULT_OG_IMAGE),
+        "og_image": resolve_og_image(
+            meta,
+            Path(meta.get("_out_dir", ".")),
+            f"{SITE_URL}{blog_base}/{slug}",
+        ),
     }
 
 
@@ -658,6 +732,18 @@ def build_article(md_path):
         print(f"Error: {md_path} missing 'slug' in front matter")
         return False
 
+    # Resolve output directory up front so OGP generation can target it
+    lang = meta.get("lang", "ja")
+    if lang == "en":
+        out_dir = SITE_ROOT / "html" / "en" / "insights" / meta["slug"]
+    else:
+        out_dir = OUTPUT_BASE / meta["slug"]
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    # Context for OGP image resolution
+    meta["_source_dir"] = str(md_path.parent)
+    meta["_out_dir"] = str(out_dir)
+
     # Process custom blocks first
     body = process_custom_blocks(body)
 
@@ -674,13 +760,6 @@ def build_article(md_path):
     variables = article_vars(meta, indented)
     html = render("article.html", variables)
 
-    # Write output — English articles go to html/en/insights/slug/
-    lang = meta.get("lang", "ja")
-    if lang == "en":
-        out_dir = SITE_ROOT / "html" / "en" / "insights" / meta["slug"]
-    else:
-        out_dir = OUTPUT_BASE / meta["slug"]
-    out_dir.mkdir(parents=True, exist_ok=True)
     out_file = out_dir / "index.html"
     out_file.write_text(html, encoding="utf-8")
 
@@ -767,6 +846,17 @@ def build_blog_post(md_path):
         print(f"Error: {md_path} missing 'slug' in front matter")
         return False
 
+    lang = meta.get("lang", "ja")
+    if lang == "en":
+        out_dir = SITE_ROOT / "html" / "en" / "blog" / meta["slug"]
+    else:
+        out_dir = BLOG_OUTPUT_BASE / meta["slug"]
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    # Context for OGP image resolution
+    meta["_source_dir"] = str(md_path.parent)
+    meta["_out_dir"] = str(out_dir)
+
     body = process_custom_blocks(body)
     body_html = _md.render(body)
 
@@ -778,12 +868,6 @@ def build_blog_post(md_path):
     variables = blog_vars(meta, indented)
     html = render("article.html", variables)
 
-    lang = meta.get("lang", "ja")
-    if lang == "en":
-        out_dir = SITE_ROOT / "html" / "en" / "blog" / meta["slug"]
-    else:
-        out_dir = BLOG_OUTPUT_BASE / meta["slug"]
-    out_dir.mkdir(parents=True, exist_ok=True)
     out_file = out_dir / "index.html"
     out_file.write_text(html, encoding="utf-8")
 
@@ -926,14 +1010,55 @@ def update_home_latest_posts(lang="ja", count=HOME_LATEST_COUNT):
 # CLI
 # ---------------------------------------------------------------------------
 
+def regenerate_ogp(md_path):
+    """Regenerate only the og-image.jpg for a given article/blog markdown file."""
+    md_path = Path(md_path)
+    if not md_path.exists():
+        print(f"Error: {md_path} not found")
+        return False
+    meta, _ = parse_frontmatter(md_path.read_text(encoding="utf-8"))
+    if "slug" not in meta:
+        print(f"Error: {md_path} missing 'slug'")
+        return False
+    hero = meta.get("hero_image", "").strip()
+    if not hero:
+        print(f"Skip: {md_path} has no hero_image")
+        return False
+
+    is_blog = md_path.parent.name == "blog"
+    is_en = meta.get("lang", "ja") == "en"
+    if is_blog:
+        base = SITE_ROOT / "html" / "en" / "blog" if is_en else BLOG_OUTPUT_BASE
+    else:
+        base = SITE_ROOT / "html" / "en" / "insights" if is_en else OUTPUT_BASE
+    out_dir = base / meta["slug"]
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    src = md_path.parent / hero
+    out = out_dir / OGP_FILENAME
+    if generate_ogp_image(src, out):
+        print(f"OGP: {out} ({OGP_SIZE[0]}x{OGP_SIZE[1]}) from {src.name}")
+        return True
+    print(f"Error: source image {src} not found")
+    return False
+
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: python3 tools/build_article.py <article.md>")
         print("       python3 tools/build_article.py --all")
         print("       python3 tools/build_article.py --list")
+        print("       python3 tools/build_article.py --ogp <article.md>  # only regenerate OGP image")
         sys.exit(1)
 
     arg = sys.argv[1]
+
+    if arg == "--ogp":
+        if len(sys.argv) < 3:
+            print("Usage: python3 tools/build_article.py --ogp <article.md>")
+            sys.exit(1)
+        regenerate_ogp(sys.argv[2])
+        return
 
     if arg == "--list":
         for f in sorted(ARTICLES_DIR.glob("*.md")):

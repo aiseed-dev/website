@@ -23,6 +23,7 @@ pip install -r requirements.txt
 
 - [Jinja2](https://jinja.palletsprojects.com/) — テンプレートエンジン（`{{ variable }}` 構文）
 - [markdown-it-py](https://markdown-it-py.readthedocs.io/) — CommonMark 準拠の Markdown パーサー
+- [Pillow](https://pillow.readthedocs.io/) — OGP画像 (1200×630) の自動生成
 
 markdown-it-py は `table` 拡張を有効化済み。
 
@@ -64,7 +65,37 @@ slug がディレクトリ名になる。
 
 ## フロントマター
 
-ファイル先頭に `---` で囲んで記述する。**全てのフィールドは1行で書く**（YAML のネスト・配列は非対応）。
+ファイル先頭に `---` で囲んで記述する。**全てのフィールドは1行で書く**（YAML のネスト・配列は非対応）。パーサは `tools/build_article.py::parse_frontmatter()` の自前実装で、`key: value` を行単位で読むだけ。値両端のダブルクォートは剥がされる。
+
+記事タイプは配置ディレクトリで決まる:
+
+| タイプ | 置き場所 | 出力先 | URL例 |
+|---|---|---|---|
+| Insights記事 (連載) | `articles/NN-slug.md` | `html/insights/slug/index.html` | `/insights/slug/` |
+| Insights記事 (英語) | `articles/en-NN-slug.md` | `html/en/insights/slug/index.html` | `/en/insights/slug/` |
+| Blog記事 (時事ノート) | `blog/NNN-slug.md` | `html/blog/slug/index.html` | `/blog/slug/` |
+| Blog記事 (英語) | `blog/en-NNN-slug.md` | `html/en/blog/slug/index.html` | `/en/blog/slug/` |
+
+### フィールド一覧
+
+| フィールド | Insights | Blog | 必須 | 用途 |
+|---|:---:|:---:|:---:|---|
+| `slug` | ○ | ○ | **必須** | URLパスと出力ディレクトリ名 |
+| `title` | ○ | ○ | **必須** | `<title>`, `<h1>`, OGP title |
+| `subtitle` | ○ | ○ | 推奨 | 記事冒頭のサブタイトル |
+| `description` | ○ | ○ | 推奨 | `<meta description>`, OGP description |
+| `date` | ○ | ○ | 推奨 | 表示日付 (`2026.04.19` 形式)。sitemap の lastmod にも使用 |
+| `lang` | ○ | ○ | 英語版のみ | `en` を指定すると `/en/` 配下に出力 |
+| `label` | ○ | ○ | 任意 | ページヒーローのラベル (例: `Structural Analysis 09`, `Blog`) |
+| `hero_image` | ○ | ○ | 任意 | ページ内アイキャッチ（ファイル名のみ）。**OGP画像の自動生成元**にもなる |
+| `og_image` | ○ | ○ | 任意 | SNSサムネイル手動上書き用の絶対URL。通常は不要（`hero_image` から自動生成） |
+| `number` | ○ | — | Insights必須 | 連載番号 (`"09"` のようにクォート推奨) |
+| `prev_slug` / `prev_title` | ○ | — | 任意 | 前記事ナビゲーション |
+| `next_slug` / `next_title` | ○ | — | 任意 | 次記事ナビゲーション |
+| `category` | — | ○ | 任意 | Blogサイドラベル (既定: `ブログ` / `Blog`) |
+| `cta_*` | ○ | — | 任意 | CTAブロックのカスタマイズ（下記） |
+
+### Insights記事の例
 
 ```yaml
 ---
@@ -82,15 +113,102 @@ next_title: 引き算の設計
 ---
 ```
 
-### 英語記事の追加フィールド
+### Blog記事の例
+
+```yaml
+---
+slug: copilot-correct-looking-but-wrong
+title: MicrosoftのCopilotの課題 ― コードの「正しそうで間違っている」問題
+subtitle: AIが書いたコードをAIがレビューする閉じた系
+description: GitHub Copilotが生成するコードの約40%に致命的な脆弱性……
+date: 2026.04.19
+label: Blog
+category: 構造分析ノート
+hero_image: 012-IMG_3424.jpg
+---
+```
+
+`og_image` は書かなくてよい。`hero_image` から 1200×630 の `og-image.jpg` が自動生成され、SNSメタタグもそれを指す。
+
+### 英語版の追加フィールド
 
 ```yaml
 lang: en
 ```
 
-これがあると `/en/insights/` 以下に出力される。
+これがあると `/en/insights/` または `/en/blog/` 配下に出力される。
 
-### CTA カスタマイズ（省略可）
+## 画像とOGPサムネイル
+
+### 画像のコピー規則
+
+`build_article.py` は Markdownファイル名の**数字プレフィックス**で始まる画像を、同じソースディレクトリから出力ディレクトリに自動コピーする (`copy_images()`)。
+
+| Markdown | コピー対象 | コピー先 |
+|---|---|---|
+| `blog/012-copilot.md` | `blog/012-*.{jpg,jpeg,png,gif,svg,webp,avif,pdf}` | `html/blog/{slug}/` |
+| `articles/09-healthcare.md` | `articles/09-*.*` | `html/insights/{slug}/` |
+| `blog/en-012-copilot.md` | `blog/en-012-*.*` および `blog/012-*.*` | `html/en/blog/{slug}/` |
+
+**つまり画像ファイル名は必ず記事と同じ数字プレフィックスで始める**。
+
+### `hero_image` — ページ内の表示画像
+
+記事ページ内に `<img>` として表示される（`article.html` の `{{ img_path }}`）。
+
+- **書式**: ファイル名のみ (`012-IMG_3424.jpg`)
+- **解決**: ビルド時に `../../images/FILE` のような相対パスに展開される
+- **省略時**: `IMG_3285.jpg`（サイト既定画像）にフォールバック
+
+### `og_image` — SNSサムネイル（OGP / Twitter Card）
+
+X・Facebook・LINE・Slack・Discord等でURLを共有したとき、プレビューカードに表示される画像。
+
+ビルド結果の HTML に以下が出力される（`tools/templates/article.html:22-34`）:
+
+```html
+<meta property="og:image"  content="{{ og_image }}">
+<meta name="twitter:image" content="{{ og_image }}">
+```
+
+**解決ロジック** (`build_article.py::resolve_og_image`)：
+
+| 条件 | 結果 |
+|---|---|
+| `og_image` がフロントマターに `http://` / `https://` で書かれている | その URL をそのまま使用（手動上書き） |
+| `hero_image` が指定されている | ビルド時に **1200×630 JPEGへ自動生成** し `og-image.jpg` として出力。URL は `{canonical_url}/og-image.jpg` |
+| どちらもなし | `DEFAULT_OG_IMAGE` (`/images/IMG_3285.jpg`) にフォールバック |
+
+### OGP画像の自動生成
+
+`hero_image` を書けば OGP用画像が自動で作られる。別途 `og_image` を書く必要はない。
+
+- **入力**: `hero_image` に指定した画像（例: `012-IMG_3424.jpg`）
+- **処理**: EXIF回転を適用 → アスペクト比1200:630 に**中央クロップ** → 1200×630 にリサイズ → JPEG (quality=85, progressive)
+- **出力**: 記事の出力ディレクトリ直下に `og-image.jpg`
+  - 例: `html/blog/copilot-correct-looking-but-wrong/og-image.jpg`
+- **URL**: `https://aiseed.dev/blog/{slug}/og-image.jpg`
+
+iPhone縦写真(4:3) や横写真(16:9) を素材に使うとSNS側で見切れる問題が起きるが、このクロップで **X/Facebook/LINE等が等しく綺麗にレンダーできる 1.91:1** に揃う。
+
+**手動で上書きしたい場合** は `og_image:` に絶対URLを書く（別画像を配信したい・イラストを使いたい等）。
+
+### OGPだけ再生成
+
+デザインだけ差し替えたい時は `--ogp` で OGP画像だけ作り直せる（HTML再生成なし）:
+
+```bash
+python3 tools/build_article.py --ogp blog/012-copilot_correct_looking_but_wrong.md
+```
+
+### 確認方法（デプロイ後）
+
+- Facebook: <https://developers.facebook.com/tools/debug/>
+- LINE: <https://poke.line.me/>
+- 生成されたHTML: `grep 'og:image\|twitter:image' html/blog/{slug}/index.html`
+- 生成画像: `python3 -c "from PIL import Image; print(Image.open('html/blog/{slug}/og-image.jpg').size)"` → `(1200, 630)`
+
+## CTAカスタマイズ（Insights記事のみ、省略可）
 
 省略すると日英それぞれのデフォルト値が使われる。
 
@@ -257,6 +375,8 @@ Python-Markdown の仕様に従う。GitHub Flavored Markdown (GFM) とは一部
 
 ## 新しい記事を追加する手順
 
+### Insights記事 (articles/)
+
 1. `articles/` に Markdown ファイルを作成
 
 ```bash
@@ -277,4 +397,46 @@ articles/en-14-new-topic.md
 
 ```bash
 python3 tools/build_article.py --all
+```
+
+### Blog記事 (blog/)
+
+1. `blog/` に Markdown ファイルを作成（ファイル名の数字プレフィックスはゼロ埋め3桁、例: `013-...`）
+
+```bash
+# 日本語
+blog/013-new-post.md
+
+# 英語
+blog/en-013-new-post.md
+```
+
+2. フロントマターを書く（slug, title, subtitle, description, date, label, category, hero_image）。前後ナビは不要。`hero_image` を書けばOGP画像も自動生成されるので、通常 `og_image` は不要。
+
+3. 関連画像を**同じ数字プレフィックス**で `blog/` に置く
+
+```bash
+blog/013-thumb.jpg       # hero_image に指定 → OGP画像の元素材にもなる
+blog/en-013-thumb.jpg    # 英語版でのみ差し替えたい場合
+```
+
+4. ビルド（`--all` でインデックス・sitemap・トップページの最新記事枠も一括更新。OGP画像も自動生成）
+
+```bash
+python3 tools/build_article.py --all
+```
+
+5. 生成確認
+
+```bash
+grep -E 'og:image|twitter:image' html/blog/{slug}/index.html
+ls html/blog/{slug}/                    # 画像一式 + og-image.jpg が揃っているか
+python3 -c "from PIL import Image; print(Image.open('html/blog/{slug}/og-image.jpg').size)"
+# → (1200, 630) になっていればOK
+```
+
+6. OGP画像だけ作り直したい場合（HTMLは再生成しない）
+
+```bash
+python3 tools/build_article.py --ogp blog/013-new-post.md
 ```

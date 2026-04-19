@@ -1,3 +1,14 @@
+---
+slug: copilot-correct-looking-but-wrong
+title: MicrosoftのCopilotの課題 ― コードの「正しそうで間違っている」問題
+subtitle: AIが書いたコードをAIがレビューする閉じた系 ― 統計的な「それらしさ」が脆弱性を再生産する構造
+description: GitHub Copilotが生成するコードの約40%に致命的な脆弱性、15%以上が新バグを導入。AI自身が構造的欠陥を認めた対話から、Pearce et al.・Veracode・Fortune 50の実証研究、Model Carousel現象、8,000トークン制限、防御機構の限界までを整理する。
+date: 2026.04.19
+label: Blog
+category: 構造分析ノート
+hero_image: 012-IMG_3424.jpg
+---
+
 # MicrosoftのCopilotの課題 ― コードの「正しそうで間違っている」問題
 
 ## ある日のChatGPTとの対話から

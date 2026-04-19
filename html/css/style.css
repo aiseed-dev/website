@@ -175,6 +175,15 @@ p {
     width: 100%;
 }
 
+.nav .lang-switch {
+    opacity: 0.75;
+    letter-spacing: 0.05em;
+}
+
+.nav .lang-switch:hover {
+    opacity: 1;
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;

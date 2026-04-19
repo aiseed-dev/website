@@ -59,6 +59,22 @@ def copy_images(src_dir, out_dir, prefix=""):
             shutil.copy2(f, out_dir / f.name)
 
 
+def translation_exists(md_path, lang):
+    """Check whether the opposite-language sibling markdown file exists.
+
+    Naming convention: JA file `NN-slug.md`  ↔ EN file `en-NN-slug.md`
+    in the same directory.
+    """
+    md_path = Path(md_path)
+    if lang == "en":
+        if not md_path.name.startswith("en-"):
+            return False
+        sibling = md_path.parent / md_path.name[3:]
+    else:
+        sibling = md_path.parent / f"en-{md_path.name}"
+    return sibling.exists()
+
+
 def generate_ogp_image(src_path, out_path, size=OGP_SIZE, quality=OGP_QUALITY):
     """Center-crop and resize an image to OGP dimensions (1200x630 JPEG).
 
@@ -359,6 +375,12 @@ def article_vars(meta, body_html):
             Path(meta.get("_out_dir", ".")),
             f"{SITE_URL}{insights_base}/{slug}",
         ),
+        # Language switch toggle
+        "has_translation": bool(meta.get("_has_translation", False)),
+        "lang_switch_link": f"/insights/{slug}/" if is_en else f"/en/insights/{slug}/",
+        "lang_switch_label": "日本語" if is_en else "EN",
+        "lang_switch_hreflang": "ja" if is_en else "en",
+        "lang_switch_aria": "日本語版を表示" if is_en else "View in English",
     }
 
 
@@ -431,6 +453,9 @@ def index_vars(lang, article_list_html):
             "自然とともにあれば、生きられる——その構造的根拠"),
         "other_lang_link": "/insights/" if is_en else "/en/insights/",
         "other_lang_text": _text(is_en, "日本語版はこちら →", "English version available →"),
+        "lang_switch_label": "日本語" if is_en else "EN",
+        "lang_switch_hreflang": "ja" if is_en else "en",
+        "lang_switch_aria": "日本語版を表示" if is_en else "View in English",
         "series_title": _text(is_en, "Structural Analysis Series", "構造分析シリーズ"),
         "series_description": _text(is_en,
             "All using the same methodology: trace the production route, observe the physical process, cross field boundaries.",
@@ -536,6 +561,12 @@ def blog_vars(meta, body_html):
             Path(meta.get("_out_dir", ".")),
             f"{SITE_URL}{blog_base}/{slug}",
         ),
+        # Language switch toggle
+        "has_translation": bool(meta.get("_has_translation", False)),
+        "lang_switch_link": f"/blog/{slug}/" if is_en else f"/en/blog/{slug}/",
+        "lang_switch_label": "日本語" if is_en else "EN",
+        "lang_switch_hreflang": "ja" if is_en else "en",
+        "lang_switch_aria": "日本語版を表示" if is_en else "View in English",
     }
 
 
@@ -573,6 +604,9 @@ def blog_index_vars(lang, post_list_html):
             "構造分析の視点で読む時事ノート"),
         "other_lang_link": "/blog/" if is_en else "/en/blog/",
         "other_lang_text": _text(is_en, "日本語版はこちら →", "English version available →"),
+        "lang_switch_label": "日本語" if is_en else "EN",
+        "lang_switch_hreflang": "ja" if is_en else "en",
+        "lang_switch_aria": "日本語版を表示" if is_en else "View in English",
         # Blog index skips duplicate Intro/Series headers — page-hero already shows "Blog"
         "series_title": "",
         "series_description": "",
@@ -743,6 +777,7 @@ def build_article(md_path):
     # Context for OGP image resolution
     meta["_source_dir"] = str(md_path.parent)
     meta["_out_dir"] = str(out_dir)
+    meta["_has_translation"] = translation_exists(md_path, lang)
 
     # Process custom blocks first
     body = process_custom_blocks(body)
@@ -856,6 +891,7 @@ def build_blog_post(md_path):
     # Context for OGP image resolution
     meta["_source_dir"] = str(md_path.parent)
     meta["_out_dir"] = str(out_dir)
+    meta["_has_translation"] = translation_exists(md_path, lang)
 
     body = process_custom_blocks(body)
     body_html = _md.render(body)

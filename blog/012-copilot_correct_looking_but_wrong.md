@@ -7,6 +7,7 @@ date: 2026.04.19
 label: Blog
 category: 構造分析ノート
 hero_image: 012-IMG_3424.jpg
+og_image: https://aiseed.dev/blog/copilot-correct-looking-but-wrong/012-IMG_3424.jpg
 ---
 
 # MicrosoftのCopilotの課題 ― コードの「正しそうで間違っている」問題

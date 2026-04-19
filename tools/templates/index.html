@@ -52,12 +52,12 @@
     <!-- Header -->
     <header class="header">
         <div class="header-inner">
-            <a href="/" class="logo">
+            <a href="{{ home_link }}" class="logo">
                 {{ site_name }}
                 <span>aiseed.dev</span>
             </a>
             <nav class="nav">
-                <a href="/">{{ home_label }}</a>
+                <a href="{{ home_link }}">{{ home_label }}</a>
                 <a href="{{ insights_base }}/">Insights</a>
                 <a href="{{ blog_base }}/">Blog</a>
                 <a href="{{ about_link }}">{{ about_label }}</a>
@@ -127,7 +127,7 @@
             <div class="footer-nav">
                 <h4>{{ pages_label }}</h4>
                 <ul>
-                    <li><a href="/">{{ home_label }}</a></li>
+                    <li><a href="{{ home_link }}">{{ home_label }}</a></li>
                     <li><a href="{{ about_link }}">{{ about_label }}</a></li>
                     <li><a href="{{ lf_link }}">Light Farming</a></li>
                     <li><a href="/gallery/">{{ gallery_label }}</a></li>

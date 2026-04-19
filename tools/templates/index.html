@@ -63,6 +63,7 @@
                 <a href="{{ about_link }}">{{ about_label }}</a>
                 <a href="{{ lf_link }}">Light Farming</a>
                 <a href="/gallery/">{{ gallery_label }}</a>
+                <a href="{{ other_lang_link }}" class="lang-switch" hreflang="{{ lang_switch_hreflang }}" aria-label="{{ lang_switch_aria }}">🌐 {{ lang_switch_label }}</a>
             </nav>
             <button class="nav-toggle" aria-label="{{ menu_label }}">
                 <span></span>
@@ -85,12 +86,6 @@
     <!-- Article List -->
     <section class="section section-alt" id="series">
         <div class="container">
-            <div class="prose fade-in text-center" style="margin-bottom: 2rem;">
-                <p style="font-size: 0.9rem; color: var(--moss-green);">
-                    <a href="{{ other_lang_link }}" style="color: var(--moss-green);">{{ other_lang_text }}</a>
-                </p>
-            </div>
-
             <div class="activity-list">
 {{ article_list_html }}
             </div>

@@ -138,6 +138,7 @@
                 <a href="{{ about_link }}">{{ about_label }}</a>
                 <a href="{{ lf_link }}">{{ lf_label }}</a>
                 <a href="/gallery/">{{ gallery_label }}</a>
+                {% if has_translation %}<a href="{{ lang_switch_link }}" class="lang-switch" hreflang="{{ lang_switch_hreflang }}" aria-label="{{ lang_switch_aria }}">🌐 {{ lang_switch_label }}</a>{% endif %}
             </nav>
             <button class="nav-toggle" aria-label="{{ menu_label }}">
                 <span></span>

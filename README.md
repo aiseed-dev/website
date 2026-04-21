@@ -38,11 +38,38 @@ html/
 
 ## 開発
 
-ローカルで確認する場合:
+### セットアップ
 
 ```bash
-cd html
-python -m http.server 8000
+pip install -r requirements.txt
 ```
 
-ブラウザで `http://localhost:8000` にアクセス。
+### ビルド
+
+Markdown で書いた Insights / Blog 記事を HTML に変換する:
+
+```bash
+python3 tools/build_article.py --all          # 全記事ビルド
+python3 tools/build_article.py articles/09-healthcare-fiscal.md   # 単一記事
+```
+
+出力は `html/insights/`, `html/blog/`, `html/en/insights/`, `html/en/blog/` 配下。
+記法・オプションの詳細は [tools/README.md](tools/README.md) 参照。
+
+### 開発サーバー（ビルド + 監視 + 配信）
+
+```bash
+python3 tools/serve.py                # http://localhost:8000
+python3 tools/serve.py --port 8080
+```
+
+`articles/`, `blog/`, `tools/templates/`, `html/{css,js}` を監視し、変更があれば
+`build_article.py --all` を自動実行する。ブラウザのリロードは手動。
+
+### 静的配信のみ
+
+既にビルド済みの HTML をそのまま確認する場合:
+
+```bash
+cd html && python3 -m http.server 8000
+```

@@ -8,12 +8,18 @@ Usage:
     python3 tools/build_article.py --all          # Build all articles + blog
     python3 tools/build_article.py --list         # List available articles
 
+    # Operate on a different site directory (layout: articles/, blog/, html/):
+    python3 tools/build_article.py --site /path/to/other-site --all
+    AISEED_SITE=/path/to/other-site python3 tools/build_article.py --all
+
 Dependencies: jinja2, markdown-it-py
-Templates are in tools/templates/:
+Templates are in tools/templates/ (a site may override by placing its own
+tools/templates/ under --site; otherwise the bundled ones are used):
     article.html  — single article/blog page (Jinja2)
     index.html    — insights/blog index page (Jinja2)
 """
 
+import os
 import shutil
 import sys
 import re
@@ -24,13 +30,9 @@ from markdown_it import MarkdownIt
 from PIL import Image, ImageOps
 
 
-SITE_ROOT = Path(__file__).parent.parent
-ARTICLES_DIR = SITE_ROOT / "articles"
-BLOG_DIR = SITE_ROOT / "blog"
+_BUNDLED_TEMPLATES_DIR = Path(__file__).parent / "templates"
+
 DEFAULT_OG_IMAGE = "https://aiseed.dev/images/IMG_3285.jpg"
-OUTPUT_BASE = SITE_ROOT / "html" / "insights"
-BLOG_OUTPUT_BASE = SITE_ROOT / "html" / "blog"
-TEMPLATES_DIR = Path(__file__).parent / "templates"
 SITE_URL = "https://aiseed.dev"
 
 # OGP image: Facebook/X recommended 1.91:1, 1200x630 is the sweet spot.
@@ -38,12 +40,76 @@ OGP_SIZE = (1200, 630)
 OGP_QUALITY = 85
 OGP_FILENAME = "og-image.jpg"
 
-# Jinja2 environment
+# Site-specific paths. Set by configure_site(); the values below are
+# placeholders so the module imports cleanly. main() always calls
+# configure_site() before any build function runs.
+SITE_ROOT: Path = Path(__file__).parent.parent
+ARTICLES_DIR: Path = SITE_ROOT / "articles"
+BLOG_DIR: Path = SITE_ROOT / "blog"
+OUTPUT_BASE: Path = SITE_ROOT / "html" / "insights"
+BLOG_OUTPUT_BASE: Path = SITE_ROOT / "html" / "blog"
+TEMPLATES_DIR: Path = _BUNDLED_TEMPLATES_DIR
+
 _env = Environment(
     loader=FileSystemLoader(str(TEMPLATES_DIR)),
     autoescape=False,
     keep_trailing_newline=True,
 )
+
+
+def configure_site(site: Path) -> None:
+    """Point the builder at `site` (layout: articles/, blog/, html/).
+
+    If `<site>/tools/templates/` exists it overrides the bundled templates,
+    so a separate site can ship its own article/index layout without having
+    to fork this script.
+    """
+    global SITE_ROOT, ARTICLES_DIR, BLOG_DIR, OUTPUT_BASE, BLOG_OUTPUT_BASE
+    global TEMPLATES_DIR, _env
+
+    SITE_ROOT = site.resolve()
+    ARTICLES_DIR = SITE_ROOT / "articles"
+    BLOG_DIR = SITE_ROOT / "blog"
+    OUTPUT_BASE = SITE_ROOT / "html" / "insights"
+    BLOG_OUTPUT_BASE = SITE_ROOT / "html" / "blog"
+
+    site_templates = SITE_ROOT / "tools" / "templates"
+    TEMPLATES_DIR = site_templates if site_templates.exists() else _BUNDLED_TEMPLATES_DIR
+    _env = Environment(
+        loader=FileSystemLoader(str(TEMPLATES_DIR)),
+        autoescape=False,
+        keep_trailing_newline=True,
+    )
+
+
+def _resolve_site(argv: list[str]) -> tuple[Path, list[str]]:
+    """Extract --site <path> (or --site=<path>) from argv.
+
+    Falls back to AISEED_SITE env var, then to the parent of this script.
+    Returns (site_path, remaining_argv_without_site_flag).
+    """
+    remaining: list[str] = []
+    site: Path | None = None
+    i = 0
+    while i < len(argv):
+        if argv[i] == "--site":
+            if i + 1 >= len(argv):
+                print("Error: --site requires a path", file=sys.stderr)
+                sys.exit(1)
+            site = Path(argv[i + 1])
+            i += 2
+            continue
+        if argv[i].startswith("--site="):
+            site = Path(argv[i].split("=", 1)[1])
+            i += 1
+            continue
+        remaining.append(argv[i])
+        i += 1
+
+    if site is None:
+        env_site = os.environ.get("AISEED_SITE")
+        site = Path(env_site) if env_site else Path(__file__).parent.parent
+    return site.resolve(), remaining
 
 # markdown-it renderer (CommonMark + tables)
 _md = MarkdownIt("commonmark", {"html": True}).enable("table")
@@ -1094,20 +1160,23 @@ def regenerate_ogp(md_path):
 
 
 def main():
-    if len(sys.argv) < 2:
-        print("Usage: python3 tools/build_article.py <article.md>")
-        print("       python3 tools/build_article.py --all")
-        print("       python3 tools/build_article.py --list")
-        print("       python3 tools/build_article.py --ogp <article.md>  # only regenerate OGP image")
+    site, args = _resolve_site(sys.argv[1:])
+    configure_site(site)
+
+    if not args:
+        print("Usage: python3 tools/build_article.py [--site <dir>] <article.md>")
+        print("       python3 tools/build_article.py [--site <dir>] --all")
+        print("       python3 tools/build_article.py [--site <dir>] --list")
+        print("       python3 tools/build_article.py [--site <dir>] --ogp <article.md>")
         sys.exit(1)
 
-    arg = sys.argv[1]
+    arg = args[0]
 
     if arg == "--ogp":
-        if len(sys.argv) < 3:
-            print("Usage: python3 tools/build_article.py --ogp <article.md>")
+        if len(args) < 2:
+            print("Usage: python3 tools/build_article.py [--site <dir>] --ogp <article.md>")
             sys.exit(1)
-        regenerate_ogp(sys.argv[2])
+        regenerate_ogp(args[1])
         return
 
     if arg == "--list":
@@ -1121,7 +1190,7 @@ def main():
     if arg == "--all":
         files = sorted(ARTICLES_DIR.glob("*.md"))
         if not files:
-            print("No .md files found in articles/")
+            print(f"No .md files found in {ARTICLES_DIR}")
             return
         ok = 0
         for f in files:

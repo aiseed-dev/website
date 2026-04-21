@@ -66,6 +66,34 @@ python3 tools/serve.py --port 8080
 `articles/`, `blog/`, `tools/templates/`, `html/{css,js}` を監視し、変更があれば
 `build_article.py --all` を自動実行する。ブラウザのリロードは手動。
 
+### 任意のディレクトリをターゲットにする
+
+`tools/build_article.py` と `tools/serve.py` はどこから起動しても、`--site`
+でサイトディレクトリを明示できる（省略時はスクリプトの親ディレクトリ、
+または環境変数 `AISEED_SITE`）。
+
+サイト側に必要なレイアウト:
+
+```
+<site>/
+├── articles/              # Insights 記事 (NN-slug.md, en-NN-slug.md)
+├── blog/                  # Blog 記事 (NNN-slug.md, en-NNN-slug.md)
+├── html/                  # 出力先（index.html, css/, js/, images/ 等）
+└── tools/templates/       # 任意: ここにテンプレートを置けばバンドルを上書き
+```
+
+```bash
+# 別のサイトをビルド
+python3 /path/to/website/tools/build_article.py --site /path/to/other-site --all
+
+# 別サイトの開発サーバーを起動
+python3 /path/to/website/tools/serve.py --site /path/to/other-site
+
+# 環境変数で既定を与える
+export AISEED_SITE=/path/to/other-site
+python3 /path/to/website/tools/build_article.py --all
+```
+
 ### 静的配信のみ
 
 既にビルド済みの HTML をそのまま確認する場合:

@@ -19,6 +19,7 @@ tools/templates/ under --site; otherwise the bundled ones are used):
     index.html    — insights/blog index page (Jinja2)
 """
 
+import json
 import os
 import shutil
 import sys
@@ -32,8 +33,11 @@ from PIL import Image, ImageOps
 
 _BUNDLED_TEMPLATES_DIR = Path(__file__).parent / "templates"
 
-DEFAULT_OG_IMAGE = "https://aiseed.dev/images/IMG_3285.jpg"
-SITE_URL = "https://aiseed.dev"
+_DEFAULT_OG_IMAGE = "https://aiseed.dev/images/IMG_3285.jpg"
+_DEFAULT_SITE_URL = "https://aiseed.dev"
+
+DEFAULT_OG_IMAGE = _DEFAULT_OG_IMAGE
+SITE_URL = _DEFAULT_SITE_URL
 
 # OGP image: Facebook/X recommended 1.91:1, 1200x630 is the sweet spot.
 OGP_SIZE = (1200, 630)
@@ -50,6 +54,12 @@ OUTPUT_BASE: Path = SITE_ROOT / "html" / "insights"
 BLOG_OUTPUT_BASE: Path = SITE_ROOT / "html" / "blog"
 TEMPLATES_DIR: Path = _BUNDLED_TEMPLATES_DIR
 
+# Per-site overrides loaded from <site>/site.json. Keys consumed:
+#   site_url (str), default_og_image (str),
+#   site_name ({"ja": str, "en": str} or str),
+#   copyright_text ({"ja": str, "en": str} or str)
+_site_config: dict = {}
+
 _env = Environment(
     loader=FileSystemLoader(str(TEMPLATES_DIR)),
     autoescape=False,
@@ -57,15 +67,41 @@ _env = Environment(
 )
 
 
+def _load_site_config(root: Path) -> dict:
+    f = root / "site.json"
+    if not f.exists():
+        return {}
+    try:
+        return json.loads(f.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError) as exc:
+        print(f"Warning: failed to load {f}: {exc}", file=sys.stderr)
+        return {}
+
+
+def _site(key: str, lang: str, default: str) -> str:
+    """Look up a localized string from site.json, else return `default`.
+
+    Supports values that are either a `{"ja": ..., "en": ...}` dict or a
+    plain string (used for both languages).
+    """
+    val = _site_config.get(key)
+    if isinstance(val, dict):
+        return val.get(lang, default)
+    if isinstance(val, str):
+        return val
+    return default
+
+
 def configure_site(site: Path) -> None:
     """Point the builder at `site` (layout: articles/, blog/, html/).
 
     If `<site>/tools/templates/` exists it overrides the bundled templates,
     so a separate site can ship its own article/index layout without having
-    to fork this script.
+    to fork this script. `<site>/site.json` (optional) supplies per-site
+    overrides for site_url, site_name, copyright_text, default_og_image.
     """
     global SITE_ROOT, ARTICLES_DIR, BLOG_DIR, OUTPUT_BASE, BLOG_OUTPUT_BASE
-    global TEMPLATES_DIR, _env
+    global TEMPLATES_DIR, _env, _site_config, SITE_URL, DEFAULT_OG_IMAGE
 
     SITE_ROOT = site.resolve()
     ARTICLES_DIR = SITE_ROOT / "articles"
@@ -80,6 +116,12 @@ def configure_site(site: Path) -> None:
         autoescape=False,
         keep_trailing_newline=True,
     )
+
+    _site_config = _load_site_config(SITE_ROOT)
+    site_url = _site_config.get("site_url")
+    SITE_URL = site_url.rstrip("/") if isinstance(site_url, str) and site_url else _DEFAULT_SITE_URL
+    og_default = _site_config.get("default_og_image")
+    DEFAULT_OG_IMAGE = og_default if isinstance(og_default, str) and og_default else _DEFAULT_OG_IMAGE
 
 
 def _resolve_site(argv: list[str]) -> tuple[Path, list[str]]:
@@ -410,7 +452,7 @@ def article_vars(meta, body_html):
         "insights_base": insights_base,
         "blog_base": "/en/blog" if is_en else "/blog",
         # Navigation labels
-        "site_name": _text(is_en, "Living in the AI Era", "AI時代の暮らし"),
+        "site_name": _site("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
         "site_tagline": _text(is_en, "aiseed.dev", "aiseed.dev"),
         "home_label": _text(is_en, "Home", "ホーム"),
         "home_link": "/en/" if is_en else "/",
@@ -498,7 +540,7 @@ def index_vars(lang, article_list_html):
 
     return {
         "lang": lang,
-        "site_name": _text(is_en, "Living in the AI Era", "AI時代の暮らし"),
+        "site_name": _site("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
         "home_label": _text(is_en, "Home", "ホーム"),
         "home_link": "/en/" if is_en else "/",
         "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
@@ -543,7 +585,7 @@ def index_vars(lang, article_list_html):
             "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
             "food, energy, AI, healthcare, and pensions — every structure connects.",
             "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
-        "copyright_text": _text(is_en, "Living in the AI Era — aiseed.dev", "AI時代の暮らし"),
+        "copyright_text": _site("copyright_text", lang, _text(is_en, "Living in the AI Era — aiseed.dev", "AI時代の暮らし")),
         # SEO
         "canonical_url": f"{SITE_URL}{insights_base}/",
         "hreflang_ja": f"{SITE_URL}/insights/",
@@ -604,7 +646,7 @@ def blog_vars(meta, body_html):
         "insights_base": "/en/insights" if is_en else "/insights",
         "blog_base": "/en/blog" if is_en else "/blog",
         # Navigation labels
-        "site_name": _text(is_en, "Living in the AI Era", "AI時代の暮らし"),
+        "site_name": _site("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
         "site_tagline": _text(is_en, "aiseed.dev", "aiseed.dev"),
         "home_label": _text(is_en, "Home", "ホーム"),
         "home_link": "/en/" if is_en else "/",
@@ -656,7 +698,7 @@ def blog_index_vars(lang, post_list_html):
 
     return {
         "lang": lang,
-        "site_name": _text(is_en, "Living in the AI Era", "AI時代の暮らし"),
+        "site_name": _site("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
         "home_label": _text(is_en, "Home", "ホーム"),
         "home_link": "/en/" if is_en else "/",
         "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
@@ -703,7 +745,7 @@ def blog_index_vars(lang, post_list_html):
             "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
             "food, energy, AI, healthcare, and pensions — every structure connects.",
             "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
-        "copyright_text": _text(is_en, "Living in the AI Era — aiseed.dev", "AI時代の暮らし"),
+        "copyright_text": _site("copyright_text", lang, _text(is_en, "Living in the AI Era — aiseed.dev", "AI時代の暮らし")),
         # SEO
         "canonical_url": f"{SITE_URL}{blog_base}/",
         "hreflang_ja": f"{SITE_URL}/blog/",
@@ -741,8 +783,8 @@ def build_sitemap():
 
     urls = []
     # Homepages
-    urls.append(("https://aiseed.dev/", latest, "1.0"))
-    urls.append(("https://aiseed.dev/en/", latest, "0.8"))
+    urls.append((f"{SITE_URL}/", latest, "1.0"))
+    urls.append((f"{SITE_URL}/en/", latest, "0.8"))
 
     # Index pages
     urls.append((f"{SITE_URL}/insights/", latest, "0.9"))

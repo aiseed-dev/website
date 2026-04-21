@@ -79,7 +79,19 @@ python3 tools/serve.py --port 8080
 ├── articles/              # Insights 記事 (NN-slug.md, en-NN-slug.md)
 ├── blog/                  # Blog 記事 (NNN-slug.md, en-NNN-slug.md)
 ├── html/                  # 出力先（index.html, css/, js/, images/ 等）
-└── tools/templates/       # 任意: ここにテンプレートを置けばバンドルを上書き
+├── tools/templates/       # 任意: ここにテンプレートを置けばバンドルを上書き
+└── site.json              # 任意: site_url, site_name, copyright_text 等の上書き
+```
+
+`site.json` の例:
+
+```json
+{
+  "site_url": "https://example.com",
+  "site_name": { "ja": "自分のサイト", "en": "My Site" },
+  "copyright_text": { "ja": "自分のサイト", "en": "My Site" },
+  "default_og_image": "/images/og-default.jpg"
+}
 ```
 
 ```bash
@@ -93,6 +105,25 @@ python3 /path/to/website/tools/serve.py --site /path/to/other-site
 export AISEED_SITE=/path/to/other-site
 python3 /path/to/website/tools/build_article.py --all
 ```
+
+### 新しいサイトをゼロから始める
+
+`tools/init_site.py` が最小のサンプルサイト（articles / blog / html /
+tools/templates / site.json / CLAUDE.md / README.md）を任意ディレクトリに
+展開する:
+
+```bash
+python3 /path/to/website/tools/init_site.py /path/to/new-site
+python3 /path/to/website/tools/build_article.py --site /path/to/new-site --all
+python3 /path/to/website/tools/serve.py --site /path/to/new-site
+```
+
+- 既存ファイルは既定でスキップ。上書きしたい場合は `--force`
+- 何が書かれるかだけ見たい場合は `--dry-run`
+- 利用可能なスキャフォールド一覧は `--list`
+
+スキャフォールドは `tools/scaffolds/default/` にあり、CSS・テンプレート・
+`CLAUDE.md` は Claude Code で扱いやすい最小構成になっている。
 
 ### 静的配信のみ
 

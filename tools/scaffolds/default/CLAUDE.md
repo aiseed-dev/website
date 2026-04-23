@@ -7,7 +7,8 @@ It is a self-contained static site: Markdown in, HTML out.
 ## Layout
 
 ```
-articles/          Insights articles (serialized). Filenames: NN-slug.md, en-NN-slug.md
+articles/insights/ Insights articles (serialized). Filenames: NN-slug.md, en-NN-slug.md
+articles/claude-debian/ (optional) Long-form book chapters → /claude-debian/
 blog/              Blog posts (standalone notes). Filenames: NNN-slug.md, en-NNN-slug.md
 html/              Output. Served as-is.
   index.html       Top page (hand-edited; markers LATEST_BLOG_POSTS_*)
@@ -33,7 +34,7 @@ The build toolchain lives in the `aiseed-dev/website` repo and is driven via
 python3 PATH_TO_WEBSITE/tools/build_article.py --site . --all
 
 # Build a single article
-python3 PATH_TO_WEBSITE/tools/build_article.py --site . articles/01-hello.md
+python3 PATH_TO_WEBSITE/tools/build_article.py --site . articles/insights/01-hello.md
 
 # Dev server: watch + rebuild + HTTP
 python3 PATH_TO_WEBSITE/tools/serve.py --site . --port 8000
@@ -51,8 +52,8 @@ pip install jinja2 markdown-it-py Pillow watchdog
 
 ## Conventions
 
-- **Filenames carry metadata**: `articles/NN-slug.md` → `/insights/slug/`,
-  `articles/en-NN-slug.md` → `/en/insights/slug/`. Same pattern for `blog/`
+- **Filenames carry metadata**: `articles/insights/NN-slug.md` → `/insights/slug/`,
+  `articles/insights/en-NN-slug.md` → `/en/insights/slug/`. Same pattern for `blog/`
   except the prefix is 3 digits (`001-`, `002-`...).
 - **Images sharing the numeric prefix** (e.g. `blog/012-photo.jpg`) are copied
   into the generated article directory automatically.

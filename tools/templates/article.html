@@ -133,7 +133,13 @@
             </a>
             <nav class="nav">
                 <a href="{{ home_link }}">{{ home_label }}</a>
-                <a href="{{ insights_base }}/">{{ insights_label }}</a>
+                <div class="nav-group">
+                    <button type="button" class="nav-parent" aria-haspopup="true" aria-expanded="false">{{ articles_parent_label }}<span class="nav-caret" aria-hidden="true">▾</span></button>
+                    <div class="nav-submenu" role="menu">
+                        <a href="{{ insights_base }}/" role="menuitem">{{ insights_child_label }}</a>
+                        <a href="{{ book_base }}/" role="menuitem">{{ book_label }}</a>
+                    </div>
+                </div>
                 <a href="{{ blog_base }}/">Blog</a>
                 <a href="{{ about_link }}">{{ about_label }}</a>
                 <a href="{{ lf_link }}">{{ lf_label }}</a>
@@ -207,7 +213,8 @@
                     <li><a href="{{ lf_link }}">{{ lf_label }}</a></li>
                     <li><a href="{{ our_approach_link }}">{{ our_approach_label }}</a></li>
                     <li><a href="/gallery/">{{ gallery_label }}</a></li>
-                    <li><a href="{{ insights_base }}/">{{ insights_label }}</a></li>
+                    <li><a href="{{ insights_base }}/">{{ insights_child_label }}</a></li>
+                    <li><a href="{{ book_base }}/">{{ book_label }}</a></li>
                 </ul>
             </div>
             <div class="footer-contact">

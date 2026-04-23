@@ -29,7 +29,13 @@
             </a>
             <nav class="nav">
                 <a href="/en/">Home</a>
-                <a href="/en/insights/">Insights</a>
+                <div class="nav-group">
+                    <button type="button" class="nav-parent" aria-haspopup="true" aria-expanded="false">Articles<span class="nav-caret" aria-hidden="true">▾</span></button>
+                    <div class="nav-submenu" role="menu">
+                        <a href="/en/insights/" role="menuitem">Structural Analysis</a>
+                        <a href="/en/claude-debian/" role="menuitem">Learning Debian with Claude</a>
+                    </div>
+                </div>
                 <a href="/en/blog/">Blog</a>
                 <a href="/en/natural-farming/" class="active">Natural Farming</a>
                 <a href="/en/light-farming/">Light Farming</a>
@@ -280,7 +286,8 @@
                 <h4>Pages</h4>
                 <ul>
                     <li><a href="/en/">Home</a></li>
-                    <li><a href="/en/insights/">Insights</a></li>
+                    <li><a href="/en/insights/">Structural Analysis</a></li>
+                    <li><a href="/en/claude-debian/">Learning Debian with Claude</a></li>
                     <li><a href="/en/blog/">Blog</a></li>
                     <li><a href="/en/natural-farming/">Natural Farming</a></li>
                     <li><a href="/en/light-farming/">Light Farming</a></li>

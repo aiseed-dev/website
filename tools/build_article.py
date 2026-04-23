@@ -47,8 +47,19 @@ from build.template_vars import (
     article_vars,
     blog_index_vars,
     blog_vars,
+    book_index_vars,
+    book_vars,
     index_vars,
 )
+
+BOOK_SLUG_PREFIX = "claude-debian-"
+
+
+def _book_stem(slug):
+    """URL stem for a book chapter: slug without the `claude-debian-` prefix."""
+    if slug.startswith(BOOK_SLUG_PREFIX):
+        return slug[len(BOOK_SLUG_PREFIX):]
+    return slug
 
 
 # ---------------------------------------------------------------------------
@@ -120,7 +131,7 @@ def collect_articles(lang="ja"):
     prefix = "en-" if lang == "en" else ""
     pattern = f"{prefix}[0-9]*.md"
     articles = []
-    for f in sorted(config.ARTICLES_DIR.glob(pattern)):
+    for f in sorted(config.INSIGHTS_DIR.glob(pattern)):
         text = f.read_text(encoding="utf-8")
         meta, _ = parse_frontmatter(text)
         if meta.get("lang", "ja") == lang or (lang == "ja" and "lang" not in meta):
@@ -304,6 +315,141 @@ def build_blog_index(lang="ja"):
 
 
 # ---------------------------------------------------------------------------
+# Build functions — book (long-form serial)
+#
+# Source:  articles/claude-debian/NN-slug.md
+# Output:  html/claude-debian/{stem}/index.html   (stem = slug sans prefix)
+# ---------------------------------------------------------------------------
+
+def build_book_chapter(md_path):
+    """Build a single book chapter from a Markdown file.
+
+    JA source: articles/claude-debian/NN-slug.md    → html/claude-debian/{stem}/
+    EN source: articles/claude-debian/en-NN-slug.md → html/en/claude-debian/{stem}/
+    """
+    md_path = Path(md_path)
+    if not md_path.exists():
+        print(f"Error: {md_path} not found")
+        return False
+
+    text = md_path.read_text(encoding="utf-8")
+    meta, body = parse_frontmatter(text)
+
+    if "slug" not in meta:
+        print(f"Error: {md_path} missing 'slug' in front matter")
+        return False
+
+    # Language: `lang:` frontmatter wins, else fall back to the `en-` filename
+    # prefix convention used elsewhere in the repo.
+    lang = meta.get("lang") or ("en" if md_path.name.startswith("en-") else "ja")
+    meta["lang"] = lang
+
+    stem = _book_stem(meta["slug"])
+    if lang == "en":
+        out_dir = config.SITE_ROOT / "html" / "en" / "claude-debian" / stem
+    else:
+        out_dir = config.BOOK_OUTPUT_BASE / stem
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    meta["_source_dir"] = str(md_path.parent)
+    meta["_out_dir"] = str(out_dir)
+    meta["_has_translation"] = translation_exists(md_path, lang)
+
+    body = strip_leading_title(body)
+    body = process_custom_blocks(body)
+    body_html = md.render(body)
+
+    indented = "\n".join(
+        f"                {line}" if line.strip() else ""
+        for line in body_html.split("\n")
+    )
+
+    variables = book_vars(meta, indented)
+    html = render("article.html", variables)
+
+    out_file = out_dir / "index.html"
+    out_file.write_text(html, encoding="utf-8")
+
+    # Copy any chapter-prefixed images (e.g. 03-diagram.png) into out_dir.
+    # For EN files (en-03-foo.md), match both `en-03-*` and `03-*` so shared
+    # images don't need to be duplicated in the source tree.
+    num_prefix = md_path.name.split("-", 1)[0]
+    if num_prefix == "en":
+        num_prefix = md_path.name.split("-", 2)[1]
+        copy_images(md_path.parent, out_dir, prefix=f"en-{num_prefix}")
+    copy_images(md_path.parent, out_dir, prefix=num_prefix)
+
+    print(f"Built book: {out_file}")
+    return True
+
+
+def collect_book_chapters(lang="ja"):
+    """Collect book chapter metadata for a language, in filename-prefix order."""
+    if not config.BOOK_DIR.exists():
+        return []
+    prefix = "en-" if lang == "en" else ""
+    pattern = f"{prefix}[0-9]*.md"
+    chapters = []
+    for f in sorted(config.BOOK_DIR.glob(pattern)):
+        text = f.read_text(encoding="utf-8")
+        meta, _ = parse_frontmatter(text)
+        if meta.get("lang", "ja") != lang and not (lang == "ja" and "lang" not in meta):
+            continue
+        stem = f.stem
+        if lang == "en" and stem.startswith("en-"):
+            stem = stem[3:]
+        num_match = re.match(r"(\d+)", stem)
+        meta["_file_number"] = int(num_match.group(1)) if num_match else 0
+        chapters.append(meta)
+    chapters.sort(key=lambda m: m.get("_file_number", 0))
+    return chapters
+
+
+def build_book_index(lang="ja"):
+    """Build the book table-of-contents page for a language."""
+    chapters = collect_book_chapters(lang)
+    if not chapters:
+        return False
+
+    is_en = lang == "en"
+    book_base = "/en/claude-debian" if is_en else "/claude-debian"
+    # "Translation exists" if the opposite language has any chapters built.
+    has_translation = bool(collect_book_chapters("en" if not is_en else "ja"))
+
+    chapter_list = ""
+    for c in chapters:
+        slug = c.get("slug", "")
+        stem = _book_stem(slug)
+        number = c.get("number", "").strip('"')
+        title = c.get("title", "")
+        subtitle = c.get("subtitle", "")
+        description = c.get("description", "")
+        chapter_list += f'''
+                <a href="{book_base}/{stem}/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">{number}</div>
+                        <div class="activity-content">
+                            <h3>{title}{(" — " + subtitle) if subtitle else ""}</h3>
+                            <p>{description}</p>
+                        </div>
+                    </div>
+                </a>
+'''
+
+    variables = book_index_vars(lang, chapter_list, has_translation=has_translation)
+    html = render("index.html", variables)
+
+    if is_en:
+        out_file = config.SITE_ROOT / "html" / "en" / "claude-debian" / "index.html"
+    else:
+        out_file = config.BOOK_OUTPUT_BASE / "index.html"
+    out_file.parent.mkdir(parents=True, exist_ok=True)
+    out_file.write_text(html, encoding="utf-8")
+    print(f"Built book index: {out_file}")
+    return True
+
+
+# ---------------------------------------------------------------------------
 # Home page: latest blog posts section
 # ---------------------------------------------------------------------------
 
@@ -384,10 +530,12 @@ def build_sitemap():
     en_articles = collect_articles("en")
     ja_posts = collect_blog_posts("ja")
     en_posts = collect_blog_posts("en")
+    ja_chapters = collect_book_chapters("ja")
+    en_chapters = collect_book_chapters("en")
 
     all_dates = [
         norm_date(m.get("date"))
-        for m in (*ja_articles, *en_articles, *ja_posts, *en_posts)
+        for m in (*ja_articles, *en_articles, *ja_posts, *en_posts, *ja_chapters, *en_chapters)
         if m.get("date")
     ]
     latest = max(all_dates) if all_dates else date.today().isoformat()
@@ -434,6 +582,24 @@ def build_sitemap():
         if not slug:
             continue
         urls.append((f"{site_url}/en/blog/{slug}/", norm_date(meta.get("date")), "0.6"))
+
+    # Book: Claudeと一緒に学ぶDebian / Learning Debian with Claude
+    if ja_chapters:
+        urls.append((f"{site_url}/claude-debian/", latest, "0.8"))
+        for meta in ja_chapters:
+            slug = meta.get("slug", "")
+            if not slug:
+                continue
+            stem = _book_stem(slug)
+            urls.append((f"{site_url}/claude-debian/{stem}/", norm_date(meta.get("date")), "0.6"))
+    if en_chapters:
+        urls.append((f"{site_url}/en/claude-debian/", latest, "0.7"))
+        for meta in en_chapters:
+            slug = meta.get("slug", "")
+            if not slug:
+                continue
+            stem = _book_stem(slug)
+            urls.append((f"{site_url}/en/claude-debian/{stem}/", norm_date(meta.get("date")), "0.5"))
 
     # Natural Farming / About / Light Farming (both JP and EN)
     urls.append((f"{site_url}/natural-farming/", latest, "0.8"))
@@ -531,7 +697,7 @@ def main():
         return
 
     if arg == "--list":
-        for f in sorted(config.ARTICLES_DIR.glob("*.md")):
+        for f in sorted(config.INSIGHTS_DIR.glob("*.md")):
             meta, _ = parse_frontmatter(f.read_text(encoding="utf-8"))
             num = meta.get("number", "??")
             title = meta.get("title", "untitled")
@@ -539,9 +705,9 @@ def main():
         return
 
     if arg == "--all":
-        files = sorted(config.ARTICLES_DIR.glob("*.md"))
+        files = sorted(config.INSIGHTS_DIR.glob("*.md"))
         if not files:
-            print(f"No .md files found in {config.ARTICLES_DIR}")
+            print(f"No .md files found in {config.INSIGHTS_DIR}")
             return
         ok = 0
         for f in files:
@@ -562,13 +728,33 @@ def main():
             update_home_latest_posts("ja")
             update_home_latest_posts("en")
 
+        # Build book chapters (claude-debian) — JA + EN (en-*.md)
+        book_ok = 0
+        book_files = (
+            sorted(config.BOOK_DIR.glob("*.md"))
+            if config.BOOK_DIR.exists()
+            else []
+        )
+        for f in book_files:
+            if build_book_chapter(f):
+                book_ok += 1
+        if collect_book_chapters("ja"):
+            build_book_index("ja")
+        if collect_book_chapters("en"):
+            build_book_index("en")
+
         build_sitemap()
         build_robots()
-        print(f"\nBuilt {ok}/{len(files)} articles + {blog_ok}/{len(blog_files)} blog posts + indexes + sitemap.xml + robots.txt.")
+        print(
+            f"\nBuilt {ok}/{len(files)} articles + {blog_ok}/{len(blog_files)} blog posts"
+            f" + {book_ok}/{len(book_files)} book chapters + indexes + sitemap.xml + robots.txt."
+        )
         return
 
-    # Auto-detect blog vs article
-    if "blog/" in arg or "blog\\" in arg:
+    # Auto-detect book / blog / article from the path
+    if "claude-debian/" in arg or "claude-debian\\" in arg:
+        build_book_chapter(arg)
+    elif "blog/" in arg or "blog\\" in arg:
         build_blog_post(arg)
     else:
         build_article(arg)

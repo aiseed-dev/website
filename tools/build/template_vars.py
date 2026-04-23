@@ -85,6 +85,7 @@ def article_vars(meta, body_html):
         ),
         "insights_base": insights_base,
         "blog_base": "/en/blog" if is_en else "/blog",
+        "book_base": "/en/claude-debian" if is_en else "/claude-debian",
         # Navigation labels
         "site_name": config.site_text("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
         "site_tagline": _text(is_en, "aiseed.dev", "aiseed.dev"),
@@ -98,6 +99,9 @@ def article_vars(meta, body_html):
         "our_approach_label": _text(is_en, "Our Approach", "私たちのアプローチ"),
         "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
         "insights_label": "Insights",
+        "articles_parent_label": _text(is_en, "Articles", "記事"),
+        "insights_child_label": _text(is_en, "Structural Analysis", "構造分析"),
+        "book_label": _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian"),
         "contact_label": _text(is_en, "Contact", "お問い合わせ"),
         "menu_label": _text(is_en, "Menu", "メニュー"),
         "pages_label": _text(is_en, "Pages", "ページ"),
@@ -188,8 +192,12 @@ def index_vars(lang, article_list_html):
         "menu_label": _text(is_en, "Menu", "メニュー"),
         "pages_label": _text(is_en, "Pages", "ページ"),
         "links_label": _text(is_en, "Links", "関連リンク"),
+        "articles_parent_label": _text(is_en, "Articles", "記事"),
+        "insights_child_label": _text(is_en, "Structural Analysis", "構造分析"),
+        "book_label": _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian"),
         "insights_base": insights_base,
         "blog_base": "/en/blog" if is_en else "/blog",
+        "book_base": "/en/claude-debian" if is_en else "/claude-debian",
         "css_path": "../../css/style.css" if is_en else "../css/style.css",
         "js_path": "../../js/main.js" if is_en else "../js/main.js",
         "img_path": "../../images/IMG_3285.jpg" if is_en else "../images/IMG_3285.jpg",
@@ -232,6 +240,224 @@ def index_vars(lang, article_list_html):
 # ---------------------------------------------------------------------------
 # Blog template variables
 # ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+# Book (long-form serial) template variables
+#
+# Content lives under articles/claude-debian/ and is published at
+# /claude-debian/{stem}/ where stem = slug.removeprefix("claude-debian-").
+# Only a Japanese edition exists, so no language switch is rendered.
+# ---------------------------------------------------------------------------
+
+_BOOK_SLUG_PREFIX = "claude-debian-"
+_BOOK_BASE_JA = "/claude-debian"
+_BOOK_BASE_EN = "/en/claude-debian"
+_BOOK_TITLE_JA = "Claudeと一緒に学ぶDebian"
+_BOOK_TITLE_EN = "Learning Debian with Claude"
+
+
+def _book_stem(slug):
+    """Strip the book slug prefix so URLs read /claude-debian/{stem}/."""
+    if slug.startswith(_BOOK_SLUG_PREFIX):
+        return slug[len(_BOOK_SLUG_PREFIX):]
+    return slug
+
+
+def book_vars(meta, body_html):
+    """Build template variables for a single book chapter."""
+    lang = meta.get("lang", "ja")
+    is_en = lang == "en"
+    book_base = _BOOK_BASE_EN if is_en else _BOOK_BASE_JA
+    book_title = _BOOK_TITLE_EN if is_en else _BOOK_TITLE_JA
+
+    slug = meta.get("slug", "")
+    stem = _book_stem(slug)
+    number = meta.get("number", "")
+
+    prev_slug = meta.get("prev_slug", "")
+    prev_title = meta.get("prev_title", "")
+    next_slug = meta.get("next_slug", "")
+    next_title = meta.get("next_title", "")
+
+    # Navigation: prev/next frontmatter uses full slug; URLs use the stem.
+    # At the tail of the book we fall back to the table of contents.
+    book_top = _text(is_en, f"{book_title} TOC", f"{book_title} 目次")
+    prev_prefix = "Prev: " if is_en else "前: "
+    next_prefix = "Next: " if is_en else "次: "
+
+    nav_html = '<div class="article-nav">\n'
+    if prev_slug:
+        nav_html += f'  <a href="{book_base}/{_book_stem(prev_slug)}/">&larr; {prev_prefix}{prev_title}</a>\n'
+    else:
+        nav_html += '  <span></span>\n'
+    if next_slug:
+        nav_html += f'  <a href="{book_base}/{_book_stem(next_slug)}/">{next_prefix}{next_title} &rarr;</a>\n'
+    else:
+        nav_html += f'  <a href="{book_base}/">{book_top} &rarr;</a>\n'
+    nav_html += '</div>'
+
+    return {
+        "lang": lang,
+        "title": meta.get("title", ""),
+        "subtitle": meta.get("subtitle", ""),
+        "description": meta.get("description", ""),
+        "date": meta.get("date", ""),
+        "number": number,
+        "label": meta.get("label", f"{book_title} {number}"),
+        "body_html": body_html,
+        "nav_html": nav_html,
+        # CTA — fall back to generic "back to TOC" when chapter frontmatter
+        # hasn't set its own CTA buttons.
+        "cta_label": meta.get("cta_label", book_title),
+        "cta_title": meta.get("cta_title", _text(is_en,
+            "Read with Claude beside you",
+            "Claudeを横に置いて、次の章へ")),
+        "cta_text": meta.get("cta_text", _text(is_en,
+            "Reading alone isn't enough. Type your situation into Claude as you read,"
+            " and the same textbook becomes tailored to you.",
+            "読むだけでは身につかない。Claudeに自分の状況を打ち込みながら読むことで、"
+            "教科書は自分専用の教材になる。")),
+        "cta_btn1_text": meta.get("cta_btn1_text", _text(is_en, "Table of Contents", "目次へ")),
+        "cta_btn1_link": meta.get("cta_btn1_link", f"{book_base}/"),
+        "cta_btn2_text": meta.get("cta_btn2_text", "Insights"),
+        "cta_btn2_link": meta.get("cta_btn2_link", "/en/insights/" if is_en else "/insights/"),
+        # Reuse og-image.jpg (same dir) as page hero when hero_image is set
+        "img_path": "og-image.jpg" if meta.get("hero_image") else (
+            "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg"
+        ),
+        # Navigation bar labels (shared site nav)
+        "insights_base": "/en/insights" if is_en else "/insights",
+        "blog_base": "/en/blog" if is_en else "/blog",
+        "book_base": book_base,
+        "site_name": config.site_text("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
+        "site_tagline": "aiseed.dev",
+        "home_label": _text(is_en, "Home", "ホーム"),
+        "home_link": "/en/" if is_en else "/",
+        "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
+        "lf_label": "Light Farming",
+        "about_link": "/en/natural-farming/" if is_en else "/natural-farming/",
+        "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
+        "our_approach_link": "/en/about/" if is_en else "/about/",
+        "our_approach_label": _text(is_en, "Our Approach", "私たちのアプローチ"),
+        "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
+        "insights_label": "Insights",
+        "articles_parent_label": _text(is_en, "Articles", "記事"),
+        "insights_child_label": _text(is_en, "Structural Analysis", "構造分析"),
+        "book_label": _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian"),
+        "contact_label": _text(is_en, "Contact", "お問い合わせ"),
+        "menu_label": _text(is_en, "Menu", "メニュー"),
+        "pages_label": _text(is_en, "Pages", "ページ"),
+        "links_label": _text(is_en, "Links", "関連リンク"),
+        "series_label": f"{book_title} {number}",
+        "vegitage_label": _text(is_en, "Natural Farming Community", "自然農法コミュニティ"),
+        "footer_about": _text(is_en,
+            "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
+            "food, energy, AI, healthcare, and pensions — every structure connects.",
+            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
+        # SEO
+        "canonical_url": f"{config.SITE_URL}{book_base}/{stem}/",
+        "hreflang_ja": f"{config.SITE_URL}{_BOOK_BASE_JA}/{stem}/",
+        "hreflang_en": f"{config.SITE_URL}{_BOOK_BASE_EN}/{stem}/" if meta.get("_has_translation") else "",
+        "og_locale": "en_US" if is_en else "ja_JP",
+        "og_image": resolve_og_image(
+            meta,
+            Path(meta.get("_out_dir", ".")),
+            f"{config.SITE_URL}{book_base}/{stem}",
+        ),
+        # Language switch — only shown when a sibling-language edition exists.
+        "has_translation": bool(meta.get("_has_translation", False)),
+        "lang_switch_link": (f"{_BOOK_BASE_JA}/{stem}/" if is_en else f"{_BOOK_BASE_EN}/{stem}/"),
+        "lang_switch_label": "日本語" if is_en else "EN",
+        "lang_switch_hreflang": "ja" if is_en else "en",
+        "lang_switch_aria": "日本語版を表示" if is_en else "View in English",
+    }
+
+
+def book_index_vars(lang, chapter_list_html, has_translation=False):
+    """Build template variables for the book table-of-contents page."""
+    is_en = lang == "en"
+    book_base = _BOOK_BASE_EN if is_en else _BOOK_BASE_JA
+    book_title = _BOOK_TITLE_EN if is_en else _BOOK_TITLE_JA
+
+    return {
+        "lang": lang,
+        "site_name": config.site_text("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
+        "home_label": _text(is_en, "Home", "ホーム"),
+        "home_link": "/en/" if is_en else "/",
+        "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
+        "lf_label": "Light Farming",
+        "about_link": "/en/natural-farming/" if is_en else "/natural-farming/",
+        "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
+        "our_approach_link": "/en/about/" if is_en else "/about/",
+        "our_approach_label": _text(is_en, "Our Approach", "私たちのアプローチ"),
+        "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
+        "menu_label": _text(is_en, "Menu", "メニュー"),
+        "pages_label": _text(is_en, "Pages", "ページ"),
+        "links_label": _text(is_en, "Links", "関連リンク"),
+        "articles_parent_label": _text(is_en, "Articles", "記事"),
+        "insights_child_label": _text(is_en, "Structural Analysis", "構造分析"),
+        "book_label": _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian"),
+        "insights_base": "/en/insights" if is_en else "/insights",
+        "blog_base": "/en/blog" if is_en else "/blog",
+        "book_base": book_base,
+        "css_path": "../../css/style.css" if is_en else "../css/style.css",
+        "js_path": "../../js/main.js" if is_en else "../js/main.js",
+        "img_path": "../../images/IMG_3285.jpg" if is_en else "../images/IMG_3285.jpg",
+        "meta_description": _text(is_en,
+            "A new kind of textbook you read with Claude beside you. Learn the migration to Debian through dialogue, tailored to your own situation.",
+            "Claudeを横に置いて読む新しい形の教科書。Debianへの移行を、対話を通じて自分の状況に合わせて学ぶ。"),
+        "structural_analysis_label": book_title,
+        "page_title": book_title,
+        "page_subtitle": _text(is_en,
+            "A textbook you dialogue with, not just read",
+            "読むのではなく、対話する教科書"),
+        "other_lang_link": (_BOOK_BASE_JA + "/") if is_en else (_BOOK_BASE_EN + "/"),
+        "other_lang_text": _text(is_en, "日本語版はこちら →", "English version available →") if has_translation else "",
+        "lang_switch_label": "日本語" if is_en else "EN",
+        "lang_switch_hreflang": "ja" if is_en else "en",
+        "lang_switch_aria": "日本語版を表示" if is_en else "View in English",
+        "series_title": _text(is_en, "All 24 chapters", "全24章"),
+        "series_description": _text(is_en,
+            "From the prologue through Chapter 23. At the end of each chapter, you type your own situation into Claude before moving on.",
+            "序章から第23章まで。各章の末尾で、Claudeに自分の状況を打ち込んでから次に進む。"),
+        "article_list_html": chapter_list_html,
+        "intro_html": _text(is_en,
+            "Open Claude beside the textbook as you read.<br>\n                    "
+            "Type in your situation, get answers fitted to you.<br>\n                    "
+            "The same book becomes different learning for every reader — that is the premise of this book.",
+            "教科書を読みながら、横でClaudeを開く。<br>\n                    "
+            "あなたの状況を打ち込み、自分専用の答えを得る。<br>\n                    "
+            "同じ本でも、人によって学びが変わる——それがこの本の前提だ。"),
+        "method_title": _text(is_en, "How to read", "読み方"),
+        "method_html": _text(is_en,
+            "At the end of each chapter, type your own situation into Claude before moving on.<br>\n                    "
+            "Reading abstractions alone doesn't stick. Only once you translate them into your own words do they become knowledge.",
+            "各章の末尾で、自分の状況を Claude に打ち込んでから次に進む。<br>\n                    "
+            "抽象論を読むだけでは身につかない。自分の言葉に翻訳して初めて知識になる。"),
+        "quote_html": _text(is_en,
+            "Instead of handing over answers, hand over the craft of asking questions.<br>\n"
+            "In the era of learning with Claude, that is the longest-lasting gift.",
+            "答えを渡すのではなく、問いを立てる作法を渡す。<br>\n"
+            "それがClaudeと一緒に学ぶ時代の、最も長く残るギフトになる。"),
+        "cta_title": _text(is_en, "Start reading", "始める"),
+        "cta_html": _text(is_en,
+            "Start from the prologue and read together.<br>\n"
+            'When you\'re stuck, just ask Claude: "Given what I\'ve read so far, what should I do?"',
+            "序章から、一緒に読み始めよう。<br>\n"
+            "迷ったら、Claude に「ここまで読んで、自分はどうすべきか」と聞けばいい。"),
+        "footer_about": _text(is_en,
+            "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
+            "food, energy, AI, healthcare, and pensions — every structure connects.",
+            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
+        "copyright_text": config.site_text("copyright_text", lang, _text(is_en, "Living in the AI Era — aiseed.dev", "AI時代の暮らし")),
+        # SEO
+        "canonical_url": f"{config.SITE_URL}{book_base}/",
+        "hreflang_ja": f"{config.SITE_URL}{_BOOK_BASE_JA}/",
+        "hreflang_en": f"{config.SITE_URL}{_BOOK_BASE_EN}/" if has_translation else "",
+        "og_locale": "en_US" if is_en else "ja_JP",
+        "og_image": config.DEFAULT_OG_IMAGE,
+    }
+
 
 def blog_vars(meta, body_html):
     """Build template variables for blog post pages."""
@@ -290,6 +516,7 @@ def blog_vars(meta, body_html):
         ),
         "insights_base": "/en/insights" if is_en else "/insights",
         "blog_base": "/en/blog" if is_en else "/blog",
+        "book_base": "/en/claude-debian" if is_en else "/claude-debian",
         # Navigation labels
         "site_name": config.site_text("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
         "site_tagline": _text(is_en, "aiseed.dev", "aiseed.dev"),
@@ -303,6 +530,9 @@ def blog_vars(meta, body_html):
         "our_approach_label": _text(is_en, "Our Approach", "私たちのアプローチ"),
         "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
         "insights_label": "Insights",
+        "articles_parent_label": _text(is_en, "Articles", "記事"),
+        "insights_child_label": _text(is_en, "Structural Analysis", "構造分析"),
+        "book_label": _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian"),
         "contact_label": _text(is_en, "Contact", "お問い合わせ"),
         "menu_label": _text(is_en, "Menu", "メニュー"),
         "pages_label": _text(is_en, "Pages", "ページ"),
@@ -356,8 +586,12 @@ def blog_index_vars(lang, post_list_html):
         "menu_label": _text(is_en, "Menu", "メニュー"),
         "pages_label": _text(is_en, "Pages", "ページ"),
         "links_label": _text(is_en, "Links", "関連リンク"),
+        "articles_parent_label": _text(is_en, "Articles", "記事"),
+        "insights_child_label": _text(is_en, "Structural Analysis", "構造分析"),
+        "book_label": _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian"),
         "insights_base": "/en/insights" if is_en else "/insights",
         "blog_base": "/en/blog" if is_en else "/blog",
+        "book_base": "/en/claude-debian" if is_en else "/claude-debian",
         "css_path": "../../css/style.css" if is_en else "../css/style.css",
         "js_path": "../../js/main.js" if is_en else "../js/main.js",
         "img_path": "../../images/IMG_3285.jpg" if is_en else "../images/IMG_3285.jpg",

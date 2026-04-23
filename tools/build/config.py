@@ -25,7 +25,7 @@ SITE_URL = _DEFAULT_SITE_URL
 
 # Site-specific paths. configure_site() overwrites these before any build runs.
 SITE_ROOT: Path = Path(__file__).parent.parent.parent
-ARTICLES_DIR: Path = SITE_ROOT / "articles"
+INSIGHTS_DIR: Path = SITE_ROOT / "articles" / "insights"
 BLOG_DIR: Path = SITE_ROOT / "blog"
 # Long-form serial content ("books"). Currently just "Claudeと一緒に学ぶDebian".
 BOOK_DIR: Path = SITE_ROOT / "articles" / "claude-debian"
@@ -80,12 +80,12 @@ def configure_site(site: Path) -> None:
     to fork this script. `<site>/site.json` (optional) supplies per-site
     overrides for site_url, site_name, copyright_text, default_og_image.
     """
-    global SITE_ROOT, ARTICLES_DIR, BLOG_DIR, BOOK_DIR
+    global SITE_ROOT, INSIGHTS_DIR, BLOG_DIR, BOOK_DIR
     global OUTPUT_BASE, BLOG_OUTPUT_BASE, BOOK_OUTPUT_BASE
     global TEMPLATES_DIR, env, _site_config, SITE_URL, DEFAULT_OG_IMAGE
 
     SITE_ROOT = site.resolve()
-    ARTICLES_DIR = SITE_ROOT / "articles"
+    INSIGHTS_DIR = SITE_ROOT / "articles" / "insights"
     BLOG_DIR = SITE_ROOT / "blog"
     BOOK_DIR = SITE_ROOT / "articles" / "claude-debian"
     OUTPUT_BASE = SITE_ROOT / "html" / "insights"

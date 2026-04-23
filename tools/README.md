@@ -6,7 +6,7 @@ Markdown ファイルから HTML を生成するビルドツール。
 
 ```bash
 # 単一記事をビルド
-python3 tools/build_article.py articles/13-cases.md
+python3 tools/build_article.py articles/insights/13-cases.md
 
 # 全記事＋インデックスページをビルド
 python3 tools/build_article.py --all
@@ -51,9 +51,14 @@ markdown-it-py は `table` 拡張を有効化済み。
 
 ```
 articles/
-  01-climate-mistake.md      # 日本語記事
-  en-01-climate-mistake.md   # 英語記事（en- プレフィックス）
-  ...
+  insights/
+    01-climate-mistake.md      # 日本語 Insights 記事
+    en-01-climate-mistake.md   # 英語 Insights 記事（en- プレフィックス）
+    ...
+  claude-debian/
+    00-prologue.md             # 「Claudeと一緒に学ぶDebian」序章
+    01-what-you-lose-and-gain.md
+    ...
 blog/
   001-grid-attack-naphtha.md     # 日本語ブログ記事
   en-001-grid-attack-naphtha.md  # 英語ブログ記事（en- プレフィックス）
@@ -73,14 +78,16 @@ html/
   en/insights/               # 英語 Insights HTML 出力先
   blog/                      # 日本語 Blog HTML 出力先
   en/blog/                   # 英語 Blog HTML 出力先
+  claude-debian/             # 「Claudeと一緒に学ぶDebian」出力先
+  en/claude-debian/          # 英語版出力先
 ```
 
 ## 出力先
 
 | 記事 | 出力先 |
 |------|--------|
-| `articles/09-healthcare-fiscal.md` | `html/insights/healthcare-fiscal/index.html` |
-| `articles/en-09-healthcare-fiscal.md` | `html/en/insights/healthcare-fiscal/index.html` |
+| `articles/insights/09-healthcare-fiscal.md` | `html/insights/healthcare-fiscal/index.html` |
+| `articles/insights/en-09-healthcare-fiscal.md` | `html/en/insights/healthcare-fiscal/index.html` |
 
 slug がディレクトリ名になる。
 
@@ -96,8 +103,8 @@ slug がディレクトリ名になる。
 
 | タイプ | 置き場所 | 出力先 | URL例 |
 |---|---|---|---|
-| Insights記事 (連載) | `articles/NN-slug.md` | `html/insights/slug/index.html` | `/insights/slug/` |
-| Insights記事 (英語) | `articles/en-NN-slug.md` | `html/en/insights/slug/index.html` | `/en/insights/slug/` |
+| Insights記事 (連載) | `articles/insights/NN-slug.md` | `html/insights/slug/index.html` | `/insights/slug/` |
+| Insights記事 (英語) | `articles/insights/en-NN-slug.md` | `html/en/insights/slug/index.html` | `/en/insights/slug/` |
 | Blog記事 (時事ノート) | `blog/NNN-slug.md` | `html/blog/slug/index.html` | `/blog/slug/` |
 | Blog記事 (英語) | `blog/en-NNN-slug.md` | `html/en/blog/slug/index.html` | `/en/blog/slug/` |
 
@@ -172,7 +179,7 @@ lang: en
 | Markdown | コピー対象 | コピー先 |
 |---|---|---|
 | `blog/012-copilot.md` | `blog/012-*.{jpg,jpeg,png,gif,svg,webp,avif,pdf}` | `html/blog/{slug}/` |
-| `articles/09-healthcare.md` | `articles/09-*.*` | `html/insights/{slug}/` |
+| `articles/insights/09-healthcare.md` | `articles/insights/09-*.*` | `html/insights/{slug}/` |
 | `blog/en-012-copilot.md` | `blog/en-012-*.*` および `blog/012-*.*` | `html/en/blog/{slug}/` |
 
 **つまり画像ファイル名は必ず記事と同じ数字プレフィックスで始める**。
@@ -400,16 +407,16 @@ Python-Markdown の仕様に従う。GitHub Flavored Markdown (GFM) とは一部
 
 ## 新しい記事を追加する手順
 
-### Insights記事 (articles/)
+### Insights記事 (articles/insights/)
 
-1. `articles/` に Markdown ファイルを作成
+1. `articles/insights/` に Markdown ファイルを作成
 
 ```bash
 # 日本語
-articles/14-new-topic.md
+articles/insights/14-new-topic.md
 
 # 英語
-articles/en-14-new-topic.md
+articles/insights/en-14-new-topic.md
 ```
 
 2. フロントマターを書く（slug, number, title, subtitle, description, date, label, prev_slug, prev_title, next_slug, next_title）

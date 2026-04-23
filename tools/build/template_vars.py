@@ -240,11 +240,23 @@ def blog_vars(meta, body_html):
     slug = meta.get("slug", "")
     blog_base = "/en/blog" if is_en else "/blog"
 
-    # Blog navigation — just link back to blog index
+    # Blog navigation — prev/next derived from file-number order by
+    # build_blog_post(); falls back to the blog index on either end.
+    prev_post = meta.get("_prev_post")
+    next_post = meta.get("_next_post")
     blog_top = "Blog Top" if is_en else "Blog トップ"
+    prev_prefix = "Prev: " if is_en else "前: "
+    next_prefix = "Next: " if is_en else "次: "
+
     nav_html = '<div class="article-nav">\n'
-    nav_html += '  <span></span>\n'
-    nav_html += f'  <a href="{blog_base}/">{blog_top} &rarr;</a>\n'
+    if prev_post:
+        nav_html += f'  <a href="{blog_base}/{prev_post.get("slug", "")}/">&larr; {prev_prefix}{prev_post.get("title", "")}</a>\n'
+    else:
+        nav_html += '  <span></span>\n'
+    if next_post:
+        nav_html += f'  <a href="{blog_base}/{next_post.get("slug", "")}/">{next_prefix}{next_post.get("title", "")} &rarr;</a>\n'
+    else:
+        nav_html += f'  <a href="{blog_base}/">{blog_top} &rarr;</a>\n'
     nav_html += '</div>'
 
     category = meta.get("category", _text(is_en, "Blog", "ブログ"))

@@ -199,6 +199,23 @@ def build_blog_post(md_path):
     meta["_out_dir"] = str(out_dir)
     meta["_has_translation"] = translation_exists(md_path, lang)
 
+    # Prev/next navigation — posts are ordered by numeric filename prefix.
+    # collect_blog_posts() returns them newest-first (descending file number),
+    # so posts[i-1] is newer and posts[i+1] is older than posts[i]. We treat
+    # "prev" as older (smaller number) and "next" as newer, matching how
+    # articles frontmatter labels the series order.
+    posts = collect_blog_posts(lang)
+    idx = next(
+        (i for i, p in enumerate(posts) if p.get("slug") == meta["slug"]),
+        None,
+    )
+    if idx is not None:
+        meta["_next_post"] = posts[idx - 1] if idx > 0 else None
+        meta["_prev_post"] = posts[idx + 1] if idx < len(posts) - 1 else None
+    else:
+        meta["_prev_post"] = None
+        meta["_next_post"] = None
+
     body = strip_leading_title(body)
     body = process_custom_blocks(body)
     body_html = md.render(body)

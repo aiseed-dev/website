@@ -450,6 +450,48 @@ def build_book_index(lang="ja"):
 
 
 # ---------------------------------------------------------------------------
+# Static pages: cache-bust style.css / main.js references
+# ---------------------------------------------------------------------------
+
+STATIC_PAGES_FOR_ASSETS = [
+    "index.html",
+    "en/index.html",
+    "about/index.html",
+    "en/about/index.html",
+    "natural-farming/index.html",
+    "en/natural-farming/index.html",
+    "light-farming/index.html",
+    "en/light-farming/index.html",
+]
+
+_CSS_REF_RE = re.compile(r'(href="[^"]*style\.css)(?:\?v=[^"]*)?(")')
+_JS_REF_RE = re.compile(r'(src="[^"]*main\.js)(?:\?v=[^"]*)?(")')
+
+
+def update_static_page_asset_versions():
+    """Stamp the current asset version onto style.css / main.js references
+    in hand-edited top-level pages. Without this, browsers keep serving the
+    cached CSS/JS after a deploy until the file expires."""
+    version = config.asset_version()
+    replacement_css = rf'\1?v={version}\2'
+    replacement_js = rf'\1?v={version}\2'
+    html_root = config.SITE_ROOT / "html"
+    updated = 0
+    for rel in STATIC_PAGES_FOR_ASSETS:
+        f = html_root / rel
+        if not f.exists():
+            continue
+        text = f.read_text(encoding="utf-8")
+        new_text = _CSS_REF_RE.sub(replacement_css, text)
+        new_text = _JS_REF_RE.sub(replacement_js, new_text)
+        if new_text != text:
+            f.write_text(new_text, encoding="utf-8")
+            updated += 1
+    if updated:
+        print(f"Stamped asset version {version} onto {updated} static pages")
+
+
+# ---------------------------------------------------------------------------
 # Home page: latest blog posts section
 # ---------------------------------------------------------------------------
 
@@ -743,6 +785,7 @@ def main():
         if collect_book_chapters("en"):
             build_book_index("en")
 
+        update_static_page_asset_versions()
         build_sitemap()
         build_robots()
         print(

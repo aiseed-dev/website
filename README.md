@@ -38,11 +38,97 @@ html/
 
 ## 開発
 
-ローカルで確認する場合:
+### セットアップ
 
 ```bash
-cd html
-python -m http.server 8000
+pip install -r requirements.txt
 ```
 
-ブラウザで `http://localhost:8000` にアクセス。
+### ビルド
+
+Markdown で書いた Insights / Blog 記事を HTML に変換する:
+
+```bash
+python3 tools/build_article.py --all          # 全記事ビルド
+python3 tools/build_article.py articles/09-healthcare-fiscal.md   # 単一記事
+```
+
+出力は `html/insights/`, `html/blog/`, `html/en/insights/`, `html/en/blog/` 配下。
+記法・オプションの詳細は [tools/README.md](tools/README.md) 参照。
+
+### 開発サーバー（ビルド + 監視 + 配信）
+
+```bash
+python3 tools/serve.py                # http://localhost:8000
+python3 tools/serve.py --port 8080
+```
+
+`articles/`, `blog/`, `tools/templates/`, `html/{css,js}` を監視し、変更があれば
+`build_article.py --all` を自動実行する。ブラウザのリロードは手動。
+
+### 任意のディレクトリをターゲットにする
+
+`tools/build_article.py` と `tools/serve.py` はどこから起動しても、`--site`
+でサイトディレクトリを明示できる（省略時はスクリプトの親ディレクトリ、
+または環境変数 `AISEED_SITE`）。
+
+サイト側に必要なレイアウト:
+
+```
+<site>/
+├── articles/              # Insights 記事 (NN-slug.md, en-NN-slug.md)
+├── blog/                  # Blog 記事 (NNN-slug.md, en-NNN-slug.md)
+├── html/                  # 出力先（index.html, css/, js/, images/ 等）
+├── tools/templates/       # 任意: ここにテンプレートを置けばバンドルを上書き
+└── site.json              # 任意: site_url, site_name, copyright_text 等の上書き
+```
+
+`site.json` の例:
+
+```json
+{
+  "site_url": "https://example.com",
+  "site_name": { "ja": "自分のサイト", "en": "My Site" },
+  "copyright_text": { "ja": "自分のサイト", "en": "My Site" },
+  "default_og_image": "/images/og-default.jpg"
+}
+```
+
+```bash
+# 別のサイトをビルド
+python3 /path/to/website/tools/build_article.py --site /path/to/other-site --all
+
+# 別サイトの開発サーバーを起動
+python3 /path/to/website/tools/serve.py --site /path/to/other-site
+
+# 環境変数で既定を与える
+export AISEED_SITE=/path/to/other-site
+python3 /path/to/website/tools/build_article.py --all
+```
+
+### 新しいサイトをゼロから始める
+
+`tools/init_site.py` が最小のサンプルサイト（articles / blog / html /
+tools/templates / site.json / CLAUDE.md / README.md）を任意ディレクトリに
+展開する:
+
+```bash
+python3 /path/to/website/tools/init_site.py /path/to/new-site
+python3 /path/to/website/tools/build_article.py --site /path/to/new-site --all
+python3 /path/to/website/tools/serve.py --site /path/to/new-site
+```
+
+- 既存ファイルは既定でスキップ。上書きしたい場合は `--force`
+- 何が書かれるかだけ見たい場合は `--dry-run`
+- 利用可能なスキャフォールド一覧は `--list`
+
+スキャフォールドは `tools/scaffolds/default/` にあり、CSS・テンプレート・
+`CLAUDE.md` は Claude Code で扱いやすい最小構成になっている。
+
+### 静的配信のみ
+
+既にビルド済みの HTML をそのまま確認する場合:
+
+```bash
+cd html && python3 -m http.server 8000
+```

@@ -15,6 +15,26 @@ python3 tools/build_article.py --all
 python3 tools/build_article.py --list
 ```
 
+### 別ディレクトリのサイトをビルド
+
+ツールのある場所に縛られないので、`--site` で任意のサイトルートを指定できる
+（省略時はスクリプトの親ディレクトリ、または `$AISEED_SITE`）。
+
+サイト側に必要なレイアウト:
+
+```
+<site>/articles/   <site>/blog/   <site>/html/
+<site>/tools/templates/   # 任意（バンドルテンプレートを上書きしたい時のみ）
+```
+
+```bash
+python3 /path/to/website/tools/build_article.py --site /path/to/other-site --all
+AISEED_SITE=/path/to/other-site python3 /path/to/website/tools/build_article.py --all
+```
+
+テンプレートは `<site>/tools/templates/` があればそちらを優先、無ければ
+このリポジトリ同梱の `tools/templates/` を使う。
+
 ## 依存ライブラリ
 
 ```bash

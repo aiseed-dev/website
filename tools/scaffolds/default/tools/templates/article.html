@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}{% if site_name %} | {{ site_name }}{% endif %}</title>
+    <meta name="description" content="{{ description }}">
+    {% if canonical_url %}<link rel="canonical" href="{{ canonical_url }}">{% endif %}
+    {% if hreflang_ja %}<link rel="alternate" hreflang="ja" href="{{ hreflang_ja }}">{% endif %}
+    {% if hreflang_en %}<link rel="alternate" hreflang="en" href="{{ hreflang_en }}">{% endif %}
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{{ title }}">
+    <meta property="og:description" content="{{ description }}">
+    {% if canonical_url %}<meta property="og:url" content="{{ canonical_url }}">{% endif %}
+    {% if og_image %}<meta property="og:image" content="{{ og_image }}">{% endif %}
+    {% if og_locale %}<meta property="og:locale" content="{{ og_locale }}">{% endif %}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title }}">
+    <meta name="twitter:description" content="{{ description }}">
+    {% if og_image %}<meta name="twitter:image" content="{{ og_image }}">{% endif %}
+    <link rel="stylesheet" href="{{ css_path }}">
+</head>
+<body>
+    <header class="site-header">
+        <a href="{{ home_link or '/' }}" class="brand">{{ site_name or 'Sample Site' }}</a>
+        <nav>
+            <a href="{{ insights_base or '/insights' }}/">Insights</a>
+            <a href="{{ blog_base or '/blog' }}/">Blog</a>
+        </nav>
+    </header>
+
+    <main class="article">
+        {% if label %}<p class="article-label">{{ label }}</p>{% endif %}
+        <h1>{{ title }}</h1>
+        {% if subtitle %}<p class="article-subtitle">{{ subtitle }}</p>{% endif %}
+        {% if date %}<p class="article-date">{{ date }}</p>{% endif %}
+
+        {% if hero_image %}
+        <figure class="article-hero">
+            <img src="{{ img_path }}" alt="{{ title }}">
+        </figure>
+        {% endif %}
+
+        <article class="article-body">
+            {{ body }}
+        </article>
+
+        <nav class="article-nav">
+            {% if prev_slug %}<a href="../{{ prev_slug }}/" class="prev">← {{ prev_title or prev_slug }}</a>{% endif %}
+            {% if next_slug %}<a href="../{{ next_slug }}/" class="next">{{ next_title or next_slug }} →</a>{% endif %}
+        </nav>
+    </main>
+
+    <footer class="site-footer">
+        <p>{{ copyright_text or site_name or 'Sample Site' }}</p>
+    </footer>
+</body>
+</html>

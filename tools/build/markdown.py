@@ -1,0 +1,153 @@
+"""Markdown parsing: frontmatter, custom ::: blocks, CommonMark rendering."""
+
+import re
+from pathlib import Path
+
+from markdown_it import MarkdownIt
+
+
+# CommonMark + tables (used for both article bodies and inline `:::highlight`)
+md = MarkdownIt("commonmark", {"html": True}).enable("table")
+
+
+def parse_frontmatter(text):
+    """Parse YAML-like front matter between --- delimiters."""
+    if not text.startswith("---"):
+        return {}, text
+    parts = text.split("---", 2)
+    if len(parts) < 3:
+        return {}, text
+    meta = {}
+    for line in parts[1].strip().split("\n"):
+        line = line.strip()
+        if ":" in line:
+            key, val = line.split(":", 1)
+            val = val.strip()
+            if val.startswith('"') and val.endswith('"'):
+                val = val[1:-1]
+            meta[key.strip()] = val
+    body = parts[2].strip()
+    return meta, body
+
+
+def translation_exists(md_path, lang):
+    """Check whether the opposite-language sibling markdown file exists.
+
+    Naming convention: JA file `NN-slug.md`  ↔ EN file `en-NN-slug.md`
+    in the same directory.
+    """
+    md_path = Path(md_path)
+    if lang == "en":
+        if not md_path.name.startswith("en-"):
+            return False
+        sibling = md_path.parent / md_path.name[3:]
+    else:
+        sibling = md_path.parent / f"en-{md_path.name}"
+    return sibling.exists()
+
+
+# ---------------------------------------------------------------------------
+# Custom Markdown blocks (:::chain, :::highlight, :::quote, :::compare)
+# ---------------------------------------------------------------------------
+
+def process_custom_blocks(body):
+    """Convert custom ::: blocks to HTML."""
+    lines = body.split("\n")
+    result = []
+    in_block = None
+    block_content = []
+
+    for line in lines:
+        stripped = line.strip()
+
+        # Block openers
+        if stripped.startswith(":::chain"):
+            if in_block:
+                result.append(close_block(in_block, block_content))
+                block_content = []
+            in_block = "chain"
+            continue
+        elif stripped.startswith(":::highlight"):
+            if in_block:
+                result.append(close_block(in_block, block_content))
+                block_content = []
+            in_block = "highlight"
+            continue
+        elif stripped.startswith(":::quote"):
+            if in_block:
+                result.append(close_block(in_block, block_content))
+                block_content = []
+            in_block = "quote"
+            continue
+        elif stripped.startswith(":::compare"):
+            if in_block:
+                result.append(close_block(in_block, block_content))
+                block_content = []
+            in_block = "compare"
+            continue
+        elif stripped == ":::":
+            if in_block:
+                result.append(close_block(in_block, block_content))
+                block_content = []
+                in_block = None
+            continue
+
+        if in_block:
+            block_content.append(line)
+        else:
+            result.append(line)
+
+    if in_block:
+        result.append(close_block(in_block, block_content))
+
+    return "\n".join(result)
+
+
+def close_block(block_type, lines):
+    """Close a custom block and return HTML."""
+    content = "\n".join(lines).strip()
+
+    if block_type == "chain":
+        content = content.replace("→", '<span class="arrow">&rarr;</span>')
+        content = content.replace("\n\n", "<br><br>")
+        content = content.replace("\n", "<br>\n")
+        content = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', content)
+        return f'<div class="chain-diagram">\n{content}\n</div>'
+
+    elif block_type == "highlight":
+        html = md.render(content)
+        return f'<div class="highlight-box">\n{html}\n</div>'
+
+    elif block_type == "quote":
+        content = content.replace("\n", "<br>\n")
+        return f'<div class="quote-block">\n<p class="quote-text">\n{content}\n</p>\n</div>'
+
+    elif block_type == "compare":
+        return build_table(content)
+
+    return content
+
+
+def build_table(content):
+    """Build comparison table from pipe-delimited text."""
+    lines = [l.strip() for l in content.strip().split("\n") if l.strip()]
+    if not lines:
+        return ""
+
+    html = '<table class="comparison-table fade-in">\n'
+    for i, line in enumerate(lines):
+        cells = [c.strip() for c in line.split("|") if c.strip()]
+        if i == 0:
+            html += "<tr>\n"
+            for c in cells:
+                html += f"  <th>{c}</th>\n"
+            html += "</tr>\n"
+        elif line.startswith("--") or line.startswith("|-"):
+            continue
+        else:
+            html += "<tr>\n"
+            for c in cells:
+                html += f"  <td>{c}</td>\n"
+            html += "</tr>\n"
+    html += "</table>"
+    return html

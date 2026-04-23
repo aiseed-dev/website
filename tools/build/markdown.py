@@ -30,6 +30,20 @@ def parse_frontmatter(text):
     return meta, body
 
 
+def strip_leading_title(body):
+    """Drop the leading `# Title` line if present.
+
+    Blog posts (and some articles) duplicate their frontmatter `title:` as
+    the first H1 of the body; the template already renders `{{ title }}` in
+    the page hero, so leaving the H1 in the body produces two titles on the
+    page. No-op when the body doesn't start with `# `.
+    """
+    if not body.startswith("# "):
+        return body
+    _, _, rest = body.partition("\n")
+    return rest.lstrip("\n")
+
+
 def translation_exists(md_path, lang):
     """Check whether the opposite-language sibling markdown file exists.
 

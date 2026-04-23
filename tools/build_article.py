@@ -40,6 +40,7 @@ from build.markdown import (
     md,
     parse_frontmatter,
     process_custom_blocks,
+    strip_leading_title,
     translation_exists,
 )
 from build.template_vars import (
@@ -80,6 +81,9 @@ def build_article(md_path):
     meta["_source_dir"] = str(md_path.parent)
     meta["_out_dir"] = str(out_dir)
     meta["_has_translation"] = translation_exists(md_path, lang)
+
+    # Drop the leading `# Title` (duplicates frontmatter title rendered by template)
+    body = strip_leading_title(body)
 
     # Process custom blocks first
     body = process_custom_blocks(body)
@@ -195,6 +199,7 @@ def build_blog_post(md_path):
     meta["_out_dir"] = str(out_dir)
     meta["_has_translation"] = translation_exists(md_path, lang)
 
+    body = strip_leading_title(body)
     body = process_custom_blocks(body)
     body_html = md.render(body)
 

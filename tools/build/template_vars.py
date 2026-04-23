@@ -77,9 +77,10 @@ def article_vars(meta, body_html):
         # Paths
         "css_path": "../../../css/style.css" if is_en else "../../css/style.css",
         "js_path": "../../../js/main.js" if is_en else "../../js/main.js",
-        "img_path": (
-            f"../../../images/{meta['hero_image']}" if is_en else f"../../images/{meta['hero_image']}"
-        ) if meta.get("hero_image") else (
+        # When hero_image is set, resolve_og_image() below generates og-image.jpg
+        # in the same output directory; reuse it as the page-hero background
+        # (1200x630 is already an appropriate wide aspect ratio).
+        "img_path": "og-image.jpg" if meta.get("hero_image") else (
             "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg"
         ),
         "insights_base": insights_base,
@@ -271,9 +272,8 @@ def blog_vars(meta, body_html):
         # Paths
         "css_path": "../../../css/style.css" if is_en else "../../css/style.css",
         "js_path": "../../../js/main.js" if is_en else "../../js/main.js",
-        "img_path": (
-            f"../../../images/{meta['hero_image']}" if is_en else f"../../images/{meta['hero_image']}"
-        ) if meta.get("hero_image") else (
+        # Reuse the generated og-image.jpg (same dir) as the page-hero background.
+        "img_path": "og-image.jpg" if meta.get("hero_image") else (
             "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg"
         ),
         "insights_base": "/en/insights" if is_en else "/insights",

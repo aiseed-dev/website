@@ -77,6 +77,8 @@ def article_vars(meta, body_html):
         # Paths
         "css_path": "../../../css/style.css" if is_en else "../../css/style.css",
         "js_path": "../../../js/main.js" if is_en else "../../js/main.js",
+
+        "asset_version": config.asset_version(),
         # When hero_image is set, resolve_og_image() below generates og-image.jpg
         # in the same output directory; reuse it as the page-hero background
         # (1200x630 is already an appropriate wide aspect ratio).
@@ -200,6 +202,8 @@ def index_vars(lang, article_list_html):
         "book_base": "/en/claude-debian" if is_en else "/claude-debian",
         "css_path": "../../css/style.css" if is_en else "../css/style.css",
         "js_path": "../../js/main.js" if is_en else "../js/main.js",
+
+        "asset_version": config.asset_version(),
         "img_path": "../../images/IMG_3285.jpg" if is_en else "../images/IMG_3285.jpg",
         "meta_description": intro_text.split("\n")[0],
         "structural_analysis_label": _text(is_en, "Structural Analysis", "構造分析"),
@@ -321,6 +325,10 @@ def book_vars(meta, body_html):
         "cta_btn1_link": meta.get("cta_btn1_link", f"{book_base}/"),
         "cta_btn2_text": meta.get("cta_btn2_text", "Insights"),
         "cta_btn2_link": meta.get("cta_btn2_link", "/en/insights/" if is_en else "/insights/"),
+        # Paths
+        "css_path": "../../../css/style.css" if is_en else "../../css/style.css",
+        "js_path": "../../../js/main.js" if is_en else "../../js/main.js",
+        "asset_version": config.asset_version(),
         # Reuse og-image.jpg (same dir) as page hero when hero_image is set
         "img_path": "og-image.jpg" if meta.get("hero_image") else (
             "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg"
@@ -402,6 +410,8 @@ def book_index_vars(lang, chapter_list_html, has_translation=False):
         "book_base": book_base,
         "css_path": "../../css/style.css" if is_en else "../css/style.css",
         "js_path": "../../js/main.js" if is_en else "../js/main.js",
+
+        "asset_version": config.asset_version(),
         "img_path": "../../images/IMG_3285.jpg" if is_en else "../images/IMG_3285.jpg",
         "meta_description": _text(is_en,
             "A new kind of textbook you read with Claude beside you. Learn the migration to Debian through dialogue, tailored to your own situation.",
@@ -510,6 +520,8 @@ def blog_vars(meta, body_html):
         # Paths
         "css_path": "../../../css/style.css" if is_en else "../../css/style.css",
         "js_path": "../../../js/main.js" if is_en else "../../js/main.js",
+
+        "asset_version": config.asset_version(),
         # Reuse the generated og-image.jpg (same dir) as the page-hero background.
         "img_path": "og-image.jpg" if meta.get("hero_image") else (
             "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg"
@@ -594,6 +606,8 @@ def blog_index_vars(lang, post_list_html):
         "book_base": "/en/claude-debian" if is_en else "/claude-debian",
         "css_path": "../../css/style.css" if is_en else "../css/style.css",
         "js_path": "../../js/main.js" if is_en else "../js/main.js",
+
+        "asset_version": config.asset_version(),
         "img_path": "../../images/IMG_3285.jpg" if is_en else "../images/IMG_3285.jpg",
         "meta_description": intro_text,
         "structural_analysis_label": "Blog",

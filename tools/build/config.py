@@ -7,6 +7,7 @@ observed after configuration, rather than `from .config import SITE_URL`
 which captures the pre-configure default.
 """
 
+import hashlib
 import json
 import os
 import sys
@@ -105,6 +106,33 @@ def configure_site(site: Path) -> None:
     SITE_URL = site_url.rstrip("/") if isinstance(site_url, str) and site_url else _DEFAULT_SITE_URL
     og_default = _site_config.get("default_og_image")
     DEFAULT_OG_IMAGE = og_default if isinstance(og_default, str) and og_default else _DEFAULT_OG_IMAGE
+
+    # Invalidate cached asset version; next asset_version() call will recompute
+    # from the newly configured SITE_ROOT.
+    global _asset_version_cache
+    _asset_version_cache = None
+
+
+_asset_version_cache: str | None = None
+
+
+def asset_version() -> str:
+    """Short content-hash cache-buster for shared CSS/JS.
+
+    Appended as `?v=<hash>` to `style.css` and `main.js` references so browsers
+    pull fresh assets immediately after each deploy without waiting for the
+    cached copy to expire.
+    """
+    global _asset_version_cache
+    if _asset_version_cache is not None:
+        return _asset_version_cache
+    h = hashlib.sha1()
+    for rel in ("css/style.css", "js/main.js"):
+        p = SITE_ROOT / "html" / rel
+        if p.exists():
+            h.update(p.read_bytes())
+    _asset_version_cache = h.hexdigest()[:8] or "1"
+    return _asset_version_cache
 
 
 def resolve_site(argv: list[str]) -> tuple[Path, list[str]]:

@@ -233,6 +233,181 @@ def index_vars(lang, article_list_html):
 # Blog template variables
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Book (long-form serial) template variables
+#
+# Content lives under articles/claude-debian/ and is published at
+# /claude-debian/{stem}/ where stem = slug.removeprefix("claude-debian-").
+# Only a Japanese edition exists, so no language switch is rendered.
+# ---------------------------------------------------------------------------
+
+_BOOK_SLUG_PREFIX = "claude-debian-"
+_BOOK_BASE = "/claude-debian"
+_BOOK_TITLE = "Claudeと一緒に学ぶDebian"
+
+
+def _book_stem(slug):
+    """Strip the book slug prefix so URLs read /claude-debian/{stem}/."""
+    if slug.startswith(_BOOK_SLUG_PREFIX):
+        return slug[len(_BOOK_SLUG_PREFIX):]
+    return slug
+
+
+def book_vars(meta, body_html):
+    """Build template variables for a single book chapter."""
+    slug = meta.get("slug", "")
+    stem = _book_stem(slug)
+    number = meta.get("number", "")
+
+    prev_slug = meta.get("prev_slug", "")
+    prev_title = meta.get("prev_title", "")
+    next_slug = meta.get("next_slug", "")
+    next_title = meta.get("next_title", "")
+
+    # Navigation: prev/next frontmatter uses full slug; URLs use the stem.
+    # At the tail of the book we fall back to the table of contents.
+    book_top = f"{_BOOK_TITLE} 目次"
+    nav_html = '<div class="article-nav">\n'
+    if prev_slug:
+        nav_html += f'  <a href="{_BOOK_BASE}/{_book_stem(prev_slug)}/">&larr; 前: {prev_title}</a>\n'
+    else:
+        nav_html += '  <span></span>\n'
+    if next_slug:
+        nav_html += f'  <a href="{_BOOK_BASE}/{_book_stem(next_slug)}/">次: {next_title} &rarr;</a>\n'
+    else:
+        nav_html += f'  <a href="{_BOOK_BASE}/">{book_top} &rarr;</a>\n'
+    nav_html += '</div>'
+
+    return {
+        "lang": "ja",
+        "title": meta.get("title", ""),
+        "subtitle": meta.get("subtitle", ""),
+        "description": meta.get("description", ""),
+        "date": meta.get("date", ""),
+        "number": number,
+        "label": meta.get("label", f"{_BOOK_TITLE} {number}"),
+        "body_html": body_html,
+        "nav_html": nav_html,
+        # CTA — fall back to generic "back to TOC" when chapter frontmatter
+        # hasn't set its own CTA buttons.
+        "cta_label": meta.get("cta_label", _BOOK_TITLE),
+        "cta_title": meta.get("cta_title", "Claudeを横に置いて、次の章へ"),
+        "cta_text": meta.get("cta_text",
+            "読むだけでは身につかない。Claudeに自分の状況を打ち込みながら読むことで、"
+            "教科書は自分専用の教材になる。"),
+        "cta_btn1_text": meta.get("cta_btn1_text", "目次へ"),
+        "cta_btn1_link": meta.get("cta_btn1_link", f"{_BOOK_BASE}/"),
+        "cta_btn2_text": meta.get("cta_btn2_text", "Insights"),
+        "cta_btn2_link": meta.get("cta_btn2_link", "/insights/"),
+        # Reuse og-image.jpg (same dir) as page hero when hero_image is set
+        "img_path": "og-image.jpg" if meta.get("hero_image") else "../../images/IMG_3285.jpg",
+        # Navigation bar labels (shared site nav)
+        "insights_base": "/insights",
+        "blog_base": "/blog",
+        "site_name": config.site_text("site_name", "ja", "AI時代の暮らし"),
+        "site_tagline": "aiseed.dev",
+        "home_label": "ホーム",
+        "home_link": "/",
+        "about_label": "自然農法とは",
+        "lf_label": "Light Farming",
+        "about_link": "/natural-farming/",
+        "lf_link": "/light-farming/",
+        "our_approach_link": "/about/",
+        "our_approach_label": "私たちのアプローチ",
+        "gallery_label": "畑の記録",
+        "insights_label": "Insights",
+        "contact_label": "お問い合わせ",
+        "menu_label": "メニュー",
+        "pages_label": "ページ",
+        "links_label": "関連リンク",
+        "series_label": f"{_BOOK_TITLE} {number}",
+        "vegitage_label": "自然農法コミュニティ",
+        "footer_about":
+            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。",
+        # SEO — JA-only edition, so no hreflang=en alternate.
+        "canonical_url": f"{config.SITE_URL}{_BOOK_BASE}/{stem}/",
+        "hreflang_ja": f"{config.SITE_URL}{_BOOK_BASE}/{stem}/",
+        "hreflang_en": "",
+        "og_locale": "ja_JP",
+        "og_image": resolve_og_image(
+            meta,
+            Path(meta.get("_out_dir", ".")),
+            f"{config.SITE_URL}{_BOOK_BASE}/{stem}",
+        ),
+        # No English edition yet — hide the language switcher.
+        "has_translation": False,
+        "lang_switch_link": "",
+        "lang_switch_label": "",
+        "lang_switch_hreflang": "ja",
+        "lang_switch_aria": "",
+    }
+
+
+def book_index_vars(chapter_list_html):
+    """Build template variables for the book table-of-contents page."""
+    return {
+        "lang": "ja",
+        "site_name": config.site_text("site_name", "ja", "AI時代の暮らし"),
+        "home_label": "ホーム",
+        "home_link": "/",
+        "about_label": "自然農法とは",
+        "lf_label": "Light Farming",
+        "about_link": "/natural-farming/",
+        "lf_link": "/light-farming/",
+        "our_approach_link": "/about/",
+        "our_approach_label": "私たちのアプローチ",
+        "gallery_label": "畑の記録",
+        "menu_label": "メニュー",
+        "pages_label": "ページ",
+        "links_label": "関連リンク",
+        "insights_base": "/insights",
+        "blog_base": "/blog",
+        "css_path": "../css/style.css",
+        "js_path": "../js/main.js",
+        "img_path": "../images/IMG_3285.jpg",
+        "meta_description":
+            "Claudeを横に置いて読む新しい形の教科書。Debianへの移行を、対話を通じて自分の状況に合わせて学ぶ。",
+        "structural_analysis_label": _BOOK_TITLE,
+        "page_title": _BOOK_TITLE,
+        "page_subtitle": "読むのではなく、対話する教科書",
+        "other_lang_link": "",
+        "other_lang_text": "",
+        "lang_switch_label": "",
+        "lang_switch_hreflang": "ja",
+        "lang_switch_aria": "",
+        "series_title": "全24章",
+        "series_description":
+            "序章から第23章まで。各章の末尾で、Claudeに自分の状況を打ち込んでから次に進む。",
+        "article_list_html": chapter_list_html,
+        "intro_html": (
+            "教科書を読みながら、横でClaudeを開く。<br>\n                    "
+            "あなたの状況を打ち込み、自分専用の答えを得る。<br>\n                    "
+            "同じ本でも、人によって学びが変わる——それがこの本の前提だ。"
+        ),
+        "method_title": "読み方",
+        "method_html": (
+            "各章の末尾で、自分の状況を Claude に打ち込んでから次に進む。<br>\n                    "
+            "抽象論を読むだけでは身につかない。自分の言葉に翻訳して初めて知識になる。"
+        ),
+        "quote_html":
+            "答えを渡すのではなく、問いを立てる作法を渡す。<br>\n"
+            "それがClaudeと一緒に学ぶ時代の、最も長く残るギフトになる。",
+        "cta_title": "始める",
+        "cta_html":
+            "序章から、一緒に読み始めよう。<br>\n"
+            "迷ったら、Claude に「ここまで読んで、自分はどうすべきか」と聞けばいい。",
+        "footer_about":
+            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。",
+        "copyright_text": config.site_text("copyright_text", "ja", "AI時代の暮らし"),
+        # SEO — JA-only edition, so no hreflang=en alternate.
+        "canonical_url": f"{config.SITE_URL}{_BOOK_BASE}/",
+        "hreflang_ja": f"{config.SITE_URL}{_BOOK_BASE}/",
+        "hreflang_en": "",
+        "og_locale": "ja_JP",
+        "og_image": config.DEFAULT_OG_IMAGE,
+    }
+
+
 def blog_vars(meta, body_html):
     """Build template variables for blog post pages."""
     lang = meta.get("lang", "ja")

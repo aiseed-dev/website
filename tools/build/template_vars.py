@@ -1,0 +1,388 @@
+"""Build Jinja2 template variable dicts for article/index/blog pages.
+
+Each builder returns a flat dict consumed by tools/templates/{article,index}.html.
+Localization uses _text() for hard-coded JA/EN strings and config.site_text()
+for values overridable via site.json.
+"""
+
+from pathlib import Path
+
+from . import config
+from .images import resolve_og_image
+
+
+def _text(is_en, en, ja):
+    """Return English or Japanese text."""
+    return en if is_en else ja
+
+
+def _nl_to_br(text):
+    """Convert newlines to <br> for HTML inline blocks."""
+    return text.replace("\n", "<br>\n                    ")
+
+
+# ---------------------------------------------------------------------------
+# Article template variables
+# ---------------------------------------------------------------------------
+
+def article_vars(meta, body_html):
+    """Build template variables for article pages."""
+    lang = meta.get("lang", "ja")
+    is_en = lang == "en"
+    number = meta.get("number", "")
+    prev_slug = meta.get("prev_slug", "")
+    prev_title = meta.get("prev_title", "")
+    next_slug = meta.get("next_slug", "")
+    next_title = meta.get("next_title", "")
+
+    slug = meta.get("slug", "")
+    insights_base = "/en/insights" if is_en else "/insights"
+    prev_prefix = "Prev: " if is_en else "前: "
+    next_prefix = "Next: " if is_en else "次: "
+    insights_top = "Insights Top" if is_en else "Insights トップ"
+
+    # Article navigation HTML
+    nav_html = '<div class="article-nav">\n'
+    if prev_slug:
+        nav_html += f'  <a href="{insights_base}/{prev_slug}/">&larr; {prev_prefix}{prev_title}</a>\n'
+    else:
+        nav_html += '  <span></span>\n'
+    if next_slug:
+        nav_html += f'  <a href="{insights_base}/{next_slug}/">{next_prefix}{next_title} &rarr;</a>\n'
+    else:
+        nav_html += f'  <a href="{insights_base}/">{insights_top} &rarr;</a>\n'
+    nav_html += '</div>'
+
+    return {
+        "lang": lang,
+        "title": meta.get("title", ""),
+        "subtitle": meta.get("subtitle", ""),
+        "description": meta.get("description", ""),
+        "date": meta.get("date", ""),
+        "number": number,
+        "label": meta.get("label", f"Structural Analysis {number}"),
+        "body_html": body_html,
+        "nav_html": nav_html,
+        # CTA
+        "cta_label": meta.get("cta_label", "Back to Soil"),
+        "cta_title": meta.get("cta_title", _text(is_en,
+            "See the Structure", "構造を見る")),
+        "cta_text": meta.get("cta_text", _text(is_en,
+            "From AI to agriculture — every structural analysis converges on one conclusion.",
+            "AIから農業まで——全ての構造分析は、一つの結論に向かう。")),
+        "cta_btn1_text": meta.get("cta_btn1_text", _text(is_en, "Natural Farming", "自然農法とは")),
+        "cta_btn1_link": meta.get("cta_btn1_link", "/en/natural-farming/" if is_en else "/natural-farming/"),
+        "cta_btn2_text": meta.get("cta_btn2_text", "Light Farming"),
+        "cta_btn2_link": meta.get("cta_btn2_link", "/en/light-farming/" if is_en else "/light-farming/"),
+        # Paths
+        "css_path": "../../../css/style.css" if is_en else "../../css/style.css",
+        "js_path": "../../../js/main.js" if is_en else "../../js/main.js",
+        "img_path": (
+            f"../../../images/{meta['hero_image']}" if is_en else f"../../images/{meta['hero_image']}"
+        ) if meta.get("hero_image") else (
+            "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg"
+        ),
+        "insights_base": insights_base,
+        "blog_base": "/en/blog" if is_en else "/blog",
+        # Navigation labels
+        "site_name": config.site_text("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
+        "site_tagline": _text(is_en, "aiseed.dev", "aiseed.dev"),
+        "home_label": _text(is_en, "Home", "ホーム"),
+        "home_link": "/en/" if is_en else "/",
+        "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
+        "lf_label": "Light Farming",
+        "about_link": "/en/natural-farming/" if is_en else "/natural-farming/",
+        "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
+        "our_approach_link": "/en/about/" if is_en else "/about/",
+        "our_approach_label": _text(is_en, "Our Approach", "私たちのアプローチ"),
+        "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
+        "insights_label": "Insights",
+        "contact_label": _text(is_en, "Contact", "お問い合わせ"),
+        "menu_label": _text(is_en, "Menu", "メニュー"),
+        "pages_label": _text(is_en, "Pages", "ページ"),
+        "links_label": _text(is_en, "Links", "関連リンク"),
+        "series_label": _text(is_en,
+            f"Structural Analysis Series {number}",
+            f"構造分析シリーズ {number}"),
+        "vegitage_label": _text(is_en, "Natural Farming Community", "自然農法コミュニティ"),
+        "footer_about": _text(is_en,
+            "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
+            "food, energy, AI, healthcare, and pensions — every structure connects.",
+            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
+        # SEO
+        "canonical_url": f"{config.SITE_URL}{insights_base}/{slug}/",
+        "hreflang_ja": f"{config.SITE_URL}/insights/{slug}/",
+        "hreflang_en": f"{config.SITE_URL}/en/insights/{slug}/",
+        "og_locale": "en_US" if is_en else "ja_JP",
+        "og_image": resolve_og_image(
+            meta,
+            Path(meta.get("_out_dir", ".")),
+            f"{config.SITE_URL}{insights_base}/{slug}",
+        ),
+        # Language switch toggle
+        "has_translation": bool(meta.get("_has_translation", False)),
+        "lang_switch_link": f"/insights/{slug}/" if is_en else f"/en/insights/{slug}/",
+        "lang_switch_label": "日本語" if is_en else "EN",
+        "lang_switch_hreflang": "ja" if is_en else "en",
+        "lang_switch_aria": "日本語版を表示" if is_en else "View in English",
+    }
+
+
+def index_vars(lang, article_list_html):
+    """Build template variables for index pages."""
+    is_en = lang == "en"
+    insights_base = "/en/insights" if is_en else "/insights"
+
+    intro_text = _text(is_en,
+        "AI is changing everything — how we work, how we farm, how we live.\n"
+        "But the real question is: what structures remain when the hype fades?\n"
+        "Fossil resources, food, energy, AI, healthcare, pensions.\n"
+        "Follow the structure, and the answer is always the same.",
+
+        "AIが全てを変える——仕事、農業、暮らし。\n"
+        "しかし本当の問いは、バブルが消えた後に何が残るか。\n"
+        "化石資源、食料、エネルギー、AI、医療、年金。\n"
+        "構造を追跡すれば、答えは同じ場所に収束する。"
+    )
+
+    method_text = _text(is_en,
+        "Trace the production route. Observe the physical process. Cross field boundaries.\n"
+        "Agriculture, energy, finance, AI, defense — the structure connects to one conclusion.",
+
+        "生産ルートを追跡する。物理的プロセスを見る。分野の境界を越える。\n"
+        "農業も、エネルギーも、金融も、AIも——構造は一つにつながっている。"
+    )
+
+    quote_text = _text(is_en,
+        "AI replaces desk work. Natural farming replaces chemical agriculture.<br>\n"
+        "The further we move from nature, the higher the cost of living becomes.<br>\n"
+        "Structure doesn't lie.",
+
+        "AIがデスクワークを代替する。自然農法が化学農業を代替する。<br>\n"
+        "自然から離れるほど、生きるコストは上がる。<br>\n"
+        "構造は嘘をつかない。"
+    )
+
+    cta_text = _text(is_en,
+        "From AI to agriculture, from energy to pensions —<br>\n"
+        "understanding the structure changes how you see everything.",
+
+        "AIから農業まで、エネルギーから年金まで——<br>\n"
+        "構造を理解すれば見え方が変わる。"
+    )
+
+    return {
+        "lang": lang,
+        "site_name": config.site_text("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
+        "home_label": _text(is_en, "Home", "ホーム"),
+        "home_link": "/en/" if is_en else "/",
+        "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
+        "lf_label": "Light Farming",
+        "about_link": "/en/natural-farming/" if is_en else "/natural-farming/",
+        "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
+        "our_approach_link": "/en/about/" if is_en else "/about/",
+        "our_approach_label": _text(is_en, "Our Approach", "私たちのアプローチ"),
+        "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
+        "contact_label": _text(is_en, "Contact", "お問い合わせ"),
+        "menu_label": _text(is_en, "Menu", "メニュー"),
+        "pages_label": _text(is_en, "Pages", "ページ"),
+        "links_label": _text(is_en, "Links", "関連リンク"),
+        "insights_base": insights_base,
+        "blog_base": "/en/blog" if is_en else "/blog",
+        "css_path": "../../css/style.css" if is_en else "../css/style.css",
+        "js_path": "../../js/main.js" if is_en else "../js/main.js",
+        "img_path": "../../images/IMG_3285.jpg" if is_en else "../images/IMG_3285.jpg",
+        "meta_description": intro_text.split("\n")[0],
+        "structural_analysis_label": _text(is_en, "Structural Analysis", "構造分析"),
+        "page_title": _text(is_en, "Insights", "Insights — 構造分析"),
+        "page_subtitle": _text(is_en,
+            "With nature, we can live — the structural evidence",
+            "自然とともにあれば、生きられる——その構造的根拠"),
+        "other_lang_link": "/insights/" if is_en else "/en/insights/",
+        "other_lang_text": _text(is_en, "日本語版はこちら →", "English version available →"),
+        "lang_switch_label": "日本語" if is_en else "EN",
+        "lang_switch_hreflang": "ja" if is_en else "en",
+        "lang_switch_aria": "日本語版を表示" if is_en else "View in English",
+        "series_title": _text(is_en, "Structural Analysis Series", "構造分析シリーズ"),
+        "series_description": _text(is_en,
+            "All using the same methodology: trace the production route, observe the physical process, cross field boundaries.",
+            "全て同じ方法論。生産ルートを追跡する。物理的プロセスを見る。分野の境界を越える。"),
+        "article_list_html": article_list_html,
+        "intro_html": _nl_to_br(intro_text),
+        "method_title": _text(is_en, "Methodology:", "方法論："),
+        "method_html": _nl_to_br(method_text),
+        "quote_html": quote_text,
+        "cta_title": _text(is_en, "See the Structure", "構造を見る"),
+        "cta_html": cta_text,
+        "footer_about": _text(is_en,
+            "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
+            "food, energy, AI, healthcare, and pensions — every structure connects.",
+            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
+        "copyright_text": config.site_text("copyright_text", lang, _text(is_en, "Living in the AI Era — aiseed.dev", "AI時代の暮らし")),
+        # SEO
+        "canonical_url": f"{config.SITE_URL}{insights_base}/",
+        "hreflang_ja": f"{config.SITE_URL}/insights/",
+        "hreflang_en": f"{config.SITE_URL}/en/insights/",
+        "og_locale": "en_US" if is_en else "ja_JP",
+        "og_image": config.DEFAULT_OG_IMAGE,
+    }
+
+
+# ---------------------------------------------------------------------------
+# Blog template variables
+# ---------------------------------------------------------------------------
+
+def blog_vars(meta, body_html):
+    """Build template variables for blog post pages."""
+    lang = meta.get("lang", "ja")
+    is_en = lang == "en"
+    slug = meta.get("slug", "")
+    blog_base = "/en/blog" if is_en else "/blog"
+
+    # Blog navigation — just link back to blog index
+    blog_top = "Blog Top" if is_en else "Blog トップ"
+    nav_html = '<div class="article-nav">\n'
+    nav_html += '  <span></span>\n'
+    nav_html += f'  <a href="{blog_base}/">{blog_top} &rarr;</a>\n'
+    nav_html += '</div>'
+
+    category = meta.get("category", _text(is_en, "Blog", "ブログ"))
+
+    return {
+        "lang": lang,
+        "title": meta.get("title", ""),
+        "subtitle": meta.get("subtitle", ""),
+        "description": meta.get("description", ""),
+        "date": meta.get("date", ""),
+        "number": "",
+        "label": meta.get("label", "Blog"),
+        "body_html": body_html,
+        "nav_html": nav_html,
+        # CTA
+        "cta_label": "Blog",
+        "cta_title": _text(is_en, "See the Structure", "構造を見る"),
+        "cta_text": _text(is_en,
+            "From AI to agriculture — every structural analysis converges on one conclusion.",
+            "AIから農業まで——全ての構造分析は、一つの結論に向かう。"),
+        "cta_btn1_text": _text(is_en, "Insights", "構造分析シリーズ"),
+        "cta_btn1_link": "/en/insights/" if is_en else "/insights/",
+        "cta_btn2_text": "Blog",
+        "cta_btn2_link": blog_base + "/",
+        # Paths
+        "css_path": "../../../css/style.css" if is_en else "../../css/style.css",
+        "js_path": "../../../js/main.js" if is_en else "../../js/main.js",
+        "img_path": (
+            f"../../../images/{meta['hero_image']}" if is_en else f"../../images/{meta['hero_image']}"
+        ) if meta.get("hero_image") else (
+            "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg"
+        ),
+        "insights_base": "/en/insights" if is_en else "/insights",
+        "blog_base": "/en/blog" if is_en else "/blog",
+        # Navigation labels
+        "site_name": config.site_text("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
+        "site_tagline": _text(is_en, "aiseed.dev", "aiseed.dev"),
+        "home_label": _text(is_en, "Home", "ホーム"),
+        "home_link": "/en/" if is_en else "/",
+        "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
+        "lf_label": "Light Farming",
+        "about_link": "/en/natural-farming/" if is_en else "/natural-farming/",
+        "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
+        "our_approach_link": "/en/about/" if is_en else "/about/",
+        "our_approach_label": _text(is_en, "Our Approach", "私たちのアプローチ"),
+        "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
+        "insights_label": "Insights",
+        "contact_label": _text(is_en, "Contact", "お問い合わせ"),
+        "menu_label": _text(is_en, "Menu", "メニュー"),
+        "pages_label": _text(is_en, "Pages", "ページ"),
+        "links_label": _text(is_en, "Links", "関連リンク"),
+        "series_label": category,
+        "vegitage_label": _text(is_en, "Natural Farming Community", "自然農法コミュニティ"),
+        "footer_about": _text(is_en,
+            "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
+            "food, energy, AI, healthcare, and pensions — every structure connects.",
+            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
+        # SEO
+        "canonical_url": f"{config.SITE_URL}{blog_base}/{slug}/",
+        "hreflang_ja": f"{config.SITE_URL}/blog/{slug}/",
+        "hreflang_en": f"{config.SITE_URL}/en/blog/{slug}/",
+        "og_locale": "en_US" if is_en else "ja_JP",
+        "og_image": resolve_og_image(
+            meta,
+            Path(meta.get("_out_dir", ".")),
+            f"{config.SITE_URL}{blog_base}/{slug}",
+        ),
+        # Language switch toggle
+        "has_translation": bool(meta.get("_has_translation", False)),
+        "lang_switch_link": f"/blog/{slug}/" if is_en else f"/en/blog/{slug}/",
+        "lang_switch_label": "日本語" if is_en else "EN",
+        "lang_switch_hreflang": "ja" if is_en else "en",
+        "lang_switch_aria": "日本語版を表示" if is_en else "View in English",
+    }
+
+
+def blog_index_vars(lang, post_list_html):
+    """Build template variables for blog index pages."""
+    is_en = lang == "en"
+    blog_base = "/en/blog" if is_en else "/blog"
+
+    intro_text = _text(is_en,
+        "Quick analysis notes on current events — connecting the dots with structural analysis.",
+        "時事ニュースを構造分析の視点で読む。速報ノート。")
+
+    return {
+        "lang": lang,
+        "site_name": config.site_text("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
+        "home_label": _text(is_en, "Home", "ホーム"),
+        "home_link": "/en/" if is_en else "/",
+        "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
+        "lf_label": "Light Farming",
+        "about_link": "/en/natural-farming/" if is_en else "/natural-farming/",
+        "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
+        "our_approach_link": "/en/about/" if is_en else "/about/",
+        "our_approach_label": _text(is_en, "Our Approach", "私たちのアプローチ"),
+        "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
+        "menu_label": _text(is_en, "Menu", "メニュー"),
+        "pages_label": _text(is_en, "Pages", "ページ"),
+        "links_label": _text(is_en, "Links", "関連リンク"),
+        "insights_base": "/en/insights" if is_en else "/insights",
+        "blog_base": "/en/blog" if is_en else "/blog",
+        "css_path": "../../css/style.css" if is_en else "../css/style.css",
+        "js_path": "../../js/main.js" if is_en else "../js/main.js",
+        "img_path": "../../images/IMG_3285.jpg" if is_en else "../images/IMG_3285.jpg",
+        "meta_description": intro_text,
+        "structural_analysis_label": "Blog",
+        "page_title": "Blog",
+        "page_subtitle": _text(is_en,
+            "Current events through the lens of structural analysis",
+            "構造分析の視点で読む時事ノート"),
+        "other_lang_link": "/blog/" if is_en else "/en/blog/",
+        "other_lang_text": _text(is_en, "日本語版はこちら →", "English version available →"),
+        "lang_switch_label": "日本語" if is_en else "EN",
+        "lang_switch_hreflang": "ja" if is_en else "en",
+        "lang_switch_aria": "日本語版を表示" if is_en else "View in English",
+        # Blog index skips duplicate Intro/Series headers — page-hero already shows "Blog"
+        "series_title": "",
+        "series_description": "",
+        "article_list_html": post_list_html,
+        "intro_html": "",
+        "method_title": "",
+        "method_html": "",
+        "quote_html": _text(is_en,
+            "Structure doesn't lie.<br>\nCurrent events prove it, every time.",
+            "構造は嘘をつかない。<br>\n時事ニュースが、毎回それを証明する。"),
+        "cta_title": _text(is_en, "See the Full Analysis", "構造分析シリーズ"),
+        "cta_html": _text(is_en,
+            "For the complete structural analysis, see the Insights series.",
+            "完全な構造分析は、構造分析シリーズで。"),
+        "footer_about": _text(is_en,
+            "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
+            "food, energy, AI, healthcare, and pensions — every structure connects.",
+            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
+        "copyright_text": config.site_text("copyright_text", lang, _text(is_en, "Living in the AI Era — aiseed.dev", "AI時代の暮らし")),
+        # SEO
+        "canonical_url": f"{config.SITE_URL}{blog_base}/",
+        "hreflang_ja": f"{config.SITE_URL}/blog/",
+        "hreflang_en": f"{config.SITE_URL}/en/blog/",
+        "og_locale": "en_US" if is_en else "ja_JP",
+        "og_image": config.DEFAULT_OG_IMAGE,
+    }

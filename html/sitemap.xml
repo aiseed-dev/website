@@ -436,6 +436,31 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/en/claude-debian/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/claude-debian/prologue/</loc>
+    <lastmod>2026-04-22</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/claude-debian/01-what-you-lose-and-gain/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/claude-debian/02-starting-conversation/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/claude-debian/03-telling-environment/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/natural-farming/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.8</priority>

@@ -506,6 +506,11 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/en/claude-debian/13-dev-tools/</loc>
+    <lastmod>2026-04-23</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/natural-farming/</loc>
     <lastmod>2026-04-25</lastmod>
     <priority>0.8</priority>

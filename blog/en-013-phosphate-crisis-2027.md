@@ -1,16 +1,16 @@
 ---
 slug: phosphate-crisis-2027
-title: In 2027, Japan Can No Longer Get Phosphate Fertilizer — Natural Farming Is the Only Option Left
+title: Japan Can No Longer Get Phosphate Fertilizer — Natural Farming Is the Only Option Left
 subtitle: China's export halt, Morocco's sulfur trap, sludge PFAS contamination — a structure that wipes out 90% of supply
-description: By autumn 2026, fertilizer stockpiles run out; by 2027, phosphate fertilizer becomes effectively unavailable in Japan. China's export halt, Morocco's sulfur trap, the sulfuric-acid tug-of-war with semiconductors and EVs, and PFAS contamination in sewage-sludge recovery — taken together, the shift to natural farming is no longer ideology but physical necessity.
-date: 2026.04.23
+description: By autumn 2026, fertilizer stockpiles run out; from 2027 onward, phosphate fertilizer becomes effectively unavailable in Japan. The product-import route (76% dependent on China) halts, the domestic-processing route hits its limits, and sewage-sludge recovery is blocked by PFAS contamination — taken together, the shift to natural farming becomes not ideology but necessity.
+date: 2026.04.25
 lang: en
 label: Blog
 category: Structural Analysis Notes
 hero_image: 013-IMG_3426.jpg
 ---
 
-# In 2027, Japan Can No Longer Get Phosphate Fertilizer — Natural Farming Is the Only Option Left
+# Japan Can No Longer Get Phosphate Fertilizer — Natural Farming Is the Only Option Left
 
 ## When, and what happens
 
@@ -20,21 +20,38 @@ Let me state the conclusion first.
 - **Autumn 2026 planting**: Stockpiles run out
 - **2027**: Phosphate fertilizer is effectively unavailable
 
+## Japan's three supply routes for phosphate
+
+Japan's phosphate fertilizer is supplied through three routes.
+
+- Product-import route (~85%): direct import of finished ammonium phosphate (MAP / DAP). Main suppliers: China 76%, Morocco 18%
+- Rock-import / domestic-processing route (~13%): phosphate rock is imported and reacted with sulfuric acid domestically to produce superphosphate and similar fertilizers. Rock suppliers: China 27%, Jordan 21%, Morocco 21%, Senegal 14%
+- Domestic recovery route (~0.2%): phosphorus recovered from sewage sludge via the MAP crystallization process
+
+All three break down simultaneously. The biggest factor is China: since March 14, 2026, customs offices across the country have been tightening export controls.
+
 ## Japan's phosphate fertilizer procurement rate in 2027
 
-China halts all exports; the United States prioritizes domestic supply under the Defense Production Act; Russia prioritizes BRICS.
-
 :::compare
-| Procurement source | Actual peacetime dependence | 2027 securing rate | Effective contribution |
-| --- | --- | --- | --- |
-| Import (China) | 50.0% | 0.0% | 0.0% |
-| Import (Morocco, etc.) | 40.0% | 21.0% | 8.4% |
-| Import (US, Russia, others) | 8.0% | 15.0% | 1.2% |
-| Domestic recovery (sludge, etc.) | 2.0% | 120.0% | 2.4% |
-| **Total** | **100.0%** | **—** | **~12.0%** |
+| Procurement route | Actual peacetime dependence | 2027 securing rate | Effective contribution |
+| Product import (China) | 65% | 0% | 0% |
+| Product import (Morocco, etc.) | 20% | 20% | 4% |
+| Rock import / domestic processing | 13% | 50–90% | 7–12% |
+| Domestic recovery (sludge, etc.) | 0.2% | 120% | 0.2% |
+| Total | 100% | — | ~11–16% |
 :::
 
-12% of peacetime levels. Nearly 90% of required supply is lost.
+Just over 10% of peacetime supply. More than 80% of what Japan needs is lost.
+
+## Why product imports stop
+
+The product-import route (~85% of the whole) is 76% dependent on China. If that stops, it is over.
+
+China puts national food security first and strictly regulates phosphate fertilizer exports. In 2026 it effectively entered a full-scale export halt: customs offices stopped accepting export declarations for agricultural phosphate fertilizer.
+
+More seriously, inside China the use of phosphate is rapidly shifting from agriculture to lithium iron phosphate (LFP) batteries for EVs. It is an economic inevitability that resources flow to high-margin industries, and the export capacity for low-cost agricultural ammonium phosphate is shrinking structurally and irreversibly.
+
+From the remaining 20% supplier, Morocco, only 20% of peacetime volumes will arrive in 2027. The reason is the sulfur trap described below. The United States prioritizes domestic supply under the Defense Production Act (DPA); Russia prioritizes BRICS. Japan has no alternative sourcing left.
 
 ## Why imports from Morocco stay depressed for the long haul
 
@@ -93,16 +110,36 @@ For details, see the following document prepared with Gemini:
 
 ## Natural farming is the only option left
 
-Stockpiles run out in autumn 2026. In 2027, phosphate fertilizer becomes unavailable. Reduced application, substitutes, and sludge recovery cannot bridge the gap.
+Stockpiles run out in autumn 2026. In 2027, phosphate fertilizer becomes unavailable. Reduced application, substitutes, and sludge recovery cannot bridge the gap. All three routes — product import, domestic processing, and domestic recovery — collapse simultaneously.
 
-At the same time, Japan's conventional farmland has accumulated **centuries' worth of phosphorus** from decades of fertilizer history. The problem is not "quantity" but "bioavailability."
+At the same time, Japan's conventional farmland has accumulated **centuries' worth of phosphorus** from decades of fertilizer history. In particular, Japan's Kuroboku (Andosol) volcanic soils have a high phosphate absorption coefficient, and through a history of over-fertilization, enormous amounts of phosphate have been fixed in hard-to-dissolve forms bound to aluminum and iron. The problem is not "quantity" but "bioavailability."
 
 When the mycorrhizal network is working, plants can obtain up to 90% of soil N and P through microbial symbiosis. In Japan's hot, humid climate, no-weeding allows that network to regenerate relatively quickly.
 
 What we need is not new fertilizer but **letting the soil's innate regenerative capacity function**.
 
-Note: **Even when fertilizer stops coming, agricultural products still come**. The United States and others prioritize fertilizer domestically while exporting crops at a premium. Japan will not starve. That is precisely why we can bridge the short term with food imports while transitioning deliberately to natural farming. Rebuilding the mycorrhizal network takes years, but we have that grace period.
+Note: **Even when fertilizer stops coming, agricultural products still come**. The United States and others prioritize fertilizer domestically while exporting crops at a premium. Japan will not starve. That is precisely why we can bridge the short term with food imports while transitioning deliberately to natural farming. Rebuilding the mycorrhizal network takes time, but the grace period is there.
 
 **Continuing conventional agriculture on sheer willpower will lose money**. Domestic fertilizer prices spike, but imported produce prices don't rise nearly as much. The US and others keep fertilizer at home, so their production costs are relatively stable. **Domestic produce grown with expensive fertilizer loses on price to imports**. The more you grow, the more you lose.
 
 Natural farming is the only option left. This is not ideology — it is physical reality.
+
+## Long-term, too, natural farming is the only option in Japan
+
+What we have written so far is about the short-term crisis. But even if Middle East infrastructure is eventually rebuilt and phosphate rock imports resume, in the long run phosphate rock itself is becoming unusable.
+
+At the world's phosphate mines, the accessible, low-impurity "high-grade" ore has been mined out first, and what remains is increasingly poor-quality "low-grade" ore. This quality degradation is not merely a matter of lower nutrient content; it rebounds as three fatal walls.
+
+**1. The wall of cadmium and heavy metals.**
+Low-grade phosphate rock contains large quantities of toxic heavy metals such as cadmium, uranium, and arsenic.
+Cadmium in particular is extremely harmful to humans (it is the cause of Itai-itai disease), and if fertilizer made from this ore is applied continuously, the soil becomes contaminated and crops become poisoned. The EU has begun setting strict standards for cadmium content in fertilizers, and Japanese regulations are likely to tighten in the years ahead.
+
+**2. The energy cost of "detoxification."**
+Decadmiation — the technology to remove cadmium and similar contaminants — is technically difficult and consumes enormous electricity, heat energy, and chemicals. The more the ore's quality degrades, the more the cost of processing it into safe fertilizer climbs exponentially.
+
+**3. Radioactive waste (phosphogypsum).**
+When low-grade rock is dissolved in sulfuric acid to extract phosphate, large amounts of "phosphogypsum" are generated as byproduct. Phosphogypsum often contains radioactive substances such as uranium and radium, and it is difficult to reuse. Mountains of contaminated material with nowhere to go are piling up around fertilizer plants worldwide.
+
+**Conclusion.**
+Both in the short term and in the long term, phosphate fertilizer becomes globally difficult to obtain. In other words, the path of chemical-fertilizer agriculture is globally closing.
+In Japan, natural farming is the only option left — this is not a temporary response but a long-term necessity.

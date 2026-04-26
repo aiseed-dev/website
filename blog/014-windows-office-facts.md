@@ -1,3 +1,14 @@
+---
+slug: windows-office-facts
+title: それでも Windows と Office を使い続けますか？
+subtitle: Copilot は使われていない。それでも世界の資源は吸い上げられ続ける
+description: 企業向け AI 市場で Anthropic が Microsoft を抜き、Copilot の利用率は 35.8%、NPS は -19.8。LLM のアーキテクチャ上の限界 (O(N²·d)) でハルシネーションは数学的に回避不可能。それでも Microsoft は Copilot を OS 最深部に統合し、データセンター建設で世界のメモリ・電力・ナフサを吸い上げている。Linux への早急な移行を提案する。
+date: 2026.04.26
+label: Blog
+category: 構造分析ノート
+hero_image: 014-IMG_3437.jpg
+---
+
 # それでも Windows と Office を使い続けますか？
 
 ---

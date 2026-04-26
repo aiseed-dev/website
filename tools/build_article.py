@@ -80,8 +80,11 @@ def build_article(md_path):
         print(f"Error: {md_path} missing 'slug' in front matter")
         return False
 
-    # Resolve output directory up front so OGP generation can target it
-    lang = meta.get("lang", "ja")
+    # Resolve output directory up front so OGP generation can target it.
+    # Filename `en-` prefix wins over a missing/conflicting `lang:` field so
+    # an EN file without `lang: en` doesn't silently overwrite the JA path.
+    lang = meta.get("lang") or ("en" if md_path.name.startswith("en-") else "ja")
+    meta["lang"] = lang
     if lang == "en":
         out_dir = config.SITE_ROOT / "html" / "en" / "insights" / meta["slug"]
     else:
@@ -198,7 +201,10 @@ def build_blog_post(md_path):
         print(f"Error: {md_path} missing 'slug' in front matter")
         return False
 
-    lang = meta.get("lang", "ja")
+    # Filename `en-` prefix wins over a missing `lang:` field so an EN blog
+    # post without `lang: en` doesn't silently overwrite the JA path.
+    lang = meta.get("lang") or ("en" if md_path.name.startswith("en-") else "ja")
+    meta["lang"] = lang
     if lang == "en":
         out_dir = config.SITE_ROOT / "html" / "en" / "blog" / meta["slug"]
     else:

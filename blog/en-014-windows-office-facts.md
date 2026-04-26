@@ -4,6 +4,7 @@ title: Will You Continue Using Windows and Office?
 subtitle: Copilot Is Not Being Used — Yet the World's Resources Keep Being Drained
 description: In the enterprise AI market, Anthropic has surpassed Microsoft. Copilot's active usage rate sits at 35.8%, with an NPS of -19.8. Due to the architectural limits of LLMs (O(N²·d)), hallucinations are mathematically unavoidable. Yet Microsoft continues to embed Copilot into the deepest layers of the OS, while its data center build-out drains the world's memory, electricity, and naphtha. This piece argues for an urgent migration to Linux.
 date: 2026.04.26
+lang: en
 label: Blog
 category: Structural Analysis Notes
 hero_image: 014-IMG_3437.jpg
@@ -580,6 +581,11 @@ Microsoft's platform is no longer the neutral, stable infrastructure that suppor
 A staged migration to open-source operating systems (Linux and others) for desktop environments, de-Microsoftization of office suites, and limited, verifiable adoption of AI through APIs from independent vendors (such as Anthropic) — these are the most reliable, rational technology strategies for protecting an organization's self-determination and budget from this complex global crisis.
 
 **Migrate to Linux as soon as possible.**
+
+Learning Linux with Claude is not difficult.
+
+For practical guidance, see the companion article 
+"[Learning Debian with Claude](https://aiseed.dev/en/claude-debian/)."
 
 ---
 

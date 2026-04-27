@@ -31,7 +31,6 @@ These all share the same structure.
 
 :::compare
 | Specialist role | Previously | Claude + Individual |
-| --- | --- | --- |
 | Accounting | Hire an accountant or tax advisor | Claude handles bookkeeping, tax filing, financial calculations |
 | Marketing | Hire an advertising agency | Claude handles copywriting, social media, market analysis |
 | Legal | Consult a lawyer | Claude reviews contracts, checks regulatory compliance |

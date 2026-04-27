@@ -171,7 +171,6 @@ For AI servers in data centers, HBM (High Bandwidth Memory) and large-capacity e
 **Counterpoint Research's DRAM price tracking**
 
 | Period | Trend |
-|---|---|
 | Q3 2025 | DRAM prices up **172% year-over-year** |
 | Q4 2025 | Up **~50% quarter-over-quarter** |
 | Q1 2026 | Further **40–50% increase** |

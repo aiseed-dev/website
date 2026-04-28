@@ -4,6 +4,7 @@ title: In Disaster-Prone Japan, Depending on Windows and the Cloud for Business 
 subtitle: When the Nankai Trough or Tokyo Inland Earthquake hits, government offices and hospitals will stop functioning
 date: 2026.04.27
 description: In January 2026, Microsoft made offline use of Windows effectively impossible. Windows has become an OS that cannot run without constant connection to US data centers. Meanwhile, Japan's data centers and submarine cable landing points are concentrated in the Kanto region. The Nankai Trough earthquake will paralyze western Japan with communication failures; the Tokyo Inland earthquake will simultaneously stop cloud services nationwide. Government offices and hospitals will stop functioning, and lives will be lost.
+lang: en
 label: Blog
 category: Structural Analysis Notes
 hero_image: 016-japan-disaster.jpg

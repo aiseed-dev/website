@@ -468,6 +468,8 @@ STATIC_PAGES_FOR_ASSETS = [
     "en/natural-farming/index.html",
     "light-farming/index.html",
     "en/light-farming/index.html",
+    "privacy/index.html",
+    "en/privacy/index.html",
 ]
 
 _CSS_REF_RE = re.compile(r'(href="[^"]*style\.css)(?:\?v=[^"]*)?(")')
@@ -656,6 +658,8 @@ def build_sitemap():
     urls.append((f"{site_url}/en/about/", latest, "0.5"))
     urls.append((f"{site_url}/light-farming/", latest, "0.8"))
     urls.append((f"{site_url}/en/light-farming/", latest, "0.7"))
+    urls.append((f"{site_url}/privacy/", latest, "0.3"))
+    urls.append((f"{site_url}/en/privacy/", latest, "0.2"))
 
     xml_lines = ['<?xml version="1.0" encoding="UTF-8"?>']
     xml_lines.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')

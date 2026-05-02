@@ -1,22 +1,17 @@
 ---
 slug: prologue
 number: "00"
+lang: en
 title: "Office for paperwork, Java/C# for business systems — but AI runs on Python and text"
 subtitle: Information processing is becoming simple work that AI can do
 description: OpenAI and Anthropic run on Python. Data is Markdown, JSON, YAML. Between AI-native tools and the standard tools of the enterprise, a decisive divide runs through. Office, Java, and C# — get rid of them.
 date: 2026.05.01
 label: AI Native 00
+title_html: Paperwork is <span class="accent">Office</span>.<br>Business systems are <span class="accent">Java/C#</span>.<br>But AI is <span class="accent">Python and text</span>.
 prev_slug:
 prev_title:
 next_slug:
 next_title:
-related:
-  - title: "Structural Analysis 08 — Removing the Enterprise IT Tax"
-    url: /en/insights/enterprise-tax/
-  - title: "Structural Analysis 12 — AI and the Individual Business"
-    url: /en/insights/ai-and-individual/
-  - title: "Are You Still Using Windows and Office?"
-    url: /en/blog/windows-office-facts/
 ---
 
 # Prologue — Office for paperwork, Java/C# for business systems, but AI runs on Python and text

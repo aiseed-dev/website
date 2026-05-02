@@ -6,17 +6,11 @@ subtitle: 情報処理は AI でもやれる簡単な仕事になる
 description: OpenAI も Anthropic も Python で動く。データは Markdown、JSON、YAML。AI ネイティブな道具と企業の標準的な道具のあいだに、決定的な断絶がある。Office・Java・C# は、すぐに消す。
 date: 2026.05.01
 label: AI Native 00
+title_html: 事務処理は<span class="accent">Office</span>。<br>業務ソフトは<span class="accent">Java/C#</span>。<br>しかしAIは、<span class="accent">Pythonとテキスト</span>。
 prev_slug:
 prev_title:
 next_slug:
 next_title:
-related:
-  - title: 構造分析08 — 企業ITの税を引く
-    url: /insights/enterprise-tax/
-  - title: 構造分析12 — AIと個人事業
-    url: /insights/ai-and-individual/
-  - title: それでも Windows と Office を使い続けますか?
-    url: /blog/windows-office-facts/
 ---
 
 # 序章 — 事務処理はOffice、業務ソフトはJava/C#、しかしAIはPythonとテキスト

@@ -1,23 +1,22 @@
 ---
-title: "事務処理はOffice、業務ソフトはJava/C#、しかしAIはPythonとテキスト"
-series: "AIネイティブな仕事の作法"
-chapter: 0
-chapter_label: "序章"
-date: 2026-05-01
-description: "情報処理はAIでもやれる簡単な仕事になる。Office、Java、C#は、すぐに消してしまう。"
-read_time: "5分"
+slug: prologue
+number: "00"
+title: 事務処理はOffice、業務ソフトはJava/C#、しかしAIはPythonとテキスト
+subtitle: 情報処理は AI でもやれる簡単な仕事になる
+description: OpenAI も Anthropic も Python で動く。データは Markdown、JSON、YAML。AI ネイティブな道具と企業の標準的な道具のあいだに、決定的な断絶がある。Office・Java・C# は、すぐに消す。
+date: 2026.05.01
+label: AI Native 00
+prev_slug:
+prev_title:
+next_slug:
+next_title:
 related:
-  - series: "構造分析"
-    chapter: 8
-    title: "企業ITの税を引く"
-    url: "/insights/enterprise-tax/"
-  - series: "構造分析"
-    chapter: 12
-    title: "AIと個人事業"
-    url: "/insights/ai-and-individual/"
-  - type: "blog"
-    title: "それでも Windows と Office を使い続けますか？"
-    url: "/blog/windows-office-facts/"
+  - title: 構造分析08 — 企業ITの税を引く
+    url: /insights/enterprise-tax/
+  - title: 構造分析12 — AIと個人事業
+    url: /insights/ai-and-individual/
+  - title: それでも Windows と Office を使い続けますか?
+    url: /blog/windows-office-facts/
 ---
 
 # 序章 — 事務処理はOffice、業務ソフトはJava/C#、しかしAIはPythonとテキスト

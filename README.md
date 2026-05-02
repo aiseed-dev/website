@@ -23,14 +23,36 @@ html/
 └── images/             # 画像素材
 ```
 
-Markdown ソース（ビルド入力）はリポジトリ直下:
+Markdown ソース（ビルド入力）はリポジトリ直下。**1記事 = 1フォルダ**で、
+言語別本文と関連アセット（画像・PDF）を同じフォルダにまとめる:
 
 ```
 articles/
-├── insights/           # Insights 記事（NN-slug.md, en-NN-slug.md）
-└── claude-debian/      # Claudeと一緒に学ぶDebian（NN-slug.md, en-NN-slug.md）
-blog/                   # Blog 記事（NNN-slug.md, en-NNN-slug.md）
+├── insights/                       # Insights 記事
+│   └── 01-climate-mistake/
+│       ├── ja.md
+│       └── en.md
+├── claude-debian/                  # Claudeと一緒に学ぶDebian
+│   └── 00-prologue/
+│       ├── ja.md
+│       └── en.md
+├── ai-native-ways/                 # AIネイティブな仕事の作法（独立テンプレート）
+│   ├── README.md
+│   ├── template.html / template.en.html
+│   └── 00-prologue/
+│       ├── ja.md
+│       └── en.md
+└── blog/                           # Blog 記事
+    └── 015-japan-windows-disaster-risk/
+        ├── ja.md
+        ├── en.md
+        ├── 015-IMG_3433.jpg        # 共有/JAアセット
+        └── en-015-foo.pdf          # EN専用アセット（en- プレフィックスで区別）
 ```
+
+`ja.md` / `en.md` は同一フォルダに同居。アセットの命名は同じフォルダ内で
+`en-` プレフィックスのある／なしで言語別配信を切り替える（`en-` 付きは
+EN ビルドのみコピー、無いものは両言語にコピー）。
 
 ヘッダーメニューでは「記事」親項目の下に「構造分析」と「Claudeと一緒に学ぶDebian」がぶら下がる（デスクトップはホバー、モバイルはアコーディオン）。
 
@@ -63,10 +85,10 @@ pip install -r requirements.txt
 Markdown で書いた Insights / Blog / 書籍記事を HTML に変換する:
 
 ```bash
-python3 tools/build_article.py --all                                         # 全記事ビルド
-python3 tools/build_article.py articles/insights/09-healthcare-fiscal.md     # 単一 Insights 記事
-python3 tools/build_article.py blog/013-phosphate-crisis-2027.md             # 単一 Blog 記事
-python3 tools/build_article.py articles/claude-debian/00-prologue.md         # 単一章
+python3 tools/build_article.py --all                                                  # 全記事ビルド
+python3 tools/build_article.py articles/insights/09-healthcare-fiscal/ja.md           # 単一 Insights 記事
+python3 tools/build_article.py articles/blog/013-phosphate-crisis-2027/ja.md          # 単一 Blog 記事
+python3 tools/build_article.py articles/claude-debian/00-prologue/en.md               # 単一章 (EN)
 ```
 
 出力は `html/insights/`, `html/blog/`, `html/claude-debian/`, および
@@ -84,7 +106,7 @@ python3 tools/serve.py                # http://localhost:8000
 python3 tools/serve.py --port 8080
 ```
 
-`articles/`, `blog/`, `tools/templates/`, `html/{css,js}` を監視し、変更があれば
+`articles/`, `tools/templates/`, `html/{css,js}` を監視し、変更があれば
 `build_article.py --all` を自動実行する。ブラウザのリロードは手動（CSS/JS は
 `?v=<hash>` が変わるので強制リロード不要）。
 
@@ -99,9 +121,9 @@ python3 tools/serve.py --port 8080
 ```
 <site>/
 ├── articles/
-│   ├── insights/         # Insights 記事 (NN-slug.md, en-NN-slug.md)
-│   └── claude-debian/    # 任意: 書籍章 (NN-slug.md, en-NN-slug.md)
-├── blog/                 # Blog 記事 (NNN-slug.md, en-NNN-slug.md)
+│   ├── insights/         # Insights 記事 (NN-slug/{ja,en}.md)
+│   ├── claude-debian/    # 任意: 書籍章 (NN-slug/{ja,en}.md)
+│   └── blog/             # Blog 記事 (NNN-slug/{ja,en}.md + アセット)
 ├── html/                 # 出力先（index.html, css/, js/, images/ 等）
 ├── tools/templates/      # 任意: ここにテンプレートを置けばバンドルを上書き
 └── site.json             # 任意: site_url, site_name, copyright_text 等の上書き

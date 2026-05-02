@@ -1,23 +1,22 @@
 ---
+slug: prologue
+number: "00"
 title: "Office for paperwork, Java/C# for business systems — but AI runs on Python and text"
-series: "AI-Native Ways of Working"
-chapter: 0
-chapter_label: "Prologue"
-date: 2026-05-01
-description: "Information processing is becoming a simple task that AI can do. Office, Java, and C# — get rid of them."
-read_time: "5 min"
+subtitle: Information processing is becoming simple work that AI can do
+description: OpenAI and Anthropic run on Python. Data is Markdown, JSON, YAML. Between AI-native tools and the standard tools of the enterprise, a decisive divide runs through. Office, Java, and C# — get rid of them.
+date: 2026.05.01
+label: AI Native 00
+prev_slug:
+prev_title:
+next_slug:
+next_title:
 related:
-  - series: "Structural Analysis"
-    chapter: 8
-    title: "Removing the Enterprise IT Tax"
-    url: "/en/insights/enterprise-tax/"
-  - series: "Structural Analysis"
-    chapter: 12
-    title: "AI and the Individual Business"
-    url: "/en/insights/ai-and-individual/"
-  - type: "blog"
-    title: "Are You Still Using Windows and Office?"
-    url: "/en/blog/windows-office-facts/"
+  - title: "Structural Analysis 08 — Removing the Enterprise IT Tax"
+    url: /en/insights/enterprise-tax/
+  - title: "Structural Analysis 12 — AI and the Individual Business"
+    url: /en/insights/ai-and-individual/
+  - title: "Are You Still Using Windows and Office?"
+    url: /en/blog/windows-office-facts/
 ---
 
 # Prologue — Office for paperwork, Java/C# for business systems, but AI runs on Python and text

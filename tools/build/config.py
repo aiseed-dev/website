@@ -27,7 +27,7 @@ SITE_URL = _DEFAULT_SITE_URL
 # Site-specific paths. configure_site() overwrites these before any build runs.
 SITE_ROOT: Path = Path(__file__).parent.parent.parent
 INSIGHTS_DIR: Path = SITE_ROOT / "articles" / "insights"
-BLOG_DIR: Path = SITE_ROOT / "blog"
+BLOG_DIR: Path = SITE_ROOT / "articles" / "blog"
 # Long-form serial content ("books"). Currently just "Claudeと一緒に学ぶDebian".
 BOOK_DIR: Path = SITE_ROOT / "articles" / "claude-debian"
 OUTPUT_BASE: Path = SITE_ROOT / "html" / "insights"
@@ -87,7 +87,7 @@ def configure_site(site: Path) -> None:
 
     SITE_ROOT = site.resolve()
     INSIGHTS_DIR = SITE_ROOT / "articles" / "insights"
-    BLOG_DIR = SITE_ROOT / "blog"
+    BLOG_DIR = SITE_ROOT / "articles" / "blog"
     BOOK_DIR = SITE_ROOT / "articles" / "claude-debian"
     OUTPUT_BASE = SITE_ROOT / "html" / "insights"
     BLOG_OUTPUT_BASE = SITE_ROOT / "html" / "blog"

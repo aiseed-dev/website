@@ -47,17 +47,12 @@ def strip_leading_title(body):
 def translation_exists(md_path, lang):
     """Check whether the opposite-language sibling markdown file exists.
 
-    Naming convention: JA file `NN-slug.md`  ↔ EN file `en-NN-slug.md`
-    in the same directory.
+    Per-folder layout: each article lives in its own directory containing
+    `ja.md` and `en.md` side by side.
     """
     md_path = Path(md_path)
-    if lang == "en":
-        if not md_path.name.startswith("en-"):
-            return False
-        sibling = md_path.parent / md_path.name[3:]
-    else:
-        sibling = md_path.parent / f"en-{md_path.name}"
-    return sibling.exists()
+    sibling_name = "en.md" if lang == "ja" else "ja.md"
+    return (md_path.parent / sibling_name).exists()
 
 
 # ---------------------------------------------------------------------------

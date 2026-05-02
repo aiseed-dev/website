@@ -16,11 +16,26 @@ OGP_QUALITY = 85
 OGP_FILENAME = "og-image.jpg"
 
 
-def copy_images(src_dir, out_dir, prefix=""):
-    """Copy image files from src_dir to out_dir, optionally filtered by prefix."""
+def copy_images(src_dir, out_dir, lang="ja"):
+    """Copy article assets (images, PDFs) from `src_dir` (the per-article
+    folder containing `ja.md`/`en.md`) into `out_dir`.
+
+    Filename convention for language-specific assets:
+      - `<name>.<ext>`        — JA-only or shared (copied to both)
+      - `en-<name>.<ext>`     — EN-only (copied only to EN target)
+
+    JA build skips `en-`-prefixed files so EN-only PDFs etc. don't leak
+    into the JA output. EN build copies everything so it can fall back to
+    shared assets when an EN-specific version doesn't exist.
+    """
     for f in src_dir.iterdir():
-        if f.suffix.lower() in IMAGE_EXTS and (not prefix or f.name.startswith(prefix)):
-            shutil.copy2(f, out_dir / f.name)
+        if not f.is_file():
+            continue
+        if f.suffix.lower() not in IMAGE_EXTS:
+            continue
+        if lang == "ja" and f.name.startswith("en-"):
+            continue
+        shutil.copy2(f, out_dir / f.name)
 
 
 def generate_ogp_image(src_path, out_path, size=OGP_SIZE, quality=OGP_QUALITY):

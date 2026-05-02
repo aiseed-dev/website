@@ -22,8 +22,8 @@ Open `http://localhost:8000`.
 
 | Path | Purpose |
 |---|---|
-| `articles/insights/` | Insights articles (serialized): `NN-slug.md`, `en-NN-slug.md` |
-| `blog/` | Blog posts (standalone notes): `NNN-slug.md`, `en-NNN-slug.md` |
+| `articles/insights/NN-slug/{ja,en}.md` | Insights articles (one folder per article) |
+| `articles/blog/NNN-slug/{ja,en}.md` | Blog posts (one folder per post; assets co-located) |
 | `html/` | Output (serve this directory) |
 | `html/index.html`, `html/en/index.html` | Hand-edited top pages |
 | `html/css/style.css` | Stylesheet |
@@ -36,7 +36,7 @@ Output paths `html/insights/`, `html/blog/`, `html/en/insights/`,
 
 ## Next steps
 
-- Replace the sample articles and blog posts under `articles/insights/` and `blog/`.
+- Replace the sample articles and blog posts under `articles/insights/` and `articles/blog/`.
 - Customize the look in `html/css/style.css`.
 - Customize page layout by editing `tools/templates/article.html` and
   `tools/templates/index.html`.

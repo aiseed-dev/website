@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Initialize a sample static site in the target directory.
 
-Copies the default scaffold (articles, blog, html, tools/templates, CLAUDE.md,
+Copies the default scaffold (articles, html, tools/templates, CLAUDE.md,
 README.md) from tools/scaffolds/default/ into the target directory so that a
 fresh site is immediately buildable with:
 

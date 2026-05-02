@@ -2,13 +2,18 @@
 """
 Markdown → HTML article/blog builder for aiseed.dev
 
+Per-folder layout (single article = single folder):
+    articles/insights/01-climate-mistake/{ja,en}.md
+    articles/blog/015-japan-windows-disaster-risk/{ja,en}.md + assets
+    articles/claude-debian/00-prologue/{ja,en}.md
+
 Usage:
-    python3 tools/build_article.py articles/09-healthcare-fiscal.md
-    python3 tools/build_article.py blog/001-grid-attack-naphtha.md
+    python3 tools/build_article.py articles/insights/09-healthcare-fiscal/ja.md
+    python3 tools/build_article.py articles/blog/001-grid-attack-naphtha/ja.md
     python3 tools/build_article.py --all          # Build all articles + blog
     python3 tools/build_article.py --list         # List available articles
 
-    # Operate on a different site directory (layout: articles/, blog/, html/):
+    # Operate on a different site directory (layout: articles/, html/):
     python3 tools/build_article.py --site /path/to/other-site --all
     AISEED_SITE=/path/to/other-site python3 tools/build_article.py --all
 
@@ -55,6 +60,30 @@ from build.template_vars import (
 BOOK_SLUG_PREFIX = "claude-debian-"
 
 
+def _iter_article_files(series_dir, lang):
+    """Yield `<lang>.md` files from each `NN-slug/` subfolder of `series_dir`,
+    sorted by folder name (which leads with the chapter number).
+
+    Returns an empty iterator if the series directory does not exist.
+    """
+    if not series_dir.exists():
+        return
+    fname = "ja.md" if lang == "ja" else "en.md"
+    for sub in sorted(series_dir.iterdir()):
+        if not sub.is_dir():
+            continue
+        if not sub.name[:1].isdigit():
+            continue
+        f = sub / fname
+        if f.exists():
+            yield f
+
+
+def _detect_lang(md_path):
+    """ja.md → 'ja',  en.md → 'en'."""
+    return "en" if md_path.name == "en.md" else "ja"
+
+
 def _book_stem(slug):
     """URL stem for a book chapter: slug without the `claude-debian-` prefix."""
     if slug.startswith(BOOK_SLUG_PREFIX):
@@ -81,9 +110,7 @@ def build_article(md_path):
         return False
 
     # Resolve output directory up front so OGP generation can target it.
-    # Filename `en-` prefix wins over a missing/conflicting `lang:` field so
-    # an EN file without `lang: en` doesn't silently overwrite the JA path.
-    lang = meta.get("lang") or ("en" if md_path.name.startswith("en-") else "ja")
+    lang = meta.get("lang") or _detect_lang(md_path)
     meta["lang"] = lang
     if lang == "en":
         out_dir = config.SITE_ROOT / "html" / "en" / "insights" / meta["slug"]
@@ -118,12 +145,9 @@ def build_article(md_path):
     out_file = out_dir / "index.html"
     out_file.write_text(html, encoding="utf-8")
 
-    # Copy images from source directory
-    # e.g. articles/03-*.jpg → html/insights/slug/
-    num_prefix = md_path.name.split("-", 1)[0]  # "03", "en"
-    if num_prefix == "en":
-        num_prefix = md_path.name.split("-", 2)[1]  # "en-03-..." → "03"
-    copy_images(md_path.parent, out_dir, prefix=num_prefix)
+    # Copy assets from the article folder (lang-aware: JA build skips
+    # `en-`-prefixed assets so EN-only PDFs don't leak in).
+    copy_images(md_path.parent, out_dir, lang=lang)
 
     print(f"Built: {out_file}")
     return True
@@ -131,10 +155,8 @@ def build_article(md_path):
 
 def collect_articles(lang="ja"):
     """Collect and sort article metadata for a given language."""
-    prefix = "en-" if lang == "en" else ""
-    pattern = f"{prefix}[0-9]*.md"
     articles = []
-    for f in sorted(config.INSIGHTS_DIR.glob(pattern)):
+    for f in _iter_article_files(config.INSIGHTS_DIR, lang):
         text = f.read_text(encoding="utf-8")
         meta, _ = parse_frontmatter(text)
         if meta.get("lang", "ja") == lang or (lang == "ja" and "lang" not in meta):
@@ -201,9 +223,7 @@ def build_blog_post(md_path):
         print(f"Error: {md_path} missing 'slug' in front matter")
         return False
 
-    # Filename `en-` prefix wins over a missing `lang:` field so an EN blog
-    # post without `lang: en` doesn't silently overwrite the JA path.
-    lang = meta.get("lang") or ("en" if md_path.name.startswith("en-") else "ja")
+    lang = meta.get("lang") or _detect_lang(md_path)
     meta["lang"] = lang
     if lang == "en":
         out_dir = config.SITE_ROOT / "html" / "en" / "blog" / meta["slug"]
@@ -248,13 +268,8 @@ def build_blog_post(md_path):
     out_file = out_dir / "index.html"
     out_file.write_text(html, encoding="utf-8")
 
-    # Copy images from source directory
-    # e.g. blog/001-*.jpeg → html/blog/slug/
-    num_prefix = md_path.name.split("-", 1)[0]  # "001", "en"
-    if num_prefix == "en":
-        num_prefix = md_path.name.split("-", 2)[1]  # "en-001-..." → "001"
-        copy_images(md_path.parent, out_dir, prefix=f"en-{num_prefix}")
-    copy_images(md_path.parent, out_dir, prefix=num_prefix)
+    # Copy assets from the article folder (lang-aware).
+    copy_images(md_path.parent, out_dir, lang=lang)
 
     print(f"Built blog: {out_file}")
     return True
@@ -262,20 +277,13 @@ def build_blog_post(md_path):
 
 def collect_blog_posts(lang="ja"):
     """Collect and sort blog post metadata for a given language."""
-    if not config.BLOG_DIR.exists():
-        return []
-    prefix = "en-" if lang == "en" else ""
-    pattern = f"{prefix}[0-9]*.md"
     posts = []
-    for f in sorted(config.BLOG_DIR.glob(pattern)):
+    for f in _iter_article_files(config.BLOG_DIR, lang):
         text = f.read_text(encoding="utf-8")
         meta, _ = parse_frontmatter(text)
         if meta.get("lang", "ja") == lang or (lang == "ja" and "lang" not in meta):
-            # Extract numeric prefix from filename for ordering
-            stem = f.stem
-            if lang == "en" and stem.startswith("en-"):
-                stem = stem[3:]
-            num_match = re.match(r"(\d+)", stem)
+            # Folder name leads with the post number, e.g. "015-japan-…".
+            num_match = re.match(r"(\d+)", f.parent.name)
             meta["_file_number"] = int(num_match.group(1)) if num_match else 0
             posts.append(meta)
     # Sort by file number descending (newest first; 006 before 005...)
@@ -345,9 +353,7 @@ def build_book_chapter(md_path):
         print(f"Error: {md_path} missing 'slug' in front matter")
         return False
 
-    # Language: `lang:` frontmatter wins, else fall back to the `en-` filename
-    # prefix convention used elsewhere in the repo.
-    lang = meta.get("lang") or ("en" if md_path.name.startswith("en-") else "ja")
+    lang = meta.get("lang") or _detect_lang(md_path)
     meta["lang"] = lang
 
     stem = _book_stem(meta["slug"])
@@ -376,35 +382,23 @@ def build_book_chapter(md_path):
     out_file = out_dir / "index.html"
     out_file.write_text(html, encoding="utf-8")
 
-    # Copy any chapter-prefixed images (e.g. 03-diagram.png) into out_dir.
-    # For EN files (en-03-foo.md), match both `en-03-*` and `03-*` so shared
-    # images don't need to be duplicated in the source tree.
-    num_prefix = md_path.name.split("-", 1)[0]
-    if num_prefix == "en":
-        num_prefix = md_path.name.split("-", 2)[1]
-        copy_images(md_path.parent, out_dir, prefix=f"en-{num_prefix}")
-    copy_images(md_path.parent, out_dir, prefix=num_prefix)
+    # Copy chapter assets into out_dir (lang-aware: JA build skips
+    # `en-`-prefixed assets).
+    copy_images(md_path.parent, out_dir, lang=lang)
 
     print(f"Built book: {out_file}")
     return True
 
 
 def collect_book_chapters(lang="ja"):
-    """Collect book chapter metadata for a language, in filename-prefix order."""
-    if not config.BOOK_DIR.exists():
-        return []
-    prefix = "en-" if lang == "en" else ""
-    pattern = f"{prefix}[0-9]*.md"
+    """Collect book chapter metadata for a language, in folder-name order."""
     chapters = []
-    for f in sorted(config.BOOK_DIR.glob(pattern)):
+    for f in _iter_article_files(config.BOOK_DIR, lang):
         text = f.read_text(encoding="utf-8")
         meta, _ = parse_frontmatter(text)
         if meta.get("lang", "ja") != lang and not (lang == "ja" and "lang" not in meta):
             continue
-        stem = f.stem
-        if lang == "en" and stem.startswith("en-"):
-            stem = stem[3:]
-        num_match = re.match(r"(\d+)", stem)
+        num_match = re.match(r"(\d+)", f.parent.name)
         meta["_file_number"] = int(num_match.group(1)) if num_match else 0
         chapters.append(meta)
     chapters.sort(key=lambda m: m.get("_file_number", 0))
@@ -710,8 +704,8 @@ def regenerate_ogp(md_path):
         print(f"Skip: {md_path} has no hero_image")
         return False
 
-    is_blog = md_path.parent.name == "blog"
-    is_en = meta.get("lang", "ja") == "en"
+    is_blog = md_path.parent.parent.name == "blog"
+    is_en = (meta.get("lang") or _detect_lang(md_path)) == "en"
     if is_blog:
         base = config.SITE_ROOT / "html" / "en" / "blog" if is_en else config.BLOG_OUTPUT_BASE
     else:
@@ -749,17 +743,18 @@ def main():
         return
 
     if arg == "--list":
-        for f in sorted(config.INSIGHTS_DIR.glob("*.md")):
+        for f in list(_iter_article_files(config.INSIGHTS_DIR, "ja")):
             meta, _ = parse_frontmatter(f.read_text(encoding="utf-8"))
             num = meta.get("number", "??")
             title = meta.get("title", "untitled")
-            print(f"  [{num}] {f.name} → {title}")
+            print(f"  [{num}] {f.parent.name}/ja.md → {title}")
         return
 
     if arg == "--all":
-        files = sorted(config.INSIGHTS_DIR.glob("*.md"))
+        files = list(_iter_article_files(config.INSIGHTS_DIR, "ja")) \
+              + list(_iter_article_files(config.INSIGHTS_DIR, "en"))
         if not files:
-            print(f"No .md files found in {config.INSIGHTS_DIR}")
+            print(f"No articles found in {config.INSIGHTS_DIR}")
             return
         ok = 0
         for f in files:
@@ -770,7 +765,8 @@ def main():
 
         # Build blog posts
         blog_ok = 0
-        blog_files = sorted(config.BLOG_DIR.glob("*.md")) if config.BLOG_DIR.exists() else []
+        blog_files = list(_iter_article_files(config.BLOG_DIR, "ja")) \
+                   + list(_iter_article_files(config.BLOG_DIR, "en"))
         for f in blog_files:
             if build_blog_post(f):
                 blog_ok += 1
@@ -780,13 +776,10 @@ def main():
             update_home_latest_posts("ja")
             update_home_latest_posts("en")
 
-        # Build book chapters (claude-debian) — JA + EN (en-*.md)
+        # Build book chapters (claude-debian) — JA + EN
         book_ok = 0
-        book_files = (
-            sorted(config.BOOK_DIR.glob("*.md"))
-            if config.BOOK_DIR.exists()
-            else []
-        )
+        book_files = list(_iter_article_files(config.BOOK_DIR, "ja")) \
+                   + list(_iter_article_files(config.BOOK_DIR, "en"))
         for f in book_files:
             if build_book_chapter(f):
                 book_ok += 1
@@ -804,10 +797,13 @@ def main():
         )
         return
 
-    # Auto-detect book / blog / article from the path
-    if "claude-debian/" in arg or "claude-debian\\" in arg:
+    # Auto-detect book / blog / article from the path. Per-folder layout means
+    # the series name is the grandparent dir of `<series>/<NN-slug>/<lang>.md`.
+    p = Path(arg).resolve()
+    series = p.parent.parent.name if p.is_file() else ""
+    if series == "claude-debian" or "claude-debian/" in arg:
         build_book_chapter(arg)
-    elif "blog/" in arg or "blog\\" in arg:
+    elif series == "blog" or "/blog/" in arg or arg.startswith("blog/"):
         build_blog_post(arg)
     else:
         build_article(arg)

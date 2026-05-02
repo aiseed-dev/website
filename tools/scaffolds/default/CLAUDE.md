@@ -6,22 +6,37 @@ It is a self-contained static site: Markdown in, HTML out.
 
 ## Layout
 
+One article = one folder. `ja.md` and `en.md` live side by side with their
+assets (images, PDFs).
+
 ```
-articles/insights/ Insights articles (serialized). Filenames: NN-slug.md, en-NN-slug.md
-articles/claude-debian/ (optional) Long-form book chapters → /claude-debian/
-blog/              Blog posts (standalone notes). Filenames: NNN-slug.md, en-NNN-slug.md
-html/              Output. Served as-is.
-  index.html       Top page (hand-edited; markers LATEST_BLOG_POSTS_*)
-  en/index.html    English top page
-  css/style.css    Stylesheet
-  images/          Static images, referenced by absolute path
-  insights/        GENERATED — do not hand-edit
-  en/insights/     GENERATED
-  blog/            GENERATED
-  en/blog/         GENERATED
-tools/templates/   Jinja2 templates (article.html, index.html). Override bundled ones.
-CLAUDE.md          This file
-README.md          Human-readable project overview
+articles/
+  insights/
+    01-hello/
+      ja.md            JA body + frontmatter
+      en.md            EN body + frontmatter
+  claude-debian/       (optional) book chapters → /claude-debian/
+    00-prologue/
+      ja.md
+      en.md
+  blog/                Blog posts (standalone notes)
+    001-welcome/
+      ja.md
+      en.md
+      photo.jpg        Shared/JA asset (copied to both langs)
+      en-photo.jpg     EN-only asset (copied only to /en/)
+html/                  Output. Served as-is.
+  index.html           Top page (hand-edited; markers LATEST_BLOG_POSTS_*)
+  en/index.html        English top page
+  css/style.css        Stylesheet
+  images/              Static images, referenced by absolute path
+  insights/            GENERATED — do not hand-edit
+  en/insights/         GENERATED
+  blog/                GENERATED
+  en/blog/             GENERATED
+tools/templates/       Jinja2 templates (article.html, index.html). Override bundled ones.
+CLAUDE.md              This file
+README.md              Human-readable project overview
 ```
 
 ## Build commands
@@ -34,7 +49,7 @@ The build toolchain lives in the `aiseed-dev/website` repo and is driven via
 python3 PATH_TO_WEBSITE/tools/build_article.py --site . --all
 
 # Build a single article
-python3 PATH_TO_WEBSITE/tools/build_article.py --site . articles/insights/01-hello.md
+python3 PATH_TO_WEBSITE/tools/build_article.py --site . articles/insights/01-hello/ja.md
 
 # Dev server: watch + rebuild + HTTP
 python3 PATH_TO_WEBSITE/tools/serve.py --site . --port 8000
@@ -52,11 +67,13 @@ pip install jinja2 markdown-it-py Pillow watchdog
 
 ## Conventions
 
-- **Filenames carry metadata**: `articles/insights/NN-slug.md` → `/insights/slug/`,
-  `articles/insights/en-NN-slug.md` → `/en/insights/slug/`. Same pattern for `blog/`
-  except the prefix is 3 digits (`001-`, `002-`...).
-- **Images sharing the numeric prefix** (e.g. `blog/012-photo.jpg`) are copied
-  into the generated article directory automatically.
+- **Folder name carries metadata**: `articles/insights/NN-slug/ja.md` →
+  `/insights/{frontmatter.slug}/`. The folder's `NN-` prefix sets the chapter
+  order; the URL slug comes from frontmatter `slug:`. Same pattern for blog
+  (3-digit prefix: `001-`, `002-`...).
+- **Assets in the article folder** are copied to the generated output. Files
+  starting with `en-` are only copied to the EN build; everything else goes to
+  both.
 - **OGP images** are generated from `hero_image` at 1200×630.
 - **Frontmatter fields** (`slug`, `title`, `subtitle`, `description`, `date`,
   `label`, `hero_image`, `lang: en` for English). Detailed reference:

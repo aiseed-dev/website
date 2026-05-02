@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Development server with auto-rebuild for aiseed.dev-compatible sites.
 
-Watches <site>/{articles,blog,tools/templates} and <site>/html/{css,js},
+Watches <site>/{articles,tools/templates} and <site>/html/{css,js},
 re-runs build_article.py --all on changes, and serves <site>/html/ over HTTP.
 
 Usage:
@@ -36,10 +36,10 @@ def resolve_site(cli_value: str | None) -> Path:
     if candidate is None:
         candidate = str(Path(__file__).resolve().parent.parent)
     site = Path(candidate).resolve()
-    if not (site / "articles").exists() and not (site / "blog").exists():
+    if not (site / "articles").exists():
         raise SystemExit(
             f"[serve] {site} does not look like an aiseed-style site "
-            "(no articles/ or blog/). Pass --site <path> or set AISEED_SITE."
+            "(no articles/). Pass --site <path> or set AISEED_SITE."
         )
     return site
 
@@ -48,7 +48,6 @@ def watch_dirs(site: Path) -> list[Path]:
     html_dir = site / "html"
     return [
         site / "articles",
-        site / "blog",
         site / "tools" / "templates",
         html_dir / "css",
         html_dir / "js",

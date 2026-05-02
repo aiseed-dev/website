@@ -1,155 +1,202 @@
-# AIネイティブな仕事の作法 — 序章
+# AIネイティブな仕事の作法
 
-aiseed.dev に組み込むための、序章の素材一式(日本語版・英語版)。
+aiseed.dev の連載エッセイシリーズ。Office・Java・C# から離れ、Markdown・JSON・
+Python・テキストで AI を同僚として使うための実用的な作法。
 
 ## ファイル構成
 
 ```
-chapter-00-content.md         ── 日本語版 本文(Markdown + frontmatter)
-chapter-00-content.en.md      ── 英語版 本文
-chapter-00-template.html      ── 日本語版 HTMLテンプレート
-chapter-00-template.en.html   ── 英語版 HTMLテンプレート
-chapter-00-README.md          ── このファイル
+articles/ai-native-ways/
+├── README.md                ── このファイル
+├── template.html            ── 日本語版テンプレート(Jinja2)
+├── template.en.html         ── 英語版テンプレート(Jinja2)
+└── NN-slug/                 ── 1章 = 1フォルダ
+    ├── ja.md                ── 日本語版本文 + frontmatter
+    └── en.md                ── 英語版本文 + frontmatter
+```
+
+実体例:
+
+```
+articles/ai-native-ways/
+├── README.md
+├── template.html / template.en.html
+└── 00-prologue/
+    ├── ja.md
+    └── en.md
 ```
 
 ## 設計方針
 
-**コンテンツとテンプレートの分離**
+**独立テンプレート**
 
-- `chapter-00-content.md` / `.en.md` は内容のみ。フロントマターでメタデータを保持。
-- `chapter-00-template.html` / `.en.html` は構造とスタイルのみ。プレースホルダで内容を受け取る。
-- aiseed.dev 既存サイトに組み込む際、テンプレート側を既存スタイルに差し替えれば内容はそのまま使える。
+このシリーズは aiseed.dev の他のシリーズ(Insights、Claude × Debian、Blog)
+とは別の独自タイポグラフィを使う:
 
-**日本語版と英語版の差異**
+- 本文: システム明朝(ヒラギノ・游明朝・Noto Serif CJK)/ Crimson Pro
+- 見出し: Shippori Mincho 700/800 / Crimson Pro 700/800
+- 等幅: JetBrains Mono(両言語共通)
+- アクセント色: `#c8442a`(朱色)
+- 紙の質感を出すグレインテクスチャ
 
-| 項目             | 日本語版                       | 英語版                          |
-|------------------|------------------------------|--------------------------------|
-| 本文フォント     | システム明朝(ヒラギノ・游明朝) | Crimson Pro(セリフ)           |
-| 見出しフォント   | Shippori Mincho 700/800      | Crimson Pro 700/800            |
-| 関連リンクのpath | `/insights/...`              | `/en/insights/...`             |
-| マストヘッド     | "AIネイティブな仕事の作法"    | "AI-Native Ways of Working"    |
-| 章ラベル         | "序章"                       | "Prologue"                     |
+このため共有テンプレート `tools/templates/article.html` ではなく、ここにある
+`template.html` / `template.en.html` を `build_aiways_chapter()` が直接読み込む。
 
-両言語とも、JetBrains Mono を等幅・装飾用フォントとして共通使用。
+**フロントマターは他シリーズと共通スキーマ**
 
-**プレースホルダの記法**
+`articles/insights/`, `articles/claude-debian/`, `articles/blog/` と同じ
+スキーマを使う(slug, number, title, subtitle, description, date, label,
+prev_slug, prev_title, next_slug, next_title)。シリーズ固有の表示ラベル
+(序章/第N章、年など)はビルド側で導出する。
 
-テンプレート内では Jinja2 風の `{{ variable }}` および `{% for %}` 記法を使用。
-Claude Code で組み込む際は、aiseed.dev のテンプレートエンジン(11ty / Astro / Hugo / Eleventy 等の実際の構成)に合わせて変換する。
-
-## フロントマターの構造
+## フロントマター仕様
 
 ```yaml
-title: 記事のタイトル
-series: シリーズ名(例: "AIネイティブな仕事の作法")
-chapter: 章番号(数値、序章は 0)
-chapter_label: 章ラベル(例: "序章" / "第1章")
-date: YYYY-MM-DD
-description: メタディスクリプション(OGP用)
-read_time: 推定読了時間
-related:
-  - series: 関連シリーズ名
-    chapter: 関連章番号
-    title: 関連記事タイトル
-    url: 関連記事URL
-  - type: blog
-    title: 関連ブログタイトル
-    url: 関連ブログURL
+---
+slug: prologue                  # URL: /ai-native-ways/{slug}/
+number: "00"                    # 章番号(ゼロ埋め文字列)
+lang: en                        # EN 版のみ必須
+title: 記事タイトル
+subtitle: 副題(hero-subtitle に表示)
+description: SEO/OG 用の短い説明
+date: 2026.05.01                # ドット区切り(他シリーズと統一)
+label: AI Native 00             # 識別ラベル
+title_html: ...<br>...          # 任意: hero-title を HTML 断片で上書き
+prev_slug:
+prev_title:
+next_slug:
+next_title:
+---
 ```
+
+`title_html` は単一行で、`<br>` `<span class="accent">` などを含めて書く。
+未指定なら `title` がプレーンテキストで表示される。
+
+例(00-prologue):
+
+```yaml
+title_html: 事務処理は<span class="accent">Office</span>。<br>業務ソフトは<span class="accent">Java/C#</span>。<br>しかしAIは、<span class="accent">Pythonとテキスト</span>。
+```
+
+関連リンクは frontmatter ではなく、Markdown 本文末に `## 関連記事` として
+書く(他シリーズと同じ流儀)。
 
 ## テンプレートのプレースホルダ一覧
 
-| プレースホルダ        | 意味                                |
-|-----------------------|-------------------------------------|
-| `{{ title }}`         | 記事タイトル                        |
-| `{{ series }}`        | シリーズ名                          |
-| `{{ chapter }}`       | 章番号(数値)                        |
-| `{{ chapter_label }}` | 章ラベル                            |
-| `{{ date }}`          | 公開日                              |
-| `{{ description }}`   | 概要                                |
-| `{{ read_time }}`     | 読了時間                            |
-| `{{ content_html }}`  | Markdown を HTML 変換した本文       |
-| `{{ related }}`       | 関連記事配列(for ループで展開)      |
+ビルドスクリプト(`tools/build_article.py::build_aiways_chapter`)が以下の変数を
+注入する:
 
-## hero-title のカスタマイズ
+| 変数                  | 由来                                          |
+|-----------------------|-----------------------------------------------|
+| `{{ title }}`         | frontmatter の `title`                        |
+| `{{ title_html }}`    | frontmatter の `title_html`(任意)             |
+| `{{ subtitle }}`      | frontmatter の `subtitle`                     |
+| `{{ description }}`   | frontmatter の `description`                  |
+| `{{ date }}`          | frontmatter の `date`(例: `2026.05.01`)      |
+| `{{ year }}`          | `date` から先頭4桁を抽出(例: `2026`)         |
+| `{{ number }}`        | frontmatter の `number`(例: `"00"`)          |
+| `{{ label }}`         | frontmatter の `label`                        |
+| `{{ series }}`        | "AIネイティブな仕事の作法" / "AI-Native Ways of Working" |
+| `{{ series_index_url }}` | `/ai-native-ways/` または `/en/ai-native-ways/` |
+| `{{ chapter_label }}` | `00` → "序章"/"Prologue", それ以外は "第N章"/"Chapter N" |
+| `{{ content_html }}`  | Markdown 本文を CommonMark で変換した HTML    |
+| `{{ canonical_url }}` | このページの正規 URL                          |
+| `{{ hreflang_ja }}`   | JA 版 URL(対訳がある場合)                    |
+| `{{ hreflang_en }}`   | EN 版 URL(対訳がある場合)                    |
+| `{{ og_image }}`      | OG 画像 URL(`hero_image` から自動生成 or デフォルト) |
+| `{{ other_lang_url }}`| 対訳ページの URL(言語スイッチャー用)          |
+| `{{ other_lang_label }}` | "EN" / "日本語"                             |
 
-序章の hero-title は、3行構成で `<span class="accent">` を使った強調を含む。
-他の章で使い回す場合は、テンプレートのこの部分を直接編集するか、
-フロントマターから HTML 断片として受け取る形に変える。
+## ビルド
 
-```html
-<!-- 現在の固定HTML(序章用) -->
-<h1 class="hero-title">
-  事務処理は<span class="accent">Office</span>。<br>
-  業務ソフトは<span class="accent">Java/C#</span>。<br>
-  しかしAIは、<span class="accent">Pythonとテキスト</span>。
-</h1>
+リポジトリ全体のビルドツールに統合済み。
+
+```bash
+# 全シリーズ含めて一括ビルド
+python3 tools/build_article.py --all
+
+# このシリーズの単一章だけビルド
+python3 tools/build_article.py articles/ai-native-ways/00-prologue/ja.md
+python3 tools/build_article.py articles/ai-native-ways/00-prologue/en.md
 ```
 
-将来的には、フロントマターに `title_html` として持たせる:
+出力先:
 
-```yaml
-title_html: |
-  事務処理は<span class="accent">Office</span>。<br>
-  業務ソフトは<span class="accent">Java/C#</span>。<br>
-  しかしAIは、<span class="accent">Pythonとテキスト</span>。
+| ソース                                          | 出力                                    | URL                       |
+|-------------------------------------------------|-----------------------------------------|---------------------------|
+| `00-prologue/ja.md`                             | `html/ai-native-ways/prologue/index.html` | `/ai-native-ways/prologue/` |
+| `00-prologue/en.md`                             | `html/en/ai-native-ways/prologue/index.html` | `/en/ai-native-ways/prologue/` |
+| (シリーズ目次・自動生成) | `html/ai-native-ways/index.html` | `/ai-native-ways/` |
+| (シリーズ目次・自動生成) | `html/en/ai-native-ways/index.html` | `/en/ai-native-ways/` |
+
+シリーズ目次は共有 `tools/templates/index.html` を再利用してサイト全体と
+統一感を保つ(章ページだけが独立タイポグラフィ)。目次の文言は
+`tools/build/template_vars.py::aiways_index_vars()` で定義。
+
+## 新しい章を追加する手順
+
+1. `articles/ai-native-ways/NN-slug/` を作成
+
+```bash
+mkdir articles/ai-native-ways/01-markdown
+$EDITOR articles/ai-native-ways/01-markdown/ja.md
+$EDITOR articles/ai-native-ways/01-markdown/en.md
 ```
 
-## Markdown → HTML 変換の対応
+2. frontmatter を上記スキーマで書く。`prev_slug` / `next_slug` で前後ナビ。
 
-Markdown 本文を HTML に変換する際の対応表:
+3. 必要なら `title_html` でアクセント装飾。
+
+4. ビルド
+
+```bash
+python3 tools/build_article.py --all
+```
+
+サイトマップ・トップページの最新記事枠・シリーズ目次が一括更新される。
+
+## Markdown → HTML 変換
+
+CommonMark + tables 拡張(`tools/build/markdown.py`)。
 
 | Markdown        | HTML                              |
 |-----------------|-----------------------------------|
-| `# 見出し1`     | (タイトルとして hero 側で扱う、本文では使わない) |
 | `## 見出し2`    | `<h2>`                            |
 | `### 見出し3`   | `<h3>`                            |
 | `> 引用`        | `<blockquote><p>`                 |
 | `1. 項目`       | `<ol><li>`                        |
 | ```` ```code``` ```` | `<pre><code>`                |
 | `` `inline` ``  | `<code>`                          |
-| `**bold**`      | `<strong>`                        |
-| `*italic*`      | `<em>`                            |
+| `**bold**`      | `<strong>`(マーカー風ハイライト)    |
+| `*italic*`      | `<em>`(アクセント色)               |
 | `[text](url)`   | `<a href="url">text</a>`          |
-| `---`           | `<hr>`(本文中の区切り装飾)       |
+| `---`           | `<hr>`(`◆ ◆ ◆` 装飾)              |
 
-CSS は上記すべての要素に対応済み。一般的な Markdown パーサ
-(markdown-it, remark, marked, python-markdown 等)で変換すれば
-そのまま機能する。
+`# 見出し1` は frontmatter の `title` と重複するため自動で剥がされる。
 
-## CSS 変数(既存サイトに合わせる場合)
+## CSS 変数
 
-aiseed.dev 既存のスタイルに統合する際は、以下の CSS 変数を
-既存サイトの値に差し替える:
+テンプレート内で定義(他シリーズの CSS とは独立):
 
 ```css
 :root {
-  --ink:        /* 本文色 */
-  --paper:      /* 背景色 */
-  --paper-deep: /* 背景の濃い版(blockquote等) */
-  --accent:     /* アクセント色(リンク・強調) */
-  --rule:       /* 罫線色 */
-  --whisper:    /* 控えめな文字色 */
-  --highlight:  /* マーカー色 */
+  --ink:        #1a1a1a;  /* 本文色 */
+  --paper:      #f4f1ea;  /* 背景色 */
+  --paper-deep: #ebe6d8;  /* 背景の濃い版(blockquote等) */
+  --accent:     #c8442a;  /* アクセント色(朱色) */
+  --rule:       #d4cdb8;  /* 罫線色 */
+  --whisper:    #6b665a;  /* 控えめな文字色 */
+  --highlight:  #f7e9c8;  /* マーカー色 */
 }
 ```
 
-## フォント戦略(重要)
-
-**読み込み速度を優先**。本文はシステム明朝(ヒラギノ・游明朝・Noto Serif CJK)を使い、
-Webフォントは見出しとタイトルにのみ使用。
-
-- Shippori Mincho: 700/800 のみ(タイトル・h2 用)
-- JetBrains Mono: 400/700 のみ(等幅・コード用)
-- 本文・h3・h4・blockquote: システム明朝(Webフォント不要)
-
-aiseed.dev 既存サイトが別のフォント戦略を採っている場合は、
-`@import` 部分と `font-family` 指定を既存サイトに揃える。
+色を変えたい場合は `template.html` / `template.en.html` の冒頭 `:root`
+ブロックを編集する。
 
 ## このシリーズの章立て(計画)
 
 ```
-00. 序章 ── 事務処理はOffice、業務ソフトはJava/C#、しかしAIはPythonとテキスト
+00. 序章 ── 事務処理はOffice、業務ソフトはJava/C#、しかしAIはPythonとテキスト ✅
 
 I. 共通の作法(全員向け)
 01. 文書を書く ── Markdownという最小の選択
@@ -168,5 +215,5 @@ III. 共通の発展(全員向け)
 10. 1人+AIで作る、新しい仕事の単位
 ```
 
-すべての章で同じテンプレートを使い回せる構造にしてある。
-章ごとの差は、フロントマターと hero-title の HTML 断片のみ。
+すべての章で同じテンプレートを使い回す。章ごとの差はフロントマターと
+任意の `title_html` のみ。

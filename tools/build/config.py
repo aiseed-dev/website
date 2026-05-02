@@ -30,9 +30,13 @@ INSIGHTS_DIR: Path = SITE_ROOT / "articles" / "insights"
 BLOG_DIR: Path = SITE_ROOT / "articles" / "blog"
 # Long-form serial content ("books"). Currently just "Claudeと一緒に学ぶDebian".
 BOOK_DIR: Path = SITE_ROOT / "articles" / "claude-debian"
+# Independent-template essay series; uses its own template.html / template.en.html
+# instead of the shared tools/templates/article.html.
+AIWAYS_DIR: Path = SITE_ROOT / "articles" / "ai-native-ways"
 OUTPUT_BASE: Path = SITE_ROOT / "html" / "insights"
 BLOG_OUTPUT_BASE: Path = SITE_ROOT / "html" / "blog"
 BOOK_OUTPUT_BASE: Path = SITE_ROOT / "html" / "claude-debian"
+AIWAYS_OUTPUT_BASE: Path = SITE_ROOT / "html" / "ai-native-ways"
 TEMPLATES_DIR: Path = _BUNDLED_TEMPLATES_DIR
 
 # Per-site overrides loaded from <site>/site.json. Keys consumed:
@@ -81,17 +85,19 @@ def configure_site(site: Path) -> None:
     to fork this script. `<site>/site.json` (optional) supplies per-site
     overrides for site_url, site_name, copyright_text, default_og_image.
     """
-    global SITE_ROOT, INSIGHTS_DIR, BLOG_DIR, BOOK_DIR
-    global OUTPUT_BASE, BLOG_OUTPUT_BASE, BOOK_OUTPUT_BASE
+    global SITE_ROOT, INSIGHTS_DIR, BLOG_DIR, BOOK_DIR, AIWAYS_DIR
+    global OUTPUT_BASE, BLOG_OUTPUT_BASE, BOOK_OUTPUT_BASE, AIWAYS_OUTPUT_BASE
     global TEMPLATES_DIR, env, _site_config, SITE_URL, DEFAULT_OG_IMAGE
 
     SITE_ROOT = site.resolve()
     INSIGHTS_DIR = SITE_ROOT / "articles" / "insights"
     BLOG_DIR = SITE_ROOT / "articles" / "blog"
     BOOK_DIR = SITE_ROOT / "articles" / "claude-debian"
+    AIWAYS_DIR = SITE_ROOT / "articles" / "ai-native-ways"
     OUTPUT_BASE = SITE_ROOT / "html" / "insights"
     BLOG_OUTPUT_BASE = SITE_ROOT / "html" / "blog"
     BOOK_OUTPUT_BASE = SITE_ROOT / "html" / "claude-debian"
+    AIWAYS_OUTPUT_BASE = SITE_ROOT / "html" / "ai-native-ways"
 
     site_templates = SITE_ROOT / "tools" / "templates"
     TEMPLATES_DIR = site_templates if site_templates.exists() else _BUNDLED_TEMPLATES_DIR

@@ -591,6 +591,26 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/ai-native-ways/</loc>
+    <lastmod>2026-05-01</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/ai-native-ways/prologue/</loc>
+    <lastmod>2026-05-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/ai-native-ways/</loc>
+    <lastmod>2026-05-01</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/ai-native-ways/prologue/</loc>
+    <lastmod>2026-05-01</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/natural-farming/</loc>
     <lastmod>2026-05-01</lastmod>
     <priority>0.8</priority>

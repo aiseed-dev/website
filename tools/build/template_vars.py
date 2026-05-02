@@ -106,6 +106,8 @@ def article_vars(meta, body_html):
         "articles_parent_label": _text(is_en, "Articles", "記事"),
         "insights_child_label": _text(is_en, "Structural Analysis", "構造分析"),
         "book_label": _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian"),
+        "aiways_label": _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法"),
+        "aiways_base": "/en/ai-native-ways" if is_en else "/ai-native-ways",
         "contact_label": _text(is_en, "Contact", "お問い合わせ"),
         "menu_label": _text(is_en, "Menu", "メニュー"),
         "pages_label": _text(is_en, "Pages", "ページ"),
@@ -201,6 +203,8 @@ def index_vars(lang, article_list_html):
         "articles_parent_label": _text(is_en, "Articles", "記事"),
         "insights_child_label": _text(is_en, "Structural Analysis", "構造分析"),
         "book_label": _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian"),
+        "aiways_label": _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法"),
+        "aiways_base": "/en/ai-native-ways" if is_en else "/ai-native-ways",
         "insights_base": insights_base,
         "blog_base": "/en/blog" if is_en else "/blog",
         "book_base": "/en/claude-debian" if is_en else "/claude-debian",
@@ -358,6 +362,8 @@ def book_vars(meta, body_html):
         "articles_parent_label": _text(is_en, "Articles", "記事"),
         "insights_child_label": _text(is_en, "Structural Analysis", "構造分析"),
         "book_label": _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian"),
+        "aiways_label": _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法"),
+        "aiways_base": "/en/ai-native-ways" if is_en else "/ai-native-ways",
         "contact_label": _text(is_en, "Contact", "お問い合わせ"),
         "menu_label": _text(is_en, "Menu", "メニュー"),
         "pages_label": _text(is_en, "Pages", "ページ"),
@@ -387,6 +393,102 @@ def book_vars(meta, body_html):
     }
 
 
+_AIWAYS_BASE_JA = "/ai-native-ways"
+_AIWAYS_BASE_EN = "/en/ai-native-ways"
+_AIWAYS_TITLE_JA = "AIネイティブな仕事の作法"
+_AIWAYS_TITLE_EN = "AI-Native Ways of Working"
+
+
+def aiways_index_vars(lang, chapter_list_html, has_translation=False):
+    """Build template variables for the ai-native-ways table-of-contents page."""
+    is_en = lang == "en"
+    aiways_base = _AIWAYS_BASE_EN if is_en else _AIWAYS_BASE_JA
+    aiways_title = _AIWAYS_TITLE_EN if is_en else _AIWAYS_TITLE_JA
+
+    return {
+        "lang": lang,
+        "site_name": config.site_text("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
+        "home_label": _text(is_en, "Home", "ホーム"),
+        "home_link": "/en/" if is_en else "/",
+        "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
+        "lf_label": "Light Farming",
+        "about_link": "/en/natural-farming/" if is_en else "/natural-farming/",
+        "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
+        "our_approach_link": "/en/about/" if is_en else "/about/",
+        "our_approach_label": _text(is_en, "Our Approach", "私たちのアプローチ"),
+        "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
+        "privacy_link": "/en/privacy/" if is_en else "/privacy/",
+        "privacy_label": _text(is_en, "Privacy", "プライバシー"),
+        "menu_label": _text(is_en, "Menu", "メニュー"),
+        "pages_label": _text(is_en, "Pages", "ページ"),
+        "links_label": _text(is_en, "Links", "関連リンク"),
+        "articles_parent_label": _text(is_en, "Articles", "記事"),
+        "insights_child_label": _text(is_en, "Structural Analysis", "構造分析"),
+        "book_label": _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian"),
+        "aiways_label": _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法"),
+        "aiways_base": "/en/ai-native-ways" if is_en else "/ai-native-ways",
+        "insights_base": "/en/insights" if is_en else "/insights",
+        "blog_base": "/en/blog" if is_en else "/blog",
+        "book_base": "/en/claude-debian" if is_en else "/claude-debian",
+        "css_path": "../../css/style.css" if is_en else "../css/style.css",
+        "js_path": "../../js/main.js" if is_en else "../js/main.js",
+
+        "asset_version": config.asset_version(),
+        "img_path": "../../images/IMG_3285.jpg" if is_en else "../images/IMG_3285.jpg",
+        "meta_description": _text(is_en,
+            "Tools for AI-native work. Office runs paperwork, Java/C# runs business systems — but AI runs on Python and text. A practical guide to working with AI as a colleague.",
+            "AI ネイティブな仕事の道具立て。事務処理は Office、業務ソフトは Java/C#、しかし AI は Python とテキストでできている。AI を同僚として使うための実用的な作法。"),
+        "structural_analysis_label": aiways_title,
+        "page_title": aiways_title,
+        "page_subtitle": _text(is_en,
+            "Tools shape thinking. Change the tools, the thinking changes.",
+            "道具を変えれば、思考が変わる。"),
+        "other_lang_link": (_AIWAYS_BASE_JA + "/") if is_en else (_AIWAYS_BASE_EN + "/"),
+        "other_lang_text": _text(is_en, "日本語版はこちら →", "English version available →") if has_translation else "",
+        "lang_switch_label": "日本語" if is_en else "EN",
+        "lang_switch_hreflang": "ja" if is_en else "en",
+        "lang_switch_aria": "日本語版を表示" if is_en else "View in English",
+        "series_title": _text(is_en, "Essays — series in progress", "連載エッセイ"),
+        "series_description": _text(is_en,
+            "Office, Java, and C# are tools from an era when humans handled information processing. Carrying these heavy tools to do work AI could do — that is what is happening in most workplaces today. The chapters that follow walk through, area by area, what to drop and what to pick up.",
+            "Office、Java、C# は、人間が情報処理を担っていた時代の道具である。AI でもやれる仕事を、人間がわざわざ重い道具で抱え込む——これが、いま多くの職場で起きていることだ。次の章から、領域ごとに具体的な作法を見ていく。"),
+        "article_list_html": chapter_list_html,
+        "intro_html": _text(is_en,
+            "OpenAI runs on Python. So does Anthropic. Data is Markdown, JSON, YAML.<br>\n                    "
+            "Between AI-native tools and the standard tools of the enterprise, a decisive divide runs through.<br>\n                    "
+            "What changes in the AI era — information processing becomes simple work that AI can do.",
+            "OpenAI も Anthropic も Python で動いている。データは Markdown、JSON、YAML。<br>\n                    "
+            "AI ネイティブな道具と、企業の標準的な道具のあいだに、決定的な断絶が走っている。<br>\n                    "
+            "AI 時代に何が変わるか——情報の処理は、AI でもやれる簡単な仕事になる。"),
+        "method_title": _text(is_en, "How to read", "読み方"),
+        "method_html": _text(is_en,
+            "Each chapter is a short essay. Read the prologue first; the rest can be read in any order based on what fits your work.<br>\n                    "
+            "The page typography here is intentionally different — these are essays, not reference material.",
+            "各章は短いエッセイ。まずは序章を読む。残りは仕事に合わせて好きな順で読める。<br>\n                    "
+            "ページのタイポグラフィを敢えて他のシリーズと変えてある——これは資料ではなくエッセイだ。"),
+        "quote_html": _text(is_en,
+            "Change the tools, and your thinking changes. Change your thinking,<br>\n"
+            "and you start spending time on work only humans can do.",
+            "道具を変えれば、思考が変わる。思考が変われば、<br>\n"
+            "人間にしかできない仕事に時間を使えるようになる。"),
+        "cta_title": _text(is_en, "Start with the prologue", "序章から始める"),
+        "cta_html": _text(is_en,
+            "Begin from the prologue. The series is published as it is written.",
+            "序章から読み始めよう。連載は書き上がり次第、順次公開していく。"),
+        "footer_about": _text(is_en,
+            "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
+            "food, energy, AI, healthcare, and pensions — every structure connects.",
+            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
+        "copyright_text": config.site_text("copyright_text", lang, _text(is_en, "Living in the AI Era — aiseed.dev", "AI時代の暮らし")),
+        # SEO
+        "canonical_url": f"{config.SITE_URL}{aiways_base}/",
+        "hreflang_ja": f"{config.SITE_URL}{_AIWAYS_BASE_JA}/",
+        "hreflang_en": f"{config.SITE_URL}{_AIWAYS_BASE_EN}/" if has_translation else "",
+        "og_locale": "en_US" if is_en else "ja_JP",
+        "og_image": config.DEFAULT_OG_IMAGE,
+    }
+
+
 def book_index_vars(lang, chapter_list_html, has_translation=False):
     """Build template variables for the book table-of-contents page."""
     is_en = lang == "en"
@@ -413,6 +515,8 @@ def book_index_vars(lang, chapter_list_html, has_translation=False):
         "articles_parent_label": _text(is_en, "Articles", "記事"),
         "insights_child_label": _text(is_en, "Structural Analysis", "構造分析"),
         "book_label": _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian"),
+        "aiways_label": _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法"),
+        "aiways_base": "/en/ai-native-ways" if is_en else "/ai-native-ways",
         "insights_base": "/en/insights" if is_en else "/insights",
         "blog_base": "/en/blog" if is_en else "/blog",
         "book_base": book_base,
@@ -555,6 +659,8 @@ def blog_vars(meta, body_html):
         "articles_parent_label": _text(is_en, "Articles", "記事"),
         "insights_child_label": _text(is_en, "Structural Analysis", "構造分析"),
         "book_label": _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian"),
+        "aiways_label": _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法"),
+        "aiways_base": "/en/ai-native-ways" if is_en else "/ai-native-ways",
         "contact_label": _text(is_en, "Contact", "お問い合わせ"),
         "menu_label": _text(is_en, "Menu", "メニュー"),
         "pages_label": _text(is_en, "Pages", "ページ"),
@@ -613,6 +719,8 @@ def blog_index_vars(lang, post_list_html):
         "articles_parent_label": _text(is_en, "Articles", "記事"),
         "insights_child_label": _text(is_en, "Structural Analysis", "構造分析"),
         "book_label": _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian"),
+        "aiways_label": _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法"),
+        "aiways_base": "/en/ai-native-ways" if is_en else "/ai-native-ways",
         "insights_base": "/en/insights" if is_en else "/insights",
         "blog_base": "/en/blog" if is_en else "/blog",
         "book_base": "/en/claude-debian" if is_en else "/claude-debian",

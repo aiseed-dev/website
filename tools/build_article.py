@@ -49,6 +49,7 @@ from build.markdown import (
     translation_exists,
 )
 from build.template_vars import (
+    aiways_index_vars,
     article_vars,
     blog_index_vars,
     blog_vars,
@@ -450,6 +451,182 @@ def build_book_index(lang="ja"):
 
 
 # ---------------------------------------------------------------------------
+# Build functions — ai-native-ways (independent template)
+#
+# Source:  articles/ai-native-ways/NN-slug/{ja,en}.md
+# Output:  html/ai-native-ways/{slug}/index.html  (JA)
+#          html/en/ai-native-ways/{slug}/index.html  (EN)
+#
+# Unlike the other series, ai-native-ways ships its own self-contained
+# template (articles/ai-native-ways/template.html, template.en.html) — fonts,
+# CSS and layout are declared there. The build pipeline just feeds the
+# rendered body and metadata into that template.
+# ---------------------------------------------------------------------------
+
+AIWAYS_SERIES_NAME_JA = "AIネイティブな仕事の作法"
+AIWAYS_SERIES_NAME_EN = "AI-Native Ways of Working"
+
+
+def _aiways_chapter_label(number: str, lang: str) -> str:
+    """'00' → '序章' / 'Prologue'. Otherwise '第N章' / 'Chapter N'."""
+    n = number.lstrip("0") or "0"
+    if n == "0":
+        return "序章" if lang == "ja" else "Prologue"
+    return f"第{n}章" if lang == "ja" else f"Chapter {n}"
+
+
+def _aiways_template_path(lang: str) -> Path:
+    return config.AIWAYS_DIR / ("template.html" if lang == "ja" else "template.en.html")
+
+
+def build_aiways_chapter(md_path):
+    """Build a single ai-native-ways chapter using the series-local template."""
+    from jinja2 import Template
+
+    md_path = Path(md_path)
+    if not md_path.exists():
+        print(f"Error: {md_path} not found")
+        return False
+
+    text = md_path.read_text(encoding="utf-8")
+    meta, body = parse_frontmatter(text)
+
+    if "slug" not in meta:
+        print(f"Error: {md_path} missing 'slug' in front matter")
+        return False
+
+    lang = meta.get("lang") or _detect_lang(md_path)
+    meta["lang"] = lang
+
+    slug = meta["slug"]
+    if lang == "en":
+        out_dir = config.SITE_ROOT / "html" / "en" / "ai-native-ways" / slug
+    else:
+        out_dir = config.AIWAYS_OUTPUT_BASE / slug
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    meta["_source_dir"] = str(md_path.parent)
+    meta["_out_dir"] = str(out_dir)
+
+    body = strip_leading_title(body)
+    body = process_custom_blocks(body)
+    body_html = md.render(body)
+
+    series_name = AIWAYS_SERIES_NAME_EN if lang == "en" else AIWAYS_SERIES_NAME_JA
+    series_index_path_ja = "/ai-native-ways/"
+    series_index_path_en = "/en/ai-native-ways/"
+    series_index_url = series_index_path_en if lang == "en" else series_index_path_ja
+
+    canonical_url = f"{config.SITE_URL}/{'en/' if lang == 'en' else ''}ai-native-ways/{slug}/"
+    hreflang_ja = f"{config.SITE_URL}/ai-native-ways/{slug}/"
+    hreflang_en = f"{config.SITE_URL}/en/ai-native-ways/{slug}/"
+
+    other_lang_url = (hreflang_ja if lang == "en" else hreflang_en)
+    other_lang_label = "日本語" if lang == "en" else "EN"
+
+    has_other = (md_path.parent / ("ja.md" if lang == "en" else "en.md")).exists()
+
+    # Resolve OG image: prefer an article-folder hero_image, else default
+    from build.images import resolve_og_image, OGP_FILENAME, generate_ogp_image
+    og_image = resolve_og_image(meta, out_dir, public_base_url=canonical_url.rstrip("/"))
+
+    date_str = meta.get("date", "")
+    year = date_str.split(".")[0] if "." in date_str else (date_str[:4] if date_str else "")
+
+    variables = {
+        "title": meta.get("title", ""),
+        "title_html": meta.get("title_html", ""),
+        "subtitle": meta.get("subtitle", ""),
+        "description": meta.get("description", ""),
+        "date": date_str,
+        "year": year,
+        "number": meta.get("number", "").strip('"'),
+        "label": meta.get("label", ""),
+        "series": series_name,
+        "series_index_url": series_index_url,
+        "chapter_label": _aiways_chapter_label(meta.get("number", "").strip('"'), lang),
+        "content_html": body_html,
+        "canonical_url": canonical_url,
+        "hreflang_ja": hreflang_ja if (md_path.parent / "ja.md").exists() else "",
+        "hreflang_en": hreflang_en if (md_path.parent / "en.md").exists() else "",
+        "og_image": og_image,
+        "other_lang_url": other_lang_url if has_other else "",
+        "other_lang_label": other_lang_label,
+    }
+
+    template_text = _aiways_template_path(lang).read_text(encoding="utf-8")
+    html = Template(template_text).render(**variables)
+
+    out_file = out_dir / "index.html"
+    out_file.write_text(html, encoding="utf-8")
+
+    # Copy assets from the article folder (lang-aware).
+    copy_images(md_path.parent, out_dir, lang=lang)
+
+    print(f"Built ai-native-ways: {out_file}")
+    return True
+
+
+def collect_aiways_chapters(lang="ja"):
+    """Collect ai-native-ways chapter metadata for a language."""
+    chapters = []
+    for f in _iter_article_files(config.AIWAYS_DIR, lang):
+        text = f.read_text(encoding="utf-8")
+        meta, _ = parse_frontmatter(text)
+        if meta.get("lang", "ja") != lang and not (lang == "ja" and "lang" not in meta):
+            continue
+        num_match = re.match(r"(\d+)", f.parent.name)
+        meta["_file_number"] = int(num_match.group(1)) if num_match else 0
+        chapters.append(meta)
+    chapters.sort(key=lambda m: m.get("_file_number", 0))
+    return chapters
+
+
+def build_aiways_index(lang="ja"):
+    """Build the ai-native-ways table-of-contents page using the shared
+    index.html template (matches the look of the insights / claude-debian
+    series indexes, while individual chapters keep their custom typography)."""
+    chapters = collect_aiways_chapters(lang)
+    if not chapters:
+        return False
+
+    is_en = lang == "en"
+    aiways_base = "/en/ai-native-ways" if is_en else "/ai-native-ways"
+    has_translation = bool(collect_aiways_chapters("en" if not is_en else "ja"))
+
+    chapter_list = ""
+    for c in chapters:
+        slug = c.get("slug", "")
+        number = c.get("number", "").strip('"')
+        title = c.get("title", "")
+        subtitle = c.get("subtitle", "")
+        description = c.get("description", "")
+        chapter_list += f'''
+                <a href="{aiways_base}/{slug}/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">{number}</div>
+                        <div class="activity-content">
+                            <h3>{title}{(" — " + subtitle) if subtitle else ""}</h3>
+                            <p>{description}</p>
+                        </div>
+                    </div>
+                </a>
+'''
+
+    variables = aiways_index_vars(lang, chapter_list, has_translation=has_translation)
+    html = render("index.html", variables)
+
+    if is_en:
+        out_file = config.SITE_ROOT / "html" / "en" / "ai-native-ways" / "index.html"
+    else:
+        out_file = config.AIWAYS_OUTPUT_BASE / "index.html"
+    out_file.parent.mkdir(parents=True, exist_ok=True)
+    out_file.write_text(html, encoding="utf-8")
+    print(f"Built ai-native-ways index: {out_file}")
+    return True
+
+
+# ---------------------------------------------------------------------------
 # Static pages: cache-bust style.css / main.js references
 # ---------------------------------------------------------------------------
 
@@ -576,10 +753,13 @@ def build_sitemap():
     en_posts = collect_blog_posts("en")
     ja_chapters = collect_book_chapters("ja")
     en_chapters = collect_book_chapters("en")
+    ja_aiways = collect_aiways_chapters("ja")
+    en_aiways = collect_aiways_chapters("en")
 
     all_dates = [
         norm_date(m.get("date"))
-        for m in (*ja_articles, *en_articles, *ja_posts, *en_posts, *ja_chapters, *en_chapters)
+        for m in (*ja_articles, *en_articles, *ja_posts, *en_posts,
+                  *ja_chapters, *en_chapters, *ja_aiways, *en_aiways)
         if m.get("date")
     ]
     latest = max(all_dates) if all_dates else date.today().isoformat()
@@ -644,6 +824,22 @@ def build_sitemap():
                 continue
             stem = _book_stem(slug)
             urls.append((f"{site_url}/en/claude-debian/{stem}/", norm_date(meta.get("date")), "0.5"))
+
+    # AI-Native Ways of Working
+    if ja_aiways:
+        urls.append((f"{site_url}/ai-native-ways/", latest, "0.8"))
+        for meta in ja_aiways:
+            slug = meta.get("slug", "")
+            if not slug:
+                continue
+            urls.append((f"{site_url}/ai-native-ways/{slug}/", norm_date(meta.get("date")), "0.6"))
+    if en_aiways:
+        urls.append((f"{site_url}/en/ai-native-ways/", latest, "0.7"))
+        for meta in en_aiways:
+            slug = meta.get("slug", "")
+            if not slug:
+                continue
+            urls.append((f"{site_url}/en/ai-native-ways/{slug}/", norm_date(meta.get("date")), "0.5"))
 
     # Natural Farming / About / Light Farming (both JP and EN)
     urls.append((f"{site_url}/natural-farming/", latest, "0.8"))
@@ -788,23 +984,40 @@ def main():
         if collect_book_chapters("en"):
             build_book_index("en")
 
+        # Build ai-native-ways essays — JA + EN
+        aiways_ok = 0
+        aiways_files = list(_iter_article_files(config.AIWAYS_DIR, "ja")) \
+                     + list(_iter_article_files(config.AIWAYS_DIR, "en"))
+        for f in aiways_files:
+            if build_aiways_chapter(f):
+                aiways_ok += 1
+        if collect_aiways_chapters("ja"):
+            build_aiways_index("ja")
+        if collect_aiways_chapters("en"):
+            build_aiways_index("en")
+
         update_static_page_asset_versions()
         build_sitemap()
         build_robots()
         print(
             f"\nBuilt {ok}/{len(files)} articles + {blog_ok}/{len(blog_files)} blog posts"
-            f" + {book_ok}/{len(book_files)} book chapters + indexes + sitemap.xml + robots.txt."
+            f" + {book_ok}/{len(book_files)} book chapters"
+            f" + {aiways_ok}/{len(aiways_files)} ai-native-ways"
+            f" + indexes + sitemap.xml + robots.txt."
         )
         return
 
-    # Auto-detect book / blog / article from the path. Per-folder layout means
-    # the series name is the grandparent dir of `<series>/<NN-slug>/<lang>.md`.
+    # Auto-detect book / blog / aiways / article from the path. Per-folder
+    # layout means the series name is the grandparent dir of
+    # `<series>/<NN-slug>/<lang>.md`.
     p = Path(arg).resolve()
     series = p.parent.parent.name if p.is_file() else ""
     if series == "claude-debian" or "claude-debian/" in arg:
         build_book_chapter(arg)
     elif series == "blog" or "/blog/" in arg or arg.startswith("blog/"):
         build_blog_post(arg)
+    elif series == "ai-native-ways" or "ai-native-ways/" in arg:
+        build_aiways_chapter(arg)
     else:
         build_article(arg)
 

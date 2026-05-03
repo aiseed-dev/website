@@ -11,7 +11,7 @@ title_html: Finish your paperwork<br><span class="accent">outside Office</span>.
 prev_slug: python
 prev_title: "Writing Logic — Have AI Write Python For You"
 next_slug: business-systems
-next_title: "Working with Business Systems — Augment Legacy Assets with AI"
+next_title: "Working with Business Systems — Rewrite via Parallel Operation"
 ---
 
 # Changing Paperwork — A Realistic Path Away from Office

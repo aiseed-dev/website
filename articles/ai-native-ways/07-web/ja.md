@@ -8,7 +8,7 @@ date: 2026.05.02
 label: AI Native 07
 title_html: Web は <span class="accent">HTML+CSS+JavaScript</span> で十分だ。<br>原点に戻る。
 prev_slug: business-systems
-prev_title: 業務システムと付き合う ── 既存資産を活かしつつAIで補う
+prev_title: 業務システムと付き合う ── 並行稼働で書き換える
 next_slug: apps
 next_title: アプリを作る ── CLIツール、Fletアプリ、Flutterアプリ
 ---

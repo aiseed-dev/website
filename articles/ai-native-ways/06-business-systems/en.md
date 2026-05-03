@@ -2,134 +2,226 @@
 slug: business-systems
 number: "06"
 lang: en
-title: "Working with Business Systems — Augment Legacy Assets with AI"
-subtitle: "Don't break Java and C#. Redraw the boundary"
-description: You don't need to rewrite business systems in Python. Treat 100,000 lines of Java code as a data source. What AI should rewrite is not the substance but the boundary. Keep the legacy assets intact, and write new work in Python with AI.
+title: "Working with Business Systems — Rewrite via Parallel Operation"
+subtitle: "'Don't break it, don't touch it' is old advice"
+description: The cost of rewriting a business system has fallen by 10x with AI. There is no reason left to keep the legacy. Build a new AI-native system, run it in parallel with the old, compare outputs against reality every day, and when the diffs vanish, kill the old. This is the new attitude toward business systems.
 date: 2026.05.02
 label: AI Native 06
-title_html: Don't <span class="accent">break</span> the legacy.<br><span class="accent">Augment</span> it with AI.
+title_html: Run the legacy in <span class="accent">parallel</span>.<br>When the new one works, <span class="accent">kill</span> it.
 prev_slug: office-replacement
 prev_title: "Changing Paperwork — A Realistic Path Away from Office"
 next_slug: web
 next_title: "Building for the Web — Back to HTML+CSS+JavaScript"
 ---
 
-# Working with Business Systems — Augment Legacy Assets with AI
+# Working with Business Systems — Rewrite via Parallel Operation
 
-For those responsible for business systems.
+The path of "getting along with" a business system is no longer needed.
 
-When someone says "drop Java and C#, rewrite everything in Python," it doesn't sound realistic. Of course it doesn't. Core systems running for ten or twenty years carry a deep accumulation of business knowledge. They contain edge cases not in any document. The risk of rewriting is far greater than the risk of staying as you are.
+**Rewrite, with parallel operation as the safety mechanism.** Build the new system in AI. Run the old in parallel. Compare outputs every day. When the diffs vanish, kill the old.
 
-You don't need to rewrite. **Just redraw the boundary.** Keep the substance in Java or C#; write new functionality in Python with AI. Connect them across the boundary with data (JSON / CSV).
+This is the AI-native attitude toward business systems. No half-measures. No comfortable coexistence.
 
-## "Rewrite everything" is a trap
+## "Don't break it, don't touch it" was advice for a different era
 
-Most "rewrite the legacy in Python" projects fail.
+For the past 20 years, the standard advice given to people responsible for business systems has been:
 
-The reason is simple. Old code carries business rules that are not in any document. "Billing closes on the 10th of July, but extended to the 5th of the following month to account for the Obon holidays" — no one remembers this rule. It exists only in the code.
+"Don't break it." "Don't touch it." "Don't change something that works." "Use the legacy assets."
 
-Rewrite, and the rule is lost. You notice a few months later, when something is billed wrong.
+This was **advice from an era when the cost of rewriting was prohibitive**. When rewriting took years and millions of dollars, "don't touch it" was indeed the right answer.
 
-**Code is acting as the spec.** Rewriting the code is rewriting the spec. That is harder than building a new system from scratch.
+The era has changed.
 
-## Redraw the boundary
+AI translates business logic to Python. AI extracts the intent of SQL into Markdown. AI generates test data. AI mines undocumented rules out of legacy code. **The cost of rewriting has fallen by a factor of ten.**
 
-The new way of relating to legacy is to redraw the boundary.
+Saying "don't touch it" at one-tenth the cost is denying the new reality. **There is no longer a reason to keep the legacy.**
 
-Existing systems keep running in Java or C#. New functionality runs in Python and Claude, taking data (CSV or JSON) from the existing systems as input. The output of the new functionality goes back to the existing systems as CSV or JSON.
+## The logic of parallel operation
+
+Even with rewriting cost down, the risk is not zero. No method can guarantee that a new system behaves exactly like the old.
+
+That is what **parallel operation** is for.
+
+Build the new system in AI. Keep the old running. Feed the same input to both. Compare the outputs.
 
 ```
-Legacy core system (Java/C#)
-       │
-       │  CSV / JSON export
-       ↓
-New processing layer (Python + Claude)
-       │
-       │  CSV / JSON import
-       ↓
-Legacy core system (Java/C#)
+Production input
+   │
+   ├──→ Old system (Java/C#) ──→ Output A
+   │
+   └──→ New system (Python+AI) ──→ Output B
+
+Compare A and B every day
 ```
 
-Don't touch the internals of the legacy. **Make only the boundary surface AI-native.**
+If A and B match, the new system is correct. If they don't, one of them is wrong. **Usually, a 20-year-old bug in the old system surfaces first** — a bug that was never in any document.
 
-This way you keep the business knowledge and gain a 10x speedup in new development. Small risk, large effect.
+Continue this for one month, three months. When diffs reach zero and edge cases are covered, stop the old.
 
-## Treat as a data source
+Parallel operation eliminates rewrite risk through **measurement**. Not desk-checking. Not spec reviews. **Production environment, real data, run and verify.**
 
-Treat the legacy system as a data source.
+## How long to keep the old running
 
-Have the Java core system emit CSV or JSON every day. Read the database directly if appropriate. If there's an XML API, hit it from Python.
+The parallel-operation period should be at most six months, usually three is enough.
 
-You are not "calling the legacy system directly." You are "running new processing on the data the legacy system emits." **The boundary is data, so AI can touch it.**
+If you need longer, the new system is not actually correct. Fix the new system. **Don't run parallel "indefinitely."**
 
-## Example: monthly anomaly detection
+Inside organizations, there is a psychology of "keep the old around just in case." This is a trap. Keeping it means:
 
-Suppose you want a "detect unusual movement" mechanism on monthly sales data.
+- Operations cost doubles
+- Engineers split their attention
+- When something breaks, arguments erupt over who is responsible
+- New features must be built in both, doubling the work
+- The decision to kill the old gets postponed forever
 
-Old method:
-1. File a change request against the core system
-2. Write a design document
-3. Get reviews
-4. Implement in Java
-5. Test
-6. Submit a production release request
-7. It works months later
+> Parallel operation is a means, not an end. When the new is verified, kill the old.
 
-New method:
-1. Have the core system export sales CSV daily (just one new job)
-2. Run anomaly detection in a Python script (Claude writes it)
-3. Output to CSV or a Slack notification
-4. Working the next day
+If you can't kill it, you shouldn't have started rewriting. **When you do it, do it.**
 
-The core system is untouched. **You add only one new layer at the boundary.**
+## Why "augment" is not enough
 
-If you want better detection, you tune the Python script. If you want to stop, you stop the job. Impact on the core system is zero.
+"Use the legacy assets, augment with AI" — this approach ultimately permits the old system to remain.
 
-## Push business knowledge into Markdown
+New features pile up on the outside. The substance stays old. Engineers move between two worlds. Three years pass, five years pass, and the organization is still not AI-native.
 
-The legacy carries business knowledge. Push it out into Markdown a little at a time.
+Parallel operation has a deadline. Replace within the deadline. **Half-hearted coexistence freezes the organization.**
 
-Java comments, SQL queries, operations runbooks, past incident reports — hand them to Claude and have them organized in Markdown. Make documents humans can read about "what this code does" and "what rules are embedded here."
+"Augment" was acceptable when rewriting was truly too expensive. That era is over.
 
-It does not have to be perfect. **What matters is that business knowledge accumulates in a form AI can read.** Next time the same business is touched, Claude can refer to the past Markdown. It compounds.
+## How to kill vendor products
 
-This is also insurance for the day a system needs replacing. If a spec exists separately from the code, the risk of replacement falls.
+Oracle, SAP, Salesforce, Microsoft business products — these aren't selling "products." They are selling "**the situation in which you have to keep using the product**."
 
-## SQL is still strong
+Pattern for killing via parallel operation:
 
-The center of business systems is the database. SQL is a 50-year-old language and will run for another 50 years.
+1. Export data from the product daily (the product keeps running)
+2. The new AI-built system processes the export and runs the same business
+3. Compute the same business metrics (sales, inventory, customer state) in both
+4. When the numbers match, **don't renew the product contract**
+5. Take a final "full data export" from the product and switch entirely to the new
 
-Hit the existing database with SQL from Python. Ask Claude "write the SQL for this requirement," and complex queries return in seconds. **You barely need to learn SQL.** Reading is enough.
+**Time it for the contract renewal cycle.** This is a strategic schedule. Renewal in October? Start parallel in June. Run for three months. Decide in September.
 
-The same applies to old PL/SQL or T-SQL. Claude writes both.
+The vendor will pull every card to keep you: "migration risk," "data integrity," "your veterans will leave." Parallel operation with matching outputs answers all of them. **You have the evidence.**
 
-## Escape vendor lock-in
+License fees are tens of thousands of dollars per year. Stopping that recovers the new-system development cost in months.
 
-Oracle, SAP, Salesforce, Microsoft business products — these are not selling "products." They are selling "the situation in which you have to keep using the product."
+## Push business knowledge out — all at once
 
-Two ways out.
+As preparation for parallel operation, push business knowledge into Markdown. **All at once.**
 
-**One: full replacement at once**
+Old common sense said documenting business knowledge was a months-to-years project. Someone scribbles in spare hours. Before half is written, that person transfers. The project collapses partway. **Ultimately, it never gets written.**
 
-This nearly always fails (as above).
+The era has changed.
 
-**Two: redraw the boundary and shift the center of gravity gradually**
+Hand Claude **everything** — old code, comments, SQL, runbooks, past incident reports. Tell it: "extract the business logic and organize it as Markdown." A codebase of a few thousand lines: hours for the first draft. Tens of thousands of lines: days at most.
 
-New features are written outside. Have the product emit CSV / JSON. Eventually, what the product holds is "past data and past rules" only. New value is created outside.
+"What this code does." "What rules are embedded." Human-readable Markdown lands in your hands **all at once**.
 
-After a few years, the product's importance has dropped. At contract renewal, you have the evidence to say "we may not need this anymore." **You take the initiative back from the vendor to your side.**
+It does not have to be perfect. **80% is enough.** The remaining 20% will surface as output diffs during parallel operation. Resolve them one by one, and the documentation completes itself.
 
-> Don't break the legacy. Redraw the boundary, and move with AI on the outside.
+> Compress months of work into days. This is what AI is actually for.
+
+This is also the hidden benefit of parallel operation. **Business rules that were never written down all surface during parallel run.** Rules that no spec captured, only operations knew — these get pulled out, both from Claude's first-pass Markdown and from the diffs the parallel run produces.
+
+A rewrite is also a documentation exercise. **Finish it this week.** There is no time left to keep "we'll document it someday" projects on the books.
+
+## Business rules live with the people who do the work
+
+Who does the rewriting?
+
+Old common sense: the IT department, SI vendors, or consultants gather requirements from the floor, then write code. When done, the floor performs acceptance testing.
+
+This was the shape of an era when the knowledge needed for a rewrite was distributed. **Coding ability lived in IT; business-rule knowledge lived on the floor.** They had to be coordinated.
+
+That has changed.
+
+**Coding ability is held by Claude.** What remains is business-rule knowledge. And the people who know business rules most deeply are the people running that business every day.
+
+The people on the floor have Claude write the code. **That is the whole loop.** No middle layer of "translation" needed.
+
+## The floor writes the tests
+
+What matters in parallel operation is finding output diffs. "Does the new system produce the same output as the old?" — verifying this requires test data.
+
+The people best suited to creating this test data are the people on the floor.
+
+"July billing closes on the 10th, but we extend by Obon to the 5th of the following month" — the floor knows this rule. They tell Claude: "make 50 billing test cases that account for the Obon extension in July." Claude makes them. They are run through the old system to capture expected outputs. This becomes the test data.
+
+Rules that were never in any spec materialize as tests. **Business knowledge flows from the floor → tests → code.**
+
+This is a kind of test the IT department, by itself, cannot write. They do not know the rules. **Rewrites have failed because people who didn't know the rules wrote the tests.**
+
+## Stop outsourcing
+
+Once you reach this point, the conclusion is clear.
+
+**You do not need to outsource business-system rewrites to IT vendors or consultants.**
+
+The traditional rationale for outsourcing was twofold:
+
+1. Coding ability lived only on the outside.
+2. Business knowledge had to be transferred to the outside.
+
+(1) was solved by Claude. (2) is no longer needed in the first place. **The floor + Claude completes the loop.**
+
+Outsourcing fees are the single largest cost item in business-system rewrites. Tens of millions to hundreds of millions of yen per year. That cost disappears.
+
+People on the floor — who know the rules — have Claude write the code, Claude write the tests, and verify by parallel operation. **Rewriting changes from "something to outsource" to "something done in-house."**
+
+This is not a contraction of the IT department's role. IT focuses on supporting the (floor + Claude) teams: infrastructure, databases, deploy environments, security. **They escape the duplicative role of "business-logic intermediary."** The work that for years consisted of writing specs without understanding the business and then revising them, simply disappears.
+
+> The people who know the business use Claude to rewrite their own systems. That is the new floor practice.
+
+To stop outsourcing is also to take responsibility back.
+
+## Keep SQL. Rewrite what runs on top
+
+Keep the database. SQL from 50 years ago will run for another 50. **The cost of rewriting SQL is not worth it.**
+
+But the Java and C# logic layer that runs on top of the database — that is what to rewrite. Rewrite in Python; hit the same database. Run in parallel.
+
+Separate "the shape of data" from "the shape of processing." Data stays as is; processing becomes AI-native. **This is where the boundary is drawn** — at the database. With this boundary, you can run the processing layer in parallel without worrying about data integrity.
+
+## Example: monthly closing batch
+
+Take a closing batch that runs at month-end.
+
+**Old**: A COBOL or Java batch from five years ago. No one fully understands the internals. Runs at month-end. Failure stops accounting.
+
+Steps for parallel operation:
+
+**Week 1**: Export 12 months of inputs (last month's transaction data) and outputs (closing summaries) from the old batch. Treat as ground truth.
+
+**Week 2**: Hand Claude the old code and runbooks; have it write equivalent processing in Python. Run 12 months of data through it; verify output matches ground truth. Resolve mismatches.
+
+**Weeks 3–6**: At the production timing when the old runs, also feed the same input to the new. Compare every month. When diffs appear, identify and fix.
+
+**Month 3**: When zero diffs occur for consecutive months, the responsible person decides: "from next month, run the new." **Stop the old batch.**
+
+Three months to complete the rewrite. Engineer load is doubled only during parallel run; afterward it is halved. **And the business logic now lives in both code and Markdown.** That is significant.
+
+## To those who say "don't touch what works"
+
+Inside organizations, people oppose rewriting. Their argument almost always reduces to one: "if you touch it, it might stop."
+
+Parallel operation answers exactly this. **You are not touching it.** The old keeps running during parallel. You verify daily that the new produces the same output as the old.
+
+If a diff appears on a given day, you identify the cause that same day. Fix the new. Don't touch the old. **Keep the old running as the reference for what "correct" means.**
+
+When parallel operation ends, three months of production data has proven the new behaves identically. **The risk of stopping the old at this point is far smaller than the risk those who originally opposed rewriting imagined.**
+
+People who keep saying "don't touch what works" cannot show data. People proposing parallel operation show data daily. **The argument lands on facts.**
 
 ## In summary
 
-Don't rewrite business systems. Keep them.
+"Getting along with" a business system is old.
 
-New work happens outside the boundary, in Python and Claude. Data flows across the boundary as CSV and JSON. Business knowledge is gradually pushed out as Markdown.
+Rewrite, with parallel operation. Build the new system in AI; run it parallel with the old. Compare outputs against reality. When diffs vanish, kill the old.
 
-This way you keep the business knowledge of legacy assets and gain a 10x speedup. Small risk, large effect.
+**When you do it, do it.** Half-hearted coexistence freezes the organization. In an era when AI cuts rewriting cost by 10x, there is no reason left to keep the legacy.
 
-The next chapter moves to building for the web. "You don't need React. HTML, CSS, and JavaScript are enough." A return to the origin.
+The next chapter moves to the web. "You don't need React. HTML, CSS, and JavaScript are enough" — a return to the origin.
 
 ---
 

@@ -9,7 +9,7 @@ date: 2026.05.02
 label: AI Native 07
 title_html: The web is <span class="accent">HTML+CSS+JavaScript</span>.<br>Return to the origin.
 prev_slug: business-systems
-prev_title: "Working with Business Systems — Augment Legacy Assets with AI"
+prev_title: "Working with Business Systems — Rewrite via Parallel Operation"
 next_slug: apps
 next_title: "Building Apps — CLI Tools, Flet Apps, Flutter Apps"
 ---

@@ -8,8 +8,8 @@ description: Drop the prejudice that Python belongs to engineers. Converting Exc
 date: 2026.05.02
 label: AI Native 04
 title_html: For code, the skill is not <span class="accent">writing</span>.<br>The skill is <span class="accent">using</span>.
-prev_slug: mermaid
-prev_title: "Drawing Diagrams — Save the Structure with Mermaid"
+prev_slug: design
+prev_title: "Designing — With Mermaid and Claude Design"
 next_slug: office-replacement
 next_title: "Changing Paperwork — A Realistic Path Away from Office"
 ---
@@ -138,7 +138,7 @@ From the next chapter, we move into work-type-specific practices. First, for off
 
 ## Related
 
-- [Chapter 03: Drawing Diagrams — Save the Structure with Mermaid](/en/ai-native-ways/mermaid/)
+- [Chapter 03: Designing — With Mermaid and Claude Design](/en/ai-native-ways/design/)
 - [Chapter 02: Holding Data — Think in JSON, CSV, YAML](/en/ai-native-ways/data-formats/)
 - [Chapter 01: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
 - [Structural Analysis 12: AI and the Individual Business](/en/insights/ai-and-individual/)

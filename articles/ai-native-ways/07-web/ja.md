@@ -273,7 +273,7 @@ Web を作る道具を、二層に分ける。
 ## 関連記事
 
 - [第1章: 文書を書く ── Markdownという最小の選択](/ai-native-ways/markdown/)
-- [第3章: 図を描く ── Mermaidで構造を残す](/ai-native-ways/mermaid/)
+- [第3章: デザインをする ── Mermaid と Claude デザインで作る](/ai-native-ways/design/)
 - [第6章: 業務システムと付き合う ── 並行稼働で書き換える](/ai-native-ways/business-systems/)
 - [第4章: 処理を書く ── AIにPythonで書いてもらう](/ai-native-ways/python/)
 - [構造分析15: Mythos時代のセキュリティ設計](/insights/security-design/)

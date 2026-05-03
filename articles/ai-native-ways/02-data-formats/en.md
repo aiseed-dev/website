@@ -10,8 +10,8 @@ label: AI Native 02
 title_html: Hold data as <span class="accent">structure</span>, not as tables.<br><span class="accent">JSON / CSV / YAML</span> make that possible.
 prev_slug: markdown
 prev_title: "Writing Documents — Markdown as the Minimal Choice"
-next_slug: mermaid
-next_title: "Drawing Diagrams — Save the Structure with Mermaid"
+next_slug: design
+next_title: "Designing — With Mermaid and Claude Design"
 ---
 
 # Holding Data — Think in JSON, CSV, YAML

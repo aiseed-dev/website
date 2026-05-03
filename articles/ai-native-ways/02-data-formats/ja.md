@@ -9,8 +9,8 @@ label: AI Native 02
 title_html: データは表ではなく、<span class="accent">構造</span>で持つ。<br><span class="accent">JSON / CSV / YAML</span> がそれを可能にする。
 prev_slug: markdown
 prev_title: 文書を書く ── Markdownという最小の選択
-next_slug: mermaid
-next_title: 図を描く ── Mermaidで構造を残す
+next_slug: design
+next_title: デザインをする ── Mermaid と Claude デザインで作る
 ---
 
 # データを持つ ── JSON/CSV/YAMLで考える

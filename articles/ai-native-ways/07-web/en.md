@@ -274,7 +274,7 @@ The next chapter moves to building apps. CLI tools, Flet apps, Flutter apps — 
 ## Related
 
 - [Chapter 01: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
-- [Chapter 03: Drawing Diagrams — Save the Structure with Mermaid](/en/ai-native-ways/mermaid/)
+- [Chapter 03: Designing — With Mermaid and Claude Design](/en/ai-native-ways/design/)
 - [Chapter 06: Working with Business Systems — Rewrite via Parallel Operation](/en/ai-native-ways/business-systems/)
 - [Chapter 04: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Structural Analysis 15: Security Design for the Mythos Era](/en/insights/security-design/)

@@ -1,0 +1,178 @@
+---
+slug: embedded
+number: "09"
+title: 組み込みを作る ── Pythonで考え、Claudeに翻訳させる
+subtitle: ハードウェア相手でも、思考は Python で
+description: マイコンや IoT デバイスは C や C++ で書く必要がある。しかし、設計と検証は Python で行える。Python で動かして、確かめて、それから Claude に C へ翻訳させる。これで組み込み開発の難所 ── ロジックの正しさ証明 ── が劇的に楽になる。
+date: 2026.05.02
+label: AI Native 09
+title_html: <span class="accent">Python</span> で考えて、<br><span class="accent">Claude</span> に翻訳させる。
+prev_slug: apps
+prev_title: アプリを作る ── CLIツール、Fletアプリ、Flutterアプリ
+next_slug: ai-delegation
+next_title: AIに任せる仕事を見極める
+---
+
+# 組み込みを作る ── Pythonで考え、Claudeに翻訳させる
+
+組み込みやマイコンを扱うあなたへ。
+
+ハードウェアの制約から、最終的には C か C++、軽くても Rust や MicroPython で書くことになる。しかし、**設計と検証は Python で行える**。設計と検証を Python でやって、確認できてから C に翻訳する。これで組み込み開発の最大の難所 ── 「ロジックが正しいことを確かめる」 ── が劇的に楽になる。
+
+## 組み込みの何が難しいか
+
+組み込みコードを書いた人なら、誰でも知っている。
+
+- 実機に焼き込まないと動作確認できない
+- ハードウェアのデバッグは PC のデバッグの 10 倍時間がかかる
+- print 一つ出すのに UART を設定する
+- メモリが足りない、バッファが溢れる、タイミングがずれる
+- 一行の修正でファームウェアを焼き直す
+
+ロジックの間違いとハードウェアの不安定さが**混ざる**。今うまく動かないのが、コードのせいか、配線のせいか、電源のせいか、分からない。
+
+これが、組み込み開発を遅くしてきた一番の理由だ。
+
+## 思考は Python で
+
+新しい組み込みプロジェクトで、最初に書くべきは Python だ。
+
+センサから値を読んでフィルタをかけて判定する処理 ── これを実機で書くのではなく、まず Python で書く。サンプルデータを CSV で用意して、Python で読み込んで、フィルタを通して、判定結果を出す。
+
+```python
+# サンプルデータでロジックを検証
+import csv
+
+def detect_anomaly(values):
+    avg = sum(values) / len(values)
+    return any(abs(v - avg) > 3 for v in values[-10:])
+
+with open("sensor_log.csv") as f:
+    rows = [float(r["value"]) for r in csv.DictReader(f)]
+
+print("anomaly:", detect_anomaly(rows))
+```
+
+このコードは PC で動く。一秒で実行できる。グラフを書いて視覚的に確認することもできる。テストデータを変えて何度も実行できる。
+
+ロジックが正しいかどうかを、ハードウェアと切り離して検証できる。
+
+## 翻訳は Claude が
+
+ロジックが Python で動いたら、それを C に翻訳する。
+
+Claude に「この Python コードを、Arduino で動く C++ に翻訳して。配列のサイズは固定にして」と頼めば、翻訳されて出てくる。
+
+```cpp
+// 翻訳された C++(Arduino 用)
+bool detectAnomaly(float values[], int size) {
+    float sum = 0;
+    for (int i = 0; i < size; i++) sum += values[i];
+    float avg = sum / size;
+    int start = size - 10;
+    if (start < 0) start = 0;
+    for (int i = start; i < size; i++) {
+        if (fabs(values[i] - avg) > 3) return true;
+    }
+    return false;
+}
+```
+
+これを実機に書き込んで動かす。**ロジックは Python で確認済みなので、ハードウェアで動かないなら原因はハードウェア側だ**。デバッグの方向が定まる。
+
+## 言語の選択
+
+組み込みの言語は、ハードウェアと用途で決まる。
+
+| ハードウェア | 言語 | 用途 |
+|-------------|------|------|
+| Arduino, AVR | C, C++ | 学習、簡単な制御 |
+| ESP32, RP2040 | C, C++, MicroPython | IoT、無線通信 |
+| STM32, NXP | C, C++, Rust | 産業用、精密制御 |
+| Raspberry Pi | Python, C++ | エッジ AI、画像処理 |
+| マイコン全般(プロトタイプ) | MicroPython | 試作、教育 |
+
+第一選択肢は、ハードウェアが許すなら **MicroPython または Python**。性能や容量の制約で Python が無理なら C か Rust に進む。
+
+Raspberry Pi クラスなら、最終形も Python で良い場合が多い。**Python のまま動かせるなら、翻訳は要らない**。
+
+## MicroPython という選択
+
+ESP32 や RP2040 のような小型マイコンには MicroPython が動く。これは Python のサブセットだ。
+
+PC で書いた Python コードを、ほぼそのままマイコンに転送できる。書き換えサイクルが速い(コンパイル不要、転送数秒)。デバッグが PC と同じ感覚でできる。
+
+MicroPython の制約 ── メモリ、速度、利用可能ライブラリ ── にぶつかったら、その部分だけ C に翻訳する。**全部翻訳する必要はない**。Python のまま残せる部分は残す。
+
+## ハードウェアは Claude も触れる
+
+回路図、配線、データシート ── これらの読み解きも Claude に頼める。
+
+「この OLED 表示モジュールを ESP32 に接続したい。配線とコードを教えて」と頼めば、ピン配置、ライブラリ、初期化コード、表示コードを返してくる。
+
+データシートが PDF なら、テキスト化して Claude に渡せば「このセンサのレジスタ 0x21 は何か」を答えてくれる。
+
+**ハードウェアの知識も AI が持っている**。一人でハードウェアと格闘する時代は終わった。
+
+## センサデータの分析も Python で
+
+組み込みデバイスからデータを取れたら、それを分析するのも Python だ。
+
+CSV や JSON で吐き出させて、PC に持ってきて、Python で分析する。`pandas` で集計、`matplotlib` でグラフ、`numpy` で数値処理。Claude が全部書ける。
+
+「センサが温度を 1 分ごとに記録している。この CSV から、1 日のうちで温度が急上昇した時間帯を見つけて、グラフにして」と頼めば、コードが返ってくる。
+
+**組み込みの本体は C で動かしても、その周辺(検証・分析・可視化)は Python と AI で動かす**。これが新しい組み込み開発のかたちだ。
+
+## 例: 室温モニター
+
+具体例を一つ。
+
+**目的**: ESP32 で室温を測って、30 度を超えたら通知する。
+
+**第一段階(PC で Python)**:
+
+ロジックを Python で書く。サンプル温度データ(CSV)を用意して、判定処理を書く。閾値の調整、ノイズ除去、通知条件 ── すべて PC で実験する。
+
+```python
+def should_alert(temps):
+    # 直近 5 分の平均が 30 度を超えたらアラート
+    recent = temps[-5:]
+    return sum(recent) / len(recent) > 30
+```
+
+**第二段階(MicroPython で実機)**:
+
+Python ロジックを MicroPython に転送する。MicroPython は Python のサブセットなので、ほぼそのまま動く。実機で温度センサ(DHT22 など)を繋いで、本物のデータで動かす。
+
+**第三段階(必要なら C に翻訳)**:
+
+電池駆動で長時間動かしたい、メモリが厳しい ── そのときに C に翻訳する。Claude に頼めば翻訳が出てくる。
+
+多くの場合、第二段階で終わる。MicroPython で十分動く。
+
+## 10年後も読める
+
+C は 50 年前からある。これからも 50 年動く。Python は 30 年前から動いていて、これからも 30 年動くだろう。
+
+業界特有の独自言語(古い PLC のラダー、車載の特殊規格)に閉じ込められていた組み込み知識を、Python と C と Markdown に出していく。**特定ベンダーから時間を超える形式に移す**。
+
+これは長期戦だ。しかし、毎日少しずつ進められる。
+
+## まとめ
+
+組み込みでも、思考は Python で。
+
+設計と検証を Python でやってから、必要なら C に翻訳する。Claude が翻訳を担う。**ハードウェアと格闘する時間が減り、本来の課題 ── センサとロジックと運用 ── に集中できる**。
+
+ここまでの 9 章で、AI ネイティブな仕事の道具立てが揃った。Markdown、JSON/CSV/YAML、Mermaid、Python、Office から離れる、業務システム、Web、アプリ、組み込み。
+
+次の章では、共通の発展に進む。「AI に任せる仕事を見極める」── 何を渡し、何を残すかの判断のはなし。
+
+---
+
+## 関連記事
+
+- [第8章: アプリを作る ── CLIツール、Fletアプリ、Flutterアプリ](/ai-native-ways/apps/)
+- [第4章: 処理を書く ── AIにPythonで書いてもらう](/ai-native-ways/python/)
+- [構造分析15: Mythos時代のセキュリティ設計](/insights/security-design/)

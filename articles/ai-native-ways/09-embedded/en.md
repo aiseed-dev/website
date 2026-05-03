@@ -160,6 +160,25 @@ Embedded knowledge that has been locked into industry-specific languages (old PL
 
 This is a long game. But you can advance a little every day.
 
+## In numbers
+
+ESP32 temperature-sensor logic development:
+
+- Old way, starting in C++: **2 weeks** (compile + flash + debug)
+- New way, validate in Python first, then transfer to MicroPython: **2 days**
+- **7x faster**
+
+Re-flash cycle:
+
+- C++ + flash: **~2 minutes**
+- MicroPython transfer: **~5 seconds**
+- Python simulation: **~0.1 seconds**
+- C vs Python: a **1,200x gap**
+
+20-year-old industrial PLC ladder logic, untouchable since the original engineer retired: Claude reads the ladder, translates to Python, documents in Markdown — **1 week**. By hand, half a year or more, with no guarantee even with a veteran engineer.
+
+Sensor data visualization: building a custom web dashboard takes 1 week. With Python's `matplotlib` plus a `plot()` line, then "make this an HTML report" to Claude — practical-quality result in **30 minutes**.
+
 ## In summary
 
 Even in embedded, think in Python.

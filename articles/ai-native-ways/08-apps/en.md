@@ -164,6 +164,23 @@ If you want to sell it on the App Store (really?), move to Layer 3. Rewrite in F
 
 **In most cases, you stop at Layer 1.** That is fine.
 
+## In numbers
+
+A photo-organizing app (sort by capture date):
+
+- CLI version: 30 lines of Python, **30 minutes** to develop, distributed by pushing to GitHub
+- iOS app: 200 lines of Swift, 50 GB of Xcode environment, 1-week App Store review, $99/year membership
+
+Development environment disk usage:
+
+- Flutter: Android Studio + Flutter SDK + Xcode = **~50 GB**
+- Flet: Python alone = **~100 MB** (Flutter distribution unpacked only when needed)
+- CLI tool: **20 MB**
+
+CLI tool creation and distribution: 1 hour to write, `pip install` instantly distributes worldwide to Python users. Distributing the same as an "app" requires reviews from 3 App Stores and 2 SDKs. **A 2+ week gap.**
+
+Adding a Flet GUI to existing CLI logic: install Flet, add tens of lines of code, **1 hour**. Rewriting in Flutter: 1 month.
+
 ## In summary
 
 Apps start at the CLI.

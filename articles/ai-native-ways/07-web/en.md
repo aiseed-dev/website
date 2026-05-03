@@ -257,6 +257,16 @@ Markdown too has barely changed since the original 2004 spec. The same files wil
 
 > Frameworks depend on the era. Web standards and Markdown cross eras.
 
+## In numbers
+
+Building a business web with React + Next.js + TypeScript + Tailwind: **3-month** development, **~1,200** dependencies, **3-minute** builds, **500 MB** `node_modules`. Same functionality with HTML+CSS+FastAPI+Markdown: **2-week** development, **4** dependencies, **5-second** builds, **10 MB** total.
+
+WordPress managed hosting (WP Engine, Kinsta, etc.): **5,000–30,000 yen/month**. Static HTML on Cloudflare Pages: **zero/month**. Annual savings of **60K–360K yen**.
+
+Page rendering speed: Next.js + Vercel dynamic rendering **~800 ms**. Static HTML + CDN **~50 ms**. **16x faster.**
+
+The scale of this site (aiseed.dev): **150+ pages, 30,000 lines of code, assembled in 24 hours.** Zero React, Next.js, or TypeScript. Markdown, Mermaid, minimal HTML/CSS only.
+
 ## In summary
 
 Split the web-building tools into two layers.

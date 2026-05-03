@@ -124,6 +124,16 @@ Excel VBA macros may stop working with each new Office version. Python code is t
 
 VBA runs today's Excel. Python keeps running across time.
 
+## In numbers
+
+Monthly job extracting amounts from 100 invoice PDFs: by hand, **4 hours**. With Python written by Claude, **3 seconds**. Next month, the same script in 3 seconds. **A 4,800x gap on the first run; infinite afterward.**
+
+Office work aggregating 50 Excel files monthly: 5 minutes per file × 50 = **4 hours**. Write the `pandas` Python script once, and `python aggregate.py` runs in **10 seconds** thereafter.
+
+Python learning curve: for the "ability to use," practicing reading Claude-written code for one week is enough to start using at work. The traditional self-study path to "ability to write" takes 6 months. **A 24x gap.**
+
+Reaction to errors: searching and trial-and-error solo takes 30 minutes to 2 hours. Pasting the error text into Claude returns the cause and corrected code in 30 seconds. **60x faster or more.**
+
 ## In summary
 
 Change your tools, and the way you process work changes.

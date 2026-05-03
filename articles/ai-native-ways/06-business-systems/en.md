@@ -265,6 +265,16 @@ When parallel operation ends, three months of production data has proven the new
 
 People who keep saying "don't touch what works" cannot show data. People proposing parallel operation show data daily. **The argument lands on facts.**
 
+## In numbers
+
+Translating 5,000 lines of PL/SQL business logic to Python, SI vendor quote: about **30M yen**. On-floor staff rewrite using Claude: 1-month development, about 1M yen in personnel cost. **One-thirtieth.**
+
+Oracle Enterprise Edition license: about **40M yen/year** for 20 CPUs + 22% maintenance. Migrating to PostgreSQL: zero per year. **New-system development cost recovered in one month.**
+
+Undocumented business rules surfaced during 3 months of parallel operation: typically **20–50 per system**. Rules invisible on paper specs all emerge as output diffs.
+
+Migrating business knowledge into Markdown: 6 months to 1 year if done in spare time. Hand the whole codebase to Claude, do it in one sweep: **80% in one week.**
+
 ## In summary
 
 "Getting along with" a business system is old.

@@ -272,6 +272,22 @@ That is the principle.
 
 Without these, organizations slip into silent dependency on AI. Before they notice, they become organizations where no one can decide.
 
+## In numbers
+
+AI agent service for automated email response: **$200+/month** (varies by volume). The same processing in Python + cron + AI API: **$1–5/month** (weekly message generation only). **40–200x gap.**
+
+Pattern of incidents an autonomous agent can cause: hit by prompt injection, erroneously updates 1,000 data records, **3 days of repair plus customer trust damage**. In dialogue mode, a human would have stopped it within the first few cases. One of the fastest-growing attack surfaces of the Mythos era.
+
+Linux command-line bulk processing:
+
+```bash
+for f in *.jpg; do convert "$f" -resize 1200 "${f%.jpg}.webp"; done
+```
+
+Processes 1,000 files in **~3 seconds**. Zero AI fees. Asking an AI agent to do the same: judging filenames, sizes, conversion results each time, **~60 minutes** (LLM response waits dominate), about $5 in AI fees. **1,200x faster.**
+
+The effect of "freezing into code": running the same processing daily for a year — agent-based operation incurs **$2,400+/year** in AI fees (at $200/month). A Python script: **$5–10/year** (only at initial code generation).
+
 ## In summary
 
 Separate the work to delegate from the work humans must keep.

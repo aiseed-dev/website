@@ -156,6 +156,27 @@ The first step can be anything.
 
 Step by step. **You don't have to change everything at once.** Take one step, and the second step becomes visible.
 
+## In numbers
+
+Operational cost of a consultancy:
+
+- **2025 (5-person team)**: accountant + marketer + web developer + assistant + head = monthly personnel cost **~2,000K yen**
+- **2026 (1 person + AI)**: head alone + Claude Pro ($20) + AI API ($50) = monthly **~15K yen**
+- **~130x lower** (same revenue maintained)
+
+Initial startup team composition:
+
+- **2020**: CTO + frontend + backend + designer + marketing = 5 people + salaries + stock options
+- **2026**: founder alone + Claude + time-contracted specialists when needed = no salary burden, no equity dilution
+
+Farmer's AI use:
+
+- Old: weather analysis + sales management + outreach + accounting outsourced separately, **~500K yen/year**
+- New: farmer does it all themselves with Claude, AI fees **~50K yen/year**
+- **One-tenth**, and the farmer fully understands every process
+
+The effect of paperwork disappearing: of an 8-hour workday, the 4 hours spent on paperwork move to AI. The remaining 4 hours can be spent on work that produces real value (customer dialogue, strategic decisions, creation). **The density of work only humans can do doubles.**
+
 ## In summary
 
 With AI-native tools in place, the minimum unit of work changes.

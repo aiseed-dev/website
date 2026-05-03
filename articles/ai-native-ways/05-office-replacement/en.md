@@ -121,6 +121,16 @@ If you walk through these four stages, what happens?
 
 This is not a threat. It is **liberation**.
 
+## In numbers
+
+Monthly report creation for office workers: Word + Excel + PowerPoint, **3 hours** → Markdown + CSV + Marp, **30 minutes**. **One-sixth.**
+
+Counting customer complaints over the past 3 months from a mailing list: half a day by hand → **1 minute** with the export handed to Claude.
+
+Word launch → format adjustment → save → email send cycle: 5 minutes × 30 messages × daily = **50 hours/month**. Markdown + Python automation reduces it to **5 hours/month**. **45 hours freed.**
+
+Time to summarize one email: reading and extracting the points yourself takes 5 minutes. Hand it to Claude and the summary plus recommended actions returns in 10 seconds. **30x faster.**
+
 ## In summary
 
 You don't need to drop Office. Use Office as the converter at the entrance and exit.

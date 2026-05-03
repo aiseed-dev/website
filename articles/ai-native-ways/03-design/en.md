@@ -203,6 +203,16 @@ Mermaid, Markdown, SVG, HTML+CSS — these are text. A file from 20 years ago re
 
 Formatting decorates display. Structure crosses time.
 
+## In numbers
+
+30-page slide deck in PowerPoint: prose and layout intermixed, **4 hours**. Same content in Marp: 30 lines of Markdown, 1-second build, edits are just Markdown changes — total **30 minutes**. **8x faster.**
+
+UI mockup in Figma: $15/month subscription, 1 hour of shape manipulation, image-exported (not interactive) when handed to development. Claude Design "make a login form" returns HTML+CSS instantly, runs in the browser, ready for development. **Zero subscription.**
+
+A one-line Mermaid diagram change in Git: 1 added, 1 removed, reviewed in 30 seconds. The same change in PowerPoint: file shows "binary changed," not reviewable.
+
+A 20-year-old `.ppt` file: substituted fonts, shifted shapes, hard to reproduce. A Markdown / Mermaid file from the same era renders perfectly today.
+
 ## In summary
 
 Move design tools to be text-centric.

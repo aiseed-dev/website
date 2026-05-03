@@ -10,8 +10,8 @@ label: AI Native 01
 title_html: Write documents in <span class="accent">Markdown</span>.<br>Save the <span class="accent">structure</span>, not the formatting.
 prev_slug: prologue
 prev_title: "Office for paperwork, Java/C# for business systems — but AI runs on Python and text"
-next_slug:
-next_title:
+next_slug: data-formats
+next_title: "Holding Data — Think in JSON, CSV, YAML"
 ---
 
 # Writing Documents — Markdown as the Minimal Choice

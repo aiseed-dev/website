@@ -1,0 +1,181 @@
+---
+slug: one-plus-ai
+number: "11"
+lang: en
+title: "One Person + AI — The New Unit of Work"
+subtitle: "The minimum size of an organization changes"
+description: With AI-native tools in place, the minimum unit of work becomes "one person + AI." Work that required a 10-person organization is now completed by one person plus Claude. Organizations don't disappear; their composition changes. This is the conclusion of the structural analysis series and the destination of the AI-native ways of working.
+date: 2026.05.02
+label: AI Native 11
+title_html: The minimum unit of work is<br><span class="accent">one person + AI</span>.
+prev_slug: ai-delegation
+prev_title: "Knowing What Work to Hand to AI"
+next_slug:
+next_title:
+---
+
+# One Person + AI — The New Unit of Work
+
+What can a human equipped with AI-native tools do?
+
+This chapter is the synthesis of the entire series. **The minimum unit of work changes.** Work that required a 10-person organization is completed by one person + Claude. When this happens, the structure of organizations changes from the ground up.
+
+## What can one person + AI do
+
+Lay out again the tools we acquired from the prologue through Chapter 10.
+
+- Write documents in **Markdown**
+- Hold data in **JSON / CSV / YAML**
+- Save diagrams in **Mermaid**
+- Write logic in **Python** (Claude writes it)
+- Step away from **Office** (kept as a converter layer)
+- **Business systems** are not broken; you operate outside the boundary
+- **Web** is enough with HTML+CSS+JS
+- **Apps** start at CLI, then Flet / Flutter as needed
+- **Embedded** thought in Python, translated to C
+- **Responsibility for judgment** stays with the human
+
+All of these, one person can use, with Claude beside them. What happens?
+
+Work that previously required "a team of specialists" is completed by one person.
+
+## Concrete example: a sole proprietor's monthly cycle
+
+Take A, a sole proprietor.
+
+A runs a consulting business. What happens at month-end?
+
+**Invoicing**: Claude reads the customer master (CSV) and generates invoice PDFs for each client. No accounting clerk needed.
+
+**Expense reconciliation**: Hand receipt photos to Claude; it transcribes them, classifies, and organizes into CSV. No accounting clerk needed.
+
+**Monthly report**: From sales and expense data, Claude produces a Markdown monthly report. The accountant is called only for tax filing.
+
+**Contract drafting**: For new clients, Claude drafts the contract. Edits go to a law firm, but only a few times a year.
+
+**Marketing**: Blog posts, social media posts, newsletter — all drafted by Claude.
+
+**Website updates**: Running on static HTML, so writing Markdown and running the Python build is the entire update.
+
+All of this is completed by A alone. Ten years ago, accounting clerk, marketer, web agency, printer — multiple people totaling a dozen would have been involved.
+
+## Concrete example: a farmer's AI
+
+Another example. B, a farmer.
+
+**Weather data**: Read 10 years of temperature and rainfall data in Python; ask Claude "when is the planting window this year."
+
+**Field journal**: Photos taken on the smartphone go to Claude, journaled into Markdown. "Black spots on cabbage leaves," Claude recognizes, references past treatment history, suggests what to do.
+
+**Sales management**: Direct-sales orders recorded in Markdown; Claude generates invoice PDFs and shipping labels.
+
+**Outreach**: Blog about the field; Claude drafts. Social media too. Multilingual versions (English, Chinese) — Claude.
+
+**Learning**: Claude summarizes Dr. Christine Jones's papers; B discusses application to his own field with Claude.
+
+This too is completed by one person. **Farmers become researchers.**
+
+## Concrete example: the 1-person startup
+
+Another example. C, a programmer, starting a 1-person startup.
+
+**Product development**: Build the web service in HTML+CSS+JS. Backend in Python (FastAPI). Claude writes nearly all the code. C does design judgments and reviews.
+
+**Design**: Tell Claude "simple and readable design," have it write CSS. Iterate.
+
+**Documentation**: Help pages, terms of service, privacy policy in Markdown. Claude drafts; C confirms.
+
+**Marketing**: Landing page, SEO copy, English version. Claude.
+
+**Support**: Replies to inquiries drafted by Claude. C confirms and sends.
+
+**Accounting**: For small scale, use freee or Money Forward; data organization and analysis by Claude.
+
+**Legal**: Contract drafts by Claude. Critical ones go to a lawyer.
+
+C focuses on "designing the product," "making the important decisions," "talking directly with customers." The rest goes to AI.
+
+This is the new shape of a startup. Ten years ago, you needed 3–5 co-founders. Now you can start with one.
+
+## Organizations don't disappear; their structure changes
+
+Asked "do organizations become unnecessary?" the answer is no.
+
+Organizations are still needed. **But the minimum unit of an organization shrinks.**
+
+Until now, organizations were "devices that bundled multiple specialists." Accounting, HR, marketing, development, sales, legal — each field needed specialists, and an organization was needed to integrate them.
+
+From here, organizations become "devices that bundle one-person + AI units." Each unit can move autonomously. The organization's role is coordination and direction. **A collection of small, autonomous units.**
+
+This is a completely different shape from the "pyramid organization." A team of 10 becomes 3, with each person plus AI producing equivalent or greater output. **Costs drop, decisions speed up.**
+
+## "Ways of working" change too
+
+When one person + AI is the unit, ways of working change too.
+
+You don't need to commute (no need to walk over to talk to a colleague). You don't need to work full-time (only the hours that are needed). You don't need to belong to one organization (contracts with multiple).
+
+This means "freelance," "side jobs," "multi-jobs" become normal. **AI lets each person operate their own office.**
+
+Organizations, too, no longer need to insist on full-time employment. "For this period, this deliverable, this person." When done, a contract with the next person. Organizations move project by project.
+
+## What becomes "work only humans can do"
+
+This is the real core. After delegating what can be delegated, what remains?
+
+- **Deciding what to do** (strategy, direction)
+- **Asking why to do it** (meaning, purpose)
+- **Deciding how to judge results** (evaluation, responsibility)
+- **Talking directly with customers to draw out their true needs**
+- **Resolving ethically difficult problems**
+- **Creating new value (first-time design)**
+- **Connecting people, building trust**
+- **Work that uses the body** (the field, the kitchen, medical procedures, craftsmanship)
+
+These cannot be delegated to AI.
+
+And these are **interesting**. Not boring processing work, but real work. Using AI-native tools, humans get back time for the real work.
+
+> Information processing becomes simple work that AI can do. What remains for humans is deciding what to do, why to do it, and how to judge the results.
+
+The single sentence from the prologue completes here.
+
+## When to start
+
+Asked "when do I switch to the AI-native way of working?" the answer is "**today**."
+
+Not tomorrow. Not next month. Today, right now.
+
+The first step can be anything.
+
+- The next note you write — in Markdown, not Word
+- The next table — in CSV, not Excel
+- The next diagram — in Mermaid, not PowerPoint
+- The next piece of processing — have Claude write the Python
+- The next Word file that arrives — pass to Claude, get Markdown back
+
+Step by step. **You don't have to change everything at once.** Take one step, and the second step becomes visible.
+
+## In summary
+
+With AI-native tools in place, the minimum unit of work changes.
+
+One person + AI can do the work that previously required ten. Organizations don't disappear; their structure changes. Ways of working change.
+
+What remains for humans: judgment, context, responsibility, creation, dialogue, trust, embodiment — this is the real work. **Hand processing to AI; humans return to the real work.**
+
+This is the conclusion of the "AI-Native Ways of Working" series.
+
+Thank you for staying with us from the prologue through Chapter 11. Take a step starting tomorrow — no, starting today.
+
+aiseed.dev will continue publishing the practice of AI-native ways of working.
+
+---
+
+## Related
+
+- [Prologue: Office for paperwork, Java/C# for business systems — but AI runs on Python and text](/en/ai-native-ways/prologue/)
+- [Chapter 10: Knowing What Work to Hand to AI](/en/ai-native-ways/ai-delegation/)
+- [Structural Analysis 08: Removing the Enterprise IT Tax](/en/insights/enterprise-tax/)
+- [Structural Analysis 12: AI and the Individual Business](/en/insights/ai-and-individual/)
+- [Structural Analysis 14: Subtraction Design](/en/insights/subtraction-design/)

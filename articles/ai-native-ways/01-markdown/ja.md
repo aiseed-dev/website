@@ -9,8 +9,8 @@ label: AI Native 01
 title_html: 文書は<span class="accent">Markdown</span>で。<br>書式ではなく、<span class="accent">構造</span>を残す。
 prev_slug: prologue
 prev_title: 事務処理はOffice、業務ソフトはJava/C#、しかしAIはPythonとテキスト
-next_slug:
-next_title:
+next_slug: data-formats
+next_title: データを持つ ── JSON/CSV/YAMLで考える
 ---
 
 # 文書を書く ── Markdownという最小の選択

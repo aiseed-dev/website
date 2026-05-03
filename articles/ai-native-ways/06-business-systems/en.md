@@ -175,13 +175,65 @@ This is not a contraction of the IT department's role. IT focuses on supporting 
 
 To stop outsourcing is also to take responsibility back.
 
-## Keep SQL. Rewrite what runs on top
+## Keep SQL. Drop PL/SQL and T-SQL
 
-Keep the database. SQL from 50 years ago will run for another 50. **The cost of rewriting SQL is not worth it.**
+Keep the database. **But drop the vendor dialect.**
 
-But the Java and C# logic layer that runs on top of the database — that is what to rewrite. Rewrite in Python; hit the same database. Run in parallel.
+Keep SQL as a standard language. `SELECT`, `JOIN`, `GROUP BY`, window functions — these have run for 50 years and will run for 50 more. Claude writes them perfectly.
 
-Separate "the shape of data" from "the shape of processing." Data stays as is; processing becomes AI-native. **This is where the boundary is drawn** — at the database. With this boundary, you can run the processing layer in parallel without worrying about data integrity.
+But Oracle's **PL/SQL** and Microsoft SQL Server's **T-SQL** — drop them. They are **vendor-specific dialects**. Embedding business logic inside the database has been the last bastion of vendor lock-in.
+
+Migrate to PostgreSQL. **The cost benefit is enormous.**
+
+PostgreSQL is open source, free, and commercially usable. Functionally on par with or better than Oracle and SQL Server.
+
+- **Zero license fees.** Oracle Enterprise Edition costs millions of yen per CPU. For a mid-sized organization, tens of millions to over one hundred million yen per year. That disappears.
+- **Functionality**: JSON types, array types, window functions, CTEs, full-text search, logical replication — everything business needs.
+- **Performance**: With proper design, comparable to Oracle. For most workloads, no measurable gap.
+- **AI-writability**: Claude is best at PostgreSQL dialect (it has the most open-source training data).
+- **Ecosystem**: AWS RDS, Google Cloud SQL, Azure Database — every cloud has a managed offering.
+
+Business logic embedded in PL/SQL stored procedures gets rewritten in Python. Hand Claude the PL/SQL; it extracts the business rules and outputs Python. **Business logic returns from invisible stored procedures into code.** Readable. Version-controlled. Testable.
+
+## Migrate the DB and the logic layer in parallel
+
+The same parallel-run approach used for the logic layer applies to the DB.
+
+1. Create the same schema in PostgreSQL (Claude writes the DDL dialect translation)
+2. Sync data daily from the old DB into PostgreSQL
+3. The new system (Python) reads/writes PostgreSQL
+4. The old system (Java/C#, PL/SQL) continues with Oracle / SQL Server
+5. Verify consistency between both via output comparison
+6. Pick a cut-over day. PostgreSQL becomes primary; the old DB goes read-only
+7. After weeks of stable operation, stop the old DB
+
+Rewriting just the logic layer to Python is only half-escaping the lock-in. As long as the DB is Oracle, you keep paying Oracle license fees. **Migrating to PostgreSQL is the final step out of lock-in.**
+
+And **the annual license cost recovers the new-system development cost in a few months.** Financially, there is no reason left not to rewrite.
+
+> Drop Oracle / SQL Server. That is your graduation certificate from vendor lock-in.
+
+## The way out of every lock-in is the same
+
+Everything described above has the same structure.
+
+- Replace the Java / C# logic layer with Python
+- Replace Oracle / SQL Server with PostgreSQL
+- Replace PL/SQL stored procedures with Python functions
+- Replace SAP / Salesforce with your own systems
+- Replace IT vendor and consultant outsourcing with the floor + Claude
+
+These are not separate problems. **The same move escapes them all.**
+
+**Rewrite via parallel operation.**
+
+Don't stop the old. Build the new beside it. Feed the same inputs to both; compare the outputs. When diffs vanish, kill the old. Time it to the contract renewal cycle.
+
+Lock-in is a psychological device that makes you feel "I can't touch it, I can't leave." Parallel operation dismantles that psychology physically. **Without touching the old, build the new mainstream beside it.** When the new works, that the old is unnecessary becomes visible to everyone.
+
+> The way out of every vendor lock-in is the same: rewrite via parallel operation.
+
+This is not just about business systems. Office, Microsoft 365, Google Workspace, CRM — wherever a vendor claims "your business stops without us," the same approach works.
 
 ## Example: monthly closing batch
 

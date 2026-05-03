@@ -275,6 +275,16 @@ Undocumented business rules surfaced during 3 months of parallel operation: typi
 
 Migrating business knowledge into Markdown: 6 months to 1 year if done in spare time. Hand the whole codebase to Claude, do it in one sweep: **80% in one week.**
 
+## What becomes possible
+
+From a legacy core system, **build a modern mobile-responsive web dashboard** in one week. Real-time graphs, search, drill-down, export — features that Java/C# legacy could not deliver in years and millions of yen, added during parallel operation. **The legacy Java/C# stack simply cannot reach modern UX.**
+
+PostgreSQL's logical replication enables **building an analytics-dedicated DB without affecting production**. BI tools, machine learning, external API integrations — all without stopping the legacy. Capabilities that required additional Oracle licenses, now free.
+
+With business knowledge in Markdown, Claude proposes "this case has similar past failures." **The organization's tacit knowledge returns as an AI colleague.** As long as it stayed buried in Java code, this was impossible.
+
+Discovering and fixing 20-year-old bugs during parallel operation means **the business system's quality objectively improves**. Business logic that ran untouched in Java becomes "an organizational asset" in Python + Markdown.
+
 ## In summary
 
 "Getting along with" a business system is old.

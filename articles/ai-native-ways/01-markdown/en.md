@@ -115,6 +115,16 @@ Word launch: 3–10 seconds. Opening `*.md` in VS Code: 0.5 seconds. Opening 30 
 
 Token consumption of a Word file: 5,000 characters consume about 8,000 tokens (formatting metadata inflates it). The same content in Markdown: about 4,000 tokens. **If you keep handing files to Claude, dropping formatting drops cost.**
 
+## What becomes possible
+
+A single command — `pandoc -o report.pdf report.md --pdf-engine=xelatex` — produces an **academic-paper or book-quality PDF.** Cover, table of contents, footers, citations, figure numbers, page layout — all automatic. Commercial publishing standards, in your own hands.
+
+From the same Markdown source: web article, PDF report, EPUB e-book, newsletter, social-media image, presentation slides — **simultaneous deployment across six media**. No rewriting; one fix in Markdown propagates everywhere.
+
+If internal documents are kept in Markdown, Claude summarizes "what was the past discussion on this policy" in **five seconds**. Organizational collective knowledge becomes a searchable asset.
+
+Convert an English research paper to Markdown, hand it to Claude, and **expert-level summaries and pointers to connections with your own work** come back. Even non-researchers can access cutting-edge research.
+
 ## In summary
 
 Change your tools, and the way you think changes.

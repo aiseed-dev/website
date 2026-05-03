@@ -213,6 +213,16 @@ A one-line Mermaid diagram change in Git: 1 added, 1 removed, reviewed in 30 sec
 
 A 20-year-old `.ppt` file: substituted fonts, shifted shapes, hard to reproduce. A Markdown / Mermaid file from the same era renders perfectly today.
 
+## What becomes possible
+
+Mermaid + `mmdc` (mermaid-cli) exports system diagrams as **print-quality SVG / PDF**. For proposals, technical specs, and external materials — finish equivalent to Visio or draw.io. Zero subscription cost.
+
+Marp's Markdown slides reach **quality fit for TED or international conferences**. Fonts, palette, image placement, transitions — all controlled by a few lines of Markdown. World-class presentations without a professional designer.
+
+Claude Design produces **cutting-edge UI on par with Linear, Stripe, Apple** instantly. Ask "make a Stripe-style payment form" or "a calm dashboard like Linear's," and the result comes back close to the original. **Individual entrepreneurs can compete with SaaS-startup-class UI.**
+
+Assemble a proposal folder (Markdown body + Mermaid diagrams + Claude Design mockups + SVG cover) with Python, and **the visual quality of a consulting proposal worth tens of millions of yen** can be produced by one person.
+
 ## In summary
 
 Move design tools to be text-centric.

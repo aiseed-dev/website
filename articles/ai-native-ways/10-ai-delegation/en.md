@@ -288,6 +288,16 @@ Processes 1,000 files in **~3 seconds**. Zero AI fees. Asking an AI agent to do 
 
 The effect of "freezing into code": running the same processing daily for a year — agent-based operation incurs **$2,400+/year** in AI fees (at $200/month). A Python script: **$5–10/year** (only at initial code generation).
 
+## What becomes possible
+
+Use Claude in dialogue mode and **research medical literature, legal documents, technical specs** becomes individually possible. "Even if you're not a doctor, organize and read Mayo-Clinic-level information," "even if you're not a lawyer, compare precedents and extract issues." **Knowledge that previously required hiring expert teams** opens up through one conversation.
+
+With Python + AI API, build **your own information-gathering, summarization, and notification pipeline**. Each morning, an industry news summary + importance ranking + recommended actions arrives. Information processing equivalent to a Bloomberg Terminal ($24,000/year/person) for $50/month.
+
+Linux + shell scripts + AI lets you write **24/7 processing in under 100 lines**. Data backup, log monitoring, scheduled jobs, web monitoring — operate your own servers safely without hiring an infrastructure engineer.
+
+Don't rely on SaaS that sells "autonomous agents" — **complete processing on your own code and your own server**. Data never leaves, no monthly fixed fees, stop whenever you want. **The initiative stays on your side.** In the Mythos era, this is the asset whose value rises fastest.
+
 ## In summary
 
 Separate the work to delegate from the work humans must keep.

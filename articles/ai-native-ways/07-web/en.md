@@ -267,6 +267,16 @@ Page rendering speed: Next.js + Vercel dynamic rendering **~800 ms**. Static HTM
 
 The scale of this site (aiseed.dev): **150+ pages, 30,000 lines of code, assembled in 24 hours.** Zero React, Next.js, or TypeScript. Markdown, Mermaid, minimal HTML/CSS only.
 
+## What becomes possible
+
+With static HTML + Service Worker + Web Push API, build a **PWA (offline-capable web app with push notifications)**. No app store, no review, no annual fee. **Native-app-class experience, on the web.**
+
+A Markdown-based personal site **delivered to 200 countries via CDN in under 50ms**. WordPress hosting cannot reach this speed. **Personal blogs compete on the same delivery quality as world-class media.**
+
+With Claude Design, **reproduce cutting-edge UI from Linear, Stripe, Apple in 30 minutes**. "Stripe-style payment screen," "calm dashboard like Linear's" — a website without a designer ends up looking like a Silicon Valley startup.
+
+aiseed.dev itself is the proof — **a full-scale 150+ page website**, built without React, without Next.js, without TypeScript, without `node_modules`. Markdown + Python + minimal HTML/CSS achieve speed and quality on par with Vercel or Netlify. **WordPress or Wix cannot offer this level of freedom.**
+
 ## In summary
 
 Split the web-building tools into two layers.

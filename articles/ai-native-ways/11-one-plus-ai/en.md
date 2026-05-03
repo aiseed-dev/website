@@ -177,6 +177,16 @@ Farmer's AI use:
 
 The effect of paperwork disappearing: of an 8-hour workday, the 4 hours spent on paperwork move to AI. The remaining 4 hours can be spent on work that produces real value (customer dialogue, strategic decisions, creation). **The density of work only humans can do doubles.**
 
+## What becomes possible
+
+One person + AI: **write a book and distribute it worldwide via Amazon KDP**. Publisher, editor, designer, printer, distribution — every function converges to your side. Bestsellers emerge from individuals. **"Writing ability × Claude" produces books at specialty-publisher quality.**
+
+A solo developer can **launch a SaaS in one month using Stripe API + FastAPI + PostgreSQL**. Payments, billing, user management, email — all built and operated by one person. Work that took a 5-person startup six months a decade ago. **The reality where a billion-dollar unicorn starts from one person** is here.
+
+Doctors, lawyers, researchers, consultants can access **the cutting edge of paper-writing, data analysis, frontier research** via AI. "Individual one-person output at the paper level," "research results comparable to expert teams" become the new standard. **An era where the frontier of knowledge has nothing to do with degrees or affiliations.**
+
+Linux + Markdown + Python + AI — this combination lets **individuals exceed corporations**. Work that was bound up in Office, Excel, PowerPoint produces output of a different order when you switch to AI-native tools. **You change the tools not for savings, but to produce real value.**
+
 ## In summary
 
 With AI-native tools in place, the minimum unit of work changes.

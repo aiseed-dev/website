@@ -201,12 +201,12 @@ CommonMark + tables 拡張(`tools/build/markdown.py`)。
 I. 共通の作法
 01. 文書を書く ── Markdownという最小の選択
 02. データを持つ ── JSON/CSV/YAMLで考える
-03. 図を描く ── Mermaidで構造を残す
+03. デザインをする ── Mermaid と Claude デザインで作る
 04. 処理を書く ── AIにPythonで書いてもらう
 
 II. 仕事の種類別
 05. 事務処理を変える ── Officeから離れる現実的な道筋
-06. 業務システムと付き合う ── 既存資産を活かしつつAIで補う
+06. 業務システムと付き合う ── 並行稼働で書き換える
 07. Webを作る ── HTML+CSS+JavaScriptという原点回帰
 08. アプリを作る ── CLIツール、Fletアプリ、Flutterアプリ
 09. 組み込みを作る ── Pythonで考え、Claudeに翻訳させる

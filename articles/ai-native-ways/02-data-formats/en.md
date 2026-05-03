@@ -10,8 +10,8 @@ label: AI Native 02
 title_html: Hold data as <span class="accent">structure</span>, not as tables.<br><span class="accent">JSON / CSV / YAML</span> make that possible.
 prev_slug: markdown
 prev_title: "Writing Documents — Markdown as the Minimal Choice"
-next_slug: mermaid
-next_title: "Drawing Diagrams — Save the Structure with Mermaid"
+next_slug: design
+next_title: "Designing — With Mermaid and Claude Design"
 ---
 
 # Holding Data — Think in JSON, CSV, YAML
@@ -134,6 +134,26 @@ CSV is just a text file. In ten years, in twenty years, any text editor can read
 > Save the structure. Throw away the formatting.
 
 Formatting decorates the present. Structure crosses time.
+
+## In numbers
+
+10,000 rows of sales data: 1.2 MB as `.xlsx`, 280 KB as CSV. **One-quarter.** Formatting metadata accounts for four times the actual data.
+
+Aggregating monthly sales via Excel pivot table: 5 minutes of clicking, no reproducibility. The same aggregation in `pandas`: 3 lines of code, 0.1 seconds to run, the Python script reusable next month.
+
+Monthly job extracting specific columns from 100 `.xlsx` files: half a day in VBA. With `pandas` and `glob`, processed in a single sweep, 30 seconds. **Ask Claude; the code arrives immediately.**
+
+Claude's recognition rate when handed JSON / CSV: near 100% (structure is bare). When handed `.xlsx`: depending on format, 70–80% (merged cells and formatting degrade it). **The more you hold data as structure, the less AI gets it wrong.**
+
+## What becomes possible
+
+Hand a CSV to Claude and `matplotlib` produces **business-dashboard-quality charts** in three minutes. Palette, labels, legends, annotations, trend lines — visualization at statistical-expert level, without a data scientist.
+
+From JSON data, **automatically launch a real-time-updating web dashboard**. FastAPI + Chart.js + Claude's template, and **a sales/inventory/KPI visualization site is complete in one day**. No BI tool licenses needed.
+
+A single YAML configuration brings up **a complex full system (DB, web server, jobs, monitoring, load balancer)**. The world of Infrastructure as Code — individual developers can now design Google-grade infrastructure.
+
+Throw a CSV at Claude with "write a `pandas` Jupyter notebook with this and compare against industry statistics," and **analysis that would take a doctoral student a week comes back in 30 minutes**.
 
 ## In summary
 

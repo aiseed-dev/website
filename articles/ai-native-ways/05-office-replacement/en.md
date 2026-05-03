@@ -11,7 +11,7 @@ title_html: Finish your paperwork<br><span class="accent">outside Office</span>.
 prev_slug: python
 prev_title: "Writing Logic — Have AI Write Python For You"
 next_slug: business-systems
-next_title: "Working with Business Systems — Augment Legacy Assets with AI"
+next_title: "Working with Business Systems — Rewrite via Parallel Operation"
 ---
 
 # Changing Paperwork — A Realistic Path Away from Office
@@ -120,6 +120,26 @@ If you walk through these four stages, what happens?
 > Hand the work AI can do to AI, and you spend your time on the work only humans can do.
 
 This is not a threat. It is **liberation**.
+
+## In numbers
+
+Monthly report creation for office workers: Word + Excel + PowerPoint, **3 hours** → Markdown + CSV + Marp, **30 minutes**. **One-sixth.**
+
+Counting customer complaints over the past 3 months from a mailing list: half a day by hand → **1 minute** with the export handed to Claude.
+
+Word launch → format adjustment → save → email send cycle: 5 minutes × 30 messages × daily = **50 hours/month**. Markdown + Python automation reduces it to **5 hours/month**. **45 hours freed.**
+
+Time to summarize one email: reading and extracting the points yourself takes 5 minutes. Hand it to Claude and the summary plus recommended actions returns in 10 seconds. **30x faster.**
+
+## What becomes possible
+
+From Markdown meeting notes, Claude **automatically extracts action items, drafts emails to owners, registers calendar reminders** in 30 seconds. Post-meeting handling that took an hour finishes in three minutes. Only the important work remains in your hands. **This was simply impossible in Word.**
+
+Generate the customer presentation **in Japanese, English, and Chinese simultaneously** (from the same Markdown source, with Claude translating). Overseas accounts become a one-person job. **Office workers expand into global operations.**
+
+Build proposals with Markdown + Mermaid + Claude Design, and **proposals at the level a consulting firm bills 200K USD for** can be produced by your own hands. "Three proposal versions for this client by tomorrow" — possible work for a single office worker. **Far beyond what Word + PowerPoint can deliver.**
+
+Keep an internal wiki in Markdown in Git, and **a decade of decisions become searchable and analyzable**. "Why was that policy adopted?" Claude answers in five seconds. Organizational memory opens up to individuals. **Word's binary format can't do this.**
 
 ## In summary
 

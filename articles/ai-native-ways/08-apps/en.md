@@ -164,6 +164,33 @@ If you want to sell it on the App Store (really?), move to Layer 3. Rewrite in F
 
 **In most cases, you stop at Layer 1.** That is fine.
 
+## In numbers
+
+A photo-organizing app (sort by capture date):
+
+- CLI version: 30 lines of Python, **30 minutes** to develop, distributed by pushing to GitHub
+- iOS app: 200 lines of Swift, 50 GB of Xcode environment, 1-week App Store review, $99/year membership
+
+Development environment disk usage:
+
+- Flutter: Android Studio + Flutter SDK + Xcode = **~50 GB**
+- Flet: Python alone = **~100 MB** (Flutter distribution unpacked only when needed)
+- CLI tool: **20 MB**
+
+CLI tool creation and distribution: 1 hour to write, `pip install` instantly distributes worldwide to Python users. Distributing the same as an "app" requires reviews from 3 App Stores and 2 SDKs. **A 2+ week gap.**
+
+Adding a Flet GUI to existing CLI logic: install Flet, add tens of lines of code, **1 hour**. Rewriting in Flutter: 1 month.
+
+## What becomes possible
+
+Publish a CLI tool to **PyPI** and worldwide Python users install it via `pip install foo` instantly. Stars on GitHub become global proof of your engineering. **No App Store review, no annual fee ($99) — same-day release.**
+
+Use Flet to wrap a machine learning model as a GUI **for non-technical staff**. Demand forecasting, image classification, document classification — data analysis democratized across the organization. **Machine learning that previously had to go through IT now reaches the floor.**
+
+With Flutter, distribute from one codebase to **iOS, Android, Web, Windows, Mac, Linux** — six platforms simultaneously. **Work that needed six teams five years ago**, accomplished by one person + Claude.
+
+CLI + Python + cron lets you build **your own automation agent** (command-based, not autonomous-mode). Daily email summary, weekly industry news, monthly household analysis — all running locally, data never leaves. **Automation without depending on SaaS subscriptions.**
+
 ## In summary
 
 Apps start at the CLI.

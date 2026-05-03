@@ -8,8 +8,8 @@ description: Drop the prejudice that Python belongs to engineers. Converting Exc
 date: 2026.05.02
 label: AI Native 04
 title_html: For code, the skill is not <span class="accent">writing</span>.<br>The skill is <span class="accent">using</span>.
-prev_slug: mermaid
-prev_title: "Drawing Diagrams — Save the Structure with Mermaid"
+prev_slug: design
+prev_title: "Designing — With Mermaid and Claude Design"
 next_slug: office-replacement
 next_title: "Changing Paperwork — A Realistic Path Away from Office"
 ---
@@ -124,6 +124,26 @@ Excel VBA macros may stop working with each new Office version. Python code is t
 
 VBA runs today's Excel. Python keeps running across time.
 
+## In numbers
+
+Monthly job extracting amounts from 100 invoice PDFs: by hand, **4 hours**. With Python written by Claude, **3 seconds**. Next month, the same script in 3 seconds. **A 4,800x gap on the first run; infinite afterward.**
+
+Office work aggregating 50 Excel files monthly: 5 minutes per file × 50 = **4 hours**. Write the `pandas` Python script once, and `python aggregate.py` runs in **10 seconds** thereafter.
+
+Python learning curve: for the "ability to use," practicing reading Claude-written code for one week is enough to start using at work. The traditional self-study path to "ability to write" takes 6 months. **A 24x gap.**
+
+Reaction to errors: searching and trial-and-error solo takes 30 minutes to 2 hours. Pasting the error text into Claude returns the cause and corrected code in 30 seconds. **60x faster or more.**
+
+## What becomes possible
+
+Scrape → gather industry statistics → analyze with `pandas` → visualize with `plotly` → publish dashboard with `Streamlit`. **Claude writes all of it.** A worldwide-published industry analysis site in 30 minutes. Five years ago, this required a dedicated analytics team for three months.
+
+Prototype machine learning with `scikit-learn`, apply deep learning with `PyTorch` — Claude provides the templates. **You "use" machine learning before you "learn" it.** Demand forecasting, image recognition, NLP — all reachable by a single proprietor.
+
+Build your own AI assistant with Python + Claude API. Customize to your organization's data, rules, and operations. **In-house AI colleagues without depending on ChatGPT or Notion AI.** Data stays internal; costs are only the API usage.
+
+Python + `requests` + Claude automates **monitoring competitor websites daily, detecting changes, generating summary reports**. Instead of paying market research firms tens of thousands per month, do it for a few hundred yen.
+
 ## In summary
 
 Change your tools, and the way you process work changes.
@@ -138,7 +158,7 @@ From the next chapter, we move into work-type-specific practices. First, for off
 
 ## Related
 
-- [Chapter 03: Drawing Diagrams — Save the Structure with Mermaid](/en/ai-native-ways/mermaid/)
+- [Chapter 03: Designing — With Mermaid and Claude Design](/en/ai-native-ways/design/)
 - [Chapter 02: Holding Data — Think in JSON, CSV, YAML](/en/ai-native-ways/data-formats/)
 - [Chapter 01: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
 - [Structural Analysis 12: AI and the Individual Business](/en/insights/ai-and-individual/)

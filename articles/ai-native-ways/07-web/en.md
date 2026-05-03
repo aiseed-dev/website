@@ -3,11 +3,11 @@ slug: web
 number: "07"
 lang: en
 title: "Building for the Web — Back to HTML+CSS+JavaScript"
-subtitle: "You don't need React. Escape the framework trap"
-description: 90% of websites are fine with HTML, CSS, and minimal JavaScript. No React, no Next.js, no Vite required. What AI writes is plain HTML/CSS/JS. Drop the framework, and the build disappears, dependencies vanish, and the site still works in ten years.
+subtitle: "Content in Markdown and Mermaid. Frame only in HTML+CSS"
+description: Split the web into two layers. Content in Markdown and Mermaid; frame in minimal HTML+CSS+JavaScript; Python connects the two. Keep content in Markdown and the same data is reusable beyond the web — for PDF, print, AI analysis, e-books.
 date: 2026.05.02
 label: AI Native 07
-title_html: The web is <span class="accent">HTML+CSS+JavaScript</span>.<br>Return to the origin.
+title_html: Content in <span class="accent">Markdown+Mermaid</span>.<br>Frame only in <span class="accent">HTML+CSS+JS</span>.
 prev_slug: business-systems
 prev_title: "Working with Business Systems — Rewrite via Parallel Operation"
 next_slug: apps
@@ -16,9 +16,12 @@ next_title: "Building Apps — CLI Tools, Flet Apps, Flutter Apps"
 
 # Building for the Web — Back to HTML+CSS+JavaScript
 
-Bring web-building tools back to HTML, CSS, and minimal JavaScript.
+Split the web-building tools into **two layers**.
 
-That single change makes the build disappear, dependencies vanish, and deploys go light. You write in a language AI is comfortable with, in the amount AI is comfortable producing. **For 90% of websites, this is enough.**
+- **Content**: write in Markdown and Mermaid
+- **Frame**: HTML, CSS, and minimal JavaScript
+
+Python connects them. With this alone, the build disappears, dependencies vanish, and deploys go light. And — this is the big one — **the content is reusable outside the web**.
 
 ## React fatigue
 
@@ -36,44 +39,139 @@ Each solved some problem. But comparing the problems they solved against the pro
 
 This is not technology. It is self-imposed complexity.
 
-## Static HTML covers 90%
+## The WordPress trap
 
-90% of websites are, honestly, just document delivery.
+"I'm not using React — I'm using WordPress." Many people are thinking exactly that, right now.
 
-Company about pages, product pages, blogs, technical docs, portfolios, menus, price lists, contact pages — none of this needs React. HTML and CSS are enough. If a dynamic element is needed, write minimal JavaScript directly.
+That is correct. About **43% of the world's websites** run on WordPress. In Japan too — corporate sites, personal blogs, news media, government sites — WordPress is everywhere.
 
-This site — aiseed.dev — runs on static HTML / CSS / JavaScript. Markdown converted to HTML by Python, served from Cloudflare. No React, no Next.js. **And nothing is missing.**
+But WordPress has its own trap. Different in nature from the React trap, **but at least as serious — often worse**.
 
-> 90% of websites are document delivery. Document delivery doesn't need React.
+**Problem 1: content locked into MySQL**
 
-## Languages AI handles well
+WordPress posts are not text files. They are records in a MySQL database, mixed with HTML. Want to convert the same post to PDF, move it to another site, hand it to AI for analysis? Every path begins with an export.
 
-HTML, CSS, JavaScript. These three are the languages AI writes most easily.
+The export format is `.xml` (WordPress's own WXR), with HTML tags and proprietary shortcodes (like `[gallery]`) intermixed. **Content is locked into WordPress.** This has the same shape as Chapter 2's "data locked in Excel."
 
-The reason: little code, no transformation layer. Writing a React component requires JSX, state management, hooks, TypeScript types — all together. Even when AI writes it, the output requires a build environment.
+**Problem 2: plugins are a security minefield**
 
-With raw HTML, you can hand Claude's output straight to the browser and it works. The verification loop is fast. **There is no extra layer between AI and human.**
+WordPress extensions rely on plugins built by volunteers worldwide. A typical site has 20–30 plugins. Each surfaces vulnerabilities periodically. **The whole site is a collection of attack surfaces.**
 
-## What to drop
+That 43% of the world's web runs on WordPress means, to an attacker, **43% of all targets are the same machine**. In an era when Mythos-class AI arrives, this becomes a fatal structure (see Structural Analysis 5: "Mythos Has Arrived").
 
-If you build a new website, drop these:
+**Problem 3: updates break things**
 
-- **JavaScript frameworks** (React, Vue, Angular, Svelte)
-- **Build tools** (Webpack, Vite, Turbopack, Parcel)
-- **TypeScript** (JS is enough)
-- **CSS frameworks** (Tailwind, Bootstrap)
-- **Package managers** (npm, yarn, pnpm)
-- **node_modules** (`rm -rf node_modules` makes it disappear)
+WordPress core, themes, plugins — all interdepend. Update one, and another stops working. "Applied an update; the site went down" is daily life in WordPress operations.
 
-And keep:
+**Problem 4: PHP is not where AI shines**
 
-- **HTML** (structure)
-- **CSS** (presentation)
-- **JavaScript** (dynamic elements only, bare minimum)
-- **Markdown** (content source)
-- **Python** (build script, when needed)
+WordPress themes and plugins are written in PHP. Claude can write PHP, but the output quality is less stable than Python. **For an AI-native toolset, PHP is not optimal.**
 
-The build disappears. Run `python build.py`, HTML comes out. Put HTML on a web server, the site runs.
+## Escaping WordPress
+
+If you are on WordPress, the way out is clear. Use the same **parallel operation** pattern from Chapter 6.
+
+1. Keep the existing WordPress running. **Export content to Markdown** (use plugins or CLI tools, or have Claude write a converter).
+2. Build the new site with Markdown + minimal HTML/CSS + Python.
+3. Preserve the URL structure (to retain SEO equity).
+4. Verify behavior in a staging environment, prepare reindex requests.
+5. Pick a DNS-cutover date.
+6. After cutover, run WordPress read-only for one month.
+7. If no issues, stop WordPress and cancel the hosting contract.
+
+The cost effect is significant too. WordPress managed hosting (WP Engine, Kinsta, etc.) costs tens to hundreds of dollars per month. Put static HTML on Cloudflare Pages or GitHub Pages, and the cost is **zero per month**. Tens of thousands of yen per year disappear.
+
+> WordPress, too, escapes via parallel operation. Export to Markdown, write the frame in HTML/CSS, generate with Python, serve as static. That is how you kill WordPress.
+
+## Content in Markdown + Mermaid. Frame in HTML+CSS+JS
+
+The essence of a website splits into "content" and "frame."
+
+| Kind | What you write | Tool |
+|---|---|---|
+| **Content** | Prose, tables, quotes, code, diagrams | **Markdown** + **Mermaid** |
+| **Frame** | Header, navigation, footer, layout, color | **HTML** + **CSS** + minimal JavaScript |
+| **Connection** | Pour content into the frame, output HTML | **Python** |
+
+Mixing these is the trap of past web development. A React component contains prose, formatting, and logic, all stirred together. A WordPress post mixes HTML tags with prose. Rewriting becomes hell.
+
+The AI-native split is **complete separation of content from frame**. Content is Markdown and Mermaid only. No HTML tags. The frame is HTML and CSS, but it never touches the content of any individual article. Python connects them mechanically.
+
+## Why hold content in Markdown + Mermaid
+
+The biggest reason to write content in Markdown and Mermaid is **the data is also usable outside the web**.
+
+From the same Markdown file:
+
+- A web page (Python converts to HTML)
+- A PDF (`pandoc`, or Claude does the conversion)
+- A print-ready manuscript
+- An e-book (EPUB)
+- Input to AI for summary, translation, Q&A
+- Pasting into other media
+- Diff review and history in Git
+- Co-editing with others
+
+**Content is not locked into the web.** Content written in WordPress or Wix disappears when the service ends. Content in Notion is locked into Notion's format. Markdown is not locked into anything.
+
+This is the web version of the "keep content in Markdown" principle from Chapter 1: **separate entrance, content, and exit**:
+
+- **Entrance**: Claude converts various formats (image, PDF, audio, Word) to Markdown
+- **Content**: held in Markdown and Mermaid (versioned in Git)
+- **Exit**: web, PDF, print, AI analysis, e-book — Python converts as needed
+
+> Keep content in Markdown. Convert at the exit. That is how you keep data usable for ten years.
+
+## Write the frame minimally
+
+The frame — header, navigation, footer, layout, color — is written **directly** in HTML and CSS. **Minimally.**
+
+- HTML templates: 1–few files
+- CSS: 1 file (a few hundred to a few thousand lines)
+- JavaScript: only essentials (mobile menu toggle, etc.), tens of lines
+
+You touch these only a few times a year. **Don't over-engineer the frame.** Skeleton stays as skeleton. Spend your time on content.
+
+**What to drop**:
+
+- JavaScript frameworks (React, Vue, Angular, Svelte)
+- Build tools (Webpack, Vite, Turbopack, Parcel)
+- TypeScript (JS is enough)
+- CSS frameworks (Tailwind, Bootstrap)
+- Package managers (npm, yarn, pnpm)
+- `node_modules` (`rm -rf node_modules` makes it disappear)
+
+**What to keep**:
+
+- HTML (structure) — one template file
+- CSS (presentation) — one file
+- JavaScript (dynamic parts only, bare minimum) — tens of lines
+- Markdown + Mermaid (content) — one file per article
+
+Just raw web standards and Markdown. **The combination AI handles best.** HTML/CSS/JS has no transformation layer; Markdown is AI's native notation. Both can be used as Claude returns them.
+
+## Python connects them
+
+Converting Markdown to HTML, Mermaid diagrams to SVG or images, and pouring them into the frame template — that is the job of a Python script.
+
+```
+articles/foo/ja.md  ──→  Python  ──→  html/foo/index.html
+                              ↑
+                  tools/templates/article.html (frame)
+```
+
+You don't need to write the script yourself. **Have Claude write it.** Use `markdown-it-py` to convert Markdown to HTML; use `Jinja2` to fill the template. Together, that's 100–200 lines.
+
+Three or four dependencies:
+
+- `markdown-it-py` — CommonMark parser
+- `Jinja2` — HTML template engine
+- `Pillow` — image processing (OG image generation, if needed)
+- (Mermaid diagrams render in the browser, or use `mermaid-cli` to produce SVG)
+
+`pip install -r requirements.txt` and you are done. There is no `node_modules`.
+
+This site's build script (`tools/build_article.py`) was mostly written by Claude. **You can own your build tool.** Instead of obeying a framework's conventions, write under your own conventions.
 
 ## Dynamic processing: FastAPI, only
 
@@ -139,14 +237,6 @@ Narrowing choices is not abandoning freedom. It is **narrowing what you have to 
 
 > The dynamic layer: FastAPI, only, minimal.
 
-## The build is a Python script
-
-The build for this site runs as a single Python script (`tools/build_article.py`). It reads Markdown, fills HTML templates, writes output. That's it.
-
-Dependencies are three: `Jinja2`, `markdown-it-py`, `Pillow`. `pip install -r requirements.txt` and you are done. There is no `node_modules`.
-
-The script itself was mostly written by Claude. You don't need to write it; have it written. **It is the era when you can own your build tool.**
-
 ## Deploys are light
 
 Deploying static HTML is just copying files.
@@ -163,15 +253,19 @@ A React v15 component may not build under v18. Webpack configurations need rewri
 
 HTML, CSS, and JavaScript core specs have maintained backward compatibility for 25+ years. An HTML file from 1999 still works in today's browser. **Raw web standards are time-tested.**
 
-> Frameworks depend on the era. Web standards cross eras.
+Markdown too has barely changed since the original 2004 spec. The same files will still be readable in twenty years. **Both the frame and the content are held in formats that cross time.**
+
+> Frameworks depend on the era. Web standards and Markdown cross eras.
 
 ## In summary
 
-Bring web tools back to the origin.
+Split the web-building tools into two layers.
 
-HTML, CSS, minimal JavaScript. Write in a language AI handles well, in an amount AI handles well. Drop the framework, kill the build, kill the dependencies.
+Content in **Markdown and Mermaid**. Frame in **HTML and CSS and minimal JavaScript**. Python connects the two.
 
-This site is the proof. 30,000 lines of code, 42 pages, assembled in 24 hours. No React. Nothing is missing.
+The build disappears, dependencies vanish, deploys go light. **And the content is reusable outside the web.** The same Markdown becomes a PDF, a printed page, an input to AI, an e-book.
+
+This site is the proof. 30,000 lines of code, 150+ pages, assembled in 24 hours. No React. Markdown and Mermaid and minimal HTML/CSS. Nothing is missing.
 
 The next chapter moves to building apps. CLI tools, Flet apps, Flutter apps — scaling up in stages.
 
@@ -179,7 +273,8 @@ The next chapter moves to building apps. CLI tools, Flet apps, Flutter apps — 
 
 ## Related
 
-- [Chapter 06: Working with Business Systems — Augment Legacy Assets with AI](/en/ai-native-ways/business-systems/)
+- [Chapter 01: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
+- [Chapter 03: Drawing Diagrams — Save the Structure with Mermaid](/en/ai-native-ways/mermaid/)
+- [Chapter 06: Working with Business Systems — Rewrite via Parallel Operation](/en/ai-native-ways/business-systems/)
 - [Chapter 04: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Structural Analysis 15: Security Design for the Mythos Era](/en/insights/security-design/)
-- [Structural Analysis 08: Removing the Enterprise IT Tax](/en/insights/enterprise-tax/)

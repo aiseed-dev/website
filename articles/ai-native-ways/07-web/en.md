@@ -75,15 +75,69 @@ And keep:
 
 The build disappears. Run `python build.py`, HTML comes out. Put HTML on a web server, the site runs.
 
-## Dynamic? Do it server-side
+## Dynamic processing: FastAPI, only
 
-"You can't make dynamic sites that way," you might think. Wrong.
+"You can't build dynamic sites that way," you might think. Wrong.
 
-Write dynamic processing on the server. Python (Flask, FastAPI, Django), Go, Rust, Ruby — anything works. The server returns HTML. The client receives HTML. **No need to ship piles of JavaScript to the browser.**
+Write dynamic processing on the server. **Python's FastAPI, that one alone.**
 
-If you need real-time updates, return them from the server via WebSocket or HTMX. That, too, works without a JavaScript framework.
+Flask, Django, Go, Rust, Ruby — there are mountains of choices. But each added choice splits the organization. "We'll write in FastAPI" — once decided, all argument ends. **Pick, then forget you picked.** This is the AI-native way of choosing tools.
 
-To build a complex single-page app (Google Docs, Figma, web Photoshop), React or Vue make sense. But that is the 1% of websites. The other 90% don't need it.
+Why FastAPI:
+
+- **It is Python**, matching the rest of the series stack
+- Type hints and Pydantic work naturally
+- async is standard
+- OpenAPI docs auto-generate
+- **Claude writes it best** (rich open-source training data)
+- Minimal boilerplate
+
+## And keep that minimal too
+
+"Minimal" means concretely:
+
+- **No ORM.** SQLAlchemy is not needed. Hit SQL directly with a PostgreSQL driver (asyncpg or psycopg).
+- **No layers.** Repository layer, service layer, domain layer — none of it. Receive request, execute SQL, return HTML. That is all.
+- **No extra dependencies.** FastAPI, PostgreSQL driver, Jinja2 (if templates are needed) — three are enough.
+- **No multiplying config files.** Environment variables only.
+- **No microservices.** One process.
+
+```python
+from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
+import asyncpg
+
+app = FastAPI()
+
+@app.get("/items", response_class=HTMLResponse)
+async def items():
+    conn = await asyncpg.connect(...)
+    rows = await conn.fetch("SELECT name, price FROM items")
+    html = "".join(f"<li>{r['name']}: {r['price']}</li>" for r in rows)
+    return f"<ul>{html}</ul>"
+```
+
+That alone is a server that "fetches items from a database and returns them as HTML." **Keep asking what more is actually needed.**
+
+Spring Boot's tower of class hierarchies, Django's app/middleware/views/serializers, Express + Prisma + GraphQL stacks — these are legacy from past complexity. **In an era when Claude can write SQL directly, the ORM's abstraction is not needed.**
+
+Client-side JavaScript stays minimal too. Link navigation uses `<a>`. Form submission uses `<form>`. Dynamic updates use HTMX (a few KB library, not a framework). Add WebSocket only when genuinely needed. **Don't start with an SPA.**
+
+## This covers 90% of cases
+
+For example, an internal inventory management web app:
+
+```
+Browser ─→ FastAPI (Python, one file, 200 lines) ─→ PostgreSQL
+```
+
+That works. Frontend, backend, database — one person can build it. Claude writes the code. **Hundreds of users and millions of records run normally.**
+
+There is no need to design microservices for performance up front. When you hit a wall, design scale-out then. **90% of business web apps never get there.**
+
+Narrowing choices is not abandoning freedom. It is **narrowing what you have to think about**. Don't burn time on technology debates. Write in FastAPI, SQL, and Jinja2. With AI.
+
+> The dynamic layer: FastAPI, only, minimal.
 
 ## The build is a Python script
 

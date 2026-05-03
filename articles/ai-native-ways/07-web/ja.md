@@ -74,15 +74,69 @@ HTML、CSS、JavaScript。この三つは、AI が最も書きやすい言語だ
 
 これで、ビルドが消える。`python build.py` を実行すれば HTML が出てくる、それだけ。Web サーバーに HTML を置けば、サイトが動く。
 
-## 動的要素はサーバー側で
+## 動的処理は FastAPI 一択
 
 「動的なサイトは作れないのでは?」と思うかもしれない。違う。
 
-動的処理はサーバー側で書く。Python(Flask、FastAPI、Django)、Go、Rust、Ruby ── 何でもいい。サーバーが HTML を返す。クライアントは HTML を受けるだけ。**ブラウザに JavaScript を大量に載せる必要はない**。
+動的処理はサーバー側で書く。**Python の FastAPI、これ一つでいい**。
 
-リアルタイム更新が要るなら、サーバーから WebSocket か HTMX で返す。それも JavaScript フレームワーク無しでできる。
+Flask、Django、Go、Rust、Ruby ── 選択肢は山ほどある。しかし、選択肢を増やせば、組織は分裂する。「FastAPI で書こう」と決めれば、それ以上の議論は終わる。**選んだら、選んだことを忘れる**。これが AI ネイティブな道具立ての考え方だ。
 
-複雑なシングルページアプリ(Google Docs、Figma、Photoshop Web 版)を作るなら React や Vue が要る。しかし、それは Web サイトの 1 割だ。残り 9 割には要らない。
+なぜ FastAPI か:
+
+- **Python だから**、このシリーズ全体のスタックと一致する
+- 型ヒントと Pydantic が自然に使える
+- async が標準
+- OpenAPI ドキュメントが自動生成される
+- **Claude が一番書きやすい**(オープンソースで学習データが豊富)
+- ボイラープレートが少ない
+
+## それも、最小限にする
+
+最小限とは、具体的にこういうことだ。
+
+- **ORM を使わない**。SQLAlchemy は要らない。PostgreSQL ドライバ(asyncpg または psycopg)で SQL を直接叩く
+- **層を増やさない**。Repository 層、Service 層、Domain 層 ── 要らない。リクエストを受け、SQL を実行し、HTML を返す。それだけ
+- **依存を増やさない**。FastAPI、PostgreSQL ドライバ、Jinja2(必要なら)── 三つで十分
+- **設定ファイルを増やさない**。環境変数だけで動く
+- **マイクロサービスにしない**。一つのプロセスで動かす
+
+```python
+from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
+import asyncpg
+
+app = FastAPI()
+
+@app.get("/items", response_class=HTMLResponse)
+async def items():
+    conn = await asyncpg.connect(...)
+    rows = await conn.fetch("SELECT name, price FROM items")
+    html = "".join(f"<li>{r['name']}: {r['price']}</li>" for r in rows)
+    return f"<ul>{html}</ul>"
+```
+
+これだけで、「データベースから商品を取って HTML で返す」サーバーが動く。**これ以上の何が要るのか**を問い続ける。
+
+Spring Boot の長大なクラス階層、Django の app/middleware/views/serializers、Express + Prisma + GraphQL のスタック ── これらは過去の複雑さの遺産だ。**Claude が直接 SQL を書ける時代に、ORM の抽象化は要らない**。
+
+クライアント側の JavaScript も最小限。リンク遷移は `<a>` でいい。フォーム送信は `<form>` でいい。動的更新が要るなら HTMX(数 KB のライブラリ、フレームワークではない)。WebSocket は本当に必要なときに追加する。**最初から SPA を作らない**。
+
+## これで 9 割は足りる
+
+例えば、社内の在庫管理 Web アプリ:
+
+```
+ブラウザ ─→ FastAPI (Python, 1 ファイル, 200 行) ─→ PostgreSQL
+```
+
+これで動く。フロントエンド、バックエンド、データベース、すべて 1 人で作れる。Claude がコードを書く。**ユーザー数百人、レコード数百万件まで普通に動く**。
+
+性能のために最初からマイクロサービスを設計する必要はない。実際に詰まったら、その時にスケールアウトを設計する。**9 割の業務 Web アプリは、そこまで来ない**。
+
+選択肢を絞ることは、自由を捨てることではない。**思考を捨てる対象を絞ること**だ。技術選択の議論に時間を使わない。FastAPI と SQL と Jinja2 で書く。AI と一緒に。
+
+> 動的層は、FastAPI 一択、最小限。
 
 ## ビルドは Python スクリプト
 

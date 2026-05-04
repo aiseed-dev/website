@@ -115,15 +115,60 @@ Word launch: 3–10 seconds. Opening `*.md` in VS Code: 0.5 seconds. Opening 30 
 
 Token consumption of a Word file: 5,000 characters consume about 8,000 tokens (formatting metadata inflates it). The same content in Markdown: about 4,000 tokens. **If you keep handing files to Claude, dropping formatting drops cost.**
 
-## What becomes possible
+## A walkthrough: 12 months of minutes turned into Markdown in 30 minutes
 
-A single command — `pandoc -o report.pdf report.md --pdf-engine=xelatex` — produces an **academic-paper or book-quality PDF.** Cover, table of contents, footers, citations, figure numbers, page layout — all automatic. Commercial publishing standards, in your own hands.
+You have 12 months of Word meeting notes (30 KB each, 360 KB total). Make them searchable, analyzable, and PDF-ready.
 
-From the same Markdown source: web article, PDF report, EPUB e-book, newsletter, social-media image, presentation slides — **simultaneous deployment across six media**. No rewriting; one fix in Markdown propagates everywhere.
+**Step 1: bulk convert**
 
-If internal documents are kept in Markdown, Claude summarizes "what was the past discussion on this policy" in **five seconds**. Organizational collective knowledge becomes a searchable asset.
+```bash
+mkdir minutes-md
+for f in minutes/*.docx; do
+  pandoc "$f" -o "minutes-md/$(basename "${f%.docx}").md"
+done
+```
 
-Convert an English research paper to Markdown, hand it to Claude, and **expert-level summaries and pointers to connections with your own work** come back. Even non-researchers can access cutting-edge research.
+12 files become `.md` in 5 seconds. Word formatting is stripped; only the heading-paragraph-list structure remains.
+
+**Step 2: have Claude clean them up**
+
+```bash
+cat minutes-md/2026-04.md | claude -p \
+  "Restructure these minutes into Decisions / Pending / Action Items"
+```
+
+Verbose preambles are dropped, and a Markdown organized by decisions / pending / owners returns.
+
+**Step 3: extract a specific theme across 12 months**
+
+```bash
+grep -A 3 "fertilizer price" minutes-md/*.md
+```
+
+Every place "fertilizer price" was discussed in the past 12 months comes out with three lines of context. The same task takes 30 minutes of VBA in Word.
+
+**Step 4: generate a print-quality PDF**
+
+```bash
+pandoc minutes-md/2026-04.md -o 2026-04.pdf \
+  --pdf-engine=xelatex \
+  --toc \
+  -V mainfont="Hiragino Mincho Pro" \
+  -V geometry:margin=2.5cm
+```
+
+A typeset PDF with a table of contents, in Hiragino Mincho. **Quality at the level of a book publisher.** Send this to clients.
+
+**Step 5: have AI analyze 12 months of discussion patterns**
+
+```bash
+cat minutes-md/*.md | claude -p \
+  "List the five themes most often repeated across these minutes, with frequency"
+```
+
+The structural problem of an organization debating the same things repeatedly becomes visible in five seconds. **An insight Word will never give you.**
+
+The whole pipeline, 30 minutes. Knowledge that was locked in Word becomes a searchable, AI-analyzable, print-quality-distributable asset.
 
 ## In summary
 

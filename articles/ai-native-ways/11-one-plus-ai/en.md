@@ -177,15 +177,98 @@ Farmer's AI use:
 
 The effect of paperwork disappearing: of an 8-hour workday, the 4 hours spent on paperwork move to AI. The remaining 4 hours can be spent on work that produces real value (customer dialogue, strategic decisions, creation). **The density of work only humans can do doubles.**
 
-## What becomes possible
+## A walkthrough: 1 person + AI launches a SaaS in 1 month
 
-One person + AI: **write a book and distribute it worldwide via Amazon KDP**. Publisher, editor, designer, printer, distribution — every function converges to your side. Bestsellers emerge from individuals. **"Writing ability × Claude" produces books at specialty-publisher quality.**
+A solo developer ships a monthly-subscription SaaS in 1 month using Stripe API + FastAPI + PostgreSQL. Work that took a 5-person team six months a decade ago.
 
-A solo developer can **launch a SaaS in one month using Stripe API + FastAPI + PostgreSQL**. Payments, billing, user management, email — all built and operated by one person. Work that took a 5-person startup six months a decade ago. **The reality where a billion-dollar unicorn starts from one person** is here.
+**Day 1: idea in Markdown**
 
-Doctors, lawyers, researchers, consultants can access **the cutting edge of paper-writing, data analysis, frontier research** via AI. "Individual one-person output at the paper level," "research results comparable to expert teams" become the new standard. **An era where the frontier of knowledge has nothing to do with degrees or affiliations.**
+```markdown
+# Product: Markdown Meeting Notes SaaS
 
-Linux + Markdown + Python + AI — this combination lets **individuals exceed corporations**. Work that was bound up in Office, Excel, PowerPoint produces output of a different order when you switch to AI-native tools. **You change the tools not for savings, but to produce real value.**
+## Problem
+Organization meeting notes scatter across Word; can't search or analyze
+
+## Solution
+A web service: upload Markdown notes, Claude returns summaries,
+action extraction, and organizational decision-pattern analysis
+```
+
+**Day 2-3: design schema and API; have Claude implement**
+
+```
+You: Write the PostgreSQL schema (users, organizations, minutes,
+     analyses) and FastAPI endpoints (login, upload, analyze, list).
+     Include Pydantic, async, pytest.
+```
+
+Returned: 50 lines of schema DDL, 250 lines of FastAPI, 100 lines of tests.
+
+**Day 4-7: frontend with Claude Design**
+
+```
+You: Upload screen, analysis result view, dashboard. Linear-style calm
+     UI, no Tailwind, pure CSS.
+```
+
+Returned HTML/CSS rides on Chapter 7's HTML+CSS+minimal-JS stack.
+
+**Day 8-10: Stripe billing**
+
+```
+You: Stripe Checkout for $20/month, Webhook syncing subscription state
+     to DB. In FastAPI.
+```
+
+80 lines of code using the `stripe` Python SDK.
+
+**Day 11-15: tests, bug fixes, ops logging**
+
+```bash
+pytest tests/
+# any failures go back to Claude to fix
+```
+
+**Day 16-20: deploy to a VPS**
+
+```bash
+# Hetzner Cloud, $5/month VPS
+ssh root@my-vps
+git clone my-repo
+docker compose up -d
+```
+
+PostgreSQL + FastAPI + Caddy (auto HTTPS). **Server cost $5/month.**
+
+**Day 21-25: landing page, terms of service, privacy policy**
+
+```
+You: Generate landing page, terms of service, privacy policy in
+     polished English and Japanese.
+```
+
+Claude drafts the legal docs. Send the critical parts to a lawyer for review (about $500).
+
+**Day 26-28: marketing**
+
+```
+You: Three intro versions for Hacker News and Product Hunt, each in
+     the conventions of that community.
+```
+
+Twitter / X, LinkedIn, blog — all derived from the same product Markdown.
+
+**Day 29-30: launch**
+
+Submit to Product Hunt. Submit to Hacker News. **One month, 0 → revenue.**
+
+**Total cost**: VPS $5 + Claude $50 + Stripe fees (success-based) + lawyer $500 = **about $600 for the first month.**
+
+**Features completed by one person**: auth, billing, webhooks, notes upload, AI analysis, dashboard, landing page, terms — work that ten years ago required 2 developers + 1 designer + 1 marketer + 1 legal for half a year.
+
+This isn't only about one business. **The era where 1 person + AI can do what previously only corporations could** has arrived. Book publishing, SaaS, research, consulting, education, media — all launchable by individuals using the same structure.
+
+> Change the tools, and the way you think changes. Change the way you think, and the minimum size of an organization changes.
 
 ## In summary
 

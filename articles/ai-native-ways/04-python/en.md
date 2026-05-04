@@ -134,15 +134,85 @@ Python learning curve: for the "ability to use," practicing reading Claude-writt
 
 Reaction to errors: searching and trial-and-error solo takes 30 minutes to 2 hours. Pasting the error text into Claude returns the cause and corrected code in 30 seconds. **60x faster or more.**
 
-## What becomes possible
+## A walkthrough: extract amounts from 100 invoice PDFs
 
-Scrape → gather industry statistics → analyze with `pandas` → visualize with `plotly` → publish dashboard with `Streamlit`. **Claude writes all of it.** A worldwide-published industry analysis site in 30 minutes. Five years ago, this required a dedicated analytics team for three months.
+Each month, 100 invoice PDFs arrive from vendors. Extracting and totaling amounts by hand takes 4 hours. Have Claude write it; finish in 30 seconds.
 
-Prototype machine learning with `scikit-learn`, apply deep learning with `PyTorch` — Claude provides the templates. **You "use" machine learning before you "learn" it.** Demand forecasting, image recognition, NLP — all reachable by a single proprietor.
+**Step 1: ask Claude**
 
-Build your own AI assistant with Python + Claude API. Customize to your organization's data, rules, and operations. **In-house AI colleagues without depending on ChatGPT or Notion AI.** Data stays internal; costs are only the API usage.
+```
+You: Write Python to extract the "total amount" from each PDF in
+     invoices/ and write a CSV (filename, amount). Assume Japanese PDFs.
+```
 
-Python + `requests` + Claude automates **monitoring competitor websites daily, detecting changes, generating summary reports**. Instead of paying market research firms tens of thousands per month, do it for a few hundred yen.
+Returned Python (20 lines):
+
+```python
+import pdfplumber, csv, re, glob
+
+results = []
+for path in glob.glob("invoices/*.pdf"):
+    with pdfplumber.open(path) as pdf:
+        text = "\n".join(p.extract_text() or "" for p in pdf.pages)
+    m = re.search(r"合計\s*[¥￥]?\s*([\d,]+)\s*円?", text)
+    amount = int(m.group(1).replace(",", "")) if m else None
+    results.append({"filename": path, "amount": amount})
+
+with open("amounts.csv", "w", newline="", encoding="utf-8") as f:
+    w = csv.DictWriter(f, fieldnames=["filename", "amount"])
+    w.writeheader()
+    w.writerows(results)
+
+print(f"total: {sum(r['amount'] or 0 for r in results):,} yen")
+```
+
+**Step 2: run**
+
+```bash
+pip install pdfplumber
+python3 extract.py
+```
+
+Output:
+
+```
+total: 12,345,678 yen
+```
+
+`amounts.csv` has 100 rows. **Processing time: about 30 seconds.**
+
+**Step 3: when an error occurs, Claude fixes it**
+
+E.g., if a few PDFs use a different "total" phrasing and extraction fails:
+
+```bash
+python3 extract.py 2>&1 | claude -p \
+  "Fix this error. Multiple invoice formats may exist."
+```
+
+Fixed code returns: a regex that matches all the variant Japanese expressions for "total."
+
+**Step 4: reuse next month**
+
+```bash
+mv invoices/ invoices-2026-04/
+mkdir invoices/
+# drop in May's invoices
+python3 extract.py
+```
+
+**Next month, the month after — just run `extract.py`.** Zero rewriting. "4 hours of monthly manual work" becomes "30 seconds of monthly command."
+
+**Step 5: one step further — anomaly detection**
+
+```
+You: Read 12 months of amounts.csv and flag invoices that deviate
+     more than 30% from the historical average.
+```
+
+15 lines of Python returns. **Billing errors the accounting team missed appear.** Excel cannot do this.
+
+The skill of writing was not required. **The skill of using** turned 4 hours of manual labor into 30 seconds of reliable processing.
 
 ## In summary
 

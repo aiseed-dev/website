@@ -288,15 +288,80 @@ Processes 1,000 files in **~3 seconds**. Zero AI fees. Asking an AI agent to do 
 
 The effect of "freezing into code": running the same processing daily for a year — agent-based operation incurs **$2,400+/year** in AI fees (at $200/month). A Python script: **$5–10/year** (only at initial code generation).
 
-## What becomes possible
+## A walkthrough: replace an AI agent with Python + cron
 
-Use Claude in dialogue mode and **research medical literature, legal documents, technical specs** becomes individually possible. "Even if you're not a doctor, organize and read Mayo-Clinic-level information," "even if you're not a lawyer, compare precedents and extract issues." **Knowledge that previously required hiring expert teams** opens up through one conversation.
+Replace a daily email-processing AI agent ($200/month) with Python + cron + AI API ($1–5/month).
 
-With Python + AI API, build **your own information-gathering, summarization, and notification pipeline**. Each morning, an industry news summary + importance ranking + recommended actions arrives. Information processing equivalent to a Bloomberg Terminal ($24,000/year/person) for $50/month.
+**Step 1: articulate what to automate**
 
-Linux + shell scripts + AI lets you write **24/7 processing in under 100 lines**. Data backup, log monitoring, scheduled jobs, web monitoring — operate your own servers safely without hiring an infrastructure engineer.
+"Each morning, read unread inquiry emails, classify urgency, post a summary to Slack for urgent ones." That's it.
 
-Don't rely on SaaS that sells "autonomous agents" — **complete processing on your own code and your own server**. Data never leaves, no monthly fixed fees, stop whenever you want. **The initiative stays on your side.** In the Mythos era, this is the asset whose value rises fastest.
+**Step 2: have Claude write the code once (in dialogue mode)**
+
+```
+You: Python that fetches unread emails via IMAP, classifies them as
+     "urgent / normal / ignore" via Claude API, posts a summary of urgent
+     ones to Slack. Configuration via env vars.
+```
+
+Returned Python (60 lines):
+
+```python
+import os, imaplib, email
+from anthropic import Anthropic
+import requests
+
+ANTHROPIC = Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+SLACK_WEBHOOK = os.environ["SLACK_WEBHOOK"]
+
+def classify_and_post(subject, body):
+    msg = ANTHROPIC.messages.create(
+        model="claude-sonnet-4-6",
+        max_tokens=300,
+        messages=[{"role": "user", "content":
+            f"Classify this email as 'urgent/normal/ignore'. If urgent, "
+            f"return a one-line summary and recommended action.\n"
+            f"Subject: {subject}\nBody: {body[:2000]}"
+        }]
+    )
+    text = msg.content[0].text
+    if "urgent" in text.split("\n")[0].lower():
+        requests.post(SLACK_WEBHOOK, json={"text": f"🚨 {subject}\n{text}"})
+
+# IMAP loop fetches unread and passes each to classify_and_post
+# (omitted: ~30 lines of IMAP loop)
+```
+
+**Step 3: human reviews and approves**
+
+"Is the Claude API model latest?" "What's the Slack rate limit?" "What about retries on failure?" 30 minutes of review with Claude fixing concerns. **This is the dialogue-mode core.**
+
+**Step 4: register in cron**
+
+```cron
+*/15 * * * * cd ~/email-agent && python3 process.py >> /var/log/email-agent.log 2>&1
+```
+
+Runs every 15 minutes. **Once the code is written, AI is called only "once per email needing classification."**
+
+**Step 5: compare cost**
+
+| Operation | Monthly |
+|---|---|
+| AI agent SaaS (autonomous) | **$200+** |
+| Self-built Python + Claude API (classification only) | **$1–5** |
+
+200× difference. And **self-built runs on your own server, data never leaves, stops when you want it to.**
+
+**Step 6: weekly log review**
+
+```bash
+grep "urgent" /var/log/email-agent.log | tail -20
+```
+
+Review the 20 most recent "urgent" classifications. If misclassified, have Claude adjust the prompt. **Freezing the logic into code makes results reproducible and verifiable.**
+
+An autonomous agent makes a different judgment each time. Frozen into code, **the same judgment every time**. When an error is found, fixing one place fixes the whole thing. This is what "use AI as a generator" looks like.
 
 ## In summary
 

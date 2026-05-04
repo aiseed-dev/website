@@ -212,15 +212,83 @@ Mermaid 図 1 枚の Git 差分: 1 行追加・1 行削除、レビュー 30 秒
 
 20 年前の `.ppt` ファイル: フォント置換で図形がずれ、再現困難。同じ時代の Markdown / Mermaid ファイルは、今のレンダラで完全再現。
 
-## 実例: 生み出せるもの
+## 実例: 顧客提案書を 2 時間で作る
 
-Mermaid + `mmdc`(mermaid-cli)で、システム構成図を **印刷品質の SVG / PDF** に書き出せる。提案書、技術仕様書、社外向け資料で、Visio や draw.io と同等の仕上がり。サブスク料金ゼロ。
+新規顧客への提案書(20 ページ、構成図 + UI モック + 文章)を、1 人で 2 時間で作る。コンサルなら数百万円の仕事。
 
-Marp の Markdown スライドは、**TED や国際カンファレンスで投影しても通用する品質**になる。フォント、配色、画像配置、トランジション ── すべて Markdown の数行で制御。プロのデザイナー無しで世界基準のプレゼン。
+**手順 1: 提案書のフォルダ構造を作る**
 
-Claude デザインで、**Linear・Stripe・Apple のような最先端 UI** を即座に生成できる。「Stripe 風の決済フォームを作って」「Linear のような落ち着いたダッシュボード」と頼めば、本物に近いデザインが返る。**個人事業主が SaaS スタートアップ並みの UI で勝負できる**時代。
+```bash
+mkdir -p proposal-2026/{diagrams,mockups,assets}
+cd proposal-2026
+```
 
-提案書のフォルダ(Markdown 本体 + Mermaid 図 + Claude デザインのモックアップ + SVG 表紙)を Python で組み立てれば、**数千万円規模のコンサル提案書と同じ見栄え**が、1 人で作れる。
+```
+proposal-2026/
+├── ja.md              # 本文(Markdown)
+├── diagrams/          # 構造図(Mermaid)
+├── mockups/           # 画面案(Claude デザイン HTML)
+└── assets/            # 表紙画像など
+```
+
+**手順 2: 本文を Markdown で書く**
+
+```markdown
+# 在庫管理システム提案
+
+## 課題
+御社の在庫管理は現状、手書き台帳と Excel に分散している...
+
+## 提案する構成
+[構成図を以下に挿入]
+
+## 画面イメージ
+[ダッシュボード画面案を以下に挿入]
+```
+
+**手順 3: Mermaid で構成図**
+
+```bash
+cat > diagrams/architecture.mmd <<EOF
+graph TD
+  A[現場端末] -->|WebAPI| B[FastAPI]
+  B --> C[(PostgreSQL)]
+  B --> D[管理者ダッシュボード]
+  D -.->|アラート| E[現場端末]
+EOF
+
+mmdc -i diagrams/architecture.mmd -o diagrams/architecture.svg
+```
+
+`mmdc` で 1 秒で SVG 化。**Visio と同等の仕上がり**、サブスクゼロ円。
+
+**手順 4: 画面モックを Claude デザインで**
+
+```
+あなた: 在庫管理ダッシュボードの UI を作って。商品リスト・検索・
+        在庫アラート・グラフ。Linear のような落ち着いた配色で
+```
+
+返ってきた HTML+CSS を `mockups/dashboard.html` に保存。ブラウザで開けばその場で動く。**Figma を使わず、しかも本物に近いデザインがコードで手元に**。
+
+**手順 5: PDF に組み立てる**
+
+```bash
+pandoc ja.md -o proposal.pdf \
+  --pdf-engine=xelatex \
+  --toc \
+  -V mainfont="Hiragino Mincho Pro" \
+  -V geometry:margin=2cm \
+  --resource-path=.
+```
+
+ヒラギノ明朝で組版された、目次・図表入りの PDF。**コンサル会社が 200 万円で出すレベルの提案書**が手元に。
+
+**手順 6: 修正サイクル**
+
+顧客から「ダッシュボード案にも検索を追加してほしい」と言われたら、`mockups/dashboard.html` を Claude に投げて「検索バーを追加」と頼むだけ。30 秒で更新版が返る。本番環境で動くコードのまま。
+
+PowerPoint で同じ修正を依頼されると、レイアウトを崩さずに要素を追加するだけで 30 分かかる。**Markdown + Mermaid + Claude デザインなら 30 秒**。
 
 ## まとめ
 

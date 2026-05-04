@@ -275,15 +275,84 @@ Undocumented business rules surfaced during 3 months of parallel operation: typi
 
 Migrating business knowledge into Markdown: 6 months to 1 year if done in spare time. Hand the whole codebase to Claude, do it in one sweep: **80% in one week.**
 
-## What becomes possible
+## A walkthrough: replace a PL/SQL stored procedure with Python via parallel operation
 
-From a legacy core system, **build a modern mobile-responsive web dashboard** in one week. Real-time graphs, search, drill-down, export — features that Java/C# legacy could not deliver in years and millions of yen, added during parallel operation. **The legacy Java/C# stack simply cannot reach modern UX.**
+A PL/SQL stored procedure `calc_monthly_billing` (billing calculation, 500 lines), running for 20 years, is replaced with Python + PostgreSQL via parallel operation.
 
-PostgreSQL's logical replication enables **building an analytics-dedicated DB without affecting production**. BI tools, machine learning, external API integrations — all without stopping the legacy. Capabilities that required additional Oracle licenses, now free.
+**Step 1: have Claude read the old code**
 
-With business knowledge in Markdown, Claude proposes "this case has similar past failures." **The organization's tacit knowledge returns as an AI colleague.** As long as it stayed buried in Java code, this was impossible.
+```bash
+sqlplus -S user/pass @export_proc.sql > calc_monthly_billing.sql
+cat calc_monthly_billing.sql | claude -p \
+  "Output (1) a Markdown description of the business logic and (2) a Python translation"
+```
 
-Discovering and fixing 20-year-old bugs during parallel operation means **the business system's quality objectively improves**. Business logic that ran untouched in Java becomes "an organizational asset" in Python + Markdown.
+Returned:
+
+- **Markdown specification**: extracts 7 rules buried in the code, like "Closing July on the 10th, extended by 5 days for Obon"
+- **Python translation**: `calc_monthly_billing.py`, 120 lines, with `psycopg` for the DB layer
+
+**Step 2: export expected outputs from the old DB**
+
+```bash
+sqlplus -S user/pass <<EOF > expected.csv
+SELECT customer_id, billing_month, amount
+FROM monthly_billing
+WHERE billing_month >= TO_DATE('2025-04', 'YYYY-MM');
+EOF
+```
+
+Twelve months of expected data (about 50,000 rows) at hand.
+
+**Step 3: run the new code on the same input and compare**
+
+```python
+# verify.py
+import subprocess, csv
+
+subprocess.run(["python3", "calc_monthly_billing.py"])
+
+with open("expected.csv") as f1, open("actual.csv") as f2:
+    expected = {(r["customer_id"], r["billing_month"]): r["amount"] for r in csv.DictReader(f1)}
+    actual = {(r["customer_id"], r["billing_month"]): r["amount"] for r in csv.DictReader(f2)}
+
+diffs = [(k, expected[k], actual[k]) for k in expected if expected[k] != actual.get(k)]
+print(f"diffs: {len(diffs)}")
+for k, exp, act in diffs[:10]:
+    print(f"  {k}: old={exp}, new={act}")
+```
+
+**Step 4: resolve diffs**
+
+Say 7 diffs appear. Hand them to Claude:
+
+```bash
+python3 verify.py 2>&1 | claude -p \
+  "Identify the cause comparing against the PL/SQL and fix"
+```
+
+Returned: "The leap-year check in PL/SQL is `MOD(year, 4) = 0` but the Python translation became `year % 400 == 0`. Here's the fix."
+
+**Step 5: parallel operation in production**
+
+```cron
+# Old batch (kept)
+0 1 1 * * sqlplus user/pass @run_old_billing.sql
+
+# New batch (parallel)
+0 2 1 * * python3 calc_monthly_billing.py
+
+# Auto-compare; email on diff
+0 3 1 * * python3 compare.py | mail -s "billing diff" admin@example.com
+```
+
+Each month, both run; differences trigger email. After 3 months of zero diffs, stop the old.
+
+**Step 6: drop Oracle**
+
+Once the old batch is stopped, **don't renew the Oracle Enterprise Edition license**. 40M yen/year for 20 CPUs becomes zero. The new system (PostgreSQL + Python + 120 lines from Claude) is running.
+
+PL/SQL that was untouchable for 20 years has, in 3 months of parallel operation, become **Markdown-documented business logic + testable Python code + PostgreSQL**. **One on-floor staffer, alongside Claude, drove this**. No SI vendor.
 
 ## In summary
 

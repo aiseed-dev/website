@@ -145,15 +145,63 @@ Monthly job extracting specific columns from 100 `.xlsx` files: half a day in VB
 
 Claude's recognition rate when handed JSON / CSV: near 100% (structure is bare). When handed `.xlsx`: depending on format, 70–80% (merged cells and formatting degrade it). **The more you hold data as structure, the less AI gets it wrong.**
 
-## What becomes possible
+## A walkthrough: aggregate 100 Excel files in 30 seconds
 
-Hand a CSV to Claude and `matplotlib` produces **business-dashboard-quality charts** in three minutes. Palette, labels, legends, annotations, trend lines — visualization at statistical-expert level, without a data scientist.
+Each month, sales Excel files arrive from each store (`store-001.xlsx` … `store-100.xlsx`). The aggregation is half a day by hand. Finish it in 30 seconds.
 
-From JSON data, **automatically launch a real-time-updating web dashboard**. FastAPI + Chart.js + Claude's template, and **a sales/inventory/KPI visualization site is complete in one day**. No BI tool licenses needed.
+**Step 1: bulk-convert Excel to CSV**
 
-A single YAML configuration brings up **a complex full system (DB, web server, jobs, monitoring, load balancer)**. The world of Infrastructure as Code — individual developers can now design Google-grade infrastructure.
+```bash
+for f in stores/*.xlsx; do
+  ssconvert "$f" "${f%.xlsx}.csv"
+done
+```
 
-Throw a CSV at Claude with "write a `pandas` Jupyter notebook with this and compare against industry statistics," and **analysis that would take a doctoral student a week comes back in 30 minutes**.
+`ssconvert` (bundled with Gnumeric) turns 100 files into CSV in 5 seconds.
+
+**Step 2: have Claude write the aggregation**
+
+```
+You: Write Python that reads 100 CSVs (columns: date, item, qty, price)
+     and writes monthly sales totals per item to a CSV.
+```
+
+Returned Python (15 lines):
+
+```python
+import pandas as pd, glob
+
+dfs = [pd.read_csv(f) for f in glob.glob("stores/*.csv")]
+df = pd.concat(dfs)
+df["amount"] = df["qty"] * df["price"]
+df["month"] = pd.to_datetime(df["date"]).dt.to_period("M")
+summary = df.groupby(["month", "item"])["amount"].sum().reset_index()
+summary.to_csv("summary.csv", index=False)
+print(summary.head())
+```
+
+**Step 3: run**
+
+```bash
+python3 aggregate.py
+```
+
+The aggregation of 100 files lands in `summary.csv`. **Processing time: about 2 seconds.**
+
+**Step 4: have Claude draw the chart**
+
+```
+You: From summary.csv, plot monthly trends of the top 10 items in
+     matplotlib, with a calm professional palette.
+```
+
+Run the returned Python and `chart.png` appears with **visualization at the level of a professional data scientist**: palette, labels, legend, grid — all polished.
+
+**Step 5: from next month**
+
+Register `python3 aggregate.py` in `cron` and **the aggregation and chart arrive automatically on the 1st of each month**. Four hours of "Excel + pivot + manual copy-paste" become zero hours.
+
+And the CSV and Python script can be **version-controlled in Git**. "How did this aggregation logic change since last year?" becomes answerable. Excel pivot tables can never do this.
 
 ## In summary
 

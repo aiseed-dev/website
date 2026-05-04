@@ -131,15 +131,105 @@ Word launch → format adjustment → save → email send cycle: 5 minutes × 30
 
 Time to summarize one email: reading and extracting the points yourself takes 5 minutes. Hand it to Claude and the summary plus recommended actions returns in 10 seconds. **30x faster.**
 
-## What becomes possible
+## A walkthrough: finish a monthly report in 30 minutes
 
-From Markdown meeting notes, Claude **automatically extracts action items, drafts emails to owners, registers calendar reminders** in 30 seconds. Post-meeting handling that took an hour finishes in three minutes. Only the important work remains in your hands. **This was simply impossible in Word.**
+End of the month for an office worker. The old time was 3 hours. Make it 30 minutes.
 
-Generate the customer presentation **in Japanese, English, and Chinese simultaneously** (from the same Markdown source, with Claude translating). Overseas accounts become a one-person job. **Office workers expand into global operations.**
+**Step 1: receive sales data as CSV**
 
-Build proposals with Markdown + Mermaid + Claude Design, and **proposals at the level a consulting firm bills 200K USD for** can be produced by your own hands. "Three proposal versions for this client by tomorrow" — possible work for a single office worker. **Far beyond what Word + PowerPoint can deliver.**
+Have a script ready that converts the Excel from sales into CSV via `ssconvert`:
 
-Keep an internal wiki in Markdown in Git, and **a decade of decisions become searchable and analyzable**. "Why was that policy adopted?" Claude answers in five seconds. Organizational memory opens up to individuals. **Word's binary format can't do this.**
+```bash
+#!/bin/bash
+# convert.sh
+ssconvert "$1" "${1%.xlsx}.csv"
+```
+
+When the Excel arrives, run `./convert.sh sales.xlsx`.
+
+**Step 2: aggregate and emit Markdown table**
+
+```python
+# aggregate.py
+import pandas as pd
+
+df = pd.read_csv("sales.csv")
+summary = df.groupby("store")["amount"].sum().sort_values(ascending=False)
+
+with open("summary.md", "w") as f:
+    f.write("| Store | Revenue |\n|---|---:|\n")
+    for store, amount in summary.items():
+        f.write(f"| {store} | {amount:,} |\n")
+```
+
+`python3 aggregate.py` produces `summary.md`. **Pasteable as a Markdown table into the report body.**
+
+**Step 3: have Claude write the analysis comments**
+
+```bash
+cat summary.md | claude -p \
+  "From this monthly revenue, write three notable trends in polished business prose"
+```
+
+Comments like "Store A: +15% MoM, three consecutive months of growth" come back — **the analysis the reader actually wants**.
+
+**Step 4: assemble the Markdown body**
+
+```markdown
+# Monthly Revenue Report — April 2026
+
+## Summary
+[paste Claude's analysis comments]
+
+## Per-Store Revenue
+[paste summary.md table]
+
+## Focus for Next Month
+[write yourself — this is the human judgment zone]
+```
+
+**Step 5: produce both PDF (for boss) and HTML (for internal wiki)**
+
+```bash
+pandoc report.md -o report.pdf \
+  --pdf-engine=xelatex \
+  -V mainfont="Hiragino Mincho Pro" \
+  --toc
+
+pandoc report.md -o report.html --standalone --toc
+```
+
+**One Markdown produces a boss-bound PDF and a wiki-bound HTML simultaneously.** Word required "format for PDF" and "copy-paste for wiki" as separate steps.
+
+**Step 6: automate the email**
+
+```python
+# send.py
+import smtplib, ssl
+from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
+from email.mime.text import MIMEText
+
+msg = MIMEMultipart()
+msg["Subject"] = "Monthly Revenue Report — April 2026"
+msg["From"] = "me@example.com"
+msg["To"] = "boss@example.com"
+msg.attach(MIMEText("Attached is this month's monthly report.", "plain"))
+with open("report.pdf", "rb") as f:
+    pdf = MIMEApplication(f.read(), Name="report.pdf")
+    msg.attach(pdf)
+# (SMTP send)
+```
+
+**Step 7: schedule it all with cron**
+
+```cron
+0 9 1 * * cd ~/monthly && ./convert.sh sales.xlsx && python3 aggregate.py && python3 send.py
+```
+
+**Each month, on the 1st at 9 AM, automatic aggregation, PDF generation, and emailing to the boss.** The office worker only writes the "Focus for Next Month" five lines.
+
+3 hours → 30 minutes (first time) → 5 minutes (from month 2, only the comment). **The freed time goes to real judgment work.**
 
 ## In summary
 

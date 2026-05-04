@@ -181,15 +181,119 @@ CLI tool creation and distribution: 1 hour to write, `pip install` instantly dis
 
 Adding a Flet GUI to existing CLI logic: install Flet, add tens of lines of code, **1 hour**. Rewriting in Flutter: 1 month.
 
-## What becomes possible
+## A walkthrough: build and distribute a photo-sort CLI on PyPI
 
-Publish a CLI tool to **PyPI** and worldwide Python users install it via `pip install foo` instantly. Stars on GitHub become global proof of your engineering. **No App Store review, no annual fee ($99) — same-day release.**
+Build a CLI that sorts photos by capture date, publish on PyPI, distribute worldwide via `pip install`.
 
-Use Flet to wrap a machine learning model as a GUI **for non-technical staff**. Demand forecasting, image classification, document classification — data analysis democratized across the organization. **Machine learning that previously had to go through IT now reaches the floor.**
+**Step 1: have Claude write the code**
 
-With Flutter, distribute from one codebase to **iOS, Android, Web, Windows, Mac, Linux** — six platforms simultaneously. **Work that needed six teams five years ago**, accomplished by one person + Claude.
+```
+You: A CLI in Python that sorts jpg/jpeg into folders by EXIF capture date.
+     Takes folder as argument. Include pyproject.toml.
+```
 
-CLI + Python + cron lets you build **your own automation agent** (command-based, not autonomous-mode). Daily email summary, weekly industry news, monthly household analysis — all running locally, data never leaves. **Automation without depending on SaaS subscriptions.**
+Returned structure:
+
+```
+photo-sort/
+├── pyproject.toml
+├── src/photo_sort/
+│   ├── __init__.py
+│   └── cli.py
+└── README.md
+```
+
+**Step 2: review and run**
+
+```python
+# src/photo_sort/cli.py
+import sys, shutil, os, argparse
+from PIL import Image
+from PIL.ExifTags import TAGS
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("folder")
+    args = parser.parse_args()
+
+    for f in os.listdir(args.folder):
+        if not f.lower().endswith(('.jpg', '.jpeg')):
+            continue
+        path = os.path.join(args.folder, f)
+        img = Image.open(path)
+        exif = img._getexif() or {}
+        date = next((v for t, v in exif.items() if TAGS.get(t) == 'DateTimeOriginal'), None)
+        if date:
+            ymd = date[:10].replace(':', '-')
+            target = os.path.join(args.folder, ymd)
+            os.makedirs(target, exist_ok=True)
+            shutil.move(path, os.path.join(target, f))
+
+if __name__ == "__main__":
+    main()
+```
+
+Local check:
+
+```bash
+pip install -e .
+photo-sort ~/Pictures/2026/
+```
+
+**Step 3: pyproject.toml**
+
+```toml
+[project]
+name = "photo-sort"
+version = "0.1.0"
+description = "Sort photos into folders by capture date"
+dependencies = ["Pillow"]
+
+[project.scripts]
+photo-sort = "photo_sort.cli:main"
+```
+
+**Step 4: publish to PyPI**
+
+```bash
+pip install build twine
+python3 -m build
+twine upload dist/*
+```
+
+**5 minutes; registered on PyPI worldwide.**
+
+**Step 5: anyone can use it**
+
+The same day, anywhere, this runs:
+
+```bash
+pip install photo-sort
+photo-sort ~/Pictures/
+```
+
+Push to GitHub: stars come, issues come, pull requests come. **Worldwide distribution, no App Store review, no $99/year fee.**
+
+**Step 6: add a GUI with Flet if needed**
+
+```python
+# src/photo_sort/gui.py
+import flet as ft
+from .cli import sort_folder  # reuse CLI logic
+
+def main(page: ft.Page):
+    folder = ft.TextField(label="Folder")
+    result = ft.Text()
+    def run(e):
+        sort_folder(folder.value)
+        result.value = "done"
+        page.update()
+    page.add(folder, ft.ElevatedButton("Sort", on_click=run), result)
+
+ft.app(main)
+```
+
+**Layer-1 CLI logic is reused as-is.** 30 lines added, and a GUI app is in your hands. Rewriting in Flutter would take a month; Flet, an hour.
 
 ## In summary
 

@@ -178,15 +178,104 @@ ESP32 で温度センサ判定の開発:
 
 センサデータの可視化: 自前で Web ダッシュボードを作ると 1 週間。Python の `matplotlib` で `plot()` 1 行 + Claude に「これを HTML レポートにして」と頼むと **30 分**で実用レベル。
 
-## 実例: 生み出せるもの
+## 実例: 自宅菜園に温度・土壌水分センサを置いて農業研究レベルの分析
 
-自宅菜園にセンサ(温度、湿度、土壌水分、光量)を置いて、**農業研究機関レベルのデータを個人で取得・分析**できる。市販品 1 万円以下、Claude が異常検知と栽培アドバイスを返す。**大学農学部の研究装置に近いものが、家庭で動く**。
+ESP32 + DHT22(温湿度)+ 土壌水分センサで、自宅菜園の環境データを取得・分析する。
 
-Raspberry Pi + カメラ + 機械学習で、**植物の病気を画像認識**できる。専門家レベルの精度を、市販部品 5,000 円で実現。**「葉に異変があれば LINE 通知」が、IoT 企業のサービス契約なしで自分の手元に**。
+**手順 1: PC で Python ロジックを書く**
 
-ESP32 とエッジ AI で、**産業用ロボットに匹敵する制御精度**を、趣味の電子工作で実現できる。Claude が PID 制御・状態機械・通信プロトコルをすべて書く。**5 年前なら制御工学の修士レベルの知識が必要だった**仕事が、初心者でも到達可能に。
+```python
+# detect.py(PC で先に動かす)
+import csv
 
-旧式の PLC や独自言語で動いていた **20 年前の制御コードを、Claude が Python に翻訳して可視化**できる。組み込みベンダーロックイン(廃止された CPU、消えたコンパイラ)から脱出する道が開く。**「直せる人がいない」工場が、Python で蘇る**。
+def should_water(temps, moistures):
+    """直近 24 時間の平均で、土壌水分が閾値以下かつ気温が高ければ True"""
+    if len(temps) < 24:
+        return False
+    avg_temp = sum(temps[-24:]) / 24
+    avg_moisture = sum(moistures[-24:]) / 24
+    return avg_moisture < 30 and avg_temp > 25
+
+# 過去のサンプルデータでロジック検証
+with open("sample-data.csv") as f:
+    rows = list(csv.DictReader(f))
+temps = [float(r["temp"]) for r in rows]
+moistures = [float(r["moisture"]) for r in rows]
+print("水やり推奨:", should_water(temps, moistures))
+```
+
+**`python3 detect.py` で 0.1 秒で動作確認**。閾値の調整も PC 上で何回でも試せる。
+
+**手順 2: Claude に MicroPython 版を頼む**
+
+```
+あなた: この Python ロジックを、ESP32 の MicroPython で動くように
+        翻訳して。DHT22 と土壌水分センサ(アナログ ADC)を読む
+        コードも入れて。10 分おきに測定、判定結果を OLED に表示
+```
+
+返ってくる MicroPython(50 行):
+
+```python
+from machine import Pin, ADC, I2C
+import dht, time, ssd1306
+
+dht22 = dht.DHT22(Pin(4))
+adc = ADC(Pin(34))  # 土壌水分
+i2c = I2C(0, scl=Pin(22), sda=Pin(21))
+oled = ssd1306.SSD1306_I2C(128, 64, i2c)
+
+temps, moistures = [], []
+
+while True:
+    dht22.measure()
+    temps.append(dht22.temperature())
+    moistures.append(adc.read() / 4095 * 100)
+    if len(temps) > 144: temps.pop(0)
+    if len(moistures) > 144: moistures.pop(0)
+
+    advice = "Water!" if should_water(temps, moistures) else "OK"
+    oled.fill(0)
+    oled.text(f"Temp: {temps[-1]}C", 0, 0)
+    oled.text(f"Moisture: {moistures[-1]:.0f}%", 0, 16)
+    oled.text(advice, 0, 32)
+    oled.show()
+    time.sleep(600)
+```
+
+**手順 3: ESP32 に転送して動作確認**
+
+```bash
+pip install esptool ampy
+ampy --port /dev/ttyUSB0 put detect.py
+ampy --port /dev/ttyUSB0 put main.py
+```
+
+OLED に「Temp: 28C / Moisture: 25% / Water!」と表示される。**5,000 円の部品**で、農業研究機関レベルの環境モニタリングが家庭で動く。
+
+**手順 4: データをクラウドに送って長期分析**
+
+```python
+# 追加: HTTP POST でデータをサーバーに送る
+import urequests
+urequests.post("https://my-server.example.com/log", json={
+    "temp": temps[-1],
+    "moisture": moistures[-1]
+})
+```
+
+サーバー側は FastAPI + PostgreSQL で受け取って蓄積。1 ヶ月後、`pandas` で過去データを分析:
+
+```bash
+cat data.csv | claude -p \
+  "1 ヶ月の温度・水分データから、最適な水やり時刻を提案して"
+```
+
+**「気温が 28 度を超えてから 2 時間後の水やりが、土壌水分の保持効率が最も高い」**という発見が手元に。これは大学農学部の研究結果と同等の知見。
+
+**手順 5: LINE 通知で「水やりして」アラート**
+
+LINE Notify API を Python で叩く 5 行を追加。**スマホに「畑の水分が下がっています」と通知**が来る。IoT 企業のサービス契約なしで、これが手元の機器で動く。
 
 ## まとめ
 

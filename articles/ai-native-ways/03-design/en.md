@@ -213,15 +213,83 @@ A one-line Mermaid diagram change in Git: 1 added, 1 removed, reviewed in 30 sec
 
 A 20-year-old `.ppt` file: substituted fonts, shifted shapes, hard to reproduce. A Markdown / Mermaid file from the same era renders perfectly today.
 
-## What becomes possible
+## A walkthrough: build a 20-page client proposal in 2 hours
 
-Mermaid + `mmdc` (mermaid-cli) exports system diagrams as **print-quality SVG / PDF**. For proposals, technical specs, and external materials — finish equivalent to Visio or draw.io. Zero subscription cost.
+Build a 20-page proposal (architecture diagram + UI mockup + prose) for a new client, alone, in 2 hours. Work that consultancies bill millions of yen for.
 
-Marp's Markdown slides reach **quality fit for TED or international conferences**. Fonts, palette, image placement, transitions — all controlled by a few lines of Markdown. World-class presentations without a professional designer.
+**Step 1: folder structure**
 
-Claude Design produces **cutting-edge UI on par with Linear, Stripe, Apple** instantly. Ask "make a Stripe-style payment form" or "a calm dashboard like Linear's," and the result comes back close to the original. **Individual entrepreneurs can compete with SaaS-startup-class UI.**
+```bash
+mkdir -p proposal-2026/{diagrams,mockups,assets}
+cd proposal-2026
+```
 
-Assemble a proposal folder (Markdown body + Mermaid diagrams + Claude Design mockups + SVG cover) with Python, and **the visual quality of a consulting proposal worth tens of millions of yen** can be produced by one person.
+```
+proposal-2026/
+├── ja.md              # body (Markdown)
+├── diagrams/          # architecture diagrams (Mermaid)
+├── mockups/           # screen mockups (Claude Design HTML)
+└── assets/            # cover images, etc.
+```
+
+**Step 2: write the body in Markdown**
+
+```markdown
+# Inventory Management System Proposal
+
+## Current Issues
+Your inventory is split between handwritten ledgers and Excel...
+
+## Proposed Architecture
+[insert architecture diagram below]
+
+## Screen Mockups
+[insert dashboard mockup below]
+```
+
+**Step 3: Mermaid for the architecture**
+
+```bash
+cat > diagrams/architecture.mmd <<EOF
+graph TD
+  A[Field Terminal] -->|WebAPI| B[FastAPI]
+  B --> C[(PostgreSQL)]
+  B --> D[Admin Dashboard]
+  D -.->|Alert| E[Field Terminal]
+EOF
+
+mmdc -i diagrams/architecture.mmd -o diagrams/architecture.svg
+```
+
+`mmdc` produces SVG in 1 second. **Visio-equivalent finish**, zero subscription.
+
+**Step 4: screen mockup with Claude Design**
+
+```
+You: Make an inventory dashboard UI. Product list, search, stock alerts,
+     graphs. Calm Linear-style palette.
+```
+
+Save the returned HTML+CSS as `mockups/dashboard.html`. Open in a browser; it runs. **No Figma, and the result is real code, close to the original Linear aesthetic.**
+
+**Step 5: assemble into PDF**
+
+```bash
+pandoc ja.md -o proposal.pdf \
+  --pdf-engine=xelatex \
+  --toc \
+  -V mainfont="Hiragino Mincho Pro" \
+  -V geometry:margin=2cm \
+  --resource-path=.
+```
+
+A typeset PDF with table of contents and figures. **The level of a consulting proposal billed at 200K USD**, in your hands.
+
+**Step 6: revision cycle**
+
+When the client asks "add search to the dashboard mockup," throw `mockups/dashboard.html` at Claude with "add a search bar." 30 seconds later, an updated version returns — still real running code.
+
+PowerPoint takes 30 minutes to add an element without breaking the layout. **Markdown + Mermaid + Claude Design: 30 seconds.**
 
 ## In summary
 

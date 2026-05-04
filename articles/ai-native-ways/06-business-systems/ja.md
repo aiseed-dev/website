@@ -274,15 +274,86 @@ Oracle Enterprise Edition のライセンス: 20 CPU で年間約 **4,000 万円
 
 業務知識を Markdown 化する作業: 担当者の空き時間でやると 6 ヶ月〜1 年。Claude に全コードベースを渡して一気にやれば、**1 週間で 80%**。
 
-## 実例: 生み出せるもの
+## 実例: PL/SQL ストアドを Python に並行稼働で書き換える
 
-古い基幹システムから、**現代的なモバイル対応 Web ダッシュボード**を 1 週間で構築できる。リアルタイムグラフ、検索、ドリルダウン、エクスポート ── 旧システム(Java/C#)では数年・数千万円かけても実現できなかった機能が、並行稼働中に追加できる。**Java/C# のままでは、現代の UX は手に入らない**。
+20 年前から動いている PL/SQL のストアドプロシージャ `calc_monthly_billing`(請求額計算、500 行)を、Python + PostgreSQL に並行稼働で置き換える。
 
-PostgreSQL の論理レプリケーションで、**本番に影響なく分析専用 DB を作れる**。BI ツール、機械学習、外部 API 連携 ── すべて旧システムを止めずに実装できる。Oracle ライセンスでは追加で買わないと不可能だった機能が、無料で開く。
+**手順 1: 旧コードを Claude に読ませる**
 
-業務知識を Markdown 化したことで、Claude が「この案件、過去に似た失敗事例がある」と提案する。**組織の暗黙知が AI 同僚として戻ってくる**。これは Java のコードに埋め込まれていた限り、絶対にできなかった。
+```bash
+sqlplus -S user/pass @export_proc.sql > calc_monthly_billing.sql
+cat calc_monthly_billing.sql | claude -p \
+  "この PL/SQL を、業務ロジックの説明と Python への翻訳の両方で出して"
+```
 
-並行稼働で 20 年前のバグを発見・修正することは、**業務システムの品質が客観的に向上する**ことを意味する。Java の中で誰も触れないまま動いていた業務ロジックが、Python + Markdown で「組織の財産」になる。
+返ってくる:
+
+- **Markdown の説明書**: 「7 月は 10 日締め、お盆考慮で 5 日延長」など、コードに埋もれていたルール 7 件を抽出
+- **Python の翻訳**: `calc_monthly_billing.py`、120 行、データベース層は `psycopg`
+
+**手順 2: 旧 DB から正解データをエクスポート**
+
+```bash
+sqlplus -S user/pass <<EOF > expected.csv
+SELECT customer_id, billing_month, amount
+FROM monthly_billing
+WHERE billing_month >= TO_DATE('2025-04', 'YYYY-MM');
+EOF
+```
+
+過去 12 ヶ月の正解データ(約 50,000 行)が手元に。
+
+**手順 3: 新コードを同じ入力で実行して比較**
+
+```python
+# verify.py
+import subprocess, csv
+
+# 新コードを実行(PostgreSQL の同じデータに対して)
+subprocess.run(["python3", "calc_monthly_billing.py"])
+
+# 結果を比較
+with open("expected.csv") as f1, open("actual.csv") as f2:
+    expected = {(r["customer_id"], r["billing_month"]): r["amount"] for r in csv.DictReader(f1)}
+    actual = {(r["customer_id"], r["billing_month"]): r["amount"] for r in csv.DictReader(f2)}
+
+diffs = [(k, expected[k], actual[k]) for k in expected if expected[k] != actual.get(k)]
+print(f"差分: {len(diffs)} 件")
+for k, exp, act in diffs[:10]:
+    print(f"  {k}: 旧={exp}, 新={act}")
+```
+
+**手順 4: 差分を潰す**
+
+例: 差分が 7 件出た。Claude に渡す:
+
+```bash
+python3 verify.py 2>&1 | claude -p \
+  "この差分の原因を、PL/SQL コードと比べて特定して、修正してくれ"
+```
+
+返ってくる修正点: 「7 月の閏月判定が、PL/SQL では `MOD(year, 4) = 0` だが Python の翻訳では `year % 400 == 0` になっていた。修正コードはこちら」
+
+**手順 5: 並行稼働を本番に**
+
+```cron
+# 旧バッチ(残す)
+0 1 1 * * sqlplus user/pass @run_old_billing.sql
+
+# 新バッチ(並行)
+0 2 1 * * python3 calc_monthly_billing.py
+
+# 自動比較(差分があればメール通知)
+0 3 1 * * python3 compare.py | mail -s "billing diff" admin@example.com
+```
+
+毎月 1 日、両方が動き、差分があれば通知。3 ヶ月続けて差分ゼロなら、旧バッチを停止。
+
+**手順 6: Oracle を捨てる**
+
+旧バッチを止めた時点で、**Oracle Enterprise Edition のライセンス契約を更新しない**。CPU 20 個分で年間 4,000 万円が、ゼロになる。新システム(PostgreSQL + Python + Claude が書いた 120 行)で動いている。
+
+20 年間「触ってはいけない」存在だった PL/SQL が、3 ヶ月の並行稼働で **Markdown で文書化された業務ロジック + Python のテスト可能なコード + PostgreSQL** に変わる。**現場の担当者 1 人が、Claude と一緒に進めた**。SI ベンダーへの委託は無し。
 
 ## まとめ
 

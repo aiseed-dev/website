@@ -144,15 +144,63 @@ Excel ピボットテーブルで月別売上集計: マウス操作で 5 分、
 
 JSON / CSV を Claude に渡したときの認識率: ほぼ 100%(構造が剥き出し)。Excel `.xlsx` を渡したときの認識率: 形式によっては 70〜80%(セル結合・書式があると劣化)。**データを構造で持つほど、AI が間違わない**。
 
-## 実例: 生み出せるもの
+## 実例: 100 個の Excel を 30 秒で集計する
 
-CSV を Claude に渡して、`matplotlib` で **ビジネスダッシュボード品質のグラフ**を 3 分で生成できる。配色、ラベル、凡例、注釈、トレンドライン ── 統計の専門家レベルの可視化が、データサイエンティストなしで作れる。
+毎月、店舗ごとに送られてくる Excel 売上ファイル(`store-001.xlsx` 〜 `store-100.xlsx`)を集計する月次作業。手作業なら半日。これを 30 秒で終わらせる。
 
-JSON データから、**自動的にリアルタイム更新付き Web ダッシュボード**を立ち上げられる。FastAPI + Chart.js + Claude のテンプレで、**売上・在庫・KPI の可視化サイトが 1 日で完成**。BI ツールのライセンス費が要らない。
+**手順 1: Excel を CSV に一括変換**
 
-YAML 設定ファイル一つで、**複雑なシステム全体(DB、Web サーバ、ジョブ、監視、ロードバランサ)が立ち上がる**。Infrastructure as Code の世界 ── 個人開発者が、Google レベルのインフラを設計できる時代だ。
+```bash
+for f in stores/*.xlsx; do
+  ssconvert "$f" "${f%.xlsx}.csv"
+done
+```
 
-CSV を Claude に投げて「このデータで `pandas` の Jupyter ノートブックを書いて、業界統計と比較分析して」と頼めば、**博士課程の学生が 1 週間かける分析が 30 分で出てくる**。
+`ssconvert`(Gnumeric 同梱)で 100 ファイルが 5 秒で CSV になる。
+
+**手順 2: Claude に集計コードを書かせる**
+
+```
+あなた: 100 個の CSV(列: date, item, qty, price)を読んで、
+        商品ごとの月次売上合計を CSV に書き出す Python を書いて
+```
+
+返ってくる Python(15 行):
+
+```python
+import pandas as pd, glob
+
+dfs = [pd.read_csv(f) for f in glob.glob("stores/*.csv")]
+df = pd.concat(dfs)
+df["amount"] = df["qty"] * df["price"]
+df["month"] = pd.to_datetime(df["date"]).dt.to_period("M")
+summary = df.groupby(["month", "item"])["amount"].sum().reset_index()
+summary.to_csv("summary.csv", index=False)
+print(summary.head())
+```
+
+**手順 3: 実行**
+
+```bash
+python3 aggregate.py
+```
+
+100 ファイルの集計結果が `summary.csv` に出る。**処理時間 約 2 秒**。
+
+**手順 4: Claude にグラフを書かせる**
+
+```
+あなた: summary.csv から、商品トップ 10 の月次推移を matplotlib で
+        ビジネス品質のグラフにして。配色は落ち着いた色で
+```
+
+返ってくる Python を実行すると、**プロのデータサイエンティストが書いたような可視化** が `chart.png` で出る。配色、ラベル、凡例、グリッド ── すべて整っている。
+
+**手順 5: 翌月以降**
+
+`python3 aggregate.py` を `cron` に登録すれば、**毎月 1 日に自動で集計とグラフが届く**。Excel + ピボットテーブル + 手動コピペの月 1 回 4 時間が、ゼロ時間になる。
+
+そして、CSV と Python スクリプトは **Git で履歴管理**できる。「この集計ロジックは去年とどう変わったか」を確認できる。Excel ピボットテーブルではこれは絶対に不可能だ。
 
 ## まとめ
 

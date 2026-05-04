@@ -1,0 +1,6 @@
+.stamp
+src/.stamp
+# 1,000 枚の PNG (272 MB) は git に含めない。`make` で再生成できる。
+src/*.png
+# WebP 出力 1,000 枚も巨大なので ── サンプル 50 枚だけコミットする(out/sample/)
+out/webp/

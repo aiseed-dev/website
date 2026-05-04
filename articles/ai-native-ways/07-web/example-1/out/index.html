@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>山田農園 — 山田農園</title>
+<style>
+:root { --ink: #1a1a1a; --paper: #f4f1ea; --accent: #2f5f3f; --rule: #d4cdb8; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Hiragino Mincho ProN", "游明朝", "Noto Serif CJK JP", serif;
+  background: var(--paper); color: var(--ink);
+  line-height: 1.85; max-width: 720px; padding: 32px 24px; margin: 0 auto;
+}
+h1 { font-size: 32px; border-bottom: 3px double var(--ink); padding-bottom: 12px; margin-bottom: 24px; }
+h2 { font-size: 22px; border-left: 4px solid var(--accent); padding-left: 12px; margin: 32px 0 16px; }
+h3 { font-size: 17px; margin: 24px 0 10px; color: var(--accent); }
+p, ul, ol, table { margin-bottom: 18px; }
+ul, ol { padding-left: 1.5em; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border: 1px solid var(--rule); padding: 8px 12px; text-align: left; }
+th { background: #ebe6d8; }
+code { font-family: ui-monospace, monospace; background: #ebe6d8; padding: 1px 5px; border-radius: 2px; font-size: 0.9em; }
+a { color: var(--accent); }
+nav { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 13px; }
+.mermaid { text-align: center; margin: 28px 0; }
+</style>
+</head>
+<body>
+<h1>山田農園</h1>
+<p>徳島市で 3 代続く小さな農園です。
+キャベツ、玉葱、トマト、レタスを <strong>無農薬</strong> で育てています。</p>
+<h2>取り扱い品目</h2>
+<table>
+<thead>
+<tr>
+<th>品目</th>
+<th>旬</th>
+<th>価格(直販)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>キャベツ</td>
+<td>通年</td>
+<td>180 円/玉</td>
+</tr>
+<tr>
+<td>玉葱</td>
+<td>4〜6 月</td>
+<td>95 円/個</td>
+</tr>
+<tr>
+<td>トマト</td>
+<td>6〜9 月</td>
+<td>250 円/個</td>
+</tr>
+<tr>
+<td>レタス</td>
+<td>通年</td>
+<td>200 円/玉</td>
+</tr>
+</tbody>
+</table>
+<h2>配送</h2>
+<p><div class="mermaid">flowchart LR
+  A[ご注文] --> B{ご住所}
+  B -->|徳島県内| C[直接配送<br/>送料無料]
+  B -->|県外| D[ヤマト宅急便<br/>送料 800 円]
+  C --> E[到着]
+  D --> E</div></p>
+<h2>ご注文方法</h2>
+<ol>
+<li>メールでご連絡ください: <code>info@example.com</code></li>
+<li>商品・数量・お届け先をお知らせください</li>
+<li>折り返し請求書をお送りします</li>
+</ol>
+<p><a href="news.html">お知らせ一覧</a> ｜ <a href="en/index.html">English</a></p>
+
+<nav>© 2026 山田農園 / Markdown + Python ビルド</nav>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true, theme: "default" });
+</script>
+</body>
+</html>

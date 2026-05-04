@@ -1,16 +1,22 @@
 ---
 slug: windows-breaking-down
-title: Windows is Breaking Down
+title: There is no guarantee Windows will be supported after October 12, 2027 — even if you buy a new PC today
 subtitle: Move to Linux, and do it now
 date: 2026.05.04
-description: On April 29, 2026, Microsoft CEO Satya Nadella told investors he needs to "win back the fans." That same week, his marketing team officially recommended "32GB for peace of mind," and Copilot buttons were quietly pulled from Notepad, Snipping Tool, Photos, and Widgets. These look like separate stories, but they are symptoms of the same structure. Windows and its first-party apps have grown bloated by absorbing web technology. Copilot is being forced on users because no one is choosing it. Microsoft complied with an illegal executive order to cut off an ICC judge's email. At the root of all of this is a single fact: Nadella has no interest in Windows as a platform. Windows is no longer a product to be protected. It is an asset to be drained. There is no reason for users to keep using a product whose own management has abandoned it.
+description: As of May 2026, the latest date Microsoft officially guarantees Windows 11 Home/Pro support is October 12, 2027 — just 1 year and 5 months from today. There is no roadmap for Windows 12. There is no guarantee that a PC bought today will run Windows in five years. Windows is no longer a platform — it has become an asset to be drained. There is only one option left: escape the sinking ship.
 lang: en
 label: Blog
 category: Structural Analysis Notes
-hero_image: 
+hero_image: IMG_3449.jpg
 ---
 
-# Windows is Breaking Down
+# There is no guarantee Windows will be supported after October 12, 2027 — even if you buy a new PC today
+
+As of May 2026, the latest date Microsoft officially guarantees Windows 11 Home/Pro support is **October 12, 2027** (the end-of-support date for 25H2). That is just **1 year and 5 months from today**.
+
+What happens after that, Microsoft has not announced. There is no roadmap for Windows 12. There is no guarantee that a PC bought today will run Windows in five years.
+
+How did it come to this?
 
 On April 29, 2026, Microsoft CEO Satya Nadella told investors during the earnings call that the company needs to "win back the fans."
 
@@ -18,15 +24,35 @@ That same week, Microsoft's marketing team officially recommended "32GB as the w
 
 That same week, Copilot buttons were quietly pulled from Notepad, Snipping Tool, Photos, and Widgets.
 
-And in February, Microsoft complied with an illegal executive order and cut off an ICC judge's Microsoft account.
+These look like separate stories. They are not. They are all symptoms of the same structure.
 
-These look like separate news stories. They are not. They are all symptoms of the same structure.
-
-Windows is breaking down — under Nadella's direction. And the organization no longer has the capacity to stop it.
+Windows is now breaking down for four structural reasons. One is the weight of three decades of legacy that Windows has accumulated as a product. The other three are decisions made under Nadella. Microsoft no longer has the organizational capacity to stop it.
 
 ---
 
-## Reason 1: Microsoft can no longer build its own technical foundation
+## Reason 1: Legacy debt — the weight of decades of driver compatibility
+
+This is the largest debt that Windows has accumulated in 30 years as a product.
+
+Windows has long marketed itself on running with every piece of hardware ever made. 1990s printers, old USB devices, serial port equipment, industrial peripherals, 16-bit software. If any of these stopped working, it would have been fatal for Microsoft. Compatibility was what supported Windows' de facto monopoly.
+
+But compatibility is not free. To keep old drivers running, the Windows kernel carries a massive compatibility layer.
+
+The cost is severe:
+
+- The kernel becomes bloated
+- Security holes accumulate (old drivers are attack vectors)
+- Updates take longer, restarts drag on
+- The cost of adding new features rises exponentially
+- Innovation itself stops
+
+Compared to Linux, the difference is clear. Linux kernel developers periodically remove old, unused drivers from the kernel. A 30-year-old printer might not work — but in exchange, the kernel is light, secure, and fast. This is a philosophical choice: discard the past, optimize the present. Someone is responsibly managing it.
+
+Windows took the opposite path. Or rather, **Microsoft does not actually manage drivers at all**. And the deeper problem is that the support infrastructure for driver development itself has not been organized.
+
+---
+
+## Reason 2: Microsoft can no longer build its own technical foundation
 
 What should Windows apps be built with? Microsoft has not been able to answer this question for over a decade.
 
@@ -40,11 +66,11 @@ The same thing is happening with AI. Copilot is, in practice, a wrapper around O
 
 Microsoft couldn't build its own UI framework, so it ran to web tech. It couldn't build its own AI, so it depends on OpenAI. **The organizational capacity to build its own technical foundation has been hollowed out.**
 
-![Windows WebView2 Bloat](windows_webview_bloat_en.svg)
+![WebView2 dependency](windows_webview_bloat_en.svg)
 
 ---
 
-## Reason 2: Microsoft treats the OS as a "channel," not a "tool"
+## Reason 3: Microsoft treats the OS as a "channel," not a "tool"
 
 Microsoft 365 Copilot has reached 15 million paid seats. But of the people with access, only 35.8% actually use it. The remaining two-thirds either don't use it or have moved to a different AI.
 
@@ -66,7 +92,7 @@ Windows used to be a tool. Microsoft has started treating it as a channel for ca
 
 ---
 
-## Reason 3: Your email can be cut off by a U.S. presidential decision
+## Reason 4: Your email can be cut off by a U.S. presidential decision
 
 Up to this point, the problems have been internal to Microsoft. But starting in 2026, a problem of an entirely different dimension came into view.
 
@@ -74,7 +100,7 @@ Up to this point, the problems have been internal to Microsoft. But starting in 
 
 This risk has two distinct forms.
 
-### Risk 1: An executive order — Microsoft complied with an illegal command
+### The first risk: An executive order — Microsoft complied with an illegal command
 
 In February 2025, U.S. President Donald Trump issued sanctions against eleven senior officials of the International Criminal Court (ICC). Microsoft, not wanting to lose billions of dollars in U.S. government contracts, **shut down the Microsoft accounts of ICC judges**. The judges lost access to their email.
 
@@ -92,34 +118,11 @@ The targets can be anyone. Today it was an ICC judge. Tomorrow it could be a res
 
 Margrethe Vestager, the EU's former competition commissioner, warned: "If it can happen once that a judge cannot use their email, then it can happen again. This is a dependency, and it can be weaponized."
 
-### Risk 2: The CLOUD Act — predictable, within the limits of legal process
-
-Separately, there is the CLOUD Act, a U.S. law passed in 2018. It allows U.S. law enforcement to demand data held by U.S. companies, regardless of where the data is physically located, by judicial warrant.
-
-The CLOUD Act is at least an actual law passed by Congress, and operates within judicial process. It is invoked through warrants and court orders, so it has some predictability. But still, **as long as the operating company is a U.S. legal entity, it is obligated to hand over data to U.S. investigators — even if the datacenter is in Europe.**
-
-This is why "sovereign cloud" branding like "Microsoft EU Data Boundary" is not trusted in Europe. It cannot escape the CLOUD Act.
-
-### Combined: Microsoft cannot be trusted
-
-Using Microsoft services means carrying two simultaneous risks:
-
-- **Dependence on a company that complies with illegal presidential orders** (unpredictable, arbitrary)
-- **Data handed over through judicial process** (somewhat predictable, but inescapable)
-
-These are the realities. Whether the datacenter is in Europe or in Japan, the underlying nature does not change.
-
-### Governments are starting to move
-
-France's digital directorate has announced it will switch government desktops from Windows to Linux. Germany, Austria, and France are building Nextcloud-based sovereign productivity stacks. Vietnam and South Korea are moving in the same direction.
-
-If a judge can be cut off, there is no guarantee you can't be.
-
 ---
 
 ## Nobody wants to migrate to Linux — but it's becoming necessary
 
-![Three Reasons Structure](three_reasons_structure_en.svg)
+![Four reasons](four_reasons_structure_en.svg)
 
 Let's be direct.
 
@@ -197,7 +200,7 @@ Set a date. Do it all at once. It turns out to be the easier path.
 
 ## Concrete steps for migrating all at once
 
-![Linux Migration Roadmap](linux_migration_roadmap_en.svg)
+![Linux migration roadmap](linux_migration_roadmap_en.svg)
 
 Plan for two weeks to one month.
 
@@ -231,7 +234,16 @@ When you don't invest in improving the product, the only way left to monetize is
 
 Every one of those is a money decision. The trustworthiness of Windows as a platform, and the interests of users, are simply lower priorities.
 
-To Nadella, Windows is no longer a product to be protected. **It is an asset to be drained.**
+Nadella has transformed Windows from "an OS you buy and use long-term, with a fixed lifecycle" into "a service-style OS that requires continuous updates." It is no longer a product to be protected. **It is an asset to be drained.**
+
+Look at the Windows 11 lifecycle pages. They show "Windows 11 Home/Pro is in support" — but **the final end-of-support date and the supported hardware specifications are not stated**.
+
+What is actually confirmed is only this:
+
+- 25H2 → end of support on October 12, 2027 — the latest confirmed date for general Intel / AMD PCs
+- 26H1 → end of support on March 14, 2028 — confirmed, but only for Snapdragon X2 and other new-generation devices
+
+In other words, **whether any machines will be supported by Windows after October 12, 2027 has not been announced by Microsoft itself**. That is where we stand.
 
 When the company itself has abandoned the product, there is no reason for users to keep using it.
 
@@ -241,6 +253,8 @@ The EU, France, Germany, Austria, Vietnam, and South Korea are already moving.
 
 ---
 
-*Related: "Learning Debian with Claude" — A practical guide to migrating to Linux*
+*Related: [Learning Debian with Claude — A practical guide to migrating to Linux](/en/claude-debian/)*
 
-*Related: "Are You Still Going to Keep Using Windows and Office?" — Detailed structural analysis with primary sources and references*
+*Related: [AI-Native Ways of Working — Change your tools, change your thinking](/en/ai-native-ways/)*
+
+*Related: [Are You Still Going to Keep Using Windows and Office? — Detailed structural analysis with primary sources and references](/en/blog/windows-office-facts/)*

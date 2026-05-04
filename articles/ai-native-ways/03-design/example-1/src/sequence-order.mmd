@@ -1,0 +1,16 @@
+sequenceDiagram
+  autonumber
+  participant Cust as 顧客
+  participant Web as Web フロント
+  participant API as FastAPI
+  participant Claude as Claude API
+  participant DB as PostgreSQL
+
+  Cust->>Web: 注文を入力
+  Web->>API: POST /orders (JSON)
+  API->>DB: INSERT orders
+  API->>Claude: 「住所を整形して」
+  Claude-->>API: 整形済み住所
+  API->>DB: UPDATE orders SET address=...
+  API-->>Web: 200 OK + 受注番号
+  Web-->>Cust: 完了画面

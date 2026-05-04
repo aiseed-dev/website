@@ -134,10 +134,6 @@ Python learning curve: for the "ability to use," practicing reading Claude-writt
 
 Reaction to errors: searching and trial-and-error solo takes 30 minutes to 2 hours. Pasting the error text into Claude returns the cause and corrected code in 30 seconds. **60x faster or more.**
 
-## Example
-
-For the actual walkthrough — commands, code, and output — see ["Examples — 11 Walkthroughs"](/en/ai-native-ways/examples/), **Example 04: Extract amounts from 100 invoice PDFs**.
-
 ## In summary
 
 Change your tools, and the way you process work changes.

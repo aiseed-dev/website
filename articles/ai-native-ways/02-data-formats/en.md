@@ -145,10 +145,6 @@ Monthly job extracting specific columns from 100 `.xlsx` files: half a day in VB
 
 Claude's recognition rate when handed JSON / CSV: near 100% (structure is bare). When handed `.xlsx`: depending on format, 70–80% (merged cells and formatting degrade it). **The more you hold data as structure, the less AI gets it wrong.**
 
-## Example
-
-For the actual walkthrough — commands, code, and output — see ["Examples — 11 Walkthroughs"](/en/ai-native-ways/examples/), **Example 02: Aggregate 100 Excel files in 30 seconds**.
-
 ## In summary
 
 Change your tools, and the way you handle data changes.

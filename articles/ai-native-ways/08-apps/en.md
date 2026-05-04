@@ -181,10 +181,6 @@ CLI tool creation and distribution: 1 hour to write, `pip install` instantly dis
 
 Adding a Flet GUI to existing CLI logic: install Flet, add tens of lines of code, **1 hour**. Rewriting in Flutter: 1 month.
 
-## Example
-
-For the actual walkthrough — commands, code, and output — see ["Examples — 11 Walkthroughs"](/en/ai-native-ways/examples/), **Example 08: Photo-sort CLI on PyPI**.
-
 ## In summary
 
 Apps start at the CLI.

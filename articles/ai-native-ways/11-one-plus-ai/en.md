@@ -177,10 +177,6 @@ Farmer's AI use:
 
 The effect of paperwork disappearing: of an 8-hour workday, the 4 hours spent on paperwork move to AI. The remaining 4 hours can be spent on work that produces real value (customer dialogue, strategic decisions, creation). **The density of work only humans can do doubles.**
 
-## Example
-
-For the actual walkthrough — commands, code, and output — see ["Examples — 11 Walkthroughs"](/en/ai-native-ways/examples/), **Example 11: Launch a SaaS in 1 month, solo**.
-
 ## In summary
 
 With AI-native tools in place, the minimum unit of work changes.

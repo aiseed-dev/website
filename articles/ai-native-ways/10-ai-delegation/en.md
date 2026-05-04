@@ -288,10 +288,6 @@ Processes 1,000 files in **~3 seconds**. Zero AI fees. Asking an AI agent to do 
 
 The effect of "freezing into code": running the same processing daily for a year — agent-based operation incurs **$2,400+/year** in AI fees (at $200/month). A Python script: **$5–10/year** (only at initial code generation).
 
-## Example
-
-For the actual walkthrough — commands, code, and output — see ["Examples — 11 Walkthroughs"](/en/ai-native-ways/examples/), **Example 10: Replace AI agent with Python + cron**.
-
 ## In summary
 
 Separate the work to delegate from the work humans must keep.

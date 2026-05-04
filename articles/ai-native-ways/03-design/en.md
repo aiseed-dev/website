@@ -213,10 +213,6 @@ A one-line Mermaid diagram change in Git: 1 added, 1 removed, reviewed in 30 sec
 
 A 20-year-old `.ppt` file: substituted fonts, shifted shapes, hard to reproduce. A Markdown / Mermaid file from the same era renders perfectly today.
 
-## Example
-
-For the actual walkthrough — commands, code, and output — see ["Examples — 11 Walkthroughs"](/en/ai-native-ways/examples/), **Example 03: Build a 20-page client proposal in 2 hours**.
-
 ## In summary
 
 Move design tools to be text-centric.

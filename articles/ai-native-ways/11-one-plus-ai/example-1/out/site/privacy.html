@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>プライバシー — Mochi.ai</title>
+<style>
+:root { --ink: #1a1a1a; --paper: #f8f5ee; --accent: #c8442a; --rule: #d4cdb8; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Hiragino Mincho ProN", "游明朝", "Noto Serif CJK JP", serif;
+  background: var(--paper); color: var(--ink); line-height: 1.85;
+  max-width: 720px; margin: 0 auto; padding: 32px 24px;
+}
+h1 { font-size: 38px; border-bottom: 3px double var(--ink); padding-bottom: 14px; margin-bottom: 24px; }
+h2 { font-size: 22px; border-left: 4px solid var(--accent); padding-left: 12px; margin: 32px 0 16px; }
+p, ul, ol, table, blockquote { margin-bottom: 18px; }
+ul, ol { padding-left: 1.5em; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border: 1px solid var(--rule); padding: 10px 14px; text-align: left; }
+th { background: #ebe6d8; font-weight: 700; }
+blockquote { background: #ebe6d8; border-left: 4px solid var(--accent); padding: 16px 20px; }
+code { font-family: ui-monospace, monospace; background: #ebe6d8; padding: 1px 5px; border-radius: 2px; font-size: 0.9em; }
+a { color: var(--accent); }
+nav { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 13px; }
+strong { background: linear-gradient(to top, #f7e9c8 35%, transparent 35%); padding: 0 2px; }
+</style>
+</head>
+<body>
+<h1>プライバシー</h1>
+<p>Mochi.ai が扱うデータ:</p>
+<ul>
+<li>センサが計測した温度・湿度・人感</li>
+<li>LINE で送られた質問内容</li>
+</ul>
+<p>これらは:</p>
+<ul>
+<li>暗号化して保存(AES-256)</li>
+<li>日本国内のサーバ(Cloudflare R2 + Tokyo)</li>
+<li>解約時に 30 日以内に削除</li>
+<li>第三者提供しない(法執行の要請を除く)</li>
+</ul>
+<h2>AI への送信</h2>
+<p>異常検知の判定や月次サマリ生成のために、Claude (Anthropic) に
+<strong>集計値だけ</strong> を送ります。住所・氏名・LINE ID は送りません。</p>
+<p><a href="index.html">戻る</a></p>
+
+<nav>© 2026 Mochi.ai · 1 人 + Claude で運営</nav>
+</body>
+</html>

@@ -275,10 +275,6 @@ Undocumented business rules surfaced during 3 months of parallel operation: typi
 
 Migrating business knowledge into Markdown: 6 months to 1 year if done in spare time. Hand the whole codebase to Claude, do it in one sweep: **80% in one week.**
 
-## Example
-
-For the actual walkthrough — commands, code, and output — see ["Examples — 11 Walkthroughs"](/en/ai-native-ways/examples/), **Example 06: Replace PL/SQL via parallel operation**.
-
 ## In summary
 
 "Getting along with" a business system is old.

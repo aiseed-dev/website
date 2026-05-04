@@ -1,0 +1,18 @@
+[
+  {
+    "label": "Excel (.xlsx) を pandas で集計",
+    "files": 100,
+    "rows": 10000,
+    "elapsed_seconds": 1.216,
+    "top_item": "トマト",
+    "top_revenue": 5189294
+  },
+  {
+    "label": "CSV を pandas で集計",
+    "files": 100,
+    "rows": 10000,
+    "elapsed_seconds": 0.071,
+    "top_item": "トマト",
+    "top_revenue": 5189294
+  }
+]

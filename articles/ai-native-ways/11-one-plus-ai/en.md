@@ -10,8 +10,8 @@ label: AI Native 11
 title_html: The minimum unit of work is<br><span class="accent">one person + AI</span>.
 prev_slug: ai-delegation
 prev_title: "Knowing What Work to Hand to AI"
-next_slug:
-next_title:
+next_slug: examples
+next_title: "Examples — 11 Walkthroughs"
 ---
 
 # One Person + AI — The New Unit of Work
@@ -177,98 +177,9 @@ Farmer's AI use:
 
 The effect of paperwork disappearing: of an 8-hour workday, the 4 hours spent on paperwork move to AI. The remaining 4 hours can be spent on work that produces real value (customer dialogue, strategic decisions, creation). **The density of work only humans can do doubles.**
 
-## A walkthrough: 1 person + AI launches a SaaS in 1 month
+## Example
 
-A solo developer ships a monthly-subscription SaaS in 1 month using Stripe API + FastAPI + PostgreSQL. Work that took a 5-person team six months a decade ago.
-
-**Day 1: idea in Markdown**
-
-```markdown
-# Product: Markdown Meeting Notes SaaS
-
-## Problem
-Organization meeting notes scatter across Word; can't search or analyze
-
-## Solution
-A web service: upload Markdown notes, Claude returns summaries,
-action extraction, and organizational decision-pattern analysis
-```
-
-**Day 2-3: design schema and API; have Claude implement**
-
-```
-You: Write the PostgreSQL schema (users, organizations, minutes,
-     analyses) and FastAPI endpoints (login, upload, analyze, list).
-     Include Pydantic, async, pytest.
-```
-
-Returned: 50 lines of schema DDL, 250 lines of FastAPI, 100 lines of tests.
-
-**Day 4-7: frontend with Claude Design**
-
-```
-You: Upload screen, analysis result view, dashboard. Linear-style calm
-     UI, no Tailwind, pure CSS.
-```
-
-Returned HTML/CSS rides on Chapter 7's HTML+CSS+minimal-JS stack.
-
-**Day 8-10: Stripe billing**
-
-```
-You: Stripe Checkout for $20/month, Webhook syncing subscription state
-     to DB. In FastAPI.
-```
-
-80 lines of code using the `stripe` Python SDK.
-
-**Day 11-15: tests, bug fixes, ops logging**
-
-```bash
-pytest tests/
-# any failures go back to Claude to fix
-```
-
-**Day 16-20: deploy to a VPS**
-
-```bash
-# Hetzner Cloud, $5/month VPS
-ssh root@my-vps
-git clone my-repo
-docker compose up -d
-```
-
-PostgreSQL + FastAPI + Caddy (auto HTTPS). **Server cost $5/month.**
-
-**Day 21-25: landing page, terms of service, privacy policy**
-
-```
-You: Generate landing page, terms of service, privacy policy in
-     polished English and Japanese.
-```
-
-Claude drafts the legal docs. Send the critical parts to a lawyer for review (about $500).
-
-**Day 26-28: marketing**
-
-```
-You: Three intro versions for Hacker News and Product Hunt, each in
-     the conventions of that community.
-```
-
-Twitter / X, LinkedIn, blog — all derived from the same product Markdown.
-
-**Day 29-30: launch**
-
-Submit to Product Hunt. Submit to Hacker News. **One month, 0 → revenue.**
-
-**Total cost**: VPS $5 + Claude $50 + Stripe fees (success-based) + lawyer $500 = **about $600 for the first month.**
-
-**Features completed by one person**: auth, billing, webhooks, notes upload, AI analysis, dashboard, landing page, terms — work that ten years ago required 2 developers + 1 designer + 1 marketer + 1 legal for half a year.
-
-This isn't only about one business. **The era where 1 person + AI can do what previously only corporations could** has arrived. Book publishing, SaaS, research, consulting, education, media — all launchable by individuals using the same structure.
-
-> Change the tools, and the way you think changes. Change the way you think, and the minimum size of an organization changes.
+For the actual walkthrough — commands, code, and output — see ["Examples — 11 Walkthroughs"](/en/ai-native-ways/examples/), **Example 11: Launch a SaaS in 1 month, solo**.
 
 ## In summary
 

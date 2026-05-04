@@ -115,60 +115,9 @@ Word launch: 3–10 seconds. Opening `*.md` in VS Code: 0.5 seconds. Opening 30 
 
 Token consumption of a Word file: 5,000 characters consume about 8,000 tokens (formatting metadata inflates it). The same content in Markdown: about 4,000 tokens. **If you keep handing files to Claude, dropping formatting drops cost.**
 
-## A walkthrough: 12 months of minutes turned into Markdown in 30 minutes
+## Example
 
-You have 12 months of Word meeting notes (30 KB each, 360 KB total). Make them searchable, analyzable, and PDF-ready.
-
-**Step 1: bulk convert**
-
-```bash
-mkdir minutes-md
-for f in minutes/*.docx; do
-  pandoc "$f" -o "minutes-md/$(basename "${f%.docx}").md"
-done
-```
-
-12 files become `.md` in 5 seconds. Word formatting is stripped; only the heading-paragraph-list structure remains.
-
-**Step 2: have Claude clean them up**
-
-```bash
-cat minutes-md/2026-04.md | claude -p \
-  "Restructure these minutes into Decisions / Pending / Action Items"
-```
-
-Verbose preambles are dropped, and a Markdown organized by decisions / pending / owners returns.
-
-**Step 3: extract a specific theme across 12 months**
-
-```bash
-grep -A 3 "fertilizer price" minutes-md/*.md
-```
-
-Every place "fertilizer price" was discussed in the past 12 months comes out with three lines of context. The same task takes 30 minutes of VBA in Word.
-
-**Step 4: generate a print-quality PDF**
-
-```bash
-pandoc minutes-md/2026-04.md -o 2026-04.pdf \
-  --pdf-engine=xelatex \
-  --toc \
-  -V mainfont="Hiragino Mincho Pro" \
-  -V geometry:margin=2.5cm
-```
-
-A typeset PDF with a table of contents, in Hiragino Mincho. **Quality at the level of a book publisher.** Send this to clients.
-
-**Step 5: have AI analyze 12 months of discussion patterns**
-
-```bash
-cat minutes-md/*.md | claude -p \
-  "List the five themes most often repeated across these minutes, with frequency"
-```
-
-The structural problem of an organization debating the same things repeatedly becomes visible in five seconds. **An insight Word will never give you.**
-
-The whole pipeline, 30 minutes. Knowledge that was locked in Word becomes a searchable, AI-analyzable, print-quality-distributable asset.
+For the actual walkthrough — commands, code, and output — see ["Examples — 11 Walkthroughs"](/en/ai-native-ways/examples/), **Example 01: 12 months of Word minutes to Markdown**.
 
 ## In summary
 

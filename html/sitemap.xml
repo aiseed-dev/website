@@ -656,6 +656,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/ai-native-ways/examples/</loc>
+    <lastmod>2026-05-02</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/en/ai-native-ways/</loc>
     <lastmod>2026-05-02</lastmod>
     <priority>0.7</priority>
@@ -717,6 +722,11 @@
   </url>
   <url>
     <loc>https://aiseed.dev/en/ai-native-ways/one-plus-ai/</loc>
+    <lastmod>2026-05-02</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/ai-native-ways/examples/</loc>
     <lastmod>2026-05-02</lastmod>
     <priority>0.5</priority>
   </url>

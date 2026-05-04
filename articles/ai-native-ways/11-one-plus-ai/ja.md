@@ -9,8 +9,8 @@ label: AI Native 11
 title_html: 仕事の最小単位は、<br><span class="accent">1 人 + AI</span>。
 prev_slug: ai-delegation
 prev_title: AIに任せる仕事を見極める
-next_slug:
-next_title:
+next_slug: examples
+next_title: 実例集 ── 11 のウォークスルー
 ---
 
 # 1人+AIで作る、新しい仕事の単位
@@ -176,98 +176,9 @@ C さんは「プロダクトを設計する」「重要な判断をする」「
 
 書類仕事が消える効果: 1 日 8 時間労働のうち、書類処理に費やしていた 4 時間が AI に移る。残った 4 時間で、本来の価値を生む仕事(顧客との対話、戦略判断、創造)に集中できる。**人間にしかできない仕事の密度が 2 倍になる**。
 
-## 実例: 1 人 + AI で SaaS を 1 ヶ月でローンチする
+## 実例
 
-1 人開発者が、Stripe API + FastAPI + PostgreSQL で月額課金 SaaS を 1 ヶ月でローンチする。10 年前なら 5 人のチームが半年かけた仕事。
-
-**Day 1: アイディアを Markdown に**
-
-```markdown
-# プロダクト: Markdown 議事録 SaaS
-
-## 課題
-組織の議事録が Word で散らばり、検索・分析できない
-
-## 解決
-Markdown でアップロードすると、Claude が要約・アクション抽出・
-組織の意思決定パターン分析を返す Web サービス
-```
-
-**Day 2-3: スキーマと API を設計、Claude に実装させる**
-
-```
-あなた: PostgreSQL のスキーマ(users, organizations, minutes,
-        analyses)と、FastAPI のエンドポイント(login, upload,
-        analyze, list)を書いて。Pydantic、async、pytest 含む
-```
-
-返ってくる: スキーマ DDL 50 行、FastAPI コード 250 行、テスト 100 行。
-
-**Day 4-7: フロントエンドを Claude デザインで**
-
-```
-あなた: 議事録アップロード画面、分析結果表示画面、ダッシュボード。
-        Linear のような落ち着いた UI、Tailwind 不使用、純粋な CSS で
-```
-
-返ってくる HTML/CSS は、第7章の HTML+CSS+最小 JS スタックに乗る。
-
-**Day 8-10: Stripe で課金実装**
-
-```
-あなた: Stripe Checkout で月額 $20 の課金、Webhook で
-        subscription 状態を DB に同期。FastAPI で
-```
-
-`stripe` Python SDK を使った 80 行のコード。
-
-**Day 11-15: テスト・バグ修正・運用ログ整備**
-
-```bash
-pytest tests/
-# 失敗があれば Claude に渡して修正
-```
-
-**Day 16-20: VPS にデプロイ**
-
-```bash
-# Hetzner Cloud で月 $5 の VPS
-ssh root@my-vps
-git clone my-repo
-docker compose up -d
-```
-
-PostgreSQL + FastAPI + Caddy(HTTPS自動)で構成。**サーバー代 月 $5**。
-
-**Day 21-25: ランディングページ、利用規約、プライバシーポリシー**
-
-```
-あなた: SaaS のランディングページ、利用規約、プライバシーポリシー
-        を、洗練された英語と日本語の両方で生成して
-```
-
-法律文書も Claude が下書き。重要な部分だけ弁護士にレビュー依頼($500 ほど)。
-
-**Day 26-28: マーケティング**
-
-```
-あなた: Hacker News と Product Hunt 向けの紹介文を、それぞれの
-        コミュニティの作法に合わせて 3 案書いて
-```
-
-Twitter / X、LinkedIn、ブログ ── すべて同じプロダクト Markdown から派生。
-
-**Day 29-30: ローンチ**
-
-Product Hunt に投稿。Hacker News に投稿。**1 ヶ月で 0 → 売上発生**。
-
-**コスト合計**: VPS $5 + Claude $50 + Stripe 手数料(成果報酬)+ 弁護士 $500 = **初月 $600 程度**。
-
-**1 人で完成した機能**: 認証、課金、Webhook、議事録アップロード、AI 分析、ダッシュボード、ランディングページ、利用規約 ── 10 年前なら開発者 2 人 + デザイナー 1 人 + マーケ 1 人 + 法務 1 人で半年。
-
-これは個別事業の話だけではない。**1 人 + AI で、これまで企業にしかできなかったことが、できる時代**になった。書籍出版、SaaS、研究、コンサルティング、教育、メディア ── すべて同じ構造で個人が立ち上げられる。
-
-> 道具を変えれば、思考が変わる。思考が変われば、組織の最小単位が変わる。
+具体的なコマンド・コード・出力で動かす形は、[実例集 ── 11 のウォークスルー](/ai-native-ways/examples/) の **「実例 11: 1 人 + AI で SaaS をローンチ」**で確認できる。
 
 ## まとめ
 

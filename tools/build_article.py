@@ -479,6 +479,58 @@ def _aiways_template_path(lang: str) -> Path:
     return config.AIWAYS_DIR / ("template.html" if lang == "ja" else "template.en.html")
 
 
+def _aiways_chapter_examples_html(chapter_dir, chapter_slug: str, lang: str) -> str:
+    """Render a callout at the end of a chapter listing its example-N/ pages.
+
+    For EN chapters, if an example only ships JA content, link to the JA URL
+    so the source / outputs are still reachable.
+    """
+    examples = sorted(
+        sub for sub in Path(chapter_dir).iterdir()
+        if sub.is_dir() and re.match(r"example-\d+$", sub.name)
+    )
+    if not examples:
+        return ""
+
+    is_en = lang == "en"
+    heading = "実例" if not is_en else "Examples"
+    intro = (
+        "再現可能なソース・コマンド・実測結果を、別ページにまとめてある。"
+        if not is_en
+        else "Runnable source, commands, and measured results — see the dedicated example page(s)."
+    )
+
+    items = []
+    for ex in examples:
+        en_readme = ex / "README.en.md"
+        # If EN README exists, link to /en/.../example-N/. Otherwise (or for JA)
+        # link to the JA URL.
+        if is_en and not en_readme.exists():
+            href = f"/ai-native-ways/{chapter_slug}/{ex.name}/"
+            ja_only_marker = ' <small>(JA)</small>'
+        else:
+            base = "/en/ai-native-ways" if is_en else "/ai-native-ways"
+            href = f"{base}/{chapter_slug}/{ex.name}/"
+            ja_only_marker = ''
+
+        readme = en_readme if (is_en and en_readme.exists()) else (ex / "README.md")
+        title = ""
+        if readme.exists():
+            text = readme.read_text(encoding="utf-8")
+            m = re.search(r"^# (.+)$", text, re.MULTILINE)
+            if m:
+                title = m.group(1).strip()
+        if not title:
+            title = _example_label(ex.name, lang)
+        items.append(f'<li><a href="{href}">{title}</a>{ja_only_marker}</li>')
+
+    return (
+        f'\n<h2>{heading}</h2>\n'
+        f'<p>{intro}</p>\n'
+        f'<ul>\n' + "\n".join(items) + "\n</ul>\n"
+    )
+
+
 def build_aiways_chapter(md_path):
     """Build a single ai-native-ways chapter using the series-local template."""
     from jinja2 import Template
@@ -511,6 +563,11 @@ def build_aiways_chapter(md_path):
     body = strip_leading_title(body)
     body = process_custom_blocks(body)
     body_html = md.render(body)
+
+    # Append a "実例 / Examples" callout listing example-N/ folders for this chapter.
+    examples_html = _aiways_chapter_examples_html(md_path.parent, meta["slug"], lang)
+    if examples_html:
+        body_html = body_html + examples_html
 
     series_name = AIWAYS_SERIES_NAME_EN if lang == "en" else AIWAYS_SERIES_NAME_JA
     series_index_path_ja = "/ai-native-ways/"
@@ -565,6 +622,234 @@ def build_aiways_chapter(md_path):
 
     print(f"Built ai-native-ways: {out_file}")
     return True
+
+
+# ---------------------------------------------------------------------------
+# Build functions — ai-native-ways examples (per-chapter "example-N" pages)
+#
+# Source:  articles/ai-native-ways/NN-slug/example-N/{README.md, results.md, ...}
+# Output:  html/ai-native-ways/<slug>/example-N/index.html
+#
+# Each example folder is rendered as a stand-alone technical doc page using
+# template-example.html. README.md and results.md (if present) are concatenated
+# as the page body. Source files (Makefile, *.py, etc.) are copied alongside as
+# downloadable raw assets, and a "files in this example" section lists them.
+# ---------------------------------------------------------------------------
+
+# Files to copy into the html output dir as downloadable assets.
+_EXAMPLE_INCLUDE_EXT = {
+    ".py", ".sh", ".mk", ".css", ".js", ".html", ".md", ".mmd",
+    ".json", ".yaml", ".yml", ".csv", ".tsv", ".txt", ".toml",
+    ".png", ".svg", ".jpg", ".jpeg", ".gif", ".webp",
+    ".pdf", ".epub", ".docx", ".xlsx", ".log",
+}
+_EXAMPLE_INCLUDE_NAMES = {"Makefile", "Dockerfile", "Procfile", "requirements.txt"}
+_EXAMPLE_SKIP_NAMES = {".stamp", ".gitignore", ".DS_Store"}
+_EXAMPLE_SKIP_DIRS = {"__pycache__", ".venv", "node_modules", ".git"}
+
+
+def _iter_example_files(example_dir):
+    """Yield (Path, rel_path) for every file in example_dir (recursive) that
+    should be copied into the published html output."""
+    base = Path(example_dir)
+    for p in sorted(base.rglob("*")):
+        if any(part in _EXAMPLE_SKIP_DIRS for part in p.parts):
+            continue
+        if not p.is_file():
+            continue
+        if p.name in _EXAMPLE_SKIP_NAMES:
+            continue
+        if p.name in _EXAMPLE_INCLUDE_NAMES:
+            yield p, p.relative_to(base)
+            continue
+        if p.suffix.lower() in _EXAMPLE_INCLUDE_EXT:
+            yield p, p.relative_to(base)
+
+
+def _humanize_size(n: int) -> str:
+    if n < 1024:
+        return f"{n} B"
+    if n < 1024 * 1024:
+        return f"{n / 1024:.1f} KB"
+    return f"{n / 1024 / 1024:.2f} MB"
+
+
+def _example_files_html(example_dir):
+    """Render the 'files in this example' section. Groups by top-level folder
+    so out/, src/, docx/ etc. read cleanly."""
+    files = list(_iter_example_files(example_dir))
+    if not files:
+        return ""
+
+    groups = {}
+    for src, rel in files:
+        parts = rel.parts
+        head = "" if len(parts) == 1 else parts[0]
+        groups.setdefault(head, []).append((src, rel))
+
+    parts_html = []
+    group_order = sorted(groups.keys(), key=lambda k: (k == "", k))
+    for head in group_order:
+        if head:
+            parts_html.append(f'<h3>{head}/</h3>')
+        items = []
+        for src, rel in groups[head]:
+            href = "/".join(rel.parts)
+            display = "/".join(rel.parts)
+            size = _humanize_size(src.stat().st_size)
+            items.append(
+                f'<li><span class="filename"><a href="{href}">{display}</a></span>'
+                f'<span class="filesize">{size}</span></li>'
+            )
+        parts_html.append("<ul>" + "".join(items) + "</ul>")
+    return "\n".join(parts_html)
+
+
+def _example_label(folder_name: str, lang: str) -> str:
+    """'example-1' → '実例 1' / 'Example 1'."""
+    m = re.match(r"example-(\d+)", folder_name)
+    n = m.group(1) if m else folder_name
+    return f"実例 {n}" if lang == "ja" else f"Example {n}"
+
+
+def _example_chapter_meta(example_dir):
+    """Read frontmatter from the parent chapter's ja.md (and en.md if exists)."""
+    chapter_dir = Path(example_dir).parent
+    meta_by_lang = {}
+    for lang in ("ja", "en"):
+        f = chapter_dir / f"{lang}.md"
+        if not f.exists():
+            continue
+        text = f.read_text(encoding="utf-8")
+        meta, _ = parse_frontmatter(text)
+        if "lang" not in meta and lang == "en":
+            meta["lang"] = "en"
+        meta_by_lang[lang] = meta
+    return meta_by_lang
+
+
+def build_aiways_example(example_dir, lang="ja"):
+    """Build a single example page at /ai-native-ways/<chapter-slug>/<example-N>/."""
+    from jinja2 import Template
+
+    example_dir = Path(example_dir)
+    if not example_dir.is_dir():
+        return False
+
+    chapter_meta = _example_chapter_meta(example_dir)
+    meta = chapter_meta.get(lang)
+    if meta is None:
+        return False
+
+    # Pick README/results: language-specific variants if present, otherwise
+    # fall back to the JA originals (no EN translation yet for examples — the
+    # EN page links back to the same source folder so the artifacts are still
+    # accessible).
+    readme_lang = example_dir / f"README.{lang}.md"
+    results_lang = example_dir / f"results.{lang}.md"
+    readme = readme_lang if readme_lang.exists() else (example_dir / "README.md")
+    results = results_lang if results_lang.exists() else (example_dir / "results.md")
+
+    # If we are building EN but only JA content exists, skip EN — the EN chapter
+    # page will link to the JA example URL instead.
+    if lang == "en" and not readme_lang.exists():
+        return False
+
+    if not readme.exists():
+        return False
+
+    body_md = readme.read_text(encoding="utf-8")
+    if results.exists():
+        body_md = body_md.rstrip() + "\n\n---\n\n" + results.read_text(encoding="utf-8")
+
+    body_md = strip_leading_title(body_md)
+    body_md = process_custom_blocks(body_md)
+    content_html = md.render(body_md)
+
+    chapter_slug = meta["slug"]
+    example_name = example_dir.name  # 'example-1'
+    is_en = lang == "en"
+    series_index_url = "/en/ai-native-ways/" if is_en else "/ai-native-ways/"
+    chapter_url = f"{series_index_url}{chapter_slug}/"
+
+    if is_en:
+        out_dir = config.SITE_ROOT / "html" / "en" / "ai-native-ways" / chapter_slug / example_name
+    else:
+        out_dir = config.AIWAYS_OUTPUT_BASE / chapter_slug / example_name
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    # Copy raw asset files alongside index.html.
+    for src, rel in _iter_example_files(example_dir):
+        dst = out_dir / rel
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        if not dst.exists() or dst.stat().st_mtime < src.stat().st_mtime:
+            dst.write_bytes(src.read_bytes())
+
+    # Title: pull the first H1 from README.md, else fall back to "実例 N".
+    h1_match = re.search(r"^# (.+)$", readme.read_text(encoding="utf-8"), re.MULTILINE)
+    example_label = _example_label(example_name, lang)
+    if h1_match:
+        example_title = h1_match.group(1).strip()
+        # Strip leading "実例 N — " / "Example N — " if present, since the label is shown separately.
+        example_title = re.sub(r"^(実例\s*\d+|Example\s*\d+)\s*[—\-:：]\s*", "", example_title)
+    else:
+        example_title = example_label
+
+    chapter_title = meta.get("title", "")
+    chapter_label = _aiways_chapter_label(meta.get("number", "").strip('"'), lang)
+    series_name = AIWAYS_SERIES_NAME_EN if is_en else AIWAYS_SERIES_NAME_JA
+
+    canonical_url = (
+        f"{config.SITE_URL}/{'en/' if is_en else ''}"
+        f"ai-native-ways/{chapter_slug}/{example_name}/"
+    )
+
+    files_html = _example_files_html(example_dir)
+    files_heading = "ファイル一覧" if not is_en else "Files"
+    back_label = (
+        f"{chapter_label}「{chapter_title}」に戻る"
+        if not is_en
+        else f"Back to {chapter_label}: {chapter_title}"
+    )
+
+    variables = {
+        "lang": lang,
+        "example_title": example_title,
+        "example_label": example_label,
+        "subtitle": "",
+        "description": (
+            f"{chapter_title} の {example_label}: 実行可能なソースと実測結果。"
+            if not is_en
+            else f"{example_label} for {chapter_title}: runnable source and measured results."
+        ),
+        "canonical_url": canonical_url,
+        "og_image": f"{config.SITE_URL}/aiseed-og-default.png",
+        "series": series_name,
+        "series_index_url": series_index_url,
+        "chapter_label": chapter_label,
+        "chapter_title": chapter_title,
+        "chapter_url": chapter_url,
+        "content_html": content_html,
+        "files_html": files_html,
+        "files_heading": files_heading,
+        "back_label": back_label,
+    }
+
+    tpl_path = config.AIWAYS_DIR / "template-example.html"
+    template_text = tpl_path.read_text(encoding="utf-8")
+    html = Template(template_text).render(**variables)
+    (out_dir / "index.html").write_text(html, encoding="utf-8")
+    print(f"Built ai-native-ways example: {out_dir / 'index.html'}")
+    return True
+
+
+def collect_aiways_examples(chapter_dir):
+    """Yield example-N/ subfolders of a chapter, sorted by N."""
+    if not Path(chapter_dir).is_dir():
+        return
+    for sub in sorted(Path(chapter_dir).iterdir()):
+        if sub.is_dir() and re.match(r"example-\d+$", sub.name):
+            yield sub
 
 
 def collect_aiways_chapters(lang="ja"):
@@ -996,6 +1281,19 @@ def main():
         if collect_aiways_chapters("en"):
             build_aiways_index("en")
 
+        # Build ai-native-ways examples — every chapter's example-N/ folders.
+        examples_ok = examples_total = 0
+        for chapter_sub in sorted(config.AIWAYS_DIR.iterdir()):
+            if not chapter_sub.is_dir() or not chapter_sub.name[:1].isdigit():
+                continue
+            for ex in collect_aiways_examples(chapter_sub):
+                for ex_lang in ("ja", "en"):
+                    if not (chapter_sub / f"{ex_lang}.md").exists():
+                        continue
+                    examples_total += 1
+                    if build_aiways_example(ex, ex_lang):
+                        examples_ok += 1
+
         update_static_page_asset_versions()
         build_sitemap()
         build_robots()
@@ -1003,6 +1301,7 @@ def main():
             f"\nBuilt {ok}/{len(files)} articles + {blog_ok}/{len(blog_files)} blog posts"
             f" + {book_ok}/{len(book_files)} book chapters"
             f" + {aiways_ok}/{len(aiways_files)} ai-native-ways"
+            f" + {examples_ok}/{examples_total} ai-native-ways examples"
             f" + indexes + sitemap.xml + robots.txt."
         )
         return

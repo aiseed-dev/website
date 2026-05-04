@@ -179,10 +179,6 @@ Re-flash cycle:
 
 Sensor data visualization: building a custom web dashboard takes 1 week. With Python's `matplotlib` plus a `plot()` line, then "make this an HTML report" to Claude — practical-quality result in **30 minutes**.
 
-## Example
-
-For the actual walkthrough — commands, code, and output — see ["Examples — 11 Walkthroughs"](/en/ai-native-ways/examples/), **Example 09: Research-grade home garden sensing**.
-
 ## In summary
 
 Even in embedded, think in Python.

@@ -115,10 +115,6 @@ Word launch: 3–10 seconds. Opening `*.md` in VS Code: 0.5 seconds. Opening 30 
 
 Token consumption of a Word file: 5,000 characters consume about 8,000 tokens (formatting metadata inflates it). The same content in Markdown: about 4,000 tokens. **If you keep handing files to Claude, dropping formatting drops cost.**
 
-## Example
-
-For the actual walkthrough — commands, code, and output — see ["Examples — 11 Walkthroughs"](/en/ai-native-ways/examples/), **Example 01: 12 months of Word minutes to Markdown**.
-
 ## In summary
 
 Change your tools, and the way you think changes.

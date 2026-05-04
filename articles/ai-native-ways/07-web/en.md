@@ -267,10 +267,6 @@ Page rendering speed: Next.js + Vercel dynamic rendering **~800 ms**. Static HTM
 
 The scale of this site (aiseed.dev): **150+ pages, 30,000 lines of code, assembled in 24 hours.** Zero React, Next.js, or TypeScript. Markdown, Mermaid, minimal HTML/CSS only.
 
-## Example
-
-For the actual walkthrough — commands, code, and output — see ["Examples — 11 Walkthroughs"](/en/ai-native-ways/examples/), **Example 07: Personal blog worldwide in 30 minutes**.
-
 ## In summary
 
 Split the web-building tools into two layers.

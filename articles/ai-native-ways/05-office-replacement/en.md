@@ -131,10 +131,6 @@ Word launch → format adjustment → save → email send cycle: 5 minutes × 30
 
 Time to summarize one email: reading and extracting the points yourself takes 5 minutes. Hand it to Claude and the summary plus recommended actions returns in 10 seconds. **30x faster.**
 
-## Example
-
-For the actual walkthrough — commands, code, and output — see ["Examples — 11 Walkthroughs"](/en/ai-native-ways/examples/), **Example 05: Monthly report cycle in 30 minutes**.
-
 ## In summary
 
 You don't need to drop Office. Use Office as the converter at the entrance and exit.

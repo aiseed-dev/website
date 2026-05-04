@@ -266,10 +266,6 @@ WordPress マネージドホスティング(WP Engine、Kinsta 等): 月額 **5,
 
 このサイト(aiseed.dev)の規模: **150 ページ以上、合計 30,000 行のコード、24 時間で組み上げた**。React・Next.js・TypeScript はゼロ。Markdown と Mermaid と最小 HTML/CSS だけ。
 
-## 実例
-
-具体的なコマンド・コード・出力で動かす形は、[実例集 ── 11 のウォークスルー](/ai-native-ways/examples/) の **「実例 07: 個人ブログを 30 分で世界配信」**で確認できる。
-
 ## まとめ
 
 Web を作る道具を、二層に分ける。

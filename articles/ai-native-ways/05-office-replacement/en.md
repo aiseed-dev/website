@@ -131,15 +131,9 @@ Word launch → format adjustment → save → email send cycle: 5 minutes × 30
 
 Time to summarize one email: reading and extracting the points yourself takes 5 minutes. Hand it to Claude and the summary plus recommended actions returns in 10 seconds. **30x faster.**
 
-## What becomes possible
+## Example
 
-From Markdown meeting notes, Claude **automatically extracts action items, drafts emails to owners, registers calendar reminders** in 30 seconds. Post-meeting handling that took an hour finishes in three minutes. Only the important work remains in your hands. **This was simply impossible in Word.**
-
-Generate the customer presentation **in Japanese, English, and Chinese simultaneously** (from the same Markdown source, with Claude translating). Overseas accounts become a one-person job. **Office workers expand into global operations.**
-
-Build proposals with Markdown + Mermaid + Claude Design, and **proposals at the level a consulting firm bills 200K USD for** can be produced by your own hands. "Three proposal versions for this client by tomorrow" — possible work for a single office worker. **Far beyond what Word + PowerPoint can deliver.**
-
-Keep an internal wiki in Markdown in Git, and **a decade of decisions become searchable and analyzable**. "Why was that policy adopted?" Claude answers in five seconds. Organizational memory opens up to individuals. **Word's binary format can't do this.**
+For the actual walkthrough — commands, code, and output — see ["Examples — 11 Walkthroughs"](/en/ai-native-ways/examples/), **Example 05: Monthly report cycle in 30 minutes**.
 
 ## In summary
 

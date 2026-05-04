@@ -134,15 +134,9 @@ Python learning curve: for the "ability to use," practicing reading Claude-writt
 
 Reaction to errors: searching and trial-and-error solo takes 30 minutes to 2 hours. Pasting the error text into Claude returns the cause and corrected code in 30 seconds. **60x faster or more.**
 
-## What becomes possible
+## Example
 
-Scrape → gather industry statistics → analyze with `pandas` → visualize with `plotly` → publish dashboard with `Streamlit`. **Claude writes all of it.** A worldwide-published industry analysis site in 30 minutes. Five years ago, this required a dedicated analytics team for three months.
-
-Prototype machine learning with `scikit-learn`, apply deep learning with `PyTorch` — Claude provides the templates. **You "use" machine learning before you "learn" it.** Demand forecasting, image recognition, NLP — all reachable by a single proprietor.
-
-Build your own AI assistant with Python + Claude API. Customize to your organization's data, rules, and operations. **In-house AI colleagues without depending on ChatGPT or Notion AI.** Data stays internal; costs are only the API usage.
-
-Python + `requests` + Claude automates **monitoring competitor websites daily, detecting changes, generating summary reports**. Instead of paying market research firms tens of thousands per month, do it for a few hundred yen.
+For the actual walkthrough — commands, code, and output — see ["Examples — 11 Walkthroughs"](/en/ai-native-ways/examples/), **Example 04: Extract amounts from 100 invoice PDFs**.
 
 ## In summary
 

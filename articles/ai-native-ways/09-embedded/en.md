@@ -179,15 +179,9 @@ Re-flash cycle:
 
 Sensor data visualization: building a custom web dashboard takes 1 week. With Python's `matplotlib` plus a `plot()` line, then "make this an HTML report" to Claude — practical-quality result in **30 minutes**.
 
-## What becomes possible
+## Example
 
-Place sensors (temperature, humidity, soil moisture, light) in your home garden and **acquire and analyze data at agricultural-research-institution level**. Under $100 in parts, with Claude returning anomaly detection and cultivation advice. **Research-grade equipment from agricultural universities, running at home.**
-
-Raspberry Pi + camera + ML: **recognize plant diseases by image**, at expert-level accuracy with $35 of parts. **"LINE notification when leaves show abnormalities" — without an IoT vendor contract, in your own hands.**
-
-ESP32 + edge AI: achieve **control precision rivaling industrial robots** in hobby electronics. Claude writes the PID control, state machines, and communication protocols. **Work that required a master's-level control-engineering background five years ago, now reachable by beginners.**
-
-Old PLCs and proprietary-language industrial control: **Claude translates 20-year-old control code to Python and visualizes it**. Escape from embedded vendor lock-in (discontinued CPUs, vanished compilers). **"Factories with no one left who can fix it" come back to life in Python.**
+For the actual walkthrough — commands, code, and output — see ["Examples — 11 Walkthroughs"](/en/ai-native-ways/examples/), **Example 09: Research-grade home garden sensing**.
 
 ## In summary
 

@@ -181,15 +181,9 @@ CLI tool creation and distribution: 1 hour to write, `pip install` instantly dis
 
 Adding a Flet GUI to existing CLI logic: install Flet, add tens of lines of code, **1 hour**. Rewriting in Flutter: 1 month.
 
-## What becomes possible
+## Example
 
-Publish a CLI tool to **PyPI** and worldwide Python users install it via `pip install foo` instantly. Stars on GitHub become global proof of your engineering. **No App Store review, no annual fee ($99) — same-day release.**
-
-Use Flet to wrap a machine learning model as a GUI **for non-technical staff**. Demand forecasting, image classification, document classification — data analysis democratized across the organization. **Machine learning that previously had to go through IT now reaches the floor.**
-
-With Flutter, distribute from one codebase to **iOS, Android, Web, Windows, Mac, Linux** — six platforms simultaneously. **Work that needed six teams five years ago**, accomplished by one person + Claude.
-
-CLI + Python + cron lets you build **your own automation agent** (command-based, not autonomous-mode). Daily email summary, weekly industry news, monthly household analysis — all running locally, data never leaves. **Automation without depending on SaaS subscriptions.**
+For the actual walkthrough — commands, code, and output — see ["Examples — 11 Walkthroughs"](/en/ai-native-ways/examples/), **Example 08: Photo-sort CLI on PyPI**.
 
 ## In summary
 

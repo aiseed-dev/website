@@ -266,15 +266,9 @@ WordPress マネージドホスティング(WP Engine、Kinsta 等): 月額 **5,
 
 このサイト(aiseed.dev)の規模: **150 ページ以上、合計 30,000 行のコード、24 時間で組み上げた**。React・Next.js・TypeScript はゼロ。Markdown と Mermaid と最小 HTML/CSS だけ。
 
-## 実例: 生み出せるもの
+## 実例
 
-静的 HTML + Service Worker + Web Push API で、**PWA(オフライン動作・プッシュ通知付き Web アプリ)** が作れる。アプリストアを通さない、審査もない、年会費もない。**Native アプリと同等の体験が、Web で**。
-
-Markdown ベースの個人サイトが、**世界 200 ヶ国に CDN 経由で 50ms 以下で配信**できる。WordPress のホスティングではこの速度に到達しない。**個人ブログが、世界一流のメディアと同じ配信品質**で勝負できる。
-
-Claude デザインで、**Linear・Stripe・Apple のような最先端 UI を 30 分で再現**できる。「Stripe 風の決済画面」「Linear のような落ち着いたダッシュボード」 ── デザイナーがいない会社の Web が、シリコンバレーのスタートアップと並ぶ見栄えになる。
-
-aiseed.dev 自体が証明だ ── **150 ページ以上の本格 Web サイト**を、React 無し・Next.js 無し・TypeScript 無し・node_modules 無しで構築。Markdown + Python + 最小 HTML/CSS だけで、Vercel や Netlify と遜色ない速度・品質を実現している。**WordPress や Wix では、ここまでの自由度は得られない**。
+具体的なコマンド・コード・出力で動かす形は、[実例集 ── 11 のウォークスルー](/ai-native-ways/examples/) の **「実例 07: 個人ブログを 30 分で世界配信」**で確認できる。
 
 ## まとめ
 

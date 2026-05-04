@@ -72,25 +72,48 @@
             vertical-align: middle;
         }
         .feature-card {
-            display: block;
+            display: flex;
+            flex-direction: column;
             text-decoration: none;
             color: inherit;
             background: var(--sand-light, #f8f6f0);
             border: 1px solid var(--earth-light, #e0ddd8);
             border-left: 4px solid var(--moss-green, #4a7c59);
             border-radius: 6px;
-            padding: 1.5rem 1.75rem;
+            padding: 1.75rem 1.75rem 1.5rem;
             transition: background 0.2s, transform 0.2s;
         }
         .feature-card:hover {
             background: #f0ede3;
             transform: translateY(-2px);
         }
+        .feature-head {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            margin-bottom: 0.4rem;
+        }
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            color: var(--moss-green, #4a7c59);
+            flex-shrink: 0;
+        }
+        .feature-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
         .feature-card h3 {
             font-family: 'Zen Old Mincho', serif;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--earth-dark, #2c2c2c);
-            margin: 0 0 0.35rem;
+            margin: 0;
+            line-height: 1.35;
         }
         .feature-card .feature-sub {
             font-size: 0.85rem;
@@ -99,14 +122,24 @@
             font-style: italic;
         }
         .feature-card p {
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             color: var(--soil-rich, #5a5a5a);
-            margin: 0 0 0.5rem;
+            margin: 0 0 0.75rem;
             line-height: 1.7;
         }
         .feature-card .feature-more {
             font-size: 0.85rem;
             color: var(--moss-green, #4a7c59);
+            margin-top: auto;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        @media (max-width: 760px) {
+            .feature-grid { grid-template-columns: 1fr; }
+            .feature-card { padding: 1.25rem; }
         }
     </style>
 </head>
@@ -146,36 +179,56 @@
 
     <!-- Series & Dictionary Cards -->
     <section class="section" style="padding-top: 8rem; padding-bottom: 1rem;">
-        <div class="container-narrow">
+        <div class="container-narrow" style="max-width: 980px;">
             <div style="text-align: center; margin-bottom: 2rem;">
                 <h1 style="font-family: 'Zen Old Mincho', serif; font-size: 1.8rem; color: var(--earth-dark); margin-bottom: 0.5rem;">記事と辞典</h1>
                 <p style="color: var(--soil-rich);">3 つの記事シリーズと、伝統野菜の辞典</p>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div class="feature-grid">
 
                 <a href="/insights/" class="feature-card">
-                    <h3>構造分析 — 全15章</h3>
+                    <div class="feature-head">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48"><circle cx="24" cy="8" r="3.5"/><circle cx="8" cy="24" r="3.5"/><circle cx="40" cy="24" r="3.5"/><circle cx="16" cy="40" r="3.5"/><circle cx="32" cy="40" r="3.5"/><line x1="24" y1="11.5" x2="11" y2="22"/><line x1="24" y1="11.5" x2="37" y2="22"/><line x1="11" y1="27" x2="15" y2="36.5"/><line x1="37" y1="27" x2="33" y2="36.5"/><line x1="19" y1="40" x2="29" y2="40"/></svg>
+                        </div>
+                        <h3>構造分析 — 全15章</h3>
+                    </div>
                     <p class="feature-sub">Insights — 全ての構造は一つに繋がっている</p>
                     <p>気候変動、化石資源、Mythos時代、企業ITの税、ドローン戦争、医療と年金、規制の再設計 ── AIが仕事、農業、暮らしを変える、その構造を解き明かす。</p>
                     <span class="feature-more">15章を読む →</span>
                 </a>
 
                 <a href="/ai-native-ways/" class="feature-card">
-                    <h3>AIネイティブな仕事の作法 — 全11章+実例集</h3>
+                    <div class="feature-head">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48"><polyline points="14,16 6,24 14,32"/><polyline points="34,16 42,24 34,32"/><line x1="28" y1="12" x2="20" y2="36"/></svg>
+                        </div>
+                        <h3>AIネイティブな仕事の作法 — 全11章+実例集</h3>
+                    </div>
                     <p class="feature-sub">AI-Native Ways of Working — 道具を変えれば、思考が変わる</p>
                     <p>事務処理はOffice、業務ソフトはJava/C#、しかしAIはPythonとテキスト。Markdown・JSON・Mermaid・Python・Linuxで AI を同僚として並走させる、実用的な作法。コードと出力の実例集つき。</p>
                     <span class="feature-more">序章から始める →</span>
                 </a>
 
                 <a href="/claude-debian/" class="feature-card">
-                    <h3>Claudeと一緒に学ぶDebian — 全24章</h3>
+                    <div class="feature-head">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48"><path d="M6 10 L24 14 L42 10 L42 38 L24 42 L6 38 Z"/><line x1="24" y1="14" x2="24" y2="42"/><path d="M11 17 L19 18.5"/><path d="M11 23 L19 24.5"/><path d="M11 29 L19 30.5"/><path d="M29 18.5 L37 17"/><path d="M29 24.5 L37 23"/></svg>
+                        </div>
+                        <h3>Claudeと一緒に学ぶDebian — 全24章</h3>
+                    </div>
                     <p class="feature-sub">Learning Debian with Claude — 対話する教科書</p>
                     <p>Claudeを横に置いて読む新しい形の教科書。Debianへの移行を、対話を通じて自分の状況に合わせて学ぶ。各章末で「ここまで読んで自分はどうすべきか」をClaudeに聞く。</p>
                     <span class="feature-more">序章から学ぶ →</span>
                 </a>
 
                 <a href="/vegitage/italian/" class="feature-card">
-                    <h3>イタリア野菜辞典 — Vegitage 🌱</h3>
+                    <div class="feature-head">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48"><path d="M24 42 C24 28, 14 22, 8 22 C8 30, 14 38, 24 42 Z"/><path d="M24 42 C24 24, 32 16, 40 14 C40 24, 34 36, 24 42 Z"/><line x1="24" y1="42" x2="24" y2="20"/></svg>
+                        </div>
+                        <h3>イタリア野菜辞典 — Vegitage</h3>
+                    </div>
                     <p class="feature-sub">Le Verdure Italiane — 地中海の恵みと食文化の物語</p>
                     <p>DOP・IGP認定品種から地方の在来種まで、69種の伝統野菜の歴史・栽培・料理を収録。AIリサーチエージェントで構築された、伝統野菜と伝統料理の構造化データベース。</p>
                     <span class="feature-more">辞典を見る →</span>

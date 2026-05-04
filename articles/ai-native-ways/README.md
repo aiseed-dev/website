@@ -12,7 +12,13 @@ articles/ai-native-ways/
 ├── template.en.html         ── 英語版テンプレート(Jinja2)
 └── NN-slug/                 ── 1章 = 1フォルダ
     ├── ja.md                ── 日本語版本文 + frontmatter
-    └── en.md                ── 英語版本文 + frontmatter
+    ├── en.md                ── 英語版本文 + frontmatter
+    └── example-N/           ── 章ごとの実例(任意・複数可)
+        ├── README.md
+        ├── source.md / *.py / その他入力
+        ├── Makefile         ── 再現用ビルド定義
+        ├── results.md       ── 実測値(時間・サイズ・ページ数)
+        └── out/             ── 生成物(コミットする)
 ```
 
 実体例:
@@ -23,8 +29,20 @@ articles/ai-native-ways/
 ├── template.html / template.en.html
 └── 00-prologue/
     ├── ja.md
-    └── en.md
+    ├── en.md
+    └── example-1/           ── 1 つの Markdown から 5 形式
+        ├── README.md
+        ├── source.md
+        ├── book-style.css
+        ├── Makefile
+        ├── results.md
+        └── out/{prologue.html,prologue.epub,slides.html,plain.txt,prologue.pdf}
 ```
+
+ビルドパイプラインは `NN-slug/` 配下のうち**先頭が数字でないフォルダ**(つまり
+`example-N/`)を無視する(`tools/build_article.py::_iter_article_files` の
+`if not sub.name[:1].isdigit(): continue` フィルタ)。実例フォルダはサイトの
+ページとしては出力されない。リポジトリ内の証拠資料として残る。
 
 ## 設計方針
 
@@ -192,6 +210,30 @@ CommonMark + tables 拡張(`tools/build/markdown.py`)。
 
 色を変えたい場合は `template.html` / `template.en.html` の冒頭 `:root`
 ブロックを編集する。
+
+## 実例フォルダ(`example-N/`)の作法
+
+各章の主張は、**実行可能な証拠**で裏付ける。章フォルダの直下に
+`example-1/`, `example-2/` … を作り、次の 5 点を揃える:
+
+1. **`README.md`** ── 何を実演するか・章のどの主張に対応するか
+2. **入力**(`source.md`、サンプル `*.docx`、CSV、コードなど)
+3. **`Makefile`**(または `run.sh`)── 再現コマンドを 1 つに集約
+4. **`results.md`** ── 実測値(ビルド時間、出力サイズ、ページ数、トークン比)
+5. **`out/`** ── 生成物そのもの(コミットする。ブラウザで `git` 経由で開ける)
+
+設計原則:
+
+- **再現可能であること**: `make all` または `bash run.sh` で誰でも再走できる
+- **計測値を出すこと**: 「速い」「小さい」ではなく「11.7 秒」「9 KB」と書く
+- **生成物をコミットすること**: 読者が手元で動かせない場合でも、結果を見られる
+- **依存関係を明記すること**: `pandoc` のバージョン、`pip install` するもの
+
+ビルドパイプライン側では `example-N/` は無視される(数字始まりではないため)。
+シリーズページや章ページとしては出力されない。リポジトリ内の証拠資料・
+読者のコピー元として存在する。
+
+雛形は `00-prologue/example-1/` を参照。
 
 ## このシリーズの章立て(計画)
 

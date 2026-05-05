@@ -1,0 +1,27 @@
+[
+  {
+    "region": "大阪",
+    "customers": 3,
+    "mrr": 11940
+  },
+  {
+    "region": "東京",
+    "customers": 4,
+    "mrr": 8920
+  },
+  {
+    "region": "北海道",
+    "customers": 3,
+    "mrr": 7940
+  },
+  {
+    "region": "徳島",
+    "customers": 3,
+    "mrr": 7940
+  },
+  {
+    "region": "沖縄",
+    "customers": 2,
+    "mrr": 2960
+  }
+]

@@ -1,0 +1,47 @@
+[
+  {
+    "id": 5,
+    "customer": "田中株式会社",
+    "item": "キャベツ",
+    "qty": 100,
+    "unit_price": 180,
+    "total": 18000,
+    "created_at": "2026-05-05 02:37:09"
+  },
+  {
+    "id": 4,
+    "customer": "佐藤畜産",
+    "item": "トマト",
+    "qty": 80,
+    "unit_price": 250,
+    "total": 20000,
+    "created_at": "2026-05-05 02:37:09"
+  },
+  {
+    "id": 3,
+    "customer": "高橋食品",
+    "item": "キャベツ",
+    "qty": 30,
+    "unit_price": 180,
+    "total": 5400,
+    "created_at": "2026-05-05 02:37:09"
+  },
+  {
+    "id": 2,
+    "customer": "鈴木商店",
+    "item": "玉葱",
+    "qty": 200,
+    "unit_price": 95,
+    "total": 19000,
+    "created_at": "2026-05-05 02:37:09"
+  },
+  {
+    "id": 1,
+    "customer": "山田農園",
+    "item": "キャベツ",
+    "qty": 50,
+    "unit_price": 180,
+    "total": 9000,
+    "created_at": "2026-05-05 02:37:09"
+  }
+]

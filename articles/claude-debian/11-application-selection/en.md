@@ -129,7 +129,8 @@ This book's recommendation:
 
 | Category | Recommended | Reason |
 |---|---|---|
-| Browsers (Firefox / Chromium) | **apt** | Strong OS integration; apt is current enough |
+| Firefox | **apt** (`firefox-esr`) / Flatpak also works | Debian Security Team backports ESR promptly; native integration is smooth |
+| Chromium / Chrome / Brave / Vivaldi | **Flatpak** | apt lags; Chrome's deb is a pain to keep current; sandbox is a bonus |
 | Desktop environment / fonts / IME | **apt** | OS base; no benefit from Flatpak |
 | LibreOffice | **apt or Flatpak** | apt is fine; Flatpak for newest features |
 | Slack / Zoom / Discord / Spotify | **Flatpak** | Faster updates + sandboxing |
@@ -170,26 +171,93 @@ With the dependency map from Chapter 4 open beside you, decide replacements in t
 
 ## Section 1 — Browser
 
-### Candidates
+The browser is your single largest attack surface, and **how fast you get
+patches** mostly determines how safe you are. This is the one category where
+Firefox and Chromium-family browsers deserve different handling.
 
-- **Firefox** (`sudo apt install firefox-esr`): Debian standard, privacy-focused.
-- **Chromium** (`sudo apt install chromium`): the open-source build of Chrome.
-- **Brave**: built-in ad blocking, privacy-focused.
-- **Vivaldi**: highly customizable.
-- **Google Chrome**: Google's official build (install from a deb file).
+### Firefox: apt (`firefox-esr`) Is Enough
+
+```bash
+sudo apt install firefox-esr
+```
+
+Debian's Firefox-ESR is **continuously backported by the Debian Security
+Team**, with security fixes landing on roughly the same day as the upstream
+Mozilla release. Mozilla itself positions ESR as "stable + immediate
+security for enterprises and servers," so this is **one of the rare
+categories where the usual 'Debian apt is too old' problem doesn't apply.**
+
+Native messaging (KeePassXC / Bitwarden integration), YubiKey, and
+GNOME / KDE default-browser handoff all work cleanly out of the box.
+
+If you want strict multi-profile isolation or an extra sandbox layer,
+the Flatpak `org.mozilla.firefox` (also a Mozilla-official build) is
+a fine option.
+
+### Chromium-family: Flatpak Is the Pragmatic Choice
+
+Chromium / Chrome / Brave / Vivaldi sit differently from Firefox.
+
+- **Chromium**: the apt build can lag the upstream zero-day fix by **a few
+  days to two weeks** depending on the Security Team's load. A week is a
+  long time for a browser.
+- **Google Chrome**: not in the official Debian apt repo. Your options are
+  (a) download Google's deb, (b) add Google's third-party apt repo, or
+  (c) Flatpak. **(c) is by far the easiest** — no repo, no signing key,
+  just one `flatpak install`.
+- **Brave / Vivaldi**: official deb exists but requires a third-party apt
+  repo. The Flatpak version skips the `remote-add` ceremony entirely.
+
+On top of that, Chromium-family browsers **benefit more visibly from
+Flatpak's outer sandbox**. Their inner process isolation is strong, but
+adding another layer is meaningful given the breadth of attack surface.
+A reasonable insurance policy.
+
+```bash
+# Examples
+flatpak install flathub org.chromium.Chromium
+flatpak install flathub com.google.Chrome
+flatpak install flathub com.brave.Browser
+flatpak install flathub com.vivaldi.Vivaldi
+```
+
+### Caveats With Flatpak Browsers
+
+The price of the sandbox: a few integrations need **extra setup**.
+
+- **Native messaging for password managers** (KeePassXC-Browser,
+  Bitwarden auto-fill): goes through the portal; you typically open the
+  socket once via Flatseal.
+- **Hardware tokens (YubiKey, etc.)**: enable `Devices: All` in Flatseal.
+- **VA-API hardware decode** (CPU savings during video playback): requires
+  an extra environment variable, more friction than the apt build.
+- **"Open in default app"**: routed through the portal, with a small delay.
+
+If your day involves password managers + SSO tokens constantly, or you
+run video editing while streaming on the side, the apt build (Firefox)
+keeps an edge.
 
 ### Axes for Choosing
 
 - **Bookmark and password sync.** How easy is it to migrate from your current browser?
 - **Privacy.** Stance toward ads and trackers.
 - **Integration with Electron apps.** Some business tools assume a specific browser.
+- **Update speed.** Chromium-family → Flatpak; Firefox → apt-esr is enough.
 
-**The book's recommendation: Firefox primary, Chromium secondary.** If a particular workflow truly needs Chrome, install it.
+### The Book's Recommendation
+
+- **Firefox via `apt install firefox-esr`** as your first choice.
+- **Chromium-family → Flatpak** (Chrome / Chromium / Brave / Vivaldi all the same).
+- If business SSO pins you to Chrome, just use the Flatpak `com.google.Chrome` — no hesitation.
 
 ### Ask Claude ①: Browser Migration
 
-> I currently use [Edge / Chrome / Safari]. Tell me how to migrate bookmarks, passwords, extensions, and open tabs to [Firefox / Chromium] on Debian.
-> Give me the approach that minimizes data loss, and list things I should verify right after the move.
+> I currently use [Edge / Chrome / Safari]. Tell me how to migrate bookmarks,
+> passwords, extensions, and open tabs to [Firefox (apt firefox-esr) /
+> Chrome (Flatpak)] on Debian. Give the approach that minimizes data loss,
+> and list things I should verify right after the move. If I picked the
+> Flatpak version, also list the Flatseal permissions to review (filesystem
+> access, home directory, native messaging, devices, host D-Bus).
 
 ## Section 2 — Mail and Calendar
 

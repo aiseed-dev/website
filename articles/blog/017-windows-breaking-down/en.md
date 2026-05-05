@@ -13,11 +13,11 @@ hero_image: IMG_3449.jpg
 # There is no guarantee Windows will be supported after October 12, 2027 — even if you buy a new PC today
 
 ## Which of the following describes your Windows PC situation?
-A. Still using a Windows 10 PC that lost support in October 2025
-B. Running Windows 11 on an unsupported PC using workarounds
-C. Extending life with Windows 10 ESU (Extended Security Updates)
-D. Officially upgraded to Windows 11
-E. Recently bought a new Windows 11 PC
+- A. Still using a Windows 10 PC that lost support in October 2025
+- B. Running Windows 11 on an unsupported PC using workarounds
+- C. Extending life with Windows 10 ESU (Extended Security Updates)
+- D. Officially upgraded to Windows 11
+- E. Recently bought a new Windows 11 PC
 
 In case A, vulnerabilities discovered after October 2025 will never be patched, leaving these systems already exposed to cyberattacks.
 

@@ -12,21 +12,26 @@ hero_image: IMG_3449.jpg
 
 # There is no guarantee Windows will be supported after October 12, 2027 — even if you buy a new PC today
 
-As of May 2026, the latest date Microsoft officially guarantees Windows 11 Home/Pro support is **October 12, 2027** (the end-of-support date for 25H2). That is just **1 year and 5 months from today**.
+## Which of the following describes your Windows PC situation?
+A. Still using a Windows 10 PC that lost support in October 2025
+B. Running Windows 11 on an unsupported PC using workarounds
+C. Extending life with Windows 10 ESU (Extended Security Updates)
+D. Officially upgraded to Windows 11
+E. Recently bought a new Windows 11 PC
 
-What happens after that, Microsoft has not announced. There is no roadmap for Windows 12. There is no guarantee that a PC bought today will run Windows in five years.
+In case A, vulnerabilities discovered after October 2025 will never be patched, leaving these systems already exposed to cyberattacks.
+
+But even in case E, as of now (May 2026), the latest date Microsoft officially guarantees Windows 11 Home/Pro support is October 12, 2027 — the end-of-support date for 25H2. That is just 1 year and 5 months from today. What happens to Windows after that, Microsoft itself has not announced.
+Consider, further, what happens when offensive AI like Claude Mythos becomes available to attackers. Attackers will be able to mount attacks within hours to days. Windows' current once-a-month security patch cycle simply cannot keep up.
 
 How did it come to this?
 
 On April 29, 2026, Microsoft CEO Satya Nadella told investors during the earnings call that the company needs to "win back the fans."
-
 That same week, Microsoft's marketing team officially recommended "32GB as the worry-free choice" for Windows 11 gaming PCs.
-
 That same week, Copilot buttons were quietly pulled from Notepad, Snipping Tool, Photos, and Widgets.
-
 These look like separate stories. They are not. They are all symptoms of the same structure.
 
-Windows is now breaking down for four structural reasons. One is the weight of three decades of legacy that Windows has accumulated as a product. The other three are decisions made under Nadella. Microsoft no longer has the organizational capacity to stop it.
+Windows is now breaking down for four structural reasons. One is the weight of three decades of legacy that Windows has accumulated as a product. The other three are decisions made under Nadella. Microsoft no longer has the organizational capacity to fix them.
 
 ---
 
@@ -220,36 +225,20 @@ It comes down to this.
 
 **Nadella has no interest in Windows as a platform.**
 
-Maintaining and improving Windows as a platform that the world can rely on — that is not what interests him. What interests him is making money on Azure and AI, and **draining Windows as a cash machine** to fund that.
+Maintaining and growing Windows as a platform that the world can rely on — that is not what interests him. What interests him is making money on Azure and AI.
 
-Microsoft's $100–120 billion in capital expenditure for fiscal year 2026 is going entirely to Azure and AI datacenters. The Windows division has long been treated as a cost center, with both budget and talent slowly hollowed out. The reason WPF, UWP, and WinUI 3 were never finished, and the reason internal app teams escaped to WebView2, is the same reason: **Nadella didn't put money into Windows.**
+Microsoft's $100–120 billion in capital expenditure for fiscal year 2026 is going entirely to Azure and AI datacenters.
 
-When you don't invest in improving the product, the only way left to monetize is to push and to raise prices.
+Nadella has transformed Windows from "an OS you buy and use long-term, with a fixed lifecycle" into "a service-style OS that requires continuous updates." But Microsoft is becoming less and less able to support Windows.
 
-- Push 32GB → Revenue for memory makers and PC vendors
-- Raise ESU prices → Revenue from users of older PCs
-- Force Copilot → Numbers for the AI strategy
-- Raise Microsoft 365 subscription prices → Revenue from existing customers
-- Cut off an ICC judge's email → Billions in U.S. government contracts
-
-Every one of those is a money decision. The trustworthiness of Windows as a platform, and the interests of users, are simply lower priorities.
-
-Nadella has transformed Windows from "an OS you buy and use long-term, with a fixed lifecycle" into "a service-style OS that requires continuous updates." It is no longer a product to be protected. **It is an asset to be drained.**
-
-Look at the Windows 11 lifecycle pages. They show "Windows 11 Home/Pro is in support" — but **the final end-of-support date and the supported hardware specifications are not stated**.
-
-What is actually confirmed is only this:
+Look at the Windows 11 lifecycle pages. They show "Windows 11 Home/Pro is in support" — but the final end-of-support date and the supported hardware specifications are not stated.
 
 - 25H2 → end of support on October 12, 2027 — the latest confirmed date for general Intel / AMD PCs
-- 26H1 → end of support on March 14, 2028 — confirmed, but only for Snapdragon X2 and other new-generation devices
+- 26H1 → end of support on March 14, 2028 — confirmed, but only for new-generation devices like Snapdragon X2
 
-In other words, **whether any machines will be supported by Windows after October 12, 2027 has not been announced by Microsoft itself**. That is where we stand.
-
-When the company itself has abandoned the product, there is no reason for users to keep using it.
-
-If you're going to leave, leave all at once. The hybrid state is the worst part.
-
-The EU, France, Germany, Austria, Vietnam, and South Korea are already moving.
+In other words, **whether any machines will be supported by Windows after October 12, 2027 has not been announced by Microsoft itself.** That is where we stand.
+When the CEO has abandoned the product, users have no way to keep using it.
+If you're going to leave, leave all at once. Half-measures hurt the most.
 
 ---
 

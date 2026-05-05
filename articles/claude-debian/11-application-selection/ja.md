@@ -126,7 +126,8 @@ flatpak install flathub com.github.tchx84.Flatseal
 
 | 種類 | 推奨 | 理由 |
 |---|---|---|
-| ブラウザ(Firefox / Chromium) | **apt** | OS 統合度が高い、apt で十分新しい |
+| Firefox | **apt**(`firefox-esr`)/ Flatpak も可 | Debian Security Team が ESR を高頻度バックポート、ネイティブ連携が楽 |
+| Chromium / Chrome / Brave / Vivaldi | **Flatpak** | apt は遅れがち、Chrome は deb 入れ直しが面倒、サンドボックスが追加ボーナス |
 | デスクトップ環境 / フォント / IME | **apt** | OS 基盤、Flatpak 化しても恩恵がない |
 | LibreOffice | **apt or Flatpak** | apt 版で十分、最新機能が要るなら Flatpak |
 | Slack / Zoom / Discord / Spotify | **Flatpak** | 更新の速さ + サンドボックス |
@@ -167,26 +168,88 @@ Flatpak だけ覚えれば足りる。
 
 ## 第一節 ブラウザ
 
-### 候補
+ブラウザは攻撃面が一番広いアプリで、**更新の速さ** がほぼそのまま安全性に
+直結する。ここだけは Firefox 系と Chromium 系で扱いを変える。
 
-- **Firefox**（`sudo apt install firefox-esr`）：Debian標準、プライバシー重視
-- **Chromium**（`sudo apt install chromium`）：Chromeのオープンソース版
-- **Brave**：広告ブロック内蔵、プライバシー重視
-- **Vivaldi**：カスタマイズ性が高い
-- **Google Chrome**：Google公式（deb ファイルから導入）
+### Firefox は apt(`firefox-esr`)で十分
+
+```bash
+sudo apt install firefox-esr
+```
+
+Debian の Firefox-ESR は **Debian Security Team が継続的にバックポート** していて、
+上流の Mozilla リリースとほぼ同日にセキュリティ修正が届く。Mozilla 自身も ESR を
+「企業・サーバー向けの安定 + 即時セキュリティ」と公式に位置付けているので、
+**「Debian で apt が古い」という典型問題が起きない数少ない例外**。
+
+ネイティブメッセージング(KeePassXC / Bitwarden の連携)、YubiKey、
+GNOME / KDE のデフォルトブラウザ統合 ── これらが全部素直に動く。
+
+複数プロファイルを厳格に分離したい / 追加サンドボックスが欲しい場合は
+Flatpak の `org.mozilla.firefox`(これも Mozilla 公式ビルド)も選べる。
+
+### Chromium 系は Flatpak が現実解
+
+Chromium / Chrome / Brave / Vivaldi は Firefox と事情が違う。
+
+- **Chromium**: Debian の apt 版は **上流ゼロデイ修正から数日〜2 週間遅れる
+  ことがある**(セキュリティチームの作業量次第)。ブラウザの 1 週間遅れは大きい
+- **Google Chrome**: Debian の公式 apt リポジトリには無い。手段は (a) Google の
+  deb をダウンロード、(b) Google の apt 第三者リポジトリを追加、(c) Flatpak。
+  **(c) が一番簡単** ── レポジトリ追加もサインキーも要らず、`flatpak install`
+  1 行で済む
+- **Brave / Vivaldi**: 公式 deb もあるが、第三者 apt リポジトリが必要。
+  Flatpak 版なら remote-add 不要
+
+加えて Chromium 系は **Flatpak のサンドボックスが効きやすい** ── Firefox と
+違ってプロセス分離は強力なものの、外側にもう一層被せると意味がある。
+ブラウザは攻撃面が広いので、保険として妥当。
+
+```bash
+# 例
+flatpak install flathub org.chromium.Chromium
+flatpak install flathub com.google.Chrome
+flatpak install flathub com.brave.Browser
+flatpak install flathub com.vivaldi.Vivaldi
+```
+
+### Flatpak ブラウザの注意点
+
+サンドボックスの代償として、次の連携は **追加設定が要る**:
+
+- **パスワードマネージャのネイティブメッセージング**(KeePassXC-Browser、
+  Bitwarden の自動入力):portal 経由の許可が必要、初回に Flatseal で
+  通信ソケットを開ける
+- **YubiKey 等のハードウェアトークン**:Flatseal で `Devices: All` を許可
+- **VA-API ハードウェアデコード**(動画再生時の CPU 削減):環境変数の追加が
+  apt 版より一手間多い
+- **「デフォルトアプリで開く」**:portal 経由になるので一瞬間が空く
+
+「業務でパスワード管理と SSO トークンを使う」「映像編集をしながら YouTube
+を流す」── このあたりの頻度が高ければ apt 版(Firefox)を選ぶ価値が残る。
 
 ### 選ぶ軸
 
-- **ブックマークとパスワードの同期**：今使っているブラウザから移行しやすいか
-- **プライバシー**：広告・トラッカーへの態度
-- **Electron アプリとの統合**：一部業務ツールは特定ブラウザ前提
+- **ブックマークとパスワードの同期**:今使っているブラウザから移行しやすいか
+- **プライバシー**:広告・トラッカーへの態度
+- **Electron アプリとの統合**:一部業務ツールは特定ブラウザ前提
+- **更新速度** ⇒ Chromium 系なら Flatpak、Firefox なら apt-esr で十分
 
-**本書の推奨は Firefox を主、Chromium を副**。業務でどうしてもChromeが必要なら入れておく。
+### 本書の推奨
 
-### Claudeに聞いてみよう①：ブラウザ移行
+- **Firefox は `apt install firefox-esr`** が第一選択
+- **Chromium 系を使うなら Flatpak**(Chrome / Chromium / Brave / Vivaldi のどれも)
+- 業務 SSO 等で Chrome 必須なら、迷わず Flatpak 版の `com.google.Chrome`
 
-> 私は現在〔Edge／Chrome／Safari〕を使っています。ブックマーク、パスワード、拡張機能、開いているタブを、Debianの〔Firefox／Chromium〕に移すための手順を教えてください。
-> データロスを最小限にするやり方と、移行後すぐに確認すべき項目を列挙してください。
+### Claudeに聞いてみよう①:ブラウザ移行
+
+> 私は現在〔Edge / Chrome / Safari〕を使っています。ブックマーク、パスワード、
+> 拡張機能、開いているタブを、Debian の〔Firefox(apt firefox-esr) /
+> Chrome(Flatpak)〕に移すための手順を教えてください。
+> データロスを最小限にするやり方と、移行後すぐに確認すべき項目を列挙して
+> ください。あわせて、Flatpak 版を選んだ場合に Flatseal で確認すべき
+> 権限項目(ファイルアクセス、ホームディレクトリ、ネイティブメッセージング、
+> デバイス、ホスト D-Bus)も挙げてください。
 
 ## 第二節 メール・カレンダー
 

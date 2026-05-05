@@ -19,6 +19,139 @@ cta_btn2_text: 第10章に戻る
 cta_btn2_link: /claude-debian/10-japanese-input/
 ---
 
+## まず Flatpak を入れる
+
+カテゴリごとの置き換えに入る前に、**Flatpak** を導入しておく。
+Debian の `apt` だけでは、デスクトップアプリで困る場面が必ず出てくる。
+
+### なぜ apt だけでは足りないか
+
+Debian は安定性を最優先するディストリビューションで、`apt` が提供する
+パッケージは **古めだが堅い**。これはサーバーや基盤ソフトには嬉しいが、
+デスクトップアプリには逆風になることがある。
+
+- **Slack / Zoom / Discord / Spotify**: 公式 deb はあるが配布が遅れがち、
+  自動更新が信頼しづらい
+- **Bitwarden / Signal / Element**: deb 提供はあるが、Flatpak 版のほうが
+  常に最新
+- **OBS Studio / Krita / Inkscape**: apt 版は数バージョン古い、
+  最新機能を使うなら Flatpak が現実的
+- **GIMP**: Debian の apt は安定版だが、Flatpak は次期版を含む
+
+要するに、**Debian の `apt` は OS 基盤と "成熟したアプリ"** を扱い、
+**Flatpak は "更新が速いアプリ"** を扱う、と役割を分けるのが現実的。
+
+### Flatpak とは何か
+
+Flatpak は Linux 用の **配布フォーマット + サンドボックス + 自動更新** の
+セット。次の特徴がある。
+
+- **どのディストロでも動く**: Debian / Ubuntu / Fedora / Arch のどこでも
+  同じファイルが動く。アプリ作者が一度ビルドすれば多くの環境に届く
+- **依存ライブラリを同梱**: アプリが必要とするライブラリを Runtime として
+  バンドルし、システムの apt パッケージに干渉しない
+- **サンドボックス**: 既定では各アプリがホームディレクトリ全体やシステムを
+  自由に読み書きできない。`Documents/` だけ、`Downloads/` だけ、と権限を
+  絞れる
+- **自動更新**: Flathub から各アプリの新版が出ると `flatpak update` で一括
+  更新される
+- **権限の見える化**: `flatpak info --show-permissions <app>` でそのアプリが
+  何にアクセスできるかを確認できる
+
+すべての利点の裏返しとして、**ディスクを少し多く使う**(Runtime を
+共有しても重複は出る)、**起動が apt 版より気持ち遅い**、という弱点がある。
+ノート PC のディスクが残り 10 GB を切っているような状況では、Flatpak を
+何でも入れる前に Runtime のサイズを意識する必要がある。
+
+### セットアップ(3 分)
+
+```bash
+# Debian 12 / 13 で
+sudo apt install flatpak
+
+# GNOME の「ソフトウェア」と統合したい場合
+sudo apt install gnome-software-plugin-flatpak
+
+# Flathub(Flatpak アプリの最大の配布元)を登録
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# 一度ログアウト → ログインで PATH と .desktop が反映される
+```
+
+これで `flatpak install flathub <app-id>` でほぼあらゆるデスクトップアプリが
+入る。
+
+### 基本のコマンド
+
+```bash
+# 検索
+flatpak search slack
+
+# インストール(Flathub 指定推奨)
+flatpak install flathub com.slack.Slack
+
+# 起動(普通はメニューから / コマンドからも可)
+flatpak run com.slack.Slack
+
+# 一覧
+flatpak list
+
+# 全部更新
+flatpak update
+
+# 削除
+flatpak uninstall com.slack.Slack
+
+# 不要 Runtime を整理
+flatpak uninstall --unused
+```
+
+### 権限を絞る(Flatseal)
+
+サンドボックスの効果を最大化するなら、**Flatseal** という GUI を入れる。
+
+```bash
+flatpak install flathub com.github.tchx84.Flatseal
+```
+
+これで各アプリが「ホームディレクトリ全部見えていいか」「ネットワーク越しに
+何でも繋いでいいか」「マイクは?」を細かく設定できる。**「Slack に Documents
+を見せる必要はない」**といった判断を、後付けで適用できる。
+
+これは Windows / macOS には標準で無い、**Linux ならではの透明性** だ。
+
+### apt と Flatpak の使い分け
+
+本書のおすすめ:
+
+| 種類 | 推奨 | 理由 |
+|---|---|---|
+| ブラウザ(Firefox / Chromium) | **apt** | OS 統合度が高い、apt で十分新しい |
+| デスクトップ環境 / フォント / IME | **apt** | OS 基盤、Flatpak 化しても恩恵がない |
+| LibreOffice | **apt or Flatpak** | apt 版で十分、最新機能が要るなら Flatpak |
+| Slack / Zoom / Discord / Spotify | **Flatpak** | 更新の速さ + サンドボックス |
+| Bitwarden / Signal / Element | **Flatpak** | 同上、暗号化アプリは新しいほうが安心 |
+| OBS / Krita / Inkscape / GIMP(最新) | **Flatpak** | apt 版だと数バージョン古い |
+| 開発ツール(Python / git / Docker) | **apt** | サンドボックスがむしろ邪魔 |
+| 業務用 IDE(VS Code / IntelliJ) | **deb 公式 / Flatpak どちらでも** | 公式 deb があるなら deb、無いなら Flatpak |
+
+### Snap には触れない
+
+Ubuntu には Snap という似た仕組みがあるが、Debian では **Flatpak が事実上の
+デファクト** で、Snap を入れる必要はほぼ無い。本書も Snap は扱わない。
+Flatpak だけ覚えれば足りる。
+
+### Claudeに聞いてみよう⓪:apt vs Flatpak の振り分け
+
+> 私が Debian で使いたいアプリのリストは次の通りです:
+> 〔アプリ名を列挙〕
+>
+> それぞれを apt と Flatpak のどちらで入れるべきか、推奨と根拠を
+> 表で出してください。Flatpak の場合は権限で絞るべき項目(ファイル
+> アクセス・ネットワーク・カメラなど)も提案してください。
+
+これで準備が整った。各カテゴリの選択に進む。
+
 ## カテゴリ別に置き換える
 
 第4章で作った依存関係マップを開きながら、次の八カテゴリで置き換えを決めていく。

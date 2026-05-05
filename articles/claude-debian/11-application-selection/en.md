@@ -20,6 +20,141 @@ cta_btn2_text: Back to Chapter 10
 cta_btn2_link: /en/claude-debian/10-japanese-input/
 ---
 
+## First, Install Flatpak
+
+Before category-by-category replacement, set up **Flatpak**.
+Debian's `apt` alone will leave you stuck on desktop apps sooner or later.
+
+### Why apt Isn't Enough
+
+Debian prioritizes stability, and the packages `apt` provides are
+**older but rock-solid**. Great for servers and core software; awkward
+for desktop apps.
+
+- **Slack / Zoom / Discord / Spotify**: official deb exists but ships
+  late, and auto-update is hard to trust.
+- **Bitwarden / Signal / Element**: deb exists, but the Flatpak version
+  is consistently more current.
+- **OBS Studio / Krita / Inkscape**: the apt build lags by several
+  releases; for current features Flatpak is the realistic choice.
+- **GIMP**: Debian's apt has the stable, Flatpak carries the next.
+
+In short, **Debian's `apt` covers the OS base and "mature apps"**,
+while **Flatpak covers "fast-moving apps"** — split the role this way.
+
+### What Flatpak Is
+
+Flatpak is a combined **distribution format + sandbox + auto-update**
+for Linux desktop apps. Properties:
+
+- **Distro-independent**: the same package runs on Debian / Ubuntu /
+  Fedora / Arch. Build once, ship everywhere.
+- **Bundled dependencies**: each app ships its required libraries as a
+  Runtime, so it doesn't conflict with the apt-managed system.
+- **Sandboxed**: by default an app cannot freely read or write your
+  whole home directory or system. You can scope access to
+  `Documents/` only, `Downloads/` only, etc.
+- **Auto-updates**: when Flathub publishes a new version, a single
+  `flatpak update` brings everything current.
+- **Visible permissions**: `flatpak info --show-permissions <app>`
+  shows exactly what the app can access.
+
+The trade-off: **slightly more disk** (runtime sharing reduces but
+doesn't eliminate duplication), and **a touch slower to launch** than
+apt-installed apps. On a laptop with under 10 GB free, watch your
+Runtime sizes before installing everything via Flatpak.
+
+### Setup (3 Minutes)
+
+```bash
+# On Debian 12 / 13
+sudo apt install flatpak
+
+# To integrate with GNOME Software
+sudo apt install gnome-software-plugin-flatpak
+
+# Add Flathub (the largest Flatpak distribution)
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# Log out and back in so PATH and .desktop entries pick up
+```
+
+After this, `flatpak install flathub <app-id>` covers nearly every
+desktop app you would want.
+
+### Basic Commands
+
+```bash
+# Search
+flatpak search slack
+
+# Install (recommended: name the remote)
+flatpak install flathub com.slack.Slack
+
+# Run (typically from the menu; the CLI works too)
+flatpak run com.slack.Slack
+
+# List installed
+flatpak list
+
+# Update everything
+flatpak update
+
+# Uninstall
+flatpak uninstall com.slack.Slack
+
+# Clean up unused runtimes
+flatpak uninstall --unused
+```
+
+### Tightening Permissions (Flatseal)
+
+To get the most out of the sandbox, install **Flatseal**, a GUI for
+managing per-app permissions:
+
+```bash
+flatpak install flathub com.github.tchx84.Flatseal
+```
+
+This lets you fine-tune "can this app see my whole home directory?",
+"unrestricted network?", "microphone?" per app. *Slack does not need
+to read your `Documents/`* — and you can enforce that retroactively.
+
+This kind of transparency is something Windows and macOS do not
+provide out of the box: **a Linux-specific property worth using**.
+
+### apt vs Flatpak: How to Choose
+
+This book's recommendation:
+
+| Category | Recommended | Reason |
+|---|---|---|
+| Browsers (Firefox / Chromium) | **apt** | Strong OS integration; apt is current enough |
+| Desktop environment / fonts / IME | **apt** | OS base; no benefit from Flatpak |
+| LibreOffice | **apt or Flatpak** | apt is fine; Flatpak for newest features |
+| Slack / Zoom / Discord / Spotify | **Flatpak** | Faster updates + sandboxing |
+| Bitwarden / Signal / Element | **Flatpak** | Same; encryption apps benefit from being current |
+| OBS / Krita / Inkscape / GIMP (latest) | **Flatpak** | apt versions lag |
+| Dev tools (Python / git / Docker) | **apt** | Sandboxing is in the way |
+| IDEs (VS Code / IntelliJ) | **official deb or Flatpak** | Prefer the official deb when available |
+
+### Skip Snap
+
+Ubuntu has Snap, a similar mechanism. On Debian, **Flatpak is the
+de facto choice** and Snap is rarely needed. This book sticks to
+Flatpak; you only need to learn one.
+
+### Ask Claude ⓪: Sorting apt vs Flatpak
+
+> Here is the list of apps I want on Debian:
+> *(list)*
+>
+> For each, recommend whether to install via apt or Flatpak, with
+> reasoning, in a table. For Flatpak entries, suggest which
+> permissions (filesystem, network, camera, …) to restrict.
+
+With Flatpak in place, on to the categories.
+
 ## Replace by Category
 
 With the dependency map from Chapter 4 open beside you, decide replacements in the following eight categories.

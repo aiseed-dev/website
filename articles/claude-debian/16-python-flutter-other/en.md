@@ -4,7 +4,7 @@ lang: en
 number: "16"
 title: Chapter 16 — Python, Flutter, and Other Environments
 subtitle: When you need a language, build it up with Claude
-description: How to install environments beyond Python / Flet — Flutter / Dart, Node.js, Rust, Go, Docker — and the knack of putting them together with Claude. Not for memorizing — as a map you can come back to when you need it.
+description: Python on `uv` as the main line, miniforge alongside for data science and ML. Then Flutter / Dart, Node.js, Rust, Go, Docker — the knack of putting each together with Claude on Debian. Not for memorizing — a map you come back to when you need it.
 date: 2026.04.23
 label: Claude × Debian 16
 prev_slug: claude-debian-15-claude-development
@@ -101,6 +101,10 @@ latest.
 - Statistics → scipy, statsmodels.
 - Visualization → matplotlib, plotly.
 
+For **GPU deep learning, or scientific stacks involving GDAL / OpenCV /
+R / Julia**, `uv` alone is not enough. See the next section,
+**"Data Science / ML: Use miniforge."**
+
 ### Ask Claude ①: A Modern Python Project Skeleton
 
 > I write Python for [data wrangling / web scraping / GUI / ML / scripting].
@@ -111,7 +115,130 @@ latest.
 > (4) a minimal `tests/` example
 > (5) `README.md` showing `git clone && uv sync && uv run` flow
 
-## Section 2 — Flutter / Dart
+## Section 2 — Data Science / ML: Use miniforge
+
+`uv` covers 90% of Python projects, but it falls short for **data science
+and machine learning**:
+
+- PyTorch + **CUDA / cuDNN**, TensorFlow + GPU
+- **R / Julia** integration (rpy2 / PyJulia)
+- Non-Python native deps like **GDAL / OpenCV / FFmpeg**
+- Heavy scientific stacks: RAPIDS, scikit-image, GeoPandas, PyMC, ...
+- Earliest Apple Silicon support
+
+For these, PyPI wheels often aren't enough; the realistic path is to take
+**pre-built binaries via conda-forge**. This book installs **miniforge**.
+
+### Why miniforge, Not Anaconda
+
+The Anaconda Distribution installer carries a **commercial-license
+restriction** (since 2020, organizations of 200+ are paid; the default
+`defaults` channel falls under the same terms). **miniforge avoids all
+that**:
+
+- Small installer (~150 MB).
+- Default channel pinned to **conda-forge** (community-run, license-clean,
+  largest package set).
+- Free for both commercial and personal use.
+
+### Installing
+
+```bash
+# Debian 13 / 12 (x86_64)
+curl -L https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh \
+  -o ~/miniforge.sh
+bash ~/miniforge.sh -b -p ~/miniforge3
+
+# Shell integration (rewrites .bashrc / .zshrc, one-time)
+~/miniforge3/bin/conda init bash    # if you use bash
+~/miniforge3/bin/conda init zsh     # if you use zsh
+```
+
+Open a new terminal.
+
+**Important**: by default, the `base` environment is **auto-activated on
+shell startup**. This collides with uv project `.venv`s. Turn it off
+right away.
+
+```bash
+conda config --set auto_activate_base false
+```
+
+Now: "activate a conda env only when you mean to."
+
+### The Loop
+
+```bash
+# Create an env (Python version + main libs)
+conda create -n ds python=3.12 \
+  numpy pandas polars scipy scikit-learn jupyterlab matplotlib seaborn
+
+conda activate ds
+
+# Add later
+conda install -c conda-forge gdal opencv
+
+# Export the env (share with the team)
+conda env export --from-history > environment.yml
+
+# Reproduce on another PC
+conda env create -f environment.yml
+```
+
+`--from-history` records **only the packages you explicitly asked for**
+(automatic dependencies are excluded). That's the readable form for
+team distribution.
+
+### GPU (CUDA)
+
+```bash
+conda create -n dl python=3.12 \
+  pytorch torchvision pytorch-cuda=12.1 \
+  -c pytorch -c nvidia
+
+conda activate dl
+python -c "import torch; print(torch.cuda.is_available())"   # expect True
+```
+
+The big win: the CUDA toolkit is **scoped inside the conda env**. No more
+breaking the system by `apt install`-ing CUDA globally. Different
+projects can use different CUDA versions side by side.
+
+### Jupyter Lab
+
+```bash
+conda activate ds
+jupyter lab --no-browser --port 8888
+```
+
+Open `http://localhost:8888/?token=…` in your browser. The conda-forge
+build of Jupyter is the most reliable.
+
+### When to Use Which
+
+| Use | Tool |
+|------|------|
+| Web apps, APIs, CLIs, business scripts | **uv** |
+| Data analysis (pandas / polars, CPU-only) | **uv is enough** |
+| Machine learning / deep learning (GPU) | **miniforge** |
+| Scientific computing (GDAL / OpenCV / R / Julia) | **miniforge** |
+| Jupyter-notebook-centric exploration | **miniforge** (conda-forge's jupyterlab + ipykernel are the most stable) |
+| When wheels won't build on Apple Silicon | **miniforge** |
+
+**Start projects with uv; bring in miniforge when the problem demands it**.
+The two live in different directories (`~/miniforge3/envs/` and
+`<project>/.venv/`) so they don't fight. As long as you've turned off
+auto-activate, **you can step into either world by being explicit**.
+
+### Ask Claude ②: Stand Up a DS / ML Environment
+
+> My use case is [image classification / NLP / time series / statistical
+> analysis], with [GPU / CPU only]. Scaffold an `environment.yml` for
+> miniforge with the minimum packages. Show me how to start Jupyter Lab,
+> how to combine Python with R if needed, and how to run this without
+> conflicting with my existing uv project.
+
+## Section 3 — Flutter / Dart
 
 ### From Flet to Flutter
 
@@ -140,7 +267,7 @@ flutter doctor
 - Dart language (notation similar to TypeScript).
 - **Best fit for people who want to build mobile apps.**
 
-### Ask Claude ②: Flet or Flutter
+### Ask Claude ③: Flet or Flutter
 
 > I want to build a GUI app for [purpose].
 > Compare Flet (Python) and Flutter (Dart) along these axes:
@@ -150,7 +277,7 @@ flutter doctor
 > (4) Magnitude of the AI-completion benefit (Claude / Copilot).
 > (5) Long-term maintainability.
 
-## Section 3 — Node.js / TypeScript
+## Section 4 — Node.js / TypeScript
 
 ### Version Management with `nvm` or `fnm`
 
@@ -178,13 +305,13 @@ npx tsc --init
 - Scripts → tsx (run TypeScript instantly).
 - Build → Vite, esbuild.
 
-### Ask Claude ③: JS / TS in 2026
+### Ask Claude ④: JS / TS in 2026
 
 > I want to write [a browser SPA / a Node.js backend / scripts / Electron].
 > As of 2026, which framework / tools should I pick?
 > Include the reasons, and the older choices to avoid.
 
-## Section 4 — Rust
+## Section 5 — Rust
 
 ### Install
 
@@ -207,12 +334,12 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 - **Quick prototypes.** Rust compile times are long.
 - **Exploratory work where requirements churn.** A type-strict language gives up flexibility.
 
-### Ask Claude ④: Should I Pick Up Rust
+### Ask Claude ⑤: Should I Pick Up Rust
 
 > What I want to build is [purpose]. Should I learn Rust to build it, or build it in another language? Make the call.
 > Be concrete about the learning cost (hours per week, for how many weeks) and the trade-off of what you get.
 
-## Section 5 — Go
+## Section 6 — Go
 
 ### Install
 
@@ -229,7 +356,7 @@ sudo apt install golang-go
 
 Faster to learn than Rust, sturdier than Python. The midpoint of "good-enough performance and good-enough safety."
 
-## Section 6 — Docker
+## Section 7 — Docker
 
 ### Install
 
@@ -248,12 +375,12 @@ sudo usermod -aG docker $USER
 - **Experiment without breaking your environment.** Drop the image and you're back where you started.
 - **Run something close to production.** Reduce the gap between dev and prod.
 
-### Ask Claude ⑤: First Steps with Docker
+### Ask Claude ⑥: First Steps with Docker
 
 > I want to run [what you want to try] with Docker. Show a minimal docker-compose.yml example and the steps from launch → verify → stop.
 > Cover the points beginners get stuck on (ports, volumes, networks), with workarounds.
 
-## Section 7 — Databases
+## Section 8 — Databases
 
 ### SQLite
 
@@ -284,7 +411,7 @@ psql
 
 As discussed in [Chapter 15, "Security Design in the Mythos Era"](/en/insights/security-design/), the strongest design is **not putting a DB into production**. For personal projects, SQLite often suffices.
 
-## Section 8 — The Habit of Switching Environments
+## Section 9 — The Habit of Switching Environments
 
 ### Isolate Per Project
 
@@ -314,22 +441,25 @@ du -sh ~/.cache/uv ~/.local/share/uv
 flatpak uninstall --unused -y
 ```
 
-### Ask Claude ⑥: Environment Diet
+### Ask Claude ⑦: Environment Diet
 
 > My home directory is consuming the following: [output of `du -sh`].
 > Sort what's safe to delete, what must not be deleted, and the caches I should clean periodically.
 > Also draft a shell script for periodic cleanup.
 
-## Section 9 — How to Read the Map
+## Section 10 — How to Read the Map
 
 The environments listed in this chapter can all be revisited when you need them. **It is enough if you remember the table of contents below.**
 
 | Use | First choice | Second choice |
 | --- | --- | --- |
-| Data wrangling, scripting | Python | — |
+| Python project management | **uv** | — |
+| Data science / ML / GPU | **miniforge** | — |
+| Notebook-centric exploration | **miniforge** | uv + jupyter also viable |
+| Data wrangling, scripting | Python (uv) | — |
 | GUI app | Flet / Flutter | — |
 | Web frontend | TypeScript + Vite | — |
-| Backend / API | Python / Node.js / Go | — |
+| Backend / API | Python (uv + FastAPI) / Node.js / Go | — |
 | CLI tool | Rust / Go | Python |
 | Systems-adjacent, performance | Rust | Go |
 | Database | SQLite | PostgreSQL |
@@ -342,12 +472,13 @@ The biggest goal of Chapter 16 is **to have this table in your head**. Mastery o
 What you did in this chapter:
 
 1. Standardized the Python stack on `uv` (project + tools + Python versions).
-2. Got the position of Flutter / Dart.
-3. Updated the 2026 view of Node.js / TypeScript.
-4. Confirmed where Rust and Go each shine.
-5. Sorted out where Docker fits.
-6. How to choose between SQLite and PostgreSQL.
-7. Built the habit of isolating and pruning environments.
+2. Brought in **miniforge** for data science and ML, with a clean coexistence story alongside uv.
+3. Got the position of Flutter / Dart.
+4. Updated the 2026 view of Node.js / TypeScript.
+5. Confirmed where Rust and Go each shine.
+6. Sorted out where Docker fits.
+7. How to choose between SQLite and PostgreSQL.
+8. Built the habit of isolating and pruning environments.
 
 This closes Part 4. **Your Debian is now a development foundation you can put your hands on at any time.** When something you want to build appears, you can have its language environment ready in 30 minutes.
 

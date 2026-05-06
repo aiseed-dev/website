@@ -38,9 +38,11 @@ Flatpak streams in parallel** is the new baseline for Debian operations.
 | **apt** | OS base, shells, dev tools, Firefox-ESR | `sudo apt upgrade` | weekly |
 | **Flatpak** | Chromium-family browsers, Slack/Zoom, Bitwarden, Krita, etc. | `flatpak update` | weekly (or auto) |
 | **uv tool** | Python CLIs (`pre-commit`, `httpie`, `ruff`, etc.) | `uv tool upgrade --all` | monthly |
+| **miniforge / conda** | DS / ML envs (PyTorch + CUDA, GDAL, scipy, ...) | `conda update --all -n <env>` | monthly (per project) |
 
 The classic pitfall: updating apt only and leaving Chromium stale.
-**This book recommends running both on the same day** with a single script.
+**This book recommends running every stream on the same day** with a
+single script.
 
 ## Section 1 — Minor Package Updates
 
@@ -104,7 +106,26 @@ uv tool upgrade --all
 CLIs you installed via uv tool / pipx in Chapter 16 (ruff, httpie,
 pre-commit, etc.) update on their own schedule — not under apt's control.
 
-### A Single Script for All Three
+### Updating miniforge / conda
+
+```bash
+# Bring an env up to date
+conda update --all -n ds
+conda update --all -n dl    # GPU env
+
+# Update conda itself
+conda update -n base -c conda-forge conda
+
+# Reclaim disk
+conda clean --all -y
+```
+
+If you have several DS / ML projects, **stagger their update timing**.
+Deep-learning environments are sensitive to numerical reproducibility —
+freeze them while a paper or experiment is in flight, and run
+`conda update` only at clear breakpoints.
+
+### A Single Script for All Streams
 
 ```bash
 #!/bin/bash
@@ -120,13 +141,22 @@ flatpak uninstall --unused -y
 echo "=== uv tool ==="
 uv tool upgrade --all 2>/dev/null || true
 
+echo "=== conda (miniforge) ==="
+if command -v conda >/dev/null 2>&1; then
+    conda update -n base -c conda-forge conda -y
+    # Add per-env updates here, monthly is fine:
+    # conda update --all -n ds -y
+    conda clean --all -y
+fi
+
 echo "=== disk ==="
 df -h /
-du -sh ~/.cache ~/.local/share/flatpak ~/.local/share/uv 2>/dev/null
+du -sh ~/.cache ~/.local/share/flatpak ~/.local/share/uv ~/miniforge3 2>/dev/null
 ```
 
-Add to cron (`0 8 * * 1`) and the **three streams update together** every
-Monday at 08:00.
+Add to cron (`0 8 * * 1`) and the **four streams update together** every
+Monday at 08:00 — apt, Flatpak, uv tool, and conda(base). Per-env conda
+updates are best left as a monthly per-project task.
 
 ### Ask Claude ①: Automating Weekly Maintenance
 
@@ -134,10 +164,11 @@ Monday at 08:00.
 > (1) apt update / upgrade / autoremove.
 > (2) flatpak update + flatpak uninstall --unused.
 > (3) uv tool upgrade --all.
-> (4) Disk free-space check (warn if over 80% full).
-> (5) Confirm there are no failed services.
-> (6) Show candidate old kernels for removal.
-> (7) Detect errors in the logs.
+> (4) conda (miniforge) base update and clean (per-env can be monthly).
+> (5) Disk free-space check (warn if over 80% full).
+> (6) Confirm there are no failed services.
+> (7) Show candidate old kernels for removal.
+> (8) Detect errors in the logs.
 >
 > I want to run it weekly via cron (Monday 08:00). The result should be visible via mail or notification.
 

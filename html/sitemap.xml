@@ -2,22 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://aiseed.dev/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://aiseed.dev/en/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://aiseed.dev/insights/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://aiseed.dev/en/insights/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -172,12 +172,12 @@
   </url>
   <url>
     <loc>https://aiseed.dev/blog/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://aiseed.dev/en/blog/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -342,7 +342,7 @@
   </url>
   <url>
     <loc>https://aiseed.dev/claude-debian/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -467,7 +467,7 @@
   </url>
   <url>
     <loc>https://aiseed.dev/en/claude-debian/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -592,7 +592,7 @@
   </url>
   <url>
     <loc>https://aiseed.dev/ai-native-ways/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
@@ -662,7 +662,7 @@
   </url>
   <url>
     <loc>https://aiseed.dev/en/ai-native-ways/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -732,42 +732,87 @@
   </url>
   <url>
     <loc>https://aiseed.dev/natural-farming/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://aiseed.dev/en/natural-farming/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/natural-farming/prologue/</loc>
+    <lastmod>2026-05-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/natural-farming/supply-constraint/</loc>
+    <lastmod>2026-05-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/natural-farming/no-cheap-return/</loc>
+    <lastmod>2026-05-07</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/natural-farming/industrial-farming-fails/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/natural-farming/realistic-position/</loc>
+    <lastmod>2026-05-09</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/natural-farming/soil-microbes/</loc>
+    <lastmod>2026-05-10</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/natural-farming/co2-tailwind/</loc>
+    <lastmod>2026-05-11</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/natural-farming/implementation/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/natural-farming/operating-principles/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/about/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://aiseed.dev/en/about/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aiseed.dev/light-farming/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://aiseed.dev/en/light-farming/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://aiseed.dev/privacy/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://aiseed.dev/en/privacy/</loc>
-    <lastmod>2026-05-02</lastmod>
+    <lastmod>2026-05-13</lastmod>
     <priority>0.2</priority>
   </url>
 </urlset>

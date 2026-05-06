@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-9FLQ963JXM');
+</script>
+
+<title>第4章 現実的な立ち位置 ── どこにも組みしない — 自然農法シリーズ | aiseed.dev</title>
+<meta name="description" content="工業型農業を続ける道はない。しかし日本が完全に食料自給できる、というのも幻想だ。穀物の用途配分、戦時英国の事例、肥料制約の現実を冷静に見れば、立ち位置は自ずと決まる。「政府がなんとかせよ」でも「すべて自給する」でもなく、その中間にある現実的な道。">
+<link rel="canonical" href="https://aiseed.dev/natural-farming/realistic-position/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/natural-farming/realistic-position/">
+
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/natural-farming/realistic-position/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI時代の暮らし">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第4章 現実的な立ち位置 ── どこにも組みしない">
+<meta property="og:description" content="工業型農業を続ける道はない。しかし日本が完全に食料自給できる、というのも幻想だ。穀物の用途配分、戦時英国の事例、肥料制約の現実を冷静に見れば、立ち位置は自ずと決まる。「政府がなんとかせよ」でも「すべて自給する」でもなく、その中間にある現実的な道。">
+<meta property="og:url" content="https://aiseed.dev/natural-farming/realistic-position/">
+<meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<meta property="article:section" content="自然農法シリーズ">
+<meta property="article:published_time" content="2026.05.09">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="第4章 現実的な立ち位置 ── どこにも組みしない">
+<meta name="twitter:description" content="工業型農業を続ける道はない。しかし日本が完全に食料自給できる、というのも幻想だ。穀物の用途配分、戦時英国の事例、肥料制約の現実を冷静に見れば、立ち位置は自ずと決まる。「政府がなんとかせよ」でも「すべて自給する」でもなく、その中間にある現実的な道。">
+<meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+
+<!-- Webフォント(軽量化済み: Shippori Mincho 700/800 + JetBrains Mono のみ) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   COLOR & DESIGN TOKENS
+   aiseed.dev 全体のスタイルに合わせる場合は、ここの変数を
+   既存サイトのCSS変数に差し替える。
+   ============================================================ */
+:root {
+  --ink: #1a1a1a;
+  --paper: #f4f1ea;
+  --paper-deep: #ebe6d8;
+  --accent: #c8442a;
+  --rule: #d4cdb8;
+  --whisper: #6b665a;
+  --highlight: #f7e9c8;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* システム明朝(本文用、Webフォント不要で即時表示) */
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
+               "Yu Mincho", "游明朝", "YuMincho",
+               "Noto Serif CJK JP", "Noto Serif JP", serif;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  font-feature-settings: "palt";
+  overflow-x: hidden;
+}
+
+/* グレインテクスチャ(紙の質感) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   MASTHEAD(シリーズ名・章番号)
+   ============================================================ */
+.masthead {
+  border-bottom: 3px double var(--ink);
+  padding: 24px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+}
+.masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-right { font-style: italic; }
+
+/* ============================================================
+   HERO(タイトル領域)
+   ============================================================ */
+.hero {
+  padding: 80px 0 60px;
+}
+.hero-meta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-meta::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 56px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.hero-title .accent {
+  color: var(--accent);
+}
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--whisper);
+  max-width: 580px;
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+  margin-top: 32px;
+}
+.hero-byline {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ============================================================
+   ARTICLE BODY
+   ============================================================ */
+article p {
+  margin-bottom: 24px;
+}
+
+article h2 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.4;
+  margin: 72px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+article h2::before {
+  content: "§";
+  font-family: "JetBrains Mono", monospace;
+  color: var(--accent);
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+article h3 {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 600;
+  font-size: 19px;
+  margin: 40px 0 16px;
+  color: var(--ink);
+}
+article h3::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+article strong {
+  font-weight: 700;
+  background: linear-gradient(to top, var(--highlight) 35%, transparent 35%);
+  padding: 0 2px;
+}
+
+article em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+article a:hover {
+  color: var(--accent);
+}
+
+/* ============================================================
+   BLOCKQUOTE
+   ============================================================ */
+blockquote {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  position: relative;
+  font-size: 18px;
+  line-height: 1.85;
+  font-style: normal;
+  color: var(--ink);
+}
+blockquote::before {
+  content: "「";
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-size: 48px;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: "Hiragino Mincho ProN", serif;
+}
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   ORDERED LIST(番号付きリスト)
+   ============================================================ */
+article ol {
+  margin: 32px 0;
+  counter-reset: item;
+  padding: 0;
+}
+article ol li {
+  list-style: none;
+  position: relative;
+  padding: 16px 0 16px 56px;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: item;
+}
+article ol li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* 通常のul(章末の関連リンクなど) */
+article ul {
+  margin: 24px 0;
+  padding-left: 1.5em;
+}
+article ul li {
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   CODE BLOCK(疑似ターミナル風)
+   ============================================================ */
+article pre {
+  margin: 40px 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 24px 28px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+  overflow-x: auto;
+}
+article pre::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 8px;
+  color: var(--whisper);
+  letter-spacing: 4px;
+}
+article pre code {
+  display: block;
+  padding-top: 16px;
+  white-space: pre;
+}
+
+/* インラインコード */
+article code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9em;
+  background: var(--paper-deep);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+article pre code {
+  background: transparent;
+  padding: 16px 0 0 0;
+  color: var(--paper);
+}
+
+/* ============================================================
+   HORIZONTAL RULE(本文中の区切り)
+   ============================================================ */
+article hr {
+  border: none;
+  text-align: center;
+  margin: 64px 0;
+  height: 1em;
+}
+article hr::before {
+  content: "◆ ◆ ◆";
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+}
+
+/* ============================================================
+   RELATED LINKS(章末の関連記事)
+   ============================================================ */
+.related-links {
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.related-links h3 {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+.related-links h3::before {
+  content: none;
+}
+.related-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.related-links li {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 0;
+}
+.related-links li:last-child {
+  border-bottom: none;
+}
+.related-links a {
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.related-links .related-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.related-links a:hover .related-title {
+  color: var(--accent);
+}
+
+/* ============================================================
+   COLOPHON(フッター)
+   ============================================================ */
+.colophon {
+  margin-top: 96px;
+  padding: 40px 0;
+  border-top: 3px double var(--ink);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--whisper);
+  text-align: center;
+  line-height: 2;
+}
+.colophon-mark {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 40px; }
+  blockquote { padding: 24px 20px 24px 28px; }
+  article pre { padding: 20px 16px; font-size: 12px; }
+  article ol li { padding-left: 48px; }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta, .hero-title, .hero-subtitle, .hero-byline {
+  animation: rise 0.8s ease-out backwards;
+}
+.hero-meta     { animation-delay: 0.1s; }
+.hero-title    { animation-delay: 0.25s; }
+.hero-subtitle { animation-delay: 0.45s; }
+.hero-byline   { animation-delay: 0.65s; }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead-left"><a href="/natural-farming/" style="color: inherit; text-decoration: none;">自然農法シリーズ</a></div>
+    <div class="masthead-right">第4章 / Essay</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-meta">第4章 № 04 · 2026</div>
+
+    <h1 class="hero-title">どちらの極端にも、<br><span class="accent">組みしない</span>。</h1>
+
+    <p class="hero-subtitle">鈴木宣弘の限界、完全自給の幻想、その間に立つ</p>
+
+    <div class="hero-byline">
+      <span>2026.05.09</span>
+      
+    </div>
+  </section>
+
+  <!-- ARTICLE BODY -->
+  <article>
+    <p>第3章で、工業型農業を「これまでどおり」続けることはできない、と
+結論した。</p>
+<p>ではどこに行くか。
+ここで、議論はしばしば二つの極端に振れる。</p>
+<ul>
+<li><strong>A:政府がなんとかすべきだ</strong> ── 補助金、政策、貿易交渉で工業型農業
+を守るべきだ、という立場</li>
+<li><strong>B:完全自給を目指すべきだ</strong> ── 海外依存をやめ、日本だけで食料を
+まかなえる体制を作るべきだ、という立場</li>
+</ul>
+<p>どちらも、強い感情と論理を持っている。しかしどちらも、私たちの立場
+ではない。</p>
+<p>この章では、なぜ A にも B にも組みしないのか、そして <strong>その間に立つ
+こと</strong> が、なぜ現実的なのかを示す。</p>
+<h2>4.1 鈴木宣弘氏の主張と、その限界</h2>
+<p>A の立場を代表するのは、鈴木宣弘氏(東京大学教授、農業経済学)で
+ある。</p>
+<p>氏の主張は、おおまかにこう整理できる。</p>
+<ul>
+<li>食料自給率の低さは、国家安全保障上の問題である</li>
+<li>自由貿易は日本農業を壊した</li>
+<li>政府は農家への補助を強化し、価格保障をすべきである</li>
+<li>食料安全保障を国家戦略として位置づけ直すべきである</li>
+</ul>
+<p><strong>この問題提起そのものは、まったく正当である</strong>。食料が外国依存である
+ことの危うさは、コロナ禍、ウクライナ戦争、中東情勢を経て、誰もが
+実感した。</p>
+<p>しかし、提案されている <strong>解決策</strong> には、第3章で見たとおりの限界がある。</p>
+<p><strong>解決策の問題点 1:財源</strong></p>
+<p>補助金や価格保障を本格的にやるには、年間数兆円規模の予算が必要に
+なる可能性がある <code>[要検証]</code>。日本の財政状況、人口減少、社会保障の
+増大を考えると、これを継続的に拠出する余裕はない。</p>
+<p><strong>解決策の問題点 2:肥料は補助金で買えない</strong></p>
+<p>繰り返しになるが、第1章で見たとおり、肥料は <strong>物理的に供給が細って
+いる</strong>。お金があっても買えないものは、補助金では解けない。中国に
+「もっと売ってくれ」と頼んでも、向こうの国家戦略が変わらない限り
+売ってくれない。</p>
+<p><strong>解決策の問題点 3:工業型農業を温存する設計</strong></p>
+<p>鈴木氏の処方箋は、基本的に <strong>現在の工業型農業の構造を維持する</strong> ことを
+前提にしている。化学肥料に依存し、機械化された大規模農業を、政府が
+支える、という設計だ。</p>
+<p>しかし支えるべき構造そのものが、肥料制約のもとで成立しない。<strong>支柱
+を立てる地面が崩れている</strong> 状況で、どれだけ立派な支柱を立てても
+無駄である。</p>
+<blockquote>
+<p>鈴木氏の問題提起は正しい。しかし処方箋は、工業型農業を温存する
+方向に向いている。これは現実の制約と整合しない。</p>
+</blockquote>
+<p>私たちは、鈴木氏の問題意識を引き継ぎつつ、処方箋は別のものを考える
+必要がある。</p>
+<h2>4.2 完全自給論の問題</h2>
+<p>B の立場 ── 「完全自給を目指せ」── は、A よりもさらに強い主張だ。</p>
+<p>「外国に依存するから危ういのだ。日本の中だけで食料を作り、消費する
+体制を構築せよ」── これは、有機農業運動、地域自給運動、ある種の
+保守思想などから繰り返し出てくる。</p>
+<p>心情として共感はできる。しかし、これも現実の制約と整合しない。</p>
+<p><strong>問題点 1:肥料が外国依存である</strong></p>
+<p>完全自給を語るとき、人はしばしば <strong>食料の自給</strong> だけを見る。米、野菜、
+肉、魚を国内で作れば、自給率は上がる。</p>
+<p>しかしそれを支える <strong>肥料が外国依存</strong> なら、自給は成立しない。第1章
+で見たとおり、リン酸肥料は約 9 割を海外に依存している。窒素肥料の
+原料(天然ガス、アンモニア)もほぼ全量輸入である。カリ肥料はカナダ、
+ロシア、ベラルーシからの輸入。</p>
+<p>肥料を外国に頼ったまま、食料を自給した、という主張は <strong>論理が破綻
+している</strong>。輸入の蛇口が止まれば、食料生産も止まる。</p>
+<p><strong>問題点 2:カロリーベースの自給は土地が足りない</strong></p>
+<p>仮に肥料を完全自給したとしても(これは不可能だが)、日本の耕地面積
+で全国民を養うのは難しい。</p>
+<p>日本の耕地面積は約 430 万 ha <code>[要検証]</code>。人口約 1.2 億人。一人あたり
+約 3.6 アールの計算になる。これで 2,000 kcal/日を賄うには、相当
+高効率な農業が必要だ。</p>
+<p>主食(米)はある程度自給できる。しかし、食肉を支える飼料穀物、油脂、
+パン用小麦、加工食品の原料 ── これらを完全自給するには、現代日本人
+の食生活そのものを根本から変えないと無理である。</p>
+<p><strong>問題点 3:エネルギーと工業製品も外国依存</strong></p>
+<p>完全自給を本当にやるなら、農業機械、ビニルハウス、灌漑ポンプ、燃料
+── これらも自給する必要がある。これは現代経済では事実上不可能だ。</p>
+<p>「食料だけ自給する」というのは、サプライチェーン全体を見れば成立
+しない。<strong>現代農業はエネルギーと工業製品の集積物</strong> であり、これらを
+外国から完全に切り離した自給は、19 世紀以前の生活水準に戻ることを
+意味する。</p>
+<blockquote>
+<p>完全自給は、心情的には魅力的でも、サプライチェーンの現実を見れば
+不可能である。それを唱えることは、できないことを目標に掲げて、
+動けなくなることを意味する。</p>
+</blockquote>
+<h2>4.3 では、どこに立つのか</h2>
+<p>A(鈴木氏的な政府介入論)にも、B(完全自給論)にも組みしない。</p>
+<p>ではどこに立つか。それを示すのが、次節以降である。</p>
+<p>立ち位置を一文で言えば、こうなる。</p>
+<blockquote>
+<p><strong>不足分は輸入で補う。しかし生産はできるだけ自分でする。
+化学肥料に依存しない農法に、現実的に移行する。</strong></p>
+</blockquote>
+<p>これは中庸の道であり、両極の支持者からは「中途半端だ」と批判される
+だろう。しかし、現実の制約 ── 肥料供給、人口、土地、エネルギー、
+サプライチェーン ── を冷静に見れば、ここにしか立てる場所がない。</p>
+<h2>4.4 穀物の用途配分という冷酷な事実</h2>
+<p>ここで、しばしば見落とされる重要な事実を一つ示す。</p>
+<p>世界で生産される穀物は、人間がそのまま食べているわけではない。
+用途別に大きく異なる配分になっている <code>[数値は要検証]</code>。</p>
+<table>
+<thead>
+<tr>
+<th>穀物</th>
+<th>食用(直接)</th>
+<th>飼料</th>
+<th>工業用(エタノール等)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>トウモロコシ(米国)</td>
+<td>約 10%</td>
+<td>約 36%</td>
+<td>約 40%(エタノール)</td>
+</tr>
+<tr>
+<td>大豆(世界)</td>
+<td>約 6%</td>
+<td>約 75〜77%(油糧種子由来ミール)</td>
+<td>残り(油・工業用)</td>
+</tr>
+<tr>
+<td>小麦(世界)</td>
+<td>約 65〜70%</td>
+<td>約 20%</td>
+<td>残り</td>
+</tr>
+</tbody>
+</table>
+<p>この表は、<strong>人間が食料不足だから穀物が足りないのではない</strong> ことを
+示している。</p>
+<p>世界には、人間用の食料が足りなくなる前に、</p>
+<ul>
+<li>バイオエタノール用に回されているトウモロコシ</li>
+<li>飼料として家畜に食わせている穀物</li>
+</ul>
+<p>が大量にある。極端に言えば、<strong>世界の食料供給の余裕は、家畜の頭数を
+減らせばかなり吸収できる</strong> ということだ。</p>
+<p>これは精神論ではなく、数字の話である。</p>
+<p>戦時の英国を見ればよい。第二次大戦中、英国は配給制を敷き、輸入が
+制限される中で <strong>国民の栄養状態を改善</strong> した(平時の労働者階級より、
+戦時の配給生活のほうが栄養バランスが良かった、という有名な事実が
+ある)<code>[要検証]</code>。</p>
+<p>なぜか。<strong>家畜用の穀物を人用に回し、肉を減らし、野菜・穀物を増やした</strong>
+からだ。供給制約下では、人類は実は柔軟に食料を確保できる。</p>
+<blockquote>
+<p>食料が足りないのではない。
+飼料・燃料・嗜好品に回している分が、まだまだ大きい。</p>
+</blockquote>
+<p>これは「肉を食べるな」という規範論ではない。<strong>有事の調整余地は十分
+にある</strong> という事実の確認である。</p>
+<h2>4.5 不足分は輸入で補う ── 自給率 100% を目指さない</h2>
+<p>この用途配分の事実から、次の判断が出てくる。</p>
+<p><strong>日本は完全自給を目指す必要はない</strong>。</p>
+<p>世界の穀物供給は、家畜飼料・バイオ燃料を含めれば、まだ余裕がある。
+日本が完全自給を放棄しても、<strong>価格が上がるだけで、食料が来ないと
+いう状況にはなりにくい</strong>。</p>
+<p>問題は「輸入できないこと」ではなく、「輸入価格が上がること」である。</p>
+<p>そして、価格が上がれば、人類は調整する。米国はトウモロコシをエタノール
+からシフトさせるかもしれない。ブラジルは大豆の用途を変えるかもしれ
+ない。中国は飼料用穀物の輸入を増やすかもしれない。<strong>世界市場は、
+価格を通じて調整される</strong>。</p>
+<p>日本が払える限り、輸入は続く。これが現実だ。</p>
+<p>問題は、<strong>払えるか</strong> である。そしてここで、第3章で見た「工業型農業
+の収支が崩れる」という話が効いてくる。</p>
+<p>国内の農業が成立しなくなれば、輸入依存が深まる。輸入価格が上がる
+中で、輸入依存が深まれば、食費が高騰する。<strong>これは家計に効く</strong>。</p>
+<p>だから、</p>
+<ul>
+<li><strong>完全自給は目指さない</strong>(物理的に無理、かつ世界には余裕がある)</li>
+<li><strong>しかし国内生産はできるだけ維持する</strong>(輸入価格高騰のヘッジ)</li>
+</ul>
+<p>この組み合わせが、現実的な立ち位置だ。</p>
+<h2>4.6 化学肥料に依存しない農法に移行する</h2>
+<p>国内生産を維持するために、何を変えるか。
+<strong>化学肥料への依存を切り離す</strong> ことだ。</p>
+<p>第1章・第2章で見たとおり、化学肥料は構造的に高騰する。これに依存
+した農法は、第3章で見たとおり、収支が成立しない。</p>
+<p>依存を切り離す方法は、一つしかない。
+<strong>土壌微生物の働きを使う農法に移行する</strong>。</p>
+<p>これは精神論ではない。化学肥料がやっていた仕事(窒素固定、リン可給
+化、ミネラル循環)を、土壌中の微生物にやらせる、という <strong>代替戦略</strong>
+である。</p>
+<p>これを科学的に裏付けるのが、第5章で見る Christine Jones らの研究で
+ある。土壌微生物 ── 特に菌根菌 ── は、植物が必要とする窒素・リン・
+ミネラルの大部分を、化学肥料なしで供給できる、ということが分かって
+きている。</p>
+<blockquote>
+<p>化学肥料が高くなるなら、化学肥料を使わない農法に移ればよい。
+ただし「精神」で移るのではなく、「科学」と「経済」で移る。</p>
+</blockquote>
+<p>これがこのシリーズの中核的な主張である。</p>
+<h2>立ち位置の要約</h2>
+<table>
+<thead>
+<tr>
+<th>軸</th>
+<th>私たちの立場</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>政府介入</td>
+<td>限定的に有効。しかし工業型農業を温存する処方箋には乗らない</td>
+</tr>
+<tr>
+<td>完全自給</td>
+<td>目指さない。物理的に無理であり、世界市場の余裕も使う</td>
+</tr>
+<tr>
+<td>国内生産</td>
+<td>できるだけ維持する。輸入価格高騰のヘッジとして</td>
+</tr>
+<tr>
+<td>農法</td>
+<td>化学肥料に依存しない方向に移行する。土壌微生物を活用する</td>
+</tr>
+<tr>
+<td>倫理・思想</td>
+<td>中心ではない。経済と物理が決める</td>
+</tr>
+</tbody>
+</table>
+<p>これが、極端な立場のどちらにも組みしない、私たちの現実的な立ち位置
+である。</p>
+<p>次の第5章では、この「土壌微生物を使う」という戦略が、なぜ可能で、
+どういう仕組みで成立するのかを、Christine Jones らの研究をもとに
+具体的に見ていく。</p>
+
+  </article>
+
+  <!-- COLOPHON -->
+  <footer class="colophon">
+    <div class="colophon-mark">§</div>
+    自然農法シリーズ · 第4章<br>
+    Tokushima · 2026.05.09<br>
+    <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a>
+  </footer>
+
+</div>
+
+</body>
+</html>

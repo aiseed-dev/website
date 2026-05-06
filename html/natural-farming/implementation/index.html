@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-9FLQ963JXM');
+</script>
+
+<title>第7章 どう実装するか ── 一反百姓と耕作放棄地 — 自然農法シリーズ | aiseed.dev</title>
+<meta name="description" content="微生物型農業に転換するとき、「全員が農業をやれ」というのは現実的ではない。むしろ、一反百姓・耕作放棄地の活用・ベランダ菜園というスケールごとの実装が、それぞれの規模で意味を持つ。福岡正信が提示した「一反百姓」の経済学を再確認しつつ、現代日本での具体的な始め方を見る。">
+<link rel="canonical" href="https://aiseed.dev/natural-farming/implementation/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/natural-farming/implementation/">
+
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/natural-farming/implementation/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI時代の暮らし">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第7章 どう実装するか ── 一反百姓と耕作放棄地">
+<meta property="og:description" content="微生物型農業に転換するとき、「全員が農業をやれ」というのは現実的ではない。むしろ、一反百姓・耕作放棄地の活用・ベランダ菜園というスケールごとの実装が、それぞれの規模で意味を持つ。福岡正信が提示した「一反百姓」の経済学を再確認しつつ、現代日本での具体的な始め方を見る。">
+<meta property="og:url" content="https://aiseed.dev/natural-farming/implementation/">
+<meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<meta property="article:section" content="自然農法シリーズ">
+<meta property="article:published_time" content="2026.05.12">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="第7章 どう実装するか ── 一反百姓と耕作放棄地">
+<meta name="twitter:description" content="微生物型農業に転換するとき、「全員が農業をやれ」というのは現実的ではない。むしろ、一反百姓・耕作放棄地の活用・ベランダ菜園というスケールごとの実装が、それぞれの規模で意味を持つ。福岡正信が提示した「一反百姓」の経済学を再確認しつつ、現代日本での具体的な始め方を見る。">
+<meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+
+<!-- Webフォント(軽量化済み: Shippori Mincho 700/800 + JetBrains Mono のみ) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   COLOR & DESIGN TOKENS
+   aiseed.dev 全体のスタイルに合わせる場合は、ここの変数を
+   既存サイトのCSS変数に差し替える。
+   ============================================================ */
+:root {
+  --ink: #1a1a1a;
+  --paper: #f4f1ea;
+  --paper-deep: #ebe6d8;
+  --accent: #c8442a;
+  --rule: #d4cdb8;
+  --whisper: #6b665a;
+  --highlight: #f7e9c8;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* システム明朝(本文用、Webフォント不要で即時表示) */
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
+               "Yu Mincho", "游明朝", "YuMincho",
+               "Noto Serif CJK JP", "Noto Serif JP", serif;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  font-feature-settings: "palt";
+  overflow-x: hidden;
+}
+
+/* グレインテクスチャ(紙の質感) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   MASTHEAD(シリーズ名・章番号)
+   ============================================================ */
+.masthead {
+  border-bottom: 3px double var(--ink);
+  padding: 24px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+}
+.masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-right { font-style: italic; }
+
+/* ============================================================
+   HERO(タイトル領域)
+   ============================================================ */
+.hero {
+  padding: 80px 0 60px;
+}
+.hero-meta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-meta::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 56px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.hero-title .accent {
+  color: var(--accent);
+}
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--whisper);
+  max-width: 580px;
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+  margin-top: 32px;
+}
+.hero-byline {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ============================================================
+   ARTICLE BODY
+   ============================================================ */
+article p {
+  margin-bottom: 24px;
+}
+
+article h2 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.4;
+  margin: 72px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+article h2::before {
+  content: "§";
+  font-family: "JetBrains Mono", monospace;
+  color: var(--accent);
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+article h3 {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 600;
+  font-size: 19px;
+  margin: 40px 0 16px;
+  color: var(--ink);
+}
+article h3::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+article strong {
+  font-weight: 700;
+  background: linear-gradient(to top, var(--highlight) 35%, transparent 35%);
+  padding: 0 2px;
+}
+
+article em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+article a:hover {
+  color: var(--accent);
+}
+
+/* ============================================================
+   BLOCKQUOTE
+   ============================================================ */
+blockquote {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  position: relative;
+  font-size: 18px;
+  line-height: 1.85;
+  font-style: normal;
+  color: var(--ink);
+}
+blockquote::before {
+  content: "「";
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-size: 48px;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: "Hiragino Mincho ProN", serif;
+}
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   ORDERED LIST(番号付きリスト)
+   ============================================================ */
+article ol {
+  margin: 32px 0;
+  counter-reset: item;
+  padding: 0;
+}
+article ol li {
+  list-style: none;
+  position: relative;
+  padding: 16px 0 16px 56px;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: item;
+}
+article ol li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* 通常のul(章末の関連リンクなど) */
+article ul {
+  margin: 24px 0;
+  padding-left: 1.5em;
+}
+article ul li {
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   CODE BLOCK(疑似ターミナル風)
+   ============================================================ */
+article pre {
+  margin: 40px 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 24px 28px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+  overflow-x: auto;
+}
+article pre::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 8px;
+  color: var(--whisper);
+  letter-spacing: 4px;
+}
+article pre code {
+  display: block;
+  padding-top: 16px;
+  white-space: pre;
+}
+
+/* インラインコード */
+article code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9em;
+  background: var(--paper-deep);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+article pre code {
+  background: transparent;
+  padding: 16px 0 0 0;
+  color: var(--paper);
+}
+
+/* ============================================================
+   HORIZONTAL RULE(本文中の区切り)
+   ============================================================ */
+article hr {
+  border: none;
+  text-align: center;
+  margin: 64px 0;
+  height: 1em;
+}
+article hr::before {
+  content: "◆ ◆ ◆";
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+}
+
+/* ============================================================
+   RELATED LINKS(章末の関連記事)
+   ============================================================ */
+.related-links {
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.related-links h3 {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+.related-links h3::before {
+  content: none;
+}
+.related-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.related-links li {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 0;
+}
+.related-links li:last-child {
+  border-bottom: none;
+}
+.related-links a {
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.related-links .related-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.related-links a:hover .related-title {
+  color: var(--accent);
+}
+
+/* ============================================================
+   COLOPHON(フッター)
+   ============================================================ */
+.colophon {
+  margin-top: 96px;
+  padding: 40px 0;
+  border-top: 3px double var(--ink);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--whisper);
+  text-align: center;
+  line-height: 2;
+}
+.colophon-mark {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 40px; }
+  blockquote { padding: 24px 20px 24px 28px; }
+  article pre { padding: 20px 16px; font-size: 12px; }
+  article ol li { padding-left: 48px; }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta, .hero-title, .hero-subtitle, .hero-byline {
+  animation: rise 0.8s ease-out backwards;
+}
+.hero-meta     { animation-delay: 0.1s; }
+.hero-title    { animation-delay: 0.25s; }
+.hero-subtitle { animation-delay: 0.45s; }
+.hero-byline   { animation-delay: 0.65s; }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead-left"><a href="/natural-farming/" style="color: inherit; text-decoration: none;">自然農法シリーズ</a></div>
+    <div class="masthead-right">第7章 / Essay</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-meta">第7章 № 07 · 2026</div>
+
+    <h1 class="hero-title">一反百姓と、<br><span class="accent">耕作放棄地</span>。</h1>
+
+    <p class="hero-subtitle">国民全員が農業をする必要はない、しかし誰でも始められる</p>
+
+    <div class="hero-byline">
+      <span>2026.05.12</span>
+      
+    </div>
+  </section>
+
+  <!-- ARTICLE BODY -->
+  <article>
+    <p>ここまでで、</p>
+<ul>
+<li>化学肥料は構造的に高騰する(1〜2 章)</li>
+<li>工業型農業は成立しない(3 章)</li>
+<li>完全自給は目指さない、しかし国内生産は維持する(4 章)</li>
+<li>土壌微生物を使う(5 章)</li>
+<li>CO2 上昇が追い風になる(6 章)</li>
+</ul>
+<p>を見てきた。</p>
+<p>ではこれを、現実の日本で <strong>どう実装するか</strong>。</p>
+<p>ここに、ひとつの誤解と戦う必要がある。</p>
+<p>「微生物型農業に移行する」と聞くと、多くの人は「全国民が農業をやる
+ことになるのか」と考える。あるいは「耕作放棄地を全面再生して大規模
+有機農場にするのか」と。</p>
+<p>そのどちらも、本書の主張ではない。</p>
+<p>本章では、<strong>規模ごとに違う実装</strong> ── 専業の一反百姓、耕作放棄地の
+小規模再生、家庭のベランダ菜園 ── を見ていく。<strong>全員が農家になる
+必要はない。しかし、誰でも始められる</strong>。</p>
+<h2>7.1 「全員が農家になる」は誤りである</h2>
+<p>第4章で見たとおり、私たちは完全自給を目指さない。</p>
+<p>世界の穀物供給には、家畜飼料・バイオ燃料分の余裕が大きい。日本は
+不足分を輸入で補える。だから、<strong>全国民が農業従事者になる必要はない</strong>。</p>
+<p>これは重要な確認だ。</p>
+<p>工業型農業から微生物型農業への転換を語るとき、しばしば「人類は土に
+還らねばならない」「都市文明を捨てよ」といった極端な主張が出てくる。
+これは経済の話を <strong>倫理の話に置き換えてしまう</strong> ものだ。</p>
+<p>私たちはそうは言わない。</p>
+<ul>
+<li>ソフトウェアエンジニアはソフトウェアを書き続けてよい</li>
+<li>医師は医療を続けてよい</li>
+<li>教師は教えてよい</li>
+<li>製造業は製造業として続けてよい</li>
+</ul>
+<p>ただし、</p>
+<ul>
+<li><strong>農業をやる人は、化学肥料に依存しない方法でやる</strong></li>
+<li><strong>農業をやれる立場の人は、できれば自分の食料の一部を作る</strong></li>
+<li><strong>耕作放棄地は、できる人が小規模に再生する</strong></li>
+</ul>
+<p>これだけで、社会としてのリスクは大きく下がる。</p>
+<h2>7.2 福岡正信の「一反百姓」</h2>
+<p>具体的なスケールの目安として、福岡正信氏が提示した <strong>一反百姓</strong> の
+発想がある。</p>
+<p>一反は約 10 アール、つまり 1,000 平方メートル。30m × 33m 程度の
+広さである。</p>
+<p>福岡氏は、四国・伊予で長年実践してきた経験から、こう述べている
+<code>[要検証:正確な引用]</code>。</p>
+<blockquote>
+<p>一反の田と一反の畑があれば、一家族が食べる米と野菜は十分にまかなえる。</p>
+</blockquote>
+<p>この主張は、戦後農業の常識からすると小さすぎる。慣行農法の専業農家
+は、1 ヘクタール(10 反)以上を耕作するのが普通だ。1 反では「家庭
+菜園」の延長としか見られない。</p>
+<p>しかし、福岡氏が言っているのは違う。</p>
+<ul>
+<li><strong>不耕起、無除草、無肥料</strong> で、米と麦の二毛作ができる</li>
+<li>土壌が肥沃になれば、慣行農法と遜色ない収量が出る</li>
+<li>機械を使わないので、コストはほとんどかからない</li>
+<li>一家族の主食を 1 反でまかなえる</li>
+</ul>
+<p>これが本当なら、経済モデルとしての意味は大きい。</p>
+<h3>一反の経済性</h3>
+<p>仮にこれを現代の数字で考えてみる(かなり概算)。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>工業型 1 反</th>
+<th>自然農 1 反</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>機械費</td>
+<td>年 5 万円</td>
+<td>ほぼ 0</td>
+</tr>
+<tr>
+<td>肥料</td>
+<td>年 1.5〜3 万円</td>
+<td>0</td>
+</tr>
+<tr>
+<td>農薬</td>
+<td>年 1 万円</td>
+<td>0</td>
+</tr>
+<tr>
+<td>燃料</td>
+<td>年 0.8 万円</td>
+<td>0</td>
+</tr>
+<tr>
+<td>種苗</td>
+<td>年 0.5〜1 万円</td>
+<td>自家採種(0)〜少額</td>
+</tr>
+<tr>
+<td>労働時間</td>
+<td>年 200〜300 時間</td>
+<td>年 100〜200 時間</td>
+</tr>
+<tr>
+<td>米収量</td>
+<td>年 約 540 kg</td>
+<td>年 約 300〜400 kg <code>[要検証]</code></td>
+</tr>
+<tr>
+<td>食料価値</td>
+<td>一家族の主食</td>
+<td>一家族の主食</td>
+</tr>
+<tr>
+<td>必要支出</td>
+<td>年 8〜10 万円</td>
+<td>年 1〜2 万円</td>
+</tr>
+</tbody>
+</table>
+<p><code>[数値はすべて概算・要検証]</code></p>
+<p>収量は工業型より下がる。しかしコストも下がる。<strong>一家族が食べる分
+だけ作る</strong> という視点で見れば、コストの低さの方が効いてくる。</p>
+<blockquote>
+<p>「商品作物」として考えると、慣行農法より儲からない。
+「家族の食料」として考えると、慣行農法よりずっと安く済む。</p>
+</blockquote>
+<p>このスケールでの実装は、<strong>自分と家族の食料を自分で確保する</strong> ための
+保険として、強い意味を持つ。</p>
+<h2>7.3 耕作放棄地の活用</h2>
+<p>第3章で見たとおり、日本の耕作放棄地は拡大している。約 42 万 ha 以上
+<code>[要検証]</code> ある。これは九州一県(約 440 万 ha)の 1 割に迫る規模だ。</p>
+<p>この耕作放棄地は、いまの工業型農業では「再生する経済的合理性がない」
+土地である。だから放棄されている。</p>
+<p>しかし、微生物型農業の視点では、これは違って見える。</p>
+<ul>
+<li>耕運も化学肥料も使わないので、初期投資が少ない</li>
+<li>数年かけて土壌微生物を回復させればよい(時間はかかるが、お金は
+かからない)</li>
+<li>山間部の小さな田畑は、もともと多様な植物相に恵まれている</li>
+<li>機械が入れない地形でも、人手で十分に管理できる</li>
+</ul>
+<p>要は、<strong>工業型農業のスケールでは合わない土地が、微生物型農業の
+スケールでは生き返る</strong> ということだ。</p>
+<p>これは過去にも、同じ構造が見られた。日本の里山は、長い間「経済的
+に儲からないから放棄」されてきた。しかし、再生エネルギー(薪、
+木質バイオマス)、観光、教育の文脈で再評価されるようになった。
+<strong>土地の価値は、何の経済モデルで測るかで変わる</strong>。</p>
+<p>耕作放棄地も同じだ。工業型では負債、微生物型では資産になりうる。</p>
+<h3>誰がやるか</h3>
+<p>耕作放棄地の再生は、専業農家だけがやるものではない。</p>
+<ul>
+<li>退職後の二地域居住者</li>
+<li>都市から移住する若い家族</li>
+<li>副業として小規模に取り組む現役世代</li>
+<li>NPO、市民団体、教育機関</li>
+<li>里山保全活動と組み合わせるグループ</li>
+</ul>
+<p>これらの主体が、それぞれ無理のない規模で、少しずつ再生していく。
+<strong>一気に全国を再生する必要はない</strong>。10 年単位で、徐々に増えれば
+よい。</p>
+<h2>7.4 ベランダ菜園と都市の小空間</h2>
+<p>さらに小さなスケールでは、<strong>ベランダ菜園、屋上菜園、市民農園</strong>
+というレベルがある。</p>
+<p>「ベランダで野菜を作っても、たかが知れているじゃないか」── そう
+言いたくなる。確かに、量の話ではない。一家族が食べる野菜の何 % か
+にしかならない。</p>
+<p>しかし、これにも意味がある。</p>
+<p><strong>意味 1:微生物型農業のスキルを学ぶ場</strong></p>
+<p>ベランダのプランターでも、土壌微生物の動きは観察できる。コンポスト
+を使う、生きた根を絶やさない、化学肥料を使わない ── これらの原則を
+小さな規模で身につけることができる。</p>
+<p>将来、自分が一反百姓に乗り出すとき、あるいは耕作放棄地を再生する
+とき、ここで学んだスキルが効いてくる。</p>
+<p><strong>意味 2:価格高騰に対する家計の緩衝</strong></p>
+<p>野菜の輸入価格、国産価格が上がる中で、ベランダ菜園で <strong>キュウリ、
+トマト、ハーブ、葉物野菜</strong> を作るだけでも、家計にとっての緩衝材
+になる。</p>
+<p>特に、傷みやすい葉物(レタス、サラダ菜、バジル、ミント、シソ)は、
+スーパーで買うと割高だが、ベランダで小さく作るのは易しい。<strong>少量の
+新鮮な野菜を毎日確保する</strong> という用途に向いている。</p>
+<p><strong>意味 3:食と農の関係を再構築する</strong></p>
+<p>これは数字に乗らない側面だが、無視できない。</p>
+<p>子どもや大人が、自分の食べるものがどこから来るかを <strong>物理的に体験
+する</strong> ことには、長期的な意味がある。<strong>食料は自然から来る、土と
+微生物が育てる</strong>、ということを、頭ではなく手で知ることになる。</p>
+<p>これは農業政策・食料政策の理解度を、社会全体として底上げする効果が
+ある。</p>
+<h2>7.5 専業・兼業・自給 ── スケールの三層</h2>
+<p>実装をスケール別に整理すると、こうなる。</p>
+<table>
+<thead>
+<tr>
+<th>スケール</th>
+<th>担い手</th>
+<th>規模</th>
+<th>目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>専業</td>
+<td>プロ農家</td>
+<td>数反〜数 ha</td>
+<td>商品作物として販売、地域の食料供給</td>
+</tr>
+<tr>
+<td>兼業・小規模</td>
+<td>移住者、副業者、退職者</td>
+<td>一反前後</td>
+<td>家族の主食 + 余剰の販売・物々交換</td>
+</tr>
+<tr>
+<td>自給・補助</td>
+<td>一般家庭</td>
+<td>プランター〜数十坪</td>
+<td>家計の緩衝、教育、楽しみ</td>
+</tr>
+</tbody>
+</table>
+<p>この三層が、それぞれの規模で機能すれば、<strong>社会全体としての食料
+供給リスクは大きく下がる</strong>。</p>
+<p>すべての層を同じ人がやる必要はない。専業農家は専業で、副業者は
+副業で、家庭は家庭で、自分の規模に合った形でやる。</p>
+<h2>7.6 移行のタイムライン</h2>
+<p>化学肥料に依存していた土から、微生物型農業の土に移るには、時間が
+かかる。</p>
+<ul>
+<li><strong>1 年目</strong>:収量は大きく落ちる。慣行から見れば「失敗」に見える</li>
+<li><strong>2〜3 年目</strong>:微生物相が回復し始める。収量は底打ち</li>
+<li><strong>4〜5 年目</strong>:土壌団粒構造ができる。収量回復が始まる</li>
+<li><strong>5 年目以降</strong>:土が豊かになる。収量と品質が安定する</li>
+<li><strong>10 年目以降</strong>:慣行農法と同等以上、しかもコストは大幅に低い</li>
+</ul>
+<p>これは Gabe Brown の事例とも符合する <code>[要検証]</code>。</p>
+<blockquote>
+<p>1〜3 年は「我慢」の期間。
+しかし 5 年待てば、収量も収支も改善する。
+10 年待てば、慣行農法では到達できないレベルの土壌が手に入る。</p>
+</blockquote>
+<p>このタイムラインを知った上で計画する必要がある。</p>
+<p>「化学肥料が高騰してから移行する」と考えると遅い。<strong>いまから始めて
+3〜5 年かけて移行を完了する</strong> のが、現実的なスケジュールである。</p>
+<h2>7.7 第7章のまとめ</h2>
+<ul>
+<li>「全員が農業」は目指さない。それぞれの規模で実装する</li>
+<li>福岡正信の一反百姓は、家族の食料確保モデルとして強い経済性を
+持つ</li>
+<li>耕作放棄地は、工業型では負債、微生物型では資産になりうる</li>
+<li>ベランダ菜園は量より、スキル・緩衝・教育の意味で価値がある</li>
+<li>専業・兼業・自給の三層構造が、社会のリスクを下げる</li>
+<li>移行には 3〜5 年、本格化には 10 年単位の時間がかかる</li>
+<li>だから、いまから始めるのが現実的である</li>
+</ul>
+<p>スケールごとの実装の方向は分かった。次は、<strong>具体的な運用原則</strong> ──
+何をして、何をしないのか ── を見ていく。</p>
+<p>次の最終章(第8章)では、不耕起、裸地禁止、多様性、無除草、化学
+肥料禁止、自家採種、保存・流通の工夫など、運用レベルの原則をまとめる。
+そしてシリーズ全体の結論を提示する。</p>
+
+  </article>
+
+  <!-- COLOPHON -->
+  <footer class="colophon">
+    <div class="colophon-mark">§</div>
+    自然農法シリーズ · 第7章<br>
+    Tokushima · 2026.05.12<br>
+    <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a>
+  </footer>
+
+</div>
+
+</body>
+</html>

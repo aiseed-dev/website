@@ -625,6 +625,133 @@ def build_aiways_chapter(md_path):
 
 
 # ---------------------------------------------------------------------------
+# Build functions — natural-farming (independent template, like ai-native-ways)
+#
+# Source:  articles/natural-farming/NN-slug/{ja,en}.md
+# Output:  html/natural-farming/{slug}/index.html         (JA)
+#          html/en/natural-farming/{slug}/index.html      (EN)
+#
+# Like ai-native-ways, the series ships its own self-contained template
+# (articles/natural-farming/template.html, template.en.html). The existing
+# static landing page at /natural-farming/ is left intact — chapters live
+# alongside it under unique slugs.
+# ---------------------------------------------------------------------------
+
+FARMING_SERIES_NAME_JA = "自然農法シリーズ"
+FARMING_SERIES_NAME_EN = "Natural Farming Series"
+
+
+def _farming_chapter_label(number: str, lang: str) -> str:
+    """'00' → '序章' / 'Prologue'. Otherwise '第N章' / 'Chapter N'."""
+    n = number.lstrip("0") or "0"
+    if n == "0":
+        return "序章" if lang == "ja" else "Prologue"
+    return f"第{n}章" if lang == "ja" else f"Chapter {n}"
+
+
+def _farming_template_path(lang: str) -> Path:
+    return config.FARMING_DIR / ("template.html" if lang == "ja" else "template.en.html")
+
+
+def build_farming_chapter(md_path):
+    """Build a single natural-farming chapter using the series-local template."""
+    from jinja2 import Template
+
+    md_path = Path(md_path)
+    if not md_path.exists():
+        print(f"Error: {md_path} not found")
+        return False
+
+    text = md_path.read_text(encoding="utf-8")
+    meta, body = parse_frontmatter(text)
+
+    if "slug" not in meta:
+        print(f"Error: {md_path} missing 'slug' in front matter")
+        return False
+
+    lang = meta.get("lang") or _detect_lang(md_path)
+    meta["lang"] = lang
+
+    slug = meta["slug"]
+    if lang == "en":
+        out_dir = config.SITE_ROOT / "html" / "en" / "natural-farming" / slug
+    else:
+        out_dir = config.FARMING_OUTPUT_BASE / slug
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    meta["_source_dir"] = str(md_path.parent)
+    meta["_out_dir"] = str(out_dir)
+
+    body = strip_leading_title(body)
+    body = process_custom_blocks(body)
+    body_html = md.render(body)
+
+    series_name = FARMING_SERIES_NAME_EN if lang == "en" else FARMING_SERIES_NAME_JA
+    series_index_url = "/en/natural-farming/" if lang == "en" else "/natural-farming/"
+
+    canonical_url = f"{config.SITE_URL}/{'en/' if lang == 'en' else ''}natural-farming/{slug}/"
+    hreflang_ja = f"{config.SITE_URL}/natural-farming/{slug}/"
+    hreflang_en = f"{config.SITE_URL}/en/natural-farming/{slug}/"
+
+    other_lang_url = (hreflang_ja if lang == "en" else hreflang_en)
+    other_lang_label = "日本語" if lang == "en" else "EN"
+    has_other = (md_path.parent / ("ja.md" if lang == "en" else "en.md")).exists()
+
+    from build.images import resolve_og_image
+    og_image = resolve_og_image(meta, out_dir, public_base_url=canonical_url.rstrip("/"))
+
+    date_str = meta.get("date", "")
+    year = date_str.split(".")[0] if "." in date_str else (date_str[:4] if date_str else "")
+
+    variables = {
+        "title": meta.get("title", ""),
+        "title_html": meta.get("title_html", ""),
+        "subtitle": meta.get("subtitle", ""),
+        "description": meta.get("description", ""),
+        "date": date_str,
+        "year": year,
+        "number": meta.get("number", "").strip('"'),
+        "label": meta.get("label", ""),
+        "series": series_name,
+        "series_index_url": series_index_url,
+        "chapter_label": _farming_chapter_label(meta.get("number", "").strip('"'), lang),
+        "content_html": body_html,
+        "canonical_url": canonical_url,
+        "hreflang_ja": hreflang_ja if (md_path.parent / "ja.md").exists() else "",
+        "hreflang_en": hreflang_en if (md_path.parent / "en.md").exists() else "",
+        "og_image": og_image,
+        "other_lang_url": other_lang_url if has_other else "",
+        "other_lang_label": other_lang_label,
+    }
+
+    template_text = _farming_template_path(lang).read_text(encoding="utf-8")
+    html = Template(template_text).render(**variables)
+
+    out_file = out_dir / "index.html"
+    out_file.write_text(html, encoding="utf-8")
+
+    copy_images(md_path.parent, out_dir, lang=lang)
+
+    print(f"Built natural-farming: {out_file}")
+    return True
+
+
+def collect_farming_chapters(lang="ja"):
+    """Collect natural-farming chapter metadata for a language."""
+    chapters = []
+    for f in _iter_article_files(config.FARMING_DIR, lang):
+        text = f.read_text(encoding="utf-8")
+        meta, _ = parse_frontmatter(text)
+        if meta.get("lang", "ja") != lang and not (lang == "ja" and "lang" not in meta):
+            continue
+        num_match = re.match(r"(\d+)", f.parent.name)
+        meta["_file_number"] = int(num_match.group(1)) if num_match else 0
+        chapters.append(meta)
+    chapters.sort(key=lambda m: m.get("_file_number", 0))
+    return chapters
+
+
+# ---------------------------------------------------------------------------
 # Build functions — ai-native-ways examples (per-chapter "example-N" pages)
 #
 # Source:  articles/ai-native-ways/NN-slug/example-N/{README.md, results.md, ...}
@@ -1040,11 +1167,14 @@ def build_sitemap():
     en_chapters = collect_book_chapters("en")
     ja_aiways = collect_aiways_chapters("ja")
     en_aiways = collect_aiways_chapters("en")
+    ja_farming = collect_farming_chapters("ja")
+    en_farming = collect_farming_chapters("en")
 
     all_dates = [
         norm_date(m.get("date"))
         for m in (*ja_articles, *en_articles, *ja_posts, *en_posts,
-                  *ja_chapters, *en_chapters, *ja_aiways, *en_aiways)
+                  *ja_chapters, *en_chapters, *ja_aiways, *en_aiways,
+                  *ja_farming, *en_farming)
         if m.get("date")
     ]
     latest = max(all_dates) if all_dates else date.today().isoformat()
@@ -1129,6 +1259,17 @@ def build_sitemap():
     # Natural Farming / About / Light Farming (both JP and EN)
     urls.append((f"{site_url}/natural-farming/", latest, "0.8"))
     urls.append((f"{site_url}/en/natural-farming/", latest, "0.7"))
+    # Natural Farming series chapters
+    for meta in ja_farming:
+        slug = meta.get("slug", "")
+        if not slug:
+            continue
+        urls.append((f"{site_url}/natural-farming/{slug}/", norm_date(meta.get("date")), "0.6"))
+    for meta in en_farming:
+        slug = meta.get("slug", "")
+        if not slug:
+            continue
+        urls.append((f"{site_url}/en/natural-farming/{slug}/", norm_date(meta.get("date")), "0.5"))
     urls.append((f"{site_url}/about/", latest, "0.6"))
     urls.append((f"{site_url}/en/about/", latest, "0.5"))
     urls.append((f"{site_url}/light-farming/", latest, "0.8"))
@@ -1281,6 +1422,14 @@ def main():
         if collect_aiways_chapters("en"):
             build_aiways_index("en")
 
+        # Build natural-farming chapters — JA + EN
+        farming_ok = 0
+        farming_files = list(_iter_article_files(config.FARMING_DIR, "ja")) \
+                      + list(_iter_article_files(config.FARMING_DIR, "en"))
+        for f in farming_files:
+            if build_farming_chapter(f):
+                farming_ok += 1
+
         # Build ai-native-ways examples — every chapter's example-N/ folders.
         examples_ok = examples_total = 0
         for chapter_sub in sorted(config.AIWAYS_DIR.iterdir()):
@@ -1302,6 +1451,7 @@ def main():
             f" + {book_ok}/{len(book_files)} book chapters"
             f" + {aiways_ok}/{len(aiways_files)} ai-native-ways"
             f" + {examples_ok}/{examples_total} ai-native-ways examples"
+            f" + {farming_ok}/{len(farming_files)} natural-farming chapters"
             f" + indexes + sitemap.xml + robots.txt."
         )
         return
@@ -1317,6 +1467,8 @@ def main():
         build_blog_post(arg)
     elif series == "ai-native-ways" or "ai-native-ways/" in arg:
         build_aiways_chapter(arg)
+    elif series == "natural-farming" or "natural-farming/" in arg:
+        build_farming_chapter(arg)
     else:
         build_article(arg)
 

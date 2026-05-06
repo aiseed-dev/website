@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-9FLQ963JXM');
+</script>
+
+<title>第8章 運用原則 ── 何をして、何をしないか — 自然農法シリーズ | aiseed.dev</title>
+<meta name="description" content="微生物型農業の運用原則を整理する。不耕起、裸地禁止、多様性の確保、化学肥料・農薬の不使用、自家採種、保存と流通の工夫。福岡正信の「無除草」と Christine Jones の「液体炭素」が一致する点として、生きた根を絶やさないことが重要である。経済が農法を決めた、というシリーズの結論で締めくくる。">
+<link rel="canonical" href="https://aiseed.dev/natural-farming/operating-principles/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/natural-farming/operating-principles/">
+
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/natural-farming/operating-principles/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI時代の暮らし">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第8章 運用原則 ── 何をして、何をしないか">
+<meta property="og:description" content="微生物型農業の運用原則を整理する。不耕起、裸地禁止、多様性の確保、化学肥料・農薬の不使用、自家採種、保存と流通の工夫。福岡正信の「無除草」と Christine Jones の「液体炭素」が一致する点として、生きた根を絶やさないことが重要である。経済が農法を決めた、というシリーズの結論で締めくくる。">
+<meta property="og:url" content="https://aiseed.dev/natural-farming/operating-principles/">
+<meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<meta property="article:section" content="自然農法シリーズ">
+<meta property="article:published_time" content="2026.05.13">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="第8章 運用原則 ── 何をして、何をしないか">
+<meta name="twitter:description" content="微生物型農業の運用原則を整理する。不耕起、裸地禁止、多様性の確保、化学肥料・農薬の不使用、自家採種、保存と流通の工夫。福岡正信の「無除草」と Christine Jones の「液体炭素」が一致する点として、生きた根を絶やさないことが重要である。経済が農法を決めた、というシリーズの結論で締めくくる。">
+<meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+
+<!-- Webフォント(軽量化済み: Shippori Mincho 700/800 + JetBrains Mono のみ) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   COLOR & DESIGN TOKENS
+   aiseed.dev 全体のスタイルに合わせる場合は、ここの変数を
+   既存サイトのCSS変数に差し替える。
+   ============================================================ */
+:root {
+  --ink: #1a1a1a;
+  --paper: #f4f1ea;
+  --paper-deep: #ebe6d8;
+  --accent: #c8442a;
+  --rule: #d4cdb8;
+  --whisper: #6b665a;
+  --highlight: #f7e9c8;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* システム明朝(本文用、Webフォント不要で即時表示) */
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
+               "Yu Mincho", "游明朝", "YuMincho",
+               "Noto Serif CJK JP", "Noto Serif JP", serif;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  font-feature-settings: "palt";
+  overflow-x: hidden;
+}
+
+/* グレインテクスチャ(紙の質感) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   MASTHEAD(シリーズ名・章番号)
+   ============================================================ */
+.masthead {
+  border-bottom: 3px double var(--ink);
+  padding: 24px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+}
+.masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-right { font-style: italic; }
+
+/* ============================================================
+   HERO(タイトル領域)
+   ============================================================ */
+.hero {
+  padding: 80px 0 60px;
+}
+.hero-meta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-meta::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 56px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.hero-title .accent {
+  color: var(--accent);
+}
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--whisper);
+  max-width: 580px;
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+  margin-top: 32px;
+}
+.hero-byline {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ============================================================
+   ARTICLE BODY
+   ============================================================ */
+article p {
+  margin-bottom: 24px;
+}
+
+article h2 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.4;
+  margin: 72px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+article h2::before {
+  content: "§";
+  font-family: "JetBrains Mono", monospace;
+  color: var(--accent);
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+article h3 {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 600;
+  font-size: 19px;
+  margin: 40px 0 16px;
+  color: var(--ink);
+}
+article h3::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+article strong {
+  font-weight: 700;
+  background: linear-gradient(to top, var(--highlight) 35%, transparent 35%);
+  padding: 0 2px;
+}
+
+article em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+article a:hover {
+  color: var(--accent);
+}
+
+/* ============================================================
+   BLOCKQUOTE
+   ============================================================ */
+blockquote {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  position: relative;
+  font-size: 18px;
+  line-height: 1.85;
+  font-style: normal;
+  color: var(--ink);
+}
+blockquote::before {
+  content: "「";
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-size: 48px;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: "Hiragino Mincho ProN", serif;
+}
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   ORDERED LIST(番号付きリスト)
+   ============================================================ */
+article ol {
+  margin: 32px 0;
+  counter-reset: item;
+  padding: 0;
+}
+article ol li {
+  list-style: none;
+  position: relative;
+  padding: 16px 0 16px 56px;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: item;
+}
+article ol li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* 通常のul(章末の関連リンクなど) */
+article ul {
+  margin: 24px 0;
+  padding-left: 1.5em;
+}
+article ul li {
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   CODE BLOCK(疑似ターミナル風)
+   ============================================================ */
+article pre {
+  margin: 40px 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 24px 28px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+  overflow-x: auto;
+}
+article pre::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 8px;
+  color: var(--whisper);
+  letter-spacing: 4px;
+}
+article pre code {
+  display: block;
+  padding-top: 16px;
+  white-space: pre;
+}
+
+/* インラインコード */
+article code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9em;
+  background: var(--paper-deep);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+article pre code {
+  background: transparent;
+  padding: 16px 0 0 0;
+  color: var(--paper);
+}
+
+/* ============================================================
+   HORIZONTAL RULE(本文中の区切り)
+   ============================================================ */
+article hr {
+  border: none;
+  text-align: center;
+  margin: 64px 0;
+  height: 1em;
+}
+article hr::before {
+  content: "◆ ◆ ◆";
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+}
+
+/* ============================================================
+   RELATED LINKS(章末の関連記事)
+   ============================================================ */
+.related-links {
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.related-links h3 {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+.related-links h3::before {
+  content: none;
+}
+.related-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.related-links li {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 0;
+}
+.related-links li:last-child {
+  border-bottom: none;
+}
+.related-links a {
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.related-links .related-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.related-links a:hover .related-title {
+  color: var(--accent);
+}
+
+/* ============================================================
+   COLOPHON(フッター)
+   ============================================================ */
+.colophon {
+  margin-top: 96px;
+  padding: 40px 0;
+  border-top: 3px double var(--ink);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--whisper);
+  text-align: center;
+  line-height: 2;
+}
+.colophon-mark {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 40px; }
+  blockquote { padding: 24px 20px 24px 28px; }
+  article pre { padding: 20px 16px; font-size: 12px; }
+  article ol li { padding-left: 48px; }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta, .hero-title, .hero-subtitle, .hero-byline {
+  animation: rise 0.8s ease-out backwards;
+}
+.hero-meta     { animation-delay: 0.1s; }
+.hero-title    { animation-delay: 0.25s; }
+.hero-subtitle { animation-delay: 0.45s; }
+.hero-byline   { animation-delay: 0.65s; }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead-left"><a href="/natural-farming/" style="color: inherit; text-decoration: none;">自然農法シリーズ</a></div>
+    <div class="masthead-right">第8章 / Essay</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-meta">第8章 № 08 · 2026</div>
+
+    <h1 class="hero-title">何をして、<br><span class="accent">何をしないか</span>。</h1>
+
+    <p class="hero-subtitle">不耕起、裸地禁止、多様性、無除草、生きた根を絶やさない</p>
+
+    <div class="hero-byline">
+      <span>2026.05.13</span>
+      
+    </div>
+  </section>
+
+  <!-- ARTICLE BODY -->
+  <article>
+    <p>このシリーズの最終章である。</p>
+<p>ここまでで、微生物型農業に移行するべき理由(経済・物理・生物学)、
+規模ごとの実装(専業・兼業・自給)を見てきた。</p>
+<p>最後に、<strong>現場でどう運用するか</strong> という具体的な原則をまとめる。</p>
+<p>ただし、ここで提示するのは「マニュアル」ではない。マニュアル化された
+農法は、土地ごと、気候ごと、作物ごとの差異を吸収できない。<strong>原則を
+理解した上で、自分の現場に合わせて応用する</strong> ことが必要だ。</p>
+<p>ここに挙げる 8 つの原則は、福岡正信の自然農法、米国の再生農業
+(Gabe Brown ら)、土壌科学(Christine Jones ら)に共通する核心
+部分である。</p>
+<h2>8.1 不耕起 ── 土を耕さない</h2>
+<p><strong>原則:土を耕さない。</strong></p>
+<p>土を耕すこと(耕運)は、近代農業の基本動作とされてきた。しかし、
+微生物型農業では、これが <strong>第一に避けるべき行為</strong> になる。</p>
+<p>なぜか。</p>
+<ul>
+<li>耕運は、土壌中の <strong>菌糸ネットワーク</strong> を物理的に切断する</li>
+<li>切断された菌根菌は死ぬ。または機能を失う</li>
+<li>耕運で表土と下層が混ざり、生態系の層構造が壊れる</li>
+<li>露出した有機物は急速に分解され、CO2 として大気に逃げる</li>
+<li>団粒構造が壊れ、水や空気の通り道が消える</li>
+</ul>
+<p>土壌は「ただの土」ではない。<strong>何百万種の生物が層をなして暮らす
+立体的な生態系</strong> である。耕運は、その都市を毎年ブルドーザーで
+平らにするような行為だ。</p>
+<p>慣行農法では、雑草対策・土壌の通気・前作の残渣鋤き込みのために
+耕運する。しかし微生物型農業では、それぞれ別の方法で対処できる。</p>
+<ul>
+<li>雑草対策 → 多様な作物・カバークロップで覆う、必要な部分だけ
+局所的に除く</li>
+<li>通気 → ミミズ、根、菌糸が自然に作る孔隙</li>
+<li>残渣 → 表面に置いておけば微生物が分解する</li>
+</ul>
+<blockquote>
+<p>土を耕すのは、微生物の家を毎年壊すこと。
+耕さないのは、家を維持すること。</p>
+</blockquote>
+<h2>8.2 裸地を作らない ── 土の表面を覆う</h2>
+<p><strong>原則:土の表面を裸にしない。常に何かで覆う。</strong></p>
+<p>土が裸 ── 直射日光が当たり、雨が直接打ちつける状態 ── になると、
+こんなことが起きる。</p>
+<ul>
+<li>土壌温度が極端に上下する(夏は 50℃以上にもなる)</li>
+<li>微生物が高温で死滅する</li>
+<li>雨で土壌が流亡する</li>
+<li>蒸発で水分が失われる</li>
+<li>雑草の種が発芽しやすくなる(逆説的だが)</li>
+</ul>
+<p>裸地を避けるには、</p>
+<ul>
+<li>作物そのもので地面を覆う(密植、群落)</li>
+<li>カバークロップ(ライ麦、ヘアリーベッチ、レンゲ等)を使う</li>
+<li>残渣を表面に置いておく</li>
+<li>落ち葉、刈り敷き、ワラなどでマルチする</li>
+</ul>
+<p>ただし、ここで重要な区別がある。<strong>「土を覆うこと」と「生きた植物
+で覆うこと」は意味が違う</strong>。これは 8.4 で詳しく見る。</p>
+<h2>8.3 多様性 ── 単一作物にしない</h2>
+<p><strong>原則:多様な作物・植物を組み合わせる。</strong></p>
+<p>慣行農法は、単一作物の大規模栽培(モノカルチャー)を最大効率と
+してきた。同じ作物を、同じ畑で、毎年作る。機械化と病害虫管理の
+ために、これが効率的とされた。</p>
+<p>しかし微生物型農業では、これは逆効果である。</p>
+<ul>
+<li>単一作物では、特定の病害虫が大増殖する</li>
+<li>単一作物の根滲出液は単一の組成で、土壌微生物相を画一化する</li>
+<li>土壌中の特定の養分だけが偏って消費される</li>
+<li>連作障害が起きる</li>
+</ul>
+<p>多様性が重要な理由は、</p>
+<ul>
+<li>異なる作物は異なる根滲出液を出す → 異なる微生物を養う</li>
+<li>多様な微生物相は、特定の病害が暴走しにくい</li>
+<li>異なる作物は異なる深さに根を伸ばす → 土壌全体を活用できる</li>
+<li>マメ科が窒素を固定する、深根性植物がミネラルを汲み上げる、
+といった役割分担が成立する</li>
+</ul>
+<p>実装としては、</p>
+<ul>
+<li>混作(同じ畑で複数作物を同時栽培)</li>
+<li>輪作(年ごとに作物を変える)</li>
+<li>カバークロップ(主作物の合間に多種混合の被覆植物を入れる)</li>
+<li>周辺植生の保全(畑の周囲の雑草、樹木、生垣を含めて生態系を
+維持する)</li>
+</ul>
+<blockquote>
+<p>単一作物の畑は、生態系としては砂漠に近い。
+多様な畑は、森林・草原に近い。
+後者の方が、肥料も農薬も要らない。</p>
+</blockquote>
+<h2>8.4 無除草 ── 生きた根を絶やさない</h2>
+<p><strong>原則:できる限り、雑草を刈らない。生きた根を絶やさない。</strong></p>
+<p>ここが、このシリーズで最も丁寧に説明したい原則である。
+そして、福岡正信氏の自然農法と、最新の土壌科学が一致する点である。</p>
+<h3>雑草を刈らない理由</h3>
+<p>慣行農法では、雑草は「敵」である。作物と栄養を奪い合う、収量を
+落とす、見た目が悪い。だから除草する。除草剤を使う、機械で刈る、
+手で抜く。</p>
+<p>しかし、微生物型農業の視点では、雑草は <strong>大切なパートナー</strong> である。</p>
+<p>なぜか。</p>
+<ul>
+<li>雑草の根も、菌根菌に <strong>液体炭素</strong> を供給している(第6章)</li>
+<li>雑草の根は、土壌の団粒構造を作る</li>
+<li>多様な雑草は、多様な微生物を養う</li>
+<li>雑草の根は、深い層から養分を汲み上げる</li>
+<li>主作物が休んでいる時期も、雑草は微生物を養い続ける</li>
+</ul>
+<blockquote>
+<p>菌根菌が必要とするのは「生きた根」である。
+根が生きていれば、種類は問わない。
+雑草の根も、菌根菌にとっては立派な「給料源」である。</p>
+</blockquote>
+<p>福岡正信氏は、この事実を、土壌科学が解明する前に、観察と直感で
+つかんでいた。氏の自然農法の中核は、</p>
+<ul>
+<li><strong>無除草</strong>(雑草を刈らない)</li>
+<li><strong>無耕起</strong>(土を耕さない)</li>
+<li><strong>無肥料</strong>(化学肥料も有機肥料も施さない)</li>
+<li><strong>無農薬</strong>(農薬を使わない)</li>
+</ul>
+<p>の四つだった。これらは、現代の土壌科学から見ると、すべて <strong>微生物
+ネットワークを最大限活かすための原則</strong> として整合する。</p>
+<h3>「草マルチ」との違い</h3>
+<p>ここで、海外の再生農業の文脈で言われる <strong>草マルチ(草を刈って
+土の上に置く)</strong> との違いを明確にしておく。</p>
+<p>草マルチには、</p>
+<ul>
+<li>土を覆って保護する</li>
+<li>微生物の餌になる</li>
+<li>雑草の発芽を抑える</li>
+</ul>
+<p>という効果がある。これらは確かに重要だ。</p>
+<p>しかし、草マルチには <strong>重要な弱点</strong> がある。</p>
+<blockquote>
+<p>切られた草は、もう光合成をしない。
+もう液体炭素を出さない。
+菌根菌に「給料」を払わない。</p>
+</blockquote>
+<p>刈られた草は、ただの「死んだ有機物」である。これを土の上に置けば、
+土の被覆としては機能する。微生物の餌にもなる。</p>
+<p>しかし、<strong>菌根菌が直接的に必要とする液体炭素は、生きた根からしか
+供給されない</strong>。死んだ草を地面に置くだけでは、共生関係は維持され
+ない。</p>
+<h3>福岡氏の無除草と Jones の液体炭素は同じことを言っている</h3>
+<p>福岡正信氏:雑草は敵ではない、刈らない、根を絶やさない
+Christine Jones:植物は生きた根から液体炭素を出す、これが微生物
+を養う</p>
+<p>二人は別の言語で、同じことを述べている。</p>
+<blockquote>
+<p><strong>生きた根を絶やさない</strong>。これが微生物型農業の中核原則である。</p>
+</blockquote>
+<p>これが、なぜ単なる「草マルチ」(死んだ草を敷く)よりも、<strong>無除草</strong>
+(生きた草をそのまま残す)が重要かの理由である。</p>
+<h2>8.5 刈らざるを得ないときは ── Jones 論文の 50% ルール</h2>
+<p>ただし、現実には完全に無除草でやれないこともある。</p>
+<ul>
+<li>雑草が作物を完全に覆ってしまう</li>
+<li>風通しが悪く病害が出る</li>
+<li>通路が確保できない</li>
+<li>隣家との境界管理上、必要に迫られる</li>
+</ul>
+<p>そのような場合、雑草を刈ることはあってよい。しかし、刈り方に注意
+が要る。</p>
+<p>Christine Jones の論文には、<strong>50% ルール</strong> とでも呼べる原則が示唆
+されている <code>[要検証:正確な引用]</code>。</p>
+<blockquote>
+<p>一度に刈り取るのは、植物の地上部の 50% 以下にとどめる。
+それ以上を刈ると、根の成長が止まり、液体炭素の供給も止まる。</p>
+</blockquote>
+<p>この理由は、植物の根と地上部のバランスにある。</p>
+<p>植物は、地上部の葉面積に応じて、根の量と液体炭素の供給量を決めて
+いる。葉が半分以下に刈られると、植物は <strong>生存モード</strong> に入り、
+根を伸ばすのをやめ、液体炭素の放出を絞る。</p>
+<p>これは家畜の放牧管理でも同じ原則が使われる。<strong>Take half, leave
+half</strong>(半分食って、半分残す)── これが過放牧を防ぎ、草地を維持
+するルールである。</p>
+<p>実用的な指針:</p>
+<ul>
+<li>刈るなら背丈の半分以下にとどめる</li>
+<li>全面ではなく、列状・スポット状に刈る</li>
+<li>刈った草は土の上に置く(草マルチとして補助的に機能する)</li>
+<li>主作物の周囲だけを刈り、畑全体は刈らない</li>
+</ul>
+<p>これは「無除草を絶対視する」のではなく、<strong>現実の運用として無理が
+ない範囲で、生きた根の供給を絶やさない</strong> ための工夫である。</p>
+<h2>8.6 化学肥料・農薬を使わない</h2>
+<p><strong>原則:化学肥料と化学農薬を使わない。</strong></p>
+<p>理由はすでに第5章で見た。</p>
+<ul>
+<li>化学肥料は、植物と菌根菌の共生を壊す</li>
+<li>化学農薬は、有用微生物まで殺す</li>
+<li>どちらも価格高騰中で、経済的にも持続しない</li>
+</ul>
+<p>ただし、<strong>完全有機にこだわる必要もない</strong>。たとえば堆肥、米ぬか、
+もみ殻、草木灰など、地域で手に入る有機質を <strong>補助的に</strong> 使うのは
+構わない。</p>
+<p>ここで重要なのは、</p>
+<blockquote>
+<p>「微生物がやる仕事」を、人間が肥料で代行しない。</p>
+</blockquote>
+<p>ということだ。化学肥料に頼らず、有機肥料にも過度に頼らず、<strong>土壌
+微生物が自分で栄養を循環できる状態</strong> を作るのが本来の目標である。</p>
+<h2>8.7 自家採種 ── 種を自分で取る</h2>
+<p><strong>原則:できる限り、種を自家採種する。</strong></p>
+<p>種子は、現代農業のもう一つのボトルネックである。</p>
+<ul>
+<li>F1 ハイブリッド種は、毎年種苗会社から買う必要がある</li>
+<li>多くの主要作物の種子は、グローバル企業が支配している</li>
+<li>種子価格は、肥料と並んで上がっている</li>
+<li>海外依存度が高い</li>
+</ul>
+<p>自家採種は、これを避ける唯一の方法だ。固定種を育て、毎年自分の
+畑から種を取り、来年植える。これを繰り返すと、</p>
+<ul>
+<li>種子コストがゼロになる</li>
+<li>自分の土地・気候に適応した「土地の種」が育つ</li>
+<li>種子供給が途絶えても続けられる</li>
+<li>多様性が地域に残る</li>
+</ul>
+<p>すべての作物で自家採種する必要はない。しかし、主食となる米・麦・
+豆など、量と質の両面で重要な作物は、できる限り自家採種する方向に
+もっていく。</p>
+<p>これは個人だけでなく、地域の <strong>種子バンク</strong> や <strong>種子交換会</strong> と
+組み合わせると強い。</p>
+<h2>8.8 保存・流通 ── 売らずに分ける</h2>
+<p><strong>原則:商品流通だけに依存せず、保存と物々交換のチャネルを持つ。</strong></p>
+<p>工業型農業は、大規模流通(JA、市場、スーパー、商社)を前提にして
+きた。畑から消費地まで、効率的に運ぶシステムができている。</p>
+<p>しかし、微生物型農業は、規模が小さく、収穫が分散しているため、
+大規模流通には載りにくい。代わりに、</p>
+<ul>
+<li><strong>直売所、産直市、CSA(community-supported agriculture)</strong> で売る</li>
+<li><strong>保存食</strong>(漬物、乾物、発酵食品、味噌、醤油)に加工する</li>
+<li><strong>物々交換、家族・近所への分配</strong> で消費する</li>
+<li><strong>オンライン直販</strong>(自分のサイト、SNS、定期便)で全国に届ける</li>
+</ul>
+<p>これらのチャネルは、商品流通に乗らない小規模生産にとって、生きる
+道である。</p>
+<p>そしてこれは、近隣との関係、家族との関係、地域コミュニティとの
+関係を <strong>強化する効果</strong> も持つ。経済的にも、社会的にも、リスクを
+分散することになる。</p>
+<h2>シリーズの結論 ── 経済が農法を決めた</h2>
+<p>ここまで、8 章にわたって見てきた。</p>
+<p>最初に提示した命題に戻ろう。<strong>経済が農法を決める</strong>。</p>
+<p>化学肥料が安かった時代、工業型農業が成立した。<strong>安い肥料が、
+あの農法を可能にしていた</strong>。</p>
+<p>化学肥料が高くなる時代、工業型農業は成立しない。<strong>高い肥料が、
+別の農法に移ることを強いる</strong>。</p>
+<p>そしてその「別の農法」とは、</p>
+<ul>
+<li>不耕起、裸地禁止、多様性確保、無除草</li>
+<li>化学肥料・農薬を使わない</li>
+<li>土壌微生物に栄養循環を任せる</li>
+<li>自家採種、保存と分配で流通リスクを下げる</li>
+</ul>
+<p>という、福岡正信の自然農法と、Christine Jones の土壌科学と、Gabe
+Brown の再生農業が、それぞれの言語で同じことを言ってきた農法に
+収束する。</p>
+<p>これは:</p>
+<ul>
+<li><strong>思想</strong> が選んだ道ではない</li>
+<li><strong>倫理</strong> が選んだ道でもない</li>
+<li><strong>政府</strong> が選ばせた道でもない</li>
+<li><strong>市場・物理・生物学</strong> が、消去法で残した道である</li>
+</ul>
+<blockquote>
+<p>自然農法に行くべきだから、行くのではない。
+化学肥料が買えなくなるから、行かざるを得ない。
+自然農法は、来たる時代の <strong>唯一成立する農法</strong> である。</p>
+</blockquote>
+<p>これがこのシリーズの結論である。</p>
+<h2>終わりに ── 何から始めるか</h2>
+<p>最後に、読者がこの記事の後に取れる行動を、いくつか挙げておく。</p>
+<p><strong>家庭レベル</strong></p>
+<ul>
+<li>ベランダで小さくハーブから始める</li>
+<li>コンポストを始める(生ごみ・落ち葉)</li>
+<li>食料品の支出と外国依存度を意識して買い物する</li>
+</ul>
+<p><strong>小規模・副業レベル</strong></p>
+<ul>
+<li>市民農園・貸し農園で 1〜数畝(うね)を借りる</li>
+<li>福岡式・自然農法・パーマカルチャー等を学ぶ(本、講座、見学)</li>
+<li>不耕起での栽培を試す</li>
+</ul>
+<p><strong>専業・本格レベル</strong></p>
+<ul>
+<li>一反規模での自然農・再生農業を 5 年計画で立ち上げる</li>
+<li>既存の慣行農法から、段階的に化学肥料依存を減らす</li>
+<li>地域の自然農グループ・有機農家ネットワークに参加する</li>
+</ul>
+<p><strong>社会・政策レベル</strong></p>
+<ul>
+<li>微生物型農業を支える小さな地域インフラ(種子バンク、流通網、
+教育機関)を作る、または応援する</li>
+<li>食料・農業政策の議論に、微生物型の視点を持ち込む</li>
+<li>子どもの教育、企業研修、福祉の場に農業体験を組み込む</li>
+</ul>
+<p>すべて、いまから始められる。
+そして、いまから始めなければ、間に合わない。</p>
+<p><strong>経済が、農法を決めた。</strong>
+<strong>新しい時代の、新しい農法は、もう始まっている。</strong></p>
+<hr />
+<p>このシリーズを読んでくださった方へ。
+プロローグから第8章まで、お付き合いいただきありがとうございました。</p>
+<p>aiseed.dev は、AI ネイティブな働き方と、自然と協働する農業 ──
+その両方を、これからも発信していきます。</p>
+
+  </article>
+
+  <!-- COLOPHON -->
+  <footer class="colophon">
+    <div class="colophon-mark">§</div>
+    自然農法シリーズ · 第8章<br>
+    Tokushima · 2026.05.13<br>
+    <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a>
+  </footer>
+
+</div>
+
+</body>
+</html>

@@ -49,14 +49,27 @@ A structure of three stacked Widgets. Each one runs independently and has its ow
 
 ### Language and Framework
 
-This book recommends **Python + Flet** (Flutter-based, callable from Python). No Dart/Flutter setup required, runs as fast as possible.
+This book recommends **Python + Flet** (Flutter-based, callable from Python).
+No Dart / Flutter setup required, runs as fast as possible.
+
+For Python package management we use **`uv`** (covered in Chapter 16).
+It's 10–100× faster than `pip` + `venv`, and **projects are far more
+reproducible**. Instead of `requirements.txt`, use `pyproject.toml` plus
+`uv.lock`.
 
 ```bash
-sudo apt install python3-pip python3-venv
-python3 -m venv ~/envs/flet
-source ~/envs/flet/bin/activate
-pip install flet
+# Install uv (one-time)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Create the project and add Flet
+mkdir ~/Projects/my-dashboard && cd ~/Projects/my-dashboard
+uv init
+uv add flet
 ```
+
+This produces `pyproject.toml`, `uv.lock`, and `.venv/` automatically.
+Moving to another PC takes just `git clone && uv sync` — **two lines
+for full reproduction**.
 
 ## Section 2 — Decompose into Widgets
 

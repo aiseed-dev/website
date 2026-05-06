@@ -28,43 +28,88 @@ When you need it, come back, read the relevant section, and open Claude Code. **
 
 ## Section 1 — Python (Going Deeper)
 
-### Managing Multiple Virtual Environments
+### This Book Picks `uv`
 
-If you'll run multiple Python projects on one PC, the modern combination is `uv` or `pipx` rather than `venv` alone.
+For Python package management we standardize on **`uv`** (Astral, written
+in Rust). It's 10–100× faster than `pip` + `venv`, drops `requirements.txt`
+in favor of `pyproject.toml` + `uv.lock` for **fully reproducible**
+projects. It competes with `poetry`; we choose `uv` because it's
+**faster and simpler**. Chapters 14 and 15 all assume `uv`.
 
 ```bash
-# uv (a fast Python package manager)
+# One-time
 curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Per project
-cd ~/Projects/some-project
-uv venv
-uv pip install requests
 ```
 
-### pipx: CLI Tools in Isolated Environments
-
-For Python-written CLI tools (`pre-commit`, `httpie`, `ansible`), install with `pipx`. It doesn't pollute the system Python.
+### The Project Loop
 
 ```bash
-sudo apt install pipx
-pipx install httpie
-pipx install pre-commit
+# Create
+uv init my-project && cd my-project
+
+# Add dependencies (auto-updates pyproject.toml and uv.lock)
+uv add requests pandas
+uv add --dev pytest ruff
+
+# Run
+uv run python -m my_project
+uv run pytest
+
+# Move to another machine
+git clone <repo> && cd <repo> && uv sync   # ← full reproduction
 ```
 
-### Data Processing in Japanese
+### CLI Tools: `uv tool install`
 
-Install pandas, polars, numpy via pip rather than apt — you'll get the latest.
+Python-written CLIs (`ruff`, `httpie`, `pre-commit`, `yt-dlp`, etc.) are
+**not project dependencies and live in their own stream**. `uv tool` is the
+upgraded successor to `pipx`.
 
-- Large CSVs → polars (faster than pandas).
+```bash
+uv tool install ruff
+uv tool install httpie
+uv tool install pre-commit
+
+# List and upgrade
+uv tool list
+uv tool upgrade --all
+```
+
+`apt install pipx` works too, but **knowing one tool (uv) keeps the head
+lighter**.
+
+### Python Itself, Also Managed by `uv`
+
+`pyenv` is no longer needed.
+
+```bash
+uv python install 3.12
+uv python install 3.13
+uv python list
+
+# Pin Python 3.13 for this project
+echo '3.13' > .python-version
+uv sync   # installs it if missing
+```
+
+### Data Processing
+
+Install pandas, polars, numpy via `uv add` rather than apt — you get the
+latest.
+
+- Large CSVs → **polars** (faster than pandas).
 - Statistics → scipy, statsmodels.
 - Visualization → matplotlib, plotly.
 
-### Ask Claude ①: A Modern Python Stack
+### Ask Claude ①: A Modern Python Project Skeleton
 
 > I write Python for [data wrangling / web scraping / GUI / ML / scripting].
-> Tell me the recommended toolchain as of 2026 (package manager, editor extensions, type checker, formatter, test framework).
-> Include the reasoning for which of pip, poetry, uv, and rye to pick.
+> Assuming `uv`, scaffold a project with:
+> (1) `pyproject.toml` (dependencies, dev-deps, scripts entry point)
+> (2) `.python-version` and `uv.lock`
+> (3) configuration for `ruff` and `pytest`
+> (4) a minimal `tests/` example
+> (5) `README.md` showing `git clone && uv sync && uv run` flow
 
 ## Section 2 — Flutter / Dart
 
@@ -243,23 +288,30 @@ As discussed in [Chapter 15, "Security Design in the Mythos Era"](/en/insights/s
 
 ### Isolate Per Project
 
-- Python: `uv venv` or `venv`.
+- Python: `uv` (project-local `.venv/`).
 - Node: `fnm`.
 - Rust: `rustup` toolchains.
 - Docker: per-container.
 
-**Don't install directly into the system Python or system npm.** Each project gets its own isolated environment, so when one breaks, the rest don't go with it.
+**Don't install directly into the system Python or system npm.** Each
+project gets its own isolated environment, so when one breaks, the rest
+don't go with it.
 
 ### Throw Away Environments You Don't Use
 
-Periodically, prune projects and language environments you don't use. This is the biggest cause of disk bloat.
+Periodically, prune projects and language environments you don't use.
+This is the biggest cause of disk bloat.
 
 ```bash
 # Wipe all node_modules in one shot
 find ~/Projects -name node_modules -type d -exec rm -rf {} +
 
-# Inventory Python virtualenvs
-du -sh ~/envs/*
+# uv cache hygiene (per-project .venv lives in the project itself)
+uv cache prune
+du -sh ~/.cache/uv ~/.local/share/uv
+
+# Flatpak runtime cleanup
+flatpak uninstall --unused -y
 ```
 
 ### Ask Claude ⑥: Environment Diet
@@ -289,7 +341,7 @@ The biggest goal of Chapter 16 is **to have this table in your head**. Mastery o
 
 What you did in this chapter:
 
-1. Sorted out the modern Python stack (uv, pipx).
+1. Standardized the Python stack on `uv` (project + tools + Python versions).
 2. Got the position of Flutter / Dart.
 3. Updated the 2026 view of Node.js / TypeScript.
 4. Confirmed where Rust and Go each shine.

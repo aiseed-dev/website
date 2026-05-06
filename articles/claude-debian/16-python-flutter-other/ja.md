@@ -25,45 +25,88 @@ cta_btn2_link: /claude-debian/15-claude-development/
 
 必要になったときに戻ってきて、該当部分を読み、Claude Code を開く。**「覚える」ことを目的にしない**。
 
-## 第一節 Python（深掘り）
+## 第一節 Python(深掘り)
 
-### 仮想環境の複数管理
+### 本書は `uv` を採用する
 
-一つのPCで複数のPythonプロジェクトを動かすなら、`venv` より `uv` か `pipx` の組み合わせが今風。
+Python のパッケージ管理は **`uv`(Astral 製、Rust 実装)** で統一する。
+`pip` + `venv` 比 10〜100 倍速く、`requirements.txt` を捨てて
+`pyproject.toml` + `uv.lock` で **完全な再現性** が出る。`poetry` の
+代替候補だが、**uv の方が速くシンプル**。第 14 章・第 15 章のすべてが
+uv 前提で動く。
 
 ```bash
-# uv（高速なPythonパッケージマネージャ）
+# 初回のみ
 curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# プロジェクトごとに
-cd ~/Projects/some-project
-uv venv
-uv pip install requests
 ```
 
-### pipx：コマンドラインツールを独立環境で
-
-Pythonで書かれたCLIツール（`pre-commit`、`httpie`、`ansible`）は `pipx` で入れる。システムのPythonを汚さない。
+### プロジェクトの基本ループ
 
 ```bash
-sudo apt install pipx
-pipx install httpie
-pipx install pre-commit
+# 新規作成
+uv init my-project && cd my-project
+
+# 依存追加(pyproject.toml と uv.lock が自動更新)
+uv add requests pandas
+uv add --dev pytest ruff
+
+# 実行
+uv run python -m my_project
+uv run pytest
+
+# 別 PC への移動
+git clone <repo> && cd <repo> && uv sync   # ← これだけで完全再現
+```
+
+### CLI ツールは `uv tool install`
+
+Python で書かれた CLI ツール(`ruff`、`httpie`、`pre-commit`、`yt-dlp` 等)は
+**プロジェクト依存ではないので別系統で管理**する。`pipx` の上位互換が
+**`uv tool`**。
+
+```bash
+uv tool install ruff
+uv tool install httpie
+uv tool install pre-commit
+
+# 一覧と更新
+uv tool list
+uv tool upgrade --all
+```
+
+`apt install pipx` も使えるが、**uv 一本で覚えた方が頭が軽い**。
+
+### Python 自体のバージョン管理も `uv`
+
+`pyenv` も不要になった。
+
+```bash
+uv python install 3.12
+uv python install 3.13
+uv python list
+
+# プロジェクトで Python 3.13 を要求
+echo '3.13' > .python-version
+uv sync   # 必要なら自動でインストール
 ```
 
 ### 日本語のデータ処理
 
-pandas、polars、numpy は apt より pip で最新を入れる。
+pandas、polars、numpy は apt より `uv add` で最新を入れる。
 
-- 大容量CSV → polars（pandasより速い）
+- 大容量 CSV → **polars**(pandas より速い)
 - 統計 → scipy、statsmodels
 - 可視化 → matplotlib、plotly
 
-### Claudeに聞いてみよう①：Pythonの現代的スタック
+### Claudeに聞いてみよう①:現代的な Python プロジェクトの叩き台
 
-> 私は Python で〔データ整理／Webスクレイピング／GUI／ML／スクリプト〕を書きます。
-> 2026年時点の推奨ツールチェーン（パッケージマネージャ、エディタ拡張、型チェック、フォーマッタ、テストフレームワーク）を教えてください。
-> pip、poetry、uv、rye のどれを選ぶべきかも理由付きで。
+> 私は Python で〔データ整理 / Web スクレイピング / GUI / ML / スクリプト〕を
+> 書きます。`uv` を前提に、次を含むプロジェクトの雛形を作ってください:
+> (1) `pyproject.toml`(依存・dev 依存・scripts エントリ)
+> (2) `.python-version` と `uv.lock`
+> (3) `ruff` と `pytest` の設定
+> (4) `tests/` ディレクトリの最小例
+> (5) `README.md` に `git clone && uv sync && uv run` の手順
 
 ## 第二節 Flutter / Dart
 
@@ -242,23 +285,29 @@ psql
 
 ### プロジェクトごとに隔離
 
-- Python：`uv venv` か `venv`
-- Node：`fnm`
-- Rust：`rustup` のtoolchain
-- Docker：コンテナ単位
+- Python:`uv`(プロジェクト直下の `.venv/`)
+- Node:`fnm`
+- Rust:`rustup` の toolchain
+- Docker:コンテナ単位
 
-**システムのPythonやnpmに直接インストールしない**。プロジェクトごとに独立した環境を持つことで、一つが壊れても他に波及しない。
+**システムの Python や npm に直接インストールしない**。プロジェクトごとに
+独立した環境を持つことで、一つが壊れても他に波及しない。
 
 ### 使っていない環境は消す
 
-使わないプロジェクト、使わない言語環境は、定期的に掃除する。ディスクが膨れる最大要因はこれだ。
+使わないプロジェクト、使わない言語環境は、定期的に掃除する。
+ディスクが膨れる最大要因はこれだ。
 
 ```bash
 # node_modules 一括削除
 find ~/Projects -name node_modules -type d -exec rm -rf {} +
 
-# Python仮想環境の棚卸し
-du -sh ~/envs/*
+# uv のキャッシュ整理(`.venv` は各プロジェクト内なので Project ごと消せばよい)
+uv cache prune
+du -sh ~/.cache/uv ~/.local/share/uv
+
+# Flatpak Runtime の整理
+flatpak uninstall --unused -y
 ```
 
 ### Claudeに聞いてみよう⑥：環境ダイエット
@@ -288,7 +337,7 @@ du -sh ~/envs/*
 
 この章でやったこと：
 
-1. Python の現代的スタック（uv, pipx）を整理
+1. Python の現代的スタックを `uv` 一本に統一(プロジェクト管理 + tool + Python バージョン)
 2. Flutter / Dart の位置づけを把握
 3. Node.js / TypeScript の 2026年版を更新
 4. Rust / Go の得意分野を確認

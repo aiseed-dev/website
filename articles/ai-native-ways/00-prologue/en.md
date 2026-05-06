@@ -108,6 +108,36 @@ Markdown-ify a decade of internal documents, and Claude can analyze the organiza
 
 Python and text are not just about saving money. They are the toolkit that lets **individuals and small teams produce work that previously required large corporations or expert teams.**
 
+## Another purpose — autonomy, decentralization, diversity
+
+There is a second purpose to these practices, beyond efficiency.
+
+"Everyone using the same AI is more efficient" — society today reads
+AI primarily as a **centralization-and-efficiency tool**. Microsoft 365
+Copilot, ChatGPT Enterprise, Google Workspace AI — that's the direction
+the industry pushes. If a whole organization rides on the same vendor's
+AI, you do get a unified front. Support costs drop.
+
+But when that AI is wrong, **the whole organization is wrong in the same
+direction**. When the data policy changes, everyone's data flows in the
+same direction. When the price goes up, everyone pays the same increase.
+When the standard of judgment is uniformized, **diversity disappears
+from the organization**. The Mythos-era single point of failure has
+everyone riding it at once.
+
+This book's practices go the other way. **Each person holds their own
+tools, their own data, their own judgment.** AI is used, but as **an
+extension of yourself** — not as an extension of a vendor. Markdown is
+yours, CSV is yours, Python scripts are yours, decisions are yours.
+
+This is not a story about efficiency. It is a story about **individual
+autonomy, organizational diversity, and societal resilience**. With
+distribution, when one falls others keep moving. Each person grows their
+own judgment in their own context. **Diversity itself is strength.**
+
+> AI-native tools are not only tools for efficiency. They are tools for
+> **individual autonomy and societal diversity** as well.
+
 ## Closing
 
 Paperwork runs on Office, business systems on Java and C#, but AI runs on Python and text.

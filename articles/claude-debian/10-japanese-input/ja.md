@@ -160,18 +160,32 @@ Fcitx5 設定 → Mozc → プロパティ → 入力補助：予測入力のON/
 
 ほぼ問題なく動く。もし変換候補が出ない、再変換できないという症状があれば、ブラウザを一旦再起動。
 
-### VSCode
+### Zed
 
-VSCodeは Electron ベースで、古いバージョンでは日本語入力に問題があった。最新版（2024以降）では改善。
+Rust + GPU レンダリングで、IME 連携は **追加設定なしで素直に動く**
+ことが多い。日本語変換中の inline preedit が出ない場合は Zed を一度
+再起動するか、`fcitx5-configtool` で「Wayland: 共有入力状態」を確認。
 
-```bash
-# Flatpak版よりaptかMicrosoft公式リポジトリが推奨
-# Claudeに最新のインストール方法を聞く
-```
+### Neovim(ターミナル内)
 
-### JetBrains系（IntelliJ、PyCharm等）
+ターミナル経由なので IME はターミナルエミュレータに従う。
+**コードを書く時は IME を OFF、コメントを書く時だけ ON** が定石。
+`<C-^>` で組み込み IME(`set keymap=japanese-kana` 等)に切り替える
+方法もあるが、本書では推奨しない。
 
-JDKとの相性で、入力位置がずれることがある。
+### PyCharm Community(JetBrains 系)
+
+JDK との相性で、変換候補ウィンドウの位置が稀にずれることがある。
+最新版で大半は解消済み。改善しない場合は **JetBrains 公式の説明** に
+従って `fcitx5-frontend-gtk3` の確認や JetBrains Runtime のフラグを設定。
+
+### Flatpak アプリ全般
+
+Flatpak アプリで日本語入力が効かない場合、**サンドボックスから IME に
+アクセスできていない**ことが多い。Flatseal で次を許可:
+
+- `Filesystem`: `xdg-config/fcitx5:ro`(または `Other files: ~/.config/fcitx5:ro`)
+- `Sockets`: `Wayland`、`Fallback to X11`
 
 ### Claudeに聞いてみよう③：アプリ別挙動の確認
 

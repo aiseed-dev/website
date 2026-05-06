@@ -105,9 +105,10 @@ cta_btn2_link: /claude-debian/20-community/
 
 同僚が嘆いているところから入る。
 
-- 「Windows Updateで再起動待ちが長い」 → Debianなら短い
-- 「Office 365高い」 → LibreOfficeで十分な用途もある
-- 「古いPCが捨てられない」 → Debianで延命
+- 「Windows Update で再起動待ちが長い」 → Debian なら短い
+- 「Office 365 高い」 → **書く中身を Markdown にすれば Word は要らない、必要な時だけ pandoc で .docx に**
+- 「Excel が遅い、マクロが壊れる」 → **CSV + Python(pandas)で計算は数秒、コードがそのまま来月も使える**
+- 「古い PC が捨てられない」 → Debian で延命
 
 自分の体験として話す。「私はこうしたら解決した」と、押し付けず。
 

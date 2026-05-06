@@ -86,10 +86,19 @@ When someone sees your results and says "I want to try too," apply Chapter 21's 
 Three Debian users inside the company makes an informal group possible.
 
 - 15 minutes at lunch once a week.
-- A Slack or Element room.
+- **An Element / Matrix room** (Slack works too, but this book recommends
+  Element: self-hostable, E2EE, federated, you own the data — all of
+  which fit a Mythos-era "support from below").
 - Share trouble; accumulate know-how.
 
 This becomes the internal "support from below."
+
+> **Why Element over Slack**
+> Slack is convenient, but the data lives under a cloud vendor's control.
+> Element backed by a self-hosted Matrix server gives you **message
+> history and search you own**. The Linux client installs cleanly via
+> Flatpak; the same client can carry business messages and family chat
+> on one machine. And there's no 90-day free-tier message expiry.
 
 ## Section 4 — Relationship with the IT Department
 

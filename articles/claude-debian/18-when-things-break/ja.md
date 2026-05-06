@@ -39,8 +39,11 @@ cta_btn2_link: /claude-debian/17-updates-maintenance/
 # コマンドラインから起動して、エラーメッセージを見る
 アプリ名
 
-# 例：VSCodeが落ちるなら
-code --verbose
+# 例:Zed が落ちるなら
+zed --foreground
+
+# Flatpak アプリ(例: Chrome)なら
+flatpak run --verbose com.google.Chrome
 ```
 
 ### よくある原因

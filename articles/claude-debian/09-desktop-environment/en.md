@@ -31,6 +31,25 @@ In Chapter 6 you picked one of GNOME / KDE / Xfce / LXQt, and in Chapter 7 you i
 
 If it doesn't fit, switch. Debian even allows multiple DEs to coexist (not recommended, but possible).
 
+### The AI-Native Lens
+
+As Chapter 6 said, **the real battlefield is terminal + browser + editor.**
+The DE only needs to do three things:
+
+1. Lay out windows (tiling / floating).
+2. Launch apps (launcher / menu).
+3. Run the system tray (IME, network, volume, notifications).
+
+That much is all you need — and a **thin DE like Xfce or LXQt covers it
+completely.** People who insist on "I can't work without GNOME / KDE"
+typically have **work whose substance has become DE-dependent** (the
+visual chrome of the screen has bled into the job).
+
+In this book's stance, **with Zed / Neovim at the center and browser +
+terminal carrying the day, the DE can stay minimal.** Combined with the
+three editors of Chapter 13 (Zed / Neovim / PyCharm), a thin DE is
+fine.
+
 ### Ask Claude ①: Sort Through a Week of Usage
 
 > I've used [DE name] for a week. The following are bothering me:

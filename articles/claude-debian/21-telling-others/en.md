@@ -106,7 +106,8 @@ A company PC environment is, often, not yours to change. **Conversations about m
 Start where a colleague is grumbling.
 
 - "Windows Update reboot waits are too long" → faster on Debian.
-- "Office 365 is expensive" → LibreOffice is enough for some uses.
+- "Office 365 is expensive" → **switch the content to Markdown and Word becomes optional — convert to .docx with pandoc only when you have to.**
+- "Excel is slow, the macros keep breaking" → **CSV + Python (pandas) does the math in seconds, and the code keeps working next month too.**
 - "I can't part with my old PC" → extend its life with Debian.
 
 Speak as your own experience. "Doing this resolved it for me," without forcing.

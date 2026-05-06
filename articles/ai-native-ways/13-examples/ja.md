@@ -1,7 +1,7 @@
 ---
 slug: examples
-number: "12"
-title: 実例集 ── 11 のウォークスルー
+number: "13"
+title: 実例集 ── 12 のウォークスルー
 subtitle: 全章のコードと出力を、最初から最後まで
 description: 各章の主張を、実際のコマンド・コード・出力で確認する。Word の議事録を Markdown 化、100 個の Excel を 30 秒で集計、PL/SQL を並行稼働で書き換え、AI エージェントを Python に凍結する ── 11 のウォークスルーを、自分の手で動かせる形でまとめた。
 date: 2026.05.02
@@ -1190,7 +1190,7 @@ April 2026 Usage:
 
 ## 実例 11: 1 人 + AI で SaaS を 1 ヶ月でローンチ
 
-→ 第11章「[1人+AIで作る](/ai-native-ways/one-plus-ai/)」の実証
+→ 第12章「[1人+AIで作る](/ai-native-ways/one-plus-ai/)」の実証
 
 ### Setup
 
@@ -1421,4 +1421,4 @@ $ curl -s https://minutes.example.com/admin/stats | jq
 ## 関連記事
 
 - [序章: 事務処理はOffice、業務ソフトはJava/C#、しかしAIはPythonとテキスト](/ai-native-ways/prologue/)
-- [第11章: 1人+AIで作る、新しい仕事の単位](/ai-native-ways/one-plus-ai/)
+- [第12章: 1人+AIで作る、新しい仕事の単位](/ai-native-ways/one-plus-ai/)

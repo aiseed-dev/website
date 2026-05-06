@@ -153,6 +153,52 @@ These mean the Mythos-era vulnerabilities **are built into the center of
 your work**. The structural risks the Structural Analysis series called
 "Mythos Has Arrived" trigger every time you open Word.
 
+### Why this combination is the worst
+
+Three layers structure the danger of Office + AI agents.
+
+**1. The decision threshold is the lowest.**
+
+It isn't evaluating a new system, isn't replacing existing software.
+**You change a subscription plan**, and the deployment is done — a
+30-second admin-console operation puts AI across the whole organization.
+**A heavy organizational decision slips through under a light procedural
+cover.**
+
+**2. The footprint is the widest.**
+
+The AI features in Slack or Notion are scoped to the team using them.
+Office's AI is different — **it enters every department's every
+workflow at the same time**. Sales, accounting, HR, engineering —
+open Word and the same AI is right there. When an incident strikes,
+the damage is company-wide.
+
+**3. The capability erosion is the deepest.**
+
+Writing email, building decks, organizing data — these aren't a
+specific specialist tool like an accounting package or CAD. They are
+**the basic motions of an organization's act of thinking**.
+
+When AI takes over here, it's not a specialty that erodes — it's
+**the act of thinking itself**. New hires never go through "the practice
+of thinking" and start out as reviewers of AI output. Five years on,
+no one in the organization can decide anything without AI. **The
+organization loses its adaptive capacity and its talent-development
+opportunities at the same time.**
+
+And the standard of judgment itself migrates. What is a good email,
+what is the salient point, which numbers matter — these criteria
+properly belong to the organization, **grown from its industry, its
+culture, its relationships with customers**. Office-embedded AI
+smooths those judgments through **Microsoft's designed frame**. The
+standard of a good email, the choice of salient points, the numbers
+in focus — all of them get decided by **the vendor's training data
+and evaluation functions**.
+
+> Short-term cost savings, traded for long-term autonomy and judgment
+> sovereignty. By the time you notice, the organization is running as
+> **an extension of Microsoft.**
+
 ## Use AI Inside a Sandbox
 
 The right design is the opposite.

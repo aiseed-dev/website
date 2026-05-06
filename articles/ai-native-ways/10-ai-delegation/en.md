@@ -199,6 +199,26 @@ and evaluation functions**.
 > sovereignty. By the time you notice, the organization is running as
 > **an extension of Microsoft.**
 
+### Cutting headcount is like buying star players
+
+Bringing in Office + AI agents in order to reduce headcount is like a
+**sports team giving up on player development and importing star
+players from outside**. On paper the squad is stronger. You win the
+next game. But **the development pipeline is gone**.
+
+What AI substitutes for is task execution — **not the organization's
+judgment capability**. New hires writing email, assembling decks,
+arranging data and reading meaning out of it — all of this looks like
+"task execution," but **the capacity to judge was being formed there**.
+The moment you replace it with AI, that circuit disappears.
+
+And when the AI vendor has an outage, raises prices, or changes its
+data policy, **there is no one inside the organization who can judge**.
+Whether to switch AI providers, whether to pay Microsoft's quoted price —
+the people on the ground have no material with which to make the call.
+
+> Short-term cost savings invite the long-term collapse of organizational capability.
+
 ## Use AI Inside a Sandbox
 
 The right design is the opposite.

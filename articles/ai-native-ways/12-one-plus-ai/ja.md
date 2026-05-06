@@ -1,14 +1,14 @@
 ---
 slug: one-plus-ai
-number: "11"
+number: "12"
 title: 1人+AIで作る、新しい仕事の単位
 subtitle: 組織の最小単位が変わる
 description: AI ネイティブな道具を揃えると、仕事の最小単位が「1 人 + AI」になる。10 人の組織が必要だった仕事を、1 人 + Claude が完結させる。組織は不要になるのではなく、構成が変わる。これが構造分析シリーズの結論であり、AI ネイティブな仕事の作法の到達点だ。
 date: 2026.05.02
-label: AI Native 11
+label: AI Native 12
 title_html: 仕事の最小単位は、<br><span class="accent">1 人 + AI</span>。
-prev_slug: ai-delegation
-prev_title: AIに任せる仕事を見極める
+prev_slug: verify-narratives
+prev_title: AIで物語を検証する
 next_slug: examples
 next_title: 実例集 ── 11 のウォークスルー
 ---

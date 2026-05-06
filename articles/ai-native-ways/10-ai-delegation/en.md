@@ -10,8 +10,8 @@ label: AI Native 10
 title_html: Use AI as a <span class="accent">colleague</span>.<br>Humans hold the <span class="accent">wheel</span>.
 prev_slug: embedded
 prev_title: "Building Embedded — Think in Python, Have Claude Translate"
-next_slug: one-plus-ai
-next_title: "One Person + AI — The New Unit of Work"
+next_slug: verify-narratives
+next_title: "Verifying Narratives with AI"
 ---
 
 # Knowing What Work to Hand to AI

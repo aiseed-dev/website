@@ -1,6 +1,6 @@
 ---
 slug: examples
-number: "12"
+number: "13"
 lang: en
 title: "Examples — 11 Walkthroughs"
 subtitle: "Code and output for every chapter, end to end"
@@ -977,7 +977,7 @@ Total cost: $4.62
 
 ## Example 11: Launch a SaaS in 1 month, solo
 
-→ Confirms Chapter 11 "[One Person + AI](/en/ai-native-ways/one-plus-ai/)"
+→ Confirms Chapter 12 "[One Person + AI](/en/ai-native-ways/one-plus-ai/)"
 
 ### Setup
 
@@ -1107,4 +1107,4 @@ Each runs in **2 to 30 minutes**. Don't try to read everything first; **pick one
 ## Related
 
 - [Prologue: Office for paperwork, Java/C# for business systems — but AI runs on Python and text](/en/ai-native-ways/prologue/)
-- [Chapter 11: One Person + AI — The New Unit of Work](/en/ai-native-ways/one-plus-ai/)
+- [Chapter 12: One Person + AI — The New Unit of Work](/en/ai-native-ways/one-plus-ai/)

@@ -1,15 +1,15 @@
 ---
 slug: one-plus-ai
-number: "11"
+number: "12"
 lang: en
 title: "One Person + AI — The New Unit of Work"
 subtitle: "The minimum size of an organization changes"
 description: With AI-native tools in place, the minimum unit of work becomes "one person + AI." Work that required a 10-person organization is now completed by one person plus Claude. Organizations don't disappear; their composition changes. This is the conclusion of the structural analysis series and the destination of the AI-native ways of working.
 date: 2026.05.02
-label: AI Native 11
+label: AI Native 12
 title_html: The minimum unit of work is<br><span class="accent">one person + AI</span>.
-prev_slug: ai-delegation
-prev_title: "Knowing What Work to Hand to AI"
+prev_slug: verify-narratives
+prev_title: "Verifying Narratives with AI"
 next_slug: examples
 next_title: "Examples — 11 Walkthroughs"
 ---

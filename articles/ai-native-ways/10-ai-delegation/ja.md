@@ -9,8 +9,8 @@ label: AI Native 10
 title_html: AI を<span class="accent">同僚</span>として使う。<br><span class="accent">運転</span>は人間が握る。
 prev_slug: embedded
 prev_title: 組み込みを作る ── Pythonで考え、Claudeに翻訳させる
-next_slug: one-plus-ai
-next_title: 1人+AIで作る、新しい仕事の単位
+next_slug: verify-narratives
+next_title: AIで物語を検証する
 ---
 
 # AIに任せる仕事を見極める

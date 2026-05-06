@@ -66,7 +66,7 @@ What you can write:
 - Mind maps
 - Architecture diagrams (system layout)
 
-GitHub, Notion, VS Code — most places render Mermaid natively. There is no need to memorize the syntax. **Ask Claude "draw this structure in Mermaid," and it returns the code.** You only need to read it.
+GitHub, Notion, Zed — most places render Mermaid natively. There is no need to memorize the syntax. **Ask Claude "draw this structure in Mermaid," and it returns the code.** You only need to read it.
 
 ## UI and screens in Claude Design
 

@@ -54,7 +54,10 @@ if __name__ == "__main__":
 
 That gives you an app where "running a command makes something happen." No GUI. Easy to test. Easy to debug. Easy for Claude to write.
 
-Once the CLI tool works, you can ship it. Mac/Linux/Windows, all OSes (with Python). You don't even need to host it on the web. `pip install` distributes it.
+Once the CLI tool works, you can ship it. Mac / Linux / Windows, all
+OSes (with Python). You don't even need to host it on the web.
+**`uv tool install <your-tool>`** distributes it (`pip install` works
+too, but this book has standardized on uv — see Chapter 4).
 
 **Many apps need only the CLI.** Processing data, converting files, hitting APIs — these don't need a GUI.
 
@@ -116,7 +119,7 @@ Flutter has higher rendering quality, fewer dependencies, and Dart is easier for
 
 ## How to distribute
 
-CLI tool: PyPI (`pip install`), GitHub releases, your own website.
+CLI tool: PyPI (`uv tool install <name>`, with `pip install` as fallback), GitHub releases, your own website.
 
 Flet app: distributable as a Flet package (build to OS-specific executables). The web build is just hosted on a website.
 
@@ -177,7 +180,7 @@ Development environment disk usage:
 - Flet: Python alone = **~100 MB** (Flutter distribution unpacked only when needed)
 - CLI tool: **20 MB**
 
-CLI tool creation and distribution: 1 hour to write, `pip install` instantly distributes worldwide to Python users. Distributing the same as an "app" requires reviews from 3 App Stores and 2 SDKs. **A 2+ week gap.**
+CLI tool creation and distribution: 1 hour to write, `uv tool install` (or `pip install`) instantly distributes worldwide to Python users. Distributing the same as an "app" requires reviews from 3 App Stores and 2 SDKs. **A 2+ week gap.**
 
 Adding a Flet GUI to existing CLI logic: install Flet, add tens of lines of code, **1 hour**. Rewriting in Flutter: 1 month.
 

@@ -109,6 +109,67 @@ From here, organizations become "devices that bundle one-person + AI units." Eac
 
 This is a completely different shape from the "pyramid organization." A team of 10 becomes 3, with each person plus AI producing equivalent or greater output. **Costs drop, decisions speed up.**
 
+## Centralization vs decentralization — which AI era to choose
+
+"One person + AI" as a unit isn't only an efficiency story. It is one
+of **two paths the AI era can take**.
+
+### The centralized path (what the industry is pushing)
+
+- Everyone uses the same AI (Microsoft 365 Copilot, ChatGPT Enterprise,
+  Google Workspace AI).
+- Everyone runs on the same SaaS (Salesforce, Slack, Notion).
+- Everyone's data accumulates in the vendor's cloud.
+- Standards of judgment come from what the vendor's AI extracts from
+  its training data.
+- "Easy," "uniform," "low-support" — short-term gains are real.
+
+But this path **uniformizes the organization, deepens vendor dependence,
+and seats everyone on the same Mythos-era single point of failure**.
+When one AI is wrong, everyone is wrong in the same direction. When the
+data policy changes, everyone's data flows the same way. **Diversity
+disappears.**
+
+### The decentralized path (what this book points to)
+
+- **Each person holds their own tools** (Markdown / CSV / Python / Claude Code).
+- **Each person holds their own data** (local files, history in git).
+- **Each person holds their own judgment** (AI proposes; humans decide).
+- Tools take different shapes per industry, occupation, region, culture,
+  temperament — **everyone's setup is a little different**.
+- Vendor dependence is minimized to what's strictly required (an API
+  call to Claude, swappable to another provider any time).
+
+This path **loses to centralization on short-term efficiency**. Learning
+costs rise. There's no uniformity. You handle support yourself.
+
+But long-term, it is decisively stronger. **When one falls, the others
+keep moving.** When a vendor falls, your data and tools are still in
+your hands. Industry- and culture-specific judgments grow without
+being homogenized. **Diversity itself is strength.**
+
+### Why "one person + AI" *is* decentralization
+
+"One person + AI replaces the organization" can sound like an efficiency
+talking point. The book's meaning is different.
+
+**Better one thousand autonomous "one person + AI" units than one
+centralized organization of one thousand.** Same productivity, very
+different shape.
+
+- One large company falters → 1,000 livelihoods waver in unison.
+- 1,000 autonomous "one + AI" units → if one falls, the others are
+  unharmed.
+
+This sits cleanly with the structural-analysis arguments
+(["Subtraction Design"](/en/insights/subtraction-design/),
+["Mythos-Era Security Design"](/en/insights/security-design/)).
+**Redundancy, distribution, diversity — these are Mythos-era survival
+strategies.**
+
+> "One person + AI" not for efficiency. **"One person + AI" for
+> autonomy and diversity.** That is the heart of this book's claim.
+
 ## "Ways of working" change too
 
 When one person + AI is the unit, ways of working change too.
@@ -181,9 +242,21 @@ The effect of paperwork disappearing: of an 8-hour workday, the 4 hours spent on
 
 With AI-native tools in place, the minimum unit of work changes.
 
-One person + AI can do the work that previously required ten. Organizations don't disappear; their structure changes. Ways of working change.
+One person + AI can do the work that previously required ten.
+Organizations don't disappear; their structure changes. Ways of
+working change.
 
-What remains for humans: judgment, context, responsibility, creation, dialogue, trust, embodiment — this is the real work. **Hand processing to AI; humans return to the real work.**
+What remains for humans: judgment, context, responsibility, creation,
+dialogue, trust, embodiment — this is the real work. **Hand processing
+to AI; humans return to the real work.**
+
+And one more thing. This is not a story about efficiency. It is about
+**individual autonomy and societal diversity**. There is a path on
+which everyone rides the same centralized AI — the industry pushes that
+path — but this book chooses the opposite. Each person holds their own
+tools, their own data, their own judgments, and grows judgment
+specific to their own context. **Diversity itself is the Mythos era's
+strength.**
 
 This is the conclusion of the "AI-Native Ways of Working" series.
 

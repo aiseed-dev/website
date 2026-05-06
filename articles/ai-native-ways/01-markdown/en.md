@@ -111,7 +111,7 @@ Formatting decorates the present. Structure crosses time.
 
 "Pull the decisions from last month's meeting notes" — opening 50 Word files and extracting by hand: half a day. With Markdown, hand it all to Claude; the answer returns in seconds.
 
-Word launch: 3–10 seconds. Opening `*.md` in VS Code: 0.5 seconds. Opening 30 times a day saves more than 30 hours per year.
+Word launch: 3–10 seconds. Opening `*.md` in Zed: 0.3 seconds. Opening 30 times a day saves more than 30 hours per year.
 
 Token consumption of a Word file: 5,000 characters consume about 8,000 tokens (formatting metadata inflates it). The same content in Markdown: about 4,000 tokens. **If you keep handing files to Claude, dropping formatting drops cost.**
 

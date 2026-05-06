@@ -434,6 +434,35 @@ This structure has played out many times before:
 
 Agent-ification is **just the latest form of the same pattern.**
 
+### And society loses its diversity
+
+The cost of "easy" isn't only an individual matter.
+
+When everyone rides the same centralized AI, **standards of judgment
+get uniformized.** What counts as a good email, what's the salient
+point, which numbers matter — all of these become controlled by the
+vendor's training data and evaluation functions. The diversity of
+judgment that grew per organization, per industry, per region, per
+culture — **disappears.**
+
+At the level of society, **diversity is strength.**
+
+- When one AI develops a bias, another judgment lineage notices.
+- When one industry's AI breaks, knowledge from another industry helps
+  recover.
+- When one region's cultural judgment is suppressed, another region's
+  judgment still stands.
+
+**With everyone on the same AI, this mutual correction vanishes.**
+The Mythos-era single point of failure shows up not as a technical
+outage, but as the homogenization of judgment itself.
+
+Going along with agent-ification is, beyond personal autonomy, a trade
+that exchanges **the diversity and resilience of society** for ease.
+Chapter 11 covers this in depth, but this is why the book pushes
+"one person + AI" — not for efficiency, but **for autonomy and
+diversity.**
+
 ### Telling "convenience" from "dependency"
 
 So: separate convenience from dependence.

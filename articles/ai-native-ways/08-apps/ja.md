@@ -53,7 +53,10 @@ if __name__ == "__main__":
 
 これで「コマンドを実行すると何かが起きる」アプリができる。GUI は無い。テストしやすい。デバッグしやすい。Claude が書きやすい。
 
-CLI ツールが正しく動くようになったら、それで配布できる。Mac/Linux/Windows、すべての OS で動く(Python があれば)。Web からダウンロードしてもらう必要すらない。`pip install` で配れる。
+CLI ツールが正しく動くようになったら、それで配布できる。Mac / Linux /
+Windows、すべての OS で動く(Python があれば)。Web からダウンロード
+してもらう必要すらない。**`uv tool install <あなたのツール>`** で
+配れる(`pip install` でも動くが、本書は uv を採用している ── 第4章参照)。
 
 **多くのアプリは、CLI で十分**だ。データを処理する、ファイルを変換する、API を叩く ── これらは GUI が無くても困らない。
 
@@ -115,7 +118,7 @@ Flutter のほうが描画品質が高く、依存も少なく、Dart は JavaSc
 
 ## 何で配るか
 
-CLI ツール: PyPI(`pip install`)、GitHub リリース、自分の Web サイトで配布。
+CLI ツール: PyPI(`uv tool install <name>` / フォールバックで `pip install`)、GitHub リリース、自分の Web サイトで配布。
 
 Flet アプリ: Flet 単体で配布できる(各 OS の実行ファイルにビルド)。Web 版は Web サイトに置くだけ。
 
@@ -176,7 +179,7 @@ App Store で売りたい(本当に?)と思ったら、第三層に上がる。F
 - Flet: Python 環境だけで **約 100 MB**(Flutter 配布が必要なときのみ展開)
 - CLI ツール: **20 MB**
 
-CLI ツールの作成と配布: 1 時間で書いて、`pip install` で世界中の Python ユーザーに即配布。同じ機能を「アプリ」として配るには、3 つの App Store の審査と 2 つの SDK が要る。**2 週間以上の差**。
+CLI ツールの作成と配布: 1 時間で書いて、`uv tool install`(または `pip install`)で世界中の Python ユーザーに即配布。同じ機能を「アプリ」として配るには、3 つの App Store の審査と 2 つの SDK が要る。**2 週間以上の差**。
 
 CLI で動く処理を Flet で GUI 化する追加コスト: Flet ライブラリのインストールと数十行の追加コード、**1 時間**。Flutter で書き直すなら 1 ヶ月。
 

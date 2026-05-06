@@ -169,7 +169,8 @@ Three or four dependencies:
 - `Pillow` — image processing (OG image generation, if needed)
 - (Mermaid diagrams render in the browser, or use `mermaid-cli` to produce SVG)
 
-`pip install -r requirements.txt` and you are done. There is no `node_modules`.
+`uv add markdown-it-py jinja2 pillow`, then `git clone && uv sync` and
+you are done. No `node_modules`, no `requirements.txt` either.
 
 This site's build script (`tools/build_article.py`) was mostly written by Claude. **You can own your build tool.** Instead of obeying a framework's conventions, write under your own conventions.
 

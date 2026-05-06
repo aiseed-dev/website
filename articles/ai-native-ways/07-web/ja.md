@@ -168,7 +168,8 @@ articles/foo/ja.md  ──→  Python  ──→  html/foo/index.html
 - `Pillow` ── 画像処理(OG 画像生成など、必要なら)
 - (Mermaid 図はブラウザ側でレンダリングするか、`mermaid-cli` で SVG 化)
 
-`pip install -r requirements.txt` で完結。`node_modules` は無い。
+`uv add markdown-it-py jinja2 pillow` → `git clone && uv sync` で完結。
+`node_modules` は無い、`requirements.txt` も要らない。
 
 このサイト ── aiseed.dev ── のビルドスクリプト(`tools/build_article.py`)も、ほとんど Claude が書いた。**ビルドツールは自分の手元に持つ**ことができる時代だ。フレームワークの規約に従うのではなく、自分の規約で書く。
 

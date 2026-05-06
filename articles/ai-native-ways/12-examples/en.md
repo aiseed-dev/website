@@ -646,7 +646,7 @@ print(f"Built: {len(posts)} posts")
 **Step 3: write a post and build**
 
 ```bash
-$ pip install markdown-it-py Jinja2 python-frontmatter
+$ uv add markdown-it-py Jinja2 python-frontmatter
 $ python3 build.py
 Built: 1 posts
 $ time python3 build.py
@@ -754,7 +754,7 @@ if __name__ == "__main__":
 **Step 3: local test**
 
 ```bash
-$ pip install -e .
+$ uv tool install --editable .
 $ photo-sort ~/Pictures/2026/
 Moved 247 photos
 $ ls ~/Pictures/2026/
@@ -764,7 +764,7 @@ $ ls ~/Pictures/2026/
 **Step 4: upload to PyPI**
 
 ```bash
-$ pip install build twine
+$ uv tool install build twine
 $ python3 -m build
 Successfully built photo-sort-0.1.0.tar.gz and photo_sort-0.1.0-py3-none-any.whl
 
@@ -777,7 +777,7 @@ View at: https://pypi.org/project/photo-sort/0.1.0/
 **Step 5: anyone can use it**
 
 ```bash
-$ pip install photo-sort
+$ uv tool install photo-sort
 Successfully installed photo-sort-0.1.0 Pillow-10.4.0
 $ photo-sort ~/Pictures/
 Moved 184 photos
@@ -786,7 +786,7 @@ Moved 184 photos
 ### Result
 
 - CLI to PyPI: 1 hour
-- Distribution: `pip install photo-sort`
+- Distribution: `uv tool install photo-sort` (or `pip install photo-sort`)
 - Cost: zero
 - iOS App equivalent: 1 week + $99/year
 
@@ -926,7 +926,7 @@ Returned `process.py` (60 lines).
 **Step 2: run**
 
 ```bash
-$ pip install anthropic requests
+$ uv add anthropic requests
 $ export ANTHROPIC_API_KEY=sk-ant-...
 $ export SLACK_WEBHOOK=https://hooks.slack.com/...
 

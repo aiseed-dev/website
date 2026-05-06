@@ -40,7 +40,7 @@ You don't have to change everything at once. Move in four stages.
 
 **Stage one: write notes in Markdown**
 
-Meeting notes, personal research, task lists — documents you use alone. Start writing them in Markdown. Make `.md` files in a text editor (VS Code, even Notepad).
+Meeting notes, personal research, task lists — documents you use alone. Start writing them in Markdown. Make `.md` files in a text editor (Zed, even Notepad).
 
 That alone lets you ask AI "summarize this note," "lay out the points." The startup time of opening Word also disappears.
 
@@ -56,11 +56,18 @@ In CSV, you can ask Claude "aggregate this by month," "find the outliers."
 
 Once written, it works next month and the month after. Thirty minutes of work becomes thirty seconds.
 
-**Stage four: leave Office at the entrance and exit**
+**Stage four: keep only a compatibility layer at the boundary**
 
-The organization runs on Word and Excel. When a Word file arrives, convert it to Markdown (ask Claude). When sending back requires Word, convert Markdown to Word.
+The organization runs on Word and Excel. When a Word file arrives,
+convert it to Markdown (ask Claude). When sending back requires Word,
+convert Markdown to Word.
 
-Don't change the organization's rules. **Change only your own substance.** Without anyone noticing, your working time drops dramatically.
+In other words, **Office becomes a tool you "pass through," not "use."**
+Your working surface no longer contains Office. Only the boundary with
+the organization runs a **compatibility layer** (pandoc / Claude /
+LibreOffice). Don't change the organization's rules. **Change only
+your own substance.** Without anyone noticing, your working time drops
+dramatically.
 
 ## A concrete example: the monthly report
 
@@ -133,11 +140,22 @@ Time to summarize one email: reading and extracting the points yourself takes 5 
 
 ## In summary
 
-You don't need to drop Office. Use Office as the converter at the entrance and exit.
+Move office work from Office-centered to Markdown + CSV + Python centered.
 
-Hold the substance in Markdown and CSV. Automate repetitive work with Python. Claude works as a colleague. The organization's rules stay the same.
+The destination is **"Office disappears from your working surface."**
+The boundary with the organization still uses Word / Excel / PowerPoint
+formats — but you are not "using" Office; you are **"passing things
+through" a compatibility layer**. Convert to Markdown at the entrance,
+convert to the requested format at the exit. The substance is
+structured text.
 
-Office work is the easiest occupation to transition to AI-native. You don't need to be technical. **If you can read Markdown, understand CSV, and ask Claude — that is enough.**
+Chapter 11 example-1 (full SaaS), example-2 (sole proprietor's monthly
+cycle), Chapter 07 example-2 (FastAPI business API) — **all complete
+without ever opening Office**. Office work has the same destination.
+
+Office work is the easiest occupation to transition to AI-native. You
+don't need to be technical. **If you can read Markdown, understand CSV,
+and ask Claude — that is enough.**
 
 The next chapter moves to working with business systems. For technical roles.
 

@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-9FLQ963JXM');
+</script>
+
+<title>第3章 工業型農業は成立しない — 自然農法シリーズ | aiseed.dev</title>
+<meta name="description" content="化学肥料を大量に使う工業型農業は、肥料価格が高止まりすると経済的に成立しない。コストは上がる、しかし販売価格は安価な輸入農産物と競争して上げられない。結果、作れば作るほど赤字になる。耕作放棄地が拡大する。これは精神論ではなく、収支計算の話である。">
+<link rel="canonical" href="https://aiseed.dev/natural-farming/industrial-farming-fails/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/natural-farming/industrial-farming-fails/">
+
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/natural-farming/industrial-farming-fails/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI時代の暮らし">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第3章 工業型農業は成立しない">
+<meta property="og:description" content="化学肥料を大量に使う工業型農業は、肥料価格が高止まりすると経済的に成立しない。コストは上がる、しかし販売価格は安価な輸入農産物と競争して上げられない。結果、作れば作るほど赤字になる。耕作放棄地が拡大する。これは精神論ではなく、収支計算の話である。">
+<meta property="og:url" content="https://aiseed.dev/natural-farming/industrial-farming-fails/">
+<meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<meta property="article:section" content="自然農法シリーズ">
+<meta property="article:published_time" content="2026.05.08">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="第3章 工業型農業は成立しない">
+<meta name="twitter:description" content="化学肥料を大量に使う工業型農業は、肥料価格が高止まりすると経済的に成立しない。コストは上がる、しかし販売価格は安価な輸入農産物と競争して上げられない。結果、作れば作るほど赤字になる。耕作放棄地が拡大する。これは精神論ではなく、収支計算の話である。">
+<meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+
+<!-- Webフォント(軽量化済み: Shippori Mincho 700/800 + JetBrains Mono のみ) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   COLOR & DESIGN TOKENS
+   aiseed.dev 全体のスタイルに合わせる場合は、ここの変数を
+   既存サイトのCSS変数に差し替える。
+   ============================================================ */
+:root {
+  --ink: #1a1a1a;
+  --paper: #f4f1ea;
+  --paper-deep: #ebe6d8;
+  --accent: #c8442a;
+  --rule: #d4cdb8;
+  --whisper: #6b665a;
+  --highlight: #f7e9c8;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* システム明朝(本文用、Webフォント不要で即時表示) */
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
+               "Yu Mincho", "游明朝", "YuMincho",
+               "Noto Serif CJK JP", "Noto Serif JP", serif;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  font-feature-settings: "palt";
+  overflow-x: hidden;
+}
+
+/* グレインテクスチャ(紙の質感) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   MASTHEAD(シリーズ名・章番号)
+   ============================================================ */
+.masthead {
+  border-bottom: 3px double var(--ink);
+  padding: 24px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+}
+.masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-right { font-style: italic; }
+
+/* ============================================================
+   HERO(タイトル領域)
+   ============================================================ */
+.hero {
+  padding: 80px 0 60px;
+}
+.hero-meta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-meta::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 56px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.hero-title .accent {
+  color: var(--accent);
+}
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--whisper);
+  max-width: 580px;
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+  margin-top: 32px;
+}
+.hero-byline {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ============================================================
+   ARTICLE BODY
+   ============================================================ */
+article p {
+  margin-bottom: 24px;
+}
+
+article h2 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.4;
+  margin: 72px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+article h2::before {
+  content: "§";
+  font-family: "JetBrains Mono", monospace;
+  color: var(--accent);
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+article h3 {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 600;
+  font-size: 19px;
+  margin: 40px 0 16px;
+  color: var(--ink);
+}
+article h3::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+article strong {
+  font-weight: 700;
+  background: linear-gradient(to top, var(--highlight) 35%, transparent 35%);
+  padding: 0 2px;
+}
+
+article em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+article a:hover {
+  color: var(--accent);
+}
+
+/* ============================================================
+   BLOCKQUOTE
+   ============================================================ */
+blockquote {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  position: relative;
+  font-size: 18px;
+  line-height: 1.85;
+  font-style: normal;
+  color: var(--ink);
+}
+blockquote::before {
+  content: "「";
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-size: 48px;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: "Hiragino Mincho ProN", serif;
+}
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   ORDERED LIST(番号付きリスト)
+   ============================================================ */
+article ol {
+  margin: 32px 0;
+  counter-reset: item;
+  padding: 0;
+}
+article ol li {
+  list-style: none;
+  position: relative;
+  padding: 16px 0 16px 56px;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: item;
+}
+article ol li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* 通常のul(章末の関連リンクなど) */
+article ul {
+  margin: 24px 0;
+  padding-left: 1.5em;
+}
+article ul li {
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   CODE BLOCK(疑似ターミナル風)
+   ============================================================ */
+article pre {
+  margin: 40px 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 24px 28px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+  overflow-x: auto;
+}
+article pre::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 8px;
+  color: var(--whisper);
+  letter-spacing: 4px;
+}
+article pre code {
+  display: block;
+  padding-top: 16px;
+  white-space: pre;
+}
+
+/* インラインコード */
+article code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9em;
+  background: var(--paper-deep);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+article pre code {
+  background: transparent;
+  padding: 16px 0 0 0;
+  color: var(--paper);
+}
+
+/* ============================================================
+   HORIZONTAL RULE(本文中の区切り)
+   ============================================================ */
+article hr {
+  border: none;
+  text-align: center;
+  margin: 64px 0;
+  height: 1em;
+}
+article hr::before {
+  content: "◆ ◆ ◆";
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+}
+
+/* ============================================================
+   RELATED LINKS(章末の関連記事)
+   ============================================================ */
+.related-links {
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.related-links h3 {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+.related-links h3::before {
+  content: none;
+}
+.related-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.related-links li {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 0;
+}
+.related-links li:last-child {
+  border-bottom: none;
+}
+.related-links a {
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.related-links .related-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.related-links a:hover .related-title {
+  color: var(--accent);
+}
+
+/* ============================================================
+   COLOPHON(フッター)
+   ============================================================ */
+.colophon {
+  margin-top: 96px;
+  padding: 40px 0;
+  border-top: 3px double var(--ink);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--whisper);
+  text-align: center;
+  line-height: 2;
+}
+.colophon-mark {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 40px; }
+  blockquote { padding: 24px 20px 24px 28px; }
+  article pre { padding: 20px 16px; font-size: 12px; }
+  article ol li { padding-left: 48px; }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta, .hero-title, .hero-subtitle, .hero-byline {
+  animation: rise 0.8s ease-out backwards;
+}
+.hero-meta     { animation-delay: 0.1s; }
+.hero-title    { animation-delay: 0.25s; }
+.hero-subtitle { animation-delay: 0.45s; }
+.hero-byline   { animation-delay: 0.65s; }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead-left"><a href="/natural-farming/" style="color: inherit; text-decoration: none;">自然農法シリーズ</a></div>
+    <div class="masthead-right">第3章 / Essay</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-meta">第3章 № 03 · 2026</div>
+
+    <h1 class="hero-title">作れば作るほど、<br><span class="accent">赤字になる</span>。</h1>
+
+    <p class="hero-subtitle">コスト上昇 + 輸入競合 = 作れば作るほど赤字</p>
+
+    <div class="hero-byline">
+      <span>2026.05.08</span>
+      
+    </div>
+  </section>
+
+  <!-- ARTICLE BODY -->
+  <article>
+    <p>第1章で供給制約を、第2章で長期価格の高止まりを見た。</p>
+<p>ここまでで言えるのは、「化学肥料が高くなる、しかも長期的に」という
+ことだ。短期的な品不足ではない。<strong>構造的な値上がり</strong> が、これから数年〜
+十年単位で続く。</p>
+<p>ではこの値上がりが、現場の農家に何をもたらすか。</p>
+<p>結論から言えば、<strong>工業型農業は経済的に成立しなくなる</strong>。</p>
+<h2>工業型農業の収支構造</h2>
+<p>工業型農業 ── 戦後日本の主流の農法 ── は、おおまかにこう動いている。</p>
+<p><strong>コスト側</strong></p>
+<ul>
+<li>化学肥料(窒素・リン酸・カリ)</li>
+<li>農薬</li>
+<li>燃料(トラクター、温室)</li>
+<li>種苗</li>
+<li>機械の減価償却</li>
+<li>労賃(自家労働を含む)</li>
+</ul>
+<p><strong>販売側</strong></p>
+<ul>
+<li>米、野菜、果物などを市場・JA・直売所などに出荷</li>
+<li>価格は需給と輸入品との競争で決まる</li>
+</ul>
+<p>利益は、<strong>販売額 − コスト</strong>。当然のことだ。</p>
+<p>ここに、化学肥料の価格上昇が乗る。コスト側の項目が、構造的に上がる。</p>
+<h2>販売価格は上げられない</h2>
+<p>普通の事業なら、コストが上がれば販売価格を上げる。これが市場経済の
+基本動作である。</p>
+<p>しかし農業は、それができない。なぜか。</p>
+<p><strong>輸入農産物と直接競争しているから</strong> だ。</p>
+<p>日本の食卓に並ぶ農産物の多くは、すでに海外と価格競争している。</p>
+<ul>
+<li>小麦の自給率は <strong>約 1〜2 割</strong> <code>[要検証]</code></li>
+<li>大豆の自給率は <strong>約 6〜7%</strong> <code>[要検証]</code></li>
+<li>飼料用穀物の自給率は <strong>約 2 割以下</strong> <code>[要検証]</code></li>
+<li>野菜の自給率は <strong>約 8 割</strong> だが、加工品・冷凍品は輸入依存度が高い</li>
+</ul>
+<p>国内農家がコスト上昇分を価格に転嫁しようとしても、消費者は安価な輸入
+品を選ぶ。スーパーは安価な輸入品を仕入れる。<strong>国産の値上げは、市場で
+売れなくなることを意味する</strong>。</p>
+<p>ここに、農業特有の構造がある。</p>
+<blockquote>
+<p>コストは国内事情で上がる、しかし販売価格は世界市場で決まる。
+この板挟みが、工業型農業の本質的な弱点である。</p>
+</blockquote>
+<h2>「作れば作るほど赤字」の数値感</h2>
+<p>具体的な数字で見てみよう。仮の例だが、構造はこうなる。</p>
+<p><strong>水稲 1 反(約 10 アール、1,000 平方メートル)あたり</strong></p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>平時</th>
+<th>肥料 2 倍時</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>化学肥料</td>
+<td>1.5 万円</td>
+<td>3 万円</td>
+</tr>
+<tr>
+<td>農薬</td>
+<td>1 万円</td>
+<td>1 万円</td>
+</tr>
+<tr>
+<td>燃料</td>
+<td>0.8 万円</td>
+<td>1 万円</td>
+</tr>
+<tr>
+<td>種苗・その他</td>
+<td>1 万円</td>
+<td>1 万円</td>
+</tr>
+<tr>
+<td>機械減価償却</td>
+<td>2 万円</td>
+<td>2 万円</td>
+</tr>
+<tr>
+<td>自家労働</td>
+<td>3 万円</td>
+<td>3 万円</td>
+</tr>
+<tr>
+<td><strong>コスト合計</strong></td>
+<td><strong>9.3 万円</strong></td>
+<td><strong>11 万円</strong></td>
+</tr>
+<tr>
+<td>収量(玄米)</td>
+<td>約 9 俵(540kg)</td>
+<td>約 9 俵(540kg)</td>
+</tr>
+<tr>
+<td>販売額(俵 1.5 万円)</td>
+<td>13.5 万円</td>
+<td>13.5 万円</td>
+</tr>
+<tr>
+<td><strong>利益</strong></td>
+<td><strong>+4.2 万円</strong></td>
+<td><strong>+2.5 万円</strong></td>
+</tr>
+</tbody>
+</table>
+<p><code>[数値は概算・要検証]</code></p>
+<p>これは肥料価格が「2 倍」の場合だ。第1章・第2章の議論からすれば、
+2026〜2027 年には 2 倍では収まらない可能性がある。<strong>3 倍、4 倍</strong> に
+なれば、利益は消える。マイナスに沈む。</p>
+<p>しかも、「肥料を減らせばよい」とはならない。化学肥料を減らせば、
+<strong>短期的には収量が落ちる</strong>。慣行農法は化学肥料に依存して設計されて
+いるため、肥料を半減すれば収量も大きく落ちる(土壌生態系がまだ回復
+していないから)。</p>
+<p>つまり、化学肥料に依存した農法のまま、肥料価格が上がる時代に入ると、</p>
+<ul>
+<li>肥料を使う → コストが利益を食う</li>
+<li>肥料を減らす → 収量が落ちて利益が消える</li>
+</ul>
+<p>どちらに動いても、利益が確保できない。<strong>作れば作るほど赤字</strong> という
+状況が、構造として現れる。</p>
+<h2>規模拡大も解にならない</h2>
+<p>「規模を大きくすれば、機械化で効率化できる」── これは戦後農政の主流
+の処方箋だった。</p>
+<p>しかしリン酸肥料が高騰する局面では、規模拡大は <strong>コストの拡大</strong> を
+意味する。10 反耕作する人は、1 反の人の 10 倍の肥料を買う。値上がり
+の影響も 10 倍である。</p>
+<p>規模を大きくしたから単価が下がる、という効果は、肥料という変動費が
+急騰する局面では出にくい。</p>
+<h2>耕作放棄地は加速する</h2>
+<p>利益が出ないのなら、農家は何をするか。<strong>やめる</strong> 。これは合理的な選択だ。</p>
+<p>日本の耕作放棄地は、すでに長期的に拡大してきた。</p>
+<ul>
+<li>2000 年:約 21 万 ha</li>
+<li>2020 年:約 42 万 ha <code>[要検証:具体的な数字と年度]</code></li>
+<li>2026 年:さらに拡大中</li>
+</ul>
+<p>主な理由は、</p>
+<ul>
+<li>高齢化と後継者不足</li>
+<li>米価の長期低迷</li>
+<li>山間部の不利な条件</li>
+</ul>
+<p>ここに <strong>肥料価格の構造的高騰</strong> が乗る。</p>
+<p>「やってもやらなくても食えないなら、やめる」という選択をする農家が
+増える。とくに、機械化投資が回収できていない若い世代、副業で農業を
+する人、山間地の農家。</p>
+<blockquote>
+<p>工業型農業の収支が崩れると、まず弱い経営から退場する。
+残った農家も、コストが上がれば早晩同じ判断に迫られる。</p>
+</blockquote>
+<p>これは精神論ではない。<strong>収支計算の結果として、農地が放棄される</strong> という
+話である。</p>
+<h2>補助金は限定的にしか効かない</h2>
+<p>「政府が補助金で支えればよい」という発想がありうる。実際、第1章の
+鈴木宣弘氏のような立場は、政府支援の強化を訴える。</p>
+<p>しかし補助金には限界がある。</p>
+<p><strong>財政の制約</strong></p>
+<p>肥料が 2〜3 倍になれば、補助金額も 2〜3 倍にする必要がある。日本の
+農業予算は限られている。年金、医療、防衛と財源を奪い合っている。
+劇的な増額は政治的に困難だ。</p>
+<p><strong>価格抑制の限界</strong></p>
+<p>仮に補助金で農家のコストを下げても、肥料の <strong>絶対供給量</strong> が増える
+わけではない。第1章で見たとおり、中国の輸出規制、硫黄供給制約、
+PFAS 問題は補助金では解けない。<strong>お金で物が買えるなら問題は起きていない</strong>。</p>
+<p><strong>輸入競合の制約</strong></p>
+<p>国内農産物の価格を補助金で下げても、世界市場で安価に作っている
+国々(米国、ブラジル、オーストラリア、東欧)との競争には限界がある。
+規模、気候、賃金の構造が違う。</p>
+<p>補助金は「移行期の緩衝材」にはなる。しかし「工業型農業の構造を維持
+し続ける手段」にはならない。</p>
+<h2>「自給率を上げよ」は答えではない</h2>
+<p>ここで、よく出てくる主張が <strong>食料自給率を上げよ</strong> である。</p>
+<p>「日本は自給率が低い、これを上げるべきだ」── 心情としては分かる。
+しかし冷静に見ると、これは答えになっていない。</p>
+<p><strong>化学肥料の自給率はほぼゼロ</strong> だ。仮に小麦や大豆の作付けを増やして
+食料自給率を上げても、それを <strong>輸入肥料</strong> で支えているなら、ボトル
+ネックは食料ではなく肥料に移るだけだ。</p>
+<blockquote>
+<p>食料の自給率を上げるためには、肥料の自給率を上げる必要がある。
+しかし肥料は、第1章・第2章で見たとおり、構造的に自給化できない。</p>
+</blockquote>
+<p>「自給率を上げよ」という主張は、<strong>肥料の現実を見れば、現状の工業型
+農業のままでは実現不可能</strong> である。これが厳しい結論だ。</p>
+<h2>工業型農業を「続ける」という選択肢はない</h2>
+<p>ここまでをまとめる。</p>
+<ul>
+<li>化学肥料は高騰し、長期的に高止まりする(第1章・第2章)</li>
+<li>コスト上昇は販売価格に転嫁できない(輸入競合のため)</li>
+<li>規模拡大は解にならない</li>
+<li>補助金は限定的にしか効かない</li>
+<li>食料自給率向上を唱えても、肥料が外国依存なら成立しない</li>
+</ul>
+<p>つまり、<strong>工業型農業を「これまでどおり」続ける道は、経済的に閉じている</strong>。</p>
+<p>これを認めた上で、では何をするか。
+それを考えるのが、次の第4章である。</p>
+<p>ただし、ここで一つ注意がある。「工業型農業が成立しない」と「日本は
+完全自給できる」は、まったく別の話だ。次章では、極端な自給論にも
+組みせず、しかし工業型農業を続ける道もない、その間にある <strong>現実的な
+立ち位置</strong> を提示する。</p>
+
+  </article>
+
+  <!-- COLOPHON -->
+  <footer class="colophon">
+    <div class="colophon-mark">§</div>
+    自然農法シリーズ · 第3章<br>
+    Tokushima · 2026.05.08<br>
+    <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a>
+  </footer>
+
+</div>
+
+</body>
+</html>

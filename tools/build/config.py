@@ -33,10 +33,15 @@ BOOK_DIR: Path = SITE_ROOT / "articles" / "claude-debian"
 # Independent-template essay series; uses its own template.html / template.en.html
 # instead of the shared tools/templates/article.html.
 AIWAYS_DIR: Path = SITE_ROOT / "articles" / "ai-native-ways"
+# Independent-template natural-farming series; uses its own template.html /
+# template.en.html. Chapters publish at /natural-farming/<slug>/ underneath
+# the existing static /natural-farming/ landing page.
+FARMING_DIR: Path = SITE_ROOT / "articles" / "natural-farming"
 OUTPUT_BASE: Path = SITE_ROOT / "html" / "insights"
 BLOG_OUTPUT_BASE: Path = SITE_ROOT / "html" / "blog"
 BOOK_OUTPUT_BASE: Path = SITE_ROOT / "html" / "claude-debian"
 AIWAYS_OUTPUT_BASE: Path = SITE_ROOT / "html" / "ai-native-ways"
+FARMING_OUTPUT_BASE: Path = SITE_ROOT / "html" / "natural-farming"
 TEMPLATES_DIR: Path = _BUNDLED_TEMPLATES_DIR
 
 # Per-site overrides loaded from <site>/site.json. Keys consumed:
@@ -85,8 +90,9 @@ def configure_site(site: Path) -> None:
     to fork this script. `<site>/site.json` (optional) supplies per-site
     overrides for site_url, site_name, copyright_text, default_og_image.
     """
-    global SITE_ROOT, INSIGHTS_DIR, BLOG_DIR, BOOK_DIR, AIWAYS_DIR
+    global SITE_ROOT, INSIGHTS_DIR, BLOG_DIR, BOOK_DIR, AIWAYS_DIR, FARMING_DIR
     global OUTPUT_BASE, BLOG_OUTPUT_BASE, BOOK_OUTPUT_BASE, AIWAYS_OUTPUT_BASE
+    global FARMING_OUTPUT_BASE
     global TEMPLATES_DIR, env, _site_config, SITE_URL, DEFAULT_OG_IMAGE
 
     SITE_ROOT = site.resolve()
@@ -94,10 +100,12 @@ def configure_site(site: Path) -> None:
     BLOG_DIR = SITE_ROOT / "articles" / "blog"
     BOOK_DIR = SITE_ROOT / "articles" / "claude-debian"
     AIWAYS_DIR = SITE_ROOT / "articles" / "ai-native-ways"
+    FARMING_DIR = SITE_ROOT / "articles" / "natural-farming"
     OUTPUT_BASE = SITE_ROOT / "html" / "insights"
     BLOG_OUTPUT_BASE = SITE_ROOT / "html" / "blog"
     BOOK_OUTPUT_BASE = SITE_ROOT / "html" / "claude-debian"
     AIWAYS_OUTPUT_BASE = SITE_ROOT / "html" / "ai-native-ways"
+    FARMING_OUTPUT_BASE = SITE_ROOT / "html" / "natural-farming"
 
     site_templates = SITE_ROOT / "tools" / "templates"
     TEMPLATES_DIR = site_templates if site_templates.exists() else _BUNDLED_TEMPLATES_DIR

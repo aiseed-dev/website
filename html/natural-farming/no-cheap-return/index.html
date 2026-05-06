@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-9FLQ963JXM');
+</script>
+
+<title>第2章 リン酸肥料は安価には戻らない — 自然農法シリーズ | aiseed.dev</title>
+<meta name="description" content="高品位のリン鉱石(P2O5 30%以上)は枯渇しつつある。残された低品位鉱石(P2O5 20%以下)を加工すると、カドミウム除去コスト、エネルギーコスト、放射性廃棄物処理コストが跳ね上がる。地政学が落ち着いても、資源の物理的特性が、もとの安価な肥料には戻させない。">
+<link rel="canonical" href="https://aiseed.dev/natural-farming/no-cheap-return/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/natural-farming/no-cheap-return/">
+
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/natural-farming/no-cheap-return/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI時代の暮らし">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第2章 リン酸肥料は安価には戻らない">
+<meta property="og:description" content="高品位のリン鉱石(P2O5 30%以上)は枯渇しつつある。残された低品位鉱石(P2O5 20%以下)を加工すると、カドミウム除去コスト、エネルギーコスト、放射性廃棄物処理コストが跳ね上がる。地政学が落ち着いても、資源の物理的特性が、もとの安価な肥料には戻させない。">
+<meta property="og:url" content="https://aiseed.dev/natural-farming/no-cheap-return/">
+<meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<meta property="article:section" content="自然農法シリーズ">
+<meta property="article:published_time" content="2026.05.07">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="第2章 リン酸肥料は安価には戻らない">
+<meta name="twitter:description" content="高品位のリン鉱石(P2O5 30%以上)は枯渇しつつある。残された低品位鉱石(P2O5 20%以下)を加工すると、カドミウム除去コスト、エネルギーコスト、放射性廃棄物処理コストが跳ね上がる。地政学が落ち着いても、資源の物理的特性が、もとの安価な肥料には戻させない。">
+<meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+
+<!-- Webフォント(軽量化済み: Shippori Mincho 700/800 + JetBrains Mono のみ) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   COLOR & DESIGN TOKENS
+   aiseed.dev 全体のスタイルに合わせる場合は、ここの変数を
+   既存サイトのCSS変数に差し替える。
+   ============================================================ */
+:root {
+  --ink: #1a1a1a;
+  --paper: #f4f1ea;
+  --paper-deep: #ebe6d8;
+  --accent: #c8442a;
+  --rule: #d4cdb8;
+  --whisper: #6b665a;
+  --highlight: #f7e9c8;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* システム明朝(本文用、Webフォント不要で即時表示) */
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
+               "Yu Mincho", "游明朝", "YuMincho",
+               "Noto Serif CJK JP", "Noto Serif JP", serif;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  font-feature-settings: "palt";
+  overflow-x: hidden;
+}
+
+/* グレインテクスチャ(紙の質感) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   MASTHEAD(シリーズ名・章番号)
+   ============================================================ */
+.masthead {
+  border-bottom: 3px double var(--ink);
+  padding: 24px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+}
+.masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-right { font-style: italic; }
+
+/* ============================================================
+   HERO(タイトル領域)
+   ============================================================ */
+.hero {
+  padding: 80px 0 60px;
+}
+.hero-meta {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-meta::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 56px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.hero-title .accent {
+  color: var(--accent);
+}
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--whisper);
+  max-width: 580px;
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+  margin-top: 32px;
+}
+.hero-byline {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ============================================================
+   ARTICLE BODY
+   ============================================================ */
+article p {
+  margin-bottom: 24px;
+}
+
+article h2 {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.4;
+  margin: 72px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+article h2::before {
+  content: "§";
+  font-family: "JetBrains Mono", monospace;
+  color: var(--accent);
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+article h3 {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 600;
+  font-size: 19px;
+  margin: 40px 0 16px;
+  color: var(--ink);
+}
+article h3::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+article strong {
+  font-weight: 700;
+  background: linear-gradient(to top, var(--highlight) 35%, transparent 35%);
+  padding: 0 2px;
+}
+
+article em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+article a:hover {
+  color: var(--accent);
+}
+
+/* ============================================================
+   BLOCKQUOTE
+   ============================================================ */
+blockquote {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  position: relative;
+  font-size: 18px;
+  line-height: 1.85;
+  font-style: normal;
+  color: var(--ink);
+}
+blockquote::before {
+  content: "「";
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-size: 48px;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: "Hiragino Mincho ProN", serif;
+}
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   ORDERED LIST(番号付きリスト)
+   ============================================================ */
+article ol {
+  margin: 32px 0;
+  counter-reset: item;
+  padding: 0;
+}
+article ol li {
+  list-style: none;
+  position: relative;
+  padding: 16px 0 16px 56px;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: item;
+}
+article ol li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* 通常のul(章末の関連リンクなど) */
+article ul {
+  margin: 24px 0;
+  padding-left: 1.5em;
+}
+article ul li {
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   CODE BLOCK(疑似ターミナル風)
+   ============================================================ */
+article pre {
+  margin: 40px 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 24px 28px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+  overflow-x: auto;
+}
+article pre::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 8px;
+  color: var(--whisper);
+  letter-spacing: 4px;
+}
+article pre code {
+  display: block;
+  padding-top: 16px;
+  white-space: pre;
+}
+
+/* インラインコード */
+article code {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.9em;
+  background: var(--paper-deep);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+article pre code {
+  background: transparent;
+  padding: 16px 0 0 0;
+  color: var(--paper);
+}
+
+/* ============================================================
+   HORIZONTAL RULE(本文中の区切り)
+   ============================================================ */
+article hr {
+  border: none;
+  text-align: center;
+  margin: 64px 0;
+  height: 1em;
+}
+article hr::before {
+  content: "◆ ◆ ◆";
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+}
+
+/* ============================================================
+   RELATED LINKS(章末の関連記事)
+   ============================================================ */
+.related-links {
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.related-links h3 {
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+.related-links h3::before {
+  content: none;
+}
+.related-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.related-links li {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 0;
+}
+.related-links li:last-child {
+  border-bottom: none;
+}
+.related-links a {
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.related-links .related-tag {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.related-links a:hover .related-title {
+  color: var(--accent);
+}
+
+/* ============================================================
+   COLOPHON(フッター)
+   ============================================================ */
+.colophon {
+  margin-top: 96px;
+  padding: 40px 0;
+  border-top: 3px double var(--ink);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--whisper);
+  text-align: center;
+  line-height: 2;
+}
+.colophon-mark {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 40px; }
+  blockquote { padding: 24px 20px 24px 28px; }
+  article pre { padding: 20px 16px; font-size: 12px; }
+  article ol li { padding-left: 48px; }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta, .hero-title, .hero-subtitle, .hero-byline {
+  animation: rise 0.8s ease-out backwards;
+}
+.hero-meta     { animation-delay: 0.1s; }
+.hero-title    { animation-delay: 0.25s; }
+.hero-subtitle { animation-delay: 0.45s; }
+.hero-byline   { animation-delay: 0.65s; }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- MASTHEAD -->
+  <header class="masthead">
+    <div class="masthead-left"><a href="/natural-farming/" style="color: inherit; text-decoration: none;">自然農法シリーズ</a></div>
+    <div class="masthead-right">第2章 / Essay</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-meta">第2章 № 02 · 2026</div>
+
+    <h1 class="hero-title">もう、<span class="accent">安価には戻らない</span>。</h1>
+
+    <p class="hero-subtitle">低品位鉱石の経済学 ── カドミウム・エネルギー・放射性廃棄物</p>
+
+    <div class="hero-byline">
+      <span>2026.05.07</span>
+      
+    </div>
+  </section>
+
+  <!-- ARTICLE BODY -->
+  <article>
+    <p>第1章では、現在進行中の供給制約を見た。</p>
+<p>「では、地政学的な緊張が和らげば、いずれ安価に戻るのではないか」── そう
+考えたくなる。一時的なショックなら、波が引くのを待てばよい。</p>
+<p>しかしこの章で示したいのは、<strong>そうはならない</strong> ということだ。</p>
+<p>理由は地政学ではない。<strong>鉱物資源そのものの経済学</strong> にある。</p>
+<h2>高品位鉱石は枯渇しつつある</h2>
+<p>リン鉱石は、含まれるリン酸の濃度(P2O5 含量)によって品位が分けられる。</p>
+<ul>
+<li><strong>高品位</strong>:P2O5 30% 以上</li>
+<li><strong>中品位</strong>:P2O5 20〜30%</li>
+<li><strong>低品位</strong>:P2O5 20% 以下</li>
+</ul>
+<p>20 世紀の農業革命を支えたのは、フロリダ、モロッコ、ロシアなどの <strong>高品位
+鉱石</strong> だった。地表近くにあり、不純物が少なく、加工しやすい。安価な
+肥料は、この「良い鉱石」の上に成り立っていた。</p>
+<p>しかし、良い鉱石から先に掘られる。これは資源開発の鉄則である。</p>
+<p>20 世紀後半から、世界の主要産地で高品位鉱石の枯渇が進んだ。残されている
+のは、深い地層、不純物の多い鉱床、低濃度の鉱石 ── つまり <strong>低品位鉱石</strong>
+である。</p>
+<p>世界のリン鉱石埋蔵量の大半は、すでに低品位帯に移っている <code>[要検証:具体的な数字]</code>。</p>
+<h2>低品位鉱石の三つのコスト</h2>
+<p>低品位鉱石を肥料にするには、高品位鉱石にはなかった三つのコストが乗る。</p>
+<h3>コスト 1:カドミウム除去</h3>
+<p>低品位鉱石には、<strong>カドミウム</strong> が高濃度で含まれることが多い。カドミウム
+は重金属で、人体に蓄積し、腎臓障害、骨軟化症(イタイイタイ病の原因)、
+発癌性が知られる。</p>
+<p>肥料を通じて農地にカドミウムが入れば、作物に移行し、人が口にする。
+EU は肥料中のカドミウム濃度に厳しい上限を設けている <code>[要検証:具体的な値]</code>。
+日本も食品安全の観点から規制を強化する方向にある。</p>
+<p>カドミウムを除去するには、<strong>湿式精製プロセス</strong> が必要だ。化学薬品で
+リンと重金属を分離し、廃液を処理する。これに大きなコストがかかる。</p>
+<blockquote>
+<p>高品位鉱石なら不要だった工程が、低品位鉱石では必須になる。</p>
+</blockquote>
+<h3>コスト 2:エネルギー</h3>
+<p>リン鉱石を肥料に変えるには、もともと多くのエネルギーが要る。鉱石を
+粉砕し、硫酸で分解し、乾燥・粒状化する ── この一連の工程は熱と電力
+を消費する。</p>
+<p>鉱石の品位が下がるほど、同じ量のリン酸を取り出すのに、より多くの鉱石
+を処理しなければならない。<strong>処理量が増えれば、エネルギー消費量も
+比例して増える</strong>。</p>
+<p>世界のエネルギー価格は、長期的に上昇傾向にある。脱炭素規制、化石燃料
+の埋蔵量シフト、地政学的緊張 ── いずれも価格の下押しではなく上押し
+の方向に働く。</p>
+<p>エネルギー価格が上がれば、肥料製造コストも上がる。これは構造的な圧力
+である。</p>
+<h3>コスト 3:放射性廃棄物</h3>
+<p>ここが見落とされやすいポイントだ。</p>
+<p>リン鉱石には、<strong>ウラン、トリウム</strong> などの放射性元素が微量に含まれる。
+これは天然の状態で含まれており、避けようがない。</p>
+<p>リン鉱石を硫酸で分解すると、リン酸と一緒に <strong>リン石膏(phosphogypsum、
+ホスホジプサム)</strong> という副産物が大量に発生する。重量比で見れば、
+リン酸 1 トンに対してリン石膏が 5 トン前後 <code>[要検証]</code> 出る。</p>
+<p>このリン石膏に、ウランやトリウム由来の放射性核種が濃縮される。原料
+鉱石よりも高い濃度になることもある <code>[要検証]</code>。</p>
+<p>低品位鉱石ほど放射性元素の含量が高い傾向がある <code>[要検証]</code>。つまり、
+<strong>低品位化が進むほどリン石膏の放射性が高くなり、廃棄物処理が難しく
+なる</strong>。</p>
+<blockquote>
+<p>世界のリン石膏は、現状、海洋投棄されるか、巨大な堆積場に積まれる
+しかない。再利用の道は限定的だ。</p>
+</blockquote>
+<p>各国で環境規制が強化されつつあり、廃棄物処理コストが上がる。これも
+肥料価格を押し上げる方向に働く。</p>
+<h2>三つのコストが同時に乗る</h2>
+<p>低品位化が進むということは、</p>
+<ul>
+<li>カドミウム除去のコスト</li>
+<li>エネルギーコスト</li>
+<li>放射性廃棄物処理コスト</li>
+</ul>
+<p>この三つが、<strong>同じ鉱石に同時に乗る</strong> ということだ。</p>
+<p>20 世紀の高品位鉱石は、これらのコストが小さかった。だから安価な肥料が
+成り立っていた。21 世紀に残されている低品位鉱石は、構造的に、これら
+三つのコストを背負っている。</p>
+<table>
+<thead>
+<tr>
+<th>比較項目</th>
+<th>高品位鉱石</th>
+<th>低品位鉱石</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P2O5 含量</td>
+<td>30% 以上</td>
+<td>20% 以下</td>
+</tr>
+<tr>
+<td>カドミウム除去</td>
+<td>不要〜軽微</td>
+<td>必須・高コスト</td>
+</tr>
+<tr>
+<td>処理エネルギー</td>
+<td>少ない</td>
+<td>多い(同じ P2O5 を得るのに多くの鉱石を処理)</td>
+</tr>
+<tr>
+<td>リン石膏発生量</td>
+<td>少ない</td>
+<td>多い</td>
+</tr>
+<tr>
+<td>放射性核種濃度</td>
+<td>低い</td>
+<td>高い</td>
+</tr>
+</tbody>
+</table>
+<p>低品位鉱石は、地政学が落ち着いても、戦争が終わっても、安くはならない。
+<strong>鉱石そのものの物理的特性が変わらないから</strong> である。</p>
+<h2>「リサイクル」では量を補えない</h2>
+<p>ここで「リサイクルを進めればよい」という発想が出てくる。下水汚泥、
+食品残渣、家畜糞尿 ── すでに使ったリンを回収して、もう一度使えば、
+鉱石に頼らなくてよい。</p>
+<p>理屈は正しい。しかし量が足りない。</p>
+<p>第1章で見たとおり、下水汚泥回収は規模が小さい。PFAS 問題も抱えている。
+食品残渣や家畜糞尿は、すでに堆肥化などの形で使われてきた。<strong>これ以上
+の劇的な増加は望みにくい</strong>。</p>
+<p>そして、人類が農業で使うリンの総量は膨大だ。世界の年間リン肥料消費量
+は、リン酸換算で数千万トン規模 <code>[要検証]</code>。これをリサイクルだけで
+賄うのは、現在の技術と社会基盤では不可能である。</p>
+<p>リサイクルは「補完」にはなる。しかし「代替」にはならない。鉱石が
+高くなれば、リサイクルした肥料も高くなる ── これが現実である。</p>
+<h2>「合成代替」も成立しない</h2>
+<p>「化学的にリンを合成すればよい」という発想もありうる。しかしリンは
+<strong>元素</strong> である。化学合成で別の元素から作ることはできない。</p>
+<p>核反応で別の元素から作ることは原理的には可能だが、エネルギーコストが
+天文学的で、農業用に使える話ではない。</p>
+<p>リンを得るには、地殻中のリン化合物 ── つまり鉱石か、生物起源の
+リン蓄積(下水、糞尿、骨など)── から取るしかない。これが地球の
+物理的な制約である。</p>
+<h2>価格は構造的に高止まりする</h2>
+<p>整理すると、こうなる。</p>
+<ul>
+<li>高品位鉱石は枯渇しつつある</li>
+<li>残された低品位鉱石は、加工に三つの追加コストがかかる</li>
+<li>リサイクルは補完にはなるが代替にはならない</li>
+<li>元素レベルでの合成代替も不可能</li>
+</ul>
+<p>この結果、<strong>リン酸肥料の価格は構造的に高止まりする</strong>。短期の波はあっても、
+長期トレンドは上向きだ。一時的なショックではなく、長期的な高価格時代
+への入口に、いま入っている。</p>
+<blockquote>
+<p>安かった時代は、20 世紀の高品位鉱石が支えていた特殊な時代だった。
+その特殊な時代が終わりつつある、ということだ。</p>
+</blockquote>
+<p>これは「いつか終わる」という話ではない。<strong>もう、安価には戻らない</strong>。
+これがこの章の結論である。</p>
+<h2>「危機」ではなく「移行」</h2>
+<p>第1章と同じ言い方をしておく。</p>
+<p>これは危機ではない。20 世紀の高品位鉱石を使い切りつつあるという、
+予測可能な構造変化である。良い鉱石から先に掘られ、後に低品位鉱石が
+残るのは、自然なことだ。</p>
+<p>危機ではなく <strong>移行</strong> ── 高品位鉱石依存の安価な肥料時代から、別の
+何かへの移行 ── が起きている。</p>
+<p>ではその「別の何か」とは何か。
+工業型農業をそのまま続けることは、価格上昇下では成立しない。
+これを次の章で見る。</p>
+
+  </article>
+
+  <!-- COLOPHON -->
+  <footer class="colophon">
+    <div class="colophon-mark">§</div>
+    自然農法シリーズ · 第2章<br>
+    Tokushima · 2026.05.07<br>
+    <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a>
+  </footer>
+
+</div>
+
+</body>
+</html>

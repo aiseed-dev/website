@@ -3,7 +3,7 @@ slug: claude-debian-16-python-flutter-other
 number: "16"
 title: 第16章 Python、Flutter、その他の環境
 subtitle: 必要になったとき、その言語をClaudeと組み立てる
-description: Python は uv を主軸に、データサイエンス・機械学習は miniforge を併用。Flutter/Dart、Node.js、Rust、Go、Docker を Debian で揃える勘所と、Claudeと組むコツを地図として整理する。全部覚えるのではなく、必要になったとき来られる場所にする。
+description: Python は uv を主軸に、データサイエンス・機械学習は miniforge を併用。GUI は Flutter/Dart、Rust は Python の高速化(PyO3)に絞る。Web/CLI など他の選択肢は地図として位置を把握。Claude と組むコツを整理する。
 date: 2026.04.23
 label: Claude × Debian 16
 prev_slug: claude-debian-15-claude-development
@@ -273,110 +273,71 @@ flutter doctor
 > (4) AI補完（Claude/Copilot）の恩恵の大きさ
 > (5) 長期保守性
 
-## 第四節 Node.js / TypeScript
+## 第四節 Rust(Python の高速化のために)
 
-### `nvm` か `fnm` でバージョン管理
+Rust は素晴らしい言語だが、本書では **単独では使わない**。日常のスクリプト・
+業務ロジック・GUI・Web ── これらは Python(+ uv)で書く方が速く、
+保守も楽で、AI が並走しやすい。
 
-```bash
-# fnm（Rust製、高速）
-curl -fsSL https://fnm.vercel.app/install | bash
+Rust を使うのは **「Python のホットスポットを Rust に置き換える」** 場面だ。
 
-# LTS を入れる
-fnm install --lts
-fnm use lts-latest
-```
+### あなたは既に Rust の恩恵を受けている
 
-### TypeScript のセットアップ
+実は本書の主要ツールの多くは **中身が Rust 製**:
 
-```bash
-npm init -y
-npm install -D typescript @types/node
-npx tsc --init
-```
+| 道具 | 実装言語 | 効果 |
+|---|---|---|
+| **uv** | Rust | pip + venv の 10〜100 倍速 |
+| **ruff** | Rust | flake8 + black + isort より 10〜100 倍速 |
+| **polars** | Rust | pandas より数倍〜十倍速い DataFrame |
+| **pydantic v2** | Rust(コア部分) | データバリデーションが桁違いに速い |
+| **fnm** | Rust | Node.js バージョン管理 |
+| **Zed** | Rust | エディタ(第13章で採用) |
 
-### 用途別の主要ツール
+つまり Rust を **書かなくても**、書かれた成果は享受できている。これが
+2026 年現在の Rust の主戦場 ── 「**裾野は Python が広く、底は Rust が
+速い**」という構造。
 
-- Webフロントエンド → React / Vue / Svelte
-- バックエンド → Express / Hono / NestJS
-- スクリプト → tsx（TypeScript を即座に実行）
-- ビルド → Vite、esbuild
+### 自分で Rust に降りるとき
 
-### Claudeに聞いてみよう④：JS/TS の2026年版
-
-> 私は〔ブラウザ向けSPA／Node.js バックエンド／スクリプト／Electron〕を書きたいです。
-> 2026年時点で、どのフレームワーク・ツールを選ぶべきか。
-> その選択の理由と、避けるべき古い選択肢も添えてください。
-
-## 第五節 Rust
-
-### インストール
+Python のプロファイラ(`cProfile` / `py-spy`)で計測して、**1 関数が
+処理時間の半分以上**を占めていたら、そこを Rust 化する候補。
 
 ```bash
+# Rust toolchain
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-`rustup`、`cargo`、`rustc` がホーム配下に入る。
-
-### Rust が向く用途
-
-- **システム寄り**：ファイルシステム、ネットワークツール、CLI
-- **性能が重要**：画像処理、データパイプライン
-- **並行処理**：サーバー、バックエンド
-- **安全性が重要**：メモリ安全、型安全が強い
-
-### Rust が向かない用途
-
-- **小さなスクリプト**：Python で十分
-- **急ぎで試作**：Rust はコンパイル時間が長い
-- **頻繁に要件が変わる探索**：型で縛る言語は柔軟性で劣る
-
-### Claudeに聞いてみよう⑤：Rust に手を出すべきか
-
-> 私の作りたいものは〔用途〕です。Rust を学んで作るか、別の言語で作るか、判断してください。
-> 学習コスト（週何時間を何週間）と、得られるもののトレードオフを具体的に。
-
-## 第六節 Go
-
-### インストール
+Python から呼ぶ Rust 拡張は **maturin + PyO3** が最も簡単:
 
 ```bash
-sudo apt install golang-go
-# または公式から最新版を取得
+uv tool install maturin
+maturin new --bindings pyo3 my_fastlib
+cd my_fastlib
+maturin develop   # ビルドして同一プロジェクトの uv 環境にインストール
 ```
 
-### Go が向く用途
+これで Python 側で `import my_fastlib` できる。Rust の関数を Python の
+関数として呼び出せる。
 
-- **CLIツール**：1ファイルに配布しやすい
-- **サーバー**：シンプルで高速
-- **Kubernetes などのクラウドネイティブ系**
+### Rust を「書く」のではなく「使う」原則
 
-Rust より学習が早く、Pythonより堅固。「そこそこの性能と、そこそこの安全性」の中間点。
+- 既製の Rust 製ツール(uv / ruff / polars 等)を選ぶ
+- 自分で Rust を書くのは **計測で詰まったホットスポットだけ**
+- 書く前に Python のテストで境界を固めてから、Rust に翻訳する
+- **Claude に「この Python 関数を maturin/PyO3 で Rust 化して」**で十分通る
 
-## 第七節 Docker
+「Rust を勉強してから何か作ろう」と思わない。**Python で困ってから Rust** が
+正しい順番。
 
-### インストール
+### Claudeに聞いてみよう④:Python のホットスポットを Rust に
 
-```bash
-# Docker 公式リポジトリから
-sudo apt install docker.io docker-compose
+> 私の Python コード〔貼る〕を `cProfile` で計測したところ、
+> 〔関数名〕が全体時間の〔割合〕を占めていました。この関数を
+> maturin + PyO3 で Rust 化する手順を、最小サンプルで示してください。
+> Python 側のインターフェースは変えない前提で。
 
-# 自分を docker グループに
-sudo usermod -aG docker $USER
-# ログアウト／再ログイン
-```
-
-### Docker の使いどころ
-
-- **依存が複雑なツールを試す**：PostgreSQL、Redis、MinIO
-- **環境を壊さず実験**：イメージを消せば元通り
-- **本番相当の環境で動かす**：開発と本番のギャップを減らす
-
-### Claudeに聞いてみよう⑥：Dockerの最初の一歩
-
-> 私は〔試したいもの〕をDockerで動かしたいです。docker-compose.yml の最小例と、起動→確認→停止までの手順を教えてください。
-> 初心者が詰まりやすいポイント（ポート、ボリューム、ネットワーク）を、回避策付きで。
-
-## 第八節 データベース
+## 第五節 データベース
 
 ### SQLite
 
@@ -407,7 +368,7 @@ psql
 
 [第15章「Mythos時代のセキュリティ設計」](/insights/security-design/)で書いた通り、**本番環境にはDBを置かない**設計が最強。個人開発では SQLite で足りることが多い。
 
-## 第九節 環境を切り替える習慣
+## 第六節 環境を切り替える習慣
 
 ### プロジェクトごとに隔離
 
@@ -436,13 +397,13 @@ du -sh ~/.cache/uv ~/.local/share/uv
 flatpak uninstall --unused -y
 ```
 
-### Claudeに聞いてみよう⑦：環境ダイエット
+### Claudeに聞いてみよう⑤：環境ダイエット
 
 > 私のホームディレクトリを次のように消費しています：〔du -sh の出力〕。
 > 安全に削除できるもの、削除してはいけないもの、定期的に掃除すべきキャッシュを分類してください。
 > シェルスクリプトで定期実行する場合の雛形もお願いします。
 
-## 第十節 地図の読み方
+## 第七節 地図の読み方
 
 この章で挙げた環境は、全て必要になったときに読み返せばいい。**目次として次を覚えておく**だけで十分。
 
@@ -469,11 +430,9 @@ flatpak uninstall --unused -y
 1. Python の現代的スタックを `uv` に統一(プロジェクト管理 + tool + Python バージョン)
 2. データサイエンス / 機械学習用に **miniforge** を導入、uv と併用する運用を整理
 3. Flutter / Dart の位置づけを把握
-4. Node.js / TypeScript の 2026 年版を更新
-5. Rust / Go の得意分野を確認
-6. Docker の使いどころを整理
-7. データベース(SQLite / PostgreSQL)の選び方
-8. 環境を隔離し、掃除する習慣を仕込んだ
+4. Rust は単独では使わず、**Python のホットスポット高速化**(maturin + PyO3)に絞る、と決めた
+5. データベース(SQLite / PostgreSQL)の選び方
+6. 環境を隔離し、掃除する習慣を仕込んだ
 
 ここで第4部が終わる。**あなたの Debian は、いつでも手を動かせる開発基盤になった**。何か作りたくなったとき、その言語の環境を30分で整えられる状態にある。
 

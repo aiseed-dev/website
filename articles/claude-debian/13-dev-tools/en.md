@@ -289,30 +289,47 @@ sudo apt install build-essential curl wget jq ripgrep fd-find tree htop
 
 ## Section 6 — Setting Up Claude Code
 
-Claude Code is the tool for reading and writing code in dialogue with Claude in the terminal. It is the core of Part 4 of this textbook.
+Claude Code is the tool for reading and writing code in dialogue with
+Claude in the terminal. It is the core of Part 4 of this textbook.
+
+### Recommended: Native Installer
+
+Since 2025, the **native installer is the recommended path**. It does not
+depend on Node.js / npm and **auto-updates in the background.**
 
 ```bash
-# Node.js and npm are required
-sudo apt install nodejs npm
-
-# Install Claude Code (ask Claude for the latest steps)
-npm install -g @anthropic-ai/claude-code
+curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-On first launch, you'll be asked to log in via the browser. Sign in with an Anthropic account.
+That places `claude` under `~/.local/bin/` (or similar). Open a fresh
+shell and verify with `claude --version`.
+
+> Note: the same script works on macOS, Linux, and WSL. On Debian /
+> Fedora / RHEL / Alpine, official `apt` / `dnf` / `apk` packages are
+> also available — follow the install page. The older
+> `npm install -g @anthropic-ai/claude-code` route still works, but
+> **moving to the native install is the right thing now.**
+
+### First Login and Launch
 
 ```bash
+# First run: a browser opens, sign in with your Anthropic account
+claude
+
+# Move into a project and start
 cd ~/Projects/my-project
 claude
 ```
 
-That starts the dialogue.
+The dialogue begins, and Claude can see the files under the directory.
 
 ### Knack of Claude Code
 
 - **Launch from the project directory.** It can read files under that directory.
 - **Be explicit in instructions.** "Rewrite this function," "add this feature," and so on.
 - **Confirm changes.** Claude Code asks before making changes. Always look at the content before approving.
+- **Use `/help`.** Type `/` inside a session to list slash commands.
+- **Leave project context in `CLAUDE.md`.** Drop a `CLAUDE.md` at the project root and it gets loaded each session.
 
 ### Ask Claude ⑥: Principles for Operating Claude Code
 

@@ -285,35 +285,52 @@ sudo apt install build-essential curl wget jq ripgrep fd-find tree htop
 
 ## 第六節 Claude Code のセットアップ
 
-Claude Code は、ターミナル上でClaudeと対話しながらコードを読み書きするツール。この教科書の第4部の核だ。
+Claude Code は、ターミナル上で Claude と対話しながらコードを読み書きする
+ツール。この教科書の第 4 部の核だ。
+
+### 推奨: ネイティブインストーラ
+
+2025 年以降、**ネイティブインストーラが推奨**になった。Node.js / npm に
+依存せず、**バックグラウンドで自動更新**される。
 
 ```bash
-# Node.js と npm が必要
-sudo apt install nodejs npm
-
-# Claude Codeのインストール（最新の手順はClaudeに確認）
-npm install -g @anthropic-ai/claude-code
+curl -fsSL https://claude.ai/install.sh | bash
 ```
 
-初回起動時にブラウザでログインを求められる。Anthropicのアカウントでログイン。
+これだけで `~/.local/bin/claude` 等に配置される。インストール後、
+新しいシェルで `claude --version` が通ることを確認。
+
+> 補足: macOS / Linux / WSL すべて同じスクリプトで入る。
+> Debian / Fedora / RHEL / Alpine では `apt` `dnf` `apk` 経由でも入る
+> (Anthropic の公式リポジトリを案内に従って追加する形)。
+> 古い「`npm install -g @anthropic-ai/claude-code`」方式は今でも動くが、
+> **ネイティブ版に乗り換える**のが今後の正解。
+
+### 初回ログインと起動
 
 ```bash
+# 初回:ブラウザが開いて Anthropic アカウントでログイン
+claude
+
+# プロジェクトディレクトリに入って起動
 cd ~/Projects/my-project
 claude
 ```
 
-これで対話が始まる。
+これで対話が始まる。プロジェクトのファイルが Claude から見える状態。
 
-### Claude Codeの勘所
+### Claude Code の勘所
 
-- **プロジェクトディレクトリで起動する**：そのディレクトリ配下のファイルを読める
-- **明確に指示する**：「この関数を書き換えて」「この機能を追加して」のように
-- **変更は確認する**：Claude Codeは変更前に確認を求める。常に中身を見てから承認
+- **プロジェクトディレクトリで起動する**: そのディレクトリ配下のファイルを読める
+- **明確に指示する**: 「この関数を書き換えて」「この機能を追加して」のように
+- **変更は確認する**: Claude Code は変更前に確認を求める。常に中身を見てから承認
+- **`/help` で機能を覚える**: 起動中に `/` を打つとスラッシュコマンド一覧
+- **CLAUDE.md でプロジェクト文脈を残す**: ルートに置くと毎回読み込まれる
 
-### Claudeに聞いてみよう⑥：Claude Code運用の原則
+### Claudeに聞いてみよう⑥:Claude Code 運用の原則
 
-> Claude Code を使う際の、初心者が気を付けるべき原則を五つ教えてください：
-> (1) 始め方（プロジェクトの組み方）
+> Claude Code を使う際の、初心者が気を付けるべき原則を五つ教えてください:
+> (1) 始め方(プロジェクトの組み方)
 > (2) 指示の仕方
 > (3) 変更の承認の判断
 > (4) トラブル時の対処

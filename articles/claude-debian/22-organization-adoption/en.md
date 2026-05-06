@@ -3,8 +3,8 @@ slug: claude-debian-22-organization-adoption
 lang: en
 number: "22"
 title: Chapter 22 — Adoption in an Organization
-subtitle: Stack small wins. Don't make loud declarations.
-description: A realistic path for adopting Debian on a team or in a company. Beyond technology — organizational politics, support, budget, internal approvals. Build with Claude a strategy of stacking small wins, not a large simultaneous migration.
+subtitle: Change the tools before changing the OS.
+description: A realistic path for adopting Debian on a team or in a company. Before pushing the OS swap, change the tools — Markdown / CSV / Python (uv) / Claude / Element. These work on Windows already. Once the substance moves to structured text, Linux migration becomes a small final step.
 date: 2026.04.23
 label: Claude × Debian 22
 prev_slug: claude-debian-21-telling-others
@@ -12,8 +12,8 @@ prev_title: Chapter 21 — Telling Those Around You
 next_slug: claude-debian-23-passing-on
 next_title: Chapter 23 — Passing It On to the Next Generation
 cta_label: Learn with Claude
-cta_title: Track record beats declaration.
-cta_text: Declaring "the whole company will migrate to Linux" almost always fails. Start with one person, deliver results, and wait for allies to grow. This strategy fits Mythos-era organizations as well.
+cta_title: Tools first, OS later.
+cta_text: Declaring "the whole company will migrate to Linux" almost always fails. What you do first is Markdown, Python, and Claude — these run on Windows. Change the tools first, then change the OS, and the friction drops to a minimum.
 cta_btn1_text: Continue to Chapter 23
 cta_btn1_link: /en/claude-debian/23-passing-on/
 cta_btn2_text: Back to Chapter 21
@@ -22,36 +22,127 @@ cta_btn2_link: /en/claude-debian/21-telling-others/
 
 ## The Reality of Organizational Adoption
 
-"The entire company will migrate to Linux" — this kind of large-scale project almost always fails. Business-app compatibility, internal support, user education, budget, internal approvals — the moment any one of them hits a wall, the project stalls.
+"The entire company will migrate to Linux" — this kind of large-scale
+project almost always fails. Business-app compatibility, internal support,
+user education, budget, approvals — the moment any one of them hits a
+wall, the project stalls.
 
-What works instead is **starting with one person, building a track record, and waiting for allies to grow**. This chapter covers that realistic path.
+And **leading with Linux migration is the wrong sequence**. Swapping the
+OS is the largest change there is. There's something else that should
+go first.
 
-## Section 1 — Start with Your Own Work PC
+## Section 1 — Change the Tools Before Changing the OS
+
+The book's claim is simple — **before pushing an OS swap, change the
+tools first**. This is exactly what [AI-Native Ways of Working](/en/ai-native-ways/)
+spells out, and **you can start it today on Windows.**
+
+### What "the tools" means
+
+- Documents: Word → **Markdown** (export to .docx with pandoc only on delivery)
+- Spreadsheets: Excel → **CSV + Python (uv + pandas)** (export .xlsx only on delivery)
+- Slides: PowerPoint → **Markdown + Marp**
+- Diagrams: Visio / PPT shapes → **Mermaid**
+- Mail: Outlook → **Thunderbird** (same on both OSes)
+- Chat: Slack → **Element / Matrix** (self-hostable, you own the data)
+- Browser: Edge → **Firefox + Chrome** (same profile on both OSes)
+- Editor: VS Code → **Zed** (runs on both OSes)
+- Packaging: pip → **uv** (runs on both OSes)
+- AI: → **Claude Code** (`curl https://claude.ai/install.sh | bash`, both OSes)
+
+**All of these run on Windows.** You don't need to switch the OS yet.
+
+### Why this order works
+
+1. **Compatibility problems disappear.** Once the substance is Markdown
+   and CSV, the OS doesn't matter. A vendor sends Word, you receive it
+   as Markdown (via pandoc) and reply in Markdown.
+2. **The cost of retreat is small.** Tool changes can be reversed
+   ("I'll go back to Word"). OS swaps cannot, easily.
+3. **No persuasion needed.** "I write faster than Word," "next month's me
+   reruns the same aggregation in one command" — results land first. No
+   approval cycle.
+4. **No collision with IT.** "I'm not changing the OS, just how I write."
+5. **It prepares the OS migration.** The same tools run on Linux. Once
+   the substance has moved, swapping the OS is **just changing the
+   desktop wrapper** — a small job.
+
+### The map of stages
+
+```
+Stage 0 (status quo):
+  Windows + Office + special-purpose apps
+
+Stage 1 (change the tools — this book's main recommendation):   ← works on Windows
+  Windows + Markdown + CSV + Python(uv) + Claude + Element + Zed
+  Office shrinks to an import / export adapter
+
+Stage 2 (change the OS — for those who want to):
+  Debian + Flatpak + the same tools
+  Stage 1 already runs, so this is just changing the wrapper
+
+Stage 3 (one person + AI as the unit, organization changes):
+  Each member is an autonomous unit; the organization coordinates
+```
+
+**90% of organizational adoption gets done at Stage 1.** Even without
+forcing Stage 2 (the OS migration), **most of the productivity and
+security gains arrive at Stage 1 alone.**
+
+### Ask Claude ①: A Tool-Change Plan (No Linux Yet)
+
+> Given my role [industry / role], main work [content], and organization
+> size [headcount], scaffold a 90-day plan to introduce the following
+> tools **while staying on Windows**:
+> - Markdown (documents), CSV + Python uv (spreadsheets), Marp (slides), Mermaid (diagrams)
+> - Thunderbird (mail), Element (chat), Firefox / Chrome (browser)
+> - Zed (editor), Claude Code (AI alongside)
+>
+> For each week, give the tasks and the first deliverable (a small,
+> visible internal win). Include the **import / export adapters** with
+> existing Office / Outlook / Teams.
+
+## Section 2 — Start with Your Own Work PC (Stage 2)
+
+When the tool change has settled, **then** the people who still want
+Linux move to Stage 2. Not by mandate; **by individual choice.**
 
 ### A Fait Accompli, Rather Than an Approval
 
-Begin by **starting to use Debian on your own work PC**. Whether this is allowed varies by your role, your work, and internal rules — but at many companies, even short of "OS choice is up to the individual," it is silently tolerated as long as the developer environment or work isn't disrupted.
+Whether this is allowed varies by your role, your work, and internal
+rules — but at many companies, even short of "OS choice is up to the
+individual," it is silently tolerated as long as the developer
+environment or work isn't disrupted.
 
 - Developers: it isn't unusual to have a work PC on Linux.
 - Data analysts: a Python / SQL environment feels natural on Linux.
 - Web operations: server work often demands Linux anyway.
-- Admin / sales: heavy Office dependence, but possible depending on the work.
+- Admin / sales: heavy Office dependence, but **once Stage 1 is done**
+  the migration bar drops dramatically (the substance is already in
+  Markdown / CSV).
 
 ### Alignment with the Mythos Era
 
-As I wrote in [Chapter 11, "Claude Mythos — WordPress + AI"](/en/blog/claude-mythos-wordpress-ai/) and [Chapter 13, "Desk Work in the AI Era"](/en/blog/software-dev-independence/), **dependence on Windows is a high security risk in the Mythos era**. If the IT department is starting to understand this structure, migrating to Linux becomes a legitimate option.
+As I wrote in [Chapter 11, "Claude Mythos — WordPress + AI"](/en/blog/claude-mythos-wordpress-ai/)
+and [Chapter 13, "Desk Work in the AI Era"](/en/blog/software-dev-independence/),
+**dependence on Windows is a high security risk in the Mythos era**. If
+the IT department is starting to understand this structure, Stage 2
+(Linux migration) becomes a legitimate option.
 
-### Ask Claude ①: Possibility in Your Own Work
+### Ask Claude ②: Should I Move to Stage 2?
 
-> Based on my role [industry / role], main work [content], and organization size [headcount], if I replaced my work PC with Debian, organize:
+> I've been running Stage 1 (Markdown / CSV / Python uv / Claude /
+> Element / Zed) for [X] months. My role is [industry / role], my
+> organization is [headcount].
 >
-> (1) Functions / apps that would obstruct work.
-> (2) Alternatives or workarounds.
-> (3) How to explain it and build agreement inside the organization.
-> (4) Realistic probability of execution (high / medium / low).
-> (5) A goal achievable in six months.
+> Is it worth migrating my work PC to Debian? Lay out:
+> (1) Pain that remains under Stage 1 alone.
+> (2) Pain that disappears on Linux.
+> (3) New pain that appears on Linux.
+> (4) A six-month achievable goal.
+> (5) Realistic probability of pulling Stage 2 off (high / medium / low).
 
-## Section 2 — Show Small Wins
+## Section 3 — Show Small Wins
 
 ### Speak with Deliverables
 
@@ -68,7 +159,7 @@ Once you've migrated to Debian, show the following.
 
 Record your migration and operation on the internal wiki or your team's documents. When others read it, that itself becomes a sample.
 
-## Section 3 — Build the Second and Third Person
+## Section 4 — Build the Second and Third Person
 
 ### Support Those Who Show Interest
 
@@ -100,7 +191,7 @@ This becomes the internal "support from below."
 > Flatpak; the same client can carry business messages and family chat
 > on one machine. And there's no 90-day free-tier message expiry.
 
-## Section 4 — Relationship with the IT Department
+## Section 5 — Relationship with the IT Department
 
 ### Don't Make Them the Enemy
 
@@ -121,14 +212,14 @@ The IT department worries about:
 
 Build, with Claude, proposals that defuse each one.
 
-### Ask Claude ②: A Proposal to the IT Department
+### Ask Claude ③: A Proposal to the IT Department
 
 > My affiliation: []. I want to propose to the IT department that I switch my work PC to Debian.
 > For each category the IT department is likely to worry about (security, support, connections, licensing), put together a proposal of my response / handling.
 > Tone is "consultation," not demand.
 > Include a fallback plan (the steps to return to Windows) if it fails.
 
-## Section 5 — Living with Business Apps
+## Section 6 — Living with Business Apps
 
 ### In-House-Only Apps
 
@@ -147,13 +238,13 @@ If Teams meetings are required for work, it runs on Linux too. The official nati
 
 Exchange Online is reachable from Thunderbird with IMAP setup. Calendar (CalDAV) works depending on configuration.
 
-### Ask Claude ③: A Handling Map for Business Apps
+### Ask Claude ④: A Handling Map for Business Apps
 
 > The business apps my organization uses are [list].
 > Make a table for each app: the current state of Linux support, and the handling proposal (alternative / VM / separate machine / web version).
 > Include handling for connections to internal systems (VPN, AD domain, certificates).
 
-## Section 6 — Move It with Cost Analysis
+## Section 7 — Move It with Cost Analysis
 
 ### Organizational Decisions Move on Numbers
 
@@ -166,7 +257,7 @@ Organizations that don't move on logic do move on numbers. Build the calculation
 
 A few tens of thousands to a hundred-plus thousand yen of savings per person per year is realistic. With 100 employees, that's millions to tens of millions of yen. **This is the number that lands with executives.**
 
-### Ask Claude ④: A Cost Calculation for Your Organization
+### Ask Claude ⑤: A Cost Calculation for Your Organization
 
 > Given my organization's size [headcount] and major licenses [Windows Pro, Office 365, security software], calculate annual savings if all or part of staff migrated to Debian + alternatives.
 >
@@ -177,7 +268,7 @@ A few tens of thousands to a hundred-plus thousand yen of savings per person per
 >
 > Give two scenarios: conservative and optimistic.
 
-## Section 7 — Be Ready for the Long Game
+## Section 8 — Be Ready for the Long Game
 
 ### Organizations Change Over Five Years
 
@@ -195,7 +286,7 @@ It's bad if "Linux culture in the company evaporates when you leave."
 
 **Grow it as a continuing system, not just one person's activity.**
 
-## Section 8 — When It Fails, Withdraw
+## Section 9 — When It Fails, Withdraw
 
 ### Withdrawal Is a Strategy Too
 
@@ -203,7 +294,7 @@ Organizational Debian adoption can fail. IT policy changes, business apps update
 
 When it fails, don't get emotional. Withdraw. **Just keep using Debian yourself.** The organization's direction and your own PC environment are separate things.
 
-### Ask Claude ⑤: Criteria for Withdrawal
+### Ask Claude ⑥: Criteria for Withdrawal
 
 > If I am championing Debian adoption in an organization, what conditions, when met, should I judge as "time to withdraw"? Give five clear criteria.
 > Also, when withdrawing, how to arrange the relationship with the organization so I can keep my own PC going.
@@ -212,13 +303,14 @@ When it fails, don't get emotional. Withdraw. **Just keep using Debian yourself.
 
 What you did in this chapter:
 
-1. Understood why simultaneous organizational migration fails.
-2. Set the strategy of starting from your own work PC.
-3. Sorted out how to show small wins in numbers.
-4. Confirmed how to keep IT not as the enemy.
-5. Designed realistic compromises with business apps.
-6. Got the practice of moving leadership with cost calculations.
-7. Set the long-game posture and the criteria for withdrawal.
+1. Understood why a simultaneous organizational Linux migration fails.
+2. Confirmed the strategy: **change the tools (Markdown / CSV / Python uv / Claude / Element / Zed) before changing the OS** — Stage 1 runs on Windows.
+3. Treated Stage 2 (Linux migration) as an individual decision for those who want it.
+4. Sorted out how to show small wins in numbers.
+5. Confirmed how to keep IT not as the enemy.
+6. Designed realistic compromises with business apps.
+7. Got the practice of moving leadership with cost calculations.
+8. Set the long-game posture and the criteria for withdrawal.
 
 What you hold now:
 - Debian operating in your own work.

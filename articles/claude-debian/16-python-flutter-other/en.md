@@ -4,7 +4,7 @@ lang: en
 number: "16"
 title: Chapter 16 — Python, Flutter, and Other Environments
 subtitle: When you need a language, build it up with Claude
-description: Python on `uv` as the main line, miniforge alongside for data science and ML. Then Flutter / Dart, Node.js, Rust, Go, Docker — the knack of putting each together with Claude on Debian. Not for memorizing — a map you come back to when you need it.
+description: Python on `uv` as the main line, miniforge alongside for data science and ML. GUI via Flutter/Dart; Rust narrowed to speeding up Python hot spots (PyO3). Other choices (web, CLI) live as a map for when you need them. Working alongside Claude on Debian.
 date: 2026.04.23
 label: Claude × Debian 16
 prev_slug: claude-debian-15-claude-development
@@ -277,110 +277,71 @@ flutter doctor
 > (4) Magnitude of the AI-completion benefit (Claude / Copilot).
 > (5) Long-term maintainability.
 
-## Section 4 — Node.js / TypeScript
+## Section 4 — Rust (To Speed Up Python)
 
-### Version Management with `nvm` or `fnm`
+Rust is a wonderful language, but in this book we **don't use it
+standalone**. Daily scripts, business logic, GUI, web — all of these go
+faster, stay easier to maintain, and pair better with AI when written in
+Python (with `uv`).
 
-```bash
-# fnm (Rust-based, fast)
-curl -fsSL https://fnm.vercel.app/install | bash
+The place we reach for Rust is **"replace a Python hot spot with Rust."**
 
-# Install LTS
-fnm install --lts
-fnm use lts-latest
-```
+### You Already Benefit from Rust
 
-### TypeScript Setup
+Many of the main tools in this book are **written in Rust under the hood**:
 
-```bash
-npm init -y
-npm install -D typescript @types/node
-npx tsc --init
-```
+| Tool | Implementation | Effect |
+|---|---|---|
+| **uv** | Rust | 10–100× faster than pip + venv |
+| **ruff** | Rust | 10–100× faster than flake8 + black + isort |
+| **polars** | Rust | several to ten times faster than pandas DataFrames |
+| **pydantic v2** | Rust (core) | data validation an order of magnitude faster |
+| **fnm** | Rust | Node.js version management |
+| **Zed** | Rust | the editor we adopted in Chapter 13 |
 
-### Major Tools by Use
+You enjoy Rust without writing it. That is the 2026 reality of where
+Rust lives — **Python broad on the surface, Rust fast at the bottom.**
 
-- Web frontend → React / Vue / Svelte.
-- Backend → Express / Hono / NestJS.
-- Scripts → tsx (run TypeScript instantly).
-- Build → Vite, esbuild.
+### When You Do Reach for Rust
 
-### Ask Claude ④: JS / TS in 2026
-
-> I want to write [a browser SPA / a Node.js backend / scripts / Electron].
-> As of 2026, which framework / tools should I pick?
-> Include the reasons, and the older choices to avoid.
-
-## Section 5 — Rust
-
-### Install
+Profile your Python with `cProfile` or `py-spy`. **If a single function
+takes more than half** the running time, that's your Rust candidate.
 
 ```bash
+# Rust toolchain
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-`rustup`, `cargo`, and `rustc` are placed under your home directory.
-
-### What Rust Suits
-
-- **Systems-adjacent.** Filesystems, network tools, CLIs.
-- **Performance-critical.** Image processing, data pipelines.
-- **Concurrency.** Servers and backends.
-- **Safety-critical.** Strong memory safety and type safety.
-
-### What Rust Doesn't Suit
-
-- **Small scripts.** Python is enough.
-- **Quick prototypes.** Rust compile times are long.
-- **Exploratory work where requirements churn.** A type-strict language gives up flexibility.
-
-### Ask Claude ⑤: Should I Pick Up Rust
-
-> What I want to build is [purpose]. Should I learn Rust to build it, or build it in another language? Make the call.
-> Be concrete about the learning cost (hours per week, for how many weeks) and the trade-off of what you get.
-
-## Section 6 — Go
-
-### Install
+The cleanest way to call Rust from Python is **maturin + PyO3**:
 
 ```bash
-sudo apt install golang-go
-# Or get the latest from the official site
+uv tool install maturin
+maturin new --bindings pyo3 my_fastlib
+cd my_fastlib
+maturin develop   # build and install into the same project's uv venv
 ```
 
-### What Go Suits
+Now `import my_fastlib` works on the Python side — Rust functions called
+as Python functions.
 
-- **CLI tools.** Easy to ship as a single file.
-- **Servers.** Simple and fast.
-- **Cloud-native (Kubernetes-style)** systems.
+### Use Rust, Don't Write It
 
-Faster to learn than Rust, sturdier than Python. The midpoint of "good-enough performance and good-enough safety."
+- Pick existing Rust-built tools (uv / ruff / polars, etc.).
+- Write Rust yourself **only for hot spots that profiling pointed to**.
+- Pin behavior with Python tests first, then translate to Rust.
+- **Ask Claude to "rewrite this Python function in Rust via maturin/PyO3"** — that prompt works fine.
 
-## Section 7 — Docker
+Don't "learn Rust first, then build something." **Get stuck in Python
+first, then drop to Rust** — that's the right order.
 
-### Install
+### Ask Claude ④: Move a Python Hot Spot to Rust
 
-```bash
-# From Docker's official repository
-sudo apt install docker.io docker-compose
+> I profiled my Python code [paste] with `cProfile`. Function [name]
+> accounted for [percentage] of total runtime. Show me, with a minimal
+> example, how to rewrite it in Rust via maturin + PyO3, keeping the
+> Python-side interface unchanged.
 
-# Add yourself to the docker group
-sudo usermod -aG docker $USER
-# Log out and back in
-```
-
-### When Docker Is Useful
-
-- **Try a tool with complex dependencies.** PostgreSQL, Redis, MinIO.
-- **Experiment without breaking your environment.** Drop the image and you're back where you started.
-- **Run something close to production.** Reduce the gap between dev and prod.
-
-### Ask Claude ⑥: First Steps with Docker
-
-> I want to run [what you want to try] with Docker. Show a minimal docker-compose.yml example and the steps from launch → verify → stop.
-> Cover the points beginners get stuck on (ports, volumes, networks), with workarounds.
-
-## Section 8 — Databases
+## Section 5 — Databases
 
 ### SQLite
 
@@ -411,7 +372,7 @@ psql
 
 As discussed in [Chapter 15, "Security Design in the Mythos Era"](/en/insights/security-design/), the strongest design is **not putting a DB into production**. For personal projects, SQLite often suffices.
 
-## Section 9 — The Habit of Switching Environments
+## Section 6 — The Habit of Switching Environments
 
 ### Isolate Per Project
 
@@ -441,13 +402,13 @@ du -sh ~/.cache/uv ~/.local/share/uv
 flatpak uninstall --unused -y
 ```
 
-### Ask Claude ⑦: Environment Diet
+### Ask Claude ⑤: Environment Diet
 
 > My home directory is consuming the following: [output of `du -sh`].
 > Sort what's safe to delete, what must not be deleted, and the caches I should clean periodically.
 > Also draft a shell script for periodic cleanup.
 
-## Section 10 — How to Read the Map
+## Section 7 — How to Read the Map
 
 The environments listed in this chapter can all be revisited when you need them. **It is enough if you remember the table of contents below.**
 
@@ -474,11 +435,9 @@ What you did in this chapter:
 1. Standardized the Python stack on `uv` (project + tools + Python versions).
 2. Brought in **miniforge** for data science and ML, with a clean coexistence story alongside uv.
 3. Got the position of Flutter / Dart.
-4. Updated the 2026 view of Node.js / TypeScript.
-5. Confirmed where Rust and Go each shine.
-6. Sorted out where Docker fits.
-7. How to choose between SQLite and PostgreSQL.
-8. Built the habit of isolating and pruning environments.
+4. Decided that Rust isn't used standalone — only to **speed up Python hot spots** (maturin + PyO3).
+5. How to choose between SQLite and PostgreSQL.
+6. Built the habit of isolating and pruning environments.
 
 This closes Part 4. **Your Debian is now a development foundation you can put your hands on at any time.** When something you want to build appears, you can have its language environment ready in 30 minutes.
 

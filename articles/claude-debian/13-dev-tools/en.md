@@ -4,7 +4,7 @@ lang: en
 number: "13"
 title: Chapter 13 — Building the Development Tools
 subtitle: Terminal, shell, editor, Git — the toolkit of a builder
-description: Lay the foundation for development on Debian. Terminal emulator, shell (bash / zsh / fish), editor (Vim / VSCode / Neovim), Git, SSH keys. Together with Claude, decide on a toolkit that fits your workflow.
+description: Lay the foundation for development on Debian. Terminal emulator, shell (bash / zsh / fish), editor (Zed / Neovim / PyCharm Community), Git, SSH keys. Together with Claude, decide on a toolkit that fits your workflow.
 date: 2026.04.23
 label: Claude × Debian 13
 prev_slug: claude-debian-12-config-management
@@ -104,43 +104,69 @@ chsh -s $(which zsh)     # change login shell to zsh
 
 ## Section 3 — Editor
 
-### Three Lines
+### Three Recommendations
 
-**Line A: lightweight text editor.**
-- gedit / GNOME Text Editor / Kate. Plain GUI editors.
-- For everyday notes and Markdown.
+VS Code is popular, but this book **deliberately doesn't pick it**. It's
+Microsoft's, with telemetry that's hard to fully turn off, an extension
+ecosystem that bloats fast, and a "kitchen-sink" weight that doesn't fit
+the lean AI-native toolkit (Markdown + Python + plain text) we're after.
 
-**Line B: Vim / Neovim.**
-- Keyboard-only operation.
-- Once mastered, dramatically fast; the learning curve is steep.
-- The minimum (insert, save, exit) is worth learning.
+Instead, we recommend **three editors, chosen by temperament and use case**.
 
-**Line C: VSCode / Cursor / Neovim + LSP.**
-- Feature-rich, IDE-like editor.
-- Plays well with AI completion.
-- Recommended by this book.
+#### 1. Zed — silent, ultra-fast, modern GUI
 
-### Installing VSCode on Debian
-
-From Microsoft's official repository, or via the `code` deb package.
+A clean wipe of VS Code's noise and weight. **If you want to face the text
+itself, nothing else**, this is it. Rust + GPU rendering give it
+near-instant launch and keystroke response. LSP and Copilot/Claude
+integrations are built in, so capability isn't the trade. For people
+done with extension hell.
 
 ```bash
-# Add the Microsoft official repo (ask Claude for the latest steps)
-# Then
-sudo apt install code
+# Flatpak is the easiest install
+flatpak install flathub dev.zed.Zed
 ```
 
-Don't install too many extensions. The following are enough at first.
+#### 2. Neovim — terminal-only, taken to its limit
 
-- Japanese Language Pack
-- GitLens
-- Markdown All in One
-- EditorConfig
-- Per-language extensions (only when you need them)
+Mouse becomes optional. **Editor on the left, Claude (or `tmux` split) on
+the right, every action stays under your fingers**, and SSH'd servers feel
+exactly the same. Pick this if you want maximum speed via the keyboard,
+and if a 10–20 year skill investment sounds good.
 
-### Bare-Minimum Vim
+```bash
+sudo apt install neovim
+```
 
-Even with VSCode as your editor, **being able to use Vim when you SSH into a server** is essential basic literacy.
+A minimal modern setup (LSP, treesitter, Telescope) is one minute away
+via LazyVim or AstroNvim.
+
+#### 3. PyCharm Community — robust fortress with deep code analysis
+
+The free Community edition is enough. **For when you need to refuse
+structural mistakes in AI-generated code and protect serious product
+logic.** Type inference, refactoring, debugger — these dwarf both Zed
+and Neovim. First choice if Python is your main work.
+
+```bash
+flatpak install flathub com.jetbrains.PyCharm-Community
+```
+
+### How to Choose
+
+| Temperament / Use | Pick |
+|------------------|------|
+| Quiet, fast, beautiful UI | **Zed** |
+| Keyboard-everything, same flow over SSH, long-term skill | **Neovim** |
+| Large Python codebases, frequent refactors, business responsibility | **PyCharm Community** |
+
+When in doubt, **start with Zed**. Lowest learning cost. If Vim bindings
+grow on you, descend to Neovim; if Python work scales up, add PyCharm
+beside it.
+
+### Bare-Minimum Vim Is Still Required
+
+Whichever you pick as primary, **being able to use `vim` when you SSH
+into a server** is basic literacy.
 
 ```
 hjkl        cursor movement
@@ -152,13 +178,16 @@ Esc         back to normal mode
 :q!         quit without saving
 ```
 
-With just this, you won't get stuck in the `sudo vim /etc/[whatever]` situation.
+This much is enough for `sudo vim /etc/[whatever]` situations. If you
+choose Neovim as primary, this comes for free.
 
 ### Ask Claude ③: Editor Configuration
 
-> My current main editor is [Word / Notepad / VSCode / other], and what I write is mainly [Japanese documents / code / Markdown].
-> Propose a combination of editors for Debian use (primary, secondary, emergency).
-> If VSCode is primary, narrow the must-install extensions to five.
+> My current main editor is [Word / Notepad / VS Code / other], and what
+> I write is mainly [Japanese documents / Python / Markdown / other].
+> From the three options Zed, Neovim, and PyCharm Community, which fits
+> my use? Tell me the reasoning and what to set up in the first 30 minutes.
+> Also suggest what to keep beside it as secondary or emergency editor.
 
 ## Section 4 — Git
 
@@ -171,8 +200,10 @@ sudo apt install git
 git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 
-# Editor
-git config --global core.editor "code --wait"   # for VSCode
+# Editor (used to open commit messages, etc.)
+git config --global core.editor "zed --wait"    # for Zed
+# git config --global core.editor "nvim"        # for Neovim
+# git config --global core.editor "charm"       # for PyCharm (via JetBrains Toolbox)
 
 # Default branch name
 git config --global init.defaultBranch main
@@ -298,7 +329,7 @@ What you did in this chapter:
 
 1. Picked a terminal emulator and tuned the font and color scheme.
 2. Decided on a shell (bash or zsh) and tuned `.bashrc` / `.zshrc`.
-3. Built up the editor (VSCode primarily, plus minimum Vim).
+3. Built up the editor (Zed / Neovim / PyCharm Community plus minimum Vim).
 4. Configured Git, made an SSH key, and connected to GitHub.
 5. Installed the basic developer packages.
 6. Installed Claude Code.

@@ -3,7 +3,7 @@ slug: claude-debian-13-dev-tools
 number: "13"
 title: 第13章 開発ツールの構築
 subtitle: ターミナル、シェル、エディタ、Git——ビルダーの道具を揃える
-description: Debianに開発のための基盤を整える。ターミナルエミュレータ、シェル（bash/zsh/fish）、エディタ（Vim/VSCode/Neovim）、Git、SSH鍵。Claudeと一緒に、自分のワークフローに合った道具立てを決める。
+description: Debianに開発のための基盤を整える。ターミナルエミュレータ、シェル（bash/zsh/fish）、エディタ（Zed/Neovim/PyCharm Community）、Git、SSH鍵。Claudeと一緒に、自分のワークフローに合った道具立てを決める。
 date: 2026.04.23
 label: Claude × Debian 13
 prev_slug: claude-debian-12-config-management
@@ -103,43 +103,66 @@ chsh -s $(which zsh)     # ログインシェルを zsh に
 
 ## 第三節 エディタ
 
-### 三つの路線
+### 本書の三つの推奨
 
-**路線A：軽量テキストエディタ**
-- **gedit / GNOME Text Editor / Kate**：GUIの素朴なエディタ
-- 普段のメモやMarkdown書きに
+VS Code は人気だが、本書では **あえて選ばない**。Microsoft 製で、テレメトリ
+の挙動・拡張機能の肥大・「全部入り」の重さが、Markdown と Python と
+テキストで仕事をする AI ネイティブな道具立てと噛み合わない。
 
-**路線B：Vim / Neovim**
-- キーボードのみで操作
-- 習熟すれば圧倒的に速いが、学習曲線が急
-- 最低限の操作（挿入・保存・終了）は覚える価値がある
+代わりに、**用途と気質で選べる三つ** を推す。
 
-**路線C：VSCode / Cursor / Neovim + LSP**
-- 機能豊富なIDE的エディタ
-- AI補完との相性が良い
-- 本書の推奨
+#### 1. Zed ── 余計な機能が一切ない超高速 GUI
 
-### VSCode をDebianに入れる
-
-Microsoft公式リポジトリから、または `code` deb パッケージ。
+VS Code からノイズと重さだけを完全に消し去り、**純粋にテキストと向き合いたい**
+ならこれ。Rust + GPU レンダリングで起動から入力反応までが圧倒的に速い。
+LSP・Copilot/Claude 連携も最初から入っているので、機能で困らない。
+拡張地獄から抜けたい人向け。
 
 ```bash
-# Microsoft公式リポジトリを追加（Claudeに最新の手順を確認）
-# その後
-sudo apt install code
+# Flatpak が一番楽
+flatpak install flathub dev.zed.Zed
 ```
 
-拡張機能は「入れすぎない」。最初は次くらいで十分。
+#### 2. Neovim ── ターミナル完結の極致
 
-- Japanese Language Pack
-- GitLens
-- Markdown All in One
-- EditorConfig
-- 各言語の拡張（必要になってから）
+マウスすら不要になる。**画面の左にエディタ、右に Claude(または `tmux` で
+分割)を置き、手元(キーボード)の操作だけで全てを最速で完結させたい**ならこれ。
+SSH 越しのサーバ作業もそのまま同じ操作で続く。
 
-### Vim最低限
+```bash
+sudo apt install neovim
+```
 
-エディタがVSCodeであっても、**サーバーに入ったときにVimが触れる**のは最低限の基礎教養だ。
+最低限の設定(LSP, treesitter, Telescope) は LazyVim や AstroNvim を使えば
+1 分で完了。Vim キーバインドは一度覚えると 10 年 20 年使い続けられる。
+
+#### 3. PyCharm Community ── 圧倒的なコード解析力を持つ堅牢な要塞
+
+無料の Community 版で十分。**AI が書いたコードの構造的なミスを許さず、
+自社プロダクトのロジックを安全に守り抜く** ならこれ。型推論・リファクタ・
+デバッガの完成度は Zed と Neovim を圧倒する。Python が主な業務なら第一選択。
+
+```bash
+# Flatpak から
+flatpak install flathub com.jetbrains.PyCharm-Community
+```
+
+### どう選ぶか
+
+| 気質・用途 | 選ぶ |
+|----------|-----|
+| 静寂と速度、UI の美しさを優先 | **Zed** |
+| キーボード完結、SSH 越しでも同じ操作、長期投資 | **Neovim** |
+| 大規模 Python コード、リファクタ多発、業務責任 | **PyCharm Community** |
+
+迷ったら **Zed から始める**。学習コストが一番低い。Vim キーバインドが
+気に入れば Neovim に降りていけばいいし、Python の業務が増えたら
+PyCharm を併用すればいい。
+
+### Vim 最低限は別途身につける
+
+主エディタが Zed でも PyCharm でも、**サーバーに入ったときに `vim` が触れる**
+のは最低限の基礎教養。
 
 ```
 hjkl        カーソル移動
@@ -151,13 +174,16 @@ Esc         ノーマルモードに戻る
 :q!         保存せず終了
 ```
 
-これだけ覚えれば、`sudo vim /etc/〇〇` の場面で困らない。
+これだけ覚えれば `sudo vim /etc/〇〇` の場面で困らない。
+Neovim を主にすれば、これも自然に身につく。
 
-### Claudeに聞いてみよう③：エディタ構成
+### Claudeに聞いてみよう③:エディタ構成
 
-> 私は〔現在の主力エディタ：Word/メモ帳/VSCode/その他〕で、書くのは〔日本語の文書／コード／Markdown〕が中心です。
-> Debianで使うエディタの組み合わせ（主・副・緊急時）を提案してください。
-> VSCode を主にする場合、最低限入れるべき拡張機能を5つに絞って列挙してください。
+> 私は〔現在の主力エディタ:Word / メモ帳 / VS Code / その他〕で、
+> 書くのは〔日本語の文書 / Python / Markdown / その他〕が中心です。
+> Zed / Neovim / PyCharm Community の三つから、私の用途に合うのは
+> どれか、選定の根拠と最初の 30 分で何を設定すべきかを教えてください。
+> 副・緊急時用に何を併用するかも提案してください。
 
 ## 第四節 Git
 
@@ -170,8 +196,10 @@ sudo apt install git
 git config --global user.name "Your Name"
 git config --global user.email "you@example.com"
 
-# エディタ
-git config --global core.editor "code --wait"   # VSCode の場合
+# エディタ(コミットメッセージなどを開く既定エディタ)
+git config --global core.editor "zed --wait"    # Zed の場合
+# git config --global core.editor "nvim"        # Neovim の場合
+# git config --global core.editor "charm"       # PyCharm の場合(JetBrains Toolbox から)
 
 # デフォルトブランチ名
 git config --global init.defaultBranch main
@@ -297,7 +325,7 @@ claude
 
 1. ターミナルエミュレータを選び、フォントと配色を整えた
 2. シェル（bash か zsh）を決め、`.bashrc` / `.zshrc` を整えた
-3. エディタ（主にVSCode + Vim最低限）を構築した
+3. エディタ（Zed / Neovim / PyCharm Community のいずれか + Vim 最低限）を構築した
 4. Git を初期設定し、SSH鍵を作ってGitHubに繋いだ
 5. 開発向け基本パッケージを入れた
 6. Claude Code をインストールした

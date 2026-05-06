@@ -101,12 +101,21 @@ UIに「取得失敗」と出して、再試行ボタンを用意。クラッシ
 ```python
 # Pythonの標準ロギング
 import logging
+from pathlib import Path
+
+log_dir = Path.home() / ".local" / "share" / "my-dashboard"
+log_dir.mkdir(parents=True, exist_ok=True)
+
 logging.basicConfig(
-    filename='~/.local/share/my-dashboard/app.log',
+    filename=log_dir / "app.log",
     level=logging.INFO,
     format='%(asctime)s %(levelname)s %(message)s'
 )
 ```
+
+`logging.basicConfig(filename=...)` に `~` を直書きすると **展開されず
+そのまま `~` というディレクトリが作られる**(よくある落とし穴)。
+`Path.home()` で先に展開してから渡す。
 
 ### Claudeに聞いてみよう①：エラー処理の見直し
 
@@ -123,7 +132,10 @@ logging.basicConfig(
 
 ### テストの最小単位
 
-`pytest` を使う。Debian には `apt install python3-pytest` でも、仮想環境に `pip install pytest` でも入る。
+`pytest` を使う。本書では **`uv add --dev pytest`** で入れる
+(プロジェクト固有の dev 依存として `pyproject.toml` に記録される)。
+`apt install python3-pytest` はシステム Python 用で、業務プロジェクトでは
+使わない。
 
 ```python
 # tests/test_clock_widget.py
@@ -147,9 +159,10 @@ def test_format_time():
 ### テストを回す
 
 ```bash
-pytest tests/
+uv run pytest tests/
 ```
 
+`uv run` を頭に付けると、プロジェクトの `.venv/` にある pytest が走る。
 全部パスするのを確認。赤が出たら、コードかテストかどちらが正しいかを判断する。
 
 ### テストは生き物
@@ -187,33 +200,54 @@ Python標準の `tomllib`（3.11以降）で読める。
 
 ## 第六節 配布できる形にする
 
-### 依存関係をまとめる
+### 依存関係はすでに `pyproject.toml`
 
-`requirements.txt` または `pyproject.toml` に依存ライブラリを書く。
+`uv add` で入れた依存はすべて `pyproject.toml` に記録され、`uv.lock` が
+**バージョンを完全固定**する。`requirements.txt` は要らない。
 
 ```toml
-# pyproject.toml
+# pyproject.toml(uv add で自動生成・更新される)
 [project]
 name = "my-dashboard"
 version = "0.1.0"
+requires-python = ">=3.11"
 dependencies = [
     "flet>=0.20",
     "httpx>=0.27",
 ]
+
+[dependency-groups]
+dev = ["pytest>=8.0"]
 ```
+
+別 PC への移行は `git clone && uv sync` の **2 コマンド**で終わる。
 
 ### 実行スクリプト
 
-`bin/my-dashboard` のようなシェルスクリプトを作って、起動を一発にする。
+シェルスクリプトを書く必要はあまりない。`uv run` で直接動く。
 
 ```bash
-#!/bin/sh
-cd "$(dirname "$0")/.."
-source ~/envs/flet/bin/activate
-exec python3 -m my_dashboard
+# プロジェクト直下で
+uv run python -m my_dashboard
 ```
 
-これを `~/.local/bin/` に置けば、ターミナルから `my-dashboard` で起動できる。
+それでも 1 コマンドで呼びたい場合は、`uv tool install` で世界に
+公開できる:
+
+```bash
+# 自分のプロジェクトをツールとして PATH に登録
+uv tool install --editable .
+# あとはどこからでも
+my-dashboard
+```
+
+`pyproject.toml` の `[project.scripts]` でエントリポイントを定義しておくと、
+`uv tool install` が自動でコマンドを `~/.local/bin/` に置く。
+
+```toml
+[project.scripts]
+my-dashboard = "my_dashboard.__main__:main"
+```
 
 ### デスクトップエントリ
 
@@ -224,10 +258,12 @@ exec python3 -m my_dashboard
 [Desktop Entry]
 Type=Application
 Name=My Dashboard
-Exec=/home/you/bin/my-dashboard
+Exec=my-dashboard
 Icon=/home/you/Projects/my-dashboard/assets/icon.png
 Categories=Utility;
 ```
+
+`uv tool install` 済みなら `Exec=my-dashboard` で動く。
 
 ### Claudeに聞いてみよう③：配布の仕上げ
 

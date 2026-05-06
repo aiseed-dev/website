@@ -154,7 +154,7 @@ Use this opportunity to take stock of subscriptions. Many people are paying tens
 | Type | Example | Treatment after Debian migration |
 | --- | --- | --- |
 | OS license | Windows 11 Pro | Won't be used. If unwanted, give up on a refund |
-| Office | Microsoft 365 | If LibreOffice is enough, cancel |
+| Office | Microsoft 365 | **Switch to Markdown + CSV + Python** for most cases. LibreOffice or Office Online is usually enough for the rare submission needing Office formats |
 | Security | Norton, Virus Buster | Debian's defaults are enough. Cancel |
 | Cloud | OneDrive paid tier | Move to another service or scale down |
 | Image / video | Adobe Creative Cloud | Consider whether DaVinci Resolve, GIMP, Inkscape can substitute |
@@ -184,6 +184,36 @@ For other software, check whether the key can be retrieved from the program's "L
 > Please add a rough estimate of the annual amount that could be saved.
 
 When the savings come out as concrete numbers, motivation for the migration goes up.
+
+## Section 4.5 — **Rebuild on Markdown and CSV, and Office Becomes Optional**
+
+Step further. As long as you frame Office as "what to replace it with,"
+you keep moving inside Microsoft's world. **Rebuild your working surface
+on Markdown, CSV, and Python**, and most use cases stop needing
+Office-class software at all.
+
+| Use | Old way | AI-native way |
+|-----|---------|--------------|
+| Notes, meeting minutes | Word | **Markdown** |
+| Proposals, reports | Word + PowerPoint | **Markdown + Marp** → PDF |
+| Spreadsheets, sales rollups | Excel | **CSV + pandas** (uv environment) |
+| Invoices | Word templates | **Markdown templates + Python** (mail merge) |
+| Monthly reports | Excel + Word | **CSV → Markdown → PDF** (one `make` away) |
+| Slides | PowerPoint | **Markdown + Marp** |
+| Diagrams | PowerPoint / Visio | **Mermaid** |
+
+Convert to .docx / .xlsx / .pdf via pandoc or LibreOffice **only at the
+boundary** — input from and output to the outside world. The substance
+stays as structured text.
+
+Concrete code and measurements live in the [AI-Native Ways of Working](/en/ai-native-ways/)
+example sets (monthly report in 30 seconds, 100 Excel files aggregated
+in 0.07 s, etc.).
+
+With this stance, "cancel Microsoft 365" becomes a viable line in the
+subscription audit. Not "I can't write a document without Word," but
+"Markdown is better than Word — **AI can read it, I can grep it, and
+it'll still work in ten years**."
 
 ## Section 5 — D and E: Hardware and Connections with People
 

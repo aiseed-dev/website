@@ -40,8 +40,11 @@ The tools differ at each stage.
 # Launch from the command line and read the error message
 appname
 
-# Example: if VSCode crashes
-code --verbose
+# Example: if Zed crashes
+zed --foreground
+
+# For a Flatpak app (e.g. Chrome)
+flatpak run --verbose com.google.Chrome
 ```
 
 ### Common Causes

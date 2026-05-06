@@ -48,13 +48,15 @@ Like `~/.mozilla/firefox/`. Different per app.
 ### Frequently Touched Files (Examples)
 
 ```
-~/.bashrc               # bash settings
-~/.profile              # login shell settings
-~/.gitconfig            # git user info
-~/.ssh/config           # SSH connection definitions
-~/.config/fcitx5/       # Japanese input
-~/.config/Code/User/    # VSCode settings
-~/.config/autostart/    # apps that auto-start
+~/.bashrc                       # bash settings
+~/.profile                      # login shell settings
+~/.gitconfig                    # git user info
+~/.ssh/config                   # SSH connection definitions
+~/.config/fcitx5/               # Japanese input
+~/.config/zed/settings.json     # Zed editor settings
+~/.config/nvim/                 # Neovim (init.lua / lazy-lock.json)
+~/.config/JetBrains/PyCharmCE2026.1/  # PyCharm Community settings
+~/.config/autostart/            # apps that auto-start
 ```
 
 ## Section 2 — Manage dotfiles with Git
@@ -97,7 +99,7 @@ API keys, access tokens, and passwords don't go in dotfiles.
 ### Ask Claude ①: Designing the dotfiles
 
 > I want to manage my Debian environment as Git-tracked dotfiles.
-> The files I want under management now are [list: bashrc, gitconfig, ssh/config, fcitx5 settings, VSCode settings].
+> The files I want under management now are [bashrc, gitconfig, ssh/config, fcitx5, Zed and Neovim configuration].
 >
 > Please give me:
 > (1) A recommended directory structure.

@@ -203,11 +203,11 @@ DEによって方法は違うが、一発で「通知オフ、他アプリを閉
 # 2026年7月の環境変化
 
 ## 追加
-- scriptに weekly-report.sh（毎週月曜の報告書作成を自動化）
-- VSCode 拡張：errorLens
+- scriptに weekly-report.sh(毎週月曜の報告書作成を自動化)
+- Zed の AI 補完を Claude に切替、settings.json を dotfiles に追加
 
 ## 削除
-- unused: LibreOffice Draw（一度も使わなかった）
+- unused: LibreOffice Draw(Markdown + Mermaid + Marp で足りた)
 
 ## 気付き
 - Tmuxを導入したらターミナル作業が一気に速くなった

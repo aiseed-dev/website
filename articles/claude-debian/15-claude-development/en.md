@@ -102,12 +102,21 @@ For the developer (you) to be able to follow the cause, write to a file.
 ```python
 # Standard Python logging
 import logging
+from pathlib import Path
+
+log_dir = Path.home() / ".local" / "share" / "my-dashboard"
+log_dir.mkdir(parents=True, exist_ok=True)
+
 logging.basicConfig(
-    filename='~/.local/share/my-dashboard/app.log',
+    filename=log_dir / "app.log",
     level=logging.INFO,
     format='%(asctime)s %(levelname)s %(message)s'
 )
 ```
+
+Common pitfall: passing a literal `'~/...'` to `logging.basicConfig`
+**won't expand the tilde** — it creates a directory literally named `~`.
+Use `Path.home()` to resolve it first.
 
 ### Ask Claude ①: Reviewing Error Handling
 
@@ -124,7 +133,10 @@ logging.basicConfig(
 
 ### The Smallest Unit of a Test
 
-Use `pytest`. On Debian, install with `apt install python3-pytest`, or `pip install pytest` in a virtual environment.
+Use `pytest`. This book installs it via **`uv add --dev pytest`** so it
+gets recorded as a per-project dev dependency in `pyproject.toml`.
+`apt install python3-pytest` is for the system Python and isn't used in
+real projects.
 
 ```python
 # tests/test_clock_widget.py
@@ -148,8 +160,10 @@ def test_format_time():
 ### Run the Tests
 
 ```bash
-pytest tests/
+uv run pytest tests/
 ```
+
+Prefixing with `uv run` uses the pytest in your project's `.venv/`.
 
 Confirm they all pass. If something is red, judge whether the code is wrong or the test is wrong.
 
@@ -188,33 +202,53 @@ It can be read with Python's standard `tomllib` (3.11+).
 
 ## Section 6 — Make It Distributable
 
-### Pin the Dependencies
+### Dependencies Are Already in `pyproject.toml`
 
-Write the dependencies in `requirements.txt` or `pyproject.toml`.
+Anything added with `uv add` is recorded in `pyproject.toml`, and `uv.lock`
+**fully pins versions**. No `requirements.txt` is needed.
 
 ```toml
-# pyproject.toml
+# pyproject.toml (auto-updated by uv add)
 [project]
 name = "my-dashboard"
 version = "0.1.0"
+requires-python = ">=3.11"
 dependencies = [
     "flet>=0.20",
     "httpx>=0.27",
 ]
+
+[dependency-groups]
+dev = ["pytest>=8.0"]
 ```
 
-### A Launcher Script
+Moving to another machine takes just two commands: `git clone && uv sync`.
 
-Create a shell script like `bin/my-dashboard` so launching is one step.
+### Launching
+
+You usually don't need a shell wrapper; `uv run` runs it directly.
 
 ```bash
-#!/bin/sh
-cd "$(dirname "$0")/.."
-source ~/envs/flet/bin/activate
-exec python3 -m my_dashboard
+# In the project root
+uv run python -m my_dashboard
 ```
 
-Drop this into `~/.local/bin/` and you can launch it from the terminal as `my-dashboard`.
+If you want a single command name, install your project as a tool:
+
+```bash
+# Install your own project as an editable tool
+uv tool install --editable .
+# Then from anywhere
+my-dashboard
+```
+
+Define an entry point in `pyproject.toml` and `uv tool install` puts the
+command in `~/.local/bin/`.
+
+```toml
+[project.scripts]
+my-dashboard = "my_dashboard.__main__:main"
+```
 
 ### Desktop Entry
 
@@ -225,7 +259,7 @@ So you can launch it from the application menu.
 [Desktop Entry]
 Type=Application
 Name=My Dashboard
-Exec=/home/you/bin/my-dashboard
+Exec=my-dashboard
 Icon=/home/you/Projects/my-dashboard/assets/icon.png
 Categories=Utility;
 ```

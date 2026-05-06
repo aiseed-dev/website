@@ -205,10 +205,10 @@ In `~/journal/`, record monthly changes to the environment.
 
 ## Added
 - script weekly-report.sh (automates Monday's report build)
-- VSCode extension: errorLens
+- Switched Zed AI completion to Claude; added settings.json to dotfiles
 
 ## Removed
-- unused: LibreOffice Draw (never used it)
+- unused: LibreOffice Draw (Markdown + Mermaid + Marp covered it)
 
 ## Realizations
 - After introducing Tmux, terminal work got dramatically faster

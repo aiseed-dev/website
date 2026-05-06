@@ -26,6 +26,25 @@ In Chapter 5 we surveyed the eight stages of installation. Among them, the ones 
 
 ## Section 1 — Choosing a Desktop Environment
 
+### In AI-Native Work, the DE Can Stay Thin
+
+The book's stance, up front. **The real battlefield is terminal + browser
++ editor.** Writing Markdown, aggregating CSVs with pandas, drawing
+diagrams in Mermaid, talking to Claude, taking history with git — none
+of these depend much on what the DE looks like.
+
+Given that, **a lean DE is an advantage**, not a compromise.
+
+- Memory and CPU stay with the work (editor, browser, Python).
+- Old PCs keep being useful (matches Chapter 17's "revive old hardware").
+- The DE itself is less likely to break across updates.
+- Settings are simple enough to be tracked as Markdown (matches the
+  Chapter 12 dotfiles workflow).
+
+We compare four candidates below, but **Xfce / LXQt and similarly thin
+DEs are not a "safe compromise" — they can be the first AI-native
+choice.** Read with that lens.
+
 ### Features of the Major Candidates
 
 There are four representative desktop environments to choose from on Debian.

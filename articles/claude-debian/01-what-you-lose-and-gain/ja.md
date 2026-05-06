@@ -37,7 +37,15 @@ cta_btn2_link: /claude-debian/prologue/
 業界専用アプリ、特定の会計ソフト、CAD、一部のAdobe製品、アンチチート付きオンラインゲーム。これらはDebianでそのままは動かない。
 
 **B. 完全互換ではないが代替があるもの**
-Microsoft Office（→ LibreOffice、OnlyOffice）、Outlook（→ Thunderbird）、Edge（→ Firefox/Chromium）。代替はあるが、複雑な書式のExcelマクロや、Outlookの社内サーバー連携で擦り合わせが要る場合がある。
+Microsoft Office、Outlook、Edge。これらは LibreOffice / Thunderbird /
+Firefox-Chromium で「**置き換える**」のが従来の発想だが、本書はもう一段
+進む。**自分の作業領域は Markdown と CSV と Python に切り替える** ──
+[AIネイティブな仕事の作法](/ai-native-ways/)シリーズで詳述したやり方。
+Office 互換層は **入口と出口だけ**にして、中身は構造化テキストで保つ。
+こうすれば、後で AI に渡す・検索する・差分を取る ── すべてが楽になる。
+
+過渡期は LibreOffice / Thunderbird / Firefox を併用するが、最終的に
+**「Office 互換ソフトすら、ほぼ使わない」状態を目指す**のが本書の立場。
 
 **C. 習慣として失うもの**
 「スタートメニューを押すと検索ボックスがある」「右クリックでOneDriveに送る」「Ctrl+Shift+Escでタスクマネージャ」——二十年かけて身につけた手癖。最初の数週間は意識的に置き換える必要がある。
@@ -111,9 +119,11 @@ Claudeの答えを鵜呑みにせず、疑って追い打ちをかける。
 | --- | --- | --- | --- |
 | A 動かない | Adobe Premiere | 高 | DaVinci ResolveのLinux版に移行 |
 | A 動かない | 社内の△△システム | 高 | 仕事用に古いWin10機を残す |
-| B 代替あり | MS Office | 中 | LibreOffice、複雑なファイルは同僚に頼む |
-| C 習慣 | OneDrive右クリック | 低 | rsyncのスクリプトに置き換え |
-| D 互換性 | Excelマクロ付きの月次報告 | 中 | 自分用はPython、提出用だけOfficeオンライン |
+| B 代替あり | MS Word | 中 | 自分の作業は **Markdown**、配布時に pandoc で .docx 化 |
+| B 代替あり | MS Excel | 中 | 自分の作業は **CSV + pandas**、配布時に LibreOffice or .xlsx 化 |
+| B 代替あり | MS PowerPoint | 中 | **Markdown + Marp** でスライド作成、PDF / .pptx に出力 |
+| C 習慣 | OneDrive右クリック | 低 | rsync スクリプトに置き換え、または Syncthing |
+| D 互換性 | Excel マクロ付きの月次報告 | 中 | 自分用は Python(uv + pandas)、提出用だけ Office オンライン |
 
 ## 得るもの
 | 軸 | 具体（数字で） | 条件 |

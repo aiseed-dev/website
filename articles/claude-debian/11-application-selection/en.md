@@ -137,7 +137,7 @@ This book's recommendation:
 | Bitwarden / Signal / Element | **Flatpak** | Same; encryption apps benefit from being current |
 | OBS / Krita / Inkscape / GIMP (latest) | **Flatpak** | apt versions lag |
 | Dev tools (Python / git / Docker) | **apt** | Sandboxing is in the way |
-| IDEs (VS Code / IntelliJ) | **official deb or Flatpak** | Prefer the official deb when available |
+| Editors / IDEs (Zed / Neovim / PyCharm) | **Flatpak** (Neovim is apt) | See Chapter 13. This book does not recommend VS Code |
 
 ### Skip Snap
 

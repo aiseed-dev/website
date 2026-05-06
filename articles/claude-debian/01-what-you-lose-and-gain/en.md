@@ -38,7 +38,17 @@ When thinking about "what you will lose," the worst thing is to worry about it v
 Industry-specific applications, particular accounting software, CAD, some Adobe products, anti-cheat-enabled online games. These will not run on Debian as-is.
 
 **B. Alternatives exist, but not fully compatible.**
-Microsoft Office (→ LibreOffice, OnlyOffice), Outlook (→ Thunderbird), Edge (→ Firefox / Chromium). Alternatives exist, but complex Excel macros or Outlook's in-house server integration may need tuning.
+Microsoft Office, Outlook, Edge. The conventional move is to "replace"
+them with LibreOffice / Thunderbird / Firefox-Chromium. **This book goes
+one step further: switch your own working surface to Markdown + CSV +
+Python** — the approach detailed in the [AI-Native Ways of Working](/en/ai-native-ways/)
+series. Office-compatible software stays only as an **import / export
+adapter** at the boundary; the substance lives as structured text. This
+makes it easy to hand work to AI, search it, diff it.
+
+In the transition you still use LibreOffice / Thunderbird / Firefox.
+The book's stance is the destination: **a state where even the
+Office-compatible suite is barely needed.**
 
 **C. Habits you lose.**
 "Press the Start menu and there's a search box," "Right-click to send to OneDrive," "Ctrl+Shift+Esc to open Task Manager" — muscle memory built up over twenty years. The first few weeks require deliberate replacement.
@@ -112,9 +122,11 @@ Compile what you lose and what you gain into a single table you can take in at a
 | --- | --- | --- | --- |
 | A Won't run | Adobe Premiere | High | Migrate to DaVinci Resolve (Linux version) |
 | A Won't run | In-house △△ system | High | Keep an old Win10 machine for work |
-| B Alternative | MS Office | Medium | LibreOffice; for complex files, ask a colleague |
-| C Habit | OneDrive right-click menu | Low | Replace with an rsync script |
-| D Compatibility | Monthly report as Excel macro | Medium | Python for my own work; Office Online only for submission |
+| B Alternative | MS Word | Medium | Work in **Markdown**; produce .docx via pandoc on delivery |
+| B Alternative | MS Excel | Medium | Work in **CSV + pandas**; produce .xlsx via LibreOffice on delivery |
+| B Alternative | MS PowerPoint | Medium | Slides in **Markdown + Marp**; export PDF / .pptx |
+| C Habit | OneDrive right-click menu | Low | Replace with an rsync script (or Syncthing) |
+| D Compatibility | Monthly report as Excel macro | Medium | Python (uv + pandas) for my own work; Office Online only for submission |
 
 ## What I Gain
 | Axis | Specifics (in numbers) | Conditions |

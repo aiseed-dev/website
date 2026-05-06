@@ -23,11 +23,24 @@ cta_btn2_link: /claude-debian/16-python-flutter-other/
 
 Debianのアップデートは三つの層に分かれる。
 
-1. **パッケージのマイナー更新**：セキュリティパッチ、バグ修正。週1〜月1
-2. **ポイントリリース**：Debian 12.x → 12.x+1（半年に一度くらい）
-3. **メジャーアップグレード**：Debian 12 → Debian 13（2年に一度くらい）
+1. **パッケージのマイナー更新**:セキュリティパッチ、バグ修正。週1〜月1
+2. **ポイントリリース**:Debian 12.x → 12.x+1(半年に一度くらい)
+3. **メジャーアップグレード**:Debian 12 → Debian 13(2年に一度くらい)
 
 それぞれ扱いが違う。同じコマンドで済まそうとすると、ある日壊れる。
+
+加えて、第 11 章で Flatpak を導入した以上、**「apt と Flatpak の二系統を
+同時に回す」** が今の Debian 運用の基本姿勢になる。
+
+| 配布元 | 何が入っている | 更新コマンド | 頻度 |
+|---|---|---|---|
+| **apt** | OS 基盤、シェル、開発ツール、Firefox-ESR | `sudo apt upgrade` | 週 1 |
+| **Flatpak** | Chromium 系ブラウザ、Slack/Zoom、Bitwarden、Krita 等 | `flatpak update` | 週 1(自動でも可) |
+| **uv tool** | Python 製 CLI(`pre-commit`、`httpie`、`ruff` 等) | `uv tool upgrade --all` | 月 1 |
+| **miniforge / conda** | DS / ML 環境(PyTorch + CUDA、GDAL、scipy など) | `conda update --all -n <env>` | 月 1(プロジェクト単位) |
+
+apt 側だけ更新して Chromium が古いまま放置 ── これが一番ありがちな落とし穴。
+**全系統を同じ曜日に走らせる**スクリプトを作るのが本書の推奨。
 
 ## 第一節 パッケージのマイナー更新
 
@@ -63,16 +76,99 @@ sudo dpkg-reconfigure -plow unattended-upgrades
 
 これで、バックグラウンドでセキュリティ更新が適用される。ただし再起動が必要なカーネル更新は手動で再起動する。
 
-### Claudeに聞いてみよう①：週次メンテの自動化
+### Flatpak 側の更新
 
-> 私のDebian 12 での週次メンテナンスを、次の項目で一つのシェルスクリプトにまとめてください：
+```bash
+# 全 Flatpak アプリと Runtime を更新
+flatpak update -y
+
+# 不要 Runtime を整理(ディスクが膨らむ最大要因)
+flatpak uninstall --unused -y
+
+# 各アプリの権限を見直す(Flatseal でも可)
+flatpak info --show-permissions com.google.Chrome
+```
+
+ブラウザ(Chromium 系)を Flatpak で入れたなら、**ここがセキュリティ上の主戦場**。
+apt の `firefox-esr` は週次で十分でも、Chromium 系はゼロデイの公開即日に
+当てたい場面もある。
+
+### uv tool 側の更新
+
+```bash
+uv tool list
+uv tool upgrade --all
+```
+
+第 16 章で uv tool / pipx に入れた CLI(ruff、httpie、pre-commit 等)も
+別系統で更新する必要がある。
+
+### miniforge / conda 側の更新
+
+```bash
+# 既存の DS 環境を最新に
+conda update --all -n ds
+conda update --all -n dl    # GPU 環境
+
+# conda 自体の更新
+conda update -n base -c conda-forge conda
+
+# キャッシュ整理(ディスク削減)
+conda clean --all -y
+```
+
+DS / ML プロジェクトを複数持っているなら、**プロジェクトごとに更新時期を
+ずらす** のが安全。深層学習の環境は数値再現性に敏感なので、論文・実験を
+回している期間は固定し、**節目だけ `conda update`** する。
+
+### 全系統まとめて回すスクリプト例
+
+```bash
+#!/bin/bash
+# ~/.local/bin/weekly-update
+set -e
+echo "=== apt ==="
+sudo apt update && sudo apt upgrade -y && sudo apt autoremove -y && sudo apt clean
+
+echo "=== flatpak ==="
+flatpak update -y
+flatpak uninstall --unused -y
+
+echo "=== uv tool ==="
+uv tool upgrade --all 2>/dev/null || true
+
+echo "=== conda (miniforge) ==="
+# conda が入っていれば実行(無ければスキップ)
+if command -v conda >/dev/null 2>&1; then
+    conda update -n base -c conda-forge conda -y
+    # 個別の env はここで列挙(週次は base のみ、env は月次でも可)
+    # conda update --all -n ds -y
+    conda clean --all -y
+fi
+
+echo "=== ディスク状態 ==="
+df -h /
+du -sh ~/.cache ~/.local/share/flatpak ~/.local/share/uv ~/miniforge3 2>/dev/null
+```
+
+cron(`0 8 * * 1`)で月曜 08:00 に走らせれば、apt + Flatpak + uv tool +
+conda(base) の **四系統を一回でメンテできる**。個別の conda env は
+プロジェクト単位で月次更新するのが推奨。
+
+### Claudeに聞いてみよう①:週次メンテの自動化
+
+> 私の Debian での週次メンテナンスを、次の項目で一つのシェルスクリプトに
+> まとめてください:
 > (1) apt update / upgrade / autoremove
-> (2) ディスク空き容量のチェック（80%超で警告）
-> (3) 失敗したサービスの確認
-> (4) 古いカーネルの削除候補の表示
-> (5) ログのエラー検出
+> (2) flatpak update + flatpak uninstall --unused
+> (3) uv tool upgrade --all
+> (4) conda(miniforge)の base と clean(env は月次でも可)
+> (5) ディスク空き容量のチェック(80%超で警告)
+> (6) 失敗したサービスの確認
+> (7) 古いカーネルの削除候補の表示
+> (8) ログのエラー検出
 >
-> cron で週一（月曜 08:00）に走らせたい。結果をメールか通知で見る想定で。
+> cron で週一(月曜 08:00)に走らせたい。結果をメールか通知で見る想定で。
 
 ## 第二節 ポイントリリース
 

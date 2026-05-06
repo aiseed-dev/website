@@ -161,18 +161,33 @@ Doing this once every six months brings things back into shape.
 
 These work without much trouble. If candidates don't appear or you can't reconvert, restart the browser.
 
-### VSCode
+### Zed
 
-VSCode is Electron-based, and older versions had Japanese-input issues. The latest versions (2024+) are much better.
+Rust + GPU rendered. IME integration usually **just works without extra
+configuration**. If inline preedit during composition doesn't appear,
+restart Zed once, or check the "Wayland: shared input state" option in
+`fcitx5-configtool`.
 
-```bash
-# The apt or Microsoft official repository is preferred over Flatpak.
-# Ask Claude for the current installation method.
-```
+### Neovim (in a terminal)
 
-### JetBrains Family (IntelliJ, PyCharm, etc.)
+Goes through the terminal emulator's IME path. **Convention: IME off
+while writing code, on while writing comments.** Vim's built-in
+`set keymap=japanese-kana` exists but isn't recommended in this book.
 
-Compatibility with the JDK can shift the input cursor position.
+### PyCharm Community (JetBrains family)
+
+JDK quirks can occasionally shift the candidate window position.
+Mostly fixed in current releases. If issues remain, follow the official
+JetBrains note about ensuring `fcitx5-frontend-gtk3` is present, or set
+the JetBrains Runtime flags as documented.
+
+### Flatpak Apps in General
+
+If a Flatpak app can't do Japanese input, the sandbox typically can't
+reach the IME. In Flatseal, allow:
+
+- `Filesystem`: `xdg-config/fcitx5:ro` (or `Other files: ~/.config/fcitx5:ro`)
+- `Sockets`: `Wayland`, `Fallback to X11`
 
 ### Ask Claude ③: App-Specific Behavior Check
 

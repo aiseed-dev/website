@@ -134,7 +134,7 @@ flatpak install flathub com.github.tchx84.Flatseal
 | Bitwarden / Signal / Element | **Flatpak** | 同上、暗号化アプリは新しいほうが安心 |
 | OBS / Krita / Inkscape / GIMP(最新) | **Flatpak** | apt 版だと数バージョン古い |
 | 開発ツール(Python / git / Docker) | **apt** | サンドボックスがむしろ邪魔 |
-| 業務用 IDE(VS Code / IntelliJ) | **deb 公式 / Flatpak どちらでも** | 公式 deb があるなら deb、無いなら Flatpak |
+| エディタ・IDE(Zed / Neovim / PyCharm) | **Flatpak**(Neovim は apt) | 詳細は第 13 章。VS Code は本書では推奨しない |
 
 ### Snap には触れない
 

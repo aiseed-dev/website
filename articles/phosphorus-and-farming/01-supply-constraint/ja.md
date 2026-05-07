@@ -361,3 +361,37 @@ S 県で検出された **103.4 µg/kg** は、農地への長期的な散布に
 次章では、これが一時的なショックではなく **長期的な高価格時代の入口**
 であることを、低品位鉱石の経済学とピーク・リン(Peak Phosphorus)
 から確認する。
+
+## 参考資料
+
+**政府・公的機関**
+
+- 農林水産省「肥料をめぐる情勢」令和8年(2026年)4月版
+- 環境省 PFOS・PFOA 水質基準(2026 年 4 月施行)
+- 経済安全保障推進法に基づく特定重要物資指定
+
+**業界レポート・解説**
+
+- World Bank "Commodity Markets Outlook"(リン酸価格上昇予測)
+- "Strait of Hormuz Disruption Scenarios and Fertilizer Purchasing
+  Risks for U.S. Crop Producers" — farmdocdaily.illinois.edu
+- 「2026年最新】肥料価格高騰と供給不安について|中東紛争・中国…」
+  — central-green.jp
+- 「中国、肥料輸出を 8 月まで実質停止 国内農家保護の余波で顕在化」
+  — iru-miru.com
+- 「【図解解説】『肥料をめぐる情勢』令和8年4月版を読み解く」
+  — smartagri.jp
+
+**学術文献**
+
+- "Phosphorus dynamics and sustainable agriculture: The role of
+  microbial solubilization and innovations in nutrient management"
+  — PMC11647644(リンの代替不能性、農業生産の半分が合成肥料依存)
+
+**PFAS 関連**
+
+- 一般社団法人農民連食品分析センター「下水汚泥肥料の PFAS 調査」
+  (2024 年)
+- 「身近な製品に潜む PFAS」(setagaya 区資料)
+- envix.co.jp「日本・環境省、PFOS および PFOA を水道法の水質基準
+  項目に追加、2026 年 4 月施行へ」

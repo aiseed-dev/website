@@ -637,3 +637,42 @@ Materials、技術的拡張自然放射性物質)** と呼ばれる。
 ではその「別の何か」とは何か。
 工業型農業をそのまま続けることは、価格上昇下では成立しない。
 これを次の章で見る。
+
+## 参考資料
+
+**学術文献・資源評価**
+
+- "Peak Phosphorus: Clarifying the Key Issues of a Vigorous Debate
+  about Long-Term Phosphorus Security" — MDPI 2071-1050/3/10/2027
+  (ピーク・リン 2033 年頃到達予測)
+- "The Story of Phosphorus" — Diva-portal(リサイクル限界の試算)
+- "Global Phosphorus supply chain dynamics: Sustainability
+  implications for the 21st century" — Diva-portal(EU 集中依存
+  データ、Norge Mining)
+- "Risks and Opportunities in the Global Phosphate Rock Market"
+  — HCSS(モロッコ・西サハラ 70% 偏在、世界市場 214 億ドル)
+- "Can Your P2O5 Be Commercially Exploited?" — ECI Digital Archives
+  (品位定義、低品位スライム問題)
+- 米国地質調査所(USGS)2010 年モロッコ埋蔵量上方修正
+
+**業界レポート・価格予測**
+
+- Fitch Ratings 2025 年 3 月レポート(DAP 中長期 400 USD/t に
+  上方修正)
+- 米国 EPA 経済モデル(リン石膏スタック維持コスト推計)
+- 国際肥料開発センター(IFDC)「カドミウム除去の技術的・経済的
+  実現可能性」報告
+
+**コスト構造・歴史**
+
+- "The Fertilizer Fault Line: The Hidden System That Could Trigger
+  the Next Global Crisis" — Fairobserver.com
+- A&L Great Lakes "Phosphorus Rate Reductions and World Demand
+  Growth"
+- ナウル共和国カドミウム除去施設データ(熱処理コスト 1992 年比較)
+
+**LFP バッテリー需要**
+
+- モロッコ OCP × 中国 BTR New Material Group タンジールカソード
+  プラント(2024 年 3 月承認)
+

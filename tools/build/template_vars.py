@@ -489,6 +489,104 @@ def aiways_index_vars(lang, chapter_list_html, has_translation=False):
     }
 
 
+_FARMING_BASE_JA = "/phosphorus-and-farming"
+_FARMING_BASE_EN = "/en/phosphorus-and-farming"
+_FARMING_TITLE_JA = "リン資源枯渇と自然農法"
+_FARMING_TITLE_EN = "Phosphorus Depletion and Natural Farming"
+
+
+def farming_index_vars(lang, chapter_list_html, has_translation=False):
+    """Build template variables for the phosphorus-and-farming table-of-contents page."""
+    is_en = lang == "en"
+    farming_base = _FARMING_BASE_EN if is_en else _FARMING_BASE_JA
+    farming_title = _FARMING_TITLE_EN if is_en else _FARMING_TITLE_JA
+
+    return {
+        "lang": lang,
+        "site_name": config.site_text("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
+        "home_label": _text(is_en, "Home", "ホーム"),
+        "home_link": "/en/" if is_en else "/",
+        "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
+        "lf_label": "Light Farming",
+        "about_link": "/en/natural-farming/" if is_en else "/natural-farming/",
+        "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
+        "our_approach_link": "/en/about/" if is_en else "/about/",
+        "our_approach_label": _text(is_en, "Our Approach", "私たちのアプローチ"),
+        "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
+        "privacy_link": "/en/privacy/" if is_en else "/privacy/",
+        "privacy_label": _text(is_en, "Privacy", "プライバシー"),
+        "menu_label": _text(is_en, "Menu", "メニュー"),
+        "pages_label": _text(is_en, "Pages", "ページ"),
+        "links_label": _text(is_en, "Links", "関連リンク"),
+        "articles_parent_label": _text(is_en, "Articles", "記事"),
+        "insights_child_label": _text(is_en, "Structural Analysis", "構造分析"),
+        "book_label": _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian"),
+        "aiways_label": _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法"),
+        "aiways_base": "/en/ai-native-ways" if is_en else "/ai-native-ways",
+        "insights_base": "/en/insights" if is_en else "/insights",
+        "blog_base": "/en/blog" if is_en else "/blog",
+        "book_base": "/en/claude-debian" if is_en else "/claude-debian",
+        "css_path": "../../css/style.css" if is_en else "../css/style.css",
+        "js_path": "../../js/main.js" if is_en else "../js/main.js",
+
+        "asset_version": config.asset_version(),
+        "img_path": "../../images/IMG_3285.jpg" if is_en else "../images/IMG_3285.jpg",
+        "meta_description": _text(is_en,
+            "Phosphorus depletion and the structural shift to microbial-driven natural farming. Why phosphate fertilizer prices won't return to cheap, why industrial farming fails, and why the surviving path is natural farming with imports as buffer.",
+            "リン資源の枯渇と、微生物型自然農法への構造的転換。なぜリン酸肥料は安価に戻らないのか、なぜ工業型農業は成立しないのか、そしてなぜ残された道が自然農法+輸入補完なのか ── 経済と物理が決める唯一の現実解。"),
+        "structural_analysis_label": farming_title,
+        "page_title": farming_title,
+        "page_subtitle": _text(is_en,
+            "The economy decides the way of farming.",
+            "経済が、農法を決める。"),
+        "other_lang_link": (_FARMING_BASE_JA + "/") if is_en else (_FARMING_BASE_EN + "/"),
+        "other_lang_text": _text(is_en, "日本語版はこちら →", "English version available →") if has_translation else "",
+        "lang_switch_label": "日本語" if is_en else "EN",
+        "lang_switch_hreflang": "ja" if is_en else "en",
+        "lang_switch_aria": "日本語版を表示" if is_en else "View in English",
+        "series_title": _text(is_en, "Series — phosphorus to natural farming", "全 9 章 — リン資源から自然農法へ"),
+        "series_description": _text(is_en,
+            "Phosphate fertilizer supply is collapsing on three independent fronts: China's export halt, sulfur supply via the Strait of Hormuz, and PFAS contamination in sewage sludge recovery. The structural conclusion is microbial natural farming, with imports as a transitional buffer.",
+            "リン酸肥料の供給は三つの独立したルート ── 中国の輸出停止、ホルムズ海峡経由の硫黄供給、下水汚泥回収の PFAS 汚染 ── で同時に細っている。構造的に残るのは、微生物型自然農法+輸入補完という現実的な中間の道である。"),
+        "article_list_html": chapter_list_html,
+        "intro_html": _text(is_en,
+            "The economy decides the way of farming.<br>\n                    "
+            "Phosphate fertilizer supply tightens; industrial agriculture's books stop balancing;<br>\n                    "
+            "the soil microbes step in to do what fertilizer used to do.<br>\n                    "
+            "This is not philosophy. It is structural economics and biology.",
+            "経済が、農法を決める。<br>\n                    "
+            "リン酸肥料の供給が細り、工業型農業の収支が崩れ、<br>\n                    "
+            "土壌微生物が肥料の代わりに働く ── これは思想ではない。<br>\n                    "
+            "構造的な経済と生物学が、自ずと指し示す方向である。"),
+        "method_title": _text(is_en, "How to read", "読み方"),
+        "method_html": _text(is_en,
+            "Read the prologue first to grasp the four-step logic. The chapters then walk through supply constraint (1), why prices won't drop (2), why industrial farming fails (3), the realistic position (4), soil microbes (5), CO2 as tailwind (6), implementation (7), and operating principles (8).<br>\n                    "
+            "Each chapter cites primary sources — World Bank, USDA, MAFF, peer-reviewed literature.",
+            "序章で 4 段階の論理を掴んでから、章ごとに ── 供給制約(1)、安価には戻らない(2)、工業型農業は成立しない(3)、現実的な立ち位置(4)、土壌微生物(5)、CO2 という追い風(6)、どう実装するか(7)、運用原則(8)── と読み進める。<br>\n                    "
+            "各章は一次情報源(World Bank、USDA、農林水産省、査読論文等)を引用している。"),
+        "quote_html": _text(is_en,
+            "Phosphate fertilizer becomes expensive. That alone decides everything.<br>\n"
+            "The era of cheap industrial agriculture is over.",
+            "リン酸肥料が高くなる、それだけで全部が決まる。<br>\n"
+            "安価な工業型農業の時代は終わった。"),
+        "cta_title": _text(is_en, "Start with the prologue", "序章から始める"),
+        "cta_html": _text(is_en,
+            "Read the prologue, then chapter by chapter. The structural conclusion will become inescapable.",
+            "序章から、章ごとに読み進めよう。構造的な結論は、避けようがないことが分かる。"),
+        "footer_about": _text(is_en,
+            "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
+            "food, energy, AI, healthcare, and pensions — every structure connects.",
+            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
+        "copyright_text": config.site_text("copyright_text", lang, _text(is_en, "Living in the AI Era — aiseed.dev", "AI時代の暮らし")),
+        # SEO
+        "canonical_url": f"{config.SITE_URL}{farming_base}/",
+        "hreflang_ja": f"{config.SITE_URL}{_FARMING_BASE_JA}/",
+        "hreflang_en": f"{config.SITE_URL}{_FARMING_BASE_EN}/" if has_translation else "",
+        "og_locale": "en_US" if is_en else "ja_JP",
+        "og_image": config.DEFAULT_OG_IMAGE,
+    }
+
+
 def book_index_vars(lang, chapter_list_html, has_translation=False):
     """Build template variables for the book table-of-contents page."""
     is_en = lang == "en"

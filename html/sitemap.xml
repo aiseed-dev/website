@@ -756,47 +756,52 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/natural-farming/prologue/</loc>
+    <loc>https://aiseed.dev/phosphorus-and-farming/</loc>
+    <lastmod>2026-05-13</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/phosphorus-and-farming/prologue/</loc>
     <lastmod>2026-05-06</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/natural-farming/supply-constraint/</loc>
+    <loc>https://aiseed.dev/phosphorus-and-farming/supply-constraint/</loc>
     <lastmod>2026-05-06</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/natural-farming/no-cheap-return/</loc>
+    <loc>https://aiseed.dev/phosphorus-and-farming/no-cheap-return/</loc>
     <lastmod>2026-05-07</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/natural-farming/industrial-farming-fails/</loc>
+    <loc>https://aiseed.dev/phosphorus-and-farming/industrial-farming-fails/</loc>
     <lastmod>2026-05-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/natural-farming/realistic-position/</loc>
+    <loc>https://aiseed.dev/phosphorus-and-farming/realistic-position/</loc>
     <lastmod>2026-05-09</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/natural-farming/soil-microbes/</loc>
+    <loc>https://aiseed.dev/phosphorus-and-farming/soil-microbes/</loc>
     <lastmod>2026-05-10</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/natural-farming/co2-tailwind/</loc>
+    <loc>https://aiseed.dev/phosphorus-and-farming/co2-tailwind/</loc>
     <lastmod>2026-05-11</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/natural-farming/implementation/</loc>
+    <loc>https://aiseed.dev/phosphorus-and-farming/implementation/</loc>
     <lastmod>2026-05-12</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/natural-farming/operating-principles/</loc>
+    <loc>https://aiseed.dev/phosphorus-and-farming/operating-principles/</loc>
     <lastmod>2026-05-13</lastmod>
     <priority>0.6</priority>
   </url>

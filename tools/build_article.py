@@ -625,20 +625,20 @@ def build_aiways_chapter(md_path):
 
 
 # ---------------------------------------------------------------------------
-# Build functions — natural-farming (independent template, like ai-native-ways)
+# Build functions — phosphorus-and-farming (independent template, like ai-native-ways)
 #
-# Source:  articles/natural-farming/NN-slug/{ja,en}.md
-# Output:  html/natural-farming/{slug}/index.html         (JA)
-#          html/en/natural-farming/{slug}/index.html      (EN)
+# Source:  articles/phosphorus-and-farming/NN-slug/{ja,en}.md
+# Output:  html/phosphorus-and-farming/{slug}/index.html       (JA)
+#          html/en/phosphorus-and-farming/{slug}/index.html    (EN)
 #
 # Like ai-native-ways, the series ships its own self-contained template
-# (articles/natural-farming/template.html, template.en.html). The existing
-# static landing page at /natural-farming/ is left intact — chapters live
-# alongside it under unique slugs.
+# (articles/phosphorus-and-farming/template.html, template.en.html). The
+# existing static /natural-farming/ landing page is independent and untouched
+# (different URL prefix entirely).
 # ---------------------------------------------------------------------------
 
-FARMING_SERIES_NAME_JA = "自然農法シリーズ"
-FARMING_SERIES_NAME_EN = "Natural Farming Series"
+FARMING_SERIES_NAME_JA = "リン資源枯渇と自然農法シリーズ"
+FARMING_SERIES_NAME_EN = "Phosphorus Depletion and Natural Farming Series"
 
 
 def _farming_chapter_label(number: str, lang: str) -> str:
@@ -654,7 +654,7 @@ def _farming_template_path(lang: str) -> Path:
 
 
 def build_farming_chapter(md_path):
-    """Build a single natural-farming chapter using the series-local template."""
+    """Build a single phosphorus-and-farming chapter using the series-local template."""
     from jinja2 import Template
 
     md_path = Path(md_path)
@@ -674,7 +674,7 @@ def build_farming_chapter(md_path):
 
     slug = meta["slug"]
     if lang == "en":
-        out_dir = config.SITE_ROOT / "html" / "en" / "natural-farming" / slug
+        out_dir = config.SITE_ROOT / "html" / "en" / "phosphorus-and-farming" / slug
     else:
         out_dir = config.FARMING_OUTPUT_BASE / slug
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -687,11 +687,11 @@ def build_farming_chapter(md_path):
     body_html = md.render(body)
 
     series_name = FARMING_SERIES_NAME_EN if lang == "en" else FARMING_SERIES_NAME_JA
-    series_index_url = "/en/natural-farming/" if lang == "en" else "/natural-farming/"
+    series_index_url = "/en/phosphorus-and-farming/" if lang == "en" else "/phosphorus-and-farming/"
 
-    canonical_url = f"{config.SITE_URL}/{'en/' if lang == 'en' else ''}natural-farming/{slug}/"
-    hreflang_ja = f"{config.SITE_URL}/natural-farming/{slug}/"
-    hreflang_en = f"{config.SITE_URL}/en/natural-farming/{slug}/"
+    canonical_url = f"{config.SITE_URL}/{'en/' if lang == 'en' else ''}phosphorus-and-farming/{slug}/"
+    hreflang_ja = f"{config.SITE_URL}/phosphorus-and-farming/{slug}/"
+    hreflang_en = f"{config.SITE_URL}/en/phosphorus-and-farming/{slug}/"
 
     other_lang_url = (hreflang_ja if lang == "en" else hreflang_en)
     other_lang_label = "日本語" if lang == "en" else "EN"
@@ -732,12 +732,12 @@ def build_farming_chapter(md_path):
 
     copy_images(md_path.parent, out_dir, lang=lang)
 
-    print(f"Built natural-farming: {out_file}")
+    print(f"Built phosphorus-and-farming: {out_file}")
     return True
 
 
 def collect_farming_chapters(lang="ja"):
-    """Collect natural-farming chapter metadata for a language."""
+    """Collect phosphorus-and-farming chapter metadata for a language."""
     chapters = []
     for f in _iter_article_files(config.FARMING_DIR, lang):
         text = f.read_text(encoding="utf-8")
@@ -749,6 +749,50 @@ def collect_farming_chapters(lang="ja"):
         chapters.append(meta)
     chapters.sort(key=lambda m: m.get("_file_number", 0))
     return chapters
+
+
+def build_farming_index(lang="ja"):
+    """Build the phosphorus-and-farming TOC page using the shared index.html template."""
+    from build.template_vars import farming_index_vars
+
+    chapters = collect_farming_chapters(lang)
+    if not chapters:
+        return False
+
+    is_en = lang == "en"
+    farming_base = "/en/phosphorus-and-farming" if is_en else "/phosphorus-and-farming"
+    has_translation = bool(collect_farming_chapters("en" if not is_en else "ja"))
+
+    chapter_list = ""
+    for c in chapters:
+        slug = c.get("slug", "")
+        number = c.get("number", "").strip('"')
+        title = c.get("title", "")
+        subtitle = c.get("subtitle", "")
+        description = c.get("description", "")
+        chapter_list += f'''
+                <a href="{farming_base}/{slug}/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">{number}</div>
+                        <div class="activity-content">
+                            <h3>{title}{(" — " + subtitle) if subtitle else ""}</h3>
+                            <p>{description}</p>
+                        </div>
+                    </div>
+                </a>
+'''
+
+    variables = farming_index_vars(lang, chapter_list, has_translation=has_translation)
+    html = render("index.html", variables)
+
+    if is_en:
+        out_file = config.SITE_ROOT / "html" / "en" / "phosphorus-and-farming" / "index.html"
+    else:
+        out_file = config.FARMING_OUTPUT_BASE / "index.html"
+    out_file.parent.mkdir(parents=True, exist_ok=True)
+    out_file.write_text(html, encoding="utf-8")
+    print(f"Built phosphorus-and-farming index: {out_file}")
+    return True
 
 
 # ---------------------------------------------------------------------------
@@ -1256,20 +1300,24 @@ def build_sitemap():
                 continue
             urls.append((f"{site_url}/en/ai-native-ways/{slug}/", norm_date(meta.get("date")), "0.5"))
 
-    # Natural Farming / About / Light Farming (both JP and EN)
+    # Natural Farming landing page (static)
     urls.append((f"{site_url}/natural-farming/", latest, "0.8"))
     urls.append((f"{site_url}/en/natural-farming/", latest, "0.7"))
-    # Natural Farming series chapters
+    # Phosphorus and Natural Farming series chapters
+    if ja_farming:
+        urls.append((f"{site_url}/phosphorus-and-farming/", latest, "0.8"))
+    if en_farming:
+        urls.append((f"{site_url}/en/phosphorus-and-farming/", latest, "0.7"))
     for meta in ja_farming:
         slug = meta.get("slug", "")
         if not slug:
             continue
-        urls.append((f"{site_url}/natural-farming/{slug}/", norm_date(meta.get("date")), "0.6"))
+        urls.append((f"{site_url}/phosphorus-and-farming/{slug}/", norm_date(meta.get("date")), "0.6"))
     for meta in en_farming:
         slug = meta.get("slug", "")
         if not slug:
             continue
-        urls.append((f"{site_url}/en/natural-farming/{slug}/", norm_date(meta.get("date")), "0.5"))
+        urls.append((f"{site_url}/en/phosphorus-and-farming/{slug}/", norm_date(meta.get("date")), "0.5"))
     urls.append((f"{site_url}/about/", latest, "0.6"))
     urls.append((f"{site_url}/en/about/", latest, "0.5"))
     urls.append((f"{site_url}/light-farming/", latest, "0.8"))
@@ -1422,13 +1470,17 @@ def main():
         if collect_aiways_chapters("en"):
             build_aiways_index("en")
 
-        # Build natural-farming chapters — JA + EN
+        # Build phosphorus-and-farming chapters — JA + EN
         farming_ok = 0
         farming_files = list(_iter_article_files(config.FARMING_DIR, "ja")) \
                       + list(_iter_article_files(config.FARMING_DIR, "en"))
         for f in farming_files:
             if build_farming_chapter(f):
                 farming_ok += 1
+        if collect_farming_chapters("ja"):
+            build_farming_index("ja")
+        if collect_farming_chapters("en"):
+            build_farming_index("en")
 
         # Build ai-native-ways examples — every chapter's example-N/ folders.
         examples_ok = examples_total = 0
@@ -1451,7 +1503,7 @@ def main():
             f" + {book_ok}/{len(book_files)} book chapters"
             f" + {aiways_ok}/{len(aiways_files)} ai-native-ways"
             f" + {examples_ok}/{examples_total} ai-native-ways examples"
-            f" + {farming_ok}/{len(farming_files)} natural-farming chapters"
+            f" + {farming_ok}/{len(farming_files)} phosphorus-and-farming chapters"
             f" + indexes + sitemap.xml + robots.txt."
         )
         return
@@ -1467,7 +1519,7 @@ def main():
         build_blog_post(arg)
     elif series == "ai-native-ways" or "ai-native-ways/" in arg:
         build_aiways_chapter(arg)
-    elif series == "natural-farming" or "natural-farming/" in arg:
+    elif series == "phosphorus-and-farming" or "phosphorus-and-farming/" in arg:
         build_farming_chapter(arg)
     else:
         build_article(arg)

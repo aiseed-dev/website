@@ -751,6 +751,50 @@ def collect_farming_chapters(lang="ja"):
     return chapters
 
 
+def build_farming_index(lang="ja"):
+    """Build the phosphorus-and-farming TOC page using the shared index.html template."""
+    from build.template_vars import farming_index_vars
+
+    chapters = collect_farming_chapters(lang)
+    if not chapters:
+        return False
+
+    is_en = lang == "en"
+    farming_base = "/en/phosphorus-and-farming" if is_en else "/phosphorus-and-farming"
+    has_translation = bool(collect_farming_chapters("en" if not is_en else "ja"))
+
+    chapter_list = ""
+    for c in chapters:
+        slug = c.get("slug", "")
+        number = c.get("number", "").strip('"')
+        title = c.get("title", "")
+        subtitle = c.get("subtitle", "")
+        description = c.get("description", "")
+        chapter_list += f'''
+                <a href="{farming_base}/{slug}/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">{number}</div>
+                        <div class="activity-content">
+                            <h3>{title}{(" — " + subtitle) if subtitle else ""}</h3>
+                            <p>{description}</p>
+                        </div>
+                    </div>
+                </a>
+'''
+
+    variables = farming_index_vars(lang, chapter_list, has_translation=has_translation)
+    html = render("index.html", variables)
+
+    if is_en:
+        out_file = config.SITE_ROOT / "html" / "en" / "phosphorus-and-farming" / "index.html"
+    else:
+        out_file = config.FARMING_OUTPUT_BASE / "index.html"
+    out_file.parent.mkdir(parents=True, exist_ok=True)
+    out_file.write_text(html, encoding="utf-8")
+    print(f"Built phosphorus-and-farming index: {out_file}")
+    return True
+
+
 # ---------------------------------------------------------------------------
 # Build functions — ai-native-ways examples (per-chapter "example-N" pages)
 #
@@ -1433,6 +1477,10 @@ def main():
         for f in farming_files:
             if build_farming_chapter(f):
                 farming_ok += 1
+        if collect_farming_chapters("ja"):
+            build_farming_index("ja")
+        if collect_farming_chapters("en"):
+            build_farming_index("en")
 
         # Build ai-native-ways examples — every chapter's example-N/ folders.
         examples_ok = examples_total = 0

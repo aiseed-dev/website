@@ -5,7 +5,7 @@ title: 第3章 工業型農業は成立しない
 subtitle: コスト上昇 + 輸入競合 = 作れば作るほど赤字
 description: 化学肥料を大量に使う工業型農業は、肥料価格が高止まりすると経済的に成立しない。コストは上がる、しかし販売価格は安価な輸入農産物と競争して上げられない。結果、作れば作るほど赤字になる。耕作放棄地が拡大する。これは精神論ではなく、収支計算の話である。
 date: 2026.05.08
-label: Natural Farming 03
+label: P & Farming 03
 title_html: 作れば作るほど、<br><span class="accent">赤字になる</span>。
 prev_slug: no-cheap-return
 prev_title: 第2章 リン酸肥料は安価には戻らない

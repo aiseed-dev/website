@@ -5,7 +5,7 @@ title: 第8章 運用原則 ── 何をして、何をしないか
 subtitle: 不耕起、裸地禁止、多様性、無除草、生きた根を絶やさない
 description: 微生物型農業の運用原則を整理する。不耕起、裸地禁止、多様性の確保、化学肥料・農薬の不使用、自家採種、保存と流通の工夫。福岡正信の「無除草」と Christine Jones の「液体炭素」が一致する点として、生きた根を絶やさないことが重要である。経済が農法を決めた、というシリーズの結論で締めくくる。
 date: 2026.05.13
-label: Natural Farming 08
+label: P & Farming 08
 title_html: 何をして、<br><span class="accent">何をしないか</span>。
 prev_slug: implementation
 prev_title: 第7章 どう実装するか

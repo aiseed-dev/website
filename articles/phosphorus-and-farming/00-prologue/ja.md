@@ -5,7 +5,7 @@ title: 序章 ── 経済が農法を決める
 subtitle: なぜ自然農法以外に選択肢がないのか
 description: リン酸肥料が高くなれば、工業型農業は赤字になる。赤字になる農法は続けられない。ならば、土壌の微生物を使うしかない。これは思想ではなく、経済の話である。本シリーズは、その論理を一本ずつ確認していく。
 date: 2026.05.06
-label: Natural Farming 00
+label: P & Farming 00
 title_html: 経済が、<br><span class="accent">農法を決める</span>。
 prev_slug:
 prev_title:

@@ -5,7 +5,7 @@ title: 第4章 現実的な立ち位置 ── どこにも組みしない
 subtitle: 鈴木宣弘の限界、完全自給の幻想、その間に立つ
 description: 工業型農業を続ける道はない。しかし日本が完全に食料自給できる、というのも幻想だ。穀物の用途配分、戦時英国の事例、肥料制約の現実を冷静に見れば、立ち位置は自ずと決まる。「政府がなんとかせよ」でも「すべて自給する」でもなく、その中間にある現実的な道。
 date: 2026.05.09
-label: Natural Farming 04
+label: P & Farming 04
 title_html: どちらの極端にも、<br><span class="accent">組みしない</span>。
 prev_slug: industrial-farming-fails
 prev_title: 第3章 工業型農業は成立しない

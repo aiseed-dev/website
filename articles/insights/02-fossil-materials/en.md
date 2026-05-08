@@ -209,6 +209,59 @@ Geopolitical risks like the Hormuz crisis **fast-forward this process overnight*
 
 The fact that fossil resources are finite is the foundation of every argument. The structure of depending on fossil resources for materials will inevitably end. The question is not "whether it ends" but "whether alternatives exist when it does."
 
+## Fossil Resources Themselves Were Once Plants and Microbes
+
+Before going further, the most basic fact at the foundation of this chapter must be stated.
+
+**Fossil resources are past plants and microorganisms.**
+
+:::chain
+**What fossil resources actually are:**
+Oil → Marine plankton (algae, zooplankton) from hundreds of millions of years ago, deposited and transformed by heat and pressure underground
+Natural gas → The same — marine and terrestrial organic matter, decomposed and transformed
+Coal → Carboniferous-era forests (ferns, gymnosperms) from about 300 million years ago
+Phosphate rock → Bones and excretions of marine organisms (phosphate salts) deposited over geological time
+Potash → Evaporite salts from ancient seas and lakes — also entangled with the biosphere
+:::
+
+When we use "things made from fossil resources," we are in fact **using material that ancient
+plants and microbes synthesized hundreds of millions of years ago**. Plastics, synthetic fibers,
+chemical fertilizer — trace any of them back and the origin is ancient algae and ferns.
+
+:::highlight
+**What the fossil-resource era actually is:**
+The fossil-resource era = **drawing down materials accumulated by past plants and microbes**
+The bio-material era = **using materials being synthesized by current plants and microbes**
+The only difference is the **time axis**. The producer is the same — **plants and microbes**.
+:::
+
+This reframes the whole picture.
+
+The transition "from fossil resources to bio-materials" is, structurally, a transition
+**from past biological materials to present biological materials**.
+We are not changing to something fundamentally different —
+we are **letting the same biological synthesis run in real time**.
+Earth has always made materials this way. After spending hundreds of millions of years' worth of
+inventory in 100 years, we are simply going back to the active production line.
+
+Whether current plants and microbes can produce the same materials as past ones
+**depends on the diversity and health of today's plants and microbes**.
+That is why:
+
+- preserving plant cultivars that are being lost
+- restoring soil microbes (regenerative agriculture)
+- protecting space for diverse fungi and algae
+- refining the techniques that use photosynthesis and microbial fermentation
+
+— are all **direct preparation** for the post-fossil material infrastructure.
+This is not a separate topic. It is the single story of switching Earth's material-production
+system from past savings to present generation.
+
+> Fossil resources were a **biological-capital savings account** that Earth filled over hundreds of millions of years.
+> We are spending that account down in a single century.
+> What we need next is not new technology, but **the conditions in which today's organisms can
+> do the same work**.
+
 ## After Fossil Materials — Biology
 
 When fossil resources are depleted, or when material substitution

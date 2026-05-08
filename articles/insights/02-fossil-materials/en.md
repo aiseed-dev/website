@@ -132,7 +132,7 @@ But gasoline is a hazardous material. It cannot be discarded.
 Fuel with nowhere to go keeps accumulating — this is a structural breakdown.
 
 :::highlight
-**Why hybrid vehicles are structurally rational:**
+**Why hybrid vehicles are reasonable under the current refining structure:**
 Refining for naphtha → Gasoline comes out
 → Hybrid vehicles use that gasoline at high efficiency
 → More gasoline consumption than EVs, but no refining byproduct goes to waste
@@ -143,7 +143,12 @@ Refining for naphtha → Gasoline comes out
 Going all-EV eliminates the destination for gasoline that refining inevitably produces,
 then generates separate electricity to power cars — **double investment in energy**.
 And the gasoline cannot be discarded. Hazardous fuel with nowhere to go simply accumulates.
-Hybrid vehicles are the structurally rational choice: they use the fuel that comes out anyway.
+**Under the current supply-chain structure**, hybrid vehicles are the reasonable choice:
+they use the fuel that comes out anyway.
+
+> But this is conditioned on "the refining structure of 2026."
+> **What cars should look like on a 20- or 30-year horizon is something this chapter does not answer.**
+> That is taken up later.
 
 :::highlight
 **Structural fact:**
@@ -412,6 +417,110 @@ Remaining time with guaranteed oil supply → **Unknown** (geopolitical risks ca
 :::
 
 This is precisely why we must use existing fossil resources carefully.
+
+## What to Do About Cars in the Future — Don't Decide Now
+
+So far this chapter has shown a 2026 structural analysis: a rushed all-EV transition
+breaks the refining structure; hybrids are the reasonable answer that makes use of
+current refining byproducts; and replacing every part of a car with bio-materials is
+impossible today.
+
+But what cars should look like in 20, 30, or 50 years **is not a question we should
+try to answer now**.
+
+The future will be decided by elements interacting in ways we cannot yet see.
+
+:::highlight
+**Forces moving on a 20-year horizon:**
+Battery technology (solid-state, sodium-ion, semi-solid)
+Autonomy and ownership models (more people not owning cars at all)
+Decentralization of cities (Chapter 11) → fewer people need long-distance commuting
+The shift from desk work to land-based work
+The redesign of public transport
+Stepwise progress in bio-materials
+Synthetic-fuel technology (eFuel, synthetic aviation fuel)
+The timing of fossil-resource constraints (geopolitical risk could pull this forward)
+Agricultural restructuring driven by phosphate-fertilizer constraints
+:::
+
+How those combine in 20 years cannot be predicted now.
+No one in 2006 who tried to forecast "what cars in 2026 should be" got it right —
+that was before the smartphone, before self-driving, before mass lithium-ion adoption.
+
+The harder we try to lock in the "future car," the further we drift from reality.
+
+:::highlight
+**What we can actually do now:**
+1. Get the current structural analysis right (a rushed all-EV move breaks refining byproducts, etc.)
+2. **Avoid lock-in** — do not freeze "this is the answer" into law and subsidies
+3. Prepare societal infrastructure that can adapt to change
+4. When it becomes a real question, take it seriously with the conditions of that moment
+:::
+
+> Trying to decide "what future cars should be" with 2026's knowledge will get it wrong.
+> We should not try to decide.
+> What we should build is **a structure that can respond when the change actually arrives.**
+
+## Building a Society That Can Adapt to Change
+
+What this chapter has shown is the structural interdependence of fossil resources and
+modern civilization, and the constraints inside it. But the conclusion is not "so let's decide
+all the answers now." It is **let's build a society that can adapt to change.**
+
+### The core of adaptability — diversity and distributed dependency
+
+The most important condition is this: **do not depend too heavily on any single thing.
+Value diversity.**
+
+The more you depend on something specific, the more fragile you become when that thing changes.
+Conversely, **distribute dependencies and preserve diversity, and you can absorb whatever changes**.
+This is the most basic principle from ecology: monoculture is fragile, polyculture is resilient.
+Societies move on the same structure.
+
+:::compare
+| Don't over-depend on | Substitute with diversity |
+| --- | --- |
+| Specific fossil resources (oil, natural gas, phosphate rock) | Combine bio-materials, renewables, and stockpiled resources |
+| Specific source countries (Morocco/Western Sahara phosphate, Russian potash) | Domestic production, alternative sources, recycling, natural farming |
+| Specific crops or cultivars (F1 hybrids, monoculture) | Polyculture, heirloom varieties, saved seeds |
+| Specific vendors / supply chains (SaaS, SIers, single OS) | OSS, in-house systems, alternative vendors |
+| Specific energy sources (electricity, gasoline, diesel) | Diverse energy sources matched to use case |
+| Specific regions (Tokyo concentration) | Regional distribution, distributed infrastructure |
+| Specific currencies (yen, dollar) | Multi-currency holdings, real assets |
+| Specific technologies (proprietary AI) | OSS AI, local inference |
+| Specific products from specific companies (Office, Photoshop, Salesforce) | Multiple interoperable choices |
+| A specific "right answer" | Flexibility to change the answer |
+:::
+
+> Don't build "this alone is enough."
+> Don't build "without this, nothing works."
+> — That is the essence of diversity.
+
+### Conditions of an adaptive society
+
+Made concrete at the level of social systems, distributed dependency and diversity look like this.
+
+:::chain
+**Conditions of an adaptive society:**
+Understanding the material function of fossil resources → no surprise attacks
+Policy design that avoids lock-in → no "right answer" frozen into law
+Implementation of regenerative agriculture → food holds even as chemical fertilizer shrinks
+Distributed infrastructure → avoid the fragility of central concentration
+Rebuilt local production and distribution → resilience to logistics shocks
+Faster learning via education and AI → quicker response to changing conditions
+Autonomy of individuals and small organizations → insulation from large-corporate / large-state misjudgments
+:::
+
+"When and in what order change arrives" cannot be predicted.
+Climate first? Geopolitics first? A technology breakthrough first?
+The phosphate-fertilizer constraint of 2027 is certainly close. The rest is unknown.
+
+But **how quickly and intelligently we can respond when change arrives** is something we
+can prepare for now. That is the direction this series' structural analysis points to.
+
+> Don't predict the future — **strengthen the capacity to respond to it.**
+> Don't decide the answer now — **leave behind a society that can change its answer.**
+> Don't bet on one thing — **preserve diversity.**
 
 ## Use Fossil Resources Wisely
 

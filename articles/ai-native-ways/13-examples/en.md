@@ -2,19 +2,19 @@
 slug: examples
 number: "13"
 lang: en
-title: "Examples — 11 Walkthroughs"
+title: "Examples — 12 Walkthroughs"
 subtitle: "Code and output for every chapter, end to end"
-description: Verify each chapter's claims with actual commands, code, and output. Word minutes to Markdown; 100 Excel files aggregated in 30 seconds; PL/SQL rewritten via parallel operation; AI agents frozen into Python — 11 walkthroughs you can run yourself.
+description: Verify each chapter's claims with actual commands, code, and output. Word minutes to Markdown; 100 Excel files aggregated in 30 seconds; PL/SQL rewritten via parallel operation; AI agents frozen into Python — 12 walkthroughs you can run yourself.
 date: 2026.05.02
 label: AI Native EX
-title_html: <span class="accent">Code</span> and <span class="accent">output</span>.<br>11 chapters, hands on.
+title_html: <span class="accent">Code</span> and <span class="accent">output</span>.<br>12 chapters, hands on.
 prev_slug: one-plus-ai
 prev_title: "One Person + AI — The New Unit of Work"
 next_slug:
 next_title:
 ---
 
-# Examples — 11 Walkthroughs
+# Examples — 12 Walkthroughs
 
 This page is a hands-on reference that confirms the claims of every chapter of "AI-Native Ways of Working" with **actual commands, code, and output**. Each example maps to a chapter number.
 
@@ -1087,7 +1087,7 @@ $ curl -s https://minutes.example.com/admin/stats | jq
 
 ## In summary
 
-Common across all 11 walkthroughs: **use AI as a generator and freeze results into code, commands, and files**.
+Common across all 12 walkthroughs: **use AI as a generator and freeze results into code, commands, and files**.
 
 - Word → Markdown (Example 01)
 - Excel → CSV + Python (Example 02)

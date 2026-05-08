@@ -10,7 +10,7 @@ title_html: 仕事の最小単位は、<br><span class="accent">1 人 + AI</span
 prev_slug: verify-narratives
 prev_title: AIで物語を検証する
 next_slug: examples
-next_title: 実例集 ── 11 のウォークスルー
+next_title: 実例集 ── 12 のウォークスルー
 ---
 
 # 1人+AIで作る、新しい仕事の単位

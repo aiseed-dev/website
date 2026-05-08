@@ -9,7 +9,7 @@ label: Structural Analysis 07
 prev_slug: microsoft
 prev_title: Microsoftの崩壊
 next_slug: enterprise-tax
-next_title: 企業ITの脆弱性
+next_title: 企業ITの税を引く
 ---
 
 ## シャベル屋のビジネスモデル

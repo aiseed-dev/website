@@ -11,7 +11,7 @@ title_html: The minimum unit of work is<br><span class="accent">one person + AI<
 prev_slug: verify-narratives
 prev_title: "Verifying Narratives with AI"
 next_slug: examples
-next_title: "Examples — 11 Walkthroughs"
+next_title: "Examples — 12 Walkthroughs"
 ---
 
 # One Person + AI — The New Unit of Work

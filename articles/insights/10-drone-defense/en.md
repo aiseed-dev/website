@@ -161,7 +161,22 @@ Historically unprecedented.
 ## Ukraine's AI Stack — Where Drone + AI Defense Stands in 2026
 
 Ukraine is fielding the world's largest, fastest-iterating combat use of drone + AI.
-Public reporting in 2026 maps out where the curve has reached.
+Since the 2022 full-scale invasion, Ukraine has shed the rigid, state-led R&D model
+inherited from the Soviet era and become **the "Silicon Valley of defense technology"** —
+combining private-sector engineering with real-time feedback from the front line.
+
+:::highlight
+**Astronomical industrial growth:**
+2022: domestic defense production capacity ~**$1 billion**
+2025: estimated **$35 billion** (35x in three years)
+**33–34% of weapons used at the front are now domestically made** (more than the European share)
+2025: plan for up to **4.5 million** military drones, with a budget of **₴110 billion (~$2.6 billion)**
+**100% of drones used to strike inside Russia are domestic**
+:::
+
+But the deepest reason Ukraine evolves faster than Russia is not technology itself.
+It is the **innovation in feedback loops and procurement processes** that shape technology
+to the battlefield. That is the most important insight in this section.
 
 :::highlight
 **The strike mix has flipped**
@@ -179,60 +194,299 @@ raises the strike success rate to **70–80%**, roughly **a 4× improvement**.
 A $50 chip multiplies the value of every drone by four. `[unverified — IEEE Spectrum]`
 :::
 
-:::highlight
-**Saker Scout — AI that sees through camouflage**
-Ukraine's Defense Ministry approved Saker Scout for mass production in 2023.
-Its onboard AI **identifies camouflaged Russian equipment automatically**,
-removing the human-attention bottleneck — operators no longer need to stare
-at every frame of video to find a target.
-:::
+### Institutional Architecture as the Real Edge — Brave1 / Delta / Army+ / E-Points
+
+Ukraine is iterating faster than Russia not because it has Patriot or because its AI is
+better. It is because Ukraine invented **four institutions that route battlefield need
+directly into the development lines of private companies**.
+
+#### Brave1 — military-civilian innovation hub
+
+In April 2023, Ukraine launched **Brave1**, a defense-tech platform that cuts horizontally
+across the Ministry of Defense, the Ministry of Digital Transformation, the Ministry of
+Economy, and the National Security and Defense Council (NSDC). It directly connects
+operational needs with private companies and investors.
 
 :::highlight
-**Delta — battlefield SaaS seeded by NATO**
-Delta is a cloud-based situational-awareness platform — seed-funded by a NATO trust fund —
-that fuses ISR from drones, smartphones, radars, satellite imagery, and OSINT into one map.
-Inside Delta, an AI subsystem called **Avengers / Vezha** identifies up to
-**12,000 pieces of Russian equipment per week** from drone and camera footage (as of September 2024).
-A workload no human-only analyst team could touch.
+**Brave1 by the numbers (2025):**
+Companies in the ecosystem: **1,500+**
+Funded projects: **540+**
+Total grants: **₴2.2 billion**
+Additional 2025 budget: **₴2.9 billion**
+Strategic priorities: missiles, precision-guided munitions, lasers, drone swarms, anti-jamming
+(CRPA) antennas, anti-Shahed interceptors, unmanned surface vessels (USVs)
 :::
+
+The decisive innovation is **Brave1 Dataroom**, which exposes classified combat data
+(visual datasets segmented by weather, time of day, sensor type) to defense companies
+in a secure environment for AI model training. **Sharing the most valuable asset — real
+combat data — with private industry** is what compresses AI-weapon development from years
+to weeks.
+
+#### Delta — battlefield SaaS, built bottom-up
+
+**Delta**, a cloud-based situational-awareness platform, fuses ISR from drones, smartphones,
+radars, satellite imagery, and OSINT into a real-time digital map.
+
+- Supports the capture of **2,000+ enemy targets per day**
+- Has contributed to the neutralization of **500,000+ confirmed targets** to date
+
+What matters most is its provenance. Delta was originally built **bottom-up by a volunteer
+organization called Aerorozvidka — drone operators and programmers — not by a defense
+ministry top-down**. This contrasts directly with the U.S. DoD's CJADC2 (Combined
+Joint All-Domain Command and Control). **Delta brought the culture of agile software
+development directly into military command and control.**
+
+#### Army+ — soldiers report directly to manufacturers
+
+In 2024, Ukraine's Defense Ministry rolled out **Army+**, an app that creates a digital
+feedback loop directly between front-line soldiers and weapons manufacturers.
+
+- Soldiers enter equipment serial numbers and report issues — for example, jamming on a
+  specific frequency band
+- Manufacturers, working from real-time data, **push software updates within days**
+  and the equipment is back in the fight
+
+The traditional chain "command → ministry → manufacturer" has been short-circuited to
+**soldier → manufacturer**. That is the institutional reason iteration cycles compressed
+from years to weeks.
+
+#### E-Points / Brave1 Market — "points-for-kills" and digital Darwinism
+
+The most striking mechanism is the **E-Points** initiative and **Brave1 Market**
+(sometimes called "the military Amazon").
 
 :::highlight
-**Jamming resistance — fiber optics and full autonomy**
-To counter Russian electronic warfare, Ukraine is moving in two directions at once.
-**Fiber-optic tethered drones** (30+ km range, no radio link, physically unjammable)
-and **fully autonomous AI guidance** (optical lock-on that survives a cut radio link).
-One reported operation involved **800 autonomous drones in a coordinated swarm**.
-Average tactical drone range has doubled from 40 km to 80 km since December 2025.
+**Points-for-kills schedule:**
+Eliminating one enemy soldier → **6 points**
+Damaging a tank → **20 points**
+Fully destroying a tank → **40 points**
+Destroying a mobile rocket system → **up to 50 points**
 :::
 
-### Brave1 — A Nation-Scale Defense-Tech Ecosystem
+Units upload video evidence of successful strikes to Delta for verification, and earn
+points in proportion to the value of the target. They spend those points on **Brave1 Market**
+to buy the drones, AI tools, and EW systems they actually need.
 
-This pace is sustained by **Brave1**, a state-led defense-tech cluster.
+> This system is **a powerful selection pressure on the defense industry — digital Darwinism**.
+> Front-line units selectively buy the platforms that punch through enemy EW and reliably
+> produce results. Effective technology spreads instantly; companies making obsolete weapons
+> are eliminated from the market.
+> **The battlefield's verdict becomes the market's selection** — that is the real driver
+> behind the extreme acceleration of these companies' technical iteration.
+
+### Defense-Tech Startup Ecosystem
+
+As the system shifted from state-led to private-led, defense-tech startups exploded.
+Drone makers — only a few dozen before the invasion — have grown to **200+ companies
+including AI-system specialists, with 1,500+ companies engaged in defense overall**.
+
+**Key VC networks**: MITS Capital, D3 Venture Capital, Ukrainian Startup Fund (USF),
+Green Flag Ventures, Nezlamni, Angel One Fund, and dozens more funding domestic
+defense startups.
+
+:::compare
+| Company | Core technology |
+| --- | --- |
+| **Swarmer** | AI swarm control software for GPS-denied environments. 100,000+ missions supported |
+| **Buntar Aerospace** | AI-equipped reconnaissance UAV (Buntar-3), mission-prediction copilot ($10.4M raised) |
+| **Mantis Analytics** | Real-time information environment monitoring and disinfo detection AI ($240K raised) |
+| **HIMERA** | EW-resistant secure communications and tactical radios |
+| **Odd Systems** | Rapid-iteration FPV drones and thermal imaging based on battlefield feedback |
+| **DROPLA TECH** | AI for mine clearance and ambush detection |
+| **TELETACTICA** | Jamming-resistant battlefield communication networks |
+:::
+
+These companies are positioning **battle-tested tech** as the basis for international expansion.
+
+### Weapons Categories — Where Each Stands in 2026
+
+#### Fiber-optic FPV drones — the physical defeat of EW
+
+As Russian electronic warfare routinely jammed radio links and cut video feeds,
+Ukrainian engineers chose to **eliminate the radio dependency entirely**.
+
+- A spool feeds out optical fiber for **tens of kilometers** during flight
+- Because no radio is emitted, **enemy EW is physically nullified** and the operator's
+  position cannot be located by emission detection
+- **3DTech's Khyzhak REBOFF**: a model with a **30 km spool** has cleared MoD certification
+  and is going to the front for precision strikes against rear-area vehicles and personnel
+
+#### Fully autonomous AI drones and long-range strike
+
+Even when GPS is fully denied, optical sensors using optical flow and terrain matching
+fly the route autonomously and impact a pre-set target. One reported operation used
+**800 autonomous drones in a coordinated swarm**.
+
+:::compare
+| System | Performance |
+| --- | --- |
+| **Batyar** (DeepStrikeTech, May 2025) | Optical terrain matching, **800 km** range, **18 kg** warhead |
+| **Artemis ALM-20** (Auterion + Ukrainian airframe) | **GPS-free AI navigation**, **45 kg** warhead, **1,600 km** range |
+:::
+
+#### Interceptor drones — replacing expensive missiles
+
+To counter Russian Shahed/Geran-2 and reconnaissance drones, Ukraine is **substituting
+hundreds-of-thousands- to millions-of-dollars surface-to-air missiles with thousands-of-dollars drones**.
+
+:::compare
+| System | Performance |
+| --- | --- |
+| **Octopus 100** | UK co-production. >300 km/h, 4,500 m. Image-recognition autonomous terminal guidance, very high hit rate |
+| **Sting** | Compact intercept quadcopter the size of a large vacuum flask (30–45 cm) |
+| **P1-Sun** (Skyfall) | >300 km/h, heavy use of 3D-printed parts, cheap and fast |
+| **Bagnet** | 250 km/h, intercepts loitering munitions and reconnaissance drones |
+| **VB140 Flamingo** | Operating range up to 50 km, ceiling 4,500 m |
+| **Merops** (US) | AI-guided, GPS-jamming resistant, ~**$15,000/unit** |
+:::
+
+This approach has been deployed at U.S. bases in Saudi Arabia alongside Ukraine's
+**Sky Map** command-and-control platform — **starting to influence global air-defense doctrine**.
+
+#### Strategic strike — domestic missiles and rocket-drones
+
+Western-supplied long-range weapons (ATACMS, Storm Shadow) carry political restrictions
+on strikes inside Russia. Ukraine treats **independent development of long-range strike
+capability as a top priority** to escape that constraint.
+
+**Palianytsia** — rocket-drone (effectively a low-cost cruise missile)
 
 :::highlight
-**Scale (2026)**
-- AI projects registered: **300+**
-- AI / computer-vision systems in active battlefield use: **70+**
-- Companies building machine-vision drones: **100+**
-- 2026 drone production target: **7 million units/year** (3M+ in 2025)
-- Trained operators: **10,000+ cumulative**
+Length / wingspan: 3.5 m / 1.7 m
+Total weight / payload: 320 kg / up to 100 kg
+Maximum range: **650 km**
+Top speed: **900 km/h** (comparable to the Kh-101 cruise missile)
+Propulsion: solid-fuel booster launch → turbojet
+Guidance: GPS + inertial (IMU)
 :::
 
-:::highlight
-**International funding flows**
-- **UNITE – Brave NATO** (launched November 2025): scaling prototyped tech, up to **€50M for 2026**
-- **Brave France** (launching Q2 2026): joint program with the French Defence Innovation Agency
-- **EU4UA Defence Tech** (Sept 2025 – Feb 2027): up to **€200K per R&D acceleration grant**
-- **Defense Tech Valley 2025** (Lviv): 5,000+ participants, **$100M+ raised**
+**Hrim-2 (domestic name: Sapsan)** — short-range ballistic missile
+
+- Single-stage solid-fuel engine, **480 kg warhead**, top speed **Mach 5.2 (1.8 km/s)**
+- Faster than the U.S. ATACMS in speed terms; range 500 km; entered serial production in summer 2024
+- **Ballistic missiles diving from near-exoatmospheric altitudes at hypersonic speed are extremely
+  difficult to intercept**
+
+With these, Ukraine has **gained the autonomous capability to strike strategic targets deep in
+Russia without Western approval**.
+
+#### Asymmetric naval warfare — Unmanned Surface Vessels (USVs)
+
+Despite having no major surface combatants, Ukraine has used domestically developed USVs to
+**destroy or push back the bulk of Russia's Black Sea Fleet**.
+
+:::compare
+| USV | Specifications |
+| --- | --- |
+| **Magura V5** | 5.5 m, 300 kg payload, 800 km range, 78 km/h, **~$273K unit cost**, GNSS + inertial + visual guidance |
+| **Magura W6** | V5 derivative with **two R-73 (AA-11 Archer) air-to-air missiles** as the "Sea Dragon" air defense — **a sea drone that kills aerial threats** |
+| **Sea Baby** | 400 hp, 400 kg+ warhead, 500 nautical miles, Starlink + Kymeta antennas, breaks 1.5 m waves |
+| **Stalker 5.0** | Reconnaissance + kamikaze capabilities |
 :::
 
-> Ukraine is building a new model where **a country tests technology in combat,
-> then exports it to its allies**. NATO is increasingly the student, not the teacher.
-> That is a historic reversal.
+The most striking shift is **Magura W6**: a maritime drone evolves from "the hunted" into
+**something that takes out the air threats coming at it**. These USV technologies are now in
+the **export phase via multinational initiatives focused on Strait of Hormuz security, supplied
+to Gulf states**.
 
-### AI Does Not "Make" Decisions — It Multiplies Speed and Accuracy
+#### Electronic warfare (EW) — domestic production with international reach
 
-The crucial point: AI is **not replacing** military judgment.
+As drone warfare exploded, the contest in the electromagnetic spectrum (EW) has become at
+least as decisive as kinetic combat. Since January 2024, Ukraine's MoD has signed contracts
+for **over 11,000 EW systems (~₴6 billion)**, the majority domestically produced.
+
+- **Pokrova** — nation-scale GPS **spoofing** (not jamming). Russian Shaheds and missiles
+  are sent **falsified satellite signals** so they "think they are on the right track." Many
+  Shaheds drift off target and crash undamaged on the ground when they run out of fuel.
+- **Ai-Petri SV** — built with **₴200M+ of personal funds from former president Petro
+  Poroshenko**. Locates Orlan/Supercam/Lancet operators, severs their links, also interferes
+  with KAB glide-bomb navigation, and uses lasers to **"blind" enemy drone optics**. Currently
+  protects **1,000 km of contact line**.
+- **Bukovel-AD** — detects UAVs at 100 km, jams GPS/GLONASS/Galileo/Beidou at 20 km.
+  **Exported to Morocco**. Influenced the design of Greece's anti-drone "Centauros" system —
+  evidence of **Ukrainian EW technology shaping European standards**.
+
+### International Spillovers and Strategic Joint Ventures
+
+Ukraine is moving away from receiving finished products from the West and toward
+**building weapon production and repair hubs domestically (localization)**.
+
+- **Rheinmetall** (Germany): October 2023 joint venture in Kyiv (Rheinmetall 51% / UDI 49%).
+  Domestic production of the Lynx infantry fighting vehicle; agreement on a "Ukraine Munitions
+  Center of Excellence" producing hundreds of thousands of 155mm shells per year
+- **BAE Systems** (UK): Kyiv office opened August 2023; agreement on domestic production of
+  the 105mm light gun
+- **Baykar** (Turkey): TB2 production and service center under construction; operational early 2025
+- **Sweden**: joint production of CV90 infantry fighting vehicles
+- **Flensburger Fahrzeugbau** (Germany): armored vehicle repair hub being built in western Ukraine
+
+Financially backed by **the G7's $50 billion lending framework using frozen Russian sovereign
+assets** (including a £2.26 billion loan from the UK).
+
+> Ukraine is building a new model where **a country tests technology in combat, then exports
+> it to its allies**. NATO is increasingly the student, not the teacher. That is a historic reversal.
+
+### Strategic Tech Partnership With Japan — Rakuten, Tohoku University, AirKamuy
+
+Although Japan does not export lethal weapons, it is closely linked to Ukraine's defense-tech
+ecosystem through **dual-use technology and humanitarian assistance**.
+
+#### Rakuten Group × Brave1
+
+Backed by Rakuten founder Hiroshi Mikitani, the messaging app **Viber** has overwhelming
+penetration in Ukraine and serves as the **infrastructure for information sharing and
+military networking**.
+
+- May 2025, at the **DSEI Japan** defense exhibition at Makuhari Messe, **Rakuten partnered
+  with Brave1 to support the booths of six Ukrainian defense-tech startups**
+- This initiative serves as a bridge to **introduce Ukraine's combat-proven AI and autonomy
+  technology into the Japanese market and the Japanese defense industry**
+- **Rakuten Symphony** has signed an agreement with **Veon** (parent of Kyivstar, Ukraine's
+  largest carrier) and is participating in **rebuilding Ukraine's next-generation 5G network
+  using O-RAN (Open RAN)**
+
+#### Tohoku University × ALIS landmine detector
+
+Ukrainian farmland faces the largest mine and unexploded-ordnance contamination in the world.
+At the **Ukraine Mine Action Conference (UMAC 2025)** in Tokyo in October 2025, JICA and UNDP
+demonstrated state-of-the-art mine clearance technology. The core piece is **ALIS, a
+ground-penetrating radar landmine detector developed by Professor Emeritus Motoyuki Sato and
+his team at Tohoku University**:
+
+- **Visualizes plastic landmines as images** — they are extremely hard to find with
+  conventional metal detectors
+- Ukrainian engineers are now **integrating this Japanese sensor technology with domestic
+  ground-penetrating radar and AI-equipped drones** to automate broad-area farmland
+  safety verification from the air
+
+#### AirKamuy 150 — "cheap drones at scale" reaches Japan
+
+The Japanese company **AirKamuy** developed the **AirKamuy 150**, a **cardboard low-cost
+expendable drone**.
+
+- The **Japan Maritime Self-Defense Force** has begun adopting it for aerial-target and
+  tactical applications
+- This is **direct evidence that the doctrine Ukraine has proven — operating cheap drones
+  at scale — is reaching Japan**
+
+> Japan's own Ministry of Defense is incorporating lessons from the Ukraine war and exploring
+> the use of cheap swarm-control drones. This shows that **the cost-asymmetry doctrine still holds
+> even under Japan's constitutional constraint of not exporting lethal weapons**.
+
+### Conclusion — AI Doesn't "Make" Decisions; the Institutions Drive the Evolution
+
+Ukraine's rapid weapons progress did not come from one breakthrough invention. In a total
+war for national survival, it came from:
+
+- Stripping out procurement bureaucracy
+- Embedding a Silicon Valley–style venture ecosystem
+- Wiring real-time selection pressure from front-line troops (combat points) directly into
+  the weapons-development process
+
+That is the **victory of institutional architecture**.
+
+And what AI does in this picture is **not to replace military judgment**.
 
 :::chain
 Drone video + sensors → AI classifies and proposes targets
@@ -242,13 +496,16 @@ Satellite + OSINT + signals → Delta surfaces threats via AI
 → Commander decides → Force deploys
 :::
 
-What AI multiplies is **the speed and accuracy of information processing**.
-A middle power with fewer people and a smaller budget can now make
-**high-quality decisions in real time, with a small team**.
-That is the second axis of cost asymmetry.
+What AI multiplies is **the speed and accuracy of information processing**. A middle power
+with fewer people and a smaller budget can now make **high-quality decisions in real time
+with a small team**. That is the second axis of cost asymmetry.
 
-> Tens-of-thousands-of-dollars drones × $50 AI modules × cloud battlefield SaaS
-> — that is the equation Ukraine has shown the world for middle-power defense.
+> Tens-of-thousands-of-dollars drones × $50 AI modules × cloud battlefield SaaS × digital
+> Darwinism — that is the equation Ukraine has shown the world for middle-power defense.
+
+> `[Sources: ウクライナ兵器開発の現状調査.pdf (Gemini Deep Research), Reuters, CEPA,
+> Kyiv Independent, CSIS, Atlantic Council, IEEE Spectrum, Roland Berger, and various
+> press releases]`
 
 ## What Middle Powers Should Do
 

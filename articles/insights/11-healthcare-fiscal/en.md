@@ -198,18 +198,32 @@ finds its structural foundation here on a 20-year horizon.
 > **This is not a one-step transition — it is a three-stage generational shift.**
 > Where you enter changes everything about what you can capture.
 
-## The Structural Shift in Contract-Based Desk Work — Execution Goes to AI; Verification, Correction, and Adaptation Stay With Humans
+## AI in Desk Work — Reasoning Structurally From the Current Reality
 
-The generational shifts in defense and IT play out at the level of companies and nations. But a broader impact occurs inside every company — **a structural shift in contract-based desk work**.
+The generational shifts in defense and IT play out at the level of companies and nations. But a broader impact occurs inside every company — **the AI transformation of desk work overall**. Diagnose this incorrectly and the predictions for society as a whole will also be wrong.
 
-A common misreading must be avoided here. What AI eliminates is **not all desk work**.
-For document creation, data entry, reports, contract review, and coding alike, three things stay with humans:
+### The current reality — existing organizations are trying to replace desk work with AI agents
 
-- **Instructions and requirements** — deciding what to produce and why
-- The continuous work of **verifying, correcting, and adapting AI output to environmental change**
-- **Final judgment** — deciding whether the output is accepted
+Start with what is actually happening in 2024–2026.
 
-AI rapidly handles the **pure execution** between those phases. What disappears is employment specialized in "executing instructions, in unchanging environments, repeating routine work."
+- Companies are trying to replace accounting, legal, sales, customer support, and coding desk work with **AI agents** (GitHub Copilot Workspace, Devin, ChatGPT Operator, Claude Computer Use, autonomous AI agents, multi-agent systems)
+- Vendors pitch "automate 90%, reduce headcount to zero"
+- Executives announce "we are reducing staff with AI"
+- Investors reward AI-adopting companies with higher valuations
+
+That is the script. The picture being painted is **AI agents inside existing organizations, taking over human work while the existing workflow stays intact**.
+
+But seen structurally, this script has **three layers of fatal problems**. Walk down through them.
+
+### First problem — AI execution does not complete by itself
+
+For document creation, data entry, contract review, coding, and so on, three things stay with humans:
+
+- **Instructions and requirements** (what to produce and why)
+- **Verification, correction, and environmental adaptation** (checking and correcting AI output, reshaping it for environmental change)
+- **Final judgment** (whether to accept the output)
+
+What AI replaces is limited to **pure execution** between those phases.
 
 :::compare
 | Desk work | Instructions / requirements | Verification, correction, environmental adaptation | Pure routine execution |
@@ -225,53 +239,25 @@ AI rapidly handles the **pure execution** between those phases. What disappears 
 | Marketing analysis | Stays (questions, hypotheses) | **Stays** (interpreting market shifts, strategy) | AI absorbs |
 :::
 
-### Three reasons AI cannot complete execution by itself
+In particular, **verification, correction, and environmental adaptation** cannot be handed over to AI. There are three reasons.
 
-This deserves careful handling. Simplifying it to "AI handles all execution" misreads what is actually happening on the ground.
+**(1) With AI adoption, the required precision actually rises**
 
-**1. With AI adoption, the required precision rises**
+Precisely because AI processes at scale, small errors — hallucinations, misread context, application of outdated norms — get **propagated exponentially**. This is unlike the era when one human's mistake stayed one mistake. The precision required at the verification stage is **higher than before AI**.
 
-Precisely because AI processes at scale, small errors — hallucinations, misread context, application of outdated norms — get **replicated and propagated at scale**. Compared to an era when one human's mistake stayed one mistake, AI's mistakes spread **exponentially**. The result is that the precision required at the verification stage **rises above the pre-AI baseline**. Deciding "should this AI output be accepted?" becomes more demanding precisely because the execution has been automated.
+**(2) Adaptation to environmental change does not complete inside AI**
 
-**2. Adaptation to environmental change does not complete inside AI**
+AI's training data is **knowledge as of a particular point in time**. When new tax codes, new regulations, new technology, new market conditions, or new in-house contexts emerge, AI output keeps coming out **using the old assumptions**. The active work of **rewriting AI output** to match those changes is something only humans can do.
 
-AI's training data is **knowledge as of a particular point in time**. Laws, regulations, tax codes, industry practices, market conditions, and technical stacks change constantly. When those change, AI output keeps coming out **using the old assumptions**.
+**(3) AI fails silently on edge cases**
 
-- A new tax code is enacted: humans **revisit** AI's accounting output
-- A new regulation is enacted: humans **reconstruct** AI's legal review
-- New technology emerges: humans **adapt** AI's code suggestions
-- Customer or industry context shifts: humans **rewrite** AI's documents
+AI can execute 80–90% of routine work, but fails on the remaining 10–20% of edge cases and complex intersections — and the failure is **silent**. Detecting and correcting it requires the human sense of "this isn't normal."
 
-These overlap with "final judgment" but go beyond mere accept/reject — they are **active work that modifies the AI output itself**.
+> The conclusion: what AI adoption actually eliminates is limited to **"work that follows instructions, in unchanging environments, repeating simple routine."** The work of **verifying, adapting to environmental change, and correcting edge cases** actually **grows alongside AI adoption**.
 
-**3. AI fails silently on edge cases**
+### Second problem — the number of people who can move to "instructions and judgment" has a ceiling
 
-AI can execute 80–90% of routine work. But on the remaining 10–20% — **edge cases, unforeseen situations, complex intersections** — AI fails. The trouble is that **the failure is silent**, and detecting and correcting it requires **experienced human judgment**. Treating AI output as "always correct" eventually means missing the rare catastrophic error.
-
-> So what AI adoption actually eliminates is limited to **"work that follows instructions, in unchanging environments, repeating simple routine."**
-> The work of **verifying, adapting to environmental change, and correcting edge cases** actually **grows alongside AI adoption**.
-
-### Be careful with the headcount estimate
-
-Inside companies, the structure maps onto **career-track vs. clerical-track, employee vs. contractor / BPO / SIer**: the side handling instructions, verification, and judgment stays; the side handling pure execution shrinks. But how much it shrinks depends heavily on:
-
-- How fast the industry's environment changes (faster change → more human correction work)
-- How costly verifying AI output is in that domain
-- How frequent edge cases are
-
-It is **wrong to oversimplify this as "millions of jobs vanish at once."**
-
-:::highlight
-**A careful estimate of the structural shift:**
-Of Japan's ~67 million workers, approximately 13 million are office workers.
-Of those, the share corresponding to **pure-execution-only labor under someone else's instructions** is roughly **half of working hours** — though this varies widely by industry and role.
-**Millions of person-hours of labor likely shift to AI**, but that does not mean "zero people." What happens first is that the composition of one person's job changes — verification, correction, and adaptation make up a larger share.
-:::
-
-### The number of people who can move to the "instructions and judgment" side has a ceiling
-
-We've said that "even when execution moves to AI, instructions, requirements, verification, correction, adaptation, and final judgment stay with humans." That is true. But there is another fact.
-**The number of people who can actually do that work has a ceiling.** There are two reasons — **cannot** and **does not want to**.
+The first problem tells us "humans are still needed." But the number of people who can **actually do that work has a ceiling**. There are two reasons — **cannot** and **does not want to**.
 
 #### Cannot — the capability ceiling
 
@@ -287,153 +273,119 @@ These accumulate over years to more than a decade. **Not everyone can acquire th
 
 #### Does not want to — the preference ceiling
 
-Equally important is that **a substantial number of people who have the ability still do not want this work.**
+Equally important: **a substantial number of people who have the ability still do not want this work.**
 
 - Always-on accountability (problems land on your desk)
 - Decision-making under uncertainty (your evaluation is on the line)
 - Bearing the final cost of AI's errors (the moment you approved it, it became yours)
-- Multifaceted cognitive load (overseeing multiple domains at once)
+- Multifaceted cognitive load
 - Loss of the simplicity of pure execution (the "just do what I'm told" comfort goes away)
 
-People unwilling to take this on do not take it on, even if they can. This is a matter of **personal preference**, not something to be forced socially. The old pattern of "people who could promote to career-track but chose clerical-track" now scales out to white-collar work overall.
+People unwilling to take this on do not take it on, even if they can. This is a matter of **personal preference**, not something to be forced socially. The old pattern of "people who could promote to career-track but chose clerical-track" now scales out across white-collar work overall. In contemporary Japan especially, the trend among younger workers — "**prioritize work-life balance, avoid carrying responsibility**" — is strengthening.
 
-The ratio of "wants to" vs. "does not want to" varies sharply by industry, age, family situation, and pay structure. In contemporary Japan especially, the trend among younger workers — "**prioritize work-life balance, avoid carrying responsibility**" — is strengthening.
+Through the double constraint of "cannot × does not want to," the **effective supply** of people moving to the instruction-and-judgment side cannot keep up with the demand created by AI adoption. When AI drastically reduces demand for pure-execution labor, **not everyone displaced can re-enter on the instruction-and-judgment side — and not everyone wants to.**
 
-#### Result — the supply on the instruction-and-judgment side cannot keep up with demand
+### Third problem — escape to autonomous agents fails
 
-Through the double constraint of "cannot × does not want to," the **effective supply** of people who can move to the instruction-and-judgment side likely cannot keep up with the demand created by AI adoption. When AI drastically reduces demand for pure-execution labor, **not everyone displaced can re-enter on the instruction-and-judgment side — and not everyone wants to.**
+When confronted with "the number of people who can move to instructions-and-judgment is limited," the industry's reflex response is fixed:
 
-What actually happens is roughly a three-layer split:
+> **"Then let AI agents do verification and judgment autonomously."**
 
-:::compare
-| Layer | Role | What happens |
-| --- | --- | --- |
-| **Skilled top layer** | Instructions, requirements, final judgment | One person runs the work of 20; pay rises |
-| **Middle layer of verifiers / adapters** | Verifying, correcting, and adapting AI output | A new middle layer emerges, but the headcount is limited |
-| **Layer that did pure execution only** | Contractors, dispatch, BPO | **Total work shrinks dramatically; needs somewhere to go** |
-:::
+GitHub Copilot Workspace, Devin, ChatGPT Operator, Claude Computer Use, autonomous AI agents, multi-agent systems — every major product in 2024–2026 stands on this idea. **If humans are the bottleneck, remove humans.**
 
-This is not the happy story that "everyone moves to skilled, multifaceted work." It is **labor market polarization**: a substantial number of people will be unable — or unwilling — to move into the new role, for reasons of skill, age, geography, or simple personal preference. This series' structural analysis should not write that part optimistically.
+But this fails structurally. Six reasons.
 
-### Warning — "Just let AI agents do it autonomously" is a dangerous escape
+1. **Hallucinations reinforce each other** — same training-data biases appear on the verifier side; autonomous loops do not correct errors but **mutually justify** them
+2. **Blindness to environmental change** — verifier and executor agents come from the same past data; both are equally "have not seen" the new tax codes, new regulations, new technology. The same blind spot from the first problem is not solved by putting AI on the verifier side
+3. **The side weak on edge cases is also doing the verification** — same AI misses the same failures
+4. **Accountability evaporates** — instructor? verification agent? execution agent? vendor? **In an autonomous loop, accountability dissolves**
+5. **Costs compound exponentially** — agents calling agents inflates API calls 100×–1,000×; the same structure as the **AGI-economic-unviability** in Chapter 6
+6. **Targets for attack** — prompt injection lets an attacker hijack an agent and use its credentials at scale; this connects directly to the breakdown discussed in [Chapter 5 "Mythos Has Arrived"](/en/insights/mythos/). Anthropic's own guidance (in `/en/ai-native-ways/ai-delegation/`) clearly states **"Do not run agents in autonomous mode."**
 
-Here, write down the warning about what is happening across the industry today.
+> Escape into autonomous AI agents does not solve the human bottleneck. It **simultaneously worsens verification, accountability, cost, and security.** This is not a technology that solves the labor shortage. It is **a different set of problems dressed up to look like a solution to the labor shortage.**
 
-When confronted with the fact that "the number of people who can move to instruction-and-judgment is limited," the industry's reflex response is fixed:
+### Existing organizations face structural difficulty in adopting AI
 
-> "**Then let AI agents do verification and judgment autonomously.**"
+Stack the three problems together, and the current script — **"existing organizations replace desk work with AI agents while keeping the existing workflow"** — turns out to be structurally hard.
 
-GitHub Copilot Workspace, Devin, ChatGPT Operator, Claude Computer Use, autonomous AI agents, multi-agent systems — every product released in 2024–2026 stands on this idea. **If humans are the bottleneck, remove humans.**
+- Adding AI on top of existing workflows leaves no internal capacity for verification and adaptation; cost stays high and productivity stays low
+- The organization cannot solve "people don't want it" or "people won't take responsibility" internally
+- Escape to autonomous agents replaces it with a different set of problems
+- Internal power structures, evaluation systems, employment contracts, and legacy systems all block AI-native ways of working
 
-**This fails structurally.** There are six reasons.
+For many existing companies, **full AI adoption is intrinsically difficult**. This is not a technical problem. It is a **problem of organizational structure**.
 
-**1. Hallucinations reinforce each other**
+### Change comes from AI-native organizations — the Ukraine pattern, generalized
 
-When AI verifies AI output, errors do not cancel. **The same biases from the same training data show up on the verifier side too.** The first-person habit of "writing falsehoods with confidence" appears identically in the second-person verifier agent. Autonomous loops do not correct errors — they **mutually justify them**.
-
-**2. Blindness to environmental change**
-
-Training data is static. The verifier agent and the adapter agent come from the same past data. **Pure-execution side and verification side are equally "have not seen" the new tax codes, new regulations, new technology, and new market conditions.** Without human intervention, external change cannot enter the loop. We said earlier that "adaptation to environmental change does not complete inside AI" — putting AI on the verification side does not solve that.
-
-**3. The side weak on edge cases is also doing the verification**
-
-AI fails silently on edge cases (discussed in the previous sub-section). Putting the same AI on verification means **the same AI misses those failures**. What it takes to notice an edge case is the human sense of "this isn't normal" — not training-data pattern recognition.
-
-**4. Accountability evaporates**
-
-When something catastrophic goes wrong, who is responsible? The instructor? The verification agent? The execution agent? The vendor? **In an autonomous loop, accountability dissolves.** This is a serious legal, ethical, and operational problem that society cannot sustain.
-
-**5. Costs compound exponentially**
-
-AI calls are not free. Agents calling agents inflates **API call counts per task by 100×–1,000×**. Economically, autonomous loops are usually unprofitable — the same structure as the **AGI-economic-unviability** discussed in Chapter 6.
-
-**6. Targets for attack (prompt injection and supply-chain poisoning)**
-
-Autonomous agents are extremely attractive attack targets. An attacker can hijack an agent through prompt injection and inflict large-scale damage with the agent's authorized credentials. This connects directly to the breakdown of the attacker–defender economy under Claude Mythos discussed in [Chapter 5 "Mythos Has Arrived"](/en/insights/mythos/). Anthropic's own guidance (in `/en/ai-native-ways/ai-delegation/`) states clearly: **"Do not run agents in autonomous mode."**
-
-> Escaping into autonomous AI agents does not solve the human bottleneck. It **simultaneously worsens verification, accountability, cost, and security.**
-> **This is not a technology that solves the labor shortage. It is a different set of problems dressed up to look like a solution to the labor shortage.**
-
-### So how does change actually happen — the Ukraine pattern, repeated
-
-If escape into autonomous agents fails, how does change move forward? The earlier sections on **the generational shift in defense and IT** answer this.
+So how does AI-driven change actually happen? The earlier sections in this chapter on the **generational shift in defense and IT** give the answer.
 
 #### Defense industry
 
-- **Legacy companies** (Lockheed Martin, Raytheon, BAE, MHI) bolting AI onto existing products produces F-35-style or Patriot-style results: **capabilities go up, prices go up further**. The organization, supply chain, procurement process, and internal politics are all optimized for "giant platform + AI feature addition."
-- **Ukraine**, driven by **wartime necessity**, built **AI-native institutions and organizations** from scratch — Brave1, Delta, Army+, E-Points. A weapons system of "$50 AI module × tens-of-thousands-of-dollars drone × battlefield feedback loop" emerged — a system **legacy companies could not have designed**.
+- **Legacy companies** (Lockheed Martin, Raytheon, BAE, MHI) bolting AI on top produce F-35- or Patriot-style results: **capabilities up, price up further**. Organization, supply chain, procurement, internal politics — everything is optimized for "giant platform + AI feature addition."
+- **Ukraine**, driven by **wartime necessity**, built AI-native institutions and organizations **from scratch**: Brave1, Delta, Army+, E-Points. A weapons system of "$50 AI module × tens-of-thousands-of-dollars drone × battlefield feedback loop" emerged — something legacy companies could not have designed.
 
 #### IT industry
 
-- **Microsoft** added Copilot to Windows. But improvements to the OS itself are deprioritized, and users feel that **"Copilot is being pushed at me while the actual OS is degrading"** (see the IT-industry section earlier in this chapter).
+- **Microsoft** added Copilot to Windows. But improvements to the OS itself were deprioritized, and users feel that **"Copilot is being pushed at me while the actual OS is degrading."**
 - **Anthropic, Cursor, Vercel, Hugging Face, Perplexity** built AI-native designs **from the organization upward**. Rather than bolting AI onto existing products, they put AI at the core and rewrote tooling, organization, and business models.
 
-#### A universal structural pattern
+#### A universal pattern — this spreads to companies overall
 
-> **Legacy organizations introduce AI as a "feature add."** They preserve existing decision-making structures, product lines, employee composition, and supply chains and lay AI on top. Result: capabilities improve somewhat, but because the organization is not optimized around AI, they end up **orders of magnitude less efficient than AI-native organizations**.
+> **Legacy organizations introduce AI as a "feature add."** They preserve existing decision-making structures, product lines, employee composition, and supply chains, and lay AI on top. The result: capabilities improve a little, but because the organization is not optimized around AI, they end up **orders of magnitude less efficient than AI-native organizations**.
 
-> **New organizations are built AI-native.** They put AI at the core and design the organization, processes, labor-equipment ratio, and decision-making structure from scratch. Result: high productivity with a small headcount. They replace legacy companies through competition.
+> **New organizations are built AI-native.** They put AI at the core and design the organization, processes, labor-equipment ratio, and decision-making structure from scratch. Result: high productivity with a small headcount. **They replace legacy companies through competition.**
 
-#### This pattern spreads to companies in general
+Existing companies trying to apply AI to accounting, legal, sales, and customer support face the same pattern as defense and IT. The mechanism by which AI actually penetrates is **not** "existing organizations adopting AI." It is **AI-native new organizations being born of necessity, and competing with — replacing — existing organizations**.
 
-Existing companies trying to introduce AI into accounting, legal, sales, and customer support face **the same pattern as defense and IT**:
-
-- AI added on top of existing workflows → high cost, low productivity
-- Internal power structures, evaluation systems, and employment contracts block AI-native ways of working
-- They cannot solve "people don't want it" or "people won't take responsibility" (see the previous sub-section)
-- They escape to autonomous agents — and fall into a different set of problems (see the warning above)
-
-In other words, **for many existing companies, full AI adoption is intrinsically difficult**. This is not a technical problem. It is a **problem of organizational structure**.
-
-#### Change comes from AI-native organizations
-
-What happens instead is that **AI-native organizations are born of necessity and compete with existing companies**.
+Concretely:
 
 - **One person + AI** sole proprietors reproducing the work of a large company (Chapter 9, "AI and the Individual")
-- **Startups** of a few people offering services equivalent to legacy SIers, BPOs, and consulting firms
-- **AI-native small companies** founded outside Tokyo, competing with metropolitan-concentrated legacy firms
-- Nation-scale cases like Ukraine's Brave1 — building an **AI-native defense industry at the national level**
-
-And as these AI-native organizations **replace legacy companies through competition**, the demand for pure-execution labor evaporates.
+- **AI-native startups** of a few people delivering services equivalent to legacy SIers, BPOs, and consulting firms
+- **AI-native small companies** founded outside Tokyo, competing down legacy firms concentrated in the metropolis
+- Nation-scale cases like Ukraine's Brave1 — an **AI-native defense industry at the national level**
 
 > The protagonist of the change is not the "AI adoption department" of a legacy company.
-> It is the **AI-native new organization, born of necessity**.
+> It is **AI-native new organizations born of necessity**.
 > The real challenge for legacy companies is not "introduce AI internally and survive" — it is **"survive competition with AI-native new organizations."**
 
 This is structurally identical to Clayton Christensen's **"Innovator's Dilemma."** What happened in disk drives, minicomputers, steel, and retail will happen in **all white-collar industries simultaneously** under AI.
 
+### What happens to contract-based desk work along the way — three layers
+
+As AI-native organizations and existing organizations compete, desk work overall splits into roughly three layers.
+
+:::compare
+| Layer | Role | What happens |
+| --- | --- | --- |
+| **Skilled top layer** | Instructions, requirements, final judgment | Survives in both AI-native and legacy organizations; pay rises |
+| **Middle layer of verifiers / adapters** | Verifying, correcting, and adapting AI output | A new middle layer emerges, but the headcount is limited |
+| **Layer that did pure execution only** | Contractors, dispatch, BPO | **Total work shrinks dramatically; needs somewhere to go** |
+:::
+
+Do not oversimplify this as "millions of jobs vanish at once." Of Japan's ~13 million office workers, the share corresponding to **pure-execution-only labor under someone else's instructions** is roughly half of working hours; how much AI can take is highly variable across industries and roles. **What changes first is the composition of one person's job** — verification, correction, and adaptation grow as a share.
+
+But over the long term, a **substantial number of people** will be unable — or unwilling — to move into the new role for reasons of skill, age, geography, or simple personal preference. **Labor market polarization**, left alone, runs in parallel with income evaporation, social instability, and political pressure for UBI.
+
 ### So we need migration to land-based work
 
-If the polarization is left alone:
-
-- Income evaporates for the displaced layer
-- Political pressure for UBI rises (but as Chapter 6 showed, UBI is not a structural solution)
-- Society destabilizes (unemployment, division, conflict)
-
-But here is the crucial fact: **at the level of the whole society, the demand for physical work is rising rapidly.**
+The crucial fact here is that **at the level of the whole society, demand for physical work is rising rapidly**.
 
 - Bio-material manufacturing requires permanent human labor (Chapter 2)
 - Soil regeneration and microbial management require on-site work (regenerative agriculture)
 - Food production, forestry, maintenance of regional infrastructure
 
-These cannot be replaced by AI. They are the **socially needed, real receiving capacity** for people freed from execution by AI.
+These cannot be replaced by AI. They are **the socially needed, real receiving capacity** for people freed from pure execution by AI.
 
 But the migration does not happen automatically:
 
 - Not every desk worker can move to farming or forestry (age, health, geography)
 - The transition takes **years** (skill acquisition, relocation, securing land)
-- During that time, people need **policy support**: livelihood guarantees, vocational training, land redistribution, etc. (covered in detail in the "Great Population Migration" section below)
+- During that time, people need **policy support**: livelihood guarantees, vocational training, land redistribution (covered in detail in the "Great Population Migration" section below)
 
-> The structural change of AI makes a few capable people 20× more productive.
-> But the number of people who can become that one is limited — and this becomes a problem for society as a whole.
-> **Where do the remaining 19 go, and what do they do?**
-> That is the substance of the question this chapter takes up later under "the great population migration to land-based work."
-
-This connects to the UBI (Universal Basic Income) debate. But as Chapter 6 showed, UBI is wrong.
+As Chapter 6 showed, UBI is not a structural solution.
 Bio-material manufacturing, soil regeneration, ecosystem restoration —
 physical work requires human labor permanently.
-Contract-based desk workers are released from pure execution, but **work itself will not disappear.
-It will change — those who can change will change, and those who cannot need a different path (land-based work).**
+Contract-based desk workers are released from pure execution, but **work itself will not disappear, only change — those who can change will change, and those who cannot need a different path (land-based work).**
 
 ## From Megacities to Land — The Great Population Migration
 

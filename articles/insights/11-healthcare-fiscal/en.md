@@ -202,20 +202,17 @@ finds its structural foundation here on a 20-year horizon.
 
 The generational shifts in defense and IT play out at the level of companies and nations. But a broader impact occurs inside every company — **the AI transformation of desk work overall**. Diagnose this incorrectly and the predictions for society as a whole will also be wrong.
 
-### The current reality — existing organizations are trying to replace desk work with AI agents
+### The current reality — the whole industry is rushing toward "replace it with autonomous AI agents"
 
-Start with what is actually happening in 2024–2026.
+What is happening in 2024–2026 is not just "AI for productivity gains."
 
-- Companies are trying to replace accounting, legal, sales, customer support, and coding desk work with **AI agents** (GitHub Copilot Workspace, Devin, ChatGPT Operator, Claude Computer Use, autonomous AI agents, multi-agent systems)
-- Vendors pitch "automate 90%, reduce headcount to zero"
-- Executives announce "we are reducing staff with AI"
-- Investors reward AI-adopting companies with higher valuations
+GitHub Copilot Workspace, Devin, ChatGPT Operator, Claude Computer Use, autonomous AI agents, multi-agent systems — what the industry is shipping at scale are products **designed to operate without humans in the loop**. Executives announce "we are reducing headcount with AI," vendors pitch "zero humans needed," and investors reward this direction with high valuations.
 
-That is the script. The picture being painted is **AI agents inside existing organizations, taking over human work while the existing workflow stays intact**.
+**Why "let AI do it autonomously" rather than just "AI assists"?** Understanding this is the first step to seeing the situation structurally. The industry is not naive about automation. While implementing AI adoption, it has **already recognized two awkward facts** — and is betting on autonomous agents on top of that recognition.
 
-But seen structurally, this script has **three layers of fatal problems**. Walk down through them.
+### Two recognitions behind the industry's bet on autonomous agents
 
-### First problem — AI execution does not complete by itself
+#### Recognition 1 — AI doing only pure execution still requires humans
 
 For document creation, data entry, contract review, coding, and so on, three things stay with humans:
 
@@ -223,97 +220,89 @@ For document creation, data entry, contract review, coding, and so on, three thi
 - **Verification, correction, and environmental adaptation** (checking and correcting AI output, reshaping it for environmental change)
 - **Final judgment** (whether to accept the output)
 
-What AI replaces is limited to **pure execution** between those phases.
+What AI can replace is limited to **pure execution** between those phases.
 
-:::compare
-| Desk work | Instructions / requirements | Verification, correction, environmental adaptation | Pure routine execution |
-| --- | --- | --- | --- |
-| Document creation | Stays (what to produce) | **Stays** (accuracy check, format correction) | AI absorbs |
-| Data entry | Stays (what to enter) | **Stays** (validation, anomaly detection) | AI absorbs |
-| Report writing | Stays (framing the question) | **Stays** (number verification, interpretation correction) | AI absorbs |
-| Accounting | Stays (transaction input) | **Stays** (responding to tax-law changes, approval) | AI absorbs |
-| Legal review | Stays (risk framing) | **Stays** (responding to regulatory changes, contract decisions) | AI absorbs |
-| Translation | Stays (purpose, tone) | **Stays** (industry terms, context tuning) | AI absorbs |
-| Customer support | Stays (escalation criteria) | **Stays** (understanding customer situation, exceptions) | AI absorbs |
-| Programming | Stays (design, requirements) | **Stays** (review, testing, incident response) | AI absorbs |
-| Marketing analysis | Stays (questions, hypotheses) | **Stays** (interpreting market shifts, strategy) | AI absorbs |
-:::
+In particular, **verification, correction, and environmental adaptation** cannot be handed over to AI. Three reasons:
 
-In particular, **verification, correction, and environmental adaptation** cannot be handed over to AI. There are three reasons.
+- Precisely because AI processes at scale, small errors (hallucinations, misread context, outdated norms) get **propagated exponentially** → the precision required at verification rises **higher than before AI**
+- AI training data is **knowledge as of a particular point in time** → adapting to new tax codes, new regulations, new technology, and new market conditions does not complete inside AI
+- For the remaining 10–20% of **edge cases, AI fails silently** → detection requires the human sense of "this isn't normal"
 
-**(1) With AI adoption, the required precision actually rises**
+In short, AI adoption does not reduce headcount as much as expected. **A line of human work — instructing, verifying, adapting, judging — remains.** The industry has experienced this in implementation.
 
-Precisely because AI processes at scale, small errors — hallucinations, misread context, application of outdated norms — get **propagated exponentially**. This is unlike the era when one human's mistake stayed one mistake. The precision required at the verification stage is **higher than before AI**.
+#### Recognition 2 — the people who can move to "verification and judgment" are limited
 
-**(2) Adaptation to environmental change does not complete inside AI**
-
-AI's training data is **knowledge as of a particular point in time**. When new tax codes, new regulations, new technology, new market conditions, or new in-house contexts emerge, AI output keeps coming out **using the old assumptions**. The active work of **rewriting AI output** to match those changes is something only humans can do.
-
-**(3) AI fails silently on edge cases**
-
-AI can execute 80–90% of routine work, but fails on the remaining 10–20% of edge cases and complex intersections — and the failure is **silent**. Detecting and correcting it requires the human sense of "this isn't normal."
-
-> The conclusion: what AI adoption actually eliminates is limited to **"work that follows instructions, in unchanging environments, repeating simple routine."** The work of **verifying, adapting to environmental change, and correcting edge cases** actually **grows alongside AI adoption**.
-
-### Second problem — the number of people who can move to "instructions and judgment" has a ceiling
-
-The first problem tells us "humans are still needed." But the number of people who can **actually do that work has a ceiling**. There are two reasons — **cannot** and **does not want to**.
-
-#### Cannot — the capability ceiling
+If a line of human work remains, just secure people to staff it — that is what the industry tried next. And it ran into a wall again.
 
 To absorb execution, a person needs:
 
-- **Domain expertise** (tax, legal, industry practice, technical stack, market)
+- **Domain expertise** (tax, legal, industry, technical stack, market)
 - **Critical reading ability** to spot anomalies in AI output
 - **Judgment** to detect environmental changes and update existing outputs
 - **Experience** to notice when AI is "failing silently" on edge cases
 - **Resolve and accountability** to decide under uncertainty
 
-These accumulate over years to more than a decade. **Not everyone can acquire them.**
+These accumulate over years to more than a decade. **Not everyone can acquire them** (cannot).
 
-#### Does not want to — the preference ceiling
+In addition, a substantial number of people who have the ability still do not want this work — always-on accountability, decision-making under uncertainty, bearing the final cost of AI's errors, multifaceted cognitive load. People who avoid these and prefer the simplicity of pure execution will not take the role even when they could (does not want to). In contemporary Japan especially, the trend among younger workers — "**prioritize work-life balance, avoid carrying responsibility**" — is strengthening.
 
-Equally important: **a substantial number of people who have the ability still do not want this work.**
+Through the double constraint of "cannot × does not want to," the **effective supply** of people on the instruction-and-judgment side is limited. Training takes years, and forcing the role on people leads to attrition.
 
-- Always-on accountability (problems land on your desk)
-- Decision-making under uncertainty (your evaluation is on the line)
-- Bearing the final cost of AI's errors (the moment you approved it, it became yours)
-- Multifaceted cognitive load
-- Loss of the simplicity of pure execution (the "just do what I'm told" comfort goes away)
+#### Conclusion — the industry's answer is "remove the humans"
 
-People unwilling to take this on do not take it on, even if they can. This is a matter of **personal preference**, not something to be forced socially. The old pattern of "people who could promote to career-track but chose clerical-track" now scales out across white-collar work overall. In contemporary Japan especially, the trend among younger workers — "**prioritize work-life balance, avoid carrying responsibility**" — is strengthening.
+From these two recognitions, the industry drew a logical conclusion:
 
-Through the double constraint of "cannot × does not want to," the **effective supply** of people moving to the instruction-and-judgment side cannot keep up with the demand created by AI adoption. When AI drastically reduces demand for pure-execution labor, **not everyone displaced can re-enter on the instruction-and-judgment side — and not everyone wants to.**
+> **"Then let AI agents do verification, judgment, and adaptation autonomously. If humans are the bottleneck, remove the humans."**
 
-### Third problem — escape to autonomous agents fails
+That is the **real reason** autonomous and multi-agent products are shipping at scale across 2024–2026. The industry is not naive. **It has recognized the problems and is betting on autonomous agents as the solution.**
 
-When confronted with "the number of people who can move to instructions-and-judgment is limited," the industry's reflex response is fixed:
+### But autonomous agents fail structurally — six reasons
 
-> **"Then let AI agents do verification and judgment autonomously."**
+This is the core of the chapter. **Autonomous agents do not solve the problems the industry recognized.** They simultaneously worsen verification, accountability, cost, and security. Six reasons:
 
-GitHub Copilot Workspace, Devin, ChatGPT Operator, Claude Computer Use, autonomous AI agents, multi-agent systems — every major product in 2024–2026 stands on this idea. **If humans are the bottleneck, remove humans.**
+**1. Hallucinations reinforce each other**
 
-But this fails structurally. Six reasons.
+When AI verifies AI output, errors do not cancel. **The same biases from the same training data appear on the verifier side too.** The first-person habit of "writing falsehoods with confidence" appears identically in the second-person verifier agent. Autonomous loops do not correct errors — they **mutually justify them**. **The precision problem of Recognition 1 is not solved by putting AI on the verification side.**
 
-1. **Hallucinations reinforce each other** — same training-data biases appear on the verifier side; autonomous loops do not correct errors but **mutually justify** them
-2. **Blindness to environmental change** — verifier and executor agents come from the same past data; both are equally "have not seen" the new tax codes, new regulations, new technology. The same blind spot from the first problem is not solved by putting AI on the verifier side
-3. **The side weak on edge cases is also doing the verification** — same AI misses the same failures
-4. **Accountability evaporates** — instructor? verification agent? execution agent? vendor? **In an autonomous loop, accountability dissolves**
-5. **Costs compound exponentially** — agents calling agents inflates API calls 100×–1,000×; the same structure as the **AGI-economic-unviability** in Chapter 6
-6. **Targets for attack** — prompt injection lets an attacker hijack an agent and use its credentials at scale; this connects directly to the breakdown discussed in [Chapter 5 "Mythos Has Arrived"](/en/insights/mythos/). Anthropic's own guidance (in `/en/ai-native-ways/ai-delegation/`) clearly states **"Do not run agents in autonomous mode."**
+**2. Blindness to environmental change**
 
-> Escape into autonomous AI agents does not solve the human bottleneck. It **simultaneously worsens verification, accountability, cost, and security.** This is not a technology that solves the labor shortage. It is **a different set of problems dressed up to look like a solution to the labor shortage.**
+The verifier agent and the adapter agent come from the same past data. **Pure-execution side and verification side are equally "have not seen" the new tax codes, new regulations, and new technology.** Without human intervention, external change cannot enter the loop. **The environmental-change problem of Recognition 1 is not solved by putting AI on the verification side.**
 
-### Existing organizations face structural difficulty in adopting AI
+**3. The side weak on edge cases is also doing the verification**
 
-Stack the three problems together, and the current script — **"existing organizations replace desk work with AI agents while keeping the existing workflow"** — turns out to be structurally hard.
+AI fails silently on edge cases. Putting the same AI on verification means **the same AI misses those failures**. What it takes to notice an edge case is the human sense of "this isn't normal" — not training-data pattern recognition. **The edge-case problem of Recognition 1 cannot be solved by AI autonomy in principle.**
 
-- Adding AI on top of existing workflows leaves no internal capacity for verification and adaptation; cost stays high and productivity stays low
-- The organization cannot solve "people don't want it" or "people won't take responsibility" internally
-- Escape to autonomous agents replaces it with a different set of problems
-- Internal power structures, evaluation systems, employment contracts, and legacy systems all block AI-native ways of working
+**4. Accountability evaporates**
 
-For many existing companies, **full AI adoption is intrinsically difficult**. This is not a technical problem. It is a **problem of organizational structure**.
+When something catastrophic goes wrong, who is responsible? The instructor? The verification agent? The execution agent? The vendor? **In an autonomous loop, accountability dissolves.** This is a serious legal, ethical, and operational problem that society cannot sustain. This is **a new problem that autonomous agents introduce** — one that did not exist when "a human stepped in once" inside an existing organization.
+
+**5. Costs compound exponentially**
+
+AI calls are not free. Agents calling agents inflates **API call counts per task by 100×–1,000×**. Economically, autonomous loops are usually unprofitable — the same structure as the **AGI-economic-unviability** discussed in Chapter 6.
+
+**6. Targets for attack**
+
+Autonomous agents are extremely attractive attack targets. An attacker can hijack an agent through prompt injection and inflict large-scale damage with the agent's authorized credentials. This connects directly to the breakdown of the attacker–defender economy under Claude Mythos discussed in [Chapter 5 "Mythos Has Arrived"](/en/insights/mythos/). Anthropic's own guidance (in `/en/ai-native-ways/ai-delegation/`) states clearly: **"Do not run agents in autonomous mode."**
+
+#### To summarize
+
+Reasons 1–3 show that autonomous agents **do not solve the human-needed problem the industry recognized (Recognition 1)**. Putting another AI from the same training data on verification leaves the underlying limit intact.
+
+Reasons 4–6 show that autonomous agents **introduce new problems**: dissolved accountability, exponential cost, expanded attack surface — none of which existed when "a human stepped in once" inside the existing organization.
+
+> Autonomous agents are **not a technology that solves the labor shortage**. They are **a different set of problems dressed up to look like a solution to the labor shortage**.
+
+### Existing organizations are in a structural dead end
+
+To summarize:
+
+1. **AI alone does not complete the work** (Recognition 1: verification, adaptation, and judgment require humans)
+2. **The number of humans who can do verification and judgment is limited** (Recognition 2: cannot × does not want to)
+3. The industry **bet on autonomous agents** to escape — but that fails structurally (six reasons above)
+
+This is a **structural dead end** in three steps. The script of "existing organizations replace their desk work with AI agents" **cannot be solved inside the organization**.
+
+This is not a technical problem. It is a **problem of organizational structure**. Existing workflows, existing power structures, existing evaluation systems, existing employment contracts, and existing accountability structures **prevent AI-native ways of working from being built from inside**.
 
 ### Change comes from AI-native organizations — the Ukraine pattern, generalized
 

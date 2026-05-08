@@ -214,23 +214,15 @@ GitHub Copilot Workspace, Devin, ChatGPT Operator, Claude Computer Use, autonomo
 
 #### Recognition 1 — AI doing only pure execution still requires humans
 
-For document creation, data entry, contract review, coding, and so on, what AI can replace is limited to **pure execution**.
+For document creation, data entry, contract review, coding, and so on, three things stay with humans:
 
-:::compare
-| Desk work | Instructions / requirements | Verification, correction, environmental adaptation | Pure routine execution |
-| --- | --- | --- | --- |
-| Document creation | Stays (what to produce) | **Stays** (accuracy check, format correction) | AI absorbs |
-| Data entry | Stays (what to enter) | **Stays** (validation, anomaly detection) | AI absorbs |
-| Report writing | Stays (framing the question) | **Stays** (number verification, interpretation correction) | AI absorbs |
-| Accounting | Stays (transaction input) | **Stays** (responding to tax-law changes, approval) | AI absorbs |
-| Legal review | Stays (risk framing) | **Stays** (responding to regulatory changes, contract decisions) | AI absorbs |
-| Translation | Stays (purpose, tone) | **Stays** (industry terms, context tuning) | AI absorbs |
-| Customer support | Stays (escalation criteria) | **Stays** (understanding customer situation, exceptions) | AI absorbs |
-| Programming | Stays (design, requirements) | **Stays** (review, testing, incident response) | AI absorbs |
-| Marketing analysis | Stays (questions, hypotheses) | **Stays** (interpreting market shifts, strategy) | AI absorbs |
-:::
+- **Instructions and requirements** (what to produce and why)
+- **Verification, correction, and environmental adaptation** (checking and correcting AI output, reshaping it for environmental change)
+- **Final judgment** (whether to accept the output)
 
-In particular, **verification, correction, and environmental adaptation** cannot be handed over to AI. There are three reasons.
+What AI can replace is limited to **pure execution** between those phases.
+
+In particular, **verification, correction, and environmental adaptation** cannot be handed over to AI. Three reasons:
 
 - Precisely because AI processes at scale, small errors (hallucinations, misread context, outdated norms) get **propagated exponentially** → the precision required at verification rises **higher than before AI**
 - AI training data is **knowledge as of a particular point in time** → adapting to new tax codes, new regulations, new technology, and new market conditions does not complete inside AI

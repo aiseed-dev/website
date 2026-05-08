@@ -9,8 +9,8 @@ label: P & Farming 08
 title_html: 何をして、<br><span class="accent">何をしないか</span>。
 prev_slug: implementation
 prev_title: 第7章 どう実装するか
-next_slug:
-next_title:
+next_slug: cuba-lessons
+next_title: 第9章 キューバの教訓
 ---
 
 # 第8章 運用原則 ── 何をして、何をしないか

@@ -8,7 +8,7 @@ description: A history of great power killing soil, killing people, and hiding t
 date: 2025.04.04
 label: Structural Analysis 12
 prev_slug: healthcare-fiscal
-prev_title: Society's Design Failure
+prev_title: Society's Regeneration
 next_slug: regulation-redesign
 next_title: Regulation Redesign
 cta_label: Return to Nature

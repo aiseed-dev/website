@@ -496,6 +496,67 @@ Societies move on the same structure.
 > Don't build "without this, nothing works."
 > — That is the essence of diversity.
 
+### Preserving plant diversity as a material resource
+
+Within diversity, **plant diversity** matters in a specific and underappreciated way.
+This is not just about food. **Plants as materials and resources** form the foundation of any
+post-fossil society.
+
+Before fossil resources, humanity drew nearly every material it needed from plants.
+
+:::compare
+| Use | Plants historically used |
+| --- | --- |
+| Fibers | Hemp, ramie, cotton, jute, kuzu (kudzu), kōzo (paper mulberry), mitsumata, gampi |
+| Construction & woodwork | Cedar, cypress, pine, oak, chestnut, paulownia, bamboo, zelkova, mulberry |
+| Adhesives & coatings | Urushi (Japanese lacquer), pine resin, kakishibu (persimmon tannin), tung oil, linseed oil, perilla oil |
+| Rubber & natural polymers | Pará rubber tree, guayule, Russian dandelion, jatropha |
+| Dyes | Indigo, safflower, madder, murasaki (gromwell), kariyasu, sappanwood |
+| Medicinal feedstocks | Quinine, morphine, taxol (yew), and many medicinal plants |
+| Fragrances & essential oils | Cypress, mint, rose, herbs, citrus |
+| Oils & fats | Rapeseed, soybean, coconut, palm, perilla, linseed, tung |
+| Paper | Kōzo, mitsumata, gampi, various wood pulps |
+| Food packaging & vessels | Magnolia leaves, sasa bamboo leaves, bamboo sheath, palm leaves, lotus leaves |
+| Bioplastic feedstocks | Potato, corn, sugarcane, cassava |
+| Mycelium substrates | Agricultural residues (rice straw, husk, sawdust) |
+:::
+
+But as petroleum-based plastics, synthetic fibers, synthetic dyes, and synthetic medicines
+took over, **the know-how to use these plants and the diversity of cultivars themselves are
+disappearing rapidly**.
+
+- Domestic urushi production in Japan is **less than 1/100 of its level a century ago**
+- Native Japanese cotton has nearly vanished (replaced by American cotton in the Meiji era)
+- Cultivation of dye plants survives only in specialized craft contexts
+- Medicinal-plant production has become heavily import-dependent
+- Planting of timber species like paulownia and mayumi has plummeted
+- Ramie, kōzo, mitsumata, and gampi farms are at the edge of disappearing as growers age out
+
+When these become needed again in a post-fossil world, we must avoid the situation where
+**the plant itself is gone, no one knows how to grow it, and no one knows how to process it**.
+A cultivar that has gone extinct is extremely hard to bring back, and processing know-how —
+even when documented — loses its embodied-skill component.
+
+:::highlight
+**Three layers that must be preserved:**
+1. **Genetic resources** — seed banks, farm-level seed saving, botanical gardens,
+   field plots, in-situ tree preservation
+2. **Cultivation know-how** — regional traditional knowledge, generational transfer of grower
+   and craftsman skills, experience matching cultivar to climate and soil
+3. **Materialization techniques** — urushi tapping, log sawing, paper making, indigo dyeing,
+   herbal processing, oil pressing — AI can document these, but **embodied physical skill
+   can only be preserved by humans**
+:::
+
+The key to material supply in a post-fossil world is **diverse plant seeds and species**.
+This is not "cultural heritage that should be protected." It is the **physical infrastructure
+of future materials.**
+
+> The plant diversity and materialization techniques we are losing in the fossil-resource era
+> are the **physical survival base of the post-fossil era**.
+> We do not preserve them out of economic rationality.
+> We preserve them because **if we don't, we won't be able to recreate them later**.
+
 ### Conditions of an adaptive society
 
 Made concrete at the level of social systems, distributed dependency and diversity look like this.

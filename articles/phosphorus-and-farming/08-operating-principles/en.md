@@ -347,18 +347,25 @@ Last, here are some actions readers can take after this article.
 - Start small with herbs on a balcony
 - Start composting (kitchen scraps, fallen leaves)
 - Shop with awareness of grocery spending and dependence on imports
-
-**Small-scale / side-job level**
-
 - Rent a few rows in a community garden or rental field
 - Learn Fukuoka-style natural farming, permaculture, etc. (books, courses, visits)
 - Try growing without tilling
 
-**Full-time / serious level**
+**Small-scale / side-job level**
 
 - Stand up natural / regenerative farming on a one-tan scale on a 5-year plan
 - From an existing conventional operation, reduce chemical-fertilizer dependence in stages
 - Join a local natural-farming group or organic-farmer network
+
+**Full-time / serious level**
+
+- Stand up regenerative farming as your main business on a several-to-tens-of-hectares scale (or convert from an existing operation)
+- Design a business model that **bypasses the middlemen** through direct sales, CSA (community-supported agriculture), restaurant partnerships, and value-added processing — using price and relationships to make up for yields below conventional
+- Build the **technical stack** of polyculture, cover crops, no-till, and seed saving — **operating all of them at once**, assembled over years
+- Take on abandoned farmland and regenerate it (MAFF's 98,000 ha of recoverable degraded farmland can serve as the receiving capacity for full-time farmers)
+- Take in trainees and successors to **pass on technique and experience** — the know-how for the conventional-to-regenerative transition does not transfer through books alone
+- Keep updating technique through primary sources and on-site visits to Gabe Brown, Allan Savory, Christine Jones, and others
+- Run a side practice of **transition consulting** for conventional farmers, or operate a regional seed bank, seedling supply hub, or production base for microbial inputs (AMF, PSB)
 
 **Social / policy level**
 

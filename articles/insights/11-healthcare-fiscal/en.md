@@ -268,15 +268,65 @@ Of those, the share corresponding to **pure-execution-only labor under someone e
 **Millions of person-hours of labor likely shift to AI**, but that does not mean "zero people." What happens first is that the composition of one person's job changes — verification, correction, and adaptation make up a larger share.
 :::
 
-> It is not that "desk workers go to zero."
-> **The instruction-and-judgment side stays. The new work of verifying, correcting, and adapting AI output also stays with humans. Only pure routine execution is heavily automated.**
-> One person can run the execution workload of 20 people through AI — but that one person's job becomes **more skilled and multifaceted** than in the pre-AI era.
+### The number of people who can move to the "instructions and judgment" side has a ceiling
+
+We've said that "even when execution moves to AI, instructions, requirements, verification, correction, adaptation, and final judgment stay with humans." That is true. But there is another fact.
+**The number of people who can actually do that work has a ceiling.**
+
+To absorb execution, a person needs:
+
+- **Domain expertise** (tax, legal, industry practice, technical stack, market)
+- **Critical reading ability** to spot anomalies in AI output
+- **Judgment** to detect environmental changes and update existing outputs
+- **Experience** to notice when AI is "failing silently" on edge cases
+- **Resolve and accountability** to decide under uncertainty
+
+These accumulate over years to more than a decade. **Not everyone can acquire them.** When AI adoption drastically reduces demand for pure-execution labor, **not everyone displaced can re-enter on the instruction-and-judgment side**.
+
+What actually happens is roughly a three-layer split:
+
+:::compare
+| Layer | Role | What happens |
+| --- | --- | --- |
+| **Skilled top layer** | Instructions, requirements, final judgment | One person runs the work of 20; pay rises |
+| **Middle layer of verifiers / adapters** | Verifying, correcting, and adapting AI output | A new middle layer emerges, but the headcount is limited |
+| **Layer that did pure execution only** | Contractors, dispatch, BPO | **Total work shrinks dramatically; needs somewhere to go** |
+:::
+
+This is not the happy story that "everyone moves to skilled, multifaceted work." It is **labor market polarization**: a substantial number of people will be unable to move into the new role for reasons of skill, age, or geography. This series' structural analysis should not write that part optimistically.
+
+### So we need migration to land-based work
+
+If the polarization is left alone:
+
+- Income evaporates for the displaced layer
+- Political pressure for UBI rises (but as Chapter 6 showed, UBI is not a structural solution)
+- Society destabilizes (unemployment, division, conflict)
+
+But here is the crucial fact: **at the level of the whole society, the demand for physical work is rising rapidly.**
+
+- Bio-material manufacturing requires permanent human labor (Chapter 2)
+- Soil regeneration and microbial management require on-site work (regenerative agriculture)
+- Food production, forestry, maintenance of regional infrastructure
+
+These cannot be replaced by AI. They are the **socially needed, real receiving capacity** for people freed from execution by AI.
+
+But the migration does not happen automatically:
+
+- Not every desk worker can move to farming or forestry (age, health, geography)
+- The transition takes **years** (skill acquisition, relocation, securing land)
+- During that time, people need **policy support**: livelihood guarantees, vocational training, land redistribution, etc. (covered in detail in the "Great Population Migration" section below)
+
+> The structural change of AI makes a few capable people 20× more productive.
+> But the number of people who can become that one is limited — and this becomes a problem for society as a whole.
+> **Where do the remaining 19 go, and what do they do?**
+> That is the substance of the question this chapter takes up later under "the great population migration to land-based work."
 
 This connects to the UBI (Universal Basic Income) debate. But as Chapter 6 showed, UBI is wrong.
 Bio-material manufacturing, soil regeneration, ecosystem restoration —
 physical work requires human labor permanently.
 Contract-based desk workers are released from pure execution, but **work itself will not disappear.
-It will change.**
+It will change — those who can change will change, and those who cannot need a different path (land-based work).**
 
 ## From Megacities to Land — The Great Population Migration
 

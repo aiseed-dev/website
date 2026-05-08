@@ -10,8 +10,8 @@ label: P & Farming 08
 title_html: What to do,<br><span class="accent">what not to do.</span>
 prev_slug: implementation
 prev_title: "Chapter 7: How to Implement"
-next_slug:
-next_title:
+next_slug: cuba-lessons
+next_title: "Chapter 9: Lessons from Cuba"
 ---
 
 # Chapter 8: Operating Principles — What to Do, What Not to Do

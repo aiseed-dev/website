@@ -253,8 +253,24 @@ It will change.**
 
 ## From Megacities to Land — The Great Population Migration
 
-The military industry, IT companies, desk workers —
-where do the people displaced from these industries go?
+The generational shift in defense, the three-stage generational shift in IT,
+and the disappearance of contract-based desk work — these are **structural changes**,
+not "decline". But structural changes rewrite the relationship between people and place.
+
+- The new defense industry (drones + AI, AI defense SaaS) **does not need
+  giant single-platform manufacturing**. Small teams and regionally distributed
+  manufacturing are enough
+- AI-native companies run on remote work and small head offices.
+  Anthropic, Cursor, Vercel — they operate at hundreds-to-thousands of people,
+  with no structural need for Tokyo or Silicon Valley concentration
+- As OSS AI spreads, AI itself becomes **infrastructure accessible from anywhere**,
+  and **the economic case for concentrating in any one city weakens further**
+- The millions of contract-based desk-work jobs (SIer, BPO, contractor) must
+  either be reabsorbed by the instruction-and-judgment side, or move to entirely
+  different industries
+
+Whether they switched into the new industries or not, people are **forced to
+revisit the question of where to live**.
 
 As Chapter 2 showed, bio-materials come after fossil resources.
 As Chapter 3 showed, food production without chemical fertilizer becomes necessary.

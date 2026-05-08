@@ -354,6 +354,54 @@ Autonomous agents are extremely attractive attack targets. An attacker can hijac
 > Escaping into autonomous AI agents does not solve the human bottleneck. It **simultaneously worsens verification, accountability, cost, and security.**
 > **This is not a technology that solves the labor shortage. It is a different set of problems dressed up to look like a solution to the labor shortage.**
 
+### So how does change actually happen — the Ukraine pattern, repeated
+
+If escape into autonomous agents fails, how does change move forward? The earlier sections on **the generational shift in defense and IT** answer this.
+
+#### Defense industry
+
+- **Legacy companies** (Lockheed Martin, Raytheon, BAE, MHI) bolting AI onto existing products produces F-35-style or Patriot-style results: **capabilities go up, prices go up further**. The organization, supply chain, procurement process, and internal politics are all optimized for "giant platform + AI feature addition."
+- **Ukraine**, driven by **wartime necessity**, built **AI-native institutions and organizations** from scratch — Brave1, Delta, Army+, E-Points. A weapons system of "$50 AI module × tens-of-thousands-of-dollars drone × battlefield feedback loop" emerged — a system **legacy companies could not have designed**.
+
+#### IT industry
+
+- **Microsoft** added Copilot to Windows. But improvements to the OS itself are deprioritized, and users feel that **"Copilot is being pushed at me while the actual OS is degrading"** (see the IT-industry section earlier in this chapter).
+- **Anthropic, Cursor, Vercel, Hugging Face, Perplexity** built AI-native designs **from the organization upward**. Rather than bolting AI onto existing products, they put AI at the core and rewrote tooling, organization, and business models.
+
+#### A universal structural pattern
+
+> **Legacy organizations introduce AI as a "feature add."** They preserve existing decision-making structures, product lines, employee composition, and supply chains and lay AI on top. Result: capabilities improve somewhat, but because the organization is not optimized around AI, they end up **orders of magnitude less efficient than AI-native organizations**.
+
+> **New organizations are built AI-native.** They put AI at the core and design the organization, processes, labor-equipment ratio, and decision-making structure from scratch. Result: high productivity with a small headcount. They replace legacy companies through competition.
+
+#### This pattern spreads to companies in general
+
+Existing companies trying to introduce AI into accounting, legal, sales, and customer support face **the same pattern as defense and IT**:
+
+- AI added on top of existing workflows → high cost, low productivity
+- Internal power structures, evaluation systems, and employment contracts block AI-native ways of working
+- They cannot solve "people don't want it" or "people won't take responsibility" (see the previous sub-section)
+- They escape to autonomous agents — and fall into a different set of problems (see the warning above)
+
+In other words, **for many existing companies, full AI adoption is intrinsically difficult**. This is not a technical problem. It is a **problem of organizational structure**.
+
+#### Change comes from AI-native organizations
+
+What happens instead is that **AI-native organizations are born of necessity and compete with existing companies**.
+
+- **One person + AI** sole proprietors reproducing the work of a large company (Chapter 9, "AI and the Individual")
+- **Startups** of a few people offering services equivalent to legacy SIers, BPOs, and consulting firms
+- **AI-native small companies** founded outside Tokyo, competing with metropolitan-concentrated legacy firms
+- Nation-scale cases like Ukraine's Brave1 — building an **AI-native defense industry at the national level**
+
+And as these AI-native organizations **replace legacy companies through competition**, the demand for pure-execution labor evaporates.
+
+> The protagonist of the change is not the "AI adoption department" of a legacy company.
+> It is the **AI-native new organization, born of necessity**.
+> The real challenge for legacy companies is not "introduce AI internally and survive" — it is **"survive competition with AI-native new organizations."**
+
+This is structurally identical to Clayton Christensen's **"Innovator's Dilemma."** What happened in disk drives, minicomputers, steel, and retail will happen in **all white-collar industries simultaneously** under AI.
+
 ### So we need migration to land-based work
 
 If the polarization is left alone:

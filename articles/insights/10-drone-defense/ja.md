@@ -9,7 +9,7 @@ label: Structural Analysis 10
 prev_slug: ai-and-individual
 prev_title: AIと個人事業
 next_slug: healthcare-fiscal
-next_title: 社会の設計ミス
+next_title: 社会の再生
 ---
 
 ## 400万ドル vs 数万ドル

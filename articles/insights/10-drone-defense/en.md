@@ -10,7 +10,7 @@ label: Structural Analysis 10
 prev_slug: ai-and-individual
 prev_title: AI and the Individual
 next_slug: healthcare-fiscal
-next_title: Society's Design Failure
+next_title: Society's Regeneration
 cta_label: Structure
 cta_title: Small is a weapon.
 cta_text: In warfare, in agriculture, in business — distributed systems beat centralized ones.

@@ -2,13 +2,13 @@
 slug: healthcare-fiscal
 number: "11"
 lang: en
-title: Society's Design Failure
-subtitle: Military, IT, Desk Workers, Healthcare, Pensions — All Collapsing Together
-description: Fossil depletion shrinks the military industry. AGI failure shrinks IT. AI eliminates desk workers. Dialysis depends on fossil fuels. Pensions crush the working generation. The root is the same — departure from nature.
+title: Society's Regeneration
+subtitle: Old industries fade as new ones rise — military, IT, healthcare, pensions, and population distribution are all being re-formed at once
+description: Fossil-resource depletion ends the legacy military industry — and a new drone+AI defense industry rises in its place. Legacy cloud and SaaS shrink while AI-native companies (Anthropic, OpenAI, Cursor, Vercel) take over, with OSS AI spreading after that. Contract-based desk work disappears (instructions and final judgment stay with humans; AI absorbs execution) as population redistributes to land-based work. Dialysis, pensions, and other legacy systems end; a life closer to nature and regenerative agriculture become the new foundation. This is not the patching of a design failure — it is the regeneration of social structure itself.
 date: 2025.04.04
 label: Structural Analysis 11
 prev_slug: drone-defense
-prev_title: Drones, AI, and Small Nation Defense
+prev_title: Drones, AI, and Middle Power Defense
 next_slug: cases
 next_title: Great Power Breeds Tragedy
 cta_label: Back to Life
@@ -20,12 +20,15 @@ cta_btn2_text: All Insights
 cta_btn2_link: /en/insights/
 ---
 
-## The Decline of the Military Industry
+## A Generational Shift in Defense — From Large Platforms to Drones + AI
 
-Apply the structures examined in this series to the future of industries. The military industry collapses first.
+Apply the structures examined in this series to the future of industries.
+The first to be re-formed is defense.
+
+### The legacy defense industry — fossil resources and high unit prices
 
 :::highlight
-**Military industry's fossil resource dependency:**
+**Fossil resource dependency of the legacy defense industry:**
 Jet fighters → Jet fuel (kerosene fraction) + composite materials (petrochemical)
 Tanks → Diesel + synthetic rubber + high-performance plastics
 Warships → Heavy fuel oil + paint (petroleum-based) + wiring insulation (PVC)
@@ -33,27 +36,76 @@ Missiles → Some solid propellants are petroleum-derived + electronics (photore
 Logistics → Diesel-powered trucks and transport ships — all of it
 :::
 
-As Chapter 4 showed, drones + AI are neutralizing conventional large weapons. And large weapons cannot operate without fossil resources.
+As Chapter 10 showed, drones + AI are neutralizing conventional large weapons. And large weapons cannot operate without fossil resources.
 
 :::chain
-**Structure of military industry decline:**
+**Structural shrinkage of the legacy defense industry:**
 Drones + AI neutralize large weapons → Demand for fighters and tanks drops
 Fossil resource price increases → Operating costs of large weapons rise
 Fossil resource depletion → Manufacturing large weapons becomes difficult
 → Lockheed Martin, Raytheon, BAE Systems —
-→ **The conventional military industry market structurally shrinks**
+→ **The legacy defense market structurally shrinks**
 :::
 
-Millions of jobs in the military industry will be affected.
+### But this is not the disappearance of the defense industry
 
-## The Decline of IT Companies
+In parallel with the shrinkage of the legacy defense industry,
+**a new defense industry built around drones + AI** is rising rapidly.
 
-IT companies collapse next. The conclusions of Chapters 6, 7, and 8 converge here.
+As Chapter 10 showed, Ukraine's **Brave1** ecosystem now contains:
+
+- AI-related projects registered: **300+**
+- AI / computer-vision systems in active battlefield use: **70+**
+- Companies building machine-vision drones: **100+**
+- 2026 drone production target: **7 million units/year**
+- AI autonomous-navigation modules: **~$50 per drone**
+
+— a new defense industry being forged in actual combat.
+
+:::compare
+| Legacy defense industry | New defense industry |
+| --- | --- |
+| Lockheed Martin (F-35, missiles) | **Anduril** (autonomous drones, AI defense SaaS) |
+| BAE Systems, Northrop Grumman | **Helsing** (European AI defense — Germany, UK, France) |
+| Raytheon (Patriot, missile defense) | **Quantum-Systems, Skydio, Shield AI** |
+| Japanese heavy industry (MHI, Kawasaki, IHI) | **Saker, the 100+ companies in Ukraine's Brave1** |
+| Expensive single platforms (billions per unit) | Cheap distributed drones (tens of thousands to a few million yen) |
+| Decade-long development cycles | Improved every few weeks via battlefield feedback |
+:::
+
+### The boundary of "who can have a defense industry" is being rewritten
+
+The legacy defense industry was a game only large powers — with multi-trillion-yen
+fighter-development budgets — could play.
+The new defense industry's basic units are **$50 AI modules and tens-of-thousands-of-dollars drones**,
+so middle powers can sustain it as a domestic industry.
+
+:::highlight
+**Inversion of the industrial structure:**
+Legacy: Only large powers could have a defense industry → middle powers had to buy
+New: Middle powers can have a defense industry → Ukraine becomes an exporter
+This is the industrial foundation of the "security provider" pivot (Chapter 10).
+:::
+
+The total number of people working in defense may not fall.
+But **which country and which company they work for** is being rewritten.
+Jobs at legacy defense primes shrink while jobs at AI-defense startups,
+drone manufacturers, and battlefield-SaaS companies grow.
+This is not "decline." It is **a generational shift**.
+
+## A Generational Shift in IT — Legacy Cloud and SaaS Fade, AI-Native Companies Rise, OSS AI Spreads After
+
+The next industry to be re-formed is IT. Like defense, this is **not decline but generational shift** —
+distinguished, however, by being a **three-stage** generational shift.
+
+### Stage one — legacy IT companies shrink
+
+The conclusions of Chapters 6, 7, and 8 converge here.
 
 :::chain
-**Structure of IT company decline:**
-AGI doesn't break even (Ch. 6) → AI investment shrinks
-→ NVIDIA's GPU demand disappears (Ch. 7)
+**Structural shrinkage of legacy IT:**
+AGI doesn't break even (Ch. 6) → Excess AI investment shrinks
+→ NVIDIA's GPU windfall fades (Ch. 7)
 → Data center construction slows
 → Cloud business growth stalls (AWS, Azure, GCP)
 CUDA lock-in collapses (Ch. 7) → GPU market becomes a price war
@@ -62,8 +114,8 @@ SIer taxes collapse (Ch. 8) → System integrator industry shrinks
 :::
 
 :::highlight
-**Companies affected:**
-NVIDIA → GPU demand plummets
+**The shrinking side:**
+NVIDIA → GPU demand passes its peak
 Oracle → License revenue vanishes as customers migrate to PostgreSQL
 Microsoft → Office/Azure/Windows taxes gradually collapse
 Salesforce → Migration to Claude + custom CRM
@@ -71,35 +123,133 @@ Accenture, NTT Data, and other SIers → Claude replaces the bulk of person-hour
 Major consulting firms → Claude replaces structural analysis
 :::
 
-## The Disappearance of Desk Workers
+### Stage two — AI-native companies rise
 
-The decline of military and IT industries is industry-level. But a broader impact occurs inside every company — **the dramatic reduction of desk workers**.
-
-As Chapter 6 showed, AGI is unnecessary. **Current AI (Claude) can replace the majority of desk work.**
+In parallel with the shrinkage of legacy IT, a new generation of companies —
+**designed with AI at the core from line one** — is rising rapidly.
 
 :::compare
-| Desk work | Can Claude replace it? | What remains |
-| --- | --- | --- |
-| Document creation | Fully replaceable | — |
-| Data entry | Fully replaceable | — |
-| Report writing | Fully replaceable | — |
-| Accounting | Mostly replaceable | Final judgment only |
-| Legal review | Mostly replaceable | Final judgment only |
-| Translation | Fully replaceable | — |
-| Customer support | Mostly replaceable | Complex cases only |
-| Programming | Mostly replaceable | Design decisions only |
-| Marketing analysis | Mostly replaceable | Strategic judgment only |
+| Legacy IT companies | New AI-native companies |
+| --- | --- |
+| Microsoft (Office, Azure) | **Anthropic (Claude), OpenAI (ChatGPT)** |
+| Atlassian, ServiceNow, Salesforce | **Cursor** (AI-native IDE) |
+| AWS legacy hosting | **Vercel** (AI SDK, Edge AI, v0) |
+| Oracle, SAP | **Hugging Face, Replicate** (model hosting) |
+| Adobe Creative Cloud | **Midjourney, Runway, ElevenLabs** |
+| Accenture, IBM, NTT Data | **Sourcegraph, Linear, Notion** (re-designed AI-first) |
+| Bloomberg, Reuters | **Perplexity, Glean** (AI search and research) |
 :::
 
+These were not built by bolting AI onto an existing product.
+They are **software written from line one assuming AI is part of the runtime**.
+
 :::highlight
-**Scale of desk worker reduction:**
+**The new labor-equipment ratio:**
+A single developer using Cursor + Claude can write code faster — and more correctly —
+than several hundred veteran SIer engineers.
+This is not just an individual productivity story.
+It is **the labor-equipment ratio of the entire software industry being rewritten**.
+One person + AI replaces a 20-person legacy development team.
+:::
+
+### Stage three — OSS AI spreads
+
+But the rise of AI-native companies is likely a **transitional phase**.
+Long-term, dependence on proprietary large language models will be replaced by
+**OSS (open source) AI**.
+
+:::chain
+**The structural shift toward OSS AI:**
+Meta's Llama → already publishing models that match commercial AI in OSS form
+Alibaba's Qwen, DeepSeek, Mistral, Gemma → matching commercial-grade performance in OSS
+Quantization and distillation → 70B-class models running on laptops and phones
+Local inference cost → less than 1/10 of API pricing
+→ The price advantage of proprietary AI collapses
+→ Companies and individuals host their own models
+→ OSS AI standardizes
+:::
+
+This rhymes with the relationship between Linux and Windows.
+
+:::highlight
+**The Linux/Windows pattern, recurring:**
+1990s: Commercial OSes (Windows, Solaris, AIX) dominate
+2000s: Linux standardizes on the server side
+2020s: Cloud, containers, and Android phones are all Linux underneath
+2025: Commercial LLMs dominate
+2030s: OSS AI standardizes on the edge, embedded systems, and servers
+2040s: Commercial LLMs survive only in specific high-end use cases
+:::
+
+On a 20-year horizon, Anthropic and OpenAI are likely to be remembered as
+**the companies that drove innovation through the proprietary-to-OSS transition**.
+Cursor and Vercel survive as tools running on top of that ecosystem.
+
+The result:
+
+- **AI itself becomes infrastructure** — like electricity, available cheaply to anyone
+- **What you do with AI** becomes the differentiator — domain knowledge, data, relationships
+- **Individuals and small organizations own their AI** — the large-company monopoly dissolves
+
+The "one person + AI" business model discussed in Chapter 9 ("AI and the Individual")
+finds its structural foundation here on a 20-year horizon.
+
+> Legacy IT shrinks, AI-native companies rise, and OSS AI spreads after.
+> **This is not a one-step transition — it is a three-stage generational shift.**
+> Where you enter changes everything about what you can capture.
+
+## The Disappearance of Contract-Based Desk Work — Instructions and Final Judgment Stay With Humans
+
+The generational shifts in defense and IT play out at the level of companies and nations. But a broader impact occurs inside every company — **the disappearance of contract-based desk work**.
+
+A common misreading must be avoided here. What AI eliminates is **not all desk work**.
+For document creation, data entry, reports, contract review, and coding alike, two things stay with humans:
+
+- **Instructions** — deciding what to produce and why
+- **Final judgment** — deciding whether the output is accepted
+
+AI replaces the **execution** between those two — quickly and accurately.
+What disappears is employment in the role of "executing instructions as the entire job":
+the **contract-based desk worker**.
+
+:::compare
+| Desk work | Instruction-giver | Final judge | Contract execution labor |
+| --- | --- | --- | --- |
+| Document creation | Stays (what to produce) | Stays (whether to use it) | **Goes away** |
+| Data entry | Stays (what to enter) | Stays (validation) | **Goes away** |
+| Report writing | Stays (framing the question) | Stays (accepting the conclusion) | **Goes away** |
+| Accounting | Stays (transaction input) | Stays (approval, tax judgment) | **Goes away** |
+| Legal review | Stays (risk framing) | Stays (whether to sign) | **Goes away** |
+| Translation | Stays (purpose, tone) | Stays (quality judgment) | **Goes away** |
+| Customer support | Stays (escalation calls) | Stays (case-by-case judgment) | **Goes away** |
+| Programming | Stays (design, requirements) | Stays (merge decisions) | **Goes away** |
+| Marketing analysis | Stays (questions, hypotheses) | Stays (strategy choices) | **Goes away** |
+:::
+
+In other words, AI replaces work that consists of **executing routine tasks under someone else's instructions**.
+Inside a company, this maps onto the structure of **career-track vs. clerical-track, employee vs. contractor / BPO / SIer**.
+The side that gives instructions and makes final judgments stays. The side that takes contracts to execute disappears.
+
+:::highlight
+**The scale of contract-based desk work going away:**
 Of Japan's ~67 million workers, approximately 13 million are office workers.
-Of these, routine tasks replaceable by AI are estimated at **more than half**.
-An era when millions of desk workers become "unnecessary" is coming.
+Of these, the **contract-execution-only** category — routine work performed under someone else's instructions —
+is estimated at **more than half**.
+An era when millions of contract-based desk workers' roles become "unnecessary" is coming.
 This is not 10 or 20 years away. **It is already possible with current AI.**
 :::
 
-This connects to the UBI (Universal Basic Income) debate. But as Chapter 6 showed, UBI is wrong. Bio-material manufacturing, soil regeneration, ecosystem restoration — physical work requires human labor permanently. Desk workers will disappear, but **work itself will not disappear. It will change.**
+> It is not that "desk workers go to zero."
+> **The side that gives instructions and makes final judgments stays. Only contract-based execution disappears.**
+> One instruction-giver / final-judge absorbs the execution work of 20 people (SIers, BPOs, contractors)
+> through AI. Alongside the rewrite of the labor-equipment ratio in software, this is the structural shift
+> happening across white-collar work overall.
+
+This connects to the UBI (Universal Basic Income) debate. But as Chapter 6 showed, UBI is wrong.
+Bio-material manufacturing, soil regeneration, ecosystem restoration —
+physical work requires human labor permanently.
+Contract-based desk workers are released from execution, but **work itself will not disappear.
+It will change.**
 
 ## From Megacities to Land — The Great Population Migration
 
@@ -125,8 +275,8 @@ Biomass collection → Physical labor in rural areas and forests
 
 :::chain
 **Structure of population migration:**
-Military industry decline → Urban defense-related jobs disappear
-IT company decline → Urban office workers are displaced
+Legacy defense industry shrinks → Urban defense jobs are reallocated (new drone+AI companies are easier to distribute regionally)
+Legacy IT shrinks + AI-native companies rise → Less reason to concentrate in city offices
 Desk worker reduction → No reason to concentrate people in cities
 → Simultaneously, bio-materials and food production need workers
 → This work requires land
@@ -505,7 +655,7 @@ Look back at the argument so far.
 Fossil resources → Deplete (Chapter 2)
 Food production → Must escape chemical fertilizer dependency (Chapter 3)
 Energy → Fusion does not solve the materials problem (Chapter 5)
-Industries → Military, IT, desk work all shrink (Chapters 6–8)
+Industries → Military, IT, desk work all shift to a new generation (Chapters 6–10)
 Population distribution → No reason for Tokyo's extreme concentration
 Trade → The premise of free trade collapses
 Healthcare and pensions → Systems designed for urban salaried workers no longer fit

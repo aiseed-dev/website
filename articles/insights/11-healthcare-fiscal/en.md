@@ -4,7 +4,7 @@ number: "11"
 lang: en
 title: Society's Regeneration
 subtitle: Old industries fade as new ones rise — military, IT, healthcare, pensions, and population distribution are all being re-formed at once
-description: Fossil-resource depletion ends the legacy military industry — and a new drone+AI defense industry rises in its place. Legacy cloud and SaaS shrink while AI-native companies (Anthropic, OpenAI, Cursor, Vercel) take over, with OSS AI spreading after that. Contract-based desk work disappears (instructions and final judgment stay with humans; AI absorbs execution) as population redistributes to land-based work. Dialysis, pensions, and other legacy systems end; a life closer to nature and regenerative agriculture become the new foundation. This is not the patching of a design failure — it is the regeneration of social structure itself.
+description: Fossil-resource depletion ends the legacy military industry — and a new drone+AI defense industry rises in its place. Legacy cloud and SaaS shrink while AI-native companies (Anthropic, OpenAI, Cursor, Vercel) take over, with OSS AI spreading after that. Contract-based desk work undergoes structural change — pure routine execution is automated by AI, but instructions, requirements, verification/correction/adaptation of AI output, and final judgment all stay with humans, and the precision required actually rises with AI adoption. Population redistributes to land-based work; dialysis, pensions, and other legacy systems end; a life closer to nature and regenerative agriculture become the new foundation. This is not the patching of a design failure — it is the regeneration of social structure itself.
 date: 2025.04.04
 label: Structural Analysis 11
 prev_slug: drone-defense
@@ -198,57 +198,84 @@ finds its structural foundation here on a 20-year horizon.
 > **This is not a one-step transition — it is a three-stage generational shift.**
 > Where you enter changes everything about what you can capture.
 
-## The Disappearance of Contract-Based Desk Work — Instructions and Final Judgment Stay With Humans
+## The Structural Shift in Contract-Based Desk Work — Execution Goes to AI; Verification, Correction, and Adaptation Stay With Humans
 
-The generational shifts in defense and IT play out at the level of companies and nations. But a broader impact occurs inside every company — **the disappearance of contract-based desk work**.
+The generational shifts in defense and IT play out at the level of companies and nations. But a broader impact occurs inside every company — **a structural shift in contract-based desk work**.
 
 A common misreading must be avoided here. What AI eliminates is **not all desk work**.
-For document creation, data entry, reports, contract review, and coding alike, two things stay with humans:
+For document creation, data entry, reports, contract review, and coding alike, three things stay with humans:
 
-- **Instructions** — deciding what to produce and why
+- **Instructions and requirements** — deciding what to produce and why
+- The continuous work of **verifying, correcting, and adapting AI output to environmental change**
 - **Final judgment** — deciding whether the output is accepted
 
-AI replaces the **execution** between those two — quickly and accurately.
-What disappears is employment in the role of "executing instructions as the entire job":
-the **contract-based desk worker**.
+AI rapidly handles the **pure execution** between those phases. What disappears is employment specialized in "executing instructions, in unchanging environments, repeating routine work."
 
 :::compare
-| Desk work | Instruction-giver | Final judge | Contract execution labor |
+| Desk work | Instructions / requirements | Verification, correction, environmental adaptation | Pure routine execution |
 | --- | --- | --- | --- |
-| Document creation | Stays (what to produce) | Stays (whether to use it) | **Goes away** |
-| Data entry | Stays (what to enter) | Stays (validation) | **Goes away** |
-| Report writing | Stays (framing the question) | Stays (accepting the conclusion) | **Goes away** |
-| Accounting | Stays (transaction input) | Stays (approval, tax judgment) | **Goes away** |
-| Legal review | Stays (risk framing) | Stays (whether to sign) | **Goes away** |
-| Translation | Stays (purpose, tone) | Stays (quality judgment) | **Goes away** |
-| Customer support | Stays (escalation calls) | Stays (case-by-case judgment) | **Goes away** |
-| Programming | Stays (design, requirements) | Stays (merge decisions) | **Goes away** |
-| Marketing analysis | Stays (questions, hypotheses) | Stays (strategy choices) | **Goes away** |
+| Document creation | Stays (what to produce) | **Stays** (accuracy check, format correction) | AI absorbs |
+| Data entry | Stays (what to enter) | **Stays** (validation, anomaly detection) | AI absorbs |
+| Report writing | Stays (framing the question) | **Stays** (number verification, interpretation correction) | AI absorbs |
+| Accounting | Stays (transaction input) | **Stays** (responding to tax-law changes, approval) | AI absorbs |
+| Legal review | Stays (risk framing) | **Stays** (responding to regulatory changes, contract decisions) | AI absorbs |
+| Translation | Stays (purpose, tone) | **Stays** (industry terms, context tuning) | AI absorbs |
+| Customer support | Stays (escalation criteria) | **Stays** (understanding customer situation, exceptions) | AI absorbs |
+| Programming | Stays (design, requirements) | **Stays** (review, testing, incident response) | AI absorbs |
+| Marketing analysis | Stays (questions, hypotheses) | **Stays** (interpreting market shifts, strategy) | AI absorbs |
 :::
 
-In other words, AI replaces work that consists of **executing routine tasks under someone else's instructions**.
-Inside a company, this maps onto the structure of **career-track vs. clerical-track, employee vs. contractor / BPO / SIer**.
-The side that gives instructions and makes final judgments stays. The side that takes contracts to execute disappears.
+### Three reasons AI cannot complete execution by itself
+
+This deserves careful handling. Simplifying it to "AI handles all execution" misreads what is actually happening on the ground.
+
+**1. With AI adoption, the required precision rises**
+
+Precisely because AI processes at scale, small errors — hallucinations, misread context, application of outdated norms — get **replicated and propagated at scale**. Compared to an era when one human's mistake stayed one mistake, AI's mistakes spread **exponentially**. The result is that the precision required at the verification stage **rises above the pre-AI baseline**. Deciding "should this AI output be accepted?" becomes more demanding precisely because the execution has been automated.
+
+**2. Adaptation to environmental change does not complete inside AI**
+
+AI's training data is **knowledge as of a particular point in time**. Laws, regulations, tax codes, industry practices, market conditions, and technical stacks change constantly. When those change, AI output keeps coming out **using the old assumptions**.
+
+- A new tax code is enacted: humans **revisit** AI's accounting output
+- A new regulation is enacted: humans **reconstruct** AI's legal review
+- New technology emerges: humans **adapt** AI's code suggestions
+- Customer or industry context shifts: humans **rewrite** AI's documents
+
+These overlap with "final judgment" but go beyond mere accept/reject — they are **active work that modifies the AI output itself**.
+
+**3. AI fails silently on edge cases**
+
+AI can execute 80–90% of routine work. But on the remaining 10–20% — **edge cases, unforeseen situations, complex intersections** — AI fails. The trouble is that **the failure is silent**, and detecting and correcting it requires **experienced human judgment**. Treating AI output as "always correct" eventually means missing the rare catastrophic error.
+
+> So what AI adoption actually eliminates is limited to **"work that follows instructions, in unchanging environments, repeating simple routine."**
+> The work of **verifying, adapting to environmental change, and correcting edge cases** actually **grows alongside AI adoption**.
+
+### Be careful with the headcount estimate
+
+Inside companies, the structure maps onto **career-track vs. clerical-track, employee vs. contractor / BPO / SIer**: the side handling instructions, verification, and judgment stays; the side handling pure execution shrinks. But how much it shrinks depends heavily on:
+
+- How fast the industry's environment changes (faster change → more human correction work)
+- How costly verifying AI output is in that domain
+- How frequent edge cases are
+
+It is **wrong to oversimplify this as "millions of jobs vanish at once."**
 
 :::highlight
-**The scale of contract-based desk work going away:**
+**A careful estimate of the structural shift:**
 Of Japan's ~67 million workers, approximately 13 million are office workers.
-Of these, the **contract-execution-only** category — routine work performed under someone else's instructions —
-is estimated at **more than half**.
-An era when millions of contract-based desk workers' roles become "unnecessary" is coming.
-This is not 10 or 20 years away. **It is already possible with current AI.**
+Of those, the share corresponding to **pure-execution-only labor under someone else's instructions** is roughly **half of working hours** — though this varies widely by industry and role.
+**Millions of person-hours of labor likely shift to AI**, but that does not mean "zero people." What happens first is that the composition of one person's job changes — verification, correction, and adaptation make up a larger share.
 :::
 
 > It is not that "desk workers go to zero."
-> **The side that gives instructions and makes final judgments stays. Only contract-based execution disappears.**
-> One instruction-giver / final-judge absorbs the execution work of 20 people (SIers, BPOs, contractors)
-> through AI. Alongside the rewrite of the labor-equipment ratio in software, this is the structural shift
-> happening across white-collar work overall.
+> **The instruction-and-judgment side stays. The new work of verifying, correcting, and adapting AI output also stays with humans. Only pure routine execution is heavily automated.**
+> One person can run the execution workload of 20 people through AI — but that one person's job becomes **more skilled and multifaceted** than in the pre-AI era.
 
 This connects to the UBI (Universal Basic Income) debate. But as Chapter 6 showed, UBI is wrong.
 Bio-material manufacturing, soil regeneration, ecosystem restoration —
 physical work requires human labor permanently.
-Contract-based desk workers are released from execution, but **work itself will not disappear.
+Contract-based desk workers are released from pure execution, but **work itself will not disappear.
 It will change.**
 
 ## From Megacities to Land — The Great Population Migration

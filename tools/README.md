@@ -6,7 +6,7 @@ Markdown ファイルから HTML を生成するビルドツール。
 
 ```bash
 # 単一記事をビルド
-python3 tools/build_article.py articles/insights/13-cases/ja.md
+python3 tools/build_article.py articles/insights/12-cases/ja.md
 
 # 全記事＋インデックスページをビルド
 python3 tools/build_article.py --all
@@ -97,8 +97,8 @@ html/
 
 | 記事 | 出力先 |
 |------|--------|
-| `articles/insights/09-healthcare-fiscal/ja.md` | `html/insights/healthcare-fiscal/index.html` |
-| `articles/insights/09-healthcare-fiscal/en.md` | `html/en/insights/healthcare-fiscal/index.html` |
+| `articles/insights/11-healthcare-fiscal/ja.md` | `html/insights/healthcare-fiscal/index.html` |
+| `articles/insights/11-healthcare-fiscal/en.md` | `html/en/insights/healthcare-fiscal/index.html` |
 | `articles/blog/015-japan-windows-disaster-risk/ja.md` | `html/blog/japan-windows-disaster-risk/index.html` |
 | `articles/claude-debian/00-prologue/ja.md` | `html/claude-debian/prologue/index.html` |
 

@@ -271,7 +271,9 @@ Of those, the share corresponding to **pure-execution-only labor under someone e
 ### The number of people who can move to the "instructions and judgment" side has a ceiling
 
 We've said that "even when execution moves to AI, instructions, requirements, verification, correction, adaptation, and final judgment stay with humans." That is true. But there is another fact.
-**The number of people who can actually do that work has a ceiling.**
+**The number of people who can actually do that work has a ceiling.** There are two reasons — **cannot** and **does not want to**.
+
+#### Cannot — the capability ceiling
 
 To absorb execution, a person needs:
 
@@ -281,7 +283,25 @@ To absorb execution, a person needs:
 - **Experience** to notice when AI is "failing silently" on edge cases
 - **Resolve and accountability** to decide under uncertainty
 
-These accumulate over years to more than a decade. **Not everyone can acquire them.** When AI adoption drastically reduces demand for pure-execution labor, **not everyone displaced can re-enter on the instruction-and-judgment side**.
+These accumulate over years to more than a decade. **Not everyone can acquire them.**
+
+#### Does not want to — the preference ceiling
+
+Equally important is that **a substantial number of people who have the ability still do not want this work.**
+
+- Always-on accountability (problems land on your desk)
+- Decision-making under uncertainty (your evaluation is on the line)
+- Bearing the final cost of AI's errors (the moment you approved it, it became yours)
+- Multifaceted cognitive load (overseeing multiple domains at once)
+- Loss of the simplicity of pure execution (the "just do what I'm told" comfort goes away)
+
+People unwilling to take this on do not take it on, even if they can. This is a matter of **personal preference**, not something to be forced socially. The old pattern of "people who could promote to career-track but chose clerical-track" now scales out to white-collar work overall.
+
+The ratio of "wants to" vs. "does not want to" varies sharply by industry, age, family situation, and pay structure. In contemporary Japan especially, the trend among younger workers — "**prioritize work-life balance, avoid carrying responsibility**" — is strengthening.
+
+#### Result — the supply on the instruction-and-judgment side cannot keep up with demand
+
+Through the double constraint of "cannot × does not want to," the **effective supply** of people who can move to the instruction-and-judgment side likely cannot keep up with the demand created by AI adoption. When AI drastically reduces demand for pure-execution labor, **not everyone displaced can re-enter on the instruction-and-judgment side — and not everyone wants to.**
 
 What actually happens is roughly a three-layer split:
 
@@ -293,7 +313,46 @@ What actually happens is roughly a three-layer split:
 | **Layer that did pure execution only** | Contractors, dispatch, BPO | **Total work shrinks dramatically; needs somewhere to go** |
 :::
 
-This is not the happy story that "everyone moves to skilled, multifaceted work." It is **labor market polarization**: a substantial number of people will be unable to move into the new role for reasons of skill, age, or geography. This series' structural analysis should not write that part optimistically.
+This is not the happy story that "everyone moves to skilled, multifaceted work." It is **labor market polarization**: a substantial number of people will be unable — or unwilling — to move into the new role, for reasons of skill, age, geography, or simple personal preference. This series' structural analysis should not write that part optimistically.
+
+### Warning — "Just let AI agents do it autonomously" is a dangerous escape
+
+Here, write down the warning about what is happening across the industry today.
+
+When confronted with the fact that "the number of people who can move to instruction-and-judgment is limited," the industry's reflex response is fixed:
+
+> "**Then let AI agents do verification and judgment autonomously.**"
+
+GitHub Copilot Workspace, Devin, ChatGPT Operator, Claude Computer Use, autonomous AI agents, multi-agent systems — every product released in 2024–2026 stands on this idea. **If humans are the bottleneck, remove humans.**
+
+**This fails structurally.** There are six reasons.
+
+**1. Hallucinations reinforce each other**
+
+When AI verifies AI output, errors do not cancel. **The same biases from the same training data show up on the verifier side too.** The first-person habit of "writing falsehoods with confidence" appears identically in the second-person verifier agent. Autonomous loops do not correct errors — they **mutually justify them**.
+
+**2. Blindness to environmental change**
+
+Training data is static. The verifier agent and the adapter agent come from the same past data. **Pure-execution side and verification side are equally "have not seen" the new tax codes, new regulations, new technology, and new market conditions.** Without human intervention, external change cannot enter the loop. We said earlier that "adaptation to environmental change does not complete inside AI" — putting AI on the verification side does not solve that.
+
+**3. The side weak on edge cases is also doing the verification**
+
+AI fails silently on edge cases (discussed in the previous sub-section). Putting the same AI on verification means **the same AI misses those failures**. What it takes to notice an edge case is the human sense of "this isn't normal" — not training-data pattern recognition.
+
+**4. Accountability evaporates**
+
+When something catastrophic goes wrong, who is responsible? The instructor? The verification agent? The execution agent? The vendor? **In an autonomous loop, accountability dissolves.** This is a serious legal, ethical, and operational problem that society cannot sustain.
+
+**5. Costs compound exponentially**
+
+AI calls are not free. Agents calling agents inflates **API call counts per task by 100×–1,000×**. Economically, autonomous loops are usually unprofitable — the same structure as the **AGI-economic-unviability** discussed in Chapter 6.
+
+**6. Targets for attack (prompt injection and supply-chain poisoning)**
+
+Autonomous agents are extremely attractive attack targets. An attacker can hijack an agent through prompt injection and inflict large-scale damage with the agent's authorized credentials. This connects directly to the breakdown of the attacker–defender economy under Claude Mythos discussed in [Chapter 5 "Mythos Has Arrived"](/en/insights/mythos/). Anthropic's own guidance (in `/en/ai-native-ways/ai-delegation/`) states clearly: **"Do not run agents in autonomous mode."**
+
+> Escaping into autonomous AI agents does not solve the human bottleneck. It **simultaneously worsens verification, accountability, cost, and security.**
+> **This is not a technology that solves the labor shortage. It is a different set of problems dressed up to look like a solution to the labor shortage.**
 
 ### So we need migration to land-based work
 

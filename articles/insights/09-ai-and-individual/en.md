@@ -8,9 +8,9 @@ description: Claude handles accounting, marketing, legal review, translation, an
 date: 2025.04.04
 label: Structural Analysis 09
 prev_slug: enterprise-tax
-prev_title: Enterprise IT Vulnerability
+prev_title: "Eliminating Enterprise IT Taxes"
 next_slug: drone-defense
-next_title: Drones, AI, and Small Nation Defense
+next_title: Drones, AI, and Middle Power Defense
 cta_label: Start Now
 cta_title: One person plus AI.
 cta_text: Every specialist's knowledge, available to every individual. The era of 1 + AI has arrived.

@@ -78,6 +78,6 @@ aiseed.dev
 道具を変えれば、思考が変わる。
 **1 人 + AI** が、新しい仕事の単位。
 
-aiseed.dev で全 11 章公開中。
+aiseed.dev で全 12 章公開中。
 
 → /ai-native-ways/

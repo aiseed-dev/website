@@ -10,7 +10,7 @@ label: Structural Analysis 07
 prev_slug: microsoft
 prev_title: Microsoft's Collapse
 next_slug: enterprise-tax
-next_title: Enterprise IT Vulnerability
+next_title: "Eliminating Enterprise IT Taxes"
 cta_label: Structure
 cta_title: With nature, we can live.
 cta_text: The AI gold rush will end. What remains is soil.

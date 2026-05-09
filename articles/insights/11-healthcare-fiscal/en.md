@@ -92,6 +92,54 @@ Where Ukraine **invented in a short time**, Iran **prepared over decades**. The 
 
 What Ukraine and Iran share is that, in different contexts, both demonstrate the same asymmetric structure: **a large power's expensive weapons platforms cannot defeat cheap, distributed alternatives**. This is not an isolated case. It is **evidence that the structure of the defense industry itself is being rewritten**.
 
+### Survivability of legacy weapons — what stays, what goes
+
+Here a finer distinction is needed. "All legacy weapons disappear" oversimplifies. In practice, **what survives is clearly delineated**.
+
+Two decisive variables:
+
+- **Mobility and concealability** (can it be dispersed, hardened underground, made mobile?)
+- **Dependence on fixed infrastructure** (does it require a dedicated airfield, port, or base?)
+
+#### Military bases get hit first
+
+In drone+AI-era warfare, **the first targets are military bases**. Airfields, ports, and large supply bases **do not move**. Satellites and OSINT have already located them, and cheap drones and cruise missiles can degrade them in stages. Once the base stops functioning, the weapons that depend on it stop functioning. That is the starting point for every assessment.
+
+#### Survivability by weapon category
+
+:::compare
+| Weapon category | Survivability | Why |
+| --- | --- | --- |
+| **Mobile ground-launched missiles** | High | Can be dispersed, placed underground, and moved. Iran demonstrated this — about 50% remained after 5 weeks and 12,300 strikes |
+| **Coastal-defense missiles** | High | Distributed deployment; sustains the ability to close a strait (Iranian case) |
+| **Fighter aircraft** | **Unclear** | The aircraft itself is useful in combat, but **dedicated airfields are fixed targets**. If they cannot take off and land, they do not function. Underground hangars and dispersal airfields mitigate, but cannot fully escape, this exposure |
+| **Tanks and armored vehicles** | Low | Large and expensive; cheap drone strikes break the economics. Demonstrated in Ukraine |
+| **Aircraft carriers** | Very low | Huge and concentrated. With USVs combined with long-range missiles, multibillion-dollar carriers can be sunk by tens-of-millions-of-dollars assets — a brutal asymmetry |
+| **Surface combatants (destroyers, frigates, etc.)** | Low to medium | Concentrated, vulnerable to anti-ship missiles and USVs (Black Sea Fleet) |
+| **Heavy transport / patrol aircraft** | Low | Depend on fixed bases, with long airborne dwell times that expose them |
+| **Drones / AI-autonomous weapons** | High | Dispersed, mass-produced cheaply, evolve on the battlefield |
+| **Electronic warfare systems** | Medium | Mobile / distributed systems survive; large fixed systems are targets |
+:::
+
+> The conclusion: **weapons that can be mobile, dispersed, hardened underground, and mass-produced survive; concentrated, fixed, scarce, expensive weapons are culled** — this line decides winners and losers within the legacy defense industry too.
+
+Within the legacy primes:
+
+- Mobile missile makers (parts of Raytheon, ground-launched systems)
+- Mobile EW system makers
+- Underground hardening / blast-resistant construction and defense engineering
+
+have room to survive. Conversely:
+
+- Large-ship / carrier shipbuilders
+- 5th-generation fighter prime contractors
+- Heavy transport / patrol aircraft manufacturers
+- Large fixed-system makers
+
+enter a structurally hard era.
+
+> The prediction is not "the legacy defense industry disappears entirely." It is more granular: **product lines that can be mobile and dispersed remain; product lines that are fixed and concentrated are the ones that go away**.
+
 ### The legacy defense industry — limits of the high-unit-price model
 
 Lockheed Martin, Raytheon, BAE, Northrop Grumman, MHI, Kawasaki Heavy, IHI — these legacy primes are organizations built around:
@@ -151,10 +199,120 @@ Jobs at legacy defense primes shrink while jobs at AI-defense startups,
 drone manufacturers, and battlefield-SaaS companies grow.
 This is not "decline." It is **a generational shift**.
 
+### The most important variable — two-stage adaptation by politics, military, and domestic industry
+
+The technical and industrial structural changes discussed so far do not implement themselves. **What actually happens depends on two stages of adaptation** — and this is the most important variable in this chapter.
+
+1. **Can politics and the military adapt to technological change?**
+2. **Can domestic industry adapt to changes in politics and the military?**
+
+#### Stage 1 — political and military adaptation
+
+For a country to adopt the new weapons system, politics must move:
+
+- Revise procurement rules (prime preferences, sole-source contracts, long fixed-price agreements)
+- Direct funding and contracts to AI-native defense startups
+- Resist the lobbying of existing defense primes
+- Redesign security clearance and export controls around the new technology
+
+And the military must move:
+
+- Rewrite officer education and doctrine away from large-platform assumptions
+- Shift tactics to assume dispersion, mobility, and autonomy
+- Restructure rank and promotion paths to fit the new weapons operation
+- Decouple military identity from legacy platforms
+
+In Ukraine, the existential pressure of war moved all of this at once. Brave1 is a state program that synchronizes politics, military, and industry. In the US and Europe, **Anduril and Helsing went through long political battles** before breaking into Pentagon and European procurement structures. In countries where contracts concentrate in legacy primes (Japan: MHI, Kawasaki, IHI), new entrants cannot win contracts unless politics and the military move first.
+
+#### Stage 2 — domestic industry adaptation
+
+Even when politics and the military move, **nothing is implemented if domestic industry cannot adapt**.
+
+- Legacy primes are slow to convert to AI-native because of the organizational inertia discussed earlier in the chapter
+- Growing AI-native defense startups requires **talent, capital, regulatory environment, clearance systems, and procurement precedents** to be in place
+- Investment networks — the US's Andreessen Horowitz "American Dynamism," European defense-tech VCs, Japan's Rakuten × Brave1 partnership (Chapter 10) — are the seedbed of the industry
+
+Whether legacy primes or AI-native upstarts, **the speed at which industry can follow political/military change** determines the country's fate in defense.
+
+#### Two-stage desynchronization — the reality in many countries
+
+What actually happens in many countries is that **the two stages move out of sync**:
+
+- **Politics and military don't move; industry can't either** → the legacy structure is preserved
+- **Politics and military move, but industry can't keep up** → contracts exist, but products don't ship
+- **Industry moves, but politics and military are reluctant** → the technology exists, but there are no customers; export controls choke it
+
+What Ukraine's war shows is the brutal fact that **synchronization not done in peacetime cannot be done in time during war**. Something like Brave1 cannot stand up overnight after war begins.
+
+#### What really decides the boundary of "who can have a defense industry"
+
+Earlier in this section, we said "middle powers can now have a defense industry." That is true at the level of technology and unit cost. But which countries can actually implement this depends on a different question: **can politics and the military adapt to technological change, and can domestic industry adapt to that** — a question of **governance and organizational capacity**.
+
+- Countries where the two stages move quickly and in sync → they grow a new defense industry and become security providers (Ukraine; parts of the US that backed Anduril; European countries that backed Helsing)
+- Countries where the two stages do not move → they continue maintaining expensive legacy weapons and break when war comes
+
+> What really decides the "generational shift in defense" is not technology or economics.
+> It is **how quickly politics, military, and industry can move in sync**.
+
+### Failure of the great powers — the structural problems facing the US and Russia
+
+Take the US and Russia as the canonical examples where the two-stage adaptation is not working. Their political systems are opposite, but they share a structural feature: **they are failing to adapt precisely because they are great powers**.
+
+#### The US — the political gravity of the legacy defense industry
+
+The US has AI defense startups (Anduril, Shield AI, Skydio), an investment network around them (Andreessen Horowitz's American Dynamism), and Pentagon initiatives toward new weapons systems (e.g., Replicator). **The individual ingredients are in place.**
+
+At the same time, however, the US hosts **the world's largest legacy defense industry — Lockheed Martin, Raytheon, Northrop Grumman, Boeing, General Dynamics — which acts as continuous political gravity**:
+
+- Defense factory **employment scattered across congressional districts**
+- A **revolving door** taking retired generals to prime contractors' boards and lobbying offices
+- Multi-decade fixed contracts (the F-35 alone has lifecycle costs estimated above $1.7 trillion)
+- Massive campaign donations and congressional lobbying
+- Defense budget reviews that internalize concerns for prime executives and shareholders
+
+Even when the analysis says "we should adopt the new weapons system," this gravity keeps slowing down implementation. The fact that 12,300 strikes in the 2026 Iran War still left half of Iran's capability intact can also be read as **the result of the US trying to challenge Iran head-on with the legacy model, while unable to make the right call**.
+
+The asymmetry between flying $100M fighters for five weeks and Iran's underground architecture of $50 AI modules × tens-of-thousands-of-dollars drones — the US wins on technology and industrial capacity, but **its political structure prevents it from using that technology effectively**. The classic problem of "**under democracy, entrenched interests act as political gravity**" appears in extreme form in defense.
+
+#### Russia — no bottom-up innovation under authoritarianism
+
+Russia is the other canonical failure case. In the Ukraine war, Russia:
+
+- Entered with several times the military strength, expecting to overwhelm Ukraine
+- **Lost most of its Black Sea Fleet to Magura USVs** (Chapter 10)
+- Lost massive quantities of tanks and armored vehicles to FPV drones
+- Became **dependent on imported Iranian Shahed drones**
+
+Russia's problem is that **authoritarian decision-making suppresses bottom-up battlefield innovation**:
+
+- Tactical insights discovered by soldiers do not flow up to leadership
+- An industry structure dominated by state-owned defense primes leaves no room for private startups
+- There is no culture of admitting failed tactics or designs as failures (fear of purges)
+- Direct **battlefield → manufacturer feedback loops** like Brave1 / Army+ / E-Points cannot exist in principle
+
+Russia operates large numbers of drones, but they are mainly **imported finished products from Iran**, not the output of bottom-up domestic innovation. This produces a structure where **mass production is possible but evolution is slow**.
+
+#### What the two failure patterns share
+
+The US and Russia have opposite political systems, but they share **the inability to "stop and adapt" precisely because they are great powers**:
+
+- **US**: Under democracy, entrenched interests act as political gravity
+- **Russia**: Under autocracy, failure cannot be acknowledged, and bottom-up innovation does not occur
+- **Both**: The self-image of being "a world great power" prevents looking the asymmetric structure in the face
+
+And in both cases, when faced head-on by **smaller adversaries** (Iran, Ukraine), neither can convert their quantitative or qualitative advantage into combat power.
+
+> Being a great power is not a sufficient condition to win the generational shift in defense.
+> If anything, **being a great power is what prevents adaptation** — and this is the most striking fact this chapter surfaces about the late 2020s.
+> Among the middle powers (Ukraine, Iran, the UK, Germany, Turkey, Japan), the ones who **run the two-stage adaptation between politics-and-military and industry quickly** become the protagonists of the new security era.
+
+The same structure — great powers failing to adapt precisely because of their size, while adapted middle players rise — repeats in the IT industry, in desk work, and across the AI transformation of society overall.
+
+But **AI is much more powerful, much wider in scope, and much more complex than defense.** The same structural framework (two-stage adaptation, the failure of the great powers, the rise of AI-native organizations) applies — but **we need to walk through it more carefully, without underestimating scale and complexity**.
+
 ## A Generational Shift in IT — Legacy Cloud and SaaS Fade, AI-Native Companies Rise, OSS AI Spreads After
 
-The next industry to be re-formed is IT. Like defense, this is **not decline but generational shift** —
-distinguished, however, by being a **three-stage** generational shift.
+The next to be re-formed is the IT industry — and beyond it, **the AI transformation of society as a whole**. Like defense, this is **not decline but generational shift** — distinguished, however, by being a **three-stage** generational shift.
 
 ### Stage one — legacy IT companies shrink
 
@@ -260,25 +418,41 @@ finds its structural foundation here on a 20-year horizon.
 
 The generational shifts in defense and IT play out at the level of companies and nations. But a broader impact occurs inside every company — **the AI transformation of desk work overall**. Diagnose this incorrectly and the predictions for society as a whole will also be wrong.
 
-### The current reality — the AI industry is rushing toward "replace it with autonomous AI agents"
+### Current state — the AI agent race and the rapid expansion of large data centers
 
-What the AI industry is rushing toward in 2024–2026 is not just "AI for productivity gains."
+In 2024–2026, two main trends are running in parallel in the AI industry.
 
-GitHub Copilot Workspace, Devin, ChatGPT Operator, Claude Computer Use, autonomous AI agents, multi-agent systems — what the AI industry is shipping at scale are products **designed to operate without humans in the loop**. Executives announce "we are reducing headcount with AI," vendors pitch "zero humans needed," and investors reward this direction with high valuations.
+#### The AI agent product race
 
-Behind this, **the AI industry itself is building massive data centers at scale**:
+Vendors are releasing, one after another, products that minimize human involvement and have AI execute tasks directly:
 
-- OpenAI / Microsoft's **Stargate** (hundreds of billions of dollars)
+- GitHub Copilot Workspace (Microsoft / GitHub)
+- Devin (Cognition Labs)
+- ChatGPT Operator (OpenAI)
+- Claude Computer Use (Anthropic)
+- Various multi-agent systems (AutoGen, CrewAI, etc.)
+
+Executives announce "we are reducing headcount with AI," vendors pitch "zero humans needed," and investors reward companies pursuing this direction with high valuations.
+
+#### The rapid expansion of AI infrastructure investment
+
+In parallel, capital expenditure on data centers has accelerated:
+
+- OpenAI / Microsoft's **Stargate** (a multi-hundred-billion-dollar plan)
 - Anthropic / AWS's **Project Rainier**
 - xAI's **Colossus** (Memphis, Colossus 2)
-- Google and Meta dramatically expanding their internal AI clusters
+- Google and Meta significantly expanding their internal AI clusters
 - Large-scale AI infrastructure investments in the Middle East (UAE Stargate, Saudi HUMAIN) and Southeast Asia
 
-These are **CapEx that assumes "autonomous AI agents operate at scale."** If autonomous agents do not work in society, this infrastructure becomes a **stranded asset**.
+These investments are sized assuming autonomous AI agents are operated at scale. **Inference demand from agents and data center capacity are tightly coupled in the structure.**
 
-In other words, the AI industry has bet **its very corporate existence** on autonomous agents.
+### A calm reading — what does this current state imply?
 
-**Why "let AI do it autonomously" rather than just "AI assists"?** Why is the AI industry betting this hard, including data center CapEx? Understanding this is the first step to seeing the situation structurally. The AI industry is not naive about automation. While implementing AI adoption, it has **already recognized two awkward facts** — and is betting on autonomous agents on top of that recognition.
+Let us read these two trends through the structural framework of this series.
+
+The conclusion up front: **autonomous AI agents are a product of the human wish "to remove the human work" — and at present they have too many problems to be usable in actual business.** We walk down to that conclusion step by step.
+
+What is driving the AI industry toward autonomous agents is **two difficulties** recognized in the implementation of AI adoption. We walk through them in turn.
 
 ### Two recognitions behind the industry's bet on autonomous agents
 
@@ -318,13 +492,15 @@ In addition, a substantial number of people who have the ability still do not wa
 
 Through the double constraint of "cannot × does not want to," the **effective supply** of people on the instruction-and-judgment side is limited. Training takes years, and forcing the role on people leads to attrition.
 
-#### Conclusion — the industry's answer is "remove the humans"
+#### The industry's wish — "remove the humans"
 
-From these two recognitions, the industry drew a logical conclusion:
+From these two recognitions, the industry has converged on a particular answer:
 
 > **"Then let AI agents do verification, judgment, and adaptation autonomously. If humans are the bottleneck, remove the humans."**
 
-That is the **real reason** autonomous and multi-agent products are shipping at scale across 2024–2026. The industry is not naive. **It has recognized the problems and is betting on autonomous agents as the solution.**
+This is the thinking behind the wave of autonomous-agent and multi-agent products in 2024–2026.
+
+But this is closer to **a wish — "we want to remove the human work" — than to a logically derived solution**. As we will see next, this wish is not delivered in a form usable in actual business.
 
 ### But autonomous agents fail structurally — six reasons
 
@@ -468,6 +644,46 @@ As AI-native organizations and existing organizations compete, desk work overall
 Do not oversimplify this as "millions of jobs vanish at once." Of Japan's ~13 million office workers, the share corresponding to **pure-execution-only labor under someone else's instructions** is roughly half of working hours; how much AI can take is highly variable across industries and roles. **What changes first is the composition of one person's job** — verification, correction, and adaptation grow as a share.
 
 But over the long term, a **substantial number of people** will be unable — or unwilling — to move into the new role for reasons of skill, age, geography, or simple personal preference. **Labor market polarization**, left alone, runs in parallel with income evaporation, social instability, and political pressure for UBI.
+
+### How to respond as an individual
+
+Three principles for facing this structural change as an individual.
+
+#### 1. Do not build your work around autonomous agents
+
+AI autonomous-agent products fascinate executives and management, but on the ground — as the person actually doing the work — **do not let your job depend on them**. As discussed above, they are not at a level usable for real business. Choosing a job, or abandoning your existing skills, on the assumption that "autonomous agents will do all the routine work" leaves you with no escape route when they fail in the field.
+
+Instead, use AI **as a tool, in combination with your own judgment**. As laid out in Chapter 10 ("Knowing What Work to Hand to AI") and Chapter 9 ("AI and the Individual"), the strongest individual setup is to use AI as **a fast tool inside a sandbox**.
+
+#### 2. Shift your work mix from execution to verification, adaptation, and judgment
+
+Do not concentrate your time on pure execution (running routines under someone else's instructions). Instead:
+
+- Deepen **domain expertise** (continuously follow tax, legal, industry, technical, and market changes)
+- Build experience in **spotting anomalies and errors in AI output** (use AI enough to develop the sense of "this isn't normal")
+- Spend time on **adapting to environmental change** (new regulations, new technology, new customer context)
+- Accumulate experience in **deciding under uncertainty** (take responsibility more often)
+
+This is not a quick-win career strategy, but it is **the kind of capacity reliably needed in any industry in the AI era**.
+
+That said, some people **don't want this** — always-on accountability, high cognitive load. That is a matter of preference, not something to be forced. For those people, there is a different path (below).
+
+#### 3. Keep at least one foot in skills rooted in land, body, or human relationships
+
+Domains AI does not replace:
+
+- **Physical work** — agriculture, forestry, soil regeneration, bio-material manufacturing, construction, repair, caregiving, frontline medical work, cooking, craftsmanship
+- **Embodied skills** — urushi tapping, wood sawing, paper making, indigo dyeing, herbal processing, music performance, hand-sewing, knitting
+- **Work rooted in human relationships** — education, in-person counseling, neighborhood care, raising children, local relationships
+
+These are not "old." They are **the physical foundation of a post-fossil society** (Chapter 2 and the [Phosphorus and Farming](/en/phosphorus-and-farming/) series). The stable base for an individual in the AI era is to keep at least one foot here.
+
+Home gardening, composting, community gardens, local agricultural volunteering — all can start small (see the closing section of [Phosphorus and Farming, Chapter 8: Operating Principles](/en/phosphorus-and-farming/operating-principles/)).
+
+> The individual principle is simple:
+> **don't depend on AI**, **use AI as a tool**, **keep at least one foot in skills rooted in land, body, and human relationships**.
+>
+> This is not so much "how to survive the AI era" as **how to keep your footing stable, however the structural change of the AI era plays out.**
 
 ### So we need migration to land-based work
 

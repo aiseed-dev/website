@@ -109,30 +109,21 @@ The same structure repeats in IT, desk work, and the AI transformation of societ
 
 The next to be re-formed is the IT industry — and beyond it, **the AI transformation of society as a whole**. Like defense, this is **not decline but generational shift** — distinguished, however, by being a **three-stage** generational shift.
 
-### Stage one — legacy IT companies shrink
+### Stage one — pressure starts to build on legacy IT
 
-The conclusions of Chapters 6, 7, and 8 converge here.
+As of 2024–2026, legacy IT incumbents still look strong on the surface. AWS / Azure / GCP cloud revenue, Oracle / Microsoft license revenue, the SIer business — none of it has entered an outright decline.
 
-:::chain
-**Structural shrinkage of legacy IT:**
-AGI doesn't break even (Ch. 6) → Excess AI investment shrinks
-→ NVIDIA's GPU windfall fades (Ch. 7)
-→ Data center construction slows
-→ Cloud business growth stalls (AWS, Azure, GCP)
-CUDA lock-in collapses (Ch. 7) → GPU market becomes a price war
-Oracle/Microsoft taxes collapse (Ch. 8) → License revenue drops
-SIer taxes collapse (Ch. 8) → System integrator industry shrinks
-:::
+But structural pressure is building from several directions:
 
-:::highlight
-**The shrinking side:**
-NVIDIA → GPU demand passes its peak
-Oracle → License revenue vanishes as customers migrate to PostgreSQL
-Microsoft → Office/Azure/Windows taxes gradually collapse
-Salesforce → Migration to Claude + custom CRM
-Accenture, NTT Data, and other SIers → Claude replaces the bulk of person-hours
-Major consulting firms → Claude replaces structural analysis
-:::
+- **AI CapEx economics** — whether multi-hundred-billion-dollar data-center investments will earn their return is undecided. This series treats it as a structural forecast in Chapter 6.
+- **GPU market** — NVIDIA's monopoly is being eroded gradually by AMD, custom ASICs, and OSS inference (Chapter 7).
+- **OSS DB migration** — moves from Oracle to PostgreSQL and similar databases are growing in new projects.
+- **Pushback against "license tax"** — rising Office / Azure pricing is producing real interest in alternatives (Chapter 8).
+- **Pressure on SIer rates** — productivity gains from Cursor + Claude are starting to affect the unit-rate negotiations of the SIer industry.
+
+These are **partial signals so far**, and when they cross over into outright decline is undetermined. The structural forecasts in Chapters 6–8 do not commit to a date. Even so, the direction — long-term contraction of the legacy IT market — is what the structural analysis of this series points to.
+
+Where the pressure lands (structural forecast): NVIDIA's GPU windfall, Oracle / Microsoft's high-margin licenses, Salesforce, Accenture / NTT Data and other major SIers, large consulting firms.
 
 ### Stage two — AI-native companies rise
 

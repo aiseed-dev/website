@@ -22,90 +22,31 @@ cta_btn2_link: /en/insights/
 
 ## A Generational Shift in Defense — From Large Platforms to Drones + AI
 
-Apply the structures examined in this series to the future of industries.
-The first to be re-formed is defense.
-
 ### The trigger — extreme wartime necessity
 
 What set off the generational shift in defense was not fossil resource prices, environmental policy, or shifting consumer preferences. It was **the extreme necessity of war**.
 
-After the full-scale invasion in 2022, Ukraine faced a Russian military that overwhelmed it head-on in both quantity and quality. With far less GDP, population, and conventional military strength, Ukraine could not adopt the strategy of "buy F-35s and Patriots from the West and match in numbers." It does not have the money, and even if it did, that would not push the front line back.
+After the full-scale invasion in 2022, Ukraine faced a Russian military that overwhelmed it head-on in both quantity and quality. Buying F-35s and Patriots from the West to match numbers was impossible — the money was not there, and even if it had been, it would not have pushed the front line back. So Ukraine found a different answer: $50 AI autonomous-navigation modules × tens-of-thousands-of-dollars drones, $30,000 interceptor drones vs. $4 million Patriots, a domestic drone industry producing hundreds of thousands of units per month (Brave1), and battlefield feedback that turned into weapon updates within weeks (see Chapter 10).
 
-What Ukraine found was **drones + AI**.
-
-- $50 AI autonomous-navigation modules × tens-of-thousands-of-dollars drones
-- $30,000 interceptor drones vs. $4 million Patriot missiles
-- A domestic drone industry producing hundreds of thousands of units per month (Brave1)
-- An agile development setup that incorporates battlefield feedback into weapons within weeks
-
-Drones and AI are existing technology. But it was Ukraine that, **under the extreme conditions of a war for survival, implemented the combination at national scale** (see Chapter 10 for details).
-
-### War accelerates evolution
-
-The development cycle of the peacetime defense industry runs in decades (the F-35 entered development in 1996, was first deployed in 2015, and reached full-rate production in 2018). Ukraine, by contrast, **improves weapons within weeks** in response to enemy countermeasures on the battlefield (see the Army+ and E-Points / Brave1 Market feedback loops in Chapter 10).
-
-The reasons war accelerates evolution are simple:
-
-- **You die if you lose** — you must learn to survive
-- **It deploys to the front tomorrow** — there is no room to wait years
-- **Failure becomes obvious immediately** — what does not work is clear right away
-- **No room for bureaucracy** — getting something that works out the door is the top priority
-
-While peacetime Lockheed Martin runs one cycle in 20 years, Ukraine's Brave1 ecosystem runs **hundreds of cycles via battlefield feedback**. This is what pushed drones + AI from "experimental technology" to "the protagonist of the battlefield."
+While peacetime Lockheed Martin runs one cycle in 20 years, Brave1 runs **hundreds of cycles** via battlefield feedback. The "lose and you die" environment delivers an iteration speed that peacetime cannot.
 
 ### A second proof — the 2026 Iran War
 
-Ukraine's case might seem unique. But the 2026 Iran War, which began in March, is repeating the same structure **in a different context**.
+Ukraine's case might seem unique. But the 2026 Iran War repeats the same structure in a different context.
 
-In March 2026, the United States launched Operation Epic Fury and conducted five weeks of daily bombing. The total number of targets struck was **12,300+** — a campaign of a scale never seen in modern history, by the world's strongest military.
+In March 2026, the US launched Operation Epic Fury and struck **12,300+ targets** in five weeks — the largest such campaign in modern history. Yet by US intelligence assessment (April 2026):
 
-And yet, by US intelligence assessment (as of April 2026):
-
-- Missile launchers: **~50% still intact**
-- One-way attack drones: **thousands remaining** (~50% of capability)
+- Missile launchers: **~50% intact**
+- One-way attack drones: **thousands remaining**
 - Coastal-defense cruise missiles: **mostly intact**
 - IRGC navy: **hundreds to thousands** of small boats and unmanned surface vessels remaining
 - Strait of Hormuz: **cannot be reopened**
 
-Why can the strongest military in the world not erase even half of this capability after such an intense campaign?
+Iran's structural answer: decades-long underground tunnel networks, mass-produced Shahed/Geran-2 drones, distributed coastal missiles, small-boat fleets. Ukraine **invented in a short time**; Iran **prepared over decades**. Different means, same structure — **expensive, concentrated, large platforms are denied by cheap, distributed alternatives**.
 
-What Iran chose is, by a different route from Ukraine, the same structural answer: **don't face the giant adversary head-on**.
+### Survivability of legacy weapons
 
-- **Decades-long networks of underground tunnels and caves** — launchers fire from underground, then go back underground
-- **Mass-producible one-way attack drones** (Shahed / Geran-2 family, unit cost in the tens of thousands of dollars)
-- **Distributed coastal missiles** (the ability to close the strait)
-- **A fleet of small boats and unmanned surface vessels** (denying carrier function asymmetrically)
-
-Where Ukraine **invented in a short time**, Iran **prepared over decades**. The means differ, but the structure is the same — **expensive, concentrated, large platforms are denied by cheap, distributed alternatives**.
-
-#### Common structure across both
-
-:::compare
-| Dimension | Ukraine (2022–) | Iran (2026–) |
-| --- | --- | --- |
-| Adversary | Russia (several times the military strength) | United States (the world's strongest) |
-| Strategy | AI-native weapons system invented in a short time | Decades-long underground infrastructure + mass-produced drones |
-| Cost structure | $50 AI modules × tens-of-thousands-of-dollars drones | Tens-of-thousands-of-dollars drones, mass-produced |
-| What is neutralized | Russian tanks, armor, air force | US F-35, carriers, cruise missiles |
-| Result | Cancels out Russian quantitative superiority | After five weeks and 12,300 strikes, half the capability remains |
-:::
-
-What Ukraine and Iran share is that, in different contexts, both demonstrate the same asymmetric structure: **a large power's expensive weapons platforms cannot defeat cheap, distributed alternatives**. This is not an isolated case. It is **evidence that the structure of the defense industry itself is being rewritten**.
-
-### Survivability of legacy weapons — what stays, what goes
-
-Here a finer distinction is needed. "All legacy weapons disappear" oversimplifies. In practice, **what survives is clearly delineated**.
-
-Two decisive variables:
-
-- **Mobility and concealability** (can it be dispersed, hardened underground, made mobile?)
-- **Dependence on fixed infrastructure** (does it require a dedicated airfield, port, or base?)
-
-#### Military bases get hit first
-
-In drone+AI-era warfare, **the first targets are military bases**. Airfields, ports, and large supply bases **do not move**. Satellites and OSINT have already located them, and cheap drones and cruise missiles can degrade them in stages. Once the base stops functioning, the weapons that depend on it stop functioning. That is the starting point for every assessment.
-
-#### Survivability by weapon category
+"All legacy weapons disappear" oversimplifies. The decisive variables are **mobility and concealability** vs. **dependence on fixed infrastructure**. The first targets are fixed military bases (airfields, ports, supply depots).
 
 :::compare
 | Weapon category | Survivability | Why |
@@ -121,52 +62,11 @@ In drone+AI-era warfare, **the first targets are military bases**. Airfields, po
 | **Electronic warfare systems** | Medium | Mobile / distributed systems survive; large fixed systems are targets |
 :::
 
-> The conclusion: **weapons that can be mobile, dispersed, hardened underground, and mass-produced survive; concentrated, fixed, scarce, expensive weapons are culled** — this line decides winners and losers within the legacy defense industry too.
+In short, **mobile / dispersed / underground / mass-produced weapons survive; concentrated / fixed / scarce / expensive weapons are culled**. Within the legacy primes, mobile missile, mobile EW, and underground-hardening construction lines have room to survive. Carrier shipbuilders, 5th-generation fighter prime contractors, heavy transport / patrol aircraft, and large fixed-system makers enter a structurally hard era.
 
-Within the legacy primes:
+### Rise of the new defense industry — "who can have a defense industry" is being rewritten
 
-- Mobile missile makers (parts of Raytheon, ground-launched systems)
-- Mobile EW system makers
-- Underground hardening / blast-resistant construction and defense engineering
-
-have room to survive. Conversely:
-
-- Large-ship / carrier shipbuilders
-- 5th-generation fighter prime contractors
-- Heavy transport / patrol aircraft manufacturers
-- Large fixed-system makers
-
-enter a structurally hard era.
-
-> The prediction is not "the legacy defense industry disappears entirely." It is more granular: **product lines that can be mobile and dispersed remain; product lines that are fixed and concentrated are the ones that go away**.
-
-### The legacy defense industry — limits of the high-unit-price model
-
-Lockheed Martin, Raytheon, BAE, Northrop Grumman, MHI, Kawasaki Heavy, IHI — these legacy primes are organizations built around:
-
-- Single platforms costing hundreds of millions to tens of billions of dollars (F-35, Patriot, aircraft carriers, tanks)
-- Sole-source government contracts at long, fixed prices
-- Decades-long development cycles
-- Massive supply chains and large-scale factories
-
-This fit peacetime needs, but **the new weapons system Ukraine demonstrated cannot be matched by an organization with this structure**.
-
-As drones + AI asymmetrically neutralize large weapons, the market for the legacy model shrinks structurally. Lockheed Martin, Raytheon, BAE Systems — their main lines enter a hard era on both demand and organizational fitness.
-
-### But this is not the disappearance of the defense industry
-
-In parallel with the shrinkage of the legacy defense industry,
-**a new defense industry built around drones + AI** is rising rapidly.
-
-As Chapter 10 showed, Ukraine's **Brave1** ecosystem now contains:
-
-- AI-related projects registered: **300+**
-- AI / computer-vision systems in active battlefield use: **70+**
-- Companies building machine-vision drones: **100+**
-- 2026 drone production target: **7 million units/year**
-- AI autonomous-navigation modules: **~$50 per drone**
-
-— a new defense industry being forged in actual combat.
+In parallel with the legacy contraction, a new defense industry built around drones + AI rises. Ukraine's Brave1: 300+ AI projects, 70+ in active battlefield use, 100+ companies, 2026 production target 7 million drones/year, AI modules ~$50 per unit.
 
 :::compare
 | Legacy defense industry | New defense industry |
@@ -179,136 +79,31 @@ As Chapter 10 showed, Ukraine's **Brave1** ecosystem now contains:
 | Decade-long development cycles | Improved every few weeks via battlefield feedback |
 :::
 
-### The boundary of "who can have a defense industry" is being rewritten
+Legacy primes were a game only great powers — with multi-trillion-yen fighter-development budgets — could play. The new industry's basic units are **$50 AI modules and tens-of-thousands-of-dollars drones**, so **middle powers can sustain it as a domestic industry**. This is the industrial foundation of the "security provider" pivot (Chapter 10).
 
-The legacy defense industry was a game only large powers — with multi-trillion-yen
-fighter-development budgets — could play.
-The new defense industry's basic units are **$50 AI modules and tens-of-thousands-of-dollars drones**,
-so middle powers can sustain it as a domestic industry.
+### The most important variable — two-stage adaptation
 
-:::highlight
-**Inversion of the industrial structure:**
-Legacy: Only large powers could have a defense industry → middle powers had to buy
-New: Middle powers can have a defense industry → Ukraine becomes an exporter
-This is the industrial foundation of the "security provider" pivot (Chapter 10).
-:::
+The technical and industrial change does not implement itself. **What actually happens depends on two stages of adaptation**:
 
-The total number of people working in defense may not fall.
-But **which country and which company they work for** is being rewritten.
-Jobs at legacy defense primes shrink while jobs at AI-defense startups,
-drone manufacturers, and battlefield-SaaS companies grow.
-This is not "decline." It is **a generational shift**.
+1. **Can politics and the military adapt to technological change?** — revise procurement rules, fund AI-native defense startups, rewrite officer education and doctrine, decouple military identity from legacy platforms
+2. **Can domestic industry adapt to political/military change?** — legacy primes are slow due to organizational inertia, new entrants need talent / capital / regulatory environment / clearances / procurement precedents, investment networks (American Dynamism, European defense-tech VCs, Rakuten × Brave1) act as the seedbed
 
-### The most important variable — two-stage adaptation by politics, military, and domestic industry
+Ukraine's existential war pressure moved all of this at once. Brave1 is a state program that synchronizes politics, military, and industry. In the US and Europe, **Anduril and Helsing went through long political battles** before breaking into procurement. **Synchronization not done in peacetime cannot be done in time during war.** Brave1 cannot stand up overnight.
 
-The technical and industrial structural changes discussed so far do not implement themselves. **What actually happens depends on two stages of adaptation** — and this is the most important variable in this chapter.
+### Failure of the great powers — the US and Russia
 
-1. **Can politics and the military adapt to technological change?**
-2. **Can domestic industry adapt to changes in politics and the military?**
+The US and Russia are the canonical examples where the two-stage adaptation is not working. Political systems are opposite, but both **fail to adapt precisely because they are great powers**.
 
-#### Stage 1 — political and military adaptation
+**US — political gravity of legacy defense**: AI defense startups (Anduril, Shield AI, Skydio), American Dynamism, Replicator Initiative — **the individual ingredients are in place**. But the world's largest legacy primes (Lockheed Martin, Raytheon, Northrop Grumman, Boeing, General Dynamics) act as continuous political gravity that slows implementation: F-35 lifecycle cost over $1.7 trillion, employment scattered across congressional districts, revolving doors of retired generals, lobbying. The fact that 12,300 strikes in the 2026 Iran War left half of Iran's capability intact reads as **the US trying to challenge Iran head-on with the legacy model, unable to make the right call**. The classic "under democracy, entrenched interests act as political gravity" problem.
 
-For a country to adopt the new weapons system, politics must move:
+**Russia — no bottom-up innovation under authoritarianism**: lost most of its Black Sea Fleet to Magura USVs, lost tanks and armor in droves to FPV drones, became dependent on imported Iranian Shaheds. Tactical insights from soldiers don't reach leadership, state-owned defense primes leave no room for startups, failures cannot be acknowledged (fear of purges), and the **Brave1 / Army+ / E-Points-style battlefield → manufacturer feedback loop cannot exist in principle**. Mass production is possible but evolution is slow.
 
-- Revise procurement rules (prime preferences, sole-source contracts, long fixed-price agreements)
-- Direct funding and contracts to AI-native defense startups
-- Resist the lobbying of existing defense primes
-- Redesign security clearance and export controls around the new technology
+When faced head-on by smaller adversaries (Iran, Ukraine), neither can convert quantitative or qualitative advantage into combat power.
 
-And the military must move:
+> Being a great power is not a sufficient condition to win the generational shift.
+> If anything, **being a great power prevents adaptation** — the most striking fact this chapter surfaces about the late 2020s. Middle powers that can run the two-stage adaptation quickly become the protagonists of the new security era.
 
-- Rewrite officer education and doctrine away from large-platform assumptions
-- Shift tactics to assume dispersion, mobility, and autonomy
-- Restructure rank and promotion paths to fit the new weapons operation
-- Decouple military identity from legacy platforms
-
-In Ukraine, the existential pressure of war moved all of this at once. Brave1 is a state program that synchronizes politics, military, and industry. In the US and Europe, **Anduril and Helsing went through long political battles** before breaking into Pentagon and European procurement structures. In countries where contracts concentrate in legacy primes (Japan: MHI, Kawasaki, IHI), new entrants cannot win contracts unless politics and the military move first.
-
-#### Stage 2 — domestic industry adaptation
-
-Even when politics and the military move, **nothing is implemented if domestic industry cannot adapt**.
-
-- Legacy primes are slow to convert to AI-native because of the organizational inertia discussed earlier in the chapter
-- Growing AI-native defense startups requires **talent, capital, regulatory environment, clearance systems, and procurement precedents** to be in place
-- Investment networks — the US's Andreessen Horowitz "American Dynamism," European defense-tech VCs, Japan's Rakuten × Brave1 partnership (Chapter 10) — are the seedbed of the industry
-
-Whether legacy primes or AI-native upstarts, **the speed at which industry can follow political/military change** determines the country's fate in defense.
-
-#### Two-stage desynchronization — the reality in many countries
-
-What actually happens in many countries is that **the two stages move out of sync**:
-
-- **Politics and military don't move; industry can't either** → the legacy structure is preserved
-- **Politics and military move, but industry can't keep up** → contracts exist, but products don't ship
-- **Industry moves, but politics and military are reluctant** → the technology exists, but there are no customers; export controls choke it
-
-What Ukraine's war shows is the brutal fact that **synchronization not done in peacetime cannot be done in time during war**. Something like Brave1 cannot stand up overnight after war begins.
-
-#### What really decides the boundary of "who can have a defense industry"
-
-Earlier in this section, we said "middle powers can now have a defense industry." That is true at the level of technology and unit cost. But which countries can actually implement this depends on a different question: **can politics and the military adapt to technological change, and can domestic industry adapt to that** — a question of **governance and organizational capacity**.
-
-- Countries where the two stages move quickly and in sync → they grow a new defense industry and become security providers (Ukraine; parts of the US that backed Anduril; European countries that backed Helsing)
-- Countries where the two stages do not move → they continue maintaining expensive legacy weapons and break when war comes
-
-> What really decides the "generational shift in defense" is not technology or economics.
-> It is **how quickly politics, military, and industry can move in sync**.
-
-### Failure of the great powers — the structural problems facing the US and Russia
-
-Take the US and Russia as the canonical examples where the two-stage adaptation is not working. Their political systems are opposite, but they share a structural feature: **they are failing to adapt precisely because they are great powers**.
-
-#### The US — the political gravity of the legacy defense industry
-
-The US has AI defense startups (Anduril, Shield AI, Skydio), an investment network around them (Andreessen Horowitz's American Dynamism), and Pentagon initiatives toward new weapons systems (e.g., Replicator). **The individual ingredients are in place.**
-
-At the same time, however, the US hosts **the world's largest legacy defense industry — Lockheed Martin, Raytheon, Northrop Grumman, Boeing, General Dynamics — which acts as continuous political gravity**:
-
-- Defense factory **employment scattered across congressional districts**
-- A **revolving door** taking retired generals to prime contractors' boards and lobbying offices
-- Multi-decade fixed contracts (the F-35 alone has lifecycle costs estimated above $1.7 trillion)
-- Massive campaign donations and congressional lobbying
-- Defense budget reviews that internalize concerns for prime executives and shareholders
-
-Even when the analysis says "we should adopt the new weapons system," this gravity keeps slowing down implementation. The fact that 12,300 strikes in the 2026 Iran War still left half of Iran's capability intact can also be read as **the result of the US trying to challenge Iran head-on with the legacy model, while unable to make the right call**.
-
-The asymmetry between flying $100M fighters for five weeks and Iran's underground architecture of $50 AI modules × tens-of-thousands-of-dollars drones — the US wins on technology and industrial capacity, but **its political structure prevents it from using that technology effectively**. The classic problem of "**under democracy, entrenched interests act as political gravity**" appears in extreme form in defense.
-
-#### Russia — no bottom-up innovation under authoritarianism
-
-Russia is the other canonical failure case. In the Ukraine war, Russia:
-
-- Entered with several times the military strength, expecting to overwhelm Ukraine
-- **Lost most of its Black Sea Fleet to Magura USVs** (Chapter 10)
-- Lost massive quantities of tanks and armored vehicles to FPV drones
-- Became **dependent on imported Iranian Shahed drones**
-
-Russia's problem is that **authoritarian decision-making suppresses bottom-up battlefield innovation**:
-
-- Tactical insights discovered by soldiers do not flow up to leadership
-- An industry structure dominated by state-owned defense primes leaves no room for private startups
-- There is no culture of admitting failed tactics or designs as failures (fear of purges)
-- Direct **battlefield → manufacturer feedback loops** like Brave1 / Army+ / E-Points cannot exist in principle
-
-Russia operates large numbers of drones, but they are mainly **imported finished products from Iran**, not the output of bottom-up domestic innovation. This produces a structure where **mass production is possible but evolution is slow**.
-
-#### What the two failure patterns share
-
-The US and Russia have opposite political systems, but they share **the inability to "stop and adapt" precisely because they are great powers**:
-
-- **US**: Under democracy, entrenched interests act as political gravity
-- **Russia**: Under autocracy, failure cannot be acknowledged, and bottom-up innovation does not occur
-- **Both**: The self-image of being "a world great power" prevents looking the asymmetric structure in the face
-
-And in both cases, when faced head-on by **smaller adversaries** (Iran, Ukraine), neither can convert their quantitative or qualitative advantage into combat power.
-
-> Being a great power is not a sufficient condition to win the generational shift in defense.
-> If anything, **being a great power is what prevents adaptation** — and this is the most striking fact this chapter surfaces about the late 2020s.
-> Among the middle powers (Ukraine, Iran, the UK, Germany, Turkey, Japan), the ones who **run the two-stage adaptation between politics-and-military and industry quickly** become the protagonists of the new security era.
-
-The same structure — great powers failing to adapt precisely because of their size, while adapted middle players rise — repeats in the IT industry, in desk work, and across the AI transformation of society overall.
-
-But **AI is much more powerful, much wider in scope, and much more complex than defense.** The same structural framework (two-stage adaptation, the failure of the great powers, the rise of AI-native organizations) applies — but **we need to walk through it more carefully, without underestimating scale and complexity**.
+The same structure repeats in IT, desk work, and the AI transformation of society. But **AI is much more powerful, wider in scope, and more complex than defense.** The framework holds, but we need to walk through it without underestimating scale and complexity.
 
 ## A Generational Shift in IT — Legacy Cloud and SaaS Fade, AI-Native Companies Rise, OSS AI Spreads After
 
@@ -676,126 +471,26 @@ Contract-based desk workers are released from pure execution, but **work itself 
 
 ## From Megacities to Land — The Great Population Migration
 
-The generational shift in defense, the three-stage generational shift in IT,
-and the disappearance of contract-based desk work — these are **structural changes**,
-not "decline". But structural changes rewrite the relationship between people and place.
+As the structural changes above unfold, the relationship between people and place is rewritten. The new industries **do not require concentration in megacities**: the new defense industry runs on regionally distributed manufacturing, AI-native companies on remote work and small head offices, and as OSS AI spreads AI itself becomes infrastructure accessible from anywhere.
 
-- The new defense industry (drones + AI, AI defense SaaS) **does not need
-  giant single-platform manufacturing**. Small teams and regionally distributed
-  manufacturing are enough
-- AI-native companies run on remote work and small head offices.
-  Anthropic, Cursor, Vercel — they operate at hundreds-to-thousands of people,
-  with no structural need for Tokyo or Silicon Valley concentration
-- As OSS AI spreads, AI itself becomes **infrastructure accessible from anywhere**,
-  and **the economic case for concentrating in any one city weakens further**
-- The millions of contract-based desk-work jobs (SIer, BPO, contractor) must
-  either be reabsorbed by the instruction-and-judgment side, or move to entirely
-  different industries
-
-Whether they switched into the new industries or not, people are **forced to
-revisit the question of where to live**.
-
-As Chapter 2 showed, bio-materials come after fossil resources.
-As Chapter 3 showed, food production without chemical fertilizer becomes necessary.
-As Chapter 6 showed, bio-material manufacturing requires human labor permanently.
-
-**The work exists. But that work cannot be done in megacities.**
-
-:::highlight
-**What bio-materials and food production require:**
-Timber (construction, fiber, chemical feedstock) → **Forestland** management, logging, and replanting
-Plant feedstock farming → **Farmland** is needed
-Regenerative agriculture → **Vast farmland** and grazing land needed
-Vegetable cultivation practice → **Fields** needed (where practitioners experiment)
-Microbial and mycelium cultivation → **Land and space** needed
-Biomass collection → Physical labor in rural areas and forests
-**None of this can be done inside a Tokyo office building.**
-:::
-
-:::chain
-**Structure of population migration:**
-Legacy defense industry shrinks → Urban defense jobs are reallocated (new drone+AI companies are easier to distribute regionally)
-Legacy IT shrinks + AI-native companies rise → Less reason to concentrate in city offices
-Desk worker reduction → No reason to concentrate people in cities
-→ Simultaneously, bio-materials and food production need workers
-→ This work requires land
-→ **Population moves from megacities to regions with land**
-:::
-
-Think about it — Japan's regional towns already exist at this scale.
-They have shops. Schools. Clinics. They are surrounded by farmland and forestland.
-**What changes dramatically is not rural Japan. It is Tokyo.**
+And the work that grows in the post-fossil society — bio-material manufacturing, soil regeneration, food production, forestry, regional infrastructure — **needs land**. None of it can be done inside a Tokyo office building.
 
 :::compare
 | | Present | After transformation |
 | --- | --- | --- |
-| Greater Tokyo | 36 million commuting to offices | No reason to concentrate |
-| Regional towns | Depopulation accelerating | People return (the infrastructure already exists) |
+| Greater Tokyo | 36M commuting to offices | No reason to concentrate |
+| Regional towns | Depopulation accelerating | Function as the receiving capacity |
 | Primary employment | Desk work, IT, service industry | Bio-material manufacturing, food production, forestry, soil regeneration |
 | Required resources | Offices, data centers, electricity | Farmland, forestland, water, sunlight, soil |
 :::
 
-Tokyo's extreme concentration is a product of the fossil resource and desk work era.
-When desk work disappears and work becomes land-based, there is no reason for 36 million people to live in Tokyo.
+Rural life itself does not change much. Shops, schools, clinics, surrounding farmland and forestland — the receiving capacity is already there. **What changes is that Tokyo's extreme concentration dissolves.**
 
-Rural life itself does not change much.
-Towns exist. Services exist. Farmland and forestland surround them — that structure becomes the ready-made destination.
-**What changes is that Tokyo's extreme concentration dissolves.**
+But having the receiving capacity does not mean people move on their own. **Policy support is needed**: farmland and forestland acquisition, vocational training, vacant-house utilization for migrants, fiscal support for rural clinics / schools / shops, practice fields for hands-on cultivation.
 
-But having the destination does not mean people move on their own.
-**Policy support is needed.**
+The most critical policy is **rethinking free trade**. Cheap oil → cheap transportation → produce abroad and consume in Japan was a model that rested on fossil-resource dependency. Even if Japan builds a domestic system for bio-materials, food, and timber, free trade as is will crush it under cheap imports — and land-based work cannot survive. As fossil resources deplete, transportation costs eventually rise, but if the domestic production base is destroyed before then, it is too late.
 
-:::highlight
-**Policies required:**
-Farmland and forestland acquisition support → Enable urban migrants to obtain land
-Job training → Programs for desk workers to learn bio-material manufacturing, agriculture, forestry
-Initial housing support → Utilize vacant houses, prepare housing for migrants
-Maintaining town services → Fiscal measures to sustain clinics, schools, and shops
-Establishing practice fields → Places for vegetable cultivation practice in regional areas. Practitioners needed, not researchers. AI handles analysis
-:::
-
-And one more — the most critical policy of all.
-**Rethinking free trade.**
-
-Free trade as we know it rested on a specific premise.
-
-:::chain
-**The premise of free trade:**
-Cheap oil → Cheap transportation → Shipping goods from the other side of the planet is profitable
-→ Produce where labor is cheapest, consume in developed nations
-→ Domestic agriculture and forestry dismissed as "inefficient"
-→ **Complete free trade accepted as correct**
-:::
-
-This premise itself depended on fossil resources.
-
-Even if Japan builds a domestic production system for bio-materials, food, and timber,
-under complete free trade, cheap imports will crush it.
-The livelihoods of people working in land-based industries cannot survive.
-
-:::chain
-**If free trade continues unchanged:**
-Domestic agriculture, forestry, and bio-material production begins
-→ Cheap agricultural products and timber are imported from abroad
-→ Domestic producers cannot compete on price
-→ No reason for people to stay in regional areas
-→ **The industrial transformation itself fails**
-:::
-
-As fossil resources deplete, transportation costs will eventually rise,
-and the model of shipping cheap goods from far away will become unviable.
-But if the domestic production base is destroyed before that happens, it is too late.
-**If the premise of free trade is collapsing, trade policy must change too.**
-
-The industrial transformation is inevitable.
-But rather than scrambling after the transformation hits,
-**preparing regional infrastructure and trade policy now** is the job of policy.
-
-:::highlight
-Rural depopulation is not "a problem to be solved" —
-it becomes **a result solved by industrial transformation.**
-But policies are needed to make that transition smooth.
-:::
+> Rural depopulation is not "a problem to be solved" — it becomes **a result solved by industrial transformation**. Policies are needed to make that transition smooth.
 
 ## Current Healthcare and Pensions Do Not Fit This Society
 

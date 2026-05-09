@@ -53,6 +53,45 @@ The reasons war accelerates evolution are simple:
 
 While peacetime Lockheed Martin runs one cycle in 20 years, Ukraine's Brave1 ecosystem runs **hundreds of cycles via battlefield feedback**. This is what pushed drones + AI from "experimental technology" to "the protagonist of the battlefield."
 
+### A second proof — the 2026 Iran War
+
+Ukraine's case might seem unique. But the 2026 Iran War, which began in March, is repeating the same structure **in a different context**.
+
+In March 2026, the United States launched Operation Epic Fury and conducted five weeks of daily bombing. The total number of targets struck was **12,300+** — a campaign of a scale never seen in modern history, by the world's strongest military.
+
+And yet, by US intelligence assessment (as of April 2026):
+
+- Missile launchers: **~50% still intact**
+- One-way attack drones: **thousands remaining** (~50% of capability)
+- Coastal-defense cruise missiles: **mostly intact**
+- IRGC navy: **hundreds to thousands** of small boats and unmanned surface vessels remaining
+- Strait of Hormuz: **cannot be reopened**
+
+Why can the strongest military in the world not erase even half of this capability after such an intense campaign?
+
+What Iran chose is, by a different route from Ukraine, the same structural answer: **don't face the giant adversary head-on**.
+
+- **Decades-long networks of underground tunnels and caves** — launchers fire from underground, then go back underground
+- **Mass-producible one-way attack drones** (Shahed / Geran-2 family, unit cost in the tens of thousands of dollars)
+- **Distributed coastal missiles** (the ability to close the strait)
+- **A fleet of small boats and unmanned surface vessels** (denying carrier function asymmetrically)
+
+Where Ukraine **invented in a short time**, Iran **prepared over decades**. The means differ, but the structure is the same — **expensive, concentrated, large platforms are denied by cheap, distributed alternatives**.
+
+#### Common structure across both
+
+:::compare
+| Dimension | Ukraine (2022–) | Iran (2026–) |
+| --- | --- | --- |
+| Adversary | Russia (several times the military strength) | United States (the world's strongest) |
+| Strategy | AI-native weapons system invented in a short time | Decades-long underground infrastructure + mass-produced drones |
+| Cost structure | $50 AI modules × tens-of-thousands-of-dollars drones | Tens-of-thousands-of-dollars drones, mass-produced |
+| What is neutralized | Russian tanks, armor, air force | US F-35, carriers, cruise missiles |
+| Result | Cancels out Russian quantitative superiority | After five weeks and 12,300 strikes, half the capability remains |
+:::
+
+What Ukraine and Iran share is that, in different contexts, both demonstrate the same asymmetric structure: **a large power's expensive weapons platforms cannot defeat cheap, distributed alternatives**. This is not an isolated case. It is **evidence that the structure of the defense industry itself is being rewritten**.
+
 ### The legacy defense industry — limits of the high-unit-price model
 
 Lockheed Martin, Raytheon, BAE, Northrop Grumman, MHI, Kawasaki Heavy, IHI — these legacy primes are organizations built around:

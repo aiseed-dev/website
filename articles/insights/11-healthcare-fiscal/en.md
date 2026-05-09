@@ -308,13 +308,7 @@ And in both cases, when faced head-on by **smaller adversaries** (Iran, Ukraine)
 
 The same structure — great powers failing to adapt precisely because of their size, while adapted middle players rise — repeats in the IT industry, in desk work, and across the AI transformation of society overall.
 
-But **the AI case is much harder than defense**:
-
-- **Powerful**: AI directly substitutes for labor, decision-making, and knowledge production itself — not within a specific domain, but across nearly all white-collar work
-- **Wide-ranging**: accounting, legal, sales, customer support, programming, education, healthcare, public administration, research, the arts — every knowledge-work domain spreads in parallel
-- **Complex**: AI itself evolves exponentially; how users use it materially changes outcomes; attackers and defenders interact dynamically; social, ethical, and legal implications layer on top of each other
-
-In other words, the same structural framework (two-stage adaptation, the failure of the great powers, the rise of AI-native organizations) applies — but **we need to walk through it more carefully, without underestimating scale and complexity**.
+But **AI is much more powerful, much wider in scope, and much more complex than defense.** The same structural framework (two-stage adaptation, the failure of the great powers, the rise of AI-native organizations) applies — but **we need to walk through it more carefully, without underestimating scale and complexity**.
 
 ## A Generational Shift in IT — Legacy Cloud and SaaS Fade, AI-Native Companies Rise, OSS AI Spreads After
 
@@ -424,25 +418,39 @@ finds its structural foundation here on a 20-year horizon.
 
 The generational shifts in defense and IT play out at the level of companies and nations. But a broader impact occurs inside every company — **the AI transformation of desk work overall**. Diagnose this incorrectly and the predictions for society as a whole will also be wrong.
 
-### The current reality — the AI industry is rushing toward "replace it with autonomous AI agents"
+### Current state — the AI agent race and the rapid expansion of large data centers
 
-What the AI industry is rushing toward in 2024–2026 is not just "AI for productivity gains."
+In 2024–2026, two main trends are running in parallel in the AI industry.
 
-GitHub Copilot Workspace, Devin, ChatGPT Operator, Claude Computer Use, autonomous AI agents, multi-agent systems — what the AI industry is shipping at scale are products **designed to operate without humans in the loop**. Executives announce "we are reducing headcount with AI," vendors pitch "zero humans needed," and investors reward this direction with high valuations.
+#### The AI agent product race
 
-Behind this, **the AI industry itself is building massive data centers at scale**:
+Vendors are releasing, one after another, products that minimize human involvement and have AI execute tasks directly:
 
-- OpenAI / Microsoft's **Stargate** (hundreds of billions of dollars)
+- GitHub Copilot Workspace (Microsoft / GitHub)
+- Devin (Cognition Labs)
+- ChatGPT Operator (OpenAI)
+- Claude Computer Use (Anthropic)
+- Various multi-agent systems (AutoGen, CrewAI, etc.)
+
+Executives announce "we are reducing headcount with AI," vendors pitch "zero humans needed," and investors reward companies pursuing this direction with high valuations.
+
+#### The rapid expansion of AI infrastructure investment
+
+In parallel, capital expenditure on data centers has accelerated:
+
+- OpenAI / Microsoft's **Stargate** (a multi-hundred-billion-dollar plan)
 - Anthropic / AWS's **Project Rainier**
 - xAI's **Colossus** (Memphis, Colossus 2)
-- Google and Meta dramatically expanding their internal AI clusters
+- Google and Meta significantly expanding their internal AI clusters
 - Large-scale AI infrastructure investments in the Middle East (UAE Stargate, Saudi HUMAIN) and Southeast Asia
 
-These are **CapEx that assumes "autonomous AI agents operate at scale."** If autonomous agents do not work in society, this infrastructure becomes a **stranded asset**.
+These investments are sized assuming autonomous AI agents are operated at scale. **Inference demand from agents and data center capacity are tightly coupled in the structure.**
 
-In other words, the AI industry has bet **its very corporate existence** on autonomous agents.
+### A calm reading — what does this current state imply?
 
-**Why "let AI do it autonomously" rather than just "AI assists"?** Why is the AI industry betting this hard, including data center CapEx? Understanding this is the first step to seeing the situation structurally. The AI industry is not naive about automation. While implementing AI adoption, it has **already recognized two awkward facts** — and is betting on autonomous agents on top of that recognition.
+Let us read these two trends through the structural framework of this series.
+
+What is driving the AI industry toward autonomous agents is **two difficulties** recognized in the implementation of AI adoption. We walk through them in turn.
 
 ### Two recognitions behind the industry's bet on autonomous agents
 

@@ -647,43 +647,11 @@ But over the long term, a **substantial number of people** will be unable — or
 
 ### How to respond as an individual
 
-Three principles for facing this structural change as an individual.
+Don't structure your work around autonomous agents. Use AI as a tool, on your own judgment (Chapter 10, "Knowing What Work to Hand to AI").
 
-#### 1. Do not build your work around autonomous agents
+And keep at least one foot in something rooted in body, land, or human relationships — a home garden, helping out locally, a craft, raising children, caregiving. Whatever fits.
 
-AI autonomous-agent products fascinate executives and management, but on the ground — as the person actually doing the work — **do not let your job depend on them**. As discussed above, they are not at a level usable for real business. Choosing a job, or abandoning your existing skills, on the assumption that "autonomous agents will do all the routine work" leaves you with no escape route when they fail in the field.
-
-Instead, use AI **as a tool, in combination with your own judgment**. As laid out in Chapter 10 ("Knowing What Work to Hand to AI") and Chapter 9 ("AI and the Individual"), the strongest individual setup is to use AI as **a fast tool inside a sandbox**.
-
-#### 2. Shift your work mix from execution to verification, adaptation, and judgment
-
-Do not concentrate your time on pure execution (running routines under someone else's instructions). Instead:
-
-- Deepen **domain expertise** (continuously follow tax, legal, industry, technical, and market changes)
-- Build experience in **spotting anomalies and errors in AI output** (use AI enough to develop the sense of "this isn't normal")
-- Spend time on **adapting to environmental change** (new regulations, new technology, new customer context)
-- Accumulate experience in **deciding under uncertainty** (take responsibility more often)
-
-This is not a quick-win career strategy, but it is **the kind of capacity reliably needed in any industry in the AI era**.
-
-That said, some people **don't want this** — always-on accountability, high cognitive load. That is a matter of preference, not something to be forced. For those people, there is a different path (below).
-
-#### 3. Keep at least one foot in skills rooted in land, body, or human relationships
-
-Domains AI does not replace:
-
-- **Physical work** — agriculture, forestry, soil regeneration, bio-material manufacturing, construction, repair, caregiving, frontline medical work, cooking, craftsmanship
-- **Embodied skills** — urushi tapping, wood sawing, paper making, indigo dyeing, herbal processing, music performance, hand-sewing, knitting
-- **Work rooted in human relationships** — education, in-person counseling, neighborhood care, raising children, local relationships
-
-These are not "old." They are **the physical foundation of a post-fossil society** (Chapter 2 and the [Phosphorus and Farming](/en/phosphorus-and-farming/) series). The stable base for an individual in the AI era is to keep at least one foot here.
-
-Home gardening, composting, community gardens, local agricultural volunteering — all can start small (see the closing section of [Phosphorus and Farming, Chapter 8: Operating Principles](/en/phosphorus-and-farming/operating-principles/)).
-
-> The individual principle is simple:
-> **don't depend on AI**, **use AI as a tool**, **keep at least one foot in skills rooted in land, body, and human relationships**.
->
-> This is not so much "how to survive the AI era" as **how to keep your footing stable, however the structural change of the AI era plays out.**
+Not so much "how to survive the AI era" as how to keep your footing stable however the change plays out.
 
 ### So we need migration to land-based work
 

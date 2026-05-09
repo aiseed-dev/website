@@ -647,11 +647,11 @@ But over the long term, a **substantial number of people** will be unable — or
 
 ### How to respond as an individual
 
-Don't structure your work around autonomous agents. Use AI as a tool, on your own judgment (Chapter 10, "Knowing What Work to Hand to AI").
+Don't structure your work around autonomous agents. **Use AI as a tool, on your own judgment** (Chapter 10).
 
-And keep at least one foot in something rooted in body, land, or human relationships — a home garden, helping out locally, a craft, raising children, caregiving. Whatever fits.
+And build into your livelihood actual work that AI cannot replace — farming, forestry, regenerative agriculture, frontline medical and caregiving roles, craftsmanship, teaching, in-person professional work. These are rooted in body, land, and human relationships and resist AI substitution. **A home garden or volunteering is a hobby, not a job.** What you need is one foot of these as a real source of income.
 
-Not so much "how to survive the AI era" as how to keep your footing stable however the change plays out.
+This is preparation for keeping your footing stable when the change actually arrives.
 
 ### So we need migration to land-based work
 

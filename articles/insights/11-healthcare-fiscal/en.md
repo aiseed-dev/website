@@ -305,13 +305,20 @@ And in both cases, when faced head-on by **smaller adversaries** (Iran, Ukraine)
 > Being a great power is not a sufficient condition to win the generational shift in defense.
 > If anything, **being a great power is what prevents adaptation** — and this is the most striking fact this chapter surfaces about the late 2020s.
 > Among the middle powers (Ukraine, Iran, the UK, Germany, Turkey, Japan), the ones who **run the two-stage adaptation between politics-and-military and industry quickly** become the protagonists of the new security era.
->
-> And the same structure — great powers failing to adapt precisely because of their size, while adapted middle players rise — repeats, in exactly the same form, in the IT industry, in desk work, and across the AI transformation of society overall.
+
+The same structure — great powers failing to adapt precisely because of their size, while adapted middle players rise — repeats in the IT industry, in desk work, and across the AI transformation of society overall.
+
+But **the AI case is much harder than defense**:
+
+- **Powerful**: AI directly substitutes for labor, decision-making, and knowledge production itself — not within a specific domain, but across nearly all white-collar work
+- **Wide-ranging**: accounting, legal, sales, customer support, programming, education, healthcare, public administration, research, the arts — every knowledge-work domain spreads in parallel
+- **Complex**: AI itself evolves exponentially; how users use it materially changes outcomes; attackers and defenders interact dynamically; social, ethical, and legal implications layer on top of each other
+
+In other words, the same structural framework (two-stage adaptation, the failure of the great powers, the rise of AI-native organizations) applies — but **we need to walk through it more carefully, without underestimating scale and complexity**.
 
 ## A Generational Shift in IT — Legacy Cloud and SaaS Fade, AI-Native Companies Rise, OSS AI Spreads After
 
-The next industry to be re-formed is IT. Like defense, this is **not decline but generational shift** —
-distinguished, however, by being a **three-stage** generational shift.
+The next to be re-formed is the IT industry — and beyond it, **the AI transformation of society as a whole**. Like defense, this is **not decline but generational shift** — distinguished, however, by being a **three-stage** generational shift.
 
 ### Stage one — legacy IT companies shrink
 

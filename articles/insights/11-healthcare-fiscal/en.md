@@ -25,27 +25,85 @@ cta_btn2_link: /en/insights/
 Apply the structures examined in this series to the future of industries.
 The first to be re-formed is defense.
 
-### The legacy defense industry — fossil resources and high unit prices
+### The trigger — extreme wartime necessity
 
-:::highlight
-**Fossil resource dependency of the legacy defense industry:**
-Jet fighters → Jet fuel (kerosene fraction) + composite materials (petrochemical)
-Tanks → Diesel + synthetic rubber + high-performance plastics
-Warships → Heavy fuel oil + paint (petroleum-based) + wiring insulation (PVC)
-Missiles → Some solid propellants are petroleum-derived + electronics (photoresist)
-Logistics → Diesel-powered trucks and transport ships — all of it
+What set off the generational shift in defense was not fossil resource prices, environmental policy, or shifting consumer preferences. It was **the extreme necessity of war**.
+
+After the full-scale invasion in 2022, Ukraine faced a Russian military that overwhelmed it head-on in both quantity and quality. With far less GDP, population, and conventional military strength, Ukraine could not adopt the strategy of "buy F-35s and Patriots from the West and match in numbers." It does not have the money, and even if it did, that would not push the front line back.
+
+What Ukraine found was **drones + AI**.
+
+- $50 AI autonomous-navigation modules × tens-of-thousands-of-dollars drones
+- $30,000 interceptor drones vs. $4 million Patriot missiles
+- A domestic drone industry producing hundreds of thousands of units per month (Brave1)
+- An agile development setup that incorporates battlefield feedback into weapons within weeks
+
+Drones and AI are existing technology. But it was Ukraine that, **under the extreme conditions of a war for survival, implemented the combination at national scale** (see Chapter 10 for details).
+
+### War accelerates evolution
+
+The development cycle of the peacetime defense industry runs in decades (the F-35 entered development in 1996, was first deployed in 2015, and reached full-rate production in 2018). Ukraine, by contrast, **improves weapons within weeks** in response to enemy countermeasures on the battlefield (see the Army+ and E-Points / Brave1 Market feedback loops in Chapter 10).
+
+The reasons war accelerates evolution are simple:
+
+- **You die if you lose** — you must learn to survive
+- **It deploys to the front tomorrow** — there is no room to wait years
+- **Failure becomes obvious immediately** — what does not work is clear right away
+- **No room for bureaucracy** — getting something that works out the door is the top priority
+
+While peacetime Lockheed Martin runs one cycle in 20 years, Ukraine's Brave1 ecosystem runs **hundreds of cycles via battlefield feedback**. This is what pushed drones + AI from "experimental technology" to "the protagonist of the battlefield."
+
+### A second proof — the 2026 Iran War
+
+Ukraine's case might seem unique. But the 2026 Iran War, which began in March, is repeating the same structure **in a different context**.
+
+In March 2026, the United States launched Operation Epic Fury and conducted five weeks of daily bombing. The total number of targets struck was **12,300+** — a campaign of a scale never seen in modern history, by the world's strongest military.
+
+And yet, by US intelligence assessment (as of April 2026):
+
+- Missile launchers: **~50% still intact**
+- One-way attack drones: **thousands remaining** (~50% of capability)
+- Coastal-defense cruise missiles: **mostly intact**
+- IRGC navy: **hundreds to thousands** of small boats and unmanned surface vessels remaining
+- Strait of Hormuz: **cannot be reopened**
+
+Why can the strongest military in the world not erase even half of this capability after such an intense campaign?
+
+What Iran chose is, by a different route from Ukraine, the same structural answer: **don't face the giant adversary head-on**.
+
+- **Decades-long networks of underground tunnels and caves** — launchers fire from underground, then go back underground
+- **Mass-producible one-way attack drones** (Shahed / Geran-2 family, unit cost in the tens of thousands of dollars)
+- **Distributed coastal missiles** (the ability to close the strait)
+- **A fleet of small boats and unmanned surface vessels** (denying carrier function asymmetrically)
+
+Where Ukraine **invented in a short time**, Iran **prepared over decades**. The means differ, but the structure is the same — **expensive, concentrated, large platforms are denied by cheap, distributed alternatives**.
+
+#### Common structure across both
+
+:::compare
+| Dimension | Ukraine (2022–) | Iran (2026–) |
+| --- | --- | --- |
+| Adversary | Russia (several times the military strength) | United States (the world's strongest) |
+| Strategy | AI-native weapons system invented in a short time | Decades-long underground infrastructure + mass-produced drones |
+| Cost structure | $50 AI modules × tens-of-thousands-of-dollars drones | Tens-of-thousands-of-dollars drones, mass-produced |
+| What is neutralized | Russian tanks, armor, air force | US F-35, carriers, cruise missiles |
+| Result | Cancels out Russian quantitative superiority | After five weeks and 12,300 strikes, half the capability remains |
 :::
 
-As Chapter 10 showed, drones + AI are neutralizing conventional large weapons. And large weapons cannot operate without fossil resources.
+What Ukraine and Iran share is that, in different contexts, both demonstrate the same asymmetric structure: **a large power's expensive weapons platforms cannot defeat cheap, distributed alternatives**. This is not an isolated case. It is **evidence that the structure of the defense industry itself is being rewritten**.
 
-:::chain
-**Structural shrinkage of the legacy defense industry:**
-Drones + AI neutralize large weapons → Demand for fighters and tanks drops
-Fossil resource price increases → Operating costs of large weapons rise
-Fossil resource depletion → Manufacturing large weapons becomes difficult
-→ Lockheed Martin, Raytheon, BAE Systems —
-→ **The legacy defense market structurally shrinks**
-:::
+### The legacy defense industry — limits of the high-unit-price model
+
+Lockheed Martin, Raytheon, BAE, Northrop Grumman, MHI, Kawasaki Heavy, IHI — these legacy primes are organizations built around:
+
+- Single platforms costing hundreds of millions to tens of billions of dollars (F-35, Patriot, aircraft carriers, tanks)
+- Sole-source government contracts at long, fixed prices
+- Decades-long development cycles
+- Massive supply chains and large-scale factories
+
+This fit peacetime needs, but **the new weapons system Ukraine demonstrated cannot be matched by an organization with this structure**.
+
+As drones + AI asymmetrically neutralize large weapons, the market for the legacy model shrinks structurally. Lockheed Martin, Raytheon, BAE Systems — their main lines enter a hard era on both demand and organizational fitness.
 
 ### But this is not the disappearance of the defense industry
 

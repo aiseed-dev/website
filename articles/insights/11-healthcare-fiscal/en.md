@@ -25,27 +25,46 @@ cta_btn2_link: /en/insights/
 Apply the structures examined in this series to the future of industries.
 The first to be re-formed is defense.
 
-### The legacy defense industry — fossil resources and high unit prices
+### The trigger — extreme wartime necessity
 
-:::highlight
-**Fossil resource dependency of the legacy defense industry:**
-Jet fighters → Jet fuel (kerosene fraction) + composite materials (petrochemical)
-Tanks → Diesel + synthetic rubber + high-performance plastics
-Warships → Heavy fuel oil + paint (petroleum-based) + wiring insulation (PVC)
-Missiles → Some solid propellants are petroleum-derived + electronics (photoresist)
-Logistics → Diesel-powered trucks and transport ships — all of it
-:::
+What set off the generational shift in defense was not fossil resource prices, environmental policy, or shifting consumer preferences. It was **the extreme necessity of war**.
 
-As Chapter 10 showed, drones + AI are neutralizing conventional large weapons. And large weapons cannot operate without fossil resources.
+After the full-scale invasion in 2022, Ukraine faced a Russian military that overwhelmed it head-on in both quantity and quality. With far less GDP, population, and conventional military strength, Ukraine could not adopt the strategy of "buy F-35s and Patriots from the West and match in numbers." It does not have the money, and even if it did, that would not push the front line back.
 
-:::chain
-**Structural shrinkage of the legacy defense industry:**
-Drones + AI neutralize large weapons → Demand for fighters and tanks drops
-Fossil resource price increases → Operating costs of large weapons rise
-Fossil resource depletion → Manufacturing large weapons becomes difficult
-→ Lockheed Martin, Raytheon, BAE Systems —
-→ **The legacy defense market structurally shrinks**
-:::
+What Ukraine found was **drones + AI**.
+
+- $50 AI autonomous-navigation modules × tens-of-thousands-of-dollars drones
+- $30,000 interceptor drones vs. $4 million Patriot missiles
+- A domestic drone industry producing hundreds of thousands of units per month (Brave1)
+- An agile development setup that incorporates battlefield feedback into weapons within weeks
+
+Drones and AI are existing technology. But it was Ukraine that, **under the extreme conditions of a war for survival, implemented the combination at national scale** (see Chapter 10 for details).
+
+### War accelerates evolution
+
+The development cycle of the peacetime defense industry runs in decades (the F-35 entered development in 1996, was first deployed in 2015, and reached full-rate production in 2018). Ukraine, by contrast, **improves weapons within weeks** in response to enemy countermeasures on the battlefield (see the Army+ and E-Points / Brave1 Market feedback loops in Chapter 10).
+
+The reasons war accelerates evolution are simple:
+
+- **You die if you lose** — you must learn to survive
+- **It deploys to the front tomorrow** — there is no room to wait years
+- **Failure becomes obvious immediately** — what does not work is clear right away
+- **No room for bureaucracy** — getting something that works out the door is the top priority
+
+While peacetime Lockheed Martin runs one cycle in 20 years, Ukraine's Brave1 ecosystem runs **hundreds of cycles via battlefield feedback**. This is what pushed drones + AI from "experimental technology" to "the protagonist of the battlefield."
+
+### The legacy defense industry — limits of the high-unit-price model
+
+Lockheed Martin, Raytheon, BAE, Northrop Grumman, MHI, Kawasaki Heavy, IHI — these legacy primes are organizations built around:
+
+- Single platforms costing hundreds of millions to tens of billions of dollars (F-35, Patriot, aircraft carriers, tanks)
+- Sole-source government contracts at long, fixed prices
+- Decades-long development cycles
+- Massive supply chains and large-scale factories
+
+This fit peacetime needs, but **the new weapons system Ukraine demonstrated cannot be matched by an organization with this structure**.
+
+As drones + AI asymmetrically neutralize large weapons, the market for the legacy model shrinks structurally. Lockheed Martin, Raytheon, BAE Systems — their main lines enter a hard era on both demand and organizational fitness.
 
 ### But this is not the disappearance of the defense industry
 

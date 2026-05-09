@@ -202,13 +202,25 @@ finds its structural foundation here on a 20-year horizon.
 
 The generational shifts in defense and IT play out at the level of companies and nations. But a broader impact occurs inside every company — **the AI transformation of desk work overall**. Diagnose this incorrectly and the predictions for society as a whole will also be wrong.
 
-### The current reality — the whole industry is rushing toward "replace it with autonomous AI agents"
+### The current reality — the AI industry is rushing toward "replace it with autonomous AI agents"
 
-What is happening in 2024–2026 is not just "AI for productivity gains."
+What the AI industry is rushing toward in 2024–2026 is not just "AI for productivity gains."
 
-GitHub Copilot Workspace, Devin, ChatGPT Operator, Claude Computer Use, autonomous AI agents, multi-agent systems — what the industry is shipping at scale are products **designed to operate without humans in the loop**. Executives announce "we are reducing headcount with AI," vendors pitch "zero humans needed," and investors reward this direction with high valuations.
+GitHub Copilot Workspace, Devin, ChatGPT Operator, Claude Computer Use, autonomous AI agents, multi-agent systems — what the AI industry is shipping at scale are products **designed to operate without humans in the loop**. Executives announce "we are reducing headcount with AI," vendors pitch "zero humans needed," and investors reward this direction with high valuations.
 
-**Why "let AI do it autonomously" rather than just "AI assists"?** Understanding this is the first step to seeing the situation structurally. The industry is not naive about automation. While implementing AI adoption, it has **already recognized two awkward facts** — and is betting on autonomous agents on top of that recognition.
+Behind this, **the AI industry itself is building massive data centers at scale**:
+
+- OpenAI / Microsoft's **Stargate** (hundreds of billions of dollars)
+- Anthropic / AWS's **Project Rainier**
+- xAI's **Colossus** (Memphis, Colossus 2)
+- Google and Meta dramatically expanding their internal AI clusters
+- Large-scale AI infrastructure investments in the Middle East (UAE Stargate, Saudi HUMAIN) and Southeast Asia
+
+These are **CapEx that assumes "autonomous AI agents operate at scale."** If autonomous agents do not work in society, this infrastructure becomes a **stranded asset**.
+
+In other words, the AI industry has bet **its very corporate existence** on autonomous agents.
+
+**Why "let AI do it autonomously" rather than just "AI assists"?** Why is the AI industry betting this hard, including data center CapEx? Understanding this is the first step to seeing the situation structurally. The AI industry is not naive about automation. While implementing AI adoption, it has **already recognized two awkward facts** — and is betting on autonomous agents on top of that recognition.
 
 ### Two recognitions behind the industry's bet on autonomous agents
 
@@ -292,17 +304,60 @@ Reasons 4–6 show that autonomous agents **introduce new problems**: dissolved 
 
 > Autonomous agents are **not a technology that solves the labor shortage**. They are **a different set of problems dressed up to look like a solution to the labor shortage**.
 
-### Existing organizations are in a structural dead end
+### Natural selection — companies that pushed in, those that stop, those that survive, those newly born
 
-To summarize:
+The fact that autonomous agents fail structurally does not bankrupt the whole industry at once. What actually happens is **natural selection**. Companies split into four groups.
 
-1. **AI alone does not complete the work** (Recognition 1: verification, adaptation, and judgment require humans)
-2. **The number of humans who can do verification and judgment is limited** (Recognition 2: cannot × does not want to)
-3. The industry **bet on autonomous agents** to escape — but that fails structurally (six reasons above)
+#### Companies that pushed in — cost collapse and surveillance hell
 
-This is a **structural dead end** in three steps. The script of "existing organizations replace their desk work with AI agents" **cannot be solved inside the organization**.
+Companies that bet fully on autonomous agents face:
 
-This is not a technical problem. It is a **problem of organizational structure**. Existing workflows, existing power structures, existing evaluation systems, existing employment contracts, and existing accountability structures **prevent AI-native ways of working from being built from inside**.
+- API call counts inflating exponentially → **costs accelerate** → per-unit losses widen, data center CapEx looks further from recovery
+- To detect errors made by autonomous agents, layers of **monitoring of monitoring of monitoring** become necessary (verification cost is also exponential)
+- Vulnerable to **cyber attack** through prompt injection and supply-chain poisoning
+- When failures occur, accountability has dissolved → **legally and socially indefensible**
+
+Compounded, **this is unsustainable as a business**. Even AI-industry companies, if they over-rely on autonomous agents in their business model, go bankrupt.
+
+#### Companies that stop and adapt — the path many existing companies choose
+
+If executives can make sensible judgments, when they see signs of cost collapse and surveillance hell, they **stop and choose a realistic path**:
+
+- Narrow the scope of autonomous agent application
+- Return to human-in-the-loop designs
+- Restrict operations to what they can be accountable for
+- And in parallel, **gradually rewrite internal processes, organization, and staffing toward an AI-native direction**
+
+This is not "don't use AI." It is the realistic choice of "**use AI within the range where humans can take responsibility, and change the organization itself in stages**." **Many existing companies will choose this path and retain their competitiveness.**
+
+"Existing organizations cannot win against AI-native ones" oversimplifies. Organizational flexibility, governance structure, and the quality of management decisions determine whether adaptation succeeds. Mid-sized companies, regional companies, and family businesses where the top can decide directly often adapt faster than large corporations.
+
+#### Companies that keep pushing — the structural risk of autocratic management
+
+The problem is **companies with autocratic executives**. When management decisions are not externally checked and the mechanism to stop does not work, they cannot stop even as cost collapse and surveillance hell loom. The AI industry has many companies with very strong founder influence. This is a structural risk. The weaker the governance from investors, boards, and regulators, the easier it is to fall into the autonomous-agent trap.
+
+#### Companies that survive and grow — the Anthropic pattern
+
+In contrast, **companies that explicitly warn "do not run agents in autonomous mode" and stick to human-in-the-loop designs** — Anthropic being the prime example — are positioned to survive and grow through the autonomous-agent bubble's collapse.
+
+- Designed from the start as "AI as a tool, humans judge"
+- Investment in Constitutional AI, Responsible Scaling Policy, safety research
+- Operational models like Claude Code that keep humans in the loop
+
+#### Companies newly born — AI-native, but not autonomous
+
+In addition, **new AI-native companies** grow up. Cursor, Vercel, Hugging Face, Perplexity — these are "organizations with AI at the core," but their design is not "let autonomous agents do everything." They are built from the start around AI as **a tool that amplifies human judgment**. The **one-person + AI** business model discussed in Chapter 9 ("AI and the Individual") belongs to the same lineage.
+
+> This is the natural flow.
+> Companies that pushed into autonomous agents are culled.
+> Companies that stop continue using AI within the appropriate scope.
+> Companies like Anthropic survive and grow.
+> New AI-native companies are born.
+> AI-driven change progresses **not as "everything goes AI" or "everything fails," but as the process of redrawing the line between autonomy and humans**.
+
+### Existing non-AI industries follow the same pattern — the Ukraine pattern, generalized
+
+This natural-selection pattern applies not only to the AI industry but also to **existing non-AI industries trying to adopt AI in accounting, legal, sales, and customer support**. The earlier sections in this chapter on the **generational shift in defense and IT** are the leading examples.
 
 ### Change comes from AI-native organizations — the Ukraine pattern, generalized
 
@@ -318,26 +373,27 @@ So how does AI-driven change actually happen? The earlier sections in this chapt
 - **Microsoft** added Copilot to Windows. But improvements to the OS itself were deprioritized, and users feel that **"Copilot is being pushed at me while the actual OS is degrading."**
 - **Anthropic, Cursor, Vercel, Hugging Face, Perplexity** built AI-native designs **from the organization upward**. Rather than bolting AI onto existing products, they put AI at the core and rewrote tooling, organization, and business models.
 
-#### A universal pattern — this spreads to companies overall
+#### Universal pattern — adapting companies and newly born companies coexist
 
-> **Legacy organizations introduce AI as a "feature add."** They preserve existing decision-making structures, product lines, employee composition, and supply chains, and lay AI on top. The result: capabilities improve a little, but because the organization is not optimized around AI, they end up **orders of magnitude less efficient than AI-native organizations**.
+The same natural selection from the previous section applies here.
 
-> **New organizations are built AI-native.** They put AI at the core and design the organization, processes, labor-equipment ratio, and decision-making structure from scratch. Result: high productivity with a small headcount. **They replace legacy companies through competition.**
+> **Organizations that "just bolt on AI as a feature"** — preserving existing decision-making structures, product lines, employee composition, and supply chains and laying AI on top — end up **orders of magnitude less efficient than AI-native organizations** and are eventually culled (the F-35 / Copilot bolt-on pattern).
 
-Existing companies trying to apply AI to accounting, legal, sales, and customer support face the same pattern as defense and IT. The mechanism by which AI actually penetrates is **not** "existing organizations adopting AI." It is **AI-native new organizations being born of necessity, and competing with — replacing — existing organizations**.
+> **Organizations that re-design AI-native** — rebuilding organization, processes, labor-equipment ratio, and decision-making from scratch, or rewriting them in stages — gain competitiveness. This is **not limited to startups**. Existing companies, too, can adapt **if the top accepts reality and intends to fundamentally change the organization**. Ukraine — an existing national organization that stood up Brave1 and Delta in a short period — is the extreme example.
 
-Concretely:
+Existing companies trying to apply AI to accounting, legal, sales, and customer support stand at the same crossroads as defense and IT. The mechanism by which AI actually penetrates is not just one thing.
 
-- **One person + AI** sole proprietors reproducing the work of a large company (Chapter 9, "AI and the Individual")
-- **AI-native startups** of a few people delivering services equivalent to legacy SIers, BPOs, and consulting firms
-- **AI-native small companies** founded outside Tokyo, competing down legacy firms concentrated in the metropolis
-- Nation-scale cases like Ukraine's Brave1 — an **AI-native defense industry at the national level**
+- **AI-native new organizations grow** —
+    - One-person + AI sole proprietors reproducing the work of a large company (Chapter 9, "AI and the Individual")
+    - **AI-native startups** of a few people delivering services equivalent to legacy SIers, BPOs, and consulting firms
+    - **AI-native small companies** founded outside major cities, competing on equal footing with metropolitan-concentrated legacy firms
+- **Existing companies that can adapt convert themselves AI-native** —
+    - Mid-sized, regional, and family-owned companies, where the top can decide directly and the organization is nimble, move first
+    - At large corporations, individual business units or subsidiaries shifting to AI-native become more common
+    - Ukraine's nation-scale AI-native defense industry is the extreme case
+- **Surviving AI companies (the Anthropic pattern)** provide tools to both of the above
 
-> The protagonist of the change is not the "AI adoption department" of a legacy company.
-> It is **AI-native new organizations born of necessity**.
-> The real challenge for legacy companies is not "introduce AI internally and survive" — it is **"survive competition with AI-native new organizations."**
-
-This is structurally identical to Clayton Christensen's **"Innovator's Dilemma."** What happened in disk drives, minicomputers, steel, and retail will happen in **all white-collar industries simultaneously** under AI.
+The **coexistence** of these three streams is what change in white-collar industries actually looks like. As Clayton Christensen's "Innovator's Dilemma" showed, **not every existing company necessarily collapses**. Existing companies with the will to adapt and adequate governance become carriers of the new era alongside new entrants. **What is culled is companies that could not adapt to change.**
 
 ### What happens to contract-based desk work along the way — three layers
 

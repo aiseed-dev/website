@@ -4,7 +4,7 @@ number: "11"
 lang: en
 title: Society's Regeneration
 subtitle: Old industries fade as new ones rise — military, IT, healthcare, pensions, and population distribution are all being re-formed at once
-description: Fossil-resource depletion ends the legacy military industry — and a new drone+AI defense industry rises in its place. Legacy cloud and SaaS shrink while AI-native companies (Anthropic, OpenAI, Cursor, Vercel) take over, with OSS AI spreading after that. Contract-based desk work undergoes structural change — pure routine execution is automated by AI, but instructions, requirements, verification/correction/adaptation of AI output, and final judgment all stay with humans, and the precision required actually rises with AI adoption. Population redistributes to land-based work; dialysis, pensions, and other legacy systems end; a life closer to nature and regenerative agriculture become the new foundation. This is not the patching of a design failure — it is the regeneration of social structure itself.
+description: Wartime necessity drives the rise of a new drone+AI defense industry. In IT, pressure builds on incumbents; AI-native splits into model providers (Anthropic, OpenAI) and transitional cloud wrappers (Cursor, Vercel). Autonomous AI agents fail structurally and natural selection proceeds. Work shifts to land-based; dialysis, pensions, and other legacy systems no longer fit the new society. This is not the patching of a design failure — it is the regeneration of social structure itself.
 date: 2025.04.04
 label: Structural Analysis 11
 prev_slug: drone-defense
@@ -103,7 +103,7 @@ When faced head-on by smaller adversaries (Iran, Ukraine), neither can convert q
 > Being a great power is not a sufficient condition to win the generational shift.
 > If anything, **being a great power prevents adaptation** — the most striking fact this chapter surfaces about the late 2020s. Middle powers that can run the two-stage adaptation quickly become the protagonists of the new security era.
 
-The same structure repeats in IT, desk work, and the AI transformation of society. But **AI is much more powerful, wider in scope, and more complex than defense.** The framework holds, but we need to walk through it without underestimating scale and complexity.
+The same structure repeats in IT and desk work. But **AI is much more powerful, wider in scope, and more complex than defense.**
 
 ## IT — Pressure on Legacy IT, and the Rise of AI-Native Companies
 
@@ -262,27 +262,6 @@ the first half of this chapter are the leading examples.
 > Same structure as Christensen's **Innovator's Dilemma** —
 > **not every existing company collapses; what is culled is companies
 > that could not adapt to change.**
-
-### Contract-based desk work splits into three layers
-
-As AI-native and existing organizations compete, desk work overall
-splits into roughly three layers.
-
-:::compare
-| Layer | Role | What happens |
-| --- | --- | --- |
-| **Skilled top layer** | Instructions, requirements, final judgment | Survives in both AI-native and legacy organizations; pay rises |
-| **Mid-level verifiers / adapters** | Verifying, correcting, adapting AI output | New middle layer, but limited in scale |
-| **Pure-execution layer only** | Contract / dispatch / BPO | **Total work shrinks dramatically; needs somewhere to go** |
-:::
-
-Do not simplify this as "millions become unnecessary at once." Of Japan's
-~13 million office workers, the share corresponding to pure execution
-only is roughly half of working hours. **The composition of one person's
-work changes first** (verification, correction, and adaptation grow as a
-share). Long term, a substantial number cannot move to the new role for
-reasons of skill, age, geography, or preference, and **labor market
-polarization** advances.
 
 ### How to respond as an individual
 

@@ -450,6 +450,8 @@ These investments are sized assuming autonomous AI agents are operated at scale.
 
 Let us read these two trends through the structural framework of this series.
 
+The conclusion up front: **autonomous AI agents are a product of the human wish "to remove the human work" — and at present they have too many problems to be usable in actual business.** We walk down to that conclusion step by step.
+
 What is driving the AI industry toward autonomous agents is **two difficulties** recognized in the implementation of AI adoption. We walk through them in turn.
 
 ### Two recognitions behind the industry's bet on autonomous agents
@@ -490,13 +492,15 @@ In addition, a substantial number of people who have the ability still do not wa
 
 Through the double constraint of "cannot × does not want to," the **effective supply** of people on the instruction-and-judgment side is limited. Training takes years, and forcing the role on people leads to attrition.
 
-#### Conclusion — the industry's answer is "remove the humans"
+#### The industry's wish — "remove the humans"
 
-From these two recognitions, the industry drew a logical conclusion:
+From these two recognitions, the industry has converged on a particular answer:
 
 > **"Then let AI agents do verification, judgment, and adaptation autonomously. If humans are the bottleneck, remove the humans."**
 
-That is the **real reason** autonomous and multi-agent products are shipping at scale across 2024–2026. The industry is not naive. **It has recognized the problems and is betting on autonomous agents as the solution.**
+This is the thinking behind the wave of autonomous-agent and multi-agent products in 2024–2026.
+
+But this is closer to **a wish — "we want to remove the human work" — than to a logically derived solution**. As we will see next, this wish is not delivered in a form usable in actual business.
 
 ### But autonomous agents fail structurally — six reasons
 
@@ -640,6 +644,46 @@ As AI-native organizations and existing organizations compete, desk work overall
 Do not oversimplify this as "millions of jobs vanish at once." Of Japan's ~13 million office workers, the share corresponding to **pure-execution-only labor under someone else's instructions** is roughly half of working hours; how much AI can take is highly variable across industries and roles. **What changes first is the composition of one person's job** — verification, correction, and adaptation grow as a share.
 
 But over the long term, a **substantial number of people** will be unable — or unwilling — to move into the new role for reasons of skill, age, geography, or simple personal preference. **Labor market polarization**, left alone, runs in parallel with income evaporation, social instability, and political pressure for UBI.
+
+### How to respond as an individual
+
+Three principles for facing this structural change as an individual.
+
+#### 1. Do not build your work around autonomous agents
+
+AI autonomous-agent products fascinate executives and management, but on the ground — as the person actually doing the work — **do not let your job depend on them**. As discussed above, they are not at a level usable for real business. Choosing a job, or abandoning your existing skills, on the assumption that "autonomous agents will do all the routine work" leaves you with no escape route when they fail in the field.
+
+Instead, use AI **as a tool, in combination with your own judgment**. As laid out in Chapter 10 ("Knowing What Work to Hand to AI") and Chapter 9 ("AI and the Individual"), the strongest individual setup is to use AI as **a fast tool inside a sandbox**.
+
+#### 2. Shift your work mix from execution to verification, adaptation, and judgment
+
+Do not concentrate your time on pure execution (running routines under someone else's instructions). Instead:
+
+- Deepen **domain expertise** (continuously follow tax, legal, industry, technical, and market changes)
+- Build experience in **spotting anomalies and errors in AI output** (use AI enough to develop the sense of "this isn't normal")
+- Spend time on **adapting to environmental change** (new regulations, new technology, new customer context)
+- Accumulate experience in **deciding under uncertainty** (take responsibility more often)
+
+This is not a quick-win career strategy, but it is **the kind of capacity reliably needed in any industry in the AI era**.
+
+That said, some people **don't want this** — always-on accountability, high cognitive load. That is a matter of preference, not something to be forced. For those people, there is a different path (below).
+
+#### 3. Keep at least one foot in skills rooted in land, body, or human relationships
+
+Domains AI does not replace:
+
+- **Physical work** — agriculture, forestry, soil regeneration, bio-material manufacturing, construction, repair, caregiving, frontline medical work, cooking, craftsmanship
+- **Embodied skills** — urushi tapping, wood sawing, paper making, indigo dyeing, herbal processing, music performance, hand-sewing, knitting
+- **Work rooted in human relationships** — education, in-person counseling, neighborhood care, raising children, local relationships
+
+These are not "old." They are **the physical foundation of a post-fossil society** (Chapter 2 and the [Phosphorus and Farming](/en/phosphorus-and-farming/) series). The stable base for an individual in the AI era is to keep at least one foot here.
+
+Home gardening, composting, community gardens, local agricultural volunteering — all can start small (see the closing section of [Phosphorus and Farming, Chapter 8: Operating Principles](/en/phosphorus-and-farming/operating-principles/)).
+
+> The individual principle is simple:
+> **don't depend on AI**, **use AI as a tool**, **keep at least one foot in skills rooted in land, body, and human relationships**.
+>
+> This is not so much "how to survive the AI era" as **how to keep your footing stable, however the structural change of the AI era plays out.**
 
 ### So we need migration to land-based work
 

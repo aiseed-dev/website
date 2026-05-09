@@ -253,7 +253,60 @@ Earlier in this section, we said "middle powers can now have a defense industry.
 
 > What really decides the "generational shift in defense" is not technology or economics.
 > It is **how quickly politics, military, and industry can move in sync**.
-> And the same structure repeats, in exactly the same form, in the IT industry, in desk work, and across the AI transformation of society overall.
+
+### Failure of the great powers — the structural problems facing the US and Russia
+
+Take the US and Russia as the canonical examples where the two-stage adaptation is not working. Their political systems are opposite, but they share a structural feature: **they are failing to adapt precisely because they are great powers**.
+
+#### The US — the political gravity of the legacy defense industry
+
+The US has AI defense startups (Anduril, Shield AI, Skydio), an investment network around them (Andreessen Horowitz's American Dynamism), and Pentagon initiatives toward new weapons systems (e.g., Replicator). **The individual ingredients are in place.**
+
+At the same time, however, the US hosts **the world's largest legacy defense industry — Lockheed Martin, Raytheon, Northrop Grumman, Boeing, General Dynamics — which acts as continuous political gravity**:
+
+- Defense factory **employment scattered across congressional districts**
+- A **revolving door** taking retired generals to prime contractors' boards and lobbying offices
+- Multi-decade fixed contracts (the F-35 alone has lifecycle costs estimated above $1.7 trillion)
+- Massive campaign donations and congressional lobbying
+- Defense budget reviews that internalize concerns for prime executives and shareholders
+
+Even when the analysis says "we should adopt the new weapons system," this gravity keeps slowing down implementation. The fact that 12,300 strikes in the 2026 Iran War still left half of Iran's capability intact can also be read as **the result of the US trying to challenge Iran head-on with the legacy model, while unable to make the right call**.
+
+The asymmetry between flying $100M fighters for five weeks and Iran's underground architecture of $50 AI modules × tens-of-thousands-of-dollars drones — the US wins on technology and industrial capacity, but **its political structure prevents it from using that technology effectively**. The classic problem of "**under democracy, entrenched interests act as political gravity**" appears in extreme form in defense.
+
+#### Russia — no bottom-up innovation under authoritarianism
+
+Russia is the other canonical failure case. In the Ukraine war, Russia:
+
+- Entered with several times the military strength, expecting to overwhelm Ukraine
+- **Lost most of its Black Sea Fleet to Magura USVs** (Chapter 10)
+- Lost massive quantities of tanks and armored vehicles to FPV drones
+- Became **dependent on imported Iranian Shahed drones**
+
+Russia's problem is that **authoritarian decision-making suppresses bottom-up battlefield innovation**:
+
+- Tactical insights discovered by soldiers do not flow up to leadership
+- An industry structure dominated by state-owned defense primes leaves no room for private startups
+- There is no culture of admitting failed tactics or designs as failures (fear of purges)
+- Direct **battlefield → manufacturer feedback loops** like Brave1 / Army+ / E-Points cannot exist in principle
+
+Russia operates large numbers of drones, but they are mainly **imported finished products from Iran**, not the output of bottom-up domestic innovation. This produces a structure where **mass production is possible but evolution is slow**.
+
+#### What the two failure patterns share
+
+The US and Russia have opposite political systems, but they share **the inability to "stop and adapt" precisely because they are great powers**:
+
+- **US**: Under democracy, entrenched interests act as political gravity
+- **Russia**: Under autocracy, failure cannot be acknowledged, and bottom-up innovation does not occur
+- **Both**: The self-image of being "a world great power" prevents looking the asymmetric structure in the face
+
+And in both cases, when faced head-on by **smaller adversaries** (Iran, Ukraine), neither can convert their quantitative or qualitative advantage into combat power.
+
+> Being a great power is not a sufficient condition to win the generational shift in defense.
+> If anything, **being a great power is what prevents adaptation** — and this is the most striking fact this chapter surfaces about the late 2020s.
+> Among the middle powers (Ukraine, Iran, the UK, Germany, Turkey, Japan), the ones who **run the two-stage adaptation between politics-and-military and industry quickly** become the protagonists of the new security era.
+>
+> And the same structure — great powers failing to adapt precisely because of their size, while adapted middle players rise — repeats, in exactly the same form, in the IT industry, in desk work, and across the AI transformation of society overall.
 
 ## A Generational Shift in IT — Legacy Cloud and SaaS Fade, AI-Native Companies Rise, OSS AI Spreads After
 

@@ -92,6 +92,54 @@ Where Ukraine **invented in a short time**, Iran **prepared over decades**. The 
 
 What Ukraine and Iran share is that, in different contexts, both demonstrate the same asymmetric structure: **a large power's expensive weapons platforms cannot defeat cheap, distributed alternatives**. This is not an isolated case. It is **evidence that the structure of the defense industry itself is being rewritten**.
 
+### Survivability of legacy weapons — what stays, what goes
+
+Here a finer distinction is needed. "All legacy weapons disappear" oversimplifies. In practice, **what survives is clearly delineated**.
+
+Two decisive variables:
+
+- **Mobility and concealability** (can it be dispersed, hardened underground, made mobile?)
+- **Dependence on fixed infrastructure** (does it require a dedicated airfield, port, or base?)
+
+#### Military bases get hit first
+
+In drone+AI-era warfare, **the first targets are military bases**. Airfields, ports, and large supply bases **do not move**. Satellites and OSINT have already located them, and cheap drones and cruise missiles can degrade them in stages. Once the base stops functioning, the weapons that depend on it stop functioning. That is the starting point for every assessment.
+
+#### Survivability by weapon category
+
+:::compare
+| Weapon category | Survivability | Why |
+| --- | --- | --- |
+| **Mobile ground-launched missiles** | High | Can be dispersed, placed underground, and moved. Iran demonstrated this — about 50% remained after 5 weeks and 12,300 strikes |
+| **Coastal-defense missiles** | High | Distributed deployment; sustains the ability to close a strait (Iranian case) |
+| **Fighter aircraft** | **Unclear** | The aircraft itself is useful in combat, but **dedicated airfields are fixed targets**. If they cannot take off and land, they do not function. Underground hangars and dispersal airfields mitigate, but cannot fully escape, this exposure |
+| **Tanks and armored vehicles** | Low | Large and expensive; cheap drone strikes break the economics. Demonstrated in Ukraine |
+| **Aircraft carriers** | Very low | Huge and concentrated. With USVs combined with long-range missiles, multibillion-dollar carriers can be sunk by tens-of-millions-of-dollars assets — a brutal asymmetry |
+| **Surface combatants (destroyers, frigates, etc.)** | Low to medium | Concentrated, vulnerable to anti-ship missiles and USVs (Black Sea Fleet) |
+| **Heavy transport / patrol aircraft** | Low | Depend on fixed bases, with long airborne dwell times that expose them |
+| **Drones / AI-autonomous weapons** | High | Dispersed, mass-produced cheaply, evolve on the battlefield |
+| **Electronic warfare systems** | Medium | Mobile / distributed systems survive; large fixed systems are targets |
+:::
+
+> The conclusion: **weapons that can be mobile, dispersed, hardened underground, and mass-produced survive; concentrated, fixed, scarce, expensive weapons are culled** — this line decides winners and losers within the legacy defense industry too.
+
+Within the legacy primes:
+
+- Mobile missile makers (parts of Raytheon, ground-launched systems)
+- Mobile EW system makers
+- Underground hardening / blast-resistant construction and defense engineering
+
+have room to survive. Conversely:
+
+- Large-ship / carrier shipbuilders
+- 5th-generation fighter prime contractors
+- Heavy transport / patrol aircraft manufacturers
+- Large fixed-system makers
+
+enter a structurally hard era.
+
+> The prediction is not "the legacy defense industry disappears entirely." It is more granular: **product lines that can be mobile and dispersed remain; product lines that are fixed and concentrated are the ones that go away**.
+
 ### The legacy defense industry — limits of the high-unit-price model
 
 Lockheed Martin, Raytheon, BAE, Northrop Grumman, MHI, Kawasaki Heavy, IHI — these legacy primes are organizations built around:

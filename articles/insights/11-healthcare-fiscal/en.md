@@ -105,216 +105,122 @@ When faced head-on by smaller adversaries (Iran, Ukraine), neither can convert q
 
 The same structure repeats in IT, desk work, and the AI transformation of society. But **AI is much more powerful, wider in scope, and more complex than defense.** The framework holds, but we need to walk through it without underestimating scale and complexity.
 
-## A Generational Shift in IT — Legacy Cloud and SaaS Fade, AI-Native Companies Rise, OSS AI Spreads After
+## IT — Pressure on Legacy IT, and the Rise of AI-Native Companies
 
-The next to be re-formed is the IT industry — and beyond it, **the AI transformation of society as a whole**. Like defense, this is **not decline but generational shift** — distinguished, however, by being a **three-stage** generational shift.
+The IT industry is the next to be re-formed. As with defense, this is
+**not decline but generational shift**. Look at it as two distinct things:
+**the reality already in motion — pressure on legacy IT** — and beyond
+that, **the structurally predictable rise of AI-native companies**.
 
-### Stage one — pressure starts to build on legacy IT
+### Reality — pressure starts to build on legacy IT
 
-As of 2024–2026, legacy IT incumbents still look strong on the surface. AWS / Azure / GCP cloud revenue, Oracle / Microsoft license revenue, the SIer business — none of it has entered an outright decline.
+As of 2024–2026, legacy IT incumbents still look strong on the surface.
+AWS / Azure / GCP cloud revenue, Oracle / Microsoft license revenue, the
+SIer business — none of it has entered an outright decline.
 
 But structural pressure is building from several directions:
 
-- **AI CapEx economics** — whether multi-hundred-billion-dollar data-center investments will earn their return is undecided. This series treats it as a structural forecast in Chapter 6.
-- **GPU market** — NVIDIA's monopoly is being eroded gradually by AMD, custom ASICs, and OSS inference (Chapter 7).
-- **OSS DB migration** — moves from Oracle to PostgreSQL and similar databases are growing in new projects.
-- **Pushback against "license tax"** — rising Office / Azure pricing is producing real interest in alternatives (Chapter 8).
-- **Pressure on SIer rates** — productivity gains from Cursor + Claude are starting to affect the unit-rate negotiations of the SIer industry.
+- **AI CapEx economics** — whether multi-hundred-billion-dollar
+  data-center investments will earn their return is undecided. This
+  series treats it as a structural forecast in Chapter 6.
+- **GPU market** — NVIDIA's monopoly is being eroded gradually by AMD,
+  custom ASICs, and OSS inference (Chapter 7).
+- **OSS DB migration** — moves from Oracle to PostgreSQL and similar
+  databases are growing in new projects.
+- **Pushback against "license tax"** — rising Office / Azure pricing is
+  producing real interest in alternatives (Chapter 8).
+- **Pressure on SIer rates** — productivity gains from Cursor + Claude
+  are starting to affect the unit-rate negotiations of the SIer industry.
 
-These are **partial signals so far**, and when they cross over into outright decline is undetermined. The structural forecasts in Chapters 6–8 do not commit to a date. Even so, the direction — long-term contraction of the legacy IT market — is what the structural analysis of this series points to.
+### Structural prediction — AI-native rises, but splits into two layers
 
-Where the pressure lands (structural forecast): NVIDIA's GPU windfall, Oracle / Microsoft's high-margin licenses, Salesforce, Accenture / NTT Data and other major SIers, large consulting firms.
+While pressure builds on legacy IT, a new generation — **designed with
+AI at the core from line one** — is rising. Lumping them together
+misreads the structure: they **split into two layers**.
 
-### Stage two — AI-native companies rise
+**Layer 1 — model providers (Anthropic, OpenAI, etc.)**
+The companies building the LLMs themselves. They deliver coding,
+research, and conversational capability directly (Claude Code, ChatGPT).
 
-In parallel with the shrinkage of legacy IT, a new generation of companies —
-**designed with AI at the core from line one** — is rising rapidly.
+**Layer 2 — cloud-based wrappers / hosting (Cursor, Vercel,
+Hugging Face, Perplexity, etc.)**
+Companies that lay an IDE, hosting, model serving, or search UI on top
+of an LLM. **These are likely transitional.** As Anthropic's Claude Code
+delivers coding directly and the model providers absorb hosting,
+serving, and search UI in-house, the wrapper layer's reason to exist
+gets eaten away.
 
 :::compare
-| Legacy IT companies | New AI-native companies |
-| --- | --- |
-| Microsoft (Office, Azure) | **Anthropic (Claude), OpenAI (ChatGPT)** |
-| Atlassian, ServiceNow, Salesforce | **Cursor** (AI-native IDE) |
-| AWS legacy hosting | **Vercel** (AI SDK, Edge AI, v0) |
-| Oracle, SAP | **Hugging Face, Replicate** (model hosting) |
-| Adobe Creative Cloud | **Midjourney, Runway, ElevenLabs** |
-| Accenture, IBM, NTT Data | **Sourcegraph, Linear, Notion** (re-designed AI-first) |
-| Bloomberg, Reuters | **Perplexity, Glean** (AI search and research) |
+| Legacy IT | Layer 1 (model providers) | Layer 2 (transitional wrappers) |
+| --- | --- | --- |
+| Microsoft / Google / Apple | **Anthropic (Claude)** | OpenAI's wrapper products |
+| Atlassian, Salesforce | (Claude Code, directly) | **Cursor** (AI IDE) |
+| AWS / GCP legacy hosting | (provider, in-house) | **Vercel** (AI SDK, v0) |
+| Oracle, SAP | (provider, in-house) | **Hugging Face, Replicate** |
+| Bloomberg, Reuters | (provider, in-house) | **Perplexity, Glean** |
 :::
-
-These were not built by bolting AI onto an existing product.
-They are **software written from line one assuming AI is part of the runtime**.
 
 :::highlight
 **The new labor-equipment ratio:**
-A single developer using Cursor + Claude can write code faster — and more correctly —
-than several hundred veteran SIer engineers.
-This is not just an individual productivity story.
-It is **the labor-equipment ratio of the entire software industry being rewritten**.
-One person + AI replaces a 20-person legacy development team.
+A single developer using Claude Code can write code faster — and more
+correctly — than several hundred veteran SIer engineers. One person +
+AI replaces a 20-person legacy team. **The labor-equipment ratio of the
+entire software industry is being rewritten.**
 :::
 
-### Stage three — OSS AI spreads
-
-But the rise of AI-native companies is likely a **transitional phase**.
-Long-term, dependence on proprietary large language models will be replaced by
-**OSS (open source) AI**.
-
-:::chain
-**The structural shift toward OSS AI:**
-Meta's Llama → already publishing models that match commercial AI in OSS form
-Alibaba's Qwen, DeepSeek, Mistral, Gemma → matching commercial-grade performance in OSS
-Quantization and distillation → 70B-class models running on laptops and phones
-Local inference cost → less than 1/10 of API pricing
-→ The price advantage of proprietary AI collapses
-→ Companies and individuals host their own models
-→ OSS AI standardizes
-:::
-
-This rhymes with the relationship between Linux and Windows.
-
-:::highlight
-**The Linux/Windows pattern, recurring:**
-1990s: Commercial OSes (Windows, Solaris, AIX) dominate
-2000s: Linux standardizes on the server side
-2020s: Cloud, containers, and Android phones are all Linux underneath
-2025: Commercial LLMs dominate
-2030s: OSS AI standardizes on the edge, embedded systems, and servers
-2040s: Commercial LLMs survive only in specific high-end use cases
-:::
-
-On a 20-year horizon, Anthropic and OpenAI are likely to be remembered as
-**the companies that drove innovation through the proprietary-to-OSS transition**.
-Cursor and Vercel survive as tools running on top of that ecosystem.
-
-The result:
-
-- **AI itself becomes infrastructure** — like electricity, available cheaply to anyone
-- **What you do with AI** becomes the differentiator — domain knowledge, data, relationships
-- **Individuals and small organizations own their AI** — the large-company monopoly dissolves
-
-The "one person + AI" business model discussed in Chapter 9 ("AI and the Individual")
-finds its structural foundation here on a 20-year horizon.
-
-> Legacy IT shrinks, AI-native companies rise, and OSS AI spreads after.
-> **This is not a one-step transition — it is a three-stage generational shift.**
-> Where you enter changes everything about what you can capture.
+What survives long term is **model providers** and **individuals / small
+organizations using the model directly**. The cloud-wrapper layer
+between them gets eaten away. The structural foundation of the
+"one person + AI" business model from Chapter 9 is here.
 
 ## AI in Desk Work — Reasoning Structurally From the Current Reality
 
-The generational shifts in defense and IT play out at the level of companies and nations. But a broader impact occurs inside every company — **the AI transformation of desk work overall**. Diagnose this incorrectly and the predictions for society as a whole will also be wrong.
+The generational shifts in defense and IT play out at the level of
+companies and nations. The broader impact happens inside every company —
+**the AI transformation of desk work overall**.
 
-### Current state — the AI agent race and the rapid expansion of large data centers
+### Current state — the AI agent race and large data-center investment
 
-In 2024–2026, two main trends are running in parallel in the AI industry.
+In 2024–2026 the AI industry is running two trends in parallel.
 
-#### The AI agent product race
+- **The AI agent product race** — vendors are releasing, one after
+  another, products that minimize human involvement and have AI execute
+  tasks (Copilot Workspace, Devin, ChatGPT Operator, Claude Computer Use,
+  AutoGen / CrewAI, etc.)
+- **Large-scale data-center investment** — OpenAI / Microsoft Stargate,
+  Anthropic / AWS Project Rainier, xAI Colossus, Google / Meta AI
+  cluster expansion, UAE Stargate, Saudi HUMAIN. **All sized assuming
+  autonomous agents are operated at scale**
 
-Vendors are releasing, one after another, products that minimize human involvement and have AI execute tasks directly:
+### Reasoning structurally — autonomous agents cannot do the work
 
-- GitHub Copilot Workspace (Microsoft / GitHub)
-- Devin (Cognition Labs)
-- ChatGPT Operator (OpenAI)
-- Claude Computer Use (Anthropic)
-- Various multi-agent systems (AutoGen, CrewAI, etc.)
+Autonomous AI agents grew out of the wish to "remove the human work" —
+and they carry structural problems.
 
-Executives announce "we are reducing headcount with AI," vendors pitch "zero humans needed," and investors reward companies pursuing this direction with high valuations.
+Two recognitions the industry encountered in implementation:
 
-#### The rapid expansion of AI infrastructure investment
+1. **AI doing only pure execution still leaves instructions, verification,
+   environmental adaptation, and final judgment with humans** —
+   hallucinations, environmental change beyond training, and silent
+   failure on edge cases all propagate exponentially under AI's mass
+   processing
+2. **Supply on the human side is limited** — domain expertise, critical
+   reading, and judgment-experience accumulate over years to a decade,
+   and not everyone can acquire them (cannot); plus a substantial number
+   do not want to carry always-on accountability (does not want to)
 
-In parallel, capital expenditure on data centers has accelerated:
+The industry's answer — "let agents do verification and judgment
+autonomously" — is recognizable as wish, but it fails structurally:
 
-- OpenAI / Microsoft's **Stargate** (a multi-hundred-billion-dollar plan)
-- Anthropic / AWS's **Project Rainier**
-- xAI's **Colossus** (Memphis, Colossus 2)
-- Google and Meta significantly expanding their internal AI clusters
-- Large-scale AI infrastructure investments in the Middle East (UAE Stargate, Saudi HUMAIN) and Southeast Asia
-
-These investments are sized assuming autonomous AI agents are operated at scale. **Inference demand from agents and data center capacity are tightly coupled in the structure.**
-
-### A calm reading — what does this current state imply?
-
-Let us read these two trends through the structural framework of this series.
-
-The conclusion up front: **autonomous AI agents are a product of the human wish "to remove the human work" — and at present they have too many problems to be usable in actual business.** We walk down to that conclusion step by step.
-
-What is driving the AI industry toward autonomous agents is **two difficulties** recognized in the implementation of AI adoption. We walk through them in turn.
-
-### Two recognitions behind the industry's bet on autonomous agents
-
-#### Recognition 1 — AI doing only pure execution still requires humans
-
-For document creation, data entry, contract review, coding, and so on, three things stay with humans:
-
-- **Instructions and requirements** (what to produce and why)
-- **Verification, correction, and environmental adaptation** (checking and correcting AI output, reshaping it for environmental change)
-- **Final judgment** (whether to accept the output)
-
-What AI can replace is limited to **pure execution** between those phases.
-
-In particular, **verification, correction, and environmental adaptation** cannot be handed over to AI. Three reasons:
-
-- Precisely because AI processes at scale, small errors (hallucinations, misread context, outdated norms) get **propagated exponentially** → the precision required at verification rises **higher than before AI**
-- AI training data is **knowledge as of a particular point in time** → adapting to new tax codes, new regulations, new technology, and new market conditions does not complete inside AI
-- For the remaining 10–20% of **edge cases, AI fails silently** → detection requires the human sense of "this isn't normal"
-
-In short, AI adoption does not reduce headcount as much as expected. **A line of human work — instructing, verifying, adapting, judging — remains.** The industry has experienced this in implementation.
-
-#### Recognition 2 — the people who can move to "verification and judgment" are limited
-
-If a line of human work remains, just secure people to staff it — that is what the industry tried next. And it ran into a wall again.
-
-To absorb execution, a person needs:
-
-- **Domain expertise** (tax, legal, industry, technical stack, market)
-- **Critical reading ability** to spot anomalies in AI output
-- **Judgment** to detect environmental changes and update existing outputs
-- **Experience** to notice when AI is "failing silently" on edge cases
-- **Resolve and accountability** to decide under uncertainty
-
-These accumulate over years to more than a decade. **Not everyone can acquire them** (cannot).
-
-In addition, a substantial number of people who have the ability still do not want this work — always-on accountability, decision-making under uncertainty, bearing the final cost of AI's errors, multifaceted cognitive load. People who avoid these and prefer the simplicity of pure execution will not take the role even when they could (does not want to). In contemporary Japan especially, the trend among younger workers — "**prioritize work-life balance, avoid carrying responsibility**" — is strengthening.
-
-Through the double constraint of "cannot × does not want to," the **effective supply** of people on the instruction-and-judgment side is limited. Training takes years, and forcing the role on people leads to attrition.
-
-#### The industry's wish — "remove the humans"
-
-From these two recognitions, the industry has converged on a particular answer:
-
-> **"Then let AI agents do verification, judgment, and adaptation autonomously. If humans are the bottleneck, remove the humans."**
-
-This is the thinking behind the wave of autonomous-agent and multi-agent products in 2024–2026.
-
-But this is closer to **a wish — "we want to remove the human work" — than to a logically derived solution**. As we will see next, this wish is not delivered in a form usable in actual business.
-
-### Autonomous agents fail structurally — six reasons
-
-Autonomous agents do not solve the two problems the industry recognized.
-Instead, they **simultaneously worsen verification, accountability, cost,
-and security**.
-
-1. **Hallucinations reinforce each other** — when AI verifies AI, the same
-   training-data biases appear on both sides. Errors are not corrected;
-   they are mutually justified
-2. **Blind to environmental change** — the verifier and the executor come
-   from the same past data. New tax codes, new regulations, new technology
-   are unseen by both
-3. **The side weak on edge cases is also doing verification** — the same
-   AI fails silently, and the same AI misses the failure
-4. **Accountability evaporates** — within an autonomous loop, the
-   responsibility of the instructor, the verifier, the executor, and the
-   developer dissolves
-5. **Cost compounds exponentially** — agents calling agents push API call
-   counts to 100×–1,000×. Same structure as the AGI-unprofitability of
-   Chapter 6
-6. **They become attack targets** — prompt injection lets an attacker
-   hijack the agent and inflict damage with authorized credentials
-   ([Chapter 5 Mythos](/en/insights/mythos/)). Anthropic itself warns
-   "do not run in autonomous mode" (`/en/ai-native-ways/ai-delegation/`)
-
-Reasons 1–3 show autonomous agents **do not solve the problems the
-industry recognized**. Reasons 4–6 show they **introduce new problems**.
+- Verifier and executor are the same AI from the same training data —
+  hallucinations, blindness to environmental change, and silent
+  edge-case failure appear on both sides
+- And it adds new problems — accountability dissolves, API call counts
+  inflate 100×–1,000× (cost collapse, same structure as AGI
+  unprofitability in Chapter 6), and prompt injection turns authorized
+  credentials into a weapon (Chapter 5 Mythos)
+- Anthropic itself warns "do not run in autonomous mode"
+  (`/en/ai-native-ways/ai-delegation/`)
 
 > Autonomous agents are not "a technology that solves the labor shortage."
 > They are **a different set of problems made to look like a solution to
@@ -325,56 +231,39 @@ industry recognized**. Reasons 4–6 show they **introduce new problems**.
 The structural failure of autonomous agents does not bankrupt the whole
 industry at once. **Natural selection** proceeds.
 
-- **Companies that pushed in** — those that bet fully on autonomous agents
-  cannot sustain themselves under the cumulative weight of cost collapse,
-  surveillance hell, cyber-attack vulnerability, and dissolved
-  accountability. AI-industry companies are no exception
-- **Companies that stop and adapt** — many existing companies choose this.
-  Narrow the scope of autonomous agents, return to human-in-the-loop,
-  rewrite internal processes toward AI-native in stages. Mid-sized,
-  regional, and family-run companies, where the top can decide directly
-  and the organization is nimble, often adapt faster than large
-  corporations
+- **Companies that pushed in** — cannot sustain themselves under the
+  cumulative weight of cost collapse, surveillance hell, cyber-attack
+  vulnerability, and dissolved accountability (AI-industry companies are
+  no exception)
+- **Companies that stop and adapt** — many existing companies choose
+  this. Mid-sized, regional, and family-run companies, where the top
+  decides directly, often adapt faster than large corporations
 - **Companies that keep pushing** — autocratic management, weak
-  governance, cannot stop. The AI industry has many companies with
-  extremely strong founder influence; this is a structural risk
-- **Companies that survive and grow — the Anthropic pattern** —
+  governance, cannot stop (a structural risk)
+- **The Anthropic pattern — model providers that survive and grow** —
   human-in-the-loop by design (Constitutional AI, Responsible Scaling
-  Policy, Claude Code) survive the autonomous-agent bubble's collapse and
-  grow
-- **Companies newly born — AI-native but not autonomous** — Cursor,
-  Vercel, Hugging Face, Perplexity. The **one-person + AI** model from
-  Chapter 9 belongs to the same lineage
+  Policy, Claude Code). Coding, research, and conversation delivered
+  directly
+- **Transitional wrapper-type AI-native companies** — Cursor, Vercel,
+  Hugging Face, Perplexity. The wrapper layer on top of LLMs gets
+  eaten away as model providers absorb its function in-house
+- **The long-surviving one-person + AI** — individuals and small
+  organizations connecting directly to model providers, no wrapper
+  required (Chapter 9)
+
+This is not limited to the AI industry. **Existing non-AI industries
+trying to adopt AI in accounting, legal, sales, and customer support**
+follow the same structure. The generational shifts in defense and IT in
+the first half of this chapter are the leading examples.
 
 > Not "everything goes AI" and not "everything fails."
 > Change progresses as **the process of redrawing the line between
 > autonomy and humans**.
+> Same structure as Christensen's **Innovator's Dilemma** —
+> **not every existing company collapses; what is culled is companies
+> that could not adapt to change.**
 
-### Existing non-AI industries follow the same pattern — the Ukraine pattern, generalized
-
-This natural selection applies not just to the AI industry but to
-**existing non-AI industries trying to adopt AI in accounting, legal,
-sales, and customer support**. The generational shifts in defense and IT
-covered earlier in this chapter are the leading examples.
-
-> **Organizations that just bolt AI on as a feature** (the F-35 / Copilot
-> bolt-on pattern) end up orders of magnitude less efficient than
-> AI-native organizations and are eventually culled.
->
-> **Organizations that re-design AI-native** gain competitiveness. This
-> is **not limited to startups** — existing companies that have the will
-> at the top can adapt (Ukraine, an existing national organization that
-> stood up Brave1, is the extreme case).
-
-The actual carriers are: one-person + AI sole proprietors, AI-native
-startups, regionally-founded AI-native small companies, nation-scale
-cases like Ukraine's Brave1 — together with the adapting units inside
-existing companies, they replace the old structure through competition.
-Same structure as Clayton Christensen's **Innovator's Dilemma** —
-**not every existing company necessarily collapses**. What is culled is
-companies that could not adapt.
-
-### What happens along the way — contract-based desk work splits into three layers
+### Contract-based desk work splits into three layers
 
 As AI-native and existing organizations compete, desk work overall
 splits into roughly three layers.

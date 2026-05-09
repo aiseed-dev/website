@@ -4,7 +4,7 @@ number: "11"
 lang: en
 title: Society's Regeneration
 subtitle: Old industries fade as new ones rise — military, IT, healthcare, pensions, and population distribution are all being re-formed at once
-description: Fossil-resource depletion ends the legacy military industry — and a new drone+AI defense industry rises in its place. Legacy cloud and SaaS shrink while AI-native companies (Anthropic, OpenAI, Cursor, Vercel) take over, with OSS AI spreading after that. Contract-based desk work undergoes structural change — pure routine execution is automated by AI, but instructions, requirements, verification/correction/adaptation of AI output, and final judgment all stay with humans, and the precision required actually rises with AI adoption. Population redistributes to land-based work; dialysis, pensions, and other legacy systems end; a life closer to nature and regenerative agriculture become the new foundation. This is not the patching of a design failure — it is the regeneration of social structure itself.
+description: Wartime necessity drives the rise of a new drone+AI defense industry. In IT, pressure builds on incumbents; AI-native splits into model providers (Anthropic, OpenAI) and transitional cloud wrappers (Cursor, Vercel). Autonomous AI agents fail structurally and natural selection proceeds. Work shifts to land-based; dialysis, pensions, and other legacy systems no longer fit the new society. This is not the patching of a design failure — it is the regeneration of social structure itself.
 date: 2025.04.04
 label: Structural Analysis 11
 prev_slug: drone-defense
@@ -103,7 +103,7 @@ When faced head-on by smaller adversaries (Iran, Ukraine), neither can convert q
 > Being a great power is not a sufficient condition to win the generational shift.
 > If anything, **being a great power prevents adaptation** — the most striking fact this chapter surfaces about the late 2020s. Middle powers that can run the two-stage adaptation quickly become the protagonists of the new security era.
 
-The same structure repeats in IT, desk work, and the AI transformation of society. But **AI is much more powerful, wider in scope, and more complex than defense.** The framework holds, but we need to walk through it without underestimating scale and complexity.
+The same structure repeats in IT and desk work. But **AI is much more powerful, wider in scope, and more complex than defense.**
 
 ## IT — Pressure on Legacy IT, and the Rise of AI-Native Companies
 
@@ -263,27 +263,6 @@ the first half of this chapter are the leading examples.
 > **not every existing company collapses; what is culled is companies
 > that could not adapt to change.**
 
-### Contract-based desk work splits into three layers
-
-As AI-native and existing organizations compete, desk work overall
-splits into roughly three layers.
-
-:::compare
-| Layer | Role | What happens |
-| --- | --- | --- |
-| **Skilled top layer** | Instructions, requirements, final judgment | Survives in both AI-native and legacy organizations; pay rises |
-| **Mid-level verifiers / adapters** | Verifying, correcting, adapting AI output | New middle layer, but limited in scale |
-| **Pure-execution layer only** | Contract / dispatch / BPO | **Total work shrinks dramatically; needs somewhere to go** |
-:::
-
-Do not simplify this as "millions become unnecessary at once." Of Japan's
-~13 million office workers, the share corresponding to pure execution
-only is roughly half of working hours. **The composition of one person's
-work changes first** (verification, correction, and adaptation grow as a
-share). Long term, a substantial number cannot move to the new role for
-reasons of skill, age, geography, or preference, and **labor market
-polarization** advances.
-
 ### How to respond as an individual
 
 Don't structure your work around autonomous AI agents. **Use AI as a
@@ -348,29 +327,54 @@ and pension systems are fundamentally mismatched. They were designed for
 an era of **fossil resources, urban concentration, and salaried desk
 work**. That era is ending — only the systems remain.
 
-### Dialysis — life support held up by fossil resources
+### Shifting toward preventive medicine — Cuba's achievement and its limits
 
-Japan has 337,414 dialysis patients at end of 2024 (about one in every
-367 citizens), at roughly ¥4.8M per patient per year, **¥1.6 trillion
-nationwide**.
+Re-organize medicine from "treatment-centered" to "prevention-centered"
+and the resources required drop sharply. Cuba — at GDP per capita
+around $10,000 (roughly a quarter of Japan's) — has sustained
+**life expectancy 78.1 years** (close to the US's 79.25),
+**under-5 mortality 0.8%**, and **stunting (under 5) 7.1%** (well
+below the LAC average of 11.3%).
 
-This medicine is fossil-dependent. The dialyzer (polysulfone membrane +
-polycarbonate), blood circuits (PVC), dialysis fluid bags, the 24/7 RO
-and heating systems — all sit on top of petrochemicals and large
-electrical loads. The vast infrastructure of 4,512 facilities and 148,339
-consoles stops functioning if fossil resources stop.
+The mechanism: the **Family Doctor Program** (founded 1983, 40 years
+old in 2024), where a doctor-and-nurse pair continuously cares for
+~600–700 residents, sitting on a three-layer structure —
+**11,548** family-doctor offices → **451** polyclinics → hospitals —
+that **resolves most problems at the lowest layer**. Doctor density
+is **9 per 1,000** (more than twice the LAC average). 100% of births
+attended by skilled medical personnel. In 2026, former President
+Trump publicly said the US "should learn from Cuba's system" for its
+primary-care provider shortage.
 
-The 2026 Iran-War oil shock pushes per-patient cost from **¥4.8M to over
-¥6M**, total medical cost from **¥1.6T toward ¥2T**. Even with patient
-numbers declining (33.7 → 32.5万人), the demographic benefit is consumed
-by inflation. The 2026 medical fee revision allocated just **+0.09%** for
-energy cost compensation — desperately disconnected from reality. Smaller
-dialysis clinics become operationally unviable; the risk of **"dialysis
-refugees"** materializes.
+But Cuba's system is now collapsing. Under the US fuel blockade and
+financial sanctions, blackouts have become routine, neonatal
+incubators and ventilators stop, and **70% of the 651 essential
+medicines have disappeared from pharmacies**. Infant mortality rose
+from 4.0 in 2018 to **9.9 in 2025 — a 148% increase** (CEPR estimates
+~1,800 newborn lives could have been saved 2019–2025 had the 2018
+rate held). In a single year (2021–2022), **46,000** healthcare
+workers, including 12,000+ doctors, left the country.
+
+The lesson is two-sided:
+
+> **A prevention-centered design delivers large outcomes from limited
+> resources.** But unless the **electricity, clean water, basic
+> medicines, and the livelihoods of medical workers** that make it
+> run are secured, no design — however excellent — can function.
+
+For Japan to move in this direction, the fee schedule must be rebuilt
+(fee-for-treatment → bundled prevention), a family-doctor system
+established, medical education redirected. At the same time, the
+foundation that keeps electricity, medicines, and medical supplies
+flowing domestically — including a rethink of free trade (see "the
+great population migration" below) — must be maintained. Combined
+with the shift to land-based work, physical activity and home-grown
+food reduce lifestyle disease at the source and structurally shrink
+demand for high-intensity treatment.
 
 ### Social insurance at 30% — the working generation's limit
 
-Dialysis is the tip of the iceberg. Across all social security: health
+Across all social security: health
 insurance ~10% + pension ~18.3% + long-term care ~1.8% + employment
 insurance ~0.9% = **~31% total** disappears from working-age wages. The
 ratio rises every year; with continued demographic decline it heads

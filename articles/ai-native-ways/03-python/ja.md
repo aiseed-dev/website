@@ -158,6 +158,89 @@ JupyterLab で十分でない場面のために、選択肢も挙げておく。
 
 迷ったら **JupyterLab で始める**。Excel と同じ感覚で入れる。
 
+## Polars で集計・クロス集計 ── ピボットテーブルがコードになる
+
+JupyterLab に Polars を組み合わせると、**Excel でピボットテーブル・
+VLOOKUP・IF・フィルタでやっていた操作が、すべてコードで書ける**。
+Excel ユーザーの日常操作との対応:
+
+:::compare
+| Excel で | Polars で |
+| --- | --- |
+| ピボットテーブル(行・列・値) | `df.pivot(...)` または `df.group_by(...).agg(...)` |
+| VLOOKUP / XLOOKUP | `df.join(other, on="...")` |
+| IF / IFS(計算列) | `df.with_columns(...)` + `pl.when().then().otherwise()` |
+| フィルタ | `df.filter(...)` |
+| ソート | `df.sort(...)` |
+| 重複削除 | `df.unique(...)` |
+| 累積合計・前月比 | ウィンドウ関数(`cum_sum`、`shift`、`pct_change`) |
+:::
+
+### 例 1:月別商品別のクロス集計
+
+Excel でやるなら、ピボットテーブルを開いて、行に「商品」、列に
+「月」、値に「売上」をドラッグ。マウス操作で数分、**翌月もう一度
+同じマウスを動かす**。
+
+Polars なら:
+
+```python
+import polars as pl
+
+df = pl.read_excel("orders.xlsx")
+df.pivot(values="price", index="item", on="month", aggregate_function="sum")
+```
+
+セルで Shift+Enter、下にクロス集計表が表示される。**翌月は再実行
+するだけ**。100 万行でも一瞬。
+
+### 例 2:VLOOKUP の代替
+
+商品マスタ(`products.xlsx`)から商品名を引いて、注文表
+(`orders.xlsx`)に付け加える ── Excel なら `VLOOKUP` で列ごとに
+書く、行が多いと固まる。
+
+```python
+orders = pl.read_excel("orders.xlsx")
+products = pl.read_excel("products.xlsx")
+
+orders.join(products, on="item_id", how="left")
+```
+
+3 行。**100 万行でも一瞬**。複数列で結合するときも、`on=["item_id",
+"date"]` と並べるだけ。
+
+### 例 3:条件分岐で計算列を追加
+
+「売上が 10 万円超なら大口、5 万円超なら中口、それ以下なら小口」
+── Excel の IF をネストするやつ。
+
+```python
+df.with_columns(
+    category=pl.when(pl.col("price") > 100000).then(pl.lit("大口"))
+              .when(pl.col("price") > 50000).then(pl.lit("中口"))
+              .otherwise(pl.lit("小口"))
+)
+```
+
+**ネストした IF の地獄から解放される**。条件を増やしても、上から
+順に `when().then()` を足すだけ。
+
+### AI に頼めば文法を覚えなくていい
+
+「Polars の文法を覚えるのは大変では?」── 違う。**Claude に日本語
+で頼む**:
+
+> orders.xlsx を読んで、商品ごとの月別売上を集計、上位 10 商品
+> だけを取り出して、前月比のパーセントも付けて
+
+これだけで Polars のコードが返る。JupyterLab のセルに貼って
+Shift+Enter、結果が表で出る。**文法を覚える必要は無い**。
+
+> ピボットテーブルでやっていたことが、コードに変わる。
+> マウス操作は消えるが、結果は同じか、それ以上。
+> 翌月は再実行するだけ。
+
 ## グラフを描く ── Excel より強力、AI が複雑さを引き受ける
 
 JupyterLab + Polars にグラフ描画を加えると、データ可視化の表現力は

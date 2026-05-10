@@ -33,6 +33,31 @@ next_title: 組み込みを作る ── Pythonで考え、Claudeに翻訳させ
 
 **手戻りは少なく、書く量も少なく済む**。
 
+```mermaid
+flowchart TB
+  Start(["新しいアプリを作る"])
+  L1["第一層: CLI ツール<br/>(Python)<br/>処理本体・検証"]
+  Q1{"画面が要るか?"}
+  Done1(["これで配布<br/>(uv tool install)"])
+  L2["第二層: Flet アプリ<br/>(Python のまま GUI)<br/>Mac / Win / Linux / Web / iOS / Android"]
+  Q2{"Flet で足りるか?"}
+  Done2(["これで配布"])
+  L3["第三層: Flutter アプリ<br/>(Dart)<br/>App Store / Play Store / 高度な OS 連携"]
+
+  Start --> L1 --> Q1
+  Q1 -->|不要| Done1
+  Q1 -->|必要| L2 --> Q2
+  Q2 -->|十分| Done2
+  Q2 -->|不足| L3
+
+  classDef tier1 fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef tier2 fill:#fef9e7,stroke:#c8a559,color:#5a4a1a
+  classDef tier3 fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class L1 tier1
+  class L2 tier2
+  class L3 tier3
+```
+
 ## 第一層: CLI ツールから始める
 
 アプリの本質は、入力を取って、処理して、出力する、ことだ。

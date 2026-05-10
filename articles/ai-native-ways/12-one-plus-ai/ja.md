@@ -146,6 +146,33 @@ C さんは「プロダクトを設計する」「重要な判断をする」「
 「1 人 + AI が組織を置き換える」と聞くと、効率化の文脈に聞こえるかも
 しれない。だが本書の意味はそうではない。
 
+```mermaid
+flowchart LR
+  subgraph Central["集中化の道(業界が押す方向)"]
+    Big[("大企業<br/>1,000 人")]
+    Vendor1[("単一 AI ベンダー")]
+    Vendor2[("単一 SaaS")]
+    Big --> Vendor1
+    Big --> Vendor2
+  end
+
+  subgraph Distributed["分散化の道(本書の方向)"]
+    U1[("1 人 + AI")]
+    U2[("1 人 + AI")]
+    U3[("1 人 + AI")]
+    Udots["..."]
+    U1000[("1 人 + AI<br/>(計 1,000 単位)")]
+  end
+
+  Central -.->|一つ倒れると<br/>全員揺れる| Risk1["脆弱"]
+  Distributed -.->|一つ倒れても<br/>他は無事| Strong["多様性 = 強さ"]
+
+  classDef center fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  classDef dist fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  class Big,Vendor1,Vendor2,Risk1 center
+  class U1,U2,U3,Udots,U1000,Strong dist
+```
+
 **集中化された 1,000 人組織が 1 つあるより、自立した「1 人 + AI」が
 1,000 単位ある方が、社会は強い**。同じ生産性、まったく違う構造。
 

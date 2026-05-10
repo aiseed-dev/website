@@ -27,14 +27,25 @@ next_title: 処理を書く ── AIにPythonで書いてもらう
 
 業務で「デザイン」と呼ばれる作業を整理する。
 
-| 種類 | 道具 |
-|---|---|
-| **構造図**(フロー、ER、シーケンス、構成図) | Mermaid(テキストから生成) |
-| **UI / 画面**(Web、アプリの下書き) | Claude デザイン(HTML+CSS を生成) |
-| **スライド**(プレゼン) | Markdown → Marp / reveal.js |
-| **挿入図・図解**(資料に貼る説明) | Mermaid + Claude デザイン |
-| **ポスター・チラシ・配布物** | Claude デザイン / SVG |
-| **ロゴ・本格ブランディング** | 専門デザイナー(Claude が下書きを補助) |
+```mermaid
+flowchart LR
+  Intent["伝えたい意図<br/>(言葉)"]
+  Intent --> Mermaid["構造図<br/><b>Mermaid</b>"]
+  Intent --> ClaudeUI["UI / 画面<br/><b>Claude デザイン</b><br/>(HTML+CSS)"]
+  Intent --> Marp["スライド<br/><b>Markdown + Marp</b>"]
+  Intent --> SVG["配布物<br/><b>Claude デザイン / SVG</b>"]
+  Intent --> Designer["ブランディング・印刷物<br/><b>専門デザイナー</b>"]
+
+  Mermaid --> Out[("PDF / HTML / PNG<br/>(自動生成)")]
+  ClaudeUI --> Out
+  Marp --> Out
+  SVG --> Out
+
+  classDef tool fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef pro fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class Mermaid,ClaudeUI,Marp,SVG tool
+  class Designer pro
+```
 
 すべてに共通するのは、**最終的な PDF や PNG ではなく、その手前の「テキストとコード」を保存する**ことだ。
 

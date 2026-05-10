@@ -96,6 +96,36 @@ Web サイトの本質は「中身」と「外枠」に分けられる。
 
 AI ネイティブな分け方は、**中身と外枠を完全に分離する**。中身は Markdown と Mermaid だけ。HTML タグは一切書かない。外枠は HTML と CSS で書くが、各記事の中身には触らない。Python が機械的に繋ぐ。
 
+```mermaid
+flowchart LR
+  subgraph Content["中身(別用途にも流用)"]
+    MD["記事 *.md<br/>(Markdown)"]
+    MMD["図 *.mmd<br/>(Mermaid)"]
+  end
+  subgraph Frame["外枠"]
+    HTML["template.html"]
+    CSS["style.css"]
+    JS["main.js (最小)"]
+  end
+  Py(("Python<br/>ビルド"))
+
+  MD --> Py
+  MMD --> Py
+  HTML --> Py
+  CSS --> Py
+  JS --> Py
+  Py --> Site["静的 HTML サイト"]
+
+  MD -.->|そのまま流用| PDF["PDF / 印刷"]
+  MD -.->|そのまま流用| AI[("AI 分析")]
+  MD -.->|そのまま流用| Book["電子書籍"]
+
+  classDef content fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef frame fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class MD,MMD content
+  class HTML,CSS,JS frame
+```
+
 ## なぜ中身を Markdown + Mermaid で持つか
 
 中身を Markdown と Mermaid で書く最大の理由は、**データが Web 以外の用途でも使えるから**だ。

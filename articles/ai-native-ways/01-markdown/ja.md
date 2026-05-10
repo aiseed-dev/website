@@ -64,6 +64,23 @@ Markdown を Claude に渡せば、変換は要らない。直接読める。直
 
 これは比喩ではない。技術的事実だ。AI とテキストでやり取りする限り、Markdown は AI と人間の共通語である。
 
+```mermaid
+flowchart LR
+  Word[".docx<br/>(書式 + 構造 + 中身)"]
+  XML["XML<br/>(.docx を解凍)"]
+  Text["テキストだけ<br/>(書式を剥ぐ)"]
+  AI(("AI<br/>Claude / GPT"))
+  MD["Markdown<br/>(構造 + 中身)"]
+
+  Word --> XML --> Text --> AI
+  MD ==>|そのまま読める| AI
+
+  classDef cage fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  classDef free fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  class Word,XML,Text cage
+  class MD free
+```
+
 ## 何を書く時に Markdown を使うか
 
 全部だ。

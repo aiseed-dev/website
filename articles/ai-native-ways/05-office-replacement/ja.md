@@ -33,6 +33,25 @@ next_title: 業務システムと付き合う ── 並行稼働で書き換え
 
 中身まで Office にしている限り、AI は同僚になれない。書式の檻に閉じ込められたデータは、Claude が触りにくい。
 
+```mermaid
+flowchart LR
+  In["入口<br/>Word / Excel / PDF<br/>(他の人から)"]
+  Mid["中身<br/>Markdown / CSV / Python<br/>(自分の作業領域)"]
+  Out["出口<br/>Word / Excel / PDF<br/>(他の人へ)"]
+  Claude(("Claude"))
+
+  In -->|Claude が変換| Mid
+  Mid <-->|相談・処理| Claude
+  Mid -->|Claude が変換| Out
+
+  classDef office fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  classDef native fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  class In,Out office
+  class Mid native
+```
+
+組織のルールは変えない。**自分の中身だけ変える**。
+
 ## 段階的な置き換え
 
 一気に変える必要はない。四段階で進める。

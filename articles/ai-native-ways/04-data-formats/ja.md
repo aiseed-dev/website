@@ -1,16 +1,16 @@
 ---
 slug: data-formats
-number: "02"
+number: "04"
 title: データを持つ ── JSON/CSV/YAMLで考える
 subtitle: Excel は表ではなく、書式の集まりだ
 description: Excel の表は、人間に見やすく整えられた書式の集合体だ。書式の下に、本来の構造は埋もれている。JSON / CSV / YAML はその構造を剥き出しで持つ。大量データには Parquet と DuckDB、加工は Polars。AI が直接読めるのはこちらだ。
 date: 2026.05.02
-label: AI Native 02
+label: AI Native 04
 title_html: データは表ではなく、<span class="accent">構造</span>で持つ。<br><span class="accent">JSON / CSV / YAML</span> がそれを可能にする。
-prev_slug: markdown
-prev_title: 文書を書く ── Markdownという最小の選択
-next_slug: design
-next_title: デザインをする ── Mermaid と Claude デザインで作る
+prev_slug: python
+prev_title: 処理を書く ── AIにPythonで書いてもらう
+next_slug: office-replacement
+next_title: 事務処理を変える ── Officeから離れる現実的な道筋
 ---
 
 # データを持つ ── JSON/CSV/YAMLで考える
@@ -297,7 +297,9 @@ AI が間違わない**。
 
 Excel から JSON・CSV・YAML へ。一歩で、データが「画面上の見栄え」から「処理できる構造」に変わる。AI が同僚になる。10年後も読める。
 
-次の章では、図を描く話に進む。PowerPoint から、Mermaid へ。
+ここまでの 4 章で、共通の作法 ── Markdown・Mermaid・Python・JSON/CSV/YAML(+Parquet/DuckDB) ── が揃った。これらは職種を問わない、AI ネイティブな仕事の最小スタックだ。
+
+次の章から、仕事の種類別の話に進む。まずは事務職の方へ。
 
 ---
 

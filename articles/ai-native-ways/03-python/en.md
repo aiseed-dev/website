@@ -1,17 +1,17 @@
 ---
 slug: python
-number: "04"
+number: "03"
 lang: en
 title: "Writing Logic — Have AI Write Python For You"
 subtitle: "The skill is not writing code; the skill is using code"
 description: Drop the prejudice that Python belongs to engineers. Converting Excel files, extracting data from emails, organizing PDFs, standardizing file names — these are everyday tasks for office workers and sole proprietors, and they take a few lines of Python. You don't need to write it. Ask Claude in your own language, and the code comes back.
 date: 2026.05.02
-label: AI Native 04
+label: AI Native 03
 title_html: For code, the skill is not <span class="accent">writing</span>.<br>The skill is <span class="accent">using</span>.
 prev_slug: design
 prev_title: "Designing — With Mermaid and Claude Design"
-next_slug: office-replacement
-next_title: "Changing Paperwork — A Realistic Path Away from Office"
+next_slug: data-formats
+next_title: "Holding Data — Think in JSON, CSV, YAML"
 ---
 
 # Writing Logic — Have AI Write Python For You
@@ -140,15 +140,13 @@ Change your tools, and the way you process work changes.
 
 From Excel manual labor to Python plus Claude. A single step turning repetitive work into one-time work. The skill of writing is not required. The **skill of using** is enough.
 
-The four chapters so far have laid out the shared practices — Markdown, JSON/CSV/YAML, Mermaid, Python. These are the minimal AI-native stack that does not depend on occupation.
-
-From the next chapter, we move into work-type-specific practices. First, for office workers.
+The next chapter moves on to how you hold data — from Excel to JSON / CSV / YAML, and to Parquet + DuckDB for large-scale data. With Python in hand, the data-tooling options open up.
 
 ---
 
 ## Related
 
-- [Chapter 03: Designing — With Mermaid and Claude Design](/en/ai-native-ways/design/)
-- [Chapter 02: Holding Data — Think in JSON, CSV, YAML](/en/ai-native-ways/data-formats/)
+- [Chapter 02: Designing — With Mermaid and Claude Design](/en/ai-native-ways/design/)
+- [Chapter 04: Holding Data — Think in JSON, CSV, YAML](/en/ai-native-ways/data-formats/)
 - [Chapter 01: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
 - [Structural Analysis 12: AI and the Individual Business](/en/insights/ai-and-individual/)

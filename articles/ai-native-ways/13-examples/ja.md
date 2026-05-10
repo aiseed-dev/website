@@ -159,7 +159,7 @@ $ cat minutes-md/*.md | claude -p \
 
 ## 実例 02: 100 個の Excel を 30 秒で集計
 
-→ 第2章「[データを持つ](/ai-native-ways/data-formats/)」の実証
+→ 第4章「[データを持つ](/ai-native-ways/data-formats/)」の実証
 
 ### Setup
 
@@ -258,7 +258,7 @@ $ crontab -e
 
 ## 実例 03: 顧客提案書を 2 時間で作る
 
-→ 第3章「[デザインをする](/ai-native-ways/design/)」の実証
+→ 第2章「[デザインをする](/ai-native-ways/design/)」の実証
 
 ### Setup
 
@@ -343,7 +343,7 @@ $ ls -lh proposal-2026/proposal.pdf
 
 ## 実例 04: 100 個の請求書 PDF から金額を抽出
 
-→ 第4章「[処理を書く](/ai-native-ways/python/)」の実証
+→ 第3章「[処理を書く](/ai-native-ways/python/)」の実証
 
 ### Setup
 

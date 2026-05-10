@@ -122,7 +122,7 @@ The structural insight "the organization debated the same theme four times" is *
 
 ## Example 02: Aggregate 100 Excel files in 30 seconds
 
-→ Confirms Chapter 2 "[Holding Data](/en/ai-native-ways/data-formats/)"
+→ Confirms Chapter 4 "[Holding Data](/en/ai-native-ways/data-formats/)"
 
 ### Setup
 
@@ -213,7 +213,7 @@ Manual 4 hours → automated zero.
 
 ## Example 03: Build a 20-page client proposal in 2 hours
 
-→ Confirms Chapter 3 "[Designing](/en/ai-native-ways/design/)"
+→ Confirms Chapter 2 "[Designing](/en/ai-native-ways/design/)"
 
 ### Setup
 
@@ -282,7 +282,7 @@ $ ls -lh proposal-2026/proposal.pdf
 
 ## Example 04: Extract amounts from 100 invoice PDFs
 
-→ Confirms Chapter 4 "[Writing Logic](/en/ai-native-ways/python/)"
+→ Confirms Chapter 3 "[Writing Logic](/en/ai-native-ways/python/)"
 
 ### Setup
 

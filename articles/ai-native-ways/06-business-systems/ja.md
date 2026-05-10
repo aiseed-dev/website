@@ -302,6 +302,6 @@ Oracle Enterprise Edition のライセンス: 20 CPU で年間約 **4,000 万円
 ## 関連記事
 
 - [第5章: 事務処理を変える ── Officeから離れる現実的な道筋](/ai-native-ways/office-replacement/)
-- [第4章: 処理を書く ── AIにPythonで書いてもらう](/ai-native-ways/python/)
+- [第3章: 処理を書く ── AIにPythonで書いてもらう](/ai-native-ways/python/)
 - [構造分析08: 企業ITの税を引く](/insights/enterprise-tax/)
 - [構造分析11: 規制の再設計](/insights/regulation-redesign/)

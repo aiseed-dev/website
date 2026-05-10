@@ -1,17 +1,17 @@
 ---
 slug: data-formats
-number: "02"
+number: "04"
 lang: en
 title: "Holding Data — Think in JSON, CSV, YAML"
 subtitle: "Excel is not a table — it is a collection of formatting"
 description: An Excel sheet looks like a table, but it is really a bundle of formatting wrapped around data. The structure underneath is buried. JSON, CSV, and YAML hold the structure bare. That is what AI can read directly.
 date: 2026.05.02
-label: AI Native 02
+label: AI Native 04
 title_html: Hold data as <span class="accent">structure</span>, not as tables.<br><span class="accent">JSON / CSV / YAML</span> make that possible.
-prev_slug: markdown
-prev_title: "Writing Documents — Markdown as the Minimal Choice"
-next_slug: design
-next_title: "Designing — With Mermaid and Claude Design"
+prev_slug: python
+prev_title: "Writing Logic — Have AI Write Python For You"
+next_slug: office-replacement
+next_title: "Changing Paperwork — A Realistic Path Away from Office"
 ---
 
 # Holding Data — Think in JSON, CSV, YAML
@@ -151,7 +151,9 @@ Change your tools, and the way you handle data changes.
 
 From Excel to JSON, CSV, YAML. A single step that shifts data from "appearance on screen" to "structure you can process." AI becomes a colleague. Still readable in ten years.
 
-The next chapter moves on to drawing diagrams — from PowerPoint to Mermaid.
+The four chapters so far have laid out the shared practices — Markdown, Mermaid, Python, and structured data formats (JSON / CSV / YAML, plus Parquet + DuckDB at scale). These are the minimal AI-native stack that does not depend on occupation.
+
+From the next chapter, we move into work-type-specific practices. First, for office workers.
 
 ---
 

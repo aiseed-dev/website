@@ -216,5 +216,5 @@ ESP32 で温度センサ判定の開発:
 ## 関連記事
 
 - [第8章: アプリを作る ── CLIツール、Fletアプリ、Flutterアプリ](/ai-native-ways/apps/)
-- [第4章: 処理を書く ── AIにPythonで書いてもらう](/ai-native-ways/python/)
+- [第3章: 処理を書く ── AIにPythonで書いてもらう](/ai-native-ways/python/)
 - [構造分析15: Mythos時代のセキュリティ設計](/insights/security-design/)

@@ -194,5 +194,5 @@ The next chapter moves to common practice in advanced form. "Knowing what work t
 ## Related
 
 - [Chapter 08: Building Apps — CLI Tools, Flet Apps, Flutter Apps](/en/ai-native-ways/apps/)
-- [Chapter 04: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
+- [Chapter 03: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Structural Analysis 15: Security Design for the Mythos Era](/en/insights/security-design/)

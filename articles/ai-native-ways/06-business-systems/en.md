@@ -290,6 +290,6 @@ The next chapter moves to the web. "You don't need React. HTML, CSS, and JavaScr
 ## Related
 
 - [Chapter 05: Changing Paperwork — A Realistic Path Away from Office](/en/ai-native-ways/office-replacement/)
-- [Chapter 04: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
+- [Chapter 03: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Structural Analysis 08: Removing the Enterprise IT Tax](/en/insights/enterprise-tax/)
 - [Structural Analysis 11: Regulation Redesign](/en/insights/regulation-redesign/)

@@ -1,15 +1,15 @@
 ---
 slug: design
-number: "03"
+number: "02"
 lang: en
 title: "Designing — With Mermaid and Claude Design"
 subtitle: "Structural diagrams, UI, slides, business materials — all from text"
 description: Business design — architecture diagrams, UI mockups, slides, proposals — has moved away from specialized tools into the era of text-and-AI generation. Mermaid for structural diagrams, Claude Design for UI and screens, Marp for slides. No more Figma, no more PowerPoint, no more Adobe XD.
 date: 2026.05.02
-label: AI Native 03
+label: AI Native 02
 title_html: <span class="accent">Design</span>, also in text.<br><span class="accent">Mermaid</span> and <span class="accent">Claude</span> generate it.
-prev_slug: data-formats
-prev_title: "Holding Data — Think in JSON, CSV, YAML"
+prev_slug: markdown
+prev_title: "Writing Documents — Markdown as the Minimal Choice"
 next_slug: python
 next_title: "Writing Logic — Have AI Write Python For You"
 ---
@@ -233,7 +233,7 @@ The next chapter moves to writing logic. "The skill is not writing code; the ski
 
 ## Related
 
-- [Chapter 02: Holding Data — Think in JSON, CSV, YAML](/en/ai-native-ways/data-formats/)
+- [Chapter 04: Holding Data — Think in JSON, CSV, YAML](/en/ai-native-ways/data-formats/)
 - [Chapter 01: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
 - [Chapter 07: Building for the Web — Back to HTML+CSS+JavaScript](/en/ai-native-ways/web/)
 - [Prologue: Office for paperwork, Java/C# for business systems — but AI runs on Python and text](/en/ai-native-ways/prologue/)

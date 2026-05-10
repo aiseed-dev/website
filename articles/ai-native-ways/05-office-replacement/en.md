@@ -8,8 +8,8 @@ description: Telling people "drop Office now" doesn't move organizations. There 
 date: 2026.05.02
 label: AI Native 05
 title_html: Finish your paperwork<br><span class="accent">outside Office</span>.
-prev_slug: python
-prev_title: "Writing Logic — Have AI Write Python For You"
+prev_slug: data-formats
+prev_title: "Holding Data — Think in JSON, CSV, YAML"
 next_slug: business-systems
 next_title: "Working with Business Systems — Rewrite via Parallel Operation"
 ---
@@ -52,7 +52,7 @@ In CSV, you can ask Claude "aggregate this by month," "find the outliers."
 
 **Stage three: turn repetitive work into Python**
 
-"Every month, take the Excel from A, total it up, normalize the format, and send to the boss" — this becomes Python. As Chapter 4 showed, Claude writes it. You run it.
+"Every month, take the Excel from A, total it up, normalize the format, and send to the boss" — this becomes Python. As Chapter 3 showed, Claude writes it. You run it.
 
 Once written, it works next month and the month after. Thirty minutes of work becomes thirty seconds.
 
@@ -163,7 +163,7 @@ The next chapter moves to working with business systems. For technical roles.
 
 ## Related
 
-- [Chapter 04: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
+- [Chapter 03: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Chapter 01: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
 - [Structural Analysis 08: Removing the Enterprise IT Tax](/en/insights/enterprise-tax/)
 - [Are You Still Using Windows and Office?](/en/blog/windows-office-facts/)

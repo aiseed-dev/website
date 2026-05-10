@@ -127,6 +127,8 @@ The next chapter moves on to drawing diagrams — from PowerPoint to Mermaid and
 
 ## Related
 
+- [Chapter 01: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
+- [Chapter 03: Designing — With Mermaid and Claude Design](/en/ai-native-ways/design/)
 - [Prologue: Office for paperwork, Java/C# for business systems — but AI runs on Python and text](/en/ai-native-ways/prologue/)
 - [Structural Analysis 08: Removing the Enterprise IT Tax](/en/insights/enterprise-tax/)
 - [Are You Still Using Windows and Office?](/en/blog/windows-office-facts/)

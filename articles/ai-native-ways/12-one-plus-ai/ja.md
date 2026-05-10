@@ -23,10 +23,10 @@ AI ネイティブな道具を揃えた人間は、何ができるか。
 
 序章から第 10 章までで身につけた道具を並べ直す。
 
-- **Markdown** で文書を書く
-- **JSON / CSV / YAML** でデータを持つ
-- **Mermaid** で図を残す
 - **Python** で処理を書く(Claude が書く)
+- **Markdown** で文書を書く
+- **Mermaid** で図を残す
+- **JSON / CSV / YAML / SQLite / Parquet** でデータを持つ
 - **Office** から離れる(変換層として残す)
 - **業務システム** は壊さず、境界の外で動く
 - **Web** は HTML+CSS+JS で十分

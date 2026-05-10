@@ -553,7 +553,7 @@ Claude に頼めば、スキーマ変更の Python コードが返る。**運用
 - 大量・分析用 → **Parquet + DuckDB**
 - 受け渡し一回限り → **CSV**
 
-ここまでの 4 章で、共通の作法 ── Markdown・Mermaid・Python・
+ここまでの 4 章で、共通の作法 ── Python・Markdown・Mermaid・
 データ各種(SQLite / OnlyOffice / JSON / YAML / Parquet) ── が
 揃った。これらは職種を問わない、AI ネイティブな仕事の最小スタックだ。
 

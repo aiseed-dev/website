@@ -9,8 +9,8 @@ label: AI Native 00
 title_html: 事務処理は<span class="accent">Office</span>。<br>業務ソフトは<span class="accent">Java/C#</span>。<br>しかしAIは、<span class="accent">Pythonとテキスト</span>。
 prev_slug:
 prev_title:
-next_slug: markdown
-next_title: 文書を書く ── Markdownという最小の選択
+next_slug: python
+next_title: 処理を書く ── AIにPythonで書いてもらう
 ---
 
 # 序章 — 事務処理はOffice、業務ソフトはJava/C#、しかしAIはPythonとテキスト

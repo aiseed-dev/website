@@ -151,7 +151,7 @@ Change your tools, and the way you handle data changes.
 
 From Excel to JSON, CSV, YAML. A single step that shifts data from "appearance on screen" to "structure you can process." AI becomes a colleague. Still readable in ten years.
 
-The four chapters so far have laid out the shared practices — Markdown, Mermaid, Python, and structured data formats (JSON / CSV / YAML, plus Parquet + DuckDB at scale). These are the minimal AI-native stack that does not depend on occupation.
+The four chapters so far have laid out the shared practices — Python, Markdown, Mermaid, and structured data formats (JSON / CSV / YAML, plus Parquet + DuckDB at scale). These are the minimal AI-native stack that does not depend on occupation.
 
 From the next chapter, we move into work-type-specific practices. First, for office workers.
 

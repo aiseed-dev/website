@@ -57,7 +57,7 @@ That gives you an app where "running a command makes something happen." No GUI. 
 Once the CLI tool works, you can ship it. Mac / Linux / Windows, all
 OSes (with Python). You don't even need to host it on the web.
 **`uv tool install <your-tool>`** distributes it (`pip install` works
-too, but this book has standardized on uv — see Chapter 3).
+too, but this book has standardized on uv — see Chapter 1).
 
 **Many apps need only the CLI.** Processing data, converting files, hitting APIs — these don't need a GUI.
 
@@ -199,5 +199,5 @@ The next chapter moves to embedded — "Think in Python, have Claude translate t
 ## Related
 
 - [Chapter 07: Building for the Web — Back to HTML+CSS+JavaScript](/en/ai-native-ways/web/)
-- [Chapter 03: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
+- [Chapter 01: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Structural Analysis 15: Security Design for the Mythos Era](/en/insights/security-design/)

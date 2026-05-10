@@ -1,23 +1,37 @@
 ---
 slug: python
-number: "03"
+number: "01"
 title: 処理を書く ── AIにPythonで書いてもらう
-subtitle: コードを書く能力ではなく、使う能力で十分だ
-description: Python は技術者のものだという偏見を捨てる。Excel の変換、メールからの抽出、PDF の整理、ファイル形式の統一 ── 数行の Python で終わる作業は事務職や個人事業主の日常で頻発する。書く必要はない。Claude に日本語で頼めばコードが返ってくる。
+subtitle: マクロ・グラフ・ピボットを Python に外部化する ── 最初にやること
+description: Excel(と Word)に埋め込まれた マクロ・VBA・グラフ・ピボットを、Python に外部化する。これが最初にやること。AI が手伝うので、難しいことはなくなった。書く必要はない。Claude に日本語で頼めばコードが返ってくる。JupyterLab のセルで Shift+Enter、即座に結果が出る。
 date: 2026.05.02
-label: AI Native 03
+label: AI Native 01
 title_html: コードは書く能力ではなく、<br><span class="accent">使う能力</span>で十分だ。
-prev_slug: design
-prev_title: デザインをする ── Mermaid と Claude デザインで作る
-next_slug: data-formats
-next_title: データを持つ ── JSON/CSV/YAMLで考える
+prev_slug: prologue
+prev_title: 事務処理はOffice、業務ソフトはJava/C#、しかしAIはPythonとテキスト
+next_slug: markdown
+next_title: 文書を書く ── Markdownという最小の選択
 ---
 
 # 処理を書く ── AIにPythonで書いてもらう
 
-処理を書く道具を、Python に変える。
+**AI ネイティブな働き方への最初の一歩は、ここで決まる**。
 
-それだけで、繰り返しの作業が一回限りの作業になる。Excel の整形、メールの集計、PDF の抽出、ファイルの一括リネーム。「人間が手作業で 30 分かかる」事務処理は、ほとんどが Python の 10 行で終わる。**書くのは Claude**。実行するのは人間。
+序章で挙げた「最初にやること」── **Excel(と Word)に埋め込まれた
+マクロ・VBA・グラフ・ピボットを、Python に外部化する** ── を、この
+章で実際にやる。三つを Python に出してしまえば、あとは順序自由で
+何でも進められる。
+
+道具を変えるのは Python に。**書くのは Claude**、実行するのは人間。
+AI が手伝うから、これまで「難しい」とされていたことはほぼ消えた。
+**Office を使い続けるよりも遥かにパワーアップする** ── 月次集計が
+マウス操作からスクリプト再実行に変わり、データが 100 万行でも
+固まらず、グラフはコードで再生成可能、マクロは読めるコードに変わる。
+**今すぐやるべきだ**。
+
+繰り返しの作業が一回限りの作業に変わる。Excel の整形、メールの集計、
+PDF の抽出、ファイルの一括リネーム ── 「人間が手作業で 30 分かかる」
+事務処理は、ほとんどが Python の 10 行で終わる。
 
 ## Python は全員のものだ
 
@@ -157,6 +171,82 @@ JupyterLab で十分でない場面のために、選択肢も挙げておく。
   `.ipynb` を開ける。コード補完が効く
 
 迷ったら **JupyterLab で始める**。Excel と同じ感覚で入れる。
+
+## マクロ・VBA を Python に外部化する
+
+Excel(と Word)に埋め込まれた **マクロ・VBA を Python に書き換える**
+── これが「最初にやること」三つのうちの一つ目。
+
+### Excel の VBA → Python(Polars + JupyterLab)
+
+Excel に埋め込まれた業務ロジックは、たいていが「セルからデータを
+読む → 何か計算する → 別のセルに書く / シートを増やす / 報告書を
+作る」の組み合わせだ。これは Polars + Python で素直に書き換えら
+れる。
+
+Claude に渡す手順:
+
+1. Excel の VBA エディタ(Alt + F11)を開く
+2. モジュールのコードを **コピペで Claude に渡す**
+3. 「これを Polars + Python に書き換えて」と頼む
+4. 返ってきたコードを JupyterLab のセルに貼って Shift+Enter
+
+```python
+# Claude が返した例(イメージ)
+import polars as pl
+
+df = pl.read_excel("orders.xlsx", sheet_name="raw")
+result = (
+    df.filter(pl.col("status") == "確定")
+      .group_by("customer")
+      .agg(total=(pl.col("qty") * pl.col("price")).sum())
+      .sort("total", descending=True)
+)
+result.write_excel("monthly_summary.xlsx")
+```
+
+### Word でも VBA は使われている
+
+VBA は **Excel だけでなく Word にも埋め込まれている** ことを忘れ
+ないでほしい。Word の VBA でよくあるのは:
+
+- **差し込み印刷の自動化**(顧客リストから 100 通の通知を生成)
+- **テンプレートからの文書生成**(見積書、契約書、報告書)
+- **書式の一括変換**(社内フォーマットへの整形)
+- **添付されたフォームの集計**(配布した Word を回収して中身を抽出)
+- **マクロボタンによる業務メニュー**
+
+これらも全部 Python に外部化できる。
+
+- **差し込み印刷・テンプレート文書生成** → `python-docx` + Jinja2
+  + Polars(顧客マスタ)。**100 通の Word / PDF を一発で**
+- **書式の一括変換** → `python-docx` で全文走査、必要な置換・整形
+- **配布フォームの集計** → `python-docx` で各 Word を読んで中身を
+  抽出、Polars に集約
+
+PowerPoint の VBA(プレゼンテーションの自動加工)も同様 ──
+`python-pptx` で外部化できる。
+
+### なぜ「最初に」やるのか
+
+VBA は、**OnlyOffice ではほぼ動かない**。Excel/Word/PowerPoint の
+ベンダーロックインを解く一番の障害が、この「VBA で組まれた業務
+ロジック」だ。これを Python に出してしまえば、Office ファイル本体は
+「データ + レイアウト」だけになり、OnlyOffice にも自由に乗り換え
+られる。
+
+しかも:
+
+- VBA は **将来縮小する技術** ── Microsoft 自身が新規開発の重点を
+  置いていない
+- VBA を書ける人材は **減り続けている**
+- Python + AI は **逆に書ける人が爆発的に増えている**(Claude が
+  書く)
+- 書き換えれば **Git で管理でき、テストでき、レビューできる**
+
+「VBA を Python に書き換えるのは大変では?」── 答えは違う。**Claude
+にコピペで渡す、それだけ**。10 年前なら半年がかりだった作業が、
+今は 1 日で終わる。
 
 ## Polars で集計・クロス集計 ── ピボットテーブルがコードになる
 
@@ -498,8 +588,8 @@ MoneyForward など、月額数千〜数万円)、ERP、ベンダーロックイ
 された業務システムが担っていた領域:
 
 - **顧客マスタ・取引データ** → SQLite(第4章)
-- **請求書テンプレート** → Markdown / HTML(第1章)
-- **生成スクリプト** → Python + Claude(第3章)+ pandoc /
+- **請求書テンプレート** → Markdown / HTML(第2章)
+- **生成スクリプト** → Python + Claude(本章)+ pandoc /
   weasyprint で PDF 化
 
 100 通の請求書 PDF を月末に一括生成、メール送信まで Python で
@@ -520,13 +610,13 @@ MoneyForward など、月額数千〜数万円)、ERP、ベンダーロックイ
 
 Excel の手作業から、Python と Claude へ。一歩で、繰り返しの仕事が一回限りの仕事になる。書く能力は要らない。**使う能力**だけでいい。
 
-次の章では、データの持ち方の話に進む。Excel から JSON / CSV / YAML へ、大量データなら Parquet と DuckDB へ。Python が書けるようになった今、データ加工の選択肢が広がる。
+次の章では、文書を書く話に進む。Word から Markdown へ。Python で道具立てが整った今、文書の中身も「書式」から「構造」へ移せる。
 
 ---
 
 ## 関連記事
 
-- [第2章: デザインをする ── Mermaid と Claude デザインで作る](/ai-native-ways/design/)
+- [第2章: 文書を書く ── Markdownという最小の選択](/ai-native-ways/markdown/)
+- [第3章: デザインをする ── Mermaid と Claude デザインで作る](/ai-native-ways/design/)
 - [第4章: データを持つ ── JSON/CSV/YAMLで考える](/ai-native-ways/data-formats/)
-- [第1章: 文書を書く ── Markdownという最小の選択](/ai-native-ways/markdown/)
 - [構造分析12: AIと個人事業](/insights/ai-and-individual/)

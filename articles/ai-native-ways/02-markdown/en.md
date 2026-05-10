@@ -1,15 +1,15 @@
 ---
 slug: markdown
-number: "01"
+number: "02"
 lang: en
 title: "Writing Documents — Markdown as the Minimal Choice"
 subtitle: "Save the structure, not the formatting"
 description: Word makes you focus on formatting. Markdown brings structure to the front. Once you ask which one AI can read directly, the answer is clear. To "write" is not to arrange visuals — it is to structure thought.
 date: 2026.05.02
-label: AI Native 01
+label: AI Native 02
 title_html: Write documents in <span class="accent">Markdown</span>.<br>Save the <span class="accent">structure</span>, not the formatting.
-prev_slug: prologue
-prev_title: "Office for paperwork, Java/C# for business systems — but AI runs on Python and text"
+prev_slug: python
+prev_title: "Writing Logic — Have AI Write Python For You"
 next_slug: design
 next_title: "Designing — With Mermaid and Claude Design"
 ---

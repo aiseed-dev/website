@@ -30,7 +30,7 @@ Each example follows:
 
 ## Example 01: Convert 12 months of Word minutes to Markdown
 
-→ Confirms Chapter 1 "[Writing Documents](/en/ai-native-ways/markdown/)"
+→ Confirms Chapter 2 "[Writing Documents](/en/ai-native-ways/markdown/)"
 
 ### Setup
 
@@ -213,7 +213,7 @@ Manual 4 hours → automated zero.
 
 ## Example 03: Build a 20-page client proposal in 2 hours
 
-→ Confirms Chapter 2 "[Designing](/en/ai-native-ways/design/)"
+→ Confirms Chapter 3 "[Designing](/en/ai-native-ways/design/)"
 
 ### Setup
 
@@ -282,7 +282,7 @@ $ ls -lh proposal-2026/proposal.pdf
 
 ## Example 04: Extract amounts from 100 invoice PDFs
 
-→ Confirms Chapter 3 "[Writing Logic](/en/ai-native-ways/python/)"
+→ Confirms Chapter 1 "[Writing Logic](/en/ai-native-ways/python/)"
 
 ### Setup
 

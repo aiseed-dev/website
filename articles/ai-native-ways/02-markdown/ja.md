@@ -1,14 +1,14 @@
 ---
 slug: markdown
-number: "01"
+number: "02"
 title: 文書を書く ── Markdownという最小の選択
 subtitle: 書式ではなく構造を残す
 description: Word は書式に気を取られる。Markdown は構造が前に出る。AI が直接読めるのはどちらかを考えれば、答えは一つしかない。「書く」とは形を整えることではなく、考えを構造化することだ。
 date: 2026.05.02
-label: AI Native 01
+label: AI Native 02
 title_html: 文書は<span class="accent">Markdown</span>で。<br>書式ではなく、<span class="accent">構造</span>を残す。
-prev_slug: prologue
-prev_title: 事務処理はOffice、業務ソフトはJava/C#、しかしAIはPythonとテキスト
+prev_slug: python
+prev_title: 処理を書く ── AIにPythonで書いてもらう
 next_slug: design
 next_title: デザインをする ── Mermaid と Claude デザインで作る
 ---

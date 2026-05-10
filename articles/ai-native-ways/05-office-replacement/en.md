@@ -52,7 +52,7 @@ In CSV, you can ask Claude "aggregate this by month," "find the outliers."
 
 **Stage three: turn repetitive work into Python**
 
-"Every month, take the Excel from A, total it up, normalize the format, and send to the boss" — this becomes Python. As Chapter 3 showed, Claude writes it. You run it.
+"Every month, take the Excel from A, total it up, normalize the format, and send to the boss" — this becomes Python. As Chapter 1 showed, Claude writes it. You run it.
 
 Once written, it works next month and the month after. Thirty minutes of work becomes thirty seconds.
 
@@ -163,7 +163,7 @@ The next chapter moves to working with business systems. For technical roles.
 
 ## Related
 
-- [Chapter 03: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
-- [Chapter 01: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
+- [Chapter 01: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
+- [Chapter 02: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
 - [Structural Analysis 08: Removing the Enterprise IT Tax](/en/insights/enterprise-tax/)
 - [Are You Still Using Windows and Office?](/en/blog/windows-office-facts/)

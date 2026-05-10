@@ -10,8 +10,8 @@ label: AI Native 01
 title_html: Write documents in <span class="accent">Markdown</span>.<br>Save the <span class="accent">structure</span>, not the formatting.
 prev_slug: prologue
 prev_title: "Office for paperwork, Java/C# for business systems — but AI runs on Python and text"
-next_slug: data-formats
-next_title: "Holding Data — Think in JSON, CSV, YAML"
+next_slug: design
+next_title: "Designing — With Mermaid and Claude Design"
 ---
 
 # Writing Documents — Markdown as the Minimal Choice
@@ -121,7 +121,7 @@ Change your tools, and the way you think changes.
 
 From Word to Markdown. A single step that shifts the object of your attention from "appearance" to "substance." AI becomes a colleague. Documents that are still readable in ten years.
 
-The next chapter moves on to changing how you hold data — from Excel to JSON / CSV / YAML.
+The next chapter moves on to drawing diagrams — from PowerPoint to Mermaid and Claude Design.
 
 ---
 

@@ -81,7 +81,7 @@ if __name__ == "__main__":
 CLI ツールが正しく動くようになったら、それで配布できる。Mac / Linux /
 Windows、すべての OS で動く(Python があれば)。Web からダウンロード
 してもらう必要すらない。**`uv tool install <あなたのツール>`** で
-配れる(`pip install` でも動くが、本書は uv を採用している ── 第4章参照)。
+配れる(`pip install` でも動くが、本書は uv を採用している ── 第3章参照)。
 
 **多くのアプリは、CLI で十分**だ。データを処理する、ファイルを変換する、API を叩く ── これらは GUI が無くても困らない。
 
@@ -223,5 +223,5 @@ CLI で動くものを作って、検証する。GUI が要れば Flet で載せ
 ## 関連記事
 
 - [第7章: Webを作る ── HTML+CSS+JavaScriptという原点回帰](/ai-native-ways/web/)
-- [第4章: 処理を書く ── AIにPythonで書いてもらう](/ai-native-ways/python/)
+- [第3章: 処理を書く ── AIにPythonで書いてもらう](/ai-native-ways/python/)
 - [構造分析15: Mythos時代のセキュリティ設計](/insights/security-design/)

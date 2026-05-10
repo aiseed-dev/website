@@ -529,7 +529,7 @@ AI に任せる仕事と、人間が残す仕事を分ける。
 ## 関連記事
 
 - [第9章: 組み込みを作る ── Pythonで考え、Claudeに翻訳させる](/ai-native-ways/embedded/)
-- [第4章: 処理を書く ── AIにPythonで書いてもらう](/ai-native-ways/python/)
+- [第3章: 処理を書く ── AIにPythonで書いてもらう](/ai-native-ways/python/)
 - [構造分析05: Mythosが来た](/insights/mythos/)
 - [構造分析15: Mythos時代のセキュリティ設計](/insights/security-design/)
 - [構造分析12: AIと個人事業](/insights/ai-and-individual/)

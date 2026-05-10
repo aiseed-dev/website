@@ -177,7 +177,9 @@ def build_table(content):
             for c in cells:
                 html += f"  <th>{c}</th>\n"
             html += "</tr>\n"
-        elif line.startswith("--") or line.startswith("|-"):
+        elif cells and all(set(c) <= {"-", ":"} for c in cells):
+            # Skip Markdown table separator rows: `| --- | --- |`,
+            # `|---|---|`, `| :--- | :---: | ---: |` etc.
             continue
         else:
             html += "<tr>\n"

@@ -80,6 +80,29 @@ bool detectAnomaly(float values[], int size) {
 
 これを実機に書き込んで動かす。**ロジックは Python で確認済みなので、ハードウェアで動かないなら原因はハードウェア側だ**。デバッグの方向が定まる。
 
+```mermaid
+flowchart LR
+  Idea(["やりたい制御<br/>(センサ・アクチュエータ・判定)"])
+  Py["Python で書く<br/>(PC で動かす)"]
+  CSV["CSV のサンプルデータ<br/>で検証"]
+  OK{"ロジックが<br/>正しい?"}
+  Trans["Claude に C/C++ へ翻訳<br/>を頼む"]
+  HW["実機に焼く"]
+  Bug{"動かない?"}
+  HWFix["ハードウェア側<br/>(配線・電源・タイミング)"]
+
+  Idea --> Py --> CSV --> OK
+  OK -->|No| Py
+  OK -->|Yes| Trans --> HW --> Bug
+  Bug -->|Yes| HWFix
+  Bug -->|No| Done(["完成"])
+
+  classDef pc fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef hw fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class Py,CSV,Trans pc
+  class HW,HWFix hw
+```
+
 ## 言語の選択
 
 組み込みの言語は、ハードウェアと用途で決まる。

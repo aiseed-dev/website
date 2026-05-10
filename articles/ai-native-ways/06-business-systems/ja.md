@@ -43,14 +43,27 @@ AI が業務ロジックを Python に翻訳できる。AI が SQL の意図を 
 
 新システムを AI で作る。旧システムはそのまま動かす。同じ入力を両方に流す。出力を比較する。
 
-```
-本番の入力データ
-   │
-   ├──→ 旧システム (Java/C#) ──→ 出力 A
-   │
-   └──→ 新システム (Python+AI) ──→ 出力 B
+```mermaid
+flowchart LR
+  Input["本番の入力データ"]
+  Old["旧システム<br/>Java/C#<br/>Oracle/SQL Server"]
+  New["新システム<br/>Python + AI<br/>PostgreSQL"]
+  Diff{"毎日<br/>突き合わせ"}
+  Fix["新システムを修正<br/>(旧は触らない)"]
+  Kill["差分ゼロが続く<br/>→ 旧を殺す"]
 
-毎日、A と B を突き合わせる
+  Input --> Old --> Diff
+  Input --> New --> Diff
+  Diff -->|差分あり| Fix
+  Fix --> New
+  Diff -->|差分ゼロ| Kill
+
+  classDef old fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  classDef new fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef decision fill:#f0f0f0,stroke:#666
+  class Old old
+  class New,Kill new
+  class Diff,Fix decision
 ```
 
 A と B が一致するなら、新システムは正しい。一致しないなら、どちらかが間違っている。**だいたい、旧システムに 20 年前から残っていたバグが先に見つかる**。ドキュメントに書かれていなかったバグ。

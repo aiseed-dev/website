@@ -25,6 +25,39 @@ next_title:
 - **手順**: コマンド・コード・実際の出力
 - **結果**: 何が手に入ったか
 
+```mermaid
+flowchart LR
+  subgraph Foundation["基礎の章(全員)"]
+    Ex01["実例 01<br/>Word→Markdown"]
+    Ex02["実例 02<br/>Excel→CSV+集計"]
+    Ex03["実例 03<br/>Mermaid 図"]
+    Ex04["実例 04<br/>Python+Claude"]
+  end
+  subgraph Office["事務職"]
+    Ex05["実例 05<br/>月次報告自動化"]
+  end
+  subgraph Engineer["技術職"]
+    Ex06["実例 06<br/>PL/SQL→Python<br/>並行稼働"]
+    Ex07["実例 07<br/>HTML+CSS サイト"]
+    Ex08["実例 08<br/>CLI→Flet"]
+    Ex09["実例 09<br/>組み込み(Python→C)"]
+  end
+  subgraph Decision["判断の章"]
+    Ex10["実例 10<br/>AI 任せる/任せない"]
+    Ex11["実例 11<br/>物語検証"]
+    Ex12["実例 12<br/>1 人+AI 業務一式"]
+  end
+
+  classDef base fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef office fill:#fef9e7,stroke:#c8a559,color:#5a4a1a
+  classDef eng fill:#e7f0fe,stroke:#5985c8,color:#1a355a
+  classDef dec fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class Ex01,Ex02,Ex03,Ex04 base
+  class Ex05 office
+  class Ex06,Ex07,Ex08,Ex09 eng
+  class Ex10,Ex11,Ex12 dec
+```
+
 ---
 
 ## 実例 01: Word 議事録 12 ヶ月を Markdown 化

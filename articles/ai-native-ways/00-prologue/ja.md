@@ -71,24 +71,58 @@ AIでもやれる仕事のために、人間が重い道具を抱え込む。そ
 
 ### 第一段階 ── Office UI を残したまま、ベンダーから抜ける
 
-最も実行しやすい段階。Excel / Word / PowerPoint の **画面は変え
-ない**、ただ Microsoft というベンダーから抜ける。
+最も実行しやすい段階だが、**順序が重要**。
+**VBA・グラフ・ピボットを Python で外部化してから、OnlyOffice に
+移行する**。逆順だと、OnlyOffice 移行時にこれらが動かず詰まる
+(OnlyOffice は VBA・複雑なピボット・一部チャートの完全互換は
+提供していない)。
 
-- **Microsoft Office → OnlyOffice**:Excel / Word / PowerPoint
-  互換の OSS。`.xlsx` / `.docx` / `.pptx` がそのまま開ける。
-  **サブスク料金ゼロ**(年間数百万〜数千万円が消える)
-- **VBA / Excel マクロ → JupyterLab + Polars**:Excel に埋め込まれて
-  いた業務ロジックを、Claude が Python(Polars)に書き換える。
-  **JupyterLab はセル単位で実行できる "Python のスプレッドシート"**
-  ── 値を変えて Shift+Enter、即座に結果が出る。VBA より読みやすく、
-  Git で管理でき、テストでき、AI が今後も書きやすい(VBA は将来
-  縮小する技術)
+#### Step 1:VBA / マクロ を JupyterLab + Polars に外部化
+
+Excel に埋め込まれていた業務ロジックを、Claude が Python(Polars)
+に書き換える。**JupyterLab はセル単位で実行できる "Python の
+スプレッドシート"** ── 値を変えて Shift+Enter、即座に結果が出る。
+Excel ファイルとは `pl.read_excel` / `write_excel` で連携。定期
+実行が必要なら cron で Python スクリプトを動かす。
+
+VBA は OnlyOffice ではほぼ動かない(将来縮小する技術)── 先に
+**外に出してしまう** のが正解。Git で管理でき、テストでき、AI が
+今後も書きやすい。
+
+#### Step 2:グラフを matplotlib / Altair に外部化
+
+Excel のチャートを **matplotlib / Altair で再現**(第3章「グラフを
+描く」)。データだけ Excel に残し、**グラフは Python が生成**
+(PNG / SVG / HTML)。Excel ブックに画像として埋め戻すこともできる。
+これで Excel ファイル側のグラフ依存が消える ── OnlyOffice 移行時の
+グラフ表示崩れの心配がなくなる。
+
+#### Step 3:ピボットテーブルを Polars に外部化
+
+Excel のピボットを **Polars の `pivot()` / `group_by().agg()`** に
+書き換える(第3章「Polars で集計・クロス集計」)。集計結果を Excel
+に書き戻すか、別シートに静的なクロス表として置く。**ピボットの
+"動く部分" が外に出ると、Excel 側は単純な表だけになる** ── OnlyOffice
+互換性の心配が消える。
+
+#### Step 4:OnlyOffice に移行
+
+VBA・グラフ・ピボットが外部化されると、Excel ファイルに残るのは
+**「データ + 単純なレイアウト + 関数」だけ**。これは OnlyOffice
+でほぼ完全互換で開ける。Microsoft 365 のサブスクを切る:
+
+- **Microsoft Office → OnlyOffice**:`.xlsx` / `.docx` / `.pptx`
+  互換の OSS。**サブスク料金ゼロ**(年間数百万〜数千万円が消える)
 - **Microsoft 365 共同編集 → OnlyOffice サーバーをセルフホスト**
   (or Nextcloud 等)
 
 UI が変わらないので、**組織への説得が比較的しやすい**。「同じ画面、
-ただしライセンス料がゼロ円、マクロは Python で読める」── これが
-第一段階の到達点。
+ライセンス料ゼロ円、複雑な部分は Python で読める形になっている」
+── これが第一段階の到達点。
+
+> 順序を間違えると(OnlyOffice 移行を先にやると)、VBA が動かない・
+> ピボットが崩れる・チャートが表示されない、で組織が「やっぱり
+> Microsoft に戻ろう」となる。**外部化が先、移行は最後**。
 
 ### 第二段階 ── 中身を構造に変える(本書全体で最大のハードル)
 

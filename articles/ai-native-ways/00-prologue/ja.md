@@ -27,6 +27,33 @@ WordファイルもExcelシートもPDFも、AIに渡すにはテキストへの
 
 > AI ネイティブな道具と、企業の標準的な道具のあいだに、決定的な断絶が走っている。
 
+```mermaid
+flowchart TB
+  AI(("AI<br/>OpenAI / Anthropic"))
+
+  subgraph Native["AI ネイティブな道具"]
+    direction LR
+    Python
+    Markdown
+    JSON
+    YAML
+  end
+
+  subgraph Legacy["企業の標準的な道具"]
+    direction LR
+    Office["Office<br/>(Word / Excel / PDF)"]
+    Code["業務ソフト<br/>(Java / C#)"]
+  end
+
+  Native -.->|そのまま読める| AI
+  Legacy ==>|テキスト変換<br/>= 書式が崩れ、構造が消える| AI
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef bad fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class Native good
+  class Legacy bad
+```
+
 ## すぐ消す
 
 **Office、Java、C#は、すぐに消してしまう**。

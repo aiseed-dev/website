@@ -45,6 +45,7 @@ from build.markdown import (
     md,
     parse_frontmatter,
     process_custom_blocks,
+    process_mermaid_blocks,
     strip_leading_title,
     translation_exists,
 )
@@ -132,6 +133,9 @@ def build_article(md_path):
 
     # Convert remaining Markdown to HTML (markdown-it-py, CommonMark)
     body_html = md.render(body)
+
+    # Re-wrap ```mermaid code blocks as <div class="mermaid"> for the runtime
+    body_html = process_mermaid_blocks(body_html)
 
     # Indent body HTML for template
     indented = "\n".join(
@@ -257,6 +261,7 @@ def build_blog_post(md_path):
     body = strip_leading_title(body)
     body = process_custom_blocks(body)
     body_html = md.render(body)
+    body_html = process_mermaid_blocks(body_html)
 
     indented = "\n".join(
         f"                {line}" if line.strip() else ""
@@ -371,6 +376,7 @@ def build_book_chapter(md_path):
     body = strip_leading_title(body)
     body = process_custom_blocks(body)
     body_html = md.render(body)
+    body_html = process_mermaid_blocks(body_html)
 
     indented = "\n".join(
         f"                {line}" if line.strip() else ""
@@ -563,6 +569,7 @@ def build_aiways_chapter(md_path):
     body = strip_leading_title(body)
     body = process_custom_blocks(body)
     body_html = md.render(body)
+    body_html = process_mermaid_blocks(body_html)
 
     # Append a "実例 / Examples" callout listing example-N/ folders for this chapter.
     examples_html = _aiways_chapter_examples_html(md_path.parent, meta["slug"], lang)
@@ -685,6 +692,7 @@ def build_farming_chapter(md_path):
     body = strip_leading_title(body)
     body = process_custom_blocks(body)
     body_html = md.render(body)
+    body_html = process_mermaid_blocks(body_html)
 
     series_name = FARMING_SERIES_NAME_EN if lang == "en" else FARMING_SERIES_NAME_JA
     series_index_url = "/en/phosphorus-and-farming/" if lang == "en" else "/phosphorus-and-farming/"
@@ -936,6 +944,7 @@ def build_aiways_example(example_dir, lang="ja"):
     body_md = strip_leading_title(body_md)
     body_md = process_custom_blocks(body_md)
     content_html = md.render(body_md)
+    content_html = process_mermaid_blocks(content_html)
 
     chapter_slug = meta["slug"]
     example_name = example_dir.name  # 'example-1'

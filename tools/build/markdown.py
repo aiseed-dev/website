@@ -1,5 +1,6 @@
 """Markdown parsing: frontmatter, custom ::: blocks, CommonMark rendering."""
 
+import html
 import re
 from pathlib import Path
 
@@ -8,6 +9,31 @@ from markdown_it import MarkdownIt
 
 # CommonMark + tables (used for both article bodies and inline `:::highlight`)
 md = MarkdownIt("commonmark", {"html": True}).enable("table")
+
+
+# ---------------------------------------------------------------------------
+# Mermaid: convert fenced ```mermaid blocks into <div class="mermaid"> so the
+# Mermaid runtime can render them. Runs on the rendered HTML (after CommonMark)
+# because doing it pre-render breaks on the blank lines that Mermaid DSL allows
+# inside a single block.
+# ---------------------------------------------------------------------------
+
+_MERMAID_HTML_RE = re.compile(
+    r'<pre><code class="language-mermaid">(.*?)</code></pre>',
+    re.DOTALL,
+)
+
+
+def process_mermaid_blocks(html_text):
+    """Replace markdown-rendered ```mermaid code blocks with <div class="mermaid">.
+
+    markdown-it produces <pre><code class="language-mermaid">…</code></pre>
+    with the diagram body HTML-escaped. Mermaid expects raw DSL text inside
+    a div, so we unescape and re-wrap."""
+    def _replace(match):
+        diagram = html.unescape(match.group(1)).rstrip()
+        return f'<div class="mermaid">\n{diagram}\n</div>'
+    return _MERMAID_HTML_RE.sub(_replace, html_text)
 
 
 def parse_frontmatter(text):

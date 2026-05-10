@@ -2,7 +2,7 @@
 slug: examples
 number: "13"
 title: 実例集 ── 12 のウォークスルー
-subtitle: 全章のコードと出力を、最初から最後まで
+subtitle: 12 章ぶんのコードと出力を、最初から最後まで
 description: 各章の主張を、実際のコマンド・コード・出力で確認する。Word の議事録を Markdown 化、100 個の Excel を 30 秒で集計、PL/SQL を並行稼働で書き換え、AI エージェントを Python に凍結する ── 12 のウォークスルーを、自分の手で動かせる形でまとめた。
 date: 2026.05.02
 label: AI Native EX

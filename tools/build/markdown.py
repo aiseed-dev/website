@@ -175,7 +175,7 @@ def build_table(content):
         if i == 0:
             html += "<tr>\n"
             for c in cells:
-                html += f"  <th>{c}</th>\n"
+                html += f"  <th>{md.renderInline(c)}</th>\n"
             html += "</tr>\n"
         elif cells and all(set(c) <= {"-", ":"} for c in cells):
             # Skip Markdown table separator rows: `| --- | --- |`,
@@ -184,7 +184,7 @@ def build_table(content):
         else:
             html += "<tr>\n"
             for c in cells:
-                html += f"  <td>{c}</td>\n"
+                html += f"  <td>{md.renderInline(c)}</td>\n"
             html += "</tr>\n"
     html += "</table>"
     return html

@@ -77,10 +77,12 @@ AIでもやれる仕事のために、人間が重い道具を抱え込む。そ
 - **Microsoft Office → OnlyOffice**:Excel / Word / PowerPoint
   互換の OSS。`.xlsx` / `.docx` / `.pptx` がそのまま開ける。
   **サブスク料金ゼロ**(年間数百万〜数千万円が消える)
-- **VBA / Excel マクロ → Python**:Excel に埋め込まれていた業務
-  ロジックを、Claude が Python に書き換える。可読性が上がる、Git
-  で管理できる、テストできる、AI が今後も書きやすくなる(VBA は
-  将来縮小する技術)
+- **VBA / Excel マクロ → JupyterLab + Polars**:Excel に埋め込まれて
+  いた業務ロジックを、Claude が Python(Polars)に書き換える。
+  **JupyterLab はセル単位で実行できる "Python のスプレッドシート"**
+  ── 値を変えて Shift+Enter、即座に結果が出る。VBA より読みやすく、
+  Git で管理でき、テストでき、AI が今後も書きやすい(VBA は将来
+  縮小する技術)
 - **Microsoft 365 共同編集 → OnlyOffice サーバーをセルフホスト**
   (or Nextcloud 等)
 
@@ -226,15 +228,17 @@ Pythonなら数行で終わる。そして書く必要はない。**Claudeに日
 職種を問わない。
 
 ```
-文書       : Markdown
-図         : Mermaid
-処理       : Python
-データ     : 用途別 ── JSON / YAML / SQLite / OnlyOffice / Parquet (第4章)
-Web        : HTML + CSS + JavaScript
+文書        : Markdown
+図          : Mermaid
+処理        : Python
+対話的データ作業: JupyterLab + Polars(Excel の代替)
+データ      : 用途別 ── JSON / YAML / SQLite / OnlyOffice / Parquet (第4章)
+Web         : HTML + CSS + JavaScript
 ```
 
-ほぼテキスト(SQLite と OnlyOffice の `.xlsx` だけバイナリ)。
-それ以外は AI がそのまま読み書きできる。十年後も読める。
+ほぼテキスト(SQLite と OnlyOffice の `.xlsx`、JupyterLab の
+`.ipynb` だけバイナリ寄りだが、`.ipynb` も中身は JSON で diff が
+出る)。それ以外は AI がそのまま読み書きできる。十年後も読める。
 
 ## 道具は、思考をかたちづくる
 
@@ -258,6 +262,8 @@ Excel `.xlsx` 1.2 MB のファイル(10,000 行の売上データ)を **Parquet 
 
 Excel で運用していた顧客マスタ(5,000 件)を **SQLite に移行した事務職の事例**:
 編集中の保存ミスで月 1〜2 回データ破損、その都度バックアップから復元 → SQLite に移行後 **0 件**(トランザクションで保護)。**運用の心理負荷が下がる**。
+
+Excel ピボットで月別売上集計: マウス操作で 5 分、再現性ゼロ(操作の記録は残らない)。同じ集計を **JupyterLab + Polars** で書くと **3 行・0.05 秒**、ノートブックがそのまま記録に残るので翌月も使える(Claude がコードを書く)。VBA で同じ自動化を書くと 30 分〜数時間、しかも一度書いたら誰も読めない「秘伝のマクロ」になる。
 
 Office、Java、C# を使い続けることは、毎日 AI 利用料を 2 倍以上払い続けることでもある。さらに、Microsoft 365 のサブスク料金が組織全体で年間数百万円〜数千万円。OnlyOffice に移行すれば **ライセンス料はゼロ円**。
 

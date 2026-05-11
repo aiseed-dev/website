@@ -144,6 +144,12 @@ because the learning curve was too steep. Because AI writes the
 scripts, code, and node configurations, these tools **drop into the
 hands of office workers, sole proprietors, and on-the-floor staff**.
 
+> **If you're new** — what follows (D3 / Blender / ComfyUI / CAD) is
+> a **preview of what becomes possible later**. To start, Mermaid and
+> Claude Design alone are enough. Once everyday design is in your
+> hands, come back to this section as needs arise. **The "skill of
+> reading" is all you ever need to enter.**
+
 ```mermaid
 flowchart LR
   Intent2["What you want<br/>(in words)"]

@@ -103,21 +103,86 @@ flowchart LR
   class HW,HWFix hw
 ```
 
-## 言語の選択
+## 言語の選択 ── 開発フェーズで決める
 
-組み込みの言語は、ハードウェアと用途で決まる。
+組み込みの言語は、ハードウェアごとに決めるのではなく、**開発フェーズと
+用途で決める**。「最初は Python、性能が要るときだけ Rust、C/C++ は
+レガシー対応に限る」が AI ネイティブな組み込みの作法だ。
 
-| ハードウェア | 言語 | 用途 |
-|-------------|------|------|
-| Arduino, AVR | C, C++ | 学習、簡単な制御 |
-| ESP32, RP2040 | C, C++, MicroPython | IoT、無線通信 |
-| STM32, NXP | C, C++, Rust | 産業用、精密制御 |
-| Raspberry Pi | Python, C++ | エッジ AI、画像処理 |
-| マイコン全般(プロトタイプ) | MicroPython | 試作、教育 |
+:::compare
+| 開発フェーズ | 言語 | 環境 | 用途 |
+| --- | --- | --- | --- |
+| **設計・プロトタイプ** | Python (CPython) | PC 上、Raspberry Pi | アルゴリズム検証、データ取得実験、AI モデル試験 |
+| **本番(性能が十分な場合)** | MicroPython | ESP32、RP2040 | センサー制御、IoT 通信、軽量な処理 |
+| **本番(リアルタイム性能が必要)** | Rust | STM32、RP2040、ESP32 | 高速制御、リアルタイム処理、メモリ制約下での動作 |
+| **本番(エッジ AI、画像処理)** | Python + C/Rust 拡張 | Raspberry Pi、Jetson Nano | 推論、画像処理、Linux 環境での動作 |
+| **レガシー対応のみ** | C、C++ | 各種マイコン | 既存資産の保守、認証済みコード |
+:::
 
-第一選択肢は、ハードウェアが許すなら **MicroPython または Python**。性能や容量の制約で Python が無理なら C か Rust に進む。
+第一選択肢は、ハードウェアが許すなら **MicroPython または Python**。
+性能や容量の制約で Python が無理なら **Rust**(Claude が C より
+安全に書ける)。**C/C++ は既存資産の保守のみ** ── 新規に C/C++ を
+選ぶ理由は、ほぼ無い。
 
-Raspberry Pi クラスなら、最終形も Python で良い場合が多い。**Python のまま動かせるなら、翻訳は要らない**。
+Raspberry Pi クラスなら、最終形も Python で良い場合が多い。
+**Python のまま動かせるなら、翻訳は要らない**。エッジ AI や画像
+処理で性能が要る部分は **C / Rust の拡張モジュール** にする
+(`pybind11`、`PyO3`)── これも Claude が書ける。
+
+### AI ネイティブな組み込み開発のワークフロー
+
+上の表は **静的な選択肢** だが、実際の開発は **段階的に進む**。
+ワークフローはこうなる:
+
+1. **設計とプロトタイプ** ── Claude と対話しながら、PC の Python
+   で動作確認。データ取得、アルゴリズム、AI モデルの動作を PC で
+   検証する。
+2. **マイコンへの移植** ── Claude に MicroPython 版への翻訳を
+   依頼。ESP32 や RP2040 で動かす。**多くの IoT・センサー用途は
+   ここで完結する**。
+3. **性能ボトルネックの特定** ── 動作させて測定。リアルタイム性能
+   が不足する箇所、メモリが厳しい箇所を特定する。
+4. **ホットスポットの Rust 化** ── ボトルネックだけを Claude に
+   Rust 化を依頼。MicroPython と Rust を組み合わせるか、全体を
+   Rust + `embassy` / `RTIC` で書き直す判断をする。
+5. **エッジ AI が必要な場合** ── Raspberry Pi(Linux)上で、
+   Python + C/Rust 拡張で動かす。マイコンより一段上のハードウェア
+   を使う。
+
+```mermaid
+flowchart TB
+  S1["1. 設計とプロトタイプ<br/>PC の Python + Claude"]
+  S2["2. マイコンへの移植<br/>MicroPython"]
+  Q1{"性能・メモリは<br/>足りるか?"}
+  Done1(["完了<br/>(多くの IoT は<br/>ここで止まる)"])
+  S3["3. ボトルネック特定<br/>動かして測定"]
+  S4["4. ホットスポットの Rust 化<br/>(Claude が翻訳)"]
+  Q2{"エッジ AI が<br/>必要か?"}
+  S5["5. Raspberry Pi へ<br/>Python + C/Rust 拡張"]
+  Done2(["完了<br/>(リアルタイム用)"])
+  Done3(["完了<br/>(エッジ AI 用)"])
+
+  S1 --> S2 --> Q1
+  Q1 -->|十分| Done1
+  Q1 -->|不足| S3 --> S4 --> Done2
+  Q1 -->|エッジ AI| Q2
+  Q2 -->|Yes| S5 --> Done3
+
+  classDef step fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef done fill:#fef9e7,stroke:#c8a559,color:#5a4a1a
+  class S1,S2,S3,S4,S5 step
+  class Done1,Done2,Done3 done
+```
+
+**重要なのは「最初から Rust や C で書かない」こと**。Python で
+ロジックを確かめてから、必要な部分だけ翻訳する(第1章「Python で
+考え、Claude に翻訳させる」の組み込み版)。Claude が翻訳を担う
+ので、**人間が複数の言語を行き来する負担は無い** ── 思考は Python
+で、最終形だけ言語が変わる。
+
+これも序章「**Linux + Python + AI との協働**」の組み込み版だ。
+「同じやり方」が、マイコンの先まで伸びる ── デスクワークだけ
+でなく、その先のハードウェアまで。
 
 ## MicroPython という選択
 

@@ -81,21 +81,83 @@ bool detectAnomaly(float values[], int size) {
 
 Flash it to the device and run. **Logic is already verified in Python; if it doesn't work on hardware, the cause is on the hardware side.** Debugging gets a direction.
 
-## Choosing the language
+## Choosing the language — by development phase
 
-The embedded language is determined by hardware and use case.
+Don't pick the embedded language by hardware. Pick it by
+**development phase and use case**. "Start in Python; reach for
+Rust only when performance demands it; C/C++ is for legacy only" —
+that is the AI-native embedded practice.
 
-| Hardware | Language | Use case |
-|----------|----------|----------|
-| Arduino, AVR | C, C++ | Learning, simple control |
-| ESP32, RP2040 | C, C++, MicroPython | IoT, wireless |
-| STM32, NXP | C, C++, Rust | Industrial, precise control |
-| Raspberry Pi | Python, C++ | Edge AI, image processing |
-| Microcontrollers (prototype) | MicroPython | Prototyping, education |
+:::compare
+| Development phase | Language | Environment | Use case |
+| --- | --- | --- | --- |
+| **Design and prototype** | Python (CPython) | On PC, Raspberry Pi | Algorithm validation, data-collection experiments, AI model tests |
+| **Production (performance suffices)** | MicroPython | ESP32, RP2040 | Sensor control, IoT communication, light processing |
+| **Production (realtime performance needed)** | Rust | STM32, RP2040, ESP32 | High-speed control, realtime, memory-constrained operation |
+| **Production (edge AI, image processing)** | Python + C/Rust extensions | Raspberry Pi, Jetson Nano | Inference, image processing, Linux-based deployment |
+| **Legacy maintenance only** | C, C++ | Various microcontrollers | Existing-asset maintenance, certified code |
+:::
 
-The first choice, when hardware allows, is **MicroPython or Python**. If performance or capacity rules out Python, move to C or Rust.
+The first choice, when hardware allows, is **MicroPython or Python**. If performance or capacity rules out Python, reach for **Rust** (Claude writes it more safely than C). **C/C++ is for maintaining existing assets only** — there is almost no reason to pick C/C++ for new work.
 
-For a Raspberry Pi class device, the final form is often Python too. **If you can ship Python, no translation needed.**
+For a Raspberry Pi class device, the final form is often Python too. **If you can ship Python, no translation needed.** Performance-sensitive parts in edge AI or image processing go into **C / Rust extension modules** (`pybind11`, `PyO3`) — Claude writes those too.
+
+### AI-native embedded development workflow
+
+The table above is the **static menu**; actual development moves
+through it **in stages**. The workflow:
+
+1. **Design and prototype** — Work with Claude in PC Python.
+   Validate data collection, the algorithm, and AI model behavior
+   on the PC.
+2. **Port to the microcontroller** — Ask Claude to translate to
+   MicroPython. Run on ESP32 or RP2040. **Many IoT and sensor use
+   cases stop here.**
+3. **Identify performance bottlenecks** — Run and measure. Pinpoint
+   places where realtime performance is short, or memory is tight.
+4. **Rewrite hotspots in Rust** — Ask Claude to translate only the
+   bottlenecks. Decide whether to mix MicroPython + Rust, or rewrite
+   the whole thing in Rust with `embassy` / `RTIC`.
+5. **If edge AI is needed** — Run on a Raspberry Pi (Linux) with
+   Python + C/Rust extensions. Use hardware one step above a
+   microcontroller.
+
+```mermaid
+flowchart TB
+  S1["1. Design and prototype<br/>Python on PC + Claude"]
+  S2["2. Port to MCU<br/>MicroPython"]
+  Q1{"Performance and<br/>memory sufficient?"}
+  Done1(["Done<br/>(most IoT<br/>stops here)"])
+  S3["3. Identify bottlenecks<br/>Run and measure"]
+  S4["4. Rust the hotspots<br/>(Claude translates)"]
+  Q2{"Edge AI<br/>needed?"}
+  S5["5. To Raspberry Pi<br/>Python + C/Rust ext"]
+  Done2(["Done<br/>(realtime)"])
+  Done3(["Done<br/>(edge AI)"])
+
+  S1 --> S2 --> Q1
+  Q1 -->|enough| Done1
+  Q1 -->|short| S3 --> S4 --> Done2
+  Q1 -->|edge AI| Q2
+  Q2 -->|Yes| S5 --> Done3
+
+  classDef step fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef done fill:#fef9e7,stroke:#c8a559,color:#5a4a1a
+  class S1,S2,S3,S4,S5 step
+  class Done1,Done2,Done3 done
+```
+
+**The point: don't start writing in Rust or C.** Validate the
+logic in Python, then translate only what needs translating
+(Chapter 1's "think in Python, have Claude translate" applied to
+embedded). Because Claude carries the translation, **humans don't
+have to move back and forth between languages** — thinking happens
+in Python; only the final form's language changes.
+
+This is the embedded form of the prologue's
+**"collaborate with Linux + Python + AI."** The same practice
+reaches all the way past microcontrollers — beyond desk work, into
+the hardware itself.
 
 ## MicroPython as a choice
 

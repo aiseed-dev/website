@@ -10,8 +10,8 @@ label: AI Native 12
 title_html: From <span class="accent">silos</span><br>to the autonomy of <span class="accent">one + AI</span>.
 prev_slug: verify-narratives
 prev_title: "Verifying Narratives with AI"
-next_slug: examples
-next_title: "Examples — 12 Walkthroughs"
+next_slug:
+next_title:
 ---
 
 # One Person + AI — The New Unit of Work
@@ -200,6 +200,110 @@ Before any organization is formed, **there are no silos at all** — one
 founder is the principal across every domain. Co-founder disagreements,
 role-allocation negotiation, equity dilution — **frictions originating
 in silos simply don't arise**.
+
+## Concrete example: a schoolteacher — every domain of teaching
+
+E, a public middle-school teacher. Lesson preparation, materials,
+test design, marking, parent communication, grade aggregation —
+not split across silos, all handled by **one + AI**.
+
+- **Materials**: Claude drafts unit summaries in Markdown → E
+  adjusts for the actual class → `pandoc` for PDF print or HTML
+  for student tablets.
+- **Worksheet variety**: 30 practice problems per topic, generated
+  by Python that Claude wrote (Chapter 1) — individualized by
+  difficulty.
+- **Marking support**: Claude does first-pass marking on short
+  answers (judgment stays with E); for essays, Claude extracts key
+  points and E evaluates.
+- **Grade aggregation**: Hold grades in SQLite (Chapter 4); compute
+  class distributions, semester comparisons, year-on-year with
+  Polars (Chapter 1).
+- **Parent communication**: Individual notes drafted by Claude
+  with student-data merged into Markdown templates (Chapter 1
+  "mail merge").
+- **Timetables and event plans**: Markdown plus Mermaid Gantt
+  charts (Chapter 3).
+- **Public materials**: School site as Markdown + static HTML on
+  Forgejo (Chapter 2, Chapter 7).
+
+The old silos: materials from publishers, tests from vendors,
+grades in the academic system, parent communication via PTA, web
+outsourced. **The new shape: all of it, E + Claude.** **Time spent
+on individual students grows** — exactly what moving from
+"processor" to "decider" looks like.
+
+## Concrete example: a law office — dissolving legal-services silos
+
+F, a lawyer at a small firm. Traditionally, lawyers handle legal
+judgment, paralegals draft documents, secretaries handle clients
+and accounting — separate hires for each silo.
+
+- **Contract drafting**: Claude drafts; F applies legal judgment
+  and revises.
+- **Case-law search and summary**: Claude summarizes precedents,
+  extracts points of contention; F judges applicability.
+- **Client correspondence**: Claude drafts; F reviews and sends.
+- **Invoicing and payments**: SQLite for case and invoice
+  management (Chapter 4); Python generates monthly aggregation and
+  invoice PDFs in bulk (Chapter 1).
+- **Searching past cases**: 10 years of case notes turned into
+  Markdown; Claude searches for similar cases — the "veteran's
+  memory" that used to be locked in one person becomes a searchable
+  asset.
+
+Old silos: multiple paralegals, secretaries, accounting clerks.
+**New: F + Claude + specialists only for important matters (tax
+accountant, appellate counsel).** **Time spent reading precedents
+and talking with clients grows.**
+
+## Concrete example: a translator — translate, research, publish in one
+
+G, a freelance translator. Traditionally, translators only
+translated; researchers did fact-finding, publishers did
+typesetting, printers did distribution — split into silos.
+
+- **First-pass translation**: Claude produces a first draft; G
+  shapes the Japanese context and tone (the role shifts from "first
+  draft" to "cultural adaptation").
+- **Research**: Technical terms, proper nouns, citations all
+  parallel-checked by Claude; G verifies against primary sources
+  (Chapter 11 "Verifying Narratives").
+- **Typesetting**: Markdown then `pandoc + xelatex` for PDF, or
+  EPUB for e-books (Chapter 2).
+- **Distribution**: Direct sales of PDF / EPUB on G's own website;
+  Forgejo for history (Chapter 2 "self-host") — the choice not to
+  go through a publisher.
+
+Old silos: publishers, editors, typesetters, printers, distributors
+— several companies. **New: G + Claude + editor and designer when
+needed.** The publisher's cut disappears; G's share grows; **time
+from writing to public release shrinks by an order of magnitude.**
+
+## Concrete example: a small care-home operator — records, shifts, family contact
+
+H, the operator of a small elder-care facility. H + a few care
+workers run the place.
+
+- **Care records**: Daily notes per resident, written in Markdown
+  — previously a paper journal, now structured. Hand to Claude and
+  "residents whose appetite has dropped recently" or "those with
+  more night-time agitation" can be extracted.
+- **Shift management**: SQLite for staff availability and required
+  coverage; Polars for auto-combinations; Claude generates shift
+  proposals that respect staff preferences.
+- **Family communication**: Monthly reports drafted by Claude from
+  Markdown templates plus individual notes; H reviews and sends.
+- **Government filings**: Care-fee billing, audit materials —
+  generated by Python from SQLite.
+- **Recruiting and training**: From care records, Claude produces
+  job descriptions and orientation materials grounded in the real
+  daily work.
+
+Old silos: paper care records, paper shifts, postal family
+contact, outsourced filings, recruiter-driven hiring. **New: H +
+care workers' field notes + Claude.** **Time spent on care itself
+grows**; the billing-and-filing time shrinks.
 
 ## Concrete example: inside an organization — dissolve silos from the inside
 

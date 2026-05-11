@@ -290,6 +290,68 @@ hardware yourself, 3D-print it yourself, write the control code
 yourself**. Solo launches of hardware products — what used to require
 a large organization — become realistic.
 
+### Concrete examples — what does the floor actually do with this
+
+"Specialist tools drop into your hands" is abstract. The cases
+make it real.
+
+**Case 1: catalog variations (ComfyUI)**
+
+A small retailer photographed 100 seasonal items. The backgrounds
+are too cluttered for the web catalog.
+
+- Old: reshoot, or hire a photo studio / retouch shop. ~$5 per
+  shot × 100 = $500, delivered in a week.
+- AI-native: a ComfyUI workflow (Claude writes the JSON) replaces
+  every background with white and overlays the logo on all 100 —
+  **tens of minutes, zero extra cost**.
+
+**Case 2: factory sensor housing (Build123d + 3D printing)**
+
+A floor engineer at a small manufacturer needs a housing for a
+temperature sensor on the line.
+
+- Old: contract a design firm ($1k, one month) → prototype → fix
+  → contract again …
+- AI-native: the floor engineer tells Claude "sensor dimensions,
+  mounting screw holes, cable pass-through, cooling slits" → Build123d
+  Python code comes back → STL output → 3D-printed **on the
+  factory floor the same day**.
+
+If it breaks or doesn't fit, change the dimensions and the next
+prototype is 30 minutes away. **The floor person, on the floor,
+runs the design cycle.** This is Chapter 12's "silos to autonomy"
+in concrete form.
+
+**Case 3: promotional video assets (Blender)**
+
+A regional tourism board makes a video explaining a relocation
+program.
+
+- Old: contract a video production house ($5k–20k, delivered in
+  2–3 months).
+- AI-native: Claude `bpy` builds a 3D scene from the area's map and
+  building layout (houses, fields, station, community center),
+  varies lighting by season, plans a drone-camera path, exports
+  video assets that get composed in a regular video editor. **A
+  week; cost is just AI usage.**
+
+**Case 4: interactive figures for reporting (D3)**
+
+A local-paper reporter wants to embed population-decline data in
+an article.
+
+- Old: contract a data journalist (a separate specialty hired from
+  outside); contract a web shop to embed.
+- AI-native: the reporter loads 20 years of population data into
+  SQLite, asks Claude for "a force layout of population by
+  town, color by year, hover-detail" → D3 code comes back, paste
+  it into the paper's web. **One day.**
+
+Reporters, tourism-board staff, floor engineers, small-shop
+owners — people who used to be **"the side that contracts a
+production house"** become **the side that builds**.
+
 ### The common principle — AI erases the "learning-curve wall"
 
 D3, Blender, ComfyUI, CAD — these were "specialist tools whose

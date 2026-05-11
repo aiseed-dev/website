@@ -600,6 +600,64 @@ exit to whatever the organization demands. Substance is SQLite /
 Parquet / JSON / YAML; only the human-viewed pieces live in
 OnlyOffice. **CSV is not kept in the middle.**
 
+## Concrete examples — which data goes where
+
+The abstract principle, made concrete in scenarios.
+
+**Small retail inventory**
+
+- **Product master** (SKU, name, supplier, cost, list price), with
+  updates → **SQLite** (`UNIQUE(sku)`, `NOT NULL(name)`).
+- **Daily sales** (transaction log), append-only, large →
+  **Parquet** (weekly rotation, monthly aggregation).
+- **Purchase orders** (one per supplier, nested) → **JSON** (issued
+  as JSON, then PDF via `pandoc` from Chapter 1).
+- **Stock-count aggregation tables for humans** (formatted) →
+  **OnlyOffice `.xlsx`** (aggregation done in Polars from SQLite,
+  Chapter 1).
+- **Settings** (tax rate, tax display rule, carrier choice) →
+  **YAML** (versioned, comments explain why).
+
+**Sole-proprietor consultancy**
+
+- **Customer master** (company, contact, email, status) → **SQLite**.
+- **Engagement history** (multiple engagements per customer) →
+  **SQLite** (`FOREIGN KEY`).
+- **Invoice template plus per-invoice data** → **Markdown + JSON**
+  (Markdown as template, JSON for merge data per customer).
+- **Monthly distribution report** → **Markdown → PDF** (substance
+  in Markdown, charts via Altair, Chapter 3).
+- **API responses** (from freee / MoneyForward) → **JSON** as-is,
+  imported into SQLite.
+
+**A university research group**
+
+- **Experimental data** (millions to billions of sensor rows, image
+  metadata) → **Parquet** (columnar, compressed, SQL via DuckDB).
+- **Paper notes** (research, citations, your own thoughts) →
+  **Markdown** (Chapter 2).
+- **Data shared with collaborators** → **JSON / Parquet**.
+- **Conference slides** → **Markdown + Marp** (Chapter 3).
+- **Ten years of experimental setup archives** → **YAML**
+  (settings + comments).
+
+**A small law firm**
+
+- **Case management** (client, case type, deadline, status) →
+  **SQLite**.
+- **Case-law personal notes** (kept searchable) → **Markdown**
+  (Chapter 2; also functions as a Forgejo wiki, Chapter 2).
+- **Contract templates plus per-case data** → **Markdown + JSON**.
+- **Accounting records** → **SQLite** (contains personal
+  information; must be self-hosted, Chapter 2's "privacy →
+  self-host").
+- **The firm's public blog** → **Markdown** (web-built in
+  Chapter 7).
+
+What unites every one of these is **Chapter 1's "Python reads and
+writes"** — the moment the toolkit is in place, every industry uses
+the same operations.
+
 ## Readable in ten years
 
 `.xls` files from twenty years ago sometimes break layout in today's

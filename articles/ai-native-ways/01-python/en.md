@@ -94,6 +94,8 @@ Three options.
 
 Run with the `python` command. Files on your machine just work. The first step has a small hurdle, but once installed, it works forever. Mac and Linux often have Python preinstalled. On Windows, install from the Microsoft Store.
 
+For package and tool installation, **default to `uv`** (a fast Rust-built installer). For **data science and scientific computing** workflows where `uv` struggles — `numpy` / `scipy` / `pytorch` / `tensorflow` / GPU libraries / GIS / bioinformatics with heavy C/C++/Fortran dependencies — switch to **Miniforge** (the FLOSS conda distribution that uses conda-forge by default; not bound by Anaconda's commercial terms). **Both are equally usable from AI** — ask Claude "install with `uv`" or "install with `conda`" and the right commands come back. The "skill of using, not writing" applies to package managers too.
+
 **Two: use Claude's code execution**
 
 Paste code into Claude and ask "run this." For light processing, you don't need to set up an environment locally.

@@ -104,7 +104,7 @@ Honestly — **the entrance is a bit of work**:
 
 - Get comfortable with Linux (terminal, file system, `ls` / `cd` /
   permissions)
-- Learn how to *use* Python (`uv` install, libraries, JupyterLab)
+- Learn how to *use* Python (default: `uv`; for data science / scientific computing: **Miniforge** — libraries, JupyterLab)
 - Three Git motions (`add` / `commit` / `push`)
 - Pick one editor (Zed / VSCodium / Neovim)
 - Stand up Forgejo on a miniPC of your own (Chapter 2)

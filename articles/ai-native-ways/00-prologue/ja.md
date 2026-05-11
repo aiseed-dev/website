@@ -272,8 +272,8 @@ Web         : HTML + CSS + JavaScript
 
 - Linux に慣れる(ターミナル、ファイルシステム、`ls` / `cd` /
   パーミッション)
-- Python の「使い方」を覚える(`uv` のインストール、ライブラリ、
-  JupyterLab)
+- Python の「使い方」を覚える(標準は `uv`、DS/科学計算は
+  **Miniforge** ── ライブラリ、JupyterLab)
 - Git の三つの動作(`add` / `commit` / `push`)
 - エディタ(Zed / VSCodium / Neovim のどれか)を選ぶ
 - 自分用の miniPC に Forgejo を立てる(第2章)

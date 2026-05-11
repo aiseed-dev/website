@@ -172,6 +172,57 @@ JupyterLab で十分でない場面のために、選択肢も挙げておく。
 
 迷ったら **JupyterLab で始める**。Excel と同じ感覚で入れる。
 
+### Python 環境の入れ方 ── 標準は uv、DS/科学計算は Miniforge
+
+Python そのものとライブラリ群をどう入れるか。**用途で二択**:
+
+:::compare
+| 入れ方 | 適している用途 | 特徴 |
+| --- | --- | --- |
+| **`uv`**(標準) | 日常の Python、CLI ツール、Web、業務スクリプト、Polars / FastAPI / Markdown 周り | 圧倒的に速い、Rust 製、PyPI を素直に扱う、`uv tool install` で配布可 |
+| **Miniforge**(DS/科学計算) | データ分析、機械学習、画像処理、科学計算、GPU(`numpy` / `scipy` / `scikit-learn` / `pytorch` / `tensorflow` / `gdal` など) | conda-forge をデフォルトに使う FLOSS 版 conda。複雑な C/C++/Fortran 依存を **コンパイル済みバイナリ** で配る |
+:::
+
+**まず `uv`** から入れる。ほとんどの場面はこれで足りる。
+
+```bash
+# Mac / Linux / Windows(WSL):公式インストーラ
+$ curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 以後はこれで Python ツールが入る
+$ uv tool install jupyterlab
+$ uv tool install polars
+```
+
+**DS/科学計算で `uv` がうまくいかない場合は Miniforge** に切り替える。
+具体的には:
+
+- `numpy` / `scipy` / `pytorch` / `tensorflow` のビルドが手元で
+  失敗する(BLAS / LAPACK / CUDA との結合)
+- GIS 系(`gdal`、`rasterio`)・天文系・生物系のライブラリで C/C++
+  依存が膨大
+- GPU を使う深層学習で、CUDA バージョンを揃える必要がある
+- Anaconda の有償化を避けつつ、conda の依存解決の強さは欲しい
+
+```bash
+# Miniforge(完全 FLOSS、Anaconda の商用条項に縛られない)
+$ curl -L -O https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh
+$ bash Miniforge3-*.sh
+
+# 以後はこれで環境を作る
+$ conda create -n ds python=3.12 jupyterlab polars numpy scipy scikit-learn
+$ conda activate ds
+```
+
+> **迷ったら uv。`uv` のエラーが続いたら Miniforge**。
+> どちらも **AI が同じように扱える** ── Claude に「`uv` で入れて」
+> 「`conda` で入れて」と頼めば、それぞれの作法でコマンドが返る。
+> 「書く能力ではなく使う能力」(本章冒頭)はパッケージマネージャに
+> も同じく適用される。
+
+(本書のサンプルコードは原則 `uv` 前提だが、Miniforge でも `conda
+install` に置き換えれば同じものが動く。)
+
 ## マクロ・VBA を Python に外部化する
 
 Excel(と Word)に埋め込まれた **マクロ・VBA を Python に書き換える**

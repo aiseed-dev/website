@@ -76,6 +76,101 @@ diagrams  : Mermaid
 
 All text. AI can read and write it directly. It will still be readable in ten years.
 
+## One way of working, every domain — Linux + Python + AI
+
+The toolkit looks like many pieces, but **the practice underneath
+them is one**:
+
+> **Linux + Python + AI as your assistant** — with this alone, you
+> can handle **writing, software development, design, embedded —
+> all in the same way**.
+
+| Domain | The same practice |
+| --- | --- |
+| **Writing** | Markdown / AsciiDoc / MyST / LaTeX — written as text, versioned in Git, Claude proofreads and translates |
+| **Software development** | Python / HTML+CSS+JS — written as text, versioned in Git, Claude writes the code |
+| **Data work** | JSON / SQLite / Parquet — held as structure, analyzed in JupyterLab + Polars + Claude |
+| **Design** | Mermaid / Claude Design / D3 / Blender / CAD — written as scripts, Claude writes the syntax |
+| **Embedded** | Design and verify in Python, **Claude translates to C / C++** (Chapter 9) |
+
+All the same motion: **hold things as text and code → record history
+in Git → Claude writes, the human decides**. Once you've learned
+this practice, **changing domain no longer means relearning
+different tools, different cultures, different subscriptions**.
+
+### The entry is a little hard, but only once
+
+Honestly — **the entrance is a bit of work**:
+
+- Get comfortable with Linux (terminal, file system, `ls` / `cd` /
+  permissions)
+- Learn how to *use* Python (`uv` install, libraries, JupyterLab)
+- Three Git motions (`add` / `commit` / `push`)
+- Pick one editor (Zed / VSCodium / Neovim)
+- Stand up Forgejo on a miniPC of your own (Chapter 2)
+
+Cross that threshold and **every domain feels the same**. Word
+mechanics, Excel mechanics, Figma mechanics, PowerPoint mechanics,
+each CAD package's mechanics, each 3D tool's mechanics — you don't
+have to keep memorizing them **separately**.
+
+> **Pay the "one-time small entry cost" and the return — "every
+> domain, the same way" — lasts a lifetime.** The total cost of
+> separately mastering Office, Figma, Photoshop, SolidWorks, and
+> every other specialized tool is far higher than the cost of
+> Linux + Python + AI.
+
+### Windows / Mac give you the same practice too
+
+We said "Linux," but **the practice itself is the same on Mac and
+Windows**:
+
+- **Mac** (macOS): Unix-based — terminal (zsh), Homebrew, Python.
+  Feels nearly identical to Linux.
+- **Linux**: Ubuntu / Debian / Fedora / Arch — any of them.
+- **Windows**: WSL2 + Ubuntu gives you a Linux compatibility layer
+  — Microsoft itself ships this.
+
+So **you can start tomorrow on whatever machine you have today**.
+Once you're comfortable, expand to a miniPC or a Linux box — that
+ties into the self-hosting story in Chapter 2.
+
+### AI carries the syntax — that's what makes "the same way" possible
+
+Why does "every domain, the same way" work? Because **Claude writes
+the syntax**:
+
+- Markdown symbols, Python grammar, HTML/CSS selectors, Mermaid
+  notation, Polars APIs, Altair declarations, D3 selections,
+  Blender's `bpy`, Build123d's geometry, Forgejo's `systemd` unit,
+  C pointers — **Claude writes all of it**.
+- What humans learn: **what to make, what structure to hold it in,
+  whether the result is right**.
+- Once you have this practice, entering a new domain becomes:
+  **"this is something to ask Claude for."**
+
+The D3 / Blender / ComfyUI / CAD section of Chapter 3, the embedded
+work of Chapter 9 — these are all the **same extension** of the same
+practice. The era of "every specialist tool with its own
+operations" is replaced by the era of **"extend one practice across
+every domain."**
+
+### In short — desk work, unified
+
+Writing documents, building tables, drawing charts, composing
+diagrams, writing code, building slides, building web pages,
+building apps, designing parts in CAD, building 3D models, writing
+hardware control, generating reports, replying to email, drafting
+contracts — **all of these get handled the same way**.
+
+The need to **separately master office software, design software,
+development environments, CAD packages, and countless SaaS** is
+gone. Desk work as a whole consolidates into **one practice**:
+Linux + Python + AI.
+
+> In short, **desk work becomes unified**.
+> This is the destination this book's toolkit aims for.
+
 ## Tools shape thought
 
 Write in Word, and you focus on formatting. Write in Markdown, and structure comes first.

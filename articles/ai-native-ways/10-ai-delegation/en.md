@@ -241,7 +241,7 @@ handed to the AI is visible.**
 
 ### The alternative design (this book's recommendation)
 
-- **Hold business data as Markdown / CSV / JSON** (not bound to Office).
+- **Hold business data as Markdown / JSON / YAML / SQLite** (not bound to Office; CSV is not used either).
 - **Use Claude / Claude Code as a separate app** (not integrated into the
   editor or Office).
 - **Hand-pick what to paste to the AI** (don't allow auto-access).
@@ -534,7 +534,7 @@ is the easiest path, and the most dangerous.** The information sandbox
 collapses, vendor lock-in deepens, and Mythos-class vulnerabilities get
 built into the center of your work. **Use AI inside a sandbox** — a
 separate app, processing only the data the human chose to hand it. The
-toolkit of this book (Markdown / CSV / Python / Claude Code) aligns with
+toolkit of this book (Markdown / JSON / SQLite / Python / Claude Code) aligns with
 the sandbox principle from the start.
 
 For work you want automated, **freeze it into Python code and Linux commands, not into AI agents**. Use AI as a generator. Don't use AI as a runtime. **Costs drop, speeds up, becomes reproducible, becomes safe.**

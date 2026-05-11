@@ -10,7 +10,7 @@ title_html: <span class="accent">デザイン</span>もテキストで。<br><sp
 prev_slug: markdown
 prev_title: 文書を書く ── Markdownという最小の選択
 next_slug: data-formats
-next_title: データを持つ ── JSON/CSV/YAMLで考える
+next_title: データを持つ ── JSONとYAMLで考える
 ---
 
 # デザインをする ── Mermaid と Claude デザインで作る
@@ -194,7 +194,7 @@ D3.js は Web ブラウザで動く可視化ライブラリ。Excel のグラフ
 
 AI を介すと:
 
-> あなた:この CSV を D3 で、力学グラフ(force layout)として
+> あなた:この JSON を D3 で、力学グラフ(force layout)として
 > 描いて。ノードを色分け、ホバーで情報表示、ズーム可。
 >
 > Claude:(D3 のコードが返る)
@@ -423,13 +423,13 @@ Figma、Sketch、Adobe XD、PowerPoint、Visio、SolidWorks、Illustrator
 専門家は引き続き必要だ。**だが、彼らの時間が「下書き」ではなく
 「専門領域」に向く**ように、自分側でできることを Claude で拾う。
 
-次の章では、データの持ち方の話に進む。Excel から JSON / CSV / YAML へ、更新があるデータは SQLite + Python、大量データは Parquet と DuckDB へ。
+次の章では、データの持ち方の話に進む。Excel から JSON / YAML へ、更新があるデータは SQLite + Python、大量データは Parquet と DuckDB へ ── CSV は構造化が弱いので捨てる。
 
 ---
 
 ## 関連記事
 
 - [第2章: 文書を書く ── Markdownという最小の選択](/ai-native-ways/markdown/)
-- [第4章: データを持つ ── JSON/CSV/YAMLで考える](/ai-native-ways/data-formats/)
+- [第4章: データを持つ ── JSONとYAMLで考える](/ai-native-ways/data-formats/)
 - [第7章: Webを作る ── HTML+CSS+JavaScriptという原点回帰](/ai-native-ways/web/)
 - [序章: 事務処理はOffice、業務ソフトはJava/C#、しかしAIはPythonとテキスト](/ai-native-ways/prologue/)

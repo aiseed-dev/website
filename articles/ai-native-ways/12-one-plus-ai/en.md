@@ -80,7 +80,7 @@ With AI-native tools, the domains one person can cover
 **expand dramatically**:
 
 - **Accounting** — Claude generates invoice PDFs, derives journal
-  entries from CSV.
+  entries from SQLite / JSON.
 - **Legal** — Claude drafts contracts, surfaces risks, references
   precedent.
 - **Marketing** — Claude drafts blog posts, social copy, newsletters,
@@ -112,8 +112,8 @@ They are **the gear for dissolving silos**.
   automation
 - Write documents in **Markdown** — general documents
 - Save diagrams in **Mermaid** — design, illustration, presentation
-- Hold data in **JSON / CSV / YAML / SQLite / Parquet** — a common
-  container across domains
+- Hold data in **JSON / YAML / SQLite / Parquet** — a common
+  container across domains (**drop CSV** — Chapter 4)
 - Step away from **Office** (kept as a converter layer) — escape the
   vendor silo too
 - **Business systems** are not broken; you operate outside the
@@ -133,9 +133,9 @@ person.
 
 A, a sole proprietor (consulting). What happens at month-end:
 
-- **Invoicing**: Claude reads the customer master (CSV) and generates
+- **Invoicing**: Claude reads the customer master (SQLite) and generates
   invoice PDFs for each client. No accounting clerk needed.
-- **Expenses**: Receipt photos → Claude OCRs, classifies, exports CSV.
+- **Expenses**: Receipt photos → Claude OCRs, classifies, exports JSON (and appends straight to SQLite).
 - **Monthly report**: Sales + expenses → Claude writes a Markdown
   report. The accountant is called only for tax filing.
 - **Contracts**: New-client contracts — Claude drafts; edits go to a
@@ -313,7 +313,7 @@ everyone's data flows the same way. **Diversity disappears.**
 
 ### The decentralized path — no silo at all
 
-- **Each person holds their own tools** (Markdown / CSV / Python /
+- **Each person holds their own tools** (Markdown / JSON / SQLite / Python /
   Claude Code).
 - **Each person holds their own data** (local files, history in git).
 - **Each person holds their own judgment** (AI proposes; humans
@@ -470,7 +470,7 @@ Not tomorrow. Not next month. Today, right now.
 The first step can be anything:
 
 - The next note you write — in Markdown, not Word.
-- The next table — in CSV, not Excel.
+- The next table — held in JSON or SQLite, not Excel.
 - The next diagram — in Mermaid, not PowerPoint.
 - The next piece of processing — have Claude write the Python.
 - The next Word file that arrives — pass to Claude, get Markdown back.

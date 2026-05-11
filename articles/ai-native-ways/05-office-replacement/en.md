@@ -4,12 +4,12 @@ number: "05"
 lang: en
 title: "Changing Paperwork — A Realistic Path Away from Office"
 subtitle: "Not about efficiency. About the quality of work and personal autonomy"
-description: The real reason to leave Office is not time savings. Inside Office, AI stays a tool. Bring the substance down to Markdown, CSV, and Python, and AI becomes a colleague — and you become "the person who decides." Python did not arrive in Excel; Python was imprisoned inside Excel. Trusting vendors means being taken hostage when their interests shift. This is about the quality of work and personal autonomy.
+description: The real reason to leave Office is not time savings. Inside Office, AI stays a tool. Bring the substance down to Markdown, JSON / SQLite, and Python, and AI becomes a colleague — and you become "the person who decides." Python did not arrive in Excel; Python was imprisoned inside Excel. Trusting vendors means being taken hostage when their interests shift. This is about the quality of work and personal autonomy.
 date: 2026.05.02
 label: AI Native 05
 title_html: Finish your paperwork<br><span class="accent">outside Office</span>, with AI.
 prev_slug: data-formats
-prev_title: "Holding Data — Think in JSON, CSV, YAML"
+prev_title: "Holding Data — Think in JSON and YAML"
 next_slug: business-systems
 next_title: "Working with Business Systems — Rewrite via Parallel Operation"
 ---
@@ -22,7 +22,7 @@ First, don't misread the reason for leaving Office. **This is not about efficien
 
 "30 minutes of work becomes 30 seconds" — many books and articles say this. It does happen, as a side effect. But that is not the substance.
 
-The substance is this: **inside Office, AI stays a tool. Bring things down to Markdown, CSV, and Python, and AI becomes a colleague — and you become "the person who decides."** And your work system stops being **hostage to vendor business models**.
+The substance is this: **inside Office, AI stays a tool. Bring things down to Markdown, JSON / SQLite, and Python, and AI becomes a colleague — and you become "the person who decides."** And your work system stops being **hostage to vendor business models**.
 
 ## Inside Office, AI is not a colleague
 
@@ -35,7 +35,7 @@ The result: AI is **usable** but **not a colleague**:
 - You can ask "continue this section" — *but* you spend effort matching formats
 - Every time, you feel you are speaking to "an assistant on the other side of the Office wall"
 
-The moment you drop down to Markdown and CSV, that wall disappears. AI reads structured text directly, writes it directly, returns thoughts. **It feels like working next to a colleague.**
+The moment you drop down to Markdown and JSON / SQLite, that wall disappears. AI reads structured text and data directly, writes it directly, returns thoughts. **It feels like working next to a colleague.**
 
 > Not efficiency. **The relationship with AI changes** — that is the first reason to leave Office.
 
@@ -54,7 +54,7 @@ For most people, all three have lived in Office. A Word file arrives, you open i
 ```mermaid
 flowchart LR
   In["Entrance<br/>Word / Excel / PDF<br/>(from others)"]
-  Mid["Substance<br/>Markdown / CSV / Python<br/>(your working surface)"]
+  Mid["Substance<br/>Markdown / JSON / SQLite / Python<br/>(your working surface)"]
   Out["Exit<br/>Word / Excel / PDF<br/>(to others)"]
   Claude(("Claude"))
 
@@ -168,7 +168,7 @@ The CrowdStrike outage, the Exchange Online compromise — concentration on a si
 
 ### Keep it on your side — Markdown / Python / local LLM as a choice
 
-Bring things down to Markdown / CSV / Python / OnlyOffice, and the structure changes:
+Bring things down to Markdown / JSON / SQLite / Python / OnlyOffice, and the structure changes:
 
 - **The data is yours** — local files, versioned in Git
 - **The AI vendor is a choice** — Claude / GPT / Gemini / local LLM
@@ -203,11 +203,11 @@ Meeting notes, personal research, task lists — start writing the documents you
 
 That alone lets you ask AI "lay out the points in this note," "find the axes of disagreement," "list what to confirm next." **The moment you escape the open-Word / close-Word cycle, dialogue with AI begins.**
 
-### Hold tables in CSV / SQLite
+### Hold tables in JSON / SQLite / OnlyOffice
 
-Product lists, customer lists, ledgers — simple tables belong in CSV; if there are updates, SQLite (Chapter 4). When you want to view in Excel, OnlyOffice or LibreOffice opens them.
+Product lists, customer lists, ledgers — mutable data in **SQLite**, handoff in **JSON**, human-viewed aggregation tables in **OnlyOffice** (`.xlsx`) — see Chapter 4. **CSV is dropped** — its structuring is too weak, no types, no schema.
 
-In CSV or SQLite, you can ask AI "find the outliers," "explain the change from last month in prose," "which customer should I watch next." **Questions that were inaudible inside Excel** become askable.
+In SQLite / JSON, you can ask AI "find the outliers," "explain the change from last month in prose," "which customer should I watch next." **Questions that were inaudible inside Excel** become askable.
 
 ### Move repeating work to Python
 
@@ -235,7 +235,7 @@ The job you are doing here is **"tidying numbers."**
 
 **New flow** (structured substance):
 
-Read sales data as CSV (or SQLite) → aggregate with Python that Claude wrote, output as a Markdown table → draw the chart in Mermaid or Altair → embed in Markdown → Claude drafts the prose → **you add interpretation and judgment** → convert Markdown to PDF / Word.
+Read sales data from SQLite (or take in the incoming `.xlsx` with Polars) → aggregate with Python that Claude wrote, output as a Markdown table → draw the chart in Mermaid or Altair → embed in Markdown → Claude drafts the prose → **you add interpretation and judgment** → convert Markdown to PDF / Word.
 
 The job you are doing here is **"thinking about what the numbers mean."**
 
@@ -288,7 +288,7 @@ The substance of this chapter is **beyond that**. Leave Office and spend your ti
 
 ## In summary
 
-Move office work from Office-centered to Markdown + CSV + Python centered.
+Move office work from Office-centered to Markdown + JSON / SQLite + Python centered.
 
 This is not about efficiency.
 
@@ -301,7 +301,7 @@ Efficiency happens as a side effect. The substance is that **the quality of work
 
 The story that sounds like "Python landed in Excel" turned out, in its content, to be "Python was imprisoned inside Excel." Don't repeat the same trap with AI. **Keep your own system on your own side** — this is, before it is a technical choice, **a choice about the autonomy of the individual and the organization**.
 
-Office work is the easiest occupation to transition to AI-native. You don't need to be technical. **If you can read Markdown, understand CSV, and ask Claude — that is enough.** From there, drop things down at your own pace — and as you drop, the territory of "the decider" expands, and the territory of "your own system" expands.
+Office work is the easiest occupation to transition to AI-native. You don't need to be technical. **If you can read Markdown, recognize what JSON / YAML / SQLite each represent, and ask Claude — that is enough.** AI writes the syntax. From there, drop things down at your own pace — and as you drop, the territory of "the decider" expands, and the territory of "your own system" expands.
 
 The next chapter moves to working with business systems. For technical roles.
 
@@ -311,7 +311,7 @@ The next chapter moves to working with business systems. For technical roles.
 
 - [Chapter 01: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Chapter 02: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
-- [Chapter 04: Holding Data — Think in JSON, CSV, YAML](/en/ai-native-ways/data-formats/)
+- [Chapter 04: Holding Data — Think in JSON and YAML](/en/ai-native-ways/data-formats/)
 - [Prologue: Office for paperwork, Java/C# for business systems — but AI runs on Python and text](/en/ai-native-ways/prologue/)
 - [Structural Analysis 08: Removing the Enterprise IT Tax](/en/insights/enterprise-tax/)
 - [Are You Still Using Windows and Office?](/en/blog/windows-office-facts/)

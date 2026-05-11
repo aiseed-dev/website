@@ -11,7 +11,7 @@ title_html: <span class="accent">Design</span>, also in text.<br><span class="ac
 prev_slug: markdown
 prev_title: "Writing Documents — Markdown as the Minimal Choice"
 next_slug: data-formats
-next_title: "Holding Data — Think in JSON, CSV, YAML"
+next_title: "Holding Data — Think in JSON and YAML"
 ---
 
 # Designing — With Mermaid and Claude Design
@@ -183,7 +183,7 @@ The learning cost is high. It has its own concepts ("data binding,"
 
 Through AI:
 
-> You: With this CSV, draw a D3 force layout. Color the nodes,
+> You: With this JSON, draw a D3 force layout. Color the nodes,
 > show info on hover, zoom enabled.
 >
 > Claude: (D3 code comes back)
@@ -418,13 +418,13 @@ Chapter 1.
 Specialists remain necessary. **But their time goes to specialist
 territory, not drafts** — you take the draft work over with Claude.
 
-The next chapter moves to how you hold data — from Excel to JSON / CSV / YAML, with SQLite + Python for mutable data and Parquet + DuckDB for large-scale data.
+The next chapter moves to how you hold data — from Excel to JSON / YAML, with SQLite + Python for mutable data and Parquet + DuckDB for large-scale data. CSV is dropped — its structuring is too weak.
 
 ---
 
 ## Related
 
 - [Chapter 02: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
-- [Chapter 04: Holding Data — Think in JSON, CSV, YAML](/en/ai-native-ways/data-formats/)
+- [Chapter 04: Holding Data — Think in JSON and YAML](/en/ai-native-ways/data-formats/)
 - [Chapter 07: Building for the Web — Back to HTML+CSS+JavaScript](/en/ai-native-ways/web/)
 - [Prologue: Office for paperwork, Java/C# for business systems — but AI runs on Python and text](/en/ai-native-ways/prologue/)

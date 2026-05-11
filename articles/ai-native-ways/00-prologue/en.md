@@ -207,22 +207,44 @@ to carry them through**:
 - Answers lookups **faster than searching yourself**, and
   structured.
 
-### Don't second-guess "can AI really do this"
+### Treat AI the way you'd treat a colleague or junior staff
 
-The most common mistake here is **"just to be safe, I'll do this
-fine-grained piece myself"**. That's an old habit.
+Two common mistakes here:
 
-**AI has the capability.** Try it, look at the result, ask for
-corrections in plain language — that is the loop (Chapter 1's
-"Don't fear 'it didn't run'").
+- **"Just to be safe, I'll do this fine-grained piece myself."**
+- Or the opposite: **"AI said so" — accepted without checking.**
+
+Both are old habits. The right approach is simple: **treat AI the
+way you would treat a colleague or junior staff member.**
+
+When you hand work to a capable colleague or junior, you:
+
+- **State clearly what you want done** (inputs, outputs, conditions,
+  deadlines).
+- **Read what comes back, and check it.**
+- For the parts that aren't quite right, **say what to change, in
+  words**.
+- If several rounds still don't land, **rethink the way you're
+  asking**.
+- **Make the important decisions yourself.**
+
+The same applies to Claude:
 
 - Output doesn't match expectations → ask for revisions in words.
-- An error appears → paste the error and ask for cause + fix.
-- Several back-and-forths don't resolve it → that's a signal to
-  rethink the design itself.
+- An error appears → paste the error, ask for cause and fix.
+- Several rounds still don't resolve it → rethink the prompt, or
+  rethink the design (Chapter 1's "Don't fear 'it didn't run'").
+- Read what came back, and **make the judgment yourself** — don't
+  accept mechanically.
 
-**Getting used to handing off the fine-grained work entirely** is
-the foundation of this book's practice.
+**Not "constantly second-guess," and not "swallow whole."**
+**Trust, hand off, look at the result, decide** — exactly the
+practice you'd use with a colleague.
+
+Getting used to this is the foundation of the book's practice. As
+Chapter 5 will show, the moment you step outside Office, AI shifts
+from "tool" to "colleague" — and **preparing to treat it as one
+starts here.**
 
 ### What remains for humans is judgment
 

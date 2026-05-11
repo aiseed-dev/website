@@ -152,6 +152,45 @@ Battery-powered for long durations, tight memory — then translate to C. Ask Cl
 
 In many cases, Stage 2 is the end. MicroPython is sufficient.
 
+## Example: a farmer's field-sensor network
+
+A second case. Farmer B wants soil-moisture, temperature, and solar
+irradiance sensors at several spots in the field. Commercial
+solutions cost ~$300 per unit and pool data in the vendor's cloud.
+
+**Stage 1 (Python on PC):**
+Develop the irrigation-decision logic against historical weather
+data (Chapter 1's "pull from the meteorological-agency API"):
+"recommend irrigation if irradiance ≥ X Wh/m² plus soil moisture
+< Y % for three consecutive hours." Apply with Polars to historical
+data, tune the thresholds. Claude writes the first version.
+
+**Stage 2 (MicroPython on device):**
+Port the logic to ESP32 + sensors (~$20 total). MicroPython, so the
+PC code runs almost as-is. JSON log every minute to an SD card.
+
+**Stage 3 (aggregate on the farmhouse miniPC):**
+A miniPC at the farmhouse (the same machine running Forgejo from
+Chapter 2, or a separate one). ESP32s send JSON via WiFi every 10
+minutes; accumulate in Parquet; Altair for daily charts; SQLite
+for anomaly history.
+
+**Stage 4 (design and 3D-print the irrigation actuator):**
+Housing for the solenoid valve **designed in Build123d
+(Chapter 3) and 3D-printed**. ESP32 relay output drives the valve;
+Python control code is translated by Claude to C only if MicroPython
+memory runs out.
+
+**Result**: a few dollars per spot, the data is yours, no vendor
+cloud subscription, the decision logic is readable in Markdown, and
+even repair is in your hands (3D-print a fresh part).
+
+This is the **technical implementation** of Chapter 12's "from
+silos to individual autonomy — farmer edition." Chapter 1 (Python),
+Chapter 3 (CAD), Chapter 4 (Parquet), Chapter 7 (web dashboard via
+FastAPI if you want one) — **the toolkit of the entire book
+converges into one project**.
+
 ## Readable in ten years
 
 C has been around for 50 years. It will run for another 50. Python has been around for 30 and will run for another 30.

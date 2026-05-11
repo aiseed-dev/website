@@ -346,6 +346,68 @@ Forgejo / Gitea / Codeberg は、リポジトリの `README.md` や `.md`
 見られる** ── 別途静的サイトジェネレータをビルドしなくても、
 **社内 Wiki として機能する**。
 
+### 具体例:Forgejo + miniPC でどう運用するか
+
+抽象的な「セルフホスト」は、具体例で見ると分かりやすい。
+
+**例 1:個人事業主のコンサルタント A さん**
+
+机の下に Beelink miniPC(3 万円、Ubuntu)。Forgejo を `systemd` で
+常時稼働。ドメイン `forge.example.jp` を Cloudflare で取得、
+Cloudflare Tunnel で外部公開(家のルーターに穴を開けない)。
+
+リポジトリ構成:
+
+- `client-master`(顧客マスタ・契約書テンプレ)── プライベート
+- `engagement-2026Q2`(現在進行案件のノート、Markdown)── プライベート
+- `invoices`(請求書テンプレ・JSON データ・生成スクリプト)── プライベート
+- `blog`(公開記事の Markdown 原稿)── プライベート
+  (公開は静的 HTML を Cloudflare Pages へ)
+- `home`(個人ノート、メモ、本の感想)── プライベート
+
+Zed で書く → `git push` → Forgejo に履歴が残る。**机の MacBook が
+壊れても、miniPC に履歴がある**。バックアップは miniPC から外付け
+SSD に毎日 cron で `rsync`。
+
+**例 2:5 人の制作プロダクション B 社**
+
+社内に Intel NUC(6 万円、Debian)。Forgejo に社員 5 人のアカウント、
+それぞれ private リポジトリ + 共有プロジェクトリポジトリ。社内 LAN
+からのアクセスのみ(外部公開しない、`tailscale` で社外からも安全に)。
+
+- `client-projects/*`(顧客ごとのプロジェクト一式 ── Markdown 原稿、
+  Mermaid 設計図、Python スクリプト、Altair で作ったレポート)
+- `internal-wiki`(社内ルール、ワークフロー、議事録、業務手順)
+- `templates`(契約書・見積書・提案書のテンプレ、Markdown + JSON)
+
+社内 Wiki は **`internal-wiki` の `README.md` を Forgejo の Web 画面
+で開くだけ**。Notion も Confluence も要らない。**月額のサブスク料金
+が消える**(月 5 千円 × 5 人 × 12 ヶ月 = 年間 30 万円)。
+
+**例 3:学校教師グループ C さん(教員 3 人で共有)**
+
+職員室の片隅に Mac mini(中古、2 万円、macOS のままで Forgejo を
+動かす)、LAN 内のみで運用、外部公開しない。
+
+- `units-2026`(各単元の教材 Markdown、Python で生成した練習問題)
+- `students-data`(個人情報なので絶対外に出さない、SQLite + 統計)
+- `grade-aggregation`(成績集計の Polars スクリプト)
+- `parent-letters`(差し込み印刷用の Markdown テンプレ + JSON)
+
+教員間で「あの先生の昨年度の単元」がそのまま見られる、`git history`
+で「前任者がどう改訂してきたか」も読める。**業務知識が学校に残る**
+(担当者の異動で消えない)。
+
+これらに共通するのは、
+
+- **3〜6 万円の miniPC + 月額費ゼロ**(電気代は月数百円)
+- Forgejo は単一バイナリ、設定は Claude に頼める
+- プライベートに保つ・LAN 内限定にする・外部公開する、**用途で
+  使い分ける**
+- 中身は **Markdown + JSON + SQLite + Python**(本書全体の道具立て)
+
+「サーバーを立てる」が、想像よりずっと敷居が低いことが分かる。
+
 > 本格的に仕事として Markdown を扱うなら、
 > **書く道具(エディタ)** と **置く場所(Forgejo)** の両輪が要る。
 > 一人でもバックアップは必須、プライバシーが要るものはセルフ

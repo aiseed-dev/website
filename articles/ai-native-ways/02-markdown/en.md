@@ -342,6 +342,76 @@ standard. **What you wrote is what is visible on the web** — without
 running a separate static-site generator, the forge **doubles as an
 internal wiki**.
 
+### Concrete examples — what Forgejo + miniPC actually looks like
+
+The abstract "self-host" is easier to see in cases.
+
+**Case 1: A, a sole-proprietor consultant**
+
+A Beelink miniPC under the desk (~$200, Ubuntu). Forgejo running
+under `systemd` 24/7. Domain `forge.example.com` via Cloudflare; a
+Cloudflare Tunnel exposes it externally without opening ports on
+the home router.
+
+Repositories:
+
+- `client-master` (customer master, contract templates) — private
+- `engagement-2026Q2` (current engagement notes in Markdown) — private
+- `invoices` (invoice templates + JSON data + generation script) — private
+- `blog` (public articles' Markdown drafts; published as static HTML
+  on Cloudflare Pages) — private
+- `home` (personal notes, book responses) — private
+
+Write in Zed → `git push` → history lives in Forgejo. **If the
+MacBook on the desk dies, the history is still in the miniPC.**
+Daily backup from miniPC to an external SSD via cron `rsync`.
+
+**Case 2: B, a 5-person creative production company**
+
+In the office, an Intel NUC (~$400, Debian). Forgejo with five
+employee accounts; each has private repos plus shared project
+repos. LAN access only; `tailscale` for safe access from outside.
+
+- `client-projects/*` (one repo per project — Markdown copy, Mermaid
+  design diagrams, Python scripts, Altair-generated reports)
+- `internal-wiki` (company rules, workflows, meeting notes,
+  procedures)
+- `templates` (contracts, quotations, proposals as Markdown + JSON)
+
+The internal wiki is just the `README.md` of `internal-wiki` opened
+in Forgejo's web UI. No Notion, no Confluence required. **The
+monthly subscriptions disappear** ($30/month × 5 people × 12 months
+= about $1,800/year).
+
+**Case 3: C, a group of three teachers sharing a setup**
+
+In a corner of the staff room, a used Mac mini ($150, runs Forgejo
+on macOS). LAN-only; never exposed externally.
+
+- `units-2026` (per-topic teaching Markdown, Python-generated
+  practice problems)
+- `students-data` (personal data, never leaves the building; SQLite
+  with statistics)
+- `grade-aggregation` (Polars scripts for grade aggregation)
+- `parent-letters` (mail-merge Markdown templates + JSON)
+
+Teachers can see each other's previous-year materials directly; the
+`git history` shows how earlier holders of the course revised it.
+**Institutional knowledge stays in the school** even when staff
+rotate.
+
+What unites these:
+
+- A **$150–$400 miniPC and zero monthly fees** (electricity is a
+  few dollars a month).
+- Forgejo is a single binary; configuration can be left to Claude.
+- **Private / LAN-only / publicly exposed — pick by purpose.**
+- The substance lives in **Markdown + JSON + SQLite + Python** —
+  the toolkit of the whole book.
+
+"Standing up a server" turns out to be far lower-friction than it
+sounds.
+
 > To handle Markdown for serious work, you need both wheels:
 > **a place to write (the editor)** and **a place to put it
 > (Forgejo)**. Even solo, backup is required; anything

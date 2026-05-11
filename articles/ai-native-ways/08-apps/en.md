@@ -167,6 +167,57 @@ If you want to sell it on the App Store (really?), move to Layer 3. Rewrite in F
 
 **In most cases, you stop at Layer 1.** That is fine.
 
+## Concrete examples — CLI / Flet apps that run in the field
+
+Beyond photo organization, plenty of practical apps stop at Layer 1
+or Layer 2.
+
+**CLI is enough:**
+
+- **`invoice`** — end-of-month invoice batch: customer master in
+  SQLite (Chapter 4) + Markdown templates → `pandoc` produces 100
+  PDFs in one go. Distribute with `uv tool install invoice`.
+- **`minutes`** — meeting-minutes formatter: accepts a `.m4a`
+  recording, Whisper transcribes, Claude formats Markdown,
+  extracts key points.
+- **`expense`** — receipts to CSV/JSON: photos → OCR →
+  classification → JSON in freee / MoneyForward format (JSON, not
+  CSV — Chapter 4).
+- **`syllabus`** — teacher's worksheet generator: a YAML topic
+  spec → 30 problem variants from Claude → Markdown → printable
+  PDF via `pandoc`.
+- **`fieldlog`** — farm daily log: receives smartphone photos and
+  one-line notes → Markdown journal → SQLite accumulation → monthly
+  labor-hour aggregation.
+- **`legalsearch`** — case-law search: Markdown-ified past cases
+  summarized and categorized by Claude for use as references on
+  new cases.
+
+**Flet is needed** (non-technical operator, or visual feedback
+matters):
+
+- **Care-record entry**: runs on a care worker's tablet, pick a
+  resident, type a note, take a photo → local SQLite → nightly sync
+  to the miniPC (Chapter 4 + Chapter 2 self-host).
+- **Farmer's field-management map**: tap a plot on the field map
+  to view / enter its planting history → local SQLite synced to
+  the farmhouse miniPC.
+- **Children's reading log**: kids record book titles and
+  reactions; parents see them later; teachers reply with
+  individual recommendations.
+- **Small-shop stocktake**: photograph a product QR → SKU
+  auto-recognized → enter quantity → SQLite aggregation → output as
+  OnlyOffice `.xlsx`.
+
+**Layer 3 (Flutter) is needed** when App Store / Play Store
+distribution is required (customer-facing apps, paid distribution)
+— rare. Internal or personal use almost always stops at Layer 1 or 2.
+
+Everything **reuses Chapter 1's Python and Chapter 4's SQLite /
+JSON directly**. No new framework culture to enter. **The
+prologue's "extend one practice across every domain" made
+concrete.**
+
 ## In numbers
 
 A photo-organizing app (sort by capture date):

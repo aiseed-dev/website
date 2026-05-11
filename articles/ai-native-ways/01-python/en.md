@@ -1,17 +1,17 @@
 ---
 slug: python
-number: "03"
+number: "01"
 lang: en
 title: "Writing Logic — Have AI Write Python For You"
-subtitle: "The skill is not writing code; the skill is using code"
-description: Drop the prejudice that Python belongs to engineers. Converting Excel files, extracting data from emails, organizing PDFs, standardizing file names — these are everyday tasks for office workers and sole proprietors, and they take a few lines of Python. You don't need to write it. Ask Claude in your own language, and the code comes back.
+subtitle: "Externalize macros, charts, and pivots into Python — the first thing to do"
+description: Externalize the macros/VBA, charts, and pivots embedded in Excel (and Word) into Python. This is the first thing to do. With AI helping, nothing is hard anymore. You don't have to write it — ask Claude in your own language and the code comes back. Hit Shift+Enter in a JupyterLab cell and the result appears immediately.
 date: 2026.05.02
-label: AI Native 03
+label: AI Native 01
 title_html: For code, the skill is not <span class="accent">writing</span>.<br>The skill is <span class="accent">using</span>.
-prev_slug: design
-prev_title: "Designing — With Mermaid and Claude Design"
-next_slug: data-formats
-next_title: "Holding Data — Think in JSON, CSV, YAML"
+prev_slug: prologue
+prev_title: "Office for paperwork, Java/C# for business systems — but AI runs on Python and text"
+next_slug: markdown
+next_title: "Writing Documents — Markdown as the Minimal Choice"
 ---
 
 # Writing Logic — Have AI Write Python For You
@@ -140,13 +140,13 @@ Change your tools, and the way you process work changes.
 
 From Excel manual labor to Python plus Claude. A single step turning repetitive work into one-time work. The skill of writing is not required. The **skill of using** is enough.
 
-The next chapter moves on to how you hold data — from Excel to JSON / CSV / YAML, and to Parquet + DuckDB for large-scale data. With Python in hand, the data-tooling options open up.
+The next chapter moves on to writing documents — from Word to Markdown. With Python tooling now in place, the substance of documents can also move from formatting to structure.
 
 ---
 
 ## Related
 
-- [Chapter 02: Designing — With Mermaid and Claude Design](/en/ai-native-ways/design/)
+- [Chapter 02: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
+- [Chapter 03: Designing — With Mermaid and Claude Design](/en/ai-native-ways/design/)
 - [Chapter 04: Holding Data — Think in JSON, CSV, YAML](/en/ai-native-ways/data-formats/)
-- [Chapter 01: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
 - [Structural Analysis 12: AI and the Individual Business](/en/insights/ai-and-individual/)

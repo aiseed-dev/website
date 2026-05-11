@@ -72,7 +72,7 @@ CSV にすれば、Claude に「このデータを月別に集計して」「異
 
 **段階三: 繰り返し作業を Python にする**
 
-「毎月、A さんから来る Excel を集計して、フォーマットを揃えて、上司に渡す」── こういう作業は Python になる。第3章で見たように、書くのは Claude。実行するのは自分。
+「毎月、A さんから来る Excel を集計して、フォーマットを揃えて、上司に渡す」── こういう作業は Python になる。第1章で見たように、書くのは Claude。実行するのは自分。
 
 一度書けば、来月も再来月も使える。30 分かかっていた作業が 30 秒になる。
 
@@ -180,7 +180,7 @@ Word の起動 → 書式調整 → 保存 → メール送信 のサイクル: 
 
 ## 関連記事
 
-- [第3章: 処理を書く ── AIにPythonで書いてもらう](/ai-native-ways/python/)
-- [第1章: 文書を書く ── Markdownという最小の選択](/ai-native-ways/markdown/)
+- [第1章: 処理を書く ── AIにPythonで書いてもらう](/ai-native-ways/python/)
+- [第2章: 文書を書く ── Markdownという最小の選択](/ai-native-ways/markdown/)
 - [構造分析08: 企業ITの税を引く](/insights/enterprise-tax/)
 - [それでも Windows と Office を使い続けますか?](/blog/windows-office-facts/)

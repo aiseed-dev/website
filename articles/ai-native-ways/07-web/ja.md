@@ -143,7 +143,7 @@ flowchart LR
 
 **コンテンツが Web に閉じ込められない**。WordPress や Wix で書いたコンテンツは、サービスが終われば消える。Notion で書いたコンテンツは、Notion の形式に閉じ込められる。Markdown は、どこにも閉じ込められない。
 
-これは、第1章「文書を書く」で見た「中身を Markdown に保つ」原則の Web 版だ。**入口・中身・出口を分ける**:
+これは、第2章「文書を書く」で見た「中身を Markdown に保つ」原則の Web 版だ。**入口・中身・出口を分ける**:
 
 - **入口**: 各種フォーマット(画像、PDF、音声、Word)から Claude が Markdown 化
 - **中身**: Markdown と Mermaid で持つ(Git でバージョン管理)
@@ -388,8 +388,8 @@ Web を作る道具を、二層に分ける。
 
 ## 関連記事
 
-- [第1章: 文書を書く ── Markdownという最小の選択](/ai-native-ways/markdown/)
-- [第2章: デザインをする ── Mermaid と Claude デザインで作る](/ai-native-ways/design/)
+- [第2章: 文書を書く ── Markdownという最小の選択](/ai-native-ways/markdown/)
+- [第3章: デザインをする ── Mermaid と Claude デザインで作る](/ai-native-ways/design/)
 - [第6章: 業務システムと付き合う ── 並行稼働で書き換える](/ai-native-ways/business-systems/)
-- [第3章: 処理を書く ── AIにPythonで書いてもらう](/ai-native-ways/python/)
+- [第1章: 処理を書く ── AIにPythonで書いてもらう](/ai-native-ways/python/)
 - [構造分析15: Mythos時代のセキュリティ設計](/insights/security-design/)

@@ -51,7 +51,7 @@ But WordPress has its own trap. Different in nature from the React trap, **but a
 
 WordPress posts are not text files. They are records in a MySQL database, mixed with HTML. Want to convert the same post to PDF, move it to another site, hand it to AI for analysis? Every path begins with an export.
 
-The export format is `.xml` (WordPress's own WXR), with HTML tags and proprietary shortcodes (like `[gallery]`) intermixed. **Content is locked into WordPress.** This has the same shape as Chapter 2's "data locked in Excel."
+The export format is `.xml` (WordPress's own WXR), with HTML tags and proprietary shortcodes (like `[gallery]`) intermixed. **Content is locked into WordPress.** This has the same shape as Chapter 4's "data locked in Excel."
 
 **Problem 2: plugins are a security minefield**
 
@@ -114,7 +114,7 @@ From the same Markdown file:
 
 **Content is not locked into the web.** Content written in WordPress or Wix disappears when the service ends. Content in Notion is locked into Notion's format. Markdown is not locked into anything.
 
-This is the web version of the "keep content in Markdown" principle from Chapter 1: **separate entrance, content, and exit**:
+This is the web version of the "keep content in Markdown" principle from Chapter 2: **separate entrance, content, and exit**:
 
 - **Entrance**: Claude converts various formats (image, PDF, audio, Word) to Markdown
 - **Content**: held in Markdown and Mermaid (versioned in Git)
@@ -284,8 +284,8 @@ The next chapter moves to building apps. CLI tools, Flet apps, Flutter apps — 
 
 ## Related
 
-- [Chapter 01: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
+- [Chapter 01: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
+- [Chapter 02: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
 - [Chapter 03: Designing — With Mermaid and Claude Design](/en/ai-native-ways/design/)
 - [Chapter 06: Working with Business Systems — Rewrite via Parallel Operation](/en/ai-native-ways/business-systems/)
-- [Chapter 04: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Structural Analysis 15: Security Design for the Mythos Era](/en/insights/security-design/)

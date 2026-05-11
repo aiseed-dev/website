@@ -207,7 +207,7 @@ ESP32 で温度センサ判定の開発:
 
 設計と検証を Python でやってから、必要なら C に翻訳する。Claude が翻訳を担う。**ハードウェアと格闘する時間が減り、本来の課題 ── センサとロジックと運用 ── に集中できる**。
 
-ここまでの 9 章で、AI ネイティブな仕事の道具立てが揃った。Markdown、JSON/CSV/YAML、Mermaid、Python、Office から離れる、業務システム、Web、アプリ、組み込み。
+ここまでの 9 章で、AI ネイティブな仕事の道具立てが揃った。Python、Markdown、Mermaid、JSON/CSV/YAML、Office から離れる、業務システム、Web、アプリ、組み込み。
 
 次の章では、共通の発展に進む。「AI に任せる仕事を見極める」── 何を渡し、何を残すかの判断のはなし。
 
@@ -216,5 +216,5 @@ ESP32 で温度センサ判定の開発:
 ## 関連記事
 
 - [第8章: アプリを作る ── CLIツール、Fletアプリ、Flutterアプリ](/ai-native-ways/apps/)
-- [第3章: 処理を書く ── AIにPythonで書いてもらう](/ai-native-ways/python/)
+- [第1章: 処理を書く ── AIにPythonで書いてもらう](/ai-native-ways/python/)
 - [構造分析15: Mythos時代のセキュリティ設計](/insights/security-design/)

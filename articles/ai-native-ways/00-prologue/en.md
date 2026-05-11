@@ -10,8 +10,8 @@ label: AI Native 00
 title_html: Paperwork is <span class="accent">Office</span>.<br>Business systems are <span class="accent">Java/C#</span>.<br>But AI is <span class="accent">Python and text</span>.
 prev_slug:
 prev_title:
-next_slug: markdown
-next_title: "Writing Documents — Markdown as the Minimal Choice"
+next_slug: python
+next_title: "Writing Logic — Have AI Write Python For You"
 ---
 
 # Prologue — Office for paperwork, Java/C# for business systems, but AI runs on Python and text

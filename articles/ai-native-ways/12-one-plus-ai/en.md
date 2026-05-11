@@ -24,10 +24,10 @@ This chapter is the synthesis of the entire series. **The minimum unit of work c
 
 Lay out again the tools we acquired from the prologue through Chapter 10.
 
-- Write documents in **Markdown**
-- Hold data in **JSON / CSV / YAML**
-- Save diagrams in **Mermaid**
 - Write logic in **Python** (Claude writes it)
+- Write documents in **Markdown**
+- Save diagrams in **Mermaid**
+- Hold data in **JSON / CSV / YAML / SQLite / Parquet**
 - Step away from **Office** (kept as a converter layer)
 - **Business systems** are not broken; you operate outside the boundary
 - **Web** is enough with HTML+CSS+JS

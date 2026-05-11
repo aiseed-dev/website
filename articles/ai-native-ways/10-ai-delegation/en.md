@@ -556,7 +556,7 @@ The next chapter — the final chapter — synthesizes everything into "one pers
 ## Related
 
 - [Chapter 09: Building Embedded — Think in Python, Have Claude Translate](/en/ai-native-ways/embedded/)
-- [Chapter 04: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
+- [Chapter 01: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Structural Analysis 05: Mythos Has Arrived](/en/insights/mythos/)
 - [Structural Analysis 15: Security Design for the Mythos Era](/en/insights/security-design/)
 - [Structural Analysis 12: AI and the Individual Business](/en/insights/ai-and-individual/)

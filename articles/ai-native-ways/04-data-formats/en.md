@@ -8,8 +8,8 @@ description: An Excel sheet looks like a table, but it is really a bundle of for
 date: 2026.05.02
 label: AI Native 04
 title_html: Hold data as <span class="accent">structure</span>, not as tables.<br><span class="accent">JSON / CSV / YAML</span> make that possible.
-prev_slug: python
-prev_title: "Writing Logic — Have AI Write Python For You"
+prev_slug: design
+prev_title: "Designing — With Mermaid and Claude Design"
 next_slug: office-replacement
 next_title: "Changing Paperwork — A Realistic Path Away from Office"
 ---
@@ -151,7 +151,7 @@ Change your tools, and the way you handle data changes.
 
 From Excel to JSON, CSV, YAML. A single step that shifts data from "appearance on screen" to "structure you can process." AI becomes a colleague. Still readable in ten years.
 
-The four chapters so far have laid out the shared practices — Markdown, Mermaid, Python, and structured data formats (JSON / CSV / YAML, plus Parquet + DuckDB at scale). These are the minimal AI-native stack that does not depend on occupation.
+The four chapters so far have laid out the shared practices — Python, Markdown, Mermaid, and structured data formats (JSON / CSV / YAML, plus Parquet + DuckDB at scale). These are the minimal AI-native stack that does not depend on occupation.
 
 From the next chapter, we move into work-type-specific practices. First, for office workers.
 
@@ -159,6 +159,7 @@ From the next chapter, we move into work-type-specific practices. First, for off
 
 ## Related
 
-- [Chapter 01: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
+- [Chapter 01: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
+- [Chapter 02: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
 - [Prologue: Office for paperwork, Java/C# for business systems — but AI runs on Python and text](/en/ai-native-ways/prologue/)
 - [Structural Analysis 08: Removing the Enterprise IT Tax](/en/insights/enterprise-tax/)

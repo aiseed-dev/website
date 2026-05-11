@@ -185,7 +185,7 @@ Even in embedded, think in Python.
 
 Design and verify in Python, then translate to C if needed. Claude handles the translation. **Time spent fighting hardware decreases, and you focus on the real problem — sensors, logic, operations.**
 
-The nine chapters so far have laid out the AI-native toolset. Markdown, JSON/CSV/YAML, Mermaid, Python, leaving Office, business systems, web, apps, embedded.
+The nine chapters so far have laid out the AI-native toolset. Python, Markdown, Mermaid, JSON/CSV/YAML, leaving Office, business systems, web, apps, embedded.
 
 The next chapter moves to common practice in advanced form. "Knowing what work to hand to AI" — the judgment of what to delegate and what to keep.
 
@@ -194,5 +194,5 @@ The next chapter moves to common practice in advanced form. "Knowing what work t
 ## Related
 
 - [Chapter 08: Building Apps — CLI Tools, Flet Apps, Flutter Apps](/en/ai-native-ways/apps/)
-- [Chapter 03: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
+- [Chapter 01: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Structural Analysis 15: Security Design for the Mythos Era](/en/insights/security-design/)

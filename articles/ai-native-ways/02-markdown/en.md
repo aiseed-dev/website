@@ -176,6 +176,122 @@ Whichever editor, the practice in this book is the same:
 > Change the editor and the principle does not change.
 > **Keep the text on your side; choose what you hand to AI.**
 
+## For serious work — Forgejo / Gitea
+
+So far this has been about "writing on your own desk."
+
+The moment you decide to **use this for serious work** — share with
+a team, keep an auditable history of past decisions, run reviews,
+hook into automation — you need a **Git hosting target**. GitHub
+and GitLab are well known, but in this book's practice the natural
+choice is a server **you (or a community) can run**.
+
+Two options:
+
+:::compare
+| Tool | Character | Recommended |
+| --- | --- | --- |
+| **Forgejo** | Community-run FLOSS, governed by the non-profit Codeberg e.V. | ◎ First choice |
+| **Gitea** | The original; now governed by the commercial Gitea Ltd. | ○ (keep using it if you already do) |
+:::
+
+Both provide:
+
+- **Git hosting** (push / pull / clone)
+- **Markdown and Mermaid rendered in READMEs and wikis**
+- **Issues / Pull Requests** for review and discussion
+- **Webhooks and built-in CI** (Forgejo Actions / Gitea Actions,
+  compatible with GitHub Actions)
+- **A single binary** — fits on a small VPS (1 GB RAM)
+- **Open-source, no subscription**
+
+> **If you're new** — you don't need this while you're writing solo.
+> `git init` for a local history is enough. Come back to this
+> section when you reach **share with a team, audit the history of
+> handoffs, run review through PRs**.
+
+### Why Forgejo — the governance story
+
+Gitea and Forgejo are **nearly the same codebase** (Forgejo is a
+fork of Gitea). The difference is **who runs it**:
+
+- **Gitea**: started as a community project; in late 2022, trademark
+  and governance moved to the commercial **Gitea Ltd.** Decisions
+  now depend on the company.
+- **Forgejo**: the community that disagreed with that move forked
+  it. Governance sits with **Codeberg e.V., a German non-profit**.
+  **Company interests do not enter the structure.**
+
+Feature-wise Forgejo keeps pace, so **if you're choosing, choose
+Forgejo**. The structure is the same as Microsoft Office vs.
+OnlyOffice (Chapter 5) — "same contents, governance on the
+community side."
+
+### Three ways to use it
+
+**(1) Self-host** — the strongest option
+
+One small VPS (a couple of dollars a month is plenty), the Forgejo
+binary, one domain, an HTTPS reverse proxy. With that, **you have
+your own Git platform**.
+
+```bash
+# Drop Forgejo onto a small VPS
+$ wget https://codeberg.org/forgejo/forgejo/releases/download/v8.0.0/forgejo-8.0.0-linux-amd64
+$ chmod +x forgejo-8.0.0-linux-amd64
+$ ./forgejo-8.0.0-linux-amd64 web
+```
+
+The detailed setup (`systemd` unit, HTTPS, backups, SSH key auth)
+can be left to Claude — also a "skill of using, not writing"
+(Chapter 1) territory.
+
+**(2) Use Codeberg.org** — the easiest non-hosted path
+
+[Codeberg.org](https://codeberg.org) is **Forgejo hosted by a
+non-profit as a public forge**. Make an account and you're in.
+Free. Ideal for **publishing open-source projects and shared
+repositories for a sole proprietorship**. Same feel as GitHub, with
+a non-profit as the vendor.
+
+**(3) Stand it up inside an organization** — company / team scale
+
+Run Forgejo on your internal VPS or Kubernetes cluster. **Every
+repository sits inside the organization's physical boundary.** The
+Microsoft / GitHub / Atlassian subscriptions stop. You're no longer
+buffeted by data-policy shifts, and the source code and business
+documents become **yours** (same structure as Chapter 5's Office
+discussion).
+
+### Where does GitHub fit
+
+GitHub isn't forbidden:
+
+- **Public open-source projects** → GitHub's reach and ecosystem are
+  strong.
+- **Personal notes you just want AI to look at** → GitHub is fine.
+- **Business data, internal docs, contracts** → don't put these on
+  GitHub. **Self-host Forgejo, or use Codeberg.**
+
+GitHub joined **Microsoft in 2018**. It sits in the same
+"centralization" context as Microsoft 365 / Copilot.
+**If you don't want the substance of your work to live in Microsoft's
+cloud, choose Forgejo (self-hosted) or Codeberg.**
+
+### Markdown and Mermaid render directly
+
+Forgejo, Gitea, and Codeberg **render `README.md` and `.md` files
+directly in the web UI**. `` ```mermaid `` blocks are rendered as
+standard. **What you wrote is what is visible on the web** — without
+running a separate static-site generator, the forge **doubles as an
+internal wiki**.
+
+> To handle Markdown for serious work, you need both wheels:
+> **a place to write (the editor)** and **a place to put it
+> (Forgejo)**. Either your own desk or a community non-profit — that
+> is the concrete shape of "keep your system on your own side"
+> (Chapter 5).
+
 ## Pick the format that fits the job — four text formats are enough
 
 Markdown is the **everyday default**, but it does not cover every case.

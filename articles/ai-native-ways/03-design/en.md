@@ -3,8 +3,8 @@ slug: design
 number: "03"
 lang: en
 title: "Designing — With Mermaid and Claude Design"
-subtitle: "Structural diagrams, UI, slides, business materials — all from text"
-description: Business design — architecture diagrams, UI mockups, slides, proposals — has moved away from specialized tools into the era of text-and-AI generation. Mermaid for structural diagrams, Claude Design for UI and screens, Marp for slides. No more Figma, no more PowerPoint, no more Adobe XD.
+subtitle: "Diagrams, UI, slides, 3D, CAD, data viz — all from text"
+description: Business design — from structural diagrams, UI, and slides to 3D modeling, CAD, data visualization, and generative AI imagery — has moved into the era of text-and-AI. Mermaid / Claude Design / Marp / D3 / Blender / ComfyUI / CadQuery / Build123d / OpenSCAD / FreeCAD — specialist tools you used to give up on, now within reach through AI.
 date: 2026.05.02
 label: AI Native 03
 title_html: <span class="accent">Design</span>, also in text.<br><span class="accent">Mermaid</span> and <span class="accent">Claude</span> generate it.
@@ -136,6 +136,171 @@ The speed of business presentation creation jumps:
 - Past slides become searchable (all text)
 - The proposal document and the deck come from the same Markdown source
 
+## What AI makes easy — specialist tools you used to give up on
+
+Mermaid, Claude Design, and Marp are the **everyday design** set.
+What follows is the **specialist tool** set you previously gave up on
+because the learning curve was too steep. Because AI writes the
+scripts, code, and node configurations, these tools **drop into the
+hands of office workers, sole proprietors, and on-the-floor staff**.
+
+```mermaid
+flowchart LR
+  Intent2["What you want<br/>(in words)"]
+  Intent2 --> D3["Interactive<br/>data visualization<br/><b>D3.js</b>"]
+  Intent2 --> Blender["3D modeling /<br/>animation<br/><b>Blender</b> (bpy)"]
+  Intent2 --> Comfy["Generative AI<br/>imagery / video<br/><b>ComfyUI</b><br/>(JSON workflow)"]
+  Intent2 --> CAD["Mechanical CAD /<br/>3D printing<br/><b>CadQuery / Build123d</b><br/><b>OpenSCAD / FreeCAD</b>"]
+
+  D3 -.-> Out2[("HTML / SVG / PNG /<br/>STL / glTF / video")]
+  Blender -.-> Out2
+  Comfy -.-> Out2
+  CAD -.-> Out2
+
+  classDef advanced fill:#fef9e7,stroke:#c8a559,color:#5a4a1a
+  class D3,Blender,Comfy,CAD advanced
+```
+
+What unites them: **all four are driven by scripts, code, or JSON.**
+AI writes that "language." You don't need to memorize the GUI.
+
+### D3.js — interactive data visualization
+
+D3.js is a visualization library that runs in the browser. It builds
+**custom interactive visualizations** Excel charts cannot reach —
+hierarchy trees, force layouts, map-based views, bespoke layouts,
+hover-reactive diagrams, zoomable timelines. The elaborate graphics
+you see in newspapers and investigative reporting are usually D3.
+
+The learning cost is high. It has its own concepts ("data binding,"
+"selections"); self-taught, it takes months.
+
+Through AI:
+
+> You: With this CSV, draw a D3 force layout. Color the nodes,
+> show info on hover, zoom enabled.
+>
+> Claude: (D3 code comes back)
+
+JavaScript you can paste into a web page comes back. **You don't need
+to memorize the D3 grammar.** Reports, web publication, dashboards,
+investigative briefs — the territory of "the specialist visualizer"
+drops into your hands.
+
+The matplotlib / Altair set from Chapter 1 is for everyday aggregation
+charts; **D3 is for elaborate custom visualizations** — pick by
+purpose.
+
+### Blender — 3D modeling and animation
+
+Blender is a free, open-source 3D production suite. 3D models,
+animation, rendering, video editing — Hollywood-grade features in
+total, but the menu is vast and learning the shortcuts alone takes
+months.
+
+Blender is, in fact, **fully driveable from Python (`bpy`)**. Without
+touching the GUI, a Python script can construct a 3D scene.
+
+Through AI:
+
+> You: In Blender Python, make a cube with a sphere on top. Light
+> from upper-left, camera slightly below front, render to PNG.
+>
+> Claude: (`bpy` script comes back)
+
+Uses in business:
+
+- **Product promotion imagery** (virtual photo shoots of prototypes)
+- **Quick architectural / interior layout visualization**
+- **Educational animation** (mechanism behavior explanation)
+- **Manual-grade assembly / exploded views**
+- **Final-check renders before 3D printing**
+
+### ComfyUI — node-based generative AI for images and video
+
+ComfyUI treats generative AI (Stable Diffusion and the like) as
+**connected nodes**. Beyond writing prompts, you can combine multiple
+models, do conditional generation, generate video, maintain character
+consistency — high-end workflows are buildable.
+
+Wiring nodes by hand gets lost easily. Workflows are JSON files, and
+writing them by hand is painful.
+
+Through AI:
+
+> You: A ComfyUI workflow as JSON: take a product photo as input,
+> replace the background with white, overlay the logo bottom-right.
+>
+> Claude: (the workflow JSON comes back)
+
+Uses in business:
+
+- **Product image variations** (e-commerce, catalogs)
+- **Mass-produce illustrations for blog and social posts**
+- **Explainer illustrations for presentation decks**
+- **Video assets** (manual / instructional video building blocks)
+
+What used to go to **agencies and production houses** stays **in your
+hands**. Publish a ComfyUI web UI internally and the team can use it
+together.
+
+### CAD — mechanical design, 3D printing, architectural models
+
+Mechanical design runs on **dedicated CAD software** (SolidWorks,
+Inventor, etc.) with steep learning curves and steep license fees.
+
+But there is a parallel path: **CAD written as scripts or code**. AI
+writes the code, so you don't need to learn the CAD's UI.
+
+:::compare
+| Tool | Language | Notes |
+| --- | --- | --- |
+| **OpenSCAD** | Its own scripting language | Long-standing, simple, a 3D-printing-community standard |
+| **CadQuery** | Python | Pythonic CAD; affinity with industry dimensioning concepts |
+| **Build123d** | Python | Successor lineage to CadQuery; more natural Python expression |
+| **FreeCAD** | GUI + Python | Full-featured parametric CAD; scriptable in Python |
+:::
+
+Example: a bracket with screw holes, written in Build123d.
+
+> You: A bracket 50mm wide × 30mm tall × 3mm thick. Two ø4mm holes
+> 10mm from the top edge, symmetric left and right. In Build123d.
+>
+> Claude: (Python code comes back)
+
+Run it and an STL file is produced. **Feed that directly to a 3D
+printer; the part is printed.**
+
+Uses in business:
+
+- **Design of prototypes for 3D printing**
+- **Jigs and fixtures** (small parts for production lines)
+- **Mechanical parts** (motor mounts, sensor housings)
+- **Architectural models, exhibition pieces**
+- **Educational teaching materials**
+
+Combined with embedded (Chapter 9), the loop closes: **design the
+hardware yourself, 3D-print it yourself, write the control code
+yourself**. Solo launches of hardware products — what used to require
+a large organization — become realistic.
+
+### The common principle — AI erases the "learning-curve wall"
+
+D3, Blender, ComfyUI, CAD — these were "specialist tools whose
+learning curves kept you out." They share one property:
+**all are driven by scripts, code, or JSON.**
+
+AI-native work uses this property to the maximum. **Instead of
+memorizing the GUI, have AI write the code, look at the result, and
+adjust.** Territory previously the exclusive domain of designers, 3D
+artists, data visualizers, and mechanical engineers **drops into the
+hands of someone who has only the "skill of using"** from Chapter 1.
+
+> You don't need to become a specialist.
+> **You need to become "someone who handles specialist tools with AI
+> alongside."** This is the concrete shape of Chapter 12's "from
+> silos to individual autonomy."
+
 ## Build business documents while keeping structure intact
 
 Proposals, reports, specifications, internal documents, press releases — all are built with **Markdown as the body, Mermaid for diagrams, Claude Design for any decorative graphics**.
@@ -217,15 +382,35 @@ A 20-year-old `.ppt` file: substituted fonts, shifted shapes, hard to reproduce.
 
 Move design tools to be text-centric.
 
+Everyday design:
+
 - Structural diagrams: **Mermaid**
 - UI and screens: **Claude Design** (HTML+CSS output)
 - Slides: **Markdown + Marp / reveal.js**
 - Inset diagrams and handouts: **Mermaid + Claude Design**
 - Business documents: **Markdown as body, diagrams and screens as separate files**
 
-Step away from specialized tools — Figma, Sketch, Adobe XD, PowerPoint, Visio. Hold designs as text and code that AI can write. Subscription fees disappear, learning curves shrink, editing stops being hell, and AI runs alongside as a colleague.
+Specialist territory now reachable through AI:
 
-Specialist designers remain necessary. **But their time goes to specialist territory, not drafts** — you take the draft work over with Claude.
+- Data visualization (elaborate custom charts) → **D3.js**
+- 3D modeling and animation → **Blender** (Python `bpy`)
+- Generative AI images and video → **ComfyUI** (JSON workflows)
+- Mechanical CAD and 3D printing → **CadQuery / Build123d / OpenSCAD / FreeCAD**
+
+Step away from specialized tools — Figma, Sketch, Adobe XD,
+PowerPoint, Visio, SolidWorks, Illustrator. Hold designs as text and
+code that AI can write. Subscription fees disappear, learning curves
+shrink, editing stops being hell, and AI runs alongside as a
+colleague.
+
+**The common principle is one: instead of learning the GUI, have AI
+write the code, look at the result, adjust.** The learning-curve
+wall comes down. Territory previously held only by specialists drops
+into the hands of those with only the "skill of using" from
+Chapter 1.
+
+Specialists remain necessary. **But their time goes to specialist
+territory, not drafts** — you take the draft work over with Claude.
 
 The next chapter moves to how you hold data — from Excel to JSON / CSV / YAML, with SQLite + Python for mutable data and Parquet + DuckDB for large-scale data.
 

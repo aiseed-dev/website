@@ -27,16 +27,16 @@ Drop the prejudice that Python belongs to engineers.
 Python is the most readable language AI can write in. Unlike Java or C#, no long class definitions or type annotations are needed. The processing you want to express stands as it is.
 
 ```python
-import csv
+import json
 
-with open("orders.csv") as f:
-    rows = list(csv.DictReader(f))
+with open("orders.json") as f:
+    rows = json.load(f)
 
-total = sum(int(r["qty"]) * int(r["price"]) for r in rows)
+total = sum(r["qty"] * r["price"] for r in rows)
 print(f"Total: {total}")
 ```
 
-That is all it takes to read a CSV and compute a total. No prior knowledge required. "Open the CSV, multiply qty by price, sum it up" — that is what it says.
+That is all it takes to read JSON and compute a total. No prior knowledge required. "Open the JSON, multiply qty by price, sum it up" — that is what it says. **JSON carries types, so no `int()` conversion is needed** (chapter 4 covers why we choose JSON / SQLite over CSV).
 
 The skill of writing this code is not required. The skill of **reading** it is enough. If you can read it, you can judge whether the code Claude returned looks right.
 
@@ -60,11 +60,11 @@ There are only three tricks to having Claude write Python for you.
 
 **One: state the input and the output**
 
-"Read the Excel file `orders.xlsx`, total sales per product, and write to CSV `summary.csv`." Input file and output file, both with their formats clear, and Claude does not get lost.
+"Read the Excel file `orders.xlsx`, total sales per product, and write to JSON `summary.json`." Input file and output file, both with their formats clear, and Claude does not get lost.
 
 **Two: ask one thing at a time**
 
-Not "do everything," but "first, write the code to load the data; next, the code to aggregate; last, the code to write CSV." Step by step. You can verify behavior partway. When something is wrong, it is easy to back up.
+Not "do everything," but "first, write the code to load the data; next, the code to aggregate; last, the code to write JSON / SQLite." Step by step. You can verify behavior partway. When something is wrong, it is easy to back up.
 
 **Three: look at the result and correct**
 
@@ -75,7 +75,7 @@ The first version is rarely perfect. Run it, look at the output, send back "this
 Most everyday tasks for office workers and sole proprietors.
 
 - Gather a specific sheet from 100 Excel files and merge them
-- Extract amounts from email bodies into a CSV
+- Extract amounts from email bodies into JSON / SQLite
 - Convert PDFs into searchable text
 - Resize and rename images in bulk
 - Scrape product information from a website
@@ -148,5 +148,5 @@ The next chapter moves on to writing documents — from Word to Markdown. With P
 
 - [Chapter 02: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
 - [Chapter 03: Designing — With Mermaid and Claude Design](/en/ai-native-ways/design/)
-- [Chapter 04: Holding Data — Think in JSON, CSV, YAML](/en/ai-native-ways/data-formats/)
+- [Chapter 04: Holding Data — Think in JSON and YAML](/en/ai-native-ways/data-formats/)
 - [Structural Analysis 12: AI and the Individual Business](/en/insights/ai-and-individual/)

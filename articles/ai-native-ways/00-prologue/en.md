@@ -42,7 +42,7 @@ Change the tools, and your thinking changes. Change your thinking, and you start
 
 This is not a story for engineers alone.
 
-For office workers: switch from Word to Markdown, from Excel to CSV. AI immediately becomes someone you can consult.
+For office workers: switch from Word to Markdown, and from Excel to JSON / SQLite (drop CSV — it loses information; chapter 4). AI immediately becomes someone you can consult.
 
 For sales: shift your reports from formatted documents to structured data. AI returns analysis and proposals.
 
@@ -68,7 +68,7 @@ It does not change by occupation.
 
 ```
 documents : Markdown
-data      : JSON, CSV, YAML
+data      : JSON / YAML / SQLite / OnlyOffice / Parquet (drop CSV)
 processing: Python
 web       : HTML + CSS + JavaScript
 diagrams  : Mermaid
@@ -94,7 +94,7 @@ A Word file (50 KB, 5,000 characters) handed to Claude consumes about 8,000 toke
 
 Extracting paragraphs containing "fertilizer" from 100 Word files: 30 minutes to write VBA. As Markdown, `grep -A 3 fertilizer *.md` does it in 0.1 seconds.
 
-A 1.2 MB Excel `.xlsx` (10,000 rows of sales data) becomes 280 KB as CSV. **One-quarter.** Faster to transfer to Claude, faster to parse.
+A 1.2 MB Excel `.xlsx` (10,000 rows of sales data) becomes **60 KB as Parquet**. **1/20.** Types preserved, faster to transfer to Claude, faster to parse.
 
 Continuing to use Office, Java, and C# means paying more than double the AI costs every day.
 
@@ -128,7 +128,7 @@ everyone riding it at once.
 This book's practices go the other way. **Each person holds their own
 tools, their own data, their own judgment.** AI is used, but as **an
 extension of yourself** — not as an extension of a vendor. Markdown is
-yours, CSV is yours, Python scripts are yours, decisions are yours.
+yours, JSON / YAML / SQLite is yours, Python scripts are yours, decisions are yours.
 
 This is not a story about efficiency. It is a story about **individual
 autonomy, organizational diversity, and societal resilience**. With

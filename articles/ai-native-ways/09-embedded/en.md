@@ -38,7 +38,7 @@ This is the single biggest reason embedded development has been slow.
 
 In a new embedded project, the first thing to write is Python.
 
-Read sensor values, apply a filter, make a decision — instead of writing this on the device, write it first in Python. Prepare sample data as CSV, load it in Python, pass through the filter, output the decision.
+Read sensor values, apply a filter, make a decision — instead of writing this on the device, write it first in Python. Prepare sample data as JSON, load it in Python, pass through the filter, output the decision.
 
 ```python
 # Validate the logic with sample data
@@ -119,9 +119,9 @@ If the datasheet is a PDF, extract the text and hand to Claude — "what does re
 
 When you can extract data from the embedded device, analysis happens in Python too.
 
-Have it emit CSV or JSON, bring it to a PC, analyze in Python. `pandas` for aggregation, `matplotlib` for graphs, `numpy` for numerics. Claude writes all of it.
+Have it emit JSON or Parquet, bring it to a PC, analyze in Python. `polars` for aggregation, `matplotlib` / `altair` for graphs, `numpy` for numerics. Claude writes all of it.
 
-"The sensor logs temperature every minute. From this CSV, find the time of day when temperature spiked, and graph it." Code comes back.
+"The sensor logs temperature every minute. From this JSON / Parquet, find the time of day when temperature spiked, and graph it." Code comes back.
 
 **The embedded body runs in C, but everything around it — verification, analysis, visualization — runs in Python and AI.** That is the new shape of embedded development.
 
@@ -133,7 +133,7 @@ A concrete example.
 
 **Stage 1 (Python on PC)**:
 
-Write the logic in Python. Prepare sample temperature data (CSV) and write the decision logic. Tune thresholds, denoise, set notification conditions — all experimented on a PC.
+Write the logic in Python. Prepare sample temperature data (JSON) and write the decision logic. Tune thresholds, denoise, set notification conditions — all experimented on a PC.
 
 ```python
 def should_alert(temps):
@@ -185,7 +185,7 @@ Even in embedded, think in Python.
 
 Design and verify in Python, then translate to C if needed. Claude handles the translation. **Time spent fighting hardware decreases, and you focus on the real problem — sensors, logic, operations.**
 
-The nine chapters so far have laid out the AI-native toolset. Python, Markdown, Mermaid, JSON/CSV/YAML, leaving Office, business systems, web, apps, embedded.
+The nine chapters so far have laid out the AI-native toolset. Python, Markdown, Mermaid, JSON / YAML / SQLite / Parquet, leaving Office, business systems, web, apps, embedded.
 
 The next chapter moves to common practice in advanced form. "Knowing what work to hand to AI" — the judgment of what to delegate and what to keep.
 

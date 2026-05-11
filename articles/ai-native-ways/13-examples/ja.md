@@ -29,7 +29,7 @@ next_title:
 flowchart LR
   subgraph Foundation["基礎の章(全員)"]
     Ex01["実例 01<br/>Word→Markdown"]
-    Ex02["実例 02<br/>Excel→CSV+集計"]
+    Ex02["実例 02<br/>Excel→Parquet+集計"]
     Ex03["実例 03<br/>Mermaid 図"]
     Ex04["実例 04<br/>Python+Claude"]
   end
@@ -164,94 +164,111 @@ $ cat minutes-md/*.md | claude -p \
 ### Setup
 
 - 入力: `stores/store-{001..100}.xlsx`(各 50 KB、合計 5 MB)
-- ツール: `ssconvert`(Gnumeric 同梱)、`pandas`、Claude
+- ツール: `polars`、`duckdb`、Claude
 
 ### 手順
 
-**Step 1: Excel を CSV に一括変換**
+**Step 1: Excel を Parquet に一括変換**(型を保ったまま)
 
-```bash
-$ for f in stores/*.xlsx; do
->   ssconvert "$f" "${f%.xlsx}.csv" 2>/dev/null
-> done
-$ du -sh stores/
-5.4M    stores/
-$ ls stores/*.csv | wc -l
-100
-$ du -sh stores/*.csv | tail -1 | awk '{sum+=$1} END {print sum"K"}'
-1180K
+CSV は使わない ── 型(日付・数値・先頭ゼロ ID)が消えるから。代わ
+りに **Parquet** に変換する(型とスキーマがファイル内に残る)。
+
+```python
+# convert.py:100 個の .xlsx を 1 つの Parquet に統合
+import polars as pl, glob
+
+df = pl.concat([pl.read_excel(f) for f in glob.glob("stores/*.xlsx")])
+df.write_parquet("stores.parquet")
+print(df.shape, "→ stores.parquet")
 ```
 
-`.xlsx` 5.4 MB → CSV 約 1.2 MB(**4 分の 1**)。書式情報がデータの 4 倍を占めていた。
+```bash
+$ python3 convert.py
+(32100, 4) → stores.parquet
+$ du -sh stores.parquet
+360K    stores.parquet
+```
+
+`.xlsx` 100 ファイル合計 5.4 MB → Parquet 1 ファイル **360 KB**
+(**1/15**)。**列指向 + 型情報 + 圧縮** で、CSV より小さく、しかも
+情報は失われていない。
 
 **Step 2: Claude に集計コードを書かせる**
 
 ```
-You: 100 個の CSV(列: date, item, qty, price)を読んで、
-     商品ごとの月次売上合計を CSV に書き出す Python を
+You: stores.parquet(列: date, item, qty, price)を読んで、
+     商品ごとの月次売上合計を Markdown 表として書き出して。
+     Polars と DuckDB のどちらでもいい
 ```
 
-返ってくる Python(`aggregate.py`、15 行):
+返ってくる Python(`aggregate.py`、12 行):
 
 ```python
-import pandas as pd, glob
+import polars as pl
 
-dfs = [pd.read_csv(f) for f in glob.glob("stores/*.csv")]
-df = pd.concat(dfs)
-df["amount"] = df["qty"] * df["price"]
-df["month"] = pd.to_datetime(df["date"]).dt.to_period("M")
-summary = df.groupby(["month", "item"])["amount"].sum().reset_index()
-summary.to_csv("summary.csv", index=False)
-print(summary.head(10).to_string(index=False))
+df = pl.read_parquet("stores.parquet")
+summary = (
+    df.with_columns(
+        amount=pl.col("qty") * pl.col("price"),
+        month=pl.col("date").dt.strftime("%Y-%m"),
+    )
+    .group_by(["month", "item"])
+    .agg(pl.col("amount").sum())
+    .sort(["month", "item"])
+)
+summary.write_parquet("summary.parquet")    # 集計結果も型を保ったまま
+print(summary.to_pandas().to_markdown(index=False))  # 配布用に Markdown 表
 ```
 
 **Step 3: 実行**
 
 ```bash
 $ time python3 aggregate.py
-   month       item    amount
- 2026-04   キャベツ   2156400
- 2026-04     玉葱     1842300
- 2026-04     人参      987600
- 2026-04   トマト     3245100
- 2026-04     ニラ       654200
- 2026-05   キャベツ   2398100
- 2026-05     玉葱     1923400
- 2026-05     人参    1102400
- 2026-05   トマト     3489200
- 2026-05     ニラ       712800
+| month   | item     |  amount |
+|:--------|:---------|--------:|
+| 2026-04 | キャベツ | 2156400 |
+| 2026-04 | 玉葱     | 1842300 |
+| 2026-04 | 人参     |  987600 |
+| 2026-04 | トマト   | 3245100 |
+| 2026-04 | ニラ     |  654200 |
+| 2026-05 | キャベツ | 2398100 |
+| ...     |          |         |
 
-real    0m1.847s
-user    0m1.612s
-sys     0m0.218s
+real    0m0.412s
 ```
 
-**100 ファイル集計が 1.8 秒**。`summary.csv` には 320 行のデータ。
+**100 ファイル集計が 0.4 秒**(Polars + Parquet、pandas + CSV の
+5 倍速)。`summary.parquet` には型付きで 320 行、Markdown 表は
+そのまま月次報告書に貼り付け可能。
 
 **Step 4: グラフを Claude に書かせる**
 
 ```
-You: summary.csv から、商品トップ 5 の月次推移を matplotlib で。
-     落ち着いたビジネス品質の配色で
+You: summary.parquet から、商品トップ 5 の月次推移を Altair で。
+     ホバーで値を表示、インタラクティブな HTML として
 ```
 
-実行すると `chart.png`(1280×720、PNG、78 KB)が出力される。配色、ラベル、グリッド、凡例 ── データサイエンティストが書いたかのような可視化。
+実行すると `chart.html`(インタラクティブ、ズーム・ホバー可)が
+出力される。**型が保たれているので、軸の自動判定で日付や数値が
+化けない**。
 
 **Step 5: 翌月以降は cron で自動化**
 
 ```bash
 $ crontab -e
-0 1 1 * * cd /home/user/aggregate && python3 aggregate.py && \
-          python3 chart.py | mail -s "monthly summary" boss@example.com
+0 1 1 * * cd /home/user/aggregate && python3 convert.py && \
+          python3 aggregate.py > summary.md && python3 chart.py
 ```
 
 毎月 1 日の朝 1 時に自動実行。**手動 4 時間 → ゼロ分**。
 
 ### 結果
 
-- xlsx 5.4 MB → CSV 1.2 MB(4 分の 1)
-- 集計時間 4 時間 → 1.8 秒(8000 倍)
+- xlsx 5.4 MB → Parquet 360 KB(1/15)、**型情報を保持したまま**
+- 集計時間 4 時間 → 0.4 秒
+- 出力は Markdown 表 + Parquet + インタラクティブ HTML、用途で選べる
 - スクリプトは Git で履歴管理可能(Excel ピボットでは不可能)
+- **CSV は使っていない** ── 型を失わないために
 - 翌月以降の作業時間ゼロ
 
 ---
@@ -356,7 +373,7 @@ $ ls -lh proposal-2026/proposal.pdf
 
 ```
 You: invoices/ にある 100 個の請求書 PDF から、それぞれ
-     「合計金額(円)」を抽出して、CSV(filename, amount)で
+     「合計金額(円)」を抽出して、JSON(filename, amount)で
      出してくれる Python を書いて
 ```
 
@@ -463,10 +480,11 @@ missing: 0
 
 ### 手順
 
-**Step 1: Excel → CSV → 集計表(Markdown)**
+**Step 1: Excel → Parquet → 集計表(Markdown)**
 
 ```bash
-$ ssconvert sales-2026-04.xlsx sales-2026-04.csv
+$ python3 -c "import polars as pl; \
+    pl.read_excel('sales-2026-04.xlsx').write_parquet('sales-2026-04.parquet')"
 
 $ python3 aggregate.py
 | 店舗 | 売上(円) |
@@ -478,7 +496,8 @@ $ python3 aggregate.py
 | ... |
 ```
 
-`summary.md` に表が生成される。
+`summary.md` に表が生成される。**CSV は経由しない** ── Parquet が
+型を保ったまま中間ファイルになる。
 
 **Step 2: Claude に分析コメント**
 
@@ -1437,7 +1456,7 @@ $ curl -s https://minutes.example.com/admin/stats | jq
 12 のウォークスルーすべてに共通するのは、**AI を生成器として使い、結果をコード・コマンド・ファイルに凍結する**ことだ。
 
 - Word を Markdown に変える(実例 01)
-- Excel を CSV と Python に変える(実例 02)
+- Excel を Parquet と Python に変える(実例 02、CSV は経由しない)
 - 提案書をテキストとコードで作る(実例 03)
 - 手作業を Python に凍結する(実例 04, 05)
 - レガシーを並行稼働で書き換える(実例 06)

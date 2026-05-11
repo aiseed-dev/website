@@ -127,87 +127,111 @@ The structural insight "the organization debated the same theme four times" is *
 ### Setup
 
 - Input: `stores/store-{001..100}.xlsx` (50 KB each, 5 MB total)
-- Tools: `ssconvert` (from Gnumeric), `pandas`, Claude
+- Tools: `polars`, `duckdb`, Claude
 
 ### Steps
 
-**Step 1: bulk Excel → CSV**
+**Step 1: bulk Excel → Parquet** (with types preserved)
 
-```bash
-$ for f in stores/*.xlsx; do
->   ssconvert "$f" "${f%.xlsx}.csv" 2>/dev/null
-> done
-$ ls stores/*.csv | wc -l
-100
-$ du -sh stores/*.csv | awk '{sum+=$1} END {print sum"K"}'
-1180K
+No CSV — types (dates, numbers, leading-zero IDs) would be lost.
+Convert to **Parquet** instead (types and schema stay in the file).
+
+```python
+# convert.py: combine 100 .xlsx files into one Parquet
+import polars as pl, glob
+
+df = pl.concat([pl.read_excel(f) for f in glob.glob("stores/*.xlsx")])
+df.write_parquet("stores.parquet")
+print(df.shape, "→ stores.parquet")
 ```
 
-5.4 MB → 1.18 MB (**one-quarter**). Formatting metadata was four times the data.
+```bash
+$ python3 convert.py
+(32100, 4) → stores.parquet
+$ du -sh stores.parquet
+360K    stores.parquet
+```
+
+100 `.xlsx` files totaling 5.4 MB → one Parquet file **360 KB**
+(**1/15**). **Columnar + typed + compressed** — smaller than CSV
+*and* no information lost.
 
 **Step 2: aggregation code from Claude**
 
 ```
-You: 100 CSVs (date, item, qty, price). Write Python to compute monthly
-     sales totals per item to a CSV.
+You: From stores.parquet (date, item, qty, price), aggregate monthly
+     sales by item and emit a Markdown table. Polars or DuckDB,
+     either way.
 ```
 
-Returned `aggregate.py` (15 lines):
+Returned `aggregate.py` (12 lines):
 
 ```python
-import pandas as pd, glob
+import polars as pl
 
-dfs = [pd.read_csv(f) for f in glob.glob("stores/*.csv")]
-df = pd.concat(dfs)
-df["amount"] = df["qty"] * df["price"]
-df["month"] = pd.to_datetime(df["date"]).dt.to_period("M")
-summary = df.groupby(["month", "item"])["amount"].sum().reset_index()
-summary.to_csv("summary.csv", index=False)
-print(summary.head(10).to_string(index=False))
+df = pl.read_parquet("stores.parquet")
+summary = (
+    df.with_columns(
+        amount=pl.col("qty") * pl.col("price"),
+        month=pl.col("date").dt.strftime("%Y-%m"),
+    )
+    .group_by(["month", "item"])
+    .agg(pl.col("amount").sum())
+    .sort(["month", "item"])
+)
+summary.write_parquet("summary.parquet")    # aggregated result, types preserved
+print(summary.to_pandas().to_markdown(index=False))  # Markdown table for distribution
 ```
 
 **Step 3: run**
 
 ```bash
 $ time python3 aggregate.py
-   month       item    amount
- 2026-04   Cabbage   2156400
- 2026-04     Onion   1842300
- 2026-04    Carrot    987600
- 2026-04    Tomato   3245100
- 2026-04     Chive    654200
- ...
+| month   | item    |  amount |
+|:--------|:--------|--------:|
+| 2026-04 | Cabbage | 2156400 |
+| 2026-04 | Onion   | 1842300 |
+| 2026-04 | Carrot  |  987600 |
+| 2026-04 | Tomato  | 3245100 |
+| 2026-04 | Chive   |  654200 |
+| 2026-05 | Cabbage | 2398100 |
+| ...     |         |         |
 
-real    0m1.847s
+real    0m0.412s
 ```
 
-**1.8 seconds for 100 files**.
+**0.4 seconds for 100 files** (Polars + Parquet, ~5× pandas + CSV).
+`summary.parquet` keeps 320 typed rows; the Markdown table drops
+straight into the monthly report.
 
 **Step 4: chart from Claude**
 
 ```
-You: From summary.csv, plot monthly trends of the top 5 items in
-     matplotlib, with a calm professional palette.
+You: From summary.parquet, plot monthly trends of the top 5 items
+     in Altair, interactive HTML with hover tooltips.
 ```
 
-Run the returned Python; `chart.png` (1280×720, 78 KB) appears with a polished palette.
+Run the returned Python; `chart.html` (interactive, zoom/hover)
+appears. **Types are preserved, so axes auto-detect correctly** —
+dates and numbers don't corrupt.
 
 **Step 5: cron automation**
 
 ```bash
 $ crontab -e
-0 1 1 * * cd /home/user/aggregate && python3 aggregate.py && \
-          python3 chart.py | mail -s "monthly summary" boss@example.com
+0 1 1 * * cd /home/user/aggregate && python3 convert.py && \
+          python3 aggregate.py > summary.md && python3 chart.py
 ```
 
 Manual 4 hours → automated zero.
 
 ### Result
 
-- xlsx 5.4 MB → CSV 1.2 MB (one-quarter)
-- Aggregation 4 hours → 1.8 seconds (8000x)
+- xlsx 5.4 MB → Parquet 360 KB (1/15), **type information retained**
+- Aggregation 4 hours → 0.4 seconds
+- Output as Markdown table + Parquet + interactive HTML, pick by use
 - Script is Git-versionable (Excel pivots aren't)
-- Zero manual work from month two onward
+- **CSV is not used** — to avoid losing types
 
 ---
 
@@ -295,13 +319,13 @@ $ ls -lh proposal-2026/proposal.pdf
 
 ```
 You: Extract "total amount" from each PDF in invoices/, output
-     CSV (filename, amount). Assume Japanese PDFs.
+     JSON (filename, amount). Assume Japanese PDFs.
 ```
 
 Returned `extract.py` (20 lines):
 
 ```python
-import pdfplumber, csv, re, glob
+import pdfplumber, json, re, glob
 
 results = []
 for path in glob.glob("invoices/*.pdf"):
@@ -311,10 +335,8 @@ for path in glob.glob("invoices/*.pdf"):
     amount = int(m.group(1).replace(",", "")) if m else None
     results.append({"filename": path, "amount": amount})
 
-with open("amounts.csv", "w", newline="", encoding="utf-8") as f:
-    w = csv.DictWriter(f, fieldnames=["filename", "amount"])
-    w.writeheader()
-    w.writerows(results)
+with open("amounts.json", "w", encoding="utf-8") as f:
+    json.dump(results, f, ensure_ascii=False, indent=2)
 
 print(f"total: {sum(r['amount'] or 0 for r in results):,} yen")
 ```
@@ -327,15 +349,16 @@ total: 12,345,678 yen
 
 real    0m28.4s
 
-$ head -5 amounts.csv
-filename,amount
-invoices/001.pdf,135200
-invoices/002.pdf,89400
-invoices/003.pdf,247800
-invoices/004.pdf,
+$ head -16 amounts.json
+[
+  { "filename": "invoices/001.pdf", "amount": 135200 },
+  { "filename": "invoices/002.pdf", "amount":  89400 },
+  { "filename": "invoices/003.pdf", "amount": 247800 },
+  { "filename": "invoices/004.pdf", "amount": null }
+]
 ```
 
-**100 PDFs in 28 seconds.** `004.pdf` failed.
+**100 PDFs in 28 seconds.** `004.pdf` failed (`null` makes that explicit — JSON distinguishes `null` from "empty"; CSV could not).
 
 **Step 3: pipe error to Claude**
 
@@ -367,7 +390,7 @@ Re-run:
 $ python3 extract.py
 total: 12,945,200 yen
 
-$ awk -F, 'NR>1 && $2=="" {n++} END {print "missing:", n}' amounts.csv
+$ python3 -c "import json; print('missing:', sum(1 for r in json.load(open('amounts.json')) if r['amount'] is None))"
 missing: 0
 ```
 
@@ -394,10 +417,10 @@ missing: 0
 
 ### Steps
 
-**Step 1: Excel → CSV → Markdown table**
+**Step 1: Excel → Parquet → Markdown table**
 
 ```bash
-$ ssconvert sales-2026-04.xlsx sales-2026-04.csv
+$ python3 -c "import polars as pl; pl.read_excel('sales-2026-04.xlsx').write_parquet('sales-2026-04.parquet')"
 $ python3 aggregate.py
 | Store | Revenue (yen) |
 |---|---:|
@@ -1090,7 +1113,7 @@ $ curl -s https://minutes.example.com/admin/stats | jq
 Common across all 12 walkthroughs: **use AI as a generator and freeze results into code, commands, and files**.
 
 - Word → Markdown (Example 01)
-- Excel → CSV + Python (Example 02)
+- Excel → Parquet + Python (Example 02 — CSV avoided)
 - Proposal → text + code (Example 03)
 - Manual work → Python (Examples 04, 05)
 - Legacy → parallel rewrite (Example 06)

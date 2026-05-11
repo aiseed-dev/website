@@ -169,18 +169,38 @@ def build_table(content):
     if not lines:
         return ""
 
+    def split_row(line):
+        # Split on '|', strip whitespace, drop the leading/trailing
+        # empties that come from the table's outer pipe characters.
+        # Keep empty cells in the middle (e.g. an empty top-left header
+        # in a labeled comparison table).
+        parts = [c.strip() for c in line.split("|")]
+        if parts and parts[0] == "":
+            parts = parts[1:]
+        if parts and parts[-1] == "":
+            parts = parts[:-1]
+        return parts
+
     html = '<table class="comparison-table fade-in">\n'
     for i, line in enumerate(lines):
-        cells = [c.strip() for c in line.split("|") if c.strip()]
+        cells = split_row(line)
         if i == 0:
             html += "<tr>\n"
             for c in cells:
                 html += f"  <th>{md.renderInline(c)}</th>\n"
             html += "</tr>\n"
-        elif cells and all(set(c) <= {"-", ":"} for c in cells):
+        elif cells and all(set(c) <= {"-", ":"} for c in cells if c):
             # Skip Markdown table separator rows: `| --- | --- |`,
             # `|---|---|`, `| :--- | :---: | ---: |` etc.
-            continue
+            # (Allow empty cells in the row for the empty-row guard,
+            # but require at least one non-empty cell that's all
+            # dashes/colons.)
+            if any(c for c in cells):
+                continue
+            html += "<tr>\n"
+            for c in cells:
+                html += f"  <td>{md.renderInline(c)}</td>\n"
+            html += "</tr>\n"
         else:
             html += "<tr>\n"
             for c in cells:

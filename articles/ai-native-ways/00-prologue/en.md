@@ -207,7 +207,7 @@ to carry them through**:
 - Answers lookups **faster than searching yourself**, and
   structured.
 
-### Treat AI the way you'd treat a colleague or junior staff
+### Treat AI like a colleague or junior — trust the handoff, check the result
 
 Two common mistakes here:
 
@@ -217,11 +217,23 @@ Two common mistakes here:
 Both are old habits. The right approach is simple: **treat AI the
 way you would treat a colleague or junior staff member.**
 
-When you hand work to a capable colleague or junior, you:
+> **Trust enough to delegate, then check the result properly** —
+> that is the heart of this book's practice with AI.
+
+When you hand work to a capable colleague or junior, you do both
+sides:
+
+**The "trust enough to delegate" side:**
 
 - **State clearly what you want done** (inputs, outputs, conditions,
   deadlines).
-- **Read what comes back, and check it.**
+- Don't over-specify every step — once the scope is set, leave the
+  middle to them.
+- Don't take it back with "it's faster if I do it myself."
+
+**The "check the result properly" side:**
+
+- **Read what comes back, and verify it** (don't accept mechanically).
 - For the parts that aren't quite right, **say what to change, in
   words**.
 - If several rounds still don't land, **rethink the way you're
@@ -234,11 +246,11 @@ The same applies to Claude:
 - An error appears → paste the error, ask for cause and fix.
 - Several rounds still don't resolve it → rethink the prompt, or
   rethink the design (Chapter 1's "Don't fear 'it didn't run'").
-- Read what came back, and **make the judgment yourself** — don't
-  accept mechanically.
+- Numbers, proper nouns, citations, whether code actually runs —
+  **verify with your own eyes.**
 
 **Not "constantly second-guess," and not "swallow whole."**
-**Trust, hand off, look at the result, decide** — exactly the
+**Trust the handoff, check the result properly** — exactly the
 practice you'd use with a colleague.
 
 Getting used to this is the foundation of the book's practice. As

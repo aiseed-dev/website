@@ -114,6 +114,8 @@ That is normal. Copy the error text into Claude and say "I got this." Claude wil
 
 You don't need to feel "programming isn't for me." If you can paste an error message, that is enough.
 
+This is exactly the **"trust the handoff, check the result properly"** practice from the prologue — let Claude write the code, run it, look at the result, and ask in words for fixes. **Whether you wrote the code yourself or Claude did, the testing practice is the same.**
+
 ## Readable in ten years
 
 Python has been around for over thirty years. Some code broke in the migration from Python 2 to 3, but Python 3 code will keep running for another 10 or 20 years.

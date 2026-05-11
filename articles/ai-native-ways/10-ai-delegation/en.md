@@ -547,6 +547,8 @@ in its latest form. Use AI as convenience, but do not depend.
 
 On top of that, hand AI the work it is good at (transformation with clear inputs/outputs); humans keep the work AI is bad at (responsibility, context, first-time design).
 
+In short — this is the prologue's **"trust the handoff, check the result properly"** carried through. The way you'd treat a capable colleague: brief them clearly, read what comes back, ask for fixes in words. Treating AI the same way — *plus* the Mythos-era guardrails of "don't run autonomously," "use it inside a sandbox," "don't integrate it into Office."
+
 This is, of all the practices in AI-native work, the most important practice.
 
 The next chapter — the final chapter — synthesizes everything into "one person + AI as the new unit of work."

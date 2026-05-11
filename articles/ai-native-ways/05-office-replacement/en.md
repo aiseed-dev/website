@@ -255,6 +255,63 @@ What does change visibly is the **quality of judgment** in the output. "How are 
 
 Eventually, a boss or colleague will say "the recent monthly reports have gotten sharper." Then you can teach them.
 
+## Other common office workflows — concrete examples
+
+Beyond the monthly report, "stepping outside Office" pays off in
+many workflows. Looked at through **separate entrance / substance
+/ exit**, they all run the same shape.
+
+**Issuing contracts, quotes, and invoices**
+
+- Old: Word templates, manually rewritten per customer, numbers
+  copy-pasted from Excel. Format fix-ups take 10 minutes per
+  document.
+- New: **Markdown templates + JSON customer data** (Chapter 4).
+  Python merges; `pandoc` produces Word / PDF (Chapter 1's "Word
+  VBA externalization"). **100 documents in one go, no formatting
+  drift.**
+
+**Internal meeting minutes**
+
+- Old: Type into Word during the meeting; share with attendees;
+  pull out key points by hand afterward.
+- New: Record the meeting, **Whisper for transcription → Claude
+  formats Markdown → key points / decisions / action items extracted
+  into a separate file → send via Markdown-to-HTML email**.
+  **"Writing minutes" becomes "reviewing minutes."**
+
+**Email inquiry responses**
+
+- Old: Write a similar reply each time a similar question arrives.
+  No accumulation.
+- New: Past inquiries and responses **accumulate as a Markdown
+  FAQ** → Claude drafts new responses citing the closest historical
+  cases → you read, decide, edit, send. **"The FAQ becomes a
+  personal asset"** (kept private via Chapter 2's "self-host +
+  Forgejo").
+
+**Internal study-session materials**
+
+- Old: 30 PowerPoint slides; 4 hours on layout.
+- New: **Markdown + Marp** (Chapter 3); 30 lines of Markdown; Marp
+  produces PDF / HTML / slides instantly; handouts come from the
+  same Markdown. The ratio between "thinking about the content"
+  and "adjusting layout" flips.
+
+**Aggregating Excel data from external partners**
+
+- Old: Open in Excel, copy-paste, use formulas to aggregate,
+  output to another Excel.
+- New: Polars `read_excel` (Chapter 1); aggregation in Python;
+  output to **`.xlsx` for OnlyOffice** or a Markdown table. **On
+  your own desk you don't "use" `.xlsx`; it only "passes through"
+  the script.**
+
+What they share: **structure at the entrance; think in the
+substance; convert to whatever shape the organization demands at
+the exit.** The substance lives in a place where you can dialogue
+with AI.
+
 ## Handling email
 
 Email is a large part of paperwork.

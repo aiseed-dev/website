@@ -497,6 +497,60 @@ of ten years from now welcome it?
 
 **Diagnosis**: have AI search and organize past case patterns, abnormal lab values, drug side effects (good). Have AI flag a differential the doctor might miss (good). But diagnosis and treatment plan are decided by the doctor. AI's candidates are treated as "list to consider." **The doctor is in front of the patient; responsibility lies with the doctor.**
 
+## More concrete examples — hand off versus keep
+
+Situations you actually meet at work, and what to hand AI versus
+what to keep.
+
+**Contract negotiation:**
+- Hand off → Claude organizes / classifies clauses, compares to
+  industry-standard wording, lists disadvantageous terms, searches
+  precedent (Chapter 11).
+- Keep → "Do I accept these terms?" "How do I keep the
+  relationship?" "When do I walk away?" — judgments tied to context
+  and responsibility.
+
+**Proposal to a new client:**
+- Hand off → Claude extracts likely discussion points from industry
+  pain points and your case library; diagrams (Mermaid, Altair);
+  templates from past similar engagements.
+- Keep → "What is this client's real concern?" — listening,
+  observation, pricing, commitment.
+
+**Performance review of a subordinate:**
+- Hand off → Claude pulls objective facts from a year of outputs,
+  meeting records, and self-assessment; maps to evaluation
+  criteria.
+- Keep → "How do we develop this person?" "How will this transfer
+  feel to them?" — individual relationships and long horizons.
+
+**New-product planning:**
+- Hand off → Competitive research, market sizing, patterns from
+  past similar products' wins and losses.
+- Keep → "Does this matter for our company?" "Should we put
+  resources here?" — strategy and responsibility.
+
+**Student guidance (in a school):**
+- Hand off → Aggregation of attendance, grade trajectories, past
+  guidance records.
+- Keep → "What is happening with this student right now?" — direct
+  conversation, family contact, long-term support.
+
+**Succession / executive judgment:**
+- Hand off → Financial data summary, industry trends, past
+  precedent.
+- Keep → "Do we continue this business? Hand it to whom?" — the
+  decision that shapes individual lives and the future of the
+  organization.
+
+What they share: **"gather, organize, draft, propose candidates"
+to AI; "dialogue, decision, responsibility" to humans.**
+
+And whatever AI returns gets **properly checked by you**
+(prologue's "trust the handoff, check the result properly"). The
+facts AI produces are hypotheses; verify against primary sources
+yourself (Chapter 11's "verifying narratives").
+
 ## Personal and organizational lines
 
 **Personal**: Don't let AI decide your life choices (career, marriage, moving). Don't let AI replace the essential parts of your creation. Don't let AI set your child's education direction. Don't replace relationships with AI. AI advises. You decide.
@@ -546,6 +600,8 @@ historical pattern** as credit cards, fast food, and social media, just
 in its latest form. Use AI as convenience, but do not depend.
 
 On top of that, hand AI the work it is good at (transformation with clear inputs/outputs); humans keep the work AI is bad at (responsibility, context, first-time design).
+
+In short — this is the prologue's **"trust the handoff, check the result properly"** carried through. The way you'd treat a capable colleague: brief them clearly, read what comes back, ask for fixes in words. Treating AI the same way — *plus* the Mythos-era guardrails of "don't run autonomously," "use it inside a sandbox," "don't integrate it into Office."
 
 This is, of all the practices in AI-native work, the most important practice.
 

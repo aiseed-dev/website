@@ -76,6 +76,216 @@ diagrams  : Mermaid
 
 All text. AI can read and write it directly. It will still be readable in ten years.
 
+## One way of working, every domain — Linux + Python + AI
+
+The toolkit looks like many pieces, but **the practice underneath
+them is one**:
+
+> **Linux + Python + AI as your assistant** — with this alone, you
+> can handle **writing, software development, design, embedded —
+> all in the same way**.
+
+| Domain | The same practice |
+| --- | --- |
+| **Writing** | Markdown / AsciiDoc / MyST / LaTeX — written as text, versioned in Git, Claude proofreads and translates |
+| **Software development** | Python / HTML+CSS+JS — written as text, versioned in Git, Claude writes the code |
+| **Data work** | JSON / SQLite / Parquet — held as structure, analyzed in JupyterLab + Polars + Claude |
+| **Design** | Mermaid / Claude Design / D3 / Blender / CAD — written as scripts, Claude writes the syntax |
+| **Embedded** | Design and verify in Python, **Claude translates to C / C++** (Chapter 9) |
+
+All the same motion: **hold things as text and code → record history
+in Git → Claude writes, the human decides**. Once you've learned
+this practice, **changing domain no longer means relearning
+different tools, different cultures, different subscriptions**.
+
+### The entry is a little hard, but only once
+
+Honestly — **the entrance is a bit of work**:
+
+- Get comfortable with Linux (terminal, file system, `ls` / `cd` /
+  permissions)
+- Learn how to *use* Python (default: `uv`; for data science / scientific computing: **Miniforge** — libraries, JupyterLab)
+- Three Git motions (`add` / `commit` / `push`)
+- Pick one editor (Zed / VSCodium / Neovim)
+- Stand up Forgejo on a miniPC of your own (Chapter 2)
+
+Cross that threshold and **every domain feels the same**. Word
+mechanics, Excel mechanics, Figma mechanics, PowerPoint mechanics,
+each CAD package's mechanics, each 3D tool's mechanics — you don't
+have to keep memorizing them **separately**.
+
+> **Pay the "one-time small entry cost" and the return — "every
+> domain, the same way" — lasts a lifetime.** The total cost of
+> separately mastering Office, Figma, Photoshop, SolidWorks, and
+> every other specialized tool is far higher than the cost of
+> Linux + Python + AI.
+
+### Windows / Mac give you the same practice too
+
+We said "Linux," but **the practice itself is the same on Mac and
+Windows**:
+
+- **Mac** (macOS): Unix-based — terminal (zsh), Homebrew, Python.
+  Feels nearly identical to Linux.
+- **Linux**: Ubuntu / Debian / Fedora / Arch — any of them.
+- **Windows**: WSL2 + Ubuntu gives you a Linux compatibility layer
+  — Microsoft itself ships this.
+
+So **you can start tomorrow on whatever machine you have today**.
+Once you're comfortable, expand to a miniPC or a Linux box — that
+ties into the self-hosting story in Chapter 2.
+
+### AI carries the syntax — that's what makes "the same way" possible
+
+Why does "every domain, the same way" work? Because **Claude writes
+the syntax**:
+
+- Markdown symbols, Python grammar, HTML/CSS selectors, Mermaid
+  notation, Polars APIs, Altair declarations, D3 selections,
+  Blender's `bpy`, Build123d's geometry, Forgejo's `systemd` unit,
+  C pointers — **Claude writes all of it**.
+- What humans learn: **what to make, what structure to hold it in,
+  whether the result is right**.
+- Once you have this practice, entering a new domain becomes:
+  **"this is something to ask Claude for."**
+
+The D3 / Blender / ComfyUI / CAD section of Chapter 3, the embedded
+work of Chapter 9 — these are all the **same extension** of the same
+practice. The era of "every specialist tool with its own
+operations" is replaced by the era of **"extend one practice across
+every domain."**
+
+### In short — desk work, unified
+
+Writing documents, building tables, drawing charts, composing
+diagrams, writing code, building slides, building web pages,
+building apps, designing parts in CAD, building 3D models, writing
+hardware control, generating reports, replying to email, drafting
+contracts — **all of these get handled the same way**.
+
+The need to **separately master office software, design software,
+development environments, CAD packages, and countless SaaS** is
+gone. Desk work as a whole consolidates into **one practice**:
+Linux + Python + AI.
+
+> In short, **desk work becomes unified**.
+> This is the destination this book's toolkit aims for.
+
+## Hand the fine-grained work to AI — AI is genuinely capable of it
+
+What makes "every domain, the same way" possible is simple. **The
+fine-grained work can be handed off to AI in its entirety** — and
+**AI has the capability to actually carry it through**.
+
+Nearly all of what humans have spent time on as "fine-grained work"
+can be handed to AI:
+
+- **Remembering syntax** — Markdown symbols, Python grammar, CSS
+  selectors, SQL, Mermaid notation, Polars APIs, Altair
+  declarations, D3 selections, Blender's `bpy`, CAD script
+  syntax, `systemd` units, C pointers
+- **Drafting** — email, reports, contracts, proposals, blog posts,
+  documentation, meeting notes, release notes
+- **Formatting and conversion** — Word to Markdown, Excel to
+  Parquet, English to Japanese, PDF to text, image to text, table
+  to bullet list
+- **Boilerplate** — web templates, configuration files, init code,
+  test scaffolding, Dockerfiles, CI configs
+- **Lookups** — how to use an API, which library to pick, what an
+  error means, summaries of papers and precedents
+- **Proofreading, polishing, translation, summarization**
+
+These all go to Claude. And **Claude really does have the capacity
+to carry them through**:
+
+- Writes hundreds of programming languages and dozens of markup
+  variants **in parallel**.
+- Drafts business writing, technical writing, regulatory text,
+  even academic text.
+- Converts between formats **almost instantly**.
+- Generates context-aware boilerplate **in bulk**.
+- Answers lookups **faster than searching yourself**, and
+  structured.
+
+### Treat AI like a colleague or junior — trust the handoff, check the result
+
+Two common mistakes here:
+
+- **"Just to be safe, I'll do this fine-grained piece myself."**
+- Or the opposite: **"AI said so" — accepted without checking.**
+
+Both are old habits. The right approach is simple: **treat AI the
+way you would treat a colleague or junior staff member.**
+
+> **Trust enough to delegate, then check the result properly** —
+> that is the heart of this book's practice with AI.
+
+When you hand work to a capable colleague or junior, you do both
+sides:
+
+**The "trust enough to delegate" side:**
+
+- **State clearly what you want done** (inputs, outputs, conditions,
+  deadlines).
+- Don't over-specify every step — once the scope is set, leave the
+  middle to them.
+- Don't take it back with "it's faster if I do it myself."
+
+**The "check the result properly" side:**
+
+- **Read what comes back, and verify it** (don't accept mechanically).
+- For the parts that aren't quite right, **say what to change, in
+  words**.
+- If several rounds still don't land, **rethink the way you're
+  asking**.
+- **Make the important decisions yourself.**
+
+The same applies to Claude:
+
+- Output doesn't match expectations → ask for revisions in words.
+- An error appears → paste the error, ask for cause and fix.
+- Several rounds still don't resolve it → rethink the prompt, or
+  rethink the design (Chapter 1's "Don't fear 'it didn't run'").
+- Numbers, proper nouns, citations, whether code actually runs —
+  **verify with your own eyes.**
+
+**This isn't a special concession for AI.** Code you wrote yourself,
+a report a colleague hands you — **you run the same checks, the same
+tests, the same number-matching**. "I wrote it myself" doesn't make
+it correct (typos, mistaken assumptions, arithmetic slips,
+edge-case misses — everyone produces these). **What changes is only
+that the writing now goes through AI. The verification practice
+doesn't change.**
+
+**Not "constantly second-guess," and not "swallow whole."**
+**Trust the handoff, check the result properly** — exactly the
+practice you'd use with a colleague.
+
+> Verification and testing are **independent of who wrote the code
+> or the document**. Yourself, a colleague, AI — the work is the
+> same.
+
+Getting used to this is the foundation of the book's practice. As
+Chapter 5 will show, the moment you step outside Office, AI shifts
+from "tool" to "colleague" — and **preparing to treat it as one
+starts here.**
+
+### What remains for humans is judgment
+
+After the fine-grained work goes to AI, what stays with humans:
+
+- **Deciding what to make**
+- **Choosing what structure to hold it in** (Chapter 4)
+- **Judging whether the output is correct**
+- **Deciding who to deliver it to and how**
+- **Taking responsibility**
+
+These are the territory AI cannot take ("The limits of efficiency"
+section, above).
+
+> **Fine-grained work to AI. Judgment to humans.**
+> Drawing this line changes the way of working itself.
+
 ## Tools shape thought
 
 Write in Word, and you focus on formatting. Write in Markdown, and structure comes first.

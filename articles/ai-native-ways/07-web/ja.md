@@ -342,6 +342,67 @@ Spring Boot の長大なクラス階層、Django の app/middleware/views/serial
 
 > 動的層は、FastAPI 一択、最小限。
 
+## 具体例:このスタックで何が作れるか
+
+抽象的な「中身 Markdown + 外枠 HTML+CSS + Python が繋ぐ」は、
+実例で見るのが速い。
+
+**例 1:個人事業主のポートフォリオサイト**
+
+- **中身**:`portfolio/` 以下に作品ごとの `.md` ファイル、画像、
+  Mermaid 図
+- **外枠**:`templates/article.html` 1 ファイル、`style.css` 1 ファイル
+- **Python ビルド**:50 行(`markdown-it-py` + `Jinja2`)
+- **配信**:Cloudflare Pages(無料)、独自ドメイン
+- **更新**:Markdown を書く → `git push` → 自動ビルドして公開
+- **規模**:30〜100 ページ、ビルド数秒、月額費ゼロ
+
+**例 2:中小企業のコーポレートサイト**
+
+- **中身**:`pages/` に「会社概要、サービス、お問い合わせ、ブログ」
+  の Markdown
+- **外枠**:同じく `templates/` + `style.css`
+- **問い合わせフォーム**:FastAPI を 50 行、SMTP でメール送信
+  (社内 LAN の miniPC で動かしてもいい、第2章)
+- **採用ページの動的部分**(求人一覧):SQLite + FastAPI で 30 行
+- **配信**:静的部分は Cloudflare Pages、動的部分は VPS or miniPC
+- **規模**:50〜200 ページ、月数千の訪問、月額費 < 千円
+
+**例 3:NPO のイベント告知サイト**
+
+- **中身**:`events/2026-04-foo.md` のようなイベントごとの Markdown
+- **過去イベントのアーカイブ**:`events/` に蓄積、年別の目次は
+  Python が自動生成
+- **イベント詳細の地図**:Markdown 中に `<iframe>` か、Mermaid の
+  位置関係図
+- **申し込みフォーム**:Google Form リンク(動的部分が要らない)
+  または FastAPI で 30 行
+- **配信**:GitHub Pages か Codeberg Pages(無料)
+
+**例 4:学校教師の学級通信サイト**(保護者限定)
+
+- **中身**:`weekly/2026-04-week-1.md` のような週次 Markdown、
+  写真、Mermaid で行事カレンダー
+- **外枠**:学校カラーで `style.css` を 1 ファイル
+- **アクセス制限**:Basic 認証(`htpasswd`)で保護者限定、または
+  Forgejo に private で置いて保護者にアカウント発行
+- **配信**:学校の miniPC で社内 LAN 公開、または Cloudflare
+  Tunnel で外部アクセス
+- **更新**:教師が Zed で `.md` を書く → `git push` で配信
+
+**例 5:研究室の論文・データ公開サイト**
+
+- **中身**:論文 Markdown(MyST で計算結果埋め込み、第2章)、
+  データセットのメタデータ
+- **データ DL リンク**:Parquet ファイル(第4章)を直接 DL
+- **可視化**:D3(第3章)でインタラクティブ図表
+- **配信**:大学のサーバーか、Codeberg
+
+これらに共通するのは **依存パッケージが 3〜4 個、ビルド数秒、月額
+費ほぼゼロ、AI がほとんどのコードを書く**。React + Next.js + 各種
+SaaS で組むよりも、**作るのも保守も桁違いに軽い**。このサイト
+(aiseed.dev)自身がこの構成だ。
+
 ## デプロイも軽い
 
 静的 HTML のデプロイは、ファイルをコピーするだけだ。

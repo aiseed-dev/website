@@ -253,6 +253,40 @@ Steps for parallel operation:
 
 Three months to complete the rewrite. Engineer load is doubled only during parallel run; afterward it is halved. **And the business logic now lives in both code and Markdown.** That is significant.
 
+## Example: getting out from under SAP shipping
+
+A second case. A mid-sized manufacturer runs shipping management
+on SAP. License cost: tens of millions of yen per year.
+
+**Parallel-run plan:**
+
+1. **Data layer**: Nightly batch exports shipping data from SAP to
+   **Parquet** (Chapter 4) — SAP is not touched, read-only.
+2. **New logic layer**: Stock matching, shipment decisions, carrier
+   routing written in Python with Polars + DuckDB (Claude generates
+   the first version from floor interviews and screenshots of the
+   existing SAP configuration screens).
+3. **Screen layer**: The floor-facing shipping instruction UI is
+   FastAPI + HTML (Chapter 7), runnable inside the LAN on a miniPC
+   running Forgejo (Chapter 2).
+4. **Reconciliation**: Compare SAP's shipping output with the new
+   system's daily; investigate any differences with Claude.
+   **Nearly every week, an "undocumented rule" inside SAP surfaces.**
+5. **Three months in**: When the diff has been zero for two weeks,
+   promote the new system to production. **Cancel SAP before the
+   next contract renewal.**
+
+**Result:**
+- The **tens-of-millions-of-yen license fee disappears**.
+- Business logic emerges into **Markdown and Python** (no more SAP
+  "business consultant" middlemen).
+- Customizations happen on the floor the same day (previously: ask
+  the SAP vendor, wait months).
+
+This is Chapter 5's "step away from Office" in **business-system
+form**. Same structure as "don't drop Excel, only drop CSV" — "don't
+drop SAP all at once, kill it through parallel run."
+
 ## To those who say "don't touch what works"
 
 Inside organizations, people oppose rewriting. Their argument almost always reduces to one: "if you touch it, it might stop."

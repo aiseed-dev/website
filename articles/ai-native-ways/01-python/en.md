@@ -74,15 +74,31 @@ The first version is rarely perfect. Run it, look at the output, send back "this
 
 Most everyday tasks for office workers and sole proprietors.
 
+**File / data work:**
+
 - Gather a specific sheet from 100 Excel files and merge them
 - Extract amounts from email bodies into JSON / SQLite
 - Convert PDFs into searchable text
-- Resize and rename images in bulk
+- Resize, rename, thumbnail images in bulk
 - Scrape product information from a website
 - Sort invoice PDFs into folders by month
 - Walk through Markdown files and build a table of contents
+- Transcribe recordings with Whisper, format the minutes in Markdown
 
-Work that "a human keeps doing manually" becomes Python. Once written, it works next month and the month after.
+**Examples by role:**
+
+- **Accounting**: Pull transactions via the freee / MoneyForward API, reclassify with your own rules, generate the monthly report.
+- **HR**: Extract desired conditions, years of experience, and skills from 100 résumé PDFs into structure; stash in SQLite; aggregate monthly application trends by role.
+- **Marketing**: Crawl competitors' prices weekly; track history in SQLite; chart price-level changes in Altair.
+- **Manufacturing**: Pull factory sensor logs (JSON) daily; detect anomalies with Polars; Claude drafts a Markdown daily report.
+- **Teaching**: Generate 30 variants of practice problems per topic in Python; vary difficulty per student (an application of mail merge).
+- **Research**: Convert paper PDFs to full text; Claude summarizes and extracts citations; build a map of your research area in SQLite.
+- **Farming**: Pull 10 years of temperature and rainfall from the meteorological-agency API in Python; aggregate by month in Polars; year-on-year comparison charts in Altair; consult Claude on "when is the planting window this year."
+- **Small retail**: Convert weekly POS exports (`.xlsx`) to Parquet; rank best- and worst-sellers with Polars; produce material for purchasing decisions.
+- **NPO**: Donor data in SQLite; tie donation history, response, and interests together; quarterly reports drafted individually in Markdown.
+- **Translator**: Past translations turned into Markdown; ask Claude "how have we historically rendered this term" — a "personal glossary" you can search.
+
+Work that "a human keeps doing manually" becomes Python. Once written, it works next month and the month after. **Chapter 12's "from silos to individual autonomy"** — these automations are what technically supports that autonomy.
 
 ## Have a runtime
 
@@ -93,6 +109,8 @@ Three options.
 **One: install Python on your own machine**
 
 Run with the `python` command. Files on your machine just work. The first step has a small hurdle, but once installed, it works forever. Mac and Linux often have Python preinstalled. On Windows, install from the Microsoft Store.
+
+For package and tool installation, **default to `uv`** (a fast Rust-built installer). For **data science and scientific computing** workflows where `uv` struggles — `numpy` / `scipy` / `pytorch` / `tensorflow` / GPU libraries / GIS / bioinformatics with heavy C/C++/Fortran dependencies — switch to **Miniforge** (the FLOSS conda distribution that uses conda-forge by default; not bound by Anaconda's commercial terms). **Both are equally usable from AI** — ask Claude "install with `uv`" or "install with `conda`" and the right commands come back. The "skill of using, not writing" applies to package managers too.
 
 **Two: use Claude's code execution**
 
@@ -113,6 +131,8 @@ That is normal. Copy the error text into Claude and say "I got this." Claude wil
 > Paste the error text into Claude. Claude fixes it. You move on.
 
 You don't need to feel "programming isn't for me." If you can paste an error message, that is enough.
+
+This is exactly the **"trust the handoff, check the result properly"** practice from the prologue — let Claude write the code, run it, look at the result, and ask in words for fixes. **Whether you wrote the code yourself or Claude did, the testing practice is the same.**
 
 ## Readable in ten years
 

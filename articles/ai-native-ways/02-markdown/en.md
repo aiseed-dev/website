@@ -85,6 +85,339 @@ In other words, **you don't even need to memorize the symbols**. If the content 
 
 Learning Markdown is not required. What you need is to be able to **read** Markdown. Once you can read it, you can check what Claude produced and correct it if needed. That takes only a few hours to acquire.
 
+## Which editor — Zed / VSCodium / Neovim
+
+Markdown is a text file — any text editor can write it. Even Notepad
+works. But pick an **editor that fits Markdown and AI-native work**,
+and writing gets a step faster.
+
+Three options. Pick by **familiarity, taste, and environment**.
+
+:::compare
+| Editor | Notes | Suits |
+| --- | --- | --- |
+| **Zed** | Fast launch (0.3 s), modern, lightweight, AI built-in | First-time pickers, people who want to choose one and start |
+| **VSCodium** | **FLOSS build of VS Code** (no Microsoft telemetry), rich extensions | People used to VS Code, people who want to compose via extensions |
+| **Neovim** | Runs in the terminal, keyboard-only, config-as-text | Command-line-centric people, people working over SSH |
+:::
+
+What all three share:
+
+- **Open-source, free** — no vendor lock-in, no subscription
+- **Markdown syntax highlighting** out of the box
+- **Git integration** built in or via extension
+- **Claude Code / Claude API integration** is possible
+
+> **If you're new** — pick **Zed**. Download it, open it, and you can
+> write the same day. Move on to VSCodium or Neovim once you're used
+> to writing. The "skill of reading" is all you need to enter any of
+> them.
+
+### Zed — the easy default
+
+For starting out, **Zed**. Download, open, and Markdown displays with
+readable syntax coloring. Sidebar for files, Cmd+P for file search,
+Cmd+Shift+F for project-wide search — a VS Code-like feel, but
+**Rust-built and dramatically faster** (`.md` opens in 0.3 s — Word
+takes 3–10 s).
+
+Zed has **built-in AI integration with Claude / GPT and others**.
+While writing, you can ask "proofread this section" or "summarize
+this paragraph" (called explicitly from an assistant panel — not the
+kind that streams every keystroke).
+
+Get it: [zed.dev](https://zed.dev) (Mac / Linux / Windows)
+
+### VSCodium — the free build of VS Code
+
+For "I'm used to VS Code but want to cut off the Microsoft
+telemetry," there is **VSCodium**. The same source as VS Code, built
+**without Microsoft's telemetry and proprietary marketplace bits**.
+(Nearly) the same extensions, the same UI, no Microsoft account
+required.
+
+Markdown preview, Mermaid preview, AsciiDoc / MyST / LaTeX support,
+AI extensions like Claude / Cline / Continue — almost everything
+works.
+
+Get it: [vscodium.com](https://vscodium.com) (Mac / Linux / Windows)
+
+> Why VSCodium over VS Code — same "vendor concentration" issue as
+> Microsoft 365 / Copilot (Chapter 5). The contents are the same,
+> but the data flow and the licensing land on your side with
+> VSCodium.
+
+### Neovim — terminal-centric, for the hacker
+
+For command-line-centric work — SSH into a server and write there,
+all-Linux workflows, keyboard-only operation — there is **Neovim**.
+The successor to Vim, configured in Lua, with plugins for AI
+(`avante.nvim`, `codecompanion.nvim`, etc.), LSP, Markdown preview,
+Mermaid preview.
+
+Learning cost is the highest of the three (you need to get used to
+modal editing with `hjkl`). But once you are, **your typing speed
+exceeds what the editor can bottleneck**. Long-term stability is a
+draw too — configurations from ten years ago still run.
+
+Get it: [neovim.io](https://neovim.io) (Mac / Linux / Windows / BSD)
+
+### Shared practice — Markdown + Git + AI
+
+Whichever editor, the practice in this book is the same:
+
+- Files in **Markdown (`.md`)**
+- History in **Git** (integrated in the editor)
+- AI is called **explicitly** (assistant panel, Claude Code CLI,
+  Claude chat) — avoid the Copilot-style constant-streaming
+  integration where the editor sends every keystroke to a vendor
+  (Chapter 10).
+
+> Change the editor and the principle does not change.
+> **Keep the text on your side; choose what you hand to AI.**
+
+## For serious work — Forgejo / Gitea
+
+So far this has been about "writing on your own desk."
+
+The moment you decide to use this for serious work — **even solo,
+the moment you think about backups, off-machine history, eventual
+sharing** — you need a **Git hosting target**. GitHub and GitLab
+are well known, but in this book's practice the natural choice is
+a server **you (or a community) can run**.
+
+Two options:
+
+:::compare
+| Tool | Character | Recommended |
+| --- | --- | --- |
+| **Forgejo** | Community-run FLOSS, governed by the non-profit Codeberg e.V. | ◎ First choice |
+| **Gitea** | The original; now governed by the commercial Gitea Ltd. | ○ (keep using it if you already do) |
+:::
+
+Both provide:
+
+- **Git hosting** (push / pull / clone)
+- **Markdown and Mermaid rendered in READMEs and wikis**
+- **Issues / Pull Requests** for review and discussion
+- **Webhooks and built-in CI** (Forgejo Actions / Gitea Actions,
+  compatible with GitHub Actions)
+- **A single binary** — fits on a small VPS (1 GB RAM)
+- **Open-source, no subscription**
+
+> **If you're new** — "writing solo" and "needs no backup" are
+> **different things**. `git init` for a local history is fine, but
+> **when the disk dies, everything dies with it**. Even solo, from
+> day one, have **a `git push` target somewhere**.
+>
+> The smallest form is fine: **a miniPC or old PC at home running
+> Forgejo** (~US$200–400 one time, zero monthly cost); another
+> machine or NAS; an external drive you `git push` to nightly. **"An
+> internet-facing server feels scary"?** Run it LAN-only at first.
+> **Sooner or later, you need a server on your side — a miniPC is
+> the easiest entry.**
+
+## Privacy-sensitive content — self-host by default
+
+The **first axis** in choosing where to host is privacy. "Can the
+content be public?" decides the destination:
+
+:::compare
+| Content | Recommended hosting |
+| --- | --- |
+| Public open-source, blog drafts, educational content | **Codeberg** (or GitHub public repos) |
+| Personal notes (jotting, research) | **Self-host** (home Forgejo or NAS works) |
+| Business data, internal docs, meeting notes | **Self-host** (required) |
+| Contracts, quotations, customer lists | **Self-host** (required) |
+| Customer PII, health data, financial data | **Self-host** (legally required, often) |
+| Company / team code (non-public) | **Self-host** (or a paid private plan) |
+:::
+
+> Principle — **anything where privacy or ownership matters,
+> self-host by default**. Codeberg is a non-profit, but it is still
+> **someone else's server**. **If you can keep it on your side,
+> keep it on your side.** This is the Git version of Chapter 5:
+> "keep your own system on your own side."
+
+"Self-host feels hard." The next section shows **a path from a
+small self-host to a real one**. Claude writes the configuration,
+so it's easier than it looks.
+
+### Why Forgejo — the governance story
+
+Gitea and Forgejo are **nearly the same codebase** (Forgejo is a
+fork of Gitea). The difference is **who runs it**:
+
+- **Gitea**: started as a community project; in late 2022, trademark
+  and governance moved to the commercial **Gitea Ltd.** Decisions
+  now depend on the company.
+- **Forgejo**: the community that disagreed with that move forked
+  it. Governance sits with **Codeberg e.V., a German non-profit**.
+  **Company interests do not enter the structure.**
+
+Feature-wise Forgejo keeps pace, so **if you're choosing, choose
+Forgejo**. The structure is the same as Microsoft Office vs.
+OnlyOffice (Chapter 5) — "same contents, governance on the
+community side."
+
+### Three places to put it — pick by use
+
+**(1) Self-host** — the default for anything privacy-sensitive
+
+**A single miniPC is enough.** Intel NUC, Mac mini, Beelink, GMKtec,
+a small ARM board — a US$200–400 box, Linux on it, Forgejo running
+on it. **Zero monthly fee, data stays in your house, low power draw
+(5–15 W; running 24/7 costs roughly a few dollars of electricity a
+month).** Forgejo is a single binary; 1 GB RAM is plenty.
+
+Add one domain and an HTTPS reverse proxy and you can push/pull from
+outside as well — **your own Git platform, complete**. **Business
+data, contracts, customer information, personal notes — anything
+whose contents you don't want leaving your side goes here.**
+
+```bash
+# Drop Forgejo onto Linux running on the miniPC
+$ wget https://codeberg.org/forgejo/forgejo/releases/download/v8.0.0/forgejo-8.0.0-linux-amd64
+$ chmod +x forgejo-8.0.0-linux-amd64
+$ ./forgejo-8.0.0-linux-amd64 web
+```
+
+The detailed setup (`systemd` unit, HTTPS, automatic backups, SSH
+key auth, security for internet exposure — fail2ban, Tailscale,
+Cloudflare Tunnel) can be left to Claude — also a "skill of using,
+not writing" (Chapter 1) territory.
+
+**A Raspberry Pi, a NAS, or an old PC at home also works** — if
+you've already got one, start there. Run it LAN-only and you don't
+have to expose anything (sufficient for personal use). **You don't
+need a new "server."**
+
+**A VPS is a fallback** — if you want frequent access from outside,
+don't want your home network exposed, or your home power/network is
+unstable, a small VPS (a few dollars a month) is fine. But on
+privacy grounds, **the miniPC is the cleaner choice** (a VPS is
+someone else's data center). **Start with a miniPC; add a VPS only
+if you need it.**
+
+**(2) Inside an organization** — company / team scale
+
+Run Forgejo on your internal VPS or Kubernetes cluster. **Every
+repository sits inside the organization's physical boundary.** The
+Microsoft / GitHub / Atlassian subscriptions stop. You're no longer
+buffeted by data-policy shifts, and the source code and business
+documents become **yours** (same structure as Chapter 5's Office
+discussion). This is still **self-hosting**, at a larger scale.
+
+**(3) Codeberg.org** — for content you're willing to publish
+
+[Codeberg.org](https://codeberg.org) is **Forgejo hosted by a
+non-profit as a public forge**. Free, account-based. Ideal for
+**open-source projects, blog drafts, educational content** — the
+hosting vendor is a non-profit.
+
+**But this is still "someone else's server."** **Don't put business
+data or personal information here.** Codeberg is for "things you
+are willing to publish" — keep that line.
+
+### Where does GitHub fit
+
+GitHub isn't forbidden. **Public OSS still has strong reach there**:
+
+- **Public open-source projects** → GitHub's reach and ecosystem are
+  strong.
+- **Notes intended to be public** → GitHub is fine.
+- **Business data, internal docs, contracts, personal information**
+  → **don't put these on GitHub *or* Codeberg. Self-host.**
+
+GitHub joined **Microsoft in 2018**. It sits in the same
+"centralization" context as Microsoft 365 / Copilot. **Anything
+privacy-sensitive does not belong on GitHub or Codeberg** — that is
+the privacy principle, carried through.
+
+### Markdown and Mermaid render directly
+
+Forgejo, Gitea, and Codeberg **render `README.md` and `.md` files
+directly in the web UI**. `` ```mermaid `` blocks are rendered as
+standard. **What you wrote is what is visible on the web** — without
+running a separate static-site generator, the forge **doubles as an
+internal wiki**.
+
+### Concrete examples — what Forgejo + miniPC actually looks like
+
+The abstract "self-host" is easier to see in cases.
+
+**Case 1: A, a sole-proprietor consultant**
+
+A Beelink miniPC under the desk (~$200, Ubuntu). Forgejo running
+under `systemd` 24/7. Domain `forge.example.com` via Cloudflare; a
+Cloudflare Tunnel exposes it externally without opening ports on
+the home router.
+
+Repositories:
+
+- `client-master` (customer master, contract templates) — private
+- `engagement-2026Q2` (current engagement notes in Markdown) — private
+- `invoices` (invoice templates + JSON data + generation script) — private
+- `blog` (public articles' Markdown drafts; published as static HTML
+  on Cloudflare Pages) — private
+- `home` (personal notes, book responses) — private
+
+Write in Zed → `git push` → history lives in Forgejo. **If the
+MacBook on the desk dies, the history is still in the miniPC.**
+Daily backup from miniPC to an external SSD via cron `rsync`.
+
+**Case 2: B, a 5-person creative production company**
+
+In the office, an Intel NUC (~$400, Debian). Forgejo with five
+employee accounts; each has private repos plus shared project
+repos. LAN access only; `tailscale` for safe access from outside.
+
+- `client-projects/*` (one repo per project — Markdown copy, Mermaid
+  design diagrams, Python scripts, Altair-generated reports)
+- `internal-wiki` (company rules, workflows, meeting notes,
+  procedures)
+- `templates` (contracts, quotations, proposals as Markdown + JSON)
+
+The internal wiki is just the `README.md` of `internal-wiki` opened
+in Forgejo's web UI. No Notion, no Confluence required. **The
+monthly subscriptions disappear** ($30/month × 5 people × 12 months
+= about $1,800/year).
+
+**Case 3: C, a group of three teachers sharing a setup**
+
+In a corner of the staff room, a used Mac mini ($150, runs Forgejo
+on macOS). LAN-only; never exposed externally.
+
+- `units-2026` (per-topic teaching Markdown, Python-generated
+  practice problems)
+- `students-data` (personal data, never leaves the building; SQLite
+  with statistics)
+- `grade-aggregation` (Polars scripts for grade aggregation)
+- `parent-letters` (mail-merge Markdown templates + JSON)
+
+Teachers can see each other's previous-year materials directly; the
+`git history` shows how earlier holders of the course revised it.
+**Institutional knowledge stays in the school** even when staff
+rotate.
+
+What unites these:
+
+- A **$150–$400 miniPC and zero monthly fees** (electricity is a
+  few dollars a month).
+- Forgejo is a single binary; configuration can be left to Claude.
+- **Private / LAN-only / publicly exposed — pick by purpose.**
+- The substance lives in **Markdown + JSON + SQLite + Python** —
+  the toolkit of the whole book.
+
+"Standing up a server" turns out to be far lower-friction than it
+sounds.
+
+> To handle Markdown for serious work, you need both wheels:
+> **a place to write (the editor)** and **a place to put it
+> (Forgejo)**. Even solo, backup is required; anything
+> privacy-sensitive is self-hosted by default — this is the Git
+> version of Chapter 5's "keep your own system on your own side."
+
 ## Pick the format that fits the job — four text formats are enough
 
 Markdown is the **everyday default**, but it does not cover every case.

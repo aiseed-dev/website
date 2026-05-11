@@ -85,6 +85,97 @@ In other words, **you don't even need to memorize the symbols**. If the content 
 
 Learning Markdown is not required. What you need is to be able to **read** Markdown. Once you can read it, you can check what Claude produced and correct it if needed. That takes only a few hours to acquire.
 
+## Which editor — Zed / VSCodium / Neovim
+
+Markdown is a text file — any text editor can write it. Even Notepad
+works. But pick an **editor that fits Markdown and AI-native work**,
+and writing gets a step faster.
+
+Three options. Pick by **familiarity, taste, and environment**.
+
+:::compare
+| Editor | Notes | Suits |
+| --- | --- | --- |
+| **Zed** | Fast launch (0.3 s), modern, lightweight, AI built-in | First-time pickers, people who want to choose one and start |
+| **VSCodium** | **FLOSS build of VS Code** (no Microsoft telemetry), rich extensions | People used to VS Code, people who want to compose via extensions |
+| **Neovim** | Runs in the terminal, keyboard-only, config-as-text | Command-line-centric people, people working over SSH |
+:::
+
+What all three share:
+
+- **Open-source, free** — no vendor lock-in, no subscription
+- **Markdown syntax highlighting** out of the box
+- **Git integration** built in or via extension
+- **Claude Code / Claude API integration** is possible
+
+> **If you're new** — pick **Zed**. Download it, open it, and you can
+> write the same day. Move on to VSCodium or Neovim once you're used
+> to writing. The "skill of reading" is all you need to enter any of
+> them.
+
+### Zed — the easy default
+
+For starting out, **Zed**. Download, open, and Markdown displays with
+readable syntax coloring. Sidebar for files, Cmd+P for file search,
+Cmd+Shift+F for project-wide search — a VS Code-like feel, but
+**Rust-built and dramatically faster** (`.md` opens in 0.3 s — Word
+takes 3–10 s).
+
+Zed has **built-in AI integration with Claude / GPT and others**.
+While writing, you can ask "proofread this section" or "summarize
+this paragraph" (called explicitly from an assistant panel — not the
+kind that streams every keystroke).
+
+Get it: [zed.dev](https://zed.dev) (Mac / Linux / Windows)
+
+### VSCodium — the free build of VS Code
+
+For "I'm used to VS Code but want to cut off the Microsoft
+telemetry," there is **VSCodium**. The same source as VS Code, built
+**without Microsoft's telemetry and proprietary marketplace bits**.
+(Nearly) the same extensions, the same UI, no Microsoft account
+required.
+
+Markdown preview, Mermaid preview, AsciiDoc / MyST / LaTeX support,
+AI extensions like Claude / Cline / Continue — almost everything
+works.
+
+Get it: [vscodium.com](https://vscodium.com) (Mac / Linux / Windows)
+
+> Why VSCodium over VS Code — same "vendor concentration" issue as
+> Microsoft 365 / Copilot (Chapter 5). The contents are the same,
+> but the data flow and the licensing land on your side with
+> VSCodium.
+
+### Neovim — terminal-centric, for the hacker
+
+For command-line-centric work — SSH into a server and write there,
+all-Linux workflows, keyboard-only operation — there is **Neovim**.
+The successor to Vim, configured in Lua, with plugins for AI
+(`avante.nvim`, `codecompanion.nvim`, etc.), LSP, Markdown preview,
+Mermaid preview.
+
+Learning cost is the highest of the three (you need to get used to
+modal editing with `hjkl`). But once you are, **your typing speed
+exceeds what the editor can bottleneck**. Long-term stability is a
+draw too — configurations from ten years ago still run.
+
+Get it: [neovim.io](https://neovim.io) (Mac / Linux / Windows / BSD)
+
+### Shared practice — Markdown + Git + AI
+
+Whichever editor, the practice in this book is the same:
+
+- Files in **Markdown (`.md`)**
+- History in **Git** (integrated in the editor)
+- AI is called **explicitly** (assistant panel, Claude Code CLI,
+  Claude chat) — avoid the Copilot-style constant-streaming
+  integration where the editor sends every keystroke to a vendor
+  (Chapter 10).
+
+> Change the editor and the principle does not change.
+> **Keep the text on your side; choose what you hand to AI.**
+
 ## Pick the format that fits the job — four text formats are enough
 
 Markdown is the **everyday default**, but it does not cover every case.

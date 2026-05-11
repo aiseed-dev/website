@@ -210,12 +210,12 @@ Both provide:
 > **when the disk dies, everything dies with it**. Even solo, from
 > day one, have **a `git push` target somewhere**.
 >
-> The smallest form is fine: a tiny VPS (a couple of dollars a
-> month) running Forgejo; another machine or NAS at home; or even an
-> external drive that you `git push` to nightly. **"A VPS feels
-> scary"?** Start with an external drive or a second machine at home,
-> move to Forgejo later. **Sooner or later, you need a server on
-> your side.**
+> The smallest form is fine: **a miniPC or old PC at home running
+> Forgejo** (~US$200–400 one time, zero monthly cost); another
+> machine or NAS; an external drive you `git push` to nightly. **"An
+> internet-facing server feels scary"?** Run it LAN-only at first.
+> **Sooner or later, you need a server on your side — a miniPC is
+> the easiest entry.**
 
 ## Privacy-sensitive content — self-host by default
 
@@ -264,27 +264,40 @@ community side."
 
 **(1) Self-host** — the default for anything privacy-sensitive
 
-One small VPS (a couple of dollars a month is plenty), the Forgejo
-binary, one domain, an HTTPS reverse proxy. With that, **you have
-your own Git platform**. **Business data, contracts, customer
-information, personal notes — anything whose contents you don't
-want leaving your side goes here.**
+**A single miniPC is enough.** Intel NUC, Mac mini, Beelink, GMKtec,
+a small ARM board — a US$200–400 box, Linux on it, Forgejo running
+on it. **Zero monthly fee, data stays in your house, low power draw
+(5–15 W; running 24/7 costs roughly a few dollars of electricity a
+month).** Forgejo is a single binary; 1 GB RAM is plenty.
+
+Add one domain and an HTTPS reverse proxy and you can push/pull from
+outside as well — **your own Git platform, complete**. **Business
+data, contracts, customer information, personal notes — anything
+whose contents you don't want leaving your side goes here.**
 
 ```bash
-# Drop Forgejo onto a small VPS
+# Drop Forgejo onto Linux running on the miniPC
 $ wget https://codeberg.org/forgejo/forgejo/releases/download/v8.0.0/forgejo-8.0.0-linux-amd64
 $ chmod +x forgejo-8.0.0-linux-amd64
 $ ./forgejo-8.0.0-linux-amd64 web
 ```
 
-The detailed setup (`systemd` unit, HTTPS, backups, SSH key auth,
-automatic backup) can be left to Claude — also a "skill of using,
+The detailed setup (`systemd` unit, HTTPS, automatic backups, SSH
+key auth, security for internet exposure — fail2ban, Tailscale,
+Cloudflare Tunnel) can be left to Claude — also a "skill of using,
 not writing" (Chapter 1) territory.
 
-**Entry-level path** — if "a VPS feels scary," Forgejo also runs on
-a Linux box at home, a Mac mini, a Raspberry Pi, or a NAS. Run it
-inside your LAN at first; don't expose it to the internet. Move to
-a VPS once you're used to it.
+**A Raspberry Pi, a NAS, or an old PC at home also works** — if
+you've already got one, start there. Run it LAN-only and you don't
+have to expose anything (sufficient for personal use). **You don't
+need a new "server."**
+
+**A VPS is a fallback** — if you want frequent access from outside,
+don't want your home network exposed, or your home power/network is
+unstable, a small VPS (a few dollars a month) is fine. But on
+privacy grounds, **the miniPC is the cleaner choice** (a VPS is
+someone else's data center). **Start with a miniPC; add a VPS only
+if you need it.**
 
 **(2) Inside an organization** — company / team scale
 

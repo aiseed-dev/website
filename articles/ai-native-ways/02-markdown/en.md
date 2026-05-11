@@ -4,7 +4,7 @@ number: "02"
 lang: en
 title: "Writing Documents — Markdown as the Minimal Choice"
 subtitle: "Save the structure, not the formatting"
-description: Word makes you focus on formatting. Markdown brings structure to the front. Once you ask which one AI can read directly, the answer is clear. To "write" is not to arrange visuals — it is to structure thought.
+description: Word makes you focus on formatting. Text formats (Markdown / AsciiDoc / MyST / LaTeX) bring structure to the front. Markdown for everyday writing, AsciiDoc for technical manuals, MyST for data reports with embedded computation, LaTeX for print-quality reports. AI writes them, so the syntax is not yours to memorize.
 date: 2026.05.02
 label: AI Native 02
 title_html: Write documents in <span class="accent">Markdown</span>.<br>Save the <span class="accent">structure</span>, not the formatting.
@@ -85,6 +85,117 @@ In other words, **you don't even need to memorize the symbols**. If the content 
 
 Learning Markdown is not required. What you need is to be able to **read** Markdown. Once you can read it, you can check what Claude produced and correct it if needed. That takes only a few hours to acquire.
 
+## Pick the format that fits the job — four text formats are enough
+
+Markdown is the **everyday default**, but it does not cover every case.
+For each job, pick the **text format** that suits it best.
+
+:::compare
+| Format | Role | Output |
+| --- | --- | --- |
+| **Markdown** | Short fragments of thought, drafts of web articles | Blogs, aiseed.dev |
+| **AsciiDoc** | Systematic structural analyses, technical manuals | Rich HTML, e-books |
+| **MyST (Jupyter)** | Data-analysis reports with embedded computation | Interactive web pages |
+| **LaTeX** | Reports that demand strict typesetting | Print-quality PDF |
+:::
+
+All four are **text files**. Not binary. Versionable in Git. Readable
+directly by AI. The only difference is "how much structure and how
+much expressive range the format gives you."
+
+```mermaid
+flowchart TB
+  Intent["What you want to write<br/>(words, data, diagrams)"]
+  Intent --> Q1{"What is it for?"}
+
+  Q1 -->|"Everyday writing<br/>(web post, memo, proposal)"| MD["**Markdown**<br/>light, immediate"]
+  Q1 -->|"Systematic manual<br/>(hundreds of pages, index, cross-refs)"| AD["**AsciiDoc**<br/>deep structure"]
+  Q1 -->|"Report with computation<br/>(code + charts + prose)"| MY["**MyST (Jupyter)**<br/>docs + math unified"]
+  Q1 -->|"Print-quality report<br/>(paper, academic, regulatory)"| TX["**LaTeX**<br/>strict typesetting"]
+
+  MD --> Web["Blog / aiseed.dev"]
+  AD --> HTMLEB["Rich HTML / EPUB"]
+  MY --> Interactive["Interactive web"]
+  TX --> PDF["Print-quality PDF"]
+
+  classDef pri fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef sec fill:#fef9e7,stroke:#c8a559,color:#5a4a1a
+  class MD,AD,MY,TX pri
+  class Web,HTMLEB,Interactive,PDF sec
+```
+
+### Markdown — the everyday default
+
+Eight out of ten things you want to write fit in Markdown. The chapters
+of this book are Markdown. Blog posts, meeting notes, memos, proposals,
+draft reports, internal wikis — all Markdown. **The lightest format**,
+opens in any text editor, converts anywhere with `pandoc` (HTML / PDF /
+Word / EPUB / slides).
+
+### AsciiDoc — when structure runs deep
+
+A **technical manual of several hundred pages**, a **systematic
+structural analysis** with chapters / sections / subsections, a document
+that needs indexes / bibliography / cross-references — when Markdown's
+structural vocabulary is not enough, reach for **AsciiDoc**. Conditional
+content (differences by edition), automatic cross-references across
+files, expressive tables, footnotes, indexes — all **standard
+features**. O'Reilly's technical books are written in AsciiDoc. Outputs
+are **rich HTML, EPUB, PDF**.
+
+### MyST (Jupyter) — documents and computation, together
+
+Data-analysis reports mix **formulas, code, charts, and prose
+interpretation**. MyST is an extension of Markdown that **embeds
+Jupyter notebook computation cells inside the document**. Manage
+outputs from `polars` / `matplotlib` / `altair` alongside the prose —
+**re-run and the results refresh**. The format for reports where
+"document" and "computation" are not separated — directly continuous
+with the JupyterLab world from Chapter 1. Output is **an interactive
+web page** (zoomable charts, expandable code).
+
+### LaTeX — when it goes to paper, when typesetting must be strict
+
+**Academic papers, official internal reports, book publishing,
+government submissions** — documents that are "read on paper" or
+"demand typesetting quality." Equations, chemical formulas, figure /
+table numbering, auto-numbered references, page references, table of
+contents, indexes — all automatic. Final output is **a print-quality
+PDF** (`xelatex` handles non-Latin scripts). A technology that has run
+for fifty years and will keep running for another fifty.
+
+### AI writes them, so the syntax is not yours to memorize
+
+"AsciiDoc, MyST, LaTeX — each has its own syntax. The learning cost
+sounds high." That used to be true. In an AI-native workflow, it is
+not a problem.
+
+> You: Convert this proposal to AsciiDoc. Keep the chapter and section
+> structure. Add cross-references and an index. Output for HTML and
+> EPUB.
+>
+> Claude: (AsciiDoc comes back)
+>
+> You: Convert this analysis to MyST. Embed the aggregation code and
+> the Altair charts inline. Make it buildable by Jupyter Book.
+>
+> Claude: (MyST comes back)
+>
+> You: This report in LaTeX. Cover page, table of contents,
+> bibliography, index, A4 for print.
+>
+> Claude: (LaTeX comes back)
+
+The human only needs to **be able to read it**. If you can read it, you
+can judge whether Claude's output is right. **You do not need to be
+able to write it.** Whether Markdown, AsciiDoc, MyST, or LaTeX, the
+principle is the same — **not the skill of writing, but the skill of
+using**.
+
+If in doubt, **start with Markdown**. Write it; if the structure grows
+too deep, move to AsciiDoc; if computation creeps in, move to MyST; if
+you need print quality, move to LaTeX. **Just ask Claude to convert.**
+
 ## When a Word file lands in your inbox
 
 As long as you work inside an organization, Word files will keep arriving. What do you do with them?
@@ -119,7 +230,16 @@ Token consumption of a Word file: 5,000 characters consume about 8,000 tokens (f
 
 Change your tools, and the way you think changes.
 
-From Word to Markdown. A single step that shifts the object of your attention from "appearance" to "substance." AI becomes a colleague. Documents that are still readable in ten years.
+From Word to Markdown. **For everyday writing, that is enough.** For a
+long manual, AsciiDoc; for reports with embedded computation, MyST;
+for print-quality reports, LaTeX — **pick by role**. What they share
+is just three things: "save the structure, not the formatting," "they
+are text files so AI reads them directly," "AI writes them, so the
+syntax is not yours to memorize."
+
+A single step that shifts the object of your attention from
+"appearance" to "substance." AI becomes a colleague. Documents that
+are still readable in ten years.
 
 The next chapter moves on to drawing diagrams — from PowerPoint to Mermaid and Claude Design.
 

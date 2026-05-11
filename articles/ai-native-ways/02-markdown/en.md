@@ -180,11 +180,11 @@ Whichever editor, the practice in this book is the same:
 
 So far this has been about "writing on your own desk."
 
-The moment you decide to **use this for serious work** — share with
-a team, keep an auditable history of past decisions, run reviews,
-hook into automation — you need a **Git hosting target**. GitHub
-and GitLab are well known, but in this book's practice the natural
-choice is a server **you (or a community) can run**.
+The moment you decide to use this for serious work — **even solo,
+the moment you think about backups, off-machine history, eventual
+sharing** — you need a **Git hosting target**. GitHub and GitLab
+are well known, but in this book's practice the natural choice is
+a server **you (or a community) can run**.
 
 Two options:
 
@@ -205,10 +205,43 @@ Both provide:
 - **A single binary** — fits on a small VPS (1 GB RAM)
 - **Open-source, no subscription**
 
-> **If you're new** — you don't need this while you're writing solo.
-> `git init` for a local history is enough. Come back to this
-> section when you reach **share with a team, audit the history of
-> handoffs, run review through PRs**.
+> **If you're new** — "writing solo" and "needs no backup" are
+> **different things**. `git init` for a local history is fine, but
+> **when the disk dies, everything dies with it**. Even solo, from
+> day one, have **a `git push` target somewhere**.
+>
+> The smallest form is fine: a tiny VPS (a couple of dollars a
+> month) running Forgejo; another machine or NAS at home; or even an
+> external drive that you `git push` to nightly. **"A VPS feels
+> scary"?** Start with an external drive or a second machine at home,
+> move to Forgejo later. **Sooner or later, you need a server on
+> your side.**
+
+## Privacy-sensitive content — self-host by default
+
+The **first axis** in choosing where to host is privacy. "Can the
+content be public?" decides the destination:
+
+:::compare
+| Content | Recommended hosting |
+| --- | --- |
+| Public open-source, blog drafts, educational content | **Codeberg** (or GitHub public repos) |
+| Personal notes (jotting, research) | **Self-host** (home Forgejo or NAS works) |
+| Business data, internal docs, meeting notes | **Self-host** (required) |
+| Contracts, quotations, customer lists | **Self-host** (required) |
+| Customer PII, health data, financial data | **Self-host** (legally required, often) |
+| Company / team code (non-public) | **Self-host** (or a paid private plan) |
+:::
+
+> Principle — **anything where privacy or ownership matters,
+> self-host by default**. Codeberg is a non-profit, but it is still
+> **someone else's server**. **If you can keep it on your side,
+> keep it on your side.** This is the Git version of Chapter 5:
+> "keep your own system on your own side."
+
+"Self-host feels hard." The next section shows **a path from a
+small self-host to a real one**. Claude writes the configuration,
+so it's easier than it looks.
 
 ### Why Forgejo — the governance story
 
@@ -227,13 +260,15 @@ Forgejo**. The structure is the same as Microsoft Office vs.
 OnlyOffice (Chapter 5) — "same contents, governance on the
 community side."
 
-### Three ways to use it
+### Three places to put it — pick by use
 
-**(1) Self-host** — the strongest option
+**(1) Self-host** — the default for anything privacy-sensitive
 
 One small VPS (a couple of dollars a month is plenty), the Forgejo
 binary, one domain, an HTTPS reverse proxy. With that, **you have
-your own Git platform**.
+your own Git platform**. **Business data, contracts, customer
+information, personal notes — anything whose contents you don't
+want leaving your side goes here.**
 
 ```bash
 # Drop Forgejo onto a small VPS
@@ -242,41 +277,49 @@ $ chmod +x forgejo-8.0.0-linux-amd64
 $ ./forgejo-8.0.0-linux-amd64 web
 ```
 
-The detailed setup (`systemd` unit, HTTPS, backups, SSH key auth)
-can be left to Claude — also a "skill of using, not writing"
-(Chapter 1) territory.
+The detailed setup (`systemd` unit, HTTPS, backups, SSH key auth,
+automatic backup) can be left to Claude — also a "skill of using,
+not writing" (Chapter 1) territory.
 
-**(2) Use Codeberg.org** — the easiest non-hosted path
+**Entry-level path** — if "a VPS feels scary," Forgejo also runs on
+a Linux box at home, a Mac mini, a Raspberry Pi, or a NAS. Run it
+inside your LAN at first; don't expose it to the internet. Move to
+a VPS once you're used to it.
 
-[Codeberg.org](https://codeberg.org) is **Forgejo hosted by a
-non-profit as a public forge**. Make an account and you're in.
-Free. Ideal for **publishing open-source projects and shared
-repositories for a sole proprietorship**. Same feel as GitHub, with
-a non-profit as the vendor.
-
-**(3) Stand it up inside an organization** — company / team scale
+**(2) Inside an organization** — company / team scale
 
 Run Forgejo on your internal VPS or Kubernetes cluster. **Every
 repository sits inside the organization's physical boundary.** The
 Microsoft / GitHub / Atlassian subscriptions stop. You're no longer
 buffeted by data-policy shifts, and the source code and business
 documents become **yours** (same structure as Chapter 5's Office
-discussion).
+discussion). This is still **self-hosting**, at a larger scale.
+
+**(3) Codeberg.org** — for content you're willing to publish
+
+[Codeberg.org](https://codeberg.org) is **Forgejo hosted by a
+non-profit as a public forge**. Free, account-based. Ideal for
+**open-source projects, blog drafts, educational content** — the
+hosting vendor is a non-profit.
+
+**But this is still "someone else's server."** **Don't put business
+data or personal information here.** Codeberg is for "things you
+are willing to publish" — keep that line.
 
 ### Where does GitHub fit
 
-GitHub isn't forbidden:
+GitHub isn't forbidden. **Public OSS still has strong reach there**:
 
 - **Public open-source projects** → GitHub's reach and ecosystem are
   strong.
-- **Personal notes you just want AI to look at** → GitHub is fine.
-- **Business data, internal docs, contracts** → don't put these on
-  GitHub. **Self-host Forgejo, or use Codeberg.**
+- **Notes intended to be public** → GitHub is fine.
+- **Business data, internal docs, contracts, personal information**
+  → **don't put these on GitHub *or* Codeberg. Self-host.**
 
 GitHub joined **Microsoft in 2018**. It sits in the same
-"centralization" context as Microsoft 365 / Copilot.
-**If you don't want the substance of your work to live in Microsoft's
-cloud, choose Forgejo (self-hosted) or Codeberg.**
+"centralization" context as Microsoft 365 / Copilot. **Anything
+privacy-sensitive does not belong on GitHub or Codeberg** — that is
+the privacy principle, carried through.
 
 ### Markdown and Mermaid render directly
 
@@ -288,9 +331,9 @@ internal wiki**.
 
 > To handle Markdown for serious work, you need both wheels:
 > **a place to write (the editor)** and **a place to put it
-> (Forgejo)**. Either your own desk or a community non-profit — that
-> is the concrete shape of "keep your system on your own side"
-> (Chapter 5).
+> (Forgejo)**. Even solo, backup is required; anything
+> privacy-sensitive is self-hosted by default — this is the Git
+> version of Chapter 5's "keep your own system on your own side."
 
 ## Pick the format that fits the job — four text formats are enough
 

@@ -171,6 +171,75 @@ Linux + Python + AI.
 > In short, **desk work becomes unified**.
 > This is the destination this book's toolkit aims for.
 
+## Hand the fine-grained work to AI — AI is genuinely capable of it
+
+What makes "every domain, the same way" possible is simple. **The
+fine-grained work can be handed off to AI in its entirety** — and
+**AI has the capability to actually carry it through**.
+
+Nearly all of what humans have spent time on as "fine-grained work"
+can be handed to AI:
+
+- **Remembering syntax** — Markdown symbols, Python grammar, CSS
+  selectors, SQL, Mermaid notation, Polars APIs, Altair
+  declarations, D3 selections, Blender's `bpy`, CAD script
+  syntax, `systemd` units, C pointers
+- **Drafting** — email, reports, contracts, proposals, blog posts,
+  documentation, meeting notes, release notes
+- **Formatting and conversion** — Word to Markdown, Excel to
+  Parquet, English to Japanese, PDF to text, image to text, table
+  to bullet list
+- **Boilerplate** — web templates, configuration files, init code,
+  test scaffolding, Dockerfiles, CI configs
+- **Lookups** — how to use an API, which library to pick, what an
+  error means, summaries of papers and precedents
+- **Proofreading, polishing, translation, summarization**
+
+These all go to Claude. And **Claude really does have the capacity
+to carry them through**:
+
+- Writes hundreds of programming languages and dozens of markup
+  variants **in parallel**.
+- Drafts business writing, technical writing, regulatory text,
+  even academic text.
+- Converts between formats **almost instantly**.
+- Generates context-aware boilerplate **in bulk**.
+- Answers lookups **faster than searching yourself**, and
+  structured.
+
+### Don't second-guess "can AI really do this"
+
+The most common mistake here is **"just to be safe, I'll do this
+fine-grained piece myself"**. That's an old habit.
+
+**AI has the capability.** Try it, look at the result, ask for
+corrections in plain language — that is the loop (Chapter 1's
+"Don't fear 'it didn't run'").
+
+- Output doesn't match expectations → ask for revisions in words.
+- An error appears → paste the error and ask for cause + fix.
+- Several back-and-forths don't resolve it → that's a signal to
+  rethink the design itself.
+
+**Getting used to handing off the fine-grained work entirely** is
+the foundation of this book's practice.
+
+### What remains for humans is judgment
+
+After the fine-grained work goes to AI, what stays with humans:
+
+- **Deciding what to make**
+- **Choosing what structure to hold it in** (Chapter 4)
+- **Judging whether the output is correct**
+- **Deciding who to deliver it to and how**
+- **Taking responsibility**
+
+These are the territory AI cannot take ("The limits of efficiency"
+section, above).
+
+> **Fine-grained work to AI. Judgment to humans.**
+> Drawing this line changes the way of working itself.
+
 ## Tools shape thought
 
 Write in Word, and you focus on formatting. Write in Markdown, and structure comes first.

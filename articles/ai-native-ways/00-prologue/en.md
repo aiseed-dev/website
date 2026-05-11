@@ -249,9 +249,21 @@ The same applies to Claude:
 - Numbers, proper nouns, citations, whether code actually runs —
   **verify with your own eyes.**
 
+**This isn't a special concession for AI.** Code you wrote yourself,
+a report a colleague hands you — **you run the same checks, the same
+tests, the same number-matching**. "I wrote it myself" doesn't make
+it correct (typos, mistaken assumptions, arithmetic slips,
+edge-case misses — everyone produces these). **What changes is only
+that the writing now goes through AI. The verification practice
+doesn't change.**
+
 **Not "constantly second-guess," and not "swallow whole."**
 **Trust the handoff, check the result properly** — exactly the
 practice you'd use with a colleague.
+
+> Verification and testing are **independent of who wrote the code
+> or the document**. Yourself, a colleague, AI — the work is the
+> same.
 
 Getting used to this is the foundation of the book's practice. As
 Chapter 5 will show, the moment you step outside Office, AI shifts

@@ -76,14 +76,14 @@ diagrams  : Mermaid
 
 All text. AI can read and write it directly. It will still be readable in ten years.
 
-## One way of working, every domain — Linux + Python + AI
+## One way of working, every domain — collaborating with Linux + Python + AI
 
 The toolkit looks like many pieces, but **the practice underneath
 them is one**:
 
-> **Linux + Python + AI as your assistant** — with this alone, you
+> **Collaborate with Linux + Python + AI** — with this alone, you
 > can handle **writing, software development, design, embedded —
-> all in the same way**.
+> nearly every domain of desk work, the same way**.
 
 | Domain | The same practice |
 | --- | --- |

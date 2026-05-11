@@ -154,9 +154,10 @@ embedded). Because Claude carries the translation, **humans don't
 have to move back and forth between languages** — thinking happens
 in Python; only the final form's language changes.
 
-This is the embedded form of the prologue's **"Linux + Python + AI,
-across every domain."** The same practice reaches all the way
-past microcontrollers.
+This is the embedded form of the prologue's
+**"collaborate with Linux + Python + AI."** The same practice
+reaches all the way past microcontrollers — beyond desk work, into
+the hardware itself.
 
 ## MicroPython as a choice
 

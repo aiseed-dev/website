@@ -1,9 +1,9 @@
 ---
 slug: prologue
 number: "00"
-title: 事務処理はOffice、業務ソフトはJava/C#、しかしAIはPythonとテキスト
-subtitle: 情報処理は AI でもやれる簡単な仕事になる
-description: OpenAI も Anthropic も Python で動く。データは Markdown、JSON、YAML、SQLite、OnlyOffice、Parquet。AI ネイティブな道具と企業の標準的な道具のあいだに、決定的な断絶がある。Office・Java・C# からの移行は簡単ではない ── しかし方向は明確だ。
+title: AIの母国語は、PythonとMarkdown形式のテキスト
+subtitle: 企業の事務処理はOffice、業務ソフトはJava/C#では、AIとの相性が悪い。
+description: OpenAI も Anthropic も Python で動く。データは Markdown、JSON、YAML。AI ネイティブな道具と企業の標準的な道具のあいだに、決定的な断絶がある。Office・Java・C# からの移行はやるしかない。
 date: 2026.05.01
 label: AI Native 00
 title_html: 事務処理は<span class="accent">Office</span>。<br>業務ソフトは<span class="accent">Java/C#</span>。<br>しかしAIは、<span class="accent">Pythonとテキスト</span>。
@@ -13,17 +13,17 @@ next_slug: python
 next_title: 処理を書く ── AIにPythonで書いてもらう
 ---
 
-# 序章 — 事務処理はOffice、業務ソフトはJava/C#、しかしAIはPythonとテキスト
+# 序章 — AIの母国語は、PythonとMarkdown形式のテキスト
 
-事務処理はOffice。業務ソフトはJavaやC#。しかしAIは、Pythonとテキストでできている。
+企業の事務処理の多くはOffice。業務ソフトはJavaやC#。しかしAIは、PythonとMarkdown形式のテキストが母国語である。
 
-ここに、決定的な断絶がある。
+ここに、AI時代の決定的な断絶がある。
 
 ## 道具を変える
 
 OpenAIもAnthropicもPythonで動いている。SDKもPython。データはMarkdown、JSON、YAML。これは偶然ではなく、AIの構造そのものから来ている。
 
-WordファイルもExcelシートもPDFも、AIに渡すにはテキストへの変換が要る。変換するたびに、書式が崩れ、構造が消える。JavaやC#のレガシーコードは、AIに読ませても助言の質が下がる。
+WordファイルもExcelシートもPDFも、AIに渡すにはテキストへの変換が要る。変換するたびに、書式が崩れ、構造が消える。JavaやC#で書かれた既存システムは、AIで保守はできるが、**新規開発で選ぶ理由はもはや薄い**。AIネイティブな環境で素早く動かせるのは、PythonとMarkdownの世界である
 
 > AI ネイティブな道具と、企業の標準的な道具のあいだに、決定的な断絶が走っている。
 
@@ -54,14 +54,28 @@ flowchart TB
   class Legacy bad
 ```
 
+## 世界はもう動いている
+Microsoft Office からの離脱は、個人や企業の選択だけではない。国家レベルで動いている。
+
+フランスのリヨン市は2025年、Microsoft Officeから ONLYOFFICE への移行を決めた。ドイツのデジタル化省は、公共部門の文書をすべてオープン形式のみにすると発表した。2026年3月、IONOS、Nextcloud、Proton、XWiki など欧州企業の連合が Euro-Office を発表。これはONLYOFFICEを欧州ガバナンスの下にフォークし、Microsoft Officeに対する主権的な代替として提供するプロジェクトで、2026年夏に最初の安定版がリリースされる。
+
+これらの動きの背景には、米国のCLOUD法、地政学的緊張、データ主権の要求がある。個人レベルから国家レベルまで、Microsoft 依存からの離脱は同時並行で進んでいる。
+
 ## 最初にやること
 
-Excel に埋め込まれた以下の三つを、Python に外部化する。**順序は
-関係ない、どれからでもいい**。
+最初の一歩は、ONLYOFFICE のインストールと、Excel に埋め込まれたマクロ・グラフ・ピボットの Python への外部化。順序は関係ない、どれからでもいい。並行して進められる。
+
+### ONLYOFFICE をインストールする
+
+ONLYOFFICE Desktop Editors(Word / Excel / PowerPoint 互換のOSS、コミュニティ版は無料)をインストールする。
+
+数分でインストールできて、起動した瞬間にMicrosoft Officeより軽快に動くことが分かる。Word も Excel も PowerPoint も、ONLYOFFICEで開ける。データ閲覧、数式、表の編集、印刷、PDF出力など、日常業務の大半はそのまま動く。マクロ・グラフ・ピボットなど一部の機能は、後述の外部化と並行して進めればいい。
+
+Microsoft Office をやめるための最初の一歩として、まずONLYOFFICEで作業する習慣をつける。2026年夏には Euro-Office の安定版もリリースされるので、欧州ユーザーやガバナンスを重視する組織はそちらへの移行も視野に入れられる。どちらも互換性は高い。
 
 ### マクロ・VBA → Python(JupyterLab + Polars)
 
-Excel に埋め込まれた業務ロジックを、Claude が Python に書き換える。
+ExcelやWordに埋め込まれた業務ロジックを、Claude が Python に書き換える。
 **JupyterLab はセル単位で実行できる "Python のスプレッドシート"**
 ── 値を変えて Shift+Enter、即座に結果が出る。VBA より読みやすく、
 Git で管理でき、テストでき、AI が今後も書きやすい(VBA は将来縮小
@@ -95,25 +109,13 @@ Claude にコードを書いてもらう、それだけ。
 
 ## その後にできること ── 順序は自由
 
-最初の三つで Python + Claude の基盤ができれば、あとは **順序付けの
-必要は無い**。自分の業務で困っているところ、面倒なところ、節約したい
-ところから手を付ける。
+最初の作業で Python + Claude の基盤ができれば、あとは **順序付けの必要は無い**。
+自分の業務で困っているところ、面倒なところ、節約したい
+ところから手を付ける。　
 
-### Microsoft 365 のサブスクを切る → OnlyOffice
+### Microsoft 365 の解約と Git 共有
 
-マクロ・グラフ・ピボットが Excel ファイルから外に出ていれば、
-**残るのは「データ + 単純なレイアウト + 関数」だけ**。これは
-**OnlyOffice**(Excel / Word / PowerPoint 互換の OSS)でほぼ完全
-互換で開ける。
-
-- **Microsoft Office → OnlyOffice**:`.xlsx` / `.docx` / `.pptx`
-  互換、**サブスク料金ゼロ**(年間数百万〜数千万円が消える)
-- **Microsoft 365 共同編集 → OnlyOffice サーバーをセルフホスト**
-  (or Nextcloud 等)
-
-逆順だと(外部化せずに OnlyOffice 移行を先にやると)、VBA が動か
-ない・ピボットが崩れる・チャートが表示されない、で組織が「やっぱり
-Microsoft に戻ろう」となる。**外部化が先**。
+マクロ・グラフ・ピボットが外部化され、ONLYOFFICEで業務が回ることが確認できたら、Microsoft 365のサブスクを解約できる。Microsoft 365の共同編集は、Gitを使うようにした方がずっと便利になる。変更履歴が残り、誰がいつ何を変えたかが追え、競合解決も明示的にできる。
 
 ### 中身を構造に変える
 

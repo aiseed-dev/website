@@ -32,6 +32,40 @@ hero_image: IMG_3470.jpg
 
 理由は単純で、ローカル実行を許せば、Azureのリソースは消費されない。前払いされた月額課金を消費させ続けるために、**計算をクラウドに強制連行する設計**を選んだ。
 
+```mermaid
+flowchart TB
+  subgraph Hope["2017 年の期待"]
+    direction LR
+    HEX["Excel<br/>(データの GUI)"]
+    HPY["Python / Pandas"]
+    HVSC["VS Code"]
+    HGit["Git"]
+    HDB["SQL / PostgreSQL"]
+    HLN["Linux サーバー"]
+    HEX <--> HPY
+    HPY --- HVSC
+    HPY --- HGit
+    HPY --- HDB
+    HPY --- HLN
+  end
+
+  subgraph Reality["2023 年の実装"]
+    direction LR
+    REX["Excel<br/>(Python セル)"]
+    RACI["Azure Container<br/>Instances"]
+    RBlocked["✕ ローカル実行<br/>✕ VS Code<br/>✕ Git<br/>✕ ローカル DB<br/>✕ Linux"]
+    REX ==>|強制送信| RACI
+    RACI -.- RBlocked
+  end
+
+  Hope -.->|8 年経過| Reality
+
+  classDef hope fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef real fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class HEX,HPY,HVSC,HGit,HDB,HLN hope
+  class REX,RACI,RBlocked real
+```
+
 ## これは能力不足ではない
 
 Microsoftは2010年代を通じて、Microsoft Researchで世界最先端のAI研究を保有していた。画像認識のResNet、音声認識の人間レベル到達、機械翻訳の品質向上、これらの分野で先端にいた組織である。ローカルで安全にPythonを実行する技術も、AIを統合する技術も、社内に十分にあった。

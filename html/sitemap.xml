@@ -181,6 +181,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/blog/python-in-excel-eight-years-later/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/blog/windows-breaking-down/</loc>
     <lastmod>2026-05-04</lastmod>
     <priority>0.7</priority>
@@ -264,6 +269,11 @@
     <loc>https://aiseed.dev/blog/grid-attack-naphtha/</loc>
     <lastmod>2026-04-06</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/blog/python-in-excel-eight-years-later/</loc>
+    <lastmod>2026-05-12</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://aiseed.dev/en/blog/windows-breaking-down/</loc>

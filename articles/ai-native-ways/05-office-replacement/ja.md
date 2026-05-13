@@ -156,6 +156,12 @@ Claude が「下書き・処理・整形」を引き受ける。あなたは
 Excel に Python が「乗った」のではない、Python が **Excel に
 幽閉された** ── これが事務職の作業環境で起きている現実だ。
 
+詳細はブログ「[ExcelにPythonが搭載? ── それから8年後、なぜExcel
+を捨てるべきか](/blog/python-in-excel-eight-years-later/)」に
+書いた ── 8 年前の Qiita 記事の答え合わせ、Microsoft Research の
+縮小、CSRB の評価、SpreadsheetBench の 57.2% など、本節より一段
+深い文脈で扱っている。
+
 ### Copilot ── AI まで人質に取られる構造
 
 同じ構造が今、AI で起きている。

@@ -32,6 +32,40 @@ This is not a technical limitation. **PyXLL and xlwings Lite, third-party tools,
 
 The reason is simple. Allow local execution, and Azure resources go unused. To keep consuming the prepaid monthly subscription, **they chose an architecture that forcibly delivers your computation to the cloud**.
 
+```mermaid
+flowchart TB
+  subgraph Hope["What was hoped for (2017)"]
+    direction LR
+    HEX["Excel<br/>(data GUI)"]
+    HPY["Python / Pandas"]
+    HVSC["VS Code"]
+    HGit["Git"]
+    HDB["SQL / PostgreSQL"]
+    HLN["Linux server"]
+    HEX <--> HPY
+    HPY --- HVSC
+    HPY --- HGit
+    HPY --- HDB
+    HPY --- HLN
+  end
+
+  subgraph Reality["What was delivered (2023)"]
+    direction LR
+    REX["Excel<br/>(Python cell)"]
+    RACI["Azure Container<br/>Instances"]
+    RBlocked["✕ Local execution<br/>✕ VS Code<br/>✕ Git<br/>✕ Local DB<br/>✕ Linux"]
+    REX ==>|forced upload| RACI
+    RACI -.- RBlocked
+  end
+
+  Hope -.->|8 years later| Reality
+
+  classDef hope fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef real fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class HEX,HPY,HVSC,HGit,HDB,HLN hope
+  class REX,RACI,RBlocked real
+```
+
 ## This Is Not a Lack of Capability
 
 Throughout the 2010s, Microsoft Research was among the most advanced AI research organizations in the world. ResNet for image recognition. Human-parity speech recognition. Machine translation at human-level quality. They led in these fields. The technology to safely run Python locally, the technology to integrate AI — they had both, in house.

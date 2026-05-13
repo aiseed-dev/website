@@ -120,6 +120,8 @@ The reason is plain — **if local execution were allowed, Azure resources would
 
 Vendor interests shift. **Today's feature is tomorrow's cage.** Python did not arrive in Excel; Python was **imprisoned inside Excel** — that is what has happened in your paperwork environment.
 
+I wrote the long-form treatment in the blog post "[Python in Excel? — Eight Years Later, Why You Should Leave Excel](/en/blog/python-in-excel-eight-years-later/)" — the eight-year settlement with the original Qiita article, Microsoft Research's contraction, the CSRB's verdict, the 57.2% on SpreadsheetBench, all at one layer deeper than this section.
+
 ### Copilot — AI itself taken hostage
 
 The same structure is now unfolding around AI.

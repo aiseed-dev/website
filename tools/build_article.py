@@ -473,9 +473,76 @@ AIWAYS_SERIES_NAME_JA = "AIネイティブな仕事の作法"
 AIWAYS_SERIES_NAME_EN = "AI-Native Ways of Working"
 
 
-def _aiways_chapter_label(number: str, lang: str) -> str:
-    """'00' → '序章' / 'Prologue'. Otherwise '第N章' / 'Chapter N'."""
+# Sub-series registry. Each sub-series lives in `articles/ai-native-ways/<key>/`,
+# numbers its chapters from 01, has its own series-index page at
+# `/ai-native-ways/<key>/`, and is announced from the parent index as a hero
+# card.
+AIWAYS_SUBSERIES = {
+    "software": {
+        "name_ja": "ソフトウェア開発編",
+        "name_en": "Software",
+        "subtitle_ja": "SIer委託モデルは数年で終わる",
+        "subtitle_en": "The SIer-commissioned model ends in years, not decades",
+        "description_ja": (
+            "AIがコードを書く能力で人間トップクラスに到達した。コーダーの仕事は"
+            "なくなり、顧客がAIと協働する時代が来る。数年で完了する構造転換を、"
+            "11章で追う。"
+        ),
+        "description_en": (
+            "AI has reached human-top-class capability in writing code. "
+            "Coders' work disappears; customers co-develop with AI. "
+            "An 11-chapter case for an irreversible structural shift "
+            "completing in years."
+        ),
+    },
+}
+
+
+def _aiways_subseries_of(md_or_dir) -> str:
+    """Return the sub-series key for a chapter path (e.g. 'software'), or ''
+    for parent-series chapters.
+
+    Accepts either the ja.md/en.md file or its parent (chapter) directory.
+    """
+    p = Path(md_or_dir)
+    chapter_dir = p.parent if p.is_file() or p.suffix in (".md",) else p
+    parent = chapter_dir.parent
+    if parent.name in AIWAYS_SUBSERIES:
+        return parent.name
+    return ""
+
+
+def _aiways_url_base(lang: str, subseries: str = "") -> str:
+    """URL prefix for chapter / index pages.
+
+    Parent: '/ai-native-ways' (or '/en/ai-native-ways').
+    Sub-series: '/ai-native-ways/software' (or '/en/ai-native-ways/software').
+    """
+    base = "/en/ai-native-ways" if lang == "en" else "/ai-native-ways"
+    return f"{base}/{subseries}" if subseries else base
+
+
+def _aiways_output_base(lang: str, subseries: str = "") -> Path:
+    """Output directory for chapter / index pages (mirrors `_aiways_url_base`)."""
+    if lang == "en":
+        base = config.SITE_ROOT / "html" / "en" / "ai-native-ways"
+    else:
+        base = config.AIWAYS_OUTPUT_BASE
+    return base / subseries if subseries else base
+
+
+def _aiways_chapter_label(number: str, lang: str, subseries: str = "") -> str:
+    """'00' → '序章' / 'Prologue'. Otherwise '第N章' / 'Chapter N'.
+
+    For sub-series chapters, prefix the label with the sub-series name —
+    e.g. 'ソフトウェア開発編 第1章' / 'Software · Chapter 1'.
+    """
     n = number.lstrip("0") or "0"
+    if subseries:
+        cfg = AIWAYS_SUBSERIES[subseries]
+        if lang == "ja":
+            return f"{cfg['name_ja']} 第{n}章"
+        return f"{cfg['name_en']} · Chapter {n}"
     if n == "0":
         return "序章" if lang == "ja" else "Prologue"
     return f"第{n}章" if lang == "ja" else f"Chapter {n}"
@@ -485,7 +552,23 @@ def _aiways_template_path(lang: str) -> Path:
     return config.AIWAYS_DIR / ("template.html" if lang == "ja" else "template.en.html")
 
 
-def _aiways_chapter_examples_html(chapter_dir, chapter_slug: str, lang: str) -> str:
+def _iter_aiways_subseries_files(subseries: str, lang: str):
+    """Yield `<lang>.md` files from each `NN-slug/` subfolder of a sub-series."""
+    sub_dir = config.AIWAYS_DIR / subseries
+    if not sub_dir.exists():
+        return
+    fname = "ja.md" if lang == "ja" else "en.md"
+    for sub in sorted(sub_dir.iterdir()):
+        if not sub.is_dir():
+            continue
+        if not sub.name[:1].isdigit():
+            continue
+        f = sub / fname
+        if f.exists():
+            yield f
+
+
+def _aiways_chapter_examples_html(chapter_dir, chapter_slug: str, lang: str, subseries: str = "") -> str:
     """Render a callout at the end of a chapter listing its example-N/ pages.
 
     For EN chapters, if an example only ships JA content, link to the JA URL
@@ -506,16 +589,19 @@ def _aiways_chapter_examples_html(chapter_dir, chapter_slug: str, lang: str) -> 
         else "Runnable source, commands, and measured results — see the dedicated example page(s)."
     )
 
+    ja_base = _aiways_url_base("ja", subseries)
+    en_base = _aiways_url_base("en", subseries)
+
     items = []
     for ex in examples:
         en_readme = ex / "README.en.md"
         # If EN README exists, link to /en/.../example-N/. Otherwise (or for JA)
         # link to the JA URL.
         if is_en and not en_readme.exists():
-            href = f"/ai-native-ways/{chapter_slug}/{ex.name}/"
+            href = f"{ja_base}/{chapter_slug}/{ex.name}/"
             ja_only_marker = ' <small>(JA)</small>'
         else:
-            base = "/en/ai-native-ways" if is_en else "/ai-native-ways"
+            base = en_base if is_en else ja_base
             href = f"{base}/{chapter_slug}/{ex.name}/"
             ja_only_marker = ''
 
@@ -556,11 +642,10 @@ def build_aiways_chapter(md_path):
     lang = meta.get("lang") or _detect_lang(md_path)
     meta["lang"] = lang
 
+    subseries = _aiways_subseries_of(md_path)
+
     slug = meta["slug"]
-    if lang == "en":
-        out_dir = config.SITE_ROOT / "html" / "en" / "ai-native-ways" / slug
-    else:
-        out_dir = config.AIWAYS_OUTPUT_BASE / slug
+    out_dir = _aiways_output_base(lang, subseries) / slug
     out_dir.mkdir(parents=True, exist_ok=True)
 
     meta["_source_dir"] = str(md_path.parent)
@@ -572,18 +657,28 @@ def build_aiways_chapter(md_path):
     body_html = process_mermaid_blocks(body_html)
 
     # Append a "実例 / Examples" callout listing example-N/ folders for this chapter.
-    examples_html = _aiways_chapter_examples_html(md_path.parent, meta["slug"], lang)
+    examples_html = _aiways_chapter_examples_html(md_path.parent, meta["slug"], lang, subseries)
     if examples_html:
         body_html = body_html + examples_html
 
-    series_name = AIWAYS_SERIES_NAME_EN if lang == "en" else AIWAYS_SERIES_NAME_JA
-    series_index_path_ja = "/ai-native-ways/"
-    series_index_path_en = "/en/ai-native-ways/"
-    series_index_url = series_index_path_en if lang == "en" else series_index_path_ja
+    if subseries:
+        cfg = AIWAYS_SUBSERIES[subseries]
+        series_name = (
+            f"{AIWAYS_SERIES_NAME_EN} — {cfg['name_en']}"
+            if lang == "en"
+            else f"{AIWAYS_SERIES_NAME_JA} — {cfg['name_ja']}"
+        )
+    else:
+        series_name = AIWAYS_SERIES_NAME_EN if lang == "en" else AIWAYS_SERIES_NAME_JA
 
-    canonical_url = f"{config.SITE_URL}/{'en/' if lang == 'en' else ''}ai-native-ways/{slug}/"
-    hreflang_ja = f"{config.SITE_URL}/ai-native-ways/{slug}/"
-    hreflang_en = f"{config.SITE_URL}/en/ai-native-ways/{slug}/"
+    series_index_url = _aiways_url_base(lang, subseries) + "/"
+    ja_url_base = _aiways_url_base("ja", subseries)
+    en_url_base = _aiways_url_base("en", subseries)
+
+    canonical_base = en_url_base if lang == "en" else ja_url_base
+    canonical_url = f"{config.SITE_URL}{canonical_base}/{slug}/"
+    hreflang_ja = f"{config.SITE_URL}{ja_url_base}/{slug}/"
+    hreflang_en = f"{config.SITE_URL}{en_url_base}/{slug}/"
 
     other_lang_url = (hreflang_ja if lang == "en" else hreflang_en)
     other_lang_label = "日本語" if lang == "en" else "EN"
@@ -608,7 +703,7 @@ def build_aiways_chapter(md_path):
         "label": meta.get("label", ""),
         "series": series_name,
         "series_index_url": series_index_url,
-        "chapter_label": _aiways_chapter_label(meta.get("number", "").strip('"'), lang),
+        "chapter_label": _aiways_chapter_label(meta.get("number", "").strip('"'), lang, subseries),
         "content_html": body_html,
         "canonical_url": canonical_url,
         "hreflang_ja": hreflang_ja if (md_path.parent / "ja.md").exists() else "",
@@ -949,13 +1044,12 @@ def build_aiways_example(example_dir, lang="ja"):
     chapter_slug = meta["slug"]
     example_name = example_dir.name  # 'example-1'
     is_en = lang == "en"
-    series_index_url = "/en/ai-native-ways/" if is_en else "/ai-native-ways/"
+    subseries = _aiways_subseries_of(example_dir.parent)
+    aiways_base = _aiways_url_base(lang, subseries)
+    series_index_url = aiways_base + "/"
     chapter_url = f"{series_index_url}{chapter_slug}/"
 
-    if is_en:
-        out_dir = config.SITE_ROOT / "html" / "en" / "ai-native-ways" / chapter_slug / example_name
-    else:
-        out_dir = config.AIWAYS_OUTPUT_BASE / chapter_slug / example_name
+    out_dir = _aiways_output_base(lang, subseries) / chapter_slug / example_name
     out_dir.mkdir(parents=True, exist_ok=True)
 
     # Copy raw asset files alongside index.html.
@@ -976,13 +1070,18 @@ def build_aiways_example(example_dir, lang="ja"):
         example_title = example_label
 
     chapter_title = meta.get("title", "")
-    chapter_label = _aiways_chapter_label(meta.get("number", "").strip('"'), lang)
-    series_name = AIWAYS_SERIES_NAME_EN if is_en else AIWAYS_SERIES_NAME_JA
+    chapter_label = _aiways_chapter_label(meta.get("number", "").strip('"'), lang, subseries)
+    if subseries:
+        cfg = AIWAYS_SUBSERIES[subseries]
+        series_name = (
+            f"{AIWAYS_SERIES_NAME_EN} — {cfg['name_en']}"
+            if is_en
+            else f"{AIWAYS_SERIES_NAME_JA} — {cfg['name_ja']}"
+        )
+    else:
+        series_name = AIWAYS_SERIES_NAME_EN if is_en else AIWAYS_SERIES_NAME_JA
 
-    canonical_url = (
-        f"{config.SITE_URL}/{'en/' if is_en else ''}"
-        f"ai-native-ways/{chapter_slug}/{example_name}/"
-    )
+    canonical_url = f"{config.SITE_URL}{aiways_base}/{chapter_slug}/{example_name}/"
 
     files_html = _example_files_html(example_dir)
     files_heading = "ファイル一覧" if not is_en else "Files"
@@ -1032,10 +1131,20 @@ def collect_aiways_examples(chapter_dir):
             yield sub
 
 
-def collect_aiways_chapters(lang="ja"):
-    """Collect ai-native-ways chapter metadata for a language."""
+def collect_aiways_chapters(lang="ja", subseries: str = ""):
+    """Collect ai-native-ways chapter metadata for a language.
+
+    With `subseries=""` (default), returns the parent-series chapters
+    (`articles/ai-native-ways/NN-slug/`). With a sub-series key (e.g.
+    `"software"`), returns that sub-series' chapters only.
+    """
+    if subseries:
+        files = _iter_aiways_subseries_files(subseries, lang)
+    else:
+        files = _iter_article_files(config.AIWAYS_DIR, lang)
+
     chapters = []
-    for f in _iter_article_files(config.AIWAYS_DIR, lang):
+    for f in files:
         text = f.read_text(encoding="utf-8")
         meta, _ = parse_frontmatter(text)
         if meta.get("lang", "ja") != lang and not (lang == "ja" and "lang" not in meta):
@@ -1047,26 +1156,48 @@ def collect_aiways_chapters(lang="ja"):
     return chapters
 
 
-def build_aiways_index(lang="ja"):
-    """Build the ai-native-ways table-of-contents page using the shared
-    index.html template (matches the look of the insights / claude-debian
-    series indexes, while individual chapters keep their custom typography)."""
-    chapters = collect_aiways_chapters(lang)
-    if not chapters:
-        return False
-
+def _aiways_subseries_hero_html(lang: str) -> str:
+    """Render hero cards announcing every active sub-series, to prepend to
+    the parent series index. Returns '' if no sub-series have published chapters."""
     is_en = lang == "en"
-    aiways_base = "/en/ai-native-ways" if is_en else "/ai-native-ways"
-    has_translation = bool(collect_aiways_chapters("en" if not is_en else "ja"))
+    parts = []
+    for key, cfg in AIWAYS_SUBSERIES.items():
+        if not collect_aiways_chapters(lang, key):
+            continue
+        href = _aiways_url_base(lang, key) + "/"
+        name = cfg["name_en"] if is_en else cfg["name_ja"]
+        subtitle = cfg["subtitle_en"] if is_en else cfg["subtitle_ja"]
+        description = cfg["description_en"] if is_en else cfg["description_ja"]
+        label = (
+            "Sub-series — open all chapters →"
+            if is_en
+            else "サブシリーズを開く →"
+        )
+        marker = "Sub-series" if is_en else "サブシリーズ"
+        parts.append(f'''
+                <a href="{href}" style="text-decoration: none; color: inherit; display: block; margin-bottom: 1.5em;">
+                    <div class="activity-item fade-in" style="border-left: 4px solid #d4a574; background: rgba(212,165,116,0.08);">
+                        <div class="activity-number" style="font-size: 0.65em; line-height: 1.2; padding: 0.4em 0; white-space: nowrap;">▶<br>{marker}</div>
+                        <div class="activity-content">
+                            <h3>{name} — {subtitle}</h3>
+                            <p>{description}<br><strong>{label}</strong></p>
+                        </div>
+                    </div>
+                </a>
+''')
+    return "".join(parts)
 
-    chapter_list = ""
+
+def _render_aiways_chapter_list(chapters, aiways_base: str) -> str:
+    """Render chapter cards for an aiways index page (parent or sub-series)."""
+    out = ""
     for c in chapters:
         slug = c.get("slug", "")
         number = c.get("number", "").strip('"')
         title = c.get("title", "")
         subtitle = c.get("subtitle", "")
         description = c.get("description", "")
-        chapter_list += f'''
+        out += f'''
                 <a href="{aiways_base}/{slug}/" style="text-decoration: none; color: inherit;">
                     <div class="activity-item fade-in">
                         <div class="activity-number">{number}</div>
@@ -1077,17 +1208,107 @@ def build_aiways_index(lang="ja"):
                     </div>
                 </a>
 '''
+    return out
+
+
+def build_aiways_index(lang="ja"):
+    """Build the ai-native-ways table-of-contents page using the shared
+    index.html template (matches the look of the insights / claude-debian
+    series indexes, while individual chapters keep their custom typography).
+
+    The parent index lists parent-series chapters only. Sub-series are
+    announced as a hero card at the top; their chapters are reachable via the
+    dedicated sub-series index page.
+    """
+    chapters = collect_aiways_chapters(lang)
+    if not chapters:
+        return False
+
+    is_en = lang == "en"
+    aiways_base = _aiways_url_base(lang)
+    has_translation = bool(collect_aiways_chapters("en" if not is_en else "ja"))
+
+    chapter_list = (
+        _aiways_subseries_hero_html(lang)
+        + _render_aiways_chapter_list(chapters, aiways_base)
+    )
 
     variables = aiways_index_vars(lang, chapter_list, has_translation=has_translation)
     html = render("index.html", variables)
 
-    if is_en:
-        out_file = config.SITE_ROOT / "html" / "en" / "ai-native-ways" / "index.html"
-    else:
-        out_file = config.AIWAYS_OUTPUT_BASE / "index.html"
+    out_file = _aiways_output_base(lang) / "index.html"
     out_file.parent.mkdir(parents=True, exist_ok=True)
     out_file.write_text(html, encoding="utf-8")
     print(f"Built ai-native-ways index: {out_file}")
+    return True
+
+
+def build_aiways_subseries_index(subseries: str, lang: str = "ja"):
+    """Build the index page for one sub-series (e.g. /ai-native-ways/software/).
+
+    Lists the sub-series' own chapters and links back to the parent index.
+    """
+    cfg = AIWAYS_SUBSERIES.get(subseries)
+    if not cfg:
+        return False
+    chapters = collect_aiways_chapters(lang, subseries)
+    if not chapters:
+        return False
+
+    is_en = lang == "en"
+    aiways_base = _aiways_url_base(lang, subseries)
+    has_translation = bool(collect_aiways_chapters("en" if not is_en else "ja", subseries))
+
+    name = cfg["name_en"] if is_en else cfg["name_ja"]
+    subtitle = cfg["subtitle_en"] if is_en else cfg["subtitle_ja"]
+    description = cfg["description_en"] if is_en else cfg["description_ja"]
+    series_title = (
+        f"{AIWAYS_SERIES_NAME_EN} — {name}" if is_en
+        else f"{AIWAYS_SERIES_NAME_JA} — {name}"
+    )
+
+    chapter_list = _render_aiways_chapter_list(chapters, aiways_base)
+
+    variables = aiways_index_vars(lang, chapter_list, has_translation=has_translation)
+    # Override identity for the sub-series.
+    variables["page_title"] = series_title
+    variables["page_subtitle"] = subtitle
+    variables["structural_analysis_label"] = series_title
+    variables["meta_description"] = description
+    variables["canonical_url"] = f"{config.SITE_URL}{aiways_base}/"
+    variables["hreflang_ja"] = f"{config.SITE_URL}{_aiways_url_base('ja', subseries)}/"
+    variables["hreflang_en"] = (
+        f"{config.SITE_URL}{_aiways_url_base('en', subseries)}/" if has_translation else ""
+    )
+    variables["other_lang_link"] = (
+        _aiways_url_base("ja" if is_en else "en", subseries) + "/"
+    )
+    # Back-link to the parent series index (rendered into intro_html so we
+    # don't need a template change).
+    parent_href = _aiways_url_base(lang) + "/"
+    back_label = (
+        f"← Back to {AIWAYS_SERIES_NAME_EN}" if is_en
+        else f"← {AIWAYS_SERIES_NAME_JA} 目次へ"
+    )
+    variables["intro_html"] = (
+        f'<a href="{parent_href}" style="color: inherit;">{back_label}</a><br>\n'
+        f'                    {description}'
+    )
+    # Sub-series specific CTAs.
+    variables["cta_title"] = (
+        "Start with Chapter 1" if is_en else "第1章から読み始める"
+    )
+    variables["cta_html"] = (
+        f'<a href="{aiways_base}/{chapters[0].get("slug", "")}/">'
+        f'{chapters[0].get("title", "")}</a>'
+    )
+    variables["series_description"] = description
+
+    html = render("index.html", variables)
+    out_file = _aiways_output_base(lang, subseries) / "index.html"
+    out_file.parent.mkdir(parents=True, exist_ok=True)
+    out_file.write_text(html, encoding="utf-8")
+    print(f"Built ai-native-ways sub-series index ({subseries}): {out_file}")
     return True
 
 
@@ -1220,6 +1441,10 @@ def build_sitemap():
     en_chapters = collect_book_chapters("en")
     ja_aiways = collect_aiways_chapters("ja")
     en_aiways = collect_aiways_chapters("en")
+    aiways_sub_metas = []
+    for sub_key in AIWAYS_SUBSERIES:
+        aiways_sub_metas.extend(collect_aiways_chapters("ja", sub_key))
+        aiways_sub_metas.extend(collect_aiways_chapters("en", sub_key))
     ja_farming = collect_farming_chapters("ja")
     en_farming = collect_farming_chapters("en")
 
@@ -1227,7 +1452,7 @@ def build_sitemap():
         norm_date(m.get("date"))
         for m in (*ja_articles, *en_articles, *ja_posts, *en_posts,
                   *ja_chapters, *en_chapters, *ja_aiways, *en_aiways,
-                  *ja_farming, *en_farming)
+                  *aiways_sub_metas, *ja_farming, *en_farming)
         if m.get("date")
     ]
     latest = max(all_dates) if all_dates else date.today().isoformat()
@@ -1308,6 +1533,31 @@ def build_sitemap():
             if not slug:
                 continue
             urls.append((f"{site_url}/en/ai-native-ways/{slug}/", norm_date(meta.get("date")), "0.5"))
+
+    # AI-Native Ways — sub-series (e.g. /ai-native-ways/software/)
+    for sub_key in AIWAYS_SUBSERIES:
+        ja_sub = collect_aiways_chapters("ja", sub_key)
+        en_sub = collect_aiways_chapters("en", sub_key)
+        if ja_sub:
+            urls.append((f"{site_url}/ai-native-ways/{sub_key}/", latest, "0.8"))
+            for meta in ja_sub:
+                slug = meta.get("slug", "")
+                if not slug:
+                    continue
+                urls.append((
+                    f"{site_url}/ai-native-ways/{sub_key}/{slug}/",
+                    norm_date(meta.get("date")), "0.6",
+                ))
+        if en_sub:
+            urls.append((f"{site_url}/en/ai-native-ways/{sub_key}/", latest, "0.7"))
+            for meta in en_sub:
+                slug = meta.get("slug", "")
+                if not slug:
+                    continue
+                urls.append((
+                    f"{site_url}/en/ai-native-ways/{sub_key}/{slug}/",
+                    norm_date(meta.get("date")), "0.5",
+                ))
 
     # Natural Farming landing page (static)
     urls.append((f"{site_url}/natural-farming/", latest, "0.8"))
@@ -1467,10 +1717,13 @@ def main():
         if collect_book_chapters("en"):
             build_book_index("en")
 
-        # Build ai-native-ways essays — JA + EN
+        # Build ai-native-ways essays — JA + EN, including every sub-series.
         aiways_ok = 0
         aiways_files = list(_iter_article_files(config.AIWAYS_DIR, "ja")) \
                      + list(_iter_article_files(config.AIWAYS_DIR, "en"))
+        for sub_key in AIWAYS_SUBSERIES:
+            aiways_files += list(_iter_aiways_subseries_files(sub_key, "ja"))
+            aiways_files += list(_iter_aiways_subseries_files(sub_key, "en"))
         for f in aiways_files:
             if build_aiways_chapter(f):
                 aiways_ok += 1
@@ -1478,6 +1731,11 @@ def main():
             build_aiways_index("ja")
         if collect_aiways_chapters("en"):
             build_aiways_index("en")
+        for sub_key in AIWAYS_SUBSERIES:
+            if collect_aiways_chapters("ja", sub_key):
+                build_aiways_subseries_index(sub_key, "ja")
+            if collect_aiways_chapters("en", sub_key):
+                build_aiways_subseries_index(sub_key, "en")
 
         # Build phosphorus-and-farming chapters — JA + EN
         farming_ok = 0
@@ -1491,11 +1749,22 @@ def main():
         if collect_farming_chapters("en"):
             build_farming_index("en")
 
-        # Build ai-native-ways examples — every chapter's example-N/ folders.
+        # Build ai-native-ways examples — every chapter's example-N/ folders,
+        # in parent series and every sub-series.
         examples_ok = examples_total = 0
-        for chapter_sub in sorted(config.AIWAYS_DIR.iterdir()):
-            if not chapter_sub.is_dir() or not chapter_sub.name[:1].isdigit():
+        chapter_dirs = [
+            sub for sub in sorted(config.AIWAYS_DIR.iterdir())
+            if sub.is_dir() and sub.name[:1].isdigit()
+        ]
+        for sub_key in AIWAYS_SUBSERIES:
+            sub_dir = config.AIWAYS_DIR / sub_key
+            if not sub_dir.exists():
                 continue
+            chapter_dirs += [
+                sub for sub in sorted(sub_dir.iterdir())
+                if sub.is_dir() and sub.name[:1].isdigit()
+            ]
+        for chapter_sub in chapter_dirs:
             for ex in collect_aiways_examples(chapter_sub):
                 for ex_lang in ("ja", "en"):
                     if not (chapter_sub / f"{ex_lang}.md").exists():

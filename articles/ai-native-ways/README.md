@@ -10,16 +10,30 @@ articles/ai-native-ways/
 ├── README.md                ── このファイル
 ├── template.html            ── 日本語版テンプレート(Jinja2)
 ├── template.en.html         ── 英語版テンプレート(Jinja2)
-└── NN-slug/                 ── 1章 = 1フォルダ
-    ├── ja.md                ── 日本語版本文 + frontmatter
-    ├── en.md                ── 英語版本文 + frontmatter
-    └── example-N/           ── 章ごとの実例(任意・複数可)
-        ├── README.md
-        ├── source.md / *.py / その他入力
-        ├── Makefile         ── 再現用ビルド定義
-        ├── results.md       ── 実測値(時間・サイズ・ページ数)
-        └── out/             ── 生成物(コミットする)
+├── NN-slug/                 ── 1章 = 1フォルダ(親シリーズ)
+│   ├── ja.md                ── 日本語版本文 + frontmatter
+│   ├── en.md                ── 英語版本文 + frontmatter
+│   └── example-N/           ── 章ごとの実例(任意・複数可)
+│       ├── README.md
+│       ├── source.md / *.py / その他入力
+│       ├── Makefile         ── 再現用ビルド定義
+│       ├── results.md       ── 実測値(時間・サイズ・ページ数)
+│       └── out/             ── 生成物(コミットする)
+└── <subseries>/             ── サブシリーズ(例: software/)
+    ├── README.md            ── サブシリーズ仕様
+    └── NN-slug/             ── 1章 = 1フォルダ(サブシリーズ内で 01 から再採番)
+        ├── ja.md
+        ├── en.md
+        └── example-N/
 ```
+
+サブシリーズは `tools/build_article.py::AIWAYS_SUBSERIES` に登録されたサブ
+ディレクトリのみ有効。サブシリーズ章の URL は `/ai-native-ways/<subseries>/{slug}/`、
+専用の目次ページが `/ai-native-ways/<subseries>/` に生成される。親シリーズの
+目次ページ (`/ai-native-ways/`) はサブシリーズの章を含めず、代わりに先頭に
+ヒーローカードでサブシリーズを案内する。
+
+詳細はサブシリーズ自身の README(例: `software/README.md`)を参照。
 
 実体例:
 

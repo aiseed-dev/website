@@ -32,11 +32,12 @@ articles/ai-native-ways/software/
 
 ## 章ラベル
 
-`tools/build_article.py::_aiways_chapter_label` がサブシリーズ名を冠して
-返す。
+ブレッドクラムでは `series · chapter_label` の形で連結される。サブシリーズ
+名は `series` 側に入るので、`chapter_label` 単体は短い形 (`第N章` /
+`Chapter N`) を使う。連結後の表示は次のとおり。
 
-- JA: `ソフトウェア開発編 第N章`
-- EN: `Software · Chapter N`
+- JA: `AIネイティブな仕事の作法 — ソフトウェア開発編 · 第N章`
+- EN: `AI-Native Ways of Working — Software · Chapter N`
 
 ## prev / next チェーン
 

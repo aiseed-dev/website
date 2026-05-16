@@ -14,7 +14,7 @@ The canonical outline is `docs/Ai-native-software-outline.md`. If this skill dri
 - The parent `/ai-native-ways/` index page links to this sub-series **prominently at the top** (a hero card), and does **not** include this sub-series' chapters in its flat chapter list.
 - This sub-series has its own index at `/ai-native-ways/software/` (and `/en/ai-native-ways/software/`).
 - Chapter URLs use the form `/ai-native-ways/software/{slug}/`.
-- Chapter labels are `ソフトウェア開発編 第N章` / `Software · Chapter N` (see `writing-aiways-voice` for the broader voice rules).
+- Chapter labels combine as `ソフトウェア開発編 第N章` / `AI-Native Ways of Working — Software · Chapter N` in the breadcrumb (`series` + `chapter_label`). The `chapter_label` itself stays short (`第N章` / `Chapter N`); the sub-series name lives in the `series` field, so the breadcrumb does not repeat the sub-series name twice.
 - `prev_slug` / `next_slug` chain **inside** the sub-series only: chapter 01's `prev_*` is empty, chapter 11's `next_*` is empty. The chain does not cross into the parent series.
 
 ## Thesis arc

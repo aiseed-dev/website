@@ -534,15 +534,17 @@ def _aiways_output_base(lang: str, subseries: str = "") -> Path:
 def _aiways_chapter_label(number: str, lang: str, subseries: str = "") -> str:
     """'00' → '序章' / 'Prologue'. Otherwise '第N章' / 'Chapter N'.
 
-    For sub-series chapters, prefix the label with the sub-series name —
-    e.g. 'ソフトウェア開発編 第1章' / 'Software · Chapter 1'.
+    For sub-series chapters the label stays short ('第N章' / 'Chapter N')
+    because the sub-series name already appears in the `series` field; the
+    breadcrumb is rendered as `series · chapter_label`, so prefixing the
+    label would print the sub-series name twice. The combined display
+    (e.g. 'ソフトウェア開発編 第1章') is achieved by series + label, not
+    by the label alone.
     """
     n = number.lstrip("0") or "0"
     if subseries:
-        cfg = AIWAYS_SUBSERIES[subseries]
-        if lang == "ja":
-            return f"{cfg['name_ja']} 第{n}章"
-        return f"{cfg['name_en']} · Chapter {n}"
+        # Sub-series restarts at 01; '00' is reserved for the parent prologue.
+        return f"第{n}章" if lang == "ja" else f"Chapter {n}"
     if n == "0":
         return "序章" if lang == "ja" else "Prologue"
     return f"第{n}章" if lang == "ja" else f"Chapter {n}"

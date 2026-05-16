@@ -3,8 +3,8 @@ slug: coder-top
 number: "01"
 lang: en
 title: AI Has Reached Human-Top-Class Capability in Writing Code
-subtitle: Codeforces 2700 tier — the world's top coding ability, for a few tens of dollars a month
-description: AI's code-writing ability has matched human top-class on public competitive-programming ratings. Two facts matter — the capability level reached, and the fact that anyone can access it for a few tens of dollars a month. The whole sub-series argues outward from those two.
+subtitle: Codeforces 2700 tier — the world's top coding ability, for $200 a month on Claude Max
+description: AI's code-writing ability has matched human top-class on public competitive-programming ratings. Two facts matter — the capability level reached, and the fact that anyone can access it via Claude Max for around $200 a month. The whole sub-series argues outward from those two.
 date: 2026.06.01
 label: Software 01
 title_html: AI now sits on the side<br>that solves <span class="accent">the hardest problems</span>.
@@ -89,7 +89,7 @@ been observed returning 2700-tier solutions there.
 > A band humans reach **one person at a time, over a decade-plus**, was
 > entered by AI **all at once, by multiple paths**.
 
-## A few tens of dollars a month buys access to the world's top
+## $200 a month buys access to the world's top
 
 This is where the sub-series' argument starts.
 
@@ -98,17 +98,24 @@ hired by Google, Meta, or Anthropic; spend years climbing the
 competitive-programming ladder; or pay seven-figure salaries.
 **Capability above the threshold was a scarce resource**.
 
-The paths to access AI models look like this today:
+Access to AI models comes in tiers, depending on how hard you intend
+to use them.
 
-- Claude Pro / ChatGPT Plus / Google AI Pro — **about $20 a month**
-- Claude / OpenAI / Google APIs — pay-as-you-go, a few cents per
-  ~10,000 tokens
-- Most IDE integrations (Cursor, Claude Code, Copilot) call the same
-  models on your behalf
+- **Chat-grade use** — Claude Pro / ChatGPT Plus / Google AI Pro at
+  around $20 a month. **Not enough for serious coding**, though — you
+  run into usage limits, context length, or model selection before
+  long.
+- **Coding-grade use** — **Claude Max ($200 a month)** is the current
+  standard anchor. It lets Claude Code, Cursor, and IDE integrations
+  call Sonnet and Opus at production volumes; a builder can have AI
+  writing code for eight hours a day without hitting the wall.
+- API pay-as-you-go — wiring the same usage through the API directly
+  lands in the same few-hundred-dollars-a-month range. The Max
+  subscription is essentially that invoice averaged out.
 
 In other words, **the world's top-tier coding ability is reachable for
-a few tens of dollars a month**. One credit card and one browser, and
-you have access within minutes.
+$200 a month**. One credit card and one browser, and you can start the
+same day.
 
 ```mermaid
 flowchart LR
@@ -123,7 +130,7 @@ flowchart LR
 
   subgraph Native["The AI-native path"]
     direction TB
-    N1["Subscribe for tens of dollars a month"]
+    N1["Subscribe to Claude Max ($200/mo)"]
     N2["Access starts the same day"]
     N3["No headcount limit"]
   end
@@ -144,7 +151,7 @@ cost. The two are not the same spreadsheet at two prices; they are
 **different supply curves**.
 
 > Top-tier coding used to be a **scarce resource of a few dozen people**.
-> It is now a **subscription costing tens of dollars a month**.
+> It is now a **$200-a-month subscription**.
 
 ## Everything else in this sub-series follows from one fact
 
@@ -167,8 +174,8 @@ Every chapter that follows is **deduced** from this one fact.
   industry, the time horizon over which the transition completes.
 
 These are not independent observations. They all derive from one point:
-**top-tier coding ability is available for a few tens of dollars a
-month**. This chapter exists only to plant that point.
+**top-tier coding ability is available for $200 a month**. This chapter
+exists only to plant that point.
 
 One more frame for what follows. This sub-series covers **structural
 change inside software development**. It does not entertain the extreme
@@ -180,9 +187,8 @@ the outsourcing, the employment, and the prices of software development
 rearrange?**
 
 > Compressed to one line, this is the sub-series:
-> **if top-tier coding costs tens of dollars a month, the
-> outsourcing-centered structure of software development can no longer
-> hold**.
+> **if top-tier coding costs $200 a month, the outsourcing-centered
+> structure of software development can no longer hold**.
 
 The next chapter takes up what is, structurally, the most overlooked
 consequence of cheap coding — the shift in the unit of maintenance.

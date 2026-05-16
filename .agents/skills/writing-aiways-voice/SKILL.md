@@ -9,6 +9,8 @@ The series has a distinctive register: **structural, self-reliant, assertive —
 
 These rules are extracted from chapters 00 through 12 of `articles/ai-native-ways/`. If a rule below contradicts an existing chapter, the existing chapter wins — update this skill.
 
+Sub-series chapters (e.g. `software/`) share the same voice; only the chapter label, the index page they appear on, and the "次の章" / "前の章" chain change. Do not soften the register because the sub-series is more argumentative — keep the same declarative, evidence-led tone.
+
 ## Register
 
 - **である調** in Japanese; declarative present in English. No ですます, no apologetic hedges ("might want to consider").

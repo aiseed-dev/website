@@ -1,13 +1,21 @@
 ---
 name: building-ai-native-software-series
-description: Drives the "ソフトウェア開発編" sub-series of "AIネイティブな仕事の作法" — eleven chapters that argue the SIer-commissioned development model is structurally obsolete and will be replaced within several years by builder-led, AI-native development. Use when adding any chapter in this sub-series, when reconciling the chapter outline against `docs/Ai-native-software-outline.md`, or when verifying that the sub-series stays internally consistent. Pair with authoring-aiways-chapter (mechanical scaffold) and writing-aiways-voice (prose conventions).
+description: Drives the "ソフトウェア開発編" sub-series of "AIネイティブな仕事の作法" — eleven chapters that argue the SIer-commissioned development model is structurally obsolete and will be replaced within several years by builder-led, AI-native development. The sub-series lives in `articles/ai-native-ways/software/` and renumbers from chapter 1. Use when adding any chapter in this sub-series, when reconciling the chapter outline against `docs/Ai-native-software-outline.md`, or when verifying that the sub-series stays internally consistent. Pair with authoring-aiways-chapter (mechanical scaffold) and writing-aiways-voice (prose conventions).
 ---
 
 # Building the "ソフトウェア開発編" sub-series
 
-This sub-series sits inside `articles/ai-native-ways/` and follows the existing chapters 00–12. It is not a separate series — it shares the template, frontmatter schema, and `/ai-native-ways/` URL space. What makes it a coherent sub-series is its **thesis arc**, not its directory.
+This sub-series sits **inside** `articles/ai-native-ways/` but lives in its own subdirectory `software/` with its own chapter numbering (01–11) and its own series-index page. It shares the chapter template, frontmatter schema, voice, and accent palette with the parent series — what makes it a sub-series is the dedicated folder, the dedicated index page, and the **thesis arc** carried across its eleven chapters.
 
 The canonical outline is `docs/Ai-native-software-outline.md`. If this skill drifts from that file, the file wins.
+
+## Relationship to the parent series
+
+- The parent `/ai-native-ways/` index page links to this sub-series **prominently at the top** (a hero card), and does **not** include this sub-series' chapters in its flat chapter list.
+- This sub-series has its own index at `/ai-native-ways/software/` (and `/en/ai-native-ways/software/`).
+- Chapter URLs use the form `/ai-native-ways/software/{slug}/`.
+- Chapter labels are `ソフトウェア開発編 第N章` / `Software · Chapter N` (see `writing-aiways-voice` for the broader voice rules).
+- `prev_slug` / `next_slug` chain **inside** the sub-series only: chapter 01's `prev_*` is empty, chapter 11's `next_*` is empty. The chain does not cross into the parent series.
 
 ## Thesis arc
 
@@ -34,29 +42,30 @@ Do not let these slip back in. If they come up, note them and stop.
 
 ## Chapter-to-folder mapping
 
-The existing series ends at `12-one-plus-ai`. This sub-series uses chapter numbers **13 through 23**, continuing the same zero-padded sequence so the build sort order is correct.
+The sub-series numbers its own chapters from **01 through 11**, independently of the parent series. Folders live under `articles/ai-native-ways/software/`.
 
 | # | folder | working title (JA) | working slug | hinge claim |
 |---|---|---|---|---|
-| 13 | `13-coder-top` | AIがコードを書く能力で人間トップクラスに到達した | `coder-top` | Codeforces 2700; price floor |
-| 14 | `14-maintenance-shift` | 保守フェーズの構造変化こそ本質 | `maintenance-shift` | maintenance unit moves to design/spec |
-| 15 | `15-coder-end` | コーダーの仕事はなくなる | `coder-end` | execution vs judgment split |
-| 16 | `16-builder` | ビルダーという役割 | `builder` | aiseed.dev 24h demonstration |
-| 17 | `17-customer-codev` | 顧客がAIと協働して開発する時代 | `customer-codev` | 9-tenths self-build |
-| 18 | `18-sier-uneconomic` | SIer委託モデルの構造的不経済 | `sier-uneconomic` | outsourcing overhead exceeds build cost |
-| 19 | `19-price-gap` | 価格競争力の桁違いの差 | `price-gap` | 10–100× displacement |
-| 20 | `20-lockin` | ロックイン問題 | `lockin` | Palantir FDE as archetype |
-| 21 | `21-hiring-builders` | 各社がビルダーを雇用する時代 | `hiring-builders` | builders as a professional class |
-| 22 | `22-japan-transition` | 日本のSIer業界の転換と雇用流動性 | `japan-transition` | multi-tier subcontracting enables shift |
-| 23 | `23-five-years` | 数年で完了する構造転換 | `five-years` | irreversible, ~5 year horizon |
+| 01 | `software/01-coder-top` | AIがコードを書く能力で人間トップクラスに到達した | `coder-top` | Codeforces 2700; price floor |
+| 02 | `software/02-maintenance-shift` | 保守フェーズの構造変化こそ本質 | `maintenance-shift` | maintenance unit moves to design/spec |
+| 03 | `software/03-coder-end` | コーダーの仕事はなくなる | `coder-end` | execution vs judgment split |
+| 04 | `software/04-builder` | ビルダーという役割 | `builder` | aiseed.dev 24h demonstration |
+| 05 | `software/05-customer-codev` | 顧客がAIと協働して開発する時代 | `customer-codev` | 9-tenths self-build |
+| 06 | `software/06-sier-uneconomic` | SIer委託モデルの構造的不経済 | `sier-uneconomic` | outsourcing overhead exceeds build cost |
+| 07 | `software/07-price-gap` | 価格競争力の桁違いの差 | `price-gap` | 10–100× displacement |
+| 08 | `software/08-lockin` | ロックイン問題 | `lockin` | Palantir FDE as archetype |
+| 09 | `software/09-hiring-builders` | 各社がビルダーを雇用する時代 | `hiring-builders` | builders as a professional class |
+| 10 | `software/10-japan-transition` | 日本のSIer業界の転換と雇用流動性 | `japan-transition` | multi-tier subcontracting enables shift |
+| 11 | `software/11-five-years` | 数年で完了する構造転換 | `five-years` | irreversible, ~5 year horizon |
 
-Slugs are **suggestions** — finalize them on the first chapter, then keep the rest consistent. Once a slug ships, do not rename it (it becomes a stable URL).
+Slugs are **suggestions** — finalize them on the first chapter, then keep the rest consistent. Once a slug ships, do not rename it (it becomes a stable URL at `/ai-native-ways/software/{slug}/`).
 
-## Setup before drafting chapter 13
+## Setup before drafting chapter 01
 
-1. Update chapter 12's frontmatter (`articles/ai-native-ways/12-one-plus-ai/{ja,en}.md`) so `next_slug` / `next_title` point at chapter 13. Currently chapter 12 is the series' tail and has empty `next_*`.
-2. Decide the publication-date cadence. Existing chapters use `2026.05.0X`. Continue from where chapter 12 ends; a one-week stride keeps the series-index ordering readable.
-3. Reserve URLs. Each chapter exposes `/ai-native-ways/{slug}/` and `/en/ai-native-ways/{slug}/`. Run the full build (`python3 tools/build_article.py --all`) after chapter 13 to verify the series TOC picks it up.
+1. Confirm the build tool has been extended to discover `articles/ai-native-ways/software/NN-slug/{ja,en}.md`, to emit `/ai-native-ways/software/{slug}/` URLs, and to build the sub-series index at `/ai-native-ways/software/`. If not yet done, this is Phase 2 work and must precede chapter 01 going live.
+2. Confirm the parent index page (`/ai-native-ways/`) renders a prominent hero card linking to `/ai-native-ways/software/` and does **not** include the sub-series chapters in its flat list.
+3. Decide the publication-date cadence. The parent series uses `2026.05.0X`; this sub-series can start at `2026.06.01` and increment per chapter. Keep `date` monotonic within the sub-series so the index sort is stable.
+4. Reserve URLs. Each chapter exposes `/ai-native-ways/software/{slug}/` and `/en/ai-native-ways/software/{slug}/`. Run the full build (`python3 tools/build_article.py --all`) after each chapter to verify both the sub-series index and the parent hero card pick it up.
 
 ## Drafting workflow per chapter
 
@@ -65,35 +74,35 @@ For each chapter:
 1. Re-read the outline entry for that chapter in `docs/Ai-native-software-outline.md`. Use its bullets as the section spine, not as the prose. The chapter expands each bullet into a declarative h2 + body, in the voice defined by `writing-aiways-voice`.
 2. Decide the **hinge claim** for the chapter (the one sentence that goes in bold near the top). The table above has a starting point.
 3. Identify the **legacy/AI-native axis** for the chapter (the two-language framing the voice skill expects). Examples:
-   - 13: 競技プロのレーティング vs ライセンス保有者の単価
-   - 15: 実行能力 vs 判断能力
-   - 18: 外注プロセスの工数 vs AIネイティブ開発の工数
-   - 20: 独自抽象層 vs 標準コード
+   - 01: 競技プロのレーティング vs ライセンス保有者の単価
+   - 03: 実行能力 vs 判断能力
+   - 06: 外注プロセスの工数 vs AIネイティブ開発の工数
+   - 08: 独自抽象層 vs 標準コード
 4. Draft `ja.md`, then `en.md`. Keep section count and order parallel across languages; adapt accent concepts per `writing-aiways-voice`.
 5. Add at least one `> blockquote` per chapter that compresses the hinge claim.
-6. Add a Mermaid `flowchart` only where it earns its place — the structural-change argument lends itself to diagrams in 14, 16, 20, 22. Other chapters may go without.
-7. Update prev/next links on the neighboring chapters (both languages).
-8. Build the single chapter, view the output, then run `--all` to refresh indices.
+6. Add a Mermaid `flowchart` only where it earns its place — the structural-change argument lends itself to diagrams in 02, 04, 08, 10. Other chapters may go without.
+7. Update prev/next links on the neighboring chapters **within the sub-series only** (both languages). Chapter 01 keeps empty `prev_*`; chapter 11 keeps empty `next_*`.
+8. Build the single chapter, view the output, then run `--all` to refresh the sub-series index and the parent hero card.
 
 ## Cross-chapter consistency rules
 
 These keep the sub-series internally coherent.
 
 - **One vocabulary for the roles**: コーダー / ビルダー / SIer / 顧客 / 元請け / 下請け. Do not introduce synonyms ("エンジニア" stays absent when "コーダー" is meant; "発注者" stays absent when "顧客" is meant).
-- **Palantir FDE** is introduced in chapter 20 only. Earlier chapters may name Palantir but should not unpack the FDE mechanic until 20.
-- **The "24 hours, 30,000 lines, 40 pages" demonstration** belongs to chapter 16. Earlier chapters may allude to "one person at speed"; later chapters may reference it briefly. Do not redescribe it in every chapter.
-- **Numbers**: when chapter 19 cites the 10–100× price gap, that is the only place a numeric range is asserted as the thesis. Other chapters can cite component prices (monthly subscriptions, project quotes) but must defer the ratio claim to 19.
-- **The five-year horizon** belongs to chapter 23. Chapters 14–22 can speak of "数年で" only loosely; the explicit five-year claim is reserved for 23.
+- **Palantir FDE** is introduced in chapter 08 only. Earlier chapters may name Palantir but should not unpack the FDE mechanic until 08.
+- **The "24 hours, 30,000 lines, 40 pages" demonstration** belongs to chapter 04. Earlier chapters may allude to "one person at speed"; later chapters may reference it briefly. Do not redescribe it in every chapter.
+- **Numbers**: when chapter 07 cites the 10–100× price gap, that is the only place a numeric range is asserted as the thesis. Other chapters can cite component prices (monthly subscriptions, project quotes) but must defer the ratio claim to 07.
+- **The five-year horizon** belongs to chapter 11. Chapters 02–10 can speak of "数年で" only loosely; the explicit five-year claim is reserved for 11.
 
 ## Evidence (`example-N/`) ideas
 
 The sub-series is argument-heavy. Treat evidence folders as load-bearing where possible:
 
-- **13**: a Codeforces rating snapshot, a single Claude-generated solution to a 2400+ rated problem with timings.
-- **14**: a before/after of a legacy code-reading task — minutes to comprehend with vs without an AI assistant.
-- **16**: pointers to actual aiseed.dev commits in this repository that show the 24-hour build (with a `Makefile` that rebuilds the same artifacts from sources).
-- **19**: a side-by-side quote table — three real SIer quotes vs an AI-native cost stack (subscription + builder day-rate × N days). Anonymize as needed.
-- **20**: a checklist that classifies a real codebase as "AI-native portable" vs "FDE-locked" with concrete file-level evidence.
+- **01**: a Codeforces rating snapshot, a single Claude-generated solution to a 2400+ rated problem with timings.
+- **02**: a before/after of a legacy code-reading task — minutes to comprehend with vs without an AI assistant.
+- **04**: pointers to actual aiseed.dev commits in this repository that show the 24-hour build (with a `Makefile` that rebuilds the same artifacts from sources).
+- **07**: a side-by-side quote table — three real SIer quotes vs an AI-native cost stack (subscription + builder day-rate × N days). Anonymize as needed.
+- **08**: a checklist that classifies a real codebase as "AI-native portable" vs "FDE-locked" with concrete file-level evidence.
 
 Numbers belong in `results.md` inside each example folder, not in the chapter body. The chapter body cites the number and links to the folder.
 
@@ -110,8 +119,19 @@ Edit `docs/Ai-native-software-outline.md` first, then update this skill's chapte
 ## Pointers
 
 - Outline: `docs/Ai-native-software-outline.md`
-- Series spec: `articles/ai-native-ways/README.md`
+- Parent series spec: `articles/ai-native-ways/README.md`
+- Sub-series README (to be created in Phase 2): `articles/ai-native-ways/software/README.md`
 - Mechanical scaffold for a chapter: skill `authoring-aiways-chapter`
 - Prose conventions: skill `writing-aiways-voice`
-- Build entry point: `tools/build_article.py::build_aiways_chapter` (line 462)
-- Chapter 12 frontmatter (must be updated when 13 lands): `articles/ai-native-ways/12-one-plus-ai/{ja,en}.md`
+- Build entry points (Phase 2 work): `tools/build_article.py::build_aiways_chapter`, `collect_aiways_chapters`, `build_aiways_index` — all need sub-series awareness. A new `build_aiways_subseries_index` should emit `/ai-native-ways/software/{,en/}index.html`.
+
+## Pending Phase 2 work (must precede chapter 01 going live)
+
+1. Extend `collect_aiways_chapters` to scope by sub-series and to skip the `software/` subfolder when listing parent chapters (and vice versa).
+2. Update `build_aiways_chapter` output path resolution: detect sub-series from `md_path.parent.parent.name` (or read a frontmatter field) and emit to `html/ai-native-ways/software/{slug}/`.
+3. Update `build_aiways_chapter` URL generators (`canonical_url`, `hreflang_*`, prev/next link rendering) to include the `/software/` segment.
+4. Extend `_aiways_chapter_label` to take a sub-series argument and return `ソフトウェア開発編 第N章` / `Software · Chapter N` when applicable.
+5. Add `build_aiways_subseries_index` (mirrors `build_aiways_index` but limits to the sub-series and writes to the sub-series base path).
+6. Update `build_aiways_index` to prepend a hero card linking to the sub-series index, and to exclude sub-series chapters from its flat chapter list.
+7. Update `_aiways_chapter_examples_html` (around `tools/build_article.py:488`) to emit `/ai-native-ways/software/{slug}/example-N/` URLs when the chapter is in a sub-series.
+8. Update `articles/ai-native-ways/README.md` to document the sub-series convention.

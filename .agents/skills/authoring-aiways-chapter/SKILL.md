@@ -9,6 +9,8 @@ A chapter lives in `articles/ai-native-ways/NN-slug/` with paired `ja.md` and `e
 
 ## Directory layout
 
+### Parent series (flat — chapters 00–12)
+
 ```
 articles/ai-native-ways/
 ├── README.md                 # series-level spec (do not modify casually)
@@ -20,11 +22,36 @@ articles/ai-native-ways/
     └── example-N/            # optional evidence folders, ignored by build
 ```
 
-Rules enforced by `tools/build_article.py`:
+### Sub-series (one level deeper — chapters renumber from 01)
 
-- Folder name **must start with a digit** (`NN-slug`); folders whose name does not start with a digit (e.g. `example-1/`) are skipped.
-- Sorting is **string-sort on folder name**, so use 2-digit zero-padded numbers (`00`, `01`, …, `23`).
-- The chapter label is derived from `number`: `00` → 序章 / Prologue, otherwise 第N章 / Chapter N (`_aiways_chapter_label` in `tools/build_article.py:476`).
+```
+articles/ai-native-ways/
+└── <subseries>/              # e.g. software/
+    ├── README.md             # sub-series spec (call out: thesis, scope, label)
+    └── NN-slug/              # NN restarts at 01 within the sub-series
+        ├── ja.md
+        ├── en.md
+        └── example-N/
+```
+
+A sub-series:
+
+- Lives in a named subdirectory (e.g. `software/`) directly under `articles/ai-native-ways/`.
+- Starts chapter numbering at `01` (no prologue).
+- Has its own series-index page at `/ai-native-ways/<subseries>/`.
+- Uses chapter labels of the form `<サブシリーズ名> 第N章` / `<Subseries Name> · Chapter N`.
+- Is announced from the parent index page (`/ai-native-ways/`) as a prominent hero card; the sub-series' chapters do **not** appear in the parent's flat chapter list.
+- Chains `prev_slug` / `next_slug` **within the sub-series only** — the chain does not bridge into the parent.
+
+The `software/` sub-series is driven by skill `building-ai-native-software-series`.
+
+> Phase 2 status: the build tool currently discovers only the parent layout. Sub-series support is pending implementation. Drafting chapter sources is fine; building them requires the build-tool changes listed in `building-ai-native-software-series`.
+
+### Build rules enforced by `tools/build_article.py`
+
+- Folder name **must start with a digit** (`NN-slug`); folders whose name does not start with a digit (e.g. `example-1/`, `README.md`) are skipped during chapter discovery.
+- Sorting is **string-sort on folder name**, so use 2-digit zero-padded numbers (`00`–`99`).
+- The chapter label is derived from `number`: `00` → 序章 / Prologue, otherwise 第N章 / Chapter N (`_aiways_chapter_label` in `tools/build_article.py:476`). Sub-series prefix the label with the sub-series name (Phase 2 work).
 
 ## Frontmatter (required)
 
@@ -114,6 +141,8 @@ title_html: Paperwork is <span class="accent">Office</span>.<br>Business systems
    |---|---|---|
    | `NN-slug/ja.md` | `html/ai-native-ways/{slug}/index.html` | `/ai-native-ways/{slug}/` |
    | `NN-slug/en.md` | `html/en/ai-native-ways/{slug}/index.html` | `/en/ai-native-ways/{slug}/` |
+   | `<sub>/NN-slug/ja.md` (Phase 2) | `html/ai-native-ways/<sub>/{slug}/index.html` | `/ai-native-ways/<sub>/{slug}/` |
+   | `<sub>/NN-slug/en.md` (Phase 2) | `html/en/ai-native-ways/<sub>/{slug}/index.html` | `/en/ai-native-ways/<sub>/{slug}/` |
 
 ## Renumbering / inserting
 

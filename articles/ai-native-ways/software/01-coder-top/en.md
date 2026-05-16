@@ -96,7 +96,11 @@ This is where the sub-series' argument starts.
 The paths to access top-tier coding ability used to be narrow — be
 hired by Google, Meta, or Anthropic; spend years climbing the
 competitive-programming ladder; or pay seven-figure salaries.
-**Capability above the threshold was a scarce resource**.
+**Capability above the threshold was a scarce resource**. Palantir's
+FDE (Forward Deployed Engineer) model — embedding top-tier engineers
+inside the customer's organization on year-long, eight-figure contracts
+— is the extreme upper end of that legacy path (mechanics covered in
+detail in Chapter 8).
 
 Access to AI models comes in tiers, depending on how hard you intend
 to use them.

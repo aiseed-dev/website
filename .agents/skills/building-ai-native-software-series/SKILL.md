@@ -89,7 +89,7 @@ For each chapter:
 These keep the sub-series internally coherent.
 
 - **One vocabulary for the roles**: コーダー / ビルダー / SIer / 顧客 / 元請け / 下請け. Do not introduce synonyms ("エンジニア" stays absent when "コーダー" is meant; "発注者" stays absent when "顧客" is meant).
-- **Palantir FDE** is introduced in chapter 08 only. Earlier chapters may name Palantir but should not unpack the FDE mechanic until 08.
+- **Palantir FDE** is a recurring theme — name it freely from early chapters when it is the natural concrete example (the upper bound of the legacy access path in Ch 1, the boutique-high-end of SIer commission in Ch 6, the extreme of the price gap in Ch 7). Chapter 08 remains the canonical deep dive: independent Ontology, customer-embedded engineers, long-term contracts, and why the lock-in resists AI-native displacement. Earlier mentions should cite FDE in one or two sentences and defer mechanics to Ch 8 ("第 8 章で詳述" / "covered in detail in Chapter 8").
 - **The "24 hours, 30,000 lines, 40 pages" demonstration** belongs to chapter 04. Earlier chapters may allude to "one person at speed"; later chapters may reference it briefly. Do not redescribe it in every chapter.
 - **Numbers**: when chapter 07 cites the 10–100× price gap, that is the only place a numeric range is asserted as the thesis. Other chapters can cite component prices (monthly subscriptions, project quotes) but must defer the ratio claim to 07.
 - **The five-year horizon** belongs to chapter 11. Chapters 02–10 can speak of "数年で" only loosely; the explicit five-year claim is reserved for 11.

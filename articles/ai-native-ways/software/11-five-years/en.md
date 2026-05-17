@@ -140,6 +140,27 @@ sits not in the system's openness, but in the unpredictability of
 abnormal events** — no matter how closed the system, that part does
 not disappear.
 
+This "judgment in abnormal events" is structurally hard for two
+reasons:
+
+- **(1) The expansion of what must be anticipated** — enumerate one
+  accident or failure, and its variants, combinations, and new
+  patterns keep appearing. **The "list of cases we've thought of" is
+  always incomplete**; what actually occurs in the field sits outside
+  the design-time list. List more and the list grows; stop and the
+  gaps remain.
+- **(2) The absence of a body** — humans detect anomalies by taking
+  in vision, touch, sound, smell, and vibration through the body all
+  at once. AI has no body, so **cameras and sensors** have to be
+  installed in its place. Each physical quantity to be sensed requires
+  its own equipment; placement, power, networking, and maintenance
+  costs pile up. And **what to sense in the first place is itself
+  another problem of predicting abnormal events** — the anomaly you
+  did not anticipate has no sensor on it.
+
+Because (1) and (2) compound, complete replacement in the physical
+world — even in a closed system — stays structurally hard.
+
 In these domains, AI delivers enormous value **as a productivity
 tool** — document drafts, driver assistance, routine work by
 collaborative robots. But **complete replacement does not happen**.

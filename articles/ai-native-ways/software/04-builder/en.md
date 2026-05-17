@@ -26,12 +26,12 @@ what the builder does, where the builder differs from the coder, why
 one person plus AI works — by grounding it in a concrete example.
 
 The concrete example is the site this article lives on. The **code
-base** of aiseed.dev (about 30,000 lines) was stood up by one person
+base** of aiseed.dev (about 6,000 lines) was stood up by one person
 plus AI in roughly 24 hours; on top of it run about 150 bilingual
-articles (roughly 40 long-form pages of content) across five
-independent series. The articles were written on a separate timeline —
-covered below. Every source and build script needed to reproduce the
-site is committed to this repository.
+articles across five independent series. The articles are written on a
+separate timeline — **roughly one week per sub-series** — covered
+below. Every source and build script needed to reproduce the site is
+committed to this repository.
 
 ## The builder decides what to build and hands the writing to AI
 
@@ -143,7 +143,7 @@ a builder's fatigue shows up not in shoulders and hands but in
 Builders who can keep running for many hours straight are scarce.
 That is the physiological side of "**adding builders does not help**."
 
-## Evidence — aiseed.dev's code base: one person plus AI, 24 hours
+## Evidence — two anchors: 24 hours for the code base, one week per sub-series
 
 Enough abstraction. As a concrete example, decompose the site this
 article lives on. aiseed.dev has this structure:
@@ -153,29 +153,41 @@ article lives on. aiseed.dev has this structure:
   series), Phosphorus Depletion and Natural Farming
 - **About 150 chapters and articles** (bilingual JA / EN, so about
   300 source MD files in total)
-- **About 40 long-form pages** of content (each series, taken
-  together, runs to the equivalent of a small book or booklet)
-- **About 30,000 lines of code** (`tools/build_article.py` is roughly
-  1,600 lines; series templates, build utilities, OG-image generation,
-  sitemap, hreflang, robots, series-specific typography)
+- **About 6,000 lines of code base** (`tools/build_article.py` is
+  roughly 1,800 lines; series templates ~2,400 lines; build utilities,
+  OG-image generation, sitemap, hreflang, robots, series-specific
+  typography)
 - **Bilingual** (JA / EN, hreflang on every article, a hard-coded
   language switcher)
 - **Mermaid, code highlighting, OG-image generation, sitemap**
 
-Of these, the **code base portion** — build tools, templates, image
-generation, sitemap, the bilingual framework — was stood up by **one
-person plus AI** (primarily Claude) in **about 24 hours**. Most of
-the code was written by AI; the builder did design decisions,
-integration, and evaluation. The same scope of code base, routed
-through an SIer commission model, would burn comparable time at the
-proposal-and-quote stage alone (the structure of that process cost is
-treated in Chapter 6).
+### Anchor 1 — the code base in 24 hours
 
-### The article content is not inside that 24 hours
+The **code base portion** — build tools, templates, image generation,
+sitemap, the bilingual framework — was stood up by one person plus AI
+(primarily Claude) in **about 24 hours**. Most of the code was written
+by AI; the builder did design decisions, integration, and evaluation.
+The same scope of code base, routed through an SIer commission model,
+would burn comparable time at the proposal-and-quote stage alone (the
+structure of that process cost is treated in Chapter 6).
+
+### Anchor 2 — one sub-series in one week
 
 This needs to be said plainly. **The article content lives outside
-that 24 hours**. Unlike code, the fraction of writing that can be
-delegated to AI is low for prose.
+that 24 hours**. Concretely: writing this sub-series (Software · all
+11 chapters) takes **about one week** of work (currently 4 chapters
+in, with the remaining chapters on the same pace). That week covers:
+
+- Deciding the chapter outline (`docs/Ai-native-software-outline.md`)
+- Extending the build tool to support sub-series
+- Building out the authoring skills
+  (`building-ai-native-software-series` and others)
+- Writing the chapters in bilingual JA / EN
+- Looping through revisions, fact corrections, and skill updates
+
+Fitting all of that into one week, with one person plus AI, has a
+different structure from the 24-hour code build. Unlike code, the
+fraction of writing that can be delegated to AI is low for prose.
 
 - The argument is decided by humans — what to say, what not to say
 - The structure is decided by humans — order and pacing
@@ -188,16 +200,19 @@ delegated to AI is low for prose.
 
 AI can produce drafts, but every draft is taken as something to **read
 in full, correct, and rewrite**. Factual errors, leaps in argument,
-shifts in tone — letting any of those through costs trust. Each of
-the 150 articles carries a chunk of high-decision-density time from
-its writer. The total is not "24 hours."
+shifts in tone — letting any of those through costs trust. The "one
+week" figure is a measured **throughput of one builder plus AI** that
+already prices in the decision density that prose demands.
+
+### What the two anchors mean
 
 The contrast itself reinforces the chapter's claim:
 
-- **Code**: high AI-delegation ratio. The builder holds design and
-  evaluation.
-- **Prose**: low AI-delegation ratio. The builder holds everything
-  except the rough draft.
+- **Code**: high AI-delegation ratio. The one-time infrastructure build
+  takes 24 hours. The builder holds design and evaluation.
+- **Prose**: low AI-delegation ratio. One sub-series takes about a week
+  of decision density. The builder holds everything except the rough
+  draft.
 
 The lower the delegation ratio, the higher the builder's decision
 density. **What stays at the center of a builder's work is judgment**,
@@ -209,10 +224,11 @@ committed to this repository. A single `make` brings the same site up
 parent series).
 
 > What the builder did. Code base: decided the design, had AI write
-> it, evaluated, integrated. Articles: held the argument, structure,
-> fact-checking, and voice; read every AI draft end to end. **What
-> sits at the center is not the ability to write, but the ability to
-> judge** — and that holds for both.
+> it, evaluated, integrated (about 24 hours). Articles: held the
+> argument, structure, fact-checking, and voice; read every AI draft
+> end to end (one sub-series ≈ one week). **What sits at the center
+> is not the ability to write, but the ability to judge** — and that
+> holds for both.
 
 ## Why one person plus AI is faster than ten coders
 

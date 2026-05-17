@@ -78,8 +78,8 @@ is checkable mechanically. AI reaches superhuman levels in domains
 **where the answer can be checked**. The claim "coders go away" in this
 sub-series applies specifically to domains with that property — the
 reach of "complete replacement" does not extend at the same speed to
-other AI applications (self-driving, translation, customer service;
-this boundary is treated in Chapter 11).
+other AI applications (desk work, self-driving, robotics, etc.; this
+boundary is treated in Chapter 11).
 
 What matters is not the rank, but the **structural change of crossing a
 threshold**.

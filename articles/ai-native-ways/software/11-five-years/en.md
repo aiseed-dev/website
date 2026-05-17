@@ -117,6 +117,22 @@ later. This is what Chapter 3's "coders go away, builders remain"
 means: **coding gets complete replacement; builder work gets
 productivity gain** — both happen inside the same field at once.
 
+A warning here: now that coding is fully replaced, **the importance
+of the requirements side actually rises**. **Skimp on requirements,
+and AI only mass-produces "commonplace code"** that does not address
+the specific business problem. AI is excellent at probabilistically
+reproducing what it has seen in prior samples from the same domain,
+but **pinning down "the non-negotiable conditions of this
+organization's particular business"** can only be done by the human
+writing the requirements.
+
+The faster AI gets, the faster and larger the cost of sloppy
+requirements piles up — a vast amount of "runs but ordinary" code
+gets produced and maintenance collapses (the same vibe-coding failure
+mode from Chapter 2, now faster and at greater volume). In a world
+where coding is cheap, **requirements are what determine a software
+system's differentiation and lifespan**.
+
 ## Other AI applications stall at the last 1%
 
 In the reverse — **domains where the rules are not explicit, or

@@ -72,14 +72,16 @@ is not "useful assistant now"; it is **"sitting on the side that solves
 the hardest problems."**
 
 What made this achievement structurally possible is that competitive
-programming is **a domain in which correctness is verifiable**. Whether
-code compiles, whether the output matches expected values — all of it
-is checkable mechanically. AI reaches superhuman levels in domains
-**where the answer can be checked**. The claim "coders go away" in this
-sub-series applies specifically to domains with that property — the
-reach of "complete replacement" does not extend at the same speed to
-other AI applications (desk work, self-driving, robotics, etc.; this
-boundary is treated in Chapter 11).
+programming is **a domain where the rules are explicit and correctness
+is verifiable**. Grammar, the standard library, and the type system
+are formally defined; whether code compiles and whether the output
+matches expected values is checkable mechanically. AI reaches
+superhuman levels in domains **where the rules are explicit and the
+answer can be checked**. The claim "coders go away" in this sub-series
+applies specifically to domains with both properties — the reach of
+"complete replacement" does not extend at the same speed to other AI
+applications (desk work, self-driving, robotics, etc.; this boundary
+is treated in Chapter 11).
 
 What matters is not the rank, but the **structural change of crossing a
 threshold**.

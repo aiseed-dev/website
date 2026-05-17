@@ -88,25 +88,30 @@ This is where the **scoping** of the sub-series needs to be made
 explicit.
 
 AI is heading toward complete replacement in software development
-because **this domain has verifiable correctness**. As Chapter 1
-noted:
+because **two conditions hold at once in this domain**:
 
-- Whether code compiles, or does not
-- Whether tests pass, or do not
-- Whether a competitive-programming problem is solved, or is not
+1. **The rules are explicit** — language specs, standard-library APIs,
+   type systems, syntax — all defined formally and unambiguously.
+   There is little interpretive room for "the correct way to write
+   it."
+2. **Correctness is verifiable** — whether code compiles, whether
+   tests pass, whether a competitive-programming problem is solved
+   — all checkable mechanically.
 
-All of this is **checkable mechanically**. AI receives, during
-training, an enormous volume of right/wrong feedback. That is why AI
-reaches superhuman levels in this domain.
+When both conditions hold, AI receives, during training, an enormous
+volume of feedback both on "did it follow the rules" and "is it
+correct." That is why AI reaches superhuman levels in this domain.
 
-> AI reaches superhuman levels in **domains where correctness can be
-> verified**.
+> AI reaches superhuman levels in **domains where the rules are
+> explicit and correctness is verifiable**.
 > Software development is the textbook case.
 
 ## Other AI applications stall at the last 1%
 
-In the reverse — **domains where correctness is hard to verify** — AI
-does not advance at the same speed. Three representative domains:
+In the reverse — **domains where the rules are not explicit, or
+correctness is hard to verify** — AI does not advance at the same
+speed. Missing either condition is enough to leave a stubborn last 1%.
+Three representative domains:
 
 - **Desk work** — 99% of the work (routine documents, email replies,
   meeting-minute summaries, draft research, data organization,

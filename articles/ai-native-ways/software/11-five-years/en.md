@@ -285,7 +285,7 @@ aiseed.dev will continue to publish articles that read the structure.
 
 ## Related articles
 
-- [Chapter 1: AI Has Reached Human-Top-Class Capability in Writing Code](/en/ai-native-ways/software/coder-top/)
+- [Chapter 1: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
 - [Chapter 3: The Coder's Job Goes Away](/en/ai-native-ways/software/coder-end/)
 - [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
 - [Chapter 10: Japan's SIer Industry Transition and Labor Mobility](/en/ai-native-ways/software/japan-transition/)

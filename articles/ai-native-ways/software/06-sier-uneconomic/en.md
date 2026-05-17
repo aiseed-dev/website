@@ -214,7 +214,7 @@ The next chapter takes up that price gap.
 
 ## Related articles
 
-- [Chapter 1: AI Has Reached Human-Top-Class Capability in Writing Code](/en/ai-native-ways/software/coder-top/)
+- [Chapter 1: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
 - [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
 - [Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)

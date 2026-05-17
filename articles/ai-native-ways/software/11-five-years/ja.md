@@ -238,7 +238,7 @@ aiseed.dev は、これからも構造を読む記事を発信していきます
 
 ## 関連記事
 
-- [第1章: AIがコードを書く能力で人間トップクラスに到達した](/ai-native-ways/software/coder-top/)
+- [第1章: AI は、世界で最も難しいコーディング問題を解く](/ai-native-ways/software/coder-top/)
 - [第3章: コーダーの仕事はなくなる](/ai-native-ways/software/coder-end/)
 - [第4章: ビルダーという役割](/ai-native-ways/software/builder/)
 - [第10章: 日本のSIer業界の転換と雇用流動性](/ai-native-ways/software/japan-transition/)

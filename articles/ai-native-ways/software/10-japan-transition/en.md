@@ -219,6 +219,63 @@ through rapid change by absorbing it into intermediate forms.
 > **Both effects act in parallel, so the transition is neither
 > abrupt nor stalled**.
 
+## Physical goods become scarcer than software
+
+The SIer industry's shrinkage is not an isolated labor problem. Over
+the same few years, several forces are simultaneously pushing total
+labor demand upward across the economy. They share a single root —
+**the era's scarce resource is flipping from software to physical
+things**.
+
+**AI data-center construction, as the loudest visible example** — the
+AI boom itself is generating massive demand for physical
+infrastructure. GPUs, fab equipment, electric power, cooling,
+buildings, land, networks — every one of them is **about physical
+things, not about code**. AI data-center construction is backlogged
+worldwide, with power supply as the bottleneck. **The cheaper AI
+becomes, the more scarce the physical things that run AI** — this is
+the most visible sign of "the era when physical goods get scarcer
+than software."
+
+**Reshoring of manufacturing** — Middle-East instability,
+geopolitical energy-price rises, and global logistics-cost increases
+are eroding the economics of offshore production. Domestic
+manufacturing in Japan — especially high-value, low-volume,
+fast-response work — gains relative competitiveness. As reshoring
+proceeds, demand for shop-floor labor, production design, and
+manufacturing engineering rises in a measurable way.
+
+**Forced shift to natural farming** — the supply of the major
+chemical-fertilizer inputs (ammonia synthesized from natural gas,
+potash from Russia and Belarus, imported phosphate rock) is
+destabilizing and prices are rising. Once the input cost of chemical
+agriculture crosses the breakeven line, **natural farming is no
+longer a choice but a necessity**. Natural farming requires more
+labor than chemical agriculture across soil preparation, weeding,
+and harvest — so agricultural labor demand also moves upward (the
+structural details are covered in the separate aiseed.dev series
+*Phosphorus Depletion and Natural Farming*).
+
+The three forces — **physical-infrastructure demand from AI itself,
+reshoring of manufacturing, the shift to natural farming** — run on
+**the same time scale** as the SIer-industry shrinkage. As a result,
+the options open to displaced coders broaden significantly: alongside
+intra-industry flow (primes, customers, independence), the
+**out-of-industry physical labor demand** becomes a major channel.
+
+The historical parallel from Chapter 3 — human computers and
+typesetters moving to adjacent fields — was viable only because labor
+demand happened to exist where they landed. The same applies here.
+**The side where labor demand disappears (code production) and the
+sides where it grows (physical production, agriculture, AI physical
+infrastructure) are moving in parallel inside the same society**.
+
+> The scarce resource of the era is flipping from software to physical
+> things.
+> It is not that SIer coders are in surplus — it is that **the side
+> that makes things does not have enough hands**. That is the actual
+> shape of labor demand.
+
 ## Mobility rises over time
 
 Finally, the direction of the transition period.
@@ -260,5 +317,6 @@ few years. The final chapter.
 - [Chapter 6: The Structural Uneconomy of the SIer Model](/en/ai-native-ways/software/sier-uneconomic/)
 - [Chapter 7: The Order-of-Magnitude Price Gap](/en/ai-native-ways/software/price-gap/)
 - [Chapter 9: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
+- [Phosphorus Depletion and Natural Farming](/en/phosphorus-and-farming/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

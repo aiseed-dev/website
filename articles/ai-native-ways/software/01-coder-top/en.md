@@ -157,6 +157,52 @@ cost. The two are not the same spreadsheet at two prices; they are
 > Top-tier coding used to be a **scarce resource of a few dozen people**.
 > It is now a **$200-a-month subscription**.
 
+## This is where the IT revolution actually completes
+
+What the facts above describe — top-tier coding ability reaching anyone
+for $200 a month — is not just "AI got faster" or "AI got useful." It
+is the moment in which **what has long been called the "IT revolution"
+finally completes**.
+
+Look at what the term "IT revolution" named, in structural terms.
+
+- Industrial revolution — production of physical goods moved from
+  human hands to machines.
+- First wave of computing — calculation moved from human hands
+  (abacus, human computers) to machines.
+- "IT revolution" — business processing moved from paper and pen to
+  software.
+
+In the first two, the core of the revolution (mechanization,
+automation) reached the object of the revolution fully. **The third
+did not**. Software itself was still being written by human hands.
+The revolution's tool (software) kept being produced by hand-labor —
+which means the revolution's core had not yet reached the production
+of its own tool. What was called the "IT revolution" was, in fact, an
+**incomplete form of revolution**.
+
+The industrial-revolution parallel: the power loom exists, but the
+loom's own parts are still hammered out by hand at the blacksmith's.
+The revolution's loop does not close **until production of the tool
+itself is mechanized**.
+
+Now that AI has taken execution completely, the loop finally closes.
+**The act of producing software is itself taken over by machines**.
+The revolution's tool is built by the revolution's own process. That
+is what "the IT revolution actually completing" means.
+
+> The decades called "the IT revolution" were a revolution that
+> **mechanized business using software**.
+> What is happening now is **the revolution that mechanizes the
+> production of that software itself** — the revolution's core
+> finally reaching the revolution's own tool.
+
+With that frame, the changes this sub-series covers — the coder role
+ending, the structural uneconomy of the SIer model, the order-of-
+magnitude price gap, the rearrangement of employment and industry —
+read not as isolated phenomena but as **a long-delayed revolution
+finishing the work it had left incomplete**.
+
 ## Everything else in this sub-series follows from one fact
 
 Every chapter that follows is **deduced** from this one fact.

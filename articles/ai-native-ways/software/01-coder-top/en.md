@@ -71,6 +71,16 @@ multiple independent announcements moving in the same direction. This
 is not "useful assistant now"; it is **"sitting on the side that solves
 the hardest problems."**
 
+What made this achievement structurally possible is that competitive
+programming is **a domain in which correctness is verifiable**. Whether
+code compiles, whether the output matches expected values — all of it
+is checkable mechanically. AI reaches superhuman levels in domains
+**where the answer can be checked**. The claim "coders go away" in this
+sub-series applies specifically to domains with that property — the
+reach of "complete replacement" does not extend at the same speed to
+other AI applications (self-driving, translation, customer service;
+this boundary is treated in Chapter 11).
+
 What matters is not the rank, but the **structural change of crossing a
 threshold**.
 

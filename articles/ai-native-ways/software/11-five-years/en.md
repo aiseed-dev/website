@@ -129,6 +129,17 @@ Three representative domains:
   sharing space with humans, adapting to unknown environments —
   determines real-world usability.
 
+Look at rail — especially Japan's **Shinkansen**, where route and
+obstacles are tightly controlled — a **closed system**. Almost all
+normal operation can be automated. The rules are explicit; correctness
+in normal operation is easy to verify. But the judgment for
+**accidents and equipment failures** — derailment, defective
+equipment, natural disasters — is the kind of problem that cannot be
+enumerated at design time. It still falls to humans. **The last 1%
+sits not in the system's openness, but in the unpredictability of
+abnormal events** — no matter how closed the system, that part does
+not disappear.
+
 In these domains, AI delivers enormous value **as a productivity
 tool** — document drafts, driver assistance, routine work by
 collaborative robots. But **complete replacement does not happen**.

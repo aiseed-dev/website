@@ -25,11 +25,13 @@ this book calls it the builder. This chapter fixes the definition —
 what the builder does, where the builder differs from the coder, why
 one person plus AI works — by grounding it in a concrete example.
 
-The concrete example is the site this article lives on. aiseed.dev
-was stood up by one person plus AI in roughly 24 hours: about 30,000
-lines of code, content equivalent to about 40 long-form pages, five
-independent series, in two languages. The sources and the build
-scripts to reproduce it all live in this repository.
+The concrete example is the site this article lives on. The **code
+base** of aiseed.dev (about 30,000 lines) was stood up by one person
+plus AI in roughly 24 hours; on top of it run about 150 bilingual
+articles (roughly 40 long-form pages of content) across five
+independent series. The articles were written on a separate timeline —
+covered below. Every source and build script needed to reproduce the
+site is committed to this repository.
 
 ## The builder decides what to build and hands the writing to AI
 
@@ -141,12 +143,10 @@ a builder's fatigue shows up not in shoulders and hands but in
 Builders who can keep running for many hours straight are scarce.
 That is the physiological side of "**adding builders does not help**."
 
-## Evidence — aiseed.dev: one person plus AI, 24 hours
+## Evidence — aiseed.dev's code base: one person plus AI, 24 hours
 
 Enough abstraction. As a concrete example, decompose the site this
-article lives on.
-
-aiseed.dev has this structure:
+article lives on. aiseed.dev has this structure:
 
 - **Five independent series**: Insights (structural analysis), Blog,
   Claude × Debian (a technical book), AI-Native Ways of Working (this
@@ -162,24 +162,57 @@ aiseed.dev has this structure:
   language switcher)
 - **Mermaid, code highlighting, OG-image generation, sitemap**
 
-All of it was stood up by **one person plus AI** (primarily Claude)
-in **about 24 hours**.
+Of these, the **code base portion** — build tools, templates, image
+generation, sitemap, the bilingual framework — was stood up by **one
+person plus AI** (primarily Claude) in **about 24 hours**. Most of
+the code was written by AI; the builder did design decisions,
+integration, and evaluation. The same scope of code base, routed
+through an SIer commission model, would burn comparable time at the
+proposal-and-quote stage alone (the structure of that process cost is
+treated in Chapter 6).
 
-"24 hours" is the time at the keyboard; decisions are also made
-outside that. But the fact that the implementation phase fits inside
-24 hours is heavy. The same scope, routed through an SIer commission
-model, would burn comparable time at the proposal-and-quote stage
-alone — the structure of that process cost is treated in Chapter 6.
+### The article content is not inside that 24 hours
+
+This needs to be said plainly. **The article content lives outside
+that 24 hours**. Unlike code, the fraction of writing that can be
+delegated to AI is low for prose.
+
+- The argument is decided by humans — what to say, what not to say
+- The structure is decided by humans — order and pacing
+- The facts are verified by humans — numbers, dates, citations,
+  line by line
+- The voice and rhythm are held by humans — the breath the reader
+  feels
+- Responsibility for the argument stays with humans — same boundary
+  of judgment as Chapter 3
+
+AI can produce drafts, but every draft is taken as something to **read
+in full, correct, and rewrite**. Factual errors, leaps in argument,
+shifts in tone — letting any of those through costs trust. Each of
+the 150 articles carries a chunk of high-decision-density time from
+its writer. The total is not "24 hours."
+
+The contrast itself reinforces the chapter's claim:
+
+- **Code**: high AI-delegation ratio. The builder holds design and
+  evaluation.
+- **Prose**: low AI-delegation ratio. The builder holds everything
+  except the rough draft.
+
+The lower the delegation ratio, the higher the builder's decision
+density. **What stays at the center of a builder's work is judgment**,
+no matter what type of output sits on the other end.
 
 For reproducibility, every source, template, and build script is
 committed to this repository. A single `make` brings the same site up
 (the design principle is the same as the `example-N/` folders in the
 parent series).
 
-> What the builder did: decided what to build, decomposed it, had AI
-> write it, evaluated the outputs, and integrated. **Most of the
-> code that landed was written by AI; every design decision was
-> human**.
+> What the builder did. Code base: decided the design, had AI write
+> it, evaluated, integrated. Articles: held the argument, structure,
+> fact-checking, and voice; read every AI draft end to end. **What
+> sits at the center is not the ability to write, but the ability to
+> judge** — and that holds for both.
 
 ## Why one person plus AI is faster than ten coders
 

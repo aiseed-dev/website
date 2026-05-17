@@ -170,20 +170,27 @@ called programmers split in two directions:
   design, integration, and responsibility. This book names that role
   the "builder" (defined in Chapter 4).
 
-History has parallel transitions. When pocket calculators arrived,
-the role of **"human computer"** disappeared, but people strong in
-mathematics moved to engineering and economic analysis. After
-typesetters disappeared, the people who could judge typography
-remained inside publishing and editing. **When execution gets
-mechanized, what splits is who can move to the judgment side and who
-cannot**. The same thing is happening in the coding band now.
+History has parallel transitions. In Japan, when calculators arrived
+in the 1970s, the execution skill of **commercial calculation by
+abacus (soroban)** disappeared, but people who could judge what the
+numbers meant moved into accounting and finance. The same transition
+happened in the West with the **human computer**, and in printing
+with the **typesetter** as phototypesetting replaced letterpress.
+**When execution gets mechanized, what splits is who can move to the
+judgment side and who cannot**. The same thing is happening in the
+coding band now.
 
-The thing to flag is **the speed of the transition**. The calculator
-took decades. The AI shift, as Chapter 1 showed, is starting from a
-price structure that is orders of magnitude lower. Whether the
-individual or the country can absorb the transition becomes a question
-of **industry structure**, not personal choice (Chapter 10 takes up
-the Japanese SIer industry).
+The thing to flag is **the speed of the transition**. After Casio
+released the Casio Mini in 1972 at ¥12,800 and other low-priced models
+followed, **calculators pushed the abacus out of Japanese offices and
+homes within roughly a decade**. The intuition that "this kind of
+change takes decades" is a backward-looking illusion — **while it is
+happening, it is fast for the people inside it**. The AI shift, as
+Chapter 1 showed, is starting from a price structure that is orders of
+magnitude lower. It is reasonable to expect the same speed, or faster.
+Whether the individual or the country can absorb the transition
+becomes a question of **industry structure**, not personal choice
+(Chapter 10 takes up the Japanese SIer industry).
 
 ## Where the next chapter goes
 

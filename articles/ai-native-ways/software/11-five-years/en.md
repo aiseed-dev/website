@@ -4,7 +4,7 @@ number: "11"
 lang: en
 title: The Structural Transition Completes in a Few Years
 subtitle: The chain of change, a roughly five-year horizon, irreversibility — but bounded to software development
-description: From AI reaching top-tier capability through coder displacement, builder demand, and SIer shrinkage, the changes chain together and the main part completes in roughly five years. Once a structure moves, it does not move back. But this "complete replacement" applies only to verifiable-correctness domains like software; in self-driving, translation, and customer service, AI is blocked at the last 1% and complete replacement does not happen — those are productivity-gain stories. The writing of this very sub-series is itself evidence of that bound.
+description: From AI reaching top-tier capability through coder displacement, builder demand, and SIer shrinkage, the changes chain together and the main part completes in roughly five years. Once a structure moves, it does not move back. But this "complete replacement" applies only to verifiable-correctness domains like software; in desk work, self-driving, and robotics, AI is blocked at the last 1% and complete replacement does not happen — those are productivity-gain stories. The writing of this very sub-series is itself evidence of that bound.
 date: 2026.08.10
 label: Software 11
 title_html: In <span class="accent">five years</span>, the main changes<br>complete — irreversibly.
@@ -106,23 +106,27 @@ reaches superhuman levels in this domain.
 ## Other AI applications stall at the last 1%
 
 In the reverse — **domains where correctness is hard to verify** — AI
-does not advance at the same speed. The standard examples:
+does not advance at the same speed. Three representative domains:
 
+- **Desk work** — 99% of the work (routine documents, email replies,
+  meeting-minute summaries, draft research, data organization,
+  translation drafts) can be handed to AI. But the last 1% — unwritten
+  rules inside the organization, decisions that carry responsibility,
+  subtle adjustments with stakeholders, the final judgment of whether
+  to submit — determines the quality and the trust of the work.
 - **Self-driving** — 99% of situations are no problem. But the
   remaining 1% — an unexpected pedestrian, edge weather judgments, a
   child's ball — is what decides between safety and death. The
   difficulty of moving from 99% to 100% is the substance.
-- **Translation** — 99% of meaning gets through. But the 1% of nuance,
-  context, and cultural reading determines whether trust is built or
-  lost.
-- **Customer service / reception** — 99% of routine work can be
-  automated. But the 1% of exception handling, emotional
-  consideration, and judgment about organizational authority decides
-  customer satisfaction.
+- **Robotics** — 99% of motion (routine assembly, picking, food
+  delivery, cleaning, repeated actions) can be mechanized. But the
+  last 1% — unexpected object placement, handling soft items, safely
+  sharing space with humans, adapting to unknown environments —
+  determines real-world usability.
 
 In these domains, AI delivers enormous value **as a productivity
-tool** — translation drafts, driver assistance, automated handling of
-routine inquiries. But **complete replacement does not happen**.
+tool** — document drafts, driver assistance, routine work by
+collaborative robots. But **complete replacement does not happen**.
 There is a deep valley between "can do 99%" and "can do 100%."
 
 The IT industry's AI narrative often overlooks — or pretends not to
@@ -172,8 +176,8 @@ trust — pass through. The level of this sub-series **required human
 judgment, in every loop**.
 
 In other words, the writing process of this sub-series carried **the
-same structure as self-driving, translation, and customer service** —
-AI writes most of the draft; the human holds judgment and correction.
+same structure as desk work, self-driving, and robotics** — AI writes
+most of the draft; the human holds judgment and correction.
 **Productivity multiplies several times, but complete replacement
 does not happen**.
 
@@ -252,9 +256,8 @@ in-house development — irreversibly.**
 
 But this is the story of a specific domain: software development. The
 same speed of complete replacement is not claimed for other domains
-(self-driving, translation, customer service). In those domains, AI
-operates as a productivity tool — it does not reach complete
-replacement.
+(desk work, self-driving, robotics). In those domains, AI operates as
+a productivity tool — it does not reach complete replacement.
 
 And during the same few years that AI advances, **society as a whole
 moves toward physical goods becoming scarce** (Chapter 10). AI

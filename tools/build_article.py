@@ -1285,6 +1285,14 @@ def build_aiways_subseries_index(subseries: str, lang: str = "ja"):
     variables["other_lang_link"] = (
         _aiways_url_base("ja" if is_en else "en", subseries) + "/"
     )
+    # Override asset / image paths: the sub-series index sits one directory
+    # deeper than the parent index, so all relative `../` paths need one
+    # more `../` to reach the site root.
+    variables["css_path"] = "../../../css/style.css" if is_en else "../../css/style.css"
+    variables["js_path"] = "../../../js/main.js" if is_en else "../../js/main.js"
+    variables["img_path"] = (
+        "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg"
+    )
     # Back-link to the parent series index (rendered into intro_html so we
     # don't need a template change).
     parent_href = _aiways_url_base(lang) + "/"

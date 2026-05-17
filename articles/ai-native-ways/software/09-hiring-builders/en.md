@@ -41,33 +41,41 @@ was the common assumption. Keep an internal IT department, write the
 requirements in-house, hand the implementation to an SIer — the
 standard model.
 
-That premise held only under two conditions:
+That premise held under two conditions:
 
-- IT implementation required **specialist skills**, expensive to keep
-  in-house
-- IT was a **thin surface layer** of the business — outsourcing it
-  did not pull the essence of the business out with it
+- IT implementation required **a large number of coders**, and keeping
+  them all in-house was impractical at the scale needed. **Multi-tier
+  subcontracting stacked head-count on the outside** so that
+  engagements could secure enough person-months (the structure is
+  covered in Chapter 10).
+- IT was viewed as a **thin surface layer** of the business —
+  outsourcing it did not pull the essence of the business out with it.
 
 Both conditions break in the AI-native world.
 
-Implementation is written by AI — the in-house cost drops. And the
-business of the AI-native era is **a continuous chain of judgments
-encoded as code**. What to build, how to split it, which invariants
-must hold — these are the body of the business itself. Code is the
-mirror of the business, not a thin surface.
+Implementation is written by AI — **a large number of coders is no
+longer needed**. The reason multi-tier subcontracting existed in the
+first place disappears. And the business of the AI-native era is **a
+continuous chain of judgments encoded as code**. What to build, how
+to split it, which invariants must hold — these are the body of the
+business itself. Code is the mirror of the business, not a thin
+surface.
 
 So outsourcing IT becomes the same as **outsourcing the judgment of
-the business**. The customer's context, the meaning of the business,
-the conditions that cannot be traded — all of these flow outward.
+the business** — and the head-count being stacked outside is no
+longer needed in the first place. The rationale for letting the
+customer's context, the meaning of the business, the non-negotiable
+conditions flow outward — and the rationale for securing person-months
+outside — both disappear at the same time.
 
 ```mermaid
 flowchart TB
-  subgraph Old["Old — IT is something to outsource"]
+  subgraph Old["Old — stack many coders on the outside"]
     direction TB
     OB["Business"]
-    OIT["IT (implementation outside)"]
+    OIT["IT<br/>(needs many coders)"]
     OB ==> OIT
-    OIT -.->|outsource| OSier["SIer"]
+    OIT -.->|multi-tier subcontracting<br/>secures person-months| OSier["SIer<br/>(prime + subcontractors)"]
   end
 
   subgraph New["AI-native — IT is an extension of the business"]

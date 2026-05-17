@@ -263,8 +263,10 @@ elements combine to make this possible:
 
 - **AI** — the code is written by AI (Chapter 1)
 - **Python** — readable, well-suited to AI collaboration
-- **Flet** — desktop, mobile, and web apps in pure Python (covered
-  in the parent series, Chapter 8)
+- **Flet** — desktop, mobile, and web apps in pure Python.
+  Underneath is a native Flutter build (AOT-compiled), so cold-start
+  is lighter than React Native's JavaScript-bridge stack (covered in
+  the parent series, Chapter 8)
 
 With these three layers in place, **"I want to build something but I
 cannot write code"** — the people who carried that line until now —

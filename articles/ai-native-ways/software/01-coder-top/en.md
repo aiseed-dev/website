@@ -257,7 +257,8 @@ consequence of cheap coding — the shift in the unit of maintenance.
 
 ## Related articles
 
+- [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
+- [Chapter 11: The Structural Transition Completes in a Few Years](/en/ai-native-ways/software/five-years/)
 - [Prologue: AI's Native Tongue Is Python and Markdown-Shaped Text](/en/ai-native-ways/prologue/)
-- [Chapter 11: Verifying Narratives with AI](/en/ai-native-ways/verify-narratives/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

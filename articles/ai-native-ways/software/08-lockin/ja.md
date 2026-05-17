@@ -216,5 +216,7 @@ AI ネイティブなコードベースは、こういう特性を持つ:
 - [第3章: コーダーの仕事はなくなる](/ai-native-ways/software/coder-end/)
 - [第4章: ビルダーという役割](/ai-native-ways/software/builder/)
 - [第7章: 価格競争力の桁違いの差](/ai-native-ways/software/price-gap/)
+- [第9章: 各社がビルダーを雇用する時代](/ai-native-ways/software/hiring-builders/)
+- [第10章: 日本のSIer業界の転換と雇用流動性](/ai-native-ways/software/japan-transition/)
 - [構造分析08: 企業ITの税を引く](/insights/enterprise-tax/)
 - [構造分析12: AIと個人事業](/insights/ai-and-individual/)

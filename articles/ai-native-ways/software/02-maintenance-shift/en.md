@@ -208,5 +208,7 @@ The next chapter takes up the coder as a role.
 ## Related articles
 
 - [Chapter 1: AI Has Reached Human-Top-Class Capability in Writing Code](/en/ai-native-ways/software/coder-top/)
+- [Chapter 3: The Coder's Job Goes Away](/en/ai-native-ways/software/coder-end/)
+- [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
 - [Prologue: AI's Native Tongue Is Python and Markdown-Shaped Text](/en/ai-native-ways/prologue/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)

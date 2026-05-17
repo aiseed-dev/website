@@ -226,7 +226,8 @@ SIer の構造的不経済、価格の桁違いの差、雇用と業界構造の
 
 ## 関連記事
 
+- [第4章: ビルダーという役割](/ai-native-ways/software/builder/)
+- [第11章: 数年で完了する構造転換](/ai-native-ways/software/five-years/)
 - [序章: AIの母国語は、PythonとMarkdown形式のテキスト](/ai-native-ways/prologue/)
-- [第11章: AIで物語を検証する](/ai-native-ways/verify-narratives/)
 - [構造分析08: 企業ITの税を引く](/insights/enterprise-tax/)
 - [構造分析12: AIと個人事業](/insights/ai-and-individual/)

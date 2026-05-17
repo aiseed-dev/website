@@ -270,6 +270,54 @@ With these three layers in place, **"I want to build something but I
 cannot write code"** — the people who carried that line until now —
 flow into the base of the builder pool.
 
+### The VB / VBA generation comes back
+
+Until about twenty years ago, **a thick layer of casual personal
+programmers** existed. Excel VBA, Access VBA, Visual Basic, Delphi —
+clerical staff, accountants, technical generalists, lab assistants
+all built "small tools for my own work" on the side. In Japan, that
+layer was routinely in the millions.
+
+That layer shrank rapidly over the past fifteen years. The center of
+gravity of programming moved to **the web or to enterprise apps**:
+
+- **Web** — HTML / CSS / JavaScript, React, TypeScript, npm, webpack,
+  deployment, CDN — a thick learning stack before anything runs.
+- **Enterprise apps** — Java or C# — "you cannot run a single line
+  without a class," "build, test, CI/CD all have to be managed
+  before anything moves," "security policies are strict" — **the
+  management layer becomes the substance, and the joy of programming
+  itself disappears**.
+
+"Like the VB days — open it, write code, hit Run, and something
+works" — that feeling is essentially gone from current web and
+enterprise stacks. So the old "casual personal programmer" population
+**lost its place** in the polarization between competitive
+programming or Kaggle as ornamental hobby on one side and full-time
+Web / enterprise software work on the other.
+
+AI + Python + Flet brings back **the VB / VBA feel** for this layer:
+
+- Open, write, run — Python and Jupyter
+- UI is largely declarative through **Flet** (a VB-Form-like feel)
+- The management layer is handled by AI — build, deploy, test
+- AI writes the grammar details
+
+This layer is made of **people who have been thinking "what do I want
+to build" for twenty-plus years** — clerical staff who built monthly
+aggregations in VBA, shop-floor people who built inventory
+management in Access, graduate students who scripted
+instrument-output plots in their labs. They already carry what a
+builder needs (judgment, decomposition, integration). What was
+missing was just the will and the time to learn the current Web /
+enterprise stack.
+
+In AI-native development, that wall is lower. **The VB / VBA
+generation comes back as builders** — a particularly large supply
+source in the Japanese market. (The parent series' Chapter 1,
+"Writing Logic — Have AI Write Python For You," covers the
+VBA → Python migration in concrete detail.)
+
 ### Makers and shop-floor engineers enter embedded programming
 
 Software development used to be **web-centric**. HTML/CSS/JS, React,
@@ -351,6 +399,7 @@ forms appear during the transition?
 - [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
 - [Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
 - [Chapter 8: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
+- [Parent series Chapter 1: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Parent series Chapter 8: Building Apps — CLI tools, Flet apps, Flutter apps](/en/ai-native-ways/apps/)
 - [Parent series Chapter 9: Building Embedded — Think in Python, Have Claude Translate](/en/ai-native-ways/embedded/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)

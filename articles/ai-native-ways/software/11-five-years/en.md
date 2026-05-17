@@ -43,8 +43,10 @@ they cascade.
   100×, market displacement, not competition
 - **Lock-in dissolves** (Chapter 8) — AI-native standard code, the
   opposite end from Palantir's FDE
-- **Companies hire builders** (Chapter 9) — same professional position
-  as lawyers and doctors
+- **Companies hire builders** (Chapter 9) — same professional
+  position as lawyers and doctors. The supply is not only former
+  coders; AI + Python + Flet bring in **makers, shop-floor engineers,
+  and students** as new entrants
 - **Multi-tier subcontracting absorbs the transition** (Chapter 10)
   — shrinkage without internal lay-offs
 

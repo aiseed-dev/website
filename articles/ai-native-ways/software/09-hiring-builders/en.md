@@ -249,6 +249,88 @@ This is more than cost reduction. It is a structural change. Hiring
 one builder can be **the trigger that reshapes how the company
 operates**.
 
+## The builder supply is not limited to former coders
+
+Chapter 3 said that people who can move to the judgment side and
+people who cannot will separate. Read only that and builders look
+like a scarce resource. But missing one other supply source distorts
+the picture — **AI is lowering the barrier to entry**.
+
+The barrier to entry in software development has historically been a
+stack of layers — grammar fluency, framework learning, build/deploy,
+debugging experience. All of these are dropping, right now. Three
+elements combine to make this possible:
+
+- **AI** — the code is written by AI (Chapter 1)
+- **Python** — readable, well-suited to AI collaboration
+- **Flet** — desktop, mobile, and web apps in pure Python (covered
+  in the parent series, Chapter 8)
+
+With these three layers in place, **"I want to build something but I
+cannot write code"** — the people who carried that line until now —
+flow into the base of the builder pool.
+
+### Makers and shop-floor engineers enter embedded programming
+
+Software development used to be **web-centric**. HTML/CSS/JS, React,
+browsers, servers — most of the learning cost concentrated there.
+
+In the AI-native era, the barrier to **embedded programming** drops
+the same way — Raspberry Pi, ESP32, MicroPython, AI generating
+circuit and control code. **People who enjoy making things** can step
+into writing software easily (covered in the parent series, Chapter
+9).
+
+**Robot programming** is the canonical example. Historically it
+needed ROS, C++, and advanced mathematics — research labs and
+specialist firms only. In the AI-native present:
+
+- ROS2 + Python is the standard stack
+- Higher-level robotics frameworks are written in Python
+- AI fills in the details of control algorithms
+- Flet provides the operator UI
+
+A hobbyist maker building a robot that runs at home — until a few
+years ago, this was a researcher's privilege. The kind of person who
+makes things already carries the qualities a builder needs — picking
+what to build, debugging when something does not move, decomposing a
+system into parts and modules.
+
+### In Japan, builder supply is likely to surge
+
+In the Japanese context, this supply source is especially large:
+
+- **Manufacturing base** — engineers in factories and small machine
+  shops have the experience of making physical things. AI gives them
+  a path into software.
+- **Maker culture** — Maker Faire, electronics hobbies, embedded
+  doujin / community activity have a long history
+- **Gadget culture** — the underlying motivation "I want to build
+  something myself" is broadly distributed
+- **Education trends** — high-school robotics contests, Python
+  education in schools
+
+These bases cross the "I cannot write code" barrier through AI +
+Python + Flet and **enter society as builders**. While SIers shrink
+and customer companies expand builder hiring at the same time, the
+supply side sees **former SIer coders converging with makers**.
+
+Chapter 3 said that those who can move to the judgment side and those
+who cannot will separate. That was a statement about former SIer
+coders. What this chapter adds: **the doorway to the judgment side is
+not open only to people who came from coding**.
+
+> Builder supply is not just transfers from coders.
+> **AI + Python + Flet open a new supply source — makers,
+> shop-floor engineers, students**.
+
+Read this in combination with Chapter 10's "labor demand outside the
+industry" (manufacturing, agriculture, AI physical infrastructure).
+The picture becomes clearer: human capital flowing out of the SIer
+industry and **human capital flowing in from outside the industry as
+builders** are moving in parallel. Labor reallocation is not a simple
+"shrinkage → unemployment" story but **multi-directional flow**.
+
 ## Where the next chapter goes
 
 By here, the case for keeping a builder in-house is clear. But the
@@ -269,5 +351,7 @@ forms appear during the transition?
 - [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
 - [Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
 - [Chapter 8: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
+- [Parent series Chapter 8: Building Apps — CLI tools, Flet apps, Flutter apps](/en/ai-native-ways/apps/)
+- [Parent series Chapter 9: Building Embedded — Think in Python, Have Claude Translate](/en/ai-native-ways/embedded/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

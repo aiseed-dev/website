@@ -186,6 +186,16 @@ Routine work does become several times to several tens of times faster. But that
 - The path the industry pushes is "everyone rides the same vendor's AI" — Microsoft 365 Copilot, ChatGPT Enterprise, Google Workspace AI. This book points the other way: **each person holds their own tools, their own data, their own judgments**.
 - One centralized N is fragile; N autonomous units are **strong** (no single point of failure carrying everyone, diversity grows) — survival strategy in the Mythos era.
 
+### Why "vendor-centralized AI" becomes a large problem
+
+The direction **Satya Nadella** (Microsoft's CEO) has been pushing makes the structure plain — Microsoft is selling Copilot at the center of the message "**hand it to AI, cut headcount, and profit rises**." This is a sales structure that **leverages the human desire to take the easy way out and make money**.
+
+The problem is that this pitch implies **outsourcing judgment** as well. Writing code, drafting documents, organizing data — these can be handed to AI. But **what to build, which conditions cannot be traded, who carries the responsibility for the outcome** — none of these can be handed to AI. **AI does not take responsibility** — technically, ethically, and legally, AI is not a subject that can carry it.
+
+Yet when the pitch reads "let AI take care of it," buyers (organizations) come away feeling they have outsourced judgment, too. The result is that **commonplace business systems and mediocre decisions get mass-produced, and a structure forms in which no one is responsible**. The cost of failures concentrates on the buyer side (the organization, society); the seller's subscription revenue keeps flowing — **moral hazard at industrial scale**.
+
+This book points the other way — use AI as **a tool of execution** and **keep judgment and responsibility on your side**. That is the ethical core of "AI-native ways of working."
+
 > Not efficiency. **The quality of work, the autonomy of the individual, and the diversity of society.**
 
 ## Closing

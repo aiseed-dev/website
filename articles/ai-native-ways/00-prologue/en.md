@@ -23,8 +23,10 @@ Right there, in the AI era, runs a decisive divide.
 > **A warning, though**. Microsoft is embedding AI into that very Office
 > and trying to **"auto-pilot"** the work itself. **This is a business
 > of turning the human "desire to take the easy way out" into profit** —
-> not the proper use of AI. So this book begins by leaving **Office**
-> behind.
+> not the proper use of AI. **It would be enough if Microsoft simply
+> kept Office and AI separable, but they have no intention of doing
+> so** — AI is being wired into Office in a direction that binds them
+> together. So this book begins by leaving **Office** behind.
 
 ## Change your tools
 

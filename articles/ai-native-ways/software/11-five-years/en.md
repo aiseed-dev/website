@@ -4,7 +4,7 @@ number: "11"
 lang: en
 title: The Structural Transition Completes in a Few Years
 subtitle: The chain of change, a roughly five-year horizon, irreversibility — but bounded to software development
-description: From AI reaching top-tier capability through coder displacement, builder demand, and SIer shrinkage, the changes chain together and the main part completes in roughly five years. Once a structure moves, it does not move back. But this "complete replacement" applies only to verifiable-correctness domains like software; in self-driving, translation, and customer service, AI is blocked at the last 1% and complete replacement does not happen — those are productivity-gain stories. The writing of this very sub-series is itself evidence of that bound.
+description: From AI reaching top-tier capability through coder displacement, builder demand, and SIer shrinkage, the changes chain together and the main part completes in roughly five years. Once a structure moves, it does not move back. But this "complete replacement" applies only to verifiable-correctness domains like software; in desk work, self-driving, and robotics, AI is blocked at the last 1% and complete replacement does not happen — those are productivity-gain stories. The writing of this very sub-series is itself evidence of that bound.
 date: 2026.08.10
 label: Software 11
 title_html: In <span class="accent">five years</span>, the main changes<br>complete — irreversibly.
@@ -82,47 +82,115 @@ extensions**. What moves slowest is **full replacement of core
 business systems**. But both point in the same direction, and the
 direction does not reverse.
 
-## Why software development moves first
+## Why only coding moves to complete replacement
 
 This is where the **scoping** of the sub-series needs to be made
 explicit.
 
-AI is heading toward complete replacement in software development
-because **this domain has verifiable correctness**. As Chapter 1
-noted:
+Software development is a broad field — requirements gathering,
+design, **coding**, testing, deployment, operations, incident
+response, stakeholder coordination. **What AI fully replaces is only
+the "coding" inside this list**. The reason: two conditions hold at
+once for coding:
 
-- Whether code compiles, or does not
-- Whether tests pass, or do not
-- Whether a competitive-programming problem is solved, or is not
+1. **The rules are explicit** — language specs, standard-library APIs,
+   type systems, syntax — all defined formally and unambiguously.
+   There is little interpretive room for "the correct way to write
+   it."
+2. **Correctness is verifiable** — whether code compiles, whether
+   tests pass, whether a competitive-programming problem is solved
+   — all checkable mechanically.
 
-All of this is **checkable mechanically**. AI receives, during
-training, an enormous volume of right/wrong feedback. That is why AI
-reaches superhuman levels in this domain.
+When both conditions hold, AI receives, during training, an enormous
+volume of feedback both on "did it follow the rules" and "is it
+correct." That is why AI reaches superhuman levels **in the coding
+domain**.
 
-> AI reaches superhuman levels in **domains where correctness can be
-> verified**.
-> Software development is the textbook case.
+> AI reaches superhuman levels in **domains where the rules are
+> explicit and correctness is verifiable**.
+> **"Coding" inside software development** is the textbook case.
+
+The other parts of software development — requirements, design,
+operations, incident response, stakeholder work — carry the same
+structural 1% problem we will see in self-driving and Shinkansen
+later. This is what Chapter 3's "coders go away, builders remain"
+means: **coding gets complete replacement; builder work gets
+productivity gain** — both happen inside the same field at once.
+
+A warning here: now that coding is fully replaced, **the importance
+of the requirements side actually rises**. **Skimp on requirements,
+and AI only mass-produces "commonplace code"** that does not address
+the specific business problem. AI is excellent at probabilistically
+reproducing what it has seen in prior samples from the same domain,
+but **pinning down "the non-negotiable conditions of this
+organization's particular business"** can only be done by the human
+writing the requirements.
+
+The faster AI gets, the faster and larger the cost of sloppy
+requirements piles up — a vast amount of "runs but ordinary" code
+gets produced and maintenance collapses (the same vibe-coding failure
+mode from Chapter 2, now faster and at greater volume). In a world
+where coding is cheap, **requirements are what determine a software
+system's differentiation and lifespan**.
 
 ## Other AI applications stall at the last 1%
 
-In the reverse — **domains where correctness is hard to verify** — AI
-does not advance at the same speed. The standard examples:
+In the reverse — **domains where the rules are not explicit, or
+correctness is hard to verify** — AI does not advance at the same
+speed. Missing either condition is enough to leave a stubborn last 1%.
+Three representative domains:
 
+- **Desk work** — 99% of the work (routine documents, email replies,
+  meeting-minute summaries, draft research, data organization,
+  translation drafts) can be handed to AI. But the last 1% — unwritten
+  rules inside the organization, decisions that carry responsibility,
+  subtle adjustments with stakeholders, the final judgment of whether
+  to submit — determines the quality and the trust of the work.
 - **Self-driving** — 99% of situations are no problem. But the
   remaining 1% — an unexpected pedestrian, edge weather judgments, a
   child's ball — is what decides between safety and death. The
   difficulty of moving from 99% to 100% is the substance.
-- **Translation** — 99% of meaning gets through. But the 1% of nuance,
-  context, and cultural reading determines whether trust is built or
-  lost.
-- **Customer service / reception** — 99% of routine work can be
-  automated. But the 1% of exception handling, emotional
-  consideration, and judgment about organizational authority decides
-  customer satisfaction.
+- **Robotics** — 99% of motion (routine assembly, picking, food
+  delivery, cleaning, repeated actions) can be mechanized. But the
+  last 1% — unexpected object placement, handling soft items, safely
+  sharing space with humans, adapting to unknown environments —
+  determines real-world usability.
+
+Look at rail — especially Japan's **Shinkansen**, where route and
+obstacles are tightly controlled — a **closed system**. Almost all
+normal operation can be automated. The rules are explicit; correctness
+in normal operation is easy to verify. But the judgment for
+**accidents and equipment failures** — derailment, defective
+equipment, natural disasters — is the kind of problem that cannot be
+enumerated at design time. It still falls to humans. **The last 1%
+sits not in the system's openness, but in the unpredictability of
+abnormal events** — no matter how closed the system, that part does
+not disappear.
+
+This "judgment in abnormal events" is structurally hard for two
+reasons:
+
+- **(1) The expansion of what must be anticipated** — enumerate one
+  accident or failure, and its variants, combinations, and new
+  patterns keep appearing. **The "list of cases we've thought of" is
+  always incomplete**; what actually occurs in the field sits outside
+  the design-time list. List more and the list grows; stop and the
+  gaps remain.
+- **(2) The absence of a body** — humans detect anomalies by taking
+  in vision, touch, sound, smell, and vibration through the body all
+  at once. AI has no body, so **cameras and sensors** have to be
+  installed in its place. Each physical quantity to be sensed requires
+  its own equipment; placement, power, networking, and maintenance
+  costs pile up. And **what to sense in the first place is itself
+  another problem of predicting abnormal events** — the anomaly you
+  did not anticipate has no sensor on it.
+
+Because (1) and (2) compound, complete replacement in the physical
+world — even in a closed system — stays structurally hard.
 
 In these domains, AI delivers enormous value **as a productivity
-tool** — translation drafts, driver assistance, automated handling of
-routine inquiries. But **complete replacement does not happen**.
+tool** — document drafts, driver assistance, routine work by
+collaborative robots. But **complete replacement does not happen**.
 There is a deep valley between "can do 99%" and "can do 100%."
 
 The IT industry's AI narrative often overlooks — or pretends not to
@@ -131,14 +199,16 @@ labor shortages across every industry" and "all white-collar work gets
 automated" surface. **That is overestimation**.
 
 This sub-series stands apart from that overestimation. **We argue
-complete replacement only for the specific domain — software
-development — where correctness is mechanically verifiable**. We do
-not claim the same complete replacement at the same speed in other
-domains.
+complete replacement only for one specific area — "coding" inside
+software development — where the rules are explicit and correctness
+is mechanically verifiable**. We do not claim the same complete
+replacement at the same speed in the rest of software development or
+in other domains.
 
 > There is a deep valley between "can do 99%" and "can do 100%."
-> Software development is a domain that has crossed that valley. Most
-> other domains have not.
+> **"Coding" inside software development** is the area that has
+> crossed that valley. Most other areas (including the rest of
+> software development) have not.
 
 ## The writing of this article is itself the example
 
@@ -172,8 +242,8 @@ trust — pass through. The level of this sub-series **required human
 judgment, in every loop**.
 
 In other words, the writing process of this sub-series carried **the
-same structure as self-driving, translation, and customer service** —
-AI writes most of the draft; the human holds judgment and correction.
+same structure as desk work, self-driving, and robotics** — AI writes
+most of the draft; the human holds judgment and correction.
 **Productivity multiplies several times, but complete replacement
 does not happen**.
 
@@ -244,17 +314,21 @@ Compress the conclusion of the Software sub-series, all eleven
 chapters, into one passage here.
 
 **AI has reached human-top execution capability. This happened
-because the domain has verifiable correctness. As a consequence, the
-role called "coder" goes away, and the builder takes its place. The
-SIer commission model cannot structurally hold, and within roughly
-five years, the mainstream of the industry moves to AI-native
+because the domain has explicit rules and verifiable correctness. As
+a consequence, the role called "coder" (the role centered on coding)
+goes away, and the builder (the judgment-side role) takes its place.
+The SIer commission model cannot structurally hold, and within
+roughly five years, the mainstream of the industry moves to AI-native
 in-house development — irreversibly.**
 
-But this is the story of a specific domain: software development. The
-same speed of complete replacement is not claimed for other domains
-(self-driving, translation, customer service). In those domains, AI
-operates as a productivity tool — it does not reach complete
-replacement.
+But this is the story of one specific area: **"coding" inside
+software development**. The other parts of software development
+(requirements, design, operations, incident response, stakeholder
+coordination) carry the same structural 1% problem as self-driving
+and Shinkansen — this is where the builder remains. And the same
+speed of complete replacement is not claimed for other domains either
+(desk work, self-driving, robotics). In those, AI operates as a
+productivity tool — it does not reach complete replacement.
 
 And during the same few years that AI advances, **society as a whole
 moves toward physical goods becoming scarce** (Chapter 10). AI
@@ -266,10 +340,11 @@ industry.
 What aiseed.dev has argued across the eleven chapters of this
 sub-series is:
 
-**A structural transition in one specific domain — software
-development — completes in roughly five years. The transition is
-irreversible. And the conclusions from this specific domain must not
-be casually extended to other domains**.
+**A structural transition centered on "coding" inside software
+development completes in roughly five years. The transition is
+irreversible. And the conclusions from this specific area (= coding)
+must not be casually extended to the rest of software development or
+to other domains**.
 
 Hold those three, and the IT industry's AI narrative no longer sweeps
 you along. You can read what is actually happening, structurally,
@@ -285,7 +360,7 @@ aiseed.dev will continue to publish articles that read the structure.
 
 ## Related articles
 
-- [Chapter 1: AI Has Reached Human-Top-Class Capability in Writing Code](/en/ai-native-ways/software/coder-top/)
+- [Chapter 1: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
 - [Chapter 3: The Coder's Job Goes Away](/en/ai-native-ways/software/coder-end/)
 - [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
 - [Chapter 10: Japan's SIer Industry Transition and Labor Mobility](/en/ai-native-ways/software/japan-transition/)

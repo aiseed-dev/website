@@ -2,19 +2,19 @@
 slug: coder-top
 number: "01"
 lang: en
-title: AI Has Reached Human-Top-Class Capability in Writing Code
+title: AI Solves the World's Hardest Coding Problems
 subtitle: Codeforces 2700 tier — the world's top coding ability, for $200 a month on Claude Max
 description: AI's code-writing ability has matched human top-class on public competitive-programming ratings. Two facts matter — the capability level reached, and the fact that anyone can access it via Claude Max for around $200 a month. The whole sub-series argues outward from those two.
 date: 2026.06.01
 label: Software 01
-title_html: AI now sits on the side<br>that solves <span class="accent">the hardest problems</span>.
+title_html: AI solves<br>the <span class="accent">hardest coding problems</span>.
 prev_slug:
 prev_title:
 next_slug: maintenance-shift
 next_title: Maintenance-Phase Shift Is the Real Story
 ---
 
-# AI Has Reached Human-Top-Class Capability in Writing Code
+# AI Solves the World's Hardest Coding Problems
 
 **Start with one fact — AI now sits on the side of the table that solves
 the world's hardest coding problems**.
@@ -72,14 +72,16 @@ is not "useful assistant now"; it is **"sitting on the side that solves
 the hardest problems."**
 
 What made this achievement structurally possible is that competitive
-programming is **a domain in which correctness is verifiable**. Whether
-code compiles, whether the output matches expected values — all of it
-is checkable mechanically. AI reaches superhuman levels in domains
-**where the answer can be checked**. The claim "coders go away" in this
-sub-series applies specifically to domains with that property — the
-reach of "complete replacement" does not extend at the same speed to
-other AI applications (self-driving, translation, customer service;
-this boundary is treated in Chapter 11).
+programming is **a domain where the rules are explicit and correctness
+is verifiable**. Grammar, the standard library, and the type system
+are formally defined; whether code compiles and whether the output
+matches expected values is checkable mechanically. AI reaches
+superhuman levels in domains **where the rules are explicit and the
+answer can be checked**. The claim "coders go away" in this sub-series
+applies specifically to domains with both properties — the reach of
+"complete replacement" does not extend at the same speed to other AI
+applications (desk work, self-driving, robotics, etc.; this boundary
+is treated in Chapter 11).
 
 What matters is not the rank, but the **structural change of crossing a
 threshold**.

@@ -9,7 +9,7 @@ date: 2026.06.08
 label: Software 02
 title_html: The unit of maintenance moves<br>from <span class="accent">code to design</span>.
 prev_slug: coder-top
-prev_title: AI Has Reached Human-Top-Class Capability in Writing Code
+prev_title: AI Solves the World's Hardest Coding Problems
 next_slug: coder-end
 next_title: The Coder's Job Goes Away
 ---
@@ -207,7 +207,7 @@ The next chapter takes up the coder as a role.
 
 ## Related articles
 
-- [Chapter 1: AI Has Reached Human-Top-Class Capability in Writing Code](/en/ai-native-ways/software/coder-top/)
+- [Chapter 1: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
 - [Chapter 3: The Coder's Job Goes Away](/en/ai-native-ways/software/coder-end/)
 - [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
 - [Prologue: AI's Native Tongue Is Python and Markdown-Shaped Text](/en/ai-native-ways/prologue/)

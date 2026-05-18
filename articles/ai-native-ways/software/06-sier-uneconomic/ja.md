@@ -180,7 +180,7 @@ SIer への支払いをゼロにしたほうが、コスト的に明らかに有
 
 ## 関連記事
 
-- [第1章: AIがコードを書く能力で人間トップクラスに到達した](/ai-native-ways/software/coder-top/)
+- [第1章: AI は、世界で最も難しいコーディング問題を解く](/ai-native-ways/software/coder-top/)
 - [第4章: ビルダーという役割](/ai-native-ways/software/builder/)
 - [第5章: 顧客がAIと協働して開発する時代](/ai-native-ways/software/customer-codev/)
 - [構造分析08: 企業ITの税を引く](/insights/enterprise-tax/)

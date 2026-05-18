@@ -253,7 +253,7 @@ SIer に発注していた顧客の何割が、自分で作るほうに流れる
 
 ## 関連記事
 
-- [第1章: AIがコードを書く能力で人間トップクラスに到達した](/ai-native-ways/software/coder-top/)
+- [第1章: AI は、世界で最も難しいコーディング問題を解く](/ai-native-ways/software/coder-top/)
 - [第2章: 保守フェーズの構造変化こそ本質](/ai-native-ways/software/maintenance-shift/)
 - [第3章: コーダーの仕事はなくなる](/ai-native-ways/software/coder-end/)
 - [構造分析08: 企業ITの税を引く](/insights/enterprise-tax/)

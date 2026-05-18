@@ -57,7 +57,7 @@ articles/ai-native-ways/software/
 
 | # | slug | 日本語タイトル(working) |
 |---|---|---|
-| 01 | `coder-top` | AIがコードを書く能力で人間トップクラスに到達した |
+| 01 | `coder-top` | AI は、世界で最も難しいコーディング問題を解く |
 | 02 | `maintenance-shift` | 保守フェーズの構造変化こそ本質 |
 | 03 | `coder-end` | コーダーの仕事はなくなる |
 | 04 | `builder` | ビルダーという役割 |

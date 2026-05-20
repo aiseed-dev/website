@@ -263,6 +263,40 @@ blockquote p {
 }
 
 /* ============================================================
+   TABLE
+   ============================================================ */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+article thead th {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+}
+article tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+article tbody tr:last-child td {
+  border-bottom: none;
+}
+@media (max-width: 720px) {
+  article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ============================================================
    ORDERED LIST(番号付きリスト)
    ============================================================ */
 article ol {

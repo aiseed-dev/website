@@ -219,6 +219,28 @@ This book points the other way — use AI as **a tool of execution** and **keep 
 
 > Not efficiency. **The quality of work, the autonomy of the individual, and the diversity of society.**
 
+## The free person of the AI era
+
+The line this book has held all along — "**each person holds their own tools, their own data, their own judgments**" — is not a new idea. It is the **AI-era form** of what the "free person" who stood up out from under feudal lords more than a thousand years ago had already won: the urban citizen, the merchant, the craftsman of the free cities, and the free farmer who tilled his own land.
+
+When the medieval free person came into being, four conditions had to converge:
+
+| Dimension | Medieval freedom | AI-era freedom |
+|---|---|---|
+| Economic autonomy | One's own land, independent trade | Building one's own back office and software with a few-thousand-yen-a-month AI; exit from SaaS and SIer dependence |
+| Political self-governance | The free cities that won their charters from lords | Holding one's own data, judgment, and systems on one's own machine; exit from cloud-vendor dependence |
+| Means of touching reality | Bearing arms, growing one's own food | Local LLMs, open source, one's own server; infrastructure that keeps running through blackouts and network outages |
+| Education | The seven liberal arts — grammar, logic, rhetoric, arithmetic, geometry, astronomy, music | The contemporary liberal arts — judgment, verbalization, logic, systems thinking, ethics |
+
+Just as the medieval liberal arts could not stand on education alone, the contemporary liberal arts cannot stand by themselves either. **Economic autonomy, political self-governance, and the means of touching reality have to be in place before the liberal arts mean anything.** This is also what the chapters of this book are distributing among themselves: **leave Office and Java/C# behind** (tools), **hold data on your own machine** (political self-governance), **touch reality through Python and Markdown** (the means), and **the eye for structure, the eye for tool selection** (the liberal arts).
+
+That aiseed.dev's sub-series comes in two threads makes sense in this same correspondence — **the Software thread is the AI era's free citizens, merchants, and craftsmen**; **the natural-farming thread is the AI era's free farmers**. The medieval free person had two forms; the AI-era free person has two as well.
+
+> What this book has been arguing is not about "efficiency" or "saving money."
+> It is about **re-winning, in the AI era, the "freedom" the medieval free person won**.
+
+The future drawn by vendor-centralized AI (Copilot, ChatGPT Enterprise, Google Workspace AI) is the opposite — **the contemporary form of a serf living comfortably in the lord's manor**. This book heads the other way.
+
 ## Closing
 
 Paperwork runs on Office, business systems on Java/C#. But AI's native language is Python and Markdown-style text. Right there, in the AI era, runs a decisive divide.

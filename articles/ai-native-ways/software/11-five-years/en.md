@@ -308,6 +308,61 @@ that stops it**.
 > It is driven by one-way forces only, so a rewind cannot happen
 > structurally.
 
+## The free person of the Middle Ages, and the free person of the AI era
+
+When the medieval European "free person" emerged out from under
+feudal lords, four conditions came together at once.
+**Economic autonomy** (the free farmer who tilled his own land,
+the urban citizen, merchant, and craftsman who traded
+independently), **political self-governance** (the free cities that
+won their charters from lords), **the means of touching reality**
+(the right to bear arms, the capacity to grow one's own crops),
+and **education** — the seven liberal arts.
+
+The conditions that converge as the AI-era "free person" — the
+builder of this sub-series — stands up correspond one-to-one.
+
+| Dimension | Medieval freedom | AI-era freedom |
+|---|---|---|
+| Economic autonomy | One's own land, independent trade | Building one's own back office and software with a few-thousand-yen-a-month AI; exiting SaaS and SIer dependence |
+| Political self-governance | Free cities that wrested charters from lords | Holding one's own data, judgment, and systems on one's own machine; exit from cloud-vendor dependence |
+| Means of touching reality | Bearing arms, growing one's own food | Local LLMs, open source, one's own server; infrastructure that keeps running through blackouts and network outages |
+| Education | The seven liberal arts | The contemporary liberal arts — judgment, verbalization, logic, systems thinking, ethics (Chapter 4) |
+
+Just as the medieval liberal arts could not stand on education
+alone, the contemporary liberal arts cannot stand by themselves
+either. **A free person comes into being only when all four
+converge**. And just as the free citizens of medieval cities formed
+**guilds** to strengthen their economic and political weight, the
+AI-era builders will move, as **a profession that sells judgment**,
+toward bar-association– and medical-society–like **guilds of their
+own** (Chapter 9).
+
+### "Become a specialized engineer" misreads the structure
+
+There is a widely circulated piece of advice — "in the AI era,
+become a specialized engineer, hold a deep specialty AI cannot
+take, like security or ML." It **misreads the structure**.
+
+What AI is absorbing is **the whole layer** of software engineering,
+not a particular subdomain inside it (Chapters 1 and 3).
+**Going deeper into a specialty only shifts the date by which the
+specialty itself is overtaken** — the underlying structure does
+not change. The medieval analogue would be telling a serf, "become
+a more specialized serf and you will be free." Freedom does not
+come from going deeper into the specialty; it comes from **stepping
+out of the lord's structure of control**.
+
+The path to becoming a "free person" of the AI era is the same.
+The right move is not to deepen within engineering. It is to step
+sideways onto the **liberal-arts axis — judgment, verbalization,
+ethics, systems thinking**. That is the structurally correct
+direction of motion.
+
+> The road to becoming a free person is not deeper specialization.
+> It is **stepping out of the lord's structure of control**. The
+> AI era is no different.
+
 ## In closing
 
 Compress the conclusion of the Software sub-series, all eleven

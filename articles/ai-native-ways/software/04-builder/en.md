@@ -155,6 +155,18 @@ arts.
 > A builder's foundation is not software engineering. It is
 > **the free person's arts of the AI era — the liberal arts**.
 
+One distinction is worth naming. What AI has absorbed is **software
+engineering** — the core of *implementation*: languages, frameworks,
+design patterns, testing techniques. **Computer science (CS)** —
+computability, algorithms, formal logic, discrete mathematics — is
+a different thing. CS sits, structurally, inside the liberal arts,
+as a modern extension of the *quadrivium*'s mathematics and logic.
+Historically, CS emerged from mathematics; Turing, Church, and
+von Neumann were mathematicians and logicians. **CS does not need
+to be discarded, and it does not need a special category** — it is
+folded into the liberal arts as part of the builder's scaffold for
+judgment.
+
 The shift from "hire someone who can write code" to "**hire someone
 who can judge**" is not a surface-level personnel question. It is a
 transformation in **the foundational discipline of the technical

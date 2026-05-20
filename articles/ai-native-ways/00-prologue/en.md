@@ -223,6 +223,8 @@ This book points the other way — use AI as **a tool of execution** and **keep 
 
 The line this book has held all along — "**each person holds their own tools, their own data, their own judgments**" — is not a new idea. It is the **AI-era form** of what the "free person" who stood up out from under feudal lords more than a thousand years ago had already won: the urban citizen, the merchant, the craftsman of the free cities, and the free farmer who tilled his own land.
 
+**Why now?** History textbooks credit the printing press of the 1450s with preparing the ground for the Reformation, the scientific revolution, and the modern nation-state. The LLM holds **incomparably greater intensity**. What the printing press democratized was "reading" (access to existing knowledge); what the LLM democratizes is "making" (knowledge generation, judgment, implementation). There is no wall of literacy to clear first — natural language works for anyone. **Just as the printing press turned individuals into "readers," the LLM turns individuals into "makers and judges"** — and that is the material ground that makes the "return of the free person" possible.
+
 When the medieval free person came into being, four conditions had to converge:
 
 | Dimension | Medieval freedom | AI-era freedom |

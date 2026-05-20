@@ -304,6 +304,20 @@ Each piece moves only in one direction. So the chain as a whole moves
 in one direction. **Once the chain starts, no structural force exists
 that stops it**.
 
+One historical comparison to keep in view. The invention of the
+printing press in the 1450s reshaped the structures of the church,
+the university, and the state **over two hundred years** — preparing
+the ground for the Reformation, the scientific revolution, and the
+modern nation-state itself. The LLM holds **incomparably greater
+intensity**. What the printing press democratized was **reading**
+(access to existing knowledge); what the LLM democratizes is
+**making** (knowledge generation, judgment, implementation). There
+is no wall of literacy to clear first; natural language works for
+anyone. The speed of diffusion is on a different order — what took
+the printing press decades, the AI era achieves **in years**. Read
+against this difference in intensity, the five-year horizon this
+sub-series draws is, if anything, **a conservative estimate**.
+
 > The change completing in five years is irreversible.
 > It is driven by one-way forces only, so a rewind cannot happen
 > structurally.
@@ -337,6 +351,59 @@ converge**. And just as the free citizens of medieval cities formed
 AI-era builders will move, as **a profession that sells judgment**,
 toward bar-association– and medical-society–like **guilds of their
 own** (Chapter 9).
+
+### Employment is the AI era's serfdom — the rise of self-employment is structural
+
+Placed next to the "medieval free person," one more thing becomes
+visible — **modern employment (the salaried worker) sits, structurally,
+in the same position as the medieval serf**.
+
+| Dimension | Medieval serf | Modern employee |
+|---|---|---|
+| Ownership of the means of production | Lord's land and tools | Employer's office, equipment, IP, data, infrastructure |
+| Self-determination of labor | Cultivating at the lord's direction | Working at the supervisor's direction |
+| Freedom of movement | Tied to the land | Tied by employment contract, mortgage, in-company career |
+| Income predictability | Stable under the lord's protection | Trading freedom for salary stability |
+| Locus of judgment | The lord | The employer |
+| What is received in exchange | Food and protection | Salary and benefits |
+
+The "stability of employment" and the "stability of serfdom" are
+**the same trade-off, structurally** — handing over the right of
+self-determination in exchange for predictability of survival. This
+is not a claim of moral equivalence (modern employment has legal
+protections and contractual freedom). It is an analytical
+observation that **on the three axes of ownership, judgment, and
+mobility, the structure matches**.
+
+And the reasons employment **stops fitting in the AI era** are
+structurally clear:
+
+1. **The means of production are now individually ownable** —
+   a few-thousand-yen-a-month AI, local LLMs, open source, one's
+   own server. The employer no longer needs to monopolize them.
+2. **One person + AI = a ten-person team** (Chapter 4) — the
+   payoff of concentration disappears.
+3. **The boundary between judgment and execution closes within
+   one person** (Chapter 4) — the overhead of aggregation,
+   coordination, and management becomes pure waste.
+4. **Judgment-centered professions are intrinsically inclined to
+   independence** — lawyers, doctors, accountants prefer solo
+   practice and partnerships not by accident (Chapter 9).
+
+**The rise of self-employment is not a policy or lifestyle
+question. It is structural necessity**. The same structure under
+which medieval free citizens, free farmers, and craftsmen were all
+"self-employed" returns in the AI era.
+
+> Employment is the contemporary form of medieval serfdom.
+> **Self-employment is the contemporary form of being a free person.**
+
+The structural changes this sub-series has been arguing — the
+SIer commission model's structural uneconomy (Chapter 6), customers
+building for themselves (Chapter 5), the judgment-centered builder
+(Chapters 4 and 9), the error of the "specialized engineer" advice
+(this chapter) — all converge on one point: **the industry
+structure organized around employment is reshaped in the AI era**.
 
 ### The middle layer — builders who hold physical reality
 

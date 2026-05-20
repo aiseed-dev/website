@@ -30,7 +30,7 @@ Hegel called this the "**cunning of reason**" (*List der Vernunft*). History cun
 
 ### Nadella's Three Bets, and the Whole Picture
 
-Nadella is making three large bets simultaneously. Each one is unfolding in a way that pulls the entire world along with it.
+Nadella is pursuing three large bets. Each one is unfolding in a way that pulls the entire world along.
 
 ```mermaid
 graph LR
@@ -160,12 +160,75 @@ The problem is that Nadella chose the direction of **"gathering the world's agen
 
 ### What Hegel Would Say
 
-Hegel, I think, would put it like this:
+There is actually one more important premise here.
+
+Hegel's "cunning of reason" only works as an analytical tool **when the era itself is in transition**. In normal times, clever people simply act cleverly and produce clever results—no paradox arises. **A qualitative change in the era is precisely what makes possible the structure in which "those who act rationally according to the logic of the previous era end up playing the role of closing it out."**
+
+In other words, the very fact that Hegel fits Nadella's strategy **shows that this is a revolutionary moment**.
+
+A revolution in what? **All of society is groping for how to absorb the new power of AI**—that is the revolution underway right now.
+
+AI is something humanity has never encountered at this scale. For society to receive it safely and healthily, several conditions are needed. **It must not be monopolized by a single company or a single state. Individuals must keep control. Data must be protected as belonging to the individual. It must be physically sustainable. It must not collapse in a single point of concentration.** These are the conditions.
+
+Society is moving toward these conditions unconsciously. Nations are starting to assert AI sovereignty, attention is shifting to small AIs that run locally, open-source models are spreading. These are **society's adaptive reactions to receiving AI**.
+
+What Nadella is doing is **the exact opposite of this adaptive reaction**. Treat AI as a single company's product, gather it on Azure, embed it in Office, charge a monthly fee. **He is trying to apply the logic of the previous era's IT industry to AI**. But AI is not like the previous era's products. Precisely because it touches all of society so deeply, society cannot accept its monopoly by a single company.
+
+And there is one more serious thing. Nadella's business model is **premised on "users who want to be automated"**—people who want to hand work off to Copilot, who want to delegate judgment to AI, who pay monthly fees to "have it done for them."
+
+But the revolution of the AI era is moving in the direction of **eliminating exactly that type of user**. As AI spreads, "work that only consists of being automated" stops producing value. What remains is **people who use AI to do new things**—people who think for themselves, combine their own tools, and act on their own judgment. They do not need an "automation service" like Copilot.
+
+In other words, **the more Nadella invests in AI, the more he destroys his own customer base**. The more he sells automation, the fewer buyers of automation remain. **The users who want to be automated will exit. So Nadella, too, will exit with them.**
+
+And the change will come faster than most expect.
+
+Because **automation itself is producing new problems**. **Problems that would not exist without automation come into being precisely because of it.**
+
+AI's automatic updates stop systems around the world all at once. Code written by AI flows into production without human review and scatters bugs. The feature of "automatically capturing the screen" creates data leak risks. Automatic concentration in the cloud paralyzes the whole world in a single point of failure. **These are problems that would not exist without automation.**
+
+And what Nadella is trying to build is **a world where everything depends on a single Azure**. The larger the scale of automation, the larger the scale of the problems automation creates.
+
+Accidents are already happening. A single AWS error has taken down half the internet. A single CrowdStrike auto-update has paralyzed aviation, healthcare, and finance worldwide. Recall's automatic screen capture has spread concern over user data sovereignty. **Problems that automated systems produce precisely because they are automated**—this is already empirically demonstrated.
+
+Historical turning points are always accelerated by "accidents." As Three Mile Island changed nuclear policy, Lehman changed financial regulation, Fukushima changed energy policy, and COVID-19 accelerated supply-chain diversification—**a large-scale accident triggered by AI automation will accelerate society's reorientation all at once**.
+
+And someone like Nadella, who has **pushed automation to the limit**, will become the symbol of that accident. The larger his strategy, the more violent society's reaction when the accident happens. **The change will not be gradual. Triggered by an accident, it will proceed all at once.**
+
+That is why, I think, Hegel would put it like this:
 
 "Nadella is acting in the belief that he is becoming **the victor of the AI era**. But history is using him to **push the logic of the previous era to its absolute limit—so that everyone can see that this logic was wrong**."
 
-He thinks he is going for the win. In fact, he is playing the role of **"the one who closes out the previous era."** That is what Hegel meant by the cunning of reason.
+He thinks he is going for the win. In fact, he is playing the role of **"the one who closes out the previous era."** That is what Hegel meant by the cunning of reason. **It can also be read this way: for society to receive AI healthily, a large-scale failure case like Nadella's was needed.**
 
 Tellingly, **Bill Gates**, Microsoft's co-founder, in 2024 sold off **his foundation's entire holding of approximately $3.2 billion in Microsoft stock**—at exactly the moment when AI infrastructure investments were driving the share price upward.
 
 The founder himself is quietly stepping away from the empire Nadella is building. That, too, may be a sign of the turning point.
+
+### Appendix 1: Nadella's Major Investments
+
+Nadella became CEO in 2014. In the 12 years since, Microsoft has spent **over $130 billion in acquisitions alone**. R&D spending has more than tripled, from $11.3 billion in 2014 to **$34.3 billion** in 2026.
+
+In other words, Nadella has not "neglected technology investment." **He has invested at an extraordinary scale.**
+
+The problem is the **direction** of that investment. **Every investment is aimed at "lock-in"—keeping the user inside Microsoft.**
+
+| Investment / Acquisition | Amount | What it locks in |
+|---|---|---|
+| **LinkedIn** (2016) | $26.2B | Gathers business-user data into Microsoft |
+| **GitHub** (2018) | $7.5B | Pulls the world's developers into Microsoft's ecosystem |
+| **Activision** (2022) | $68.7B | Locks gamer time inside Xbox / Game Pass |
+| **OpenAI investment** (2023–) | $13B | Exclusive contract keeping OpenAI on Azure |
+| **Copilot embedding** | (R&D) | Makes it harder for existing users to switch away |
+| **Giant data centers** | ~$500B scale | Concentrates all processing on Azure |
+| **In-house chips Maia / Cobalt** | (R&D) | **Usable only by Microsoft and OpenAI, not sold externally** (Apple Silicon, Google TPU, Amazon Graviton are all offered externally) |
+
+
+### Appendix 2: Microsoft's Current State in Five Key Areas for a Tech Company
+
+| Area | Current state |
+|---|---|
+| **OS** | Windows 11 changes features yearly, with unclear support windows. It enforces a new mechanism called TPM 2.0, cutting off older PCs. The new Recall feature records user activity without explicit consent, raising data-sovereignty concerns. Furthermore **Copilot is embedded at the OS level and is difficult to remove or disable**—the Copilot button in the taskbar, the Windows-key+C shortcut, Copilot entries in the context menu, all appear everywhere whether users want them or not, and turning settings off only delays the next update bringing them back. **Copilot is being designed to become a required Windows feature in the near future, and the option of "Windows without Copilot" is likely to disappear**—features usable only on Copilot+ PCs keep increasing, and older PCs will be cut off in the same pattern as TPM 2.0 |
+| **App distribution** | Microsoft Store has effectively failed. Impersonation apps and fakes are rampant, and developers have no rational reason to distribute through Microsoft Store. Furthermore **Windows Update silently installs AI features like Copilot**—apps users did not choose are added automatically by OS updates and reinstall themselves when deleted. **Once Copilot becomes required in the OS, there will be no "install or not" choice left** |
+| **Development tools** | VS Code (released 2015, developed by Erich Gamma's team from existing technology) combined with GitHub (acquired in 2018 for $7.5B) gives Microsoft a hold on the world's developer workflow. However, **neither was newly invented under Nadella—both are existing achievements absorbed into Microsoft**. The .NET sold to external developers is forced through a rewrite every three years, imposing heavy maintenance on enterprise developers. In addition, **WinUI, the latest GUI framework for native Windows apps, has shifted direction multiple times (UWP → WinUI 2 → WinUI 3), still lacks standard controls (like DataGrid) after years, has sparse documentation and samples, and runs only on Windows—not Mac, Linux, or the web—so Microsoft itself does not use it**. Microsoft tells external developers "build Windows apps in .NET and WinUI" while not using them itself. External developers have no reason to use them either |
+| **Own hardware** | Surface lags behind MacBook and iPad in performance, battery, and price. Microsoft has no consumer-grade chip at the level of Apple Silicon. Copilot+ PCs also depend on third-party silicon and have no in-house core. HoloLens has been retired; Xbox is being pushed back by Sony, Nintendo, and Steam Deck. The in-house chips (Maia, Cobalt) exist, but **unlike Apple Silicon, Google TPU, and Amazon Graviton, they are not sold externally—usable only by Microsoft and OpenAI, a chip purely for lock-in** |
+| **Own apps and flagship products** | The flagship products are all 30–40 years old—Word (1983), Excel (1985), PowerPoint (1987), SQL Server (1989), Outlook (1997), Visual Studio (1997). **Even the "hit products" credited to Nadella's era were not invented from scratch**—Teams is a Slack follower built on top of Skype for Business, VS Code came from the Zurich team carrying over existing patterns, GitHub Copilot is the acquired GitHub with OpenAI's technology layered on. Moreover **the surfaces users touch (the frontends) are not built on Microsoft's own development tools (.NET, Visual Studio, WinUI)**—old Office is in C++, while the rebuilt Outlook, Loop, Teams, VS Code, Designer, and Copilot UIs are all in Web technology (JavaScript/TypeScript-based Electron or WebView2) |

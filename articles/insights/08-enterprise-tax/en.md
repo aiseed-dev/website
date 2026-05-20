@@ -360,6 +360,8 @@ Operations → Claude builds monitoring and maintenance systems
 
 The people who know the business best are your own employees. Not the SIer. When employees communicate requirements directly to Claude and Claude builds the system, the SIer as "translator" becomes unnecessary.
 
+This is not merely cost reduction; **the structure of software development itself is being reorganized**. The irreversible transition that completes within a few years, and the shape of the "builder" (a judgment-centered profession in the same position as lawyers and doctors) that rises in the SIer's place, are developed across eleven chapters in the [AI-Native Ways of Working — Software sub-series](/en/ai-native-ways/software/).
+
 ## Consultant Tax — Think for Yourself
 
 McKinsey, BCG, Accenture — companies pay tens of millions to hundreds of millions of yen for outside consultants to tell them "what to do."

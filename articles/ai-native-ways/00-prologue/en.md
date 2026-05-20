@@ -234,12 +234,33 @@ When the medieval free person came into being, four conditions had to converge:
 
 Just as the medieval liberal arts could not stand on education alone, the contemporary liberal arts cannot stand by themselves either. **Economic autonomy, political self-governance, and the means of touching reality have to be in place before the liberal arts mean anything.** This is also what the chapters of this book are distributing among themselves: **leave Office and Java/C# behind** (tools), **hold data on your own machine** (political self-governance), **touch reality through Python and Markdown** (the means), and **the eye for structure, the eye for tool selection** (the liberal arts).
 
-That aiseed.dev's sub-series comes in two threads makes sense in this same correspondence — **the Software thread is the AI era's free citizens, merchants, and craftsmen**; **the natural-farming thread is the AI era's free farmers**. The medieval free person had two forms; the AI-era free person has two as well.
+That aiseed.dev's sub-series comes in two threads makes sense in this same correspondence — **the Software thread is the AI era's free citizens, merchants, and craftsmen**; **the natural-farming thread is the AI era's free farmers**. The medieval free person had two forms; the AI-era free person has two as well — and a **middle layer** that bridges them is rising up (see below).
 
 > What this book has been arguing is not about "efficiency" or "saving money."
 > It is about **re-winning, in the AI era, the "freedom" the medieval free person won**.
 
 The future drawn by vendor-centralized AI (Copilot, ChatGPT Enterprise, Google Workspace AI) is the opposite — **the contemporary form of a serf living comfortably in the lord's manor**. This book heads the other way.
+
+### The middle layer — builders who hold physical reality
+
+The medieval world also had people who lived **between** the pure free citizen and the pure free farmer — the stonemasons, carpenters, smiths, weavers. They held guilds, had work in both city and countryside, and **had a foot in both the city's self-governance and the soil's reality**. They were the craft layer that, in time, accumulated the technical capital the Renaissance was built on.
+
+The middle layer of the AI era sits in the same structural place — **inputs from physical reality** (sensors, observation, material), **outputs in physical reality** (objects, harvests, repaired machines, buildings), with AI as the **mediator** doing the design and analysis, while the hand that touches reality remains a human hand.
+
+Who belongs here:
+
+- **Makers and digital fabrication** — AI design + 3D print, laser, CNC
+- **Embedded engineers and robotics designers** — microcontrollers, PLCs, ROS2
+- **Precision agriculture and agritech** — sensors, drones, local LLMs running in the field
+- **Manufacturing-floor technicians** — having AI rewrite the factory automation
+- **Physicians using AI imaging and diagnostics; mechanics and repair technicians**
+- **Carpenters, architects, craftspeople using AI design tools**
+
+This layer **bridges the abstraction of pure software with the directness of pure physical work**. Chapter 8 (embedded) and Chapter 9 (agriculture, nature, and AI) of this book are precisely about it.
+
+> The middle layer is the contemporary form of those who **gain power by touching reality**. The strongest form of the AI-era free person is likely to appear here.
+
+Japan, with its deep manufacturing, town-factory, natural-farming, electronics-tinkering, and repair-culture foundations, holds a **structural advantage** in the move to this layer. The flow inward from both pure software and pure physical work will make it the principal mass of the new AI-era stratum.
 
 ## Closing
 

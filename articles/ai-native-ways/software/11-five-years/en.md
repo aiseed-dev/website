@@ -338,6 +338,56 @@ AI-era builders will move, as **a profession that sells judgment**,
 toward bar-association– and medical-society–like **guilds of their
 own** (Chapter 9).
 
+### The middle layer — builders who hold physical reality
+
+Between the pure-software free person (the builder of this
+sub-series) and the pure-physical free person (of the natural-
+farming series), a **middle layer** that bridges the two rises up.
+
+The medieval world had the same layer — the stonemasons, carpenters,
+smiths, weavers. They held guilds, had work in both city and
+countryside, and **kept a foot in both the city's self-governance
+and the soil's reality**. It was precisely this craft layer that
+accumulated the technical capital the Renaissance was built on.
+
+The middle layer of the AI era sits in the same structural place —
+**inputs from physical reality** (sensors, observation, material),
+**outputs in physical reality** (objects, harvests, repaired
+machines, buildings), with AI as the **mediator** doing the design
+and analysis, while the hand that touches reality remains a human
+hand. Who belongs here:
+
+- **Makers and digital fabrication** (AI design + 3D print, laser,
+  CNC)
+- **Embedded engineers and robotics designers** (microcontrollers,
+  PLCs, ROS2)
+- **Precision agriculture and agritech** (sensors, drones, local
+  LLMs running in the field)
+- **Manufacturing-floor technicians** (having AI rewrite the factory
+  automation)
+- **Physicians using AI imaging and diagnostics; mechanics and
+  repair technicians**
+- **Carpenters, architects, craftspeople using AI design tools**
+
+Chapter 9's "**maker types and field technicians enter embedded**"
+was precisely about new entry into this middle layer. The labor
+demand created by "**physical goods become scarcer**" (Chapter 10)
+will be absorbed here too — the coders flowing out of the SIer
+industry won't all rejoin pure software; a path **sideways into
+the middle layer** opens here as well.
+
+> The middle layer is the contemporary form of those who **gain
+> power by touching reality**. The strongest form of the AI-era
+> free person appears here.
+
+Japan, with deep manufacturing, town-factory, natural-farming,
+electronics-tinkering, and repair-culture foundations, holds a
+**structural advantage** in the move to this layer. As the
+**alternative path** to the "become a specialized engineer" advice
+in the next section, this gives us a second route alongside
+"sideways onto the liberal arts": **"sideways into builders who
+hold physical reality."** Both are roads out of the lord's manor.
+
 ### "Become a specialized engineer" misreads the structure
 
 There is a widely circulated piece of advice — "in the AI era,

@@ -3,11 +3,11 @@ slug: hiring-builders
 number: "09"
 lang: en
 title: Companies Hire Builders
-subtitle: The builder is a profession that sells judgment — same position as lawyers and doctors
-description: In the AI-native era, IT is not a thin surface layer on top of business; it is the judgment of the business itself encoded. Outsourcing IT becomes the same as outsourcing the business. Keeping the business in-house calls for keeping builders in-house — positioned as a profession like lawyers and doctors, not as general employees. The corporate-website case shows both the cost and the structural change.
+subtitle: The master builder is a profession that sells judgment — same position as lawyers and doctors
+description: In the AI-native era, IT is not a thin surface layer on top of business; it is the judgment of the business itself encoded. Outsourcing IT becomes the same as outsourcing the business. Keeping the business in-house calls for keeping builders in-house — and the master builder is positioned as a profession like lawyers and doctors, not as a general employee. The corporate-website case shows both the cost and the structural change.
 date: 2026.07.27
 label: Software 09
-title_html: The builder is a<br><span class="accent">profession that sells judgment</span>.
+title_html: The master builder is a<br><span class="accent">profession that sells judgment</span>.
 prev_slug: lockin
 prev_title: The Lock-In Problem
 next_slug: japan-transition
@@ -16,9 +16,9 @@ next_title: Japan's SIer Industry Transition and Labor Mobility
 
 # Companies Hire Builders
 
-**The builder is a profession that sells judgment. Same structure as
-lawyers and doctors. Not a role that fits inside a general-employee
-grade system**.
+**The master builder is a profession that sells judgment. Same
+structure as lawyers and doctors. Not a role that fits inside a
+general-employee grade system**.
 
 Chapter 5 showed that customers themselves can become builders.
 Chapter 8 showed that AI-native development structurally resists
@@ -99,11 +99,11 @@ directly drives the business stays in-house too. That role is the
 > Outsourcing IT is **the same as outsourcing the business**.
 > If you keep the business in-house, you keep the builder in-house.
 
-## The builder is a profession that sells judgment
+## The master builder is a profession that sells judgment
 
 How to position the in-house builder? An extension of the
-general-employee grade ladder does not fit. The builder is a
-**profession that sells judgment**.
+general-employee grade ladder does not fit. The **master builder**
+is a profession that sells judgment.
 
 Examples of "professions that sell judgment":
 
@@ -131,13 +131,13 @@ The builder has the same structure:
   failed design, an operational incident — what the builder judged,
   the builder owns.
 
-Builders move to the same position as lawyers, doctors, and
+Master builders move to the same position as lawyers, doctors, and
 accountants. This is not a metaphor — **the structural profession is
 the same**.
 
-> The builder is a **profession with the same structure** as lawyers
-> and doctors. The tools are open to anyone, but the judgment belongs
-> to the professional.
+> The master builder is a **profession with the same structure** as
+> lawyers and doctors. The tools are open to anyone, but the
+> judgment belongs to the professional.
 
 The parallel runs one step deeper. The professional education of
 lawyers, doctors, and accountants is built, before the techniques,

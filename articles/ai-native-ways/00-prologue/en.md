@@ -75,6 +75,12 @@ Behind these moves: the U.S. CLOUD Act, geopolitical tensions, and demands for d
 
 The first step is to **install ONLYOFFICE** and to **externalize the macros, charts, and pivots embedded in Excel** into Python. Order doesn't matter — pick whichever, do them in parallel.
 
+Alongside this, one more thing — **keep one AI by your side**. Subscribe to one paid plan, Claude or ChatGPT. About $20 a month, and "a very capable junior clerk" works at your desk anytime. Treat it as infrastructure, like electricity or water.
+
+No special training is required to use it. "Summarize these receipts as a table," "draft a polite reply to this email" — ask in plain language. Drop in photos, PDFs, audio by drag-and-drop. If you get stuck, ask the AI itself — **the one who knows best how to use AI is AI**.
+
+And once a $20-a-month clerk arrives, a lot of things stop being necessary — Microsoft 365 ($100/yr), how-to books and business titles, industry subscriptions, specialized SaaS, outsourced work, generalist consultants. Calculate how many tens or hundreds of dollars come back to you each month against that $20. Data, knowledge, and work all return to your own hands along with the clerk.
+
 ### Install ONLYOFFICE
 
 Install **ONLYOFFICE Desktop Editors** (Word / Excel / PowerPoint–compatible open-source software; the community edition is free).
@@ -150,6 +156,10 @@ Then: **pick the structure that fits the task, and pick the tool (app / package)
 
 What humans learn is **the eye for structure** and **the eye for tool selection** — that's it. No syntax to memorize. **"Not the skill of writing — the skill of using."** That is the new literacy.
 
+AI's strengths and weaknesses are clear. **Writing code** — a language with fixed grammar and no ambiguity, the easiest medium for AI — and **looking up facts** are its strongest suits. What it is weak at is **composition** — designing a whole that takes your land, your customers, your circumstances into account. Don't hand that to AI. And one more thing: AI **occasionally tells convincing lies** ("hallucinations"). For anything that demands accuracy — law, medicine, finance — verify against primary sources every time. Turn the web-search feature on so the answer comes with citations, and check the source pages yourself. Treat AI's output as **material** — look at it calmly, revise, and use.
+
+> **You think about the composition. AI gathers the facts and writes the code.**
+
 ```mermaid
 flowchart LR
   H(["Human"])
@@ -190,9 +200,10 @@ Almost all text. AI reads and writes it directly. Still readable in ten years.
 
 Routine work does become several times to several tens of times faster. But that is not the goal.
 
-- **Valuable work** (strategic judgment, customer dialogue, first-time design, responsible decisions) cannot be handed off to AI (Chapter 10). **Redirecting time toward that** is the goal.
+- **Valuable work** (strategic judgment, customer dialogue, first-time design, responsible decisions) cannot be handed off to AI (Chapter 10). Pour the freed time into what AI absolutely cannot do — the **reality that does not yield to shortcuts**: soil and crops, your own systems and data, face-to-face exchange with family, neighbors, the younger generation. **Redirecting time toward that** is the goal.
 - The path the industry pushes is "everyone rides the same vendor's AI" — Microsoft 365 Copilot, ChatGPT Enterprise, Google Workspace AI. This book points the other way: **each person holds their own tools, their own data, their own judgments**.
 - One centralized N is fragile; N autonomous units are **strong** (no single point of failure carrying everyone, diversity grows) — survival strategy in the Mythos era.
+- **Keep the data on your side, too.** Whatever you hand to a cloud AI travels the internet to that vendor's servers — don't paste customer PII, household finances, health records, photos or diaries verbatim. **Ask the cloud AI for the method and the structure; handle the actual data on your own machine.** "Tell me a procedure for organizing a customer list" is fine; pasting the list itself is not. As the volume grows, move to **an AI that runs entirely inside your own machine** (a local LLM — small ones run on palm-sized computers). It keeps working through blackouts and network outages. This is the concrete shape of "holding your own data."
 
 ### Why "vendor-centralized AI" becomes a large problem
 
@@ -203,6 +214,8 @@ The problem is that this pitch implies **outsourcing judgment** as well. Writing
 Yet when the pitch reads "let AI take care of it," buyers (organizations) come away feeling they have outsourced judgment, too. The result is that **commonplace business systems and mediocre decisions get mass-produced, and a structure forms in which no one is responsible**. The cost of failures concentrates on the buyer side (the organization, society); the seller's subscription revenue keeps flowing — **moral hazard at industrial scale**.
 
 This book points the other way — use AI as **a tool of execution** and **keep judgment and responsibility on your side**. That is the ethical core of "AI-native ways of working."
+
+**Starting the work, checking the work, taking responsibility for the work — all of that stays with you.** AI does the prep and the scaffolding, but the final sign-off must be your own eyes. **Processing to AI, responsibility to you.** Hold that line and AI remains a powerful clerk.
 
 > Not efficiency. **The quality of work, the autonomy of the individual, and the diversity of society.**
 

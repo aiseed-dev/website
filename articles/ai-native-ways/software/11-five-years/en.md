@@ -480,6 +480,46 @@ direction of motion.
 > It is **stepping out of the lord's structure of control**. The
 > AI era is no different.
 
+## This is the beginning of the Second Renaissance
+
+The structural change this sub-series has been tracking — from
+coder to builder, from software engineering to the liberal arts,
+from employment to self-employment, from the lord's manor to the
+free city, from pure software to a middle layer that holds physical
+reality — lines up, item for item, with the structural change of
+the **First Renaissance (14th–17th centuries)**.
+
+| Element | First Renaissance | Second Renaissance (AI era) |
+|---|---|---|
+| The classics being recovered | Greek and Roman classical learning | The liberal arts (Chapter 4) |
+| The polymath ideal | Leonardo da Vinci | The builder, one person + AI (Chapter 4) |
+| Individual subjectivity | The humanist "I" | One's own tools, one's own data, one's own judgment |
+| Vernacular liberation | Dante's Italian, Luther's German | Natural language becomes "the programming language" |
+| Free cities and guilds | Florence, Venice, the craft guilds | The AI-era free person, professional guilds (Chapter 9) |
+| The accelerator | The printing press (1450s) — democratizing **reading** | The LLM — democratizing **making** (this chapter) |
+| Reformation | Religious decentralization (against the Roman church) | Anti–vendor-concentration, anti–employment-centric, anti-SIer (this book) |
+| The new rising class | The bourgeoisie (commerce, banking, manufacturing) | The AI-native builder, the self-employed judgment professional |
+| New forms of art | Perspective, anatomy, naturalism | AI-assisted creation under human judgment |
+
+Nine items, all corresponding. This is not metaphor — it is
+**structural similarity**.
+
+And just as the First Renaissance did not begin one morning — the
+self-governance of 12th–13th-century cities, the formation of the
+guilds, scholastic philosophy, and the rediscovery of classical
+texts through the Crusades accumulated as the underlying ground,
+which the printing press of the 1450s **accelerated** — the Second
+Renaissance is following the same pattern. The personal computer,
+the Web, open source, maker culture, the revival of natural and
+organic farming, the data-sovereignty movement, the AI ethics
+conversation have accumulated as the ground; **the LLM (from 2022
+onward) is now the accelerator**.
+
+> The five-year structural transition this sub-series describes is
+> **one cross-section of the Second Renaissance**. The sub-series
+> covered the software domain, but the same structural change is
+> proceeding in other domains of life at the same time.
+
 ## In closing
 
 Compress the conclusion of the Software sub-series, all eleven

@@ -264,6 +264,12 @@ This layer **bridges the abstraction of pure software with the directness of pur
 
 Japan, with its deep manufacturing, town-factory, natural-farming, electronics-tinkering, and repair-culture foundations, holds a **structural advantage** in the move to this layer. The flow inward from both pure software and pure physical work will make it the principal mass of the new AI-era stratum.
 
+### This is the beginning of the Second Renaissance
+
+Another name for "the return of the free person" is **the Second Renaissance**. The recovery of the liberal arts, the return of the polymath, the liberation of knowledge through natural language, the regeneration of the free city and the guild, the exit from vendor concentration — laid item by item, the structural changes that the First Renaissance (14th–17th centuries) drove at the end of the medieval period match those now arising in the AI era. Just as the First was brought into full force by **the printing press**, the Second is now being **brought into full force by the LLM**.
+
+The practical methods this book lays out in each chapter — leaving Office behind, building structure in Python and Markdown, holding a local AI, keeping data on one's own machine, turning freed time toward natural farming and presence in the physical world — are **the implementation manual of the Second Renaissance**.
+
 ## Closing
 
 Paperwork runs on Office, business systems on Java/C#. But AI's native language is Python and Markdown-style text. Right there, in the AI era, runs a decisive divide.

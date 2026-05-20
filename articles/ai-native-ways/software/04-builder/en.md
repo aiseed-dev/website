@@ -122,6 +122,44 @@ None of these come from memorizing language grammar. **Experience
 writing code helps**, but as a footing for judgment — not as the
 writing skill itself.
 
+## A builder's foundation is liberal arts, not software engineering
+
+Experience writing code works as **scaffolding** for a builder's
+work — but not as its center. At the center are structural
+decomposition, verbalization, evaluative eye, integration judgment,
+selection — all of which have been called **the liberal arts** (the
+*artes liberales*, the "seven liberal arts") for two thousand years.
+
+| What a builder needs | Its liberal-arts counterpart |
+|---|---|
+| Structural decomposition | Logic, analysis (the *trivium*'s dialectic) |
+| Verbalization (turning implicit intent into explicit description) | Grammar, rhetoric (the *trivium*) |
+| Evaluative eye (separating "merely runs" from "fits the design") | Aesthetics, ethics |
+| Integration judgment (seeing whether parts preserve the whole) | Systems thinking (from the *quadrivium*'s geometry and the constructive sense of music) |
+| Selection (picking "this one" from three options) | Ethics, theory of judgment |
+| Reading context (cutting it out of customer and field) | History, social science, political philosophy |
+| Responsibility for the claim (judgment is not delegated) | Ethics |
+
+What AI took over is **the core of software engineering** —
+algorithms, language specifications, frameworks, design patterns,
+how to write tests. The work that remains looks liberal-arts–shaped
+because, structurally, **it has to**.
+
+The etymology lines up, too. The medieval *artes liberales* were
+defined as **the arts a free person — one who is not enslaved —
+should learn**, set explicitly against the *artes mechanicae*, the
+slave's arts. The builder is the person who **does not hand
+judgment over to AI** — the contemporary form of the free person's
+arts.
+
+> A builder's foundation is not software engineering. It is
+> **the free person's arts of the AI era — the liberal arts**.
+
+The shift from "hire someone who can write code" to "**hire someone
+who can judge**" is not a surface-level personnel question. It is a
+transformation in **the foundational discipline of the technical
+profession**. Chapter 9 returns to this theme.
+
 ## The builder's day is set by decision density
 
 A builder's day has different content from a coder's day.

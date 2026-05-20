@@ -139,6 +139,16 @@ the same**.
 > and doctors. The tools are open to anyone, but the judgment belongs
 > to the professional.
 
+The parallel runs one step deeper. The professional education of
+lawyers, doctors, and accountants is built, before the techniques,
+on **the liberal arts** — logic, rhetoric, ethics, systems thinking,
+history. Those judgments cannot be reduced to technique. If the
+builder sits in the same position, the foundation of the builder's
+hiring and training has to be the same: **the liberal arts**
+(Chapter 4), not fluency in a programming language. **Hire someone
+who can judge, not someone who can write code** — that is the axis
+toward which builder hiring properly points.
+
 ## A general-employee grade does not fit
 
 Push a "profession" into the general-employee grade ladder and it

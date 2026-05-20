@@ -346,7 +346,18 @@ irreversible. And the conclusions from this specific area (= coding)
 must not be casually extended to the rest of software development or
 to other domains**.
 
-Hold those three, and the IT industry's AI narrative no longer sweeps
+And the other current named in Chapter 4 — **the foundational
+discipline of the technical profession shifts from software
+engineering to the liberal arts**. Because what AI has taken is the
+core of software engineering (algorithms, languages, frameworks,
+design patterns), what remains on the human side is judgment — the
+craft of logic, verbalization, ethics, systems thinking, and history
+that the liberal arts have always been. The medieval *artes
+liberales* were defined as **the arts of the free person — one who
+is not enslaved**. The builder is **the person who does not hand
+judgment over to AI** — the contemporary form of that craft.
+
+Hold those four, and the IT industry's AI narrative no longer sweeps
 you along. You can read what is actually happening, structurally,
 calmly. And from the position you stand in — customer commissioning
 software, coder, builder candidate, SIer executive — you can decide

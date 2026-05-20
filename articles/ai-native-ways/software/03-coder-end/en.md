@@ -195,12 +195,15 @@ becomes a question of **industry structure**, not personal choice
 ## Where the next chapter goes
 
 Execution moves to AI; judgment stays with humans. Who carries the
-judgment side?
+judgment side? And **the foundational discipline of that role shifts
+from software engineering to the liberal arts** — the bass line
+running through this sub-series.
 
 The next chapter defines that role — **the builder**. The person who
 decides what to build, has AI build it, evaluates the output, and
 integrates the structure. We will look at how the builder differs
-from the coder, with concrete examples.
+from the coder, and at why the builder's foundation is the liberal
+arts, with concrete examples.
 
 ---
 

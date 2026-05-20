@@ -481,16 +481,19 @@ AIWAYS_SUBSERIES = {
     "software": {
         "name_ja": "ソフトウェア開発編",
         "name_en": "Software",
-        "subtitle_ja": "SIer委託モデルは数年で終わる",
-        "subtitle_en": "The SIer-commissioned model ends in years, not decades",
+        "subtitle_ja": "ソフトウェア工学から、リベラルアーツへ ── 技術職の基盤転換",
+        "subtitle_en": "From software engineering to the liberal arts — the foundational shift of the technical profession",
         "description_ja": (
             "AIがコードを書く能力で人間トップクラスに到達した。コーダーの仕事は"
-            "なくなり、顧客がAIと協働する時代が来る。数年で完了する構造転換を、"
+            "なくなり、判断中心のビルダーが代わりに立つ。技術職の基盤学問は、"
+            "ソフトウェア工学からリベラルアーツへ。数年で完了する構造転換を、"
             "11章で追う。"
         ),
         "description_en": (
             "AI has reached human-top-class capability in writing code. "
-            "Coders' work disappears; customers co-develop with AI. "
+            "Coders' work disappears; judgment-centered builders take their "
+            "place. The foundational discipline of the technical profession "
+            "shifts from software engineering to the liberal arts. "
             "An 11-chapter case for an irreversible structural shift "
             "completing in years."
         ),

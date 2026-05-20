@@ -252,6 +252,12 @@ rearrange?**
 > **if top-tier coding costs $200 a month, the outsourcing-centered
 > structure of software development can no longer hold**.
 
+And one more thread — if AI carries the top tier of coding, what
+remains on the human side is the work of judgment. **Its foundation
+is closer to the liberal arts than to software engineering**.
+This thread runs through the whole sub-series; Chapter 4 names it
+directly.
+
 The next chapter takes up what is, structurally, the most overlooked
 consequence of cheap coding — the shift in the unit of maintenance.
 

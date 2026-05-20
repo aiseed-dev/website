@@ -93,7 +93,12 @@ stakeholders, the regulatory constraints, the organizational history
 — translating all of those into something a coder can act on. The
 SIer has to **listen from the outside** and then translate; if the
 customer pairs with AI, the **context is on hand from the beginning**.
-The round-trip cost of translation drops to zero.
+The round-trip cost of translation drops to zero. **The builder's
+foundation is the liberal arts** (Chapter 4) — meaning that doctors,
+lawyers, executives, researchers, anyone whose professional life
+centers on judgment and verbalization, can move directly into the
+builder role on top of that foundation when paired with AI.
+A coding history is not a prerequisite.
 
 **(3) The cost of learning fell by orders of magnitude** (next
 section) — the wall of "you have to study before you can build

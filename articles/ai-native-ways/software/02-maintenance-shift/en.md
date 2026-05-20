@@ -191,8 +191,11 @@ the new maintenance work.
 > mass-produced.
 
 The dividing line is **not the ability to write code, but the ability
-to decide the design**. Chapters 3 and 4 elaborate this as the
-difference between the "coder" and the "builder" roles.
+to decide the design**. And "deciding the design" — partitioning
+structure, seeing the invariants, keeping the whole consistent — is
+less software engineering than it is **a liberal-arts–shaped craft**.
+Chapters 3 and 4 elaborate this as the difference between the
+"coder" and the "builder" roles.
 
 ## Where the next chapter goes
 

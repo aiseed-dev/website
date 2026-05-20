@@ -1,9 +1,17 @@
 # Software — AI-Native Ways of Working
 
+**Subtitle: From software engineering to the liberal arts — the
+foundational shift of the technical profession.**
+
 A sub-series of the parent series *AI-Native Ways of Working*
 (`../README.md`). Eleven chapters that argue the SIer commission model
 is structurally uneconomic, and outline the irreversible industry
-shift that completes within a few years.
+shift that completes within a few years. Once AI absorbs the core of
+software engineering (algorithms, languages, frameworks, design
+patterns), the role that remains on the human side — the
+judgment-centered builder — rests on a different foundation:
+**the liberal arts** (logic, verbalization, ethics, systems thinking,
+history). This is the bass line of the sub-series.
 
 The canonical outline is `docs/Ai-native-software-outline.md`. The
 authoring playbook lives in the skill

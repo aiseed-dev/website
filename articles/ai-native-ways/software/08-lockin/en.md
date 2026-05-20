@@ -230,7 +230,10 @@ treated in Chapter 10.
 
 Wherever lock-in dissolves, customers will need builders. Whether
 in-house or external, they will be hiring **a judgment-centered
-profession**.
+profession**. The capacity to see lock-in coming and to design a way
+out of it — reading the vendor's pitch against itself, verbalizing
+your own organization's interests, defining the criteria for an
+alternative — falls inside the liberal arts (Chapter 4).
 
 The next chapter takes up the era in which companies hire builders —
 how builders get positioned, how they are paid, and how they function.

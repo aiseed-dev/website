@@ -301,6 +301,19 @@ transition into the AI-native industry structure shrinks.
 **The friction maximum is in the first few years; after that the
 transition tends to accelerate**.
 
+## Education and hiring axes move at the same time
+
+Alongside labor mobility, another axis has to move — **the
+foundational discipline of the technical profession**. Japan's
+science-and-engineering education has long centered on programming
+languages, frameworks, and design patterns — the core of software
+engineering. Once AI has taken that core, the human side has to
+shift its weight onto **the liberal arts** (Chapter 4) — logic,
+verbalization, ethics, systems thinking, history. The shift runs
+through everything from university curricula to corporate hiring
+criteria. The question "can you write code?" gives way to "**can
+you judge?**" on both sides at once.
+
 ## Where the next chapter goes
 
 We have seen how the AI-native structural change moves Japan's SIer

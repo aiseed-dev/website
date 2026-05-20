@@ -123,7 +123,7 @@ The snapshot feature of btrfs is appealing, but using it well takes learning. Ra
 
 ### Ask Claude ②: Confirm the Filesystem Choice
 
-> I plan to install Debian 12 on [SSD/HDD, capacity]. The use case is [daily work, development, media editing, etc.].
+> I plan to install Debian 13 on [SSD/HDD, capacity]. The use case is [daily work, development, media editing, etc.].
 >
 > I'm leaning toward ext4. Please judge whether this choice is reasonable for my use, and whether there is a scenario in which switching to btrfs would be worth it.
 

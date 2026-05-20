@@ -142,7 +142,7 @@ Anaconda 公式インストーラ(Anaconda Distribution)には **商用ライセ
 ### インストール
 
 ```bash
-# Debian 13 / 12 (x86_64)
+# Debian 13 (x86_64)
 curl -L https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh \
   -o ~/miniforge.sh
 bash ~/miniforge.sh -b -p ~/miniforge3

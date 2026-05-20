@@ -146,7 +146,7 @@ git commit -m "apt: $(date +%Y-%m) $(wc -l < apt-manual.txt) packages"
 ### Ask Claude ②: A Restore Script
 
 > Under my `dotfiles/` I have `apt-manual.txt` listing the packages I installed.
-> Write a shell script that, on a fresh Debian 12, installs all of these packages from this list.
+> Write a shell script that, on a fresh Debian 13, installs all of these packages from this list.
 > Include error handling (continue when a package doesn't exist, permission checks, mirror reachability), in POSIX sh.
 
 ## Section 4 — Track Changes Under /etc

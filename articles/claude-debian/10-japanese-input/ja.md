@@ -38,7 +38,7 @@ im-config -n fcitx5
 # 再ログインまたは再起動
 ```
 
-GNOMEの場合、Waylandと X11 で入力メソッドの渡り方が違う。**Debian 12 の GNOME はデフォルトで Wayland**。Fcitx5 は Wayland 対応が進んでいるが、古いアプリで問題が残ることがある。
+GNOMEの場合、Waylandと X11 で入力メソッドの渡り方が違う。**Debian 13 の GNOME はデフォルトで Wayland**。Fcitx5 は Wayland 対応が進んでいるが、古いアプリで問題が残ることがある。
 
 ### 環境変数の設定
 
@@ -56,7 +56,7 @@ GLFW_IM_MODULE=ibus
 
 ### Claudeに聞いてみよう①：環境変数の確認
 
-> 私のDebian 12〔DE名〕で、日本語入力の環境変数を確認したいです。
+> 私のDebian 13〔DE名〕で、日本語入力の環境変数を確認したいです。
 > 次のコマンドの出力を貼ります：
 > ```
 > $ env | grep -iE '(xim|im_module|modifiers)'

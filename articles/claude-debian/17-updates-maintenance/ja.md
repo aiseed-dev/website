@@ -3,7 +3,7 @@ slug: claude-debian-17-updates-maintenance
 number: "17"
 title: 第17章 アップデートとメンテナンス
 subtitle: 日常を崩さずにシステムを最新に保つ
-description: Debianのアップデートの考え方、安全な手順、ディスク整理、ログの見方。月次・年次のメンテナンスリズム、メジャーアップグレード（Debian 12→13）の準備。Claudeと一緒に、長く使える状態を維持する。
+description: Debianのアップデートの考え方、安全な手順、ディスク整理、ログの見方。月次・年次のメンテナンスリズム、メジャーアップグレード（Debian 13→14）の準備。Claudeと一緒に、長く使える状態を維持する。
 date: 2026.04.23
 label: Claude × Debian 17
 prev_slug: claude-debian-16-python-flutter-other
@@ -24,8 +24,8 @@ cta_btn2_link: /claude-debian/16-python-flutter-other/
 Debianのアップデートは三つの層に分かれる。
 
 1. **パッケージのマイナー更新**:セキュリティパッチ、バグ修正。週1〜月1
-2. **ポイントリリース**:Debian 12.x → 12.x+1(半年に一度くらい)
-3. **メジャーアップグレード**:Debian 12 → Debian 13(2年に一度くらい)
+2. **ポイントリリース**:Debian 13.x → 13.x+1(半年に一度くらい)
+3. **メジャーアップグレード**:Debian 13 → Debian 14(2年に一度くらい)
 
 それぞれ扱いが違う。同じコマンドで済まそうとすると、ある日壊れる。
 
@@ -172,10 +172,10 @@ conda(base) の **四系統を一回でメンテできる**。個別の conda en
 
 ## 第二節 ポイントリリース
 
-数ヶ月に一度、Debian 12.5 → 12.6 のようなポイントリリースが出る。
+数ヶ月に一度、Debian 13.1 → 13.2 のようなポイントリリースが出る。
 
 ```bash
-# sources.list の版表記は変えず（"bookworm" のまま）
+# sources.list の版表記は変えず（"trixie" のまま）
 sudo apt update
 sudo apt full-upgrade
 sudo reboot
@@ -187,7 +187,7 @@ sudo reboot
 
 Debianの公式サイトで、ポイントリリースごとに「何が変わったか」が公開される。**重大な変更はここで告知される**。5分でいいので目を通す。
 
-## 第三節 メジャーアップグレード（Debian 12 → 13）
+## 第三節 メジャーアップグレード（Debian 13 → 14）
 
 2年に一度、新しいバージョンがリリースされる。**これは別の仕事**として扱う。
 
@@ -207,8 +207,8 @@ sudo apt full-upgrade
 sudo apt autoremove
 
 # 2. sources.list を新バージョンに書き換え
-# bookworm → trixie（例）
-sudo sed -i 's/bookworm/trixie/g' /etc/apt/sources.list
+# trixie → forky（例）
+sudo sed -i 's/trixie/forky/g' /etc/apt/sources.list
 
 # 3. アップグレード
 sudo apt update
@@ -223,7 +223,7 @@ sudo reboot
 
 ### Claudeに聞いてみよう②：メジャーアップグレードの計画
 
-> 私は Debian 12 を使っています。Debian 13 リリース後、半年くらい経ってからアップグレードしたいです。
+> 私は Debian 13 を使っています。Debian 14 リリース後、半年くらい経ってからアップグレードしたいです。
 >
 > (1) 事前にバックアップすべきファイル・設定
 > (2) アップグレード当日の手順（公式手順書を参照）
@@ -350,7 +350,7 @@ journalctl --since "2026-04-20" --until "2026-04-22"
 
 ### 実験は別ユーザーか仮想マシンで
 
-本番環境で新しい設定を試すと、日常が止まる。Debian 12 を仮想マシン（virt-manager）に入れて、そこで実験するのがよい。
+本番環境で新しい設定を試すと、日常が止まる。Debian 13 を仮想マシン（virt-manager）に入れて、そこで実験するのがよい。
 
 ## 第八節 メンテナンスを習慣にする
 

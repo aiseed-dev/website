@@ -63,7 +63,7 @@ systemctl --failed            # list of failed services
 
 A template prompt that works for any kind of trouble.
 
-> On my Debian 12 [DE name], [symptom] is happening.
+> On my Debian 13 [DE name], [symptom] is happening.
 >
 > Machine: [maker / model]
 > What I did just before: [the action]

@@ -39,7 +39,7 @@ im-config -n fcitx5
 # Log out and back in, or reboot
 ```
 
-On GNOME, input methods are passed through differently between Wayland and X11. **GNOME on Debian 12 defaults to Wayland.** Fcitx5's Wayland support has progressed, but problems may remain in older apps.
+On GNOME, input methods are passed through differently between Wayland and X11. **GNOME on Debian 13 defaults to Wayland.** Fcitx5's Wayland support has progressed, but problems may remain in older apps.
 
 ### Setting Environment Variables
 
@@ -57,7 +57,7 @@ The last line, `GLFW_IM_MODULE=ibus`, is a trap to know about. GLFW-based apps (
 
 ### Ask Claude ①: Confirm Environment Variables
 
-> On my Debian 12 [DE name], I want to verify the Japanese-input environment variables.
+> On my Debian 13 [DE name], I want to verify the Japanese-input environment variables.
 > I'm pasting the output of:
 > ```
 > $ env | grep -iE '(xim|im_module|modifiers)'

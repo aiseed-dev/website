@@ -4,7 +4,7 @@ lang: en
 number: "17"
 title: Chapter 17 — Updates and Maintenance
 subtitle: Keep the system up to date without disrupting daily life
-description: Debian's update philosophy, safe procedures, disk cleanup, reading logs. The monthly and yearly maintenance rhythm, and preparing for major upgrades (Debian 12 → 13). Together with Claude, keep your environment in long-term shape.
+description: Debian's update philosophy, safe procedures, disk cleanup, reading logs. The monthly and yearly maintenance rhythm, and preparing for major upgrades (Debian 13 → 14). Together with Claude, keep your environment in long-term shape.
 date: 2026.04.23
 label: Claude × Debian 17
 prev_slug: claude-debian-16-python-flutter-other
@@ -25,8 +25,8 @@ cta_btn2_link: /en/claude-debian/16-python-flutter-other/
 Debian updates split into three layers.
 
 1. **Minor package updates.** Security patches and bug fixes. Weekly to monthly.
-2. **Point releases.** Debian 12.x → 12.x+1 (about every six months).
-3. **Major upgrades.** Debian 12 → Debian 13 (about every two years).
+2. **Point releases.** Debian 13.x → 13.x+1 (about every six months).
+3. **Major upgrades.** Debian 13 → Debian 14 (about every two years).
 
 Each is handled differently. Trying to do them all with the same command will break the system one day.
 
@@ -174,10 +174,10 @@ updates are best left as a monthly per-project task.
 
 ## Section 2 — Point Releases
 
-Once every few months, a point release like Debian 12.5 → 12.6 comes out.
+Once every few months, a point release like Debian 13.1 → 13.2 comes out.
 
 ```bash
-# Don't change the codename in sources.list (keep "bookworm")
+# Don't change the codename in sources.list (keep "trixie")
 sudo apt update
 sudo apt full-upgrade
 sudo reboot
@@ -189,7 +189,7 @@ Use `apt full-upgrade`, not `apt upgrade`. It updates packages whose dependencie
 
 Each point release publishes "what changed" on the Debian official site. **Major changes are announced here.** Five minutes is enough — give it a read.
 
-## Section 3 — Major Upgrade (Debian 12 → 13)
+## Section 3 — Major Upgrade (Debian 13 → 14)
 
 Once every two years, a new version is released. **Treat this as a separate piece of work.**
 
@@ -209,8 +209,8 @@ sudo apt full-upgrade
 sudo apt autoremove
 
 # 2. Rewrite sources.list to the new version
-# bookworm → trixie (example)
-sudo sed -i 's/bookworm/trixie/g' /etc/apt/sources.list
+# trixie → forky (example)
+sudo sed -i 's/trixie/forky/g' /etc/apt/sources.list
 
 # 3. Upgrade
 sudo apt update
@@ -225,7 +225,7 @@ sudo reboot
 
 ### Ask Claude ②: Planning the Major Upgrade
 
-> I'm on Debian 12 and want to upgrade to Debian 13 about six months after its release.
+> I'm on Debian 13 and want to upgrade to Debian 14 about six months after its release.
 >
 > Build a checklist covering:
 > (1) Files and settings to back up beforehand.
@@ -351,7 +351,7 @@ Before big changes (kernel update, GPU driver change, DE switch), take a Timeshi
 
 ### Experiment as a Different User or in a VM
 
-Trying new settings on the live environment kills your daily flow. It's better to install Debian 12 in a virtual machine (virt-manager) and experiment there.
+Trying new settings on the live environment kills your daily flow. It's better to install Debian 13 in a virtual machine (virt-manager) and experiment there.
 
 ## Section 8 — Make Maintenance a Habit
 

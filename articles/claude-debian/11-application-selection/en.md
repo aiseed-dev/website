@@ -67,7 +67,7 @@ Runtime sizes before installing everything via Flatpak.
 ### Setup (3 Minutes)
 
 ```bash
-# On Debian 12 / 13
+# On Debian 13
 sudo apt install flatpak
 
 # To integrate with GNOME Software

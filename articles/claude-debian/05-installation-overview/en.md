@@ -113,7 +113,7 @@ Pull out the USB and reboot. Encryption passphrase → login screen → desktop.
 
 ### Ask Claude ①: A Process Plan for Your Own Environment
 
-> Based on my `my-system.md`, please make a clean install of Debian 12 Stable concrete, following the eight stages above.
+> Based on my `my-system.md`, please make a clean install of Debian 13 Stable concrete, following the eight stages above.
 >
 > For each stage:
 > (1) Points I should pay extra attention to in my environment.

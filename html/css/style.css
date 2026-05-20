@@ -783,6 +783,41 @@ p {
     font-weight: 500;
 }
 
+.prose table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+.prose thead th {
+    background: var(--sand-light);
+    color: var(--earth-dark);
+    font-weight: 500;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid var(--clay);
+}
+
+.prose tbody td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid rgba(201, 184, 163, 0.5);
+    vertical-align: top;
+}
+
+.prose tbody tr:last-child td {
+    border-bottom: none;
+}
+
+@media (max-width: 720px) {
+    .prose table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
 /* Light Farming specific */
 .data-box {
     background: var(--sand-light);

@@ -520,6 +520,101 @@ onward) is now the accelerator**.
 > covered the software domain, but the same structural change is
 > proceeding in other domains of life at the same time.
 
+### The AI revolution is the completion of the IT revolution
+
+Treating "the AI revolution" as a new, separate revolution is another misreading. **The AI revolution is the completion of the IT revolution** — seventy years of the IT revolution finally fulfilling its original promise.
+
+The IT industry, until now, has had **humans hand-writing the code that automates work**. The original IT promise was "computers do the work, humans are freed." Yet for seventy years, **the side that implements the automation has been doing it by hand** — a strange structure. The consequences: programmer became one of the highest-paid professions; the cost of automation often exceeded the cost of doing the work manually; a massive industry of "manual labor for automation" emerged — SIers, consultancies, SaaS.
+
+Logically odd. **If automation is the goal, making the automation should also be automated.** The LLM dissolves the twist by writing the code itself. **The AI revolution is not the beginning of a new revolution; it is the completion of the IT revolution.**
+
+The completion functions as the strongest accelerator of the Second Renaissance. SIer contraction and the software-engineer → builder replacement are **inevitable consequences**, not sudden shocks.
+
+### The LLM is a powerful statistical-processing tool, not a superintelligence
+
+Coolly viewed, the LLM (Claude, GPT, Gemini, etc.) is **large-scale statistical processing of data** — predicting the most probable next token in context. An overwhelmingly powerful tool, but it is not, in itself, "superintelligence."
+
+The pitch that "AGI is coming, white-collar work will be fully automated in 12–18 months" (Suleyman/Microsoft AI) **deliberately stages the LLM as a superintelligence parable** to push "hand judgment over to AI" and "buy Copilot."
+
+Structurally wrong: statistical-processing tools cannot bear judgment or responsibility. The LLM makes **writing, looking up, organizing** orders of magnitude faster, but **deciding what to build, evaluating whether it is right, taking responsibility** stay on the human side. This is the **logical basis of the builder role**.
+
+Read the AI revolution as "**the tool got strong, so the human role shifts to the judgment side**" — simple, structurally clear, no need for AGI mysticism. The SIer contraction, the builder's rise, the foundational shift from software engineering to the liberal arts — all are explained by this simple structure.
+
+> The LLM is a powerful statistical-processing tool, not a superintelligence.
+> **Judgment and responsibility stay with the human** — this is the
+> logical ground beneath every argument in this sub-series.
+
+### Apps do not disappear, the way of making them does — app-making comes to resemble film-making
+
+Stated precisely, the structural change is this: **software development as an engineering craft disappears, but apps do not disappear**.
+
+The most precise analogy is film-making. A film is made by many independent specialist roles coming together (cinematography, editing, sound, lighting, costume, set design, VFX, scoring, acting). The audience is not aware of any of these. **Only one artifact — the film — appears.** At the center are not the people handling each technical task, but the **director and the screenwriter** — those who carry creative judgment.
+
+App-making in the AI era takes on the same structure.
+
+| Film-making | AI-era app-making |
+|---|---|
+| Director — overall vision and judgment | Master builder / user — judging what to build |
+| Script (manuscript) — natural language | Natural-language source — what, for whom, how it behaves |
+| Cinematography, editing, sound, VFX — specialist crew | AI — picks up the engineering layer as a whole |
+| Cast, set, costumes | AI-generated UI, logic, data structures |
+| The film (artifact) | The app (artifact) |
+
+**A director does not learn the camera. A screenwriter does not learn lighting. The audience does not know how the film was made.** Even so, the film exists and carries value. App-making takes the same shape — the user does not learn engineering, AI picks up the engineering work, end users do not know how it was made; apps still exist.
+
+Just as the printing press eliminated the scribe but not the book, the LLM shrinks the software engineer but not the app. **Only the way of making changes** — and the new way is closer to film-making than to book-printing.
+
+> Engineering-as-craft for software disappears; apps do not.
+> **App-making comes to resemble film-making** — creative judgment at
+> the center, with technical crew (= AI) gathered around it.
+
+Film-making, however, has an enormous range. **A Hollywood blockbuster still requires massive crews, hundreds of millions of dollars, and years of work**, while **a YouTube video can be made by one person with a smartphone in a few hours**. AI-era apps will have the same range.
+
+| Scale | Video production | AI-era app-making | Built by | Trend |
+|---|---|---|---|---|
+| Monolithic large-scale | Hollywood blockbuster | SIer mega-project ERPs, monolithic core enterprise systems | (formerly SIer) | **Declines** — decomposed into mid-scale |
+| Mid-scale | Streaming series, theatrical film | Focused systems, specialized SaaS, industry-wide systems | **Master builder** | **Grows** — more apps, fewer workers per app |
+| Personal | YouTube, TikTok | Everyday personal tools | The user | **Explodes** |
+
+**Monolithic large-scale is structurally a poor fit for the AI era** — no single master builder can hold the whole, lock-in is created (Chapter 8), maintenance is intractable, the chain of judgment is dispersed. These systems are decomposed into combinations of mid-scale focused systems.
+
+**Mid-scale is the master builder's home territory** — the scale at which the chain of judgment closes within one person (Chapter 4), the same position as lawyers and doctors (Chapter 9). Mid-scale apps themselves **do not shrink — they grow**: business apps that previously could not be cost-justified now get built in large numbers.
+
+**Personal is the user as director and crew**.
+
+What declines, then, is **not the number of apps but the total number of workers building them** (especially the monolithic SIer-project labor model). Apps themselves continue to exist across all three scales, and grow at mid-scale and personal.
+
+This is the most precise statement of the structural change this sub-series has been arguing — the SIer labor model shrinks dramatically, master builders thrive **at mid-scale as the directors of the AI era**, and the personal scale is **absorbed into the user**.
+
+### Not only the AI revolution
+
+We have been calling this "the AI era," but trying to capture the current structural change through AI alone **misses half of it**. The transitions running in parallel:
+
+- **The end of fossil resources** — collapse of the premises of oil-dependent society (Structural Analysis 02, 14)
+- **Geopolitical multipolarity** — the end of US unipolarity, Trump, Ukraine, Iran, China
+- **A generational shift in defense industry** — large platforms → drones + AI (Structural Analysis 11)
+- **The reconstruction of agriculture** — limits of chemical fertilizer; rise of regenerative agriculture (Structural Analysis 03)
+- **Collapse of finance and trade premises** — dollar standard, global supply chains
+- **Simultaneous breakdown of demographics, cities, healthcare, and pensions** (Structural Analysis 11)
+- And the **AI revolution** — the **accelerator** for all of the above
+
+Just as the First Renaissance had to be understood as a **composite** of the printing press, the age of discovery, the Reformation, the scientific revolution, the rise of the nation-state, the rise of the commercial bourgeoisie, and the labor shifts after the Black Death, the Second Renaissance cannot be captured by **the AI revolution alone**. Multiple independent transitions converge; their convergence point is what makes "an era that is no longer the same." AI is the strongest accelerator among them, but not the cause of all.
+
+### An age of creation, and an age of upheaval
+
+The Renaissance is in textbooks as a luminous age of creation — Leonardo, Michelangelo, Galileo, Gutenberg. The same age was also an **age of violent upheaval**: the Reformation and the wars of religion (the Thirty Years' War cut Central Europe's population by ~30%), papal corruption and schism, recurring plague, populist demagogues like Savonarola staging the "bonfire of the vanities" in Florence, strongman politicians like Cesare Borgia who became Machiavelli's model in *The Prince*. **While the old order is collapsing and the new one has not yet stood up, people seek refuge in strong men and extreme words.**
+
+The Second Renaissance's upheaval side is already unfolding. **Trump** is the canonical figure — direct attack on the expert class, judiciary, scientific consensus; ad-hoc swings on tariffs, immigration, science budgets; streams of executive orders that override congressional checks; "I decide everything alone" governance.
+
+Placed next to Nadella's Copilot strategy, the structure becomes visible. **Nadella concentrates corporate judgment into a single AI; Trump concentrates national judgment into a single president.** Different means, but both **push the old era's logic of judgment-concentration to its absolute limit** (see [Microsoft's Nadella and Hegel's Philosophy](/en/blog/nadella-hegel-cunning-of-reason/)).
+
+Just as the Renaissance-era populist demagogues in the end disappeared, figures pushing judgment-concentration to the extreme will not fit the new structure (distribution, the free person, judgment held by the individual) and will exit. But the interim is turbulent — this too is the same pattern as the First Renaissance.
+
+> The Renaissance is an age of creation and an age of upheaval at the same time.
+> Looking only at the creation side misreads the era. The upheaval side
+> — Trump, Nadella, the runaway concentration of judgment — is also a
+> symptom of the same transition. Both sides must be read together.
+
 ## In closing
 
 Compress the conclusion of the Software sub-series, all eleven

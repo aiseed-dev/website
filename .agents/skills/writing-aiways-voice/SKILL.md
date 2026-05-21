@@ -1,13 +1,15 @@
 ---
 name: writing-aiways-voice
-description: Voice, tone, and prose conventions for the aiseed.dev essay series "AIネイティブな仕事の作法" (articles/ai-native-ways/). Use when drafting or editing chapter prose in either Japanese or English, to keep new chapters indistinguishable from existing chapters 00–12. Covers heading patterns, bold/italic/blockquote usage, Mermaid conventions, related-articles formatting, and the JA→EN adaptation rules. Pair with authoring-aiways-chapter (mechanical scaffold) and building-ai-native-software-series (sub-series driver).
+description: Voice, tone, and prose conventions for the aiseed.dev essay series "AIネイティブな仕事の作法" (articles/ai-native-ways/, subtitle "AI 時代の自由人のための道具たち"). Use when drafting or editing chapter prose in either Japanese or English, to keep new chapters indistinguishable from existing chapters 00–13. Chapter 1 (the manual for ordinary readers) is gentler in register than the rest; chapters 02–13 follow the structural-assertive voice. Covers heading patterns, bold/italic/blockquote usage, Mermaid conventions, related-articles formatting, and the JA→EN adaptation rules. Pair with authoring-aiways-chapter (mechanical scaffold) and building-ai-native-software-series (sub-series driver).
 ---
 
 # The voice of "AIネイティブな仕事の作法"
 
 The series has a distinctive register: **structural, self-reliant, assertive — with evidence**. Each chapter argues that one layer of legacy tooling can be replaced by AI-native structure (Markdown, JSON, Python, SQLite, Parquet, plain text), and the prose enacts that thesis by being structurally tight rather than rhetorically warm.
 
-These rules are extracted from chapters 00 through 12 of `articles/ai-native-ways/`. If a rule below contradicts an existing chapter, the existing chapter wins — update this skill.
+These rules are extracted from chapters 00 through 13 of `articles/ai-native-ways/`. If a rule below contradicts an existing chapter, the existing chapter wins — update this skill.
+
+Chapter 01 (`01-manual/`) is a special case: it is the entry-point manual for普通の人 (ordinary readers) and uses a deliberately gentler, conversational register ("〜してください", numbered tips with a clerk metaphor) than the rest of the series. Do not normalize it to the structural-assertive voice — that voice resumes from chapter 02 onward.
 
 Sub-series chapters (e.g. `software/`) share the same voice; only the chapter label, the index page they appear on, and the "次の章" / "前の章" chain change. Do not soften the register because the sub-series is more argumentative — keep the same declarative, evidence-led tone.
 

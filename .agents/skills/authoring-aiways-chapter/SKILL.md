@@ -45,13 +45,11 @@ A sub-series:
 
 The `software/` sub-series is driven by skill `building-ai-native-software-series`.
 
-> Phase 2 status: the build tool currently discovers only the parent layout. Sub-series support is pending implementation. Drafting chapter sources is fine; building them requires the build-tool changes listed in `building-ai-native-software-series`.
-
 ### Build rules enforced by `tools/build_article.py`
 
 - Folder name **must start with a digit** (`NN-slug`); folders whose name does not start with a digit (e.g. `example-1/`, `README.md`) are skipped during chapter discovery.
 - Sorting is **string-sort on folder name**, so use 2-digit zero-padded numbers (`00`–`99`).
-- The chapter label is derived from `number`: `00` → 序章 / Prologue, otherwise 第N章 / Chapter N (`_aiways_chapter_label` in `tools/build_article.py:476`). Sub-series prefix the label with the sub-series name (Phase 2 work).
+- The chapter label is derived from `number`: `00` → 序章 / Prologue, otherwise 第N章 / Chapter N (`_aiways_chapter_label` in `tools/build_article.py`). Sub-series prefix the label with the sub-series name.
 
 ## Frontmatter (required)
 
@@ -141,8 +139,8 @@ title_html: Paperwork is <span class="accent">Office</span>.<br>Business systems
    |---|---|---|
    | `NN-slug/ja.md` | `html/ai-native-ways/{slug}/index.html` | `/ai-native-ways/{slug}/` |
    | `NN-slug/en.md` | `html/en/ai-native-ways/{slug}/index.html` | `/en/ai-native-ways/{slug}/` |
-   | `<sub>/NN-slug/ja.md` (Phase 2) | `html/ai-native-ways/<sub>/{slug}/index.html` | `/ai-native-ways/<sub>/{slug}/` |
-   | `<sub>/NN-slug/en.md` (Phase 2) | `html/en/ai-native-ways/<sub>/{slug}/index.html` | `/en/ai-native-ways/<sub>/{slug}/` |
+   | `<sub>/NN-slug/ja.md` | `html/ai-native-ways/<sub>/{slug}/index.html` | `/ai-native-ways/<sub>/{slug}/` |
+   | `<sub>/NN-slug/en.md` | `html/en/ai-native-ways/<sub>/{slug}/index.html` | `/en/ai-native-ways/<sub>/{slug}/` |
 
 ## Renumbering / inserting
 

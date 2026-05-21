@@ -330,8 +330,8 @@ def _step3_write(selected: str | None) -> ft.Control:
 def _command_card(cmd: str) -> ft.Control:
     def copy_cmd(_):
         page = ft.context.page
-        page.set_clipboard(cmd)
-        page.show_snack_bar(
+        page.clipboard.set(cmd)
+        page.show_dialog(
             ft.SnackBar(
                 content=ft.Text("コマンドをコピーしました。"),
                 duration=2500,

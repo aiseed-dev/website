@@ -33,8 +33,8 @@ def copy_prompt_button(prompt_factory) -> ft.Control:
     def _click(e: ft.ControlEvent) -> None:
         text = prompt_factory()
         page = ft.context.page
-        page.set_clipboard(text)
-        page.show_snack_bar(
+        page.clipboard.set(text)
+        page.show_dialog(
             ft.SnackBar(
                 content=ft.Text(
                     "Claude 用のプロンプトをクリップボードにコピーしました。"

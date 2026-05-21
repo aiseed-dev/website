@@ -30,7 +30,7 @@ def ExportPage() -> ft.Control:
             path.write_text(_render_markdown(), encoding="utf-8")
             set_saved_path(str(path))
         except Exception as exc:
-            ft.context.page.show_snack_bar(
+            ft.context.page.show_dialog(
                 ft.SnackBar(content=ft.Text(f"保存に失敗しました: {exc}"))
             )
 

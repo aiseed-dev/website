@@ -1,9 +1,9 @@
 ---
 slug: software-three-transitions
 title: "\"Become a specialized engineer\" misreads the structure"
-subtitle: Software engineer → builder, software engineering → liberal arts, employment → free person — the AI era's three irreversible transitions
+subtitle: The Second Renaissance has begun — software engineer → builder, software engineering → liberal arts, employment → free person
 date: 2026.05.21
-description: "The widely circulated advice — \"in the AI era, become a specialized engineer; hold a deep specialty AI cannot take, like security or ML\" — misreads the structure. AI is absorbing the whole layer of software engineering, not a particular subdomain. The medieval analogue: telling a serf, \"become a more specialized serf and you will be free.\" Freedom comes from stepping out of the lord's structure of control, not from deeper specialization. The structural change argued across eleven chapters in aiseed.dev's \"AI-Native Ways of Working — Software\" sub-series compresses into three pairs of words."
+description: "The widely circulated advice — \"in the AI era, become a specialized engineer; hold a deep specialty AI cannot take, like security or ML\" — misreads the structure. AI is absorbing the whole layer of software engineering, not a particular subdomain. The medieval analogue: telling a serf, \"become a more specialized serf and you will be free.\" Freedom comes from stepping out of the lord's structure of control, not from deeper specialization. Software engineer → builder, software engineering → liberal arts, employment → free person — these three transitions are unfolding inside the Second Renaissance (the historical turning point of the AI era, with the LLM playing the role of the printing press). Creation and upheaval are two faces of the same time, and Trump is the canonical figure on the upheaval side. The article compresses aiseed.dev's eleven-chapter \"AI-Native Ways of Working — Software\" sub-series into three pairs of words."
 lang: en
 label: Blog
 category: Structural Analysis Notes
@@ -118,6 +118,27 @@ Lay the three transitions out — engineer → builder, software engineering →
 History textbooks credit the printing press with preparing the ground for the Reformation, the scientific revolution, and the modern nation-state **over two hundred years**. The LLM holds **incomparably greater intensity** — what the printing press democratized was "reading" (access to existing knowledge), while what the LLM democratizes is "**making**" (knowledge generation, judgment, implementation). There is no literacy wall to clear first; natural language works for anyone.
 
 The speed of diffusion is on another order. What took the printing press decades, the AI era achieves **in years**. The five-year horizon this sub-series draws is, against this difference in intensity, **a conservative estimate**.
+
+### An age of creation, and an age of upheaval
+
+The Renaissance is in the textbooks as a luminous age of creation — Leonardo, Michelangelo, Galileo, Gutenberg. The same age was also an **age of violent upheaval**. The Reformation and the wars of religion (the Thirty Years' War cut Central Europe's population by roughly a third), the corruption and schism of the papacy, recurring plague, *populist demagogues* like Savonarola staging the "bonfire of the vanities" in Florence, strongman politicians like Cesare Borgia who became Machiavelli's model in *The Prince*. **While the old order is collapsing and the new one has not yet stood up, people seek refuge in strong men and extreme words.**
+
+The upheaval side of the Second Renaissance is already unfolding in front of us. **President Trump** is the canonical figure on that side:
+
+- Direct attack on the expert class, on the judiciary, on the scientific consensus
+- Ad-hoc swings on tariffs, immigration, science budgets, federal staffing
+- Streams of executive orders that override congressional checks
+- A style of governance built on "I decide everything, alone"
+
+Placed next to Nadella's Copilot strategy, the structure becomes visible. Nadella moves to "**concentrate corporate judgment into a single AI (Copilot)**"; Trump moves to "**concentrate national judgment into a single president**." The means differ, but both **push the old era's logic of judgment-concentration to its absolute limit** (see [Microsoft's Nadella and Hegel's Philosophy](/en/blog/nadella-hegel-cunning-of-reason/)).
+
+Just as the Renaissance-era *populist demagogues* in the end disappeared, the figures pushing judgment-concentration to the extreme will not fit the structure of the new era (distribution, the free person, judgment held by the individual) and will exit. But the interim is turbulent — this too is the same pattern as the First Renaissance.
+
+> The Renaissance is an age of creation and an age of upheaval at the same time.
+> Looking only at the creation side — the builder, the liberal arts, the free person —
+> is to misread the era. The upheaval side — Trump, Nadella, the runaway
+> concentration of judgment — is also a symptom of the same transition.
+> Both sides have to be read together.
 
 ## The alternative path to "specialized engineer" advice
 

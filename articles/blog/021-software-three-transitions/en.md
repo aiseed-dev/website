@@ -140,6 +140,20 @@ The LLM dissolves this twist. AI writes the code — and only then is the IT rev
 
 That completion functions as the strongest accelerator of the Second Renaissance. Read through the frame of "IT revolution completion," the contraction of the SIer industry and the replacement of the software-engineer role by the builder are **inevitable consequences**, not sudden shocks.
 
+### The LLM is a powerful statistical-processing tool, not a superintelligence
+
+Looked at coolly, the LLM (Claude, GPT, Gemini, and the rest) is **large-scale statistical processing of data**. A mechanism that, given enormous text — textbooks, papers, the web — predicts the most probable next token in context. An overwhelmingly powerful tool, but it is not, in itself, becoming "superintelligence."
+
+The pitch that "AGI is coming, white-collar work will be fully automated in 12–18 months" (Microsoft AI's CEO Suleyman and others) deliberately stages this nature as a **superintelligence parable**, in order to push "so hand judgment over to AI" and "so buy Copilot" (see [Microsoft's Nadella and Hegel's Philosophy](/en/blog/nadella-hegel-cunning-of-reason/)).
+
+Handing "judgment and responsibility" to a statistical-processing tool is structurally wrong. The LLM makes **writing, looking up, organizing** orders of magnitude faster, but **deciding what to build, evaluating whether it is right, taking responsibility** stay on the human side. This is the logical basis of the role this article has been calling "the builder."
+
+If the essence of the AI revolution is read as "the arrival of superintelligence," the picture goes hazy. Read it as "**a powerful statistical-processing tool finally made the IT revolution's automation promise implementable**," and the picture becomes clear. The contraction of the SIer industry, the rise of the builder, the foundational shift from software engineering to the liberal arts — all of these are explained by the simple structure "**the tool got strong, so the human role shifts to the judgment side**." Talk of an AGI arrival, or the anthropomorphization of superintelligence, only obscures the structure.
+
+> The LLM is a powerful statistical-processing tool, not a superintelligence.
+> **Judgment and responsibility stay with the human** — this is the
+> logical ground beneath all three of this article's transitions.
+
 ### Not only the AI revolution
 
 We have been calling this "the AI era," but trying to capture the current structural change through AI alone **misses half of it**. The transitions running in parallel:

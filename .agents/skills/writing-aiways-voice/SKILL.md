@@ -28,7 +28,7 @@ The first 3–5 lines after `# Title` must do all of:
 2. Anchor to a prior chapter or the prologue so the reader knows where they are in the arc.
 3. Move to the **concrete action** in the next paragraph — not background, not history.
 
-Example (`01-python/ja.md`):
+Example (`02-python/ja.md`):
 
 ```markdown
 **AI ネイティブな働き方への最初の一歩は、ここで決まる**。

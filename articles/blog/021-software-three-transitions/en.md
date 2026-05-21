@@ -189,21 +189,19 @@ Film-making, however, has an enormous range. **A Hollywood blockbuster still req
 
 AI-era apps will have the same range.
 
-| Scale | Video production | AI-era app-making |
-|---|---|---|
-| **Blockbuster** | Hollywood film — director + huge crew + hundreds of millions + years | OS, large infrastructure, core business systems — master builder + heavy AI output + sustained development |
-| **Mid-scale** | Television drama, documentary, theatrical film | Industry-wide systems, SaaS, specialized apps — 1–few builders + AI |
-| **Personal** | YouTube, TikTok — one person + phone + a few hours | Everyday personal tools — the user + natural-language instruction + a few hours |
+| Scale | Video production | AI-era app-making | Built by | Trend |
+|---|---|---|---|---|
+| **Monolithic large-scale** | Hollywood blockbuster — huge crew + hundreds of millions + years | SIer mega-project ERPs, monolithic core enterprise systems | (formerly SIer) | **Declines** — decomposed into mid-scale |
+| **Mid-scale** | Streaming series, theatrical film | Focused systems, specialized SaaS, industry-wide systems | **Master builder** | **Grows** — more apps, fewer workers per app |
+| **Personal** | YouTube, TikTok — one person + phone + a few hours | Everyday personal tools | The user | **Explodes** |
 
-**Blockbusters need master builders (= directors)**. Not everyone can shoot a Hollywood film; not everyone can build an OS or a core business system. The quality of judgment, the maintenance of integrity, long-term stewardship, safety — these stay the domain of highly skilled professionals (this is where the lawyer/doctor analogy of Chapter 9 applies).
+**Monolithic large-scale is structurally a poor fit for the AI era**. A single master builder cannot hold the whole; lock-in is created (Chapter 8); maintenance becomes intractable; the chain of judgment is dispersed. Just as Hollywood blockbusters are declining in number while streaming and mid-scale productions grow, monolithic enterprise systems are **decomposed into combinations of mid-scale focused systems**.
 
-**But YouTube-scale apps need no specialist**. The user is both director and crew. "A small tool that makes my work easier," "a household budget app," "a shared calendar for the family" — these become things anyone can produce with natural-language instructions.
+**Mid-scale is where the master builder operates**. One master builder (or a small team of builders) plus AI can hold the whole, avoid lock-in, and keep maintenance tractable — the scale at which the chain of judgment closes within one person (Chapter 4). As with lawyers and doctors (Chapter 9), AI-era judgment professionals operate at this scale. The mid-scale apps themselves **do not shrink — they grow** — because AI makes them cheap and fast to build, so business apps that previously could not be cost-justified now get built in large numbers.
 
-The shrinkage of the "software engineer" role therefore plays out differently at the two ends:
-- **Blockbuster side**: consolidation toward master builders. Whether most engineers can graduate into the judgment side is the dividing line.
-- **Personal side**: the specialist disappears entirely. The user becomes the author of their app directly.
+**Personal is the user as director and crew**. "A small tool that makes my work easier," "a household budget app," "a shared calendar for the family" — these become things anyone produces with natural-language instructions.
 
-The middle — **industry-wide systems and SaaS** — is where the contraction is most violent, because this is exactly the territory the SIer industry has occupied (the structure handled in Chapters 6 and 7).
+What declines, then, is **not the number of apps but the total number of workers building them** (especially the monolithic SIer-project labor model). Apps themselves **continue to exist across all three scales and grow at mid-scale and personal**. This is the precise shape of the simultaneous SIer contraction (Chapters 6, 7) and master-builder rise (Chapter 9).
 
 This follows naturally from concepts 11 (IT revolution completion) and 12 (LLM as tool). The 70-year-delayed completion of the IT revolution takes the form of a shift from "humans handle the technology" to "humans focus on judgment and the manuscript; AI handles the technology" — that is, **software development moves closer to film-making**. And that "film-making" holds across **the full range, from Hollywood to YouTube**.
 

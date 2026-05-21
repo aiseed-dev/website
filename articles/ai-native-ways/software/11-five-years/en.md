@@ -546,15 +546,21 @@ Just as the printing press eliminated the scribe but not the book, the LLM shrin
 
 Film-making, however, has an enormous range. **A Hollywood blockbuster still requires massive crews, hundreds of millions of dollars, and years of work**, while **a YouTube video can be made by one person with a smartphone in a few hours**. AI-era apps will have the same range.
 
-| Scale | Video production | AI-era app-making |
-|---|---|---|
-| Blockbuster | Hollywood film | OS, large infrastructure, core business systems — master builder (Chapter 9) |
-| Mid-scale | Television drama, theatrical film | Industry-wide systems, SaaS, specialized apps — 1–few builders |
-| Personal | YouTube, TikTok | Everyday personal tools — the user is both director and crew |
+| Scale | Video production | AI-era app-making | Built by | Trend |
+|---|---|---|---|---|
+| Monolithic large-scale | Hollywood blockbuster | SIer mega-project ERPs, monolithic core enterprise systems | (formerly SIer) | **Declines** — decomposed into mid-scale |
+| Mid-scale | Streaming series, theatrical film | Focused systems, specialized SaaS, industry-wide systems | **Master builder** | **Grows** — more apps, fewer workers per app |
+| Personal | YouTube, TikTok | Everyday personal tools | The user | **Explodes** |
 
-**At the blockbuster end**, consolidation toward the master builder — judgment-centered professionals are still needed. **At the personal end**, the specialist disappears entirely — the user becomes the author. The most violent contraction happens in the **middle layer**, which is exactly the territory the SIer industry has occupied (Chapters 6 and 7).
+**Monolithic large-scale is structurally a poor fit for the AI era** — no single master builder can hold the whole, lock-in is created (Chapter 8), maintenance is intractable, the chain of judgment is dispersed. These systems are decomposed into combinations of mid-scale focused systems.
 
-This is the most precise statement of the structural change this sub-series has been arguing — software engineers shrink dramatically (concentrated in the middle layer), while builders **remain at the blockbuster end as the directors of the AI era**, and **get absorbed into the user at the personal end**.
+**Mid-scale is the master builder's home territory** — the scale at which the chain of judgment closes within one person (Chapter 4), the same position as lawyers and doctors (Chapter 9). Mid-scale apps themselves **do not shrink — they grow**: business apps that previously could not be cost-justified now get built in large numbers.
+
+**Personal is the user as director and crew**.
+
+What declines, then, is **not the number of apps but the total number of workers building them** (especially the monolithic SIer-project labor model). Apps themselves continue to exist across all three scales, and grow at mid-scale and personal.
+
+This is the most precise statement of the structural change this sub-series has been arguing — the SIer labor model shrinks dramatically, master builders thrive **at mid-scale as the directors of the AI era**, and the personal scale is **absorbed into the user**.
 
 ## In closing
 

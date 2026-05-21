@@ -149,18 +149,21 @@ The structural consequences:
 - The "engineering specialist" function — implementing in code — **dissolves into AI**, the way camera operation might one day dissolve into a single AI cinematographer.
 - The "director" function — orchestrating, judging, integrating, taking responsibility — is the **master builder** role (concept 2), now sharpened by a more vivid analogy than lawyer/doctor: the director.
 
-**Critical refinement — the Hollywood-to-YouTube spectrum.** Film-making is not monolithic; the same category contains the Hollywood blockbuster (huge crew, hundreds of millions, years) and the YouTube video (one person, a phone, a few hours). AI-era apps run across the same spectrum:
+**Critical refinement — the Hollywood-to-YouTube spectrum.** Film-making is not monolithic; the same category contains the Hollywood blockbuster (huge crew, hundreds of millions, years) and the YouTube video (one person, a phone, a few hours). AI-era apps run across the same spectrum, but with a twist: **the apps themselves do not shrink at any scale** — what shrinks is the labor count per app and the monolithic-SIer business model:
 
-| Scale | Video parallel | App-making in the AI era |
-|---|---|---|
-| Blockbuster | Hollywood | OS, large infrastructure, core business systems — **master builder needed** (concept 2) |
-| Mid-scale | TV drama, theatrical film | Industry-wide systems, SaaS, specialized apps — 1–few builders |
-| Personal | YouTube, TikTok | Everyday personal tools — **the user is both director and crew** |
+| Scale | Video parallel | App-making in the AI era | Built by | Trend |
+|---|---|---|---|---|
+| Monolithic large-scale | Hollywood blockbuster | SIer mega-project ERPs, monolithic enterprise systems | (formerly SIer) | **Declines** — decomposed into mid-scale |
+| Mid-scale | Streaming series, theatrical film | Focused systems, specialized SaaS, industry-wide systems | **Master builder** (concept 2) | **Grows** — more apps, fewer workers per app |
+| Personal | YouTube, TikTok | Everyday personal tools | The user | **Explodes** |
 
-The contraction of the "software engineer" role plays out differently at the two ends:
-- **Blockbuster end** — consolidation toward master builders; only those who graduate into the judgment side survive.
-- **Personal end** — no specialist needed at all; the user becomes the app's author directly.
-- **Middle layer** (industry-wide systems and SaaS) — the most violent contraction; this is exactly the SIer territory (sub-series chapters 6 and 7).
+The structural reasoning at each level:
+
+- **Monolithic large-scale declines** because it is structurally a poor fit for the AI era: a single master builder cannot hold the whole, lock-in is created (concept 9, sub-series chapter 8), maintenance becomes intractable, the chain of judgment is dispersed. These systems are decomposed into combinations of mid-scale focused systems.
+- **Mid-scale is the master builder's home territory** — the scale at which the chain of judgment closes within one person, the same position as lawyers and doctors. The number of mid-scale apps **grows**, because AI makes them cheap enough that previously uneconomical business apps now get built.
+- **Personal scale explodes** because the user is now their own director and crew.
+
+The crucial guard against overstatement: **never claim "apps shrink"**. What shrinks is (i) the monolithic-SIer labor model (which was particularly tied to large-scale custom projects), and (ii) the total labor count per app across all scales. The number of apps across the middle and personal scales actually **grows**.
 
 Stated in blog `articles/blog/021-software-three-transitions/` (### アプリ作りは映画作りに似てくる / App-making comes to resemble film-making) and software sub-series chapter 11 (### アプリは消えない、作り方が変わる ── 映画作りに似てくる). This concept resolves a tempting overstatement — that "applications" as a category disappear — by clarifying: the artifact survives, the engineering craft dissolves, and the model is film-making — at all scales from blockbuster to YouTube.
 

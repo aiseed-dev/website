@@ -82,6 +82,16 @@ The whole loop is held by the builder. AI enters as **one edge of the
 loop** only. Judgment, conditions of delegation, evaluation criteria,
 and integration policy all stay on the builder's side.
 
+The closest existing analogue to this role is the **film director**. A
+director does not operate the camera, does not touch the editing
+software, does not sew costumes — yet decides "what to make," "how to
+show it," "where to cut," "in what order to assemble," and keeps the
+whole consistent. The technical crew acts on the director's judgment.
+The relationship between the builder and AI maps onto this — **judgment
+stays with the human, technical execution goes to AI, and the artifact
+is born of the collaboration**. Chapter 11 returns to this analogy
+under "app-making comes to resemble film-making."
+
 ## The structural difference from a coder
 
 Coder and builder look similar but are structurally different roles.

@@ -1,6 +1,6 @@
 ---
 name: framing-second-renaissance
-description: The unified conceptual frame that underpins aiseed.dev's "AIネイティブな仕事の作法" series, the synthesizing blog post `articles/blog/021-software-three-transitions/`, and the broader argument across `docs/ai-manual.md` and `docs/hegel.md`. Fourteen interlocking concepts — AI-era builder, master builder, liberal arts as the technical foundation, SE/CS distinction, medieval freeman 4 conditions, two pillars + middle layer, employment as serfdom, LLM vs printing press, "specialized engineer" misreading, Second Renaissance, AI revolution as IT revolution's completion, LLM as statistical-processing tool (not superintelligence), Renaissance as creation-AND-upheaval (Trump as the upheaval-side figure), multi-vector simultaneous transitions (AI revolution alone is too narrow). Use when (1) extending the series with new chapters or essays, (2) drafting follow-up blog posts, (3) checking whether a new piece of writing aligns with the spine of the argument, or (4) responding to outside narratives ("specialize deeper", "AGI replaces white-collar in 12-18 months", "AI is a new revolution", "concentrate judgment in the leader/platform") with the structural reply.
+description: The unified conceptual frame that underpins aiseed.dev's "AIネイティブな仕事の作法" series, the synthesizing blog post `articles/blog/021-software-three-transitions/`, and the broader argument across `docs/ai-manual.md` and `docs/hegel.md`. Fifteen interlocking concepts — AI-era builder, master builder, liberal arts as the technical foundation, SE/CS distinction, medieval freeman 4 conditions, two pillars + middle layer, employment as serfdom, LLM vs printing press, "specialized engineer" misreading, Second Renaissance, AI revolution as IT revolution's completion, LLM as statistical-processing tool (not superintelligence), Renaissance as creation-AND-upheaval (Trump as the upheaval-side figure), multi-vector simultaneous transitions (AI revolution alone is too narrow), and app-making coming to resemble film-making (engineering dissolves, apps survive). Use when (1) extending the series with new chapters or essays, (2) drafting follow-up blog posts, (3) checking whether a new piece of writing aligns with the spine of the argument, or (4) responding to outside narratives ("specialize deeper", "AGI replaces white-collar in 12-18 months", "AI is a new revolution", "applications disappear entirely", "concentrate judgment in the leader/platform") with the structural reply.
 ---
 
 # Framing aiseed.dev's "Second Renaissance" thesis
@@ -13,9 +13,9 @@ This skill captures the analytical framework that emerged over a sequence of con
 
 If a chapter, paragraph, or blog post being drafted does not connect (directly or by implication) to this thesis, it probably belongs elsewhere.
 
-## The fourteen interlocking concepts
+## The fifteen interlocking concepts
 
-The framework consists of fourteen concepts. They are listed in the order they tend to unfold in an argument, but they are deeply interlocked — any one of them, pulled, brings the others. Concepts 1–10 form the original spine (the role, the foundation, the historical parallel). Concepts 11–14 are the second-layer reframings that emerged later (what AI revolution actually *is*, what LLM actually *is*, what kind of era this *actually is*).
+The framework consists of fifteen concepts. They are listed in the order they tend to unfold in an argument, but they are deeply interlocked — any one of them, pulled, brings the others. Concepts 1–10 form the original spine (the role, the foundation, the historical parallel). Concepts 11–14 are the second-layer reframings that emerged later (what AI revolution actually *is*, what LLM actually *is*, what kind of era this *actually is*). Concept 15 is the precision-correction that protects the framework from overstatement — apps do not disappear; the engineering layer does, and the model for the new way is film-making.
 
 ### 1. The builder (ビルダー)
 
@@ -126,6 +126,32 @@ Just as the First Renaissance had to be understood as a **composite** (printing 
 
 This is the deepest reframe and the umbrella for the others: the Second Renaissance (concept 10) is the right scale because it captures multi-vector convergence; "AI era" only captures one vector. Stated in blog `articles/blog/021-software-three-transitions/` (### AI 革命だけの話ではない / Not only the AI revolution).
 
+### 15. App-making comes to resemble film-making (the engineering layer dissolves, apps survive)
+
+The 14 concepts collectively predict that **software development as an engineering craft dissolves into AI** — but the prediction needs to be stated precisely. **Apps do not disappear. Web pages do not disappear. Books do not disappear.** What disappears is the engineering layer as a human concern: languages, frameworks, design patterns, build/deploy pipelines.
+
+The most precise analogy is **film-making**. A film is the convergence of many specialist roles (cinematography, editing, sound, lighting, costume, VFX, score, acting). The audience experiences a single artifact — the film. At the center are the **director and the screenwriter**, carriers of creative judgment. The director does not learn the camera; the screenwriter does not learn lighting.
+
+Map this onto apps:
+
+| Film-making | AI-era app-making |
+|---|---|
+| Director (vision, judgment) | User / author / master builder |
+| Script (manuscript, natural language) | Natural-language source |
+| Cinematography, editing, sound, VFX | AI (the technical layer, as a whole) |
+| Cast, set, costumes | AI-generated UI, logic, data structures |
+| The film (artifact) | The app (artifact) |
+
+Just as the printing press eliminated the scribe but not the book, the LLM shrinks the software engineer but not the app. **Only the way of making changes** — and the new way is closer to film-making than to book-printing.
+
+The structural consequences:
+- The "author/manuscript" function — writing in natural language what the app should do, for whom, how it should behave — **remains and becomes central**. This is concept 3 (liberal arts) made concrete.
+- The "engineering specialist" function — implementing in code — **dissolves into AI**, the way camera operation might one day dissolve into a single AI cinematographer.
+- The "director" function — orchestrating, judging, integrating, taking responsibility — is the **master builder** role (concept 2), now sharpened by a more vivid analogy than lawyer/doctor: the director.
+- The **boundary between professional and amateur dissolves**: indie filmmakers and studio productions coexist; indie app-authors (single users) and large software guilds (master builders) will coexist.
+
+Stated in blog `articles/blog/021-software-three-transitions/` (### アプリ作りは映画作りに似てくる / App-making comes to resemble film-making). This concept resolves a tempting overstatement — that "applications" as a category disappear — by clarifying: the artifact survives, the engineering craft dissolves, and the model is film-making.
+
 ## What this framework opposes
 
 Recognizing the opposing narratives sharpens the writing. Each one is the **anti-direction** of the framework.
@@ -165,6 +191,7 @@ Quick lookup so future writing can cite the right anchor.
 | 12. LLM = statistical-processing tool (not superintelligence) | `articles/blog/021-software-three-transitions/` (### LLM は超知能ではなく…) | Pairs with `docs/hegel.md` (Nadella/Suleyman as the contrary worldview) |
 | 13. Creation AND upheaval (Trump as upheaval-side) | `articles/blog/021-software-three-transitions/` (### 創造の時代であり、混乱の時代でもある) | `articles/blog/020-nadella-hegel-cunning-of-reason/` (Nadella as the parallel concentration figure) |
 | 14. Multi-vector simultaneous transitions | `articles/blog/021-software-three-transitions/` (### AI 革命だけの話ではない) | All of `articles/insights/` (each insight is one of the vectors) |
+| 15. App-making resembles film-making (engineering dissolves, apps survive) | `articles/blog/021-software-three-transitions/` (### アプリ作りは映画作りに似てくる) | Concept 2 (master builder) and Concept 3 (liberal arts) — the director analogy sharpens both |
 | — Hegel (master-slave, alienation, sublation, cunning of reason) | `docs/hegel.md` | The Nadella blog post `articles/blog/020-nadella-hegel-cunning-of-reason/` |
 | — AI manual as the entry point | `docs/ai-manual.md` (6 tips, for general readers) | Folded into prologue's "最初にやること" section |
 | — Synthesizing blog post | `articles/blog/021-software-three-transitions/` | The single piece that traverses concepts 1–14 in one read |
@@ -205,5 +232,7 @@ This skill was synthesized from a multi-session conversation that built the fram
    - **LLM is statistical processing, not superintelligence** (counter to AGI hype)
    - **Renaissance is creation AND upheaval** (Trump as the upheaval-side figure, structurally parallel to Nadella)
    - **Multi-vector simultaneous transitions** ("AI revolution" alone captures less than half; the right scale is Second Renaissance)
+7. The framework's prediction of software-development's dissolution was first overstated as "applications dissolve as a category"; corrected through dialogue into concept 15:
+   - **App-making comes to resemble film-making** — the engineering layer dissolves into AI, but apps survive as artifacts; the manuscript is natural language, the human is director/screenwriter, AI is the technical crew
 
-The framework now stands at fourteen concepts. The blog post is the single point that ties them together for a reader; this skill is the source of truth for future writing that needs to extend or reference the framework.
+The framework now stands at fifteen concepts. The blog post is the single point that ties them together for a reader; this skill is the source of truth for future writing that needs to extend or reference the framework.

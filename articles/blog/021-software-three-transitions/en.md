@@ -154,6 +154,37 @@ If the essence of the AI revolution is read as "the arrival of superintelligence
 > **Judgment and responsibility stay with the human** — this is the
 > logical ground beneath all three of this article's transitions.
 
+### App-making comes to resemble film-making
+
+"Software development as an independent process disappears — but apps do not disappear." The most precise analogy for this is **film-making**.
+
+A film is made when many independent specialist roles converge — cinematography, editing, sound, lighting, costume, set design, VFX, scoring, acting. The audience is not aware of any of these. **Only one artifact — the film — appears.** At the center are not the people who handle each technical task but the **director and the screenwriter** — the carriers of creative judgment.
+
+App-making in the AI era takes on the same structure.
+
+| Film-making | App-making in the AI era |
+|---|---|
+| Director — overall vision and judgment | User / author / master builder — judging what to build |
+| Script (manuscript) — written in natural language | Natural-language source — what, for whom, how it behaves |
+| Cinematography, editing, sound, VFX — specialist crew | AI — picks up the engineering layer as a whole |
+| Cast, set, costumes | AI-generated UI, logic, data structures |
+| The film (artifact) | The app (artifact) |
+
+**A director does not learn how to operate the camera. A screenwriter does not learn lighting. The audience does not know how the film was made.** Even so, the film exists and carries value.
+
+Apps will take the same shape — **the user / author does not learn engineering. AI picks up the engineering work. The end user does not know how it was made.** Apps still exist.
+
+The independent role of "software engineer" shrinks in the same way that "a staff cinematographer on permanent payroll" no longer fits an independent filmmaker. But **directors remain, screenwriters remain, films remain** — and equivalently, **builders (the people who write the source, who judge) remain, the natural-language manuscript remains, the app remains**.
+
+Just as the printing press eliminated the scribe but not the book, the LLM shrinks the software engineer but not the app. **Only the way of making changes** — and the new way is closer to making a film than to printing a book.
+
+> Engineering-as-craft for software disappears; apps do not.
+> **App-making comes to resemble film-making, not book-printing** —
+> creative judgment at the center, with the technical crew (= AI)
+> gathered around it.
+
+This follows naturally from concepts 11 (IT revolution completion) and 12 (LLM as tool). The 70-year-delayed completion of the IT revolution takes the form of a shift from "humans handle the technology" to "humans focus on judgment and the manuscript; AI handles the technology" — that is, **software development moves closer to film-making**.
+
 ### Not only the AI revolution
 
 We have been calling this "the AI era," but trying to capture the current structural change through AI alone **misses half of it**. The transitions running in parallel:

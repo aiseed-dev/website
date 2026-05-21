@@ -520,6 +520,32 @@ onward) is now the accelerator**.
 > covered the software domain, but the same structural change is
 > proceeding in other domains of life at the same time.
 
+### Apps do not disappear, the way of making them does — app-making comes to resemble film-making
+
+Stated precisely, the structural change is this: **software development as an engineering craft disappears, but apps do not disappear**.
+
+The most precise analogy is film-making. A film is made by many independent specialist roles coming together (cinematography, editing, sound, lighting, costume, set design, VFX, scoring, acting). The audience is not aware of any of these. **Only one artifact — the film — appears.** At the center are not the people handling each technical task, but the **director and the screenwriter** — those who carry creative judgment.
+
+App-making in the AI era takes on the same structure.
+
+| Film-making | AI-era app-making |
+|---|---|
+| Director — overall vision and judgment | Master builder / user — judging what to build |
+| Script (manuscript) — natural language | Natural-language source — what, for whom, how it behaves |
+| Cinematography, editing, sound, VFX — specialist crew | AI — picks up the engineering layer as a whole |
+| Cast, set, costumes | AI-generated UI, logic, data structures |
+| The film (artifact) | The app (artifact) |
+
+**A director does not learn the camera. A screenwriter does not learn lighting. The audience does not know how the film was made.** Even so, the film exists and carries value. App-making takes the same shape — the user does not learn engineering, AI picks up the engineering work, end users do not know how it was made; apps still exist.
+
+Just as the printing press eliminated the scribe but not the book, the LLM shrinks the software engineer but not the app. **Only the way of making changes** — and the new way is closer to film-making than to book-printing.
+
+> Engineering-as-craft for software disappears; apps do not.
+> **App-making comes to resemble film-making** — creative judgment at
+> the center, with technical crew (= AI) gathered around it.
+
+This is the most precise statement of the structural change this sub-series has been arguing — software engineers shrink dramatically, while builders (those who write the manuscript, who judge) remain as **the directors of the AI era**.
+
 ## In closing
 
 Compress the conclusion of the Software sub-series, all eleven

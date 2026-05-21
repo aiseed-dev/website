@@ -68,7 +68,11 @@ EN ビルドのみコピー、無いものは両言語にコピー）。
 - **Blog**: 時事的な構造分析ノート（イラン戦争・サプライチェーン断絶など）
 - **Claudeと一緒に学ぶDebian**: Claudeを横に置いて読む新しい形の教科書（全24章）
 - **AIネイティブな仕事の作法**: Office・Java・C# から離れて Markdown・JSON・
-  Python で AI を同僚として使う実用エッセイ（独立タイポグラフィ）
+  Python で AI を同僚として使う実用エッセイ（独立タイポグラフィ）。
+  サブシリーズ「ソフトウェア開発編」（全 11 章）で **ソフトウェア工学から
+  リベラルアーツへの基盤転換** を論証。底流の概念フレーム（15 概念）は
+  `framing-second-renaissance` スキルに集約 ── 合成的入口はブログ
+  [`021-software-three-transitions`](articles/blog/021-software-three-transitions/)
 
 ## 技術構成
 

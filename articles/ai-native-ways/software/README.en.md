@@ -16,11 +16,23 @@ history). This is the bass line of the sub-series.
 The canonical outline is `docs/Ai-native-software-outline.md`. The
 authoring playbook lives in the skill
 `building-ai-native-software-series` (`.agents/skills/`).
-Japanese version of this README: [`README.md`](README.md).
+The full conceptual frame (15 interlocking concepts) lives in the
+`framing-second-renaissance` skill. Japanese version of this README:
+[`README.md`](README.md).
 
 ## Status
 
 **All 11 chapters published** (JA + EN, 22 files in total).
+
+A short synthesizing entry point (promotional) lives in the blog post
+[`articles/blog/021-software-three-transitions/`](../../blog/021-software-three-transitions/),
+which compresses the sub-series argument into three pairs of words:
+"software engineer → builder", "software engineering → liberal arts",
+"employment → free person". The deeper arguments are concentrated in
+Chapter 11 ("The transition completes in a few years"), in the Second
+Renaissance section (9-item table + AI revolution as IT revolution's
+completion + LLM as statistical-processing tool + app-making resembles
+film-making + not only the AI revolution + creation AND upheaval).
 
 ## File layout
 

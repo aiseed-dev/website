@@ -4,8 +4,11 @@ from __future__ import annotations
 
 import flet as ft
 
+from debian_migrate.pages.desktop_env import DesktopEnvPage
 from debian_migrate.pages.export import ExportPage
 from debian_migrate.pages.hardware import HardwarePage
+from debian_migrate.pages.ime import ImePage
+from debian_migrate.pages.install_plan import InstallPlanPage
 from debian_migrate.pages.inventory import InventoryPage
 from debian_migrate.pages.replacements import ReplacementsPage
 from debian_migrate.pages.troubleshooting import TroubleshootingPage
@@ -19,7 +22,10 @@ STEPS = [
     ("/replacements", "代替候補"),
     ("/hardware", "ハードウェア確認"),
     ("/usb", "USB 作成"),
-    ("/troubleshooting", "事前トラブル予防"),
+    ("/troubleshooting", "トラブル予防"),
+    ("/desktop", "デスクトップ環境"),
+    ("/ime", "日本語入力"),
+    ("/install-plan", "アプリ導入計画"),
     ("/export", "まとめ"),
 ]
 
@@ -116,6 +122,9 @@ def App() -> ft.Control:
                     ft.Route(path="hardware", component=HardwarePage),
                     ft.Route(path="usb", component=UsbInstallerPage),
                     ft.Route(path="troubleshooting", component=TroubleshootingPage),
+                    ft.Route(path="desktop", component=DesktopEnvPage),
+                    ft.Route(path="ime", component=ImePage),
+                    ft.Route(path="install-plan", component=InstallPlanPage),
                     ft.Route(path="export", component=ExportPage),
                 ],
             )

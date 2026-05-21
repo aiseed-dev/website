@@ -127,6 +127,85 @@ def usb_prompt(devices: list[UsbDevice], selected: str | None) -> str:
     return "\n".join(lines)
 
 
+def desktop_env_prompt(hw: HardwareInfo, chosen: str | None) -> str:
+    """第 9 章: デスクトップ環境の選択相談プロンプト."""
+    return "\n".join(
+        [
+            system_header(),
+            "",
+            "# 私のハードウェア要点",
+            f"- メモリ: {hw.ram_gb} GB",
+            f"- CPU: {hw.cpu_model} ({hw.cpu_cores} コア)",
+            f"- GPU: {hw.gpu}",
+            "",
+            "# 現在の選択",
+            f"- 仮選択: **{chosen or '(未選択)'}**",
+            "",
+            "# 質問",
+            "私のハードウェアと用途 (主に [ ← 書く ]) を踏まえて、",
+            "GNOME / KDE Plasma / XFCE / Cinnamon / LXQt のどれが",
+            "一番合うか、決め手と注意点を挙げてください。",
+            "本書 第 9 章 (https://aiseed.dev/claude-debian/09-desktop-environment/)",
+            "の流儀で、最後にインストール後の最初の設定 (タイル WM、ダーク",
+            "テーマ、フォント、外部モニター) も触れてください。",
+        ]
+    )
+
+
+def ime_prompt(hw: HardwareInfo, desktop: str | None) -> str:
+    """第 10 章: 日本語入力 (Fcitx5 + Mozc) 相談プロンプト."""
+    return "\n".join(
+        [
+            system_header(),
+            "",
+            "# 環境",
+            f"- 予定 OS: Debian (デスクトップ: {desktop or '未選択'})",
+            f"- メモリ: {hw.ram_gb} GB",
+            "",
+            "# 想定する標準構成",
+            "- Fcitx5 + Mozc を `sudo apt install fcitx5 fcitx5-mozc fcitx5-config-qt` で導入",
+            "- `im-config -n fcitx5` で既定化",
+            "- ~/.profile に GTK_IM_MODULE / QT_IM_MODULE / XMODIFIERS を追加",
+            "",
+            "# 質問",
+            "上の構成で躓きがちな点と対処を、想定デスクトップ環境 (上記)",
+            "に合わせて教えてください。特に:",
+            "- Wayland と X11 での挙動の違い",
+            "- Electron アプリ (VSCode / Slack 等) で日本語が入らない時の対処",
+            "- Mozc のキー設定 (MS-IME 風 / ATOK 風) のおすすめ",
+            "本書 第 10 章 (https://aiseed.dev/claude-debian/10-japanese-input/)",
+            "の流儀でお願いします。",
+        ]
+    )
+
+
+def install_plan_prompt(lines: list[tuple[str, str, str, str]]) -> str:
+    """第 11 章: 選択された代替アプリの Debian 導入計画相談."""
+    out = [
+        "# 私が選んだ Debian での代替アプリ",
+        "",
+    ]
+    if not lines:
+        out.append("(まだ選んでいない)")
+    else:
+        for label, _alt, cmd, note in lines:
+            out.append(f"- **{label}**")
+            out.append(f"  - 候補のコマンド: `{cmd}`")
+            if note:
+                out.append(f"  - メモ: {note}")
+    out += [
+        "",
+        "# 質問",
+        "この導入計画に、入れ忘れた依存パッケージや、",
+        ".deb / Flatpak / Snap のどれで入れるべきかの判断、",
+        "Debian の contrib / non-free-firmware リポジトリを",
+        "有効化する必要があるかどうか、を指摘してください。",
+        "本書 第 11 章 (https://aiseed.dev/claude-debian/11-application-selection/)",
+        "の流儀でお願いします。",
+    ]
+    return "\n".join(out)
+
+
 def troubleshooting_prompt(hw: HardwareInfo) -> str:
     """第 8 章: インストール直後のトラブル相談テンプレート.
 

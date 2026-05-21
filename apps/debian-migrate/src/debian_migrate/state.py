@@ -65,6 +65,7 @@ class WizardState:
     hardware: HardwareInfo = field(default_factory=HardwareInfo)
     usb_devices: list[UsbDevice] = field(default_factory=list)
     selected_usb: str | None = None
+    chosen_desktop: str | None = None  # ch 9: "gnome" / "kde" / ...
 
 
 # Module-level singleton. Flet's declarative components read/write this

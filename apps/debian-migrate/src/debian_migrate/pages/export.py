@@ -51,7 +51,7 @@ def ExportPage() -> ft.Control:
                 [
                     secondary_button(
                         "戻る",
-                        on_click=lambda _: navigate("/troubleshooting"),
+                        on_click=lambda _: navigate("/install-plan"),
                         icon=ft.Icons.ARROW_BACK,
                     ),
                     ft.Container(expand=True),
@@ -245,6 +245,67 @@ def _render_markdown() -> str:
             lines.append(
                 f"  - {d.path}: {d.label} ({d.size_gb}GB)"
             )
+
+    # --- ch 9: desktop env ---
+    from debian_migrate.pages.desktop_env import DESKTOP_ENVS
+    chosen_de = next(
+        (d for d in DESKTOP_ENVS if d["id"] == STATE.chosen_desktop),
+        None,
+    )
+    lines += [
+        "",
+        "## デスクトップ環境 (第 9 章)",
+        f"- 選択: {chosen_de['name'] if chosen_de else '(未選択)'}",
+    ]
+    if chosen_de:
+        lines.append(f"- 後から入れるなら: `sudo apt install {chosen_de['tasksel']}`")
+        lines.append(f"- メモ: {chosen_de['summary']}")
+
+    # --- ch 10: IME ---
+    lines += [
+        "",
+        "## 日本語入力 (第 10 章)",
+        "標準構成: **Fcitx5 + Mozc**。Debian 起動後に以下を順番に:",
+        "",
+        "```bash",
+        "sudo apt install fcitx5 fcitx5-mozc fcitx5-config-qt",
+        "im-config -n fcitx5",
+        "# ~/.profile に追加:",
+        "#   export GTK_IM_MODULE=fcitx",
+        "#   export QT_IM_MODULE=fcitx",
+        "#   export XMODIFIERS=@im=fcitx",
+        "# ログアウト → 再ログイン",
+        "```",
+    ]
+
+    # --- ch 11: install plan ---
+    from debian_migrate.pages.install_plan import (
+        _build_batch_script,
+        _build_install_lines,
+    )
+    install_lines = _build_install_lines()
+    lines += [
+        "",
+        "## アプリ導入計画 (第 11 章)",
+    ]
+    if not install_lines:
+        lines.append("(代替候補で「OK」を押した項目がない)")
+    else:
+        lines.append(f"対象: {len(install_lines)} アプリ。")
+        lines.append("")
+        lines.append("一括スクリプト:")
+        lines.append("")
+        lines.append("```bash")
+        lines.append(_build_batch_script(install_lines))
+        lines.append("```")
+        lines.append("")
+        lines.append("個別の導入方法:")
+        lines.append("")
+        for label, _alt, cmd, note in install_lines:
+            lines.append(f"- **{label}**")
+            lines.append(f"  - `{cmd}`")
+            if note:
+                lines.append(f"  - {note}")
 
     lines += [
         "",

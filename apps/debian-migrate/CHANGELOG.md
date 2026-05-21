@@ -1,5 +1,34 @@
 # Changelog
 
+## 0.3.0 — 2026-05-22 (第 9・10・11 章追加、ポストインストール計画完成)
+
+### 追加
+- **第 9 章 デスクトップ環境** (`/desktop`) ── GNOME / KDE Plasma /
+  XFCE / Cinnamon / LXQt の 5 つを比較カードで提示。メモリから推奨
+  DE を自動算出 (RAM 2GB→LXQt / 4GB→XFCE / 16GB→GNOME 等)。
+  各 DE の「いいところ」「注意点」を 2 列で並べ、後から入れる
+  `apt install task-*-desktop` コマンドを生成。
+- **第 10 章 日本語入力** (`/ime`) ── Fcitx5 + Mozc 導入の 4
+  ステップコマンドをコピーボタン付きで提示。よくある困りごと
+  (半角/全角・変換キー設定・Wayland / Electron での挙動) と、
+  `fcitx5-diagnose` などの診断コマンド。
+- **第 11 章 アプリ導入計画** (`/install-plan`) ── ステップ 3 で
+  「OK」を押した代替候補から、Debian での導入方法を自動引き当て。
+  apt / Flatpak / 手動の 3 種類に分類し、**一括スクリプト**として
+  まとめてコピーできる。`data/install_commands.py` に 100+ 件の
+  アプリ → Debian 導入方法マップ。
+- 各章対応の Claude プロンプトテンプレート (`desktop_env_prompt`
+  / `ime_prompt` / `install_plan_prompt`)。
+- Markdown レポートに第 9・10・11 章の選択結果と一括スクリプトを
+  出力。
+
+### 変更
+- step 数 7 → 10 (Troubleshooting → Desktop → IME → Install Plan
+  → Export の順)。
+- step indicator が長くなったので wrap 表示で折り返し可能。
+- Troubleshooting の「次へ」を /desktop に。Export の「戻る」を
+  /install-plan に。
+
 ## 0.2.0 — 2026-05-22 (第 8 章「事前トラブル予防」追加)
 
 ### 追加

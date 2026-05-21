@@ -145,7 +145,8 @@ def TroubleshootingPage() -> ft.Control:
                         lambda: troubleshooting_prompt(STATE.hardware)
                     ),
                     primary_button(
-                        "まとめへ", on_click=lambda _: navigate("/export")
+                        "デスクトップ環境へ",
+                        on_click=lambda _: navigate("/desktop"),
                     ),
                 ],
                 spacing=8,

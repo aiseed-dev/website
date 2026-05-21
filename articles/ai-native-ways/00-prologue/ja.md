@@ -9,8 +9,8 @@ label: AI Native 00
 title_html: 事務処理は<span class="accent">Office</span>。<br>業務ソフトは<span class="accent">Java/C#</span>。<br>しかしAIは、<span class="accent">Pythonとテキスト</span>。
 prev_slug:
 prev_title:
-next_slug: python
-next_title: 処理を書く ── AIにPythonで書いてもらう
+next_slug: manual
+next_title: AI（ChatGPT・Claudeなど）活用マニュアル
 ---
 
 # 序章 — AIの母国語は、PythonとMarkdown形式のテキスト

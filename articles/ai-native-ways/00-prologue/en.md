@@ -10,8 +10,8 @@ label: AI Native 00
 title_html: Paperwork is <span class="accent">Office</span>.<br>Business systems are <span class="accent">Java/C#</span>.<br>But AI is <span class="accent">Python and text</span>.
 prev_slug:
 prev_title:
-next_slug: python
-next_title: "Writing Logic — Have AI Write Python For You"
+next_slug: manual
+next_title: "AI (ChatGPT, Claude, etc.) Practical Manual"
 ---
 
 # Prologue — AI's native language is Python and Markdown-style text

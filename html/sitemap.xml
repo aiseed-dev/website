@@ -181,6 +181,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/blog/software-three-transitions/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/blog/nadella-hegel-cunning-of-reason/</loc>
     <lastmod>2026-05-19</lastmod>
     <priority>0.7</priority>
@@ -279,6 +284,11 @@
     <loc>https://aiseed.dev/blog/grid-attack-naphtha/</loc>
     <lastmod>2026-04-06</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/blog/software-three-transitions/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://aiseed.dev/en/blog/nadella-hegel-cunning-of-reason/</loc>
@@ -641,6 +651,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/ai-native-ways/manual/</loc>
+    <lastmod>2026-05-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/ai-native-ways/python/</loc>
     <lastmod>2026-05-02</lastmod>
     <priority>0.6</priority>
@@ -708,6 +723,11 @@
   <url>
     <loc>https://aiseed.dev/en/ai-native-ways/prologue/</loc>
     <lastmod>2026-05-01</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/ai-native-ways/manual/</loc>
+    <lastmod>2026-05-21</lastmod>
     <priority>0.5</priority>
   </url>
   <url>

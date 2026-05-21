@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.4.0 — 2026-05-22 (第 12 + 17 章追加、wizard 11 ステップに)
+
+### 追加
+- **運用と長期メンテ** (`/operations`) ── 本書 第 12 章 (dotfiles
+  管理) と 第 17 章 (アップデートとメンテ) を 1 ページに統合。
+  - dotfiles 管理対象の一覧 (.bashrc / .profile / .config / .ssh /
+    .gitconfig / .config/nvim / VSCode settings)
+  - 初期化スクリプト例 (Git init + symlink) をコピー可
+  - 秘密鍵をコミットしない注意書き
+  - 週次 / 月次のメンテコマンド 5 件 (apt upgrade / autoremove /
+    flatpak update / 容量確認 / timeshift スナップショット)
+- `operations_prompt()` テンプレート (dotfiles 構成 + アップグレード
+  手順を Claude に相談)
+- Markdown レポートに第 12 + 17 章のサマリーを出力
+
+### 変更
+- step 数 10 → 11。Install Plan → Operations → Export の順に。
+
 ## 0.3.0 — 2026-05-22 (第 9・10・11 章追加、ポストインストール計画完成)
 
 ### 追加

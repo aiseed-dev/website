@@ -123,7 +123,8 @@ def InstallPlanPage() -> ft.Control:
                         lambda: install_plan_prompt(lines)
                     ),
                     primary_button(
-                        "まとめへ", on_click=lambda _: navigate("/export")
+                        "運用とメンテへ",
+                        on_click=lambda _: navigate("/operations"),
                     ),
                 ],
                 spacing=8,

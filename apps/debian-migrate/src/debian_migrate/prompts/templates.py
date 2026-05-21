@@ -179,6 +179,30 @@ def ime_prompt(hw: HardwareInfo, desktop: str | None) -> str:
     )
 
 
+def operations_prompt(desktop: str | None) -> str:
+    """第 12 章 + 第 17 章: 運用と長期メンテの相談プロンプト."""
+    return "\n".join(
+        [
+            system_header(),
+            "",
+            "# 想定 OS",
+            f"- Debian (デスクトップ: {desktop or '未選択'})",
+            "",
+            "# 質問",
+            "私の dotfiles を Git で管理する構成を提案してください。",
+            "- 含めるべきファイル / フォルダ (シェル・エディタ・端末)",
+            "- 含めてはいけないもの (秘密鍵・トークン)",
+            "- symlink 戦略 vs `stow` vs `chezmoi` の選択",
+            "また、アップデートの周期と、安全なメジャーアップグレード",
+            "(stable → next stable) の手順 (timeshift / snapshot を含む) も",
+            "教えてください。",
+            "本書 第 12 章 (https://aiseed.dev/claude-debian/12-config-management/) と",
+            "第 17 章 (https://aiseed.dev/claude-debian/17-updates-maintenance/) の",
+            "流儀でお願いします。",
+        ]
+    )
+
+
 def install_plan_prompt(lines: list[tuple[str, str, str, str]]) -> str:
     """第 11 章: 選択された代替アプリの Debian 導入計画相談."""
     out = [

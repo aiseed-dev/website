@@ -147,6 +147,16 @@ def test_install_plan_prompt_with_lines():
     assert "sudo apt install libreoffice" in text
 
 
+# --- ch 12 + 17 -------------------------------------------------------
+
+def test_operations_prompt():
+    from debian_migrate.prompts.templates import operations_prompt
+    text = operations_prompt("kde")
+    assert "dotfiles" in text
+    assert "timeshift" in text or "snapshot" in text
+    assert "kde" in text
+
+
 @pytest.fixture(autouse=True)
 def reset_state():
     snapshot = (

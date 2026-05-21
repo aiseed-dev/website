@@ -51,7 +51,7 @@ def ExportPage() -> ft.Control:
                 [
                     secondary_button(
                         "戻る",
-                        on_click=lambda _: navigate("/install-plan"),
+                        on_click=lambda _: navigate("/operations"),
                         icon=ft.Icons.ARROW_BACK,
                     ),
                     ft.Container(expand=True),
@@ -306,6 +306,26 @@ def _render_markdown() -> str:
             lines.append(f"  - `{cmd}`")
             if note:
                 lines.append(f"  - {note}")
+
+    # --- ch 12 + 17: operations ---
+    lines += [
+        "",
+        "## 運用と長期メンテ (第 12 章 + 第 17 章)",
+        "",
+        "**設定を Git で管理 (dotfiles):**",
+        "- 対象: ~/.bashrc / ~/.profile / ~/.config/* / ~/.gitconfig / ~/.ssh/config",
+        "- 秘密鍵 (id_*) や API トークンは **絶対にコミットしない**",
+        "- ツール: 手作業 + symlink、または `stow` / `chezmoi`",
+        "",
+        "**定期メンテのコマンド:**",
+        "",
+        "```bash",
+        "sudo apt update && sudo apt upgrade -y     # 週 1",
+        "sudo apt autoremove --purge && sudo apt clean  # 月 1",
+        "flatpak update -y                            # 週 1",
+        "sudo timeshift --create --comments 'before upgrade'  # メジャー更新の前",
+        "```",
+    ]
 
     lines += [
         "",

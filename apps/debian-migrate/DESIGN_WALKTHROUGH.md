@@ -28,20 +28,21 @@
 
 step indicator は wrap=True なので、画面が狭い場合は折り返す。
 
-**10 step の流れ:**
+**11 step の流れ:**
 
-| # | path | フェーズ |
-|---|---|---|
-| 1 | `/` | 入口 |
-| 2 | `/inventory` | **計画 (pre-install)** ── アプリ棚卸し (4 章) |
-| 3 | `/replacements` | 同上 ── 代替候補 (4 章) |
-| 4 | `/hardware` | 同上 ── ハードウェア確認 (6 章) |
-| 5 | `/usb` | **作成** ── USB インストーラ (7 章) |
-| 6 | `/troubleshooting` | **post-install プレビュー** ── トラブル予防 (8 章) |
-| 7 | `/desktop` | 同上 ── デスクトップ環境 (9 章) |
-| 8 | `/ime` | 同上 ── 日本語入力 (10 章) |
-| 9 | `/install-plan` | 同上 ── アプリ導入計画 (11 章) |
-| 10 | `/export` | **出力** ── Markdown レポート + Claude プロンプト |
+| # | path | フェーズ | 本書対応 |
+|---|---|---|---|
+| 1 | `/` | 入口 | — |
+| 2 | `/inventory` | **計画 (pre-install)** ── アプリ棚卸し | 4 章 |
+| 3 | `/replacements` | 同上 ── 代替候補 | 4 章 |
+| 4 | `/hardware` | 同上 ── ハードウェア確認 | 6 章 |
+| 5 | `/usb` | **作成** ── USB インストーラ | 7 章 |
+| 6 | `/troubleshooting` | **post-install プレビュー** ── トラブル予防 | 8 章 |
+| 7 | `/desktop` | 同上 ── デスクトップ環境 | 9 章 |
+| 8 | `/ime` | 同上 ── 日本語入力 | 10 章 |
+| 9 | `/install-plan` | 同上 ── アプリ導入計画 | 11 章 |
+| 10 | `/operations` | **運用** ── dotfiles + メンテ | 12 + 17 章 |
+| 11 | `/export` | **出力** ── Markdown レポート + Claude プロンプト | — |
 
 ## 各画面
 
@@ -207,7 +208,25 @@ Fcitx5 + Mozc の標準構成を導入するための画面。
 データソース: `data/install_commands.py` に 100+ 件のアプリ →
 Debian 導入方法のマップ。
 
-### 10. まとめ (`/export`)
+### 10. 運用と長期メンテ (`/operations`) ── **第 12 章 + 第 17 章**
+
+2 つのカード:
+
+**① 設定ファイルを Git で管理 (第 12 章)**
+- 管理対象のファイル / フォルダを 7 件、モノスペース + 説明の 2 列表
+- 初期化スクリプト例 (`mkdir ~/dotfiles && git init && cp & symlink`)
+  をコピーボタン付きで提示
+- 「秘密鍵 / API トークンは絶対にコミットしない」の橙色注意
+
+**② アップデートとメンテナンス (第 17 章)**
+- 5 件のコマンドをコピーボタン付きで:
+  - 週 1: `sudo apt update && upgrade -y`
+  - 月 1: `sudo apt autoremove --purge && apt clean`
+  - 週 1: `flatpak update -y`
+  - ディスク容量確認
+  - メジャー更新前: `timeshift --create`
+
+### 11. まとめ (`/export`)
 
 - 上部に 5 つの統計カード (検出アプリ数 / 代替確認 / 要検討 /
   ハードウェア警告 / 選択 USB)

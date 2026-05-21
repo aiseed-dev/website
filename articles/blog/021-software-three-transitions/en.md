@@ -119,6 +119,27 @@ History textbooks credit the printing press with preparing the ground for the Re
 
 The speed of diffusion is on another order. What took the printing press decades, the AI era achieves **in years**. The five-year horizon this sub-series draws is, against this difference in intensity, **a conservative estimate**.
 
+### Not only the AI revolution
+
+We have been calling this "the AI era," but trying to capture the current structural change through AI alone **misses half of it**. The transitions running in parallel:
+
+- **The end of fossil resources** — collapse of the premises of an oil-dependent society ([Structural Analysis 02](/en/insights/fossil-materials/), [14](/en/insights/subtraction-design/))
+- **Geopolitical multipolarity** — the end of US unipolarity, Trump, Ukraine, Iran, China
+- **A generational shift in the defense industry** — from large platforms to drones + AI; the boundary of "who can have a defense industry" gets rewritten ([Structural Analysis 11](/en/insights/healthcare-fiscal/))
+- **The reconstruction of agriculture** — limits of chemical fertilizer and industrial-scale farming; rise of regenerative agriculture ([Structural Analysis 03](/en/insights/agriculture/))
+- **The collapse of the premises of finance and trade** — the dollar standard, the global supply chain
+- **Simultaneous breakdown of demographics, cities, healthcare, and pensions** — institutions premised on desk work no longer fit the new society ([Structural Analysis 11](/en/insights/healthcare-fiscal/))
+- And the **AI revolution** — the **accelerator** for all of the above
+
+Just as the First Renaissance must be understood as a **composite** of the printing press, the age of discovery, the Reformation, the scientific revolution, the rise of the nation-state, the rise of the commercial bourgeoisie, and the labor shifts after the Black Death, the Second Renaissance cannot be captured by **the AI revolution alone**.
+
+Multiple independent transitions are running in parallel; their convergence point is what makes "an era that is no longer the same." AI is the strongest accelerator among them, but it is not the cause of all of them.
+
+> Calling this "the AI revolution era" sees the present too narrowly.
+> Unless you frame it as **the Second Renaissance** — a transitional period
+> in which multiple independent transitions unfold at once — you see only
+> half of what is happening.
+
 ### An age of creation, and an age of upheaval
 
 The Renaissance is in the textbooks as a luminous age of creation — Leonardo, Michelangelo, Galileo, Gutenberg. The same age was also an **age of violent upheaval**. The Reformation and the wars of religion (the Thirty Years' War cut Central Europe's population by roughly a third), the corruption and schism of the papacy, recurring plague, *populist demagogues* like Savonarola staging the "bonfire of the vanities" in Florence, strongman politicians like Cesare Borgia who became Machiavelli's model in *The Prince*. **While the old order is collapsing and the new one has not yet stood up, people seek refuge in strong men and extreme words.**

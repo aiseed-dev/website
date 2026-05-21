@@ -119,6 +119,27 @@ History textbooks credit the printing press with preparing the ground for the Re
 
 The speed of diffusion is on another order. What took the printing press decades, the AI era achieves **in years**. The five-year horizon this sub-series draws is, against this difference in intensity, **a conservative estimate**.
 
+### The AI revolution is the completion of the IT revolution
+
+Treating "the AI revolution" as a separate, new revolution is another misreading. **The AI revolution is the completion of the IT revolution** — seventy years of IT revolution finally fulfilling its original promise.
+
+Think about it — the IT industry, until now, has had **humans hand-writing the code that automates work**. The IT revolution's original promise was "computers do the work, humans are freed." Yet for seventy years, **the side that implements the automation has been doing it by hand** — a strange structure. The consequences:
+
+- "Programmer" became one of the highest-paid professions
+- The cost of automation often exceeded the cost of doing the work manually
+- A massive industry of "manual labor for automation" emerged — SIers, consultancies, SaaS
+
+Logically, this is odd. **If automation is the goal, the work of making the automation should be automated too.**
+
+The LLM dissolves this twist. AI writes the code — and only then is the IT revolution's original promise (humans freed from execution, turning to judgment and creation) literally fulfilled. **The AI revolution is not the beginning of a new revolution; it is the completion of the IT revolution.**
+
+> For 70 years the IT revolution promised automation while implementing
+> that automation by hand. That era ends. **With AI writing the
+> automation code**, the IT revolution is, 70 years late, fulfilling
+> its own promise.
+
+That completion functions as the strongest accelerator of the Second Renaissance. Read through the frame of "IT revolution completion," the contraction of the SIer industry and the replacement of the software-engineer role by the builder are **inevitable consequences**, not sudden shocks.
+
 ### Not only the AI revolution
 
 We have been calling this "the AI era," but trying to capture the current structural change through AI alone **misses half of it**. The transitions running in parallel:

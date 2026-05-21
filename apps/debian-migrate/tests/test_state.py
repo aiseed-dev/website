@@ -7,6 +7,7 @@ from debian_migrate.prompts.templates import (
     inventory_prompt,
     replacements_prompt,
     summary_prompt,
+    troubleshooting_prompt,
     usb_prompt,
 )
 from debian_migrate.state import (
@@ -79,3 +80,38 @@ def test_usb_prompt_renders():
 def test_summary_prompt_renders():
     text = summary_prompt([], [], HardwareInfo(), None)
     assert "全体まとめ" in text
+
+
+def test_troubleshooting_prompt_renders():
+    hw = HardwareInfo(
+        os_name="Linux",
+        os_version="6.18",
+        arch="x86_64",
+        cpu_model="Intel Xeon",
+        cpu_cores=4,
+        ram_gb=8.0,
+        disks=[],
+        gpu="NVIDIA GeForce RTX",
+    )
+    text = troubleshooting_prompt(hw)
+    assert "私の Debian 環境" in text
+    assert "NVIDIA GeForce RTX" in text
+    assert "症状" in text and "診断コマンド" in text
+
+
+def test_troubleshooting_categories_predictions():
+    """The 7-category predictor should fire deterministically given known hw."""
+    from debian_migrate.pages.troubleshooting import CATEGORIES
+
+    assert len(CATEGORIES) == 7
+
+    nvidia_hw = HardwareInfo(gpu="NVIDIA GeForce")
+    intel_hw = HardwareInfo(gpu="Intel UHD")
+
+    display = next(c for c in CATEGORIES if c["slug"] == "display")
+    assert display["predict"](nvidia_hw) is True
+    assert display["predict"](intel_hw) is False
+
+    sound = next(c for c in CATEGORIES if c["slug"] == "sound")
+    # Sound is expected for everyone
+    assert sound["predict"](intel_hw) is True

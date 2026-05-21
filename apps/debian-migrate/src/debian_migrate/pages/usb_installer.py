@@ -68,7 +68,8 @@ def UsbInstallerPage() -> ft.Control:
                         lambda: usb_prompt(STATE.usb_devices, STATE.selected_usb)
                     ),
                     primary_button(
-                        "まとめへ", on_click=lambda _: navigate("/export")
+                        "トラブル予防へ",
+                        on_click=lambda _: navigate("/troubleshooting"),
                     ),
                 ],
                 spacing=8,

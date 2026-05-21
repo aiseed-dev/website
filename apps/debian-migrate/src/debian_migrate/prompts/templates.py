@@ -127,6 +127,59 @@ def usb_prompt(devices: list[UsbDevice], selected: str | None) -> str:
     return "\n".join(lines)
 
 
+def troubleshooting_prompt(hw: HardwareInfo) -> str:
+    """第 8 章: インストール直後のトラブル相談テンプレート.
+
+    本書 第 8 章にある「トラブル共通テンプレート」を、検出済みの
+    ハードウェア情報で前置きしたバージョン。ユーザーは送信前に
+    `(症状)` と `(機種)` と診断コマンドの出力を埋める。
+    """
+    disks_one_line = (
+        ", ".join(
+            f"{d['device']}({d['fstype']},{d['total_gb']}GB)"
+            for d in hw.disks
+        )
+        or "(検出なし)"
+    )
+    lines = [
+        system_header(),
+        "",
+        "# 私の Debian 環境",
+        f"- OS: {hw.os_name} {hw.os_version}",
+        f"- アーキ: {hw.arch}",
+        f"- CPU: {hw.cpu_model} ({hw.cpu_cores} コア)",
+        f"- メモリ: {hw.ram_gb} GB",
+        f"- GPU: {hw.gpu}",
+        f"- ディスク: {disks_one_line}",
+        "",
+        "# 症状",
+        "(ここに、起きていることを 1〜2 行で書く)",
+        "",
+        "# 機種 / 直前にやったこと",
+        "- 機種: (メーカー・モデル)",
+        "- 直前にやったこと: (操作)",
+        "",
+        "# 診断コマンドの出力",
+        "```",
+        "$ uname -a",
+        "(出力)",
+        "",
+        "$ lspci -nnk | grep -A 2 -i (関連キーワード)",
+        "(出力)",
+        "",
+        "$ journalctl -b -p err",
+        "(出力)",
+        "```",
+        "",
+        "# 質問",
+        "原因候補を可能性の高い順に三つ挙げ、それぞれに対する確認手順を",
+        "教えてください。破壊的なコマンドには注意書きを付けてください。",
+        "本書 第 8 章 (https://aiseed.dev/claude-debian/08-first-troubleshooting/)",
+        "の流儀でお願いします。",
+    ]
+    return "\n".join(lines)
+
+
 def summary_prompt(
     apps: list[DetectedApp],
     reps: list[Replacement],

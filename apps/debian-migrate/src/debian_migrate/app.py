@@ -8,6 +8,7 @@ from debian_migrate.pages.export import ExportPage
 from debian_migrate.pages.hardware import HardwarePage
 from debian_migrate.pages.inventory import InventoryPage
 from debian_migrate.pages.replacements import ReplacementsPage
+from debian_migrate.pages.troubleshooting import TroubleshootingPage
 from debian_migrate.pages.usb_installer import UsbInstallerPage
 from debian_migrate.pages.welcome import WelcomePage
 
@@ -18,6 +19,7 @@ STEPS = [
     ("/replacements", "代替候補"),
     ("/hardware", "ハードウェア確認"),
     ("/usb", "USB 作成"),
+    ("/troubleshooting", "事前トラブル予防"),
     ("/export", "まとめ"),
 ]
 
@@ -113,6 +115,7 @@ def App() -> ft.Control:
                     ft.Route(path="replacements", component=ReplacementsPage),
                     ft.Route(path="hardware", component=HardwarePage),
                     ft.Route(path="usb", component=UsbInstallerPage),
+                    ft.Route(path="troubleshooting", component=TroubleshootingPage),
                     ft.Route(path="export", component=ExportPage),
                 ],
             )

@@ -148,9 +148,21 @@ The structural consequences:
 - The "author/manuscript" function — writing in natural language what the app should do, for whom, how it should behave — **remains and becomes central**. This is concept 3 (liberal arts) made concrete.
 - The "engineering specialist" function — implementing in code — **dissolves into AI**, the way camera operation might one day dissolve into a single AI cinematographer.
 - The "director" function — orchestrating, judging, integrating, taking responsibility — is the **master builder** role (concept 2), now sharpened by a more vivid analogy than lawyer/doctor: the director.
-- The **boundary between professional and amateur dissolves**: indie filmmakers and studio productions coexist; indie app-authors (single users) and large software guilds (master builders) will coexist.
 
-Stated in blog `articles/blog/021-software-three-transitions/` (### アプリ作りは映画作りに似てくる / App-making comes to resemble film-making). This concept resolves a tempting overstatement — that "applications" as a category disappear — by clarifying: the artifact survives, the engineering craft dissolves, and the model is film-making.
+**Critical refinement — the Hollywood-to-YouTube spectrum.** Film-making is not monolithic; the same category contains the Hollywood blockbuster (huge crew, hundreds of millions, years) and the YouTube video (one person, a phone, a few hours). AI-era apps run across the same spectrum:
+
+| Scale | Video parallel | App-making in the AI era |
+|---|---|---|
+| Blockbuster | Hollywood | OS, large infrastructure, core business systems — **master builder needed** (concept 2) |
+| Mid-scale | TV drama, theatrical film | Industry-wide systems, SaaS, specialized apps — 1–few builders |
+| Personal | YouTube, TikTok | Everyday personal tools — **the user is both director and crew** |
+
+The contraction of the "software engineer" role plays out differently at the two ends:
+- **Blockbuster end** — consolidation toward master builders; only those who graduate into the judgment side survive.
+- **Personal end** — no specialist needed at all; the user becomes the app's author directly.
+- **Middle layer** (industry-wide systems and SaaS) — the most violent contraction; this is exactly the SIer territory (sub-series chapters 6 and 7).
+
+Stated in blog `articles/blog/021-software-three-transitions/` (### アプリ作りは映画作りに似てくる / App-making comes to resemble film-making) and software sub-series chapter 11 (### アプリは消えない、作り方が変わる ── 映画作りに似てくる). This concept resolves a tempting overstatement — that "applications" as a category disappear — by clarifying: the artifact survives, the engineering craft dissolves, and the model is film-making — at all scales from blockbuster to YouTube.
 
 ## What this framework opposes
 

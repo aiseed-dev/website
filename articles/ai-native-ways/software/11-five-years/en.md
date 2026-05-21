@@ -544,7 +544,17 @@ Just as the printing press eliminated the scribe but not the book, the LLM shrin
 > **App-making comes to resemble film-making** — creative judgment at
 > the center, with technical crew (= AI) gathered around it.
 
-This is the most precise statement of the structural change this sub-series has been arguing — software engineers shrink dramatically, while builders (those who write the manuscript, who judge) remain as **the directors of the AI era**.
+Film-making, however, has an enormous range. **A Hollywood blockbuster still requires massive crews, hundreds of millions of dollars, and years of work**, while **a YouTube video can be made by one person with a smartphone in a few hours**. AI-era apps will have the same range.
+
+| Scale | Video production | AI-era app-making |
+|---|---|---|
+| Blockbuster | Hollywood film | OS, large infrastructure, core business systems — master builder (Chapter 9) |
+| Mid-scale | Television drama, theatrical film | Industry-wide systems, SaaS, specialized apps — 1–few builders |
+| Personal | YouTube, TikTok | Everyday personal tools — the user is both director and crew |
+
+**At the blockbuster end**, consolidation toward the master builder — judgment-centered professionals are still needed. **At the personal end**, the specialist disappears entirely — the user becomes the author. The most violent contraction happens in the **middle layer**, which is exactly the territory the SIer industry has occupied (Chapters 6 and 7).
+
+This is the most precise statement of the structural change this sub-series has been arguing — software engineers shrink dramatically (concentrated in the middle layer), while builders **remain at the blockbuster end as the directors of the AI era**, and **get absorbed into the user at the personal end**.
 
 ## In closing
 

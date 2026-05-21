@@ -183,7 +183,29 @@ Just as the printing press eliminated the scribe but not the book, the LLM shrin
 > creative judgment at the center, with the technical crew (= AI)
 > gathered around it.
 
-This follows naturally from concepts 11 (IT revolution completion) and 12 (LLM as tool). The 70-year-delayed completion of the IT revolution takes the form of a shift from "humans handle the technology" to "humans focus on judgment and the manuscript; AI handles the technology" — that is, **software development moves closer to film-making**.
+#### Both Hollywood blockbusters and YouTube videos hold
+
+Film-making, however, has an enormous range. **A Hollywood blockbuster still requires massive crews, hundreds of millions of dollars, and years of work**. A **YouTube video can be made by one person with a smartphone in a few hours**. Both extremes coexist inside the single category of "video content."
+
+AI-era apps will have the same range.
+
+| Scale | Video production | AI-era app-making |
+|---|---|---|
+| **Blockbuster** | Hollywood film — director + huge crew + hundreds of millions + years | OS, large infrastructure, core business systems — master builder + heavy AI output + sustained development |
+| **Mid-scale** | Television drama, documentary, theatrical film | Industry-wide systems, SaaS, specialized apps — 1–few builders + AI |
+| **Personal** | YouTube, TikTok — one person + phone + a few hours | Everyday personal tools — the user + natural-language instruction + a few hours |
+
+**Blockbusters need master builders (= directors)**. Not everyone can shoot a Hollywood film; not everyone can build an OS or a core business system. The quality of judgment, the maintenance of integrity, long-term stewardship, safety — these stay the domain of highly skilled professionals (this is where the lawyer/doctor analogy of Chapter 9 applies).
+
+**But YouTube-scale apps need no specialist**. The user is both director and crew. "A small tool that makes my work easier," "a household budget app," "a shared calendar for the family" — these become things anyone can produce with natural-language instructions.
+
+The shrinkage of the "software engineer" role therefore plays out differently at the two ends:
+- **Blockbuster side**: consolidation toward master builders. Whether most engineers can graduate into the judgment side is the dividing line.
+- **Personal side**: the specialist disappears entirely. The user becomes the author of their app directly.
+
+The middle — **industry-wide systems and SaaS** — is where the contraction is most violent, because this is exactly the territory the SIer industry has occupied (the structure handled in Chapters 6 and 7).
+
+This follows naturally from concepts 11 (IT revolution completion) and 12 (LLM as tool). The 70-year-delayed completion of the IT revolution takes the form of a shift from "humans handle the technology" to "humans focus on judgment and the manuscript; AI handles the technology" — that is, **software development moves closer to film-making**. And that "film-making" holds across **the full range, from Hollywood to YouTube**.
 
 ### Not only the AI revolution
 

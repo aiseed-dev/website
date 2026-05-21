@@ -292,6 +292,231 @@ TABLE: list[ReplacementEntry] = [
         "confidence": "review",
         "note": "Proton で Windows ゲームの大半が動くが、アンチチート系は不可。",
     },
+    # --- Apple iWork / native apps ---
+    {
+        "match": "pages",
+        "alternatives": ["LibreOffice Writer", "ONLYOFFICE Desktop"],
+        "confidence": "review",
+        "note": ".pages は事前に .docx / PDF で書き出す。",
+    },
+    {
+        "match": "numbers",
+        "alternatives": ["LibreOffice Calc", "ONLYOFFICE Desktop"],
+        "confidence": "review",
+        "note": ".numbers は事前に .xlsx / CSV で書き出す。",
+    },
+    {
+        "match": "keynote",
+        "alternatives": ["LibreOffice Impress", "Marp"],
+        "confidence": "review",
+        "note": ".key は事前に .pptx / PDF で書き出す。",
+    },
+    {
+        "match": "itunes",
+        "alternatives": ["Rhythmbox", "Strawberry", "Lollypop"],
+        "confidence": "review",
+        "note": "ライブラリは XML エクスポート + ファイル本体を持っていく。",
+    },
+    {
+        "match": "quicktime",
+        "alternatives": ["VLC", "mpv"],
+        "confidence": "ok",
+        "note": "ほとんどの動画形式はそのまま再生できる。",
+    },
+    {
+        "match": "photos",
+        "alternatives": ["digiKam", "Shotwell"],
+        "confidence": "review",
+        "note": "Photos ライブラリは「写真を書き出す」で全 RAW + メタを取り出してから移行。",
+    },
+    {
+        "match": "books",
+        "alternatives": ["Calibre", "Foliate"],
+        "confidence": "review",
+        "note": "DRM 付き電子書籍は Calibre でも開けないので注意。",
+    },
+    {
+        "match": "garageband",
+        "alternatives": ["Ardour", "LMMS"],
+        "confidence": "review",
+        "note": "プロジェクトは互換性なし。録音素材は WAV で書き出してから持っていく。",
+    },
+    {
+        "match": "logic pro",
+        "alternatives": ["Ardour", "Reaper (Linux)"],
+        "confidence": "review",
+        "note": "プロ向けの選択肢は限定的。Reaper はクロスプラットフォームで Logic に近い。",
+    },
+    # --- 日本市場で多い業務系 ---
+    {
+        "match": "一太郎",
+        "alternatives": ["LibreOffice Writer", "ONLYOFFICE Desktop"],
+        "confidence": "review",
+        "note": "JTD ファイルは LibreOffice でも崩れる。PDF / DOCX に書き出してから持っていく。",
+    },
+    {
+        "match": "花子",
+        "alternatives": ["Inkscape", "LibreOffice Draw"],
+        "confidence": "review",
+        "note": "図面は SVG / PDF で書き出してから移行。",
+    },
+    {
+        "match": "筆まめ",
+        "alternatives": ["LibreOffice + 差し込み印刷", "Python + ReportLab"],
+        "confidence": "review",
+        "note": "年賀状ソフトの Linux 版はない。住所録は CSV エクスポートして再構成。",
+    },
+    {
+        "match": "筆王",
+        "alternatives": ["LibreOffice + 差し込み印刷", "Python + ReportLab"],
+        "confidence": "review",
+        "note": "住所録を CSV / VCF にエクスポートしてから移行。",
+    },
+    {
+        "match": "弥生会計",
+        "alternatives": ["GnuCash", "freee / Money Forward (Web)"],
+        "confidence": "missing",
+        "note": "Linux ネイティブの代替はほぼ無い。クラウド会計 (freee 等) に移すのが現実的。",
+    },
+    {
+        "match": "勘定奉行",
+        "alternatives": ["freee / Money Forward (Web)"],
+        "confidence": "missing",
+        "note": "Linux 版なし。クラウド会計移行か、VM で Windows を残す。",
+    },
+    # --- リモートデスクトップ / 画面共有 ---
+    {
+        "match": "teamviewer",
+        "alternatives": ["TeamViewer (Linux 公式)", "AnyDesk", "RustDesk"],
+        "confidence": "ok",
+        "note": "TeamViewer は Linux 公式版あり。",
+    },
+    {
+        "match": "anydesk",
+        "alternatives": ["AnyDesk (Linux 公式)"],
+        "confidence": "ok",
+        "note": ".deb で提供。",
+    },
+    {
+        "match": "citrix workspace",
+        "alternatives": ["Citrix Workspace (Linux 公式)"],
+        "confidence": "ok",
+        "note": "Linux 版あり。企業 VDI 接続が必要な人向け。",
+    },
+    {
+        "match": "vmware",
+        "alternatives": ["VirtualBox", "VMware Workstation (Linux)", "QEMU/KVM"],
+        "confidence": "ok",
+        "note": "Linux 上では KVM が最も性能が出る。",
+    },
+    # --- スクリーンショット / 録画 ---
+    {
+        "match": "snagit",
+        "alternatives": ["Flameshot", "GNOME Screenshot", "Spectacle (KDE)"],
+        "confidence": "review",
+        "note": "編集機能込みなら Flameshot が近い。",
+    },
+    {
+        "match": "screentogif",
+        "alternatives": ["Peek", "Kazam"],
+        "confidence": "ok",
+        "note": "GIF 録画はどちらも軽い。",
+    },
+    {
+        "match": "obs",
+        "alternatives": ["OBS Studio (Linux)"],
+        "confidence": "ok",
+        "note": "ほぼ機能差なし。配信プロファイルは XML エクスポート/インポート可。",
+    },
+    {
+        "match": "camtasia",
+        "alternatives": ["OBS Studio + Kdenlive", "DaVinci Resolve"],
+        "confidence": "review",
+        "note": "録画 (OBS) と編集 (Kdenlive / Resolve) が分かれる構成になる。",
+    },
+    # --- 開発系の追加 ---
+    {
+        "match": "intellij",
+        "alternatives": ["IntelliJ IDEA (Linux)"],
+        "confidence": "ok",
+        "note": "JetBrains 全製品の Linux 版がある。設定は同期可能。",
+    },
+    {
+        "match": "pycharm",
+        "alternatives": ["PyCharm (Linux)", "VSCodium + Python 拡張"],
+        "confidence": "ok",
+        "note": "PyCharm Linux 版あり。軽い用途なら VSCodium で十分。",
+    },
+    {
+        "match": "sublime text",
+        "alternatives": ["Sublime Text (Linux)"],
+        "confidence": "ok",
+        "note": "Linux 版あり、設定 (.sublime-settings) もそのまま使える。",
+    },
+    {
+        "match": "postman",
+        "alternatives": ["Postman (Linux)", "Bruno", "Insomnia"],
+        "confidence": "ok",
+        "note": "Bruno はオフライン + ローカル保存。",
+    },
+    {
+        "match": "github desktop",
+        "alternatives": ["git CLI", "Gitg", "GitKraken"],
+        "confidence": "review",
+        "note": "Linux 公式版はない。",
+    },
+    {
+        "match": "sourcetree",
+        "alternatives": ["git CLI", "GitKraken", "Gitg"],
+        "confidence": "review",
+        "note": "Linux 版はない。",
+    },
+    # --- バックアップ / 同期 ---
+    {
+        "match": "time machine",
+        "alternatives": ["Back In Time", "Borg", "Restic"],
+        "confidence": "review",
+        "note": "rsync ベース。Borg / Restic は重複排除 + 暗号化が強い。",
+    },
+    {
+        "match": "carbon copy cloner",
+        "alternatives": ["rsync", "Borg"],
+        "confidence": "review",
+        "note": "ディスクイメージのまま運ぶなら dd / Clonezilla。",
+    },
+    # --- セキュリティ ---
+    {
+        "match": "norton",
+        "alternatives": ["ClamAV", "rkhunter", "ufw"],
+        "confidence": "review",
+        "note": "Linux は基本的にウイルス対策を入れない運用が一般的。",
+    },
+    {
+        "match": "kaspersky",
+        "alternatives": ["ClamAV", "rkhunter"],
+        "confidence": "review",
+        "note": "Linux はパッケージ管理 + ファイアウォール (ufw) が中心。",
+    },
+    # --- メッセージング (日本) ---
+    {
+        "match": "chatwork",
+        "alternatives": ["Chatwork (Web)"],
+        "confidence": "ok",
+        "note": "公式 Linux デスクトップ版なし。Web 版で代替。",
+    },
+    # --- ファイル管理 / アーカイブ ---
+    {
+        "match": "winrar",
+        "alternatives": ["File Roller", "Ark (KDE)", "p7zip"],
+        "confidence": "ok",
+        "note": "RAR の展開は unrar パッケージで対応。",
+    },
+    {
+        "match": "7-zip",
+        "alternatives": ["p7zip", "File Roller", "Ark"],
+        "confidence": "ok",
+        "note": "Linux 側は p7zip コマンドが標準。",
+    },
 ]
 
 

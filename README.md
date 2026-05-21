@@ -78,6 +78,16 @@ EN ビルドのみコピー、無いものは両言語にコピー）。
   ── 合成的入口はブログ
   [`021-software-three-transitions`](articles/blog/021-software-three-transitions/)
 
+## 関連アプリ
+
+- **[Debian 移行ウィザード (`apps/debian-migrate/`)](apps/debian-migrate/)** ──
+  Python + Flet で書いた Windows / macOS / Linux 対応のデスクトップ
+  アプリ。連載「Claudeと一緒に学ぶDebian」(第 4・6・7 章) を GUI に
+  落とし、初心者でも事前準備 (アプリ棚卸し → 代替提案 → ハードウェア
+  チェック → USB 作成ガイド) を進められるようにしたもの。API キー
+  不要、AI 連携は「Claude 用プロンプトをコピー」ボタンで claude.ai
+  に貼る方式。
+
 ## 技術構成
 
 - 静的HTML/CSS/JS

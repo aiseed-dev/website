@@ -5,10 +5,16 @@ from __future__ import annotations
 import flet as ft
 
 from debian_migrate.app import App
+from debian_migrate.theme import configure_page
+
+
+def _start(page: ft.Page) -> None:
+    configure_page(page)
+    page.render(App)
 
 
 def main() -> None:
-    ft.run(lambda page: page.render(App))
+    ft.run(_start)
 
 
 if __name__ == "__main__":

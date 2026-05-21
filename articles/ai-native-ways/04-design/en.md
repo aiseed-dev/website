@@ -104,7 +104,7 @@ Presentation decks, too, written in Markdown.
 ```markdown
 # AI-Native Ways of Working
 
-Change your tools, and the way you think changes
+Tools for the free person of the AI era
 
 ---
 

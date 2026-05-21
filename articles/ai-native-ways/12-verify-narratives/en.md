@@ -18,6 +18,8 @@ next_title: "One Person + AI — The New Unit of Work"
 
 The workplace is surrounded by narratives.
 
+This chapter extends [Tip 5 of the Manual](/en/ai-native-ways/manual/) (**watch for AI's hallucinations and sycophancy, and verify at the end yourself**) to the level of "how to verify the narratives at the organizational and societal scale."
+
 Executive briefings, vendor pitches, industry common sense, news articles, politicians' words, social media trends, earnings calls, performance reviews, job postings, contract preambles — most of the information we receive every day is a **narrative** that someone has shaped with intent.
 
 And most narratives are **constructed to suit the side that tells them**. This is not a story about malice. Humans build narratives to justify their actions, to organize context, to maintain relationships. It is the standard operating mode of a social animal.

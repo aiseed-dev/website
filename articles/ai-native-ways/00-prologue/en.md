@@ -296,7 +296,7 @@ One thing per day, replace your working surface with Python and structured data.
 
 In short — **processing in Python, data in structure**. Because data carries structure, AI knows how to process it, and Python — with structure-aware packages (Polars, Pydantic, SQLAlchemy, etc.) — writes the processing concisely. The triangle of "human ↔ structure ↔ AI" works under exactly this minimal condition.
 
-From the next chapter, we move into specific practices, domain by domain.
+The next chapter, [AI (ChatGPT, Claude, etc.) Practical Manual](/en/ai-native-ways/manual/), lays down the **six tips for the ordinary person**. From Chapter 2 onward, we move into **specific practices, domain by domain** — Python, Markdown, JSON, design, paperwork, business systems, web, apps, embedded, AI delegation, narrative verification, and the 1+AI unit.
 
 ---
 

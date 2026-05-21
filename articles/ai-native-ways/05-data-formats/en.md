@@ -710,7 +710,7 @@ comes back. **The psychological load drops.**
 
 ## In summary
 
-Change your tools, and the way you handle data changes.
+Align your tools with the AI era, and the way you handle data changes.
 
 - Hierarchy and handoff → **JSON**
 - Settings, human-edited structure → **YAML**

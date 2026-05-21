@@ -21,6 +21,8 @@ What can a human equipped with AI-native tools do?
 This chapter is the synthesis of the entire series. The theme narrows
 to one thing: **from siloed organizations to individual autonomy.**
 
+[Tip 6 of the Manual](/en/ai-native-ways/manual/) (**redirect freed time to culture, science, and reality**) — the line written for ordinary readers in Chapter 1 — lands here as structure. The "free person" is the individual who has stepped out of the silos and reclaimed judgment and time into their own hands.
+
 Until now, work has been organized in **silos**. Accounting in the
 accounting department, marketing in the marketing department, dev in
 the dev department, legal in the legal department — fences between

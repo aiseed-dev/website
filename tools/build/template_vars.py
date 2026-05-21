@@ -475,10 +475,10 @@ def aiways_index_vars(lang, chapter_list_html, has_translation=False):
             "各章は短いエッセイ。まずは序章を読む。残りは仕事に合わせて好きな順で読める。<br>\n                    "
             "ページのタイポグラフィを敢えて他のシリーズと変えてある——これは資料ではなくエッセイだ。"),
         "quote_html": _text(is_en,
-            "Change the tools, and your thinking changes. Change your thinking,<br>\n"
-            "and you start spending time on work only humans can do.",
-            "道具を変えれば、思考が変わる。思考が変われば、<br>\n"
-            "人間にしかできない仕事に時間を使えるようになる。"),
+            "Align your tools with the AI era, and you become its free person.<br>\n"
+            "The time freed flows into culture, science, and reality.",
+            "道具を AI 時代に合わせれば、自分は AI 時代の自由人になる。<br>\n"
+            "浮いた時間は、文化・科学・現実に向かう。"),
         "cta_title": _text(is_en, "Start with the prologue", "序章から始める"),
         "cta_html": _text(is_en,
             "Begin from the prologue. The series is published as it is written.",

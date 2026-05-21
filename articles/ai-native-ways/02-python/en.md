@@ -18,6 +18,8 @@ next_title: "Writing Documents — Markdown as the Minimal Choice"
 
 Switch the tool you write logic in to Python.
 
+[Tip 5 of the Manual](/en/ai-native-ways/manual/) said "what AI is actually best at is, in fact, writing programs." This chapter lands that tip in the actual tooling.
+
 That single change turns repetitive work into one-time work. Reformatting Excel, totaling emails, extracting from PDFs, batch-renaming files. Most "30 minutes of manual office work" finishes in 10 lines of Python. **Claude writes it.** A human runs it.
 
 ## Python is for everyone
@@ -156,7 +158,7 @@ Reaction to errors: searching and trial-and-error solo takes 30 minutes to 2 hou
 
 ## In summary
 
-Change your tools, and the way you process work changes.
+Align your tools with the AI era, and the way you process work changes.
 
 From Excel manual labor to Python plus Claude. A single step turning repetitive work into one-time work. The skill of writing is not required. The **skill of using** is enough.
 

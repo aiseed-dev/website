@@ -20,6 +20,8 @@ AI cannot do everything.
 
 There is a line between work you can give to AI and work humans must keep. Mistake the line, and convenience turns into dependency. People make wrong decisions because "AI said so." Organizations use "the number AI produced" without verifying, and no one can take responsibility.
 
+This chapter lifts [Tip 3 of the Manual](/en/ai-native-ways/manual/) (**work to AI, responsibility to you**) to the level of "running AI inside an organization."
+
 But you don't need to think about this line as if it were complicated. **The single most important principle is one thing.**
 
 ## Don't run agents in autonomous mode
@@ -247,8 +249,8 @@ handed to the AI is visible.**
 - **Hand-pick what to paste to the AI** (don't allow auto-access).
 - **Review code and documents the AI wrote before committing** (don't auto-approve).
 
-This is exactly the **AI-native toolkit** built up across Chapters 01–09.
-**Change your tools, and the sandbox forms naturally.** Drop Office, and
+This is exactly the **AI-native toolkit** built up across Chapters 02–10.
+**Align your tools with the AI era, and the sandbox forms naturally.** Drop Office, and
 the Copilot problem **never arises.**
 
 ## Don't lean on agents — freeze it into code and commands

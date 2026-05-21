@@ -30,7 +30,7 @@ Time spent on formatting steals time from thinking. **While you're shaping the s
 
 But the essence of a document is not formatting. The essence is structure. "This is the conclusion. This is the reason. This is supporting detail. This is a quotation." The skeleton is what makes a document a document. Formatting is just decoration to make the skeleton easier to see.
 
-Change the tools, and the way you think changes. Word puts decoration up front. Markdown puts structure up front.
+Align your tools with the AI era, and the way you write lightens. Word puts decoration up front. Markdown puts structure up front.
 
 ## Markdown is just text
 
@@ -61,7 +61,7 @@ When you hand Claude a Word file, it first unzips the .docx, reads the XML, stri
 
 Hand Claude Markdown, and there is no conversion. It reads it directly. It writes it directly.
 
-> Change your tools and your thinking changes. Choose tools that share AI's language, and AI becomes a colleague.
+> Align your tools with the AI era, and AI can stand next to you as a colleague. Choosing tools that share AI's language is the entry point.
 
 This is not a metaphor. It is a technical fact. As long as your interaction with AI is text-based, Markdown is the shared language between humans and AI.
 
@@ -561,7 +561,7 @@ Token consumption of a Word file: 5,000 characters consume about 8,000 tokens (f
 
 ## In summary
 
-Change your tools, and the way you think changes.
+Align your tools with the AI era, and the writing side gets lighter.
 
 From Word to Markdown. **For everyday writing, that is enough.** For a
 long manual, AsciiDoc; for reports with embedded computation, MyST;

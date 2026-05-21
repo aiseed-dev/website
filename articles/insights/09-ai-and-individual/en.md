@@ -174,6 +174,14 @@ Claude makes this possible.
 The era of 1 person + AI has arrived.
 :::
 
+## This Is the Return of the "AI-Era Free Person"
+
+The structure described so far — one person + AI lets specialty professions live inside the individual, farmers become researchers, the advantages of large corporations dissolve — is the same structure under which the medieval **free person** (the urban citizen, merchant, and craftsman of the free cities, and the free farmer who tilled his own land) stood up out from under feudal lords more than a thousand years ago, now rising again in a new form.
+
+Four conditions have to converge for the free person to exist — **economic autonomy** (running one's own back office and specialty work with a few-thousand-yen-a-month AI), **political self-governance** (holding one's own data, judgment, and systems), **the means of touching reality** (local AI, one's own land, one's own handwork), and **education** (the seven liberal arts in their classical form; judgment, verbalization, ethics, and systems thinking in their modern form).
+
+This is not a story about "efficiency." Just as the First Renaissance (14th–17th centuries) was brought into full force by the printing press, the **Second Renaissance** is now being brought into full force by the LLM — and we stand at its entrance. The full structural argument lives in the [AI-Native Ways of Working](/en/ai-native-ways/) series (prologue's "The free person of the AI era"; [Software sub-series](/en/ai-native-ways/software/) chapter 11's "This is the beginning of the Second Renaissance").
+
 ## Great Power Breeds Tragedy
 
 What this entire series has revealed is the tragedy caused by massive power structures.

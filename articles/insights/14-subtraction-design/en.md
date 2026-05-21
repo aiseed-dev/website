@@ -40,19 +40,11 @@ So what do we add, and what do we subtract?
 
 ## The Principle of Subtraction
 
-Masanobu Fukuoka's natural farming is subtraction taken to its logical end.
-
-:::chain
-**Fukuoka's subtractions:**
-No tilling → Subtract the tractor → Subtract fuel dependency
-No fertilizer → Subtract chemical fertilizer → Subtract refinery dependency
-No pesticides → Subtract agrochemicals → Subtract the chemical supply chain
-No weeding → Subtract weeding labor → Subtract labor costs
-**The result:** Zero external dependency. Unsinkable in a crisis.
-:::
-
-"Doing nothing" is not laziness.
-It is the minimum viable configuration — what remains after everything unnecessary has been removed.
+Subtraction means removing **what was added during the era of fossil
+fuels and urban concentration**. The minimum configuration that remains
+after every unnecessary thing has been removed is what fits the new
+premises. Not "add something to solve the problem," but "**the premises
+changed, so take out what is no longer needed**."
 
 Apply this principle to all of society.
 
@@ -213,105 +205,8 @@ regulations designed for the era of fossil resources and urban concentration are
 To realize subtraction design, regulation redesign is essential.
 **The next chapter draws the concrete regulatory reforms needed.**
 
-## What Will People Eat?
-
-Beyond all the subtractions, the most fundamental question remains.
-
-**When fossil resources are gone, what will people eat?**
-
-Everything above is about restructuring society's systems.
-But if there is no food, people starve regardless of how systems change.
-Food production requires two scales.
-
-### Regenerative Agriculture — Large-Scale Grains and Beef
-
-As Chapter 3 showed, methods already exist for producing grains and beef without chemical fertilizer.
-
-:::chain
-**Regenerative agriculture's subtractions:**
-
-Cover crops → Subtract chemical fertilizer → Soil microorganisms supply nutrients
-No-till farming → Subtract the plow → Preserve soil structure
-Planned grazing → Subtract purchased feed → Cattle and grass co-regenerate soil
-Multi-crop rotation → Subtract pesticides → Biodiversity suppresses pests
-
-Gabe Brown proved this on his North Dakota farm.
-Zero chemical fertilizer, zero pesticides — and profitability exceeds conventional farming.
-:::
-
-This is not theory. **It already produces grains and beef at a scale feeding tens of millions.**
-A realistic method for preventing starvation after fossil resources deplete.
-
-### Fukuoka's Natural Farming — Small-Scale Self-Sufficiency
-
-But large-scale agriculture alone is not enough.
-For individuals and families living in regional towns to **grow food on their own land**, a different method is needed.
-
-Without Fukuoka's natural farming, small-scale agriculture is not possible.
-
-:::chain
-**Fukuoka's four principles:**
-No tilling → Possible without a tractor
-No fertilizer → Possible without buying chemical fertilizer
-No pesticides → Possible without buying agrochemicals
-No weeding → Possible without a large labor force
-**The result:** An individual can produce food on their own land, with zero external dependency.
-:::
-
-Regenerative agriculture produces grains and beef on farms of hundreds of hectares.
-Fukuoka's natural farming allows one person to sustain a life on a small plot of land.
-**Without both, subtraction design does not work.**
-
-:::compare
-| | Regenerative Agriculture | Fukuoka's Natural Farming |
-| --- | --- | --- |
-| Scale | Large (hundreds of hectares) | Small (individual / family) |
-| Products | Grains, beef | Rice, vegetables, fruit trees |
-| Role | Food supply for society | Individual self-sufficiency, local food |
-| External dependency | Low (zero fertilizer/pesticides) | Zero (nothing needs to be purchased) |
-| Required knowledge | Soil science, grazing management | Nature observation, living wisdom |
-:::
-
-### Why Both Work — Light Farming
-
-Dr. Christine Jones's Light Farming provides the scientific foundation for both.
-
-:::chain
-**Light Farming — Symbiosis between soil microorganisms and plants:**
-
-Sunlight → Photosynthesis → Plants produce sugars
-Sugars → Exuded from roots into soil (Liquid Carbon)
-Liquid Carbon → Energy source for soil microorganisms
-Soil microorganisms → Solubilize and supply minerals to plants
-Plants → More photosynthesis → (Positive feedback loop)
-
-**Weeds photosynthesize too. Leave the grass, and Liquid Carbon supply increases.**
-Fukuoka's "no weeding" was a Light Farming maximization strategy.
-:::
-
-At large scale or small, the principle is the same.
-**Harness soil microorganisms, and external dependencies can be subtracted.**
-
-### Only Vegetables Still Lack a Method
-
-However, as Chapter 3 noted, **there is no method yet for mass-producing vegetables without chemical fertilizer.**
-Grains and beef have regenerative agriculture.
-Small-scale self-sufficiency has Fukuoka's method.
-But producing vegetables at a scale to supply an entire town has not been established.
-
-**This is the most urgent priority.**
-Grains and beef prevent starvation.
-But without vegetables, health cannot be maintained.
-What is needed is not researchers. **It is practitioners in the field.**
-Fukuoka and Gabe Brown were both practitioners. Data analysis and knowledge synthesis are jobs for AI.
-Practice must begin now.
-
-:::quote
-With nature, we can live.
-The further from nature, the higher the cost of living.
-Water exists. Land exists. Plants exist. Microorganisms exist.
-These are Japan's true resources.
-Without regenerative agriculture, society starves.
-Without Fukuoka's natural farming, individuals cannot survive.
-Only with both does subtraction design work.
-:::
+Food supply after fossil resources (regenerative agriculture, natural
+farming, Light Farming, and the unresolved problem of large-scale
+vegetable production) is covered in this site's natural-farming series.
+It falls outside the structural argument of subtraction and is not
+treated in this chapter.

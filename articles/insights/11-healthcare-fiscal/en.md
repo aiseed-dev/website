@@ -263,21 +263,6 @@ the first half of this chapter are the leading examples.
 > **not every existing company collapses; what is culled is companies
 > that could not adapt to change.**
 
-### How to respond as an individual
-
-Don't structure your work around autonomous AI agents. **Use AI as a
-tool, on your own judgment** (Chapter 10).
-
-And build into your livelihood actual work that AI cannot replace —
-farming, forestry, regenerative agriculture, frontline medical and
-caregiving roles, craftsmanship, teaching, in-person professional work.
-These are rooted in body, land, and human relationships and resist AI
-substitution. **A home garden or volunteering is a hobby, not a job.**
-You need one foot of these as a real source of income.
-
-This is preparation so your footing does not slip when the change
-actually arrives.
-
 ### So migration to land-based work becomes necessary
 
 At the level of the whole society, **demand for physical work rises
@@ -362,16 +347,6 @@ The lesson is two-sided:
 > medicines, and the livelihoods of medical workers** that make it
 > run are secured, no design — however excellent — can function.
 
-For Japan to move in this direction, the fee schedule must be rebuilt
-(fee-for-treatment → bundled prevention), a family-doctor system
-established, medical education redirected. At the same time, the
-foundation that keeps electricity, medicines, and medical supplies
-flowing domestically — including a rethink of free trade (see "the
-great population migration" below) — must be maintained. Combined
-with the shift to land-based work, physical activity and home-grown
-food reduce lifestyle disease at the source and structurally shrink
-demand for high-intensity treatment.
-
 ### Social insurance at 30% — the working generation's limit
 
 Across all social security: health
@@ -398,84 +373,21 @@ start 65, retirement 20 years; advanced medicine drives elderly
 healthcare costs higher. **Fewer workers, more retirees → mathematical
 collapse.**
 
-The deeper question: **isn't the very concept of "retiring at 65" a
-product of the desk-work era?** Sit in an office all day → exercise
-deficit + processed food → body breaks down → depend on medicine →
-cannot work past 65 → supported by pension. This was the "advanced
-nation" social model.
-
-If work shifts to land-based, physical work integrates exercise into
-daily life, growing one's own food reduces dependence on processed food,
-lifestyle disease drops, and dependence on healthcare and pensions
-decreases. Not "**curing disease**" but "**not getting sick**." Not
-"**living on a pension**" but "**a life that does not need a pension**."
-The same structural inversion as Fukuoka Masanobu's "do-nothing" farming.
-
-> The further from nature, the higher the cost of living.
-> Closer to nature, the less the system has to carry.
-
-## American Agriculture vs Japan's Real Resource
-
-"Japanese farming is inefficient — it should be large-scale like
-America." This argument misunderstands the structure of American
-agriculture. American large-scale farming is an **extraction model** that
-consumes soil and groundwater capital. In 150 years it has lost roughly
-**50%** of topsoil (forming 1 inch takes 500–1,000 years); the Ogallala
-Aquifer is pumped at multiple to dozens of times its natural recharge,
-with Kansas and Texas water levels down 30+ meters. The same as "saying
-'income is high' while spending down the bank balance."
-
-By contrast, Japan has **water**. Annual rainfall ~1,700 mm (about twice
-world average), mountains across 73% of land area, dense river networks,
-abundant clean groundwater, warm-humid climate. **Oil can be substituted;
-water cannot.** America's Ogallala depleting, Middle East chronic water
-shortage, severe water crisis in northern China — and against that
-backdrop, calling Japan, where 1,700 mm of water falls from the sky every
-year, "resource-poor" only reveals that oil and rare metals are the only
-things recognized as "resources."
-
-Water → diverse plants → soil microbes → fertile soil → food. This cycle
-is Japan's real resource. **Oil shrinks when extracted; water
-circulates.**
-
-The Japanese archipelago stretches 3,000 km north–south, from subtropical
-to subarctic, with extraordinary plant diversity. Which wild plants are
-edible, which are medicinal, which trees make building material and which
-grasses make fiber, when to sow and when to harvest — **knowledge
-accumulated over thousands of years** is rapidly being lost in the age of
-supermarkets and convenience stores. When fossil resources stop and
-supply chains collapse, those who survive will be **those who can grow
-food on their own land**.
-
-## Fukuoka — How to Survive
-
-All structural analysis converges on a single question:
-**how do we survive?** Fukuoka Masanobu's natural farming is an answer.
-
-Four principles — **no tillage** (preserves soil structure, keeps
-microbes alive), **no fertilizer** (zero external dependency),
-**no pesticides** (does not kill the ecosystem; uses nature's defenses),
-**no weeding** (maximizes photosynthetic surface; weeds too supply
-Liquid Carbon). Christine Jones's **Light Farming** gave the scientific
-basis: photosynthesis → sugars → Liquid Carbon exuded from roots → soil
-microbes → mineral supply to plants → more photosynthesis, a positive
-feedback loop.
-
 ## A Very Different World Must Be Designed
 
 Almost every premise of current society collapses — fossil resources
 (Chapter 2), chemical-fertilizer dependency (Chapter 3), the
 fusion-materials problem (Chapter 5), the generational shift in defense,
-IT, and desk work (Chapters 6–10), the rationale for Tokyo's extreme
-concentration, the premise of free trade, urban-salaried-worker
-healthcare and pensions. **Incremental fixes will not do. A world quite
-different from today must be designed.**
+IT, and desk work (the first half of this chapter), the premise of
+extreme Tokyo concentration, the premise of free trade, urban-
+salaried-worker healthcare and pensions. **Incremental fixes will not
+do. A world quite different from today must be designed.**
 
-Work changes. Where people live changes. Trade changes. Healthcare and
-pensions change. But some things do not change.
+Where work happens changes. Where people live changes. Trade premises
+change. The design premises of healthcare and pensions change. These
+are not isolated phenomena — they are the reorganization of a social
+structure whose two supporting pillars (fossil resources and urban
+concentration) are both giving way.
 
-> Water exists. Plants exist. Microorganisms exist. Land exists.
-> Japan's real resources were always at our feet.
-
-So what do we add, and what do we subtract?
-**The next chapter, "Subtraction Design," draws the concrete picture.**
+The next chapter, "Subtraction Design," organizes structurally
+**which premises of the current society are being subtracted**.

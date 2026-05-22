@@ -1,15 +1,15 @@
 ---
 slug: windows-10-to-debian
-title: "If You Have a Windows 10 PC — Try Debian Before You Throw It Away"
-subtitle: "The day Microsoft says \"we're done caring\" is not the day the hardware died."
+title: "If You Have a Windows 10 PC — Now is the Time to Try Debian"
+subtitle: "Now that Microsoft says \"we're done caring\" — this is the moment for Debian + AI."
 date: 2026.05.22
-description: Windows 10 support ended in October 2025. Hundreds of millions of PCs worldwide are flagged as "not compatible with Windows 11." But the hardware is fine. Debian runs on the same hardware — and runs lighter. The "Linux is hard" reputation reversed twice in the AI era: first, AI is unusually good at teaching commands (and unusually bad at teaching GUI clicks); second, Flathub now provides a curated, ad-free, vendor-neutral GUI app store that is, in several ways, better-stocked than Microsoft Store. With AI sitting beside you, Linux commands are no longer hard.
+description: Windows 10 support ended in October 2025. Hundreds of millions of PCs worldwide are flagged as "not compatible with Windows 11." But the hardware is fine. Debian runs on the same hardware — and runs lighter. The "Linux is hard" reputation reversed twice in the AI era: first, AI is unusually good at teaching commands (and unusually bad at teaching GUI clicks); second, Flathub now provides a curated, ad-free, vendor-neutral GUI app store that is, in several ways, better-stocked than Microsoft Store. With AI beside you now, Linux commands are no longer hard. The time to try Debian is now.
 lang: en
 label: Blog
 category: Structural Analysis Notes
 ---
 
-# If You Have a Windows 10 PC — Try Debian Before You Throw It Away
+# If You Have a Windows 10 PC — Now is the Time to Try Debian
 
 In October 2025, Microsoft ended support for Windows 10. Maybe you bought a year of ESU. Maybe you're just using it anyway. Either way, **there is a path besides buying a new machine**.
 
@@ -78,16 +78,16 @@ This site has two textbooks for learning with Claude beside you.
 
 Once you internalize this discipline, it becomes the foundation **not just for Debian, but for anything you'll learn or build alongside AI from here on**.
 
-## You can always throw it away later
+## Now is the Time
 
-You can dispose of a PC anytime. The reverse is harder.
+This is not "I'm stuck with Debian because Windows 10 died." It is "Debian + AI + Flathub all came together — and now is exactly when it's a good fit."
 
-Once you throw it away, replacing it costs tens to hundreds of thousands of yen. If everyone in the world does this at the same time, it becomes a mountain of e-waste, and the production of new PCs consumes mineral resources and fossil fuels.
+Three years ago this would have been different. Linux commands were hard, Flathub's catalog was thinner, and AI wasn't there. **The three came together in 2026 — now**.
 
-Before throwing it away, it's worth trying the other path once. If it doesn't work, throw it away then.
+You can dispose of a PC anytime. You can buy a new one anytime. But **the doorway to "use the PC you already have one stage longer" is open right now — at this very moment, when Windows 10 support has ended**. If everyone in the world replaces their machine at the same time, it becomes a mountain of e-waste, and producing new PCs consumes mineral resources and fossil fuels. Whether you join that wave is, also, a choice you make now.
 
 The day Microsoft says "we're done caring" is not the day the hardware died.
-With AI beside you, Linux commands are no longer hard.
+With AI beside you now, Linux commands are no longer hard.
 
 [Learning Debian with Claude →](/en/claude-debian/)
 

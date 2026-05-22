@@ -247,6 +247,6 @@ Windows 11 のサポート期間を調べてみるといい。Windows 11 Home / 
 
 *関連記事: [「Claude と一緒に学ぶ Debian」 — Linux への具体的な移行手順](/claude-debian/)*
 
-*関連記事: [「AIネイティブな仕事の作法」 — 道具を変えれば、思考が変わる](//ai-native-ways/)*
+*関連記事: [「AIネイティブな仕事の作法」 — AI 時代の自由人のための道具たち](//ai-native-ways/)*
 
 *関連記事: [「それでも Windows と Office を使い続けますか?」 — 詳細な構造分析と一次情報・参考文献](/blog/windows-office-facts/)*

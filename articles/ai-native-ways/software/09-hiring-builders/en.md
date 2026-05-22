@@ -276,7 +276,7 @@ elements combine to make this possible:
 - **Flet** — desktop, mobile, and web apps in pure Python.
   Underneath is a native Flutter build (AOT-compiled), so cold-start
   is lighter than React Native's JavaScript-bridge stack (covered in
-  the parent series, Chapter 8)
+  the parent series, Chapter 9)
 
 With these three layers in place, **"I want to build something but I
 cannot write code"** — the people who carried that line until now —
@@ -326,7 +326,7 @@ enterprise stack.
 
 In AI-native development, that wall is lower. **The VB / VBA
 generation comes back as builders** — a particularly large supply
-source in the Japanese market. (The parent series' Chapter 1,
+source in the Japanese market. (The parent series' Chapter 2,
 "Writing Logic — Have AI Write Python For You," covers the
 VBA → Python migration in concrete detail.)
 
@@ -411,8 +411,8 @@ forms appear during the transition?
 - [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
 - [Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
 - [Chapter 8: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
-- [Parent series Chapter 1: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
-- [Parent series Chapter 8: Building Apps — CLI tools, Flet apps, Flutter apps](/en/ai-native-ways/apps/)
-- [Parent series Chapter 9: Building Embedded — Think in Python, Have Claude Translate](/en/ai-native-ways/embedded/)
+- [Parent series Chapter 2: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
+- [Parent series Chapter 9: Building Apps — CLI tools, Flet apps, Flutter apps](/en/ai-native-ways/apps/)
+- [Parent series Chapter 10: Building Embedded — Think in Python, Have Claude Translate](/en/ai-native-ways/embedded/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

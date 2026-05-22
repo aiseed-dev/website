@@ -1,16 +1,16 @@
 ---
 slug: software-three-transitions
-title: "\"Become a specialized engineer\" misreads the structure"
+title: "In the AI era,\"Become a specialized engineer\" misreads the structure"
 subtitle: The Second Renaissance has begun — software engineer → builder, software engineering → liberal arts, employment → free person
-date: 2026.05.21
+date: 2026.05.22
 description: "The widely circulated advice — \"in the AI era, become a specialized engineer; hold a deep specialty AI cannot take, like security or ML\" — misreads the structure. AI is absorbing the whole layer of software engineering, not a particular subdomain. The medieval analogue: telling a serf, \"become a more specialized serf and you will be free.\" Freedom comes from stepping out of the lord's structure of control, not from deeper specialization. Software engineer → builder, software engineering → liberal arts, employment → free person — these three transitions are unfolding inside the Second Renaissance (the historical turning point of the AI era, with the LLM playing the role of the printing press). Creation and upheaval are two faces of the same time, and Trump is the canonical figure on the upheaval side. The article compresses aiseed.dev's eleven-chapter \"AI-Native Ways of Working — Software\" sub-series into three pairs of words."
 lang: en
 label: Blog
 category: Structural Analysis Notes
-hero_image: IMG_3285.jpg
+hero_image: IMG_3481.jpg
 ---
 
-# "Become a specialized engineer" misreads the structure
+# In the AI era,"Become a specialized engineer" misreads the structure
 
 There is a widely circulated piece of advice — "in the AI era, become a specialized engineer; hold a deep specialty AI cannot take, like security or ML."
 

@@ -1,7 +1,23 @@
 # AIネイティブな仕事の作法
 
+**副題: AI 時代の自由人のための道具たち**。
 aiseed.dev の連載エッセイシリーズ。Office・Java・C# から離れ、Markdown・JSON・
 Python・テキストで AI を同僚として使うための実用的な作法。
+第 1 章「活用マニュアル」が普通の人向けの 6 つのコツを置き、
+第 2 章以降がそれを領域別の道具立てに落としていく。
+
+**底流**: AI が技術職の核心(ソフトウェア工学)を引き受ける結果、人間側に残る
+判断中心の役割の基盤が、**ソフトウェア工学からリベラルアーツへ** 移る ──
+これは「特化エンジニアになれ」助言の構造的誤りを衝き、「**AI 時代の自由人**」
+の輪郭を描く論考である。詳しくは概念フレーム `framing-second-renaissance`
+スキル (`.agents/skills/`) と、合成的入口となるブログ
+[`articles/blog/021-software-three-transitions/`](../blog/021-software-three-transitions/)
+を参照。
+
+## 状態
+
+**親シリーズ全 14 章公開済み**(00 序章 + 01〜13 章、JA + EN)。
+**サブシリーズ「ソフトウェア開発編」全 11 章公開済み**(`software/`)。
 
 ## ファイル構成
 
@@ -249,31 +265,40 @@ CommonMark + tables 拡張(`tools/build/markdown.py`)。
 
 雛形は `00-prologue/example-1/` を参照。
 
-## このシリーズの章立て(計画)
+## 親シリーズの章一覧(公開済み)
 
-```
-00. 序章 ── 事務処理はOffice、業務ソフトはJava/C#、しかしAIはPythonとテキスト ✅
+| # | slug | 日本語タイトル |
+|---|---|---|
+| 00 | `prologue` | AIの母国語は、PythonとMarkdown形式のテキスト |
+| 01 | `manual` | AI（ChatGPT・Claudeなど）活用マニュアル ── 普通の人のための6つのコツ |
+| 02 | `python` | 処理を書く ── AIにPythonで書いてもらう |
+| 03 | `markdown` | 文書を書く ── Markdownという最小の選択 |
+| 04 | `design` | デザインをする ── Mermaid と Claude デザインで作る |
+| 05 | `data-formats` | データを持つ ── JSONとYAMLで考える |
+| 06 | `office-replacement` | 事務処理を変える ── Officeから離れる現実的な道筋 |
+| 07 | `business-systems` | 業務システムと付き合う ── 並行稼働で書き換える |
+| 08 | `web` | Webを作る ── HTML+CSS+JavaScriptという原点回帰 |
+| 09 | `apps` | アプリを作る ── CLIツール、Fletアプリ、Flutterアプリ |
+| 10 | `embedded` | 組み込みを作る ── Pythonで考え、Claudeに翻訳させる |
+| 11 | `ai-delegation` | AIに任せる仕事を見極める |
+| 12 | `verify-narratives` | AIで物語を検証する |
+| 13 | `one-plus-ai` | 1人+AIで作る、新しい仕事の単位 |
 
-I. 共通の作法
-01. 文書を書く ── Markdownという最小の選択
-02. データを持つ ── JSON/CSV/YAMLで考える
-03. デザインをする ── Mermaid と Claude デザインで作る
-04. 処理を書く ── AIにPythonで書いてもらう
+序章「AI 時代の自由人」節で中世の自由人の4条件パラレル(経済的自立・政治的
+自治・実体に触れる力・教養)、その下の「中間層」「第二次ルネサンス」を
+位置付けている。各章はそれぞれの領域で具体的作法を扱う。
 
-II. 仕事の種類別
-05. 事務処理を変える ── Officeから離れる現実的な道筋
-06. 業務システムと付き合う ── 並行稼働で書き換える
-07. Webを作る ── HTML+CSS+JavaScriptという原点回帰
-08. アプリを作る ── CLIツール、Fletアプリ、Flutterアプリ
-09. 組み込みを作る ── Pythonで考え、Claudeに翻訳させる
+## サブシリーズ「ソフトウェア開発編」
 
-III. 共通の発展
-10. AIに任せる仕事を見極める
-11. 1人+AIで作る、新しい仕事の単位
+`software/` 配下。**副題: ソフトウェア工学から、リベラルアーツへ ── 技術職の
+基盤転換**。全 11 章で、SIer 委託モデルが構造的に成立しなくなり、判断中心の
+「ビルダー」「上級ビルダー」が AI 時代の専門職として立ち上がる構造を論証。
+詳細は [`software/README.md`](software/README.md)。
 
-付録
-12. 実例集 ── 12 のウォークスルー(コード + 出力)
-```
+合成的な入口として、ブログ
+[`articles/blog/021-software-three-transitions/`](../blog/021-software-three-transitions/)
+が「ソフトウェアエンジニア → ビルダー」「ソフトウェア工学 → リベラルアーツ」
+「雇用 → 自由人」の三対の語に圧縮した版を提供している。
 
 すべての章で同じテンプレートを使い回す。章ごとの差はフロントマターと
 任意の `title_html` のみ。

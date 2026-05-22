@@ -244,6 +244,6 @@ If you're going to leave, leave all at once. Half-measures hurt the most.
 
 *Related: [Learning Debian with Claude — A practical guide to migrating to Linux](/en/claude-debian/)*
 
-*Related: [AI-Native Ways of Working — Change your tools, change your thinking](/en/ai-native-ways/)*
+*Related: [AI-Native Ways of Working — Tools for the free person of the AI era](/en/ai-native-ways/)*
 
 *Related: [Are You Still Going to Keep Using Windows and Office? — Detailed structural analysis with primary sources and references](/en/blog/windows-office-facts/)*

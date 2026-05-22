@@ -67,8 +67,26 @@ EN ビルドのみコピー、無いものは両言語にコピー）。
 - **Insights**: 構造的思考による分析（肥料危機、地政学、AIの使い方）
 - **Blog**: 時事的な構造分析ノート（イラン戦争・サプライチェーン断絶など）
 - **Claudeと一緒に学ぶDebian**: Claudeを横に置いて読む新しい形の教科書（全24章）
-- **AIネイティブな仕事の作法**: Office・Java・C# から離れて Markdown・JSON・
-  Python で AI を同僚として使う実用エッセイ（独立タイポグラフィ）
+- **AIネイティブな仕事の作法**: 副題「AI 時代の自由人のための道具たち」。
+  Office・Java・C# から離れて Markdown・JSON・Python で AI を同僚として
+  使う実用エッセイ（独立タイポグラフィ、親シリーズ全 14 章）。
+  第 1 章「AI（ChatGPT・Claudeなど）活用マニュアル」が普通の人向けの
+  入口で 6 つのコツを置き、第 2 章以降がそれを領域別の道具立てに
+  落としていく。サブシリーズ「ソフトウェア開発編」（全 11 章）で
+  **ソフトウェア工学からリベラルアーツへの基盤転換** を論証。底流の
+  概念フレーム（15 概念）は `framing-second-renaissance` スキルに集約
+  ── 合成的入口はブログ
+  [`021-software-three-transitions`](articles/blog/021-software-three-transitions/)
+
+## 関連アプリ
+
+- **[Debian 移行ウィザード (`apps/debian-migrate/`)](apps/debian-migrate/)** ──
+  Python + Flet で書いた Windows / macOS / Linux 対応のデスクトップ
+  アプリ。連載「Claudeと一緒に学ぶDebian」(第 4・6・7 章) を GUI に
+  落とし、初心者でも事前準備 (アプリ棚卸し → 代替提案 → ハードウェア
+  チェック → USB 作成ガイド) を進められるようにしたもの。API キー
+  不要、AI 連携は「Claude 用プロンプトをコピー」ボタンで claude.ai
+  に貼る方式。
 
 ## 技術構成
 

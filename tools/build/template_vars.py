@@ -444,13 +444,13 @@ def aiways_index_vars(lang, chapter_list_html, has_translation=False):
         "asset_version": config.asset_version(),
         "img_path": "../../images/IMG_3285.jpg" if is_en else "../images/IMG_3285.jpg",
         "meta_description": _text(is_en,
-            "Tools for AI-native work. Office runs paperwork, Java/C# runs business systems — but AI runs on Python and text. A practical guide to working with AI as a colleague.",
-            "AI ネイティブな仕事の道具立て。事務処理は Office、業務ソフトは Java/C#、しかし AI は Python とテキストでできている。AI を同僚として使うための実用的な作法。"),
+            "Tools for AI-native work, and the foundational shift it brings. Office runs paperwork, Java/C# runs business systems — but AI runs on Python and text. Under the practical methods, a structural shift: software engineering hands its core to AI, and the human side rests on the liberal arts. This is the beginning of a Second Renaissance.",
+            "AI ネイティブな仕事の道具立てと、その底にある基盤転換。事務処理は Office、業務ソフトは Java/C#、しかし AI は Python とテキストでできている。実用的な作法の下に、構造変化が走る ── 技術職の核心(ソフトウェア工学)が AI に渡り、人間側の基盤はリベラルアーツへ移る。第二次ルネサンスの始まりだ。"),
         "structural_analysis_label": aiways_title,
         "page_title": aiways_title,
         "page_subtitle": _text(is_en,
-            "Tools shape thinking. Change the tools, the thinking changes.",
-            "道具を変えれば、思考が変わる。"),
+            "Tools for the free person of the AI era.",
+            "AI 時代の自由人のための道具たち。"),
         "other_lang_link": (_AIWAYS_BASE_JA + "/") if is_en else (_AIWAYS_BASE_EN + "/"),
         "other_lang_text": _text(is_en, "日本語版はこちら →", "English version available →") if has_translation else "",
         "lang_switch_label": "日本語" if is_en else "EN",
@@ -475,10 +475,10 @@ def aiways_index_vars(lang, chapter_list_html, has_translation=False):
             "各章は短いエッセイ。まずは序章を読む。残りは仕事に合わせて好きな順で読める。<br>\n                    "
             "ページのタイポグラフィを敢えて他のシリーズと変えてある——これは資料ではなくエッセイだ。"),
         "quote_html": _text(is_en,
-            "Change the tools, and your thinking changes. Change your thinking,<br>\n"
-            "and you start spending time on work only humans can do.",
-            "道具を変えれば、思考が変わる。思考が変われば、<br>\n"
-            "人間にしかできない仕事に時間を使えるようになる。"),
+            "Align your tools with the AI era, and you become its free person.<br>\n"
+            "The time freed flows into culture, science, and reality.",
+            "道具を AI 時代に合わせれば、自分は AI 時代の自由人になる。<br>\n"
+            "浮いた時間は、文化・科学・現実に向かう。"),
         "cta_title": _text(is_en, "Start with the prologue", "序章から始める"),
         "cta_html": _text(is_en,
             "Begin from the prologue. The series is published as it is written.",

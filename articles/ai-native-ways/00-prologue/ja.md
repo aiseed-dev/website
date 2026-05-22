@@ -9,8 +9,8 @@ label: AI Native 00
 title_html: 事務処理は<span class="accent">Office</span>。<br>業務ソフトは<span class="accent">Java/C#</span>。<br>しかしAIは、<span class="accent">Pythonとテキスト</span>。
 prev_slug:
 prev_title:
-next_slug: python
-next_title: 処理を書く ── AIにPythonで書いてもらう
+next_slug: manual
+next_title: AI（ChatGPT・Claudeなど）活用マニュアル
 ---
 
 # 序章 — AIの母国語は、PythonとMarkdown形式のテキスト
@@ -424,7 +424,7 @@ SQLite に任せれば、データの型と処理が一体で動く。**Java や
 使うことで簡潔に書ける。「人間 ↔ 構造 ↔ AI」の三角が機能する
 最小条件は、ここに集約される。
 
-次の章から、領域ごとに具体的な作法を見ていく。
+次章 [「AI（ChatGPT・Claudeなど）活用マニュアル」](/ai-native-ways/manual/) で、まず **普通の人向けの 6 つのコツ** を押さえる。そのあと、第 2 章以降で **領域ごとの具体的な作法** ── Python・Markdown・JSON・デザイン・事務・業務システム・Web・アプリ・組み込み・AI 委任・物語の検証・1 人＋AI ── を見ていく。
 
 ---
 

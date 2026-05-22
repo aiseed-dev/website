@@ -29,15 +29,15 @@ The reputation that Linux is hard runs deep. The black screen with commands, the
 
 But in 2026, two structural shifts have reversed the situation.
 
-### First — AI is unusually good at commands
+### First — GUI operations and settings are harder for AI
 
-It might sound counterintuitive, but AI like Claude is **bad at teaching Windows GUI operations and good at teaching Linux commands**.
+It might sound counterintuitive, but for AI like Claude, **teaching you how to operate or configure something through a GUI is much harder than teaching it through commands**.
 
-GUIs are hard to describe in words. "Third item from the top of the left menu in Settings" changes between versions. "Click the gear icon" depends on where it is on screen. Even with a screenshot, AI can only point at roughly the right area.
+GUIs are structurally difficult to describe in words. "Third item from the top of the left menu in Settings" changes between versions. "Click the gear icon" depends on where it sits on screen. Even with a screenshot, AI can only point at roughly the right area. The deeper the settings hierarchy, the higher the cost of handing the steps to a human. Windows's deep settings, in particular, are exactly the kind of place AI has trouble guiding you through in words.
 
 Commands are different. They live entirely in text. The command Claude writes, you copy and paste, and it runs as-is. If an error comes up, you paste the error text back to Claude and it can locate the cause.
 
-**Linux's "too many commands" weakness flipped into a strength once AI sits beside you**.
+**Linux's "too many commands" weakness flipped into a strength once AI sits beside you**. And at the same time, **Windows's "everything completes in the GUI" strength flipped into a weakness in the AI era**.
 
 ### Second — Flathub
 

@@ -7,6 +7,7 @@ description: Windows 10 support ended in October 2025. Hundreds of millions of P
 lang: en
 label: Blog
 category: Structural Analysis Notes
+hero_image: IMG_3482.jpg
 ---
 
 # If You Have a Windows 10 PC — Now is the Time to Try Debian

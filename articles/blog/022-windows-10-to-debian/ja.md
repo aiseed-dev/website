@@ -7,7 +7,7 @@ description: 2025 年 10 月に Windows 10 のサポートが終了した。Wind
 lang: ja
 label: Blog
 category: 構造分析ノート
-hero_image: IMG_3482.jpg
+hero_image: IMG_3482.webp
 ---
 
 # Windows 10 の PC がある人へ ── Linuxをインストールする時代

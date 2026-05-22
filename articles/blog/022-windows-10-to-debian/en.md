@@ -1,28 +1,32 @@
 ---
 slug: windows-10-to-debian
-title: "If You Have a Windows 10 PC — Now is the Time to Try Debian"
+title: "If You Have a Windows 10 PC — Time to Install Linux"
 subtitle: "In the AI era, Linux is the easier choice."
 date: 2026.05.22
 description: Windows 10 support ended in October 2025. Hundreds of millions of PCs worldwide are flagged as "not compatible with Windows 11." But the hardware is fine. Debian runs on the same hardware — and runs lighter. The "Linux is hard" reputation reversed twice in the AI era: first, AI is unusually good at teaching commands (and unusually bad at teaching GUI clicks); second, Flathub now provides a curated, ad-free, vendor-neutral GUI app store that is, in several ways, better-stocked than Microsoft Store. With AI beside you now, Linux commands are no longer hard. The time to try Debian is now.
 lang: en
 label: Blog
 category: Structural Analysis Notes
-hero_image: IMG_3482.jpg
+hero_image: IMG_3482.webp
 ---
 
-# If You Have a Windows 10 PC — Now is the Time to Try Debian
+# If You Have a Windows 10 PC — Time to Install Linux
 
-In October 2025, Microsoft ended support for Windows 10. Maybe you bought a year of ESU. Maybe you're just using it anyway. Either way, **there is a path besides buying a new machine**.
+In October 2025, Microsoft ended support for Windows 10. Even with a year of ESU, individuals are about five months from the end. For businesses, $122 in October this year, $244 in October next year, and the door closes the following October.
 
-Hundreds of millions of people worldwide see the message "this PC does not meet Windows 11 requirements" on hardware that works perfectly well. CPUs older than 8th gen, no TPM 2.0 — by Microsoft's standard, "no longer usable."
+Hundreds of millions of PCs worldwide are flagged as "not compatible with Windows 11." CPUs older than 8th gen, no TPM 2.0 — by Microsoft's standard, "no longer usable."
 
-But the hardware is not broken. On the same hardware, **Debian runs just fine**. Often more lightly. Old PCs, in fact, are exactly where Linux thrives.
+Meanwhile, 2026 is the worst possible timing to buy a new PC. The AI bubble that **Microsoft itself helped trigger** has driven up memory and storage prices significantly over the past year, on the back of massive demand for AI infrastructure.
+
+On top of that, Microsoft has created a new "Copilot+ PC" category with a fresh cutoff at NPU 40 TOPS. Copilot+ PCs run over $1,500 (¥200,000+). And even after paying that, you have no guarantee how many years it will be supported — or whether you can install Linux on it directly.
+
+Right now, the best move is to **not buy a new PC**. And in that case, Linux is the option.
 
 ## Debian as the choice
 
-Debian is one of the Linux distributions that has been continuously maintained for over 30 years. It's not run by a commercial vendor — it's maintained by volunteers across the world. So "let's cut support for commercial reasons" is structurally unlikely to happen.
+Linux has many distributions, but Debian — maintained by volunteers across the world for over 30 years — is one of the strongest candidates. It is structurally insulated from commercial vendor decisions to drop support.
 
-The hardware that ran end-of-life Windows 10 will run Debian 13 without trouble. Wi-Fi, display, sound, suspend — in most cases, very little post-install tweaking is needed.
+Hardware that ran Windows 10 will, in most cases, run Debian 13 without issue.
 
 ## "Linux is hard" reversed in the AI era
 
@@ -36,7 +40,7 @@ It might sound counterintuitive, but for AI like Claude, **teaching you how to o
 
 GUIs are structurally difficult to describe in words. "Third item from the top of the left menu in Settings" changes between versions. "Click the gear icon" depends on where it sits on screen. Even with a screenshot, AI can only point at roughly the right area. The deeper the settings hierarchy, the higher the cost of handing the steps to a human. Windows's deep settings, in particular, are exactly the kind of place AI has trouble guiding you through in words.
 
-Commands are different. They live entirely in text. The command Claude writes, you copy and paste, and it runs as-is. If an error comes up, you paste the error text back to Claude and it can locate the cause.
+Commands are different. They live entirely in text. Claude — the most widely used AI in enterprise — writes the command, you copy and paste, and it runs as-is. If an error comes up, you paste the error text back to Claude and it can locate the cause.
 
 **Linux's "too many commands" weakness flipped into a strength once AI sits beside you**. And at the same time, **Windows's "everything completes in the GUI" strength flipped into a weakness in the AI era**.
 

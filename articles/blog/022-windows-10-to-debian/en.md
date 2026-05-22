@@ -18,7 +18,11 @@ Hundreds of millions of PCs worldwide are flagged as "not compatible with Window
 
 Meanwhile, 2026 is the worst possible timing to buy a new PC. The AI bubble that **Microsoft itself helped trigger** has driven up memory and storage prices significantly over the past year, on the back of massive demand for AI infrastructure.
 
-On top of that, Microsoft has created a new "Copilot+ PC" category with a fresh cutoff at NPU 40 TOPS. Copilot+ PCs run over $1,500 (¥200,000+). And even after paying that, you have no guarantee how many years it will be supported — or whether you can install Linux on it directly.
+Microsoft has also created a new "Copilot+ PC" category with a fresh cutoff at NPU 40 TOPS. These machines start above $1,500 (¥200,000+).
+
+But adding an NPU to a PC **does not change the fact that AI processing remains centralized in data centers**. Copilot's core features — drafting in Word, formula generation in Excel, summarization in PowerPoint, reply drafts in Outlook, agents — still call Azure and OpenAI's cloud. What the NPU actually runs locally is a narrow set of peripheral features: Recall, Studio Effects, parts of live captions. Despite the "AI on the edge" marketing, dependence on the Azure data centers — the actual core of the AI bubble — does not decrease.
+
+And even after paying that much, you have no guarantee how many years a Copilot+ PC will be supported — or whether you can install Linux on it directly.
 
 Right now, the best move is to **not buy a new PC**. And in that case, Linux is the option.
 

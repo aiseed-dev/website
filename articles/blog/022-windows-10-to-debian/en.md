@@ -1,7 +1,7 @@
 ---
 slug: windows-10-to-debian
 title: "If You Have a Windows 10 PC — Now is the Time to Try Debian"
-subtitle: "Now that Microsoft says \"we're done caring\" — this is the moment for Debian + AI."
+subtitle: "In the AI era, Linux is the easier choice."
 date: 2026.05.22
 description: Windows 10 support ended in October 2025. Hundreds of millions of PCs worldwide are flagged as "not compatible with Windows 11." But the hardware is fine. Debian runs on the same hardware — and runs lighter. The "Linux is hard" reputation reversed twice in the AI era: first, AI is unusually good at teaching commands (and unusually bad at teaching GUI clicks); second, Flathub now provides a curated, ad-free, vendor-neutral GUI app store that is, in several ways, better-stocked than Microsoft Store. With AI beside you now, Linux commands are no longer hard. The time to try Debian is now.
 lang: en
@@ -86,8 +86,9 @@ Three years ago this would have been different. Linux commands were hard, Flathu
 
 You can dispose of a PC anytime. You can buy a new one anytime. But **the doorway to "use the PC you already have one stage longer" is open right now — at this very moment, when Windows 10 support has ended**. If everyone in the world replaces their machine at the same time, it becomes a mountain of e-waste, and producing new PCs consumes mineral resources and fossil fuels. Whether you join that wave is, also, a choice you make now.
 
-The day Microsoft says "we're done caring" is not the day the hardware died.
-With AI beside you now, Linux commands are no longer hard.
+In the AI era, Linux is the easier choice.
+AI writes the commands. Flathub installs the apps. Even old PCs run lightly.
+The tools came together on the Linux side, not the Windows side.
 
 [Learning Debian with Claude →](/en/claude-debian/)
 

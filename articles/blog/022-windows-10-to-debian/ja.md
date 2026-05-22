@@ -1,7 +1,7 @@
 ---
 slug: windows-10-to-debian
 title: Windows 10 の PC がある人へ ── 今、Debian を試す
-subtitle: Microsoft が「もう面倒を見ない」と言った今こそ、Debian + AI の時
+subtitle: AI 時代には、Linux の方が使いやすい
 date: 2026.05.22
 description: 2025 年 10 月に Windows 10 のサポートが終了した。Windows 11 に対応していない PC が世界中で数億台ある。しかしハードウェアは何も壊れていない。同じハードウェアで Debian は普通に動く ── むしろ古い PC こそ Linux の方が向いている。「Linux は難しい」という常識は、AI 時代に二重に逆転した: ひとつは AI がコマンドと相性がいいこと、もうひとつは Flathub が普段使いアプリの GUI 導入を Microsoft Store より整った形で提供していること。AI が横にいる今、Linux のコマンドはもう難しくない。Debian を試すなら今が時。
 lang: ja
@@ -86,8 +86,9 @@ Windows で言えば、Microsoft Store のような場所だ。しかし、Micro
 
 PC の廃棄はいつでもできる。買い替えもいつでもできる。しかし、**「今ある PC を、もう一段使い倒す」入口は、Windows 10 サポート終了という今この瞬間に開いている**。世界中で同じことが同時に起きれば、膨大な電子ゴミになり、新しい PC を作るための鉱物資源と化石燃料を消費する ── その流れに加わるかどうかも、今、選べる。
 
-Microsoft が「もう面倒を見ない」と言った日は、ハードウェアの寿命ではない。
-AI が横にいる今、Linux のコマンドはもう、難しくない。
+AI 時代には、Linux の方が使いやすい。
+コマンドは AI が書く。アプリは Flathub から入る。古い PC でも軽快に動く。
+道具が揃ったのは、Windows ではなく Linux の側だった。
 
 [Claude と一緒に学ぶ Debian →](/claude-debian/)
 

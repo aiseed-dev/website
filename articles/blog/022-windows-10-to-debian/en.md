@@ -16,6 +16,8 @@ In October 2025, Microsoft ended support for Windows 10. Even with a year of ESU
 
 Hundreds of millions of PCs worldwide are flagged as "not compatible with Windows 11." CPUs older than 8th gen, no TPM 2.0 — by Microsoft's standard, "no longer usable."
 
+**For anyone who owns one of these "can't-upgrade-to-Windows-11" PCs, the answer of this article is clear-cut: you should absolutely migrate to Linux (Debian).** ESU is finite and expensive, buying a new PC is — as the next sections show — the worst possible timing, and Linux is free with the existing hardware untouched. There is, in practical terms, no other road to choose. The rest of this article is about how to carry out that "should."
+
 Meanwhile, 2026 is the worst possible timing to buy a new PC. The AI bubble that **Microsoft itself helped trigger** has driven up memory and storage prices significantly over the past year, on the back of massive demand for AI infrastructure. One concrete number: **the same mini PC model the author uses for the hardware verification later in this post has gone up by ¥60,000 (about $400) within less than a year since purchase** — not "prices in general," but the same exact SKU, observed in real-time.
 
 More serious than that: **the "16 GB RAM + 500 GB SSD" spec that was the standard entry-level configuration just a year or two ago is becoming hard to actually buy.** The bottom of the market has been drained by AI data-center demand, and what's left on the shelves is either "a step up from that," or a Copilot+ PC priced above ¥200,000 ($1,500). This bimodal split is not an accident.

@@ -132,7 +132,8 @@ This book's recommendation:
 | Firefox | **apt** (`firefox-esr`) / Flatpak also works | Debian Security Team backports ESR promptly; native integration is smooth |
 | Chromium / Chrome / Brave / Vivaldi | **Flatpak** | apt lags; Chrome's deb is a pain to keep current; sandbox is a bonus |
 | Desktop environment / fonts / IME | **apt** | OS base; no benefit from Flatpak |
-| LibreOffice | **apt or Flatpak** | apt is fine; Flatpak for newest features |
+| OnlyOffice | **Flatpak** | The book's office pick. Stronger visual compatibility with MS Office |
+| LibreOffice | **apt** (`libreoffice libreoffice-l10n-ja`) | Backup slot. For legacy formats and LibreOffice-specific files |
 | Slack / Zoom / Discord / Spotify | **Flatpak** | Faster updates + sandboxing |
 | Bitwarden / Signal / Element | **Flatpak** | Same; encryption apps benefit from being current |
 | OBS / Krita / Inkscape / GIMP (latest) | **Flatpak** | apt versions lag |
@@ -289,35 +290,95 @@ There is a tool to import Outlook's `.pst` files into Thunderbird.
 >
 > Recommend the best mail client and give me the initial setup and the steps for migrating past mail.
 
-## Section 3 — Office
+## Section 3 — Office: OnlyOffice + Python Is Enough
 
-### LibreOffice (`sudo apt install libreoffice libreoffice-l10n-ja`)
+### The book's conclusion: OnlyOffice as the compat layer, Python for the actual work
 
-The face of Debian office: Writer (documents), Calc (spreadsheets), Impress (presentations), Draw (diagrams), Base (database), Math (formulas).
+The author's conclusion after running this on real hardware: **Office migration is solved by the pair OnlyOffice + Python, with essentially no friction**. The "LibreOffice cries on compatibility" era is over.
 
-**The reality of Office-file compatibility:**
-- Simple documents: no problem.
-- Tables, forms, simple functions: mostly no problem.
-- Complex Excel macros: can break.
-- PowerPoint animations: subtly off.
+The split of roles is simple.
 
-### OnlyOffice (Distributed as deb)
+- **OnlyOffice** — the **compat layer** for opening, editing, and returning `.docx` / `.xlsx` / `.pptx` files that other people send you. Its visual fidelity to MS Office is clearly higher than LibreOffice.
+- **Python (pandas / openpyxl / Marp / pandoc)** — **your own work** runs on Markdown, CSV, and Python. Treat Excel not as "an application" but as "a data format."
 
-Visual fidelity to Office files is higher than LibreOffice. A candidate if you exchange business documents with MS Office users frequently.
+The "make Markdown and CSV the primary formats" line from Chapters 1 and 4 becomes concrete here in Chapter 11.
 
-### Google Workspace / Microsoft 365 Online
+### Installing OnlyOffice
 
-A pragmatic split: "use the online version in the browser only when I need full Office-file fidelity."
+Either the official deb or Flatpak works. This book recommends Flatpak (faster updates, free sandbox).
 
-### Ask Claude ③: Office Strategy
+```bash
+flatpak install flathub org.onlyoffice.desktopeditors
+```
+
+Launch it and `.docx` / `.xlsx` / `.pptx` open as-is. The ribbon UI is close to MS Office, so a Windows refugee can start using it immediately.
+
+**Cases where OnlyOffice alone is enough:**
+- Receive a Word doc, add comments, send it back.
+- Polish a final `.docx` / `.pptx` for submission.
+- Open a small `.xlsx` to check and tweak values.
+- Edit Excel files with moderate formulas and tables.
+
+### OnlyOffice macros are JavaScript — and they run locally
+
+A quiet but important property worth calling out. **OnlyOffice's macro language is JavaScript** — a different family from MS Office's VBA, but a vastly more widely used language with far more learning material, and one that Claude can write very fluently.
+
+What matters more for this book's stance is that **the macros run locally**.
+
+- MS Office's macro and scripting features have steadily moved toward cloud-side APIs and Power Platform, **assuming a Microsoft account and a live network connection**.
+- OnlyOffice's macros run inside the desktop app. **They work offline, and they work without a Microsoft account.**
+
+This lines up cleanly with the book's "step away from vendor lock-in" theme (Chapter 1). Dropping a small JavaScript macro into an OnlyOffice document is **a natural replacement for the territory where Excel VBA used to live**.
+
+That said, **for complex logic, you're still better off writing it in Python**. JavaScript macros stay sealed inside the OnlyOffice document — the moment you cross out of that box (multi-file processing, external APIs, scripts you'll maintain for years), Python's ecosystem (pandas, openpyxl, uv-isolated environments) is far broader.
+
+Rough guide to the split:
+
+- **Good fits for OnlyOffice JavaScript macros.** One-click conveniences that the document's reader can run inline — reshape a table, recompute a sum, insert a template.
+- **Push to Python instead.** Multi-file processing, fetching external data, long-lived logic, anything you'd want tests for.
+
+### Cases that should move to Python
+
+Anything "you actually compute" should leave OnlyOffice and live in Python.
+
+- **Aggregation / analysis.** `pandas` reads CSV / Excel and emits results as CSV or Markdown.
+- **Recurring reports.** Markdown template + data → `pandoc` to `.docx`, `Marp` to `.pptx`.
+- **Replacing complex Excel macros.** Drop VBA; rewrite in Python. **The same script keeps working next month and next year.**
+- **Cross-file work.** Process dozens of Excel files in one pass (opening them by hand in a GUI is wasted time).
+
+Use `uv` to keep environments isolated (details in Chapter 16).
+
+```bash
+uv init my-report && cd my-report
+uv add pandas openpyxl
+```
+
+### Where LibreOffice fits (optional)
+
+LibreOffice comes from Debian's `apt` and bundles Writer / Calc / Impress / Draw / Base / Math. **In this book it's the "keep one around as backup"** slot.
+
+- The very occasional PDF or legacy format (`.doc` / `.xls`) where OnlyOffice's rendering breaks.
+- Opening existing files that depend on LibreOffice-specific functions.
+- Touching a local DB through Base.
+
+Everything else is covered by OnlyOffice or Python.
+
+### "Do I keep a Microsoft 365 Online subscription?" is a separate question
+
+If a client makes "must open cleanly in the latest MS Office" a contract condition, keep a Microsoft 365 subscription **in the browser, for final-check only**. But that is a question about **how to meet client requirements**, not about "how to do office on Debian," so this book doesn't chase it further.
+
+### Ask Claude ③: A roadmap for moving my Office usage to Python
 
 > My frequency of Office files is:
 > - Word: __ per week, my own or received, complexity.
 > - Excel: __, with / without macros, complexity.
 > - PowerPoint: __, with / without animation, complexity.
 >
-> Of LibreOffice, OnlyOffice, Microsoft 365 Online, Google Workspace, which should I make primary and which secondary?
-> Tell me the points where compatibility is most likely to fail, and how to avoid them.
+> Following the book's line (OnlyOffice + Python), please split my work into:
+> (1) Things I just open in OnlyOffice and send back.
+> (2) Things I should re-base on Markdown / CSV / Python.
+> (3) Things that stay in Microsoft 365 Online for now, in neither lane.
+> For each, give me a concrete first step.
 
 ## Section 4 — Communication
 

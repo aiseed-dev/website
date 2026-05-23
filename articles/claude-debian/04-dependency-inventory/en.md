@@ -202,9 +202,10 @@ Office-class software at all.
 | Slides | PowerPoint | **Markdown + Marp** |
 | Diagrams | PowerPoint / Visio | **Mermaid** |
 
-Convert to .docx / .xlsx / .pdf via pandoc or LibreOffice **only at the
+Convert to .docx / .xlsx / .pdf via pandoc or OnlyOffice **only at the
 boundary** — input from and output to the outside world. The substance
-stays as structured text.
+stays as structured text. OnlyOffice ships strong visual compatibility
+with MS Office and is treated as this book's compat layer in Chapter 11.
 
 Concrete code and measurements live in the [AI-Native Ways of Working](/en/ai-native-ways/)
 example sets (monthly report in 30 seconds, 100 Excel files aggregated

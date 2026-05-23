@@ -46,9 +46,11 @@ series. Office-compatible software stays only as an **import / export
 adapter** at the boundary; the substance lives as structured text. This
 makes it easy to hand work to AI, search it, diff it.
 
-In the transition you still use LibreOffice / Thunderbird / Firefox.
-The book's stance is the destination: **a state where even the
-Office-compatible suite is barely needed.**
+In the transition you still use OnlyOffice / Thunderbird / Firefox
+(OnlyOffice ships strong visual compatibility with MS Office and is
+this book's office pick in Chapter 11). The book's stance is the
+destination: **a state where even the Office-compatible suite is
+barely needed.**
 
 **C. Habits you lose.**
 "Press the Start menu and there's a search box," "Right-click to send to OneDrive," "Ctrl+Shift+Esc to open Task Manager" — muscle memory built up over twenty years. The first few weeks require deliberate replacement.

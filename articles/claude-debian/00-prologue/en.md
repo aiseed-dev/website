@@ -92,6 +92,67 @@ Put the other way: **pairing a transparent OS like Debian with a transparent thi
 
 This book's approach — "learning with Claude" — is the style of learning most aligned with the structure of this era. That is why this approach was chosen.
 
+### Why Linux Now — Which Architectures the AI Era Rewards, Which It Doesn't
+
+I just wrote that "a black-box OS is dangerous." There is a deeper reason behind it. **In the AI era, the structural difference between Linux and Windows is, for the first time, taking on decisive weight.**
+
+#### 1. AI's acceleration is not symmetric
+
+AI — Claude and other LLMs — has made every OS task easier. At first glance, Linux and Windows seem to benefit equally. They don't.
+
+- Linux's strength is **transparency and operability**. It was always the "powerful if you know it, unusable if you don't" kind of strength — its only weakness was **the cost of the on-ramp**. In an era where Claude explains `journalctl` in seconds, that on-ramp cost is effectively zero.
+- Windows's strength is **completing tasks through a GUI**. The on-ramp was already cheap. AI cannot make it any cheaper.
+
+In other words, **AI dropped the price tag on Linux's strengths**, and only Linux's. This asymmetric acceleration starts to bite in the next few years. That this book is written *now* is largely because of that.
+
+#### 2. Fused stack vs. layered stack
+
+Another asymmetry sits inside the OS architecture itself.
+
+Windows has, layer after layer, been inserted in a way that **cannot be separated from the layers below it**.
+
+```
+[new ] Copilot / Recall / Windows Copilot+
+[    ] Telemetry (DiagTrack / Windows Update)
+[    ] Bundled apps (Edge / Store / OneDrive / Teams)
+[    ] Shell (Explorer.exe / taskbar / Start)
+[    ] Win32 / WinUI (welded to DWM)
+[    ] NT kernel
+```
+
+"You can't remove Cortana," "You can't remove Edge" — for the same reasons, **Copilot and Recall cannot be removed**. This is not Microsoft being malicious; it's that the stack was never designed for separation in the first place.
+
+Linux is the opposite. Each layer is independently replaceable.
+
+```
+[user picks] Claude Code / Zed / local LLM …  (bolted on)
+[user picks] GNOME / KDE / Xfce / none
+[user picks] Wayland / X11 / none
+[          ] kernel
+```
+
+AI runs only when the user invokes it. The kernel doesn't know AI exists; neither does the shell. **The structure itself lets you say "I want it here, but not there."** It is this layer separation that lets Chapters 6 and 9 say "the DE can be thin, and you can swap it," and that lets Chapters 17 and 19 say "revive an old PC."
+
+#### 3. Recall isn't an accident — it's the natural endpoint
+
+This is the part to look at coldly. Microsoft's Recall — which takes screenshots every few seconds and indexes them with AI — is not an "overreach mistake." On a fused stack with AI welded in, **it is what was bound to emerge**.
+
+- Every layer can see every other layer → a privileged process holds, from day one, the right to see the entire screen.
+- AI is embedded in the OS → that privileged process now has a pipe to hand what it sees to the AI.
+- A Microsoft account and the cloud are already wired in → no guarantee that what was handed over stays local.
+
+**Trying to build the same feature on Linux is technically difficult.** Wayland structurally restricts cross-application peeking, the kernel doesn't know about screens, and the culture keeps AI bolted on from outside — so no one starts with the privileges that would aggregate it all. **The fact that it cannot be built** is not ideology; it is the consequence of the design.
+
+#### What this book assumes
+
+In short, this book quietly assumes three things.
+
+1. In the AI era, the cost of Linux's strengths (transparency, operability) collapsed.
+2. Linux's layered architecture lets you keep AI as **a tool the user calls**, bolted on from outside.
+3. Windows's fused architecture cannot help but embed AI as **a pipeline the user cannot opt out of**.
+
+Every concrete migration step in Chapter 1 and beyond stands on those three premises. **"Switching to Linux" is a structural choice for keeping your initiative in the AI era** — not a matter of taste or ideology. That is the ground this book stands on.
+
 ## Section 3 — What You Can Expect
 
 ### What You Hold When You Finish

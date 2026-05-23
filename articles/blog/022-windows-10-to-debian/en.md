@@ -22,7 +22,7 @@ Microsoft has also created a new "Copilot+ PC" category with a fresh cutoff at N
 
 But adding an NPU to a PC **does not change the fact that AI processing remains centralized in data centers**. Copilot's core features — drafting in Word, formula generation in Excel, summarization in PowerPoint, reply drafts in Outlook, agents — still call Azure and OpenAI's cloud. What the NPU actually runs locally is a narrow set of peripheral features: Recall, Studio Effects, parts of live captions. Despite the "AI on the edge" marketing, dependence on the Azure data centers — the actual core of the AI bubble — does not decrease.
 
-And even after paying that much, you have no guarantee how many years a Copilot+ PC will be supported — or whether you can install Linux on it directly.
+And even after paying that much, you have no guarantee how many years a Copilot+ PC will be supported — or whether you can install Linux on it directly. In particular, **on Snapdragon (ARM) Copilot+ PCs, installing Linux is currently very hard** — the combination of bootloader, firmware, and GPU drivers leaves the community still in trial-and-error territory. You cannot just "burn an ISO and boot it" the way you can on x86 hardware. You end up paying $1,500+ for **a PC with no exit**.
 
 Right now, the best move is to **not buy a new PC**. And in that case, Linux is the option.
 
@@ -31,6 +31,30 @@ Right now, the best move is to **not buy a new PC**. And in that case, Linux is 
 Linux has many distributions, but Debian — maintained by volunteers across the world for over 30 years — is one of the strongest candidates. It is structurally insulated from commercial vendor decisions to drop support.
 
 Hardware that ran Windows 10 will, in most cases, run Debian 13 without issue.
+
+## Real-hardware verification — the basis for this post
+
+So this post isn't written in the abstract, here is the actual machine the author installed Debian 13 on and tested.
+
+| Component | Model | On Debian 13 |
+|---|---|---|
+| Chassis | MouseComputer ISoDEi-I1MA (mini PC) | UEFI / TPM 2.0 left enabled |
+| GPU | Intel Iris Xe Graphics (integrated) | Works out of the box on Mesa, no extra driver |
+| Wi-Fi | Intel Wi-Fi 6E AX211 160MHz | `firmware-iwlwifi` bundled in netinst — **SSID list shows up right in the installer** |
+| Bluetooth | Intel | Same iwlwifi package |
+| Wired LAN | Realtek 2.5GbE + GbE (dual NIC) | Standard `r8169` |
+| Storage | NVMe Kingston OM8TAP4512 (512 GB) | Standard `nvme` driver |
+| Audio | Realtek HD + Intel SST | `snd-hda-intel` / `sof-firmware` |
+
+Of the seven trouble categories Chapter 8 of [Learning Debian with Claude](/en/claude-debian/) lists (display, Wi-Fi, Bluetooth, audio, suspend, Japanese input, peripherals), **none of them required any work on this machine — all worked from first boot**. And because you skip every Windows 11 setup chore (Microsoft account requirement, Copilot opt-in, OneDrive push, the wall of consent dialogs), **the Debian 13 install was, if anything, faster than the Windows 11 setup that came on the same hardware**.
+
+### Aside — I bought this PC to develop Windows apps
+
+To be honest: **this mini PC was originally bought to develop Windows applications on**. Within six months of buying it, I'd reached the conclusion to **stop making new Windows apps**. The reasons are the ones this site has been writing about — there is no public roadmap for how many more years Windows will hold as a base, the structures that the AI era rewards lean to the Linux side, and users are walking away from Windows.
+
+And the moment I installed Debian 13, **the hardware I bought for Windows app development turned into a "mini PC where everything except Windows runs"**. Every spec I chose for Windows (TPM, Wi-Fi 6E, NVMe, 2.5GbE) carries 100% over to Debian 13. None of the hardware was wasted. The only thing thrown away was the Windows layer on top.
+
+In a sense, this post is a hands-on demonstration of the "shift to the builder" argument from [**"In the AI Era, Become a Specialized Engineer" Misreads the Structure**](/en/blog/software-three-transitions/), carried out on the author's own bench.
 
 ## "Linux is hard" reversed in the AI era
 

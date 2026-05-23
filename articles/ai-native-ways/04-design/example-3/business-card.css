@@ -1,0 +1,102 @@
+/* 名刺 1 枚 (日本標準 91mm × 55mm) ── 印刷用 CSS.
+ *
+ * ブラウザで開いて Ctrl+P (Cmd+P) → 用紙サイズを「カスタム 91×55mm」
+ * または「Letter / A4」のまま「PDF として保存」でも OK。
+ * Weasyprint で HTML → PDF へ変換する場合は @page サイズが優先される。
+ *
+ * aiseed.dev のアクセント色 #c8442a を採用。フォントはシステム明朝/
+ * Sans を使う (Windows: 游明朝・游ゴシック / Mac: ヒラギノ明朝・ヒラ
+ * ギノ角ゴ / Linux: Noto Serif CJK・Noto Sans CJK が標準的に揃って
+ * いる)。
+ */
+
+@page {
+    size: 91mm 55mm;
+    margin: 0;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #f4f1ea;  /* 画面プレビュー時に紙の質感を出す */
+}
+
+.card {
+    width: 91mm;
+    height: 55mm;
+    background: white;
+    margin: 8mm auto;     /* 画面プレビュー時のセンタリング */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    padding: 8mm;
+    display: flex;
+    flex-direction: column;
+    color: #1a1a1a;
+    font-family: "Hiragino Mincho ProN", "游明朝", "Yu Mincho",
+                 "Noto Serif CJK JP", "Noto Serif JP", serif;
+}
+
+.name-ja {
+    font-size: 14pt;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1;
+}
+
+.name-en {
+    font-size: 9pt;
+    color: #6b665a;
+    margin-top: 1.5mm;
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0.02em;
+}
+
+.title {
+    font-size: 9pt;
+    color: #c8442a;
+    margin-top: 4mm;
+    font-family: "Hiragino Sans", "游ゴシック", "Yu Gothic",
+                 "Noto Sans CJK JP", "Noto Sans JP", sans-serif;
+    letter-spacing: 0.05em;
+}
+
+.rule {
+    width: 16mm;
+    height: 0.6pt;
+    background: #c8442a;
+    margin-top: auto;
+    margin-bottom: 4mm;
+}
+
+.contact {
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+    font-size: 9pt;
+    line-height: 1.6;
+}
+
+.email {
+    color: #1a1a1a;
+}
+
+.url {
+    color: #6b665a;
+}
+
+/* 印刷時はプレビュー用のシャドウや背景を消す */
+@media print {
+    body { background: white; }
+    .card {
+        margin: 0;
+        box-shadow: none;
+    }
+}

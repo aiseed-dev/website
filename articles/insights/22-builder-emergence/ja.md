@@ -1,11 +1,11 @@
 ---
 slug: builder-emergence
-number: "21"
+number: "22"
 title: 解体される封建制——ビルダーの台頭
 subtitle: AIネイティブ基層+LLMが翻訳労働を消すと、家臣層は領主から独立できる。これが第二次ルネサンスの構造的根拠である。
 description: AI革命がIT革命の封建制を解体する力学を分析する。翻訳労働需要が消えると階層構造が崩れ、家臣層（エンジニア）が領主に依存しなくなる。同時に自由都市（Linux+Python+AI）に移住した個人が「ビルダー」として独立する。中世末期に商人・職人・知識人が自由都市を作ったのと同型である。第二次ルネサンスは比喩ではなく、構造的に進行している。
 date: 2026.05.23
-label: Structural Analysis 21
+label: Structural Analysis 22
 prev_slug: lord-class-collapse
 prev_title: 領主層の自己破壊——Big Techの囲い込みの限界
 next_slug: ai-native-free-individual
@@ -13,9 +13,9 @@ next_title: AIネイティブな自由人への道——個人レベルの選択
 cta_label: Build
 cta_title: ビルダーになることは、構造的に「逃げる」ことではない。新しい階級を作ることだ。
 cta_text: 中世末期の商人・職人が自由都市を作ったように、AI時代のビルダーは自由市民として新しい経済を作る。
-cta_btn1_text: 第22章 自由人への道
+cta_btn1_text: 第23章 自由人への道
 cta_btn1_link: /insights/ai-native-free-individual/
-cta_btn2_text: 第20章 領主層の自己破壊
+cta_btn2_text: 第21章 領主層の自己破壊
 cta_btn2_link: /insights/lord-class-collapse/
 ---
 

@@ -1,22 +1,22 @@
 ---
 slug: lord-class-collapse
-number: "20"
+number: "21"
 title: 領主層の自己破壊——Big Techの囲い込みの限界
 subtitle: NadellaはCopilot失敗を認めれば済んだ。それでも走り続けているから、悪役が確定する。
 description: AI革命に対するBig Techの反応は、中世領主が印刷術を抑え込もうとしたのと同じ構造になっている。Nadellaは7つの行為（OpenAI巨額投資、Altman復帰工作、Stargate、Copilot強制、Copilot+ハード要件、テイク・オア・ペイ契約、退却拒否）で自己破壊を進めている。降りられたのに降りない選択は、悪役を構造的に確定させる。AIバブルと資源ショックの衝突という時代背景が、この自己破壊を不可逆にしていく。
 date: 2026.05.23
-label: Structural Analysis 20
-prev_slug: it-revolution-feudalism
-prev_title: IT革命の正体——新しい封建制の建設
+label: Structural Analysis 21
+prev_slug: structural-contradictions
+prev_title: 封建制が生んだ現代の矛盾——フェイク、注意搾取、Mythos、物質的盲点
 next_slug: builder-emergence
 next_title: 解体される封建制——ビルダーの台頭
 cta_label: Witness
 cta_title: 領主層が自己破壊する時を、目の前で見ている。
 cta_text: 中世の領主層が印刷術を抑え込めなかったように、Big TechはAI革命を抑え込めない。退却できないので、悪役として歴史に記録される。
-cta_btn1_text: 第21章 ビルダーの台頭
+cta_btn1_text: 第22章 ビルダーの台頭
 cta_btn1_link: /insights/builder-emergence/
-cta_btn2_text: 第19章 IT革命の正体
-cta_btn2_link: /insights/it-revolution-feudalism/
+cta_btn2_text: 第20章 封建制が生んだ現代の矛盾
+cta_btn2_link: /insights/structural-contradictions/
 ---
 
 ## 領主層は新しい技術にどう反応するか

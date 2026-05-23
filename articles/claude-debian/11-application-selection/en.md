@@ -495,17 +495,111 @@ Security keys like YubiKey work without trouble on Linux. The `yubico-authentica
 - **KDE.** Klipper, by default.
 - **GNOME.** The `Clipboard Indicator` extension.
 
-## Section 9 — The Pace of Migration
+## Section 9 — Gaming: Steam Proton + Heroic Cover Most of It
+
+### Conclusion first: the "Linux can't game" era is over
+
+"I can't switch because of games" used to be a real blocker. It isn't anymore. **Thanks to Valve's investment in Proton (a Wine-based compatibility layer) for the Steam Deck, plus DXVK / VKD3D, the bulk of Windows-only games run cleanly on Debian.**
+
+The book's stance is simple. **Install Steam (and, if you need it, Heroic) from Flathub and let the compatibility layer handle everything.** You don't have to hunt for Linux-native ports.
+
+### Installing Steam
+
+```bash
+flatpak install flathub com.valvesoftware.Steam
+```
+
+Sign in with your Steam account and the Install button shows up even for Windows-only titles in your library. In Settings → Compatibility, **check "Enable Steam Play for all other titles."** Proton runs transparently underneath.
+
+Hardware preconditions:
+
+- **Intel / AMD integrated GPU.** Debian's stock Mesa drivers work as-is. Nothing extra needed.
+- **NVIDIA discrete GPU.** Install `nvidia-driver` (covered in Chapter 8). Proton on NVIDIA has been solid for the last couple of years.
+
+### For non-Steam stores (Epic / GOG): Heroic
+
+If you also want your Epic Games, GOG, or Amazon Games libraries, add Heroic Games Launcher.
+
+```bash
+flatpak install flathub com.heroicgameslauncher.hgl
+```
+
+Heroic uses Proton (or Wine-GE) internally. Log in with your Epic account and your owned titles install with the same feel as Steam.
+
+### What works, what doesn't
+
+Honest line in the sand. **"Everything works" is not the claim.**
+
+- **Almost certainly works.** Single-player AAA (Cyberpunk 2077, Elden Ring, Baldur's Gate 3), every Valve title, indies, anything with a Steam Deck Verified / Playable badge.
+- **Works with tuning.** Heavily modded setups, very old (pre-DirectX 9) titles, certain DRM-laden launcher-exclusive releases.
+- **Doesn't work, period.** **Online titles that require kernel-level anti-cheat** — Valorant, Fortnite, recent Call of Duty, PUBG, and similar. These titles actively refuse Linux clients, and this is not something the compatibility layer is meant to defeat.
+
+For pre-purchase verification, use [protondb.com](https://www.protondb.com/). Search the title and you'll see how actual users rate it (Platinum / Gold / Silver / Bronze / Borked).
+
+### Separate "work user" and "play user" — a Linux-native answer
+
+This is where Linux's traditional strength shows. **In the Unix tradition, you create multiple users on one machine and isolate them completely.** The separation is far stronger than Windows-style "user switching."
+
+- `taro-work` — work account. Steam isn't even installed. Nothing extra on the desktop. Only the work home directory, dotfiles, and git keys.
+- `taro-game` — play account. Steam, Heroic, the lot. Work files aren't visible.
+
+Switch users at the login screen and **"work mode" and "play mode" physically swap out**. It feels like owning two PCs.
+
+```bash
+# Add the play user
+sudo adduser taro-game
+
+# Optionally, don't add this user to sudo (no admin rights for the play account)
+```
+
+Concrete benefits:
+
+- **No friendly fire.** You can't accidentally launch Steam on top of a work Slack window.
+- **Dependency isolation.** Wine tweaks or odd Flatpaks installed for gaming don't pollute your work environment.
+- **Time boundary.** Logging out to switch into the gaming user is exactly the friction that breaks idle "play while working" reflexes.
+- **Shareable machine.** Hand the play user to a child; split accounts across the family — all natural.
+
+Windows can't separate cleanly like this. **"I don't need a separate PC for work"** — this is one of the unexpected practical wins that only shows up once you switch to Linux.
+
+### Should I just use a gaming-focused distro (Bazzite etc.)?
+
+Gaming-focused distros like Bazzite exist — essentially the Steam Deck OS adapted for desktops, and yes, "boot and play" is a faster experience.
+
+The book's stance is clear. **Keep Debian 13 as your primary work machine and play games on top of it.** Switching to a gaming-specialized distro at the cost of your work productivity gets the priorities backwards. The Flatpak Steam on Debian closes most of the gap with Bazzite to "the first ten minutes feel a bit different."
+
+### If a game you want refuses to run
+
+Do you keep Windows around solely for a handful of kernel-anti-cheat titles? The book's answer is **no**:
+
+1. **Give up that handful of titles.** There's no shortage of other games.
+2. **Play them on a console instead.** PS5 / Switch / Xbox versions exist for most of them.
+3. **Keep an old Win11 box as "gaming only."** Disconnected from your daily work, stripped down to Steam and that one game (the Category A handling from Chapter 1).
+
+None of these justifies making your primary PC a Windows machine.
+
+### Ask Claude ⑧: Verdict on My Library
+
+> The games I play (or want to play) are:
+> - [title 1]
+> - [title 2]
+> - [title 3]
+>
+> For each, on Debian + Steam Proton (or Heroic), tell me:
+> (1) Expected runtime status (drawing on ProtonDB).
+> (2) Whether it ships kernel-level anti-cheat and how the Linux outlook stands.
+> (3) Alternatives or workarounds (console version, similar titles, etc.).
+
+## Section 10 — The Pace of Migration
 
 Don't migrate everything at once. Move in this order.
 
 **Day 1.** Browser, mail, messenger (the daily essentials).
 **Week 1.** Office, cloud sync, password manager.
-**Month 1.** Image / video, utilities, specialized use.
+**Month 1.** Image / video, utilities, games, specialized use.
 
 Set priorities and don't rush.
 
-### Ask Claude ⑧: My App Migration Plan
+### Ask Claude ⑨: My App Migration Plan
 
 > Based on the B and D categories of my dependency map (`dependency-map.md`) and how often I use each, draft an app migration schedule split into Day 1 / Week 1 / Month 1.
 > Add a risk level to each item (impact if the migration fails).
@@ -514,9 +608,12 @@ Set priorities and don't rush.
 
 What you did in this chapter:
 
-1. Replaced Windows apps with Debian apps in eight categories.
-2. Handled honestly the things that don't fully replace (LINE, Teams, etc.).
-3. Designed the migration pace (Day / Week / Month).
+1. Replaced Windows apps with Debian apps in nine categories.
+2. Handled honestly the things that don't fully replace (LINE, Teams, kernel-anti-cheat games, etc.).
+3. Confirmed that Steam Proton + Heroic cover the bulk of gaming.
+4. Designed the migration pace (Day / Week / Month).
+
+**There is much less you actually have to give up than you thought.** Browsers, mail, office, communication, image and video, sync, password managers, utilities, games — with the stance this book takes, the things that genuinely require Windows count on one hand.
 
 Where you are now:
 - A set of Debian apps usable for daily life.

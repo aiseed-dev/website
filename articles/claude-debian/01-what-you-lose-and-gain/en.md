@@ -35,7 +35,9 @@ The goal of Chapter 1, before you wipe Windows, is to build — together with Cl
 When thinking about "what you will lose," the worst thing is to worry about it vaguely. Work with Claude to break it into four concrete categories.
 
 **A. Software that won't run as-is.**
-Industry-specific applications, particular accounting software, CAD, some Adobe products, anti-cheat-enabled online games. These will not run on Debian as-is.
+Industry-specific applications, particular accounting software, CAD, some Adobe products, and **online games that require kernel-level anti-cheat** (Valorant, recent Call of Duty, Fortnite, and similar). These will not run on Debian as-is.
+
+A word on games up front, because this gets misread the most often. Single-player titles, every Valve game, and AAA releases carrying the Steam Deck Verified badge run cleanly on Flathub's Steam + Proton (detailed in Chapter 11, Section 9). "You can't game on Linux" is a stale claim — what genuinely doesn't run is **the narrow slice of kernel-anti-cheat titles** above.
 
 **B. Alternatives exist, but not fully compatible.**
 Microsoft Office, Outlook, Edge. The conventional move is to "replace"

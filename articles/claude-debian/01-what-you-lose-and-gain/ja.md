@@ -34,7 +34,9 @@ cta_btn2_link: /claude-debian/prologue/
 「失うもの」を考えるとき、漠然と不安がるのが一番よくない。Claudeと一緒に、四つのカテゴリに分けて具体化する。
 
 **A. そのままでは動かないソフトウェア**
-業界専用アプリ、特定の会計ソフト、CAD、一部のAdobe製品、アンチチート付きオンラインゲーム。これらはDebianでそのままは動かない。
+業界専用アプリ、特定の会計ソフト、CAD、一部のAdobe製品、**カーネルレベルのアンチチートを要求する一部のオンラインゲーム**（Valorant、最近の Call of Duty、Fortnite など）。これらはDebianでそのままは動かない。
+
+ただし**ゲームに関しては誤解されやすい**ので先に書いておく。シングルプレイヤー作品や Valve のタイトル、Steam Deck Verified 付きの AAA は、Flathub の Steam ＋ Proton で大半が動く（詳細は第11章第九節）。「Linux ではゲームができない」はもう過去の話で、動かないのは上記の**カーネルアンチチート系の一部タイトルだけ**だ。
 
 **B. 完全互換ではないが代替があるもの**
 Microsoft Office、Outlook、Edge。これらは LibreOffice / Thunderbird /

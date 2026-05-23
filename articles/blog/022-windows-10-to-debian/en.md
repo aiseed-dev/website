@@ -18,6 +18,18 @@ Hundreds of millions of PCs worldwide are flagged as "not compatible with Window
 
 Meanwhile, 2026 is the worst possible timing to buy a new PC. The AI bubble that **Microsoft itself helped trigger** has driven up memory and storage prices significantly over the past year, on the back of massive demand for AI infrastructure. One concrete number: **the same mini PC model the author uses for the hardware verification later in this post has gone up by ¥60,000 (about $400) within less than a year since purchase** — not "prices in general," but the same exact SKU, observed in real-time.
 
+More serious than that: **the "16 GB RAM + 500 GB SSD" spec that was the standard entry-level configuration just a year or two ago is becoming hard to actually buy.** The bottom of the market has been drained by AI data-center demand, and what's left on the shelves is either "a step up from that," or a Copilot+ PC priced above ¥200,000 ($1,500). This bimodal split is not an accident.
+
+### What is Microsoft Doing?
+
+Lined up, Microsoft's strategy is **structurally identical to the medieval enclosure of the commons**.
+
+1. **Chop off the bottom.** Windows 11 hardware requirements (TPM 2.0, 8th-gen CPU or later) declared hundreds of millions of working PCs "no longer usable" on paper. Copilot+ then set a new floor at NPU 40 TOPS.
+2. **Drain the middle.** The AI bubble Microsoft itself stoked has pushed memory and SSD prices up, and the entry-level 16 GB / 500 GB tier is vanishing from shelves.
+3. **Push only the top.** ¥200,000+ Copilot+ PCs are sold as "the next standard," with Copilot subscriptions and a Microsoft account chained to them.
+
+Demolish the commons — working second-hand and entry-level PCs — and leave only the lord's designated, expensive plots. That is the same playbook as medieval enclosure. But every enclosure has an exit. In the medieval case it was the New World; in 2026 it is **migration to Linux**. What Microsoft wants to enclose is "Windows users," not "PC users." The hardware itself comes along to Linux untouched.
+
 Microsoft has also created a new "Copilot+ PC" category with a fresh cutoff at NPU 40 TOPS. These machines start above $1,500 (¥200,000+).
 
 But adding an NPU to a PC **does not change the fact that AI processing remains centralized in data centers**. Copilot's core features — drafting in Word, formula generation in Excel, summarization in PowerPoint, reply drafts in Outlook, agents — still call Azure and OpenAI's cloud. What the NPU actually runs locally is a narrow set of peripheral features: Recall, Studio Effects, parts of live captions. Despite the "AI on the edge" marketing, dependence on the Azure data centers — the actual core of the AI bubble — does not decrease.

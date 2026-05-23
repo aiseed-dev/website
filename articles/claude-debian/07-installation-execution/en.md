@@ -20,9 +20,28 @@ cta_btn2_text: Back to Chapter 6
 cta_btn2_link: /en/claude-debian/06-hardware-choice/
 ---
 
+## What This Chapter Looks Like — Surprisingly Straight on Debian 13
+
+As Chapter 5 noted, **the Debian 13 installer is quieter and more linear than a fresh Windows 11 setup**. Most screens collapse to "Next / take the recommendation." The screens where you actually need to pause are only three:
+
+- Picking the disk (don't accidentally select the external drive).
+- Entering the encryption passphrase (read it off paper).
+- Software selection (mirror your Chapter 6 checklist).
+
+Everything else follows from your language choice. **Pick "Japanese" once, and locale, keyboard, and the Japanese input method (Fcitx5 + Mozc) are all set up automatically.** Treat this chapter not as "stop and think on every screen" but as "**pause one beat to confirm on every screen**."
+
 ## Final Preparation Check
 
 Before launching the installer, confirm all of the following are in place.
+
+### Windows 11 side preparation (most important)
+
+- [ ] **BitLocker (Device Encryption) is disabled** — it is on by default on Windows 11. Wait for full decryption.
+- [ ] **Fast Startup is disabled** — uncheck the option in Power Options.
+
+Do not boot the Debian installer until these two are done. See "Two things to do on the Windows 11 side first" in Chapter 5 for details.
+
+### Everything else
 
 - [ ] `install-config.md` (the checklist from Chapter 6) is printed, or open on a separate device
 - [ ] [claude.ai](https://claude.ai) is open on a separate PC or your phone (you can't ask from the Debian being installed)
@@ -88,13 +107,10 @@ If a LAN cable is plugged in, it is detected automatically.
 For wireless LAN, you'll be asked for:
 
 - SSID selection (from a list of nearby access points)
-- Encryption type (WPA2 Personal is typical)
+- Encryption type (WPA2 / WPA3 Personal is typical)
 - Passphrase
 
-**If the wireless chip's firmware is missing, the list comes up empty.** In that case:
-1. Skip wireless and switch to wired.
-2. If you have no wired option, USB tethering (sharing the network from your phone over USB).
-3. If neither works, you may not have used the firmware-included ISO. Re-make the USB on another PC.
+**The Debian 13 netinst ISO ships with non-free firmware**, so for any reasonably common Intel / Realtek / Atheros wireless chip, the SSID list will be populated right on this screen. The list comes up empty only for very recent chips or unusual hardware — in that case, fall back to wired LAN or USB tethering from a phone.
 
 ### Hostname and Domain
 
@@ -181,6 +197,8 @@ Apply the checkbox configuration you decided on in Chapter 6.
 - [x] standard system utilities
 
 Uncheck the rest. Cross-reference against your printed checklist and be deliberate.
+
+**The Japanese input method (Fcitx5 + Mozc) is installed automatically at this step** — if you chose Japanese as the language in Section 2, you don't need to tick anything extra. Chapter 10 is then about tuning it, not installing it from scratch.
 
 After this, ten to thirty minutes go to package download and install. Coffee time.
 

@@ -196,8 +196,8 @@ Compile the decisions so far into a checklist for install day.
 # My Debian Install Settings  (2026-04-23)
 
 ## Basic choices
-- Debian edition: 12 Stable
-- ISO: netinst, amd64, with firmware
+- Debian edition: 13 Stable (Trixie)
+- ISO: netinst, amd64 (firmware is already bundled by default)
 - Installer: Graphical install
 - Language: English (or Japanese)
 - Region: [your country]

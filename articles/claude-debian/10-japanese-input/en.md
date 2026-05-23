@@ -26,9 +26,25 @@ Browser, mail, documents, chat — in the end, all of it comes down to typing Ja
 
 Hands trained on Windows MS-IME or the macOS Kotoeri family feel real friction when conversion behavior is even slightly different. This chapter polishes Fcitx5 + Mozc until you can use it every day "without noticing it."
 
-## Section 1 — Install and Activate
+## Section 1 — First, Check: It's Probably Already Installed
 
-If you didn't finish this in Chapter 7, start here.
+**On Debian 13, picking Japanese as the language in the installer is enough to bring Fcitx5 + Mozc in automatically.** In most cases, the moment you log into the desktop, the Hankaku/Zenkaku key already toggles Japanese input.
+
+So start by checking.
+
+```bash
+# Is Fcitx5 installed?
+dpkg -l | grep -E '^ii  (fcitx5|fcitx5-mozc)'
+
+# Current input-method configuration
+im-config -l
+```
+
+If both `fcitx5` and `fcitx5-mozc` appear, and Japanese input works on the Hankaku/Zenkaku key, **you can skip the rest of Section 1 and jump to Section 2 ("Basic Key Bindings")**. The real body of this chapter is the polishing work that comes after.
+
+### If It Isn't There, or Isn't Activated
+
+Only if you installed in an English-only environment, or if something is missing, run:
 
 ```bash
 sudo apt install fcitx5 fcitx5-mozc fcitx5-config-qt fcitx5-configtool im-config

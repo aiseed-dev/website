@@ -26,6 +26,30 @@ Most installation articles start with a procedure: "download → create USB → 
 
 In this chapter we break the Debian installation into eight stages. Together with Claude, we understand what each stage is for, what decisions it requires, and what can fail. The individual steps are covered in Chapters 6, 7, and 8. **You don't even need a USB stick yet. We're just building a map in your head.**
 
+### Conclusion first — installing Debian 13 is easier than installing Windows
+
+One mindset note before diving in.
+
+**Installing Debian 13 (Trixie) is easier than a fresh Windows 11 setup.** This is the author's conclusion after doing it on real hardware.
+
+- The netinst ISO **ships with non-free firmware included by default** (since Debian 12). Wireless and GPU firmware no longer derails the install.
+- If you pick Japanese (or other locales with bundled IMs) for language, **the installer pulls Fcitx5 + Mozc automatically**. Most of what Chapter 10 used to walk through by hand is no longer necessary.
+- Partitioning is **"use whole disk + encrypt" — one choice**. The installer handles LVM and volume layout for you.
+- After reboot, **Wi-Fi, GPU, audio, and suspend tend to work out of the box** on a wider range of machines than they used to.
+
+You can mentally skip every Windows 11 setup chore: the Microsoft account requirement, the wall of consent dialogs, the OneDrive push, the Copilot opt-in. The reason we still decompose the install into eight stages is **not because it's complicated** — it's so that, if something does break, you don't lose your place. In practice the steps run almost in a straight line.
+
+### Two things to do on the Windows 11 side first
+
+The "easier than Windows" line above comes with a caveat. **If your current PC ships with Windows 11, there are exactly two things you must do on the Windows side before booting the Debian installer.**
+
+1. **Disable BitLocker (Device Encryption).**
+   On recent Windows 11 machines, **BitLocker is enabled by default**. If you leave it on, the Debian installer can't read the disk cleanly, and in the worst case the Windows-side data becomes unrecoverable. Go to `Settings → Privacy & security → Device encryption` and turn it off, then wait for decryption to complete (this takes anywhere from tens of minutes to several hours). On Windows Pro, disable it from the "BitLocker Drive Encryption" control panel instead.
+2. **Disable Fast Startup.**
+   `Control Panel → Power Options → Choose what the power buttons do → Change settings that are currently unavailable → uncheck "Turn on fast startup"`. With Fast Startup on, Windows doesn't fully flush disk state on shutdown, which leads to the Debian installer either failing to see your USB or seeing the disk as corrupt.
+
+Once those two are done and you reboot, the PC is in a "ready to install Debian" state. Put another way: **most "stuck during the Debian install" stories are not Linux-side problems — they're missed Windows-side prep**.
+
 ## Section 1 — The Eight Stages of Installation
 
 ### 1. Obtaining the ISO Image
@@ -33,10 +57,10 @@ In this chapter we break the Debian installation into eight stages. Together wit
 Download a file with a `.iso` extension from the Debian official site. This is the "OS as a single package."
 
 Decision points:
-- **Edition.** Stable / Testing / Unstable. **For beginners, Stable, no question.**
+- **Edition.** Stable / Testing / Unstable. **For beginners, Stable, no question.** (At the time of writing, that means Debian 13 "Trixie.")
 - **Type.** netinst (a small ISO that pulls additional packages from the network during install) / DVD (self-contained offline). **If your network is decent, netinst.**
 - **Architecture.** amd64 (a normal Intel / AMD PC) / arm64 (Raspberry Pi, certain ARM devices). **For a normal PC, amd64.**
-- **Firmware.** Pick the official ISO with `-firmware` in the name. It bundles the files needed for wireless LAN and the like out of the box.
+- **Firmware.** Since Debian 12, the official netinst ISO **already includes non-free firmware**. **You no longer need to hunt for a separate `-firmware` image** — older articles still say so, but just grab the standard netinst from debian.org.
 
 ### 2. Creating a USB Boot Medium
 
@@ -93,8 +117,9 @@ Decision points:
 Choose which apps to install first. The required packages are pulled over the network.
 
 Decision points:
-- **Mirror.** A nearby mirror is fast (e.g., `jp.debian.org` if you're in Japan).
+- **Mirror.** A nearby mirror is fast (e.g., `jp.debian.org` if you're in Japan). `deb.debian.org` auto-routes and works fine too.
 - **Software selection.** Choose "Debian desktop environment," "GNOME," and "standard system utilities." That gets you a comfortable minimum (we revisit this in Chapter 9).
+- **Input method.** If you chose Japanese (or another locale with a bundled IM) for the language, **Fcitx5 + Mozc gets installed automatically**. Chapter 10 is now about polishing and customizing it, not installing it from scratch.
 - **SSH server.** Install if you want to log in from another PC. Beginners can leave it off for now.
 
 ### 8. Installing the Bootloader (GRUB)
@@ -136,25 +161,27 @@ Claude returns the steps for your machine. Print this out and it becomes a help 
 
 ### Five Typical Installation Failures
 
+Most of these are largely resolved in Debian 13. Keep them in mind as the **residual landmines**.
+
 **Failure 1: USB is not recognized.**
 Causes: Fast Startup enabled, Secure Boot configuration, USB stick compatibility, USB 3.0 port compatibility.
-Fix: Disable Fast Startup, turn off Secure Boot for now, try a different USB port and a different USB stick.
+Fix: Disable Fast Startup, turn off Secure Boot for now, try a different USB port and a different USB stick. **This still happens with Debian 13 — but the problem is on the Windows / UEFI side, not Linux.**
 
 **Failure 2: The installer can't reach the network.**
-Cause: missing wireless LAN firmware.
-Fix: Use the `-firmware` ISO. If that still fails, plug in via wired LAN for the duration.
+Cause: the classic one used to be "missing wireless firmware," but **since Debian 12 the official netinst ISO ships firmware bundled**, so this is now rare. What remains is extremely new wireless chips or corporate proxies.
+Fix: Just plug in over wired LAN, or USB tether from a phone.
 
 **Failure 3: The partitioner can't see the existing Windows.**
 Causes: BitLocker is encrypting the disk and it can't be read; an unusual RAID setup.
-Fix: Decrypt BitLocker on the Windows side beforehand. RAID needs manual setup.
+Fix: Decrypt BitLocker on the Windows side beforehand. **Windows 11 sometimes enables BitLocker silently by default**, so check before migrating.
 
 **Failure 4: GRUB installation fails.**
 Causes: wrong target disk, UEFI / BIOS mixing.
-Fix: Redo it. Specify the GRUB target correctly.
+Fix: Redo it. Specify the GRUB target correctly. If you're doing a clean install with no Windows left, this is basically "pick the internal SSD" — one click.
 
 **Failure 5: The screen is black after reboot.**
 Causes: NVIDIA discrete GPU driver issues, certain integrated GPU compatibility issues.
-Fix: Add `nomodeset` to the boot options (covered in Chapter 8).
+Fix: Add `nomodeset` to the boot options (covered in Chapter 8). **For Intel / AMD integrated GPUs, this rarely happens.**
 
 ### Secure a "Way Back" in Advance
 
@@ -179,18 +206,18 @@ Before installing, prepare a path back in case things go wrong.
 
 ### A Recommended Time Allocation
 
-Treat the install as half of a weekend day.
+The install itself takes **about 1–2 hours of real time on Debian 13**. With backups and a buffer for surprises, half a weekend day is a sensible reservation.
 
 - **Preparation (morning of the day onward): 1–2 hours.**
   USB creation, confirming UEFI settings, the final backup check.
-- **Installation: 1–2 hours.**
-  Walk through the eight stages in order.
-- **Initial verification: 1 hour.**
-  Check that wireless LAN, the display, and sound work.
-- **First-round troubleshooting buffer: 2–3 hours.**
-  At least one thing will trip you up. Reserve the time for it from the start.
+- **Installation proper: 30 min – 1 hour.**
+  Including package downloads. Most of it is watching the bar move while you drink coffee.
+- **Initial verification: 30 min – 1 hour.**
+  Wireless LAN, display, sound. **On Debian 13 most of this just works**; you're confirming, not configuring.
+- **First-round troubleshooting buffer: 1–2 hours.**
+  Comfortable headroom in case one thing trips.
 
-Total: 5–8 hours. **Do not assume "I'll finish in an hour."** Rushing leads to bad calls.
+Total: 3–6 hours. **The install experience should feel shorter than a fresh Windows 11 setup.** But "fast" is not the same as "sloppy" — don't skip judgment calls to save time.
 
 ### Always Set Aside a Reserve Day
 

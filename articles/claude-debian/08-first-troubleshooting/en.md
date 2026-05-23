@@ -20,6 +20,17 @@ cta_btn2_text: Back to Chapter 7
 cta_btn2_link: /en/claude-debian/07-installation-execution/
 ---
 
+## First — On Debian 13, "Mostly Everything Just Works"
+
+A blunt note up front. **Right after first boot on Debian 13 (Trixie), it's increasingly common for none of the seven categories below to actually be broken on a given machine.** The era of "install Linux on a laptop, and Wi-Fi / sound / suspend will definitely break at least one" is over.
+
+We keep this chapter anyway, for two reasons.
+
+1. **Hardware varies.** Newer chips, discrete GPUs, and unusual wireless modules still need a touch of work.
+2. **The craft of diagnosis** — reading `journalctl`, inspecting `lspci`, handing logs to Claude — is the foundation you'll reuse for every later chapter.
+
+So treat this chapter not as "**the chapter you're stuck in now**" but as "**the chapter you open when you get stuck**." If first boot brought up a desktop, the Wi-Fi connected, sound played, and Japanese input worked, you can skim Section 2 onward.
+
 ## Break Down "It's Not Working"
 
 When you feel "something is not working" right after install, don't panic — break it down. Check, in each of the following seven categories, whether things work or not.
@@ -32,7 +43,7 @@ When you feel "something is not working" right after install, don't panic — br
 6. Japanese input (Fcitx5 + Mozc)
 7. Peripherals (printer, webcam, USB devices)
 
-**It is rare for everything to work. Two or three things will be off. Knocking those down one at a time is what Chapter 8 is for.**
+**On Debian 13 it's possible everything works on first boot. Even then, walking through the decomposition once is worth it — six months from now, when something does break, this is the muscle that rescues you.**
 
 ## Section 1 — Common Diagnostic Practice
 
@@ -130,17 +141,17 @@ Settings → Display → Arrangement and resolution
 
 ### Symptom: Wi-Fi doesn't connect at all
 
-The wireless chip's firmware is most likely missing.
+The Debian 13 netinst ISO bundles non-free firmware, so **the case of "Wi-Fi never connected once since install" is much rarer than it used to be**. If it does happen, suspect either a very new wireless chip or one whose firmware lives only in `contrib`.
 
 ```bash
 # Identify the chip
 lspci -nnk | grep -A 2 -i net
 
-# Recognition state
-dmesg | grep -i firmware
+# Recognition state and firmware load history
+dmesg | grep -iE 'firmware|wifi|wlan'
 ```
 
-Install the needed firmware package — `firmware-iwlwifi` (Intel), `firmware-realtek`, `firmware-atheros`, etc.
+Install the needed firmware package — `firmware-iwlwifi` (Intel), `firmware-realtek`, `firmware-atheros`, etc. Or pull `firmware-linux-nonfree` for the whole set.
 
 ```bash
 sudo apt install firmware-linux firmware-linux-nonfree

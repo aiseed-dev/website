@@ -19,6 +19,17 @@ cta_btn2_text: 第7章に戻る
 cta_btn2_link: /claude-debian/07-installation-execution/
 ---
 
+## まず、Debian 13 では「ほぼ全部動く」
+
+身も蓋もないことを先に書く。**Debian 13（Trixie）の初回起動直後、本章で挙げる七カテゴリのうち、何も問題が出ない機種が増えている。** 数年前の「ノートPCに入れたら Wi-Fi・サウンド・サスペンドのどれか必ず一つは詰まる」状態ではない。
+
+それでも本章を残しておく理由は二つある。
+
+1. **当たり外れがある**。新しめのチップ、独立 GPU、特殊な無線モジュールでは依然として一手間要る
+2. **動かなかった時の作法**——`journalctl` を読む、`lspci` を見る、ログを Claude に渡す——は、第8章以降ずっと使い回す基礎技術だ
+
+つまりこの章は「**今あなたが詰まっている**章」ではなく、「**詰まったときに開く**章」だ。初回起動でデスクトップが映り、Wi-Fi が繋がり、音が出て、日本語入力もできているなら、第2節以降は流し読みでよい。
+
 ## 「動かない」を分解する
 
 インストール直後に「何か動かない」と感じたら、焦らず分解する。次の七つのカテゴリで、それぞれ動くか動かないかを確認する。
@@ -31,7 +42,7 @@ cta_btn2_link: /claude-debian/07-installation-execution/
 6. 日本語入力（Fcitx5＋Mozc）
 7. 周辺機器（プリンタ、ウェブカメラ、USB機器）
 
-**全部動くことは稀だ。2〜3個は何かある。それを一つずつ潰すのが第8章。**
+**Debian 13 では全部最初から動くこともある。それでも分解して確認する作法を一度通しておくと、半年後に壊れたとき自分を救える。**
 
 ## 第一節 診断の共通作法
 
@@ -129,17 +140,17 @@ gnome-randr                 # Wayland の GNOME の場合（無ければ apt ins
 
 ### 症状：Wi-Fiが全く繋がらない
 
-無線LANチップのファームウェアが入っていない可能性が高い。
+Debian 13 の netinst ISO は non-free firmware 同梱なので、**インストール直後から Wi-Fi が一度も繋がらないケースは以前より大幅に減った**。それでも繋がらない場合は、極端に新しい無線チップか、ファームウェアが contrib にしかないチップの可能性がある。
 
 ```bash
 # チップの型を特定
 lspci -nnk | grep -A 2 -i net
 
-# 認識状態
-dmesg | grep -i firmware
+# 認識状態とファームウェアの読み込み履歴
+dmesg | grep -iE 'firmware|wifi|wlan'
 ```
 
-`firmware-iwlwifi`（Intel）、`firmware-realtek`、`firmware-atheros` など、必要なファームウェアパッケージを入れる。
+足りないファームウェアパッケージ（`firmware-iwlwifi`（Intel）、`firmware-realtek`、`firmware-atheros` など）を追加で入れる。`firmware-linux-nonfree` でまとめて入れる手もある。
 
 ```bash
 sudo apt install firmware-linux firmware-linux-nonfree

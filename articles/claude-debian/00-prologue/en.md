@@ -72,7 +72,7 @@ The technical book was traditionally a medium for "fixing the latest correct inf
 
 **First: the speed of technical change overtook the speed of paper updates.** Debian has several minor releases a year, and the surrounding tools change faster still. Locking information onto paper has lost much of its meaning when that information goes stale the moment it is written.
 
-**Second: readers' circumstances are too varied.** Migrating from Windows 10 is a different story from migrating from macOS, which is different again from migrating from a Chromebook. The nature of the work, the size of the organization, the software in use — all differ from person to person. A single book cannot give the optimal answer for every case.
+**Second: readers' circumstances are too varied.** Migrating from Windows 11 is a different story from migrating from macOS, which is different again from migrating from a Chromebook. The nature of the work, the size of the organization, the software in use — all differ from person to person. A single book cannot give the optimal answer for every case.
 
 With Claude's arrival, both premises can be sidestepped. **Ask Claude for the latest information; let Claude match the individual situation.** The book only has to carry "how to form the question" and "the underlying stance."
 

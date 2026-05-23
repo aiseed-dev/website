@@ -51,9 +51,13 @@ def ImePage() -> ft.Control:
         [
             section_title("7. 日本語入力 (Fcitx5 + Mozc)"),
             page_intro(
-                "Debian は既定で日本語入力が入っていないので、最初に自分で入れます。"
-                "標準構成は Fcitx5 (フレームワーク) + Mozc (変換エンジン) です。"
+                "Debian 13 では、インストーラで言語に「日本語」を選んだ時点で"
+                " Fcitx5 + Mozc が自動的に入ることが多くなりました。"
+                "まずは「入っているか」を確認し、入っていなければ手動で入れます。"
+                "本書 第 10 章「まず確認 — たぶん既に入っている」と整合します。"
             ),
+            ft.Container(height=8),
+            _check_first_card(),
             ft.Container(height=8),
             _install_card(),
             ft.Container(height=8),
@@ -84,6 +88,42 @@ def ImePage() -> ft.Control:
     )
 
 
+def _check_first_card() -> ft.Control:
+    """Step 0: まず確認 — Debian 13 では既に入っていることが多い."""
+    return ft.Card(
+        content=ft.Container(
+            content=ft.Column(
+                [
+                    ft.Text(
+                        "ステップ 0: まず確認 (これで済むことが多い)",
+                        size=16,
+                        weight=ft.FontWeight.BOLD,
+                    ),
+                    ft.Container(height=4),
+                    ft.Text(
+                        "Debian 13 起動後に次の 2 行を実行してください。"
+                        "両方が出力されて、半角/全角キーで日本語入力ができていれば、"
+                        "下の「ステップ 1〜4」は不要です。第 10 章 第二節「基本のキーバインド」へ進めます。",
+                        size=12,
+                        color=ft.Colors.ON_SURFACE_VARIANT,
+                    ),
+                    ft.Container(height=6),
+                    _cmd_row(
+                        "Fcitx5 + Mozc が入っているか",
+                        "dpkg -l | grep -E '^ii  (fcitx5|fcitx5-mozc)'",
+                    ),
+                    _cmd_row(
+                        "既定の IM が fcitx5 になっているか",
+                        "im-config -l",
+                    ),
+                ],
+                spacing=8,
+            ),
+            padding=14,
+        )
+    )
+
+
 def _install_card() -> ft.Control:
     rows: list[ft.Control] = []
     for label, cmd in INSTALL_CMDS:
@@ -94,13 +134,14 @@ def _install_card() -> ft.Control:
             content=ft.Column(
                 [
                     ft.Text(
-                        "Debian 起動後に走らせる 4 手順",
+                        "入っていなかった場合に走らせる 4 手順",
                         size=16,
                         weight=ft.FontWeight.BOLD,
                     ),
                     ft.Container(height=4),
                     ft.Text(
-                        "上から順に実行。3 番目はホームの ~/.profile に環境変数を 3 行追加します。",
+                        "ステップ 0 で確認が取れなかった時だけ、上から順に実行してください。"
+                        "3 番目はホームの ~/.profile に環境変数を 3 行追加します。",
                         size=12,
                         color=ft.Colors.ON_SURFACE_VARIANT,
                     ),

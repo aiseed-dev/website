@@ -27,21 +27,21 @@ TABLE: list[ReplacementEntry] = [
     # --- Microsoft Office family ---
     {
         "match": "microsoft word",
-        "alternatives": ["LibreOffice Writer", "ONLYOFFICE Desktop", "Markdown + Pandoc"],
+        "alternatives": ["ONLYOFFICE Desktop", "Markdown + Pandoc", "LibreOffice Writer"],
         "confidence": "ok",
-        "note": "対外文書は PDF にして送ると相手側で書式崩れが出ない (本書 第11章)。",
+        "note": "本書 第11章: 互換層は OnlyOffice、自分の執筆は Markdown。LibreOffice は予備。",
     },
     {
         "match": "microsoft excel",
-        "alternatives": ["LibreOffice Calc", "ONLYOFFICE Desktop", "JupyterLab + Polars"],
+        "alternatives": ["ONLYOFFICE Desktop", "JupyterLab + Polars", "LibreOffice Calc"],
         "confidence": "ok",
-        "note": "VBA マクロは Python に書き換える (本書 第13章 / AIネイティブな仕事の作法 第2章)。",
+        "note": "本書 第11章: 互換層は OnlyOffice、計算は Python (pandas/openpyxl)。OnlyOffice のマクロは JavaScript でローカル実行。",
     },
     {
         "match": "microsoft powerpoint",
-        "alternatives": ["LibreOffice Impress", "Marp", "reveal.js"],
+        "alternatives": ["Marp", "ONLYOFFICE Desktop", "reveal.js"],
         "confidence": "ok",
-        "note": "Markdown スライド (Marp) なら同じ原稿から PDF / HTML 両対応。",
+        "note": "本書 第11章: 自作スライドは Markdown + Marp、配布や受領は OnlyOffice。",
     },
     {
         "match": "microsoft outlook",
@@ -289,27 +289,45 @@ TABLE: list[ReplacementEntry] = [
     {
         "match": "steam",
         "alternatives": ["Steam (Linux + Proton)"],
+        "confidence": "ok",
+        "note": "本書 第11章 第九節: Flathub の Steam ＋ Proton で Windows タイトルの大半が動く。カーネルアンチチート系 (Valorant / 最近の CoD / Fortnite) だけは諦める。protondb.com で事前確認。",
+    },
+    {
+        "match": "epic games",
+        "alternatives": ["Heroic Games Launcher"],
+        "confidence": "ok",
+        "note": "Heroic も内部で Proton を使う。Epic / GOG / Amazon ライブラリに対応。",
+    },
+    {
+        "match": "gog galaxy",
+        "alternatives": ["Heroic Games Launcher"],
+        "confidence": "ok",
+        "note": "GOG ライブラリは Heroic でログインしてインストール可能。",
+    },
+    {
+        "match": "battle.net",
+        "alternatives": ["Lutris"],
         "confidence": "review",
-        "note": "Proton で Windows ゲームの大半が動くが、アンチチート系は不可。",
+        "note": "Lutris のインストーラスクリプトで Battle.net を動かせるが、近年は不安定。各タイトルを protondb で要確認。",
     },
     # --- Apple iWork / native apps ---
     {
         "match": "pages",
-        "alternatives": ["LibreOffice Writer", "ONLYOFFICE Desktop"],
+        "alternatives": ["ONLYOFFICE Desktop", "LibreOffice Writer"],
         "confidence": "review",
-        "note": ".pages は事前に .docx / PDF で書き出す。",
+        "note": ".pages は事前に .docx / PDF で書き出す。OnlyOffice の方が見た目が崩れにくい。",
     },
     {
         "match": "numbers",
-        "alternatives": ["LibreOffice Calc", "ONLYOFFICE Desktop"],
+        "alternatives": ["ONLYOFFICE Desktop", "LibreOffice Calc"],
         "confidence": "review",
-        "note": ".numbers は事前に .xlsx / CSV で書き出す。",
+        "note": ".numbers は事前に .xlsx / CSV で書き出す。OnlyOffice の方が見た目が崩れにくい。",
     },
     {
         "match": "keynote",
-        "alternatives": ["LibreOffice Impress", "Marp"],
+        "alternatives": ["ONLYOFFICE Desktop", "Marp"],
         "confidence": "review",
-        "note": ".key は事前に .pptx / PDF で書き出す。",
+        "note": ".key は事前に .pptx / PDF で書き出す。再編集なら OnlyOffice、新規スライドは Marp。",
     },
     {
         "match": "itunes",
@@ -350,9 +368,9 @@ TABLE: list[ReplacementEntry] = [
     # --- 日本市場で多い業務系 ---
     {
         "match": "一太郎",
-        "alternatives": ["LibreOffice Writer", "ONLYOFFICE Desktop"],
+        "alternatives": ["ONLYOFFICE Desktop", "LibreOffice Writer"],
         "confidence": "review",
-        "note": "JTD ファイルは LibreOffice でも崩れる。PDF / DOCX に書き出してから持っていく。",
+        "note": "JTD ファイルは Linux 側では崩れがち。一太郎側で .docx / PDF に書き出してから持っていく。",
     },
     {
         "match": "花子",

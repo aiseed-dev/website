@@ -50,6 +50,8 @@ def UsbInstallerPage() -> ft.Control:
                 "「コマンドや手順を表示するだけ」にしてあります。"
             ),
             ft.Container(height=8),
+            _windows_preflight(),
+            ft.Container(height=8),
             _step1_download(),
             ft.Container(height=8),
             _step2_select_usb(scanning, STATE.usb_devices, selected, pick, run_scan),
@@ -80,6 +82,77 @@ def UsbInstallerPage() -> ft.Control:
     )
 
 
+def _windows_preflight() -> ft.Control:
+    """Windows 11 の事前作業 (BitLocker / Fast Startup) — Windows ホストでのみ表示."""
+    if platform.system() != "Windows":
+        return ft.Container()
+    return ft.Card(
+        content=ft.Container(
+            content=ft.Column(
+                [
+                    ft.Row(
+                        [
+                            ft.Icon(ft.Icons.WARNING_AMBER, color=ft.Colors.ORANGE),
+                            ft.Text(
+                                "Windows 11 側の事前作業 (最重要)",
+                                size=15,
+                                weight=ft.FontWeight.BOLD,
+                            ),
+                        ],
+                        spacing=8,
+                    ),
+                    ft.Container(height=6),
+                    ft.Text(
+                        "Debian インストーラを起動する前に、Windows 側で 2 つだけ片付ける必要があります。"
+                        "本書 第 5 章「Windows 11 側に二つだけ事前作業がある」を参照。",
+                        size=12,
+                    ),
+                    ft.Container(height=8),
+                    _preflight_item(
+                        "① BitLocker (デバイスの暗号化) を無効化",
+                        "Windows 11 はデフォルトで BitLocker が有効。これが有効だと"
+                        " Debian インストーラがディスクをまともに認識できず、Windows 側の"
+                        "データも復号できなくなる恐れがある。"
+                        "「設定 → プライバシーとセキュリティ → デバイスの暗号化」を OFF にし、"
+                        "復号完了まで待つ (数十分〜数時間)。Windows Pro なら BitLocker 管理画面から。",
+                    ),
+                    _preflight_item(
+                        "② 高速スタートアップ (Fast Startup) を無効化",
+                        "「コントロールパネル → 電源オプション → 電源ボタンの動作を選択する"
+                        " → 現在利用可能ではない設定を変更します → 高速スタートアップを有効にする」"
+                        "のチェックを外す。これが有効だと Windows がディスク状態を完全に書き出さず、"
+                        "Debian インストーラから USB が認識されない・ディスクが壊れて見える等の問題が起きる。",
+                    ),
+                    ft.Container(height=4),
+                    ft.Text(
+                        "💡 この 2 つを終えて再起動すれば、PC は「Debian を入れていい状態」になる。"
+                        "Debian インストールで詰まる原因のほとんどは、Linux 側ではなく Windows 側の事前作業の漏れ。",
+                        size=11,
+                        color=ft.Colors.ON_SURFACE_VARIANT,
+                        italic=True,
+                    ),
+                ],
+            ),
+            padding=14,
+            bgcolor=ft.Colors.ORANGE_50,
+            border_radius=10,
+        )
+    )
+
+
+def _preflight_item(title: str, body: str) -> ft.Control:
+    return ft.Container(
+        content=ft.Column(
+            [
+                ft.Text(title, size=13, weight=ft.FontWeight.BOLD),
+                ft.Text(body, size=12),
+            ],
+            spacing=2,
+        ),
+        padding=ft.padding.symmetric(vertical=4),
+    )
+
+
 def _step1_download() -> ft.Control:
     return ft.Card(
         content=ft.Container(
@@ -99,7 +172,9 @@ def _step1_download() -> ft.Control:
                     ft.Container(height=6),
                     ft.Text(
                         "初心者には「ネットインストーラ (netinst)」がおすすめです。"
-                        "300〜500MB と小さく、必要なものだけ後でネットから入れます。",
+                        "300〜500MB と小さく、必要なものだけ後でネットから入れます。"
+                        "Debian 12 以降の netinst には non-free firmware が既定で同梱されているので、"
+                        "「-firmware 付き ISO を別途探す」必要はもうありません。",
                         size=13,
                     ),
                     ft.Container(height=8),

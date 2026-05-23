@@ -270,9 +270,15 @@ TABLE: dict[str, InstallEntry] = {
                  "note": "Rootkit ハンター"},
 
     # --- Gaming ---
-    "steam (linux + proton)": {"method": "manual",
-                                  "command": "sudo dpkg --add-architecture i386 && sudo apt update && sudo apt install steam-installer",
-                                  "note": "Debian 12+ は contrib リポジトリを有効化"},
+    "steam (linux + proton)": {"method": "flatpak",
+                                  "command": "flatpak install -y flathub com.valvesoftware.Steam",
+                                  "note": "本書 第11章 第九節推奨。設定→互換性→「すべてのタイトルで Steam Play を有効化」で Proton 透過実行。"},
+    "heroic games launcher": {"method": "flatpak",
+                                  "command": "flatpak install -y flathub com.heroicgameslauncher.hgl",
+                                  "note": "Epic / GOG / Amazon ライブラリ用。内部で Proton を使う。"},
+    "lutris": {"method": "apt",
+                  "command": "sudo apt install lutris",
+                  "note": "Battle.net や個別タイトル用のインストーラスクリプト集。動作は protondb 要確認。"},
 
     # --- Japanese ---
     "gnucash": {"method": "apt", "command": "sudo apt install gnucash",

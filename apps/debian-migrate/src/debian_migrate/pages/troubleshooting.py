@@ -50,7 +50,7 @@ CATEGORIES = [
         # ノート PC (バッテリーあり = 暫定) なら Wi-Fi が関係する可能性が高い
         "predict": lambda hw: hw.os_name == "Darwin"
         or any("laptop" in d.get("device", "").lower() for d in hw.disks),
-        "predict_note": "ノート PC / Mac は Wi-Fi 必須。非標準アダプタは firmware パッケージが要る。",
+        "predict_note": "ノート PC / Mac は Wi-Fi 必須。Debian 13 の netinst は firmware 同梱なので大半は初回起動から繋がる。極端に新しいチップだけ手動で firmware-* を追加。",
     },
     {
         "slug": "bluetooth",
@@ -122,9 +122,10 @@ def TroubleshootingPage() -> ft.Control:
         [
             section_title("5. 事前トラブル予防"),
             page_intro(
-                "Debian 起動直後、ほぼ必ず 2〜3 個は何か動きません。"
-                "焦らず、一つずつ分解して潰すのが本書 第 8 章の作法です。"
-                "ここでは、あなたのハードウェアから当たりそうな項目を予測しておきます。"
+                "Debian 13 では「初回起動からほぼ全部動く」機種が増えました。"
+                "本章は『今あなたが詰まっている章』ではなく『詰まったときに開く章』として頭に入れておきます。"
+                "ここでは、あなたのハードウェアから当たりそうな項目だけ予測しておきます。"
+                "本書 第 8 章「まず、Debian 13 では『ほぼ全部動く』」と整合します。"
             ),
             ft.Container(height=8),
             _categories_card(),
@@ -214,14 +215,14 @@ def _categories_card() -> ft.Control:
             content=ft.Column(
                 [
                     ft.Text(
-                        "出がちな 7 カテゴリ",
+                        "頭に入れておく 7 カテゴリ",
                         size=16,
                         weight=ft.FontWeight.BOLD,
                     ),
                     ft.Container(height=4),
                     ft.Text(
-                        "⚠ 印は、いまの環境で当たりやすいと予測したもの。"
-                        "残りも全員に当たる可能性はある (本書 第 8 章)。",
+                        "⚠ 印は、いまの環境で残りやすいと予測したもの。"
+                        "Debian 13 ではどれも初回から動くことが多いが、機種依存で稀に当たる (本書 第 8 章)。",
                         size=11,
                         color=ft.Colors.ON_SURFACE_VARIANT,
                     ),

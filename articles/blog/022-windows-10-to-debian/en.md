@@ -62,6 +62,8 @@ For everyday apps, you don't even need a command. Open [flathub.org](https://fla
 | Development | Zed, VSCodium, Visual Studio Code, PyCharm, IntelliJ IDEA, Android Studio |
 | Utility | Bitwarden, Joplin, Obsidian, Thunderbird |
 
+On the office side, [Learning Debian with Claude](/en/claude-debian/) puts **ONLYOFFICE at the center, with LibreOffice as a backup**. ONLYOFFICE has high visual fidelity to MS Office and can open and return `.docx` / `.xlsx` / `.pptx` files as-is — while your own work shifts to Markdown and Python. That is the book's stance.
+
 In Windows terms, this is the equivalent of the Microsoft Store. But Flathub is, in several concrete ways, **better stocked**.
 
 **Microsoft Store does not carry Google Chrome.** Microsoft favors its own Edge browser and effectively excludes competing browsers. A user who wants Chrome won't find it by searching the Store and has to look elsewhere. Flathub lists Chrome, Firefox, and Brave side by side. **The lineup is not bent by the vendor's preferences.**
@@ -81,7 +83,7 @@ These two layers are what make Linux strong in the AI era. Windows is in the awk
 
 This site has two textbooks for learning with Claude beside you.
 
-[**Learning Debian with Claude**](/en/claude-debian/) is a 23-chapter textbook for migrating to Debian through dialogue with Claude. What to tell Claude, how to pull environment information, how to hand it logs, what to try when you're stuck — these are less about Linux knowledge per se and more about **the discipline of learning with AI**.
+[**Learning Debian with Claude**](/en/claude-debian/) is a prologue-plus-23-chapter textbook for migrating to Debian through dialogue with Claude. What to tell Claude, how to pull environment information, how to hand it logs, what to try when you're stuck — these are less about Linux knowledge per se and more about **the discipline of learning with AI**.
 
 [**AI-Native Ways of Working**](/en/ai-native-ways/) covers what to do after you arrive in Debian. Excel VBA into Python, Word into Markdown, CSV into JSON / SQLite — the toolkit for an era when AI is your colleague, organized across 14 chapters.
 

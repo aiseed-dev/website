@@ -123,12 +123,12 @@ Compile what you lose and what you gain into a single table you can take in at a
 | Category | Specifics | Severity | Handling |
 | --- | --- | --- | --- |
 | A Won't run | Adobe Premiere | High | Migrate to DaVinci Resolve (Linux version) |
-| A Won't run | In-house △△ system | High | Keep an old Win10 machine for work |
+| A Won't run | In-house △△ system | High | Keep an old Windows machine for work |
 | B Alternative | MS Word | Medium | Work in **Markdown**; produce .docx via pandoc on delivery |
-| B Alternative | MS Excel | Medium | Work in **CSV + pandas**; produce .xlsx via LibreOffice on delivery |
+| B Alternative | MS Excel | Medium | Work in **CSV + pandas**; review and deliver via **OnlyOffice** |
 | B Alternative | MS PowerPoint | Medium | Slides in **Markdown + Marp**; export PDF / .pptx |
 | C Habit | OneDrive right-click menu | Low | Replace with an rsync script (or Syncthing) |
-| D Compatibility | Monthly report as Excel macro | Medium | Python (uv + pandas) for my own work; Office Online only for submission |
+| D Compatibility | Monthly report as Excel macro | Medium | Python (uv + pandas) for my own work; review and deliver via **OnlyOffice** |
 
 ## What I Gain
 | Axis | Specifics (in numbers) | Conditions |

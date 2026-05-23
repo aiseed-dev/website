@@ -154,7 +154,7 @@ Use this opportunity to take stock of subscriptions. Many people are paying tens
 | Type | Example | Treatment after Debian migration |
 | --- | --- | --- |
 | OS license | Windows 11 Pro | Won't be used. If unwanted, give up on a refund |
-| Office | Microsoft 365 | **Switch to Markdown + CSV + Python** for most cases. LibreOffice or Office Online is usually enough for the rare submission needing Office formats |
+| Office | Microsoft 365 | **Switch to Markdown + CSV + Python** for most cases. OnlyOffice (with LibreOffice as a minor backup) covers the rare submission needing Office formats |
 | Security | Norton, Virus Buster | Debian's defaults are enough. Cancel |
 | Cloud | OneDrive paid tier | Move to another service or scale down |
 | Image / video | Adobe Creative Cloud | Consider whether DaVinci Resolve, GIMP, Inkscape can substitute |

@@ -120,12 +120,12 @@ Claudeの答えを鵜呑みにせず、疑って追い打ちをかける。
 | カテゴリ | 具体 | 深刻度 | 対処案 |
 | --- | --- | --- | --- |
 | A 動かない | Adobe Premiere | 高 | DaVinci ResolveのLinux版に移行 |
-| A 動かない | 社内の△△システム | 高 | 仕事用に古いWin10機を残す |
+| A 動かない | 社内の△△システム | 高 | 仕事用に古い Windows 機を残す |
 | B 代替あり | MS Word | 中 | 自分の作業は **Markdown**、配布時に pandoc で .docx 化 |
-| B 代替あり | MS Excel | 中 | 自分の作業は **CSV + pandas**、配布時に LibreOffice or .xlsx 化 |
+| B 代替あり | MS Excel | 中 | 自分の作業は **CSV + pandas**、配布・確認は **OnlyOffice** |
 | B 代替あり | MS PowerPoint | 中 | **Markdown + Marp** でスライド作成、PDF / .pptx に出力 |
 | C 習慣 | OneDrive右クリック | 低 | rsync スクリプトに置き換え、または Syncthing |
-| D 互換性 | Excel マクロ付きの月次報告 | 中 | 自分用は Python(uv + pandas)、提出用だけ Office オンライン |
+| D 互換性 | Excel マクロ付きの月次報告 | 中 | 自分用は Python(uv + pandas)、確認・提出は **OnlyOffice** |
 
 ## 得るもの
 | 軸 | 具体（数字で） | 条件 |

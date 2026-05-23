@@ -16,7 +16,7 @@ In October 2025, Microsoft ended support for Windows 10. Even with a year of ESU
 
 Hundreds of millions of PCs worldwide are flagged as "not compatible with Windows 11." CPUs older than 8th gen, no TPM 2.0 — by Microsoft's standard, "no longer usable."
 
-Meanwhile, 2026 is the worst possible timing to buy a new PC. The AI bubble that **Microsoft itself helped trigger** has driven up memory and storage prices significantly over the past year, on the back of massive demand for AI infrastructure.
+Meanwhile, 2026 is the worst possible timing to buy a new PC. The AI bubble that **Microsoft itself helped trigger** has driven up memory and storage prices significantly over the past year, on the back of massive demand for AI infrastructure. One concrete number: **the same mini PC model the author uses for the hardware verification later in this post has gone up by ¥60,000 (about $400) within less than a year since purchase** — not "prices in general," but the same exact SKU, observed in real-time.
 
 Microsoft has also created a new "Copilot+ PC" category with a fresh cutoff at NPU 40 TOPS. These machines start above $1,500 (¥200,000+).
 
@@ -53,6 +53,8 @@ Of the seven trouble categories Chapter 8 of [Learning Debian with Claude](/en/c
 To be honest: **this mini PC was originally bought to develop Windows applications on**. Within six months of buying it, I'd reached the conclusion to **stop making new Windows apps**. The reasons are the ones this site has been writing about — there is no public roadmap for how many more years Windows will hold as a base, the structures that the AI era rewards lean to the Linux side, and users are walking away from Windows.
 
 And the moment I installed Debian 13, **the hardware I bought for Windows app development turned into a "mini PC where everything except Windows runs"**. Every spec I chose for Windows (TPM, Wi-Fi 6E, NVMe, 2.5GbE) carries 100% over to Debian 13. None of the hardware was wasted. The only thing thrown away was the Windows layer on top.
+
+One more thing worth adding: **the same mini PC model is now ¥60,000 (about $400) more expensive than when I bought it less than a year ago**. Replacing this exact spec today would cost noticeably more. So "**the value of switching to Linux now**" and "**the value of buying a new PC now**" are two different things — if you already have working hardware on hand, extending its life with Debian is a much better deal than buying new.
 
 In a sense, this post is a hands-on demonstration of the "shift to the builder" argument from [**"In the AI Era, Become a Specialized Engineer" Misreads the Structure**](/en/blog/software-three-transitions/), carried out on the author's own bench.
 

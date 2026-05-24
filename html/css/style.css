@@ -362,6 +362,28 @@ p {
     position: relative;
 }
 
+/* No background image: collapse padding and tighten internal spacing.
+   Insights / book chapters use this — the area becomes a compact title
+   block instead of a hero. */
+.page-hero.page-hero-noimg {
+    padding: 5rem 2rem 1.5rem;
+    background: none;
+}
+.page-hero.page-hero-noimg .hero-label {
+    margin-bottom: 0.6rem;
+}
+.page-hero.page-hero-noimg .hero-title {
+    margin-bottom: 0.6rem;
+}
+.page-hero.page-hero-noimg .hero-subtitle {
+    margin-bottom: 0;
+}
+/* Tighten the section that follows when hero has no image */
+.page-hero.page-hero-noimg + .section-with-sidebar,
+.page-hero.page-hero-noimg + .section {
+    padding-top: 0.5rem;
+}
+
 .page-hero-image {
     position: absolute;
     top: 0;
@@ -1064,6 +1086,10 @@ p {
 
     .hero {
         padding: 8rem 1.5rem 3rem;
+    }
+
+    .page-hero.page-hero-noimg {
+        padding: 4rem 1.25rem 1rem;
     }
 
     .page-hero {

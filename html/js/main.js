@@ -47,4 +47,40 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+
+    // Series TOC sidebar — mobile hamburger
+    const seriesToc = document.getElementById('seriesToc');
+    const tocToggle = document.querySelector('.series-toc-toggle');
+    const tocClose = document.querySelector('.series-toc-close');
+    const tocBackdrop = document.querySelector('.series-toc-backdrop');
+    if (seriesToc && tocToggle) {
+        const openToc = () => {
+            seriesToc.classList.add('is-open');
+            if (tocBackdrop) tocBackdrop.classList.add('is-open');
+            document.body.classList.add('series-toc-open');
+            tocToggle.setAttribute('aria-expanded', 'true');
+        };
+        const closeToc = () => {
+            seriesToc.classList.remove('is-open');
+            if (tocBackdrop) tocBackdrop.classList.remove('is-open');
+            document.body.classList.remove('series-toc-open');
+            tocToggle.setAttribute('aria-expanded', 'false');
+        };
+        tocToggle.addEventListener('click', () => {
+            seriesToc.classList.contains('is-open') ? closeToc() : openToc();
+        });
+        if (tocClose) tocClose.addEventListener('click', closeToc);
+        if (tocBackdrop) tocBackdrop.addEventListener('click', closeToc);
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && seriesToc.classList.contains('is-open')) {
+                closeToc();
+            }
+        });
+        // Tapping a chapter link inside the open mobile drawer should close it
+        seriesToc.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (seriesToc.classList.contains('is-open')) closeToc();
+            });
+        });
+    }
 });

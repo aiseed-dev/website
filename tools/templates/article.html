@@ -178,6 +178,34 @@
         </div>
     </section>
 
+    {% if series_toc_html %}
+    <!-- Two-column layout: sidebar TOC + article main (insights / book) -->
+    <section class="section section-with-sidebar">
+        <div class="article-layout">
+            {{ series_toc_html }}
+            <button type="button" class="series-toc-toggle" aria-controls="seriesToc" aria-expanded="false" aria-label="目次">
+                <span class="series-toc-toggle-icon" aria-hidden="true">≡</span>
+                <span class="series-toc-toggle-label">目次</span>
+            </button>
+            <div class="series-toc-backdrop" aria-hidden="true"></div>
+            <main class="article-main">
+                {{ breadcrumb_html }}
+                <div class="article-meta">
+                    <p class="date">{{ date }}</p>
+                    <p class="series">{{ series_label }}</p>
+                </div>
+
+                <div class="prose">
+{{ body_html }}
+
+                    <!-- Article Navigation -->
+                    {{ nav_html }}
+                </div>
+            </main>
+        </div>
+    </section>
+    {% else %}
+    <!-- Single-column layout (blog) -->
     <section class="section">
         <div class="container-narrow">
             <div class="article-meta">
@@ -193,6 +221,7 @@
             </div>
         </div>
     </section>
+    {% endif %}
 
     <!-- CTA -->
     <section class="section section-green">

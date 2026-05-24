@@ -1,15 +1,15 @@
 ---
 slug: freedom-conditions
-number: "04"
+number: "05"
 title: 自由人の四条件——個人・道具・企業・思考の同型
 subtitle: 個人だけの話ではない。OpenAIもMicrosoftから離れようとしている。これは同じ運動である。
 description: 中世自由人の四条件（土地・道具の所有／移動の自由／作るものの所有／発言の自由）は、AI時代に同型のまま降りてくる。そして自由人化は個人だけの運動ではない。道具（Linux／Python／Markdown）、企業（OpenAIがMicrosoftから離脱）、思考（業務の哲学的問いを立てる能力）——四つの層すべてで同型の運動が同時進行している。四層は相互依存していて、個人だけが自由になっても、上の三層が封建制のままなら自由は持続しない。次章「AIネイティブな自由人への道」の前提となる構造論。
 date: 2026.05.23
-label: Structural Analysis 4
+label: Structural Analysis 5
 part: "3"
 part_title: 設計と実践
-prev_slug: security-design
-prev_title: Mythos時代のセキュリティ設計
+prev_slug: nativism-observation
+prev_title: 生得性と観察——AIと農業の同型
 next_slug: ai-native-free-individual
 next_title: AIネイティブな自由人への道——個人レベルの選択
 cta_label: Free
@@ -17,8 +17,8 @@ cta_title: 自由人化は個人だけの運動ではない。四つの層すべ
 cta_text: 個人が自由人になるには、道具・企業・思考の三層も自由化していなければならない。四層は相互依存している。
 cta_btn1_text: 次へ AIネイティブな自由人への道
 cta_btn1_link: /insights/ai-native-free-individual/
-cta_btn2_text: 前へ Mythos時代のセキュリティ設計
-cta_btn2_link: /insights/security-design/
+cta_btn2_text: 前へ 生得性と観察
+cta_btn2_link: /insights/nativism-observation/
 ---
 
 ## 「自由人」は個人だけの話ではない
@@ -191,6 +191,35 @@ Office依存も、Windows依存も、特定OSへの忠誠もない
 - 独立したAnthropicのClaudeは「全部捨てて再構成」と言える
 
 **層4の対話を成立させるには、層2の道具と層3の企業が必要**——これが四層の循環的依存である。
+
+### 認知科学からの補強——LLMは世界モデルを構築できない
+
+層4が「人間に永続的に残る仕事」だと言える、より根本的な理由が認知科学側にある。Gary Marcus（NYU 名誉教授）が一貫して主張してきたのは、**LLM は単語の使われ方の近似を作っているだけで、世界モデルを内発的に構築する能力を持たない**、ということだ。
+
+具体例として Marcus が挙げる：
+
+- 子供は Harry Potter を一冊読めば、「箒で飛べる世界」のルールを推論して、その世界での新しい可能性を演繹できる
+- LLM はチェスですら、2000 年変わっていないルールを大量の対局データから帰納できず、違反手を打つ
+- ベンチマークの数字は上がっても、現実世界での頑健性は伴わない（reliability ≠ validity）
+
+つまり**LLM は既存の言語パターンに対して interpolation（内挿）はできても、世界モデルそのものに対する extrapolation（外挿）はできない**。
+
+これが層4「思考の自由」と直結する：
+
+:::chain
+**LLMの限界が層4を人間の領域として確定させる：**
+業務の構造を問い直す = 業務の世界モデルを書き換える
+→ 世界モデルの構築・書き換えはLLMには原理的にできない
+→ ゆえに**世界モデルを書く仕事は人間に永続的に残る**
+→ 人間が書く媒体として、Markdown（構造を素直に持てる形式）が選ばれる
+→ 「人間が書くのは Markdown のみ、AI はその記号側の伴走」という分業が成立
+:::
+
+これは「人間 vs AI」の対立構造ではなく、**neurosymbolic 分業の必然形**である（第二部 第6章参照）。世界モデルの設計と問い直しは神経側だけでは原理的に不可能で、記号側（Python + Markdown）と人間の組み合わせでしか動かない。
+
+そして**この事実を経営判断に組み込めるかどうか**が、企業（層3）が自由人かどうかを決める。Marcus 用語で言えば、**Microsoft / Google は「LLM のスケーリングだけで AGI に至る」物語を売り続けないと VC モデルが回らない**ので、層4 の限界を正面から認めるインセンティブがない。Anthropic は構造的にそれを認めて設計に組み込める。
+
+層4を確保するには、**LLMの限界を直視する独立した AI** と、**世界モデルを書ける媒体（Markdown）** と、**世界モデルを書く意志を持つ個人**——この三つが揃う必要がある。
 
 ## 四層は循環している——どれか一つだけでは不十分
 

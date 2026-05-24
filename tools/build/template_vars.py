@@ -85,6 +85,10 @@ def article_vars(meta, body_html):
         "img_path": "og-image.jpg" if meta.get("hero_image") else (
             "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg"
         ),
+        # Insights chapters are dense text analysis; a decorative background
+        # image breaks the reading flow. Keep og:image (separate variable) for
+        # social sharing, but suppress the visible hero image.
+        "show_hero_image": False,
         "insights_base": insights_base,
         "blog_base": "/en/blog" if is_en else "/blog",
         "book_base": "/en/claude-debian" if is_en else "/claude-debian",
@@ -345,6 +349,9 @@ def book_vars(meta, body_html):
         "img_path": "og-image.jpg" if meta.get("hero_image") else (
             "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg"
         ),
+        # Book chapters are dense, structured text; suppress the visible hero
+        # image. og:image (separate variable) is preserved for social sharing.
+        "show_hero_image": False,
         # Navigation bar labels (shared site nav)
         "insights_base": "/en/insights" if is_en else "/insights",
         "blog_base": "/en/blog" if is_en else "/blog",
@@ -748,6 +755,9 @@ def blog_vars(meta, body_html):
         "img_path": "og-image.jpg" if meta.get("hero_image") else (
             "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg"
         ),
+        # Blog posts often use the hero image to carry meaning (screenshots,
+        # photos illustrating the post). Keep visible.
+        "show_hero_image": True,
         "insights_base": "/en/insights" if is_en else "/insights",
         "blog_base": "/en/blog" if is_en else "/blog",
         "book_base": "/en/claude-debian" if is_en else "/claude-debian",

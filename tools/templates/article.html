@@ -169,8 +169,8 @@
     </header>
 
     <!-- Article -->
-    <section class="page-hero">
-        <div class="page-hero-image" style="background-image: url('{{ img_path }}');"></div>
+    <section class="page-hero{% if not show_hero_image %} page-hero-noimg{% endif %}">
+        {% if show_hero_image %}<div class="page-hero-image" style="background-image: url('{{ img_path }}');"></div>{% endif %}
         <div class="page-hero-content">
             <p class="hero-label">{{ label }}</p>
             <h1 class="hero-title">{{ title }}</h1>

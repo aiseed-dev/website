@@ -61,6 +61,26 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/insights/cases/</loc>
+    <lastmod>2025-04-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/insights/it-revolution-feudalism/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/insights/structural-contradictions/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/insights/lord-class-collapse/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/insights/ai-and-individual/</loc>
     <lastmod>2025-04-04</lastmod>
     <priority>0.7</priority>
@@ -76,8 +96,23 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/insights/cases/</loc>
-    <lastmod>2025-04-04</lastmod>
+    <loc>https://aiseed.dev/insights/two-layer-ai-revolution/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/insights/types-and-python/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/insights/translation-labor/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/insights/builder-emergence/</loc>
+    <lastmod>2026-05-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -93,6 +128,11 @@
   <url>
     <loc>https://aiseed.dev/insights/security-design/</loc>
     <lastmod>2025-04-13</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/insights/ai-native-free-individual/</loc>
+    <lastmod>2026-05-23</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -136,6 +176,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/en/insights/cases/</loc>
+    <lastmod>2025-04-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/en/insights/ai-and-individual/</loc>
     <lastmod>2025-04-04</lastmod>
     <priority>0.6</priority>
@@ -147,11 +192,6 @@
   </url>
   <url>
     <loc>https://aiseed.dev/en/insights/healthcare-fiscal/</loc>
-    <lastmod>2025-04-04</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://aiseed.dev/en/insights/cases/</loc>
     <lastmod>2025-04-04</lastmod>
     <priority>0.6</priority>
   </url>

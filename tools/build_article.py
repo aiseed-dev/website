@@ -62,9 +62,14 @@ from build.template_vars import (
 BOOK_SLUG_PREFIX = "claude-debian-"
 
 
-def _iter_article_files(series_dir, lang):
+def _iter_article_files(series_dir, lang, recurse=False):
     """Yield `<lang>.md` files from each `NN-slug/` subfolder of `series_dir`,
     sorted by folder name (which leads with the chapter number).
+
+    When `recurse=True`, also descends one level into non-digit-prefixed
+    subdirectories (e.g. `part-1-collapse/`) to find chapter folders inside.
+    This supports a part-grouped layout while keeping the slug-based URL
+    routing unchanged.
 
     Returns an empty iterator if the series directory does not exist.
     """
@@ -74,11 +79,20 @@ def _iter_article_files(series_dir, lang):
     for sub in sorted(series_dir.iterdir()):
         if not sub.is_dir():
             continue
-        if not sub.name[:1].isdigit():
+        if sub.name[:1].isdigit():
+            f = sub / fname
+            if f.exists():
+                yield f
             continue
-        f = sub / fname
-        if f.exists():
-            yield f
+        if recurse:
+            for chapter_sub in sorted(sub.iterdir()):
+                if not chapter_sub.is_dir():
+                    continue
+                if not chapter_sub.name[:1].isdigit():
+                    continue
+                f = chapter_sub / fname
+                if f.exists():
+                    yield f
 
 
 def _detect_lang(md_path):
@@ -161,30 +175,62 @@ def build_article(md_path):
 def collect_articles(lang="ja"):
     """Collect and sort article metadata for a given language."""
     articles = []
-    for f in _iter_article_files(config.INSIGHTS_DIR, lang):
+    for f in _iter_article_files(config.INSIGHTS_DIR, lang, recurse=True):
         text = f.read_text(encoding="utf-8")
         meta, _ = parse_frontmatter(text)
         if meta.get("lang", "ja") == lang or (lang == "ja" and "lang" not in meta):
             articles.append(meta)
-    articles.sort(key=lambda m: m.get("number", "99"))
+    # Sort by (part, number). Part is "1"/"2"/"3" or empty; empty parts sort
+    # last (for any flat-layout articles still present).
+    articles.sort(key=lambda m: (
+        m.get("part", "9").strip('"') or "9",
+        m.get("number", "99").strip('"'),
+    ))
     return articles
 
 
 def build_index(lang="ja"):
-    """Build the insights index page from article metadata."""
+    """Build the insights index page from article metadata.
+
+    Articles carrying a `part` field are grouped under that part's heading;
+    articles without a `part` (legacy flat layout) appear in a tail section.
+    """
     is_en = lang == "en"
     articles = collect_articles(lang)
     insights_base = "/en/insights" if is_en else "/insights"
 
+    # Group by part (preserves intra-part order from collect_articles' sort)
+    from collections import OrderedDict
+    grouped = OrderedDict()
+    for a in articles:
+        part = a.get("part", "").strip('"')
+        grouped.setdefault(part, []).append(a)
+
+    def _part_heading(part_key, sample):
+        """Render the heading for a part section, or empty for flat fallback."""
+        if not part_key or part_key == "9":
+            return ""
+        part_title = sample.get("part_title", "").strip('"')
+        if not part_title:
+            return ""
+        roman = {"1": "第一部", "2": "第二部", "3": "第三部"}.get(part_key, f"第{part_key}部")
+        if is_en:
+            roman_en = {"1": "Part I", "2": "Part II", "3": "Part III"}.get(part_key, f"Part {part_key}")
+            return f'<h2 class="part-heading" style="margin-top:2rem;border-top:1px solid #ddd;padding-top:1rem;">{roman_en} — {part_title}</h2>\n'
+        return f'<h2 class="part-heading" style="margin-top:2rem;border-top:1px solid #ddd;padding-top:1rem;">{roman} {part_title}</h2>\n'
+
     # Build article list HTML
     article_list = ""
-    for a in articles:
-        slug = a.get("slug", "")
-        number = a.get("number", "").strip('"')
-        title = a.get("title", "")
-        subtitle = a.get("subtitle", "")
-        description = a.get("description", "")
-        article_list += f'''
+    for part_key, part_articles in grouped.items():
+        sample = part_articles[0] if part_articles else {}
+        article_list += _part_heading(part_key, sample)
+        for a in part_articles:
+            slug = a.get("slug", "")
+            number = a.get("number", "").strip('"')
+            title = a.get("title", "")
+            subtitle = a.get("subtitle", "")
+            description = a.get("description", "")
+            article_list += f'''
                 <a href="{insights_base}/{slug}/" style="text-decoration: none; color: inherit;">
                     <div class="activity-item fade-in">
                         <div class="activity-number">{number}</div>
@@ -1685,7 +1731,7 @@ def main():
         return
 
     if arg == "--list":
-        for f in list(_iter_article_files(config.INSIGHTS_DIR, "ja")):
+        for f in list(_iter_article_files(config.INSIGHTS_DIR, "ja", recurse=True)):
             meta, _ = parse_frontmatter(f.read_text(encoding="utf-8"))
             num = meta.get("number", "??")
             title = meta.get("title", "untitled")
@@ -1693,8 +1739,8 @@ def main():
         return
 
     if arg == "--all":
-        files = list(_iter_article_files(config.INSIGHTS_DIR, "ja")) \
-              + list(_iter_article_files(config.INSIGHTS_DIR, "en"))
+        files = list(_iter_article_files(config.INSIGHTS_DIR, "ja", recurse=True)) \
+              + list(_iter_article_files(config.INSIGHTS_DIR, "en", recurse=True))
         if not files:
             print(f"No articles found in {config.INSIGHTS_DIR}")
             return

@@ -1,4 +1,29 @@
+// Theme toggle (light / dark). The actual theme is applied earlier by an
+// inline script in <head> to avoid a flash of unstyled content; this block
+// just wires up the toggle button after DOMContentLoaded.
+function aiseedSetTheme(theme) {
+    try {
+        if (theme === 'light' || theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('aiseed-theme', theme);
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.removeItem('aiseed-theme');
+        }
+    } catch (e) { /* localStorage may be blocked */ }
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+    // Theme toggle button — flips between light and dark explicitly.
+    document.querySelectorAll('.theme-toggle').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const current = document.documentElement.getAttribute('data-theme');
+            const osDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDarkNow = current === 'dark' || (current === null && osDark);
+            aiseedSetTheme(isDarkNow ? 'light' : 'dark');
+        });
+    });
+
     // Mobile navigation toggle
     const navToggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.nav');

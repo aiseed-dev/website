@@ -2,6 +2,17 @@
 <html lang="ja">
 
 <head>
+    <!-- Apply saved theme immediately to avoid FOUC -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('aiseed-theme');
+          if (t === 'light' || t === 'dark') {
+            document.documentElement.setAttribute('data-theme', t);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
     <script>
@@ -35,7 +46,7 @@
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
-    <link rel="stylesheet" href="../css/style.css?v=dbb9353b">
+    <link rel="stylesheet" href="../css/style.css?v=d2bfb67f">
     <style>
         .highlight-box {
             background: rgba(122, 154, 109, 0.08);
@@ -72,6 +83,10 @@
                 <a href="/light-farming/">Light Farming</a>
                 <a href="/gallery/">畑の記録</a>
                 <a href="/en/phosphorus-and-farming/" class="lang-switch" hreflang="en" aria-label="View in English">🌐 EN</a>
+                <button type="button" class="theme-toggle" aria-label="テーマを切り替え" title="テーマ切り替え (Light / Dark)">
+                    <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+                    <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+                </button>
             </nav>
             <button class="nav-toggle" aria-label="メニュー">
                 <span></span>
@@ -262,7 +277,7 @@
         </div>
     </footer>
 
-    <script src="../js/main.js?v=dbb9353b"></script>
+    <script src="../js/main.js?v=d2bfb67f"></script>
 </body>
 
 </html>

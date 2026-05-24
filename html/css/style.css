@@ -24,7 +24,71 @@
     --transition-base: 0.3s ease;
     --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.08);
     --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+    /* Adaptive border tints (subtle dividers). Reassigned in dark mode so
+       they remain visible against the dark background. */
+    --border-subtle: rgba(0, 0, 0, 0.08);
+    --border-faint: rgba(0, 0, 0, 0.05);
+    --hover-tint: rgba(0, 0, 0, 0.03);
 }
+
+/* --- Dark theme (warm dark / 暖かい焼げ茶系) ---
+   Variables are re-bound so the existing CSS continues to work as-is.
+   The earth-tone identity is preserved: backgrounds are dark warm browns,
+   text is warm off-cream. Pure black is avoided. */
+:root[data-theme="dark"] {
+    --earth-dark: #f0e5cf;   /* was the darkest — now becomes lightest (titles) */
+    --earth-brown: #d0c2a6;  /* mid contrast text */
+    --soil-rich: #b8aa8c;    /* secondary text, breadcrumb, captions */
+    --leaf-green: #a8d094;   /* link color — boosted lightness for readability */
+    --leaf-dark: #c7e3b5;    /* link hover */
+    --moss-green: #94c184;   /* accent / borders */
+    --sand-light: #28241d;   /* alt-section background */
+    --cream: #1a1814;        /* main background — warm dark soil */
+    --clay: #5a4e3d;         /* mid earth */
+    --root-tan: #3d362b;     /* borders */
+    --sky-pale: #211e18;     /* gradient stop — slightly darker than cream */
+    --olive: #b3bd84;        /* accent green-yellow */
+
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
+    --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.55);
+
+    --border-subtle: rgba(255, 255, 255, 0.12);
+    --border-faint: rgba(255, 255, 255, 0.07);
+    --hover-tint: rgba(255, 255, 255, 0.05);
+}
+
+/* Respect OS preference when the user hasn't set a manual override.
+   We use both attribute selectors so the rule only fires when no
+   explicit `data-theme` is set on <html>. */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]):not([data-theme="dark"]) {
+        --earth-dark: #f0e5cf;
+        --earth-brown: #d0c2a6;
+        --soil-rich: #b8aa8c;
+        --leaf-green: #a8d094;
+        --leaf-dark: #c7e3b5;
+        --moss-green: #94c184;
+        --sand-light: #28241d;
+        --cream: #1a1814;
+        --clay: #5a4e3d;
+        --root-tan: #3d362b;
+        --sky-pale: #211e18;
+        --olive: #b3bd84;
+
+        --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
+        --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.55);
+
+        --border-subtle: rgba(255, 255, 255, 0.12);
+        --border-faint: rgba(255, 255, 255, 0.07);
+        --hover-tint: rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* Apply the cream/text colors to the page itself so the html element
+   matches when no explicit background is set on body. */
+html { background: var(--cream); color: var(--earth-dark); }
+body { background: var(--cream); }
 
 /* Reset & Base */
 *,
@@ -116,9 +180,9 @@ p {
     left: 0;
     right: 0;
     z-index: 1000;
-    background: rgba(250, 248, 243, 0.95);
+    background: color-mix(in srgb, var(--cream) 95%, transparent);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--border-faint);
     transition: var(--transition-base);
 }
 
@@ -238,7 +302,7 @@ p {
 }
 
 .nav-submenu a:hover {
-    background: rgba(0, 0, 0, 0.03);
+    background: var(--hover-tint);
 }
 
 /* Desktop: open on hover or keyboard focus */
@@ -862,7 +926,7 @@ p {
 
 .data-box li {
     padding: 0.5rem 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid var(--border-faint);
     font-size: 0.95rem;
 }
 
@@ -1026,7 +1090,7 @@ p {
 
     .nav a {
         padding: 0.8rem 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid var(--border-faint);
     }
 
     .nav-toggle {
@@ -1035,7 +1099,7 @@ p {
 
     /* Accordion submenu inside the mobile nav */
     .nav-group {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid var(--border-faint);
     }
 
     .nav-parent {
@@ -1063,7 +1127,7 @@ p {
 
     .nav-submenu a {
         padding: 0.6rem 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid var(--border-faint);
     }
 
     .nav-submenu a:last-child {
@@ -1153,7 +1217,7 @@ p {
     color: var(--soil-rich, #6b5b3a);
     margin-bottom: 1.5rem;
     padding-bottom: 0.75rem;
-    border-bottom: 1px solid rgba(0,0,0,0.08);
+    border-bottom: 1px solid var(--border-subtle);
     line-height: 1.6;
 }
 .breadcrumb a {
@@ -1207,7 +1271,7 @@ p {
     color: var(--soil-rich, #6b5b3a);
     margin: 0 0 1rem;
     padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid var(--border-subtle);
     font-weight: 500;
 }
 .series-toc-title a {
@@ -1272,7 +1336,7 @@ p {
 .toc-related {
     margin-top: 1.5rem;
     padding-top: 1rem;
-    border-top: 1px solid rgba(0,0,0,0.08);
+    border-top: 1px solid var(--border-subtle);
 }
 .toc-related-title {
     font-size: 0.72rem;
@@ -1375,5 +1439,75 @@ p {
     }
     .article-layout {
         grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   Theme toggle (light / dark)
+   ============================================================ */
+
+.theme-toggle {
+    background: none;
+    border: 1px solid var(--border-subtle);
+    border-radius: 999px;
+    padding: 0.25rem 0.55rem;
+    cursor: pointer;
+    color: var(--earth-brown);
+    font-size: 0.95rem;
+    line-height: 1;
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    margin-left: 0.5rem;
+}
+.theme-toggle:hover {
+    background: var(--hover-tint);
+    color: var(--earth-dark);
+    border-color: var(--moss-green);
+}
+.theme-icon {
+    display: inline-block;
+    width: 1em;
+    text-align: center;
+}
+/* Show the icon for the OTHER theme — the one the toggle will switch to */
+.theme-icon-moon { display: none; }
+:root[data-theme="dark"] .theme-icon-sun,
+:root[data-theme="dark"] .theme-icon-moon { display: none; }
+:root[data-theme="dark"] .theme-icon-sun { display: inline-block; }
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]):not([data-theme="dark"]) .theme-icon-sun {
+        display: inline-block;
+    }
+    :root:not([data-theme="light"]):not([data-theme="dark"]) .theme-icon-moon {
+        display: none;
+    }
+}
+:root[data-theme="light"] .theme-icon-sun { display: none; }
+:root[data-theme="light"] .theme-icon-moon { display: inline-block; }
+
+/* Dark-mode tweaks for the .highlight-box callout — the original
+   warm-cream tint looks off on the dark background. */
+:root[data-theme="dark"] .highlight-box {
+    background: rgba(148, 193, 132, 0.07);
+    border-color: rgba(148, 193, 132, 0.2);
+}
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .highlight-box {
+        background: rgba(148, 193, 132, 0.07);
+        border-color: rgba(148, 193, 132, 0.2);
+    }
+}
+
+/* Mermaid diagrams: invert default white panel in dark mode */
+:root[data-theme="dark"] .mermaid,
+:root[data-theme="dark"] svg[id^="mermaid"] {
+    filter: invert(0.92) hue-rotate(180deg);
+}
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .mermaid,
+    :root:not([data-theme="light"]) svg[id^="mermaid"] {
+        filter: invert(0.92) hue-rotate(180deg);
     }
 }

@@ -777,7 +777,7 @@ p {
 .prose {
     font-size: 1.05rem;
     line-height: 2;
-    color: var(--earth-brown);
+    color: var(--earth-dark);
 }
 
 .prose h2 {

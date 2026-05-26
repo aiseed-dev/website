@@ -30,6 +30,17 @@
     --border-subtle: rgba(0, 0, 0, 0.08);
     --border-faint: rgba(0, 0, 0, 0.05);
     --hover-tint: rgba(0, 0, 0, 0.03);
+
+    /* Inverted / anchor sections (footer, dark sections, green CTA).
+       These are dark-on-light bands in light mode and must stay dark in
+       dark mode — so they are NOT derived from the flipping palette. */
+    --footer-bg: #2d2a24;
+    --footer-text: #c9b8a3;
+    --footer-heading: #f5f0e8;
+    --section-dark-bg: #2d2a24;
+    --section-dark-text: #f5f0e8;
+    --cta-bg: #4a6741;
+    --cta-text: #faf8f3;
 }
 
 /* --- Dark theme (warm dark / 暖かい焼げ茶系) ---
@@ -56,6 +67,15 @@
     --border-subtle: rgba(255, 255, 255, 0.12);
     --border-faint: rgba(255, 255, 255, 0.07);
     --hover-tint: rgba(255, 255, 255, 0.05);
+
+    /* Anchor sections stay dark in dark mode (do not flip to light) */
+    --footer-bg: #211d16;
+    --footer-text: #c9b8a3;
+    --footer-heading: #f0e5cf;
+    --section-dark-bg: #211d16;
+    --section-dark-text: #e0d4be;
+    --cta-bg: #2e4429;
+    --cta-text: #ece3d2;
 }
 
 /* Respect OS preference when the user hasn't set a manual override.
@@ -82,6 +102,14 @@
         --border-subtle: rgba(255, 255, 255, 0.12);
         --border-faint: rgba(255, 255, 255, 0.07);
         --hover-tint: rgba(255, 255, 255, 0.05);
+
+        --footer-bg: #211d16;
+        --footer-text: #c9b8a3;
+        --footer-heading: #f0e5cf;
+        --section-dark-bg: #211d16;
+        --section-dark-text: #e0d4be;
+        --cta-bg: #2e4429;
+        --cta-text: #ece3d2;
     }
 }
 
@@ -474,13 +502,13 @@ p {
 }
 
 .section-dark {
-    background: var(--earth-dark);
-    color: var(--sand-light);
+    background: var(--section-dark-bg);
+    color: var(--section-dark-text);
 }
 
 .section-green {
-    background: var(--leaf-green);
-    color: var(--cream);
+    background: var(--cta-bg);
+    color: var(--cta-text);
 }
 
 .section-header {
@@ -941,8 +969,8 @@ p {
 
 /* Footer */
 .footer {
-    background: var(--earth-dark);
-    color: var(--clay);
+    background: var(--footer-bg);
+    color: var(--footer-text);
     padding: 4rem 2rem 2rem;
 }
 
@@ -955,7 +983,7 @@ p {
 }
 
 .footer-about h3 {
-    color: var(--sand-light);
+    color: var(--footer-heading);
     margin-bottom: 1rem;
 }
 
@@ -966,7 +994,7 @@ p {
 
 .footer-nav h4,
 .footer-contact h4 {
-    color: var(--sand-light);
+    color: var(--footer-heading);
     font-size: 0.9rem;
     letter-spacing: 0.1em;
     margin-bottom: 1.5rem;
@@ -977,14 +1005,14 @@ p {
 }
 
 .footer-nav a {
-    color: var(--clay);
+    color: var(--footer-text);
     font-size: 0.9rem;
     display: block;
     padding: 0.4rem 0;
 }
 
 .footer-nav a:hover {
-    color: var(--sand-light);
+    color: var(--footer-heading);
 }
 
 .footer-bottom {
@@ -998,7 +1026,7 @@ p {
 .footer-quote {
     font-family: var(--font-serif);
     font-size: 1rem;
-    color: var(--sand-light);
+    color: var(--footer-heading);
     margin-bottom: 1rem;
     opacity: 0.8;
 }

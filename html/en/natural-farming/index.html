@@ -2,6 +2,17 @@
 <html lang="en">
 
 <head>
+    <!-- Apply saved theme immediately to avoid FOUC -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('aiseed-theme');
+          if (t === 'light' || t === 'dark') {
+            document.documentElement.setAttribute('data-theme', t);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
     <script>
@@ -58,6 +69,10 @@
                 <a href="/en/light-farming/">Light Farming</a>
                 <a href="/gallery/">Field Notes</a>
                 <a href="/natural-farming/" class="lang-switch" hreflang="ja" aria-label="日本語版を表示">🌐 日本語</a>
+                <button type="button" class="theme-toggle" aria-label="Switch theme" title="Theme (Light / Dark)">
+                    <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+                    <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+                </button>
             </nav>
             <button class="nav-toggle" aria-label="Menu">
                 <span></span>

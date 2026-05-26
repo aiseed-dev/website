@@ -2,6 +2,17 @@
 <html lang="en">
 
 <head>
+    <!-- Apply saved theme immediately to avoid FOUC -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('aiseed-theme');
+          if (t === 'light' || t === 'dark') {
+            document.documentElement.setAttribute('data-theme', t);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
     <script>
@@ -77,7 +88,7 @@
             text-decoration: none;
             color: inherit;
             background: var(--sand-light, #f8f6f0);
-            border: 1px solid var(--earth-light, #e0ddd8);
+            border: 1px solid var(--root-tan, #e0ddd8);
             border-left: 4px solid var(--moss-green, #4a7c59);
             border-radius: 6px;
             padding: 1.75rem 1.75rem 1.5rem;
@@ -169,6 +180,10 @@
                 <a href="/vegitage/italian/">Italian Vegetable Dictionary</a>
                 <a href="/gallery/">Field Notes</a>
                 <a href="/" class="lang-switch" hreflang="ja" aria-label="日本語版を表示">🌐 日本語</a>
+                <button type="button" class="theme-toggle" aria-label="Switch theme" title="Theme (Light / Dark)">
+                    <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+                    <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+                </button>
             </nav>
             <button class="nav-toggle" aria-label="Menu">
                 <span></span>

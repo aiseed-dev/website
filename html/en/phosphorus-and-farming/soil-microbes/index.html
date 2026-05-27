@@ -415,6 +415,36 @@ article hr::before {
 .hero-title    { animation-delay: 0.25s; }
 .hero-subtitle { animation-delay: 0.45s; }
 .hero-byline   { animation-delay: 0.65s; }
+
+/* ============================================================
+   DARK MODE (follows the OS color-scheme preference)
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ink: #e8e3d6;
+    --paper: #16140f;
+    --paper-deep: #211d16;
+    --accent: #e8765a;
+    --rule: #393428;
+    --whisper: #a39b88;
+    --highlight: rgba(220, 168, 78, 0.30);
+  }
+  /* Invert the paper-grain texture for a dark background */
+  body::before {
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    mix-blend-mode: screen;
+    opacity: 0.4;
+  }
+  /* Keep code blocks as a dark terminal in both modes */
+  article pre {
+    background: #0d0c0a;
+    color: #e8e3d6;
+  }
+  article pre code {
+    color: #e8e3d6;
+  }
+}
 </style>
 </head>
 

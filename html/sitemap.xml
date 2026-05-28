@@ -231,6 +231,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/blog/microsoft-power-and-environment/</loc>
+    <lastmod>2026-05-28</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/blog/windows-10-to-debian/</loc>
     <lastmod>2026-05-26</lastmod>
     <priority>0.7</priority>
@@ -339,6 +344,11 @@
     <loc>https://aiseed.dev/blog/grid-attack-naphtha/</loc>
     <lastmod>2026-04-06</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/blog/microsoft-power-and-environment/</loc>
+    <lastmod>2026-05-28</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://aiseed.dev/en/blog/windows-10-to-debian/</loc>

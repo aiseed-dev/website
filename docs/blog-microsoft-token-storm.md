@@ -1,5 +1,5 @@
-# Microsoftにおけるトークン課金増大の嵐
-## Office + C#/.NETが招くだろう構造的問題
+# Microsoftにおけるトークン課金増大の嵐は、ツールの問題だ
+## 文書をMarkdownで書き、コードをPythonで書こう
 
 ---
 

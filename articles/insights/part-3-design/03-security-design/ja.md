@@ -10,13 +10,13 @@ part_title: 設計と実践
 part: "3"
 prev_slug: subtraction-design
 prev_title: 引き算の設計
-next_slug: ai-native-free-individual
-next_title: AIネイティブな自由人への道——個人レベルの選択
+next_slug: nativism-observation
+next_title: 生得性と観察——AIと農業の同型
 cta_label: Structure
 cta_title: 構造が全てだ。
 cta_text: AIは開発に使う。プロダクトの中には入れない。それだけで攻撃面がゼロになる。
-cta_btn1_text: 次へ AIネイティブな自由人への道——個人レベルの選択
-cta_btn1_link: /insights/ai-native-free-individual/
+cta_btn1_text: 次へ 生得性と観察——AIと農業の同型
+cta_btn1_link: /insights/nativism-observation/
 cta_btn2_text: 前へ 引き算の設計
 cta_btn2_link: /insights/subtraction-design/
 ---

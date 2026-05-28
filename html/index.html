@@ -2,6 +2,17 @@
 <html lang="ja">
 
 <head>
+    <!-- Apply saved theme immediately to avoid FOUC -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('aiseed-theme');
+          if (t === 'light' || t === 'dark') {
+            document.documentElement.setAttribute('data-theme', t);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
     <script>
@@ -32,7 +43,7 @@
     <meta name="twitter:description" content="AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。">
     <meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
     <title>AI時代の暮らし | aiseed.dev</title>
-    <link rel="stylesheet" href="css/style.css?v=313c53fe">
+    <link rel="stylesheet" href="css/style.css?v=179f2b27">
     <style>
         .series-header {
             text-align: center;
@@ -77,14 +88,14 @@
             text-decoration: none;
             color: inherit;
             background: var(--sand-light, #f8f6f0);
-            border: 1px solid var(--earth-light, #e0ddd8);
+            border: 1px solid var(--root-tan, #e0ddd8);
             border-left: 4px solid var(--moss-green, #4a7c59);
             border-radius: 6px;
             padding: 1.75rem 1.75rem 1.5rem;
             transition: background 0.2s, transform 0.2s;
         }
         .feature-card:hover {
-            background: #f0ede3;
+            background: color-mix(in srgb, var(--sand-light) 92%, var(--earth-dark));
             transform: translateY(-2px);
         }
         .feature-head {
@@ -169,6 +180,10 @@
                 <a href="/vegitage/italian/">イタリア野菜辞典</a>
                 <a href="/gallery/">畑の記録</a>
                 <a href="/en/" class="lang-switch" hreflang="en" aria-label="View in English">🌐 EN</a>
+                <button type="button" class="theme-toggle" aria-label="テーマを切り替え" title="テーマ切り替え (Light / Dark)">
+                    <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+                    <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+                </button>
             </nav>
             <button class="nav-toggle" aria-label="メニュー">
                 <span></span>
@@ -262,10 +277,10 @@
 
                 <a href="/blog/windows-10-to-debian/" class="article-link">
                     <div class="activity-item">
-                        <div class="activity-number" style="font-size: 0.7rem;">2026.05.22</div>
+                        <div class="activity-number" style="font-size: 0.7rem;">2026.05.26</div>
                         <div class="activity-content">
-                            <h3>Windows 10 の PC がある人へ ── Linuxをインストールする時代</h3>
-                            <p>2025 年 10 月に Windows 10 のサポートが終了した。Windows 11 に対応していない PC が世界中で数億台ある。しかしハードウェアは何も壊れていない。同じハードウェアで Debian は普通に動く ── むしろ古い PC こそ Linux の方が向いている。「Linux は難しい」という常識は、AI 時代に二重に逆転した: ひとつは AI がコマンドと相性がいいこと、もうひとつは Flathub が普段使いアプリの GUI 導入を Microsoft Store より整った形で提供していること。AI が横にいる今、Linux のコマンドはもう難しくない。Debian を試すなら今が時。</p>
+                            <h3>PCが大幅値上げ ── 今あるPCにLinuxをインストールして活用</h3>
+                            <p>2025 年 10 月に Windows 10 のサポートが終了した。Windows 11 に対応していない PC が世界中で数億台あって、ハードウェアは何も壊れていない。同じハードウェアで Linux は普通に動く ── むしろ古い PC こそ Linux の方が向いている。「Linux は難しい」という常識は、AI 時代に二重に逆転した: ひとつは AI がコマンドと相性がいいこと、もうひとつは Flathub が普段使いアプリの GUI 導入を Microsoft Store より整った形で提供していること。AI が横にいる今、Linux のコマンドはもう難しくない。Linux を試すなら今だ。</p>
                         </div>
                     </div>
                 </a>
@@ -357,7 +372,7 @@
         </div>
     </footer>
 
-    <script src="js/main.js?v=313c53fe"></script>
+    <script src="js/main.js?v=179f2b27"></script>
 </body>
 
 </html>

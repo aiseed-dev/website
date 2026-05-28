@@ -5,10 +5,13 @@ Localization uses _text() for hard-coded JA/EN strings and config.site_text()
 for values overridable via site.json.
 """
 
+from collections import OrderedDict
+from html import escape
 from pathlib import Path
 
 from . import config
 from .images import resolve_og_image
+from .markdown import parse_frontmatter
 
 
 def _text(is_en, en, ja):
@@ -19,6 +22,261 @@ def _text(is_en, en, ja):
 def _nl_to_br(text):
     """Convert newlines to <br> for HTML inline blocks."""
     return text.replace("\n", "<br>\n                    ")
+
+
+# ---------------------------------------------------------------------------
+# Series TOC sidebar (Wikipedia-style) for chapter pages
+#
+# Walks the insights tree once and renders a flat HTML sidebar grouped by
+# part, with the current chapter highlighted.  The same shape is reused for
+# the book series via `_collect_book_chapters` below.
+# ---------------------------------------------------------------------------
+
+_PART_LABEL_JA = {"1": "第一部", "2": "第二部", "3": "第三部"}
+_PART_LABEL_EN = {"1": "Part I", "2": "Part II", "3": "Part III"}
+
+
+def _collect_insights_chapters(lang):
+    """Walk articles/insights and return list of (part, number, slug, title)
+    sorted by (part, number).  Recurses one level into part-* subdirs."""
+    fname = "ja.md" if lang == "ja" else "en.md"
+    root = config.INSIGHTS_DIR
+    if not root.exists():
+        return []
+    chapters = []
+    for sub in sorted(root.iterdir()):
+        if not sub.is_dir():
+            continue
+        if sub.name[:1].isdigit():
+            f = sub / fname
+            if f.exists():
+                chapters.append(_chapter_meta(f))
+        else:
+            # part directory — recurse one level
+            for ch_sub in sorted(sub.iterdir()):
+                if not ch_sub.is_dir():
+                    continue
+                if not ch_sub.name[:1].isdigit():
+                    continue
+                f = ch_sub / fname
+                if f.exists():
+                    chapters.append(_chapter_meta(f))
+    chapters = [c for c in chapters if c is not None]
+    chapters.sort(key=lambda c: (c["part"], c["number"]))
+    return chapters
+
+
+def _chapter_meta(md_path):
+    """Extract minimal metadata from a chapter file for TOC building."""
+    try:
+        text = md_path.read_text(encoding="utf-8")
+    except OSError:
+        return None
+    meta, _ = parse_frontmatter(text)
+    return {
+        "part": (meta.get("part", "9") or "9").strip().strip('"'),
+        "part_title": (meta.get("part_title", "") or "").strip().strip('"'),
+        "number": (meta.get("number", "99") or "99").strip().strip('"'),
+        "slug": (meta.get("slug", "") or "").strip().strip('"'),
+        "title": (meta.get("title", "") or "").strip(),
+    }
+
+
+def _build_insights_toc_html(lang, current_slug):
+    """Render the insights series sidebar HTML, current chapter highlighted."""
+    is_en = lang == "en"
+    base = "/en/insights" if is_en else "/insights"
+    chapters = _collect_insights_chapters(lang)
+    if not chapters:
+        return "", ""
+
+    # Group by part
+    grouped = OrderedDict()
+    for c in chapters:
+        grouped.setdefault(c["part"], []).append(c)
+
+    part_labels = _PART_LABEL_EN if is_en else _PART_LABEL_JA
+    series_title = _text(is_en, "Structural Analysis", "構造分析シリーズ")
+    related_title = _text(is_en, "Related Series", "関連シリーズ")
+    book_label = _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian")
+    aiways_label = _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法")
+    farming_label = _text(is_en, "Phosphorus & Natural Farming", "リン資源枯渇と自然農法")
+
+    parts_html = []
+    current_part = ""
+    current_part_title = ""
+    current_chapter_label = ""
+    for part_key, items in grouped.items():
+        label = part_labels.get(part_key, "")
+        sample_title = items[0].get("part_title", "") if items else ""
+        part_heading = f"{label} {escape(sample_title)}".strip() if label else escape(sample_title)
+        chapter_lis = []
+        for c in items:
+            is_current = c["slug"] == current_slug
+            if is_current:
+                current_part = part_key
+                current_part_title = sample_title
+                # Use the local chapter number for the breadcrumb
+                num = c["number"].lstrip("0") or "0"
+                current_chapter_label = _text(
+                    is_en, f"Chapter {num}", f"第{num}章"
+                )
+            cls = "toc-chapter is-current" if is_current else "toc-chapter"
+            num_display = c["number"].lstrip("0") or c["number"]
+            aria = ' aria-current="page"' if is_current else ""
+            chapter_lis.append(
+                f'<li><a href="{base}/{escape(c["slug"])}/" '
+                f'class="{cls}"{aria}>'
+                f'<span class="toc-num">{escape(num_display)}.</span> '
+                f'<span class="toc-title">{escape(c["title"])}</span></a></li>'
+            )
+        parts_html.append(
+            f'<div class="toc-part" data-part="{escape(part_key)}">'
+            f'<h3 class="toc-part-title">{part_heading}</h3>'
+            f'<ol class="toc-chapters">{"".join(chapter_lis)}</ol>'
+            f"</div>"
+        )
+
+    book_base = "/en/claude-debian" if is_en else "/claude-debian"
+    aiways_base = "/en/ai-native-ways" if is_en else "/ai-native-ways"
+    farming_base = "/en/phosphorus-and-farming" if is_en else "/phosphorus-and-farming"
+    related_html = (
+        f'<div class="toc-related">'
+        f'<p class="toc-related-title">{escape(related_title)}</p>'
+        f"<ul>"
+        f'<li><a href="{book_base}/">{escape(book_label)}</a></li>'
+        f'<li><a href="{aiways_base}/">{escape(aiways_label)}</a></li>'
+        f'<li><a href="{farming_base}/">{escape(farming_label)}</a></li>'
+        f"</ul></div>"
+    )
+
+    toc_html = (
+        f'<aside class="series-toc" id="seriesToc" aria-label="{escape(series_title)}">'
+        f'<button class="series-toc-close" type="button" aria-label="Close">×</button>'
+        f'<div class="series-toc-inner">'
+        f'<p class="series-toc-title"><a href="{base}/">{escape(series_title)}</a></p>'
+        f"{''.join(parts_html)}"
+        f"{related_html}"
+        f"</div></aside>"
+    )
+
+    # Breadcrumb: aiseed.dev › 構造分析 › 第一部 ... › 第6章 ...
+    site_root = "/en/" if is_en else "/"
+    site_label = "aiseed.dev"
+    crumbs = [
+        f'<a href="{site_root}">{site_label}</a>',
+        f'<a href="{base}/">{escape(series_title)}</a>',
+    ]
+    if current_part and current_part in part_labels:
+        crumbs.append(
+            f'<span class="crumb-part">{part_labels[current_part]} '
+            f"{escape(current_part_title)}</span>"
+        )
+    if current_chapter_label:
+        crumbs.append(
+            f'<span class="crumb-current" aria-current="page">'
+            f"{escape(current_chapter_label)}</span>"
+        )
+    breadcrumb_html = (
+        '<nav class="breadcrumb" aria-label="breadcrumb">'
+        + ' <span class="crumb-sep">›</span> '.join(crumbs)
+        + "</nav>"
+    )
+
+    return toc_html, breadcrumb_html
+
+
+def _collect_book_chapters(lang):
+    """Walk articles/claude-debian and return chapters for the book TOC."""
+    fname = "ja.md" if lang == "ja" else "en.md"
+    root = config.BOOK_DIR
+    if not root.exists():
+        return []
+    chapters = []
+    for sub in sorted(root.iterdir()):
+        if not sub.is_dir():
+            continue
+        if not sub.name[:1].isdigit():
+            continue
+        f = sub / fname
+        if f.exists():
+            meta = _chapter_meta(f)
+            if meta:
+                chapters.append(meta)
+    chapters.sort(key=lambda c: c["number"])
+    return chapters
+
+
+def _build_book_toc_html(lang, current_slug):
+    """Render the book series sidebar HTML, current chapter highlighted."""
+    is_en = lang == "en"
+    book_base = "/en/claude-debian" if is_en else "/claude-debian"
+    chapters = _collect_book_chapters(lang)
+    if not chapters:
+        return "", ""
+
+    series_title = _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian")
+    related_title = _text(is_en, "Related Series", "関連シリーズ")
+    insights_label = _text(is_en, "Structural Analysis", "構造分析")
+    aiways_label = _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法")
+    insights_base = "/en/insights" if is_en else "/insights"
+    aiways_base = "/en/ai-native-ways" if is_en else "/ai-native-ways"
+
+    chapter_lis = []
+    current_chapter_label = ""
+    for c in chapters:
+        # Book URL stem strips the claude-debian- prefix from slug
+        stem = c["slug"]
+        if stem.startswith("claude-debian-"):
+            stem = stem[len("claude-debian-"):]
+        is_current = c["slug"] == current_slug
+        if is_current:
+            n = c["number"].lstrip("0") or "0"
+            current_chapter_label = (
+                _text(is_en, "Prologue", "序章") if n == "0"
+                else _text(is_en, f"Chapter {n}", f"第{n}章")
+            )
+        cls = "toc-chapter is-current" if is_current else "toc-chapter"
+        n_disp = c["number"]
+        aria = ' aria-current="page"' if is_current else ""
+        chapter_lis.append(
+            f'<li><a href="{book_base}/{escape(stem)}/" '
+            f'class="{cls}"{aria}>'
+            f'<span class="toc-num">{escape(n_disp)}.</span> '
+            f'<span class="toc-title">{escape(c["title"])}</span></a></li>'
+        )
+
+    toc_html = (
+        f'<aside class="series-toc" id="seriesToc" aria-label="{escape(series_title)}">'
+        f'<button class="series-toc-close" type="button" aria-label="Close">×</button>'
+        f'<div class="series-toc-inner">'
+        f'<p class="series-toc-title"><a href="{book_base}/">{escape(series_title)}</a></p>'
+        f'<ol class="toc-chapters toc-chapters-flat">{"".join(chapter_lis)}</ol>'
+        f'<div class="toc-related">'
+        f'<p class="toc-related-title">{escape(related_title)}</p>'
+        f"<ul>"
+        f'<li><a href="{insights_base}/">{escape(insights_label)}</a></li>'
+        f'<li><a href="{aiways_base}/">{escape(aiways_label)}</a></li>'
+        f"</ul></div>"
+        f"</div></aside>"
+    )
+
+    crumbs = [
+        f'<a href="{"/en/" if is_en else "/"}">aiseed.dev</a>',
+        f'<a href="{book_base}/">{escape(series_title)}</a>',
+    ]
+    if current_chapter_label:
+        crumbs.append(
+            f'<span class="crumb-current" aria-current="page">'
+            f"{escape(current_chapter_label)}</span>"
+        )
+    breadcrumb_html = (
+        '<nav class="breadcrumb" aria-label="breadcrumb">'
+        + ' <span class="crumb-sep">›</span> '.join(crumbs)
+        + "</nav>"
+    )
+
+    return toc_html, breadcrumb_html
 
 
 # ---------------------------------------------------------------------------
@@ -37,6 +295,7 @@ def article_vars(meta, body_html):
 
     slug = meta.get("slug", "")
     insights_base = "/en/insights" if is_en else "/insights"
+    series_toc_html, breadcrumb_html = _build_insights_toc_html(lang, slug)
     prev_prefix = "Prev: " if is_en else "前: "
     next_prefix = "Next: " if is_en else "次: "
     insights_top = "Insights Top" if is_en else "Insights トップ"
@@ -89,6 +348,9 @@ def article_vars(meta, body_html):
         # image breaks the reading flow. Keep og:image (separate variable) for
         # social sharing, but suppress the visible hero image.
         "show_hero_image": False,
+        # Wikipedia-style sidebar TOC + breadcrumb (rendered server-side).
+        "series_toc_html": series_toc_html,
+        "breadcrumb_html": breadcrumb_html,
         "insights_base": insights_base,
         "blog_base": "/en/blog" if is_en else "/blog",
         "book_base": "/en/claude-debian" if is_en else "/claude-debian",
@@ -299,6 +561,8 @@ def book_vars(meta, body_html):
     next_slug = meta.get("next_slug", "")
     next_title = meta.get("next_title", "")
 
+    series_toc_html, breadcrumb_html = _build_book_toc_html(lang, slug)
+
     # Navigation: prev/next frontmatter uses full slug; URLs use the stem.
     # At the tail of the book we fall back to the table of contents.
     book_top = _text(is_en, f"{book_title} TOC", f"{book_title} 目次")
@@ -352,6 +616,9 @@ def book_vars(meta, body_html):
         # Book chapters are dense, structured text; suppress the visible hero
         # image. og:image (separate variable) is preserved for social sharing.
         "show_hero_image": False,
+        # Wikipedia-style sidebar TOC + breadcrumb (rendered server-side).
+        "series_toc_html": series_toc_html,
+        "breadcrumb_html": breadcrumb_html,
         # Navigation bar labels (shared site nav)
         "insights_base": "/en/insights" if is_en else "/insights",
         "blog_base": "/en/blog" if is_en else "/blog",
@@ -758,6 +1025,10 @@ def blog_vars(meta, body_html):
         # Blog posts often use the hero image to carry meaning (screenshots,
         # photos illustrating the post). Keep visible.
         "show_hero_image": True,
+        # Blog has no series sidebar yet; leave empty so the template renders
+        # a single-column layout.
+        "series_toc_html": "",
+        "breadcrumb_html": "",
         "insights_base": "/en/insights" if is_en else "/insights",
         "blog_base": "/en/blog" if is_en else "/blog",
         "book_base": "/en/claude-debian" if is_en else "/claude-debian",

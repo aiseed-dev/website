@@ -2,6 +2,17 @@
 <html lang="en">
 
 <head>
+    <!-- Apply saved theme immediately to avoid FOUC -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('aiseed-theme');
+          if (t === 'light' || t === 'dark') {
+            document.documentElement.setAttribute('data-theme', t);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
     <script>
@@ -33,7 +44,7 @@
     <meta name="twitter:description" content="Light Farming — the science of photosynthesis and soil carbon sequestration, based on Dr. Christine Jones's research. A way to regenerate soil without external inputs in the age of fertilizer crisis.">
     <meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
     <title>Light Farming | Living in the AI Era</title>
-    <link rel="stylesheet" href="../../css/style.css?v=313c53fe">
+    <link rel="stylesheet" href="../../css/style.css?v=179f2b27">
 </head>
 
 <body>
@@ -59,6 +70,10 @@
                 <a href="/en/light-farming/" class="active">Light Farming</a>
                 <a href="/gallery/">Field Notes</a>
                 <a href="/light-farming/" class="lang-switch" hreflang="ja" aria-label="日本語版を表示">🌐 日本語</a>
+                <button type="button" class="theme-toggle" aria-label="Switch theme" title="Theme (Light / Dark)">
+                    <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+                    <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+                </button>
             </nav>
             <button class="nav-toggle" aria-label="Menu">
                 <span></span>
@@ -465,7 +480,7 @@
         </div>
     </footer>
 
-    <script src="../../js/main.js?v=313c53fe"></script>
+    <script src="../../js/main.js?v=179f2b27"></script>
 </body>
 
 </html>

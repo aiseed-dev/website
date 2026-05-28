@@ -432,6 +432,88 @@ article hr::before {
 }
 
 /* ============================================================
+   SERIES TOC(全章一覧・折りたたみ式)
+   ============================================================ */
+.series-toc {
+  margin: 24px 0 40px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 0;
+}
+.series-toc details {
+  font-family: "JetBrains Mono", monospace;
+}
+.series-toc summary {
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  padding: 8px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.series-toc summary::-webkit-details-marker { display: none; }
+.series-toc summary::before {
+  content: "▸";
+  color: var(--accent);
+  font-size: 10px;
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.series-toc details[open] summary::before { transform: rotate(90deg); }
+.series-toc ol {
+  list-style: none;
+  margin: 12px 0 8px;
+  padding: 0;
+  counter-reset: none;
+}
+.series-toc li {
+  list-style: none;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--rule);
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  line-height: 1.55;
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.series-toc li::before { content: none; }
+.series-toc li:last-child { border-bottom: none; }
+.series-toc li a {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--ink);
+  flex: 1;
+}
+.series-toc li a:hover .toc-title { color: var(--accent); }
+.series-toc .toc-num {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 5em;
+}
+.series-toc li.current {
+  background: var(--paper-deep);
+  margin: 0 -12px;
+  padding: 9px 12px;
+}
+.series-toc li.current .toc-title {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 640px) {
@@ -440,6 +522,8 @@ article hr::before {
   blockquote { padding: 24px 20px 24px 28px; }
   article pre { padding: 20px 16px; font-size: 12px; }
   article ol li { padding-left: 48px; }
+  .series-toc .toc-num { min-width: 4em; font-size: 10px; }
+  .series-toc li { font-size: 13px; gap: 12px; }
 }
 
 /* ============================================================
@@ -512,6 +596,25 @@ article hr::before {
       <span><a href="https://aiseed.dev/en/phosphorus-and-farming/soil-microbes/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">🌐 EN</a></span>
     </div>
   </section>
+
+  <!-- SERIES TOC(全章一覧・現在の章をハイライト) -->
+  <nav class="series-toc" aria-label="シリーズ章一覧">
+  <details>
+    <summary>目次 — 全章</summary>
+    <ol>
+      <li><a href="/phosphorus-and-farming/prologue/"><span class="toc-num">序章</span><span class="toc-title">経済が農法を決める</span></a></li>
+      <li><a href="/phosphorus-and-farming/supply-constraint/"><span class="toc-num">第1章</span><span class="toc-title">リン酸肥料の供給制約 ── 何が起きているか</span></a></li>
+      <li><a href="/phosphorus-and-farming/no-cheap-return/"><span class="toc-num">第2章</span><span class="toc-title">リン酸肥料は安価には戻らない</span></a></li>
+      <li><a href="/phosphorus-and-farming/industrial-farming-fails/"><span class="toc-num">第3章</span><span class="toc-title">慣行農業は経済的に成立しなくなる</span></a></li>
+      <li><a href="/phosphorus-and-farming/realistic-position/"><span class="toc-num">第4章</span><span class="toc-title">現実的な立ち位置 ── どこにも組みしない</span></a></li>
+      <li class="current" aria-current="page"><span class="toc-num">第5章</span><span class="toc-title">土壌微生物という戦略</span></li>
+      <li><a href="/phosphorus-and-farming/co2-tailwind/"><span class="toc-num">第6章</span><span class="toc-title">CO2 という追い風</span></a></li>
+      <li><a href="/phosphorus-and-farming/implementation/"><span class="toc-num">第7章</span><span class="toc-title">どう実装するか ── 一反百姓と耕作放棄地</span></a></li>
+      <li><a href="/phosphorus-and-farming/operating-principles/"><span class="toc-num">第8章</span><span class="toc-title">運用原則 ── 何をして、何をしないか</span></a></li>
+      <li><a href="/phosphorus-and-farming/cuba-lessons/"><span class="toc-num">第9章</span><span class="toc-title">キューバの教訓</span></a></li>
+    </ol>
+  </details>
+</nav>
 
   <!-- ARTICLE BODY -->
   <article>

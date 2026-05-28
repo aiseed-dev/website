@@ -468,6 +468,88 @@ article hr::before {
 }
 
 /* ============================================================
+   SERIES TOC(全章一覧・折りたたみ式)
+   ============================================================ */
+.series-toc {
+  margin: 24px 0 40px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 0;
+}
+.series-toc details {
+  font-family: "JetBrains Mono", monospace;
+}
+.series-toc summary {
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  padding: 8px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.series-toc summary::-webkit-details-marker { display: none; }
+.series-toc summary::before {
+  content: "▸";
+  color: var(--accent);
+  font-size: 10px;
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.series-toc details[open] summary::before { transform: rotate(90deg); }
+.series-toc ol {
+  list-style: none;
+  margin: 12px 0 8px;
+  padding: 0;
+  counter-reset: none;
+}
+.series-toc li {
+  list-style: none;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--rule);
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  line-height: 1.55;
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.series-toc li::before { content: none; }
+.series-toc li:last-child { border-bottom: none; }
+.series-toc li a {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--ink);
+  flex: 1;
+}
+.series-toc li a:hover .toc-title { color: var(--accent); }
+.series-toc .toc-num {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 5em;
+}
+.series-toc li.current {
+  background: var(--paper-deep);
+  margin: 0 -12px;
+  padding: 9px 12px;
+}
+.series-toc li.current .toc-title {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 640px) {
@@ -476,6 +558,8 @@ article hr::before {
   blockquote { padding: 24px 20px 24px 28px; }
   article pre { padding: 20px 16px; font-size: 12px; }
   article ol li { padding-left: 48px; }
+  .series-toc .toc-num { min-width: 4em; font-size: 10px; }
+  .series-toc li { font-size: 13px; gap: 12px; }
 }
 
 /* ============================================================
@@ -561,6 +645,9 @@ article hr::before {
       {% if other_lang_url %}<span><a href="{{ other_lang_url }}" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">🌐 {{ other_lang_label }}</a></span>{% endif %}
     </div>
   </section>
+
+  <!-- SERIES TOC(全章一覧・現在の章をハイライト) -->
+  {{ chapter_toc_html | safe }}
 
   <!-- ARTICLE BODY -->
   <article>

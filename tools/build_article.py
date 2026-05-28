@@ -674,6 +674,68 @@ def _aiways_chapter_examples_html(chapter_dir, chapter_slug: str, lang: str, sub
     )
 
 
+_CHAPTER_PREFIX_SEP_RE = re.compile(r'^[\s—–―\-:·、。─-╿]+')
+
+
+def _strip_chapter_prefix(title: str, label: str) -> str:
+    """Strip a leading chapter label (e.g. '第2章', 'Chapter 2', '序章',
+    'Prologue') and any following separator/punctuation, so the TOC row
+    doesn't repeat what the chapter-number column already shows."""
+    if not label:
+        return title
+    t = title
+    if t.startswith(label):
+        t = t[len(label):]
+    return _CHAPTER_PREFIX_SEP_RE.sub('', t)
+
+
+def _aiways_chapter_toc_html(lang: str, subseries: str, current_slug: str) -> str:
+    """Render a collapsible series chapter-list for an ai-native-ways chapter page.
+
+    Scoped to the chapter's (sub)series. The current chapter is rendered as
+    plain text; other chapters are links.
+    """
+    chapters = collect_aiways_chapters(lang, subseries)
+    if not chapters:
+        return ""
+    base = _aiways_url_base(lang, subseries)
+    is_en = lang == "en"
+    if subseries:
+        cfg = AIWAYS_SUBSERIES[subseries]
+        sub_name = cfg["name_en"] if is_en else cfg["name_ja"]
+        summary = f"Contents — {sub_name}" if is_en else f"目次 — {sub_name}"
+    else:
+        summary = "Contents — all chapters" if is_en else "目次 — 全章"
+    aria = "Series chapters" if is_en else "シリーズ章一覧"
+    items = []
+    for c in chapters:
+        slug = c.get("slug", "")
+        number = c.get("number", "").strip('"')
+        title = c.get("title", "")
+        label = _aiways_chapter_label(number, lang, subseries)
+        display_title = _strip_chapter_prefix(title, label)
+        if slug == current_slug:
+            items.append(
+                f'      <li class="current" aria-current="page">'
+                f'<span class="toc-num">{label}</span>'
+                f'<span class="toc-title">{display_title}</span></li>'
+            )
+        else:
+            items.append(
+                f'      <li><a href="{base}/{slug}/">'
+                f'<span class="toc-num">{label}</span>'
+                f'<span class="toc-title">{display_title}</span></a></li>'
+            )
+    return (
+        f'<nav class="series-toc" aria-label="{aria}">\n'
+        f'  <details>\n'
+        f'    <summary>{summary}</summary>\n'
+        f'    <ol>\n' + "\n".join(items) + "\n    </ol>\n"
+        f'  </details>\n'
+        f'</nav>'
+    )
+
+
 def build_aiways_chapter(md_path):
     """Build a single ai-native-ways chapter using the series-local template."""
     from jinja2 import Template
@@ -762,6 +824,7 @@ def build_aiways_chapter(md_path):
         "og_image": og_image,
         "other_lang_url": other_lang_url if has_other else "",
         "other_lang_label": other_lang_label,
+        "chapter_toc_html": _aiways_chapter_toc_html(lang, subseries, slug),
     }
 
     template_text = _aiways_template_path(lang).read_text(encoding="utf-8")
@@ -804,6 +867,45 @@ def _farming_chapter_label(number: str, lang: str) -> str:
 
 def _farming_template_path(lang: str) -> Path:
     return config.FARMING_DIR / ("template.html" if lang == "ja" else "template.en.html")
+
+
+def _farming_chapter_toc_html(lang: str, current_slug: str) -> str:
+    """Render a collapsible series chapter-list for a phosphorus-and-farming
+    chapter page. The current chapter is plain text; others are links."""
+    chapters = collect_farming_chapters(lang)
+    if not chapters:
+        return ""
+    base = "/en/phosphorus-and-farming" if lang == "en" else "/phosphorus-and-farming"
+    is_en = lang == "en"
+    summary = "Contents — all chapters" if is_en else "目次 — 全章"
+    aria = "Series chapters" if is_en else "シリーズ章一覧"
+    items = []
+    for c in chapters:
+        slug = c.get("slug", "")
+        number = c.get("number", "").strip('"')
+        title = c.get("title", "")
+        label = _farming_chapter_label(number, lang)
+        display_title = _strip_chapter_prefix(title, label)
+        if slug == current_slug:
+            items.append(
+                f'      <li class="current" aria-current="page">'
+                f'<span class="toc-num">{label}</span>'
+                f'<span class="toc-title">{display_title}</span></li>'
+            )
+        else:
+            items.append(
+                f'      <li><a href="{base}/{slug}/">'
+                f'<span class="toc-num">{label}</span>'
+                f'<span class="toc-title">{display_title}</span></a></li>'
+            )
+    return (
+        f'<nav class="series-toc" aria-label="{aria}">\n'
+        f'  <details>\n'
+        f'    <summary>{summary}</summary>\n'
+        f'    <ol>\n' + "\n".join(items) + "\n    </ol>\n"
+        f'  </details>\n'
+        f'</nav>'
+    )
 
 
 def build_farming_chapter(md_path):
@@ -876,6 +978,7 @@ def build_farming_chapter(md_path):
         "og_image": og_image,
         "other_lang_url": other_lang_url if has_other else "",
         "other_lang_label": other_lang_label,
+        "chapter_toc_html": _farming_chapter_toc_html(lang, slug),
     }
 
     template_text = _farming_template_path(lang).read_text(encoding="utf-8")

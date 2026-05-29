@@ -53,6 +53,8 @@ That physical actual emissions have doubled in four years, and that the company 
 
 The two Windows 11 PC problems — unguaranteed support and the in-name-only "AI PC" — are both expressions of the same AI-first strategy, the one that is rebuilding Microsoft from "provider of a long-term, stably operated OS" into "company that funnels customers into AI and cloud subscriptions." That strategy cycles working machines into e-waste, drives data-center electricity demand upward, and has taken the company's own emissions to 23.4% above 2020. Microsoft is sprinting in a direction incompatible with the carbon-negative banner it still flies. This is the largest problem Windows 11 and the AI-first strategy are creating.
 
+And here one question arises. **Is that much data center capacity actually necessary in the first place?** As we saw at the outset, fewer than 1 in 30 of the eligible users actually pay for the flagship product, Copilot. For something whose real demand is that uncertain, Microsoft is restarting a nuclear reactor, scrapping usable PCs, and stacking up enough infrastructure to double its own emissions. At the root of the power problem and the environmental problem is a structure in which supply at a scale that does not match demand was built first, in a form that cannot be undone.
+
 ---
 
 *Related: [PCs Just Got Much More Expensive — Install Linux on the PC You Already Have](/en/blog/windows-10-to-debian/)*

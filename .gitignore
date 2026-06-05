@@ -9,6 +9,7 @@ Desktop.ini
 *~
 .vscode/
 .idea/
+.zed
 
 # Python
 __pycache__/

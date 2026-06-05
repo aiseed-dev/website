@@ -1,0 +1,53 @@
+{
+  "$comment": "隘路（chokepoint）のメタデータ。指標は chokepoint で束ねて表示する。並び順は order。",
+  "chokepoints": [
+    {
+      "id": "hormuz_crude",
+      "name_ja": "ホルムズ / 原油",
+      "name_en": "Hormuz / Crude",
+      "order": 1
+    },
+    {
+      "id": "russia_oil_flow",
+      "name_ja": "ロシア石油の流れ",
+      "name_en": "Russian oil flow",
+      "order": 2
+    },
+    {
+      "id": "russia_fiscal",
+      "name_ja": "ロシア財政（時計）",
+      "name_en": "Russian fiscal clock",
+      "order": 3
+    },
+    {
+      "id": "byproduct_trap",
+      "name_ja": "副産物",
+      "name_en": "By-product trap",
+      "order": 4
+    },
+    {
+      "id": "phosphate",
+      "name_ja": "リン酸肥料（春作の時計）",
+      "name_en": "Phosphate fertilizer (spring clock)",
+      "order": 5
+    },
+    {
+      "id": "us_food",
+      "name_ja": "米国食料（批判の時計）",
+      "name_en": "US food (criticism clock)",
+      "order": 6
+    },
+    {
+      "id": "cuba",
+      "name_ja": "キューバ",
+      "name_en": "Cuba",
+      "order": 7
+    },
+    {
+      "id": "political_clock",
+      "name_ja": "政治の時計",
+      "name_en": "Political clock",
+      "order": 8
+    }
+  ]
+}

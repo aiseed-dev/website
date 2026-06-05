@@ -32,6 +32,9 @@ npm-debug.log*
 # Logs
 *.log
 
+# ダッシュボードの append-only SQLite ストア（series は build で再生成可能）
+tools/dashboard/data/*.sqlite3
+
 # ビルド成果物（tools/build_article.py, scripts/build.py が生成）
 html/insights/
 html/en/insights/

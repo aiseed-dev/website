@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- Apply saved theme immediately to avoid FOUC -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('aiseed-theme');
+          if (t === 'light' || t === 'dark') {
+            document.documentElement.setAttribute('data-theme', t);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9FLQ963JXM');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com">
+    <meta name="description" content="構造分析で追ってきた物理量を一覧表示するダッシュボード。価格・流量・在庫・残り日数と、その単位・観測日・出所だけを提示する。主張も予測も載せない。">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://aiseed.dev/dashboard/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AI時代の暮らし">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:title" content="物理量ダッシュボード | aiseed.dev">
+    <meta property="og:description" content="物理量・単位・観測日・出所だけを提示する。予測も結論も載せない。読者が物理的事実から自分で判断するための場。">
+    <meta property="og:url" content="https://aiseed.dev/dashboard/">
+    <title>物理量ダッシュボード | aiseed.dev</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body>
+    <header class="dash-header">
+        <div class="dash-header__inner">
+            <p class="dash-eyebrow"><a href="/">aiseed.dev</a> / 構造分析</p>
+            <h1>物理量ダッシュボード</h1>
+            <p class="dash-lede">
+                構造分析で追ってきた<strong>物理量</strong>の一覧。価格・流量・在庫・残高・残り日数と、
+                その<strong>単位・観測日・出所</strong>だけを並べる。
+                <span class="dash-lede__assert">主張も予測も結論も載せない。</span>
+                政治的言説ではなく物理的事実から、読者が自分で判断するための場。
+            </p>
+            <button id="theme-toggle" class="dash-theme-toggle" type="button"
+                    aria-label="テーマ切り替え">◐</button>
+        </div>
+    </header>
+
+    <!-- 凡例: kind（種別）の色分け -->
+    <section class="dash-legend" aria-label="凡例">
+        <div class="dash-legend__inner" id="legend"></div>
+        <p class="dash-legend__note">
+            <strong>流れ &gt; 価格</strong> ―
+            価格は世界需給が決める下流の読み取り値。流れ（量・経路・割引）は制御が実際に行使される層。
+        </p>
+    </section>
+
+    <main id="dashboard" class="dash-main" aria-live="polite">
+        <p class="dash-loading">読み込み中…</p>
+    </main>
+
+    <footer class="dash-footer">
+        <div class="dash-footer__inner">
+            <p>
+                仕様: <code>docs/physical-dashboard-spec.md</code> v0.1 ―
+                物理量主義 / 流れ &gt; 価格 / 小さく・自立し・育つ。
+            </p>
+            <p class="dash-footer__meta" id="generated-at"></p>
+            <p><a href="/">← aiseed.dev トップへ</a></p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

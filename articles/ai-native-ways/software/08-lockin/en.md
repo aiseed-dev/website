@@ -226,6 +226,18 @@ The overall pace of the industry shift — Japan's multi-tier
 subcontracting, labor mobility, transitional contract forms — is
 treated in Chapter 10.
 
+Note that everything so far has been about the **development lock-in**
+of the SIer-commissioned model. Separate from it is the **lock-in of
+vendor AI (Copilot and the like) itself** — a form where the
+intelligence running underneath can be swapped for a cheaper in-house
+model without the user's consent. In June 2026, Microsoft's AI chief
+Suleyman said openly that the company's goal is to "ultimately
+eliminate" what it pays Anthropic. Even when development lock-in
+dissolves into standard code, **entrusting your workflow to one
+vendor's AI creates a different dependence.** The principle of keeping
+judgment and tools on your own side applies here too
+(→ [Building a Microsoft 365 equivalent yourself](/en/blog/self-hosting-microsoft-365/)).
+
 ## Where the next chapter goes
 
 Wherever lock-in dissolves, customers will need builders. Whether
@@ -249,3 +261,4 @@ how builders get positioned, how they are paid, and how they function.
 - [Chapter 10: Japan's SIer Industry Transition and Labor Mobility](/en/ai-native-ways/software/japan-transition/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)
+- [Can You Build a Microsoft 365 (Standard + Copilot) Equivalent Yourself?](/en/blog/self-hosting-microsoft-365/)

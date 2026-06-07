@@ -66,7 +66,7 @@ cta_btn2_link: /claude-debian/06-hardware-choice/
 3. Boot メニューまたは Boot Order の画面を開く
 4. USBを最上位に動かすか、ワンタイムブート（F12メニュー）でUSBを選ぶ
 
-起動したら、Debianインストーラの画面が表示される。**マウスを使える Graphical install を選ぶ。**
+起動したら、Debianインストーラの画面が表示される。日本語でインストールする場合は、Graphical installではなくて、Install の方を選択する。Graphical install だと説明が不足しているものがある。Install は、テキスト
 
 ### Claudeに聞いてみよう①：起動しないときの即応対話
 

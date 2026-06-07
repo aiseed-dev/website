@@ -209,6 +209,8 @@ Routine work does become several times to several tens of times faster. But that
 
 The direction **Satya Nadella** (Microsoft's CEO) has been pushing makes the structure plain — Microsoft is selling Copilot at the center of the message "**hand it to AI, cut headcount, and profit rises**." This is a sales structure that **leverages the human desire to take the easy way out and make money**.
 
+The same structure shows from another angle. In June 2026, Microsoft's AI chief **Mustafa Suleyman** said openly of what the company pays Anthropic: "**our goal is to reduce and ultimately eliminate that cost.**" First gather users with an excellent third-party model (Claude and the like); once the lock-in has set, silently swap the intelligence running underneath for a cheaper in-house one — counting on users being unable to leave. **After the buyer has built the dependence, the substance of that intelligence can be replaced unilaterally.** Before the question of not handing judgment over, there is a prior problem: **you cannot know when, or to what quality, the intelligence you handed off will be swapped.** This is the other face of "vendor-centralized AI" (→ [Building a Microsoft 365 equivalent yourself](/en/blog/self-hosting-microsoft-365/)).
+
 The problem is that this pitch implies **outsourcing judgment** as well. Writing code, drafting documents, organizing data — these can be handed to AI. But **what to build, which conditions cannot be traded, who carries the responsibility for the outcome** — none of these can be handed to AI. **AI does not take responsibility** — technically, ethically, and legally, AI is not a subject that can carry it.
 
 Yet when the pitch reads "let AI take care of it," buyers (organizations) come away feeling they have outsourced judgment, too. The result is that **commonplace business systems and mediocre decisions get mass-produced, and a structure forms in which no one is responsible**. The cost of failures concentrates on the buyer side (the organization, society); the seller's subscription revenue keeps flowing — **moral hazard at industrial scale**.
@@ -305,4 +307,5 @@ The next chapter, [AI (ChatGPT, Claude, etc.) Practical Manual](/en/ai-native-wa
 - [Structural Analysis 08: Removing the Enterprise IT Tax](/en/insights/enterprise-tax/)
 - [Structural Analysis 12: AI and the Individual Business](/en/insights/ai-and-individual/)
 - [Are You Still Using Windows and Office?](/en/blog/windows-office-facts/)
+- [Can You Build a Microsoft 365 (Standard + Copilot) Equivalent Yourself?](/en/blog/self-hosting-microsoft-365/)
 - [Learning Debian with Claude](/en/claude-debian/)

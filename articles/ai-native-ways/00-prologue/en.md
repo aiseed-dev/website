@@ -270,6 +270,8 @@ Japan, with its deep manufacturing, town-factory, natural-farming, electronics-t
 
 Another name for "the return of the free person" is **the Second Renaissance**. The recovery of the liberal arts, the return of the polymath, the liberation of knowledge through natural language, the regeneration of the free city and the guild, the exit from vendor concentration — laid item by item, the structural changes that the First Renaissance (14th–17th centuries) drove at the end of the medieval period match those now arising in the AI era. Just as the First was brought into full force by **the printing press**, the Second is now being **brought into full force by the LLM**.
 
+Just as the printing press broke the enclosure of the manuscript, AI breaks the wall of "the source is open, but only specialists can read it." Here **the value of open source and proprietary software reverses** — the advantages of closed products (polished and ready to use, with full vendor support) thin out as AI takes them over, and **being open, so that you can read, fix, and grow it yourself**, becomes a practical benefit for the first time. What has once gone out into the commons can no longer be recalled by anyone.
+
 The practical methods this book lays out in each chapter — leaving Office behind, building structure in Python and Markdown, holding a local AI, keeping data on one's own machine, turning freed time toward natural farming and presence in the physical world — are **the implementation manual of the Second Renaissance**.
 
 ## Closing

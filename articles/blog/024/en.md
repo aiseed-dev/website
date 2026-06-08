@@ -2,7 +2,7 @@
 slug: self-hosting-microsoft-365
 title: "Can You Build a Microsoft 365 (Standard + Copilot) Equivalent Yourself?"
 subtitle: "Nadella's 'contradiction' and the collapse of the enclosure — taking control back into your own hands"
-date: 2026.06.07
+date: 2026.06.08
 description: Microsoft CEO Satya Nadella wrote on his personal blog about "model overhang — capability outrunning our ability to put it to real-world use." But if that diagnosis is right, the place to invest is not $190 billion a year of infrastructure but the side that uses the capability we already have. AI chief Suleyman has openly said the goal is to "ultimately eliminate" what Microsoft pays Anthropic — exposing a structure in which the intelligence running underneath can be silently swapped out. Ironically, the very "intelligence that can replace an engineer" they spent so much to build has become the best partner for users who want to leave the cloud and self-host. With ONLYOFFICE, Ryzen AI Max, and open-weight models, this piece asks whether you can take a Microsoft 365 (Standard + Copilot) equivalent back into your own hands.
 lang: en
 label: Blog
@@ -84,7 +84,7 @@ The "intelligence that can replace an engineer," which they grew with enormous i
 
 If you are an individual, just install ONLYOFFICE Desktop Editors. You get something nearly equivalent to Word, Excel, and PowerPoint. LibreOffice is fine too. But if, as an organization, you want collaborative editing as well, then to match Microsoft 365 Business Standard, install ONLYOFFICE DocSpace Community on a server.
 
-And with a PC like the **Minisforum MS-S1 MAX (Ryzen AI Max+ 395 / 128GB LPDDR5x)** — with unified memory on par with Apple Silicon — open-source AI (Gemma 4, Qwen 3.6, and the like) runs locally. Of course it does not yet have Claude's capability, but it is worth trying.
+And with a PC powered by the **Ryzen AI Max+ 395 / 128GB LPDDR5x — with unified memory on par with Apple Silicon — open-source AI (Gemma 4, Qwen 3.6, and the like) runs locally. Of course it does not yet have Claude's capability, but it is worth trying.
 
 What matters is **holding the initiative in your own hands.** If Claude's new model is good, switch to it and use it. If you want to close everything off for free, run an open-source model on the power of a local Ryzen AI Max, on top of 128GB of high-bandwidth memory. Which intelligence, for which task, when to use it and when to drop it — that is decided by you, not by a vendor. Bind it all together with Python and hold the control. Your data does not leave. The cost is only electricity. The model can be swapped at any time.
 

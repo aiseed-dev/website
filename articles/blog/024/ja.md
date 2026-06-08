@@ -2,7 +2,7 @@
 slug: self-hosting-microsoft-365
 title: Microsoft 365（Standard + Copilot）同等の環境を自前で作れるか試す
 subtitle: ナデラの「矛盾」と、囲い込みが崩れる構造 ── 主導権を自分の手に取り戻す
-date: 2026.06.07
+date: 2026.06.08
 description: Microsoft のナデラ CEO は個人ブログで「model overhang ── 能力が、それを使いこなす我々の力を追い越している」と書いた。だがその診断が正しいなら、積むべきは年 1900 億ドルのインフラではなく、すでにある能力を使いこなす側のはずだ。AI 責任者スレイマンは Anthropic への支払いを「最終的にゼロにする」と公言し、裏で動く知能を黙って差し替えられる構造を露わにした。皮肉にも、彼らが投資して育てた「エンジニアの代わりができる知能」は、ユーザーがクラウドから脱却してセルフホストするための最高の相棒になった。ONLYOFFICE と Ryzen AI Max、OSS モデルで、Microsoft 365（Standard + Copilot）同等の環境を自分の手に取り戻せるかを考える。
 lang: ja
 label: Blog
@@ -85,7 +85,7 @@ AIが唯一、人間の代わりを完全にこなせるほど「超優秀」な
 
 個人であれば、ONLYOFFICE Desktop Editors をインストールすればいい。Word・Excel・PowerPoint とほぼ同等のものが使える。LibreOffice でもかまわない。ただし、組織として共同編集まで使いたい場合は、Microsoft 365 Business Standard と同等にするために、ONLYOFFICE DocSpace Community をサーバーにインストールすればいい。
 
-そして、**Minisforum MS-S1 MAX（Ryzen AI Max+ 395 / 128GB LPDDR5x）** という、Apple Silicon 並みの統合メモリを持つPCを使えば、OSS AI（Gemma 4、Qwen 3.6 等）がローカルで動く。もちろん Claude ほどの能力はまだないが、試す価値はある。
+そして、**Ryzen AI Max+ 395 / 128GB LPDDR5x** を搭載した、Apple Silicon 並みの統合メモリを持つPCを使えば、OSS AI（Gemma 4、Qwen 3.6 等）がローカルで動く。もちろん Claude ほどの能力はまだないが、試す価値はある。
 
 肝心なのは、**主導権を自分の手に握る**ことだ。Claudeの新しいモデルが良ければ、切り替えて使えばいい。完全に無料で閉じたいなら、ローカルの Ryzen AI Max のパワーで128GBの広帯域メモリの上にOSSモデルを回せばいい。どの知能を、どのタスクに、いつ使い、いつ外すか——それを決めるのは、ベンダーではなく自分だ。すべてを Python で束ねて、制御を握る。データは外に出ない。コストは電力だけ。モデルはいつでも差し替えられる。
 

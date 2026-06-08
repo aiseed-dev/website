@@ -238,6 +238,14 @@ vendor's AI creates a different dependence.** The principle of keeping
 judgment and tools on your own side applies here too
 (→ [Building a Microsoft 365 equivalent yourself](/en/blog/self-hosting-microsoft-365/)).
 
+The counter-axis to all of this is open source. Once, open source's "the
+source is published" meant something only to specialists, and it was held
+to be inferior to proprietary even on being "polished and ready to use."
+But with AI beside you, you can handle installation, operation, and
+extension yourself — **the value of open source and proprietary reverses.**
+Being open becomes a practical benefit for the first time, and you stand on
+the side where lock-in does not bite.
+
 ## Where the next chapter goes
 
 Wherever lock-in dissolves, customers will need builders. Whether

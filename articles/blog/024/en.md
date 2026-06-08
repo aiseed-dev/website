@@ -80,6 +80,16 @@ That wall of knowledge was broken by none other than AI itself. Installing Debia
 
 The "intelligence that can replace an engineer," which they grew with enormous investment, has ironically become the best partner for users who want to break out of their cloud and self-host.
 
+## The Reversal of Value Between Open Source and Proprietary
+
+The collapse of that wall sets off a larger reversal: **the value of open source and proprietary software swaps places.**
+
+Until now, what separated the two was the "wall of expertise." Proprietary software was polished, came with support, and just worked once installed. Open source, by contrast, might have its source published, but the people who could read it, understand it, and fix it were a tiny minority — "the source is open" meant, for an ordinary person, merely "you can look at it." That is why it was worth paying for proprietary software that runs on autopilot.
+
+But AI broke that wall. Open source's "the source is published" turns, for the first time, into "you can actually read it, fix it, and extend it." Nor is that all: AI also helps you through the rough spots of installation and operation, so **open source becomes "ready to use," too** — even the last advantage proprietary boasted, "polished, and it just works once installed," gets filled in by AI. **The value of vendor support drops sharply as well** — when AI answers your questions and troubleshoots right beside you, paying a vendor to do it loses most of its point. And the source of value swaps. Proprietary's strengths — polished, ready to use, autopilot, support — thin out as AI takes them over, and what remains is mostly its weaknesses — the black box, the silent swap of the intelligence underneath, the end of support, the enclosure of your data. Open source, conversely, sees its structural strengths — you can own it, fork it, and what is once out cannot be recalled — finally stand up in a usable form, thanks to AI.
+
+The moment the wall (expertise) vanished, the proprietary advantage that rode on top of it vanished too. **Being open becomes a practical benefit for the first time.** This is the reversal of value that AI brings about.
+
 ## So, Here Is What I Will Do
 
 If you are an individual, just install ONLYOFFICE Desktop Editors. You get something nearly equivalent to Word, Excel, and PowerPoint. LibreOffice is fine too. But if, as an organization, you want collaborative editing as well, then to match Microsoft 365 Business Standard, install ONLYOFFICE DocSpace Community on a server.

@@ -15,6 +15,7 @@ html/
 ├── gallery/               # 畑の記録（写真）
 ├── privacy/               # プライバシーポリシー
 ├── insights/              # Insights — 構造分析（地政学・食料安全保障・AI）
+├── dashboard/             # 物理量ダッシュボード（素のHTML/CSS/JS・静的JSON）
 ├── blog/                  # Blog — 構造分析ノート（時事・速報的な分析）
 ├── claude-debian/         # Claudeと一緒に学ぶDebian（全24章）
 ├── ai-native-ways/        # AIネイティブな仕事の作法（独立タイポグラフィ）
@@ -77,6 +78,18 @@ EN ビルドのみコピー、無いものは両言語にコピー）。
   概念フレーム（15 概念）は `framing-second-renaissance` スキルに集約
   ── 合成的入口はブログ
   [`021-software-three-transitions`](articles/blog/021-software-three-transitions/)
+
+## 物理量ダッシュボード
+
+`/dashboard/` に、構造分析で追ってきた **物理量**（価格・流量・在庫・残高・
+残り日数）を一覧表示するダッシュボードがある。物理量・単位・観測日・出所だけを
+提示し、主張も予測も載せない（読者が物理的事実から判断する）。
+
+- フロント: [`html/dashboard/`](html/dashboard/) — 素の HTML/CSS/JS・ビルド工程なし・
+  静的 JSON を 1 回 fetch して描画。
+- パイプライン: [`tools/dashboard/`](tools/dashboard/) — Python 標準ライブラリのみ。
+  `python3 -m tools.dashboard.build` で 取得 → 計算 → `html/dashboard/data/dashboard.json` を出力。
+  新指標 = カタログに 1 レコード追加。詳細は [tools/dashboard/README.md](tools/dashboard/README.md)。
 
 ## 関連アプリ
 

@@ -10,7 +10,7 @@ label: Structural Analysis 7
 part_title: Outline of the New World
 part: "2"
 prev_slug: translation-labor
-prev_title: 
+prev_title: "The Discovery of Translation Labor — The Real Reason So Many People Were Needed"
 next_slug: regulation-redesign
 next_title: Regulation Redesign
 cta_label: Build

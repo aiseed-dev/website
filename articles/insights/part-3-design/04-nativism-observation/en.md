@@ -12,7 +12,7 @@ part_title: Design and Practice
 prev_slug: security-design
 prev_title: Security Design for the Mythos Era
 next_slug: freedom-conditions
-next_title: 
+next_title: "The Four Conditions of the Free Person — The Isomorphism of Individual, Tools, Enterprise, and Thought"
 cta_label: Observe
 cta_title: Structure exists in advance. Design is not "adding" but "reading."
 cta_text: The AI that tries to learn everything from data and the agriculture that tries to control everything with fertilizer are making the same mistake. A philosophy of observation and response saves both.

@@ -146,6 +146,8 @@ Recall the 3-2-1 rule. A backup to an external disk satisfies "a different mediu
 - **S3-compatible storage:** pass the keys via environment variables and specify `-r s3:...`
 - **Via rclone:** to any of the many clouds rclone supports, `-r rclone:remote:path`
 
+Here, let me make clear how cloud destinations square with this book's premise (you manage your own data). **restic encrypts the backup on your machine before sending it.** So even with a cloud destination, all the provider can see is a meaningless blob of ciphertext, and the key stays in your hands. If you can satisfy "a different location" with a second machine, or a disk at a relative's house or your office, that is truest to the premise. But for encrypted backups alone, renting a cloud does not surrender the initiative — that is where the line can be drawn.
+
 The exact commands vary in detail depending on the destination you choose. The fastest way to get a command tuned to your own destination is to have Claude write it (box ② below).
 
 ### A Backup Whose Key Is Lost Is Just Random Noise

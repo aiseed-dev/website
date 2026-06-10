@@ -4,7 +4,7 @@ lang: en
 number: "01"
 title: Chapter 1 — What Is a Server
 subtitle: Debian without a screen, and a life of touching it remotely
-description: A server is "the backstage worker that keeps running while you are not touching it." A text-only world with no GUI is a perfect match for the learn-with-Claude method. This chapter sets up the entrance for readers who, having finished the desktop edition, want to run their own files, photos, notes, and homemade apps on their own machine.
+description: A server is "the backstage worker that keeps running while you are not touching it." This book's premise is a home server — your data is managed by you, on your own machine, not entrusted to someone else's cloud. The all-text, GUI-less world pairs perfectly with learning alongside Claude. This chapter settles that premise and the reasons behind it.
 date: 2026.06.10
 label: Claude × Debian Server 01
 prev_slug:
@@ -28,7 +28,15 @@ A server is different. **A server is the backstage worker that keeps running whi
 
 This server edition is open both to readers who have finished the main edition and to readers reading it in parallel. The only prerequisite is "you can type a single command at a Debian terminal." With that alone, you can enter a world where you run your own file sharing, your own photo server, your own note sync, and your own homemade apps — **on your own machine.**
 
-This is not a how-to chapter. It is a second prologue of sorts, settling three things: what a server is, why you would own one yourself, and how to read this server edition.
+Right at that entrance, let me declare this book's **premises**.
+
+1. **The server lives in your home.** An old PC or a mini PC, running in your house. VPSes and clouds serve only as practice rigs and as the "publishing entrance" (Chapter 9).
+2. **You manage your own data.** It is not entrusted to someone else's cloud service — it lives in the databases on your home machine (Chapter 7), and you back it up with your own hands (Chapter 10).
+3. **No containers.** Apps run as "directory + venv + systemd," isolated by permissions and systemd's sandbox (Chapter 8).
+
+In other words, this is not a book of server generalities. It is a book about **building your own infrastructure at home and taking the initiative over your data back into your own hands.** Why choose these premises? Section 2 makes the case.
+
+This is not a how-to chapter. It is a second prologue of sorts, settling three things: what a server is, why you would run one at home yourself, and how to read this server edition.
 
 ## Section 1 — How a Server Differs from a Desktop
 
@@ -82,7 +90,7 @@ But **the moment you publish a server to the internet, those connecting to it be
 
 Putting "what you want to run" into words first makes it easier to decide where to put it (Chapter 2) and how to build it (Chapter 3 onward). Have Claude sort it, and candidates you had not even noticed line up in the table.
 
-## Section 2 — Why Your Own Server
+## Section 2 — Why a Home Server
 
 ### Independence from Leaving It All to the Cloud
 

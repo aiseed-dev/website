@@ -569,20 +569,22 @@ BOOK_SUBSERIES = {
     "server": {
         "name_ja": "サーバー編",
         "name_en": "Server Edition",
-        "subtitle_ja": "GUIのない世界で、Claudeと一緒に自分のインフラを持つ",
-        "subtitle_en": "Own your infrastructure with Claude, in a world without a GUI",
+        "subtitle_ja": "自宅サーバーで、データも自分で管理する——Claudeと一緒に自分のインフラを持つ",
+        "subtitle_en": "A server at home, your data in your own hands — own your infrastructure with Claude",
         "description_ja": (
-            "デスクトップ編の続編。画面のないDebianをSSHで操り、守りを固め、"
-            "データベースと自作アプリを動かし、公開し、データを守る。"
-            "サーバー管理はすべてがテキスト——Claudeと学ぶ方式が最も深く"
-            "効く領域を、11章で歩く。"
+            "デスクトップ編の続編。前提は「自宅サーバーで、データも自分で"
+            "管理する」——本体は自宅の機械、データは自宅のデータベースに。"
+            "画面のないDebianをSSHで操り、守りを固め、データベースと自作"
+            "アプリを動かし、公開し、データを守る。Claudeと学ぶ方式が最も"
+            "深く効く領域を、11章で歩く。"
         ),
         "description_en": (
-            "The sequel to the desktop series. Drive a screenless Debian over "
-            "SSH, harden it, run databases and your own apps, publish them, "
-            "and protect your data. Server administration is all text — the "
-            "domain where learning with Claude works best — covered in "
-            "11 chapters."
+            "The sequel to the desktop series. The premise: a home server, "
+            "with your data managed by you — apps and data live on your own "
+            "machine at home, in your own databases. Drive a screenless "
+            "Debian over SSH, harden it, run databases and your own apps, "
+            "publish them, and protect your data — 11 chapters in the domain "
+            "where learning with Claude works best."
         ),
     },
 }

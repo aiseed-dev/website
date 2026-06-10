@@ -109,7 +109,7 @@ There are several modern detours past the CGNAT wall. Each has its trade-offs.
 
 Let me state this honestly. Each of these detours means **adding one more dependency to "someone outside your own hands."** This sits in tension with the philosophy this book has held throughout — "reduce dependencies, widen the range you can fix with your own hands." Convenience and self-reliance collide here, once.
 
-With that tension in mind, here is one practical way to sort things out when you hesitate. **Put what you want to publish to the world on a cheap VPS, and keep your home server inside the LAN, entering it alone via Tailscale.** This way, the thing taking on the attack surface is only the easily-disposable VPS, and your home machine and the important data on it stay unexposed to the world. Rather than straining to publish everything from home, dividing the roles is often, in the end, safer and easier.
+With that tension in mind, here is the way to sort it out that follows this book's premise — **the data does not leave your home.** **Keep the body (apps and data) on your home server, and borrow only the "entrance."** Cloudflare Tunnel and Tailscale Funnel are exactly this shape. If you use a VPS, let it serve strictly as the publishing entrance (the tunnel's far end) while the databases and files stay home. The thing taking on the attack surface is only the easily-disposable entrance, and your home machine and the important data on it are never directly exposed to the world. The entrance may be borrowed; the body is in your house — with this division of roles you keep the convenience without giving up the initiative.
 
 ### Ask Claude ③: Confirm Whether Your Line Is CGNAT and Decide the Route
 

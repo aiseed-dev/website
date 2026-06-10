@@ -4,7 +4,7 @@ lang: en
 number: "02"
 title: Chapter 2 — Where to Put Your Server
 subtitle: Old PCs, your home, VPS — a map of costs and responsibilities
-description: Before you choose hardware, the location is decided. An old PC at home, a VPS across the net, a major cloud — each shifts the structure of cost, responsibility, and network dramatically. We turn the three options into a map and choose, together with Claude, the place that fits your budget and goals.
+description: This book's premise is a home server — your data managed on your own machine at home. We still map all three options (home, VPS, major cloud) by cost and responsibility: to put numbers behind "why home," and to fix, together with Claude, the right roles of VPS and cloud — practice rig and publishing entrance.
 date: 2026.06.10
 label: Claude × Debian Server 02
 prev_slug: claude-debian-server-01-what-is-a-server
@@ -13,7 +13,7 @@ next_slug: claude-debian-server-03-minimal-install
 next_title: Chapter 3 — The Minimal Install
 cta_label: Learn with Claude
 cta_title: Decide the place, and you decide the responsibility.
-cta_text: Home, or VPS? Who carries power, the line, and physical failure changes the scope of your responsibility. Spread out the map of cost and responsibility, and choose, together with Claude, the one machine that fits your budget and goals.
+cta_text: The body stays home; the entrance comes later, if at all. Who carries power, the line, and physical failure changes the scope of your responsibility. Spread out the map of cost and responsibility, and ground the home-server premise in your own numbers.
 cta_btn1_text: Continue to Chapter 3
 cta_btn1_link: /en/claude-debian/server/03-minimal-install/
 cta_btn2_text: Back to Chapter 1
@@ -26,7 +26,7 @@ When people hear "start a server," most first think "what kind of machine should
 
 That is because, once the location is decided, the three structures riding on top of it are decided automatically — cost (up front and monthly), responsibility (who fixes it when it breaks), and network (how you connect, whether you can publish). Putting it on an old PC at home versus on a VPS across the net changes all three wholesale. Choosing the machine's model number comes after that.
 
-In this chapter, we turn the three location options into a map. By the end, you will be able to choose the place that fits your budget, your goals, and your line, with reasons behind the choice.
+As declared in Chapter 1, this book's premise is a **home server**. We still turn the three location options into a map in this chapter — to put numbers behind "why home," and to fix the right roles for VPS and cloud: a practice rig, and the publishing entrance handled in Chapter 9. By the end, you will be able to state "it lives at home" as your own decision, with reasons behind it.
 
 ## Section 1 — A Map of the Three Options
 
@@ -48,7 +48,7 @@ Let us line up the three differences in a single table.
 | Who fixes failures | All you | Physical not you, OS internals you | Physical not you, OS internals you |
 | Physical location of data | Your house | Provider's data center | Provider's data center |
 
-The most important rows in this table are the bottom two. **A home server means "all the responsibility is yours" but "the data is physically in your own hands."** A VPS or cloud means "physical failures and the line are looked after by the provider" but "the data sits in someone else's data center." If you put the data sovereignty from Chapter 1 first, lean home; if you want minimal effort, lean VPS — that is the rough contrast.
+The most important rows in this table are the bottom two. **A home server means "all the responsibility is yours" but "the data is physically in your own hands."** A VPS or cloud means "physical failures and the line are looked after by the provider" but "the data sits in someone else's data center." As declared in Chapter 1, this book puts data sovereignty first — so the body lives at home. Where a VPS shines is in the roles where you may hand most of the responsibility away: the practice rig, and the publishing entrance.
 
 The stance repeated in the main edition — **"bring an old PC back to life"** — connects naturally here. An old PC that cannot run Windows 11 and has retired as a desktop is **ideal as a server machine.** It has performance to spare, and you give a second life to something that was headed for the trash.
 
@@ -105,11 +105,11 @@ These are not reasons to "give up on a home server." **For a LAN-only experiment
 > - Line: [home line type, and whether I have a static IP if I know]
 > - Want to publish: [LAN-only for now / want to use it from outside eventually]
 >
-> Given these, please recommend which of home server, VPS, or major cloud suits me, with reasons. If there are multiple options, compare the pros and cons of each.
+> Starting under this book's premise (the body is a home server; I manage my own data), please recommend how I should set up my stage-one experimental machine — use the old PC I have / buy a used or mini PC / rent a VPS for a few days as practice. Give reasons, and compare pros and cons if there are several options.
 
 The trick is to hand over the four points of budget, purpose, line, and publishing policy. With these four in hand, Claude can return a recommendation tailored to you rather than a generality.
 
-## Section 3 — The VPS Option
+## Section 3 — Where a VPS Fits: Practice Rig and Publishing Entrance
 
 If you want to avoid the physical care of a home machine, a VPS is a strong option.
 
@@ -120,6 +120,8 @@ A VPS is a setup where you rent a virtual machine in a provider's data center. *
 ### What You Lose
 
 There are things you lose in exchange. **The data sits in the provider's data center, not in your house.** From the data sovereignty perspective of Chapter 1, this is a step back. And of course, a monthly fee keeps accruing. Since it is not physically in your hands, it may feel unsatisfying to those seeking ultimate independence.
+
+So under this book's premise, **putting the body — your apps and data — on a VPS is not a path we take.** The VPS has exactly two roles here: the "break it and rebuild it" practice rig, and the publishing entrance handled in Chapter 9 (it relays traffic while the data stays home). Read the axes below with those two roles in mind.
 
 ### Axes for Choosing
 
@@ -151,13 +153,13 @@ Given the map so far, the path this server edition recommends is clear.
 
 **First, place an experimental machine inside your home LAN and run Chapters 3 to 8 there.** LAN-only carries no danger of exposure, the electricity cost is small, and you can rebuild it no matter how many times you break it. Use an old PC if you have one; if not, rent a VPS for a few days as a practice rig. The basics of a server — minimal install, user management, SSH, running services — can all be learned on this experimental machine.
 
-**Only at the stage of publishing (Chapter 9) do you choose whether to go VPS or dig a tunnel to your home.** This is where the CGNAT problem of Section 2 and the VPS advantages of Section 3 come into play. Publishing is a heavy decision, one you should step into only after understanding the threat model (Chapter 5). So this path — which lets you defer the final location decision until the publishing stage — is the safest and the deepest in learning.
+**Only at the stage of publishing (Chapter 9) do you choose how to build the entrance — dig a tunnel from home, or rent a VPS as the entrance.** Either way, **the body and the data do not leave your home.** This is where the CGNAT problem of Section 2 and the VPS roles of Section 3 come into play. Publishing is a heavy decision, one you should step into only after understanding the threat model (Chapter 5). So this path — which lets you defer the entrance decision until the publishing stage — is the safest and the deepest in learning.
 
-In other words, **you do not need to "lock in a single location right now."** Start experimenting on the LAN, and decide the production location when publishing comes around. This two-stage stance minimizes the risks of cost and responsibility.
+In other words, there is nothing you must rush to decide. **The body lives at home — that was settled as a premise from the start.** Start experimenting on the LAN, and decide only the "entrance" when publishing comes around. This two-stage stance minimizes the risks of cost and responsibility.
 
 ### Ask Claude ④: Build Your Own Two-Stage Plan
 
-> As the conclusion of Chapter 2, a two-stage stance was recommended: "first run Chapters 3 to 8 on an experimental machine inside the home LAN, then choose a VPS or a home tunnel at the publishing stage."
+> As the conclusion of Chapter 2, a two-stage stance was recommended: "the body and the data stay home; first run Chapters 3 to 8 on an experimental machine inside the home LAN, then choose the entrance (home tunnel / VPS entrance) at the publishing stage."
 >
 > Tailored to my situation [paste again the budget, purpose, machine, line, and publishing policy you handed over in Section 2 ②], please turn this two-stage stance into a concrete plan. Show, with reasons, the machine I should use in stage one (the experimental machine) and the options available in stage two (publishing).
 
@@ -171,7 +173,7 @@ What you did in this chapter:
 2. Lined up the three — home machine, VPS, major cloud — in a comparison table.
 3. Faced the reality of a home server squarely (estimating electricity, the line and CGNAT, outages / heat / dust).
 4. Sorted out the pros and cons of a VPS and the axes for choosing one.
-5. Built, together with Claude, a two-stage plan of "experimental machine first, production location chosen at the publishing stage."
+5. Built, together with Claude, a two-stage plan of "the body stays home; the entrance is chosen at the publishing stage."
 
 What you hold now:
 - A comparison table of the three options (applied to your own situation).

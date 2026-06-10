@@ -4,13 +4,15 @@
 
 A sub-series of the parent series "Learning Debian with Claude" (`../`). The
 parent series is primarily about the desktop (taking back your own desk); this
-sub-series is about servers (owning your own infrastructure). Eleven chapters
-walk from driving a screenless Debian over SSH, through hardening, running
-databases and your own apps, publishing them, to protecting your data.
-No containers — apps run as "directory + venv + systemd," isolated by
-dedicated users, permission design, and systemd sandboxing. Data lives in
-your own machine's databases (SQLite / PostgreSQL), not in someone else's
-cloud.
+sub-series is about servers (owning your own infrastructure). The premise:
+**a home server, with your data managed by you** — the body (apps and data)
+lives on your machine at home, in your own databases (SQLite / PostgreSQL),
+not in someone else's cloud; VPSes and clouds serve only as practice rigs
+and as the "publishing entrance." Eleven chapters walk from driving a
+screenless Debian over SSH, through hardening, running databases and your
+own apps, publishing them, to protecting your data. No containers — apps
+run as "directory + venv + systemd," isolated by dedicated users,
+permission design, and systemd sandboxing.
 
 Server administration is all text — logs, configs, errors — which makes it the
 domain where the "learning with Claude" method works best. As in the parent

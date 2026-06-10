@@ -109,7 +109,15 @@ There are several modern detours past the CGNAT wall. Each has its trade-offs.
 
 Let me state this honestly. Each of these detours means **adding one more dependency to "someone outside your own hands."** This sits in tension with the philosophy this book has held throughout — "reduce dependencies, widen the range you can fix with your own hands." Convenience and self-reliance collide here, once.
 
-With that tension in mind, here is the way to sort it out that follows this book's premise — **the data does not leave your home.** **Keep the body (apps and data) on your home server, and borrow only the "entrance."** Cloudflare Tunnel and Tailscale Funnel are exactly this shape. If you use a VPS, let it serve strictly as the publishing entrance (the tunnel's far end) while the databases and files stay home. The thing taking on the attack surface is only the easily-disposable entrance, and your home machine and the important data on it are never directly exposed to the world. The entrance may be borrowed; the body is in your house — with this division of roles you keep the convenience without giving up the initiative.
+With that tension in mind, here is the way to sort it out under this book's premise (a home server or a VPS, with your data managed by you). **If the body lives on a VPS, this hard part simply does not exist.** A VPS has a global IP, so you open Section 2's Caddy straight to the world. **If the body lives at home, the body stays put and you borrow only the "entrance."** Cloudflare Tunnel and Tailscale Funnel are exactly this shape, and a cheap VPS can serve as the entrance (the tunnel's far end) while the databases and files stay home. In either setup, the data sits on a machine where you hold root, and the initiative stays in your hands.
+
+### A Static Site Publishes Free on Cloudflare
+
+One more fact that lightens the whole stance: **a site whose contents do not move — a blog or a profile page of plain HTML and CSS — does not need to be published from your own server at all.** Put it on static hosting such as Cloudflare Pages and it is served worldwide, **free**, with a custom domain and TLS included. No port forwarding, no tunnel — most of this chapter's hard parts simply do not apply.
+
+And the line can be drawn a bit beyond "fully static." **Light dynamic work on the scale of a contact form fits within the free tier of Cloudflare's JavaScript runtime (Pages Functions / Workers).** A few dozen lines of JavaScript that receive a form submission and forward it to email or record it in a small store is exactly the scale Claude is good at — just ask, "write me a Pages Function that emails me the contents of this form."
+
+So divide the roles. **Pages that are only read — and light work up to a contact form — go to Cloudflare. The body that owns its database — the apps like Chapter 8's, reading and writing Chapter 7's database — goes on your own server.** Only the latter is worth publishing from your own machine. How to build a static site is outside this book's scope, but hand your Markdown or HTML to Claude and ask "walk me through publishing this on Cloudflare Pages," and you should be live the same day.
 
 ### Ask Claude ③: Confirm Whether Your Line Is CGNAT and Decide the Route
 
@@ -168,7 +176,7 @@ What you did in this chapter:
 1. Confirmed that publishing is a near-irreversible decision, and that "not publishing (Tailscale, etc.)" is a perfectly respectable choice.
 2. Grasped what the three-piece set for publishing (domain, DNS, TLS certificate) is.
 3. Understood the reverse proxy pattern and wrote an example routing several services with a Caddyfile.
-4. Sorted out the obstacles of home publishing (port opening, CGNAT) and the trade-offs of the modern detours.
+4. Sorted out the obstacles of home publishing (port opening, CGNAT) and the detours — and divided the roles: a static site publishes free on Cloudflare, and only the dynamic things that hold data publish from your own server.
 5. Did, together with Claude, what to do on the day you publish (reconfirming defenses, confirming connectivity from outside, observing bots).
 
 What you hold now:

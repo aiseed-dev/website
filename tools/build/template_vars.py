@@ -569,19 +569,20 @@ BOOK_SUBSERIES = {
     "server": {
         "name_ja": "サーバー編",
         "name_en": "Server Edition",
-        "subtitle_ja": "自宅サーバーで、データも自分で管理する——Claudeと一緒に自分のインフラを持つ",
-        "subtitle_en": "A server at home, your data in your own hands — own your infrastructure with Claude",
+        "subtitle_ja": "自宅サーバーかVPSで、データも自分で管理する——Claudeと一緒に自分のインフラを持つ",
+        "subtitle_en": "A server at home or on a VPS, your data in your own hands — own your infrastructure with Claude",
         "description_ja": (
-            "デスクトップ編の続編。前提は「自宅サーバーで、データも自分で"
-            "管理する」——本体は自宅の機械、データは自宅のデータベースに。"
+            "デスクトップ編の続編。前提は「自宅サーバーかVPSで、データも"
+            "自分で管理する」——本体は自分がrootを持つ機械、データは自分の"
+            "データベースに。"
             "画面のないDebianをSSHで操り、守りを固め、データベースと自作"
             "アプリを動かし、公開し、データを守る。Claudeと学ぶ方式が最も"
             "深く効く領域を、11章で歩く。"
         ),
         "description_en": (
-            "The sequel to the desktop series. The premise: a home server, "
-            "with your data managed by you — apps and data live on your own "
-            "machine at home, in your own databases. Drive a screenless "
+            "The sequel to the desktop series. The premise: a home server "
+            "or a VPS, with your data managed by you — apps and data live on "
+            "a machine where you hold root, in your own databases. Drive a screenless "
             "Debian over SSH, harden it, run databases and your own apps, "
             "publish them, and protect your data — 11 chapters in the domain "
             "where learning with Claude works best."

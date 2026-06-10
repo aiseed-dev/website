@@ -573,14 +573,16 @@ BOOK_SUBSERIES = {
         "subtitle_en": "Own your infrastructure with Claude, in a world without a GUI",
         "description_ja": (
             "デスクトップ編の続編。画面のないDebianをSSHで操り、守りを固め、"
-            "サービスを動かし、公開し、データを守る。サーバー管理はすべてが"
-            "テキスト——Claudeと学ぶ方式が最も深く効く領域を、10章で歩く。"
+            "データベースと自作アプリを動かし、公開し、データを守る。"
+            "サーバー管理はすべてがテキスト——Claudeと学ぶ方式が最も深く"
+            "効く領域を、11章で歩く。"
         ),
         "description_en": (
             "The sequel to the desktop series. Drive a screenless Debian over "
-            "SSH, harden it, run services, publish them, and protect your "
-            "data. Server administration is all text — the domain where "
-            "learning with Claude works best — covered in 10 chapters."
+            "SSH, harden it, run databases and your own apps, publish them, "
+            "and protect your data. Server administration is all text — the "
+            "domain where learning with Claude works best — covered in "
+            "11 chapters."
         ),
     },
 }

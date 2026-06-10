@@ -253,7 +253,7 @@ What you did in this chapter:
 What you hold now:
 - A server with a narrowed attack surface, guarded by ufw.
 - A state where security updates keep applying automatically.
-- The craft of reading logs and handing them to Claude for inspection (carried over from Chapter 8).
+- The craft of reading logs and handing them to Claude for inspection (carried over from Chapter 8 of the main series).
 - A checklist-like dialogue that has Claude inspect "is it OK to go public?"
 
 The foundation of defense is in place. In [Chapter 6, "The Service as a Unit,"](/en/claude-debian/server/06-systemd-services/) you finally **run something**. The insides of a server are, in the end, "a collection of processes that systemd looks after." You will learn to handle starting, stopping, auto-start, logs, and failure response all through the same shape — the unit called a "service." The very verb you typed with `systemctl disable --now` in this chapter is the doorway into the next.

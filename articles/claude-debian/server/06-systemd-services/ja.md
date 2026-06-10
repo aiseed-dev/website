@@ -8,13 +8,13 @@ date: 2026.06.10
 label: Claude × Debian サーバー編 06
 prev_slug: claude-debian-server-05-security-basics
 prev_title: 第5章 守りの基本
-next_slug: claude-debian-server-07-containers
-next_title: 第7章 コンテナという選択
+next_slug: claude-debian-server-07-database
+next_title: 第7章 データベースという土台
 cta_label: Claudeと学ぶ
 cta_title: サーバーは「サービスの集まり」だ。
 cta_text: 起動、停止、自動起動、ログ、障害対応——バラバラに見える操作は、すべて「サービス」という一つの単位に還元できる。この型を手にすれば、未知のソフトも同じ手つきで扱える。
 cta_btn1_text: 第7章へ進む
-cta_btn1_link: /claude-debian/server/07-containers/
+cta_btn1_link: /claude-debian/server/07-database/
 cta_btn2_text: 第5章に戻る
 cta_btn2_link: /claude-debian/server/05-security-basics/
 ---
@@ -247,7 +247,7 @@ sudo systemctl enable --now mybackup.timer
 systemctl list-timers
 ```
 
-`list-timers` の `NEXT` 列に、次回実行の時刻が並ぶ。これが**第9章のバックアップ自動化への伏線**だ。バックアップという「定期的に・確実に・記録を残して」やりたい仕事は、まさにこの timer + service の型にはまる。
+`list-timers` の `NEXT` 列に、次回実行の時刻が並ぶ。これが**第10章のバックアップ自動化への伏線**だ。バックアップという「定期的に・確実に・記録を残して」やりたい仕事は、まさにこの timer + service の型にはまる。
 
 ## まとめ
 
@@ -255,7 +255,7 @@ systemctl list-timers
 
 1. `systemctl` の基本動詞（status/start/stop/restart/reload/enable/disable/list-units）を押さえた
 2. `status` の出力（Active・enabled・Main PID・末尾ログ）を読めるようになった
-3. `journalctl` でサービス・時間・重大度を絞ってログを読み、Claudeに渡す作法を確立した（第8章からの継承）
+3. `journalctl` でサービス・時間・重大度を絞ってログを読み、Claudeに渡す作法を確立した（本編第8章からの継承）
 4. 自作スクリプトを `/etc/systemd/system/myapp.service` にし、daemon-reload → enable --now → status → journalctl の流れを通した
 5. systemd timer（.timer + .service）で定期実行の最小形を作った
 
@@ -265,7 +265,7 @@ systemctl list-timers
 - 「設定（unit file）と結果（ログ）を両方Claudeに渡して切り分ける」対話の型
 - 未知のソフトも「これもサービスだろう」と同じ動詞で扱える手つき
 
-「サービス」という単位を手に入れた。だが、依存関係が複雑なソフトや、システムを汚したくないものを、毎回 unit file で抱え込むのは大変だ。次の[第7章「コンテナという選択」](/claude-debian/server/07-containers/)では、サービスを**箱ごと**動かす——コンテナという選択肢を、いつ使い、いつ使わないかを含めてClaudeと整理する。
+「サービス」という単位を手に入れた。だが、サービスが動くだけでは半分だ。サービスが読み書きする**データ**を、どこに・どんな形で置くか。次の[第7章「データベースという土台」](/claude-debian/server/07-database/)では、SQLiteとPostgreSQLの使い分けを整理し、PostgreSQLを実際にインストールして、データの置き場所という土台を作る。
 
 ---
 

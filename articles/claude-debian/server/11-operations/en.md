@@ -1,14 +1,14 @@
 ---
-slug: claude-debian-server-10-operations
+slug: claude-debian-server-11-operations
 lang: en
-number: "10"
-title: Chapter 10 — Growing Your Server
+number: "11"
+title: Chapter 11 — Growing Your Server
 subtitle: Watch it, maintain it, decide the next move
 description: A server is not done once you build it; it is something you tend and grow like a living thing. But you do not need to hover over it daily. A design that runs on fifteen minutes of watching a week, a monthly rhythm of maintenance, a pattern for when things break, and the next move — get the craft of growing a single server over the long run in place with Claude at your side. As the close of the Server Edition, we look back on what it means to "own your own infrastructure."
 date: 2026.06.10
-label: Claude × Debian Server 10
-prev_slug: claude-debian-server-09-backup
-prev_title: Chapter 9 — Protecting Your Data
+label: Claude × Debian Server 11
+prev_slug: claude-debian-server-10-backup
+prev_title: Chapter 10 — Protecting Your Data
 next_slug:
 next_title:
 cta_label: Learn with Claude
@@ -26,7 +26,7 @@ A server is not finished once you assemble it, publish it, and set up backups. *
 
 Do not brace yourself here. The worry "if I own a server I'll have to look after it every day" is a common one. But it is mistaken. **What this chapter aims for is a design that runs on fifteen minutes of routine a week.** You do not need to hover. Rather, you build the mechanisms so that it runs even without your hovering — that is what "growing it" means.
 
-In Chapter 5 you put up a firewall; in Chapter 9 you made backups automatic. That accumulation of automation pays off here. Leave the day-to-day defense to the mechanisms, and the human only watches briefly, once a week. In this chapter we lay out, in turn, the minimal watching set, the rhythm of maintenance, the pattern for when things break, and the next move.
+In Chapter 5 you put up a firewall; in Chapter 10 you made backups automatic. That accumulation of automation pays off here. Leave the day-to-day defense to the mechanisms, and the human only watches briefly, once a week. In this chapter we lay out, in turn, the minimal watching set, the rhythm of maintenance, the pattern for when things break, and the next move.
 
 ## Section 1 — The Minimal Watching Set
 
@@ -41,7 +41,7 @@ journalctl -p err --since -7d      # Error logs from the last week
 systemctl --failed                 # Are any services failing?
 sudo tail -n 30 /var/log/auth.log  # The state of suspicious login attempts
 sudo fail2ban-client status sshd   # How many fail2ban blocked (if you set it up in Chapter 5)
-docker compose ps                  # Are the containers running properly (with the Chapter 7 setup)?
+systemctl is-active postgresql     # Is the database alive (if you installed it in Chapter 7)?
 ```
 
 Typing these by hand every week is tedious. So bundle them into one shell script.
@@ -54,7 +54,7 @@ echo "===== memory ====="          ; free -h
 echo "===== errors (7d) ====="     ; journalctl -p err --since -7d --no-pager
 echo "===== failed units ====="    ; systemctl --failed --no-pager
 echo "===== fail2ban ====="        ; sudo fail2ban-client status sshd 2>/dev/null
-echo "===== containers ====="      ; docker compose -f ~/stacks/compose.yaml ps 2>/dev/null
+echo "===== database ====="        ; systemctl is-active postgresql 2>/dev/null
 ```
 
 ```bash
@@ -70,18 +70,18 @@ The human does not need to judge the meaning of each line. Have Claude judge "is
 
 ### Beyond That: A Light Monitoring Tool
 
-Once you are used to the weekly manual check and want to go a step further, a light monitoring tool is worth adding. **Uptime Kuma**, for instance, runs in a single container and notifies you when a service goes down. It tells you "a service stopped while I wasn't watching" before the human would notice. Installing it is just the container craft of Chapter 7. But there is no need to rush. First, with the manual weekly check, learn "the normal face of your own server."
+Once you are used to the weekly manual check and want to go a step further, a light monitoring tool is worth adding. **Uptime Kuma**, for instance, is a light monitoring tool that notifies you when a service goes down. It tells you "a service stopped while I wasn't watching" before the human would notice. But there is no need to rush. First, with the manual weekly check, learn "the normal face of your own server."
 
 ### Ask Claude ①: Have It Write weekly-check.sh for Your Setup
 
 > My Debian server's setup is as follows:
-> [paste my-server.md. The services you run, the firewall (Chapter 5), whether you have fail2ban, the container setup (Chapter 7), etc.]
+> [paste my-server.md. The services you run, the firewall (Chapter 5), whether you have fail2ban, the database (Chapter 7), etc.]
 >
 > Please write a shell script `weekly-check.sh`, tuned to my setup, to run once a week as a "server health check."
 > It should output, in turn with headings, disk, memory, error logs, failed services, signs of unauthorized access, and the running state of each service.
 > For each check, add a one-line note on "what it looks at" and "what output should make me suspect an anomaly."
 
-Hand over your own setup and the checks line up tuned to your service names. Put the resulting script in git (per the config-management craft you settled on in Chapter 9).
+Hand over your own setup and the checks line up tuned to your service names. Put the resulting script in git (per the config-management craft you settled on in Chapter 10).
 
 ## Section 2 — The Rhythm of Maintenance
 
@@ -112,7 +112,7 @@ When the kernel is updated, a reboot is needed. As written in Chapter 1, a serve
 
 Here, let us understand the character of the Debian foundation one level more deeply. Debian stable (trixie, which you installed) gets a **major release roughly every two years**. In between, it keeps applying only security and bug fixes without changing functionality much (these are the point releases). So a daily `full-upgrade` will almost never make the world suddenly change on you. **"Stable, predictable, and boring" — this is the greatest virtue of Debian for servers.**
 
-Once every few years, the day comes to move up to the next major release. This is a different beast from the daily updates, and it takes a frame of mind. The craft written for the desktop in [Chapter 17, "Updates and Maintenance"](/en/claude-debian/17-updates-maintenance/) of the main series — back up before updating, read the release notes, take it in stages rather than all at once — works as-is on a server too. And because a server has the backup and restore rehearsal of Chapter 9, the anxiety of committing to a major upgrade is far smaller. At worst, you can come back from a backup.
+Once every few years, the day comes to move up to the next major release. This is a different beast from the daily updates, and it takes a frame of mind. The craft written for the desktop in [Chapter 17, "Updates and Maintenance"](/en/claude-debian/17-updates-maintenance/) of the main series — back up before updating, read the release notes, take it in stages rather than all at once — works as-is on a server too. And because a server has the backup and restore rehearsal of Chapter 10, the anxiety of committing to a major upgrade is far smaller. At worst, you can come back from a backup.
 
 ### Ask Claude ②: Health-Check the Routine Output
 
@@ -147,9 +147,9 @@ Whether you know these escape routes exist makes all the difference to how calm 
 
 ### At Worst, "Just Rebuild It"
 
-And here Chapter 9 pays off. When it simply will not be fixed, a server has a **last resort: "rebuild it."** The OS can be redone from a minimal install. The config can come back from git. The data can come back from restic. If you went as far as the rebuild rehearsal in Chapter 9, this is not theory — it is a road you have already walked once.
+And here Chapter 10 pays off. When it simply will not be fixed, a server has a **last resort: "rebuild it."** The OS can be redone from a minimal install. The config can come back from git. The data can come back from restic. If you went as far as the rebuild rehearsal in Chapter 10, this is not theory — it is a road you have already walked once.
 
-**The conviction that "at worst I can just rebuild it" gives operational slack.** You stop being excessively afraid of each individual trouble. With the fear gone, you can actually isolate problems more calmly. This is less about technology than about a state of mind. And the foundation of that slack is held up by the backup and restore rehearsal of Chapter 9.
+**The conviction that "at worst I can just rebuild it" gives operational slack.** You stop being excessively afraid of each individual trouble. With the fear gone, you can actually isolate problems more calmly. This is less about technology than about a state of mind. And the foundation of that slack is held up by the backup and restore rehearsal of Chapter 10.
 
 ### Ask Claude ③: The Server-Side Trouble Template
 
@@ -160,7 +160,7 @@ And here Chapter 9 pays off. When it simply will not be fixed, a server has a **
 > What I have tried so far: [bulleted list]
 >
 > Give me three things to try next, in order from lowest risk. For each, how to confirm it and the next move if it fails.
-> Prioritize ways to fix it without stopping the services. Also add the criteria for deciding to rebuild from the Chapter 9 backup as a last resort.
+> Prioritize ways to fix it without stopping the services. Also add the criteria for deciding to rebuild from the Chapter 10 backup as a last resort.
 
 ## Section 4 — The Next Move
 
@@ -168,19 +168,19 @@ By now you can operate a single server. Assemble, publish, protect, watch, maint
 
 ### 1. Add More to Carry
 
-Add new services onto your current server. After the photo server, note sync; after that, household accounts; after that — adding things you want to self-host, one at a time. With the container craft of Chapter 7, adding a new service is not hard.
+Add new services onto your current server. After the photo server, note sync; after that, household accounts; after that — adding things you want to self-host, one at a time. With the service craft of Chapter 6, the database of Chapter 7, and the FastAPI pattern of Chapter 8, adding a new service is not hard.
 
 And the most interesting of all is to **carry an app you built yourself.** In [Chapter 15, "Development with Claude"](/en/claude-debian/15-claude-development/) of the main series, we talked about building a small app together with Claude. Take the app you built there, carry it on this server, and make it usable anytime, anywhere. "Build with Claude, run on your own server" — this is the most self-contained loop an individual can hold.
 
 ### 2. Own a Second Machine
 
-Once you can run one machine, owning a second becomes an option. Split the roles (one for files, one for public web services), or **make them each other's backup destination** (satisfy the "different location" of the Chapter 9 3-2-1 rule with the second machine). The second machine applies what you learned on the first, so it is not as much trouble as the first one.
+Once you can run one machine, owning a second becomes an option. Split the roles (one for files, one for public web services), or **make them each other's backup destination** (satisfy the "different location" of the Chapter 10 3-2-1 rule with the second machine). The second machine applies what you learned on the first, so it is not as much trouble as the first one.
 
 ### 3. Encode the Configuration as Code
 
-This is the most essential "next move." Take the setup steps you now perform — which packages to install, how to configure them, which containers to run — and consolidate them from your head and scattered notes into **a single script and document**, and put it in git.
+This is the most essential "next move." Take the setup steps you now perform — which packages to install, how to configure them, which services to run — and consolidate them from your head and scattered notes into **a single script and document**, and put it in git.
 
-Why is this essential? **Because once the steps are text, you can reproduce them any number of times together with Claude.** When you set up a new server, run the script and the same environment comes up. When you want to change a step, consult Claude and rewrite it. Fill in here the "missing steps" you found in the Chapter 9 rebuild rehearsal. The server changes from "something personal that exists only in your head" into "an asset reproducible as text." This is nothing other than spreading the config management of [Chapter 12](/en/claude-debian/12-config-management/) of the main series across the whole server.
+Why is this essential? **Because once the steps are text, you can reproduce them any number of times together with Claude.** When you set up a new server, run the script and the same environment comes up. When you want to change a step, consult Claude and rewrite it. Fill in here the "missing steps" you found in the Chapter 10 rebuild rehearsal. The server changes from "something personal that exists only in your head" into "an asset reproducible as text." This is nothing other than spreading the config management of [Chapter 12](/en/claude-debian/12-config-management/) of the main series across the whole server.
 
 ### Ask Claude ④: Consult on the Next Move
 

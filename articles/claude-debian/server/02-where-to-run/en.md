@@ -84,7 +84,7 @@ So, a low-power machine runs a few hundred yen a month. This becomes a number yo
 
 A home server hangs off your home's line. For LAN-only use, it runs today as long as you have a router. The problem comes when you want to connect from outside.
 
-Recent home lines are often **CGNAT** (a setup where multiple households share one global IP), and in that case "connecting to your home server directly from outside" is, as a rule, not possible. Whether you have a static global IP assigned depends on your contract and line type. Since this "connect from outside" problem is about publishing, we handle it in Chapter 8 alongside solutions like tunnels. **If you use it LAN-only, this problem is entirely irrelevant. You can start safely today.**
+Recent home lines are often **CGNAT** (a setup where multiple households share one global IP), and in that case "connecting to your home server directly from outside" is, as a rule, not possible. Whether you have a static global IP assigned depends on your contract and line type. Since this "connect from outside" problem is about publishing, we handle it in Chapter 9 alongside solutions like tunnels. **If you use it LAN-only, this problem is entirely irrelevant. You can start safely today.**
 
 ### Power Outages, Heat, Dust
 
@@ -115,7 +115,7 @@ If you want to avoid the physical care of a home machine, a VPS is a strong opti
 
 ### What Gets Easier
 
-A VPS is a setup where you rent a virtual machine in a provider's data center. **Power, the line, and physical failure are all looked after by the provider.** You do not have to worry about outages or dust. A fat line is attached from the start, and a global IP is assigned (on most plans), so the "connect from outside" problem of Chapter 8 is far easier than at home. What you are responsible for is only "the OS internals" of the virtual machine you rent.
+A VPS is a setup where you rent a virtual machine in a provider's data center. **Power, the line, and physical failure are all looked after by the provider.** You do not have to worry about outages or dust. A fat line is attached from the start, and a global IP is assigned (on most plans), so the "connect from outside" problem of Chapter 9 is far easier than at home. What you are responsible for is only "the OS internals" of the virtual machine you rent.
 
 ### What You Lose
 
@@ -149,15 +149,15 @@ Turning electricity, a "hard-to-see monthly fee," into a number lets you compare
 
 Given the map so far, the path this server edition recommends is clear.
 
-**First, place an experimental machine inside your home LAN and run Chapters 3 to 7 there.** LAN-only carries no danger of exposure, the electricity cost is small, and you can rebuild it no matter how many times you break it. Use an old PC if you have one; if not, rent a VPS for a few days as a practice rig. The basics of a server — minimal install, user management, SSH, running services — can all be learned on this experimental machine.
+**First, place an experimental machine inside your home LAN and run Chapters 3 to 8 there.** LAN-only carries no danger of exposure, the electricity cost is small, and you can rebuild it no matter how many times you break it. Use an old PC if you have one; if not, rent a VPS for a few days as a practice rig. The basics of a server — minimal install, user management, SSH, running services — can all be learned on this experimental machine.
 
-**Only at the stage of publishing (Chapter 8) do you choose whether to go VPS or dig a tunnel to your home.** This is where the CGNAT problem of Section 2 and the VPS advantages of Section 3 come into play. Publishing is a heavy decision, one you should step into only after understanding the threat model (Chapter 5). So this path — which lets you defer the final location decision until the publishing stage — is the safest and the deepest in learning.
+**Only at the stage of publishing (Chapter 9) do you choose whether to go VPS or dig a tunnel to your home.** This is where the CGNAT problem of Section 2 and the VPS advantages of Section 3 come into play. Publishing is a heavy decision, one you should step into only after understanding the threat model (Chapter 5). So this path — which lets you defer the final location decision until the publishing stage — is the safest and the deepest in learning.
 
 In other words, **you do not need to "lock in a single location right now."** Start experimenting on the LAN, and decide the production location when publishing comes around. This two-stage stance minimizes the risks of cost and responsibility.
 
 ### Ask Claude ④: Build Your Own Two-Stage Plan
 
-> As the conclusion of Chapter 2, a two-stage stance was recommended: "first run Chapters 3 to 7 on an experimental machine inside the home LAN, then choose a VPS or a home tunnel at the publishing stage."
+> As the conclusion of Chapter 2, a two-stage stance was recommended: "first run Chapters 3 to 8 on an experimental machine inside the home LAN, then choose a VPS or a home tunnel at the publishing stage."
 >
 > Tailored to my situation [paste again the budget, purpose, machine, line, and publishing policy you handed over in Section 2 ②], please turn this two-stage stance into a concrete plan. Show, with reasons, the machine I should use in stage one (the experimental machine) and the options available in stage two (publishing).
 

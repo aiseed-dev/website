@@ -32,7 +32,7 @@ There are three reasons.
 
 **Three: the cost of grasping it shrinks.** Keep "what is on this server" small enough to hold in your head, and when trouble comes you can guess at the cause. The desktop state of "I forget when I installed what" is exactly what you want to avoid on a server.
 
-This chapter does not repeat the desktop edition's [Chapter 7, "The Install Dialogue"](/en/claude-debian/07-installation-execution/) from scratch. **The shared parts — UEFI boot, disk selection, the encryption passphrase, creating a user, GRUB — apply as-is from Chapter 7.** What we cover here is only the server-specific delta: how to trim the software selection, how to log in to a desktop-less environment, and how to fix the IP address. Keep Chapter 7 open beside you as you read.
+This chapter does not repeat the desktop edition's [Chapter 7, "The Install Dialogue"](/en/claude-debian/07-installation-execution/) from scratch. **The shared parts — UEFI boot, disk selection, the encryption passphrase, creating a user, GRUB — apply as-is from the main edition's Chapter 7.** What we cover here is only the server-specific delta: how to trim the software selection, how to log in to a desktop-less environment, and how to fix the IP address. Keep the main edition's Chapter 7 open beside you as you read.
 
 ## Section 1 — The Fork in the Installer
 
@@ -44,7 +44,7 @@ If you rented a VPS, you often do not need this procedure at all. Pick "Debian 1
 
 ### tasksel — the Heart of This Chapter
 
-Follow Chapter 7's steps and, near the end, the "Software selection" (tasksel) screen appears. In the desktop edition you checked "Debian desktop environment" and "GNOME" here.
+Follow the main edition's Chapter 7 steps and, near the end, the "Software selection" (tasksel) screen appears. In the desktop edition you checked "Debian desktop environment" and "GNOME" here.
 
 **On a server, this screen is everything.** Uncheck everything desktop-related, and check only the following two.
 
@@ -64,7 +64,7 @@ If you forget "SSH server," you can add it later with `apt install openssh-serve
 
 ### The root Password and sudo
 
-Your approach to creating a user is the same as Chapter 7. **This book recommends leaving the root password blank and giving your ordinary user `sudo`.** The reasons are the same as in the desktop edition — it funnels administrative actions through a single entrance — and the "you cannot log in directly as root" state pays off when you tighten SSH next chapter.
+Your approach to creating a user is the same as the main edition's Chapter 7. **This book recommends leaving the root password blank and giving your ordinary user `sudo`.** The reasons are the same as in the desktop edition — it funnels administrative actions through a single entrance — and the "you cannot log in directly as root" state pays off when you tighten SSH next chapter.
 
 Make the username short and lowercase (`taro`, `admin-t`). This username is the name you will type on every SSH connection from the next chapter on.
 

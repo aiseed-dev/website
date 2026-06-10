@@ -9,13 +9,13 @@ date: 2026.06.10
 label: Claude × Debian Server 06
 prev_slug: claude-debian-server-05-security-basics
 prev_title: Chapter 5 — The Basics of Defense
-next_slug: claude-debian-server-07-containers
-next_title: Chapter 7 — The Container Option
+next_slug: claude-debian-server-07-database
+next_title: Chapter 7 — The Database as a Foundation
 cta_label: Learn with Claude
 cta_title: A server is "a collection of services."
 cta_text: Starting, stopping, auto-start, logs, failure response — operations that look scattered all reduce to one unit: the service. Once you hold this shape, you can handle unfamiliar software with the same touch.
 cta_btn1_text: Continue to Chapter 7
-cta_btn1_link: /en/claude-debian/server/07-containers/
+cta_btn1_link: /en/claude-debian/server/07-database/
 cta_btn2_text: Back to Chapter 5
 cta_btn2_link: /en/claude-debian/server/05-security-basics/
 ---
@@ -248,7 +248,7 @@ sudo systemctl enable --now mybackup.timer
 systemctl list-timers
 ```
 
-The `NEXT` column of `list-timers` lines up the next run time. This is **foreshadowing for the backup automation in Chapter 9.** A backup — work you want done "regularly, reliably, leaving a record" — fits exactly into this timer + service shape.
+The `NEXT` column of `list-timers` lines up the next run time. This is **foreshadowing for the backup automation in Chapter 10.** A backup — work you want done "regularly, reliably, leaving a record" — fits exactly into this timer + service shape.
 
 ## Summary
 
@@ -256,7 +256,7 @@ What you did in this chapter:
 
 1. Got the basic verbs of `systemctl` (status/start/stop/restart/reload/enable/disable/list-units).
 2. Became able to read the `status` output (Active, enabled, Main PID, trailing logs).
-3. Established the craft of narrowing logs by service, time, and severity with `journalctl` and handing them to Claude (carried over from Chapter 8).
+3. Established the craft of narrowing logs by service, time, and severity with `journalctl` and handing them to Claude (carried over from Chapter 8 of the main series).
 4. Turned your own script into `/etc/systemd/system/myapp.service` and ran the daemon-reload → enable --now → status → journalctl sequence.
 5. Built the minimal form of a scheduled run with a systemd timer (.timer + .service).
 
@@ -266,7 +266,7 @@ What you hold now:
 - A dialogue shape of "hand both the config (unit file) and the result (log) to Claude to narrow it down."
 - The touch to handle unfamiliar software with the same verbs by guessing "this is probably a service too."
 
-You have the "service" as a unit. But carrying software with complex dependencies, or things you would rather not let dirty the system, in a unit file every time is a chore. In [Chapter 7, "The Container Option,"](/en/claude-debian/server/07-containers/) you run a service **box and all** — sorting out with Claude the option of containers, including when to use them and when not to.
+You have the "service" as a unit. But a running service is only half the story. Where, and in what form, does the **data** it reads and writes live? In [Chapter 7, "The Database as a Foundation,"](/en/claude-debian/server/07-database/) we sort out when to use SQLite and when PostgreSQL, install PostgreSQL for real, and lay the foundation of where your data lives.
 
 ---
 

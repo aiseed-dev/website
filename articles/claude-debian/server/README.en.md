@@ -4,9 +4,13 @@
 
 A sub-series of the parent series "Learning Debian with Claude" (`../`). The
 parent series is primarily about the desktop (taking back your own desk); this
-sub-series is about servers (owning your own infrastructure). Ten chapters
+sub-series is about servers (owning your own infrastructure). Eleven chapters
 walk from driving a screenless Debian over SSH, through hardening, running
-services, publishing them, to protecting your data.
+databases and your own apps, publishing them, to protecting your data.
+No containers — apps run as "directory + venv + systemd," isolated by
+dedicated users, permission design, and systemd sandboxing. Data lives in
+your own machine's databases (SQLite / PostgreSQL), not in someone else's
+cloud.
 
 Server administration is all text — logs, configs, errors — which makes it the
 domain where the "learning with Claude" method works best. As in the parent
@@ -15,7 +19,7 @@ their own situation. The JA README is [`README.md`](README.md).
 
 ## Status
 
-**All 10 chapters published** (JA + EN, 20 files).
+**All 11 chapters published** (JA + EN, 22 files).
 
 ## Layout
 
@@ -55,7 +59,7 @@ Breadcrumbs and the sidebar TOC display the combined series title
 ## prev / next chain
 
 Closed **within** the sub-series. Chapter 01 leaves `prev_slug:` empty; the
-final chapter (10) leaves `next_slug:` empty. No bridging into the parent
+final chapter (11) leaves `next_slug:` empty. No bridging into the parent
 series (pointing the final chapter's CTA buttons at the parent series is fine).
 
 ## Relationship to the parent index
@@ -76,10 +80,11 @@ series (pointing the final chapter's CTA buttons at the parent series is fine).
 | 04 | `04-ssh` | Chapter 4 — SSH, the Front Door |
 | 05 | `05-security-basics` | Chapter 5 — The Basics of Defense |
 | 06 | `06-systemd-services` | Chapter 6 — The Service as a Unit |
-| 07 | `07-containers` | Chapter 7 — The Container Option |
-| 08 | `08-publishing` | Chapter 8 — Opening Up to the Outside World |
-| 09 | `09-backup` | Chapter 9 — Protecting Your Data |
-| 10 | `10-operations` | Chapter 10 — Growing Your Server |
+| 07 | `07-database` | Chapter 7 — The Database as a Foundation |
+| 08 | `08-fastapi` | Chapter 8 — Running Your Own App |
+| 09 | `09-publishing` | Chapter 9 — Opening Up to the Outside World |
+| 10 | `10-backup` | Chapter 10 — Protecting Your Data |
+| 11 | `11-operations` | Chapter 11 — Growing Your Server |
 
 Slugs are final; do not change them, for URL stability.
 

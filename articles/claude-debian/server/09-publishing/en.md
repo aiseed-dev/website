@@ -1,28 +1,28 @@
 ---
-slug: claude-debian-server-08-publishing
+slug: claude-debian-server-09-publishing
 lang: en
-number: "08"
-title: Chapter 8 — Opening Up to the Outside World
+number: "09"
+title: Chapter 9 — Opening Up to the Outside World
 subtitle: Domains, reverse proxies, TLS
 description: Until now everything could be practiced safely on the LAN. Publishing is a near-irreversible decision — the attack surface changes all at once. We cover the three-piece set of domain, reverse proxy, and TLS certificate, all the way through the home-line obstacle (CGNAT), and design a publishing route that fits your situation together with Claude. "Not publishing" is a perfectly respectable choice.
 date: 2026.06.10
-label: Claude × Debian Server 08
-prev_slug: claude-debian-server-07-containers
-prev_title: Chapter 7 — The Container Option
-next_slug: claude-debian-server-09-backup
-next_title: Chapter 9 — Protecting Your Data
+label: Claude × Debian Server 09
+prev_slug: claude-debian-server-08-fastapi
+prev_title: Chapter 8 — Running Your Own App
+next_slug: claude-debian-server-10-backup
+next_title: Chapter 10 — Protecting Your Data
 cta_label: Learn with Claude
 cta_title: The decision to expose yourself to the world.
 cta_text: Publishing is near-irreversible. The parties connecting to you become the whole world at once. That is exactly why you must design a route that fits your line and situation. Including the choice "not to publish," draw the map together with Claude.
-cta_btn1_text: Continue to Chapter 9
-cta_btn1_link: /en/claude-debian/server/09-backup/
-cta_btn2_text: Back to Chapter 7
-cta_btn2_link: /en/claude-debian/server/07-containers/
+cta_btn1_text: Continue to Chapter 10
+cta_btn1_link: /en/claude-debian/server/10-backup/
+cta_btn2_text: Back to Chapter 8
+cta_btn2_link: /en/claude-debian/server/08-fastapi/
 ---
 
 ## Why Publishing Is a Chapter of Its Own
 
-Every chapter up to here could be practiced safely inside your home LAN. The file share, note sync, the containers in Chapter 7 — while they run only inside the house, the only party connecting to you is you. Even if you fail, no one is watching. So you could break things and rebuild them at ease.
+Every chapter up to here could be practiced safely inside your home LAN. The file share, note sync, the database in Chapter 7, the app you built in Chapter 8 — while they run only inside the house, the only party connecting to you is you. Even if you fail, no one is watching. So you could break things and rebuild them at ease.
 
 Publishing is the decision to step one pace outside that safe zone. And **publishing is near-irreversible.** Once you expose a server to the internet, as Chapter 1 said, the parties connecting to you become the whole world. The world's automated scanners begin hammering your server 24 hours a day, starting the moment you publish. This is not a scare line — it is an observed fact that will appear in your logs on the day you publish. The attack surface changes all at once. So publishing rests entirely on the defenses you built in Chapter 5 (firewall, SSH key authentication, fail2ban).
 
@@ -55,7 +55,7 @@ What moves are available for a publishing route changes with the nature of your 
 
 Whether you publish one service or several, modern publishing uses a pattern called a **reverse proxy**.
 
-A reverse proxy is **a mechanism where a single entrance (port 443, that is, `https://`) routes to several services behind it, by host name**. A connection to `blog.example.com` goes to the blog container; a connection to `photos.example.com` goes to the photo server — one machine directs traffic. The only entrance visible from outside is a single one, and this entrance handles the TLS work in bulk. If you ran several containers in Chapter 7, you can consolidate their exit into this one reverse proxy.
+A reverse proxy is **a mechanism where a single entrance (port 443, that is, `https://`) routes to several services behind it, by host name**. A connection to `blog.example.com` goes to the blog service; a connection to `photos.example.com` goes to the photo server — one machine directs traffic. The only entrance visible from outside is a single one, and this entrance handles the TLS work in bulk. If you run several services in the manner of Chapter 6, you can consolidate their exit into this one reverse proxy.
 
 This chapter uses **Caddy** as the example. The reason is that its config file (the Caddyfile) takes only a few lines, and **it handles getting and renewing TLS certificates fully automatically**. Caddy does the back-and-forth with Let's Encrypt on its own, behind the scenes. A short config text also means a good fit with Claude.
 
@@ -72,7 +72,7 @@ photos.example.com {
 }
 ```
 
-That is all. It passes `https://` traffic arriving at `blog.example.com` to the blog running locally on port 8080 (such as a Chapter 7 container). `photos.example.com` goes to port 8081. The TLS certificate is obtained automatically from Let's Encrypt by Caddy at startup, and renewed automatically when it expires. You need not be aware the certificate exists.
+That is all. It passes `https://` traffic arriving at `blog.example.com` to the blog running locally on port 8080 (such as a Chapter 6 service, or the FastAPI app you built in Chapter 8). `photos.example.com` goes to port 8081. The TLS certificate is obtained automatically from Let's Encrypt by Caddy at startup, and renewed automatically when it expires. You need not be aware the certificate exists.
 
 ```bash
 # Install Caddy and apply the configuration
@@ -91,7 +91,7 @@ The same thing can be done with **nginx**. nginx has a large volume of informati
 >
 > Please write a Caddyfile that achieves this. Then **explain line by line what each line does**. Also explain how the TLS certificate is handled.
 
-Here too, use the same craft as the compose.yaml in Chapter 7. **Do not just have it write — have it explain the meaning of each line.** A reverse proxy is the very "entrance from outside to inside," so running it with lines you do not understand left in place is dangerous. Have it explain line by line, so you can read your own entrance yourself.
+Here too, use the same craft as the unit files in Chapter 6. **Do not just have it write — have it explain the meaning of each line.** A reverse proxy is the very "entrance from outside to inside," so running it with lines you do not understand left in place is dangerous. Have it explain line by line, so you can read your own entrance yourself.
 
 ## Section 3 — The Obstacle of Publishing from Home
 
@@ -176,7 +176,7 @@ What you hold now:
 - A working Caddyfile (or a note on the decision not to publish).
 - The experience of reading the logs right after publishing — the realization of "exposing yourself to the world."
 
-In Chapter 9, we consider finally **protecting** the services and data you have been running. The meaning of the Chapter 7 split, "data outside, container disposable," pays off here. What to back up, to where, how often, and how to confirm you can "truly restore it" — together with Claude, we assemble the craft of preparing on the premise that things break.
+In Chapter 10, we consider finally **protecting** the services and data you have been running. The meaning of Chapter 7 — gathering your data into one database — pays off here. What to back up, to where, how often, and how to confirm you can "truly restore it" — together with Claude, we assemble the craft of preparing on the premise that things break.
 
 ---
 

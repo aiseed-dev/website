@@ -1,30 +1,30 @@
 ---
-slug: claude-debian-server-09-backup
+slug: claude-debian-server-10-backup
 lang: en
-number: "09"
-title: Chapter 9 — Protecting Your Data
+number: "10"
+title: Chapter 10 — Protecting Your Data
 subtitle: Automate backups, rehearse restores
-description: The server itself is disposable; only the data is the real thing. The OS and your containers can be rebuilt in tens of minutes, but the data cannot. Decide what to protect, take encrypted backups with restic, automate them with a systemd timer, and then actually rehearse a restore — proving, with your own hands and alongside Claude, the principle that a backup you have never restored is the same as no backup at all.
+description: The server itself is disposable; only the data is the real thing. The OS and your services can be rebuilt in tens of minutes, but the data cannot. Decide what to protect, take encrypted backups with restic, automate them with a systemd timer, and then actually rehearse a restore — proving, with your own hands and alongside Claude, the principle that a backup you have never restored is the same as no backup at all.
 date: 2026.06.10
-label: Claude × Debian Server 09
-prev_slug: claude-debian-server-08-publishing
-prev_title: Chapter 8 — Opening Up to the Outside World
-next_slug: claude-debian-server-10-operations
-next_title: Chapter 10 — Growing Your Server
+label: Claude × Debian Server 10
+prev_slug: claude-debian-server-09-publishing
+prev_title: Chapter 9 — Opening Up to the Outside World
+next_slug: claude-debian-server-11-operations
+next_title: Chapter 11 — Growing Your Server
 cta_label: Learn with Claude
 cta_title: You protect the data, not the machine.
 cta_text: A server can be rebuilt any number of times. The only thing that cannot be rebuilt is the data. Take backups automatically, and then actually try restoring — rehearse the "what if" once, and the day your server breaks you will not panic. Get that preparation in place together with Claude.
-cta_btn1_text: Continue to Chapter 10
-cta_btn1_link: /en/claude-debian/server/10-operations/
-cta_btn2_text: Back to Chapter 8
-cta_btn2_link: /en/claude-debian/server/08-publishing/
+cta_btn1_text: Continue to Chapter 11
+cta_btn1_link: /en/claude-debian/server/11-operations/
+cta_btn2_text: Back to Chapter 9
+cta_btn2_link: /en/claude-debian/server/09-publishing/
 ---
 
 ## Why Backup Gets Its Own Chapter
 
 By now you have assembled a server, run services on it, and gone as far as publishing it to the outside world. Stop here for a moment and consider one thing. **If the disk in this server were to physically fail right now, what would be lost?**
 
-The OS would be lost. But that is no great loss. The minimal install you did in Chapter 3 can be redone in tens of minutes as long as you kept the steps. The containers you assembled in Chapter 7 come back up in minutes from a single `compose.yaml`. **The server itself was, by design, disposable from the start.** Recommending a minimal install in Chapter 3 and recommending containers in Chapter 7 were, in fact, foreshadowing for this chapter — we built the OS and the apps to be rebuildable.
+The OS would be lost. But that is no great loss. The minimal install you did in Chapter 3 can be redone in tens of minutes as long as you kept the steps. The services you built in Chapter 6 come back in minutes from their unit files, and the PostgreSQL you installed in Chapter 7 can be reinstalled with `apt`. **The server itself was, by design, disposable from the start.** Recommending a minimal install in Chapter 3 and gathering your data into a database in Chapter 7 were, in fact, foreshadowing for this chapter — from the start, we kept "what can be rebuilt" and "the data that cannot" apart.
 
 There is exactly one thing that cannot be rebuilt. **The data.** Family photos, work files, notes, the records your home-grown apps have accumulated. There is only one of each in the world. If it vanishes with the disk, it is gone for good.
 
@@ -38,8 +38,8 @@ Blindly "backing up everything" is actually the clumsy approach. Take the whole 
 
 What a server needs to protect falls roughly into three kinds.
 
-1. **Application data.** Container volumes, `~/data`, the contents of databases. This is the heart of the heart.
-2. **Configuration.** `compose.yaml`, the `Caddyfile` you wrote in Chapter 8, the home-grown systemd units you made in Chapter 6, the changes you made by hand under `/etc`.
+1. **Application data.** The contents of the PostgreSQL and SQLite databases from Chapter 7, the files under `/srv/photos` and `~/data`. This is the heart of the heart.
+2. **Configuration.** The `Caddyfile` you wrote in Chapter 9, the home-grown systemd units you made in Chapter 6, the PostgreSQL settings you touched in Chapter 7, the changes you made by hand under `/etc`.
 3. **The notes you have built up through this book.** `my-server.md`, your collected "Ask Claude" answers, your troubleshooting logs.
 
 The OS itself (`/usr`, `/bin`, files installed by packages) you can, as a rule, leave unprotected. Those can be rebuilt with `apt`.
@@ -48,7 +48,7 @@ The OS itself (`/usr`, `/bin`, files installed by packages) you can, as a rule, 
 
 Here, split the craft in two.
 
-**Configuration (text files) goes under git.** This is simply the server version of what you did for the desktop in [Chapter 12, "The Craft of Config Management"](/en/claude-debian/12-config-management/) of the main series. `compose.yaml`, the `Caddyfile`, your home-grown units — all of it is text. Text is exactly what git is best at. The history of changes stays, and "when and why did I set it this way" can be traced afterward.
+**Configuration (text files) goes under git.** This is simply the server version of what you did for the desktop in [Chapter 12, "The Craft of Config Management"](/en/claude-debian/12-config-management/) of the main series. The `Caddyfile`, your home-grown units — all of it is text. Text is exactly what git is best at. The history of changes stays, and "when and why did I set it this way" can be traced afterward.
 
 **Data (photos, documents, databases) is taken with a backup tool.** This is not text; it is large in volume and changes often. It is unsuited to git. It is the job of a dedicated backup tool — restic, which we use next.
 
@@ -61,12 +61,12 @@ The backup world has a long-standing rule of thumb: **the 3-2-1 rule.** Keep **3
 ### Ask Claude ①: Build the List of What to Protect
 
 > I am running the following on my Debian server:
-> [list of what you are running as of Chapter 7. e.g. photo server (container, volume at /srv/photos), file share (~/share), home-grown note app (DB at /srv/notes/db)…]
+> [list of what you are running as of Chapter 8. e.g. photo server (data at /srv/photos), file share (~/share), home-grown note app (DB: notesdb in PostgreSQL)…]
 >
 > Please sort these into three categories — "data (cannot be rebuilt, backup essential)", "config (text, managed in git)", and "OS / re-creatable (no need to protect)" — and put them in a table.
 > For anything you classify as data, also add candidate concrete paths on the server, and the places easy to miss in a backup (warnings such as: copying a database's files directly while it is running can corrupt them).
 
-When you hand over your own setup, points you would easily overlook line up in the table — "that container's volume is actually here," "copying that DB while live is dangerous." The list of what to protect is the starting point of this chapter.
+When you hand over your own setup, points you would easily overlook line up in the table — "copying that database while it is live will corrupt the backup — dump it first," "that config can move to the git side." The list of what to protect is the starting point of this chapter.
 
 ## Section 2 — Taking Backups with restic
 
@@ -104,8 +104,8 @@ Once initialized, take an actual backup. Specify the "things to protect" you sor
 # Back up data and config by specifying them
 restic backup -r /mnt/backup/repo /srv/photos /srv/notes ~/share /etc
 
-# Do not forget the place where compose.yaml and the like live
-restic backup -r /mnt/backup/repo ~/stacks
+# Do not forget the git working directory holding the Caddyfile and your units
+restic backup -r /mnt/backup/repo ~/server-config
 ```
 
 Check whether it worked with the list of snapshots.
@@ -116,6 +116,27 @@ restic snapshots -r /mnt/backup/repo
 ```
 
 If a list of dates and IDs appears, it worked. From the second time on, only what changed gets added (thanks to deduplication it is fast and small).
+
+### Databases Get Dumped First
+
+One thing needs special handling: **a live database.** If you copy the data files of the PostgreSQL you installed in Chapter 7 while it is running, you can capture a half-finished write — and produce a backup **that will not restore**.
+
+The correct pattern is: **dump first (write it out as text), then back up the dump.**
+
+```bash
+mkdir -p ~/backup-staging
+
+# PostgreSQL: write the database out as SQL text
+sudo -u postgres pg_dump myappdb > ~/backup-staging/myappdb.sql
+
+# SQLite: make a safe copy even while in use
+sqlite3 ~/data/notes.db ".backup $HOME/backup-staging/notes-backup.db"
+
+# back up the staging directory with restic
+restic backup -r /mnt/backup/repo ~/backup-staging
+```
+
+The output of `pg_dump` is plain SQL text, so you can inspect it with your own eyes or with Claude. Restoring is just feeding it back: `psql myappdb < myappdb.sql`. The "entrance to protecting your data" previewed at the end of Chapter 7 joins the main current here.
 
 ### Remote Destinations
 
@@ -163,7 +184,9 @@ After=network-online.target
 Type=oneshot
 # Keep the key and destination separate in an environment file (see the next note for its contents)
 EnvironmentFile=/etc/restic/backup.env
-ExecStart=/usr/bin/restic backup /srv/photos /srv/notes /home/youruser/share /etc /home/youruser/stacks
+# Dump the database first, then back it up (Section 2)
+ExecStartPre=/bin/sh -c 'runuser -u postgres -- pg_dump myappdb > /srv/backup-staging/myappdb.sql'
+ExecStart=/usr/bin/restic backup /srv/photos /srv/notes /srv/backup-staging /home/youruser/share /etc
 # Tidy up old snapshots (keep the last 7 daily + 4 weekly + 6 monthly)
 ExecStartPost=/usr/bin/restic forget --prune --keep-daily 7 --keep-weekly 4 --keep-monthly 6
 ```
@@ -223,7 +246,7 @@ If `backup.timer` appears in `list-timers` with a next-run time shown, the autom
 
 Automation has one trap. **"Believing it is being taken automatically" is the most dangerous state.** One day the disk fills up, or the external drive comes unplugged, and backups have been failing for weeks — and when you finally try to restore, there is nothing there. That accident really does happen often.
 
-Leave elaborate monitoring for Chapter 10; start with a plain habit. **Once a week, look at `restic snapshots` with your own eyes.** Check that the date at the top of the list is properly "yesterday" or "this morning." That alone prevents "it stopped without my noticing."
+Leave elaborate monitoring for Chapter 11; start with a plain habit. **Once a week, look at `restic snapshots` with your own eyes.** Check that the date at the top of the list is properly "yesterday" or "this morning." That alone prevents "it stopped without my noticing."
 
 ```bash
 # Make it a habit to look at this with your own eyes once a week
@@ -258,15 +281,15 @@ If the photos, the documents, and the config files all line up inside `/tmp/rest
 
 Let me propose one step further. **Recreate the server from scratch on another machine (or a VM or VPS at hand).**
 
-The steps go like this. Start from the minimal install of Chapter 3, clone the config you put in git (`compose.yaml`, `Caddyfile`, home-grown units), and write the data back with restic. A server nearly identical to your live one should come up on the new machine.
+The steps go like this. Start from the minimal install of Chapter 3, clone the config you put in git (the `Caddyfile`, home-grown units, setup notes), write the data back with restic, and feed the database back in from the `pg_dump` dump with `psql`. A server nearly identical to your live one should come up on the new machine.
 
-See this rehearsal through and you gain two things. One is the conviction that "I really can rebuild from the start." The other is the **"things missing from the steps"** you are sure to find partway through — a setting you forgot to note, a file you forgot to put in git. Find and fill those, and you will not panic during a real "what if." The "encoding the configuration as code" covered in Chapter 10 connects directly here.
+See this rehearsal through and you gain two things. One is the conviction that "I really can rebuild from the start." The other is the **"things missing from the steps"** you are sure to find partway through — a setting you forgot to note, a file you forgot to put in git. Find and fill those, and you will not panic during a real "what if." The "encoding the configuration as code" covered in Chapter 11 connects directly here.
 
 ### Ask Claude ③: Build the Restore-Rehearsal Runbook
 
 > I take backups with restic of the following setup:
 > Data I protect: [list of paths]
-> Config management: [e.g. I keep compose.yaml / Caddyfile / home-grown units in a git repository]
+> Config management: [e.g. I keep the Caddyfile / home-grown units / setup notes in a git repository]
 > Backup destination: [local USB / SFTP / cloud, etc.]
 >
 > Please build a "server rebuild rehearsal" runbook for recreating this setup from scratch on a new machine (VPS or VM).
@@ -292,7 +315,7 @@ What you hold now:
 - A "list of what to protect" and a "restore-rehearsal runbook" (these go in git).
 - The reassurance — which gives operational slack — that "if it comes to it, I can rebuild."
 
-With this, even if the server physically breaks, you will not panic. The OS and the containers can be rebuilt, and the data can be brought back. In the final Chapter 10, on that foundation of reassurance, we talk about **growing the server over the long run** — a design that runs on fifteen minutes of watching a week, a rhythm of maintenance, a pattern for when things break, and "the next move." The craft of tending and growing a single server like a living thing.
+With this, even if the server physically breaks, you will not panic. The OS and the services can be rebuilt, and the data can be brought back. In the final Chapter 11, on that foundation of reassurance, we talk about **growing the server over the long run** — a design that runs on fifteen minutes of watching a week, a rhythm of maintenance, a pattern for when things break, and "the next move." The craft of tending and growing a single server like a living thing.
 
 ---
 

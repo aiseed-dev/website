@@ -134,7 +134,7 @@ In the server edition, we carry this craft over unchanged. For the server, make 
 - Static IP / hostname:
 
 ## Publishing policy
-- LAN-only for now / plan to publish eventually (nailed down in Chapters 5 and 8)
+- LAN-only for now / plan to publish eventually (nailed down in Chapters 5 and 9)
 ```
 
 Hand this single sheet to Claude at every dialogue in each chapter. You save yourself from re-explaining the server's particulars every time.
@@ -143,7 +143,7 @@ Hand this single sheet to Claude at every dialogue in each chapter. You save you
 
 In the main edition we wrote, "do not hold both halfway — commit fully to one side." The server edition is a bit more relaxed. **The right move is to start with a machine you can afford to break.**
 
-The reason is simple: before you load real data onto it, you can rebuild a server as many times as you like. In fact, your first machine should be a practice rig for "break it, wipe it, reinstall it" without hesitation. While you do the minimal install in Chapter 3 and run the basics through Chapters 4 to 7, you can flip this experimental machine over and over. Only once failure stops scaring you are you ready to load real data.
+The reason is simple: before you load real data onto it, you can rebuild a server as many times as you like. In fact, your first machine should be a practice rig for "break it, wipe it, reinstall it" without hesitation. While you do the minimal install in Chapter 3 and run the basics through Chapters 4 to 8, you can flip this experimental machine over and over. Only once failure stops scaring you are you ready to load real data.
 
 ### Fill the Ask-Claude Box at Each Chapter's End with Your Own Situation
 

@@ -50,6 +50,7 @@ from build.markdown import (
     translation_exists,
 )
 from build.template_vars import (
+    BOOK_SUBSERIES,
     aiways_index_vars,
     article_vars,
     blog_index_vars,
@@ -100,11 +101,29 @@ def _detect_lang(md_path):
     return "en" if md_path.name == "en.md" else "ja"
 
 
-def _book_stem(slug):
-    """URL stem for a book chapter: slug without the `claude-debian-` prefix."""
+def _book_stem(slug, subseries=""):
+    """URL stem for a book chapter: slug without the `claude-debian-` prefix
+    (or the `claude-debian-<subseries>-` prefix for sub-series chapters)."""
+    if subseries:
+        prefix = f"{BOOK_SLUG_PREFIX}{subseries}-"
+        if slug.startswith(prefix):
+            return slug[len(prefix):]
     if slug.startswith(BOOK_SLUG_PREFIX):
         return slug[len(BOOK_SLUG_PREFIX):]
     return slug
+
+
+def _book_subseries_of(md_or_dir) -> str:
+    """Return the book sub-series key for a chapter path (e.g. 'server'),
+    or '' for parent-series chapters.
+
+    Accepts either the ja.md/en.md file or its parent (chapter) directory.
+    """
+    p = Path(md_or_dir)
+    chapter_dir = p.parent if p.suffix == ".md" else p
+    if chapter_dir.parent.name in BOOK_SUBSERIES:
+        return chapter_dir.parent.name
+    return ""
 
 
 # ---------------------------------------------------------------------------
@@ -408,11 +427,15 @@ def build_book_chapter(md_path):
     lang = meta.get("lang") or _detect_lang(md_path)
     meta["lang"] = lang
 
-    stem = _book_stem(meta["slug"])
+    subseries = _book_subseries_of(md_path)
+    meta["_subseries"] = subseries
+
+    stem = _book_stem(meta["slug"], subseries)
     if lang == "en":
-        out_dir = config.SITE_ROOT / "html" / "en" / "claude-debian" / stem
+        out_base = config.SITE_ROOT / "html" / "en" / "claude-debian"
     else:
-        out_dir = config.BOOK_OUTPUT_BASE / stem
+        out_base = config.BOOK_OUTPUT_BASE
+    out_dir = (out_base / subseries / stem) if subseries else (out_base / stem)
     out_dir.mkdir(parents=True, exist_ok=True)
 
     meta["_source_dir"] = str(md_path.parent)
@@ -443,10 +466,16 @@ def build_book_chapter(md_path):
     return True
 
 
-def collect_book_chapters(lang="ja"):
-    """Collect book chapter metadata for a language, in folder-name order."""
+def collect_book_chapters(lang="ja", subseries=""):
+    """Collect book chapter metadata for a language, in folder-name order.
+
+    With `subseries=""` (default), returns the parent-series chapters
+    (`articles/claude-debian/NN-slug/`). With a sub-series key (e.g.
+    `"server"`), returns that sub-series' chapters only.
+    """
+    series_dir = config.BOOK_DIR / subseries if subseries else config.BOOK_DIR
     chapters = []
-    for f in _iter_article_files(config.BOOK_DIR, lang):
+    for f in _iter_article_files(series_dir, lang):
         text = f.read_text(encoding="utf-8")
         meta, _ = parse_frontmatter(text)
         if meta.get("lang", "ja") != lang and not (lang == "ja" and "lang" not in meta):
@@ -458,26 +487,17 @@ def collect_book_chapters(lang="ja"):
     return chapters
 
 
-def build_book_index(lang="ja"):
-    """Build the book table-of-contents page for a language."""
-    chapters = collect_book_chapters(lang)
-    if not chapters:
-        return False
-
-    is_en = lang == "en"
-    book_base = "/en/claude-debian" if is_en else "/claude-debian"
-    # "Translation exists" if the opposite language has any chapters built.
-    has_translation = bool(collect_book_chapters("en" if not is_en else "ja"))
-
-    chapter_list = ""
+def _render_book_chapter_list(chapters, book_base, subseries=""):
+    """Render chapter cards for a book index page (parent or sub-series)."""
+    out = ""
     for c in chapters:
         slug = c.get("slug", "")
-        stem = _book_stem(slug)
+        stem = _book_stem(slug, subseries)
         number = c.get("number", "").strip('"')
         title = c.get("title", "")
         subtitle = c.get("subtitle", "")
         description = c.get("description", "")
-        chapter_list += f'''
+        out += f'''
                 <a href="{book_base}/{stem}/" style="text-decoration: none; color: inherit;">
                     <div class="activity-item fade-in">
                         <div class="activity-number">{number}</div>
@@ -488,6 +508,61 @@ def build_book_index(lang="ja"):
                     </div>
                 </a>
 '''
+    return out
+
+
+def _book_subseries_hero_html(lang):
+    """Render hero cards announcing every active book sub-series, to prepend
+    to the parent book index. Returns '' if no sub-series have chapters."""
+    is_en = lang == "en"
+    parts = []
+    for key, cfg in BOOK_SUBSERIES.items():
+        if not collect_book_chapters(lang, key):
+            continue
+        base = "/en/claude-debian" if is_en else "/claude-debian"
+        href = f"{base}/{key}/"
+        name = cfg["name_en"] if is_en else cfg["name_ja"]
+        subtitle = cfg["subtitle_en"] if is_en else cfg["subtitle_ja"]
+        description = cfg["description_en"] if is_en else cfg["description_ja"]
+        label = (
+            "Sub-series — open all chapters →"
+            if is_en
+            else "サブシリーズを開く →"
+        )
+        marker = "Sub-series" if is_en else "サブシリーズ"
+        parts.append(f'''
+                <a href="{href}" style="text-decoration: none; color: inherit; display: block; margin-bottom: 1.5em;">
+                    <div class="activity-item fade-in" style="border-left: 4px solid #d4a574; background: rgba(212,165,116,0.08);">
+                        <div class="activity-number" style="font-size: 0.65em; line-height: 1.2; padding: 0.4em 0; white-space: nowrap;">▶<br>{marker}</div>
+                        <div class="activity-content">
+                            <h3>{name} — {subtitle}</h3>
+                            <p>{description}<br><strong>{label}</strong></p>
+                        </div>
+                    </div>
+                </a>
+''')
+    return "".join(parts)
+
+
+def build_book_index(lang="ja"):
+    """Build the book table-of-contents page for a language.
+
+    The parent index lists parent-series chapters only; sub-series are
+    announced as a hero card at the top and keep their own index page.
+    """
+    chapters = collect_book_chapters(lang)
+    if not chapters:
+        return False
+
+    is_en = lang == "en"
+    book_base = "/en/claude-debian" if is_en else "/claude-debian"
+    # "Translation exists" if the opposite language has any chapters built.
+    has_translation = bool(collect_book_chapters("en" if not is_en else "ja"))
+
+    chapter_list = (
+        _book_subseries_hero_html(lang)
+        + _render_book_chapter_list(chapters, book_base)
+    )
 
     variables = book_index_vars(lang, chapter_list, has_translation=has_translation)
     html = render("index.html", variables)
@@ -499,6 +574,50 @@ def build_book_index(lang="ja"):
     out_file.parent.mkdir(parents=True, exist_ok=True)
     out_file.write_text(html, encoding="utf-8")
     print(f"Built book index: {out_file}")
+    return True
+
+
+def build_book_subseries_index(subseries, lang="ja"):
+    """Build the index page for one book sub-series
+    (e.g. /claude-debian/server/). Lists the sub-series' own chapters and
+    links back to the parent index."""
+    if subseries not in BOOK_SUBSERIES:
+        return False
+    chapters = collect_book_chapters(lang, subseries)
+    if not chapters:
+        return False
+
+    is_en = lang == "en"
+    book_base = ("/en/claude-debian" if is_en else "/claude-debian") + f"/{subseries}"
+    has_translation = bool(
+        collect_book_chapters("en" if not is_en else "ja", subseries)
+    )
+
+    # Back-link to the parent series index, above the chapter cards (the
+    # shared index template has no dedicated intro slot).
+    parent_base = "/en/claude-debian" if is_en else "/claude-debian"
+    back_label = (
+        "← Back to Learning Debian with Claude"
+        if is_en else "← Claudeと一緒に学ぶDebian 目次へ戻る"
+    )
+    back_html = (
+        f'\n                <p style="margin-bottom: 1.5em;">'
+        f'<a href="{parent_base}/" style="color: inherit;">{back_label}</a></p>\n'
+    )
+    chapter_list = back_html + _render_book_chapter_list(chapters, book_base, subseries)
+
+    variables = book_index_vars(
+        lang, chapter_list, has_translation=has_translation, subseries=subseries
+    )
+    html = render("index.html", variables)
+
+    if is_en:
+        out_file = config.SITE_ROOT / "html" / "en" / "claude-debian" / subseries / "index.html"
+    else:
+        out_file = config.BOOK_OUTPUT_BASE / subseries / "index.html"
+    out_file.parent.mkdir(parents=True, exist_ok=True)
+    out_file.write_text(html, encoding="utf-8")
+    print(f"Built book sub-series index ({subseries}): {out_file}")
     return True
 
 
@@ -1680,6 +1799,33 @@ def build_sitemap():
             stem = _book_stem(slug)
             urls.append((f"{site_url}/en/claude-debian/{stem}/", norm_date(meta.get("date")), "0.5"))
 
+    # Book sub-series (e.g. /claude-debian/server/)
+    for sub_key in BOOK_SUBSERIES:
+        ja_sub = collect_book_chapters("ja", sub_key)
+        en_sub = collect_book_chapters("en", sub_key)
+        if ja_sub:
+            urls.append((f"{site_url}/claude-debian/{sub_key}/", latest, "0.8"))
+            for meta in ja_sub:
+                slug = meta.get("slug", "")
+                if not slug:
+                    continue
+                stem = _book_stem(slug, sub_key)
+                urls.append((
+                    f"{site_url}/claude-debian/{sub_key}/{stem}/",
+                    norm_date(meta.get("date")), "0.6",
+                ))
+        if en_sub:
+            urls.append((f"{site_url}/en/claude-debian/{sub_key}/", latest, "0.7"))
+            for meta in en_sub:
+                slug = meta.get("slug", "")
+                if not slug:
+                    continue
+                stem = _book_stem(slug, sub_key)
+                urls.append((
+                    f"{site_url}/en/claude-debian/{sub_key}/{stem}/",
+                    norm_date(meta.get("date")), "0.5",
+                ))
+
     # AI-Native Ways of Working
     if ja_aiways:
         urls.append((f"{site_url}/ai-native-ways/", latest, "0.8"))
@@ -1867,10 +2013,14 @@ def main():
             update_home_latest_posts("ja")
             update_home_latest_posts("en")
 
-        # Build book chapters (claude-debian) — JA + EN
+        # Build book chapters (claude-debian) — JA + EN, including every
+        # sub-series.
         book_ok = 0
         book_files = list(_iter_article_files(config.BOOK_DIR, "ja")) \
                    + list(_iter_article_files(config.BOOK_DIR, "en"))
+        for sub_key in BOOK_SUBSERIES:
+            book_files += list(_iter_article_files(config.BOOK_DIR / sub_key, "ja"))
+            book_files += list(_iter_article_files(config.BOOK_DIR / sub_key, "en"))
         for f in book_files:
             if build_book_chapter(f):
                 book_ok += 1
@@ -1878,6 +2028,11 @@ def main():
             build_book_index("ja")
         if collect_book_chapters("en"):
             build_book_index("en")
+        for sub_key in BOOK_SUBSERIES:
+            if collect_book_chapters("ja", sub_key):
+                build_book_subseries_index(sub_key, "ja")
+            if collect_book_chapters("en", sub_key):
+                build_book_subseries_index(sub_key, "en")
 
         # Build ai-native-ways essays — JA + EN, including every sub-series.
         aiways_ok = 0

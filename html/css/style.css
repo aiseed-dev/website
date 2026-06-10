@@ -880,8 +880,11 @@ p {
 }
 
 .prose h2 {
-    margin: 3rem 0 1.5rem;
+    margin: 3.5rem 0 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-subtle);
     color: var(--earth-dark);
+    scroll-margin-top: 90px;
 }
 
 .prose h3 {
@@ -1447,6 +1450,38 @@ p {
 }
 .toc-title {
     display: inline;
+}
+
+/* In-page section list under the current chapter (built by main.js),
+   highlighted by scrollspy while reading. */
+.toc-sections {
+    list-style: none;
+    margin: 0.2rem 0 0.6rem;
+    padding-left: 1.6rem;
+}
+.toc-sections li {
+    margin: 0;
+    padding: 0;
+}
+.toc-sections a {
+    display: block;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: var(--soil-rich, #6b5b3a);
+    border-left: 2px solid var(--border-subtle);
+    text-decoration: none;
+    transition: background-color 0.12s, border-color 0.12s, color 0.12s;
+}
+.toc-sections a:hover {
+    background-color: rgba(122, 154, 109, 0.08);
+    color: var(--earth-dark, #3a2e1f);
+}
+.toc-sections a.is-active {
+    background-color: rgba(122, 154, 109, 0.12);
+    border-left-color: var(--moss-green, #7a9a6d);
+    color: var(--earth-dark, #3a2e1f);
+    font-weight: 600;
 }
 
 .toc-related {

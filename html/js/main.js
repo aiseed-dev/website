@@ -78,6 +78,59 @@ document.addEventListener('DOMContentLoaded', function() {
     const tocToggle = document.querySelector('.series-toc-toggle');
     const tocClose = document.querySelector('.series-toc-close');
     const tocBackdrop = document.querySelector('.series-toc-backdrop');
+    // In-page section list (h2s of the current chapter) injected under the
+    // highlighted chapter in the sidebar, with a scroll-following highlight.
+    // Built BEFORE the drawer wiring below so the new links also pick up the
+    // close-on-tap behaviour on mobile.
+    const tocCurrent = seriesToc ? seriesToc.querySelector('.toc-chapter.is-current') : null;
+    const proseRoot = document.querySelector('.article-main .prose');
+    if (tocCurrent && proseRoot) {
+        const sections = Array.from(proseRoot.querySelectorAll('h2'));
+        if (sections.length >= 2) {
+            const list = document.createElement('ol');
+            list.className = 'toc-sections';
+            sections.forEach((h, i) => {
+                if (!h.id) h.id = 'sec-' + (i + 1);
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = '#' + h.id;
+                a.textContent = h.textContent;
+                li.appendChild(a);
+                list.appendChild(li);
+            });
+            tocCurrent.insertAdjacentElement('afterend', list);
+
+            const links = Array.from(list.querySelectorAll('a'));
+            let activeIdx = -1;
+            const setActive = idx => {
+                if (idx === activeIdx) return;
+                activeIdx = idx;
+                links.forEach((a, i) => a.classList.toggle('is-active', i === idx));
+            };
+            let ticking = false;
+            const updateActive = () => {
+                ticking = false;
+                const fromTop = window.scrollY + 110;
+                let idx = -1;
+                for (let i = 0; i < sections.length; i++) {
+                    if (sections[i].offsetTop <= fromTop) idx = i;
+                }
+                setActive(idx);
+            };
+            document.addEventListener('scroll', () => {
+                if (!ticking) {
+                    ticking = true;
+                    window.requestAnimationFrame(updateActive);
+                }
+            }, { passive: true });
+            updateActive();
+        }
+        // Bring the current chapter (and its section list) into view inside
+        // the sidebar's own scroll area.
+        const target = tocCurrent.offsetTop - seriesToc.clientHeight / 3;
+        if (target > 0) seriesToc.scrollTop = target;
+    }
+
     if (seriesToc && tocToggle) {
         const openToc = () => {
             seriesToc.classList.add('is-open');

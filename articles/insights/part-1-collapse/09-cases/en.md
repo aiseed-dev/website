@@ -12,7 +12,7 @@ part: "1"
 prev_slug: enterprise-tax
 prev_title: Eliminating Enterprise IT Taxes
 next_slug: it-revolution-feudalism
-next_title: 
+next_title: "What the IT Revolution Really Was — Building a New Feudalism"
 cta_label: Return to Nature
 cta_title: Nature recovers. So do we.
 cta_text: Great power does not last. Nature does. The era of the individual has arrived.

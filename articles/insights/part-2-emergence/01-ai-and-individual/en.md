@@ -10,7 +10,7 @@ label: Structural Analysis 1
 part_title: Outline of the New World
 part: "2"
 prev_slug: lord-class-collapse
-prev_title: 
+prev_title: "The Lord Class's Self-Destruction — The Limits of Big Tech's Enclosure"
 next_slug: drone-defense
 next_title: Drones, AI, and Middle Power Defense
 cta_label: Start Now
@@ -45,6 +45,8 @@ These all share the same structure.
 Previously, hiring even one specialist cost tens of thousands of dollars per year.
 Assembling all of them equals a mid-size company's back office — millions per year.
 **With Claude, all of this comes for the cost of an AI subscription.**
+
+This is no fantasy. **Boris Cherny**, who built Claude Code, calls himself a "builder" and, since November 2025, has written not a line of code by hand — he completes the work by having AI write it. But here is the crucial caveat. "1 person + AI" is not "order and receive." It is the human turning, together with AI, the cycle of **finding the structure, forming a hypothesis, verifying it against reality, and correcting the gap**. What AI puts out is not an answer but a hypothesis, and applying it to reality and verifying it is the human's part. So what moves into the individual is not "hand it all off" but **the power to judge and verify** ([With AI, You Can Build an App Through Dialogue Alone](/en/blog/building-apps-through-dialogue/)).
 
 ## Farmer + Claude
 

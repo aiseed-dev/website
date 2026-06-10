@@ -10,7 +10,7 @@ label: Structural Analysis 1
 part_title: Design and Practice
 part: "3"
 prev_slug: builder-emergence
-prev_title: 
+prev_title: "Feudalism Dismantled — The Rise of the Builder"
 next_slug: subtraction-design
 next_title: Subtraction Design
 cta_label: Start Now

@@ -12,7 +12,7 @@ part: "2"
 prev_slug: drone-defense
 prev_title: Drones, AI, and Middle Power Defense
 next_slug: two-layer-ai-revolution
-next_title: 
+next_title: "What the AI Revolution Really Is — A Two-Layer Simultaneous Change"
 cta_label: Back to Life
 cta_title: With nature, we can live.
 cta_text: Not curing disease — preventing it. Not depending on pensions — not needing them.

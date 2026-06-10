@@ -12,7 +12,7 @@ part: "3"
 prev_slug: subtraction-design
 prev_title: Subtraction Design
 next_slug: ai-native-free-individual
-next_title: 
+next_title: "The Road to the AI-Native Free Person — Choices at the Individual Level"
 cta_label: Structure
 cta_title: Structure is everything.
 cta_text: Use AI for development. Never embed it in production. That alone makes the attack surface zero.

@@ -134,7 +134,7 @@ html {
 
 body {
     font-family: var(--font-sans);
-    font-weight: 300;
+    font-weight: 400;
     background: var(--cream);
     color: var(--earth-dark);
     line-height: 1.9;
@@ -777,6 +777,13 @@ p {
 }
 
 /* CTA Section */
+.cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
 .cta-text {
     font-size: 1.1rem;
     max-width: 600px;
@@ -930,6 +937,87 @@ p {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
     }
+}
+
+/* --- Prose: low-level headings ------------------------------------ */
+.prose h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 2rem 0 0.8rem;
+    color: var(--earth-dark);
+}
+
+/* Long URLs / tokens must wrap rather than overflow on mobile */
+.prose {
+    overflow-wrap: break-word;
+}
+
+/* --- Prose: inline code ------------------------------------------- */
+.prose code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas,
+        'Liberation Mono', monospace;
+    font-size: 0.875em;
+    background: var(--sand-light);
+    border: 1px solid var(--border-faint);
+    border-radius: 3px;
+    padding: 0.1em 0.4em;
+    color: var(--earth-dark);
+}
+
+/* --- Prose: code blocks (terminal-style panel) ---------------------
+   Fixed dark colors on purpose: a terminal stays dark in both themes,
+   like the footer / anchor sections. */
+.prose pre {
+    background: #262219;
+    color: #e8e0d0;
+    margin: 2rem 0;
+    padding: 1.25rem 1.5rem;
+    border-radius: 4px;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    line-height: 1.75;
+    font-size: 0.875rem;
+}
+
+.prose pre code {
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    color: inherit;
+    font-size: inherit;
+}
+
+/* --- Prose: blockquote (dialogue-template callout) ------------------
+   The book's 「Claudeに聞いてみよう」 boxes are blockquotes: render them
+   as a distinct prompt card the reader copies and fills in. */
+.prose blockquote {
+    background: rgba(122, 154, 109, 0.08);
+    border-left: 3px solid var(--moss-green);
+    border-radius: 0 4px 4px 0;
+    margin: 1.75rem 0;
+    padding: 1.25rem 1.5rem;
+    font-size: 0.97em;
+}
+
+.prose blockquote p {
+    margin-bottom: 0.8rem;
+}
+
+.prose blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.prose blockquote pre {
+    margin: 1rem 0;
+}
+
+/* --- Prose: horizontal rule (section break before footer) ---------- */
+.prose hr {
+    border: none;
+    border-top: 1px solid var(--border-subtle);
+    max-width: 16rem;
+    margin: 3rem auto;
 }
 
 /* Light Farming specific */

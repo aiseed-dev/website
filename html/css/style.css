@@ -458,7 +458,7 @@ p {
    Insights / book chapters use this — the area becomes a compact title
    block instead of a hero. */
 .page-hero.page-hero-noimg {
-    padding: 5rem 2rem 1.5rem;
+    padding: 7.5rem 2rem 1.5rem;
     background: none;
 }
 .page-hero.page-hero-noimg .hero-label {
@@ -1272,7 +1272,7 @@ p {
     }
 
     .page-hero.page-hero-noimg {
-        padding: 4rem 1.25rem 1rem;
+        padding: 6.5rem 1.25rem 1rem;
     }
 
     .page-hero {
@@ -1345,7 +1345,8 @@ p {
 }
 .breadcrumb a:hover { text-decoration: underline; }
 .breadcrumb .crumb-sep {
-    color: var(--root-tan, #c9b896);
+    color: var(--soil-rich, #6b5b3a);
+    opacity: 0.6;
     margin: 0 0.15rem;
 }
 .breadcrumb .crumb-part {
@@ -1367,7 +1368,23 @@ p {
     font-size: 0.85rem;
     line-height: 1.5;
     padding-right: 0.5rem;
+    /* Keep the sidebar's own scrollbar discreet — it sits between the TOC
+       and the article and must not read as a splitter. */
     scrollbar-width: thin;
+    scrollbar-color: var(--border-subtle) transparent;
+}
+.series-toc::-webkit-scrollbar {
+    width: 6px;
+}
+.series-toc::-webkit-scrollbar-track {
+    background: transparent;
+}
+.series-toc::-webkit-scrollbar-thumb {
+    background: var(--border-subtle);
+    border-radius: 3px;
+}
+.series-toc:hover::-webkit-scrollbar-thumb {
+    background: var(--clay);
 }
 .series-toc-close {
     display: none; /* mobile only */
@@ -1441,12 +1458,14 @@ p {
 .toc-num {
     display: inline-block;
     min-width: 1.8em;
-    color: var(--root-tan, #c9b896);
+    color: var(--soil-rich, #6b5b3a);
+    opacity: 0.75;
     font-variant-numeric: tabular-nums;
     font-size: 0.8em;
 }
 .toc-chapter.is-current .toc-num {
     color: var(--moss-green, #7a9a6d);
+    opacity: 1;
 }
 .toc-title {
     display: inline;

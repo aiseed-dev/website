@@ -565,6 +565,16 @@ def build_book_index(lang="ja"):
     )
 
     variables = book_index_vars(lang, chapter_list, has_translation=has_translation)
+    # CTA buttons lead into the series instead of the generic site links.
+    first_stem = _book_stem(chapters[0].get("slug", ""))
+    variables["cta_btn1_text"] = "Start from the Prologue" if is_en else "序章から読み始める"
+    variables["cta_btn1_link"] = f"{book_base}/{first_stem}/"
+    for sub_key, sub_cfg in BOOK_SUBSERIES.items():
+        if collect_book_chapters(lang, sub_key):
+            sub_name = sub_cfg["name_en"] if is_en else sub_cfg["name_ja"]
+            variables["cta_btn2_text"] = f"{sub_name} →" if is_en else f"{sub_name}へ →"
+            variables["cta_btn2_link"] = f"{book_base}/{sub_key}/"
+            break
     html = render("index.html", variables)
 
     if is_en:
@@ -609,6 +619,14 @@ def build_book_subseries_index(subseries, lang="ja"):
     variables = book_index_vars(
         lang, chapter_list, has_translation=has_translation, subseries=subseries
     )
+    # CTA buttons: into chapter 1, and back to the parent series.
+    first_stem = _book_stem(chapters[0].get("slug", ""), subseries)
+    variables["cta_btn1_text"] = "Start with Chapter 1" if is_en else "第1章から読み始める"
+    variables["cta_btn1_link"] = f"{book_base}/{first_stem}/"
+    variables["cta_btn2_text"] = (
+        "Main (Desktop) Series" if is_en else "本編（デスクトップ編）へ"
+    )
+    variables["cta_btn2_link"] = parent_base + "/"
     html = render("index.html", variables)
 
     if is_en:

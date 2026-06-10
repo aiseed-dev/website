@@ -186,10 +186,11 @@ def _build_insights_toc_html(lang, current_slug):
     return toc_html, breadcrumb_html
 
 
-def _collect_book_chapters(lang):
-    """Walk articles/claude-debian and return chapters for the book TOC."""
+def _collect_book_chapters(lang, subseries=""):
+    """Walk articles/claude-debian (or a sub-series folder) and return
+    chapters for the book TOC."""
     fname = "ja.md" if lang == "ja" else "en.md"
-    root = config.BOOK_DIR
+    root = config.BOOK_DIR / subseries if subseries else config.BOOK_DIR
     if not root.exists():
         return []
     chapters = []
@@ -207,15 +208,21 @@ def _collect_book_chapters(lang):
     return chapters
 
 
-def _build_book_toc_html(lang, current_slug):
-    """Render the book series sidebar HTML, current chapter highlighted."""
+def _build_book_toc_html(lang, current_slug, subseries=""):
+    """Render the book series sidebar HTML, current chapter highlighted.
+
+    For sub-series chapters the sidebar is scoped to the sub-series and the
+    related-links block points back to the parent (desktop) series.
+    """
     is_en = lang == "en"
-    book_base = "/en/claude-debian" if is_en else "/claude-debian"
-    chapters = _collect_book_chapters(lang)
+    book_base = _book_base(lang, subseries)
+    parent_base = _book_base(lang)
+    chapters = _collect_book_chapters(lang, subseries)
     if not chapters:
         return "", ""
 
-    series_title = _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian")
+    series_title = _book_series_title(lang, subseries)
+    parent_title = _book_series_title(lang)
     related_title = _text(is_en, "Related Series", "関連シリーズ")
     insights_label = _text(is_en, "Structural Analysis", "構造分析")
     aiways_label = _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法")
@@ -225,10 +232,7 @@ def _build_book_toc_html(lang, current_slug):
     chapter_lis = []
     current_chapter_label = ""
     for c in chapters:
-        # Book URL stem strips the claude-debian- prefix from slug
-        stem = c["slug"]
-        if stem.startswith("claude-debian-"):
-            stem = stem[len("claude-debian-"):]
+        stem = _book_stem(c["slug"], subseries)
         is_current = c["slug"] == current_slug
         if is_current:
             n = c["number"].lstrip("0") or "0"
@@ -246,6 +250,22 @@ def _build_book_toc_html(lang, current_slug):
             f'<span class="toc-title">{escape(c["title"])}</span></a></li>'
         )
 
+    related_lis = []
+    if subseries:
+        related_lis.append(
+            f'<li><a href="{parent_base}/">{escape(parent_title)}</a></li>'
+        )
+    else:
+        for sub_key, cfg in BOOK_SUBSERIES.items():
+            if not _collect_book_chapters(lang, sub_key):
+                continue
+            sub_title = _book_series_title(lang, sub_key)
+            related_lis.append(
+                f'<li><a href="{_book_base(lang, sub_key)}/">{escape(sub_title)}</a></li>'
+            )
+    related_lis.append(f'<li><a href="{insights_base}/">{escape(insights_label)}</a></li>')
+    related_lis.append(f'<li><a href="{aiways_base}/">{escape(aiways_label)}</a></li>')
+
     toc_html = (
         f'<aside class="series-toc" id="seriesToc" aria-label="{escape(series_title)}">'
         f'<button class="series-toc-close" type="button" aria-label="Close">×</button>'
@@ -255,16 +275,19 @@ def _build_book_toc_html(lang, current_slug):
         f'<div class="toc-related">'
         f'<p class="toc-related-title">{escape(related_title)}</p>'
         f"<ul>"
-        f'<li><a href="{insights_base}/">{escape(insights_label)}</a></li>'
-        f'<li><a href="{aiways_base}/">{escape(aiways_label)}</a></li>'
+        f"{''.join(related_lis)}"
         f"</ul></div>"
         f"</div></aside>"
     )
 
     crumbs = [
         f'<a href="{"/en/" if is_en else "/"}">aiseed.dev</a>',
-        f'<a href="{book_base}/">{escape(series_title)}</a>',
+        f'<a href="{parent_base}/">{escape(parent_title)}</a>',
     ]
+    if subseries:
+        cfg = BOOK_SUBSERIES[subseries]
+        sub_name = cfg["name_en"] if is_en else cfg["name_ja"]
+        crumbs.append(f'<a href="{book_base}/">{escape(sub_name)}</a>')
     if current_chapter_label:
         crumbs.append(
             f'<span class="crumb-current" aria-current="page">'
@@ -537,23 +560,72 @@ _BOOK_BASE_EN = "/en/claude-debian"
 _BOOK_TITLE_JA = "Claudeと一緒に学ぶDebian"
 _BOOK_TITLE_EN = "Learning Debian with Claude"
 
+# Book sub-series registry. Each sub-series lives in
+# `articles/claude-debian/<key>/`, numbers its chapters from 01, slugs its
+# chapters `claude-debian-<key>-NN-…`, and is published under
+# `/claude-debian/<key>/`. The parent index announces each sub-series with a
+# hero card (see build_article.py).
+BOOK_SUBSERIES = {
+    "server": {
+        "name_ja": "サーバー編",
+        "name_en": "Server Edition",
+        "subtitle_ja": "GUIのない世界で、Claudeと一緒に自分のインフラを持つ",
+        "subtitle_en": "Own your infrastructure with Claude, in a world without a GUI",
+        "description_ja": (
+            "デスクトップ編の続編。画面のないDebianをSSHで操り、守りを固め、"
+            "サービスを動かし、公開し、データを守る。サーバー管理はすべてが"
+            "テキスト——Claudeと学ぶ方式が最も深く効く領域を、10章で歩く。"
+        ),
+        "description_en": (
+            "The sequel to the desktop series. Drive a screenless Debian over "
+            "SSH, harden it, run services, publish them, and protect your "
+            "data. Server administration is all text — the domain where "
+            "learning with Claude works best — covered in 10 chapters."
+        ),
+    },
+}
 
-def _book_stem(slug):
-    """Strip the book slug prefix so URLs read /claude-debian/{stem}/."""
+
+def _book_stem(slug, subseries=""):
+    """Strip the book slug prefix so URLs read /claude-debian/{stem}/
+    (or /claude-debian/<subseries>/{stem}/ for sub-series chapters)."""
+    if subseries:
+        prefix = f"{_BOOK_SLUG_PREFIX}{subseries}-"
+        if slug.startswith(prefix):
+            return slug[len(prefix):]
     if slug.startswith(_BOOK_SLUG_PREFIX):
         return slug[len(_BOOK_SLUG_PREFIX):]
     return slug
+
+
+def _book_base(lang, subseries=""):
+    """URL prefix for book pages, e.g. '/claude-debian' or
+    '/en/claude-debian/server'."""
+    base = _BOOK_BASE_EN if lang == "en" else _BOOK_BASE_JA
+    return f"{base}/{subseries}" if subseries else base
+
+
+def _book_series_title(lang, subseries=""):
+    """Display title: parent title, or 'parent — sub-series name'."""
+    is_en = lang == "en"
+    title = _BOOK_TITLE_EN if is_en else _BOOK_TITLE_JA
+    if subseries:
+        cfg = BOOK_SUBSERIES[subseries]
+        name = cfg["name_en"] if is_en else cfg["name_ja"]
+        return f"{title} — {name}"
+    return title
 
 
 def book_vars(meta, body_html):
     """Build template variables for a single book chapter."""
     lang = meta.get("lang", "ja")
     is_en = lang == "en"
-    book_base = _BOOK_BASE_EN if is_en else _BOOK_BASE_JA
-    book_title = _BOOK_TITLE_EN if is_en else _BOOK_TITLE_JA
+    subseries = meta.get("_subseries", "")
+    book_base = _book_base(lang, subseries)
+    book_title = _book_series_title(lang, subseries)
 
     slug = meta.get("slug", "")
-    stem = _book_stem(slug)
+    stem = _book_stem(slug, subseries)
     number = meta.get("number", "")
 
     prev_slug = meta.get("prev_slug", "")
@@ -561,7 +633,7 @@ def book_vars(meta, body_html):
     next_slug = meta.get("next_slug", "")
     next_title = meta.get("next_title", "")
 
-    series_toc_html, breadcrumb_html = _build_book_toc_html(lang, slug)
+    series_toc_html, breadcrumb_html = _build_book_toc_html(lang, slug, subseries)
 
     # Navigation: prev/next frontmatter uses full slug; URLs use the stem.
     # At the tail of the book we fall back to the table of contents.
@@ -571,14 +643,18 @@ def book_vars(meta, body_html):
 
     nav_html = '<div class="article-nav">\n'
     if prev_slug:
-        nav_html += f'  <a href="{book_base}/{_book_stem(prev_slug)}/">&larr; {prev_prefix}{prev_title}</a>\n'
+        nav_html += f'  <a href="{book_base}/{_book_stem(prev_slug, subseries)}/">&larr; {prev_prefix}{prev_title}</a>\n'
     else:
         nav_html += '  <span></span>\n'
     if next_slug:
-        nav_html += f'  <a href="{book_base}/{_book_stem(next_slug)}/">{next_prefix}{next_title} &rarr;</a>\n'
+        nav_html += f'  <a href="{book_base}/{_book_stem(next_slug, subseries)}/">{next_prefix}{next_title} &rarr;</a>\n'
     else:
         nav_html += f'  <a href="{book_base}/">{book_top} &rarr;</a>\n'
     nav_html += '</div>'
+
+    # Chapter pages of a sub-series sit one directory deeper, so relative
+    # asset paths need one more '../'.
+    rel = "../" * ((3 if is_en else 2) + (1 if subseries else 0))
 
     return {
         "lang": lang,
@@ -606,12 +682,12 @@ def book_vars(meta, body_html):
         "cta_btn2_text": meta.get("cta_btn2_text", "Insights"),
         "cta_btn2_link": meta.get("cta_btn2_link", "/en/insights/" if is_en else "/insights/"),
         # Paths
-        "css_path": "../../../css/style.css" if is_en else "../../css/style.css",
-        "js_path": "../../../js/main.js" if is_en else "../../js/main.js",
+        "css_path": f"{rel}css/style.css",
+        "js_path": f"{rel}js/main.js",
         "asset_version": config.asset_version(),
         # Reuse og-image.jpg (same dir) as page hero when hero_image is set
         "img_path": "og-image.jpg" if meta.get("hero_image") else (
-            "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg"
+            f"{rel}images/IMG_3285.jpg"
         ),
         # Book chapters are dense, structured text; suppress the visible hero
         # image. og:image (separate variable) is preserved for social sharing.
@@ -622,7 +698,8 @@ def book_vars(meta, body_html):
         # Navigation bar labels (shared site nav)
         "insights_base": "/en/insights" if is_en else "/insights",
         "blog_base": "/en/blog" if is_en else "/blog",
-        "book_base": book_base,
+        # Site-nav link always points at the parent series index.
+        "book_base": _book_base(lang),
         "site_name": config.site_text("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
         "site_tagline": "aiseed.dev",
         "home_label": _text(is_en, "Home", "ホーム"),
@@ -656,8 +733,8 @@ def book_vars(meta, body_html):
             "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
         # SEO
         "canonical_url": f"{config.SITE_URL}{book_base}/{stem}/",
-        "hreflang_ja": f"{config.SITE_URL}{_BOOK_BASE_JA}/{stem}/",
-        "hreflang_en": f"{config.SITE_URL}{_BOOK_BASE_EN}/{stem}/" if meta.get("_has_translation") else "",
+        "hreflang_ja": f"{config.SITE_URL}{_book_base('ja', subseries)}/{stem}/",
+        "hreflang_en": f"{config.SITE_URL}{_book_base('en', subseries)}/{stem}/" if meta.get("_has_translation") else "",
         "og_locale": "en_US" if is_en else "ja_JP",
         "og_image": resolve_og_image(
             meta,
@@ -666,7 +743,10 @@ def book_vars(meta, body_html):
         ),
         # Language switch — only shown when a sibling-language edition exists.
         "has_translation": bool(meta.get("_has_translation", False)),
-        "lang_switch_link": (f"{_BOOK_BASE_JA}/{stem}/" if is_en else f"{_BOOK_BASE_EN}/{stem}/"),
+        "lang_switch_link": (
+            f"{_book_base('ja', subseries)}/{stem}/" if is_en
+            else f"{_book_base('en', subseries)}/{stem}/"
+        ),
         "lang_switch_label": "日本語" if is_en else "EN",
         "lang_switch_hreflang": "ja" if is_en else "en",
         "lang_switch_aria": "日本語版を表示" if is_en else "View in English",
@@ -871,13 +951,16 @@ def farming_index_vars(lang, chapter_list_html, has_translation=False):
     }
 
 
-def book_index_vars(lang, chapter_list_html, has_translation=False):
-    """Build template variables for the book table-of-contents page."""
+def book_index_vars(lang, chapter_list_html, has_translation=False, subseries=""):
+    """Build template variables for the book table-of-contents page
+    (parent series, or one sub-series when `subseries` is given)."""
     is_en = lang == "en"
-    book_base = _BOOK_BASE_EN if is_en else _BOOK_BASE_JA
-    book_title = _BOOK_TITLE_EN if is_en else _BOOK_TITLE_JA
+    book_base = _book_base(lang, subseries)
+    book_title = _book_series_title(lang, subseries)
+    # Sub-series index sits one directory deeper than the parent index.
+    rel = "../" * ((2 if is_en else 1) + (1 if subseries else 0))
 
-    return {
+    variables = {
         "lang": lang,
         "site_name": config.site_text("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
         "home_label": _text(is_en, "Home", "ホーム"),
@@ -903,12 +986,13 @@ def book_index_vars(lang, chapter_list_html, has_translation=False):
         "aiways_base": "/en/ai-native-ways" if is_en else "/ai-native-ways",
         "insights_base": "/en/insights" if is_en else "/insights",
         "blog_base": "/en/blog" if is_en else "/blog",
-        "book_base": book_base,
-        "css_path": "../../css/style.css" if is_en else "../css/style.css",
-        "js_path": "../../js/main.js" if is_en else "../js/main.js",
+        # Site-nav link always points at the parent series index.
+        "book_base": _book_base(lang),
+        "css_path": f"{rel}css/style.css",
+        "js_path": f"{rel}js/main.js",
 
         "asset_version": config.asset_version(),
-        "img_path": "../../images/IMG_3285.jpg" if is_en else "../images/IMG_3285.jpg",
+        "img_path": f"{rel}images/IMG_3285.jpg",
         "meta_description": _text(is_en,
             "A new kind of textbook you read with Claude beside you. Learn the migration to Debian through dialogue, tailored to your own situation.",
             "Claudeを横に置いて読む新しい形の教科書。Debianへの移行を、対話を通じて自分の状況に合わせて学ぶ。"),
@@ -917,7 +1001,7 @@ def book_index_vars(lang, chapter_list_html, has_translation=False):
         "page_subtitle": _text(is_en,
             "A textbook you dialogue with, not just read",
             "読むのではなく、対話する教科書"),
-        "other_lang_link": (_BOOK_BASE_JA + "/") if is_en else (_BOOK_BASE_EN + "/"),
+        "other_lang_link": _book_base("ja" if is_en else "en", subseries) + "/",
         "other_lang_text": _text(is_en, "日本語版はこちら →", "English version available →") if has_translation else "",
         "lang_switch_label": "日本語" if is_en else "EN",
         "lang_switch_hreflang": "ja" if is_en else "en",
@@ -958,11 +1042,54 @@ def book_index_vars(lang, chapter_list_html, has_translation=False):
         "copyright_text": config.site_text("copyright_text", lang, _text(is_en, "Living in the AI Era — aiseed.dev", "AI時代の暮らし")),
         # SEO
         "canonical_url": f"{config.SITE_URL}{book_base}/",
-        "hreflang_ja": f"{config.SITE_URL}{_BOOK_BASE_JA}/",
-        "hreflang_en": f"{config.SITE_URL}{_BOOK_BASE_EN}/" if has_translation else "",
+        "hreflang_ja": f"{config.SITE_URL}{_book_base('ja', subseries)}/",
+        "hreflang_en": f"{config.SITE_URL}{_book_base('en', subseries)}/" if has_translation else "",
         "og_locale": "en_US" if is_en else "ja_JP",
         "og_image": config.DEFAULT_OG_IMAGE,
     }
+
+    if subseries:
+        cfg = BOOK_SUBSERIES[subseries]
+        name = cfg["name_en"] if is_en else cfg["name_ja"]
+        subtitle = cfg["subtitle_en"] if is_en else cfg["subtitle_ja"]
+        description = cfg["description_en"] if is_en else cfg["description_ja"]
+        parent_base = _book_base(lang)
+        parent_title = _book_series_title(lang)
+        back_label = _text(
+            is_en,
+            f"← Back to {parent_title}",
+            f"← {parent_title} 目次へ",
+        )
+        variables.update({
+            "structural_analysis_label": book_title,
+            "page_title": book_title,
+            "page_subtitle": subtitle,
+            "meta_description": description,
+            "series_title": _text(is_en, f"All chapters — {name}", f"{name} 全章"),
+            "series_description": description,
+            "intro_html": (
+                f'<a href="{parent_base}/" style="color: inherit;">{back_label}</a><br>\n'
+                f"                    {description}"
+            ),
+            "method_title": _text(is_en, "How to read", "読み方"),
+            "method_html": _text(
+                is_en,
+                "Same craft as the desktop series: at the end of each chapter, "
+                "type your own situation into Claude before moving on.<br>\n                    "
+                "On a server everything is text — logs, configs, errors — so the "
+                "dialogue works even better here.",
+                "読み方は本編と同じ。各章の末尾で、自分の状況を Claude に打ち込んでから次に進む。<br>\n                    "
+                "サーバーではログも設定もエラーも全てテキストなので、この方式はいっそう深く効く。"),
+            "cta_title": _text(is_en, "Start with Chapter 1", "第1章から読み始める"),
+            "cta_html": _text(
+                is_en,
+                "Read in order from Chapter 1.<br>\n"
+                'When you\'re stuck, ask Claude: "Given what I\'ve read so far, what should I do?"',
+                "第1章から、順に読み進めよう。<br>\n"
+                "迷ったら、Claude に「ここまで読んで、自分はどうすべきか」と聞けばいい。"),
+        })
+
+    return variables
 
 
 def blog_vars(meta, body_html):

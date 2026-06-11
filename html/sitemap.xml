@@ -191,6 +191,21 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/en/insights/it-revolution-feudalism/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/insights/structural-contradictions/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/insights/lord-class-collapse/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/en/insights/ai-and-individual/</loc>
     <lastmod>2025-04-04</lastmod>
     <priority>0.6</priority>
@@ -203,6 +218,26 @@
   <url>
     <loc>https://aiseed.dev/en/insights/healthcare-fiscal/</loc>
     <lastmod>2025-04-04</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/insights/two-layer-ai-revolution/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/insights/types-and-python/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/insights/translation-labor/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/insights/builder-emergence/</loc>
+    <lastmod>2026-05-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -221,6 +256,21 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/en/insights/nativism-observation/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/insights/freedom-conditions/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/insights/ai-native-free-individual/</loc>
+    <lastmod>2026-05-23</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/blog/</loc>
     <lastmod>2026-08-10</lastmod>
     <priority>0.8</priority>
@@ -228,6 +278,11 @@
   <url>
     <loc>https://aiseed.dev/en/blog/</loc>
     <lastmod>2026-08-10</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/blog/building-apps-through-dialogue/</loc>
+    <lastmod>2026-06-09</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
@@ -349,6 +404,11 @@
     <loc>https://aiseed.dev/blog/grid-attack-naphtha/</loc>
     <lastmod>2026-04-06</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/blog/building-apps-through-dialogue/</loc>
+    <lastmod>2026-06-09</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://aiseed.dev/en/blog/self-hosting-microsoft-365/</loc>

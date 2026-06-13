@@ -45,11 +45,10 @@ vegitage-data/
 │   ├── master_lists/             # 調査対象の品目リスト・種子店一覧
 │   ├── vegetables/ , recipes/    # 構造化JSON DB（将来目標・現状サンプルのみ＝保留）
 │   └── extracted_varieties*.csv  # 品種抽出（検索用・保留）
-├── scripts/
-│   ├── gen_icons.py              # アイコン生成（Gemini）→ web/static/icons
-│   ├── extract_varieties*.py     # 品種抽出（保留）
-│   └── build.py                  # 旧・非正本（data/deep_research を読む）。退役予定
-├── src/                          # 構造化DBリサーチ（agents / schemas / validators）＝保留
+├── src/                          # Python パッケージ（research / DB / tools）
+│   ├── agents/                   #   リサーチエージェント（research_min ほか）＝一部保留
+│   ├── schemas/ , validators/    #   構造化JSON DB のスキーマ/検証＝保留
+│   └── tools/                    #   gen_icons（アイコン生成）・extract_varieties*（品種抽出・保留）
 └── docs/                         # 計画書
 ```
 
@@ -105,8 +104,8 @@ hero_image: images/hero.jpg
 Markdown のみを管理する。公開は `web/site/italian` を `html/vegitage/italian` に
 相対シンボリックリンクし、`tools/cloudflare_pages_deploy.py` で Cloudflare Pages へ。
 
-> 旧 `scripts/build.py`（`data/deep_research` を読む経路）と `web/deploy.sh`（scp）は
-> 退役。構造化JSON DB（`src/`・`data/{vegetables,recipes}`）と品種抽出は保留。
+> 旧 `scripts/build.py`（`data/deep_research` を読む経路）は退役・削除済み。`web/deploy.sh`（scp）
+> も退役。構造化JSON DB（`src/`・`data/{vegetables,recipes}`）と品種抽出（`src/tools/`）は保留。
 
 ## 作物を1つ追加・更新する手順（運用）
 

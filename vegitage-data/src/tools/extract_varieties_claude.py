@@ -3,9 +3,9 @@
 
 使い方:
   pip install claude-agent-sdk
-  python scripts/extract_varieties_claude.py
-  python scripts/extract_varieties_claude.py --only オリーブ,ブドウ,メロン
-  python scripts/extract_varieties_claude.py --src web/italian/cuisine
+  python src/tools/extract_varieties_claude.py
+  python src/tools/extract_varieties_claude.py --only オリーブ,ブドウ,メロン
+  python src/tools/extract_varieties_claude.py --src web/italian/cuisine
 """
 
 import asyncio
@@ -16,7 +16,7 @@ from pathlib import Path
 
 from claude_agent_sdk import query, ClaudeAgentOptions, AssistantMessage, ResultMessage, TextBlock
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_SRC_DIR = ROOT / "web" / "italian" / "cultivation"
 OUT_FILE = ROOT / "data" / "extracted_varieties_claude.csv"
 

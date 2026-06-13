@@ -23,6 +23,7 @@ dev = [
 
 [project.scripts]
 vegitage-research = "src.agents.research_agent:main_cli"
+vegitage-research-min = "src.agents.research_min:main_cli"
 vegitage-research-gemini = "src.agents.gemini_agent:main_cli"
 vegitage-validate = "src.validators.validate_data:main_cli"
 vegitage-batch = "src.agents.batch_runner:main_cli"

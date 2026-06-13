@@ -77,13 +77,37 @@ def file_hash(data: bytes, suffix: str) -> str:
 
 
 def collect(root: Path) -> dict[str, Path]:
-    files = {}
-    for p in sorted(root.rglob("*")):
-        if not p.is_file() or any(part.startswith(".") for part in p.parts):
+    """公開ディレクトリ配下のファイルを集める。
+
+    シンボリックリンク（ソフトリンク）も対象にする：
+    - ファイルへのリンク → リンク先の中身を、そのパスのファイルとして扱う
+    - ディレクトリへのリンク → リンク先の中へ降りて、中のファイルも集める
+    Cloudflare Pages はリンクという概念を持たないので、リンクは「実体のコピー」
+    として配信される。``os.walk(followlinks=True)`` で辿り、循環リンクは
+    実体パスの既訪チェックで止める。"""
+    files: dict[str, Path] = {}
+    seen_dirs: set[str] = set()
+    for dirpath, dirnames, filenames in os.walk(root, followlinks=True):
+        # 循環リンク対策：同じ実体ディレクトリを二度は降りない
+        real = os.path.realpath(dirpath)
+        if real in seen_dirs:
+            dirnames[:] = []
             continue
-        if p.stat().st_size > MAX_FILE_SIZE:
-            sys.exit(f"エラー: {p} が 25MiB を超えている（Pages の上限）")
-        files["/" + p.relative_to(root).as_posix()] = p
+        seen_dirs.add(real)
+        # 隠しディレクトリ（.git など）には降りない
+        dirnames[:] = sorted(n for n in dirnames if not n.startswith("."))
+        d = Path(dirpath)
+        for name in sorted(filenames):
+            if name.startswith("."):
+                continue
+            p = d / name
+            # is_file() はリンク先を辿る（壊れたリンクは False で除外される）
+            if not p.is_file():
+                continue
+            rel = p.relative_to(root).as_posix()
+            if p.stat().st_size > MAX_FILE_SIZE:
+                sys.exit(f"エラー: {p} が 25MiB を超えている（Pages の上限）")
+            files["/" + rel] = p
     if not files:
         sys.exit(f"エラー: {root} にファイルがない")
     return files

@@ -108,6 +108,34 @@ Markdown のみを管理する。公開は `web/site/italian` を `html/vegitage
 > 旧 `scripts/build.py`（`data/deep_research` を読む経路）と `web/deploy.sh`（scp）は
 > 退役。構造化JSON DB（`src/`・`data/{vegetables,recipes}`）と品種抽出は保留。
 
+## 作物を1つ追加・更新する手順（運用）
+
+```
+1. たたき台を作る（AI・任意）
+   ./.venv/bin/python -m src.agents.research_min "アーティチョーク" --it Carciofo --en Artichoke
+   → data/deep_research/italian/アーティチョーク/ に 概要・歴史・栽培・料理（出典付き）
+
+2. 人間が確定する ★ここが正本
+   ② を読んで確認・修正し、web/italian/ に仕上げる:
+     web/italian/アーティチョーク.md            概要（YAMLフロントマター＋短い概要文）
+     web/italian/history/アーティチョーク.md     歴史
+     web/italian/cultivation/アーティチョーク.md 栽培
+     web/italian/cuisine/アーティチョーク.md     料理
+   ・事実（DOP/IGP・学名・産地・統計）は出典と人手で必ず検証する
+   ・index_group / type / certification / regions などフロントマターを整える
+
+3. ビルドして確認
+   ./.venv/bin/python web/build.py
+   ./.venv/bin/python -m http.server --directory web/site 8001  # localhost で目視
+
+4. 公開（本体サイト経由）
+   web/site/italian は html/vegitage/italian に相対シンボリックリンク済み。
+   リポジトリ直下で本体の手順に従い Cloudflare へ（詳細は docs/manuals/deploy-and-publish.md）。
+```
+
+> AI は「たたき台（②）」を機械の速さで出す道具。**確定するのは人間（③ web/italian）**。
+> 辞典には「現行システム」のような正解器が無いので、検証は出典＋人間が担う。
+
 ## データスキーマ
 
 ### 野菜エントリー (例: IT-VEG-TOM-001)

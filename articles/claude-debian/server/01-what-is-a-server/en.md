@@ -4,7 +4,7 @@ lang: en
 number: "01"
 title: Chapter 1 — What Is a Server
 subtitle: Debian without a screen, and a life of touching it remotely
-description: A server is "the backstage worker that keeps running while you are not touching it." A text-only world with no GUI is a perfect match for the learn-with-Claude method. This chapter sets up the entrance for readers who, having finished the desktop edition, want to run their own files, photos, notes, and homemade apps on their own machine.
+description: A server is "the backstage worker that keeps running while you are not touching it." This book's premise: a home server or a VPS, with your data managed by you — not entrusted to someone else's cloud service, but kept on a machine where you hold root. The all-text, GUI-less world pairs perfectly with learning alongside Claude. This chapter settles that premise and the reasons behind it.
 date: 2026.06.10
 label: Claude × Debian Server 01
 prev_slug:
@@ -27,6 +27,14 @@ In the main edition (the desktop edition), we walked through replacing the PC yo
 A server is different. **A server is the backstage worker that keeps running while you are not touching it.** It hands out files in the middle of the night, stores your photos, syncs your notes, keeps the app you wrote alive. Even when no one is watching the screen, it does not stop. That is the essence of a server, and the biggest difference from a desktop.
 
 This server edition is open both to readers who have finished the main edition and to readers reading it in parallel. The only prerequisite is "you can type a single command at a Debian terminal." With that alone, you can enter a world where you run your own file sharing, your own photo server, your own note sync, and your own homemade apps — **on your own machine.**
+
+Right at that entrance, let me declare this book's **premises**.
+
+1. **The server lives in your home or on a VPS.** An old PC or mini PC running in your house, or a VPS rented for a few hundred yen a month. Either way, the inside of the OS — root — is yours. Which one to start with is decided in Chapter 2.
+2. **You manage your own data.** It is not entrusted to someone else's cloud service — it lives in the databases on your own server (Chapter 7), and you back it up with your own hands (Chapter 10).
+3. **No containers.** Apps run as "directory + venv + systemd," isolated by permissions and systemd's sandbox (Chapter 8).
+
+In other words, this is not a book of server generalities. It is a book about **building your own infrastructure and taking the initiative over your data back into your own hands.** Why choose these premises? Section 2 makes the case.
 
 This is not a how-to chapter. It is a second prologue of sorts, settling three things: what a server is, why you would own one yourself, and how to read this server edition.
 
@@ -88,7 +96,7 @@ Putting "what you want to run" into words first makes it easier to decide where 
 
 Photos go to a cloud photo service, files to some storage, notes to another company's sync service — before you know it, the data of your life is scattered across the servers of multiple other companies. Convenient, but in exchange **you have handed over the initiative on "where your data is, who can see it, and how long you can use it."**
 
-The stance repeated in the main edition — "keep your distance from vendor lock-in," "eliminate black boxes" — deepens a notch on a server. Put data on your own server, and it sits **physically on a machine in your own hands.** If a service raises its price, changes its terms, or shuts down, your data remains on your machine. That is data sovereignty.
+The stance repeated in the main edition — "keep your distance from vendor lock-in," "eliminate black boxes" — deepens a notch on a server. Put data on your own server, and it sits **on a machine where you hold root** (at home, it is physically in your hands as well). If a service raises its price, changes its terms, or shuts down, your data remains under your control. That is data sovereignty.
 
 ### Facing the Pile-up of Monthly Fees
 

@@ -133,10 +133,17 @@
                 <h2 class="section-title">{{ cta_title }}</h2>
             </div>
             <p class="cta-text">{{ cta_html }}</p>
-            <div class="text-center">
-                <a href="{{ lf_link }}" class="btn btn-light" style="margin-right: 1rem;">Light Farming</a>
+            {% if cta_btn1_link %}
+            <div class="cta-buttons">
+                <a href="{{ cta_btn1_link }}" class="btn btn-light">{{ cta_btn1_text }}</a>
+                {% if cta_btn2_link %}<a href="{{ cta_btn2_link }}" class="btn btn-outline">{{ cta_btn2_text }}</a>{% endif %}
+            </div>
+            {% else %}
+            <div class="cta-buttons">
+                <a href="{{ lf_link }}" class="btn btn-light">Light Farming</a>
                 <a href="{{ about_link }}" class="btn btn-outline">{{ about_label }}</a>
             </div>
+            {% endif %}
         </div>
     </section>
 

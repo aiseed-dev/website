@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 SRC_DIR = ROOT / "web" / "italian"
 OUT_DIR = ROOT / "web" / "static" / "icons"
 

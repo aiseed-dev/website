@@ -4,7 +4,7 @@
 import re
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 SRC_DIR = ROOT / "web" / "italian" / "cultivation"
 OUT_FILE = ROOT / "data" / "extracted_varieties.csv"
 

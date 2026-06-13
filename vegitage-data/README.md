@@ -29,58 +29,111 @@
 
 ```
 vegitage-data/
+├── web/
+│   ├── italian/                  # ★正本（人間が修正・確定する原稿）
+│   │   ├── <作物>.md              #   概要（YAMLフロントマター＋短い概要文）
+│   │   ├── history/<作物>.md      #   歴史
+│   │   ├── cultivation/<作物>.md  #   栽培
+│   │   └── cuisine/<作物>.md      #   料理
+│   ├── build.py                  # ★正本ビルダー（MD → web/site/ の HTML）
+│   ├── static/                   # CSS・アイコン（gen_icons.py の出力先）
+│   └── site/                     # ビルド出力（.gitignore）
 ├── data/
-│   └── deep_research/
-│       └── italian/               # カテゴリ（国別）
-│           ├── そば/              # 作物ごとのフォルダー
-│           │   ├── history.md     # 歴史（必須、原稿）
-│           │   ├── cultivation.md # 栽培ガイド（任意、原稿）
-│           │   ├── cuisine.md     # 料理ガイド（任意、原稿）
-│           │   ├── meta.yaml      # 学名・サブタイトル・hero画像（任意）
-│           │   ├── images/        # 写真（任意、HTMLにコピー）
-│           │   │   ├── hero.jpg
-│           │   │   └── ...
-│           │   └── resources/     # 原稿の素材（任意、HTMLには出力されない）
-│           │       ├── gemini-deep-research.md
-│           │       ├── reference.pdf
-│           │       └── notes.md
-│           └── アーティチョーク/
-│               └── ...
-├── scripts/
-│   ├── build.py                   # 静的サイトビルダー (MD → HTML)
-│   └── gen_icons.py               # アイコン生成 (Gemini)
-├── static/
-│   ├── style.css                  # サイト共通 CSS
-│   └── icons/                     # アイコン素材
-└── docs/                          # 計画書
+│   ├── deep_research/
+│   │   ├── イタリア野菜/           # ① Gemini 調査報告書（一次資料）
+│   │   └── italian/<作物>/         # ② ①をAIが要約した「たたき台」→ 人手で web/italian へ仕上げる
+│   ├── master_lists/             # 調査対象の品目リスト・種子店一覧
+│   ├── vegetables/ , recipes/    # 構造化JSON DB（将来目標・現状サンプルのみ＝保留）
+│   └── extracted_varieties*.csv  # 品種抽出（検索用・保留）
+├── src/                          # Python パッケージ（research / DB / tools）
+│   ├── agents/                   #   リサーチエージェント（research_min ほか）＝一部保留
+│   ├── schemas/ , validators/    #   構造化JSON DB のスキーマ/検証＝保留
+│   └── tools/                    #   gen_icons（アイコン生成）・extract_varieties*（品種抽出・保留）
+└── docs/                         # 計画書
 ```
 
-### 原稿作成のワークフロー
+### 正本の流れ（イタリア野菜）
 
-1. **素材を集める**: 各作物フォルダーの `resources/` に Deep Research 出力・PDF・取材メモなどを配置する（ファイル名は自由、何ファイルでも可）
-2. **原稿を生成する**: Claude Code CLI を対話で起動し、`resources/` を読んで `history.md` / `cultivation.md` / `cuisine.md` の3本を作成するよう依頼する
-3. **HTML にビルドする**: `python scripts/build.py` で原稿から静的サイトを生成する
+```
+① data/deep_research/イタリア野菜/   Gemini 調査報告書（一次資料）
+      │ AIが要約
+② data/deep_research/italian/<作物>/  AI要約（たたき台）
+      │ 人間がレビュー・修正
+③ web/italian/                        ★正本（人間確定稿）
+      │ web/build.py
+④ web/site/italian/                   HTML（ビルド出力・.gitignore）
+      │ 相対シンボリックリンク
+   html/vegitage/italian               本体の公開ディレクトリへ取り込み
+      │ tools/cloudflare_pages_deploy.py html（リンクを辿る）
+   Cloudflare Pages（/vegitage/italian/…）
+```
 
-`resources/` の中身は `build.py` では読まれないので、一次資料として自由に置いておける。
+### 概要フロントマター（各作物の `web/italian/<作物>.md` 冒頭）
+
+```yaml
+---
+id: IT-VEG-ART-001
+name_ja: アーティチョーク
+name_it: Carciofo
+name_en: Artichoke
+aliases: [チョウセンアザミ]      # 別名・地方名・別表記
+family: キク科                  # 科（植物学的事実・検索/参照）
+family_latin: Asteraceae
+botanical: Cynara cardunculus var. scolymus   # 種の学名
+index_group: キク科             # 目次「科」タブのグループ名（family と別管理・自由命名）
+type: [花菜類]                  # 複数可。概要先頭に表示・目次「type」タブ
+item: アーティチョーク
+certification: [DOP, IGP]
+regions: [Lazio, Sardegna]
+season: [春]
+uses: [加熱, 保存]
+hero_image: images/hero.jpg
+---
+```
+
+目次（index）はビルド時に静的生成し、`index_group`（科）と `type` の2タブで切り替える。
 
 ## ビルド
 
 ```bash
-# 出力先デフォルト: ../html/vegitage/
-python scripts/build.py
-
-# 出力先を指定
-python scripts/build.py --out /path/to/output
-
-# カテゴリ指定（デフォルトは全て）
-python scripts/build.py --category italian
-
-# 出力先をクリーンアップしてからビルド
-python scripts/build.py --clean
+# 正本ビルダー（出力: web/site/）
+./.venv/bin/python web/build.py
 ```
 
-生成された HTML は `.gitignore` 対象です。`data/deep_research/` 配下の
-Markdown ファイルのみをソースとして管理します。
+生成された HTML（`web/site/`）は `.gitignore` 対象。正本ソースは `web/italian/` の
+Markdown のみを管理する。公開は `web/site/italian` を `html/vegitage/italian` に
+相対シンボリックリンクし、`tools/cloudflare_pages_deploy.py` で Cloudflare Pages へ。
+
+> 旧 `scripts/build.py`（`data/deep_research` を読む経路）は退役・削除済み。`web/deploy.sh`（scp）
+> も退役。構造化JSON DB（`src/`・`data/{vegetables,recipes}`）と品種抽出（`src/tools/`）は保留。
+
+## 作物を1つ追加・更新する手順（運用）
+
+```
+1. たたき台を作る（AI・任意）
+   ./.venv/bin/python -m src.agents.research_min "アーティチョーク" --it Carciofo --en Artichoke
+   → data/deep_research/italian/アーティチョーク/ に 概要・歴史・栽培・料理（出典付き）
+
+2. 人間が確定する ★ここが正本
+   ② を読んで確認・修正し、web/italian/ に仕上げる:
+     web/italian/アーティチョーク.md            概要（YAMLフロントマター＋短い概要文）
+     web/italian/history/アーティチョーク.md     歴史
+     web/italian/cultivation/アーティチョーク.md 栽培
+     web/italian/cuisine/アーティチョーク.md     料理
+   ・事実（DOP/IGP・学名・産地・統計）は出典と人手で必ず検証する
+   ・index_group / type / certification / regions などフロントマターを整える
+
+3. ビルドして確認
+   ./.venv/bin/python web/build.py
+   ./.venv/bin/python -m http.server --directory web/site 8001  # localhost で目視
+
+4. 公開（本体サイト経由）
+   web/site/italian は html/vegitage/italian に相対シンボリックリンク済み。
+   リポジトリ直下で本体の手順に従い Cloudflare へ（詳細は docs/manuals/deploy-and-publish.md）。
+```
+
+> AI は「たたき台（②）」を機械の速さで出す道具。**確定するのは人間（③ web/italian）**。
+> 辞典には「現行システム」のような正解器が無いので、検証は出典＋人間が担う。
 
 ## データスキーマ
 

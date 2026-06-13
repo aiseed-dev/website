@@ -2,14 +2,19 @@
 """
 Vegitage — 野菜辞典 Web サイトビルダー
 
-web/<category>/*.md              → web/site/<category>/        に静的 HTML を生成
-web/<category>/cultivation/*.md  → web/site/<category>/cultivation/ に栽培ガイド HTML を生成
+正本ソース: web/<category>/ （人間が修正・確定する原稿）
+  web/<category>/<作物>.md            → 概要（YAMLフロントマター + 短い概要文）= トップ
+  web/<category>/history/<作物>.md     → 歴史
+  web/<category>/cultivation/<作物>.md → 栽培
+  web/<category>/cuisine/<作物>.md     → 料理
+  → web/site/<category>/ に静的 HTML を生成
 
-記事HTMLは2段階で生成:
-  1. MD → 本文HTML (article-content)
-  2. 本文HTML → 公開用テンプレート (2カラム: 本文 + サイドバー)
+概要ファイルは先頭に YAML フロントマター（分類・別名・学名・科・認証・産地など）を
+持つ。目次（index）は frontmatter を読み、index_group（科）と type の2タブで表示。
 
-Usage: python web/build.py
+旧スタイル（フロントマター無しのフラット .md）も後方互換でビルドできる。
+
+Usage: ./.venv/bin/python web/build.py
 """
 
 import csv
@@ -18,6 +23,7 @@ import shutil
 from pathlib import Path
 
 import markdown
+import yaml
 from markdown.extensions.tables import TableExtension
 from markdown.extensions.toc import TocExtension
 
@@ -62,14 +68,48 @@ def load_items_csv() -> dict:
     return items
 
 
+# ── Frontmatter ────────────────────────────────────────
+def parse_frontmatter(md_text: str) -> tuple[dict | None, str]:
+    """先頭の YAML フロントマター（--- ... ---）を取り出す。
+
+    返り値: (frontmatter dict または None, フロントマターを除いた本文)
+    """
+    if md_text.lstrip().startswith("---"):
+        text = md_text.lstrip()
+        parts = text.split("\n---", 1)
+        # 先頭行 "---" の次から閉じ "---" まで
+        m = re.match(r"^---\s*\n(.*?)\n---\s*\n?(.*)$", text, re.DOTALL)
+        if m:
+            try:
+                data = yaml.safe_load(m.group(1)) or {}
+            except yaml.YAMLError:
+                return None, md_text
+            if isinstance(data, dict):
+                return data, m.group(2)
+    return None, md_text
+
+
+def _as_list(value) -> list[str]:
+    if value is None:
+        return []
+    if isinstance(value, list):
+        return [str(v).strip() for v in value if str(v).strip()]
+    return [s.strip() for s in str(value).split(",") if s.strip()]
+
+
 # ── Metadata extraction ────────────────────────────────
 def extract_metadata(md_text: str) -> dict:
-    """MD ファイルの先頭からタイトル・学名・サブタイトルを抽出する。"""
-    lines = md_text.strip().split("\n")
+    """タイトル・学名・サブタイトルと、（あれば）フロントマターを抽出する。
+
+    新スタイル: 先頭の YAML フロントマター + 本文（H1・キャッチ・概要文）。
+    旧スタイル: フロントマター無し。従来どおり本文先頭から推定。
+    """
+    fm, body = parse_frontmatter(md_text)
+
+    # 本文先頭の "# タイトル" と "*学名* — キャッチ" 行を拾う（両スタイル共通）
     title = ""
     subtitle_line = ""
-
-    for line in lines:
+    for line in body.strip().split("\n"):
         stripped = line.strip()
         if stripped.startswith("# ") and not title:
             title = stripped[2:].strip()
@@ -77,20 +117,24 @@ def extract_metadata(md_text: str) -> dict:
             subtitle_line = stripped
             break
 
-    # subtitle_line: "*Asparagus officinalis L.* — 地中海の「野菜の王」"
     latin = ""
     subtitle = ""
     if subtitle_line:
-        # Extract latin name from italics
         m = re.search(r"\*([^*]+)\*", subtitle_line)
         if m:
             latin = m.group(1)
-        # Extract subtitle after —
         m2 = re.search(r"—\s*(.+)", subtitle_line)
         if m2:
             subtitle = m2.group(1).strip()
 
-    # Short name: "イタリアの" を除く
+    # フロントマターがあれば優先・補完
+    if fm:
+        title = fm.get("name_ja") or title
+        if fm.get("botanical"):
+            latin = str(fm["botanical"])
+        if not subtitle:
+            subtitle = "／".join(_as_list(fm.get("type"))) or str(fm.get("family", ""))
+
     short_name = title.replace("イタリアの", "")
 
     return {
@@ -99,7 +143,48 @@ def extract_metadata(md_text: str) -> dict:
         "latin": latin,
         "subtitle": subtitle,
         "subtitle_line": subtitle_line,
+        "frontmatter": fm,
+        "body": body,
+        "index_group": (fm.get("index_group") or fm.get("family") or "") if fm else "",
+        "types": _as_list(fm.get("type")) if fm else [],
     }
+
+
+# ── Overview header (frontmatter → HTML) ───────────────
+def render_overview_header(fm: dict) -> str:
+    """概要フロントマターを、ページ先頭の type バッジ + メタ表に描画する。"""
+    types = _as_list(fm.get("type"))
+    badges = "".join(f'<span class="type-badge">{t}</span>' for t in types)
+    badge_html = f'<div class="type-badges">{badges}</div>' if badges else ""
+
+    rows = []
+
+    def add(label: str, value: str):
+        if value:
+            rows.append(f'<tr><th>{label}</th><td>{value}</td></tr>')
+
+    aliases = "、".join(_as_list(fm.get("aliases")))
+    family = str(fm.get("family", ""))
+    if fm.get("family_latin"):
+        family = f'{family}（{fm["family_latin"]}）' if family else str(fm["family_latin"])
+    botanical = str(fm.get("botanical", ""))
+    cert = "、".join(_as_list(fm.get("certification")))
+    regions = "、".join(_as_list(fm.get("regions")))
+    season = "、".join(_as_list(fm.get("season")))
+    uses = "、".join(_as_list(fm.get("uses")))
+
+    add("別名", aliases)
+    add("学名", f"<em>{botanical}</em>" if botanical else "")
+    add("科", family)
+    add("認証", cert)
+    add("主な産地", regions)
+    add("旬", season)
+    add("用途", uses)
+
+    table = f'<table class="overview-meta"><tbody>{"".join(rows)}</tbody></table>' if rows else ""
+    if not badge_html and not table:
+        return ""
+    return f'<div class="overview-header">{badge_html}{table}</div>\n'
 
 
 # ── .md link → .html link conversion ──────────────────
@@ -174,9 +259,10 @@ def build_article_body(md_text: str) -> tuple[str, str]:
 
 
 # ── Guide navigation buttons ─────────────────────────
-# ボタン定義: (subdir, label)  — None は親記事
+# ボタン定義: (subdir, label)  — None は親記事（概要）
 GUIDE_BUTTONS = [
-    (None, "歴史"),
+    (None, "概要"),
+    ("history", "歴史"),
     ("cultivation", "栽培"),
     ("cuisine", "料理"),
 ]
@@ -184,11 +270,11 @@ GUIDE_BUTTONS = [
 
 def build_guide_nav(veg_name: str, current: str | None,
                     available: set[str], prefix: str = "") -> str:
-    """歴史・栽培・料理のナビボタンHTMLを生成する。
+    """概要・歴史・栽培・料理のナビボタンHTMLを生成する。
 
-    current: 現在のページの subdir (None=親記事, "cultivation", "cuisine")
+    current: 現在のページの subdir (None=概要, "history", "cultivation", "cuisine")
     available: 存在するサブガイドの subdir 集合
-    prefix: リンクの接頭辞 ("" for 親記事, "../" for サブガイド)
+    prefix: リンクの接頭辞 ("" for 概要, "../" for サブガイド)
     """
     buttons = []
     for subdir, label in GUIDE_BUTTONS:
@@ -196,11 +282,9 @@ def build_guide_nav(veg_name: str, current: str | None,
         if is_current:
             buttons.append(f'<span class="guide-nav-current">{label}</span>')
         elif subdir is None:
-            # 親記事へのリンク
             href = f'{prefix}{veg_name}.html'
             buttons.append(f'<a href="{href}">{label}</a>')
         elif subdir in available:
-            # サブガイドへのリンク
             if current is None:
                 href = f'{subdir}/{veg_name}.html'
             else:
@@ -236,14 +320,11 @@ def wrap_two_column(article_html: str, toc_html: str, guide_nav: str, back_link:
 
 # ── Sub-guide preprocessing ──────────────────────────
 def preprocess_subguide(md_text: str, veg_name: str, guide_type: str) -> str:
-    """サブガイドMDの前処理: 導入文を削除し、タイトルを統一する。
-
-    1. 最初の --- または # より前のテキストを削除
-    2. 元のh1タイトルを「# {veg_name}{guide_type}」に置換
-    """
+    """サブガイドMDの前処理: 導入文を削除し、タイトルを統一する。"""
+    # フロントマターがあれば落とす
+    _, md_text = parse_frontmatter(md_text)
     lines = md_text.split("\n")
 
-    # 最初の --- または # の位置を探す
     start = 0
     for i, line in enumerate(lines):
         stripped = line.strip()
@@ -251,17 +332,14 @@ def preprocess_subguide(md_text: str, veg_name: str, guide_type: str) -> str:
             start = i
             break
 
-    # --- で始まる場合はその次の行から
     if lines[start].strip() == "---":
         start += 1
 
-    # 空行をスキップ
     while start < len(lines) and not lines[start].strip():
         start += 1
 
     body_lines = lines[start:]
 
-    # h1 タイトル行を置換
     new_title = f"# {veg_name}{guide_type}"
     for i, line in enumerate(body_lines):
         if line.strip().startswith("# "):
@@ -273,8 +351,9 @@ def preprocess_subguide(md_text: str, veg_name: str, guide_type: str) -> str:
 
 # ── Sub-guide types ──────────────────────────────────
 SUBGUIDES = {
-    "cultivation": "栽培ガイド",
-    "cuisine": "料理ガイド",
+    "history": "の歴史",
+    "cultivation": "の栽培",
+    "cuisine": "の料理",
 }
 
 
@@ -306,14 +385,18 @@ def build_subguide(md_path: Path, out_dir: Path, cat: dict,
     return {"title": title, "veg_name": veg_name, "filename": md_path.stem + ".html"}
 
 
-# ── Build article page ────────────────────────────────
+# ── Build article page (概要 = トップ) ─────────────────
 def build_article(md_path: Path, out_dir: Path, cat: dict,
                   available_guides: set[str] | None = None) -> dict:
-    """1 つの MD ファイルを2カラムHTMLに変換して出力する。"""
+    """概要 MD を2カラムHTMLに変換して出力する。"""
     text = md_path.read_text(encoding="utf-8")
     meta = extract_metadata(text)
 
-    article_html, toc_html = build_article_body(text)
+    article_html, toc_html = build_article_body(meta["body"])
+
+    # フロントマターがあれば、概要ヘッダ（type バッジ + メタ表）を先頭に付ける
+    if meta.get("frontmatter"):
+        article_html = render_overview_header(meta["frontmatter"]) + article_html
 
     veg_name = md_path.stem
     guide_nav = build_guide_nav(veg_name, current=None,
@@ -329,21 +412,52 @@ def build_article(md_path: Path, out_dir: Path, cat: dict,
     return meta
 
 
-def build_index(articles: list[dict], out_dir: Path, cat: dict) -> None:
-    """カテゴリのトップページ（野菜一覧）を生成する。"""
-    # Sort by short_name
-    articles.sort(key=lambda a: a["short_name"])
+# ── Index (科 / type の2タブ・事前生成) ────────────────
+def _render_card(art: dict) -> str:
+    return (
+        f'<a href="{art["filename"]}" class="vegetable-card">\n'
+        f'  <div class="card-name">{art["short_name"]}</div>\n'
+        f'  <div class="card-latin">{art["latin"]}</div>\n'
+        f'  <div class="card-desc">{art["subtitle"]}</div>\n'
+        f"</a>"
+    )
 
-    cards = []
-    for art in articles:
-        filename = art["filename"]
-        cards.append(
-            f'<a href="{filename}" class="vegetable-card">\n'
-            f'  <div class="card-name">{art["short_name"]}</div>\n'
-            f'  <div class="card-latin">{art["latin"]}</div>\n'
-            f'  <div class="card-desc">{art["subtitle"]}</div>\n'
-            f"</a>"
+
+def _render_groups(groups: dict[str, list[dict]]) -> str:
+    """グループ名 → 記事リスト を、見出し付きのカードグリッドに描画する。"""
+    out = []
+    # 「未分類」は最後に
+    keys = sorted(k for k in groups if k != "未分類")
+    if "未分類" in groups:
+        keys.append("未分類")
+    for key in keys:
+        arts = sorted(groups[key], key=lambda a: a["short_name"])
+        cards = "\n".join(_render_card(a) for a in arts)
+        out.append(
+            f'<section class="index-group">\n'
+            f'  <h2 class="group-heading">{key}<span class="group-count">{len(arts)}</span></h2>\n'
+            f'  <div class="vegetable-grid">\n{cards}\n  </div>\n'
+            f'</section>'
         )
+    return "\n".join(out)
+
+
+def build_index(articles: list[dict], out_dir: Path, cat: dict) -> None:
+    """カテゴリのトップページ（科 / type の2タブ一覧）を生成する。"""
+    # 科タブ: index_group ごと
+    by_family: dict[str, list[dict]] = {}
+    for art in articles:
+        key = art.get("index_group") or "未分類"
+        by_family.setdefault(key, []).append(art)
+
+    # type タブ: type ごと（複数所属可）
+    by_type: dict[str, list[dict]] = {}
+    for art in articles:
+        types = art.get("types") or []
+        if not types:
+            by_type.setdefault("未分類", []).append(art)
+        for t in types:
+            by_type.setdefault(t, []).append(art)
 
     cat_title = cat["title"]
     cat_subtitle = cat["subtitle"]
@@ -359,8 +473,18 @@ def build_index(articles: list[dict], out_dir: Path, cat: dict) -> None:
   DOP・IGP認定品種から地方の在来品種まで、{len(articles)}種の野菜の世界をお楽しみください。
 </p>
 
-<div class="vegetable-grid">
-{''.join(cards)}
+<div class="index-tabs">
+  <input type="radio" name="index-tab" id="tab-family" checked>
+  <label for="tab-family">科で見る</label>
+  <input type="radio" name="index-tab" id="tab-type">
+  <label for="tab-type">種類で見る</label>
+
+  <div class="tab-panel panel-family">
+{_render_groups(by_family)}
+  </div>
+  <div class="tab-panel panel-type">
+{_render_groups(by_type)}
+  </div>
 </div>
 """
 
@@ -370,7 +494,6 @@ def build_index(articles: list[dict], out_dir: Path, cat: dict) -> None:
 
 
 def main():
-    # Clean and create dist
     if DIST_DIR.exists():
         shutil.rmtree(DIST_DIR)
     DIST_DIR.mkdir(parents=True)
@@ -385,8 +508,7 @@ def main():
         # Copy CSS
         shutil.copy2(STATIC_DIR / "style.css", out_dir / "style.css")
 
-        # ── サブガイドの存在マップを先にスキャン ────
-        # veg_name → {存在するsubdir集合}
+        # サブガイドの存在マップ
         guides_map: dict[str, set[str]] = {}
         for subdir in SUBGUIDES:
             sub_src = src_dir / subdir
@@ -394,7 +516,7 @@ def main():
                 for p in sub_src.glob("*.md"):
                     guides_map.setdefault(p.stem, set()).add(subdir)
 
-        # Build each article
+        # 概要（トップ）を各作物ぶんビルド
         articles = []
         md_files = sorted(src_dir.glob("*.md"))
         print(f"\n[{cat_key}] {cat['title']}: {len(md_files)} files")
@@ -406,12 +528,11 @@ def main():
             articles.append(meta)
             print(f"  ✓ {md_path.name} → {meta['filename']}")
 
-        # Build index
         build_index(articles, out_dir, cat)
-        print(f"  ✓ index.html (一覧ページ)")
+        print(f"  ✓ index.html (科/種類の2タブ一覧)")
         total += len(articles) + 1
 
-        # ── Sub-guides (cultivation, cuisine, ...) ────
+        # サブガイド（歴史・栽培・料理）
         for subdir, guide_type in SUBGUIDES.items():
             sub_src = src_dir / subdir
             if not sub_src.exists():

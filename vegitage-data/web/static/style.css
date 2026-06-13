@@ -560,3 +560,41 @@ body {
     font-size: 0.85rem;
   }
 }
+
+/* ── 概要ヘッダ（type バッジ + メタ表） ───────────────── */
+.overview-header { margin: 0 0 1.5rem; }
+.type-badges { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .8rem; }
+.type-badge {
+  display: inline-block; padding: .2rem .7rem; border-radius: 999px;
+  background: #e8f5e9; color: #3a4d34; font-size: .85rem; font-weight: 600;
+}
+table.overview-meta { width: 100%; border-collapse: collapse; font-size: .95rem; }
+table.overview-meta th, table.overview-meta td {
+  text-align: left; padding: .35rem .6rem; border-bottom: 1px solid #eee; vertical-align: top;
+}
+table.overview-meta th { width: 6.5em; color: #5a6b53; font-weight: 600; white-space: nowrap; }
+table.overview-meta em { font-style: italic; }
+
+/* ── 目次の 科/種類 タブ（pure CSS・事前生成） ────────── */
+.index-tabs > input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
+.index-tabs > label {
+  display: inline-block; padding: .5rem 1.1rem; cursor: pointer;
+  border: 1px solid #cdd8c6; border-bottom: none; border-radius: 8px 8px 0 0;
+  margin-right: .3rem; background: #f3f7f0; color: #5a6b53; font-weight: 600;
+}
+.index-tabs > input#tab-family:checked ~ label[for="tab-family"],
+.index-tabs > input#tab-type:checked ~ label[for="tab-type"] {
+  background: #fff; color: #3a4d34; border-color: #7a9a6d;
+}
+.tab-panel { display: none; border-top: 2px solid #7a9a6d; padding-top: 1.2rem; }
+.index-tabs > input#tab-family:checked ~ .panel-family,
+.index-tabs > input#tab-type:checked ~ .panel-type { display: block; }
+
+.index-group { margin-bottom: 2rem; }
+.group-heading {
+  font-size: 1.15rem; color: #3a4d34; border-left: 4px solid #7a9a6d;
+  padding-left: .6rem; margin: 1.2rem 0 .8rem;
+}
+.group-count {
+  font-size: .8rem; color: #8a9a82; font-weight: 400; margin-left: .5rem;
+}

@@ -191,6 +191,7 @@ def deploy(directory: str | Path, project: str, branch: str = "main",
     manifest = {}
     by_hash: dict[str, Path] = {}
     for url_path, p in files.items():
+
         h = file_hash(p.read_bytes(), p.suffix.lstrip("."))
         manifest[url_path] = h
         by_hash[h] = p

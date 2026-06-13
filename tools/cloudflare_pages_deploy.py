@@ -4,13 +4,15 @@
 wrangler が内部で使っている Direct Upload API（半公式）を Python で実装したもの。
 API が変わって動かなくなったら、wrangler か Git 連携へ退避する（退路）。
 
+準備（一度だけ・依存はこの venv に入れる。自動ではやらない）:
+  python3 -m venv .venv
+  ./.venv/bin/pip install httpx blake3
+
 使い方:
   export CLOUDFLARE_API_TOKEN=...    # 「Cloudflare Pages: 編集」権限のトークン
   export CLOUDFLARE_ACCOUNT_ID=...   # ダッシュボード右下などに表示される ID
-  python3 cloudflare_pages_deploy.py ./公開ディレクトリ --project aiseed-dev
+  ./.venv/bin/python tools/cloudflare_pages_deploy.py ./公開ディレクトリ --project aiseed-dev
   # 初回はプロジェクトも作る場合: --create
-
-依存: pip install httpx blake3
 """
 
 import argparse
@@ -18,40 +20,20 @@ import base64
 import json
 import mimetypes
 import os
-import subprocess
 import sys
 from pathlib import Path
 
 
-def _bootstrap() -> None:
-    """依存（httpx・blake3）がなければ、自分の隣に .venv を作って入れ、
-    その Python で自分を実行し直す。利用者は venv を意識しなくてよい。
-    いまの Debian/Ubuntu はシステム pip への直接インストールを拒否する
-    （externally-managed-environment）ため、venv が唯一の素直な道。"""
-    try:
-        import blake3  # noqa: F401
-        import httpx  # noqa: F401
-        return
-    except ImportError:
-        pass
-    if os.environ.get("PAGES_DEPLOY_BOOTSTRAP") == "1":
-        sys.exit("依存の導入に失敗した（.venv はあるのに import できない）。"
-                 ".venv を消してやり直すこと")
-    venv = Path(__file__).resolve().parent / ".venv"
-    py = venv / "bin" / "python3"
-    if not py.exists():
-        print("初回準備：.venv を作成して httpx と blake3 を導入する（一度だけ）…")
-        subprocess.run([sys.executable, "-m", "venv", str(venv)], check=True)
-        subprocess.run([str(venv / "bin" / "pip"), "install", "--quiet",
-                        "httpx", "blake3"], check=True)
-    os.environ["PAGES_DEPLOY_BOOTSTRAP"] = "1"
-    os.execv(str(py), [str(py)] + sys.argv)
-
-
-_bootstrap()
-
-import httpx  # noqa: E402
-from blake3 import blake3  # noqa: E402
+try:
+    import httpx
+    from blake3 import blake3
+except ImportError:
+    sys.exit(
+        "依存（httpx, blake3）が入っていない。仮想環境に入れて、その Python で実行する:\n"
+        "  python3 -m venv .venv\n"
+        "  ./.venv/bin/pip install httpx blake3\n"
+        "  ./.venv/bin/python tools/cloudflare_pages_deploy.py <公開ディレクトリ> --project <名前>"
+    )
 
 API = "https://api.cloudflare.com/client/v4"
 MAX_FILE_SIZE = 25 * 1024 * 1024  # Pages の 1 ファイル上限（25MiB）

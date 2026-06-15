@@ -1,0 +1,16 @@
+# Rust
+rust/target/
+
+# Python / Flet
+flet/.venv/
+**/__pycache__/
+*.pyc
+
+# Flutter / Dart
+flutter/.dart_tool/
+flutter/build/
+flutter/.flutter-plugins
+flutter/.flutter-plugins-dependencies
+
+# OS
+.DS_Store

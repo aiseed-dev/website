@@ -1,9 +1,12 @@
 # Rust
 rust/target/
 
-# Python / Flet
+# Python / Flet / PyPI
 flet/.venv/
+pypi/.venv/
+pypi/dist/
 **/__pycache__/
+**/*.egg-info/
 *.pyc
 
 # Flutter / Dart

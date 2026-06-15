@@ -215,24 +215,26 @@ presign_get(key, expire) / presign_put(key, expire)
 
 ---
 
-## 9. 3 スタック試作（trial）の結果
+## 9. 4 スタック試作（trial）の結果
 
-`apps/cf-publish/{rust,flet,flutter}/` に「フォルダ→Pages 公開」コアを 3 スタックで試作し、
-配布時の技術選定の材料にした（いずれも既存 `tools/cloudflare_pages_deploy.py` 準拠）。
-配布物は端末を前提にしない方が広く使えるため、Flet / Flutter は GUI、Rust は単体バイナリ CLI とした。
-この環境に Cloudflare 認証情報は無いため、**実デプロイの動作確認まではしていない**（ビルド/コンパイル/
-ロジック単体まで）。
+`apps/cf-publish/{rust,flet,flutter,pypi}/` に「フォルダ→Pages 公開」コアを 4 通りで試作し、
+配布方法ごとの選定材料にした（いずれも既存 `tools/cloudflare_pages_deploy.py` 準拠）。
+配布物は端末を前提にしない方が広く使えるため Flet / Flutter は GUI、Rust は単体バイナリ CLI、
+PyPI は `pip install` で配る CLI とした。この環境に Cloudflare 認証情報は無いため、
+**実デプロイの動作確認まではしていない**（ビルド/インストール/コンパイル/ロジック単体まで）。
 
 | スタック | 形 | この環境での検証 | 位置づけ |
 |---|---|---|---|
-| **Rust**（`rust/`） | 単体バイナリ CLI | `cargo build` クリーン・unit test 2件パス・`--help` 動作 | ランタイム不要バイナリの核。GUI は別途 Tauri/egui が要る |
-| **Flet**（`flet/`） | Python＋Flutter GUI | flet 0.85.3 導入・import/`py_compile` 通過・deploy ロジック単体検証。3 件の 0.85 API 不整合を修正 | **v1 最有力**。Python ロジック流用で最速。`flet build` は Flutter SDK 要 |
+| **Rust**（`rust/`） | 単体バイナリ CLI | `cargo build` 成功・`cf-publish --help` 動作（独立に再ビルド確認） | ランタイム不要バイナリの核。GUI は別途 Tauri/egui が要る |
+| **Flet**（`flet/`） | Python＋Flutter GUI | flet 0.85.3 導入・`py_compile`/import 通過 | Python ロジック流用で GUI が最速に作れる。`flet build` は Flutter SDK 要 |
 | **Flutter**（`flutter/`） | Dart ネイティブ GUI | SDK 不在によりコンパイル不可。**レビュー済みソース雛形**。`blake3` パッケージは要確認 | UI 品質・モバイルの最終形候補。Cloudflare/S3 を Dart で再実装するコスト |
+| **PyPI**（`pypi/`） | `pip install` 配布 CLI | `uv build`（wheel+sdist）→ クリーン venv へ install →`cf-publish --help`・import・認証無し時の親切エラー まで確認 | `pip install cf-publish` で配る版。ロジックは UI 非依存で GUI からも import 可 |
 
 - 共通仕様: dotfile 除外・25MiB 上限・`blake3(base64(bytes)+ext)[:32]`・check-missing→batched upload→
   upsert-hashes→multipart deploy・`{success,errors,result}` 包絡。deploy ロジックは UI 非依存
   （例外を投げる／`sys.exit`・`process::exit` を持たない）に統一。
-- **暫定推奨**: **v1 は Flet**（Python ロジック流用＋Flutter 描画で最速に配布物が作れる）→
-  手応え次第で **Flutter** へ UI 載せ替え（必要なら Rust core に寄せる）。Rust は CLI/コア候補として保持。
-- 既知の要対応: Flutter の `blake3` 依存の実在/API 確認、Flet の `flet build`／Flutter の実ビルド
-  （Flutter SDK のある環境）、3 スタックとも実 Cloudflare アカウントでの deploy 動作確認。
+- **方針**: 本命スタックは固定しない。4 つとも残し、実際に使ってもらって選ぶ。
+  目安として GUI 配布は Flet が最速、端末派には Rust 単体バイナリか PyPI、UI 本格化は Flutter。
+- 既知の要対応: Flutter の `blake3` 依存の実在/API 確認、Flet/Flutter の実ビルド（Flutter SDK のある環境）、
+  PyPI はパッケージ名の空き確認と実公開（Trusted Publishing）、4 スタックとも実 Cloudflare アカウントでの
+  deploy 動作確認。

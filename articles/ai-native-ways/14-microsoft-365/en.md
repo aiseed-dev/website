@@ -631,6 +631,40 @@ Run each step with Chapter 7's **parallel operation.** Don't stop the old
 (Microsoft); run the new beside it, confirm the same work flows, then
 cancel the old. **Time it to the contract renewal** — also per Chapter 7.
 
+## One person + AI can run this
+
+The obvious question: **who maintains ten self-hosted things?** The answer
+is **one person + AI** — Chapter 13's new unit of work, applied straight to
+company infrastructure.
+
+Why one person is enough. Three reasons.
+
+- **They're all standard, boxed, open tools** — PocketBase is one file, the
+  rest are a single docker compose. Claude writes the compose, sets up DNS
+  and DKIM, reads the logs, isolates faults. **AI is the co-admin.**
+- **Because the bundle is untied, failures don't cascade** — with M365 one
+  vendor's trouble drags in everything; here, if Forgejo goes down mail
+  still lives, and if the AI stops the meetings go on. **Fix each one
+  independently.**
+- **Visible, readable, testable** — config and logs sit in your own hands.
+  Unlike the Copilot black box, you **read the inside and fix it, with AI.**
+
+Honestly, the heavy parts: **the load concentrates in two — mail and
+BigBlueButton.** Mail's delivery (DKIM / SPF / reputation) is delicate, so
+you can offload just outbound through an external relay. BigBlueButton is
+heavy, so **stand it up only for the course season and tear it down after**
+(rent cloud GPU by the hour if you like). The other eight, once up, mostly
+run themselves.
+
+This is exactly Chapter 13. **No siloed IT department needed.** One person
+who understands the business, with AI as partner, holds everything from
+identity to mail, courses, AI, and the database across the board.
+**Individual autonomy holds at the level of company infrastructure.**
+
+> One person + AI runs ten open tools.
+> Versus handing Microsoft 365 to one vendor, **the effort is about the
+> same — only the control moves to your side.**
+
 ## Summary
 
 Business Microsoft 365 is six layers bundled into one vendor.

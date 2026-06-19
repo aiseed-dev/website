@@ -142,6 +142,43 @@ outsource. If it takes a few days, you do it. **The line moved**.
 > **the break-even point between outsourcing and doing it yourself**
 > moves with it.
 
+## The starting point is not writing code
+
+"The customer builds nine-tenths" makes people brace for writing
+nine-tenths of the code themselves. That is not it. **The builder's work
+begins, before writing any code from scratch, with assembling proven OSS
+to replace the vendor's products.**
+
+Most of a company's software was never something you "build" — it was
+something you "buy": Microsoft 365, Azure, the vendor packages under the
+core systems. What replaces them already runs all over the world.
+Authentication is PocketBase, documents OnlyOffice, sharing and
+versioning Forgejo, the database PostgreSQL, analysis DuckDB, the AI
+Command A+ — all open, free, and running on your own machine (the parent
+series' Chapter 14 untied Microsoft 365 into eleven OSS pieces).
+
+What the builder does is **choose, wire, and fit to the company's
+context.** This is the most concrete form of Chapter 4's builder
+definition — "decide what to make, have AI make it, evaluate the output,
+integrate the structure." A great deal of it moves forward without
+writing a single line of code.
+
+The order matters too. **First, untie the vendor with OSS and put the
+foundation — identity, data, sharing — on your own side.** Then, and only
+then, write **the logic that is genuinely your own** together with AI.
+Writing code comes in the later half, after the foundation is laid — and
+the amount shrinks to your company-specific part.
+
+This lowers the barrier further. Assembling running OSS is easier than
+implementing from scratch. "The customer builds nine-tenths" is decided
+not by coding ability but by **the design judgment of replacement** — and
+that is exactly what professionals grounded in the liberal arts do best
+(Chapter 4).
+
+> Most of "building nine-tenths yourself" is not "writing code."
+> It is **assembling proven OSS and untying the vendor.**
+> Code is only the thin final layer that sits on top.
+
 ## What AI cannot do, the SIer cannot do either
 
 This is the strongest claim of the chapter.
@@ -226,6 +263,7 @@ The next chapter dissects the SIer commission model itself.
 - [Chapter 1: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
 - [Chapter 3: The Coder's Job Goes Away](/en/ai-native-ways/software/coder-end/)
 - [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
+- [Parent series, Chapter 14: Replacing Microsoft 365 Wholesale (untying 11 layers with OSS)](/en/ai-native-ways/microsoft-365/)
 - [Chapter 8: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
 - [Chapter 9: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)

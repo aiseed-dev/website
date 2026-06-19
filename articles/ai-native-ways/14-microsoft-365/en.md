@@ -4,7 +4,7 @@ number: "14"
 lang: en
 title: "Replacing Microsoft 365 Wholesale — Eight One-to-One Mappings"
 subtitle: "Move the foundation of your business out of the vendor's cage and into your own hands"
-description: Business Microsoft 365 bundles six layers — identity, documents, sharing, mail, portals, AI — into one vendor. Because they are bundled, one vendor's decisions move all of them. Unbundle the six, one at a time, into open self-hosted tools — Entra ID becomes PocketBase, Word/Excel/PowerPoint becomes OnlyOffice, SharePoint+GitHub becomes Forgejo+Zed, Exchange+Outlook becomes Postfix+Thunderbird, Power Pages becomes Cloudflare Pages, and Copilot (metered) becomes Command R+ (free). Then the substrate beneath — Azure SQL becomes PostgreSQL, C#/.NET/VBA becomes Python/Ruby + Rust. Eight in all, with the build method for each layer.
+description: Business Microsoft 365 bundles six layers — identity, documents, sharing, mail, portals, AI — into one vendor. Because they are bundled, one vendor's decisions move all of them. Unbundle the six, one at a time, into open self-hosted tools — Entra ID becomes PocketBase, Word/Excel/PowerPoint becomes OnlyOffice, SharePoint+GitHub becomes Forgejo+Zed, Exchange+Outlook becomes Postfix+Thunderbird, Power Pages becomes Cloudflare Pages, and Copilot (metered) becomes Command A+ (Apache 2.0). Then the substrate beneath — Azure SQL becomes PostgreSQL, C#/.NET/VBA becomes Python/Ruby + Rust. Eight in all, with the build method for each layer.
 date: 2026.05.03
 label: AI Native 14
 title_html: Dissolve <span class="accent">Microsoft 365</span><br>into <span class="accent">tools you own</span>.
@@ -60,7 +60,7 @@ the left with the right.
 | **SharePoint + GitHub** | **Forgejo + Zed** | sharing + versioning, local editing |
 | **Exchange + Outlook** | **Postfix + Thunderbird** | mail delivery + reading |
 | **Power Pages** | **Cloudflare Pages** | business portals, public sites |
-| **Copilot** (metered) | **Command R+** (free) | AI — self-hosted, open weights |
+| **Copilot** (metered) | **Command A+** (Apache 2.0) | AI — self-hosted, open weights |
 
 The six on the right are **separate open tools built by separate
 organizations.** So one vendor's decision can't ripple into the others.
@@ -87,7 +87,7 @@ flowchart TB
     S2["Forgejo + Zed"]
     X2["Postfix + Thunderbird"]
     P2["Cloudflare Pages"]
-    C2["Command R+"]
+    C2["Command A+"]
   end
 
   Bundle ==>|untie the bundle = hikes, outages, policy stop crossing layers| Unbundled
@@ -310,58 +310,67 @@ standard HTML / JavaScript.** If you dislike it, the same files serve
 just as well from Netlify, or your own Nginx — **no lock-in.** That is
 the difference between "using a vendor" and "being held by one."
 
-## Copilot (metered) → Command R+ (free)
+## Copilot (metered) → Command A+ (free, Apache 2.0)
 
 The last layer, AI. **Copilot is designed to seep one AI into all six
 layers, priced per seat per month.** Price hikes and a flattening of
 judgment spread from here to every layer (Chapter 6, "Copilot — even the
 AI is held hostage").
 
-Replace it with an **open-weights AI you run yourself.** Command R+ is a
-104B open-weights model published by Cohere — **you download it from
-Hugging Face and run it on your own machine.** It is strong at RAG and
-tool use and handles many languages, Japanese included. Not a metered
-cloud, but **your own GPU, where calling it any number of times costs
-nothing extra.**
+Replace it with an **open-weights AI you run yourself.** The pick is
+**Command A+** (released May 2026 by Cohere) — a 218B sparse MoE (25B
+active parameters) you **download from Hugging Face and run on your own
+server.** It does cited output, reasoning, vision input, and many
+languages, and **runs on as few as two H100 GPUs.** Not a metered cloud,
+but **your own GPU, where calling it any number of times costs nothing
+extra.**
 
-### Build it (Ollama is the shortest path)
+The decisive part is the license. **Command A+ is Cohere's first Apache
+2.0 model** — meaning **commercial use is free and unconditional.** The
+earlier Command R+ / Command A were CC-BY-NC (non-commercial), so
+business use needed a contract with Cohere. Command A+ removes that wall.
+**For a business Copilot replacement, an open model you can finally use
+straight has arrived.**
+
+### Build it
+
+For the pick (Command A+), pull a quantized build from Hugging Face and
+serve it with vLLM. To get a feel first with the lighter Command R,
+Ollama is the shortest path.
 
 ```bash
-# Install Ollama, start with Command R (the lighter 35B)
+# Get a feel first with the lighter Command R (35B)
 curl -fsSL https://ollama.com/install.sh | sh
-ollama run command-r              # 35B — get it running first
-ollama run command-r-plus         # 104B — if your GPU memory allows
+ollama run command-r
+
+# Command A+: pull a quantized build (w4a4 / fp8) from HF, serve with vLLM
+pip install vllm
+vllm serve CohereLabs/command-a-plus-05-2026-fp8   # ~2× H100
 ```
 
-`command-r` (35B), quantized, runs on a single 24 GB-class GPU.
-`command-r-plus` (104B) wants serious GPU (multiple cards or large
-memory). As an always-on in-house AI, it pays off for **high-volume
-routine work** — summarizing minutes, answering FAQs, classification —
-run endlessly at zero marginal cost.
-
-Calling it as an API (from your apps) looks like this:
+As an always-on in-house AI, it pays off for **high-volume routine work**
+— summarizing minutes, answering FAQs, classification — run endlessly at
+zero marginal cost. Apps call it over the OpenAI-compatible API
+(`/v1/chat/completions`).
 
 ```bash
-curl http://localhost:11434/api/generate -d '{
-  "model": "command-r",
-  "prompt": "Summarize these minutes in three points: ..."
+curl http://localhost:8000/v1/chat/completions -d '{
+  "model": "command-a-plus",
+  "messages": [{"role":"user","content":"Summarize these minutes in three points: ..."}]
 }'
 ```
 
-Two honest notes. **First, the license.** Command R+'s public weights are
-CC-BY-NC-4.0 (non-commercial). Free for internal evaluation and
-non-commercial use, but commercial use needs a Cohere license — if
-you're commercial, swap in a commercially-usable open-weights model with
-the same steps (**Llama / Mistral / Qwen / gpt-oss**; with Ollama, just
-change the model name). **Second, the division of labor.** For tangled
-judgment or design discussions, keep using a frontier model like Claude
-as a "colleague" (Chapter 11). The point is to **drop the Copilot pattern
-that hard-wires one AI into all six layers and stand on the side that can
-choose** — routine to your own open model, judgment to a colleague you
-picked.
+One note on the division of labor. For tangled judgment or design
+discussions, keep using a frontier model like Claude as a "colleague"
+(Chapter 11). The point is to **drop the Copilot pattern that hard-wires
+one AI into all six layers and stand on the side that can choose** —
+routine to your own Command A+ (or other commercially-usable open models:
+Llama / Qwen / gpt-oss), judgment to a colleague you picked. Because it
+is Apache 2.0, **you hold the AI you chose as a company asset.**
 
 > Copilot is designed so you can't choose your AI.
-> Open weights mean you can. **Being able to choose is autonomy.**
+> Apache 2.0 open weights mean you can choose it — and own it.
+> **Being able to choose, and to own, is autonomy.**
 
 ## The substrate beneath — untie Azure SQL and .NET too
 
@@ -471,7 +480,7 @@ out **whatever leaves the bundle most easily**, one at a time.
 3. **Forgejo + Zed** — move sharing and versioning off SharePoint. Here
    "which is the latest?" disappears.
 4. **Cloudflare Pages** — move the public site and portal.
-5. **Command R+ (or a commercially-usable open model)** — move routine
+5. **Command A+ (an Apache 2.0 open model)** — move routine
    AI work off Copilot.
 6. **PocketBase / mail server** — authentication and mail delivery. Set
    these last, as the foundation under every app.
@@ -490,7 +499,7 @@ Convenience and hostage were two faces of one chain.
 - **SharePoint + GitHub → Forgejo + Zed** (sharing and versioning in one)
 - **Exchange + Outlook → Postfix + Thunderbird** (communication in your hands)
 - **Power Pages → Cloudflare Pages** (hosting with no lock-in)
-- **Copilot (metered) → Command R+ (free)** (stand on the side that chooses its AI)
+- **Copilot (metered) → Command A+ (free, Apache 2.0)** (choose and own your AI)
 - **Azure SQL → PostgreSQL** (the substrate beneath — the database)
 - **C# / .NET / VBA → Python / Ruby + Rust** (the substrate beneath — the runtime)
 

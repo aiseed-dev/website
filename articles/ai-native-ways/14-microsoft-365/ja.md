@@ -3,7 +3,7 @@ slug: microsoft-365
 number: "14"
 title: Microsoft 365 を丸ごと置き換える ── 8つの一対一マッピング
 subtitle: ビジネスの土台を、ベンダーの檻から自分の手元へ
-description: ビジネス用 Microsoft 365 は、認証・文書・共有・メール・ポータル・AI の6層が一社に束ねられた構造だ。束ねられているから、一社の方針で全部が動く。6層を一つずつ、自前のオープンな道具へ置き換える ── Entra ID は PocketBase、Word/Excel/PowerPoint は OnlyOffice、SharePoint+GitHub は Forgejo+Zed、Exchange+Outlook は Postfix+Thunderbird、Power Pages は Cloudflare Pages、Copilot(従量課金)は Command R+(無料)。さらにその下の土台 ── Azure SQL は PostgreSQL、C#/.NET/VBA は Python/Ruby + Rust。合計8つ、各層の構築方法まで一対一で示す。
+description: ビジネス用 Microsoft 365 は、認証・文書・共有・メール・ポータル・AI の6層が一社に束ねられた構造だ。束ねられているから、一社の方針で全部が動く。6層を一つずつ、自前のオープンな道具へ置き換える ── Entra ID は PocketBase、Word/Excel/PowerPoint は OnlyOffice、SharePoint+GitHub は Forgejo+Zed、Exchange+Outlook は Postfix+Thunderbird、Power Pages は Cloudflare Pages、Copilot(従量課金)は Command A+(Apache 2.0)。さらにその下の土台 ── Azure SQL は PostgreSQL、C#/.NET/VBA は Python/Ruby + Rust。合計8つ、各層の構築方法まで一対一で示す。
 date: 2026.05.03
 label: AI Native 14
 title_html: <span class="accent">Microsoft 365</span> を、<br><span class="accent">自前の道具</span>に解く。
@@ -56,7 +56,7 @@ Microsoft 365 が便利なのは、ログイン(Entra ID)が文書(Office)に、
 | **SharePoint + GitHub** | **Forgejo + Zed** | 共有・版管理 + 手元の編集 |
 | **Exchange + Outlook** | **Postfix + Thunderbird** | メールの配送 + 閲覧 |
 | **Power Pages** | **Cloudflare Pages** | 業務ポータル・社外向けサイト |
-| **Copilot**(従量課金) | **Command R+**(無料) | AI ── 自前・オープンウェイト |
+| **Copilot**(従量課金) | **Command A+**(Apache 2.0) | AI ── 自前・オープンウェイト |
 
 右側の6本は **別々の組織が作った、別々のオープンな道具** だ。
 だから、一本の方針変更が他に波及しない。一本を別のものに差し替えても、
@@ -82,7 +82,7 @@ flowchart TB
     S2["Forgejo + Zed"]
     X2["Postfix + Thunderbird"]
     P2["Cloudflare Pages"]
-    C2["Command R+"]
+    C2["Command A+"]
   end
 
   Bundle ==>|束を解く = 値上げ・障害・方針が層をまたがなくなる| Unbundled
@@ -302,53 +302,61 @@ Cloudflare もまた一社ではある。だが Power Pages と違い、
 **ロックインが無い**。これが「ベンダーを使う」と「ベンダーに
 握られる」の違いだ。
 
-## Copilot(従量課金)→ Command R+(無料)
+## Copilot(従量課金)→ Command A+(無料・Apache 2.0)
 
 最後の層、AI。**Copilot は「6層すべてに同じ AI を、人数×月額で
 浸透させる」設計**だ。値上げも、判断基準の画一化も、ここから全層に
 広がる(第6章「Copilot ── AI まで人質に取られる構造」)。
 
-これを、**自前で動かすオープンウェイトの AI** に置き換える。
-Command R+ は Cohere が公開した 104B のオープンウェイトモデルで、
-**Hugging Face からダウンロードして自分のマシンで動かせる**。
-RAG とツール利用に強く、日本語を含む多言語に対応する。従量課金の
-クラウドではなく、**自分の GPU の上で、何回呼んでも追加料金ゼロ**。
+これを、**自前で動かすオープンウェイトの AI** に置き換える。本命は
+**Command A+**(2026年5月公開、Cohere)── 218B の疎な MoE(実働
+25B パラメータ)で、**Hugging Face からダウンロードして自分の
+サーバーで動かせる**。引用付き出力・推論・画像入力・多言語に対応し、
+**H100 が2枚あれば動く**。従量課金のクラウドではなく、**自分の GPU の
+上で、何回呼んでも追加料金ゼロ**。
 
-### 構築する(Ollama が最短)
+決定的なのはライセンスだ。**Command A+ は Cohere 初の Apache 2.0
+モデル** ── つまり **商用利用が無条件で自由**。従来の Command R+ /
+Command A は CC-BY-NC(非商用)で、ビジネス用途には Cohere との契約が
+要った。その壁が、Command A+ で消えた。**ビジネス用の Copilot 置き
+換えに、ようやく素直に使えるオープンモデルが来た**。
+
+### 構築する
+
+本命(Command A+)は Hugging Face の量子化版を落として vLLM で配信
+する。まず軽い Command R で感触を掴むなら Ollama が最短だ。
 
 ```bash
-# Ollama を入れて、Command R(軽い 35B 版)から試す
+# まず軽い Command R(35B)で感触を掴む
 curl -fsSL https://ollama.com/install.sh | sh
-ollama run command-r              # 35B ── まず動かす
-ollama run command-r-plus         # 104B ── GPU メモリに余裕があれば
+ollama run command-r
+
+# 本命 Command A+ は量子化版(w4a4 / fp8)を HF から取り、vLLM で配信
+pip install vllm
+vllm serve CohereLabs/command-a-plus-05-2026-fp8   # H100×2 級
 ```
 
-`command-r`(35B)は量子化すれば 24GB 級の GPU 一枚で動く。
-`command-r-plus`(104B)は本格的な GPU(複数枚 or 大容量)が要る。
 社内の常駐 AI として、議事録要約・FAQ 応答・分類など **量の多い
-定型処理** を、追加料金ゼロで回し続けられるのが効く。
-
-API として叩く形(各アプリから呼ぶ)はこうなる。
+定型処理** を、追加料金ゼロで回し続けられるのが効く。各アプリからは
+OpenAI 互換 API(`/v1/chat/completions`)で叩ける。
 
 ```bash
-curl http://localhost:11434/api/generate -d '{
-  "model": "command-r",
-  "prompt": "次の議事録を3点に要約して: ..."
+curl http://localhost:8000/v1/chat/completions -d '{
+  "model": "command-a-plus",
+  "messages": [{"role":"user","content":"次の議事録を3点に要約して: ..."}]
 }'
 ```
 
-二点、正直に書く。**第一に、ライセンス**。Command R+ の公開ウェイトは
-CC-BY-NC-4.0(非商用)だ。社内検証や非商用には自由に使えるが、
-商用利用には Cohere のライセンスが要る ── 商用前提なら、同じ手順で
-**Llama / Mistral / Qwen / gpt-oss** など商用可のオープンウェイトに
-差し替えられる(Ollama なら `ollama run` のモデル名を変えるだけ)。
-**第二に、役割分担**。込み入った判断や設計の相談は、引き続き Claude
-のような最前線のモデルを「同僚」として使えばいい(第11章)。要は、
-**6層に同じ AI を強制連結する Copilot 型をやめ、AI を選べる側に
-立つ** ことだ ── 定型は自前のオープンモデル、判断は選んだ同僚、と。
+一点だけ、役割分担を補う。込み入った判断や設計の相談は、引き続き
+Claude のような最前線のモデルを「同僚」として使えばいい(第11章)。
+要は、**6層に同じ AI を強制連結する Copilot 型をやめ、AI を選べる側に
+立つ** ことだ ── 定型は自前の Command A+(他に Llama / Qwen / gpt-oss
+など商用可のオープンモデルも選べる)、判断は選んだ同僚、と。Apache
+2.0 だから、**選んだ AI を会社の資産として手元に持てる**。
 
 > Copilot は「AI を選べなくする」設計。
-> オープンウェイトは「AI を選べる」状態。**選べることが自立だ**。
+> Apache 2.0 のオープンウェイトは「AI を選んで、所有できる」状態。
+> **選べて、持てることが自立だ**。
 
 ## その下の土台 ── Azure SQL と .NET も解く
 
@@ -448,7 +456,7 @@ flowchart LR
 3. **Forgejo + Zed** ── 共有と版管理を SharePoint から移す。
    ここで「最新版どれ?」が消える
 4. **Cloudflare Pages** ── 社外サイト・ポータルを移す
-5. **Command R+(または商用可オープンモデル)** ── 定型 AI 処理を
+5. **Command A+(Apache 2.0 のオープンモデル)** ── 定型 AI 処理を
    Copilot から移す
 6. **PocketBase / メールサーバー** ── 認証とメール配送。最後に、
    全アプリの土台として据える
@@ -467,7 +475,7 @@ flowchart LR
 - **SharePoint + GitHub → Forgejo + Zed**(共有と版管理を一本に)
 - **Exchange + Outlook → Postfix + Thunderbird**(通信を手元に)
 - **Power Pages → Cloudflare Pages**(ロックインの無いホスト)
-- **Copilot(従量課金) → Command R+(無料)**(AI を選べる側へ)
+- **Copilot(従量課金) → Command A+(無料・Apache 2.0)**(AI を選んで所有する)
 - **Azure SQL → PostgreSQL**(その下の土台 ── データベース)
 - **C# / .NET / VBA → Python / Ruby + Rust**(その下の土台 ── 実行系)
 

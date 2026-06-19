@@ -1,12 +1,12 @@
 ---
 slug: microsoft-365
 number: "14"
-title: Microsoft 365 を丸ごと置き換える ── 6つの一対一マッピング
+title: Microsoft 365 を丸ごと置き換える ── 8つの一対一マッピング
 subtitle: ビジネスの土台を、ベンダーの檻から自分の手元へ
-description: ビジネス用 Microsoft 365 は、認証・文書・共有・メール・ポータル・AI の6層が一社に束ねられた構造だ。束ねられているから、一社の方針で全部が動く。6層を一つずつ、自前のオープンな道具へ置き換える ── Entra ID は PocketBase、Word/Excel/PowerPoint は OnlyOffice、SharePoint+GitHub は Forgejo+Zed、Exchange+Outlook は Postfix+Thunderbird、Power Pages は Cloudflare Pages、Copilot(従量課金)は Command R+(無料)。各層の構築方法まで、一対一で示す。
+description: ビジネス用 Microsoft 365 は、認証・文書・共有・メール・ポータル・AI の6層が一社に束ねられた構造だ。束ねられているから、一社の方針で全部が動く。6層を一つずつ、自前のオープンな道具へ置き換える ── Entra ID は PocketBase、Word/Excel/PowerPoint は OnlyOffice、SharePoint+GitHub は Forgejo+Zed、Exchange+Outlook は Postfix+Thunderbird、Power Pages は Cloudflare Pages、Copilot(従量課金)は Command R+(無料)。さらにその下の土台 ── Azure SQL は PostgreSQL、C#/.NET/VBA は Python/Ruby + Rust。合計8つ、各層の構築方法まで一対一で示す。
 date: 2026.05.03
 label: AI Native 14
-title_html: <span class="accent">Microsoft 365</span> を、<br>6つの<span class="accent">自前の道具</span>に解く。
+title_html: <span class="accent">Microsoft 365</span> を、<br><span class="accent">自前の道具</span>に解く。
 prev_slug: one-plus-ai
 prev_title: 1人+AIで作る、新しい仕事の単位
 next_slug:
@@ -350,6 +350,60 @@ CC-BY-NC-4.0(非商用)だ。社内検証や非商用には自由に使えるが
 > Copilot は「AI を選べなくする」設計。
 > オープンウェイトは「AI を選べる」状態。**選べることが自立だ**。
 
+## その下の土台 ── Azure SQL と .NET も解く
+
+6層の束の下に、もう一つ Microsoft の土台がある ── **データベース
+(Azure SQL)と、業務アプリの実行系(C# / .NET / VBA)**。ここは
+第7章「並行稼働で書き換える」で詳しく扱った層だ。365 の6行に、この
+**2行を足すと、Microsoft 依存はほぼ全部、一対一で解ける**。
+
+| Microsoft の土台 | 自前の置き換え | その層の役割 |
+| --- | --- | --- |
+| **Azure SQL** | **PostgreSQL** | データベース |
+| **C# / .NET / VBA** | **Python / Ruby + Rust** | 業務ロジックの実行系 |
+
+### Azure SQL → PostgreSQL
+
+Azure SQL は SQL Server のクラウド版だ。標準 SQL(`SELECT`・`JOIN`・
+ウィンドウ関数)はそのまま残し、**ベンダー方言の T-SQL だけ捨てる**
+(第7章)。移行は `pgloader` がスキーマもデータも一括で運ぶ。
+
+```bash
+# PostgreSQL を立てる
+docker run -d --name pg -p 5432:5432 \
+  -e POSTGRES_PASSWORD=change-me -v ./pg:/var/lib/postgresql/data postgres:17
+
+# Azure SQL → PostgreSQL を一括移行(スキーマ + データ)
+pgloader mssql://user:pass@azure-host/db postgresql://postgres:change-me@localhost/db
+```
+
+T-SQL のストアドに埋まった業務ロジックは、Claude が抽出して Python /
+Ruby に翻訳する ── **不可視のストアドが、読めるコードに戻る**(第7章)。
+あとは第7章どおり、旧 Azure SQL と並行稼働で出力を突き合わせ、差分が
+消えたら旧を止める。ライセンスと従量課金が、まるごと消える。
+
+### C# / .NET / VBA → Python / Ruby + Rust
+
+実行系は三層に分けて考える。
+
+- **接着層は Python / Ruby** ── 業務ロジックを書く薄い言語。C# / .NET
+  のアプリは Python(FastAPI)や Ruby(Sinatra + 生の SQL)に置き換え、
+  Excel / Access の **VBA は Python に外部化** する(第2章・第6章)
+- **重い処理と型安全は Rust(下層)** ── 速度と厳密さが要る所は、人間が
+  書くのではなく **Rust 製のパッケージに降ろす**(Polars・Pydantic 中核
+  など)。型安全は下層の責任、という本シリーズの原則どおり
+- **書くのは Claude、実行は手元** ── ベンダーランタイム(.NET CLR)への
+  依存が消え、コードが読めて、テストが書ける状態になる
+
+C# の静的型に慣れた人ほど「Python は型が緩い」と心配する。だが要点は
+**型安全を人間のコードで担保しない** ことだ ── それは Rust 製の下層
+(Polars / Pydantic)に任せ、Python / Ruby は **判断を書く接着剤** に
+徹する。これも第7章の **並行稼働** で、旧 .NET と出力を突き合わせ
+ながら、一つずつ置き換える。
+
+> 365 の束6つに、土台の2つ。**合わせて8つ、すべて一対一**。
+> これで Microsoft 依存は、ほぼ残らず解ける。
+
 ## 何が変わるか ── コストと自立
 
 6本に解くと、月額の構造が変わる。Microsoft 365 は **人数 × 月額**
@@ -414,11 +468,13 @@ flowchart LR
 - **Exchange + Outlook → Postfix + Thunderbird**(通信を手元に)
 - **Power Pages → Cloudflare Pages**(ロックインの無いホスト)
 - **Copilot(従量課金) → Command R+(無料)**(AI を選べる側へ)
+- **Azure SQL → PostgreSQL**(その下の土台 ── データベース)
+- **C# / .NET / VBA → Python / Ruby + Rust**(その下の土台 ── 実行系)
 
-一対一で、左を右に置き換える。右の6本は別々の組織が作った別々の
+一対一で、左を右に置き換える。右の8本は別々の組織が作った別々の
 オープンな道具だから、**一本の方針変更が他に波及しない**。これは
 効率化の話ではない ── 第13章「1人+AI」を、会社の土台の高さで
-言い直したものだ。**集中した 1 より、自立した 6 が強い**。
+言い直したものだ。**集中した 1 より、自立した N が強い**。
 
 束を解く。一本ずつ、自分のペースで。解けた分だけ、会社は
 ベンダーの人質ではなくなり、**自分たちの判断で動けるようになる**。

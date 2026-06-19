@@ -2,12 +2,12 @@
 slug: microsoft-365
 number: "14"
 lang: en
-title: "Replacing Microsoft 365 Wholesale — Six One-to-One Mappings"
+title: "Replacing Microsoft 365 Wholesale — Eight One-to-One Mappings"
 subtitle: "Move the foundation of your business out of the vendor's cage and into your own hands"
-description: Business Microsoft 365 bundles six layers — identity, documents, sharing, mail, portals, AI — into one vendor. Because they are bundled, one vendor's decisions move all of them. Unbundle the six, one at a time, into open self-hosted tools — Entra ID becomes PocketBase, Word/Excel/PowerPoint becomes OnlyOffice, SharePoint+GitHub becomes Forgejo+Zed, Exchange+Outlook becomes Postfix+Thunderbird, Power Pages becomes Cloudflare Pages, and Copilot (metered) becomes Command R+ (free). One-to-one, with the build method for each layer.
+description: Business Microsoft 365 bundles six layers — identity, documents, sharing, mail, portals, AI — into one vendor. Because they are bundled, one vendor's decisions move all of them. Unbundle the six, one at a time, into open self-hosted tools — Entra ID becomes PocketBase, Word/Excel/PowerPoint becomes OnlyOffice, SharePoint+GitHub becomes Forgejo+Zed, Exchange+Outlook becomes Postfix+Thunderbird, Power Pages becomes Cloudflare Pages, and Copilot (metered) becomes Command R+ (free). Then the substrate beneath — Azure SQL becomes PostgreSQL, C#/.NET/VBA becomes Python/Ruby + Rust. Eight in all, with the build method for each layer.
 date: 2026.05.03
 label: AI Native 14
-title_html: Dissolve <span class="accent">Microsoft 365</span><br>into six <span class="accent">tools you own</span>.
+title_html: Dissolve <span class="accent">Microsoft 365</span><br>into <span class="accent">tools you own</span>.
 prev_slug: one-plus-ai
 prev_title: "One Person + AI — The New Unit of Work"
 next_slug:
@@ -363,6 +363,68 @@ picked.
 > Copilot is designed so you can't choose your AI.
 > Open weights mean you can. **Being able to choose is autonomy.**
 
+## The substrate beneath — untie Azure SQL and .NET too
+
+Beneath the six-layer bundle sits one more Microsoft foundation — **the
+database (Azure SQL) and the runtime for business apps (C# / .NET /
+VBA)**. This is the layer Chapter 7 ("rewrite by running in parallel")
+covers in depth. Add **these two rows to the six**, and the Microsoft
+dependency comes untied almost entirely, one-to-one.
+
+| Microsoft foundation | Self-hosted replacement | Role of that layer |
+| --- | --- | --- |
+| **Azure SQL** | **PostgreSQL** | the database |
+| **C# / .NET / VBA** | **Python / Ruby + Rust** | the business-logic runtime |
+
+### Azure SQL → PostgreSQL
+
+Azure SQL is SQL Server in the cloud. Keep standard SQL (`SELECT`,
+`JOIN`, window functions) as-is and **drop only the vendor dialect,
+T-SQL** (Chapter 7). For the move, `pgloader` carries schema and data in
+one pass.
+
+```bash
+# Stand up PostgreSQL
+docker run -d --name pg -p 5432:5432 \
+  -e POSTGRES_PASSWORD=change-me -v ./pg:/var/lib/postgresql/data postgres:17
+
+# Migrate Azure SQL → PostgreSQL in one pass (schema + data)
+pgloader mssql://user:pass@azure-host/db postgresql://postgres:change-me@localhost/db
+```
+
+Business logic buried in T-SQL stored procedures gets extracted by Claude
+and translated into Python / Ruby — **the invisible stored proc becomes
+readable code** (Chapter 7). Then, as in Chapter 7, run it in parallel
+with the old Azure SQL, reconcile the output, and stop the old when the
+difference is gone. License and metered fees vanish entirely.
+
+### C# / .NET / VBA → Python / Ruby + Rust
+
+Think of the runtime in three layers.
+
+- **The glue is Python / Ruby** — thin languages for writing business
+  logic. Replace C# / .NET apps with Python (FastAPI) or Ruby (Sinatra +
+  raw SQL), and **externalize Excel / Access VBA into Python** (Chapters
+  2 and 6)
+- **Heavy work and type safety go to Rust (the lower layer)** — where
+  speed and rigor are needed, don't write it by hand; **push it down into
+  Rust-built packages** (Polars, Pydantic's core). Type safety is the
+  lower layer's job — the series' standing principle
+- **Claude writes, you run locally** — the dependency on the vendor
+  runtime (.NET CLR) disappears, and the code becomes readable and
+  testable
+
+The more you're used to C#'s static types, the more "Python is loosely
+typed" worries you. But the point is to **not guarantee type safety in
+human code** — leave that to the Rust-built lower layer (Polars /
+Pydantic) and let Python / Ruby be **the glue that writes judgment.**
+This too goes through Chapter 7's **parallel operation**, reconciling
+output against the old .NET as you replace it piece by piece.
+
+> Six in the bundle, two in the substrate. **Eight in all, every one
+> one-to-one.** With that, the Microsoft dependency comes nearly
+> completely untied.
+
 ## What changes — cost and autonomy
 
 Untie into six and the monthly structure changes. Microsoft 365 is
@@ -429,12 +491,14 @@ Convenience and hostage were two faces of one chain.
 - **Exchange + Outlook → Postfix + Thunderbird** (communication in your hands)
 - **Power Pages → Cloudflare Pages** (hosting with no lock-in)
 - **Copilot (metered) → Command R+ (free)** (stand on the side that chooses its AI)
+- **Azure SQL → PostgreSQL** (the substrate beneath — the database)
+- **C# / .NET / VBA → Python / Ruby + Rust** (the substrate beneath — the runtime)
 
-One-to-one — replace the left with the right. The six on the right are
+One-to-one — replace the left with the right. The eight on the right are
 separate open tools from separate organizations, so **one vendor's
 decision can't ripple into the others.** This is not about efficiency —
 it is Chapter 13's "one + AI" restated at the height of the company's
-foundation. **Six autonomous beats one centralized.**
+foundation. **Autonomous N beats one centralized.**
 
 Untie the bundle. One tool at a time, at your own pace. As far as it
 comes untied, the company stops being a vendor's hostage and **starts

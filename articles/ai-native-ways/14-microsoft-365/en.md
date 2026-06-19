@@ -354,12 +354,12 @@ pip install vllm
 vllm serve CohereLabs/command-a-plus-05-2026-fp8   # ~2× H100
 ```
 
-As an always-on in-house AI, it pays off for **high-volume routine work**
-— summarizing minutes, answering FAQs, classification — run endlessly at
-zero marginal cost. Apps call it over the OpenAI-compatible API
-(`/v1/chat/completions`).
+As an always-on in-house AI, **generation tasks** — summarizing minutes,
+classification, drafting — just hit the OpenAI-compatible API
+(`/v1/chat/completions`) directly, at zero marginal cost.
 
 ```bash
+# This is "generation" — a summary. Not RAG (RAG is below, a different thing)
 curl http://localhost:8000/v1/chat/completions -d '{
   "model": "command-a-plus",
   "messages": [{"role":"user","content":"Summarize these minutes in three points: ..."}]
@@ -421,6 +421,43 @@ is, for business, more trustworthy than a frontier black box.
 > But on business's main battlefield — RAG — **cited, low-hallucination,
 > fully local.** No need to match it on raw performance — **win on the
 > ground where you win.**
+
+### Local RAG: you build the retrieval
+
+Be clear about one thing. **RAG is not one API call.** Throwing a prompt
+at `/v1/chat/completions` is generation, not RAG. RAG quality is decided
+less by the generation model than by **retrieval** — and that you build
+yourself.
+
+The minimal fully-local stack (all on your own box):
+
+- **Embeddings**: `bge-m3` (multilingual) via Ollama (`ollama pull bge-m3`)
+- **Store + search**: **pgvector** (an extension on the PostgreSQL you
+  already stood up). On the PocketBase side, `sqlite-vec`
+- **Hybrid search**: semantic (pgvector) + keyword (BM25 / full-text)
+  together — that alone lifts accuracy 20–30%
+- **Rerank**: `bge-reranker-v2-m3` reorders the top hits (another 15–30%)
+- **Grounded generation (with citations)**: pass the retrieved chunks as
+  **`documents[]`**; Command A+ returns `[1] [2]` span citations
+
+```sql
+-- pgvector: semantic search (just add the extension to your PostgreSQL)
+CREATE EXTENSION IF NOT EXISTS vector;
+SELECT id, body FROM docs ORDER BY embedding <=> :query_vec LIMIT 20;
+```
+
+The **citations** don't appear if you paste the text into the prompt. You
+must use Command's **grounded generation template** (passing `documents`)
+— when self-serving, `vllm>=0.21` plus Cohere's `melody` (`cohere_melody`)
+to parse the citations correctly.
+
+In short, **you build, on your own side, the "retrieve + ground" that
+Copilot hid behind Microsoft Graph.** It is more work. But holding the
+retrieval is holding the **accuracy** — and keeping the **data inside.**
+
+> RAG is not "call a smart model over an API."
+> It is **searching your own data and answering with the grounds attached.**
+> You build the search — that is the real body of business AI.
 
 ## The substrate beneath — untie Azure SQL and .NET too
 

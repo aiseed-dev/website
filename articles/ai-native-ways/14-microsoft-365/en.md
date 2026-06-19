@@ -2,9 +2,9 @@
 slug: microsoft-365
 number: "14"
 lang: en
-title: "Replacing Microsoft 365 Wholesale — Ten One-to-One Mappings"
+title: "Replacing Microsoft 365 Wholesale — Eleven One-to-One Mappings"
 subtitle: "Move the foundation of your business out of the vendor's cage and into your own hands"
-description: Business Microsoft 365 bundles six layers — identity, documents, sharing, mail, portals, AI — into one vendor. Because they are bundled, one vendor's decisions move all of them. Unbundle the six, one at a time, into open self-hosted tools — Entra ID becomes PocketBase, Word/Excel/PowerPoint becomes OnlyOffice, SharePoint+GitHub becomes Forgejo+Zed, Exchange+Outlook becomes Postfix+Thunderbird, Power Pages becomes Cloudflare Pages, and Copilot (metered) becomes Command A+ (Apache 2.0). Meetings move Teams to Jitsi / BigBlueButton, scheduling to CalDAV + Cal.com. Then the substrate beneath — Azure SQL becomes PostgreSQL, C#/.NET/VBA becomes Python/Ruby + Rust. Ten in all, with the build method for each layer.
+description: Business Microsoft 365 bundles six layers — identity, documents, sharing, mail, portals, AI — into one vendor. Because they are bundled, one vendor's decisions move all of them. Unbundle the six, one at a time, into open self-hosted tools — Entra ID becomes PocketBase, Word/Excel/PowerPoint becomes OnlyOffice, SharePoint+GitHub becomes Forgejo+Zed, Exchange+Outlook becomes Postfix+Thunderbird, Power Pages becomes Cloudflare Pages, and Copilot (metered) becomes Command A+ (Apache 2.0). Meetings move Teams to Jitsi / BigBlueButton, scheduling to CalDAV + Cal.com. Then the substrate beneath — Azure SQL becomes PostgreSQL, C#/.NET/VBA becomes Python/Ruby + Rust, and data analysis becomes columnar DuckDB + Polars (the one point where Microsoft loses by a wide margin). Eleven in all, with the build method for each layer.
 date: 2026.05.03
 label: AI Native 14
 title_html: Dissolve <span class="accent">Microsoft 365</span><br>into <span class="accent">tools you own</span>.
@@ -310,6 +310,115 @@ standard HTML / JavaScript.** If you dislike it, the same files serve
 just as well from Netlify, or your own Nginx — **no lock-in.** That is
 the difference between "using a vendor" and "being held by one."
 
+## The substrate beneath — untie Azure SQL and .NET too
+
+Lay the **foundation** first. Beneath the six-layer bundle sits one more
+Microsoft foundation — **the database (Azure SQL) and the runtime for
+business apps (C# / .NET / VBA)**. This is the layer Chapter 7 ("rewrite by
+running in parallel") covers in depth. **Place it first** — because
+everything that stands on top (the data analysis, the AI's RAG, the course
+booking, and the core systems, all coming up next) sits on the same
+PostgreSQL.
+
+| Microsoft foundation | Self-hosted replacement | Role of that layer |
+| --- | --- | --- |
+| **Azure SQL** | **PostgreSQL** | the database |
+| **C# / .NET / VBA** | **Python / Ruby + Rust** | the business-logic runtime |
+
+### Azure SQL → PostgreSQL
+
+Azure SQL is SQL Server in the cloud. Keep standard SQL (`SELECT`,
+`JOIN`, window functions) as-is and **drop only the vendor dialect,
+T-SQL** (Chapter 7). For the move, `pgloader` carries schema and data in
+one pass.
+
+```bash
+# Stand up PostgreSQL (analysis, RAG, and booking all sit on top of this)
+docker run -d --name pg -p 5432:5432 \
+  -e POSTGRES_PASSWORD=change-me -v ./pg:/var/lib/postgresql/data postgres:17
+
+# Migrate Azure SQL → PostgreSQL in one pass (schema + data)
+pgloader mssql://user:pass@azure-host/db postgresql://postgres:change-me@localhost/db
+```
+
+Business logic buried in T-SQL stored procedures gets extracted by Claude
+and translated into Python / Ruby — **the invisible stored proc becomes
+readable code** (Chapter 7). Then, as in Chapter 7, run it in parallel
+with the old Azure SQL, reconcile the output, and stop the old when the
+difference is gone. License and metered fees vanish entirely.
+
+### C# / .NET / VBA → Python / Ruby + Rust
+
+Think of the runtime in three layers.
+
+- **The glue is Python / Ruby** — thin languages for writing business
+  logic. Replace C# / .NET apps with Python (FastAPI) or Ruby (Sinatra +
+  raw SQL), and **externalize Excel / Access VBA into Python** (Chapters
+  2 and 6)
+- **Heavy work and type safety go to Rust (the lower layer)** — where
+  speed and rigor are needed, don't write it by hand; **push it down into
+  Rust-built packages** (Polars, Pydantic's core). Type safety is the
+  lower layer's job — the series' standing principle
+- **Claude writes, you run locally** — the dependency on the vendor
+  runtime (.NET CLR) disappears, and the code becomes readable and
+  testable
+
+The more you're used to C#'s static types, the more "Python is loosely
+typed" worries you. But the point is to **not guarantee type safety in
+human code** — leave that to the Rust-built lower layer (Polars /
+Pydantic) and let Python / Ruby be **the glue that writes judgment.**
+This too goes through Chapter 7's **parallel operation**, reconciling
+output against the old .NET as you replace it piece by piece.
+
+> Lay the foundation first, and everything above sits on it.
+> **One database, PostgreSQL — analysis, AI, booking, and the core all
+> gather here.**
+
+## Data analysis — where Microsoft loses by a wide margin
+
+This is the one point where **Microsoft loses by a wide margin.**
+
+You did the tallies in Excel and the reports in Power BI. But Excel **caps
+at about 1.05 million rows**, and Power BI is **metered cloud, per-seat, and
+slow.** Serious data analysis needs **columnar** tools — holding data by
+column, not by row, so aggregation is orders of magnitude faster.
+
+The picks are **DuckDB** (a columnar analytics engine, one file) and
+**Polars** (a Rust-built dataframe). The core of AI-native analysis, touched
+on in Chapter 5's **Parquet** and Chapter 7's **Polars + DuckDB.**
+
+| Microsoft | Self-hosted replacement | Role of that layer |
+| --- | --- | --- |
+| **Power BI / Excel tallies / Synapse** | **DuckDB + Polars** (+ Parquet) | columnar data analysis |
+
+### Build it
+
+```bash
+pip install duckdb polars       # that's it. no server, one file
+```
+
+```python
+import duckdb
+# Aggregate across Parquet, PostgreSQL, and CSV in place, with SQL
+duckdb.sql("SELECT dept, sum(sales) FROM 'sales/*.parquet' GROUP BY dept")
+```
+
+What's the wide margin? **One laptop aggregates hundreds of millions of rows
+in seconds.** No cloud, no per-seat fee. The **PostgreSQL you stood up and
+your Parquet files, DuckDB reads both directly** — analyze in place, without
+copying data around. And **Claude writes the SQL.** "Which department is
+anomalous versus last month?" "Where does this correlation come from?" —
+asked against your own real data, any number of times, at zero marginal cost
+(for huge, always-on aggregation, move it onto the columnar DB server
+**ClickHouse**).
+
+Seen from Excel's 1.05M rows and Power BI's metered world, this is **another
+dimension.** Data analysis is exactly where self-hosted open tools **pull
+furthest ahead** of Microsoft.
+
+> Held by row, it's Excel; held by column, it's DuckDB.
+> **On the analysis ground, a laptop + DuckDB beats cloud Power BI.**
+
 ## Copilot (metered) → Command A+ (fully local, Apache 2.0)
 
 The last layer, AI. **Copilot is designed to seep one AI into all six
@@ -514,65 +623,7 @@ done **on your own domain, at zero commission.**
 > **The classroom (BigBlueButton) and the booking page (Cal.com) can both
 > sit on your side.**
 
-## The substrate beneath — untie Azure SQL and .NET too
-
-Beneath the six-layer bundle sits one more Microsoft foundation — **the
-database (Azure SQL) and the runtime for business apps (C# / .NET /
-VBA)**. This is the layer Chapter 7 ("rewrite by running in parallel")
-covers in depth. Add **the two substrate rows**, and the Microsoft
-dependency comes untied almost entirely, one-to-one.
-
-| Microsoft foundation | Self-hosted replacement | Role of that layer |
-| --- | --- | --- |
-| **Azure SQL** | **PostgreSQL** | the database |
-| **C# / .NET / VBA** | **Python / Ruby + Rust** | the business-logic runtime |
-
-### Azure SQL → PostgreSQL
-
-Azure SQL is SQL Server in the cloud. Keep standard SQL (`SELECT`,
-`JOIN`, window functions) as-is and **drop only the vendor dialect,
-T-SQL** (Chapter 7). For the move, `pgloader` carries schema and data in
-one pass.
-
-```bash
-# Stand up PostgreSQL
-docker run -d --name pg -p 5432:5432 \
-  -e POSTGRES_PASSWORD=change-me -v ./pg:/var/lib/postgresql/data postgres:17
-
-# Migrate Azure SQL → PostgreSQL in one pass (schema + data)
-pgloader mssql://user:pass@azure-host/db postgresql://postgres:change-me@localhost/db
-```
-
-Business logic buried in T-SQL stored procedures gets extracted by Claude
-and translated into Python / Ruby — **the invisible stored proc becomes
-readable code** (Chapter 7). Then, as in Chapter 7, run it in parallel
-with the old Azure SQL, reconcile the output, and stop the old when the
-difference is gone. License and metered fees vanish entirely.
-
-### C# / .NET / VBA → Python / Ruby + Rust
-
-Think of the runtime in three layers.
-
-- **The glue is Python / Ruby** — thin languages for writing business
-  logic. Replace C# / .NET apps with Python (FastAPI) or Ruby (Sinatra +
-  raw SQL), and **externalize Excel / Access VBA into Python** (Chapters
-  2 and 6)
-- **Heavy work and type safety go to Rust (the lower layer)** — where
-  speed and rigor are needed, don't write it by hand; **push it down into
-  Rust-built packages** (Polars, Pydantic's core). Type safety is the
-  lower layer's job — the series' standing principle
-- **Claude writes, you run locally** — the dependency on the vendor
-  runtime (.NET CLR) disappears, and the code becomes readable and
-  testable
-
-The more you're used to C#'s static types, the more "Python is loosely
-typed" worries you. But the point is to **not guarantee type safety in
-human code** — leave that to the Rust-built lower layer (Polars /
-Pydantic) and let Python / Ruby be **the glue that writes judgment.**
-This too goes through Chapter 7's **parallel operation**, reconciling
-output against the old .NET as you replace it piece by piece.
-
-> Six in the bundle, two for meetings and calendar, two in the substrate. **Ten in all, every one
+> Six in the bundle, two for meetings and calendar, two in the substrate, one for data analysis. **Eleven in all, every one
 > one-to-one.** With that, the Microsoft dependency comes nearly
 > completely untied.
 
@@ -777,8 +828,9 @@ Convenience and hostage were two faces of one chain.
 - **Outlook / Bookings → CalDAV (Radicale) + Cal.com** (calendar and course booking)
 - **Azure SQL → PostgreSQL** (the substrate beneath — the database)
 - **C# / .NET / VBA → Python / Ruby + Rust** (the substrate beneath — the runtime)
+- **Power BI / Excel tallies → DuckDB + Polars** (columnar data analysis — winning by a wide margin)
 
-One-to-one — replace the left with the right. The ten on the right are
+One-to-one — replace the left with the right. The eleven on the right are
 separate open tools from separate organizations, so **one vendor's
 decision can't ripple into the others.** This is not about efficiency —
 it is Chapter 13's "one + AI" restated at the height of the company's

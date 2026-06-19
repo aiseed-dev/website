@@ -681,6 +681,32 @@ platform is now fully in place.
   business knowledge into Markdown at once," done **without the source ever
   leaving the building.**
 
+In fact, until now **the core systems and Microsoft 365 shared only two
+things — Entra ID (identity) and SharePoint (document sharing).** The
+business-system world and the office world were largely separate, joined
+only at those two seams.
+
+Both of those, this chapter already replaced — with **PocketBase and
+Forgejo.** So **the seams are already on your side.** The new core systems
+authenticate through the same PocketBase and share documents and versions
+through the same Forgejo as the office tools — the two worlds meet at one
+point again, without Microsoft in between.
+
+```mermaid
+flowchart TB
+  Core["Core systems<br/>Python/Ruby+Rust + PostgreSQL"]
+  Office["Office tools<br/>OnlyOffice / mail / meetings / courses"]
+  Auth["PocketBase<br/>identity = the old Entra ID seam"]
+  Share["Forgejo<br/>sharing & versioning = the old SharePoint seam"]
+  Core -->|same auth| Auth
+  Office -->|same auth| Auth
+  Core -->|same sharing| Share
+  Office -->|same sharing| Share
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  class Core,Office,Auth,Share good
+```
+
 So rewriting SAP, Oracle, or a 20-year-old legacy core becomes **just
 standing up one more app on the same foundation.** The hard part was the
 foundation — and it's already in your hands. The rest is Chapter 7: don't

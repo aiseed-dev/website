@@ -2,9 +2,9 @@
 slug: microsoft-365
 number: "14"
 lang: en
-title: "Replacing Microsoft 365 Wholesale — Eight One-to-One Mappings"
+title: "Replacing Microsoft 365 Wholesale — Ten One-to-One Mappings"
 subtitle: "Move the foundation of your business out of the vendor's cage and into your own hands"
-description: Business Microsoft 365 bundles six layers — identity, documents, sharing, mail, portals, AI — into one vendor. Because they are bundled, one vendor's decisions move all of them. Unbundle the six, one at a time, into open self-hosted tools — Entra ID becomes PocketBase, Word/Excel/PowerPoint becomes OnlyOffice, SharePoint+GitHub becomes Forgejo+Zed, Exchange+Outlook becomes Postfix+Thunderbird, Power Pages becomes Cloudflare Pages, and Copilot (metered) becomes Command A+ (Apache 2.0). Then the substrate beneath — Azure SQL becomes PostgreSQL, C#/.NET/VBA becomes Python/Ruby + Rust. Eight in all, with the build method for each layer.
+description: Business Microsoft 365 bundles six layers — identity, documents, sharing, mail, portals, AI — into one vendor. Because they are bundled, one vendor's decisions move all of them. Unbundle the six, one at a time, into open self-hosted tools — Entra ID becomes PocketBase, Word/Excel/PowerPoint becomes OnlyOffice, SharePoint+GitHub becomes Forgejo+Zed, Exchange+Outlook becomes Postfix+Thunderbird, Power Pages becomes Cloudflare Pages, and Copilot (metered) becomes Command A+ (Apache 2.0). Meetings move Teams to Jitsi / BigBlueButton, scheduling to CalDAV + Cal.com. Then the substrate beneath — Azure SQL becomes PostgreSQL, C#/.NET/VBA becomes Python/Ruby + Rust. Ten in all, with the build method for each layer.
 date: 2026.05.03
 label: AI Native 14
 title_html: Dissolve <span class="accent">Microsoft 365</span><br>into <span class="accent">tools you own</span>.
@@ -459,12 +459,67 @@ retrieval is holding the **accuracy** — and keeping the **data inside.**
 > It is **searching your own data and answering with the grounds attached.**
 > You build the search — that is the real body of business AI.
 
+## Meetings and courses — untie Teams and the calendar
+
+The six-layer bundle has one more everyday collaboration face — **meetings
+(Teams) and scheduling (the calendar)**. You need it especially **to run
+courses.** Gather attendees, let them book a slot, and teach in a room —
+provide those three yourself.
+
+| Microsoft 365 | Self-hosted replacement | Role of that layer |
+| --- | --- | --- |
+| **Teams** (video meetings) | **Jitsi Meet** (BigBlueButton for courses) | meetings, online classes |
+| **Outlook / Bookings** (calendar, scheduling) | **CalDAV (Radicale) + Cal.com** | calendar + course booking |
+
+### Teams → Jitsi Meet (BigBlueButton for courses)
+
+For ordinary meetings, **Jitsi Meet.** Stand it up on one box with Docker
+and hand out a URL — a room opens, no account signup needed.
+
+```bash
+# Self-host Jitsi Meet with Docker
+git clone https://github.com/jitsi/docker-jitsi-meet && cd docker-jitsi-meet
+cp env.example .env && ./gen-passwords.sh
+docker compose up -d        # a room opens at https://<domain>
+```
+
+For **courses**, use **BigBlueButton.** It was **built from the start as a
+virtual classroom for online teaching** — real-time whiteboard, slide
+sharing, breakout groups, polls, and **recording.** The attendee
+experience is close to a real classroom. It's heavier than Jitsi (wants a
+16 GB-class server), but **if you're serious about courses, this is the
+pick.** Attendee data goes to no third party — it stays entirely inside
+your own server.
+
+### Outlook / Bookings → CalDAV + Cal.com
+
+A calendar is really **CalDAV.** Stand up **Radicale** (a few-MB Python
+server, up in 5 minutes) and the **Thunderbird** you already have becomes
+your calendar — the Thunderbird from the mail layer doubles as mail and
+calendar.
+
+```bash
+# Radicale — the minimal CalDAV server
+pip install radicale
+python3 -m radicale --storage-filesystem-folder ~/radicale/collections
+# Add CalDAV in Thunderbird: http://<server>:5232/
+```
+
+For **course booking** (attendees pick their own slot), use **Cal.com** —
+the open-source Calendly. Stand it up with Docker and hand out the public
+page; attendees pick an open slot and book. What Microsoft Bookings did,
+done **on your own domain, at zero commission.**
+
+> A course can open without renting a venue.
+> **The classroom (BigBlueButton) and the booking page (Cal.com) can both
+> sit on your side.**
+
 ## The substrate beneath — untie Azure SQL and .NET too
 
 Beneath the six-layer bundle sits one more Microsoft foundation — **the
 database (Azure SQL) and the runtime for business apps (C# / .NET /
 VBA)**. This is the layer Chapter 7 ("rewrite by running in parallel")
-covers in depth. Add **these two rows to the six**, and the Microsoft
+covers in depth. Add **the two substrate rows**, and the Microsoft
 dependency comes untied almost entirely, one-to-one.
 
 | Microsoft foundation | Self-hosted replacement | Role of that layer |
@@ -517,16 +572,16 @@ Pydantic) and let Python / Ruby be **the glue that writes judgment.**
 This too goes through Chapter 7's **parallel operation**, reconciling
 output against the old .NET as you replace it piece by piece.
 
-> Six in the bundle, two in the substrate. **Eight in all, every one
+> Six in the bundle, two for meetings and calendar, two in the substrate. **Ten in all, every one
 > one-to-one.** With that, the Microsoft dependency comes nearly
 > completely untied.
 
 ## What changes — cost and autonomy
 
-Untie into six and the monthly structure changes. Microsoft 365 is
+Untie it and the monthly structure changes. Microsoft 365 is
 **seats × monthly fee** (Business Standard runs roughly ¥1,500–2,500 per
 person per month, plus several thousand more per person for Copilot) —
-it grows linearly as headcount grows. The six self-hosted tools are **the
+it grows linearly as headcount grows. The self-hosted toolset is **the
 fixed cost of one server** (a VPS at ¥1,000–a few thousand a month, or
 just electricity for an office miniPC) — barely moving as headcount
 grows.
@@ -587,10 +642,12 @@ Convenience and hostage were two faces of one chain.
 - **Exchange + Outlook → Postfix + Thunderbird** (communication in your hands)
 - **Power Pages → Cloudflare Pages** (hosting with no lock-in)
 - **Copilot (metered) → Command A+ (fully local, Apache 2.0)** (hold the AI without sending data out)
+- **Teams → Jitsi Meet / BigBlueButton** (meetings and online courses)
+- **Outlook / Bookings → CalDAV (Radicale) + Cal.com** (calendar and course booking)
 - **Azure SQL → PostgreSQL** (the substrate beneath — the database)
 - **C# / .NET / VBA → Python / Ruby + Rust** (the substrate beneath — the runtime)
 
-One-to-one — replace the left with the right. The eight on the right are
+One-to-one — replace the left with the right. The ten on the right are
 separate open tools from separate organizations, so **one vendor's
 decision can't ripple into the others.** This is not about efficiency —
 it is Chapter 13's "one + AI" restated at the height of the company's

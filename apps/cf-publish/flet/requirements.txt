@@ -1,0 +1,5 @@
+# Pin Flet to the 1.0 Beta line (declarative API). flet[all] pulls in the
+# desktop/web clients and built-in extensions at the same version.
+flet[all]>=0.80,<0.86
+httpx>=0.27
+blake3>=0.4

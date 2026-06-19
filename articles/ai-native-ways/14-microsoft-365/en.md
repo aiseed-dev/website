@@ -378,6 +378,50 @@ is Apache 2.0, **you hold the AI you chose as a company asset.**
 > An Apache 2.0 local model keeps **data and judgment inside the company.**
 > Choose it, own it, and never send it out — **that is autonomy.**
 
+### Performance — frontier on raw reasoning, even or better on RAG
+
+Be honest in the comparison. **Copilot is a "product," not a "model"** —
+inside, it routes to frontier models like GPT-5.x and Claude and grounds
+on your data through Microsoft Graph. So there is no single "Copilot
+score." What you can compare is **Command A+ against the frontier model
+Copilot runs inside.**
+
+On that ground, **raw reasoning and coding go to the frontier** (Copilot's
+insides). No need to hide it — on benchmarks that measure in-the-head
+knowledge and reasoning (GPQA, hard coding), it doesn't reach the GPT-5.x
+tier.
+
+But **most business AI is RAG** — internal FAQs, Q&A over policies,
+contracts, and manuals, knowledge search. That is not about raw
+intelligence; it is **grounding answers in your own retrieved documents
+and citing them**, where the frontier's reasoning edge barely applies. And
+the Command family is **built precisely for RAG**:
+
+- **Native span-level inline citations** — per sentence, "which document,
+  which span is the basis"
+- **Citation fidelity beats GPT-4-turbo** (Cohere human eval) — it cites
+  the relevant spans, short and grounded
+- **Low hallucination** (grounding-first design); ~1.75× GPT-4o speed
+
+| | Raw reasoning / coding | RAG (grounded Q&A, citations) |
+| --- | --- | --- |
+| Copilot (GPT-5.x) | ahead | good, but data goes through the cloud |
+| Local Command A+ | doesn't reach | **even or better, higher citation fidelity, fully local** |
+
+And what finally decides RAG accuracy is less the model than **the quality
+of what you retrieve.** That is yours to design and improve — your own data
+in PocketBase / Forgejo / PostgreSQL plus embedding search.
+
+Answers that come back **with citations** mean **a human can verify the
+output** — exactly the verification layer of Chapter 12 ("Verifying
+Narratives with AI"). A local RAG that returns grounded, linked answers
+is, for business, more trustworthy than a frontier black box.
+
+> On raw intellect, concede to the frontier.
+> But on business's main battlefield — RAG — **cited, low-hallucination,
+> fully local.** No need to match it on raw performance — **win on the
+> ground where you win.**
+
 ## The substrate beneath — untie Azure SQL and .NET too
 
 Beneath the six-layer bundle sits one more Microsoft foundation — **the

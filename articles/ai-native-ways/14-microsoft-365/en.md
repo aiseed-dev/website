@@ -665,6 +665,32 @@ identity to mail, courses, AI, and the database across the board.
 > Versus handing Microsoft 365 to one vendor, **the effort is about the
 > same — only the control moves to your side.**
 
+## And then, the core systems
+
+What you've assembled here doubles as **the foundation for rewriting your
+core systems.** The parallel-operation rewrite of Chapter 7 ("Living with
+Business Systems") actually **assumed a platform to stand on** — and that
+platform is now fully in place.
+
+- **A database the new core runs on** — PostgreSQL + pgvector (above)
+- **The runtime** — Python / Ruby + Rust (above)
+- **Version control and CI** — Forgejo (above)
+- **Authentication** — PocketBase takes the new system's logins in one place
+- **Extracting business logic** — read the legacy code, SQL, and runbooks
+  with **local Command A+ + RAG** and emit Markdown. Chapter 7's "dump the
+  business knowledge into Markdown at once," done **without the source ever
+  leaving the building.**
+
+So rewriting SAP, Oracle, or a 20-year-old legacy core becomes **just
+standing up one more app on the same foundation.** The hard part was the
+foundation — and it's already in your hands. The rest is Chapter 7: don't
+stop the old, run the new beside it, reconcile the output, and kill the old
+when the difference is gone.
+
+> The foundation you built by untying Microsoft 365 is also **the
+> foundation for untying your core systems.** Once the platform is on your
+> side, the replacement is only "one more step."
+
 ## Summary
 
 Business Microsoft 365 is six layers bundled into one vendor.

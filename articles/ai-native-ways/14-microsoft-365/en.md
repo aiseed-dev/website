@@ -729,6 +729,39 @@ when the difference is gone.
 > foundation for untying your core systems.** Once the platform is on your
 > side, the replacement is only "one more step."
 
+## In the AI-native era, rebuilding is the default
+
+Step back once, at the end. Rewriting Microsoft's systems is **not a special
+decision.** In the AI-native era, **rebuilding is the natural order.**
+
+Two forces mesh.
+
+**First — Microsoft's design is structurally anti-AI-native.** It locks the
+substance inside Office formatting (Chapter 6), jails Python in the cloud,
+wires Copilot into operations with no verification layer (Chapter 6), and
+seals the exits with T-SQL and the .NET CLR. None of this is accidental — it
+is **a design that keeps the substance away from where AI works** (plain
+text, open formats, local execution, readable code). The harder you try to
+make AI a colleague, the harder you hit this wall.
+
+**Second — the cost of rewriting fell tenfold** (Chapter 7). AI extracts the
+business logic, translates it to Python, writes the tests. A multi-year,
+multi-million project becomes a few months for one person on the floor + AI.
+
+When the old structure **doesn't fit AI-native** and rebuilding is
+**cheap**, the conclusion is single: **keeping it becomes the unnatural
+choice.** "Don't touch what works" was only ever right because rewriting was
+too expensive. With that premise gone, it is **not rebuilding that now needs
+explaining.**
+
+This is not hostility toward Microsoft. What the IT revolution piled up, the
+AI revolution **rebuilds and carries forward** — one natural turn of the
+cycle (Prologue, Chapter 13). The question is not "whether" but "when, and
+who leads it" — **leave it with the vendor, or rebuild it on your side.**
+
+> In the AI-native era, rebuilding Microsoft's systems is not a revolution.
+> **It is the ordinary update.**
+
 ## Summary
 
 Business Microsoft 365 is six layers bundled into one vendor.

@@ -1,0 +1,451 @@
+---
+slug: microsoft-365
+number: "14"
+lang: en
+title: "Replacing Microsoft 365 Wholesale — Six One-to-One Mappings"
+subtitle: "Move the foundation of your business out of the vendor's cage and into your own hands"
+description: Business Microsoft 365 bundles six layers — identity, documents, sharing, mail, portals, AI — into one vendor. Because they are bundled, one vendor's decisions move all of them. Unbundle the six, one at a time, into open self-hosted tools — Entra ID becomes PocketBase, Word/Excel/PowerPoint becomes OnlyOffice, SharePoint+GitHub becomes Forgejo+Zed, Exchange+Outlook becomes Postfix+Thunderbird, Power Pages becomes Cloudflare Pages, and Copilot (metered) becomes Command R+ (free). One-to-one, with the build method for each layer.
+date: 2026.05.03
+label: AI Native 14
+title_html: Dissolve <span class="accent">Microsoft 365</span><br>into six <span class="accent">tools you own</span>.
+prev_slug: one-plus-ai
+prev_title: "One Person + AI — The New Unit of Work"
+next_slug:
+next_title:
+---
+
+# Replacing Microsoft 365 Wholesale — Six One-to-One Mappings
+
+**The real nature of business Microsoft 365 is that it is bundled.**
+
+Chapter 6 moved your paperwork out of Office; Chapter 7 rewrote business
+systems by running them in parallel. This chapter widens both to the
+**whole company** — it unties identity, documents, sharing, mail,
+portals, and AI from a single contract and puts them back on your side.
+
+There is only one thing to do: **untie the bundle into six independent
+tools.**
+
+## Being bundled IS the lock-in
+
+Microsoft 365 is convenient because login (Entra ID) connects straight
+into documents (Office), documents into sharing (SharePoint), sharing
+into mail (Exchange), mail into portals (Power Pages), and AI (Copilot)
+into all of them — **all on one account, in one straight line.**
+
+But that straight line is the very shape of the lock-in.
+
+- A price hike hits **all six layers** at once — nowhere to escape
+- A data-policy change hits **all six layers** at once
+- One vendor's outage stops **all six layers** at once (the prologue's single point of failure)
+- Copilot's judgment seeps into **all six layers**
+
+> Bundled means convenient, and bundled means held hostage.
+> **Convenience and hostage are two faces of one chain.**
+
+The way out is also one thing: **split the six layers into six
+independent tools.** Each can be replaced on its own, and if one falls
+the others keep running — this is Chapter 13's "one + AI" at the scale
+of the company: **autonomous N beats centralized 1.**
+
+## The six one-to-one mappings
+
+Untie the bundle and each layer maps cleanly. **One-to-one** — replace
+the left with the right.
+
+| Microsoft 365 (bundle) | Self-hosted replacement | Role of that layer |
+| --- | --- | --- |
+| **Entra ID** (identity) | **PocketBase** | user auth, OAuth2, roles |
+| **Word / Excel / PowerPoint** | **OnlyOffice** | editing docs, sheets, slides |
+| **SharePoint + GitHub** | **Forgejo + Zed** | sharing + versioning, local editing |
+| **Exchange + Outlook** | **Postfix + Thunderbird** | mail delivery + reading |
+| **Power Pages** | **Cloudflare Pages** | business portals, public sites |
+| **Copilot** (metered) | **Command R+** (free) | AI — self-hosted, open weights |
+
+The six on the right are **separate open tools built by separate
+organizations.** So one vendor's decision can't ripple into the others.
+Swap any one for something else and the remaining five don't change.
+**The bundle is untied** — that is the whole point.
+
+```mermaid
+flowchart TB
+  subgraph Bundle["Microsoft 365 — one vendor bundles six layers"]
+    direction TB
+    E1["Entra ID"]
+    O1["Word / Excel / PowerPoint"]
+    S1["SharePoint + GitHub"]
+    X1["Exchange + Outlook"]
+    P1["Power Pages"]
+    C1["Copilot (metered)"]
+    E1 --- O1 --- S1 --- X1 --- P1 --- C1
+  end
+
+  subgraph Unbundled["Self-hosted — six independent tools"]
+    direction TB
+    E2["PocketBase"]
+    O2["OnlyOffice"]
+    S2["Forgejo + Zed"]
+    X2["Postfix + Thunderbird"]
+    P2["Cloudflare Pages"]
+    C2["Command R+"]
+  end
+
+  Bundle ==>|untie the bundle = hikes, outages, policy stop crossing layers| Unbundled
+
+  classDef bad fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  class E1,O1,S1,X1,P1,C1 bad
+  class E2,O2,S2,X2,P2,C2 good
+```
+
+Below is the **build method** for each of the six, in turn. They all run
+on a small miniPC, a single VPS, or your own machine. The order doesn't
+matter — start with the easiest layer and pull one out of the bundle at
+a time.
+
+First, set up one place to put things: **one Linux box** (a Debian/Ubuntu
+VPS, or a miniPC on the office LAN). Put Docker on it.
+
+```bash
+# Install Docker on Debian/Ubuntu (the foundation)
+curl -fsSL https://get.docker.com | sh
+sudo usermod -aG docker "$USER"   # re-login to apply the group
+docker compose version            # check
+```
+
+## Entra ID → PocketBase — hold your own authentication
+
+**Entra ID hands "who is allowed to log in" to Microsoft.** Cut it, and
+the top of the bundle is severed.
+
+PocketBase packs SQLite, authentication, and an admin UI into **a single
+executable** (a ~15 MB Go binary). Email+password auth, 15+ OAuth2
+providers (Google, GitHub, Microsoft …), user roles, an admin dashboard
+— everything an identity layer needs.
+
+### Build it
+
+```bash
+# Drop one binary and run
+mkdir -p ~/pb && cd ~/pb
+wget https://github.com/pocketbase/pocketbase/releases/latest/download/pocketbase_linux_amd64.zip
+unzip pocketbase_*.zip
+./pocketbase serve --http=0.0.0.0:8090
+```
+
+Once running, open `http://<server>:8090/_/`. Create the admin, open the
+`users` auth collection, and register staff accounts. For OAuth2, enter a
+provider's Client ID / Secret in the settings and people log in with
+their Google or GitHub account.
+
+Each app (OnlyOffice, the internal web, the portal below) **asks this
+PocketBase over its API** to log a user in. `POST /api/collections/users/
+auth-with-password` returns a JWT — that becomes the shared company pass.
+The auth logic lives in your own SQLite and never routes through
+Microsoft.
+
+> Whoever holds authentication holds the foundation.
+> **Take that foundation back into a single 15 MB file.**
+
+## Word / Excel / PowerPoint → OnlyOffice
+
+**The substance of Office is not the app — it is the .docx / .xlsx /
+.pptx format.** OnlyOffice reads and writes those three formats **as-is**,
+with high fidelity. So even when the organization keeps demanding Office
+formats, your exit hurts nothing (Chapter 6's "convert at the exit,"
+minus even the conversion).
+
+Two options: a **desktop editor** for individual work, a **Document
+Server** for **in-browser collaboration.**
+
+### Desktop (on each machine)
+
+```bash
+# Debian/Ubuntu
+wget https://download.onlyoffice.com/install/desktop/editors/linux/onlyoffice-desktopeditors_amd64.deb
+sudo apt install ./onlyoffice-desktopeditors_amd64.deb
+```
+
+Windows / macOS use the official installer; on Flatpak,
+`flatpak install flathub org.onlyoffice.desktopeditors`. Now a `.docx`
+double-click opens here instead of Word.
+
+### Browser collaboration (Document Server)
+
+```bash
+# When several people edit the same document at once
+docker run -d --name onlyoffice -p 8081:80 \
+  -e JWT_ENABLED=true -e JWT_SECRET=change-me \
+  onlyoffice/documentserver
+```
+
+Combine `JWT_SECRET` with the pass issued by PocketBase above so only
+logged-in staff can open a document. Store the documents themselves in
+Forgejo (next section) or shared storage; OnlyOffice acts as their
+**editing surface.** **Keep the substance in Markdown / SQLite as in
+Chapter 6, and let Office formats be only the "exit to other people"** —
+OnlyOffice serves that exit with no conversion at all.
+
+## SharePoint + GitHub → Forgejo + Zed
+
+**SharePoint is "sharing and versioning"; GitHub is also "sharing and
+versioning."** What was split into internal and external **folds into a
+single Forgejo.** Forgejo is a lightweight self-hosted Git forge derived
+from Gitea — repositories, issues, wikis, pull requests, and CI, all on
+one miniPC. Documents, spreadsheets, code: everything versioned in Git.
+
+The tool in your hands is **Zed** — a fast editor that writes Markdown
+and code and has AI integration. Instead of SharePoint's "open in the
+browser, lock, edit," you **open in Zed and push to Forgejo.**
+
+### Build Forgejo
+
+```yaml
+# compose.yaml — stand up Forgejo on a miniPC/VPS
+services:
+  forgejo:
+    image: codeberg.org/forgejo/forgejo:9
+    ports: ["3000:3000", "222:22"]
+    volumes: ["./forgejo:/data"]
+    environment:
+      - FORGEJO__server__DOMAIN=git.example.com
+    restart: always
+```
+
+```bash
+docker compose up -d              # start
+# open http://<server>:3000 → create the admin
+```
+
+Open it in a browser, create the admin, and make one Organization. That
+becomes the company's "shared place." Minutes (Chapter 3's Markdown),
+customer data (Chapter 5's JSON / SQLite), business code (Chapter 2's
+Python) — put it all in repositories and push, and **who changed what,
+and when, is all recorded.** SharePoint's "which is the latest version?"
+problem disappears.
+
+### Install Zed
+
+```bash
+curl -f https://zed.dev/install.sh | sh   # Linux / macOS
+```
+
+Open the document folder in Zed, edit, `git push`. Collaboration comes
+through Forgejo pull requests — prose review and code review run on the
+same mechanism.
+
+> Merge internal SharePoint and external GitHub into **one Forgejo.**
+> Sharing and versioning were always the same problem.
+
+## Exchange + Outlook → Postfix + Thunderbird
+
+**Mail is the hardest of the six layers.** Let me be honest here.
+
+Exchange is the mail server (delivery, storage); Outlook is the mail
+client (reading). The client swap is easy — install **Thunderbird**,
+configure an IMAP/SMTP account, and you replace Outlook today.
+
+```bash
+sudo apt install thunderbird       # Debian/Ubuntu
+# Windows/macOS use the thunderbird.net installer
+```
+
+The server side is the hard part. A complete mail server is not Postfix
+(SMTP) alone; in practice it is **Postfix + Dovecot (IMAP) + Rspamd
+(spam) + OpenDKIM (signing).** And unless you set the DNS **MX / SPF /
+DKIM / DMARC** correctly, your mail won't reach other companies (it gets
+marked as spam).
+
+So in practice, stand all of it up at once with **mailcow** or
+**Mail-in-a-Box.**
+
+```bash
+# mailcow — Postfix+Dovecot+Rspamd etc. in one docker stack
+git clone https://github.com/mailcow/mailcow-dockerized && cd mailcow-dockerized
+./generate_config.sh              # it asks for your domain
+docker compose up -d
+```
+
+Then add the DNS records (the admin UI shows the values you need).
+
+- **MX** → points to your mail server
+- **SPF / DKIM / DMARC** → anti-spoofing, raises deliverability
+- **PTR (reverse DNS)** → set on the VPS provider side (matters for delivery)
+
+Once configured, connect Thunderbird over IMAP/SMTP. Now **the substance
+of your mail sits on your own disk, not in Microsoft's cloud.**
+
+> Mail is hard. But keep "outsource it because it's hard" and
+> **one vendor keeps holding the content of your communication.**
+> Stand it up once, and it runs.
+
+## Power Pages → Cloudflare Pages
+
+**Power Pages is "build a business portal or public site low-code and let
+Microsoft host it."** That, too, counts as part of the bundle's lock-in.
+
+The replacement is **Cloudflare Pages.** Take the static site you built
+in Chapter 8 ("back to HTML+CSS+JavaScript") and a single Git push
+delivers it worldwide. Need dynamic logic? Add **Pages Functions**
+(Workers). The free tier is generous, custom domains are free, and SSL
+is automatic.
+
+### Build it
+
+The simplest path is to connect the Forgejo (or GitHub) repository from
+earlier, or deploy directly with `wrangler`.
+
+```bash
+npm i -D wrangler                 # Cloudflare's CLI
+npx wrangler pages deploy ./public --project-name=portal
+```
+
+That publishes instantly to `https://portal.pages.dev`; assign a custom
+domain in the dashboard. For a portal that needs login, **have the auth
+call back to PocketBase** — hit the PocketBase API from a Pages Function
+so only staff can enter.
+
+Cloudflare is a vendor too. But unlike Power Pages, **the substance is
+standard HTML / JavaScript.** If you dislike it, the same files serve
+just as well from Netlify, or your own Nginx — **no lock-in.** That is
+the difference between "using a vendor" and "being held by one."
+
+## Copilot (metered) → Command R+ (free)
+
+The last layer, AI. **Copilot is designed to seep one AI into all six
+layers, priced per seat per month.** Price hikes and a flattening of
+judgment spread from here to every layer (Chapter 6, "Copilot — even the
+AI is held hostage").
+
+Replace it with an **open-weights AI you run yourself.** Command R+ is a
+104B open-weights model published by Cohere — **you download it from
+Hugging Face and run it on your own machine.** It is strong at RAG and
+tool use and handles many languages, Japanese included. Not a metered
+cloud, but **your own GPU, where calling it any number of times costs
+nothing extra.**
+
+### Build it (Ollama is the shortest path)
+
+```bash
+# Install Ollama, start with Command R (the lighter 35B)
+curl -fsSL https://ollama.com/install.sh | sh
+ollama run command-r              # 35B — get it running first
+ollama run command-r-plus         # 104B — if your GPU memory allows
+```
+
+`command-r` (35B), quantized, runs on a single 24 GB-class GPU.
+`command-r-plus` (104B) wants serious GPU (multiple cards or large
+memory). As an always-on in-house AI, it pays off for **high-volume
+routine work** — summarizing minutes, answering FAQs, classification —
+run endlessly at zero marginal cost.
+
+Calling it as an API (from your apps) looks like this:
+
+```bash
+curl http://localhost:11434/api/generate -d '{
+  "model": "command-r",
+  "prompt": "Summarize these minutes in three points: ..."
+}'
+```
+
+Two honest notes. **First, the license.** Command R+'s public weights are
+CC-BY-NC-4.0 (non-commercial). Free for internal evaluation and
+non-commercial use, but commercial use needs a Cohere license — if
+you're commercial, swap in a commercially-usable open-weights model with
+the same steps (**Llama / Mistral / Qwen / gpt-oss**; with Ollama, just
+change the model name). **Second, the division of labor.** For tangled
+judgment or design discussions, keep using a frontier model like Claude
+as a "colleague" (Chapter 11). The point is to **drop the Copilot pattern
+that hard-wires one AI into all six layers and stand on the side that can
+choose** — routine to your own open model, judgment to a colleague you
+picked.
+
+> Copilot is designed so you can't choose your AI.
+> Open weights mean you can. **Being able to choose is autonomy.**
+
+## What changes — cost and autonomy
+
+Untie into six and the monthly structure changes. Microsoft 365 is
+**seats × monthly fee** (Business Standard runs roughly ¥1,500–2,500 per
+person per month, plus several thousand more per person for Copilot) —
+it grows linearly as headcount grows. The six self-hosted tools are **the
+fixed cost of one server** (a VPS at ¥1,000–a few thousand a month, or
+just electricity for an office miniPC) — barely moving as headcount
+grows.
+
+But the substance is not cost (same as Chapter 6). The substance is that
+**the bundle is untied.**
+
+- A vendor raises prices — swap only that one layer
+- A vendor has an outage — the other five keep running
+- A vendor changes its data policy — the impact stays in that layer
+- The company gets to choose the AI's judgment
+
+```mermaid
+flowchart LR
+  Q["want to replace<br>this one layer"]
+  Bundle["Microsoft 365<br>(bundle)"]
+  Unb["self-hosted<br>(six)"]
+  R1["migrate all six<br>= effectively impossible"]
+  R2["swap just that one<br>= the rest untouched"]
+
+  Q --> Bundle ==>|bundled| R1
+  Q --> Unb ==>|untied| R2
+
+  classDef bad fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  class Bundle,R1 bad
+  class Unb,R2 good
+```
+
+## In what order to untie
+
+You don't have to do it all at once (same practice as Chapter 6). Pull
+out **whatever leaves the bundle most easily**, one at a time.
+
+1. **Thunderbird** (client first) — leave the server as Exchange, move
+   reading off Outlook. Zero-risk start.
+2. **OnlyOffice desktop** — move individual editing off Office.
+3. **Forgejo + Zed** — move sharing and versioning off SharePoint. Here
+   "which is the latest?" disappears.
+4. **Cloudflare Pages** — move the public site and portal.
+5. **Command R+ (or a commercially-usable open model)** — move routine
+   AI work off Copilot.
+6. **PocketBase / mail server** — authentication and mail delivery. Set
+   these last, as the foundation under every app.
+
+Run each step with Chapter 7's **parallel operation.** Don't stop the old
+(Microsoft); run the new beside it, confirm the same work flows, then
+cancel the old. **Time it to the contract renewal** — also per Chapter 7.
+
+## Summary
+
+Business Microsoft 365 is six layers bundled into one vendor.
+Convenience and hostage were two faces of one chain.
+
+- **Entra ID → PocketBase** (authentication in a single 15 MB file)
+- **Word/Excel/PowerPoint → OnlyOffice** (Office formats as-is)
+- **SharePoint + GitHub → Forgejo + Zed** (sharing and versioning in one)
+- **Exchange + Outlook → Postfix + Thunderbird** (communication in your hands)
+- **Power Pages → Cloudflare Pages** (hosting with no lock-in)
+- **Copilot (metered) → Command R+ (free)** (stand on the side that chooses its AI)
+
+One-to-one — replace the left with the right. The six on the right are
+separate open tools from separate organizations, so **one vendor's
+decision can't ripple into the others.** This is not about efficiency —
+it is Chapter 13's "one + AI" restated at the height of the company's
+foundation. **Six autonomous beats one centralized.**
+
+Untie the bundle. One tool at a time, at your own pace. As far as it
+comes untied, the company stops being a vendor's hostage and **starts
+moving on its own judgment.**
+
+---
+
+## Related articles
+
+- [Chapter 6: Changing Paperwork — A Realistic Path Away from Office](/en/ai-native-ways/office-replacement/)
+- [Chapter 7: Living with Business Systems — Rewrite by Running in Parallel](/en/ai-native-ways/business-systems/)
+- [Chapter 8: Building the Web — Back to HTML+CSS+JavaScript](/en/ai-native-ways/web/)
+- [Chapter 13: One Person + AI — The New Unit of Work](/en/ai-native-ways/one-plus-ai/)
+- [Insights 08: Subtracting the Enterprise IT Tax](/en/insights/enterprise-tax/)

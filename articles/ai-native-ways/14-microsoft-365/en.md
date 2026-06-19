@@ -60,7 +60,7 @@ the left with the right.
 | **SharePoint + GitHub** | **Forgejo + Zed** | sharing + versioning, local editing |
 | **Exchange + Outlook** | **Postfix + Thunderbird** | mail delivery + reading |
 | **Power Pages** | **Cloudflare Pages** | business portals, public sites |
-| **Copilot** (metered) | **Command A+** (Apache 2.0) | AI — self-hosted, open weights |
+| **Copilot** (metered) | **Command A+** (Apache 2.0) | AI — fully local, open weights |
 
 The six on the right are **separate open tools built by separate
 organizations.** So one vendor's decision can't ripple into the others.
@@ -310,27 +310,33 @@ standard HTML / JavaScript.** If you dislike it, the same files serve
 just as well from Netlify, or your own Nginx — **no lock-in.** That is
 the difference between "using a vendor" and "being held by one."
 
-## Copilot (metered) → Command A+ (free, Apache 2.0)
+## Copilot (metered) → Command A+ (fully local, Apache 2.0)
 
 The last layer, AI. **Copilot is designed to seep one AI into all six
 layers, priced per seat per month.** Price hikes and a flattening of
 judgment spread from here to every layer (Chapter 6, "Copilot — even the
 AI is held hostage").
 
-Replace it with an **open-weights AI you run yourself.** The pick is
-**Command A+** (released May 2026 by Cohere) — a 218B sparse MoE (25B
-active parameters) you **download from Hugging Face and run on your own
-server.** It does cited output, reasoning, vision input, and many
-languages, and **runs on as few as two H100 GPUs.** Not a metered cloud,
-but **your own GPU, where calling it any number of times costs nothing
-extra.**
+Replace it with an **open-weights AI you run entirely inside your own
+walls.** The pick is **Command A+** (released May 2026 by Cohere) — a
+218B sparse MoE (25B active parameters) you **download from Hugging Face
+and run whole on your own servers, or even an air-gapped internal
+network.** It does cited output, reasoning, vision input, and many
+languages, and **runs on as few as two H100 GPUs.**
 
-The decisive part is the license. **Command A+ is Cohere's first Apache
-2.0 model** — meaning **commercial use is free and unconditional.** The
-earlier Command R+ / Command A were CC-BY-NC (non-commercial), so
-business use needed a contract with Cohere. Command A+ removes that wall.
-**For a business Copilot replacement, an open model you can finally use
-straight has arrived.**
+**The decisive part is that it runs fully local.** Copilot always routes
+your input through Microsoft's cloud — confidential data, personal data,
+all of it leaves the building. Command A+ is the opposite: **your
+business data never leaves your premises.** No metered cloud either — on
+your own GPU, **calling it any number of times costs nothing extra,** and
+you're untethered from vendor price changes and API outages.
+
+What makes that work for business is the license. **Command A+ is
+Cohere's first Apache 2.0 model** — commercial use is free and
+unconditional. The earlier Command R+ / Command A were CC-BY-NC
+(non-commercial), so even run locally you **couldn't use them in
+business.** That last shackle is off. **The more confidential data a
+company holds, the more a locally-run Command A+ pays off.**
 
 ### Build it
 
@@ -368,9 +374,9 @@ routine to your own Command A+ (or other commercially-usable open models:
 Llama / Qwen / gpt-oss), judgment to a colleague you picked. Because it
 is Apache 2.0, **you hold the AI you chose as a company asset.**
 
-> Copilot is designed so you can't choose your AI.
-> Apache 2.0 open weights mean you can choose it — and own it.
-> **Being able to choose, and to own, is autonomy.**
+> Copilot routes your input out to the cloud.
+> An Apache 2.0 local model keeps **data and judgment inside the company.**
+> Choose it, own it, and never send it out — **that is autonomy.**
 
 ## The substrate beneath — untie Azure SQL and .NET too
 
@@ -499,7 +505,7 @@ Convenience and hostage were two faces of one chain.
 - **SharePoint + GitHub → Forgejo + Zed** (sharing and versioning in one)
 - **Exchange + Outlook → Postfix + Thunderbird** (communication in your hands)
 - **Power Pages → Cloudflare Pages** (hosting with no lock-in)
-- **Copilot (metered) → Command A+ (free, Apache 2.0)** (choose and own your AI)
+- **Copilot (metered) → Command A+ (fully local, Apache 2.0)** (hold the AI without sending data out)
 - **Azure SQL → PostgreSQL** (the substrate beneath — the database)
 - **C# / .NET / VBA → Python / Ruby + Rust** (the substrate beneath — the runtime)
 

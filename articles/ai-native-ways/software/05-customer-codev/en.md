@@ -179,6 +179,21 @@ that is exactly what professionals grounded in the liberal arts do best
 > It is **assembling proven OSS and untying the vendor.**
 > Code is only the thin final layer that sits on top.
 
+There is an overlooked inversion here. **Generic functionality is already
+shared with the world as OSS** — authentication, documents, the database,
+video conferencing; someone built each, released it, and tens of thousands
+hardened it. The builder need not write any of it from scratch. So the
+magnitudes swap. **The attention goes to AI, but nine-tenths of the work is
+actually carried by shared OSS — the effect of OSS is greater than the
+effect of AI.** AI is only the tool that quickly writes the
+company-specific one-tenth that sits on top.
+
+This asymmetry is what holds up "the customer builds nine-tenths." **Share
+the generic as OSS, and write only the specific with AI** — if you had to
+write all of it from scratch, building nine-tenths in-house would be
+impossible. It is precisely because builders the world over pool the
+generic part as OSS that one person + AI can run a company's software.
+
 ## What AI cannot do, the SIer cannot do either
 
 This is the strongest claim of the chapter.

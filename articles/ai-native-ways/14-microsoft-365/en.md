@@ -707,6 +707,18 @@ flowchart TB
   class Core,Office,Auth,Share good
 ```
 
+The two seams are not equal weight. **SharePoint is a "place"; Entra ID is
+the "key."** A place for documents you can move later, anytime. But identity
+is the one point every app, every login, every permission in both worlds
+hangs on — and as long as someone else holds it, no matter what you
+self-host, **the front door is theirs.**
+
+So the move that truly matters in this chapter is **Entra ID → PocketBase.**
+The moment the identity seam moves to your side, both the core and the
+office authenticate **against your own gatekeeper.** It is also where
+Microsoft digs in deepest — **identity is the root of the bundle.** Hold it,
+and the rest is a matter of time.
+
 So rewriting SAP, Oracle, or a 20-year-old legacy core becomes **just
 standing up one more app on the same foundation.** The hard part was the
 foundation — and it's already in your hands. The rest is Chapter 7: don't

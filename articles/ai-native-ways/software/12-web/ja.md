@@ -9,8 +9,8 @@ label: Software 12
 title_html: 社外の窓は<span class="accent">静的</span>に、<br>入口は<span class="accent">一つ</span>に。
 prev_slug: meetings
 prev_title: 会議と予約を自分の側に ── Jitsi と Cal.com
-next_slug: sier-uneconomic
-next_title: SIer委託モデルの構造的不経済
+next_slug: ai
+next_title: 自前の AI を据える ── LLM と RAG
 ---
 
 # 社外に見せる窓 ── 静的サイトと Caddy

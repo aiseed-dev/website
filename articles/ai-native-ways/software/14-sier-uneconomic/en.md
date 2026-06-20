@@ -8,8 +8,8 @@ description: The effort customers pay to commission an SIer — requirements, ve
 date: 2026.07.21
 label: Software 14
 title_html: With the effort of <span class="accent">outsourcing</span>,<br>you can <span class="accent">build it yourself</span>.
-prev_slug: web
-prev_title: "The Window to the Outside — A Static Site and Caddy"
+prev_slug: ai
+prev_title: "Stand Up Your Own AI — LLM and RAG"
 next_slug: price-gap
 next_title: The Order-of-Magnitude Price Gap
 ---

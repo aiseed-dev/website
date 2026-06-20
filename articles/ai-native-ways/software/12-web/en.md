@@ -10,8 +10,8 @@ label: Software 12
 title_html: A <span class="accent">static</span> window outside,<br>a <span class="accent">single</span> entrance.
 prev_slug: meetings
 prev_title: "Meetings and Booking on Your Own Side — Jitsi and Cal.com"
-next_slug: sier-uneconomic
-next_title: "The Structural Uneconomy of the SIer Model"
+next_slug: ai
+next_title: "Stand Up Your Own AI — LLM and RAG"
 ---
 
 # The Window to the Outside — A Static Site and Caddy

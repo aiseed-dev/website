@@ -8,8 +8,8 @@ description: The effort customers pay to commission an SIer — requirements, ve
 date: 2026.07.21
 label: Software 14
 title_html: With the effort of <span class="accent">outsourcing</span>,<br>you can <span class="accent">build it yourself</span>.
-prev_slug: documents
-prev_title: "Take Documents Back — Nextcloud and OnlyOffice"
+prev_slug: code
+prev_title: "Bring Code In-House — Forgejo and Zed"
 next_slug: price-gap
 next_title: The Order-of-Magnitude Price Gap
 ---

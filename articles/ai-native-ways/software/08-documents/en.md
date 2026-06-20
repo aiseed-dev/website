@@ -10,8 +10,8 @@ label: Software 08
 title_html: Open and store documents<br>on <span class="accent">your own side</span>.
 prev_slug: auth
 prev_title: "Stand Up the Gate — One Login with PocketBase"
-next_slug: sier-uneconomic
-next_title: "The Structural Uneconomy of the SIer Model"
+next_slug: code
+next_title: "Bring Code In-House — Forgejo and Zed"
 ---
 
 # Take Documents Back — Nextcloud and OnlyOffice

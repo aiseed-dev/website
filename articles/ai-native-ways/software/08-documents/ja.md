@@ -9,8 +9,8 @@ label: Software 08
 title_html: 文書を、<span class="accent">自分の側</span>で<br>開いて、しまう。
 prev_slug: auth
 prev_title: 門番を立てる ── PocketBase で認証を一つに
-next_slug: sier-uneconomic
-next_title: SIer委託モデルの構造的不経済
+next_slug: code
+next_title: コードを手元に ── Forgejo と Zed
 ---
 
 # 文書を取り戻す ── Nextcloud と OnlyOffice

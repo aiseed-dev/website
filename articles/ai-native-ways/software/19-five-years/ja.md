@@ -1,11 +1,11 @@
 ---
 slug: five-years
-number: "11"
+number: "19"
 title: 数年で完了する構造転換
 subtitle: 変化の連鎖、5 年前後の見通し、不可逆性 ── ただしソフトウェア開発に限った話だ
 description: AI 能力到達からコーダー消滅、ビルダー需要、SIer 縮小までの変化は連鎖して、5 年前後で主要部分が完了する。一度動いた構造は元に戻らない。ただしこの「完全置換」が起きるのはソフトウェア開発のような検証可能な領域に限られ、デスクワーク・自動運転・ロボットのような領域では last 1% に阻まれて完全置換は起きない ── そこは生産性向上の話だ。本サブシリーズの執筆過程そのものが、その証拠でもある。
 date: 2026.08.10
-label: Software 11
+label: Software 19
 title_html: <span class="accent">5 年</span>で主要な変化が、<br>不可逆に完了する。
 prev_slug: japan-transition
 prev_title: 日本のSIer業界の転換と雇用流動性

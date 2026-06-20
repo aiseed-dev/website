@@ -1,12 +1,12 @@
 ---
 slug: lockin
-number: "08"
+number: "16"
 lang: en
 title: The Lock-In Problem
 subtitle: Proprietary frameworks, proprietary abstractions, human dependency — with Palantir's FDE as the archetype
 description: SIer commissioning anchors customers with three layers of lock-in (proprietary frameworks, proprietary abstractions / Ontology, human dependency). Palantir's FDE model is the extreme form — maximizing all three to sustain premium pricing in the tens of billions of yen. AI-native development, by contrast, structurally avoids lock-in: AI tends to write in standard libraries and standard formats, so another AI, another builder, or the customer themselves can take over.
 date: 2026.07.20
-label: Software 08
+label: Software 16
 title_html: A proprietary framework becomes<br>a <span class="accent">cage with no exit</span>.
 prev_slug: price-gap
 prev_title: The Order-of-Magnitude Price Gap

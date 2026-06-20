@@ -1,11 +1,11 @@
 ---
 slug: price-gap
-number: "07"
+number: "15"
 title: 価格競争力の桁違いの差
 subtitle: 10倍〜100倍の差は競争ではなく市場破壊 ── 日本市場は世界で最も価格差が大きい
 description: 中規模業務システムを例に、SIer 発注 (数千万〜数億円) と AI ネイティブ開発 (数百万円〜1 千万円規模) を直接並べる。10倍〜100倍の価格差は競争ではなく市場破壊だ。日本市場には多重下請け構造と為替で価格差がさらに大きく出るため、世界で最も大きい価格差となり、それは脅威であると同時に機会でもある。
 date: 2026.07.13
-label: Software 07
+label: Software 15
 title_html: <span class="accent">10倍〜100倍</span>の差は、<br>競争ではなく<span class="accent">市場破壊</span>。
 prev_slug: sier-uneconomic
 prev_title: SIer委託モデルの構造的不経済

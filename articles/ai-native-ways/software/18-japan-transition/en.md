@@ -1,12 +1,12 @@
 ---
 slug: japan-transition
-number: "10"
+number: "18"
 lang: en
 title: Japan's SIer Industry Transition and Labor Mobility
 subtitle: Multi-tier subcontracting, paradoxically, makes the transition easier
 description: Japan's multi-tier subcontracting structure in the SIer industry is usually treated as a barrier to transition. Dissect the structure and the conclusion reverses — because coder demand is externalized through contracts, the structure can shrink without internal lay-offs. Prime contractors can downsize by not renewing subcontractor agreements; talented subcontractor coders flow to primes, customer companies, or independence. Labor mobility is trending upward, with long-term commissions, secondment, and internal ventures absorbing the shift as transitional forms.
 date: 2026.08.03
-label: Software 10
+label: Software 18
 title_html: Multi-tier subcontracting,<br>paradoxically, <span class="accent">makes the transition easier</span>.
 prev_slug: hiring-builders
 prev_title: Companies Hire Builders

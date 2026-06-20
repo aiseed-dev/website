@@ -9,8 +9,8 @@ label: Software 05
 title_html: 顧客が <span class="accent">9 割</span> を作り、<br>残り <span class="accent">1 割</span> を相談する。
 prev_slug: builder
 prev_title: ビルダーという役割
-next_slug: sier-uneconomic
-next_title: SIer委託モデルの構造的不経済
+next_slug: foundation
+next_title: 土台を据える ── PostgreSQL・pgvector・DuckDB
 ---
 
 # 顧客がAIと協働して開発する時代

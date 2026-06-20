@@ -10,8 +10,8 @@ label: Software 05
 title_html: Customers build <span class="accent">9 of 10</span>,<br>consult on the remaining <span class="accent">1 of 10</span>.
 prev_slug: builder
 prev_title: The Builder Role
-next_slug: sier-uneconomic
-next_title: The Structural Uneconomy of the SIer Model
+next_slug: foundation
+next_title: "Lay the Foundation — PostgreSQL, pgvector, DuckDB"
 ---
 
 # Customers Co-Develop with AI

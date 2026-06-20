@@ -1,11 +1,11 @@
 ---
 slug: lockin
-number: "08"
+number: "16"
 title: ロックイン問題
 subtitle: 独自フレーム・独自抽象層・人的依存 ── Palantir FDE を典型例として
 description: SIer 委託モデルは三層のロックイン(独自フレームワーク、独自抽象層・Ontology、人的依存)で顧客を固定する。Palantir の FDE モデルはその極致で、三層すべてを最大化することで数十億円規模のプレミアム価格を成立させている。一方 AI ネイティブ開発は、AI が標準ライブラリと標準形式を選ぶ性質から、構造的にロックインを生みにくい ── 別の AI、別のビルダー、顧客自身が引き継げる。
 date: 2026.07.20
-label: Software 08
+label: Software 16
 title_html: 独自フレームは<br><span class="accent">逃げ場のない檻</span>になる。
 prev_slug: price-gap
 prev_title: 価格競争力の桁違いの差

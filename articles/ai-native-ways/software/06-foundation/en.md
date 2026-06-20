@@ -1,27 +1,28 @@
 ---
 slug: foundation
-number: "01"
+number: "06"
 lang: en
 title: "Lay the Foundation — PostgreSQL, pgvector, DuckDB"
 subtitle: "Stand up the data layer everything sits on, first, on your own side"
-description: The Setup series starts with the data layer everything sits on — PostgreSQL. Authentication, analysis, the AI's RAG, and booking all sit here. Stand it up with Docker, enable pgvector, migrate from Azure SQL with pgloader. Layer columnar DuckDB on top and pull far ahead of Excel and Power BI. The generic is already shared as OSS — you don't write it, you stand it up.
+description: The Setup part starts with the data layer everything sits on — PostgreSQL. Authentication, analysis, the AI's RAG, and booking all sit here. Stand it up with Docker, enable pgvector, migrate from Azure SQL with pgloader. Layer columnar DuckDB on top and pull far ahead of Excel and Power BI. The generic is already shared as OSS — you don't write it, you stand it up.
 date: 2026.07.01
-label: Setup 01
+label: Software 06
 title_html: Stand up the <span class="accent">data layer</span><br>first, on your own side.
-prev_slug:
-prev_title:
-next_slug:
-next_title:
+prev_slug: customer-codev
+prev_title: "Customers Co-Develop with AI"
+next_slug: sier-uneconomic
+next_title: "The Structural Uneconomy of the SIer Model"
 ---
 
 # Lay the Foundation — PostgreSQL, pgvector, DuckDB
 
 **A builder's work does not begin with writing code. It begins with
-standing up proven OSS** (Software, Chapter 5). Generic functionality is
+standing up proven OSS** (Chapter 5). Generic functionality is
 already shared with the world — so you don't "write" it, you "stand it up."
 
-This Setup series stands up, one by one, the OSS that replaces Microsoft 365
-and the vendor packages under the core systems. First is the **data layer.**
+This Setup part (from Chapter 6) stands up, one by one, the OSS that replaces
+Microsoft 365 and the vendor packages under the core systems. First is the
+**data layer.**
 Authentication, analysis, the AI's RAG, course booking, the core systems —
 **all of it sits on top of this.** So you lay it first.
 
@@ -42,7 +43,7 @@ after.**
 
 The database is **PostgreSQL** — open source, free, commercial-OK. It
 matches or exceeds Oracle and SQL Server, and it is the dialect Claude
-handles best (Software series; parent series Chapter 14).
+handles best (Chapter 5; parent series Chapter 14).
 
 One `compose.yaml` stands it up.
 
@@ -102,7 +103,7 @@ pgloader mssql://user:pass@azure-host/db \
 
 Standard SQL (`SELECT`, `JOIN`, window functions) runs as-is. You drop only
 **the vendor dialect, T-SQL.** Business logic buried in stored procedures
-gets extracted by Claude and translated into Python / Ruby (Software series).
+gets extracted by Claude and translated into Python / Ruby (Chapter 5).
 Then run in parallel with the old DB, reconcile the output, and stop the old
 when the difference is gone (parent series Chapter 7).
 
@@ -153,6 +154,6 @@ on top of this, as the shared gatekeeper for every app.
 
 ## Related articles
 
-- [Software, Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
+- [Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
 - [Parent series, Chapter 14: Replacing Microsoft 365 Wholesale](/en/ai-native-ways/microsoft-365/)
 - [Chapter 7: Living with Business Systems — Rewrite by Running in Parallel](/en/ai-native-ways/business-systems/)

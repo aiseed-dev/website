@@ -1,12 +1,12 @@
 ---
 slug: hiring-builders
-number: "09"
+number: "17"
 lang: en
 title: Companies Hire Builders
 subtitle: The master builder is a profession that sells judgment — same position as lawyers and doctors
 description: In the AI-native era, IT is not a thin surface layer on top of business; it is the judgment of the business itself encoded. Outsourcing IT becomes the same as outsourcing the business. Keeping the business in-house calls for keeping builders in-house — and the master builder is positioned as a profession like lawyers and doctors, not as a general employee. The corporate-website case shows both the cost and the structural change.
 date: 2026.07.27
-label: Software 09
+label: Software 17
 title_html: The master builder is a<br><span class="accent">profession that sells judgment</span>.
 prev_slug: lockin
 prev_title: The Lock-In Problem

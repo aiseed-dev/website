@@ -1,12 +1,12 @@
 ---
 slug: five-years
-number: "11"
+number: "19"
 lang: en
 title: The Structural Transition Completes in a Few Years
 subtitle: The chain of change, a roughly five-year horizon, irreversibility — but bounded to software development
 description: From AI reaching top-tier capability through coder displacement, builder demand, and SIer shrinkage, the changes chain together and the main part completes in roughly five years. Once a structure moves, it does not move back. But this "complete replacement" applies only to verifiable-correctness domains like software; in desk work, self-driving, and robotics, AI is blocked at the last 1% and complete replacement does not happen — those are productivity-gain stories. The writing of this very sub-series is itself evidence of that bound.
 date: 2026.08.10
-label: Software 11
+label: Software 19
 title_html: In <span class="accent">five years</span>, the main changes<br>complete — irreversibly.
 prev_slug: japan-transition
 prev_title: Japan's SIer Industry Transition and Labor Mobility

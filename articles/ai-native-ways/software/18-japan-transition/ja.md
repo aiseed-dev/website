@@ -1,11 +1,11 @@
 ---
 slug: japan-transition
-number: "10"
+number: "18"
 title: 日本のSIer業界の転換と雇用流動性
 subtitle: 多重下請け構造は、逆説的に転換を容易にする
 description: 日本の SIer 多重下請け構造は転換を阻害すると思われがちだが、構造を解剖すると逆 ── コーダー需要を契約で外部化している構造は、雇用調整を伴わずに縮小できる。元請けは下請け契約解消で対応可能、下請けの優秀な人材は元請けや独立に流れる。雇用流動性は時間とともに高まる方向にあり、長期業務委託・出向・社内ベンチャーといった中間形態が緩衝として効く。
 date: 2026.08.03
-label: Software 10
+label: Software 18
 title_html: 多重下請けは、<br>逆説的に<span class="accent">転換を容易にする</span>。
 prev_slug: hiring-builders
 prev_title: 各社がビルダーを雇用する時代

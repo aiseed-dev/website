@@ -1,15 +1,15 @@
 ---
 slug: sier-uneconomic
-number: "06"
+number: "14"
 lang: en
 title: The Structural Uneconomy of the SIer Model
 subtitle: The friction of outsourcing, plus the customer's invisible labor — for the same effort, you can build it yourself
 description: The effort customers pay to commission an SIer — requirements, vendor selection, contracts, project management, acceptance — consumes as much labor as building it AI-natively, often more. Once you make the customer-side invisible labor explicit, the rationale for commissioning collapses. SIers using AI internally cannot absorb this diseconomy because their person-month revenue model, organization, and contracts are built on the old assumption.
 date: 2026.07.06
-label: Software 06
+label: Software 14
 title_html: With the effort of <span class="accent">outsourcing</span>,<br>you can <span class="accent">build it yourself</span>.
-prev_slug: customer-codev
-prev_title: Customers Co-Develop with AI
+prev_slug: foundation
+prev_title: "Lay the Foundation — PostgreSQL, pgvector, DuckDB"
 next_slug: price-gap
 next_title: The Order-of-Magnitude Price Gap
 ---

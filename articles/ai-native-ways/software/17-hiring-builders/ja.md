@@ -1,11 +1,11 @@
 ---
 slug: hiring-builders
-number: "09"
+number: "17"
 title: 各社がビルダーを雇用する時代
 subtitle: 上級ビルダーは判断を売る専門職 ── 弁護士・医師と同じ位置に動く
 description: AI ネイティブな時代の IT は、業務の薄い表層ではなく業務の判断そのものだ。IT を外部化することは業務を外部化することと同じになる。社内にビルダーを持つ合理性が立ち、上級ビルダーは弁護士・医師と同じ構造の専門職として位置づけられる。一般社員の枠では処遇できない。コーポレートサイトの内製化を例に、コストと構造の両方の変化を示す。
 date: 2026.07.27
-label: Software 09
+label: Software 17
 title_html: 上級ビルダーは<br><span class="accent">判断を売る専門職</span>。
 prev_slug: lockin
 prev_title: ロックイン問題

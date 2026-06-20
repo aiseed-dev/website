@@ -1,26 +1,26 @@
 ---
 slug: foundation
-number: "01"
+number: "06"
 title: 土台を据える ── PostgreSQL・pgvector・DuckDB
 subtitle: すべてが乗るデータ基盤を、最初に自分の側に立てる
 description: 導入編の最初は、すべてが乗るデータ基盤 ── PostgreSQL。認証も分析も AI の RAG も予約も、ここに乗る。docker で立て、pgvector を有効化し、Azure SQL から pgloader で移す。分析は列指向の DuckDB を重ね、Excel や Power BI を大差で抜く。汎用は OSS で共有されている ── 書くのではなく、立てる。
 date: 2026.07.01
-label: Setup 01
+label: Software 06
 title_html: まず<span class="accent">データ基盤</span>を、<br>自分の手元に立てる。
-prev_slug:
-prev_title:
-next_slug:
-next_title:
+prev_slug: customer-codev
+prev_title: 顧客がAIと協働して開発する時代
+next_slug: sier-uneconomic
+next_title: SIer委託モデルの構造的不経済
 ---
 
 # 土台を据える ── PostgreSQL・pgvector・DuckDB
 
 **ビルダーの仕事は、コードを書くことから始まらない。実績ある OSS を
-立てることから始まる**(開発編 第5章)。汎用的な機能は、もう世界で
+立てることから始まる**(第5章)。汎用的な機能は、もう世界で
 共有されている ── だから「書く」のではなく「立てる」。
 
-この導入編では、Microsoft 365 と基幹のベンダー製品を置き換える OSS を、
-一つずつ実際に立てていく。最初は **データ基盤**だ。認証も、分析も、AI の
+この導入編(第6章から)では、Microsoft 365 と基幹のベンダー製品を置き換える
+OSS を、一つずつ実際に立てていく。最初は **データ基盤**だ。認証も、分析も、AI の
 RAG も、講座の予約も、基幹システムも ── **すべてがこの上に乗る**。だから
 最初に据える。
 
@@ -39,7 +39,7 @@ RAG も、講座の予約も、基幹システムも ── **すべてがこの
 
 データベースは **PostgreSQL**。オープンソース、無料、商用可。Oracle や
 SQL Server と同等以上の機能を持ち、Claude が最も得意とする方言だ
-(開発編・親シリーズ第14章)。
+(第5章・親シリーズ第14章)。
 
 `compose.yaml` 一枚で立つ。
 
@@ -98,7 +98,7 @@ pgloader mssql://user:pass@azure-host/db \
 
 標準 SQL(`SELECT`・`JOIN`・ウィンドウ関数)はそのまま動く。捨てるのは
 **ベンダー方言の T-SQL だけ**だ。ストアドに埋まった業務ロジックは、
-Claude が抽出して Python / Ruby に翻訳する(開発編)。あとは旧 DB と
+Claude が抽出して Python / Ruby に翻訳する(第5章)。あとは旧 DB と
 並行稼働で出力を突き合わせ、差分が消えたら旧を止める(親シリーズ第7章)。
 
 > 移行は「全部を書き直す」ことではない。
@@ -147,6 +147,6 @@ duckdb.sql("SELECT 部門, sum(売上) FROM pg.sales GROUP BY 部門 ORDER BY 2 
 
 ## 関連記事
 
-- [開発編 第5章: 顧客がAIと協働して開発する時代](/ai-native-ways/software/customer-codev/)
+- [第5章: 顧客がAIと協働して開発する時代](/ai-native-ways/software/customer-codev/)
 - [親シリーズ第14章: Microsoft 365 を丸ごと置き換える](/ai-native-ways/microsoft-365/)
 - [第7章: 業務システムと付き合う ── 並行稼働で書き換える](/ai-native-ways/business-systems/)

@@ -1,14 +1,14 @@
 ---
 slug: sier-uneconomic
-number: "06"
+number: "14"
 title: SIer委託モデルの構造的不経済
 subtitle: 外注プロセスの手間と、社内側の見えない工数 ── 同じ手間で、自分で作れる
 description: SIer に発注するために顧客が払う手間 ── 要件定義、ベンダー選定、契約、管理、検収 ── は、AI ネイティブに自分で作るのと同じか、それ以上の労力を消費する。社内側の見えない工数を可視化すると、委託の合理性が崩れる。SIer 側が AI を使っても、人月ベースの売上構造・組織・契約のために、この不経済を吸収できない。
 date: 2026.07.06
-label: Software 06
+label: Software 14
 title_html: 外注の<span class="accent">手間</span>で、<br>自分で<span class="accent">作れて</span>しまう。
-prev_slug: customer-codev
-prev_title: 顧客がAIと協働して開発する時代
+prev_slug: foundation
+prev_title: 土台を据える ── PostgreSQL・pgvector・DuckDB
 next_slug: price-gap
 next_title: 価格競争力の桁違いの差
 ---

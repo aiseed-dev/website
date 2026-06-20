@@ -1,12 +1,12 @@
 ---
 slug: price-gap
-number: "07"
+number: "15"
 lang: en
 title: The Order-of-Magnitude Price Gap
 subtitle: 10× to 100× is not competition; it is market displacement — Japan has the widest gap of any market
 description: Take a mid-size business system and quote both ways — SIer commissioning at tens to hundreds of millions of yen, AI-native build at a few million to ten million. The 10× to 100× gap is not competition but market displacement. Japan's multi-tier subcontracting structure and the USD-JPY dynamics widen the gap further, making Japan the market with the largest gap — which is both threat and opportunity.
 date: 2026.07.13
-label: Software 07
+label: Software 15
 title_html: <span class="accent">10× to 100×</span> is not competition.<br>It is <span class="accent">market displacement</span>.
 prev_slug: sier-uneconomic
 prev_title: The Structural Uneconomy of the SIer Model

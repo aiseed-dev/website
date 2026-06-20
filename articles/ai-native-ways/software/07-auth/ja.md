@@ -139,5 +139,6 @@ PowerPoint を自分の側に置く。
 ## 関連記事
 
 - [第6章: 土台を据える ── PostgreSQL・SQLite・pgvector・DuckDB・Polars](/ai-native-ways/software/foundation/)
+- [参考実装 kura ── PocketBase を門番に使う自前ワークスペース](https://github.com/aiseed-dev/workspace)
 - [親シリーズ第14章: Microsoft 365 を丸ごと置き換える](/ai-native-ways/microsoft-365/)
 - [親シリーズ第7章: 業務システムと付き合う ── 並行稼働で書き換える](/ai-native-ways/business-systems/)

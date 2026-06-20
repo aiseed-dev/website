@@ -4,10 +4,10 @@ number: "08"
 lang: en
 title: "Take Documents Back — OnlyOffice Docs on PocketBase"
 subtitle: "Add no separate storage app — put documents on the Chapter 7 gate and embed only the editor engine"
-description: Word, Excel, and PowerPoint are the input/output tools people write and read with. Rather than add a separate storage app like Nextcloud, use the PocketBase stood up in Chapter 7 as the document store (storage, auth, sharing) and embed OnlyOffice Docs as the editor engine only — a thin, custom document app. It opens docx, xlsx, and pptx with high fidelity, co-edits, and sits inside the gate from the start. Avoid the finished DocSpace — it brings Active Directory back. Keep the formats; take back only control.
+description: Word, Excel, and PowerPoint are the input/output tools people write and read with. Rather than add a separate storage app like Nextcloud, keep documents as plain files on your own storage, with auth from the Chapter 7 PocketBase and permissions in xattr, and embed OnlyOffice Docs as the editor engine only — a thin, custom document app. It opens docx, xlsx, and pptx with high fidelity, co-edits, and needs no second permissions DB or login. Avoid the finished DocSpace — it brings Active Directory back. The reference implementation is the public repo kura. Keep the formats; take back only control.
 date: 2026.07.04
 label: Software 08
-title_html: Put documents<br>right <span class="accent">inside the gate</span>.
+title_html: Keep documents as <span class="accent">files</span>;<br>only auth at the gate.
 prev_slug: auth
 prev_title: "Stand Up the Gate — One Login with PocketBase"
 next_slug: code
@@ -32,16 +32,17 @@ that drags in a separate user system and a separate database. It runs against
 the **single-binary lightness** this Setup part has chosen (PocketBase,
 Stalwart, Forgejo).
 
-In Chapter 7 you already stood up **PocketBase,** which carries auth, storage,
-and REST. As a document store, **that is enough.**
+In Chapter 7 you already stood up **PocketBase,** which carries auth. For
+storage, **make it the gate and keep the rest as files.**
 
-- **Storage** — put documents in PocketBase file-bearing records
-- **Auth** — the Chapter 7 gate applies directly (no second login)
-- **Sharing** — issue internal and external links with PocketBase access rules
+- **The file itself** — plain files on your own storage; no heavy storage app
+- **Auth** — the Chapter 7 gate (PocketBase) applies directly (no second login)
+- **Permissions / sharing** — carried by the file itself (xattr); the gate verifies identity
 
 What you add is **only the editor engine.** OnlyOffice ships "Docs (the
 Document Server)" as a standalone editing engine, leaving storage to any app.
-So **embed OnlyOffice Docs into PocketBase** — this is the thinnest path.
+So **lay OnlyOffice Docs over files guarded by the gate (PocketBase)** — this is
+the thinnest path.
 
 ## Choose Docs — not DocSpace
 
@@ -83,22 +84,24 @@ For internal use, the Community edition (AGPLv3) is fine. **Only if you resell i
 as your own SaaS** do you need to mind AGPL's copyleft and attribution (naming
 ONLYOFFICE in the UI) — there, consider a commercial license.
 
-## Put documents in PocketBase
+## Documents are files — auth at the gate, permissions in xattr
 
-Documents go into a `documents` collection on the Chapter 7 **PocketBase,** held
-in a file field. Owner, share targets, and timestamps live on the same record.
+A document's body is **just a file** on your own storage. Rather than embed it
+as a blob in a PocketBase record, keep `docx`, `xlsx`, and `pptx` as files — so
+that machines (Polars, AI) can read them directly later.
 
-```js
-// save one document into the gate (PocketBase)
-await pb.collection('documents').create({
-  title: 'quote_2026.xlsx',
-  owner: pb.authStore.model.id,   // the Chapter 7 gate already knows who this is
-  file:  xlsxBlob,                // PocketBase stores the file itself
-})
+- **The body** — a file on the filesystem (your own storage)
+- **Auth** — the Chapter 7 gate (PocketBase) verifies who
+- **Permissions** — carried by the file itself — extended attributes (xattr)
+
+```bash
+# permissions ride on the file itself, not a separate DB
+setfattr -n user.ws.perm    -v 'team:rw' quote_2026.xlsx
+setfattr -n user.ws.creator -v 'alice'   quote_2026.xlsx
 ```
 
-No new database, no new login. **The document is inside the gate from the
-start.**
+No separate database just for permissions. **The gate holds identity; the file
+holds permission** — split by role.
 
 ## Connect — open and save
 
@@ -109,22 +112,23 @@ signed with JWT, to the engine.
 ```js
 // open the editor — hand the engine a signed config
 new DocsAPI.DocEditor("editor", {
-  document:     { url: fileUrl, key: docId },          // the file on PocketBase
-  editorConfig: { callbackUrl: saveBackUrl },          // save target is PocketBase too
+  document:     { url: fileUrl, key: docId },          // where the file is
+  editorConfig: { callbackUrl: saveBackUrl },          // save target (write back to the file)
   token:        jwt,                                    // signed with JWT_SECRET
 })
 ```
 
 When a person finishes editing, OnlyOffice Docs **returns the edited file to the
-callback,** and you write it back to the PocketBase record. The engine handles
+callback,** and you write it back to the **original file.** The engine handles
 co-editing reconciliation. All the app writes is these few lines of hand-off.
 
 ## The gate stays — no second login
 
-This is the biggest win of building it your own way. The document is **inside
-the Chapter 7 gate from the start,** so there is no second account like
-Nextcloud's and no front-door auth proxy. Who can open which document is decided
-by a single PocketBase access rule.
+This is the biggest win of building it your own way. **Auth comes straight from
+the Chapter 7 gate, and permissions ride on the file (xattr),** so there is no
+second account like Nextcloud's and no separate permissions database. Who can
+open which document is decided by the identity the gate verifies and the
+permission stamped on the file.
 
 ## Migrate existing documents
 
@@ -133,9 +137,9 @@ OnlyOffice Docs opens `docx`, `xlsx`, and `pptx` as-is, so no conversion is
 needed.
 
 ```bash
-# pull down with rclone, then import into PocketBase records
+# pull down with rclone and lay the files on your own storage
 rclone copy onedrive:Documents ./inbox --progress
-# register each file in inbox/ into the documents collection (one script)
+# stamp permissions on each file in inbox/ with xattr (one script)
 ```
 
 Migrate gradually. **Run both in parallel and cancel the old storage once the
@@ -154,21 +158,35 @@ The spreadsheet returns to being "the human's tool," and heavy processing moves
 to "the machine's tool."
 
 > Don't add separate apps for either the format or the storage.
-> **Put it right inside the gate and embed only the editor engine.**
+> **Keep it as a file, leave only auth to the gate, and embed only the editor engine.**
+
+## Reference implementation — kura
+
+This setup is actually built in the public repo **kura** (`aiseed-dev/workspace`)
+— a self-hosted Microsoft 365 / Google Workspace alternative aimed at serious
+SME use (about 100 users per instance, distributed for more). It maps straight
+onto this chapter:
+
+- **Auth** — PocketBase (pluggable token validation + short-lived cache)
+- **Permissions** — file xattr (`user.ws.perm` / `user.ws.creator`), no permissions DB
+- **The body** — the file itself ("the AI interface is files")
+- **Editing** — OnlyOffice Docs over JWT and callbacks (FastAPI + Flet)
+
+This chapter is that design put into words. To see the code, read kura.
 
 ## Summary
 
-Documents, right inside the gate.
+Files as they are, only auth at the gate.
 
 - **OnlyOffice Docs** — an editor engine for `docx`, `xlsx`, `pptx` with high fidelity (holds no storage)
-- **PocketBase** — reuse the Chapter 7 gate as document storage, auth, and sharing
+- **The body is a file** — on your own storage, readable directly by machines (Polars, AI)
+- **Auth at the gate (PocketBase) / permissions in xattr** — no separate permissions DB
 - **Embedding is a few lines** — hand over the file location and save target, signed with JWT
-- **No second login** — documents are inside the gate from the start, access by one rule
 - **People vs. machines** — people use OnlyOffice Docs, machines use Polars / DuckDB
 
-No separate storage app — **embedded into the gate you already have.** Next, we
-stand up the builder's workshop — **code sharing (Forgejo)** — and bring GitHub
-and Azure DevOps to our own side.
+No separate storage app — **files as they are, embedded into the gate you already
+have.** Next, we stand up the builder's workshop — **code sharing (Forgejo)** —
+and bring GitHub and Azure DevOps to our own side.
 
 ---
 
@@ -176,4 +194,5 @@ and Azure DevOps to our own side.
 
 - [Chapter 6: Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars](/en/ai-native-ways/software/foundation/)
 - [Chapter 7: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
+- [Reference implementation kura — a self-hosted Microsoft 365 / Google Workspace alternative](https://github.com/aiseed-dev/workspace)
 - [Parent series, Chapter 14: Replacing Microsoft 365 Wholesale](/en/ai-native-ways/microsoft-365/)

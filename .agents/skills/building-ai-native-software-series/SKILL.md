@@ -154,6 +154,7 @@ This SKILL.md is the source of truth (no separate outline file). To change the s
 
 ## Pointers
 
+- **Reference implementation of the 導入編 stack**: `aiseed-dev/workspace` (kura) — a self-hosted Microsoft 365 / Google Workspace alternative (Python: FastAPI + Flet). PocketBase for auth (pluggable token validation + short cache), **file-native storage with xattr permissions** (`user.ws.perm` / `user.ws.creator`, no permissions DB), OnlyOffice Docs via JWT + callbacks, calendar via `.ics`. Cross-cutting principles: "the AI interface is files," "APIs only at boundaries," "operational AI = local OSS, no external subscription." Ch.8 (documents) and Ch.7 (auth) are aligned to and cross-reference kura. When writing 導入編 chapters, prefer the file-native / xattr model over storing blobs in a DB.
 - Parent series spec: `articles/ai-native-ways/README.md`
 - Mechanical scaffold for a chapter: skill `authoring-aiways-chapter`
 - Prose conventions: skill `writing-aiways-voice`

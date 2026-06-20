@@ -145,5 +145,6 @@ bring Word, Excel, and PowerPoint to our own side.
 ## Related articles
 
 - [Chapter 6: Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars](/en/ai-native-ways/software/foundation/)
+- [Reference implementation kura — a self-hosted workspace using PocketBase as the gate](https://github.com/aiseed-dev/workspace)
 - [Parent series, Chapter 14: Replacing Microsoft 365 Wholesale](/en/ai-native-ways/microsoft-365/)
 - [Parent series, Chapter 7: Living with Business Systems — Rewrite by Running in Parallel](/en/ai-native-ways/business-systems/)

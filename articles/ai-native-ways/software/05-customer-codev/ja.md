@@ -10,7 +10,7 @@ title_html: 顧客が <span class="accent">9 割</span> を作り、<br>残り <
 prev_slug: builder
 prev_title: ビルダーという役割
 next_slug: foundation
-next_title: 土台を据える ── PostgreSQL・pgvector・DuckDB
+next_title: 土台を据える ── PostgreSQL・SQLite・pgvector・DuckDB・Polars
 ---
 
 # 顧客がAIと協働して開発する時代

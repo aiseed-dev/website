@@ -7,8 +7,8 @@ description: SIer に発注するために顧客が払う手間 ── 要件定
 date: 2026.07.06
 label: Software 14
 title_html: 外注の<span class="accent">手間</span>で、<br>自分で<span class="accent">作れて</span>しまう。
-prev_slug: foundation
-prev_title: 土台を据える ── PostgreSQL・pgvector・DuckDB
+prev_slug: auth
+prev_title: 門番を立てる ── PocketBase で認証を一つに
 next_slug: price-gap
 next_title: 価格競争力の桁違いの差
 ---

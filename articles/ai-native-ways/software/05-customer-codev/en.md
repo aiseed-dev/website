@@ -11,7 +11,7 @@ title_html: Customers build <span class="accent">9 of 10</span>,<br>consult on t
 prev_slug: builder
 prev_title: The Builder Role
 next_slug: foundation
-next_title: "Lay the Foundation — PostgreSQL, pgvector, DuckDB"
+next_title: "Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars"
 ---
 
 # Customers Co-Develop with AI

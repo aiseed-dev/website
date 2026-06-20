@@ -8,8 +8,8 @@ description: The effort customers pay to commission an SIer — requirements, ve
 date: 2026.07.06
 label: Software 14
 title_html: With the effort of <span class="accent">outsourcing</span>,<br>you can <span class="accent">build it yourself</span>.
-prev_slug: foundation
-prev_title: "Lay the Foundation — PostgreSQL, pgvector, DuckDB"
+prev_slug: auth
+prev_title: "Stand Up the Gate — One Login with PocketBase"
 next_slug: price-gap
 next_title: The Order-of-Magnitude Price Gap
 ---

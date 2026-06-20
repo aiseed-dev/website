@@ -1,28 +1,28 @@
 ---
 slug: foundation
 number: "06"
-title: 土台を据える ── PostgreSQL・pgvector・DuckDB
+title: 土台を据える ── PostgreSQL・SQLite・pgvector・DuckDB・Polars
 subtitle: すべてが乗るデータ基盤を、最初に自分の側に立てる
-description: 導入編の最初は、すべてが乗るデータ基盤 ── PostgreSQL。認証も分析も AI の RAG も予約も、ここに乗る。docker で立て、pgvector を有効化し、Azure SQL から pgloader で移す。分析は列指向の DuckDB を重ね、Excel や Power BI を大差で抜く。汎用は OSS で共有されている ── 書くのではなく、立てる。
+description: 導入編の最初は、すべてが乗るデータ基盤。共有は PostgreSQL、手元は SQLite。pgvector で意味検索、DuckDB と Polars で列指向分析 ── 旧 Excel を入力に格下げし、Power BI を大差で抜く。docker で立て、Azure SQL から pgloader で移す。汎用は OSS で共有されている ── 書くのではなく、立てる。
 date: 2026.07.01
 label: Software 06
 title_html: まず<span class="accent">データ基盤</span>を、<br>自分の手元に立てる。
 prev_slug: customer-codev
 prev_title: 顧客がAIと協働して開発する時代
-next_slug: sier-uneconomic
-next_title: SIer委託モデルの構造的不経済
+next_slug: auth
+next_title: 門番を立てる ── PocketBase で認証を一つに
 ---
 
-# 土台を据える ── PostgreSQL・pgvector・DuckDB
+# 土台を据える ── PostgreSQL・SQLite・pgvector・DuckDB・Polars
 
 **ビルダーの仕事は、コードを書くことから始まらない。実績ある OSS を
 立てることから始まる**(第5章)。汎用的な機能は、もう世界で
 共有されている ── だから「書く」のではなく「立てる」。
 
 この導入編(第6章から)では、Microsoft 365 と基幹のベンダー製品を置き換える
-OSS を、一つずつ実際に立てていく。最初は **データ基盤**だ。認証も、分析も、AI の
-RAG も、講座の予約も、基幹システムも ── **すべてがこの上に乗る**。だから
-最初に据える。
+OSS を、一つずつ実際に立てていく。最初は **データ基盤**だ。分析も、AI の
+RAG も、講座の予約も、基幹システムも ── **共有するデータは、すべてこの上に
+乗る**。だから最初に据える。
 
 ## なぜ土台(データ)から始めるのか
 
@@ -86,6 +86,23 @@ CREATE TABLE docs (
 入れ、`ORDER BY embedding <=> :query` で近いものを引く ── 実際の RAG
 パイプラインは AI の章で組む。**いまは器だけ用意しておく**。
 
+## 単一ファイルで持つ ── SQLite
+
+すべてが共有サーバ(PostgreSQL)に乗るわけではない。一つのアプリが自分
+だけで完結して持つ設定や、端末の手元に置く小さなデータには、**SQLite** が
+合う。サーバを立てず、**一つのファイル**に収まる。世界で最も多く使われて
+いるデータベースだ ── スマホにもブラウザにも入っている。
+
+```bash
+# ライブラリも不要 ── 標準で入っている
+sqlite3 app.db 'CREATE TABLE memo(id integer primary key, body text)'
+```
+
+次章で立てる **門番(PocketBase)も、この SQLite の上で動く**。判断の基準は
+一つだ。**複数のアプリや人が同時に書くなら PostgreSQL、一つのアプリが
+手元で持つだけなら SQLite**。どちらも標準 SQL で、Claude がそのまま書く。
+**倉庫(PostgreSQL)と手帳(SQLite)を、用途で使い分ける**。
+
 ## Azure SQL から移す
 
 既存の Azure SQL / SQL Server がある場合は、`pgloader` がスキーマも
@@ -127,21 +144,40 @@ duckdb.sql("SELECT 部門, sum(売上) FROM pg.sales GROUP BY 部門 ORDER BY 2 
 ゼロで何度でも問える。Power BI のクラウド従量・人数課金から見れば、
 これは別次元だ。
 
+### 旧 Excel を取り込む ── Polars
+
+手元に積み上がった `.xlsx` は、**Polars** がそのまま読む。Rust 製の高速
+データフレームで、Excel が固まる行数でも瞬時に処理し、結果を PostgreSQL や
+Parquet に書き戻せる。
+
+```python
+import polars as pl
+df  = pl.read_excel("売上_2025.xlsx")                # 旧 Excel をそのまま読む
+agg = df.group_by("部門").agg(pl.col("売上").sum())  # 集計は一行
+df.write_parquet("sales.parquet")                    # 倉庫(Parquet)に収める
+```
+
+こうして **Excel は「最終成果物」から「ただの入力」に格下げ**される。
+集計の主役は DuckDB と Polars に移り、表計算は **結果を眺める薄い層**に
+なる。SQL で書きたい処理は DuckDB、データフレームで捏ねたい処理は
+Polars ── **同じデータを、好きな道具で**触れる。
+
 巨大データを常時集計するなら、列指向 DB サーバーの **ClickHouse** に
-載せ替える。だが大半の社内分析は、DuckDB 一つで足りる。
+載せ替える。だが大半の社内分析は、DuckDB と Polars で足りる。
 
 ## まとめ
 
 データ基盤を、最初に自分の側へ。
 
-- **PostgreSQL**(+ pgvector)── 認証・予約・基幹・RAG が乗る器
+- **PostgreSQL**(+ pgvector)── 予約・基幹・RAG が乗る共有の倉庫
+- **SQLite** ── サーバ不要の単一ファイル。手元・端末・小さな道具に(門番もこの上)
 - **pgvector** ── 意味検索の土台(RAG は AI の章で)
 - **pgloader** ── Azure SQL からの一括移行、方言だけ捨てる
-- **DuckDB**(+ Polars)── 列指向分析で Excel / Power BI を大差で抜く
+- **DuckDB / Polars** ── 列指向分析と高速データフレーム。旧 Excel を入力に格下げし、Power BI を大差で抜く
 
 書いたコードは、ほとんど無い。**汎用は、すでに OSS として在る**。
 ビルダーは、それを立てる。次章では、その上に **認証(PocketBase)** を
-据え、全アプリ共通の門番にする。
+据え、アプリ共通の門番にする。
 
 ---
 

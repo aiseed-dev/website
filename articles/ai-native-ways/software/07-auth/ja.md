@@ -10,7 +10,7 @@ title_html: 入口を<span class="accent">一つ</span>に、<br>門番は単一
 prev_slug: foundation
 prev_title: 土台を据える ── PostgreSQL・SQLite・pgvector・DuckDB・Polars
 next_slug: documents
-next_title: 文書を取り戻す ── Nextcloud と OnlyOffice
+next_title: 文書を取り戻す ── OnlyOffice Docs を PocketBase に組み込む
 ---
 
 # 門番を立てる ── PocketBase で認証を一つに

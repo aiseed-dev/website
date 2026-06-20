@@ -11,7 +11,7 @@ title_html: One front door,<br>a <span class="accent">gate</span> from a single 
 prev_slug: foundation
 prev_title: "Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars"
 next_slug: documents
-next_title: "Take Documents Back — Nextcloud and OnlyOffice"
+next_title: "Take Documents Back — OnlyOffice Docs on PocketBase"
 ---
 
 # Stand Up the Gate — One Login with PocketBase

@@ -9,7 +9,7 @@ date: 2026.07.06
 label: Software 09
 title_html: Put the home of your code<br>on <span class="accent">your own side</span>.
 prev_slug: documents
-prev_title: "Take Documents Back — Nextcloud and OnlyOffice"
+prev_title: "Take Documents Back — OnlyOffice Docs on PocketBase"
 next_slug: mail
 next_title: "Mail on Your Own Side — Stalwart and Thunderbird"
 ---

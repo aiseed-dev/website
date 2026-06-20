@@ -72,7 +72,7 @@ services:
 
 ## カレンダーと門番
 
-予定の同期は **CalDAV**(Radicale、または第8章の Nextcloud カレンダー)で、
+予定の同期は **CalDAV**(軽量な Radicale を一つ立てる)で、
 Thunderbird やスマホの標準カレンダーとつながる。Cal.com と各アプリは、
 第7章の門番の内側、リバースプロキシの先に置く。
 

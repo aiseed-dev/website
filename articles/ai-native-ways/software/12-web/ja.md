@@ -58,7 +58,7 @@ npm run build        # dist/ に HTML が焼ける
 example.com           { root * /srv/site/dist
                         file_server }            # 静的サイト
 auth.example.com      { reverse_proxy auth:8090 }       # 第7章 門番
-docs.example.com      { reverse_proxy files:80 }        # 第8章 文書
+docs.example.com      { reverse_proxy onlyoffice:80 }   # 第8章 文書(編集エンジン)
 git.example.com       { reverse_proxy code:3000 }       # 第9章 コード
 meet.example.com      { reverse_proxy jitsi-web:80 }    # 第11章 会議
 book.example.com      { reverse_proxy booking:3000 }    # 第11章 予約

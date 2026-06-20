@@ -60,7 +60,7 @@ automatically via Let's Encrypt,** and the config is a few lines.
 example.com           { root * /srv/site/dist
                         file_server }            # static site
 auth.example.com      { reverse_proxy auth:8090 }       # Ch.7 gate
-docs.example.com      { reverse_proxy files:80 }        # Ch.8 documents
+docs.example.com      { reverse_proxy onlyoffice:80 }   # Ch.8 documents (editor engine)
 git.example.com       { reverse_proxy code:3000 }       # Ch.9 code
 meet.example.com      { reverse_proxy jitsi-web:80 }    # Ch.11 meetings
 book.example.com      { reverse_proxy booking:3000 }    # Ch.11 booking

@@ -74,7 +74,7 @@ laid first pays off here.
 
 ## Calendar and the gate
 
-Schedule sync is **CalDAV** (Radicale, or the Chapter 8 Nextcloud calendar),
+Schedule sync is **CalDAV** (stand up a lightweight Radicale),
 connecting to Thunderbird and the stock phone calendar. Cal.com and each app sit
 behind the Chapter 7 gate, beyond the reverse proxy.
 

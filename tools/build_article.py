@@ -680,6 +680,13 @@ AIWAYS_SUBSERIES = {
             "An 11-chapter case for an irreversible structural shift "
             "completing in years."
         ),
+        # The sub-series is presented in three 編 (parts) on its index page.
+        # Each entry groups chapters whose number is <= `upto`.
+        "parts": [
+            {"upto": 5,  "name_ja": "概念編 ── なぜ作るのか", "name_en": "Concept — why build"},
+            {"upto": 13, "name_ja": "導入編 ── 汎用は OSS で立てる", "name_en": "Setup — stand up the generic as OSS"},
+            {"upto": 99, "name_ja": "転換編 ── 産業構造の帰結", "name_en": "Shift — the industry consequence"},
+        ],
     },
 }
 
@@ -1479,12 +1486,33 @@ def _aiways_subseries_hero_html(lang: str) -> str:
     return "".join(parts)
 
 
-def _render_aiways_chapter_list(chapters, aiways_base: str) -> str:
-    """Render chapter cards for an aiways index page (parent or sub-series)."""
+def _render_aiways_chapter_list(chapters, aiways_base: str, parts=None, lang="ja") -> str:
+    """Render chapter cards for an aiways index page (parent or sub-series).
+
+    If `parts` is given (a list of {upto, name_ja, name_en}), insert a part
+    heading before the first chapter whose number falls into each part.
+    """
     out = ""
+    shown_parts = set()
     for c in chapters:
         slug = c.get("slug", "")
         number = c.get("number", "").strip('"')
+        if parts:
+            try:
+                n = int(number)
+            except ValueError:
+                n = 0
+            part = next((p for p in parts if n <= p["upto"]), None)
+            if part is not None and part["upto"] not in shown_parts:
+                shown_parts.add(part["upto"])
+                pname = part["name_en" if lang == "en" else "name_ja"]
+                out += (
+                    '\n                <h2 class="aiways-part" style="'
+                    "margin:2.6rem 0 0.6rem;padding-bottom:0.3rem;"
+                    "border-bottom:1px solid var(--rule,#d4cdb8);"
+                    "color:var(--accent,#c8442a);font-size:1.05rem;"
+                    'letter-spacing:0.04em;">' + pname + "</h2>\n"
+                )
         title = c.get("title", "")
         subtitle = c.get("subtitle", "")
         description = c.get("description", "")
@@ -1558,7 +1586,9 @@ def build_aiways_subseries_index(subseries: str, lang: str = "ja"):
         else f"{AIWAYS_SERIES_NAME_JA} — {name}"
     )
 
-    chapter_list = _render_aiways_chapter_list(chapters, aiways_base)
+    chapter_list = _render_aiways_chapter_list(
+        chapters, aiways_base, parts=cfg.get("parts"), lang=lang
+    )
 
     variables = aiways_index_vars(lang, chapter_list, has_translation=has_translation)
     # Override identity for the sub-series.

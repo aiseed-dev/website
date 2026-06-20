@@ -1,11 +1,11 @@
 ---
 slug: lockin
-number: "08"
+number: "16"
 title: ロックイン問題
 subtitle: 独自フレーム・独自抽象層・人的依存 ── Palantir FDE を典型例として
 description: SIer 委託モデルは三層のロックイン(独自フレームワーク、独自抽象層・Ontology、人的依存)で顧客を固定する。Palantir の FDE モデルはその極致で、三層すべてを最大化することで数十億円規模のプレミアム価格を成立させている。一方 AI ネイティブ開発は、AI が標準ライブラリと標準形式を選ぶ性質から、構造的にロックインを生みにくい ── 別の AI、別のビルダー、顧客自身が引き継げる。
-date: 2026.07.20
-label: Software 08
+date: 2026.08.04
+label: Software 16
 title_html: 独自フレームは<br><span class="accent">逃げ場のない檻</span>になる。
 prev_slug: price-gap
 prev_title: 価格競争力の桁違いの差
@@ -20,7 +20,7 @@ next_title: 各社がビルダーを雇用する時代
 対して AI ネイティブ開発は、標準コードと標準形式で進めることで、
 ロックインそのものを最小化する**。
 
-第7章で、SIer 発注と AI ネイティブ開発のあいだに 10倍〜100倍の価格
+第15章で、SIer 発注と AI ネイティブ開発のあいだに 10倍〜100倍の価格
 差があることを示した。だが、価格差が桁違いでも、顧客がすぐには動か
 ない ── その理由が **ロックイン** だ。本章はロックインの構造を分解
 し、Palantir の FDE モデルを典型例として読み、AI ネイティブ開発が
@@ -198,7 +198,7 @@ AI ネイティブなコードベースは、こういう特性を持つ:
 ない。
 
 業界全体の転換速度 ── 日本の多重下請け構造、雇用流動性、転換期の
-中間形態 ── は第10章で扱う。
+中間形態 ── は第18章で扱う。
 
 なお、ここまでは SIer 委託モデルの **開発ロックイン** の話だ。これと
 は別に、**ベンダー AI(Copilot 等)そのもののロックイン** がある ──
@@ -232,9 +232,9 @@ AI ネイティブなコードベースは、こういう特性を持つ:
 
 - [第3章: コーダーの仕事はなくなる](/ai-native-ways/software/coder-end/)
 - [第4章: ビルダーという役割](/ai-native-ways/software/builder/)
-- [第7章: 価格競争力の桁違いの差](/ai-native-ways/software/price-gap/)
-- [第9章: 各社がビルダーを雇用する時代](/ai-native-ways/software/hiring-builders/)
-- [第10章: 日本のSIer業界の転換と雇用流動性](/ai-native-ways/software/japan-transition/)
+- [第15章: 価格競争力の桁違いの差](/ai-native-ways/software/price-gap/)
+- [第17章: 各社がビルダーを雇用する時代](/ai-native-ways/software/hiring-builders/)
+- [第18章: 日本のSIer業界の転換と雇用流動性](/ai-native-ways/software/japan-transition/)
 - [構造分析08: 企業ITの税を引く](/insights/enterprise-tax/)
 - [構造分析12: AIと個人事業](/insights/ai-and-individual/)
 - [Microsoft 365（Standard + Copilot）同等の環境を自前で作れるか試す](/blog/self-hosting-microsoft-365/)

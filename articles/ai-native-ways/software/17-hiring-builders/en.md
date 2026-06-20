@@ -1,12 +1,12 @@
 ---
 slug: hiring-builders
-number: "09"
+number: "17"
 lang: en
 title: Companies Hire Builders
 subtitle: The master builder is a profession that sells judgment — same position as lawyers and doctors
 description: In the AI-native era, IT is not a thin surface layer on top of business; it is the judgment of the business itself encoded. Outsourcing IT becomes the same as outsourcing the business. Keeping the business in-house calls for keeping builders in-house — and the master builder is positioned as a profession like lawyers and doctors, not as a general employee. The corporate-website case shows both the cost and the structural change.
-date: 2026.07.27
-label: Software 09
+date: 2026.08.11
+label: Software 17
 title_html: The master builder is a<br><span class="accent">profession that sells judgment</span>.
 prev_slug: lockin
 prev_title: The Lock-In Problem
@@ -21,7 +21,7 @@ structure as lawyers and doctors. Not a role that fits inside a
 general-employee grade system**.
 
 Chapter 5 showed that customers themselves can become builders.
-Chapter 8 showed that AI-native development structurally resists
+Chapter 16 showed that AI-native development structurally resists
 producing lock-in. Put both together, and the rational customer
 **keeps the builder in-house** — that single choice covers the
 structural disadvantage of outsourcing, the path out of lock-in, and
@@ -47,7 +47,7 @@ That premise held under two conditions:
   them all in-house was impractical at the scale needed. **Multi-tier
   subcontracting stacked head-count on the outside** so that
   engagements could secure enough person-months (the structure is
-  covered in Chapter 10).
+  covered in Chapter 18).
 - IT was viewed as a **thin surface layer** of the business —
   outsourcing it did not pull the essence of the business out with it.
 
@@ -218,7 +218,7 @@ website.
 
 In numbers, this lands at **less than one-tenth of the initial build
 cost, with dramatically faster and cheaper ongoing operation** — the
-corporate-website case of the 10×–100× price gap from Chapter 7.
+corporate-website case of the 10×–100× price gap from Chapter 15.
 
 But the more important comparison is **structural**, not financial:
 
@@ -253,7 +253,7 @@ shifts.
   custodianship to forms the in-house builder can work with (standard
   databases, JSON, Parquet).
 - **Vendor dependence dissolves** — lock-in eases, options expand
-  (Chapter 8).
+  (Chapter 16).
 
 This is more than cost reduction. It is a structural change. Hiring
 one builder can be **the trigger that reshapes how the company
@@ -384,7 +384,7 @@ not open only to people who came from coding**.
 > **AI + Python + Flet open a new supply source — makers,
 > shop-floor engineers, students**.
 
-Read this in combination with Chapter 10's "labor demand outside the
+Read this in combination with Chapter 18's "labor demand outside the
 industry" (manufacturing, agriculture, AI physical infrastructure).
 The picture becomes clearer: human capital flowing out of the SIer
 industry and **human capital flowing in from outside the industry as
@@ -410,7 +410,7 @@ forms appear during the transition?
 
 - [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
 - [Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
-- [Chapter 8: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
+- [Chapter 16: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
 - [Parent series Chapter 2: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Parent series Chapter 9: Building Apps — CLI tools, Flet apps, Flutter apps](/en/ai-native-ways/apps/)
 - [Parent series Chapter 10: Building Embedded — Think in Python, Have Claude Translate](/en/ai-native-ways/embedded/)

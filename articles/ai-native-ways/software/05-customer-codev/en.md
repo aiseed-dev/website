@@ -10,8 +10,8 @@ label: Software 05
 title_html: Customers build <span class="accent">9 of 10</span>,<br>consult on the remaining <span class="accent">1 of 10</span>.
 prev_slug: builder
 prev_title: The Builder Role
-next_slug: sier-uneconomic
-next_title: The Structural Uneconomy of the SIer Model
+next_slug: foundation
+next_title: "Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars"
 ---
 
 # Customers Co-Develop with AI
@@ -142,6 +142,58 @@ outsource. If it takes a few days, you do it. **The line moved**.
 > **the break-even point between outsourcing and doing it yourself**
 > moves with it.
 
+## The starting point is not writing code
+
+"The customer builds nine-tenths" makes people brace for writing
+nine-tenths of the code themselves. That is not it. **The builder's work
+begins, before writing any code from scratch, with assembling proven OSS
+to replace the vendor's products.**
+
+Most of a company's software was never something you "build" — it was
+something you "buy": Microsoft 365, Azure, the vendor packages under the
+core systems. What replaces them already runs all over the world.
+Authentication is PocketBase, documents OnlyOffice, sharing and
+versioning Forgejo, the database PostgreSQL, analysis DuckDB, the AI
+Command A+ — all open, free, and running on your own machine (the parent
+series' Chapter 14 untied Microsoft 365 into eleven OSS pieces).
+
+What the builder does is **choose, wire, and fit to the company's
+context.** This is the most concrete form of Chapter 4's builder
+definition — "decide what to make, have AI make it, evaluate the output,
+integrate the structure." A great deal of it moves forward without
+writing a single line of code.
+
+The order matters too. **First, untie the vendor with OSS and put the
+foundation — identity, data, sharing — on your own side.** Then, and only
+then, write **the logic that is genuinely your own** together with AI.
+Writing code comes in the later half, after the foundation is laid — and
+the amount shrinks to your company-specific part.
+
+This lowers the barrier further. Assembling running OSS is easier than
+implementing from scratch. "The customer builds nine-tenths" is decided
+not by coding ability but by **the design judgment of replacement** — and
+that is exactly what professionals grounded in the liberal arts do best
+(Chapter 4).
+
+> Most of "building nine-tenths yourself" is not "writing code."
+> It is **assembling proven OSS and untying the vendor.**
+> Code is only the thin final layer that sits on top.
+
+There is an overlooked inversion here. **Generic functionality is already
+shared with the world as OSS** — authentication, documents, the database,
+video conferencing; someone built each, released it, and tens of thousands
+hardened it. The builder need not write any of it from scratch. So the
+magnitudes swap. **The attention goes to AI, but nine-tenths of the work is
+actually carried by shared OSS — the effect of OSS is greater than the
+effect of AI.** AI is only the tool that quickly writes the
+company-specific one-tenth that sits on top.
+
+This asymmetry is what holds up "the customer builds nine-tenths." **Share
+the generic as OSS, and write only the specific with AI** — if you had to
+write all of it from scratch, building nine-tenths in-house would be
+impossible. It is precisely because builders the world over pool the
+generic part as OSS that one person + AI can run a company's software.
+
 ## What AI cannot do, the SIer cannot do either
 
 This is the strongest claim of the chapter.
@@ -226,6 +278,7 @@ The next chapter dissects the SIer commission model itself.
 - [Chapter 1: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
 - [Chapter 3: The Coder's Job Goes Away](/en/ai-native-ways/software/coder-end/)
 - [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
+- [Parent series, Chapter 14: Replacing Microsoft 365 Wholesale (untying 11 layers with OSS)](/en/ai-native-ways/microsoft-365/)
 - [Chapter 8: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
 - [Chapter 9: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)

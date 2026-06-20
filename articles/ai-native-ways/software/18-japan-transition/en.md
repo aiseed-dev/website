@@ -1,12 +1,12 @@
 ---
 slug: japan-transition
-number: "10"
+number: "18"
 lang: en
 title: Japan's SIer Industry Transition and Labor Mobility
 subtitle: Multi-tier subcontracting, paradoxically, makes the transition easier
 description: Japan's multi-tier subcontracting structure in the SIer industry is usually treated as a barrier to transition. Dissect the structure and the conclusion reverses — because coder demand is externalized through contracts, the structure can shrink without internal lay-offs. Prime contractors can downsize by not renewing subcontractor agreements; talented subcontractor coders flow to primes, customer companies, or independence. Labor mobility is trending upward, with long-term commissions, secondment, and internal ventures absorbing the shift as transitional forms.
-date: 2026.08.03
-label: Software 10
+date: 2026.08.18
+label: Software 18
 title_html: Multi-tier subcontracting,<br>paradoxically, <span class="accent">makes the transition easier</span>.
 prev_slug: hiring-builders
 prev_title: Companies Hire Builders
@@ -22,7 +22,7 @@ the structure and the conclusion reverses — precisely because the
 structure is multi-tier, the industry shift can proceed without
 internal lay-offs**.
 
-Chapter 9 confirmed that the original driver of IT outsourcing was
+Chapter 17 confirmed that the original driver of IT outsourcing was
 **securing large quantities of coder person-months**. This chapter
 takes the other side — when AI removes coder demand, how the structure
 built to source those person-months actually moves.
@@ -46,7 +46,7 @@ Sketch the typical Japanese SIer structure.
 
 The reason this hierarchy is disliked is easy to state — margins pile
 up at each layer, profit does not reach the working coder, accountability
-gets blurred. Chapters 6 and 7 read this as the structure that
+gets blurred. Chapters 14 and 15 read this as the structure that
 inflates price.
 
 But **at a transition, the structure's property reverses**. Multi-tier
@@ -140,10 +140,10 @@ But, **for talented coders, there are several exits**:
   judgment side (= builder candidates). Coders with judgment ability
   can be absorbed into the prime's full-time employee slots.
 - **Move to a customer** — hired directly as in-house builders by
-  customer companies that used to commission SIers (Chapter 9).
+  customer companies that used to commission SIers (Chapter 17).
 - **Go independent — individual contractor or small firm** —
   contract directly with customers as a builder. The
-  lawyer/doctor-style professional model from Chapter 9.
+  lawyer/doctor-style professional model from Chapter 17.
 - **Move to a different industry** — leaving software development is
   also a path (the same kind of redistribution as "human computers"
   and typesetters moving to adjacent fields, from Chapter 3).
@@ -176,7 +176,7 @@ mobility**.
 If mobility is high:
 
 - Mid-career moves between primes increase
-- Prime → customer-company moves grow (builder hiring per Chapter 9)
+- Prime → customer-company moves grow (builder hiring per Chapter 17)
 - Prime → independence (individual contractor, small firm)
 - Subcontractor layers → all of the above
 
@@ -327,9 +327,9 @@ few years. The final chapter.
 
 ## Related articles
 
-- [Chapter 6: The Structural Uneconomy of the SIer Model](/en/ai-native-ways/software/sier-uneconomic/)
-- [Chapter 7: The Order-of-Magnitude Price Gap](/en/ai-native-ways/software/price-gap/)
-- [Chapter 9: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
+- [Chapter 14: The Structural Uneconomy of the SIer Model](/en/ai-native-ways/software/sier-uneconomic/)
+- [Chapter 15: The Order-of-Magnitude Price Gap](/en/ai-native-ways/software/price-gap/)
+- [Chapter 17: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
 - [Phosphorus Depletion and Natural Farming](/en/phosphorus-and-farming/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

@@ -681,6 +681,25 @@ AIWAYS_SUBSERIES = {
             "completing in years."
         ),
     },
+    "setup": {
+        "name_ja": "導入編",
+        "name_en": "Setup",
+        "subtitle_ja": "汎用は OSS で共有する ── Microsoft 代替スタックを自分の手で立てる",
+        "subtitle_en": "Share the generic as OSS — stand up the Microsoft-alternative stack yourself",
+        "description_ja": (
+            "汎用的な機能は、すでに OSS として世界で共有されている。"
+            "認証・文書・データベース・分析・メール・会議・AI ── Microsoft 365 と"
+            "基幹のベンダー製品を、実績あるオープンソースで置き換える。ツールごとの"
+            "詳しい構築手順を、一つずつ示す。AI の効果より、OSS の効果のほうが大きい。"
+        ),
+        "description_en": (
+            "Generic functionality is already shared with the world as OSS. "
+            "Authentication, documents, database, analysis, mail, meetings, AI — "
+            "replace Microsoft 365 and the vendor packages under the core systems "
+            "with proven open source. A detailed build guide for each tool, one at "
+            "a time. The effect of OSS is greater than the effect of AI."
+        ),
+    },
 }
 
 

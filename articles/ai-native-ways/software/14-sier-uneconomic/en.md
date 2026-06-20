@@ -5,7 +5,7 @@ lang: en
 title: The Structural Uneconomy of the SIer Model
 subtitle: The friction of outsourcing, plus the customer's invisible labor — for the same effort, you can build it yourself
 description: The effort customers pay to commission an SIer — requirements, vendor selection, contracts, project management, acceptance — consumes as much labor as building it AI-natively, often more. Once you make the customer-side invisible labor explicit, the rationale for commissioning collapses. SIers using AI internally cannot absorb this diseconomy because their person-month revenue model, organization, and contracts are built on the old assumption.
-date: 2026.07.06
+date: 2026.07.21
 label: Software 14
 title_html: With the effort of <span class="accent">outsourcing</span>,<br>you can <span class="accent">build it yourself</span>.
 prev_slug: auth
@@ -162,11 +162,11 @@ Four reasons:
 - **The organization assumes managed coders** — primes plus tier-1
   and tier-2 subcontractors, team leads, PMs, QA — the whole pyramid
   is built on holding coders and assigning them (the structural
-  transition is treated in Chapter 10).
+  transition is treated in Chapter 18).
 - **Existing contracts are lock-in** — multi-year operations contracts,
   proprietary frameworks, custom abstraction layers all make it hard
   for customers to move (the FDE-style extreme lock-in is treated in
-  Chapter 8).
+  Chapter 16).
 - **Hiring and training are coder-shaped** — new-graduate programs
   and mid-career hires are organized around framework fluency, SQL,
   and test writing — execution skills. The organization is not built
@@ -191,10 +191,10 @@ concentrates in the remaining tenth.
   — absorbed on the customer side
 - **What reconstitutes**: even in the remaining tenth, contract
   shapes shift from "multi-year operations commissions" to "hourly
-  consulting" (Chapter 9)
+  consulting" (Chapter 17)
 
 Transition speed, Japan-specific dynamics (multi-tier subcontracting),
-and labor mobility are taken up in Chapters 10 and 11. What this
+and labor mobility are taken up in Chapters 18 and 19. What this
 chapter fixes is the structural claim: **the SIer commission model
 cannot reach parity with AI-native in-house development**.
 

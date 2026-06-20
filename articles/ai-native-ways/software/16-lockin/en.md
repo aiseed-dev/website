@@ -5,7 +5,7 @@ lang: en
 title: The Lock-In Problem
 subtitle: Proprietary frameworks, proprietary abstractions, human dependency — with Palantir's FDE as the archetype
 description: SIer commissioning anchors customers with three layers of lock-in (proprietary frameworks, proprietary abstractions / Ontology, human dependency). Palantir's FDE model is the extreme form — maximizing all three to sustain premium pricing in the tens of billions of yen. AI-native development, by contrast, structurally avoids lock-in: AI tends to write in standard libraries and standard formats, so another AI, another builder, or the customer themselves can take over.
-date: 2026.07.20
+date: 2026.08.04
 label: Software 16
 title_html: A proprietary framework becomes<br>a <span class="accent">cage with no exit</span>.
 prev_slug: price-gap
@@ -22,7 +22,7 @@ Palantir's FDE model is the extreme form. AI-native development, by
 contrast, minimizes lock-in itself by working in standard code and
 standard formats**.
 
-Chapter 7 showed that the gap between SIer commissioning and AI-native
+Chapter 15 showed that the gap between SIer commissioning and AI-native
 development runs at 10× to 100×. Even so, customers do not move at
 once — the reason is **lock-in**. This chapter decomposes the
 structure of lock-in, reads Palantir's FDE model as the archetype, and
@@ -224,7 +224,7 @@ large price gap, not every engagement moves at the same speed.
 
 The overall pace of the industry shift — Japan's multi-tier
 subcontracting, labor mobility, transitional contract forms — is
-treated in Chapter 10.
+treated in Chapter 18.
 
 Note that everything so far has been about the **development lock-in**
 of the SIer-commissioned model. Separate from it is the **lock-in of
@@ -264,9 +264,9 @@ how builders get positioned, how they are paid, and how they function.
 
 - [Chapter 3: The Coder's Job Goes Away](/en/ai-native-ways/software/coder-end/)
 - [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
-- [Chapter 7: The Order-of-Magnitude Price Gap](/en/ai-native-ways/software/price-gap/)
-- [Chapter 9: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
-- [Chapter 10: Japan's SIer Industry Transition and Labor Mobility](/en/ai-native-ways/software/japan-transition/)
+- [Chapter 15: The Order-of-Magnitude Price Gap](/en/ai-native-ways/software/price-gap/)
+- [Chapter 17: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
+- [Chapter 18: Japan's SIer Industry Transition and Labor Mobility](/en/ai-native-ways/software/japan-transition/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)
 - [Can You Build a Microsoft 365 (Standard + Copilot) Equivalent Yourself?](/en/blog/self-hosting-microsoft-365/)

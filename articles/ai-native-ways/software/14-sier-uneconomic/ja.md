@@ -7,8 +7,8 @@ description: SIer に発注するために顧客が払う手間 ── 要件定
 date: 2026.07.21
 label: Software 14
 title_html: 外注の<span class="accent">手間</span>で、<br>自分で<span class="accent">作れて</span>しまう。
-prev_slug: auth
-prev_title: 門番を立てる ── PocketBase で認証を一つに
+prev_slug: documents
+prev_title: 文書を取り戻す ── Nextcloud と OnlyOffice
 next_slug: price-gap
 next_title: 価格競争力の桁違いの差
 ---

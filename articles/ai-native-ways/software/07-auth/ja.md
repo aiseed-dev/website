@@ -9,8 +9,8 @@ label: Software 07
 title_html: 入口を<span class="accent">一つ</span>に、<br>門番は単一バイナリで。
 prev_slug: foundation
 prev_title: 土台を据える ── PostgreSQL・SQLite・pgvector・DuckDB・Polars
-next_slug: sier-uneconomic
-next_title: SIer委託モデルの構造的不経済
+next_slug: documents
+next_title: 文書を取り戻す ── Nextcloud と OnlyOffice
 ---
 
 # 門番を立てる ── PocketBase で認証を一つに

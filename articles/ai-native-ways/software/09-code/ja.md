@@ -9,8 +9,8 @@ label: Software 09
 title_html: コードの置き場を、<br><span class="accent">自分の側</span>に。
 prev_slug: documents
 prev_title: 文書を取り戻す ── Nextcloud と OnlyOffice
-next_slug: sier-uneconomic
-next_title: SIer委託モデルの構造的不経済
+next_slug: mail
+next_title: メールを自分の側に ── Stalwart と Thunderbird
 ---
 
 # コードを手元に ── Forgejo と Zed

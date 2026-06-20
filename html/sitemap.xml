@@ -1121,6 +1121,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/ai-native-ways/software/mail/</loc>
+    <lastmod>2026-07-09</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/ai-native-ways/software/sier-uneconomic/</loc>
     <lastmod>2026-07-21</lastmod>
     <priority>0.6</priority>
@@ -1198,6 +1203,11 @@
   <url>
     <loc>https://aiseed.dev/en/ai-native-ways/software/code/</loc>
     <lastmod>2026-07-06</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/ai-native-ways/software/mail/</loc>
+    <lastmod>2026-07-09</lastmod>
     <priority>0.5</priority>
   </url>
   <url>

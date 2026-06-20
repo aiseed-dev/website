@@ -10,8 +10,8 @@ label: Software 09
 title_html: Put the home of your code<br>on <span class="accent">your own side</span>.
 prev_slug: documents
 prev_title: "Take Documents Back — Nextcloud and OnlyOffice"
-next_slug: sier-uneconomic
-next_title: "The Structural Uneconomy of the SIer Model"
+next_slug: mail
+next_title: "Mail on Your Own Side — Stalwart and Thunderbird"
 ---
 
 # Bring Code In-House — Forgejo and Zed

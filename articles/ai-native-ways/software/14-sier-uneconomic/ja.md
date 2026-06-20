@@ -7,8 +7,8 @@ description: SIer に発注するために顧客が払う手間 ── 要件定
 date: 2026.07.21
 label: Software 14
 title_html: 外注の<span class="accent">手間</span>で、<br>自分で<span class="accent">作れて</span>しまう。
-prev_slug: meetings
-prev_title: 会議と予約を自分の側に ── Jitsi と Cal.com
+prev_slug: web
+prev_title: 社外に見せる窓 ── 静的サイトと Caddy
 next_slug: price-gap
 next_title: 価格競争力の桁違いの差
 ---

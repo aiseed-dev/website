@@ -9,8 +9,8 @@ label: Software 11
 title_html: 会議も予約も、<br><span class="accent">自分のドメイン</span>で。
 prev_slug: mail
 prev_title: メールを自分の側に ── Stalwart と Thunderbird
-next_slug: sier-uneconomic
-next_title: SIer委託モデルの構造的不経済
+next_slug: web
+next_title: 社外に見せる窓 ── 静的サイトと Caddy
 ---
 
 # 会議と予約を自分の側に ── Jitsi と Cal.com

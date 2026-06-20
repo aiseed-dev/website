@@ -10,8 +10,8 @@ label: Software 11
 title_html: Meetings and booking,<br>on <span class="accent">your own domain</span>.
 prev_slug: mail
 prev_title: "Mail on Your Own Side — Stalwart and Thunderbird"
-next_slug: sier-uneconomic
-next_title: "The Structural Uneconomy of the SIer Model"
+next_slug: web
+next_title: "The Window to the Outside — A Static Site and Caddy"
 ---
 
 # Meetings and Booking on Your Own Side — Jitsi and Cal.com

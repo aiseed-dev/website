@@ -10,8 +10,8 @@ label: Software 10
 title_html: Put the mailbox<br>on <span class="accent">your own side</span>.
 prev_slug: code
 prev_title: "Bring Code In-House — Forgejo and Zed"
-next_slug: sier-uneconomic
-next_title: "The Structural Uneconomy of the SIer Model"
+next_slug: meetings
+next_title: "Meetings and Booking on Your Own Side — Jitsi and Cal.com"
 ---
 
 # Mail on Your Own Side — Stalwart and Thunderbird

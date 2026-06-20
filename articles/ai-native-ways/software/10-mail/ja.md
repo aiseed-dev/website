@@ -9,8 +9,8 @@ label: Software 10
 title_html: メールボックスを、<br><span class="accent">自分の側</span>に。
 prev_slug: code
 prev_title: コードを手元に ── Forgejo と Zed
-next_slug: sier-uneconomic
-next_title: SIer委託モデルの構造的不経済
+next_slug: meetings
+next_title: 会議と予約を自分の側に ── Jitsi と Cal.com
 ---
 
 # メールを自分の側に ── Stalwart と Thunderbird

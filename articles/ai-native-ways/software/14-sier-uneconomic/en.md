@@ -8,8 +8,8 @@ description: The effort customers pay to commission an SIer — requirements, ve
 date: 2026.07.21
 label: Software 14
 title_html: With the effort of <span class="accent">outsourcing</span>,<br>you can <span class="accent">build it yourself</span>.
-prev_slug: mail
-prev_title: "Mail on Your Own Side — Stalwart and Thunderbird"
+prev_slug: meetings
+prev_title: "Meetings and Booking on Your Own Side — Jitsi and Cal.com"
 next_slug: price-gap
 next_title: The Order-of-Magnitude Price Gap
 ---

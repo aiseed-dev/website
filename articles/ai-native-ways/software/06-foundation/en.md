@@ -4,7 +4,7 @@ number: "06"
 lang: en
 title: "Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars"
 subtitle: "Stand up the data layer everything sits on, first, on your own side"
-description: The Setup part starts with the data layer everything sits on. Shared data goes in PostgreSQL; local data in SQLite. Enable pgvector for semantic search; analyze with columnar DuckDB and Polars — demoting old Excel files to mere input and pulling far ahead of Power BI. Stand it up with Docker, migrate from Azure SQL with pgloader. The generic is already shared as OSS — you don't write it, you stand it up.
+description: The Setup part starts with the data layer everything sits on. Shared data goes in PostgreSQL; local data in SQLite. Enable pgvector for semantic search; analyze with columnar DuckDB and Polars — Excel stays the human's I/O while machines crunch the data behind it; pull far ahead of Power BI. Stand it up with Docker, migrate from Azure SQL with pgloader. The generic is already shared as OSS — you don't write it, you stand it up.
 date: 2026.07.01
 label: Software 06
 title_html: Stand up the <span class="accent">data layer</span><br>first, on your own side.
@@ -152,23 +152,28 @@ writes the SQL — "which department is anomalous versus last month?" asked
 against your own real data, any number of times, at zero marginal cost. Seen
 from Power BI's metered, per-seat cloud, this is another dimension.
 
-### Ingest old Excel — Polars
+### Handle Excel data — Polars
+
+Excel is the **input/output tool** where people enter numbers and read
+results. That role does not change — which is why the next chapter stands up
+the Excel-compatible **OnlyOffice** on your own side. What changes is **the
+side that crunches the data behind it.**
 
 The `.xlsx` files piled up on disk are read directly by **Polars** — a fast,
 Rust-built dataframe. It handles row counts that freeze Excel in an instant,
-and writes results back to PostgreSQL or Parquet.
+and writes the result back to Excel, PostgreSQL, or Parquet alike.
 
 ```python
 import polars as pl
-df  = pl.read_excel("sales_2025.xlsx")               # read the old Excel as-is
-agg = df.group_by("dept").agg(pl.col("sales").sum()) # aggregate in one line
-df.write_parquet("sales.parquet")                    # store it in the warehouse
+df  = pl.read_excel("sales_2025.xlsx")               # read the Excel people made
+agg = df.group_by("dept").agg(pl.col("sales").sum()) # heavy aggregation in one line
+agg.write_excel("dept_summary.xlsx")                 # write back to Excel people read
 ```
 
-This **demotes Excel from "final deliverable" to "mere input."** The lead in
-aggregation moves to DuckDB and Polars, and the spreadsheet becomes a **thin
-layer for viewing results.** SQL-shaped work goes to DuckDB, dataframe-shaped
-work to Polars — **the same data, touched with whichever tool you like.**
+People enter and read in Excel; machines crunch with Polars and DuckDB.
+**Split the human's tool from the machine's tool by role.** SQL-shaped work
+goes to DuckDB, dataframe-shaped work to Polars — the same data, touched with
+whichever tool you like.
 
 For huge, always-on aggregation, move it onto the columnar DB server
 **ClickHouse.** But most in-house analysis needs only DuckDB and Polars.
@@ -181,7 +186,7 @@ The data layer, onto your own side, first.
 - **SQLite** — a serverless single file, for local, device, and small-tool data (the gate runs on it too)
 - **pgvector** — the foundation for semantic search (RAG comes in the AI chapter)
 - **pgloader** — one-pass migration from Azure SQL, dropping only the dialect
-- **DuckDB / Polars** — columnar analysis and a fast dataframe; demote old Excel to input, pull far ahead of Power BI
+- **DuckDB / Polars** — columnar analysis and a fast dataframe; Excel stays the human's I/O, heavy crunching moves machine-side, pulling far ahead of Power BI
 
 Almost no code was written. **The generic is already there, as OSS.** The
 builder stands it up. The next chapter lays **authentication (PocketBase)**

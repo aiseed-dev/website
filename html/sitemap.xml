@@ -281,6 +281,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/blog/in-house-business-systems/</loc>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/blog/building-apps-through-dialogue/</loc>
     <lastmod>2026-06-09</lastmod>
     <priority>0.7</priority>
@@ -404,6 +409,11 @@
     <loc>https://aiseed.dev/blog/grid-attack-naphtha/</loc>
     <lastmod>2026-04-06</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/blog/in-house-business-systems/</loc>
+    <lastmod>2026-06-13</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://aiseed.dev/en/blog/building-apps-through-dialogue/</loc>
@@ -976,6 +986,11 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/ai-native-ways/microsoft-365/</loc>
+    <lastmod>2026-05-03</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/en/ai-native-ways/</loc>
     <lastmod>2026-08-10</lastmod>
     <priority>0.7</priority>
@@ -1051,6 +1066,11 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/en/ai-native-ways/microsoft-365/</loc>
+    <lastmod>2026-05-03</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/ai-native-ways/software/</loc>
     <lastmod>2026-08-10</lastmod>
     <priority>0.8</priority>
@@ -1078,6 +1098,16 @@
   <url>
     <loc>https://aiseed.dev/ai-native-ways/software/customer-codev/</loc>
     <lastmod>2026-06-29</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/ai-native-ways/software/foundation/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/ai-native-ways/software/auth/</loc>
+    <lastmod>2026-07-02</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -1138,6 +1168,16 @@
   <url>
     <loc>https://aiseed.dev/en/ai-native-ways/software/customer-codev/</loc>
     <lastmod>2026-06-29</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/ai-native-ways/software/foundation/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/ai-native-ways/software/auth/</loc>
+    <lastmod>2026-07-02</lastmod>
     <priority>0.5</priority>
   </url>
   <url>

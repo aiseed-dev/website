@@ -3,7 +3,7 @@ slug: foundation
 number: "06"
 title: 土台を据える ── PostgreSQL・SQLite・pgvector・DuckDB・Polars
 subtitle: すべてが乗るデータ基盤を、最初に自分の側に立てる
-description: 導入編の最初は、すべてが乗るデータ基盤。共有は PostgreSQL、手元は SQLite。pgvector で意味検索、DuckDB と Polars で列指向分析 ── 旧 Excel を入力に格下げし、Power BI を大差で抜く。docker で立て、Azure SQL から pgloader で移す。汎用は OSS で共有されている ── 書くのではなく、立てる。
+description: 導入編の最初は、すべてが乗るデータ基盤。共有は PostgreSQL、手元は SQLite。pgvector で意味検索、DuckDB と Polars で列指向分析 ── Excel は人の入出力に残し、その裏のデータは機械が捌く。Power BI を大差で抜く。docker で立て、Azure SQL から pgloader で移す。汎用は OSS で共有されている ── 書くのではなく、立てる。
 date: 2026.07.01
 label: Software 06
 title_html: まず<span class="accent">データ基盤</span>を、<br>自分の手元に立てる。
@@ -144,23 +144,26 @@ duckdb.sql("SELECT 部門, sum(売上) FROM pg.sales GROUP BY 部門 ORDER BY 2 
 ゼロで何度でも問える。Power BI のクラウド従量・人数課金から見れば、
 これは別次元だ。
 
-### 旧 Excel を取り込む ── Polars
+### Excel データを扱う ── Polars
+
+Excel は、人が数字を入れ、人が結果を読む **入出力の道具**だ。その役割は
+変わらない ── だから次章では Excel 互換の **OnlyOffice** を自分の側に立てる。
+変わるのは、**その裏でデータを捌く側**だ。
 
 手元に積み上がった `.xlsx` は、**Polars** がそのまま読む。Rust 製の高速
-データフレームで、Excel が固まる行数でも瞬時に処理し、結果を PostgreSQL や
-Parquet に書き戻せる。
+データフレームで、Excel が固まる行数でも瞬時に処理し、結果を Excel・
+PostgreSQL・Parquet のどれにでも書き戻す。
 
 ```python
 import polars as pl
-df  = pl.read_excel("売上_2025.xlsx")                # 旧 Excel をそのまま読む
-agg = df.group_by("部門").agg(pl.col("売上").sum())  # 集計は一行
-df.write_parquet("sales.parquet")                    # 倉庫(Parquet)に収める
+df  = pl.read_excel("売上_2025.xlsx")                # 人が作った Excel を読む
+agg = df.group_by("部門").agg(pl.col("売上").sum())  # 重い集計は一行
+agg.write_excel("部門集計.xlsx")                      # 人が読む Excel に書き戻す
 ```
 
-こうして **Excel は「最終成果物」から「ただの入力」に格下げ**される。
-集計の主役は DuckDB と Polars に移り、表計算は **結果を眺める薄い層**に
-なる。SQL で書きたい処理は DuckDB、データフレームで捏ねたい処理は
-Polars ── **同じデータを、好きな道具で**触れる。
+人は Excel で入れて読み、機械は Polars と DuckDB で捌く。**人の道具と機械の
+道具を、役割で分ける**。SQL で書きたい処理は DuckDB、データフレームで
+捏ねたい処理は Polars ── 同じデータを、好きな道具で触れる。
 
 巨大データを常時集計するなら、列指向 DB サーバーの **ClickHouse** に
 載せ替える。だが大半の社内分析は、DuckDB と Polars で足りる。
@@ -173,7 +176,7 @@ Polars ── **同じデータを、好きな道具で**触れる。
 - **SQLite** ── サーバ不要の単一ファイル。手元・端末・小さな道具に(門番もこの上)
 - **pgvector** ── 意味検索の土台(RAG は AI の章で)
 - **pgloader** ── Azure SQL からの一括移行、方言だけ捨てる
-- **DuckDB / Polars** ── 列指向分析と高速データフレーム。旧 Excel を入力に格下げし、Power BI を大差で抜く
+- **DuckDB / Polars** ── 列指向分析と高速データフレーム。Excel は人の入出力に残し、重い集計は機械側で ── Power BI を大差で抜く
 
 書いたコードは、ほとんど無い。**汎用は、すでに OSS として在る**。
 ビルダーは、それを立てる。次章では、その上に **認証(PocketBase)** を

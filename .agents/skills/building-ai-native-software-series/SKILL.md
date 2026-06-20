@@ -73,7 +73,7 @@ The sub-series numbers its own chapters from **01 through 19**, independently of
 |---|---|---|---|---|
 | 06 | `software/06-foundation` | 土台を据える ── PostgreSQL・SQLite・pgvector・DuckDB・Polars | `foundation` | data layer (Azure SQL / Excel / Power BI) |
 | 07 | `software/07-auth` | 門番を立てる ── PocketBase で認証を一つに | `auth` | authentication (Entra ID) |
-| 08 | `software/08-documents` | 文書を取り戻す ── OnlyOffice Docs を PocketBase に組み込む | `documents` | Word/Excel/PPT, OneDrive/SharePoint — **OnlyOffice Docs (editor engine) embedded in the Ch.7 PocketBase, no Nextcloud** |
+| 08 | `software/08-documents` | 文書を取り戻す ── OnlyOffice Docs を PocketBase に組み込む | `documents` | Word/Excel/PPT, OneDrive/SharePoint — **OnlyOffice Docs (editor engine) embedded in the Ch.7 PocketBase. NOT Nextcloud (heavy legacy), NOT DocSpace (re-introduces AD/LDAP/SAML + 20-conn cap). Docs 9.4 CE lifted the 20-connection limit.** |
 | 09 | `software/09-code` | コードを手元に ── Forgejo と Zed | `code` | GitHub / Azure DevOps |
 | 10 | `software/10-mail` | メールを自分の側に ── Stalwart と Thunderbird | `mail` | Exchange / Outlook |
 | 11 | `software/11-meetings` | 会議と予約を自分の側に ── Jitsi と Cal.com | `meetings` | Teams/Zoom, Calendly/Bookings, BigBlueButton for classes |

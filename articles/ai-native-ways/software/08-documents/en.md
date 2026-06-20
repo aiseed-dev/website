@@ -4,7 +4,7 @@ number: "08"
 lang: en
 title: "Take Documents Back — OnlyOffice Docs on PocketBase"
 subtitle: "Add no separate storage app — put documents on the Chapter 7 gate and embed only the editor engine"
-description: Word, Excel, and PowerPoint are the input/output tools people write and read with. Rather than add a separate storage app like Nextcloud, use the PocketBase stood up in Chapter 7 as the document store (storage, auth, sharing) and embed OnlyOffice Docs as the editor engine only — a thin, custom document app. It opens docx, xlsx, and pptx with high fidelity, co-edits, and sits inside the gate from the start. Keep the formats; take back only control.
+description: Word, Excel, and PowerPoint are the input/output tools people write and read with. Rather than add a separate storage app like Nextcloud, use the PocketBase stood up in Chapter 7 as the document store (storage, auth, sharing) and embed OnlyOffice Docs as the editor engine only — a thin, custom document app. It opens docx, xlsx, and pptx with high fidelity, co-edits, and sits inside the gate from the start. Avoid the finished DocSpace — it brings Active Directory back. Keep the formats; take back only control.
 date: 2026.07.04
 label: Software 08
 title_html: Put documents<br>right <span class="accent">inside the gate</span>.
@@ -43,6 +43,23 @@ What you add is **only the editor engine.** OnlyOffice ships "Docs (the
 Document Server)" as a standalone editing engine, leaving storage to any app.
 So **embed OnlyOffice Docs into PocketBase** — this is the thinnest path.
 
+## Choose Docs — not DocSpace
+
+OnlyOffice also offers a finished platform, **DocSpace.** But **don't choose
+it,** for two reasons.
+
+- **It brings Active Directory back** — DocSpace is built around LDAP / AD / SAML SSO. The **Microsoft authentication (AD) you cut in Chapter 7 moves right back in.**
+- **The free edition caps at 20 concurrent connections** — DocSpace Community limits simultaneous editing tabs to 20. Grow past it and you are pushed to the paid Enterprise edition — the doorway to lock-in.
+
+What you need is **only the editor engine.** And there is good news — **Docs 9.4
+removed the 20-connection limit from the Community edition** (the engine alone is
+now unlimited). It also dropped its RabbitMQ and separate-DB dependencies and
+became a **single process.** Paired with PocketBase (a single binary),
+enterprise-grade co-editing is in hand **for free, and light.**
+
+> The platform (DocSpace) brings AD along in exchange for convenience.
+> **Take only the engine (Docs); leave authentication to the Chapter 7 gate.**
+
 ## Stand up OnlyOffice Docs
 
 Stand up the editor engine **OnlyOffice Docs.** It only edits; it holds no
@@ -61,6 +78,10 @@ services:
 It opens `docx`, `xlsx`, and `pptx` without layout breakage, saves in the same
 formats, and supports **co-editing** by several people — that engine is now in
 hand.
+
+For internal use, the Community edition (AGPLv3) is fine. **Only if you resell it
+as your own SaaS** do you need to mind AGPL's copyleft and attribution (naming
+ONLYOFFICE in the UI) — there, consider a commercial license.
 
 ## Put documents in PocketBase
 

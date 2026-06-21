@@ -10,7 +10,7 @@ title_html: 会議も予約も、<br><span class="accent">自分のドメイン<
 prev_slug: mail
 prev_title: メールを自分の側に ── Stalwart と Thunderbird
 next_slug: web
-next_title: 社外に見せる窓 ── 静的サイトと Caddy
+next_title: 社外に見せる窓 ── 静的サイトと Cloudflare Pages
 ---
 
 # 会議と予約を自分の側に ── Jitsi と Cal.com
@@ -92,7 +92,7 @@ book.example.com { reverse_proxy booking:3000 }
 - **CalDAV + 門番** ── 標準カレンダーと同期、リバースプロキシの内側に
 
 ここまでで、土台・門番・文書・コード・メール・会議・予約が揃った。
-次章では、これらを社外に見せる窓 ── **Web(静的サイトと Caddy)** を立てる。
+次章では、これらを社外に見せる窓 ── **Web(静的サイトと Cloudflare Pages)** を立てる。
 
 ---
 

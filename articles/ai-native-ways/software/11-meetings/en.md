@@ -11,7 +11,7 @@ title_html: Meetings and booking,<br>on <span class="accent">your own domain</sp
 prev_slug: mail
 prev_title: "Mail on Your Own Side — Stalwart and Thunderbird"
 next_slug: web
-next_title: "The Window to the Outside — A Static Site and Caddy"
+next_title: "The Window to the Outside — A Static Site and Cloudflare Pages"
 ---
 
 # Meetings and Booking on Your Own Side — Jitsi and Cal.com
@@ -95,7 +95,7 @@ Meetings and booking, on your own domain.
 
 By now the foundation, gate, documents, code, mail, meetings, and booking are
 in place. Next, we stand up the window that shows these to the outside — **the
-web (a static site and Caddy).**
+web (a static site and Cloudflare Pages).**
 
 ---
 

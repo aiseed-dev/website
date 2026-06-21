@@ -77,7 +77,7 @@ The sub-series numbers its own chapters from **01 through 19**, independently of
 | 09 | `software/09-code` | コードを手元に ── Forgejo と Zed | `code` | GitHub / Azure DevOps |
 | 10 | `software/10-mail` | メールを自分の側に ── Stalwart と Thunderbird | `mail` | Exchange / Outlook |
 | 11 | `software/11-meetings` | 会議と予約を自分の側に ── Jitsi と Cal.com | `meetings` | Teams/Zoom, Calendly/Bookings, BigBlueButton for classes |
-| 12 | `software/12-web` | 社外に見せる窓 ── 静的サイトと Caddy | `web` | public web; Caddy binds all app entrances |
+| 12 | `software/12-web` | 社外に見せる窓 ── 静的サイトと Cloudflare Pages | `web` | public web on Cloudflare Pages (no server); build→verify→deploy kept as separate steps. The Caddy reverse proxy is a Ch.7 *internal-apps* concern, not the public site |
 | 13 | `software/13-ai` | 自前の AI を据える ── LLM と RAG | `ai` | Copilot; Ollama/vLLM + RAG on pgvector; closes 導入編 |
 
 **転換編 ── 産業構造の帰結 (14–19)**
@@ -128,7 +128,7 @@ These keep the sub-series internally coherent.
 - **The "24 hours, 30,000 lines, 40 pages" demonstration** belongs to chapter 04. Earlier chapters may allude to "one person at speed"; later chapters may reference it briefly. Do not redescribe it in every chapter.
 - **Numbers**: when chapter 15 cites the 10–100× price gap, that is the only place a numeric range is asserted as the thesis. Other chapters can cite component prices (monthly subscriptions, project quotes) but must defer the ratio claim to 15.
 - **The five-year horizon** belongs to chapter 19. Earlier chapters can speak of "数年で" only loosely; the explicit five-year claim is reserved for 19.
-- **導入編 tool choices are fixed** (shipped): data PostgreSQL/SQLite/pgvector/DuckDB/Polars · auth PocketBase · documents OnlyOffice Docs embedded in PocketBase (no Nextcloud — it is a heavy legacy monolith) · code Forgejo+Zed · mail Stalwart · meetings Jitsi/Cal.com/BigBlueButton · web static+Caddy/Cloudflare · AI Ollama/vLLM+RAG. Recurring framing: "書くのではなく立てる," "人は Excel(OnlyOffice)・機械は Polars/DuckDB," and "control yours, capability borrowed" (mail relay / Cloudflare / frontier-model API).
+- **導入編 tool choices are fixed** (shipped): data PostgreSQL/SQLite/pgvector/DuckDB/Polars · auth PocketBase · documents OnlyOffice Docs embedded in PocketBase (no Nextcloud — it is a heavy legacy monolith) · code Forgejo+Zed · mail Stalwart · meetings Jitsi/Cal.com/BigBlueButton · web **public site = static → Cloudflare Pages (no server); build→verify→deploy separated, no auto-rebuild. Caddy is only the Ch.7 internal-apps reverse proxy** · AI Ollama/vLLM+RAG. Recurring framing: "書くのではなく立てる," "人は Excel(OnlyOffice)・機械は Polars/DuckDB," and "control yours, capability borrowed / 窓は借り金庫は自分に" (mail relay / Cloudflare Pages / frontier-model API).
 
 ## Evidence (`example-N/`) ideas
 

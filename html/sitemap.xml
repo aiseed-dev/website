@@ -281,6 +281,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/blog/autonomy-distribution-diversity/</loc>
+    <lastmod>2026-06-18</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/blog/in-house-business-systems/</loc>
     <lastmod>2026-06-13</lastmod>
     <priority>0.7</priority>
@@ -409,6 +414,11 @@
     <loc>https://aiseed.dev/blog/grid-attack-naphtha/</loc>
     <lastmod>2026-04-06</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/blog/autonomy-distribution-diversity/</loc>
+    <lastmod>2026-06-18</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://aiseed.dev/en/blog/in-house-business-systems/</loc>

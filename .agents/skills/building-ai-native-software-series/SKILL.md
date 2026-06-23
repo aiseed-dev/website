@@ -1,33 +1,33 @@
 ---
 name: building-ai-native-software-series
-description: Drives the "ソフトウェア開発編" sub-series of "AIネイティブな仕事の作法" — nineteen chapters in three 編 (parts) that argue the SIer-commissioned development model is structurally obsolete and will be replaced within several years by builder-led, AI-native development. The sub-series lives in `articles/ai-native-ways/software/` and renumbers from chapter 1. Use when adding any chapter in this sub-series, or when verifying that the sub-series stays internally consistent. Pair with authoring-aiways-chapter (mechanical scaffold) and writing-aiways-voice (prose conventions).
+description: Drives the "ソフトウェア開発編" sub-series of "AIネイティブな仕事の作法" — 23 chapters in three 編 (parts, each numbered from 1: 導入編/自立編/転換編) that argue the SIer-commissioned development model is structurally obsolete and will be replaced within several years by builder-led, AI-native development. The sub-series lives in `articles/ai-native-ways/software/` and renumbers from chapter 1. Use when adding any chapter in this sub-series, or when verifying that the sub-series stays internally consistent. Pair with authoring-aiways-chapter (mechanical scaffold) and writing-aiways-voice (prose conventions).
 ---
 
 # Building the "ソフトウェア開発編" sub-series
 
-This sub-series sits **inside** `articles/ai-native-ways/` but lives in its own subdirectory `software/` with its own chapter numbering (01–19) and its own series-index page. It shares the chapter template, frontmatter schema, voice, and accent palette with the parent series — what makes it a sub-series is the dedicated folder, the dedicated index page, and the **thesis arc** carried across its nineteen chapters.
+This sub-series sits **inside** `articles/ai-native-ways/` but lives in its own subdirectory `software/` (global folders 01–23) and its own series-index page. It is organized into **three 編, each numbered from 1** (導入編 1–8 / 自立編 1–9 / 転換編 1–6). It shares the chapter template, frontmatter schema, voice, and accent palette with the parent series — what makes it a sub-series is the dedicated folder, the dedicated index page, and the **thesis arc**.
 
 This SKILL.md is the source of truth for the sub-series structure (the once-aspirational `docs/Ai-native-software-outline.md` was never created). Keep this file current when the structure changes.
 
 ## Three 編 (parts)
 
-The sub-series is presented in **three 編 (parts)** on its index page. The index page (`build_aiways_subseries_index`) groups chapters under part headings, driven by the `parts` list in `AIWAYS_SUBSERIES["software"]` in `tools/build_article.py` (each entry groups chapters whose number is `<= upto`):
+The sub-series is presented in **three 編 (parts), each numbered from 1**. The index (`build_aiways_subseries_index`) groups chapters under part headings, driven by the keyed `parts` list in `AIWAYS_SUBSERIES["software"]` (`tools/build_article.py`); each chapter declares its `part` ("1"/"2"/"3") in front matter, and `_render_aiways_chapter_list` inserts a heading when `part` changes.
 
-| 編 | chapters | what it does |
+| 編 (part) | 第n章 / folders | what it does |
 |---|---|---|
-| **概念編 ── なぜ作るのか** | 01–05 | Why the builder/AI-native shift happens at all (the conceptual case). |
-| **導入編 ── 汎用は OSS で立てる** | 06–13 | A hands-on build guide: replace Microsoft 365 + vendor products with OSS, one tool at a time. "書くのではなく、立てる." Demonstrates the thesis "the effect of OSS is greater than the effect of AI." |
-| **転換編 ── 産業構造の帰結** | 14–19 | The structural consequence: why the SIer-commissioned model is now obsolete. |
+| **導入編 ── なぜ作り、どう始めるか** (part 1) | 第1–8章 / 01–08 | Concept (1–5: why the builder/AI-native shift) + three worked examples (6–8) of a customer building with AI (VBA→Python, a website, embedded). |
+| **自立編 ── M365・Copilot・WordPress・基幹・GitHub から自立する** (part 2) | 第1–9章 / 09–17 | Hands-on build guide: replace the vendor products with OSS, one stack on the previous. "書くのではなく、立てる"; "the effect of OSS > the effect of AI." |
+| **転換編 ── 産業構造の帰結** (part 3) | 第1–6章 / 18–23 | The structural consequence: why the SIer-commissioned model is now obsolete. |
 
-The 概念編 (01–05) and 転換編 (14–19) carry the **thesis arc** below. The 導入編 (06–13) is a practical, install-guide register (compose files, DNS, migration commands) — still in the structural-assertive voice, but concrete; each chapter stands up one OSS stack on top of the previous (data → auth → documents → … → AI). It exists to make the abstract claim ("you can build it yourself") materially true.
+The thesis arc is carried by 導入編 1–5 (concept) and the 転換編 (consequence). 導入編 6–8 are worked examples; the 自立編 is the install-guide register (compose files, DNS, migration) — structural-assertive but concrete, each stack on the previous.
 
 ## Relationship to the parent series
 
 - The parent `/ai-native-ways/` index page links to this sub-series **prominently at the top** (a hero card), and does **not** include this sub-series' chapters in its flat chapter list.
 - This sub-series has its own index at `/ai-native-ways/software/` (and `/en/ai-native-ways/software/`).
 - Chapter URLs use the form `/ai-native-ways/software/{slug}/`.
-- Chapter labels combine as `ソフトウェア開発編 第N章` / `AI-Native Ways of Working — Software · Chapter N` in the breadcrumb (`series` + `chapter_label`). The `chapter_label` itself stays short (`第N章` / `Chapter N`); the sub-series name lives in the `series` field, so the breadcrumb does not repeat the sub-series name twice.
-- `prev_slug` / `next_slug` chain **inside** the sub-series only, across all 19 chapters in number order: chapter 01's `prev_*` is empty, chapter 19's `next_*` is empty. The 導入編 sits in the chain between 概念編 and 転換編 (…05 → 06 → … → 13 → 14 → …). The chain does not cross into the parent series.
+- The breadcrumb combines `series` + `chapter_label` → `ソフトウェア開発編 · 導入編 第n章`. `chapter_label` is built by `_aiways_chapter_label(number, lang, subseries, part_short)`, where `part_short` (`導入編`/`自立編`/`転換編`) comes from the chapter's `part` via the `parts` config.
+- `prev_slug` / `next_slug` chain **inside** the sub-series only, across all **23** chapters in global folder order: folder 01's `prev_*` is empty, folder 23's `next_*` is empty. The chain runs continuously across the three 編 (…導入編8 `embedded` → 自立編1 `foundation` → … → 自立編9 `ai` → 転換編1 `sier-uneconomic` …). It does not cross into the parent series. Re-run the chain over all folders after adding/moving a chapter.
 
 ## Thesis arc
 
@@ -55,43 +55,47 @@ Do not let these slip back in. If they come up, note them and stop.
 
 ## Chapter-to-folder mapping
 
-The sub-series numbers its own chapters from **01 through 19**, independently of the parent series, in three 編. Folders live under `articles/ai-native-ways/software/`. All slugs below have **shipped** — they are stable URLs at `/ai-native-ways/software/{slug}/` and must not be renamed.
+The sub-series has **23 chapters in three 編**, each 編 **numbered from 1**. Folders use a global `NN-slug` prefix (01–23) for ordering; the *displayed* number is the per-編 number, set in front matter (`number` = per-編, `part` = "1"/"2"/"3"). Slugs are stable URLs at `/ai-native-ways/software/{slug}/` and must not be renamed. Each chapter's front matter carries `part`; the build groups the index and builds the breadcrumb (`ソフトウェア開発編 ◯○編 第n章`) from it.
 
-**概念編 ── なぜ作るのか (01–05)**
+**導入編 ── なぜ作り、どう始めるか (part "1", 第1–8章 / folders 01–08)** — concept 1–5, then three worked examples (6–8) of a customer building with AI.
 
-| # | folder | title (JA) | slug | hinge claim |
+| 第n章 | folder | title (JA) | slug | hinge / what it does |
 |---|---|---|---|---|
-| 01 | `software/01-coder-top` | AIがコードを書く能力で人間トップクラスに到達した | `coder-top` | Codeforces 2700; price floor |
-| 02 | `software/02-maintenance-shift` | 保守フェーズの構造変化こそ本質 | `maintenance-shift` | maintenance unit moves to design/spec |
-| 03 | `software/03-coder-end` | コーダーの仕事はなくなる | `coder-end` | execution vs judgment split |
-| 04 | `software/04-builder` | ビルダーという役割 | `builder` | aiseed.dev 24h demonstration |
-| 05 | `software/05-customer-codev` | 顧客がAIと協働して開発する時代 | `customer-codev` | 9-tenths self-build |
+| 1 | `01-coder-top` | AIがコードを書く能力で人間トップクラスに到達した | `coder-top` | Codeforces 2700; price floor |
+| 2 | `02-maintenance-shift` | 保守フェーズの構造変化こそ本質 | `maintenance-shift` | maintenance unit → design/spec |
+| 3 | `03-coder-end` | コーダーの仕事はなくなる | `coder-end` | execution vs judgment |
+| 4 | `04-builder` | ビルダーという役割 | `builder` | aiseed.dev 24h demo |
+| 5 | `05-customer-codev` | 顧客がAIと協働して開発する時代 | `customer-codev` | 9-tenths self-build (thesis) |
+| 6 | `06-vba-python` | VBA を Python に移す | `vba-python` | **example**: Excel macro → Python, running version as answer key |
+| 7 | `07-website` | Webサイトを作る ── AI と対話して | `website` | **example**: static site by dialogue; plain CSS + vanilla JS; fixable later |
+| 8 | `08-embedded` | 組み込みを作る | `embedded` | **example**: think in Python, Claude translates to C |
 
-**導入編 ── 汎用は OSS で立てる (06–13)** — install-guide register; each chapter stands up one OSS stack on the previous.
+**自立編 ── M365・Copilot・WordPress・基幹システム・GitHub から自立する (part "2", 第1–9章 / folders 09–17)** — install-guide register; each stands up one OSS stack, replacing a vendor product.
 
-| # | folder | title (JA) | slug | stands up (replaces) |
+| 第n章 | folder | title (JA) | slug | stands up (replaces) |
 |---|---|---|---|---|
-| 06 | `software/06-foundation` | 土台を据える ── PostgreSQL・SQLite・pgvector・DuckDB・Polars | `foundation` | data layer (Azure SQL / Excel / Power BI) |
-| 07 | `software/07-auth` | 門番を立てる ── PocketBase で認証を一つに | `auth` | authentication (Entra ID) |
-| 08 | `software/08-documents` | 文書を取り戻す ── OnlyOffice Docs を PocketBase に組み込む | `documents` | Word/Excel/PPT, OneDrive/SharePoint — **OnlyOffice Docs (editor engine) embedded in the Ch.7 PocketBase. NOT Nextcloud (heavy legacy), NOT DocSpace (re-introduces AD/LDAP/SAML + 20-conn cap). Docs 9.4 CE lifted the 20-connection limit.** |
-| 09 | `software/09-code` | コードを手元に ── Forgejo と Zed | `code` | GitHub / Azure DevOps |
-| 10 | `software/10-mail` | メールを自分の側に ── Stalwart と Thunderbird | `mail` | Exchange / Outlook |
-| 11 | `software/11-meetings` | 会議と予約を自分の側に ── Jitsi と Cal.com | `meetings` | Teams/Zoom, Calendly/Bookings, BigBlueButton for classes |
-| 12 | `software/12-web` | Webサイトを作る | `web` | public web on Cloudflare Pages (no server). The chapter is about **the operator writing articles/blog in Markdown, NOT picking a generator** — template-making (Astro/Hugo/own) is a one-time separate job. Operation = write Markdown → build → verify → deploy (separate steps, no npm). Plain manual register. Caddy reverse proxy = Ch.7 internal-apps only |
-| 13 | `software/13-ai` | 自前の AI を据える ── LLM と RAG | `ai` | Copilot; Ollama/vLLM + RAG on pgvector; closes 導入編 |
+| 1 | `09-foundation` | 土台を据える ── PostgreSQL・SQLite・pgvector・DuckDB・Polars | `foundation` | data layer (Azure SQL / Excel / Power BI) |
+| 2 | `10-auth` | 門番を立てる ── PocketBase | `auth` | authentication (Entra ID) |
+| 3 | `11-code` | コードを手元に ── Forgejo と Zed | `code` | **GitHub** / Azure DevOps |
+| 4 | `12-documents` | 文書を取り戻す ── OnlyOffice Docs を PocketBase に組み込む | `documents` | **M365** Word/Excel/PPT, OneDrive — OnlyOffice Docs editor on PocketBase + files/xattr. NOT Nextcloud, NOT DocSpace (re-adds AD) |
+| 5 | `13-mail` | メールを自分の側に ── Stalwart | `mail` | **M365** Exchange/Outlook |
+| 6 | `14-meetings` | 会議と予約を自分の側に ── Jitsi と Cal.com | `meetings` | **M365** Teams/Bookings, BigBlueButton for classes |
+| 7 | `15-web` | Webを公開する ── Cloudflare Pages（WordPress 代替） | `web` | **WordPress** — publish the 導入編7 site; static, no server; build→verify→deploy separated |
+| 8 | `16-fastapi` | API を作る ── FastAPI で基幹のロジックを出す | `fastapi` | **基幹システム** logic as one API on the foundation+gate (matches kura) |
+| 9 | `17-ai` | 自前の AI を据える ── LLM と RAG | `ai` | **Copilot**; Ollama/vLLM + RAG on pgvector |
 
-**転換編 ── 産業構造の帰結 (14–19)**
+**転換編 ── 産業構造の帰結 (part "3", 第1–6章 / folders 18–23)**
 
-| # | folder | title (JA) | slug | hinge claim |
+| 第n章 | folder | title (JA) | slug | hinge claim |
 |---|---|---|---|---|
-| 14 | `software/14-sier-uneconomic` | SIer委託モデルの構造的不経済 | `sier-uneconomic` | outsourcing overhead exceeds build cost |
-| 15 | `software/15-price-gap` | 価格競争力の桁違いの差 | `price-gap` | 10–100× displacement |
-| 16 | `software/16-lockin` | ロックイン問題 | `lockin` | Palantir FDE as archetype |
-| 17 | `software/17-hiring-builders` | 各社がビルダーを雇用する時代 | `hiring-builders` | builders as a professional class |
-| 18 | `software/18-japan-transition` | 日本のSIer業界の転換と雇用流動性 | `japan-transition` | multi-tier subcontracting enables shift |
-| 19 | `software/19-five-years` | 数年で完了する構造転換 | `five-years` | irreversible, ~5 year horizon |
+| 1 | `18-sier-uneconomic` | SIer委託モデルの構造的不経済 | `sier-uneconomic` | outsourcing overhead exceeds build cost |
+| 2 | `19-price-gap` | 価格競争力の桁違いの差 | `price-gap` | 10–100× displacement |
+| 3 | `20-lockin` | ロックイン問題 | `lockin` | Palantir FDE archetype |
+| 4 | `21-hiring-builders` | 各社がビルダーを雇用する時代 | `hiring-builders` | builders as a professional class |
+| 5 | `22-japan-transition` | 日本のSIer業界の転換と雇用流動性 | `japan-transition` | multi-tier subcontracting enables shift |
+| 6 | `23-five-years` | 数年で完了する構造転換 | `five-years` | irreversible, ~5 year horizon |
 
-When cross-referencing chapters in body text, use the **current numbers above** (転換編 is 14–19, not 6–11). Bare `第N章` / `Chapter N` refer to sibling sub-series chapters; parent-series references must be prefixed `親シリーズ第N章` / `parent series Chapter N`.
+When cross-referencing chapters in body text: **same-編 → bare `第n章` / `Chapter n`; cross-編 → qualified `◯○編 第n章` / `Introduction|Independence|Shift Chapter n`** (short EN names: Introduction / Independence / Shift). Parent-series references stay prefixed `親シリーズ第N章` / `parent series Chapter N`; `構造分析`/insights links are untouched.
 
 ## Build & verify (already in place)
 
@@ -128,7 +132,7 @@ These keep the sub-series internally coherent.
 - **The "24 hours, 30,000 lines, 40 pages" demonstration** belongs to chapter 04. Earlier chapters may allude to "one person at speed"; later chapters may reference it briefly. Do not redescribe it in every chapter.
 - **Numbers**: when chapter 15 cites the 10–100× price gap, that is the only place a numeric range is asserted as the thesis. Other chapters can cite component prices (monthly subscriptions, project quotes) but must defer the ratio claim to 15.
 - **The five-year horizon** belongs to chapter 19. Earlier chapters can speak of "数年で" only loosely; the explicit five-year claim is reserved for 19.
-- **導入編 tool choices are fixed** (shipped): data PostgreSQL/SQLite/pgvector/DuckDB/Polars · auth PocketBase · documents OnlyOffice Docs embedded in PocketBase (no Nextcloud — it is a heavy legacy monolith) · code Forgejo+Zed · mail Stalwart · meetings Jitsi/Cal.com/BigBlueButton · web **public site = static → Cloudflare Pages (no server); build→verify→deploy separated, no auto-rebuild. Caddy is only the Ch.7 internal-apps reverse proxy** · AI Ollama/vLLM+RAG. Recurring framing: "書くのではなく立てる," "人は Excel(OnlyOffice)・機械は Polars/DuckDB," and "control yours, capability borrowed / 窓は借り金庫は自分に" (mail relay / Cloudflare Pages / frontier-model API).
+- **自立編 tool choices are fixed** (shipped): data PostgreSQL/SQLite/pgvector/DuckDB/Polars · auth PocketBase · code Forgejo+Zed (replaces GitHub) · documents OnlyOffice Docs embedded in PocketBase (no Nextcloud — heavy legacy monolith) · mail Stalwart · meetings Jitsi/Cal.com/BigBlueButton · web **public site = static → Cloudflare Pages (no server); build→verify→deploy separated, no auto-rebuild. Caddy is only the internal-apps reverse proxy (introduced in 自立編 第2章 auth)** · API FastAPI · AI Ollama/vLLM+RAG. Recurring framing: "書くのではなく立てる," "人は Excel(OnlyOffice)・機械は Polars/DuckDB," and "control yours, capability borrowed / 窓は借り金庫は自分に" (mail relay / Cloudflare Pages / frontier-model API).
 
 ## Evidence (`example-N/`) ideas
 
@@ -154,7 +158,7 @@ This SKILL.md is the source of truth (no separate outline file). To change the s
 
 ## Pointers
 
-- **Reference implementation of the 導入編 stack**: `aiseed-dev/workspace` (kura) — a self-hosted Microsoft 365 / Google Workspace alternative (Python: FastAPI + Flet). PocketBase for auth (pluggable token validation + short cache), **file-native storage with xattr permissions** (`user.ws.perm` / `user.ws.creator`, no permissions DB), OnlyOffice Docs via JWT + callbacks, calendar via `.ics`. Cross-cutting principles: "the AI interface is files," "APIs only at boundaries," "operational AI = local OSS, no external subscription." Ch.8 (documents) and Ch.7 (auth) are aligned to and cross-reference kura. When writing 導入編 chapters, prefer the file-native / xattr model over storing blobs in a DB.
+- **Reference implementation of the 自立編 stack**: `aiseed-dev/workspace` (kura) — a self-hosted Microsoft 365 / Google Workspace alternative (Python: FastAPI + Flet). PocketBase for auth (pluggable token validation + short cache), **file-native storage with xattr permissions** (`user.ws.perm` / `user.ws.creator`, no permissions DB), OnlyOffice Docs via JWT + callbacks, calendar via `.ics`. Cross-cutting principles: "the AI interface is files," "APIs only at boundaries," "operational AI = local OSS, no external subscription." 自立編 第4章 (documents) and 第2章 (auth) are aligned to and cross-reference kura; the FastAPI chapter (自立編 第8章) names kura directly. When writing 自立編 chapters, prefer the file-native / xattr model over storing blobs in a DB.
 - Parent series spec: `articles/ai-native-ways/README.md`
 - Mechanical scaffold for a chapter: skill `authoring-aiways-chapter`
 - Prose conventions: skill `writing-aiways-voice`

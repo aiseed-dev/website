@@ -9,9 +9,9 @@ date: 2026.06.08
 label: Introduction 2
 title_html: 保守の単位は、<br><span class="accent">コードから設計</span>へ。
 prev_slug: coder-top
-prev_title: AI は、世界で最も難しいコーディング問題を解く
+prev_title: "AI は、世界で最も難しいコーディング問題を解く"
 next_slug: coder-end
-next_title: コーダーの仕事はなくなる
+next_title: "コーダーの仕事はなくなる"
 ---
 
 # 保守フェーズの構造変化こそ本質

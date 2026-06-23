@@ -9,9 +9,9 @@ date: 2026.06.29
 label: Introduction 5
 title_html: 顧客が <span class="accent">9 割</span> を作り、<br>残り <span class="accent">1 割</span> を相談する。
 prev_slug: builder
-prev_title: ビルダーという役割
-next_slug: foundation
-next_title: 土台を据える ── PostgreSQL・SQLite・pgvector・DuckDB・Polars
+prev_title: "ビルダーという役割"
+next_slug: vba-python
+next_title: "VBA を Python に移す ── Excel マクロを AI と書き直す"
 ---
 
 # 顧客がAIと協働して開発する時代
@@ -197,7 +197,7 @@ SIer に出しても、AI が裏で書くだけになる。**顧客が直接 AI 
 
 例外がある。**ロックイン**だ。SIer 独自のフレームワーク、独自の抽象
 層、長年の人的依存 ── これらは、顧客が AI と組んでも代替できない
-ように設計されている(構造は第8章で扱う)。だが、新規案件で、ロック
+ように設計されている(構造は転換編 第3章で扱う)。だが、新規案件で、ロック
 インのない選択肢を持つ顧客にとっては、SIer の優位は 1 割の領域に
 集約される。
 
@@ -225,7 +225,7 @@ SIer に出しても、AI が裏で書くだけになる。**顧客が直接 AI 
 
 弁護士や税理士に、定常業務まで全部任せる人はいない。難問が出たとき
 だけ相談する。AI ネイティブな世界では、**ソフトウェア開発の専門家
-も、弁護士や税理士と同じ位置**に動く ── 第9章で詳しく扱う。
+も、弁護士や税理士と同じ位置**に動く ── 転換編 第4章で詳しく扱う。
 
 ## 次の章へ
 
@@ -244,7 +244,7 @@ SIer に出しても、AI が裏で書くだけになる。**顧客が直接 AI 
 - [第3章: コーダーの仕事はなくなる](/ai-native-ways/software/coder-end/)
 - [第4章: ビルダーという役割](/ai-native-ways/software/builder/)
 - [親シリーズ第14章: Microsoft 365 を丸ごと置き換える(OSSで11層を解く)](/ai-native-ways/microsoft-365/)
-- [第8章: ロックイン問題](/ai-native-ways/software/lockin/)
-- [第9章: 各社がビルダーを雇用する時代](/ai-native-ways/software/hiring-builders/)
+- [転換編 第3章: ロックイン問題](/ai-native-ways/software/lockin/)
+- [転換編 第4章: 各社がビルダーを雇用する時代](/ai-native-ways/software/hiring-builders/)
 - [構造分析08: 企業ITの税を引く](/insights/enterprise-tax/)
 - [構造分析12: AIと個人事業](/insights/ai-and-individual/)

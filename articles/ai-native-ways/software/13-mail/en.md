@@ -5,12 +5,12 @@ part: "2"
 lang: en
 title: "Mail on Your Own Side — Stalwart and Thunderbird"
 subtitle: "Outside Exchange and Outlook — receive it yourself, send it honestly"
-description: Mail is the record of the business itself. Stalwart is a Rust single server carrying SMTP, IMAP, JMAP, spam defense, and DKIM signing in one, replacing Exchange. It rides on the PostgreSQL from Chapter 6 and is read with any client like Thunderbird. But outbound deliverability is hard — so lean on an authenticated relay for sending and keep only control of the mailbox on your own side. An honest design.
+description: Mail is the record of the business itself. Stalwart is a Rust single server carrying SMTP, IMAP, JMAP, spam defense, and DKIM signing in one, replacing Exchange. It rides on the PostgreSQL from Chapter 1 and is read with any client like Thunderbird. But outbound deliverability is hard — so lean on an authenticated relay for sending and keep only control of the mailbox on your own side. An honest design.
 date: 2026.07.09
 label: Independence 5
 title_html: Put the mailbox<br>on <span class="accent">your own side</span>.
-prev_slug: code
-prev_title: "Bring Code In-House — Forgejo and Zed"
+prev_slug: documents
+prev_title: "Take Documents Back — OnlyOffice Docs on PocketBase"
 next_slug: meetings
 next_title: "Meetings and Booking on Your Own Side — Jitsi and Cal.com"
 ---
@@ -29,13 +29,13 @@ clearly.
 
 - **Control of the record** — retention, search, and export of past mail by your own rules
 - **Step off per-seat billing** — the monthly bill doesn't stack with mailbox count
-- **One with the gate** — align accounts with the Chapter 7 authentication
+- **One with the gate** — align accounts with the Chapter 2 authentication
 
 ## Stand up Stalwart
 
 The mail server is **Stalwart.** A Rust single server carries **SMTP, IMAP,
 JMAP, spam defense, and DKIM signing.** A replacement for Exchange. Storage can
-be pointed at the **PostgreSQL from Chapter 6.**
+be pointed at the **PostgreSQL from Chapter 1.**
 
 ```yaml
 # compose.yaml — stand up a single mail server
@@ -107,7 +107,7 @@ Chapter 7).
 
 The inbox, on your own side.
 
-- **Stalwart** — SMTP, IMAP, JMAP, spam defense, DKIM in one server (on the Chapter 6 PostgreSQL)
+- **Stalwart** — SMTP, IMAP, JMAP, spam defense, DKIM in one server (on the Chapter 1 PostgreSQL)
 - **DNS (MX, SPF, DKIM, DMARC, PTR)** — the real body of mail is here
 - **Lean on a relay for sending** — inbox yours, deliverability borrowed, line drawn
 - **Thunderbird** — a free client, identical across OSes
@@ -120,6 +120,6 @@ the booking services to our own side.
 
 ## Related articles
 
-- [Chapter 6: Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars](/en/ai-native-ways/software/foundation/)
-- [Chapter 7: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
+- [Chapter 1: Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars](/en/ai-native-ways/software/foundation/)
+- [Chapter 2: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
 - [Parent series, Chapter 14: Replacing Microsoft 365 Wholesale](/en/ai-native-ways/microsoft-365/)

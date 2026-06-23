@@ -4,14 +4,14 @@ number: "05"
 part: "2"
 title: メールを自分の側に ── Stalwart と Thunderbird
 subtitle: Exchange と Outlook の外へ ── 受信は自分で、送信は正直に
-description: メールは事業の記録そのものだ。Stalwart は Rust 製の単一サーバで、SMTP・IMAP・JMAP・スパム対策・DKIM 署名を一つに備え、Exchange を置き換える。第6章の PostgreSQL に乗せ、Thunderbird など任意のクライアントで読む。ただし送信の到達性は難しい ── そこは認証付き中継に頼り、メールボックスの主導権だけ自分が持つ、という正直な設計を示す。
+description: メールは事業の記録そのものだ。Stalwart は Rust 製の単一サーバで、SMTP・IMAP・JMAP・スパム対策・DKIM 署名を一つに備え、Exchange を置き換える。第1章の PostgreSQL に乗せ、Thunderbird など任意のクライアントで読む。ただし送信の到達性は難しい ── そこは認証付き中継に頼り、メールボックスの主導権だけ自分が持つ、という正直な設計を示す。
 date: 2026.07.09
 label: Independence 5
 title_html: メールボックスを、<br><span class="accent">自分の側</span>に。
-prev_slug: code
-prev_title: コードを手元に ── Forgejo と Zed
+prev_slug: documents
+prev_title: "文書を取り戻す ── OnlyOffice Docs を PocketBase に組み込む"
 next_slug: meetings
-next_title: 会議と予約を自分の側に ── Jitsi と Cal.com
+next_title: "会議と予約を自分の側に ── Jitsi と Cal.com"
 ---
 
 # メールを自分の側に ── Stalwart と Thunderbird
@@ -27,13 +27,13 @@ next_title: 会議と予約を自分の側に ── Jitsi と Cal.com
 
 - **記録の主導権** ── 過去メールの保管・検索・書き出しを、自分のルールで
 - **人数課金から降りる** ── メールボックスの数で月額が積み上がらない
-- **門番と一つに** ── アカウントを第7章の認証と揃える
+- **門番と一つに** ── アカウントを第2章の認証と揃える
 
 ## Stalwart を立てる
 
 メールサーバは **Stalwart**。Rust 製の単一サーバに、**SMTP・IMAP・JMAP・
 スパム対策・DKIM 署名**まで入っている。Exchange の置き換えだ。保管は
-**第6章の PostgreSQL** に寄せられる。
+**第1章の PostgreSQL** に寄せられる。
 
 ```yaml
 # compose.yaml ── 単一のメールサーバを立てる
@@ -101,7 +101,7 @@ imapsync --host1 outlook.office365.com --user1 you@old \
 
 受信箱を、自分の側に。
 
-- **Stalwart** ── SMTP・IMAP・JMAP・スパム対策・DKIM を単一サーバで(第6章 PostgreSQL に乗る)
+- **Stalwart** ── SMTP・IMAP・JMAP・スパム対策・DKIM を単一サーバで(第1章 PostgreSQL に乗る)
 - **DNS(MX・SPF・DKIM・DMARC・PTR)** ── メールの本体はここ
 - **送信は中継に頼る** ── 受信箱は自分、到達性は借りる、と線を引く
 - **Thunderbird** ── 無料・全 OS 共通のクライアント
@@ -114,6 +114,6 @@ imapsync --host1 outlook.office365.com --user1 you@old \
 
 ## 関連記事
 
-- [第6章: 土台を据える ── PostgreSQL・SQLite・pgvector・DuckDB・Polars](/ai-native-ways/software/foundation/)
-- [第7章: 門番を立てる ── PocketBase で認証を一つに](/ai-native-ways/software/auth/)
+- [第1章: 土台を据える ── PostgreSQL・SQLite・pgvector・DuckDB・Polars](/ai-native-ways/software/foundation/)
+- [第2章: 門番を立てる ── PocketBase で認証を一つに](/ai-native-ways/software/auth/)
 - [親シリーズ第14章: Microsoft 365 を丸ごと置き換える](/ai-native-ways/microsoft-365/)

@@ -10,9 +10,9 @@ date: 2026.06.08
 label: Introduction 2
 title_html: The unit of maintenance moves<br>from <span class="accent">code to design</span>.
 prev_slug: coder-top
-prev_title: AI Solves the World's Hardest Coding Problems
+prev_title: "AI Solves the World's Hardest Coding Problems"
 next_slug: coder-end
-next_title: The Coder's Job Goes Away
+next_title: "The Coder's Job Goes Away"
 ---
 
 # Maintenance-Phase Shift Is the Real Story
@@ -195,7 +195,7 @@ The dividing line is **not the ability to write code, but the ability
 to decide the design**. And "deciding the design" — partitioning
 structure, seeing the invariants, keeping the whole consistent — is
 less software engineering than it is **a liberal-arts–shaped craft**.
-Chapters 3 and 4 elaborate this as the difference between the
+Chapter 3 and Chapter 4 elaborate this as the difference between the
 "coder" and the "builder" roles.
 
 ## Where the next chapter goes

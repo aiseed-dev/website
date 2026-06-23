@@ -10,9 +10,9 @@ date: 2026.06.22
 label: Introduction 4
 title_html: Humans <span class="accent">decide</span>,<br>AI <span class="accent">writes</span>.
 prev_slug: coder-end
-prev_title: The Coder's Job Goes Away
+prev_title: "The Coder's Job Goes Away"
 next_slug: customer-codev
-next_title: Customers Co-Develop with AI
+next_title: "Customers Co-Develop with AI"
 ---
 
 # The Builder Role
@@ -90,7 +90,7 @@ show it," "where to cut," "in what order to assemble," and keeps the
 whole consistent. The technical crew acts on the director's judgment.
 The relationship between the builder and AI maps onto this — **judgment
 stays with the human, technical execution goes to AI, and the artifact
-is born of the collaboration**. Chapter 11 returns to this analogy
+is born of the collaboration**. Shift Chapter 6 returns to this analogy
 under "app-making comes to resemble film-making."
 
 ## The structural difference from a coder
@@ -181,7 +181,7 @@ judgment.
 The shift from "hire someone who can write code" to "**hire someone
 who can judge**" is not a surface-level personnel question. It is a
 transformation in **the foundational discipline of the technical
-profession**. Chapter 9 returns to this theme.
+profession**. Shift Chapter 4 returns to this theme.
 
 ## The builder's day is set by decision density
 
@@ -230,7 +230,7 @@ sitemap, the bilingual framework — was stood up by one person plus AI
 by AI; the builder did design decisions, integration, and evaluation.
 The same scope of code base, routed through an SIer commission model,
 would burn comparable time at the proposal-and-quote stage alone (the
-structure of that process cost is treated in Chapter 6).
+structure of that process cost is treated in Shift Chapter 1).
 
 ### Anchor 2 — one sub-series in one week
 

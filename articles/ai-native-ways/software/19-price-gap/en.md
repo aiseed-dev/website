@@ -10,9 +10,9 @@ date: 2026.07.28
 label: Shift 2
 title_html: <span class="accent">10× to 100×</span> is not competition.<br>It is <span class="accent">market displacement</span>.
 prev_slug: sier-uneconomic
-prev_title: The Structural Uneconomy of the SIer Model
+prev_title: "The Structural Uneconomy of the SIer Model"
 next_slug: lockin
-next_title: The Lock-In Problem
+next_title: "The Lock-In Problem"
 ---
 
 # The Order-of-Magnitude Price Gap
@@ -22,7 +22,7 @@ of yen. AI-native development runs at the order of hundreds of
 thousands of yen per month. The 10× to 100× gap is no longer
 competition — it is market displacement**.
 
-Chapter 14 showed that the SIer commission model has reached the level
+Chapter 1 showed that the SIer commission model has reached the level
 where "with the same effort, you can build it yourself." This chapter
 takes the next question — not effort, but **money** — and lines the
 two up directly.
@@ -104,7 +104,7 @@ magnitude.
 
 **A 10×–100× gap is not a competition story**. When pocket calculators
 arrived at one-tenth the price of an abacus, abacus makers did not
-"lose on price" — **the market itself moved** (Chapter 3). The same
+"lose on price" — **the market itself moved** (Introduction Chapter 3). The same
 structure is happening now, between the SIer industry and the software
 development market.
 
@@ -136,7 +136,7 @@ In Japan, the gap is **even wider**, for specific reasons.
 - **Multi-tier subcontracting** — work flows from prime to tier-1,
   tier-2, tier-3 subcontractors, with margin stacked at each layer.
   By the time code is written, multiple intermediate layers have taken
-  their cut (the structural details are covered in Chapter 18).
+  their cut (the structural details are covered in Chapter 5).
 - **Weak yen against USD pricing** — AI tools are priced in USD;
   SIer labor is priced in JPY. Exchange-rate dynamics push the SIer
   rate up relatively, year after year.
@@ -160,7 +160,7 @@ Japan, the opportunity is greater than in Western markets.
 
 ## Why SIers cannot follow on price
 
-Restate the structural reasons from Chapter 14, in price terms.
+Restate the structural reasons from Chapter 1, in price terms.
 
 The floor on SIer pricing is set by **their own payroll**. Coder
 salaries, social insurance, office costs, management overhead — these
@@ -226,8 +226,8 @@ The next chapter takes up the lock-in problem.
 
 ## Related articles
 
-- [Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
-- [Chapter 14: The Structural Uneconomy of the SIer Model](/en/ai-native-ways/software/sier-uneconomic/)
-- [Chapter 16: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
+- [Introduction Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
+- [Chapter 1: The Structural Uneconomy of the SIer Model](/en/ai-native-ways/software/sier-uneconomic/)
+- [Chapter 3: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

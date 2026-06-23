@@ -10,9 +10,9 @@ date: 2026.08.04
 label: Shift 3
 title_html: A proprietary framework becomes<br>a <span class="accent">cage with no exit</span>.
 prev_slug: price-gap
-prev_title: The Order-of-Magnitude Price Gap
+prev_title: "The Order-of-Magnitude Price Gap"
 next_slug: hiring-builders
-next_title: Companies Hire Builders
+next_title: "Companies Hire Builders"
 ---
 
 # The Lock-In Problem
@@ -23,7 +23,7 @@ Palantir's FDE model is the extreme form. AI-native development, by
 contrast, minimizes lock-in itself by working in standard code and
 standard formats**.
 
-Chapter 15 showed that the gap between SIer commissioning and AI-native
+Chapter 2 showed that the gap between SIer commissioning and AI-native
 development runs at 10× to 100×. Even so, customers do not move at
 once — the reason is **lock-in**. This chapter decomposes the
 structure of lock-in, reads Palantir's FDE model as the archetype, and
@@ -170,9 +170,9 @@ An AI-native code base has these properties:
 - **Standard libraries at the center** — another builder sees code
   built out of libraries they already know.
 - **The design lives in Markdown** — structure is recorded in a form
-  shared between humans and AI (Chapter 4).
+  shared between humans and AI (Introduction Chapter 4).
 - **AI regenerates tests and documentation** — knowledge is not pinned
-  outside the code base (Chapter 2).
+  outside the code base (Introduction Chapter 2).
 - **Data formats are standard** — JSON / Parquet / SQLite, readable
   by other systems too.
 
@@ -225,7 +225,7 @@ large price gap, not every engagement moves at the same speed.
 
 The overall pace of the industry shift — Japan's multi-tier
 subcontracting, labor mobility, transitional contract forms — is
-treated in Chapter 18.
+treated in Chapter 5.
 
 Note that everything so far has been about the **development lock-in**
 of the SIer-commissioned model. Separate from it is the **lock-in of
@@ -254,7 +254,7 @@ in-house or external, they will be hiring **a judgment-centered
 profession**. The capacity to see lock-in coming and to design a way
 out of it — reading the vendor's pitch against itself, verbalizing
 your own organization's interests, defining the criteria for an
-alternative — falls inside the liberal arts (Chapter 4).
+alternative — falls inside the liberal arts (Introduction Chapter 4).
 
 The next chapter takes up the era in which companies hire builders —
 how builders get positioned, how they are paid, and how they function.
@@ -263,11 +263,11 @@ how builders get positioned, how they are paid, and how they function.
 
 ## Related articles
 
-- [Chapter 3: The Coder's Job Goes Away](/en/ai-native-ways/software/coder-end/)
-- [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
-- [Chapter 15: The Order-of-Magnitude Price Gap](/en/ai-native-ways/software/price-gap/)
-- [Chapter 17: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
-- [Chapter 18: Japan's SIer Industry Transition and Labor Mobility](/en/ai-native-ways/software/japan-transition/)
+- [Introduction Chapter 3: The Coder's Job Goes Away](/en/ai-native-ways/software/coder-end/)
+- [Introduction Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
+- [Chapter 2: The Order-of-Magnitude Price Gap](/en/ai-native-ways/software/price-gap/)
+- [Chapter 4: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
+- [Chapter 5: Japan's SIer Industry Transition and Labor Mobility](/en/ai-native-ways/software/japan-transition/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)
 - [Can You Build a Microsoft 365 (Standard + Copilot) Equivalent Yourself?](/en/blog/self-hosting-microsoft-365/)

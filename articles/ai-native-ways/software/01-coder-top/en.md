@@ -12,7 +12,7 @@ title_html: AI solves<br>the <span class="accent">hardest coding problems</span>
 prev_slug:
 prev_title:
 next_slug: maintenance-shift
-next_title: Maintenance-Phase Shift Is the Real Story
+next_title: "Maintenance-Phase Shift Is the Real Story"
 ---
 
 # AI Solves the World's Hardest Coding Problems
@@ -82,7 +82,7 @@ answer can be checked**. The claim "coders go away" in this sub-series
 applies specifically to domains with both properties — the reach of
 "complete replacement" does not extend at the same speed to other AI
 applications (desk work, self-driving, robotics, etc.; this boundary
-is treated in Chapter 11).
+is treated in Shift Chapter 6).
 
 What matters is not the rank, but the **structural change of crossing a
 threshold**.
@@ -113,7 +113,7 @@ competitive-programming ladder; or pay seven-figure salaries.
 FDE (Forward Deployed Engineer) model — embedding top-tier engineers
 inside the customer's organization on year-long, eight-figure contracts
 — is the extreme upper end of that legacy path (mechanics covered in
-detail in Chapter 8).
+detail in Shift Chapter 3).
 
 Access to AI models comes in tiers, depending on how hard you intend
 to use them.
@@ -227,11 +227,11 @@ Every chapter that follows is **deduced** from this one fact.
 - Chapter 4 — what role takes their place (the builder)?
 - Chapter 5 — when customers themselves pair with AI, what happens to
   the structure of outsourcing?
-- Chapter 6 — can the SIer commission model compete with **AI sitting
+- Shift Chapter 1 — can the SIer commission model compete with **AI sitting
   above the threshold**?
-- Chapter 7 — when one side has a different cost structure entirely,
+- Shift Chapter 2 — when one side has a different cost structure entirely,
   how large is the gap?
-- Chapter 8 — where do existing commission relationships act as
+- Shift Chapter 3 — where do existing commission relationships act as
   **lock-in**?
 - Chapters 9–11 — hiring builders, the transition of the SIer
   industry, the time horizon over which the transition completes.
@@ -267,7 +267,7 @@ consequence of cheap coding — the shift in the unit of maintenance.
 ## Related articles
 
 - [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
-- [Chapter 11: The Structural Transition Completes in a Few Years](/en/ai-native-ways/software/five-years/)
+- [Shift Chapter 6: The Structural Transition Completes in a Few Years](/en/ai-native-ways/software/five-years/)
 - [Prologue: AI's Native Tongue Is Python and Markdown-Shaped Text](/en/ai-native-ways/prologue/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

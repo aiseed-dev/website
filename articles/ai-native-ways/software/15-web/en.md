@@ -3,88 +3,36 @@ slug: web
 number: "07"
 part: "2"
 lang: en
-title: "Build the Website"
-subtitle: "Make the company site and blog static, hold no server, ship to Cloudflare Pages — build, verify, deploy as separate steps"
-description: The web you show the outside can be mostly static. Make HTML from Markdown with your own build or Hugo, and put it on Cloudflare Pages — hold no server. Leave the CDN and automatic HTTPS to Cloudflare; keep the source and build in your own hands. The crux is to separate build, verify, and deploy — avoid auto-rebuild and one-shot deploys, and keep the HTML you verified identical to the HTML that goes live. Internal tools stay behind the Chapter 7 gate.
+title: "Publish the Web — Cloudflare Pages (a WordPress Replacement)"
+subtitle: "Drop dynamic WordPress and publish a static site with no server — build, verify, deploy as separate steps"
+description: Publish, from your own side, the static site you built with AI in the Introduction part. Drop dynamic WordPress and put the baked HTML on Cloudflare Pages — hold no server. Leave the CDN and automatic HTTPS to Cloudflare; keep the source and build in your own hands. The crux is to separate build, verify, and deploy, keeping what you verified identical to what goes live. Internal tools stay behind the gate — borrow the window, hold the vault.
 date: 2026.07.14
 label: Independence 7
-title_html: Make the site <span class="accent">static</span>,<br>publish it with <span class="accent">no server</span>.
+title_html: Drop WordPress;<br>publish with <span class="accent">no server</span>.
 prev_slug: meetings
 prev_title: "Meetings and Booking on Your Own Side — Jitsi and Cal.com"
-next_slug: ai
-next_title: "Stand Up Your Own AI — LLM and RAG"
+next_slug: fastapi
+next_title: "Build an API — Expose Core Logic with FastAPI"
 ---
 
-# Build the Website
+# Publish the Web — Cloudflare Pages (a WordPress Replacement)
 
-The internal tools are in place. Last, build the website you show the outside.
-Company site, product pages, documentation, blog — most of it can be **static.**
+In the Introduction part, you built a static website with AI (Introduction,
+Chapter 7). Here, you **publish it from your own side.** Drop dynamic
+**WordPress** and put the baked HTML on **Cloudflare Pages** — hold no server.
 
-If it is static, you don't need your own server. Put the HTML you made on
-**Cloudflare Pages** and it is published.
+## Why drop WordPress
 
-## Why static
+WordPress is a mass of dynamic server, database, and plugins. The burden of
+updates, maintenance, and security never stops. Since a company site's contents
+rarely change, **static is enough.** Static needs no server and no DB, and has
+almost no surface to attack. Publish the `html/` you built in the Introduction
+part, as-is.
 
-The contents of an external site rarely change. So instead of assembling it on
-a server every time, you make the HTML ahead of time and place it. That is
-faster, safer, and cheaper.
+## Put it on Cloudflare Pages — hold no server
 
-- **Fast** — just file serving. No waiting on a database
-- **Safe** — nothing moving, so almost no surface to attack
-- **Easy** — content is Markdown. Have Claude write it; the build turns it into HTML
-
-This site (aiseed.dev) is static too. It makes HTML from Markdown and places it.
-There is no dynamic server.
-
-## Create the static site
-
-The machinery — the build that turns Markdown into HTML, and the template for
-the look — is made once, at the start. A professional front-end engineer may
-build the site with a framework like Astro. But even a first-timer can just
-**tell Claude, and it builds the website.**
-
-The knack is not to settle it in one instruction but to **do it through
-dialogue** — especially if you are new to this. You don't have to spell out a
-full spec up front; what you want surfaces as you go back and forth. And **the
-web is easy to fix later** — just rebuild and redeploy — so don't aim for
-perfect; get a first version into shape. Start plainly — "Make a build that
-turns Markdown articles into an HTML site" — then work it out with Claude, back
-and forth. Worth bringing up:
-
-- **What you write** — articles and posts in Markdown, each with a title, date, and summary (frontmatter) at the top
-- **URL shape** — e.g. articles at `/<slug>/`, posts at `/blog/<slug>/`
-- **Index pages** — a newest-first listing on the top page and per category
-- **The look** — text-first and readable, in plain CSS; no fancy decoration and no CSS frameworks like Tailwind (to match an existing site, hand over its URL or images)
-- **JavaScript** — minimal vanilla JS only, as a rule; no frameworks like React (a static site needs no heavy base)
-- **Output and images** — write the result into `html/`, and carry images along
-- **Languages** — to keep Japanese and English, split into `/` and `/en/`
-- **Tools** — the build runs as a single command. No npm, no Node (Python or whatever you have)
-
-From the exchange, Claude writes the conversion script and the templates. If
-something is off, fix it while looking at the result — "two columns for the
-list," "change the date format" — shaping it through dialogue (exactly the way
-of building from Chapter 5). Once it exists, all that's left is writing articles.
-
-## Write articles and posts
-
-Once the machinery exists, all you do is **write articles and posts.** This is
-the day-to-day operation.
-
-You write the content in Markdown. Add one article as a file in a fixed place
-(e.g. `articles/`), and the build converts it to HTML.
-
-```bash
-# write Markdown in articles/, and build it into html/
-python tools/build.py
-```
-
-Day to day, the operation is just **write Markdown, build, ship.** The output is
-just a set of files (`html/`).
-
-## Put it on Cloudflare Pages
-
-Put the HTML you made on **Cloudflare Pages.** No server needed. Upload the
-files and they are served from a global CDN, with HTTPS added automatically.
+Put the HTML on **Cloudflare Pages.** No server needed. Upload the files and
+they are served from a global CDN, with HTTPS added automatically.
 
 Leave delivery and defense to Cloudflare, and **keep the source and build in
 your own hands.** The published HTML holds no secrets, so this is safe to hand
@@ -123,36 +71,38 @@ pointing the production domain.
 ## Wire only the moving parts
 
 Wire the backend only for the **moving parts** — a contact form. The target is
-your own API behind the Chapter 7 gate (auth at the gate, storage in the Chapter
-6 DB, notifications via the Chapter 10 mail). **Mostly static, dynamic only where
-needed.**
+your own API behind the gate (Chapter 2) — auth at the gate, storage in the
+Chapter 1 DB, notifications via the Chapter 5 mail. **Mostly static, dynamic
+only where needed.**
 
-## Internal tools are separate
+## Internal tools are separate — borrow the window, hold the vault
 
-The public site goes on Cloudflare Pages. But the **internal tools** built in
-Chapters 7–11 (auth, documents, code, meetings) are separate. Carrying secrets
-and raw data, they stay behind the Chapter 7 gate — your own reverse proxy.
+The public site is **borrowed** on Cloudflare Pages. But the **internal tools**
+stood up in this part (gate, documents, code, mail, meetings) are different.
+Carrying secrets and raw data, they stay behind the gate — your own reverse
+proxy.
 
-- **The public site** (static, no secrets) — Cloudflare Pages
+- **The public site** (static, no secrets) — borrowed on Cloudflare Pages
 - **The internal tools** (auth, business data) — on your own side, behind the gate
 
-Decide separately what to borrow and what to hold yourself.
+**Borrow the window, hold the vault.** Decide separately what to borrow and what
+to keep.
 
 ## Summary
 
-- **Write articles and posts** — the operation is writing Markdown. The machinery is created once, by telling Claude (no Astro needed)
-- **Cloudflare Pages** — publish with no server; leave CDN and automatic HTTPS to it
-- **Separate build → verify → deploy** — avoid auto-rebuild; ship what you verified
+- **Drop WordPress** — shed the maintenance burden of a dynamic server, DB, and plugins
+- **Cloudflare Pages** — publish with no server; borrow CDN and automatic HTTPS
+- **Separate build → verify → deploy** — ship exactly what you verified
 - **Domain switches automatically** — a custom domain points the A record at Pages; leave mail untouched
-- **Internal tools are separate** — keep them behind the Chapter 7 gate
+- **Borrow the window, hold the vault** — internal tools stay behind the gate
 
-In the final chapter, we lay **AI (a self-hosted LLM and RAG)** on top of all of
-this and cut the dependency on Copilot.
+Next, we expose the core systems' logic as an **API (FastAPI)** so every app can
+use it.
 
 ---
 
 ## Related articles
 
-- [Chapter 7: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
-- [Chapter 10: Mail on Your Own Side — Stalwart and Thunderbird](/en/ai-native-ways/software/mail/)
+- [Introduction, Chapter 7: Build a Website — In Dialogue with AI](/en/ai-native-ways/software/website/)
+- [Chapter 2: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
 - [Parent series, Chapter 14: Replacing Microsoft 365 Wholesale](/en/ai-native-ways/microsoft-365/)

@@ -4,22 +4,22 @@ number: "04"
 part: "2"
 lang: en
 title: "Take Documents Back — OnlyOffice Docs on PocketBase"
-subtitle: "Add no separate storage app — put documents on the Chapter 7 gate and embed only the editor engine"
-description: Word, Excel, and PowerPoint are the input/output tools people write and read with. Rather than add a separate storage app like Nextcloud, keep documents as plain files on your own storage, with auth from the Chapter 7 PocketBase and permissions in xattr, and embed OnlyOffice Docs as the editor engine only — a thin, custom document app. It opens docx, xlsx, and pptx with high fidelity, co-edits, and needs no second permissions DB or login. Avoid the finished DocSpace — it brings Active Directory back. The reference implementation is the public repo kura. Keep the formats; take back only control.
+subtitle: "Add no separate storage app — put documents on the Chapter 2 gate and embed only the editor engine"
+description: Word, Excel, and PowerPoint are the input/output tools people write and read with. Rather than add a separate storage app like Nextcloud, keep documents as plain files on your own storage, with auth from the Chapter 2 PocketBase and permissions in xattr, and embed OnlyOffice Docs as the editor engine only — a thin, custom document app. It opens docx, xlsx, and pptx with high fidelity, co-edits, and needs no second permissions DB or login. Avoid the finished DocSpace — it brings Active Directory back. The reference implementation is the public repo kura. Keep the formats; take back only control.
 date: 2026.07.04
 label: Independence 4
 title_html: Keep documents as <span class="accent">files</span>;<br>only auth at the gate.
-prev_slug: auth
-prev_title: "Stand Up the Gate — One Login with PocketBase"
-next_slug: code
-next_title: "Bring Code In-House — Forgejo and Zed"
+prev_slug: code
+prev_title: "Bring Code In-House — Forgejo and Zed"
+next_slug: mail
+next_title: "Mail on Your Own Side — Stalwart and Thunderbird"
 ---
 
 # Take Documents Back — OnlyOffice Docs on PocketBase
 
-Inside the gate (Chapter 7), the first tool to place is **documents.** Word,
+Inside the gate (Chapter 2), the first tool to place is **documents.** Word,
 Excel, PowerPoint — these are the **input/output tools** people write and
-read with, and that role does not change (Chapter 6). What changes is only
+read with, and that role does not change (Chapter 1). What changes is only
 **format compatibility and control of the storage.**
 
 So you don't switch to a new document format. You embed, into your own app, an
@@ -33,11 +33,11 @@ that drags in a separate user system and a separate database. It runs against
 the **single-binary lightness** this Setup part has chosen (PocketBase,
 Stalwart, Forgejo).
 
-In Chapter 7 you already stood up **PocketBase,** which carries auth. For
+In Chapter 2 you already stood up **PocketBase,** which carries auth. For
 storage, **make it the gate and keep the rest as files.**
 
 - **The file itself** — plain files on your own storage; no heavy storage app
-- **Auth** — the Chapter 7 gate (PocketBase) applies directly (no second login)
+- **Auth** — the Chapter 2 gate (PocketBase) applies directly (no second login)
 - **Permissions / sharing** — carried by the file itself (xattr); the gate verifies identity
 
 What you add is **only the editor engine.** OnlyOffice ships "Docs (the
@@ -50,7 +50,7 @@ the thinnest path.
 OnlyOffice also offers a finished platform, **DocSpace.** But **don't choose
 it,** for two reasons.
 
-- **It brings Active Directory back** — DocSpace is built around LDAP / AD / SAML SSO. The **Microsoft authentication (AD) you cut in Chapter 7 moves right back in.**
+- **It brings Active Directory back** — DocSpace is built around LDAP / AD / SAML SSO. The **Microsoft authentication (AD) you cut in Chapter 2 moves right back in.**
 - **The free edition caps at 20 concurrent connections** — DocSpace Community limits simultaneous editing tabs to 20. Grow past it and you are pushed to the paid Enterprise edition — the doorway to lock-in.
 
 What you need is **only the editor engine.** And there is good news — **Docs 9.4
@@ -60,7 +60,7 @@ became a **single process.** Paired with PocketBase (a single binary),
 enterprise-grade co-editing is in hand **for free, and light.**
 
 > The platform (DocSpace) brings AD along in exchange for convenience.
-> **Take only the engine (Docs); leave authentication to the Chapter 7 gate.**
+> **Take only the engine (Docs); leave authentication to the Chapter 2 gate.**
 
 ## Stand up OnlyOffice Docs
 
@@ -92,7 +92,7 @@ as a blob in a PocketBase record, keep `docx`, `xlsx`, and `pptx` as files — s
 that machines (Polars, AI) can read them directly later.
 
 - **The body** — a file on the filesystem (your own storage)
-- **Auth** — the Chapter 7 gate (PocketBase) verifies who
+- **Auth** — the Chapter 2 gate (PocketBase) verifies who
 - **Permissions** — carried by the file itself — extended attributes (xattr)
 
 ```bash
@@ -126,7 +126,7 @@ co-editing reconciliation. All the app writes is these few lines of hand-off.
 ## The gate stays — no second login
 
 This is the biggest win of building it your own way. **Auth comes straight from
-the Chapter 7 gate, and permissions ride on the file (xattr),** so there is no
+the Chapter 2 gate, and permissions ride on the file (xattr),** so there is no
 second account like Nextcloud's and no separate permissions database. Who can
 open which document is decided by the identity the gate verifies and the
 permission stamped on the file.
@@ -148,7 +148,7 @@ move is done** (parent series, Chapter 7).
 
 ## People use OnlyOffice; machines use Polars
 
-Here is the link back to Chapter 6. **People enter and read in OnlyOffice (Excel
+Here is the link back to Chapter 1. **People enter and read in OnlyOffice (Excel
 format); machines crunch the data behind it with Polars and DuckDB.** The same
 `.xlsx` is an editing tool to a person and an input to a machine — split by role.
 
@@ -193,7 +193,7 @@ and bring GitHub and Azure DevOps to our own side.
 
 ## Related articles
 
-- [Chapter 6: Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars](/en/ai-native-ways/software/foundation/)
-- [Chapter 7: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
+- [Chapter 1: Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars](/en/ai-native-ways/software/foundation/)
+- [Chapter 2: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
 - [Reference implementation kura — a self-hosted Microsoft 365 / Google Workspace alternative](https://github.com/aiseed-dev/workspace)
 - [Parent series, Chapter 14: Replacing Microsoft 365 Wholesale](/en/ai-native-ways/microsoft-365/)

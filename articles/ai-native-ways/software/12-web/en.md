@@ -35,10 +35,32 @@ faster, safer, and cheaper.
 This site (aiseed.dev) is static too. It makes HTML from Markdown and places it.
 There is no dynamic server.
 
+## Create the static site
+
+The machinery — the build that turns Markdown into HTML, and the template for
+the look — is made once, at the start. You don't need to learn a framework like
+Astro. **Tell Claude, and it builds it.**
+
+Say it plainly: "Make a build that turns Markdown articles into an HTML site."
+Then add the points you need. Worth including:
+
+- **What you write** — articles and posts in Markdown, each with a title, date, and summary (frontmatter) at the top
+- **URL shape** — e.g. articles at `/<slug>/`, posts at `/blog/<slug>/`
+- **Index pages** — a newest-first listing on the top page and per category
+- **The look** — text-first and readable; no fancy decoration (to match an existing site, hand over its URL or images)
+- **Output and images** — write the result into `html/`, and carry images along
+- **Languages** — to keep Japanese and English, split into `/` and `/en/`
+- **Tools** — the build runs as a single command. No npm, no Node (Python or whatever you have)
+
+From this, Claude writes the conversion script and the templates. If something
+is off, fix it while looking at the result — "two columns for the list," "change
+the date format" (exactly the way of building from Chapter 5). Once it exists,
+all that's left is writing articles.
+
 ## Write articles and posts
 
-What you do here is not pick a generator. It is **the person running the site
-writing articles and posts.**
+Once the machinery exists, all you do is **write articles and posts.** This is
+the day-to-day operation.
 
 You write the content in Markdown. Add one article as a file in a fixed place
 (e.g. `articles/`), and the build converts it to HTML.
@@ -48,10 +70,8 @@ You write the content in Markdown. Add one article as a file in a fixed place
 python tools/build.py
 ```
 
-Making the look (the template) with Astro, Hugo, or your own code is **a
-one-time, separate job** — do that however you like. Day to day, the operation
-is just **write Markdown, build, ship.** The output is just a set of files
-(`html/`).
+Day to day, the operation is just **write Markdown, build, ship.** The output is
+just a set of files (`html/`).
 
 ## Put it on Cloudflare Pages
 
@@ -112,7 +132,7 @@ Decide separately what to borrow and what to hold yourself.
 
 ## Summary
 
-- **Write articles and posts** — the operation is writing Markdown. The template is a one-time setup (Astro / Hugo / your own, your choice)
+- **Write articles and posts** — the operation is writing Markdown. The machinery is created once, by telling Claude (no Astro needed)
 - **Cloudflare Pages** — publish with no server; leave CDN and automatic HTTPS to it
 - **Separate build → verify → deploy** — avoid auto-rebuild; ship what you verified
 - **Domain switches automatically** — a custom domain points the A record at Pages; leave mail untouched

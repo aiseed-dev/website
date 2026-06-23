@@ -153,10 +153,14 @@ comes back, and:
   intent was
 - **In a few months, a codebase no one can maintain**
 
-This is the failure mode called "vibe coding." Even if AI can understand
-context, **if the context you hand it is vague, there is nothing to
-understand**. The faster AI is, the faster debt piles up in development
-that has not made its context explicit.
+This is the failure mode called "vibe coding." Its root is **the old
+common sense that "reading the code is the primary source."** As long as
+code is treated as the source of truth, people keep adding code without
+an explicit context — and let it rot. Even if AI can understand context,
+**if the context you hand it is vague, there is nothing to understand**.
+The faster AI is, the faster debt piles up in development that has not
+made its context explicit. **Moving the primary source from code to
+design, spec, and context** is what prevents vibe coding.
 
 So the work on the **making side** gets heavier, not lighter. But this is
 **not something the ordering side (the customer) thinks about** — keeping

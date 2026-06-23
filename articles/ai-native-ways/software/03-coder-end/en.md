@@ -4,11 +4,11 @@ number: "03"
 part: "1"
 lang: en
 title: The Coder's Job Goes Away
-subtitle: Execution moves to AI, judgment stays with humans — the role centered on writing code stops paying off
-description: This chapter defines "coder" precisely — the role whose center is writing code itself. Execution ability and judgment ability are different things; AI takes execution completely, judgment stays with humans. The role centered on execution stops being economically viable. This is not "all programmers disappear" but "the coder role definition disappears".
+subtitle: The role centered on writing code goes away — but it is not a division of labor ("AI executes, humans judge"); it is dialogue
+description: This chapter defines "coder" — the role whose center is writing code itself. As AI comes to write code, the economic basis of that role collapses. But the clean division of labor "AI executes, humans judge" is false. Humans and AI build by talking and understanding each other. Humans also procure hardware and negotiate with stakeholders — not judgment alone. And AI is not execution alone: Opus is a coder, Fable a software engineer that designs. What disappears is the role definition, not people.
 date: 2026.06.15
 label: Introduction 3
-title_html: Execution to <span class="accent">AI</span>,<br>judgment to <span class="accent">humans</span>.
+title_html: The code-writing role goes away.<br>But it is <span class="accent">dialogue</span>, not <span class="accent">division of labor</span>.
 prev_slug: maintenance-shift
 prev_title: "Maintenance-Phase Shift Is the Real Story"
 next_slug: builder
@@ -22,8 +22,9 @@ next_title: "The Builder Role"
 Chapter 2 showed that the main battleground of maintenance moves from
 "the ability to write code" to "the ability to decide the design."
 This chapter takes up the other face of that shift — the role itself.
-The coder role goes away, and is replaced by a role centered on
-judgment (Chapter 4 names it "builder").
+The coder role goes away, and is replaced by a broader role: building
+and operating a system in dialogue with AI (Chapter 4 names it
+"builder").
 
 A note up front. This chapter is not saying "all programmers
 disappear." It is saying **"the role definition called coder
@@ -53,108 +54,105 @@ focused only on writing. The SIer industry, contract development, and
 multi-tier subcontracting structures are all built on that premise
 (Shift Chapter 1 takes up the structure).
 
-## Execution and judgment were always different abilities
+## Building and operating a system is broader than writing code
 
-Make one terminology distinction explicit. The work of writing code
-splits into two abilities:
+Set aside, for a moment, the SIer way of seeing it: splitting
+"development" into requirements → design → build → test, and dividing
+the work into coder, designer, PM — that division of labor.
 
-- **Execution** — translating a decided intent into running code.
-  Knowledge of grammar, standard libraries, patterns; handling edge
-  cases; debugging fluency; writing tests.
-- **Judgment** — deciding what to build, how to split it, which
-  invariants must hold. Outlining the shape of the problem, picking
-  trade-offs, taking responsibility, calling "stop here."
+That was never the essence of the work. It was split **because writing
+code took a large workforce** — a division for mass production.
+Actually building and operating a system is far broader than writing
+code:
 
-Historically these two were bundled in one person. The same training,
-the same evaluation, the same "good engineer" umbrella. But **the two
-are different abilities by nature**. Code review, architecture review,
-design meetings — these are judgment work, not writing work.
+- **Procuring hardware** — servers, equipment, the physical site
+- **Negotiating with stakeholders** — customers, the field, the organization, regulators
+- **Running it and fixing it, continuously** — operations and maintenance never end
+- **Shaping it in dialogue with AI** — not a single instruction, but back-and-forth
 
-> Execution and judgment were always different abilities.
-> The fact that one person carried both is a by-product of an era in
-> which carrying both was the efficient arrangement.
+These lie outside code. And they are entangled — not cleanly divided
+into two boxes called "execution" and "judgment." **Building and
+deciding mix in dialogue.**
 
-## AI takes execution completely
+> Shrinking "development" to "the code-writing step" was the SIer's
+> convenience. In reality it is far broader — **procure hardware,
+> negotiate with people, run it, and talk with AI.**
 
-Chapter 1 established the fact that top-tier coding ability is reachable
-for $200 a month on Claude Max. "Top-tier" there means specifically the
-top tier of **execution ability**.
+## AI writes code, and designs too — Opus a coder, Fable an SE
 
-Concretely:
+Chapter 1 established that top-tier coding ability is reachable for $200
+a month. AI writes code — and with that one fact, the scarce resource
+called "the ability to write code" stops being scarce.
 
-- Knowledge of standard libraries and language specs — every language,
-  every version
-- Pattern recall — instant citation from large public codebases
-- Edge-case coverage — handling the cases humans tend to forget
-- Tests and debugging — guessing and reproducing failure modes
-- Refactoring — moving structure while preserving invariants
+And AI is not "execution only." The ability has range:
 
-These are the levels that the best human coders reach over ten or
-twenty years. AI sits at those levels in the $200/month band.
+- **Opus** — a first-rate **coder**. Hand it intent and it translates it into running code
+- **Fable** — a **software engineer**. It goes into design, deciding structure itself
 
-In other words, **the market value of execution converges to near
-zero**. It carried a price because it was scarce; if it is no longer
-scarce, no price holds. This is not a statement about labor ethics; it
-is a statement about **prices**.
+So AI now enters **design**, which used to be put on the "judgment
+side." The line "AI executes, humans judge" breaks down here. The
+market value of the code-writing band converges to near zero — not a
+statement about labor ethics, but about prices.
 
-## AI cannot take over judgment
+## So what stays with humans?
 
-While AI takes execution, judgment stays with humans. Why?
+"Humans only judge" is false too. What only humans can do includes
+judgment, but is not just that:
 
-Judgment does not close inside code:
+- **Procuring hardware** (the physical world)
+- **Negotiating with stakeholders** (the social world)
+- **Running it and fixing it, continuously** (operations and maintenance)
+- **Deciding direction and taking responsibility**
+- **Shaping what gets built, in dialogue with AI**
 
-- **What to build** — carve a problem out of customer and field
-  context
-- **Which invariants to protect** — pick the conditions that cannot be
-  traded
-- **Which trade-off to take** — speed, cost, extensibility, portability
-- **What not to build** — decide the subtraction in spec
-- **When to stop** — draw the line at "done"
-- **Who takes responsibility** — when something fails, who carries it
+AI processes context **when given**, and designs. But **what to count
+as context, and what to reconcile with reality**, is decided by humans.
+And humans take the responsibility — to let AI judge is to hand the
+responsibility along, and no current institution provides a subject to
+take that on.
 
-These are not visible just by reading code. They need **external
-context** — customer, business, organization, regulation, history.
-AI can process context **when given**, but **deciding what counts as
-context** is a job only humans can do.
+What humans do does not fit in the one word "judgment." **Moving in the
+physical and social world, keeping it running, talking with AI, and
+carrying responsibility** — the broad work of building and operating a
+system.
 
-And judgment carries **responsibility**. To let AI judge is to hand
-the responsibility along with it. No current institution — technical,
-ethical, or legal — provides a subject to take that on. **The boundary
-of judgment is the boundary of responsibility**.
+> Humans do not only judge.
+> **They procure hardware, negotiate with people, keep it running, talk
+> with AI, and take responsibility.**
 
-> AI matches human top-tier in execution.
-> But judgment needs **a subject who takes responsibility**, and AI
-> cannot stand there.
-
-## The role definition called "coder" goes away
+## What goes away is "the code-writing role"
 
 Put the pieces together:
 
-- "Coder" = the role centered on execution
-- The market value of execution → converges to near zero with AI
-- The market value of judgment → stays, in fact rises
-- Judgment lies outside the definition of "coder"
+- AI **writes code, and designs too** (Opus a coder, Fable an SE)
+- Humans carry the **physical, social, operational, dialogic, and responsibility** work
+- Building and operating a system was always broader than writing code
 
-The conclusion is simple. **The role centered on execution stops
-being economically viable**. Demand does not vanish; **supply gets
-replaced by AI, so no price holds**.
+So what goes away is **the role whose center is writing code itself
+(the coder)** — and the **division of labor** the SIer built to mass-
+produce it. Not "execution or judgment." Demand does not vanish; the
+**code-writing band gets replaced by AI, so no price holds**. One person,
+in dialogue with AI, builds and operates the system — moving into that
+broader role (Chapter 4 names it "builder").
 
 ```mermaid
 flowchart LR
-  subgraph Old["Old — coder"]
+  subgraph Old["Old — the SIer division of labor"]
     direction TB
-    OE["Execution (writing)"]
-    OJ["Judgment (what to write)"]
-    OE --- OJ
+    OC["Coder (writes)"]
+    OD["Designer"]
+    OP["PM"]
+    OC --- OD --- OP
   end
 
-  subgraph New["AI-native — the role splits"]
+  subgraph New["AI-native — one person + AI, in dialogue"]
     direction TB
-    NE["Execution<br/>(AI takes it)"]
-    NJ["Judgment<br/>(stays with humans) =<br/>Builder (Ch. 4)"]
+    H["Human<br/>(hardware, stakeholders,<br/>operations, direction, responsibility)"]
+    A["AI<br/>(code = Opus<br/>design = Fable)"]
+    H <-->|dialogue, mutual understanding| A
   end
 
-  Old ==>|separation| New
+  Old ==>|the division dissolves| New
 
   classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
   classDef bad fill:#fef3e7,stroke:#c89559,color:#5a3f1a
@@ -167,9 +165,9 @@ called programmers split in two directions:
 
 - **(a) Leave software development** — move to a different industry or
   a different role
-- **(b) Move to a judgment-centered role** — stand on the side of
-  design, integration, and responsibility. This book names that role
-  the "builder" (defined in Chapter 4).
+- **(b) Move to the builder** — stand on the side that builds, operates,
+  and runs a system in dialogue with AI, carrying the physical, social,
+  and responsibility load (defined in Chapter 4).
 
 History has parallel transitions. In Japan, when calculators arrived
 in the 1970s, the execution skill of **commercial calculation by
@@ -178,8 +176,8 @@ numbers meant moved into accounting and finance. The same transition
 happened in the West with the **human computer**, and in printing
 with the **typesetter** as phototypesetting replaced letterpress.
 **When execution gets mechanized, what splits is who can move to the
-judgment side and who cannot**. The same thing is happening in the
-coding band now.
+broader side (orchestration, dialogue, operations, responsibility) and
+who cannot**. The same thing is happening in the coding band now.
 
 The thing to flag is **the speed of the transition**. After Casio
 released the Casio Mini in 1972 at ¥12,800 and other low-priced models
@@ -195,16 +193,17 @@ becomes a question of **industry structure**, not personal choice
 
 ## Where the next chapter goes
 
-Execution moves to AI; judgment stays with humans. Who carries the
-judgment side? And **the foundational discipline of that role shifts
-from software engineering to the liberal arts** — the bass line
-running through this sub-series.
+AI writes code and designs, while hardware, people, operations,
+dialogue, and responsibility stay with humans. Who carries that broad
+role? And **the foundational discipline of that role shifts from
+software engineering to the liberal arts** — the bass line running
+through this sub-series.
 
-The next chapter defines that role — **the builder**. The person who
-decides what to build, has AI build it, evaluates the output, and
-integrates the structure. We will look at how the builder differs
-from the coder, and at why the builder's foundation is the liberal
-arts, with concrete examples.
+The next chapter defines that role — **the builder**. The person who,
+in dialogue with AI, builds and operates a system, reconciles it with
+reality, and carries responsibility. We will look at how the builder
+differs from the coder, and at why the builder's foundation is the
+liberal arts, with concrete examples.
 
 ---
 

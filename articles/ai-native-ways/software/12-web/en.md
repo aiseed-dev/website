@@ -38,8 +38,9 @@ There is no dynamic server.
 ## Create the static site
 
 The machinery — the build that turns Markdown into HTML, and the template for
-the look — is made once, at the start. You don't need to learn a framework like
-Astro. **Tell Claude, and it builds it.**
+the look — is made once, at the start. A professional front-end engineer may
+build the site with a framework like Astro. But even a first-timer can just
+**tell Claude, and it builds the website.**
 
 Say it plainly: "Make a build that turns Markdown articles into an HTML site."
 Then add the points you need. Worth including:

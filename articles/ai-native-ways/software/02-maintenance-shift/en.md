@@ -84,6 +84,14 @@ Here is where Chapter 1's point bites. The core of design is
 **understanding context**, and AI has reached it. AI can read the
 context of a whole system — its structure, intent, and history.
 
+And the context it understands, AI can render into **two forms** — a
+**manual for humans** (how to use and operate it) and a **design document
+for machines** (the structure and spec that AI itself reads to generate
+code). The design document that humans, finding it tedious, stopped
+updating and let die — AI now writes and keeps, from the context. Humans
+read the manual; the machine (AI) reads the design document and generates
+and regenerates the code.
+
 First, **reading**, the largest cost of maintenance, vanishes. "Trace
 the data flow of a feature" in a 10,000-line legacy Java base — half a
 day for a newcomer — AI returns in 30 seconds. Call graphs, the path by

@@ -93,12 +93,11 @@ read the manual; the machine (AI) reads the design document and generates
 and regenerates the code.
 
 From here follows a large consequence. **Anyone who can understand the
-manual and reconcile it with reality can do both development and
-maintenance.** No need to read code, no need to write it. What is needed
-is grasping what you want and matching it against reality to decide "this
-goes here" — the ability to read context. A coding background stops being
-a prerequisite (Chapter 5 develops this as "the customer builds it
-themselves").
+manual and fit it to their reality can do both development and
+maintenance.** No need to read code, no need to write it — and no
+difficult decisions to make. You read the manual and fit it to your own
+reality, and that is all. A coding background stops being a prerequisite
+(Chapter 5 develops this as "the customer builds it themselves").
 
 The checking side is the same. **Reviewing the design document and
 auditing the code for security are within reach of Mythos/Fable-class

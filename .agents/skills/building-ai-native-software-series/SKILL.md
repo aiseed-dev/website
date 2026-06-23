@@ -77,7 +77,7 @@ The sub-series numbers its own chapters from **01 through 19**, independently of
 | 09 | `software/09-code` | コードを手元に ── Forgejo と Zed | `code` | GitHub / Azure DevOps |
 | 10 | `software/10-mail` | メールを自分の側に ── Stalwart と Thunderbird | `mail` | Exchange / Outlook |
 | 11 | `software/11-meetings` | 会議と予約を自分の側に ── Jitsi と Cal.com | `meetings` | Teams/Zoom, Calendly/Bookings, BigBlueButton for classes |
-| 12 | `software/12-web` | 社外に見せる窓 ── 静的サイトと Cloudflare Pages | `web` | public web on Cloudflare Pages (no server); build→verify→deploy kept as separate steps. The Caddy reverse proxy is a Ch.7 *internal-apps* concern, not the public site |
+| 12 | `software/12-web` | Webサイトを作る | `web` | public web on Cloudflare Pages (no server, no npm/Astro — own build or Hugo); build→verify→deploy kept as separate steps. Plain "manual" register. The Caddy reverse proxy is a Ch.7 *internal-apps* concern, not the public site |
 | 13 | `software/13-ai` | 自前の AI を据える ── LLM と RAG | `ai` | Copilot; Ollama/vLLM + RAG on pgvector; closes 導入編 |
 
 **転換編 ── 産業構造の帰結 (14–19)**

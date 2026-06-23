@@ -8,7 +8,7 @@ date: 2026.07.16
 label: Software 13
 title_html: 全ての上に、<br><span class="accent">自前の AI</span>を乗せる。
 prev_slug: web
-prev_title: 社外に見せる窓 ── 静的サイトと Cloudflare Pages
+prev_title: Webサイトを作る
 next_slug: sier-uneconomic
 next_title: SIer委託モデルの構造的不経済
 ---

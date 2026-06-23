@@ -9,7 +9,7 @@ date: 2026.07.16
 label: Software 13
 title_html: Lay <span class="accent">your own AI</span><br>on top of everything.
 prev_slug: web
-prev_title: "The Window to the Outside — A Static Site and Cloudflare Pages"
+prev_title: "Build the Website"
 next_slug: sier-uneconomic
 next_title: "The Structural Uneconomy of the SIer Model"
 ---

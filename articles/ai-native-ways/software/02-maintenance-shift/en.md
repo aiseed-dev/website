@@ -100,6 +100,14 @@ goes here" — the ability to read context. A coding background stops being
 a prerequisite (Chapter 5 develops this as "the customer builds it
 themselves").
 
+The checking side is the same. **Reviewing the design document and
+auditing the code for security are within reach of Mythos/Fable-class
+AI** — the ability to assemble the structure of an attack (Chapter 1) is,
+flipped over, the ability to find and close the weaknesses. And that level
+**exceeds the major SIers**. There is no longer a reason to outsource
+review or security checks (the structure by which commissioning itself
+stops holding is taken up in the Shift part).
+
 First, **reading**, the largest cost of maintenance, vanishes. "Trace
 the data flow of a feature" in a 10,000-line legacy Java base — half a
 day for a newcomer — AI returns in 30 seconds. Call graphs, the path by

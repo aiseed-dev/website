@@ -82,34 +82,11 @@ MCP サーバー・テーマ等だけ。代わりに **Tasks**（`.zed/tasks.jso
 コマンドを登録し、メニューの **Run → Spawn**、またはショートカット
 **Alt+Shift+R** から実行する（VS Code 流のコマンドパレットは使わなくてよい）。
 
-> **メモ**: `.zed/tasks.json`（と `.zed/settings.json`）は `.gitignore` の
-> 許可リストで **コミット済み**。`git pull` すれば各自の Zed に下の4タスクが
-> 自動で現れる。以下はその参照用の控え。
-
-```json
-[
-  {
-    "label": "1. Build site",
-    "command": "./.venv/bin/python tools/build_article.py --all",
-    "cwd": "$ZED_WORKTREE_ROOT"
-  },
-  {
-    "label": "2. Preview (ビルド済み html を配信)",
-    "command": "./.venv/bin/python -m http.server --directory html 8000",
-    "cwd": "$ZED_WORKTREE_ROOT"
-  },
-  {
-    "label": "3. Deploy to PREVIEW URL",
-    "command": "./.venv/bin/python tools/cloudflare_pages_deploy.py html --project aiseed-dev --branch preview",
-    "cwd": "$ZED_WORKTREE_ROOT"
-  },
-  {
-    "label": "4. Deploy to PRODUCTION",
-    "command": "./.venv/bin/python tools/cloudflare_pages_deploy.py html --project aiseed-dev --branch main",
-    "cwd": "$ZED_WORKTREE_ROOT"
-  }
-]
-```
+> **メモ**: タスクの定義は `.zed/tasks.json`（と `.zed/settings.json`）にあり、
+> `.gitignore` の許可リストで **コミット済み**。`git pull` すれば各自の Zed に
+> 4タスク（Build / Preview / Deploy PREVIEW / Deploy PRODUCTION）が自動で現れる。
+> 変更は **このファイルを直接編集**する ── ここには転記しない（正本を一つにし、
+> 二重管理を避ける）。
 
 - **「ビルド＋デプロイ一括」タスクは作らない**。本番デプロイは必ず人が選ぶ独立アクション。
 - デプロイタスクは自前でビルドしない（古い `html/` を誤って上げないよう、ビルドは明示ステップに分離）。

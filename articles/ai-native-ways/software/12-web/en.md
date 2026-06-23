@@ -42,8 +42,11 @@ the look — is made once, at the start. A professional front-end engineer may
 build the site with a framework like Astro. But even a first-timer can just
 **tell Claude, and it builds the website.**
 
-Say it plainly: "Make a build that turns Markdown articles into an HTML site."
-Then add the points you need. Worth including:
+The knack is not to settle it in one instruction but to **do it through
+dialogue** — especially if you are new to this. You don't have to spell out a
+full spec up front; what you want surfaces as you go back and forth. Start
+plainly — "Make a build that turns Markdown articles into an HTML site" — then
+work it out with Claude, back and forth. Worth bringing up:
 
 - **What you write** — articles and posts in Markdown, each with a title, date, and summary (frontmatter) at the top
 - **URL shape** — e.g. articles at `/<slug>/`, posts at `/blog/<slug>/`
@@ -53,10 +56,10 @@ Then add the points you need. Worth including:
 - **Languages** — to keep Japanese and English, split into `/` and `/en/`
 - **Tools** — the build runs as a single command. No npm, no Node (Python or whatever you have)
 
-From this, Claude writes the conversion script and the templates. If something
-is off, fix it while looking at the result — "two columns for the list," "change
-the date format" (exactly the way of building from Chapter 5). Once it exists,
-all that's left is writing articles.
+From the exchange, Claude writes the conversion script and the templates. If
+something is off, fix it while looking at the result — "two columns for the
+list," "change the date format" — shaping it through dialogue (exactly the way
+of building from Chapter 5). Once it exists, all that's left is writing articles.
 
 ## Write articles and posts
 

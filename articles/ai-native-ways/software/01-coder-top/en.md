@@ -48,7 +48,7 @@ Codeforces rating bands distribute roughly like this:
 
 The numbers have **threshold steps** baked in. The gap between 1500 and
 1800 closes with study. **The gap between 2400 and 2700 does not close
-with study alone** — past that point you need speed, design intuition,
+with study alone** — past that point you need speed, algorithmic design,
 a nose for the hardest problems. The world's top sits between roughly
 2700 and 3900, and contains around fifty people.
 
@@ -105,25 +105,24 @@ been observed returning 2700-tier solutions there.
 ## From code to design — AI became the strongest SIer
 
 Reaching the 2700 tier proves the ability to write code fast and
-correctly — coding. But AI's ability does not stop there. It has already
-entered **design**: assembling the structure of a whole system itself.
+correctly — **coding**. But **design is a different ability from
+coding**. Writing fast and correctly does not mean you can decide the
+structure of a whole system. So design ability needs its own evidence.
 
-The corroborating evidence came from an unexpected place. In the
-Fable / Mythos generation, a publicly reported case had an attacker
-misuse Claude to **run most of the operational steps of a cyberattack
-autonomously** (Anthropic reported it in 2025 as an automated
-cyber-espionage campaign). Driving an attack yourself takes the ability
-to scout the target system, read its weaknesses, sequence the line of
-attack, and assemble its structure — not the ability to write code, but
-the ability to **design a system**. If it works for an attack, it works
-for design.
+That evidence came from an unexpected place. In the Fable / Mythos
+generation, a publicly reported case had an attacker misuse Claude to
+**run most of the operational steps of a cyberattack autonomously**
+(Anthropic reported it in 2025 as an automated cyber-espionage
+campaign). Driving an attack yourself takes the ability to scout the
+target system, read its weaknesses, sequence the line of attack, and
+assemble its structure — not the ability to write code, but the ability
+to **design a system**. If it works for an attack, it works for design.
 
-In short, **AI has begun to exceed senior engineers at both coding and
-design**. The 2700 tier is the world's top few dozen — ordinary senior
-engineers were left behind long ago. Design, too, has reached the level
-of autonomously assembling the structure of an attack. With both in
-hand, the conclusion is one: **in the Mythos/Fable era, AI became the
-strongest SIer** — reading requirements, deciding structure,
+So AI has reached the top tier in **two separate abilities** — writing
+code (the 2700 tier) and designing a system (the autonomous attack).
+**AI has begun to exceed senior engineers at both coding and design.**
+With both in hand, the conclusion is one: **in the Mythos/Fable era, AI
+became the strongest SIer** — reading requirements, deciding structure,
 implementing, and running it, the whole of the SIer's work, done by one.
 And not as a scarce resource of a few dozen people worldwide, but
 callable by anyone for $200 a month.

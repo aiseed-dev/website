@@ -61,7 +61,7 @@ The sub-series has **23 chapters in three 編**, each 編 **numbered from 1**. F
 
 | 第n章 | folder | title (JA) | slug | hinge / what it does |
 |---|---|---|---|---|
-| 1 | `01-coder-top` | AIがコードを書く能力で人間トップクラスに到達した | `coder-top` | Codeforces 2700; price floor |
+| 1 | `01-coder-top` | AIがコードを書く能力で人間トップクラスに到達した | `coder-top` | Codeforces 2700 → design (cyberattack = design ability) → AI = strongest SIer; price floor |
 | 2 | `02-maintenance-shift` | 保守フェーズの構造変化こそ本質 | `maintenance-shift` | maintenance unit → design/spec |
 | 3 | `03-coder-end` | コーダーの仕事を AI がするようになる | `coder-end` | AI does code+design (Opus=coder, Fable/Mythos=SE); humans do the broader system build/operate in dialogue |
 | 4 | `04-builder` | ビルダーという役割 | `builder` | aiseed.dev 24h demo |
@@ -110,7 +110,7 @@ For each chapter:
 1. Re-read the chapter's row in the mapping table above (hinge claim / what it stands up). Expand it into declarative h2 + body, in the voice defined by `writing-aiways-voice`. For 導入編 chapters the register is concrete (compose files, DNS, migration commands) but still structural-assertive.
 2. Decide the **hinge claim** for the chapter (the one sentence that goes in bold near the top). The table above has a starting point.
 3. Identify the **legacy/AI-native axis** for the chapter (the two-language framing the voice skill expects). Examples:
-   - 01: 競技プロのレーティング vs ライセンス保有者の単価
+   - 01: 競技プロのレーティング vs ライセンス保有者の単価(さらに 設計能力=自律サイバー攻撃 → 最強の SIer)
    - 03: コードを書く役割 vs AIと対話してシステムを作り動かす役割
    - 06: 外注プロセスの工数 vs AIネイティブ開発の工数
    - 08: 独自抽象層 vs 標準コード

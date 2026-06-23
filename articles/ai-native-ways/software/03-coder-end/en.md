@@ -58,19 +58,12 @@ has range:
 - **Opus** — a first-rate **coder**. Hand it intent and it translates it into running code
 - **Fable / Mythos** — **software engineers**. They go into design, deciding structure itself (the two at the same design level)
 
-That they reach design has corroborating evidence. In the Fable / Mythos
-generation, a publicly reported case had an attacker misuse Claude to
-**run most of the operational steps of a cyberattack autonomously**
-(Anthropic reported this in 2025 as an automated cyber-espionage
-campaign). Driving an attack yourself takes the ability to read the
-target system and structure the line of attack — the same ability as
-designing software.
-
-So there is a step up. **Earlier AI was a substitute for the coder. In
-the Fable / Mythos era it became a substitute for the SIer — taking on
-requirements, design, and build.** The market value of the code-writing
-band converges to near zero. Not a statement about labor ethics, but
-about prices.
+That they reach design was shown in Chapter 1 — the proof was that AI can
+assemble a cyberattack autonomously. So there is a step up. **Earlier AI
+was a substitute for the coder; in the Fable / Mythos era it became a
+substitute for the SIer — requirements, design, and build.** The market
+value of the code-writing band converges to near zero. Not a statement
+about labor ethics, but about prices.
 
 ## Building and operating a system is broader than writing code
 

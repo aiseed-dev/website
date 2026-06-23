@@ -30,24 +30,28 @@ faster, safer, and cheaper.
 
 - **Fast** — just file serving. No waiting on a database
 - **Safe** — nothing moving, so almost no surface to attack
-- **Easy** — write Markdown, and Claude turns it into HTML
+- **Easy** — content is Markdown. Have Claude write it; the build turns it into HTML
 
 This site (aiseed.dev) is static too. It makes HTML from Markdown and places it.
 There is no dynamic server.
 
-## Make a static site
+## Write articles and posts
 
-Write prose in Markdown and convert it to HTML. Use one of these to convert:
+What you do here is not pick a generator. It is **the person running the site
+writing articles and posts.**
 
-- **Your own build** — a conversion script written in Python or the like (this site uses one)
-- **Hugo** — a single-binary static site generator. No Node, no npm
+You write the content in Markdown. Add one article as a file in a fixed place
+(e.g. `articles/`), and the build converts it to HTML.
 
 ```bash
-# make html/ with your own build script
+# write Markdown in articles/, and build it into html/
 python tools/build.py
 ```
 
-The output is just a set of files (`html/`). Updating means "write, make, ship."
+Making the look (the template) with Astro, Hugo, or your own code is **a
+one-time, separate job** — do that however you like. Day to day, the operation
+is just **write Markdown, build, ship.** The output is just a set of files
+(`html/`).
 
 ## Put it on Cloudflare Pages
 
@@ -108,7 +112,7 @@ Decide separately what to borrow and what to hold yourself.
 
 ## Summary
 
-- **Static site (your own build / Hugo)** — turn Markdown into HTML; fast, safe, cheap
+- **Write articles and posts** — the operation is writing Markdown. The template is a one-time setup (Astro / Hugo / your own, your choice)
 - **Cloudflare Pages** — publish with no server; leave CDN and automatic HTTPS to it
 - **Separate build → verify → deploy** — avoid auto-rebuild; ship what you verified
 - **Domain switches automatically** — a custom domain points the A record at Pages; leave mail untouched

@@ -78,37 +78,15 @@ python3 -m venv .venv
 ## Zed タスク（`.zed/tasks.json`）
 
 Zed には Cloudflare Pages 専用のプラグインは無い。拡張で足せるのは言語・LSP・
-MCP サーバー・テーマ等だけ。代わりに **Tasks** に上記コマンドを登録して、
-コマンドパレット（`task: spawn`）から実行する。
+MCP サーバー・テーマ等だけ。代わりに **Tasks**（`.zed/tasks.json`）に上記
+コマンドを登録し、メニューの **Run → Spawn**、またはショートカット
+**Alt+Shift+R** から実行する（VS Code 流のコマンドパレットは使わなくてよい）。
 
-> **注意**: このリポジトリは `.gitignore` で `.zed` を除外しているため、
-> `.zed/tasks.json` はコミットされない（各自のローカルにのみ置く）。
-> 内容をここに控えておく。`.zed/tasks.json` として保存すれば使える。
-
-```json
-[
-  {
-    "label": "1. Build site",
-    "command": "./.venv/bin/python tools/build_article.py --all",
-    "cwd": "$ZED_WORKTREE_ROOT"
-  },
-  {
-    "label": "2. Preview (ビルド済み html を配信)",
-    "command": "./.venv/bin/python -m http.server --directory html 8000",
-    "cwd": "$ZED_WORKTREE_ROOT"
-  },
-  {
-    "label": "3. Deploy to PREVIEW URL",
-    "command": "./.venv/bin/python tools/cloudflare_pages_deploy.py html --project aiseed-dev --branch preview",
-    "cwd": "$ZED_WORKTREE_ROOT"
-  },
-  {
-    "label": "4. Deploy to PRODUCTION",
-    "command": "./.venv/bin/python tools/cloudflare_pages_deploy.py html --project aiseed-dev --branch main",
-    "cwd": "$ZED_WORKTREE_ROOT"
-  }
-]
-```
+> **メモ**: タスクの定義は `.zed/tasks.json`（と `.zed/settings.json`）にあり、
+> `.gitignore` の許可リストで **コミット済み**。`git pull` すれば各自の Zed に
+> 4タスク（Build / Preview / Deploy PREVIEW / Deploy PRODUCTION）が自動で現れる。
+> 変更は **このファイルを直接編集**する ── ここには転記しない（正本を一つにし、
+> 二重管理を避ける）。
 
 - **「ビルド＋デプロイ一括」タスクは作らない**。本番デプロイは必ず人が選ぶ独立アクション。
 - デプロイタスクは自前でビルドしない（古い `html/` を誤って上げないよう、ビルドは明示ステップに分離）。

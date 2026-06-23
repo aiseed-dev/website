@@ -47,12 +47,13 @@ This is not a label for specific people; it is a definition of a
 a designer in another. What this chapter says disappears is the role,
 not the people.
 
-The role was viable while **the ability to write code was a scarce
-resource**. Few could write it, so writing itself carried a price. A
-separate person could decide requirements and design, while the coder
-focused only on writing. The SIer industry, contract development, and
-multi-tier subcontracting structures are all built on that premise
-(Shift Chapter 1 takes up the structure).
+The role was viable because **writing code took humans a lot of
+time**. Even shaping a single system into running form demanded an
+enormous number of person-hours, so a large workforce of writers had
+to be assembled. That is why a separate person decided requirements
+and design while the coder focused only on writing. The SIer industry,
+contract development, and multi-tier subcontracting structures are all
+built on that premise (Shift Chapter 1 takes up the structure).
 
 ## AI writes code, and designs too — Opus a coder, Fable an SE
 

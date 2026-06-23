@@ -106,26 +106,28 @@ been observed returning 2700-tier solutions there.
 
 Reaching the 2700 tier proves the ability to write code fast and
 correctly — **coding**. But **design is a different ability from
-coding**. Writing fast and correctly does not mean you can decide the
-structure of a whole system. So design ability needs its own evidence.
+coding**, and its core is **understanding context**: reading the target
+system or situation, grasping what it needs, and assembling a structure
+that fits. Writing fast and correctly is not the same as understanding
+context and deciding structure. So design ability needs its own evidence.
 
 That evidence came from an unexpected place. In the Fable / Mythos
 generation, a publicly reported case had an attacker misuse Claude to
 **run most of the operational steps of a cyberattack autonomously**
 (Anthropic reported it in 2025 as an automated cyber-espionage
-campaign). Driving an attack yourself takes the ability to scout the
-target system, read its weaknesses, sequence the line of attack, and
-assemble its structure — not the ability to write code, but the ability
-to **design a system**. If it works for an attack, it works for design.
+campaign). Driving an attack yourself takes scouting the target system,
+reading its weaknesses, and assembling the line of attack — that is,
+**understanding the target's context deeply**. That is the same ability
+as designing a system.
 
 So AI has reached the top tier in **two separate abilities** — writing
-code (the 2700 tier) and designing a system (the autonomous attack).
-**AI has begun to exceed senior engineers at both coding and design.**
-With both in hand, the conclusion is one: **in the Mythos/Fable era, AI
-became the strongest SIer** — reading requirements, deciding structure,
-implementing, and running it, the whole of the SIer's work, done by one.
-And not as a scarce resource of a few dozen people worldwide, but
-callable by anyone for $200 a month.
+code (the 2700 tier) and understanding context to decide structure, i.e.
+design (the autonomous attack). **AI has begun to exceed senior engineers
+at both coding and design.** With both in hand, the conclusion is one:
+**in the Mythos/Fable era, AI became the strongest SIer** — reading
+requirements, deciding structure, implementing, and running it, the whole
+of the SIer's work, done by one. And not as a scarce resource of a few
+dozen people worldwide, but callable by anyone for $200 a month.
 
 > The 2700 tier proved "the strongest coder"; autonomously assembling
 > an attack proves "it can design too" — exceeding senior engineers at

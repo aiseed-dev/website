@@ -62,7 +62,7 @@ The sub-series has **23 chapters in three 編**, each 編 **numbered from 1**. F
 | 第n章 | folder | title (JA) | slug | hinge / what it does |
 |---|---|---|---|---|
 | 1 | `01-coder-top` | AIがコードを書く能力で人間トップクラスに到達した | `coder-top` | Codeforces 2700 → design (cyberattack = design ability) → AI = strongest SIer; price floor |
-| 2 | `02-maintenance-shift` | 保守フェーズの構造変化こそ本質 | `maintenance-shift` | maintenance unit → design/spec |
+| 2 | `02-maintenance-shift` | 保守フェーズの構造変化こそ本質 | `maintenance-shift` | AI understands context → code-level maintenance unnecessary; unit → design/spec/context |
 | 3 | `03-coder-end` | コーダーの仕事を AI がするようになる | `coder-end` | AI does code+design (Opus=coder, Fable/Mythos=SE); humans do the broader system build/operate in dialogue |
 | 4 | `04-builder` | ビルダーという役割 | `builder` | aiseed.dev 24h demo |
 | 5 | `05-customer-codev` | 顧客がAIと協働して開発する時代 | `customer-codev` | 9-tenths self-build (thesis) |

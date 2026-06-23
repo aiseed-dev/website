@@ -52,6 +52,7 @@ work it out with Claude, back and forth. Worth bringing up:
 - **URL shape** — e.g. articles at `/<slug>/`, posts at `/blog/<slug>/`
 - **Index pages** — a newest-first listing on the top page and per category
 - **The look** — text-first and readable; no fancy decoration (to match an existing site, hand over its URL or images)
+- **JavaScript** — minimal vanilla JS only, as a rule; no frameworks like React (a static site needs no heavy base)
 - **Output and images** — write the result into `html/`, and carry images along
 - **Languages** — to keep Japanese and English, split into `/` and `/en/`
 - **Tools** — the build runs as a single command. No npm, no Node (Python or whatever you have)

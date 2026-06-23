@@ -158,12 +158,16 @@ context, **if the context you hand it is vague, there is nothing to
 understand**. The faster AI is, the faster debt piles up in development
 that has not made its context explicit.
 
-So the human's work gets heavier, not lighter. What to change, which
-invariants to hold, what to reconcile with reality — deciding these,
-talking them through with AI, and taking responsibility. This is **not
-the ability to write code, but the ability to read the real-world
-context and hold direction and responsibility**. Chapters 3 and 4 detail
-this as the difference between the "coder" and the "builder."
+So the work on the **making side** gets heavier, not lighter. But this is
+**not something the ordering side (the customer) thinks about** — keeping
+context explicit and not letting debt accumulate is a discipline carried
+by **the making side, the one in the SIer-like role (this series'
+"builder")**. What to change, which invariants to hold, what to reconcile
+with reality — deciding these, talking them through with AI, and taking
+responsibility. This is **not the ability to write code, but the ability
+to read the real-world context and hold direction and responsibility**.
+Chapters 3 and 4 detail this as the difference between the "coder" and
+the "builder."
 
 > A human who keeps context explicit + AI = maintenance cost collapses.
 > A human who lets go of context + AI = unmaintainable code, mass-produced.

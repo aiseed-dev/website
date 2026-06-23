@@ -9,9 +9,9 @@ date: 2026.08.11
 label: Shift 4
 title_html: 上級ビルダーは<br><span class="accent">判断を売る専門職</span>。
 prev_slug: lockin
-prev_title: ロックイン問題
+prev_title: "ロックイン問題"
 next_slug: japan-transition
-next_title: 日本のSIer業界の転換と雇用流動性
+next_title: "日本のSIer業界の転換と雇用流動性"
 ---
 
 # 各社がビルダーを雇用する時代

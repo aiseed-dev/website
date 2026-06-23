@@ -10,9 +10,9 @@ date: 2026.07.28
 label: Shift 2
 title_html: <span class="accent">10× to 100×</span> is not competition.<br>It is <span class="accent">market displacement</span>.
 prev_slug: sier-uneconomic
-prev_title: The Structural Uneconomy of the SIer Model
+prev_title: "The Structural Uneconomy of the SIer Model"
 next_slug: lockin
-next_title: The Lock-In Problem
+next_title: "The Lock-In Problem"
 ---
 
 # The Order-of-Magnitude Price Gap

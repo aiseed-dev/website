@@ -10,9 +10,9 @@ date: 2026.06.15
 label: Introduction 3
 title_html: Execution to <span class="accent">AI</span>,<br>judgment to <span class="accent">humans</span>.
 prev_slug: maintenance-shift
-prev_title: Maintenance-Phase Shift Is the Real Story
+prev_title: "Maintenance-Phase Shift Is the Real Story"
 next_slug: builder
-next_title: The Builder Role
+next_title: "The Builder Role"
 ---
 
 # The Coder's Job Goes Away

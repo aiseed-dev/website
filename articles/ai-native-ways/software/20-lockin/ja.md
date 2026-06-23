@@ -9,9 +9,9 @@ date: 2026.08.04
 label: Shift 3
 title_html: 独自フレームは<br><span class="accent">逃げ場のない檻</span>になる。
 prev_slug: price-gap
-prev_title: 価格競争力の桁違いの差
+prev_title: "価格競争力の桁違いの差"
 next_slug: hiring-builders
-next_title: 各社がビルダーを雇用する時代
+next_title: "各社がビルダーを雇用する時代"
 ---
 
 # ロックイン問題

@@ -10,9 +10,9 @@ date: 2026.06.29
 label: Introduction 5
 title_html: Customers build <span class="accent">9 of 10</span>,<br>consult on the remaining <span class="accent">1 of 10</span>.
 prev_slug: builder
-prev_title: The Builder Role
-next_slug: foundation
-next_title: "Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars"
+prev_title: "The Builder Role"
+next_slug: vba-python
+next_title: "Move VBA to Python — Rewrite Excel Macros with AI"
 ---
 
 # Customers Co-Develop with AI

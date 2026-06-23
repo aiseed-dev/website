@@ -9,8 +9,8 @@ description: Mail is the record of the business itself. Stalwart is a Rust singl
 date: 2026.07.09
 label: Independence 5
 title_html: Put the mailbox<br>on <span class="accent">your own side</span>.
-prev_slug: code
-prev_title: "Bring Code In-House — Forgejo and Zed"
+prev_slug: documents
+prev_title: "Take Documents Back — OnlyOffice Docs on PocketBase"
 next_slug: meetings
 next_title: "Meetings and Booking on Your Own Side — Jitsi and Cal.com"
 ---

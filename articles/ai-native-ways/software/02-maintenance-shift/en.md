@@ -10,9 +10,9 @@ date: 2026.06.08
 label: Introduction 2
 title_html: The unit of maintenance moves<br>from <span class="accent">code to design</span>.
 prev_slug: coder-top
-prev_title: AI Solves the World's Hardest Coding Problems
+prev_title: "AI Solves the World's Hardest Coding Problems"
 next_slug: coder-end
-next_title: The Coder's Job Goes Away
+next_title: "The Coder's Job Goes Away"
 ---
 
 # Maintenance-Phase Shift Is the Real Story

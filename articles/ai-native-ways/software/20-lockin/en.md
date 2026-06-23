@@ -10,9 +10,9 @@ date: 2026.08.04
 label: Shift 3
 title_html: A proprietary framework becomes<br>a <span class="accent">cage with no exit</span>.
 prev_slug: price-gap
-prev_title: The Order-of-Magnitude Price Gap
+prev_title: "The Order-of-Magnitude Price Gap"
 next_slug: hiring-builders
-next_title: Companies Hire Builders
+next_title: "Companies Hire Builders"
 ---
 
 # The Lock-In Problem

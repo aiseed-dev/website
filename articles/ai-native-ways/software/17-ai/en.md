@@ -9,8 +9,8 @@ description: The Setup part closes by laying AI on top of everything. The pgvect
 date: 2026.07.16
 label: Independence 9
 title_html: Lay <span class="accent">your own AI</span><br>on top of everything.
-prev_slug: web
-prev_title: "Build the Website"
+prev_slug: fastapi
+prev_title: "Build an API — Expose Core Logic with FastAPI"
 next_slug: sier-uneconomic
 next_title: "The Structural Uneconomy of the SIer Model"
 ---

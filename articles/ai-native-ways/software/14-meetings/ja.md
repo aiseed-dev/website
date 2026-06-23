@@ -9,9 +9,9 @@ date: 2026.07.11
 label: Independence 6
 title_html: 会議も予約も、<br><span class="accent">自分のドメイン</span>で。
 prev_slug: mail
-prev_title: メールを自分の側に ── Stalwart と Thunderbird
+prev_title: "メールを自分の側に ── Stalwart と Thunderbird"
 next_slug: web
-next_title: Webサイトを作る
+next_title: "Webを公開する ── Cloudflare Pages（WordPress 代替）"
 ---
 
 # 会議と予約を自分の側に ── Jitsi と Cal.com

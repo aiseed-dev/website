@@ -9,8 +9,8 @@ description: The Setup part starts with the data layer everything sits on. Share
 date: 2026.07.01
 label: Independence 1
 title_html: Stand up the <span class="accent">data layer</span><br>first, on your own side.
-prev_slug: customer-codev
-prev_title: "Customers Co-Develop with AI"
+prev_slug: embedded
+prev_title: "Build Embedded — Think in Python, Have Claude Translate"
 next_slug: auth
 next_title: "Stand Up the Gate — One Login with PocketBase"
 ---

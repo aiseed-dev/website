@@ -10,9 +10,9 @@ date: 2026.08.11
 label: Shift 4
 title_html: The master builder is a<br><span class="accent">profession that sells judgment</span>.
 prev_slug: lockin
-prev_title: The Lock-In Problem
+prev_title: "The Lock-In Problem"
 next_slug: japan-transition
-next_title: Japan's SIer Industry Transition and Labor Mobility
+next_title: "Japan's SIer Industry Transition and Labor Mobility"
 ---
 
 # Companies Hire Builders

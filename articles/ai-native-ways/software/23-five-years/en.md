@@ -10,7 +10,7 @@ date: 2026.08.25
 label: Shift 6
 title_html: In <span class="accent">five years</span>, the main changes<br>complete — irreversibly.
 prev_slug: japan-transition
-prev_title: Japan's SIer Industry Transition and Labor Mobility
+prev_title: "Japan's SIer Industry Transition and Labor Mobility"
 next_slug:
 next_title:
 ---

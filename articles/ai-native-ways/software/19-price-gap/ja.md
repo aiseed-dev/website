@@ -9,9 +9,9 @@ date: 2026.07.28
 label: Shift 2
 title_html: <span class="accent">10倍〜100倍</span>の差は、<br>競争ではなく<span class="accent">市場破壊</span>。
 prev_slug: sier-uneconomic
-prev_title: SIer委託モデルの構造的不経済
+prev_title: "SIer委託モデルの構造的不経済"
 next_slug: lockin
-next_title: ロックイン問題
+next_title: "ロックイン問題"
 ---
 
 # 価格競争力の桁違いの差

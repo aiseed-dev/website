@@ -10,9 +10,9 @@ date: 2026.08.18
 label: Shift 5
 title_html: Multi-tier subcontracting,<br>paradoxically, <span class="accent">makes the transition easier</span>.
 prev_slug: hiring-builders
-prev_title: Companies Hire Builders
+prev_title: "Companies Hire Builders"
 next_slug: five-years
-next_title: The Structural Transition Completes in a Few Years
+next_title: "The Structural Transition Completes in a Few Years"
 ---
 
 # Japan's SIer Industry Transition and Labor Mobility

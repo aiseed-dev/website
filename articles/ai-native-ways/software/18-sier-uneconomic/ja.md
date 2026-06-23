@@ -9,9 +9,9 @@ date: 2026.07.21
 label: Shift 1
 title_html: 外注の<span class="accent">手間</span>で、<br>自分で<span class="accent">作れて</span>しまう。
 prev_slug: ai
-prev_title: 自前の AI を据える ── LLM と RAG
+prev_title: "自前の AI を据える ── LLM と RAG"
 next_slug: price-gap
-next_title: 価格競争力の桁違いの差
+next_title: "価格競争力の桁違いの差"
 ---
 
 # SIer委託モデルの構造的不経済

@@ -9,9 +9,9 @@ date: 2026.08.18
 label: Shift 5
 title_html: 多重下請けは、<br>逆説的に<span class="accent">転換を容易にする</span>。
 prev_slug: hiring-builders
-prev_title: 各社がビルダーを雇用する時代
+prev_title: "各社がビルダーを雇用する時代"
 next_slug: five-years
-next_title: 数年で完了する構造転換
+next_title: "数年で完了する構造転換"
 ---
 
 # 日本のSIer業界の転換と雇用流動性

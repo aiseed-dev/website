@@ -9,9 +9,9 @@ date: 2026.06.22
 label: Introduction 4
 title_html: 決めるのは<span class="accent">人間</span>、<br>書くのは<span class="accent">AI</span>。
 prev_slug: coder-end
-prev_title: コーダーの仕事はなくなる
+prev_title: "コーダーの仕事はなくなる"
 next_slug: customer-codev
-next_title: 顧客がAIと協働して開発する時代
+next_title: "顧客がAIと協働して開発する時代"
 ---
 
 # ビルダーという役割

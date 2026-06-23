@@ -12,7 +12,7 @@ title_html: With the effort of <span class="accent">outsourcing</span>,<br>you c
 prev_slug: ai
 prev_title: "Stand Up Your Own AI — LLM and RAG"
 next_slug: price-gap
-next_title: The Order-of-Magnitude Price Gap
+next_title: "The Order-of-Magnitude Price Gap"
 ---
 
 # The Structural Uneconomy of the SIer Model

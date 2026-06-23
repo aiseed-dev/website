@@ -9,10 +9,10 @@ description: A builder's work is to have AI write code, evaluate it, and integra
 date: 2026.07.06
 label: Independence 3
 title_html: Put the home of your code<br>on <span class="accent">your own side</span>.
-prev_slug: documents
-prev_title: "Take Documents Back — OnlyOffice Docs on PocketBase"
-next_slug: mail
-next_title: "Mail on Your Own Side — Stalwart and Thunderbird"
+prev_slug: auth
+prev_title: "Stand Up the Gate — One Login with PocketBase"
+next_slug: documents
+next_title: "Take Documents Back — OnlyOffice Docs on PocketBase"
 ---
 
 # Bring Code In-House — Forgejo and Zed

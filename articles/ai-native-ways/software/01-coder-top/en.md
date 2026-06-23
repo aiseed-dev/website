@@ -12,7 +12,7 @@ title_html: AI solves<br>the <span class="accent">hardest coding problems</span>
 prev_slug:
 prev_title:
 next_slug: maintenance-shift
-next_title: Maintenance-Phase Shift Is the Real Story
+next_title: "Maintenance-Phase Shift Is the Real Story"
 ---
 
 # AI Solves the World's Hardest Coding Problems

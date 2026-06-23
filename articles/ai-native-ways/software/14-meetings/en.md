@@ -12,7 +12,7 @@ title_html: Meetings and booking,<br>on <span class="accent">your own domain</sp
 prev_slug: mail
 prev_title: "Mail on Your Own Side — Stalwart and Thunderbird"
 next_slug: web
-next_title: "Build the Website"
+next_title: "Publish the Web — Cloudflare Pages (a WordPress Replacement)"
 ---
 
 # Meetings and Booking on Your Own Side — Jitsi and Cal.com

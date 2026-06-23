@@ -9,9 +9,9 @@ date: 2026.06.29
 label: Introduction 5
 title_html: 顧客が <span class="accent">9 割</span> を作り、<br>残り <span class="accent">1 割</span> を相談する。
 prev_slug: builder
-prev_title: ビルダーという役割
-next_slug: foundation
-next_title: 土台を据える ── PostgreSQL・SQLite・pgvector・DuckDB・Polars
+prev_title: "ビルダーという役割"
+next_slug: vba-python
+next_title: "VBA を Python に移す ── Excel マクロを AI と書き直す"
 ---
 
 # 顧客がAIと協働して開発する時代

@@ -11,7 +11,7 @@ title_html: <span class="accent">最難のコーディング問題</span>を、<
 prev_slug:
 prev_title:
 next_slug: maintenance-shift
-next_title: 保守フェーズの構造変化こそ本質
+next_title: "保守フェーズの構造変化こそ本質"
 ---
 
 # AI は、世界で最も難しいコーディング問題を解く

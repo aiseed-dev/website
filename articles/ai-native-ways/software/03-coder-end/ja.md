@@ -9,9 +9,9 @@ date: 2026.06.15
 label: Introduction 3
 title_html: 実行は<span class="accent">AIに</span>、<br>判断は<span class="accent">人間に</span>。
 prev_slug: maintenance-shift
-prev_title: 保守フェーズの構造変化こそ本質
+prev_title: "保守フェーズの構造変化こそ本質"
 next_slug: builder
-next_title: ビルダーという役割
+next_title: "ビルダーという役割"
 ---
 
 # コーダーの仕事はなくなる

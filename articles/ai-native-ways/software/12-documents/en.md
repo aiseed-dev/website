@@ -9,10 +9,10 @@ description: Word, Excel, and PowerPoint are the input/output tools people write
 date: 2026.07.04
 label: Independence 4
 title_html: Keep documents as <span class="accent">files</span>;<br>only auth at the gate.
-prev_slug: auth
-prev_title: "Stand Up the Gate — One Login with PocketBase"
-next_slug: code
-next_title: "Bring Code In-House — Forgejo and Zed"
+prev_slug: code
+prev_title: "Bring Code In-House — Forgejo and Zed"
+next_slug: mail
+next_title: "Mail on Your Own Side — Stalwart and Thunderbird"
 ---
 
 # Take Documents Back — OnlyOffice Docs on PocketBase

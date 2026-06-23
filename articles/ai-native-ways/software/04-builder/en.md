@@ -10,9 +10,9 @@ date: 2026.06.22
 label: Introduction 4
 title_html: Humans <span class="accent">decide</span>,<br>AI <span class="accent">writes</span>.
 prev_slug: coder-end
-prev_title: The Coder's Job Goes Away
+prev_title: "The Coder's Job Goes Away"
 next_slug: customer-codev
-next_title: Customers Co-Develop with AI
+next_title: "Customers Co-Develop with AI"
 ---
 
 # The Builder Role

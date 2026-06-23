@@ -11,8 +11,8 @@ label: Independence 2
 title_html: One front door,<br>a <span class="accent">gate</span> from a single binary.
 prev_slug: foundation
 prev_title: "Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars"
-next_slug: documents
-next_title: "Take Documents Back — OnlyOffice Docs on PocketBase"
+next_slug: code
+next_title: "Bring Code In-House — Forgejo and Zed"
 ---
 
 # Stand Up the Gate — One Login with PocketBase

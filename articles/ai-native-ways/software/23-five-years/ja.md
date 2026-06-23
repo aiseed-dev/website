@@ -9,7 +9,7 @@ date: 2026.08.25
 label: Shift 6
 title_html: <span class="accent">5 年</span>で主要な変化が、<br>不可逆に完了する。
 prev_slug: japan-transition
-prev_title: 日本のSIer業界の転換と雇用流動性
+prev_title: "日本のSIer業界の転換と雇用流動性"
 next_slug:
 next_title:
 ---

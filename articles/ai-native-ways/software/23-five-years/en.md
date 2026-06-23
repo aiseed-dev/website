@@ -680,7 +680,7 @@ aiseed.dev will continue to publish articles that read the structure.
 ## Related articles
 
 - [Introduction Chapter 1: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
-- [Introduction Chapter 3: The Coder's Job Goes Away](/en/ai-native-ways/software/coder-end/)
+- [Introduction Chapter 3: AI Now Does the Coder's Work](/en/ai-native-ways/software/coder-end/)
 - [Introduction Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
 - [Chapter 5: Japan's SIer Industry Transition and Labor Mobility](/en/ai-native-ways/software/japan-transition/)
 - [Phosphorus Depletion and Natural Farming](/en/phosphorus-and-farming/)

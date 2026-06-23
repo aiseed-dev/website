@@ -231,7 +231,7 @@ AI ネイティブなコードベースは、こういう特性を持つ:
 
 ## 関連記事
 
-- [導入編 第3章: コーダーの仕事はなくなる](/ai-native-ways/software/coder-end/)
+- [導入編 第3章: コーダーの仕事を AI がするようになる](/ai-native-ways/software/coder-end/)
 - [導入編 第4章: ビルダーという役割](/ai-native-ways/software/builder/)
 - [第2章: 価格競争力の桁違いの差](/ai-native-ways/software/price-gap/)
 - [第4章: 各社がビルダーを雇用する時代](/ai-native-ways/software/hiring-builders/)

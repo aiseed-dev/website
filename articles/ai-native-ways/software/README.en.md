@@ -89,7 +89,7 @@ The chain closes **inside the sub-series**. Chapter 01 keeps empty
 |---|---|---|---|
 | 01 | `coder-top` | AI は、世界で最も難しいコーディング問題を解く | AI Solves the World's Hardest Coding Problems |
 | 02 | `maintenance-shift` | 保守フェーズの構造変化こそ本質 | Maintenance-Phase Shift Is the Real Story |
-| 03 | `coder-end` | コーダーの仕事はなくなる | The Coder's Job Goes Away |
+| 03 | `coder-end` | コーダーの仕事を AI がするようになる | AI Now Does the Coder's Work |
 | 04 | `builder` | ビルダーという役割 | The Builder Role |
 | 05 | `customer-codev` | 顧客がAIと協働して開発する時代 | Customers Co-Develop with AI |
 | 06 | `sier-uneconomic` | SIer委託モデルの構造的不経済 | The Structural Uneconomy of the SIer Model |

@@ -138,7 +138,7 @@ This article compresses aiseed.dev's **[AI-Native Ways of Working — Software](
 
 - [Chapter 1: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/) — Codeforces 2700 tier; the top layer for $200/month
 - [Chapter 2: The Real Shift Is in Maintenance](/en/ai-native-ways/software/maintenance-shift/) — the unit of maintenance moves from code to design
-- [Chapter 3: The Coder's Job Goes Away](/en/ai-native-ways/software/coder-end/) — same structure as abacus → calculator
+- [Chapter 3: AI Now Does the Coder's Work](/en/ai-native-ways/software/coder-end/) — same structure as abacus → calculator
 - [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/) — decide, delegate, evaluate, integrate
 - [Chapter 5: Customers Co-develop with AI](/en/ai-native-ways/software/customer-codev/) — 90% is the customer; 10% goes to a specialist
 - [Chapter 6: The SIer Commission Model Is Structurally Uneconomic](/en/ai-native-ways/software/sier-uneconomic/)

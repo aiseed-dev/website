@@ -164,12 +164,14 @@ In both diagrams the customer stands in the same place. What changed is
 that the customer who used to **only place the order** with an SIer now
 stands on the side that builds and runs it. And even just commissioning
 an SIer used to take real effort — writing the RFP, selecting the
-vendor, reconciling requirements, negotiating the contract. In the
-AI-native era, **with no more than that "effort of ordering," the
-customer builds it with AI** (taken up in detail in Chapter 5).
+vendor, reconciling requirements, negotiating the contract. **At the
+level of Claude Mythos, with no more than that "effort of ordering,"
+the customer builds it** — express the need in words and the AI
+assembles the whole (taken up in detail in Chapter 5).
 
 > Once, even just **placing the order** with an SIer took real effort.
-> Now, that same effort is enough — the customer builds it with AI.
+> At the Claude Mythos level, that same effort is enough — the
+> customer builds it.
 
 This is not "every programmer loses their job." People who have been
 called programmers split in two directions:

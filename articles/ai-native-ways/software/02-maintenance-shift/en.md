@@ -92,6 +92,14 @@ updating and let die — AI now writes and keeps, from the context. Humans
 read the manual; the machine (AI) reads the design document and generates
 and regenerates the code.
 
+From here follows a large consequence. **Anyone who can understand the
+manual and reconcile it with reality can do both development and
+maintenance.** No need to read code, no need to write it. What is needed
+is grasping what you want and matching it against reality to decide "this
+goes here" — the ability to read context. A coding background stops being
+a prerequisite (Chapter 5 develops this as "the customer builds it
+themselves").
+
 First, **reading**, the largest cost of maintenance, vanishes. "Trace
 the data flow of a feature" in a 10,000-line legacy Java base — half a
 day for a newcomer — AI returns in 30 seconds. Call graphs, the path by

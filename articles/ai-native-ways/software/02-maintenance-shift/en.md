@@ -143,7 +143,7 @@ flowchart LR
 
   subgraph New["AI-native maintenance — context is the battleground"]
     direction TB
-    ND["Design, spec, context<br/>(battleground; human holds direction & responsibility)"]
+    ND["Design, spec, context<br/>(tell AI what you want<br/>— same as commissioning an SIer)"]
     NC["Code<br/>(AI generates from context)"]
     NT["Tests & docs<br/>(AI syncs from the design)"]
     ND ==> NC ==> NT

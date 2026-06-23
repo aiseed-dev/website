@@ -125,7 +125,7 @@ flowchart LR
 
   subgraph New["AIネイティブな保守 ── 文脈が主戦場"]
     direction TB
-    ND["設計・仕様・文脈<br/>(主戦場・人間が方向と責任)"]
+    ND["設計・仕様・文脈<br/>(やりたいことを AI に伝える<br/>── SIer に頼むのと同じ)"]
     NC["コード<br/>(AIが文脈から生成)"]
     NT["テスト・ドキュメント<br/>(AIが設計から同期)"]
     ND ==> NC ==> NT

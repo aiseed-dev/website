@@ -78,12 +78,13 @@ python3 -m venv .venv
 ## Zed タスク（`.zed/tasks.json`）
 
 Zed には Cloudflare Pages 専用のプラグインは無い。拡張で足せるのは言語・LSP・
-MCP サーバー・テーマ等だけ。代わりに **Tasks** に上記コマンドを登録して、
-コマンドパレット（`task: spawn`）から実行する。
+MCP サーバー・テーマ等だけ。代わりに **Tasks**（`.zed/tasks.json`）に上記
+コマンドを登録し、メニューの **Run → Spawn**、またはショートカット
+**Alt+Shift+R** から実行する（VS Code 流のコマンドパレットは使わなくてよい）。
 
-> **注意**: このリポジトリは `.gitignore` で `.zed` を除外しているため、
-> `.zed/tasks.json` はコミットされない（各自のローカルにのみ置く）。
-> 内容をここに控えておく。`.zed/tasks.json` として保存すれば使える。
+> **メモ**: `.zed/tasks.json`（と `.zed/settings.json`）は `.gitignore` の
+> 許可リストで **コミット済み**。`git pull` すれば各自の Zed に下の4タスクが
+> 自動で現れる。以下はその参照用の控え。
 
 ```json
 [

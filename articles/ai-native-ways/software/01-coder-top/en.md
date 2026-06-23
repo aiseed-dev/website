@@ -1,12 +1,13 @@
 ---
 slug: coder-top
 number: "01"
+part: "1"
 lang: en
 title: AI Solves the World's Hardest Coding Problems
 subtitle: Codeforces 2700 tier — the world's top coding ability, for $200 a month on Claude Max
 description: AI's code-writing ability has matched human top-class on public competitive-programming ratings. Two facts matter — the capability level reached, and the fact that anyone can access it via Claude Max for around $200 a month. The whole sub-series argues outward from those two.
 date: 2026.06.01
-label: Software 01
+label: Introduction 1
 title_html: AI solves<br>the <span class="accent">hardest coding problems</span>.
 prev_slug:
 prev_title:

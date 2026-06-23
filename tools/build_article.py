@@ -669,23 +669,30 @@ AIWAYS_SUBSERIES = {
         "description_ja": (
             "AIがコードを書く能力で人間トップクラスに到達した。コーダーの仕事は"
             "なくなり、判断中心のビルダーが代わりに立つ。技術職の基盤学問は、"
-            "ソフトウェア工学からリベラルアーツへ。数年で完了する構造転換を、"
-            "11章で追う。"
+            "ソフトウェア工学からリベラルアーツへ。導入・自立・転換の三編で、"
+            "数年で完了する構造転換を追う。"
         ),
         "description_en": (
             "AI has reached human-top-class capability in writing code. "
             "Coders' work disappears; judgment-centered builders take their "
             "place. The foundational discipline of the technical profession "
             "shifts from software engineering to the liberal arts. "
-            "An 11-chapter case for an irreversible structural shift "
-            "completing in years."
+            "A three-part case — Introduction, Independence, Shift — for an "
+            "irreversible structural shift completing in years."
         ),
-        # The sub-series is presented in three 編 (parts) on its index page.
-        # Each entry groups chapters whose number is <= `upto`.
+        # The sub-series is presented in three 編 (parts). Each chapter declares
+        # its `part` ("1"/"2"/"3") in front matter and restarts numbering at 1
+        # within its part; index grouping and breadcrumbs use the `part` value.
         "parts": [
-            {"upto": 5,  "name_ja": "概念編 ── なぜ作るのか", "name_en": "Concept — why build"},
-            {"upto": 13, "name_ja": "導入編 ── 汎用は OSS で立てる", "name_en": "Setup — stand up the generic as OSS"},
-            {"upto": 99, "name_ja": "転換編 ── 産業構造の帰結", "name_en": "Shift — the industry consequence"},
+            {"key": "1", "short_ja": "導入編", "short_en": "Introduction",
+             "name_ja": "導入編 ── なぜ作り、どう始めるか",
+             "name_en": "Introduction — why build, and how to start"},
+            {"key": "2", "short_ja": "自立編", "short_en": "Independence",
+             "name_ja": "自立編 ── Microsoft 365・Copilot・WordPress・基幹システム・GitHub から自立する",
+             "name_en": "Independence — from Microsoft 365, Copilot, WordPress, core systems, and GitHub"},
+            {"key": "3", "short_ja": "転換編", "short_en": "Shift",
+             "name_ja": "転換編 ── 産業構造の帰結",
+             "name_en": "Shift — the industry consequence"},
         ],
     },
 }
@@ -724,20 +731,37 @@ def _aiways_output_base(lang: str, subseries: str = "") -> Path:
     return base / subseries if subseries else base
 
 
-def _aiways_chapter_label(number: str, lang: str, subseries: str = "") -> str:
+def _aiways_part(subseries: str, part_key: str):
+    """Return the parts-config entry for a chapter's `part` value, or None."""
+    if not subseries or not part_key:
+        return None
+    for p in AIWAYS_SUBSERIES.get(subseries, {}).get("parts", []) or []:
+        if str(p.get("key")) == str(part_key):
+            return p
+    return None
+
+
+def _aiways_part_short(subseries: str, meta: dict, lang: str) -> str:
+    """Short 編 name ('導入編' / 'Introduction') for a chapter, or ''."""
+    p = _aiways_part(subseries, str(meta.get("part", "")).strip('"'))
+    if not p:
+        return ""
+    return p.get("short_en", "") if lang == "en" else p.get("short_ja", "")
+
+
+def _aiways_chapter_label(number: str, lang: str, subseries: str = "",
+                          part_short: str = "") -> str:
     """'00' → '序章' / 'Prologue'. Otherwise '第N章' / 'Chapter N'.
 
-    For sub-series chapters the label stays short ('第N章' / 'Chapter N')
-    because the sub-series name already appears in the `series` field; the
-    breadcrumb is rendered as `series · chapter_label`, so prefixing the
-    label would print the sub-series name twice. The combined display
-    (e.g. 'ソフトウェア開発編 第1章') is achieved by series + label, not
-    by the label alone.
+    For sub-series chapters numbering restarts at 1 within each 編 (part);
+    when `part_short` is given the label includes it, e.g. '導入編 第1章' /
+    'Introduction Chapter 1'. The breadcrumb is rendered as
+    `series · chapter_label`, giving 'ソフトウェア開発編 · 導入編 第1章'.
     """
     n = number.lstrip("0") or "0"
     if subseries:
-        # Sub-series restarts at 01; '00' is reserved for the parent prologue.
-        return f"第{n}章" if lang == "ja" else f"Chapter {n}"
+        base = f"第{n}章" if lang == "ja" else f"Chapter {n}"
+        return f"{part_short} {base}" if part_short else base
     if n == "0":
         return "序章" if lang == "ja" else "Prologue"
     return f"第{n}章" if lang == "ja" else f"Chapter {n}"
@@ -856,7 +880,7 @@ def _aiways_chapter_toc_html(lang: str, subseries: str, current_slug: str) -> st
         slug = c.get("slug", "")
         number = c.get("number", "").strip('"')
         title = c.get("title", "")
-        label = _aiways_chapter_label(number, lang, subseries)
+        label = _aiways_chapter_label(number, lang, subseries, _aiways_part_short(subseries, c, lang))
         display_title = _strip_chapter_prefix(title, label)
         if slug == current_slug:
             items.append(
@@ -960,7 +984,7 @@ def build_aiways_chapter(md_path):
         "label": meta.get("label", ""),
         "series": series_name,
         "series_index_url": series_index_url,
-        "chapter_label": _aiways_chapter_label(meta.get("number", "").strip('"'), lang, subseries),
+        "chapter_label": _aiways_chapter_label(meta.get("number", "").strip('"'), lang, subseries, _aiways_part_short(subseries, meta, lang)),
         "content_html": body_html,
         "canonical_url": canonical_url,
         "hreflang_ja": hreflang_ja if (md_path.parent / "ja.md").exists() else "",
@@ -1368,7 +1392,7 @@ def build_aiways_example(example_dir, lang="ja"):
         example_title = example_label
 
     chapter_title = meta.get("title", "")
-    chapter_label = _aiways_chapter_label(meta.get("number", "").strip('"'), lang, subseries)
+    chapter_label = _aiways_chapter_label(meta.get("number", "").strip('"'), lang, subseries, _aiways_part_short(subseries, meta, lang))
     if subseries:
         cfg = AIWAYS_SUBSERIES[subseries]
         series_name = (
@@ -1498,21 +1522,19 @@ def _render_aiways_chapter_list(chapters, aiways_base: str, parts=None, lang="ja
         slug = c.get("slug", "")
         number = c.get("number", "").strip('"')
         if parts:
-            try:
-                n = int(number)
-            except ValueError:
-                n = 0
-            part = next((p for p in parts if n <= p["upto"]), None)
-            if part is not None and part["upto"] not in shown_parts:
-                shown_parts.add(part["upto"])
-                pname = part["name_en" if lang == "en" else "name_ja"]
-                out += (
-                    '\n                <h2 class="aiways-part" style="'
-                    "margin:2.6rem 0 0.6rem;padding-bottom:0.3rem;"
-                    "border-bottom:1px solid var(--rule,#d4cdb8);"
-                    "color:var(--accent,#c8442a);font-size:1.05rem;"
-                    'letter-spacing:0.04em;">' + pname + "</h2>\n"
-                )
+            pk = str(c.get("part", "")).strip('"')
+            if pk and pk not in shown_parts:
+                shown_parts.add(pk)
+                part = next((p for p in parts if str(p.get("key")) == pk), None)
+                if part is not None:
+                    pname = part["name_en" if lang == "en" else "name_ja"]
+                    out += (
+                        '\n                <h2 class="aiways-part" style="'
+                        "margin:2.6rem 0 0.6rem;padding-bottom:0.3rem;"
+                        "border-bottom:1px solid var(--rule,#d4cdb8);"
+                        "color:var(--accent,#c8442a);font-size:1.05rem;"
+                        'letter-spacing:0.04em;">' + pname + "</h2>\n"
+                    )
         title = c.get("title", "")
         subtitle = c.get("subtitle", "")
         description = c.get("description", "")

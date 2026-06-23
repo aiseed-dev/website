@@ -1,11 +1,12 @@
 ---
 slug: builder
 number: "04"
+part: "1"
 title: ビルダーという役割
 subtitle: 何を作るかを決め、AIに作らせ、出力を評価し、構造を統合する
 description: ビルダーは判断中心の役割で、コーダーの後継ではない。スキル軸も評価軸も違う、構造的に別の役割だ。本章ではビルダーの仕事を「決める・委譲する・評価する・統合する」の連鎖として定義し、aiseed.dev サイト ── 本記事が乗っているこのサイト ── を 1 人 + AI で 24 時間で構築した実例を、コーダーチームとの比較で読み解く。
 date: 2026.06.22
-label: Software 04
+label: Introduction 4
 title_html: 決めるのは<span class="accent">人間</span>、<br>書くのは<span class="accent">AI</span>。
 prev_slug: coder-end
 prev_title: コーダーの仕事はなくなる

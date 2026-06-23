@@ -1,12 +1,13 @@
 ---
 slug: maintenance-shift
 number: "02"
+part: "1"
 lang: en
 title: Maintenance-Phase Shift Is the Real Story
 subtitle: Cheaper coding is the tip of the iceberg — the unit of maintenance moves from code to design and spec
 description: The most overlooked consequence of AI writing code is not faster coding; it is the structural shift of the maintenance phase itself. The unit of maintenance moves from code to design and spec; the cost of reading legacy code evaporates. The shift is conditional on humans keeping design leadership; without it, AI-generated technical debt piles up fast.
 date: 2026.06.08
-label: Software 02
+label: Introduction 2
 title_html: The unit of maintenance moves<br>from <span class="accent">code to design</span>.
 prev_slug: coder-top
 prev_title: AI Solves the World's Hardest Coding Problems

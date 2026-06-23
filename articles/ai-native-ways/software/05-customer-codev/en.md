@@ -1,12 +1,13 @@
 ---
 slug: customer-codev
 number: "05"
+part: "1"
 lang: en
 title: Customers Co-Develop with AI
 subtitle: Nine-tenths gets built by the customer plus AI; only the remaining tenth goes to a specialist
 description: A natural consequence of the builder definition in Chapter 4 — the customer becomes the builder. Nine-tenths of requirements, design, build, and maintenance close inside customer plus AI; only the remaining tenth is taken to a specialist as advice. "What AI cannot do, the SIer cannot do either" — the premise of the old commission model breaks here. The drop in learning cost made the transition possible.
 date: 2026.06.29
-label: Software 05
+label: Introduction 5
 title_html: Customers build <span class="accent">9 of 10</span>,<br>consult on the remaining <span class="accent">1 of 10</span>.
 prev_slug: builder
 prev_title: The Builder Role

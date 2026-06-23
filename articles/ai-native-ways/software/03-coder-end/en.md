@@ -66,6 +66,15 @@ And AI's ability has range:
 - **Opus** — a first-rate **coder**. Hand it intent and it translates it into running code
 - **Fable / Mythos** — **software engineers**. They go into design, deciding structure itself (the two are at the same level of design ability)
 
+That they reach design has corroborating evidence. In the Fable / Mythos
+generation, a publicly reported case had an attacker misuse Claude to
+**run most of the operational steps of a cyberattack autonomously**
+(Anthropic reported this in 2025 as a large-scale automated
+cyber-espionage campaign). Driving an attack yourself takes the ability
+to read the target system, sequence the steps, and structure the line of
+attack — the same ability as designing software. That it can be used for
+an attack means it can be used for design.
+
 So AI now enters **design**, not just code. The market value of the
 code-writing band — which used to demand a large workforce — converges
 to near zero. Not a statement about labor ethics, but about prices.

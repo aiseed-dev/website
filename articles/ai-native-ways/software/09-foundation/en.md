@@ -18,10 +18,10 @@ next_title: "Stand Up the Gate — One Login with PocketBase"
 # Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars
 
 **A builder's work does not begin with writing code. It begins with
-standing up proven OSS** (Chapter 5). Generic functionality is
+standing up proven OSS** (Introduction Chapter 5). Generic functionality is
 already shared with the world — so you don't "write" it, you "stand it up."
 
-This Setup part (from Chapter 6) stands up, one by one, the OSS that replaces
+This Setup part (from Chapter 1) stands up, one by one, the OSS that replaces
 Microsoft 365 and the vendor packages under the core systems. First is the
 **data layer.**
 Analysis, the AI's RAG, course booking, the core systems —
@@ -44,7 +44,7 @@ after.**
 
 The database is **PostgreSQL** — open source, free, commercial-OK. It
 matches or exceeds Oracle and SQL Server, and it is the dialect Claude
-handles best (Chapter 5; parent series Chapter 14).
+handles best (Introduction Chapter 5; parent series Chapter 14).
 
 One `compose.yaml` stands it up.
 
@@ -122,7 +122,7 @@ pgloader mssql://user:pass@azure-host/db \
 
 Standard SQL (`SELECT`, `JOIN`, window functions) runs as-is. You drop only
 **the vendor dialect, T-SQL.** Business logic buried in stored procedures
-gets extracted by Claude and translated into Python / Ruby (Chapter 5).
+gets extracted by Claude and translated into Python / Ruby (Introduction Chapter 5).
 Then run in parallel with the old DB, reconcile the output, and stop the old
 when the difference is gone (parent series Chapter 7).
 
@@ -197,6 +197,6 @@ on top of this, as the shared gatekeeper across the apps.
 
 ## Related articles
 
-- [Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
+- [Introduction Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
 - [Parent series, Chapter 14: Replacing Microsoft 365 Wholesale](/en/ai-native-ways/microsoft-365/)
-- [Chapter 7: Living with Business Systems — Rewrite by Running in Parallel](/en/ai-native-ways/business-systems/)
+- [Chapter 2: Living with Business Systems — Rewrite by Running in Parallel](/en/ai-native-ways/business-systems/)

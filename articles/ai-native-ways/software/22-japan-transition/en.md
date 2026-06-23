@@ -23,7 +23,7 @@ the structure and the conclusion reverses — precisely because the
 structure is multi-tier, the industry shift can proceed without
 internal lay-offs**.
 
-Chapter 17 confirmed that the original driver of IT outsourcing was
+Chapter 4 confirmed that the original driver of IT outsourcing was
 **securing large quantities of coder person-months**. This chapter
 takes the other side — when AI removes coder demand, how the structure
 built to source those person-months actually moves.
@@ -47,7 +47,7 @@ Sketch the typical Japanese SIer structure.
 
 The reason this hierarchy is disliked is easy to state — margins pile
 up at each layer, profit does not reach the working coder, accountability
-gets blurred. Chapters 14 and 15 read this as the structure that
+gets blurred. Chapter 1 and Chapter 2 read this as the structure that
 inflates price.
 
 But **at a transition, the structure's property reverses**. Multi-tier
@@ -141,13 +141,13 @@ But, **for talented coders, there are several exits**:
   judgment side (= builder candidates). Coders with judgment ability
   can be absorbed into the prime's full-time employee slots.
 - **Move to a customer** — hired directly as in-house builders by
-  customer companies that used to commission SIers (Chapter 17).
+  customer companies that used to commission SIers (Chapter 4).
 - **Go independent — individual contractor or small firm** —
   contract directly with customers as a builder. The
-  lawyer/doctor-style professional model from Chapter 17.
+  lawyer/doctor-style professional model from Chapter 4.
 - **Move to a different industry** — leaving software development is
   also a path (the same kind of redistribution as "human computers"
-  and typesetters moving to adjacent fields, from Chapter 3).
+  and typesetters moving to adjacent fields, from Introduction Chapter 3).
 
 Not every mid- or lower-tier coder will move successfully. The layer
 with judgment ability — or the willingness to develop it — flows
@@ -177,7 +177,7 @@ mobility**.
 If mobility is high:
 
 - Mid-career moves between primes increase
-- Prime → customer-company moves grow (builder hiring per Chapter 17)
+- Prime → customer-company moves grow (builder hiring per Chapter 4)
 - Prime → independence (individual contractor, small firm)
 - Subcontractor layers → all of the above
 
@@ -209,7 +209,7 @@ intermediate forms.
   spins it out as a separate company.
 - **Reverse-commission** — a customer's in-house builder sells advice
   to other companies in their domain of expertise (the same shape as
-  Chapter 5's "remaining one-tenth of specialists").
+  Introduction Chapter 5's "remaining one-tenth of specialists").
 
 These are not permanent structures; they are **shock absorbers** for
 the transition. Japanese society has a cultural habit of moving
@@ -264,7 +264,7 @@ the options open to displaced coders broaden significantly: alongside
 intra-industry flow (primes, customers, independence), the
 **out-of-industry physical labor demand** becomes a major channel.
 
-The historical parallel from Chapter 3 — human computers and
+The historical parallel from Introduction Chapter 3 — human computers and
 typesetters moving to adjacent fields — was viable only because labor
 demand happened to exist where they landed. The same applies here.
 **The side where labor demand disappears (code production) and the
@@ -309,7 +309,7 @@ foundational discipline of the technical profession**. Japan's
 science-and-engineering education has long centered on programming
 languages, frameworks, and design patterns — the core of software
 engineering. Once AI has taken that core, the human side has to
-shift its weight onto **the liberal arts** (Chapter 4) — logic,
+shift its weight onto **the liberal arts** (Introduction Chapter 4) — logic,
 verbalization, ethics, systems thinking, history. The shift runs
 through everything from university curricula to corporate hiring
 criteria. The question "can you write code?" gives way to "**can
@@ -328,9 +328,9 @@ few years. The final chapter.
 
 ## Related articles
 
-- [Chapter 14: The Structural Uneconomy of the SIer Model](/en/ai-native-ways/software/sier-uneconomic/)
-- [Chapter 15: The Order-of-Magnitude Price Gap](/en/ai-native-ways/software/price-gap/)
-- [Chapter 17: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
+- [Chapter 1: The Structural Uneconomy of the SIer Model](/en/ai-native-ways/software/sier-uneconomic/)
+- [Chapter 2: The Order-of-Magnitude Price Gap](/en/ai-native-ways/software/price-gap/)
+- [Chapter 4: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
 - [Phosphorus Depletion and Natural Farming](/en/phosphorus-and-farming/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

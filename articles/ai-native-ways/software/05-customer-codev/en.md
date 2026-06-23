@@ -84,7 +84,7 @@ of software commissioning.
 
 Three forces lined up at the same time.
 
-**(1) AI took execution** (Chapters 1 and 3) — "you cannot build it
+**(1) AI took execution** (Chapter 1 and Chapter 3) — "you cannot build it
 unless you hire someone who can write code" no longer holds. Claude
 Max at $200 a month gets you the world's top-tier coding ability.
 
@@ -227,7 +227,7 @@ result**.
 There is an exception. **Lock-in**. The SIer's proprietary
 frameworks, custom abstraction layers, multi-year human dependence —
 these are designed so that the customer cannot substitute by pairing
-with AI (the structure is covered in Chapter 8). But for new
+with AI (the structure is covered in Shift Chapter 3). But for new
 projects, for customers with lock-in-free options, **the SIer's
 advantage shrinks to the one-tenth territory**.
 
@@ -260,7 +260,7 @@ SIer commissions**.
 No one hires a lawyer or a tax accountant to do their ordinary
 business. They consult them when a hard issue arises. In the
 AI-native world, software-development specialists move to **the same
-position lawyers and accountants occupy** — Chapter 9 takes this up
+position lawyers and accountants occupy** — Shift Chapter 4 takes this up
 in detail.
 
 ## Where the next chapter goes
@@ -280,7 +280,7 @@ The next chapter dissects the SIer commission model itself.
 - [Chapter 3: The Coder's Job Goes Away](/en/ai-native-ways/software/coder-end/)
 - [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
 - [Parent series, Chapter 14: Replacing Microsoft 365 Wholesale (untying 11 layers with OSS)](/en/ai-native-ways/microsoft-365/)
-- [Chapter 8: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
-- [Chapter 9: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
+- [Shift Chapter 3: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
+- [Shift Chapter 4: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

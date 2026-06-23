@@ -5,7 +5,7 @@ part: "2"
 lang: en
 title: "Bring Code In-House — Forgejo and Zed"
 subtitle: "The builder's workshop, on your own side — repositories and CI, outside Microsoft"
-description: A builder's work is to have AI write code, evaluate it, and integrate it. The place that code lives — the repository — gets stood up on your own side. Forgejo is a single Git forge that replaces GitHub and Azure DevOps, with Actions covering CI/CD. It rides on the PostgreSQL from Chapter 6 and sits behind the gate from Chapter 7. The local tools are Zed and Claude. Code is an asset; control of where it lives stays with you.
+description: A builder's work is to have AI write code, evaluate it, and integrate it. The place that code lives — the repository — gets stood up on your own side. Forgejo is a single Git forge that replaces GitHub and Azure DevOps, with Actions covering CI/CD. It rides on the PostgreSQL from Chapter 1 and sits behind the gate from Chapter 2. The local tools are Zed and Claude. Code is an asset; control of where it lives stays with you.
 date: 2026.07.06
 label: Independence 3
 title_html: Put the home of your code<br>on <span class="accent">your own side</span>.
@@ -18,7 +18,7 @@ next_title: "Take Documents Back — OnlyOffice Docs on PocketBase"
 # Bring Code In-House — Forgejo and Zed
 
 A builder's work is not writing code. It is **having AI write it, evaluating
-it, and integrating it** (Chapter 4). But the code that results needs a place
+it, and integrating it** (Introduction Chapter 4). But the code that results needs a place
 to live — the repository. The more code AI generates, the more **control over
 where it lives** matters.
 
@@ -32,7 +32,7 @@ reason to leave it parked on someone else's platform is now thin.
 
 - **Cut the dependency** — pricing, terms, and availability don't change at another company's convenience
 - **Couple it tightly with AI** — generation, review, and CI run by your own rules
-- **One with the gate** — code goes inside the Chapter 7 authentication too
+- **One with the gate** — code goes inside the Chapter 2 authentication too
 
 Generic Git hosting is already there as OSS. **You don't write it, you stand
 it up.**
@@ -42,16 +42,16 @@ it up.**
 The workshop is **Forgejo.** A single Gitea-family binary carrying
 repositories, issues, pull requests, review, and CI in one — a replacement for
 GitHub, GitLab, and Azure DevOps. The data rides on the **PostgreSQL from
-Chapter 6.**
+Chapter 1.**
 
 ```yaml
-# compose.yaml — stand up Forgejo on the Chapter 6 DB
+# compose.yaml — stand up Forgejo on the Chapter 1 DB
 services:
   code:
     image: codeberg.org/forgejo/forgejo:latest
     environment:
       FORGEJO__database__DB_TYPE: postgres
-      FORGEJO__database__HOST: db:5432      # the Chapter 6 PostgreSQL
+      FORGEJO__database__HOST: db:5432      # the Chapter 1 PostgreSQL
       FORGEJO__database__NAME: forgejo
       FORGEJO__database__USER: postgres
       FORGEJO__database__PASSWD: change-me
@@ -102,7 +102,7 @@ place, that division of labor just runs.
 
 ## Place it behind the gate, and migrate
 
-Put Forgejo behind the reverse proxy (Chapter 7). Migrating from GitHub,
+Put Forgejo behind the reverse proxy (Chapter 2). Migrating from GitHub,
 Forgejo's **"New Migration"** imports a repository together with its issues and
 PRs.
 
@@ -112,7 +112,7 @@ git.example.com { reverse_proxy code:3000 }
 
 No need to switch in one stroke. **Keep GitHub as a mirror and run in
 parallel,** then move production onto Forgejo once it feels natural (parent
-series, Chapter 7).
+series, Chapter 2).
 
 > Code is the substance of the business itself.
 > Control of where it lives belongs to **you, not another company.**
@@ -121,7 +121,7 @@ series, Chapter 7).
 
 The builder's workshop, on your own side.
 
-- **Forgejo** — repositories, issues, PRs, and review in one (on the Chapter 6 PostgreSQL)
+- **Forgejo** — repositories, issues, PRs, and review in one (on the Chapter 1 PostgreSQL)
 - **Forgejo Actions** — GitHub Actions-compatible CI/CD, the runner on your side
 - **Zed + Claude** — call AI into a lightweight editor; write, evaluate, push
 - **Behind the gate** — fenced by the reverse proxy, migrate from GitHub gradually
@@ -134,6 +134,6 @@ dependency on Exchange and Outlook.
 
 ## Related articles
 
-- [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
-- [Chapter 7: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
+- [Introduction Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
+- [Chapter 2: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
 - [Parent series, Chapter 9: Building Apps — CLI Tools, Flet Apps, Flutter Apps](/en/ai-native-ways/apps/)

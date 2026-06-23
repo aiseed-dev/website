@@ -51,7 +51,7 @@ resource**. Few could write it, so writing itself carried a price. A
 separate person could decide requirements and design, while the coder
 focused only on writing. The SIer industry, contract development, and
 multi-tier subcontracting structures are all built on that premise
-(Chapter 6 takes up the structure).
+(Shift Chapter 1 takes up the structure).
 
 ## Execution and judgment were always different abilities
 
@@ -191,7 +191,7 @@ Chapter 1 showed, is starting from a price structure that is orders of
 magnitude lower. It is reasonable to expect the same speed, or faster.
 Whether the individual or the country can absorb the transition
 becomes a question of **industry structure**, not personal choice
-(Chapter 10 takes up the Japanese SIer industry).
+(Shift Chapter 5 takes up the Japanese SIer industry).
 
 ## Where the next chapter goes
 

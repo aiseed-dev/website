@@ -44,9 +44,11 @@ build the site with a framework like Astro. But even a first-timer can just
 
 The knack is not to settle it in one instruction but to **do it through
 dialogue** — especially if you are new to this. You don't have to spell out a
-full spec up front; what you want surfaces as you go back and forth. Start
-plainly — "Make a build that turns Markdown articles into an HTML site" — then
-work it out with Claude, back and forth. Worth bringing up:
+full spec up front; what you want surfaces as you go back and forth. And **the
+web is easy to fix later** — just rebuild and redeploy — so don't aim for
+perfect; get a first version into shape. Start plainly — "Make a build that
+turns Markdown articles into an HTML site" — then work it out with Claude, back
+and forth. Worth bringing up:
 
 - **What you write** — articles and posts in Markdown, each with a title, date, and summary (frontmatter) at the top
 - **URL shape** — e.g. articles at `/<slug>/`, posts at `/blog/<slug>/`

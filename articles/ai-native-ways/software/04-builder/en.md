@@ -4,11 +4,11 @@ number: "04"
 part: "1"
 lang: en
 title: The Builder Role
-subtitle: Decide what to build, hand the writing to AI, evaluate the output, integrate the structure
-description: The builder is a judgment-centered role, not the next version of the coder. Skills, evaluation yardstick, and output structure are all different. This chapter defines the builder as a loop — decide, delegate, evaluate, integrate — and reads aiseed.dev (the site this article lives on, built by one person plus AI in 24 hours) as a concrete instance against the cost structure of a coder team.
+subtitle: Decide what to build, build it in dialogue with AI, run it, integrate the whole
+description: The builder builds and runs whole systems in dialogue with AI — not the next version of the coder. Skills, evaluation yardstick, and output structure are all different. This chapter defines the builder as a loop — decide, build with AI, check, integrate — and reads aiseed.dev (the site this article lives on, built by one person plus AI in 24 hours) as a concrete instance against the cost structure of a coder team.
 date: 2026.06.22
 label: Introduction 4
-title_html: Humans <span class="accent">decide</span>,<br>AI <span class="accent">writes</span>.
+title_html: Decide it, <span class="accent">build it with AI</span>,<br>run it.
 prev_slug: coder-end
 prev_title: "AI Now Does the Coder's Work"
 next_slug: customer-codev
@@ -17,14 +17,15 @@ next_title: "Customers Co-Develop with AI"
 
 # The Builder Role
 
-**Decide what to build, have AI write it, evaluate the output,
-integrate the structure — that is what a builder does**.
+**Decide what to build, build it in dialogue with AI, run it,
+integrate the whole — that is what a builder does**.
 
-Chapter 3 said the coder role (centered on execution) stops being
-economically viable. What remains is a role centered on judgment, and
-this book calls it the builder. This chapter fixes the definition —
-what the builder does, where the builder differs from the coder, why
-one person plus AI works — by grounding it in a concrete example.
+Chapter 3 said the coder role (centered on writing code) gets replaced
+by AI. What remains is the broader role of building and running systems
+in dialogue with AI, and this book calls it the builder. This chapter
+fixes the definition — what the builder does, where the builder differs
+from the coder, why one person plus AI works — by grounding it in a
+concrete example.
 
 The concrete example is the site this article lives on. The **code
 base** of aiseed.dev (about 6,000 lines) was stood up by one person
@@ -34,19 +35,20 @@ separate timeline — **roughly one week per sub-series** — covered
 below. Every source and build script needed to reproduce the site is
 committed to this repository.
 
-## The builder decides what to build and hands the writing to AI
+## The builder decides what to build, then builds and runs it with AI
 
-A builder's work runs as a chain of four steps:
+A builder's work runs as a **loop** of four steps:
 
-- **Decide** — judge what to build and how to decompose it, drawing
+- **Decide** — decide what to build and how to decompose it, drawing
   on customer, field, and the builder's own context. Lay down the
   skeleton of the spec.
-- **Delegate** — hand AI the intent, the constraints, and the
-  acceptance criteria. AI writes the code.
-- **Evaluate** — judge whether the returned output runs, fits the
-  design, and survives the intended context.
-- **Integrate** — fold the part into the whole, keep the whole
-  consistent, and return to "decide" for the next slice.
+- **Build with AI** — hand AI the intent, the constraints, and the
+  context, and go back and forth. AI writes the code and proposes the
+  design. Not a one-shot instruction — a dialogue.
+- **Check** — see whether the returned work runs, fits the design,
+  and survives the intended context.
+- **Integrate and run** — fold the part into the whole, keep it
+  consistent, run it, and return to "decide" for the next slice.
 
 These four are not linear; they form a **loop**. One turn takes
 anywhere from minutes to hours depending on scope. A builder runs the
@@ -57,20 +59,20 @@ minimized — AI does the writing.
 flowchart LR
   Ctx["Customer<br/>and field context"]
 
-  subgraph Builder["Builder's work (chain of judgment)"]
+  subgraph Builder["Builder's work (loop of building with AI)"]
     direction TB
     D["Decide<br/>(what and how to split)"]
-    Hand["Delegate<br/>(intent, constraints,<br/>acceptance criteria)"]
-    Eval["Evaluate<br/>(runs? fits the design?)"]
-    Int["Integrate<br/>(keep the whole consistent)"]
+    Hand["Build with AI<br/>(pass intent,<br/>constraints, context)"]
+    Eval["Check<br/>(runs? fits the design?)"]
+    Int["Integrate and run<br/>(keep the whole consistent)"]
     D --> Hand --> Eval --> Int --> D
   end
 
-  AI(("AI<br/>execution"))
+  AI(("AI<br/>code, design"))
   Out["Running<br/>software"]
 
   Ctx --> D
-  Hand <-->|generation, options| AI
+  Hand <-->|dialogue, generation, proposals| AI
   Int --> Out
 
   classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
@@ -79,19 +81,21 @@ flowchart LR
   class AI ai
 ```
 
-The whole loop is held by the builder. AI enters as **one edge of the
-loop** only. Judgment, conditions of delegation, evaluation criteria,
-and integration policy all stay on the builder's side.
+The builder holds the whole loop and carries direction and
+responsibility. AI **writes the code and proposes the design** — but
+what to build, what to reconcile with reality, and how to run it stay
+on the builder's side.
 
 The closest existing analogue to this role is the **film director**. A
 director does not operate the camera, does not touch the editing
 software, does not sew costumes — yet decides "what to make," "how to
 show it," "where to cut," "in what order to assemble," and keeps the
-whole consistent. The technical crew acts on the director's judgment.
-The relationship between the builder and AI maps onto this — **judgment
-stays with the human, technical execution goes to AI, and the artifact
-is born of the collaboration**. Shift Chapter 6 returns to this analogy
-under "app-making comes to resemble film-making."
+whole consistent. The crew gives it form in dialogue with the director.
+The relationship between the builder and AI maps onto this — **direction
+and the whole stay with the builder, the code and design get built
+through dialogue with AI, and the artifact is born of the
+collaboration**. Shift Chapter 6 returns to this analogy under
+"app-making comes to resemble film-making."
 
 ## The structural difference from a coder
 
@@ -109,8 +113,8 @@ Coder and builder look similar but are structurally different roles.
 
 The last two rows are the heart of this chapter. A coder's output is
 governed by "headcount × writing speed." A builder's output is
-governed by "**decision quality × loop turns**." Once AI takes
-execution, the latter equation dominates.
+governed by "**decision quality × loop turns**." Once AI takes on
+the code and the design, the latter equation dominates.
 
 > In the coder world, "add more people and it goes faster" worked
 > (with limits).
@@ -256,8 +260,8 @@ fraction of writing that can be delegated to AI is low for prose.
   line by line
 - The voice and rhythm are held by humans — the breath the reader
   feels
-- Responsibility for the argument stays with humans — same boundary
-  of judgment as Chapter 3
+- Responsibility for the argument stays with humans — same as
+  Chapter 3
 
 AI can produce drafts, but every draft is taken as something to **read
 in full, correct, and rewrite**. Factual errors, leaps in argument,
@@ -318,8 +322,8 @@ cost:
 - Documentation — AI regenerates from the design (Chapter 2)
 
 The classic "integration cost grows with the square of headcount" is
-the team's problem. With one person plus AI, judgment is not
-splittable but execution is parallelized inside AI — the quadratic
+the team's problem. With one person plus AI, the deciding closes
+inside one head and AI writes the code in parallel — the quadratic
 integration cost is sidestepped. That is the structural reason "one
 person plus AI exceeds ten people."
 
@@ -328,9 +332,10 @@ judgment**. Fall into the "vibe coding" trap from Chapter 2 — hand
 judgment to AI — and the loop collapses. The "one plus AI" team
 becomes a team that ships nothing.
 
-> One person plus AI is strong because **the boundary between
-> judgment and execution closes inside one head**. Add boundaries and
-> the cost looks like a team's cost again.
+> One person plus AI is strong because **deciding, building, and
+> fixing carry no human-to-human sync between them** — one person runs
+> the whole through dialogue with AI. Add boundaries — syncing with
+> another head — and the cost looks like a team's cost again.
 
 ## Where the next chapter goes
 

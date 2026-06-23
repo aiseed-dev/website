@@ -111,7 +111,7 @@ For each chapter:
 2. Decide the **hinge claim** for the chapter (the one sentence that goes in bold near the top). The table above has a starting point.
 3. Identify the **legacy/AI-native axis** for the chapter (the two-language framing the voice skill expects). Examples:
    - 01: 競技プロのレーティング vs ライセンス保有者の単価
-   - 03: 実行能力 vs 判断能力
+   - 03: コードを書く役割 vs AIと対話してシステムを作り動かす役割
    - 06: 外注プロセスの工数 vs AIネイティブ開発の工数
    - 08: 独自抽象層 vs 標準コード
 4. Draft `ja.md`, then `en.md`. Keep section count and order parallel across languages; adapt accent concepts per `writing-aiways-voice`.

@@ -20,10 +20,11 @@ next_title: "Move VBA to Python — Rewrite Excel Macros with AI"
 **Nine-tenths of software development moves to the customer plus AI.
 The remaining tenth is consulted to a specialist**.
 
-Chapter 4 showed why a builder runs as one person plus AI: the
-boundary between judgment and execution closes inside one head. That
-structure does not require the builder to be on the company's payroll
-— **the customer can become the builder**, by the same logic.
+Chapter 4 showed why a builder runs as one person plus AI: deciding
+and building carry no human-to-human sync between them, so one person
+runs the whole through dialogue with AI. That structure does not
+require the builder to be on the company's payroll — **the customer
+can become the builder**, by the same logic.
 
 This chapter takes up that transition. Why customers can do
 nine-tenths themselves, what stays in the one-tenth, and the fact that
@@ -84,8 +85,8 @@ of software commissioning.
 
 Three forces lined up at the same time.
 
-**(1) AI took execution** (Chapter 1 and Chapter 3) — "you cannot build it
-unless you hire someone who can write code" no longer holds. Claude
+**(1) AI writes the code and does the design** (Chapter 1 and Chapter 3) —
+"you cannot build it unless you hire someone who can write code" no longer holds. Claude
 Max at $200 a month gets you the world's top-tier coding ability.
 
 **(2) The customer always had the context**. The real difficulty of

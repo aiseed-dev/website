@@ -55,6 +55,16 @@ never recoverable 100%. Being unable to **touch** the legacy is what
 forced whole systems to be kept alive on life support — because most of
 the cost of rewriting was the cost of reading.
 
+Why does everything turn around code in the first place? Because **the
+design document could not keep up with reality**. The customer cannot put
+every fine-grained request into words for the SIer — they only realize
+"this should be like that" once they see something running. And the SIer,
+for whom updating the design document on every change is a chore, **fixes
+the code, not the document**. So the design document is left un-updated,
+and **the only artifact that keeps up with reality is the code**. The
+common sense that "reading the code is the primary source" was born right
+here.
+
 > "Coding got faster" is the story at the entrance to AI.
 > The story at the exit is that **the structure of the maintenance phase
 > itself** changes.
@@ -121,8 +131,7 @@ flowchart LR
 
 Traditionally, tests and docs were resources that "never followed once
 written." Keeping coverage took a dedicated person; docs almost
-certainly drifted after the initial write; "reading the code is the
-primary source" was the reality.
+certainly drifted after the initial write.
 
 Once AI understands context, these become **derivatives regenerated
 automatically from the design and spec**. Change the design and the

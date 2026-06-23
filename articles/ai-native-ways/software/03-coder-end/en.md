@@ -5,7 +5,7 @@ part: "1"
 lang: en
 title: AI Now Does the Coder's Work
 subtitle: The role centered on writing code gets replaced by AI — and humans move to a broader role, building and operating the system
-description: This chapter defines "coder" — the role whose center is writing code itself. As AI comes to write code, the economic basis of that role collapses. AI does not only write code; it designs too — Opus is a coder, Fable a software engineer that decides structure. Meanwhile, building and operating a system is far broader than writing code: procuring hardware, negotiating with stakeholders, running it, taking responsibility, and shaping it in dialogue with AI — these stay with humans. What disappears is the role definition, not people.
+description: This chapter defines "coder" — the role whose center is writing code itself. As AI comes to write code, the economic basis of that role collapses. AI does not only write code; it designs too — Opus is a coder, Fable and Mythos software engineers that decide structure (the two at the same design level). Meanwhile, building and operating a system is far broader than writing code: procuring hardware, negotiating with stakeholders, running it, taking responsibility, and shaping it in dialogue with AI — these stay with humans. What disappears is the role definition, not people.
 date: 2026.06.15
 label: Introduction 3
 title_html: AI now does<br>the <span class="accent">coder's</span> work.
@@ -64,7 +64,7 @@ called "the ability to write code" stops being scarce.
 And AI's ability has range:
 
 - **Opus** — a first-rate **coder**. Hand it intent and it translates it into running code
-- **Fable** — a **software engineer**. It goes into design, deciding structure itself
+- **Fable / Mythos** — **software engineers**. They go into design, deciding structure itself (the two are at the same level of design ability)
 
 So AI now enters **design**, not just code. The market value of the
 code-writing band — which used to demand a large workforce — converges
@@ -148,7 +148,7 @@ flowchart LR
   subgraph New["AI-native — one person + AI, in dialogue"]
     direction TB
     H["Customer<br/>(hardware, stakeholders,<br/>operations, direction, responsibility)"]
-    A["AI<br/>(code = Opus<br/>design = Fable)"]
+    A["AI<br/>(code = Opus<br/>design = Fable/Mythos)"]
     H <-->|dialogue, mutual understanding| A
   end
 
@@ -165,13 +165,13 @@ that the customer who used to **only place the order** with an SIer now
 stands on the side that builds and runs it. And even just commissioning
 an SIer used to take real effort — writing the RFP, selecting the
 vendor, reconciling requirements, negotiating the contract. **At the
-level of Claude Mythos, with no more than that "effort of ordering,"
-the customer builds it** — express the need in words and the AI
-assembles the whole (taken up in detail in Chapter 5).
+level of a design-capable AI (Fable / Mythos), with no more than that
+"effort of ordering," the customer builds it** (taken up in detail in
+Chapter 5).
 
 > Once, even just **placing the order** with an SIer took real effort.
-> At the Claude Mythos level, that same effort is enough — the
-> customer builds it.
+> At the level of a design-capable AI (Fable / Mythos), that same
+> effort is enough — the customer builds it.
 
 This is not "every programmer loses their job." People who have been
 called programmers split in two directions:

@@ -147,7 +147,7 @@ flowchart LR
 
   subgraph New["AI-native — one person + AI, in dialogue"]
     direction TB
-    H["Human (can be the customer)<br/>(hardware, stakeholders,<br/>operations, direction, responsibility)"]
+    H["Customer<br/>(hardware, stakeholders,<br/>operations, direction, responsibility)"]
     A["AI<br/>(code = Opus<br/>design = Fable)"]
     H <-->|dialogue, mutual understanding| A
   end

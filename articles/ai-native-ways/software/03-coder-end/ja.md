@@ -136,7 +136,7 @@ flowchart LR
 
   subgraph New["AI ネイティブ ── 一人 + AI が対話で"]
     direction TB
-    H["人間(顧客自身でもよい)<br/>(ハード調達・関係者協議<br/>運用・方向・責任)"]
+    H["顧客<br/>(ハード調達・関係者協議<br/>運用・方向・責任)"]
     A["AI<br/>(コード=Opus<br/>設計=Fable)"]
     H <-->|対話・相互理解| A
   end

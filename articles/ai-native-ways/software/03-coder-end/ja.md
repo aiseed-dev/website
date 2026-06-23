@@ -1,11 +1,12 @@
 ---
 slug: coder-end
 number: "03"
+part: "1"
 title: コーダーの仕事はなくなる
 subtitle: 実行はAIに、判断は人間に ── 「コードを書くことが中心の役割」が経済的に成立しなくなる
 description: コーダーを「コードを書くこと自体を仕事の中心に置く役割」と定義する。実行能力と判断能力はもともと別物で、AIが実行を取り、判断は人間に残る。「実行を中心に置く役割」は経済的に成立しなくなる。これは「プログラマー全員が消える」ではなく「コーダーという役割定義が消える」という話だ。
 date: 2026.06.15
-label: Software 03
+label: Introduction 3
 title_html: 実行は<span class="accent">AIに</span>、<br>判断は<span class="accent">人間に</span>。
 prev_slug: maintenance-shift
 prev_title: 保守フェーズの構造変化こそ本質

@@ -1,11 +1,12 @@
 ---
 slug: customer-codev
 number: "05"
+part: "1"
 title: 顧客がAIと協働して開発する時代
 subtitle: 9 割は顧客自身が AI と組んで作り、1 割だけ専門家に相談する
 description: 第4章のビルダー定義から自然に派生する命題 ── 顧客自身がビルダーを担うこと。要件・設計・実装・保守の 9 割は顧客 + AI で完結し、残り 1 割だけ専門家に助言を求める。「AI にできないことは SIer にもできない」 ── これまでの委託構造の前提が、ここで崩れる。学習コストが桁違いに下がったことが、この移行を可能にした。
 date: 2026.06.29
-label: Software 05
+label: Introduction 5
 title_html: 顧客が <span class="accent">9 割</span> を作り、<br>残り <span class="accent">1 割</span> を相談する。
 prev_slug: builder
 prev_title: ビルダーという役割

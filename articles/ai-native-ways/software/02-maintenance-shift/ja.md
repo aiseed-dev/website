@@ -1,11 +1,12 @@
 ---
 slug: maintenance-shift
 number: "02"
+part: "1"
 title: 保守フェーズの構造変化こそ本質
 subtitle: コーディングコスト低下は氷山の一角 ── 保守の単位は、コードから設計・仕様に移る
 description: AIがコードを書くようになったことの最も見落とされやすい帰結は、コーディングの高速化ではなく保守フェーズそのものの構造変化だ。保守の単位がコードから設計・仕様に移り、レガシーコード読解のコストが消える。ただし人間が設計の主導権を握り続けることが条件で、それを失うと AI生成の技術的負債が急速に積み上がる。
 date: 2026.06.08
-label: Software 02
+label: Introduction 2
 title_html: 保守の単位は、<br><span class="accent">コードから設計</span>へ。
 prev_slug: coder-top
 prev_title: AI は、世界で最も難しいコーディング問題を解く

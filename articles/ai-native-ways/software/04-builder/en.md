@@ -1,12 +1,13 @@
 ---
 slug: builder
 number: "04"
+part: "1"
 lang: en
 title: The Builder Role
 subtitle: Decide what to build, hand the writing to AI, evaluate the output, integrate the structure
 description: The builder is a judgment-centered role, not the next version of the coder. Skills, evaluation yardstick, and output structure are all different. This chapter defines the builder as a loop — decide, delegate, evaluate, integrate — and reads aiseed.dev (the site this article lives on, built by one person plus AI in 24 hours) as a concrete instance against the cost structure of a coder team.
 date: 2026.06.22
-label: Software 04
+label: Introduction 4
 title_html: Humans <span class="accent">decide</span>,<br>AI <span class="accent">writes</span>.
 prev_slug: coder-end
 prev_title: The Coder's Job Goes Away

@@ -1,12 +1,13 @@
 ---
 slug: coder-end
 number: "03"
+part: "1"
 lang: en
 title: The Coder's Job Goes Away
 subtitle: Execution moves to AI, judgment stays with humans — the role centered on writing code stops paying off
 description: This chapter defines "coder" precisely — the role whose center is writing code itself. Execution ability and judgment ability are different things; AI takes execution completely, judgment stays with humans. The role centered on execution stops being economically viable. This is not "all programmers disappear" but "the coder role definition disappears".
 date: 2026.06.15
-label: Software 03
+label: Introduction 3
 title_html: Execution to <span class="accent">AI</span>,<br>judgment to <span class="accent">humans</span>.
 prev_slug: maintenance-shift
 prev_title: Maintenance-Phase Shift Is the Real Story

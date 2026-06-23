@@ -1,11 +1,12 @@
 ---
 slug: coder-top
 number: "01"
+part: "1"
 title: AI は、世界で最も難しいコーディング問題を解く
 subtitle: Codeforces 2700 帯 ── Claude Max なら月 3 万円で、世界の最上層に届く
 description: AI のコード作成能力は、競技プログラミングの公開レーティングで人間トップクラスに並んだ。鍵となる事実は二つ ── 到達した能力の水準と、その能力に Claude Max($200/月、約 3 万円)で誰でもアクセスできること。この二つから、ソフトウェア開発編の議論が始まる。
 date: 2026.06.01
-label: Software 01
+label: Introduction 1
 title_html: <span class="accent">最難のコーディング問題</span>を、<br>AI が解く。
 prev_slug:
 prev_title:

@@ -115,15 +115,11 @@ commit history) — it reads them all in seconds. Not a 1× or 2×
 difference; three orders of magnitude or more.
 
 But the essence lies further on. If AI understands context, then **the
-maintenance where a human takes on the code line by line — reading,
-fixing, chasing tests — itself stops being necessary**. The unit a human
-touches rises one level, from code to **design, spec, and context**:
-
-- A bug appears → find **where the gap is in the spec or context**,
-  together with AI
-- Fix it → AI generates the code from the context
-- Tests and docs → AI regenerates them from the design
-- Update the design or spec → code, tests, and docs follow at once
+maintenance where a human takes on the code itself stops being
+necessary**. You just tell AI what you want, in plain words — "change
+this to that," "fix this bug." From there, AI traces the context, fixes
+the code, and rebuilds the tests and docs to match. It is the same as
+asking an SIer to "fix this part."
 
 The **main battleground** of maintenance moves from code to design,
 spec, and context. "Cannot touch it" becomes "can touch it" — you can

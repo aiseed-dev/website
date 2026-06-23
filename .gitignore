@@ -9,7 +9,9 @@ Desktop.ini
 *~
 .vscode/
 .idea/
-.zed
+..zed/*
+!.zed/tasks.json
+!.zed/settings.json
 
 # Python
 __pycache__/

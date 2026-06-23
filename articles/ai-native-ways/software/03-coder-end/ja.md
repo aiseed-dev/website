@@ -124,17 +124,19 @@ AI は、文脈を**与えられれば**処理し、設計もする。だが、*
 
 ```mermaid
 flowchart LR
-  subgraph Old["旧来 ── SIer の役割分業"]
+  subgraph Old["旧来 ── 顧客が SIer に発注"]
     direction TB
-    OC["コーダー(書く)"]
-    OD["設計者"]
+    OClient["顧客"]
     OP["PM"]
-    OC --- OD --- OP
+    OD["設計者"]
+    OC["コーダー(書く)"]
+    OClient ==>|発注| OP
+    OP --- OD --- OC
   end
 
   subgraph New["AI ネイティブ ── 一人 + AI が対話で"]
     direction TB
-    H["人間<br/>(ハード調達・関係者協議<br/>運用・方向・責任)"]
+    H["人間(顧客自身でもよい)<br/>(ハード調達・関係者協議<br/>運用・方向・責任)"]
     A["AI<br/>(コード=Opus<br/>設計=Fable)"]
     H <-->|対話・相互理解| A
   end

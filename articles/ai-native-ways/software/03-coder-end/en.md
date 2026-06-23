@@ -135,17 +135,19 @@ builds and operates the system — moving into that broader role
 
 ```mermaid
 flowchart LR
-  subgraph Old["Old — the SIer division of labor"]
+  subgraph Old["Old — the customer commissions an SIer"]
     direction TB
-    OC["Coder (writes)"]
-    OD["Designer"]
+    OClient["Customer"]
     OP["PM"]
-    OC --- OD --- OP
+    OD["Designer"]
+    OC["Coder (writes)"]
+    OClient ==>|commissions| OP
+    OP --- OD --- OC
   end
 
   subgraph New["AI-native — one person + AI, in dialogue"]
     direction TB
-    H["Human<br/>(hardware, stakeholders,<br/>operations, direction, responsibility)"]
+    H["Human (can be the customer)<br/>(hardware, stakeholders,<br/>operations, direction, responsibility)"]
     A["AI<br/>(code = Opus<br/>design = Fable)"]
     H <-->|dialogue, mutual understanding| A
   end

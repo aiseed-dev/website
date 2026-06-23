@@ -65,6 +65,15 @@ and **the only artifact that keeps up with reality is the code**. The
 common sense that "reading the code is the primary source" was born right
 here.
 
+And this common sense breeds "vibe coding." If code is the primary
+source, the mindset becomes **as long as you can write code, you are
+done** — if it runs, if it produces output, it counts. But this is
+**meaningless**. Code with no design, no spec, no context behind it —
+even when it runs — leaves no one, not the author, not the next reader,
+able to say what it does or why. What piles up is a heap of code no one
+can read, fix, or trust. Being able to write code is, in itself, worth
+almost nothing.
+
 > "Coding got faster" is the story at the entrance to AI.
 > The story at the exit is that **the structure of the maintenance phase
 > itself** changes.
@@ -162,14 +171,12 @@ comes back, and:
   intent was
 - **In a few months, a codebase no one can maintain**
 
-This is the failure mode called "vibe coding." Its root is **the old
-common sense that "reading the code is the primary source."** As long as
-code is treated as the source of truth, people keep adding code without
-an explicit context — and let it rot. Even if AI can understand context,
-**if the context you hand it is vague, there is nothing to understand**.
-The faster AI is, the faster debt piles up in development that has not
-made its context explicit. **Moving the primary source from code to
-design, spec, and context** is what prevents vibe coding.
+This is the "vibe coding" from earlier — the old "just write code" turned
+fast by AI. Even if AI can understand context, **if the context you hand
+it is vague, there is nothing to understand**. The faster AI is, the
+faster debt piles up in development that has not made its context
+explicit. **Moving the primary source from code to design, spec, and
+context** is what prevents vibe coding.
 
 So the work on the **making side** gets heavier, not lighter. But this is
 **not something the ordering side (the customer) thinks about** — keeping

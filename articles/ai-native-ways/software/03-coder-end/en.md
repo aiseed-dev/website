@@ -75,9 +75,12 @@ to read the target system, sequence the steps, and structure the line of
 attack — the same ability as designing software. That it can be used for
 an attack means it can be used for design.
 
-So AI now enters **design**, not just code. The market value of the
-code-writing band — which used to demand a large workforce — converges
-to near zero. Not a statement about labor ethics, but about prices.
+So AI now enters **design**, not just code. This is a step up.
+**Earlier AI was a substitute for the coder. In the Fable / Mythos era
+it became a substitute for the SIer — taking on requirements, design,
+and build.** The market value of the code-writing band — which used to
+demand a large workforce — converges to near zero. Not a statement
+about labor ethics, but about prices.
 
 ## Building and operating a system is broader than writing code
 

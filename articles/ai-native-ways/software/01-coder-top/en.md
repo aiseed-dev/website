@@ -267,7 +267,7 @@ Every chapter that follows is **deduced** from this one fact.
   industry, the time horizon over which the transition completes.
 
 These are not independent observations. They all derive from one point:
-**top-tier coding ability is available for $200 a month**. This chapter
+**the strongest SIer is available for $200 a month**. This chapter
 exists only to plant that point.
 
 One more frame for what follows. This sub-series covers **structural
@@ -280,7 +280,7 @@ the outsourcing, the employment, and the prices of software development
 rearrange?**
 
 > Compressed to one line, this is the sub-series:
-> **if top-tier coding costs $200 a month, the outsourcing-centered
+> **if the strongest SIer costs $200 a month, the outsourcing-centered
 > structure of software development can no longer hold**.
 
 And one more thread — if AI carries both coding and design, what remains

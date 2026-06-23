@@ -154,44 +154,6 @@ AI for a piece while keeping the old flow, and the same symptoms
 reproduce. Designing that circuit is taken up in Chapter 4 as the
 builder's role.
 
-## But it collapses if you cannot keep context explicit
-
-The structural change above holds on one condition — **keeping design,
-spec, and intent — that is, context — explicit, and reconciled with
-reality.**
-
-Drop that condition and the structure collapses the other way. Leave the
-context vague, say only "add a feature," and keep absorbing the code that
-comes back, and:
-
-- Locally-working fixes break the consistency of the whole
-- The same concept gets expressed differently in several places
-- Abstraction layers keep multiplying, never tidied
-- On the next read, neither AI nor human can tell what the primary
-  intent was
-- **In a few months, a codebase no one can maintain**
-
-This is the "vibe coding" from earlier — the old "just write code" turned
-fast by AI. Even if AI can understand context, **if the context you hand
-it is vague, there is nothing to understand**. The faster AI is, the
-faster debt piles up in development that has not made its context
-explicit. **Moving the primary source from code to design, spec, and
-context** is what prevents vibe coding.
-
-So the work on the **making side** gets heavier, not lighter. But this is
-**not something the ordering side (the customer) thinks about** — keeping
-context explicit and not letting debt accumulate is a discipline carried
-by **the making side, the one in the SIer-like role (this series'
-"builder")**. What to change, which invariants to hold, what to reconcile
-with reality — deciding these, talking them through with AI, and taking
-responsibility. This is **not the ability to write code, but the ability
-to read the real-world context and hold direction and responsibility**.
-Chapters 3 and 4 detail this as the difference between the "coder" and
-the "builder."
-
-> A human who keeps context explicit + AI = maintenance cost collapses.
-> A human who lets go of context + AI = unmaintainable code, mass-produced.
-
 ## Where the next chapter goes
 
 Maintaining at the code level stops being necessary, and the main

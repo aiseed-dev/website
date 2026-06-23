@@ -263,7 +263,7 @@ how builders get positioned, how they are paid, and how they function.
 
 ## Related articles
 
-- [Introduction Chapter 3: The Coder's Job Goes Away](/en/ai-native-ways/software/coder-end/)
+- [Introduction Chapter 3: AI Now Does the Coder's Work](/en/ai-native-ways/software/coder-end/)
 - [Introduction Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
 - [Chapter 2: The Order-of-Magnitude Price Gap](/en/ai-native-ways/software/price-gap/)
 - [Chapter 4: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)

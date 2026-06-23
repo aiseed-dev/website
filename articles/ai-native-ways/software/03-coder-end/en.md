@@ -3,27 +3,27 @@ slug: coder-end
 number: "03"
 part: "1"
 lang: en
-title: The Coder's Job Goes Away
-subtitle: The role centered on writing code goes away — but it is not a division of labor ("AI executes, humans judge"); it is dialogue
-description: This chapter defines "coder" — the role whose center is writing code itself. As AI comes to write code, the economic basis of that role collapses. But the clean division of labor "AI executes, humans judge" is false. Humans and AI build by talking and understanding each other. Humans also procure hardware and negotiate with stakeholders — not judgment alone. And AI is not execution alone: Opus is a coder, Fable a software engineer that designs. What disappears is the role definition, not people.
+title: AI Now Does the Coder's Work
+subtitle: The role centered on writing code gets replaced by AI — and humans move to a broader role, building and operating the system
+description: This chapter defines "coder" — the role whose center is writing code itself. As AI comes to write code, the economic basis of that role collapses. AI does not only write code; it designs too — Opus is a coder, Fable a software engineer that decides structure. Meanwhile, building and operating a system is far broader than writing code: procuring hardware, negotiating with stakeholders, running it, taking responsibility, and shaping it in dialogue with AI — these stay with humans. What disappears is the role definition, not people.
 date: 2026.06.15
 label: Introduction 3
-title_html: The code-writing role goes away.<br>But it is <span class="accent">dialogue</span>, not <span class="accent">division of labor</span>.
+title_html: AI now does<br>the <span class="accent">coder's</span> work.
 prev_slug: maintenance-shift
 prev_title: "Maintenance-Phase Shift Is the Real Story"
 next_slug: builder
 next_title: "The Builder Role"
 ---
 
-# The Coder's Job Goes Away
+# AI Now Does the Coder's Work
 
-**The role whose center is "writing code" no longer holds together**.
+**The role whose center is "writing code" gets replaced by AI**.
 
 Chapter 2 showed that the main battleground of maintenance moves from
 "the ability to write code" to "the ability to decide the design."
 This chapter takes up the other face of that shift — the role itself.
-The coder role goes away, and is replaced by a broader role: building
-and operating a system in dialogue with AI (Chapter 4 names it
+The coder role gets replaced by AI, and humans move to a broader role:
+building and operating a system in dialogue with AI (Chapter 4 names it
 "builder").
 
 A note up front. This chapter is not saying "all programmers
@@ -54,6 +54,21 @@ focused only on writing. The SIer industry, contract development, and
 multi-tier subcontracting structures are all built on that premise
 (Shift Chapter 1 takes up the structure).
 
+## AI writes code, and designs too — Opus a coder, Fable an SE
+
+Chapter 1 established that top-tier coding ability is reachable for $200
+a month. AI writes code — and with that one fact, the scarce resource
+called "the ability to write code" stops being scarce.
+
+And AI's ability has range:
+
+- **Opus** — a first-rate **coder**. Hand it intent and it translates it into running code
+- **Fable** — a **software engineer**. It goes into design, deciding structure itself
+
+So AI now enters **design**, not just code. The market value of the
+code-writing band — which used to demand a large workforce — converges
+to near zero. Not a statement about labor ethics, but about prices.
+
 ## Building and operating a system is broader than writing code
 
 Set aside, for a moment, the SIer way of seeing it: splitting
@@ -70,34 +85,18 @@ code:
 - **Running it and fixing it, continuously** — operations and maintenance never end
 - **Shaping it in dialogue with AI** — not a single instruction, but back-and-forth
 
-These lie outside code. And they are entangled — not cleanly divided
-into two boxes called "execution" and "judgment." **Building and
-deciding mix in dialogue.**
+These lie outside code. And they are entangled — not settled by a
+single instruction. **Humans and AI shape what gets built by talking
+back and forth.**
 
 > Shrinking "development" to "the code-writing step" was the SIer's
 > convenience. In reality it is far broader — **procure hardware,
 > negotiate with people, run it, and talk with AI.**
 
-## AI writes code, and designs too — Opus a coder, Fable an SE
+## What stays with humans
 
-Chapter 1 established that top-tier coding ability is reachable for $200
-a month. AI writes code — and with that one fact, the scarce resource
-called "the ability to write code" stops being scarce.
-
-And AI is not "execution only." The ability has range:
-
-- **Opus** — a first-rate **coder**. Hand it intent and it translates it into running code
-- **Fable** — a **software engineer**. It goes into design, deciding structure itself
-
-So AI now enters **design**, which used to be put on the "judgment
-side." The line "AI executes, humans judge" breaks down here. The
-market value of the code-writing band converges to near zero — not a
-statement about labor ethics, but about prices.
-
-## So what stays with humans?
-
-"Humans only judge" is false too. What only humans can do includes
-judgment, but is not just that:
+While AI moves into code and design, the work only humans can do stays
+broad:
 
 - **Procuring hardware** (the physical world)
 - **Negotiating with stakeholders** (the social world)
@@ -107,18 +106,16 @@ judgment, but is not just that:
 
 AI processes context **when given**, and designs. But **what to count
 as context, and what to reconcile with reality**, is decided by humans.
-And humans take the responsibility — to let AI judge is to hand the
-responsibility along, and no current institution provides a subject to
-take that on.
+And humans take the responsibility — and under current institutions, the
+subject who carries that responsibility is not the AI.
 
-What humans do does not fit in the one word "judgment." **Moving in the
-physical and social world, keeping it running, talking with AI, and
-carrying responsibility** — the broad work of building and operating a
-system.
+What humans do is broad. **Moving in the physical and social world,
+keeping it running, talking with AI, and carrying responsibility** — the
+whole of building and operating a system.
 
-> Humans do not only judge.
-> **They procure hardware, negotiate with people, keep it running, talk
-> with AI, and take responsibility.**
+> Humans **procure hardware, negotiate with people, keep it running,
+> talk with AI, and take responsibility.** They carry the whole work of
+> building and operating a system.
 
 ## What goes away is "the code-writing role"
 
@@ -130,10 +127,10 @@ Put the pieces together:
 
 So what goes away is **the role whose center is writing code itself
 (the coder)** — and the **division of labor** the SIer built to mass-
-produce it. Not "execution or judgment." Demand does not vanish; the
-**code-writing band gets replaced by AI, so no price holds**. One person,
-in dialogue with AI, builds and operates the system — moving into that
-broader role (Chapter 4 names it "builder").
+produce it. Demand does not vanish; the **code-writing band gets
+replaced by AI, so no price holds**. One person, in dialogue with AI,
+builds and operates the system — moving into that broader role
+(Chapter 4 names it "builder").
 
 ```mermaid
 flowchart LR
@@ -170,14 +167,15 @@ called programmers split in two directions:
   and responsibility load (defined in Chapter 4).
 
 History has parallel transitions. In Japan, when calculators arrived
-in the 1970s, the execution skill of **commercial calculation by
-abacus (soroban)** disappeared, but people who could judge what the
-numbers meant moved into accounting and finance. The same transition
-happened in the West with the **human computer**, and in printing
-with the **typesetter** as phototypesetting replaced letterpress.
-**When execution gets mechanized, what splits is who can move to the
-broader side (orchestration, dialogue, operations, responsibility) and
-who cannot**. The same thing is happening in the coding band now.
+in the 1970s, the skill of **commercial calculation by abacus
+(soroban)** disappeared, but people who could read what the numbers
+meant and keep the work running moved into accounting and finance. The
+same transition happened in the West with the **human computer**, and
+in printing with the **typesetter** as phototypesetting replaced
+letterpress. **When handwork gets replaced by machines, what splits is
+who can move to the broader side (orchestration, dialogue, operations,
+responsibility) and who cannot**. The same thing is happening in the
+coding band now.
 
 The thing to flag is **the speed of the transition**. After Casio
 released the Casio Mini in 1972 at ¥12,800 and other low-priced models

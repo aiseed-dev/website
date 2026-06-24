@@ -554,8 +554,10 @@ must defend. Count, gladly, **what AI can do**.
 - **Research, summarize, structure** — from gathering primary sources
   to organizing them
 
-Work once called a "profession," requiring years of apprenticeship —
-AI does most of it. **And that is fine.** Better still: hand AI
+Work once called a "profession" — law, medicine, accounting — is at
+its core **knowledge learned from books**, not a craftsman's
+apprenticeship. **That is exactly why AI, having learned from the same
+texts, can do most of it.** And that is fine. Better still: hand AI
 everything AI can do, without hesitation.
 
 Because **the more AI can do, the higher the human rises.** From

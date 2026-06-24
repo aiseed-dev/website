@@ -173,36 +173,38 @@ latter equation dominates.
 The skill content differs as well. What a builder sharpens looks like
 this:
 
-- **Decomposition** — slicing a big thing into pieces AI can take
-- **Articulation** — turning tacit intent into explicit instructions
-  AI can process
-- **Evaluation eye** — telling code that merely runs from code that
-  fits the design
-- **Integration judgment** — seeing whether a part breaks the
-  consistency of the whole
-- **Selection** — picking "this one" from the three options AI returns
+- **Reading context** — grasping, from customer, field, and reality,
+  what matters
+- **Articulation** — turning tacit intent into explicit words AI can take
+- **Evaluation** — seeing whether what comes back fits reality and meets
+  the purpose
+- **Integration judgment** — seeing whether a part breaks the consistency
+  or the aim of the whole
+- **Selection and responsibility** — picking "this one" from what comes
+  back, and owning that judgment
 
-None of these come from memorizing language grammar. **Experience
-writing code helps**, but as a footing for judgment — not as the
-writing skill itself.
+None of these come from memorizing language grammar or framework
+fluency. **Even someone who cannot read code can become a builder, as
+long as they can read reality and judge what matters** (as Chapter 3
+showed, that includes people at the field).
 
 ## A builder's foundation is liberal arts, not software engineering
 
-Experience writing code works as **scaffolding** for a builder's
-work — but not as its center. At the center are structural
-decomposition, verbalization, evaluative eye, integration judgment,
-selection — all of which have been called **the liberal arts** (the
-*artes liberales*, the "seven liberal arts") for two thousand years.
+At the center of a builder's work are reading context, verbalization,
+evaluation, integration judgment, selection, and responsibility — all of
+which have been called **the liberal arts** (the *artes liberales*, the
+"seven liberal arts") for two thousand years. Experience writing code can
+serve as scaffolding, but it is not the center.
 
 | What a builder needs | Its liberal-arts counterpart |
 |---|---|
-| Structural decomposition | Logic, analysis (the *trivium*'s dialectic) |
-| Verbalization (turning implicit intent into explicit description) | Grammar, rhetoric (the *trivium*) |
-| Evaluative eye (separating "merely runs" from "fits the design") | Aesthetics, ethics |
+| Reading context (from customer, field, reality) | History, social science, political philosophy |
+| Verbalization (turning implicit intent into explicit words) | Grammar, rhetoric (the *trivium*) |
+| Decomposing the problem (into a form that can be handled) | Logic, analysis (the *trivium*'s dialectic) |
+| Evaluation (whether it fits reality and the purpose) | Aesthetics, ethics |
 | Integration judgment (seeing whether parts preserve the whole) | Systems thinking (from the *quadrivium*'s geometry and the constructive sense of music) |
-| Selection (picking "this one" from three options) | Ethics, theory of judgment |
-| Reading context (cutting it out of customer and field) | History, social science, political philosophy |
-| Responsibility for the claim (judgment is not delegated) | Ethics |
+| Selection (picking "this one" from the options) | Ethics, theory of judgment |
+| Value and responsibility (what matters; judgment is not delegated) | Ethics |
 
 What AI took over is **the core of software engineering** —
 algorithms, language specifications, frameworks, design patterns,
@@ -221,10 +223,9 @@ arts.
 
 ## Where the next chapter goes
 
-The builder ships larger scope with fewer people than a team of software
-engineers.
-And this is not just an internal-team story — **the customer can
-become the builder**, by the same logic.
+Paired with AI, a builder can carry a large scope alone. And this is not
+just an internal-team story — **the customer can become the builder**, by
+the same logic.
 
 The next chapter takes up the era in which customers themselves pair
 with AI and develop. What fraction of customers who used to commission

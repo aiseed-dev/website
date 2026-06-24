@@ -156,24 +156,6 @@ flowchart LR
 > Now, both maintenance and development become **a dialogue with AI** —
 > tell it what you want, and AI rebuilds the code, the tests, and the docs.
 
-## Tests and docs become resources synced from context
-
-Traditionally, tests and docs were resources that "never followed once
-written." Keeping coverage took a dedicated person; docs almost
-certainly drifted after the initial write.
-
-Once AI understands context, these become **derivatives regenerated
-automatically from the design and spec**. Change the design and the
-blast radius surfaces and tests update; docs regenerate from the change;
-at review time, code, tests, and docs are **always at the same
-generation**. The chronic diseases of maintenance — "no time to write
-tests," "the docs are stale" — disappear.
-
-This holds only when AI is **built into the maintenance circuit**. Ask
-AI for a piece while keeping the old flow, and the same symptoms
-reproduce. Designing that circuit is taken up in Chapter 4 as the
-builder's role.
-
 ## Where the next chapter goes
 
 Maintaining at the code level stops being necessary, and the main

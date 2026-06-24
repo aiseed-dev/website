@@ -127,6 +127,9 @@ with sync_playwright() as p:
     # → rewrite references to local relative paths (finish it in dialogue with AI)
 ```
 
+(This site's repository ships an implementation, `tools/mirror_site.py` — pass it
+a URL and an output directory; it's runnable from a Zed task too.)
+
 Upload the sucked-out static files to Cloudflare Pages and you can **shut down
 the running WordPress — attack surface and all.** Dynamic features like contact
 forms and checkout won't carry over, so move forms to an external service and

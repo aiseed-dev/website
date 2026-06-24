@@ -10,8 +10,8 @@ label: AI Native 13
 title_html: From <span class="accent">silos</span><br>to the autonomy of <span class="accent">one + AI</span>.
 prev_slug: verify-narratives
 prev_title: "Verifying Narratives with AI"
-next_slug: microsoft-365
-next_title: "Replacing Microsoft 365 Wholesale — Six One-to-One Mappings"
+next_slug:
+next_title:
 ---
 
 # One Person + AI — The New Unit of Work

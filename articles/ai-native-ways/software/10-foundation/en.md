@@ -1,31 +1,32 @@
 ---
 slug: foundation
-number: "01"
+number: "02"
 part: "2"
 lang: en
-title: "Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars"
+title: "Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars"
 subtitle: "Stand up the data layer everything sits on, first, on your own side"
-description: The Setup part starts with the data layer everything sits on. Shared data goes in PostgreSQL; local data in SQLite. Enable pgvector for semantic search; analyze with columnar DuckDB and Polars — Excel stays the human's I/O while machines crunch the data behind it; pull far ahead of Power BI. Stand it up with Docker, migrate from Azure SQL with pgloader. The generic is already shared as OSS — you don't write it, you stand it up.
+description: The Setup part starts with the data layer everything sits on. SQLite is usually enough — a single file, no server, already built into Python. Step up to PostgreSQL only when you share and several people write at once. Enable pgvector for semantic search; analyze with columnar DuckDB and Polars — Excel stays the human's I/O while machines crunch the data behind it; pull far ahead of Power BI. The generic is already shared as OSS — you don't write it, you stand it up.
 date: 2026.07.01
-label: Independence 1
+label: Independence 2
 title_html: Stand up the <span class="accent">data layer</span><br>first, on your own side.
-prev_slug: embedded
-prev_title: "Build Embedded — Think in Python, Have Claude Translate"
+prev_slug: independence
+prev_title: "Becoming Independent from Microsoft and Google — The Whole Map"
 next_slug: auth
 next_title: "Stand Up the Gate — One Login with PocketBase"
 ---
 
-# Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars
+# Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars
 
 **A builder's work does not begin with writing code. It begins with
 standing up proven OSS** (Introduction Chapter 5). Generic functionality is
 already shared with the world — so you don't "write" it, you "stand it up."
 
-This Setup part (from Chapter 1) stands up, one by one, the OSS that replaces
-Microsoft 365 and the vendor packages under the core systems. First is the
-**data layer.**
+After the whole map (Chapter 1), this Independence part stands up, one by one,
+the OSS that replaces Microsoft 365, Google Workspace, and the vendor packages
+under the core systems. The first thing to lay is the **data layer.**
 Analysis, the AI's RAG, course booking, the core systems —
-**all of the shared data sits on top of this.** So you lay it first.
+**all of the data sits on top of this.** So you lay it first. And
+**SQLite is usually enough** — you don't have to start with a heavy warehouse.
 
 ## Why start from the data layer
 
@@ -40,11 +41,43 @@ With the foundation in place first, everything above is just "put it on the
 DB that already exists." **The earlier you lay it, the lighter everything
 after.**
 
-## Stand up PostgreSQL
+And that foundation doesn't have to be heavy from the start.
 
-The database is **PostgreSQL** — open source, free, commercial-OK. It
+> **SQLite is usually enough. Step up to PostgreSQL only when you share and
+> several people write at once.**
+
+For one person, one app, most uses — start with SQLite. The order in which
+you lay things follows from that.
+
+## Hold it in a single file — SQLite
+
+The default database is **SQLite.** No server to run — it fits in **one
+file.** It is built into Python from the start, so there's nothing extra to
+install. It is the most widely deployed database in the world; it ships
+inside every phone and browser.
+
+```bash
+# no library needed — it's in the standard install
+sqlite3 app.db 'CREATE TABLE memo(id integer primary key, body text)'
+```
+
+Settings one person keeps, small data sitting on the device — this is enough
+for both. The **gate (PocketBase) stood up next chapter also runs on this
+SQLite.** **If a single app just keeps it locally, start with SQLite.** It's
+standard SQL, so Claude writes it as-is.
+
+What runs out is the moment you **share and several people write at the same
+time.** Only then do you step the warehouse up a level.
+
+## When you share — PostgreSQL
+
+When you need a shared warehouse several apps or people read and write at
+once, step up to **PostgreSQL** — open source, free, commercial-OK. It
 matches or exceeds Oracle and SQL Server, and it is the dialect Claude
-handles best (Introduction Chapter 5; parent series Chapter 14).
+handles best (Introduction Chapter 5; Chapter 1). It's the
+same standard SQL as SQLite, so stepping up doesn't change how you write.
+**Trade the notebook (SQLite) for the warehouse (PostgreSQL) by what each is
+for.**
 
 One `compose.yaml` stands it up.
 
@@ -91,24 +124,6 @@ Now you have the foundation for searching documents by **meaning.** Put
 embeddings in `embedding` and pull the nearest with
 `ORDER BY embedding <=> :query` — the real RAG pipeline gets built in the AI
 chapter. **For now, just have the vessel ready.**
-
-## Hold it in a single file — SQLite
-
-Not everything belongs on the shared server (PostgreSQL). For settings a
-single app keeps to itself, or small data that lives on the device, **SQLite**
-fits. No server to run — it fits in **one file.** It is the most widely
-deployed database in the world; it ships inside every phone and browser.
-
-```bash
-# no library needed — it's in the standard install
-sqlite3 app.db 'CREATE TABLE memo(id integer primary key, body text)'
-```
-
-The **gate (PocketBase) stood up next chapter also runs on this SQLite.** The
-rule of thumb is one line. **If several apps or people write at the same time,
-PostgreSQL; if a single app just keeps it locally, SQLite.** Both speak
-standard SQL, and Claude writes it as-is. **Use the warehouse (PostgreSQL) and
-the notebook (SQLite) for what each is for.**
 
 ## Migrate from Azure SQL
 
@@ -183,8 +198,8 @@ For huge, always-on aggregation, move it onto the columnar DB server
 
 The data layer, onto your own side, first.
 
-- **PostgreSQL** (+ pgvector) — the shared warehouse booking, the core, and RAG sit on
-- **SQLite** — a serverless single file, for local, device, and small-tool data (the gate runs on it too)
+- **SQLite** — the default: a serverless single file, built into Python; enough for one person, one app, most uses (the gate runs on it too)
+- **PostgreSQL** (+ pgvector) — step up only when you share and several people write; the warehouse booking, the core, and RAG sit on
 - **pgvector** — the foundation for semantic search (RAG comes in the AI chapter)
 - **pgloader** — one-pass migration from Azure SQL, dropping only the dialect
 - **DuckDB / Polars** — columnar analysis and a fast dataframe; Excel stays the human's I/O, heavy crunching moves machine-side, pulling far ahead of Power BI
@@ -198,5 +213,5 @@ on top of this, as the shared gatekeeper across the apps.
 ## Related articles
 
 - [Introduction Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
-- [Parent series, Chapter 14: Replacing Microsoft 365 Wholesale](/en/ai-native-ways/microsoft-365/)
-- [Chapter 2: Living with Business Systems — Rewrite by Running in Parallel](/en/ai-native-ways/business-systems/)
+- [Chapter 1: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)
+- [Parent series, Chapter 7: Living with Business Systems — Rewrite by Running in Parallel](/en/ai-native-ways/business-systems/)

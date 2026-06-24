@@ -1,16 +1,16 @@
 ---
 slug: auth
-number: "02"
+number: "03"
 part: "2"
 lang: en
 title: "Stand Up the Gate — One Login with PocketBase"
 subtitle: "One front door for every app — email, OAuth, and one-time codes from a single binary"
 description: Authentication is not something each app builds on its own. It is a gate you stand up once and share. PocketBase is a single binary with email auth, OAuth2, one-time codes, MFA, an admin UI, and a REST API. Identity lives in the gate; business data lives in PostgreSQL — separate the gate from the warehouse. Step off Microsoft Entra ID's per-seat monthly bill.
 date: 2026.07.02
-label: Independence 2
+label: Independence 3
 title_html: One front door,<br>a <span class="accent">gate</span> from a single binary.
 prev_slug: foundation
-prev_title: "Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars"
+prev_title: "Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars"
 next_slug: code
 next_title: "Bring Code In-House — Forgejo and Zed"
 ---
@@ -40,7 +40,7 @@ one gate and sharing it** is faster, safer, and cheaper.
 
 The gate is **PocketBase**. A single **Go binary** carries authentication, an
 admin UI, REST / realtime APIs, and file storage. It **runs on the SQLite**
-introduced in Chapter 1, so there is no separate server to run. One
+introduced in Chapter 2, so there is no separate server to run. One
 `compose.yaml` stands it up.
 
 ```yaml
@@ -78,7 +78,7 @@ the gate to your side; leave the user's experience unchanged.
 ## Identity in the gate, business data in the warehouse
 
 This is the crux of the design. **Identity (who) lives in the gate; business
-data (what they did) lives in PostgreSQL** (Chapter 1). Separate the gate
+data (what they did) lives in PostgreSQL** (Chapter 2). Separate the gate
 from the warehouse.
 
 An app **verifies the gate's token, pulls out `user.id`,** and reads and
@@ -145,7 +145,7 @@ bring Word, Excel, and PowerPoint to our own side.
 
 ## Related articles
 
-- [Chapter 1: Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars](/en/ai-native-ways/software/foundation/)
+- [Chapter 2: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars](/en/ai-native-ways/software/foundation/)
 - [Reference implementation kura — a self-hosted workspace using PocketBase as the gate](https://github.com/aiseed-dev/workspace)
-- [Parent series, Chapter 14: Replacing Microsoft 365 Wholesale](/en/ai-native-ways/microsoft-365/)
+- [Chapter 1: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)
 - [Parent series, Chapter 7: Living with Business Systems — Rewrite by Running in Parallel](/en/ai-native-ways/business-systems/)

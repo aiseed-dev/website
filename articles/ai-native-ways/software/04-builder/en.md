@@ -5,7 +5,7 @@ part: "1"
 lang: en
 title: The Builder Role
 subtitle: Decide what to build, build it in dialogue with AI, run it, integrate the whole
-description: The builder builds and runs whole systems in dialogue with AI — not the next version of the software engineer. The SE solves "narrowly closed problems" and is replaced by AI; the builder handles the "open problem" of raising what to build from reality. This chapter defines the builder as a loop — decide, build with AI, check, integrate — and reads aiseed.dev (built by one person plus AI in 24 hours) as a concrete instance against the cost structure of an SE team.
+description: The builder builds and runs whole systems in dialogue with AI — not the next version of the software engineer. The SE solves "narrowly closed problems" and is replaced by AI; the builder handles the "open problem" of raising what to build from reality. This chapter defines the builder as a loop — decide, build with AI, check, integrate — and, along the axis of the SE's narrowly closed problem versus the builder's open problem, shows why judgment cannot be left to AI.
 date: 2026.06.22
 label: Introduction 4
 title_html: Decide it, <span class="accent">build it with AI</span>,<br>run it.
@@ -24,16 +24,7 @@ Chapter 3 said both the coder and the software engineer have their work
 done by AI. What remains is the broader role of building and running
 systems in dialogue with AI, and this book calls it the builder. This
 chapter fixes the definition — what the builder does, where the builder
-differs from the software engineer, why one person plus AI works — by
-grounding it in a concrete example.
-
-The concrete example is the site this article lives on. The **code
-base** of aiseed.dev (about 6,000 lines) was stood up by one person
-plus AI in roughly 24 hours; on top of it run about 150 bilingual
-articles across five independent series. The articles are written on a
-separate timeline — **roughly one week per sub-series** — covered
-below. Every source and build script needed to reproduce the site is
-committed to this repository.
+differs from the software engineer, why one person plus AI works.
 
 ## The builder decides what to build, then builds and runs it with AI
 
@@ -227,173 +218,6 @@ arts.
 
 > A builder's foundation is not software engineering. It is
 > **the free person's arts of the AI era — the liberal arts**.
-
-One distinction is worth naming. What AI has absorbed is **software
-engineering** — the core of *implementation*: languages, frameworks,
-design patterns, testing techniques. **Computer science (CS)** —
-computability, algorithms, formal logic, discrete mathematics — is
-a different thing. CS sits, structurally, inside the liberal arts,
-as a modern extension of the *quadrivium*'s mathematics and logic.
-Historically, CS emerged from mathematics; Turing, Church, and
-von Neumann were mathematicians and logicians. **CS does not need
-to be discarded, and it does not need a special category** — it is
-folded into the liberal arts as part of the builder's scaffold for
-judgment.
-
-The shift from "hire someone who can write code" to "**hire someone
-who can judge**" is not a surface-level personnel question. It is a
-transformation in **the foundational discipline of the technical
-profession**. Shift Chapter 4 returns to this theme.
-
-## The builder's day is set by decision density
-
-A builder's day has different content from a software engineer's day.
-
-- **Software engineer's day**: most of the time is spent designing and
-  writing. In between, checking requirements, taking reviews, applying
-  fixes. The focus zone is inside the editor.
-- **Builder's day**: most of the time is spent **reading, deciding,
-  evaluating**. Reading the diff AI returned, checking whether
-  invariants are respected, writing what to ask next. The editor is
-  a way station.
-
-Keyboard operations drop. In exchange, **the number of decisions per
-hour** multiplies. The shorter AI's response cycle, the higher the
-decision density. This is heavier load on the brain than writing —
-a builder's fatigue shows up not in shoulders and hands but in
-**decision-making capacity**.
-
-Builders who can keep running for many hours straight are scarce.
-That is the physiological side of "**adding builders does not help**."
-
-## Evidence — two anchors: 24 hours for the code base, one week per sub-series
-
-Enough abstraction. As a concrete example, decompose the site this
-article lives on. aiseed.dev has this structure:
-
-- **Five independent series**: Insights (structural analysis), Blog,
-  Claude × Debian (a technical book), AI-Native Ways of Working (this
-  series), Phosphorus Depletion and Natural Farming
-- **About 150 chapters and articles** (bilingual JA / EN, so about
-  300 source MD files in total)
-- **About 6,000 lines of code base** (`tools/build_article.py` is
-  roughly 1,800 lines; series templates ~2,400 lines; build utilities,
-  OG-image generation, sitemap, hreflang, robots, series-specific
-  typography)
-- **Bilingual** (JA / EN, hreflang on every article, a hard-coded
-  language switcher)
-- **Mermaid, code highlighting, OG-image generation, sitemap**
-
-### Anchor 1 — the code base in 24 hours
-
-The **code base portion** — build tools, templates, image generation,
-sitemap, the bilingual framework — was stood up by one person plus AI
-(primarily Claude) in **about 24 hours**. Most of the code was written
-by AI; the builder did design decisions, integration, and evaluation.
-The same scope of code base, routed through an SIer commission model,
-would burn comparable time at the proposal-and-quote stage alone (the
-structure of that process cost is treated in Shift Chapter 1).
-
-### Anchor 2 — one sub-series in one week
-
-This needs to be said plainly. **The article content lives outside
-that 24 hours**. Concretely: writing this sub-series (Software · all
-11 chapters) takes **about one week** of work (currently 4 chapters
-in, with the remaining chapters on the same pace). That week covers:
-
-- Deciding the chapter outline (`docs/Ai-native-software-outline.md`)
-- Extending the build tool to support sub-series
-- Building out the authoring skills
-  (`building-ai-native-software-series` and others)
-- Writing the chapters in bilingual JA / EN
-- Looping through revisions, fact corrections, and skill updates
-
-Fitting all of that into one week, with one person plus AI, has a
-different structure from the 24-hour code build. Unlike code, the
-fraction of writing that can be delegated to AI is low for prose.
-
-- The argument is decided by humans — what to say, what not to say
-- The structure is decided by humans — order and pacing
-- The facts are verified by humans — numbers, dates, citations,
-  line by line
-- The voice and rhythm are held by humans — the breath the reader
-  feels
-- Responsibility for the argument stays with humans — same as
-  Chapter 3
-
-AI can produce drafts, but every draft is taken as something to **read
-in full, correct, and rewrite**. Factual errors, leaps in argument,
-shifts in tone — letting any of those through costs trust. The "one
-week" figure is a measured **throughput of one builder plus AI** that
-already prices in the decision density that prose demands.
-
-### What the two anchors mean
-
-The contrast itself reinforces the chapter's claim:
-
-- **Code**: high AI-delegation ratio. The one-time infrastructure build
-  takes 24 hours. The builder holds design and evaluation.
-- **Prose**: low AI-delegation ratio. One sub-series takes about a week
-  of decision density. The builder holds everything except the rough
-  draft.
-
-The lower the delegation ratio, the higher the builder's decision
-density. **What stays at the center of a builder's work is judgment**,
-no matter what type of output sits on the other end.
-
-For reproducibility, every source, template, and build script is
-committed to this repository. A single `make` brings the same site up
-(the design principle is the same as the `example-N/` folders in the
-parent series).
-
-> What the builder did. Code base: decided the design, had AI write
-> it, evaluated, integrated (about 24 hours). Articles: held the
-> argument, structure, fact-checking, and voice; read every AI draft
-> end to end (one sub-series ≈ one week). **What sits at the center
-> is not the ability to write, but the ability to judge** — and that
-> holds for both.
-
-## Why one person plus AI is faster than ten software engineers
-
-What happens if you try "the same scope, one person plus AI in 24
-hours" with a team of software engineers?
-
-- Spec-alignment meetings — hours
-- Task decomposition and assignment — half a day
-- Each SE designs and writes — days to weeks
-- Integration phase — days to weeks (integration cost grows roughly
-  with the square of headcount — also Brooks' point)
-- Review and rework rounds — weeks
-- Documentation — deferred, typically drifts
-
-Even at the same scope, **the cost of being a team eats more than
-half the calendar**. A builder plus AI carries almost none of that
-cost:
-
-- Spec alignment — closed inside the builder's head
-- Task decomposition and assignment — the builder hands tasks
-  directly to AI
-- Code writing — AI writes in parallel
-- Integration phase — the builder integrates directly (no sync with
-  another head)
-- Review and rework — happen inside the same loop
-- Documentation — AI regenerates from the design (Chapter 2)
-
-The classic "integration cost grows with the square of headcount" is
-the team's problem. With one person plus AI, the deciding closes
-inside one head and AI writes the code in parallel — the quadratic
-integration cost is sidestepped. That is the structural reason "one
-person plus AI exceeds ten people."
-
-This advantage holds **only while the builder keeps holding
-judgment**. Fall into the "vibe coding" trap from Chapter 2 — hand
-judgment to AI — and the loop collapses. The "one plus AI" team
-becomes a team that ships nothing.
-
-> One person plus AI is strong because **deciding, building, and
-> fixing carry no human-to-human sync between them** — one person runs
-> the whole through dialogue with AI. Add boundaries — syncing with
-> another head — and the cost looks like a team's cost again.
 
 ## Where the next chapter goes
 

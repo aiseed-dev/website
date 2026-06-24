@@ -130,6 +130,11 @@ memory. So a human can judge **what is worth living for**. The "right
 answer" to an open problem — what to build, what matters to the reality
 at hand — rises from that judgment.
 
+AI, by contrast, has only the **weights** it obtained from training —
+parameters that statistically compress a vast amount of past data,
+nothing more and nothing less. No lived history, no stake in living.
+**What is worth living for** is not in the weights.
+
 The typical software engineer is a big-tech employee — owning, deeply,
 **just one specific slice** of a giant system: one feature of search, one
 service of payments, one layer of an API. The problem is narrow and

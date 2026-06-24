@@ -16,7 +16,7 @@ next_title: "API を作る ── FastAPI で基幹のロジックを出す"
 
 # Webを公開する ── Cloudflare Pages（WordPress 代替）
 
-導入編で、AI と対話して静的な Web サイトを作った(導入編 第7章)。ここでは、
+導入編で、AI と対話して静的な Web サイトを作った(1-07)。ここでは、
 それを **自分の側から公開する**。動的な **WordPress をやめ**、焼いた HTML を
 **Cloudflare Pages** に置く ── サーバは持たない。
 
@@ -67,8 +67,8 @@ Pages に切り替わる**。証明書も自動でつく。
 ## 動く部分だけ、つなぐ
 
 問い合わせフォームのような **動く部分だけ**、裏につなぐ。送信先は、門番
-(第3章)の内側に置いた自分の API(認証は門番、保存は第2章の DB、通知は
-第6章のメール)。**大半は静的、動くのは要る所だけ**。
+(2-03)の内側に置いた自分の API(認証は門番、保存は2-02の DB、通知は
+2-06のメール)。**大半は静的、動くのは要る所だけ**。
 
 ## 内部の道具は別 ── 窓は借り、金庫は自分に
 
@@ -96,6 +96,6 @@ Pages に切り替わる**。証明書も自動でつく。
 
 ## 関連記事
 
-- [導入編 第7章: Webサイトを作る ── AI と対話して](/ai-native-ways/software/website/)
-- [第3章: 門番を立てる ── PocketBase で認証を一つに](/ai-native-ways/software/auth/)
-- [第1章: Microsoft と Google から自立する ── 全体像と対応表](/ai-native-ways/software/independence/)
+- [1-07: Webサイトを作る ── AI と対話して](/ai-native-ways/software/website/)
+- [2-03: 門番を立てる ── PocketBase で認証を一つに](/ai-native-ways/software/auth/)
+- [2-01: Microsoft と Google から自立する ── 全体像と対応表](/ai-native-ways/software/independence/)

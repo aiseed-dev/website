@@ -5,7 +5,7 @@ part: "2"
 lang: en
 title: "Mail on Your Own Side — Stalwart and Thunderbird"
 subtitle: "Outside Exchange and Outlook — receive it yourself, send it honestly"
-description: Mail is the record of the business itself. Stalwart is a Rust single server carrying SMTP, IMAP, JMAP, spam defense, and DKIM signing in one, replacing Exchange. It rides on the PostgreSQL from Chapter 2 and is read with any client like Thunderbird. But outbound deliverability is hard — so lean on an authenticated relay for sending and keep only control of the mailbox on your own side. An honest design.
+description: Mail is the record of the business itself. Stalwart is a Rust single server carrying SMTP, IMAP, JMAP, spam defense, and DKIM signing in one, replacing Exchange. It rides on the PostgreSQL from 2-02 and is read with any client like Thunderbird. But outbound deliverability is hard — so lean on an authenticated relay for sending and keep only control of the mailbox on your own side. An honest design.
 date: 2026.07.09
 label: Independence 6
 title_html: Put the mailbox<br>on <span class="accent">your own side</span>.
@@ -29,13 +29,13 @@ clearly.
 
 - **Control of the record** — retention, search, and export of past mail by your own rules
 - **Step off per-seat billing** — the monthly bill doesn't stack with mailbox count
-- **One with the gate** — align accounts with the Chapter 3 authentication
+- **One with the gate** — align accounts with the 2-03 authentication
 
 ## Stand up Stalwart
 
 The mail server is **Stalwart.** A Rust single server carries **SMTP, IMAP,
 JMAP, spam defense, and DKIM signing.** A replacement for Exchange. Storage can
-be pointed at the **PostgreSQL from Chapter 2.**
+be pointed at the **PostgreSQL from 2-02.**
 
 ```yaml
 # compose.yaml — stand up a single mail server
@@ -100,13 +100,13 @@ imapsync --host1 outlook.office365.com --user1 you@old \
 ```
 
 No need to cut over at once. **Receive on both for a while, set forwarding, run
-in parallel,** then point the MX at Stalwart once settled (Chapter 9).
+in parallel,** then point the MX at Stalwart once settled (2-09).
 
 ## Summary
 
 The inbox, on your own side.
 
-- **Stalwart** — SMTP, IMAP, JMAP, spam defense, DKIM in one server (on the Chapter 2 PostgreSQL)
+- **Stalwart** — SMTP, IMAP, JMAP, spam defense, DKIM in one server (on the 2-02 PostgreSQL)
 - **DNS (MX, SPF, DKIM, DMARC, PTR)** — the real body of mail is here
 - **Lean on a relay for sending** — inbox yours, deliverability borrowed, line drawn
 - **Thunderbird** — a free client, identical across OSes
@@ -119,6 +119,6 @@ the booking services to our own side.
 
 ## Related articles
 
-- [Chapter 2: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars](/en/ai-native-ways/software/foundation/)
-- [Chapter 3: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
-- [Chapter 1: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)
+- [2-02: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars](/en/ai-native-ways/software/foundation/)
+- [2-03: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
+- [2-01: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)

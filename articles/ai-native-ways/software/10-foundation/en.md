@@ -18,10 +18,10 @@ next_title: "Stand Up the Gate — One Login with PocketBase"
 # Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars
 
 **A builder's work does not begin with writing code. It begins with
-standing up proven OSS** (Introduction Chapter 5). Generic functionality is
+standing up proven OSS** (1-05). Generic functionality is
 already shared with the world — so you don't "write" it, you "stand it up."
 
-After the whole map (Chapter 1), this Independence part stands up, one by one,
+After the whole map (2-01), this Independence part stands up, one by one,
 the OSS that replaces Microsoft 365, Google Workspace, and the vendor packages
 under the core systems. The first thing to lay is the **data layer.**
 Analysis, the AI's RAG, course booking, the core systems —
@@ -74,7 +74,7 @@ time.** Only then do you step the warehouse up a level.
 When you need a shared warehouse several apps or people read and write at
 once, step up to **PostgreSQL** — open source, free, commercial-OK. It
 matches or exceeds Oracle and SQL Server, and it is the dialect Claude
-handles best (Introduction Chapter 5; Chapter 1). It's the
+handles best (1-05; 2-01). It's the
 same standard SQL as SQLite, so stepping up doesn't change how you write.
 **Trade the notebook (SQLite) for the warehouse (PostgreSQL) by what each is
 for.**
@@ -137,9 +137,9 @@ pgloader mssql://user:pass@azure-host/db \
 
 Standard SQL (`SELECT`, `JOIN`, window functions) runs as-is. You drop only
 **the vendor dialect, T-SQL.** Business logic buried in stored procedures
-gets extracted by Claude and translated into Python / Ruby (Introduction Chapter 5).
+gets extracted by Claude and translated into Python / Ruby (1-05).
 Then run in parallel with the old DB, reconcile the output, and stop the old
-when the difference is gone (Chapter 9).
+when the difference is gone (2-09).
 
 > Migration is not "rewrite everything."
 > It is **move onto the standard and drop only the dialect.**
@@ -212,6 +212,6 @@ on top of this, as the shared gatekeeper across the apps.
 
 ## Related articles
 
-- [Introduction Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
-- [Chapter 1: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)
-- [Chapter 9: Build an API — Expose Core Logic with FastAPI](/en/ai-native-ways/software/fastapi/)
+- [1-05: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
+- [2-01: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)
+- [2-09: Build an API — Expose Core Logic with FastAPI](/en/ai-native-ways/software/fastapi/)

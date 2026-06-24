@@ -5,7 +5,7 @@ part: "2"
 lang: en
 title: "Build an API — Expose Core Logic with FastAPI"
 subtitle: "Rewrite the core system via parallel operation and gather your own logic into one API"
-description: "'Don't break it, don't touch it' is old advice. AI has cut the cost of rewriting a core system by 10x. Build the new AI-native system in FastAPI, run it in parallel with the old, compare outputs against reality, and when the diffs vanish, kill the old. Push business knowledge out into Markdown all at once, let the floor write the tests, and stop outsourcing. The new logic reads and writes the Chapter 2 PostgreSQL and verifies identity with the Chapter 3 gate's token. The reference implementation is kura."
+description: "'Don't break it, don't touch it' is old advice. AI has cut the cost of rewriting a core system by 10x. Build the new AI-native system in FastAPI, run it in parallel with the old, compare outputs against reality, and when the diffs vanish, kill the old. Push business knowledge out into Markdown all at once, let the floor write the tests, and stop outsourcing. The new logic reads and writes the 2-02 PostgreSQL and verifies identity with the 2-03 gate's token. The reference implementation is kura."
 date: 2026.07.15
 label: Independence 9
 title_html: Rewrite the core in <span class="accent">parallel</span>,<br>gather your logic into one <span class="accent">API</span>.
@@ -166,7 +166,7 @@ This is also the hidden benefit of parallel operation. **Business rules that wer
 never written down all surface during parallel run.** Rules that no spec captured,
 only operations knew — these get pulled out, both from Claude's first-pass
 Markdown and from the diffs the parallel run produces. (Taking documents back onto
-your own side was Chapter 5; the core's business knowledge, too, falls into the
+your own side was 2-05; the core's business knowledge, too, falls into the
 same readable material.)
 
 ## Business rules live with the people who do the work — the floor writes the tests
@@ -249,7 +249,7 @@ output comparison, and when stable, stop the old DB.
 > Drop Oracle / SQL Server. That is your graduation certificate from vendor lock-in.
 
 The DDL dialect translation and the concrete migration steps using Azure SQL and
-pgloader were covered in detail in **Chapter 2**. Here you only need to hold the
+pgloader were covered in detail in **2-02**. Here you only need to hold the
 judgment: "keep standard SQL, pull out the dialect and the logic." Rewriting just
 the logic layer is only half-escaping the lock-in. **Migrating to PostgreSQL is the
 final step out.** And the annual license cost recovers the new-system development
@@ -282,12 +282,12 @@ the old is unnecessary becomes visible to everyone.
 The new logic layer — the rewritten core logic — is exposed as one API with
 **FastAPI**. Why make it an API? To gather core logic (inventory, ordering,
 pricing…) **into one place** instead of scattering it across screens. The
-public-web form (Chapter 8) and the in-house apps call the same API — duplication
+public-web form (2-08) and the in-house apps call the same API — duplication
 disappears. In Python (FastAPI), AI writes it fast, with types and automatic docs
 (OpenAPI).
 
-The API reads and writes the Chapter 2 **PostgreSQL** and verifies identity with
-the Chapter 3 **gate (PocketBase)** token. No new foundation — it rides on what
+The API reads and writes the 2-02 **PostgreSQL** and verifies identity with
+the 2-03 **gate (PocketBase)** token. No new foundation — it rides on what
 already exists.
 
 ```python
@@ -296,19 +296,19 @@ from fastapi import FastAPI, Depends
 app = FastAPI()
 
 @app.get("/orders")
-def orders(user=Depends(verify_token)):       # the Chapter 3 gate verifies who
-    return db.query("SELECT * FROM orders WHERE user_id=%s", [user.id])  # the Chapter 2 DB
+def orders(user=Depends(verify_token)):       # the 2-03 gate verifies who
+    return db.query("SELECT * FROM orders WHERE user_id=%s", [user.id])  # the 2-02 DB
 ```
 
 Don't expose all the core at once. **The most-used operations, one at a time.**
 Write it with AI in dialogue and check against the running version (the same way as
-Introduction, Chapter 6, VBA → Python). This is nothing but running the very logic
+1-06, VBA → Python). This is nothing but running the very logic
 of parallel operation at the granularity of a single API. Heavy work runs in Python
 behind it, returning only the result.
 
 The public repo **kura** (`aiseed-dev/workspace`) is this setup — PocketBase auth +
-**FastAPI** + a Flet front end. The code lives in the Chapter 4 Forgejo, called
-from the Chapter 8 public web and the in-house apps. The core logic rewritten via
+**FastAPI** + a Flet front end. The code lives in the 2-04 Forgejo, called
+from the 2-08 public web and the in-house apps. The core logic rewritten via
 parallel operation lands, finally, as this one API.
 
 ## Example: monthly closing batch
@@ -347,7 +347,7 @@ millions of yen per year.**
    interviews and screenshots of the existing SAP configuration screens).
 3. **API and screen layer**: The floor-facing shipping instruction is exposed as an
    API with **FastAPI** (this chapter) and rendered in HTML. Runnable inside the LAN
-   on the Chapter 4 miniPC.
+   on the 2-04 miniPC.
 4. **Reconciliation**: Compare SAP's shipping output with the new system's daily;
    investigate any differences with Claude. **Nearly every week, an "undocumented
    rule" inside SAP surfaces.**
@@ -359,7 +359,7 @@ emerges into **Markdown and Python** (no more SAP "business consultant" middleme
 Customizations happen on the floor the same day (previously: ask the SAP vendor,
 wait months).
 
-This is Chapter 5's "take documents back onto your own side" in **core-system
+This is 2-05's "take documents back onto your own side" in **core-system
 form**. Same structure as "don't drop Excel all at once, get out of CSV" — "don't
 drop SAP all at once, kill it through parallel run."
 
@@ -388,7 +388,7 @@ Rewrite, with parallel operation. Build the new system in FastAPI; run it parall
 with the old. Compare outputs against reality. When diffs vanish, kill the old.
 Push business knowledge out into Markdown all at once, let the floor write the
 tests, stop outsourcing. The rewritten core logic lands as one **API** riding on
-**the Chapter 2 DB and the Chapter 3 gate** — no new foundation needed.
+**the 2-02 DB and the 2-03 gate** — no new foundation needed.
 
 **When you do it, do it.** Half-hearted coexistence freezes the organization. In an
 era when AI cuts rewriting cost by 10x, there is no reason left to keep the legacy.
@@ -400,8 +400,8 @@ dependency on Copilot.
 
 ## Related articles
 
-- [Chapter 2: Lay the Foundation — PostgreSQL, SQLite, and more](/en/ai-native-ways/software/foundation/)
-- [Chapter 3: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
-- [Chapter 5: Take Documents Back — OnlyOffice Docs on PocketBase](/en/ai-native-ways/software/documents/)
+- [2-02: Lay the Foundation — PostgreSQL, SQLite, and more](/en/ai-native-ways/software/foundation/)
+- [2-03: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
+- [2-05: Take Documents Back — OnlyOffice Docs on PocketBase](/en/ai-native-ways/software/documents/)
 - [Reference implementation kura — a self-hosted Microsoft 365 / Google Workspace alternative](https://github.com/aiseed-dev/workspace)
 </content>

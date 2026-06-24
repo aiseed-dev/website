@@ -5,7 +5,7 @@ part: "1"
 lang: en
 title: "Build a Website — In Dialogue with AI"
 subtitle: "WordPress is vulnerable to cyberattacks — go static and the attack surface vanishes. Build the machinery with Claude in dialogue, then just write Markdown"
-description: One of Chapter 5's worked examples — a customer building a website with AI. WordPress, with its running server, plugins, and admin login, is vulnerable to cyberattacks; online shops (e-shops), handling payments and personal data, should be fixed first. Going static makes almost all of that attack surface disappear. The machinery (the build and the template) can be made by talking with Claude — no need to learn Astro — and is easy to fix later. Build it light with plain CSS and minimal vanilla JS, then just write Markdown. Publishing is covered in the Independence part.
+description: One of 1-05's worked examples — a customer building a website with AI. WordPress, with its running server, plugins, and admin login, is vulnerable to cyberattacks; online shops (e-shops), handling payments and personal data, should be fixed first. Going static makes almost all of that attack surface disappear. The machinery (the build and the template) can be made by talking with Claude — no need to learn Astro — and is easy to fix later. Build it light with plain CSS and minimal vanilla JS, then just write Markdown. Publishing is covered in the Independence part.
 date: 2026.06.30
 label: Introduction 7
 title_html: Build a website<br>in <span class="accent">dialogue with Claude</span>.
@@ -17,7 +17,7 @@ next_title: "Build Embedded — Think in Python, Have Claude Translate"
 
 # Build a Website — In Dialogue with AI
 
-As Chapter 5 showed, a customer can build with AI. One worked example is the
+As 1-05 showed, a customer can build with AI. One worked example is the
 company site or blog — a website. Most of it can be **static,** and if it is
 static, you don't even need your own server.
 
@@ -89,7 +89,7 @@ and forth. Worth bringing up:
 From the exchange, Claude writes the conversion script and the templates. If
 something is off, fix it while looking at the result — "two columns for the
 list," "change the date format" — shaping it through dialogue (exactly the way
-of building from Chapter 5). Once it exists, all that's left is writing articles.
+of building from 1-05). Once it exists, all that's left is writing articles.
 
 ## For an existing site, suck it into static
 
@@ -171,6 +171,6 @@ your own-side tools. Next, another worked example — building **embedded softwa
 
 ## Related articles
 
-- [Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
+- [1-05: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
 - [Independence — Publish the Web on Cloudflare Pages](/en/ai-native-ways/software/web/)
 - [Parent series, Chapter 7: Building Apps — CLI Tools, Flet Apps, Flutter Apps](/en/ai-native-ways/apps/)

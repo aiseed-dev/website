@@ -73,7 +73,7 @@ That makes Excel `.xlsx` a perfectly legitimate format for
 **human-viewed tables**. The boundary is Microsoft (the subscription
 and the vendor lock-in), not the file format. **Use OnlyOffice as the
 open-source editor; keep `.xlsx` as the format.** (Details in the
-OnlyOffice section below and in Independence Chapter 5.)
+OnlyOffice section below and in Software 2-05.)
 
 What truly loses information is **export to CSV**. The moment an
 `.xlsx` becomes CSV, the sheets, types, formulas, and formatting are
@@ -463,7 +463,7 @@ df.write_excel("customers_export.xlsx")
 
 Intake into SQLite at the entrance, run on SQLite, export to Excel
 at the exit. **Your working surface stays SQLite; Excel happens at
-the boundary** — the same structure as Independence Chapter 5's
+the boundary** — the same structure as Software 2-05's
 entrance/substance/exit separation.
 
 > JSON / YAML for "holding," SQLite for "growing," Parquet for

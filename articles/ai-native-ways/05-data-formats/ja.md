@@ -505,7 +505,7 @@ df.write_excel("customers_export.xlsx")
 
 入口で SQLite に取り込み、中身は SQLite で運用、出口で Excel に
 書き戻す。**自分の作業領域は SQLite に保たれ、組織との境界では
-Excel に変換する** ── 自立編 第5章「事務処理を変える」で見た「入口/中身/
+Excel に変換する** ── ソフトウェア開発編 2-05「文書を取り戻す」で見た「入口/中身/
 出口の分離」と同じ構造だ。
 
 > JSON / YAML は「持つ」用、SQLite は「育てる」用、Parquet は

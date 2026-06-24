@@ -40,7 +40,7 @@ one gate and sharing it** is faster, safer, and cheaper.
 
 The gate is **PocketBase**. A single **Go binary** carries authentication, an
 admin UI, REST / realtime APIs, and file storage. It **runs on the SQLite**
-introduced in Chapter 2, so there is no separate server to run. One
+introduced in 2-02, so there is no separate server to run. One
 `compose.yaml` stands it up.
 
 ```yaml
@@ -78,7 +78,7 @@ the gate to your side; leave the user's experience unchanged.
 ## Identity in the gate, business data in the warehouse
 
 This is the crux of the design. **Identity (who) lives in the gate; business
-data (what they did) lives in PostgreSQL** (Chapter 2). Separate the gate
+data (what they did) lives in PostgreSQL** (2-02). Separate the gate
 from the warehouse.
 
 An app **verifies the gate's token, pulls out `user.id`,** and reads and
@@ -125,7 +125,7 @@ on your own side and step off that meter. The move can be gradual.
 4. Once everyone is across, remove Microsoft from OAuth2 — the Entra dependency is cut
 
 You don't cut over in one stroke. **Run both in parallel, and close the old
-gate only after the move is done** (Chapter 9).
+gate only after the move is done** (2-09).
 
 ## Summary
 
@@ -145,7 +145,7 @@ bring Word, Excel, and PowerPoint to our own side.
 
 ## Related articles
 
-- [Chapter 2: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars](/en/ai-native-ways/software/foundation/)
+- [2-02: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars](/en/ai-native-ways/software/foundation/)
 - [Reference implementation kura — a self-hosted workspace using PocketBase as the gate](https://github.com/aiseed-dev/workspace)
-- [Chapter 1: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)
-- [Chapter 9: Build an API — Expose Core Logic with FastAPI](/en/ai-native-ways/software/fastapi/)
+- [2-01: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)
+- [2-09: Build an API — Expose Core Logic with FastAPI](/en/ai-native-ways/software/fastapi/)

@@ -5,7 +5,7 @@ part: "1"
 lang: en
 title: "Build Embedded — Think in Python, Have Claude Translate"
 subtitle: "Software that drives devices can be built with AI too — logic in Python, production in C if needed"
-description: Chapter 5's third worked example. Beyond web and office, software that drives devices (embedded) can be built with AI too. Read a sensor, turn a motor, show a display — think the logic in Python, verify it on your desk and on the real device, and have Claude translate it to C if speed or resources demand. Since much only shows up on the real hardware, run build-run-fix fast. This closes the Introduction part; on to Independence.
+description: 1-05's third worked example. Beyond web and office, software that drives devices (embedded) can be built with AI too. Read a sensor, turn a motor, show a display — think the logic in Python, verify it on your desk and on the real device, and have Claude translate it to C if speed or resources demand. Since much only shows up on the real hardware, run build-run-fix fast. This closes the Introduction part; on to Independence.
 date: 2026.07.01
 label: Introduction 8
 title_html: Device software, too,<br>can be <span class="accent">built with AI</span>.
@@ -17,7 +17,7 @@ next_title: "Becoming Independent from Microsoft and Google — The Whole Map"
 
 # Build Embedded — Think in Python, Have Claude Translate
 
-Chapter 5's third worked example. Beyond web and office, software that drives
+1-05's third worked example. Beyond web and office, software that drives
 **devices (embedded)** can be built with AI too. Read a sensor, turn a motor,
 show a display — write the microcontroller software by **thinking in Python and,
 if needed, having Claude translate it to C.**
@@ -66,6 +66,6 @@ side, and breaks free of the vendors.
 
 ## Related articles
 
-- [Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
+- [1-05: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
 - [Parent series, Chapter 8: Building Embedded — Think in Python, Have Claude Translate](/en/ai-native-ways/embedded/)
-- [Independence, Chapter 2: Lay the Foundation — SQLite and more](/en/ai-native-ways/software/foundation/)
+- [2-02: Lay the Foundation — SQLite and more](/en/ai-native-ways/software/foundation/)

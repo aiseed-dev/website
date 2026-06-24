@@ -21,8 +21,8 @@ next_title: "Japan's SIer Industry Transition and Labor Mobility"
 structure as lawyers and doctors. Not a role that fits inside a
 general-employee grade system**.
 
-Introduction Chapter 5 showed that customers themselves can become builders.
-Chapter 3 showed that AI-native development structurally resists
+1-05 showed that customers themselves can become builders.
+3-03 showed that AI-native development structurally resists
 producing lock-in. Put both together, and the rational customer
 **keeps the builder in-house** — that single choice covers the
 structural disadvantage of outsourcing, the path out of lock-in, and
@@ -48,7 +48,7 @@ That premise held under two conditions:
   them all in-house was impractical at the scale needed. **Multi-tier
   subcontracting stacked head-count on the outside** so that
   engagements could secure enough person-months (the structure is
-  covered in Chapter 5).
+  covered in 3-05).
 - IT was viewed as a **thin surface layer** of the business —
   outsourcing it did not pull the essence of the business out with it.
 
@@ -146,7 +146,7 @@ on **the liberal arts** — logic, rhetoric, ethics, systems thinking,
 history. Those judgments cannot be reduced to technique. If the
 builder sits in the same position, the foundation of the builder's
 hiring and training has to be the same: **the liberal arts**
-(Introduction Chapter 4), not fluency in a programming language. **Hire someone
+(1-04), not fluency in a programming language. **Hire someone
 who can judge, not someone who can write code** — that is the axis
 toward which builder hiring properly points.
 
@@ -219,7 +219,7 @@ website.
 
 In numbers, this lands at **less than one-tenth of the initial build
 cost, with dramatically faster and cheaper ongoing operation** — the
-corporate-website case of the 10×–100× price gap from Chapter 2.
+corporate-website case of the 10×–100× price gap from 3-02.
 
 But the more important comparison is **structural**, not financial:
 
@@ -254,7 +254,7 @@ shifts.
   custodianship to forms the in-house builder can work with (standard
   databases, JSON, Parquet).
 - **Vendor dependence dissolves** — lock-in eases, options expand
-  (Chapter 3).
+  (3-03).
 
 This is more than cost reduction. It is a structural change. Hiring
 one builder can be **the trigger that reshapes how the company
@@ -262,7 +262,7 @@ operates**.
 
 ## The builder supply is not limited to former coders
 
-Introduction Chapter 3 said that people who can move to the judgment side and
+1-03 said that people who can move to the judgment side and
 people who cannot will separate. Read only that and builders look
 like a scarce resource. But missing one other supply source distorts
 the picture — **AI is lowering the barrier to entry**.
@@ -272,7 +272,7 @@ stack of layers — grammar fluency, framework learning, build/deploy,
 debugging experience. All of these are dropping, right now. Three
 elements combine to make this possible:
 
-- **AI** — the code is written by AI (Introduction Chapter 1)
+- **AI** — the code is written by AI (1-01)
 - **Python** — readable, well-suited to AI collaboration
 - **Flet** — desktop, mobile, and web apps in pure Python.
   Underneath is a native Flutter build (AOT-compiled), so cold-start
@@ -327,7 +327,7 @@ enterprise stack.
 
 In AI-native development, that wall is lower. **The VB / VBA
 generation comes back as builders** — a particularly large supply
-source in the Japanese market. (The parent series' Chapter 2,
+source in the Japanese market. (The parent series' 3-02,
 "Writing Logic — Have AI Write Python For You," covers the
 VBA → Python migration in concrete detail.)
 
@@ -376,7 +376,7 @@ Python + Flet and **enter society as builders**. While SIers shrink
 and customer companies expand builder hiring at the same time, the
 supply side sees **former SIer coders converging with makers**.
 
-Introduction Chapter 3 said that those who can move to the judgment side and those
+1-03 said that those who can move to the judgment side and those
 who cannot will separate. That was a statement about former SIer
 coders. What this chapter adds: **the doorway to the judgment side is
 not open only to people who came from coding**.
@@ -385,7 +385,7 @@ not open only to people who came from coding**.
 > **AI + Python + Flet open a new supply source — makers,
 > shop-floor engineers, students**.
 
-Read this in combination with Chapter 5's "labor demand outside the
+Read this in combination with 3-05's "labor demand outside the
 industry" (manufacturing, agriculture, AI physical infrastructure).
 The picture becomes clearer: human capital flowing out of the SIer
 industry and **human capital flowing in from outside the industry as
@@ -409,9 +409,9 @@ forms appear during the transition?
 
 ## Related articles
 
-- [Introduction Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
-- [Introduction Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
-- [Chapter 3: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
+- [1-04: The Builder Role](/en/ai-native-ways/software/builder/)
+- [1-05: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
+- [3-03: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
 - [Parent series Chapter 2: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Parent series Chapter 7: Building Apps — CLI tools, Flet apps, Flutter apps](/en/ai-native-ways/apps/)
 - [Parent series Chapter 8: Building Embedded — Think in Python, Have Claude Translate](/en/ai-native-ways/embedded/)

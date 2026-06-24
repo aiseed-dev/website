@@ -17,8 +17,7 @@ next_title: "Build an API — Expose Core Logic with FastAPI"
 
 # Publish the Web — Cloudflare Pages (a WordPress Replacement)
 
-In the Introduction part, you built a static website with AI (Introduction,
-Chapter 7). Here, you **publish it from your own side.** Drop dynamic
+In the Introduction part, you built a static website with AI (1-07). Here, you **publish it from your own side.** Drop dynamic
 **WordPress** and put the baked HTML on **Cloudflare Pages** — hold no server.
 
 ## Why drop WordPress
@@ -71,8 +70,8 @@ pointing the production domain.
 ## Wire only the moving parts
 
 Wire the backend only for the **moving parts** — a contact form. The target is
-your own API behind the gate (Chapter 3) — auth at the gate, storage in the
-Chapter 2 DB, notifications via the Chapter 6 mail. **Mostly static, dynamic
+your own API behind the gate (2-03) — auth at the gate, storage in the
+2-02 DB, notifications via the 2-06 mail. **Mostly static, dynamic
 only where needed.**
 
 ## Internal tools are separate — borrow the window, hold the vault
@@ -103,6 +102,6 @@ use it.
 
 ## Related articles
 
-- [Introduction, Chapter 7: Build a Website — In Dialogue with AI](/en/ai-native-ways/software/website/)
-- [Chapter 3: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
-- [Chapter 1: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)
+- [1-07: Build a Website — In Dialogue with AI](/en/ai-native-ways/software/website/)
+- [2-03: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
+- [2-01: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)

@@ -22,7 +22,7 @@ vendor selection, contracts, project management, acceptance — consumes
 as much labor as building it AI-natively, sometimes more. For the same
 effort, you can build it yourself**.
 
-Introduction Chapter 5 showed that customers can become the builder and that
+1-05 showed that customers can become the builder and that
 nine-tenths of the work can close inside customer plus AI. This chapter
 takes up the other side — why "commissioning an SIer makes life
 easier" is now an illusion — by decomposing the commission process
@@ -163,11 +163,11 @@ Four reasons:
 - **The organization assumes managed coders** — primes plus tier-1
   and tier-2 subcontractors, team leads, PMs, QA — the whole pyramid
   is built on holding coders and assigning them (the structural
-  transition is treated in Chapter 5).
+  transition is treated in 3-05).
 - **Existing contracts are lock-in** — multi-year operations contracts,
   proprietary frameworks, custom abstraction layers all make it hard
   for customers to move (the FDE-style extreme lock-in is treated in
-  Chapter 3).
+  3-03).
 - **Hiring and training are coder-shaped** — new-graduate programs
   and mid-career hires are organized around framework fluency, SQL,
   and test writing — execution skills. The organization is not built
@@ -185,17 +185,17 @@ This is not "SIers all disappear at once." It is structural
 shrinkage: nine-tenths moves to the customer side, the SIer share
 concentrates in the remaining tenth.
 
-- **What stays**: the one-tenth from Introduction Chapter 5 — genuinely new
+- **What stays**: the one-tenth from 1-05 — genuinely new
   technical territory, specialized regulation, cross-organizational
   authority, scale-driven design, hard-earned pitfall knowledge
 - **What disappears**: the nine-tenths "standard work AI can write"
   — absorbed on the customer side
 - **What reconstitutes**: even in the remaining tenth, contract
   shapes shift from "multi-year operations commissions" to "hourly
-  consulting" (Chapter 4)
+  consulting" (3-04)
 
 Transition speed, Japan-specific dynamics (multi-tier subcontracting),
-and labor mobility are taken up in Chapter 5 and Chapter 6. What this
+and labor mobility are taken up in 3-05 and 3-06. What this
 chapter fixes is the structural claim: **the SIer commission model
 cannot reach parity with AI-native in-house development**.
 
@@ -215,8 +215,8 @@ The next chapter takes up that price gap.
 
 ## Related articles
 
-- [Introduction Chapter 1: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
-- [Introduction Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
-- [Introduction Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
+- [1-01: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
+- [1-04: The Builder Role](/en/ai-native-ways/software/builder/)
+- [1-05: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

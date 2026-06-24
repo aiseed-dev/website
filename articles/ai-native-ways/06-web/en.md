@@ -71,7 +71,7 @@ WordPress themes and plugins are written in PHP. Claude can write PHP, but the o
 
 ## Escaping WordPress
 
-If you are on WordPress, the way out is clear. Use the same **parallel operation** pattern from Independence Chapter 9.
+If you are on WordPress, the way out is clear. Use the same **parallel operation** pattern from Software 2-09.
 
 1. Keep the existing WordPress running. **Export content to Markdown** (use plugins or CLI tools, or have Claude write a converter).
 2. Build the new site with Markdown + minimal HTML/CSS + Python.
@@ -357,5 +357,5 @@ The next chapter moves to building apps. CLI tools, Flet apps, Flutter apps — 
 - [Chapter 02: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Chapter 03: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
 - [Chapter 04: Designing — With Mermaid and Claude Design](/en/ai-native-ways/design/)
-- [Independence Chapter 9: Build an API — Expose Core Logic with FastAPI](/en/ai-native-ways/software/fastapi/)
+- [Software 2-09: Build an API — Expose Core Logic with FastAPI](/en/ai-native-ways/software/fastapi/)
 - [Structural Analysis 15: Security Design for the Mythos Era](/en/insights/security-design/)

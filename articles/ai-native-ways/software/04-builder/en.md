@@ -140,6 +140,12 @@ there AI is faster and more accurate. But the judgment of an open problem
 — what to build, what matters, what to take responsibility for — the
 human keeps. That is the core of the builder's role.
 
+And there is more: the weights from training can be **easily changed by
+the developer**. What it is taught, and how it is made to behave, sit
+within the discretion of whoever trained it. So a model must not be
+trusted unconditionally — **which developer's model you use** is itself a
+builder's judgment. Use a model from a developer you can trust.
+
 The typical software engineer is a big-tech employee — owning, deeply,
 **just one specific slice** of a giant system: one feature of search, one
 service of payments, one layer of an API. The problem is narrow and

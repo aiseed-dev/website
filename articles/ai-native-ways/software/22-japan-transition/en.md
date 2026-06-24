@@ -12,7 +12,7 @@ title_html: Multi-tier subcontracting,<br>paradoxically, <span class="accent">ma
 prev_slug: hiring-builders
 prev_title: "Companies Hire Builders"
 next_slug: five-years
-next_title: "The Structural Transition Completes in a Few Years"
+next_title: "The Structural Transition That Won't Reverse"
 ---
 
 # Japan's SIer Industry Transition and Labor Mobility
@@ -321,8 +321,8 @@ We have seen how the AI-native structural change moves Japan's SIer
 industry and how labor mobility absorbs that motion. One question
 remains — **over what time scale does this transition complete?**
 
-The next chapter takes up the case that the transition completes in a
-few years. The final chapter.
+The next chapter takes up the case that the transition arrives in the
+near future and does not reverse. The final chapter.
 
 ---
 

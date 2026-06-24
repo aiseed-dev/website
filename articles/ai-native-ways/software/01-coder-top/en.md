@@ -265,7 +265,8 @@ Every chapter that follows is **deduced** from this one fact.
 - 3-05 — where do existing commission relationships act as
   **lock-in**?
 - Chapters 9–11 — hiring builders, the transition of the SIer
-  industry, the time horizon over which the transition completes.
+  industry, the near-term horizon over which the transition arrives
+  and why it does not reverse.
 
 These are not independent observations. They all derive from one point:
 **the strongest SIer is available for $200 a month**. This chapter
@@ -299,7 +300,7 @@ consequence of cheap coding — the shift in the unit of maintenance.
 ## Related articles
 
 - [1-04: The Builder Role](/en/ai-native-ways/software/builder/)
-- [3-08: The Structural Transition Completes in a Few Years](/en/ai-native-ways/software/five-years/)
+- [3-08: The Structural Transition That Won't Reverse](/en/ai-native-ways/software/five-years/)
 - [Prologue: AI's Native Tongue Is Python and Markdown-Shaped Text](/en/ai-native-ways/prologue/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

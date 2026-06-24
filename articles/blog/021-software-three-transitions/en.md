@@ -117,9 +117,9 @@ Lay the three transitions out — engineer → builder, software engineering →
 
 History textbooks credit the printing press with preparing the ground for the Reformation, the scientific revolution, and the modern nation-state **over two hundred years**. The LLM holds **incomparably greater intensity** — what the printing press democratized was "reading" (access to existing knowledge), while what the LLM democratizes is "**making**" (knowledge generation, judgment, implementation). There is no literacy wall to clear first; natural language works for anyone.
 
-The speed of diffusion is on another order. What took the printing press decades, the AI era achieves **in years**. The five-year horizon this sub-series draws is, against this difference in intensity, **a conservative estimate**.
+The speed of diffusion is on another order. What took the printing press decades, the AI era achieves **in years**. The near-term horizon this sub-series draws is, against this difference in intensity, **a conservative estimate**.
 
-The Second Renaissance cannot be captured by "the AI revolution" alone. The deeper arguments — **the AI revolution is the completion of the IT revolution** (the 70-year-late fulfillment of the automation promise), **the LLM is a statistical-processing tool, not a superintelligence** (structural rejection of the AGI hype), **app-making comes to resemble film-making** (holding across the Hollywood-to-YouTube range), **not only the AI revolution** (concurrent transitions in fossil resources, geopolitics, agriculture, finance, demographics, healthcare, and pensions), and **creation AND upheaval as two sides of the era** (Trump and Nadella share the same structural error of judgment-concentration) — are developed in [**Software sub-series, 3-08: "The transition completes in a few years"**](/en/ai-native-ways/software/five-years/).
+The Second Renaissance cannot be captured by "the AI revolution" alone. The deeper arguments — **the AI revolution is the completion of the IT revolution** (the 70-year-late fulfillment of the automation promise), **the LLM is a statistical-processing tool, not a superintelligence** (structural rejection of the AGI hype), **app-making comes to resemble film-making** (holding across the Hollywood-to-YouTube range), **not only the AI revolution** (concurrent transitions in fossil resources, geopolitics, agriculture, finance, demographics, healthcare, and pensions), and **creation AND upheaval as two sides of the era** (Trump and Nadella share the same structural error of judgment-concentration) — are developed in [**Software sub-series, 3-08: "The Structural Transition That Won't Reverse"**](/en/ai-native-ways/software/five-years/).
 
 ## The alternative path to "specialized engineer" advice
 
@@ -148,7 +148,7 @@ This article compresses aiseed.dev's **[AI-Native Ways of Working — Software](
 - [3-05: The Lock-In Problem](/en/ai-native-ways/software/lockin/) — Palantir FDE as the canonical case
 - [3-06: The Master Builder Is a Profession That Sells Judgment](/en/ai-native-ways/software/hiring-builders/) — same position as lawyers and doctors
 - [3-07: Japan's SIer Industry Transition](/en/ai-native-ways/software/japan-transition/) — multi-tier subcontracting paradoxically eases the transition
-- [3-08: The Transition Completes in a Few Years](/en/ai-native-ways/software/five-years/) — irreversibility; the Second Renaissance
+- [3-08: The Structural Transition That Won't Reverse](/en/ai-native-ways/software/five-years/) — irreversibility; the Second Renaissance
 
 "**From software engineering to the liberal arts — the foundational shift of the technical profession**" is the subtitle of the sub-series and one axis for reading the structure of the AI era.
 

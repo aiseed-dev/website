@@ -3,24 +3,24 @@ slug: five-years
 number: "08"
 part: "3"
 lang: en
-title: The Structural Transition Completes in a Few Years
-subtitle: The chain of change, a roughly five-year horizon, irreversibility — but bounded to software development
-description: From AI reaching top-tier capability through coder displacement, builder demand, and SIer shrinkage, the changes chain together and the main part completes in roughly five years. Once a structure moves, it does not move back. But this "complete replacement" applies only to verifiable-correctness domains like software; in desk work, self-driving, and robotics, AI is blocked at the last 1% and complete replacement does not happen — those are productivity-gain stories. The writing of this very sub-series is itself evidence of that bound.
+title: The Structural Transition That Won't Reverse
+subtitle: The chain of change, a near-term horizon, and irreversibility — because the premise has inverted, it does not move back. But bounded to software development
+description: From AI reaching top-tier capability through coder displacement, builder demand, and SIer shrinkage, the changes chain together and the main part happens in the near future. And because the premises of economics and security have already inverted, the structure that has moved does not move back. But this "complete replacement" applies only to verifiable-correctness domains like software; in desk work, self-driving, and robotics, AI is blocked at the last 1% and complete replacement does not happen — those are productivity-gain stories. The writing of this very sub-series is itself evidence of that bound.
 date: 2026.08.25
 label: Shift 8
-title_html: In <span class="accent">five years</span>, the main changes<br>complete — irreversibly.
+title_html: The main changes are <span class="accent">near</span> —<br>and they don't reverse.
 prev_slug: japan-transition
 prev_title: "Japan's SIer Industry Transition and Labor Mobility"
 next_slug:
 next_title:
 ---
 
-# The Structural Transition Completes in a Few Years
+# The Structural Transition That Won't Reverse
 
 **The final chapter of the Software sub-series. The structural changes
 shown across the previous ten chapters are not independent — they
-chain together. The chain completes its main part in about five
-years, and once a structure has moved, it does not move back**.
+chain together. The chain's main part happens in the near future. And
+because the premise has inverted, it does not move back**.
 
 But this "complete replacement" only applies in the specific domain of
 software development. The boundary is made explicit in the second
@@ -63,7 +63,7 @@ flowchart LR
   SIer["SIer<br/>shrinkage (Ch 6, 7)"]
   Lock["Lock-in<br/>dissolves (Ch 8)"]
   Industry["Industry<br/>transition (Ch 10)"]
-  Done["Main changes<br/>complete in ~5 years"]
+  Done["Main changes<br/>happen in the near future"]
 
   AI --> Coder
   AI --> Builder
@@ -252,13 +252,13 @@ does not happen**.
 > the claim of this sub-series and the writing process of this
 > sub-series line up in the same structure.
 
-## The five-year horizon
+## It happens in the near future — why "near"
 
-The "few years" of this sub-series — fix the concrete time scale here.
-**The main changes complete in about five years** — that is the
+The "near future" of this sub-series — here is the ground for that sense
+of timing. **The main changes happen within a few years** — that is the
 outlook of this book.
 
-Why five? Several independent time scales converge in that band:
+Why "near"? Several independent time scales all converge on the near side:
 
 - **The AI capability curve** — crossed the threshold in 2024-2025
   (1-01). Capability-wise, transition is already feasible.
@@ -274,19 +274,43 @@ Why five? Several independent time scales converge in that band:
   about ten years from the 1972 Casio Mini (1-03). The AI shift
   is faster than that.
 
-The band where these overlap is **roughly five years**. Not so slow
-that it deserves "ten years," not so fast that it deserves "one to
-two." **The main changes complete in about five years** — that is
-the concrete time-scale outlook.
+These time scales all point to the near side. Not so slow that it
+deserves "ten years," not so fast that it deserves "one to two" — a
+band of a few years. But pinning down the exact number is not the
+point. **The main changes happen in the near future (within a few
+years). What is essential is the direction and the irreversibility,
+not the precise count** — that is the concrete outlook. We make no
+definite prophecy that it "completes in five years."
 
-But "five years" refers only to the main changes, not everything.
-Core-system replacement in regulated industries takes longer. Some
-areas will still hold old models after ten years. Even so, **the
-mainstream of the industry moves to AI-native within about five years**.
+But what happens in the near future is the main changes, not
+everything. Core-system replacement in regulated industries takes
+longer. Some areas will still hold old models after ten years. Even
+so, **the mainstream of the industry moves to AI-native in the near
+future**.
 
 ## The transition is irreversible
 
-Finally, confirm the **irreversibility** of the change.
+Finally, confirm the **irreversibility** of the change. Its ground is
+not "because it completes in a few years" — it is **because the
+premise has inverted**.
+
+What the transition part of this series has argued throughout is the
+inversion of two premises.
+
+- **The economic premise has inverted** — buying or outsourcing used
+  to be the cheaper default. Now building it yourself is cheaper
+  (3-01 the parallel, 3-03 SIer uneconomy, 3-04 the price gap).
+  Because AI made execution orders of magnitude cheaper, the direction
+  of economic rationality itself flipped.
+- **The security premise has inverted too** — vendor concentration
+  like Microsoft 365 used to be "the cheap and safe default." Now
+  holding OSS + sovereign AI on one's own machine is cheaper and safer
+  (3-02 sovereignty).
+
+**An inverted premise does not move back**. Once the direction of
+economic rationality and of security has flipped, no force exists to
+rewind the structure. That is why the change moves only one way. That
+one-directionality shows in the following concrete cases:
 
 - Once a customer has experienced AI-native in-house development,
   they do not go back to SIer commissioning (1-05) — the
@@ -302,8 +326,8 @@ Finally, confirm the **irreversibility** of the change.
   in place (1-01)
 
 Each piece moves only in one direction. So the chain as a whole moves
-in one direction. **Once the chain starts, no structural force exists
-that stops it**.
+in one direction. On top of an inverted premise, **once the chain
+starts, no structural force exists that stops it**.
 
 One historical comparison to keep in view. The invention of the
 printing press in the 1450s reshaped the structures of the church,
@@ -316,10 +340,10 @@ intensity**. What the printing press democratized was **reading**
 is no wall of literacy to clear first; natural language works for
 anyone. The speed of diffusion is on a different order — what took
 the printing press decades, the AI era achieves **in years**. Read
-against this difference in intensity, the five-year horizon this
+against this difference in intensity, the near-future transition this
 sub-series draws is, if anything, **a conservative estimate**.
 
-> The change completing in five years is irreversible.
+> **Because the premise has inverted, it does not move back.**
 > It is driven by one-way forces only, so a rewind cannot happen
 > structurally.
 
@@ -516,7 +540,7 @@ organic farming, the data-sovereignty movement, the AI ethics
 conversation have accumulated as the ground; **the LLM (from 2022
 onward) is now the accelerator**.
 
-> The five-year structural transition this sub-series describes is
+> The near-future structural transition this sub-series describes is
 > **one cross-section of the Second Renaissance**. The sub-series
 > covered the software domain, but the same structural change is
 > proceeding in other domains of life at the same time.
@@ -625,9 +649,10 @@ chapters, into one passage here.
 because the domain has explicit rules and verifiable correctness. As
 a consequence, the role called "coder" (the role centered on coding)
 goes away, and the builder (the judgment-side role) takes its place.
-The SIer commission model cannot structurally hold, and within
-roughly five years, the mainstream of the industry moves to AI-native
-in-house development — irreversibly.**
+The SIer commission model cannot structurally hold, and in the near
+future the mainstream of the industry moves to AI-native in-house
+development — and because the premise has inverted, it does not move
+back.**
 
 But this is the story of one specific area: **"coding" inside
 software development**. The other parts of software development
@@ -649,10 +674,10 @@ What aiseed.dev has argued across the eleven chapters of this
 sub-series is:
 
 **A structural transition centered on "coding" inside software
-development completes in roughly five years. The transition is
-irreversible. And the conclusions from this specific area (= coding)
-must not be casually extended to the rest of software development or
-to other domains**.
+development happens in the near future. The transition is
+irreversible — because the premise has inverted. And the conclusions
+from this specific area (= coding) must not be casually extended to
+the rest of software development or to other domains**.
 
 And the other current named in 1-04 — **the foundational
 discipline of the technical profession shifts from software

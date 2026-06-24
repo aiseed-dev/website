@@ -186,7 +186,7 @@ This is the premise of the whole Shift part. The chapters that follow each
 view this **single collapse** from a different face — digital sovereignty and the
 Microsoft problem (3-02), the uneconomy of SIer commissioning (3-03), the order-of-magnitude price gap (3-04), the nature of
 lock-in (3-05), companies hiring builders directly (3-06), Japan's specific
-transition (3-07), completion within a few years (3-08). **Each is the same
+transition (3-07), the near-term transition and its irreversibility from inversion (3-08). **Each is the same
 single collapse, lit from a different angle**.
 
 ```mermaid

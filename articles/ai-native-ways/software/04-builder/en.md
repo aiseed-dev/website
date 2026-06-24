@@ -120,6 +120,12 @@ service of payments, one layer of an API. The problem is narrow and
 well-defined. That is exactly where AI is strongest, and that work is
 what AI comes to do first.
 
+And at the frontier, this is already happening — **Claude builds
+Claude**. AI writes the code of the AI itself. Once it reaches that
+point, the question becomes a single one — **are big-tech software
+engineers still needed?** As a role that solves narrowly closed problems,
+no longer.
+
 | Axis | Software engineer | Builder |
 |---|---|---|
 | Problem handled | **Narrowly closed** (defined) | **Open** (reality, context) |

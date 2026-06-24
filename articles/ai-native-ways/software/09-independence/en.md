@@ -174,10 +174,10 @@ exactly that order.
 9. **AI** (Chapter 10) — local LLM + RAG. Hold AI without your data leaving the
    building
 
-Run each step in **parallel**, the way the parent series' Chapter 7 describes.
+Run each step in **parallel**, the way the Chapter 9 describes.
 Don't stop the old (Microsoft / Google) — run the new alongside it, confirm the
 same work flows through, and only then cancel the old. **Time it to the renewal
-date** — that, too, follows the parent series' Chapter 7.
+date** — that, too, follows the Chapter 9.
 
 > You don't need to switch all at once.
 > **Each layer you untie loosens the bundle a little more** — one at a time, at
@@ -223,7 +223,7 @@ AI as partner, everything from auth to mail, meetings, AI, and the database.
 ## And on to the core systems
 
 What you've assembled becomes, directly, the **foundation for rewriting the core
-systems.** The parallel-run rewrite the parent series' Chapter 7 describes
+systems.** The parallel-run rewrite the Chapter 9 describes
 actually **assumed a place to stand (a platform)** — and that place is fully in
 place by the end of the Independence part.
 
@@ -292,8 +292,7 @@ is **a design that keeps content away from where AI can reach it: plain text,
 open formats, local execution, readable code.** The more you try to make AI a
 colleague, the harder you hit this wall.
 
-**Second — the cost of rewriting has fallen by a factor of ten** (parent series'
-Chapter 7). The AI extracts the business logic, translates it to Python, and
+**Second — the cost of rewriting has fallen by a factor of ten** (Chapter 9). The AI extracts the business logic, translates it to Python, and
 writes the tests. A multi-year, multi-million project becomes a few months for
 one person on the ground + AI.
 
@@ -346,7 +345,7 @@ layer** everything sits on, on your own side.
 ## Related articles
 
 - [Chapter 2: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars](/ai-native-ways/software/foundation/)
-- [Parent series Chapter 6: Changing Office Work — A Realistic Path Away from Office](/ai-native-ways/office-replacement/)
-- [Parent series Chapter 7: Living with Business Systems — Rewriting in Parallel](/ai-native-ways/business-systems/)
+- [Chapter 5: Take Documents Back — OnlyOffice Docs on PocketBase](/en/ai-native-ways/software/documents/)
+- [Chapter 9: Build an API — Expose Core Logic with FastAPI](/en/ai-native-ways/software/fastapi/)
 - [Structural Analysis 08: Subtracting the Enterprise IT Tax](/insights/enterprise-tax/)
 - [Will You Still Keep Using Windows and Office?](/blog/windows-office-facts/)

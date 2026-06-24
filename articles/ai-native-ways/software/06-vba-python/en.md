@@ -99,4 +99,4 @@ Next, another worked example — building a **website** with AI in dialogue.
 - [Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
 - [Independence Chapter 5: Take Documents Back — OnlyOffice Docs](/en/ai-native-ways/software/documents/)
 - [Parent series, Chapter 2: Writing Logic — Have AI Write It in Python](/en/ai-native-ways/python/)
-- [Parent series, Chapter 7: Living with Business Systems — Rewrite by Running in Parallel](/en/ai-native-ways/business-systems/)
+- [Independence Chapter 9: Build an API — Expose Core Logic with FastAPI](/en/ai-native-ways/software/fastapi/)

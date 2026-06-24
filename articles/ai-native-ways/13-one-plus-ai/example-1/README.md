@@ -147,6 +147,6 @@ PDF 生成だけが支配的。残りは数 ms。
 - [第 07 章 example-1](/ai-native-ways/web/example-1/): Markdown → HTML サイト
 - [第 02 章 example-1](/ai-native-ways/data-formats/example-1/): pandas で集計
 - [第 03 章 example-1](/ai-native-ways/design/example-1/): Mermaid 図
-- [第 05 章 example-1](/ai-native-ways/office-replacement/example-1/): 月次レポート
+- [自立編 第5章 example-1](/ai-native-ways/software/documents/example-1/): 月次レポート
 
 このフォルダは、それらを **1 つに束ねた**形になっている。

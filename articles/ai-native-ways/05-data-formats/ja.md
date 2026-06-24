@@ -9,8 +9,8 @@ label: AI Native 05
 title_html: データは表ではなく、<span class="accent">構造</span>で持つ。<br><span class="accent">JSON / YAML / SQLite</span> がそれを可能にする。
 prev_slug: design
 prev_title: デザインをする ── Mermaid と Claude デザインで作る
-next_slug: office-replacement
-next_title: 事務処理を変える ── Officeから離れる現実的な道筋
+next_slug: web
+next_title: Webを作る ── HTML+CSS+JavaScriptという原点回帰
 ---
 
 # データを持つ ── JSONとYAMLで考える

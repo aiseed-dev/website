@@ -4,8 +4,8 @@ number: "05"
 part: "2"
 lang: en
 title: "Take Documents Back — OnlyOffice Docs on PocketBase"
-subtitle: "Add no separate storage app — put documents on the Chapter 3 gate and embed only the editor engine"
-description: Word, Excel, and PowerPoint are the input/output tools people write and read with. Rather than add a separate storage app like Nextcloud, keep documents as plain files on your own storage, with auth from the Chapter 3 PocketBase and permissions in xattr, and embed OnlyOffice Docs as the editor engine only — a thin, custom document app. It opens docx, xlsx, and pptx with high fidelity, co-edits, and needs no second permissions DB or login. Avoid the finished DocSpace — it brings Active Directory back. The reference implementation is the public repo kura. Keep the formats; take back only control.
+subtitle: "Office is a format to pass through — take the substance back and embed only the editor engine at the gate"
+description: Word, Excel, and PowerPoint are the input/output tools people write and read with — not where the substance lives. Inside Office, AI stays a tool and you stay "the processor." So treat docx, xlsx, and pptx as formats to pass through, not to use, and take back control of the substance. Rather than add a separate storage app like Nextcloud, keep documents as plain files on your own storage, with auth from the Chapter 3 PocketBase and permissions in xattr, and embed OnlyOffice Docs as the editor engine only — a thin, custom document app. High-fidelity OOXML means you can still hand anyone a plain .docx. Avoid the finished DocSpace — it brings Active Directory back. The reference implementation is the public repo kura. Keep the formats; take back only control.
 date: 2026.07.04
 label: Independence 5
 title_html: Keep documents as <span class="accent">files</span>;<br>only auth at the gate.
@@ -19,11 +19,150 @@ next_title: "Mail on Your Own Side — Stalwart and Thunderbird"
 
 Inside the gate (Chapter 3), the first tool to place is **documents.** Word,
 Excel, PowerPoint — these are the **input/output tools** people write and
-read with, and that role does not change (Chapter 2). What changes is only
-**format compatibility and control of the storage.**
+read with, **not where the substance lives.** That role does not change
+(Chapter 2). What changes is only **format compatibility and control of the
+storage.**
 
 So you don't switch to a new document format. You embed, into your own app, an
 editor engine that reads and writes **`docx`, `xlsx`, and `pptx` as-is.**
+
+First, settle the "why." **Office is a thing you "pass through," not "use."**
+That single point decides the whole structure of this chapter — choosing a
+high-fidelity OnlyOffice, keeping documents as files. Philosophy first,
+implementation after.
+
+## Office is a thing you "pass through," not "use"
+
+First, don't misread the reason for leaving Office. **This is not about
+efficiency.** "30 minutes of work becomes 30 seconds" — that happens as a side
+effect, but it is not the substance.
+
+The substance is this. Divide paperwork into three parts.
+
+- **Entrance**: files arriving from others (Word, Excel, PDF)
+- **Substance**: where you think, work, and store
+- **Exit**: files going out to others (Word, Excel, PDF)
+
+For most people, all three have lived in Office. A Word file arrives, you open
+it in Word, edit it in Word, send it back as Word. But **as long as the
+substance lives in Office, AI cannot be a colleague** — as the next section
+shows.
+
+```mermaid
+flowchart LR
+  In["Entrance<br/>Word / Excel / PDF<br/>(from others)"]
+  Mid["Substance<br/>files + structured data<br/>(your working surface)"]
+  Out["Exit<br/>Word / Excel / PDF<br/>(to others)"]
+  Claude(("AI"))
+
+  In -->|pass through| Mid
+  Mid <-->|discuss / judge| Claude
+  Mid -->|pass through| Out
+
+  classDef office fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  classDef native fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  class In,Out office
+  class Mid native
+```
+
+So recast `.docx`, `.xlsx`, and `.pptx` as **an exchange format for handing
+things to people at the entrance and exit — not the place where the substance
+lives.** Office becomes a tool you **"pass through"** at the boundaries, not
+one you **"use."** Don't change the organization's rules. **Take back only
+control of your own substance.**
+
+> Not efficiency. **Pass Office through as an exchange format, and put control
+> of the substance on your own side** — that is where this chapter starts.
+
+This framing decides the chapter's technical choices. Hold control of the
+substance while keeping the entrance/exit exchange intact — that is why we
+choose OnlyOffice Docs. Because it **reads and writes OOXML (`.docx` / `.xlsx`
+/ `.pptx`) as-is with high fidelity,** files received at the entrance and files
+handed over at the exit pass through without a format change.
+
+## Inside Office, AI is not a colleague
+
+Why move the substance outside the closed format? Because **as long as you are
+inside Office, AI stays a tool and never becomes a colleague.**
+
+Every time you hand a Word file to AI, conversion happens. Unzip the `.docx`,
+read the XML, strip the formatting, extract the text. Excel is the same — cell
+coordinates, formatting metadata, merged cells, cross-sheet references all sit
+between AI and the substance.
+
+The result: AI is **usable** but **not a colleague.** You can ask "read the
+whole thing and lay out the points," but the layout breaks; you can ask
+"analyze this table," but merged cells and formatted values confuse it. Every
+time, you feel you are speaking to "an assistant on the other side of the
+Office wall."
+
+The moment you drop the substance down to structured text and data, that wall
+disappears. AI reads it directly, writes it directly, returns thoughts. **It
+feels like working next to a colleague.** Office as an editing tool — a person
+opening and reading an `.xlsx` — still stays; only the substance is kept where
+AI can touch it. The detailed practice of holding tables as data is in
+Chapter 2.
+
+> Not efficiency. **The relationship with AI changes** — that is the reason to
+> bring the substance outside Office.
+
+## From "processor" to "decider"
+
+As long as paperwork happens inside Office, you remain **"the processor"** —
+the person who aggregates Excel, formats Word, tidies PowerPoint, re-pastes
+numbers. These are jobs AI can replace, and once AI gets cheaper, the
+organization withdraws people from those roles.
+
+Bring the substance down into structure, and your role changes — to the person
+who decides **what should be done,** judges **how to interpret,** designs **new
+mechanisms,** and decides **what to ask AI.** AI takes on "drafting,
+processing, formatting"; the person spends time on **judgment and direction.**
+Not the **quantity** of work but **the content of the work itself** changes.
+
+> AI replaces "processors." AI cannot replace "deciders." Taking the substance
+> back is **moving to the side that is not replaced.**
+
+### A concrete example: the monthly report — same report, different work
+
+Take "the monthly sales report."
+
+**Old flow** (Office-centered): open the sales data in Excel → build a pivot
+table → make a chart → paste into Word → write the prose → convert to PDF →
+email the boss. The job you are doing here is **"tidying numbers."**
+
+**New flow** (structured substance): read the data behind it (incoming `.xlsx`
+is taken in by machine) → have AI write the aggregation, output as a Markdown
+table → embed the chart → AI drafts the prose → **you add interpretation and
+judgment** → convert to `.docx` or PDF at the exit. The job you are doing here
+is **"thinking about what the numbers mean."**
+
+"This month's +12% MoM — which customer caused it? Will it continue? Should
+sales strategy change?" — questions that did not surface while clicking through
+pivot operations in Excel **rise on their own** in front of structured local
+data and AI. Whether time was saved is not the substance. **The content of the
+work changed, and the system came back to your side** — that is the substance.
+Efficiency only happens as a side effect.
+
+## For the sake of organizational diversity — and consideration for boss and colleagues
+
+Taking the substance back to your own side is not only an individual matter.
+When a whole organization sits on the same cloud, the provider need only
+**change its data policy** for everyone's data to flow in the same direction,
+and if the AI **homogenizes judgment criteria,** diversity disappears from the
+organization. This is the **single point of failure (SPOF) everyone sits on**
+that the prologue described. When each person holds their own tools and
+substance, any one part can go down and the others keep moving — **diversity
+itself becomes strength.**
+
+> Not efficiency. **Autonomy and diversity.**
+
+Here is where OnlyOffice keeping OOXML compatibility pays off. No need to worry
+that "I alone am producing strange documents." Convert to `.docx` at the
+exit — or rather, **OnlyOffice saves as `.docx` / `.xlsx` / `.pptx` in the
+first place** — so your boss and colleagues receive the same files as before.
+**No one notices the process changed.** What does change visibly is the
+**quality of judgment** in the output. Keep the formats; take back only
+control — and from here is the "how."
 
 ## Why not add a separate storage app
 
@@ -144,7 +283,7 @@ rclone copy onedrive:Documents ./inbox --progress
 ```
 
 Migrate gradually. **Run both in parallel and cancel the old storage once the
-move is done** (parent series, Chapter 7).
+move is done** (Chapter 9).
 
 ## People use OnlyOffice; machines use Polars
 
@@ -177,17 +316,20 @@ This chapter is that design put into words. To see the code, read kura.
 
 ## Summary
 
-Files as they are, only auth at the gate.
+Files as they are, only auth at the gate. Take back only control of the substance.
 
-- **OnlyOffice Docs** — an editor engine for `docx`, `xlsx`, `pptx` with high fidelity (holds no storage)
+- **Office passes through** — `docx`, `xlsx`, `pptx` are an exchange format for the entrance and exit. Keep the substance where AI can touch it, and move from "the processor" to "the decider"
+- **OnlyOffice Docs** — an editor engine for `docx`, `xlsx`, `pptx` with high fidelity (holds no storage); OOXML-compatible, so you can still hand anyone a plain `.docx`
 - **The body is a file** — on your own storage, readable directly by machines (Polars, AI)
 - **Auth at the gate (PocketBase) / permissions in xattr** — no separate permissions DB
 - **Embedding is a few lines** — hand over the file location and save target, signed with JWT
 - **People vs. machines** — people use OnlyOffice Docs, machines use Polars / DuckDB
 
 No separate storage app — **files as they are, embedded into the gate you already
-have.** Next, we stand up the builder's workshop — **code sharing (Forgejo)** —
-and bring GitHub and Azure DevOps to our own side.
+have.** Office became a thing you pass through, and control of the substance came
+back to your side. Next, we put another large part of paperwork — **mail** — on
+our own side (Chapter 6). Inside Outlook the dialogue with AI cannot happen; the
+moment you export and bring it to your desk, the dialogue begins.
 
 ---
 

@@ -412,7 +412,7 @@ After:
 - "This direction, polished further"
 - Intent transmitted in one round
 
-**Designer expertise concentrates on what truly demands expertise.** Time stops being spent on the draft phase. This is the same shape as Chapter 6's "stop outsourcing business-system rewrites; the floor + Claude completes the loop." **The floor produces the draft; specialists focus on the finish.**
+**Designer expertise concentrates on what truly demands expertise.** Time stops being spent on the draft phase. This is the same shape as Independence Chapter 9's "stop outsourcing business-system rewrites; the floor + Claude completes the loop." **The floor produces the draft; specialists focus on the finish.**
 
 ## You don't need to draw it yourself
 

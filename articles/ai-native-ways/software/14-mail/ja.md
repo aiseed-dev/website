@@ -95,7 +95,7 @@ imapsync --host1 outlook.office365.com --user1 you@old \
 ```
 
 一斉に切り替えなくてよい。**しばらく両方で受け、転送をかけて並行運用**し、
-落ち着いてから MX を Stalwart に向ける(親シリーズ第7章)。
+落ち着いてから MX を Stalwart に向ける(第9章)。
 
 ## まとめ
 

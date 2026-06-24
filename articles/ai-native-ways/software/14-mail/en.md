@@ -100,8 +100,7 @@ imapsync --host1 outlook.office365.com --user1 you@old \
 ```
 
 No need to cut over at once. **Receive on both for a while, set forwarding, run
-in parallel,** then point the MX at Stalwart once settled (parent series,
-Chapter 7).
+in parallel,** then point the MX at Stalwart once settled (Chapter 9).
 
 ## Summary
 

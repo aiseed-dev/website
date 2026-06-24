@@ -282,6 +282,11 @@ result = (
 result.write_excel("monthly_summary.xlsx")
 ```
 
+Excel は、**やめなくていい**。Polars は `.xlsx` を直接読み書きでき、書式を
+保ったまま編集したいときは **openpyxl** を使う。どちらも人間にも扱いやすい。
+**一つだけ原則** ── **Excel を CSV に落とさないこと**。CSV にすると書式・
+数式・体裁がすべて失われる。`.xlsx` のまま、Polars・openpyxl で直接扱う。
+
 ### Word でも VBA は使われている
 
 VBA は **Excel だけでなく Word にも埋め込まれている** ことを忘れ
@@ -310,10 +315,13 @@ VBA は、**OnlyOffice ではほぼ動かない**。Excel/Word/PowerPoint の
 ベンダーロックインを解く一番の障害が、この「VBA で組まれた業務
 ロジック」だ。これを Python に出してしまえば、Office ファイル本体は
 「データ + レイアウト」だけになり、OnlyOffice にも自由に乗り換え
-られる。
+られる(乗り換え先は、OOXML(.xlsx)を保つ OnlyOffice が Polars・
+openpyxl と噛み合う。ODF の LibreOffice は扱いづらい)。
 
 しかも:
 
+- VBA マクロは **マルウェアの主要な侵入口** ── メール添付の Excel
+  マクロは攻撃の定番で、セキュリティの観点でも早急に外部化すべきだ
 - VBA は **将来縮小する技術** ── Microsoft 自身が新規開発の重点を
   置いていない
 - VBA を書ける人材は **減り続けている**

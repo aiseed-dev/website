@@ -5,7 +5,7 @@ part: "2"
 lang: en
 title: "Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars"
 subtitle: "Stand up the data layer everything sits on, first, on your own side"
-description: The Setup part starts with the data layer everything sits on. SQLite is usually enough — a single file, no server, already built into Python. Step up to PostgreSQL only when you share and several people write at once. Enable pgvector for semantic search; analyze with columnar DuckDB and Polars — Excel stays the human's I/O while machines crunch the data behind it; pull far ahead of Power BI. The generic is already shared as OSS — you don't write it, you stand it up.
+description: The Independence part starts with the data layer everything sits on. SQLite is usually enough — a single file, no server, already built into Python. Step up to PostgreSQL only when you share and several people write at once. Enable pgvector for semantic search; analyze with columnar DuckDB and Polars — Excel stays the human's I/O while machines crunch the data behind it; pull far ahead of Power BI. The generic is already shared as OSS — you don't write it, you stand it up.
 date: 2026.07.01
 label: Independence 2
 title_html: Stand up the <span class="accent">data layer</span><br>first, on your own side.

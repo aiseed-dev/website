@@ -5,7 +5,7 @@ part: "2"
 lang: en
 title: "Stand Up Your Own AI — LLM and RAG"
 subtitle: "Lay AI on top of everything — answers grounded in your own data, on your own side"
-description: The Setup part closes by laying AI on top of everything. The pgvector enabled in 2-02 finally pays off. Stand up an open model with Ollama or vLLM, embed your documents, code, and mail into pgvector for RAG, and use it through Open WebUI. Keep secrets and always-on processing in-house; borrow a frontier model like Claude for hard judgment — control yours, capability borrowed. Cut the Copilot dependency and close the Setup part.
+description: The Independence part closes by laying AI on top of everything. The pgvector enabled in 2-02 finally pays off. Stand up an open model with Ollama or vLLM, embed your documents, code, and mail into pgvector for RAG, and use it through Open WebUI. Keep secrets and always-on processing in-house; borrow a frontier model like Claude for hard judgment — control yours, capability borrowed. Cut the Copilot dependency and close the Independence part.
 date: 2026.07.16
 label: Independence 10
 title_html: Lay <span class="accent">your own AI</span><br>on top of everything.
@@ -17,7 +17,7 @@ next_title: "The Structural Uneconomy of the SIer Model"
 
 # Stand Up Your Own AI — LLM and RAG
 
-The Setup part closes by laying **AI** on top of everything stood up so far.
+The Independence part closes by laying **AI** on top of everything stood up so far.
 Foundation, gate, documents, code, mail, meetings — an AI grounded in the data
 piled there, on your own side. The **pgvector** enabled back in 2-02
 finally pays off here.
@@ -91,7 +91,7 @@ hands, and send only the hardest parts out.
 > The value of your own AI is not maximizing cleverness.
 > It is **embedding AI into the everyday without letting go of your data.**
 
-## Summary — closing the Setup part
+## Summary — closing the Independence part
 
 Your own AI, on top of everything.
 
@@ -108,7 +108,7 @@ it was stood up.**
 > As written at the start of 2-02 — **the effect of OSS is greater than
 > the effect of AI.** The generic is already shared with the world.
 
-That closes **how you build it (the Setup part).** From the next chapter the
+That closes **how you build it (the Independence part).** From the next chapter the
 viewpoint shifts — **why this changes the industry's structure (the Shift
 part).** In an era when you can stand it up yourself, why does the
 SIer-commissioned model become structurally uneconomic?

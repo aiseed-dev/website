@@ -4,7 +4,7 @@ number: "02"
 part: "2"
 title: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars
 subtitle: すべてが乗るデータ基盤を、最初に自分の側に立てる
-description: 導入編の最初は、すべてが乗るデータ基盤。普通は SQLite で十分 ── サーバ不要の単一ファイルだ。共有して複数人で書くときだけ PostgreSQL に上げる。pgvector で意味検索、DuckDB と Polars で列指向分析 ── Excel は人の入出力に残し、その裏のデータは機械が捌く。Power BI を大差で抜く。汎用は OSS で共有されている ── 書くのではなく、立てる。
+description: 自立編で最初に立てるのは、すべてが乗るデータ基盤。普通は SQLite で十分 ── サーバ不要の単一ファイルだ。共有して複数人で書くときだけ PostgreSQL に上げる。pgvector で意味検索、DuckDB と Polars で列指向分析 ── Excel は人の入出力に残し、その裏のデータは機械が捌く。Power BI を大差で抜く。汎用は OSS で共有されている ── 書くのではなく、立てる。
 date: 2026.07.01
 label: Independence 2
 title_html: まず<span class="accent">データ基盤</span>を、<br>自分の手元に立てる。
@@ -97,7 +97,7 @@ docker compose exec db psql -U postgres -d app -c '\l'   # 接続確認
 
 ## pgvector を有効化する
 
-AI の RAG(導入編・後の章)で使う **ベクトル検索**を、いま有効にして
+AI の RAG(自立編の後の章)で使う **ベクトル検索**を、いま有効にして
 おく。拡張を一行で足すだけだ。
 
 ```sql

@@ -138,9 +138,12 @@ flowchart LR
 ## Where the next chapter goes
 
 Maintaining at the code level stops being necessary, and **maintenance
-can be done on-site, by the field itself**. What this change points to
-is: what happens to **the role whose center is writing code itself**?
-The next chapter takes up the coder role itself.
+can be done on-site, by the field itself**. This change presses two
+questions. **For the individual: what happens to the role whose center
+is writing code itself (the coder)?** **For the organization: is the
+SIer, which took on development, still needed?** The next chapter takes
+up the former — the coder role itself. The latter — the SIer becoming
+unnecessary — is taken up in the Shift part.
 
 ---
 

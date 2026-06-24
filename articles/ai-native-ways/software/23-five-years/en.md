@@ -112,6 +112,31 @@ domain**.
 > explicit and correctness is verifiable**.
 > **"Coding" inside software development** is the textbook case.
 
+### The decisive factor: a verifier that runs free and forever
+
+Let me restate the second condition — "correctness is verifiable" —
+one level deeper. Whether complete replacement happens turns on
+**whether the verifier runs free, instant, and infinitely
+repeatable.**
+
+Coding has that verifier **built in**. Compiler, type checker, tests,
+runtime — each runs **for free, in an instant, any number of times.**
+So AI can **try a million times** toward the correct answer; it can
+call its own grader without limit.
+
+The desk work, self-driving, and robotics we turn to next have no
+such verifier. **The only way to check right from wrong is reality
+itself** — and reality is **expensive, slow, and irreversible.** You
+cannot re-run a surgery or an accident response a million times for
+free. So AI can grind down the knowledge and pattern layers, but it
+**cannot hold a grader that closes the last 1%.**
+
+> The boundary of complete replacement is less the boundary of
+> verifiability than the boundary of **a verifier that runs free and
+> forever.**
+> Only software has that verifier built in — so complete replacement,
+> too, happens only in software.
+
 The other parts of software development — requirements, design,
 operations, incident response, stakeholder work — carry the same
 structural 1% problem we will see in self-driving and Shinkansen

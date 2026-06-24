@@ -5,7 +5,7 @@ part: "1"
 lang: en
 title: The Builder Role
 subtitle: Decide what to build, build it in dialogue with AI, run it, integrate the whole
-description: The builder builds and runs whole systems in dialogue with AI — not the next version of the coder. Skills, evaluation yardstick, and output structure are all different. This chapter defines the builder as a loop — decide, build with AI, check, integrate — and reads aiseed.dev (the site this article lives on, built by one person plus AI in 24 hours) as a concrete instance against the cost structure of a coder team.
+description: The builder builds and runs whole systems in dialogue with AI — not the next version of the software engineer. The SE solves "narrowly closed problems" and is replaced by AI; the builder handles the "open problem" of raising what to build from reality. This chapter defines the builder as a loop — decide, build with AI, check, integrate — and reads aiseed.dev (built by one person plus AI in 24 hours) as a concrete instance against the cost structure of an SE team.
 date: 2026.06.22
 label: Introduction 4
 title_html: Decide it, <span class="accent">build it with AI</span>,<br>run it.
@@ -20,12 +20,12 @@ next_title: "Customers Co-Develop with AI"
 **Decide what to build, build it in dialogue with AI, run it,
 integrate the whole — that is what a builder does**.
 
-Chapter 3 said the coder role (centered on writing code) gets replaced
-by AI. What remains is the broader role of building and running systems
-in dialogue with AI, and this book calls it the builder. This chapter
-fixes the definition — what the builder does, where the builder differs
-from the coder, why one person plus AI works — by grounding it in a
-concrete example.
+Chapter 3 said both the coder and the software engineer have their work
+done by AI. What remains is the broader role of building and running
+systems in dialogue with AI, and this book calls it the builder. This
+chapter fixes the definition — what the builder does, where the builder
+differs from the software engineer, why one person plus AI works — by
+grounding it in a concrete example.
 
 The concrete example is the site this article lives on. The **code
 base** of aiseed.dev (about 6,000 lines) was stood up by one person
@@ -97,29 +97,49 @@ through dialogue with AI, and the artifact is born of the
 collaboration**. Shift Chapter 6 returns to this analogy under
 "app-making comes to resemble film-making."
 
-## The structural difference from a coder
+## The structural difference from a software engineer
 
-Coder and builder look similar but are structurally different roles.
+A software engineer (SE) and a builder look similar but are
+structurally different roles. The dividing line is one — **the SE solves
+a "narrowly closed problem"; the builder handles an "open problem."**
 
-| Axis | Coder | Builder |
+- **Narrowly closed problem** — what to build is already defined, and
+  the conditions for a correct answer are clear. "Implement this spec
+  under these constraints." Both design and implementation close inside
+  the problem. The more explicit the rules and checkable the answer, the
+  stronger AI is (Chapter 1) — so the SE's work is what AI comes to do.
+- **Open problem** — what should be built is not even settled. Reality
+  contradicts itself, stakeholders' interests split, constraints move.
+  The "right answer" sits outside the problem, on the side of reality.
+  Reconciling with reality and translating it into narrowly closed
+  problems — that is the builder.
+
+The typical software engineer is a big-tech employee — owning, deeply,
+**just one specific slice** of a giant system: one feature of search, one
+service of payments, one layer of an API. The problem is narrow and
+well-defined. That is exactly where AI is strongest, and that work is
+what AI comes to do first.
+
+| Axis | Software engineer | Builder |
 |---|---|---|
-| Center of the work | Writing code | Deciding what to build |
-| Center of the skill | Fluency in languages / frameworks | Decomposition, evaluation, integration |
-| Evaluation yardstick | Writes fast, correctly, readably | Produces the right thing in the right structure |
-| Context | Arrives as spec | The builder carves it out |
-| Range | Depth in one technology | Breadth across technologies |
+| Problem handled | **Narrowly closed** (defined) | **Open** (reality, context) |
+| Center of the work | Designing and writing code | Deciding what to build |
+| Context | Given as spec | Carved out of reality by oneself |
+| Center of the skill | Design, implementation, technical fluency | Decomposition, evaluation, integration |
 | Headcount per project | A team | One person plus AI |
-| Throughput governed by | Writing speed | Decision quality × loop turns |
+| Throughput governed by | Design-and-build speed | Decision quality × loop turns |
 
-The last two rows are the heart of this chapter. A coder's output is
-governed by "headcount × writing speed." A builder's output is
-governed by "**decision quality × loop turns**." Once AI takes on
-the code and the design, the latter equation dominates.
+The last two rows are the heart of this chapter. An SE's output is
+governed by "headcount × design-and-build speed" — add people and it
+goes faster (with limits). A builder's output is governed by
+"**decision quality × loop turns**," and **adding people does not
+help** — a chain of judgments cannot be split across heads. Once AI
+takes on the narrowly closed problem — the design and the code — the
+latter equation dominates.
 
-> In the coder world, "add more people and it goes faster" worked
-> (with limits).
-> In the builder world, **adding people does not help** — a chain of
-> judgments cannot be split across heads.
+> The SE solves a **narrowly closed problem** — there, AI is strong.
+> The builder handles an **open problem** — reconciling with reality,
+> deciding what to build. So this is what stays with humans.
 
 The skill content differs as well. What a builder sharpens looks like
 this:
@@ -189,11 +209,11 @@ profession**. Shift Chapter 4 returns to this theme.
 
 ## The builder's day is set by decision density
 
-A builder's day has different content from a coder's day.
+A builder's day has different content from a software engineer's day.
 
-- **Coder's day**: most of the time is spent writing. In between,
-  checking requirements, taking reviews, applying fixes. The focus
-  zone is inside the editor.
+- **Software engineer's day**: most of the time is spent designing and
+  writing. In between, checking requirements, taking reviews, applying
+  fixes. The focus zone is inside the editor.
 - **Builder's day**: most of the time is spent **reading, deciding,
   evaluating**. Reading the diff AI returned, checking whether
   invariants are respected, writing what to ask next. The editor is
@@ -295,14 +315,14 @@ parent series).
 > is not the ability to write, but the ability to judge** — and that
 > holds for both.
 
-## Why one person plus AI is faster than ten coders
+## Why one person plus AI is faster than ten software engineers
 
 What happens if you try "the same scope, one person plus AI in 24
-hours" with a coder team?
+hours" with a team of software engineers?
 
 - Spec-alignment meetings — hours
 - Task decomposition and assignment — half a day
-- Each coder writes — days to weeks
+- Each SE designs and writes — days to weeks
 - Integration phase — days to weeks (integration cost grows roughly
   with the square of headcount — also Brooks' point)
 - Review and rework rounds — weeks
@@ -339,7 +359,8 @@ becomes a team that ships nothing.
 
 ## Where the next chapter goes
 
-The builder ships larger scope with fewer people than a coder team.
+The builder ships larger scope with fewer people than a team of software
+engineers.
 And this is not just an internal-team story — **the customer can
 become the builder**, by the same logic.
 

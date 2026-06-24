@@ -139,6 +139,14 @@ called programmers split in two directions:
 - **(b) Move to the builder** — stand on the side that builds and runs a
   system in dialogue with AI (defined in Chapter 4)
 
+Conversely, builders are not drawn only from programmers. **People at the
+field — those who actually know the work and the customer — can become
+builders too.** What a builder needs is not the ability to write code,
+but the ability to grasp the field's context and shape it in dialogue
+with AI. If anything, the field people, who already hold the context, are
+closer to the builder (Chapter 5 takes this up as "the customer builds it
+themselves").
+
 History has parallels. In Japan in the 1970s, calculators erased the
 skill of **commercial calculation by abacus (soroban)**, but people who
 could read what the numbers meant and keep the work running moved into

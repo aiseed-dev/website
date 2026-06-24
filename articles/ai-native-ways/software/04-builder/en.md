@@ -114,6 +114,15 @@ a "narrowly closed problem"; the builder handles an "open problem."**
   Reconciling with reality and translating it into narrowly closed
   problems — that is the builder.
 
+What matters is not the difficulty of the problem — it is **whether it is
+closed or open**. **A narrowly closed problem, however advanced, AI
+solves** — as with the world's hardest coding problems (Chapter 1),
+difficulty is no obstacle. But **open problems are where AI is weak —
+because they have no history**. AI learns from accumulated precedent; a
+reality without precedent, a situation no one has solved yet, gives it
+nothing to learn from. So the open problem — the question that rises from
+reality — stays with humans.
+
 The typical software engineer is a big-tech employee — owning, deeply,
 **just one specific slice** of a giant system: one feature of search, one
 service of payments, one layer of an API. The problem is narrow and

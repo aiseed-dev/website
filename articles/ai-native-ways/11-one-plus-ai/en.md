@@ -554,11 +554,18 @@ must defend. Count, gladly, **what AI can do**.
 - **Research, summarize, structure** — from gathering primary sources
   to organizing them
 
-Work once called a "profession" — law, medicine, accounting — is at
-its core **knowledge learned from books**, not a craftsman's
-apprenticeship. **That is exactly why AI, having learned from the same
-texts, can do most of it.** And that is fine. Better still: hand AI
-everything AI can do, without hesitation.
+Work once called a "profession" — law, medicine, accounting — rests on
+**knowledge that can be learned from books**, not a craftsman's
+apprenticeship. So AI, having learned from the same texts, can **carry
+the knowledge lookup and the first drafts**.
+
+This is not to belittle professionals — their practice deserves deep
+respect. The real worth of a lawyer, a doctor, an accountant was never
+memorizing the knowledge itself, but **judging how to apply it to the
+case at hand** and **bearing responsibility for the outcome**. So what
+you hand over is the *work*, not the judgment and the responsibility.
+Hand AI the work it can do, without hesitation — and professional and
+layperson alike are freed to concentrate on what truly matters.
 
 Because **the more AI can do, the higher the human rises.** From
 processing to judgment. From practice to direction. From the one who

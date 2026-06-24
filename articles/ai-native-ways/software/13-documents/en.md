@@ -169,7 +169,7 @@ control — and from here is the "how."
 "Documents" tempts you to stand up a whole OneDrive replacement like Nextcloud.
 But Nextcloud is a heavyweight PHP monolith — **old-style heavy software** —
 that drags in a separate user system and a separate database. It runs against
-the **single-binary lightness** this Setup part has chosen (PocketBase,
+the **single-binary lightness** this Independence part has chosen (PocketBase,
 Stalwart, Forgejo).
 
 In 2-03 you already stood up **PocketBase,** which carries auth. For

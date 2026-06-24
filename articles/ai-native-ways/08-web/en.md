@@ -67,6 +67,8 @@ WordPress core, themes, plugins — all interdepend. Update one, and another sto
 
 WordPress themes and plugins are written in PHP. Claude can write PHP, but the output quality is less stable than Python. **For an AI-native toolset, PHP is not optimal.**
 
+**The most dangerous case is the online shop (e-shop).** Handling payments and customer personal data makes it a high-value target — card-skimming, data leaks; the damage hits money and trust directly. A WordPress e-shop should be **gone static first of all** (hand payment to an external checkout page like Stripe and never hold card data yourself). Running PHP, a database, an admin login — remove them and the attack surface goes with them.
+
 ## Escaping WordPress
 
 If you are on WordPress, the way out is clear. Use the same **parallel operation** pattern from Chapter 6.
@@ -82,6 +84,8 @@ If you are on WordPress, the way out is clear. Use the same **parallel operation
 The cost effect is significant too. WordPress managed hosting (WP Engine, Kinsta, etc.) costs tens to hundreds of dollars per month. Put static HTML on Cloudflare Pages or GitHub Pages, and the cost is **zero per month**. Tens of thousands of yen per year disappear.
 
 > WordPress, too, escapes via parallel operation. Export to Markdown, write the frame in HTML/CSS, generate with Python, serve as static. That is how you kill WordPress.
+
+If there's no time to rebuild, there is a faster move — **crawl the whole existing site into static.** A headless browser (Playwright) runs each page's JavaScript, saves the rendered HTML and every file it loads (CSS, JS, images, fonts), and rewrites references to relative paths. Upload that to Cloudflare Pages and you can shut the running WordPress down — attack surface and all. `requests` and `wget` don't execute JavaScript, so they miss content — letting a browser render is the key. What SiteSucker (Mac, paid) does, AI can build for you in Python, for free (this site's repository ships `tools/mirror_site.py`).
 
 ## Content in Markdown + Mermaid. Frame in HTML+CSS+JS
 

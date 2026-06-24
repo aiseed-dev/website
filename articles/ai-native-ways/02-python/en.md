@@ -140,7 +140,7 @@ This is exactly the **"trust the handoff, check the result properly"** practice 
 
 Python has been around for over thirty years. Some code broke in the migration from Python 2 to 3, but Python 3 code will keep running for another 10 or 20 years.
 
-Excel VBA macros may stop working with each new Office version. Python code is text, dependencies are explicit, and AI can re-read it.
+Excel VBA macros may stop working with each new Office version. Python code is text, dependencies are explicit, and AI can re-read it. VBA macros are also a primary malware vector, so externalizing them is a security move too — and Excel itself stays: Polars and openpyxl read and write `.xlsx` directly (never dump to CSV — formatting is lost).
 
 > Hold logic, too, as structure.
 

@@ -535,9 +535,36 @@ Organizations, too, no longer need to insist on full-time employment.
 the next person. Organizations move project by project.
 **Employment itself was a silo-dependent shape.**
 
-## What becomes "work only humans can do"
+## "Work only humans can do" — the question is backwards
 
-After silos dissolve and processing is handed to AI, what remains?
+"After AI takes over the processing, what is left that only humans can
+do?" — the people who ask this are, more often than not, **from the IT
+industry**. Anxious about handing work to AI, they try to **defend the
+patch of ground that stays theirs**.
+
+But the question points the wrong way. Don't count the fortress you
+must defend. Count, gladly, **what AI can do**.
+
+- **Write code** — Python, SQL, HTML
+- **Run the books** — invoices, journal entries, monthly reports
+- **Draft legal work** — contracts, risk review, case-law lookup
+- **Write** — blogs, email, reports, localization
+- **Analyze data** — aggregation, visualization, spotting trends
+- **Draft design** — diagrams, slides, screens
+- **Research, summarize, structure** — from gathering primary sources
+  to organizing them
+
+Work once called a "profession," requiring years of apprenticeship —
+AI does most of it. **And that is fine.** Better still: hand AI
+everything AI can do, without hesitation.
+
+Because **the more AI can do, the higher the human rises.** From
+processing to judgment. From practice to direction. From the one who
+moves their hands to **the one who decides what to do** — not the side
+that performs the work, but the side that runs it. Each person becomes
+the manager of their own work.
+
+You do not *remain*. You are **set free, and you rise to this**:
 
 - **Deciding what to do** (strategy, direction)
 - **Asking why to do it** (meaning, purpose)
@@ -550,8 +577,10 @@ After silos dissolve and processing is handed to AI, what remains?
   procedures, craftsmanship)
 - **Cross-domain judgment** — judgments not possible inside silos
 
-These cannot be delegated to AI. And these are **interesting**. Not
-boring processing work, but real work.
+These are not "the last fortress." They are **the work you can finally
+take on in earnest, precisely because you handed the practice to AI.**
+And these are **interesting**. Not boring processing work, but real
+work.
 
 The last one — **cross-domain judgment** — is the new human work
 made possible *because* silos have dissolved. Accounting numbers,

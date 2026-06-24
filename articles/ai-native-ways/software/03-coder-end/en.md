@@ -3,149 +3,114 @@ slug: coder-end
 number: "03"
 part: "1"
 lang: en
-title: AI Now Does the Coder's Work
-subtitle: The role centered on writing code gets replaced by AI — and humans move to a broader role, building and operating the system
-description: This chapter defines "coder" — the role whose center is writing code itself. As AI comes to write code, the economic basis of that role collapses. AI does not only write code; it designs too — Opus is a coder, Fable a software engineer that decides structure. Meanwhile, building and operating a system is far broader than writing code: procuring hardware, negotiating with stakeholders, running it, taking responsibility, and shaping it in dialogue with AI — these stay with humans. What disappears is the role definition, not people.
+title: AI Now Does the Software Engineer's Work
+subtitle: The coder obviously goes — and the software engineer who designs and codes becomes, not a designer-coder, but someone who works in dialogue with AI (the builder)
+description: The coder (the code-writing role) obviously disappears. But the subject of this chapter is what lies beyond — AI now does the software engineer's work too. Opus is a coder, Fable/Mythos software engineers; design and code are both carried by AI. What stays with humans is not designing and coding yourself, but building and operating a system in dialogue with AI — that is, the builder. What disappears is the role definition, not people.
 date: 2026.06.15
 label: Introduction 3
-title_html: AI now does<br>the <span class="accent">coder's</span> work.
+title_html: AI now does the<br><span class="accent">software engineer's</span> work.
 prev_slug: maintenance-shift
 prev_title: "Maintenance-Phase Shift Is the Real Story"
 next_slug: builder
 next_title: "The Builder Role"
 ---
 
-# AI Now Does the Coder's Work
+# AI Now Does the Software Engineer's Work
 
-**The role whose center is "writing code" gets replaced by AI**.
+**The "coder" who writes code obviously, completely disappears. But the
+subject of this chapter is what lies beyond — AI now does the work of the
+"software engineer" who designs, too**.
 
-Chapter 2 showed that the main battleground of maintenance moves from
-"the ability to write code" to "the ability to decide the design."
-This chapter takes up the other face of that shift — the role itself.
-The coder role gets replaced by AI, and humans move to a broader role:
-building and operating a system in dialogue with AI (Chapter 4 names it
-"builder").
+Chapter 2 showed that both maintenance and development become work done in
+dialogue with AI. This chapter takes up the other face of that — the role
+itself. The claim is not "all programmers disappear" but **"the role
+definitions called coder and software engineer disappear."** That
+distinction is half of the argument.
 
-A note up front. This chapter is not saying "all programmers
-disappear." It is saying **"the role definition called coder
-disappears."** That distinction is half of the argument.
+## The coder and the software engineer
 
-## "Coder" means a role whose center is writing code
+This book distinguishes two roles.
 
-Start with the definition. In this book the term "coder" names this
-role:
+- **Coder** — writing code itself is the center of the work.
+  Requirements and design both arrive from someone else. The yardstick
+  is "writes fast, correctly, readably."
+- **Software engineer (SE)** — goes into design. Decides the structure
+  of what to build and how, and then writes the code. Broader than the
+  coder.
 
-- **Writing code itself** is the center of the work
-- Requirements arrive from someone else
-- Design may be decided by someone else (a lead, an architect, a PM)
-- The yardstick of evaluation is "writes fast, correctly, readably"
-- The skill core is fluency in languages, frameworks, and standard
-  libraries
+Both are definitions of a **role**, not labels for people. The same
+person can work as a coder in one situation and an SE in another. What
+disappears is the role, not the people.
 
-This is not a label for specific people; it is a definition of a
-**role**. The same person can work as a coder in one situation and as
-a designer in another. What this chapter says disappears is the role,
-not the people.
+These roles were viable because **writing code and designing took humans
+a lot of time**. Even shaping a single system demanded an enormous number
+of person-hours, and you had to assemble a workforce both to write and to
+design. The SIer industry, contract development, and multi-tier
+subcontracting are all built on that premise (Shift Chapter 1).
 
-The role was viable while **the ability to write code was a scarce
-resource**. Few could write it, so writing itself carried a price. A
-separate person could decide requirements and design, while the coder
-focused only on writing. The SIer industry, contract development, and
-multi-tier subcontracting structures are all built on that premise
-(Shift Chapter 1 takes up the structure).
+## AI becomes both the coder and the software engineer
 
-## AI writes code, and designs too — Opus a coder, Fable an SE
-
-Chapter 1 established that top-tier coding ability is reachable for $200
-a month. AI writes code — and with that one fact, the scarce resource
-called "the ability to write code" stops being scarce.
-
-And AI's ability has range:
+Chapter 1 established that AI became the strongest SIer — it writes code,
+and it understands context and designs. The ability has range:
 
 - **Opus** — a first-rate **coder**. Hand it intent and it translates it into running code
-- **Fable** — a **software engineer**. It goes into design, deciding structure itself
+- **Fable / Mythos** — **software engineers**. They understand context, go into design, and decide structure themselves
 
-So AI now enters **design**, not just code. The market value of the
-code-writing band — which used to demand a large workforce — converges
-to near zero. Not a statement about labor ethics, but about prices.
+So AI does **the coder's work and the software engineer's work alike**.
+The coder, who only writes code, obviously disappears. But the SE, who
+designs too, is the same — if AI does both the design and the code, there
+is no longer a place for a human to stand in the role of "designing and
+writing the code yourself." The market value of the design-and-code band
+converges to near zero — not a statement about labor ethics, but about
+prices.
 
-## Building and operating a system is broader than writing code
+## What stays with humans is dialogue with AI — and that is no longer the SE
 
-Set aside, for a moment, the SIer way of seeing it: splitting
-"development" into requirements → design → build → test, and dividing
-the work into coder, designer, PM — that division of labor.
+So what stays with humans? Not design, not coding — **building and
+operating a system in dialogue with AI**:
 
-That was never the essence of the work. It was split **because writing
-code took a large workforce** — a division for mass production.
-Actually building and operating a system is far broader than writing
-code:
-
-- **Procuring hardware** — servers, equipment, the physical site
-- **Negotiating with stakeholders** — customers, the field, the organization, regulators
-- **Running it and fixing it, continuously** — operations and maintenance never end
-- **Shaping it in dialogue with AI** — not a single instruction, but back-and-forth
-
-These lie outside code. And they are entangled — not settled by a
-single instruction. **Humans and AI shape what gets built by talking
-back and forth.**
-
-> Shrinking "development" to "the code-writing step" was the SIer's
-> convenience. In reality it is far broader — **procure hardware,
-> negotiate with people, run it, and talk with AI.**
-
-## What stays with humans
-
-While AI moves into code and design, the work only humans can do stays
-broad:
-
+- **Deciding what to build** — the context is held by the human
 - **Procuring hardware** (the physical world)
 - **Negotiating with stakeholders** (the social world)
 - **Running it and fixing it, continuously** (operations and maintenance)
 - **Deciding direction and taking responsibility**
-- **Shaping what gets built, in dialogue with AI**
 
-AI processes context **when given**, and designs. But **what to count
-as context, and what to reconcile with reality**, is decided by humans.
-And humans take the responsibility — and under current institutions, the
-subject who carries that responsibility is not the AI.
+AI processes context **when given**, and designs. But **what to count as
+context, what to reconcile with reality**, and **taking responsibility**
+stay with humans — and under current institutions, that subject is not
+the AI. This is not the "software engineer's work" of designing and
+writing the code yourself. **Shaping it in dialogue with AI — that is a
+different role.** Chapter 4 names it the builder.
 
-What humans do is broad. **Moving in the physical and social world,
-keeping it running, talking with AI, and carrying responsibility** — the
-whole of building and operating a system.
+> What stays with humans is not design, not coding.
+> It is **building and operating a system in dialogue with AI** — and
+> that is no longer the software engineer, but the builder.
 
-> Humans **procure hardware, negotiate with people, keep it running,
-> talk with AI, and take responsibility.** They carry the whole work of
-> building and operating a system.
+## What goes away is "designing and writing the code yourself"
 
-## What goes away is "the code-writing role"
-
-Put the pieces together:
-
-- AI **writes code, and designs too** (Opus a coder, Fable an SE)
-- Humans carry the **physical, social, operational, dialogic, and responsibility** work
-- Building and operating a system was always broader than writing code
-
-So what goes away is **the role whose center is writing code itself
-(the coder)** — and the **division of labor** the SIer built to mass-
-produce it. Demand does not vanish; the **code-writing band gets
-replaced by AI, so no price holds**. One person, in dialogue with AI,
-builds and operates the system — moving into that broader role
+So what goes away is **the role of designing and writing the code
+yourself (the coder and the software engineer)** — and the **division of
+labor** the SIer built to mass-produce it. Demand does not vanish; **both
+design and code get replaced by AI, so no price holds**. One person, in
+dialogue with AI, builds and operates the system — moving into that role
 (Chapter 4 names it "builder").
 
 ```mermaid
 flowchart LR
-  subgraph Old["Old — the SIer division of labor"]
+  subgraph Old["Old — the customer commissions an SIer"]
     direction TB
-    OC["Coder (writes)"]
-    OD["Designer"]
+    OClient["Customer"]
     OP["PM"]
-    OC --- OD --- OP
+    OD["Software engineer (design)"]
+    OC["Coder (writes)"]
+    OClient ==>|commissions| OP
+    OP --- OD --- OC
   end
 
   subgraph New["AI-native — one person + AI, in dialogue"]
     direction TB
-    H["Human<br/>(hardware, stakeholders,<br/>operations, direction, responsibility)"]
-    A["AI<br/>(code = Opus<br/>design = Fable)"]
+    H["Customer (builder)<br/>(what to build, hardware,<br/>stakeholders, operations, responsibility)"]
+    A["AI<br/>(code = Opus<br/>design = Fable/Mythos)"]
     H <-->|dialogue, mutual understanding| A
   end
 
@@ -157,51 +122,58 @@ flowchart LR
   class Old bad
 ```
 
+In both diagrams the customer stands in the same place. What changed is
+that the customer who used to **only place the order** now stands on the
+side that builds and runs it. Even just commissioning an SIer used to
+take real effort — RFP, vendor selection, requirements, contract. **At
+the level of a design-capable AI (Fable / Mythos), with no more than that
+"effort of ordering," the customer builds it** (taken up in Chapter 5).
+
+> Once, even just **placing the order** with an SIer took real effort.
+> Now, that same effort is enough — the customer builds it.
+
 This is not "every programmer loses their job." People who have been
 called programmers split in two directions:
 
-- **(a) Leave software development** — move to a different industry or
-  a different role
-- **(b) Move to the builder** — stand on the side that builds, operates,
-  and runs a system in dialogue with AI, carrying the physical, social,
-  and responsibility load (defined in Chapter 4).
+- **(a) Leave software development** — move to a different industry or role
+- **(b) Move to the builder** — stand on the side that builds and runs a
+  system in dialogue with AI (defined in Chapter 4)
 
-History has parallel transitions. In Japan, when calculators arrived
-in the 1970s, the skill of **commercial calculation by abacus
-(soroban)** disappeared, but people who could read what the numbers
-meant and keep the work running moved into accounting and finance. The
-same transition happened in the West with the **human computer**, and
-in printing with the **typesetter** as phototypesetting replaced
-letterpress. **When handwork gets replaced by machines, what splits is
-who can move to the broader side (orchestration, dialogue, operations,
-responsibility) and who cannot**. The same thing is happening in the
-coding band now.
+Conversely, builders are not drawn only from programmers. **People at the
+field — those who actually know the work and the customer — can become
+builders too.** What a builder needs is not the ability to write code,
+but the ability to grasp the field's context and shape it in dialogue
+with AI. If anything, the field people, who already hold the context, are
+closer to the builder (Chapter 5 takes this up as "the customer builds it
+themselves").
 
-The thing to flag is **the speed of the transition**. After Casio
-released the Casio Mini in 1972 at ¥12,800 and other low-priced models
-followed, **calculators pushed the abacus out of Japanese offices and
-homes within roughly a decade**. The intuition that "this kind of
-change takes decades" is a backward-looking illusion — **while it is
-happening, it is fast for the people inside it**. The AI shift, as
-Chapter 1 showed, is starting from a price structure that is orders of
-magnitude lower. It is reasonable to expect the same speed, or faster.
-Whether the individual or the country can absorb the transition
-becomes a question of **industry structure**, not personal choice
-(Shift Chapter 5 takes up the Japanese SIer industry).
+History has parallels. In Japan in the 1970s, calculators erased the
+skill of **commercial calculation by abacus (soroban)**, but people who
+could read what the numbers meant and keep the work running moved into
+accounting and finance. The same happened with the Western **human
+computer** and the **typesetter** as phototypesetting replaced
+letterpress. **When handwork is replaced by machines, what splits is who
+can move to the broader side (orchestration, dialogue, operations,
+responsibility) and who cannot.** The same thing is happening in software
+development — both coding and design — now.
+
+The thing to flag is **the speed**. After Casio released the Casio Mini
+(1972, ¥12,800) and other low-priced models, **calculators pushed the
+abacus out of Japanese offices and homes within roughly a decade**. The
+intuition that "this kind of change takes decades" is a backward-looking
+illusion — **while it is happening, it is fast for the people inside it**.
+The AI shift is starting from a price structure orders of magnitude lower
+(Chapter 1); it is reasonable to expect the same speed or faster. Whether
+one can absorb it becomes a question of **industry structure**, not
+personal choice (Shift Chapter 5).
 
 ## Where the next chapter goes
 
-AI writes code and designs, while hardware, people, operations,
-dialogue, and responsibility stay with humans. Who carries that broad
-role? And **the foundational discipline of that role shifts from
-software engineering to the liberal arts** — the bass line running
-through this sub-series.
-
-The next chapter defines that role — **the builder**. The person who,
-in dialogue with AI, builds and operates a system, reconciles it with
-reality, and carries responsibility. We will look at how the builder
-differs from the coder, and at why the builder's foundation is the
-liberal arts, with concrete examples.
+AI carries both design and code, while deciding what to build, hardware,
+people, operations, dialogue, and responsibility stay with humans — who
+carries that role? And **the foundational discipline of that role shifts
+from software engineering to the liberal arts** — the bass line of this
+sub-series. The next chapter defines that role — **the builder**.
 
 ---
 

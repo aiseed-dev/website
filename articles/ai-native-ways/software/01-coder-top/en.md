@@ -4,8 +4,8 @@ number: "01"
 part: "1"
 lang: en
 title: AI Solves the World's Hardest Coding Problems
-subtitle: Codeforces 2700 tier — the world's top coding ability, for $200 a month on Claude Max
-description: AI's code-writing ability has matched human top-class on public competitive-programming ratings. Two facts matter — the capability level reached, and the fact that anyone can access it via Claude Max for around $200 a month. The whole sub-series argues outward from those two.
+subtitle: From the Codeforces 2700 tier to design — in the Mythos/Fable era, AI became the strongest SIer, callable for $200 a month
+description: AI's code-writing ability has matched human top-class on public competitive-programming ratings (the Codeforces 2700 tier). It can also assemble a cyberattack autonomously — evidence of design ability. In the Mythos/Fable era AI became the strongest SIer, handling requirements, design, and build, and callable by anyone for $200 a month. The whole sub-series argues outward from that.
 date: 2026.06.01
 label: Introduction 1
 title_html: AI solves<br>the <span class="accent">hardest coding problems</span>.
@@ -48,7 +48,7 @@ Codeforces rating bands distribute roughly like this:
 
 The numbers have **threshold steps** baked in. The gap between 1500 and
 1800 closes with study. **The gap between 2400 and 2700 does not close
-with study alone** — past that point you need speed, design intuition,
+with study alone** — past that point you need speed, algorithmic design,
 a nose for the hardest problems. The world's top sits between roughly
 2700 and 3900, and contains around fifty people.
 
@@ -101,6 +101,37 @@ been observed returning 2700-tier solutions there.
 
 > A band humans reach **one person at a time, over a decade-plus**, was
 > entered by AI **all at once, by multiple paths**.
+
+## From code to design — AI became the strongest SIer
+
+Reaching the 2700 tier proves the ability to write code fast and
+correctly — **coding**. But **design is a different ability from
+coding**, and its core is **understanding context**: reading the target
+system or situation, grasping what it needs, and assembling a structure
+that fits. Writing fast and correctly is not the same as understanding
+context and deciding structure. So design ability needs its own evidence.
+
+That evidence came from an unexpected place. In the Fable / Mythos
+generation, a publicly reported case had an attacker misuse Claude to
+**run most of the operational steps of a cyberattack autonomously**
+(Anthropic reported it in 2025 as an automated cyber-espionage
+campaign). Driving an attack yourself takes scouting the target system,
+reading its weaknesses, and assembling the line of attack — that is,
+**understanding the target's context deeply**. That is the same ability
+as designing a system.
+
+So AI has reached the top tier in **two separate abilities** — writing
+code (the 2700 tier) and understanding context to decide structure, i.e.
+design (the autonomous attack). **AI has begun to exceed senior engineers
+at both coding and design.** With both in hand, the conclusion is one:
+**in the Mythos/Fable era, AI became the strongest SIer** — reading
+requirements, deciding structure, implementing, and running it, the whole
+of the SIer's work, done by one. And not as a scarce resource of a few
+dozen people worldwide, but callable by anyone for $200 a month.
+
+> The 2700 tier proved "the strongest coder"; autonomously assembling
+> an attack proves "it can design too" — exceeding senior engineers at
+> both coding and design, **AI became the strongest SIer**.
 
 ## $200 a month buys access to the world's top
 
@@ -199,7 +230,7 @@ loom's own parts are still hammered out by hand at the blacksmith's.
 The revolution's loop does not close **until production of the tool
 itself is mechanized**.
 
-Now that AI has taken execution completely, the loop finally closes.
+Now that AI carries both code and design, the loop finally closes.
 **The act of producing software is itself taken over by machines**.
 The revolution's tool is built by the revolution's own process. That
 is what "the IT revolution actually completing" means.
@@ -237,7 +268,7 @@ Every chapter that follows is **deduced** from this one fact.
   industry, the time horizon over which the transition completes.
 
 These are not independent observations. They all derive from one point:
-**top-tier coding ability is available for $200 a month**. This chapter
+**the strongest SIer is available for $200 a month**. This chapter
 exists only to plant that point.
 
 One more frame for what follows. This sub-series covers **structural
@@ -250,12 +281,13 @@ the outsourcing, the employment, and the prices of software development
 rearrange?**
 
 > Compressed to one line, this is the sub-series:
-> **if top-tier coding costs $200 a month, the outsourcing-centered
+> **if the strongest SIer costs $200 a month, the outsourcing-centered
 > structure of software development can no longer hold**.
 
-And one more thread — if AI carries the top tier of coding, what
-remains on the human side is the work of judgment. **Its foundation
-is closer to the liberal arts than to software engineering**.
+And one more thread — if AI carries both coding and design, what remains
+on the human side is the broad work of building and operating a system —
+hardware, people, operations, responsibility. **Its foundation is closer
+to the liberal arts than to software engineering**.
 This thread runs through the whole sub-series; Chapter 4 names it
 directly.
 

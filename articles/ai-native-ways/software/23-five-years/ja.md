@@ -629,7 +629,7 @@ aiseed.dev は、これからも構造を読む記事を発信していきます
 ## 関連記事
 
 - [導入編 第1章: AI は、世界で最も難しいコーディング問題を解く](/ai-native-ways/software/coder-top/)
-- [導入編 第3章: コーダーの仕事を AI がするようになる](/ai-native-ways/software/coder-end/)
+- [導入編 第3章: ソフトウェアエンジニアの仕事を AI がするようになる](/ai-native-ways/software/coder-end/)
 - [導入編 第4章: ビルダーという役割](/ai-native-ways/software/builder/)
 - [第5章: 日本のSIer業界の転換と雇用流動性](/ai-native-ways/software/japan-transition/)
 - [リン資源枯渇と自然農法](/phosphorus-and-farming/)

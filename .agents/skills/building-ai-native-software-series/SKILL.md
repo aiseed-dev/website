@@ -66,7 +66,7 @@ The sub-series has **23 chapters in three 編**, each 編 **numbered from 1**. F
 | 3 | `03-coder-end` | ソフトウェアエンジニアの仕事を AI がするようになる | `coder-end` | AI does code+design (Opus=coder, Fable/Mythos=SE); humans do the broader system build/operate in dialogue |
 | 4 | `04-builder` | ビルダーという役割 | `builder` | SE solves narrowly-closed problems (AI's domain) vs builder handles open problems; AI=weights/no history, human judges value; don't delegate judgment |
 | 5 | `05-customer-codev` | 顧客がAIと協働して開発する時代 | `customer-codev` | OSS-first: generic→use OSS (economical + secure); personal→OSS+AI customize (ex ch6-8); org→OSS foundation replacing M365/Copilot/WordPress (自立編); only the specific written with AI; what AI can't do, the SIer can't either |
-| 6 | `06-vba-python` | VBA を Python に移す | `vba-python` | **example**: Excel macro → Python, running version as answer key |
+| 6 | `06-vba-python` | VBA を Python に移す | `vba-python` | **example**: VBA is security-fragile→move urgently; Python is what AI handles best (AI written in Python); Polars/openpyxl read/write .xlsx (easy for humans too) → OnlyOffice keeps OOXML not ODF; running version as answer key |
 | 7 | `07-website` | Webサイトを作る ── AI と対話して | `website` | **example**: static site by dialogue; plain CSS + vanilla JS; fixable later |
 | 8 | `08-embedded` | 組み込みを作る | `embedded` | **example**: think in Python, Claude translates to C |
 

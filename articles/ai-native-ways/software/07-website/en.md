@@ -4,8 +4,8 @@ number: "07"
 part: "1"
 lang: en
 title: "Build a Website — In Dialogue with AI"
-subtitle: "Company site or blog — build the machinery with Claude in dialogue, then just write Markdown"
-description: One of Chapter 5's worked examples — a customer building a website with AI. The web you show the outside can be mostly static, and if it is static you don't need your own server. The machinery (the build and the template) can be made by talking with Claude — no need to learn Astro. Dialogue helps beginners most, and the web is easy to fix later. Build it light with plain CSS and minimal vanilla JS, then just write articles and posts in Markdown. Publishing is covered in the Independence part.
+subtitle: "WordPress is vulnerable to cyberattacks — go static and the attack surface vanishes. Build the machinery with Claude in dialogue, then just write Markdown"
+description: One of Chapter 5's worked examples — a customer building a website with AI. WordPress, with its running server, plugins, and admin login, is vulnerable to cyberattacks; online shops (e-shops), handling payments and personal data, should be fixed first. Going static makes almost all of that attack surface disappear. The machinery (the build and the template) can be made by talking with Claude — no need to learn Astro — and is easy to fix later. Build it light with plain CSS and minimal vanilla JS, then just write Markdown. Publishing is covered in the Independence part.
 date: 2026.06.30
 label: Introduction 7
 title_html: Build a website<br>in <span class="accent">dialogue with Claude</span>.
@@ -21,6 +21,34 @@ As Chapter 5 showed, a customer can build with AI. One worked example is the
 company site or blog — a website. Most of it can be **static,** and if it is
 static, you don't even need your own server.
 
+## WordPress is vulnerable to cyberattacks — fix this first
+
+Much of the world's web runs on WordPress. Convenient — but also **the single
+biggest target for cyberattacks.** The reason is in its structure.
+
+- **There is a running server** — PHP executes code on every request and queries
+  a database. The more moving parts, the wider the surface to attack.
+- **Plugins and themes** — to add features you install many third-party plugins.
+  An unmaintained or vulnerable plugin is the number-one entry point for a breach.
+- **There is an admin login** — the admin password is brute-forced automatically,
+  around the clock, from all over the world.
+- **There are so many** — being the most-used CMS, attack tools constantly scan
+  for WordPress; old, neglected sites get taken over one after another.
+
+**The most dangerous case is the online shop (e-shop).** Because it handles
+payments and customer personal data, it is a high-value target — card-skimming,
+data leaks; the damage hits money and trust directly. **So WordPress sites, and
+e-shops above all, should be fixed first.**
+
+The fix is simple. **Go static and almost all of this attack surface
+disappears** — no running PHP, no database, no admin login, no plugins. There is
+nowhere left to attack. (For a shop, hand the payment to an external checkout
+page like Stripe and never hold card data yourself — that shrinks the surface
+too.)
+
+> WordPress is attackable because of its **running server, plugins, and admin
+> login.** Go static and that whole surface vanishes. E-shops first.
+
 ## Why static
 
 The contents of an external site rarely change. So instead of assembling it on
@@ -28,7 +56,7 @@ a server every time, you make the HTML ahead of time and place it. That is
 faster, safer, and cheaper.
 
 - **Fast** — just file serving. No waiting on a database
-- **Safe** — nothing moving, so almost no surface to attack
+- **Safe** — nothing moving, so almost no surface to attack (as above)
 - **Easy** — content is Markdown. Have Claude write it; the build turns it into HTML
 
 This site (aiseed.dev) is static too. It makes HTML from Markdown and places it.
@@ -79,6 +107,8 @@ just a set of files (`html/`).
 
 ## Summary
 
+- **WordPress is vulnerable to cyberattacks** — running server, plugins, admin login are the targets; fix e-shops first of all
+- **Go static and the attack surface vanishes** — no running PHP, no DB, no admin login
 - **Build the machinery once, with Claude in dialogue** — no need to learn Astro; dialogue even for first-timers
 - **Plain CSS, minimal vanilla JS** — a static site needs no heavy base
 - **Operation is just writing articles** — add Markdown and build; fix it later anytime

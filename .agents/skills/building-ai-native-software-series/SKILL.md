@@ -67,7 +67,7 @@ The sub-series has **23 chapters in three 編**, each 編 **numbered from 1**. F
 | 4 | `04-builder` | ビルダーという役割 | `builder` | SE solves narrowly-closed problems (AI's domain) vs builder handles open problems; AI=weights/no history, human judges value; don't delegate judgment |
 | 5 | `05-customer-codev` | 顧客がAIと協働して開発する時代 | `customer-codev` | OSS-first: generic→use OSS (economical + secure); personal→OSS+AI customize (ex ch6-8); org→OSS foundation replacing M365/Copilot/WordPress (自立編); only the specific written with AI; what AI can't do, the SIer can't either |
 | 6 | `06-vba-python` | VBA を Python に移す | `vba-python` | **example**: VBA is security-fragile→move urgently; Python is what AI handles best (AI written in Python); Polars/openpyxl read/write .xlsx (easy for humans too) → OnlyOffice keeps OOXML not ODF; running version as answer key |
-| 7 | `07-website` | Webサイトを作る ── AI と対話して | `website` | **example**: static site by dialogue; plain CSS + vanilla JS; fixable later |
+| 7 | `07-website` | Webサイトを作る ── AI と対話して | `website` | **example**: WordPress is cyberattack-vulnerable (running server/plugins/admin login; e-shops first) → go static, attack surface vanishes; site machinery by dialogue; plain CSS + vanilla JS; fixable later |
 | 8 | `08-embedded` | 組み込みを作る | `embedded` | **example**: think in Python, Claude translates to C |
 
 **自立編 ── M365・Copilot・WordPress・基幹システム・GitHub から自立する (part "2", 第1–9章 / folders 09–17)** — install-guide register; each stands up one OSS stack, replacing a vendor product.

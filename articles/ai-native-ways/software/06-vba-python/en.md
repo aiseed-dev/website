@@ -59,7 +59,7 @@ editing in place with formatting preserved; neither goes through CSV.
 One more caveat. **LibreOffice and OpenOffice save in ODF (.ods)**, which Polars and
 openpyxl handle **poorly**. So if you replace the spreadsheet application itself,
 choose **OnlyOffice**, which keeps the same **OOXML (.xlsx)** as Microsoft — it
-meshes directly with the Python tools (covered in Independence Chapter 4's
+meshes directly with the Python tools (covered in Independence Chapter 5's
 document foundation).
 
 ## How — use the running version as the answer key
@@ -97,6 +97,6 @@ Next, another worked example — building a **website** with AI in dialogue.
 ## Related articles
 
 - [Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
-- [Independence Chapter 4: Take Documents Back — OnlyOffice Docs](/en/ai-native-ways/software/documents/)
+- [Independence Chapter 5: Take Documents Back — OnlyOffice Docs](/en/ai-native-ways/software/documents/)
 - [Parent series, Chapter 2: Writing Logic — Have AI Write It in Python](/en/ai-native-ways/python/)
 - [Parent series, Chapter 7: Living with Business Systems — Rewrite by Running in Parallel](/en/ai-native-ways/business-systems/)

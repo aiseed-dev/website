@@ -10,8 +10,8 @@ label: Introduction 8
 title_html: 機器を動かすソフトも、<br><span class="accent">AI と作れる</span>。
 prev_slug: website
 prev_title: "Webサイトを作る ── AI と対話して"
-next_slug: foundation
-next_title: "土台を据える ── PostgreSQL・SQLite・pgvector・DuckDB・Polars"
+next_slug: independence
+next_title: "Microsoft と Google から自立する ── 全体像と対応表"
 ---
 
 # 組み込みを作る ── Python で考え、Claude に翻訳させる
@@ -65,4 +65,4 @@ while True:
 
 - [第5章: 顧客がAIと協働して開発する時代](/ai-native-ways/software/customer-codev/)
 - [親シリーズ第10章: 組み込みを作る ── Pythonで考え、Claudeに翻訳させる](/ai-native-ways/embedded/)
-- [自立編 第1章: 土台を据える ── PostgreSQL ほか](/ai-native-ways/software/foundation/)
+- [自立編 第2章: 土台を据える ── PostgreSQL ほか](/ai-native-ways/software/foundation/)

@@ -996,11 +996,6 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/ai-native-ways/microsoft-365/</loc>
-    <lastmod>2026-05-03</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
     <loc>https://aiseed.dev/en/ai-native-ways/</loc>
     <lastmod>2026-08-25</lastmod>
     <priority>0.7</priority>
@@ -1076,11 +1071,6 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/en/ai-native-ways/microsoft-365/</loc>
-    <lastmod>2026-05-03</lastmod>
-    <priority>0.5</priority>
-  </url>
-  <url>
     <loc>https://aiseed.dev/ai-native-ways/software/</loc>
     <lastmod>2026-08-25</lastmod>
     <priority>0.8</priority>
@@ -1122,6 +1112,11 @@
   </url>
   <url>
     <loc>https://aiseed.dev/ai-native-ways/software/embedded/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/ai-native-ways/software/independence/</loc>
     <lastmod>2026-07-01</lastmod>
     <priority>0.6</priority>
   </url>
@@ -1242,6 +1237,11 @@
   </url>
   <url>
     <loc>https://aiseed.dev/en/ai-native-ways/software/embedded/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/ai-native-ways/software/independence/</loc>
     <lastmod>2026-07-01</lastmod>
     <priority>0.5</priority>
   </url>

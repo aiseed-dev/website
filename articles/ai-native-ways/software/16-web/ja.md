@@ -1,12 +1,12 @@
 ---
 slug: web
-number: "07"
+number: "08"
 part: "2"
 title: Webを公開する ── Cloudflare Pages（WordPress 代替）
 subtitle: 動的な WordPress をやめ、静的サイトをサーバ無しで公開する ── ビルド・確認・デプロイを分けて
 description: 導入編で AI と作った静的サイトを、自分の側から公開する。動的な WordPress をやめ、焼いた HTML を Cloudflare Pages に置く ── サーバは持たない。CDN と自動 HTTPS は Cloudflare に任せ、ソースとビルドは自分の手元に残す。肝は「ビルド → 確認 → デプロイ」を分けること。確認した HTML と本番に上げる HTML を同じにする。内部の道具は門番の内側に残す ── 窓は借り、金庫は自分に。
 date: 2026.07.14
-label: Independence 7
+label: Independence 8
 title_html: WordPress をやめ、<br><span class="accent">サーバ無し</span>で公開する。
 prev_slug: meetings
 prev_title: "会議と予約を自分の側に ── Jitsi と Cal.com"
@@ -67,8 +67,8 @@ Pages に切り替わる**。証明書も自動でつく。
 ## 動く部分だけ、つなぐ
 
 問い合わせフォームのような **動く部分だけ**、裏につなぐ。送信先は、門番
-(第2章)の内側に置いた自分の API(認証は門番、保存は第1章の DB、通知は
-第5章のメール)。**大半は静的、動くのは要る所だけ**。
+(第3章)の内側に置いた自分の API(認証は門番、保存は第2章の DB、通知は
+第6章のメール)。**大半は静的、動くのは要る所だけ**。
 
 ## 内部の道具は別 ── 窓は借り、金庫は自分に
 
@@ -97,5 +97,5 @@ Pages に切り替わる**。証明書も自動でつく。
 ## 関連記事
 
 - [導入編 第7章: Webサイトを作る ── AI と対話して](/ai-native-ways/software/website/)
-- [第2章: 門番を立てる ── PocketBase で認証を一つに](/ai-native-ways/software/auth/)
-- [親シリーズ第14章: Microsoft 365 を丸ごと置き換える](/ai-native-ways/microsoft-365/)
+- [第3章: 門番を立てる ── PocketBase で認証を一つに](/ai-native-ways/software/auth/)
+- [第1章: Microsoft と Google から自立する ── 全体像と対応表](/ai-native-ways/software/independence/)

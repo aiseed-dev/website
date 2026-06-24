@@ -1,13 +1,13 @@
 ---
 slug: web
-number: "07"
+number: "08"
 part: "2"
 lang: en
 title: "Publish the Web — Cloudflare Pages (a WordPress Replacement)"
 subtitle: "Drop dynamic WordPress and publish a static site with no server — build, verify, deploy as separate steps"
 description: Publish, from your own side, the static site you built with AI in the Introduction part. Drop dynamic WordPress and put the baked HTML on Cloudflare Pages — hold no server. Leave the CDN and automatic HTTPS to Cloudflare; keep the source and build in your own hands. The crux is to separate build, verify, and deploy, keeping what you verified identical to what goes live. Internal tools stay behind the gate — borrow the window, hold the vault.
 date: 2026.07.14
-label: Independence 7
+label: Independence 8
 title_html: Drop WordPress;<br>publish with <span class="accent">no server</span>.
 prev_slug: meetings
 prev_title: "Meetings and Booking on Your Own Side — Jitsi and Cal.com"
@@ -71,8 +71,8 @@ pointing the production domain.
 ## Wire only the moving parts
 
 Wire the backend only for the **moving parts** — a contact form. The target is
-your own API behind the gate (Chapter 2) — auth at the gate, storage in the
-Chapter 1 DB, notifications via the Chapter 5 mail. **Mostly static, dynamic
+your own API behind the gate (Chapter 3) — auth at the gate, storage in the
+Chapter 2 DB, notifications via the Chapter 6 mail. **Mostly static, dynamic
 only where needed.**
 
 ## Internal tools are separate — borrow the window, hold the vault
@@ -104,5 +104,5 @@ use it.
 ## Related articles
 
 - [Introduction, Chapter 7: Build a Website — In Dialogue with AI](/en/ai-native-ways/software/website/)
-- [Chapter 2: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
-- [Parent series, Chapter 14: Replacing Microsoft 365 Wholesale](/en/ai-native-ways/microsoft-365/)
+- [Chapter 3: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
+- [Chapter 1: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)

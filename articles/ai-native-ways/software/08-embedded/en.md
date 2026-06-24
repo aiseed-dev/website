@@ -11,8 +11,8 @@ label: Introduction 8
 title_html: Device software, too,<br>can be <span class="accent">built with AI</span>.
 prev_slug: website
 prev_title: "Build a Website — In Dialogue with AI"
-next_slug: foundation
-next_title: "Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars"
+next_slug: independence
+next_title: "Becoming Independent from Microsoft and Google — The Whole Map"
 ---
 
 # Build Embedded — Think in Python, Have Claude Translate
@@ -68,4 +68,4 @@ side, and breaks free of the vendors.
 
 - [Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
 - [Parent series, Chapter 10: Building Embedded — Think in Python, Have Claude Translate](/en/ai-native-ways/embedded/)
-- [Independence, Chapter 1: Lay the Foundation — PostgreSQL and more](/en/ai-native-ways/software/foundation/)
+- [Independence, Chapter 2: Lay the Foundation — SQLite and more](/en/ai-native-ways/software/foundation/)

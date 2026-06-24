@@ -145,7 +145,7 @@ SIer の真の優位は、「AI が届かない領域での経験と判断」─
 - [第1章: AI は、世界で最も難しいコーディング問題を解く](/ai-native-ways/software/coder-top/)
 - [第3章: ソフトウェアエンジニアの仕事を AI がするようになる](/ai-native-ways/software/coder-end/)
 - [第4章: ビルダーという役割](/ai-native-ways/software/builder/)
-- [親シリーズ第14章: Microsoft 365 を丸ごと置き換える(OSSで11層を解く)](/ai-native-ways/microsoft-365/)
+- [自立編 第1章: Microsoft と Google から自立する ── 全体像と対応表](/ai-native-ways/software/independence/)
 - [転換編 第3章: ロックイン問題](/ai-native-ways/software/lockin/)
 - [転換編 第4章: 各社がビルダーを雇用する時代](/ai-native-ways/software/hiring-builders/)
 - [構造分析08: 企業ITの税を引く](/insights/enterprise-tax/)

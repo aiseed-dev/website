@@ -9,8 +9,8 @@ label: AI Native 13
 title_html: <span class="accent">縦割り</span>から、<br><span class="accent">1人+AI</span> の自立へ。
 prev_slug: verify-narratives
 prev_title: AIで物語を検証する
-next_slug: microsoft-365
-next_title: Microsoft 365 を丸ごと置き換える ── 6つの一対一マッピング
+next_slug:
+next_title:
 ---
 
 # 1人+AIで作る、新しい仕事の単位

@@ -160,7 +160,7 @@ The next three chapters take up those examples — Excel macros to Python
 - [Chapter 1: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
 - [Chapter 3: AI Now Does the Software Engineer's Work](/en/ai-native-ways/software/coder-end/)
 - [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
-- [Parent series, Chapter 14: Replacing Microsoft 365 Wholesale (untying 11 layers with OSS)](/en/ai-native-ways/microsoft-365/)
+- [Independence Chapter 1: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)
 - [Shift Chapter 3: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
 - [Shift Chapter 4: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)

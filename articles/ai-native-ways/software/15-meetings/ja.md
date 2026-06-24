@@ -1,12 +1,12 @@
 ---
 slug: meetings
-number: "06"
+number: "07"
 part: "2"
 title: 会議と予約を自分の側に ── Jitsi と Cal.com
 subtitle: Teams の会議も、Calendly の予約も、講座のウェビナーも ── 自分のドメインで
-description: ビデオ会議は Jitsi、予約は Cal.com、講座・ウェビナーは BigBlueButton。Teams・Zoom・Calendly・Microsoft Bookings を、自分のドメインと自分のサーバに置き換える。予約は第1章の PostgreSQL に乗り、第5章のメールで確認を送る。人数・分課金から降り、会議のリンクも記録も自分の側に持つ。
+description: ビデオ会議は Jitsi、予約は Cal.com、講座・ウェビナーは BigBlueButton。Teams・Zoom・Calendly・Microsoft Bookings を、自分のドメインと自分のサーバに置き換える。予約は第2章の PostgreSQL に乗り、第6章のメールで確認を送る。人数・分課金から降り、会議のリンクも記録も自分の側に持つ。
 date: 2026.07.11
-label: Independence 6
+label: Independence 7
 title_html: 会議も予約も、<br><span class="accent">自分のドメイン</span>で。
 prev_slug: mail
 prev_title: "メールを自分の側に ── Stalwart と Thunderbird"
@@ -45,7 +45,7 @@ docker compose up -d        # web・prosody・jicofo・jvb が立つ
 ## 講座は BigBlueButton
 
 セミナーや授業のように、**ホワイトボード・挙手・ブレイクアウト・出席**が
-要る場面は **BigBlueButton**。教育向けに作られたウェビナー基盤で、第1章で
+要る場面は **BigBlueButton**。教育向けに作られたウェビナー基盤で、第2章で
 触れた「講座」のための道具だ。
 
 BigBlueButton は専用のインストーラを持ち、Jitsi より重い。**日常会議は
@@ -54,10 +54,10 @@ Jitsi、講座は BigBlueButton**、と用途で分けて立てる。
 ## 予約は Cal.com
 
 日程調整・講座予約は **Cal.com**。Calendly と Microsoft Bookings の置き換え
-で、データは **第1章の PostgreSQL** に乗る。
+で、データは **第2章の PostgreSQL** に乗る。
 
 ```yaml
-# compose.yaml ── 予約を第1章の DB に乗せて立てる
+# compose.yaml ── 予約を第2章の DB に乗せて立てる
 services:
   booking:
     image: calcom/cal.com:latest
@@ -67,7 +67,7 @@ services:
     restart: always
 ```
 
-予約が入れば、**第5章のメール**で確認と前日リマインドが飛び、Jitsi の
+予約が入れば、**第6章のメール**で確認と前日リマインドが飛び、Jitsi の
 会議リンクが自動で添えられる。**土台(DB)・門番(認証)・メール**の上に、
 予約がそのまま乗る ── 先に据えたものが、ここで効いてくる。
 
@@ -75,7 +75,7 @@ services:
 
 予定の同期は **CalDAV**(軽量な Radicale を一つ立てる)で、
 Thunderbird やスマホの標準カレンダーとつながる。Cal.com と各アプリは、
-第2章の門番の内側、リバースプロキシの先に置く。
+第3章の門番の内側、リバースプロキシの先に置く。
 
 ```caddy
 meet.example.com { reverse_proxy jitsi-web:80 }
@@ -88,8 +88,8 @@ book.example.com { reverse_proxy booking:3000 }
 
 - **Jitsi Meet** ── ブラウザだけの会議、Teams・Zoom の代わり
 - **BigBlueButton** ── ホワイトボードと出席のある講座・ウェビナー
-- **Cal.com** ── Calendly・Bookings の代わり(第1章 PostgreSQL に乗る)
-- **連携** ── 予約 → 第5章のメールで確認、Jitsi リンクを自動添付
+- **Cal.com** ── Calendly・Bookings の代わり(第2章 PostgreSQL に乗る)
+- **連携** ── 予約 → 第6章のメールで確認、Jitsi リンクを自動添付
 - **CalDAV + 門番** ── 標準カレンダーと同期、リバースプロキシの内側に
 
 ここまでで、土台・門番・文書・コード・メール・会議・予約が揃った。
@@ -99,6 +99,6 @@ book.example.com { reverse_proxy booking:3000 }
 
 ## 関連記事
 
-- [第1章: 土台を据える ── PostgreSQL・SQLite・pgvector・DuckDB・Polars](/ai-native-ways/software/foundation/)
-- [第5章: メールを自分の側に ── Stalwart と Thunderbird](/ai-native-ways/software/mail/)
-- [親シリーズ第14章: Microsoft 365 を丸ごと置き換える](/ai-native-ways/microsoft-365/)
+- [第2章: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars](/ai-native-ways/software/foundation/)
+- [第6章: メールを自分の側に ── Stalwart と Thunderbird](/ai-native-ways/software/mail/)
+- [第1章: Microsoft と Google から自立する ── 全体像と対応表](/ai-native-ways/software/independence/)

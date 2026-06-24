@@ -1,13 +1,13 @@
 ---
 slug: meetings
-number: "06"
+number: "07"
 part: "2"
 lang: en
 title: "Meetings and Booking on Your Own Side — Jitsi and Cal.com"
 subtitle: "Teams meetings, Calendly booking, and webinars for classes — on your own domain"
-description: Video meetings with Jitsi, booking with Cal.com, classes and webinars with BigBlueButton. Replace Teams, Zoom, Calendly, and Microsoft Bookings with your own domain on your own server. Booking rides on the PostgreSQL from Chapter 1 and sends confirmations through the Chapter 5 mail. Step off per-seat, per-minute billing and keep meeting links and records on your own side.
+description: Video meetings with Jitsi, booking with Cal.com, classes and webinars with BigBlueButton. Replace Teams, Zoom, Calendly, and Microsoft Bookings with your own domain on your own server. Booking rides on the PostgreSQL from Chapter 2 and sends confirmations through the Chapter 6 mail. Step off per-seat, per-minute billing and keep meeting links and records on your own side.
 date: 2026.07.11
-label: Independence 6
+label: Independence 7
 title_html: Meetings and booking,<br>on <span class="accent">your own domain</span>.
 prev_slug: mail
 prev_title: "Mail on Your Own Side — Stalwart and Thunderbird"
@@ -47,7 +47,7 @@ screen sharing all come standard.
 
 Where you need a **whiteboard, raise-hand, breakout rooms, and attendance** —
 seminars and lessons — use **BigBlueButton.** A webinar platform built for
-education, the tool for the "courses" mentioned back in Chapter 1.
+education, the tool for the "courses" mentioned back in Chapter 2.
 
 BigBlueButton has its own installer and is heavier than Jitsi. **Day-to-day
 meetings on Jitsi, classes on BigBlueButton** — stand each up for its purpose.
@@ -55,10 +55,10 @@ meetings on Jitsi, classes on BigBlueButton** — stand each up for its purpose.
 ## Booking — Cal.com
 
 Scheduling and course booking are **Cal.com,** a replacement for Calendly and
-Microsoft Bookings, with data on the **PostgreSQL from Chapter 1.**
+Microsoft Bookings, with data on the **PostgreSQL from Chapter 2.**
 
 ```yaml
-# compose.yaml — stand up booking on the Chapter 1 DB
+# compose.yaml — stand up booking on the Chapter 2 DB
 services:
   booking:
     image: calcom/cal.com:latest
@@ -68,7 +68,7 @@ services:
     restart: always
 ```
 
-When a booking lands, the **Chapter 5 mail** sends a confirmation and a
+When a booking lands, the **Chapter 6 mail** sends a confirmation and a
 day-before reminder, with the Jitsi meeting link attached automatically. On top
 of the **foundation (DB), gate (auth), and mail,** booking just sits — what was
 laid first pays off here.
@@ -77,7 +77,7 @@ laid first pays off here.
 
 Schedule sync is **CalDAV** (stand up a lightweight Radicale),
 connecting to Thunderbird and the stock phone calendar. Cal.com and each app sit
-behind the Chapter 2 gate, beyond the reverse proxy.
+behind the Chapter 3 gate, beyond the reverse proxy.
 
 ```caddy
 meet.example.com { reverse_proxy jitsi-web:80 }
@@ -90,8 +90,8 @@ Meetings and booking, on your own domain.
 
 - **Jitsi Meet** — browser-only meetings, in place of Teams and Zoom
 - **BigBlueButton** — classes and webinars with whiteboard and attendance
-- **Cal.com** — in place of Calendly and Bookings (on the Chapter 1 PostgreSQL)
-- **Integration** — booking → confirmation via Chapter 5 mail, Jitsi link auto-attached
+- **Cal.com** — in place of Calendly and Bookings (on the Chapter 2 PostgreSQL)
+- **Integration** — booking → confirmation via Chapter 6 mail, Jitsi link auto-attached
 - **CalDAV + gate** — sync with stock calendars, behind the reverse proxy
 
 By now the foundation, gate, documents, code, mail, meetings, and booking are
@@ -102,6 +102,6 @@ outside.
 
 ## Related articles
 
-- [Chapter 1: Lay the Foundation — PostgreSQL, SQLite, pgvector, DuckDB, Polars](/en/ai-native-ways/software/foundation/)
-- [Chapter 5: Mail on Your Own Side — Stalwart and Thunderbird](/en/ai-native-ways/software/mail/)
-- [Parent series, Chapter 14: Replacing Microsoft 365 Wholesale](/en/ai-native-ways/microsoft-365/)
+- [Chapter 2: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars](/en/ai-native-ways/software/foundation/)
+- [Chapter 6: Mail on Your Own Side — Stalwart and Thunderbird](/en/ai-native-ways/software/mail/)
+- [Chapter 1: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)

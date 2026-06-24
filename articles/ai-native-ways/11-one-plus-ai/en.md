@@ -622,6 +622,34 @@ spent on paperwork — most of which was **inter-silo translation
 (reports, approvals, handover documents)** — move to AI. The
 remaining 4 hours are spent on **the real cross-domain work**.
 
+## The foundation: own your OS
+
+One last step — the one that pays off most: **own the OS you run —
+Linux.**
+
+Everything so far — your own tools, your own data, your own judgment —
+only means something **on a foundation you hold.** That foundation is
+the OS. Windows and macOS are convenient, but borrowed: updates,
+billing, and what gets sent home are the vendor's to decide. Linux is
+different. **No forced updates, no subscription, no silent telemetry,
+no remote key that locks you out.** As the medieval freeman held his
+own land, the free person of the AI era holds **their own OS.**
+
+"But isn't Linux hard?" — it used to be. Arcane commands,
+configuration, breakage — that is what kept ordinary people away. But
+**that very wall is what AI now dissolves.** Ask Claude what you don't
+know; it explains the settings and fixes the breakage at your side.
+**Linux is no longer only for engineers.**
+
+This is the most valuable thing the "assistant" does. AI stays an
+assistant outside software — but that assistant **lets anyone stand
+where only engineers once stood.** Autonomy is no longer an idea; it
+is **a step you can take today.**
+
+You don't have to move everything at once. One old laptop is enough.
+Put Debian or Ubuntu on it, keep Claude beside you — that is the first
+step to holding your own foundation.
+
 ## When to start
 
 Asked "when do I switch to the AI-native way of working?" — the
@@ -689,3 +717,4 @@ working.
 - [Structural Analysis 12: AI and the Individual Business](/en/insights/ai-and-individual/)
 - [Structural Analysis 14: Subtraction Design](/en/insights/subtraction-design/)
 - [Structural-analysis note: The IT Industry's Structural Shift — Toward Autonomy, Distribution, and Diversity](/en/blog/autonomy-distribution-diversity/)
+- [Blog: PCs Just Got Much More Expensive — Install Linux on the PC You Already Have](/en/blog/windows-10-to-debian/)

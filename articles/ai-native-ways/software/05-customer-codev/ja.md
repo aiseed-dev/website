@@ -10,8 +10,8 @@ label: Introduction 5
 title_html: 汎用は <span class="accent">OSS</span>、<br>固有は <span class="accent">AI</span> と。
 prev_slug: builder
 prev_title: "ビルダーという役割"
-next_slug: vba-python
-next_title: "VBA を Python に移す ── Excel マクロを AI と書き直す"
+next_slug: independence
+next_title: "Microsoft と Google から自立する ── 全体像と対応表"
 ---
 
 # 顧客がAIと協働して開発する時代
@@ -73,11 +73,11 @@ flowchart LR
 を持っている」になる。半年かかるなら諦めたものを、数日でできるなら自分
 でやる ── **この境目を越えた**。
 
-その実例を、次の三つの章で見ていく:
+その実例は、親シリーズの個人トラックが扱う:
 
-- **1-06** ── Excel マクロ(VBA)を Python に移す
-- **1-07** ── Web サイトを、AI と対話して作る
-- **1-08** ── 組み込みを作る
+- **親シリーズ第2章** ── 処理を Python で書く(Excel マクロも Python へ)
+- **親シリーズ第6章** ── Web を、AI と対話して作る
+- **親シリーズ第8章** ── 組み込みを作る
 
 どれも、専門のプログラマーでない個人が、OSS と AI で自分の道具を作る話だ。
 
@@ -135,8 +135,7 @@ SIer の真の優位は、「AI が届かない領域での経験と判断」─
 分かりやすい ── 専門のプログラマーでない人が、OSS と AI で自分の道具を
 作る。
 
-次章から三つ、その実例を扱う ── Excel マクロを Python に(1-06)、Web
-サイトを(1-07)、組み込みを(1-08)。
+その実例は親シリーズの個人トラックが扱う ── Excel マクロを Python に(親シリーズ第2章)、Web を(親シリーズ第6章)、組み込みを(親シリーズ第8章)。
 
 ---
 

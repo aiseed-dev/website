@@ -17,7 +17,7 @@ next_title: "Build an API — Expose Core Logic with FastAPI"
 
 # Publish the Web — Cloudflare Pages (a WordPress Replacement)
 
-In the Introduction part, you built a static website with AI (1-07). Here, you **publish it from your own side.** Drop dynamic
+In the parent series' Chapter 6, you built a static website with AI. Here, you **publish it from your own side.** Drop dynamic
 **WordPress** and put the baked HTML on **Cloudflare Pages** — hold no server.
 
 ## Why drop WordPress
@@ -102,6 +102,6 @@ use it.
 
 ## Related articles
 
-- [1-07: Build a Website — In Dialogue with AI](/en/ai-native-ways/software/website/)
+- [parent series Chapter 6: Building for the Web — Back to HTML+CSS+JavaScript](/en/ai-native-ways/web/)
 - [2-03: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
 - [2-01: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)

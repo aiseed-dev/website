@@ -9,8 +9,8 @@ description: Business Microsoft 365 and Google Workspace are bundled SaaS suites
 date: 2026.07.01
 label: Independence 1
 title_html: Dissolve <span class="accent">Microsoft and Google</span><br>into <span class="accent">tools you own</span>.
-prev_slug: embedded
-prev_title: "Build Embedded — Think in Python, Have Claude Translate"
+prev_slug: customer-codev
+prev_title: "Customers Co-Develop with AI"
 next_slug: foundation
 next_title: "Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars"
 ---

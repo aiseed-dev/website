@@ -11,8 +11,8 @@ label: Introduction 5
 title_html: Generic on <span class="accent">OSS</span>,<br>the specific with <span class="accent">AI</span>.
 prev_slug: builder
 prev_title: "The Builder Role"
-next_slug: vba-python
-next_title: "Move VBA to Python — Rewrite Excel Macros with AI"
+next_slug: independence
+next_title: "Becoming Independent from Microsoft and Google — The Whole Map"
 ---
 
 # Customers Co-Develop with AI
@@ -79,11 +79,11 @@ grasp" becomes "a few hours to a few days and you have something
 running." What you would have given up on at half a year, you do yourself
 when it takes a few days — **the line moved**.
 
-The worked examples come in the next three chapters:
+The worked examples live in the parent series' individual track:
 
-- **1-06** — move Excel macros (VBA) to Python
-- **1-07** — build a website in dialogue with AI
-- **1-08** — build embedded software
+- **parent series Chapter 2** — write logic in Python (Excel macros to Python too)
+- **parent series Chapter 6** — build a website in dialogue with AI
+- **parent series Chapter 8** — build embedded software
 
 Each is about an individual who is not a professional programmer building
 their own tool with OSS and AI.
@@ -150,8 +150,8 @@ The customer builds the generic on OSS and the specific with AI. It is
 clearest to start from personal examples — someone who is not a
 professional programmer building their own tool with OSS and AI.
 
-The next three chapters take up those examples — Excel macros to Python
-(1-06), a website (1-07), embedded software (1-08).
+The parent series' individual track takes up those examples — Excel macros to Python
+(parent series Chapter 2), a website (parent series Chapter 6), embedded software (parent series Chapter 8).
 
 ---
 

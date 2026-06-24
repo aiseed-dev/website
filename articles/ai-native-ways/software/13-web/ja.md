@@ -16,7 +16,7 @@ next_title: "API を作る ── FastAPI で基幹のロジックを出す"
 
 # Webを公開する ── Cloudflare Pages（WordPress 代替）
 
-導入編で、AI と対話して静的な Web サイトを作った(1-07)。ここでは、
+親シリーズ第6章で、AI と対話して静的な Web サイトを作った。ここでは、
 それを **自分の側から公開する**。動的な **WordPress をやめ**、焼いた HTML を
 **Cloudflare Pages** に置く ── サーバは持たない。
 
@@ -96,6 +96,6 @@ Pages に切り替わる**。証明書も自動でつく。
 
 ## 関連記事
 
-- [1-07: Webサイトを作る ── AI と対話して](/ai-native-ways/software/website/)
+- [親シリーズ第6章: Webを作る ── HTML+CSS+JavaScriptという原点回帰](/ai-native-ways/web/)
 - [2-03: 門番を立てる ── PocketBase で認証を一つに](/ai-native-ways/software/auth/)
 - [2-01: Microsoft と Google から自立する ── 全体像と対応表](/ai-native-ways/software/independence/)

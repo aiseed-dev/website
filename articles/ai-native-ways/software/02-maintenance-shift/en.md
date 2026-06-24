@@ -119,7 +119,9 @@ maintenance where a human takes on the code itself stops being
 necessary**. You just tell AI what you want, in plain words — "change
 this to that," "fix this bug." From there, AI traces the context, fixes
 the code, and rebuilds the tests and docs to match. It is the same as
-asking an SIer to "fix this part."
+asking an SIer to "fix this part." This is maintenance, but new
+development is the same — both become **a matter of shaping things
+through dialogue with AI**.
 
 The **main battleground** of maintenance moves from code to design,
 spec, and context. "Cannot touch it" becomes "can touch it" — you can
@@ -151,9 +153,8 @@ flowchart LR
 ```
 
 > Old maintenance was work done against code.
-> Now that AI understands context, maintenance becomes work done **with
-> AI** — tell it what you want, and AI rebuilds the code, the tests, and
-> the docs.
+> Now, both maintenance and development become **a dialogue with AI** —
+> tell it what you want, and AI rebuilds the code, the tests, and the docs.
 
 ## Tests and docs become resources synced from context
 

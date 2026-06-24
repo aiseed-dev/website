@@ -99,19 +99,25 @@ into a bundle of static files.** The running WordPress becomes a static fixture
 that looks exactly the same.
 
 On the Mac there is a well-known app, **SiteSucker** (paid). But the same thing
-**can be done in Python** — for free, on any OS, in a form you can read. Ask AI,
-and in a few dozen lines it writes a script that fetches pages with `requests`,
-picks up links and images with `BeautifulSoup`, saves them, and rewrites links
-to relative paths.
+**can be done in Python** — for free, on any OS, in a form you can read.
+
+One caveat. Fetching a page with `requests` and reading it with `BeautifulSoup`
+is **not enough.** Today's WordPress and many sites **render their content with
+JavaScript** — fetch the raw HTML and the body isn't there yet (`wget` doesn't
+run JS either, so it misses the same way). So open the page in a **headless
+browser**, let the JavaScript run, and **save the rendered HTML.** In Python,
+**Playwright** does this.
 
 ```python
-# sketch: crawl an existing site and save it as static files
-import requests
-from bs4 import BeautifulSoup
-# 1) fetch a page → save under html/
-# 2) follow <a> <img> <link> <script>, save same-domain assets
-# 3) rewrite links to relative paths
-# (finish it in dialogue with AI; for a one-liner, wget --mirror also works)
+# sketch: run JS in a headless browser, save the rendered HTML
+from playwright.sync_api import sync_playwright
+with sync_playwright() as p:
+    page = p.chromium.launch().new_page()
+    page.goto("https://example.com/")
+    page.wait_for_load_state("networkidle")  # wait for JS to render
+    html = page.content()                    # the rendered HTML
+    # → save under html/, follow <a> <img> for images/CSS, rewrite links to relative
+    # (finish it in dialogue with AI)
 ```
 
 Upload the sucked-out static files to Cloudflare Pages and you can **shut down
@@ -119,7 +125,8 @@ the running WordPress — attack surface and all.** Dynamic features like contac
 forms and checkout won't carry over, so move forms to an external service and
 payment to an external page like Stripe.
 
-> For an existing site, **crawl it and suck it into static.** What SiteSucker
+> For an existing site, **crawl it and suck it into static.** A JS-rendered site
+> needs a headless browser (Playwright) to save the rendered HTML. What SiteSucker
 > (Mac, paid) does, AI can build for you in Python, for free.
 
 ## Write articles and posts

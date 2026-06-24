@@ -95,18 +95,25 @@ e-shop は、まっ先に改善すべきだ**。
 の束にする**。動く WordPress を、そのままの見た目で、静的な置物に変える。
 
 Mac には **SiteSucker** という定番ソフトがある(有料)。だが、同じことは
-**Python でできる** ── しかも無料で、どの OS でも、中身の分かる形で。AI に
-頼めば、`requests` でページを取り、`BeautifulSoup` でリンクと画像を拾って
-保存し、リンクを相対パスに書き換えるスクリプトを、数十行で書いてくれる。
+**Python でできる** ── しかも無料で、どの OS でも、中身の分かる形で。
+
+一つ、注意がある。`requests` でページを取って `BeautifulSoup` で読むだけ
+では **足りない**。いまの WordPress や多くのサイトは、**JavaScript で中身を
+描画する**からだ ── 素の HTML を取っても、本文がまだ入っていない(`wget`
+も同じく JS を実行しないので、これだけでは取りこぼす)。だから、**ヘッド
+レスブラウザ**でページを開いて JavaScript を実行させ、**描画後の HTML を
+保存する**。Python なら **Playwright** がそれをやる。
 
 ```python
-# 概略: 既存サイトをたどって静的ファイルに保存する
-import requests
-from bs4 import BeautifulSoup
-# 1) ページを取得 → html/ に保存
-# 2) <a> <img> <link> <script> をたどり、同じドメインの物を保存
-# 3) リンクを相対パスに書き換える
-# (全体は AI と対話して仕上げる。コマンド一発なら wget --mirror でもいい)
+# 概略: ヘッドレスブラウザで JS を実行させ、描画後の HTML を保存する
+from playwright.sync_api import sync_playwright
+with sync_playwright() as p:
+    page = p.chromium.launch().new_page()
+    page.goto("https://example.com/")
+    page.wait_for_load_state("networkidle")  # JS の描画を待つ
+    html = page.content()                    # 描画後の HTML
+    # → html/ に保存し、<a> <img> をたどって画像・CSS も保存、リンクは相対に
+    # (全体は AI と対話して仕上げる)
 ```
 
 吸い出した静的ファイルを Cloudflare Pages に上げれば、**動く WordPress を
@@ -114,8 +121,9 @@ from bs4 import BeautifulSoup
 残らないので、フォームは外部サービスへ、決済は Stripe などの外部ページへ
 移す。
 
-> 既存サイトは、**たどって静的に吸い出す**。SiteSucker(Mac・有料)と
-> 同じことは、AI に頼めば Python で無料で作れる。
+> 既存サイトは、**たどって静的に吸い出す**。JS で描画するサイトは、
+> ヘッドレスブラウザ(Playwright)で描画後の HTML を保存する。SiteSucker
+> (Mac・有料)と同じことが、AI に頼めば Python で無料で作れる。
 
 ## 記事・ブログを書く
 

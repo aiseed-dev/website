@@ -46,7 +46,7 @@ These roles were viable because **writing code and designing took humans
 a lot of time**. Even shaping a single system demanded an enormous number
 of person-hours, and you had to assemble a workforce both to write and to
 design. The SIer industry, contract development, and multi-tier
-subcontracting are all built on that premise (3-01).
+subcontracting are all built on that premise (3-02).
 
 ## AI becomes both the coder and the software engineer
 
@@ -165,7 +165,7 @@ illusion — **while it is happening, it is fast for the people inside it**.
 The AI shift is starting from a price structure orders of magnitude lower
 (1-01); it is reasonable to expect the same speed or faster. Whether
 one can absorb it becomes a question of **industry structure**, not
-personal choice (3-05).
+personal choice (3-06).
 
 ## Where the next chapter goes
 

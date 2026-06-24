@@ -137,7 +137,7 @@ AI cannot reach" — genuinely new technology, specialized regulation,
 cross-organizational negotiation, the pitfalls you only learn from
 experience. But that is **a small slice**, and taking it in as **advice**
 is enough — the same as not handing your routine business wholesale to a
-lawyer or tax accountant (3-04). The multi-year SIer
+lawyer or tax accountant (3-05). The multi-year SIer
 commission is no longer needed.
 
 > The SIer's distinctive capability lives **only in the small slice AI
@@ -161,7 +161,7 @@ The parent series' individual track takes up those examples — Excel macros to 
 - [1-03: AI Now Does the Software Engineer's Work](/en/ai-native-ways/software/coder-end/)
 - [1-04: The Builder Role](/en/ai-native-ways/software/builder/)
 - [2-01: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)
-- [3-03: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
-- [3-04: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
+- [3-04: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
+- [3-05: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

@@ -11,8 +11,8 @@ label: Independence 10
 title_html: Lay <span class="accent">your own AI</span><br>on top of everything.
 prev_slug: fastapi
 prev_title: "Build an API — Expose Core Logic with FastAPI"
-next_slug: sier-uneconomic
-next_title: "The Structural Uneconomy of the SIer Model"
+next_slug: two-worlds
+next_title: "Companies Don't Write Their Own Code — Office and Core, Two Parallel Worlds"
 ---
 
 # Stand Up Your Own AI — LLM and RAG
@@ -118,5 +118,5 @@ SIer-commissioned model become structurally uneconomic?
 ## Related articles
 
 - [2-02: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars](/en/ai-native-ways/software/foundation/)
-- [3-01: The Structural Uneconomy of the SIer Model](/en/ai-native-ways/software/sier-uneconomic/)
+- [3-02: The Structural Uneconomy of the SIer Model](/en/ai-native-ways/software/sier-uneconomic/)
 - [2-01: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)

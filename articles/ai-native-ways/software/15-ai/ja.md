@@ -10,8 +10,8 @@ label: Independence 10
 title_html: 全ての上に、<br><span class="accent">自前の AI</span>を乗せる。
 prev_slug: fastapi
 prev_title: "API を作る ── FastAPI で基幹のロジックを出す"
-next_slug: sier-uneconomic
-next_title: "SIer委託モデルの構造的不経済"
+next_slug: two-worlds
+next_title: "企業は自分でコードを書かない ── 事務と基幹、二つの世界の並立"
 ---
 
 # 自前の AI を据える ── LLM と RAG
@@ -109,5 +109,5 @@ SIer 委託モデルがなぜ構造的に不経済になるのかを問う。
 ## 関連記事
 
 - [2-02: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars](/ai-native-ways/software/foundation/)
-- [3-01: SIer委託モデルの構造的不経済](/ai-native-ways/software/sier-uneconomic/)
+- [3-02: SIer委託モデルの構造的不経済](/ai-native-ways/software/sier-uneconomic/)
 - [2-01: Microsoft と Google から自立する ── 全体像と対応表](/ai-native-ways/software/independence/)

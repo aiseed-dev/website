@@ -76,6 +76,11 @@ When the old and new outputs match, remove the old macro — without stopping, o
 at a time. Ask AI on the spot when something is unclear. This is exactly the way
 of building from Chapter 5.
 
+You can also **build it from scratch without decoding the old macro**. What the
+macro does, the person running the business should already know — so just tell AI
+what you want and rebuild it in dialogue. **Using the running version as the
+answer key, or building fresh in dialogue — either way works.**
+
 ## Summary
 
 - **Fragile VBA → Python, urgently** — on security grounds alone, it cannot wait

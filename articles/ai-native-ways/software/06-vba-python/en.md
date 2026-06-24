@@ -51,7 +51,12 @@ Polars and openpyxl are **easy for humans, too**. The APIs are
 straightforward and the code is readable — unlike the VBA black box, a person
 can read it later and fix it.
 
-One caveat. **LibreOffice and OpenOffice save in ODF (.ods)**, which Polars and
+One principle here: **never dump Excel to CSV.** CSV throws away all formatting,
+formulas, and cell layout. **Keep it as .xlsx and handle it directly with Polars
+and openpyxl** — Polars for aggregating and transforming values, openpyxl for
+editing in place with formatting preserved; neither goes through CSV.
+
+One more caveat. **LibreOffice and OpenOffice save in ODF (.ods)**, which Polars and
 openpyxl handle **poorly**. So if you replace the spreadsheet application itself,
 choose **OnlyOffice**, which keeps the same **OOXML (.xlsx)** as Microsoft — it
 meshes directly with the Python tools (covered in Independence Chapter 4's
@@ -74,8 +79,9 @@ of building from Chapter 5.
 ## Summary
 
 - **Fragile VBA → Python, urgently** — on security grounds alone, it cannot wait
-- **Excel stays** — Polars and openpyxl handle .xlsx; if you replace it, use
-  OnlyOffice (keeps OOXML), not ODF
+- **Excel stays (.xlsx)** — don't dump to CSV (it loses formatting); handle
+  .xlsx directly with Polars and openpyxl. If you replace it, use OnlyOffice
+  (keeps OOXML), not ODF
 - **Use the running version as the answer key** — compare I/O and move one at a time
 - **Python is what AI handles best** — AI itself is written in Python
 

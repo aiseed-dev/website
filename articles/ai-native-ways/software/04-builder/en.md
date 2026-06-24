@@ -228,8 +228,10 @@ just an internal-team story — **the customer can become the builder**, by
 the same logic.
 
 The next chapter takes up the era in which customers themselves pair
-with AI and develop. What fraction of customers who used to commission
-SIers shifts to building?
+with AI and develop. **If AI does the SIer's work, the customer no longer
+needs to go through an SIer — they pair with AI and build directly.** The
+customer who used to commission moves to the building side; we trace that
+shift.
 
 ---
 

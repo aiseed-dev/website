@@ -302,7 +302,7 @@ def orders(user=Depends(verify_token)):       # the 2-03 gate verifies who
 
 Don't expose all the core at once. **The most-used operations, one at a time.**
 Write it with AI in dialogue and check against the running version (the same way as
-1-06, VBA → Python). This is nothing but running the very logic
+parent series Chapter 2, VBA → Python). This is nothing but running the very logic
 of parallel operation at the granularity of a single API. Heavy work runs in Python
 behind it, returning only the result.
 

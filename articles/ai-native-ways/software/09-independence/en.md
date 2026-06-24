@@ -54,7 +54,7 @@ But that straight line is the very shape of the lock-in.
 The lock-in is not weak features, nor a migration that is technically hard.
 It is **the bundling itself.** So the way out is one thing — split each layer
 into an independent tool. Each can be replaced on its own, and if one falls the
-others keep running. This is the parent series' Chapter 13 "one + AI" at the
+others keep running. This is the parent series' 2-13 "one + AI" at the
 scale of the company: **autonomous N beats centralized 1.**
 
 ## The map — dissolving Microsoft and Google into independent OSS
@@ -64,16 +64,16 @@ the same independent OSS. **Replace the two left columns with the same right.**
 
 | Microsoft 365 | Google Workspace | Self-hosted (OSS) | Chapter |
 | --- | --- | --- | --- |
-| **Entra ID** | **Google ID / Cloud Identity** | **PocketBase** | [Chapter 3](/ai-native-ways/software/auth/) |
-| **Word / Excel / PowerPoint** | **Docs / Sheets / Slides** | **OnlyOffice** | [Chapter 5](/ai-native-ways/software/documents/) |
-| **SharePoint + GitHub** | **Drive** | **Forgejo + Zed** | [Chapter 4](/ai-native-ways/software/code/) |
-| **Exchange / Outlook** | **Gmail** | **Stalwart** | [Chapter 6](/ai-native-ways/software/mail/) |
-| **Teams / Bookings** | **Google Meet / Calendar** | **Jitsi / Cal.com** (BigBlueButton for courses) | [Chapter 7](/ai-native-ways/software/meetings/) |
-| **Power Pages** | **Google Sites** | **Cloudflare Pages** | [Chapter 8](/ai-native-ways/software/web/) |
-| **Azure SQL** | **Cloud SQL / BigQuery** | **PostgreSQL / SQLite** | [Chapter 2](/ai-native-ways/software/foundation/) |
-| **Power BI / Excel** | **Looker / Sheets** | **DuckDB + Polars** | [Chapter 2](/ai-native-ways/software/foundation/) |
-| **(Power Apps etc.)** | **Apps Script** | **FastAPI** | [Chapter 9](/ai-native-ways/software/fastapi/) |
-| **Copilot** | **Gemini** | **local LLM (Command A+ etc.) + RAG** | [Chapter 10](/ai-native-ways/software/ai/) |
+| **Entra ID** | **Google ID / Cloud Identity** | **PocketBase** | [2-03](/ai-native-ways/software/auth/) |
+| **Word / Excel / PowerPoint** | **Docs / Sheets / Slides** | **OnlyOffice** | [2-05](/ai-native-ways/software/documents/) |
+| **SharePoint + GitHub** | **Drive** | **Forgejo + Zed** | [2-04](/ai-native-ways/software/code/) |
+| **Exchange / Outlook** | **Gmail** | **Stalwart** | [2-06](/ai-native-ways/software/mail/) |
+| **Teams / Bookings** | **Google Meet / Calendar** | **Jitsi / Cal.com** (BigBlueButton for courses) | [2-07](/ai-native-ways/software/meetings/) |
+| **Power Pages** | **Google Sites** | **Cloudflare Pages** | [2-08](/ai-native-ways/software/web/) |
+| **Azure SQL** | **Cloud SQL / BigQuery** | **PostgreSQL / SQLite** | [2-02](/ai-native-ways/software/foundation/) |
+| **Power BI / Excel** | **Looker / Sheets** | **DuckDB + Polars** | [2-02](/ai-native-ways/software/foundation/) |
+| **(Power Apps etc.)** | **Apps Script** | **FastAPI** | [2-09](/ai-native-ways/software/fastapi/) |
+| **Copilot** | **Gemini** | **local LLM (Command A+ etc.) + RAG** | [2-10](/ai-native-ways/software/ai/) |
 
 The tools on the right are **separate open tools built by separate
 organizations.** So one vendor's decision can't ripple into the others. Swap
@@ -156,28 +156,28 @@ You don't have to do it all at once. Go **in order of what is easiest to pull
 out of the bundle,** one at a time. The Independence part is structured in
 exactly that order.
 
-1. **Data layer** (Chapter 2) — PostgreSQL, SQLite, DuckDB. Analysis, RAG,
+1. **Data layer** (2-02) — PostgreSQL, SQLite, DuckDB. Analysis, RAG,
    scheduling, and the core systems all sit on this. So it goes first
-2. **Auth** (Chapter 3) — PocketBase. The shared gate for every app. Move this
+2. **Auth** (2-03) — PocketBase. The shared gate for every app. Move this
    to your side and the root of the bundle is cut
-3. **Sharing and versioning** (Chapter 4) — Forgejo + Zed. Folds in SharePoint
+3. **Sharing and versioning** (2-04) — Forgejo + Zed. Folds in SharePoint
    / Drive
-4. **Documents** (Chapter 5) — OnlyOffice. Reads and writes Office / Docs
+4. **Documents** (2-05) — OnlyOffice. Reads and writes Office / Docs
    formats as-is
-5. **Mail** (Chapter 6) — Stalwart. Keep the contents of your communication on
+5. **Mail** (2-06) — Stalwart. Keep the contents of your communication on
    your own disk
-6. **Meetings and scheduling** (Chapter 7) — Jitsi, Cal.com. Meetings and online
+6. **Meetings and scheduling** (2-07) — Jitsi, Cal.com. Meetings and online
    courses on your own side
-7. **Web publishing** (Chapter 8) — Cloudflare Pages. Hosting with no lock-in
-8. **Core logic** (Chapter 9) — FastAPI. Turn Power Apps / Apps Script back into
+7. **Web publishing** (2-08) — Cloudflare Pages. Hosting with no lock-in
+8. **Core logic** (2-09) — FastAPI. Turn Power Apps / Apps Script back into
    readable code
-9. **AI** (Chapter 10) — local LLM + RAG. Hold AI without your data leaving the
+9. **AI** (2-10) — local LLM + RAG. Hold AI without your data leaving the
    building
 
-Run each step in **parallel**, the way the Chapter 9 describes.
+Run each step in **parallel**, the way the 2-09 describes.
 Don't stop the old (Microsoft / Google) — run the new alongside it, confirm the
 same work flows through, and only then cancel the old. **Time it to the renewal
-date** — that, too, follows the Chapter 9.
+date** — that, too, follows the 2-09.
 
 > You don't need to switch all at once.
 > **Each layer you untie loosens the bundle a little more** — one at a time, at
@@ -187,7 +187,7 @@ date** — that, too, follows the Chapter 9.
 
 The obvious question arises — **with this much self-hosted, who maintains it?**
 The answer is **one person + AI.** The new unit of work shown in the parent
-series' Chapter 13 "one + AI" applies directly to running the company's
+series' 2-13 "one + AI" applies directly to running the company's
 infrastructure.
 
 Why does one person suffice? Three reasons.
@@ -211,7 +211,7 @@ relay. The course server is heavy, so **stand it up only for the duration of a
 course and tear it down after.** The rest you can mostly leave alone once it's
 up.
 
-This is the very thesis of the parent series' Chapter 13. **You don't need a
+This is the very thesis of the parent series' 2-13. **You don't need a
 siloed IT department.** One person who understands the business holds, with the
 AI as partner, everything from auth to mail, meetings, AI, and the database.
 **Individual independence holds at the level of company infrastructure.**
@@ -223,17 +223,17 @@ AI as partner, everything from auth to mail, meetings, AI, and the database.
 ## And on to the core systems
 
 What you've assembled becomes, directly, the **foundation for rewriting the core
-systems.** The parallel-run rewrite the Chapter 9 describes
+systems.** The parallel-run rewrite the 2-09 describes
 actually **assumed a place to stand (a platform)** — and that place is fully in
 place by the end of the Independence part.
 
-- **The DB the new core runs on** — PostgreSQL + pgvector (Chapter 2)
-- **The runtime** — FastAPI / Python + a Rust layer beneath (Chapter 9)
-- **Versioning and CI** — Forgejo (Chapter 4)
+- **The DB the new core runs on** — PostgreSQL + pgvector (2-02)
+- **The runtime** — FastAPI / Python + a Rust layer beneath (2-09)
+- **Versioning and CI** — Forgejo (2-04)
 - **Auth** — PocketBase takes on login for the new system, all in one place
-  (Chapter 3)
+  (2-03)
 - **Extracting business logic** — read legacy code, SQL, and procedure manuals
-  with a **local LLM + RAG** (Chapter 10) and emit Markdown — **without the
+  with a **local LLM + RAG** (2-10) and emit Markdown — **without the
   source ever leaving the building**
 
 In fact, all the core systems and Microsoft / Google ever shared were **just two
@@ -269,7 +269,7 @@ worlds hangs — as long as that is held by someone else, no matter what you
 self-host, **the entrance belongs to another.**
 
 So the move that really tells in the Independence part is **auth → PocketBase**
-(Chapter 3). The moment you move the seam of identity to your side, both the core
+(2-03). The moment you move the seam of identity to your side, both the core
 and the office **authenticate against your own gate.** It is exactly here that
 Microsoft and Google try to dig in deepest — because **identity is the root of
 the bundle.** Hold this, and the rest is a matter of time.
@@ -292,7 +292,7 @@ is **a design that keeps content away from where AI can reach it: plain text,
 open formats, local execution, readable code.** The more you try to make AI a
 colleague, the harder you hit this wall.
 
-**Second — the cost of rewriting has fallen by a factor of ten** (Chapter 9). The AI extracts the business logic, translates it to Python, and
+**Second — the cost of rewriting has fallen by a factor of ten** (2-09). The AI extracts the business logic, translates it to Python, and
 writes the tests. A multi-year, multi-million project becomes a few months for
 one person on the ground + AI.
 
@@ -304,7 +304,7 @@ rebuild that needs explaining.**
 
 This is not hostility toward Microsoft or Google. It is the natural turn in which
 the AI revolution **rebuilds and inherits** what the IT revolution stacked up
-(the prologue; the parent series' Chapter 13). The question is not "whether" but
+(the prologue; the parent series' 2-13). The question is not "whether" but
 "when, and led by whom." **Leave it with the vendor, or rebuild it on your own
 side** — that is all.
 
@@ -318,21 +318,21 @@ layer into one vendor. Convenience and hostage were two faces of one chain. The
 Independence part unties the bundle, layer by layer, into independent OSS — and
 the two suites land on the same right-hand side.
 
-- **Auth**: Entra ID / Google ID → **PocketBase** (Chapter 3)
-- **Documents**: Office / Docs → **OnlyOffice** (Chapter 5)
-- **Sharing, versioning**: SharePoint+GitHub / Drive → **Forgejo + Zed** (Chapter 4)
-- **Mail**: Exchange / Gmail → **Stalwart** (Chapter 6)
-- **Meetings, scheduling**: Teams / Meet → **Jitsi / Cal.com** (Chapter 7)
-- **Web publishing**: Power Pages / Sites → **Cloudflare Pages** (Chapter 8)
-- **Data layer**: Azure SQL / Cloud SQL → **PostgreSQL / SQLite** (Chapter 2)
-- **Data analysis**: Power BI / Looker → **DuckDB + Polars** (Chapter 2)
-- **Core logic**: Power Apps / Apps Script → **FastAPI** (Chapter 9)
-- **AI**: Copilot / Gemini → **local LLM + RAG** (Chapter 10)
+- **Auth**: Entra ID / Google ID → **PocketBase** (2-03)
+- **Documents**: Office / Docs → **OnlyOffice** (2-05)
+- **Sharing, versioning**: SharePoint+GitHub / Drive → **Forgejo + Zed** (2-04)
+- **Mail**: Exchange / Gmail → **Stalwart** (2-06)
+- **Meetings, scheduling**: Teams / Meet → **Jitsi / Cal.com** (2-07)
+- **Web publishing**: Power Pages / Sites → **Cloudflare Pages** (2-08)
+- **Data layer**: Azure SQL / Cloud SQL → **PostgreSQL / SQLite** (2-02)
+- **Data analysis**: Power BI / Looker → **DuckDB + Polars** (2-02)
+- **Core logic**: Power Apps / Apps Script → **FastAPI** (2-09)
+- **AI**: Copilot / Gemini → **local LLM + RAG** (2-10)
 
 One-to-one — replace the left with the right. The tools on the right are separate
 open tools built by separate organizations, so **one vendor's decision can't
 ripple into the others.** This is not about efficiency — it restates the parent
-series' Chapter 13 "one + AI" at the height of the company's foundation.
+series' 2-13 "one + AI" at the height of the company's foundation.
 **Autonomous N beats centralized 1.**
 
 Untie the bundle. One at a time, at your own pace. With each layer untied, the
@@ -344,8 +344,8 @@ layer** everything sits on, on your own side.
 
 ## Related articles
 
-- [Chapter 2: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars](/ai-native-ways/software/foundation/)
-- [Chapter 5: Take Documents Back — OnlyOffice Docs on PocketBase](/en/ai-native-ways/software/documents/)
-- [Chapter 9: Build an API — Expose Core Logic with FastAPI](/en/ai-native-ways/software/fastapi/)
+- [2-02: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars](/ai-native-ways/software/foundation/)
+- [2-05: Take Documents Back — OnlyOffice Docs on PocketBase](/en/ai-native-ways/software/documents/)
+- [2-09: Build an API — Expose Core Logic with FastAPI](/en/ai-native-ways/software/fastapi/)
 - [Structural Analysis 08: Subtracting the Enterprise IT Tax](/insights/enterprise-tax/)
 - [Will You Still Keep Using Windows and Office?](/blog/windows-office-facts/)

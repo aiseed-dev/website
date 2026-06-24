@@ -95,11 +95,11 @@ Have Claude rewrite the business logic embedded in Excel and Word as Python. **J
 
 ### Charts → matplotlib / Altair
 
-**Draw Excel's charts in Python** (Chapter 1, "Drawing Charts"). Keep the data in Excel; generate the charts in Python as PNG / SVG / interactive HTML. You can also paste them back into the Excel workbook as images.
+**Draw Excel's charts in Python** (Chapter 2, "Drawing Charts"). Keep the data in Excel; generate the charts in Python as PNG / SVG / interactive HTML. You can also paste them back into the Excel workbook as images.
 
 ### Pivots → Polars
 
-Rewrite Excel pivots as **`pivot()` / `group_by().agg()`** (Chapter 1, "Aggregation and Cross-tabulation with Polars"). **A million rows in seconds**, and the result remains as reproducible code.
+Rewrite Excel pivots as **`pivot()` / `group_by().agg()`** (Chapter 2, "Aggregation and Cross-tabulation with Polars"). **A million rows in seconds**, and the result remains as reproducible code.
 
 ---
 
@@ -124,11 +124,11 @@ Once macros, charts, and pivots are externalized and work runs on ONLYOFFICE, th
 
 Step away from UI; structure the "home" of data and logic. Details follow in later chapters:
 
-- **Word files to Markdown + Mermaid** (Chapters 2 & 3) — convert existing `.docx` in bulk with Claude / pandoc
-- **Mutable data to SQLite + Python** (Chapter 4) — migrate customer master / ledger / inventory to SQLite
-- **Large-scale analytics to Parquet + DuckDB** (Chapter 4) — tens of millions of rows in seconds
-- **Turn workflows into Python apps** (Chapters 1 & 5) — monthly aggregation, invoices, minutes, PowerPoint auto-generation
-- **Rewrite business systems via parallel operation** (Independence Chapter 9) — Java/C# → Python, Oracle → PostgreSQL
+- **Word files to Markdown + Mermaid** (Chapters 3 & 4) — convert existing `.docx` in bulk with Claude / pandoc
+- **Mutable data to SQLite + Python** (Chapter 5) — migrate customer master / ledger / inventory to SQLite
+- **Large-scale analytics to Parquet + DuckDB** (Chapter 5) — tens of millions of rows in seconds
+- **Turn workflows into Python apps** (Chapters 2 & 7) — monthly aggregation, invoices, minutes, PowerPoint auto-generation
+- **Rewrite business systems via parallel operation** (Software 2-09) — Java/C# → Python, Oracle → PostgreSQL
 
 > What you can do today: install JupyterLab. That alone starts it.
 
@@ -179,7 +179,7 @@ flowchart LR
   class AI ai
 ```
 
-With this alone, **nearly every domain of desk work runs the same way** — writing, software development, data analysis, design, embedded. The era of learning a different tool for each specialty ends (details in Chapter 10, "Knowing What Work to Hand to AI").
+With this alone, **nearly every domain of desk work runs the same way** — writing, software development, data analysis, design, embedded. The era of learning a different tool for each specialty ends (details in Chapter 9, "Knowing What Work to Hand to AI").
 
 ## Minimal stack
 
@@ -188,7 +188,7 @@ Independent of occupation, the toolkit you need:
 ```
 Structure         : Markdown
 Processing / impl : Python (Claude writes it)
-Data              : JSON / YAML / SQLite / Parquet (by use, Chapter 4)
+Data              : JSON / YAML / SQLite / Parquet (by use, Chapter 5)
 Human-viewed table: OnlyOffice (.xlsx)
 Diagrams          : Mermaid
 Web               : HTML + CSS + minimal JavaScript
@@ -200,7 +200,7 @@ Almost all text. AI reads and writes it directly. Still readable in ten years.
 
 Routine work does become several times to several tens of times faster. But that is not the goal.
 
-- **Valuable work** (strategic judgment, customer dialogue, first-time design, responsible decisions) cannot be handed off to AI (Chapter 10). Pour the freed time into what AI absolutely cannot do — the **reality that does not yield to shortcuts**: soil and crops, your own systems and data, face-to-face exchange with family, neighbors, the younger generation. **Redirecting time toward that** is the goal.
+- **Valuable work** (strategic judgment, customer dialogue, first-time design, responsible decisions) cannot be handed off to AI (Chapter 9). Pour the freed time into what AI absolutely cannot do — the **reality that does not yield to shortcuts**: soil and crops, your own systems and data, face-to-face exchange with family, neighbors, the younger generation. **Redirecting time toward that** is the goal.
 - The path the industry pushes is "everyone rides the same vendor's AI" — Microsoft 365 Copilot, ChatGPT Enterprise, Google Workspace AI. This book points the other way: **each person holds their own tools, their own data, their own judgments**.
 - One centralized N is fragile; N autonomous units are **strong** (no single point of failure carrying everyone, diversity grows) — survival strategy in the Mythos era.
 - **Keep the data on your side, too.** Whatever you hand to a cloud AI travels the internet to that vendor's servers — don't paste customer PII, household finances, health records, photos or diaries verbatim. **Ask the cloud AI for the method and the structure; handle the actual data on your own machine.** "Tell me a procedure for organizing a customer list" is fine; pasting the list itself is not. As the volume grows, move to **an AI that runs entirely inside your own machine** (a local LLM — small ones run on palm-sized computers). It keeps working through blackouts and network outages. This is the concrete shape of "holding your own data."
@@ -260,7 +260,7 @@ Who belongs here:
 - **Physicians using AI imaging and diagnostics; mechanics and repair technicians**
 - **Carpenters, architects, craftspeople using AI design tools**
 
-This layer **bridges the abstraction of pure software with the directness of pure physical work**. Chapter 8 (embedded) and Chapter 9 (agriculture, nature, and AI) of this book are precisely about it.
+This layer **bridges the abstraction of pure software with the directness of pure physical work**. Chapter 8 (embedded) of this book is precisely about it.
 
 > The middle layer is the contemporary form of those who **gain power by touching reality**. The strongest form of the AI-era free person is likely to appear here.
 

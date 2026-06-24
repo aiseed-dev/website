@@ -5,7 +5,7 @@ part: "1"
 lang: en
 title: "Move VBA to Python — Rewrite Excel Macros with AI"
 subtitle: "Move security-fragile business macros to Python, with the running version as your answer key — Excel stays, rewritten in the language AI handles best"
-description: Chapter 5's first worked example. The Excel VBA macros at the foot of nearly every company — security-fragile, their author gone, no one able to fix them — get moved to Python with AI. Python is the language AI itself is written in, so AI handles it best. Polars and openpyxl read, write, and edit Excel (.xlsx) directly, and they are easy for humans too (so OnlyOffice, which keeps OOXML, fits better than LibreOffice's ODF). Use the running macro as the answer key and move them one at a time.
+description: 1-05's first worked example. The Excel VBA macros at the foot of nearly every company — security-fragile, their author gone, no one able to fix them — get moved to Python with AI. Python is the language AI itself is written in, so AI handles it best. Polars and openpyxl read, write, and edit Excel (.xlsx) directly, and they are easy for humans too (so OnlyOffice, which keeps OOXML, fits better than LibreOffice's ODF). Use the running macro as the answer key and move them one at a time.
 date: 2026.06.30
 label: Introduction 6
 title_html: Fragile VBA into the<br>language AI loves — <span class="accent">Python</span>.
@@ -17,7 +17,7 @@ next_title: "Build a Website — In Dialogue with AI"
 
 # Move VBA to Python — Rewrite Excel Macros with AI
 
-As Chapter 5 showed, an individual can build their own tool with OSS and AI. The
+As 1-05 showed, an individual can build their own tool with OSS and AI. The
 first worked example sits at the foot of nearly every company — **Excel VBA
 macros.** Years of business logic are written there; the author is gone, and no
 one can fix it. Move it to **Python** with AI.
@@ -59,7 +59,7 @@ editing in place with formatting preserved; neither goes through CSV.
 One more caveat. **LibreOffice and OpenOffice save in ODF (.ods)**, which Polars and
 openpyxl handle **poorly**. So if you replace the spreadsheet application itself,
 choose **OnlyOffice**, which keeps the same **OOXML (.xlsx)** as Microsoft — it
-meshes directly with the Python tools (covered in Independence Chapter 5's
+meshes directly with the Python tools (covered in 2-05's
 document foundation).
 
 ## How — use the running version as the answer key
@@ -74,7 +74,7 @@ key."**
 
 When the old and new outputs match, remove the old macro — without stopping, one
 at a time. Ask AI on the spot when something is unclear. This is exactly the way
-of building from Chapter 5.
+of building from 1-05.
 
 You can also **build it from scratch without decoding the old macro**. What the
 macro does, the person running the business should already know — so just tell AI
@@ -96,7 +96,7 @@ Next, another worked example — building a **website** with AI in dialogue.
 
 ## Related articles
 
-- [Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
-- [Independence Chapter 5: Take Documents Back — OnlyOffice Docs](/en/ai-native-ways/software/documents/)
+- [1-05: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
+- [2-05: Take Documents Back — OnlyOffice Docs](/en/ai-native-ways/software/documents/)
 - [Parent series, Chapter 2: Writing Logic — Have AI Write It in Python](/en/ai-native-ways/python/)
-- [Independence Chapter 9: Build an API — Expose Core Logic with FastAPI](/en/ai-native-ways/software/fastapi/)
+- [2-09: Build an API — Expose Core Logic with FastAPI](/en/ai-native-ways/software/fastapi/)

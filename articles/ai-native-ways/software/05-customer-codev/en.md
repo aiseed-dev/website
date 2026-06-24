@@ -20,7 +20,7 @@ next_title: "Move VBA to Python — Rewrite Excel Macros with AI"
 **Customers themselves come to build, paired with AI. But the first move
 is not writing code — it is to use proven OSS**.
 
-Chapter 4 showed that a builder need not be on the company's payroll. If
+1-04 showed that a builder need not be on the company's payroll. If
 you can stand on the building side in dialogue with AI, **the customer
 becomes the builder**. And the customer holds the business context from
 the start — what the SIer used to gather from the outside and translate
@@ -81,9 +81,9 @@ when it takes a few days — **the line moved**.
 
 The worked examples come in the next three chapters:
 
-- **Chapter 6** — move Excel macros (VBA) to Python
-- **Chapter 7** — build a website in dialogue with AI
-- **Chapter 8** — build embedded software
+- **1-06** — move Excel macros (VBA) to Python
+- **1-07** — build a website in dialogue with AI
+- **1-08** — build embedded software
 
 Each is about an individual who is not a professional programmer building
 their own tool with OSS and AI.
@@ -137,7 +137,7 @@ AI cannot reach" — genuinely new technology, specialized regulation,
 cross-organizational negotiation, the pitfalls you only learn from
 experience. But that is **a small slice**, and taking it in as **advice**
 is enough — the same as not handing your routine business wholesale to a
-lawyer or tax accountant (Shift Chapter 4). The multi-year SIer
+lawyer or tax accountant (3-04). The multi-year SIer
 commission is no longer needed.
 
 > The SIer's distinctive capability lives **only in the small slice AI
@@ -151,17 +151,17 @@ clearest to start from personal examples — someone who is not a
 professional programmer building their own tool with OSS and AI.
 
 The next three chapters take up those examples — Excel macros to Python
-(Chapter 6), a website (Chapter 7), embedded software (Chapter 8).
+(1-06), a website (1-07), embedded software (1-08).
 
 ---
 
 ## Related articles
 
-- [Chapter 1: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
-- [Chapter 3: AI Now Does the Software Engineer's Work](/en/ai-native-ways/software/coder-end/)
-- [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
-- [Independence Chapter 1: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)
-- [Shift Chapter 3: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
-- [Shift Chapter 4: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
+- [1-01: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
+- [1-03: AI Now Does the Software Engineer's Work](/en/ai-native-ways/software/coder-end/)
+- [1-04: The Builder Role](/en/ai-native-ways/software/builder/)
+- [2-01: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)
+- [3-03: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
+- [3-04: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

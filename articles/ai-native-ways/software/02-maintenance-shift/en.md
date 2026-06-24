@@ -21,7 +21,7 @@ next_title: "AI Now Does the Software Engineer's Work"
 happening below the waterline is a structural change in the maintenance
 phase itself**.
 
-Chapter 1 established that AI became the strongest SIer — it does not
+1-01 established that AI became the strongest SIer — it does not
 only write code; it understands context and designs. The first
 consequence to derive from that is not the often-told "coding gets
 faster." It is that **the structure of maintenance rearranges**. This
@@ -80,7 +80,7 @@ almost nothing.
 
 ## AI understands context — so maintaining at the code level stops being necessary
 
-Here is where Chapter 1's point bites. The core of design is
+Here is where 1-01's point bites. The core of design is
 **understanding context**, and AI has reached it. AI can read the
 context of a whole system — its structure, intent, and history.
 
@@ -97,11 +97,11 @@ manual and fit it to their reality can do both development and
 maintenance.** No need to read code, no need to write it — and no
 difficult decisions to make. You read the manual and fit it to your own
 reality, and that is all. A coding background stops being a prerequisite
-(Chapter 5 develops this as "the customer builds it themselves").
+(1-05 develops this as "the customer builds it themselves").
 
 The checking side is the same. **Reviewing the design document and
 auditing the code for security are within reach of Mythos/Fable-class
-AI** — the ability to assemble the structure of an attack (Chapter 1) is,
+AI** — the ability to assemble the structure of an attack (1-01) is,
 flipped over, the ability to find and close the weaknesses. And that level
 **exceeds the major SIers**. There is no longer a reason to outsource
 review or security checks (the structure by which commissioning itself
@@ -149,8 +149,8 @@ unnecessary — is taken up in the Shift part.
 
 ## Related articles
 
-- [Chapter 1: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
-- [Chapter 3: AI Now Does the Software Engineer's Work](/en/ai-native-ways/software/coder-end/)
-- [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
+- [1-01: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
+- [1-03: AI Now Does the Software Engineer's Work](/en/ai-native-ways/software/coder-end/)
+- [1-04: The Builder Role](/en/ai-native-ways/software/builder/)
 - [Prologue: AI's Native Tongue Is Python and Markdown-Shaped Text](/en/ai-native-ways/prologue/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)

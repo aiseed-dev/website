@@ -20,7 +20,7 @@ next_title: "Customers Co-Develop with AI"
 **Decide what to build, build it in dialogue with AI, run it,
 integrate the whole — that is what a builder does**.
 
-Chapter 3 said both the coder and the software engineer have their work
+1-03 said both the coder and the software engineer have their work
 done by AI. What remains is the broader role of building and running
 systems in dialogue with AI, and this book calls it the builder. This
 chapter fixes the definition — what the builder does, where the builder
@@ -85,7 +85,7 @@ whole consistent. The crew gives it form in dialogue with the director.
 The relationship between the builder and AI maps onto this — **direction
 and the whole stay with the builder, the code and design get built
 through dialogue with AI, and the artifact is born of the
-collaboration**. Shift Chapter 6 returns to this analogy under
+collaboration**. 3-06 returns to this analogy under
 "app-making comes to resemble film-making."
 
 ## The structural difference from a software engineer
@@ -98,7 +98,7 @@ a "narrowly closed problem"; the builder handles an "open problem."**
   the conditions for a correct answer are clear. "Implement this spec
   under these constraints." Both design and implementation close inside
   the problem. The more explicit the rules and checkable the answer, the
-  stronger AI is (Chapter 1) — so the SE's work is what AI comes to do.
+  stronger AI is (1-01) — so the SE's work is what AI comes to do.
 - **Open problem** — what should be built is not even settled. Reality
   contradicts itself, stakeholders' interests split, constraints move.
   The "right answer" sits outside the problem, on the side of reality.
@@ -107,7 +107,7 @@ a "narrowly closed problem"; the builder handles an "open problem."**
 
 What matters is not the difficulty of the problem — it is **whether it is
 closed or open**. **A narrowly closed problem, however advanced, AI
-solves** — as with the world's hardest coding problems (Chapter 1),
+solves** — as with the world's hardest coding problems (1-01),
 difficulty is no obstacle. But **open problems are where AI is weak —
 because they have no history**. AI learns from accumulated precedent; a
 reality without precedent, a situation no one has solved yet, gives it
@@ -185,7 +185,7 @@ this:
 
 None of these come from memorizing language grammar or framework
 fluency. **Even someone who cannot read code can become a builder, as
-long as they can read reality and judge what matters** (as Chapter 3
+long as they can read reality and judge what matters** (as 1-03
 showed, that includes people at the field).
 
 ## A builder's foundation is liberal arts, not software engineering
@@ -237,8 +237,8 @@ shift.
 
 ## Related articles
 
-- [Chapter 1: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
-- [Chapter 2: Maintenance-Phase Shift Is the Real Story](/en/ai-native-ways/software/maintenance-shift/)
-- [Chapter 3: AI Now Does the Software Engineer's Work](/en/ai-native-ways/software/coder-end/)
+- [1-01: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
+- [1-02: Maintenance-Phase Shift Is the Real Story](/en/ai-native-ways/software/maintenance-shift/)
+- [1-03: AI Now Does the Software Engineer's Work](/en/ai-native-ways/software/coder-end/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

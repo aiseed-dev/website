@@ -1,12 +1,12 @@
 ---
 slug: verify-narratives
-number: "12"
+number: "10"
 lang: en
 title: "Verifying Narratives with AI"
 subtitle: "Don't get carried by convenient stories — this is the essential work of the AI era."
 description: The workplace is surrounded by narratives — executive briefings, vendor pitches, industry common sense, news articles, politicians' words. With AI, you can verify a narrative structurally, against past statements, public records, contracts, and third-party verifiable facts. As case studies, four governance-failure patterns — WordPress (excessive concentration in one person, the main case), Node.js (no one is in charge, Example 1), Linux distributions / CentOS (corporate stewards rewriting their promises, Example 2), and Microsoft's "return to native apps" (the gap between strategic slogan and actual implementation scope, Example 3).
 date: 2026.05.02
-label: AI Native 12
+label: AI Native 10
 title_html: Verify narratives,<br><span class="accent">with AI</span>.
 prev_slug: ai-delegation
 prev_title: "Knowing What Work to Hand to AI"
@@ -355,7 +355,7 @@ In the next and final chapter, we combine all of these tools and practices and l
 
 ## Related
 
-- [Chapter 11: Knowing What Work to Hand to AI](/en/ai-native-ways/ai-delegation/)
-- [Chapter 13: One Person + AI — The New Unit of Work](/en/ai-native-ways/one-plus-ai/)
+- [Chapter 09: Knowing What Work to Hand to AI](/en/ai-native-ways/ai-delegation/)
+- [Chapter 11: One Person + AI — The New Unit of Work](/en/ai-native-ways/one-plus-ai/)
 - [Structural Analysis 14: The Design of Subtraction](/en/insights/subtraction-design/)
 - [Structural Analysis 12: AI and the Individual Business](/en/insights/ai-and-individual/)

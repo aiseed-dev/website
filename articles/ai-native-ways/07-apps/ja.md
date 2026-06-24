@@ -1,11 +1,11 @@
 ---
 slug: apps
-number: "09"
+number: "07"
 title: アプリを作る ── CLIツール、Fletアプリ、Flutterアプリ
 subtitle: 段階的にスケールアップする三層構造
 description: アプリを作るのに、最初から Flutter は要らない。CLI ツールで書いて動かし、画面が要るなら Flet で Python のまま GUI を作り、本格的なクロスプラットフォームが必要なら Flutter に進む。三層を段階的に登れば、リスクが小さく、AI が書きやすい。
 date: 2026.05.02
-label: AI Native 09
+label: AI Native 07
 title_html: アプリは <span class="accent">CLI</span> から始め、<br><span class="accent">Flet</span>、<span class="accent">Flutter</span> へ伸ばす。
 prev_slug: web
 prev_title: Webを作る ── HTML+CSS+JavaScriptという原点回帰
@@ -197,13 +197,13 @@ App Store で売りたい(本当に?)と思ったら、第三層に上がる。F
 
 **CLI で十分なもの**:
 
-- **`invoice` — 月末請求書一括生成**:顧客マスタ(SQLite、第4章)+
+- **`invoice` — 月末請求書一括生成**:顧客マスタ(SQLite、第5章)+
   Markdown テンプレ → `pandoc` で PDF を 100 通一括生成。`uv tool
   install invoice` で配布
 - **`minutes` — 議事録自動整形**:録音 `.m4a` を受け取り、Whisper
   でテキスト化 → Claude API で Markdown 整形 → 要点抽出
 - **`expense` — 領収書を CSV/JSON 化**:写真を OCR → 仕分け →
-  freee/MoneyForward 形式の JSON で出力(CSV ではなく、第4章)
+  freee/MoneyForward 形式の JSON で出力(CSV ではなく、第5章)
 - **`syllabus` — 単元別練習問題生成**(教師向け):単元の YAML
   仕様 → 30 種類の問題を Claude が生成 → Markdown で出力 → `pandoc`
   で印刷用 PDF
@@ -217,7 +217,7 @@ App Store で売りたい(本当に?)と思ったら、第三層に上がる。F
 
 - **介護記録入力**:介護士のタブレットで動く、入居者を選んで一言
   入力、写真を撮る → ローカルの SQLite に保存 → 夜間に miniPC へ
-  同期(第4章・第2章のセルフホスト)
+  同期(第5章・第2章のセルフホスト)
 - **農家の畑管理マップ**:畑の地図上で区画をタップ、その区画の作付け
   履歴を表示・入力 → SQLite ローカル + 母屋の miniPC に同期
 - **学童の読書記録**:子どもが読んだ本をタイトル + 感想で記録、
@@ -229,7 +229,7 @@ App Store で売りたい(本当に?)と思ったら、第三層に上がる。F
 (顧客向けのアプリ、有償販売)── これは少ない。社内・自分用なら
 ほぼ第一層か第二層で足りる。
 
-すべて、第1章の Python と第4章の SQLite/JSON を **そのまま使う**。
+すべて、第2章の Python と第5章の SQLite/JSON を **そのまま使う**。
 新しい何かを覚える必要は無い、別のフレームワーク文化に入る必要も
 ない。**「同じやり方で全領域に伸ばす」(序章)** の具体形だ。
 
@@ -264,6 +264,6 @@ CLI で動くものを作って、検証する。GUI が要れば Flet で載せ
 
 ## 関連記事
 
-- [第8章: Webを作る ── HTML+CSS+JavaScriptという原点回帰](/ai-native-ways/web/)
+- [第6章: Webを作る ── HTML+CSS+JavaScriptという原点回帰](/ai-native-ways/web/)
 - [第2章: 処理を書く ── AIにPythonで書いてもらう](/ai-native-ways/python/)
 - [構造分析15: Mythos時代のセキュリティ設計](/insights/security-design/)

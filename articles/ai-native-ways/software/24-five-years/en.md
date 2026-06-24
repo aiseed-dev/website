@@ -31,24 +31,24 @@ half of the chapter.
 Put the claims made across the preceding chapters back in the order in
 which they cascade.
 
-- **AI reaches human-top execution capability** (Introduction Chapter 1) —
+- **AI reaches human-top execution capability** (1-01) —
   Codeforces 2700 tier, $200/month
-- **The main battleground of maintenance moves to design** (Introduction Chapter 2)
-- **The role called "coder" goes away** (Introduction Chapter 3)
-- **A new role — the builder — emerges** (Introduction Chapter 4)
-- **Customers themselves become builders** (Introduction Chapter 5) — nine-tenths
+- **The main battleground of maintenance moves to design** (1-02)
+- **The role called "coder" goes away** (1-03)
+- **A new role — the builder — emerges** (1-04)
+- **Customers themselves become builders** (1-05) — nine-tenths
   in-house, only one-tenth outsourced
 - **The SIer commission model becomes structurally uneconomic**
-  (Chapter 1) — the same effort builds it in-house
-- **The price gap runs at orders of magnitude** (Chapter 2) — 10× to
+  (3-01) — the same effort builds it in-house
+- **The price gap runs at orders of magnitude** (3-02) — 10× to
   100×, market displacement, not competition
-- **Lock-in dissolves** (Chapter 3) — AI-native standard code, the
+- **Lock-in dissolves** (3-03) — AI-native standard code, the
   opposite end from Palantir's FDE
-- **Companies hire builders** (Chapter 4) — same professional
+- **Companies hire builders** (3-04) — same professional
   position as lawyers and doctors. The supply is not only former
   coders; AI + Python + Flet bring in **the VB / VBA generation,
   makers, shop-floor engineers, and students** as new entrants
-- **Multi-tier subcontracting absorbs the transition** (Chapter 5)
+- **Multi-tier subcontracting absorbs the transition** (3-05)
   — shrinkage without internal lay-offs
 
 These are not independent observations. **They cascade from one fact
@@ -114,7 +114,7 @@ domain**.
 The other parts of software development — requirements, design,
 operations, incident response, stakeholder work — carry the same
 structural 1% problem we will see in self-driving and Shinkansen
-later. This is what Introduction Chapter 3's "coders go away, builders remain"
+later. This is what 1-03's "coders go away, builders remain"
 means: **coding gets complete replacement; builder work gets
 productivity gain** — both happen inside the same field at once.
 
@@ -130,7 +130,7 @@ writing the requirements.
 The faster AI gets, the faster and larger the cost of sloppy
 requirements piles up — a vast amount of "runs but ordinary" code
 gets produced and maintenance collapses (the same vibe-coding failure
-mode from Introduction Chapter 2, now faster and at greater volume). In a world
+mode from 1-02, now faster and at greater volume). In a world
 where coding is cheap, **requirements are what determine a software
 system's differentiation and lifespan**.
 
@@ -216,7 +216,7 @@ in other domains.
 Living evidence of this claim sits in **the writing process of this
 sub-series itself**.
 
-As Introduction Chapter 4 noted, this sub-series was written by one person plus AI
+As 1-04 noted, this sub-series was written by one person plus AI
 in about a week. But that week included a long list of human
 corrections:
 
@@ -228,10 +228,10 @@ corrections:
   the human computer
 - The calculator transition was corrected from "decades" to
   **"roughly a decade"**
-- Introduction Chapter 1 added the **"IT revolution completing"** framing
+- 1-01 added the **"IT revolution completing"** framing
 - The origin of multi-tier subcontracting was correctly attributed to
   **"large coder head-count demand"**
-- Chapter 5 added the **"physical goods become scarcer than
+- 3-05 added the **"physical goods become scarcer than
   software"** section
 - This chapter's scoping — **"complete replacement is only in
   coding"** — was added
@@ -261,17 +261,17 @@ outlook of this book.
 Why five? Several independent time scales converge in that band:
 
 - **The AI capability curve** — crossed the threshold in 2024-2025
-  (Introduction Chapter 1). Capability-wise, transition is already feasible.
+  (1-01). Capability-wise, transition is already feasible.
 - **The customer learning curve** — it takes a few years for
-  customers to learn to pair with AI (Introduction Chapter 5). It is moving now.
+  customers to learn to pair with AI (1-05). It is moving now.
 - **The contract-renewal cycle** — SIer long-term maintenance
   contracts typically run 3-5 years. The next renewal becomes the
-  evaluation window for replacement (Chapter 3).
+  evaluation window for replacement (3-03).
 - **The pace of multi-tier shrinkage** — without internal employment
   adjustment, shrinkage on the order of a few years is achievable
-  (Chapter 5).
+  (3-05).
 - **The historical calculator/abacus transition** — completed in
-  about ten years from the 1972 Casio Mini (Introduction Chapter 3). The AI shift
+  about ten years from the 1972 Casio Mini (1-03). The AI shift
   is faster than that.
 
 The band where these overlap is **roughly five years**. Not so slow
@@ -289,17 +289,17 @@ mainstream of the industry moves to AI-native within about five years**.
 Finally, confirm the **irreversibility** of the change.
 
 - Once a customer has experienced AI-native in-house development,
-  they do not go back to SIer commissioning (Introduction Chapter 5) — the
+  they do not go back to SIer commissioning (1-05) — the
   learning cost has been paid already
 - Once an SIer has shrunk its multi-tier subcontracting, it does not
-  hire subcontractors back at scale (Chapter 5) — the contracts that
+  hire subcontractors back at scale (3-05) — the contracts that
   were closed do not re-form
 - Once the builder is recognized as a profession, that role
-  definition persists (Chapter 4) — what moved into the position of
+  definition persists (3-04) — what moved into the position of
   lawyer and doctor does not move back
 - The fact that AI generates standard code at low cost does not
   change — the structure of "top-tier coding for $200/month" remains
-  in place (Introduction Chapter 1)
+  in place (1-01)
 
 Each piece moves only in one direction. So the chain as a whole moves
 in one direction. **Once the chain starts, no structural force exists
@@ -342,7 +342,7 @@ builder of this sub-series — stands up correspond one-to-one.
 | Economic autonomy | One's own land, independent trade | Building one's own back office and software with a few-thousand-yen-a-month AI; exiting SaaS and SIer dependence |
 | Political self-governance | Free cities that wrested charters from lords | Holding one's own data, judgment, and systems on one's own machine; exit from cloud-vendor dependence |
 | Means of touching reality | Bearing arms, growing one's own food | Local LLMs, open source, one's own server; infrastructure that keeps running through blackouts and network outages |
-| Education | The seven liberal arts | The contemporary liberal arts — judgment, verbalization, logic, systems thinking, ethics (Introduction Chapter 4) |
+| Education | The seven liberal arts | The contemporary liberal arts — judgment, verbalization, logic, systems thinking, ethics (1-04) |
 
 Just as the medieval liberal arts could not stand on education
 alone, the contemporary liberal arts cannot stand by themselves
@@ -351,7 +351,7 @@ converge**. And just as the free citizens of medieval cities formed
 **guilds** to strengthen their economic and political weight, the
 AI-era builders will move, as **a profession that sells judgment**,
 toward bar-association– and medical-society–like **guilds of their
-own** (Chapter 4).
+own** (3-04).
 
 ### Employment is the AI era's serfdom — the rise of self-employment is structural
 
@@ -382,14 +382,14 @@ structurally clear:
 1. **The means of production are now individually ownable** —
    a few-thousand-yen-a-month AI, local LLMs, open source, one's
    own server. The employer no longer needs to monopolize them.
-2. **One person + AI = a ten-person team** (Introduction Chapter 4) — the
+2. **One person + AI = a ten-person team** (1-04) — the
    payoff of concentration disappears.
 3. **The boundary between judgment and execution closes within
-   one person** (Introduction Chapter 4) — the overhead of aggregation,
+   one person** (1-04) — the overhead of aggregation,
    coordination, and management becomes pure waste.
 4. **Judgment-centered professions are intrinsically inclined to
    independence** — lawyers, doctors, accountants prefer solo
-   practice and partnerships not by accident (Chapter 4).
+   practice and partnerships not by accident (3-04).
 
 **The rise of self-employment is not a policy or lifestyle
 question. It is structural necessity**. The same structure under
@@ -400,9 +400,9 @@ which medieval free citizens, free farmers, and craftsmen were all
 > **Self-employment is the contemporary form of being a free person.**
 
 The structural changes this sub-series has been arguing — the
-SIer commission model's structural uneconomy (Chapter 1), customers
-building for themselves (Introduction Chapter 5), the judgment-centered builder
-(Introduction Chapter 4 and Shift Chapter 4), the error of the "specialized engineer" advice
+SIer commission model's structural uneconomy (3-01), customers
+building for themselves (1-05), the judgment-centered builder
+(1-04 and 3-04), the error of the "specialized engineer" advice
 (this chapter) — all converge on one point: **the industry
 structure organized around employment is reshaped in the AI era**.
 
@@ -437,9 +437,9 @@ hand. Who belongs here:
   repair technicians**
 - **Carpenters, architects, craftspeople using AI design tools**
 
-Chapter 4's "**maker types and field technicians enter embedded**"
+3-04's "**maker types and field technicians enter embedded**"
 was precisely about new entry into this middle layer. The labor
-demand created by "**physical goods become scarcer**" (Chapter 5)
+demand created by "**physical goods become scarcer**" (3-05)
 will be absorbed here too — the coders flowing out of the SIer
 industry won't all rejoin pure software; a path **sideways into
 the middle layer** opens here as well.
@@ -463,7 +463,7 @@ become a specialized engineer, hold a deep specialty AI cannot
 take, like security or ML." It **misreads the structure**.
 
 What AI is absorbing is **the whole layer** of software engineering,
-not a particular subdomain inside it (Introduction Chapter 1 and Introduction Chapter 3).
+not a particular subdomain inside it (1-01 and 1-03).
 **Going deeper into a specialty only shifts the date by which the
 specialty itself is overtaken** — the underlying structure does
 not change. The medieval analogue would be telling a serf, "become
@@ -492,11 +492,11 @@ the **First Renaissance (14th–17th centuries)**.
 
 | Element | First Renaissance | Second Renaissance (AI era) |
 |---|---|---|
-| The classics being recovered | Greek and Roman classical learning | The liberal arts (Introduction Chapter 4) |
-| The polymath ideal | Leonardo da Vinci | The builder, one person + AI (Introduction Chapter 4) |
+| The classics being recovered | Greek and Roman classical learning | The liberal arts (1-04) |
+| The polymath ideal | Leonardo da Vinci | The builder, one person + AI (1-04) |
 | Individual subjectivity | The humanist "I" | One's own tools, one's own data, one's own judgment |
 | Vernacular liberation | Dante's Italian, Luther's German | Natural language becomes "the programming language" |
-| Free cities and guilds | Florence, Venice, the craft guilds | The AI-era free person, professional guilds (Chapter 4) |
+| Free cities and guilds | Florence, Venice, the craft guilds | The AI-era free person, professional guilds (3-04) |
 | The accelerator | The printing press (1450s) — democratizing **reading** | The LLM — democratizing **making** (this chapter) |
 | Reformation | Religious decentralization (against the Roman church) | Anti–vendor-concentration, anti–employment-centric, anti-SIer (this book) |
 | The new rising class | The bourgeoisie (commerce, banking, manufacturing) | The AI-native builder, the self-employed judgment professional |
@@ -577,9 +577,9 @@ Film-making, however, has an enormous range. **A Hollywood blockbuster still req
 | Mid-scale | Streaming series, theatrical film | Focused systems, specialized SaaS, industry-wide systems | **Master builder** | **Grows** — more apps, fewer workers per app |
 | Personal | YouTube, TikTok | Everyday personal tools | The user | **Explodes** |
 
-**Monolithic large-scale is structurally a poor fit for the AI era** — no single master builder can hold the whole, lock-in is created (Chapter 3), maintenance is intractable, the chain of judgment is dispersed. These systems are decomposed into combinations of mid-scale focused systems.
+**Monolithic large-scale is structurally a poor fit for the AI era** — no single master builder can hold the whole, lock-in is created (3-03), maintenance is intractable, the chain of judgment is dispersed. These systems are decomposed into combinations of mid-scale focused systems.
 
-**Mid-scale is the master builder's home territory** — the scale at which the chain of judgment closes within one person (Introduction Chapter 4), the same position as lawyers and doctors (Chapter 4). Mid-scale apps themselves **do not shrink — they grow**: business apps that previously could not be cost-justified now get built in large numbers.
+**Mid-scale is the master builder's home territory** — the scale at which the chain of judgment closes within one person (1-04), the same position as lawyers and doctors (3-04). Mid-scale apps themselves **do not shrink — they grow**: business apps that previously could not be cost-justified now get built in large numbers.
 
 **Personal is the user as director and crew**.
 
@@ -639,7 +639,7 @@ speed of complete replacement is not claimed for other domains either
 productivity tool — it does not reach complete replacement.
 
 And during the same few years that AI advances, **society as a whole
-moves toward physical goods becoming scarce** (Chapter 5). AI
+moves toward physical goods becoming scarce** (3-05). AI
 data-center construction, manufacturing reshoring, the shift to
 natural farming — all generate physical-labor demand. Coders flowing
 out of the SIer industry are absorbed both inside and outside the
@@ -654,7 +654,7 @@ irreversible. And the conclusions from this specific area (= coding)
 must not be casually extended to the rest of software development or
 to other domains**.
 
-And the other current named in Introduction Chapter 4 — **the foundational
+And the other current named in 1-04 — **the foundational
 discipline of the technical profession shifts from software
 engineering to the liberal arts**. Because what AI has taken is the
 core of software engineering (algorithms, languages, frameworks,
@@ -679,10 +679,10 @@ aiseed.dev will continue to publish articles that read the structure.
 
 ## Related articles
 
-- [Introduction Chapter 1: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
-- [Introduction Chapter 3: AI Now Does the Software Engineer's Work](/en/ai-native-ways/software/coder-end/)
-- [Introduction Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
-- [Chapter 5: Japan's SIer Industry Transition and Labor Mobility](/en/ai-native-ways/software/japan-transition/)
+- [1-01: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
+- [1-03: AI Now Does the Software Engineer's Work](/en/ai-native-ways/software/coder-end/)
+- [1-04: The Builder Role](/en/ai-native-ways/software/builder/)
+- [3-05: Japan's SIer Industry Transition and Labor Mobility](/en/ai-native-ways/software/japan-transition/)
 - [Phosphorus Depletion and Natural Farming](/en/phosphorus-and-farming/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

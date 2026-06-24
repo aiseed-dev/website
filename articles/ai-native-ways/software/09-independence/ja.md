@@ -49,7 +49,7 @@ Meet に、Gemini に一直線に繋がる**。名前が違うだけで、束ね
 ロックインの正体は、機能が弱いことでも、移行が技術的に難しいことでもない。
 **束ねられていること自体** だ。だから解き方も一つ ── 各層を、独立した道具に
 分ける。一本ずつ置き換えられて、一本が倒れても他は動く。これは親シリーズ
-第13章「1人+AI」と同じ、**自立した N は集中した 1 より強い** の、会社版である。
+2-13「1人+AI」と同じ、**自立した N は集中した 1 より強い** の、会社版である。
 
 ## 対応表 ── Microsoft と Google を、独立した OSS に解く
 
@@ -58,16 +58,16 @@ Meet に、Gemini に一直線に繋がる**。名前が違うだけで、束ね
 
 | Microsoft 365 | Google Workspace | 自前(OSS) | 立てる章 |
 | --- | --- | --- | --- |
-| **Entra ID** | **Google ID / Cloud Identity** | **PocketBase** | [第3章](/ai-native-ways/software/auth/) |
-| **Word / Excel / PowerPoint** | **Docs / Sheets / Slides** | **OnlyOffice** | [第5章](/ai-native-ways/software/documents/) |
-| **SharePoint + GitHub** | **Drive** | **Forgejo + Zed** | [第4章](/ai-native-ways/software/code/) |
-| **Exchange / Outlook** | **Gmail** | **Stalwart** | [第6章](/ai-native-ways/software/mail/) |
-| **Teams / Bookings** | **Google Meet / Calendar** | **Jitsi・Cal.com**(講座は BigBlueButton) | [第7章](/ai-native-ways/software/meetings/) |
-| **Power Pages** | **Google Sites** | **Cloudflare Pages** | [第8章](/ai-native-ways/software/web/) |
-| **Azure SQL** | **Cloud SQL / BigQuery** | **PostgreSQL・SQLite** | [第2章](/ai-native-ways/software/foundation/) |
-| **Power BI / Excel** | **Looker / Sheets** | **DuckDB + Polars** | [第2章](/ai-native-ways/software/foundation/) |
-| **(Power Apps 等)** | **Apps Script** | **FastAPI** | [第9章](/ai-native-ways/software/fastapi/) |
-| **Copilot** | **Gemini** | **ローカル LLM(Command A+ 等)+ RAG** | [第10章](/ai-native-ways/software/ai/) |
+| **Entra ID** | **Google ID / Cloud Identity** | **PocketBase** | [2-03](/ai-native-ways/software/auth/) |
+| **Word / Excel / PowerPoint** | **Docs / Sheets / Slides** | **OnlyOffice** | [2-05](/ai-native-ways/software/documents/) |
+| **SharePoint + GitHub** | **Drive** | **Forgejo + Zed** | [2-04](/ai-native-ways/software/code/) |
+| **Exchange / Outlook** | **Gmail** | **Stalwart** | [2-06](/ai-native-ways/software/mail/) |
+| **Teams / Bookings** | **Google Meet / Calendar** | **Jitsi・Cal.com**(講座は BigBlueButton) | [2-07](/ai-native-ways/software/meetings/) |
+| **Power Pages** | **Google Sites** | **Cloudflare Pages** | [2-08](/ai-native-ways/software/web/) |
+| **Azure SQL** | **Cloud SQL / BigQuery** | **PostgreSQL・SQLite** | [2-02](/ai-native-ways/software/foundation/) |
+| **Power BI / Excel** | **Looker / Sheets** | **DuckDB + Polars** | [2-02](/ai-native-ways/software/foundation/) |
+| **(Power Apps 等)** | **Apps Script** | **FastAPI** | [2-09](/ai-native-ways/software/fastapi/) |
+| **Copilot** | **Gemini** | **ローカル LLM(Command A+ 等)+ RAG** | [2-10](/ai-native-ways/software/ai/) |
 
 右側の道具は **別々の組織が作った、別々のオープンな道具** だ。だから、一本の
 方針変更が他に波及しない。一本を別のものに差し替えても、残りは何も変わらない。
@@ -146,22 +146,22 @@ flowchart LR
 一気にやらなくていい。**束から外しやすい順** に、一本ずつ。自立編は、その
 順番でそのまま章立てしてある。
 
-1. **データ基盤**(第2章)── PostgreSQL・SQLite・DuckDB。分析も RAG も予約も
+1. **データ基盤**(2-02)── PostgreSQL・SQLite・DuckDB。分析も RAG も予約も
    基幹も、すべてこの上に乗る。だから最初に据える
-2. **認証**(第3章)── PocketBase。全アプリ共通の門番。ここを自分の側に移すと、
+2. **認証**(2-03)── PocketBase。全アプリ共通の門番。ここを自分の側に移すと、
    束の根が切れる
-3. **共有と版管理**(第4章)── Forgejo + Zed。SharePoint / Drive を畳む
-4. **文書**(第5章)── OnlyOffice。Office / Docs 形式をそのまま読み書きする
-5. **メール**(第6章)── Stalwart。通信の中身を手元に置く
-6. **会議・予約**(第7章)── Jitsi・Cal.com。会議とオンライン講座を自前で
-7. **Web 公開**(第8章)── Cloudflare Pages。ロックインの無いホスト
-8. **基幹ロジック**(第9章)── FastAPI。Power Apps / Apps Script を読める
+3. **共有と版管理**(2-04)── Forgejo + Zed。SharePoint / Drive を畳む
+4. **文書**(2-05)── OnlyOffice。Office / Docs 形式をそのまま読み書きする
+5. **メール**(2-06)── Stalwart。通信の中身を手元に置く
+6. **会議・予約**(2-07)── Jitsi・Cal.com。会議とオンライン講座を自前で
+7. **Web 公開**(2-08)── Cloudflare Pages。ロックインの無いホスト
+8. **基幹ロジック**(2-09)── FastAPI。Power Apps / Apps Script を読める
    コードに戻す
-9. **AI**(第10章)── ローカル LLM + RAG。データを社外に出さず AI を持つ
+9. **AI**(2-10)── ローカル LLM + RAG。データを社外に出さず AI を持つ
 
-各ステップは、第9章の **並行稼働** で進める。旧(Microsoft / Google)を
+各ステップは、2-09の **並行稼働** で進める。旧(Microsoft / Google)を
 止めず、横で新を動かし、同じ仕事が回ることを確かめてから、旧を解約する。
-**契約更新の時期に間に合わせる** ── これも第9章どおりだ。
+**契約更新の時期に間に合わせる** ── これも2-09どおりだ。
 
 > 一気に乗り換える必要はない。
 > **解けた分だけ、束が緩む** ── 一本ずつ、自分のペースで。
@@ -169,7 +169,7 @@ flowchart LR
 ## 運用は、一人 + AI で回る
 
 ここで当然の疑問が出る ── **これだけ自前で抱えて、誰が面倒を見るのか**。
-答えは **一人 + AI** だ。親シリーズ第13章「1人+AI」で示した新しい仕事の単位が、
+答えは **一人 + AI** だ。親シリーズ第11章「1人+AI」で示した新しい仕事の単位が、
 そのまま会社のインフラ運用に効く。
 
 なぜ一人で回るのか。理由は三つ。
@@ -188,7 +188,7 @@ flowchart LR
 だけ外部リレーに逃がす手もある。講座サーバーは重いので、**講座の期間だけ立てて、
 終わったら畳む**。残りは、立てたらほぼ放っておける。
 
-これは親シリーズ第13章の主旨そのものだ。**縦割りの情報システム部門は要らない**。
+これは親シリーズ第11章の主旨そのものだ。**縦割りの情報システム部門は要らない**。
 業務を分かっている一人が、AI を相棒に、認証からメール、会議、AI、データベース
 までを横断して持つ。**個人の自立が、会社のインフラのレベルで成立する**。
 
@@ -199,16 +199,16 @@ flowchart LR
 ## そして、基幹システムへ
 
 ここまで組んだものは、そのまま **基幹システムを書き換える土台** になる。
-第9章「API を作る」で説く並行稼働の書き換えは、実は
+2-09「API を作る」で説く並行稼働の書き換えは、実は
 **立つ場所(プラットフォーム)を前提にしていた** ── その場所が、自立編で全部
 そろう。
 
-- **新しい基幹システムが動く DB** ── PostgreSQL + pgvector(第2章)
-- **実行系** ── FastAPI / Python + Rust 下層(第9章)
-- **版管理と CI** ── Forgejo(第4章)
-- **認証** ── PocketBase が、新システムのログインを一手に引き受ける(第3章)
+- **新しい基幹システムが動く DB** ── PostgreSQL + pgvector(2-02)
+- **実行系** ── FastAPI / Python + Rust 下層(2-09)
+- **版管理と CI** ── Forgejo(2-04)
+- **認証** ── PocketBase が、新システムのログインを一手に引き受ける(2-03)
 - **業務ロジックの抽出** ── レガシーのコード・SQL・手順書を、**ローカル LLM +
-  RAG**(第10章)で読み解いて Markdown に出す ── **ソースを一歩も社外に出さずに**
+  RAG**(2-10)で読み解いて Markdown に出す ── **ソースを一歩も社外に出さずに**
 
 そもそも、これまで **基幹システムと Microsoft / Google が共有していたのは、
 たった二つ ── 認証(Entra ID / Google ID)と、文書共有(SharePoint / Drive)
@@ -240,7 +240,7 @@ flowchart TB
 アプリ・ログイン・権限がぶら下がる一点 ── ここを握られている限り、何を自前に
 しても **入口は他人のもの** だ。
 
-だから、自立編で本当に効く一手は **認証 → PocketBase**(第3章)だ。識別の継ぎ目を
+だから、自立編で本当に効く一手は **認証 → PocketBase**(2-03)だ。識別の継ぎ目を
 自分の側に移した瞬間、基幹もオフィスも **自分の門番に対して認証する**。Microsoft も
 Google も最も深く食い込ませようとするのは、ここ ── **ID 基盤こそ、束の根** だからだ。
 ここを押さえれば、残りは時間の問題になる。
@@ -261,7 +261,7 @@ Google も最も深く食い込ませようとするのは、ここ ── **ID 
 手元実行・読めるコード)から、中身を遠ざける設計** だ。AI を同僚にしようとする
 ほど、この壁にぶつかる。
 
-**二つ目 ── 書き換えのコストが、10 分の 1 になった**(第9章)。AI が
+**二つ目 ── 書き換えのコストが、10 分の 1 になった**(2-09)。AI が
 業務ロジックを抽出し、Python に翻訳し、テストを書く。数年・数億円のプロジェクトが、
 現場の一人 + AI の数ヶ月になった。
 
@@ -271,7 +271,7 @@ Google も最も深く食い込ませようとするのは、ここ ── **ID 
 **作り直さない理由のほうが、説明を要する**。
 
 これは Microsoft や Google への敵意ではない。IT 革命が積み上げたものを、AI 革命が
-**作り直して引き継ぐ** ── その自然な一巡だ(序章・親シリーズ第13章)。問われて
+**作り直して引き継ぐ** ── その自然な一巡だ(序章・親シリーズ第11章)。問われて
 いるのは「やるか」ではなく「いつ、誰が主導でやるか」。**ベンダーに預けたままに
 するか、自分の側で作り直すか** ── それだけだ。
 
@@ -284,20 +284,20 @@ Google も最も深く食い込ませようとするのは、ここ ── **ID 
 スイートだ。便利さと人質は、同じ一本の鎖の表と裏だった。自立編は、この束を
 一層ずつ独立した OSS に解く ── 二つのスイートが、同じ右側に着地する。
 
-- **認証**:Entra ID / Google ID → **PocketBase**(第3章)
-- **文書**:Office / Docs → **OnlyOffice**(第5章)
-- **共有・版管理**:SharePoint+GitHub / Drive → **Forgejo + Zed**(第4章)
-- **メール**:Exchange / Gmail → **Stalwart**(第6章)
-- **会議・予約**:Teams / Meet → **Jitsi・Cal.com**(第7章)
-- **Web 公開**:Power Pages / Sites → **Cloudflare Pages**(第8章)
-- **データ基盤**:Azure SQL / Cloud SQL → **PostgreSQL・SQLite**(第2章)
-- **データ分析**:Power BI / Looker → **DuckDB + Polars**(第2章)
-- **基幹ロジック**:Power Apps / Apps Script → **FastAPI**(第9章)
-- **AI**:Copilot / Gemini → **ローカル LLM + RAG**(第10章)
+- **認証**:Entra ID / Google ID → **PocketBase**(2-03)
+- **文書**:Office / Docs → **OnlyOffice**(2-05)
+- **共有・版管理**:SharePoint+GitHub / Drive → **Forgejo + Zed**(2-04)
+- **メール**:Exchange / Gmail → **Stalwart**(2-06)
+- **会議・予約**:Teams / Meet → **Jitsi・Cal.com**(2-07)
+- **Web 公開**:Power Pages / Sites → **Cloudflare Pages**(2-08)
+- **データ基盤**:Azure SQL / Cloud SQL → **PostgreSQL・SQLite**(2-02)
+- **データ分析**:Power BI / Looker → **DuckDB + Polars**(2-02)
+- **基幹ロジック**:Power Apps / Apps Script → **FastAPI**(2-09)
+- **AI**:Copilot / Gemini → **ローカル LLM + RAG**(2-10)
 
 一対一で、左を右に置き換える。右の道具は別々の組織が作った別々のオープンな道具
 だから、**一本の方針変更が他に波及しない**。これは効率化の話ではない ── 親シリーズ
-第13章「1人+AI」を、会社の土台の高さで言い直したものだ。**集中した 1 より、
+2-13「1人+AI」を、会社の土台の高さで言い直したものだ。**集中した 1 より、
 自立した N が強い**。
 
 束を解く。一本ずつ、自分のペースで。解けた分だけ、会社はベンダーの人質では
@@ -308,8 +308,8 @@ Google も最も深く食い込ませようとするのは、ここ ── **ID 
 
 ## 関連記事
 
-- [第2章: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars](/ai-native-ways/software/foundation/)
-- [第5章: 文書を取り戻す ── OnlyOffice Docs を PocketBase に組み込む](/ai-native-ways/software/documents/)
-- [第9章: API を作る ── FastAPI で基幹のロジックを出す](/ai-native-ways/software/fastapi/)
+- [2-02: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars](/ai-native-ways/software/foundation/)
+- [2-05: 文書を取り戻す ── OnlyOffice Docs を PocketBase に組み込む](/ai-native-ways/software/documents/)
+- [2-09: API を作る ── FastAPI で基幹のロジックを出す](/ai-native-ways/software/fastapi/)
 - [構造分析08: 企業ITの税を引く](/insights/enterprise-tax/)
 - [それでも Windows と Office を使い続けますか?](/blog/windows-office-facts/)

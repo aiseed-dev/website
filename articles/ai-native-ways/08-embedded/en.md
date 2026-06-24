@@ -1,12 +1,12 @@
 ---
 slug: embedded
-number: "10"
+number: "08"
 lang: en
 title: "Building Embedded — Think in Python, Have Claude Translate"
 subtitle: "Even with hardware, think in Python"
 description: Microcontrollers and IoT devices have to be written in C or C++. But design and validation can happen in Python. Run it, verify it in Python, then have Claude translate to C. The hardest part of embedded — proving the logic is correct — gets dramatically easier.
 date: 2026.05.02
-label: AI Native 10
+label: AI Native 08
 title_html: Think in <span class="accent">Python</span>.<br>Have <span class="accent">Claude</span> translate.
 prev_slug: apps
 prev_title: "Building Apps — CLI Tools, Flet Apps, Flutter Apps"
@@ -149,7 +149,7 @@ flowchart TB
 
 **The point: don't start writing in Rust or C.** Validate the
 logic in Python, then translate only what needs translating
-(Chapter 1's "think in Python, have Claude translate" applied to
+(Chapter 2's "think in Python, have Claude translate" applied to
 embedded). Because Claude carries the translation, **humans don't
 have to move back and forth between languages** — thinking happens
 in Python; only the final form's language changes.
@@ -222,7 +222,7 @@ solutions cost ~$300 per unit and pool data in the vendor's cloud.
 
 **Stage 1 (Python on PC):**
 Develop the irrigation-decision logic against historical weather
-data (Chapter 1's "pull from the meteorological-agency API"):
+data (Chapter 2's "pull from the meteorological-agency API"):
 "recommend irrigation if irradiance ≥ X Wh/m² plus soil moisture
 < Y % for three consecutive hours." Apply with Polars to historical
 data, tune the thresholds. Claude writes the first version.
@@ -239,7 +239,7 @@ for anomaly history.
 
 **Stage 4 (design and 3D-print the irrigation actuator):**
 Housing for the solenoid valve **designed in Build123d
-(Chapter 3) and 3D-printed**. ESP32 relay output drives the valve;
+(Chapter 4) and 3D-printed**. ESP32 relay output drives the valve;
 Python control code is translated by Claude to C only if MicroPython
 memory runs out.
 
@@ -247,9 +247,9 @@ memory runs out.
 cloud subscription, the decision logic is readable in Markdown, and
 even repair is in your hands (3D-print a fresh part).
 
-This is the **technical implementation** of Chapter 12's "from
-silos to individual autonomy — farmer edition." Chapter 1 (Python),
-Chapter 3 (CAD), Chapter 4 (Parquet), Chapter 7 (web dashboard via
+This is the **technical implementation** of Chapter 11's "from
+silos to individual autonomy — farmer edition." Chapter 2 (Python),
+Chapter 4 (CAD), Chapter 5 (Parquet), Chapter 6 (web dashboard via
 FastAPI if you want one) — **the toolkit of the entire book
 converges into one project**.
 
@@ -286,7 +286,7 @@ Even in embedded, think in Python.
 
 Design and verify in Python, then translate to C if needed. Claude handles the translation. **Time spent fighting hardware decreases, and you focus on the real problem — sensors, logic, operations.**
 
-The nine chapters so far have laid out the AI-native toolset. Python, Markdown, Mermaid, JSON / YAML / SQLite / Parquet, leaving Office, business systems, web, apps, embedded.
+The chapters so far have laid out the AI-native toolset. Python, Markdown, Mermaid, JSON / YAML / SQLite / Parquet, web, apps, embedded.
 
 The next chapter moves to common practice in advanced form. "Knowing what work to hand to AI" — the judgment of what to delegate and what to keep.
 
@@ -294,6 +294,6 @@ The next chapter moves to common practice in advanced form. "Knowing what work t
 
 ## Related
 
-- [Chapter 09: Building Apps — CLI Tools, Flet Apps, Flutter Apps](/en/ai-native-ways/apps/)
+- [Chapter 07: Building Apps — CLI Tools, Flet Apps, Flutter Apps](/en/ai-native-ways/apps/)
 - [Chapter 02: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Structural Analysis 15: Security Design for the Mythos Era](/en/insights/security-design/)

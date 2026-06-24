@@ -143,7 +143,7 @@ works.
 Get it: [vscodium.com](https://vscodium.com) (Mac / Linux / Windows)
 
 > Why VSCodium over VS Code — same "vendor concentration" issue as
-> Microsoft 365 / Copilot (Chapter 5). The contents are the same,
+> Microsoft 365 / Copilot (Software 2-05). The contents are the same,
 > but the data flow and the licensing land on your side with
 > VSCodium.
 
@@ -171,7 +171,7 @@ Whichever editor, the practice in this book is the same:
 - AI is called **explicitly** (assistant panel, Claude Code CLI,
   Claude chat) — avoid the Copilot-style constant-streaming
   integration where the editor sends every keystroke to a vendor
-  (Chapter 10).
+  (Chapter 9).
 
 > Change the editor and the principle does not change.
 > **Keep the text on your side; choose what you hand to AI.**
@@ -236,7 +236,7 @@ content be public?" decides the destination:
 > Principle — **anything where privacy or ownership matters,
 > self-host by default**. Codeberg is a non-profit, but it is still
 > **someone else's server**. **If you can keep it on your side,
-> keep it on your side.** This is the Git version of Chapter 5:
+> keep it on your side.** This is the Git version of Software 2-05:
 > "keep your own system on your own side."
 
 "Self-host feels hard." The next section shows **a path from a
@@ -257,7 +257,7 @@ fork of Gitea). The difference is **who runs it**:
 
 Feature-wise Forgejo keeps pace, so **if you're choosing, choose
 Forgejo**. The structure is the same as Microsoft Office vs.
-OnlyOffice (Chapter 5) — "same contents, governance on the
+OnlyOffice (Software 2-05) — "same contents, governance on the
 community side."
 
 ### Three places to put it — pick by use
@@ -305,7 +305,7 @@ Run Forgejo on your internal VPS or Kubernetes cluster. **Every
 repository sits inside the organization's physical boundary.** The
 Microsoft / GitHub / Atlassian subscriptions stop. You're no longer
 buffeted by data-policy shifts, and the source code and business
-documents become **yours** (same structure as Chapter 5's Office
+documents become **yours** (same structure as Software 2-05's Office
 discussion). This is still **self-hosting**, at a larger scale.
 
 **(3) Codeberg.org** — for content you're willing to publish
@@ -416,7 +416,7 @@ sounds.
 > **a place to write (the editor)** and **a place to put it
 > (Forgejo)**. Even solo, backup is required; anything
 > privacy-sensitive is self-hosted by default — this is the Git
-> version of Chapter 5's "keep your own system on your own side."
+> version of Software 2-05's "keep your own system on your own side."
 
 ## Pick the format that fits the job — four text formats are enough
 
@@ -484,7 +484,7 @@ Jupyter notebook computation cells inside the document**. Manage
 outputs from `polars` / `matplotlib` / `altair` alongside the prose —
 **re-run and the results refresh**. The format for reports where
 "document" and "computation" are not separated — directly continuous
-with the JupyterLab world from Chapter 1. Output is **an interactive
+with the JupyterLab world from Chapter 2. Output is **an interactive
 web page** (zoomable charts, expandable code).
 
 ### LaTeX — when it goes to paper, when typesetting must be strict

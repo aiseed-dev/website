@@ -21,7 +21,7 @@ next_title: "The Builder Role"
 subject of this chapter is what lies beyond — AI now does the work of the
 "software engineer" who designs, too**.
 
-Chapter 2 showed that both maintenance and development become work done in
+1-02 showed that both maintenance and development become work done in
 dialogue with AI. This chapter takes up the other face of that — the role
 itself. The claim is not "all programmers disappear" but **"the role
 definitions called coder and software engineer disappear."** That
@@ -46,11 +46,11 @@ These roles were viable because **writing code and designing took humans
 a lot of time**. Even shaping a single system demanded an enormous number
 of person-hours, and you had to assemble a workforce both to write and to
 design. The SIer industry, contract development, and multi-tier
-subcontracting are all built on that premise (Shift Chapter 1).
+subcontracting are all built on that premise (3-01).
 
 ## AI becomes both the coder and the software engineer
 
-Chapter 1 established that AI became the strongest SIer — it writes code,
+1-01 established that AI became the strongest SIer — it writes code,
 and it understands context and designs. The ability has range:
 
 - **Opus** — a first-rate **coder**. Hand it intent and it translates it into running code
@@ -80,7 +80,7 @@ context, what to reconcile with reality**, and **taking responsibility**
 stay with humans — and under current institutions, that subject is not
 the AI. This is not the "software engineer's work" of designing and
 writing the code yourself. **Shaping it in dialogue with AI — that is a
-different role.** Chapter 4 names it the builder.
+different role.** 1-04 names it the builder.
 
 > What stays with humans is not design, not coding.
 > It is **building and operating a system in dialogue with AI** — and
@@ -93,7 +93,7 @@ yourself (the coder and the software engineer)** — and the **division of
 labor** the SIer built to mass-produce it. Demand does not vanish; **both
 design and code get replaced by AI, so no price holds**. One person, in
 dialogue with AI, builds and operates the system — moving into that role
-(Chapter 4 names it "builder").
+(1-04 names it "builder").
 
 ```mermaid
 flowchart LR
@@ -127,7 +127,7 @@ that the customer who used to **only place the order** now stands on the
 side that builds and runs it. Even just commissioning an SIer used to
 take real effort — RFP, vendor selection, requirements, contract. **At
 the level of a design-capable AI (Fable / Mythos), with no more than that
-"effort of ordering," the customer builds it** (taken up in Chapter 5).
+"effort of ordering," the customer builds it** (taken up in 1-05).
 
 > Once, even just **placing the order** with an SIer took real effort.
 > Now, that same effort is enough — the customer builds it.
@@ -137,14 +137,14 @@ called programmers split in two directions:
 
 - **(a) Leave software development** — move to a different industry or role
 - **(b) Move to the builder** — stand on the side that builds and runs a
-  system in dialogue with AI (defined in Chapter 4)
+  system in dialogue with AI (defined in 1-04)
 
 Conversely, builders are not drawn only from programmers. **People at the
 field — those who actually know the work and the customer — can become
 builders too.** What a builder needs is not the ability to write code,
 but the ability to grasp the field's context and shape it in dialogue
 with AI. If anything, the field people, who already hold the context, are
-closer to the builder (Chapter 5 takes this up as "the customer builds it
+closer to the builder (1-05 takes this up as "the customer builds it
 themselves").
 
 History has parallels. In Japan in the 1970s, calculators erased the
@@ -163,9 +163,9 @@ abacus out of Japanese offices and homes within roughly a decade**. The
 intuition that "this kind of change takes decades" is a backward-looking
 illusion — **while it is happening, it is fast for the people inside it**.
 The AI shift is starting from a price structure orders of magnitude lower
-(Chapter 1); it is reasonable to expect the same speed or faster. Whether
+(1-01); it is reasonable to expect the same speed or faster. Whether
 one can absorb it becomes a question of **industry structure**, not
-personal choice (Shift Chapter 5).
+personal choice (3-05).
 
 ## Where the next chapter goes
 
@@ -179,7 +179,7 @@ sub-series. The next chapter defines that role — **the builder**.
 
 ## Related articles
 
-- [Chapter 1: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
-- [Chapter 2: Maintenance-Phase Shift Is the Real Story](/en/ai-native-ways/software/maintenance-shift/)
+- [1-01: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
+- [1-02: Maintenance-Phase Shift Is the Real Story](/en/ai-native-ways/software/maintenance-shift/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

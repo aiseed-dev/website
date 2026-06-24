@@ -750,7 +750,7 @@ def _aiways_part_short(subseries: str, meta: dict, lang: str) -> str:
 
 
 def _aiways_chapter_label(number: str, lang: str, subseries: str = "",
-                          part_short: str = "") -> str:
+                          part_short: str = "", part: str = "") -> str:
     """'00' → '序章' / 'Prologue'. Otherwise '第N章' / 'Chapter N'.
 
     For sub-series chapters numbering restarts at 1 within each 編 (part);
@@ -760,7 +760,7 @@ def _aiways_chapter_label(number: str, lang: str, subseries: str = "",
     """
     n = number.lstrip("0") or "0"
     if subseries:
-        base = f"第{n}章" if lang == "ja" else f"Chapter {n}"
+        base = f"{part}-{number}" if part else (f"第{n}章" if lang == "ja" else f"Chapter {n}")
         return f"{part_short} {base}" if part_short else base
     if n == "0":
         return "序章" if lang == "ja" else "Prologue"
@@ -880,7 +880,7 @@ def _aiways_chapter_toc_html(lang: str, subseries: str, current_slug: str) -> st
         slug = c.get("slug", "")
         number = c.get("number", "").strip('"')
         title = c.get("title", "")
-        label = _aiways_chapter_label(number, lang, subseries, _aiways_part_short(subseries, c, lang))
+        label = _aiways_chapter_label(number, lang, subseries, _aiways_part_short(subseries, c, lang), c.get("part", "").strip('"'))
         display_title = _strip_chapter_prefix(title, label)
         if slug == current_slug:
             items.append(
@@ -984,7 +984,7 @@ def build_aiways_chapter(md_path):
         "label": meta.get("label", ""),
         "series": series_name,
         "series_index_url": series_index_url,
-        "chapter_label": _aiways_chapter_label(meta.get("number", "").strip('"'), lang, subseries, _aiways_part_short(subseries, meta, lang)),
+        "chapter_label": _aiways_chapter_label(meta.get("number", "").strip('"'), lang, subseries, _aiways_part_short(subseries, meta, lang), meta.get("part", "").strip('"')),
         "content_html": body_html,
         "canonical_url": canonical_url,
         "hreflang_ja": hreflang_ja if (md_path.parent / "ja.md").exists() else "",
@@ -1392,7 +1392,7 @@ def build_aiways_example(example_dir, lang="ja"):
         example_title = example_label
 
     chapter_title = meta.get("title", "")
-    chapter_label = _aiways_chapter_label(meta.get("number", "").strip('"'), lang, subseries, _aiways_part_short(subseries, meta, lang))
+    chapter_label = _aiways_chapter_label(meta.get("number", "").strip('"'), lang, subseries, _aiways_part_short(subseries, meta, lang), meta.get("part", "").strip('"'))
     if subseries:
         cfg = AIWAYS_SUBSERIES[subseries]
         series_name = (

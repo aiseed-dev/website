@@ -90,7 +90,7 @@ Once you start asking, it's tempting to say "just do it all." That's the most da
 
 Bring the work in yourself, have AI prep it. When repetition surfaces, have AI write a program to mechanize it. And at the end, you always check and sign off. **Work to AI, responsibility to you.** Keep that line and AI remains a strong clerk.
 
-The structural deep-dive of this tip — "don't run autonomous agents," "use AI in a sandbox," "integrating AI into Office is the most convenient and most dangerous path" — is covered in [Chapter 11, "Drawing the Line on What to Delegate to AI"](/en/ai-native-ways/ai-delegation/).
+The structural deep-dive of this tip — "don't run autonomous agents," "use AI in a sandbox," "integrating AI into Office is the most convenient and most dangerous path" — is covered in [Chapter 9, "Drawing the Line on What to Delegate to AI"](/en/ai-native-ways/ai-delegation/).
 
 ## 4. Don't send important things to the internet
 
@@ -118,7 +118,7 @@ And one more: AI **sometimes states wrong things** (the phenomenon called "hallu
 
 **You think about assembly. AI gathers facts and writes programs.**
 
-Handling hallucinations, and the practical procedure for seeing through the "narratives" AI rides on (Microsoft's AGI fable being the canonical case), is covered in [Chapter 12, "Verifying Narratives with AI"](/en/ai-native-ways/verify-narratives/).
+Handling hallucinations, and the practical procedure for seeing through the "narratives" AI rides on (Microsoft's AGI fable being the canonical case), is covered in [Chapter 10, "Verifying Narratives with AI"](/en/ai-native-ways/verify-narratives/).
 
 ## 6. Redirect freed time to culture, science, and reality
 
@@ -148,7 +148,7 @@ The next chapter [Writing Logic — Have AI Write Python For You](/en/ai-native-
 
 - [Prologue — AI's native language is Python and Markdown-style text](/en/ai-native-ways/prologue/)
 - [Chapter 2 — Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/) — the tooling for tips 2 and 5
-- [Chapter 11 — Drawing the Line on What to Delegate to AI](/en/ai-native-ways/ai-delegation/) — the structural deep-dive of tip 3
-- [Chapter 12 — Verifying Narratives with AI](/en/ai-native-ways/verify-narratives/) — the verification side of tip 5
-- [Chapter 13 — One Person + AI: The New Unit of Work](/en/ai-native-ways/one-plus-ai/) — the destination of tip 6
+- [Chapter 9 — Drawing the Line on What to Delegate to AI](/en/ai-native-ways/ai-delegation/) — the structural deep-dive of tip 3
+- [Chapter 10 — Verifying Narratives with AI](/en/ai-native-ways/verify-narratives/) — the verification side of tip 5
+- [Chapter 11 — One Person + AI: The New Unit of Work](/en/ai-native-ways/one-plus-ai/) — the destination of tip 6
 - [Reading the AI Manual through Hegel](/en/blog/nadella-hegel-cunning-of-reason/) — a philosophical reading of this chapter

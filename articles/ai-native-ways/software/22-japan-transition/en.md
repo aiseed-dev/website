@@ -1,18 +1,18 @@
 ---
 slug: japan-transition
-number: "05"
+number: "07"
 part: "3"
 lang: en
 title: Japan's SIer Industry Transition and Labor Mobility
 subtitle: Multi-tier subcontracting, paradoxically, makes the transition easier
 description: Japan's multi-tier subcontracting structure in the SIer industry is usually treated as a barrier to transition. Dissect the structure and the conclusion reverses — because coder demand is externalized through contracts, the structure can shrink without internal lay-offs. Prime contractors can downsize by not renewing subcontractor agreements; talented subcontractor coders flow to primes, customer companies, or independence. Labor mobility is trending upward, with long-term commissions, secondment, and internal ventures absorbing the shift as transitional forms.
 date: 2026.08.18
-label: Shift 5
+label: Shift 7
 title_html: Multi-tier subcontracting,<br>paradoxically, <span class="accent">makes the transition easier</span>.
 prev_slug: hiring-builders
 prev_title: "Companies Hire Builders"
 next_slug: five-years
-next_title: "The Structural Transition Completes in a Few Years"
+next_title: "The Structural Transition That Won't Reverse"
 ---
 
 # Japan's SIer Industry Transition and Labor Mobility
@@ -23,7 +23,7 @@ the structure and the conclusion reverses — precisely because the
 structure is multi-tier, the industry shift can proceed without
 internal lay-offs**.
 
-3-04 confirmed that the original driver of IT outsourcing was
+3-06 confirmed that the original driver of IT outsourcing was
 **securing large quantities of coder person-months**. This chapter
 takes the other side — when AI removes coder demand, how the structure
 built to source those person-months actually moves.
@@ -47,7 +47,7 @@ Sketch the typical Japanese SIer structure.
 
 The reason this hierarchy is disliked is easy to state — margins pile
 up at each layer, profit does not reach the working coder, accountability
-gets blurred. 3-01 and 3-02 read this as the structure that
+gets blurred. 3-03 and 3-04 read this as the structure that
 inflates price.
 
 But **at a transition, the structure's property reverses**. Multi-tier
@@ -141,10 +141,10 @@ But, **for talented coders, there are several exits**:
   judgment side (= builder candidates). Coders with judgment ability
   can be absorbed into the prime's full-time employee slots.
 - **Move to a customer** — hired directly as in-house builders by
-  customer companies that used to commission SIers (3-04).
+  customer companies that used to commission SIers (3-06).
 - **Go independent — individual contractor or small firm** —
   contract directly with customers as a builder. The
-  lawyer/doctor-style professional model from 3-04.
+  management (CIO)-style model from 3-06.
 - **Move to a different industry** — leaving software development is
   also a path (the same kind of redistribution as "human computers"
   and typesetters moving to adjacent fields, from 1-03).
@@ -177,15 +177,15 @@ mobility**.
 If mobility is high:
 
 - Mid-career moves between primes increase
-- Prime → customer-company moves grow (builder hiring per 3-04)
+- Prime → customer-company moves grow (builder hiring per 3-06)
 - Prime → independence (individual contractor, small firm)
 - Subcontractor layers → all of the above
 
 If mobility stays low:
 
 - Talent stagnates in shrinking subcontractors
-- New employment forms (the professional model) do not develop
-  institutionally
+- New employment forms (treating builders as management — the CIO)
+  do not develop institutionally
 - Transition pace is held back by social friction
 
 Fortunately, **mobility is trending upward**. The post-COVID spread of
@@ -281,17 +281,19 @@ infrastructure) are moving in parallel inside the same society**.
 
 Finally, the direction of the transition period.
 
-Labor mobility, job-type employment, professional models, social
+Labor mobility, job-type employment, treating builders as management
+(the CIO), social
 acceptance of business commissions — all of these have measurably
 risen over the past decade. Multiple forces will keep them rising:
 
 - **Demographics** — a shrinking working-age population pushes
   mobility up on pure economic grounds.
 - **International comparison pressure** — comparison with overseas
-  (especially US) professional markets pushes Japanese companies to
-  revise compensation.
+  (especially US) executive and management markets pushes Japanese
+  companies to revise compensation.
 - **AI itself as pressure** — talent that does not fit old-style
-  employment models (builders, AI specialists) accumulates, creating
+  employment models (builders to be brought in as management/CIOs, and
+  AI specialists that handle the execution) accumulates, creating
   pressure for institutional reform.
 - **Policy direction** — government policy on "job-type employment,"
   legalized side jobs, advanced-professional regimes all point the
@@ -321,16 +323,16 @@ We have seen how the AI-native structural change moves Japan's SIer
 industry and how labor mobility absorbs that motion. One question
 remains — **over what time scale does this transition complete?**
 
-The next chapter takes up the case that the transition completes in a
-few years. The final chapter.
+The next chapter takes up the case that the transition arrives in the
+near future and does not reverse. The final chapter.
 
 ---
 
 ## Related articles
 
-- [3-01: The Structural Uneconomy of the SIer Model](/en/ai-native-ways/software/sier-uneconomic/)
-- [3-02: The Order-of-Magnitude Price Gap](/en/ai-native-ways/software/price-gap/)
-- [3-04: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
+- [3-03: The Structural Uneconomy of the SIer Model](/en/ai-native-ways/software/sier-uneconomic/)
+- [3-04: The Order-of-Magnitude Price Gap](/en/ai-native-ways/software/price-gap/)
+- [3-06: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
 - [Phosphorus Depletion and Natural Farming](/en/phosphorus-and-farming/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

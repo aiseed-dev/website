@@ -5,8 +5,9 @@ foundational shift of the technical profession.**
 
 A sub-series of the parent series *AI-Native Ways of Working*
 (`../README.md`). Eleven chapters that argue the SIer commission model
-is structurally uneconomic, and outline the irreversible industry
-shift that completes within a few years. Once AI absorbs the core of
+is structurally uneconomic, and outline the industry shift that
+arrives in the near future and — because the premise has inverted —
+does not reverse. Once AI absorbs the core of
 software engineering (algorithms, languages, frameworks, design
 patterns), the role that remains on the human side — the
 judgment-centered builder — rests on a different foundation:
@@ -29,7 +30,7 @@ A short synthesizing entry point (promotional) lives in the blog post
 which compresses the sub-series argument into three pairs of words:
 "software engineer → builder", "software engineering → liberal arts",
 "employment → free person". The deeper arguments are concentrated in
-Chapter 11 ("The transition completes in a few years"), in the Second
+Chapter 11 ("The Structural Transition That Won't Reverse"), in the Second
 Renaissance section (9-item table + AI revolution as IT revolution's
 completion + LLM as statistical-processing tool + app-making resembles
 film-making + not only the AI revolution + creation AND upheaval).
@@ -97,6 +98,6 @@ The chain closes **inside the sub-series**. Chapter 01 keeps empty
 | 08 | `lockin` | ロックイン問題 | The Lock-In Problem |
 | 09 | `hiring-builders` | 各社がビルダーを雇用する時代 | Companies Hire Builders |
 | 10 | `japan-transition` | 日本のSIer業界の転換と雇用流動性 | Japan's SIer Industry Transition and Labor Mobility |
-| 11 | `five-years` | 数年で完了する構造転換 | The Structural Transition Completes in a Few Years |
+| 11 | `five-years` | もう戻らない構造転換 | The Structural Transition That Won't Reverse |
 
 Slugs are finalized — they will not change, for URL stability.

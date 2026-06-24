@@ -429,13 +429,49 @@ everyone's data flows the same way. **Diversity disappears.**
 - Vendor dependence is minimized (an API call to Claude, swappable
   any time).
 
-This path loses to centralization on short-term efficiency. Learning
-costs rise. There's no uniformity. You handle support yourself.
+Learning costs rise. There's no uniformity. You handle support yourself.
 
 But long-term, it is decisively stronger. **When one falls, the
 others keep moving.** When a vendor falls, your data and tools are
 still in your hands. Industry- and culture-specific judgments grow
 without being homogenized. **Diversity itself is strength.**
+
+### Decentralization no longer means losing on efficiency
+
+Decentralization used to have one clear weakness — **running AI
+yourself, person by person, was less efficient than a giant vendor's
+cloud.** So it was seen as "strong but expensive."
+
+That premise has broken. Three things are happening at once.
+
+- **An algorithmic revolution** — the computation inference needs has
+  dropped by orders of magnitude. Attention, once quadratic in context
+  length, becomes near-linear by selecting only the relevant tokens
+  (SSA); the memory-hungry KV cache is compressed to a few bits
+  (TurboQuant). The same work now takes several to tens of times less
+  compute.
+- **Hardware democratization** — an affordable consumer APU (e.g., AMD
+  Strix Halo), with 128GB of unified memory, runs large models on your
+  own desk. **The marginal cost after purchase is zero** — let an agent
+  loop tens of thousands of times and all that rises is a few dozen
+  watts of electricity.
+- **Diverse providers** — not just a few US labs, but European sovereign
+  AI (Cohere + Aleph Alpha) and open-weight DeepSeek and Qwen — **the
+  AIs you can choose have multiplied.** You are not bound to any one
+  company's terms.
+
+And the efficiency gains flow into OSS (vLLM, llama.cpp) within weeks,
+uncaptured. **No one can monopolize the technical edge anymore.**
+
+The largest frontier models still live in the cloud. But **the
+capability everyday work needs is now enough on your own desk.**
+Decentralization is no longer "sacrificing efficiency for safety" — it
+**runs locally, cheaply, and well.**
+
+> Autonomy, distribution, diversity are not an ideal. They are a
+> **technical and economic consequence.** See the structural-analysis
+> note "[The IT Industry's Structural Shift — Toward Autonomy,
+> Distribution, and Diversity](/en/blog/autonomy-distribution-diversity/)."
 
 ```mermaid
 flowchart LR
@@ -632,3 +668,4 @@ working.
 - [Structural Analysis 08: Removing the Enterprise IT Tax](/en/insights/enterprise-tax/)
 - [Structural Analysis 12: AI and the Individual Business](/en/insights/ai-and-individual/)
 - [Structural Analysis 14: Subtraction Design](/en/insights/subtraction-design/)
+- [Structural-analysis note: The IT Industry's Structural Shift — Toward Autonomy, Distribution, and Diversity](/en/blog/autonomy-distribution-diversity/)

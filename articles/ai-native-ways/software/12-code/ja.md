@@ -129,4 +129,4 @@ git.example.com { reverse_proxy code:3000 }
 
 - [導入編 第4章: ビルダーという役割](/ai-native-ways/software/builder/)
 - [第3章: 門番を立てる ── PocketBase で認証を一つに](/ai-native-ways/software/auth/)
-- [親シリーズ第9章: アプリを作る ── CLIツール、Fletアプリ、Flutterアプリ](/ai-native-ways/apps/)
+- [親シリーズ第7章: アプリを作る ── CLIツール、Fletアプリ、Flutterアプリ](/ai-native-ways/apps/)

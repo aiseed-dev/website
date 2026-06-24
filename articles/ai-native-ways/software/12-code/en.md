@@ -136,4 +136,4 @@ dependency on Exchange and Outlook.
 
 - [Introduction Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
 - [Chapter 3: Stand Up the Gate — One Login with PocketBase](/en/ai-native-ways/software/auth/)
-- [Parent series, Chapter 9: Building Apps — CLI Tools, Flet Apps, Flutter Apps](/en/ai-native-ways/apps/)
+- [Parent series, Chapter 7: Building Apps — CLI Tools, Flet Apps, Flutter Apps](/en/ai-native-ways/apps/)

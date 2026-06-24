@@ -83,7 +83,7 @@ You:    More whitespace, three columns.
 Claude: (revised version returns)
 ```
 
-This is not a Figma replacement. **It is faster than Figma, and the output is code-native** — it can be handed straight to development. It maps cleanly onto the HTML+CSS+minimal-JS stack from Chapter 7.
+This is not a Figma replacement. **It is faster than Figma, and the output is code-native** — it can be handed straight to development. It maps cleanly onto the HTML+CSS+minimal-JS stack from Chapter 6.
 
 In business, this enables:
 
@@ -193,7 +193,7 @@ to memorize the D3 grammar.** Reports, web publication, dashboards,
 investigative briefs — the territory of "the specialist visualizer"
 drops into your hands.
 
-The matplotlib / Altair set from Chapter 1 is for everyday aggregation
+The matplotlib / Altair set from Chapter 2 is for everyday aggregation
 charts; **D3 is for elaborate custom visualizations** — pick by
 purpose.
 
@@ -285,7 +285,7 @@ Uses in business:
 - **Architectural models, exhibition pieces**
 - **Educational teaching materials**
 
-Combined with embedded (Chapter 9), the loop closes: **design the
+Combined with embedded (Chapter 8), the loop closes: **design the
 hardware yourself, 3D-print it yourself, write the control code
 yourself**. Solo launches of hardware products — what used to require
 a large organization — become realistic.
@@ -320,7 +320,7 @@ temperature sensor on the line.
 
 If it breaks or doesn't fit, change the dimensions and the next
 prototype is 30 minutes away. **The floor person, on the floor,
-runs the design cycle.** This is Chapter 12's "silos to autonomy"
+runs the design cycle.** This is Chapter 11's "silos to autonomy"
 in concrete form.
 
 **Case 3: promotional video assets (Blender)**
@@ -366,7 +366,7 @@ hands of someone who has only the "skill of using"** from Chapter 1.
 
 > You don't need to become a specialist.
 > **You need to become "someone who handles specialist tools with AI
-> alongside."** This is the concrete shape of Chapter 12's "from
+> alongside."** This is the concrete shape of Chapter 11's "from
 > silos to individual autonomy."
 
 ## Build business documents while keeping structure intact
@@ -390,7 +390,7 @@ Python assembles these into a PDF (`pandoc`, `weasyprint` both work). Each compo
 - The UI mockup can go directly to the development side
 - The same source materials produce PDF, HTML, print, and AI input — convert by purpose
 
-"Design" and "content" are separated. **Editing does not become hell.** Fix one place; every output reflects it. This is exactly the principle from Chapter 7: "content in Markdown+Mermaid, frame only in HTML/CSS."
+"Design" and "content" are separated. **Editing does not become hell.** Fix one place; every output reflects it. This is exactly the principle from Chapter 6: "content in Markdown+Mermaid, frame only in HTML/CSS."
 
 ## The division of work with designers also changes
 
@@ -488,5 +488,5 @@ The next chapter moves to how you hold data — from Excel to JSON / YAML, with 
 
 - [Chapter 03: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
 - [Chapter 05: Holding Data — Think in JSON and YAML](/en/ai-native-ways/data-formats/)
-- [Chapter 08: Building for the Web — Back to HTML+CSS+JavaScript](/en/ai-native-ways/web/)
+- [Chapter 06: Building for the Web — Back to HTML+CSS+JavaScript](/en/ai-native-ways/web/)
 - [Prologue: Office for paperwork, Java/C# for business systems — but AI runs on Python and text](/en/ai-native-ways/prologue/)

@@ -1,12 +1,12 @@
 ---
 slug: one-plus-ai
-number: "13"
+number: "11"
 lang: en
 title: "One Person + AI — The New Unit of Work"
 subtitle: "From siloed organizations to individual autonomy"
 description: Siloed organizations were a rational structure built when specialization was expensive. With AI-native tools, one person can cross domains. The walls between accounting, marketing, legal, and engineering dissolve inside a single person. Organizations don't disappear — but silos do. Individual autonomy, organizational diversity, and societal resilience converge here.
 date: 2026.05.02
-label: AI Native 13
+label: AI Native 11
 title_html: From <span class="accent">silos</span><br>to the autonomy of <span class="accent">one + AI</span>.
 prev_slug: verify-narratives
 prev_title: "Verifying Narratives with AI"
@@ -115,7 +115,7 @@ They are **the gear for dissolving silos**.
 - Write documents in **Markdown** — general documents
 - Save diagrams in **Mermaid** — design, illustration, presentation
 - Hold data in **JSON / YAML / SQLite / Parquet** — a common
-  container across domains (**drop CSV** — Chapter 4)
+  container across domains (**drop CSV** — Chapter 5)
 - Step away from **Office** (kept as a converter layer) — escape the
   vendor silo too
 - **Business systems** are not broken; you operate outside the
@@ -213,21 +213,21 @@ not split across silos, all handled by **one + AI**.
   adjusts for the actual class → `pandoc` for PDF print or HTML
   for student tablets.
 - **Worksheet variety**: 30 practice problems per topic, generated
-  by Python that Claude wrote (Chapter 1) — individualized by
+  by Python that Claude wrote (Chapter 2) — individualized by
   difficulty.
 - **Marking support**: Claude does first-pass marking on short
   answers (judgment stays with E); for essays, Claude extracts key
   points and E evaluates.
-- **Grade aggregation**: Hold grades in SQLite (Chapter 4); compute
+- **Grade aggregation**: Hold grades in SQLite (Chapter 5); compute
   class distributions, semester comparisons, year-on-year with
-  Polars (Chapter 1).
+  Polars (Chapter 2).
 - **Parent communication**: Individual notes drafted by Claude
-  with student-data merged into Markdown templates (Chapter 1
+  with student-data merged into Markdown templates (Chapter 3
   "mail merge").
 - **Timetables and event plans**: Markdown plus Mermaid Gantt
-  charts (Chapter 3).
+  charts (Chapter 4).
 - **Public materials**: School site as Markdown + static HTML on
-  Forgejo (Chapter 2, Chapter 7).
+  Forgejo (Chapter 3, Chapter 6).
 
 The old silos: materials from publishers, tests from vendors,
 grades in the academic system, parent communication via PTA, web
@@ -247,8 +247,8 @@ and accounting — separate hires for each silo.
   extracts points of contention; F judges applicability.
 - **Client correspondence**: Claude drafts; F reviews and sends.
 - **Invoicing and payments**: SQLite for case and invoice
-  management (Chapter 4); Python generates monthly aggregation and
-  invoice PDFs in bulk (Chapter 1).
+  management (Chapter 5); Python generates monthly aggregation and
+  invoice PDFs in bulk (Chapter 2).
 - **Searching past cases**: 10 years of case notes turned into
   Markdown; Claude searches for similar cases — the "veteran's
   memory" that used to be locked in one person becomes a searchable
@@ -270,11 +270,11 @@ typesetting, printers did distribution — split into silos.
   draft" to "cultural adaptation").
 - **Research**: Technical terms, proper nouns, citations all
   parallel-checked by Claude; G verifies against primary sources
-  (Chapter 11 "Verifying Narratives").
+  (Chapter 10 "Verifying Narratives").
 - **Typesetting**: Markdown then `pandoc + xelatex` for PDF, or
-  EPUB for e-books (Chapter 2).
+  EPUB for e-books (Chapter 3).
 - **Distribution**: Direct sales of PDF / EPUB on G's own website;
-  Forgejo for history (Chapter 2 "self-host") — the choice not to
+  Forgejo for history (Chapter 3 "self-host") — the choice not to
   go through a publisher.
 
 Old silos: publishers, editors, typesetters, printers, distributors
@@ -628,7 +628,7 @@ working.
 
 - [Prologue: Office for paperwork, Java/C# for business systems — but AI runs on Python and text](/en/ai-native-ways/prologue/)
 - [Independence Chapter 5: Take Documents Back — OnlyOffice Docs on PocketBase](/en/ai-native-ways/software/documents/)
-- [Chapter 11: Knowing What Work to Hand to AI](/en/ai-native-ways/ai-delegation/)
+- [Chapter 09: Knowing What Work to Hand to AI](/en/ai-native-ways/ai-delegation/)
 - [Structural Analysis 08: Removing the Enterprise IT Tax](/en/insights/enterprise-tax/)
 - [Structural Analysis 12: AI and the Individual Business](/en/insights/ai-and-individual/)
 - [Structural Analysis 14: Subtraction Design](/en/insights/subtraction-design/)

@@ -1,12 +1,12 @@
 ---
 slug: apps
-number: "09"
+number: "07"
 lang: en
 title: "Building Apps — CLI Tools, Flet Apps, Flutter Apps"
 subtitle: "A three-layer structure that scales up gradually"
 description: To build an app, you don't need Flutter from the start. Write a CLI tool first and run it. If a screen is needed, put a GUI on top with Flet — still in Python. If serious cross-platform delivery is needed, move to Flutter. Climb the three layers in stages — small risk, AI-friendly.
 date: 2026.05.02
-label: AI Native 09
+label: AI Native 07
 title_html: Start apps from <span class="accent">CLI</span>,<br>extend through <span class="accent">Flet</span> and <span class="accent">Flutter</span>.
 prev_slug: web
 prev_title: "Building for the Web — Back to HTML+CSS+JavaScript"
@@ -175,14 +175,14 @@ or Layer 2.
 **CLI is enough:**
 
 - **`invoice`** — end-of-month invoice batch: customer master in
-  SQLite (Chapter 4) + Markdown templates → `pandoc` produces 100
+  SQLite (Chapter 5) + Markdown templates → `pandoc` produces 100
   PDFs in one go. Distribute with `uv tool install invoice`.
 - **`minutes`** — meeting-minutes formatter: accepts a `.m4a`
   recording, Whisper transcribes, Claude formats Markdown,
   extracts key points.
 - **`expense`** — receipts to CSV/JSON: photos → OCR →
   classification → JSON in freee / MoneyForward format (JSON, not
-  CSV — Chapter 4).
+  CSV — Chapter 5).
 - **`syllabus`** — teacher's worksheet generator: a YAML topic
   spec → 30 problem variants from Claude → Markdown → printable
   PDF via `pandoc`.
@@ -198,7 +198,7 @@ matters):
 
 - **Care-record entry**: runs on a care worker's tablet, pick a
   resident, type a note, take a photo → local SQLite → nightly sync
-  to the miniPC (Chapter 4 + Chapter 2 self-host).
+  to the miniPC (Chapter 5 + Chapter 2 self-host).
 - **Farmer's field-management map**: tap a plot on the field map
   to view / enter its planting history → local SQLite synced to
   the farmhouse miniPC.
@@ -213,7 +213,7 @@ matters):
 distribution is required (customer-facing apps, paid distribution)
 — rare. Internal or personal use almost always stops at Layer 1 or 2.
 
-Everything **reuses Chapter 1's Python and Chapter 4's SQLite /
+Everything **reuses Chapter 2's Python and Chapter 5's SQLite /
 JSON directly**. No new framework culture to enter. **The
 prologue's "extend one practice across every domain" made
 concrete.**
@@ -249,6 +249,6 @@ The next chapter moves to embedded — "Think in Python, have Claude translate t
 
 ## Related
 
-- [Chapter 08: Building for the Web — Back to HTML+CSS+JavaScript](/en/ai-native-ways/web/)
+- [Chapter 06: Building for the Web — Back to HTML+CSS+JavaScript](/en/ai-native-ways/web/)
 - [Chapter 02: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Structural Analysis 15: Security Design for the Mythos Era](/en/insights/security-design/)

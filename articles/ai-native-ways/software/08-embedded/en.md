@@ -29,7 +29,7 @@ if needed, having Claude translate it to C.**
 - Run it on your desk (PC) in Python first, then load it onto the real device
   (Raspberry Pi Pico, ESP32, etc.) with **MicroPython**
 - If speed or resources are tight, have **Claude translate** the settled logic
-  to C (parent series, Chapter 10)
+  to C (parent series, Chapter 8)
 
 ## How
 
@@ -67,5 +67,5 @@ side, and breaks free of the vendors.
 ## Related articles
 
 - [Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
-- [Parent series, Chapter 10: Building Embedded — Think in Python, Have Claude Translate](/en/ai-native-ways/embedded/)
+- [Parent series, Chapter 8: Building Embedded — Think in Python, Have Claude Translate](/en/ai-native-ways/embedded/)
 - [Independence, Chapter 2: Lay the Foundation — SQLite and more](/en/ai-native-ways/software/foundation/)

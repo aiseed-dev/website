@@ -100,7 +100,7 @@ Most everyday tasks for office workers and sole proprietors.
 - **NPO**: Donor data in SQLite; tie donation history, response, and interests together; quarterly reports drafted individually in Markdown.
 - **Translator**: Past translations turned into Markdown; ask Claude "how have we historically rendered this term" — a "personal glossary" you can search.
 
-Work that "a human keeps doing manually" becomes Python. Once written, it works next month and the month after. **Chapter 12's "from silos to individual autonomy"** — these automations are what technically supports that autonomy.
+Work that "a human keeps doing manually" becomes Python. Once written, it works next month and the month after. **Chapter 11's "from silos to individual autonomy"** — these automations are what technically supports that autonomy.
 
 ## Have a runtime
 

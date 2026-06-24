@@ -168,4 +168,4 @@ python tools/build.py
 
 - [第5章: 顧客がAIと協働して開発する時代](/ai-native-ways/software/customer-codev/)
 - [自立編 公開Web: Cloudflare Pages で公開する](/ai-native-ways/software/web/)
-- [親シリーズ第9章: アプリを作る ── CLIツール、Fletアプリ、Flutterアプリ](/ai-native-ways/apps/)
+- [親シリーズ第7章: アプリを作る ── CLIツール、Fletアプリ、Flutterアプリ](/ai-native-ways/apps/)

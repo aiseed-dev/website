@@ -1,12 +1,12 @@
 ---
 slug: ai-delegation
-number: "11"
+number: "09"
 lang: en
 title: "Knowing What Work to Hand to AI"
 subtitle: "Don't run agents autonomously. Use AI inside a sandbox."
 description: Discerning what to hand to AI. Don't run agents autonomously. Embedding AI inside Office is the easiest, and most dangerous, path. Use AI inside a sandbox. "Easy" is a short-term saving traded against long-term dependence. AI as a colleague; the human holds the wheel.
 date: 2026.05.02
-label: AI Native 11
+label: AI Native 09
 title_html: Use AI as a <span class="accent">colleague</span>.<br>Humans hold the <span class="accent">wheel</span>.
 prev_slug: embedded
 prev_title: "Building Embedded — Think in Python, Have Claude Translate"
@@ -249,7 +249,7 @@ handed to the AI is visible.**
 - **Hand-pick what to paste to the AI** (don't allow auto-access).
 - **Review code and documents the AI wrote before committing** (don't auto-approve).
 
-This is exactly the **AI-native toolkit** built up across Chapters 02–10.
+This is exactly the **AI-native toolkit** built up across Chapters 02–08.
 **Align your tools with the AI era, and the sandbox forms naturally.** Drop Office, and
 the Copilot problem **never arises.**
 
@@ -507,7 +507,7 @@ what to keep.
 **Contract negotiation:**
 - Hand off → Claude organizes / classifies clauses, compares to
   industry-standard wording, lists disadvantageous terms, searches
-  precedent (Chapter 11).
+  precedent (Chapter 10).
 - Keep → "Do I accept these terms?" "How do I keep the
   relationship?" "When do I walk away?" — judgments tied to context
   and responsibility.
@@ -551,7 +551,7 @@ to AI; "dialogue, decision, responsibility" to humans.**
 And whatever AI returns gets **properly checked by you**
 (prologue's "trust the handoff, check the result properly"). The
 facts AI produces are hypotheses; verify against primary sources
-yourself (Chapter 11's "verifying narratives").
+yourself (Chapter 10's "verifying narratives").
 
 ## Personal and organizational lines
 
@@ -613,7 +613,7 @@ The next chapter — the final chapter — synthesizes everything into "one pers
 
 ## Related
 
-- [Chapter 10: Building Embedded — Think in Python, Have Claude Translate](/en/ai-native-ways/embedded/)
+- [Chapter 08: Building Embedded — Think in Python, Have Claude Translate](/en/ai-native-ways/embedded/)
 - [Chapter 02: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Structural Analysis 05: Mythos Has Arrived](/en/insights/mythos/)
 - [Structural Analysis 15: Security Design for the Mythos Era](/en/insights/security-design/)

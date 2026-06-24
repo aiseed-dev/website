@@ -173,4 +173,4 @@ your own-side tools. Next, another worked example — building **embedded softwa
 
 - [Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
 - [Independence — Publish the Web on Cloudflare Pages](/en/ai-native-ways/software/web/)
-- [Parent series, Chapter 9: Building Apps — CLI Tools, Flet Apps, Flutter Apps](/en/ai-native-ways/apps/)
+- [Parent series, Chapter 7: Building Apps — CLI Tools, Flet Apps, Flutter Apps](/en/ai-native-ways/apps/)

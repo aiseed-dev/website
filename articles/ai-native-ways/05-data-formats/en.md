@@ -54,7 +54,7 @@ offer. That is why this chapter teaches four:
 
 > All you need is the **eye to choose structure**. You don't need to
 > memorize the syntax. This is the same practice as choosing between
-> Markdown / AsciiDoc / MyST / LaTeX for documents (Chapter 2).
+> Markdown / AsciiDoc / MyST / LaTeX for documents (Chapter 3).
 
 And — **CSV is dropped**. It doesn't match any of the four structures
 above. It has long been treated as "the default format for tables,"
@@ -73,7 +73,7 @@ That makes Excel `.xlsx` a perfectly legitimate format for
 **human-viewed tables**. The boundary is Microsoft (the subscription
 and the vendor lock-in), not the file format. **Use OnlyOffice as the
 open-source editor; keep `.xlsx` as the format.** (Details in the
-OnlyOffice section below and in Chapter 5.)
+OnlyOffice section below and in Independence Chapter 5.)
 
 What truly loses information is **export to CSV**. The moment an
 `.xlsx` becomes CSV, the sheets, types, formulas, and formatting are
@@ -157,7 +157,7 @@ ways:
 > wrong, the data corrupts.
 
 This is the same principle as **dropping plain text (`.txt`) in favor
-of Markdown** for documents (Chapter 2). Being "text that anything
+of Markdown** for documents (Chapter 3). Being "text that anything
 can read" is not enough — **pick formats that make structure
 explicit**.
 
@@ -442,7 +442,7 @@ But in the AI era, **you don't need to write all three yourself**:
   in plain language: "list customers who joined last month."
 
 Humans articulate intent, run the code, verify results. Same
-practice as Chapter 1 — bringing in SQLite is **just changing
+practice as Chapter 2 — bringing in SQLite is **just changing
 Python's target from "files" to "database"**, same workflow.
 
 ### Excel ↔ SQLite via Claude
@@ -463,7 +463,7 @@ df.write_excel("customers_export.xlsx")
 
 Intake into SQLite at the entrance, run on SQLite, export to Excel
 at the exit. **Your working surface stays SQLite; Excel happens at
-the boundary** — the same structure as Chapter 5's
+the boundary** — the same structure as Independence Chapter 5's
 entrance/substance/exit separation.
 
 > JSON / YAML for "holding," SQLite for "growing," Parquet for
@@ -611,10 +611,10 @@ The abstract principle, made concrete in scenarios.
 - **Daily sales** (transaction log), append-only, large →
   **Parquet** (weekly rotation, monthly aggregation).
 - **Purchase orders** (one per supplier, nested) → **JSON** (issued
-  as JSON, then PDF via `pandoc` from Chapter 1).
+  as JSON, then PDF via `pandoc` from Chapter 2).
 - **Stock-count aggregation tables for humans** (formatted) →
   **OnlyOffice `.xlsx`** (aggregation done in Polars from SQLite,
-  Chapter 1).
+  Chapter 2).
 - **Settings** (tax rate, tax display rule, carrier choice) →
   **YAML** (versioned, comments explain why).
 
@@ -626,7 +626,7 @@ The abstract principle, made concrete in scenarios.
 - **Invoice template plus per-invoice data** → **Markdown + JSON**
   (Markdown as template, JSON for merge data per customer).
 - **Monthly distribution report** → **Markdown → PDF** (substance
-  in Markdown, charts via Altair, Chapter 3).
+  in Markdown, charts via Altair, Chapter 4).
 - **API responses** (from freee / MoneyForward) → **JSON** as-is,
   imported into SQLite.
 
@@ -635,7 +635,7 @@ The abstract principle, made concrete in scenarios.
 - **Experimental data** (millions to billions of sensor rows, image
   metadata) → **Parquet** (columnar, compressed, SQL via DuckDB).
 - **Paper notes** (research, citations, your own thoughts) →
-  **Markdown** (Chapter 2).
+  **Markdown** (Chapter 3).
 - **Data shared with collaborators** → **JSON / Parquet**.
 - **Conference slides** → **Markdown + Marp** (Chapter 3).
 - **Ten years of experimental setup archives** → **YAML**
@@ -646,15 +646,15 @@ The abstract principle, made concrete in scenarios.
 - **Case management** (client, case type, deadline, status) →
   **SQLite**.
 - **Case-law personal notes** (kept searchable) → **Markdown**
-  (Chapter 2; also functions as a Forgejo wiki, Chapter 2).
+  (Chapter 3; also functions as a Forgejo wiki, Chapter 3).
 - **Contract templates plus per-case data** → **Markdown + JSON**.
 - **Accounting records** → **SQLite** (contains personal
-  information; must be self-hosted, Chapter 2's "privacy →
+  information; must be self-hosted, Chapter 3's "privacy →
   self-host").
 - **The firm's public blog** → **Markdown** (web-built in
-  Chapter 7).
+  Chapter 6).
 
-What unites every one of these is **Chapter 1's "Python reads and
+What unites every one of these is **Chapter 2's "Python reads and
 writes"** — the moment the toolkit is in place, every industry uses
 the same operations.
 
@@ -723,7 +723,7 @@ Align your tools with the AI era, and the way you handle data changes.
   arrival; do not keep on your side.
 
 This is the same principle as dropping plain text in favor of
-Markdown for documents (Chapter 2). **Choose formats that make
+Markdown for documents (Chapter 3). **Choose formats that make
 structure explicit** — for documents and for data alike. That is
 the precondition of the AI-native way of working.
 

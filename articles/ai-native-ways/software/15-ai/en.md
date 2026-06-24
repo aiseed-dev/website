@@ -118,5 +118,5 @@ SIer-commissioned model become structurally uneconomic?
 ## Related articles
 
 - [2-02: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars](/en/ai-native-ways/software/foundation/)
-- [3-02: The Structural Uneconomy of the SIer Model](/en/ai-native-ways/software/sier-uneconomic/)
+- [3-03: The Structural Uneconomy of the SIer Model](/en/ai-native-ways/software/sier-uneconomic/)
 - [2-01: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)

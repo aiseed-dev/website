@@ -11,8 +11,8 @@ label: Shift 1
 title_html: Companies <span class="accent">don't write their own code</span>.<br>And that was <span class="accent">rational</span>.
 prev_slug: ai
 prev_title: "Stand Up Your Own AI — LLM and RAG"
-next_slug: sier-uneconomic
-next_title: "The Structural Uneconomy of the SIer Model"
+next_slug: sovereignty
+next_title: "Digital Sovereignty — The Microsoft Problem and the Trump Problem"
 ---
 
 # Companies Don't Write Their Own Code — Office and Core, Two Parallel Worlds
@@ -53,7 +53,7 @@ technical ignorance or contempt for IT. **It was inefficient — so in a
 sense, it was only natural**. The multi-tier subcontracting structure arose
 for the same reason: writing code required a large workforce that had to be
 sourced without any one company keeping it on staff (the structure is
-covered in 3-06).
+covered in 3-07).
 
 A rational choice not to write. This is what split enterprise IT into two
 worlds.
@@ -183,10 +183,10 @@ reason. Because **the parallel structure itself dissolves**, both grips come
 off together.
 
 This is the premise of the whole Shift part. The chapters that follow each
-view this **single collapse** from a different face — the uneconomy of SIer
-commissioning (3-02), the order-of-magnitude price gap (3-03), the nature of
-lock-in (3-04), companies hiring builders directly (3-05), Japan's specific
-transition (3-06), completion within a few years (3-07). **Each is the same
+view this **single collapse** from a different face — digital sovereignty and the
+Microsoft problem (3-02), the uneconomy of SIer commissioning (3-03), the order-of-magnitude price gap (3-04), the nature of
+lock-in (3-05), companies hiring builders directly (3-06), Japan's specific
+transition (3-07), completion within a few years (3-08). **Each is the same
 single collapse, lit from a different angle**.
 
 ```mermaid
@@ -240,18 +240,18 @@ changes. The question is no longer "whether," only "when, and led by whom."
 ## To the Next Chapter
 
 This chapter set the premise of the Shift part — the parallelism of office
-and core, the double tax, and AI's inversion of the premise. The next
-question is the first of the consequences: **why the SIer-commissioned model
-becomes structurally uneconomic**.
+and core, the double tax, and AI's inversion of the premise. The chapters
+that follow light each of the two worlds' consequences from a different face.
 
-Make the invisible effort customers pay for outsourcing explicit, and "for
-the same effort, you can build it yourself" comes into view. The next
-chapter breaks that down step by step.
+First, the **office (Microsoft) side**. The next chapter asks **why OSS and
+sovereign AI are now better on both economics and security** — the problem of
+Microsoft dependence, and the geopolitical risk of not being able to trust
+the US government (the Trump problem).
 
 ---
 
 ## Related articles
 
 - [2-01: Stand Free of Microsoft and Google — Overview and Mapping](/en/ai-native-ways/software/independence/)
-- [3-02: The Structural Uneconomy of the SIer Model](/en/ai-native-ways/software/sier-uneconomic/)
+- [3-03: The Structural Uneconomy of the SIer Model](/en/ai-native-ways/software/sier-uneconomic/)
 - [Parent series Chapter 2: Owning Your Tools with Python](/en/ai-native-ways/python/)

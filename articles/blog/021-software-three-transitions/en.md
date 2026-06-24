@@ -3,7 +3,7 @@ slug: software-three-transitions
 title: "In the AI era,\"Become a specialized engineer\" misreads the structure"
 subtitle: The Second Renaissance has begun — software engineer → builder, software engineering → liberal arts, employment → free person
 date: 2026.05.22
-description: "The widely circulated advice — \"in the AI era, become a specialized engineer; hold a deep specialty AI cannot take, like security or ML\" — misreads the structure. AI is absorbing the whole layer of software engineering, not a particular subdomain. The medieval analogue: telling a serf, \"become a more specialized serf and you will be free.\" Freedom comes from stepping out of the lord's structure of control, not from deeper specialization. Software engineer → builder, software engineering → liberal arts, employment → free person — these three transitions are unfolding inside the Second Renaissance (the historical turning point of the AI era, with the LLM playing the role of the printing press). Creation and upheaval are two faces of the same time, and Trump is the canonical figure on the upheaval side. The article compresses aiseed.dev's \"AI-Native Ways of Working — Software\" sub-series (twelve argument chapters) into three pairs of words."
+description: "The widely circulated advice — \"in the AI era, become a specialized engineer; hold a deep specialty AI cannot take, like security or ML\" — misreads the structure. AI is absorbing the whole layer of software engineering, not a particular subdomain. The medieval analogue: telling a serf, \"become a more specialized serf and you will be free.\" Freedom comes from stepping out of the lord's structure of control, not from deeper specialization. Software engineer → builder, software engineering → liberal arts, employment → free person — these three transitions are unfolding inside the Second Renaissance (the historical turning point of the AI era, with the LLM playing the role of the printing press). Creation and upheaval are two faces of the same time, and Trump is the canonical figure on the upheaval side. The article compresses aiseed.dev's \"AI-Native Ways of Working — Software\" sub-series (thirteen argument chapters) into three pairs of words."
 lang: en
 label: Blog
 category: Structural Analysis Notes
@@ -18,7 +18,7 @@ This **misreads the structure**.
 
 What AI is absorbing is **the whole layer** of software engineering, not a particular subdomain inside it. Going deeper into a specialty only shifts the date by which the specialty itself is overtaken. The medieval analogue would be telling a serf, "become a more specialized serf and you will be free." Freedom does not come from going deeper into the specialty; it comes from **stepping out of the lord's structure of control**.
 
-The structural change argued in aiseed.dev's [AI-Native Ways of Working — Software](/en/ai-native-ways/software/) sub-series (twelve argument chapters) compresses into three transitions:
+The structural change argued in aiseed.dev's [AI-Native Ways of Working — Software](/en/ai-native-ways/software/) sub-series (thirteen argument chapters) compresses into three transitions:
 
 | Before | After |
 |---|---|
@@ -100,7 +100,7 @@ And the reasons employment **stops fitting in the AI era** are structurally clea
 > Employment is the contemporary form of medieval serfdom.
 > **Self-employment is the contemporary form of being a free person.**
 
-See [3-07: "Employment is the AI era's serfdom"](/en/ai-native-ways/software/five-years/).
+See [3-08: "Employment is the AI era's serfdom"](/en/ai-native-ways/software/five-years/).
 
 ## This is the Second Renaissance
 
@@ -119,7 +119,7 @@ History textbooks credit the printing press with preparing the ground for the Re
 
 The speed of diffusion is on another order. What took the printing press decades, the AI era achieves **in years**. The five-year horizon this sub-series draws is, against this difference in intensity, **a conservative estimate**.
 
-The Second Renaissance cannot be captured by "the AI revolution" alone. The deeper arguments — **the AI revolution is the completion of the IT revolution** (the 70-year-late fulfillment of the automation promise), **the LLM is a statistical-processing tool, not a superintelligence** (structural rejection of the AGI hype), **app-making comes to resemble film-making** (holding across the Hollywood-to-YouTube range), **not only the AI revolution** (concurrent transitions in fossil resources, geopolitics, agriculture, finance, demographics, healthcare, and pensions), and **creation AND upheaval as two sides of the era** (Trump and Nadella share the same structural error of judgment-concentration) — are developed in [**Software sub-series, 3-07: "The transition completes in a few years"**](/en/ai-native-ways/software/five-years/).
+The Second Renaissance cannot be captured by "the AI revolution" alone. The deeper arguments — **the AI revolution is the completion of the IT revolution** (the 70-year-late fulfillment of the automation promise), **the LLM is a statistical-processing tool, not a superintelligence** (structural rejection of the AGI hype), **app-making comes to resemble film-making** (holding across the Hollywood-to-YouTube range), **not only the AI revolution** (concurrent transitions in fossil resources, geopolitics, agriculture, finance, demographics, healthcare, and pensions), and **creation AND upheaval as two sides of the era** (Trump and Nadella share the same structural error of judgment-concentration) — are developed in [**Software sub-series, 3-08: "The transition completes in a few years"**](/en/ai-native-ways/software/five-years/).
 
 ## The alternative path to "specialized engineer" advice
 
@@ -134,7 +134,7 @@ Both are roads out of the lord's manor.
 
 ## More in the Software sub-series
 
-This article compresses aiseed.dev's **[AI-Native Ways of Working — Software](/en/ai-native-ways/software/)** sub-series (twelve argument chapters) into three pairs of words. The arguments across the chapters:
+This article compresses aiseed.dev's **[AI-Native Ways of Working — Software](/en/ai-native-ways/software/)** sub-series (thirteen argument chapters) into three pairs of words. The arguments across the chapters:
 
 - [1-01: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/) — Codeforces 2700 tier; the top layer for $200/month
 - [1-02: The Real Shift Is in Maintenance](/en/ai-native-ways/software/maintenance-shift/) — the unit of maintenance moves from code to design
@@ -142,12 +142,13 @@ This article compresses aiseed.dev's **[AI-Native Ways of Working — Software](
 - [1-04: The Builder Role](/en/ai-native-ways/software/builder/) — decide, delegate, evaluate, integrate
 - [1-05: Customers Co-develop with AI](/en/ai-native-ways/software/customer-codev/) — 90% is the customer; 10% goes to a specialist
 - [3-01: Companies Don't Write Their Own Code — Office and Core, Two Parallel Worlds](/en/ai-native-ways/software/two-worlds/) — the two parallel worlds, the double tax, and their dissolution
-- [3-02: The SIer Commission Model Is Structurally Uneconomic](/en/ai-native-ways/software/sier-uneconomic/)
-- [3-03: An Order-of-Magnitude Price Gap](/en/ai-native-ways/software/price-gap/) — 10×–100× is market displacement, not competition
-- [3-04: The Lock-In Problem](/en/ai-native-ways/software/lockin/) — Palantir FDE as the canonical case
-- [3-05: The Master Builder Is a Profession That Sells Judgment](/en/ai-native-ways/software/hiring-builders/) — same position as lawyers and doctors
-- [3-06: Japan's SIer Industry Transition](/en/ai-native-ways/software/japan-transition/) — multi-tier subcontracting paradoxically eases the transition
-- [3-07: The Transition Completes in a Few Years](/en/ai-native-ways/software/five-years/) — irreversibility; the Second Renaissance
+- [3-02: Digital Sovereignty — The Microsoft Problem and the Trump Problem](/en/ai-native-ways/software/sovereignty/) — OSS and sovereign AI now win on both economics and security
+- [3-03: The SIer Commission Model Is Structurally Uneconomic](/en/ai-native-ways/software/sier-uneconomic/)
+- [3-04: An Order-of-Magnitude Price Gap](/en/ai-native-ways/software/price-gap/) — 10×–100× is market displacement, not competition
+- [3-05: The Lock-In Problem](/en/ai-native-ways/software/lockin/) — Palantir FDE as the canonical case
+- [3-06: The Master Builder Is a Profession That Sells Judgment](/en/ai-native-ways/software/hiring-builders/) — same position as lawyers and doctors
+- [3-07: Japan's SIer Industry Transition](/en/ai-native-ways/software/japan-transition/) — multi-tier subcontracting paradoxically eases the transition
+- [3-08: The Transition Completes in a Few Years](/en/ai-native-ways/software/five-years/) — irreversibility; the Second Renaissance
 
 "**From software engineering to the liberal arts — the foundational shift of the technical profession**" is the subtitle of the sub-series and one axis for reading the structure of the AI era.
 

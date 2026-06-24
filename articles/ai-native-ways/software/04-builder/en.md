@@ -85,7 +85,7 @@ whole consistent. The crew gives it form in dialogue with the director.
 The relationship between the builder and AI maps onto this — **direction
 and the whole stay with the builder, the code and design get built
 through dialogue with AI, and the artifact is born of the
-collaboration**. 3-07 returns to this analogy under
+collaboration**. 3-08 returns to this analogy under
 "app-making comes to resemble film-making."
 
 ## The structural difference from a software engineer

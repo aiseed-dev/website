@@ -109,5 +109,5 @@ SIer 委託モデルがなぜ構造的に不経済になるのかを問う。
 ## 関連記事
 
 - [2-02: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars](/ai-native-ways/software/foundation/)
-- [3-02: SIer委託モデルの構造的不経済](/ai-native-ways/software/sier-uneconomic/)
+- [3-03: SIer委託モデルの構造的不経済](/ai-native-ways/software/sier-uneconomic/)
 - [2-01: Microsoft と Google から自立する ── 全体像と対応表](/ai-native-ways/software/independence/)

@@ -137,10 +137,10 @@ flowchart LR
 
 ## Where the next chapter goes
 
-Maintaining at the code level stops being necessary, and the main
-battleground of maintenance moves to design, spec, and context. What
-this change points to is: what happens to **the role whose center is
-writing code itself**? The next chapter takes up the coder role itself.
+Maintaining at the code level stops being necessary, and **maintenance
+can be done on-site, by the field itself**. What this change points to
+is: what happens to **the role whose center is writing code itself**?
+The next chapter takes up the coder role itself.
 
 ---
 

@@ -107,27 +107,6 @@ flipped over, the ability to find and close the weaknesses. And that level
 review or security checks (the structure by which commissioning itself
 stops holding is taken up in the Shift part).
 
-First, **reading**, the largest cost of maintenance, vanishes. "Trace
-the data flow of a feature" in a 10,000-line legacy Java base — half a
-day for a newcomer — AI returns in 30 seconds. Call graphs, the path by
-which a column is written to the DB, why a given branch exists (with the
-commit history) — it reads them all in seconds. Not a 1× or 2×
-difference; three orders of magnitude or more.
-
-But the essence lies further on. If AI understands context, then **the
-maintenance where a human takes on the code itself stops being
-necessary**. You just tell AI what you want, in plain words — "change
-this to that," "fix this bug." From there, AI traces the context, fixes
-the code, and rebuilds the tests and docs to match. It is the same as
-asking an SIer to "fix this part." This is maintenance, but new
-development is the same — both become **a matter of shaping things
-through dialogue with AI**.
-
-The **main battleground** of maintenance moves from code to design,
-spec, and context. "Cannot touch it" becomes "can touch it" — you can
-land a change in a 20-year-old business system the same day. That is the
-core of the structural change.
-
 ```mermaid
 flowchart LR
   subgraph Old["Old maintenance — code is the battleground"]

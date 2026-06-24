@@ -9,7 +9,7 @@ date: 2026.06.22
 label: Introduction 4
 title_html: 決めて、<span class="accent">AI と作り</span>、<br>動かす。
 prev_slug: coder-end
-prev_title: "コーダーの仕事を AI がするようになる"
+prev_title: "ソフトウェアエンジニアの仕事を AI がするようになる"
 next_slug: customer-codev
 next_title: "顧客がAIと協働して開発する時代"
 ---
@@ -311,6 +311,6 @@ SIer に発注していた顧客の何割が、自分で作るほうに流れる
 
 - [第1章: AI は、世界で最も難しいコーディング問題を解く](/ai-native-ways/software/coder-top/)
 - [第2章: 保守フェーズの構造変化こそ本質](/ai-native-ways/software/maintenance-shift/)
-- [第3章: コーダーの仕事を AI がするようになる](/ai-native-ways/software/coder-end/)
+- [第3章: ソフトウェアエンジニアの仕事を AI がするようになる](/ai-native-ways/software/coder-end/)
 - [構造分析08: 企業ITの税を引く](/insights/enterprise-tax/)
 - [構造分析12: AIと個人事業](/insights/ai-and-individual/)

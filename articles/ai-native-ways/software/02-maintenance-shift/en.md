@@ -12,7 +12,7 @@ title_html: The unit of maintenance moves<br>from <span class="accent">code to c
 prev_slug: coder-top
 prev_title: "AI Solves the World's Hardest Coding Problems"
 next_slug: coder-end
-next_title: "AI Now Does the Coder's Work"
+next_title: "AI Now Does the Software Engineer's Work"
 ---
 
 # Maintenance-Phase Shift Is the Real Story
@@ -150,7 +150,7 @@ unnecessary — is taken up in the Shift part.
 ## Related articles
 
 - [Chapter 1: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
-- [Chapter 3: AI Now Does the Coder's Work](/en/ai-native-ways/software/coder-end/)
+- [Chapter 3: AI Now Does the Software Engineer's Work](/en/ai-native-ways/software/coder-end/)
 - [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
 - [Prologue: AI's Native Tongue Is Python and Markdown-Shaped Text](/en/ai-native-ways/prologue/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)

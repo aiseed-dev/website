@@ -35,7 +35,7 @@ The thesis arc is carried by the 概念編 (steps 1–5, chapters 01–05) and t
 
 1. (Ch 01) AI has reached top-human level at writing code — accessible for a few thousand yen per month.
 2. (Ch 02) The bigger shift is in **maintenance**: legacy decoding cost collapses, the unit of maintenance moves from code to design/specification.
-3. (Ch 03) The "coder" role — whose work centers on writing code itself — disappears.
+3. (Ch 03) The "coder" AND "software engineer" roles — designing and writing code yourself — disappear; AI does the SE's work (Opus codes, Fable/Mythos design), and the human moves to dialogue with AI (the builder).
 4. (Ch 04) A new role emerges: the **builder**, who decides what to make, has AI make it, evaluates outputs, and integrates structure. Demonstrated by aiseed.dev (one person, 30,000 lines + 40 pages in 24 hours).
 5. (Ch 05) Customers themselves co-develop with AI; they hand off only the parts they cannot solve.
    — *導入編 06–13: the customer actually stands up the OSS stack (data → auth → documents → code → mail → meetings → web → AI).*
@@ -63,7 +63,7 @@ The sub-series has **23 chapters in three 編**, each 編 **numbered from 1**. F
 |---|---|---|---|---|
 | 1 | `01-coder-top` | AIがコードを書く能力で人間トップクラスに到達した | `coder-top` | Codeforces 2700 → design (cyberattack = design ability) → AI = strongest SIer; price floor |
 | 2 | `02-maintenance-shift` | 保守フェーズの構造変化こそ本質 | `maintenance-shift` | AI understands context → code-level maintenance unnecessary; unit → design/spec/context |
-| 3 | `03-coder-end` | コーダーの仕事を AI がするようになる | `coder-end` | AI does code+design (Opus=coder, Fable/Mythos=SE); humans do the broader system build/operate in dialogue |
+| 3 | `03-coder-end` | ソフトウェアエンジニアの仕事を AI がするようになる | `coder-end` | AI does code+design (Opus=coder, Fable/Mythos=SE); humans do the broader system build/operate in dialogue |
 | 4 | `04-builder` | ビルダーという役割 | `builder` | aiseed.dev 24h demo |
 | 5 | `05-customer-codev` | 顧客がAIと協働して開発する時代 | `customer-codev` | 9-tenths self-build (thesis) |
 | 6 | `06-vba-python` | VBA を Python に移す | `vba-python` | **example**: Excel macro → Python, running version as answer key |

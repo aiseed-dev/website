@@ -11,7 +11,7 @@ title_html: 保守の単位は、<br><span class="accent">コードから文脈<
 prev_slug: coder-top
 prev_title: "AI は、世界で最も難しいコーディング問題を解く"
 next_slug: coder-end
-next_title: "コーダーの仕事を AI がするようになる"
+next_title: "ソフトウェアエンジニアの仕事を AI がするようになる"
 ---
 
 # 保守フェーズの構造変化こそ本質
@@ -135,7 +135,7 @@ flowchart LR
 ## 関連記事
 
 - [第1章: AI は、世界で最も難しいコーディング問題を解く](/ai-native-ways/software/coder-top/)
-- [第3章: コーダーの仕事を AI がするようになる](/ai-native-ways/software/coder-end/)
+- [第3章: ソフトウェアエンジニアの仕事を AI がするようになる](/ai-native-ways/software/coder-end/)
 - [第4章: ビルダーという役割](/ai-native-ways/software/builder/)
 - [序章: AIの母国語は、PythonとMarkdown形式のテキスト](/ai-native-ways/prologue/)
 - [構造分析08: 企業ITの税を引く](/insights/enterprise-tax/)

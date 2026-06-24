@@ -10,7 +10,7 @@ date: 2026.06.22
 label: Introduction 4
 title_html: Decide it, <span class="accent">build it with AI</span>,<br>run it.
 prev_slug: coder-end
-prev_title: "AI Now Does the Coder's Work"
+prev_title: "AI Now Does the Software Engineer's Work"
 next_slug: customer-codev
 next_title: "Customers Co-Develop with AI"
 ---
@@ -353,6 +353,6 @@ SIers shifts to building?
 
 - [Chapter 1: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
 - [Chapter 2: Maintenance-Phase Shift Is the Real Story](/en/ai-native-ways/software/maintenance-shift/)
-- [Chapter 3: AI Now Does the Coder's Work](/en/ai-native-ways/software/coder-end/)
+- [Chapter 3: AI Now Does the Software Engineer's Work](/en/ai-native-ways/software/coder-end/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

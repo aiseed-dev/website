@@ -278,7 +278,7 @@ The next chapter dissects the SIer commission model itself.
 ## Related articles
 
 - [Chapter 1: AI Solves the World's Hardest Coding Problems](/en/ai-native-ways/software/coder-top/)
-- [Chapter 3: AI Now Does the Coder's Work](/en/ai-native-ways/software/coder-end/)
+- [Chapter 3: AI Now Does the Software Engineer's Work](/en/ai-native-ways/software/coder-end/)
 - [Chapter 4: The Builder Role](/en/ai-native-ways/software/builder/)
 - [Parent series, Chapter 14: Replacing Microsoft 365 Wholesale (untying 11 layers with OSS)](/en/ai-native-ways/microsoft-365/)
 - [Shift Chapter 3: The Lock-In Problem](/en/ai-native-ways/software/lockin/)

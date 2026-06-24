@@ -241,7 +241,7 @@ SIer に出しても、AI が裏で書くだけになる。**顧客が直接 AI 
 ## 関連記事
 
 - [第1章: AI は、世界で最も難しいコーディング問題を解く](/ai-native-ways/software/coder-top/)
-- [第3章: コーダーの仕事を AI がするようになる](/ai-native-ways/software/coder-end/)
+- [第3章: ソフトウェアエンジニアの仕事を AI がするようになる](/ai-native-ways/software/coder-end/)
 - [第4章: ビルダーという役割](/ai-native-ways/software/builder/)
 - [親シリーズ第14章: Microsoft 365 を丸ごと置き換える(OSSで11層を解く)](/ai-native-ways/microsoft-365/)
 - [転換編 第3章: ロックイン問題](/ai-native-ways/software/lockin/)

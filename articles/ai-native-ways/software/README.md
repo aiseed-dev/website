@@ -79,7 +79,7 @@ articles/ai-native-ways/software/
 |---|---|---|
 | 01 | `coder-top` | AI は、世界で最も難しいコーディング問題を解く |
 | 02 | `maintenance-shift` | 保守フェーズの構造変化こそ本質 |
-| 03 | `coder-end` | コーダーの仕事を AI がするようになる |
+| 03 | `coder-end` | ソフトウェアエンジニアの仕事を AI がするようになる |
 | 04 | `builder` | ビルダーという役割 |
 | 05 | `customer-codev` | 顧客がAIと協働して開発する時代 |
 | 06 | `sier-uneconomic` | SIer委託モデルの構造的不経済 |

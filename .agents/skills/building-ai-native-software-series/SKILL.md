@@ -37,7 +37,7 @@ The thesis arc is carried by the 概念編 (steps 1–5, chapters 01–05) and t
 2. (Ch 02) The bigger shift is in **maintenance**: legacy decoding cost collapses, the unit of maintenance moves from code to design/specification.
 3. (Ch 03) The "coder" AND "software engineer" roles — designing and writing code yourself — disappear; AI does the SE's work (Opus codes, Fable/Mythos design), and the human moves to dialogue with AI (the builder).
 4. (Ch 04) A new role emerges: the **builder**, who decides what to make, has AI make it, evaluates outputs, and integrates structure. The SE solves narrowly-closed problems (AI's domain even at high difficulty); the builder handles open problems (no precedent → AI weak). AI has only trained weights / no lived history, so value-judgment and responsibility stay human — judgment is not delegated to AI; choose a trustworthy developer's model.
-5. (Ch 05) Customers themselves co-develop with AI; they hand off only the parts they cannot solve.
+5. (Ch 05) Customers themselves become builders — but the first move is OSS, not code. Generic → use proven OSS (most economical, also more secure); personal → customize OSS in dialogue with AI (worked examples = ch6-8); organization → stand up a generic foundation with OSS replacing M365/Copilot/WordPress (the 自立編). Only the company-specific logic is written with AI. What AI cannot do, the SIer cannot do either.
    — *導入編 06–13: the customer actually stands up the OSS stack (data → auth → documents → code → mail → meetings → web → AI).*
 6. (Ch 14) The SIer-commissioned model becomes structurally uneconomic — the overhead of outsourcing itself exceeds the AI-native build cost.
 7. (Ch 15) The price gap is one to two orders of magnitude. This is market displacement, not competition.
@@ -65,7 +65,7 @@ The sub-series has **23 chapters in three 編**, each 編 **numbered from 1**. F
 | 2 | `02-maintenance-shift` | 保守フェーズの構造変化こそ本質 | `maintenance-shift` | AI understands context → code-level maintenance unnecessary; unit → design/spec/context |
 | 3 | `03-coder-end` | ソフトウェアエンジニアの仕事を AI がするようになる | `coder-end` | AI does code+design (Opus=coder, Fable/Mythos=SE); humans do the broader system build/operate in dialogue |
 | 4 | `04-builder` | ビルダーという役割 | `builder` | SE solves narrowly-closed problems (AI's domain) vs builder handles open problems; AI=weights/no history, human judges value; don't delegate judgment |
-| 5 | `05-customer-codev` | 顧客がAIと協働して開発する時代 | `customer-codev` | 9-tenths self-build (thesis) |
+| 5 | `05-customer-codev` | 顧客がAIと協働して開発する時代 | `customer-codev` | OSS-first: generic→use OSS (economical + secure); personal→OSS+AI customize (ex ch6-8); org→OSS foundation replacing M365/Copilot/WordPress (自立編); only the specific written with AI; what AI can't do, the SIer can't either |
 | 6 | `06-vba-python` | VBA を Python に移す | `vba-python` | **example**: Excel macro → Python, running version as answer key |
 | 7 | `07-website` | Webサイトを作る ── AI と対話して | `website` | **example**: static site by dialogue; plain CSS + vanilla JS; fixable later |
 | 8 | `08-embedded` | 組み込みを作る | `embedded` | **example**: think in Python, Claude translates to C |

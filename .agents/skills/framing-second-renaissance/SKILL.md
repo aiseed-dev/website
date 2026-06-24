@@ -23,7 +23,7 @@ A person whose work centers on **deciding what to build, having AI build it, eva
 
 ### 2. The master builder (上級ビルダー / master builder)
 
-The senior tier of builder — a **profession that sells judgment, in the same structural position as lawyers and doctors** (chapter 9). The hierarchy parallels medieval guilds (apprentice → journeyman → master) and modern legal/medical professions (associate → senior counsel; resident → attending). The lawyer-doctor-accountant parallel applies specifically to this senior tier; junior builders share the role definition but not yet the professional weight. Lives in `articles/ai-native-ways/software/09-hiring-builders/`. EN: "master builder" (resonates with medieval master mason / master craftsman).
+The senior tier of builder — **management, in the position of the CIO (Chief Information Officer), a C-level executive** (chapter 9). In the AI-native era IT judgment = business judgment = management judgment, so the one who makes it sits in management, not on a professional-staff track; and because IT becomes the **core** of the business rather than a support function, the responsibility is **heavier than today's CIO**. The professional/practitioner work — the lawyer/doctor/accountant-level *practice* — is what **AI** does; the human directs it (this is why "become a more specialized professional" misreads the structure: the specialized layer is exactly what AI takes). The skill hierarchy still parallels the medieval guild (apprentice → journeyman → master); junior builders share the role definition but not yet the executive weight. Lives in `articles/ai-native-ways/software/21-hiring-builders/`. EN: "master builder" (resonates with medieval master mason / master craftsman).
 
 ### 3. Liberal arts as the builder's foundation
 
@@ -147,7 +147,7 @@ Just as the printing press eliminated the scribe but not the book, the LLM shrin
 The structural consequences:
 - The "author/manuscript" function — writing in natural language what the app should do, for whom, how it should behave — **remains and becomes central**. This is concept 3 (liberal arts) made concrete.
 - The "engineering specialist" function — implementing in code — **dissolves into AI**, the way camera operation might one day dissolve into a single AI cinematographer.
-- The "director" function — orchestrating, judging, integrating, taking responsibility — is the **master builder** role (concept 2), now sharpened by a more vivid analogy than lawyer/doctor: the director.
+- The "director" function — orchestrating, judging, integrating, taking responsibility — is the **master builder** role (concept 2). On the make-side the vivid analogy is the film director; in the organization the position is **management — the CIO** (not the old lawyer/doctor professional framing, which now describes the practitioner work AI does).
 
 **Critical refinement — the Hollywood-to-YouTube spectrum.** Film-making is not monolithic; the same category contains the Hollywood blockbuster (huge crew, hundreds of millions, years) and the YouTube video (one person, a phone, a few hours). AI-era apps run across the same spectrum, but with a twist: **the apps themselves do not shrink at any scale** — what shrinks is the labor count per app and the monolithic-SIer business model:
 
@@ -160,7 +160,7 @@ The structural consequences:
 The structural reasoning at each level:
 
 - **Monolithic large-scale declines** because it is structurally a poor fit for the AI era: a single master builder cannot hold the whole, lock-in is created (concept 9, sub-series chapter 8), maintenance becomes intractable, the chain of judgment is dispersed. These systems are decomposed into combinations of mid-scale focused systems.
-- **Mid-scale is the master builder's home territory** — the scale at which the chain of judgment closes within one person, the same position as lawyers and doctors. The number of mid-scale apps **grows**, because AI makes them cheap enough that previously uneconomical business apps now get built.
+- **Mid-scale is the master builder's home territory** — the scale at which the chain of judgment closes within one person, the position of **management — the CIO**. The number of mid-scale apps **grows**, because AI makes them cheap enough that previously uneconomical business apps now get built.
 - **Personal scale explodes** because the user is now their own director and crew.
 
 The crucial guard against overstatement: **never claim "apps shrink"**. What shrinks is (i) the monolithic-SIer labor model (which was particularly tied to large-scale custom projects), and (ii) the total labor count per app across all scales. The number of apps across the middle and personal scales actually **grows**.
@@ -180,7 +180,7 @@ Recognizing the opposing narratives sharpens the writing. Each one is the **anti
 | "The AI revolution is a new and separate revolution" | Industry framing, tech press | The AI revolution is the **completion** of the 70-year IT revolution. For 70 years the IT industry hand-wrote automation code — a paradox. LLM dissolves it. SIer contraction and software-engineer → builder replacement are **inevitable consequences**, not sudden shocks. (Concept 11.) |
 | "The AI era is THE big shift" | AI-industry-centric narratives | The current era is **multiple independent transitions converging** (fossil resources, geopolitics, defense, agriculture, finance, demographics + AI as accelerator). AI revolution alone captures less than half. The right frame is the **Second Renaissance**. (Concept 14.) |
 | "Become a specialized engineer" | Industry career advice, especially from senior engineers | Specialize deeper inside engineering = become a more specialized serf. The path to freedom is sideways onto liberal arts or sideways into the middle layer. (Concept 9.) |
-| "Hire programmers; train them in AI tools" | Corporate hiring frameworks | Hire on **judgment**, not on coding skill. Train on the liberal arts. The lawyer/doctor analogy gives the criteria. (Concepts 2, 3.) |
+| "Hire programmers; train them in AI tools" | Corporate hiring frameworks | Hire on **judgment**, not on coding skill. Train on the liberal arts. The CIO/management framing (not lawyer/doctor — that practitioner work is AI's) gives the criteria. (Concepts 2, 3.) |
 | "AI is a productivity tool — same as Excel was" | Conservative analyst takes | Excel democratized **calculation**. LLM democratizes **making**. The structural intensity is orders of magnitude higher. (Concept 8.) |
 | "Self-employment is risky / unstable" | Mainstream economic discourse | The structural alternative (continued employment) is **serfdom in another name** — predictability in exchange for sovereignty. Risk-reward calculus has inverted. (Concept 7.) |
 

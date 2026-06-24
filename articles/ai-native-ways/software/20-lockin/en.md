@@ -250,8 +250,8 @@ the side where lock-in does not bite.
 ## Where the next chapter goes
 
 Wherever lock-in dissolves, customers will need builders. Whether
-in-house or external, they will be hiring **a judgment-centered
-profession**. The capacity to see lock-in coming and to design a way
+in-house or external, they will be bringing in **management that makes
+business decisions — the CIO**. The capacity to see lock-in coming and to design a way
 out of it — reading the vendor's pitch against itself, verbalizing
 your own organization's interests, defining the criteria for an
 alternative — falls inside the liberal arts (1-04).

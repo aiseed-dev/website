@@ -44,8 +44,9 @@ which they cascade.
   100×, market displacement, not competition
 - **Lock-in dissolves** (3-05) — AI-native standard code, the
   opposite end from Palantir's FDE
-- **Companies hire builders** (3-06) — same professional
-  position as lawyers and doctors. The supply is not only former
+- **Companies hire builders** (3-06) — the senior builder moves
+  into management, the CIO's seat; the professional work is done by
+  AI. The supply is not only former
   coders; AI + Python + Flet bring in **the VB / VBA generation,
   makers, shop-floor engineers, and students** as new entrants
 - **Multi-tier subcontracting absorbs the transition** (3-07)
@@ -318,9 +319,9 @@ one-directionality shows in the following concrete cases:
 - Once an SIer has shrunk its multi-tier subcontracting, it does not
   hire subcontractors back at scale (3-07) — the contracts that
   were closed do not re-form
-- Once the builder is recognized as a profession, that role
-  definition persists (3-06) — what moved into the position of
-  lawyer and doctor does not move back
+- Once the builder is recognized as management — the CIO — that role
+  definition persists (3-06) — what moved into a seat in management
+  does not move back
 - The fact that AI generates standard code at low cost does not
   change — the structure of "top-tier coding for $200/month" remains
   in place (1-01)
@@ -373,9 +374,9 @@ alone, the contemporary liberal arts cannot stand by themselves
 either. **A free person comes into being only when all four
 converge**. And just as the free citizens of medieval cities formed
 **guilds** to strengthen their economic and political weight, the
-AI-era builders will move, as **a profession that sells judgment**,
-toward bar-association– and medical-society–like **guilds of their
-own** (3-06).
+AI-era builders will move into **management — the position of the
+CIO** in each company (3-06). The professional work is done by AI;
+the human holds judgment and responsibility as part of management.
 
 ### Employment is the AI era's serfdom — the rise of self-employment is structural
 
@@ -411,9 +412,9 @@ structurally clear:
 3. **The boundary between judgment and execution closes within
    one person** (1-04) — the overhead of aggregation,
    coordination, and management becomes pure waste.
-4. **Judgment-centered professions are intrinsically inclined to
-   independence** — lawyers, doctors, accountants prefer solo
-   practice and partnerships not by accident (3-06).
+4. **Those who make business decisions are intrinsically inclined to
+   independence** — owner-operators and the self-employed choose to
+   run the business on their own judgment, not by accident (3-06).
 
 **The rise of self-employment is not a policy or lifestyle
 question. It is structural necessity**. The same structure under
@@ -457,8 +458,9 @@ hand. Who belongs here:
   LLMs running in the field)
 - **Manufacturing-floor technicians** (having AI rewrite the factory
   automation)
-- **Physicians using AI imaging and diagnostics; mechanics and
-  repair technicians**
+- **Physicians, mechanics, and repair technicians who hand the
+  imaging and diagnostic work to AI and keep the judgment and the
+  procedure**
 - **Carpenters, architects, craftspeople using AI design tools**
 
 3-06's "**maker types and field technicians enter embedded**"
@@ -520,10 +522,10 @@ the **First Renaissance (14th–17th centuries)**.
 | The polymath ideal | Leonardo da Vinci | The builder, one person + AI (1-04) |
 | Individual subjectivity | The humanist "I" | One's own tools, one's own data, one's own judgment |
 | Vernacular liberation | Dante's Italian, Luther's German | Natural language becomes "the programming language" |
-| Free cities and guilds | Florence, Venice, the craft guilds | The AI-era free person, professional guilds (3-06) |
+| Free cities and guilds | Florence, Venice, the craft guilds | The AI-era free person, management / the CIO (3-06) |
 | The accelerator | The printing press (1450s) — democratizing **reading** | The LLM — democratizing **making** (this chapter) |
 | Reformation | Religious decentralization (against the Roman church) | Anti–vendor-concentration, anti–employment-centric, anti-SIer (this book) |
-| The new rising class | The bourgeoisie (commerce, banking, manufacturing) | The AI-native builder, the self-employed judgment professional |
+| The new rising class | The bourgeoisie (commerce, banking, manufacturing) | The AI-native builder, the self-employed business decision-maker |
 | New forms of art | Perspective, anatomy, naturalism | AI-assisted creation under human judgment |
 
 Nine items, all corresponding. This is not metaphor — it is
@@ -603,7 +605,7 @@ Film-making, however, has an enormous range. **A Hollywood blockbuster still req
 
 **Monolithic large-scale is structurally a poor fit for the AI era** — no single master builder can hold the whole, lock-in is created (3-05), maintenance is intractable, the chain of judgment is dispersed. These systems are decomposed into combinations of mid-scale focused systems.
 
-**Mid-scale is the master builder's home territory** — the scale at which the chain of judgment closes within one person (1-04), the same position as lawyers and doctors (3-06). Mid-scale apps themselves **do not shrink — they grow**: business apps that previously could not be cost-justified now get built in large numbers.
+**Mid-scale is the master builder's home territory** — the scale at which the chain of judgment closes within one person (1-04), the position of management — the CIO (3-06). Mid-scale apps themselves **do not shrink — they grow**: business apps that previously could not be cost-justified now get built in large numbers.
 
 **Personal is the user as director and crew**.
 

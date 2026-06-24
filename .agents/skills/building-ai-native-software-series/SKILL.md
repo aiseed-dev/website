@@ -42,7 +42,7 @@ The thesis arc is carried by the 概念編 (steps 1–5, chapters 01–05) and t
 6. (Ch 14) The SIer-commissioned model becomes structurally uneconomic — the overhead of outsourcing itself exceeds the AI-native build cost.
 7. (Ch 15) The price gap is one to two orders of magnitude. This is market displacement, not competition.
 8. (Ch 16) Lock-in is the SIer model's true product — proprietary frameworks, abstraction layers, human dependency. Palantir's FDE model is examined as the archetype.
-9. (Ch 17) Companies will hire builders directly, as a professional class (compare lawyers, physicians).
+9. (Ch 17) Companies will bring builders in-house as **management — the CIO (Chief Information Officer) class**, not as a professional staff tier. The professional/practitioner work (lawyer/doctor-level practice) is done by AI; the human makes business decisions (IT judgment = business judgment = management judgment), with responsibility heavier than today's CIO.
 10. (Ch 18) Japan's multi-tier subcontracting structure paradoxically enables the transition — primes can detach subcontractor agreements without firing anyone.
 11. (Ch 19) The main changes arrive in the near future; because the economic and security premises have already inverted (3-01 parallel worlds, 3-02 sovereignty), the transition does not reverse.
 
@@ -91,7 +91,7 @@ The sub-series has **23 chapters in three 編**, each 編 **numbered from 1**. F
 | 3 | `18-sier-uneconomic` | SIer委託モデルの構造的不経済 | `sier-uneconomic` | outsourcing overhead exceeds build cost |
 | 4 | `19-price-gap` | 価格競争力の桁違いの差 | `price-gap` | 10–100× displacement |
 | 5 | `20-lockin` | ロックイン問題 | `lockin` | Palantir FDE archetype |
-| 6 | `21-hiring-builders` | 各社がビルダーを雇用する時代 | `hiring-builders` | builders as a professional class |
+| 6 | `21-hiring-builders` | 各社がビルダーを雇用する時代 | `hiring-builders` | builders as management — the CIO class (professional work is AI's) |
 | 7 | `22-japan-transition` | 日本のSIer業界の転換と雇用流動性 | `japan-transition` | multi-tier subcontracting enables shift |
 | 8 | `23-five-years` | もう戻らない構造転換 | `five-years` | irreversible (premises inverted), near-term horizon |
 

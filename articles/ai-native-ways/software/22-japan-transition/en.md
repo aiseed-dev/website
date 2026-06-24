@@ -144,7 +144,7 @@ But, **for talented coders, there are several exits**:
   customer companies that used to commission SIers (3-06).
 - **Go independent — individual contractor or small firm** —
   contract directly with customers as a builder. The
-  lawyer/doctor-style professional model from 3-06.
+  management (CIO)-style model from 3-06.
 - **Move to a different industry** — leaving software development is
   also a path (the same kind of redistribution as "human computers"
   and typesetters moving to adjacent fields, from 1-03).
@@ -184,8 +184,8 @@ If mobility is high:
 If mobility stays low:
 
 - Talent stagnates in shrinking subcontractors
-- New employment forms (the professional model) do not develop
-  institutionally
+- New employment forms (treating builders as management — the CIO)
+  do not develop institutionally
 - Transition pace is held back by social friction
 
 Fortunately, **mobility is trending upward**. The post-COVID spread of
@@ -281,17 +281,19 @@ infrastructure) are moving in parallel inside the same society**.
 
 Finally, the direction of the transition period.
 
-Labor mobility, job-type employment, professional models, social
+Labor mobility, job-type employment, treating builders as management
+(the CIO), social
 acceptance of business commissions — all of these have measurably
 risen over the past decade. Multiple forces will keep them rising:
 
 - **Demographics** — a shrinking working-age population pushes
   mobility up on pure economic grounds.
 - **International comparison pressure** — comparison with overseas
-  (especially US) professional markets pushes Japanese companies to
-  revise compensation.
+  (especially US) executive and management markets pushes Japanese
+  companies to revise compensation.
 - **AI itself as pressure** — talent that does not fit old-style
-  employment models (builders, AI specialists) accumulates, creating
+  employment models (builders to be brought in as management/CIOs, and
+  AI specialists that handle the execution) accumulates, creating
   pressure for institutional reform.
 - **Policy direction** — government policy on "job-type employment,"
   legalized side jobs, advanced-professional regimes all point the

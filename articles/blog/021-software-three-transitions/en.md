@@ -93,7 +93,7 @@ And the reasons employment **stops fitting in the AI era** are structurally clea
 1. **The means of production are now individually ownable** — a few-thousand-yen-a-month AI, local LLMs, open source, one's own server. The employer no longer needs to monopolize them.
 2. **One person + AI = a ten-person team** — the payoff of concentration disappears.
 3. **The boundary between judgment and execution closes within one person** — the overhead of aggregation, coordination, and management becomes pure waste.
-4. **Judgment-centered professions are intrinsically inclined to independence** — lawyers, doctors, accountants prefer solo practice and partnerships, not by accident.
+4. **Those who make business decisions are intrinsically inclined to independence** — owners and the self-employed set up their own firms, not by accident.
 
 **The rise of self-employment is structural necessity, not a policy or lifestyle question.** The same structure under which medieval free citizens, free farmers, and craftsmen were all "self-employed" returns in the AI era.
 
@@ -111,9 +111,9 @@ Lay the three transitions out — engineer → builder, software engineering →
 | The polymath ideal | Leonardo da Vinci | The builder, one person + AI |
 | The classics being recovered | Greek and Roman classical learning | The liberal arts |
 | Vernacular liberation | Dante's Italian, Luther's German | Natural language becomes "the programming language" |
-| Free cities and guilds | Florence, Venice, the craft guilds | The AI-era free person, professional guilds |
+| Free cities and guilds | Florence, Venice, the craft guilds | The AI-era free person, guilds of owners and CIOs |
 | **The accelerator** | **The printing press (1450s) — democratized reading** | **The LLM — democratizes making** |
-| New rising class | The bourgeoisie | The AI-native builder, the self-employed judgment professional |
+| New rising class | The bourgeoisie | The AI-native builder, the self-employed business-decision-maker (CIO) |
 
 History textbooks credit the printing press with preparing the ground for the Reformation, the scientific revolution, and the modern nation-state **over two hundred years**. The LLM holds **incomparably greater intensity** — what the printing press democratized was "reading" (access to existing knowledge), while what the LLM democratizes is "**making**" (knowledge generation, judgment, implementation). There is no literacy wall to clear first; natural language works for anyone.
 
@@ -146,7 +146,7 @@ This article compresses aiseed.dev's **[AI-Native Ways of Working — Software](
 - [3-03: The SIer Commission Model Is Structurally Uneconomic](/en/ai-native-ways/software/sier-uneconomic/)
 - [3-04: An Order-of-Magnitude Price Gap](/en/ai-native-ways/software/price-gap/) — 10×–100× is market displacement, not competition
 - [3-05: The Lock-In Problem](/en/ai-native-ways/software/lockin/) — Palantir FDE as the canonical case
-- [3-06: The Master Builder Is a Profession That Sells Judgment](/en/ai-native-ways/software/hiring-builders/) — same position as lawyers and doctors
+- [3-06: The Senior Builder Is Management (the CIO)](/en/ai-native-ways/software/hiring-builders/) — moving to the side that makes business decisions
 - [3-07: Japan's SIer Industry Transition](/en/ai-native-ways/software/japan-transition/) — multi-tier subcontracting paradoxically eases the transition
 - [3-08: The Structural Transition That Won't Reverse](/en/ai-native-ways/software/five-years/) — irreversibility; the Second Renaissance
 

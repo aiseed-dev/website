@@ -4,11 +4,11 @@ number: "06"
 part: "3"
 lang: en
 title: Companies Hire Builders
-subtitle: The master builder is a profession that sells judgment — same position as lawyers and doctors
-description: In the AI-native era, IT is not a thin surface layer on top of business; it is the judgment of the business itself encoded. Outsourcing IT becomes the same as outsourcing the business. Keeping the business in-house calls for keeping builders in-house — and the master builder is positioned as a profession like lawyers and doctors, not as a general employee. The corporate-website case shows both the cost and the structural change.
+subtitle: The senior builder is management — moving into the CIO's seat, with heavier responsibility than today
+description: In the AI-native era, the professional work — including lawyer- and doctor-level judgment — is done by AI. So the human senior builder is not a profession that sells judgment but management that makes business decisions: the CIO (Chief Information Officer). IT judgment = business judgment = management judgment, and because IT becomes the core of the business rather than a surface layer, the responsibility is heavier than today's CIO. A general-employee grade cannot accommodate this. The corporate-website case shows both the cost and the structural change.
 date: 2026.08.11
 label: Shift 6
-title_html: The master builder is a<br><span class="accent">profession that sells judgment</span>.
+title_html: The senior builder becomes the <span class="accent">CIO</span>.
 prev_slug: lockin
 prev_title: "The Lock-In Problem"
 next_slug: japan-transition
@@ -17,9 +17,9 @@ next_title: "Japan's SIer Industry Transition and Labor Mobility"
 
 # Companies Hire Builders
 
-**The master builder is a profession that sells judgment. Same
-structure as lawyers and doctors. Not a role that fits inside a
-general-employee grade system**.
+**The senior builder is management. They stand on the side that
+makes business decisions. The professional work is done by AI. Not a
+role that fits inside a general-employee grade system**.
 
 1-05 showed that customers themselves can become builders.
 3-05 showed that AI-native development structurally resists
@@ -100,70 +100,98 @@ directly drives the business stays in-house too. That role is the
 > Outsourcing IT is **the same as outsourcing the business**.
 > If you keep the business in-house, you keep the builder in-house.
 
-## The master builder is a profession that sells judgment
+## The senior builder is management — into the CIO's seat
 
 How to position the in-house builder? An extension of the
-general-employee grade ladder does not fit. The **master builder**
-is a profession that sells judgment.
+general-employee grade ladder does not fit. But neither is it "a
+profession that sells judgment, in the same position as lawyers and
+doctors" — that reading mistakes the structure. **The senior builder
+is management**.
 
-Examples of "professions that sell judgment":
+First, look squarely at what happens in the AI-native era. The
+professional work that sells judgment — lawyer, doctor, accountant —
+**is done by AI**:
 
-- **Lawyers** — sell legal judgment. Legal databases are open to
-  everyone, case law is published. But which doctrine applies and how
-  the argument is built, given the client's situation, is judgment.
-  **They carry responsibility for the result**.
-- **Doctors** — sell medical judgment. Diagnostic equipment is
-  standardized; medical knowledge is in textbooks. But which tests to
-  run and how to diagnose, given the patient's symptoms, is judgment.
-  **They carry responsibility for the result**.
-- **CPAs and tax accountants** — sell accounting judgment. Accounting
-  software is open to anyone; tax law is published. But how to handle
-  the case, given the actual state of the company, is judgment.
-  **They carry responsibility for the result**.
+- **Legal judgment** — legal databases are open to everyone, case
+  law is published. Which doctrine to apply and how to build the
+  argument given the client's situation — this practical judgment
+  descends into the layer AI can make.
+- **Medical judgment** — diagnostic equipment is standardized,
+  medical knowledge is in textbooks. Which tests to run and how to
+  diagnose given the symptoms — this practical judgment too enters
+  the layer AI handles.
+- **Accounting judgment** — accounting software is open to anyone,
+  tax law is published. How to handle the case given the company's
+  actual state — AI can make this call too.
 
-The builder has the same structure:
+Becoming a deeply specialized "profession" means descending into the
+layer AI takes (the same reason "become a specialized engineer"
+(1-03) mistakes the structure). So the human senior builder must not
+be lined up there.
 
-- **The tools are open to anyone** — AI (Claude, GPT), IDEs,
-  open-source libraries. No special access required.
-- **Judgment is the content** — carve out the problem from the
-  business context, decide structure, use AI, evaluate. That is what
-  the builder does.
-- **Responsibility for the result** — a system that does not work, a
-  failed design, an operational incident — what the builder judged,
-  the builder owns.
+Where, then, does the human builder stand? **On the side that directs
+the professional work (AI) and carries responsibility for the result**
+— the side that makes business decisions. The argument runs in order:
 
-Master builders move to the same position as lawyers, doctors, and
-accountants. This is not a metaphor — **the structural profession is
-the same**.
+- **The builder's judgment begins as a management decision** — which
+  business to change, and how. Which invariants to keep, what to
+  discard. This is a decision about how to run the business before it
+  is a decision about IT.
+- **IT judgment = business judgment = management judgment** — the
+  business of the AI-native era is a continuous chain of judgments
+  encoded as code (previous section). Making those judgments is
+  deciding the business itself, and deciding the business is deciding
+  the management of the company.
+- **So: management — the CIO (Chief Information Officer)** — a C-suite
+  officer who carries part of the management. They direct the
+  professional work (AI) and make management decisions through IT.
 
-> The master builder is a **profession with the same structure** as
-> lawyers and doctors. The tools are open to anyone, but the
-> judgment belongs to the professional.
+The qualities the builder needs do not change here. Carve the problem
+out of the business context (**judgment**), split it into structure
+(**decomposition**), bind AI and existing assets together
+(**integration**) — that is the work of the side that makes business
+decisions. The tools (AI, IDEs, libraries) are open to anyone. What
+is tested is judgment and responsibility.
 
-The parallel runs one step deeper. The professional education of
-lawyers, doctors, and accountants is built, before the techniques,
-on **the liberal arts** — logic, rhetoric, ethics, systems thinking,
-history. Those judgments cannot be reduced to technique. If the
-builder sits in the same position, the foundation of the builder's
-hiring and training has to be the same: **the liberal arts**
-(1-04), not fluency in a programming language. **Hire someone
-who can judge, not someone who can write code** — that is the axis
-toward which builder hiring properly points.
+> The senior builder is **management**. Their judgment begins as a
+> management decision and carries responsibility for the result. The
+> professional work is done by AI.
+
+And that responsibility is **heavier than today's CIO's**. Today's CIO
+oversees IT as a support function of the business. But the AI-native
+senior builder treats IT not as a support function but as **the core
+of management** — making the business judgments themselves through IT.
+As IT moves from a thin surface layer to the core of the business, the
+weight of the judgments made there, and the responsibility carried,
+come to exceed today's CIO.
+
+The parallel runs one step deeper. The foundation of the qualities for
+making management decisions is not fluency in a programming language
+but **the liberal arts** — logic, rhetoric, ethics, systems thinking,
+history (1-04). Those judgments cannot be reduced to technique. **Hire
+someone who can judge, not someone who can write code** — that is the
+axis toward which builder hiring properly points.
 
 ## A general-employee grade does not fit
 
-Push a "profession" into the general-employee grade ladder and it
-breaks. History shows this.
+**Push part of the management into a general-employee grade and it
+breaks**. The reason is not "because they are a high-grade
+professional" — it is **because they are a layer that carries
+management decisions and responsibility**.
 
-The structure of a law firm makes the point:
+The structure of the executive layer makes the point:
 
-- **Partners** — bring in cases, judge, carry responsibility
-- **Associates** — do the under-the-partner work
-- **Compensation runs on case basis or partnership stakes**, not on
-  position grades. There is no "level-5 lawyer" on a salary table.
+- **CIO and executive officers** — make management decisions, carry
+  responsibility for the result
+- **General employees** — carry out duties assigned along grades and
+  positions
+- **Compensated by judgment and responsibility, not position grade** —
+  there is no "level-5 director" on a salary table. Management does
+  not ride on a grade ladder.
 
-Medical practices and accounting firms have the same shape. Pay
-follows **the volume of judgment carried**, not position grade.
+A layer that carries management decisions is compensated by the volume
+of judgment and the responsibility. **Not by position grade.** The
+senior builder belongs precisely to this layer.
 
 What happens when builders are forced into the general-employee
 grade?
@@ -175,25 +203,27 @@ grade?
   "business systems" or "sales systems" does not work for someone who
   judges across multiple business areas.
 - **Promotion to management does not reward them** — the builder's
-  advantage is in judgment, not in management. Promoting them to
-  management = pulling them out of their actual role.
+  advantage is in business judgment, not in line management. Promoting
+  them to a management post = pulling them out of their actual role.
 - **The "interchangeable" assumption breaks** — "if a person leaves,
   another fills in and the system keeps running" does not apply to a
-  judgment profession.
+  layer that carries management decisions.
 
 Trying to run all of this inside the general-employee frame causes
-strong builders to leave. **An employment shape — a professional model
-— is needed**:
+strong builders to leave. **Compensation as a member of management is
+needed**:
 
-- Per-engagement contracts, or high-grade professional positioning
-- Position by scope and responsibility, not by grade or assignment
-- Reward by expanding scope, not by promoting to management
+- Position by the scope and responsibility of management decisions,
+  not by grade or assignment
+- Reward by expanding the reach of management decisions, not by
+  promoting to a management post
+- Treat C-suite / executive-officer compensation as the baseline
 - Independent-contractor / business-commission contracts are
   legitimate options
 
-Under that framing, the in-house builder sits closer to "executive
-advisor" or "professional partner" than to "member of the IT
-department."
+Under that framing, the in-house builder sits **closer to the CIO or
+an executive officer** than to a "member of the IT department" —
+compensation as a member of management.
 
 ## Cost comparison example — building a corporate website
 

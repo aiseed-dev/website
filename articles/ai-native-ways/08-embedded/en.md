@@ -286,7 +286,7 @@ Even in embedded, think in Python.
 
 Design and verify in Python, then translate to C if needed. Claude handles the translation. **Time spent fighting hardware decreases, and you focus on the real problem — sensors, logic, operations.**
 
-The nine chapters so far have laid out the AI-native toolset. Python, Markdown, Mermaid, JSON / YAML / SQLite / Parquet, leaving Office, business systems, web, apps, embedded.
+The chapters so far have laid out the AI-native toolset. Python, Markdown, Mermaid, JSON / YAML / SQLite / Parquet, web, apps, embedded.
 
 The next chapter moves to common practice in advanced form. "Knowing what work to hand to AI" — the judgment of what to delegate and what to keep.
 

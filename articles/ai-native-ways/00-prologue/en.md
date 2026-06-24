@@ -260,7 +260,7 @@ Who belongs here:
 - **Physicians using AI imaging and diagnostics; mechanics and repair technicians**
 - **Carpenters, architects, craftspeople using AI design tools**
 
-This layer **bridges the abstraction of pure software with the directness of pure physical work**. Chapter 8 (embedded) and Chapter 9 (agriculture, nature, and AI) of this book are precisely about it.
+This layer **bridges the abstraction of pure software with the directness of pure physical work**. Chapter 8 (embedded) of this book is precisely about it.
 
 > The middle layer is the contemporary form of those who **gain power by touching reality**. The strongest form of the AI-era free person is likely to appear here.
 

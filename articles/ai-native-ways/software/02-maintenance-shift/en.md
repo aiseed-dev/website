@@ -151,9 +151,9 @@ flowchart LR
 ```
 
 > Old maintenance was work done against code.
-> Now that AI understands context, maintenance becomes work done against
-> **design, spec, and context** — and the code is generated and
-> regenerated from there.
+> Now that AI understands context, maintenance becomes work done **with
+> AI** — tell it what you want, and AI rebuilds the code, the tests, and
+> the docs.
 
 ## Tests and docs become resources synced from context
 

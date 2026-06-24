@@ -144,10 +144,10 @@ well-defined. That is exactly where AI is strongest, and that work is
 what AI comes to do first.
 
 And at the frontier, this is already happening — **Claude builds
-Claude**. AI writes the code of the AI itself. Once it reaches that
+Claude**. AI does the design of the AI itself. Once it reaches that
 point, the question becomes a single one — **are big-tech software
-engineers still needed?** As a role that solves narrowly closed problems,
-no longer.
+engineers still needed?** **The era where AI does it in their place has
+arrived.**
 
 | Axis | Software engineer | Builder |
 |---|---|---|

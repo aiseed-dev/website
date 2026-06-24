@@ -91,6 +91,37 @@ something is off, fix it while looking at the result — "two columns for the
 list," "change the date format" — shaping it through dialogue (exactly the way
 of building from Chapter 5). Once it exists, all that's left is writing articles.
 
+## For an existing site, suck it into static
+
+If rebuilding an existing WordPress site from scratch is too much, there is a
+faster move — **crawl the whole live site, save the HTML and images, and turn it
+into a bundle of static files.** The running WordPress becomes a static fixture
+that looks exactly the same.
+
+On the Mac there is a well-known app, **SiteSucker** (paid). But the same thing
+**can be done in Python** — for free, on any OS, in a form you can read. Ask AI,
+and in a few dozen lines it writes a script that fetches pages with `requests`,
+picks up links and images with `BeautifulSoup`, saves them, and rewrites links
+to relative paths.
+
+```python
+# sketch: crawl an existing site and save it as static files
+import requests
+from bs4 import BeautifulSoup
+# 1) fetch a page → save under html/
+# 2) follow <a> <img> <link> <script>, save same-domain assets
+# 3) rewrite links to relative paths
+# (finish it in dialogue with AI; for a one-liner, wget --mirror also works)
+```
+
+Upload the sucked-out static files to Cloudflare Pages and you can **shut down
+the running WordPress — attack surface and all.** Dynamic features like contact
+forms and checkout won't carry over, so move forms to an external service and
+payment to an external page like Stripe.
+
+> For an existing site, **crawl it and suck it into static.** What SiteSucker
+> (Mac, paid) does, AI can build for you in Python, for free.
+
 ## Write articles and posts
 
 Once the machinery exists, all you do is **write articles and posts.** This is

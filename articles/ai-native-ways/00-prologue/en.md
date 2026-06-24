@@ -128,7 +128,7 @@ Step away from UI; structure the "home" of data and logic. Details follow in lat
 - **Mutable data to SQLite + Python** (Chapter 4) — migrate customer master / ledger / inventory to SQLite
 - **Large-scale analytics to Parquet + DuckDB** (Chapter 4) — tens of millions of rows in seconds
 - **Turn workflows into Python apps** (Chapters 1 & 5) — monthly aggregation, invoices, minutes, PowerPoint auto-generation
-- **Rewrite business systems via parallel operation** (Chapter 6) — Java/C# → Python, Oracle → PostgreSQL
+- **Rewrite business systems via parallel operation** (Independence Chapter 9) — Java/C# → Python, Oracle → PostgreSQL
 
 > What you can do today: install JupyterLab. That alone starts it.
 

@@ -10,8 +10,8 @@ label: AI Native 05
 title_html: Hold data as <span class="accent">structure</span>, not as flat tables.<br><span class="accent">JSON / YAML / SQLite</span> make that possible.
 prev_slug: design
 prev_title: "Designing — With Mermaid and Claude Design"
-next_slug: office-replacement
-next_title: "Changing Paperwork — A Realistic Path Away from Office"
+next_slug: web
+next_title: "Building for the Web — Back to HTML+CSS+JavaScript"
 ---
 
 # Holding Data — Think in JSON and YAML

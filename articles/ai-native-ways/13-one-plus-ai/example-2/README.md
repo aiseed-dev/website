@@ -128,7 +128,7 @@ make clean && make all
 
 - [第 02 章 example-2](/ai-native-ways/data-formats/example-2/) で扱った
   CSV ⇄ JSON ⇄ YAML はそのまま流用できる
-- [第 05 章 example-2](/ai-native-ways/office-replacement/example-2/)
+- [自立編 第5章 example-2](/ai-native-ways/software/documents/example-2/)
   の差し込み印刷は、このフォルダの請求書生成と同じ仕組み
 - [第 11 章 example-1](/ai-native-ways/one-plus-ai/example-1/)
   の Mochi.ai SaaS 例と組み合わせれば、**B2B + B2C 両方の月次が動く**

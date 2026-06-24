@@ -327,7 +327,7 @@ The organization's rules don't change. The official silos remain. But
 asking that department" turns into "I can proceed with Claude."
 
 This is individual autonomy. **Don't wait for the organization to
-change.** Chapter 5 (paperwork) and Chapter 6 (business systems) both
+change.** Independence Chapter 5 (documents) and Independence Chapter 9 (fastapi) both
 covered this "from-the-inside" practice.
 
 ## When silos dissolve, organizations change shape
@@ -627,7 +627,7 @@ working.
 ## Related
 
 - [Prologue: Office for paperwork, Java/C# for business systems — but AI runs on Python and text](/en/ai-native-ways/prologue/)
-- [Chapter 06: Changing Paperwork — A Realistic Path Away from Office](/en/ai-native-ways/office-replacement/)
+- [Independence Chapter 5: Take Documents Back — OnlyOffice Docs on PocketBase](/en/ai-native-ways/software/documents/)
 - [Chapter 11: Knowing What Work to Hand to AI](/en/ai-native-ways/ai-delegation/)
 - [Structural Analysis 08: Removing the Enterprise IT Tax](/en/insights/enterprise-tax/)
 - [Structural Analysis 12: AI and the Individual Business](/en/insights/ai-and-individual/)

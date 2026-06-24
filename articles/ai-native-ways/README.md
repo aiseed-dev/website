@@ -275,14 +275,16 @@ CommonMark + tables 拡張(`tools/build/markdown.py`)。
 | 03 | `markdown` | 文書を書く ── Markdownという最小の選択 |
 | 04 | `design` | デザインをする ── Mermaid と Claude デザインで作る |
 | 05 | `data-formats` | データを持つ ── JSONとYAMLで考える |
-| 06 | `office-replacement` | 事務処理を変える ── Officeから離れる現実的な道筋 |
-| 07 | `business-systems` | 業務システムと付き合う ── 並行稼働で書き換える |
 | 08 | `web` | Webを作る ── HTML+CSS+JavaScriptという原点回帰 |
 | 09 | `apps` | アプリを作る ── CLIツール、Fletアプリ、Flutterアプリ |
 | 10 | `embedded` | 組み込みを作る ── Pythonで考え、Claudeに翻訳させる |
 | 11 | `ai-delegation` | AIに任せる仕事を見極める |
 | 12 | `verify-narratives` | AIで物語を検証する |
 | 13 | `one-plus-ai` | 1人+AIで作る、新しい仕事の単位 |
+
+旧 06「事務処理を変える」と 07「業務システムと付き合う」は、組織の基盤づくり
+としてサブシリーズ「ソフトウェア開発編」自立編に統合・移設した（06 → 自立編
+第5章 `documents`、07 → 自立編第9章 `fastapi`）。本編の番号 06・07 は欠番。
 
 序章「AI 時代の自由人」節で中世の自由人の4条件パラレル(経済的自立・政治的
 自治・実体に触れる力・教養)、その下の「中間層」「第二次ルネサンス」を

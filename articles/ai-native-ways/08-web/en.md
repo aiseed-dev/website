@@ -8,8 +8,8 @@ description: Split the web into two layers. Content in Markdown and Mermaid; fra
 date: 2026.05.02
 label: AI Native 08
 title_html: Content in <span class="accent">Markdown+Mermaid</span>.<br>Frame only in <span class="accent">HTML+CSS+JS</span>.
-prev_slug: business-systems
-prev_title: "Working with Business Systems — Rewrite via Parallel Operation"
+prev_slug: data-formats
+prev_title: "Holding Data — Think in JSON and YAML"
 next_slug: apps
 next_title: "Building Apps — CLI Tools, Flet Apps, Flutter Apps"
 ---
@@ -71,7 +71,7 @@ WordPress themes and plugins are written in PHP. Claude can write PHP, but the o
 
 ## Escaping WordPress
 
-If you are on WordPress, the way out is clear. Use the same **parallel operation** pattern from Chapter 6.
+If you are on WordPress, the way out is clear. Use the same **parallel operation** pattern from Independence Chapter 9.
 
 1. Keep the existing WordPress running. **Export content to Markdown** (use plugins or CLI tools, or have Claude write a converter).
 2. Build the new site with Markdown + minimal HTML/CSS + Python.
@@ -357,5 +357,5 @@ The next chapter moves to building apps. CLI tools, Flet apps, Flutter apps — 
 - [Chapter 02: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Chapter 03: Writing Documents — Markdown as the Minimal Choice](/en/ai-native-ways/markdown/)
 - [Chapter 04: Designing — With Mermaid and Claude Design](/en/ai-native-ways/design/)
-- [Chapter 07: Working with Business Systems — Rewrite via Parallel Operation](/en/ai-native-ways/business-systems/)
+- [Independence Chapter 9: Build an API — Expose Core Logic with FastAPI](/en/ai-native-ways/software/fastapi/)
 - [Structural Analysis 15: Security Design for the Mythos Era](/en/insights/security-design/)

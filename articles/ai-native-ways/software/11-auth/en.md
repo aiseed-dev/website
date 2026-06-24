@@ -125,7 +125,7 @@ on your own side and step off that meter. The move can be gradual.
 4. Once everyone is across, remove Microsoft from OAuth2 — the Entra dependency is cut
 
 You don't cut over in one stroke. **Run both in parallel, and close the old
-gate only after the move is done** (parent series, Chapter 7).
+gate only after the move is done** (Chapter 9).
 
 ## Summary
 
@@ -148,4 +148,4 @@ bring Word, Excel, and PowerPoint to our own side.
 - [Chapter 2: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars](/en/ai-native-ways/software/foundation/)
 - [Reference implementation kura — a self-hosted workspace using PocketBase as the gate](https://github.com/aiseed-dev/workspace)
 - [Chapter 1: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)
-- [Parent series, Chapter 7: Living with Business Systems — Rewrite by Running in Parallel](/en/ai-native-ways/business-systems/)
+- [Chapter 9: Build an API — Expose Core Logic with FastAPI](/en/ai-native-ways/software/fastapi/)

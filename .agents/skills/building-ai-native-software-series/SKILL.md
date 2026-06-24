@@ -78,11 +78,11 @@ The sub-series has **24 chapters in three 編**, each 編 **numbered from 1**. F
 | 2 | `10-foundation` | 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars | `foundation` | data layer (Azure SQL / Excel / Power BI). **SQLite-first** ("普通は SQLite で十分"); PostgreSQL only when sharing/concurrent |
 | 3 | `11-auth` | 門番を立てる ── PocketBase | `auth` | authentication (Entra ID / Google ID) |
 | 4 | `12-code` | コードを手元に ── Forgejo と Zed | `code` | **GitHub** / Azure DevOps |
-| 5 | `13-documents` | 文書を取り戻す ── OnlyOffice Docs を PocketBase に組み込む | `documents` | **M365** Word/Excel/PPT, OneDrive (Google Docs/Sheets/Slides) — OnlyOffice Docs editor on PocketBase + files/xattr. NOT Nextcloud, NOT DocSpace (re-adds AD) |
+| 5 | `13-documents` | 文書を取り戻す ── OnlyOffice Docs を PocketBase に組み込む | `documents` | **M365** Word/Excel/PPT, OneDrive (Google Docs/Sheets/Slides) — OnlyOffice Docs editor on PocketBase + files/xattr. NOT Nextcloud, NOT DocSpace (re-adds AD). Also carries the "leave Office on your own terms" philosophy (入口・中身・出口/Office を通過させる/処理する人→判断する人) as a why→how preface — folded from the **former parent ch6 「事務処理を変える」**, now removed. Two example-N/ (月次報告書, 差し込み印刷) moved here. |
 | 6 | `14-mail` | メールを自分の側に ── Stalwart | `mail` | **M365** Exchange/Outlook (Gmail) |
 | 7 | `15-meetings` | 会議と予約を自分の側に ── Jitsi と Cal.com | `meetings` | **M365** Teams/Bookings (Google Meet/Calendar), BigBlueButton for classes |
 | 8 | `16-web` | Webを公開する ── Cloudflare Pages（WordPress 代替） | `web` | **WordPress** — publish the 導入編7 site; static, no server; build→verify→deploy separated |
-| 9 | `17-fastapi` | API を作る ── FastAPI で基幹のロジックを出す | `fastapi` | **基幹システム** logic as one API on the foundation+gate (matches kura) |
+| 9 | `17-fastapi` | API を作る ── FastAPI で基幹のロジックを出す | `fastapi` | **基幹システム** logic as one API on the foundation+gate (matches kura). Now the substantive chapter on **replacing a legacy 基幹 system via parallel-run** (並行稼働/業務知識を Markdown に/現場がテスト/委託は止める) — folded from the **former parent ch7 「業務システムと付き合う」**, now removed (SQL/T-SQL migration mechanics defer to 第2章). Two example-N/ (PL/SQL→Python parallel rewrite, Java/C#→Markdown rule extraction) moved here. |
 | 10 | `18-ai` | 自前の AI を据える ── LLM と RAG | `ai` | **Copilot** (Gemini); Ollama/vLLM + RAG on pgvector |
 
 **転換編 ── 産業構造の帰結 (part "3", 第1–6章 / folders 19–24)**

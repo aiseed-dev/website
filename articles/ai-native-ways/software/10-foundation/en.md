@@ -139,7 +139,7 @@ Standard SQL (`SELECT`, `JOIN`, window functions) runs as-is. You drop only
 **the vendor dialect, T-SQL.** Business logic buried in stored procedures
 gets extracted by Claude and translated into Python / Ruby (Introduction Chapter 5).
 Then run in parallel with the old DB, reconcile the output, and stop the old
-when the difference is gone (parent series Chapter 7).
+when the difference is gone (Chapter 9).
 
 > Migration is not "rewrite everything."
 > It is **move onto the standard and drop only the dialect.**
@@ -214,4 +214,4 @@ on top of this, as the shared gatekeeper across the apps.
 
 - [Introduction Chapter 5: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
 - [Chapter 1: Becoming Independent from Microsoft and Google — The Whole Map](/en/ai-native-ways/software/independence/)
-- [Parent series, Chapter 7: Living with Business Systems — Rewrite by Running in Parallel](/en/ai-native-ways/business-systems/)
+- [Chapter 9: Build an API — Expose Core Logic with FastAPI](/en/ai-native-ways/software/fastapi/)

@@ -135,6 +135,11 @@ parameters that statistically compress a vast amount of past data,
 nothing more and nothing less. No lived history, no stake in living.
 **What is worth living for** is not in the weights.
 
+So **you cannot leave judgment to AI.** Narrowly closed problems, yes —
+there AI is faster and more accurate. But the judgment of an open problem
+— what to build, what matters, what to take responsibility for — the
+human keeps. That is the core of the builder's role.
+
 The typical software engineer is a big-tech employee — owning, deeply,
 **just one specific slice** of a giant system: one feature of search, one
 service of payments, one layer of an API. The problem is narrow and

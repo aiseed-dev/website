@@ -123,6 +123,13 @@ reality without precedent, a situation no one has solved yet, gives it
 nothing to learn from. So the open problem — the question that rises from
 reality — stays with humans.
 
+Why can humans? **Because humans have history.** Some four billion years
+as living things, some seven million as humanity, and a whole life since
+birth — that accumulation is carved into the body, the culture, the
+memory. So a human can judge **what is worth living for**. The "right
+answer" to an open problem — what to build, what matters to the reality
+at hand — rises from that judgment.
+
 The typical software engineer is a big-tech employee — owning, deeply,
 **just one specific slice** of a giant system: one feature of search, one
 service of payments, one layer of an API. The problem is narrow and

@@ -35,7 +35,7 @@ outsource, **the upstream judgment stays with the customer**. And on top
 of that, commissioning **erases responsibility and hollows out
 capability**.
 
-## The SIer commission model has a longer process than it looks
+## The trap of the SIer commission model
 
 The process does not even begin with requirements. Before that, you
 have to think through **how to improve the business operations

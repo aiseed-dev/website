@@ -83,10 +83,9 @@ articles/ai-native-ways/software/
 | 04 | `builder` | ビルダーという役割 |
 | 05 | `customer-codev` | 顧客がAIと協働して開発する時代 |
 | 06 | `sier-uneconomic` | SIer委託モデルの構造的不経済 |
-| 07 | `price-gap` | 価格競争力の桁違いの差 |
-| 08 | `lockin` | ロックイン問題 |
-| 09 | `hiring-builders` | 各社がビルダーを雇用する時代 |
-| 10 | `japan-transition` | 日本のSIer業界の転換と雇用流動性 |
-| 11 | `five-years` | もう戻らない構造転換 |
+| 07 | `lockin` | ロックイン問題 |
+| 08 | `hiring-builders` | 各社がビルダーを雇用する時代 |
+| 09 | `japan-transition` | 日本のSIer業界の転換と雇用流動性 |
+| 10 | `five-years` | もう戻らない構造転換 |
 
 slug は確定済み。URL の安定性のため、以後変更しない。

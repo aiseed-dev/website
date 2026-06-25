@@ -1,6 +1,6 @@
 ---
 slug: lockin
-number: "05"
+number: "04"
 part: "3"
 lang: en
 title: The Lock-In Problem
@@ -9,8 +9,8 @@ description: SIer commissioning anchors customers with three layers of lock-in (
 date: 2026.08.04
 label: Shift 5
 title_html: A proprietary framework becomes<br>a <span class="accent">cage with no exit</span>.
-prev_slug: price-gap
-prev_title: "The Order-of-Magnitude Price Gap"
+prev_slug: sier-uneconomic
+prev_title: "The Structural Uneconomy of the SIer Model"
 next_slug: hiring-builders
 next_title: "Companies Hire Builders"
 ---
@@ -23,8 +23,8 @@ Palantir's FDE model is the extreme form. AI-native development, by
 contrast, minimizes lock-in itself by working in standard code and
 standard formats**.
 
-3-04 showed that the gap between SIer commissioning and AI-native
-development runs at 10× to 100×. Even so, customers do not move at
+The previous chapter showed that **the disappearance of the SIer
+commission model is inevitable**. Even so, customers do not move at
 once — the reason is **lock-in**. This chapter decomposes the
 structure of lock-in, reads Palantir's FDE model as the archetype, and
 shows why AI-native development is structurally bad at producing
@@ -225,7 +225,7 @@ large price gap, not every engagement moves at the same speed.
 
 The overall pace of the industry shift — Japan's multi-tier
 subcontracting, labor mobility, transitional contract forms — is
-treated in 3-07.
+treated in 3-06.
 
 Note that everything so far has been about the **development lock-in**
 of the SIer-commissioned model. Separate from it is the **lock-in of
@@ -265,9 +265,8 @@ how builders get positioned, how they are paid, and how they function.
 
 - [1-03: AI Now Does the Software Engineer's Work](/en/ai-native-ways/software/coder-end/)
 - [1-04: The Builder Role](/en/ai-native-ways/software/builder/)
-- [3-04: The Order-of-Magnitude Price Gap](/en/ai-native-ways/software/price-gap/)
-- [3-06: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
-- [3-07: Japan's SIer Industry Transition and Labor Mobility](/en/ai-native-ways/software/japan-transition/)
+- [3-05: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
+- [3-06: Japan's SIer Industry Transition and Labor Mobility](/en/ai-native-ways/software/japan-transition/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)
 - [Can You Build a Microsoft 365 (Standard + Copilot) Equivalent Yourself?](/en/blog/self-hosting-microsoft-365/)

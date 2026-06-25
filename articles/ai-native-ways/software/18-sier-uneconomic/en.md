@@ -11,8 +11,8 @@ label: Shift 3
 title_html: With the effort of <span class="accent">outsourcing</span>,<br>you can <span class="accent">build it yourself</span>.
 prev_slug: sovereignty
 prev_title: "Digital Sovereignty — The Microsoft Problem and the Trump Problem"
-next_slug: price-gap
-next_title: "The Order-of-Magnitude Price Gap"
+next_slug: lockin
+next_title: "The Lock-In Problem"
 ---
 
 # The Structural Uneconomy of the SIer Model
@@ -195,20 +195,20 @@ Most of the work — the standard work AI can write — moves to the
 customer side. Even the specialized remainder (genuinely new technology,
 specialized regulation, scale-driven design) can no longer be sustained
 as a "multi-year operations commission." It turns into hourly consulting,
-or is absorbed into the customer's in-house team (3-06). Neither is the
+or is absorbed into the customer's in-house team (3-05). Neither is the
 SIer commission model itself.
 
 Transition speed, Japan-specific dynamics (multi-tier subcontracting),
-and labor mobility are taken up in 3-07 and 3-08.
+and labor mobility are taken up in 3-06 and 3-07.
 
 ## Where the next chapter goes
 
-This chapter has shown that "for the same effort, you can build it
-yourself." The next question is: not by effort, but **by money**,
-how far apart are they? Putting an SIer quote next to the cost of an
-AI-native in-house build.
+This chapter has shown that **the disappearance of the SIer commission
+model is inevitable**. But even when disappearance is inevitable,
+customers cannot always move at once — the existing commission
+relationship remains as **lock-in**.
 
-The next chapter takes up that price gap.
+The next chapter takes up that lock-in.
 
 ---
 

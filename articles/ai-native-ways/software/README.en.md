@@ -94,10 +94,9 @@ The chain closes **inside the sub-series**. Chapter 01 keeps empty
 | 04 | `builder` | ビルダーという役割 | The Builder Role |
 | 05 | `customer-codev` | 顧客がAIと協働して開発する時代 | Customers Co-Develop with AI |
 | 06 | `sier-uneconomic` | SIer委託モデルの構造的不経済 | The Structural Uneconomy of the SIer Model |
-| 07 | `price-gap` | 価格競争力の桁違いの差 | The Order-of-Magnitude Price Gap |
-| 08 | `lockin` | ロックイン問題 | The Lock-In Problem |
-| 09 | `hiring-builders` | 各社がビルダーを雇用する時代 | Companies Hire Builders |
-| 10 | `japan-transition` | 日本のSIer業界の転換と雇用流動性 | Japan's SIer Industry Transition and Labor Mobility |
-| 11 | `five-years` | もう戻らない構造転換 | The Structural Transition That Won't Reverse |
+| 07 | `lockin` | ロックイン問題 | The Lock-In Problem |
+| 08 | `hiring-builders` | 各社がビルダーを雇用する時代 | Companies Hire Builders |
+| 09 | `japan-transition` | 日本のSIer業界の転換と雇用流動性 | Japan's SIer Industry Transition and Labor Mobility |
+| 10 | `five-years` | もう戻らない構造転換 | The Structural Transition That Won't Reverse |
 
 Slugs are finalized — they will not change, for URL stability.

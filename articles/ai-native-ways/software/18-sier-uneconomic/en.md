@@ -53,8 +53,10 @@ straight line you finish step by step. **You build, you try, you
 restructure the operations from what you now see, and you build again —
 it can only be run as a loop.** The SIer's linear process needs
 requirements, a contract, and months for every turn; it cannot run this
-loop. Only in-house building, with AI in your own hands, can run it
-fast.
+loop. But **with AI you can run this loop fast** — implementation comes
+back in days, so you try, restructure the operations, and try again, as
+many times as you need. Only in-house building, with AI in your own
+hands, can do this.
 
 On top of that, moving a single SIer engagement requires a process like
 this:

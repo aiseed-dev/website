@@ -29,8 +29,8 @@ easier" is now an illusion — by decomposing the commission process
 step by step.
 
 The cost of outsourcing carries, on top of vendor payments, a stack of
-**invisible costs on the customer side**. That stack is the focus of
-this chapter.
+**invisible costs on the customer side**. Make that stack visible, and
+the rationale for commissioning collapses.
 
 ## The SIer model used to be rational
 
@@ -123,8 +123,8 @@ sign-off owners — every engagement pulls non-trivial time out of each.
 Empirically, in mid-size SIer engagements, **the customer-side
 invisible labor amounts to a significant fraction of the SIer payment
 itself** (the exact ratio varies, but it is never negligible). Even
-so, until now there was no alternative — building in-house meant
-hiring and retaining coders, which cost more.
+so, until now there was no alternative — for the reason the previous
+section gave.
 
 > The real cost of commissioning = **SIer payment + customer-side
 > invisible labor**.

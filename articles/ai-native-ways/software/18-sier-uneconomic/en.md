@@ -201,8 +201,9 @@ The deepest problem with commissioning is not labor or cost. It is that
 sending the work to build outside, and the capability never grows
 inside you. Eventually you lose even the **eye to tell good from bad**.
 
-The most expensive example is GitHub Copilot. Microsoft did not build
-the AI core itself — it handed it to OpenAI. And during that time,
+The most expensive example of this hollowing-out is **Nadella's GitHub
+Copilot**. Microsoft did not build the AI core itself — it handed it to
+OpenAI. And during that time,
 Nadella was thinning out his own basic research. **Microsoft Research**
 was one of the most prestigious basic-research labs in the industry —
 home to a Turing Award winner — yet in his first year as CEO he **closed

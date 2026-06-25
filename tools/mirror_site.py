@@ -11,9 +11,18 @@ shut down the dynamic site (e.g. WordPress) — attack surface and all.
 Why a browser and not requests/wget: those don't execute JavaScript, so on
 modern sites the body isn't in the raw HTML. Playwright renders it first.
 
+JavaScript, however, also bloats the saved HTML: client-side widgets — most
+notably ad networks (AdSense) and analytics — inject large iframe/DOM trees at
+render time, and those get baked into the saved page. For a static or
+server-rendered site, you don't want any of that. Pass --no-js to disable
+JavaScript: the browser still loads and parses the page (so links and statically
+referenced CSS/images are saved), but no script runs, so the HTML stays as the
+server delivered it — smaller and free of injected ad/analytics markup.
+
 Usage:
     python3 tools/mirror_site.py https://example.com/ --out mirror
     python3 tools/mirror_site.py https://example.com/ --out mirror --max-pages 300
+    python3 tools/mirror_site.py https://example.com/ --out mirror --no-js
 
 Options:
     URL                 start URL to crawl from
@@ -21,6 +30,9 @@ Options:
     --max-pages N       max HTML pages to crawl (default: 200)
     --same-host-only    only follow links on the start host (default: on)
     --wait MS           extra wait after networkidle, ms (default: 0)
+    --no-js             disable JavaScript: save the server's pre-render HTML
+                        (smaller, no injected ad/analytics DOM). Use for static
+                        or server-rendered sites whose body is in the raw HTML.
 
 Setup (one time):
     ./.venv/bin/pip install playwright
@@ -81,6 +93,9 @@ def main() -> int:
     ap.add_argument("--same-host-only", action="store_true", default=True,
                     help="only follow links on the start host (default)")
     ap.add_argument("--wait", type=int, default=0, help="extra wait after load, ms")
+    ap.add_argument("--no-js", action="store_true", default=False,
+                    help="disable JavaScript: save the server's pre-render HTML "
+                         "(smaller, no injected ad/analytics DOM)")
     args = ap.parse_args()
 
     try:
@@ -103,7 +118,8 @@ def main() -> int:
 
     with sync_playwright() as p:
         browser = p.chromium.launch()
-        page = browser.new_page()
+        context = browser.new_context(java_script_enabled=not args.no_js)
+        page = context.new_page()
 
         def on_response(resp):
             try:

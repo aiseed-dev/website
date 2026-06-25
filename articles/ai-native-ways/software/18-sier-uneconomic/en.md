@@ -53,16 +53,16 @@ In other words, from the upstream work to implementation is not a
 straight line you finish step by step. **You build, you try, you
 restructure the operations from what you now see, and you build again —
 it can only be run as a loop.** The SIer's linear process needs
-requirements, a contract, and months for every turn; it cannot run this
-loop. But **with AI you can run this loop fast** — implementation comes back
+**budget approval, requirements, and a contract** for every turn, and
+usually runs on a yearly scale; it cannot run this loop. But **with AI you can run this loop fast** — implementation comes back
 at once. What takes time is the testing. **Testing cannot be fully
 automated.** Whether it runs can be measured automatically, but whether
 it is *what you actually wanted* and *truly fits the operations* is
 something only a human can finally confirm — and that human verification
 is the customer's own judgment, the part that cannot be sent outside. A
 turn is not always a matter of days, but it is still an order of
-magnitude shorter than the SIer's turn (requirements, a contract,
-months). You try, restructure the operations, and try again, as many
+magnitude shorter than the SIer's turn (budget approval and a contract
+included, usually a year). You try, restructure the operations, and try again, as many
 times as you need. Only in-house building, with AI in your own hands,
 can do this.
 

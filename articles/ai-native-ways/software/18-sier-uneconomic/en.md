@@ -32,6 +32,21 @@ The cost of outsourcing carries, on top of vendor payments, a stack of
 **invisible costs on the customer side**. That stack is the focus of
 this chapter.
 
+## The SIer model used to be rational
+
+Make no mistake: commissioning an SIer was rational until now. Building
+software takes **excellent software engineers across many fields** —
+design, databases, frontend, infrastructure, security. Holding and
+retaining all of them in-house, company by company, was not realistic.
+Gathering the talent in one place to build — concentrating it in an
+SIer — was the more efficient path.
+
+What changed is that **you can now hire an excellent software engineer
+as AI**. AI takes on the multi-field expertise single-handed. There is
+no longer any need to gather that talent in one place. So — build it
+in-house. The rest of this chapter confirms that shift from both sides:
+process and cost.
+
 ## The SIer commission model has a longer process than it looks
 
 Moving a single SIer engagement requires a process like this:

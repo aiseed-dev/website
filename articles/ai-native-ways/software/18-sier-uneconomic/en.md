@@ -22,8 +22,8 @@ vendor selection, contracts, project management, acceptance — consumes
 as much labor as building it AI-natively, sometimes more. For the same
 effort, you can build it yourself**.
 
-1-05 showed that customers can become the builder and that
-nine-tenths of the work can close inside customer plus AI. This chapter
+1-05 showed that customers can become the builder — using OSS for the
+general, and building only the firm-specific logic with AI. This chapter
 takes up the other side — why "commissioning an SIer makes life
 easier" is now an illusion — by decomposing the commission process
 step by step.
@@ -188,7 +188,7 @@ This is not "SIers all disappear at once." It is structural
 shrinkage: nine-tenths moves to the customer side, the SIer share
 concentrates in the remaining tenth.
 
-- **What stays**: the one-tenth from 1-05 — genuinely new
+- **What stays**: that one-tenth — genuinely new
   technical territory, specialized regulation, cross-organizational
   authority, scale-driven design, hard-earned pitfall knowledge
 - **What disappears**: the nine-tenths "standard work AI can write"

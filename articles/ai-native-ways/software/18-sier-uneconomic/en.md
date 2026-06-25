@@ -181,50 +181,38 @@ AI-native build would cost**.
 
 ## Commissioning splits judgment from substance
 
-The diseconomy of commissioning is not only labor and cost. It runs
-deeper — commissioning **splits the side that judges from the side
-that builds**. And in AI-assisted coding, "dangerous code" slips into
-that gap.
+The diseconomy of commissioning is not only labor and cost.
+Commissioning **splits the side that judges from the side that
+builds**. And in AI-assisted coding, "dangerous code" slips into that
+gap.
 
-This is borne out by experiment. In a controlled university study,
-developers given an AI assistant **wrote significantly less secure
-code** than those without one. Worse, the people who wrote it
-**believed their code was secure** — the reassurance arrives first.
-Early empirical work likewise reported that roughly **forty percent**
-of the code GitHub Copilot produced contained some vulnerability.
+Copilot actually writes dangerous code. The evidence exists.
 
-What was commissioned was supposed to be the act of "writing code."
-But every time you accept a completion, you **also let go of the
-judgment "is this good enough?"** Judgment and substance stop meeting
-inside one head — that is the hole of commissioning.
+- A controlled study (Perry, Boneh et al., ACM CCS 2023, 47
+  participants, using Codex) — developers given an AI assistant **wrote
+  significantly less secure code**, and **believed their code was
+  secure** ("false sense of security").
+- Early research ("Asleep at the Keyboard?") — roughly **40%** of the
+  code GitHub Copilot produced contained a vulnerability (about 50% in
+  C).
+- In enterprise assessments, **78%** of AI-generated code carried a
+  hard-to-detect vulnerability, and Copilot repositories leaked secrets
+  at a **40% higher** rate.
 
-So why does dangerous code get through? **The design differs.** GitHub
-Copilot grew up as a "next-line prediction" completion engine — it
-offers a candidate, hands it to the human, and is done. The
-verification loop never closes. By contrast, the agentic tools shipped
-by the side that builds the AI itself — Anthropic's Claude Code,
-OpenAI's Codex — run a loop of **plan → execute → verify with tests →
-fix**. They actually use, inside that loop, the "free, infinitely
-repeatable verifier" that only software has (3-08).
+One cause lies in the training data. Copilot was trained on public
+GitHub code. GitHub holds excellent code, but also **a vast amount of
+garbage**. Train on code of mixed quality, and poor code mixes into the
+output.
 
-So the source of the danger is not "trained on garbage public code."
-It is the design difference: **whether you run the verification, or
-hand it wholesale to a human.** The completion form serves up dangerous
-code "fast and in volume" with judgment and substance still split. The
-moment you accept it, no one is left to verify.
-
-That said, no tool guarantees safety. Vulnerabilities turn up in the
-agentic tools too, and closing the verification loop ultimately falls
-to a human. But it matters greatly whether the place the loop closes is
-"in your own hands" or "vanishes the instant you accept a completion."
-
-This is the structural hole of commissioning. The moment you put the
-building outside, judgment and substance never again meet in one head.
-SIer commissioning has the same structure, only at a different scale.
+What was commissioned was supposed to be the act of "writing code." But
+every time you accept a completion, you **also let go of the judgment
+"is this good enough?"** Judgment and substance stop meeting inside one
+head — that is the hole of commissioning. SIer commissioning has the
+same structure, only at a different scale.
 
 So the answer is in-house building — the customer becoming the builder
-(1-05). Only those who keep judgment and verification in one pair of
-hands, and run the verifier themselves, close the hole.
+(1-05). Only those who keep judgment in one pair of hands close the
+hole.
 
 ## SIers will shrink and reconstitute
 

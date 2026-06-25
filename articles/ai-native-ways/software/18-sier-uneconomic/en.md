@@ -34,7 +34,15 @@ the rationale for commissioning collapses.
 
 ## The SIer commission model has a longer process than it looks
 
-Moving a single SIer engagement requires a process like this:
+The process does not even begin with requirements. Before that, you
+have to think through **how to improve the business operations
+themselves** — the workflow, the approval steps, the paper and the
+rules, including the parts that have nothing to do with software. What
+should become a system is decided only after that. This is something
+only the customer understands; it cannot be dumped on the SIer.
+
+On top of that, moving a single SIer engagement requires a process like
+this:
 
 - **Requirements / RFP** — weeks to months on the customer side.
   Decide what to build and at what level, and put it into a form that

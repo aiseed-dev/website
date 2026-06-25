@@ -542,52 +542,43 @@ do?" — the people who ask this are, more often than not, **from the IT
 industry**. Anxious about handing work to AI, they try to **defend the
 patch of ground that stays theirs**.
 
-But the question points the wrong way. Don't count the fortress you
-must defend. Count, gladly, **what AI can do**.
+But it points the wrong way. Don't count the fortress you defend —
+count **what AI can do**. The answer is surprisingly short.
 
-- **Write code** — Python, SQL, HTML
-- **Run the books** — invoices, journal entries, monthly reports
-- **Draft legal work** — contracts, risk review, case-law lookup
-- **Write** — blogs, email, reports, localization
-- **Analyze data** — aggregation, visualization, spotting trends
-- **Draft design** — diagrams, slides, screens
-- **Research, summarize, structure** — from gathering primary sources
-  to organizing them
+**The only thing AI builds end to end is software.** Code, it can
+write, run, and fix on its own (it has the verifier built in).
+Everything else — accounting, law, writing, analysis, even the
+judgment of *what to build* — AI only **drafts, researches, and
+checks**. Completion and responsibility stay with the human.
 
-Work once called a "profession," requiring years of apprenticeship —
-AI does most of it. **And that is fine.** Better still: hand AI
-everything AI can do, without hesitation.
+> AI can be a *maker* only in software.
+> Everywhere else, it stays an *assistant*, however far it goes.
 
-Because **the more AI can do, the higher the human rises.** From
-processing to judgment. From practice to direction. From the one who
-moves their hands to **the one who decides what to do** — not the side
-that performs the work, but the side that runs it. Each person becomes
-the manager of their own work.
+This is not to belittle professionals. The worth of a lawyer, a
+doctor, an accountant is not memorizing the knowledge but **judging
+how to apply it to the case at hand** and **bearing responsibility for
+the outcome** — and that deserves deep respect. What you hand AI is the
+work, not the judgment and the responsibility.
 
-You do not *remain*. You are **set free, and you rise to this**:
+So hand AI the work it can do, without hesitation. By that much, the
+human **rises** — from processing to judgment, from the one who moves
+their hands to the one who decides what to do. You do not *remain*.
+You are **set free, and you rise to this**:
 
 - **Deciding what to do** (strategy, direction)
 - **Asking why to do it** (meaning, purpose)
 - **Deciding how to judge results** (evaluation, responsibility)
 - **Talking directly with customers to draw out their true needs**
 - **Resolving ethically difficult problems**
-- **Creating new value** (first-time design)
+- **Creating new value** (envisioning what does not yet exist)
 - **Connecting people, building trust**
 - **Work that uses the body** (the field, the kitchen, medical
   procedures, craftsmanship)
 - **Cross-domain judgment** — judgments not possible inside silos
 
 These are not "the last fortress." They are **the work you can finally
-take on in earnest, precisely because you handed the practice to AI.**
-And these are **interesting**. Not boring processing work, but real
-work.
-
-The last one — **cross-domain judgment** — is the new human work
-made possible *because* silos have dissolved. Accounting numbers,
-engineering progress, legal risk, customer voice — **all held in one
-head at once and weighed together**. What only the top of the
-twentieth-century organization could do is now possible for one
-person + AI.
+take on in earnest, because you handed the work to AI.** And these are
+**interesting**.
 
 > Information processing becomes simple work that AI can do. What
 > remains for humans is deciding what to do, why to do it, and how to
@@ -630,6 +621,34 @@ The paperwork-disappears effect: of an 8-hour workday, the 4 hours
 spent on paperwork — most of which was **inter-silo translation
 (reports, approvals, handover documents)** — move to AI. The
 remaining 4 hours are spent on **the real cross-domain work**.
+
+## The foundation: own your OS
+
+One last step — the one that pays off most: **own the OS you run —
+Linux.**
+
+Everything so far — your own tools, your own data, your own judgment —
+only means something **on a foundation you hold.** That foundation is
+the OS. Windows and macOS are convenient, but borrowed: updates,
+billing, and what gets sent home are the vendor's to decide. Linux is
+different. **No forced updates, no subscription, no silent telemetry,
+no remote key that locks you out.** As the medieval freeman held his
+own land, the free person of the AI era holds **their own OS.**
+
+"But isn't Linux hard?" — it used to be. Arcane commands,
+configuration, breakage — that is what kept ordinary people away. But
+**that very wall is what AI now dissolves.** Ask Claude what you don't
+know; it explains the settings and fixes the breakage at your side.
+**Linux is no longer only for engineers.**
+
+This is the most valuable thing the "assistant" does. AI stays an
+assistant outside software — but that assistant **lets anyone stand
+where only engineers once stood.** Autonomy is no longer an idea; it
+is **a step you can take today.**
+
+You don't have to move everything at once. One old laptop is enough.
+Put Debian or Ubuntu on it, keep Claude beside you — that is the first
+step to holding your own foundation.
 
 ## When to start
 
@@ -698,3 +717,4 @@ working.
 - [Structural Analysis 12: AI and the Individual Business](/en/insights/ai-and-individual/)
 - [Structural Analysis 14: Subtraction Design](/en/insights/subtraction-design/)
 - [Structural-analysis note: The IT Industry's Structural Shift — Toward Autonomy, Distribution, and Diversity](/en/blog/autonomy-distribution-diversity/)
+- [Blog: PCs Just Got Much More Expensive — Install Linux on the PC You Already Have](/en/blog/windows-10-to-debian/)

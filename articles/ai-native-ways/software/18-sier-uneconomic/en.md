@@ -203,9 +203,9 @@ inside you. Eventually you lose even the **eye to tell good from bad**.
 
 The most expensive example of this hollowing-out is **Nadella's GitHub
 Copilot**. Microsoft did not build the AI core itself — it handed it to
-OpenAI. And during that time,
-Nadella was thinning out his own basic research. **Microsoft Research**
-was one of the most prestigious basic-research labs in the industry —
+OpenAI. And during that time, Nadella was thinning out his own basic
+research. **Microsoft Research** was one of the most prestigious
+basic-research labs in the industry —
 home to a Turing Award winner — yet in his first year as CEO he **closed
 the MSR Silicon Valley lab in 2014** (about 50 researchers), and in
 **2023 disbanded the entire AI ethics team**, prioritizing shipping

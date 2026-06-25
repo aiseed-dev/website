@@ -27,8 +27,8 @@ Cloudflare Pages 等に上げれば、**元の動的サイトを停止できる*
 ./.venv/bin/playwright install chromium
 ```
 
-> この環境では Chromium がプリインストール済み（`PLAYWRIGHT_BROWSERS_PATH`）。
-> その場合 `playwright install` は不要。
+> 既にマシンに Chromium があり、環境変数 `PLAYWRIGHT_BROWSERS_PATH`
+> がそれを指している場合は、`playwright install` を省ける。
 
 ## 使い方
 

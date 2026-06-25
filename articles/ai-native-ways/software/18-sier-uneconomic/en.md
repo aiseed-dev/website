@@ -168,8 +168,11 @@ The result showed in dangerous code.
   at a **40% higher** rate.
 
 **This is the mistake the world's largest software company made after
-scattering responsibility and hollowing out its own capability.** SIer
-commissioning has the same structure, only at a different scale — the
+scattering responsibility and hollowing out its own capability.** But
+scattering responsibility does not make it disappear. **The final
+decision rests with the CEO — the responsibility for this failure is
+Nadella's.** SIer commissioning has the same structure, only at a
+different scale — the
 customer says "we left it to the SIer," the SIer says "we built to
 spec." Responsibility floats free, and capability never grows in-house.
 The deeper the commissioning, the deeper the hollow.

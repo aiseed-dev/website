@@ -49,25 +49,24 @@ work. The more upstream the judgment, the more it needs an understanding
 of systems — which is exactly why that understanding must be held
 in-house.
 
-In other words, from the upstream work to implementation is not a
-straight line you finish step by step. **You build, you try, you
-restructure the operations from what you now see, and you build again —
-it can only be run as a loop.** The SIer's linear process needs
-**budget approval, requirements, and a contract** for every turn, and
-usually runs on a yearly scale; it cannot run this loop. Indeed,
-**hardly anywhere actually develops business systems agile**. Even where
-"agile" is the banner, the gates of budget approval and contracts forbid
-the loop itself. But **with AI you can run this loop fast** —
-implementation comes back at once. What takes time is the testing. **Testing cannot be fully
-automated.** Whether it runs can be measured automatically, but whether
-it is *what you actually wanted* and *truly fits the operations* is
-something only a human can finally confirm — and that human verification
-is the customer's own judgment, the part that cannot be sent outside. A
-turn is not always a matter of days, but it is still an order of
-magnitude shorter than the SIer's turn (budget approval and a contract
-included, usually a year). You try, restructure the operations, and try again, as many
-times as you need. Only in-house building, with AI in your own hands,
-can do this.
+From upstream to implementation, the work does not go in a straight
+line. You build, you try, you restructure the operations from what you
+see, and you build again. **It can only be run as a loop.**
+
+The SIer cannot do this. Every turn needs budget approval and a
+contract, so it usually runs to a year. That is also why almost no one
+develops business systems agile: the gates of budget and contract forbid
+the loop.
+
+But **with AI you can run this loop fast**. Implementation comes back at
+once. What takes time is the testing. Testing cannot be fully automated:
+whether it runs can be measured automatically, but whether it is what you
+wanted and fits the operations only a human can confirm. That check is
+the customer's own judgment, the part you cannot send outside.
+
+Even so, a turn is an order of magnitude shorter than the SIer's (a
+year). You can run it again and again. Only in-house building, with AI
+in your own hands, can do this.
 
 On top of that, moving a single SIer engagement requires a process like
 this:

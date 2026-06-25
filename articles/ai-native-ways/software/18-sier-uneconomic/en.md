@@ -41,6 +41,13 @@ rules, including the parts that have nothing to do with software. What
 should become a system is decided only after that. This is something
 only the customer understands; it cannot be dumped on the SIer.
 
+And improving those operations itself **does not go well unless you
+understand what systems can do**. Only once you can see what can be
+automated and where data connects do you know how to restructure the
+work. The more upstream the judgment, the more it needs an understanding
+of systems — which is exactly why that understanding must be held
+in-house.
+
 On top of that, moving a single SIer engagement requires a process like
 this:
 

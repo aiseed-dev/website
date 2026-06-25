@@ -179,14 +179,31 @@ do not. From the customer's perspective, the total cost of an SIer
 engagement stays anchored **at a level above what an in-house
 AI-native build would cost**.
 
-## Commissioning splits judgment from substance
+## Commissioning hollows out technical capability
 
-The diseconomy of commissioning is not only labor and cost.
-Commissioning **splits the side that judges from the side that
-builds**. And in AI-assisted coding, "dangerous code" slips into that
-gap.
+The deepest problem with commissioning is not labor or cost. It is that
+**the commissioner's own technical capability hollows out**. Keep
+sending the work to build outside, and the capability never grows
+inside you. Eventually you lose even the **eye to tell good from bad**.
 
-Copilot actually writes dangerous code. The evidence exists.
+The most expensive example is GitHub Copilot. Microsoft did not build
+the AI core itself — it handed it to OpenAI. And during that time,
+Nadella was thinning out his own basic research. **Microsoft Research**
+was one of the most prestigious basic-research labs in the industry —
+home to a Turing Award winner — yet in his first year as CEO he **closed
+the MSR Silicon Valley lab in 2014** (about 50 researchers), and in
+**2023 disbanded the entire AI ethics team**, prioritizing shipping
+OpenAI's models "to customers at very high speed." Long-term research
+was traded for speed.
+
+An organization whose technical capability has hollowed out cannot stop
+elementary mistakes. Copilot was trained on public GitHub code — which
+holds excellent code, but also **a vast amount of garbage**. That what
+you train on decides output is the most basic common sense of machine
+learning, yet the researchers who could see this and select good code
+were no longer at the center of the decision.
+
+The result showed in dangerous code.
 
 - A controlled study (Perry, Boneh et al., ACM CCS 2023, 47
   participants, using Codex) — developers given an AI assistant **wrote
@@ -199,46 +216,15 @@ Copilot actually writes dangerous code. The evidence exists.
   hard-to-detect vulnerability, and Copilot repositories leaked secrets
   at a **40% higher** rate.
 
-One cause lies in the training data — the difference between Copilot
-and Codex comes down to **what each was trained on**. Copilot was
-trained on public GitHub code. GitHub holds excellent code, but also
-**a vast amount of garbage**. Train on code of mixed quality, and poor
-code mixes into the output.
-
-And **the final decision rests with the CEO**. The responsibility for
-choosing garbage-heavy GitHub as the training data lies with Microsoft's
-CEO, **Satya Nadella**. He is also the one who acquired GitHub and bet
-on OpenAI; on that foundation, public GitHub code became Copilot's
-training corpus. **What you train a model on is a management decision** —
-and that decision shows in the quality of the output.
-
-Had capable AI researchers led the development, they would not have
-trained on garbage-filled GitHub as-is; they would have **selected good
-code to train on**. That training-data quality decides output is
-something any researcher knows.
-
-Microsoft had those researchers. **Microsoft Research** was one of the
-most prestigious basic-research labs in the industry — home to a Turing
-Award winner. But **Nadella thinned that basic research out**. In his
-first year as CEO, **in 2014 he closed the MSR Silicon Valley lab**
-(about 50 researchers). In **2023 he disbanded the entire AI ethics
-team**, prioritizing shipping OpenAI's models "to customers at very high
-speed." Long-term research was traded for speed.
-
-Having hollowed out his own first-rate research institution, he handed
-the AI core to OpenAI — **failing to put his own research at the center
-of the decision, cutting it down instead: that is Nadella's
-negligence**.
-
-What was commissioned was supposed to be the act of "writing code." But
-every time you accept a completion, you **also let go of the judgment
-"is this good enough?"** Judgment and substance stop meeting inside one
-head — that is the hole of commissioning. SIer commissioning has the
-same structure, only at a different scale.
+**This is the mistake the world's largest software company made after
+hollowing out its own technical capability.** SIer commissioning has the
+same structure, only at a different scale — the customer keeps sending
+the building outside, and capability never grows in-house. The deeper
+the commissioning, the deeper the hollow.
 
 So the answer is in-house building — the customer becoming the builder
-(1-05). Only those who keep judgment in one pair of hands close the
-hole.
+(1-05). Only taking technical capability back into your own hands stops
+the hollowing out.
 
 ## SIers will shrink and reconstitute
 

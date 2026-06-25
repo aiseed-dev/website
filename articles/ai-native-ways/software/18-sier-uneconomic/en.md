@@ -32,21 +32,6 @@ The cost of outsourcing carries, on top of vendor payments, a stack of
 **invisible costs on the customer side**. Make that stack visible, and
 the rationale for commissioning collapses.
 
-## The SIer model used to be rational
-
-Make no mistake: commissioning an SIer was rational until now. Building
-software takes **excellent software engineers across many fields** —
-design, databases, frontend, infrastructure, security. Holding and
-retaining all of them in-house, company by company, was not realistic.
-Gathering the talent in one place to build — concentrating it in an
-SIer — was the more efficient path.
-
-What changed is that **you can now hire an excellent software engineer
-as AI**. AI takes on the multi-field expertise single-handed. There is
-no longer any need to gather that talent in one place. So — build it
-in-house. The rest of this chapter confirms that shift from both sides:
-process and cost.
-
 ## The SIer commission model has a longer process than it looks
 
 Moving a single SIer engagement requires a process like this:
@@ -123,8 +108,7 @@ sign-off owners — every engagement pulls non-trivial time out of each.
 Empirically, in mid-size SIer engagements, **the customer-side
 invisible labor amounts to a significant fraction of the SIer payment
 itself** (the exact ratio varies, but it is never negligible). Even
-so, until now there was no alternative — for the reason the previous
-section gave.
+so, until now there was no alternative.
 
 > The real cost of commissioning = **SIer payment + customer-side
 > invisible labor**.
@@ -264,6 +248,22 @@ cannot reach parity with AI-native in-house development**.
 
 > SIers do not vanish, but they cannot avoid **the 9 : 1 shrinkage
 > and the reshaping of their contract forms**.
+
+## The SIer model used to be rational
+
+One last thing, to avoid misunderstanding. Commissioning an SIer was
+rational until now. Building software takes **excellent software
+engineers across many fields** — design, databases, frontend,
+infrastructure, security. Holding and retaining all of them in-house,
+company by company, was not realistic. Gathering the talent in one
+place to build — concentrating it in an SIer — was the more efficient
+path.
+
+What changed is that **you can now hire an excellent software engineer
+as AI**. AI takes on the multi-field expertise single-handed. There is
+no longer any need to gather that talent in one place. Every diseconomy
+of process and cost this chapter has shown comes back to this one point
+— so build it in-house.
 
 ## Where the next chapter goes
 

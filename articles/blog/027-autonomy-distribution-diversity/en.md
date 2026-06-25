@@ -19,7 +19,7 @@ As of June 2026, the AI industry stands at a historic turning point. Hyperscaler
 
 On June 9, 2026, Anthropic released Claude Fable 5 — the company's highest-performing Mythos-class model. A one-million-token context window, capable of autonomous agent work over several days. Offered at a premium price of $10/M input, $50/M output.
 
-Three days later, on June 12, US Commerce Secretary Howard W. Lutnick, invoking national-security authority, ordered access cut off for all foreign nationals (non-US citizens). Anthropic was given 90 minutes. Because verifying nationality in real time over an API is technically impossible, Anthropic disabled both models for every customer worldwide. The first instance of export controls applied to an AI model itself.
+Three days later, on June 12, the US Commerce Department (Bureau of Industry and Security), invoking national security, ordered access cut off for all foreign nationals — those outside the US, those working inside it, and Anthropic's own non-citizen employees alike. The government cited a "jailbreak" technique it had identified in Fable 5; Anthropic reviewed it and pushed back that it amounted to "minor, already-known vulnerabilities." Because there is no way to verify nationality in real time over an API, Anthropic disabled both models for every customer worldwide (other models were unaffected). It was the first instance of export controls applied to an AI model itself.
 
 The Commerce Department grounded this in an expansive reading of the FDPR (Foreign Direct Product Rule). The FDPR was originally a rule applied to foreign-made hardware manufactured using US technology — as in the 2020 sanctions on Huawei. This was the first time it was applied to an AI model's weights and API access.
 
@@ -27,24 +27,22 @@ The Economist called the decision "capricious and chaotic."
 
 Source: https://www.economist.com/briefing/2026/06/14/donald-trumps-blocking-of-anthropic-is-capricious-and-chaotic
 
-Not even the Five Eyes allies (UK, Australia, Canada, New Zealand) were exempt. The UK's AI Safety Institute was locked out too. Former UK security minister Tom Tugendhat said, "After a lesson this clear, every nation will ask what it needs for sovereignty."
+Not even allied nationals were exempt. Ahead of the move, Defense Secretary Pete Hegseth had designated Anthropic a "supply chain risk" — the first time that label, historically reserved for foreign adversaries like Huawei and ZTE, was applied to an American company. Allies watched their own critical capability stop on a single US order.
 
-### NSA classified-system breach and infrastructure fragility
+### Vulnerabilities found in classified systems
 
-On June 11, Senate Intelligence Committee Vice Chair Mark Warner testified, citing a report from NSA Director and Cyber Command head General Joshua Rudd, that Mythos had "penetrated nearly every US classified system in hours, not weeks." A later clarification said this was "under specific conditions, in combination with other tools," but the magnitude of the shock did not change.
+On June 11, Senate Intelligence Committee Vice Chair Mark Warner relayed what NSA Director and Cyber Command head General Joshua Rudd had told him directly: in an **authorized red-team exercise**, Mythos had broken into **"almost all of our classified systems, not in weeks, but in hours"** (reported by The Economist on June 14).
 
-NSA and US intelligence systems are built on Microsoft's Azure Government Top Secret and AWS's classified clouds — ICD 503 accreditation, ICD 705 facility standards, air-gapped environments, operated only by cleared US citizens, the world's highest security requirements.
+This has to be stated precisely. What was reported is that the model **found vulnerabilities in hours — not that it fully exploited them in hours** (AP/CNBC). The Economist writer who published the quote later cautioned it "should not be read literally," as it depended on other tools and specific conditions, and Anthropic describes the episode as "analyzing a codebase and fixing flagged issues, not an autonomous offensive intrusion." No government agency has officially confirmed it.
 
-That Mythos broke through this environment in hours means something beyond "AI models are dangerous": that the infrastructure Microsoft and AWS market as the highest security harbored serious vulnerabilities an AI could easily find and exploit.
+Even so, the structural meaning is large. It shows AI now carries **national-security-grade capability** — and the administration's response was to cut off *access* to that capability. But the vulnerability it really exposed lies less in the model than in **a structure that depends on a single company under a single jurisdiction**.
 
 Lay out the facts.
 
-- The NSA Director reported a Mythos breach of classified systems
-- Those systems are built on Azure Government Top Secret and AWS
-- There has been no official announcement that the vulnerabilities are fixed
-- Open-weight models such as DeepSeek V3 and Qwen3 have comparable reasoning ability and can run locally
-- What the administration did was ban the export of Fable 5, not fix the infrastructure
-- The government contracts of Microsoft and AWS, which provide that infrastructure, have not been reviewed
+- What was regulated is *access* to the model, not the underlying dependence
+- Open-weight models such as DeepSeek V3 and Qwen3 have comparable reasoning ability and run locally — only a model placed under US jurisdiction can be stopped for the whole world by one order
+- What the administration did was ban the export of Fable 5, not dissolve the dependence
+- With the same capability already in OSS and running locally, cutting off access changes little; what remains is that the world that depended on it has seen how fragile that dependence is
 
 ### What The Economist missed
 
@@ -134,6 +132,49 @@ If SSA and TurboQuant improve inference efficiency at the root, the number of GP
 In the 2000s telecom bubble, vast fiber-optic networks were laid in anticipation of internet demand. The demand itself existed, but efficiency gains in transmission technology like DWDM made a single fiber's capacity leap, leaving most of it "dark fiber" and collapsing the market.
 
 As of 2026, the risk grows that the H100s and B200s stacked in data centers turn into "dark GPUs."
+
+### Microsoft's "overbuild" — the biggest bettor slows itself down
+
+This risk is no longer an outside forecast. It has become **the words of the biggest bettor itself**.
+
+The company that bet most heavily on centralized-cloud AI is Microsoft — a massive investment in OpenAI, Azure exclusivity, over $80 billion a year in capital spending. Yet in 2026, that same Microsoft **began canceling data-center leases** — about 200MW per a TD Cowen report, and it halted construction of a Wisconsin site believed to serve OpenAI. Nadella himself has conceded that "**there will be an overbuild**."
+
+The trigger is the defection of the very partner it had locked in. OpenAI is building **Stargate** (about 7GW, over $400 billion across three years) with Oracle and SoftBank, outside Azure, lowering its dependence on Microsoft. The exclusivity was loosened into a non-binding arrangement, and Microsoft now finds itself **picking up the Texas data-center project OpenAI didn't want** (Fortune, March 2026).
+
+Two structures are visible at once here.
+
+- **The CapEx bubble recognizes itself** — "dark GPUs" are no longer an outside prediction but a fact, with the very party that stacked them now slowing down. The premise of centralization (exponentially growing cloud inference demand) is cracking from within.
+- **The master–slave reversal** — the top bettor (the master), having locked in its partner (OpenAI), is left independent-ed by it and reduced to picking up castoffs. **The side that did the labor of building the models gains power, and the side that hoarded it is left stranded** — the classic reversal itself.
+
+The enormous bet on centralization is the most eloquent proof of centralization's limits.
+
+### Private credit — the AI debt is wired to your pension
+
+What makes the overbuild more than mere "over-investment" is that the investment is tilting away from equity and toward **debt**.
+
+In 2025 alone, data-center credit deals reached about $178.5 billion — much of it junk-rated. Hyperscaler bond issuance hit roughly $121 billion, four times the five-year average. The question is where that money comes from. **Private credit** (Blackstone, Blue Owl, Apollo, Pimco, BlackRock, and others) holds most of it, and life insurers alone have nearly $1 trillion sunk there. The originated loans are securitized, sliced into tranches, and sold on to **pension funds and asset managers**. As CNBC put it — "**the AI data-center debt might be in your 401(k)**."
+
+The sharpest read of the structure came from Ed Zitron, the AI-skeptic journalist:
+
+> Your customers are unprofitable AI startups.
+> Your revenue source for paying off the debt is another company that cannot pay its bills.
+
+The data-center lenders are betting on the **ability of loss-making AI firms to pay** — and behind them sit pensions and insurance. The money is also circular: Nvidia committed up to $100 billion to OpenAI and holds a stake in CoreWeave, and that money flows back to Nvidia through GPU purchases. Bloomberg diagrammed it as "Microsoft, OpenAI and Nvidia paying each other in a circle" — the same shape as the dot-com era's "vendor financing," when Nortel and Lucent lent to their own customers to manufacture the illusion of revenue.
+
+The timing is bad, too. The first maturities of GPU-backed debt (originated 2023–25) arrive in **2026–27**. A GPU's life is about seven years — far shorter than a data center's decades. **Peak depreciation coincides with the repayment deadline.** US senators have warned that this debt could cause "destabilizing losses" at financial institutions and trigger a broader financial crisis.
+
+### The technology is real; the bubble is in the use cases
+
+Zitron's reasoning is structurally correct. But it misses one thing — **AI is not worthless**.
+
+As this series has laid out, AI has real, definite value in exactly four things: **app development (the one domain where AI can be the *maker* — software), drafting, research, and verification**. Even the MIT study (95% of enterprise generative-AI pilots fail to deliver measurable ROI) concluded that **the problem is not the model (the technology) but deployment and integration**.
+
+So we can say it plainly. **The technology is real. What is a bubble is the *use cases* — and the scale of investment that does not match them.** The market the four real uses generate is large. But not large enough to justify $700-billion-class CapEx. What fills the gap is the fantasy that "AGI will replace all white-collar work" — kayfabe, the scripted performance of pro wrestling. **A divergence between the story in the language layer (AGI) and the reality in the physical layer (four uses, plus zero marginal cost as it goes local).**
+
+And that divergence meshes doubly with this article's thesis. If the uses are "four," and they head toward **zero marginal cost** via efficiency (SSA, TurboQuant) and local inference, then the demand premise of centralized data centers cracks from two directions at once — fewer GPUs needed, and a real use-market that never reaches the CapEx. **When the bubble bursts, it reaches the pensions.** Autonomy and distribution are not only an idea; they are **standing outside that chain.**
+
+> The numbers proved it — the technology is real; the bubble is in the uses.
+> The debt of centralization is wired to your pension. Distribution stands outside the chain.
 
 ### Distributed resolution of the power problem
 

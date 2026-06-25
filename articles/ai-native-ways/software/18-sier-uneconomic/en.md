@@ -212,6 +212,13 @@ on OpenAI; on that foundation, public GitHub code became Copilot's
 training corpus. **What you train a model on is a management decision** —
 and that decision shows in the quality of the output.
 
+Had Microsoft's capable AI researchers led the development, they would
+not have trained on garbage-filled GitHub as-is; they would have
+**selected good code to train on**. That training-data quality decides
+output is something any researcher knows. That it did not happen is
+itself a sign that **no capable builder sat at the center of the
+decision**.
+
 What was commissioned was supposed to be the act of "writing code." But
 every time you accept a completion, you **also let go of the judgment
 "is this good enough?"** Judgment and substance stop meeting inside one

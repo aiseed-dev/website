@@ -203,8 +203,8 @@ Here a fatal blind spot opens. **That what you train a model on
 decides the quality of its output is the most basic common sense of
 machine learning.** Yet most public code is a mix of good and bad, of
 wildly varying quality. The side that can see this (OpenAI) does not
-care; the side that cares (Microsoft) cannot see it. **Those who can
-see don't care; those who care can't see.**
+care; the side that bears responsibility (Microsoft) cannot see it.
+**Those who can see don't care; those who are responsible can't see.**
 
 The result shows in the numbers. Independent analysis finds that since
 AI-assisted coding spread, code churn (lines rewritten soon after) has

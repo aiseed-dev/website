@@ -19,7 +19,7 @@ As of June 2026, the AI industry stands at a historic turning point. Hyperscaler
 
 On June 9, 2026, Anthropic released Claude Fable 5 — the company's highest-performing Mythos-class model. A one-million-token context window, capable of autonomous agent work over several days. Offered at a premium price of $10/M input, $50/M output.
 
-Three days later, on June 12, US Commerce Secretary Howard W. Lutnick, invoking national-security authority, ordered access cut off for all foreign nationals (non-US citizens). Anthropic was given 90 minutes. Because verifying nationality in real time over an API is technically impossible, Anthropic disabled both models for every customer worldwide. The first instance of export controls applied to an AI model itself.
+Three days later, on June 12, the US Commerce Department (Bureau of Industry and Security), invoking national security, ordered access cut off for all foreign nationals — those outside the US, those working inside it, and Anthropic's own non-citizen employees alike. The government cited a "jailbreak" technique it had identified in Fable 5; Anthropic reviewed it and pushed back that it amounted to "minor, already-known vulnerabilities." Because there is no way to verify nationality in real time over an API, Anthropic disabled both models for every customer worldwide (other models were unaffected). It was the first instance of export controls applied to an AI model itself.
 
 The Commerce Department grounded this in an expansive reading of the FDPR (Foreign Direct Product Rule). The FDPR was originally a rule applied to foreign-made hardware manufactured using US technology — as in the 2020 sanctions on Huawei. This was the first time it was applied to an AI model's weights and API access.
 
@@ -27,24 +27,22 @@ The Economist called the decision "capricious and chaotic."
 
 Source: https://www.economist.com/briefing/2026/06/14/donald-trumps-blocking-of-anthropic-is-capricious-and-chaotic
 
-Not even the Five Eyes allies (UK, Australia, Canada, New Zealand) were exempt. The UK's AI Safety Institute was locked out too. Former UK security minister Tom Tugendhat said, "After a lesson this clear, every nation will ask what it needs for sovereignty."
+Not even allied nationals were exempt. Ahead of the move, Defense Secretary Pete Hegseth had designated Anthropic a "supply chain risk" — the first time that label, historically reserved for foreign adversaries like Huawei and ZTE, was applied to an American company. Allies watched their own critical capability stop on a single US order.
 
-### NSA classified-system breach and infrastructure fragility
+### Vulnerabilities found in classified systems
 
-On June 11, Senate Intelligence Committee Vice Chair Mark Warner testified, citing a report from NSA Director and Cyber Command head General Joshua Rudd, that Mythos had "penetrated nearly every US classified system in hours, not weeks." A later clarification said this was "under specific conditions, in combination with other tools," but the magnitude of the shock did not change.
+On June 11, Senate Intelligence Committee Vice Chair Mark Warner relayed what NSA Director and Cyber Command head General Joshua Rudd had told him directly: in an **authorized red-team exercise**, Mythos had broken into **"almost all of our classified systems, not in weeks, but in hours"** (reported by The Economist on June 14).
 
-NSA and US intelligence systems are built on Microsoft's Azure Government Top Secret and AWS's classified clouds — ICD 503 accreditation, ICD 705 facility standards, air-gapped environments, operated only by cleared US citizens, the world's highest security requirements.
+This has to be stated precisely. What was reported is that the model **found vulnerabilities in hours — not that it fully exploited them in hours** (AP/CNBC). The Economist writer who published the quote later cautioned it "should not be read literally," as it depended on other tools and specific conditions, and Anthropic describes the episode as "analyzing a codebase and fixing flagged issues, not an autonomous offensive intrusion." No government agency has officially confirmed it.
 
-That Mythos broke through this environment in hours means something beyond "AI models are dangerous": that the infrastructure Microsoft and AWS market as the highest security harbored serious vulnerabilities an AI could easily find and exploit.
+Even so, the structural meaning is large. It shows AI now carries **national-security-grade capability** — and the administration's response was to cut off *access* to that capability. But the vulnerability it really exposed lies less in the model than in **a structure that depends on a single company under a single jurisdiction**.
 
 Lay out the facts.
 
-- The NSA Director reported a Mythos breach of classified systems
-- Those systems are built on Azure Government Top Secret and AWS
-- There has been no official announcement that the vulnerabilities are fixed
-- Open-weight models such as DeepSeek V3 and Qwen3 have comparable reasoning ability and can run locally
-- What the administration did was ban the export of Fable 5, not fix the infrastructure
-- The government contracts of Microsoft and AWS, which provide that infrastructure, have not been reviewed
+- What was regulated is *access* to the model, not the underlying dependence
+- Open-weight models such as DeepSeek V3 and Qwen3 have comparable reasoning ability and run locally — only a model placed under US jurisdiction can be stopped for the whole world by one order
+- What the administration did was ban the export of Fable 5, not dissolve the dependence
+- With the same capability already in OSS and running locally, cutting off access changes little; what remains is that the world that depended on it has seen how fragile that dependence is
 
 ### What The Economist missed
 

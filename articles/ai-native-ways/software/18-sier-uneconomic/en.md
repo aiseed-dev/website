@@ -55,7 +55,7 @@ restructure the operations from what you now see, and you build again —
 it can only be run as a loop.** The SIer's linear process needs
 requirements, a contract, and months for every turn; it cannot run this
 loop. But **with AI you can run this loop fast** — implementation comes
-back in days, so you try, restructure the operations, and try again, as
+back in a day, so you try, restructure the operations, and try again, as
 many times as you need. Only in-house building, with AI in your own
 hands, can do this.
 
@@ -105,7 +105,7 @@ flowchart TB
   subgraph AI["AI-native process steps"]
     direction TB
     A1["Customer + AI on requirements<br/>and design<br/>(days to weeks)"]
-    A2["AI implements<br/>(days to weeks)"]
+    A2["AI implements<br/>(1 day)"]
     A3["Evaluate and integrate<br/>(continuous)"]
     A1 --> A2 --> A3
   end

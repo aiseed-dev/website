@@ -55,11 +55,12 @@ restructure the operations from what you now see, and you build again —
 it can only be run as a loop.** The SIer's linear process needs
 requirements, a contract, and months for every turn; it cannot run this
 loop. But **with AI you can run this loop fast** — implementation comes back
-at once; what takes time, if anything, is the testing, yet a turn is
-still days, an order of magnitude shorter than the SIer's turn
-(requirements, a contract, months). You try, restructure the operations,
-and try again, as many times as you need. Only in-house building, with
-AI in your own hands, can do this.
+at once; what takes time is the testing, because not all of it can be
+automated and human checking remains. Yet a turn is still days, an order
+of magnitude shorter than the SIer's turn (requirements, a contract,
+months). You try, restructure the operations, and try again, as many
+times as you need. Only in-house building, with AI in your own hands,
+can do this.
 
 On top of that, moving a single SIer engagement requires a process like
 this:
@@ -108,7 +109,7 @@ flowchart TB
     direction TB
     A1["Customer + AI on requirements<br/>and design<br/>(days to weeks)"]
     A2["AI implements<br/>(at once)"]
-    A3["AI verifies with tests<br/>(can take time)"]
+    A3["AI + humans verify with tests<br/>(not all automatable)"]
     A4["Evaluate and integrate<br/>(continuous)"]
     A1 --> A2 --> A3 --> A4
     A3 -->|fix and re-run| A2

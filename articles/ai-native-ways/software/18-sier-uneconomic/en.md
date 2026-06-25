@@ -48,6 +48,14 @@ work. The more upstream the judgment, the more it needs an understanding
 of systems — which is exactly why that understanding must be held
 in-house.
 
+In other words, from the upstream work to implementation is not a
+straight line you finish step by step. **You build, you try, you
+restructure the operations from what you now see, and you build again —
+it can only be run as a loop.** The SIer's linear process needs
+requirements, a contract, and months for every turn; it cannot run this
+loop. Only in-house building, with AI in your own hands, can run it
+fast.
+
 On top of that, moving a single SIer engagement requires a process like
 this:
 

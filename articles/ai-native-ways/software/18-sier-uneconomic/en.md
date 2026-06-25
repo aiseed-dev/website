@@ -199,9 +199,17 @@ Copilot actually writes dangerous code. The evidence exists.
   hard-to-detect vulnerability, and Copilot repositories leaked secrets
   at a **40% higher** rate.
 
-One cause lies in the training data. Copilot was trained on public
-GitHub code. GitHub holds excellent code, but also **a vast amount of
-garbage**. Train on code of mixed quality, and poor code mixes into the
+One cause lies in the training data — the difference between Copilot
+and Codex comes down to **what each was trained on**. Copilot was
+trained on public GitHub code. GitHub holds excellent code, but also
+**a vast amount of garbage**. Train on code of mixed quality, and poor
+code mixes into the output.
+
+And the one responsible for the decision to use garbage-heavy GitHub as
+the training data is Microsoft's CEO, **Satya Nadella**. He is the one
+who acquired GitHub and bet on OpenAI; on that foundation, public GitHub
+code became Copilot's training corpus. **What you train a model on is a
+management decision** — and that decision shows in the quality of the
 output.
 
 What was commissioned was supposed to be the act of "writing code." But

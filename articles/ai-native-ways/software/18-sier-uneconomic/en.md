@@ -217,9 +217,9 @@ not have trained on garbage-filled GitHub as-is; they would have
 **selected good code to train on**. That training-data quality decides
 output is something any researcher knows. That it did not happen is
 itself a sign that **no capable builder sat at the center of the
-decision**. Microsoft had capable developers. Even so, it did not put
-them in charge; it handed the work to OpenAI — **failing to make its own
-capable developers the ones responsible: that is Nadella's
+decision**. Microsoft had capable AI researchers. Even so, it did not
+put them in charge; it handed the work to OpenAI — **failing to make its
+own capable AI researchers the ones responsible: that is Nadella's
 negligence**.
 
 What was commissioned was supposed to be the act of "writing code." But

@@ -17,18 +17,20 @@ next_title: "The Order-of-Magnitude Price Gap"
 
 # The Structural Uneconomy of the SIer Model
 
-**The effort customers pay to commission an SIer — requirements,
-vendor selection, contracts, project management, acceptance — consumes
-as much labor as building it AI-natively, sometimes more. For the same
-effort, you can build it yourself**.
+Commissioning an SIer used to be rational. Building software takes
+**excellent software engineers across many fields** — design, databases,
+frontend, infrastructure, security. Holding and retaining all of them
+in-house, company by company, was not realistic. Gathering the talent in
+one place — concentrating it in an SIer — was the more efficient path.
 
-1-05 showed that customers can become the builder — using OSS for the
-general, and building only the firm-specific logic with AI. This chapter
-takes up the other side — why "commissioning an SIer makes life
-easier" is now an illusion — by decomposing the commission process
-step by step.
+**But that premise has inverted. You can now hire the excellent engineer
+as AI.** And so **the customer can become the builder** — as 1-05
+showed, using OSS for the general and building only the firm-specific
+logic with AI. This chapter takes up the other side — why "commissioning
+an SIer makes life easier" is now an illusion — by decomposing the
+commission process step by step.
 
-But the chapter's real focus is structure, not cost. Even when you
+The chapter's real focus is structure, not cost. Even when you
 outsource, **the upstream judgment stays with the customer**. And on top
 of that, commissioning **erases responsibility and hollows out
 capability**.
@@ -182,44 +184,22 @@ So the answer is in-house building — the customer becoming the builder
 (1-05). Only taking judgment and capability back into your own hands
 stops the de-responsibilization and the hollowing-out.
 
-## SIers will shrink and reconstitute
+## The disappearance of the SIer model is inevitable
 
-This is not "SIers all disappear at once." It is structural
-shrinkage: nine-tenths moves to the customer side, the SIer share
-concentrates in the remaining tenth.
+The cost of commissioning has reached parity with building in-house;
+commissioning erases responsibility and hollows out capability; and only
+in-house building can run the loop. Once you reach this point, **the
+disappearance of the SIer commission model is inevitable**.
 
-- **What stays**: that one-tenth — genuinely new
-  technical territory, specialized regulation, cross-organizational
-  authority, scale-driven design, hard-earned pitfall knowledge
-- **What disappears**: the nine-tenths "standard work AI can write"
-  — absorbed on the customer side
-- **What reconstitutes**: even in the remaining tenth, contract
-  shapes shift from "multi-year operations commissions" to "hourly
-  consulting" (3-06)
+Most of the work — the standard work AI can write — moves to the
+customer side. Even the specialized remainder (genuinely new technology,
+specialized regulation, scale-driven design) can no longer be sustained
+as a "multi-year operations commission." It turns into hourly consulting,
+or is absorbed into the customer's in-house team (3-06). Neither is the
+SIer commission model itself.
 
 Transition speed, Japan-specific dynamics (multi-tier subcontracting),
-and labor mobility are taken up in 3-07 and 3-08. What this
-chapter fixes is the structural claim: **the SIer commission model
-cannot reach parity with AI-native in-house development**.
-
-> SIers do not vanish, but they cannot avoid **the 9 : 1 shrinkage
-> and the reshaping of their contract forms**.
-
-## The SIer model used to be rational
-
-One last thing, to avoid misunderstanding. Commissioning an SIer was
-rational until now. Building software takes **excellent software
-engineers across many fields** — design, databases, frontend,
-infrastructure, security. Holding and retaining all of them in-house,
-company by company, was not realistic. Gathering the talent in one
-place to build — concentrating it in an SIer — was the more efficient
-path.
-
-What changed is that **you can now hire an excellent software engineer
-as AI**. AI takes on the multi-field expertise single-handed. There is
-no longer any need to gather that talent in one place. Every diseconomy
-of process and cost this chapter has shown comes back to this one point
-— so build it in-house.
+and labor mobility are taken up in 3-07 and 3-08.
 
 ## Where the next chapter goes
 

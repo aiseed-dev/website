@@ -212,14 +212,22 @@ on OpenAI; on that foundation, public GitHub code became Copilot's
 training corpus. **What you train a model on is a management decision** —
 and that decision shows in the quality of the output.
 
-Had Microsoft's capable AI researchers led the development, they would
-not have trained on garbage-filled GitHub as-is; they would have
-**selected good code to train on**. That training-data quality decides
-output is something any researcher knows. That it did not happen is
-itself a sign that **no capable builder sat at the center of the
-decision**. Microsoft had capable AI researchers. Even so, it did not
-put them in charge; it handed the work to OpenAI — **failing to make its
-own capable AI researchers the ones responsible: that is Nadella's
+Had capable AI researchers led the development, they would not have
+trained on garbage-filled GitHub as-is; they would have **selected good
+code to train on**. That training-data quality decides output is
+something any researcher knows.
+
+Microsoft had those researchers. **Microsoft Research** was one of the
+most prestigious basic-research labs in the industry — home to a Turing
+Award winner. But **Nadella thinned that basic research out**. In his
+first year as CEO, **in 2014 he closed the MSR Silicon Valley lab**
+(about 50 researchers). In **2023 he disbanded the entire AI ethics
+team**, prioritizing shipping OpenAI's models "to customers at very high
+speed." Long-term research was traded for speed.
+
+Having hollowed out his own first-rate research institution, he handed
+the AI core to OpenAI — **failing to put his own research at the center
+of the decision, cutting it down instead: that is Nadella's
 negligence**.
 
 What was commissioned was supposed to be the act of "writing code." But

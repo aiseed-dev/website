@@ -106,8 +106,10 @@ flowchart TB
     direction TB
     A1["Customer + AI on requirements<br/>and design<br/>(days to weeks)"]
     A2["AI implements<br/>(1 day)"]
-    A3["Evaluate and integrate<br/>(continuous)"]
-    A1 --> A2 --> A3
+    A3["AI verifies with tests<br/>(automated)"]
+    A4["Evaluate and integrate<br/>(continuous)"]
+    A1 --> A2 --> A3 --> A4
+    A3 -->|fix and re-run| A2
   end
 
   classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34

@@ -83,8 +83,10 @@ flowchart TB
     direction TB
     A1["顧客 + AI で要件と設計<br/>(数日〜数週間)"]
     A2["AI が実装<br/>(1 日)"]
-    A3["評価・統合<br/>(継続)"]
-    A1 --> A2 --> A3
+    A3["AI がテストで検証<br/>(自動)"]
+    A4["評価・統合<br/>(継続)"]
+    A1 --> A2 --> A3 --> A4
+    A3 -->|直して再実行| A2
   end
 
   classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34

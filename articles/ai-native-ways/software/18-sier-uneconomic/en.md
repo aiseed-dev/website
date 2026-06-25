@@ -135,7 +135,7 @@ no one is responsible for, no one cultivates. Keep sending the work to
 build outside, and the capability never grows inside you. Eventually you
 lose even the **eye to tell good from bad**.
 
-The most expensive example is **Nadella's GitHub Copilot**. Microsoft
+The most expensive example is **GitHub Copilot**. Microsoft
 did not build the AI core itself — it handed it to OpenAI, so the power
 to build sat with OpenAI while the product's responsibility sat with
 Microsoft: **responsibility split across two companies**. And during

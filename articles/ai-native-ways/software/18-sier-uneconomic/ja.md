@@ -110,7 +110,7 @@ flowchart TB
 育てない。作る力を外に出し続ければ、技術は自分の中に育たず、やがて
 出てきたものの良し悪しを**見抜く力**まで失う。
 
-その最も高価な実例が、**ナデラの GitHub Copilot** だ。Microsoft は AI の
+その最も高価な実例が、**GitHub Copilot** だ。Microsoft は AI の
 中核を自社で作らず、OpenAI に委ねた ── 作る力は OpenAI、製品の責任は
 Microsoft と、**責任が二社に割れた**。そしてその間、ナデラは自社の基礎
 研究を細らせていった。**Microsoft Research** は産業界で最も権威ある基礎

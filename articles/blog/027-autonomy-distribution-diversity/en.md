@@ -135,6 +135,21 @@ In the 2000s telecom bubble, vast fiber-optic networks were laid in anticipation
 
 As of 2026, the risk grows that the H100s and B200s stacked in data centers turn into "dark GPUs."
 
+### Microsoft's "overbuild" — the biggest bettor slows itself down
+
+This risk is no longer an outside forecast. It has become **the words of the biggest bettor itself**.
+
+The company that bet most heavily on centralized-cloud AI is Microsoft — a massive investment in OpenAI, Azure exclusivity, over $80 billion a year in capital spending. Yet in 2026, that same Microsoft **began canceling data-center leases** — about 200MW per a TD Cowen report, and it halted construction of a Wisconsin site believed to serve OpenAI. Nadella himself has conceded that "**there will be an overbuild**."
+
+The trigger is the defection of the very partner it had locked in. OpenAI is building **Stargate** (about 7GW, over $400 billion across three years) with Oracle and SoftBank, outside Azure, lowering its dependence on Microsoft. The exclusivity was loosened into a non-binding arrangement, and Microsoft now finds itself **picking up the Texas data-center project OpenAI didn't want** (Fortune, March 2026).
+
+Two structures are visible at once here.
+
+- **The CapEx bubble recognizes itself** — "dark GPUs" are no longer an outside prediction but a fact, with the very party that stacked them now slowing down. The premise of centralization (exponentially growing cloud inference demand) is cracking from within.
+- **The master–slave reversal** — the top bettor (the master), having locked in its partner (OpenAI), is left independent-ed by it and reduced to picking up castoffs. **The side that did the labor of building the models gains power, and the side that hoarded it is left stranded** — the classic reversal itself.
+
+The enormous bet on centralization is the most eloquent proof of centralization's limits.
+
 ### Distributed resolution of the power problem
 
 AI data-center power consumption is projected to demand 156GW by 2030. A shortage of skilled workers needed to build data centers is also surfacing (600,000 job openings against 150,000 new apprentices a year).

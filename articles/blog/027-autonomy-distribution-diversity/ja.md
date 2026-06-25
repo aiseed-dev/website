@@ -2,7 +2,7 @@
 slug: autonomy-distribution-diversity
 title: IT業界の最新トレンド — 自立・分散・多様性への構造的転換
 subtitle: Fable 5 輸出停止・ソブリンAI・SSA / TurboQuant・Strix Halo ── クラウド集中の前提が崩れ、推論は手元へ
-date: 2026.06.18
+date: 2026.06.25
 description: 2026年6月、Claude Fable 5 の輸出停止と NSA の機密システム突破証言が、クラウド依存の脆弱性を全レイヤーで露わにした。Cohere と Aleph Alpha のソブリン AI、SSA と TurboQuant による推論効率の桁違いの改善、AMD Strix Halo によるローカル推論の実用化 ── 7,250億ドルのクラウド集中型 CapEx の前提が崩れ、AI は自立・分散・多様性へ向かう。理念ではなく、技術的・経済的な帰結として。
 lang: ja
 label: Blog

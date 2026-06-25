@@ -2,7 +2,7 @@
 slug: autonomy-distribution-diversity
 title: "The IT Industry's Structural Shift — Toward Autonomy, Distribution, and Diversity"
 subtitle: "Fable 5's export ban, sovereign AI, SSA / TurboQuant, Strix Halo — the premise of cloud concentration breaks, and inference moves to your own hands"
-date: 2026.06.18
+date: 2026.06.25
 description: In June 2026, the export ban on Claude Fable 5 and NSA testimony of a classified-systems breach exposed the fragility of cloud dependence at every layer. Cohere and Aleph Alpha's sovereign AI, order-of-magnitude inference-efficiency gains from SSA and TurboQuant, and practical local inference on AMD Strix Halo — the premise behind the $725B cloud-concentrated CapEx breaks, and AI turns toward autonomy, distribution, and diversity. Not as an ideal, but as a technical and economic consequence.
 lang: en
 label: Blog

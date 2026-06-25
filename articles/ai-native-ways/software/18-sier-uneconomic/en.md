@@ -179,6 +179,51 @@ do not. From the customer's perspective, the total cost of an SIer
 engagement stays anchored **at a level above what an in-house
 AI-native build would cost**.
 
+## Commissioning splits judgment from substance
+
+The diseconomy of commissioning is not only labor and cost. It runs
+deeper — commissioning **splits the side that judges from the side
+that builds, into separate organizations**. The moment judgment and
+substance no longer meet inside one head, the quality of the result
+falls.
+
+The most expensive example is GitHub Copilot. Even Microsoft, the
+world's largest software company, did not build the AI core itself —
+it invested in OpenAI and had them build it (Copilot runs on OpenAI's
+Codex). As a result, **capability and responsibility split across two
+companies**.
+
+- The power to build the AI sits with OpenAI. But Copilot is not
+  OpenAI's product, and they have no stake in how good it is.
+- On the Microsoft side, which owns the product, the people developing
+  Copilot are integration engineers who cannot build the AI itself —
+  they wrap a finished model into a product.
+
+Here a fatal blind spot opens. **That what you train a model on
+decides the quality of its output is the most basic common sense of
+machine learning.** Yet most public code is a mix of good and bad, of
+wildly varying quality. The side that can see this (OpenAI) does not
+care; the side that cares (Microsoft) cannot see it. **Those who can
+see don't care; those who care can't see.**
+
+The result shows in the numbers. Independent analysis finds that since
+AI-assisted coding spread, code churn (lines rewritten soon after) has
+risen, refactoring has fallen, and copy-paste has increased. In
+exchange for writing "fast and in volume," unmaintainable debt piles
+up.
+
+This is the structural hole of commissioning. The moment you put the
+building outside, judgment and substance never again meet in one head.
+**The largest company in the world, spending the most money, fell into
+this hole.** SIer commissioning has the same structure, only at a
+different scale.
+
+So the answer is in-house building — the customer becoming the builder
+(1-05). Only rejoining judgment and substance in one pair of hands
+closes the hole. Fittingly, the next form — "the builder directs and
+AI runs it to completion" — emerged not from Copilot either, but from
+the side closer to the builders.
+
 ## SIers will shrink and reconstitute
 
 This is not "SIers all disappear at once." It is structural

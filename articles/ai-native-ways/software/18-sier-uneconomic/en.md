@@ -57,6 +57,12 @@ is true for small projects and for very large ones — at every step of
 the process, somebody inside the customer has to stay attached, or
 the project does not move.
 
+And **this is the proper form**. In reality, though, people skip the
+process and settle for "we left it to the SIer." Requirements,
+acceptance, judgment — all handed over whole. It looks easier, but this
+is where **de-responsibilization** begins — and, as the second half
+shows, that is the deepest problem with commissioning.
+
 ```mermaid
 flowchart TB
   subgraph Sier["SIer commission model — process steps"]
@@ -178,23 +184,31 @@ do not. From the customer's perspective, the total cost of an SIer
 engagement stays anchored **at a level above what an in-house
 AI-native build would cost**.
 
-## Commissioning hollows out technical capability
+## Commissioning erases responsibility and hollows out capability
 
-The deepest problem with commissioning is not labor or cost. It is that
-**the commissioner's own technical capability hollows out**. Keep
-sending the work to build outside, and the capability never grows
-inside you. Eventually you lose even the **eye to tell good from bad**.
+The deepest problem with commissioning is not labor or cost.
+**Commissioning erases responsibility.** The moment the side that builds
+and the side that delegates split apart, "whose responsibility is this?"
+floats free. The delegating side says "we left it to the experts"; the
+delegated side says "we built to spec." No one owns the result whole —
+this is **de-responsibilization**.
 
-The most expensive example of this hollowing-out is **Nadella's GitHub
-Copilot**. Microsoft did not build the AI core itself — it handed it to
-OpenAI. And during that time, Nadella was thinning out his own basic
-research. **Microsoft Research** was one of the most prestigious
-basic-research labs in the industry —
-home to a Turing Award winner — yet in his first year as CEO he **closed
-the MSR Silicon Valley lab in 2014** (about 50 researchers), and in
-**2023 disbanded the entire AI ethics team**, prioritizing shipping
-OpenAI's models "to customers at very high speed." Long-term research
-was traded for speed.
+And de-responsibilization breeds the hollowing-out of capability. What
+no one is responsible for, no one cultivates. Keep sending the work to
+build outside, and the capability never grows inside you. Eventually you
+lose even the **eye to tell good from bad**.
+
+The most expensive example is **Nadella's GitHub Copilot**. Microsoft
+did not build the AI core itself — it handed it to OpenAI, so the power
+to build sat with OpenAI while the product's responsibility sat with
+Microsoft: **responsibility split across two companies**. And during
+that time, Nadella was thinning out his own basic research. **Microsoft
+Research** was one of the most prestigious basic-research labs in the
+industry — home to a Turing Award winner — yet in his first year as CEO
+he **closed the MSR Silicon Valley lab in 2014** (about 50 researchers),
+and in **2023 disbanded the entire AI ethics team**, prioritizing
+shipping OpenAI's models "to customers at very high speed." Long-term
+research was traded for speed.
 
 An organization whose technical capability has hollowed out cannot stop
 elementary mistakes. Copilot was trained on public GitHub code — which
@@ -217,14 +231,15 @@ The result showed in dangerous code.
   at a **40% higher** rate.
 
 **This is the mistake the world's largest software company made after
-hollowing out its own technical capability.** SIer commissioning has the
-same structure, only at a different scale — the customer keeps sending
-the building outside, and capability never grows in-house. The deeper
-the commissioning, the deeper the hollow.
+scattering responsibility and hollowing out its own capability.** SIer
+commissioning has the same structure, only at a different scale — the
+customer says "we left it to the SIer," the SIer says "we built to
+spec." Responsibility floats free, and capability never grows in-house.
+The deeper the commissioning, the deeper the hollow.
 
 So the answer is in-house building — the customer becoming the builder
-(1-05). Only taking technical capability back into your own hands stops
-the hollowing out.
+(1-05). Only taking judgment and capability back into your own hands
+stops the de-responsibilization and the hollowing-out.
 
 ## SIers will shrink and reconstitute
 

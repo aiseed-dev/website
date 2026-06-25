@@ -1,6 +1,6 @@
 ---
 slug: japan-transition
-number: "07"
+number: "06"
 part: "3"
 lang: en
 title: Japan's SIer Industry Transition and Labor Mobility
@@ -23,7 +23,7 @@ the structure and the conclusion reverses — precisely because the
 structure is multi-tier, the industry shift can proceed without
 internal lay-offs**.
 
-3-06 confirmed that the original driver of IT outsourcing was
+3-05 confirmed that the original driver of IT outsourcing was
 **securing large quantities of coder person-months**. This chapter
 takes the other side — when AI removes coder demand, how the structure
 built to source those person-months actually moves.
@@ -47,7 +47,7 @@ Sketch the typical Japanese SIer structure.
 
 The reason this hierarchy is disliked is easy to state — margins pile
 up at each layer, profit does not reach the working coder, accountability
-gets blurred. 3-03 and 3-04 read this as the structure that
+gets blurred. 3-03 reads this as the structure that
 inflates price.
 
 But **at a transition, the structure's property reverses**. Multi-tier
@@ -141,10 +141,10 @@ But, **for talented coders, there are several exits**:
   judgment side (= builder candidates). Coders with judgment ability
   can be absorbed into the prime's full-time employee slots.
 - **Move to a customer** — hired directly as in-house builders by
-  customer companies that used to commission SIers (3-06).
+  customer companies that used to commission SIers (3-05).
 - **Go independent — individual contractor or small firm** —
   contract directly with customers as a builder. The
-  management (CIO)-style model from 3-06.
+  management (CIO)-style model from 3-05.
 - **Move to a different industry** — leaving software development is
   also a path (the same kind of redistribution as "human computers"
   and typesetters moving to adjacent fields, from 1-03).
@@ -177,7 +177,7 @@ mobility**.
 If mobility is high:
 
 - Mid-career moves between primes increase
-- Prime → customer-company moves grow (builder hiring per 3-06)
+- Prime → customer-company moves grow (builder hiring per 3-05)
 - Prime → independence (individual contractor, small firm)
 - Subcontractor layers → all of the above
 
@@ -331,8 +331,7 @@ near future and does not reverse. The final chapter.
 ## Related articles
 
 - [3-03: The Structural Uneconomy of the SIer Model](/en/ai-native-ways/software/sier-uneconomic/)
-- [3-04: The Order-of-Magnitude Price Gap](/en/ai-native-ways/software/price-gap/)
-- [3-06: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
+- [3-05: Companies Hire Builders](/en/ai-native-ways/software/hiring-builders/)
 - [Phosphorus Depletion and Natural Farming](/en/phosphorus-and-farming/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)

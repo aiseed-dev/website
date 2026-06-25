@@ -165,7 +165,7 @@ illusion — **while it is happening, it is fast for the people inside it**.
 The AI shift is starting from a price structure orders of magnitude lower
 (1-01); it is reasonable to expect the same speed or faster. Whether
 one can absorb it becomes a question of **industry structure**, not
-personal choice (3-07).
+personal choice (3-06).
 
 ## Where the next chapter goes
 

@@ -100,7 +100,7 @@ And the reasons employment **stops fitting in the AI era** are structurally clea
 > Employment is the contemporary form of medieval serfdom.
 > **Self-employment is the contemporary form of being a free person.**
 
-See [3-08: "Employment is the AI era's serfdom"](/en/ai-native-ways/software/five-years/).
+See [3-07: "Employment is the AI era's serfdom"](/en/ai-native-ways/software/five-years/).
 
 ## This is the Second Renaissance
 
@@ -119,7 +119,7 @@ History textbooks credit the printing press with preparing the ground for the Re
 
 The speed of diffusion is on another order. What took the printing press decades, the AI era achieves **in years**. The near-term horizon this sub-series draws is, against this difference in intensity, **a conservative estimate**.
 
-The Second Renaissance cannot be captured by "the AI revolution" alone. The deeper arguments — **the AI revolution is the completion of the IT revolution** (the 70-year-late fulfillment of the automation promise), **the LLM is a statistical-processing tool, not a superintelligence** (structural rejection of the AGI hype), **app-making comes to resemble film-making** (holding across the Hollywood-to-YouTube range), **not only the AI revolution** (concurrent transitions in fossil resources, geopolitics, agriculture, finance, demographics, healthcare, and pensions), and **creation AND upheaval as two sides of the era** (Trump and Nadella share the same structural error of judgment-concentration) — are developed in [**Software sub-series, 3-08: "The Structural Transition That Won't Reverse"**](/en/ai-native-ways/software/five-years/).
+The Second Renaissance cannot be captured by "the AI revolution" alone. The deeper arguments — **the AI revolution is the completion of the IT revolution** (the 70-year-late fulfillment of the automation promise), **the LLM is a statistical-processing tool, not a superintelligence** (structural rejection of the AGI hype), **app-making comes to resemble film-making** (holding across the Hollywood-to-YouTube range), **not only the AI revolution** (concurrent transitions in fossil resources, geopolitics, agriculture, finance, demographics, healthcare, and pensions), and **creation AND upheaval as two sides of the era** (Trump and Nadella share the same structural error of judgment-concentration) — are developed in [**Software sub-series, 3-07: "The Structural Transition That Won't Reverse"**](/en/ai-native-ways/software/five-years/).
 
 ## The alternative path to "specialized engineer" advice
 
@@ -144,11 +144,10 @@ This article compresses aiseed.dev's **[AI-Native Ways of Working — Software](
 - [3-01: Companies Don't Write Their Own Code — Office and Core, Two Parallel Worlds](/en/ai-native-ways/software/two-worlds/) — the two parallel worlds, the double tax, and their dissolution
 - [3-02: Digital Sovereignty — The Microsoft Problem and the Trump Problem](/en/ai-native-ways/software/sovereignty/) — OSS and sovereign AI now win on both economics and security
 - [3-03: The SIer Commission Model Is Structurally Uneconomic](/en/ai-native-ways/software/sier-uneconomic/)
-- [3-04: An Order-of-Magnitude Price Gap](/en/ai-native-ways/software/price-gap/) — 10×–100× is market displacement, not competition
-- [3-05: The Lock-In Problem](/en/ai-native-ways/software/lockin/) — Palantir FDE as the canonical case
-- [3-06: The Senior Builder Is Management (the CIO)](/en/ai-native-ways/software/hiring-builders/) — moving to the side that makes business decisions
-- [3-07: Japan's SIer Industry Transition](/en/ai-native-ways/software/japan-transition/) — multi-tier subcontracting paradoxically eases the transition
-- [3-08: The Structural Transition That Won't Reverse](/en/ai-native-ways/software/five-years/) — irreversibility; the Second Renaissance
+- [3-04: The Lock-In Problem](/en/ai-native-ways/software/lockin/) — Palantir FDE as the canonical case
+- [3-05: The Senior Builder Is Management (the CIO)](/en/ai-native-ways/software/hiring-builders/) — moving to the side that makes business decisions
+- [3-06: Japan's SIer Industry Transition](/en/ai-native-ways/software/japan-transition/) — multi-tier subcontracting paradoxically eases the transition
+- [3-07: The Structural Transition That Won't Reverse](/en/ai-native-ways/software/five-years/) — irreversibility; the Second Renaissance
 
 "**From software engineering to the liberal arts — the foundational shift of the technical profession**" is the subtitle of the sub-series and one axis for reading the structure of the AI era.
 

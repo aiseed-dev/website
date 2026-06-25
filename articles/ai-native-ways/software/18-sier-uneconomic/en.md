@@ -4,37 +4,74 @@ number: "03"
 part: "3"
 lang: en
 title: The Structural Uneconomy of the SIer Model
-subtitle: The friction of outsourcing, plus the customer's invisible labor — for the same effort, you can build it yourself
-description: The effort customers pay to commission an SIer — requirements, vendor selection, contracts, project management, acceptance — consumes as much labor as building it AI-natively, often more. Once you make the customer-side invisible labor explicit, the rationale for commissioning collapses. SIers using AI internally cannot absorb this diseconomy because their person-month revenue model, organization, and contracts are built on the old assumption.
+subtitle: The upstream judgment outsourcing cannot remove, and the de-responsibilization and hollowing-out it brings — for the same effort, you can build it yourself
+description: Even when you outsource, the upstream judgment — improving the business operations themselves, and understanding the systems — stays with the customer. That work is not a straight line but a loop, and with AI you can run it fast in-house. And the deepest problem with commissioning is the erosion of responsibility and capability: the moment you hand it off, no one owns the result whole. For the same effort, you can build it yourself.
 date: 2026.07.21
 label: Shift 3
 title_html: With the effort of <span class="accent">outsourcing</span>,<br>you can <span class="accent">build it yourself</span>.
 prev_slug: sovereignty
 prev_title: "Digital Sovereignty — The Microsoft Problem and the Trump Problem"
-next_slug: price-gap
-next_title: "The Order-of-Magnitude Price Gap"
+next_slug: lockin
+next_title: "The Lock-In Problem"
 ---
 
 # The Structural Uneconomy of the SIer Model
 
-**The effort customers pay to commission an SIer — requirements,
-vendor selection, contracts, project management, acceptance — consumes
-as much labor as building it AI-natively, sometimes more. For the same
-effort, you can build it yourself**.
+Commissioning an SIer used to be rational. Building software takes
+**excellent software engineers across many fields** — design, databases,
+frontend, infrastructure, security. Holding and retaining all of them
+in-house, company by company, was not realistic. Gathering the talent in
+one place — concentrating it in an SIer — was the more efficient path.
 
-1-05 showed that customers can become the builder and that
-nine-tenths of the work can close inside customer plus AI. This chapter
-takes up the other side — why "commissioning an SIer makes life
-easier" is now an illusion — by decomposing the commission process
-step by step.
+**But that premise has inverted. You can now hire the excellent engineer
+as AI.** And so **the customer can become the builder** — as 1-05
+showed, using OSS for the general and building only the firm-specific
+logic with AI. This chapter takes up the other side — why "commissioning
+an SIer makes life easier" is now an illusion — by decomposing the
+commission process step by step.
 
-The cost of outsourcing carries, on top of vendor payments, a stack of
-**invisible costs on the customer side**. That stack is the focus of
-this chapter.
+The chapter's real focus is structure, not cost. Even when you
+outsource, **the upstream judgment stays with the customer**. And on top
+of that, commissioning **erases responsibility and hollows out
+capability**.
 
-## The SIer commission model has a longer process than it looks
+## The trap of the SIer commission model
 
-Moving a single SIer engagement requires a process like this:
+The process does not even begin with requirements. Before that, you
+have to think through **how to improve the business operations
+themselves** — the workflow, the approval steps, the paper and the
+rules, including the parts that have nothing to do with software. What
+should become a system is decided only after that. This is something
+only the customer understands; it cannot be dumped on the SIer.
+
+And improving those operations itself **does not go well unless you
+understand what systems can do**. Only once you can see what can be
+automated and where data connects do you know how to restructure the
+work. The more upstream the judgment, the more it needs an understanding
+of systems — which is exactly why that understanding must be held
+in-house.
+
+From upstream to implementation, the work does not go in a straight
+line. You build, you try, you restructure the operations from what you
+see, and you build again. **It can only be run as a loop.**
+
+The SIer cannot do this. Every turn needs budget approval and a
+contract, so it usually runs to a year. That is also why almost no one
+develops business systems agile: the gates of budget and contract forbid
+the loop.
+
+But **with AI you can run this loop fast**. Implementation comes back at
+once. What takes time is the testing. Testing cannot be fully automated:
+whether it runs can be measured automatically, but whether it is what you
+wanted and fits the operations only a human can confirm. That check is
+the customer's own judgment, the part you cannot send outside.
+
+Even so, a turn is an order of magnitude shorter than the SIer's (a
+year). You can run it again and again. Only in-house building, with AI
+in your own hands, can do this.
+
+On top of that, moving a single SIer engagement requires a process like
+this:
 
 - **Requirements / RFP** — weeks to months on the customer side.
   Decide what to build and at what level, and put it into a form that
@@ -51,11 +88,11 @@ Moving a single SIer engagement requires a process like this:
 - **Operations and maintenance handover** — verbal transfer of spec,
   document handover, ongoing.
 
-"Hand it to the vendor and we are done" does not describe this.
-**Customer-side work continues throughout the engagement**. The same
-is true for small projects and for very large ones — at every step of
-the process, somebody inside the customer has to stay attached, or
-the project does not move.
+**This is the proper form.** In reality, though, people skip the
+process and settle for "we left it to the SIer." Requirements,
+acceptance, judgment — all handed over whole. It looks easier, but this
+is where **de-responsibilization** begins — and, as the second half
+shows, that is the deepest problem with commissioning.
 
 ```mermaid
 flowchart TB
@@ -73,9 +110,11 @@ flowchart TB
   subgraph AI["AI-native process steps"]
     direction TB
     A1["Customer + AI on requirements<br/>and design<br/>(days to weeks)"]
-    A2["AI implements<br/>(days to weeks)"]
-    A3["Evaluate and integrate<br/>(continuous)"]
-    A1 --> A2 --> A3
+    A2["AI implements<br/>(at once)"]
+    A3["AI + humans verify with tests<br/>(not all automatable)"]
+    A4["Evaluate and integrate<br/>(continuous)"]
+    A1 --> A2 --> A3 --> A4
+    A3 -->|fix and re-run| A2
   end
 
   classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
@@ -84,177 +123,92 @@ flowchart TB
   class Sier bad
 ```
 
-## The customer's "invisible labor" is the real body of the cost
+## Commissioning erases responsibility and hollows out capability
 
-The thing easiest to miss in commission-cost discussions is **the
-customer's internal labor**.
+The deepest problem with commissioning is not labor or cost.
+**Commissioning erases responsibility.** The moment the side that builds
+and the side that delegates split apart, "whose responsibility is this?"
+floats free. The delegating side says "we left it to the experts"; the
+delegated side says "we built to spec." No one owns the result whole —
+this is **de-responsibilization**.
 
-The amount the customer pays the SIer is written in the contract.
-The time spent inside the customer's organization, to make the
-engagement move, is not:
+And de-responsibilization breeds the hollowing-out of capability. What
+no one is responsible for, no one cultivates. Keep sending the work to
+build outside, and the capability never grows inside you. Eventually you
+lose even the **eye to tell good from bad**.
 
-- IT-department staff pulling requirements together
-- Hearing meetings with affected departments
-- Reading and comparing vendor proposals
-- Writing internal approval material
-- Monthly meetings, steering committees, status reports
-- Management time spent owning the acceptance decision
-- Coordination when spec changes happen mid-project
+The most expensive example is **GitHub Copilot**. Microsoft
+did not build the AI core itself — it handed it to OpenAI, so the power
+to build sat with OpenAI while the product's responsibility sat with
+Microsoft: **responsibility split across two companies**. And during
+that time, CEO Satya Nadella was thinning out his own basic research. **Microsoft
+Research** was one of the most prestigious basic-research labs in the
+industry — home to a Turing Award winner — yet in his first year as CEO
+he **closed the MSR Silicon Valley lab in 2014** (about 50 researchers),
+and in **2023 disbanded the entire AI ethics team**, prioritizing
+shipping OpenAI's models "to customers at very high speed." Long-term
+research was traded for speed.
 
-None of this hits the invoice line as "labor cost." But it is
-**actually being consumed**. IT staff, affected-department managers,
-sign-off owners — every engagement pulls non-trivial time out of each.
+An organization whose technical capability has hollowed out cannot stop
+elementary mistakes. Copilot was trained on public GitHub code — which
+holds excellent code, but also **a vast amount of garbage**. That what
+you train on decides output is the most basic common sense of machine
+learning, yet the researchers who could see this and select good code
+were no longer at the center of the decision.
 
-Empirically, in mid-size SIer engagements, **the customer-side
-invisible labor amounts to a significant fraction of the SIer payment
-itself** (the exact ratio varies, but it is never negligible). Even
-so, until now there was no alternative — building in-house meant
-hiring and retaining coders, which cost more.
+The result showed in dangerous code.
 
-> The real cost of commissioning = **SIer payment + customer-side
-> invisible labor**.
-> The second item is not in the contract, but in practice it carries
-> **half the weight**.
+- A controlled study (Perry, Boneh et al., ACM CCS 2023, 47
+  participants, using Codex) — developers given an AI assistant **wrote
+  significantly less secure code**, and **believed their code was
+  secure** ("false sense of security").
+- Early research ("Asleep at the Keyboard?") — roughly **40%** of the
+  code GitHub Copilot produced contained a vulnerability (about 50% in
+  C).
+- In enterprise assessments, **78%** of AI-generated code carried a
+  hard-to-detect vulnerability, and Copilot repositories leaked secrets
+  at a **40% higher** rate.
 
-## With the same effort, you can build it yourself
-
-This is the central claim of the chapter.
-
-"Even if the SIer is expensive, we cannot build it ourselves, so we
-have no choice" — that was the old argument. It does not hold in the
-AI-native world.
-
-Why not? **Because the customer-side labor consumed by an SIer
-engagement (requirements, vendor selection, management, acceptance)
-overlaps with the customer-side labor consumed by AI-native in-house
-development (requirements, design, delegation to AI, evaluation,
-integration)**.
-
-- Pulling requirements together — same work, commissioned or in-house
-- Deciding what to build — same work either way
-- Evaluating the result — same work either way
-- Fix bugs — commission asks the SIer, in-house asks AI
-
-The historical difference sat in **writing the code**. That was where
-enormous money and person-months landed. Once AI took execution, that
-difference disappeared.
-
-In other words, **the effort to commission an SIer and the effort to
-build AI-natively in-house are now the same order of magnitude**. If
-you are going to spend the effort anyway, zeroing out the SIer payment
-is clearly the more efficient route.
-
-> Once "the effort to outsource" and "the effort to build yourself"
-> become equal, **the rational reason to outsource disappears**.
-
-## Why SIers cannot absorb this diseconomy
-
-"If SIers themselves use AI, their internal efficiency goes up" — true.
-Many SIers are integrating Claude or GPT into their workflows. Even
-so, the SIer commission model cannot, structurally, reach parity with
-AI-native in-house development.
-
-Four reasons:
-
-- **The pricing model is person-month based** — revenue scales with
-  "coders × months." If AI lifts productivity significantly, reflecting
-  that into the price shrinks revenue by the same amount. That
-  transition is not financially survivable.
-- **The organization assumes managed coders** — primes plus tier-1
-  and tier-2 subcontractors, team leads, PMs, QA — the whole pyramid
-  is built on holding coders and assigning them (the structural
-  transition is treated in 3-07).
-- **Existing contracts are lock-in** — multi-year operations contracts,
-  proprietary frameworks, custom abstraction layers all make it hard
-  for customers to move (the FDE-style extreme lock-in is treated in
-  3-05).
-- **Hiring and training are coder-shaped** — new-graduate programs
-  and mid-career hires are organized around framework fluency, SQL,
-  and test writing — execution skills. The organization is not built
-  to grow judgment-centered builders.
-
-The result is that when SIers internally use AI, **AI sits on top of
-person-months kept in place to defend revenue**. Costs drop; prices
-do not. From the customer's perspective, the total cost of an SIer
-engagement stays anchored **at a level above what an in-house
-AI-native build would cost**.
-
-## Commissioning splits judgment from substance
-
-The diseconomy of commissioning is not only labor and cost. It runs
-deeper — commissioning **splits the side that judges from the side
-that builds, into separate organizations**. The moment judgment and
-substance no longer meet inside one head, the quality of the result
-falls.
-
-The most expensive example is GitHub Copilot. Even Microsoft, the
-world's largest software company, did not build the AI core itself —
-it invested in OpenAI and had them build it (Copilot runs on OpenAI's
-Codex). As a result, **capability and responsibility split across two
-companies**.
-
-- The power to build the AI sits with OpenAI. But Copilot is not
-  OpenAI's product, and they have no stake in how good it is.
-- On the Microsoft side, which owns the product, the people developing
-  Copilot are integration engineers who cannot build the AI itself —
-  they wrap a finished model into a product.
-
-Here a fatal blind spot opens. **That what you train a model on
-decides the quality of its output is the most basic common sense of
-machine learning.** Yet most public code is a mix of good and bad, of
-wildly varying quality. The side that can see this (OpenAI) does not
-care; the side that cares (Microsoft) cannot see it. **Those who can
-see don't care; those who care can't see.**
-
-The result shows in the numbers. Independent analysis finds that since
-AI-assisted coding spread, code churn (lines rewritten soon after) has
-risen, refactoring has fallen, and copy-paste has increased. In
-exchange for writing "fast and in volume," unmaintainable debt piles
-up.
-
-This is the structural hole of commissioning. The moment you put the
-building outside, judgment and substance never again meet in one head.
-**The largest company in the world, spending the most money, fell into
-this hole.** SIer commissioning has the same structure, only at a
-different scale.
+**This is the mistake the world's largest software company made after
+scattering responsibility and hollowing out its own capability.** But
+scattering responsibility does not make it disappear. **The final
+decision rests with the CEO — the responsibility for this failure is
+Nadella's.** SIer commissioning has the same structure, only at a
+different scale — the
+customer says "we left it to the SIer," the SIer says "we built to
+spec." Responsibility floats free, and the customer **loses the ability
+to make use of software**. The deeper the commissioning, the deeper the
+hollow.
 
 So the answer is in-house building — the customer becoming the builder
-(1-05). Only rejoining judgment and substance in one pair of hands
-closes the hole. Fittingly, the next form — "the builder directs and
-AI runs it to completion" — emerged not from Copilot either, but from
-the side closer to the builders.
+(1-05). Only taking judgment and capability back into your own hands
+stops the de-responsibilization and the hollowing-out.
 
-## SIers will shrink and reconstitute
+## The disappearance of the SIer model is inevitable
 
-This is not "SIers all disappear at once." It is structural
-shrinkage: nine-tenths moves to the customer side, the SIer share
-concentrates in the remaining tenth.
+The cost of commissioning has reached parity with building in-house;
+commissioning erases responsibility and hollows out capability; and only
+in-house building can run the loop. Once you reach this point, **the
+disappearance of the SIer commission model is inevitable**.
 
-- **What stays**: the one-tenth from 1-05 — genuinely new
-  technical territory, specialized regulation, cross-organizational
-  authority, scale-driven design, hard-earned pitfall knowledge
-- **What disappears**: the nine-tenths "standard work AI can write"
-  — absorbed on the customer side
-- **What reconstitutes**: even in the remaining tenth, contract
-  shapes shift from "multi-year operations commissions" to "hourly
-  consulting" (3-06)
+Most of the work — the standard work AI can write — moves to the
+customer side. Even the specialized remainder (genuinely new technology,
+specialized regulation, scale-driven design) can no longer be sustained
+as a "multi-year operations commission." It turns into hourly consulting,
+or is absorbed into the customer's in-house team (3-05). Neither is the
+SIer commission model itself.
 
 Transition speed, Japan-specific dynamics (multi-tier subcontracting),
-and labor mobility are taken up in 3-07 and 3-08. What this
-chapter fixes is the structural claim: **the SIer commission model
-cannot reach parity with AI-native in-house development**.
-
-> SIers do not vanish, but they cannot avoid **the 9 : 1 shrinkage
-> and the reshaping of their contract forms**.
+and labor mobility are taken up in 3-06 and 3-07.
 
 ## Where the next chapter goes
 
-This chapter has shown that "for the same effort, you can build it
-yourself." The next question is: not by effort, but **by money**,
-how far apart are they? Putting an SIer quote next to the cost of an
-AI-native in-house build.
+This chapter has shown that **the disappearance of the SIer commission
+model is inevitable**. But even when disappearance is inevitable,
+customers cannot always move at once — the existing commission
+relationship remains as **lock-in**.
 
-The next chapter takes up that price gap.
+The next chapter takes up that lock-in.
 
 ---
 

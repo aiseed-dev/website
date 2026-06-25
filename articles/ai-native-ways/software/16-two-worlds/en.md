@@ -53,7 +53,7 @@ technical ignorance or contempt for IT. **It was inefficient — so in a
 sense, it was only natural**. The multi-tier subcontracting structure arose
 for the same reason: writing code required a large workforce that had to be
 sourced without any one company keeping it on staff (the structure is
-covered in 3-07).
+covered in 3-06).
 
 A rational choice not to write. This is what split enterprise IT into two
 worlds.
@@ -184,9 +184,9 @@ off together.
 
 This is the premise of the whole Shift part. The chapters that follow each
 view this **single collapse** from a different face — digital sovereignty and the
-Microsoft problem (3-02), the uneconomy of SIer commissioning (3-03), the order-of-magnitude price gap (3-04), the nature of
-lock-in (3-05), companies hiring builders directly (3-06), Japan's specific
-transition (3-07), the near-term transition and its irreversibility from inversion (3-08). **Each is the same
+Microsoft problem (3-02), the uneconomy of SIer commissioning (3-03), the nature of
+lock-in (3-04), companies hiring builders directly (3-05), Japan's specific
+transition (3-06), the near-term transition and its irreversibility from inversion (3-07). **Each is the same
 single collapse, lit from a different angle**.
 
 ```mermaid

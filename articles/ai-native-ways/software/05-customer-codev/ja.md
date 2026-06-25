@@ -123,7 +123,7 @@ SIer 専用の Claude があるわけではない。だから ── **「AI に
 SIer の真の優位は、「AI が届かない領域での経験と判断」── 真に新しい技術、
 専門規制、組織横断の交渉、経験的にしか分からない落とし穴 ── に残る。だが
 それは **ごく一部**で、**助言**の形で取り込めば足りる。弁護士や税理士に
-定常業務を丸投げしないのと同じだ(3-06)。多年契約の SIer 委託は、
+定常業務を丸投げしないのと同じだ(3-05)。多年契約の SIer 委託は、
 もう要らない。
 
 > SIer の独自能力は、**AI の届かないごく一部**にしかない。
@@ -145,7 +145,7 @@ SIer の真の優位は、「AI が届かない領域での経験と判断」─
 - [1-03: ソフトウェアエンジニアの仕事を AI がするようになる](/ai-native-ways/software/coder-end/)
 - [1-04: ビルダーという役割](/ai-native-ways/software/builder/)
 - [2-01: Microsoft と Google から自立する ── 全体像と対応表](/ai-native-ways/software/independence/)
-- [3-05: ロックイン問題](/ai-native-ways/software/lockin/)
-- [3-06: 各社がビルダーを雇用する時代](/ai-native-ways/software/hiring-builders/)
+- [3-04: ロックイン問題](/ai-native-ways/software/lockin/)
+- [3-05: 各社がビルダーを雇用する時代](/ai-native-ways/software/hiring-builders/)
 - [構造分析08: 企業ITの税を引く](/insights/enterprise-tax/)
 - [構造分析12: AIと個人事業](/insights/ai-and-individual/)

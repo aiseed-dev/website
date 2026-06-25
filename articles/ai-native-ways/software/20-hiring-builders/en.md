@@ -1,6 +1,6 @@
 ---
 slug: hiring-builders
-number: "06"
+number: "05"
 part: "3"
 lang: en
 title: Companies Hire Builders
@@ -22,7 +22,7 @@ makes business decisions. The professional work is done by AI. Not a
 role that fits inside a general-employee grade system**.
 
 1-05 showed that customers themselves can become builders.
-3-05 showed that AI-native development structurally resists
+3-04 showed that AI-native development structurally resists
 producing lock-in. Put both together, and the rational customer
 **keeps the builder in-house** — that single choice covers the
 structural disadvantage of outsourcing, the path out of lock-in, and
@@ -48,7 +48,7 @@ That premise held under two conditions:
   them all in-house was impractical at the scale needed. **Multi-tier
   subcontracting stacked head-count on the outside** so that
   engagements could secure enough person-months (the structure is
-  covered in 3-07).
+  covered in 3-06).
 - IT was viewed as a **thin surface layer** of the business —
   outsourcing it did not pull the essence of the business out with it.
 
@@ -249,7 +249,7 @@ website.
 
 In numbers, this lands at **less than one-tenth of the initial build
 cost, with dramatically faster and cheaper ongoing operation** — the
-corporate-website case of the 10×–100× price gap from 3-04.
+corporate-website case of the 10×–100× price gap.
 
 But the more important comparison is **structural**, not financial:
 
@@ -284,7 +284,7 @@ shifts.
   custodianship to forms the in-house builder can work with (standard
   databases, JSON, Parquet).
 - **Vendor dependence dissolves** — lock-in eases, options expand
-  (3-05).
+  (3-04).
 
 This is more than cost reduction. It is a structural change. Hiring
 one builder can be **the trigger that reshapes how the company
@@ -415,7 +415,7 @@ not open only to people who came from coding**.
 > **AI + Python + Flet open a new supply source — makers,
 > shop-floor engineers, students**.
 
-Read this in combination with 3-07's "labor demand outside the
+Read this in combination with 3-06's "labor demand outside the
 industry" (manufacturing, agriculture, AI physical infrastructure).
 The picture becomes clearer: human capital flowing out of the SIer
 industry and **human capital flowing in from outside the industry as
@@ -441,7 +441,7 @@ forms appear during the transition?
 
 - [1-04: The Builder Role](/en/ai-native-ways/software/builder/)
 - [1-05: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
-- [3-05: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
+- [3-04: The Lock-In Problem](/en/ai-native-ways/software/lockin/)
 - [Parent series Chapter 2: Writing Logic — Have AI Write Python For You](/en/ai-native-ways/python/)
 - [Parent series Chapter 7: Building Apps — CLI tools, Flet apps, Flutter apps](/en/ai-native-ways/apps/)
 - [Parent series Chapter 8: Building Embedded — Think in Python, Have Claude Translate](/en/ai-native-ways/embedded/)

@@ -1,11 +1,11 @@
 ---
 name: building-ai-native-software-series
-description: Drives the "ソフトウェア開発編" sub-series of "AIネイティブな仕事の作法" — 23 chapters in three 編 (parts, each numbered from 1: 導入編/自立編/転換編) that argue the SIer-commissioned development model is structurally obsolete and will be replaced in the near future by builder-led, AI-native development (irreversible because the economic and security premises have inverted, not because of a fixed completion horizon). The sub-series lives in `articles/ai-native-ways/software/` and renumbers from chapter 1. Use when adding any chapter in this sub-series, or when verifying that the sub-series stays internally consistent. Pair with authoring-aiways-chapter (mechanical scaffold) and writing-aiways-voice (prose conventions).
+description: Drives the "ソフトウェア開発編" sub-series of "AIネイティブな仕事の作法" — 22 chapters in three 編 (parts, each numbered from 1: 導入編/自立編/転換編) that argue the SIer-commissioned development model is structurally obsolete and will be replaced in the near future by builder-led, AI-native development (irreversible because the economic and security premises have inverted, not because of a fixed completion horizon). The sub-series lives in `articles/ai-native-ways/software/` and renumbers from chapter 1. Use when adding any chapter in this sub-series, or when verifying that the sub-series stays internally consistent. Pair with authoring-aiways-chapter (mechanical scaffold) and writing-aiways-voice (prose conventions).
 ---
 
 # Building the "ソフトウェア開発編" sub-series
 
-This sub-series sits **inside** `articles/ai-native-ways/` but lives in its own subdirectory `software/` (global folders 01–23) and its own series-index page. It is organized into **three 編, each numbered from 1** (導入編 1–5 / 自立編 1–10 / 転換編 1–8). It shares the chapter template, frontmatter schema, voice, and accent palette with the parent series — what makes it a sub-series is the dedicated folder, the dedicated index page, and the **thesis arc**.
+This sub-series sits **inside** `articles/ai-native-ways/` but lives in its own subdirectory `software/` (global folders 01–22) and its own series-index page. It is organized into **three 編, each numbered from 1** (導入編 1–5 / 自立編 1–10 / 転換編 1–7). It shares the chapter template, frontmatter schema, voice, and accent palette with the parent series — what makes it a sub-series is the dedicated folder, the dedicated index page, and the **thesis arc**.
 
 This SKILL.md is the source of truth for the sub-series structure (the once-aspirational `docs/Ai-native-software-outline.md` was never created). Keep this file current when the structure changes.
 
@@ -17,7 +17,7 @@ The sub-series is presented in **three 編 (parts), each numbered from 1**. The 
 |---|---|---|
 | **導入編 ── なぜ作り、どう始めるか** (part 1) | 第1–5章 / 01–05 | Concept only (1–5: why the builder/AI-native shift). The worked examples (VBA→Python, website, embedded) live in the **parent series' individual track**, not here. |
 | **自立編 ── M365・Copilot・WordPress・基幹・GitHub から自立する** (part 2) | 第1–10章 / 06–15 | Overview/map (1: Microsoft と Google からの自立 — the bundle, the one-to-one mapping, no build steps) + hands-on build guide (2–10): replace the vendor products with OSS, one stack on the previous. "書くのではなく、立てる"; "the effect of OSS > the effect of AI." |
-| **転換編 ── 産業構造の帰結** (part 3) | 第1–8章 / 16–23 | The structural consequence: why the SIer-commissioned model is now obsolete. |
+| **転換編 ── 産業構造の帰結** (part 3) | 第1–7章 / 16–22 | The structural consequence: why the SIer-commissioned model is now obsolete. |
 
 The thesis arc is carried by 導入編 1–5 (concept) and the 転換編 (consequence). The worked examples now live in the parent series' individual track; the 自立編 is the install-guide register (compose files, DNS, migration) — structural-assertive but concrete, each stack on the previous.
 
@@ -27,11 +27,11 @@ The thesis arc is carried by 導入編 1–5 (concept) and the 転換編 (conseq
 - This sub-series has its own index at `/ai-native-ways/software/` (and `/en/ai-native-ways/software/`).
 - Chapter URLs use the form `/ai-native-ways/software/{slug}/`.
 - The breadcrumb combines `series` + `chapter_label` → `ソフトウェア開発編 · 導入編 1-01` (compound `部-章` = part digit + `-` + zero-padded chapter). `chapter_label` is built by `_aiways_chapter_label(number, lang, subseries, part_short, part)`, where `part_short` (`導入編`/`自立編`/`転換編`) comes from the chapter's `part` via the `parts` config.
-- `prev_slug` / `next_slug` chain **inside** the sub-series only, across all **23** chapters in global folder order: folder 01's `prev_*` is empty, folder 23's `next_*` is empty. The chain runs continuously across the three 編 (…導入編5 `customer-codev` → 自立編1 `independence` → 自立編2 `foundation` → … → 自立編10 `ai` → 転換編1 `two-worlds` → 転換編2 `sovereignty` → 転換編3 `sier-uneconomic` …). It does not cross into the parent series. Re-run the chain over all folders after adding/moving a chapter.
+- `prev_slug` / `next_slug` chain **inside** the sub-series only, across all **22** chapters in global folder order: folder 01's `prev_*` is empty, folder 22's `next_*` is empty. The chain runs continuously across the three 編 (…導入編5 `customer-codev` → 自立編1 `independence` → 自立編2 `foundation` → … → 自立編10 `ai` → 転換編1 `two-worlds` → 転換編2 `sovereignty` → 転換編3 `sier-uneconomic` …). It does not cross into the parent series. Re-run the chain over all folders after adding/moving a chapter.
 
 ## Thesis arc
 
-The thesis arc is carried by the 概念編 (steps 1–5, chapters 01–05) and the 転換編 (steps 6–11, chapters 14–19). The 導入編 (06–13) sits between them as the hands-on proof that step 5's "build it yourself" is materially true.
+The thesis arc is carried by the 導入編 (steps 1–5, folders 01–05) and the 転換編 (steps 6–10, folders 16–22, the part-3 thesis chapters being 3-03…3-07). The 自立編 (folders 06–15) sits between them as the hands-on proof that step 5's "build it yourself" is materially true.
 
 1. (Ch 01) AI has reached top-human level at writing code — accessible for a few thousand yen per month.
 2. (Ch 02) The bigger shift is in **maintenance**: legacy decoding cost collapses, the unit of maintenance moves from code to design/specification.
@@ -39,12 +39,11 @@ The thesis arc is carried by the 概念編 (steps 1–5, chapters 01–05) and t
 4. (Ch 04) A new role emerges: the **builder**, who decides what to make, has AI make it, evaluates outputs, and integrates structure. The SE solves narrowly-closed problems (AI's domain even at high difficulty); the builder handles open problems (no precedent → AI weak). AI has only trained weights / no lived history, so value-judgment and responsibility stay human — judgment is not delegated to AI; choose a trustworthy developer's model.
 5. (Ch 05) Customers themselves become builders — but the first move is OSS, not code. Generic → use proven OSS (most economical, also more secure); personal → customize OSS in dialogue with AI (worked examples = parent series individual track); organization → stand up a generic foundation with OSS replacing M365/Copilot/WordPress (the 自立編). Only the company-specific logic is written with AI. What AI cannot do, the SIer cannot do either.
    — *自立編 (folders 06–15): the customer actually stands up the OSS stack (data → auth → documents → code → mail → meetings → web → AI).*
-6. (Ch 14) The SIer-commissioned model becomes structurally uneconomic — the overhead of outsourcing itself exceeds the AI-native build cost.
-7. (Ch 15) The price gap is one to two orders of magnitude. This is market displacement, not competition.
-8. (Ch 16) Lock-in is the SIer model's true product — proprietary frameworks, abstraction layers, human dependency. Palantir's FDE model is examined as the archetype.
-9. (Ch 17) Companies will bring builders in-house as **management — the CIO (Chief Information Officer) class**, not as a professional staff tier. The professional/practitioner work (lawyer/doctor-level practice) is done by AI; the human makes business decisions (IT judgment = business judgment = management judgment), with responsibility heavier than today's CIO.
-10. (Ch 18) Japan's multi-tier subcontracting structure paradoxically enables the transition — primes can detach subcontractor agreements without firing anyone.
-11. (Ch 19) The main changes arrive in the near future; because the economic and security premises have already inverted (3-01 parallel worlds, 3-02 sovereignty), the transition does not reverse.
+6. (3-03) The SIer-commissioned model becomes structurally uneconomic — commissioning de-responsibilizes and hollows out the customer's ability to use software; the build–test loop only in-house+AI can run; the SIer-model's disappearance is inevitable.
+7. (3-04) Lock-in is the SIer model's true product — proprietary frameworks, abstraction layers, human dependency. Palantir's FDE model is examined as the archetype.
+8. (3-05) Companies will bring builders in-house as **management — the CIO (Chief Information Officer) class**, not as a professional staff tier. The professional/practitioner work (lawyer/doctor-level practice) is done by AI; the human makes business decisions (IT judgment = business judgment = management judgment), with responsibility heavier than today's CIO.
+9. (3-06) Japan's multi-tier subcontracting structure paradoxically enables the transition — primes can detach subcontractor agreements without firing anyone.
+10. (3-07) The main changes arrive in the near future; because the economic and security premises have already inverted (3-01 parallel worlds, 3-02 sovereignty), the transition does not reverse.
 
 Two themes are **explicitly out of scope** (per the outline's footer):
 
@@ -55,7 +54,7 @@ Do not let these slip back in. If they come up, note them and stop.
 
 ## Chapter-to-folder mapping
 
-The sub-series has **23 chapters in three 編**, each 編 **numbered from 1**. Folders use a global `NN-slug` prefix (01–23) for ordering; the *displayed* number is the per-編 number, set in front matter (`number` = per-編, `part` = "1"/"2"/"3"). Slugs are stable URLs at `/ai-native-ways/software/{slug}/` and must not be renamed. Each chapter's front matter carries `part`; the build groups the index and builds the breadcrumb (`ソフトウェア開発編 ◯○編 1-01`, compound `部-章`) from it.
+The sub-series has **22 chapters in three 編**, each 編 **numbered from 1**. Folders use a global `NN-slug` prefix (01–22) for ordering; the *displayed* number is the per-編 number, set in front matter (`number` = per-編, `part` = "1"/"2"/"3"). Slugs are stable URLs at `/ai-native-ways/software/{slug}/` and must not be renamed. Each chapter's front matter carries `part`; the build groups the index and builds the breadcrumb (`ソフトウェア開発編 ◯○編 1-01`, compound `部-章`) from it.
 
 **導入編 ── なぜ作り、どう始めるか (part "1", 第1–5章 / folders 01–05)** — concept only (1–5). The worked examples (VBA→Python, website, embedded) live in the parent series' individual track (親シリーズ 第2章/第6章/第8章).
 
@@ -82,18 +81,17 @@ The sub-series has **23 chapters in three 編**, each 編 **numbered from 1**. F
 | 9 | `14-fastapi` | API を作る ── FastAPI で基幹のロジックを出す | `fastapi` | **基幹システム** logic as one API on the foundation+gate (matches kura). Now the substantive chapter on **replacing a legacy 基幹 system via parallel-run** (並行稼働/業務知識を Markdown に/現場がテスト/委託は止める) — folded from the **former parent ch7 「業務システムと付き合う」**, now removed (SQL/T-SQL migration mechanics defer to 第2章). Two example-N/ (PL/SQL→Python parallel rewrite, Java/C#→Markdown rule extraction) moved here. |
 | 10 | `15-ai` | 自前の AI を据える ── LLM と RAG | `ai` | **Copilot** (Gemini); Ollama/vLLM + RAG on pgvector |
 
-**転換編 ── 産業構造の帰結 (part "3", 第1–8章 / folders 16–23)**
+**転換編 ── 産業構造の帰結 (part "3", 第1–7章 / folders 16–22)**
 
 | 第n章 | folder | title (JA) | slug | hinge claim |
 |---|---|---|---|---|
 | 1 | `16-two-worlds` | 企業は自分でコードを書かない ── 事務と基幹、二つの世界の並立 | `two-worlds` | **premise of the 転換編**: in-house dev was inefficient → office bought (Microsoft) + core outsourced (SIer) = two parallel separately-locked worlds + double tax; AI inverts the efficiency → both collapse together |
 | 2 | `17-sovereignty` | デジタル主権 ── Microsoft 問題と Trump 問題 | `sovereignty` | **office-side consequence**: M365 now worse on cost AND security — the Microsoft problem (US CLOUD Act, per-seat rent, remote kill-switch) + the Trump problem (US-government dependence is a weaponizable lever; can't be trusted); OSS + sovereign local-weight AI is the cheaper-and-safer default |
-| 3 | `18-sier-uneconomic` | SIer委託モデルの構造的不経済 | `sier-uneconomic` | outsourcing overhead exceeds build cost |
-| 4 | `19-price-gap` | 価格競争力の桁違いの差 | `price-gap` | 10–100× displacement |
-| 5 | `20-lockin` | ロックイン問題 | `lockin` | Palantir FDE archetype |
-| 6 | `21-hiring-builders` | 各社がビルダーを雇用する時代 | `hiring-builders` | builders as management — the CIO class (professional work is AI's) |
-| 7 | `22-japan-transition` | 日本のSIer業界の転換と雇用流動性 | `japan-transition` | multi-tier subcontracting enables shift |
-| 8 | `23-five-years` | もう戻らない構造転換 | `five-years` | irreversible (premises inverted), near-term horizon |
+| 3 | `18-sier-uneconomic` | SIer委託モデルの構造的不経済 | `sier-uneconomic` | commissioning de-responsibilizes and hollows out the ability to use software; the build–test loop only in-house+AI can run; SIer-model disappearance is inevitable |
+| 4 | `19-lockin` | ロックイン問題 | `lockin` | Palantir FDE archetype |
+| 5 | `20-hiring-builders` | 各社がビルダーを雇用する時代 | `hiring-builders` | builders as management — the CIO class (professional work is AI's) |
+| 6 | `21-japan-transition` | 日本のSIer業界の転換と雇用流動性 | `japan-transition` | multi-tier subcontracting enables shift |
+| 7 | `22-five-years` | もう戻らない構造転換 | `five-years` | irreversible (premises inverted), near-term horizon |
 
 When cross-referencing chapters in body text, use the **compound `部-章` form `P-NN`** (P = part digit 1/2/3, NN = zero-padded per-編 chapter): e.g. `1-06`, `2-05`, `3-01`. It is self-locating, so **same-編 and cross-編 refs use the same form, with no 編 name** (this is what removed the old 導入編/自立編 naming drift from references). From OUTSIDE the sub-series (parent series, insights, blog), prefix with the series name: `ソフトウェア開発編 2-05` / `Software 2-05`. Parent-series references stay `親シリーズ第N章` / `parent series Chapter N` (the parent series uses flat `第N章` numbering, NOT `P-NN`); `構造分析`/insights links are untouched. The breadcrumb still shows the 編 name + compound (`導入編 1-06`).
 

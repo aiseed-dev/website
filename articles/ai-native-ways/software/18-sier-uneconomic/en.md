@@ -174,8 +174,9 @@ decision rests with the CEO — the responsibility for this failure is
 Nadella's.** SIer commissioning has the same structure, only at a
 different scale — the
 customer says "we left it to the SIer," the SIer says "we built to
-spec." Responsibility floats free, and capability never grows in-house.
-The deeper the commissioning, the deeper the hollow.
+spec." Responsibility floats free, and the customer **loses the ability
+to make use of software**. The deeper the commissioning, the deeper the
+hollow.
 
 So the answer is in-house building — the customer becoming the builder
 (1-05). Only taking judgment and capability back into your own hands

@@ -86,13 +86,7 @@ this:
 - **Operations and maintenance handover** — verbal transfer of spec,
   document handover, ongoing.
 
-"Hand it to the vendor and we are done" does not describe this.
-**Customer-side work continues throughout the engagement**. The same
-is true for small projects and for very large ones — at every step of
-the process, somebody inside the customer has to stay attached, or
-the project does not move.
-
-And **this is the proper form**. In reality, though, people skip the
+**This is the proper form.** In reality, though, people skip the
 process and settle for "we left it to the SIer." Requirements,
 acceptance, judgment — all handed over whole. It looks easier, but this
 is where **de-responsibilization** begins — and, as the second half

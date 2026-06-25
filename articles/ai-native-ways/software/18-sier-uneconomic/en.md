@@ -183,46 +183,48 @@ AI-native build would cost**.
 
 The diseconomy of commissioning is not only labor and cost. It runs
 deeper — commissioning **splits the side that judges from the side
-that builds, into separate organizations**. The moment judgment and
-substance no longer meet inside one head, the quality of the result
-falls.
+that builds**. And in AI-assisted coding, "dangerous code" slips into
+that gap.
 
-The most expensive example is GitHub Copilot. Even Microsoft, the
-world's largest software company, did not build the AI core itself —
-it invested in OpenAI and had them build it (Copilot runs on OpenAI's
-Codex). As a result, **capability and responsibility split across two
-companies**.
+This is borne out by experiment. In a controlled university study,
+developers given an AI assistant **wrote significantly less secure
+code** than those without one. Worse, the people who wrote it
+**believed their code was secure** — the reassurance arrives first.
+Early empirical work likewise reported that roughly **forty percent**
+of the code GitHub Copilot produced contained some vulnerability.
 
-- The power to build the AI sits with OpenAI. But Copilot is not
-  OpenAI's product, and they have no stake in how good it is.
-- On the Microsoft side, which owns the product, the people developing
-  Copilot are integration engineers who cannot build the AI itself —
-  they wrap a finished model into a product.
+What was commissioned was supposed to be the act of "writing code."
+But every time you accept a completion, you **also let go of the
+judgment "is this good enough?"** Judgment and substance stop meeting
+inside one head — that is the hole of commissioning.
 
-Here a fatal blind spot opens. **That what you train a model on
-decides the quality of its output is the most basic common sense of
-machine learning.** Yet most public code is a mix of good and bad, of
-wildly varying quality. The side that can see this (OpenAI) does not
-care; the side that bears responsibility (Microsoft) cannot see it.
-**Those who can see don't care; those who are responsible can't see.**
+So why does dangerous code get through? **The design differs.** GitHub
+Copilot grew up as a "next-line prediction" completion engine — it
+offers a candidate, hands it to the human, and is done. The
+verification loop never closes. By contrast, the agentic tools shipped
+by the side that builds the AI itself — Anthropic's Claude Code,
+OpenAI's Codex — run a loop of **plan → execute → verify with tests →
+fix**. They actually use, inside that loop, the "free, infinitely
+repeatable verifier" that only software has (3-08).
 
-The result shows in the numbers. Independent analysis finds that since
-AI-assisted coding spread, code churn (lines rewritten soon after) has
-risen, refactoring has fallen, and copy-paste has increased. In
-exchange for writing "fast and in volume," unmaintainable debt piles
-up.
+So the source of the danger is not "trained on garbage public code."
+It is the design difference: **whether you run the verification, or
+hand it wholesale to a human.** The completion form serves up dangerous
+code "fast and in volume" with judgment and substance still split. The
+moment you accept it, no one is left to verify.
+
+That said, no tool guarantees safety. Vulnerabilities turn up in the
+agentic tools too, and closing the verification loop ultimately falls
+to a human. But it matters greatly whether the place the loop closes is
+"in your own hands" or "vanishes the instant you accept a completion."
 
 This is the structural hole of commissioning. The moment you put the
 building outside, judgment and substance never again meet in one head.
-**The largest company in the world, spending the most money, fell into
-this hole.** SIer commissioning has the same structure, only at a
-different scale.
+SIer commissioning has the same structure, only at a different scale.
 
 So the answer is in-house building — the customer becoming the builder
-(1-05). Only rejoining judgment and substance in one pair of hands
-closes the hole. Fittingly, the next form — "the builder directs and
-AI runs it to completion" — emerged not from Copilot either, but from
-the side closer to the builders.
+(1-05). Only those who keep judgment and verification in one pair of
+hands, and run the verifier themselves, close the hole.
 
 ## SIers will shrink and reconstitute
 

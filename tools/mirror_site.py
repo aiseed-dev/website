@@ -2,27 +2,27 @@
 """
 Mirror an existing website into a static bundle (SiteSucker, in Python).
 
-It opens each page in a real (headless) browser so JavaScript runs, then saves
-the *rendered* HTML — and, crucially, **every file the page loads** (CSS, JS,
-images, fonts, …) — and rewrites references to local relative paths. The result
-is a folder of static files you can host on Cloudflare Pages, which lets you
-shut down the dynamic site (e.g. WordPress) — attack surface and all.
+It opens each page in a real (headless) browser, saves the HTML — and, crucially,
+**every file the page loads** (CSS, JS, images, fonts, …) — and rewrites
+references to local relative paths. The result is a folder of static files you
+can host on Cloudflare Pages, which lets you shut down the dynamic site
+(e.g. WordPress) — attack surface and all.
 
-Why a browser and not requests/wget: those don't execute JavaScript, so on
-modern sites the body isn't in the raw HTML. Playwright renders it first.
+Why a browser and not requests/wget: the browser discovers and fetches every
+asset the page actually loads (including ones referenced from CSS), and — with
+--js — can render JavaScript-built pages whose body isn't in the raw HTML.
 
-JavaScript, however, also bloats the saved HTML: client-side widgets — most
-notably ad networks (AdSense) and analytics — inject large iframe/DOM trees at
-render time, and those get baked into the saved page. For a static or
-server-rendered site, you don't want any of that. Pass --no-js to disable
-JavaScript: the browser still loads and parses the page (so links and statically
-referenced CSS/images are saved), but no script runs, so the HTML stays as the
-server delivered it — smaller and free of injected ad/analytics markup.
+By default JavaScript is NOT executed: the saved HTML is what the server
+delivered — small, and free of the large iframe/DOM trees that client-side
+widgets (ad networks like AdSense, analytics) inject at render time. Pass --js
+for sites whose body is built by JavaScript (SPAs); the browser then renders the
+page before saving (at the cost of heavier, widget-inflated HTML).
 
 Usage:
     python3 tools/mirror_site.py https://example.com/ --out mirror
     python3 tools/mirror_site.py https://example.com/ --out mirror --max-pages 300
-    python3 tools/mirror_site.py https://example.com/ --out mirror --no-js
+    python3 tools/mirror_site.py https://example.com/ --out mirror --js
+    python3 tools/mirror_site.py https://example.com/ --out mirror --skip-existing
 
 Options:
     URL                 start URL to crawl from
@@ -30,9 +30,15 @@ Options:
     --max-pages N       max HTML pages to crawl (default: 200)
     --same-host-only    only follow links on the start host (default: on)
     --wait MS           extra wait after networkidle, ms (default: 0)
-    --no-js             disable JavaScript: save the server's pre-render HTML
-                        (smaller, no injected ad/analytics DOM). Use for static
-                        or server-rendered sites whose body is in the raw HTML.
+    --js                execute JavaScript (render the page) before saving.
+                        Needed for SPA / JS-rendered sites; off by default so the
+                        saved HTML stays small and free of injected ad/analytics
+                        markup.
+    --skip-existing     don't re-fetch files already present in the output dir:
+                        skip pages whose HTML already exists (their links are
+                        still read from disk so the crawl continues) and don't
+                        overwrite existing assets. Use to resume / incrementally
+                        update a mirror.
 
 Setup (one time):
     ./.venv/bin/pip install playwright
@@ -43,6 +49,7 @@ query-string assets) in dialogue with AI.
 """
 
 import argparse
+import re
 import sys
 from pathlib import Path
 from urllib.parse import urljoin, urlparse, urldefrag
@@ -93,9 +100,12 @@ def main() -> int:
     ap.add_argument("--same-host-only", action="store_true", default=True,
                     help="only follow links on the start host (default)")
     ap.add_argument("--wait", type=int, default=0, help="extra wait after load, ms")
-    ap.add_argument("--no-js", action="store_true", default=False,
-                    help="disable JavaScript: save the server's pre-render HTML "
-                         "(smaller, no injected ad/analytics DOM)")
+    ap.add_argument("--js", action="store_true", default=False,
+                    help="execute JavaScript before saving (for SPA / JS-rendered "
+                         "sites); off by default to keep HTML small and ad-free")
+    ap.add_argument("--skip-existing", action="store_true", default=False,
+                    help="don't re-fetch files already in the output dir "
+                         "(resume / incremental update)")
     args = ap.parse_args()
 
     try:
@@ -118,7 +128,7 @@ def main() -> int:
 
     with sync_playwright() as p:
         browser = p.chromium.launch()
-        context = browser.new_context(java_script_enabled=not args.no_js)
+        context = browser.new_context(java_script_enabled=args.js)
         page = context.new_page()
 
         def on_response(resp):
@@ -129,13 +139,15 @@ def main() -> int:
                 ctype = (resp.headers or {}).get("content-type", "")
                 if "text/html" in ctype:
                     return  # pages are saved separately as rendered HTML
+                rurl = urldefrag(resp.url)[0]
+                host = urlparse(rurl).netloc
+                rel = local_rel(rurl, start_host, is_page=False)
+                saved_hosts.add(host)  # record host for rewriting even if not re-saved
+                if args.skip_existing and (out / rel).exists():
+                    return
                 body = resp.body()
             except Exception:
                 return
-            rurl = urldefrag(resp.url)[0]
-            host = urlparse(rurl).netloc
-            saved_hosts.add(host)
-            rel = local_rel(rurl, start_host, is_page=False)
             save_bytes(out, rel, body)
 
         page.on("response", on_response)
@@ -145,19 +157,30 @@ def main() -> int:
             if url in seen_pages:
                 continue
             seen_pages.add(url)
-            try:
-                page.goto(url, wait_until="networkidle", timeout=45000)
-                if args.wait:
-                    page.wait_for_timeout(args.wait)
-                html = page.content()
-                links = page.eval_on_selector_all("a[href]", "els => els.map(e => e.href)")
-            except Exception as e:
-                print(f"  skip {url}: {e}", file=sys.stderr)
-                continue
-
             rel = local_rel(url, start_host, is_page=True)
-            html_pages.append((rel, html))
-            print(f"[{len(seen_pages)}] {url} -> {rel}")
+
+            if args.skip_existing and (out / rel).exists():
+                # already mirrored: don't re-fetch, but mine its saved HTML for
+                # <a href> links so the crawl still reaches the rest of the site
+                try:
+                    saved = (out / rel).read_text(encoding="utf-8", errors="ignore")
+                except Exception:
+                    saved = ""
+                links = re.findall(r'<a\b[^>]*?\bhref=["\']([^"\']+)["\']', saved,
+                                   flags=re.IGNORECASE)
+                print(f"[{len(seen_pages)}] {url} -> {rel} (skip: exists)")
+            else:
+                try:
+                    page.goto(url, wait_until="networkidle", timeout=45000)
+                    if args.wait:
+                        page.wait_for_timeout(args.wait)
+                    html = page.content()
+                    links = page.eval_on_selector_all("a[href]", "els => els.map(e => e.href)")
+                except Exception as e:
+                    print(f"  skip {url}: {e}", file=sys.stderr)
+                    continue
+                html_pages.append((rel, html))
+                print(f"[{len(seen_pages)}] {url} -> {rel}")
 
             for link in links:
                 link = urldefrag(urljoin(url, link))[0]

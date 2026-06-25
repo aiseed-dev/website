@@ -139,7 +139,7 @@ The most expensive example is **GitHub Copilot**. Microsoft
 did not build the AI core itself — it handed it to OpenAI, so the power
 to build sat with OpenAI while the product's responsibility sat with
 Microsoft: **responsibility split across two companies**. And during
-that time, Nadella was thinning out his own basic research. **Microsoft
+that time, CEO Satya Nadella was thinning out his own basic research. **Microsoft
 Research** was one of the most prestigious basic-research labs in the
 industry — home to a Turing Award winner — yet in his first year as CEO
 he **closed the MSR Silicon Valley lab in 2014** (about 50 researchers),

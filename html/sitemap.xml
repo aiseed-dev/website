@@ -281,6 +281,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/blog/verification-shock/</loc>
+    <lastmod>2026-06-28</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/blog/autonomy-distribution-diversity/</loc>
     <lastmod>2026-06-25</lastmod>
     <priority>0.7</priority>
@@ -414,6 +419,11 @@
     <loc>https://aiseed.dev/blog/grid-attack-naphtha/</loc>
     <lastmod>2026-04-06</lastmod>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/blog/verification-shock/</loc>
+    <lastmod>2026-06-28</lastmod>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://aiseed.dev/en/blog/autonomy-distribution-diversity/</loc>

@@ -99,6 +99,15 @@ Cloudflare (2-08).
 in-house is not the goal — hold the data and the daily processing in your own
 hands, and send only the hardest parts out.
 
+And the range you can hold yourself widens as hardware advances. AMD's
+**Ryzen AI Max PRO 400** series (Q3 2026, from ASUS, HP, and Lenovo) carries
+up to 192GB of unified memory (up to 160GB allocatable as VRAM) and is the
+**first x86 client capable of running 300B-class models locally.** Once a PC
+with this is on your desk, you can run **Command A+** (Cohere, privately
+deployable, RAG with citations) entirely in-house, mainly for **company
+document management.** The heavy document RAG you can only borrow today comes
+home — **the line of what you borrow recedes year by year.**
+
 > The value of your own AI is not maximizing cleverness.
 > It is **embedding AI into the everyday without letting go of your data.**
 

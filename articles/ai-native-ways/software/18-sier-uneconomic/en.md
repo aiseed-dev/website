@@ -219,3 +219,4 @@ The next chapter takes up that lock-in.
 - [1-05: Customers Co-Develop with AI](/en/ai-native-ways/software/customer-codev/)
 - [Structural analysis 08: Subtracting the enterprise-IT tax](/en/insights/enterprise-tax/)
 - [Structural analysis 12: AI and the sole proprietor](/en/insights/ai-and-individual/)
+- Blog [When Fable 5 Returns, Do This First](/en/blog/verification-shock/) — the day verification becomes free, the commissioned deliverables built on "never being verified" are exposed (the applied, urgent version of this chapter)

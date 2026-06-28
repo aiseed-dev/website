@@ -239,6 +239,23 @@ vendor's AI creates a different dependence.** The principle of keeping
 judgment and tools on your own side applies here too
 (→ [Building a Microsoft 365 equivalent yourself](/en/blog/self-hosting-microsoft-365/)).
 
+And Microsoft's deepest lock-in is **backward compatibility** itself. By
+carrying old APIs and old behaviors without cutting any of them, it keeps
+customers from switching — but that same backward compatibility breeds a
+complexity no one grasps whole, and holes hidden in old code. In fact the
+Entra ID authentication flaw **CVE-2025-55241** (CVSS 10.0) let an
+attacker impersonate a global administrator in nearly every tenant in the
+world, because a legacy API left in place for backward compatibility
+failed to validate the token's issuing tenant. The M365 Copilot
+zero-click leaks (EchoLeak and others) share the same root. Since attack
+and verification are the same "power to understand deeply" (1-01), in the
+age of an AI that can attack, such old holes get exposed faster and more
+surely than before. Yet Microsoft cannot abandon backward compatibility —
+abandon it and it becomes healthy, but loses the power to bind customers.
+**Becoming healthy and losing dominance become one and the same act.** So
+it keeps the cage, and keeps having its holes made visible (→ blog
+[When Fable 5 Returns, Do This First](/en/blog/verification-shock/)).
+
 The counter-axis to all of this is open source. Once, open source's "the
 source is published" meant something only to specialists, and it was held
 to be inferior to proprietary even on being "polished and ready to use."

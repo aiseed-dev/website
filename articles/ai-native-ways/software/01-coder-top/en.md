@@ -120,18 +120,25 @@ reading its weaknesses, and assembling the line of attack — that is,
 **understanding the target's context deeply**. That is the same ability
 as designing a system.
 
+And the same ability is the ability to **verify**. To attack is to find
+the hole and strike it; to verify is to find the hole and close it —
+both are expressions of one power, "understanding the structure more
+deeply than its builder." **Attack, design, and verification are not
+separate abilities but three faces of one power.** That is exactly why
+an AI that can attack can design and verify too.
+
 So AI has reached the top tier in **two separate abilities** — writing
 code (the 2700 tier) and understanding context to decide structure, i.e.
-design (the autonomous attack). **AI has begun to exceed senior engineers
-at both coding and design.** With both in hand, the conclusion is one:
+design and verification (the autonomous attack). **AI has begun to exceed
+senior engineers at both coding and design.** With both in hand, the conclusion is one:
 **in the Mythos/Fable era, AI became the strongest SIer** — reading
 requirements, deciding structure, implementing, and running it, the whole
 of the SIer's work, done by one. And not as a scarce resource of a few
 dozen people worldwide, but callable by anyone for $200 a month.
 
 > The 2700 tier proved "the strongest coder"; autonomously assembling
-> an attack proves "it can design too" — exceeding senior engineers at
-> both coding and design, **AI became the strongest SIer**.
+> an attack proves "it can design and verify too" — exceeding senior
+> engineers at both coding and design, **AI became the strongest SIer**.
 
 ## $200 a month buys access to the world's top
 

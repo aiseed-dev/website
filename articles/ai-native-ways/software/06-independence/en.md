@@ -23,7 +23,9 @@ The Introduction part moved embedded logic out into Python and made core
 logic something you could write yourself. The Independence part widens that
 hands-on power to the **whole company** — it unties identity, documents,
 sharing, mail, meetings, web, data, and AI from a single contract and puts
-them back on your side.
+them back on your side. **From here it is not "writing code" but "standing
+up the foundation" — the power to build reaches the company's IT
+foundation itself.**
 
 There is only one thing to do: **untie the bundle into independent tools.**
 This chapter is the **map.** It lays out, up front, what each layer maps to

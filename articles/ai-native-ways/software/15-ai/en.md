@@ -5,7 +5,7 @@ part: "2"
 lang: en
 title: "Stand Up Your Own AI — LLM and RAG"
 subtitle: "Lay AI on top of everything — answers grounded in your own data, on your own side"
-description: The Independence part closes by laying AI on top of everything. The pgvector enabled in 2-02 finally pays off. Stand up an open model with Ollama or vLLM, embed your documents, code, and mail into pgvector for RAG, and use it through Open WebUI. Keep secrets and always-on processing in-house; borrow a frontier model like Claude for hard judgment — control yours, capability borrowed. Cut the Copilot dependency and close the Independence part.
+description: The Independence part closes by laying AI on top of everything. The pgvector enabled in 2-02 finally pays off. Start by holding Cohere's open-weight coding model North Mini Code locally on Ollama (data never leaves), and load a general model and embeddings alongside for RAG. Embed your documents, code, and mail into pgvector for RAG, and use it through Open WebUI. Keep secrets and always-on processing in-house; borrow a frontier model like Claude for hard judgment — control yours, capability borrowed. Cut the Copilot dependency and close the Independence part.
 date: 2026.07.16
 label: Independence 10
 title_html: Lay <span class="accent">your own AI</span><br>on top of everything.
@@ -28,19 +28,30 @@ finally pays off here.
 - **Always-on is cheap** — run classification, summarization, and extraction continuously at zero marginal cost
 - **Grounded in your data** — answer in light of internal documents, code, and history
 
-## Stand up the model — Ollama and vLLM
+## Stand up the model — North Mini Code on Ollama
 
-To start easily, **Ollama.** Stand up an open model (Qwen, Llama, and the like)
-in one line and use it as an API.
+To start easily, **Ollama.** Stand up an open-weight model in one line and use
+it as an API.
+
+The first one to load is **North Mini Code** (Cohere) — an **open-weight
+(Apache 2.0) agentic coding model.** It is exactly the tool this sub-series
+centers on: "the builder has AI write the code." A 30B MoE with only 3B
+active, it is light enough to run with low latency even on local hardware.
 
 ```bash
 docker run -d -p 11434:11434 ollama/ollama
-docker exec -it ollama ollama pull qwen2.5    # pull a model and use it at once
+docker exec -it ollama ollama pull north-mini-code    # open-weight, runs on your own side
 ```
 
-As volume grows, move to the higher-throughput **vLLM.** For always-on
-processing that needs higher quality, you can choose the privately deployable
-**Command A** (mentioned in 2-02). **Stand one up first, swap as needed.**
+You can hit it free on OpenRouter to try, but **in production run it yourself —
+neither code nor data leaves your side.** Cohere is one corner of **sovereign
+AI**, alongside Europe's Aleph Alpha (→ [blog 027](/en/blog/autonomy-distribution-diversity/)).
+
+For RAG and chat, separately load a **general model (Qwen and the like) and an
+embedding model** on the same Ollama. As volume grows, move to the
+higher-throughput **vLLM**, and for always-on processing that needs higher
+quality you can choose the privately deployable **Command A** (Cohere,
+mentioned in 2-02). **Stand one up first, swap as needed.**
 
 ## RAG — put pgvector to work
 
@@ -95,7 +106,8 @@ hands, and send only the hardest parts out.
 
 Your own AI, on top of everything.
 
-- **Ollama / vLLM** — stand up an open model; Command A where quality is needed
+- **Ollama / vLLM** — start with North Mini Code (Cohere, an open-weight
+  coding model), add a general model alongside for RAG; Command A where quality is needed
 - **RAG (pgvector)** — fill the 2-02 vessel with internal data, answer with citations
 - **Open WebUI** — a ChatGPT-like window, behind the gate
 - **In-house vs. borrowed** — data and always-on in-house, the hard parts to a frontier model

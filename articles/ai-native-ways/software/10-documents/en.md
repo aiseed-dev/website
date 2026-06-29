@@ -5,7 +5,7 @@ part: "2"
 lang: en
 title: "Take Documents Back — OnlyOffice Docs on PocketBase"
 subtitle: "Office is a format to pass through — take the substance back and embed only the editor engine at the gate"
-description: Word, Excel, and PowerPoint are the input/output tools people write and read with — not where the substance lives. Inside Office, AI stays a tool and you stay "the processor." So treat docx, xlsx, and pptx as formats to pass through, not to use, and take back control of the substance. Rather than add a separate storage app like Nextcloud, keep documents as plain files on your own storage, with auth from the 2-03 PocketBase and permissions in xattr, and embed OnlyOffice Docs as the editor engine only — a thin, custom document app. High-fidelity OOXML means you can still hand anyone a plain .docx. Avoid the finished DocSpace — it brings Active Directory back. The reference implementation is the public repo kura. Keep the formats; take back only control.
+description: Word, Excel, and PowerPoint are the input/output tools people write and read with — not where the substance lives. Inside Office, AI stays a tool and you stay "the processor." So treat docx, xlsx, and pptx as formats to pass through, not to use, and take back control of the substance. Rather than add a separate storage app like Nextcloud, keep documents as plain files on your own storage, with auth from the 2-03 PocketBase and permissions (access control) in a queryable structured store (PostgreSQL or the gate's PocketBase; xattr when you want zero extra dependency), and embed OnlyOffice Docs as the editor engine only — a thin, custom document app. High-fidelity OOXML means you can still hand anyone a plain .docx. Avoid the finished DocSpace — it brings Active Directory back. The reference implementation is the public repo kura. Keep the formats; take back only control.
 date: 2026.07.04
 label: Independence 5
 title_html: Keep documents as <span class="accent">files</span>;<br>only auth at the gate.
@@ -177,7 +177,7 @@ storage, **make it the gate and keep the rest as files.**
 
 - **The file itself** — plain files on your own storage; no heavy storage app
 - **Auth** — the 2-03 gate (PocketBase) applies directly (no second login)
-- **Permissions / sharing** — carried by the file itself (xattr); the gate verifies identity
+- **Permissions / sharing** — held in a structured store on your side (PostgreSQL or the gate's SQLite); the gate verifies identity
 
 What you add is **only the editor engine.** OnlyOffice ships "Docs (the
 Document Server)" as a standalone editing engine, leaving storage to any app.
@@ -224,24 +224,40 @@ For internal use, the Community edition (AGPLv3) is fine. **Only if you resell i
 as your own SaaS** do you need to mind AGPL's copyleft and attribution (naming
 ONLYOFFICE in the UI) — there, consider a commercial license.
 
-## Documents are files — auth at the gate, permissions in xattr
+## Documents are files — auth at the gate, permissions in a structured store
 
 A document's body is **just a file** on your own storage. Rather than embed it
 as a blob in a PocketBase record, keep `docx`, `xlsx`, and `pptx` as files — so
-that machines (Polars, AI) can read them directly later.
+that machines (Polars, AI) can read them directly later. **The body is a
+file** — that one point does not change.
 
 - **The body** — a file on the filesystem (your own storage)
 - **Auth** — the 2-03 gate (PocketBase) verifies who
-- **Permissions** — carried by the file itself — extended attributes (xattr)
+- **Permissions (access control)** — "who can do what to which document" lives,
+  separate from the body, in a **queryable structured store**
 
-```bash
-# permissions ride on the file itself, not a separate DB
-setfattr -n user.ws.perm    -v 'team:rw' quote_2026.xlsx
-setfattr -n user.ws.creator -v 'alice'   quote_2026.xlsx
+The first choice for that store is a structured one.
+
+- **Structured store (recommended)** — if you already run PostgreSQL (for
+  business data and core systems), put the ACL there too. If you have only the
+  gate, the gate's PocketBase (SQLite) suffices. It is **queryable** ("every
+  document Alice can read"), **transactional,** and **survives `pg_dump`
+  cleanly.** It maps straight onto 2-03's "each app holds its own access
+  control."
+- **xattr (minimal dependency)** — if you want to add no store at all, stamp the
+  permission on the file's extended attributes. But xattr is **silently dropped
+  by `cp`, `rsync`, `tar`, and backups** (you need `-a` / `-X` / `--xattrs`) — a
+  permission can vanish, so verify attribute preservation on every copy and
+  backup path.
+
+```sql
+-- hold the ACL in a structured store — queryable, durable
+-- doc_acl(doc_id, subject, perm); subject is 'alice' or 'team:sales'
+SELECT doc_id FROM doc_acl WHERE subject IN ('alice', 'team:sales') AND perm >= 'r';
 ```
 
-No separate database just for permissions. **The gate holds identity; the file
-holds permission** — split by role.
+No heavyweight separate app (Nextcloud) just for permissions. **The gate holds
+identity; the structured store holds permission** — split by role.
 
 ## Connect — open and save
 
@@ -265,10 +281,10 @@ co-editing reconciliation. All the app writes is these few lines of hand-off.
 ## The gate stays — no second login
 
 This is the biggest win of building it your own way. **Auth comes straight from
-the 2-03 gate, and permissions ride on the file (xattr),** so there is no
-second account like Nextcloud's and no separate permissions database. Who can
-open which document is decided by the identity the gate verifies and the
-permission stamped on the file.
+the 2-03 gate, and permissions live in a structured store on your side (or
+xattr),** so there is no second account like Nextcloud's. Who can open which
+document is decided by the identity the gate verifies and the permission you
+hold on your side.
 
 ## Migrate existing documents
 
@@ -279,7 +295,7 @@ needed.
 ```bash
 # pull down with rclone and lay the files on your own storage
 rclone copy onedrive:Documents ./inbox --progress
-# stamp permissions on each file in inbox/ with xattr (one script)
+# record permissions for each file in inbox/ (into the structured store, one script)
 ```
 
 Migrate gradually. **Run both in parallel and cancel the old storage once the
@@ -308,7 +324,7 @@ SME use (about 100 users per instance, distributed for more). It maps straight
 onto this chapter:
 
 - **Auth** — PocketBase (pluggable token validation + short-lived cache)
-- **Permissions** — file xattr (`user.ws.perm` / `user.ws.creator`), no permissions DB
+- **Permissions** — taking the dependency-minimal path, file xattr (`user.ws.perm` / `user.ws.creator`), no separate DB (with PostgreSQL in the stack, the ACL can live there instead)
 - **The body** — the file itself ("the AI interface is files")
 - **Editing** — OnlyOffice Docs over JWT and callbacks (FastAPI + Flet)
 
@@ -321,7 +337,7 @@ Files as they are, only auth at the gate. Take back only control of the substanc
 - **Office passes through** — `docx`, `xlsx`, `pptx` are an exchange format for the entrance and exit. Keep the substance where AI can touch it, and move from "the processor" to "the decider"
 - **OnlyOffice Docs** — an editor engine for `docx`, `xlsx`, `pptx` with high fidelity (holds no storage); OOXML-compatible, so you can still hand anyone a plain `.docx`
 - **The body is a file** — on your own storage, readable directly by machines (Polars, AI)
-- **Auth at the gate (PocketBase) / permissions in xattr** — no separate permissions DB
+- **Auth at the gate (PocketBase) / permissions in a structured store** — the ACL in PostgreSQL or the gate's SQLite (queryable, durable); xattr if you want zero extra dependency, but it is easily lost on copy
 - **Embedding is a few lines** — hand over the file location and save target, signed with JWT
 - **People vs. machines** — people use OnlyOffice Docs, machines use Polars / DuckDB
 

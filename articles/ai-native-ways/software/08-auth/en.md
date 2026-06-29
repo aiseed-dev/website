@@ -4,11 +4,11 @@ number: "03"
 part: "2"
 lang: en
 title: "Stand Up the Gate — One Login with PocketBase"
-subtitle: "One front door for every app — email, OAuth, and one-time codes from a single binary"
-description: Authentication is not something each app builds on its own. It is a gate you stand up once and share. PocketBase is a single binary with email auth, OAuth2, one-time codes, MFA, an admin UI, and a REST API. Identity lives in the gate; business data lives in PostgreSQL — separate the gate from the warehouse. Step off Microsoft Entra ID's per-seat monthly bill.
+subtitle: "Share only identity (authentication) — each server enforces its own access control. Central minimal, defense in depth"
+description: Authentication is not something each app builds on its own. It is a gate you stand up once and share. But the gate holds only the minimal common thing — identity. Authorization ("what you can do") is held by each app, each server, itself (defense in depth); the single-perimeter idea that "whoever passed the gate goes anywhere inside" is not the design. PocketBase is a single binary with email auth, OAuth2, one-time codes, MFA, an admin UI, and a REST API. Identity lives in the gate; business data lives in PostgreSQL. Step off Microsoft Entra ID's per-seat monthly bill.
 date: 2026.07.02
 label: Independence 3
-title_html: One front door,<br>a <span class="accent">gate</span> from a single binary.
+title_html: One <span class="accent">identity</span>,<br>defense at <span class="accent">every server</span>.
 prev_slug: foundation
 prev_title: "Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars"
 next_slug: code
@@ -28,13 +28,21 @@ generic of the generic is already there as OSS.
 ## Why authentication goes up first
 
 The reason the gate follows the foundation is simple: **every app you stand
-up after this passes through the same door.** Documents, course booking, the
-core systems, the small in-house tools — when there is one entrance, users
-log in once and operators guard one place.
+up after this shares the same identity (who).** Documents, course booking,
+the core systems — users log in once.
+
+But settle one principle here. **The gate holds only the minimal common
+thing — identity (authentication).** Authorization — "what you can do" — is
+held by **each app, each server, itself.** The idea that "whoever passed the
+gate goes anywhere inside" — a single perimeter — is not the design here:
+breach one place and everything falls. **Central minimal, defense
+distributed across each server.** That is the form that is distributed and
+strong.
 
 A homegrown login means hashing, sessions, token revocation, two-factor,
 password reset, social login — not one of them can be skimped. **Standing up
-one gate and sharing it** is faster, safer, and cheaper.
+the identity check once and sharing it, while leaving the permission
+decision to each app,** is faster, safer, and stronger.
 
 ## Stand up PocketBase
 
@@ -81,27 +89,32 @@ This is the crux of the design. **Identity (who) lives in the gate; business
 data (what they did) lives in PostgreSQL** (2-02). Separate the gate
 from the warehouse.
 
-An app **verifies the gate's token, pulls out `user.id`,** and reads and
-writes PostgreSQL keyed by that id.
+An app **verifies the token's signature locally and pulls out `user.id`**
+(no per-request call to the gate — it keeps working even if the gate blinks).
+Then **whether this user may do this operation is decided by the app itself.**
 
 ```python
-# app side — verify the gate's token, query the warehouse (PostgreSQL)
-user_id = verify_token(request.headers["Authorization"])   # issued by PocketBase
+# app side — verify the signature locally, decide permission yourself
+user_id = verify_token(request.headers["Authorization"])   # signature-checked with the gate's public key (no per-request call)
+require(can_read_orders(user_id))                          # "what you can do" is decided by this app
 orders  = pg.execute("SELECT * FROM orders WHERE user_id = %s", [user_id])
 ```
 
-Zero auth machinery to build. All an app carries is one line that asks the
-gate "is this token valid?" **Don't multiply gates — share one.**
+Identity verification is concentrated in the gate; **the permission decision
+stays in each app.** Share identity, but distribute defense across every
+server — that is defense in depth.
 
-> Authentication is not something each app builds on its own.
-> It is a gate you **stand up once and share.**
+> Identity is not something each app builds on its own — stand it up once and
+> share it. **But "what you can do" is guarded by each server itself.**
 
 ## Stand it in front — the reverse proxy
 
 Apps you build yourself are guarded directly by the PocketBase SDK. Packaged
 OSS like documents (OnlyOffice) or code (Forgejo), on the other hand, **each
 carry their own login.** Put a **reverse proxy (Caddy)** in front and let the
-outside reach them only through the gate.
+outside reach them only through the gate — but this is the **first layer**,
+not the only one: each app still verifies identity and permission itself
+(don't trust the inside of the perimeter either — defense in depth).
 
 ```caddy
 # Caddyfile — line up each app behind the gate
@@ -112,7 +125,7 @@ git.example.com    { reverse_proxy forgejo:3000 }
 
 To later bind these into **one login (SSO)**, add a layer that speaks OIDC in
 front — but for most in-house use, the gate plus each app's own login is
-enough. **Making the entrance one comes first;** full unification can wait.
+enough. **Sharing one identity comes first;** full unification can wait.
 
 ## Step off Entra ID
 
@@ -134,11 +147,12 @@ On the foundation, the first gate.
 - **PocketBase** — auth, admin UI, API, and file storage in a single binary (on SQLite)
 - **Email / OAuth2 / OTP / MFA** — open only the doors you need, from the admin UI
 - **Separate gate from warehouse** — identity in PocketBase, business data in PostgreSQL
-- **Reverse proxy** — line packaged OSS up behind the gate
+- **Central minimal, defense at every server** — the gate holds only identity; access control lives in each app (defense in depth)
+- **Reverse proxy** — line packaged OSS up behind the gate (the first layer, not the only wall)
 - **Step off Entra ID** — bridge with OAuth2, then cut once the move is done
 
-The only code written is one line that checks a token. **A gate is stood up
-and shared.** Next, inside that gate, we set up **documents (OnlyOffice)** and
+The only code written is a few lines that check a signature and decide a
+permission. **Share identity; defend at every server.** Next, inside that gate, we set up **documents (OnlyOffice)** and
 bring Word, Excel, and PowerPoint to our own side.
 
 ---

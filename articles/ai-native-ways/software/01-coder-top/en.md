@@ -120,18 +120,25 @@ reading its weaknesses, and assembling the line of attack — that is,
 **understanding the target's context deeply**. That is the same ability
 as designing a system.
 
+And the same ability is the ability to **verify**. To attack is to find
+the hole and strike it; to verify is to find the hole and close it —
+both are expressions of one power, "understanding the structure more
+deeply than its builder." **Attack, design, and verification are not
+separate abilities but three faces of one power.** That is exactly why
+an AI that can attack can design and verify too.
+
 So AI has reached the top tier in **two separate abilities** — writing
 code (the 2700 tier) and understanding context to decide structure, i.e.
-design (the autonomous attack). **AI has begun to exceed senior engineers
-at both coding and design.** With both in hand, the conclusion is one:
+design and verification (the autonomous attack). **AI has begun to exceed
+senior engineers at both coding and design.** With both in hand, the conclusion is one:
 **in the Mythos/Fable era, AI became the strongest SIer** — reading
 requirements, deciding structure, implementing, and running it, the whole
 of the SIer's work, done by one. And not as a scarce resource of a few
 dozen people worldwide, but callable by anyone for $200 a month.
 
 > The 2700 tier proved "the strongest coder"; autonomously assembling
-> an attack proves "it can design too" — exceeding senior engineers at
-> both coding and design, **AI became the strongest SIer**.
+> an attack proves "it can design and verify too" — exceeding senior
+> engineers at both coding and design, **AI became the strongest SIer**.
 
 ## $200 a month buys access to the world's top
 
@@ -242,8 +249,8 @@ is what "the IT revolution actually completing" means.
 > finally reaching the revolution's own tool.
 
 With that frame, the changes this sub-series covers — the coder role
-ending, the structural uneconomy of the SIer model, the order-of-
-magnitude price gap, the rearrangement of employment and industry —
+ending, the structural uneconomy of the SIer model, the rearrangement
+of employment and industry —
 read not as isolated phenomena but as **a long-delayed revolution
 finishing the work it had left incomplete**.
 
@@ -258,17 +265,26 @@ Every chapter that follows is **deduced** from this one fact.
 - 1-04 — what role takes their place (the builder)?
 - 1-05 — when customers themselves pair with AI, what happens to
   the structure of outsourcing?
+- 2-01–2-11 — if customers hold it themselves, how do they stand up
+  **the whole company IT foundation** — authentication, documents,
+  mail, core systems — on their own side (the autonomy part)?
 - 3-03 — can the SIer commission model compete with **AI sitting
   above the threshold**?
 - 3-04 — where do existing commission relationships act as
   **lock-in**?
-- Chapters 9–11 — hiring builders, the transition of the SIer
+- 3-05–3-07 — hiring builders, the transition of the SIer
   industry, the near-term horizon over which the transition arrives
   and why it does not reverse.
 
 These are not independent observations. They all derive from one point:
 **the strongest SIer is available for $200 a month**. This chapter
 exists only to plant that point.
+
+And it does not stop at "writing code." Once customers can hold it
+themselves, the whole company IT foundation — authentication, documents,
+mail, core systems — comes to stand on their own side. This sub-series
+runs continuously from software development to **company-wide digital
+sovereignty** (the autonomy part).
 
 One more frame for what follows. This sub-series covers **structural
 change inside software development**. It does not entertain the extreme

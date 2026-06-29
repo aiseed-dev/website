@@ -11,8 +11,8 @@ label: Independence 9
 title_html: Rewrite the core in <span class="accent">parallel</span>,<br>gather your logic into one <span class="accent">API</span>.
 prev_slug: web
 prev_title: "Publish the Web — Cloudflare Pages (a WordPress Replacement)"
-next_slug: ai
-next_title: "Stand Up Your Own AI — LLM and RAG"
+next_slug: structure-knowledge
+next_title: "Make Your Knowledge Legible — Preparation Is the Main Body, AI the Last Move"
 ---
 
 # Build an API — Expose Core Logic with FastAPI

@@ -64,12 +64,14 @@ declare `lang: en` explicitly.
 
 ## Chapter labels
 
-The breadcrumb is rendered as `series · chapter_label`. The
-sub-series name lives on the `series` side, so `chapter_label` stays
-short (`第N章` / `Chapter N`). The combined display:
+The breadcrumb is rendered as `series · chapter_label`. The sub-series
+name lives on the `series` side. Because chapters renumber within each
+part, `chapter_label` is **`part-name part-chapter`** (the short part
+name + `partDigit-chapterNumber`, e.g. `Independence 2-10`). The
+combined display:
 
-- JA: `AIネイティブな仕事の作法 — ソフトウェア開発編 · 第N章`
-- EN: `AI-Native Ways of Working — Software · Chapter N`
+- JA: `AIネイティブな仕事の作法 — ソフトウェア開発編 · 自立編 2-10`
+- EN: `AI-Native Ways of Working — Software · Independence 2-10`
 
 ## prev / next chain
 

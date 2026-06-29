@@ -55,11 +55,12 @@ articles/ai-native-ways/software/
 ## 章ラベル
 
 ブレッドクラムでは `series · chapter_label` の形で連結される。サブシリーズ
-名は `series` 側に入るので、`chapter_label` 単体は短い形 (`第N章` /
-`Chapter N`) を使う。連結後の表示は次のとおり。
+名は `series` 側に入る。`chapter_label` は編内採番なので **`編名 部-章`**
+(編の短名 + `部digit-章番号`、例 `自立編 2-10`)になる。連結後の表示は
+次のとおり。
 
-- JA: `AIネイティブな仕事の作法 — ソフトウェア開発編 · 第N章`
-- EN: `AI-Native Ways of Working — Software · Chapter N`
+- JA: `AIネイティブな仕事の作法 — ソフトウェア開発編 · 自立編 2-10`
+- EN: `AI-Native Ways of Working — Software · Independence 2-10`
 
 ## prev / next チェーン
 

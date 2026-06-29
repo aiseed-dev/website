@@ -493,7 +493,28 @@ Yubikeyなどのセキュリティキーは、Linuxでも問題なく動く。`y
 
 「ゲームができないから Linux は無理」は、もう古い前提だ。**Valve が Steam Deck のために投資してきた Proton（Wine ベースの互換レイヤー）と DXVK / VKD3D の組み合わせで、Windows 専用に作られたゲームの大半が、Debian の上で素直に動く**。
 
-本書の方針は単純だ。**Flathub から Steam（と必要なら Heroic）を入れて、互換レイヤーに全部任せる**。Linux ネイティブ版を探す手間は要らない。
+本書の方針は単純だ。**Flathub から Steam（と必要なら Heroic）を入れて、互換レイヤーに全部任せる**。手持ちの Windows タイトルについては、Linux ネイティブ版を探す手間は要らない。
+
+### まず無料で——ネイティブのオープンソースゲーム
+
+手持ちの Windows ゲームを動かす話に入る前に、**買わなくても今すぐ遊べる**世界があることを書いておく。Linux にはネイティブのオープンソースゲームが揃っていて、どれも **Flatpak 一行**で入る。アカウント登録も課金も、Proton も Wine も要らない。**夏休みに家族や子供と遊ぶなら、ここから始めるのが一番速い**。
+
+```bash
+# 家族・子供向けの定番（Flathub から一行ずつ）
+flatpak install flathub net.supertuxkart.SuperTuxKart   # マリオカート風レース
+flatpak install flathub org.supertuxproject.SuperTux    # スーパーマリオ風アクション
+flatpak install flathub com.play0ad.zeroad              # 0 A.D.（Age of Empires 風 RTS）
+flatpak install flathub org.wesnoth.Wesnoth             # Battle for Wesnoth（戦略 SRPG）
+flatpak install flathub org.luanti.luanti               # Luanti（旧 Minetest、Minecraft 風）
+flatpak install flathub com.github.Anuken.Mindustry     # Mindustry（タワーディフェンス＋工場）
+flatpak install flathub org.openttd.OpenTTD             # OpenTTD（輸送経営シム）
+
+# 小さい子向け
+flatpak install flathub org.kde.gcompris                # GCompris（未就学〜小学生の学習ゲーム集）
+flatpak install flathub org.tuxpaint.Tuxpaint           # Tux Paint（お絵かき）
+```
+
+これらは互換レイヤーを介さず、**Linux のために作られたソフトがそのまま動く**。動作が一番素直で、古い PC でも軽い。「Linux でもゲームできるの?」という問いの、最初の——そして一番確実な——答えがこれだ。手持ちの Steam ライブラリ（Windows 専用タイトル）をどうするかは、次の Proton の話になる。
 
 ### Steam の導入
 
@@ -603,7 +624,7 @@ Bazzite のようなゲーム特化ディストロもある。Steam Deck の OS 
 
 1. 九カテゴリでWindowsアプリをDebianアプリに置き換えた
 2. LINE、Teams、カーネルアンチチート系ゲームなど完全には置き換わらないものを正直に扱った
-3. ゲームは Steam Proton ＋ Heroic で大半が動くことを確認した
+3. ゲームは、無料のネイティブ OSS ゲームが一行で入り、手持ちの Windows タイトルも Steam Proton ＋ Heroic で大半が動くことを確認した
 4. 移行ペース（一日・一週・一ヶ月）を設計した
 
 **捨てる必要があるものは、思っていたよりずっと少ない。** ブラウザ・メール・オフィス・コミュニケーション・画像動画・同期・パスワード・ユーティリティ・ゲーム——本書のスタンスを取ると、Windows でしかできないことは数えるほどしか残らない。

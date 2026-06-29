@@ -7,6 +7,7 @@ description: In June 2026, Axios reported the Trump administration moving to res
 lang: en
 label: Blog
 category: Structural Analysis Notes
+hero_image: IMG_2958.jpg
 ---
 
 # When Fable 5 Returns, Do This First

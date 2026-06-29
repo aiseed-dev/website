@@ -265,7 +265,7 @@ Every chapter that follows is **deduced** from this one fact.
 - 1-04 — what role takes their place (the builder)?
 - 1-05 — when customers themselves pair with AI, what happens to
   the structure of outsourcing?
-- 2-01–2-10 — if customers hold it themselves, how do they stand up
+- 2-01–2-11 — if customers hold it themselves, how do they stand up
   **the whole company IT foundation** — authentication, documents,
   mail, core systems — on their own side (the autonomy part)?
 - 3-03 — can the SIer commission model compete with **AI sitting

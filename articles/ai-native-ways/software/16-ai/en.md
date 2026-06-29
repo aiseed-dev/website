@@ -1,6 +1,6 @@
 ---
 slug: ai
-number: "10"
+number: "11"
 part: "2"
 lang: en
 title: "Stand Up Your Own AI — LLM and RAG"
@@ -9,8 +9,8 @@ description: The Independence part closes by laying AI on top of everything. The
 date: 2026.07.16
 label: Independence 10
 title_html: Lay <span class="accent">your own AI</span><br>on top of everything.
-prev_slug: fastapi
-prev_title: "Build an API — Expose Core Logic with FastAPI"
+prev_slug: structure-knowledge
+prev_title: "Make Your Knowledge Legible — Preparation Is the Main Body, AI the Last Move"
 next_slug: two-worlds
 next_title: "Companies Don't Write Their Own Code — Office and Core, Two Parallel Worlds"
 ---
@@ -121,10 +121,10 @@ Your own AI, on top of everything.
 - **Open WebUI** — a ChatGPT-like window, behind the gate
 - **In-house vs. borrowed** — data and always-on in-house, the hard parts to a frontier model
 
-From 2-02 through 2-10, we replaced Microsoft 365 and the vendor
+From 2-02 through 2-11, we replaced Microsoft 365 and the vendor
 packages under the core systems, one at a time, with OSS. Foundation, gate,
-documents, code, mail, meetings, booking, web, AI — none of it was **written;
-it was stood up.**
+documents, code, mail, meetings, booking, web, information preparation, AI —
+none of it was **written; it was stood up.**
 
 > As written at the start of 2-02 — **the effect of OSS is greater than
 > the effect of AI.** The generic is already shared with the world.

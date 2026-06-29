@@ -10,8 +10,8 @@ label: Independence 9
 title_html: 基幹を<span class="accent">並行稼働</span>で書き換え、<br>自社固有のロジックを一箇所の <span class="accent">API</span> に。
 prev_slug: web
 prev_title: "Webを公開する ── Cloudflare Pages（WordPress 代替）"
-next_slug: ai
-next_title: "自前の AI を据える ── LLM と RAG"
+next_slug: structure-knowledge
+next_title: "社内情報を整える ── 整備こそ本体、AI は最後の一手"
 ---
 
 # API を作る ── FastAPI で基幹のロジックを出す

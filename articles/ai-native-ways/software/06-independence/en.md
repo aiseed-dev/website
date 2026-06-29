@@ -75,7 +75,7 @@ the same independent OSS. **Replace the two left columns with the same right.**
 | **Azure SQL** | **Cloud SQL / BigQuery** | **PostgreSQL / SQLite** | [2-02](/ai-native-ways/software/foundation/) |
 | **Power BI / Excel** | **Looker / Sheets** | **DuckDB + Polars** | [2-02](/ai-native-ways/software/foundation/) |
 | **(Power Apps etc.)** | **Apps Script** | **FastAPI** | [2-09](/ai-native-ways/software/fastapi/) |
-| **Copilot** | **Gemini** | **local LLM (Command A+ etc.) + RAG** | [2-10](/ai-native-ways/software/ai/) |
+| **Copilot** | **Gemini** | **local LLM (Command A+ etc.) + RAG** | [2-11](/ai-native-ways/software/ai/) |
 
 The tools on the right are **separate open tools built by separate
 organizations.** So one vendor's decision can't ripple into the others. Swap
@@ -173,7 +173,10 @@ exactly that order.
 7. **Web publishing** (2-08) — Cloudflare Pages. Hosting with no lock-in
 8. **Core logic** (2-09) — FastAPI. Turn Power Apps / Apps Script back into
    readable code
-9. **AI** (2-10) — local LLM + RAG. Hold AI without your data leaving the
+9. **Prepare the information** (2-10) — OCR, classification, codifying tacit
+   knowledge. Before you put AI on it, build information worth putting it on —
+   preparation is the main body, AI the last move
+10. **AI** (2-11) — local LLM + RAG. Hold AI without your data leaving the
    building
 
 Run each step in **parallel**, the way the 2-09 describes.
@@ -235,7 +238,7 @@ place by the end of the Independence part.
 - **Auth** — PocketBase takes on login for the new system, all in one place
   (2-03)
 - **Extracting business logic** — read legacy code, SQL, and procedure manuals
-  with a **local LLM + RAG** (2-10) and emit Markdown — **without the
+  with a **local LLM + RAG** (2-11) and emit Markdown — **without the
   source ever leaving the building**
 
 In fact, all the core systems and Microsoft / Google ever shared were **just two
@@ -329,7 +332,7 @@ the two suites land on the same right-hand side.
 - **Data layer**: Azure SQL / Cloud SQL → **PostgreSQL / SQLite** (2-02)
 - **Data analysis**: Power BI / Looker → **DuckDB + Polars** (2-02)
 - **Core logic**: Power Apps / Apps Script → **FastAPI** (2-09)
-- **AI**: Copilot / Gemini → **local LLM + RAG** (2-10)
+- **AI**: Copilot / Gemini → **local LLM + RAG** (2-11)
 
 One-to-one — replace the left with the right. The tools on the right are separate
 open tools built by separate organizations, so **one vendor's decision can't

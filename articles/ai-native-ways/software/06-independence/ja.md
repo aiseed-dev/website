@@ -68,7 +68,7 @@ Meet に、Gemini に一直線に繋がる**。名前が違うだけで、束ね
 | **Azure SQL** | **Cloud SQL / BigQuery** | **PostgreSQL・SQLite** | [2-02](/ai-native-ways/software/foundation/) |
 | **Power BI / Excel** | **Looker / Sheets** | **DuckDB + Polars** | [2-02](/ai-native-ways/software/foundation/) |
 | **(Power Apps 等)** | **Apps Script** | **FastAPI** | [2-09](/ai-native-ways/software/fastapi/) |
-| **Copilot** | **Gemini** | **ローカル LLM(Command A+ 等)+ RAG** | [2-10](/ai-native-ways/software/ai/) |
+| **Copilot** | **Gemini** | **ローカル LLM(Command A+ 等)+ RAG** | [2-11](/ai-native-ways/software/ai/) |
 
 右側の道具は **別々の組織が作った、別々のオープンな道具** だ。だから、一本の
 方針変更が他に波及しない。一本を別のものに差し替えても、残りは何も変わらない。
@@ -158,7 +158,9 @@ flowchart LR
 7. **Web 公開**(2-08)── Cloudflare Pages。ロックインの無いホスト
 8. **基幹ロジック**(2-09)── FastAPI。Power Apps / Apps Script を読める
    コードに戻す
-9. **AI**(2-10)── ローカル LLM + RAG。データを社外に出さず AI を持つ
+9. **情報の整備**(2-10)── OCR・分類・属人知の成文化。AI に載せる前に、
+   載せるに値する情報を作る ── 整備こそ本体、AI は最後の一手
+10. **AI**(2-11)── ローカル LLM + RAG。データを社外に出さず AI を持つ
 
 各ステップは、2-09の **並行稼働** で進める。旧(Microsoft / Google)を
 止めず、横で新を動かし、同じ仕事が回ることを確かめてから、旧を解約する。
@@ -209,7 +211,7 @@ flowchart LR
 - **版管理と CI** ── Forgejo(2-04)
 - **認証** ── PocketBase が、新システムのログインを一手に引き受ける(2-03)
 - **業務ロジックの抽出** ── レガシーのコード・SQL・手順書を、**ローカル LLM +
-  RAG**(2-10)で読み解いて Markdown に出す ── **ソースを一歩も社外に出さずに**
+  RAG**(2-11)で読み解いて Markdown に出す ── **ソースを一歩も社外に出さずに**
 
 そもそも、これまで **基幹システムと Microsoft / Google が共有していたのは、
 たった二つ ── 認証(Entra ID / Google ID)と、文書共有(SharePoint / Drive)
@@ -294,7 +296,7 @@ Google も最も深く食い込ませようとするのは、ここ ── **ID 
 - **データ基盤**:Azure SQL / Cloud SQL → **PostgreSQL・SQLite**(2-02)
 - **データ分析**:Power BI / Looker → **DuckDB + Polars**(2-02)
 - **基幹ロジック**:Power Apps / Apps Script → **FastAPI**(2-09)
-- **AI**:Copilot / Gemini → **ローカル LLM + RAG**(2-10)
+- **AI**:Copilot / Gemini → **ローカル LLM + RAG**(2-11)
 
 一対一で、左を右に置き換える。右の道具は別々の組織が作った別々のオープンな道具
 だから、**一本の方針変更が他に波及しない**。これは効率化の話ではない ── 親シリーズ

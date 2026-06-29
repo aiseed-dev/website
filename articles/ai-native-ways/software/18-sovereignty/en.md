@@ -171,7 +171,7 @@ What the **OSS foundation** (Independence part) removes —
   third party holding the act that cuts you off in the first place.
 
 **Sovereign AI** — and the last layer is the AI. Run the **local
-open-weight model** you stood up in 2-10 on your own hardware.
+open-weight model** you stood up in 2-11 on your own hardware.
 
 - **Data never leaves** — documents and conversations never pass through a US
   AI API.

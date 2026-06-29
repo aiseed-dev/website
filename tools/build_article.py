@@ -751,12 +751,13 @@ def _aiways_part_short(subseries: str, meta: dict, lang: str) -> str:
 
 def _aiways_chapter_label(number: str, lang: str, subseries: str = "",
                           part_short: str = "", part: str = "") -> str:
-    """'00' → '序章' / 'Prologue'. Otherwise '第N章' / 'Chapter N'.
+    """Parent series: '00' → '序章' / 'Prologue', otherwise '第N章' / 'Chapter N'.
 
-    For sub-series chapters numbering restarts at 1 within each 編 (part);
-    when `part_short` is given the label includes it, e.g. '導入編 第1章' /
-    'Introduction Chapter 1'. The breadcrumb is rendered as
-    `series · chapter_label`, giving 'ソフトウェア開発編 · 導入編 第1章'.
+    Sub-series chapters renumber within each 編 (part), so the label uses the
+    compound `部-章` form `{part}-{number}` (e.g. '2-10'); when `part_short` is
+    given it is prefixed, giving '編名 部-章' (e.g. '自立編 2-10' /
+    'Independence 2-10'). The breadcrumb is rendered as `series · chapter_label`,
+    giving 'ソフトウェア開発編 · 自立編 2-10'.
     """
     n = number.lstrip("0") or "0"
     if subseries:

@@ -93,7 +93,7 @@ body::before {
 }
 
 .container {
-  max-width: 760px;
+  max-width: 880px;
   margin: 0 auto;
   padding: 0 32px;
   position: relative;
@@ -116,6 +116,10 @@ body::before {
   color: var(--whisper);
 }
 .masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-left a { color: inherit; text-decoration: none; }
+.masthead-left a:hover { color: var(--accent); }
+.masthead-home { color: var(--whisper); }
+.masthead-sep { margin: 0 10px; color: var(--whisper); font-weight: 400; }
 .masthead-right { font-style: italic; }
 
 /* ============================================================
@@ -659,6 +663,46 @@ article img {
 .mermaid svg { max-width: 100%; height: auto; }
 
 /* ============================================================
+   WIDE LAYOUT(広い画面では目次を左サイドバーに常時展開)
+   ============================================================ */
+@media (min-width: 1200px) {
+  body.has-toc .container {
+    max-width: 1320px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 880px);
+    column-gap: 64px;
+    justify-content: center;
+  }
+  body.has-toc .masthead,
+  body.has-toc .hero {
+    grid-column: 1 / -1;
+  }
+  body.has-toc .series-toc {
+    grid-column: 1;
+    grid-row: 3 / span 3;
+    align-self: start;
+    position: sticky;
+    top: 32px;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    margin: 0;
+    padding: 0 12px 12px 0;
+    border-top: none;
+    border-bottom: none;
+  }
+  /* サイドバーでは折りたたみを無効化し、見出しとして表示 */
+  body.has-toc .series-toc summary {
+    pointer-events: none;
+    cursor: default;
+  }
+  body.has-toc .series-toc summary::before { content: none; }
+  body.has-toc .series-toc li { font-size: 13.5px; }
+  body.has-toc article    { grid-column: 2; grid-row: 3; }
+  body.has-toc .chapter-nav { grid-column: 2; grid-row: 4; }
+  body.has-toc .colophon  { grid-column: 2; grid-row: 5; }
+}
+
+/* ============================================================
    DARK MODE(OS の配色設定に追従して自動で暗色に切り替え)
    ============================================================ */
 @media (prefers-color-scheme: dark) {
@@ -694,13 +738,13 @@ article img {
 </style>
 </head>
 
-<body>
+<body class="has-toc">
 
 <div class="container">
 
-  <!-- MASTHEAD -->
+  <!-- MASTHEAD(ホーム › シリーズ目次) -->
   <header class="masthead">
-    <div class="masthead-left"><a href="/phosphorus-and-farming/" style="color: inherit; text-decoration: none;">リン資源枯渇と自然農法シリーズ</a></div>
+    <div class="masthead-left"><a href="/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="/phosphorus-and-farming/">リン資源枯渇と自然農法シリーズ</a></div>
     <div class="masthead-right">第9章 / Essay</div>
   </header>
 
@@ -1595,6 +1639,17 @@ ANAP 編、Oxfam 等支援、多言語版)</li>
 </div>
 
 <script>
+  // 広い画面ではサイドバー目次を常時展開する(狭い画面では折りたたみに戻す)
+  (function () {
+    var toc = document.querySelector(".series-toc details");
+    if (!toc) return;
+    var mq = window.matchMedia("(min-width: 1200px)");
+    function sync() { toc.open = mq.matches; }
+    sync();
+    if (mq.addEventListener) mq.addEventListener("change", sync);
+    else mq.addListener(sync);
+  })();
+
   // Mermaid loads only on pages that contain a .mermaid block.
   // Self-hosted (no third-party CDN dependency); SRI verified.
   if (document.querySelector(".mermaid")) {

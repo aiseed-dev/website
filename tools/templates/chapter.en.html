@@ -80,7 +80,7 @@ body::before {
 }
 
 .container {
-  max-width: 720px;
+  max-width: 860px;
   margin: 0 auto;
   padding: 0 32px;
   position: relative;
@@ -101,6 +101,10 @@ body::before {
   color: var(--whisper);
 }
 .masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-left a { color: inherit; text-decoration: none; }
+.masthead-left a:hover { color: var(--accent); }
+.masthead-home { color: var(--whisper); }
+.masthead-sep { margin: 0 10px; color: var(--whisper); font-weight: 400; }
 .masthead-right { font-style: italic; }
 
 /* HERO */
@@ -608,6 +612,44 @@ article img {
 }
 .mermaid svg { max-width: 100%; height: auto; }
 
+/* WIDE LAYOUT (contents pinned as a left sidebar on wide screens) */
+@media (min-width: 1200px) {
+  body.has-toc .container {
+    max-width: 1300px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 860px);
+    column-gap: 64px;
+    justify-content: center;
+  }
+  body.has-toc .masthead,
+  body.has-toc .hero {
+    grid-column: 1 / -1;
+  }
+  body.has-toc .series-toc {
+    grid-column: 1;
+    grid-row: 3 / span 3;
+    align-self: start;
+    position: sticky;
+    top: 32px;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    margin: 0;
+    padding: 0 12px 12px 0;
+    border-top: none;
+    border-bottom: none;
+  }
+  /* Sidebar mode: no collapsing — the summary acts as a heading */
+  body.has-toc .series-toc summary {
+    pointer-events: none;
+    cursor: default;
+  }
+  body.has-toc .series-toc summary::before { content: none; }
+  body.has-toc .series-toc li { font-size: 14px; }
+  body.has-toc article    { grid-column: 2; grid-row: 3; }
+  body.has-toc .chapter-nav { grid-column: 2; grid-row: 4; }
+  body.has-toc .colophon  { grid-column: 2; grid-row: 5; }
+}
+
 /* ============================================================
    DARK MODE (follows the OS color-scheme preference)
    ============================================================ */
@@ -644,11 +686,11 @@ article img {
 </style>
 </head>
 
-<body>
+<body{% if chapter_toc_html %} class="has-toc"{% endif %}>
 <div class="container">
 
   <header class="masthead">
-    <div class="masthead-left"><a href="{{ series_index_url }}" style="color: inherit; text-decoration: none;">{{ series }}</a></div>
+    <div class="masthead-left"><a href="/en/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="{{ series_index_url }}">{{ series }}</a></div>
     <div class="masthead-right">{{ masthead_right }}</div>
   </header>
 
@@ -684,6 +726,17 @@ article img {
 </div>
 
 <script>
+  // Keep the contents sidebar expanded on wide screens (collapsible on narrow ones)
+  (function () {
+    var toc = document.querySelector(".series-toc details");
+    if (!toc) return;
+    var mq = window.matchMedia("(min-width: 1200px)");
+    function sync() { toc.open = mq.matches; }
+    sync();
+    if (mq.addEventListener) mq.addEventListener("change", sync);
+    else mq.addListener(sync);
+  })();
+
   // Mermaid loads only on pages that contain a .mermaid block.
   // Self-hosted (no third-party CDN dependency); SRI verified.
   if (document.querySelector(".mermaid")) {

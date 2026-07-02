@@ -66,7 +66,7 @@ body::before {
 }
 
 .container {
-  max-width: 820px;
+  max-width: 880px;
   margin: 0 auto;
   padding: 0 32px;
   position: relative;
@@ -87,6 +87,9 @@ body::before {
 }
 .masthead-left  { font-weight: 700; color: var(--ink); }
 .masthead-left a { color: inherit; text-decoration: none; }
+.masthead-left a:hover { color: var(--accent); }
+.masthead-home { color: var(--whisper); }
+.masthead-sep { margin: 0 10px; color: var(--whisper); font-weight: 400; }
 .masthead-right { font-style: italic; }
 
 .hero {
@@ -423,7 +426,7 @@ article img {
 <div class="container">
 
   <header class="masthead">
-    <div class="masthead-left"><a href="{{ series_index_url }}">{{ series }}</a></div>
+    <div class="masthead-left"><a href="/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="{{ series_index_url }}">{{ series }}</a></div>
     <div class="masthead-right">{{ chapter_label }} · {{ example_label }}</div>
   </header>
 

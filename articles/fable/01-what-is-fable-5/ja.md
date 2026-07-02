@@ -8,8 +8,8 @@ date: 2026.07.02
 lang: ja
 prev_slug:
 prev_title:
-next_slug:
-next_title:
+next_slug: cost-and-model-choice
+next_title: コストの仕組みとモデルの使い分け
 ---
 
 # Fable 5 とは何か、何が得意か

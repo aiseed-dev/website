@@ -1,17 +1,12 @@
 """Build Jinja2 template variable dicts for article/index/blog pages.
 
-Each builder returns a flat dict consumed by tools/templates/{article,index}.html.
+Each builder returns a flat dict consumed by tools/templates/index.html.
+(Chapter pages are assembled in build_article.py and rendered via chapter.html.)
 Localization uses _text() for hard-coded JA/EN strings and config.site_text()
 for values overridable via site.json.
 """
 
-from collections import OrderedDict
-from html import escape
-from pathlib import Path
-
 from . import config
-from .images import resolve_og_image
-from .markdown import parse_frontmatter
 
 
 def _text(is_en, en, ja):
@@ -22,412 +17,6 @@ def _text(is_en, en, ja):
 def _nl_to_br(text):
     """Convert newlines to <br> for HTML inline blocks."""
     return text.replace("\n", "<br>\n                    ")
-
-
-# ---------------------------------------------------------------------------
-# Series TOC sidebar (Wikipedia-style) for chapter pages
-#
-# Walks the insights tree once and renders a flat HTML sidebar grouped by
-# part, with the current chapter highlighted.  The same shape is reused for
-# the book series via `_collect_book_chapters` below.
-# ---------------------------------------------------------------------------
-
-_PART_LABEL_JA = {"1": "第一部", "2": "第二部", "3": "第三部"}
-_PART_LABEL_EN = {"1": "Part I", "2": "Part II", "3": "Part III"}
-
-
-def _collect_insights_chapters(lang):
-    """Walk articles/insights and return list of (part, number, slug, title)
-    sorted by (part, number).  Recurses one level into part-* subdirs."""
-    fname = "ja.md" if lang == "ja" else "en.md"
-    root = config.INSIGHTS_DIR
-    if not root.exists():
-        return []
-    chapters = []
-    for sub in sorted(root.iterdir()):
-        if not sub.is_dir():
-            continue
-        if sub.name[:1].isdigit():
-            f = sub / fname
-            if f.exists():
-                chapters.append(_chapter_meta(f))
-        else:
-            # part directory — recurse one level
-            for ch_sub in sorted(sub.iterdir()):
-                if not ch_sub.is_dir():
-                    continue
-                if not ch_sub.name[:1].isdigit():
-                    continue
-                f = ch_sub / fname
-                if f.exists():
-                    chapters.append(_chapter_meta(f))
-    chapters = [c for c in chapters if c is not None]
-    chapters.sort(key=lambda c: (c["part"], c["number"]))
-    return chapters
-
-
-def _chapter_meta(md_path):
-    """Extract minimal metadata from a chapter file for TOC building."""
-    try:
-        text = md_path.read_text(encoding="utf-8")
-    except OSError:
-        return None
-    meta, _ = parse_frontmatter(text)
-    return {
-        "part": (meta.get("part", "9") or "9").strip().strip('"'),
-        "part_title": (meta.get("part_title", "") or "").strip().strip('"'),
-        "number": (meta.get("number", "99") or "99").strip().strip('"'),
-        "slug": (meta.get("slug", "") or "").strip().strip('"'),
-        "title": (meta.get("title", "") or "").strip(),
-    }
-
-
-def _build_insights_toc_html(lang, current_slug):
-    """Render the insights series sidebar HTML, current chapter highlighted."""
-    is_en = lang == "en"
-    base = "/en/insights" if is_en else "/insights"
-    chapters = _collect_insights_chapters(lang)
-    if not chapters:
-        return "", ""
-
-    # Group by part
-    grouped = OrderedDict()
-    for c in chapters:
-        grouped.setdefault(c["part"], []).append(c)
-
-    part_labels = _PART_LABEL_EN if is_en else _PART_LABEL_JA
-    series_title = _text(is_en, "Structural Analysis", "構造分析シリーズ")
-    related_title = _text(is_en, "Related Series", "関連シリーズ")
-    book_label = _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian")
-    aiways_label = _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法")
-    farming_label = _text(is_en, "Phosphorus & Natural Farming", "リン資源枯渇と自然農法")
-
-    parts_html = []
-    current_part = ""
-    current_part_title = ""
-    current_chapter_label = ""
-    for part_key, items in grouped.items():
-        label = part_labels.get(part_key, "")
-        sample_title = items[0].get("part_title", "") if items else ""
-        part_heading = f"{label} {escape(sample_title)}".strip() if label else escape(sample_title)
-        chapter_lis = []
-        for c in items:
-            is_current = c["slug"] == current_slug
-            if is_current:
-                current_part = part_key
-                current_part_title = sample_title
-                # Use the local chapter number for the breadcrumb
-                num = c["number"].lstrip("0") or "0"
-                current_chapter_label = _text(
-                    is_en, f"Chapter {num}", f"第{num}章"
-                )
-            cls = "toc-chapter is-current" if is_current else "toc-chapter"
-            num_display = c["number"].lstrip("0") or c["number"]
-            aria = ' aria-current="page"' if is_current else ""
-            chapter_lis.append(
-                f'<li><a href="{base}/{escape(c["slug"])}/" '
-                f'class="{cls}"{aria}>'
-                f'<span class="toc-num">{escape(num_display)}.</span> '
-                f'<span class="toc-title">{escape(c["title"])}</span></a></li>'
-            )
-        parts_html.append(
-            f'<div class="toc-part" data-part="{escape(part_key)}">'
-            f'<h3 class="toc-part-title">{part_heading}</h3>'
-            f'<ol class="toc-chapters">{"".join(chapter_lis)}</ol>'
-            f"</div>"
-        )
-
-    book_base = "/en/claude-debian" if is_en else "/claude-debian"
-    aiways_base = "/en/ai-native-ways" if is_en else "/ai-native-ways"
-    farming_base = "/en/phosphorus-and-farming" if is_en else "/phosphorus-and-farming"
-    related_html = (
-        f'<div class="toc-related">'
-        f'<p class="toc-related-title">{escape(related_title)}</p>'
-        f"<ul>"
-        f'<li><a href="{book_base}/">{escape(book_label)}</a></li>'
-        f'<li><a href="{aiways_base}/">{escape(aiways_label)}</a></li>'
-        f'<li><a href="{farming_base}/">{escape(farming_label)}</a></li>'
-        f"</ul></div>"
-    )
-
-    toc_html = (
-        f'<aside class="series-toc" id="seriesToc" aria-label="{escape(series_title)}">'
-        f'<button class="series-toc-close" type="button" aria-label="Close">×</button>'
-        f'<div class="series-toc-inner">'
-        f'<p class="series-toc-title"><a href="{base}/">{escape(series_title)}</a></p>'
-        f"{''.join(parts_html)}"
-        f"{related_html}"
-        f"</div></aside>"
-    )
-
-    # Breadcrumb: aiseed.dev › 構造分析 › 第一部 ... › 第6章 ...
-    site_root = "/en/" if is_en else "/"
-    site_label = "aiseed.dev"
-    crumbs = [
-        f'<a href="{site_root}">{site_label}</a>',
-        f'<a href="{base}/">{escape(series_title)}</a>',
-    ]
-    if current_part and current_part in part_labels:
-        crumbs.append(
-            f'<span class="crumb-part">{part_labels[current_part]} '
-            f"{escape(current_part_title)}</span>"
-        )
-    if current_chapter_label:
-        crumbs.append(
-            f'<span class="crumb-current" aria-current="page">'
-            f"{escape(current_chapter_label)}</span>"
-        )
-    breadcrumb_html = (
-        '<nav class="breadcrumb" aria-label="breadcrumb">'
-        + ' <span class="crumb-sep">›</span> '.join(crumbs)
-        + "</nav>"
-    )
-
-    return toc_html, breadcrumb_html
-
-
-def _collect_book_chapters(lang, subseries=""):
-    """Walk articles/claude-debian (or a sub-series folder) and return
-    chapters for the book TOC."""
-    fname = "ja.md" if lang == "ja" else "en.md"
-    root = config.BOOK_DIR / subseries if subseries else config.BOOK_DIR
-    if not root.exists():
-        return []
-    chapters = []
-    for sub in sorted(root.iterdir()):
-        if not sub.is_dir():
-            continue
-        if not sub.name[:1].isdigit():
-            continue
-        f = sub / fname
-        if f.exists():
-            meta = _chapter_meta(f)
-            if meta:
-                chapters.append(meta)
-    chapters.sort(key=lambda c: c["number"])
-    return chapters
-
-
-def _build_book_toc_html(lang, current_slug, subseries=""):
-    """Render the book series sidebar HTML, current chapter highlighted.
-
-    For sub-series chapters the sidebar is scoped to the sub-series and the
-    related-links block points back to the parent (desktop) series.
-    """
-    is_en = lang == "en"
-    book_base = _book_base(lang, subseries)
-    parent_base = _book_base(lang)
-    chapters = _collect_book_chapters(lang, subseries)
-    if not chapters:
-        return "", ""
-
-    series_title = _book_series_title(lang, subseries)
-    parent_title = _book_series_title(lang)
-    related_title = _text(is_en, "Related Series", "関連シリーズ")
-    insights_label = _text(is_en, "Structural Analysis", "構造分析")
-    aiways_label = _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法")
-    insights_base = "/en/insights" if is_en else "/insights"
-    aiways_base = "/en/ai-native-ways" if is_en else "/ai-native-ways"
-
-    chapter_lis = []
-    current_chapter_label = ""
-    for c in chapters:
-        stem = _book_stem(c["slug"], subseries)
-        is_current = c["slug"] == current_slug
-        if is_current:
-            n = c["number"].lstrip("0") or "0"
-            current_chapter_label = (
-                _text(is_en, "Prologue", "序章") if n == "0"
-                else _text(is_en, f"Chapter {n}", f"第{n}章")
-            )
-        cls = "toc-chapter is-current" if is_current else "toc-chapter"
-        n_disp = c["number"]
-        aria = ' aria-current="page"' if is_current else ""
-        chapter_lis.append(
-            f'<li><a href="{book_base}/{escape(stem)}/" '
-            f'class="{cls}"{aria}>'
-            f'<span class="toc-num">{escape(n_disp)}.</span> '
-            f'<span class="toc-title">{escape(c["title"])}</span></a></li>'
-        )
-
-    related_lis = []
-    if subseries:
-        related_lis.append(
-            f'<li><a href="{parent_base}/">{escape(parent_title)}</a></li>'
-        )
-    else:
-        for sub_key, cfg in BOOK_SUBSERIES.items():
-            if not _collect_book_chapters(lang, sub_key):
-                continue
-            sub_title = _book_series_title(lang, sub_key)
-            related_lis.append(
-                f'<li><a href="{_book_base(lang, sub_key)}/">{escape(sub_title)}</a></li>'
-            )
-    related_lis.append(f'<li><a href="{insights_base}/">{escape(insights_label)}</a></li>')
-    related_lis.append(f'<li><a href="{aiways_base}/">{escape(aiways_label)}</a></li>')
-
-    toc_html = (
-        f'<aside class="series-toc" id="seriesToc" aria-label="{escape(series_title)}">'
-        f'<button class="series-toc-close" type="button" aria-label="Close">×</button>'
-        f'<div class="series-toc-inner">'
-        f'<p class="series-toc-title"><a href="{book_base}/">{escape(series_title)}</a></p>'
-        f'<ol class="toc-chapters toc-chapters-flat">{"".join(chapter_lis)}</ol>'
-        f'<div class="toc-related">'
-        f'<p class="toc-related-title">{escape(related_title)}</p>'
-        f"<ul>"
-        f"{''.join(related_lis)}"
-        f"</ul></div>"
-        f"</div></aside>"
-    )
-
-    crumbs = [
-        f'<a href="{"/en/" if is_en else "/"}">aiseed.dev</a>',
-        f'<a href="{parent_base}/">{escape(parent_title)}</a>',
-    ]
-    if subseries:
-        cfg = BOOK_SUBSERIES[subseries]
-        sub_name = cfg["name_en"] if is_en else cfg["name_ja"]
-        crumbs.append(f'<a href="{book_base}/">{escape(sub_name)}</a>')
-    if current_chapter_label:
-        crumbs.append(
-            f'<span class="crumb-current" aria-current="page">'
-            f"{escape(current_chapter_label)}</span>"
-        )
-    breadcrumb_html = (
-        '<nav class="breadcrumb" aria-label="breadcrumb">'
-        + ' <span class="crumb-sep">›</span> '.join(crumbs)
-        + "</nav>"
-    )
-
-    return toc_html, breadcrumb_html
-
-
-# ---------------------------------------------------------------------------
-# Article template variables
-# ---------------------------------------------------------------------------
-
-def article_vars(meta, body_html):
-    """Build template variables for article pages."""
-    lang = meta.get("lang", "ja")
-    is_en = lang == "en"
-    number = meta.get("number", "")
-    prev_slug = meta.get("prev_slug", "")
-    prev_title = meta.get("prev_title", "")
-    next_slug = meta.get("next_slug", "")
-    next_title = meta.get("next_title", "")
-
-    slug = meta.get("slug", "")
-    insights_base = "/en/insights" if is_en else "/insights"
-    series_toc_html, breadcrumb_html = _build_insights_toc_html(lang, slug)
-    prev_prefix = "Prev: " if is_en else "前: "
-    next_prefix = "Next: " if is_en else "次: "
-    insights_top = "Insights Top" if is_en else "Insights トップ"
-
-    # Article navigation HTML
-    nav_html = '<div class="article-nav">\n'
-    if prev_slug:
-        nav_html += f'  <a href="{insights_base}/{prev_slug}/">&larr; {prev_prefix}{prev_title}</a>\n'
-    else:
-        nav_html += '  <span></span>\n'
-    if next_slug:
-        nav_html += f'  <a href="{insights_base}/{next_slug}/">{next_prefix}{next_title} &rarr;</a>\n'
-    else:
-        nav_html += f'  <a href="{insights_base}/">{insights_top} &rarr;</a>\n'
-    nav_html += '</div>'
-
-    return {
-        "lang": lang,
-        "title": meta.get("title", ""),
-        "subtitle": meta.get("subtitle", ""),
-        "description": meta.get("description", ""),
-        "date": meta.get("date", ""),
-        "number": number,
-        "label": meta.get("label", f"Structural Analysis {number}"),
-        "body_html": body_html,
-        "nav_html": nav_html,
-        # CTA
-        "cta_label": meta.get("cta_label", "Back to Soil"),
-        "cta_title": meta.get("cta_title", _text(is_en,
-            "See the Structure", "構造を見る")),
-        "cta_text": meta.get("cta_text", _text(is_en,
-            "From AI to agriculture — every structural analysis converges on one conclusion.",
-            "AIから農業まで——全ての構造分析は、一つの結論に向かう。")),
-        "cta_btn1_text": meta.get("cta_btn1_text", _text(is_en, "Natural Farming", "自然農法とは")),
-        "cta_btn1_link": meta.get("cta_btn1_link", "/en/natural-farming/" if is_en else "/natural-farming/"),
-        "cta_btn2_text": meta.get("cta_btn2_text", "Light Farming"),
-        "cta_btn2_link": meta.get("cta_btn2_link", "/en/light-farming/" if is_en else "/light-farming/"),
-        # Paths
-        "css_path": "../../../css/style.css" if is_en else "../../css/style.css",
-        "js_path": "../../../js/main.js" if is_en else "../../js/main.js",
-
-        "asset_version": config.asset_version(),
-        # When hero_image is set, resolve_og_image() below generates og-image.jpg
-        # in the same output directory; reuse it as the page-hero background
-        # (1200x630 is already an appropriate wide aspect ratio).
-        "img_path": "og-image.jpg" if meta.get("hero_image") else (
-            "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg"
-        ),
-        # Insights chapters are dense text analysis; a decorative background
-        # image breaks the reading flow. Keep og:image (separate variable) for
-        # social sharing, but suppress the visible hero image.
-        "show_hero_image": False,
-        # Wikipedia-style sidebar TOC + breadcrumb (rendered server-side).
-        "series_toc_html": series_toc_html,
-        "breadcrumb_html": breadcrumb_html,
-        "insights_base": insights_base,
-        "blog_base": "/en/blog" if is_en else "/blog",
-        "book_base": "/en/claude-debian" if is_en else "/claude-debian",
-        # Navigation labels
-        "site_name": config.site_text("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
-        "site_tagline": _text(is_en, "aiseed.dev", "aiseed.dev"),
-        "home_label": _text(is_en, "Home", "ホーム"),
-        "home_link": "/en/" if is_en else "/",
-        "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
-        "lf_label": "Light Farming",
-        "about_link": "/en/natural-farming/" if is_en else "/natural-farming/",
-        "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
-        "our_approach_link": "/en/about/" if is_en else "/about/",
-        "our_approach_label": _text(is_en, "Our Approach", "私たちのアプローチ"),
-        "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
-        "privacy_link": "/en/privacy/" if is_en else "/privacy/",
-        "privacy_label": _text(is_en, "Privacy", "プライバシー"),
-        "insights_label": "Insights",
-        "articles_parent_label": _text(is_en, "Articles", "記事"),
-        "insights_child_label": _text(is_en, "Structural Analysis", "構造分析"),
-        "book_label": _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian"),
-        "aiways_label": _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法"),
-        "farming_base": "/en/phosphorus-and-farming" if is_en else "/phosphorus-and-farming",
-        "farming_label": _text(is_en, "Phosphorus Depletion and Natural Farming", "リン資源枯渇と自然農法"),
-        "aiways_base": "/en/ai-native-ways" if is_en else "/ai-native-ways",
-        "contact_label": _text(is_en, "Contact", "お問い合わせ"),
-        "menu_label": _text(is_en, "Menu", "メニュー"),
-        "pages_label": _text(is_en, "Pages", "ページ"),
-        "links_label": _text(is_en, "Links", "関連リンク"),
-        "series_label": _text(is_en,
-            f"Structural Analysis Series {number}",
-            f"構造分析シリーズ {number}"),
-        "vegitage_label": _text(is_en, "Natural Farming Community", "自然農法コミュニティ"),
-        "footer_about": _text(is_en,
-            "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
-            "food, energy, AI, healthcare, and pensions — every structure connects.",
-            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
-        # SEO
-        "canonical_url": f"{config.SITE_URL}{insights_base}/{slug}/",
-        "hreflang_ja": f"{config.SITE_URL}/insights/{slug}/",
-        "hreflang_en": f"{config.SITE_URL}/en/insights/{slug}/",
-        "og_locale": "en_US" if is_en else "ja_JP",
-        "og_image": resolve_og_image(
-            meta,
-            Path(meta.get("_out_dir", ".")),
-            f"{config.SITE_URL}{insights_base}/{slug}",
-        ),
-        # Language switch toggle
-        "has_translation": bool(meta.get("_has_translation", False)),
-        "lang_switch_link": f"/insights/{slug}/" if is_en else f"/en/insights/{slug}/",
-        "lang_switch_label": "日本語" if is_en else "EN",
-        "lang_switch_hreflang": "ja" if is_en else "en",
-        "lang_switch_aria": "日本語版を表示" if is_en else "View in English",
-    }
 
 
 def index_vars(lang, article_list_html):
@@ -497,6 +86,8 @@ def index_vars(lang, article_list_html):
         "aiways_label": _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法"),
         "farming_base": "/en/phosphorus-and-farming" if is_en else "/phosphorus-and-farming",
         "farming_label": _text(is_en, "Phosphorus Depletion and Natural Farming", "リン資源枯渇と自然農法"),
+        "fable_base": "/fable",  # JA-only series for now; no /en/fable/ index yet
+        "fable_label": _text(is_en, "Fable 5 Is Back", "Fable 5 が帰ってきた"),
         "aiways_base": "/en/ai-native-ways" if is_en else "/ai-native-ways",
         "insights_base": insights_base,
         "blog_base": "/en/blog" if is_en else "/blog",
@@ -610,7 +201,7 @@ def _book_base(lang, subseries=""):
     return f"{base}/{subseries}" if subseries else base
 
 
-def _book_series_title(lang, subseries=""):
+def book_series_title(lang, subseries=""):
     """Display title: parent title, or 'parent — sub-series name'."""
     is_en = lang == "en"
     title = _BOOK_TITLE_EN if is_en else _BOOK_TITLE_JA
@@ -619,143 +210,6 @@ def _book_series_title(lang, subseries=""):
         name = cfg["name_en"] if is_en else cfg["name_ja"]
         return f"{title} — {name}"
     return title
-
-
-def book_vars(meta, body_html):
-    """Build template variables for a single book chapter."""
-    lang = meta.get("lang", "ja")
-    is_en = lang == "en"
-    subseries = meta.get("_subseries", "")
-    book_base = _book_base(lang, subseries)
-    book_title = _book_series_title(lang, subseries)
-
-    slug = meta.get("slug", "")
-    stem = _book_stem(slug, subseries)
-    number = meta.get("number", "")
-
-    prev_slug = meta.get("prev_slug", "")
-    prev_title = meta.get("prev_title", "")
-    next_slug = meta.get("next_slug", "")
-    next_title = meta.get("next_title", "")
-
-    series_toc_html, breadcrumb_html = _build_book_toc_html(lang, slug, subseries)
-
-    # Navigation: prev/next frontmatter uses full slug; URLs use the stem.
-    # At the tail of the book we fall back to the table of contents.
-    book_top = _text(is_en, f"{book_title} TOC", f"{book_title} 目次")
-    prev_prefix = "Prev: " if is_en else "前: "
-    next_prefix = "Next: " if is_en else "次: "
-
-    nav_html = '<div class="article-nav">\n'
-    if prev_slug:
-        nav_html += f'  <a href="{book_base}/{_book_stem(prev_slug, subseries)}/">&larr; {prev_prefix}{prev_title}</a>\n'
-    else:
-        nav_html += '  <span></span>\n'
-    if next_slug:
-        nav_html += f'  <a href="{book_base}/{_book_stem(next_slug, subseries)}/">{next_prefix}{next_title} &rarr;</a>\n'
-    else:
-        nav_html += f'  <a href="{book_base}/">{book_top} &rarr;</a>\n'
-    nav_html += '</div>'
-
-    # Chapter pages of a sub-series sit one directory deeper, so relative
-    # asset paths need one more '../'.
-    rel = "../" * ((3 if is_en else 2) + (1 if subseries else 0))
-
-    return {
-        "lang": lang,
-        "title": meta.get("title", ""),
-        "subtitle": meta.get("subtitle", ""),
-        "description": meta.get("description", ""),
-        "date": meta.get("date", ""),
-        "number": number,
-        "label": meta.get("label", f"{book_title} {number}"),
-        "body_html": body_html,
-        "nav_html": nav_html,
-        # CTA — fall back to generic "back to TOC" when chapter frontmatter
-        # hasn't set its own CTA buttons.
-        "cta_label": meta.get("cta_label", book_title),
-        "cta_title": meta.get("cta_title", _text(is_en,
-            "Read with Claude beside you",
-            "Claudeを横に置いて、次の章へ")),
-        "cta_text": meta.get("cta_text", _text(is_en,
-            "Reading alone isn't enough. Type your situation into Claude as you read,"
-            " and the same textbook becomes tailored to you.",
-            "読むだけでは身につかない。Claudeに自分の状況を打ち込みながら読むことで、"
-            "教科書は自分専用の教材になる。")),
-        "cta_btn1_text": meta.get("cta_btn1_text", _text(is_en, "Table of Contents", "目次へ")),
-        "cta_btn1_link": meta.get("cta_btn1_link", f"{book_base}/"),
-        "cta_btn2_text": meta.get("cta_btn2_text", "Insights"),
-        "cta_btn2_link": meta.get("cta_btn2_link", "/en/insights/" if is_en else "/insights/"),
-        # Paths
-        "css_path": f"{rel}css/style.css",
-        "js_path": f"{rel}js/main.js",
-        "asset_version": config.asset_version(),
-        # Reuse og-image.jpg (same dir) as page hero when hero_image is set
-        "img_path": "og-image.jpg" if meta.get("hero_image") else (
-            f"{rel}images/IMG_3285.jpg"
-        ),
-        # Book chapters are dense, structured text; suppress the visible hero
-        # image. og:image (separate variable) is preserved for social sharing.
-        "show_hero_image": False,
-        # Wikipedia-style sidebar TOC + breadcrumb (rendered server-side).
-        "series_toc_html": series_toc_html,
-        "breadcrumb_html": breadcrumb_html,
-        # Navigation bar labels (shared site nav)
-        "insights_base": "/en/insights" if is_en else "/insights",
-        "blog_base": "/en/blog" if is_en else "/blog",
-        # Site-nav link always points at the parent series index.
-        "book_base": _book_base(lang),
-        "site_name": config.site_text("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
-        "site_tagline": "aiseed.dev",
-        "home_label": _text(is_en, "Home", "ホーム"),
-        "home_link": "/en/" if is_en else "/",
-        "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
-        "lf_label": "Light Farming",
-        "about_link": "/en/natural-farming/" if is_en else "/natural-farming/",
-        "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
-        "our_approach_link": "/en/about/" if is_en else "/about/",
-        "our_approach_label": _text(is_en, "Our Approach", "私たちのアプローチ"),
-        "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
-        "privacy_link": "/en/privacy/" if is_en else "/privacy/",
-        "privacy_label": _text(is_en, "Privacy", "プライバシー"),
-        "insights_label": "Insights",
-        "articles_parent_label": _text(is_en, "Articles", "記事"),
-        "insights_child_label": _text(is_en, "Structural Analysis", "構造分析"),
-        "book_label": _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian"),
-        "aiways_label": _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法"),
-        "farming_base": "/en/phosphorus-and-farming" if is_en else "/phosphorus-and-farming",
-        "farming_label": _text(is_en, "Phosphorus Depletion and Natural Farming", "リン資源枯渇と自然農法"),
-        "aiways_base": "/en/ai-native-ways" if is_en else "/ai-native-ways",
-        "contact_label": _text(is_en, "Contact", "お問い合わせ"),
-        "menu_label": _text(is_en, "Menu", "メニュー"),
-        "pages_label": _text(is_en, "Pages", "ページ"),
-        "links_label": _text(is_en, "Links", "関連リンク"),
-        "series_label": f"{book_title} {number}",
-        "vegitage_label": _text(is_en, "Natural Farming Community", "自然農法コミュニティ"),
-        "footer_about": _text(is_en,
-            "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
-            "food, energy, AI, healthcare, and pensions — every structure connects.",
-            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
-        # SEO
-        "canonical_url": f"{config.SITE_URL}{book_base}/{stem}/",
-        "hreflang_ja": f"{config.SITE_URL}{_book_base('ja', subseries)}/{stem}/",
-        "hreflang_en": f"{config.SITE_URL}{_book_base('en', subseries)}/{stem}/" if meta.get("_has_translation") else "",
-        "og_locale": "en_US" if is_en else "ja_JP",
-        "og_image": resolve_og_image(
-            meta,
-            Path(meta.get("_out_dir", ".")),
-            f"{config.SITE_URL}{book_base}/{stem}",
-        ),
-        # Language switch — only shown when a sibling-language edition exists.
-        "has_translation": bool(meta.get("_has_translation", False)),
-        "lang_switch_link": (
-            f"{_book_base('ja', subseries)}/{stem}/" if is_en
-            else f"{_book_base('en', subseries)}/{stem}/"
-        ),
-        "lang_switch_label": "日本語" if is_en else "EN",
-        "lang_switch_hreflang": "ja" if is_en else "en",
-        "lang_switch_aria": "日本語版を表示" if is_en else "View in English",
-    }
 
 
 _AIWAYS_BASE_JA = "/ai-native-ways"
@@ -793,6 +247,8 @@ def aiways_index_vars(lang, chapter_list_html, has_translation=False):
         "aiways_label": _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法"),
         "farming_base": "/en/phosphorus-and-farming" if is_en else "/phosphorus-and-farming",
         "farming_label": _text(is_en, "Phosphorus Depletion and Natural Farming", "リン資源枯渇と自然農法"),
+        "fable_base": "/fable",  # JA-only series for now; no /en/fable/ index yet
+        "fable_label": _text(is_en, "Fable 5 Is Back", "Fable 5 が帰ってきた"),
         "aiways_base": "/en/ai-native-ways" if is_en else "/ai-native-ways",
         "insights_base": "/en/insights" if is_en else "/insights",
         "blog_base": "/en/blog" if is_en else "/blog",
@@ -891,6 +347,8 @@ def farming_index_vars(lang, chapter_list_html, has_translation=False):
         "aiways_label": _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法"),
         "farming_base": "/en/phosphorus-and-farming" if is_en else "/phosphorus-and-farming",
         "farming_label": _text(is_en, "Phosphorus Depletion and Natural Farming", "リン資源枯渇と自然農法"),
+        "fable_base": "/fable",  # JA-only series for now; no /en/fable/ index yet
+        "fable_label": _text(is_en, "Fable 5 Is Back", "Fable 5 が帰ってきた"),
         "aiways_base": "/en/ai-native-ways" if is_en else "/ai-native-ways",
         "insights_base": "/en/insights" if is_en else "/insights",
         "blog_base": "/en/blog" if is_en else "/blog",
@@ -956,12 +414,116 @@ def farming_index_vars(lang, chapter_list_html, has_translation=False):
     }
 
 
+_FABLE_BASE_JA = "/fable"
+_FABLE_BASE_EN = "/en/fable"
+_FABLE_TITLE_JA = "Fable 5 が帰ってきた"
+_FABLE_TITLE_EN = "Fable 5 Is Back"
+
+
+def fable_index_vars(lang, chapter_list_html, has_translation=False):
+    """Build template variables for the fable series table-of-contents page.
+
+    連載「Fable 5 が帰ってきた — 賢いチャットAIとして使うものではない」。
+    Copy follows the series design doc at docs/plan/fable/plan.md.
+    """
+    is_en = lang == "en"
+    fable_base = _FABLE_BASE_EN if is_en else _FABLE_BASE_JA
+    fable_title = _FABLE_TITLE_EN if is_en else _FABLE_TITLE_JA
+
+    return {
+        "lang": lang,
+        "site_name": config.site_text("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
+        "home_label": _text(is_en, "Home", "ホーム"),
+        "home_link": "/en/" if is_en else "/",
+        "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
+        "lf_label": "Light Farming",
+        "about_link": "/en/natural-farming/" if is_en else "/natural-farming/",
+        "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
+        "our_approach_link": "/en/about/" if is_en else "/about/",
+        "our_approach_label": _text(is_en, "Our Approach", "私たちのアプローチ"),
+        "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
+        "privacy_link": "/en/privacy/" if is_en else "/privacy/",
+        "privacy_label": _text(is_en, "Privacy", "プライバシー"),
+        "menu_label": _text(is_en, "Menu", "メニュー"),
+        "pages_label": _text(is_en, "Pages", "ページ"),
+        "links_label": _text(is_en, "Links", "関連リンク"),
+        "articles_parent_label": _text(is_en, "Articles", "記事"),
+        "insights_child_label": _text(is_en, "Structural Analysis", "構造分析"),
+        "book_label": _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian"),
+        "aiways_label": _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法"),
+        "farming_base": "/en/phosphorus-and-farming" if is_en else "/phosphorus-and-farming",
+        "farming_label": _text(is_en, "Phosphorus Depletion and Natural Farming", "リン資源枯渇と自然農法"),
+        "fable_base": "/fable",  # JA-only series for now; no /en/fable/ index yet
+        "fable_label": _text(is_en, "Fable 5 Is Back", "Fable 5 が帰ってきた"),
+        "aiways_base": "/en/ai-native-ways" if is_en else "/ai-native-ways",
+        "insights_base": "/en/insights" if is_en else "/insights",
+        "blog_base": "/en/blog" if is_en else "/blog",
+        "book_base": "/en/claude-debian" if is_en else "/claude-debian",
+        "css_path": "../../css/style.css" if is_en else "../css/style.css",
+        "js_path": "../../js/main.js" if is_en else "../js/main.js",
+
+        "asset_version": config.asset_version(),
+        "img_path": "../../images/IMG_3285.jpg" if is_en else "../images/IMG_3285.jpg",
+        "meta_description": _text(is_en,
+            "Fable 5 is not an AI to use for everything. A practical series on deciding which work is worth handing to Anthropic's top-tier model — and which is better left to Sonnet or Opus. Cost structure, long-context reading, multi-step autonomous work, coding, and the safety classifier.",
+            "Fable 5 は「何にでも使うAI」ではない。高コストな最上位モデルを、任せる価値のある仕事にだけ使うための見極め方を伝える連載。コストの仕組み、大量資料の読解、複数工程の自律作業、コーディング、安全分類器 ── 実務の判断基準を全6回+番外編で。"),
+        "structural_analysis_label": fable_title,
+        "page_title": fable_title,
+        "page_subtitle": _text(is_en,
+            "Not a clever chat AI — is that job worth handing to Fable 5?",
+            "賢いチャットAIとして使うものではない ── その仕事は、Fable 5 に頼む価値があるか?"),
+        "other_lang_link": (_FABLE_BASE_JA + "/") if is_en else (_FABLE_BASE_EN + "/"),
+        "other_lang_text": _text(is_en, "日本語版はこちら →", "English version available →") if has_translation else "",
+        "lang_switch_label": "日本語" if is_en else "EN",
+        "lang_switch_hreflang": "ja" if is_en else "en",
+        "lang_switch_aria": "日本語版を表示" if is_en else "View in English",
+        "series_title": _text(is_en, "Series — 6 installments + an outlook column", "連載 — 全6回+番外編"),
+        "series_description": _text(is_en,
+            "Fable 5 raised the ceiling on execution, at more than three times Sonnet's price. What readers need is not another showcase — it is a working standard for routing each job to Sonnet, Opus, or Fable 5. Installments are published as they clear fact-checking.",
+            "Fable 5 が引き上げたのは「実現力」の上限であり、料金は Sonnet の3倍以上。必要なのはすごさの紹介ではなく、目の前の仕事を Sonnet / Opus / Fable 5 に振り分ける実務的な判断基準である。各回は事実確認を経て順次公開する。"),
+        "article_list_html": chapter_list_html,
+        "intro_html": _text(is_en,
+            "In June 2026, Anthropic released Fable 5 — the first generally available model of the new Mythos class, above Opus.<br>\n                    "
+            "It excels at long, complex work it can carry through without losing context. And it costs twice Opus, three times Sonnet.<br>\n                    "
+            "So the question that matters is not \"how good is it\" but \"which jobs are worth it\".",
+            "2026年6月、Anthropic は Opus の上位に新設された「Mythosクラス」初の一般提供モデル、Fable 5 を公開した。<br>\n                    "
+            "得意なのは、長く複雑な仕事を、途中で文脈を失わずに進めること。そして料金は Opus の2倍、Sonnet の3倍以上。<br>\n                    "
+            "だから重要な問いは「どれほど賢いか」ではなく「どの仕事に使う価値があるか」である。"),
+        "method_title": _text(is_en, "How to read", "読み方"),
+        "method_html": _text(is_en,
+            "Each installment closes by answering one question: is this job worth handing to Fable 5?<br>\n                    "
+            "Read the first installment first; the rest can be read in the order your work demands.",
+            "各回は必ず「その仕事は、Fable 5 に頼む価値があるか?」に答えて締める。<br>\n                    "
+            "まず第1回を読む。残りは自分の仕事に合わせて必要な回から読める。"),
+        "quote_html": _text(is_en,
+            "Direction is decided by humans. Execution is done by AI.<br>\n"
+            "The ceiling on execution has risen — which makes deciding direction heavier work than before.",
+            "方向性の決定は人間、実現はAI。<br>\n"
+            "実現力の上限は上がった。方向性を決める仕事は、むしろ重くなった。"),
+        "cta_title": _text(is_en, "Start with installment 1", "第1回から読み始める"),
+        "cta_html": _text(is_en,
+            "Start with what Fable 5 is — and what it is not good at.",
+            "まずは「Fable 5 とは何か、何が得意か」から。得意でないことも、そこで分かる。"),
+        "footer_about": _text(is_en,
+            "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
+            "food, energy, AI, healthcare, and pensions — every structure connects.",
+            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
+        "copyright_text": config.site_text("copyright_text", lang, _text(is_en, "Living in the AI Era — aiseed.dev", "AI時代の暮らし")),
+        # SEO
+        "canonical_url": f"{config.SITE_URL}{fable_base}/",
+        "hreflang_ja": f"{config.SITE_URL}{_FABLE_BASE_JA}/",
+        "hreflang_en": f"{config.SITE_URL}{_FABLE_BASE_EN}/" if has_translation else "",
+        "og_locale": "en_US" if is_en else "ja_JP",
+        "og_image": config.DEFAULT_OG_IMAGE,
+    }
+
+
 def book_index_vars(lang, chapter_list_html, has_translation=False, subseries=""):
     """Build template variables for the book table-of-contents page
     (parent series, or one sub-series when `subseries` is given)."""
     is_en = lang == "en"
     book_base = _book_base(lang, subseries)
-    book_title = _book_series_title(lang, subseries)
+    book_title = book_series_title(lang, subseries)
     # Sub-series index sits one directory deeper than the parent index.
     rel = "../" * ((2 if is_en else 1) + (1 if subseries else 0))
 
@@ -988,6 +550,8 @@ def book_index_vars(lang, chapter_list_html, has_translation=False, subseries=""
         "aiways_label": _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法"),
         "farming_base": "/en/phosphorus-and-farming" if is_en else "/phosphorus-and-farming",
         "farming_label": _text(is_en, "Phosphorus Depletion and Natural Farming", "リン資源枯渇と自然農法"),
+        "fable_base": "/fable",  # JA-only series for now; no /en/fable/ index yet
+        "fable_label": _text(is_en, "Fable 5 Is Back", "Fable 5 が帰ってきた"),
         "aiways_base": "/en/ai-native-ways" if is_en else "/ai-native-ways",
         "insights_base": "/en/insights" if is_en else "/insights",
         "blog_base": "/en/blog" if is_en else "/blog",
@@ -1059,7 +623,7 @@ def book_index_vars(lang, chapter_list_html, has_translation=False, subseries=""
         subtitle = cfg["subtitle_en"] if is_en else cfg["subtitle_ja"]
         description = cfg["description_en"] if is_en else cfg["description_ja"]
         parent_base = _book_base(lang)
-        parent_title = _book_series_title(lang)
+        parent_title = book_series_title(lang)
         back_label = _text(
             is_en,
             f"← Back to {parent_title}",
@@ -1097,124 +661,6 @@ def book_index_vars(lang, chapter_list_html, has_translation=False, subseries=""
     return variables
 
 
-def blog_vars(meta, body_html):
-    """Build template variables for blog post pages."""
-    lang = meta.get("lang", "ja")
-    is_en = lang == "en"
-    slug = meta.get("slug", "")
-    blog_base = "/en/blog" if is_en else "/blog"
-
-    # Blog navigation — prev/next derived from file-number order by
-    # build_blog_post(); falls back to the blog index on either end.
-    prev_post = meta.get("_prev_post")
-    next_post = meta.get("_next_post")
-    blog_top = "Blog Top" if is_en else "Blog トップ"
-    prev_prefix = "Prev: " if is_en else "前: "
-    next_prefix = "Next: " if is_en else "次: "
-
-    nav_html = '<div class="article-nav">\n'
-    if prev_post:
-        nav_html += f'  <a href="{blog_base}/{prev_post.get("slug", "")}/">&larr; {prev_prefix}{prev_post.get("title", "")}</a>\n'
-    else:
-        nav_html += '  <span></span>\n'
-    if next_post:
-        nav_html += f'  <a href="{blog_base}/{next_post.get("slug", "")}/">{next_prefix}{next_post.get("title", "")} &rarr;</a>\n'
-    else:
-        nav_html += f'  <a href="{blog_base}/">{blog_top} &rarr;</a>\n'
-    nav_html += '</div>'
-
-    category = meta.get("category", _text(is_en, "Blog", "ブログ"))
-
-    return {
-        "lang": lang,
-        "title": meta.get("title", ""),
-        "subtitle": meta.get("subtitle", ""),
-        "description": meta.get("description", ""),
-        "date": meta.get("date", ""),
-        "number": "",
-        "label": meta.get("label", "Blog"),
-        "body_html": body_html,
-        "nav_html": nav_html,
-        # CTA
-        "cta_label": "Blog",
-        "cta_title": _text(is_en, "See the Structure", "構造を見る"),
-        "cta_text": _text(is_en,
-            "From AI to agriculture — every structural analysis converges on one conclusion.",
-            "AIから農業まで——全ての構造分析は、一つの結論に向かう。"),
-        "cta_btn1_text": _text(is_en, "Insights", "構造分析シリーズ"),
-        "cta_btn1_link": "/en/insights/" if is_en else "/insights/",
-        "cta_btn2_text": "Blog",
-        "cta_btn2_link": blog_base + "/",
-        # Paths
-        "css_path": "../../../css/style.css" if is_en else "../../css/style.css",
-        "js_path": "../../../js/main.js" if is_en else "../../js/main.js",
-
-        "asset_version": config.asset_version(),
-        # Reuse the generated og-image.jpg (same dir) as the page-hero background.
-        "img_path": "og-image.jpg" if meta.get("hero_image") else (
-            "../../../images/IMG_3285.jpg" if is_en else "../../images/IMG_3285.jpg"
-        ),
-        # Blog posts often use the hero image to carry meaning (screenshots,
-        # photos illustrating the post). Keep visible.
-        "show_hero_image": True,
-        # Blog has no series sidebar yet; leave empty so the template renders
-        # a single-column layout.
-        "series_toc_html": "",
-        "breadcrumb_html": "",
-        "insights_base": "/en/insights" if is_en else "/insights",
-        "blog_base": "/en/blog" if is_en else "/blog",
-        "book_base": "/en/claude-debian" if is_en else "/claude-debian",
-        # Navigation labels
-        "site_name": config.site_text("site_name", lang, _text(is_en, "Living in the AI Era", "AI時代の暮らし")),
-        "site_tagline": _text(is_en, "aiseed.dev", "aiseed.dev"),
-        "home_label": _text(is_en, "Home", "ホーム"),
-        "home_link": "/en/" if is_en else "/",
-        "about_label": _text(is_en, "Natural Farming", "自然農法とは"),
-        "lf_label": "Light Farming",
-        "about_link": "/en/natural-farming/" if is_en else "/natural-farming/",
-        "lf_link": "/en/light-farming/" if is_en else "/light-farming/",
-        "our_approach_link": "/en/about/" if is_en else "/about/",
-        "our_approach_label": _text(is_en, "Our Approach", "私たちのアプローチ"),
-        "gallery_label": _text(is_en, "Field Notes", "畑の記録"),
-        "privacy_link": "/en/privacy/" if is_en else "/privacy/",
-        "privacy_label": _text(is_en, "Privacy", "プライバシー"),
-        "insights_label": "Insights",
-        "articles_parent_label": _text(is_en, "Articles", "記事"),
-        "insights_child_label": _text(is_en, "Structural Analysis", "構造分析"),
-        "book_label": _text(is_en, "Learning Debian with Claude", "Claudeと一緒に学ぶDebian"),
-        "aiways_label": _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法"),
-        "farming_base": "/en/phosphorus-and-farming" if is_en else "/phosphorus-and-farming",
-        "farming_label": _text(is_en, "Phosphorus Depletion and Natural Farming", "リン資源枯渇と自然農法"),
-        "aiways_base": "/en/ai-native-ways" if is_en else "/ai-native-ways",
-        "contact_label": _text(is_en, "Contact", "お問い合わせ"),
-        "menu_label": _text(is_en, "Menu", "メニュー"),
-        "pages_label": _text(is_en, "Pages", "ページ"),
-        "links_label": _text(is_en, "Links", "関連リンク"),
-        "series_label": category,
-        "vegitage_label": _text(is_en, "Natural Farming Community", "自然農法コミュニティ"),
-        "footer_about": _text(is_en,
-            "AI changes how we work, farm, and live. Structural analysis of fossil resources, "
-            "food, energy, AI, healthcare, and pensions — every structure connects.",
-            "AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。"),
-        # SEO
-        "canonical_url": f"{config.SITE_URL}{blog_base}/{slug}/",
-        "hreflang_ja": f"{config.SITE_URL}/blog/{slug}/",
-        "hreflang_en": f"{config.SITE_URL}/en/blog/{slug}/",
-        "og_locale": "en_US" if is_en else "ja_JP",
-        "og_image": resolve_og_image(
-            meta,
-            Path(meta.get("_out_dir", ".")),
-            f"{config.SITE_URL}{blog_base}/{slug}",
-        ),
-        # Language switch toggle
-        "has_translation": bool(meta.get("_has_translation", False)),
-        "lang_switch_link": f"/blog/{slug}/" if is_en else f"/en/blog/{slug}/",
-        "lang_switch_label": "日本語" if is_en else "EN",
-        "lang_switch_hreflang": "ja" if is_en else "en",
-        "lang_switch_aria": "日本語版を表示" if is_en else "View in English",
-    }
-
-
 def blog_index_vars(lang, post_list_html):
     """Build template variables for blog index pages."""
     is_en = lang == "en"
@@ -1247,6 +693,8 @@ def blog_index_vars(lang, post_list_html):
         "aiways_label": _text(is_en, "AI-Native Ways of Working", "AIネイティブな仕事の作法"),
         "farming_base": "/en/phosphorus-and-farming" if is_en else "/phosphorus-and-farming",
         "farming_label": _text(is_en, "Phosphorus Depletion and Natural Farming", "リン資源枯渇と自然農法"),
+        "fable_base": "/fable",  # JA-only series for now; no /en/fable/ index yet
+        "fable_label": _text(is_en, "Fable 5 Is Back", "Fable 5 が帰ってきた"),
         "aiways_base": "/en/ai-native-ways" if is_en else "/ai-native-ways",
         "insights_base": "/en/insights" if is_en else "/insights",
         "blog_base": "/en/blog" if is_en else "/blog",

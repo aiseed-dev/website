@@ -40,7 +40,7 @@ articles/ai-native-ways/software/
     └── example-N/      ── 章ごとの実例(任意)
 ```
 
-親シリーズの `template.html` / `template.en.html` をそのまま使う。フロント
+サイト共通の `tools/templates/chapter.html` / `chapter.en.html` を使う。フロント
 マターの schema も親シリーズと共通。EN 版は `lang: en` を明示する。
 
 ## URL

@@ -52,11 +52,11 @@ from build.markdown import (
 from build.template_vars import (
     BOOK_SUBSERIES,
     aiways_index_vars,
-    article_vars,
     blog_index_vars,
-    blog_vars,
     book_index_vars,
-    book_vars,
+    book_series_title,
+    fable_index_vars,
+    farming_index_vars,
     index_vars,
 )
 
@@ -101,6 +101,133 @@ def _detect_lang(md_path):
     return "en" if md_path.name == "en.md" else "ja"
 
 
+# ---------------------------------------------------------------------------
+# Shared chapter-page rendering (unified essay design)
+#
+# Every article/chapter page on the site — insights, blog, claude-debian,
+# ai-native-ways, phosphorus-and-farming, fable — renders through the same
+# template pair tools/templates/chapter.html (JA) / chapter.en.html (EN).
+# The helpers below build the template's variable surface so each series
+# only has to provide its own naming, URLs, and navigation.
+# ---------------------------------------------------------------------------
+
+def _chapter_template(lang: str) -> str:
+    return "chapter.en.html" if lang == "en" else "chapter.html"
+
+
+def _numbered_chapter_label(number: str, lang: str) -> str:
+    """'00' → '序章' / 'Prologue'. Otherwise '第N章' / 'Chapter N'."""
+    n = number.lstrip("0") or "0"
+    if n == "0":
+        return "序章" if lang == "ja" else "Prologue"
+    return f"第{n}章" if lang == "ja" else f"Chapter {n}"
+
+
+def _series_chapter_toc_html(entries, current_slug, lang, summary):
+    """Render the collapsible per-series contents block for a chapter page.
+
+    entries: list of (slug, href, label, title). The current chapter is
+    rendered as plain text; other chapters are links.
+    """
+    if not entries:
+        return ""
+    is_en = lang == "en"
+    aria = "Series chapters" if is_en else "シリーズ章一覧"
+    items = []
+    for slug, href, label, title in entries:
+        display_title = _strip_chapter_prefix(title, label)
+        if slug == current_slug:
+            items.append(
+                f'      <li class="current" aria-current="page">'
+                f'<span class="toc-num">{label}</span>'
+                f'<span class="toc-title">{display_title}</span></li>'
+            )
+        else:
+            items.append(
+                f'      <li><a href="{href}">'
+                f'<span class="toc-num">{label}</span>'
+                f'<span class="toc-title">{display_title}</span></a></li>'
+            )
+    return (
+        f'<nav class="series-toc" aria-label="{aria}">\n'
+        f'  <details>\n'
+        f'    <summary>{summary}</summary>\n'
+        f'    <ol>\n' + "\n".join(items) + "\n    </ol>\n"
+        f'  </details>\n'
+        f'</nav>'
+    )
+
+
+def _chapter_nav_html(prev_item, next_item, fallback, lang):
+    """Prev/next navigation rendered under the article body.
+
+    prev_item / next_item: (href, title) or None. fallback: (href, label)
+    shown in the "next" slot at the end of a series.
+    """
+    is_en = lang == "en"
+    prev_prefix = "Prev: " if is_en else "前: "
+    next_prefix = "Next: " if is_en else "次: "
+    left = (
+        f'<a href="{prev_item[0]}" rel="prev">&larr; {prev_prefix}{prev_item[1]}</a>'
+        if prev_item else "<span></span>"
+    )
+    if next_item:
+        right = f'<a href="{next_item[0]}" rel="next">{next_prefix}{next_item[1]} &rarr;</a>'
+    elif fallback:
+        right = f'<a href="{fallback[0]}">{fallback[1]} &rarr;</a>'
+    else:
+        right = ""
+    return f'<nav class="chapter-nav">\n  {left}\n  {right}\n</nav>'
+
+
+def _chapter_vars(meta, content_html, *, series_name, series_index_url,
+                  chapter_label, canonical_url, hreflang_ja, hreflang_en,
+                  og_image, other_lang_url, other_lang_label,
+                  chapter_toc_html="", nav_html="", masthead_kind="Essay",
+                  hero_meta=None, masthead_right=None, colophon_label=None):
+    """Assemble the variable dict consumed by chapter.html / chapter.en.html."""
+    number = meta.get("number", "").strip('"')
+    date_str = meta.get("date", "")
+    year = date_str.split(".")[0] if "." in date_str else (date_str[:4] if date_str else "")
+    if hero_meta is None:
+        hero_meta = (
+            f"{chapter_label} № {number} · {year}" if number
+            else " · ".join(x for x in (chapter_label, year) if x)
+        )
+    if masthead_right is None:
+        masthead_right = (
+            f"{chapter_label} / {masthead_kind}" if chapter_label else masthead_kind
+        )
+    if colophon_label is None:
+        colophon_label = (
+            f"{series_name} · {chapter_label}" if chapter_label else series_name
+        )
+    return {
+        "title": meta.get("title", ""),
+        "title_html": meta.get("title_html", ""),
+        "subtitle": meta.get("subtitle", ""),
+        "description": meta.get("description", ""),
+        "date": date_str,
+        "year": year,
+        "number": number,
+        "series": series_name,
+        "series_index_url": series_index_url,
+        "chapter_label": chapter_label,
+        "masthead_right": masthead_right,
+        "hero_meta": hero_meta,
+        "colophon_label": colophon_label,
+        "content_html": content_html,
+        "canonical_url": canonical_url,
+        "hreflang_ja": hreflang_ja,
+        "hreflang_en": hreflang_en,
+        "og_image": og_image,
+        "other_lang_url": other_lang_url,
+        "other_lang_label": other_lang_label,
+        "chapter_toc_html": chapter_toc_html,
+        "nav_html": nav_html,
+    }
+
+
 def _book_stem(slug, subseries=""):
     """URL stem for a book chapter: slug without the `claude-debian-` prefix
     (or the `claude-debian-<subseries>-` prefix for sub-series chapters)."""
@@ -126,12 +253,49 @@ def _book_subseries_of(md_or_dir) -> str:
     return ""
 
 
+def _book_url_base(lang: str, subseries: str = "") -> str:
+    """URL prefix for book pages, e.g. '/claude-debian' or
+    '/en/claude-debian/server'."""
+    base = "/en/claude-debian" if lang == "en" else "/claude-debian"
+    return f"{base}/{subseries}" if subseries else base
+
+
+def _book_chapter_toc_html(lang, current_slug, subseries=""):
+    """Series contents for a book chapter page (scoped to its sub-series)."""
+    is_en = lang == "en"
+    base = _book_url_base(lang, subseries)
+    entries = []
+    for c in collect_book_chapters(lang, subseries):
+        slug = c.get("slug", "")
+        label = _numbered_chapter_label(c.get("number", "").strip('"'), lang)
+        entries.append((slug, f"{base}/{_book_stem(slug, subseries)}/", label, c.get("title", "")))
+    series_name = book_series_title(lang, subseries)
+    summary = f"Contents — {series_name}" if is_en else f"目次 — {series_name}"
+    return _series_chapter_toc_html(entries, current_slug, lang, summary)
+
+
 # ---------------------------------------------------------------------------
 # Build functions — articles
 # ---------------------------------------------------------------------------
 
+def _insights_chapter_toc_html(lang, current_slug):
+    """Series contents for an insights chapter page. Chapters are numbered
+    within their part, so the label uses the compound `部-章` form (e.g. '1-03')."""
+    is_en = lang == "en"
+    base = "/en/insights" if is_en else "/insights"
+    entries = []
+    for c in collect_articles(lang):
+        slug = c.get("slug", "")
+        number = c.get("number", "").strip('"')
+        part = c.get("part", "").strip('"')
+        label = f"{part}-{number}" if part and part != "9" else number
+        entries.append((slug, f"{base}/{slug}/", label, c.get("title", "")))
+    summary = "Contents — Structural Analysis" if is_en else "目次 — 構造分析シリーズ"
+    return _series_chapter_toc_html(entries, current_slug, lang, summary)
+
+
 def build_article(md_path):
-    """Build a single article from Markdown file."""
+    """Build a single insights article from Markdown file."""
     md_path = Path(md_path)
     if not md_path.exists():
         print(f"Error: {md_path} not found")
@@ -147,38 +311,65 @@ def build_article(md_path):
     # Resolve output directory up front so OGP generation can target it.
     lang = meta.get("lang") or _detect_lang(md_path)
     meta["lang"] = lang
-    if lang == "en":
-        out_dir = config.SITE_ROOT / "html" / "en" / "insights" / meta["slug"]
+    is_en = lang == "en"
+    slug = meta["slug"]
+    if is_en:
+        out_dir = config.SITE_ROOT / "html" / "en" / "insights" / slug
     else:
-        out_dir = config.OUTPUT_BASE / meta["slug"]
+        out_dir = config.OUTPUT_BASE / slug
     out_dir.mkdir(parents=True, exist_ok=True)
 
     # Context for OGP image resolution
     meta["_source_dir"] = str(md_path.parent)
     meta["_out_dir"] = str(out_dir)
-    meta["_has_translation"] = translation_exists(md_path, lang)
 
     # Drop the leading `# Title` (duplicates frontmatter title rendered by template)
     body = strip_leading_title(body)
-
-    # Process custom blocks first
     body = process_custom_blocks(body)
-
-    # Convert remaining Markdown to HTML (markdown-it-py, CommonMark)
     body_html = md.render(body)
-
-    # Re-wrap ```mermaid code blocks as <div class="mermaid"> for the runtime
     body_html = process_mermaid_blocks(body_html)
 
-    # Indent body HTML for template
-    indented = "\n".join(
-        f"                {line}" if line.strip() else ""
-        for line in body_html.split("\n")
+    insights_base = "/en/insights" if is_en else "/insights"
+    series_name = "Structural Analysis" if is_en else "構造分析シリーズ"
+    chapter_label = _numbered_chapter_label(meta.get("number", "").strip('"'), lang)
+
+    prev_slug = meta.get("prev_slug", "")
+    next_slug = meta.get("next_slug", "")
+    nav_html = _chapter_nav_html(
+        (f"{insights_base}/{prev_slug}/", meta.get("prev_title", "")) if prev_slug else None,
+        (f"{insights_base}/{next_slug}/", meta.get("next_title", "")) if next_slug else None,
+        (f"{insights_base}/", "Insights Top" if is_en else "Insights トップ"),
+        lang,
     )
 
-    # Build full HTML
-    variables = article_vars(meta, indented)
-    html = render("article.html", variables)
+    canonical_url = f"{config.SITE_URL}{insights_base}/{slug}/"
+    has_ja = (md_path.parent / "ja.md").exists()
+    has_en = (md_path.parent / "en.md").exists()
+    has_other = translation_exists(md_path, lang)
+    other_lang_url = (
+        f"{config.SITE_URL}/insights/{slug}/" if is_en
+        else f"{config.SITE_URL}/en/insights/{slug}/"
+    )
+
+    from build.images import resolve_og_image
+    og_image = resolve_og_image(meta, out_dir, f"{config.SITE_URL}{insights_base}/{slug}")
+
+    variables = _chapter_vars(
+        meta, body_html,
+        series_name=series_name,
+        series_index_url=f"{insights_base}/",
+        chapter_label=chapter_label,
+        canonical_url=canonical_url,
+        hreflang_ja=f"{config.SITE_URL}/insights/{slug}/" if has_ja else "",
+        hreflang_en=f"{config.SITE_URL}/en/insights/{slug}/" if has_en else "",
+        og_image=og_image,
+        other_lang_url=other_lang_url if has_other else "",
+        other_lang_label="日本語" if is_en else "EN",
+        chapter_toc_html=_insights_chapter_toc_html(lang, slug),
+        nav_html=nav_html,
+        masthead_kind="Analysis",
+    )
+    html = render(_chapter_template(lang), variables)
 
     out_file = out_dir / "index.html"
     out_file.write_text(html, encoding="utf-8")
@@ -295,16 +486,17 @@ def build_blog_post(md_path):
 
     lang = meta.get("lang") or _detect_lang(md_path)
     meta["lang"] = lang
-    if lang == "en":
-        out_dir = config.SITE_ROOT / "html" / "en" / "blog" / meta["slug"]
+    is_en = lang == "en"
+    slug = meta["slug"]
+    if is_en:
+        out_dir = config.SITE_ROOT / "html" / "en" / "blog" / slug
     else:
-        out_dir = config.BLOG_OUTPUT_BASE / meta["slug"]
+        out_dir = config.BLOG_OUTPUT_BASE / slug
     out_dir.mkdir(parents=True, exist_ok=True)
 
     # Context for OGP image resolution
     meta["_source_dir"] = str(md_path.parent)
     meta["_out_dir"] = str(out_dir)
-    meta["_has_translation"] = translation_exists(md_path, lang)
 
     # Prev/next navigation — posts are ordered by numeric filename prefix.
     # collect_blog_posts() returns them newest-first (descending file number),
@@ -313,28 +505,57 @@ def build_blog_post(md_path):
     # articles frontmatter labels the series order.
     posts = collect_blog_posts(lang)
     idx = next(
-        (i for i, p in enumerate(posts) if p.get("slug") == meta["slug"]),
+        (i for i, p in enumerate(posts) if p.get("slug") == slug),
         None,
     )
-    if idx is not None:
-        meta["_next_post"] = posts[idx - 1] if idx > 0 else None
-        meta["_prev_post"] = posts[idx + 1] if idx < len(posts) - 1 else None
-    else:
-        meta["_prev_post"] = None
-        meta["_next_post"] = None
+    next_post = posts[idx - 1] if idx is not None and idx > 0 else None
+    prev_post = posts[idx + 1] if idx is not None and idx < len(posts) - 1 else None
+    file_number = posts[idx].get("_file_number", 0) if idx is not None else 0
 
     body = strip_leading_title(body)
     body = process_custom_blocks(body)
     body_html = md.render(body)
     body_html = process_mermaid_blocks(body_html)
 
-    indented = "\n".join(
-        f"                {line}" if line.strip() else ""
-        for line in body_html.split("\n")
+    blog_base = "/en/blog" if is_en else "/blog"
+    category = meta.get("category", "Blog")
+    post_no = f"№ {file_number:03d}" if file_number else ""
+
+    nav_html = _chapter_nav_html(
+        (f'{blog_base}/{prev_post.get("slug", "")}/', prev_post.get("title", "")) if prev_post else None,
+        (f'{blog_base}/{next_post.get("slug", "")}/', next_post.get("title", "")) if next_post else None,
+        (f"{blog_base}/", "Blog Top" if is_en else "Blog トップ"),
+        lang,
     )
 
-    variables = blog_vars(meta, indented)
-    html = render("article.html", variables)
+    date_str = meta.get("date", "")
+    has_ja = (md_path.parent / "ja.md").exists()
+    has_en = (md_path.parent / "en.md").exists()
+    has_other = translation_exists(md_path, lang)
+
+    from build.images import resolve_og_image
+    og_image = resolve_og_image(meta, out_dir, f"{config.SITE_URL}{blog_base}/{slug}")
+
+    variables = _chapter_vars(
+        meta, body_html,
+        series_name="Blog",
+        series_index_url=f"{blog_base}/",
+        chapter_label=post_no,
+        canonical_url=f"{config.SITE_URL}{blog_base}/{slug}/",
+        hreflang_ja=f"{config.SITE_URL}/blog/{slug}/" if has_ja else "",
+        hreflang_en=f"{config.SITE_URL}/en/blog/{slug}/" if has_en else "",
+        og_image=og_image,
+        other_lang_url=(
+            (f"{config.SITE_URL}/blog/{slug}/" if is_en else f"{config.SITE_URL}/en/blog/{slug}/")
+            if has_other else ""
+        ),
+        other_lang_label="日本語" if is_en else "EN",
+        nav_html=nav_html,
+        masthead_right=f"{post_no} / Blog" if post_no else "Blog",
+        hero_meta=" · ".join(x for x in (category, date_str) if x),
+        colophon_label=f"Blog {post_no}".strip(),
+    )
+    html = render(_chapter_template(lang), variables)
 
     out_file = out_dir / "index.html"
     out_file.write_text(html, encoding="utf-8")
@@ -440,20 +661,50 @@ def build_book_chapter(md_path):
 
     meta["_source_dir"] = str(md_path.parent)
     meta["_out_dir"] = str(out_dir)
-    meta["_has_translation"] = translation_exists(md_path, lang)
 
     body = strip_leading_title(body)
     body = process_custom_blocks(body)
     body_html = md.render(body)
     body_html = process_mermaid_blocks(body_html)
 
-    indented = "\n".join(
-        f"                {line}" if line.strip() else ""
-        for line in body_html.split("\n")
+    is_en = lang == "en"
+    book_base = _book_url_base(lang, subseries)
+    series_name = book_series_title(lang, subseries)
+    chapter_label = _numbered_chapter_label(meta.get("number", "").strip('"'), lang)
+
+    prev_slug = meta.get("prev_slug", "")
+    next_slug = meta.get("next_slug", "")
+    nav_html = _chapter_nav_html(
+        (f"{book_base}/{_book_stem(prev_slug, subseries)}/", meta.get("prev_title", "")) if prev_slug else None,
+        (f"{book_base}/{_book_stem(next_slug, subseries)}/", meta.get("next_title", "")) if next_slug else None,
+        (f"{book_base}/", f"{series_name} TOC" if is_en else f"{series_name} 目次"),
+        lang,
     )
 
-    variables = book_vars(meta, indented)
-    html = render("article.html", variables)
+    has_ja = (md_path.parent / "ja.md").exists()
+    has_en = (md_path.parent / "en.md").exists()
+    has_other = translation_exists(md_path, lang)
+    other_base = _book_url_base("ja" if is_en else "en", subseries)
+
+    from build.images import resolve_og_image
+    og_image = resolve_og_image(meta, out_dir, f"{config.SITE_URL}{book_base}/{stem}")
+
+    variables = _chapter_vars(
+        meta, body_html,
+        series_name=series_name,
+        series_index_url=f"{book_base}/",
+        chapter_label=chapter_label,
+        canonical_url=f"{config.SITE_URL}{book_base}/{stem}/",
+        hreflang_ja=f"{config.SITE_URL}{_book_url_base('ja', subseries)}/{stem}/" if has_ja else "",
+        hreflang_en=f"{config.SITE_URL}{_book_url_base('en', subseries)}/{stem}/" if has_en else "",
+        og_image=og_image,
+        other_lang_url=f"{config.SITE_URL}{other_base}/{stem}/" if has_other else "",
+        other_lang_label="日本語" if is_en else "EN",
+        chapter_toc_html=_book_chapter_toc_html(lang, meta["slug"], subseries),
+        nav_html=nav_html,
+        masthead_kind="Book",
+    )
+    html = render(_chapter_template(lang), variables)
 
     out_file = out_dir / "index.html"
     out_file.write_text(html, encoding="utf-8")
@@ -646,10 +897,8 @@ def build_book_subseries_index(subseries, lang="ja"):
 # Output:  html/ai-native-ways/{slug}/index.html  (JA)
 #          html/en/ai-native-ways/{slug}/index.html  (EN)
 #
-# Unlike the other series, ai-native-ways ships its own self-contained
-# template (articles/ai-native-ways/template.html, template.en.html) — fonts,
-# CSS and layout are declared there. The build pipeline just feeds the
-# rendered body and metadata into that template.
+# Chapters render through the shared chapter template like every series;
+# example-N/ pages keep the series-local template-example.html.
 # ---------------------------------------------------------------------------
 
 AIWAYS_SERIES_NAME_JA = "AIネイティブな仕事の作法"
@@ -768,10 +1017,6 @@ def _aiways_chapter_label(number: str, lang: str, subseries: str = "",
     return f"第{n}章" if lang == "ja" else f"Chapter {n}"
 
 
-def _aiways_template_path(lang: str) -> Path:
-    return config.AIWAYS_DIR / ("template.html" if lang == "ja" else "template.en.html")
-
-
 def _iter_aiways_subseries_files(subseries: str, lang: str):
     """Yield `<lang>.md` files from each `NN-slug/` subfolder of a sub-series."""
     sub_dir = config.AIWAYS_DIR / subseries
@@ -865,8 +1110,6 @@ def _aiways_chapter_toc_html(lang: str, subseries: str, current_slug: str) -> st
     plain text; other chapters are links.
     """
     chapters = collect_aiways_chapters(lang, subseries)
-    if not chapters:
-        return ""
     base = _aiways_url_base(lang, subseries)
     is_en = lang == "en"
     if subseries:
@@ -875,40 +1118,19 @@ def _aiways_chapter_toc_html(lang: str, subseries: str, current_slug: str) -> st
         summary = f"Contents — {sub_name}" if is_en else f"目次 — {sub_name}"
     else:
         summary = "Contents — all chapters" if is_en else "目次 — 全章"
-    aria = "Series chapters" if is_en else "シリーズ章一覧"
-    items = []
+    entries = []
     for c in chapters:
         slug = c.get("slug", "")
-        number = c.get("number", "").strip('"')
-        title = c.get("title", "")
-        label = _aiways_chapter_label(number, lang, subseries, _aiways_part_short(subseries, c, lang), c.get("part", "").strip('"'))
-        display_title = _strip_chapter_prefix(title, label)
-        if slug == current_slug:
-            items.append(
-                f'      <li class="current" aria-current="page">'
-                f'<span class="toc-num">{label}</span>'
-                f'<span class="toc-title">{display_title}</span></li>'
-            )
-        else:
-            items.append(
-                f'      <li><a href="{base}/{slug}/">'
-                f'<span class="toc-num">{label}</span>'
-                f'<span class="toc-title">{display_title}</span></a></li>'
-            )
-    return (
-        f'<nav class="series-toc" aria-label="{aria}">\n'
-        f'  <details>\n'
-        f'    <summary>{summary}</summary>\n'
-        f'    <ol>\n' + "\n".join(items) + "\n    </ol>\n"
-        f'  </details>\n'
-        f'</nav>'
-    )
+        label = _aiways_chapter_label(
+            c.get("number", "").strip('"'), lang, subseries,
+            _aiways_part_short(subseries, c, lang), c.get("part", "").strip('"'),
+        )
+        entries.append((slug, f"{base}/{slug}/", label, c.get("title", "")))
+    return _series_chapter_toc_html(entries, current_slug, lang, summary)
 
 
 def build_aiways_chapter(md_path):
-    """Build a single ai-native-ways chapter using the series-local template."""
-    from jinja2 import Template
-
+    """Build a single ai-native-ways chapter using the shared chapter template."""
     md_path = Path(md_path)
     if not md_path.exists():
         print(f"Error: {md_path} not found")
@@ -968,36 +1190,39 @@ def build_aiways_chapter(md_path):
     has_other = (md_path.parent / ("ja.md" if lang == "en" else "en.md")).exists()
 
     # Resolve OG image: prefer an article-folder hero_image, else default
-    from build.images import resolve_og_image, OGP_FILENAME, generate_ogp_image
+    from build.images import resolve_og_image
     og_image = resolve_og_image(meta, out_dir, public_base_url=canonical_url.rstrip("/"))
 
-    date_str = meta.get("date", "")
-    year = date_str.split(".")[0] if "." in date_str else (date_str[:4] if date_str else "")
+    chapter_label = _aiways_chapter_label(
+        meta.get("number", "").strip('"'), lang, subseries,
+        _aiways_part_short(subseries, meta, lang), meta.get("part", "").strip('"'),
+    )
+    url_base = _aiways_url_base(lang, subseries)
+    prev_slug = meta.get("prev_slug", "")
+    next_slug = meta.get("next_slug", "")
+    nav_html = _chapter_nav_html(
+        (f"{url_base}/{prev_slug}/", meta.get("prev_title", "")) if prev_slug else None,
+        (f"{url_base}/{next_slug}/", meta.get("next_title", "")) if next_slug else None,
+        (series_index_url, "Contents" if lang == "en" else "目次"),
+        lang,
+    )
 
-    variables = {
-        "title": meta.get("title", ""),
-        "title_html": meta.get("title_html", ""),
-        "subtitle": meta.get("subtitle", ""),
-        "description": meta.get("description", ""),
-        "date": date_str,
-        "year": year,
-        "number": meta.get("number", "").strip('"'),
-        "label": meta.get("label", ""),
-        "series": series_name,
-        "series_index_url": series_index_url,
-        "chapter_label": _aiways_chapter_label(meta.get("number", "").strip('"'), lang, subseries, _aiways_part_short(subseries, meta, lang), meta.get("part", "").strip('"')),
-        "content_html": body_html,
-        "canonical_url": canonical_url,
-        "hreflang_ja": hreflang_ja if (md_path.parent / "ja.md").exists() else "",
-        "hreflang_en": hreflang_en if (md_path.parent / "en.md").exists() else "",
-        "og_image": og_image,
-        "other_lang_url": other_lang_url if has_other else "",
-        "other_lang_label": other_lang_label,
-        "chapter_toc_html": _aiways_chapter_toc_html(lang, subseries, slug),
-    }
-
-    template_text = _aiways_template_path(lang).read_text(encoding="utf-8")
-    html = Template(template_text).render(**variables)
+    variables = _chapter_vars(
+        meta, body_html,
+        series_name=series_name,
+        series_index_url=series_index_url,
+        chapter_label=chapter_label,
+        canonical_url=canonical_url,
+        hreflang_ja=hreflang_ja if (md_path.parent / "ja.md").exists() else "",
+        hreflang_en=hreflang_en if (md_path.parent / "en.md").exists() else "",
+        og_image=og_image,
+        other_lang_url=other_lang_url if has_other else "",
+        other_lang_label=other_lang_label,
+        chapter_toc_html=_aiways_chapter_toc_html(lang, subseries, slug),
+        nav_html=nav_html,
+        masthead_kind="Essay",
+    )
+    html = render(_chapter_template(lang), variables)
 
     out_file = out_dir / "index.html"
     out_file.write_text(html, encoding="utf-8")
@@ -1010,77 +1235,36 @@ def build_aiways_chapter(md_path):
 
 
 # ---------------------------------------------------------------------------
-# Build functions — phosphorus-and-farming (independent template, like ai-native-ways)
+# Build functions — phosphorus-and-farming
 #
 # Source:  articles/phosphorus-and-farming/NN-slug/{ja,en}.md
 # Output:  html/phosphorus-and-farming/{slug}/index.html       (JA)
 #          html/en/phosphorus-and-farming/{slug}/index.html    (EN)
 #
-# Like ai-native-ways, the series ships its own self-contained template
-# (articles/phosphorus-and-farming/template.html, template.en.html). The
-# existing static /natural-farming/ landing page is independent and untouched
-# (different URL prefix entirely).
+# The existing static /natural-farming/ landing page is independent and
+# untouched (different URL prefix entirely).
 # ---------------------------------------------------------------------------
 
 FARMING_SERIES_NAME_JA = "リン資源枯渇と自然農法シリーズ"
 FARMING_SERIES_NAME_EN = "Phosphorus Depletion and Natural Farming Series"
 
 
-def _farming_chapter_label(number: str, lang: str) -> str:
-    """'00' → '序章' / 'Prologue'. Otherwise '第N章' / 'Chapter N'."""
-    n = number.lstrip("0") or "0"
-    if n == "0":
-        return "序章" if lang == "ja" else "Prologue"
-    return f"第{n}章" if lang == "ja" else f"Chapter {n}"
-
-
-def _farming_template_path(lang: str) -> Path:
-    return config.FARMING_DIR / ("template.html" if lang == "ja" else "template.en.html")
-
-
 def _farming_chapter_toc_html(lang: str, current_slug: str) -> str:
     """Render a collapsible series chapter-list for a phosphorus-and-farming
     chapter page. The current chapter is plain text; others are links."""
-    chapters = collect_farming_chapters(lang)
-    if not chapters:
-        return ""
     base = "/en/phosphorus-and-farming" if lang == "en" else "/phosphorus-and-farming"
     is_en = lang == "en"
     summary = "Contents — all chapters" if is_en else "目次 — 全章"
-    aria = "Series chapters" if is_en else "シリーズ章一覧"
-    items = []
-    for c in chapters:
+    entries = []
+    for c in collect_farming_chapters(lang):
         slug = c.get("slug", "")
-        number = c.get("number", "").strip('"')
-        title = c.get("title", "")
-        label = _farming_chapter_label(number, lang)
-        display_title = _strip_chapter_prefix(title, label)
-        if slug == current_slug:
-            items.append(
-                f'      <li class="current" aria-current="page">'
-                f'<span class="toc-num">{label}</span>'
-                f'<span class="toc-title">{display_title}</span></li>'
-            )
-        else:
-            items.append(
-                f'      <li><a href="{base}/{slug}/">'
-                f'<span class="toc-num">{label}</span>'
-                f'<span class="toc-title">{display_title}</span></a></li>'
-            )
-    return (
-        f'<nav class="series-toc" aria-label="{aria}">\n'
-        f'  <details>\n'
-        f'    <summary>{summary}</summary>\n'
-        f'    <ol>\n' + "\n".join(items) + "\n    </ol>\n"
-        f'  </details>\n'
-        f'</nav>'
-    )
+        label = _numbered_chapter_label(c.get("number", "").strip('"'), lang)
+        entries.append((slug, f"{base}/{slug}/", label, c.get("title", "")))
+    return _series_chapter_toc_html(entries, current_slug, lang, summary)
 
 
 def build_farming_chapter(md_path):
-    """Build a single phosphorus-and-farming chapter using the series-local template."""
-    from jinja2 import Template
-
+    """Build a single phosphorus-and-farming chapter using the shared chapter template."""
     md_path = Path(md_path)
     if not md_path.exists():
         print(f"Error: {md_path} not found")
@@ -1125,33 +1309,32 @@ def build_farming_chapter(md_path):
     from build.images import resolve_og_image
     og_image = resolve_og_image(meta, out_dir, public_base_url=canonical_url.rstrip("/"))
 
-    date_str = meta.get("date", "")
-    year = date_str.split(".")[0] if "." in date_str else (date_str[:4] if date_str else "")
+    farming_base = "/en/phosphorus-and-farming" if lang == "en" else "/phosphorus-and-farming"
+    prev_slug = meta.get("prev_slug", "")
+    next_slug = meta.get("next_slug", "")
+    nav_html = _chapter_nav_html(
+        (f"{farming_base}/{prev_slug}/", meta.get("prev_title", "")) if prev_slug else None,
+        (f"{farming_base}/{next_slug}/", meta.get("next_title", "")) if next_slug else None,
+        (series_index_url, "Contents" if lang == "en" else "目次"),
+        lang,
+    )
 
-    variables = {
-        "title": meta.get("title", ""),
-        "title_html": meta.get("title_html", ""),
-        "subtitle": meta.get("subtitle", ""),
-        "description": meta.get("description", ""),
-        "date": date_str,
-        "year": year,
-        "number": meta.get("number", "").strip('"'),
-        "label": meta.get("label", ""),
-        "series": series_name,
-        "series_index_url": series_index_url,
-        "chapter_label": _farming_chapter_label(meta.get("number", "").strip('"'), lang),
-        "content_html": body_html,
-        "canonical_url": canonical_url,
-        "hreflang_ja": hreflang_ja if (md_path.parent / "ja.md").exists() else "",
-        "hreflang_en": hreflang_en if (md_path.parent / "en.md").exists() else "",
-        "og_image": og_image,
-        "other_lang_url": other_lang_url if has_other else "",
-        "other_lang_label": other_lang_label,
-        "chapter_toc_html": _farming_chapter_toc_html(lang, slug),
-    }
-
-    template_text = _farming_template_path(lang).read_text(encoding="utf-8")
-    html = Template(template_text).render(**variables)
+    variables = _chapter_vars(
+        meta, body_html,
+        series_name=series_name,
+        series_index_url=series_index_url,
+        chapter_label=_numbered_chapter_label(meta.get("number", "").strip('"'), lang),
+        canonical_url=canonical_url,
+        hreflang_ja=hreflang_ja if (md_path.parent / "ja.md").exists() else "",
+        hreflang_en=hreflang_en if (md_path.parent / "en.md").exists() else "",
+        og_image=og_image,
+        other_lang_url=other_lang_url if has_other else "",
+        other_lang_label=other_lang_label,
+        chapter_toc_html=_farming_chapter_toc_html(lang, slug),
+        nav_html=nav_html,
+        masthead_kind="Essay",
+    )
+    html = render(_chapter_template(lang), variables)
 
     out_file = out_dir / "index.html"
     out_file.write_text(html, encoding="utf-8")
@@ -1179,8 +1362,6 @@ def collect_farming_chapters(lang="ja"):
 
 def build_farming_index(lang="ja"):
     """Build the phosphorus-and-farming TOC page using the shared index.html template."""
-    from build.template_vars import farming_index_vars
-
     chapters = collect_farming_chapters(lang)
     if not chapters:
         return False
@@ -1218,6 +1399,187 @@ def build_farming_index(lang="ja"):
     out_file.parent.mkdir(parents=True, exist_ok=True)
     out_file.write_text(html, encoding="utf-8")
     print(f"Built phosphorus-and-farming index: {out_file}")
+    return True
+
+
+# ---------------------------------------------------------------------------
+# Build functions — fable (serialized column, shared chapter template)
+#
+# Source:  articles/fable/NN-slug/{ja,en}.md
+# Output:  html/fable/{slug}/index.html       (JA)
+#          html/en/fable/{slug}/index.html    (EN)
+#
+# 連載「Fable 5 が帰ってきた」— design doc: docs/plan/fable/plan.md.
+# Chapters are 回 (installments), not 章: labels read 第N回. A chapter can
+# override its label via `chapter_label` in front matter (used by the
+# 番外編 outlook column).
+# ---------------------------------------------------------------------------
+
+FABLE_SERIES_NAME_JA = "Fable 5 が帰ってきた"
+FABLE_SERIES_NAME_EN = "Fable 5 Is Back"
+
+
+def _fable_url_base(lang: str) -> str:
+    return "/en/fable" if lang == "en" else "/fable"
+
+
+def _fable_chapter_label(meta: dict, lang: str) -> str:
+    """'第N回' / 'Part N'; front matter `chapter_label` overrides (番外編 etc.)."""
+    override = meta.get("chapter_label", "").strip()
+    if override:
+        return override
+    n = meta.get("number", "").strip('"').lstrip("0") or "0"
+    return f"第{n}回" if lang == "ja" else f"Part {n}"
+
+
+def _fable_chapter_toc_html(lang: str, current_slug: str) -> str:
+    """Series contents for a fable chapter page."""
+    base = _fable_url_base(lang)
+    is_en = lang == "en"
+    summary = "Contents — all installments" if is_en else "目次 — 全回"
+    entries = []
+    for c in collect_fable_chapters(lang):
+        slug = c.get("slug", "")
+        entries.append((slug, f"{base}/{slug}/", _fable_chapter_label(c, lang), c.get("title", "")))
+    return _series_chapter_toc_html(entries, current_slug, lang, summary)
+
+
+def build_fable_chapter(md_path):
+    """Build a single fable installment using the shared chapter template."""
+    md_path = Path(md_path)
+    if not md_path.exists():
+        print(f"Error: {md_path} not found")
+        return False
+
+    text = md_path.read_text(encoding="utf-8")
+    meta, body = parse_frontmatter(text)
+
+    if "slug" not in meta:
+        print(f"Error: {md_path} missing 'slug' in front matter")
+        return False
+
+    lang = meta.get("lang") or _detect_lang(md_path)
+    meta["lang"] = lang
+    is_en = lang == "en"
+
+    slug = meta["slug"]
+    if is_en:
+        out_dir = config.SITE_ROOT / "html" / "en" / "fable" / slug
+    else:
+        out_dir = config.FABLE_OUTPUT_BASE / slug
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    meta["_source_dir"] = str(md_path.parent)
+    meta["_out_dir"] = str(out_dir)
+
+    body = strip_leading_title(body)
+    body = process_custom_blocks(body)
+    body_html = md.render(body)
+    body_html = process_mermaid_blocks(body_html)
+
+    series_name = FABLE_SERIES_NAME_EN if is_en else FABLE_SERIES_NAME_JA
+    fable_base = _fable_url_base(lang)
+    series_index_url = f"{fable_base}/"
+
+    canonical_url = f"{config.SITE_URL}{fable_base}/{slug}/"
+    hreflang_ja = f"{config.SITE_URL}/fable/{slug}/"
+    hreflang_en = f"{config.SITE_URL}/en/fable/{slug}/"
+
+    other_lang_url = (hreflang_ja if is_en else hreflang_en)
+    has_other = (md_path.parent / ("ja.md" if is_en else "en.md")).exists()
+
+    from build.images import resolve_og_image
+    og_image = resolve_og_image(meta, out_dir, public_base_url=canonical_url.rstrip("/"))
+
+    prev_slug = meta.get("prev_slug", "")
+    next_slug = meta.get("next_slug", "")
+    nav_html = _chapter_nav_html(
+        (f"{fable_base}/{prev_slug}/", meta.get("prev_title", "")) if prev_slug else None,
+        (f"{fable_base}/{next_slug}/", meta.get("next_title", "")) if next_slug else None,
+        (series_index_url, "Contents" if is_en else "目次"),
+        lang,
+    )
+
+    variables = _chapter_vars(
+        meta, body_html,
+        series_name=series_name,
+        series_index_url=series_index_url,
+        chapter_label=_fable_chapter_label(meta, lang),
+        canonical_url=canonical_url,
+        hreflang_ja=hreflang_ja if (md_path.parent / "ja.md").exists() else "",
+        hreflang_en=hreflang_en if (md_path.parent / "en.md").exists() else "",
+        og_image=og_image,
+        other_lang_url=other_lang_url if has_other else "",
+        other_lang_label="日本語" if is_en else "EN",
+        chapter_toc_html=_fable_chapter_toc_html(lang, slug),
+        nav_html=nav_html,
+        masthead_kind="Series",
+    )
+    html = render(_chapter_template(lang), variables)
+
+    out_file = out_dir / "index.html"
+    out_file.write_text(html, encoding="utf-8")
+
+    copy_images(md_path.parent, out_dir, lang=lang)
+
+    print(f"Built fable: {out_file}")
+    return True
+
+
+def collect_fable_chapters(lang="ja"):
+    """Collect fable installment metadata for a language, in folder order."""
+    chapters = []
+    for f in _iter_article_files(config.FABLE_DIR, lang):
+        text = f.read_text(encoding="utf-8")
+        meta, _ = parse_frontmatter(text)
+        if meta.get("lang", "ja") != lang and not (lang == "ja" and "lang" not in meta):
+            continue
+        num_match = re.match(r"(\d+)", f.parent.name)
+        meta["_file_number"] = int(num_match.group(1)) if num_match else 0
+        chapters.append(meta)
+    chapters.sort(key=lambda m: m.get("_file_number", 0))
+    return chapters
+
+
+def build_fable_index(lang="ja"):
+    """Build the fable TOC page using the shared index.html template."""
+    chapters = collect_fable_chapters(lang)
+    if not chapters:
+        return False
+
+    is_en = lang == "en"
+    fable_base = _fable_url_base(lang)
+    has_translation = bool(collect_fable_chapters("en" if not is_en else "ja"))
+
+    chapter_list = ""
+    for c in chapters:
+        slug = c.get("slug", "")
+        number = c.get("number", "").strip('"')
+        title = c.get("title", "")
+        subtitle = c.get("subtitle", "")
+        description = c.get("description", "")
+        chapter_list += f'''
+                <a href="{fable_base}/{slug}/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">{number}</div>
+                        <div class="activity-content">
+                            <h3>{title}{(" — " + subtitle) if subtitle else ""}</h3>
+                            <p>{description}</p>
+                        </div>
+                    </div>
+                </a>
+'''
+
+    variables = fable_index_vars(lang, chapter_list, has_translation=has_translation)
+    html = render("index.html", variables)
+
+    if is_en:
+        out_file = config.SITE_ROOT / "html" / "en" / "fable" / "index.html"
+    else:
+        out_file = config.FABLE_OUTPUT_BASE / "index.html"
+    out_file.parent.mkdir(parents=True, exist_ok=True)
+    out_file.write_text(html, encoding="utf-8")
+    print(f"Built fable index: {out_file}")
     return True
 
 
@@ -1799,12 +2161,15 @@ def build_sitemap():
         aiways_sub_metas.extend(collect_aiways_chapters("en", sub_key))
     ja_farming = collect_farming_chapters("ja")
     en_farming = collect_farming_chapters("en")
+    ja_fable = collect_fable_chapters("ja")
+    en_fable = collect_fable_chapters("en")
 
     all_dates = [
         norm_date(m.get("date"))
         for m in (*ja_articles, *en_articles, *ja_posts, *en_posts,
                   *ja_chapters, *en_chapters, *ja_aiways, *en_aiways,
-                  *aiways_sub_metas, *ja_farming, *en_farming)
+                  *aiways_sub_metas, *ja_farming, *en_farming,
+                  *ja_fable, *en_fable)
         if m.get("date")
     ]
     latest = max(all_dates) if all_dates else date.today().isoformat()
@@ -1956,6 +2321,21 @@ def build_sitemap():
         if not slug:
             continue
         urls.append((f"{site_url}/en/phosphorus-and-farming/{slug}/", norm_date(meta.get("date")), "0.5"))
+    # Fable 5 が帰ってきた — serialized column
+    if ja_fable:
+        urls.append((f"{site_url}/fable/", latest, "0.8"))
+    if en_fable:
+        urls.append((f"{site_url}/en/fable/", latest, "0.7"))
+    for meta in ja_fable:
+        slug = meta.get("slug", "")
+        if not slug:
+            continue
+        urls.append((f"{site_url}/fable/{slug}/", norm_date(meta.get("date")), "0.6"))
+    for meta in en_fable:
+        slug = meta.get("slug", "")
+        if not slug:
+            continue
+        urls.append((f"{site_url}/en/fable/{slug}/", norm_date(meta.get("date")), "0.5"))
     urls.append((f"{site_url}/about/", latest, "0.6"))
     urls.append((f"{site_url}/en/about/", latest, "0.5"))
     urls.append((f"{site_url}/light-farming/", latest, "0.8"))
@@ -2137,6 +2517,18 @@ def main():
         if collect_farming_chapters("en"):
             build_farming_index("en")
 
+        # Build fable installments — JA + EN
+        fable_ok = 0
+        fable_files = list(_iter_article_files(config.FABLE_DIR, "ja")) \
+                    + list(_iter_article_files(config.FABLE_DIR, "en"))
+        for f in fable_files:
+            if build_fable_chapter(f):
+                fable_ok += 1
+        if collect_fable_chapters("ja"):
+            build_fable_index("ja")
+        if collect_fable_chapters("en"):
+            build_fable_index("en")
+
         # Build ai-native-ways examples — every chapter's example-N/ folders,
         # in parent series and every sub-series.
         examples_ok = examples_total = 0
@@ -2170,6 +2562,7 @@ def main():
             f" + {aiways_ok}/{len(aiways_files)} ai-native-ways"
             f" + {examples_ok}/{examples_total} ai-native-ways examples"
             f" + {farming_ok}/{len(farming_files)} phosphorus-and-farming chapters"
+            f" + {fable_ok}/{len(fable_files)} fable installments"
             f" + indexes + sitemap.xml + robots.txt."
         )
         return
@@ -2187,6 +2580,8 @@ def main():
         build_aiways_chapter(arg)
     elif series == "phosphorus-and-farming" or "phosphorus-and-farming/" in arg:
         build_farming_chapter(arg)
+    elif series == "fable" or "/fable/" in arg or arg.startswith("fable/"):
+        build_fable_chapter(arg)
     else:
         build_article(arg)
 

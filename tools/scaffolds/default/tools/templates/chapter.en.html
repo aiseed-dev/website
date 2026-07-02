@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
@@ -20,8 +22,8 @@
 {% if hreflang_en %}<link rel="alternate" hreflang="en" href="{{ hreflang_en }}">{% endif %}
 <link rel="alternate" hreflang="x-default" href="{{ hreflang_ja or canonical_url }}">
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="AI時代の暮らし">
-<meta property="og:locale" content="ja_JP">
+<meta property="og:site_name" content="Living in the AI Era">
+<meta property="og:locale" content="en_US">
 <meta property="og:title" content="{{ title }}">
 <meta property="og:description" content="{{ description }}">
 <meta property="og:url" content="{{ canonical_url }}">
@@ -32,18 +34,16 @@
 <meta name="twitter:title" content="{{ title }}">
 <meta name="twitter:description" content="{{ description }}">
 <meta name="twitter:image" content="{{ og_image }}">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 
-<!-- Webフォント(軽量化済み: Shippori Mincho 700/800 + JetBrains Mono のみ) -->
+<!-- Web fonts: serif for body/headings + monospace for accents -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-/* ============================================================
-   COLOR & DESIGN TOKENS
-   aiseed.dev 全体のスタイルに合わせる場合は、ここの変数を
-   既存サイトのCSS変数に差し替える。
-   ============================================================ */
 :root {
   --ink: #1a1a1a;
   --paper: #f4f1ea;
@@ -54,27 +54,19 @@
   --highlight: #f7e9c8;
 }
 
-/* ============================================================
-   RESET & BASE
-   ============================================================ */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
-/* システム明朝(本文用、Webフォント不要で即時表示) */
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
-               "Yu Mincho", "游明朝", "YuMincho",
-               "Noto Serif CJK JP", "Noto Serif JP", serif;
-  font-size: 17px;
-  line-height: 1.9;
-  letter-spacing: 0.02em;
-  font-feature-settings: "palt";
+  font-family: "Crimson Pro", Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  line-height: 1.7;
+  letter-spacing: 0.005em;
   overflow-x: hidden;
 }
 
-/* グレインテクスチャ(紙の質感) */
 body::before {
   content: "";
   position: fixed;
@@ -88,16 +80,14 @@ body::before {
 }
 
 .container {
-  max-width: 760px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 0 32px;
   position: relative;
   z-index: 2;
 }
 
-/* ============================================================
-   MASTHEAD(シリーズ名・章番号)
-   ============================================================ */
+/* MASTHEAD */
 .masthead {
   border-bottom: 3px double var(--ink);
   padding: 24px 0 16px;
@@ -113,9 +103,7 @@ body::before {
 .masthead-left  { font-weight: 700; color: var(--ink); }
 .masthead-right { font-style: italic; }
 
-/* ============================================================
-   HERO(タイトル領域)
-   ============================================================ */
+/* HERO */
 .hero {
   padding: 80px 0 60px;
 }
@@ -136,24 +124,26 @@ body::before {
   background: var(--accent);
 }
 .hero-title {
-  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "Crimson Pro", Georgia, serif;
   font-weight: 800;
-  font-size: clamp(32px, 5.5vw, 56px);
-  line-height: 1.3;
-  letter-spacing: -0.01em;
+  font-size: clamp(34px, 5.2vw, 54px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
   margin-bottom: 24px;
 }
 .hero-title .accent {
   color: var(--accent);
+  font-style: italic;
 }
 .hero-subtitle {
-  font-size: 18px;
-  line-height: 1.85;
+  font-size: 19px;
+  line-height: 1.65;
   color: var(--whisper);
   max-width: 580px;
   border-left: 2px solid var(--accent);
   padding-left: 20px;
   margin-top: 32px;
+  font-style: italic;
 }
 .hero-byline {
   margin-top: 48px;
@@ -167,24 +157,24 @@ body::before {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 8px;
+  text-transform: uppercase;
 }
 
-/* ============================================================
-   ARTICLE BODY
-   ============================================================ */
+/* ARTICLE */
 article p {
   margin-bottom: 24px;
 }
 
 article h2 {
-  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "Crimson Pro", Georgia, serif;
   font-weight: 700;
-  font-size: 26px;
-  line-height: 1.4;
+  font-size: 30px;
+  line-height: 1.3;
   margin: 72px 0 24px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--ink);
   position: relative;
+  letter-spacing: -0.01em;
 }
 article h2::before {
   content: "§";
@@ -195,9 +185,9 @@ article h2::before {
 }
 
 article h3 {
-  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "Crimson Pro", Georgia, serif;
   font-weight: 600;
-  font-size: 19px;
+  font-size: 22px;
   margin: 40px 0 16px;
   color: var(--ink);
 }
@@ -215,7 +205,7 @@ article strong {
 }
 
 article em {
-  font-style: normal;
+  font-style: italic;
   color: var(--accent);
   font-weight: 600;
 }
@@ -232,37 +222,65 @@ article a:hover {
   color: var(--accent);
 }
 
-/* ============================================================
-   BLOCKQUOTE
-   ============================================================ */
+/* BLOCKQUOTE */
 blockquote {
   margin: 40px 0;
   padding: 32px 40px;
   background: var(--paper-deep);
   border-left: 4px solid var(--accent);
   position: relative;
-  font-size: 18px;
-  line-height: 1.85;
-  font-style: normal;
-  color: var(--ink);
+  font-size: 20px;
+  line-height: 1.6;
+  font-style: italic;
 }
 blockquote::before {
-  content: "「";
+  content: "\201C";
   position: absolute;
-  top: 4px;
-  left: 8px;
-  font-size: 48px;
+  top: 0;
+  left: 12px;
+  font-size: 64px;
   color: var(--accent);
   opacity: 0.3;
-  font-family: "Hiragino Mincho ProN", serif;
+  font-family: "Crimson Pro", Georgia, serif;
+  line-height: 1;
 }
 blockquote p {
   margin-bottom: 0;
 }
 
-/* ============================================================
-   ORDERED LIST(番号付きリスト)
-   ============================================================ */
+/* TABLE */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+article thead th {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+}
+article tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+article tbody tr:last-child td {
+  border-bottom: none;
+}
+@media (max-width: 720px) {
+  article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* LISTS */
 article ol {
   margin: 32px 0;
   counter-reset: item;
@@ -287,7 +305,6 @@ article ol li::before {
   letter-spacing: 0.1em;
 }
 
-/* 通常のul(章末の関連リンクなど) */
 article ul {
   margin: 24px 0;
   padding-left: 1.5em;
@@ -296,9 +313,7 @@ article ul li {
   margin-bottom: 8px;
 }
 
-/* ============================================================
-   CODE BLOCK(疑似ターミナル風)
-   ============================================================ */
+/* CODE BLOCK */
 article pre {
   margin: 40px 0;
   background: var(--ink);
@@ -323,9 +338,10 @@ article pre code {
   display: block;
   padding-top: 16px;
   white-space: pre;
+  background: transparent;
+  color: var(--paper);
 }
 
-/* インラインコード */
 article code {
   font-family: "JetBrains Mono", monospace;
   font-size: 0.9em;
@@ -334,15 +350,8 @@ article code {
   border-radius: 2px;
   color: var(--ink);
 }
-article pre code {
-  background: transparent;
-  padding: 16px 0 0 0;
-  color: var(--paper);
-}
 
-/* ============================================================
-   HORIZONTAL RULE(本文中の区切り)
-   ============================================================ */
+/* HR */
 article hr {
   border: none;
   text-align: center;
@@ -357,9 +366,7 @@ article hr::before {
   letter-spacing: 0.5em;
 }
 
-/* ============================================================
-   RELATED LINKS(章末の関連記事)
-   ============================================================ */
+/* RELATED */
 .related-links {
   margin-top: 64px;
   padding: 32px 0;
@@ -367,29 +374,22 @@ article hr::before {
   border-bottom: 1px solid var(--rule);
 }
 .related-links h3 {
-  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
-  font-size: 14px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
   letter-spacing: 0.2em;
   color: var(--whisper);
   margin: 0 0 20px;
-  font-weight: 600;
+  font-weight: 700;
+  text-transform: uppercase;
 }
-.related-links h3::before {
-  content: none;
-}
-.related-links ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
+.related-links h3::before { content: none; }
+.related-links ul { list-style: none; margin: 0; padding: 0; }
 .related-links li {
   padding: 10px 0;
   border-bottom: 1px dashed var(--rule);
   margin-bottom: 0;
 }
-.related-links li:last-child {
-  border-bottom: none;
-}
+.related-links li:last-child { border-bottom: none; }
 .related-links a {
   text-decoration: none;
   color: var(--ink);
@@ -410,9 +410,7 @@ article hr::before {
   color: var(--accent);
 }
 
-/* ============================================================
-   COLOPHON(フッター)
-   ============================================================ */
+/* COLOPHON */
 .colophon {
   margin-top: 96px;
   padding: 40px 0;
@@ -423,17 +421,17 @@ article hr::before {
   color: var(--whisper);
   text-align: center;
   line-height: 2;
+  text-transform: uppercase;
 }
 .colophon-mark {
-  font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+  font-family: "Crimson Pro", Georgia, serif;
   font-size: 32px;
   color: var(--accent);
   margin-bottom: 16px;
+  text-transform: none;
 }
 
-/* ============================================================
-   SERIES TOC(全章一覧・折りたたみ式)
-   ============================================================ */
+/* SERIES TOC (all chapters in this series, collapsible) */
 .series-toc {
   margin: 24px 0 40px;
   border-top: 1px solid var(--rule);
@@ -475,7 +473,7 @@ article hr::before {
   list-style: none;
   padding: 9px 0;
   border-bottom: 1px dashed var(--rule);
-  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "Crimson Pro", Georgia, serif;
   font-size: 14px;
   line-height: 1.55;
   display: flex;
@@ -501,7 +499,7 @@ article hr::before {
   text-transform: uppercase;
   white-space: nowrap;
   flex-shrink: 0;
-  min-width: 5em;
+  min-width: 6em;
 }
 .series-toc li.current {
   background: var(--paper-deep);
@@ -513,22 +511,82 @@ article hr::before {
   color: var(--ink);
 }
 
-/* ============================================================
-   RESPONSIVE
-   ============================================================ */
+/* IMAGES */
+article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 32px auto;
+}
+
+/* CUSTOM BLOCKS (:::chain / :::highlight / :::quote / :::compare) */
+.chain-diagram {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 16px;
+  line-height: 2;
+}
+.chain-diagram .arrow {
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0.3em;
+}
+.highlight-box {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.highlight-box p { margin-bottom: 12px; }
+.highlight-box p:last-child { margin-bottom: 0; }
+.quote-block {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+}
+.quote-block .quote-text {
+  font-size: 19px;
+  line-height: 1.7;
+  font-style: italic;
+  margin: 0;
+}
+
+/* CHAPTER NAV (prev / next links) */
+.chapter-nav {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 15px;
+}
+.chapter-nav a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+}
+.chapter-nav a:hover { color: var(--accent); }
+
+/* RESPONSIVE */
 @media (max-width: 640px) {
   .container { padding: 0 20px; }
   .hero { padding: 48px 0 40px; }
-  blockquote { padding: 24px 20px 24px 28px; }
+  blockquote { padding: 24px 20px 24px 36px; }
   article pre { padding: 20px 16px; font-size: 12px; }
   article ol li { padding-left: 48px; }
-  .series-toc .toc-num { min-width: 4em; font-size: 10px; }
+  .series-toc .toc-num { min-width: 5em; font-size: 10px; }
   .series-toc li { font-size: 13px; gap: 12px; }
 }
 
-/* ============================================================
-   ANIMATIONS
-   ============================================================ */
+/* ANIMATIONS */
 @keyframes rise {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -540,9 +598,18 @@ article hr::before {
 .hero-title    { animation-delay: 0.25s; }
 .hero-subtitle { animation-delay: 0.45s; }
 .hero-byline   { animation-delay: 0.65s; }
+.mermaid {
+  text-align: center;
+  margin: 2.5rem 0;
+  background: var(--paper-warm, #f5f1ea);
+  padding: 1.5rem 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.mermaid svg { max-width: 100%; height: auto; }
 
 /* ============================================================
-   DARK MODE(OS の配色設定に追従して自動で暗色に切り替え)
+   DARK MODE (follows the OS color-scheme preference)
    ============================================================ */
 @media (prefers-color-scheme: dark) {
   :root {
@@ -555,13 +622,13 @@ article hr::before {
     --whisper: #a39b88;
     --highlight: rgba(220, 168, 78, 0.30);
   }
-  /* 紙の質感(グレイン)を暗色背景向けに反転 */
+  /* Invert the paper-grain texture for a dark background */
   body::before {
     background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
     mix-blend-mode: screen;
     opacity: 0.4;
   }
-  /* コードブロックは両モードとも暗いターミナル調を維持 */
+  /* Keep code blocks as a dark terminal in both modes */
   article pre {
     background: #0d0c0a;
     color: #e8e3d6;
@@ -569,23 +636,24 @@ article hr::before {
   article pre code {
     color: #e8e3d6;
   }
+  /* Dark frame for Mermaid diagrams */
+  .mermaid {
+    background: #211d16;
+  }
 }
 </style>
 </head>
 
 <body>
-
 <div class="container">
 
-  <!-- MASTHEAD -->
   <header class="masthead">
     <div class="masthead-left"><a href="{{ series_index_url }}" style="color: inherit; text-decoration: none;">{{ series }}</a></div>
-    <div class="masthead-right">{{ chapter_label }} / Essay</div>
+    <div class="masthead-right">{{ masthead_right }}</div>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
-    <div class="hero-meta">{{ chapter_label }} № {{ number }} · {{ year }}</div>
+    <div class="hero-meta">{{ hero_meta }}</div>
 
     <h1 class="hero-title">{% if title_html %}{{ title_html | safe }}{% else %}{{ title }}{% endif %}</h1>
 
@@ -597,23 +665,39 @@ article hr::before {
     </div>
   </section>
 
-  <!-- SERIES TOC(全章一覧・現在の章をハイライト) -->
+  <!-- SERIES TOC (full chapter list for this series, current chapter highlighted) -->
   {{ chapter_toc_html | safe }}
 
-  <!-- ARTICLE BODY -->
   <article>
     {{ content_html | safe }}
   </article>
 
-  <!-- COLOPHON -->
+  {% if nav_html %}{{ nav_html | safe }}{% endif %}
+
   <footer class="colophon">
     <div class="colophon-mark">§</div>
-    {{ series }} · {{ chapter_label }}<br>
+    {{ colophon_label }}<br>
     Tokushima · {{ date }}<br>
-    <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a>
+    <a href="/en/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a>
   </footer>
 
 </div>
 
+<script>
+  // Mermaid loads only on pages that contain a .mermaid block.
+  // Self-hosted (no third-party CDN dependency); SRI verified.
+  if (document.querySelector(".mermaid")) {
+    const s = document.createElement("script");
+    s.src = "/js/vendor/mermaid-11.14.0.min.js";
+    s.integrity = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk";
+    s.crossOrigin = "anonymous";
+    s.onload = () => {
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      mermaid.initialize({ startOnLoad: false, theme: prefersDark ? "dark" : "default" });
+      mermaid.run();
+    };
+    document.head.appendChild(s);
+  }
+</script>
 </body>
 </html>

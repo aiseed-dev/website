@@ -82,7 +82,8 @@ tools/
     images.py                # 画像コピー + OGP画像生成
     template_vars.py         # 各テンプレートの変数ビルダー
   templates/
-    article.html             # 記事・ブログページテンプレート（Jinja2）
+    chapter.html             # 記事・章ページ共通テンプレート・日本語（Jinja2）
+    chapter.en.html          # 記事・章ページ共通テンプレート・英語（Jinja2）
     index.html               # インデックスページテンプレート（Jinja2）
 html/
   insights/                  # 日本語 Insights HTML 出力先
@@ -196,19 +197,19 @@ lang: en
 
 つまり EN ビルドは記事フォルダ内のすべてをコピー、JA ビルドは `en-` プレフィックスがあるものだけスキップする。**フォルダ自体が記事に紐づくため、ファイル名側に番号プレフィックスを付ける必要はない**（ただし既存記事との互換のため番号プレフィックス付きでも動く）。
 
-### `hero_image` — ページ内の表示画像
+### `hero_image` — OGP画像の生成元
 
-記事ページ内に `<img>` として表示される（`article.html` の `{{ img_path }}`）。
+エッセイ型の統一デザイン（`chapter.html`）ではページ内ヒーロー画像は表示しない。
+`hero_image` は **OGP画像（SNSサムネイル）の自動生成元** としてのみ使われる。
 
 - **書式**: ファイル名のみ (`012-IMG_3424.jpg`)
-- **解決**: ビルド時に `../../images/FILE` のような相対パスに展開される
-- **省略時**: `IMG_3285.jpg`（サイト既定画像）にフォールバック
+- ページ内に画像を見せたい場合は本文 Markdown に `![]()` で置く
 
 ### `og_image` — SNSサムネイル（OGP / Twitter Card）
 
 X・Facebook・LINE・Slack・Discord等でURLを共有したとき、プレビューカードに表示される画像。
 
-ビルド結果の HTML に以下が出力される（`tools/templates/article.html:22-34`）:
+ビルド結果の HTML に以下が出力される（`tools/templates/chapter.html`）:
 
 ```html
 <meta property="og:image"  content="{{ og_image }}">

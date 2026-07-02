@@ -1421,6 +1421,16 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/fable/</loc>
+    <lastmod>2026-08-25</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/fable/what-is-fable-5/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/about/</loc>
     <lastmod>2026-08-25</lastmod>
     <priority>0.6</priority>

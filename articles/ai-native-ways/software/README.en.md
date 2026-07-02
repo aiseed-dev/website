@@ -49,7 +49,7 @@ articles/ai-native-ways/software/
     └── example-N/      ── Optional per-chapter evidence folders
 ```
 
-Uses the parent series' `template.html` / `template.en.html` as-is.
+Uses the site-wide shared `tools/templates/chapter.html` / `chapter.en.html`.
 The frontmatter schema is also shared with the parent. EN files
 declare `lang: en` explicitly.
 

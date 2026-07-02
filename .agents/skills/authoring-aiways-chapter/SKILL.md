@@ -5,7 +5,7 @@ description: Scaffolds a new chapter in the aiseed.dev essay series "AIネイテ
 
 # Authoring an "AIネイティブな仕事の作法" chapter
 
-A chapter lives in `articles/ai-native-ways/NN-slug/` with paired `ja.md` and `en.md`. The build tool (`tools/build_article.py::build_aiways_chapter`) renders each into the series' independent typography template (`articles/ai-native-ways/template.html` / `template.en.html`). For voice and prose conventions, read `writing-aiways-voice` first; this skill covers the mechanical scaffold only.
+A chapter lives in `articles/ai-native-ways/NN-slug/` with paired `ja.md` and `en.md`. The build tool (`tools/build_article.py::build_aiways_chapter`) renders each through the site-wide shared chapter template (`tools/templates/chapter.html` / `chapter.en.html`). For voice and prose conventions, read `writing-aiways-voice` first; this skill covers the mechanical scaffold only.
 
 ## Directory layout
 
@@ -14,8 +14,6 @@ A chapter lives in `articles/ai-native-ways/NN-slug/` with paired `ja.md` and `e
 ```
 articles/ai-native-ways/
 ├── README.md                 # series-level spec (do not modify casually)
-├── template.html             # JA Jinja2 template
-├── template.en.html          # EN Jinja2 template
 └── NN-slug/                  # one chapter = one folder
     ├── ja.md                 # required
     ├── en.md                 # required
@@ -192,4 +190,4 @@ Because `**` renders as a yellow highlight and `*` renders as accent color, trea
 - `tools/build_article.py:462` — `build_aiways_chapter()` entry point
 - `tools/build_article.py:476` — `_aiways_chapter_label()` derives 序章 / 第N章
 - `tools/build/template_vars.py` — `aiways_index_vars()` for series-index strings
-- `articles/ai-native-ways/template.html` / `template.en.html` — page templates and `:root` CSS variables
+- `tools/templates/chapter.html` / `chapter.en.html` — shared page templates and `:root` CSS variables (site-wide)

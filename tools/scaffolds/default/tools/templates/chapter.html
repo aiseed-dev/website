@@ -34,6 +34,9 @@
 <meta name="twitter:title" content="{{ title }}">
 <meta name="twitter:description" content="{{ description }}">
 <meta name="twitter:image" content="{{ og_image }}">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 
 <!-- Webフォント(軽量化済み: Shippori Mincho 700/800 + JetBrains Mono のみ) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -550,6 +553,75 @@ article hr::before {
 }
 
 /* ============================================================
+   IMAGES
+   ============================================================ */
+article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 32px auto;
+}
+
+/* ============================================================
+   CUSTOM BLOCKS(:::chain / :::highlight / :::quote / :::compare)
+   ============================================================ */
+.chain-diagram {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+.chain-diagram .arrow {
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0.3em;
+}
+.highlight-box {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.highlight-box p { margin-bottom: 12px; }
+.highlight-box p:last-child { margin-bottom: 0; }
+.quote-block {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+}
+.quote-block .quote-text {
+  font-size: 18px;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* ============================================================
+   CHAPTER NAV(前後の記事へのリンク)
+   ============================================================ */
+.chapter-nav {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 14px;
+}
+.chapter-nav a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+}
+.chapter-nav a:hover { color: var(--accent); }
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 640px) {
@@ -629,12 +701,12 @@ article hr::before {
   <!-- MASTHEAD -->
   <header class="masthead">
     <div class="masthead-left"><a href="{{ series_index_url }}" style="color: inherit; text-decoration: none;">{{ series }}</a></div>
-    <div class="masthead-right">{{ chapter_label }} / Essay</div>
+    <div class="masthead-right">{{ masthead_right }}</div>
   </header>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-meta">{{ chapter_label }} № {{ number }} · {{ year }}</div>
+    <div class="hero-meta">{{ hero_meta }}</div>
 
     <h1 class="hero-title">{% if title_html %}{{ title_html | safe }}{% else %}{{ title }}{% endif %}</h1>
 
@@ -654,10 +726,13 @@ article hr::before {
     {{ content_html | safe }}
   </article>
 
+  <!-- CHAPTER NAV(前後の記事) -->
+  {% if nav_html %}{{ nav_html | safe }}{% endif %}
+
   <!-- COLOPHON -->
   <footer class="colophon">
     <div class="colophon-mark">§</div>
-    {{ series }} · {{ chapter_label }}<br>
+    {{ colophon_label }}<br>
     Tokushima · {{ date }}<br>
     <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a>
   </footer>

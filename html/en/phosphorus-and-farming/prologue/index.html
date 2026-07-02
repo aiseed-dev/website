@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
@@ -32,6 +34,9 @@
 <meta name="twitter:title" content="Prologue — Economics Decides the Method of Farming">
 <meta name="twitter:description" content="Middle East conflict will make phosphate fertilizer hard to obtain in Japan around 2027. And looking longer-term, phosphorus depletion (peak phosphorus around 2033) is severe. A short-term and a long-term constraint are biting at the same time. So decide now to transition to regenerative agriculture. This is not ideology — it is the consequence of economics and physics.">
 <meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 
 <!-- Web fonts: serif for body/headings + monospace for accents -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -243,6 +248,38 @@ blockquote p {
   margin-bottom: 0;
 }
 
+/* TABLE */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+article thead th {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+}
+article tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+article tbody tr:last-child td {
+  border-bottom: none;
+}
+@media (max-width: 720px) {
+  article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 /* LISTS */
 article ol {
   margin: 32px 0;
@@ -394,7 +431,7 @@ article hr::before {
   text-transform: none;
 }
 
-/* SERIES TOC (all chapters, collapsible) */
+/* SERIES TOC (all chapters in this series, collapsible) */
 .series-toc {
   margin: 24px 0 40px;
   border-top: 1px solid var(--rule);
@@ -474,6 +511,70 @@ article hr::before {
   color: var(--ink);
 }
 
+/* IMAGES */
+article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 32px auto;
+}
+
+/* CUSTOM BLOCKS (:::chain / :::highlight / :::quote / :::compare) */
+.chain-diagram {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 16px;
+  line-height: 2;
+}
+.chain-diagram .arrow {
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0.3em;
+}
+.highlight-box {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.highlight-box p { margin-bottom: 12px; }
+.highlight-box p:last-child { margin-bottom: 0; }
+.quote-block {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+}
+.quote-block .quote-text {
+  font-size: 19px;
+  line-height: 1.7;
+  font-style: italic;
+  margin: 0;
+}
+
+/* CHAPTER NAV (prev / next links) */
+.chapter-nav {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 15px;
+}
+.chapter-nav a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+}
+.chapter-nav a:hover { color: var(--accent); }
+
 /* RESPONSIVE */
 @media (max-width: 640px) {
   .container { padding: 0 20px; }
@@ -497,6 +598,15 @@ article hr::before {
 .hero-title    { animation-delay: 0.25s; }
 .hero-subtitle { animation-delay: 0.45s; }
 .hero-byline   { animation-delay: 0.65s; }
+.mermaid {
+  text-align: center;
+  margin: 2.5rem 0;
+  background: var(--paper-warm, #f5f1ea);
+  padding: 1.5rem 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.mermaid svg { max-width: 100%; height: auto; }
 
 /* ============================================================
    DARK MODE (follows the OS color-scheme preference)
@@ -526,6 +636,10 @@ article hr::before {
   article pre code {
     color: #e8e3d6;
   }
+  /* Dark frame for Mermaid diagrams */
+  .mermaid {
+    background: #211d16;
+  }
 }
 </style>
 </head>
@@ -551,7 +665,7 @@ article hr::before {
     </div>
   </section>
 
-  <!-- SERIES TOC (full chapter list, current chapter highlighted) -->
+  <!-- SERIES TOC (full chapter list for this series, current chapter highlighted) -->
   <nav class="series-toc" aria-label="Series chapters">
   <details>
     <summary>Contents — all chapters</summary>
@@ -666,6 +780,11 @@ Phosphate fertilizer turns expensive. That alone determines all of it.</p>
 
   </article>
 
+  <nav class="chapter-nav">
+  <span></span>
+  <a href="/en/phosphorus-and-farming/supply-constraint/" rel="next">Next: Phosphate Fertilizer Supply Constraints — What Is Happening &rarr;</a>
+</nav>
+
   <footer class="colophon">
     <div class="colophon-mark">§</div>
     Phosphorus Depletion and Natural Farming Series · Prologue<br>
@@ -674,5 +793,22 @@ Phosphate fertilizer turns expensive. That alone determines all of it.</p>
   </footer>
 
 </div>
+
+<script>
+  // Mermaid loads only on pages that contain a .mermaid block.
+  // Self-hosted (no third-party CDN dependency); SRI verified.
+  if (document.querySelector(".mermaid")) {
+    const s = document.createElement("script");
+    s.src = "/js/vendor/mermaid-11.14.0.min.js";
+    s.integrity = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk";
+    s.crossOrigin = "anonymous";
+    s.onload = () => {
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      mermaid.initialize({ startOnLoad: false, theme: prefersDark ? "dark" : "default" });
+      mermaid.run();
+    };
+    document.head.appendChild(s);
+  }
+</script>
 </body>
 </html>

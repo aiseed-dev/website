@@ -38,9 +38,8 @@ articles/
 │   └── 00-prologue/
 │       ├── ja.md
 │       └── en.md
-├── ai-native-ways/                 # AIネイティブな仕事の作法（独立テンプレート）
+├── ai-native-ways/                 # AIネイティブな仕事の作法
 │   ├── README.md
-│   ├── template.html / template.en.html
 │   └── 00-prologue/
 │       ├── ja.md
 │       └── en.md
@@ -134,8 +133,9 @@ python3 tools/build_article.py articles/ai-native-ways/00-prologue/ja.md        
 natural-farming・light-farming・privacy）の `style.css` / `main.js` 参照には
 コンテンツハッシュ由来のキャッシュバスター `?v=<hash>` が刻印される。
 
-`articles/ai-native-ways/` は独立テンプレート（同フォルダの `template.html` /
-`template.en.html`）を使う。詳細は [articles/ai-native-ways/README.md](articles/ai-native-ways/README.md) 参照。
+全シリーズの記事・章ページは共通のエッセイ型テンプレート
+（`tools/templates/chapter.html` / `chapter.en.html`）で描画される。
+ai-native-ways の詳細は [articles/ai-native-ways/README.md](articles/ai-native-ways/README.md) 参照。
 
 記法・オプションの詳細は [docs/manuals/build_article.md](docs/manuals/build_article.md) 参照（ツール全体の一覧は [tools/README.md](tools/README.md)）。
 
@@ -163,7 +163,7 @@ python3 tools/serve.py --port 8080
 ├── articles/
 │   ├── insights/         # Insights 記事 (NN-slug/{ja,en}.md)
 │   ├── claude-debian/    # 任意: 書籍章 (NN-slug/{ja,en}.md)
-│   ├── ai-native-ways/   # 任意: 独立テンプレート連載 (NN-slug/{ja,en}.md + template.html)
+│   ├── ai-native-ways/   # 任意: エッセイ連載 (NN-slug/{ja,en}.md)
 │   └── blog/             # Blog 記事 (NNN-slug/{ja,en}.md + アセット)
 ├── html/                 # 出力先（index.html, css/, js/, images/ 等）
 ├── tools/templates/      # 任意: ここにテンプレートを置けばバンドルを上書き

@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
@@ -32,6 +34,9 @@
 <meta name="twitter:title" content="第4章 現実的な立ち位置 ── どこにも組みしない">
 <meta name="twitter:description" content="慣行農業を続ける道はない ── というより、リン酸肥料が輸入できなくなる以上、続けたくても続けられない。「自給率向上」「日本型循環畜産」「工業型農業の温存/完全放棄」── どの処方箋も、肥料制約という物理的制約の前では空論になる。真の論点は「移行をどう管理するか」だ。本シリーズの立ち位置は、国内では小規模なリジェネラティブ農業へ段階的に移行しつつ、国際的にもリジェネラティブ農業の推進を支持し、再分散された世界供給網からの輸入で不足を補う、という三つの戦略の組み合わせである。">
 <meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 
 <!-- Webフォント(軽量化済み: Shippori Mincho 700/800 + JetBrains Mono のみ) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -258,6 +263,40 @@ blockquote::before {
 }
 blockquote p {
   margin-bottom: 0;
+}
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+article thead th {
+  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+}
+article tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+article tbody tr:last-child td {
+  border-bottom: none;
+}
+@media (max-width: 720px) {
+  article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 /* ============================================================
@@ -514,6 +553,75 @@ article hr::before {
 }
 
 /* ============================================================
+   IMAGES
+   ============================================================ */
+article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 32px auto;
+}
+
+/* ============================================================
+   CUSTOM BLOCKS(:::chain / :::highlight / :::quote / :::compare)
+   ============================================================ */
+.chain-diagram {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+.chain-diagram .arrow {
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0.3em;
+}
+.highlight-box {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.highlight-box p { margin-bottom: 12px; }
+.highlight-box p:last-child { margin-bottom: 0; }
+.quote-block {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+}
+.quote-block .quote-text {
+  font-size: 18px;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* ============================================================
+   CHAPTER NAV(前後の記事へのリンク)
+   ============================================================ */
+.chapter-nav {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 14px;
+}
+.chapter-nav a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+}
+.chapter-nav a:hover { color: var(--accent); }
+
+/* ============================================================
    RESPONSIVE
    ============================================================ */
 @media (max-width: 640px) {
@@ -540,6 +648,15 @@ article hr::before {
 .hero-title    { animation-delay: 0.25s; }
 .hero-subtitle { animation-delay: 0.45s; }
 .hero-byline   { animation-delay: 0.65s; }
+.mermaid {
+  text-align: center;
+  margin: 2.5rem 0;
+  background: var(--paper-warm, #f5f1ea);
+  padding: 1.5rem 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.mermaid svg { max-width: 100%; height: auto; }
 
 /* ============================================================
    DARK MODE(OS の配色設定に追従して自動で暗色に切り替え)
@@ -568,6 +685,10 @@ article hr::before {
   }
   article pre code {
     color: #e8e3d6;
+  }
+  /* Mermaid 図の枠を暗色に */
+  .mermaid {
+    background: #211d16;
   }
 }
 </style>
@@ -1311,6 +1432,12 @@ Nitrogen and Biodiversity to Agricultural Soils&quot;(2018)</li>
 
   </article>
 
+  <!-- CHAPTER NAV(前後の記事) -->
+  <nav class="chapter-nav">
+  <a href="/phosphorus-and-farming/industrial-farming-fails/" rel="prev">&larr; 前: 第3章 工業型農業は成立しない</a>
+  <a href="/phosphorus-and-farming/soil-microbes/" rel="next">次: 第5章 土壌微生物という戦略 &rarr;</a>
+</nav>
+
   <!-- COLOPHON -->
   <footer class="colophon">
     <div class="colophon-mark">§</div>
@@ -1320,6 +1447,23 @@ Nitrogen and Biodiversity to Agricultural Soils&quot;(2018)</li>
   </footer>
 
 </div>
+
+<script>
+  // Mermaid loads only on pages that contain a .mermaid block.
+  // Self-hosted (no third-party CDN dependency); SRI verified.
+  if (document.querySelector(".mermaid")) {
+    const s = document.createElement("script");
+    s.src = "/js/vendor/mermaid-11.14.0.min.js";
+    s.integrity = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk";
+    s.crossOrigin = "anonymous";
+    s.onload = () => {
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      mermaid.initialize({ startOnLoad: false, theme: prefersDark ? "dark" : "default" });
+      mermaid.run();
+    };
+    document.head.appendChild(s);
+  }
+</script>
 
 </body>
 </html>

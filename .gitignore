@@ -46,6 +46,8 @@ html/claude-debian/
 html/en/claude-debian/
 html/ai-native-ways/
 html/en/ai-native-ways/
+html/fable/
+html/en/fable/
 html/vegitage/*
 !html/vegitage/italian
 vegitage-data/web/site/

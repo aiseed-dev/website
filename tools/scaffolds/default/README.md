@@ -38,7 +38,7 @@ Output paths `html/insights/`, `html/blog/`, `html/en/insights/`,
 
 - Replace the sample articles and blog posts under `articles/insights/` and `articles/blog/`.
 - Customize the look in `html/css/style.css`.
-- Customize page layout by editing `tools/templates/article.html` and
+- Customize page layout by editing `tools/templates/chapter.html`, `chapter.en.html`, and
   `tools/templates/index.html`.
 - Update `html/index.html` (the build only touches content between the
   `LATEST_BLOG_POSTS_*` markers).

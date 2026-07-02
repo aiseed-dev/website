@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
@@ -38,18 +38,16 @@
 <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 
-<!-- Webフォント: 本文 = モリサワ BIZ UDP明朝(UD書体)、見出し = Shippori Mincho、
-     等幅 = JetBrains Mono(和文フォールバックは BIZ UDゴシック)。
-     BIZ UD 系は Windows には標準搭載されており、他環境には Google Fonts から配信される。 -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho:wght@400;700&family=BIZ+UDGothic:wght@400;700&family=Shippori+Mincho:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<!-- フォントは Web 配信せず、すべて端末のローカルフォントで賄う。
+     和文: UDデジタル教科書体 → BIZ UDP明朝(いずれも Windows 標準搭載の
+     モリサワ UD 書体) → ヒラギノ明朝・游明朝などのシステム明朝。
+     等幅: 端末のシステム等幅フォント。 -->
 
 <style>
 /* ============================================================
    LOCAL FONT: UDデジタル教科書体(モリサワ)
-   Windows・教育向け端末に無償搭載。Web 配信はできないため、
-   端末にあれば local() で拾い、なければ BIZ UDP明朝(Web フォント)へ
+   Windows・教育向け端末に無償搭載。端末にあれば local() で拾い、
+   なければ BIZ UDP明朝(同じく Windows 標準搭載)→ システム明朝へ
    フォールバックする。R と B は別ファミリー名なので、太字(700)を
    B 書体に明示的にマッピングして疑似ボールドを避ける。
    ============================================================ */
@@ -89,8 +87,8 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
-/* 本文はモリサワの UD 書体。端末にあれば UDデジタル教科書体を最優先、
-   なければ BIZ UDP明朝(Web 配信)、それも無理ならシステム明朝 */
+/* 本文: 端末にあれば UDデジタル教科書体を最優先、次に BIZ UDP明朝
+   (Windows 標準搭載)、どちらもなければヒラギノ明朝等のシステム明朝 */
 body {
   background: var(--paper);
   color: var(--ink);
@@ -136,7 +134,7 @@ body::before {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -156,7 +154,7 @@ body::before {
   padding: 80px 0 60px;
 }
 .hero-meta {
-  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 11px;
   letter-spacing: 0.25em;
   color: var(--accent);
@@ -172,7 +170,7 @@ body::before {
   background: var(--accent);
 }
 .hero-title {
-  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-weight: 800;
   font-size: clamp(32px, 5.5vw, 56px);
   line-height: 1.3;
@@ -195,7 +193,7 @@ body::before {
   margin-top: 48px;
   padding-top: 24px;
   border-top: 1px solid var(--rule);
-  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 11px;
   letter-spacing: 0.2em;
   color: var(--whisper);
@@ -213,7 +211,7 @@ article p {
 }
 
 article h2 {
-  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-weight: 700;
   font-size: 26px;
   line-height: 1.4;
@@ -224,7 +222,7 @@ article h2 {
 }
 article h2::before {
   content: "§";
-  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   color: var(--accent);
   margin-right: 16px;
   font-size: 22px;
@@ -307,7 +305,7 @@ article table {
   line-height: 1.7;
 }
 article thead th {
-  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-weight: 700;
   text-align: left;
   padding: 14px 16px;
@@ -350,7 +348,7 @@ article ol li::before {
   position: absolute;
   left: 0;
   top: 16px;
-  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 14px;
   color: var(--accent);
   font-weight: 700;
@@ -374,7 +372,7 @@ article pre {
   background: var(--ink);
   color: var(--paper);
   padding: 24px 28px;
-  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 13px;
   line-height: 1.8;
   position: relative;
@@ -397,7 +395,7 @@ article pre code {
 
 /* インラインコード */
 article code {
-  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 0.9em;
   background: var(--paper-deep);
   padding: 2px 6px;
@@ -421,7 +419,7 @@ article hr {
 }
 article hr::before {
   content: "◆ ◆ ◆";
-  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 14px;
   color: var(--accent);
   letter-spacing: 0.5em;
@@ -468,7 +466,7 @@ article hr::before {
   align-items: baseline;
 }
 .related-links .related-tag {
-  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 10px;
   letter-spacing: 0.2em;
   color: var(--accent);
@@ -494,7 +492,7 @@ article hr::before {
   gap: 32px 48px;
 }
 .footer-col h4 {
-  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -522,7 +520,7 @@ article hr::before {
   margin-top: 48px;
   padding: 32px 0 40px;
   border-top: 1px solid var(--rule);
-  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 11px;
   letter-spacing: 0.15em;
   color: var(--whisper);
@@ -530,7 +528,7 @@ article hr::before {
   line-height: 2;
 }
 .colophon-mark {
-  font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "Hiragino Mincho ProN", serif;
   font-size: 32px;
   color: var(--accent);
   margin-bottom: 16px;
@@ -546,7 +544,7 @@ article hr::before {
   padding: 8px 0;
 }
 .series-toc details {
-  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
 }
 .series-toc summary {
   cursor: pointer;
@@ -599,7 +597,7 @@ article hr::before {
 }
 .series-toc li a:hover .toc-title { color: var(--accent); }
 .series-toc .toc-num {
-  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 10.5px;
   letter-spacing: 0.18em;
   color: var(--accent);

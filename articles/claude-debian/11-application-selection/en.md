@@ -501,7 +501,28 @@ Security keys like YubiKey work without trouble on Linux. The `yubico-authentica
 
 "I can't switch because of games" used to be a real blocker. It isn't anymore. **Thanks to Valve's investment in Proton (a Wine-based compatibility layer) for the Steam Deck, plus DXVK / VKD3D, the bulk of Windows-only games run cleanly on Debian.**
 
-The book's stance is simple. **Install Steam (and, if you need it, Heroic) from Flathub and let the compatibility layer handle everything.** You don't have to hunt for Linux-native ports.
+The book's stance is simple. **Install Steam (and, if you need it, Heroic) from Flathub and let the compatibility layer handle everything.** For the Windows titles you already own, you don't have to hunt for Linux-native ports.
+
+### Start free — native open-source games
+
+Before we get to running your Windows games, note that there is a world you can **play right now without buying anything.** Linux has a deep bench of native open-source games, and each installs in **one Flatpak line** — no account, no payment, no Proton or Wine. **If you want to play with family or kids over summer break, this is the fastest place to start.**
+
+```bash
+# family / kids favorites (one line each, from Flathub)
+flatpak install flathub net.supertuxkart.SuperTuxKart   # kart racing (Mario Kart-like)
+flatpak install flathub org.supertuxproject.SuperTux    # platformer (Super Mario-like)
+flatpak install flathub com.play0ad.zeroad              # 0 A.D. (Age of Empires-like RTS)
+flatpak install flathub org.wesnoth.Wesnoth             # Battle for Wesnoth (turn-based strategy)
+flatpak install flathub org.luanti.luanti               # Luanti (formerly Minetest, Minecraft-like)
+flatpak install flathub com.github.Anuken.Mindustry     # Mindustry (tower defense + factory)
+flatpak install flathub org.openttd.OpenTTD             # OpenTTD (transport tycoon)
+
+# for younger kids
+flatpak install flathub org.kde.gcompris                # GCompris (educational suite for ages ~3–10)
+flatpak install flathub org.tuxpaint.Tuxpaint           # Tux Paint (drawing)
+```
+
+These go through no compatibility layer — **software built for Linux just runs.** They behave most cleanly and stay light even on old PCs. This is the first — and most reliable — answer to "can you really game on Linux?" What to do with your existing Steam library (Windows-only titles) is the Proton story that follows.
 
 ### Installing Steam
 
@@ -610,7 +631,7 @@ What you did in this chapter:
 
 1. Replaced Windows apps with Debian apps in nine categories.
 2. Handled honestly the things that don't fully replace (LINE, Teams, kernel-anti-cheat games, etc.).
-3. Confirmed that Steam Proton + Heroic cover the bulk of gaming.
+3. Confirmed that free native OSS games install in one line, and the Windows titles you own run mostly fine via Steam Proton + Heroic.
 4. Designed the migration pace (Day / Week / Month).
 
 **There is much less you actually have to give up than you thought.** Browsers, mail, office, communication, image and video, sync, password managers, utilities, games — with the stance this book takes, the things that genuinely require Windows count on one hand.

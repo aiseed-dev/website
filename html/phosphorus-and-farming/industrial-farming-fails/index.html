@@ -38,10 +38,12 @@
 <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 
-<!-- Webフォント(軽量化済み: Shippori Mincho 700/800 + JetBrains Mono のみ) -->
+<!-- Webフォント: 本文 = モリサワ BIZ UDP明朝(UD書体)、見出し = Shippori Mincho、
+     等幅 = JetBrains Mono(和文フォールバックは BIZ UDゴシック)。
+     BIZ UD 系は Windows には標準搭載されており、他環境には Google Fonts から配信される。 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho:wght@400;700&family=BIZ+UDGothic:wght@400;700&family=Shippori+Mincho:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
 /* ============================================================
@@ -65,11 +67,12 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
-/* システム明朝(本文用、Webフォント不要で即時表示) */
+/* 本文はモリサワの UD 書体 BIZ UDP明朝。未読込・未配信時はシステム明朝で表示 */
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
+  font-family: "BIZ UDPMincho", "BIZ UDP明朝",
+               "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
                "Yu Mincho", "游明朝", "YuMincho",
                "Noto Serif CJK JP", "Noto Serif JP", serif;
   font-size: 17px;
@@ -109,7 +112,7 @@ body::before {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -129,7 +132,7 @@ body::before {
   padding: 80px 0 60px;
 }
 .hero-meta {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 11px;
   letter-spacing: 0.25em;
   color: var(--accent);
@@ -168,7 +171,7 @@ body::before {
   margin-top: 48px;
   padding-top: 24px;
   border-top: 1px solid var(--rule);
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 11px;
   letter-spacing: 0.2em;
   color: var(--whisper);
@@ -197,14 +200,14 @@ article h2 {
 }
 article h2::before {
   content: "§";
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
   color: var(--accent);
   margin-right: 16px;
   font-size: 22px;
 }
 
 article h3 {
-  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-weight: 600;
   font-size: 19px;
   margin: 40px 0 16px;
@@ -323,7 +326,7 @@ article ol li::before {
   position: absolute;
   left: 0;
   top: 16px;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 14px;
   color: var(--accent);
   font-weight: 700;
@@ -347,7 +350,7 @@ article pre {
   background: var(--ink);
   color: var(--paper);
   padding: 24px 28px;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 13px;
   line-height: 1.8;
   position: relative;
@@ -370,7 +373,7 @@ article pre code {
 
 /* インラインコード */
 article code {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 0.9em;
   background: var(--paper-deep);
   padding: 2px 6px;
@@ -394,7 +397,7 @@ article hr {
 }
 article hr::before {
   content: "◆ ◆ ◆";
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 14px;
   color: var(--accent);
   letter-spacing: 0.5em;
@@ -410,7 +413,7 @@ article hr::before {
   border-bottom: 1px solid var(--rule);
 }
 .related-links h3 {
-  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-size: 14px;
   letter-spacing: 0.2em;
   color: var(--whisper);
@@ -441,7 +444,7 @@ article hr::before {
   align-items: baseline;
 }
 .related-links .related-tag {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 10px;
   letter-spacing: 0.2em;
   color: var(--accent);
@@ -467,7 +470,7 @@ article hr::before {
   gap: 32px 48px;
 }
 .footer-col h4 {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -495,7 +498,7 @@ article hr::before {
   margin-top: 48px;
   padding: 32px 0 40px;
   border-top: 1px solid var(--rule);
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 11px;
   letter-spacing: 0.15em;
   color: var(--whisper);
@@ -519,7 +522,7 @@ article hr::before {
   padding: 8px 0;
 }
 .series-toc details {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
 }
 .series-toc summary {
   cursor: pointer;
@@ -553,7 +556,7 @@ article hr::before {
   list-style: none;
   padding: 9px 0;
   border-bottom: 1px dashed var(--rule);
-  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-size: 14px;
   line-height: 1.55;
   display: flex;
@@ -572,7 +575,7 @@ article hr::before {
 }
 .series-toc li a:hover .toc-title { color: var(--accent); }
 .series-toc .toc-num {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 10.5px;
   letter-spacing: 0.18em;
   color: var(--accent);

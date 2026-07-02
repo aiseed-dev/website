@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
@@ -414,11 +414,46 @@ article hr::before {
   color: var(--accent);
 }
 
-/* COLOPHON */
-.colophon {
+/* FOOTER (site menu + colophon) */
+.site-footer {
   margin-top: 96px;
-  padding: 40px 0;
   border-top: 3px double var(--ink);
+  padding-top: 48px;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 48px;
+}
+.footer-col h4 {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-col li {
+  padding: 6px 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.footer-col a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.footer-col a:hover { color: var(--accent); }
+
+.colophon {
+  margin-top: 48px;
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--rule);
   font-family: "JetBrains Mono", monospace;
   font-size: 11px;
   letter-spacing: 0.15em;
@@ -625,18 +660,24 @@ article img {
   body.has-toc .hero {
     grid-column: 1 / -1;
   }
+  /* Keep the grid item stretched to its rows and make the inner details
+     sticky instead (sticky grid items are constrained by the grid container,
+     not their grid area, in some browsers — the TOC would slide over the
+     footer otherwise). */
   body.has-toc .series-toc {
     grid-column: 1;
-    grid-row: 3 / span 3;
-    align-self: start;
+    grid-row: 3 / span 2;
+    margin: 0;
+    padding: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+  body.has-toc .series-toc details {
     position: sticky;
     top: 32px;
     max-height: calc(100vh - 64px);
     overflow-y: auto;
-    margin: 0;
     padding: 0 12px 12px 0;
-    border-top: none;
-    border-bottom: none;
   }
   /* Sidebar mode: no collapsing — the summary acts as a heading */
   body.has-toc .series-toc summary {
@@ -647,7 +688,7 @@ article img {
   body.has-toc .series-toc li { font-size: 14px; }
   body.has-toc article    { grid-column: 2; grid-row: 3; }
   body.has-toc .chapter-nav { grid-column: 2; grid-row: 4; }
-  body.has-toc .colophon  { grid-column: 2; grid-row: 5; }
+  body.has-toc .site-footer { grid-column: 1 / -1; grid-row: 5; }
 }
 
 /* ============================================================
@@ -1280,11 +1321,37 @@ The new farming method for the new era only stands when technique, institutions,
   <a href="/en/phosphorus-and-farming/">Contents &rarr;</a>
 </nav>
 
-  <footer class="colophon">
-    <div class="colophon-mark">§</div>
-    Phosphorus Depletion and Natural Farming Series · Chapter 9<br>
-    Tokushima · 2026.05.08<br>
-    <a href="/en/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a>
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="Site links">
+      <div class="footer-col">
+        <h4>Series</h4>
+        <ul>
+          <li><a href="/en/insights/">Structural Analysis</a></li>
+          <li><a href="/en/blog/">Blog</a></li>
+          <li><a href="/en/ai-native-ways/">AI-Native Ways of Working</a></li>
+          <li><a href="/en/claude-debian/">Learning Debian with Claude</a></li>
+          <li><a href="/en/phosphorus-and-farming/">Phosphorus Depletion and Natural Farming</a></li>
+          <li><a href="/fable/">Fable 5 Is Back <small>(JA)</small></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="/en/">Home</a></li>
+          <li><a href="/en/natural-farming/">Natural Farming</a></li>
+          <li><a href="/en/light-farming/">Light Farming</a></li>
+          <li><a href="/gallery/">Field Notes</a></li>
+          <li><a href="/en/about/">Our Approach</a></li>
+          <li><a href="/en/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="colophon">
+      <div class="colophon-mark">§</div>
+      Phosphorus Depletion and Natural Farming Series · Chapter 9<br>
+      Tokushima · 2026.05.08<br>
+      <a href="/en/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">CC BY 4.0</a>
+    </div>
   </footer>
 
 </div>

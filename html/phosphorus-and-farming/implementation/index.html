@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
@@ -454,12 +454,47 @@ article hr::before {
 }
 
 /* ============================================================
-   COLOPHON(フッター)
+   FOOTER(サイト内メニュー+奥付)
    ============================================================ */
-.colophon {
+.site-footer {
   margin-top: 96px;
-  padding: 40px 0;
   border-top: 3px double var(--ink);
+  padding-top: 48px;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 48px;
+}
+.footer-col h4 {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-col li {
+  padding: 6px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.footer-col a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.footer-col a:hover { color: var(--accent); }
+
+.colophon {
+  margin-top: 48px;
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--rule);
   font-family: "JetBrains Mono", monospace;
   font-size: 11px;
   letter-spacing: 0.15em;
@@ -677,18 +712,23 @@ article img {
   body.has-toc .hero {
     grid-column: 1 / -1;
   }
+  /* グリッドアイテム自体は行いっぱいに伸ばし、内側の details を sticky に
+     する(sticky なグリッドアイテムはグリッドエリアではなくコンテナ全体で
+     制約されるブラウザ挙動があり、フッターに重なってしまうため)。 */
   body.has-toc .series-toc {
     grid-column: 1;
-    grid-row: 3 / span 3;
-    align-self: start;
+    grid-row: 3 / span 2;
+    margin: 0;
+    padding: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+  body.has-toc .series-toc details {
     position: sticky;
     top: 32px;
     max-height: calc(100vh - 64px);
     overflow-y: auto;
-    margin: 0;
     padding: 0 12px 12px 0;
-    border-top: none;
-    border-bottom: none;
   }
   /* サイドバーでは折りたたみを無効化し、見出しとして表示 */
   body.has-toc .series-toc summary {
@@ -699,7 +739,7 @@ article img {
   body.has-toc .series-toc li { font-size: 13.5px; }
   body.has-toc article    { grid-column: 2; grid-row: 3; }
   body.has-toc .chapter-nav { grid-column: 2; grid-row: 4; }
-  body.has-toc .colophon  { grid-column: 2; grid-row: 5; }
+  body.has-toc .site-footer { grid-column: 1 / -1; grid-row: 5; }
 }
 
 /* ============================================================
@@ -2311,12 +2351,38 @@ SOM 1.7% → 11%</li>
   <a href="/phosphorus-and-farming/operating-principles/" rel="next">次: 第8章 運用原則 &rarr;</a>
 </nav>
 
-  <!-- COLOPHON -->
-  <footer class="colophon">
-    <div class="colophon-mark">§</div>
-    リン資源枯渇と自然農法シリーズ · 第7章<br>
-    Tokushima · 2026.05.12<br>
-    <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a>
+  <!-- FOOTER(サイト内メニュー+奥付) -->
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="サイト内リンク">
+      <div class="footer-col">
+        <h4>記事シリーズ</h4>
+        <ul>
+          <li><a href="/insights/">構造分析</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/ai-native-ways/">AIネイティブな仕事の作法</a></li>
+          <li><a href="/claude-debian/">Claudeと一緒に学ぶDebian</a></li>
+          <li><a href="/phosphorus-and-farming/">リン資源枯渇と自然農法</a></li>
+          <li><a href="/fable/">Fable 5 が帰ってきた</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>サイト</h4>
+        <ul>
+          <li><a href="/">ホーム</a></li>
+          <li><a href="/natural-farming/">自然農法とは</a></li>
+          <li><a href="/light-farming/">Light Farming</a></li>
+          <li><a href="/gallery/">畑の記録</a></li>
+          <li><a href="/about/">私たちのアプローチ</a></li>
+          <li><a href="/privacy/">プライバシー</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="colophon">
+      <div class="colophon-mark">§</div>
+      リン資源枯渇と自然農法シリーズ · 第7章<br>
+      Tokushima · 2026.05.12<br>
+      <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">CC BY 4.0</a>
+    </div>
   </footer>
 
 </div>

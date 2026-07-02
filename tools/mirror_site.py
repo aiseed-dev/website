@@ -78,8 +78,16 @@ def local_rel(url: str, start_host: str, *, is_page: bool) -> str:
 
 def save_bytes(out: Path, rel: str, data: bytes) -> None:
     dest = out / rel
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    dest.write_bytes(data)
+    # Guard against path collisions: the same route can arrive both as a page
+    # (saved to <path>/index.html, so <path> is a directory) and as a bare-<path>
+    # asset response. Skip rather than crash in either direction.
+    if dest.is_dir():
+        return
+    try:
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        dest.write_bytes(data)
+    except (IsADirectoryError, NotADirectoryError, FileExistsError):
+        return
 
 
 def rewrite_text(text: str, hosts: set[str], start_host: str) -> str:
@@ -139,6 +147,8 @@ def main() -> int:
                 ctype = (resp.headers or {}).get("content-type", "")
                 if "text/html" in ctype:
                     return  # pages are saved separately as rendered HTML
+                if "text/x-component" in ctype:
+                    return  # Next.js RSC payload: duplicates a page route, not an asset
                 rurl = urldefrag(resp.url)[0]
                 host = urlparse(rurl).netloc
                 rel = local_rel(rurl, start_host, is_page=False)

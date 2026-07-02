@@ -47,6 +47,28 @@
 
 <style>
 /* ============================================================
+   LOCAL FONT: UDデジタル教科書体(モリサワ)
+   Windows・教育向け端末に無償搭載。Web 配信はできないため、
+   端末にあれば local() で拾い、なければ BIZ UDP明朝(Web フォント)へ
+   フォールバックする。R と B は別ファミリー名なので、太字(700)を
+   B 書体に明示的にマッピングして疑似ボールドを避ける。
+   ============================================================ */
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 400;
+  src: local("UD デジタル 教科書体 NK-R"), local("UD Digital Kyokasho NK-R"),
+       local("UD デジタル 教科書体 NP-R"), local("UD Digital Kyokasho NP-R"),
+       local("UD デジタル 教科書体 N-R"), local("UD Digital Kyokasho N-R");
+}
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 700;
+  src: local("UD デジタル 教科書体 NK-B"), local("UD Digital Kyokasho NK-B"),
+       local("UD デジタル 教科書体 NP-B"), local("UD Digital Kyokasho NP-B"),
+       local("UD デジタル 教科書体 N-B"), local("UD Digital Kyokasho N-B");
+}
+
+/* ============================================================
    COLOR & DESIGN TOKENS
    aiseed.dev 全体のスタイルに合わせる場合は、ここの変数を
    既存サイトのCSS変数に差し替える。
@@ -67,11 +89,13 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
-/* 本文はモリサワの UD 書体 BIZ UDP明朝。未読込・未配信時はシステム明朝で表示 */
+/* 本文はモリサワの UD 書体。端末にあれば UDデジタル教科書体を最優先、
+   なければ BIZ UDP明朝(Web 配信)、それも無理ならシステム明朝 */
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: "BIZ UDPMincho", "BIZ UDP明朝",
+  font-family: "UD Digital Kyokasho",
+               "BIZ UDPMincho", "BIZ UDP明朝",
                "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
                "Yu Mincho", "游明朝", "YuMincho",
                "Noto Serif CJK JP", "Noto Serif JP", serif;
@@ -207,7 +231,7 @@ article h2::before {
 }
 
 article h3 {
-  font-family: "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-weight: 600;
   font-size: 19px;
   margin: 40px 0 16px;
@@ -413,7 +437,7 @@ article hr::before {
   border-bottom: 1px solid var(--rule);
 }
 .related-links h3 {
-  font-family: "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-size: 14px;
   letter-spacing: 0.2em;
   color: var(--whisper);
@@ -556,7 +580,7 @@ article hr::before {
   list-style: none;
   padding: 9px 0;
   border-bottom: 1px dashed var(--rule);
-  font-family: "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-size: 14px;
   line-height: 1.55;
   display: flex;

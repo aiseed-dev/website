@@ -29,6 +29,23 @@
 <link href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho:wght@400;700&family=BIZ+UDGothic:wght@400;700&family=Shippori+Mincho:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+/* UDデジタル教科書体(モリサワ・端末搭載時のみ)を最優先で使う。
+   R/B が別ファミリーのため太字を 700 にマッピング。 */
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 400;
+  src: local("UD デジタル 教科書体 NK-R"), local("UD Digital Kyokasho NK-R"),
+       local("UD デジタル 教科書体 NP-R"), local("UD Digital Kyokasho NP-R"),
+       local("UD デジタル 教科書体 N-R"), local("UD Digital Kyokasho N-R");
+}
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 700;
+  src: local("UD デジタル 教科書体 NK-B"), local("UD Digital Kyokasho NK-B"),
+       local("UD デジタル 教科書体 NP-B"), local("UD Digital Kyokasho NP-B"),
+       local("UD デジタル 教科書体 N-B"), local("UD Digital Kyokasho N-B");
+}
+
 :root {
   --ink: #1a1a1a;
   --paper: #f4f1ea;
@@ -45,7 +62,7 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: "BIZ UDPMincho", "BIZ UDP明朝",
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝",
                "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
                "Yu Mincho", "游明朝", "YuMincho",
                "Noto Serif CJK JP", "Noto Serif JP", serif;
@@ -166,7 +183,7 @@ article h2::before {
 }
 
 article h3 {
-  font-family: "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-weight: 600;
   font-size: 17px;
   margin: 32px 0 14px;

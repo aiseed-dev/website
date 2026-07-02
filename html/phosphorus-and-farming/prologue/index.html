@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
 
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
@@ -38,12 +38,34 @@
 <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
 
-<!-- Webフォント(軽量化済み: Shippori Mincho 700/800 + JetBrains Mono のみ) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<!-- フォントは Web 配信せず、すべて端末のローカルフォントで賄う。
+     和文: UDデジタル教科書体 → BIZ UDP明朝(いずれも Windows 標準搭載の
+     モリサワ UD 書体) → ヒラギノ明朝・游明朝などのシステム明朝。
+     等幅: 端末のシステム等幅フォント。 -->
 
 <style>
+/* ============================================================
+   LOCAL FONT: UDデジタル教科書体(モリサワ)
+   Windows・教育向け端末に無償搭載。端末にあれば local() で拾い、
+   なければ BIZ UDP明朝(同じく Windows 標準搭載)→ システム明朝へ
+   フォールバックする。R と B は別ファミリー名なので、太字(700)を
+   B 書体に明示的にマッピングして疑似ボールドを避ける。
+   ============================================================ */
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 400;
+  src: local("UD デジタル 教科書体 NK-R"), local("UD Digital Kyokasho NK-R"),
+       local("UD デジタル 教科書体 NP-R"), local("UD Digital Kyokasho NP-R"),
+       local("UD デジタル 教科書体 N-R"), local("UD Digital Kyokasho N-R");
+}
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 700;
+  src: local("UD デジタル 教科書体 NK-B"), local("UD Digital Kyokasho NK-B"),
+       local("UD デジタル 教科書体 NP-B"), local("UD Digital Kyokasho NP-B"),
+       local("UD デジタル 教科書体 N-B"), local("UD Digital Kyokasho N-B");
+}
+
 /* ============================================================
    COLOR & DESIGN TOKENS
    aiseed.dev 全体のスタイルに合わせる場合は、ここの変数を
@@ -65,11 +87,14 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
-/* システム明朝(本文用、Webフォント不要で即時表示) */
+/* 本文: 端末にあれば UDデジタル教科書体を最優先、次に BIZ UDP明朝
+   (Windows 標準搭載)、どちらもなければヒラギノ明朝等のシステム明朝 */
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
+  font-family: "UD Digital Kyokasho",
+               "BIZ UDPMincho", "BIZ UDP明朝",
+               "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
                "Yu Mincho", "游明朝", "YuMincho",
                "Noto Serif CJK JP", "Noto Serif JP", serif;
   font-size: 17px;
@@ -93,7 +118,7 @@ body::before {
 }
 
 .container {
-  max-width: 760px;
+  max-width: 880px;
   margin: 0 auto;
   padding: 0 32px;
   position: relative;
@@ -109,13 +134,17 @@ body::before {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--whisper);
 }
 .masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-left a { color: inherit; text-decoration: none; }
+.masthead-left a:hover { color: var(--accent); }
+.masthead-home { color: var(--whisper); }
+.masthead-sep { margin: 0 10px; color: var(--whisper); font-weight: 400; }
 .masthead-right { font-style: italic; }
 
 /* ============================================================
@@ -125,7 +154,7 @@ body::before {
   padding: 80px 0 60px;
 }
 .hero-meta {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 11px;
   letter-spacing: 0.25em;
   color: var(--accent);
@@ -141,7 +170,7 @@ body::before {
   background: var(--accent);
 }
 .hero-title {
-  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-weight: 800;
   font-size: clamp(32px, 5.5vw, 56px);
   line-height: 1.3;
@@ -164,7 +193,7 @@ body::before {
   margin-top: 48px;
   padding-top: 24px;
   border-top: 1px solid var(--rule);
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 11px;
   letter-spacing: 0.2em;
   color: var(--whisper);
@@ -182,7 +211,7 @@ article p {
 }
 
 article h2 {
-  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-weight: 700;
   font-size: 26px;
   line-height: 1.4;
@@ -193,14 +222,14 @@ article h2 {
 }
 article h2::before {
   content: "§";
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   color: var(--accent);
   margin-right: 16px;
   font-size: 22px;
 }
 
 article h3 {
-  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-weight: 600;
   font-size: 19px;
   margin: 40px 0 16px;
@@ -276,7 +305,7 @@ article table {
   line-height: 1.7;
 }
 article thead th {
-  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-weight: 700;
   text-align: left;
   padding: 14px 16px;
@@ -319,7 +348,7 @@ article ol li::before {
   position: absolute;
   left: 0;
   top: 16px;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 14px;
   color: var(--accent);
   font-weight: 700;
@@ -343,7 +372,7 @@ article pre {
   background: var(--ink);
   color: var(--paper);
   padding: 24px 28px;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 13px;
   line-height: 1.8;
   position: relative;
@@ -366,7 +395,7 @@ article pre code {
 
 /* インラインコード */
 article code {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 0.9em;
   background: var(--paper-deep);
   padding: 2px 6px;
@@ -390,7 +419,7 @@ article hr {
 }
 article hr::before {
   content: "◆ ◆ ◆";
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 14px;
   color: var(--accent);
   letter-spacing: 0.5em;
@@ -406,7 +435,7 @@ article hr::before {
   border-bottom: 1px solid var(--rule);
 }
 .related-links h3 {
-  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-size: 14px;
   letter-spacing: 0.2em;
   color: var(--whisper);
@@ -437,7 +466,7 @@ article hr::before {
   align-items: baseline;
 }
 .related-links .related-tag {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 10px;
   letter-spacing: 0.2em;
   color: var(--accent);
@@ -450,13 +479,48 @@ article hr::before {
 }
 
 /* ============================================================
-   COLOPHON(フッター)
+   FOOTER(サイト内メニュー+奥付)
    ============================================================ */
-.colophon {
+.site-footer {
   margin-top: 96px;
-  padding: 40px 0;
   border-top: 3px double var(--ink);
-  font-family: "JetBrains Mono", monospace;
+  padding-top: 48px;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 48px;
+}
+.footer-col h4 {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-col li {
+  padding: 6px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.footer-col a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.footer-col a:hover { color: var(--accent); }
+
+.colophon {
+  margin-top: 48px;
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 11px;
   letter-spacing: 0.15em;
   color: var(--whisper);
@@ -464,7 +528,7 @@ article hr::before {
   line-height: 2;
 }
 .colophon-mark {
-  font-family: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "Hiragino Mincho ProN", serif;
   font-size: 32px;
   color: var(--accent);
   margin-bottom: 16px;
@@ -480,7 +544,7 @@ article hr::before {
   padding: 8px 0;
 }
 .series-toc details {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
 }
 .series-toc summary {
   cursor: pointer;
@@ -514,7 +578,7 @@ article hr::before {
   list-style: none;
   padding: 9px 0;
   border-bottom: 1px dashed var(--rule);
-  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-size: 14px;
   line-height: 1.55;
   display: flex;
@@ -533,7 +597,7 @@ article hr::before {
 }
 .series-toc li a:hover .toc-title { color: var(--accent); }
 .series-toc .toc-num {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 10.5px;
   letter-spacing: 0.18em;
   color: var(--accent);
@@ -659,6 +723,51 @@ article img {
 .mermaid svg { max-width: 100%; height: auto; }
 
 /* ============================================================
+   WIDE LAYOUT(広い画面では目次を左サイドバーに常時展開)
+   ============================================================ */
+@media (min-width: 1200px) {
+  body.has-toc .container {
+    max-width: 1320px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 880px);
+    column-gap: 64px;
+    justify-content: center;
+  }
+  body.has-toc .masthead,
+  body.has-toc .hero {
+    grid-column: 1 / -1;
+  }
+  /* グリッドアイテム自体は行いっぱいに伸ばし、内側の details を sticky に
+     する(sticky なグリッドアイテムはグリッドエリアではなくコンテナ全体で
+     制約されるブラウザ挙動があり、フッターに重なってしまうため)。 */
+  body.has-toc .series-toc {
+    grid-column: 1;
+    grid-row: 3 / span 2;
+    margin: 0;
+    padding: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+  body.has-toc .series-toc details {
+    position: sticky;
+    top: 32px;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 0 12px 12px 0;
+  }
+  /* サイドバーでは折りたたみを無効化し、見出しとして表示 */
+  body.has-toc .series-toc summary {
+    pointer-events: none;
+    cursor: default;
+  }
+  body.has-toc .series-toc summary::before { content: none; }
+  body.has-toc .series-toc li { font-size: 13.5px; }
+  body.has-toc article    { grid-column: 2; grid-row: 3; }
+  body.has-toc .chapter-nav { grid-column: 2; grid-row: 4; }
+  body.has-toc .site-footer { grid-column: 1 / -1; grid-row: 5; }
+}
+
+/* ============================================================
    DARK MODE(OS の配色設定に追従して自動で暗色に切り替え)
    ============================================================ */
 @media (prefers-color-scheme: dark) {
@@ -694,13 +803,13 @@ article img {
 </style>
 </head>
 
-<body>
+<body class="has-toc">
 
 <div class="container">
 
-  <!-- MASTHEAD -->
+  <!-- MASTHEAD(ホーム › シリーズ目次) -->
   <header class="masthead">
-    <div class="masthead-left"><a href="/phosphorus-and-farming/" style="color: inherit; text-decoration: none;">リン資源枯渇と自然農法シリーズ</a></div>
+    <div class="masthead-left"><a href="/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="/phosphorus-and-farming/">リン資源枯渇と自然農法シリーズ</a></div>
     <div class="masthead-right">序章 / Essay</div>
   </header>
 
@@ -872,17 +981,54 @@ FMNR(Farmer-Managed Natural Regeneration)も、Subhash Palekar の ZBNF
   <a href="/phosphorus-and-farming/supply-constraint/" rel="next">次: リン酸肥料の供給制約 ── 何が起きているか &rarr;</a>
 </nav>
 
-  <!-- COLOPHON -->
-  <footer class="colophon">
-    <div class="colophon-mark">§</div>
-    リン資源枯渇と自然農法シリーズ · 序章<br>
-    Tokushima · 2026.05.06<br>
-    <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a>
+  <!-- FOOTER(サイト内メニュー+奥付) -->
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="サイト内リンク">
+      <div class="footer-col">
+        <h4>記事シリーズ</h4>
+        <ul>
+          <li><a href="/insights/">構造分析</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/ai-native-ways/">AIネイティブな仕事の作法</a></li>
+          <li><a href="/claude-debian/">Claudeと一緒に学ぶDebian</a></li>
+          <li><a href="/phosphorus-and-farming/">リン資源枯渇と自然農法</a></li>
+          <li><a href="/fable/">Fable 5 が帰ってきた</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>サイト</h4>
+        <ul>
+          <li><a href="/">ホーム</a></li>
+          <li><a href="/natural-farming/">自然農法とは</a></li>
+          <li><a href="/light-farming/">Light Farming</a></li>
+          <li><a href="/gallery/">畑の記録</a></li>
+          <li><a href="/about/">私たちのアプローチ</a></li>
+          <li><a href="/privacy/">プライバシー</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="colophon">
+      <div class="colophon-mark">§</div>
+      リン資源枯渇と自然農法シリーズ · 序章<br>
+      Tokushima · 2026.05.06<br>
+      <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">CC BY 4.0</a>
+    </div>
   </footer>
 
 </div>
 
 <script>
+  // 広い画面ではサイドバー目次を常時展開する(狭い画面では折りたたみに戻す)
+  (function () {
+    var toc = document.querySelector(".series-toc details");
+    if (!toc) return;
+    var mq = window.matchMedia("(min-width: 1200px)");
+    function sync() { toc.open = mq.matches; }
+    sync();
+    if (mq.addEventListener) mq.addEventListener("change", sync);
+    else mq.addListener(sync);
+  })();
+
   // Mermaid loads only on pages that contain a .mermaid block.
   // Self-hosted (no third-party CDN dependency); SRI verified.
   if (document.querySelector(".mermaid")) {

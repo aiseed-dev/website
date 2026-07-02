@@ -24,11 +24,26 @@
 <meta property="og:image" content="{{ og_image }}">
 <meta name="twitter:card" content="summary_large_image">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<!-- フォントは Web 配信せず、端末のローカルフォントのみ使う -->
 
 <style>
+/* UDデジタル教科書体(モリサワ・端末搭載時のみ)を最優先で使う。
+   R/B が別ファミリーのため太字を 700 にマッピング。 */
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 400;
+  src: local("UD デジタル 教科書体 NK-R"), local("UD Digital Kyokasho NK-R"),
+       local("UD デジタル 教科書体 NP-R"), local("UD Digital Kyokasho NP-R"),
+       local("UD デジタル 教科書体 N-R"), local("UD Digital Kyokasho N-R");
+}
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 700;
+  src: local("UD デジタル 教科書体 NK-B"), local("UD Digital Kyokasho NK-B"),
+       local("UD デジタル 教科書体 NP-B"), local("UD Digital Kyokasho NP-B"),
+       local("UD デジタル 教科書体 N-B"), local("UD Digital Kyokasho N-B");
+}
+
 :root {
   --ink: #1a1a1a;
   --paper: #f4f1ea;
@@ -45,7 +60,8 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--paper);
   color: var(--ink);
-  font-family: "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝",
+               "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
                "Yu Mincho", "游明朝", "YuMincho",
                "Noto Serif CJK JP", "Noto Serif JP", serif;
   font-size: 16px;
@@ -66,7 +82,7 @@ body::before {
 }
 
 .container {
-  max-width: 820px;
+  max-width: 880px;
   margin: 0 auto;
   padding: 0 32px;
   position: relative;
@@ -79,7 +95,7 @@ body::before {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -87,13 +103,16 @@ body::before {
 }
 .masthead-left  { font-weight: 700; color: var(--ink); }
 .masthead-left a { color: inherit; text-decoration: none; }
+.masthead-left a:hover { color: var(--accent); }
+.masthead-home { color: var(--whisper); }
+.masthead-sep { margin: 0 10px; color: var(--whisper); font-weight: 400; }
 .masthead-right { font-style: italic; }
 
 .hero {
   padding: 56px 0 40px;
 }
 .hero-tag {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 11px;
   letter-spacing: 0.25em;
   color: var(--accent);
@@ -114,7 +133,7 @@ body::before {
   text-decoration-color: var(--rule);
 }
 .hero-title {
-  font-family: "Shippori Mincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-weight: 800;
   font-size: clamp(26px, 4.2vw, 38px);
   line-height: 1.35;
@@ -137,7 +156,7 @@ article {
 article p { margin-bottom: 20px; }
 
 article h1 {
-  font-family: "Shippori Mincho", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-weight: 800;
   font-size: 28px;
   margin: 56px 0 20px;
@@ -146,7 +165,7 @@ article h1 {
 }
 
 article h2 {
-  font-family: "Shippori Mincho", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-weight: 700;
   font-size: 22px;
   margin: 56px 0 20px;
@@ -155,14 +174,14 @@ article h2 {
 }
 article h2::before {
   content: "§";
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   color: var(--accent);
   margin-right: 14px;
   font-size: 18px;
 }
 
 article h3 {
-  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-weight: 600;
   font-size: 17px;
   margin: 32px 0 14px;
@@ -216,7 +235,7 @@ article pre {
   background: var(--ink);
   color: var(--paper);
   padding: 22px 26px 18px;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 12.5px;
   line-height: 1.7;
   position: relative;
@@ -241,7 +260,7 @@ article pre code {
 }
 
 article code {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 0.9em;
   background: var(--paper-deep);
   padding: 2px 6px;
@@ -265,7 +284,7 @@ article table td {
 article table th {
   background: var(--paper-deep);
   font-weight: 700;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 12px;
   letter-spacing: 0.05em;
 }
@@ -281,7 +300,7 @@ article hr {
 }
 article hr::before {
   content: "◆ ◆ ◆";
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 13px;
   color: var(--accent);
   letter-spacing: 0.5em;
@@ -301,7 +320,7 @@ article img {
   border-radius: 2px;
 }
 .files h2 {
-  font-family: "Shippori Mincho", serif;
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "Hiragino Mincho ProN", "Yu Mincho", serif;
   font-size: 18px;
   margin: 0 0 16px;
   padding: 0;
@@ -309,7 +328,7 @@ article img {
 }
 .files h2::before { content: "§"; color: var(--accent); margin-right: 10px; }
 .files h3 {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 11px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -322,7 +341,7 @@ article img {
   list-style: none;
   margin: 0;
   padding: 0;
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 13px;
   line-height: 1.85;
 }
@@ -349,7 +368,7 @@ article img {
   margin: 48px 0 0;
   padding: 24px 0;
   border-top: 1px solid var(--rule);
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 12px;
   letter-spacing: 0.1em;
   text-align: center;
@@ -364,7 +383,7 @@ article img {
   margin-top: 64px;
   padding: 32px 0;
   border-top: 3px double var(--ink);
-  font-family: "JetBrains Mono", monospace;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
   font-size: 11px;
   letter-spacing: 0.15em;
   color: var(--whisper);
@@ -423,7 +442,7 @@ article img {
 <div class="container">
 
   <header class="masthead">
-    <div class="masthead-left"><a href="{{ series_index_url }}">{{ series }}</a></div>
+    <div class="masthead-left"><a href="/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="{{ series_index_url }}">{{ series }}</a></div>
     <div class="masthead-right">{{ chapter_label }} · {{ example_label }}</div>
   </header>
 

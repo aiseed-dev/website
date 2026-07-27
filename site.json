@@ -2,6 +2,7 @@
   "webcreator": {
     "cf_project": "aiseed-dev",
     "preview_port": 8000,
+    "plugins": ["forms"],
     "series": [
       {"file": "blog.adoc", "label": "Blog(構造分析ノート)", "url_base": "/blog"},
       {"file": "insights.adoc", "label": "Insights(構造分析)", "url_base": "/insights"},

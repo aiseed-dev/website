@@ -1,0 +1,16 @@
+{
+  "webcreator": {
+    "cf_project": "aiseed-dev",
+    "preview_port": 8000,
+    "series": [
+      {"file": "blog.adoc", "label": "Blog(構造分析ノート)", "url_base": "/blog"},
+      {"file": "insights.adoc", "label": "Insights(構造分析)", "url_base": "/insights"},
+      {"file": "claude-debian.adoc", "label": "Claudeと一緒に学ぶDebian", "url_base": "/claude-debian", "slug_strip": "claude-debian-"},
+      {"file": "claude-debian-server.adoc", "label": "└ サーバー編", "url_base": "/claude-debian/server", "slug_strip": "claude-debian-server-"},
+      {"file": "ai-native-ways.adoc", "label": "AIネイティブな仕事の作法", "url_base": "/ai-native-ways"},
+      {"file": "ai-native-ways-software.adoc", "label": "└ ソフトウェア開発編", "url_base": "/ai-native-ways/software"},
+      {"file": "phosphorus-and-farming.adoc", "label": "リンと農業", "url_base": "/phosphorus-and-farming"},
+      {"file": "fable.adoc", "label": "Fable 5 が帰ってきた", "url_base": "/fable"}
+    ]
+  }
+}

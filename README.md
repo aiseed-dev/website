@@ -187,18 +187,23 @@ python3 tools/serve.py --port 8080
 注入）。ビルド失敗（ifdef の閉じ忘れ等）は、ブラウザ画面上部に
 行番号付きの赤バナーで表示され、修正して保存すれば自動で消える。
 
-### 記事エディタ(WordPress風・いちばん簡単)
+### aiseed-builder(WordPress風の管理画面・いちばん簡単)
 
-エンジニア向けの Zed を使わなくても、専用アプリで記事を編集できる:
+エンジニア向けの Zed を使わなくても、専用アプリでサイトを運営できる:
 
 ```bash
-./.venv/bin/python apps/site-editor/main.py
+../aiseed-builder/aiseed_builder/main.py .    # あるいは Zed のタスク 0
 ```
 
 WordPress の管理画面と同じ感覚——左のシリーズ一覧 → 記事一覧 →
 タイトルをクリック → 本文を編集 → 「更新」。保存すると数秒でビルドされ、
 プレビューは自動でリロードされる。本文だけを差し替えるので構造を壊す
-心配がない。詳細は [apps/site-editor/README.md](apps/site-editor/README.md)。
+心配がない。フォーム受信箱・公開面の点検(DNS)もプラグインとして入る。
+サイト側の設定は `site.json` の `builder` キー。
+詳細は [~/dev/aiseed-builder](../aiseed-builder/README.md)。
+
+(`apps/site-editor/` は aiseed-builder の前身。汎用化して独立したので、
+今後の開発は aiseed-builder 側で行う)
 
 ### Zed で書く
 

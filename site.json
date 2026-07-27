@@ -1,5 +1,5 @@
 {
-  "webcreator": {
+  "builder": {
     "cf_project": "aiseed-dev",
     "preview_port": 8000,
     "plugins": ["forms", "dns"],

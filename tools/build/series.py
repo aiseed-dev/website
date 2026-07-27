@@ -281,6 +281,11 @@ def _link_assets(site_root, stem, unit, out_dir):
                 (out_dir / d.name).symlink_to(d, target_is_directory=True)
 
 
+def _is_draft(unit):
+    """`draft: true` の記事は下書き(記事エディタの「公開」で解除される)。"""
+    return str(unit.meta.get("draft", "")).strip().lower() in ("true", "yes", "1")
+
+
 def series_files(site_root):
     """存在するシリーズファイルの一覧 [(path, stem, subdir), …]。"""
     found = []
@@ -305,7 +310,9 @@ def expand_all(site_root=None):
         shutil.rmtree(build_root)
 
     for path, stem, subdir in found:
-        units = parse_series_file(path)
+        # draft: true の記事(下書き)はビルドから除外——サイトに出ず、
+        # prev/next 連鎖・索引・sitemap からも消える
+        units = [u for u in parse_series_file(path) if not _is_draft(u)]
         out_base = build_root / subdir
         nav = {"ja": derive_nav(units, "ja"), "en": derive_nav(units, "en")}
         for unit in units:

@@ -114,3 +114,56 @@ def test_load_articles_real_repo():
     assert len(arts) == 9
     assert arts[0].slug
     assert arts[0].langs == ["ja"]
+
+
+def test_meta_roundtrip(series_file):
+    meta = store.read_meta_raw("blog.adoc", "01-first")
+    assert meta["title.ja"] == "最初の記事"
+    meta["subtitle.ja"] = "追加のサブタイトル"
+    store.save_meta("blog.adoc", "01-first", meta)
+    again = store.read_meta_raw("blog.adoc", "01-first")
+    assert again["subtitle.ja"] == "追加のサブタイトル"
+    assert "English body." in store.read_body("blog.adoc", "01-first", "en")
+
+
+def test_add_article_is_draft_and_parseable(series_file):
+    aid = store.add_article("blog.adoc", "new-post", "新しい記事", "New post")
+    assert aid == "03-new-post"
+    arts = store.load_articles("blog.adoc")
+    assert arts[-1].slug == "new-post"
+    assert arts[-1].draft is True
+    assert arts[-1].langs == ["ja", "en"]
+
+
+def test_add_article_rejects_bad_slug_and_duplicate(series_file):
+    with pytest.raises(ValueError):
+        store.add_article("blog.adoc", "日本語スラッグ", "x")
+    with pytest.raises(ValueError):
+        store.add_article("blog.adoc", "first", "重複")
+
+
+def test_delete_article_removes_only_target(series_file):
+    store.delete_article("blog.adoc", "01-first")
+    arts = store.load_articles("blog.adoc")
+    assert [a.article_id for a in arts] == ["02-second"]
+    assert "本文その2。" in store.read_body("blog.adoc", "02-second", "ja")
+
+
+def test_move_article_swaps_order(series_file):
+    assert store.move_article("blog.adoc", "02-second", -1) is True
+    arts = store.load_articles("blog.adoc")
+    assert [a.article_id for a in arts] == ["02-second", "01-first"]
+    # 端では動かない
+    assert store.move_article("blog.adoc", "02-second", -1) is False
+
+
+def test_assets_add_and_list(series_file, tmp_path):
+    img = tmp_path / "photo.jpg"
+    img.write_bytes(b"\xff\xd8fake")
+    name = store.add_asset("blog.adoc", "01-first", src=str(img))
+    assert name == "photo.jpg"
+    assert store.list_assets("blog.adoc", "01-first") == ["photo.jpg"]
+    name2 = store.add_asset("blog.adoc", "01-first", data=b"pdf", filename="doc.pdf")
+    assert name2 == "doc.pdf"
+    with pytest.raises(ValueError):
+        store.add_asset("blog.adoc", "01-first", data=b"x", filename="evil.exe")

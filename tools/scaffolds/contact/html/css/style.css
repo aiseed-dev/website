@@ -1,0 +1,221 @@
+/* Minimal, readable starter stylesheet.
+   Warm off-white canvas, serif display, sans body. Customize freely. */
+
+:root {
+    --bg: #faf9f5;
+    --bg-muted: #f5f3ee;
+    --ink: #1f1e1c;
+    --ink-muted: #595550;
+    --accent: #b85c28;
+    --rule: #e6e2d8;
+    --max-w: 42rem;
+    --font-serif: "Iowan Old Style", "Charter", "Noto Serif JP", Georgia, serif;
+    --font-sans: -apple-system, "Segoe UI", Roboto, "Noto Sans JP", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { font-size: 16px; }
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    line-height: 1.3;
+    color: var(--ink);
+}
+
+h1 { font-size: 2rem; margin: 2rem 0 0.5rem; }
+h2 { font-size: 1.4rem; margin: 2.5rem 0 0.75rem; }
+h3 { font-size: 1.1rem; margin: 1.75rem 0 0.5rem; }
+
+p { margin: 1rem 0; }
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+hr { border: 0; border-top: 1px solid var(--rule); margin: 2rem 0; }
+
+code {
+    background: var(--bg-muted);
+    padding: 0.1em 0.35em;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+pre {
+    background: var(--bg-muted);
+    padding: 1rem 1.2rem;
+    border-radius: 6px;
+    overflow-x: auto;
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+pre code { background: none; padding: 0; }
+
+/* --- Layout ------------------------------------------------------------ */
+
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid var(--rule);
+    max-width: calc(var(--max-w) + 4rem);
+    margin: 0 auto;
+}
+.site-header .brand {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    color: var(--ink);
+}
+.site-header nav a {
+    margin-left: 1.5rem;
+    color: var(--ink-muted);
+    font-size: 0.95rem;
+}
+
+main {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
+}
+
+.site-footer {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 2rem;
+    color: var(--ink-muted);
+    font-size: 0.85rem;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+}
+
+/* --- Article ----------------------------------------------------------- */
+
+.article-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin: 0 0 0.5rem;
+}
+
+.article-subtitle {
+    color: var(--ink-muted);
+    font-size: 1.05rem;
+    margin-top: -0.25rem;
+}
+
+.article-date {
+    color: var(--ink-muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+}
+
+.article-hero img {
+    width: 100%;
+    border-radius: 6px;
+    margin: 1.5rem 0;
+}
+
+.article-body blockquote,
+.article-body .custom-quote {
+    border-left: 3px solid var(--accent);
+    padding-left: 1rem;
+    color: var(--ink-muted);
+    font-family: var(--font-serif);
+    font-style: italic;
+    margin: 1.5rem 0;
+}
+
+.article-body .highlight,
+.article-body .custom-highlight {
+    background: var(--bg-muted);
+    padding: 1rem 1.25rem;
+    border-radius: 6px;
+    margin: 1.5rem 0;
+}
+
+.article-body .chain,
+.article-body .custom-chain {
+    border-left: 3px solid var(--accent);
+    padding: 0.75rem 0 0.75rem 1rem;
+    margin: 1.5rem 0;
+}
+
+.article-body .compare-table,
+.article-body table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+}
+.article-body th,
+.article-body td {
+    border: 1px solid var(--rule);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+}
+.article-body th {
+    background: var(--bg-muted);
+    font-weight: 600;
+}
+
+.article-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+    font-size: 0.9rem;
+}
+.article-nav .prev { margin-right: auto; }
+.article-nav .next { margin-left: auto; }
+
+/* --- Index lists ------------------------------------------------------- */
+
+.index h1 { margin-bottom: 0.25rem; }
+.index-subtitle {
+    color: var(--ink-muted);
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.activity-item {
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--rule);
+}
+.activity-item h3 {
+    margin: 0.2rem 0;
+    font-family: var(--font-sans);
+    font-size: 1.05rem;
+}
+.activity-item p {
+    color: var(--ink-muted);
+    margin: 0.25rem 0 0;
+    font-size: 0.95rem;
+}
+.activity-number {
+    color: var(--ink-muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+}
+
+.article-link { display: block; color: inherit; }
+.article-link:hover { background: var(--bg-muted); }
+.article-link:hover { text-decoration: none; }

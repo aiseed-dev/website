@@ -1,0 +1,142 @@
+// blog — シリーズ全記事(このファイル1つで管理)
+// 記事の区切り: // ===== article: <記事ID> =====
+// フロントマター: 日英共通は裸キー、異なる値は key.ja / key.en
+// 本文: ifdef::lang-ja[] / ifdef::lang-en[] で言語別
+
+// ===== article: 001-welcome =====
+---
+slug: welcome
+date: 2026.04.21
+label: Blog
+category.ja: ノート
+category.en: Notes
+title.ja: ようこそ
+title.en: Welcome
+subtitle.ja: このサイトの育て方
+subtitle.en: How to grow this site
+description.ja: サーバーもデータベースも無いサイトです。記事はフォルダの中のファイル、履歴は git、公開は静的HTML。
+description.en: A site with no server and no database. Articles are files in a folder, history is git, publishing is static HTML.
+---
+ifdef::lang-ja[]
+= ようこそ
+
+このサイトには**サーバーもデータベースもありません**。記事はこのフォルダの
+中のファイル、履歴は git、公開は静的HTMLです。壊れる部品が無いので、
+更新も脆弱性対応も要りません。
+
+== 書くには
+
+三通りあります。好きなものをどうぞ。
+
+. **aiseed-builder**(WordPress風の管理画面)—— いちばん簡単
+. エディタで `articles/*.adoc` を直接開く
+. 開発サーバーを起動して、保存するたびに反映を見る
+
+----
+python3 tools/serve.py     # 保存 → 自動ビルド → ブラウザが自動更新
+----
+
+== 構造
+
+|===
+| 場所 | 中身
+
+| `articles/*.adoc` | 記事(シリーズごとに1ファイル、日英入り)
+| `articles/assets/` | 画像・PDF
+| `html/` | 公開されるHTML(ビルドで作られる)
+| `tools/` | ビルドの仕組み
+| `site.json` | サイトの設定
+|===
+endif::[]
+ifdef::lang-en[]
+= Welcome
+
+This site has **no server and no database**. Articles are files in this
+folder, history is git, and publishing is static HTML. Nothing here can
+break, so there is nothing to patch.
+
+== Writing
+
+Three ways — pick one:
+
+. **aiseed-builder** (a WordPress-like admin) — the easiest
+. Open `articles/*.adoc` in your editor
+. Run the dev server and watch changes appear as you save
+
+----
+python3 tools/serve.py     # save → rebuild → the browser refreshes itself
+----
+
+== Layout
+
+|===
+| Path | What it holds
+
+| `articles/*.adoc` | Articles (one file per series, both languages)
+| `articles/assets/` | Images and PDFs
+| `html/` | The published HTML (produced by the build)
+| `tools/` | The build engine
+| `site.json` | Site settings
+|===
+endif::[]
+
+// ===== article: 002-contact =====
+---
+slug: contact
+date: 2026.04.21
+label: Blog
+title.ja: お問い合わせ
+title.en: Contact
+description.ja: ご質問・ご依頼は、このページのフォームからどうぞ。
+description.en: Questions and requests are welcome through the form on this page.
+---
+ifdef::lang-ja[]
+= お問い合わせ
+
+ご質問・ご依頼は、以下のフォームからお願いします。 +
+担当より、折り返しご連絡します。
+
+// ↓ フォームの定義。この JSON だけを触ればフォームが変わります。
+//   編集は tools/form-builder/form-builder.html をブラウザで開くのが楽
+//   (項目を並べて JSON を書き出す道具。表計算で作るなら form_xlsx.py)。
+//   action と sitekey は、cf-publish で受信箱を立てたときの値に置き換えます。
+[.form]
+{
+  "action": "https://<WORKER>.workers.dev/submit",
+  "sitekey": "<TurnstileのSITEKEY>",
+  "confirm": true,
+  "fields": [
+    {"name":"your-name",    "label":"お名前",           "type":"text",     "required":true, "placeholder":"例)山田 太郎"},
+    {"name":"your-email",   "label":"メールアドレス",    "type":"email",    "required":true},
+    {"name":"category",     "label":"種別",             "type":"select",   "required":true, "options":["ご質問","ご依頼","その他"]},
+    {"name":"your-message", "label":"お問い合わせ内容",  "type":"textarea", "required":true}
+  ]
+}
+
+お預かりした個人情報は、お問い合わせへの回答のみに使用します。
+
+送信されたものは、aiseed-builder の「フォーム受信箱」で受け取ります
+(サーバーは立てません。Cloudflare の受信箱に溜まったものを、手元に
+取りに行く形です)。
+endif::[]
+ifdef::lang-en[]
+= Contact
+
+Please use the form below. We will get back to you.
+
+[.form]
+{
+  "action": "https://<WORKER>.workers.dev/submit",
+  "sitekey": "<YOUR-TURNSTILE-SITEKEY>",
+  "confirm": true,
+  "fields": [
+    {"name":"your-name",    "label":"Name",    "type":"text",     "required":true},
+    {"name":"your-email",   "label":"Email",   "type":"email",    "required":true},
+    {"name":"category",     "label":"Type",    "type":"select",   "required":true, "options":["Question","Request","Other"]},
+    {"name":"your-message", "label":"Message", "type":"textarea", "required":true}
+  ]
+}
+
+Submissions are collected in aiseed-builder's form inbox (no server: they
+queue in a Cloudflare inbox and you pull them to your machine).
+endif::[]

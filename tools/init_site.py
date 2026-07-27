@@ -22,8 +22,26 @@ import shutil
 import sys
 from pathlib import Path
 
-SCAFFOLD_ROOT = Path(__file__).resolve().parent / "scaffolds"
+TOOLS_ROOT = Path(__file__).resolve().parent
+SCAFFOLD_ROOT = TOOLS_ROOT / "scaffolds"
 DEFAULT_SCAFFOLD = "default"
+
+# 新しいサイトに一緒に置くビルドエンジン。**サイトは自分のエンジンを持つ**
+# (パーサの正はサイト側に一つ)。これが無いと、作ったサイトは自分だけでは
+# ビルドできず、aiseed-builder からも開けない(tools/build/series.py を見る)。
+ENGINE_FILES = [
+    "build_article.py",
+    "serve.py",
+    "cloudflare_pages_deploy.py",
+    "init_site.py",          # 作ったサイトから、さらに新しいサイトを作れる
+    "build/__init__.py",
+    "build/config.py",
+    "build/frontmatter.py",
+    "build/series.py",
+    "build/markdown.py",
+    "build/images.py",
+    "build/template_vars.py",
+]
 
 
 def available_scaffolds() -> list[str]:
@@ -41,8 +59,16 @@ def iter_scaffold_files(scaffold_dir: Path):
         yield src, rel
 
 
+def iter_engine_files():
+    """(source, relative) for the build engine that ships with a new site."""
+    for rel in ENGINE_FILES:
+        src = TOOLS_ROOT / rel
+        if src.is_file():
+            yield src, Path("tools") / rel
+
+
 def init_site(target: Path, scaffold: str = DEFAULT_SCAFFOLD, *, force: bool = False,
-              dry_run: bool = False) -> int:
+              dry_run: bool = False, with_engine: bool = True) -> int:
     """Copy scaffold files into target. Returns number of files written."""
     scaffold_dir = SCAFFOLD_ROOT / scaffold
     if not scaffold_dir.is_dir():
@@ -56,7 +82,10 @@ def init_site(target: Path, scaffold: str = DEFAULT_SCAFFOLD, *, force: bool = F
 
     written = 0
     skipped: list[Path] = []
-    for src, rel in iter_scaffold_files(scaffold_dir):
+    sources = list(iter_scaffold_files(scaffold_dir))
+    if with_engine:
+        sources += list(iter_engine_files())
+    for src, rel in sources:
         dest = target / rel
         if dest.exists() and not force:
             skipped.append(rel)
@@ -92,6 +121,9 @@ def main() -> None:
                         help="List what would be written without touching the filesystem.")
     parser.add_argument("--list", action="store_true",
                         help="List available scaffolds and exit.")
+    parser.add_argument("--no-engine", action="store_true",
+                        help="Do not copy the build engine into the new site "
+                             "(the site will need --site to build).")
     args = parser.parse_args()
 
     if args.list:
@@ -104,15 +136,20 @@ def main() -> None:
 
     target = Path(args.target)
     print(f"Initializing site in {target.resolve()} (scaffold: {args.scaffold})")
-    count = init_site(target, scaffold=args.scaffold, force=args.force, dry_run=args.dry_run)
+    count = init_site(target, scaffold=args.scaffold, force=args.force,
+                      dry_run=args.dry_run, with_engine=not args.no_engine)
     verb = "would write" if args.dry_run else "wrote"
     print(f"\n{verb} {count} file(s).")
     if not args.dry_run and count:
+        engine = "" if args.no_engine else " (engine included)"
         print(
-            "\nNext steps:\n"
-            f"  pip install jinja2 markdown-it-py Pillow watchdog\n"
-            f"  python3 {Path(__file__).parent / 'build_article.py'} --site {target} --all\n"
-            f"  python3 {Path(__file__).parent / 'serve.py'} --site {target}"
+            f"\nNext steps{engine}:\n"
+            "  pip install -r requirements.txt   # jinja2 markdown-it-py "
+            "mdit-py-cjk-friendly pyasciidoc pywashi Pillow watchdog\n"
+            f"  cd {target}\n"
+            "  python3 tools/build_article.py --all\n"
+            "  python3 tools/serve.py\n"
+            "\nOr open it in aiseed-builder (a WordPress-like admin)."
         )
 
 

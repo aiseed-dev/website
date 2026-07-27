@@ -1,0 +1,94 @@
+// insights — シリーズ全記事(このファイル1つで管理)
+// 記事の区切り: // ===== article: <記事ID> =====
+// フロントマター: 日英共通は裸キー、異なる値は key.ja / key.en
+// 本文: ifdef::lang-ja[] / ifdef::lang-en[] で言語別
+// prev/next 連鎖は書かない(記事の並び順から自動導出)
+
+// ===== article: 01-hello =====
+---
+slug: hello
+number: 01
+date: 2026.04.21
+label: Sample 01
+title.ja: はじめての記事
+title.en: First Article
+subtitle.ja: 連載の始め方
+subtitle.en: Starting a series
+description.ja: このサンプル記事は tools/build_article.py で HTML になります。フロントマターと AsciiDoc の書き方を確認してください。
+description.en: This sample article is converted to HTML by tools/build_article.py. Use it to confirm the frontmatter and AsciiDoc syntax.
+---
+ifdef::lang-ja[]
+= はじめての記事
+
+この記事は `articles/insights.adoc` の中にあります。**1シリーズ＝1ファイル**で、
+記事は区切りコメントで区切られています。
+
+== 書き方
+
+上の `---` で囲んだ部分がフロントマター(この記事の情報)。日英で同じ値は
+裸のキー、違う値は `title.ja` / `title.en` のように書き分けます。
+本文は `ifdef::lang-ja[]` 〜 `endif::[]` の中に書きます。
+
+前後の記事へのリンクは**並び順から自動で作られる**ので、書く必要はありません。
+
+== AsciiDoc の基本
+
+見出しは `==`、*太字* は `*` で囲み、_斜体_ は `_` で囲みます。
+
+* 箇条書きは `*`
+* 入れ子は `**`
+
+番号付きは `.` で始めます。
+
+[quote]
+____
+引用は `____` で囲みます。
+____
+
+'''
+
+ビルドは次のとおり:
+
+----
+python3 tools/build_article.py --all   # 全体
+python3 tools/serve.py                 # 開発サーバー(保存で自動反映)
+----
+endif::[]
+ifdef::lang-en[]
+= First Article
+
+This article lives inside `articles/insights.adoc`. **One series is one file**,
+with articles separated by sentinel comments.
+
+== How to write
+
+The block fenced by `---` is the frontmatter. Keys shared by both languages
+are bare; keys that differ are written as `title.ja` / `title.en`. The body
+goes inside `ifdef::lang-ja[]` … `endif::[]`.
+
+Links to the previous/next article are derived from document order, so you
+never write them.
+
+== AsciiDoc basics
+
+Headings use `==`, *bold* uses `*`, and _italic_ uses `_`.
+
+* Bullets use `*`
+* Nesting uses `**`
+
+Numbered lists start with `.`.
+
+[quote]
+____
+Quotes are fenced with `____`.
+____
+
+'''
+
+To build:
+
+----
+python3 tools/build_article.py --all   # everything
+python3 tools/serve.py                 # dev server (auto-reload on save)
+----
+endif::[]

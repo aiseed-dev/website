@@ -1,0 +1,81 @@
+// blog — シリーズ全記事(このファイル1つで管理)
+// 記事の区切り: // ===== article: <記事ID> =====
+// フロントマター: 日英共通は裸キー、異なる値は key.ja / key.en
+// 本文: ifdef::lang-ja[] / ifdef::lang-en[] で言語別
+
+// ===== article: 001-welcome =====
+---
+slug: welcome
+date: 2026.04.21
+label: Blog
+category.ja: ノート
+category.en: Notes
+title.ja: ようこそ
+title.en: Welcome
+subtitle.ja: このサイトの育て方
+subtitle.en: How to grow this site
+description.ja: サーバーもデータベースも無いサイトです。記事はフォルダの中のファイル、履歴は git、公開は静的HTML。
+description.en: A site with no server and no database. Articles are files in a folder, history is git, publishing is static HTML.
+---
+ifdef::lang-ja[]
+= ようこそ
+
+このサイトには**サーバーもデータベースもありません**。記事はこのフォルダの
+中のファイル、履歴は git、公開は静的HTMLです。壊れる部品が無いので、
+更新も脆弱性対応も要りません。
+
+== 書くには
+
+三通りあります。好きなものをどうぞ。
+
+. **aiseed-builder**(WordPress風の管理画面)—— いちばん簡単
+. エディタで `articles/*.adoc` を直接開く
+. 開発サーバーを起動して、保存するたびに反映を見る
+
+----
+python3 tools/serve.py     # 保存 → 自動ビルド → ブラウザが自動更新
+----
+
+== 構造
+
+|===
+| 場所 | 中身
+
+| `articles/*.adoc` | 記事(シリーズごとに1ファイル、日英入り)
+| `articles/assets/` | 画像・PDF
+| `html/` | 公開されるHTML(ビルドで作られる)
+| `tools/` | ビルドの仕組み
+| `site.json` | サイトの設定
+|===
+endif::[]
+ifdef::lang-en[]
+= Welcome
+
+This site has **no server and no database**. Articles are files in this
+folder, history is git, and publishing is static HTML. Nothing here can
+break, so there is nothing to patch.
+
+== Writing
+
+Three ways — pick one:
+
+. **aiseed-builder** (a WordPress-like admin) — the easiest
+. Open `articles/*.adoc` in your editor
+. Run the dev server and watch changes appear as you save
+
+----
+python3 tools/serve.py     # save → rebuild → the browser refreshes itself
+----
+
+== Layout
+
+|===
+| Path | What it holds
+
+| `articles/*.adoc` | Articles (one file per series, both languages)
+| `articles/assets/` | Images and PDFs
+| `html/` | The published HTML (produced by the build)
+| `tools/` | The build engine
+| `site.json` | Site settings
+|===
+endif::[]

@@ -2446,7 +2446,8 @@ def _build_series(subdir):
             for lang in ("ja", "en"):
                 if collect_aiways_chapters(lang):
                     build_aiways_index(lang)
-        for chapter_sub in sorted(series_dir.iterdir()):
+        for chapter_sub in (sorted(series_dir.iterdir())
+                            if series_dir.exists() else []):
             if not (chapter_sub.is_dir() and chapter_sub.name[:1].isdigit()):
                 continue
             for ex in collect_aiways_examples(chapter_sub):
@@ -2611,10 +2612,12 @@ def main():
         # Build ai-native-ways examples — every chapter's example-N/ folders,
         # in parent series and every sub-series.
         examples_ok = examples_total = 0
+        # シリーズのディレクトリが無いサイト(雛形から作った新しいサイト等)
+        # でも通るように、存在確認してから走査する
         chapter_dirs = [
             sub for sub in sorted(config.AIWAYS_DIR.iterdir())
             if sub.is_dir() and sub.name[:1].isdigit()
-        ]
+        ] if config.AIWAYS_DIR.exists() else []
         for sub_key in AIWAYS_SUBSERIES:
             sub_dir = config.AIWAYS_DIR / sub_key
             if not sub_dir.exists():

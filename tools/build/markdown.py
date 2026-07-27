@@ -192,6 +192,38 @@ def _add_table_class(html_text):
     return html_text.replace("<table>", '<table class="comparison-table fade-in">')
 
 
+# .adoc 用レンダラ(遅延構築・使い回し)。pyasciidoc の asciidoc プラグインに
+# pywashi の form プラグインを合成する——本文中の [.form] + JSON が
+# <div class="fr-form"><script type="application/json">…</script></div> になり、
+# ページ側の form-render.js が対話的フォームを描く(FormRescue)。
+# form プラグインは pyasciidoc の総称ロール(ad_role_block)より前に自分を
+# 置くよう設計されているので、.use(asciidoc) の後に .use(form) すればよい。
+_md_adoc_cache = None
+
+
+def _adoc_md():
+    global _md_adoc_cache
+    if _md_adoc_cache is None:
+        try:
+            from pyasciidoc import asciidoc
+        except ImportError:
+            raise SystemExit(
+                "pyasciidoc がインストールされていません。"
+                "`pip install pyasciidoc` を実行してください"
+                "(.adoc 記事のビルドに必要です)。"
+            ) from None
+        md_ = MarkdownIt("commonmark", {"html": False}).use(asciidoc)
+        try:
+            from pywashi.form import form as form_plugin
+            md_.use(form_plugin)
+        except ImportError:
+            # pywashi 無しでもビルドは通る([.form] は総称ロールの div になる
+            # だけ)。フォームを使うサイトでは `pip install pywashi`。
+            pass
+        _md_adoc_cache = md_
+    return _md_adoc_cache
+
+
 def render_body(body, source_path):
     """Render an article body to HTML, dispatching on the source file's
     extension. `.md` keeps the existing custom-block + CommonMark pipeline;
@@ -202,15 +234,7 @@ def render_body(body, source_path):
     """
     source_path = Path(source_path)
     if source_path.suffix == ".adoc":
-        try:
-            from pyasciidoc import render as render_adoc
-        except ImportError:
-            raise SystemExit(
-                f"{source_path}: pyasciidoc がインストールされていません。"
-                "`pip install pyasciidoc` を実行してください"
-                "(.adoc 記事のビルドに必要です)。"
-            ) from None
-        html_out = render_adoc(_strip_leading_adoc_title(body))
+        html_out = _adoc_md().render(_strip_leading_adoc_title(body))
         html_out = process_chain_blocks(html_out)
         html_out = _add_table_class(html_out)
     else:

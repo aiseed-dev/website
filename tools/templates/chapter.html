@@ -855,6 +855,9 @@ article .accent { color: var(--accent); }
   }
 }
 </style>
+{% if has_form %}
+<link rel="stylesheet" href="/css/form.css?v={{ asset_version }}">
+{% endif %}
 </head>
 
 <body{% if chapter_toc_html %} class="has-toc"{% endif %}>
@@ -955,6 +958,10 @@ article .accent { color: var(--accent); }
     document.head.appendChild(s);
   }
 </script>
+{% if has_form %}
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script src="/js/form-render.js?v={{ asset_version }}" defer></script>
+{% endif %}
 
 </body>
 </html>

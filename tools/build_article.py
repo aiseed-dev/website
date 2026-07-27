@@ -227,6 +227,10 @@ def _chapter_vars(meta, content_html, *, series_name, series_index_url,
         "other_lang_label": other_lang_label,
         "chapter_toc_html": chapter_toc_html,
         "nav_html": nav_html,
+        # [.form] を含むページだけ form.css / form-render.js / Turnstile を
+        # 読み込む(pywashi の form プラグインが .fr-form を出力する)
+        "has_form": 'class="fr-form"' in content_html,
+        "asset_version": config.asset_version(),
     }
 
 
@@ -2467,10 +2471,27 @@ def _build_series(subdir):
     return True
 
 
+def copy_form_assets():
+    """pywashi の form-render.js / form.css を html/ に配る([.form] 描画用)。
+    pywashi が無ければ何もしない(フォームを使わないサイトでは不要)。"""
+    try:
+        from importlib.resources import files
+        assets = files("pywashi") / "form_assets"
+    except (ImportError, ModuleNotFoundError):
+        return
+    for name, sub in (("form-render.js", "js"), ("form.css", "css")):
+        src = assets / name
+        if src.is_file():
+            dest = config.SITE_ROOT / "html" / sub / name
+            dest.parent.mkdir(parents=True, exist_ok=True)
+            dest.write_bytes(src.read_bytes())
+
+
 def main():
     site, args = config.resolve_site(sys.argv[1:])
     config.configure_site(site)
     series_expansion.expand_all()
+    copy_form_assets()
 
     if not args:
         print("Usage: python3 tools/build_article.py [--site <dir>] <article.md>")

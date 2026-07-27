@@ -156,6 +156,41 @@ def _strip_leading_adoc_title(body):
     return body[m.end():].lstrip("\n")
 
 
+# ---------------------------------------------------------------------------
+# AsciiDoc 出力の後処理: 旧 ::: カスタムブロックと同じ見た目に揃える。
+# (mermaid の後処理 process_mermaid_blocks と同じ「レンダリング後の HTML を
+# 正規表現で整形する」方式。)
+# ---------------------------------------------------------------------------
+
+_CHAIN_DIV_RE = re.compile(
+    r'(<div class="chain-diagram">)(.*?)(</div>)', re.DOTALL
+)
+
+
+def process_chain_blocks(html_text):
+    """`[.chain-diagram]` ロールの中身を旧 :::chain の出力形式に揃える。
+
+    pyasciidoc は role を <div class="chain-diagram"><p>…</p></div> にする。
+    旧パイプラインは <p> なしで、行内改行を <br>、段落間を <br><br>、
+    `→` を <span class="arrow">&rarr;</span> にしていた。CSS(.chain-diagram)
+    はその形を前提にしているため、ここで同じ形へ変換する。"""
+    def _replace(match):
+        inner = match.group(2).strip()
+        inner = re.sub(r"</p>\s*<p>", "<br><br>", inner)
+        inner = inner.replace("<p>", "").replace("</p>", "")
+        inner = inner.replace("→", '<span class="arrow">&rarr;</span>')
+        inner = inner.replace("\n", "<br>\n")
+        return f"{match.group(1)}\n{inner}\n{match.group(3)}"
+    return _CHAIN_DIV_RE.sub(_replace, html_text)
+
+
+def _add_table_class(html_text):
+    """pyasciidoc の素の <table> に旧 :::compare と同じクラスを付ける。
+    旧 Markdown パイプラインで表になるのは事実上 :::compare だけなので、
+    .adoc の表はすべて comparison-table の見た目で揃える。"""
+    return html_text.replace("<table>", '<table class="comparison-table fade-in">')
+
+
 def render_body(body, source_path):
     """Render an article body to HTML, dispatching on the source file's
     extension. `.md` keeps the existing custom-block + CommonMark pipeline;
@@ -175,6 +210,8 @@ def render_body(body, source_path):
                 "(.adoc 記事のビルドに必要です)。"
             ) from None
         html_out = render_adoc(_strip_leading_adoc_title(body))
+        html_out = process_chain_blocks(html_out)
+        html_out = _add_table_class(html_out)
     else:
         body = strip_leading_title(body)
         body = process_custom_blocks(body)

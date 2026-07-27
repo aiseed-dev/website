@@ -57,3 +57,4 @@ docs/memo
 mirror
 mirror2
 .~lock.*#
+.build/

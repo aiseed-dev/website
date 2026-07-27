@@ -35,6 +35,7 @@ import sys
 from pathlib import Path
 
 from build import config
+from build import series as series_expansion
 from build.config import render
 from build.images import (
     OGP_FILENAME,
@@ -2395,9 +2396,81 @@ def regenerate_ogp(md_path):
     return False
 
 
+def _build_series(subdir):
+    """1シリーズ分(展開済みツリーの subdir、例 "blog"/"claude-debian/server")
+    を記事+索引までビルドする。シリーズファイル(articles/<series>.adoc)を
+    引数に指定したとき、および serve.py の差分ビルドから使う。"""
+    root, _, sub_key = subdir.partition("/")
+
+    def _files(series_dir, recurse=False):
+        return list(_iter_article_files(series_dir, "ja", recurse=recurse)) \
+             + list(_iter_article_files(series_dir, "en", recurse=recurse))
+
+    if root == "insights":
+        for f in _files(config.INSIGHTS_DIR, recurse=True):
+            build_article(f)
+        build_index("ja")
+        build_index("en")
+    elif root == "blog":
+        for f in _files(config.BLOG_DIR):
+            build_blog_post(f)
+        build_blog_index("ja")
+        build_blog_index("en")
+        update_home_latest_posts("ja")
+        update_home_latest_posts("en")
+    elif root == "claude-debian":
+        series_dir = config.BOOK_DIR / sub_key if sub_key else config.BOOK_DIR
+        for f in _files(series_dir):
+            build_book_chapter(f)
+        if sub_key:
+            for lang in ("ja", "en"):
+                if collect_book_chapters(lang, sub_key):
+                    build_book_subseries_index(sub_key, lang)
+        else:
+            for lang in ("ja", "en"):
+                if collect_book_chapters(lang):
+                    build_book_index(lang)
+    elif root == "ai-native-ways":
+        series_dir = config.AIWAYS_DIR / sub_key if sub_key else config.AIWAYS_DIR
+        for f in _files(series_dir):
+            build_aiways_chapter(f)
+        if sub_key:
+            for lang in ("ja", "en"):
+                if collect_aiways_chapters(lang, sub_key):
+                    build_aiways_subseries_index(sub_key, lang)
+        else:
+            for lang in ("ja", "en"):
+                if collect_aiways_chapters(lang):
+                    build_aiways_index(lang)
+        for chapter_sub in sorted(series_dir.iterdir()):
+            if not (chapter_sub.is_dir() and chapter_sub.name[:1].isdigit()):
+                continue
+            for ex in collect_aiways_examples(chapter_sub):
+                for ex_lang in ("ja", "en"):
+                    if resolve_source(chapter_sub, ex_lang) is not None:
+                        build_aiways_example(ex, ex_lang)
+    elif root == "phosphorus-and-farming":
+        for f in _files(config.FARMING_DIR):
+            build_farming_chapter(f)
+        for lang in ("ja", "en"):
+            if collect_farming_chapters(lang):
+                build_farming_index(lang)
+    elif root == "fable":
+        for f in _files(config.FABLE_DIR):
+            build_fable_chapter(f)
+        for lang in ("ja", "en"):
+            if collect_fable_chapters(lang):
+                build_fable_index(lang)
+    else:
+        print(f"未知のシリーズです: {subdir}", file=sys.stderr)
+        return False
+    return True
+
+
 def main():
     site, args = config.resolve_site(sys.argv[1:])
     config.configure_site(site)
+    series_expansion.expand_all()
 
     if not args:
         print("Usage: python3 tools/build_article.py [--site <dir>] <article.md>")
@@ -2550,6 +2623,13 @@ def main():
             f" + {fable_ok}/{len(fable_files)} fable installments"
             f" + indexes + sitemap.xml + robots.txt."
         )
+        return
+
+    # シリーズファイル(articles/blog.adoc 等)を指定されたら、そのシリーズを
+    # まるごとビルドする(展開は main 冒頭の expand_all() で済んでいる)
+    p_series = Path(arg)
+    if p_series.suffix == ".adoc" and p_series.name in series_expansion.SERIES_MAP:
+        _build_series(series_expansion.SERIES_MAP[p_series.name])
         return
 
     # Auto-detect book / blog / aiways / article from the path. Per-folder

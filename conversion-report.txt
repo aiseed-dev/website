@@ -1,0 +1,16 @@
+太字リンクを非太字リンクに変更: insights/part-3-design/07-ai-native-free-individual/ja.md: **[Claudeと一緒に学ぶDebian](/claude-debian/)**（プロローグ + 全23章）——OS から日常環境までの移行手引き
+太字リンクを非太字リンクに変更: insights/part-3-design/07-ai-native-free-individual/ja.md: **[AIネイティブな仕事の作法](/ai-native-ways/)**（全14章）——AI と共に働く具体的な作法
+太字リンクを非太字リンクに変更: insights/part-3-design/07-ai-native-free-individual/en.md: **[Learning Debian with Claude](/en/claude-debian/)** (prologue + 23 chapters) —
+太字リンクを非太字リンクに変更: insights/part-3-design/07-ai-native-free-individual/en.md: **[AI-Native Ways of Working](/en/ai-native-ways/)** (14 chapters) — Concrete pr
+太字リンクを非太字リンクに変更: blog/021-software-three-transitions/ja.md: 本記事は、aiseed.dev の **[AI ネイティブな仕事の作法 ── ソフトウェア開発編](/ai-native-ways/software/)**(論
+太字リンクを非太字リンクに変更: blog/021-software-three-transitions/en.md: This article compresses aiseed.dev's **[AI-Native Ways of Working — Software](/e
+シリーズ直下のREADMEを docs/series-notes/ へ退避: claude-debian/server/README.en.md
+シリーズ直下のREADMEを docs/series-notes/ へ退避: claude-debian/server/README.md
+シリーズ直下のREADMEを docs/series-notes/ へ退避: ai-native-ways/README.md
+シリーズ直下のビルド入力を assets/ai-native-ways/_root/ へ: ai-native-ways/template-example.html
+残骸タグを除去: ai-native-ways/software/14-fastapi/ja.md: </content>
+残骸タグを除去: ai-native-ways/software/14-fastapi/ja.md: </invoke>
+残骸タグを除去: ai-native-ways/software/14-fastapi/en.md: </content>
+シリーズ直下のREADMEを docs/series-notes/ へ退避: ai-native-ways/software/README.en.md
+シリーズ直下のREADMEを docs/series-notes/ へ退避: ai-native-ways/software/README.md
+シリーズ直下のREADMEを docs/series-notes/ へ退避: fable/README.md

@@ -179,7 +179,8 @@ def process_chain_blocks(html_text):
         inner = re.sub(r"</p>\s*<p>", "<br><br>", inner)
         inner = inner.replace("<p>", "").replace("</p>", "")
         inner = inner.replace("→", '<span class="arrow">&rarr;</span>')
-        inner = inner.replace("\n", "<br>\n")
+        # 行内の改行は AsciiDoc のハード改行(` +` → <br />)が担うので、
+        # ここでは <br> への変換はしない(二重改行になるため)
         return f"{match.group(1)}\n{inner}\n{match.group(3)}"
     return _CHAIN_DIV_RE.sub(_replace, html_text)
 

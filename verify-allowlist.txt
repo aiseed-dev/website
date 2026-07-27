@@ -1,0 +1,23 @@
+# 移行検証(tools/verify_migration.py)の許容リスト。
+# 形式: <相対パス><TAB><理由>
+# ここに載せる差分は「旧サイト側の不具合が新サイトで直った」改善のみ。
+# 旧Markdownパイプラインでは、(a) 折返し・引用・記号隣接で **強調** が
+# 未解釈になり生の ** が表示される、(b) 行頭に来た「+」がリストマーカーに
+# 誤解釈され本文の「+」が消える、という壊れ方をしていた。AsciiDoc 化で
+# いずれも著者の意図どおりの表示になった。
+ai-native-ways/software/hiring-builders/index.html	旧: 行頭「+」でリスト化し**が生表示。新: 「元SIerコーダー+工作派の合流」が正しく強調
+en/ai-native-ways/software/hiring-builders/index.html	同上(英語版)
+blog/grid-attack-naphtha/index.html	旧: 引用段落の**が未解釈で生表示。新: 正しく強調
+en/blog/grid-attack-naphtha/index.html	同上(英語版)
+en/ai-native-ways/one-plus-ai/index.html	旧: 行頭「+」でリスト化し「Markdown + pandoc」の+が消えていた。新: 完全な文
+en/claude-debian/06-hardware-choice/index.html	旧: 行頭「+」で「terminal + browser + editor」の+が消えていた。新: 完全な文
+en/insights/agriculture/index.html	旧: 引用符隣接の**が未解釈で生表示。新: 正しく強調
+en/insights/cloud-independence/index.html	旧: **が未解釈で生表示。新: 正しく強調
+insights/cloud-independence/index.html	旧: **が未解釈で生表示。新: 正しく強調
+en/insights/fossil-materials/index.html	旧: 引用符隣接の**が未解釈で生表示。新: 正しく強調
+insights/fossil-materials/index.html	旧: 引用符隣接の**が未解釈で生表示。新: 正しく強調
+en/insights/nativism-observation/index.html	旧: **が未解釈で生表示。新: 正しく強調
+insights/nativism-observation/index.html	旧: **が未解釈で生表示。新: 正しく強調
+insights/climate-mistake/index.html	旧: **が未解釈で生表示。新: 正しく強調
+en/phosphorus-and-farming/realistic-position/index.html	旧: 行頭「+」で「中間の道」列挙の+が消えていた。新: 完全な文
+phosphorus-and-farming/realistic-position/index.html	旧: 行頭「+」で「中間の道」列挙の+が消えていた。新: 完全な文

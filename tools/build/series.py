@@ -253,7 +253,10 @@ def derive_nav(units, lang):
 
 def _write_expanded(unit, lang, nav, out_dir):
     meta = select_lang_meta(unit.meta, lang)
-    meta.update(nav.get(unit.article_id, {}))
+    # 導出した prev/next は明示キーが無い場合のみ入れる(prev_title 等を
+    # 意図的に短縮している記事はその表記が勝つ)
+    for k, v in nav.get(unit.article_id, {}).items():
+        meta.setdefault(k, v)
     fm = "\n".join(f"{k}: {v}" for k, v in meta.items() if str(v).strip() != "")
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / f"{lang}.adoc").write_text(
@@ -310,6 +313,13 @@ def expand_all(site_root=None):
             for lang in unit.langs():
                 _write_expanded(unit, lang, nav[lang], out_dir)
             _link_assets(site_root, stem, unit, out_dir)
+        # シリーズルート直下のビルド入力(template-example.html 等)
+        root_assets = site_root / "articles" / "assets" / stem / "_root"
+        if root_assets.is_dir():
+            out_base.mkdir(parents=True, exist_ok=True)
+            for f in root_assets.iterdir():
+                if f.is_file():
+                    (out_base / f.name).symlink_to(f)
 
     # config のシリーズディレクトリを展開先へ付け替える。親シリーズの
     # ファイルがある場合のみ(サブシリーズ単独では付け替えない——親の

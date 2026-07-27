@@ -1,0 +1,20 @@
+共通ページ: 361 / メタ一致: 361 / 本文一致: 346
+
+許容済みの本文差 (15):
+  ai-native-ways/software/hiring-builders/index.html: 旧: 行頭「+」でリスト化し**が生表示。新: 「元SIerコーダー+工作派の合流」が正しく強調
+  blog/grid-attack-naphtha/index.html: 旧: 引用段落の**が未解釈で生表示。新: 正しく強調
+  en/ai-native-ways/one-plus-ai/index.html: 旧: 行頭「+」でリスト化し「Markdown + pandoc」の+が消えていた。新: 完全な文
+  en/blog/grid-attack-naphtha/index.html: 同上(英語版)
+  en/claude-debian/06-hardware-choice/index.html: 旧: 行頭「+」で「terminal + browser + editor」の+が消えていた。新: 完全な文
+  en/insights/agriculture/index.html: 旧: 引用符隣接の**が未解釈で生表示。新: 正しく強調
+  en/insights/cloud-independence/index.html: 旧: **が未解釈で生表示。新: 正しく強調
+  en/insights/fossil-materials/index.html: 旧: 引用符隣接の**が未解釈で生表示。新: 正しく強調
+  en/insights/nativism-observation/index.html: 旧: **が未解釈で生表示。新: 正しく強調
+  en/phosphorus-and-farming/realistic-position/index.html: 旧: 行頭「+」で「中間の道」列挙の+が消えていた。新: 完全な文
+  insights/climate-mistake/index.html: 旧: **が未解釈で生表示。新: 正しく強調
+  insights/cloud-independence/index.html: 旧: **が未解釈で生表示。新: 正しく強調
+  insights/fossil-materials/index.html: 旧: 引用符隣接の**が未解釈で生表示。新: 正しく強調
+  insights/nativism-observation/index.html: 旧: **が未解釈で生表示。新: 正しく強調
+  phosphorus-and-farming/realistic-position/index.html: 旧: 行頭「+」で「中間の道」列挙の+が消えていた。新: 完全な文
+
+結果: 合格

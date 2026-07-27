@@ -1,0 +1,11 @@
+[project]
+name = "site-editor"
+version = "0.1.0"
+description = "aiseed.dev 記事エディタ — WordPress管理画面風のFletアプリ(シリーズ.adocの本文だけを編集)"
+requires-python = ">=3.11"
+dependencies = [
+    "flet[all]==0.86.*",
+]
+
+[dependency-groups]
+dev = ["pytest"]

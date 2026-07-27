@@ -39,8 +39,7 @@ import shutil
 import sys
 from pathlib import Path
 
-from . import config
-from .markdown import parse_frontmatter
+from .frontmatter import parse_frontmatter
 
 # シリーズファイル名 → .build/articles/ 配下の展開先サブディレクトリ。
 # サブシリーズ(server/software)は章番号が1から振り直され、URLも別系統
@@ -300,6 +299,8 @@ def expand_all(site_root=None):
     """全シリーズファイルを .build/articles/ に展開し、config の各シリーズ
     ディレクトリを展開先へ付け替える。シリーズファイルが1つも無ければ
     何もしない(従来のフォルダ構成のまま動く)。"""
+    from . import config  # 遅延 import: パースだけ使う側に
+                          # jinja2 等の依存を持ち込まないため
     site_root = Path(site_root) if site_root else config.SITE_ROOT
     found = series_files(site_root)
     if not found:

@@ -8,6 +8,10 @@ from pathlib import Path
 from markdown_it import MarkdownIt
 from mdit_py_cjk_friendly import cjk_friendly
 
+# フロントマター解析は依存ゼロの frontmatter.py が正。ここでは
+# 従来の import 元(build.markdown.parse_frontmatter)を保つため再輸出する。
+from .frontmatter import parse_frontmatter  # noqa: F401
+
 # CommonMark + tables (used for both article bodies and inline `:::highlight`)
 # 日本語 (CJK) と CommonMark の相性問題 (softbreak の不要な空白、
 # 全角約物に隣接した **強調** の不成立) は mdit-py-cjk-friendly が
@@ -42,24 +46,7 @@ def process_mermaid_blocks(html_text):
     return _MERMAID_HTML_RE.sub(_replace, html_text)
 
 
-def parse_frontmatter(text):
-    """Parse YAML-like front matter between --- delimiters."""
-    if not text.startswith("---"):
-        return {}, text
-    parts = text.split("---", 2)
-    if len(parts) < 3:
-        return {}, text
-    meta = {}
-    for line in parts[1].strip().split("\n"):
-        line = line.strip()
-        if ":" in line:
-            key, val = line.split(":", 1)
-            val = val.strip()
-            if val.startswith('"') and val.endswith('"'):
-                val = val[1:-1]
-            meta[key.strip()] = val
-    body = parts[2].strip()
-    return meta, body
+
 
 
 def strip_leading_title(body):

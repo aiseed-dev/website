@@ -31,7 +31,11 @@ company = "aiseed.dev"
 copyright = "Copyright (c) 2026 aiseed.dev"
 
 [tool.flet.app]
-path = "src/debian_migrate"
+# パッケージ本体ではなく**その親**を指す。flet build はここをアプリの
+# ルートとして展開し main.py を実行するので、src/ を指定することで
+# `debian_migrate` パッケージが import できる(src/debian_migrate を
+# 指定すると実行時に ModuleNotFoundError になる)
+path = "src"
 
 [dependency-groups]
 dev = [

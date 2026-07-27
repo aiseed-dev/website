@@ -200,7 +200,7 @@ def _categories_card() -> ft.Control:
                     spacing=10,
                     vertical_alignment=ft.CrossAxisAlignment.START,
                 ),
-                padding=ft.padding.symmetric(vertical=6, horizontal=6),
+                padding=ft.Padding.symmetric(vertical=6, horizontal=6),
                 bgcolor=(
                     ft.Colors.SURFACE_CONTAINER_HIGH
                     if likely
@@ -306,7 +306,7 @@ def _cmd_row(label: str, cmd: str) -> ft.Control:
                         ),
                     ],
                 ),
-                padding=ft.padding.symmetric(horizontal=10, vertical=4),
+                padding=ft.Padding.symmetric(horizontal=10, vertical=4),
                 bgcolor=ft.Colors.SURFACE_CONTAINER_HIGH,
                 border_radius=8,
             ),

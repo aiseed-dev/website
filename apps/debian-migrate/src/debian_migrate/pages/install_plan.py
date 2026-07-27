@@ -234,7 +234,7 @@ def _install_row(label: str, alt: str, cmd: str, note: str) -> ft.Control:
                                 ),
                             ],
                         ),
-                        padding=ft.padding.symmetric(horizontal=10, vertical=4),
+                        padding=ft.Padding.symmetric(horizontal=10, vertical=4),
                         bgcolor=ft.Colors.SURFACE_CONTAINER_HIGH,
                         border_radius=8,
                     ),
@@ -269,7 +269,7 @@ def _badge(text: str, color) -> ft.Control:
     return ft.Container(
         content=ft.Text(text, size=10, color=ft.Colors.WHITE),
         bgcolor=color,
-        padding=ft.padding.symmetric(horizontal=8, vertical=2),
+        padding=ft.Padding.symmetric(horizontal=8, vertical=2),
         border_radius=10,
     )
 

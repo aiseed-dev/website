@@ -20,7 +20,7 @@ def section_title(text: str) -> ft.Control:
 def page_intro(text: str) -> ft.Control:
     return ft.Container(
         content=ft.Text(text, size=14, color=ft.Colors.ON_SURFACE_VARIANT),
-        padding=ft.padding.symmetric(vertical=8),
+        padding=ft.Padding.symmetric(vertical=8),
     )
 
 
@@ -56,21 +56,21 @@ def confidence_chip(level: str) -> ft.Control:
         return ft.Container(
             content=ft.Text("そのまま置換可", size=11, color=ft.Colors.WHITE),
             bgcolor=ft.Colors.GREEN,
-            padding=ft.padding.symmetric(horizontal=8, vertical=2),
+            padding=ft.Padding.symmetric(horizontal=8, vertical=2),
             border_radius=10,
         )
     if level == "review":
         return ft.Container(
             content=ft.Text("要検討", size=11, color=ft.Colors.WHITE),
             bgcolor=ft.Colors.ORANGE,
-            padding=ft.padding.symmetric(horizontal=8, vertical=2),
+            padding=ft.Padding.symmetric(horizontal=8, vertical=2),
             border_radius=10,
         )
     if level == "missing":
         return ft.Container(
             content=ft.Text("代替なし", size=11, color=ft.Colors.WHITE),
             bgcolor=ft.Colors.RED,
-            padding=ft.padding.symmetric(horizontal=8, vertical=2),
+            padding=ft.Padding.symmetric(horizontal=8, vertical=2),
             border_radius=10,
         )
     return ft.Text("?", size=11)

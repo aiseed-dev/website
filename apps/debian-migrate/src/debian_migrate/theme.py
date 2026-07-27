@@ -20,7 +20,8 @@ def configure_page(page: ft.Page) -> None:
     page.window.height = 760
     page.window.min_width = 760
     page.window.min_height = 600
-    page.window.center()
+    # 0.86 の window.center() はコルーチン。configure_page は同期なので
+    # ここでは呼ばない(await せずに呼ぶと RuntimeWarning のうえ効かない)
 
     page.theme_mode = ft.ThemeMode.LIGHT
     page.theme = _theme()

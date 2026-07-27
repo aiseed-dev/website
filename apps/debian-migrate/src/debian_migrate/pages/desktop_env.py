@@ -177,7 +177,7 @@ def _de_card(de: dict, selected: bool, is_recommended: bool,
                                         color=ft.Colors.WHITE,
                                     ),
                                     bgcolor=ft.Colors.PRIMARY,
-                                    padding=ft.padding.symmetric(
+                                    padding=ft.Padding.symmetric(
                                         horizontal=8, vertical=2
                                     ),
                                     border_radius=8,
@@ -193,7 +193,7 @@ def _de_card(de: dict, selected: bool, is_recommended: bool,
                                         color=ft.Colors.WHITE,
                                     ),
                                     bgcolor=ft.Colors.ORANGE,
-                                    padding=ft.padding.symmetric(
+                                    padding=ft.Padding.symmetric(
                                         horizontal=8, vertical=2
                                     ),
                                     border_radius=8,
@@ -315,7 +315,7 @@ def _cmd_box(cmd: str) -> ft.Control:
                 ),
             ],
         ),
-        padding=ft.padding.symmetric(horizontal=10, vertical=4),
+        padding=ft.Padding.symmetric(horizontal=10, vertical=4),
         bgcolor=ft.Colors.SURFACE_CONTAINER_HIGH,
         border_radius=8,
     )

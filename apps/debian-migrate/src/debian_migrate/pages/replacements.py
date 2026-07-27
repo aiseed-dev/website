@@ -152,7 +152,7 @@ def _replacement_row(
     alt_chips = [
         ft.Container(
             content=ft.Text(alt, size=12),
-            padding=ft.padding.symmetric(horizontal=8, vertical=4),
+            padding=ft.Padding.symmetric(horizontal=8, vertical=4),
             bgcolor=ft.Colors.SURFACE_CONTAINER_HIGH,
             border_radius=8,
         )
@@ -196,7 +196,7 @@ def _replacement_row(
                                 size=11,
                                 color=ft.Colors.ON_SURFACE_VARIANT,
                             ),
-                            padding=ft.padding.only(top=6),
+                            padding=ft.Padding.only(top=6),
                         )
                         if rep.note
                         else ft.Container()

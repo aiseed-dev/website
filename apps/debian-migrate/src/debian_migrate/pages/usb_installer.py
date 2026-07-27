@@ -149,7 +149,7 @@ def _preflight_item(title: str, body: str) -> ft.Control:
             ],
             spacing=2,
         ),
-        padding=ft.padding.symmetric(vertical=4),
+        padding=ft.Padding.symmetric(vertical=4),
     )
 
 

@@ -1,0 +1,698 @@
+{
+ "generated_at": "2026-07-06T10:30:00+00:00",
+ "spec": "docs/plan/insights-dashboard-spec.md v0.1",
+ "themes": [
+  {
+   "id": "fertilizer_phosphorus",
+   "name_ja": "リンと肥料",
+   "name_en": "Phosphorus & Fertilizer",
+   "indicators": [
+    {
+     "id": "phosrock_morocco_share",
+     "name_ja": "リン鉱石埋蔵のモロッコ+西サハラ集中",
+     "name_en": "Phosphate rock reserves in Morocco + W. Sahara",
+     "kind": "constant",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "%",
+     "source": "USGS Mineral Commodity Summaries",
+     "threshold": null,
+     "note": "肥料の主原料の地理的偏在。",
+     "article": {
+      "href": "/insights/fossil-materials/",
+      "label": "化石資源と現代文明"
+     },
+     "series": [
+      {
+       "date": "2026-01-31",
+       "value": 70,
+       "source": "USGS MCS"
+      }
+     ]
+    },
+    {
+     "id": "potash_ru_by_share",
+     "name_ja": "カリ鉱石埋蔵のロシア+ベラルーシ集中",
+     "name_en": "Potash reserves in Russia + Belarus",
+     "kind": "constant",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "%",
+     "source": "USGS Mineral Commodity Summaries",
+     "threshold": null,
+     "note": "三大栄養素のもう一つの偏在。",
+     "article": {
+      "href": "/insights/fossil-materials/",
+      "label": "化石資源と現代文明"
+     },
+     "series": [
+      {
+       "date": "2026-01-31",
+       "value": 40,
+       "source": "USGS MCS"
+      }
+     ]
+    },
+    {
+     "id": "jp_phosphate_china_dep",
+     "name_ja": "日本のリン酸アンモニウム輸入の中国依存",
+     "name_en": "Japan DAP/MAP imports from China",
+     "kind": "constant",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "%",
+     "source": "財務省 貿易統計",
+     "threshold": null,
+     "note": "リン酸肥料製品の輸入相手の集中。",
+     "article": {
+      "href": "/insights/agriculture/",
+      "label": "農業の間違い"
+     },
+     "series": [
+      {
+       "date": "2025-12-31",
+       "value": 76,
+       "source": "財務省 貿易統計"
+      }
+     ]
+    },
+    {
+     "id": "fertilizer_food_share",
+     "name_ja": "合成窒素肥料が支える世界の食料生産",
+     "name_en": "Food production supported by synthetic N",
+     "kind": "constant",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "%",
+     "source": "Erisman et al. (Nature Geoscience)",
+     "threshold": null,
+     "note": "ハーバー・ボッシュ法への人類の依存度。",
+     "article": {
+      "href": "/insights/fossil-materials/",
+      "label": "化石資源と現代文明"
+     },
+     "series": [
+      {
+       "date": "2025-12-31",
+       "value": 50,
+       "source": "Erisman et al."
+      }
+     ]
+    },
+    {
+     "id": "sulfur_byproduct_share",
+     "name_ja": "硫黄の石油・ガス精製副産物比率",
+     "name_en": "Sulfur from oil & gas refining",
+     "kind": "constant",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "%",
+     "source": "USGS",
+     "threshold": null,
+     "note": "リン酸肥料製造に必須の硫酸の川上。脱化石で肥料も締まる連関。",
+     "article": {
+      "href": "/insights/fusion/",
+      "label": "核融合・EV化の間違い"
+     },
+     "series": [
+      {
+       "date": "2026-01-31",
+       "value": 90,
+       "source": "USGS"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fossil_materials",
+   "name_ja": "化石資源と素材",
+   "name_en": "Fossil Resources & Materials",
+   "indicators": [
+    {
+     "id": "oil_rp_years",
+     "name_ja": "石油の可採年数 (確認埋蔵量/生産)",
+     "name_en": "Oil reserves-to-production",
+     "kind": "constant",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "年",
+     "source": "Energy Institute Statistical Review",
+     "threshold": null,
+     "note": "新規発見を含めれば100〜150年との推計もある (記事参照)。",
+     "article": {
+      "href": "/insights/fossil-materials/",
+      "label": "化石資源と現代文明"
+     },
+     "series": [
+      {
+       "date": "2025-12-31",
+       "value": 50,
+       "source": "EI Statistical Review"
+      }
+     ]
+    },
+    {
+     "id": "gas_rp_years",
+     "name_ja": "天然ガスの可採年数",
+     "name_en": "Gas reserves-to-production",
+     "kind": "constant",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "年",
+     "source": "Energy Institute Statistical Review",
+     "threshold": null,
+     "note": null,
+     "article": {
+      "href": "/insights/fossil-materials/",
+      "label": "化石資源と現代文明"
+     },
+     "series": [
+      {
+       "date": "2025-12-31",
+       "value": 50,
+       "source": "EI Statistical Review"
+      }
+     ]
+    },
+    {
+     "id": "refinery_energy_share",
+     "name_ja": "石油精製売上のエネルギー用途比率",
+     "name_en": "Refinery revenue from energy uses",
+     "kind": "constant",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "%",
+     "source": "業界統計 (記事参照)",
+     "threshold": null,
+     "note": "化学原料は約13%。エネルギー転換が進むと素材の経済基盤が崩れる構造。",
+     "article": {
+      "href": "/insights/fossil-materials/",
+      "label": "化石資源と現代文明"
+     },
+     "series": [
+      {
+       "date": "2025-12-31",
+       "value": 86,
+       "source": "業界統計"
+      }
+     ]
+    },
+    {
+     "id": "plastics_production",
+     "name_ja": "世界のプラスチック生産量",
+     "name_en": "Global plastics production",
+     "kind": "flow",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "億t/年",
+     "source": "OECD / PlasticsEurope",
+     "threshold": null,
+     "note": null,
+     "article": {
+      "href": "/insights/fossil-materials/",
+      "label": "化石資源と現代文明"
+     },
+     "series": [
+      {
+       "date": "2025-12-31",
+       "value": 4,
+       "source": "OECD"
+      }
+     ]
+    },
+    {
+     "id": "bioplastics_share",
+     "name_ja": "バイオプラスチックの比率",
+     "name_en": "Bioplastics share of production",
+     "kind": "constant",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "%",
+     "source": "European Bioplastics",
+     "threshold": null,
+     "note": "製造コストは石油由来の3〜5倍 (記事参照)。",
+     "article": {
+      "href": "/insights/fossil-materials/",
+      "label": "化石資源と現代文明"
+     },
+     "series": [
+      {
+       "date": "2025-12-31",
+       "value": 1,
+       "source": "European Bioplastics"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "soil_agriculture",
+   "name_ja": "土壌と農業",
+   "name_en": "Soil & Agriculture",
+   "indicators": [
+    {
+     "id": "us_topsoil_loss",
+     "name_ja": "米国農地の表土喪失 (150年間)",
+     "name_en": "US farmland topsoil lost (150 yrs)",
+     "kind": "constant",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "%",
+     "source": "USDA / 土壌研究 (記事参照)",
+     "threshold": null,
+     "note": null,
+     "article": {
+      "href": "/insights/agriculture/",
+      "label": "農業の間違い"
+     },
+     "series": [
+      {
+       "date": "2025-12-31",
+       "value": 50,
+       "source": "USDA"
+      }
+     ]
+    },
+    {
+     "id": "soc_cumulative_loss",
+     "name_ja": "土壌有機炭素の累積喪失 (農耕1.2万年)",
+     "name_en": "Cumulative soil carbon loss",
+     "kind": "constant",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "億t C",
+     "source": "Sanderman et al. (PNAS)",
+     "threshold": null,
+     "note": null,
+     "article": {
+      "href": "/insights/climate-mistake/",
+      "label": "気候変動対策の過ち"
+     },
+     "series": [
+      {
+       "date": "2025-12-31",
+       "value": 1100,
+       "source": "Sanderman et al."
+      }
+     ]
+    },
+    {
+     "id": "soc_annual_loss",
+     "name_ja": "土壌有機炭素の年間喪失",
+     "name_en": "Annual soil carbon loss",
+     "kind": "flow",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "Pg C/年",
+     "source": "土壌研究 (記事参照)",
+     "threshold": null,
+     "note": "1.9〜2.4 Pg の下限値。CO2換算 約7.9 Pg。",
+     "article": {
+      "href": "/insights/climate-mistake/",
+      "label": "気候変動対策の過ち"
+     },
+     "series": [
+      {
+       "date": "2025-12-31",
+       "value": 1.9,
+       "source": "土壌研究"
+      }
+     ]
+    },
+    {
+     "id": "us_covercrop_adoption",
+     "name_ja": "米国の被覆作物導入率",
+     "name_en": "US cover crop adoption",
+     "kind": "flow",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "%",
+     "source": "USDA Census of Agriculture",
+     "threshold": null,
+     "note": "土壌炭素隔離の主要手段の現在地。",
+     "article": {
+      "href": "/insights/climate-mistake/",
+      "label": "気候変動対策の過ち"
+     },
+     "series": [
+      {
+       "date": "2025-12-31",
+       "value": 4,
+       "source": "USDA"
+      }
+     ]
+    },
+    {
+     "id": "midori_organic_target",
+     "name_ja": "みどり戦略の有機農業目標 (2050年)",
+     "name_en": "Japan organic farming target 2050",
+     "kind": "clock",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "% (耕地面積)",
+     "source": "農林水産省 みどりの食料システム戦略",
+     "threshold": {
+      "value": 25,
+      "label": "2050年目標 25% (100万ha)",
+      "direction": "up"
+     },
+     "note": "現状は1%未満。目標との距離が構造を示す。",
+     "article": {
+      "href": "/insights/fossil-materials/",
+      "label": "化石資源と現代文明"
+     },
+     "series": [
+      {
+       "date": "2025-12-31",
+       "value": 0.7,
+       "source": "農林水産省"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "software_structure",
+   "name_ja": "ソフトウェア構造",
+   "name_en": "Software Structure",
+   "indicators": [
+    {
+     "id": "wp_web_share",
+     "name_ja": "WordPress の Web シェア",
+     "name_en": "WordPress share of the web",
+     "kind": "constant",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "%",
+     "source": "W3Techs",
+     "threshold": null,
+     "note": "約5億サイト。攻撃面の単一文化。",
+     "article": {
+      "href": "/insights/mythos/",
+      "label": "Mythosが来た"
+     },
+     "series": [
+      {
+       "date": "2026-06-30",
+       "value": 43,
+       "source": "W3Techs"
+      }
+     ]
+    },
+    {
+     "id": "wp_new_vulns",
+     "name_ja": "WordPress 新規脆弱性 (年間)",
+     "name_en": "New WordPress vulnerabilities/yr",
+     "kind": "flow",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "件",
+     "source": "WPScan / Patchstack",
+     "threshold": null,
+     "note": "97%がサードパーティ(プラグイン)由来、46%はパッチなし。",
+     "article": {
+      "href": "/insights/mythos/",
+      "label": "Mythosが来た"
+     },
+     "series": [
+      {
+       "date": "2024-12-31",
+       "value": 7966,
+       "source": "Patchstack"
+      },
+      {
+       "date": "2025-12-31",
+       "value": 11334,
+       "source": "Patchstack"
+      }
+     ]
+    },
+    {
+     "id": "patch_median_days",
+     "name_ja": "パッチ適用までの中央値",
+     "name_en": "Median time-to-patch",
+     "kind": "constant",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "日",
+     "source": "セキュリティ業界統計 (記事参照)",
+     "threshold": null,
+     "note": "防御側の時定数。攻撃側(AI)は数時間。",
+     "article": {
+      "href": "/insights/mythos/",
+      "label": "Mythosが来た"
+     },
+     "series": [
+      {
+       "date": "2026-06-30",
+       "value": 70,
+       "source": "業界統計"
+      }
+     ]
+    },
+    {
+     "id": "swe_bench_frontier",
+     "name_ja": "フロンティアAIの SWE-bench スコア",
+     "name_en": "Frontier AI SWE-bench score",
+     "kind": "flow",
+     "acquisition": "manual",
+     "cadence": "event",
+     "unit": "%",
+     "source": "モデル各社の公表値",
+     "threshold": null,
+     "note": "コード修正能力の実測。世代ごとに更新。",
+     "article": {
+      "href": "/insights/mythos/",
+      "label": "Mythosが来た"
+     },
+     "series": [
+      {
+       "date": "2025-06-30",
+       "value": 80.8,
+       "source": "公表値"
+      },
+      {
+       "date": "2026-06-30",
+       "value": 93.9,
+       "source": "公表値"
+      }
+     ]
+    },
+    {
+     "id": "nvda_dc_share",
+     "name_ja": "NVIDIA 売上のデータセンター比率",
+     "name_en": "NVIDIA revenue from data center",
+     "kind": "constant",
+     "acquisition": "manual",
+     "cadence": "quarterly",
+     "unit": "%",
+     "source": "NVIDIA IR",
+     "threshold": null,
+     "note": "AIブームへの収益集中度。",
+     "article": {
+      "href": "/insights/nvidia/",
+      "label": "NVIDIAの崩壊"
+     },
+     "series": [
+      {
+       "date": "2026-01-31",
+       "value": 80,
+       "source": "NVIDIA IR"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "war_economics",
+   "name_ja": "戦争の経済構造",
+   "name_en": "War Economics",
+   "indicators": [
+    {
+     "id": "intercept_cost_ratio",
+     "name_ja": "迎撃コスト比 (Patriot 対 ドローン)",
+     "name_en": "Interception cost ratio",
+     "kind": "constant",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "倍",
+     "source": "公表単価から計算 (記事参照)",
+     "threshold": null,
+     "note": "1発400万ドル 対 数万ドル。防空経済の非対称。",
+     "article": {
+      "href": "/insights/drone-defense/",
+      "label": "ドローン＋AIと中堅国防衛"
+     },
+     "series": [
+      {
+       "date": "2026-06-30",
+       "value": 100,
+       "source": "公表単価"
+      }
+     ]
+    },
+    {
+     "id": "drone_share_strikes",
+     "name_ja": "戦場での攻撃のドローン比率 (ウクライナ)",
+     "name_en": "Share of strikes by drones (UA)",
+     "kind": "flow",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "%",
+     "source": "各種軍事分析 (記事参照)",
+     "threshold": null,
+     "note": "砲兵からドローンへの主役交代。",
+     "article": {
+      "href": "/insights/drone-defense/",
+      "label": "ドローン＋AIと中堅国防衛"
+     },
+     "series": [
+      {
+       "date": "2024-03-31",
+       "value": 10,
+       "source": "軍事分析"
+      },
+      {
+       "date": "2026-03-31",
+       "value": 70,
+       "source": "軍事分析"
+      }
+     ]
+    },
+    {
+     "id": "ua_defense_industry",
+     "name_ja": "ウクライナ防衛産業の規模",
+     "name_en": "Ukraine defense industry size",
+     "kind": "flow",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "億USD/年",
+     "source": "ウクライナ政府公表 (記事参照)",
+     "threshold": null,
+     "note": "3年で35倍。国内生産比率33〜34%。",
+     "article": {
+      "href": "/insights/drone-defense/",
+      "label": "ドローン＋AIと中堅国防衛"
+     },
+     "series": [
+      {
+       "date": "2022-12-31",
+       "value": 10,
+       "source": "政府公表"
+      },
+      {
+       "date": "2025-12-31",
+       "value": 350,
+       "source": "政府公表"
+      }
+     ]
+    },
+    {
+     "id": "ai_nav_module_price",
+     "name_ja": "AI自律航法モジュールの単価",
+     "name_en": "AI autonomous navigation module price",
+     "kind": "price",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "USD",
+     "source": "報道 (記事参照)",
+     "threshold": null,
+     "note": "命中率を10〜20%から70〜80%へ。$50の知能。",
+     "article": {
+      "href": "/insights/drone-defense/",
+      "label": "ドローン＋AIと中堅国防衛"
+     },
+     "series": [
+      {
+       "date": "2026-03-31",
+       "value": 50,
+       "source": "報道"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "health_society",
+   "name_ja": "医療と社会",
+   "name_en": "Health & Society",
+   "indicators": [
+    {
+     "id": "cuba_doctor_density",
+     "name_ja": "キューバの医師密度",
+     "name_en": "Cuba physician density",
+     "kind": "constant",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "人/千人",
+     "source": "WHO",
+     "threshold": null,
+     "note": "中南米平均の2倍以上。低GDP・高健康アウトカムの構造。",
+     "article": {
+      "href": "/insights/healthcare-fiscal/",
+      "label": "社会の再生"
+     },
+     "series": [
+      {
+       "date": "2025-12-31",
+       "value": 9,
+       "source": "WHO"
+      }
+     ]
+    },
+    {
+     "id": "cuba_infant_mortality",
+     "name_ja": "キューバの乳児死亡率",
+     "name_en": "Cuba infant mortality",
+     "kind": "flow",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "人/千出生",
+     "source": "キューバ保健省 / 報道",
+     "threshold": null,
+     "note": "燃料封鎖下での悪化。物理量が医療を規定する実例。",
+     "article": {
+      "href": "/insights/healthcare-fiscal/",
+      "label": "社会の再生"
+     },
+     "series": [
+      {
+       "date": "2018-12-31",
+       "value": 4.0,
+       "source": "保健省"
+      },
+      {
+       "date": "2025-12-31",
+       "value": 9.9,
+       "source": "報道"
+      }
+     ]
+    },
+    {
+     "id": "tokyo_commuters",
+     "name_ja": "東京圏のオフィス通勤人口",
+     "name_en": "Tokyo area office commuters",
+     "kind": "constant",
+     "acquisition": "manual",
+     "cadence": "annual",
+     "unit": "万人",
+     "source": "国勢調査等 (記事参照)",
+     "threshold": null,
+     "note": "リモートワーク以前に設計された都市構造の規模。",
+     "article": {
+      "href": "/insights/healthcare-fiscal/",
+      "label": "社会の再生"
+     },
+     "series": [
+      {
+       "date": "2025-12-31",
+       "value": 3600,
+       "source": "国勢調査等"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

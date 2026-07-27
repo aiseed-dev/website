@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- Apply saved theme immediately to avoid FOUC -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('aiseed-theme');
+          if (t === 'light' || t === 'dark') {
+            document.documentElement.setAttribute('data-theme', t);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9FLQ963JXM');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com">
+    <meta name="description" content="Insights — 構造分析の論旨を支える構造的な数値の一覧。依存率・偏在・長期トレンドを、単位・観測時点・出所・関連記事とともに提示する。主張も予測も載せない。">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://aiseed.dev/dashboard/structural/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="AI時代の暮らし">
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:title" content="構造指標ダッシュボード — Insights | aiseed.dev">
+    <meta property="og:description" content="構造分析の論旨を支える数値の一覧。依存率・偏在・長期トレンドを出所と関連記事つきで提示。結論は記事の側に、ここには数字だけ。">
+    <meta property="og:url" content="https://aiseed.dev/dashboard/structural/">
+    <title>構造指標ダッシュボード — Insights | aiseed.dev</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <style>
+        /* 記事リンク (このページ固有の最小追加) */
+        .card__article { margin: .5rem 0 0; font-size: .78rem; }
+        .card__article a { text-decoration: none; }
+        .card__article a:hover { text-decoration: underline; }
+    </style>
+</head>
+
+<body>
+    <header class="dash-header">
+        <div class="dash-header__inner">
+            <p class="dash-eyebrow"><a href="/">aiseed.dev</a> / <a href="/insights/">Insights — 構造分析</a></p>
+            <h1>構造指標ダッシュボード</h1>
+            <p class="dash-lede">
+                構造分析の論旨を支えている<strong>構造的な数値</strong>の一覧。
+                依存率・偏在・長期トレンドを、<strong>単位・観測時点・出所・関連記事</strong>とともに並べる。
+                <span class="dash-lede__assert">主張も予測も結論も載せない。</span>
+                結論は記事の側にあり、ここには数字だけを置く。
+                日次で動く価格・流量は<a href="../">物理量ダッシュボード</a>へ。
+            </p>
+            <button id="theme-toggle" class="dash-theme-toggle" type="button"
+                    aria-label="テーマ切り替え">◐</button>
+        </div>
+    </header>
+
+    <!-- 凡例: kind（種別）の色分け -->
+    <section class="dash-legend" aria-label="凡例">
+        <div class="dash-legend__inner" id="legend"></div>
+        <p class="dash-legend__note">
+            <strong>構造定数</strong>中心 ―
+            日次では動かないが、文明の前提を規定している数値。年次の改定で系列が育つ。
+        </p>
+    </section>
+
+    <main id="dashboard" class="dash-main" aria-live="polite">
+        <p class="dash-loading">読み込み中…</p>
+    </main>
+
+    <footer class="dash-footer">
+        <div class="dash-footer__inner">
+            <p>
+                仕様: <code>docs/plan/insights-dashboard-spec.md</code> v0.1 ―
+                値は Insights 各記事が本文で引用しているもの。ここで創作しない。
+            </p>
+            <p class="dash-footer__meta" id="generated-at"></p>
+            <p><a href="/insights/">← Insights — 構造分析へ</a> / <a href="../">物理量ダッシュボード</a></p>
+        </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,369 @@
+/* ============================================================
+   aiseed.dev 物理量ダッシュボード — 手書きの小さな 1 枚
+   kind 別に色分け（価格は数字＝控えめ / 流れは実体＝強調）。
+   仕様: docs/physical-dashboard-spec.md v0.1
+   ============================================================ */
+
+:root {
+  --bg:        #faf8f3;
+  --surface:   #ffffff;
+  --ink:       #2d2a24;
+  --ink-soft:  #6b6358;
+  --ink-faint: #9a9286;
+  --line:      rgba(0, 0, 0, 0.10);
+  --line-soft: rgba(0, 0, 0, 0.06);
+
+  /* kind 色: 価格=控えめ neutral、流れ=実体 green（強調） */
+  --c-price:    #5b6b7a;  /* スコアボード色 */
+  --c-flow:     #3f7a3a;  /* 実体色（強調） */
+  --c-clock:    #b5562a;  /* 期限・カウントダウン */
+  --c-stock:    #2f7d86;  /* 在庫 */
+  --c-constant: #8a8170;  /* 構造定数（ほぼ動かない） */
+
+  --font-serif: 'Zen Old Mincho', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN',
+               'Yu Gothic', 'Meiryo', sans-serif;
+  --font-num: 'SF Mono', 'Menlo', 'Consolas', ui-monospace, monospace;
+
+  --radius: 10px;
+  --shadow: 0 2px 14px rgba(0, 0, 0, 0.06);
+}
+
+:root[data-theme="dark"] {
+  --bg:        #1a1814;
+  --surface:   #24211b;
+  --ink:       #f0e5cf;
+  --ink-soft:  #c0b49a;
+  --ink-faint: #8a8068;
+  --line:      rgba(255, 255, 255, 0.12);
+  --line-soft: rgba(255, 255, 255, 0.07);
+
+  --c-price:    #93a6b6;
+  --c-flow:     #7fc274;
+  --c-clock:    #e0875a;
+  --c-stock:    #63c0c9;
+  --c-constant: #b3a98f;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg:        #1a1814;
+    --surface:   #24211b;
+    --ink:       #f0e5cf;
+    --ink-soft:  #c0b49a;
+    --ink-faint: #8a8068;
+    --line:      rgba(255, 255, 255, 0.12);
+    --line-soft: rgba(255, 255, 255, 0.07);
+    --c-price:    #93a6b6;
+    --c-flow:     #7fc274;
+    --c-clock:    #e0875a;
+    --c-stock:    #63c0c9;
+    --c-constant: #b3a98f;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--c-flow); }
+
+code {
+  font-family: var(--font-num);
+  font-size: 0.85em;
+  background: var(--line-soft);
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+}
+
+/* ---------- ヘッダー ---------- */
+.dash-header { border-bottom: 1px solid var(--line); }
+.dash-header__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 2.4rem 1.4rem 1.8rem;
+  position: relative;
+}
+.dash-eyebrow {
+  margin: 0 0 0.4rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-faint);
+}
+.dash-eyebrow a { color: var(--ink-faint); text-decoration: none; }
+.dash-eyebrow a:hover { color: var(--c-flow); }
+.dash-header h1 {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  margin: 0 0 0.8rem;
+  letter-spacing: 0.02em;
+}
+.dash-lede {
+  margin: 0;
+  max-width: 64ch;
+  color: var(--ink-soft);
+  font-size: 0.98rem;
+}
+.dash-lede strong { color: var(--ink); }
+.dash-lede__assert {
+  color: var(--c-clock);
+  font-weight: 600;
+}
+.dash-theme-toggle {
+  position: absolute;
+  top: 2.4rem;
+  right: 1.4rem;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.dash-theme-toggle:hover { color: var(--ink); border-color: var(--ink-faint); }
+
+/* ---------- 凡例 ---------- */
+.dash-legend {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 1rem 1.4rem;
+}
+.dash-legend__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.2rem;
+}
+.legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  background: var(--c-constant);
+}
+.dash-legend__note {
+  margin: 0.6rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ink-faint);
+}
+.dash-legend__note strong { color: var(--c-flow); }
+
+/* kind ごとの swatch / バッジ色 */
+.kind-price    .legend-swatch, .kind-price    > .kind-badge { background: var(--c-price); }
+.kind-flow     .legend-swatch, .kind-flow     > .kind-badge { background: var(--c-flow); }
+.kind-clock    .legend-swatch, .kind-clock    > .kind-badge { background: var(--c-clock); }
+.kind-stock    .legend-swatch, .kind-stock    > .kind-badge { background: var(--c-stock); }
+.kind-constant .legend-swatch, .kind-constant > .kind-badge { background: var(--c-constant); }
+
+/* ---------- メイン ---------- */
+.dash-main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0.5rem 1.4rem 3rem;
+}
+.dash-loading, .dash-error {
+  padding: 2rem 0;
+  color: var(--ink-soft);
+}
+.dash-error { color: var(--c-clock); }
+
+.chokepoint { margin: 2rem 0; }
+.chokepoint__head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.1rem;
+}
+.chokepoint__title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  margin: 0;
+}
+.chokepoint__en {
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.03em;
+}
+
+/* ---------- カードグリッド ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.9rem;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--c-constant);
+  border-radius: var(--radius);
+  padding: 0.9rem 1rem 1rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+/* 左帯の色 = kind。流れ（実体）は帯を太く強調。 */
+.card.kind-price    { border-left-color: var(--c-price); }
+.card.kind-flow     { border-left-color: var(--c-flow); border-left-width: 6px; }
+.card.kind-clock    { border-left-color: var(--c-clock); }
+.card.kind-stock    { border-left-color: var(--c-stock); }
+.card.kind-constant { border-left-color: var(--c-constant); border-left-style: dashed; }
+
+.card__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.card__name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+.card__badges {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.badge {
+  font-size: 0.68rem;
+  color: #fff;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+:root[data-theme="dark"] .badge { color: #1a1814; }
+
+.tag {
+  font-size: 0.64rem;
+  color: var(--ink-faint);
+  border: 1px solid var(--line);
+  padding: 0.02rem 0.4rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.acq-manual { color: var(--c-clock); border-color: var(--c-clock); }
+
+/* 値 */
+.card__value {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  margin-top: 0.1rem;
+}
+.card__num {
+  font-family: var(--font-num);
+  font-size: 1.7rem;
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.card.kind-flow .card__num { color: var(--c-flow); }
+.card.kind-clock .card__num { color: var(--c-clock); }
+.card__unit { font-size: 0.82rem; color: var(--ink-soft); }
+.card__pending {
+  font-size: 1.05rem;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+/* スパークライン */
+.card__spark { color: var(--ink-faint); height: 32px; }
+.sparkline.spark-up   { color: var(--c-flow); }
+.sparkline.spark-down { color: var(--c-clock); }
+
+/* ゲージ（時計） */
+.card__gauge { margin: 0.2rem 0; }
+.gauge-countdown {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3rem;
+}
+.gauge-num {
+  font-family: var(--font-num);
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--c-clock);
+  line-height: 1;
+}
+.gauge-unit { font-size: 0.9rem; color: var(--ink-soft); }
+.gauge-target {
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  margin-left: 0.3rem;
+}
+.gauge-countdown.is-overdue .gauge-num { color: var(--ink-faint); }
+.gauge-bar {
+  height: 8px;
+  background: var(--line-soft);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.gauge-bar__fill {
+  height: 100%;
+  background: var(--c-clock);
+  border-radius: 999px;
+}
+.gauge-depletion .gauge-target { display: block; margin: 0.3rem 0 0; }
+
+/* メタ（観測日・出所） */
+.card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.2rem 0.8rem;
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  margin-top: auto;
+  padding-top: 0.3rem;
+  border-top: 1px solid var(--line-soft);
+}
+.card__note {
+  font-size: 0.76rem;
+  color: var(--ink-soft);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ---------- フッター ---------- */
+.dash-footer {
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+.dash-footer__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 1.6rem 1.4rem 2.4rem;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+.dash-footer__inner p { margin: 0.3rem 0; }
+.dash-footer__meta { color: var(--ink-faint); font-size: 0.78rem; }
+.dash-footer a { color: var(--c-flow); }
+
+@media (max-width: 520px) {
+  .dash-header h1 { font-size: 1.6rem; }
+  .card-grid { grid-template-columns: 1fr; }
+}

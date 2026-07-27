@@ -1,0 +1,59 @@
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+.zed/*
+!.zed/tasks.json
+!.zed/settings.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+.env
+*.egg-info/
+dist/
+/build/
+
+# Node (if used for tooling)
+node_modules/
+npm-debug.log*
+
+# Logs
+*.log
+
+# ダッシュボードの append-only SQLite ストア（series は build で再生成可能）
+tools/dashboard/data/*.sqlite3
+
+# ビルド成果物（tools/build_article.py, scripts/build.py が生成）
+html/insights/
+html/en/insights/
+html/blog/
+html/en/blog/
+html/claude-debian/
+html/en/claude-debian/
+html/ai-native-ways/
+html/en/ai-native-ways/
+html/fable/
+html/en/fable/
+html/vegitage/*
+!html/vegitage/italian
+vegitage-data/web/site/
+html/creativeweb
+
+docs/memo
+mirror
+mirror2
+.~lock.*#

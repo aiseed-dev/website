@@ -1,0 +1,29 @@
+graph TB
+  subgraph "ユーザー"
+    U[業務担当]
+  end
+
+  subgraph "フロント"
+    W[Web ブラウザ<br/>HTML+CSS+JS]
+  end
+
+  subgraph "バックエンド"
+    API[FastAPI<br/>Python]
+    Q[(タスクキュー<br/>Redis)]
+    DB[(PostgreSQL)]
+  end
+
+  subgraph "AI レイヤ"
+    C[Claude API]
+  end
+
+  U --> W
+  W -->|JSON| API
+  API --> DB
+  API -->|長時間処理| Q
+  Q -->|要約・分類・翻訳| C
+  C -->|結果| Q
+  Q --> API
+
+  style C fill:#c8442a,stroke:#fff,color:#fff
+  style API fill:#2F5F8F,stroke:#fff,color:#fff

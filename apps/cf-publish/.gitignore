@@ -1,0 +1,19 @@
+# Rust
+rust/target/
+
+# Python / Flet / PyPI
+flet/.venv/
+pypi/.venv/
+pypi/dist/
+**/__pycache__/
+**/*.egg-info/
+*.pyc
+
+# Flutter / Dart
+flutter/.dart_tool/
+flutter/build/
+flutter/.flutter-plugins
+flutter/.flutter-plugins-dependencies
+
+# OS
+.DS_Store

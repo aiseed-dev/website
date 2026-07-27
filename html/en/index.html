@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Apply saved theme immediately to avoid FOUC -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('aiseed-theme');
+          if (t === 'light' || t === 'dark') {
+            document.documentElement.setAttribute('data-theme', t);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9FLQ963JXM');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+    <meta name="description" content="AI changes how we work, farm, and live. Fossil resources, food, energy, AI, healthcare, pensions — every structure connects to one conclusion.">
+    <link rel="canonical" href="https://aiseed.dev/en/">
+    <link rel="alternate" hreflang="ja" href="https://aiseed.dev/">
+    <link rel="alternate" hreflang="en" href="https://aiseed.dev/en/">
+    <link rel="alternate" hreflang="x-default" href="https://aiseed.dev/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Living in the AI Era">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="ja_JP">
+    <meta property="og:title" content="Living in the AI Era | aiseed.dev">
+    <meta property="og:description" content="AI changes how we work, farm, and live. Fossil resources, food, energy, AI, healthcare, pensions — every structure connects to one conclusion.">
+    <meta property="og:url" content="https://aiseed.dev/en/">
+    <meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Living in the AI Era | aiseed.dev">
+    <meta name="twitter:description" content="AI changes how we work, farm, and live. Fossil resources, food, energy, AI, healthcare, pensions — every structure connects to one conclusion.">
+    <meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+    <title>Living in the AI Era | aiseed.dev</title>
+    <link rel="stylesheet" href="../css/style.css?v=0b5d818e">
+    <style>
+        .series-header {
+            text-align: center;
+            padding: 3rem 0 1rem;
+        }
+        .series-header h1 {
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 1.8rem;
+            color: var(--earth-dark);
+            margin-bottom: 0.5rem;
+        }
+        .series-header .lang-switch {
+            font-size: 0.85rem;
+            color: var(--moss-green);
+        }
+        .article-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        .article-link:hover .activity-item {
+            background: var(--sand-light);
+        }
+        .article-link .activity-item {
+            transition: background 0.2s;
+            border-radius: 4px;
+            padding: 1rem 1.5rem;
+        }
+        .latest-badge {
+            display: inline-block;
+            background: var(--moss-green);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 3px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+        .feature-card {
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            background: var(--sand-light, #f8f6f0);
+            border: 1px solid var(--root-tan, #e0ddd8);
+            border-left: 4px solid var(--moss-green, #4a7c59);
+            border-radius: 6px;
+            padding: 1.75rem 1.75rem 1.5rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .feature-card:hover {
+            background: color-mix(in srgb, var(--sand-light) 92%, var(--earth-dark));
+            transform: translateY(-2px);
+        }
+        .feature-head {
+            display: flex;
+            align-items: center;
+            gap: 0.9rem;
+            margin-bottom: 0.4rem;
+        }
+        .feature-icon {
+            width: 40px;
+            height: 40px;
+            color: var(--moss-green, #4a7c59);
+            flex-shrink: 0;
+        }
+        .feature-icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+        .feature-card h3 {
+            font-family: 'Zen Old Mincho', serif;
+            font-size: 1.2rem;
+            color: var(--earth-dark, #2c2c2c);
+            margin: 0;
+            line-height: 1.35;
+        }
+        .feature-card .feature-sub {
+            font-size: 0.85rem;
+            color: var(--moss-green, #4a7c59);
+            margin: 0 0 0.75rem;
+            font-style: italic;
+        }
+        .feature-card p {
+            font-size: 0.92rem;
+            color: var(--soil-rich, #5a5a5a);
+            margin: 0 0 0.75rem;
+            line-height: 1.7;
+        }
+        .feature-card .feature-more {
+            font-size: 0.85rem;
+            color: var(--moss-green, #4a7c59);
+            margin-top: auto;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+        @media (max-width: 760px) {
+            .feature-grid { grid-template-columns: 1fr; }
+            .feature-card { padding: 1.25rem; }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="/en/" class="logo">
+                Living in the AI Era
+                <span>aiseed.dev</span>
+            </a>
+            <nav class="nav">
+                <a href="/en/" class="active">Home</a>
+                <div class="nav-group">
+                    <button type="button" class="nav-parent" aria-haspopup="true" aria-expanded="false">Articles<span class="nav-caret" aria-hidden="true">▾</span></button>
+                    <div class="nav-submenu" role="menu">
+                        <a href="/en/insights/" role="menuitem">Structural Analysis</a>
+                        <a href="/en/ai-native-ways/" role="menuitem">AI-Native Ways of Working</a>
+                        <a href="/en/claude-debian/" role="menuitem">Learning Debian with Claude</a>
+                        <a href="/en/phosphorus-and-farming/" role="menuitem">Phosphorus Depletion and Natural Farming</a>
+                        <a href="/fable/" role="menuitem">Fable 5 Is Back <small>(JA)</small></a>
+                    </div>
+                </div>
+                <a href="/en/blog/">Blog</a>
+                <a href="/en/natural-farming/">Natural Farming</a>
+                <a href="/en/light-farming/">Light Farming</a>
+                <a href="/vegitage/italian/">Italian Vegetable Dictionary</a>
+                <a href="/gallery/">Field Notes</a>
+                <a href="/" class="lang-switch" hreflang="ja" aria-label="日本語版を表示">🌐 日本語</a>
+                <button type="button" class="theme-toggle" aria-label="Switch theme" title="Theme (Light / Dark)">
+                    <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+                    <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+                </button>
+            </nav>
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Series & Dictionary Cards -->
+    <section class="section" style="padding-top: 8rem; padding-bottom: 1rem;">
+        <div class="container-narrow" style="max-width: 980px;">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h1 style="font-family: 'Zen Old Mincho', serif; font-size: 1.8rem; color: var(--earth-dark); margin-bottom: 0.5rem;">Articles & Dictionary</h1>
+                <p style="color: var(--soil-rich);">Five article series, plus a dictionary of traditional vegetables</p>
+            </div>
+            <div class="feature-grid">
+
+                <a href="/fable/" class="feature-card">
+                    <div class="feature-head">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48"><path d="M38 8 C26 10 16 20 12 34 L10 40 L16 38 C30 34 38 22 40 10 Z"/><line x1="13" y1="37" x2="35" y2="15"/></svg>
+                        </div>
+                        <h3>Fable 5 Is Back — 7 installments + a column + a practical addendum <small>(JA)</small></h3>
+                    </div>
+                    <p class="feature-sub">Not a clever chat AI — is that job worth handing to Fable 5?</p>
+                    <p>A practical guide to Anthropic's top-tier model: cost structure, long-context reading, delegating multi-step work, coding, opening closed tooling onto OSS, and the safety classifier — working standards for routing each job to Sonnet, Opus, or Fable 5.</p>
+                    <span class="feature-more">Start with installment 1 →</span>
+                </a>
+
+                <a href="/en/insights/" class="feature-card">
+                    <div class="feature-head">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48"><circle cx="24" cy="8" r="3.5"/><circle cx="8" cy="24" r="3.5"/><circle cx="40" cy="24" r="3.5"/><circle cx="16" cy="40" r="3.5"/><circle cx="32" cy="40" r="3.5"/><line x1="24" y1="11.5" x2="11" y2="22"/><line x1="24" y1="11.5" x2="37" y2="22"/><line x1="11" y1="27" x2="15" y2="36.5"/><line x1="37" y1="27" x2="33" y2="36.5"/><line x1="19" y1="40" x2="29" y2="40"/></svg>
+                        </div>
+                        <h3>Structural Analysis — 27 Chapters</h3>
+                    </div>
+                    <p class="feature-sub">Insights — every structure connects to one conclusion</p>
+                    <p>Climate change, fossil resources, the Mythos era, enterprise IT taxes, drone warfare, healthcare and pensions, regulation redesign — AI changes how we work, farm, and live; this series unpacks the structure beneath.</p>
+                    <span class="feature-more">Read 27 chapters →</span>
+                </a>
+
+                <a href="/en/ai-native-ways/" class="feature-card">
+                    <div class="feature-head">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48"><polyline points="14,16 6,24 14,32"/><polyline points="34,16 42,24 34,32"/><line x1="28" y1="12" x2="20" y2="36"/></svg>
+                        </div>
+                        <h3>AI-Native Ways of Working — 11 Chapters + Examples</h3>
+                    </div>
+                    <p class="feature-sub">Tools for the free person of the AI era</p>
+                    <p>Office for paperwork, Java/C# for business systems — but AI runs on Python and text. Markdown, JSON, Mermaid, Python, Linux — practical practices for keeping AI as a colleague. Includes hands-on examples with code and output.</p>
+                    <span class="feature-more">Start with the prologue →</span>
+                </a>
+
+                <a href="/en/claude-debian/" class="feature-card">
+                    <div class="feature-head">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48"><path d="M6 10 L24 14 L42 10 L42 38 L24 42 L6 38 Z"/><line x1="24" y1="14" x2="24" y2="42"/><path d="M11 17 L19 18.5"/><path d="M11 23 L19 24.5"/><path d="M11 29 L19 30.5"/><path d="M29 18.5 L37 17"/><path d="M29 24.5 L37 23"/></svg>
+                        </div>
+                        <h3>Learning Debian with Claude — 24 Chapters</h3>
+                    </div>
+                    <p class="feature-sub">A textbook you dialogue with, not just read</p>
+                    <p>A new kind of textbook you read with Claude beside you. Learn the migration to Debian through dialogue, tailored to your own situation. At the end of each chapter, ask Claude "given what I've read, what should I do."</p>
+                    <span class="feature-more">Start from the prologue →</span>
+                </a>
+
+                <a href="/en/phosphorus-and-farming/" class="feature-card">
+                    <div class="feature-head">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48"><path d="M24 6 C18 14 12 18 12 28 C12 36 18 42 24 42 C30 42 36 36 36 28 C36 18 30 14 24 6 Z"/><path d="M24 22 L24 42"/><path d="M16 30 L24 36 L32 30"/></svg>
+                        </div>
+                        <h3>Phosphorus Depletion and Natural Farming — 10 Chapters</h3>
+                    </div>
+                    <p class="feature-sub">When phosphate fertilizer stops coming — economics decides the farming method</p>
+                    <p>Phosphate fertilizer supply is contracting through three routes at once. Conventional agriculture's economics break down; the only viable path is farming that lets soil microbes take over the work. We track this structurally using World Bank, USDA, and MAFF primary data. Includes Cuba's "Special Period" as the world's only nationwide case study of fuel-and-fertilizer collapse.</p>
+                    <span class="feature-more">Start with the prologue →</span>
+                </a>
+
+                <a href="/vegitage/italian/" class="feature-card">
+                    <div class="feature-head">
+                        <div class="feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 48 48"><path d="M24 42 C24 28, 14 22, 8 22 C8 30, 14 38, 24 42 Z"/><path d="M24 42 C24 24, 32 16, 40 14 C40 24, 34 36, 24 42 Z"/><line x1="24" y1="42" x2="24" y2="20"/></svg>
+                        </div>
+                        <h3>Italian Vegetable Dictionary — Vegitage</h3>
+                    </div>
+                    <p class="feature-sub">Le Verdure Italiane — Mediterranean bounty and the stories of its food culture</p>
+                    <p>From DOP and IGP certified varieties to regional landraces, a structured database covering the history, cultivation, and cuisine of 69 traditional Italian vegetables — built with AI research agents. (Currently in Japanese.)</p>
+                    <span class="feature-more">Browse the dictionary →</span>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Blog Posts -->
+    <section class="section" style="padding-top: 1rem; padding-bottom: 2rem;">
+        <div class="container-narrow" style="max-width: 980px;">
+            <div style="text-align: center; margin-bottom: 1.5rem;">
+                <h2 style="font-family: 'Zen Old Mincho', serif; font-size: 1.4rem; color: var(--earth-dark);">Latest Blog Posts</h2>
+            </div>
+            <div class="activity-list">
+                <!-- LATEST_BLOG_POSTS_START -->
+
+                <a href="/en/blog/constraint-moved/" class="article-link">
+                    <div class="activity-item">
+                        <div class="activity-number" style="font-size: 0.7rem;">2026.07.28</div>
+                        <div class="activity-content">
+                            <h3>Scoring the Fertilizer-Crisis Forecast — The Constraint Did Not Vanish, It Moved to Nitrogen</h3>
+                            <p>In April this site wrote that inventories would run out in autumn 2026 and phosphate fertilizer would be effectively unobtainable in 2027. The pathway was the sulfur trap — close Hormuz, sulfur stops, sulfuric acid cannot be made, phosphate cannot be made. Three months on, here is the scorecard against the facts. Sulfur really did stop. Middle East sulfur was $815–820 a tonne at the end of May, five to eight times the historical norm; Russia banned exports, China cut sulfuric acid exports to a quarter, and phosphate production actually halted in Egypt and Brazil. The pathway was right. The conclusion was wrong. In Zen-Noh's autumn pricing the largest increase was not phosphate but urea — 14.5% against 4.9%, and the order of scarcity was inverted. Qatar had suspended urea, ammonia and sulfur together, and Iran had halted ammonia. The same Hormuz shock severed both sulfur and gas. This site traced the sulfur-to-phosphate pathway carefully and took the gas-to-ammonia-to-nitrogen pathway lightly. And the irony: nitrogen, which had successfully diversified away from China from 27% to 3%, was the one that got hit. Change the counterparty and you have changed nothing if the resource behind them is the same Middle Eastern gas. Diversification meant changing the resource, not the counterparty. The constraint has not disappeared. It moved.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/en/blog/large-proves-small/" class="article-link">
+                    <div class="activity-item">
+                        <div class="activity-number" style="font-size: 0.7rem;">2026.07.28</div>
+                        <div class="activity-content">
+                            <h3>If Large-Scale Works, Small-Scale Is Immediate — Converting the Million-Line, Two-Week Proof to Fifty Thousand Lines</h3>
+                            <p>The previous piece cited the Bun port reported on Anthropic's engineering blog — one million lines of Zig to Rust in under two weeks, 100% of the existing tests passing, roughly $165,000 in API costs — as proof that distillation runs at industrial scale. This piece does the conversion. The same article carries a second example — an individual moved a 165,000-line Python project to TypeScript over a single weekend. The custom portion of a small company's business system is usually a few thousand to a few tens of thousands of lines — an order of magnitude below that proof. Divide by line count and the cost lands in the low thousands of dollars and the timeline in a weekend. The procedure is the same, and the difference is exactly one: Bun had a test suite, and business systems usually do not. So the first job is extracting the tests — the distillation of the previous piece. Use the running system as the teacher, copy its behavior, put scripts up as the referee, and work through a mechanical queue. A lighter target still is the website, whose behavior is fully exposed from the start — extracting the tests takes a single crawl, and going static removes the maintenance fee and the attack surface along with it. The wall the large-scale proof knocked down was not technical. It was the assumption that "this is beyond us."</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/en/blog/distilling-business-systems/" class="article-link">
+                    <div class="activity-item">
+                        <div class="activity-number" style="font-size: 0.7rem;">2026.07.27</div>
+                        <div class="activity-content">
+                            <h3>Distillation Is Not Only About AI — AI Builds the Business System</h3>
+                            <p>The word "distillation" is circulating around Kimi K3 — the technique of putting questions to an expensive model, collecting the answers, and using those input-output pairs to train a cheap model with the same behavior. The internals are not needed; the behavior is enough. The same structure applies directly to business systems, because a test is nothing but putting a question to a system and recording the answer. Once the behavior is in your hands, AI can build another implementation that does the same thing. What is copied is not the vendor's code but how your own business ought to behave — which was yours to begin with. Routine maintenance reduces to security auditing; improvement requires only a reason and test data, and most of the test data the model itself can generate. The reason for an improvement can only come from you, and AI writes the implementation. There is no longer any need to outsource: judgment stays with the company, and the work can be left to AI.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/en/blog/hegel-july-2026/" class="article-link">
+                    <div class="activity-item">
+                        <div class="activity-number" style="font-size: 0.7rem;">2026.07.27</div>
+                        <div class="activity-content">
+                            <h3>Reading July 2026 Through Hegel — The Master Who Bought, the Slave Who Built, and the Cunning of Reason</h3>
+                            <p>From the Kimi K3 announcement on 16 July 2026, through the letter "Open Weights and American AI Leadership" on the 24th, to the weight release on the 27th, this site wrote eight articles about eleven days. Yang Zhilin's cost-benefit calculus, the AI industry's tower of debt, Microsoft's earnings, three war fronts, the end of IT as an industry, the price of attack, the practice of containment, and the line of the signatures. This piece rereads all of them through four Hegelian concepts. Nadella, who bought the frontier model, and Yang Zhilin, who built one and opened it, are the modern casting of the master-slave dialectic. To sell intelligence you must expose its outputs, and exposed outputs always become teaching material — the master's power is copied the moment it is exercised. A world where attack costs zero is the completed form of alienation, domination by one's own creations, and the practice of containment is the recovery from it. That fifty signatures fell along the line of the P&L is Hegel's own thesis — history advances on interests and passions, not ideals. Trump's threatened restriction produced the largest open-ecosystem coalition in history within three days; Yang's cost-benefit calculus completes the commoditization of capability. The cunning of reason is using everyone's self-interest to close the era of concentrated judgment. What remains as synthesis is the laboring master — the free person who keeps touching reality and never hands over judgment.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/en/blog/open-weights-dilemma/" class="article-link">
+                    <div class="activity-item">
+                        <div class="activity-number" style="font-size: 0.7rem;">2026.07.27</div>
+                        <div class="activity-content">
+                            <h3>The Open-Weight Dilemma — Fifty Signatures, and the Two Companies Missing</h3>
+                            <p>On 24 July 2026 a letter titled "Open Weights and American AI Leadership," hosted by NVIDIA, was published. As Washington weighs restrictions on Chinese AI models, the letter urges policymakers not to impose broad restrictions on open-weight models and to punish specific bad actors instead. Signatures doubled from about 25 on day one to 50 within a day, with OpenAI and Google joining late. The major names still missing are Anthropic and Amazon. This piece lays out the facts in sequence and then places two inferences. First, restrict and the substrate of American AI development breaks — the weights publish outside the border, so what a restriction removes is not the world's open weights but the American developers who can touch them. Second, leave them free and every model below the frontier loses its price — in a world where the frontier of a few months ago is opened for free, the only thing left to sell is the gap to the frontier. And that consequence makes no exception for Anthropic — even the winner of the frontier race is left selling an ever-shrinking gap, and large profits end. Either way, the middle product — a reasonably good closed model — does not survive; value moves to the two ends, the side that runs models and the frontier gap. The fifty signatories stand at the ends; the two non-signers sell the gap. The line of the split is the line of the P&L.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- LATEST_BLOG_POSTS_END -->
+            </div>
+            <div style="text-align: center; margin-top: 1rem;">
+                <a href="/en/blog/" style="color: var(--moss-green); font-size: 0.9rem;">View all blog posts →</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>Living in the AI Era</h3>
+                <p>AI changes how we work, farm, and live. Fossil resources, food, energy, AI, healthcare, pensions — every structure connects to one conclusion.</p>
+            </div>
+            <div class="footer-nav">
+                <h4>Pages</h4>
+                <ul>
+                    <li><a href="/en/">Home</a></li>
+                    <li><a href="/en/insights/">Structural Analysis</a></li>
+                    <li><a href="/en/ai-native-ways/">AI-Native Ways of Working</a></li>
+                    <li><a href="/en/claude-debian/">Learning Debian with Claude</a></li>
+                    <li><a href="/en/phosphorus-and-farming/">Phosphorus Depletion and Natural Farming</a></li>
+                    <li><a href="/fable/">Fable 5 Is Back <small>(JA)</small></a></li>
+                    <li><a href="/en/blog/">Blog</a></li>
+                    <li><a href="/en/natural-farming/">Natural Farming</a></li>
+                    <li><a href="/en/light-farming/">Light Farming</a></li>
+                    <li><a href="/en/about/">Our Approach</a></li>
+                    <li><a href="/gallery/">Field Notes</a></li>
+                    <li><a href="/en/privacy/">Privacy</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Community</h4>
+                <ul>
+                    <li><a href="https://www.facebook.com/groups/vegitage" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: -2px; margin-right: 4px;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>AISeed — Biodiversity, Food &amp; AI in Daily Life</a></li>
+                    <li><a href="https://www.amazingcarbon.com/" target="_blank" rel="noopener noreferrer">Amazing Carbon</a></li>
+                    <li><a href="https://github.com/aiseed-dev/website" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                    <li><a href="/">日本語版</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">&copy; 2026 aiseed.dev — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">CC BY 4.0</a></p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js?v=0b5d818e"></script>
+</body>
+
+</html>

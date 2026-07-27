@@ -1,0 +1,10 @@
+   1047 /
+    604 /static/style.css
+    418 /static/main.js
+    387 /about
+    362 /.env
+    348 /config.php
+    343 /admin/login.php
+    342 /wp-login.php
+    324 /admin
+    294 /login

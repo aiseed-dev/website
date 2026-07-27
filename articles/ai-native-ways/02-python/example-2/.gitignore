@@ -1,0 +1,9 @@
+.stamp
+src/.stamp
+# 入力 100 枚は大きいので git から除外。`make` で再生成可能。
+src/*.jpg
+# 出力もすべてコミットすると重いので、リサイズ済みとサムネイル
+# だけ少数サンプルをコミット(out/sample/)。
+out/resized/
+out/watermarked/
+out/thumbs/

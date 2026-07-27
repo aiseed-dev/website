@@ -1,0 +1,99 @@
+/* 名刺シート (A4 に 10 枚 2 × 5 タイル) ── 印刷用 CSS.
+ *
+ * Elecom MT-JM 系などの「両面マルチカード A4 10 面」用紙レイアウトに
+ * 合わせている (上下マージン 11mm、左右マージン 14mm、カード間隙 0mm)。
+ * 専用紙でなく普通紙に印刷してカッターで切るのにも使える。
+ *
+ * 個別カードの色やフォントは business-card.css と統一。
+ */
+
+@page {
+    size: A4;
+    margin: 0;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background: white;
+}
+
+.sheet {
+    width: 210mm;
+    height: 297mm;
+    margin: 0 auto;
+    padding: 11mm 14mm;
+    display: grid;
+    grid-template-columns: repeat(2, 91mm);
+    grid-template-rows: repeat(5, 55mm);
+    gap: 0;
+}
+
+.card {
+    width: 91mm;
+    height: 55mm;
+    background: white;
+    /* カット用ガイド線 (印刷で見えるか見えないかぐらいの薄さ) */
+    outline: 0.2pt solid #cccccc;
+    outline-offset: -0.1pt;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    padding: 8mm;
+    display: flex;
+    flex-direction: column;
+    color: #1a1a1a;
+    font-family: "Hiragino Mincho ProN", "游明朝", "Yu Mincho",
+                 "Noto Serif CJK JP", "Noto Serif JP", serif;
+}
+
+.name-ja {
+    font-size: 14pt;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    line-height: 1;
+}
+
+.name-en {
+    font-size: 9pt;
+    color: #6b665a;
+    margin-top: 1.5mm;
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+    letter-spacing: 0.02em;
+}
+
+.title {
+    font-size: 9pt;
+    color: #c8442a;
+    margin-top: 4mm;
+    font-family: "Hiragino Sans", "游ゴシック", "Yu Gothic",
+                 "Noto Sans CJK JP", "Noto Sans JP", sans-serif;
+    letter-spacing: 0.05em;
+}
+
+.rule {
+    width: 16mm;
+    height: 0.6pt;
+    background: #c8442a;
+    margin-top: auto;
+    margin-bottom: 4mm;
+}
+
+.contact {
+    font-family: Helvetica, "Helvetica Neue", Arial, sans-serif;
+    font-size: 9pt;
+    line-height: 1.6;
+}
+
+.email { color: #1a1a1a; }
+.url   { color: #6b665a; }
+
+@media print {
+    /* 印刷時、ブラウザがヘッダー・フッターを入れないように
+       (ブラウザ側の印刷設定で「ヘッダーとフッター」をオフにする
+       のと同等の効果を狙う) */
+}

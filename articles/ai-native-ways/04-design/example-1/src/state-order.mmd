@@ -1,0 +1,14 @@
+stateDiagram-v2
+  [*] --> Draft : 顧客が入力中
+  Draft --> Submitted : 確定ボタン
+  Submitted --> Paid : 入金確認
+  Submitted --> Cancelled : キャンセル
+  Paid --> Shipped : 出荷
+  Shipped --> Delivered : 配送完了
+  Delivered --> [*]
+  Cancelled --> [*]
+
+  note right of Submitted
+    ここで Claude が
+    住所を正規化
+  end note

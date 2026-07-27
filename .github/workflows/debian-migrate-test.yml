@@ -1,0 +1,45 @@
+name: debian-migrate / test
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/debian-migrate/**"
+      - ".github/workflows/debian-migrate-test.yml"
+  pull_request:
+    paths:
+      - "apps/debian-migrate/**"
+      - ".github/workflows/debian-migrate-test.yml"
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: pytest (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+
+      - name: Set up Python
+        run: uv python install 3.11
+
+      - name: Sync deps
+        working-directory: apps/debian-migrate
+        run: uv sync
+
+      - name: Run tests
+        working-directory: apps/debian-migrate
+        run: uv run pytest -q
+
+      - name: Smoke import
+        working-directory: apps/debian-migrate
+        run: |
+          uv run python -c "import debian_migrate.app; import debian_migrate.main; print('imports ok')"

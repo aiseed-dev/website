@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お知らせ — 山田農園</title>
+<style>
+:root { --ink: #1a1a1a; --paper: #f4f1ea; --accent: #2f5f3f; --rule: #d4cdb8; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: "Hiragino Mincho ProN", "游明朝", "Noto Serif CJK JP", serif;
+  background: var(--paper); color: var(--ink);
+  line-height: 1.85; max-width: 720px; padding: 32px 24px; margin: 0 auto;
+}
+h1 { font-size: 32px; border-bottom: 3px double var(--ink); padding-bottom: 12px; margin-bottom: 24px; }
+h2 { font-size: 22px; border-left: 4px solid var(--accent); padding-left: 12px; margin: 32px 0 16px; }
+h3 { font-size: 17px; margin: 24px 0 10px; color: var(--accent); }
+p, ul, ol, table { margin-bottom: 18px; }
+ul, ol { padding-left: 1.5em; }
+table { width: 100%; border-collapse: collapse; }
+th, td { border: 1px solid var(--rule); padding: 8px 12px; text-align: left; }
+th { background: #ebe6d8; }
+code { font-family: ui-monospace, monospace; background: #ebe6d8; padding: 1px 5px; border-radius: 2px; font-size: 0.9em; }
+a { color: var(--accent); }
+nav { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--rule); font-size: 13px; }
+.mermaid { text-align: center; margin: 28px 0; }
+</style>
+</head>
+<body>
+<h1>お知らせ</h1>
+<h2>2026-04-25 — トマトの予約受付を開始しました</h2>
+<p>今年のトマトは 6 月初旬から出荷予定です。
+予約は 5 月末まで受付けます。</p>
+<h2>2026-04-10 — 春キャベツの出荷を始めました</h2>
+<p>例年より柔らかく仕上がっています。</p>
+<h2>2026-03-15 — Web サイトを公開しました</h2>
+<p>このサイトは Markdown と最小の Python ビルドで作っています。
+仕組みについては <a href="shipping.html">配送についての解説</a> もご覧ください。</p>
+<p><a href="index.html">トップに戻る</a></p>
+
+<nav>© 2026 山田農園 / Markdown + Python ビルド</nav>
+<script type="module">
+  import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true, theme: "default" });
+</script>
+</body>
+</html>

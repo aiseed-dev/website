@@ -1,0 +1,48 @@
+{
+  "files": 100,
+  "parsed_ok": 100,
+  "elapsed_seconds": 1.025,
+  "grand_total_yen": 112714129,
+  "top_customers": [
+    {
+      "customer": "清水運送",
+      "total": 10112216
+    },
+    {
+      "customer": "吉田出版",
+      "total": 7710720
+    },
+    {
+      "customer": "木村電機",
+      "total": 7410206
+    },
+    {
+      "customer": "森精密",
+      "total": 7213563
+    },
+    {
+      "customer": "加藤建設",
+      "total": 7078098
+    },
+    {
+      "customer": "高橋食品",
+      "total": 7072101
+    },
+    {
+      "customer": "斎藤運輸",
+      "total": 6917039
+    },
+    {
+      "customer": "小林技研",
+      "total": 6838507
+    },
+    {
+      "customer": "田中株式会社",
+      "total": 6583454
+    },
+    {
+      "customer": "山田農園",
+      "total": 5829126
+    }
+  ]
+}

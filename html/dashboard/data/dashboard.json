@@ -1,0 +1,490 @@
+{
+  "generated_at": "2026-06-05T08:00:33+00:00",
+  "spec": "docs/physical-dashboard-spec.md v0.1",
+  "chokepoints": [
+    {
+      "id": "hormuz_crude",
+      "name_ja": "ホルムズ / 原油",
+      "name_en": "Hormuz / Crude",
+      "indicators": [
+        {
+          "id": "brent",
+          "name_ja": "ブレント価格",
+          "name_en": "Brent price",
+          "chokepoint": "hormuz_crude",
+          "kind": "price",
+          "acquisition": "auto",
+          "cadence": "daily",
+          "unit": "USD/bbl",
+          "source": "ICE / 商品価格API",
+          "note": "世界需給が決める下流の読み取り値。",
+          "threshold": null,
+          "series": []
+        },
+        {
+          "id": "urals",
+          "name_ja": "ウラル価格",
+          "name_en": "Urals price",
+          "chokepoint": "hormuz_crude",
+          "kind": "price",
+          "acquisition": "auto",
+          "cadence": "daily",
+          "unit": "USD/bbl",
+          "source": "oilpriceapi / CREA",
+          "note": "ロシア産原油の実勢価格。",
+          "threshold": null,
+          "series": []
+        },
+        {
+          "id": "urals_brent_spread",
+          "name_ja": "ウラル–ブレント割引",
+          "name_en": "Urals-Brent discount",
+          "chokepoint": "hormuz_crude",
+          "kind": "flow",
+          "acquisition": "derived",
+          "cadence": "daily",
+          "unit": "USD/bbl",
+          "source": "（計算: brent − urals）",
+          "note": "流れの実現率（1-割引）。価格上昇を相殺する側。",
+          "threshold": null,
+          "series": [
+            {
+              "date": "2026-02-28",
+              "value": 12.6,
+              "source": "CREA"
+            }
+          ]
+        },
+        {
+          "id": "hormuz_transit_status",
+          "name_ja": "ホルムズ通航状況",
+          "name_en": "Hormuz transit status",
+          "chokepoint": "hormuz_crude",
+          "kind": "flow",
+          "acquisition": "manual",
+          "cadence": "event",
+          "unit": "状態（開/制限）",
+          "source": "海事筋",
+          "note": "通航の物理状態。出所が現れ次第 fetcher に昇格。",
+          "threshold": null,
+          "series": []
+        },
+        {
+          "id": "hormuz_transit_share",
+          "name_ja": "ホルムズ通過比率（世界海上原油）",
+          "name_en": "Hormuz share of seaborne crude",
+          "chokepoint": "hormuz_crude",
+          "kind": "constant",
+          "acquisition": "manual",
+          "cadence": "event",
+          "unit": "%",
+          "source": "一般統計",
+          "note": "構造定数（~20–25%）。ほぼ動かない事実。",
+          "threshold": null,
+          "series": [
+            {
+              "date": "2026-01-01",
+              "value": 22,
+              "source": "一般統計（~20–25%）"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "russia_oil_flow",
+      "name_ja": "ロシア石油の流れ",
+      "name_en": "Russian oil flow",
+      "indicators": [
+        {
+          "id": "russia_seaborne_crude_exports",
+          "name_ja": "海上原油輸出量",
+          "name_en": "Seaborne crude exports",
+          "chokepoint": "russia_oil_flow",
+          "kind": "flow",
+          "acquisition": "auto",
+          "cadence": "monthly",
+          "unit": "mb/d",
+          "source": "CREA",
+          "note": "制御が行使される量の層。",
+          "threshold": null,
+          "series": []
+        },
+        {
+          "id": "russia_shadow_fleet_share",
+          "name_ja": "制裁影の船団比率",
+          "name_en": "Shadow fleet share",
+          "chokepoint": "russia_oil_flow",
+          "kind": "flow",
+          "acquisition": "auto",
+          "cadence": "monthly",
+          "unit": "%",
+          "source": "CREA",
+          "note": "制裁回避の経路比率。",
+          "threshold": null,
+          "series": []
+        },
+        {
+          "id": "russia_false_flag_vessels",
+          "name_ja": "偽旗船隻数",
+          "name_en": "False-flag vessels",
+          "chokepoint": "russia_oil_flow",
+          "kind": "flow",
+          "acquisition": "auto",
+          "cadence": "monthly",
+          "unit": "隻",
+          "source": "CREA",
+          "note": "経路の実体。",
+          "threshold": null,
+          "series": []
+        },
+        {
+          "id": "russia_products_g7_dependence",
+          "name_ja": "製品のG7+依存率",
+          "name_en": "Products G7+ dependence",
+          "chokepoint": "russia_oil_flow",
+          "kind": "flow",
+          "acquisition": "auto",
+          "cadence": "monthly",
+          "unit": "%",
+          "source": "CREA",
+          "note": "石油製品の流れがG7+海運に依存する率。",
+          "threshold": null,
+          "series": []
+        }
+      ]
+    },
+    {
+      "id": "russia_fiscal",
+      "name_ja": "ロシア財政（時計）",
+      "name_en": "Russian fiscal clock",
+      "indicators": [
+        {
+          "id": "nwf_liquid_assets",
+          "name_ja": "NWF流動資産残高",
+          "name_en": "NWF liquid assets",
+          "chokepoint": "russia_fiscal",
+          "kind": "clock",
+          "acquisition": "auto",
+          "cadence": "monthly",
+          "unit": "兆ルーブル",
+          "source": "財務省 / Meduza",
+          "note": "ゼロに向かう残高。結論は読者が導く。",
+          "threshold": {
+            "value": 0,
+            "label": "NWF枯渇",
+            "direction": "down"
+          },
+          "series": []
+        },
+        {
+          "id": "russia_fiscal_deficit",
+          "name_ja": "財政赤字（累計）",
+          "name_en": "Fiscal deficit (cumulative)",
+          "chokepoint": "russia_fiscal",
+          "kind": "clock",
+          "acquisition": "auto",
+          "cadence": "monthly",
+          "unit": "兆ルーブル",
+          "source": "財務省 / FT",
+          "note": "積み上がる累計赤字。",
+          "threshold": null,
+          "series": []
+        },
+        {
+          "id": "military_vs_oilgas",
+          "name_ja": "軍事支出 vs 石油ガス収入",
+          "name_en": "Military spend vs oil & gas revenue",
+          "chokepoint": "russia_fiscal",
+          "kind": "constant",
+          "acquisition": "derived",
+          "cadence": "monthly",
+          "unit": "比",
+          "source": "（計算）",
+          "note": "軍事支出を石油ガス収入で割った比。",
+          "threshold": null,
+          "series": []
+        },
+        {
+          "id": "cbr_policy_rate",
+          "name_ja": "政策金利",
+          "name_en": "Policy rate (CBR)",
+          "chokepoint": "russia_fiscal",
+          "kind": "price",
+          "acquisition": "auto",
+          "cadence": "daily",
+          "unit": "%",
+          "source": "CBR",
+          "note": "中央銀行の政策金利。",
+          "threshold": null,
+          "series": []
+        }
+      ]
+    },
+    {
+      "id": "byproduct_trap",
+      "name_ja": "副産物",
+      "name_en": "By-product trap",
+      "indicators": [
+        {
+          "id": "sulfur_spot",
+          "name_ja": "硫黄スポット価格",
+          "name_en": "Sulphur spot price",
+          "chokepoint": "byproduct_trap",
+          "kind": "price",
+          "acquisition": "manual",
+          "cadence": "event",
+          "unit": "USD/t",
+          "source": "SunSirs / World Bank",
+          "note": "出所が現れ次第 fetcher に昇格。",
+          "threshold": null,
+          "series": []
+        },
+        {
+          "id": "naphtha_stock_days_jp",
+          "name_ja": "ナフサ在庫日数（日本）",
+          "name_en": "Naphtha stock days (Japan)",
+          "chokepoint": "byproduct_trap",
+          "kind": "stock",
+          "acquisition": "manual",
+          "cadence": "event",
+          "unit": "日",
+          "source": "自前トラッキング",
+          "note": "在庫日数。",
+          "threshold": null,
+          "series": []
+        }
+      ]
+    },
+    {
+      "id": "phosphate",
+      "name_ja": "リン酸肥料（春作の時計）",
+      "name_en": "Phosphate fertilizer (spring clock)",
+      "indicators": [
+        {
+          "id": "dap_price",
+          "name_ja": "DAP価格（Gulf / インド入札）",
+          "name_en": "DAP price (Gulf / India tender)",
+          "chokepoint": "phosphate",
+          "kind": "price",
+          "acquisition": "auto",
+          "cadence": "monthly",
+          "unit": "USD/t",
+          "source": "AFBF / SunSirs",
+          "note": "リン酸肥料の価格。",
+          "threshold": null,
+          "series": []
+        },
+        {
+          "id": "china_phosphate_export_ban",
+          "name_ja": "中国リン酸輸出停止状況",
+          "name_en": "China phosphate export ban status",
+          "chokepoint": "phosphate",
+          "kind": "flow",
+          "acquisition": "manual",
+          "cadence": "event",
+          "unit": "状態",
+          "source": "NDRC",
+          "note": "輸出の物理状態。",
+          "threshold": null,
+          "series": []
+        },
+        {
+          "id": "jp_map_stock_days",
+          "name_ja": "日本リン安在庫日数",
+          "name_en": "Japan MAP stock days",
+          "chokepoint": "phosphate",
+          "kind": "stock",
+          "acquisition": "manual",
+          "cadence": "event",
+          "unit": "日",
+          "source": "自前トラッキング",
+          "note": "在庫日数。",
+          "threshold": null,
+          "series": []
+        },
+        {
+          "id": "mosaic_utilization",
+          "name_ja": "Mosaic稼働率",
+          "name_en": "Mosaic utilization",
+          "chokepoint": "phosphate",
+          "kind": "flow",
+          "acquisition": "auto",
+          "cadence": "quarterly",
+          "unit": "%",
+          "source": "Mosaic IR",
+          "note": "生産能力の稼働率。",
+          "threshold": null,
+          "series": []
+        }
+      ]
+    },
+    {
+      "id": "us_food",
+      "name_ja": "米国食料（批判の時計）",
+      "name_en": "US food (criticism clock)",
+      "indicators": [
+        {
+          "id": "dap_corn_ratio",
+          "name_ja": "DAP対トウモロコシ価格比",
+          "name_en": "DAP-to-corn price ratio",
+          "chokepoint": "us_food",
+          "kind": "constant",
+          "acquisition": "derived",
+          "cadence": "monthly",
+          "unit": "比",
+          "source": "（計算: dap / corn）",
+          "note": "肥料価格を作物価格で割った構造比。",
+          "threshold": null,
+          "series": []
+        },
+        {
+          "id": "food_cpi",
+          "name_ja": "食料品CPI",
+          "name_en": "Food CPI",
+          "chokepoint": "us_food",
+          "kind": "price",
+          "acquisition": "auto",
+          "cadence": "monthly",
+          "unit": "% YoY",
+          "source": "BLS API",
+          "note": "食料品消費者物価指数。",
+          "threshold": null,
+          "series": []
+        },
+        {
+          "id": "mexico_veg_import_share",
+          "name_ja": "メキシコ野菜輸入比率",
+          "name_en": "Mexico vegetable import share",
+          "chokepoint": "us_food",
+          "kind": "constant",
+          "acquisition": "manual",
+          "cadence": "event",
+          "unit": "%",
+          "source": "USDA ERS",
+          "note": "構造定数（~77%）。",
+          "threshold": null,
+          "series": [
+            {
+              "date": "2026-01-01",
+              "value": 77,
+              "source": "USDA ERS（~77%）"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cuba",
+      "name_ja": "キューバ",
+      "name_en": "Cuba",
+      "indicators": [
+        {
+          "id": "cuba_fuel_tankers",
+          "name_ja": "燃料タンカー到着",
+          "name_en": "Fuel tanker arrivals",
+          "chokepoint": "cuba",
+          "kind": "flow",
+          "acquisition": "manual",
+          "cadence": "event",
+          "unit": "隻",
+          "source": "AP / Reuters",
+          "note": "燃料供給の流れ。",
+          "threshold": null,
+          "series": []
+        },
+        {
+          "id": "cuba_grid_status",
+          "name_ja": "送電網状況",
+          "name_en": "Power grid status",
+          "chokepoint": "cuba",
+          "kind": "price",
+          "acquisition": "manual",
+          "cadence": "event",
+          "unit": "状態",
+          "source": "キューバ当局 / 報道",
+          "note": "送電網の状態。",
+          "threshold": null,
+          "series": []
+        },
+        {
+          "id": "cuba_fuel_self_sufficiency",
+          "name_ja": "燃料自給率",
+          "name_en": "Fuel self-sufficiency",
+          "chokepoint": "cuba",
+          "kind": "constant",
+          "acquisition": "manual",
+          "cadence": "event",
+          "unit": "%",
+          "source": "報道",
+          "note": "構造定数（~40%）。",
+          "threshold": null,
+          "series": [
+            {
+              "date": "2026-01-01",
+              "value": 40,
+              "source": "報道（~40%）"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "political_clock",
+      "name_ja": "政治の時計",
+      "name_en": "Political clock",
+      "indicators": [
+        {
+          "id": "china_ban_countdown",
+          "name_ja": "中国リン酸輸出停止 期限",
+          "name_en": "China phosphate export ban deadline",
+          "chokepoint": "political_clock",
+          "kind": "clock",
+          "acquisition": "derived",
+          "cadence": "daily",
+          "unit": "残り日数",
+          "source": "（計算: days_until）",
+          "note": "期日に向かうカウントダウン。結論は書かない。",
+          "threshold": {
+            "value": 0,
+            "label": "2026-08-31",
+            "direction": "down"
+          },
+          "series": [
+            {
+              "date": "2026-06-05",
+              "value": 87,
+              "source": "（計算）"
+            }
+          ],
+          "target_date": "2026-08-31"
+        },
+        {
+          "id": "us_midterm_countdown",
+          "name_ja": "米中間選挙",
+          "name_en": "US midterm election",
+          "chokepoint": "political_clock",
+          "kind": "clock",
+          "acquisition": "derived",
+          "cadence": "daily",
+          "unit": "残り日数",
+          "source": "（計算: days_until）",
+          "note": "期日に向かうカウントダウン。",
+          "threshold": {
+            "value": 0,
+            "label": "2026-11-03",
+            "direction": "down"
+          },
+          "series": [
+            {
+              "date": "2026-06-05",
+              "value": 151,
+              "source": "（計算）"
+            }
+          ],
+          "target_date": "2026-11-03"
+        }
+      ]
+    }
+  ]
+}

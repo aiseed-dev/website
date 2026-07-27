@@ -1,0 +1,51 @@
+@page {
+  size: A5;
+  margin: 2cm;
+  @bottom-center {
+    content: counter(page);
+    font-size: 9pt;
+    color: #888;
+  }
+}
+body {
+  font-family: 'Noto Serif CJK JP', serif;
+  font-size: 10pt;
+  line-height: 1.85;
+  color: #1a1a1a;
+}
+h1 {
+  font-size: 22pt;
+  border-bottom: 3px double #000;
+  padding-bottom: 12pt;
+  page-break-after: avoid;
+}
+h2 {
+  font-size: 14pt;
+  margin-top: 24pt;
+  page-break-after: avoid;
+  border-left: 4pt solid #c8442a;
+  padding-left: 12pt;
+}
+h3 { font-size: 11pt; color: #c8442a; }
+strong { background: linear-gradient(to top, #f7e9c8 35%, transparent 35%); }
+blockquote {
+  border-left: 4pt solid #c8442a;
+  padding-left: 16pt;
+  font-style: italic;
+  color: #444;
+  margin: 16pt 0;
+}
+code {
+  background: #f0f0f0;
+  padding: 1pt 4pt;
+  border-radius: 2pt;
+  font-size: 9pt;
+}
+pre {
+  background: #1a1a1a;
+  color: #f4f1ea;
+  padding: 12pt;
+  font-size: 9pt;
+  border-radius: 4pt;
+  overflow-wrap: break-word;
+}

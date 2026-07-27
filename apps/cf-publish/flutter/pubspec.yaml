@@ -1,0 +1,47 @@
+name: cf_publish
+description: "Desktop GUI for designers to publish a local folder to Cloudflare Pages."
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+  flutter: ">=3.19.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # HTTP client for the Cloudflare API (multipart + JSON).
+  http: ^1.2.0
+
+  # Cloudflare Pages requires BLAKE3 hashing (the same scheme wrangler uses).
+  # NOTE: the exact pub package + version here is UNCONFIRMED in this scaffold
+  # (authored without a Flutter SDK). It must be verified / possibly swapped on
+  # a real machine, and lib/deploy.dart#fileHash adjusted to its API. See
+  # README.md -> "BLAKE3 dependency must be verified". Do NOT swap in a non-
+  # BLAKE3 hash: the Pages upload API would reject the keys.
+  blake3: ^1.1.0
+
+  # Native folder picker (getDirectoryPath) for desktop.
+  # file_picker moves fast (11.x is current); the getDirectoryPath() API
+  # (dialogTitle / initialDirectory) is stable across 8.x-11.x, so bump freely.
+  file_picker: ^8.0.0
+
+  # POSIX path manipulation (relative paths, posix joins).
+  path: ^1.9.0
+
+  # MIME type guessing for the contentType metadata.
+  mime: ^1.0.5
+
+  # url_launcher for "open in browser" on success.
+  url_launcher: ^6.2.5
+
+  cupertino_icons: ^1.0.6
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

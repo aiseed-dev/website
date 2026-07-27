@@ -1,0 +1,12 @@
+{
+  "site_url": "http://localhost:8000",
+  "site_name": {
+    "ja": "サンプルサイト",
+    "en": "Sample Site"
+  },
+  "copyright_text": {
+    "ja": "サンプルサイト",
+    "en": "Sample Site"
+  },
+  "default_og_image": "/images/og-default.jpg"
+}

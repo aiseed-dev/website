@@ -1,0 +1,21 @@
+{
+  "count": 5,
+  "revenue": 71400,
+  "by_item": [
+    {
+      "item": "キャベツ",
+      "count": 3,
+      "revenue": 32400
+    },
+    {
+      "item": "トマト",
+      "count": 1,
+      "revenue": 20000
+    },
+    {
+      "item": "玉葱",
+      "count": 1,
+      "revenue": 19000
+    }
+  ]
+}

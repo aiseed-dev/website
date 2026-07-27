@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サンプルサイト</title>
+    <meta name="description" content="tools/init_site.py で生成されたサンプルサイトです。">
+    <link rel="alternate" hreflang="ja" href="/">
+    <link rel="alternate" hreflang="en" href="/en/">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <a href="/" class="brand">サンプルサイト</a>
+        <nav>
+            <a href="/insights/">Insights</a>
+            <a href="/blog/">Blog</a>
+            <a href="/en/">EN</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>ようこそ</h1>
+        <p class="index-subtitle">
+            このサイトは <code>tools/init_site.py</code> が生成したサンプルです。<br>
+            <code>articles/</code> と <code>blog/</code> の Markdown を編集し、
+            <code>python3 tools/build_article.py --site . --all</code> で HTML を再生成します。
+        </p>
+
+        <section>
+            <h2>Latest Insights</h2>
+            <p><a href="/insights/">すべての Insights 記事を見る →</a></p>
+        </section>
+
+        <section>
+            <h2>Latest Blog</h2>
+            <!-- LATEST_BLOG_POSTS_START -->
+            <p><em>ブログ記事を <code>blog/</code> に追加してビルドすると、ここに一覧が入ります。</em></p>
+            <!-- LATEST_BLOG_POSTS_END -->
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>サンプルサイト</p>
+    </footer>
+</body>
+</html>

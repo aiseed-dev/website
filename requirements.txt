@@ -1,0 +1,10 @@
+jinja2
+markdown-it-py
+# CJK フレンドリー化はパッケージで
+mdit-py-cjk-friendly>=0.2
+Pillow
+watchdog
+playwright
+# .adoc記事(表・引用・脚注などMarkdownでは足りない構造)のビルドに使う。
+# 未導入で.adocをビルドしようとすると分かりやすいエラーになる
+pyasciidoc>=0.4

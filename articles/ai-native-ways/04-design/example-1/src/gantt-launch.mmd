@@ -1,0 +1,19 @@
+gantt
+  title 1 人 + AI で SaaS をローンチ(2026 年 1〜4 月)
+  dateFormat YYYY-MM-DD
+  axisFormat %m/%d
+
+  section 設計
+  要件整理            :a1, 2026-01-05, 5d
+  ER 図 / API 設計    :a2, after a1, 4d
+
+  section 実装
+  バックエンド (Claude) :b1, after a2, 14d
+  フロント (Claude)    :b2, after a2, 14d
+  認証 / 決済         :b3, after b1, 5d
+
+  section リリース準備
+  LP / SEO           :c1, after b2, 7d
+  英語版             :c2, after c1, 3d
+  ベータ公開         :milestone, c3, 2026-04-01, 0d
+  正式ローンチ       :milestone, c4, 2026-04-15, 0d

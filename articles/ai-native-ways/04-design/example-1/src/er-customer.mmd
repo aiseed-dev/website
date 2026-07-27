@@ -1,0 +1,29 @@
+erDiagram
+  CUSTOMER ||--o{ ORDER : "発注"
+  ORDER ||--|{ ORDER_ITEM : "含む"
+  PRODUCT ||--o{ ORDER_ITEM : "売れる"
+  CUSTOMER {
+    int    id PK
+    string name
+    string email
+    date   created_at
+  }
+  ORDER {
+    int    id PK
+    int    customer_id FK
+    date   ordered_at
+    string status
+  }
+  ORDER_ITEM {
+    int    id PK
+    int    order_id FK
+    int    product_id FK
+    int    qty
+    int    price
+  }
+  PRODUCT {
+    int    id PK
+    string name
+    int    price
+    int    stock
+  }

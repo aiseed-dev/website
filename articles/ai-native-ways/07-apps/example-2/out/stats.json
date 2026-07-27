@@ -1,0 +1,29 @@
+{
+  "total": 8,
+  "by_tag": [
+    {
+      "tag": "(no-tag)",
+      "n": 3
+    },
+    {
+      "tag": "todo",
+      "n": 1
+    },
+    {
+      "tag": "review",
+      "n": 1
+    },
+    {
+      "tag": "ops",
+      "n": 1
+    },
+    {
+      "tag": "meeting",
+      "n": 1
+    },
+    {
+      "tag": "lead",
+      "n": 1
+    }
+  ]
+}

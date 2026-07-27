@@ -1,0 +1,231 @@
+# AI時代の暮らし — aiseed.dev
+
+自然農法・リジェネラティブ農業の実践と、構造分析・ブログを発信するウェブサイト。
+
+## サイト構成
+
+```
+html/
+├── index.html             # トップページ
+├── about/                 # 私たちのアプローチ
+├── natural-farming/       # 自然農法とは
+├── light-farming/         # Light Farming（Christine Jones博士の土壌科学）
+│   ├── full/              # 論文全訳（前半）
+│   └── full-2/            # 論文全訳（後半）
+├── gallery/               # 畑の記録（写真）
+├── privacy/               # プライバシーポリシー
+├── insights/              # Insights — 構造分析（地政学・食料安全保障・AI）
+├── dashboard/             # 物理量ダッシュボード（素のHTML/CSS/JS・静的JSON）
+├── blog/                  # Blog — 構造分析ノート（時事・速報的な分析）
+├── claude-debian/         # Claudeと一緒に学ぶDebian（全24章）
+├── ai-native-ways/        # AIネイティブな仕事の作法（独立タイポグラフィ）
+├── en/                    # 英語版サブツリー（/en/insights, /en/blog, /en/claude-debian, /en/ai-native-ways など）
+├── css/style.css          # メインスタイルシート
+├── js/main.js             # JavaScript
+└── images/                # 画像素材
+```
+
+Markdown（または AsciiDoc）ソース（ビルド入力）はリポジトリ直下。
+**1記事 = 1フォルダ**で、言語別本文と関連アセット（画像・PDF）を同じ
+フォルダにまとめる:
+
+```
+articles/
+├── insights/                       # Insights 記事（連載）
+│   └── 01-climate-mistake/
+│       ├── ja.md
+│       └── en.md
+├── claude-debian/                  # Claudeと一緒に学ぶDebian
+│   └── 00-prologue/
+│       ├── ja.md
+│       └── en.md
+├── ai-native-ways/                 # AIネイティブな仕事の作法
+│   ├── README.md
+│   └── 00-prologue/
+│       ├── ja.md
+│       └── en.md
+└── blog/                           # Blog 記事
+    └── 015-japan-windows-disaster-risk/
+        ├── ja.md
+        ├── en.md
+        ├── 015-IMG_3433.jpg        # 共有/JAアセット
+        └── en-015-foo.pdf          # EN専用アセット（en- プレフィックスで区別）
+```
+
+`ja.md` / `en.md` は同一フォルダに同居。表・脚注・引用の帰属など
+Markdown（CommonMark）では足りない構造を持つ記事は、同じ場所に
+`ja.adoc` / `en.adoc` を置いて AsciiDoc で書ける（[pyasciidoc](https://github.com/aiseed-dev/pyasciidoc)
+が変換する。フロントマターの書式・出力先・Mermaid フェンスの扱いは
+`.md` と共通。同じ言語で `.md` と `.adoc` を両方置くと、どちらが正か
+推測できないため警告を出してその記事をスキップする——記事は片方の
+形式に決める）。既存の `.md` 記事の書き換えは不要
+（`:::chain` 等のカスタムブロックは引き続き動く）。
+
+アセットの命名は同じフォルダ内で
+`en-` プレフィックスのある／なしで言語別配信を切り替える（`en-` 付きは
+EN ビルドのみコピー、無いものは両言語にコピー）。
+
+ヘッダーメニューの「記事」ドロップダウン配下に「構造分析」「AIネイティブな
+仕事の作法」「Claudeと一緒に学ぶDebian」がぶら下がる（デスクトップはホバー、
+モバイルはアコーディオン）。
+
+## テーマ
+
+- **自然農法**: 福岡正信氏の四原則（不耕起・無肥料・無農薬・無除草）
+- **リジェネラティブ農業**: 土壌炭素固定、菌根菌ネットワーク、生物多様性
+- **Light Farming**: Christine Jones博士の光合成ベースの土壌再生理論
+- **Insights**: 構造的思考による分析（肥料危機、地政学、AIの使い方）
+- **Blog**: 時事的な構造分析ノート（イラン戦争・サプライチェーン断絶など）
+- **Claudeと一緒に学ぶDebian**: Claudeを横に置いて読む新しい形の教科書（全24章）
+- **AIネイティブな仕事の作法**: 副題「AI 時代の自由人のための道具たち」。
+  Office・Java・C# から離れて Markdown・JSON・Python で AI を同僚として
+  使う実用エッセイ（独立タイポグラフィ、親シリーズ全 14 章）。
+  第 1 章「AI（ChatGPT・Claudeなど）活用マニュアル」が普通の人向けの
+  入口で 6 つのコツを置き、第 2 章以降がそれを領域別の道具立てに
+  落としていく。サブシリーズ「ソフトウェア開発編」（全 11 章）で
+  **ソフトウェア工学からリベラルアーツへの基盤転換** を論証。底流の
+  概念フレーム（15 概念）は `framing-second-renaissance` スキルに集約
+  ── 合成的入口はブログ
+  [`021-software-three-transitions`](articles/blog/021-software-three-transitions/)
+
+## 物理量ダッシュボード
+
+`/dashboard/` に、構造分析で追ってきた **物理量**（価格・流量・在庫・残高・
+残り日数）を一覧表示するダッシュボードがある。物理量・単位・観測日・出所だけを
+提示し、主張も予測も載せない（読者が物理的事実から判断する）。
+
+- フロント: [`html/dashboard/`](html/dashboard/) — 素の HTML/CSS/JS・ビルド工程なし・
+  静的 JSON を 1 回 fetch して描画。
+- パイプライン: [`tools/dashboard/`](tools/dashboard/) — Python 標準ライブラリのみ。
+  `python3 -m tools.dashboard.build` で 取得 → 計算 → `html/dashboard/data/dashboard.json` を出力。
+  新指標 = カタログに 1 レコード追加。詳細は [tools/dashboard/README.md](tools/dashboard/README.md)。
+
+## 関連アプリ
+
+- **[Debian 移行ウィザード (`apps/debian-migrate/`)](apps/debian-migrate/)** ──
+  Python + Flet で書いた Windows / macOS / Linux 対応のデスクトップ
+  アプリ。連載「Claudeと一緒に学ぶDebian」(第 4・6・7 章) を GUI に
+  落とし、初心者でも事前準備 (アプリ棚卸し → 代替提案 → ハードウェア
+  チェック → USB 作成ガイド) を進められるようにしたもの。API キー
+  不要、AI 連携は「Claude 用プロンプトをコピー」ボタンで claude.ai
+  に貼る方式。
+
+## 技術構成
+
+- 静的HTML/CSS/JS
+- Google Fonts: Zen Old Mincho, Noto Sans JP
+- Google Analytics: G-9FLQ963JXM
+- ホスティング: aiseed.dev
+
+## 開発
+
+### セットアップ
+
+```bash
+pip install -r requirements.txt
+```
+
+### ビルド
+
+Markdown で書いた Insights / Blog / 書籍 / AIネイティブな仕事の作法を HTML に変換する:
+
+```bash
+python3 tools/build_article.py --all                                                  # 全シリーズビルド
+python3 tools/build_article.py articles/insights/11-healthcare-fiscal/ja.md           # 単一 Insights 記事
+python3 tools/build_article.py articles/blog/013-phosphate-crisis-2027/ja.md          # 単一 Blog 記事
+python3 tools/build_article.py articles/claude-debian/00-prologue/en.md               # 単一章 (EN)
+python3 tools/build_article.py articles/ai-native-ways/00-prologue/ja.md              # 単一エッセイ
+```
+
+出力は `html/insights/`, `html/blog/`, `html/claude-debian/`, `html/ai-native-ways/`
+および それらの `html/en/...` 配下。`--all` の最後で `html/sitemap.xml` と
+`html/robots.txt` も再生成され、静的トップページ 10 件（JA/EN × home・about・
+natural-farming・light-farming・privacy）の `style.css` / `main.js` 参照には
+コンテンツハッシュ由来のキャッシュバスター `?v=<hash>` が刻印される。
+
+全シリーズの記事・章ページは共通のエッセイ型テンプレート
+（`tools/templates/chapter.html` / `chapter.en.html`）で描画される。
+ai-native-ways の詳細は [articles/ai-native-ways/README.md](articles/ai-native-ways/README.md) 参照。
+
+記法・オプションの詳細は [docs/manuals/build_article.md](docs/manuals/build_article.md) 参照（ツール全体の一覧は [tools/README.md](tools/README.md)）。
+
+### 開発サーバー（ビルド + 監視 + 配信）
+
+```bash
+python3 tools/serve.py                # http://localhost:8000
+python3 tools/serve.py --port 8080
+```
+
+`articles/`, `tools/templates/`, `html/{css,js}` を監視し、変更があれば
+`build_article.py --all` を自動実行する。ブラウザのリロードは手動（CSS/JS は
+`?v=<hash>` が変わるので強制リロード不要）。
+
+### 任意のディレクトリをターゲットにする
+
+`tools/build_article.py` と `tools/serve.py` はどこから起動しても、`--site`
+でサイトディレクトリを明示できる（省略時はスクリプトの親ディレクトリ、
+または環境変数 `AISEED_SITE`）。
+
+サイト側に必要なレイアウト:
+
+```
+<site>/
+├── articles/
+│   ├── insights/         # Insights 記事 (NN-slug/{ja,en}.md)
+│   ├── claude-debian/    # 任意: 書籍章 (NN-slug/{ja,en}.md)
+│   ├── ai-native-ways/   # 任意: エッセイ連載 (NN-slug/{ja,en}.md)
+│   └── blog/             # Blog 記事 (NNN-slug/{ja,en}.md + アセット)
+├── html/                 # 出力先（index.html, css/, js/, images/ 等）
+├── tools/templates/      # 任意: ここにテンプレートを置けばバンドルを上書き
+└── site.json             # 任意: site_url, site_name, copyright_text 等の上書き
+```
+
+`site.json` の例:
+
+```json
+{
+  "site_url": "https://example.com",
+  "site_name": { "ja": "自分のサイト", "en": "My Site" },
+  "copyright_text": { "ja": "自分のサイト", "en": "My Site" },
+  "default_og_image": "/images/og-default.jpg"
+}
+```
+
+```bash
+# 別のサイトをビルド
+python3 /path/to/website/tools/build_article.py --site /path/to/other-site --all
+
+# 別サイトの開発サーバーを起動
+python3 /path/to/website/tools/serve.py --site /path/to/other-site
+
+# 環境変数で既定を与える
+export AISEED_SITE=/path/to/other-site
+python3 /path/to/website/tools/build_article.py --all
+```
+
+### 新しいサイトをゼロから始める
+
+`tools/init_site.py` が最小のサンプルサイト（articles/insights / blog / html /
+tools/templates / site.json / CLAUDE.md / README.md）を任意ディレクトリに
+展開する:
+
+```bash
+python3 /path/to/website/tools/init_site.py /path/to/new-site
+python3 /path/to/website/tools/build_article.py --site /path/to/new-site --all
+python3 /path/to/website/tools/serve.py --site /path/to/new-site
+```
+
+- 既存ファイルは既定でスキップ。上書きしたい場合は `--force`
+- 何が書かれるかだけ見たい場合は `--dry-run`
+- 利用可能なスキャフォールド一覧は `--list`
+
+スキャフォールドは `tools/scaffolds/default/` にあり、CSS・テンプレート・
+`CLAUDE.md` は Claude Code で扱いやすい最小構成になっている。
+
+### 静的配信のみ
+
+既にビルド済みの HTML をそのまま確認する場合:
+
+```bash
+cd html && python3 -m http.server 8000
+```

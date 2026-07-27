@@ -1,0 +1,647 @@
+---
+slug: claude-debian-11-application-selection
+lang: en
+number: "11"
+title: Chapter 11 — Choosing Applications
+subtitle: What to replace your Windows apps with on Debian
+description: Browser, mail, office, image / video, communication, file sync, password management — replace Windows apps with Debian apps category by category. Together with Claude, make the choices that fit your use.
+date: 2026.04.23
+label: Claude × Debian 11
+prev_slug: claude-debian-10-japanese-input
+prev_title: Chapter 10 — Setting Up Japanese Input
+next_slug: claude-debian-12-config-management
+next_title: Chapter 12 — Understanding and Managing Configuration
+cta_label: Learn with Claude
+cta_title: There is no single "the alternative."
+cta_text: To "what replaces Office?" there are several answers depending on context. Talk it through with Claude and narrow down to the best fit for your use.
+cta_btn1_text: Continue to Chapter 12
+cta_btn1_link: /en/claude-debian/12-config-management/
+cta_btn2_text: Back to Chapter 10
+cta_btn2_link: /en/claude-debian/10-japanese-input/
+---
+
+## First, Install Flatpak
+
+Before category-by-category replacement, set up **Flatpak**.
+Debian's `apt` alone will leave you stuck on desktop apps sooner or later.
+
+### Why apt Isn't Enough
+
+Debian prioritizes stability, and the packages `apt` provides are
+**older but rock-solid**. Great for servers and core software; awkward
+for desktop apps.
+
+- **Slack / Zoom / Discord / Spotify**: official deb exists but ships
+  late, and auto-update is hard to trust.
+- **Bitwarden / Signal / Element**: deb exists, but the Flatpak version
+  is consistently more current.
+- **OBS Studio / Krita / Inkscape**: the apt build lags by several
+  releases; for current features Flatpak is the realistic choice.
+- **GIMP**: Debian's apt has the stable, Flatpak carries the next.
+
+In short, **Debian's `apt` covers the OS base and "mature apps"**,
+while **Flatpak covers "fast-moving apps"** — split the role this way.
+
+### What Flatpak Is
+
+Flatpak is a combined **distribution format + sandbox + auto-update**
+for Linux desktop apps. Properties:
+
+- **Distro-independent**: the same package runs on Debian / Ubuntu /
+  Fedora / Arch. Build once, ship everywhere.
+- **Bundled dependencies**: each app ships its required libraries as a
+  Runtime, so it doesn't conflict with the apt-managed system.
+- **Sandboxed**: by default an app cannot freely read or write your
+  whole home directory or system. You can scope access to
+  `Documents/` only, `Downloads/` only, etc.
+- **Auto-updates**: when Flathub publishes a new version, a single
+  `flatpak update` brings everything current.
+- **Visible permissions**: `flatpak info --show-permissions <app>`
+  shows exactly what the app can access.
+
+The trade-off: **slightly more disk** (runtime sharing reduces but
+doesn't eliminate duplication), and **a touch slower to launch** than
+apt-installed apps. On a laptop with under 10 GB free, watch your
+Runtime sizes before installing everything via Flatpak.
+
+### Setup (3 Minutes)
+
+```bash
+# On Debian 13
+sudo apt install flatpak
+
+# To integrate with GNOME Software
+sudo apt install gnome-software-plugin-flatpak
+
+# Add Flathub (the largest Flatpak distribution)
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# Log out and back in so PATH and .desktop entries pick up
+```
+
+After this, `flatpak install flathub <app-id>` covers nearly every
+desktop app you would want.
+
+### Basic Commands
+
+```bash
+# Search
+flatpak search slack
+
+# Install (recommended: name the remote)
+flatpak install flathub com.slack.Slack
+
+# Run (typically from the menu; the CLI works too)
+flatpak run com.slack.Slack
+
+# List installed
+flatpak list
+
+# Update everything
+flatpak update
+
+# Uninstall
+flatpak uninstall com.slack.Slack
+
+# Clean up unused runtimes
+flatpak uninstall --unused
+```
+
+### Tightening Permissions (Flatseal)
+
+To get the most out of the sandbox, install **Flatseal**, a GUI for
+managing per-app permissions:
+
+```bash
+flatpak install flathub com.github.tchx84.Flatseal
+```
+
+This lets you fine-tune "can this app see my whole home directory?",
+"unrestricted network?", "microphone?" per app. *Slack does not need
+to read your `Documents/`* — and you can enforce that retroactively.
+
+This kind of transparency is something Windows and macOS do not
+provide out of the box: **a Linux-specific property worth using**.
+
+### apt vs Flatpak: How to Choose
+
+This book's recommendation:
+
+| Category | Recommended | Reason |
+|---|---|---|
+| Firefox | **apt** (`firefox-esr`) / Flatpak also works | Debian Security Team backports ESR promptly; native integration is smooth |
+| Chromium / Chrome / Brave / Vivaldi | **Flatpak** | apt lags; Chrome's deb is a pain to keep current; sandbox is a bonus |
+| Desktop environment / fonts / IME | **apt** | OS base; no benefit from Flatpak |
+| OnlyOffice | **Flatpak** | The book's office pick. Stronger visual compatibility with MS Office |
+| LibreOffice | **apt** (`libreoffice libreoffice-l10n-ja`) | Backup slot. For legacy formats and LibreOffice-specific files |
+| Slack / Zoom / Discord / Spotify | **Flatpak** | Faster updates + sandboxing |
+| Bitwarden / Signal / Element | **Flatpak** | Same; encryption apps benefit from being current |
+| OBS / Krita / Inkscape / GIMP (latest) | **Flatpak** | apt versions lag |
+| Dev tools (Python / git / Docker) | **apt** | Sandboxing is in the way |
+| Editors / IDEs (Zed / Neovim / PyCharm) | **Flatpak** (Neovim is apt) | See Chapter 13. This book does not recommend VS Code |
+
+### Skip Snap
+
+Ubuntu has Snap, a similar mechanism. On Debian, **Flatpak is the
+de facto choice** and Snap is rarely needed. This book sticks to
+Flatpak; you only need to learn one.
+
+### Ask Claude ⓪: Sorting apt vs Flatpak
+
+> Here is the list of apps I want on Debian:
+> *(list)*
+>
+> For each, recommend whether to install via apt or Flatpak, with
+> reasoning, in a table. For Flatpak entries, suggest which
+> permissions (filesystem, network, camera, …) to restrict.
+
+With Flatpak in place, on to the categories.
+
+## Replace by Category
+
+With the dependency map from Chapter 4 open beside you, decide replacements in the following eight categories.
+
+1. Browser
+2. Mail and calendar
+3. Office (documents, spreadsheets, presentations)
+4. Communication (chat, video calls)
+5. Image, video, audio
+6. File sync and cloud storage
+7. Password management and authentication
+8. Utilities (PDF, screenshots, clipboard)
+
+## Section 1 — Browser
+
+The browser is your single largest attack surface, and **how fast you get
+patches** mostly determines how safe you are. This is the one category where
+Firefox and Chromium-family browsers deserve different handling.
+
+### Firefox: apt (`firefox-esr`) Is Enough
+
+```bash
+sudo apt install firefox-esr
+```
+
+Debian's Firefox-ESR is **continuously backported by the Debian Security
+Team**, with security fixes landing on roughly the same day as the upstream
+Mozilla release. Mozilla itself positions ESR as "stable + immediate
+security for enterprises and servers," so this is **one of the rare
+categories where the usual 'Debian apt is too old' problem doesn't apply.**
+
+Native messaging (KeePassXC / Bitwarden integration), YubiKey, and
+GNOME / KDE default-browser handoff all work cleanly out of the box.
+
+If you want strict multi-profile isolation or an extra sandbox layer,
+the Flatpak `org.mozilla.firefox` (also a Mozilla-official build) is
+a fine option.
+
+### Chromium-family: Flatpak Is the Pragmatic Choice
+
+Chromium / Chrome / Brave / Vivaldi sit differently from Firefox.
+
+- **Chromium**: the apt build can lag the upstream zero-day fix by **a few
+  days to two weeks** depending on the Security Team's load. A week is a
+  long time for a browser.
+- **Google Chrome**: not in the official Debian apt repo. Your options are
+  (a) download Google's deb, (b) add Google's third-party apt repo, or
+  (c) Flatpak. **(c) is by far the easiest** — no repo, no signing key,
+  just one `flatpak install`.
+- **Brave / Vivaldi**: official deb exists but requires a third-party apt
+  repo. The Flatpak version skips the `remote-add` ceremony entirely.
+
+On top of that, Chromium-family browsers **benefit more visibly from
+Flatpak's outer sandbox**. Their inner process isolation is strong, but
+adding another layer is meaningful given the breadth of attack surface.
+A reasonable insurance policy.
+
+```bash
+# Examples
+flatpak install flathub org.chromium.Chromium
+flatpak install flathub com.google.Chrome
+flatpak install flathub com.brave.Browser
+flatpak install flathub com.vivaldi.Vivaldi
+```
+
+### Caveats With Flatpak Browsers
+
+The price of the sandbox: a few integrations need **extra setup**.
+
+- **Native messaging for password managers** (KeePassXC-Browser,
+  Bitwarden auto-fill): goes through the portal; you typically open the
+  socket once via Flatseal.
+- **Hardware tokens (YubiKey, etc.)**: enable `Devices: All` in Flatseal.
+- **VA-API hardware decode** (CPU savings during video playback): requires
+  an extra environment variable, more friction than the apt build.
+- **"Open in default app"**: routed through the portal, with a small delay.
+
+If your day involves password managers + SSO tokens constantly, or you
+run video editing while streaming on the side, the apt build (Firefox)
+keeps an edge.
+
+### Axes for Choosing
+
+- **Bookmark and password sync.** How easy is it to migrate from your current browser?
+- **Privacy.** Stance toward ads and trackers.
+- **Integration with Electron apps.** Some business tools assume a specific browser.
+- **Update speed.** Chromium-family → Flatpak; Firefox → apt-esr is enough.
+
+### The Book's Recommendation
+
+- **Firefox via `apt install firefox-esr`** as your first choice.
+- **Chromium-family → Flatpak** (Chrome / Chromium / Brave / Vivaldi all the same).
+- If business SSO pins you to Chrome, just use the Flatpak `com.google.Chrome` — no hesitation.
+
+### Ask Claude ①: Browser Migration
+
+> I currently use [Edge / Chrome / Safari]. Tell me how to migrate bookmarks,
+> passwords, extensions, and open tabs to [Firefox (apt firefox-esr) /
+> Chrome (Flatpak)] on Debian. Give the approach that minimizes data loss,
+> and list things I should verify right after the move. If I picked the
+> Flatpak version, also list the Flatseal permissions to review (filesystem
+> access, home directory, native messaging, devices, host D-Bus).
+
+## Section 2 — Mail and Calendar
+
+### Candidates
+
+- **Thunderbird** (`sudo apt install thunderbird`): a long-standing client; rich features; supports POP / IMAP / Exchange.
+- **Evolution** (`sudo apt install evolution`): GNOME's standard; relatively strong Exchange integration.
+- **Geary**: simple and snappy; fits GNOME well.
+- **Webmail.** Continuing to use Gmail or Outlook in the browser is also valid.
+
+### Migrating from Outlook (Work Use)
+
+Microsoft 365's Exchange Online can be read from Thunderbird via IMAP, or via Microsoft's own EWS. If your company's IT department permits IMAP, it works without trouble.
+
+### Migrating Past Mail
+
+There is a tool to import Outlook's `.pst` files into Thunderbird.
+
+```bash
+# ImportExportTools NG (a Thunderbird extension)
+```
+
+### Ask Claude ②: Choosing a Mail Client
+
+> My mail environment is:
+> - Work: [company domain, Exchange Online / private server].
+> - Personal: [Gmail / iCloud / etc.].
+> - Past mail: [.pst, .mbox, etc.].
+>
+> Recommend the best mail client and give me the initial setup and the steps for migrating past mail.
+
+## Section 3 — Office: OnlyOffice + Python Is Enough
+
+### The book's conclusion: OnlyOffice as the compat layer, Python for the actual work
+
+The author's conclusion after running this on real hardware: **Office migration is solved by the pair OnlyOffice + Python, with essentially no friction**. The "LibreOffice cries on compatibility" era is over.
+
+The split of roles is simple.
+
+- **OnlyOffice** — the **compat layer** for opening, editing, and returning `.docx` / `.xlsx` / `.pptx` files that other people send you. Its visual fidelity to MS Office is clearly higher than LibreOffice.
+- **Python (pandas / openpyxl / Marp / pandoc)** — **your own work** runs on Markdown, CSV, and Python. Treat Excel not as "an application" but as "a data format."
+
+The "make Markdown and CSV the primary formats" line from Chapters 1 and 4 becomes concrete here in Chapter 11.
+
+### Installing OnlyOffice
+
+Either the official deb or Flatpak works. This book recommends Flatpak (faster updates, free sandbox).
+
+```bash
+flatpak install flathub org.onlyoffice.desktopeditors
+```
+
+Launch it and `.docx` / `.xlsx` / `.pptx` open as-is. The ribbon UI is close to MS Office, so a Windows refugee can start using it immediately.
+
+**Cases where OnlyOffice alone is enough:**
+- Receive a Word doc, add comments, send it back.
+- Polish a final `.docx` / `.pptx` for submission.
+- Open a small `.xlsx` to check and tweak values.
+- Edit Excel files with moderate formulas and tables.
+
+### OnlyOffice macros are JavaScript — and they run locally
+
+A quiet but important property worth calling out. **OnlyOffice's macro language is JavaScript** — a different family from MS Office's VBA, but a vastly more widely used language with far more learning material, and one that Claude can write very fluently.
+
+What matters more for this book's stance is that **the macros run locally**.
+
+- MS Office's macro and scripting features have steadily moved toward cloud-side APIs and Power Platform, **assuming a Microsoft account and a live network connection**.
+- OnlyOffice's macros run inside the desktop app. **They work offline, and they work without a Microsoft account.**
+
+This lines up cleanly with the book's "step away from vendor lock-in" theme (Chapter 1). Dropping a small JavaScript macro into an OnlyOffice document is **a natural replacement for the territory where Excel VBA used to live**.
+
+That said, **for complex logic, you're still better off writing it in Python**. JavaScript macros stay sealed inside the OnlyOffice document — the moment you cross out of that box (multi-file processing, external APIs, scripts you'll maintain for years), Python's ecosystem (pandas, openpyxl, uv-isolated environments) is far broader.
+
+Rough guide to the split:
+
+- **Good fits for OnlyOffice JavaScript macros.** One-click conveniences that the document's reader can run inline — reshape a table, recompute a sum, insert a template.
+- **Push to Python instead.** Multi-file processing, fetching external data, long-lived logic, anything you'd want tests for.
+
+### Cases that should move to Python
+
+Anything "you actually compute" should leave OnlyOffice and live in Python.
+
+- **Aggregation / analysis.** `pandas` reads CSV / Excel and emits results as CSV or Markdown.
+- **Recurring reports.** Markdown template + data → `pandoc` to `.docx`, `Marp` to `.pptx`.
+- **Replacing complex Excel macros.** Drop VBA; rewrite in Python. **The same script keeps working next month and next year.**
+- **Cross-file work.** Process dozens of Excel files in one pass (opening them by hand in a GUI is wasted time).
+
+Use `uv` to keep environments isolated (details in Chapter 16).
+
+```bash
+uv init my-report && cd my-report
+uv add pandas openpyxl
+```
+
+### Where LibreOffice fits (optional)
+
+LibreOffice comes from Debian's `apt` and bundles Writer / Calc / Impress / Draw / Base / Math. **In this book it's the "keep one around as backup"** slot.
+
+- The very occasional PDF or legacy format (`.doc` / `.xls`) where OnlyOffice's rendering breaks.
+- Opening existing files that depend on LibreOffice-specific functions.
+- Touching a local DB through Base.
+
+Everything else is covered by OnlyOffice or Python.
+
+### "Do I keep a Microsoft 365 Online subscription?" is a separate question
+
+If a client makes "must open cleanly in the latest MS Office" a contract condition, keep a Microsoft 365 subscription **in the browser, for final-check only**. But that is a question about **how to meet client requirements**, not about "how to do office on Debian," so this book doesn't chase it further.
+
+### Ask Claude ③: A roadmap for moving my Office usage to Python
+
+> My frequency of Office files is:
+> - Word: __ per week, my own or received, complexity.
+> - Excel: __, with / without macros, complexity.
+> - PowerPoint: __, with / without animation, complexity.
+>
+> Following the book's line (OnlyOffice + Python), please split my work into:
+> (1) Things I just open in OnlyOffice and send back.
+> (2) Things I should re-base on Markdown / CSV / Python.
+> (3) Things that stay in Microsoft 365 Online for now, in neither lane.
+> For each, give me a concrete first step.
+
+## Section 4 — Communication
+
+### Candidates
+
+- **Slack.** Official deb available, or via Flatpak.
+- **Microsoft Teams.** The official Linux client has been discontinued; use the browser version.
+- **Zoom.** Official deb; works well.
+- **Discord.** Official deb.
+- **LINE.** No official Linux client. Use LINE Web, a virtual machine, or rely on your phone.
+- **Signal / Element.** Official deb.
+
+### The LINE Problem
+
+There is no official LINE desktop client for Linux. Options:
+
+1. LINE Web (log in by QR code from the phone).
+2. Make the phone your primary.
+3. Run LINE inside a Windows virtual machine.
+
+### Ask Claude ④: The Residual Issues for Communication
+
+> The communication tools I use are [list].
+> Make a table of the best way to use each on Debian (official deb / Flatpak / Snap / Web / alternative).
+> For tools without Linux support like LINE, propose realistic handling tied to how often I use them.
+
+## Section 5 — Image, Video, Audio
+
+### Image
+
+- **GIMP.** A Photoshop alternative.
+- **Krita.** Illustration and digital painting.
+- **Inkscape.** Vector graphics (an Illustrator alternative).
+- **darktable / RawTherapee.** RAW development (a Lightroom alternative).
+- **Shotwell / digiKam.** Photo management.
+
+### Video
+
+- **DaVinci Resolve.** Pro-grade editing; the free version is sufficient. Linux version available.
+- **Kdenlive.** Open-source editing.
+- **OBS Studio.** Streaming and recording.
+- **HandBrake.** Encoding.
+
+### Audio
+
+- **Audacity.** Waveform editing.
+- **Ardour.** A DAW.
+- **LMMS.** Composition.
+
+### Ask Claude ⑤: Creative Tools
+
+> I work with [photos / video / illustration / music] at [frequency]. My current app is [name].
+> Evaluate the Debian alternatives in terms of feature parity and learning cost.
+> In particular, make explicit what I lose and what I gain in return.
+
+## Section 6 — File Sync and Cloud
+
+### Candidates
+
+- **Nextcloud.** Self-hostable; subscription services exist (a fork of OwnCloud).
+- **Syncthing.** Peer-to-peer sync between multiple PCs. No server required.
+- **Rclone.** A CLI tool to many cloud storage services.
+- **OneDrive.** No official Linux client. The unofficial `onedrive` CLI.
+- **Google Drive.** No official Linux client. `rclone` or GNOME Online Accounts.
+- **Dropbox.** Official Linux version available.
+- **MEGA.** Official Linux version available.
+
+### What This Book Recommends
+
+**A home NAS plus Syncthing, or a Nextcloud subscription.** Reduce dependency on third-party cloud providers.
+
+Syncthing in particular doesn't depend on a cloud vendor: it syncs encrypted between PC, phone, and NAS. The opposite of vendor lock-in.
+
+### Ask Claude ⑥: A Sync Strategy
+
+> My sync targets are [documents, photos, code, music], and my devices are [Debian, phone, family PC].
+> Of Syncthing, Nextcloud, and rclone+existing cloud, which should I make primary, considering capacity, privacy, and cost?
+
+## Section 7 — Password Management and Authentication
+
+### Candidates
+
+- **Bitwarden.** A service; official Linux client; browser extensions.
+- **KeePassXC** (`sudo apt install keepassxc`). Local storage; open source.
+- **1Password.** Official Linux version; subscription.
+
+### Working with Security Keys
+
+Security keys like YubiKey work without trouble on Linux. The `yubico-authenticator` package handles OATH.
+
+### Ask Claude ⑦: Password Management
+
+> I currently use [Chrome's password manager / Apple Keychain / Bitwarden / other].
+> Tell me the best choice for the Debian environment and the steps to safely import / export the current passwords.
+
+## Section 8 — Utilities
+
+### PDF
+
+- **Evince / Okular.** Viewing.
+- **Xournal++.** Annotation, handwriting.
+- **pdftk-java**, **qpdf.** Command-line manipulation.
+- **LibreOffice Draw.** Simple editing.
+
+### Screenshots
+
+- **Flameshot.** Feature-rich, annotation included.
+- **GNOME Screenshot** / **Spectacle** (KDE). Standard.
+- **Shutter.** Many features.
+
+### Clipboard History
+
+- **CopyQ.** Cross-DE.
+- **KDE.** Klipper, by default.
+- **GNOME.** The `Clipboard Indicator` extension.
+
+## Section 9 — Gaming: Steam Proton + Heroic Cover Most of It
+
+### Conclusion first: the "Linux can't game" era is over
+
+"I can't switch because of games" used to be a real blocker. It isn't anymore. **Thanks to Valve's investment in Proton (a Wine-based compatibility layer) for the Steam Deck, plus DXVK / VKD3D, the bulk of Windows-only games run cleanly on Debian.**
+
+The book's stance is simple. **Install Steam (and, if you need it, Heroic) from Flathub and let the compatibility layer handle everything.** For the Windows titles you already own, you don't have to hunt for Linux-native ports.
+
+### Start free — native open-source games
+
+Before we get to running your Windows games, note that there is a world you can **play right now without buying anything.** Linux has a deep bench of native open-source games, and each installs in **one Flatpak line** — no account, no payment, no Proton or Wine. **If you want to play with family or kids over summer break, this is the fastest place to start.**
+
+```bash
+# family / kids favorites (one line each, from Flathub)
+flatpak install flathub net.supertuxkart.SuperTuxKart   # kart racing (Mario Kart-like)
+flatpak install flathub org.supertuxproject.SuperTux    # platformer (Super Mario-like)
+flatpak install flathub com.play0ad.zeroad              # 0 A.D. (Age of Empires-like RTS)
+flatpak install flathub org.wesnoth.Wesnoth             # Battle for Wesnoth (turn-based strategy)
+flatpak install flathub org.luanti.luanti               # Luanti (formerly Minetest, Minecraft-like)
+flatpak install flathub com.github.Anuken.Mindustry     # Mindustry (tower defense + factory)
+flatpak install flathub org.openttd.OpenTTD             # OpenTTD (transport tycoon)
+
+# for younger kids
+flatpak install flathub org.kde.gcompris                # GCompris (educational suite for ages ~3–10)
+flatpak install flathub org.tuxpaint.Tuxpaint           # Tux Paint (drawing)
+```
+
+These go through no compatibility layer — **software built for Linux just runs.** They behave most cleanly and stay light even on old PCs. This is the first — and most reliable — answer to "can you really game on Linux?" What to do with your existing Steam library (Windows-only titles) is the Proton story that follows.
+
+### Installing Steam
+
+```bash
+flatpak install flathub com.valvesoftware.Steam
+```
+
+Sign in with your Steam account and the Install button shows up even for Windows-only titles in your library. In Settings → Compatibility, **check "Enable Steam Play for all other titles."** Proton runs transparently underneath.
+
+Hardware preconditions:
+
+- **Intel / AMD integrated GPU.** Debian's stock Mesa drivers work as-is. Nothing extra needed.
+- **NVIDIA discrete GPU.** Install `nvidia-driver` (covered in Chapter 8). Proton on NVIDIA has been solid for the last couple of years.
+
+### For non-Steam stores (Epic / GOG): Heroic
+
+If you also want your Epic Games, GOG, or Amazon Games libraries, add Heroic Games Launcher.
+
+```bash
+flatpak install flathub com.heroicgameslauncher.hgl
+```
+
+Heroic uses Proton (or Wine-GE) internally. Log in with your Epic account and your owned titles install with the same feel as Steam.
+
+### What works, what doesn't
+
+Honest line in the sand. **"Everything works" is not the claim.**
+
+- **Almost certainly works.** Single-player AAA (Cyberpunk 2077, Elden Ring, Baldur's Gate 3), every Valve title, indies, anything with a Steam Deck Verified / Playable badge.
+- **Works with tuning.** Heavily modded setups, very old (pre-DirectX 9) titles, certain DRM-laden launcher-exclusive releases.
+- **Doesn't work, period.** **Online titles that require kernel-level anti-cheat** — Valorant, Fortnite, recent Call of Duty, PUBG, and similar. These titles actively refuse Linux clients, and this is not something the compatibility layer is meant to defeat.
+
+For pre-purchase verification, use [protondb.com](https://www.protondb.com/). Search the title and you'll see how actual users rate it (Platinum / Gold / Silver / Bronze / Borked).
+
+### Separate "work user" and "play user" — a Linux-native answer
+
+This is where Linux's traditional strength shows. **In the Unix tradition, you create multiple users on one machine and isolate them completely.** The separation is far stronger than Windows-style "user switching."
+
+- `taro-work` — work account. Steam isn't even installed. Nothing extra on the desktop. Only the work home directory, dotfiles, and git keys.
+- `taro-game` — play account. Steam, Heroic, the lot. Work files aren't visible.
+
+Switch users at the login screen and **"work mode" and "play mode" physically swap out**. It feels like owning two PCs.
+
+```bash
+# Add the play user
+sudo adduser taro-game
+
+# Optionally, don't add this user to sudo (no admin rights for the play account)
+```
+
+Concrete benefits:
+
+- **No friendly fire.** You can't accidentally launch Steam on top of a work Slack window.
+- **Dependency isolation.** Wine tweaks or odd Flatpaks installed for gaming don't pollute your work environment.
+- **Time boundary.** Logging out to switch into the gaming user is exactly the friction that breaks idle "play while working" reflexes.
+- **Shareable machine.** Hand the play user to a child; split accounts across the family — all natural.
+
+Windows can't separate cleanly like this. **"I don't need a separate PC for work"** — this is one of the unexpected practical wins that only shows up once you switch to Linux.
+
+### Should I just use a gaming-focused distro (Bazzite etc.)?
+
+Gaming-focused distros like Bazzite exist — essentially the Steam Deck OS adapted for desktops, and yes, "boot and play" is a faster experience.
+
+The book's stance is clear. **Keep Debian 13 as your primary work machine and play games on top of it.** Switching to a gaming-specialized distro at the cost of your work productivity gets the priorities backwards. The Flatpak Steam on Debian closes most of the gap with Bazzite to "the first ten minutes feel a bit different."
+
+### If a game you want refuses to run
+
+Do you keep Windows around solely for a handful of kernel-anti-cheat titles? The book's answer is **no**:
+
+1. **Give up that handful of titles.** There's no shortage of other games.
+2. **Play them on a console instead.** PS5 / Switch / Xbox versions exist for most of them.
+3. **Keep an old Win11 box as "gaming only."** Disconnected from your daily work, stripped down to Steam and that one game (the Category A handling from Chapter 1).
+
+None of these justifies making your primary PC a Windows machine.
+
+### Ask Claude ⑧: Verdict on My Library
+
+> The games I play (or want to play) are:
+> - [title 1]
+> - [title 2]
+> - [title 3]
+>
+> For each, on Debian + Steam Proton (or Heroic), tell me:
+> (1) Expected runtime status (drawing on ProtonDB).
+> (2) Whether it ships kernel-level anti-cheat and how the Linux outlook stands.
+> (3) Alternatives or workarounds (console version, similar titles, etc.).
+
+## Section 10 — The Pace of Migration
+
+Don't migrate everything at once. Move in this order.
+
+**Day 1.** Browser, mail, messenger (the daily essentials).
+**Week 1.** Office, cloud sync, password manager.
+**Month 1.** Image / video, utilities, games, specialized use.
+
+Set priorities and don't rush.
+
+### Ask Claude ⑨: My App Migration Plan
+
+> Based on the B and D categories of my dependency map (`dependency-map.md`) and how often I use each, draft an app migration schedule split into Day 1 / Week 1 / Month 1.
+> Add a risk level to each item (impact if the migration fails).
+
+## Summary
+
+What you did in this chapter:
+
+1. Replaced Windows apps with Debian apps in nine categories.
+2. Handled honestly the things that don't fully replace (LINE, Teams, kernel-anti-cheat games, etc.).
+3. Confirmed that free native OSS games install in one line, and the Windows titles you own run mostly fine via Steam Proton + Heroic.
+4. Designed the migration pace (Day / Week / Month).
+
+**There is much less you actually have to give up than you thought.** Browsers, mail, office, communication, image and video, sync, password managers, utilities, games — with the stance this book takes, the things that genuinely require Windows count on one hand.
+
+Where you are now:
+- A set of Debian apps usable for daily life.
+- A migration plan.
+
+In Chapter 12, "Understanding and Managing Configuration," we cover where Debian's configuration files live, dotfiles management, backup, and tracking with Git. Get into the practice of **leaving your environment as documentation**.
+
+---
+
+The full series can be navigated from [Learning Debian with Claude — All chapters](/en/claude-debian/). Comments and discussion go to the Facebook group: [AISeed — Biodiversity, Food, AI and Life](https://www.facebook.com/groups/vegitage).

@@ -1,5 +1,32 @@
-// Folder-specific settings
-//
-// For a full list of overridable settings, and general information on folder-specific settings,
-// see the documentation: https://zed.dev/docs/configuring-zed#settings-files
-{}
+// プロジェクト設定 — シリーズ単位 AsciiDoc での執筆向け
+{
+  // AsciiDoc 拡張(シンタックスハイライト+アウトライン)を自動インストール
+  "auto_install_extensions": { "asciidoc": true },
+  "file_types": { "AsciiDoc": ["adoc"] },
+  "languages": {
+    "AsciiDoc": {
+      // 散文はソフトラップで(長い行でも読みやすく)
+      "soft_wrap": "editor_width",
+      "format_on_save": "off",
+      // 行末の ` +` はハード改行の構文なので消さない
+      "remove_trailing_whitespace_on_save": false,
+      "show_edit_predictions": false
+    },
+    "Markdown": { "soft_wrap": "editor_width" }
+  },
+  // ツリーと検索から生成物を隠す(articles/ の8ファイルが主役)
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/__pycache__",
+    "**/.venv",
+    ".build/**",
+    "html/insights/**",
+    "html/en/**",
+    "html/blog/**",
+    "html/claude-debian/**",
+    "html/ai-native-ways/**",
+    "html/phosphorus-and-farming/**",
+    "html/fable/**",
+    "verify.txt"
+  ]
+}

@@ -1,26 +1,37 @@
 [
   {
-    "label": "1. Build site",
+    "label": "1. ライブプレビュー(保存で自動反映+エラー表示)",
+    "command": "./.venv/bin/python tools/serve.py --port 8000",
+    "cwd": "$ZED_WORKTREE_ROOT",
+    "reveal": "always"
+  },
+  {
+    "label": "2. このシリーズだけビルド",
+    "command": "./.venv/bin/python tools/build_article.py \"$ZED_FILE\"",
+    "cwd": "$ZED_WORKTREE_ROOT"
+  },
+  {
+    "label": "3. フルビルド",
     "command": "./.venv/bin/python tools/build_article.py --all",
     "cwd": "$ZED_WORKTREE_ROOT"
   },
   {
-    "label": "2. Preview (ビルド済み html を配信)",
-    "command": "./.venv/bin/python -m http.server --directory html 8000",
+    "label": "4. 新旧サイト突き合わせ検証",
+    "command": "./.venv/bin/python tools/verify_migration.py /home/dev/dev/website/html html --report verify.txt",
     "cwd": "$ZED_WORKTREE_ROOT"
   },
   {
-    "label": "3. Deploy to PREVIEW URL",
+    "label": "5. Deploy to PREVIEW URL",
     "command": "./.venv/bin/python tools/cloudflare_pages_deploy.py html --project aiseed-dev --branch preview",
     "cwd": "$ZED_WORKTREE_ROOT"
   },
   {
-    "label": "4. Deploy to PRODUCTION",
+    "label": "6. Deploy to PRODUCTION",
     "command": "./.venv/bin/python tools/cloudflare_pages_deploy.py html --project aiseed-dev --branch main",
     "cwd": "$ZED_WORKTREE_ROOT"
   },
   {
-    "label": "5. Mirror a site → static (edit URL & --out)",
+    "label": "7. Mirror a site → static (edit URL & --out)",
     "command": "./.venv/bin/python tools/mirror_site.py https://example.com/ --out mirror --max-pages 200",
     "cwd": "$ZED_WORKTREE_ROOT"
   }

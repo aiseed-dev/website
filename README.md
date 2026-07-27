@@ -25,45 +25,69 @@ html/
 └── images/                # 画像素材
 ```
 
-Markdown（または AsciiDoc）ソース（ビルド入力）はリポジトリ直下。
-**1記事 = 1フォルダ**で、言語別本文と関連アセット（画像・PDF）を同じ
-フォルダにまとめる:
+記事ソース（ビルド入力）は **シリーズ = 1つの AsciiDoc ファイル**。
+日英両方の本文とフロントマターを1ファイルに持ち、
+[pyasciidoc](https://github.com/aiseed-dev/pyasciidoc) がレンダリングする:
 
 ```
 articles/
-├── insights/                       # Insights 記事（連載）
-│   └── 01-climate-mistake/
-│       ├── ja.md
-│       └── en.md
-├── claude-debian/                  # Claudeと一緒に学ぶDebian
-│   └── 00-prologue/
-│       ├── ja.md
-│       └── en.md
-├── ai-native-ways/                 # AIネイティブな仕事の作法
-│   ├── README.md
-│   └── 00-prologue/
-│       ├── ja.md
-│       └── en.md
-└── blog/                           # Blog 記事
-    └── 015-japan-windows-disaster-risk/
-        ├── ja.md
-        ├── en.md
-        ├── 015-IMG_3433.jpg        # 共有/JAアセット
-        └── en-015-foo.pdf          # EN専用アセット（en- プレフィックスで区別）
+├── insights.adoc                  # Insights 全28章
+├── blog.adoc                      # Blog 全44記事
+├── claude-debian.adoc             # Claudeと一緒に学ぶDebian 全24章
+├── claude-debian-server.adoc      # └ サーバー編 全11章
+├── ai-native-ways.adoc            # AIネイティブな仕事の作法 全12章
+├── ai-native-ways-software.adoc   # └ ソフトウェア開発編 全23章
+├── phosphorus-and-farming.adoc    # リンと農業 全10章
+├── fable.adoc                     # Fable 5 が帰ってきた 全9章(日本語のみ)
+├── assets/<シリーズ>/<記事ID>/     # 画像・PDF(en- プレフィックスは EN 専用)
+│   └── _root/                     # シリーズ直下のビルド入力(template-example.html 等)
+└── examples/ai-native-ways/       # example-N/ サンプルコード
 ```
 
-`ja.md` / `en.md` は同一フォルダに同居。表・脚注・引用の帰属など
-Markdown（CommonMark）では足りない構造を持つ記事は、同じ場所に
-`ja.adoc` / `en.adoc` を置いて AsciiDoc で書ける（[pyasciidoc](https://github.com/aiseed-dev/pyasciidoc)
-が変換する。フロントマターの書式・出力先・Mermaid フェンスの扱いは
-`.md` と共通。同じ言語で `.md` と `.adoc` を両方置くと、どちらが正か
-推測できないため警告を出してその記事をスキップする——記事は片方の
-形式に決める）。既存の `.md` 記事の書き換えは不要
-（`:::chain` 等のカスタムブロックは引き続き動く）。
+シリーズファイルの中の1記事は次の形。記事の並び順がそのまま prev/next
+連鎖になる（手書きの連鎖キーは不要。隣の章の実タイトルと違う表記に
+したいときだけ `prev_title.ja:` 等を明示する）:
 
-アセットの命名は同じフォルダ内で
-`en-` プレフィックスのある／なしで言語別配信を切り替える（`en-` 付きは
-EN ビルドのみコピー、無いものは両言語にコピー）。
+```asciidoc
+// ===== article: 021-software-three-transitions =====
+---
+slug: software-three-transitions
+date: 2026.05.22
+title.ja: 日本語タイトル
+title.en: English title
+description.ja: …
+description.en: …
+hero_image: IMG_3481.jpg
+---
+ifdef::lang-ja[]
+= 日本語タイトル
+
+日本語本文(AsciiDoc)。
+endif::[]
+ifdef::lang-en[]
+= English title
+
+English body.
+endif::[]
+```
+
+- フロントマター: 日英で同じ値のキーは裸(`date:`)、異なる値は
+  `key.ja` / `key.en`。`lang` は書かない(ビルド時に合成)。
+- 本文は AsciiDoc: 見出し `==`、リスト `*`/`.`（入れ子は `**`/`..`）、
+  引用 `____`、表 `|===`、区切り線 `'''`、強調 `*太字*`/`_斜体_`、
+  チェーン図 `[.chain-diagram]` + `--`〜`--`（行末 ` +` で改行保持）、
+  ハイライト `[.highlight-box]` + `--`〜`--`、Mermaid は ```` ```mermaid ````
+  フェンスのまま。
+- ビルドは `.build/articles/`（gitignore 済み）に従来型ツリーを展開して
+  から行う（`tools/build/series.py`）。書き損じ（ifdef の閉じ忘れ等）は
+  行番号付きで即エラーになり、開発サーバーはブラウザに赤バナーで表示する。
+
+旧レイアウト（1記事=1フォルダの ja.md/en.md）のアーカイブは
+`/home/dev/dev/website` に残っている。**今後の執筆・デプロイはこの
+リポジトリで行うこと**（旧リポジトリからデプロイしない）。
+Markdown からの一括変換は `tools/convert_md_to_adoc.py`、新旧ビルドの
+突き合わせ検証は `tools/verify_migration.py`（判定除外は
+`verify-allowlist.txt`）。
 
 ヘッダーメニューの「記事」ドロップダウン配下に「構造分析」「AIネイティブな
 仕事の作法」「Claudeと一緒に学ぶDebian」がぶら下がる（デスクトップはホバー、
@@ -149,16 +173,31 @@ ai-native-ways の詳細は [articles/ai-native-ways/README.md](articles/ai-nati
 
 記法・オプションの詳細は [docs/manuals/build_article.md](docs/manuals/build_article.md) 参照（ツール全体の一覧は [tools/README.md](tools/README.md)）。
 
-### 開発サーバー（ビルド + 監視 + 配信）
+### 開発サーバー（ビルド + 監視 + 配信 + ライブリロード）
 
 ```bash
 python3 tools/serve.py                # http://localhost:8000
 python3 tools/serve.py --port 8080
 ```
 
-`articles/`, `tools/templates/`, `html/{css,js}` を監視し、変更があれば
-`build_article.py --all` を自動実行する。ブラウザのリロードは手動（CSS/JS は
-`?v=<hash>` が変わるので強制リロード不要）。
+`articles/`, `tools/templates/`, `html/{css,js}` を監視する。
+`articles/<シリーズ>.adoc` の保存は**そのシリーズだけの差分ビルド**
+（数秒）、それ以外の変更はフルビルド。ビルドが終わると開いている
+ブラウザは**自動でリロード**される（配信 HTML に SSE クライアントを
+注入）。ビルド失敗（ifdef の閉じ忘れ等）は、ブラウザ画面上部に
+行番号付きの赤バナーで表示され、修正して保存すれば自動で消える。
+
+### Zed で書く
+
+このリポジトリを Zed で開くと AsciiDoc 拡張が自動インストールされる
+（`.zed/settings.json`）。執筆の流れ:
+
+- **`Ctrl+Alt+P`** — ライブプレビュー開始（保存するたびブラウザに反映）
+- **`Ctrl+Alt+B`** — 開いているシリーズだけビルド / **`Ctrl+Alt+Shift+B`** — フルビルド
+- **`Ctrl+Shift+O`**（アウトライン）— シリーズ内の記事タイトル一覧へジャンプ
+- スニペット: `art`（新しい記事の骨組み）、`quote`、`quoteby`、`chain`、
+  `box`、`table`、`mermaid`、`img`、`note`
+- タスク一覧はコマンドパレット → `task: spawn`（`.zed/tasks.json`）
 
 ### 任意のディレクトリをターゲットにする
 

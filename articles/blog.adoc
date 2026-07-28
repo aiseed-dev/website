@@ -14096,7 +14096,7 @@ ifdef::lang-ja[]
 
 == まだ決まらないこと
 
-*一つ目 ── 中国国内の需給。これが最重要である。* 8月の再開判断は、対日関係でも国際市場でもなく、*中国の国内需給で決まる*。そもそも輸出停止の目的が国内供給の確保と価格の安定だった ── 国内のMAP価格は2025年5月に約3,600元/tと、3割上げた前歴がある。見るべき変数は四つ。国内価格が落ち着いているか。8〜9月の秋の作付け需要。LFP電池向けリン酸との取り合い(2026年の世界出荷見通しは580万トン。中国ではリンは電池材料としての戦略物資でもある)。そして硫酸コスト。*先行指標は公告ではなく、中国の硫黄価格である* ── 政策が出る前に、作る側が原料を買う。7月の反発が続くなら再開、腰折れするなら延長を疑う。
+*一つ目 ── 中国国内の需給。これが最重要である。* 8月の再開判断は、対日関係でも国際市場でもなく、*中国の国内需給で決まる*。そもそも輸出停止の目的が国内供給の確保と価格の安定だった ── 国内のMAP価格は2025年5月に約3,600元/tと、3割上げた前歴がある。見るべき変数は五つ。国内価格が落ち着いているか。8〜9月の秋の作付け需要。LFP電池向けリン酸との取り合い(2026年の世界出荷見通しは580万トン。中国ではリンは電池材料としての戦略物資でもある)。硫酸コスト。そして*災害である。* 7月4日から華南・華中・華東を襲った豪雨(台風の残余環流と寒渦の複合)は、9日までに70人超の死者とダムの決壊を出し、山東南部と江蘇北部では倒伏と農業施設の損壊が報じられている。*災害は、再開にほぼ一方向に効く。* 補植と追肥で国内需要が増え、食料安全保障の政治的重みが増し、南西部のリン鉱山帯と電力(2022年に四川の渇水が化学工場の電力制限を招いた前例がある)に供給リスクが掛かる。前例はもう一つある ── *2021年10月に始まった輸出検査の強化は、7月の河南水害とエネルギー危機の秋だった。* 災害の夏は、規制の秋になりやすい。ただし下限価格の型ができたいまは、全面停止よりも、クォータの縮小と下限の引き上げという形を取りやすい。*先行指標は公告ではなく、中国の硫黄価格である* ── 政策が出る前に、作る側が原料を買う。7月の反発が続くなら再開、腰折れするなら延長を疑う。
 
 *二つ目 ── モロッコの製品構成。* 全量復帰はしたが、中身がTSPに寄った。日本がモロッコから買ってきたのは*リン安(窒素入りのMAP/DAP)*である。TSP(重過リン酸石灰)は日本でも使う品目なので代替は効くが、*窒素の分は別に手当てが要る* ── リン酸の解決が、そのぶん窒素の需要に変わる。制約の移動は、ここでも起きる。対日出荷の中身が戻るかは、OCPのアンモニア増強と硫黄分散の進み方次第だ。
 
@@ -14140,6 +14140,7 @@ ifdef::lang-ja[]
 . Vapor Lock: The Global Sulfur Supply Crisis 2026 ── https://stellarix.com/insights/blogs/global-sulfur-supply-crisis/
 . Drones Strike Largest Chemical Plant Nevinnomyssk Azot in Southern Russia ── https://militarnyi.com/en/news/drones-chemical-plant-nevinnomyssk-azot/
 . China reopens urea exports with $660pt price floor (Profercy) ── https://www.profercy.com/insights/china-reopens-urea-exports-with-660pt-price-floor
+. 中国南部で大雨 ダム決壊など被害相次ぐ 70人超が死亡 (NHK、2026年7月) ── https://news.web.nhk/newsweb/na/na-k10015173001000
 . India issues 1.7mt urea tender ahead of monsoon sowing (Fertilizer Daily、2026年5月28日) ── https://www.fertilizerdaily.com/20260528-india-issues-1-7mt-urea-tender-ahead-of-monsoon-sowing-as-domestic-production-shortfall-deepens/
 . 農林水産省「肥料をめぐる情勢」(2026年4月) ── 輸入相手国と備蓄の数値
 endif::[]
@@ -14178,7 +14179,7 @@ One lesson is buried here. *The nutrient that got hit was the one that had diver
 
 == Still Undecided
 
-*First — China's domestic balance. This is the one that matters most.* The August decision will be made not on Japan, and not on the world market, but on *China's own supply and demand*. The stated purpose of the halt was domestic supply and price stability — domestic MAP had climbed about 30%, to roughly 3,600 yuan a tonne, by May 2025. Four variables to watch: whether domestic prices have settled; autumn planting demand in August-September; competition from LFP battery phosphate (global shipments forecast at 5.8 million tonnes in 2026 — in China, phosphorus is also a strategic battery material); and sulfuric acid costs. *The leading indicator is not the announcement but the Chinese sulfur price* — producers buy feedstock before policy is published. If July's rebound holds, expect resumption; if it fades, suspect extension.
+*First — China's domestic balance. This is the one that matters most.* The August decision will be made not on Japan, and not on the world market, but on *China's own supply and demand*. The stated purpose of the halt was domestic supply and price stability — domestic MAP had climbed about 30%, to roughly 3,600 yuan a tonne, by May 2025. Five variables to watch: whether domestic prices have settled; autumn planting demand in August-September; competition from LFP battery phosphate (global shipments forecast at 5.8 million tonnes in 2026 — in China, phosphorus is also a strategic battery material); sulfuric acid costs; and *disasters*. The rains that struck southern, central and eastern China from 4 July (typhoon remnants combined with a cold vortex) had killed more than 70 people by the 9th and breached dams, with crop lodging and damaged agricultural facilities reported in southern Shandong and northern Jiangsu. *Disasters cut almost entirely one way against resumption*: replanting and topdressing raise domestic demand, the political weight of food security grows, and supply risk lands on the southwestern phosphate-mining belt and on power (in 2022, Sichuan's drought forced electricity rationing on chemical plants). And there is precedent — *the export inspections that began in October 2021 came in the autumn after July's Henan floods and an energy crisis.* A summer of disasters tends to become an autumn of restrictions. Though with the price-floor mechanism now in place, the likelier form is smaller quotas and a higher floor rather than a full re-closure. *The leading indicator is not the announcement but the Chinese sulfur price* — producers buy feedstock before policy is published. If July's rebound holds, expect resumption; if it fades, suspect extension.
 
 *Second — Morocco's product mix.* Full output is back, but its content has shifted toward TSP. What Japan has bought from Morocco is *phosphate ammonium — MAP/DAP, which carries nitrogen*. TSP is a familiar product in Japan (double superphosphate), so substitution works — but *the nitrogen has to be sourced separately*: solving phosphate converts, in part, into more nitrogen demand. The constraint moves here too. Whether shipments to Japan regain their old composition depends on OCP's ammonia build-out and sulfur diversification.
 
@@ -14222,6 +14223,7 @@ Whichever way it falls, the result will be written here.
 . Vapor Lock: The Global Sulfur Supply Crisis 2026 — https://stellarix.com/insights/blogs/global-sulfur-supply-crisis/
 . Drones Strike Largest Chemical Plant Nevinnomyssk Azot in Southern Russia — https://militarnyi.com/en/news/drones-chemical-plant-nevinnomyssk-azot/
 . China reopens urea exports with $660pt price floor (Profercy) — https://www.profercy.com/insights/china-reopens-urea-exports-with-660pt-price-floor
+. China Briefing 9 July 2026: Guangxi floods (Carbon Brief) — https://www.carbonbrief.org/china-briefing-9-july-2026-guangxi-floods-beautiful-china-plan-new-eu-china-mechanism
 . India issues 1.7mt urea tender ahead of monsoon sowing (Fertilizer Daily, 28 May 2026) — https://www.fertilizerdaily.com/20260528-india-issues-1-7mt-urea-tender-ahead-of-monsoon-sowing-as-domestic-production-shortfall-deepens/
 . MAFF, "The Situation Surrounding Fertilizer" (April 2026) — import sources and stockpile figures
 endif::[]

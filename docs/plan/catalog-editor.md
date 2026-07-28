@@ -5,9 +5,15 @@ aiseed-builder に「品目カタログ」の編集能力を足す。WordPress �
 site-editor が「投稿」、これは「カスタムフィールド付きカスタム投稿タイプ=商品」。
 スキーマ駆動にすることで、野菜図鑑も将来の EC 商品も同じエディタで扱える。
 
+**同日追記: 帰属と公開先を変更。** データの正本は独立リポジトリ
+`/home/dev/dev/vegitage`(aiseed-dev/vegitage)の `vegitage-data/` に帰属させ、
+公開は aiseed.dev 配下(/vegitage/)ではなく **独自ドメイン aiseed.page** で行う。
+website 側は vegitage-data/ と symlink を削除済み、旧 URL は
+`/vegitage/* → https://aiseed.page/:splat` の301で引き継ぐ。
+
 ## 現状の確認(2026-07-28 時点)
 
-- 正本: `vegitage-data/web/italian/` に 69 品目。1品目 =
+- 正本: `vegitage/vegitage-data/web/italian/` に 69 品目。1品目 =
   `<作物>.md`(YAML フロントマター+概要文)+ `history|cultivation|cuisine/<作物>.md`
   (サブガイド計135ファイル、全651枠中は歯抜けあり=無いタブは出ない仕様)
 - フロントマター: `id`(master_lists と突合・暫定)、`name_ja/it/en`、`aliases`、
@@ -15,8 +21,9 @@ site-editor が「投稿」、これは「カスタムフィールド付きカ�
   `certification`、`regions`、`season`、`uses`、`hero_image`。
   **行内コメントが情報を持っている**(例: `id: … # master_lists と要突合せ（暫定）`)
 - ビルド: `vegitage-data/web/build.py`(markdown+PyYAML、全ビルドのみ)。
-  出力 `web/site/italian/` ← `html/vegitage/italian` が symlink。
-  つまり**ビルドすれば既存のプレビュー(serve.py)と公開(deploy)に自動で乗る**
+  出力 `web/site/` をそのまま aiseed.page(Cloudflare Pages)へアップロードする。
+  URL は `aiseed.page/italian/<作物>.html`(website 時代の /vegitage/ 接頭辞が
+  取れるだけで、それ以下の構造は不変)
 - たたき台: `data/deep_research/italian/<作物>/` に 71 品目分。
   正本 69 との差=未取込の「入荷待ち」
 - 状態管理: 無し(draft の概念が build.py に無い)
@@ -38,7 +45,7 @@ site-editor が「投稿」、これは「カスタムフィールド付きカ�
 ```yaml
 label: イタリア野菜図鑑
 item_label: 品種            # UI の「新規追加」等の呼称
-url_base: /vegitage/italian
+url_base: /italian            # aiseed.page 配下
 
 fields:
   - {key: id,           label: 品目ID,  type: id}       # 読み取り専用表示
@@ -127,24 +134,39 @@ EC 商品への布石: `price` や `stock` が必要になったら type を足�
 サイドバーには site.json の `catalogs` 配列の順でカタログ名が並ぶ
 (シリーズ一覧と同格)。「変更を記録(git)」「サイトを公開」は既存機能を共用。
 
-## 5. site.json への登録
+## 5. vegitage を aiseed-builder の「サイト」として開く
+
+website の site.json に相乗りさせるのではなく、**vegitage リポジトリ自身に
+site.json を置き**、aiseed-builder でサイトとして開く(記事サイトと対等):
 
 ```json
-"builder": {
-  "plugins": ["forms", "audit", "catalog"],
-  "catalogs": [
-    {"schema": "vegitage-data/web/italian/schema.yaml",
-     "build": "vegitage-data/web/build.py",
-     "preview_path": "/vegitage/italian/"}
-  ]
+{
+  "site_name": "Vegitage",
+  "builder": {
+    "cf_project": "vegitage",
+    "plugins": ["catalog"],
+    "catalogs": [
+      {"schema": "vegitage-data/web/italian/schema.yaml",
+       "build": "vegitage-data/web/build.py",
+       "output": "vegitage-data/web/site",
+       "preview_path": "/italian/"}
+    ]
+  }
 }
 ```
 
-「更新」ボタン = サイトの venv の python で `build` を実行 → symlink 経由で
-serve.py のプレビューに反映。「公開」= 既存デプロイ(html/ 一式)に乗る。
+必要な本体側の変更: `store.init_site` は現在 `tools/build/series.py` と
+`articles/` を必須にしている。**catalogs だけのサイトも開ける**ように緩める
+(シリーズ機能はサイドバーに出ないだけ)。プレビューは builder が `output` を
+簡易 HTTP で配信、公開は `cf_project` へ直接アップロード(既存の公開機能と
+同じ経路。ドメイン aiseed.page の割当は Cloudflare 側の一回きりの設定)。
 
 ## 6. 実装の段取り
 
+0. **aiseed.page の公開初期設定**(済ませてから編集機能へ): build.py に
+   ルート index(/ → /italian/ への案内)を追加、Cloudflare Pages
+   プロジェクト作成+ドメイン割当、初回アップロード。website 側の
+   301(`/vegitage/*`)が生きているかの確認
 1. **vegitage 側の受け入れ準備**(半日): schema.yaml を書く。build.py に
    draft スキップ。既存 69 品目をスキーマに通して表記ゆれの棚卸し
    (閉じた語彙は実データから確定させる)

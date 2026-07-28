@@ -11,7 +11,40 @@ site-editor が「投稿」、これは「カスタムフィールド付きカ�
 website 側は vegitage-data/ と symlink を削除済み、旧 URL は
 `/vegitage/* → https://aiseed.page/:splat` の301で引き継ぐ。
 
-## 現状の確認(2026-07-28 時点)
+## 二つのカタログ(2026-07-28 決定)
+
+伝統野菜辞典は **別物の2カタログ**として両方サイトに出す。統合しない。
+
+| カタログ | データ | 形式 | 品目 | 生成 |
+|---|---|---|---|---|
+| **イタリア図鑑** | `vegitage-data/web/italian/` | Markdown+YAML | 69 | `web/build.py`(既存) |
+| **野菜辞典** | `frontend/vegitage/assets/data/` | 構造化JSON | 332 | **未整備(新規に要る)** |
+
+重複する30品目も二重管理でよい(粒度・観点が違う——図鑑はイタリアの食文化史、
+辞典は栽培/栄養/気候変動適応/環境再生農業までの汎用データ)。
+
+### カタログA: イタリア図鑑(Markdown・69)
+下記「現状の確認」と設計本文(スキーマ・バンドル・状態・UI)はこのカタログの話。
+
+### カタログB: 野菜辞典(JSON・332)
+- データ源: `frontend/vegitage/assets/data/` に `vegetable_summary/<名>.json`(一覧・
+  カード用、content.ja に15項目)+ `vegetable_detail/<名>.json`(詳細、15セクション:
+  basic_info / classification / cultivation_characteristics / nutritional_functional /
+  culinary_applications / climate_change_adaptation / natural_hybridization_potential /
+  regenerative_agriculture / conservation_priority ほか)+ `_index.json`(別名 redirect)
+- **公開手段が無い**: これまで Flutter アプリが JSON を直接読んで表示していた。
+  アプリの Web 版は退役 → **JSON→静的HTML ビルダーを新規に作る**必要がある。
+  summary が一覧、detail が詳細ページに対応する自然な写像
+- データの置き場所: 現在は Flutter アプリ配下(`frontend/vegitage/assets/data/`)。
+  アプリ(iOS/Android)がまだ読むので**ここが正本のまま**。Web ビルダーは
+  このディレクトリを入力にする(コピーせず参照)。要検討: 将来アプリと Web が
+  同じ JSON を共有し続けるか、`vegitage-data/` 側へ寄せるか
+- スキーマ駆動エディタの対象にもなるが、JSON は入れ子が深いので schema.yaml は
+  カタログA より複雑。**まず「読める形で公開」を先にやり、編集は後**(A で
+  エディタの型ができてから B に広げる)
+- URL 設計案: `aiseed.page/vegetables/<名>.html`(図鑑の `/italian/` と併存)
+
+## 現状の確認(カタログA・2026-07-28 時点)
 
 - 正本: `vegitage/vegitage-data/web/italian/` に 69 品目。1品目 =
   `<作物>.md`(YAML フロントマター+概要文)+ `history|cultivation|cuisine/<作物>.md`
@@ -177,6 +210,16 @@ site.json を置き**、aiseed-builder でサイトとして開く(記事サイ�
 4. **2カタログ目で汎用性を証明**: 日本野菜(build.py の CATEGORIES を
    設定駆動化して `web/japanese/` を追加)。ここまで来れば「EC の商品」も
    スキーマ1枚の距離
+
+### カタログB(野菜辞典 JSON・332)の段取り — Aと独立に進行可
+
+B1. **JSON→静的HTMLビルダー**(新規): `assets/data/{vegetable_summary,
+    vegetable_detail}` を入力に、一覧(summaryのカード)+詳細(detailの
+    15セクション)を生成。`_index.json` の redirect も反映。まず「読める形で
+    公開」がゴール。図鑑の build.py とはテンプレートを共用できるか要検討
+B2. **公開**: カタログA と同じ Cloudflare Pages に `/vegetables/` として相乗り
+B3. **編集(後回し)**: JSON はネストが深い。A のエディタの型が固まってから、
+    detail の主要セクションだけを対象にスキーマを起こす
 
 ## 決めたこと(推奨)と根拠
 

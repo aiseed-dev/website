@@ -191,8 +191,15 @@ site.json を置き**、aiseed-builder でサイトとして開く(記事サイ�
 必要な本体側の変更: `store.init_site` は現在 `tools/build/series.py` と
 `articles/` を必須にしている。**catalogs だけのサイトも開ける**ように緩める
 (シリーズ機能はサイドバーに出ないだけ)。プレビューは builder が `output` を
-簡易 HTTP で配信、公開は `cf_project` へ直接アップロード(既存の公開機能と
-同じ経路。ドメイン aiseed.page の割当は Cloudflare 側の一回きりの設定)。
+簡易 HTTP で配信する。
+
+公開は**済**: `store.deploy` を
+[cf-publish](https://github.com/aiseed-dev/cf-publish)(自作PyPIパッケージ、
+aiseed-builder の依存)に載せ替えた。サイト側に `tools/cloudflare_pages_deploy.py`
+が無くても公開できるようになったので、vegitage も `publish_dir` を
+`vegitage-data/web/site` に設定すれば公開対象になる(2026-07-28 時点で
+932ファイルの dry-run 確認済み)。ドメイン aiseed.page の割当は完了済み、
+Flutterアプリからの切り替えは保留中。
 
 ## 6. 実装の段取り
 

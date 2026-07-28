@@ -741,3 +741,22 @@ def blog_index_vars(lang, post_list_html):
         "og_locale": "en_US" if is_en else "ja_JP",
         "og_image": config.DEFAULT_OG_IMAGE,
     }
+
+
+def custom_index_vars(lang, chapter_list_html, *, title, subtitle="",
+                      description="", url_base="", has_translation=False):
+    """サイト独自シリーズ(site.json の builder.series で宣言したもの)の
+    索引ページ用。共有ナビゲーションは既存の索引と同じものを使い、
+    シリーズ固有の見出し・説明・言語切替リンクだけ差し替える。"""
+    v = fable_index_vars(lang, chapter_list_html, has_translation=has_translation)
+    base = url_base.strip("/")
+    ja_url, en_url = f"/{base}/", f"/en/{base}/"
+    v.update({
+        "page_title": title,
+        "structural_analysis_label": title,
+        "page_subtitle": subtitle,
+        "meta_description": description or subtitle or title,
+        "other_lang_link": ja_url if lang == "en" else en_url,
+        "series_title": title,
+    })
+    return v

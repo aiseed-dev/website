@@ -53,6 +53,7 @@ from build.markdown import (
 )
 from build.template_vars import (
     BOOK_SUBSERIES,
+    custom_index_vars,
     aiways_index_vars,
     blog_index_vars,
     book_index_vars,
@@ -2326,6 +2327,21 @@ def build_sitemap():
         if not slug:
             continue
         urls.append((f"{site_url}/en/fable/{slug}/", norm_date(meta.get("date")), "0.5"))
+    # サイト独自シリーズ(site.json の builder.series)
+    for sdef in series_expansion.custom_series_defs(config.SITE_ROOT):
+        base = sdef["url_base"].strip("/")
+        for lang, prefix, prio_index, prio_page in (
+                ("ja", "", "0.8", "0.6"), ("en", "/en", "0.7", "0.5")):
+            metas = collect_custom_chapters(sdef, lang)
+            if not metas:
+                continue
+            urls.append((f"{site_url}{prefix}/{base}/", latest, prio_index))
+            for meta in metas:
+                slug = meta.get("slug", "")
+                if slug:
+                    urls.append((f"{site_url}{prefix}/{base}/{slug}/",
+                                 norm_date(meta.get("date")), prio_page))
+
     urls.append((f"{site_url}/about/", latest, "0.6"))
     urls.append((f"{site_url}/en/about/", latest, "0.5"))
     urls.append((f"{site_url}/light-farming/", latest, "0.8"))
@@ -2488,6 +2504,150 @@ def copy_form_assets():
             dest.write_bytes(src.read_bytes())
 
 
+# ---------------------------------------------------------------------------
+# サイト独自シリーズ(site.json の builder.series で宣言したもの)
+#
+# 組み込みの6シリーズと違い、サイトごとに名前・URL・ラベルを決められる。
+# 「固定ページ」「お知らせ」など、そのサイトにしかない区分のためのもの。
+# 記事ページと索引ページの作りは fable(いちばん素直な連載)に倣う。
+# ---------------------------------------------------------------------------
+
+
+def _custom_dir(sdef, lang="ja"):
+    """展開済みツリー上の、このシリーズのソースディレクトリ。"""
+    return config.SITE_ROOT / ".build" / "articles" / sdef["url_base"].strip("/")
+
+
+def _custom_url_base(sdef, lang):
+    base = "/" + sdef["url_base"].strip("/")
+    return ("/en" + base) if lang == "en" else base
+
+
+def collect_custom_chapters(sdef, lang="ja"):
+    chapters = []
+    for f in _iter_article_files(_custom_dir(sdef), lang):
+        meta, _ = parse_frontmatter(f.read_text(encoding="utf-8"))
+        num_match = re.match(r"(\d+)", f.parent.name)
+        meta["_file_number"] = int(num_match.group(1)) if num_match else 0
+        chapters.append(meta)
+    chapters.sort(key=lambda m: m.get("_file_number", 0))
+    return chapters
+
+
+def build_custom_chapter(md_path, sdef):
+    """サイト独自シリーズの記事1本をビルドする。"""
+    md_path = Path(md_path)
+    if not md_path.exists():
+        print(f"Error: {md_path} not found")
+        return False
+    meta, body = parse_frontmatter(md_path.read_text(encoding="utf-8"))
+    if "slug" not in meta:
+        print(f"Error: {md_path} missing 'slug' in front matter")
+        return False
+
+    lang = meta.get("lang") or _detect_lang(md_path)
+    meta["lang"] = lang
+    is_en = lang == "en"
+    slug = meta["slug"]
+    base = sdef["url_base"].strip("/")
+    url_base = _custom_url_base(sdef, lang)
+
+    out_dir = config.SITE_ROOT / "html" / ("en/" + base if is_en else base) / slug
+    out_dir.mkdir(parents=True, exist_ok=True)
+    meta["_source_dir"] = str(md_path.parent)
+    meta["_out_dir"] = str(out_dir)
+
+    body_html = render_body(body, md_path)
+    series_name = sdef.get("label", base)
+    series_index_url = f"{url_base}/"
+    canonical_url = f"{config.SITE_URL}{url_base}/{slug}/"
+    hreflang_ja = f"{config.SITE_URL}/{base}/{slug}/"
+    hreflang_en = f"{config.SITE_URL}/en/{base}/{slug}/"
+    has_other = sibling_exists(md_path.parent, "ja" if is_en else "en")
+
+    from build.images import resolve_og_image
+    og_image = resolve_og_image(meta, out_dir,
+                                public_base_url=canonical_url.rstrip("/"))
+
+    prev_slug = meta.get("prev_slug", "")
+    next_slug = meta.get("next_slug", "")
+    nav_html = _chapter_nav_html(
+        (f"{url_base}/{prev_slug}/", meta.get("prev_title", "")) if prev_slug else None,
+        (f"{url_base}/{next_slug}/", meta.get("next_title", "")) if next_slug else None,
+        (series_index_url, "Contents" if is_en else "目次"),
+        lang,
+    )
+    variables = _chapter_vars(
+        meta, body_html,
+        series_name=series_name,
+        series_index_url=series_index_url,
+        chapter_label=_numbered_chapter_label(meta.get("number", ""), lang)
+        if meta.get("number") else series_name,
+        canonical_url=canonical_url,
+        hreflang_ja=hreflang_ja if sibling_exists(md_path.parent, "ja") else "",
+        hreflang_en=hreflang_en if sibling_exists(md_path.parent, "en") else "",
+        og_image=og_image,
+        other_lang_url=(hreflang_ja if is_en else hreflang_en) if has_other else "",
+        other_lang_label="日本語" if is_en else "EN",
+        nav_html=nav_html,
+        masthead_kind="Series",
+    )
+    (out_dir / "index.html").write_text(
+        render(_chapter_template(lang), variables), encoding="utf-8")
+    copy_images(md_path.parent, out_dir, lang=lang)
+    print(f"Built {base}: {out_dir / 'index.html'}")
+    return True
+
+
+def build_custom_index(sdef, lang="ja"):
+    """サイト独自シリーズの索引ページ。"""
+    chapters = collect_custom_chapters(sdef, lang)
+    if not chapters:
+        return False
+    base = sdef["url_base"].strip("/")
+    url_base = _custom_url_base(sdef, lang)
+    other = "en" if lang == "ja" else "ja"
+
+    items = ""
+    for c in chapters:
+        items += f'''
+                <a href="{url_base}/{c.get("slug", "")}/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">{c.get("number", "").strip(chr(34))}</div>
+                        <div class="activity-content">
+                            <h3>{c.get("title", "")}{(" — " + c["subtitle"]) if c.get("subtitle") else ""}</h3>
+                            <p>{c.get("description", "")}</p>
+                        </div>
+                    </div>
+                </a>
+'''
+    variables = custom_index_vars(
+        lang, items,
+        title=sdef.get("label", base),
+        subtitle=sdef.get("subtitle", ""),
+        description=sdef.get("description", ""),
+        url_base=base,
+        has_translation=bool(collect_custom_chapters(sdef, other)),
+    )
+    out_file = (config.SITE_ROOT / "html"
+                / ("en/" + base if lang == "en" else base) / "index.html")
+    out_file.parent.mkdir(parents=True, exist_ok=True)
+    out_file.write_text(render("index.html", variables), encoding="utf-8")
+    print(f"Built {base} index: {out_file}")
+    return True
+
+
+def build_custom_series(sdef):
+    """1シリーズ分(記事+索引・日英)。ビルドした記事数を返す。"""
+    n = 0
+    for lang in ("ja", "en"):
+        for f in _iter_article_files(_custom_dir(sdef), lang):
+            if build_custom_chapter(f, sdef):
+                n += 1
+        build_custom_index(sdef, lang)
+    return n
+
+
 def main():
     site, args = config.resolve_site(sys.argv[1:])
     config.configure_site(site)
@@ -2635,6 +2795,11 @@ def main():
                     if build_aiways_example(ex, ex_lang):
                         examples_ok += 1
 
+        # サイト独自シリーズ(site.json の builder.series で宣言したもの)
+        custom_ok = 0
+        for sdef in series_expansion.custom_series_defs(config.SITE_ROOT):
+            custom_ok += build_custom_series(sdef)
+
         update_static_page_asset_versions()
         build_sitemap()
         build_robots()
@@ -2645,6 +2810,7 @@ def main():
             f" + {examples_ok}/{examples_total} ai-native-ways examples"
             f" + {farming_ok}/{len(farming_files)} phosphorus-and-farming chapters"
             f" + {fable_ok}/{len(fable_files)} fable installments"
+            f" + {custom_ok} custom-series articles"
             f" + indexes + sitemap.xml + robots.txt."
         )
         return
@@ -2652,9 +2818,14 @@ def main():
     # シリーズファイル(articles/blog.adoc 等)を指定されたら、そのシリーズを
     # まるごとビルドする(展開は main 冒頭の expand_all() で済んでいる)
     p_series = Path(arg)
-    if p_series.suffix == ".adoc" and p_series.name in series_expansion.SERIES_MAP:
-        _build_series(series_expansion.SERIES_MAP[p_series.name])
-        return
+    if p_series.suffix == ".adoc":
+        if p_series.name in series_expansion.SERIES_MAP:
+            _build_series(series_expansion.SERIES_MAP[p_series.name])
+            return
+        for sdef in series_expansion.custom_series_defs(config.SITE_ROOT):
+            if sdef["file"] == p_series.name:
+                build_custom_series(sdef)
+                return
 
     # Auto-detect book / blog / aiways / article from the path. Per-folder
     # layout means the series name is the grandparent dir of

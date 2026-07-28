@@ -65,6 +65,47 @@ _DIR_ATTRS = {
     "fable": "FABLE_DIR",
 }
 
+def site_series_defs(site_root):
+    """site.json の `builder.series` を返す(無ければ空)。**依存ゼロ**で読む
+    ——このモジュールは管理アプリからも import されるため。"""
+    import json
+    f = Path(site_root) / "site.json"
+    if not f.exists():
+        return []
+    try:
+        cfg = json.loads(f.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return []
+    return cfg.get("builder", {}).get("series", []) or []
+
+
+def custom_series_defs(site_root):
+    """組み込みでない(サイト独自の)シリーズ定義。
+
+    site.json で `{"file": "pages.adoc", "label": "固定ページ",
+    "url_base": "/pages"}` のように宣言すると、そのサイト固有のシリーズに
+    なる。組み込み6シリーズ(SERIES_MAP)を持たないサイトでも、自分の
+    シリーズを定義して記事を置ける。"""
+    out = []
+    for s in site_series_defs(site_root):
+        f = s.get("file", "")
+        if f and f not in SERIES_MAP and (Path(site_root) / "articles" / f).exists():
+            d = dict(s)
+            d.setdefault("url_base", "/" + f[: -len(".adoc")])
+            d.setdefault("label", f[: -len(".adoc")])
+            out.append(d)
+    return out
+
+
+def series_map(site_root):
+    """組み込みの SERIES_MAP に、サイト独自のシリーズを重ねたもの。
+    値は .build/articles/ 配下の展開先サブディレクトリ。"""
+    m = dict(SERIES_MAP)
+    for d in custom_series_defs(site_root):
+        m[d["file"]] = d["url_base"].strip("/")
+    return m
+
+
 _SENTINEL_RE = re.compile(r"^//\s*=====\s*article:\s*(\S+)\s*=====\s*$")
 _IFDEF_RE = re.compile(r"^ifdef::lang-(ja|en)\[\]\s*$")
 _ENDIF_RE = re.compile(r"^endif::\[\]\s*$")
@@ -286,9 +327,10 @@ def _is_draft(unit):
 
 
 def series_files(site_root):
-    """存在するシリーズファイルの一覧 [(path, stem, subdir), …]。"""
+    """存在するシリーズファイルの一覧 [(path, stem, subdir), …]。
+    組み込み + site.json で宣言されたサイト独自のシリーズ。"""
     found = []
-    for name, subdir in SERIES_MAP.items():
+    for name, subdir in series_map(site_root).items():
         p = site_root / "articles" / name
         if p.exists():
             found.append((p, p.name[: -len(".adoc")], subdir))
@@ -332,8 +374,13 @@ def expand_all(site_root=None):
     # config のシリーズディレクトリを展開先へ付け替える。親シリーズの
     # ファイルがある場合のみ(サブシリーズ単独では付け替えない——親の
     # 章が消えてしまう)。
+    # 付け替えるのは組み込みシリーズだけ。サイト独自のシリーズ
+    # (site.json で宣言したもの)は config に対応する属性を持たず、
+    # ビルダーが .build/articles/<url_base> を直接見る。
     roots_present = {subdir.split("/")[0] for _, _, subdir in found}
     for root_name in roots_present:
+        if root_name not in _DIR_ATTRS:
+            continue
         parent_file = [n for n, s in SERIES_MAP.items() if s == root_name]
         if parent_file and not (site_root / "articles" / parent_file[0]).exists():
             print(

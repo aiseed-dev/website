@@ -24,6 +24,12 @@
         "file": "insights.adoc",
         "label": "Insights",
         "url_base": "/insights"
+      },
+      {
+        "file": "pages.adoc",
+        "label": "固定ページ",
+        "url_base": "/pages",
+        "subtitle": "日付のない、独立したページ"
       }
     ]
   }

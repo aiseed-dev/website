@@ -1,0 +1,95 @@
+// pages — 固定ページ(このファイル1つで管理)
+// site.json の builder.series で宣言した、このサイト独自のシリーズです。
+// 記事の区切り: // ===== article: <記事ID> =====
+
+// ===== article: 01-about =====
+---
+slug: about
+date: 2026.04.21
+title.ja: このサイトについて
+title.en: About
+description.ja: このサイトの成り立ちと、運営の考え方。
+description.en: What this site is, and how it is run.
+---
+ifdef::lang-ja[]
+= このサイトについて
+
+ここに、サイトの紹介を書きます。
+
+固定ページは `articles/pages.adoc` にまとめてあります。「このサイトについて」
+「プライバシー」のように、日付のない・連載でないページのための場所です。
+
+シリーズ(この `pages` のような区分)は `site.json` の `builder.series` で
+定義します。名前も URL も自分で決められます。
+endif::[]
+ifdef::lang-en[]
+= About
+
+Write your introduction here.
+
+Standalone pages live in `articles/pages.adoc` — the place for pages that
+have no date and are not part of a series, like "About" or "Privacy".
+
+Series (a section like this `pages`) are declared in `site.json` under
+`builder.series`. You choose the name and the URL.
+endif::[]
+
+// ===== article: 02-contact =====
+---
+slug: contact
+date: 2026.04.21
+title.ja: お問い合わせ
+title.en: Contact
+description.ja: ご質問・ご依頼は、このページのフォームからどうぞ。
+description.en: Questions and requests are welcome through the form on this page.
+---
+ifdef::lang-ja[]
+= お問い合わせ
+
+ご質問・ご依頼は、以下のフォームからお願いします。 +
+担当より、折り返しご連絡します。
+
+// ↓ フォームの定義。この JSON だけを触ればフォームが変わります。
+//   編集は tools/form-builder/form-builder.html をブラウザで開くのが楽
+//   (項目を並べて JSON を書き出す道具。表計算で作るなら form_xlsx.py)。
+//   action と sitekey は、cf-publish で受信箱を立てたときの値に置き換えます。
+[.form]
+{
+  "action": "https://<WORKER>.workers.dev/submit",
+  "sitekey": "<TurnstileのSITEKEY>",
+  "confirm": true,
+  "fields": [
+    {"name":"your-name",    "label":"お名前",           "type":"text",     "required":true, "placeholder":"例)山田 太郎"},
+    {"name":"your-email",   "label":"メールアドレス",    "type":"email",    "required":true},
+    {"name":"category",     "label":"種別",             "type":"select",   "required":true, "options":["ご質問","ご依頼","その他"]},
+    {"name":"your-message", "label":"お問い合わせ内容",  "type":"textarea", "required":true}
+  ]
+}
+
+お預かりした個人情報は、お問い合わせへの回答のみに使用します。
+
+送信されたものは、aiseed-builder の「フォーム受信箱」で受け取ります
+(サーバーは立てません。Cloudflare の受信箱に溜まったものを、手元に
+取りに行く形です)。
+endif::[]
+ifdef::lang-en[]
+= Contact
+
+Please use the form below. We will get back to you.
+
+[.form]
+{
+  "action": "https://<WORKER>.workers.dev/submit",
+  "sitekey": "<YOUR-TURNSTILE-SITEKEY>",
+  "confirm": true,
+  "fields": [
+    {"name":"your-name",    "label":"Name",    "type":"text",     "required":true},
+    {"name":"your-email",   "label":"Email",   "type":"email",    "required":true},
+    {"name":"category",     "label":"Type",    "type":"select",   "required":true, "options":["Question","Request","Other"]},
+    {"name":"your-message", "label":"Message", "type":"textarea", "required":true}
+  ]
+}
+
+Submissions are collected in aiseed-builder's form inbox (no server: they
+queue in a Cloudflare inbox and you pull them to your machine).
+endif::[]

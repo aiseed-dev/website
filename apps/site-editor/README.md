@@ -8,7 +8,7 @@ WordPress の管理画面に似せた、記事編集専用のデスクトップ�
 ## 起動
 
 ```bash
-cd ~/dev/website-adoc
+cd ~/dev/website
 ./.venv/bin/python apps/site-editor/main.py
 ```
 

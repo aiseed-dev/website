@@ -14,7 +14,7 @@
 - 削除にゴミ箱は無いが、「変更を記録」(git)からいつでも復元できる
 
 起動:
-    cd ~/dev/website-adoc && ./.venv/bin/python apps/site-editor/main.py
+    cd ~/dev/website && ./.venv/bin/python apps/site-editor/main.py
 """
 
 from __future__ import annotations

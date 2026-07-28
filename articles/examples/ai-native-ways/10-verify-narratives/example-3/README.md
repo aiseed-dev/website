@@ -595,15 +595,15 @@ Microsoft の「ネイティブ回帰」物語について、検証から出て�
 このページの分析は、以下の二つの資料の対比から組み立てている。
 記事フォルダに収録した実物を参照されたい。
 
-- [`NET 10 Native AOT の技術的成熟度.pdf`](./NET 10 Native AOT の技術的成熟度.pdf)
+- [`NET 10 Native AOT の技術的成熟度.pdf`](<../NET 10 Native AOT の技術的成熟度.pdf>)
   ── Gemini Pro が出力した資料。EF Core / SqlClient の AOT 対応を
   「ほぼ完璧」と要約しており、致命的な過大評価を含む
-- [`NET 10 Native AOT ドキュメント検証.pdf`](./NET 10 Native AOT ドキュメント検証.pdf)
+- [`NET 10 Native AOT ドキュメント検証.pdf`](<../NET 10 Native AOT ドキュメント検証.pdf>)
   ── 同じ題材を Gemini Deep Search が一次情報引用付きで検証した
   資料。Microsoft 公式ドキュメントの "highly experimental" /
   "recommend against" の警告、Dapper.AOT の台頭、ReadyToRun との
   使い分けまでカバー
-- [`Microsoftのネイティブアプリ回帰戦略.pdf`](./Microsoftのネイティブアプリ回帰戦略.pdf)
+- [`Microsoftのネイティブアプリ回帰戦略.pdf`](../Microsoftのネイティブアプリ回帰戦略.pdf)
   ── Microsoft の「ネイティブ回帰」発表の全体像
 
 ---

@@ -58,7 +58,7 @@ ifdef::lang-ja[]
 
 これを「不便」と感じるなら、見方を一つ変えてほしい。*画面がないということは、すべての操作がテキストになるということだ。* そしてテキストは、Claudeが最も得意とする領域だ。
 
-本編のlink:/claude-debian/00-prologue/[序章]で、「AI時代にLinuxの長所のコストが劇的に下がった」と書いた。`journalctl` の読み方をClaudeに聞けば数秒で分かる、という話だ。サーバーでは、この効き目がさらに強くなる。なぜなら、サーバーには「GUIで何となく操作する」という逃げ道が最初からないからだ。すべてが、Claudeに見せられるテキストで完結する。
+本編のlink:/claude-debian/prologue/[序章]で、「AI時代にLinuxの長所のコストが劇的に下がった」と書いた。`journalctl` の読み方をClaudeに聞けば数秒で分かる、という話だ。サーバーでは、この効き目がさらに強くなる。なぜなら、サーバーには「GUIで何となく操作する」という逃げ道が最初からないからだ。すべてが、Claudeに見せられるテキストで完結する。
 
 ```bash
 # サーバーで起きていることは、すべてテキストで取り出せる
@@ -235,7 +235,7 @@ A server, as a rule, has no GUI — no graphical desktop. No icons to click with
 
 If that strikes you as "inconvenient," shift your view by one notch. *No screen means every operation becomes text.* And text is the domain Claude handles best.
 
-In the main edition's link:/en/claude-debian/00-prologue/[prologue], we wrote that "in the AI era, the cost of Linux's strengths dropped dramatically" — that you can learn how to read `journalctl` in seconds by asking Claude. On a server, this effect grows even stronger, because a server has no escape hatch of "vaguely clicking around in a GUI" to begin with. Everything resolves into text you can show Claude.
+In the main edition's link:/en/claude-debian/prologue/[prologue], we wrote that "in the AI era, the cost of Linux's strengths dropped dramatically" — that you can learn how to read `journalctl` in seconds by asking Claude. On a server, this effect grows even stronger, because a server has no escape hatch of "vaguely clicking around in a GUI" to begin with. Everything resolves into text you can show Claude.
 
 ```bash
 # Everything happening on a server can be pulled out as text

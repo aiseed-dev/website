@@ -472,7 +472,9 @@ def fable_index_vars(lang, chapter_list_html, has_translation=False):
         "page_subtitle": _text(is_en,
             "Not a clever chat AI — is that job worth handing to Fable 5?",
             "賢いチャットAIとして使うものではない ── その仕事は、Fable 5 に頼む価値があるか?"),
-        "other_lang_link": (_FABLE_BASE_JA + "/") if is_en else (_FABLE_BASE_EN + "/"),
+        # 翻訳がある時だけ出す(無い言語のURLを指すと 404 になる——監査で検出)
+        "other_lang_link": ((_FABLE_BASE_JA + "/") if is_en
+                            else (_FABLE_BASE_EN + "/")) if has_translation else "",
         "other_lang_text": _text(is_en, "日本語版はこちら →", "English version available →") if has_translation else "",
         "lang_switch_label": "日本語" if is_en else "EN",
         "lang_switch_hreflang": "ja" if is_en else "en",
@@ -756,7 +758,7 @@ def custom_index_vars(lang, chapter_list_html, *, title, subtitle="",
         "structural_analysis_label": title,
         "page_subtitle": subtitle,
         "meta_description": description or subtitle or title,
-        "other_lang_link": ja_url if lang == "en" else en_url,
+        "other_lang_link": (ja_url if lang == "en" else en_url) if has_translation else "",
         "series_title": title,
     })
     return v

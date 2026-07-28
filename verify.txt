@@ -1,7 +1,8 @@
-共通ページ: 361 / メタ一致: 361 / 本文一致: 346
+共通ページ: 361 / メタ一致: 359 / 本文一致: 337
 
-許容済みの本文差 (15):
+許容済みの本文差 (17):
   ai-native-ways/software/hiring-builders/index.html: 旧: 行頭「+」でリスト化し**が生表示。新: 「元SIerコーダー+工作派の合流」が正しく強調
+  ai-native-ways/verify-narratives/example-3/index.html: 旧: PDFへのMarkdownリンクが未解釈で生表示(リンク先も./でリンク切れ)。新: ../の正しいリンクとして表示
   blog/grid-attack-naphtha/index.html: 旧: 引用段落の**が未解釈で生表示。新: 正しく強調
   en/ai-native-ways/one-plus-ai/index.html: 旧: 行頭「+」でリスト化し「Markdown + pandoc」の+が消えていた。新: 完全な文
   en/blog/grid-attack-naphtha/index.html: 同上(英語版)
@@ -11,10 +12,47 @@
   en/insights/fossil-materials/index.html: 旧: 引用符隣接の**が未解釈で生表示。新: 正しく強調
   en/insights/nativism-observation/index.html: 旧: **が未解釈で生表示。新: 正しく強調
   en/phosphorus-and-farming/realistic-position/index.html: 旧: 行頭「+」で「中間の道」列挙の+が消えていた。新: 完全な文
+  fable/index.html: 旧: 英語版が存在しないのに🌐 ENリンクがあり404。新: 翻訳がある時だけ言語切替を表示(template_vars.py修正)
   insights/climate-mistake/index.html: 旧: **が未解釈で生表示。新: 正しく強調
   insights/cloud-independence/index.html: 旧: **が未解釈で生表示。新: 正しく強調
   insights/fossil-materials/index.html: 旧: 引用符隣接の**が未解釈で生表示。新: 正しく強調
   insights/nativism-observation/index.html: 旧: **が未解釈で生表示。新: 正しく強調
   phosphorus-and-farming/realistic-position/index.html: 旧: 行頭「+」で「中間の道」列挙の+が消えていた。新: 完全な文
 
-結果: 合格
+必須基準の違反 (6):
+  メタ不一致 blog/constraint-moved/index.html [title]: 旧='肥料危機の予測、中間判定 ── 秋作は静かに予想どおり進み、判定は2027年に出る — Blog | aiseed.dev' 新='肥料危機の予測を採点する ── 制約は消えず、窒素へ移った — Blog | aiseed.dev'
+  メタ不一致 blog/constraint-moved/index.html [description]: 旧='本サイトは4月、「春作は在庫がある、2026年秋作で在庫が尽きる、2027年に入手できなくなる」という三段の連鎖を書いた。3か月後の中間判定である。まず「在庫」を二つに分ける。店頭の在庫は尽きない ── 秋肥は5月の価格決定時点で調達と製造が済んでおり、農家が今秋買えなくなることはない。だが連鎖の言う「在庫」は緩衝在庫であり、その取り崩しは予定どおり進んでいる。中国の輸出停止は例年より長い3月14日〜8月に及び、その穴を備蓄リン安2.4か月分と、硫黄難で能力を3割落としたモロッコで埋めている。秋の終わり、日本は薄くなった緩衝材で春を迎える ── 予測の第二段階そのものである。判定できないのは第三段階「2027年」だけで、帰趨は8月の中国と11月の春肥価格に懸かる。期日と無関係に確定していることは二つ。経路(硫黄トラップ)は実在した ── 硫黄は平時の5〜8倍になり、エジプトとブラジルで実際に生産が止まった。そして予測の視野の外で、不足が窒素に出た ── 秋肥は尿素+14.5%に対しリン酸+4.9%。分散とは相手を替えることではなく、資源を替えることだった。制約は消えていない。移動しただけである。' 新='本サイトは4月、「2026年秋に在庫が尽き、2027年にリン酸肥料は事実上入手できなくなる」と書いた。経路は硫黄トラップ ── ホルムズが閉じれば硫黄が止まり、硫酸が作れず、リン酸が止まる。3か月後の事実で採点する。硫黄は本当に止まった。中東の硫黄は5月末で1トン815〜820ドル、平時の5〜8倍。ロシアは輸出を禁じ、中国は硫酸輸出を4分の1に絞り、エジプトとブラジルでは実際にリン酸系の生産が止まった。経路は当たっていた。だが帰結は外れた。全農の秋肥で最も上がったのはリン酸ではなく尿素で、上げ幅は14.5%対4.9% ── 逼迫の順位が逆だった。カタールが尿素とアンモニアと硫黄を同時に止め、イランがアンモニアを止めたからである。同じホルムズの衝撃が、硫黄とガスの両方を断った。本稿は硫黄→リン酸の経路だけを追い、ガス→アンモニア→窒素の経路を軽く見た。しかも皮肉なことに、中国依存を27%から3%へ落として分散に成功していたはずの窒素のほうが殴られた。産地を替えても、依存する資源が同じ中東ガスなら効かない。分散とは相手を替えることではなく、資源を替えることだった。制約は消えていない。移動しただけである。そして2027年春作の材料はもう並んでいる ── 窒素はカタールのラスラファン損傷が年単位で残るため高止まりし、リン酸は世界価格では緩むが、日本の調達先は中国・モロッコ・イスラエルの三つしかなく、そのモロッコも硫黄で第2四半期の生産能力の3割を落としている。**春作のリン酸は、実質的に中国が8月に再開するかどうかに懸かっている。**'
+  メタ不一致 blog/constraint-moved/index.html [og:title]: 旧='肥料危機の予測、中間判定 ── 秋作は静かに予想どおり進み、判定は2027年に出る' 新='肥料危機の予測を採点する ── 制約は消えず、窒素へ移った'
+  メタ不一致 en/blog/constraint-moved/index.html [title]: 旧='The Fertilizer-Crisis Forecast: An Interim Verdict — Autumn Is Quietly Proceeding as Predicted; the Test Comes in 2027 — Blog | aiseed.dev' 新='Scoring the Fertilizer-Crisis Forecast — The Constraint Did Not Vanish, It Moved to Nitrogen — Blog | aiseed.dev'
+  メタ不一致 en/blog/constraint-moved/index.html [description]: 旧="In April this site wrote a three-step chain — spring has stock, autumn 2026 exhausts the stock, 2027 becomes effectively unobtainable. Three months on, here is the interim verdict. First split the word inventory in two. Retail inventory will not run out — the autumn supply was procured and manufactured by the May pricing, and no farmer will find the shelf empty this autumn. But the inventory the chain meant is the buffer inventory, and its drawdown is proceeding on schedule. China's export halt runs from 14 March to August, longer than the usual window, and the gap is being filled from the 2.4-month phosphate ammonium stockpile and a Morocco running at up to 30% reduced capacity on sulfur scarcity. Japan will enter spring on thinned buffers — the forecast's second stage, in progress. What cannot be judged is only the third stage, 2027, which hangs on China's decision in August and the spring pricing in November. Two things are settled regardless of any deadline. The pathway was real — sulfur at five to eight times normal, with actual production halts in Egypt and Brazil. And outside the forecast's field of view, the shortage landed on nitrogen — autumn pricing put urea at +14.5% against phosphate's +4.9%. Diversification meant changing the resource, not the counterparty. The constraint has not disappeared. It moved." 新="In April this site wrote that inventories would run out in autumn 2026 and phosphate fertilizer would be effectively unobtainable in 2027. The pathway was the sulfur trap — close Hormuz, sulfur stops, sulfuric acid cannot be made, phosphate cannot be made. Three months on, here is the scorecard against the facts. Sulfur really did stop. Middle East sulfur was $815–820 a tonne at the end of May, five to eight times the historical norm; Russia banned exports, China cut sulfuric acid exports to a quarter, and phosphate production actually halted in Egypt and Brazil. The pathway was right. The conclusion was wrong. In Zen-Noh's autumn pricing the largest increase was not phosphate but urea — 14.5% against 4.9%, and the order of scarcity was inverted. Qatar had suspended urea, ammonia and sulfur together, and Iran had halted ammonia. The same Hormuz shock severed both sulfur and gas. This site traced the sulfur-to-phosphate pathway carefully and took the gas-to-ammonia-to-nitrogen pathway lightly. And the irony: nitrogen, which had successfully diversified away from China from 27% to 3%, was the one that got hit. Change the counterparty and you have changed nothing if the resource behind them is the same Middle Eastern gas. Diversification meant changing the resource, not the counterparty. The constraint has not disappeared. It moved."
+  メタ不一致 en/blog/constraint-moved/index.html [og:title]: 旧='The Fertilizer-Crisis Forecast: An Interim Verdict — Autumn Is Quietly Proceeding as Predicted; the Test Comes in 2027' 新='Scoring the Fertilizer-Crisis Forecast — The Constraint Did Not Vanish, It Moved to Nitrogen'
+
+本文テキスト差分 (7):
+  本文差分 blog/constraint-moved/index.html:
+    旧: … 044 / Blog 構造分析ノート · 2026.07.28 肥料危機の予測、中間判定 ── 秋作は静かに予想どおり進み、判定は2027年に出る 店頭の在庫は尽きない。だが予測の言う「在庫」は緩衝在庫であり、その取り崩しは季節どおり進ん…
+    新: … 044 / Blog 構造分析ノート · 2026.07.28 肥料危機の予測を採点する ── 制約は消えず、窒素へ移った 硫黄は予測どおり止まった。世界ではリン酸の生産も止まった。だが日本で不足として現れたのは窒素だった ── 同じ衝撃…
+  本文差分 blog/index.html:
+    旧: … Blog 構造分析の視点で読む時事ノート 2026.07.28 肥料危機の予測、中間判定 ── 秋作は静かに予想どおり進み、判定は2027年に出る 本サイトは4月、「春作は在庫がある、2026年秋作で在庫が尽きる、2027年に入手できなく…
+    新: … Blog 構造分析の視点で読む時事ノート 2026.07.28 肥料危機の予測を採点する ── 制約は消えず、窒素へ移った 本サイトは4月、「2026年秋に在庫が尽き、2027年にリン酸肥料は事実上入手できなくなる」と書いた。経路は硫黄ト…
+  本文差分 blog/large-proves-small/index.html:
+    旧: …は、AIだけの話ではない ── AIが業務システムをつくる 次: 肥料危機の予測、中間判定 ── 秋作は静かに予想どおり進み、判定は2027年に出る → 記事シリーズ 構造分析 Blog AIネイティブな仕事の作法 Claudeと一緒に学ぶ…
+    新: …は、AIだけの話ではない ── AIが業務システムをつくる 次: 肥料危機の予測を採点する ── 制約は消えず、窒素へ移った → 記事シリーズ 構造分析 Blog AIネイティブな仕事の作法 Claudeと一緒に学ぶDebian リン資源枯…
+  本文差分 en/blog/constraint-moved/index.html:
+    旧: … Structural Analysis Notes · 2026.07.28 The Fertilizer-Crisis Forecast: An Interim Verdict — Autumn Is Quietly Proceedin…
+    新: … Structural Analysis Notes · 2026.07.28 Scoring the Fertilizer-Crisis Forecast — The Constraint Did Not Vanish, It Moved…
+  本文差分 en/blog/index.html:
+    旧: … lens of structural analysis 2026.07.28 The Fertilizer-Crisis Forecast: An Interim Verdict — Autumn Is Quietly Proceedin…
+    新: … lens of structural analysis 2026.07.28 Scoring the Fertilizer-Crisis Forecast — The Constraint Did Not Vanish, It Moved…
+  本文差分 en/blog/large-proves-small/index.html:
+    旧: …I — AI Builds the Business System Next: The Fertilizer-Crisis Forecast: An Interim Verdict — Autumn Is Quietly Proceedin…
+    新: …I — AI Builds the Business System Next: Scoring the Fertilizer-Crisis Forecast — The Constraint Did Not Vanish, It Moved…
+  本文差分 index.html:
+    旧: …ベース。 辞典を見る → 最新のブログ記事 2026.07.28 肥料危機の予測、中間判定 ── 秋作は静かに予想どおり進み、判定は2027年に出る 本サイトは4月、「春作は在庫がある、2026年秋作で在庫が尽きる、2027年に入手できなく…
+    新: …ベース。 辞典を見る → 最新のブログ記事 2026.07.28 肥料危機の予測を採点する ── 制約は消えず、窒素へ移った 本サイトは4月、「2026年秋に在庫が尽き、2027年にリン酸肥料は事実上入手できなくなる」と書いた。経路は硫黄ト…
+
+参考 (3):
+  資産過剰(新のみ): blog/new-era-forced-transformation-food-systems/006-strict-checking-and-verification.pdf
+  資産過剰(新のみ): en/blog/new-era-forced-transformation-food-systems/006-strict-checking-and-verification.pdf
+  資産過剰(新のみ): en/blog/new-era-forced-transformation-food-systems/en-006-japan-national-survival-strategy.pdf
+
+結果: 不合格

@@ -21,3 +21,5 @@ insights/nativism-observation/index.html	旧: **が未解釈で生表示。新: 
 insights/climate-mistake/index.html	旧: **が未解釈で生表示。新: 正しく強調
 en/phosphorus-and-farming/realistic-position/index.html	旧: 行頭「+」で「中間の道」列挙の+が消えていた。新: 完全な文
 phosphorus-and-farming/realistic-position/index.html	旧: 行頭「+」で「中間の道」列挙の+が消えていた。新: 完全な文
+ai-native-ways/verify-narratives/example-3/index.html	旧: PDFへのMarkdownリンクが未解釈で生表示(リンク先も./でリンク切れ)。新: ../の正しいリンクとして表示
+fable/index.html	旧: 英語版が存在しないのに🌐 ENリンクがあり404。新: 翻訳がある時だけ言語切替を表示(template_vars.py修正)

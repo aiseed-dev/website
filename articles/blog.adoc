@@ -14227,3 +14227,202 @@ Whichever way it falls, the result will be written here.
 . India issues 1.7mt urea tender ahead of monsoon sowing (Fertilizer Daily, 28 May 2026) — https://www.fertilizerdaily.com/20260528-india-issues-1-7mt-urea-tender-ahead-of-monsoon-sowing-as-domestic-production-shortfall-deepens/
 . MAFF, "The Situation Surrounding Fertilizer" (April 2026) — import sources and stockpile figures
 endif::[]
+
+// ===== article: 045-nitrogen-balance =====
+---
+slug: nitrogen-balance
+title.ja: 窒素の需給 ── 急性期は峠を越えた。だが逃げ道は、みな窒素に合流する
+title.en: The Nitrogen Balance — The Acute Phase Has Peaked, but Every Escape Route Merges Into Nitrogen
+subtitle.ja: 尿素は4月の頂点から半値へ戻り、中国はクォータと下限価格で先に再開した。だがTSPも硝酸法も燃料アンモニアも、解決のたびに需要を窒素へ移す ── そして日本の国産窒素の足場は、カプロラクタムの撤退で静かに細っている
+subtitle.en: Urea has fallen back to half its April peak, and China restarted first — with quotas and a price floor. But TSP, the nitric route and fuel ammonia each shift demand onto nitrogen — while Japan's domestic nitrogen base quietly thins with the retreat from caprolactam
+date: 2026.07.28
+description.ja: 前稿で、肥料の制約は消えず移動すると書いた。移動した先が窒素である。本稿はその需給を見る。急性期は峠を越えた ── インド向け尿素は4月の約890ドル/tから6月の入札で約445ドルへほぼ半値に戻り、応札超過。中国は8か月の実質停止のあと、6〜8月分のクォータ150〜160万トンをメーカーへ直接通知し(公式発表なし)、下限価格660ドル/t FOBつきで輸出を再開した ── 国内を守りながら高値だけを取りに行く設計で、リン酸の8月の型見本でもある。だが構造は残る。湾岸は世界の尿素輸出の36%を占め、ラスラファンの修復は年単位、ロシアのアゾト系工場への攻撃は続き、新能力(2年でアンモニア+460万トン、カタールの尿素倍増)が効くのは2027年以降だ。そして本稿の主題 ── リン酸側の逃げ道が、ことごとく窒素に合流する。OCPのTSP化はリン肥に同梱されていた窒素を外し、その分を尿素の需要へ移す。硝酸リン酸法はリンをアンモニアに繋ぎ替える。燃料アンモニアの混焼が本格化すれば、燃料が肥料と同じ調達市場に乗る。中国の災害もここでは本家である ── 2021年10月の輸出検査強化は、河南水害とエネルギー危機の秋、尿素先物の急騰から始まった。日本固有の弱点も書く。尿素はマレーシア一国74%で、国産3%。硫安はカプロラクタム副産物という国産基盤の上にあったが、大手化学の撤退でその足場が細っている。どちらに転んでも効く動きは一つ ── 購入する窒素そのものを減らすことである。
+description.en: The previous piece argued that the fertilizer constraint does not vanish but moves. Where it moved is nitrogen, so this piece examines the nitrogen balance. The acute phase has peaked — urea for India fell from roughly $890 a tonne in April to about $445 at June's oversubscribed tender, and after an eight-month halt China restarted exports with June-August quotas of 1.5-1.6 million tonnes communicated directly to producers, under a $660/t FOB price floor — a design that protects the domestic market while capturing only high prices, and a template for August's phosphate decision. But the structure remains: the Gulf accounts for 36% of world urea exports, Ras Laffan's repair runs in years, strikes continue on Russia's Azot plants, and new capacity (4.6 million tonnes of ammonia over two years, Qatar's urea doubling) lands from 2027. And the piece's thesis: every phosphate-side escape route merges into nitrogen. OCP's TSP shift strips out the nitrogen that came bundled in MAP/DAP and moves that demand to urea. The nitrophosphate route re-ties phosphate to ammonia. If fuel-ammonia co-firing scales as planned, fuel joins fertilizer in the same procurement market. China's disasters are the original template here — the October 2021 export inspections began in the autumn of the Henan floods and an energy crisis, after urea futures spiked. Japan's own weakness: urea is 74% Malaysia with 3% domestic, and ammonium sulfate rested on a caprolactam-byproduct base that is thinning as the majors exit. The one move that works whichever way it falls is to reduce purchased nitrogen itself.
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+---
+ifdef::lang-ja[]
+= 窒素の需給
+
+== 結論
+
+https://aiseed.dev/blog/constraint-moved/[前稿]で、肥料の制約は消えず移動する、と書いた。移動した先が窒素である。ならば次に見るべきは、窒素の需給だ。
+
+結論を先に言う。*急性期は峠を越えた。だが構造は残り、しかもリン酸側の逃げ道が、ことごとく窒素に合流してくる。* そして日本には、あまり語られない固有の弱点がある ── *国産窒素の最後の足場が、静かに細っている。*
+
+== 日本の窒素は、どこから来ているか
+
+尿素の輸入は年25.6万トン。マレーシア74%・ベトナム10%・サウジアラビア5%・中国3%で、国産は3%(約9千トン)である。リン安の中国72%ほど語られないが、*一国74%という集中は、実はリン酸より高い。* しかも前稿までに見たとおり、これは「相手替え」型の分散の産物で、価格を決める資源(天然ガス)は替わっていない。
+
+もう一本の柱が*硫安*である。硫安は長く、国内生産が需要を上回り、輸出さえしてきた ── ナイロン原料カプロラクタムの副産物として出てくるからだ。ところが大手化学がカプロラクタムやアンモニアの国内生産を止め始め、*国産硫安の供給基盤そのものが揺らいでいる*(農林中金総合研究所、2025年7月)。肥料のために作っていない窒素に乗っていた構造が、化学産業の撤退で一緒に細る ── *副産物依存の脆さ*である。
+
+アンモニアの輸入は年20〜30万トンで、その一部が硫安と化成肥料の原料に回る。
+
+つまり日本の窒素は、*マレーシア一国への尿素依存と、縮みゆく副産物の国産基盤*の二本足で立っている。
+
+== 急性期は、峠を越えた
+
+国際価格から書く。インド向け尿素は4月に約890ドル/tまで駆け上がった。6月の入札(170万トン)では*約445ドル ── ほぼ半値 ── で応札超過*になった。北東アジアの7月価格も前月比-15.8%。ホルムズの運賃プレミアムは緩み、ロシア・インドネシア・マレーシア・エジプト・オマーンが穴を埋めた。インドネシアは2026年分の輸出ライセンスを承認している。
+
+そして中国が、尿素で先に動いた。8か月の実質停止のあと、6〜8月分のクォータ150〜160万トン(別途、政府間供給が約40万トン)をメーカーへ直接通知し ── 公式発表はない ── *下限価格660ドル/t FOB*を付けて輸出を再開した。国内価格は300ドル弱相当だから、*国内を守りながら、高値だけを取りに行く設計*である。
+
+前稿に書いたとおり、これは8月のリン酸の判断の型見本でもある。
+
+== 残る構造
+
+峠を越えたことと、山を下りたことは、違う。
+
+*湾岸は、世界の尿素輸出の36%を占める(2023〜25年)。その最大の担い手が、イランとカタールだった。* カタールのラスラファンLNG施設の修復は年単位かかる。世界の尿素貿易の34%、アンモニア貿易の23%がホルムズを通り(IFA)、窒素の製造原価は6〜8割が天然ガスである(同)。ガスが高い限り、窒素は高い。欧州の窒素は世界のコスト曲線の限界にいて、ガス次第で止まる。南アジアの生産者は湾岸のLNGに依存している。
+
+ロシアでは、窒素肥料と硝酸を作るアゾト系工場への攻撃が続いている ── 硝酸が爆薬の原料でもあるからだ。*世界有数の窒素産地が、断続的に叩かれ続けている。*
+
+新しい能力は来る。今後2年でアンモニアが年460万トン増え、カタールは尿素能力を600万トンから1,240万トン超へ倍増させる計画を持つ。三井物産とADNOCがルワイスで進める低炭素アンモニア(年100万トン)は、2027年にも加わりうる。*ただし、どれも効き始めは2027年以降である。* IFAの需要シナリオは2026/27年に-1〜2%(深いシナリオで-4%)、2030年に124Mt Nへ収束 ── 需要は弾力的ではなく、締まった供給に張り付いたままだ。
+
+== 逃げ道は、みな窒素に合流する
+
+ここが本稿の主題である。前稿までに数えた「リン酸側の解決」を窒素の側から見直すと、全部が同じ向きを向いている。
+
+*TSP化。* モロッコOCPは硫黄高への答えとして、アンモニアを使わないTSPへ製品を切り替えた。だがMAP/DAPには窒素が同梱されていた。TSPには入っていない。*リン肥に同梱されていた窒素が外れ、その分が尿素の需要へ移る。* OCPのアンモニア調達は減るが、畑の窒素需要は消えない ── 請求書の宛先が変わるだけである。
+
+*硝酸リン酸法。* 硫酸を使わないOdda法は、リンをアンモニア ── 窒素とまったく同じ資源 ── に繋ぎ替える。転換が進めば進むほど、窒素の需要が積み上がる。
+
+*燃料アンモニア。* 日本は石炭火力へのアンモニア混焼を進めており、碧南では20%混焼の実証が済んでいる。2030年代に計画どおり本格化すれば、*燃料としてのアンモニアが、肥料と同じ調達市場に乗ってくる。*
+
+硫黄から逃げても、リン酸から逃げても、脱炭素へ進んでも、着地点が窒素なのである。*窒素は、逃げ道の合流点になった。* 合流点に需要が集まるとき、いまの峠が下がっていても、次の峠は前より高くなりやすい。
+
+== 中国の災害は、ここでは本家である
+
+前稿で、災害がリン酸の再開にほぼ一方向(逆風)に効くと書いた。窒素では、さらに直接的だ。
+
+中国の尿素は石炭ベースが主力で、電力に敏感である。2022年には四川の渇水が水力を涸らし、化学工場への電力制限を招いた。そして*いまの輸出規制時代の起点そのものが、窒素だった* ── 2021年7月の河南水害とエネルギー危機の秋、尿素先物の急騰を受けて、10月に輸出検査の強化が始まった。「災害の夏は、規制の秋になりやすい」という型の本家は、リン酸ではなく尿素である。
+
+7月4日からの豪雨は、その条件を今年も揃えつつある。下限価格つきの運用ができたいまは、締まるとしても全面停止ではなく、*クォータの縮小と下限の引き上げ*という形で現れるだろう。
+
+== 観測点
+
+*春肥。* 11月の全農価格で、輸入尿素が下がるか。国際価格の半値戻しが日本の店頭に届くかどうかの、試金石である。
+
+*中国。* 9月以降のクォータの継続と、下限価格の水準。災害の被害集計。
+
+*ガス。* アジアLNG(JKM)と欧州のガス価格。窒素の原価の6〜8割は、ここで決まる。
+
+*カタール。* ラスラファンの復旧報道と、尿素倍増計画の進捗。
+
+*日本の足場。* カプロラクタム・アンモニアの国内生産からの撤退が続くか。国産硫安の供給量。
+
+そして、どちらに転んでも効く動きは一つである。*購入する窒素そのものを、減らすこと。* 豆科の輪作と根粒菌は、空気中の窒素を畑で固定する。土壌微生物の共生は、必要な窒素の最大9割を賄いうる。窒素が逃げ道の合流点になった時代に、*合流点を通らない道は、これだけだ。*
+
+どちらに転んでも、結果を書く。
+
+'''
+
+== 関連
+
+* ブログ https://aiseed.dev/blog/constraint-moved/[肥料危機、3か月で何が明確になったか] ── 前稿。制約の移動と三分類
+* ブログ https://aiseed.dev/blog/three-fronts-same-week/[同じ週に、三つの決着が近づいている] ── 中国の災害と、判断の配置
+* ブログ https://aiseed.dev/blog/phosphate-crisis-2027/[日本ではリン酸肥料は手に入らなくなる] ── リン酸側の予測。2026年4月25日
+* リンと農業 https://aiseed.dev/phosphorus-and-farming/soil-microbes/[第5章 土壌微生物という戦略] ── 根粒菌と菌根菌。購入窒素を減らす側の論拠
+
+== 参考
+
+. 農林中金総合研究所「窒素肥料の生産・消費動向」(農林金融2025年7月) ── https://www.nochuri.co.jp/report/pdf/n2507re1.pdf
+. 農林水産省「肥料をめぐる情勢」(2026年4月) ── 輸入相手国のシェア
+. China reopens urea exports with $660pt price floor (Profercy) ── https://www.profercy.com/insights/china-reopens-urea-exports-with-660pt-price-floor
+. India issues 1.7mt urea tender ahead of monsoon sowing (Fertilizer Daily、2026年5月28日) ── https://www.fertilizerdaily.com/20260528-india-issues-1-7mt-urea-tender-ahead-of-monsoon-sowing-as-domestic-production-shortfall-deepens/
+. Indonesia approves urea export licences for 2026 (Argus) ── https://www.argusmedia.com/en/news-and-insights/latest-market-news/2776095-indonesia-approves-urea-export-licences-for-2026
+. IFA Medium-Term Fertilizer Outlook 2026-2030 (2026年5月6日) ── https://www.fertilizer.org/wp-content/uploads/2026/05/2026_IFA_Medium_Term_Outlook_Report_English.pdf
+. Qatar to double urea output by 2030, blue ammonia on-track for 2026 (Quantum Commodity Intelligence) ── https://www.qcintel.com/ammonia/article/qatar-to-double-urea-output-by-2030-blue-ammonia-on-track-for-2026-38596.html
+endif::[]
+ifdef::lang-en[]
+= The Nitrogen Balance
+
+== Conclusion
+
+https://aiseed.dev/en/blog/constraint-moved/[The previous piece] argued that the fertilizer constraint does not vanish — it moves. Where it moved is nitrogen. So nitrogen's balance is the next thing to examine.
+
+The conclusion first. *The acute phase has peaked. But the structure remains — and every escape route on the phosphate side merges into nitrogen.* And Japan carries a weakness of its own that is rarely discussed: *the last domestic foothold of its nitrogen supply is quietly thinning.*
+
+== Where Japan's Nitrogen Comes From
+
+Urea imports run at 256,000 tonnes a year: Malaysia 74%, Vietnam 10%, Saudi Arabia 5%, China 3%, with domestic production at 3% (about 9,000 tonnes). It draws less attention than phosphate's 72% dependence on China, but *a 74% concentration on a single country is actually higher.* And as the preceding pieces showed, it is diversification of the change-the-counterparty kind — the resource that sets the price, natural gas, has not changed.
+
+The other pillar is *ammonium sulfate*. For decades Japan produced more than it consumed and even exported it — because it comes off as a byproduct of caprolactam, the nylon feedstock. But the chemical majors have begun shutting domestic caprolactam and ammonia production, and *the domestic supply base of ammonium sulfate itself is now wobbling* (Norinchukin Research Institute, July 2025). A structure that rode on nitrogen nobody made for fertilizer's sake thins out together with the industry's retreat — *the fragility of byproduct dependence.*
+
+Ammonia imports run at 200,000-300,000 tonnes a year, part of which goes into ammonium sulfate and compound fertilizer.
+
+Japan's nitrogen, in short, stands on two legs: *urea dependence on a single country, and a shrinking byproduct base at home.*
+
+== The Acute Phase Has Peaked
+
+Start with international prices. Urea for India ran up to roughly $890 a tonne in April. At June's tender (1.7 million tonnes) it drew *oversubscribed bids around $445 — nearly half.* Northeast Asian prices fell 15.8% month on month in July. Hormuz freight premiums have eased, and Russia, Indonesia, Malaysia, Egypt and Oman have filled the gap. Indonesia has approved its 2026 export licences.
+
+And China moved first — on urea. After an eight-month effective halt, quotas of 1.5-1.6 million tonnes for June-August (plus roughly 400,000 tonnes of intergovernmental supply) were communicated directly to producers — with no official announcement — and exports resumed under a *price floor of $660 a tonne FOB*. Domestic prices are equivalent to just under $300, so the design *protects the home market while capturing only the high prices.*
+
+As the previous piece noted, this is also the template for August's phosphate decision.
+
+== The Structure That Remains
+
+Passing the peak is not the same as coming down the mountain.
+
+*The Gulf accounts for 36% of world urea exports (2023-25), and its largest suppliers were Iran and Qatar.* Repairing Qatar's Ras Laffan complex runs in years. 34% of world urea trade and 23% of ammonia trade transit Hormuz (IFA), and natural gas makes up 60-80% of nitrogen's production cost (ditto). As long as gas is expensive, nitrogen is expensive. Europe's nitrogen sits at the margin of the global cost curve and stops when gas spikes; South Asian producers depend on Gulf LNG.
+
+In Russia, strikes continue on the Azot plants that make nitrogen fertilizer and nitric acid — because nitric acid is also a feedstock for explosives. *One of the world's major nitrogen-producing regions is being struck intermittently.*
+
+New capacity is coming: about 4.6 million tonnes a year of additional ammonia over the next two years, Qatar's plan to double urea capacity from 6 to over 12.4 million tonnes, and the Mitsui-ADNOC low-carbon ammonia project at Ruwais (1 million tonnes a year) possibly joining in 2027. *But none of it lands before 2027.* The IFA demand scenarios run at -1 to -2% for 2026/27 (-4% in the deep scenario), converging on 124 Mt N by 2030 — demand is inelastic, pressed against a tightened supply.
+
+== Every Escape Route Merges Into Nitrogen
+
+This is the thesis of the piece. Re-examine the phosphate-side solutions counted so far, from nitrogen's side, and they all point the same way.
+
+*The TSP shift.* Morocco's OCP answered expensive sulfur by switching its mix to TSP, which uses no ammonia. But MAP and DAP carried nitrogen bundled in; TSP carries none. *The nitrogen that came bundled with phosphate drops out — and that demand moves to urea.* OCP's ammonia purchases fall, but the field's nitrogen requirement does not disappear. Only the addressee on the invoice changes.
+
+*The nitrophosphate route.* The Odda process, which needs no sulfuric acid, re-ties phosphate to ammonia — the identical resource as nitrogen. The further that conversion goes, the higher nitrogen demand stacks.
+
+*Fuel ammonia.* Japan is pushing ammonia co-firing at coal plants — a 20% co-firing demonstration has already run at Hekinan. If it scales in the 2030s as planned, *ammonia as fuel joins fertilizer in the same procurement market.*
+
+Escape sulfur, escape phosphate, or head for decarbonisation — the landing point is nitrogen. *Nitrogen has become the junction of the escape routes.* When demand converges on a junction, even if today's peak has passed, the next one tends to be higher.
+
+== China's Disasters: This Is Where the Template Comes From
+
+The previous piece argued that disasters cut almost entirely one way — against resumption — for phosphate. For nitrogen the link is even more direct.
+
+China's urea is mostly coal-based and power-sensitive. In 2022, Sichuan's drought drained the hydropower system and forced electricity rationing on chemical plants. And *the origin of the current export-restriction era was nitrogen itself* — in the autumn of the July 2021 Henan floods and an energy crisis, urea futures spiked, and export inspections began that October. The template — a summer of disasters becomes an autumn of restrictions — was set by urea, not phosphate.
+
+The rains that began on 4 July are assembling the same conditions this year. With the price-floor mechanism now in place, tightening would likely appear not as a full halt but as *smaller quotas and a higher floor.*
+
+== What to Watch
+
+*Spring pricing.* Whether Zen-Noh's November prices bring imported urea down — the test of whether the international halving reaches Japanese shelves.
+
+*China.* Whether quotas continue past September, and the level of the floor. The tally of disaster damage.
+
+*Gas.* JKM and European gas prices — 60-80% of nitrogen's cost is set here.
+
+*Qatar.* Ras Laffan repair reports and progress on the urea-doubling plan.
+
+*Japan's foothold.* Whether the retreat from domestic caprolactam and ammonia production continues; domestic ammonium sulfate volumes.
+
+And the one move that works whichever way this falls: *reduce purchased nitrogen itself.* Legume rotation and rhizobia fix atmospheric nitrogen in the field; microbial symbiosis can supply up to ninety percent of what a crop needs. In an era when nitrogen has become the junction of the escape routes, *the only road that avoids the junction is this one.*
+
+Whichever way it falls, the result will be written here.
+
+'''
+
+== Related
+
+* Blog https://aiseed.dev/en/blog/constraint-moved/[The Fertilizer Crisis, Three Months In] — the previous piece; the moving constraint and the three-way sorting
+* Blog https://aiseed.dev/en/blog/three-fronts-same-week/[In the Same Week, Three Reckonings Draw Near] — China's disasters and the placement of judgment
+* Blog https://aiseed.dev/en/blog/phosphate-crisis-2027/[Phosphate Fertilizer Will Become Unobtainable in Japan] — the phosphate-side forecast. 25 April 2026
+* Phosphorus and Farming https://aiseed.dev/en/phosphorus-and-farming/soil-microbes/[Chapter 5: Soil Microbes as Strategy] — rhizobia and mycorrhizae; the case for reducing purchased nitrogen
+
+== References
+
+. Norinchukin Research Institute, on nitrogen fertilizer production and consumption (July 2025) — https://www.nochuri.co.jp/report/pdf/n2507re1.pdf
+. MAFF, "The Situation Surrounding Fertilizer" (April 2026) — import shares
+. China reopens urea exports with $660pt price floor (Profercy) — https://www.profercy.com/insights/china-reopens-urea-exports-with-660pt-price-floor
+. India issues 1.7mt urea tender ahead of monsoon sowing (Fertilizer Daily, 28 May 2026) — https://www.fertilizerdaily.com/20260528-india-issues-1-7mt-urea-tender-ahead-of-monsoon-sowing-as-domestic-production-shortfall-deepens/
+. Indonesia approves urea export licences for 2026 (Argus) — https://www.argusmedia.com/en/news-and-insights/latest-market-news/2776095-indonesia-approves-urea-export-licences-for-2026
+. IFA Medium-Term Fertilizer Outlook 2026-2030 (6 May 2026) — https://www.fertilizer.org/wp-content/uploads/2026/05/2026_IFA_Medium_Term_Outlook_Report_English.pdf
+. Qatar to double urea output by 2030, blue ammonia on-track for 2026 (Quantum Commodity Intelligence) — https://www.qcintel.com/ammonia/article/qatar-to-double-urea-output-by-2030-blue-ammonia-on-track-for-2026-38596.html
+endif::[]

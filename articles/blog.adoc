@@ -14076,7 +14076,7 @@ ifdef::lang-ja[]
 
 *モロッコが、立ち直った。* OCPは硫黄高を受けて保守を前倒しし、第2四半期の生産を約3割落とした。だが*6月末までに全量生産へ復帰した*と報じられている。方法が重要である。*硫黄の使用が大幅に少なく、アンモニアを使わないTSP(重過リン酸石灰)へ、製品を切り替えた。* TSPはいまやOCPの肥料出荷量の*65%*を占める。あわせて国内でのアンモニア生産の増強と、硫黄調達先の分散を進めるという。硫黄トラップへの答えが「待つ」ではなく「作るものを変える」だった ── *製法の転換という逃げ道は、机上の話ではなく、現実に使われた。*
 
-*中国の再開に、兆候が出た。* 7月、中国国内の硫黄価格が反発した。理由として報じられているのは*リン酸肥料の輸出クォータへの期待*である ── 輸出用の製品を作るつもりがなければ、高い硫黄を買う理由がない。声明ではなく、金の動きとして出た兆候だ。市場では、MAP約150万トン・DAP約200万トンの既存クォータが7月末から8月にかけて使い切られると見られており、CRUは2026年の中国のリン肥輸出を*560万トン(前年比微増)*と予測している。
+*中国の再開に、兆候が出た。* 7月、中国国内の硫黄価格が反発した。理由として報じられているのは*リン酸肥料の輸出クォータへの期待*である ── 輸出用の製品を作るつもりがなければ、高い硫黄を買う理由がない。声明ではなく、金の動きとして出た兆候だ。市場では、MAP約150万トン・DAP約200万トンの既存クォータが7月末から8月にかけて使い切られると見られており、CRUは2026年の中国のリン肥輸出を*560万トン(前年比微増)*と予測している。そして*尿素では、再開はもう起きている。* 6〜8月分のクォータ150〜160万トンがメーカーへ直接通知され(公式発表はない)、*下限価格660ドル/t FOB*つきで輸出が動き出したと報じられている。国内を守りながら高値だけを取りに行く設計であり、*8月のリン酸も、この型になる公算が高い。*
 
 *日本の調達は、粘った。* 経済安保推進法の備蓄は、塩化加里が目標の3か月分を達成し、リン安も2.4か月分まで来ていた。輸入の分散はモロッコ21%・イスラエル7%。全農は中国の1〜4月の輸出制限をパターンとして織り込んで調達している。結果、秋肥のリン酸系は+4.5〜4.9%で決着し、店頭の品切れは起きていない。
 
@@ -14100,7 +14100,7 @@ ifdef::lang-ja[]
 
 *二つ目 ── モロッコの製品構成。* 全量復帰はしたが、中身がTSPに寄った。日本がモロッコから買ってきたのは*リン安(窒素入りのMAP/DAP)*である。TSP(重過リン酸石灰)は日本でも使う品目なので代替は効くが、*窒素の分は別に手当てが要る* ── リン酸の解決が、そのぶん窒素の需要に変わる。制約の移動は、ここでも起きる。対日出荷の中身が戻るかは、OCPのアンモニア増強と硫黄分散の進み方次第だ。
 
-*三つ目 ── 春肥の順位と、為替。* 春肥(11〜5月供給分)の価格は例年11月に決まる。窒素の高止まりは材料が揃っており、リン酸は中国次第で振れ幅が大きい。円安が続けば、どの列にも上乗せされる。
+*三つ目 ── 春肥の順位と、為替。* 春肥(11〜5月供給分)の価格は例年11月に決まる。窒素の国際価格は、4月の頂点から6月には半値近くまで戻した ── インドの入札は4月の約890ドル/tに対し、約445ドル/tで応札超過である。秋肥の+14.5%は高値局面で決まった価格で、*春肥の窒素には下げ余地がある。* ただし湾岸の構造(世界の尿素輸出の36%、ラスラファンの年単位の修復)は残り、水準は平時より高い。リン酸は中国次第で振れ幅が大きい。円安が続けば、どの列にも上乗せされる。
 
 == 変わっていないもの
 
@@ -14139,6 +14139,8 @@ ifdef::lang-ja[]
 . Record Sulfur Prices Push Global Phosphate Fertilizers Into a Cost Squeeze (2026年5月) ── https://www.ihumate.com/media/articles/sulfur-price-shock-phosphate-fertilizer-may-2026
 . Vapor Lock: The Global Sulfur Supply Crisis 2026 ── https://stellarix.com/insights/blogs/global-sulfur-supply-crisis/
 . Drones Strike Largest Chemical Plant Nevinnomyssk Azot in Southern Russia ── https://militarnyi.com/en/news/drones-chemical-plant-nevinnomyssk-azot/
+. China reopens urea exports with $660pt price floor (Profercy) ── https://www.profercy.com/insights/china-reopens-urea-exports-with-660pt-price-floor
+. India issues 1.7mt urea tender ahead of monsoon sowing (Fertilizer Daily、2026年5月28日) ── https://www.fertilizerdaily.com/20260528-india-issues-1-7mt-urea-tender-ahead-of-monsoon-sowing-as-domestic-production-shortfall-deepens/
 . 農林水産省「肥料をめぐる情勢」(2026年4月) ── 輸入相手国と備蓄の数値
 endif::[]
 ifdef::lang-en[]
@@ -14156,7 +14158,7 @@ The headline first. On the better side: Morocco's recovery, the signs of a Chine
 
 *Morocco recovered.* OCP pulled maintenance forward as sulfur costs spiked, cutting production by about 30% in the second quarter. But it *returned to full output by the end of June*. The method matters: *it switched its product mix toward TSP (triple superphosphate), which uses far less sulfur and no ammonia* — TSP now accounts for *65%* of OCP Nutricrops' fertilizer volumes. The company is also building up domestic ammonia production and diversifying its sulfur suppliers. Its answer to the sulfur trap was not to wait but to change what it makes — *the process escape route turned out to be real, and it has already been used.*
 
-*Signs of a Chinese restart appeared.* In July, Chinese domestic sulfur prices rebounded — on reported *anticipation of phosphate export quotas*. A producer with no intention of exporting has no reason to buy expensive sulfur; this is a signal in money, not in statements. The market expects the existing quotas — roughly 1.5 million tonnes of MAP and 2 million of DAP — to be used up between late July and August, and CRU forecasts China's 2026 phosphate exports at *5.6 million tonnes, slightly up on the year*.
+*Signs of a Chinese restart appeared.* In July, Chinese domestic sulfur prices rebounded — on reported *anticipation of phosphate export quotas*. A producer with no intention of exporting has no reason to buy expensive sulfur; this is a signal in money, not in statements. The market expects the existing quotas — roughly 1.5 million tonnes of MAP and 2 million of DAP — to be used up between late July and August, and CRU forecasts China's 2026 phosphate exports at *5.6 million tonnes, slightly up on the year*. And *for urea, the restart has already happened*: June-August quotas of 1.5-1.6 million tonnes were communicated directly to producers (with no official announcement), and exports are reported moving under a *price floor of $660 a tonne FOB*. The design protects the domestic market while capturing only the high prices — *and August's phosphate decision is likely to take the same shape.*
 
 *Japan's procurement held.* Under the economic-security stockpile, potassium chloride has reached its three-month target and phosphate ammonium stands at 2.4 months. Imports are diversified to Morocco (21%) and Israel (7%), and Zen-Noh procures with China's January-April restrictions priced in as a pattern. The result: autumn phosphate settled at +4.5-4.9%, and no shelf has gone empty.
 
@@ -14180,7 +14182,7 @@ One lesson is buried here. *The nutrient that got hit was the one that had diver
 
 *Second — Morocco's product mix.* Full output is back, but its content has shifted toward TSP. What Japan has bought from Morocco is *phosphate ammonium — MAP/DAP, which carries nitrogen*. TSP is a familiar product in Japan (double superphosphate), so substitution works — but *the nitrogen has to be sourced separately*: solving phosphate converts, in part, into more nitrogen demand. The constraint moves here too. Whether shipments to Japan regain their old composition depends on OCP's ammonia build-out and sulfur diversification.
 
-*Third — the spring ordering, and the exchange rate.* Spring pricing (November-May supply) is set around November. The material for nitrogen staying high is already in place; phosphate swings on China. A weak yen adds to every column.
+*Third — the spring ordering, and the exchange rate.* Spring pricing (November-May supply) is set around November. International urea has already fallen back to nearly half its April peak — India's June tender drew oversubscribed bids around $445 a tonne against roughly $890 in April. The autumn +14.5% was set in the expensive window, so *spring nitrogen has room to fall* — though the Gulf structure remains (36% of world urea exports, years of repair at Ras Laffan) and levels stay above normal. Phosphate swings on China. A weak yen adds to every column.
 
 == What Has Not Changed
 
@@ -14219,5 +14221,7 @@ Whichever way it falls, the result will be written here.
 . Record Sulfur Prices Push Global Phosphate Fertilizers Into a Cost Squeeze (May 2026) — https://www.ihumate.com/media/articles/sulfur-price-shock-phosphate-fertilizer-may-2026
 . Vapor Lock: The Global Sulfur Supply Crisis 2026 — https://stellarix.com/insights/blogs/global-sulfur-supply-crisis/
 . Drones Strike Largest Chemical Plant Nevinnomyssk Azot in Southern Russia — https://militarnyi.com/en/news/drones-chemical-plant-nevinnomyssk-azot/
+. China reopens urea exports with $660pt price floor (Profercy) — https://www.profercy.com/insights/china-reopens-urea-exports-with-660pt-price-floor
+. India issues 1.7mt urea tender ahead of monsoon sowing (Fertilizer Daily, 28 May 2026) — https://www.fertilizerdaily.com/20260528-india-issues-1-7mt-urea-tender-ahead-of-monsoon-sowing-as-domestic-production-shortfall-deepens/
 . MAFF, "The Situation Surrounding Fertilizer" (April 2026) — import sources and stockpile figures
 endif::[]

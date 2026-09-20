@@ -35,6 +35,45 @@ def find_repo() -> Path | None:
     return None
 
 
+def add_site_json_entry(sjson: Path) -> None:
+    """site.json に連載の登録が無ければ、先頭に足す。
+
+    .adoc を置いただけでは、ビルドは連載の存在を知らない。登録は
+    builder.series の1行で、URL と表示名と編の見出しを決める。
+    """
+    import collections
+
+    cfg = json.loads(sjson.read_text(encoding="utf-8"),
+                     object_pairs_hook=collections.OrderedDict)
+    entry = collections.OrderedDict([
+        ("file", SERIES_FILE),
+        ("label", "AI ネイティブなソフトウェア開発"),
+        ("label_en", "AI-Native Software Development"),
+        ("url_base", URL_BASE),
+        ("subtitle", "SIer に頼まない ── 自分で立てて、自分で動かす"),
+        ("subtitle_en",
+         "Don't commission an SIer — stand it up yourself, and run it yourself"),
+        ("parts", [
+            collections.OrderedDict([
+                ("key", "1"), ("name_ja", "導入編 ── なぜ変わるのか"),
+                ("name_en", "Introduction — what changed")]),
+            collections.OrderedDict([
+                ("key", "2"),
+                ("name_ja", "自立編 ── AI に読ませて、そのとおりに立てる"),
+                ("name_en", "Independence — a specification the AI can execute")]),
+            collections.OrderedDict([
+                ("key", "3"), ("name_ja", "転換編 ── なぜ産業構造が変わるのか"),
+                ("name_en", "Shift — why the industry structure changes")]),
+        ]),
+    ])
+    cfg.setdefault("builder", collections.OrderedDict())
+    cfg["builder"].setdefault("series", [])
+    cfg["builder"]["series"].insert(0, entry)
+    sjson.write_text(json.dumps(cfg, ensure_ascii=False, indent=2) + "\n",
+                     encoding="utf-8")
+    print(f"site.json に連載の登録を足しました({URL_BASE})\n")
+
+
 def check(repo: Path) -> list[str]:
     """足りない物を並べて返す。空なら準備ができている。"""
     missing: list[str] = []
@@ -57,14 +96,7 @@ def check(repo: Path) -> list[str]:
         else:
             series = cfg.get("builder", {}).get("series", []) or []
             if not any(s.get("file") == SERIES_FILE for s in series):
-                missing.append(
-                    "site.json に連載の登録がありません。\n"
-                    "    builder.series の先頭に、次の行を足してください。\n"
-                    '    {"file": "ai-native-software.adoc", '
-                    '"label": "AI ネイティブなソフトウェア開発", '
-                    '"url_base": "/ai-native-software"},\n'
-                    "    (受け取った site.json をそのまま置き換えても構いません)"
-                )
+                add_site_json_entry(sjson)
 
     try:
         import pyasciidoc  # noqa: F401
@@ -151,24 +183,15 @@ def main() -> int:
         return 1
 
     pids = preview_running()
-    if pids and not args.force:
-        print("プレビューサーバー(tools/serve.py)が走っています。"
-              f"PID {', '.join(pids)}\n")
-        print("このサーバーはファイルの変更を見張って、自動でビルドし直します。")
-        print("手動のビルドと重なると、両方が .build/ を消して作り直すので、")
-        print("片方のファイルが途中で消えて FileNotFoundError になります。\n")
-        print("どちらかにしてください。\n")
-        print("  1. 何もしない ── サーバーがもう作り直しています。数秒待って")
-        print(f"     http://localhost:8000{URL_BASE}/ を開いてください")
-        print("  2. サーバーを止めてから、この道具をもう一度走らせる")
-        print(f"     kill {' '.join(pids)}")
-        print("  3. 承知のうえで走らせる ── --force を付けてください")
-        return 1
-
     if pids:
-        print("プレビューサーバーが走ったままです(--force)。"
-              "作り直しが落ち着くまで待ちます。")
-        wait_for_build_root(repo)
+        print(f"プレビューサーバーが走っています(PID {', '.join(pids)})。")
+        print("このサーバーもファイルの変更でビルドし直します。重なると"
+              ".build/ を取り合って落ちるので、落ち着くまで待ちます。")
+        if wait_for_build_root(repo):
+            print("落ち着きました。\n")
+        else:
+            print("まだ動いています。止めてからやり直すほうが確実です。")
+            print(f"  kill {' '.join(pids)}\n")
 
     print("準備はできています。ビルドします。\n")
     code = build(repo)

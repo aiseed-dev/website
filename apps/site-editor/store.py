@@ -21,6 +21,7 @@ REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "tools"))
 
 from build.series import (  # noqa: E402
+    site_series_defs,
     _ENDIF_RE,
     _IFDEF_RE,
     _SENTINEL_RE,
@@ -68,12 +69,25 @@ def series_path(name: str) -> Path:
 
 
 def list_series() -> list[tuple[str, str]]:
-    """存在するシリーズの [(ファイル名, 表示名)]。SERIES_LABELS の順。"""
-    return [
-        (name, label)
-        for name, label in SERIES_LABELS.items()
-        if series_path(name).exists()
-    ]
+    """存在するシリーズの [(ファイル名, 表示名)]。
+
+    site.json の `builder.series` を先に見る——サイト側で連載を足したら、
+    このアプリに手を入れなくても一覧に出るようにするため。並び順と表示名も
+    site.json に従う。site.json に無いものだけ、組み込みの SERIES_LABELS で
+    補う(site.json を持たないサイトでも今までどおり動く)。
+    """
+    out: list[tuple[str, str]] = []
+    seen: set[str] = set()
+    for sdef in site_series_defs(REPO):
+        name = sdef.get("file", "")
+        if name and name not in seen and series_path(name).exists():
+            out.append((name, sdef.get("label") or name))
+            seen.add(name)
+    for name, label in SERIES_LABELS.items():
+        if name not in seen and series_path(name).exists():
+            out.append((name, label))
+            seen.add(name)
+    return out
 
 
 def load_articles(name: str) -> list[Article]:
@@ -110,7 +124,15 @@ def article_url(name: str, slug: str) -> str:
         "ai-native-ways-software.adoc": "ai-native-ways/software",
         "phosphorus-and-farming.adoc": "phosphorus-and-farming",
         "fable.adoc": "fable",
-    }[name]
+    }.get(name)
+    if root is None:
+        # site.json で宣言したシリーズは、その url_base に従う
+        for sdef in site_series_defs(REPO):
+            if sdef.get("file") == name:
+                root = (sdef.get("url_base") or "").strip("/")
+                break
+    if not root:
+        root = name[: -len(".adoc")]
     return f"/{root}/{slug}/"
 
 

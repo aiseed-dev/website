@@ -237,3 +237,46 @@ def test_import_markdown_leaves_series_untouched_on_failure(series_file):
     with pytest.raises(ValueError):
         store.import_markdown("blog.adoc", IMPORT_MD, "Bad Slug!", "題")
     assert series_file.read_text(encoding="utf-8") == before
+
+
+# --- site.json で宣言したシリーズ ---------------------------------------------
+
+SITE_JSON = """\
+{"builder": {"series": [
+  {"file": "newseries.adoc", "label": "新しい連載", "url_base": "/newseries"},
+  {"file": "blog.adoc", "label": "Blog"}
+]}}
+"""
+
+
+@pytest.fixture
+def site_with_custom(tmp_path, monkeypatch):
+    d = tmp_path / "articles"
+    d.mkdir()
+    (d / "blog.adoc").write_text(SAMPLE, encoding="utf-8")
+    (d / "newseries.adoc").write_text(SAMPLE, encoding="utf-8")
+    (tmp_path / "site.json").write_text(SITE_JSON, encoding="utf-8")
+    monkeypatch.setattr(store, "REPO", tmp_path)
+    return tmp_path
+
+
+def test_list_series_includes_site_json_series_first(site_with_custom):
+    got = store.list_series()
+    # site.json の順と表示名に従う
+    assert got[0] == ("newseries.adoc", "新しい連載")
+    assert ("blog.adoc", "Blog") in got
+
+
+def test_list_series_falls_back_to_builtin_labels(series_file):
+    # site.json が無いサイトでは、これまでどおり組み込みの表を使う
+    got = store.list_series()
+    assert got == [("blog.adoc", "Blog(構造分析ノート)")]
+
+
+def test_article_url_uses_url_base_for_site_json_series(site_with_custom):
+    assert store.article_url("newseries.adoc", "aru-kiji") == "/newseries/aru-kiji/"
+
+
+def test_article_url_keeps_builtin_rules(series_file):
+    assert store.article_url("blog.adoc", "aru-kiji") == "/blog/aru-kiji/"
+    assert store.article_url("ai-native-ways-software.adoc", "x") == "/ai-native-ways/software/x/"

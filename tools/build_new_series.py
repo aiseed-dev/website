@@ -14,9 +14,12 @@ tools/build_article.py --all を走らせて、できた頁を数えて出す。
 
 from __future__ import annotations
 
+import argparse
 import json
+import os
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 SERIES_FILE = "ai-native-software.adoc"
@@ -74,6 +77,38 @@ def check(repo: Path) -> list[str]:
     return missing
 
 
+def preview_running() -> list[str]:
+    """走っているプレビューサーバー(tools/serve.py)の PID を返す。
+
+    serve.py はファイルの変更を見張って自動でビルドし直す。手動のビルドと
+    重なると、両方が .build/ を消して作り直すので、片方のファイルが途中で
+    消えて FileNotFoundError になる。だから先に調べる。
+    """
+    try:
+        out = subprocess.run(
+            ["pgrep", "-f", "serve.py"],
+            capture_output=True, text=True, check=False,
+        ).stdout
+    except FileNotFoundError:
+        return []          # pgrep が無い環境では調べない
+    me = str(os.getpid())
+    return [pid for pid in out.split() if pid != me]
+
+
+def wait_for_build_root(repo: Path, seconds: int = 30) -> bool:
+    """.build/ の作り直しが落ち着くまで待つ。落ち着けば True。"""
+    build_root = repo / ".build"
+    last, stable = None, 0
+    for _ in range(seconds * 2):
+        now = sum(1 for _ in build_root.rglob("*")) if build_root.is_dir() else -1
+        stable = stable + 1 if now == last else 0
+        if stable >= 4:        # 2 秒変わらなければ落ち着いたとみなす
+            return True
+        last = now
+        time.sleep(0.5)
+    return False
+
+
 def build(repo: Path) -> int:
     """サイト全体をビルドする。build_article.py の終了コードを返す。"""
     cmd = [sys.executable, str(repo / "tools" / "build_article.py"), "--all"]
@@ -95,6 +130,11 @@ def report(repo: Path) -> None:
 
 
 def main() -> int:
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--force", action="store_true",
+                    help="プレビューサーバーが走っていてもビルドする")
+    args = ap.parse_args()
+
     repo = find_repo()
     if repo is None:
         print("website のリポジトリが見つかりません。")
@@ -109,6 +149,26 @@ def main() -> int:
             print(f"  {i}. {m}\n")
         print("直してから、もう一度このファイルを走らせてください。")
         return 1
+
+    pids = preview_running()
+    if pids and not args.force:
+        print("プレビューサーバー(tools/serve.py)が走っています。"
+              f"PID {', '.join(pids)}\n")
+        print("このサーバーはファイルの変更を見張って、自動でビルドし直します。")
+        print("手動のビルドと重なると、両方が .build/ を消して作り直すので、")
+        print("片方のファイルが途中で消えて FileNotFoundError になります。\n")
+        print("どちらかにしてください。\n")
+        print("  1. 何もしない ── サーバーがもう作り直しています。数秒待って")
+        print(f"     http://localhost:8000{URL_BASE}/ を開いてください")
+        print("  2. サーバーを止めてから、この道具をもう一度走らせる")
+        print(f"     kill {' '.join(pids)}")
+        print("  3. 承知のうえで走らせる ── --force を付けてください")
+        return 1
+
+    if pids:
+        print("プレビューサーバーが走ったままです(--force)。"
+              "作り直しが落ち着くまで待ちます。")
+        wait_for_build_root(repo)
 
     print("準備はできています。ビルドします。\n")
     code = build(repo)

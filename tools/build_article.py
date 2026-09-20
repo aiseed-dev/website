@@ -2581,7 +2581,9 @@ def build_custom_chapter(md_path, sdef):
         meta, body_html,
         series_name=series_name,
         series_index_url=series_index_url,
-        chapter_label=_numbered_chapter_label(meta.get("number", ""), lang)
+        chapter_label=(_custom_chapter_badge(meta)
+                       if str(meta.get("part", "")).strip(chr(34))
+                       else _numbered_chapter_label(meta.get("number", ""), lang))
         if meta.get("number") else series_name,
         canonical_url=canonical_url,
         hreflang_ja=hreflang_ja if sibling_exists(md_path.parent, "ja") else "",
@@ -2599,6 +2601,44 @@ def build_custom_chapter(md_path, sdef):
     return True
 
 
+def _custom_chapter_badge(meta) -> str:
+    """索引と章ページに出す番号。編(part)があれば「2-04」の形にする。"""
+    number = str(meta.get("number", "")).strip(chr(34))
+    part = str(meta.get("part", "")).strip(chr(34))
+    if number and part:
+        return f"{part}-{number}"
+    return number
+
+
+def _custom_index_item_html(url_base, c) -> str:
+    """サイト独自シリーズの索引の1項目。"""
+    subtitle = c.get("subtitle", "")
+    return f'''
+                <a href="{url_base}/{c.get("slug", "")}/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">{_custom_chapter_badge(c)}</div>
+                        <div class="activity-content">
+                            <h3>{c.get("title", "")}{(" — " + subtitle) if subtitle else ""}</h3>
+                            <p>{c.get("description", "")}</p>
+                        </div>
+                    </div>
+                </a>
+'''
+
+
+def _custom_part_heading_html(pcfg, lang) -> str:
+    """編(part)の見出し。site.json の series[].parts[] から作る。"""
+    name = pcfg.get("name_en" if lang == "en" else "name_ja", "")
+    if not name:
+        return ""
+    return f'''
+                <h2 style="font-family: 'Zen Old Mincho', serif; font-size: 1.25rem;
+                           color: var(--earth-dark); margin: 2.5rem 0 1rem;
+                           border-bottom: 1px solid var(--soil-light, #d8d2c4);
+                           padding-bottom: 0.5rem;">{name}</h2>
+'''
+
+
 def build_custom_index(sdef, lang="ja"):
     """サイト独自シリーズの索引ページ。"""
     chapters = collect_custom_chapters(sdef, lang)
@@ -2608,19 +2648,26 @@ def build_custom_index(sdef, lang="ja"):
     url_base = _custom_url_base(sdef, lang)
     other = "en" if lang == "ja" else "ja"
 
-    items = ""
-    for c in chapters:
-        items += f'''
-                <a href="{url_base}/{c.get("slug", "")}/" style="text-decoration: none; color: inherit;">
-                    <div class="activity-item fade-in">
-                        <div class="activity-number">{c.get("number", "").strip(chr(34))}</div>
-                        <div class="activity-content">
-                            <h3>{c.get("title", "")}{(" — " + c["subtitle"]) if c.get("subtitle") else ""}</h3>
-                            <p>{c.get("description", "")}</p>
-                        </div>
-                    </div>
-                </a>
-'''
+    parts_cfg = sdef.get("parts") or []
+    if parts_cfg:
+        items = ""
+        seen = set()
+        for pcfg in parts_cfg:
+            key = str(pcfg.get("key", ""))
+            group = [c for c in chapters
+                     if str(c.get("part", "")).strip(chr(34)) == key]
+            if not group:
+                continue
+            seen.add(key)
+            items += _custom_part_heading_html(pcfg, lang)
+            for c in group:
+                items += _custom_index_item_html(url_base, c)
+        rest = [c for c in chapters
+                if str(c.get("part", "")).strip(chr(34)) not in seen]
+        for c in rest:
+            items += _custom_index_item_html(url_base, c)
+    else:
+        items = "".join(_custom_index_item_html(url_base, c) for c in chapters)
     variables = custom_index_vars(
         lang, items,
         title=sdef.get("label", base),

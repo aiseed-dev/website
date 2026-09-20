@@ -2,16 +2,77 @@
   "builder": {
     "cf_project": "aiseed-dev",
     "preview_port": 8000,
-    "plugins": ["forms", "audit"],
+    "plugins": [
+      "forms",
+      "audit"
+    ],
     "series": [
-      {"file": "blog.adoc", "label": "Blog(構造分析ノート)", "url_base": "/blog"},
-      {"file": "insights.adoc", "label": "Insights(構造分析)", "url_base": "/insights"},
-      {"file": "claude-debian.adoc", "label": "Claudeと一緒に学ぶDebian", "url_base": "/claude-debian", "slug_strip": "claude-debian-"},
-      {"file": "claude-debian-server.adoc", "label": "└ サーバー編", "url_base": "/claude-debian/server", "slug_strip": "claude-debian-server-"},
-      {"file": "ai-native-ways.adoc", "label": "AIネイティブな仕事の作法", "url_base": "/ai-native-ways"},
-      {"file": "ai-native-ways-software.adoc", "label": "└ ソフトウェア開発編", "url_base": "/ai-native-ways/software"},
-      {"file": "phosphorus-and-farming.adoc", "label": "リンと農業", "url_base": "/phosphorus-and-farming"},
-      {"file": "fable.adoc", "label": "Fable 5 が帰ってきた", "url_base": "/fable"}
+      {
+        "file": "ai-native-software.adoc",
+        "label": "AI ネイティブなソフトウェア開発",
+        "url_base": "/ai-native-software",
+        "subtitle": "SIer に頼まない ── 自分で立てて、自分で動かす",
+        "description": "AI がコードを書く能力で人間の最上層に並んだ。コーダーの仕事は AI に移り、決める側のビルダーが残る。導入編で何が変わったかを示し、自立編で Microsoft と Google から自立する道具一式を AI に読ませて実行できる仕様書として並べ、転換編で SIer 委託モデルがなぜ構造的に不経済になるのかを問う。AI 革命は上からの決定では始まらない ── 稟議なしでできる所から始まる。",
+        "parts": [
+          {
+            "key": "1",
+            "name_ja": "導入編 ── なぜ変わるのか",
+            "name_en": "Introduction — what changed"
+          },
+          {
+            "key": "2",
+            "name_ja": "自立編 ── AI に読ませて、そのとおりに立てる",
+            "name_en": "Independence — a specification the AI can execute"
+          },
+          {
+            "key": "3",
+            "name_ja": "転換編 ── なぜ産業構造が変わるのか",
+            "name_en": "Shift — why the industry structure changes"
+          }
+        ]
+      },
+      {
+        "file": "blog.adoc",
+        "label": "Blog(構造分析ノート)",
+        "url_base": "/blog"
+      },
+      {
+        "file": "insights.adoc",
+        "label": "Insights(構造分析)",
+        "url_base": "/insights"
+      },
+      {
+        "file": "claude-debian.adoc",
+        "label": "Claudeと一緒に学ぶDebian",
+        "url_base": "/claude-debian",
+        "slug_strip": "claude-debian-"
+      },
+      {
+        "file": "claude-debian-server.adoc",
+        "label": "└ サーバー編",
+        "url_base": "/claude-debian/server",
+        "slug_strip": "claude-debian-server-"
+      },
+      {
+        "file": "ai-native-ways.adoc",
+        "label": "AIネイティブな仕事の作法",
+        "url_base": "/ai-native-ways"
+      },
+      {
+        "file": "ai-native-ways-software.adoc",
+        "label": "└ ソフトウェア開発編",
+        "url_base": "/ai-native-ways/software"
+      },
+      {
+        "file": "phosphorus-and-farming.adoc",
+        "label": "リンと農業",
+        "url_base": "/phosphorus-and-farming"
+      },
+      {
+        "file": "fable.adoc",
+        "label": "Fable 5 が帰ってきた",
+        "url_base": "/fable"
+      }
     ]
   }
 }

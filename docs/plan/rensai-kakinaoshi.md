@@ -48,8 +48,8 @@
 | 2-08 | 13-meetings | 会議と予約を自分の側に ── Jitsi と Cal.com | |
 | 2-09 | 14-web | Web を公開する ── Cloudflare Pages | |
 | 2-10 | 15-fastapi | API を作る ── FastAPI で基幹のロジックを出す | |
-| 2-11 | 16-knowledge | 社内情報を整える ── 整備こそ本体、AI は最後の一手 | |
-| 2-12 | 17-own-ai | 自前の AI を据える ── LLM と RAG | |
+| 2-11 | 16-structure-knowledge | 社内情報を整える ── 整備こそ本体、AI は最後の一手 | |
+| 2-12 | 17-ai | 自前の AI を据える ── LLM と RAG | |
 
 ### 転換編 ── なぜ産業構造が変わるのか
 

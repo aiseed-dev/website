@@ -25,6 +25,7 @@ import datetime
 import logging
 import os
 import webbrowser
+from pathlib import Path
 
 logging.basicConfig(
     level=logging.INFO,
@@ -85,7 +86,7 @@ def _meta_set(meta: dict, key: str, lang: str, value: str, langs: list) -> None:
 
 
 @ft.component
-def Sidebar(current, on_select, on_git, on_deploy):
+def Sidebar(current, on_select, on_import, on_git, on_deploy):
     items = [
         ft.Container(
             content=ft.Row(
@@ -116,6 +117,7 @@ def Sidebar(current, on_select, on_git, on_deploy):
         )
     items.append(ft.Container(expand=True))
     for icon, text, handler in (
+        (ft.Icons.DOWNLOAD, "取り込む", on_import),
         (ft.Icons.HISTORY, "変更を記録", on_git),
         (ft.Icons.CLOUD_UPLOAD, "サイトを公開", on_deploy),
     ):
@@ -597,6 +599,200 @@ def _editor_body(series, article, draft, meta, assets, on_back, on_delete,
 
 
 @ft.component
+def Importer(series, series_label, on_created, set_status):
+    """Claude Docs などが書き出した Markdown を、下書きの記事として取り込む画面。
+
+    Claude Docs は文書を claude.ai の中に置くので、外から取りに行けない。
+    持ち出せるのは書き出した写しだけだ。だからこの画面は、書き出した
+    Markdown を受け取って、シリーズ .adoc の一記事(下書き)に変える。
+    取り込んだあとは、いつもの編集・プレビュー・公開の流れに乗る。
+    """
+    fields = ft.use_state({"md": "", "slug": "", "tja": "", "ten": ""})[0]
+    preview, set_preview = ft.use_state("")
+    warns, set_warns = ft.use_state([])
+    err, set_err = ft.use_state("")
+    busy, set_busy = ft.use_state(False)
+    tick, set_tick = ft.use_state(0)
+
+    async def pick_md(e):
+        files = await file_picker.pick_files(
+            dialog_title="Markdown を選ぶ(Claude Docs の書き出し)",
+            allow_multiple=False,
+            with_data=True,
+            file_type=ft.FilePickerFileType.CUSTOM,
+            allowed_extensions=["md", "markdown", "txt"],
+        )
+        for f in files or []:
+            text = ""
+            if getattr(f, "path", None):
+                text = Path(f.path).read_text(encoding="utf-8")
+            elif getattr(f, "bytes", None):
+                text = f.bytes.decode("utf-8", "replace")
+            if text:
+                fields["md"] = text
+                set_err("")
+                set_preview("")
+                set_status((f"読み込みました: {f.name}", WP_OK))
+                set_tick(tick + 1)
+            break
+
+    def convert(e=None):
+        try:
+            head, body, w = store.markdown_to_adoc(fields["md"])
+        except Exception as exc:  # noqa: BLE001 — 画面にそのまま出す
+            set_err(str(exc))
+            return
+        if head and not fields["tja"].strip():
+            fields["tja"] = head
+        set_preview(body)
+        set_warns(w)
+        set_err("")
+        set_tick(tick + 1)
+
+    async def do_import(e):
+        set_busy(True)
+        try:
+            aid, w = await asyncio.to_thread(
+                store.import_markdown, series, fields["md"],
+                fields["slug"], fields["tja"], fields["ten"],
+            )
+        except ValueError as exc:
+            set_err(str(exc))
+            set_busy(False)
+            return
+        set_busy(False)
+        note = f"({len(w)} 件の要確認あり)" if w else ""
+        set_status((f"下書きとして取り込みました: {aid} {note}".strip(), WP_OK))
+        fields.update({"md": "", "slug": "", "tja": "", "ten": ""})
+        set_preview("")
+        set_warns([])
+        on_created(aid)
+
+    def step(n, text):
+        return ft.Row(
+            [
+                ft.Container(
+                    content=ft.Text(str(n), color="white", size=12,
+                                    weight=ft.FontWeight.BOLD),
+                    bgcolor=WP_DARK_ACTIVE, width=22, height=22,
+                    border_radius=11, alignment=ft.Alignment.CENTER,
+                ),
+                ft.Text(text, size=14, weight=ft.FontWeight.BOLD),
+            ],
+            spacing=8,
+        )
+
+    body_items = [
+        ft.Text("取り込む", size=22, weight=ft.FontWeight.BOLD),
+        ft.Text(
+            f"Claude Docs などで書いた原稿を、「{series_label}」の下書きとして"
+            "取り込みます。下書きはサイト・索引・sitemap に一切出ません。"
+            "取り込んだあと、編集画面で直してから「公開する」に切り替えます。",
+            size=13, color=WP_MUTED,
+        ),
+        ft.Divider(),
+        step(1, "Markdown を入れる"),
+        ft.Row(
+            [
+                ft.OutlinedButton("ファイルを選ぶ", icon=ft.Icons.UPLOAD_FILE,
+                                  on_click=pick_md),
+                ft.Text("または下の欄に貼り付ける", size=12, color=WP_MUTED),
+            ],
+            spacing=10,
+        ),
+        ft.TextField(
+            value=fields["md"],
+            multiline=True,
+            min_lines=8,
+            max_lines=14,
+            text_size=12,
+            hint_text="Claude Docs の「書き出し」→ Markdown の中身をここに貼る",
+            on_change=lambda e: fields.update({"md": e.control.value}),
+        ),
+        ft.Row(
+            [
+                ft.Button("変換して確かめる", icon=ft.Icons.CHANGE_CIRCLE,
+                          bgcolor=WP_DARK_ACTIVE, color="white",
+                          on_click=convert),
+            ]
+        ),
+    ]
+
+    if preview:
+        body_items += [
+            ft.Divider(),
+            step(2, "AsciiDoc になったものを見る"),
+            ft.Container(
+                content=ft.Text(preview, size=12, font_family="monospace",
+                                selectable=True),
+                bgcolor="white",
+                border=ft.Border.all(1, WP_DIM),
+                padding=12,
+                height=260,
+            ),
+        ]
+        if warns:
+            body_items.append(
+                ft.Container(
+                    content=ft.Column(
+                        [ft.Text("要確認(機械変換で意味が保てなかった所)",
+                                 size=12, weight=ft.FontWeight.BOLD,
+                                 color=WP_WARN)]
+                        + [ft.Text(w, size=11, color=WP_MUTED) for w in warns],
+                        spacing=2, tight=True,
+                    ),
+                    bgcolor="#fcf9e8",
+                    border=ft.Border.all(1, WP_WARN),
+                    padding=10,
+                )
+            )
+
+    body_items += [
+        ft.Divider(),
+        step(3, "記事の名前を決める"),
+        ft.Row(
+            [
+                ft.TextField(
+                    label="スラッグ(URL用・半角英小文字と数字とハイフン)",
+                    value=fields["slug"], width=340,
+                    on_change=lambda e: fields.update({"slug": e.control.value}),
+                ),
+                ft.TextField(
+                    label="タイトル(日本語)", value=fields["tja"], width=340,
+                    on_change=lambda e: fields.update({"tja": e.control.value}),
+                ),
+            ],
+            spacing=12, wrap=True,
+        ),
+        ft.TextField(
+            label="Title(英語・空欄なら日本語だけの記事になる)",
+            value=fields["ten"], width=692,
+            on_change=lambda e: fields.update({"ten": e.control.value}),
+        ),
+        ft.Text(err, color=WP_ERR, size=12),
+        ft.Divider(),
+        step(4, "下書きにする"),
+        ft.Row(
+            [
+                ft.Button(
+                    "下書きとして取り込む", icon=ft.Icons.NOTE_ADD,
+                    bgcolor=WP_OK, color="white",
+                    disabled=busy,
+                    on_click=do_import,
+                ),
+                ft.Text("取り込むと編集画面が開きます。"
+                        "プレビューで見て、直してから公開します。",
+                        size=12, color=WP_MUTED),
+            ],
+            spacing=12,
+        ),
+    ]
+
+    return ft.Column(body_items, spacing=12, scroll=ft.ScrollMode.AUTO,
+                     expand=True)
+
+
+@ft.component
 def App():
     first = store.list_series()[0][0]
     view, set_view = ft.use_state(
@@ -618,6 +814,19 @@ def App():
 
     def select_series(name):
         refresh_list(name)
+
+    def open_import():
+        set_view({**view, "screen": "import"})
+
+    def after_import(article_id):
+        s = view["series"]
+        articles = store.load_articles(s)
+        for a in articles:
+            if a.article_id == article_id:
+                set_view({"screen": "list", "series": s, "articles": articles})
+                open_editor(a)
+                return
+        set_view({"screen": "list", "series": s, "articles": articles})
 
     def open_editor(article):
         s = view["series"]
@@ -824,7 +1033,15 @@ def App():
     )
 
     # --- 画面 ---
-    if view["screen"] == "edit":
+    if view["screen"] == "import":
+        content = Importer(
+            series=view["series"],
+            series_label=dict(store.list_series()).get(view["series"],
+                                                       view["series"]),
+            on_created=after_import,
+            set_status=set_status,
+        )
+    elif view["screen"] == "edit":
         content = Editor(
             series=view["series"],
             article=view["article"],
@@ -851,6 +1068,7 @@ def App():
             Sidebar(
                 current=view["series"],
                 on_select=select_series,
+                on_import=open_import,
                 on_git=lambda: set_show_git(True),
                 on_deploy=lambda: set_show_deploy(True),
             ),

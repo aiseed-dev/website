@@ -167,3 +167,73 @@ def test_assets_add_and_list(series_file, tmp_path):
     assert name2 == "doc.pdf"
     with pytest.raises(ValueError):
         store.add_asset("blog.adoc", "01-first", data=b"x", filename="evil.exe")
+
+
+# --- 取り込み(Claude Docs などの Markdown 書き出し)--------------------------
+
+IMPORT_MD = """\
+# 取り込んだ記事
+
+**太字**のある段落と、[リンク](https://example.com/)。
+
+## 節の見出し
+
+- 箇条書き 1
+- 箇条書き 2
+
+> 引用の行
+
+| 見出し1 | 見出し2 |
+|---|---|
+| 値1 | 値2 |
+"""
+
+
+def test_markdown_to_adoc_extracts_title_and_converts():
+    title, body, warnings = store.markdown_to_adoc(IMPORT_MD)
+    assert title == "取り込んだ記事"
+    # 見出し・強調・リンク・箇条書き・引用・表が AsciiDoc の語彙になる
+    assert body.startswith("*太字*のある段落と、https://example.com/[リンク]。")
+    assert "== 節の見出し" in body
+    assert "* 箇条書き 1" in body
+    assert "____" in body
+    assert "|===" in body
+    # タイトル行は本文に残さない(取り込み側が `= 題` を付け直す)
+    assert "# 取り込んだ記事" not in body
+    assert "= 取り込んだ記事" not in body
+    assert warnings == []
+
+
+def test_import_markdown_creates_draft_with_converted_body(series_file):
+    article_id, warnings = store.import_markdown(
+        "blog.adoc", IMPORT_MD, "torikomi", "取り込んだ記事")
+    assert article_id == "03-torikomi"
+    assert warnings == []
+    # 下書きとして作られる——公開に切り替えるまでサイトに出ない
+    assert store.is_draft_meta(store.read_meta_raw("blog.adoc", article_id))
+    body = store.read_body("blog.adoc", article_id, "ja")
+    assert body.startswith("= 取り込んだ記事\n\n")
+    assert "== 節の見出し" in body
+    # 既存の記事は無傷
+    assert "日本語の本文。" in series_file.read_text(encoding="utf-8")
+
+
+def test_import_markdown_uses_heading_when_title_omitted(series_file):
+    article_id, _ = store.import_markdown("blog.adoc", IMPORT_MD, "midashi", "")
+    meta = store.read_meta_raw("blog.adoc", article_id)
+    assert meta["title.ja"] == "取り込んだ記事"
+
+
+def test_import_markdown_rejects_empty_and_titleless(series_file):
+    with pytest.raises(ValueError):
+        store.import_markdown("blog.adoc", "   ", "kara", "題")
+    with pytest.raises(ValueError):
+        # 見出しもタイトル欄も無ければ、何の記事か決まらない
+        store.import_markdown("blog.adoc", "本文だけ。\n", "nashi", "")
+
+
+def test_import_markdown_leaves_series_untouched_on_failure(series_file):
+    before = series_file.read_text(encoding="utf-8")
+    with pytest.raises(ValueError):
+        store.import_markdown("blog.adoc", IMPORT_MD, "Bad Slug!", "題")
+    assert series_file.read_text(encoding="utf-8") == before

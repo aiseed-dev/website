@@ -58,6 +58,7 @@ mirror2
 .~lock.*#
 .build/
 .builder/
+brand
 
 # MCP設定は環境依存(flet の絶対パス)
 .mcp.json

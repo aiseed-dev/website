@@ -14426,3 +14426,80 @@ Whichever way it falls, the result will be written here.
 . IFA Medium-Term Fertilizer Outlook 2026-2030 (6 May 2026) — https://www.fertilizer.org/wp-content/uploads/2026/05/2026_IFA_Medium_Term_Outlook_Report_English.pdf
 . Qatar to double urea output by 2030, blue ammonia on-track for 2026 (Quantum Commodity Intelligence) — https://www.qcintel.com/ammonia/article/qatar-to-double-urea-output-by-2030-blue-ammonia-on-track-for-2026-38596.html
 endif::[]
+
+// ===== article: 046-digital-door-site =====
+---
+slug: digital-door-site
+title.ja: 扉と鍵の情報サイト「デジタルドア」を始めた
+title.en: Starting "Digital Door", a site about doors and keys
+subtitle.ja: 読者を広げるために、一日で作った。AIが広めに集め、人が選ぶニュースつき
+subtitle.en: Built in a day to reach more readers, with news that AI gathers widely and a person selects
+date: 2026.09.17
+description.ja: 扉と鍵の話を、読取機、錠、扉のコントローラ、鍵の発行の層に分けて書くサイト door.aiseed.dev を始めた。解説はMatter、Aliro、スマートドアに望まれるもの。ニュースはAIが広めに集めて一行に整え、載せる物は人が選ぶ。このサイトと同じ仕組みで一日で作り、管理者・デザイナー・編集者の三つの目で見直した。名前は商標を調べて決めた。
+description.en: A new site, door.aiseed.dev, writes about doors and keys one layer at a time — readers, locks, door controllers, key issuing. Guides on Matter, Aliro, and what a smart door needs. News is gathered widely by AI, condensed to one line, and selected by a person. Built in a day with the same toolchain as this site, then reviewed as administrator, designer, and editor.
+label: Blog
+category.ja: AI開発ノート
+category.en: AI Development Notes
+---
+ifdef::lang-ja[]
+= 扉と鍵の情報サイト「デジタルドア」を始めた
+
+扉と鍵の話を書くサイトを始めた。https://door.aiseed.dev/[door.aiseed.dev]。扉の製造、電子錠、扉のコントローラ、読取機(ドアホン)、スマートフォン、周辺機、機器同士の言葉、鍵の発行、機器と業務のつなぎ、業務システム、本人、という層に分けて、どの層が買う物になり、どの層に責任が残るかを書く。
+
+== なぜ
+
+扉の話は、扉の業界の中で閉じている。錠は錠の会社、ドアホンはドアホンの会社、規格は規格の団体が、それぞれの言葉で話していて、扉を使う側から全体を見た文章が無い。こうやって読者を広げないと、扉の側から見た話は誰にも届かない。デジタルドアという名は、扉を開くという意味でもちょうどいい。
+
+== 何を書くか
+
+* 解説。規格と機器を、届く所と届かない所に分けて読む。最初の三本は、Matterとは何か、Aliroとは何か、スマートドアに望まれるもの。Matterは住宅の機器の言葉で、業務用の扉には届かない。Aliroはスマートフォンが本人の証明になる仕組みで、読取機の前までを決めて後ろを決めない。スマートドアに望まれるものは六つで、ローカルだけで動く、錠を選べる、読取機は替えられる、記録は手元、認証は一社に集めない、経路は何本も。
+* ブログ。時事のノート。報道は事実と噂を分け、誰がいつ何を書いたかを添える。
+* ニュース。AIが広めに集めて一行に整え、発表・報道・噂・解説の印を付ける。載せる物は人が選ぶ。
+
+== どう作ったか
+
+このサイト(aiseed.dev)と同じ仕組みで作った。記事はAsciiDocのファイル一本、それをHTMLに組む道具は同じ物を複写し、Cloudflare Pagesに出す。雛形を作って、記事を三本書いて、ビルドが通るまでで半日。そのあと、管理者の目(計測の印、死にリンク、sitemap、OG画像、ヘッダ)、デザイナーの目(一覧と記事で二つに割れていた見た目を一つに、スマートフォンの幅、暗い配色)、編集者の目(記事どうしのつながり、用語の初出、出典)で見直して、残りの半日。全部AIと一緒にやった。
+
+ニュースは、Google Newsの検索とCSAと二つのApple系のサイトから毎朝集める。AIには「原文に無いことを足さない、発表と報道を混ぜない、個人名を書かない」と指示して、日本語の題と一行の要約と印を付けさせる。関係があるかどうかの見立ては付けるが、絞りには使わない。広めに取って、選ぶのは人。選ぶ画面はFletで書いた。
+
+== 名前
+
+最初は「スマートドア」にしていた。調べると、YKK APが電気錠つき玄関ドアの商品名として使い、自社の頁に「出願・登録商標です」と書いている。同じ分野で同じ言葉を看板にするのは分が悪いので、「デジタルドア」にした。「デジタルドアロック」は暗証番号錠の一般の呼び名で、同じ名前の会社はゲームの会社で分野が違う。名前を決める前に一度は検索する、というだけの話だが、AIに頼めば数分で済む。
+
+== 公開
+
+置き場はGitHubで、文章はCC BY 4.0、道具はAGPL-3.0-or-later。履歴は最初の一コミットだけにした。これからの時代は、詳細な経過は要らない。経過はAIの記憶に残し、公開するのは出来上がった物でよい。
+
+同じ日に、鍵の側の置き場も作った。扉側のコントローラの仕様と参照実装を、認証ではなく実務的な物として、Pythonのように広げていく。それはまた別に書く。
+endif::[]
+ifdef::lang-en[]
+= Starting "Digital Door", a site about doors and keys
+
+I have started a site about doors and keys: https://door.aiseed.dev/[door.aiseed.dev]. It takes the business of the entrance apart into layers — door manufacturing, electronic locks, the door-side controller, the reader (the doorbell), the phone, peripherals, the languages devices speak, key issuing, the bridge between devices and operations, business systems, and the person in charge — and asks which layers become things you buy and which layers keep responsibility.
+
+== Why
+
+Talk about doors stays inside the door industry. Lock companies talk about locks, doorbell companies about doorbells, standards bodies about standards, each in its own vocabulary, and nobody writes the whole picture from the side of the person who uses the door. Unless the readership is widened this way, the view from the door never reaches anyone. "Digital Door" also fits in the sense of opening a door.
+
+== What it carries
+
+* Guides, which read standards and devices by how far they reach and where they stop. The first three: what Matter is, what Aliro is, and what a smart door needs. Matter is the language of home devices and does not reach commercial doors. Aliro is how a phone becomes proof of who you are; it defines everything up to the reader and nothing behind it. A smart door needs six things: it works locally, the lock is replaceable, the reader is replaceable, records stay on site, authentication is not concentrated in one company, and there are several paths in.
+* A blog for notes on current events, separating fact from rumour and naming who wrote what and when.
+* News, gathered widely by AI, condensed to one line, and tagged as announcement, report, rumour, or commentary. A person decides what gets published.
+
+== How it was built
+
+With the same toolchain as this site: articles in one AsciiDoc file, the same build scripts copied over, published to Cloudflare Pages. Scaffolding, three articles, and a working build took half a day. The other half went to three reviews — as administrator (tracking tags, dead links, sitemap, OG image, headers), as designer (the list pages and article pages had been two different designs; phone widths; dark mode), and as editor (cross-links, first use of terms, sources). All of it with AI.
+
+News comes every morning from Google News searches, the CSA, and two Apple-news sites. The AI is told not to add anything absent from the source, not to mix announcements with reports, and not to name individuals; it writes a Japanese title, a one-line summary, and tags. It also notes whether an item looks relevant, but that note never filters anything. Gather widely; a person selects. The selection screen is written in Flet.
+
+== The name
+
+It started as "Smart Door". A search showed that YKK AP uses スマートドア as the product name for its electric-lock entrance doors and states on its own pages that it is a registered trademark. Putting the same word on a sign in the same field is a poor bet, so it became "Digital Door". "Digital door lock" is the generic name for keypad locks, and the company that shares the name makes games — a different field. Search before you name; it takes minutes with AI.
+
+== Publishing
+
+The repository is on GitHub; text is CC BY 4.0 and code is AGPL-3.0-or-later. The history is a single first commit. In the coming era, a detailed trail is not needed: the trail lives in the AI's memory, and what gets published is the finished thing.
+
+The same day, a home for the key side was created too — the specification and reference implementation of a door-side controller, to be spread practically rather than through certification, the way Python spread. That is for another post.
+endif::[]

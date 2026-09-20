@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-9FLQ963JXM');
+</script>
+
+<title>文書を取り戻す ── 原稿は adoc、様式は aiseed office — AI ネイティブなソフトウェア開発 | aiseed.dev</title>
+<meta name="description" content="文書の置き場は、もう二つに分かれない。Office と自前のほかに、Claude Docs が来た。三つとも便利で、三つとも鍵は他人の手元にある。答えは置き場の選択ではなく、原稿の持ち方にある。原稿は adoc の文字で持ち、git に入れるのは原稿だけにして、デザインは入れない。そうすれば、Word も Claude Docs も aiseed office も、入口と出口を通過させる道具になる。様式の仕事は aiseed office が受け持つ。ONLYOFFICE が日本語の様式で合わないから作った道具で、エンジンは pip で入る。実体はファイルのまま置き、認証は門番、権限は構造化ストアが持つ。">
+<link rel="canonical" href="https://aiseed.dev/ai-native-software/documents/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/ai-native-software/documents/">
+<link rel="alternate" hreflang="en" href="https://aiseed.dev/en/ai-native-software/documents/">
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/ai-native-software/documents/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI時代の暮らし">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="文書を取り戻す ── 原稿は adoc、様式は aiseed office">
+<meta property="og:description" content="文書の置き場は、もう二つに分かれない。Office と自前のほかに、Claude Docs が来た。三つとも便利で、三つとも鍵は他人の手元にある。答えは置き場の選択ではなく、原稿の持ち方にある。原稿は adoc の文字で持ち、git に入れるのは原稿だけにして、デザインは入れない。そうすれば、Word も Claude Docs も aiseed office も、入口と出口を通過させる道具になる。様式の仕事は aiseed office が受け持つ。ONLYOFFICE が日本語の様式で合わないから作った道具で、エンジンは pip で入る。実体はファイルのまま置き、認証は門番、権限は構造化ストアが持つ。">
+<meta property="og:url" content="https://aiseed.dev/ai-native-software/documents/">
+<meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<meta property="article:section" content="AI ネイティブなソフトウェア開発">
+<meta property="article:published_time" content="2026.07.04">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="文書を取り戻す ── 原稿は adoc、様式は aiseed office">
+<meta name="twitter:description" content="文書の置き場は、もう二つに分かれない。Office と自前のほかに、Claude Docs が来た。三つとも便利で、三つとも鍵は他人の手元にある。答えは置き場の選択ではなく、原稿の持ち方にある。原稿は adoc の文字で持ち、git に入れるのは原稿だけにして、デザインは入れない。そうすれば、Word も Claude Docs も aiseed office も、入口と出口を通過させる道具になる。様式の仕事は aiseed office が受け持つ。ONLYOFFICE が日本語の様式で合わないから作った道具で、エンジンは pip で入る。実体はファイルのまま置き、認証は門番、権限は構造化ストアが持つ。">
+<meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
+<!-- フォントは Web 配信せず、すべて端末のローカルフォントで賄う。
+     和文: UDデジタル教科書体 → BIZ UDP明朝(いずれも Windows 標準搭載の
+     モリサワ UD 書体) → ヒラギノ明朝・游明朝などのシステム明朝。
+     等幅: 端末のシステム等幅フォント。 -->
+
+<style>
+/* ============================================================
+   LOCAL FONT: UDデジタル教科書体(モリサワ)
+   Windows・教育向け端末に無償搭載。端末にあれば local() で拾い、
+   なければ BIZ UDP明朝(同じく Windows 標準搭載)→ システム明朝へ
+   フォールバックする。R と B は別ファミリー名なので、太字(700)を
+   B 書体に明示的にマッピングして疑似ボールドを避ける。
+   ============================================================ */
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 400;
+  src: local("UD デジタル 教科書体 NK-R"), local("UD Digital Kyokasho NK-R"),
+       local("UD デジタル 教科書体 NP-R"), local("UD Digital Kyokasho NP-R"),
+       local("UD デジタル 教科書体 N-R"), local("UD Digital Kyokasho N-R");
+}
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 700;
+  src: local("UD デジタル 教科書体 NK-B"), local("UD Digital Kyokasho NK-B"),
+       local("UD デジタル 教科書体 NP-B"), local("UD Digital Kyokasho NP-B"),
+       local("UD デジタル 教科書体 N-B"), local("UD Digital Kyokasho N-B");
+}
+
+/* ============================================================
+   COLOR & DESIGN TOKENS
+   aiseed.dev 全体のスタイルに合わせる場合は、ここの変数を
+   既存サイトのCSS変数に差し替える。
+   ============================================================ */
+:root {
+  --ink: #1a1a1a;
+  --paper: #f4f1ea;
+  --paper-deep: #ebe6d8;
+  --accent: #c8442a;
+  --rule: #d4cdb8;
+  --whisper: #6b665a;
+  --highlight: #f7e9c8;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* 本文: 端末にあれば UDデジタル教科書体を最優先、次に BIZ UDP明朝
+   (Windows 標準搭載)、どちらもなければヒラギノ明朝等のシステム明朝 */
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "UD Digital Kyokasho",
+               "BIZ UDPMincho", "BIZ UDP明朝",
+               "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
+               "Yu Mincho", "游明朝", "YuMincho",
+               "Noto Serif CJK JP", "Noto Serif JP", serif;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  font-feature-settings: "palt";
+  overflow-x: hidden;
+}
+
+/* グレインテクスチャ(紙の質感) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   MASTHEAD(シリーズ名・章番号)
+   ============================================================ */
+.masthead {
+  border-bottom: 3px double var(--ink);
+  padding: 24px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+}
+.masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-left a { color: inherit; text-decoration: none; }
+.masthead-left a:hover { color: var(--accent); }
+.masthead-home { color: var(--whisper); }
+.masthead-sep { margin: 0 10px; color: var(--whisper); font-weight: 400; }
+.masthead-right { font-style: italic; }
+
+/* ============================================================
+   HERO(タイトル領域)
+   ============================================================ */
+.hero {
+  padding: 80px 0 60px;
+}
+.hero-meta {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-meta::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 56px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.hero-title .accent {
+  color: var(--accent);
+}
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--whisper);
+  max-width: 580px;
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+  margin-top: 32px;
+}
+.hero-byline {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ============================================================
+   ARTICLE BODY
+   ============================================================ */
+article p {
+  margin-bottom: 24px;
+}
+
+article h2 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.4;
+  margin: 72px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+article h2::before {
+  content: "§";
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  color: var(--accent);
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+article h3 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 600;
+  font-size: 19px;
+  margin: 40px 0 16px;
+  color: var(--ink);
+}
+article h3::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+article strong {
+  font-weight: 700;
+  background: linear-gradient(to top, var(--highlight) 35%, transparent 35%);
+  padding: 0 2px;
+}
+
+article em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+article a:hover {
+  color: var(--accent);
+}
+
+/* ============================================================
+   BLOCKQUOTE
+   ============================================================ */
+blockquote {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  position: relative;
+  font-size: 18px;
+  line-height: 1.85;
+  font-style: normal;
+  color: var(--ink);
+}
+blockquote::before {
+  content: "「";
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-size: 48px;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: "Hiragino Mincho ProN", serif;
+}
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+article thead th {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+}
+article tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+article tbody tr:last-child td {
+  border-bottom: none;
+}
+@media (max-width: 720px) {
+  article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ============================================================
+   ORDERED LIST(番号付きリスト)
+   ============================================================ */
+article ol {
+  margin: 32px 0;
+  counter-reset: item;
+  padding: 0;
+}
+article ol li {
+  list-style: none;
+  position: relative;
+  padding: 16px 0 16px 56px;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: item;
+}
+article ol li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* 通常のul(章末の関連リンクなど) */
+article ul {
+  margin: 24px 0;
+  padding-left: 1.5em;
+}
+article ul li {
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   CODE BLOCK(疑似ターミナル風)
+   ============================================================ */
+article pre {
+  margin: 40px 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 24px 28px;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+  overflow-x: auto;
+}
+article pre::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 8px;
+  color: var(--whisper);
+  letter-spacing: 4px;
+}
+article pre code {
+  display: block;
+  padding-top: 16px;
+  white-space: pre;
+}
+
+/* インラインコード */
+article code {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 0.9em;
+  background: var(--paper-deep);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+article pre code {
+  background: transparent;
+  padding: 16px 0 0 0;
+  color: var(--paper);
+}
+
+/* ============================================================
+   HORIZONTAL RULE(本文中の区切り)
+   ============================================================ */
+article hr {
+  border: none;
+  text-align: center;
+  margin: 64px 0;
+  height: 1em;
+}
+article hr::before {
+  content: "◆ ◆ ◆";
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+}
+
+/* ============================================================
+   RELATED LINKS(章末の関連記事)
+   ============================================================ */
+.related-links {
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.related-links h3 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+.related-links h3::before {
+  content: none;
+}
+.related-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.related-links li {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 0;
+}
+.related-links li:last-child {
+  border-bottom: none;
+}
+.related-links a {
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.related-links .related-tag {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.related-links a:hover .related-title {
+  color: var(--accent);
+}
+
+/* ============================================================
+   FOOTER(サイト内メニュー+奥付)
+   ============================================================ */
+.site-footer {
+  margin-top: 96px;
+  border-top: 3px double var(--ink);
+  padding-top: 48px;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 48px;
+}
+.footer-col h4 {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-col li {
+  padding: 6px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.footer-col a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.footer-col a:hover { color: var(--accent); }
+
+.colophon {
+  margin-top: 48px;
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--whisper);
+  text-align: center;
+  line-height: 2;
+}
+.colophon-mark {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "Hiragino Mincho ProN", serif;
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+/* ============================================================
+   SERIES TOC(全章一覧・折りたたみ式)
+   ============================================================ */
+.series-toc {
+  margin: 24px 0 40px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 0;
+}
+.series-toc details {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+}
+.series-toc summary {
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  padding: 8px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.series-toc summary::-webkit-details-marker { display: none; }
+.series-toc summary::before {
+  content: "▸";
+  color: var(--accent);
+  font-size: 10px;
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.series-toc details[open] summary::before { transform: rotate(90deg); }
+.series-toc ol {
+  list-style: none;
+  margin: 12px 0 8px;
+  padding: 0;
+  counter-reset: none;
+}
+.series-toc li {
+  list-style: none;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--rule);
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  line-height: 1.55;
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.series-toc li::before { content: none; }
+.series-toc li:last-child { border-bottom: none; }
+.series-toc li a {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--ink);
+  flex: 1;
+}
+.series-toc li a:hover .toc-title { color: var(--accent); }
+.series-toc .toc-num {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 5em;
+}
+.series-toc li.current {
+  background: var(--paper-deep);
+  margin: 0 -12px;
+  padding: 9px 12px;
+}
+.series-toc li.current .toc-title {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ============================================================
+   IMAGES
+   ============================================================ */
+article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 32px auto;
+}
+
+/* ============================================================
+   CUSTOM BLOCKS(:::chain / :::highlight / :::quote / :::compare)
+   ============================================================ */
+.chain-diagram {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+.chain-diagram .arrow {
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0.3em;
+}
+.highlight-box {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.highlight-box p { margin-bottom: 12px; }
+.highlight-box p:last-child { margin-bottom: 0; }
+.quote-block {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+}
+.quote-block .quote-text {
+  font-size: 18px;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* ============================================================
+   ASCIIDOC BLOCKS(pyasciidoc が出力するクラス。.adoc 記事用)
+   admonition / 帰属つき引用 / 画像ブロック / 脚注 / ロール
+   ============================================================ */
+.admonition {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.admonition-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.admonition p { margin-bottom: 12px; }
+.admonition p:last-child { margin-bottom: 0; }
+.quoteblock { margin: 40px 0; }
+.quoteblock blockquote { margin: 0; }
+.quoteblock .attribution {
+  margin-top: 12px;
+  text-align: right;
+  font-size: 14px;
+  color: var(--whisper);
+}
+.quoteblock .attribution cite { font-style: normal; }
+.imageblock { margin: 32px 0; text-align: center; }
+.imageblock .content img { max-width: 100%; height: auto; }
+sup.footnote { font-size: 12px; }
+sup.footnote a { text-decoration: none; }
+.footnotes {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px;
+  color: var(--whisper);
+}
+.footnotes ol { padding-left: 1.5em; }
+.footnotes li { margin-bottom: 8px; }
+.footnotes .footnote-backref { text-decoration: none; margin-left: 0.3em; }
+/* ロール: [.chain](:::chain と同じ見た目)/ [.accent]#…# */
+article .chain {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+article .accent { color: var(--accent); }
+
+/* ============================================================
+   CHAPTER NAV(前後の記事へのリンク)
+   ============================================================ */
+.chapter-nav {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 14px;
+}
+.chapter-nav a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+}
+.chapter-nav a:hover { color: var(--accent); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 40px; }
+  blockquote { padding: 24px 20px 24px 28px; }
+  article pre { padding: 20px 16px; font-size: 12px; }
+  article ol li { padding-left: 48px; }
+  .series-toc .toc-num { min-width: 4em; font-size: 10px; }
+  .series-toc li { font-size: 13px; gap: 12px; }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta, .hero-title, .hero-subtitle, .hero-byline {
+  animation: rise 0.8s ease-out backwards;
+}
+.hero-meta     { animation-delay: 0.1s; }
+.hero-title    { animation-delay: 0.25s; }
+.hero-subtitle { animation-delay: 0.45s; }
+.hero-byline   { animation-delay: 0.65s; }
+.mermaid {
+  text-align: center;
+  margin: 2.5rem 0;
+  background: var(--paper-warm, #f5f1ea);
+  padding: 1.5rem 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.mermaid svg { max-width: 100%; height: auto; }
+
+/* ============================================================
+   WIDE LAYOUT(広い画面では目次を左サイドバーに常時展開)
+   ============================================================ */
+@media (min-width: 1200px) {
+  body.has-toc .container {
+    max-width: 1320px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 880px);
+    column-gap: 64px;
+    justify-content: center;
+  }
+  body.has-toc .masthead,
+  body.has-toc .hero {
+    grid-column: 1 / -1;
+  }
+  /* グリッドアイテム自体は行いっぱいに伸ばし、内側の details を sticky に
+     する(sticky なグリッドアイテムはグリッドエリアではなくコンテナ全体で
+     制約されるブラウザ挙動があり、フッターに重なってしまうため)。 */
+  body.has-toc .series-toc {
+    grid-column: 1;
+    grid-row: 3 / span 2;
+    margin: 0;
+    padding: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+  body.has-toc .series-toc details {
+    position: sticky;
+    top: 32px;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 0 12px 12px 0;
+  }
+  /* サイドバーでは折りたたみを無効化し、見出しとして表示 */
+  body.has-toc .series-toc summary {
+    pointer-events: none;
+    cursor: default;
+  }
+  body.has-toc .series-toc summary::before { content: none; }
+  body.has-toc .series-toc li { font-size: 13.5px; }
+  body.has-toc article    { grid-column: 2; grid-row: 3; }
+  body.has-toc .chapter-nav { grid-column: 2; grid-row: 4; }
+  body.has-toc .site-footer { grid-column: 1 / -1; grid-row: 5; }
+}
+
+/* ============================================================
+   DARK MODE(OS の配色設定に追従して自動で暗色に切り替え)
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ink: #e8e3d6;
+    --paper: #16140f;
+    --paper-deep: #211d16;
+    --accent: #e8765a;
+    --rule: #393428;
+    --whisper: #a39b88;
+    --highlight: rgba(220, 168, 78, 0.30);
+  }
+  /* 紙の質感(グレイン)を暗色背景向けに反転 */
+  body::before {
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    mix-blend-mode: screen;
+    opacity: 0.4;
+  }
+  /* コードブロックは両モードとも暗いターミナル調を維持 */
+  article pre {
+    background: #0d0c0a;
+    color: #e8e3d6;
+  }
+  article pre code {
+    color: #e8e3d6;
+  }
+  /* Mermaid 図の枠を暗色に */
+  .mermaid {
+    background: #211d16;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- MASTHEAD(ホーム › シリーズ目次) -->
+  <header class="masthead">
+    <div class="masthead-left"><a href="/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="/ai-native-software/">AI ネイティブなソフトウェア開発</a></div>
+    <div class="masthead-right">2-06 / Series</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-meta">2-06 № 06 · 2026</div>
+
+    <h1 class="hero-title">原稿は<span class="accent">文字</span>で持ち、<br>様式は<span class="accent">自前</span>で開く。</h1>
+
+    <p class="hero-subtitle">中身は文字で持って git に入れる。Word も Claude Docs も、入口と出口を通過させる道具にする</p>
+
+    <div class="hero-byline">
+      <span>2026.07.04</span>
+      <span><a href="https://aiseed.dev/en/ai-native-software/documents/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">🌐 EN</a></span>
+    </div>
+  </section>
+
+  <!-- SERIES TOC(全章一覧・現在の章をハイライト) -->
+  
+
+  <!-- ARTICLE BODY -->
+  <article>
+    <p><strong>文書で取り戻すのは、置き場ではない。原稿の持ち方だ</strong>。</p>
+<p>門番(2-04)の内側に、最初に置く道具は文書である。ただし、この章の結論は「どの編集ソフトを立てるか」ではない。2026 年に入って、文書が住める場所が三つに増えたからだ。Office、自前の道具、そして Claude Docs である。三つとも便利で、三つとも鍵は他人か自分かのどちらかに寄っている。だから先に決めるのは、
+<strong>原稿をどの形で持つか</strong>のほうだ。</p>
+<h2>Office は「使う」のではなく「通過させる」</h2>
+<p>Office から離れる理由を、まず誤解しないでほしい。これは効率化の話ではない。
+30 分の作業が 30 秒になることは結果として起きるが、本質ではない。</p>
+<p>事務処理を三つに分ける。</p>
+<ul>
+<li><strong>入口</strong> ── 他の人から届くファイル(Word、Excel、PDF)</li>
+<li><strong>中身</strong> ── 自分が考え、作業し、保存する場所</li>
+<li><strong>出口</strong> ── 他の人に渡すファイル(Word、Excel、PDF)</li>
+</ul>
+<p>これまで多くの人は、三つとも Office で行ってきた。Word が来たら Word で開き、
+Word のまま編集して、Word のまま返す。だが中身まで Office にしている限り、次の節で見るとおり AI は同僚にならない。</p>
+<div class="mermaid">
+flowchart LR
+  In["入口<br/>Word / Excel / PDF<br/>(他の人から)"]
+  Mid["中身<br/>adoc の原稿 + 構造化データ<br/>(git の中)"]
+  Out["出口<br/>Word / PDF / HTML<br/>(他の人へ)"]
+  Claude(("AI"))
+
+  In -->|通過| Mid
+  Mid <-->|相談・判断| Claude
+  Mid -->|通過| Out
+
+  classDef office fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  classDef native fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  class In,Out office
+  class Mid native
+</div>
+<p>だから <code>.docx</code>・<code>.xlsx</code>・<code>.pptx</code> は、中身が住む場所ではなく、入口と出口で人とやり取りするための交換形式だと捉え直す。組織のルールは変えない。自分の中身の主導権だけ取り戻す。</p>
+<h2>Office の中では、AI は同僚にならない</h2>
+<p>なぜ中身を閉じた形式の外へ出すのか。<strong>Office の中にいる限り、AI は道具のままで、同僚にはならない</strong>からだ。</p>
+<p>Word ファイルを AI に渡しても、毎回変換が起きる。<code>.docx</code> を解凍し、XML を読み、書式を剥がして、テキストを取り出す。Excel も同じで、セルの座標、書式情報、結合セル、シート間の参照が、AI と中身の間に挟まる。</p>
+<p>結果として、AI は使えるが、同僚にはならない。「全文を読んで論点を整理して」と頼めてもレイアウトが崩れ、「この表を分析して」と頼めても結合セルや書式付きの値で混乱する。</p>
+<p>中身を文字と構造化データに降ろした瞬間、この壁が消える。AI は直接読み、直接書き、考えを返す。編集の道具としての Office はそのまま残る。ただし中身は、
+AI が触れる場所に保つ。</p>
+<h2>「処理する人」から「判断する人」へ</h2>
+<p>Office の中で事務処理をしている限り、自分は処理する人のままだ。Excel を集計する人、Word を整える人、数字を貼り直す人である。これらは AI で代替できる仕事であり、AI が安くなれば、組織はその役割から人を引き上げる。</p>
+<p>中身を構造に降ろすと、役割が変わる。何をすべきかを考え、どう解釈するかを判断し、新しい仕組みを設計し、AI に何を頼むかを決める人になる。仕事の量ではなく、仕事の中身そのものが変わる。</p>
+<div class="quoteblock">
+<blockquote>
+<p>処理する人は AI が代替する。判断する人は代替できない。中身を取り戻すことは、代替されない側に移ることだ。</p>
+</blockquote>
+</div>
+<h3>具体例: 月次報告書 ── 同じ報告書、違う仕事</h3>
+<p>月次の売上報告書を作る作業で見る。</p>
+<p><strong>従来の流れ</strong>。Excel で売上データを開く。ピボットで集計する。グラフを作る。
+Word に貼る。文章を書く。PDF にして上司に送る。このとき自分がしている仕事は、数字を整えることだ。</p>
+<p><strong>新しい流れ</strong>。裏のデータを読む。届いた <code>.xlsx</code> は機械が取り込む。集計を AI に書かせ、結果を表にする。グラフを組み込む。AI が文章を下書きする。<strong>自分が解釈と判断を書き加える</strong>。出口で <code>.docx</code> や PDF に変換する。このとき自分がしている仕事は、数字の意味を考えることだ。</p>
+<p>「今月の前月比 +12% は、どの顧客の影響か。継続するのか。営業戦略を変えるべきか」。
+Excel の中で集計操作をしている間は出てこなかった問いが、構造化された手元データと
+AI を前にすると立ち上がる。</p>
+<h2>原稿は文字で持ち、git に入れるのは原稿だけにする</h2>
+<p>ここがこの章の中心だ。決めることは二つしかない。</p>
+<p><strong>一つ目。原稿は AsciiDoc(<code>.adoc</code>)の文字で持つ</strong>。文字のファイルなので、git で差分が取れる。誰が、いつ、どの行を変えたかが残る。<code>.docx</code> は中身が圧縮された
+XML なので、差分が読めない。文字で持てば、AI がそのまま読み、そのまま書ける。</p>
+<p><strong>二つ目。git に入れるのは原稿だけにして、デザインは入れない</strong>。見た目を決めるテンプレートは、原稿とは別の置き場に持つ。同じ原稿に別のテンプレートを当てれば、別の体裁で出る。git の履歴に残るのは、中身が変わった差分だけになる。</p>
+<pre><code>原稿/            ← git に入れる。.adoc の文字だけ
+  2026-09-事業報告.adoc
+テンプレート/    ← git に入れない。見た目の決め
+  houkoku.tmpl.adoc
+出力/            ← git に入れない。刷った結果
+  2026-09-事業報告.pdf
+</code></pre>
+<p>この決めから先が楽になる。原稿が文字なら、出口は選べる。PDF に刷る。<code>.docx</code> に書き出して相手に渡す。HTML にしてサイトに載せる。どれも同じ原稿から出る。</p>
+<p>そして、<strong>adoc 形式でのデータ交換が、これから効いてくる</strong>。人と人のあいだも、人と
+AI のあいだも、やり取りする実体が文字になれば、途中で失われるものが無くなる。</p>
+<h2>様式の仕事は aiseed office ── ONLYOFFICE は日本語で合わない</h2>
+<p>原稿は文字でよい。だが、様式はそうはいかない。受け取った <code>.docx</code> の申請書を、決められた頁数、決められた行の位置、決められた列幅のまま開いて、直して、刷る。この仕事は、形式の互換そのものが中身である。</p>
+<p>この用途で <strong>ONLYOFFICE は日本語の様式に合わない</strong>。だから aiseed office
+(<a href="https://github.com/aiseed-dev/officework"><code>aiseed-dev/officework</code></a>)を作っている。
+<code>.docx</code> と <code>.xlsx</code> を読み書きし、そのまま PDF にも刷るエンジンだ。</p>
+<pre><code class="language-bash">pip install officework
+</code></pre>
+<p>2026-09-20 に確かめた時点で、エンジンは <strong>0.5.0</strong> が PyPI に出ている(2026-09-04
+公開)。ベータを外した版だ。役所が公開している PDF と、同じ字の行どうしを比べた数字が、公開の RELEASE に載っている。</p>
+<table class="comparison-table fade-in">
+<thead>
+<tr>
+<th>文書</th>
+<th>行末の平均のずれ</th>
+<th>1pt 以内に収まる行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>調査票(110 行)</td>
+<td>9.01pt → 2.50pt</td>
+<td>5 → 68</td>
+</tr>
+<tr>
+<td>告知書(141 行)</td>
+<td>3.71pt → 2.54pt</td>
+<td>5 → 83</td>
+</tr>
+</tbody>
+</table>
+<p>まだ届いていない所も、そのまま書いておく。*配っているのはエンジンだけで、画面のアプリはまだ配っていない*。表の列の幅の取り方で折り返しが一字ずれる文書がある。表計算の頁割りが原本と合わない帳票がある。そして <strong>AsciiDoc の読み書きは、まだ配っていない</strong>。前の節の決めは方向であって、この道具でいま全部できるわけではない。</p>
+<h2>文書が住める場所は三つある ── Claude Docs をどう置くか</h2>
+<p>2026-09-16 に、Claude Docs がベータで出た。会話の中で文書を作り、人が直接編集し、コメントを付け合い、共有するところまでが Claude の中で完結する。
+2026-09-20 に確かめた時点で、Pro・Max・Team・Enterprise で使える。</p>
+<p>これは便利だ。道具を入れる必要がない。下書きを作って、直して、相談する場所としては、いまある中でいちばん手が少ない。</p>
+<p>同時に、構造は Microsoft 365 と同じである。</p>
+<ul>
+<li>文書の実体は claude.ai の中にある。<strong>外から取りに行けない</strong>。読めるのは Claude の道具からだけだ</li>
+<li>共有リンクを開くには、相手にも Claude のアカウントが要る</li>
+<li>Team と Enterprise の文書は、まだ組織の外へ共有できない</li>
+<li>顧客管理の暗号鍵、ゼロデータ保持、HIPAA 対応の構成を使う組織では、まだ使えない</li>
+</ul>
+<p>違う点が一つある。<strong>出口がはっきりある</strong>ことだ。Word、PDF、Markdown、Google Docs に書き出せる。Markdown まで出せるということは、原稿を文字で手元に落とせるということだ。</p>
+<p>だから置き方が決まる。<strong>Claude Docs は、原稿を作って回す場所として使う。確定した原稿は Markdown で落とし、adoc に直して git に入れる</strong>。そうすれば、前の節の決めがそのまま効く。中身は手元に残り、Claude Docs は入口と出口を通過させる道具になる。</p>
+<p>費用の比べ方も、ここではっきりさせておく。比べる相手は無料の道具ではない。
+<strong>いま業者に払っている額</strong>だ。公開する Web の原稿を制作会社に頼んでいるなら、その一件の費用と比べる。人数分のライセンスを毎月払っているなら、その総額と比べる。2026-09-20 時点で Claude Pro は月 20 ドルである。</p>
+<div class="quoteblock">
+<blockquote>
+<p>文書が住める場所は三つに増えた。どれを選ぶかではない。原稿を文字で持てば、三つとも通過させる道具になる。</p>
+</blockquote>
+</div>
+<h2>なぜ別の保管アプリを足さないのか</h2>
+<p>文書というと Nextcloud のような OneDrive 代替を丸ごと立てたくなる。だが
+Nextcloud は PHP の重厚なモノリスで、別のユーザ体系も別のデータベースも抱え込む。この自立編が選んできた単一バイナリの軽さとは、逆を向いている。</p>
+<p>2-04 で、認証を持つ PocketBase をもう立てた。文書の置き場は、それを門番にして、あとはファイルで足りる。</p>
+<ul>
+<li><strong>実体</strong> ── ファイルそのもの。重い保管アプリは要らない</li>
+<li><strong>認証</strong> ── 2-04 の門番がそのまま効く。別ログインを作らない</li>
+<li><strong>権限・共有</strong> ── 手元の構造化ストアが持ち、門番が身元を確かめる</li>
+</ul>
+<h2>実体はファイル ── 認証は門番、権限は構造化ストア</h2>
+<p>文書の実体は、ただのファイルとして自分のストレージに置く。レコードに埋め込まない。<code>.adoc</code> も <code>.docx</code> も <code>.xlsx</code> もファイルのまま持つ。そのほうが、後で機械
+(Polars・AI)がそのまま読める。</p>
+<p>置き場の第一の選択は、権限をどこに持つかだ。</p>
+<ul>
+<li><strong>構造化ストア(推奨)</strong> ── すでに PostgreSQL を立てているなら、アクセス制御もそこに置く。門番しか無い小規模なら、門番の SQLite で足りる。問い合わせられ、トランザクションが効き、<code>pg_dump</code> で確実に残る</li>
+<li><strong>xattr(依存最小)</strong> ── 別ストアを足したくないなら、ファイルの拡張属性に貼る。ただし xattr は <code>cp</code>・<code>rsync</code>・<code>tar</code>・バックアップで静かに落ちる。複製と保存の経路で、属性が残ることを必ず確かめる</li>
+</ul>
+<pre><code class="language-sql">-- 構造化ストアにアクセス制御を持つ ── 問い合わせられ、消えない
+-- doc_acl(doc_id, subject, perm)、subject は 'alice' か 'team:sales'
+SELECT doc_id FROM doc_acl WHERE subject IN ('alice', 'team:sales') AND perm &gt;= 'r';
+</code></pre>
+<p>権限のためだけに重い別アプリは要らない。門番が身元を、構造化ストアが権限を持つ。</p>
+<h2>既存の文書を移す</h2>
+<p>OneDrive・SharePoint に積まれた文書は、形式を変えずに運べる。</p>
+<pre><code class="language-bash"># rclone で吸い出し、自分のストレージへ並べる
+rclone copy onedrive:Documents ./inbox --progress
+# inbox/ の各ファイルの権限を記録する(構造化ストアへ、スクリプト一回)
+</code></pre>
+<p>移行は段階的でよい。並行で動かし、移り終えてから旧ストレージを解約する(2-10)。</p>
+<p>これから書く物は、最初から <code>.adoc</code> で書く。これまでの物を全部変換する必要はない。<strong>新しい原稿から文字にしていけば、置き場は時間とともに入れ替わる</strong>。</p>
+<h2>社外とやり取りする ── 出口で渡す</h2>
+<p>取引先との共有に、専用の共有基盤は要らない。社外に渡すものは出口から出す。元ファイルではなく、<code>.docx</code> か PDF に変換して、メール(2-07)で送る。受け取りも同じで、届いたファイルは入口で開いてから、手元に入れる。</p>
+<p>社外の人に、門番のアカウントは作らない。共同で編集までしたい相手はまれで、たいていは版のやり取りで足りる。送って、直って、返る。紙の時代から、ずっとそうだったように。</p>
+<h2>人は編集の道具、機械は Polars</h2>
+<p>ここで 2-03 とつながる。<strong>人は編集の道具で入れて読み、機械は Polars と DuckDB で裏のデータを捌く</strong>。同じ <code>.xlsx</code> を、人は編集の道具として、機械は入力として扱う。</p>
+<ul>
+<li>人が作る集計表・申請書・提案書 ── aiseed office で開いて、しまう</li>
+<li>数百万行の突き合わせ・全社集計 ── Polars が <code>.xlsx</code> を読み、PostgreSQL に書く</li>
+</ul>
+<p>表計算は人の道具に戻り、重い処理は機械の道具へ移る。</p>
+<h2>参考実装 ── kura</h2>
+<p>この構成を実際に組んだのが、公開リポジトリ <strong>kura</strong>
+(<a href="https://github.com/aiseed-dev/workspace"><code>aiseed-dev/workspace</code></a>)だ。中小の業務利用を狙った、Microsoft 365 / Google Workspace の自前代替である。</p>
+<ul>
+<li><strong>認証</strong> ── PocketBase(差し替え可能なトークン検証と短期キャッシュ)</li>
+<li><strong>権限</strong> ── 依存最小を採り、ファイルの xattr に持つ</li>
+<li><strong>実体</strong> ── ファイルそのもの</li>
+<li><strong>編集</strong> ── 編集エンジンを JWT とコールバックで重ねる(FastAPI + Flet)</li>
+</ul>
+<h2>確かめ方</h2>
+<p>この章は、次の五つができていれば済みだ。</p>
+<ol>
+<li>自分の <code>.docx</code> の様式を aiseed office で開いて、Word と同じ頁数で刷れる</li>
+<li><code>.adoc</code> の原稿を git に入れて、直した行だけが差分に出る</li>
+<li>同じ原稿から PDF と <code>.docx</code> の両方が出る</li>
+<li>門番でログインした人が、自分に権限のある文書だけ一覧に見える</li>
+<li><code>cp -a</code> と <code>rsync -X</code> で複製しても、権限が消えていない(xattr を使う場合)</li>
+</ol>
+<pre><code class="language-bash">pip install officework
+git diff 原稿/2026-09-事業報告.adoc     # 直した行だけが出る
+getfattr -d 文書.docx                    # xattr を使う場合だけ
+</code></pre>
+<h2>人が持つ物</h2>
+<p><strong>人が渡す値</strong></p>
+<ul>
+<li>文書の置き場のパス</li>
+<li>編集エンジンと門番で共有する署名鍵</li>
+<li>誰がどの文書を開けるかの決め(部署、役割)</li>
+</ul>
+<p><strong>AI が「やる前に言う」操作</strong></p>
+<ul>
+<li>既存の文書を一括で変換する、または移動する</li>
+<li>アクセス制御の表を書き替える</li>
+<li>社外へファイルを送る</li>
+</ul>
+<h2>確かめた版と日付</h2>
+<ul>
+<li>aiseed office(officework)エンジン 0.5.0。<code>pip install officework</code>。
+2026-09-04 公開、2026-09-20 に PyPI で確認</li>
+<li>画面のアプリと AsciiDoc の読み書きは、2026-09-20 時点でまだ配っていない</li>
+<li>Claude Docs は 2026-09-16 にベータ公開。Pro・Max・Team・Enterprise で使える。
+2026-09-20 に確認</li>
+<li>権限の置き場は PostgreSQL または門番の SQLite</li>
+<li>手順を書いたのは 2026-09-20</li>
+<li>版が上がっていたら、AI に公式の手順を確かめさせてから進める</li>
+</ul>
+<h2>まとめ</h2>
+<p>置き場を選ぶのではなく、原稿の持ち方を決める。</p>
+<ul>
+<li><strong>原稿は adoc の文字</strong> ── git で差分が取れる。AI がそのまま読み書きする</li>
+<li><strong>git に入れるのは原稿だけ</strong> ── デザインは別の置き場。履歴に中身の差分だけが残る</li>
+<li><strong>様式は aiseed office</strong> ── ONLYOFFICE が日本語の様式に合わないから作った。エンジンは 0.5.0。画面のアプリと adoc の読み書きはまだ</li>
+<li><strong>Claude Docs は通過させる</strong> ── 下書きと共同編集は速い。確定した原稿は Markdown で落として手元に入れる</li>
+<li><strong>実体はファイル</strong> ── 認証は門番、権限は構造化ストア。重い保管アプリを足さない</li>
+<li><strong>比べる相手は無料ではない</strong> ── いま業者に払っている額と比べる</li>
+</ul>
+<p>次章では、もう一つの大きな事務処理であるメールを自分の側に置く(2-07)。</p>
+<hr />
+<h2>関連記事</h2>
+<ul>
+<li><a href="/ai-native-software/foundation/">2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars</a></li>
+<li><a href="/ai-native-software/auth/">2-04: 門番を立てる ── PocketBase で認証を一つに</a></li>
+<li><a href="https://github.com/aiseed-dev/officework">aiseed office(officework)── docx と xlsx を読み書きし、PDF に刷るエンジン</a></li>
+<li><a href="https://github.com/aiseed-dev/workspace">参考実装 kura ── 自前の Microsoft 365 / Google Workspace 代替</a></li>
+<li><a href="/ai-native-software/independence/">2-01: Microsoft と Google から自立する ── 全体像と対応表</a></li>
+</ul>
+
+  </article>
+
+  <!-- CHAPTER NAV(前後の記事) -->
+  <nav class="chapter-nav">
+  <a href="/ai-native-software/code/" rel="prev">&larr; 前: コードを手元に ── Forgejo と Zed</a>
+  <a href="/ai-native-software/mail/" rel="next">次: メールを自分の側に ── Stalwart と Thunderbird &rarr;</a>
+</nav>
+
+  <!-- FOOTER(サイト内メニュー+奥付) -->
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="サイト内リンク">
+      <div class="footer-col">
+        <h4>記事シリーズ</h4>
+        <ul>
+          <li><a href="/insights/">構造分析</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/ai-native-ways/">AIネイティブな仕事の作法</a></li>
+          <li><a href="/claude-debian/">Claudeと一緒に学ぶDebian</a></li>
+          <li><a href="/phosphorus-and-farming/">リン資源枯渇と自然農法</a></li>
+          <li><a href="/fable/">Fable 5 が帰ってきた</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>サイト</h4>
+        <ul>
+          <li><a href="/">ホーム</a></li>
+          <li><a href="/natural-farming/">自然農法とは</a></li>
+          <li><a href="/light-farming/">Light Farming</a></li>
+          <li><a href="/gallery/">畑の記録</a></li>
+          <li><a href="/about/">私たちのアプローチ</a></li>
+          <li><a href="/privacy/">プライバシー</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="colophon">
+      <div class="colophon-mark">§</div>
+      AI ネイティブなソフトウェア開発 · 2-06<br>
+      Tokushima · 2026.07.04<br>
+      <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">CC BY 4.0</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // 広い画面ではサイドバー目次を常時展開する(狭い画面では折りたたみに戻す)
+  (function () {
+    var toc = document.querySelector(".series-toc details");
+    if (!toc) return;
+    var mq = window.matchMedia("(min-width: 1200px)");
+    function sync() { toc.open = mq.matches; }
+    sync();
+    if (mq.addEventListener) mq.addEventListener("change", sync);
+    else mq.addListener(sync);
+  })();
+
+  // Mermaid loads only on pages that contain a .mermaid block.
+  // Self-hosted (no third-party CDN dependency); SRI verified.
+  if (document.querySelector(".mermaid")) {
+    const s = document.createElement("script");
+    s.src = "/js/vendor/mermaid-11.14.0.min.js";
+    s.integrity = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk";
+    s.crossOrigin = "anonymous";
+    s.onload = () => {
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      mermaid.initialize({ startOnLoad: false, theme: prefersDark ? "dark" : "default" });
+      mermaid.run();
+    };
+    document.head.appendChild(s);
+  }
+</script>
+
+
+</body>
+</html>

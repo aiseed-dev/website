@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-9FLQ963JXM');
+</script>
+
+<title>Mail on Your Own Side — Stalwart and Thunderbird — AI-Native Software Development | aiseed.dev</title>
+<meta name="description" content="Mail is the record of the business itself. Stalwart is a Rust single server carrying SMTP, IMAP, JMAP, spam defense, and DKIM signing in one, replacing Exchange. It rides on the PostgreSQL from 2-03, stands up on the machine handed to the AI in 2-02, and is read with any client like Thunderbird. But outbound deliverability is hard — so lean on an authenticated relay for sending and keep only control of the mailbox on your own side. An honest design. DNS (MX, SPF, DKIM, DMARC, PTR) and sending mail to the outside stay with the human.">
+<link rel="canonical" href="https://aiseed.dev/en/ai-native-software/mail/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/ai-native-software/mail/">
+<link rel="alternate" hreflang="en" href="https://aiseed.dev/en/ai-native-software/mail/">
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/ai-native-software/mail/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Living in the AI Era">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Mail on Your Own Side — Stalwart and Thunderbird">
+<meta property="og:description" content="Mail is the record of the business itself. Stalwart is a Rust single server carrying SMTP, IMAP, JMAP, spam defense, and DKIM signing in one, replacing Exchange. It rides on the PostgreSQL from 2-03, stands up on the machine handed to the AI in 2-02, and is read with any client like Thunderbird. But outbound deliverability is hard — so lean on an authenticated relay for sending and keep only control of the mailbox on your own side. An honest design. DNS (MX, SPF, DKIM, DMARC, PTR) and sending mail to the outside stay with the human.">
+<meta property="og:url" content="https://aiseed.dev/en/ai-native-software/mail/">
+<meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<meta property="article:section" content="AI-Native Software Development">
+<meta property="article:published_time" content="2026.07.09">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mail on Your Own Side — Stalwart and Thunderbird">
+<meta name="twitter:description" content="Mail is the record of the business itself. Stalwart is a Rust single server carrying SMTP, IMAP, JMAP, spam defense, and DKIM signing in one, replacing Exchange. It rides on the PostgreSQL from 2-03, stands up on the machine handed to the AI in 2-02, and is read with any client like Thunderbird. But outbound deliverability is hard — so lean on an authenticated relay for sending and keep only control of the mailbox on your own side. An honest design. DNS (MX, SPF, DKIM, DMARC, PTR) and sending mail to the outside stay with the human.">
+<meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
+<!-- No webfont delivery: local system fonts only (Georgia serif / system monospace) -->
+
+<style>
+:root {
+  --ink: #1a1a1a;
+  --paper: #f4f1ea;
+  --paper-deep: #ebe6d8;
+  --accent: #c8442a;
+  --rule: #d4cdb8;
+  --whisper: #6b665a;
+  --highlight: #f7e9c8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", "Hiragino Mincho ProN", serif;
+  font-size: 18px;
+  line-height: 1.7;
+  letter-spacing: 0.005em;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* MASTHEAD */
+.masthead {
+  border-bottom: 3px double var(--ink);
+  padding: 24px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+}
+.masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-left a { color: inherit; text-decoration: none; }
+.masthead-left a:hover { color: var(--accent); }
+.masthead-home { color: var(--whisper); }
+.masthead-sep { margin: 0 10px; color: var(--whisper); font-weight: 400; }
+.masthead-right { font-style: italic; }
+
+/* HERO */
+.hero {
+  padding: 80px 0 60px;
+}
+.hero-meta {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-meta::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 800;
+  font-size: clamp(34px, 5.2vw, 54px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin-bottom: 24px;
+}
+.hero-title .accent {
+  color: var(--accent);
+  font-style: italic;
+}
+.hero-subtitle {
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--whisper);
+  max-width: 580px;
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+  margin-top: 32px;
+  font-style: italic;
+}
+.hero-byline {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  text-transform: uppercase;
+}
+
+/* ARTICLE */
+article p {
+  margin-bottom: 24px;
+}
+
+article h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.3;
+  margin: 72px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+  letter-spacing: -0.01em;
+}
+article h2::before {
+  content: "§";
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  color: var(--accent);
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+article h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  font-size: 22px;
+  margin: 40px 0 16px;
+  color: var(--ink);
+}
+article h3::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+article strong {
+  font-weight: 700;
+  background: linear-gradient(to top, var(--highlight) 35%, transparent 35%);
+  padding: 0 2px;
+}
+
+article em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+article a:hover {
+  color: var(--accent);
+}
+
+/* BLOCKQUOTE */
+blockquote {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  position: relative;
+  font-size: 20px;
+  line-height: 1.6;
+  font-style: italic;
+}
+blockquote::before {
+  content: "\201C";
+  position: absolute;
+  top: 0;
+  left: 12px;
+  font-size: 64px;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1;
+}
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* TABLE */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+article thead th {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+}
+article tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+article tbody tr:last-child td {
+  border-bottom: none;
+}
+@media (max-width: 720px) {
+  article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* LISTS */
+article ol {
+  margin: 32px 0;
+  counter-reset: item;
+  padding: 0;
+}
+article ol li {
+  list-style: none;
+  position: relative;
+  padding: 16px 0 16px 56px;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: item;
+}
+article ol li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+article ul {
+  margin: 24px 0;
+  padding-left: 1.5em;
+}
+article ul li {
+  margin-bottom: 8px;
+}
+
+/* CODE BLOCK */
+article pre {
+  margin: 40px 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 24px 28px;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+  overflow-x: auto;
+}
+article pre::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 8px;
+  color: var(--whisper);
+  letter-spacing: 4px;
+}
+article pre code {
+  display: block;
+  padding-top: 16px;
+  white-space: pre;
+  background: transparent;
+  color: var(--paper);
+}
+
+article code {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: var(--paper-deep);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+
+/* HR */
+article hr {
+  border: none;
+  text-align: center;
+  margin: 64px 0;
+  height: 1em;
+}
+article hr::before {
+  content: "◆ ◆ ◆";
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+}
+
+/* RELATED */
+.related-links {
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.related-links h3 {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  margin: 0 0 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.related-links h3::before { content: none; }
+.related-links ul { list-style: none; margin: 0; padding: 0; }
+.related-links li {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 0;
+}
+.related-links li:last-child { border-bottom: none; }
+.related-links a {
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.related-links .related-tag {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.related-links a:hover .related-title {
+  color: var(--accent);
+}
+
+/* FOOTER (site menu + colophon) */
+.site-footer {
+  margin-top: 96px;
+  border-top: 3px double var(--ink);
+  padding-top: 48px;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 48px;
+}
+.footer-col h4 {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-col li {
+  padding: 6px 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.footer-col a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.footer-col a:hover { color: var(--accent); }
+
+.colophon {
+  margin-top: 48px;
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--whisper);
+  text-align: center;
+  line-height: 2;
+  text-transform: uppercase;
+}
+.colophon-mark {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 16px;
+  text-transform: none;
+}
+
+/* SERIES TOC (all chapters in this series, collapsible) */
+.series-toc {
+  margin: 24px 0 40px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 0;
+}
+.series-toc details {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+}
+.series-toc summary {
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  padding: 8px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.series-toc summary::-webkit-details-marker { display: none; }
+.series-toc summary::before {
+  content: "▸";
+  color: var(--accent);
+  font-size: 10px;
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.series-toc details[open] summary::before { transform: rotate(90deg); }
+.series-toc ol {
+  list-style: none;
+  margin: 12px 0 8px;
+  padding: 0;
+  counter-reset: none;
+}
+.series-toc li {
+  list-style: none;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--rule);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  line-height: 1.55;
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.series-toc li::before { content: none; }
+.series-toc li:last-child { border-bottom: none; }
+.series-toc li a {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--ink);
+  flex: 1;
+}
+.series-toc li a:hover .toc-title { color: var(--accent); }
+.series-toc .toc-num {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 6em;
+}
+.series-toc li.current {
+  background: var(--paper-deep);
+  margin: 0 -12px;
+  padding: 9px 12px;
+}
+.series-toc li.current .toc-title {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* IMAGES */
+article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 32px auto;
+}
+
+/* CUSTOM BLOCKS (:::chain / :::highlight / :::quote / :::compare) */
+.chain-diagram {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 16px;
+  line-height: 2;
+}
+.chain-diagram .arrow {
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0.3em;
+}
+.highlight-box {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.highlight-box p { margin-bottom: 12px; }
+.highlight-box p:last-child { margin-bottom: 0; }
+.quote-block {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+}
+.quote-block .quote-text {
+  font-size: 19px;
+  line-height: 1.7;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ASCIIDOC BLOCKS (classes emitted by pyasciidoc for .adoc articles):
+   admonitions / attributed quotes / image blocks / footnotes / roles */
+.admonition {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.admonition-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.admonition p { margin-bottom: 12px; }
+.admonition p:last-child { margin-bottom: 0; }
+.quoteblock { margin: 40px 0; }
+.quoteblock blockquote { margin: 0; }
+.quoteblock .attribution {
+  margin-top: 12px;
+  text-align: right;
+  font-size: 14px;
+  color: var(--whisper);
+}
+.quoteblock .attribution cite { font-style: normal; }
+.imageblock { margin: 32px 0; text-align: center; }
+.imageblock .content img { max-width: 100%; height: auto; }
+sup.footnote { font-size: 12px; }
+sup.footnote a { text-decoration: none; }
+.footnotes {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px;
+  color: var(--whisper);
+}
+.footnotes ol { padding-left: 1.5em; }
+.footnotes li { margin-bottom: 8px; }
+.footnotes .footnote-backref { text-decoration: none; margin-left: 0.3em; }
+/* Roles: [.chain] (same look as :::chain) / [.accent]#…# */
+article .chain {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+article .accent { color: var(--accent); }
+
+/* CHAPTER NAV (prev / next links) */
+.chapter-nav {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 15px;
+}
+.chapter-nav a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+}
+.chapter-nav a:hover { color: var(--accent); }
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 40px; }
+  blockquote { padding: 24px 20px 24px 36px; }
+  article pre { padding: 20px 16px; font-size: 12px; }
+  article ol li { padding-left: 48px; }
+  .series-toc .toc-num { min-width: 5em; font-size: 10px; }
+  .series-toc li { font-size: 13px; gap: 12px; }
+}
+
+/* ANIMATIONS */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta, .hero-title, .hero-subtitle, .hero-byline {
+  animation: rise 0.8s ease-out backwards;
+}
+.hero-meta     { animation-delay: 0.1s; }
+.hero-title    { animation-delay: 0.25s; }
+.hero-subtitle { animation-delay: 0.45s; }
+.hero-byline   { animation-delay: 0.65s; }
+.mermaid {
+  text-align: center;
+  margin: 2.5rem 0;
+  background: var(--paper-warm, #f5f1ea);
+  padding: 1.5rem 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.mermaid svg { max-width: 100%; height: auto; }
+
+/* WIDE LAYOUT (contents pinned as a left sidebar on wide screens) */
+@media (min-width: 1200px) {
+  body.has-toc .container {
+    max-width: 1300px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 860px);
+    column-gap: 64px;
+    justify-content: center;
+  }
+  body.has-toc .masthead,
+  body.has-toc .hero {
+    grid-column: 1 / -1;
+  }
+  /* Keep the grid item stretched to its rows and make the inner details
+     sticky instead (sticky grid items are constrained by the grid container,
+     not their grid area, in some browsers — the TOC would slide over the
+     footer otherwise). */
+  body.has-toc .series-toc {
+    grid-column: 1;
+    grid-row: 3 / span 2;
+    margin: 0;
+    padding: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+  body.has-toc .series-toc details {
+    position: sticky;
+    top: 32px;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 0 12px 12px 0;
+  }
+  /* Sidebar mode: no collapsing — the summary acts as a heading */
+  body.has-toc .series-toc summary {
+    pointer-events: none;
+    cursor: default;
+  }
+  body.has-toc .series-toc summary::before { content: none; }
+  body.has-toc .series-toc li { font-size: 14px; }
+  body.has-toc article    { grid-column: 2; grid-row: 3; }
+  body.has-toc .chapter-nav { grid-column: 2; grid-row: 4; }
+  body.has-toc .site-footer { grid-column: 1 / -1; grid-row: 5; }
+}
+
+/* ============================================================
+   DARK MODE (follows the OS color-scheme preference)
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ink: #e8e3d6;
+    --paper: #16140f;
+    --paper-deep: #211d16;
+    --accent: #e8765a;
+    --rule: #393428;
+    --whisper: #a39b88;
+    --highlight: rgba(220, 168, 78, 0.30);
+  }
+  /* Invert the paper-grain texture for a dark background */
+  body::before {
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    mix-blend-mode: screen;
+    opacity: 0.4;
+  }
+  /* Keep code blocks as a dark terminal in both modes */
+  article pre {
+    background: #0d0c0a;
+    color: #e8e3d6;
+  }
+  article pre code {
+    color: #e8e3d6;
+  }
+  /* Dark frame for Mermaid diagrams */
+  .mermaid {
+    background: #211d16;
+  }
+}
+</style>
+
+</head>
+
+<body>
+<div class="container">
+
+  <header class="masthead">
+    <div class="masthead-left"><a href="/en/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="/en/ai-native-software/">AI-Native Software Development</a></div>
+    <div class="masthead-right">2-07 / Series</div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-meta">2-07 № 07 · 2026</div>
+
+    <h1 class="hero-title">Put the mailbox<br>on <span class="accent">your own side</span>.</h1>
+
+    <p class="hero-subtitle">Outside Exchange and Outlook — receive it yourself, send it honestly</p>
+
+    <div class="hero-byline">
+      <span>2026.07.09</span>
+      <span><a href="https://aiseed.dev/ai-native-software/mail/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">🌐 日本語</a></span>
+    </div>
+  </section>
+
+  <!-- SERIES TOC (full chapter list for this series, current chapter highlighted) -->
+  
+
+  <article>
+    <p>Mail is the record of the business itself. Correspondence, contracts, history —
+all of it piles up there. By now the foundation, the gate, the code, and the
+documents are on your own side. This chapter takes back the inbox those records
+flow into every day. But mail is also a domain to be honest about. *Receiving is
+easy; sending — deliverability — is hard.* Stand it up with that line drawn
+clearly.</p>
+<h2>Take control of the inbox back to your own side</h2>
+<ul>
+<li><strong>Control of the record</strong> — retention, search, and export of past mail by your own rules</li>
+<li><strong>Step off per-seat billing</strong> — the monthly bill does not stack with mailbox count</li>
+<li><strong>One with the gate</strong> — align accounts with the 2-04 authentication</li>
+</ul>
+<h2>Stand up Stalwart on one machine</h2>
+<p>The mail server is Stalwart. A Rust single server carries SMTP, IMAP, JMAP,
+spam defense, and DKIM signing. It is a replacement for Exchange. Storage can be
+pointed at the PostgreSQL from 2-03. The machine it stands up on is the one
+handed to the AI in 2-02.</p>
+<pre><code class="language-yaml"># compose.yaml — stand up a single mail server
+services:
+  mail:
+    image: stalwartlabs/mail-server:latest
+    volumes: [&quot;./stalwart:/opt/stalwart-mail&quot;]
+    ports: [&quot;25:25&quot;, &quot;587:587&quot;, &quot;465:465&quot;, &quot;993:993&quot;, &quot;8080:8080&quot;]
+    restart: always
+</code></pre>
+<p>In the admin UI (<code>:8080</code>), create the domain and the mailboxes. No code is
+written.</p>
+<h2>Get the DNS right — MX, SPF, DKIM, DMARC</h2>
+<p>With mail, the <strong>DNS is the real body</strong> of the work, more than the server. Set
+these four correctly.</p>
+<pre><code class="language-dns">example.com.      MX    10 mail.example.com.
+example.com.      TXT   &quot;v=spf1 mx -all&quot;
+default._domainkey.example.com.  TXT  &quot;v=DKIM1; k=rsa; p=...(generated by Stalwart)&quot;
+_dmarc.example.com.  TXT  &quot;v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com&quot;
+</code></pre>
+<p>Set the reverse record (PTR) for the server's IP as well. Miss this, and the
+mail you send does not reach anyone.</p>
+<h2>Borrow outbound deliverability from a relay</h2>
+<p>Direct sending from a self-hosted server is at the mercy of IP reputation,
+blocklists, and each provider's judgment. Sometimes it does not arrive. This is
+not about OSS being inferior. It is the reality of how mail works.</p>
+<p>So the realistic design is this.</p>
+<ul>
+<li><strong>Receiving, storage, search</strong> — owned by your Stalwart, and this is the real body of control</li>
+<li><strong>Outbound sending</strong> — go through an authenticated SMTP relay, a send-only service</li>
+</ul>
+<p>The relay is a thin layer that borrows only sending deliverability. The mailbox
+itself stays on your side. Separate where you hold control from where you borrow
+deliverability. That is the honest, durable way.</p>
+<div class="quoteblock">
+<blockquote>
+<p>&quot;All in-house&quot; is not always the right answer for mail.
+The inbox on your side, the sending deliverability borrowed — stand it up with
+the line drawn.</p>
+</blockquote>
+</div>
+<h2>Read and write with Thunderbird</h2>
+<p>Reading and writing work with any client that speaks IMAP / JMAP. Thunderbird is
+free and runs the same on Windows, Mac, and Linux. Phones connect with the stock
+mail app over JMAP / IMAP.</p>
+<h2>Migrate from Microsoft 365 in parallel</h2>
+<p>Existing mail moves with imapsync, which syncs one IMAP store wholesale into
+another.</p>
+<pre><code class="language-bash">imapsync --host1 outlook.office365.com --user1 you@old \
+         --host2 mail.example.com      --user2 you@new
+</code></pre>
+<p>There is no need to cut over at once. Receive on both for a while, set
+forwarding, and run in parallel. Point the MX at Stalwart once things have
+settled (2-10).</p>
+<p>Migration is the same from Gmail. imapsync connects IMAP to IMAP, and it does
+not care whether the far side is Microsoft or Google.</p>
+<h2>Retention and safety are a few lines of rules</h2>
+<p>Mail retention needs no dedicated archive product. All the mail already sits in
+the 2-03 PostgreSQL, and it is already inside the 2-01 rule &quot;protect the data
+and the spec.&quot; How many years to keep is one line in the business-rules
+Markdown. That is the entire retention spec.</p>
+<p>The safety side is one line too. Never open executable attachments. Spam is
+handled by Stalwart's built-in filter. For a suspicious mail, have the AI read
+the body before any attachment is opened, as input to your judgment.</p>
+<h2>How to check you are done</h2>
+<p>This chapter is done when these five hold.</p>
+<ol>
+<li>A mail sent from an outside address, such as Gmail, to your own domain can be read in Thunderbird</li>
+<li>A mail sent from Thunderbird to an outside address lands in that person's inbox</li>
+<li>You can log in to the admin UI (<code>:8080</code>) and see the domain and mailboxes you created</li>
+<li>Queried from outside, all five records answer: MX, SPF, DKIM, DMARC, PTR</li>
+<li>Past mail carried over by imapsync is visible inside Thunderbird</li>
+</ol>
+<pre><code class="language-bash">dig +short MX example.com                      # the MX answers
+dig +short TXT default._domainkey.example.com  # the DKIM key answers
+dig +short -x &lt;the server's IP&gt;                # the reverse record (PTR) answers
+</code></pre>
+<h2>What the human holds</h2>
+<p><strong>Values the human supplies</strong></p>
+<ul>
+<li>The mail domain name and the mail server's hostname</li>
+<li>The server's fixed IP, and whoever sets the reverse record (PTR) for it</li>
+<li>The name and password of the first administrator in the admin UI</li>
+<li>The account and credentials of the SMTP relay used for sending</li>
+<li>The account and password on the old server, such as Microsoft 365, handed to imapsync</li>
+<li>How many years mail is kept</li>
+</ul>
+<p><strong>Actions the AI states before performing</strong></p>
+<ul>
+<li>Changing a DNS record, above all switching the MX to Stalwart</li>
+<li>Sending mail to an outside address</li>
+<li>Running imapsync against the old server</li>
+<li>Deleting a mailbox</li>
+</ul>
+<h2>Versions checked, and when</h2>
+<ul>
+<li>Stalwart (<code>stalwartlabs/mail-server:latest</code>), PostgreSQL, Thunderbird, imapsync</li>
+<li>This procedure was written on 2026-07-09</li>
+<li>If a version has moved, have the AI confirm the official procedure before proceeding</li>
+</ul>
+<h2>Summary</h2>
+<p>The inbox, on your own side.</p>
+<ul>
+<li><strong>Stalwart</strong> — SMTP, IMAP, JMAP, spam defense, DKIM in one server (on the 2-03 PostgreSQL)</li>
+<li><strong>DNS (MX, SPF, DKIM, DMARC, PTR)</strong> — the real body of mail is here</li>
+<li><strong>Lean on a relay for sending</strong> — inbox yours, deliverability borrowed, line drawn</li>
+<li><strong>Thunderbird</strong> — a free client, identical across OSes</li>
+<li><strong>imapsync</strong> — migrate from Microsoft 365 in parallel, point the MX last</li>
+</ul>
+<p>The next chapter stands up meetings and booking (Jitsi, Cal.com), bringing Teams
+and the booking services to our own side.</p>
+<hr />
+<h2>Related articles</h2>
+<ul>
+<li><a href="/en/ai-native-software/foundation/">2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars</a></li>
+<li><a href="/en/ai-native-software/auth/">2-04: Stand Up the Gate — One Login with PocketBase</a></li>
+<li><a href="/en/ai-native-software/independence/">2-01: Becoming Independent from Microsoft and Google — The Whole Map</a></li>
+</ul>
+
+  </article>
+
+  <nav class="chapter-nav">
+  <a href="/en/ai-native-software/documents/" rel="prev">&larr; Prev: Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office</a>
+  <a href="/en/ai-native-software/meetings/" rel="next">Next: Meetings and Booking on Your Own Side — Jitsi and Cal.com &rarr;</a>
+</nav>
+
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="Site links">
+      <div class="footer-col">
+        <h4>Series</h4>
+        <ul>
+          <li><a href="/en/insights/">Structural Analysis</a></li>
+          <li><a href="/en/blog/">Blog</a></li>
+          <li><a href="/en/ai-native-ways/">AI-Native Ways of Working</a></li>
+          <li><a href="/en/claude-debian/">Learning Debian with Claude</a></li>
+          <li><a href="/en/phosphorus-and-farming/">Phosphorus Depletion and Natural Farming</a></li>
+          <li><a href="/fable/">Fable 5 Is Back <small>(JA)</small></a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="/en/">Home</a></li>
+          <li><a href="/en/natural-farming/">Natural Farming</a></li>
+          <li><a href="/en/light-farming/">Light Farming</a></li>
+          <li><a href="/gallery/">Field Notes</a></li>
+          <li><a href="/en/about/">Our Approach</a></li>
+          <li><a href="/en/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="colophon">
+      <div class="colophon-mark">§</div>
+      AI-Native Software Development · 2-07<br>
+      Tokushima · 2026.07.09<br>
+      <a href="/en/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">CC BY 4.0</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Keep the contents sidebar expanded on wide screens (collapsible on narrow ones)
+  (function () {
+    var toc = document.querySelector(".series-toc details");
+    if (!toc) return;
+    var mq = window.matchMedia("(min-width: 1200px)");
+    function sync() { toc.open = mq.matches; }
+    sync();
+    if (mq.addEventListener) mq.addEventListener("change", sync);
+    else mq.addListener(sync);
+  })();
+
+  // Mermaid loads only on pages that contain a .mermaid block.
+  // Self-hosted (no third-party CDN dependency); SRI verified.
+  if (document.querySelector(".mermaid")) {
+    const s = document.createElement("script");
+    s.src = "/js/vendor/mermaid-11.14.0.min.js";
+    s.integrity = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk";
+    s.crossOrigin = "anonymous";
+    s.onload = () => {
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      mermaid.initialize({ startOnLoad: false, theme: prefersDark ? "dark" : "default" });
+      mermaid.run();
+    };
+    document.head.appendChild(s);
+  }
+</script>
+
+</body>
+</html>

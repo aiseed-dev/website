@@ -756,6 +756,12 @@ def custom_index_vars(lang, chapter_list_html, *, title, subtitle="",
     v.update({
         "page_title": title,
         "structural_analysis_label": title,
+        # 索引テンプレートは Insights から複製したもので、題名の頭と
+        # 飾り文字が「Insights」「Structural Analysis」のまま埋め込まれて
+        # いる。独自シリーズは自分の名前を出す(未指定のシリーズは既定の
+        # ままなので、他の索引の出力は変わらない)。
+        "index_title_prefix": "",
+        "index_hero_label": "Series" if lang == "en" else "連載",
         "page_subtitle": subtitle,
         "meta_description": description or subtitle or title,
         "other_lang_link": (ja_url if lang == "en" else en_url) if has_translation else "",

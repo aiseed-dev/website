@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-9FLQ963JXM');
+</script>
+
+<title>企業は自分でコードを書かない ── 事務と基幹、二つの世界の並立 — AI ネイティブなソフトウェア開発 | aiseed.dev</title>
+<meta name="description" content="企業は自分でコードを書いてこなかった ── そしてそれは合理的だった。自前開発は非効率で、一社では抱えきれない大人数の専門人員を要したからだ。だから汎用の事務はパッケージで買い(Microsoft)、固有の基幹は外注した(SIer)── 別々にロックインされた、二つの並立する世界だ。両者は薄い継ぎ目(認証と文書共有)だけで繋がっていた。この並立が、長らく効率的な均衡だった。AI はその効率を反転させる。一人+AI が、同じ OSS の土台の上に二つの世界をまとめて立てるからだ。前提が消え、二つのベンダー構造は同時に崩れる。本章は転換編の前提を据える。">
+<link rel="canonical" href="https://aiseed.dev/ai-native-software/two-worlds/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/ai-native-software/two-worlds/">
+<link rel="alternate" hreflang="en" href="https://aiseed.dev/en/ai-native-software/two-worlds/">
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/ai-native-software/two-worlds/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI時代の暮らし">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="企業は自分でコードを書かない ── 事務と基幹、二つの世界の並立">
+<meta property="og:description" content="企業は自分でコードを書いてこなかった ── そしてそれは合理的だった。自前開発は非効率で、一社では抱えきれない大人数の専門人員を要したからだ。だから汎用の事務はパッケージで買い(Microsoft)、固有の基幹は外注した(SIer)── 別々にロックインされた、二つの並立する世界だ。両者は薄い継ぎ目(認証と文書共有)だけで繋がっていた。この並立が、長らく効率的な均衡だった。AI はその効率を反転させる。一人+AI が、同じ OSS の土台の上に二つの世界をまとめて立てるからだ。前提が消え、二つのベンダー構造は同時に崩れる。本章は転換編の前提を据える。">
+<meta property="og:url" content="https://aiseed.dev/ai-native-software/two-worlds/">
+<meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<meta property="article:section" content="AI ネイティブなソフトウェア開発">
+<meta property="article:published_time" content="2026.07.20">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="企業は自分でコードを書かない ── 事務と基幹、二つの世界の並立">
+<meta name="twitter:description" content="企業は自分でコードを書いてこなかった ── そしてそれは合理的だった。自前開発は非効率で、一社では抱えきれない大人数の専門人員を要したからだ。だから汎用の事務はパッケージで買い(Microsoft)、固有の基幹は外注した(SIer)── 別々にロックインされた、二つの並立する世界だ。両者は薄い継ぎ目(認証と文書共有)だけで繋がっていた。この並立が、長らく効率的な均衡だった。AI はその効率を反転させる。一人+AI が、同じ OSS の土台の上に二つの世界をまとめて立てるからだ。前提が消え、二つのベンダー構造は同時に崩れる。本章は転換編の前提を据える。">
+<meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
+<!-- フォントは Web 配信せず、すべて端末のローカルフォントで賄う。
+     和文: UDデジタル教科書体 → BIZ UDP明朝(いずれも Windows 標準搭載の
+     モリサワ UD 書体) → ヒラギノ明朝・游明朝などのシステム明朝。
+     等幅: 端末のシステム等幅フォント。 -->
+
+<style>
+/* ============================================================
+   LOCAL FONT: UDデジタル教科書体(モリサワ)
+   Windows・教育向け端末に無償搭載。端末にあれば local() で拾い、
+   なければ BIZ UDP明朝(同じく Windows 標準搭載)→ システム明朝へ
+   フォールバックする。R と B は別ファミリー名なので、太字(700)を
+   B 書体に明示的にマッピングして疑似ボールドを避ける。
+   ============================================================ */
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 400;
+  src: local("UD デジタル 教科書体 NK-R"), local("UD Digital Kyokasho NK-R"),
+       local("UD デジタル 教科書体 NP-R"), local("UD Digital Kyokasho NP-R"),
+       local("UD デジタル 教科書体 N-R"), local("UD Digital Kyokasho N-R");
+}
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 700;
+  src: local("UD デジタル 教科書体 NK-B"), local("UD Digital Kyokasho NK-B"),
+       local("UD デジタル 教科書体 NP-B"), local("UD Digital Kyokasho NP-B"),
+       local("UD デジタル 教科書体 N-B"), local("UD Digital Kyokasho N-B");
+}
+
+/* ============================================================
+   COLOR & DESIGN TOKENS
+   aiseed.dev 全体のスタイルに合わせる場合は、ここの変数を
+   既存サイトのCSS変数に差し替える。
+   ============================================================ */
+:root {
+  --ink: #1a1a1a;
+  --paper: #f4f1ea;
+  --paper-deep: #ebe6d8;
+  --accent: #c8442a;
+  --rule: #d4cdb8;
+  --whisper: #6b665a;
+  --highlight: #f7e9c8;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* 本文: 端末にあれば UDデジタル教科書体を最優先、次に BIZ UDP明朝
+   (Windows 標準搭載)、どちらもなければヒラギノ明朝等のシステム明朝 */
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "UD Digital Kyokasho",
+               "BIZ UDPMincho", "BIZ UDP明朝",
+               "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
+               "Yu Mincho", "游明朝", "YuMincho",
+               "Noto Serif CJK JP", "Noto Serif JP", serif;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  font-feature-settings: "palt";
+  overflow-x: hidden;
+}
+
+/* グレインテクスチャ(紙の質感) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   MASTHEAD(シリーズ名・章番号)
+   ============================================================ */
+.masthead {
+  border-bottom: 3px double var(--ink);
+  padding: 24px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+}
+.masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-left a { color: inherit; text-decoration: none; }
+.masthead-left a:hover { color: var(--accent); }
+.masthead-home { color: var(--whisper); }
+.masthead-sep { margin: 0 10px; color: var(--whisper); font-weight: 400; }
+.masthead-right { font-style: italic; }
+
+/* ============================================================
+   HERO(タイトル領域)
+   ============================================================ */
+.hero {
+  padding: 80px 0 60px;
+}
+.hero-meta {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-meta::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 56px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.hero-title .accent {
+  color: var(--accent);
+}
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--whisper);
+  max-width: 580px;
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+  margin-top: 32px;
+}
+.hero-byline {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ============================================================
+   ARTICLE BODY
+   ============================================================ */
+article p {
+  margin-bottom: 24px;
+}
+
+article h2 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.4;
+  margin: 72px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+article h2::before {
+  content: "§";
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  color: var(--accent);
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+article h3 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 600;
+  font-size: 19px;
+  margin: 40px 0 16px;
+  color: var(--ink);
+}
+article h3::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+article strong {
+  font-weight: 700;
+  background: linear-gradient(to top, var(--highlight) 35%, transparent 35%);
+  padding: 0 2px;
+}
+
+article em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+article a:hover {
+  color: var(--accent);
+}
+
+/* ============================================================
+   BLOCKQUOTE
+   ============================================================ */
+blockquote {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  position: relative;
+  font-size: 18px;
+  line-height: 1.85;
+  font-style: normal;
+  color: var(--ink);
+}
+blockquote::before {
+  content: "「";
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-size: 48px;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: "Hiragino Mincho ProN", serif;
+}
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+article thead th {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+}
+article tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+article tbody tr:last-child td {
+  border-bottom: none;
+}
+@media (max-width: 720px) {
+  article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ============================================================
+   ORDERED LIST(番号付きリスト)
+   ============================================================ */
+article ol {
+  margin: 32px 0;
+  counter-reset: item;
+  padding: 0;
+}
+article ol li {
+  list-style: none;
+  position: relative;
+  padding: 16px 0 16px 56px;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: item;
+}
+article ol li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* 通常のul(章末の関連リンクなど) */
+article ul {
+  margin: 24px 0;
+  padding-left: 1.5em;
+}
+article ul li {
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   CODE BLOCK(疑似ターミナル風)
+   ============================================================ */
+article pre {
+  margin: 40px 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 24px 28px;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+  overflow-x: auto;
+}
+article pre::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 8px;
+  color: var(--whisper);
+  letter-spacing: 4px;
+}
+article pre code {
+  display: block;
+  padding-top: 16px;
+  white-space: pre;
+}
+
+/* インラインコード */
+article code {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 0.9em;
+  background: var(--paper-deep);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+article pre code {
+  background: transparent;
+  padding: 16px 0 0 0;
+  color: var(--paper);
+}
+
+/* ============================================================
+   HORIZONTAL RULE(本文中の区切り)
+   ============================================================ */
+article hr {
+  border: none;
+  text-align: center;
+  margin: 64px 0;
+  height: 1em;
+}
+article hr::before {
+  content: "◆ ◆ ◆";
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+}
+
+/* ============================================================
+   RELATED LINKS(章末の関連記事)
+   ============================================================ */
+.related-links {
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.related-links h3 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+.related-links h3::before {
+  content: none;
+}
+.related-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.related-links li {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 0;
+}
+.related-links li:last-child {
+  border-bottom: none;
+}
+.related-links a {
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.related-links .related-tag {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.related-links a:hover .related-title {
+  color: var(--accent);
+}
+
+/* ============================================================
+   FOOTER(サイト内メニュー+奥付)
+   ============================================================ */
+.site-footer {
+  margin-top: 96px;
+  border-top: 3px double var(--ink);
+  padding-top: 48px;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 48px;
+}
+.footer-col h4 {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-col li {
+  padding: 6px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.footer-col a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.footer-col a:hover { color: var(--accent); }
+
+.colophon {
+  margin-top: 48px;
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--whisper);
+  text-align: center;
+  line-height: 2;
+}
+.colophon-mark {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "Hiragino Mincho ProN", serif;
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+/* ============================================================
+   SERIES TOC(全章一覧・折りたたみ式)
+   ============================================================ */
+.series-toc {
+  margin: 24px 0 40px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 0;
+}
+.series-toc details {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+}
+.series-toc summary {
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  padding: 8px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.series-toc summary::-webkit-details-marker { display: none; }
+.series-toc summary::before {
+  content: "▸";
+  color: var(--accent);
+  font-size: 10px;
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.series-toc details[open] summary::before { transform: rotate(90deg); }
+.series-toc ol {
+  list-style: none;
+  margin: 12px 0 8px;
+  padding: 0;
+  counter-reset: none;
+}
+.series-toc li {
+  list-style: none;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--rule);
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  line-height: 1.55;
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.series-toc li::before { content: none; }
+.series-toc li:last-child { border-bottom: none; }
+.series-toc li a {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--ink);
+  flex: 1;
+}
+.series-toc li a:hover .toc-title { color: var(--accent); }
+.series-toc .toc-num {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 5em;
+}
+.series-toc li.current {
+  background: var(--paper-deep);
+  margin: 0 -12px;
+  padding: 9px 12px;
+}
+.series-toc li.current .toc-title {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ============================================================
+   IMAGES
+   ============================================================ */
+article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 32px auto;
+}
+
+/* ============================================================
+   CUSTOM BLOCKS(:::chain / :::highlight / :::quote / :::compare)
+   ============================================================ */
+.chain-diagram {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+.chain-diagram .arrow {
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0.3em;
+}
+.highlight-box {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.highlight-box p { margin-bottom: 12px; }
+.highlight-box p:last-child { margin-bottom: 0; }
+.quote-block {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+}
+.quote-block .quote-text {
+  font-size: 18px;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* ============================================================
+   ASCIIDOC BLOCKS(pyasciidoc が出力するクラス。.adoc 記事用)
+   admonition / 帰属つき引用 / 画像ブロック / 脚注 / ロール
+   ============================================================ */
+.admonition {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.admonition-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.admonition p { margin-bottom: 12px; }
+.admonition p:last-child { margin-bottom: 0; }
+.quoteblock { margin: 40px 0; }
+.quoteblock blockquote { margin: 0; }
+.quoteblock .attribution {
+  margin-top: 12px;
+  text-align: right;
+  font-size: 14px;
+  color: var(--whisper);
+}
+.quoteblock .attribution cite { font-style: normal; }
+.imageblock { margin: 32px 0; text-align: center; }
+.imageblock .content img { max-width: 100%; height: auto; }
+sup.footnote { font-size: 12px; }
+sup.footnote a { text-decoration: none; }
+.footnotes {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px;
+  color: var(--whisper);
+}
+.footnotes ol { padding-left: 1.5em; }
+.footnotes li { margin-bottom: 8px; }
+.footnotes .footnote-backref { text-decoration: none; margin-left: 0.3em; }
+/* ロール: [.chain](:::chain と同じ見た目)/ [.accent]#…# */
+article .chain {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+article .accent { color: var(--accent); }
+
+/* ============================================================
+   CHAPTER NAV(前後の記事へのリンク)
+   ============================================================ */
+.chapter-nav {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 14px;
+}
+.chapter-nav a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+}
+.chapter-nav a:hover { color: var(--accent); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 40px; }
+  blockquote { padding: 24px 20px 24px 28px; }
+  article pre { padding: 20px 16px; font-size: 12px; }
+  article ol li { padding-left: 48px; }
+  .series-toc .toc-num { min-width: 4em; font-size: 10px; }
+  .series-toc li { font-size: 13px; gap: 12px; }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta, .hero-title, .hero-subtitle, .hero-byline {
+  animation: rise 0.8s ease-out backwards;
+}
+.hero-meta     { animation-delay: 0.1s; }
+.hero-title    { animation-delay: 0.25s; }
+.hero-subtitle { animation-delay: 0.45s; }
+.hero-byline   { animation-delay: 0.65s; }
+.mermaid {
+  text-align: center;
+  margin: 2.5rem 0;
+  background: var(--paper-warm, #f5f1ea);
+  padding: 1.5rem 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.mermaid svg { max-width: 100%; height: auto; }
+
+/* ============================================================
+   WIDE LAYOUT(広い画面では目次を左サイドバーに常時展開)
+   ============================================================ */
+@media (min-width: 1200px) {
+  body.has-toc .container {
+    max-width: 1320px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 880px);
+    column-gap: 64px;
+    justify-content: center;
+  }
+  body.has-toc .masthead,
+  body.has-toc .hero {
+    grid-column: 1 / -1;
+  }
+  /* グリッドアイテム自体は行いっぱいに伸ばし、内側の details を sticky に
+     する(sticky なグリッドアイテムはグリッドエリアではなくコンテナ全体で
+     制約されるブラウザ挙動があり、フッターに重なってしまうため)。 */
+  body.has-toc .series-toc {
+    grid-column: 1;
+    grid-row: 3 / span 2;
+    margin: 0;
+    padding: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+  body.has-toc .series-toc details {
+    position: sticky;
+    top: 32px;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 0 12px 12px 0;
+  }
+  /* サイドバーでは折りたたみを無効化し、見出しとして表示 */
+  body.has-toc .series-toc summary {
+    pointer-events: none;
+    cursor: default;
+  }
+  body.has-toc .series-toc summary::before { content: none; }
+  body.has-toc .series-toc li { font-size: 13.5px; }
+  body.has-toc article    { grid-column: 2; grid-row: 3; }
+  body.has-toc .chapter-nav { grid-column: 2; grid-row: 4; }
+  body.has-toc .site-footer { grid-column: 1 / -1; grid-row: 5; }
+}
+
+/* ============================================================
+   DARK MODE(OS の配色設定に追従して自動で暗色に切り替え)
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ink: #e8e3d6;
+    --paper: #16140f;
+    --paper-deep: #211d16;
+    --accent: #e8765a;
+    --rule: #393428;
+    --whisper: #a39b88;
+    --highlight: rgba(220, 168, 78, 0.30);
+  }
+  /* 紙の質感(グレイン)を暗色背景向けに反転 */
+  body::before {
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    mix-blend-mode: screen;
+    opacity: 0.4;
+  }
+  /* コードブロックは両モードとも暗いターミナル調を維持 */
+  article pre {
+    background: #0d0c0a;
+    color: #e8e3d6;
+  }
+  article pre code {
+    color: #e8e3d6;
+  }
+  /* Mermaid 図の枠を暗色に */
+  .mermaid {
+    background: #211d16;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- MASTHEAD(ホーム › シリーズ目次) -->
+  <header class="masthead">
+    <div class="masthead-left"><a href="/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="/ai-native-software/">AI ネイティブなソフトウェア開発</a></div>
+    <div class="masthead-right">3-01 / Series</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-meta">3-01 № 01 · 2026</div>
+
+    <h1 class="hero-title">企業は<span class="accent">自分でコードを書かない</span>。<br>それは、当然だった。</h1>
+
+    <p class="hero-subtitle">自前で書くのは非効率だった ── だから事務は買い、基幹は外注し、二つの世界が並立した</p>
+
+    <div class="hero-byline">
+      <span>2026.07.20</span>
+      <span><a href="https://aiseed.dev/en/ai-native-software/two-worlds/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">🌐 EN</a></span>
+    </div>
+  </section>
+
+  <!-- SERIES TOC(全章一覧・現在の章をハイライト) -->
+  
+
+  <!-- ARTICLE BODY -->
+  <article>
+    <p>企業は、自分でコードを書いてこなかった。それは怠慢ではなく、旧来のコスト構造のもとでの合理的な選択だった。自立編は、その選択を一層ずつ解いてきた ── 認証も文書もコードもメールも、ベンダーの束から自分の側へ移した。転換編は、ここから産業構造の帰結を見ていく。</p>
+<p>その帰結はすべて、一つの前提から出る。企業 IT が二つの世界に分かれて並立していたこと、そしてその並立が AI によって解けることだ。</p>
+<h2>自前で書くのは非効率だった</h2>
+<p>なぜ企業は自分でコードを書かなかったのか。<strong>非効率だったからだ</strong>。</p>
+<p>コードを書くとは、大量の人月を投じる労働だった。一つの業務システムを作るには、設計者・コーダー・テスター・PM が、月単位・年単位で張り付く。その規模の専門人員を、一社が自前で抱えるのは割に合わない。しかも、仕事が途切れないように維持し続けねばならない。ほとんどの企業にとって、それは無理だった。</p>
+<div class="quoteblock">
+<blockquote>
+<p>コードを書くとは、一社では抱えきれない人月を要する労働だった。だから自前で書かないのが、合理的な選択だった。</p>
+</blockquote>
+</div>
+<p>ここを誤読してはならない。企業が自前開発を避けたのは、技術への無理解でも、
+IT 軽視でもない。効率が悪いから避けた。多重下請け構造が成立したのも同じ理由による。コードを書くのに必要な大人数を、一社で抱えずに調達する仕組みが要ったからだ(構造は 3-06 で詳述する)。</p>
+<p>書かない、という合理的な選択。これが企業 IT を、二つの世界に割った。</p>
+<h2>事務は買い、基幹は外注した</h2>
+<p>「自分で書かない」を実装すると、選択肢は二つに分かれる。買うか、外注するかだ。そして企業 IT は、この二つにきれいに割れた。</p>
+<ul>
+<li>事務系 ── 文書、表計算、メール、スケジュール。どの会社でもほぼ同じ、汎用の仕事だ。汎用なら、自分で作る理由がない。だからパッケージを買う ──
+Microsoft Office、そして Microsoft 365。</li>
+<li>基幹系 ── 受発注、在庫、会計、生産管理。会社ごとに固有の、その企業の業務そのものだ。固有なら、既製品では足りない。だから外注する ── SIer に委託する。</li>
+</ul>
+<p>この二つは、別の世界として育った。コンピュータ化された時期が違い、担当するベンダーが違い、人材プールが違う。事務系は世界共通の製品ベンダーが担った。基幹系は国内の SIer ピラミッドが担った。同じ会社の中にありながら、二つはほとんど交わらずに並び立った。</p>
+<p>繋がりは、薄い継ぎ目が二つだけだった。<a href="/ai-native-software/independence/">2-01: Microsoft と Google から自立する</a>で見たとおり、認証(Entra ID)と、文書共有(SharePoint)である。基幹システムとオフィスの世界が共有していたのは、この二点に過ぎない。</p>
+<div class="mermaid">
+flowchart TB
+  subgraph Office["事務系の世界 ── 買う"]
+    direction TB
+    O1["文書・表計算・メール・予定"]
+    O2["Microsoft Office / 365<br/>(汎用 → パッケージ)"]
+    O1 --- O2
+  end
+
+  subgraph Core["基幹系の世界 ── 外注する"]
+    direction TB
+    C1["受発注・在庫・会計・生産管理"]
+    C2["SIer 委託<br/>(固有 → スクラッチ開発)"]
+    C1 --- C2
+  end
+
+  Seam1["継ぎ目: 認証<br/>(Entra ID)"]
+  Seam2["継ぎ目: 文書共有<br/>(SharePoint)"]
+
+  Office -.->|薄く繋がるだけ| Seam1
+  Core -.->|薄く繋がるだけ| Seam1
+  Office -.->|薄く繋がるだけ| Seam2
+  Core -.->|薄く繋がるだけ| Seam2
+
+  classDef bad fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class O1,O2,C1,C2,Seam1,Seam2 bad
+</div>
+<h2>並立していたから、税は二度かかった</h2>
+<p>二つの世界が並立していたということは、ロックインも地代も二重にかかっていたということだ。</p>
+<ul>
+<li>Microsoft 税 ── 事務系の世界で。文書も予定もメールも一社のスイートに束ねられ、人数 × 月額が永続的に課された。</li>
+<li>SIer 税 ── 基幹系の世界で。独自フレームワーク、多年の運用保守契約、業務知識の囲い込みによって、別の選択肢へ動けなくなった。</li>
+</ul>
+<p>この二つの税は、別々に発生し、両方とも払われた。事務系で Microsoft に縛られていることと、基幹系で SIer に縛られていることは、別の現象として、それぞれ独立に企業を捉えていた。一方を逃れても、他方は残る。</p>
+<p>だがこれは、当時としては不経済ではなかった。旧来のコスト構造のもとでの、合理的な均衡だった。買う・外注するほうが、自前で作るより、本当に安かったからだ。コードを書くのに人月が要る以上、汎用は買い、固有は外注するのが、文句なく合理的だった。</p>
+<div class="quoteblock">
+<blockquote>
+<p>並立していたから、税は二重だった ── Microsoft 税と SIer 税。だがそれは不経済ではなく、旧コスト構造の合理的な均衡だった。</p>
+</blockquote>
+</div>
+<h2>AI が、前提を反転させる</h2>
+<p>その均衡を支えていたのは、たった一つの前提だった。「コードを書くには人月が要る、だから自前は非効率」という前提だ。AI が実行を取ったとき、この前提が消える。</p>
+<p>自立編で示したとおり、一人 + AI が、二つの世界を同じ OSS の土台の上にまとめて立てられる。事務系も基幹系も、もはや別々のベンダーに分けて調達するものではない。</p>
+<ul>
+<li>事務系 ── PostgreSQL、PocketBase、OnlyOffice(<a href="/ai-native-software/foundation/">2-03: 土台を据える</a>・2-06)</li>
+<li>基幹系 ── PostgreSQL、FastAPI、同じ認証・同じ共有(<a href="/ai-native-software/fastapi/">2-10: API を作る</a>)</li>
+</ul>
+<p>二つは、同じデータ基盤・同じ門番・同じコードの上に乗る。汎用も固有も、一人 + AI が立てる。「買う・外注するほうが安い」という前提そのものが消えた。
+<strong>自前で書くことが、もはや非効率ではなくなった</strong>からだ。</p>
+<h2>並立が解けると、二つの産業は同時に崩れる</h2>
+<p>ここが本章の核心だ。事務系と基幹系が同じ土台に乗ると、二つを隔てていた継ぎ目が消える。認証も文書共有も、もはや二つの世界を繋ぐ細い橋ではなく、一つの土台の一部になる(2-01 の「そして、基幹システムへ」)。</p>
+<p>そして、ここから帰結が出る。Microsoft の事務系支配と、SIer の基幹系支配は、もともと別々の現象ではなかった。両者は、「自前で書かない」という一つの合理的選択が生んだ、一つの並立構造の表と裏だった。</p>
+<ul>
+<li>汎用を買う合理性が、Microsoft の地代を生んだ。</li>
+<li>固有を外注する合理性が、SIer の地代を生んだ。</li>
+<li>両方とも、同じ前提から出ていた。コードは大人数の人月だ、という前提である。</li>
+</ul>
+<p>その前提が反転した今、<strong>二つは同時に崩れる</strong>。一方が AI で解け、他方が別の理由で残る、ということにはならない。並立構造そのものが解けるのだから、二つの支配は一緒に外れる。</p>
+<p>これが転換編全体の前提だ。続く章は、この一つの崩壊を、それぞれ別の面から見ていく ── デジタル主権と Microsoft 問題(3-02)、SIer 委託の不経済
+(3-03)、ロックインの正体(3-04)、ビルダーの直接雇用(3-05)、日本固有の転換(3-06)、革命が下から起きること(<a href="/ai-native-software/revolution-from-below/">3-07: AI 革命は下から起きる</a>)、近い将来の転換と逆転ゆえの不可逆
+(3-08)。どれも、同じ一つの崩壊を、別の角度から照らした像だ。</p>
+<div class="mermaid">
+flowchart TB
+  subgraph Old["旧: 並立する二つの世界"]
+    direction LR
+    OldO["事務系<br/>Microsoft 税"]
+    OldC["基幹系<br/>SIer 税"]
+    OldO -.->|薄い継ぎ目だけ| OldC
+  end
+
+  subgraph New["新: 一つの土台に合流"]
+    direction TB
+    Found["同じ OSS の土台<br/>PostgreSQL / PocketBase /<br/>OnlyOffice / FastAPI"]
+    NewO["事務系"]
+    NewC["基幹系"]
+    NewO --> Found
+    NewC --> Found
+  end
+
+  Old ==>|AI が前提を反転 = 並立が解ける| New
+
+  classDef bad fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  class OldO,OldC bad
+  class Found,NewO,NewC good
+</div>
+<div class="quoteblock">
+<blockquote>
+<p>並立が解けるとき、二つの産業は同時に崩れる。
+Microsoft の支配と SIer の支配は、一つの構造の表と裏だった。</p>
+</blockquote>
+</div>
+<h2>作り直しが、新しい既定値になる</h2>
+<p>最後に一段引いて見る。企業が自分でコードを書かなかったのは、怠慢でも無能でもなかった。合理的だった。自前で書くより、買い、外注するほうが、本当に安かったからだ。</p>
+<p>その合理性が、反転した。AI が実行を取った今、買う・外注するほうが安いという前提は崩れた。だから「自分で作り直す」は、もはや特別な決断ではない。汎用は
+OSS で立て、固有は AI と書く。<strong>これが、新しい合理的な既定値になる</strong>。</p>
+<p>かつて自前を避けたのと同じ合理性が、今度は自前を選ばせる。前提が変わったのだから、結論が変わるのは当然だ。問われているのは「やるか」ではなく、「いつ、誰が主導でやるか」だけだ。</p>
+<h2>まとめ</h2>
+<p>本章は、転換編の前提を据えた。事務と基幹の並立、二重の税、そして AI による前提の反転である。続く章は、二つの世界それぞれの帰結を、別の面から照らしていく。</p>
+<p>まず事務(Microsoft)側だ。次の章で問うのは、なぜ OSS とソブリン AI のほうが、いまや経済でも安全保障でも有利なのか、である。Microsoft 依存の問題と、米国政府を信頼しきれないという地政学リスク(Trump 問題)を見ていく。</p>
+<hr />
+<h2>関連記事</h2>
+<ul>
+<li><a href="/ai-native-software/independence/">2-01: Microsoft と Google から自立する ── 全体像と対応表</a></li>
+<li><a href="/ai-native-software/sier-uneconomic/">3-03: SIer委託モデルの構造的不経済</a></li>
+<li><a href="/ai-native-ways/python/">親シリーズ第2章: Python で自分の道具を持つ</a></li>
+</ul>
+
+  </article>
+
+  <!-- CHAPTER NAV(前後の記事) -->
+  <nav class="chapter-nav">
+  <a href="/ai-native-software/fastapi/" rel="prev">&larr; 前: API を作る ── FastAPI で基幹のロジックを出す</a>
+  <a href="/ai-native-software/sovereignty/" rel="next">次: デジタル主権 ── Microsoft 問題と Trump 問題 &rarr;</a>
+</nav>
+
+  <!-- FOOTER(サイト内メニュー+奥付) -->
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="サイト内リンク">
+      <div class="footer-col">
+        <h4>記事シリーズ</h4>
+        <ul>
+          <li><a href="/insights/">構造分析</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/ai-native-ways/">AIネイティブな仕事の作法</a></li>
+          <li><a href="/claude-debian/">Claudeと一緒に学ぶDebian</a></li>
+          <li><a href="/phosphorus-and-farming/">リン資源枯渇と自然農法</a></li>
+          <li><a href="/fable/">Fable 5 が帰ってきた</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>サイト</h4>
+        <ul>
+          <li><a href="/">ホーム</a></li>
+          <li><a href="/natural-farming/">自然農法とは</a></li>
+          <li><a href="/light-farming/">Light Farming</a></li>
+          <li><a href="/gallery/">畑の記録</a></li>
+          <li><a href="/about/">私たちのアプローチ</a></li>
+          <li><a href="/privacy/">プライバシー</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="colophon">
+      <div class="colophon-mark">§</div>
+      AI ネイティブなソフトウェア開発 · 3-01<br>
+      Tokushima · 2026.07.20<br>
+      <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">CC BY 4.0</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // 広い画面ではサイドバー目次を常時展開する(狭い画面では折りたたみに戻す)
+  (function () {
+    var toc = document.querySelector(".series-toc details");
+    if (!toc) return;
+    var mq = window.matchMedia("(min-width: 1200px)");
+    function sync() { toc.open = mq.matches; }
+    sync();
+    if (mq.addEventListener) mq.addEventListener("change", sync);
+    else mq.addListener(sync);
+  })();
+
+  // Mermaid loads only on pages that contain a .mermaid block.
+  // Self-hosted (no third-party CDN dependency); SRI verified.
+  if (document.querySelector(".mermaid")) {
+    const s = document.createElement("script");
+    s.src = "/js/vendor/mermaid-11.14.0.min.js";
+    s.integrity = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk";
+    s.crossOrigin = "anonymous";
+    s.onload = () => {
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      mermaid.initialize({ startOnLoad: false, theme: prefersDark ? "dark" : "default" });
+      mermaid.run();
+    };
+    document.head.appendChild(s);
+  }
+</script>
+
+
+</body>
+</html>

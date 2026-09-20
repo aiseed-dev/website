@@ -26,13 +26,13 @@
     <meta name="description" content="{{ meta_description }}">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
-    <title>Insights — {{ structural_analysis_label }} | {{ site_name }}</title>
+    <title>{{ index_title_prefix | default('Insights — ') }}{{ structural_analysis_label }} | {{ site_name }}</title>
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="alternate" hreflang="ja" href="{{ hreflang_ja }}">
     <link rel="alternate" hreflang="en" href="{{ hreflang_en }}">
     <!-- OGP -->
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Insights — {{ structural_analysis_label }}">
+    <meta property="og:title" content="{{ index_title_prefix | default('Insights — ') }}{{ structural_analysis_label }}">
     <meta property="og:description" content="{{ meta_description }}">
     <meta property="og:url" content="{{ canonical_url }}">
     <meta property="og:site_name" content="aiseed.dev">
@@ -40,7 +40,7 @@
     <meta property="og:locale" content="{{ og_locale }}">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Insights — {{ structural_analysis_label }}">
+    <meta name="twitter:title" content="{{ index_title_prefix | default('Insights — ') }}{{ structural_analysis_label }}">
     <meta name="twitter:description" content="{{ meta_description }}">
     <meta name="twitter:image" content="{{ og_image }}">
     <link rel="icon" href="/favicon.ico" sizes="any">
@@ -101,7 +101,7 @@
     <section class="page-hero">
         <div class="page-hero-image" style="background-image: url('{{ img_path }}');"></div>
         <div class="page-hero-content">
-            <p class="hero-label">Structural Analysis</p>
+            <p class="hero-label">{{ index_hero_label | default('Structural Analysis') }}</p>
             <h1 class="hero-title">{{ page_title }}</h1>
             <p class="hero-subtitle">{{ page_subtitle }}</p>
         </div>

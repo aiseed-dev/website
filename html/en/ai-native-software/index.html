@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Apply saved theme immediately to avoid FOUC -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('aiseed-theme');
+          if (t === 'light' || t === 'dark') {
+            document.documentElement.setAttribute('data-theme', t);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9FLQ963JXM');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI has drawn level with the top human tier at writing code. The coder's work moves to AI; the builder, who decides, is what remains. The Introduction part shows what changed, the Independence part lays out the whole toolkit for stepping off Microsoft and Google as a specification the AI can read and execute, and the Shift part asks why the SIer commission model became structurally uneconomic. The AI revolution does not start with a decision from the top — it starts where no approval process is needed.">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+    <title>AI-Native Software Development | Living in the AI Era</title>
+    <link rel="canonical" href="https://aiseed.dev/en/fable/">
+    <link rel="alternate" hreflang="ja" href="https://aiseed.dev/fable/">
+    <link rel="alternate" hreflang="en" href="https://aiseed.dev/en/fable/">
+    <!-- OGP -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI-Native Software Development">
+    <meta property="og:description" content="AI has drawn level with the top human tier at writing code. The coder's work moves to AI; the builder, who decides, is what remains. The Introduction part shows what changed, the Independence part lays out the whole toolkit for stepping off Microsoft and Google as a specification the AI can read and execute, and the Shift part asks why the SIer commission model became structurally uneconomic. The AI revolution does not start with a decision from the top — it starts where no approval process is needed.">
+    <meta property="og:url" content="https://aiseed.dev/en/fable/">
+    <meta property="og:site_name" content="aiseed.dev">
+    <meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+    <meta property="og:locale" content="en_US">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI-Native Software Development">
+    <meta name="twitter:description" content="AI has drawn level with the top human tier at writing code. The coder's work moves to AI; the builder, who decides, is what remains. The Introduction part shows what changed, the Independence part lays out the whole toolkit for stepping off Microsoft and Google as a specification the AI can read and execute, and the Shift part asks why the SIer commission model became structurally uneconomic. The AI revolution does not start with a decision from the top — it starts where no approval process is needed.">
+    <meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="../../css/style.css?v=0b5d818e">
+    <style>
+        .highlight-box {
+            background: rgba(122, 154, 109, 0.08);
+            border: 1px solid rgba(122, 154, 109, 0.2);
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+        }
+        .highlight-box p { margin-bottom: 0.5rem; }
+        .highlight-box p:last-child { margin-bottom: 0; }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="/en/" class="logo">
+                Living in the AI Era
+                <span>aiseed.dev</span>
+            </a>
+            <nav class="nav">
+                <a href="/en/">Home</a>
+                <div class="nav-group">
+                    <button type="button" class="nav-parent" aria-haspopup="true" aria-expanded="false">Articles<span class="nav-caret" aria-hidden="true">▾</span></button>
+                    <div class="nav-submenu" role="menu">
+                        <a href="/en/insights/" role="menuitem">Structural Analysis</a>
+                        <a href="/en/ai-native-ways/" role="menuitem">AI-Native Ways of Working</a>
+                        <a href="/en/claude-debian/" role="menuitem">Learning Debian with Claude</a>
+                        <a href="/en/phosphorus-and-farming/" role="menuitem">Phosphorus Depletion and Natural Farming</a>
+                        <a href="/fable/" role="menuitem">Fable 5 Is Back</a>
+                    </div>
+                </div>
+                <a href="/en/blog/">Blog</a>
+                <a href="/en/natural-farming/">Natural Farming</a>
+                <a href="/en/light-farming/">Light Farming</a>
+                <a href="/gallery/">Field Notes</a>
+                <a href="/ai-native-software/" class="lang-switch" hreflang="ja" aria-label="日本語版を表示">🌐 日本語</a>
+                <button type="button" class="theme-toggle" aria-label="テーマを切り替え" title="テーマ切り替え (Light / Dark)">
+                    <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+                    <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+                </button>
+            </nav>
+            <button class="nav-toggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-image" style="background-image: url('../../images/IMG_3285.jpg');"></div>
+        <div class="page-hero-content">
+            <p class="hero-label">Series</p>
+            <h1 class="hero-title">AI-Native Software Development</h1>
+            <p class="hero-subtitle">Don't commission an SIer — stand it up yourself, and run it yourself</p>
+        </div>
+    </section>
+
+    <!-- Article List -->
+    <section class="section section-alt" id="series">
+        <div class="container">
+            <div class="activity-list">
+
+                <h2 style="font-family: 'Zen Old Mincho', serif; font-size: 1.25rem;
+                           color: var(--earth-dark); margin: 2.5rem 0 1rem;
+                           border-bottom: 1px solid var(--soil-light, #d8d2c4);
+                           padding-bottom: 0.5rem;">Introduction — what changed</h2>
+
+                <a href="/en/ai-native-software/coder-top/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">1-01</div>
+                        <div class="activity-content">
+                            <h3>AI Solves the World's Hardest Coding Problems — From the Codeforces 2700 tier to design — in the Mythos/Fable era, AI became the strongest SIer, callable for $200 a month</h3>
+                            <p>AI's code-writing ability has matched human top-class on public competitive-programming ratings (the Codeforces 2700 tier). It can also assemble a cyberattack autonomously — evidence of design ability. Attack, design, and verification are three faces of one power. In the Mythos/Fable era AI became the strongest SIer, handling requirements, design, and build, and callable by anyone for $200 a month. The whole sub-series argues outward from that.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/en/ai-native-software/maintenance-shift/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">1-02</div>
+                        <div class="activity-content">
+                            <h3>Maintenance-Phase Shift Is the Real Story — Cheaper coding is the tip of the iceberg — because AI understands context, maintaining at the code level stops being necessary</h3>
+                            <p>The most overlooked consequence of AI writing code is not faster coding. It is the structural shift of the maintenance phase itself. In enterprise systems, 60 to 80 percent of TCO lands in maintenance. Because AI understands context, maintaining at the code level stops being necessary, and the unit of maintenance moves from code to design, spec, and context. The single largest cost, reading legacy code, evaporates. Anyone who can read a manual and fit it to their own reality can do development and maintenance.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/en/ai-native-software/coder-end/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">1-03</div>
+                        <div class="activity-content">
+                            <h3>AI Now Does the Software Engineer's Work — The coder obviously goes — and the software engineer who designs and codes becomes, not a designer-coder, but someone who works in dialogue with AI (the builder)</h3>
+                            <p>The coder, the code-writing role, obviously disappears. But the subject of this chapter is what lies beyond. AI now does the software engineer's work too. Opus is a coder, Fable/Mythos software engineers; design and code are both carried by AI. What stays with humans is not designing and coding yourself. It is building and operating a system in dialogue with AI — that is, the builder. The same split that followed the calculator replacing the abacus is happening now. What disappears is the role definition, not people.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/en/ai-native-software/builder/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">1-04</div>
+                        <div class="activity-content">
+                            <h3>The Builder Role — Decide what to build, build it in dialogue with AI, run it, integrate the whole</h3>
+                            <p>The builder builds and runs whole systems in dialogue with AI, and is not the next version of the software engineer. The software engineer solves narrowly closed problems, and that is the work AI takes over. The builder handles the open problem of raising what to build out of reality. This chapter defines the builder as a loop of four steps — decide, build with AI, check, integrate — and then, along the axis of the narrowly closed problem versus the open problem, shows why judgment cannot be left to AI.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/en/ai-native-software/customer-codev/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">1-05</div>
+                        <div class="activity-content">
+                            <h3>Customers Co-Develop with AI — The first move is OSS, not code — use it for the generic, customize it for the personal (parent series ch. 2, 6, 8), build the foundation for the organization (the Independence part). Only the specific gets written with AI</h3>
+                            <p>This is the era in which customers themselves become builders. But the first move is not writing code. It is using proven OSS. For generic things, use OSS first: it is the most economical path, and it is also effective as a security measure. Personal things are customized on top of OSS in dialogue with AI, and the worked examples live in the parent series' individual track. Organizations stand up a foundation with OSS that replaces Microsoft 365, Copilot, and WordPress, which is the Independence part. Only the company-specific logic gets written with AI. What AI cannot do, the SIer cannot do either.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <h2 style="font-family: 'Zen Old Mincho', serif; font-size: 1.25rem;
+                           color: var(--earth-dark); margin: 2.5rem 0 1rem;
+                           border-bottom: 1px solid var(--soil-light, #d8d2c4);
+                           padding-bottom: 0.5rem;">Independence — a specification the AI can execute</h2>
+
+                <a href="/en/ai-native-software/independence/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-01</div>
+                        <div class="activity-content">
+                            <h3>Becoming Independent from Microsoft and Google — The Whole Map — Move the foundation of your business out of the vendor's cage and into your own hands</h3>
+                            <p>The lock-in is not weak features. It is that the layers are closed, and that the key (identity) is concentrated in someone else's hands. The Office suite and the core business systems stand on the same structure. Opening what is closed is AI's role. It unseals proprietary formats, reads unreadable code, and extracts imprisoned business knowledge. The Independence part, working with AI, unties the closed bundle into open OSS and moves the key to your side — the machine is one Debian PC, auth is PocketBase, documents are aiseed office, code and sharing are Forgejo, mail is Stalwart, meetings and scheduling are Jitsi and Cal.com, web is Cloudflare Pages, data is PostgreSQL, SQLite and DuckDB, AI is a local LLM plus RAG, and core logic is FastAPI. This chapter is the map; the chapters that follow stand each one up.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/en/ai-native-software/ai-pc/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-02</div>
+                        <div class="activity-content">
+                            <h3>Give the AI a PC of Its Own — The Machine the Independence Part Runs On — Turn one company PC into Debian and hand it over, root included. The human keeps only what a reinstall cannot restore</h3>
+                            <p>Everything the Independence part stands up has to run somewhere. This chapter decides where. Turn one company PC into Debian and hand it to the AI. The public website, the in-house tools, and the AI's own work all sit on that one machine, with a desktop (GNOME) installed and left running. Anything that only runs on Windows runs in a virtual machine inside Debian — the reverse of WSL, with Debian as the base and Windows as the guest. The AI does all the configuration, so it gets root: a broken machine is recovered by reinstalling. The human keeps only the three things a reinstall cannot restore — keys and accounts, actions taken outside the machine, and copies of the documents. Run more than one AI, from different vendors, and have them check each other with nothing but the artifact and the criteria. In steady operation the bill is $40 a month. No approval process, no server contract, no per-seat licenses.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/en/ai-native-software/foundation/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-03</div>
+                        <div class="activity-content">
+                            <h3>Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars — Stand up the data layer everything sits on, first, on your own side</h3>
+                            <p>The Independence part starts with the data layer everything sits on. SQLite is usually enough — a single file, no server, already built into Python. Step up to PostgreSQL only when you share and several people write at once. Enable pgvector for semantic search; analyze with columnar DuckDB and Polars — Excel stays the human's I/O while machines crunch the data behind it; pull far ahead of Power BI. The generic is already shared as OSS — you don't write it, you stand it up. It all goes on the one machine handed to the AI in 2-02.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/en/ai-native-software/auth/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-04</div>
+                        <div class="activity-content">
+                            <h3>Stand Up the Gate — One Login with PocketBase — Share only identity (authentication) — each server enforces its own access control. Central minimal, defense in depth</h3>
+                            <p>Authentication is not something each app builds on its own. It is a gate you stand up once and share. But the gate holds only the minimal common thing — identity. Authorization ("what you can do") is held by each app, each server, itself (defense in depth); the single-perimeter idea that "whoever passed the gate goes anywhere inside" is not the design. PocketBase is a single binary with email auth, OAuth2, one-time codes, MFA, an admin UI, and a REST API. Identity lives in the gate; business data lives in PostgreSQL. Step off Microsoft Entra ID's per-seat monthly bill.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/en/ai-native-software/code/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-05</div>
+                        <div class="activity-content">
+                            <h3>Bring Code In-House — Forgejo and Zed — The builder's workshop, on your own side — repositories and CI, outside Microsoft</h3>
+                            <p>A builder's work is to have AI write code, evaluate it, and integrate it. The place that code lives — the repository — gets stood up on your own side. Forgejo is a single Git forge that replaces GitHub and Azure DevOps, with Actions covering CI/CD. It rides on the PostgreSQL from 2-03 and sits behind the gate from 2-04, on the one machine handed to the AI in 2-02. The local tools are Zed and Claude. Code is an asset; control of where it lives stays with you.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/en/ai-native-software/documents/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-06</div>
+                        <div class="activity-content">
+                            <h3>Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office — Keep the content as text in git. Word and Claude Docs become doors you pass through, not the place the content lives</h3>
+                            <p>Documents no longer live in two places. Besides Office and your own stack, Claude Docs has arrived. All three are convenient, and in all three the key is held by someone else. The answer is not which place to pick — it is how you hold the manuscript. Keep it as AsciiDoc text, commit only the manuscript, and keep the design out of git. Then Word, Claude Docs, and aiseed office all become doors you pass through. Form-fidelity work belongs to aiseed office, built because ONLYOFFICE does not hold Japanese forms; its engine installs with pip. The files stay files, the gate holds identity, and a queryable store holds permissions.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/en/ai-native-software/mail/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-07</div>
+                        <div class="activity-content">
+                            <h3>Mail on Your Own Side — Stalwart and Thunderbird — Outside Exchange and Outlook — receive it yourself, send it honestly</h3>
+                            <p>Mail is the record of the business itself. Stalwart is a Rust single server carrying SMTP, IMAP, JMAP, spam defense, and DKIM signing in one, replacing Exchange. It rides on the PostgreSQL from 2-03, stands up on the machine handed to the AI in 2-02, and is read with any client like Thunderbird. But outbound deliverability is hard — so lean on an authenticated relay for sending and keep only control of the mailbox on your own side. An honest design. DNS (MX, SPF, DKIM, DMARC, PTR) and sending mail to the outside stay with the human.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/en/ai-native-software/meetings/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-08</div>
+                        <div class="activity-content">
+                            <h3>Meetings and Booking on Your Own Side — Jitsi and Cal.com — Teams meetings, Calendly booking, and webinars for classes — on your own domain</h3>
+                            <p>Video meetings with Jitsi, booking with Cal.com, classes and webinars with BigBlueButton. Replace Teams, Zoom, Calendly, and Microsoft Bookings with your own domain on the machine handed to the AI in 2-02. Booking rides on the PostgreSQL from 2-03 and sends confirmations through the 2-07 mail. Step off per-seat, per-minute billing and keep meeting links and records on your own side. The human holds the domain and DNS, the booking slots, and any confirmation mail that goes outside.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <h2 style="font-family: 'Zen Old Mincho', serif; font-size: 1.25rem;
+                           color: var(--earth-dark); margin: 2.5rem 0 1rem;
+                           border-bottom: 1px solid var(--soil-light, #d8d2c4);
+                           padding-bottom: 0.5rem;">Shift — why the industry structure changes</h2>
+
+                <a href="/en/ai-native-software/two-worlds/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">3-01</div>
+                        <div class="activity-content">
+                            <h3>Companies Don't Write Their Own Code — Office and Core, Two Parallel Worlds — Writing it in-house was inefficient — so office was bought, core was outsourced, and two worlds stood in parallel</h3>
+                            <p>Companies have not written their own code — and that was rational. In-house development was inefficient, demanding a large specialized workforce no single company could justify keeping. So companies BOUGHT packaged software for generic office work (Microsoft) and OUTSOURCED custom core systems (SIer) — two parallel, separately locked-in worlds, joined only by thin seams (auth and document sharing). That parallel split was the efficient equilibrium for decades. AI inverts the efficiency: one person plus AI now stands up both worlds on the same OSS foundation. The premise dissolves, and both vendor structures collapse together. This chapter sets the premise for the Shift part.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/en/ai-native-software/sovereignty/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">3-02</div>
+                        <div class="activity-content">
+                            <h3>Digital Sovereignty — The Microsoft Problem and the Trump Problem — OSS and sovereign AI are now the better choice on both economics and security</h3>
+                            <p>Until recently, Microsoft 365 was the economical and safe default — which is exactly why everyone bought it. That premise has inverted. OSS plus sovereign (self-hosted, local-weight) AI is now better on both cost AND security. The Microsoft problem — per-seat rent that only rises, data on a US company's cloud reachable under the CLOUD Act, opaque telemetry, Copilot routing content through Microsoft's models. The convenience IS the dependence. The Trump problem — depending on US Big Tech means depending on the US government's goodwill, and the Trump administration cannot be trusted not to weaponize that dependence (sanctions, cut-offs). So leaving Microsoft is no longer ideology — it is the new economic-and-security rational default. This chapter sets the premise for the Shift part's office (Microsoft) side.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/en/ai-native-software/lockin/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">3-04</div>
+                        <div class="activity-content">
+                            <h3>The Lock-In Problem — Proprietary frameworks, proprietary abstractions, human dependency — with Palantir's FDE as the archetype</h3>
+                            <p>Lock-in is the state in which migration cost is high enough that nothing moves. SIer commissioning anchors customers with three layers — proprietary frameworks, proprietary abstractions and Ontology, human dependency. Palantir's FDE model is the extreme form, maximizing all three to sustain premium pricing in the tens of billions of yen. AI-native development, by contrast, structurally avoids lock-in: AI tends to write in standard libraries and standard formats, so another AI, another builder, or the customer themselves can take over. The chapter also treats a second lock-in — vendor AI, and Microsoft's backward compatibility.</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/en/ai-native-software/revolution-from-below/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">3-07</div>
+                        <div class="activity-content">
+                            <h3>The AI Revolution Starts From Below — Top-down adoption always fails. It starts where a line and $100 a month are all you need</h3>
+                            <p>The AI revolution does not start with an executive decision or a large budget. It starts where no approval process is needed: small companies, sole traders, a department with real discretion inside a large company, and the periphery of large companies. All it takes is an internet line and $100 a month. Adopted from the top, it passes through the IT department and the SIer, turns into a headcount-reduction story, drives the floor to use AI in hiding, and leaves the company with nothing. Started from below, six things stay: the code, the business knowledge put into words, the checking mechanism, the record of what got stuck and how it was fixed, the people who can build, and the data. Executives have no time to look at small problems, and small problems are exactly what AI solves. So AI belongs to the floor. Held at the center it is used for surveillance and censorship; held below it solves problems. There are countless places for it to start, and no hand that can stop it.</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="section">
+        <div class="container-narrow">
+            <div class="quote-block fade-in">
+                <p class="quote-text">Direction is decided by humans. Execution is done by AI.<br>
+The ceiling on execution has risen — which makes deciding direction heavier work than before.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section-green">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Explore</p>
+                <h2 class="section-title">Start with installment 1</h2>
+            </div>
+            <p class="cta-text">Start with what Fable 5 is — and what it is not good at.</p>
+            
+            <div class="cta-buttons">
+                <a href="/en/light-farming/" class="btn btn-light">Light Farming</a>
+                <a href="/en/natural-farming/" class="btn btn-outline">Natural Farming</a>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>Living in the AI Era</h3>
+                <p>AI changes how we work, farm, and live. Structural analysis of fossil resources, food, energy, AI, healthcare, and pensions — every structure connects.</p>
+            </div>
+            <div class="footer-nav">
+                <h4>Pages</h4>
+                <ul>
+                    <li><a href="/en/">Home</a></li>
+                    <li><a href="/en/natural-farming/">Natural Farming</a></li>
+                    <li><a href="/en/light-farming/">Light Farming</a></li>
+                    <li><a href="/en/about/">Our Approach</a></li>
+                    <li><a href="/gallery/">Field Notes</a></li>
+                    <li><a href="/en/insights/">Structural Analysis</a></li>
+                    <li><a href="/en/ai-native-ways/">AI-Native Ways of Working</a></li>
+                    <li><a href="/en/claude-debian/">Learning Debian with Claude</a></li>
+                    <li><a href="/en/phosphorus-and-farming/">Phosphorus Depletion and Natural Farming</a></li>
+                    <li><a href="/fable/">Fable 5 Is Back</a></li>
+                    <li><a href="/en/privacy/">Privacy</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="https://www.facebook.com/groups/vegitage" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: -2px; margin-right: 4px;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>AISeed — 生物多様性・食料・AIと暮らし</a></li>
+                    <li><a href="https://www.amazingcarbon.com/">Amazing Carbon (Dr. Christine Jones)</a></li>
+                    <li><a href="https://github.com/aiseed-dev/website" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">&copy; 2026 aiseed.dev — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">CC BY 4.0</a></p>
+        </div>
+    </footer>
+
+    <script src="../../js/main.js?v=0b5d818e"></script>
+</body>
+
+</html>

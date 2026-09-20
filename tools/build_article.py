@@ -2558,7 +2558,7 @@ def build_custom_chapter(md_path, sdef):
     meta["_out_dir"] = str(out_dir)
 
     body_html = render_body(body, md_path)
-    series_name = sdef.get("label", base)
+    series_name = _sdef_text(sdef, "label", lang) or base
     series_index_url = f"{url_base}/"
     canonical_url = f"{config.SITE_URL}{url_base}/{slug}/"
     hreflang_ja = f"{config.SITE_URL}/{base}/{slug}/"
@@ -2599,6 +2599,16 @@ def build_custom_chapter(md_path, sdef):
     copy_images(md_path.parent, out_dir, lang=lang)
     print(f"Built {base}: {out_dir / 'index.html'}")
     return True
+
+
+def _sdef_text(sdef, key, lang):
+    """site.json のシリーズ定義から1言語分を取り出す。`<key>_en` があれば
+    英語ではそちらを使い、無ければ共通の値を使う。"""
+    if lang == "en":
+        v = sdef.get(f"{key}_en")
+        if v:
+            return v
+    return sdef.get(key, "")
 
 
 def _custom_chapter_badge(meta) -> str:
@@ -2670,9 +2680,9 @@ def build_custom_index(sdef, lang="ja"):
         items = "".join(_custom_index_item_html(url_base, c) for c in chapters)
     variables = custom_index_vars(
         lang, items,
-        title=sdef.get("label", base),
-        subtitle=sdef.get("subtitle", ""),
-        description=sdef.get("description", ""),
+        title=_sdef_text(sdef, "label", lang) or base,
+        subtitle=_sdef_text(sdef, "subtitle", lang),
+        description=_sdef_text(sdef, "description", lang),
         url_base=base,
         has_translation=bool(collect_custom_chapters(sdef, other)),
     )

@@ -10,9 +10,12 @@
       {
         "file": "ai-native-software.adoc",
         "label": "AI ネイティブなソフトウェア開発",
+        "label_en": "AI-Native Software Development",
         "url_base": "/ai-native-software",
         "subtitle": "SIer に頼まない ── 自分で立てて、自分で動かす",
+        "subtitle_en": "Don't commission an SIer — stand it up yourself, and run it yourself",
         "description": "AI がコードを書く能力で人間の最上層に並んだ。コーダーの仕事は AI に移り、決める側のビルダーが残る。導入編で何が変わったかを示し、自立編で Microsoft と Google から自立する道具一式を AI に読ませて実行できる仕様書として並べ、転換編で SIer 委託モデルがなぜ構造的に不経済になるのかを問う。AI 革命は上からの決定では始まらない ── 稟議なしでできる所から始まる。",
+        "description_en": "AI has drawn level with the top human tier at writing code. The coder's work moves to AI; the builder, who decides, is what remains. The Introduction part shows what changed, the Independence part lays out the whole toolkit for stepping off Microsoft and Google as a specification the AI can read and execute, and the Shift part asks why the SIer commission model became structurally uneconomic. The AI revolution does not start with a decision from the top — it starts where no approval process is needed.",
         "parts": [
           {
             "key": "1",

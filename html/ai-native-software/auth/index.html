@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-9FLQ963JXM');
+</script>
+
+<title>門番を立てる ── PocketBase で認証を一つに — AI ネイティブなソフトウェア開発 | aiseed.dev</title>
+<meta name="description" content="認証は、各アプリが個別に作るものではない。一度立てて皆で共有する門番だ。だが門番が持つのは最小限の共通＝身元だけ。「何ができるか」=アクセス制御は、各アプリ・各サーバーが自分で持つ(多層防御)。「通った者は中ではどこでも通す」境界防御には頼らない。PocketBase は単一バイナリに、メール認証・OAuth2・ワンタイム・MFA・管理画面・REST API を備える。身元は門番が持ち、業務データは PostgreSQL に置く。Microsoft Entra ID への月額・人数課金から降りる。">
+<link rel="canonical" href="https://aiseed.dev/ai-native-software/auth/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/ai-native-software/auth/">
+<link rel="alternate" hreflang="en" href="https://aiseed.dev/en/ai-native-software/auth/">
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/ai-native-software/auth/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI時代の暮らし">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="門番を立てる ── PocketBase で認証を一つに">
+<meta property="og:description" content="認証は、各アプリが個別に作るものではない。一度立てて皆で共有する門番だ。だが門番が持つのは最小限の共通＝身元だけ。「何ができるか」=アクセス制御は、各アプリ・各サーバーが自分で持つ(多層防御)。「通った者は中ではどこでも通す」境界防御には頼らない。PocketBase は単一バイナリに、メール認証・OAuth2・ワンタイム・MFA・管理画面・REST API を備える。身元は門番が持ち、業務データは PostgreSQL に置く。Microsoft Entra ID への月額・人数課金から降りる。">
+<meta property="og:url" content="https://aiseed.dev/ai-native-software/auth/">
+<meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<meta property="article:section" content="AI ネイティブなソフトウェア開発">
+<meta property="article:published_time" content="2026.07.02">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="門番を立てる ── PocketBase で認証を一つに">
+<meta name="twitter:description" content="認証は、各アプリが個別に作るものではない。一度立てて皆で共有する門番だ。だが門番が持つのは最小限の共通＝身元だけ。「何ができるか」=アクセス制御は、各アプリ・各サーバーが自分で持つ(多層防御)。「通った者は中ではどこでも通す」境界防御には頼らない。PocketBase は単一バイナリに、メール認証・OAuth2・ワンタイム・MFA・管理画面・REST API を備える。身元は門番が持ち、業務データは PostgreSQL に置く。Microsoft Entra ID への月額・人数課金から降りる。">
+<meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
+<!-- フォントは Web 配信せず、すべて端末のローカルフォントで賄う。
+     和文: UDデジタル教科書体 → BIZ UDP明朝(いずれも Windows 標準搭載の
+     モリサワ UD 書体) → ヒラギノ明朝・游明朝などのシステム明朝。
+     等幅: 端末のシステム等幅フォント。 -->
+
+<style>
+/* ============================================================
+   LOCAL FONT: UDデジタル教科書体(モリサワ)
+   Windows・教育向け端末に無償搭載。端末にあれば local() で拾い、
+   なければ BIZ UDP明朝(同じく Windows 標準搭載)→ システム明朝へ
+   フォールバックする。R と B は別ファミリー名なので、太字(700)を
+   B 書体に明示的にマッピングして疑似ボールドを避ける。
+   ============================================================ */
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 400;
+  src: local("UD デジタル 教科書体 NK-R"), local("UD Digital Kyokasho NK-R"),
+       local("UD デジタル 教科書体 NP-R"), local("UD Digital Kyokasho NP-R"),
+       local("UD デジタル 教科書体 N-R"), local("UD Digital Kyokasho N-R");
+}
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 700;
+  src: local("UD デジタル 教科書体 NK-B"), local("UD Digital Kyokasho NK-B"),
+       local("UD デジタル 教科書体 NP-B"), local("UD Digital Kyokasho NP-B"),
+       local("UD デジタル 教科書体 N-B"), local("UD Digital Kyokasho N-B");
+}
+
+/* ============================================================
+   COLOR & DESIGN TOKENS
+   aiseed.dev 全体のスタイルに合わせる場合は、ここの変数を
+   既存サイトのCSS変数に差し替える。
+   ============================================================ */
+:root {
+  --ink: #1a1a1a;
+  --paper: #f4f1ea;
+  --paper-deep: #ebe6d8;
+  --accent: #c8442a;
+  --rule: #d4cdb8;
+  --whisper: #6b665a;
+  --highlight: #f7e9c8;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* 本文: 端末にあれば UDデジタル教科書体を最優先、次に BIZ UDP明朝
+   (Windows 標準搭載)、どちらもなければヒラギノ明朝等のシステム明朝 */
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "UD Digital Kyokasho",
+               "BIZ UDPMincho", "BIZ UDP明朝",
+               "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
+               "Yu Mincho", "游明朝", "YuMincho",
+               "Noto Serif CJK JP", "Noto Serif JP", serif;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  font-feature-settings: "palt";
+  overflow-x: hidden;
+}
+
+/* グレインテクスチャ(紙の質感) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   MASTHEAD(シリーズ名・章番号)
+   ============================================================ */
+.masthead {
+  border-bottom: 3px double var(--ink);
+  padding: 24px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+}
+.masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-left a { color: inherit; text-decoration: none; }
+.masthead-left a:hover { color: var(--accent); }
+.masthead-home { color: var(--whisper); }
+.masthead-sep { margin: 0 10px; color: var(--whisper); font-weight: 400; }
+.masthead-right { font-style: italic; }
+
+/* ============================================================
+   HERO(タイトル領域)
+   ============================================================ */
+.hero {
+  padding: 80px 0 60px;
+}
+.hero-meta {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-meta::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 56px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.hero-title .accent {
+  color: var(--accent);
+}
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--whisper);
+  max-width: 580px;
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+  margin-top: 32px;
+}
+.hero-byline {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ============================================================
+   ARTICLE BODY
+   ============================================================ */
+article p {
+  margin-bottom: 24px;
+}
+
+article h2 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.4;
+  margin: 72px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+article h2::before {
+  content: "§";
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  color: var(--accent);
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+article h3 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 600;
+  font-size: 19px;
+  margin: 40px 0 16px;
+  color: var(--ink);
+}
+article h3::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+article strong {
+  font-weight: 700;
+  background: linear-gradient(to top, var(--highlight) 35%, transparent 35%);
+  padding: 0 2px;
+}
+
+article em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+article a:hover {
+  color: var(--accent);
+}
+
+/* ============================================================
+   BLOCKQUOTE
+   ============================================================ */
+blockquote {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  position: relative;
+  font-size: 18px;
+  line-height: 1.85;
+  font-style: normal;
+  color: var(--ink);
+}
+blockquote::before {
+  content: "「";
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-size: 48px;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: "Hiragino Mincho ProN", serif;
+}
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+article thead th {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+}
+article tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+article tbody tr:last-child td {
+  border-bottom: none;
+}
+@media (max-width: 720px) {
+  article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ============================================================
+   ORDERED LIST(番号付きリスト)
+   ============================================================ */
+article ol {
+  margin: 32px 0;
+  counter-reset: item;
+  padding: 0;
+}
+article ol li {
+  list-style: none;
+  position: relative;
+  padding: 16px 0 16px 56px;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: item;
+}
+article ol li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* 通常のul(章末の関連リンクなど) */
+article ul {
+  margin: 24px 0;
+  padding-left: 1.5em;
+}
+article ul li {
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   CODE BLOCK(疑似ターミナル風)
+   ============================================================ */
+article pre {
+  margin: 40px 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 24px 28px;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+  overflow-x: auto;
+}
+article pre::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 8px;
+  color: var(--whisper);
+  letter-spacing: 4px;
+}
+article pre code {
+  display: block;
+  padding-top: 16px;
+  white-space: pre;
+}
+
+/* インラインコード */
+article code {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 0.9em;
+  background: var(--paper-deep);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+article pre code {
+  background: transparent;
+  padding: 16px 0 0 0;
+  color: var(--paper);
+}
+
+/* ============================================================
+   HORIZONTAL RULE(本文中の区切り)
+   ============================================================ */
+article hr {
+  border: none;
+  text-align: center;
+  margin: 64px 0;
+  height: 1em;
+}
+article hr::before {
+  content: "◆ ◆ ◆";
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+}
+
+/* ============================================================
+   RELATED LINKS(章末の関連記事)
+   ============================================================ */
+.related-links {
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.related-links h3 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+.related-links h3::before {
+  content: none;
+}
+.related-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.related-links li {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 0;
+}
+.related-links li:last-child {
+  border-bottom: none;
+}
+.related-links a {
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.related-links .related-tag {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.related-links a:hover .related-title {
+  color: var(--accent);
+}
+
+/* ============================================================
+   FOOTER(サイト内メニュー+奥付)
+   ============================================================ */
+.site-footer {
+  margin-top: 96px;
+  border-top: 3px double var(--ink);
+  padding-top: 48px;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 48px;
+}
+.footer-col h4 {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-col li {
+  padding: 6px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.footer-col a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.footer-col a:hover { color: var(--accent); }
+
+.colophon {
+  margin-top: 48px;
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--whisper);
+  text-align: center;
+  line-height: 2;
+}
+.colophon-mark {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "Hiragino Mincho ProN", serif;
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+/* ============================================================
+   SERIES TOC(全章一覧・折りたたみ式)
+   ============================================================ */
+.series-toc {
+  margin: 24px 0 40px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 0;
+}
+.series-toc details {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+}
+.series-toc summary {
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  padding: 8px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.series-toc summary::-webkit-details-marker { display: none; }
+.series-toc summary::before {
+  content: "▸";
+  color: var(--accent);
+  font-size: 10px;
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.series-toc details[open] summary::before { transform: rotate(90deg); }
+.series-toc ol {
+  list-style: none;
+  margin: 12px 0 8px;
+  padding: 0;
+  counter-reset: none;
+}
+.series-toc li {
+  list-style: none;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--rule);
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  line-height: 1.55;
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.series-toc li::before { content: none; }
+.series-toc li:last-child { border-bottom: none; }
+.series-toc li a {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--ink);
+  flex: 1;
+}
+.series-toc li a:hover .toc-title { color: var(--accent); }
+.series-toc .toc-num {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 5em;
+}
+.series-toc li.current {
+  background: var(--paper-deep);
+  margin: 0 -12px;
+  padding: 9px 12px;
+}
+.series-toc li.current .toc-title {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ============================================================
+   IMAGES
+   ============================================================ */
+article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 32px auto;
+}
+
+/* ============================================================
+   CUSTOM BLOCKS(:::chain / :::highlight / :::quote / :::compare)
+   ============================================================ */
+.chain-diagram {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+.chain-diagram .arrow {
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0.3em;
+}
+.highlight-box {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.highlight-box p { margin-bottom: 12px; }
+.highlight-box p:last-child { margin-bottom: 0; }
+.quote-block {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+}
+.quote-block .quote-text {
+  font-size: 18px;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* ============================================================
+   ASCIIDOC BLOCKS(pyasciidoc が出力するクラス。.adoc 記事用)
+   admonition / 帰属つき引用 / 画像ブロック / 脚注 / ロール
+   ============================================================ */
+.admonition {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.admonition-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.admonition p { margin-bottom: 12px; }
+.admonition p:last-child { margin-bottom: 0; }
+.quoteblock { margin: 40px 0; }
+.quoteblock blockquote { margin: 0; }
+.quoteblock .attribution {
+  margin-top: 12px;
+  text-align: right;
+  font-size: 14px;
+  color: var(--whisper);
+}
+.quoteblock .attribution cite { font-style: normal; }
+.imageblock { margin: 32px 0; text-align: center; }
+.imageblock .content img { max-width: 100%; height: auto; }
+sup.footnote { font-size: 12px; }
+sup.footnote a { text-decoration: none; }
+.footnotes {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px;
+  color: var(--whisper);
+}
+.footnotes ol { padding-left: 1.5em; }
+.footnotes li { margin-bottom: 8px; }
+.footnotes .footnote-backref { text-decoration: none; margin-left: 0.3em; }
+/* ロール: [.chain](:::chain と同じ見た目)/ [.accent]#…# */
+article .chain {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+article .accent { color: var(--accent); }
+
+/* ============================================================
+   CHAPTER NAV(前後の記事へのリンク)
+   ============================================================ */
+.chapter-nav {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 14px;
+}
+.chapter-nav a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+}
+.chapter-nav a:hover { color: var(--accent); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 40px; }
+  blockquote { padding: 24px 20px 24px 28px; }
+  article pre { padding: 20px 16px; font-size: 12px; }
+  article ol li { padding-left: 48px; }
+  .series-toc .toc-num { min-width: 4em; font-size: 10px; }
+  .series-toc li { font-size: 13px; gap: 12px; }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta, .hero-title, .hero-subtitle, .hero-byline {
+  animation: rise 0.8s ease-out backwards;
+}
+.hero-meta     { animation-delay: 0.1s; }
+.hero-title    { animation-delay: 0.25s; }
+.hero-subtitle { animation-delay: 0.45s; }
+.hero-byline   { animation-delay: 0.65s; }
+.mermaid {
+  text-align: center;
+  margin: 2.5rem 0;
+  background: var(--paper-warm, #f5f1ea);
+  padding: 1.5rem 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.mermaid svg { max-width: 100%; height: auto; }
+
+/* ============================================================
+   WIDE LAYOUT(広い画面では目次を左サイドバーに常時展開)
+   ============================================================ */
+@media (min-width: 1200px) {
+  body.has-toc .container {
+    max-width: 1320px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 880px);
+    column-gap: 64px;
+    justify-content: center;
+  }
+  body.has-toc .masthead,
+  body.has-toc .hero {
+    grid-column: 1 / -1;
+  }
+  /* グリッドアイテム自体は行いっぱいに伸ばし、内側の details を sticky に
+     する(sticky なグリッドアイテムはグリッドエリアではなくコンテナ全体で
+     制約されるブラウザ挙動があり、フッターに重なってしまうため)。 */
+  body.has-toc .series-toc {
+    grid-column: 1;
+    grid-row: 3 / span 2;
+    margin: 0;
+    padding: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+  body.has-toc .series-toc details {
+    position: sticky;
+    top: 32px;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 0 12px 12px 0;
+  }
+  /* サイドバーでは折りたたみを無効化し、見出しとして表示 */
+  body.has-toc .series-toc summary {
+    pointer-events: none;
+    cursor: default;
+  }
+  body.has-toc .series-toc summary::before { content: none; }
+  body.has-toc .series-toc li { font-size: 13.5px; }
+  body.has-toc article    { grid-column: 2; grid-row: 3; }
+  body.has-toc .chapter-nav { grid-column: 2; grid-row: 4; }
+  body.has-toc .site-footer { grid-column: 1 / -1; grid-row: 5; }
+}
+
+/* ============================================================
+   DARK MODE(OS の配色設定に追従して自動で暗色に切り替え)
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ink: #e8e3d6;
+    --paper: #16140f;
+    --paper-deep: #211d16;
+    --accent: #e8765a;
+    --rule: #393428;
+    --whisper: #a39b88;
+    --highlight: rgba(220, 168, 78, 0.30);
+  }
+  /* 紙の質感(グレイン)を暗色背景向けに反転 */
+  body::before {
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    mix-blend-mode: screen;
+    opacity: 0.4;
+  }
+  /* コードブロックは両モードとも暗いターミナル調を維持 */
+  article pre {
+    background: #0d0c0a;
+    color: #e8e3d6;
+  }
+  article pre code {
+    color: #e8e3d6;
+  }
+  /* Mermaid 図の枠を暗色に */
+  .mermaid {
+    background: #211d16;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- MASTHEAD(ホーム › シリーズ目次) -->
+  <header class="masthead">
+    <div class="masthead-left"><a href="/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="/ai-native-software/">AI ネイティブなソフトウェア開発</a></div>
+    <div class="masthead-right">2-04 / Series</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-meta">2-04 № 04 · 2026</div>
+
+    <h1 class="hero-title">身元は<span class="accent">一つ</span>、<br>守りは<span class="accent">各サーバー</span>で。</h1>
+
+    <p class="hero-subtitle">共有するのは身元(認証)だけ ── アクセス制御は各サーバーが持つ。中央は最小限、守りは多層で</p>
+
+    <div class="hero-byline">
+      <span>2026.07.02</span>
+      <span><a href="https://aiseed.dev/en/ai-native-software/auth/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">🌐 EN</a></span>
+    </div>
+  </section>
+
+  <!-- SERIES TOC(全章一覧・現在の章をハイライト) -->
+  
+
+  <!-- ARTICLE BODY -->
+  <article>
+    <p><strong>認証は、各アプリが個別に作るものではない。一度立てて皆で共有する門番である</strong>。</p>
+<p>2-03 で土台(SQLite・PostgreSQL)を据えた。その上に最初に立てるのが、この門番だ。門番も、2-02 で AI に渡した一台の上で動く。</p>
+<p>どのアプリも、入口で「誰か」を確かめる。その確認をアプリごとに作るのは、車輪の再発明の筆頭であり、しかも一番間違えやすい。セキュリティの中心だからだ。だから認証も、書かない。立てる。</p>
+<h2>土台の次に門番を立てる</h2>
+<p>理由は単純だ。この後に立てる全アプリが、同じ身元(誰か)を共有する。文書も、講座の予約も、基幹システムも、利用者は一度ログインすればいい。</p>
+<p>ただし、ここで思想を一つ決めておく。*門番が持つのは、最小限の共通＝身元(認証)だけである*。「何ができるか」、つまりアクセス制御は、各アプリ・各サーバーが自分で持つ。「門番を通った者は、中ではどこでも通す」という一枚の壁(境界防御)には頼らない。一箇所破られれば全部が抜けるからだ。中央は最小限、守りは各サーバーで多層に。これが、分散して強い形だ。</p>
+<p>自前のログイン実装は、ハッシュ化・セッション・トークン失効・二要素・パスワード再設定・ソーシャルログインのどれ一つ手を抜けない。身元の確認だけを一度立てて共有し、権限の判断は各アプリに残すほうが、速く、安全で、強い。</p>
+<h2>PocketBase を立てる</h2>
+<p>門番は PocketBase だ。Go 製の単一バイナリに、認証・管理画面・REST / リアルタイム
+API・ファイル保管まで入っている。2-03 で触れた SQLite の上で動くので、別のサーバも要らない。<code>compose.yaml</code> 一枚で立つ。</p>
+<pre><code class="language-yaml"># compose.yaml ── 単一バイナリの門番を置くだけ
+services:
+  auth:
+    image: ghcr.io/muchobien/pocketbase:latest
+    ports: [&quot;8090:8090&quot;]
+    volumes: [&quot;./pb_data:/pb_data&quot;]
+    restart: always
+</code></pre>
+<pre><code class="language-bash">docker compose up -d
+# 管理者を一人作る
+docker compose exec auth pocketbase superuser create admin@example.com 'change-me'
+</code></pre>
+<p><code>http://localhost:8090/_/</code> が管理画面だ。ユーザー、ログイン方法、発行するトークンの寿命は、すべてここから設定する。コードは、まだ一行も書いていない。管理者のメールアドレスとパスワードは、人が決めて渡す値だ。</p>
+<h2>メール・OAuth・ワンタイムを開く</h2>
+<p>PocketBase の <code>users</code> コレクションに、要る入口を有効にするだけでよい。</p>
+<ul>
+<li>メール + パスワード ── 既定。確認メールとパスワード再設定も内蔵</li>
+<li>OAuth2 ── Google・Microsoft・GitHub を「ログイン」ボタンに足す</li>
+<li>ワンタイム(OTP)── メールに届く番号だけで入る、パスワードレス</li>
+<li>MFA ── 二要素を全体、または管理者だけに強制</li>
+</ul>
+<p>Entra ID(旧 Azure AD)からの移行中も、OAuth2 に Microsoft を残せば、利用者は今までの
+Microsoft アカウントのまま入れる。門番だけ自分の側へ移し、利用者の体験は変えない。</p>
+<h2>身元は門番、業務データは倉庫</h2>
+<p>ここが設計の要だ。身元(誰か)は門番が持ち、業務データ(何をしたか)は PostgreSQL に置く(2-03)。門番と倉庫を分ける。</p>
+<p>アプリは、門番が発行したトークンの署名を手元で確かめて <code>user.id</code> を取り出す。門番に毎回問い合わせない。だから門番が一瞬落ちても動く。そのうえで、この利用者がこの操作をしてよいかは、アプリ自身が判断する。</p>
+<pre><code class="language-python"># 業務アプリ側 ── 署名を手元で確かめ、権限も自分で判断する
+user_id = verify_token(request.headers[&quot;Authorization&quot;])   # 門番の公開鍵で署名検証(毎回問い合わせない)
+require(can_read_orders(user_id))                           # 「何ができるか」は、このアプリが決める
+orders  = pg.execute(&quot;SELECT * FROM orders WHERE user_id = %s&quot;, [user_id])
+</code></pre>
+<p>身元の確認は門番に集約し、<strong>権限の判断は各アプリに残す</strong>。身元を共有しつつ、守りは各サーバーに分散する。これが多層防御だ。</p>
+<div class="quoteblock">
+<blockquote>
+<p>身元は、各アプリが各々作るものではない ── 一度立てて皆で共有する。
+<strong>だが「何ができるか」は、各サーバーが自分で守る</strong>。</p>
+</blockquote>
+</div>
+<h2>入口の前にリバースプロキシを置く</h2>
+<p>自作アプリは PocketBase の SDK でそのまま守れる。一方、文書(OnlyOffice)やコード
+(Forgejo)のような既製の OSS は、各々が自前のログインを持つ。これらは入口の前にリバースプロキシ(Caddy)を一枚置き、社外には門番を通った者だけを通す。ただしこれは最初の一枚であって、各アプリも自分で身元と権限を確かめる。境界の中も信用しない、つまり多層防御だ。</p>
+<pre><code class="language-caddy"># Caddyfile ── 門番を通した先に各アプリを並べる
+auth.example.com   { reverse_proxy auth:8090 }
+docs.example.com   { reverse_proxy onlyoffice:80 }
+git.example.com    { reverse_proxy forgejo:3000 }
+</code></pre>
+<p><code>example.com</code> の部分は、人が決めたドメイン名に置き換える。将来、これらを一度のログインで束ねる(SSO)なら、OIDC を話す層を前に足す。だが多くの社内利用は、門番と各アプリのログインで足りる。まず身元を一つに共有することが先で、完全な統合は後でよい。</p>
+<h2>Entra ID から降りる</h2>
+<p>Microsoft Entra ID は、利用者数で月額が積み上がる。門番を自分の側に立てれば、その課金から降りる。手順は段階的でよい。</p>
+<ol>
+<li>PocketBase を立て、OAuth2 に Microsoft を残す(既存アカウントで入れる)</li>
+<li>新しいアプリは PocketBase のトークンで作る</li>
+<li>利用者を順に PocketBase の <code>users</code> へ移す(CSV で一括登録できる)</li>
+<li>全員が移ったら、OAuth2 の Microsoft を外す ── Entra への依存が切れる</li>
+</ol>
+<p>止めるのは一度ではない。並行で動かし、移り終えてから古い門を閉じる(2-10)。</p>
+<h2>出るのも、一点だ</h2>
+<p>入る手続きは述べた。退職は、もっと簡単だ。門番でアカウントを止める。それだけで、全部から出る。文書も、メールも、会議も、基幹も、すべてが同じ門番のトークンで開くから、一点を閉じれば同時に閉じる。</p>
+<p>旧世界で退職処理が大仕事だったのは、鍵が SaaS ごとに散らばっていたからだ。棚卸しをして、一つずつ止めて回る。2-01 で見た「閉じた束は全層から同時に締め出される」という怖さは、鍵が自分の手元にある世界では、そのまま退職処理の確実さに裏返る。</p>
+<h2>確かめ方</h2>
+<p>この章は、次の六つができていれば済みだ。</p>
+<ol>
+<li>ブラウザで <code>http://localhost:8090/_/</code> を開き、作った管理者でログインできる</li>
+<li>管理画面で利用者を一人作り、その利用者でログインできる</li>
+<li>管理画面の <code>users</code> で、メール + パスワード・OAuth2・OTP・MFA の入口を切り替えられる</li>
+<li>アプリが、門番に問い合わせずにトークンの署名を確かめ、<code>user.id</code> を取り出せる。門番を止めても、そのアプリは動き続ける</li>
+<li><code>auth.example.com</code>・<code>docs.example.com</code>・<code>git.example.com</code> をブラウザで開くと、Caddy 越しに各アプリが出る</li>
+<li>管理画面でその利用者のアカウントを止めると、その人はどのアプリにも入れなくなる</li>
+</ol>
+<pre><code class="language-bash">docker compose exec auth pocketbase superuser create admin@example.com 'change-me'
+curl -s http://localhost:8090/api/health       # 門番が動いているか
+docker compose stop auth                       # 止めても業務アプリが動くか見る
+</code></pre>
+<h2>人が持つ物</h2>
+<p><strong>人が渡す値</strong></p>
+<ul>
+<li>門番と各アプリのドメイン名(<code>auth.example.com</code>・<code>docs.example.com</code>・<code>git.example.com</code>)</li>
+<li>最初の管理者のメールアドレスとパスワード</li>
+<li>OAuth2 で使う Microsoft・Google・GitHub のクライアント ID と秘密</li>
+<li>発行するトークンの寿命と、MFA を全体に強制するか管理者だけにするか</li>
+<li>Entra ID から移す利用者の一覧(CSV)</li>
+</ul>
+<p><strong>AI が「やる前に言う」操作</strong></p>
+<ul>
+<li>OAuth2 から Microsoft を外す(Entra への橋を落とす)</li>
+<li>利用者のアカウントを止める、または消す</li>
+<li>DNS のレコードを、これらのドメイン名に向ける</li>
+<li><code>./pb_data</code> を消す、または作り直す</li>
+</ul>
+<h2>確かめた版と日付</h2>
+<ul>
+<li><code>ghcr.io/muchobien/pocketbase:latest</code> ── PocketBase の Docker イメージ</li>
+<li>Caddy、SQLite(門番のデータはこの上)、PostgreSQL(業務データ側)── 版は指定していない</li>
+<li>手順を書いたのは 2026-07-02</li>
+<li>版が上がっていたら、AI に公式の手順を確かめさせてから進める</li>
+</ul>
+<h2>まとめ</h2>
+<p>土台の上に、最初の門番を。</p>
+<ul>
+<li><strong>PocketBase</strong> ── 単一バイナリに認証・管理画面・API・ファイル保管(SQLite の上)</li>
+<li><strong>メール / OAuth2 / OTP / MFA</strong> ── 要る入口だけ管理画面から開く</li>
+<li><strong>門番と倉庫を分ける</strong> ── 身元は PocketBase、業務データは PostgreSQL</li>
+<li><strong>中央は最小限、守りは各サーバーで</strong> ── 門番は身元だけ、アクセス制御は各アプリ(多層防御)</li>
+<li><strong>リバースプロキシ</strong> ── 既製 OSS は門を通した先に並べる(最初の一枚であって、唯一の壁ではない)</li>
+<li><strong>Entra ID から降りる</strong> ── OAuth2 で橋を架け、移り終えてから断つ</li>
+</ul>
+<p>書いたコードは、署名を確かめ、権限を判断する数行だけだ。身元は共有し、守りは各サーバーで。次章では、その門の内側にコードの置き場(Forgejo)を据え、リポジトリと CI を自分の側に置く。</p>
+<hr />
+<h2>関連記事</h2>
+<ul>
+<li><a href="/ai-native-software/foundation/">2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars</a></li>
+<li><a href="/ai-native-software/code/">2-05: コードを手元に ── Forgejo と Zed</a></li>
+<li><a href="https://github.com/aiseed-dev/workspace">参考実装 kura ── PocketBase を門番に使う自前ワークスペース</a></li>
+<li><a href="/ai-native-software/independence/">2-01: Microsoft と Google から自立する ── 全体像と対応表</a></li>
+<li><a href="/ai-native-software/fastapi/">2-10: API を作る ── FastAPI で基幹のロジックを出す</a></li>
+</ul>
+
+  </article>
+
+  <!-- CHAPTER NAV(前後の記事) -->
+  <nav class="chapter-nav">
+  <a href="/ai-native-software/foundation/" rel="prev">&larr; 前: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars</a>
+  <a href="/ai-native-software/code/" rel="next">次: コードを手元に ── Forgejo と Zed &rarr;</a>
+</nav>
+
+  <!-- FOOTER(サイト内メニュー+奥付) -->
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="サイト内リンク">
+      <div class="footer-col">
+        <h4>記事シリーズ</h4>
+        <ul>
+          <li><a href="/insights/">構造分析</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/ai-native-ways/">AIネイティブな仕事の作法</a></li>
+          <li><a href="/claude-debian/">Claudeと一緒に学ぶDebian</a></li>
+          <li><a href="/phosphorus-and-farming/">リン資源枯渇と自然農法</a></li>
+          <li><a href="/fable/">Fable 5 が帰ってきた</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>サイト</h4>
+        <ul>
+          <li><a href="/">ホーム</a></li>
+          <li><a href="/natural-farming/">自然農法とは</a></li>
+          <li><a href="/light-farming/">Light Farming</a></li>
+          <li><a href="/gallery/">畑の記録</a></li>
+          <li><a href="/about/">私たちのアプローチ</a></li>
+          <li><a href="/privacy/">プライバシー</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="colophon">
+      <div class="colophon-mark">§</div>
+      AI ネイティブなソフトウェア開発 · 2-04<br>
+      Tokushima · 2026.07.02<br>
+      <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">CC BY 4.0</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // 広い画面ではサイドバー目次を常時展開する(狭い画面では折りたたみに戻す)
+  (function () {
+    var toc = document.querySelector(".series-toc details");
+    if (!toc) return;
+    var mq = window.matchMedia("(min-width: 1200px)");
+    function sync() { toc.open = mq.matches; }
+    sync();
+    if (mq.addEventListener) mq.addEventListener("change", sync);
+    else mq.addListener(sync);
+  })();
+
+  // Mermaid loads only on pages that contain a .mermaid block.
+  // Self-hosted (no third-party CDN dependency); SRI verified.
+  if (document.querySelector(".mermaid")) {
+    const s = document.createElement("script");
+    s.src = "/js/vendor/mermaid-11.14.0.min.js";
+    s.integrity = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk";
+    s.crossOrigin = "anonymous";
+    s.onload = () => {
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      mermaid.initialize({ startOnLoad: false, theme: prefersDark ? "dark" : "default" });
+      mermaid.run();
+    };
+    document.head.appendChild(s);
+  }
+</script>
+
+
+</body>
+</html>

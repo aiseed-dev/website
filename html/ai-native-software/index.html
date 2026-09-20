@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- Apply saved theme immediately to avoid FOUC -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('aiseed-theme');
+          if (t === 'light' || t === 'dark') {
+            document.documentElement.setAttribute('data-theme', t);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9FLQ963JXM');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI がコードを書く能力で人間の最上層に並んだ。コーダーの仕事は AI に移り、決める側のビルダーが残る。導入編で何が変わったかを示し、自立編で Microsoft と Google から自立する道具一式を AI に読ませて実行できる仕様書として並べ、転換編で SIer 委託モデルがなぜ構造的に不経済になるのかを問う。AI 革命は上からの決定では始まらない ── 稟議なしでできる所から始まる。">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+    <title>AI ネイティブなソフトウェア開発 | AI時代の暮らし</title>
+    <link rel="canonical" href="https://aiseed.dev/fable/">
+    <link rel="alternate" hreflang="ja" href="https://aiseed.dev/fable/">
+    <link rel="alternate" hreflang="en" href="https://aiseed.dev/en/fable/">
+    <!-- OGP -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AI ネイティブなソフトウェア開発">
+    <meta property="og:description" content="AI がコードを書く能力で人間の最上層に並んだ。コーダーの仕事は AI に移り、決める側のビルダーが残る。導入編で何が変わったかを示し、自立編で Microsoft と Google から自立する道具一式を AI に読ませて実行できる仕様書として並べ、転換編で SIer 委託モデルがなぜ構造的に不経済になるのかを問う。AI 革命は上からの決定では始まらない ── 稟議なしでできる所から始まる。">
+    <meta property="og:url" content="https://aiseed.dev/fable/">
+    <meta property="og:site_name" content="aiseed.dev">
+    <meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+    <meta property="og:locale" content="ja_JP">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="AI ネイティブなソフトウェア開発">
+    <meta name="twitter:description" content="AI がコードを書く能力で人間の最上層に並んだ。コーダーの仕事は AI に移り、決める側のビルダーが残る。導入編で何が変わったかを示し、自立編で Microsoft と Google から自立する道具一式を AI に読ませて実行できる仕様書として並べ、転換編で SIer 委託モデルがなぜ構造的に不経済になるのかを問う。AI 革命は上からの決定では始まらない ── 稟議なしでできる所から始まる。">
+    <meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="../css/style.css?v=0b5d818e">
+    <style>
+        .highlight-box {
+            background: rgba(122, 154, 109, 0.08);
+            border: 1px solid rgba(122, 154, 109, 0.2);
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+        }
+        .highlight-box p { margin-bottom: 0.5rem; }
+        .highlight-box p:last-child { margin-bottom: 0; }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo">
+                AI時代の暮らし
+                <span>aiseed.dev</span>
+            </a>
+            <nav class="nav">
+                <a href="/">ホーム</a>
+                <div class="nav-group">
+                    <button type="button" class="nav-parent" aria-haspopup="true" aria-expanded="false">記事<span class="nav-caret" aria-hidden="true">▾</span></button>
+                    <div class="nav-submenu" role="menu">
+                        <a href="/insights/" role="menuitem">構造分析</a>
+                        <a href="/ai-native-ways/" role="menuitem">AIネイティブな仕事の作法</a>
+                        <a href="/claude-debian/" role="menuitem">Claudeと一緒に学ぶDebian</a>
+                        <a href="/phosphorus-and-farming/" role="menuitem">リン資源枯渇と自然農法</a>
+                        <a href="/fable/" role="menuitem">Fable 5 が帰ってきた</a>
+                    </div>
+                </div>
+                <a href="/blog/">Blog</a>
+                <a href="/natural-farming/">自然農法とは</a>
+                <a href="/light-farming/">Light Farming</a>
+                <a href="/gallery/">畑の記録</a>
+                <a href="/en/ai-native-software/" class="lang-switch" hreflang="en" aria-label="View in English">🌐 EN</a>
+                <button type="button" class="theme-toggle" aria-label="テーマを切り替え" title="テーマ切り替え (Light / Dark)">
+                    <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+                    <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+                </button>
+            </nav>
+            <button class="nav-toggle" aria-label="メニュー">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-image" style="background-image: url('../images/IMG_3285.jpg');"></div>
+        <div class="page-hero-content">
+            <p class="hero-label">連載</p>
+            <h1 class="hero-title">AI ネイティブなソフトウェア開発</h1>
+            <p class="hero-subtitle">SIer に頼まない ── 自分で立てて、自分で動かす</p>
+        </div>
+    </section>
+
+    <!-- Article List -->
+    <section class="section section-alt" id="series">
+        <div class="container">
+            <div class="activity-list">
+
+                <h2 style="font-family: 'Zen Old Mincho', serif; font-size: 1.25rem;
+                           color: var(--earth-dark); margin: 2.5rem 0 1rem;
+                           border-bottom: 1px solid var(--soil-light, #d8d2c4);
+                           padding-bottom: 0.5rem;">導入編 ── なぜ変わるのか</h2>
+
+                <a href="/ai-native-software/coder-top/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">1-01</div>
+                        <div class="activity-content">
+                            <h3>AI は、世界で最も難しいコーディング問題を解く — Codeforces 2700 帯から設計まで ── Mythos/Fable 時代、AI は月 3 万円で呼べる「最強の SIer」になった</h3>
+                            <p>AI のコード作成能力は、競技プログラミングの公開レーティング(Codeforces 2700 帯)で人間の最上層に並んだ。さらに、標的への攻撃工程の大半を自律的に遂行した事例が公表されている ── これは設計能力の証拠である。攻撃・設計・検証は、一つの力の三つの顔だ。Mythos/Fable 時代になって、AI は要件を読み、構造を決め、実装し、動かす「最強の SIer」になった。しかも月 3 万円で誰でも呼べる。この一点から、ソフトウェア開発編の議論がすべて導かれる。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/maintenance-shift/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">1-02</div>
+                        <div class="activity-content">
+                            <h3>保守フェーズの構造変化こそ本質 — コーディングコスト低下は氷山の一角 ── AI が文脈を理解するから、コードでの保守そのものが要らなくなる</h3>
+                            <p>AI がコードを書くようになったことの最も見落とされやすい帰結は、コーディングの高速化ではない。保守フェーズそのものの構造変化だ。エンタープライズシステムでは TCO の 6〜8 割が保守に落ちる。AI が文脈を理解するから、コードでの保守そのものが要らなくなり、保守の単位はコードから設計・仕様・文脈に移る。最大の単一コストだったレガシーコードの読解は消える。マニュアルを読んで自分の現実に合わせられる人なら、開発も保守もできる。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/coder-end/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">1-03</div>
+                        <div class="activity-content">
+                            <h3>ソフトウェアエンジニアの仕事を AI がするようになる — コーダーは当然消える ── 設計までするソフトウェアエンジニアも、自分で設計しコードを書く役割ではなく、AI と対話する役割(ビルダー)に変わる</h3>
+                            <p>コードを書く役割であるコーダーは、当然消える。だがこの章の主題はその先だ。設計までするソフトウェアエンジニアの仕事も、AI がするようになる。Opus はコーダー、Fable/Mythos はソフトウェアエンジニアで、設計もコードも AI が担う。人間に残るのは、自分で設計しコードを書く仕事ではない。AI と対話してシステムを作り動かす仕事、つまりビルダーだ。電卓が算盤を押し出したときと同じ分岐が、いま起きている。消えるのは役割定義であって、人ではない。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/builder/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">1-04</div>
+                        <div class="activity-content">
+                            <h3>ビルダーという役割 — 何を作るかを決め、AI と対話して作り、動かし、全体を統合する</h3>
+                            <p>ビルダーは、AI と対話してシステムを作り、動かす役割である。ソフトウェアエンジニアの後継ではない。ソフトウェアエンジニアは狭く閉じた課題を解く仕事で、そこは AI が引き受ける。ビルダーが扱うのは開いた課題、つまり現実から何を作るかを立ち上げる仕事だ。本章では、ビルダーの仕事を「決める・AI と作る・確かめる・統合する」の四つのループとして定義する。そのうえで、狭く閉じた課題と開いた課題という軸から、なぜ判断を AI にまかせられないかを示す。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/customer-codev/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">1-05</div>
+                        <div class="activity-content">
+                            <h3>顧客が AI と協働して開発する時代 — 最初の一手は、コードではなく OSS ── 汎用は使い、個人はカスタマイズ(親シリーズ第2・6・8章)、組織は基盤から(自立編)。足りない固有だけ、AI と作る</h3>
+                            <p>顧客自身がビルダーになる時代である。だが最初の一手は、コードを書くことではない。実績ある OSS を使うことだ。汎用的なものは、まず OSS を使う。これがいちばん経済的で、セキュリティ対策としても有効だ。個人的なものは、OSS の上に AI と対話して自分に合わせる。その実例は親シリーズの個人トラックにある。組織は、Microsoft 365・Copilot・WordPress を代替する OSS で基盤を立てる。これが自立編だ。足りない自社固有のロジックだけを、AI と書く。AI にできないことは、SIer にもできない。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <h2 style="font-family: 'Zen Old Mincho', serif; font-size: 1.25rem;
+                           color: var(--earth-dark); margin: 2.5rem 0 1rem;
+                           border-bottom: 1px solid var(--soil-light, #d8d2c4);
+                           padding-bottom: 0.5rem;">自立編 ── AI に読ませて、そのとおりに立てる</h2>
+
+                <a href="/ai-native-software/independence/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-01</div>
+                        <div class="activity-content">
+                            <h3>Microsoft と Google から自立する ── 全体像と対応表 — ビジネスの土台を、ベンダーの檻から自分の手元へ</h3>
+                            <p>ロックインの正体は、機能の弱さではない。中身が閉じていること、そして鍵(認証)が他人の手元に集中していることだ。Office スイートも業務システム(基幹)も、同じ構造で立っている。閉じたものを開かせること、それが AI の役割だ。独自形式を解き、読めないコードを読み、閉じ込められた業務知識を取り出す。自立編は、AI と一緒にこの閉じた束を一層ずつ開いた OSS に解き、鍵を自分の手元に移す。機械は Debian の PC 一台、認証は PocketBase、文書は aiseed office、コードと共有は Forgejo、メールは Stalwart、会議と予約は Jitsi と Cal.com、Web は Cloudflare Pages、データは PostgreSQL と SQLite と DuckDB、AI はローカル LLM + RAG、基幹は FastAPI。この章はその全体像と対応表であり、続く各章が一本ずつ実際に立てる。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/ai-pc/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-02</div>
+                        <div class="activity-content">
+                            <h3>AI に PC を一台渡す ── 自立編を動かす機械 — 会社の PC を一台 Debian にして、root ごと AI に渡す。初期化で戻らない物だけ、人が持つ</h3>
+                            <p>自立編で立てるものは、全部どこかで動く。その置き場をここで決める。会社の PC を一台 Debian にして、AI に渡す。公開の Web、社内の道具、AI の作業を同じ一台に載せ、画面(GNOME)も入れて動かしたままにする。Windows でしか動かない物は、Debian の中の仮想環境で動かす。WSL の逆で、土台が Debian、Windows が客だ。設定は全部 AI がやるので root を渡す。壊れても初期化で戻るからだ。初期化で戻らない三つ(鍵と認証、外でやる操作、書類の写し)だけを人が持つ。AI は別の会社のものを複数入れ、作った物と確かめる基準だけを渡して相互に見張らせる。費用は運用に入れば月 40 ドル。稟議も、サーバーの契約も、人数分のライセンスも要らない。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/foundation/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-03</div>
+                        <div class="activity-content">
+                            <h3>土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars — すべてが乗るデータ基盤を、最初に自分の側に立てる</h3>
+                            <p>自立編で最初に立てるのは、すべてが乗るデータ基盤。普通は SQLite で十分 ── サーバ不要の単一ファイルだ。共有して複数人で書くときだけ PostgreSQL に上げる。pgvector で意味検索、DuckDB と Polars で列指向分析 ── Excel は人の入出力に残し、その裏のデータは機械が捌く。Power BI を大差で抜く。汎用は OSS で共有されている ── 書くのではなく、立てる。立てる先は、2-02 で AI に渡した一台だ。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/auth/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-04</div>
+                        <div class="activity-content">
+                            <h3>門番を立てる ── PocketBase で認証を一つに — 共有するのは身元(認証)だけ ── アクセス制御は各サーバーが持つ。中央は最小限、守りは多層で</h3>
+                            <p>認証は、各アプリが個別に作るものではない。一度立てて皆で共有する門番だ。だが門番が持つのは最小限の共通＝身元だけ。「何ができるか」=アクセス制御は、各アプリ・各サーバーが自分で持つ(多層防御)。「通った者は中ではどこでも通す」境界防御には頼らない。PocketBase は単一バイナリに、メール認証・OAuth2・ワンタイム・MFA・管理画面・REST API を備える。身元は門番が持ち、業務データは PostgreSQL に置く。Microsoft Entra ID への月額・人数課金から降りる。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/code/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-05</div>
+                        <div class="activity-content">
+                            <h3>コードを手元に ── Forgejo と Zed — ビルダーの仕事場を、自分の側に ── リポジトリも CI も、Microsoft の外へ</h3>
+                            <p>ビルダーの仕事は、AI にコードを書かせ、評価し、統合すること。その置き場 ── リポジトリ ── を自分の側に立てる。Forgejo は GitHub・Azure DevOps を置き換える単一の Git フォージで、Actions で CI/CD まで賄う。2-03の PostgreSQL に乗せ、2-04の門番の内側に。動くのは 2-02 で AI に渡した一台の上だ。手元の道具は Zed と Claude。コードは資産であり、置き場の主導権は自分が持つ。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/documents/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-06</div>
+                        <div class="activity-content">
+                            <h3>文書を取り戻す ── 原稿は adoc、様式は aiseed office — 中身は文字で持って git に入れる。Word も Claude Docs も、入口と出口を通過させる道具にする</h3>
+                            <p>文書の置き場は、もう二つに分かれない。Office と自前のほかに、Claude Docs が来た。三つとも便利で、三つとも鍵は他人の手元にある。答えは置き場の選択ではなく、原稿の持ち方にある。原稿は adoc の文字で持ち、git に入れるのは原稿だけにして、デザインは入れない。そうすれば、Word も Claude Docs も aiseed office も、入口と出口を通過させる道具になる。様式の仕事は aiseed office が受け持つ。ONLYOFFICE が日本語の様式で合わないから作った道具で、エンジンは pip で入る。実体はファイルのまま置き、認証は門番、権限は構造化ストアが持つ。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/mail/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-07</div>
+                        <div class="activity-content">
+                            <h3>メールを自分の側に ── Stalwart と Thunderbird — Exchange と Outlook の外へ ── 受信は自分で、送信は正直に</h3>
+                            <p>メールは事業の記録そのものだ。Stalwart は Rust 製の単一サーバで、SMTP・IMAP・JMAP・スパム対策・DKIM 署名を一つに備え、Exchange を置き換える。2-03 の PostgreSQL に乗せ、2-02 で AI に渡した一台の上に立て、Thunderbird など任意のクライアントで読む。ただし送信の到達性は難しい ── そこは認証付き中継に頼り、メールボックスの主導権だけ自分が持つ、という正直な設計を示す。DNS(MX・SPF・DKIM・DMARC・PTR)と外へのメール送信は、人が通す。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/meetings/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-08</div>
+                        <div class="activity-content">
+                            <h3>会議と予約を自分の側に ── Jitsi と Cal.com — Teams の会議も、Calendly の予約も、講座のウェビナーも ── 自分のドメインで</h3>
+                            <p>ビデオ会議は Jitsi、予約は Cal.com、講座・ウェビナーは BigBlueButton。Teams・Zoom・Calendly・Microsoft Bookings を、自分のドメインと 2-02 で AI に渡した一台に置き換える。予約は 2-03 の PostgreSQL に乗り、2-07 のメールで確認を送る。人数・分課金から降り、会議のリンクも記録も自分の側に持つ。人が持つのは、ドメインと DNS、予約の枠、外へ出る確認メールの三つだ。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/fastapi/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-10</div>
+                        <div class="activity-content">
+                            <h3>API を作る ── FastAPI で基幹のロジックを出す — 基幹システムを並行稼働で書き換え、自社固有のロジックを一箇所の API にまとめる</h3>
+                            <p>「壊すな・触るな」はもう古い。AI で基幹システムの書き換えコストは 10 分の 1 になった。新しいシステムを FastAPI で作り、旧システムと並行で動かし、出力を実測で突き合わせる。差分が消えたら旧を止める。業務知識は一気に Markdown に出し、現場がテストを書き、委託は止める。書き換えた基幹ロジックは、2-03 の PostgreSQL を読み書きし、2-04 の門番のトークンで本人確認する一本の API として着地する。参考実装は kura。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <h2 style="font-family: 'Zen Old Mincho', serif; font-size: 1.25rem;
+                           color: var(--earth-dark); margin: 2.5rem 0 1rem;
+                           border-bottom: 1px solid var(--soil-light, #d8d2c4);
+                           padding-bottom: 0.5rem;">転換編 ── なぜ産業構造が変わるのか</h2>
+
+                <a href="/ai-native-software/two-worlds/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">3-01</div>
+                        <div class="activity-content">
+                            <h3>企業は自分でコードを書かない ── 事務と基幹、二つの世界の並立 — 自前で書くのは非効率だった ── だから事務は買い、基幹は外注し、二つの世界が並立した</h3>
+                            <p>企業は自分でコードを書いてこなかった ── そしてそれは合理的だった。自前開発は非効率で、一社では抱えきれない大人数の専門人員を要したからだ。だから汎用の事務はパッケージで買い(Microsoft)、固有の基幹は外注した(SIer)── 別々にロックインされた、二つの並立する世界だ。両者は薄い継ぎ目(認証と文書共有)だけで繋がっていた。この並立が、長らく効率的な均衡だった。AI はその効率を反転させる。一人+AI が、同じ OSS の土台の上に二つの世界をまとめて立てるからだ。前提が消え、二つのベンダー構造は同時に崩れる。本章は転換編の前提を据える。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/sovereignty/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">3-02</div>
+                        <div class="activity-content">
+                            <h3>デジタル主権 ── Microsoft 問題と Trump 問題 — OSS とソブリン AI のほうが、いまや経済でも安全保障でも有利になった</h3>
+                            <p>つい最近まで、Microsoft 365 は経済的でも安全でもある既定値だった ── だからこそ誰もが買った。その前提が反転した。OSS + ソブリン(自己ホスト・ローカル重み)AI のほうが、いまやコストでも安全保障でも有利だ。Microsoft 問題 ── 上がり続ける人数課金、CLOUD Act の下にある米国企業のクラウド上のデータ、不透明なテレメトリ、Copilot を経由して Microsoft のモデルに流れる内容。便利さこそが依存だ。Trump 問題 ── 米国ビッグテックに依存することは米国政府の善意に依存することであり、トランプ政権はその依存を武器化しないと信頼できない(制裁・遮断)。だから Microsoft から離れることは、もはやイデオロギーではない ── 新しい経済かつ安全保障の合理だ。転換編の事務(Microsoft)側の前提を据える。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/lockin/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">3-04</div>
+                        <div class="activity-content">
+                            <h3>ロックイン問題 — 独自フレーム・独自抽象層・人的依存 ── Palantir FDE を典型例として</h3>
+                            <p>ロックインとは、移行コストが高くて動けない状態だ。SIer 委託モデルは三つの層 ── 独自フレームワーク、独自抽象層と Ontology、人的依存 ── で顧客を固定する。Palantir の FDE モデルはその極致で、三層すべてを最大化することで数十億円規模のプレミアム価格を成立させている。対して AI ネイティブ開発は、AI が標準ライブラリと標準形式を選ぶ性質から、構造的にロックインを生みにくい。別の AI、別のビルダー、顧客自身が引き継げる。さらに、ベンダー AI と Microsoft の後方互換性という、もう一つのロックインも扱う。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/revolution-from-below/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">3-07</div>
+                        <div class="activity-content">
+                            <h3>AI 革命は下から起きる — 上からの導入は必ず失敗する。回線と月 100 ドルで始められる所から始まる</h3>
+                            <p>AI 革命は、経営の決定でも大きな予算でも始まらない。始まるのは、稟議なしでできる所からだ。中小企業、個人事業主、大企業の裁量のある部署、大企業の周辺部。要るのはインターネットの回線と、月 100 ドルの利用料だけ。上から入れると、情シスと SIer を通り、人を減らす話になり、現場は隠れて使い、会社には何も残らない。下から始めれば、六つが残る。コード、業務の知識が言葉になった物、答え合わせの仕組み、詰まった所と直し方の記録、作れる人、データ。経営者には細かな問題を見る時間が無く、AI が解けるのはその細かな問題だ。だから AI は現場が持つ。中心が持てば監視と検閲に使い、下が持てば問題が解ける。始まる場所が無数にあり、止める手が無い。</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="section">
+        <div class="container-narrow">
+            <div class="quote-block fade-in">
+                <p class="quote-text">方向性の決定は人間、実現はAI。<br>
+実現力の上限は上がった。方向性を決める仕事は、むしろ重くなった。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section-green">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Explore</p>
+                <h2 class="section-title">第1回から読み始める</h2>
+            </div>
+            <p class="cta-text">まずは「Fable 5 とは何か、何が得意か」から。得意でないことも、そこで分かる。</p>
+            
+            <div class="cta-buttons">
+                <a href="/light-farming/" class="btn btn-light">Light Farming</a>
+                <a href="/natural-farming/" class="btn btn-outline">自然農法とは</a>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>AI時代の暮らし</h3>
+                <p>AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。</p>
+            </div>
+            <div class="footer-nav">
+                <h4>ページ</h4>
+                <ul>
+                    <li><a href="/">ホーム</a></li>
+                    <li><a href="/natural-farming/">自然農法とは</a></li>
+                    <li><a href="/light-farming/">Light Farming</a></li>
+                    <li><a href="/about/">私たちのアプローチ</a></li>
+                    <li><a href="/gallery/">畑の記録</a></li>
+                    <li><a href="/insights/">構造分析</a></li>
+                    <li><a href="/ai-native-ways/">AIネイティブな仕事の作法</a></li>
+                    <li><a href="/claude-debian/">Claudeと一緒に学ぶDebian</a></li>
+                    <li><a href="/phosphorus-and-farming/">リン資源枯渇と自然農法</a></li>
+                    <li><a href="/fable/">Fable 5 が帰ってきた</a></li>
+                    <li><a href="/privacy/">プライバシー</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>関連リンク</h4>
+                <ul>
+                    <li><a href="https://www.facebook.com/groups/vegitage" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: -2px; margin-right: 4px;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>AISeed — 生物多様性・食料・AIと暮らし</a></li>
+                    <li><a href="https://www.amazingcarbon.com/">Amazing Carbon (Dr. Christine Jones)</a></li>
+                    <li><a href="https://github.com/aiseed-dev/website" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">&copy; 2026 aiseed.dev — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">CC BY 4.0</a></p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js?v=0b5d818e"></script>
+</body>
+
+</html>

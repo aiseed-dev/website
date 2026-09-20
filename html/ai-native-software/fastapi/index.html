@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-9FLQ963JXM');
+</script>
+
+<title>API を作る ── FastAPI で基幹のロジックを出す — AI ネイティブなソフトウェア開発 | aiseed.dev</title>
+<meta name="description" content="「壊すな・触るな」はもう古い。AI で基幹システムの書き換えコストは 10 分の 1 になった。新しいシステムを FastAPI で作り、旧システムと並行で動かし、出力を実測で突き合わせる。差分が消えたら旧を止める。業務知識は一気に Markdown に出し、現場がテストを書き、委託は止める。書き換えた基幹ロジックは、2-03 の PostgreSQL を読み書きし、2-04 の門番のトークンで本人確認する一本の API として着地する。参考実装は kura。">
+<link rel="canonical" href="https://aiseed.dev/ai-native-software/fastapi/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/ai-native-software/fastapi/">
+
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/ai-native-software/fastapi/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI時代の暮らし">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="API を作る ── FastAPI で基幹のロジックを出す">
+<meta property="og:description" content="「壊すな・触るな」はもう古い。AI で基幹システムの書き換えコストは 10 分の 1 になった。新しいシステムを FastAPI で作り、旧システムと並行で動かし、出力を実測で突き合わせる。差分が消えたら旧を止める。業務知識は一気に Markdown に出し、現場がテストを書き、委託は止める。書き換えた基幹ロジックは、2-03 の PostgreSQL を読み書きし、2-04 の門番のトークンで本人確認する一本の API として着地する。参考実装は kura。">
+<meta property="og:url" content="https://aiseed.dev/ai-native-software/fastapi/">
+<meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<meta property="article:section" content="AI ネイティブなソフトウェア開発">
+<meta property="article:published_time" content="2026.07.15">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="API を作る ── FastAPI で基幹のロジックを出す">
+<meta name="twitter:description" content="「壊すな・触るな」はもう古い。AI で基幹システムの書き換えコストは 10 分の 1 になった。新しいシステムを FastAPI で作り、旧システムと並行で動かし、出力を実測で突き合わせる。差分が消えたら旧を止める。業務知識は一気に Markdown に出し、現場がテストを書き、委託は止める。書き換えた基幹ロジックは、2-03 の PostgreSQL を読み書きし、2-04 の門番のトークンで本人確認する一本の API として着地する。参考実装は kura。">
+<meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
+<!-- フォントは Web 配信せず、すべて端末のローカルフォントで賄う。
+     和文: UDデジタル教科書体 → BIZ UDP明朝(いずれも Windows 標準搭載の
+     モリサワ UD 書体) → ヒラギノ明朝・游明朝などのシステム明朝。
+     等幅: 端末のシステム等幅フォント。 -->
+
+<style>
+/* ============================================================
+   LOCAL FONT: UDデジタル教科書体(モリサワ)
+   Windows・教育向け端末に無償搭載。端末にあれば local() で拾い、
+   なければ BIZ UDP明朝(同じく Windows 標準搭載)→ システム明朝へ
+   フォールバックする。R と B は別ファミリー名なので、太字(700)を
+   B 書体に明示的にマッピングして疑似ボールドを避ける。
+   ============================================================ */
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 400;
+  src: local("UD デジタル 教科書体 NK-R"), local("UD Digital Kyokasho NK-R"),
+       local("UD デジタル 教科書体 NP-R"), local("UD Digital Kyokasho NP-R"),
+       local("UD デジタル 教科書体 N-R"), local("UD Digital Kyokasho N-R");
+}
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 700;
+  src: local("UD デジタル 教科書体 NK-B"), local("UD Digital Kyokasho NK-B"),
+       local("UD デジタル 教科書体 NP-B"), local("UD Digital Kyokasho NP-B"),
+       local("UD デジタル 教科書体 N-B"), local("UD Digital Kyokasho N-B");
+}
+
+/* ============================================================
+   COLOR & DESIGN TOKENS
+   aiseed.dev 全体のスタイルに合わせる場合は、ここの変数を
+   既存サイトのCSS変数に差し替える。
+   ============================================================ */
+:root {
+  --ink: #1a1a1a;
+  --paper: #f4f1ea;
+  --paper-deep: #ebe6d8;
+  --accent: #c8442a;
+  --rule: #d4cdb8;
+  --whisper: #6b665a;
+  --highlight: #f7e9c8;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* 本文: 端末にあれば UDデジタル教科書体を最優先、次に BIZ UDP明朝
+   (Windows 標準搭載)、どちらもなければヒラギノ明朝等のシステム明朝 */
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "UD Digital Kyokasho",
+               "BIZ UDPMincho", "BIZ UDP明朝",
+               "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
+               "Yu Mincho", "游明朝", "YuMincho",
+               "Noto Serif CJK JP", "Noto Serif JP", serif;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  font-feature-settings: "palt";
+  overflow-x: hidden;
+}
+
+/* グレインテクスチャ(紙の質感) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   MASTHEAD(シリーズ名・章番号)
+   ============================================================ */
+.masthead {
+  border-bottom: 3px double var(--ink);
+  padding: 24px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+}
+.masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-left a { color: inherit; text-decoration: none; }
+.masthead-left a:hover { color: var(--accent); }
+.masthead-home { color: var(--whisper); }
+.masthead-sep { margin: 0 10px; color: var(--whisper); font-weight: 400; }
+.masthead-right { font-style: italic; }
+
+/* ============================================================
+   HERO(タイトル領域)
+   ============================================================ */
+.hero {
+  padding: 80px 0 60px;
+}
+.hero-meta {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-meta::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 56px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.hero-title .accent {
+  color: var(--accent);
+}
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--whisper);
+  max-width: 580px;
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+  margin-top: 32px;
+}
+.hero-byline {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ============================================================
+   ARTICLE BODY
+   ============================================================ */
+article p {
+  margin-bottom: 24px;
+}
+
+article h2 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.4;
+  margin: 72px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+article h2::before {
+  content: "§";
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  color: var(--accent);
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+article h3 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 600;
+  font-size: 19px;
+  margin: 40px 0 16px;
+  color: var(--ink);
+}
+article h3::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+article strong {
+  font-weight: 700;
+  background: linear-gradient(to top, var(--highlight) 35%, transparent 35%);
+  padding: 0 2px;
+}
+
+article em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+article a:hover {
+  color: var(--accent);
+}
+
+/* ============================================================
+   BLOCKQUOTE
+   ============================================================ */
+blockquote {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  position: relative;
+  font-size: 18px;
+  line-height: 1.85;
+  font-style: normal;
+  color: var(--ink);
+}
+blockquote::before {
+  content: "「";
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-size: 48px;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: "Hiragino Mincho ProN", serif;
+}
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+article thead th {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+}
+article tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+article tbody tr:last-child td {
+  border-bottom: none;
+}
+@media (max-width: 720px) {
+  article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ============================================================
+   ORDERED LIST(番号付きリスト)
+   ============================================================ */
+article ol {
+  margin: 32px 0;
+  counter-reset: item;
+  padding: 0;
+}
+article ol li {
+  list-style: none;
+  position: relative;
+  padding: 16px 0 16px 56px;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: item;
+}
+article ol li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* 通常のul(章末の関連リンクなど) */
+article ul {
+  margin: 24px 0;
+  padding-left: 1.5em;
+}
+article ul li {
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   CODE BLOCK(疑似ターミナル風)
+   ============================================================ */
+article pre {
+  margin: 40px 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 24px 28px;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+  overflow-x: auto;
+}
+article pre::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 8px;
+  color: var(--whisper);
+  letter-spacing: 4px;
+}
+article pre code {
+  display: block;
+  padding-top: 16px;
+  white-space: pre;
+}
+
+/* インラインコード */
+article code {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 0.9em;
+  background: var(--paper-deep);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+article pre code {
+  background: transparent;
+  padding: 16px 0 0 0;
+  color: var(--paper);
+}
+
+/* ============================================================
+   HORIZONTAL RULE(本文中の区切り)
+   ============================================================ */
+article hr {
+  border: none;
+  text-align: center;
+  margin: 64px 0;
+  height: 1em;
+}
+article hr::before {
+  content: "◆ ◆ ◆";
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+}
+
+/* ============================================================
+   RELATED LINKS(章末の関連記事)
+   ============================================================ */
+.related-links {
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.related-links h3 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+.related-links h3::before {
+  content: none;
+}
+.related-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.related-links li {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 0;
+}
+.related-links li:last-child {
+  border-bottom: none;
+}
+.related-links a {
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.related-links .related-tag {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.related-links a:hover .related-title {
+  color: var(--accent);
+}
+
+/* ============================================================
+   FOOTER(サイト内メニュー+奥付)
+   ============================================================ */
+.site-footer {
+  margin-top: 96px;
+  border-top: 3px double var(--ink);
+  padding-top: 48px;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 48px;
+}
+.footer-col h4 {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-col li {
+  padding: 6px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.footer-col a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.footer-col a:hover { color: var(--accent); }
+
+.colophon {
+  margin-top: 48px;
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--whisper);
+  text-align: center;
+  line-height: 2;
+}
+.colophon-mark {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "Hiragino Mincho ProN", serif;
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+/* ============================================================
+   SERIES TOC(全章一覧・折りたたみ式)
+   ============================================================ */
+.series-toc {
+  margin: 24px 0 40px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 0;
+}
+.series-toc details {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+}
+.series-toc summary {
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  padding: 8px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.series-toc summary::-webkit-details-marker { display: none; }
+.series-toc summary::before {
+  content: "▸";
+  color: var(--accent);
+  font-size: 10px;
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.series-toc details[open] summary::before { transform: rotate(90deg); }
+.series-toc ol {
+  list-style: none;
+  margin: 12px 0 8px;
+  padding: 0;
+  counter-reset: none;
+}
+.series-toc li {
+  list-style: none;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--rule);
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  line-height: 1.55;
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.series-toc li::before { content: none; }
+.series-toc li:last-child { border-bottom: none; }
+.series-toc li a {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--ink);
+  flex: 1;
+}
+.series-toc li a:hover .toc-title { color: var(--accent); }
+.series-toc .toc-num {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 5em;
+}
+.series-toc li.current {
+  background: var(--paper-deep);
+  margin: 0 -12px;
+  padding: 9px 12px;
+}
+.series-toc li.current .toc-title {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ============================================================
+   IMAGES
+   ============================================================ */
+article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 32px auto;
+}
+
+/* ============================================================
+   CUSTOM BLOCKS(:::chain / :::highlight / :::quote / :::compare)
+   ============================================================ */
+.chain-diagram {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+.chain-diagram .arrow {
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0.3em;
+}
+.highlight-box {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.highlight-box p { margin-bottom: 12px; }
+.highlight-box p:last-child { margin-bottom: 0; }
+.quote-block {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+}
+.quote-block .quote-text {
+  font-size: 18px;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* ============================================================
+   ASCIIDOC BLOCKS(pyasciidoc が出力するクラス。.adoc 記事用)
+   admonition / 帰属つき引用 / 画像ブロック / 脚注 / ロール
+   ============================================================ */
+.admonition {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.admonition-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.admonition p { margin-bottom: 12px; }
+.admonition p:last-child { margin-bottom: 0; }
+.quoteblock { margin: 40px 0; }
+.quoteblock blockquote { margin: 0; }
+.quoteblock .attribution {
+  margin-top: 12px;
+  text-align: right;
+  font-size: 14px;
+  color: var(--whisper);
+}
+.quoteblock .attribution cite { font-style: normal; }
+.imageblock { margin: 32px 0; text-align: center; }
+.imageblock .content img { max-width: 100%; height: auto; }
+sup.footnote { font-size: 12px; }
+sup.footnote a { text-decoration: none; }
+.footnotes {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px;
+  color: var(--whisper);
+}
+.footnotes ol { padding-left: 1.5em; }
+.footnotes li { margin-bottom: 8px; }
+.footnotes .footnote-backref { text-decoration: none; margin-left: 0.3em; }
+/* ロール: [.chain](:::chain と同じ見た目)/ [.accent]#…# */
+article .chain {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+article .accent { color: var(--accent); }
+
+/* ============================================================
+   CHAPTER NAV(前後の記事へのリンク)
+   ============================================================ */
+.chapter-nav {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 14px;
+}
+.chapter-nav a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+}
+.chapter-nav a:hover { color: var(--accent); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 40px; }
+  blockquote { padding: 24px 20px 24px 28px; }
+  article pre { padding: 20px 16px; font-size: 12px; }
+  article ol li { padding-left: 48px; }
+  .series-toc .toc-num { min-width: 4em; font-size: 10px; }
+  .series-toc li { font-size: 13px; gap: 12px; }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta, .hero-title, .hero-subtitle, .hero-byline {
+  animation: rise 0.8s ease-out backwards;
+}
+.hero-meta     { animation-delay: 0.1s; }
+.hero-title    { animation-delay: 0.25s; }
+.hero-subtitle { animation-delay: 0.45s; }
+.hero-byline   { animation-delay: 0.65s; }
+.mermaid {
+  text-align: center;
+  margin: 2.5rem 0;
+  background: var(--paper-warm, #f5f1ea);
+  padding: 1.5rem 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.mermaid svg { max-width: 100%; height: auto; }
+
+/* ============================================================
+   WIDE LAYOUT(広い画面では目次を左サイドバーに常時展開)
+   ============================================================ */
+@media (min-width: 1200px) {
+  body.has-toc .container {
+    max-width: 1320px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 880px);
+    column-gap: 64px;
+    justify-content: center;
+  }
+  body.has-toc .masthead,
+  body.has-toc .hero {
+    grid-column: 1 / -1;
+  }
+  /* グリッドアイテム自体は行いっぱいに伸ばし、内側の details を sticky に
+     する(sticky なグリッドアイテムはグリッドエリアではなくコンテナ全体で
+     制約されるブラウザ挙動があり、フッターに重なってしまうため)。 */
+  body.has-toc .series-toc {
+    grid-column: 1;
+    grid-row: 3 / span 2;
+    margin: 0;
+    padding: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+  body.has-toc .series-toc details {
+    position: sticky;
+    top: 32px;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 0 12px 12px 0;
+  }
+  /* サイドバーでは折りたたみを無効化し、見出しとして表示 */
+  body.has-toc .series-toc summary {
+    pointer-events: none;
+    cursor: default;
+  }
+  body.has-toc .series-toc summary::before { content: none; }
+  body.has-toc .series-toc li { font-size: 13.5px; }
+  body.has-toc article    { grid-column: 2; grid-row: 3; }
+  body.has-toc .chapter-nav { grid-column: 2; grid-row: 4; }
+  body.has-toc .site-footer { grid-column: 1 / -1; grid-row: 5; }
+}
+
+/* ============================================================
+   DARK MODE(OS の配色設定に追従して自動で暗色に切り替え)
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ink: #e8e3d6;
+    --paper: #16140f;
+    --paper-deep: #211d16;
+    --accent: #e8765a;
+    --rule: #393428;
+    --whisper: #a39b88;
+    --highlight: rgba(220, 168, 78, 0.30);
+  }
+  /* 紙の質感(グレイン)を暗色背景向けに反転 */
+  body::before {
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    mix-blend-mode: screen;
+    opacity: 0.4;
+  }
+  /* コードブロックは両モードとも暗いターミナル調を維持 */
+  article pre {
+    background: #0d0c0a;
+    color: #e8e3d6;
+  }
+  article pre code {
+    color: #e8e3d6;
+  }
+  /* Mermaid 図の枠を暗色に */
+  .mermaid {
+    background: #211d16;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- MASTHEAD(ホーム › シリーズ目次) -->
+  <header class="masthead">
+    <div class="masthead-left"><a href="/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="/ai-native-software/">AI ネイティブなソフトウェア開発</a></div>
+    <div class="masthead-right">2-10 / Series</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-meta">2-10 № 10 · 2026</div>
+
+    <h1 class="hero-title">基幹を<span class="accent">並行稼働</span>で書き換え、<br>ロジックを一箇所の API に。</h1>
+
+    <p class="hero-subtitle">基幹システムを並行稼働で書き換え、自社固有のロジックを一箇所の API にまとめる</p>
+
+    <div class="hero-byline">
+      <span>2026.07.15</span>
+      
+    </div>
+  </section>
+
+  <!-- SERIES TOC(全章一覧・現在の章をハイライト) -->
+  
+
+  <!-- ARTICLE BODY -->
+  <article>
+    <p>自社固有のロジックは、旧システムを止めずに書き換えられる。</p>
+<p>2-03 から 2-09 までで、汎用の道具は揃った ── 土台、門番、文書、コード、メール、会議、公開 Web。残っているのは自社固有のロジック、つまり基幹システムの中身だ。その基幹はたいてい古い。Java や C# で書かれ、Oracle や SQL Server に乗り、誰も全部は理解していない。これを並行稼働で書き換え、自社固有のロジックを
+<strong>FastAPI</strong> で一箇所の API として出す。手法は基幹を止めるまでの段取り、道具は
+FastAPI。順に見ていく。</p>
+<h2>「壊すな」「触るな」は、コストが高かった時代の助言だ</h2>
+<p>過去 20 年、基幹システムを担当する人間に与えられてきた助言は、こうだ。</p>
+<p>「壊すな」「触るな」「動いているものに手を入れるな」「既存資産を活かせ」。</p>
+<p>これは、書き換えのコストが高すぎた時代の助言だった。書き換えに数年・数億円かかる時代には、「動いているものは触らない」が確かに正解だった。</p>
+<p>時代が変わった。</p>
+<p>AI が業務ロジックを Python に翻訳できる。AI が SQL の意図を Markdown で書き出せる。
+AI がテストデータを生成できる。AI がドキュメント無しのコードからルールを抽出できる。書き換えのコストが、10 分の 1 になった。</p>
+<p>10 分の 1 になったコストで、まだ「触るな」と言うのは、新しい現実を無視している。残す理由は、もう無い。</p>
+<h2>並行稼働は、リスクを実測で潰す</h2>
+<p>書き換えのコストが下がったとはいえ、リスクはゼロではない。新システムが旧システムと完全に同じ動きをする保証は、どんな手法でも与えられない。</p>
+<p>そこで、並行稼働だ。</p>
+<p>新システムを AI で作る。旧システムはそのまま動かす。同じ入力を両方に流す。出力を比較する。</p>
+<div class="mermaid">
+flowchart LR
+  Input["本番の入力データ"]
+  Old["旧システム<br/>Java/C#<br/>Oracle/SQL Server"]
+  New["新システム<br/>FastAPI<br/>PostgreSQL"]
+  Diff{"毎日 突き合わせる"}
+  Fix["新を直す<br/>旧は触らない"]
+  Kill["旧を止める"]
+
+  Input --> Old --> Diff
+  Input --> New --> Diff
+  Diff -->|差分があるので原因を追う| Fix
+  Fix --> New
+  Diff -->|差分ゼロが続き新が正しいと分かった| Kill
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef bad  fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class Old bad
+  class New,Kill good
+</div>
+<p>二つの出力が一致するなら、新システムは正しい。一致しないなら、どちらかが間違っている。だいたい、旧システムに 20 年前から残っていたバグが先に見つかる。ドキュメントに書かれていなかったバグだ。</p>
+<p>これを 1 ヶ月、3 ヶ月続ける。差分がゼロになり、想定外のケースもカバーされたと確認できたら、旧システムを止める。</p>
+<p>並行稼働は、書き換えのリスクを <strong>実測</strong> で潰す手段だ。机上の検証ではない。仕様書のレビューではない。本番環境で、実データで、動かして確かめる。</p>
+<h2>旧システムは、長くても六ヶ月で止める</h2>
+<p>並行稼働の期間は、長くて 6 ヶ月、ふつう 3 ヶ月もあれば充分だ。</p>
+<p>それ以上長く並行稼働させる必要があるなら、そもそも新システムが正しくない。新システムを直す。並行稼働を「ずっと」やってはいけない。</p>
+<p>組織の中には「旧システムを念のため残しておく」という心理が働く。これは罠だ。残し続けると、こうなる。</p>
+<ul>
+<li>運用コストが二重になる</li>
+<li>担当者が分散する</li>
+<li>トラブル時にどちらの責任か揉める</li>
+<li>新機能が両方に必要になり、書く量が二倍になる</li>
+<li>いつか旧を止める決断が、永遠に先送りされる</li>
+</ul>
+<div class="quoteblock">
+<blockquote>
+<p>並行稼働は手段であって、目的ではない。新が正しいと分かったら、旧を止める。</p>
+</blockquote>
+</div>
+<p>止められないなら、最初から書き換えるべきではなかった。やる時はやる。</p>
+<p>「既存資産を活かしつつ AI で補う」── これは、結局、旧システムが残り続けることを許容する考え方だ。新しい機能は外側に積み上がり、中身は古いまま。3 年経っても 5 年経っても、組織は AI ネイティブにならない。中途半端な共存は、組織を硬直させる。「補う」が許されるのは、書き換えコストが本当に高すぎた過去の話だ。今は違う。</p>
+<h2>ベンダー製品も、同じ手で殺す</h2>
+<p>Oracle、SAP、Salesforce、Microsoft の業務製品 ── これらは「製品」を売っているのではない。「製品を使い続けないといけない状況」を売っている。</p>
+<p>並行稼働で殺す段取りは、こうなる。</p>
+<ol>
+<li>製品からデータを毎日エクスポートする(製品はそのまま動かす)</li>
+<li>AI で書いた新システムが、エクスポートを処理して同じ業務を回す</li>
+<li>同じ業務指標(売上、在庫、顧客状態)を、両方で計算する</li>
+<li>数字が一致したら、製品契約を更新しない</li>
+<li>製品から「全データエクスポート」を最後にもらって、新システムに完全移行</li>
+</ol>
+<p>契約更新時期に間に合わせる。これは戦略的なスケジュールだ。10 月に契約更新があるなら、6 月までに並行稼働を始める。3 ヶ月走らせて、9 月に意思決定。</p>
+<p>ベンダーは「移行リスク」「データ整合性」「ベテラン担当者の引き止め」── あらゆるカードで引き止めにかかる。並行稼働で同じ出力が出ていれば、それらは全部反論できる。証拠が手元にある。ライセンス料は年に数千万円単位だ。それを止められれば、新システムの開発コストは数ヶ月で回収できる。</p>
+<h2>業務知識は、一気に Markdown に出す</h2>
+<p>並行稼働の準備として、業務知識を Markdown に出す。一気にやる。</p>
+<p>これまでの常識では、業務知識のドキュメント化は数ヶ月から数年がかりのプロジェクトだった。担当者が空き時間に少しずつ書く。半分も書き終わらないうちに、書いた人が異動する。途中で頓挫する。結局、書かれない。</p>
+<p>時代が変わった。</p>
+<p>旧システムのコード、コメント、SQL、運用手順書、過去の障害報告 ── これらを全部
+Claude に渡す。「業務ロジックを抽出して Markdown で整理しろ」と頼む。数千行のコードベースなら、数時間で初版が出る。数万行でも、数日で完了する。数ヶ月の作業が、数日に縮む。</p>
+<p>完璧でなくていい。80% で十分だ。残り 20% は、並行稼働中に出力差分として現れる。差分を一つずつ潰していけば、業務知識は完成する。</p>
+<p>これが、並行稼働の隠れた効用でもある。*書かれていなかった業務ルールが、並行稼働で全部炙り出される*。机上で書かれた仕様書には現れない、実運用で初めて分かるルール ──
+これが、Claude による初版 Markdown と、並行稼働の出力差分の両方から、引き出される。文書を自分の側に取り戻す話は 2-06 で扱った。基幹の業務知識もまた、同じく読める素材に落ちる。</p>
+<h2>業務ルールは現場にある ── 現場がテストを書く</h2>
+<p>書き換えを誰がやるか。</p>
+<p>これまでの常識は、こうだった。IT 部門、SI ベンダー、コンサルタントが、現場から仕様を聞き取って、コードを書く。書き終わったら現場が受け入れテストをする。これは、書き換えに必要な知識が分散していた時代のかたちだ。コードを書く能力は IT 部門に、業務ルールの知識は現場に、それぞれ偏在していた。</p>
+<p>今は違う。</p>
+<p>コードを書く能力は、Claude が持っている。残るのは業務ルールの知識だけだ。そして、業務ルールを最も深く知っているのは、毎日その業務を回している現場の人間である。現場の人間が、Claude にコードを書かせる。これで完結する。途中の伝言ゲームが要らない。</p>
+<p>並行稼働で重要なのは、出力差分を見つけることだ。新システムが旧と同じ出力を出すか ──
+これを判定するためのテストデータが要る。このテストデータを作るのに、最も向いているのが現場の人間だ。</p>
+<p>「7 月の請求は 10 日締めだが、お盆休みを考慮して翌月 5 日まで延長する」── このルールを知っている現場の人間が、Claude にこう頼む。「7 月のお盆延長を考慮した請求テストデータを 50 件作って」。Claude が作る。実際に旧システムを通して、期待出力を生成する。これがテストデータになる。</p>
+<p>机上の仕様書には書かれていなかったルールが、テストの形で実体化する。業務知識が、現場からテストへ、そしてコードへと流れる。これは、IT 部門には絶対に書けないテストだ。彼らはルールを知らない。ルールを知らない者がテストを書くから、書き換えは失敗してきた。</p>
+<h2>委託は止める</h2>
+<p>ここまで来ると、結論は明白だ。</p>
+<p>基幹システムの書き換えを、IT ベンダーやコンサルタントに委託する必要は無い。</p>
+<p>委託の伝統的な根拠は二つだった。(1) コードを書く能力が外側にしかない。(2) 業務ルールの知識を外側に伝える必要がある。(1) は、Claude が解決した。(2) は、そもそも外に伝える必要が無くなった。現場と Claude で完結する。</p>
+<p>ベンダーへの委託費は、基幹システム書き換えで最大のコスト項目だ。年間数千万円から数億円。これが要らなくなる。業務ルールを知っている現場の人間が、Claude にコードを書かせ、Claude にテストを書かせ、並行稼働で実測する。書き換えは、外注するものではなく、内製で行うものに変わる。業務を知る者が、Claude を使って、自分の業務を書き換える ──
+これが新しい現場の作法だ。</p>
+<p>これは IT 部門の役割の縮小ではない。IT 部門は、現場と Claude のチームを支える基盤
+(インフラ、データベース、デプロイ環境、セキュリティ)を整える役割に集中できる。重複した「業務ロジックの仲介」役を抜ける。</p>
+<h2>DB も並行稼働で置き換える</h2>
+<p>論理層を FastAPI に書き換えるのと同じ要領で、DB も並行稼働で置き換える。</p>
+<p>データベースは残す。しかし、ベンダー方言は捨てる。<code>SELECT</code>、<code>JOIN</code>、<code>GROUP BY</code>、ウィンドウ関数 ── 標準 SQL は 50 年前から動いていて、これからも 50 年動く。Claude も完全に書ける。残すのは標準 SQL、捨てるのはベンダー方言 ── この線引きが要だ。</p>
+<p>Oracle の PL/SQL、Microsoft SQL Server の T-SQL ── これらは捨てる。ベンダー固有の方言だ。データベースに業務ロジックを埋め込むことで、ベンダーロックインの最後の砦を作ってきた。PL/SQL のストアドプロシージャに埋め込まれた業務ロジックは、Python に書き直す。Claude に PL/SQL を渡せば、業務ルールを抽出した上で Python に翻訳して出す。業務ロジックが、不可視のストアドからコードに戻る。可読性が上がり、バージョン管理でき、テストできる。</p>
+<p>DB そのものは PostgreSQL に移す。これも並行稼働だ ── 旧 DB から PostgreSQL へ毎日同期し、新システム(FastAPI)は PostgreSQL を、旧システムは Oracle / SQL Server を読み書きする。出力突き合わせで両系の整合性を確認し、安定したら旧 DB を停止する。
+Oracle / SQL Server を捨てることが、ベンダーロックインからの卒業証書になる。</p>
+<p>DDL の方言変換、Azure SQL や pgloader を使った具体的な移行手順は、2-03 で詳しく扱った。本章では「標準 SQL は残し、方言とロジックは抜く」という判断だけ押さえておけばいい。論理層を Python にするだけでは、ロックインは半分しか抜けない。
+PostgreSQL への移行が、抜ける最後のステップだ。そして、ライセンス費の年間コストが、新システムの開発費を数ヶ月で回収する。財務的にも、書き換えない理由が無い。</p>
+<h2>ロックインから抜ける方法は、いつも同じだ</h2>
+<p>ここまで見てきた話は、すべて同じ構造だ。</p>
+<ul>
+<li>Java / C# のロジック層 → FastAPI(Python)に置き換える</li>
+<li>Oracle / SQL Server → PostgreSQL に置き換える</li>
+<li>PL/SQL のストアドプロシージャ → Python の関数に置き換える</li>
+<li>SAP / Salesforce → 自前システムに置き換える</li>
+<li>IT ベンダーやコンサルタントの委託 → 現場と Claude に置き換える</li>
+</ul>
+<p>これらは別々の問題ではない。同じ手で全部抜ける ── 並行稼働で書き換える。</p>
+<p>旧を止めない。新を並行で作る。同じ入力を両方に流し、出力を突き合わせる。差分が消えたら、旧を止める。契約更新の時期に間に合わせる。ロックインは、「触れない・抜けられない」と思わせる心理的な装置だ。並行稼働は、その心理を物理的に解除する。触らずに、横に新しい本流を作る。新が動けば、旧が要らないことが誰の目にも明らかになる。</p>
+<h2>書き換えた基幹は、土台と門番の上に乗る</h2>
+<p>新システムの論理層 ── つまり書き換えた基幹ロジック ── は、FastAPI で一箇所の API
+として出す。なぜ API にするのか。基幹ロジック(在庫・受発注・料金計算…)を、画面ごとに書き散らさず、一箇所にまとめるためだ。公開 Web(2-09)のフォームも、社内アプリも、同じ API を呼ぶ ── 重複が消える。Python(FastAPI)なら AI が速く書け、型と自動ドキュメント(OpenAPI)が付く。</p>
+<p>API は、2-03 の PostgreSQL を読み書きし、2-04 の門番(PocketBase)のトークンで本人確認する。新しい基盤は要らない ── すでにあるものに乗せる。</p>
+<pre><code class="language-python"># FastAPI ── 門番のトークンを確かめ、土台(DB)を引く
+from fastapi import FastAPI, Depends
+app = FastAPI()
+
+@app.get(&quot;/orders&quot;)
+def orders(user=Depends(verify_token)):       # 2-04 の門番が誰かを確かめる
+    return db.query(&quot;SELECT * FROM orders WHERE user_id=%s&quot;, [user.id])  # 2-03 の DB
+</code></pre>
+<p>基幹をいきなり全部 API 化するのではない。よく使う処理から、一本ずつ。AI と対話して書き、現行と突き合わせて確かめる(親シリーズ第2章 VBA→Python と同じやり方だ)。これは並行稼働の論理そのものを、一本の API の粒度で回すことに他ならない。重い処理は裏で Python が捌き、結果だけ返す。</p>
+<p>公開リポジトリ kura(<code>aiseed-dev/workspace</code>)が、この構成だ ── PocketBase 認証と
+FastAPI と Flet フロント。コードは 2-05 の Forgejo に置き、2-09 の公開 Web や社内アプリから呼ぶ。並行稼働で書き換えた基幹ロジックが、最後にこの一本の API として着地する。</p>
+<h2>例: 月次決算処理を三ヶ月で置き換える</h2>
+<p>月末に動く決算処理バッチを考える。</p>
+<p><strong>旧</strong>: COBOL や Java で書かれた、5 年前から動いているバッチ。中身は誰も完全には理解していない。月末に動く。失敗すると経理が止まる。</p>
+<p><strong>第一週</strong>: 旧バッチの入力(前月の取引データ)と出力(決算サマリ)を 12 ヶ月分エクスポートする。これを正解データとする。</p>
+<p><strong>第二週</strong>: Claude に旧コードと運用ドキュメントを渡し、FastAPI 上の Python で同等処理を書かせる。12 ヶ月分のデータを流し、出力が正解と一致するか確認する。一致しないところを潰す。</p>
+<p><strong>第三週〜第六週</strong>: 旧システムが動く本番タイミングで、同じ入力を新システムにも流す。毎月、出力を突き合わせる。差分があれば原因を特定して修正。</p>
+<p><strong>第三月</strong>: 差分がゼロの月が連続したら、責任者が決断する。「来月から新システムで運用」。旧バッチは止める。</p>
+<p>3 ヶ月で書き換え完了。担当者の負担は、並行稼働中だけ二重になるが、それが終わると半減する。そして、業務ロジックがコードと Markdown の両方で読める状態になる。</p>
+<h2>例: SAP の出荷管理から抜ける</h2>
+<p>中規模製造業の出荷管理を SAP で動かしている会社。ライセンス年額は数千万円。</p>
+<ol>
+<li><strong>データ層</strong>: SAP から夜間バッチで出荷データを Parquet にエクスポート
+(親シリーズ第5章)── SAP は触らない、読み取りのみ</li>
+<li><strong>新ロジック層</strong>: Polars と DuckDB で在庫照合・出荷判定・運送業者の振分けを
+Python で書く(Claude が現場ヒアリングと既存 SAP の設定画面のスクショから初版を生成)</li>
+<li><strong>API・画面層</strong>: 現場用の出荷指示は FastAPI(本章)で API 化し、HTML で画面を出す。社内 LAN だけで動かすので 2-05 の miniPC でホストできる</li>
+<li><strong>突き合わせ</strong>: 毎日、SAP の出荷結果と新システムの出荷結果を比較。差分があれば原因を Claude と一緒に追う。ほぼ毎週、SAP 側に「実は文書化されていなかったルール」が見つかる</li>
+<li><strong>3 ヶ月後</strong>: 差分ゼロが 2 週間続いたら、新システムを本番に昇格、SAP は来年度の契約更新前に止める</li>
+</ol>
+<p>結果はこうなる。ライセンス費の年間数千万円が消える。業務ロジックが Markdown と
+Python に出る(SAP の「業務コンサルタント」が二度と要らない)。カスタマイズが現場で当日できる(これまでは SAP ベンダーに依頼、数ヶ月待ち)。</p>
+<p>これは 2-06 の「文書を自分の側に取り戻す」の基幹システム版だ。「Office を一度に捨てない、CSV から抜ける」と同じ構造で、「SAP を一度に捨てない、並行稼働で殺す」。</p>
+<h2>数字が、書き換えの安さを示す</h2>
+<p>PL/SQL 5,000 行の業務ロジックを Python に翻訳、SI ベンダーの外注見積もり: 約
+3,000 万円。現場担当者が Claude で書き換え、開発期間 1 ヶ月、人件費約 100 万円。
+30 分の 1 だ。</p>
+<p>Oracle Enterprise Edition のライセンス: 20 CPU で年間約 4,000 万円 + 保守料 22%。
+PostgreSQL に移行で年間ゼロ円。新システム開発費を 1 ヶ月で回収する。</p>
+<p>並行稼働 3 ヶ月で発見した未文書化の業務ルール: 1 つの業務システムで平均
+20〜50 件。机上の仕様書では一つも見えなかったルールが、出力差分として全部炙り出される。</p>
+<p>業務知識を Markdown 化する作業: 担当者の空き時間でやると 6 ヶ月〜1 年。Claude に全コードベースを渡して一気にやれば、1 週間で 80%。</p>
+<p>小さな業務システムを丸ごと見たければ、公開リポジトリに実例がある ── seminar-kit
+(<a href="https://github.com/aiseed-dev/seminar-kit"><code>aiseed-dev/seminar-kit</code></a>。研修・セミナー管理: xlsx 様式が唯一のフォーム定義、未処理はメールボックス)と
+mfg-kit(<a href="https://github.com/aiseed-dev/mfg-kit"><code>aiseed-dev/mfg-kit</code></a>。製造業の見積・受注)。どちらも FastAPI と生 SQL と Flet の、この章の作法で立っている。</p>
+<h2>作らない領域が、外側の線を決める</h2>
+<p>線引きも、仕様の一部だ。会計・給与・税は、作らずに買う。国の制度に直結する領域は「自社固有」の対極 ── 全社会共通の汎用であり、1-05 の OSS ファーストと同じ理由で、実績ある既製品を使う側に置く。書き換えるのは自社固有のロジックだけ、という本章の原則の、これが外側の線である。</p>
+<p>帳票は、出口の一形態だ。請求書や納品書は、FastAPI がデータを出し、テンプレートに差し込んで PDF にする ── 2-06 の入口・中身・出口の「出口」であり、AI が書ける定型コードだ。帳票専用の製品は要らない。</p>
+<p>承認フローも、製品ではない。申請 → 承認 → 確定は、業務ルールの数行(誰が、どの金額から、誰の承認で)と、状態を持つ API の数十行と、通知のメール(2-07)でできている。ワークフロー基盤を買うのは、コードが書けなかった時代の解だ。</p>
+<p>最後に一つ、旧システムを畳む前の確認がある ── 法定保存だ。帳簿や請求書には保存年限があり、年限は業務ルールの Markdown に一行書く。並行稼働を終えて旧を止める前に、保存対象のデータが自分の DB とファイルに揃っていることを確かめる。監査の記録も、手元の箱ならログが全部残っている ── 製品は要らない。決まりごとだけが要る。</p>
+<h2>画面を作る前に、デザインの基本を四つだけ押さえる</h2>
+<p>書き換えた基幹は、API として着地した。残るのは画面だ。道具は Flet(API と同じ
+Python の宣言的 UI。kura のフロントも Flet)でいい。問題は道具ではない ──
+フロントエンドエンジニア以外は、デザインを教わったことが無い。だから AI が出した画面の良し悪しを判定できず、「もっと良い感じに」としか言えなくなる。</p>
+<p>描く技術は要らない。要るのは、見て、名指しできる語彙だ。基本は四つしかない。</p>
+<ul>
+<li><strong>近接</strong> ── 関係のあるものは近くに、関係の無いものは離す。項目がバラバラに見える画面は、この距離が崩れている</li>
+<li><strong>整列</strong> ── 端を揃える。左揃えなら全部左揃え。揃っていない画面は、それだけで雑に見える</li>
+<li><strong>反復</strong> ── 同じ役割には同じ形を繰り返す。画面ごとにボタンの色や見出しの形が違うのは、反復の欠如</li>
+<li><strong>対比</strong> ── 重要なものは大きく・濃く、それ以外は小さく・薄く。全部が同じ大きさの画面は、何も伝えない</li>
+</ul>
+<p>加えて二つだけ。色は 3 色まで(背景と文字とアクセント 1 色)、フォントは 1〜2 種。迷ったら、足すのではなく減らす。</p>
+<p>この語彙があると、AI への指示が変わる。「もっと良い感じに」ではなく、「ラベルと入力欄の近接が弱い」「ボタンの色が反復していない」「合計金額の対比を強くしろ」── そのまま直せる指示になる。デザインの知識は、描く技術としてではなく、判定の語彙として効く。</p>
+<p>そして、四原則の先も、デザインの大部分は感性ではなくルールでできている。余白は一定の刻みで取る(8 の倍数など)。文字サイズは数段階に決めて使い回す。文字と背景のコントラストには基準値がある(アクセシビリティ規格)。ボタンはボタンに見える形にする。取り消せない操作には確認を挟む ── どれも決まりごとであって、センスではない。</p>
+<p>ルールなら、書ける。業務ルールを Markdown に出したのと同じ要領で、デザインのルールも
+1 枚の文書に固定できる ── 余白の刻み、文字サイズの段階、色 3 つ、部品の形。画面を頼むたびにこの 1 枚を渡せば、AI が全画面に同じルールを適用する。反復は、自動で守られる。</p>
+<p>ルールの中で、いちばん強い一本がグリッドだ。画面を等幅の列(ふつうは 12 列)に切り、部品は必ず列の境界に合わせて置く ── 決まりはそれだけだが、この一本で整列と反復の大半が自動で守られる。Web やアプリのデザイナーには、グリッドは「窮屈だ」「退屈だ」と嫌われがちだ ── 独創を売る仕事から見れば、格子は檻に見える。だが業務画面に要るのは独創ではなく、どの画面を開いても同じ場所に同じものがある予測可能性で、それを最も安く供給するのがグリッドである。しかも列数も余白も数字で書けるから、AI に最も正確に伝わるデザイン指示になる。利点は見た目だけでもない ── グリッドはレイアウトを固定する。部品の置き場所が中身より先に決まっているから、描画側は届いたデータに合わせて配置を計算し直す必要がなく、表示は速く、読み込み中に画面がガタつくこともない。規律が、そのまま性能になる。</p>
+<p>「固定して、中身が収まらなくなったら困るのでは」という心配は、紙の記憶だ。紙は面積が決まっているから、収まらない中身は本当に困る。画面は違う ── そもそも紙より小さく、全部を一度に見せることは端からできない。だから広げる仕組み(スクロール、折りたたみの開閉)が標準で備わっていて、固定するのは置き場所だけ、増えた中身は必要なときに広げればいい。固定で困る場面は、画面には持ち込まれない。</p>
+<p>それに、現場はグリッドをよく知っている。Excel のセルを小さな方眼に切り、枠に合わせて帳票を組む ── いわゆる神エクセル(Excel 方眼紙)だ。IT 業界はこれを「機械に読めないデータの最悪例」と嘲ってきた。だが、その「読めない」は嘘だ。神エクセルは、Python が普通に読む ── 中身は最初から構造化されたファイルの中にあり、数十行のスクリプトで枠から取り出して表に起こせる(そのスクリプトを書くのが、いまは AI の仕事だ。2-11 の整備が、まさにこの作業だ)。では、なぜあれほど嘲られたのか。方眼の本当の効能を見れば分かる。
+<strong>方眼に合わせる限り、素人でも組めて、素人でも直せる</strong> ── 枠を一つ動かす、列を一本足す、それで帳票が変わる。現場が自分で作って自分で直せる道具は、開発の発注を要らなくする。「最悪例」という嘲りは、現場の自給を封じて、作り直し案件の値段を支えるための口実だった。誰に教わらなくても、現場は帳票を組むときに方眼を敷いた ── 置き場所を格子に合わせるという勘どころは、ずっと正しかったのだ。グリッドデザインは、その勘をそのまま受け継ぐ ── 枠は画面のグリッドへ、中身はデータベースへ。素人の修正に強いという方眼の効能も、そのまま画面に持ち込まれる。中身を移すのは「読めないから」ではない。毎回スクリプトで枠から掘り出すより、一度データベースに置くほうが安い ── それだけの理由だ。デザイナーには檻に見え、現場には方眼紙に見えた ── 同じ格子の話である。だから、素人はグリッドレイアウトを使う。本章の読者に、これ以上ふさわしい既定はない。</p>
+<p>ルールの 1 枚の先頭には、まずこの 1 行を書く ──
+「12 列グリッド、余白は 8 の倍数、入力フォームは 6 列幅」。</p>
+<p>ルールでできている領域だから、AI はデザインができる。よくある画面の型、部品の形、余白の取り方 ── 定石は学習済みで、頼めば標準的で破綻のない画面を出してくる。ルールの
+1 枚すら、たたき台は AI に書かせていい。</p>
+<p>ただし、独創的なデザインは無理だ。AI の出力は、学習した平均に収束する。見たことのない見た目、ブランドを定義する新しい様式は、AI からは出てこない。だが、業務画面に独創は要らない ── 現場が迷わず使えるのは、むしろ見慣れた標準形のほうだ。独創が要る場面(ブランド、看板、売り物のデザイン)では、核になるイメージを人間が持ち込む。デザイナーがいなくても業務画面が成立するのは、そこに独創が要らないからである。</p>
+<p>そして、独創が要らないのはデザインに限らない。</p>
+<div class="quoteblock">
+<blockquote>
+<p>プロのデザイナー以外は、汎用のデザインパターンを使う。プロのプログラマー以外は、OSS のライブラリを組み合わせて使う。プロの作家以外は、平易な文章を書く。独創は職業であって、既定ではない。</p>
+</blockquote>
+</div>
+<p>独創は、それを売る職業の持ち物だ。売り物でない場面では、共有された定石がいちばん速く、安く、壊れない ── そして定石こそ、学習の中心にあるから、AI が最も確実に再現する。OSS の部品を組む(1-05)、業務ルールを平易な Markdown に書く(本章)、画面をグリッドに合わせる ── 全部、同じ一つの作法である。</p>
+<p>実務で突き当たる課題も二つあるが、どちらも同じ型 ── ルール ── で受けられる。</p>
+<p>一つ目は、画面の多様化だ。PC・タブレット・スマホ、画面幅はばらばらで、機種ごとに画面を作っていたらきりがない。これもルールで受ける ── 幅の段階を 2〜3 決め
+(狭い = 1 列、広い = 2 列と側欄、など)、段階ごとの並べ方を先の 1 枚に書き足す。グリッドを敷いてあれば、この書き足しは「広い幅は 12 列、狭い幅は 4 列」という列数の減らし方の 1 行で済む。Flet は同じコードがデスクトップにも Web にもモバイルにも出るから、多様化への対応は「機種ごとに画面を作る仕事」ではなく、ルールを数行足す仕事になる。</p>
+<p>二つ目は、日本語フォントだ。和文フォントは数千の字形を抱えるため重く、選択肢が少なく、良いものは有償 ── これが長年の課題だった。いまは違う。モリサワの UD 書体(読み間違えにくさを目的に設計されたユニバーサルデザイン書体)の一部が無料で使える ──
+BIZ UD ゴシック / 明朝は Windows に標準搭載され、Google Fonts からも配信される。ルールの 1 枚には「本文は BIZ UD ゴシック、無ければシステムフォント」と 1 行書けば済む。本サイトの本文も、この方式(端末にあれば UD 書体、無ければシステム書体)で組んである。</p>
+<p>図やスライドまで含めたデザインの作法は、親シリーズ第4章が扱っている。</p>
+<div class="quoteblock">
+<blockquote>
+<p>デザインの大部分は、感性ではなくルールだ。ルールなら、書いて渡せる ── 業務ルールと、同じように。</p>
+</blockquote>
+</div>
+<h2>確かめ方</h2>
+<p>この章は、次の六つができていれば済みだ。</p>
+<ol>
+<li>旧システムと新 API に同じ入力を流すと、出力が一致する</li>
+<li>差分ゼロの日が、決めた期間ずっと並んでいる(月次なら、差分ゼロの月が連続する)</li>
+<li>業務ルールが Markdown で読める。現場の担当者が読んで、正しいと言える</li>
+<li>社内アプリの画面も公開 Web のフォームも、同じ API を呼んでいる。同じロジックが二箇所に無い</li>
+<li>法定保存の対象データが、自分の DB とファイルに揃っている</li>
+<li>旧システムを止めたあと、月次の業務が新システムだけで一周した</li>
+</ol>
+<pre><code class="language-bash">diff old_output.csv new_output.csv    # 旧と新の出力を突き合わせる
+curl -s https://api.example.com/docs  # FastAPI の自動ドキュメントが返る
+</code></pre>
+<h2>人が持つ物</h2>
+<p><strong>人が渡す値</strong></p>
+<ul>
+<li>業務ルールの中身 ── 締め日、例外処理、承認の金額の線引き。Markdown に確定させる</li>
+<li>正解データの範囲 ── 旧システムから何ヶ月分の入力と出力を出すか</li>
+<li>並行稼働を終える条件 ── 差分ゼロが何ヶ月続いたら旧を止めるか</li>
+<li>ベンダー製品の契約更新日 ── 逆算して並行稼働を始める日</li>
+<li>新 API が使う DB の接続情報と、門番(2-04)のトークンの設定</li>
+<li>デザインのルール 1 枚に書く値 ── 列数、余白の刻み、色 3 つ、本文フォント</li>
+</ul>
+<p><strong>AI が「やる前に言う」操作</strong></p>
+<ul>
+<li>旧システムを止める</li>
+<li>本番の処理を新システムに切り替える</li>
+<li>ベンダー製品の契約を解約する、更新しない</li>
+<li>本番の DB に新システムから書き込む</li>
+<li>旧システムや旧 DB のデータを消す</li>
+</ul>
+<h2>確かめた版と日付</h2>
+<ul>
+<li>FastAPI、PostgreSQL、Flet、Polars、DuckDB、Parquet ── 元の手順に版は書いていない</li>
+<li>移行の道具は pgloader と Azure SQL、書き換えに使う AI は Claude</li>
+<li>外注見積もり、ライセンス費、未文書化ルールの件数は、元の章の数字</li>
+<li>手順を書いたのは 2026-07-15</li>
+<li>版が上がっていたら、AI に公式の手順を確かめさせてから進める</li>
+</ul>
+<h2>まとめ</h2>
+<p>基幹システムと「うまく付き合う」のは、もう古い。</p>
+<ul>
+<li><strong>並行稼働</strong> ── 新を FastAPI で作り、旧と並べて動かし、出力を実測で突き合わせる</li>
+<li><strong>旧を止める</strong> ── 差分が消えたら止める。長くて 6 ヶ月、ふつう 3 ヶ月</li>
+<li><strong>業務知識</strong> ── 一気に Markdown に出す。80% で十分、残りは差分が教える</li>
+<li><strong>現場がテストを書く</strong> ── ルールを知る者がテストを書く。委託は止める</li>
+<li><strong>着地点</strong> ── 2-03 の DB と 2-04 の門番に乗る、一本の API</li>
+<li><strong>画面</strong> ── デザインはルールだ。1 枚に書いて、画面を頼むたびに渡す</li>
+</ul>
+<p>やる時はやる。中途半端な共存は、組織を硬直させる。AI で書き換えのコストが 10 分の
+1 になった時代に、残す理由は無い。</p>
+<p>次章では、その上に載せる情報そのものを整える。AI を載せる前に、載せるに値する情報を作る。</p>
+<hr />
+<h2>関連記事</h2>
+<ul>
+<li><a href="/ai-native-software/foundation/">2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars</a></li>
+<li><a href="/ai-native-software/auth/">2-04: 門番を立てる ── PocketBase で認証を一つに</a></li>
+<li><a href="/ai-native-software/documents/">2-06: 文書を取り戻す ── OnlyOffice Docs を PocketBase に組み込む</a></li>
+<li><a href="/ai-native-software/structure-knowledge/">2-11: 社内情報を整える ── 整備こそ本体、AI は最後の一手</a></li>
+<li><a href="https://github.com/aiseed-dev/workspace">参考実装 kura ── 自前の Microsoft 365 / Google Workspace 代替</a></li>
+</ul>
+
+  </article>
+
+  <!-- CHAPTER NAV(前後の記事) -->
+  <nav class="chapter-nav">
+  <a href="/ai-native-software/meetings/" rel="prev">&larr; 前: 会議と予約を自分の側に ── Jitsi と Cal.com</a>
+  <a href="/ai-native-software/two-worlds/" rel="next">次: 企業は自分でコードを書かない ── 事務と基幹、二つの世界の並立 &rarr;</a>
+</nav>
+
+  <!-- FOOTER(サイト内メニュー+奥付) -->
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="サイト内リンク">
+      <div class="footer-col">
+        <h4>記事シリーズ</h4>
+        <ul>
+          <li><a href="/insights/">構造分析</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/ai-native-ways/">AIネイティブな仕事の作法</a></li>
+          <li><a href="/claude-debian/">Claudeと一緒に学ぶDebian</a></li>
+          <li><a href="/phosphorus-and-farming/">リン資源枯渇と自然農法</a></li>
+          <li><a href="/fable/">Fable 5 が帰ってきた</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>サイト</h4>
+        <ul>
+          <li><a href="/">ホーム</a></li>
+          <li><a href="/natural-farming/">自然農法とは</a></li>
+          <li><a href="/light-farming/">Light Farming</a></li>
+          <li><a href="/gallery/">畑の記録</a></li>
+          <li><a href="/about/">私たちのアプローチ</a></li>
+          <li><a href="/privacy/">プライバシー</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="colophon">
+      <div class="colophon-mark">§</div>
+      AI ネイティブなソフトウェア開発 · 2-10<br>
+      Tokushima · 2026.07.15<br>
+      <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">CC BY 4.0</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // 広い画面ではサイドバー目次を常時展開する(狭い画面では折りたたみに戻す)
+  (function () {
+    var toc = document.querySelector(".series-toc details");
+    if (!toc) return;
+    var mq = window.matchMedia("(min-width: 1200px)");
+    function sync() { toc.open = mq.matches; }
+    sync();
+    if (mq.addEventListener) mq.addEventListener("change", sync);
+    else mq.addListener(sync);
+  })();
+
+  // Mermaid loads only on pages that contain a .mermaid block.
+  // Self-hosted (no third-party CDN dependency); SRI verified.
+  if (document.querySelector(".mermaid")) {
+    const s = document.createElement("script");
+    s.src = "/js/vendor/mermaid-11.14.0.min.js";
+    s.integrity = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk";
+    s.crossOrigin = "anonymous";
+    s.onload = () => {
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      mermaid.initialize({ startOnLoad: false, theme: prefersDark ? "dark" : "default" });
+      mermaid.run();
+    };
+    document.head.appendChild(s);
+  }
+</script>
+
+
+</body>
+</html>

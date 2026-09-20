@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-9FLQ963JXM');
+</script>
+
+<title>Microsoft と Google から自立する ── 全体像と対応表 — AI ネイティブなソフトウェア開発 | aiseed.dev</title>
+<meta name="description" content="ロックインの正体は、機能の弱さではない。中身が閉じていること、そして鍵(認証)が他人の手元に集中していることだ。Office スイートも業務システム(基幹)も、同じ構造で立っている。閉じたものを開かせること、それが AI の役割だ。独自形式を解き、読めないコードを読み、閉じ込められた業務知識を取り出す。自立編は、AI と一緒にこの閉じた束を一層ずつ開いた OSS に解き、鍵を自分の手元に移す。機械は Debian の PC 一台、認証は PocketBase、文書は aiseed office、コードと共有は Forgejo、メールは Stalwart、会議と予約は Jitsi と Cal.com、Web は Cloudflare Pages、データは PostgreSQL と SQLite と DuckDB、AI はローカル LLM + RAG、基幹は FastAPI。この章はその全体像と対応表であり、続く各章が一本ずつ実際に立てる。">
+<link rel="canonical" href="https://aiseed.dev/ai-native-software/independence/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/ai-native-software/independence/">
+<link rel="alternate" hreflang="en" href="https://aiseed.dev/en/ai-native-software/independence/">
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/ai-native-software/independence/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI時代の暮らし">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="Microsoft と Google から自立する ── 全体像と対応表">
+<meta property="og:description" content="ロックインの正体は、機能の弱さではない。中身が閉じていること、そして鍵(認証)が他人の手元に集中していることだ。Office スイートも業務システム(基幹)も、同じ構造で立っている。閉じたものを開かせること、それが AI の役割だ。独自形式を解き、読めないコードを読み、閉じ込められた業務知識を取り出す。自立編は、AI と一緒にこの閉じた束を一層ずつ開いた OSS に解き、鍵を自分の手元に移す。機械は Debian の PC 一台、認証は PocketBase、文書は aiseed office、コードと共有は Forgejo、メールは Stalwart、会議と予約は Jitsi と Cal.com、Web は Cloudflare Pages、データは PostgreSQL と SQLite と DuckDB、AI はローカル LLM + RAG、基幹は FastAPI。この章はその全体像と対応表であり、続く各章が一本ずつ実際に立てる。">
+<meta property="og:url" content="https://aiseed.dev/ai-native-software/independence/">
+<meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<meta property="article:section" content="AI ネイティブなソフトウェア開発">
+<meta property="article:published_time" content="2026.07.01">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Microsoft と Google から自立する ── 全体像と対応表">
+<meta name="twitter:description" content="ロックインの正体は、機能の弱さではない。中身が閉じていること、そして鍵(認証)が他人の手元に集中していることだ。Office スイートも業務システム(基幹)も、同じ構造で立っている。閉じたものを開かせること、それが AI の役割だ。独自形式を解き、読めないコードを読み、閉じ込められた業務知識を取り出す。自立編は、AI と一緒にこの閉じた束を一層ずつ開いた OSS に解き、鍵を自分の手元に移す。機械は Debian の PC 一台、認証は PocketBase、文書は aiseed office、コードと共有は Forgejo、メールは Stalwart、会議と予約は Jitsi と Cal.com、Web は Cloudflare Pages、データは PostgreSQL と SQLite と DuckDB、AI はローカル LLM + RAG、基幹は FastAPI。この章はその全体像と対応表であり、続く各章が一本ずつ実際に立てる。">
+<meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
+<!-- フォントは Web 配信せず、すべて端末のローカルフォントで賄う。
+     和文: UDデジタル教科書体 → BIZ UDP明朝(いずれも Windows 標準搭載の
+     モリサワ UD 書体) → ヒラギノ明朝・游明朝などのシステム明朝。
+     等幅: 端末のシステム等幅フォント。 -->
+
+<style>
+/* ============================================================
+   LOCAL FONT: UDデジタル教科書体(モリサワ)
+   Windows・教育向け端末に無償搭載。端末にあれば local() で拾い、
+   なければ BIZ UDP明朝(同じく Windows 標準搭載)→ システム明朝へ
+   フォールバックする。R と B は別ファミリー名なので、太字(700)を
+   B 書体に明示的にマッピングして疑似ボールドを避ける。
+   ============================================================ */
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 400;
+  src: local("UD デジタル 教科書体 NK-R"), local("UD Digital Kyokasho NK-R"),
+       local("UD デジタル 教科書体 NP-R"), local("UD Digital Kyokasho NP-R"),
+       local("UD デジタル 教科書体 N-R"), local("UD Digital Kyokasho N-R");
+}
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 700;
+  src: local("UD デジタル 教科書体 NK-B"), local("UD Digital Kyokasho NK-B"),
+       local("UD デジタル 教科書体 NP-B"), local("UD Digital Kyokasho NP-B"),
+       local("UD デジタル 教科書体 N-B"), local("UD Digital Kyokasho N-B");
+}
+
+/* ============================================================
+   COLOR & DESIGN TOKENS
+   aiseed.dev 全体のスタイルに合わせる場合は、ここの変数を
+   既存サイトのCSS変数に差し替える。
+   ============================================================ */
+:root {
+  --ink: #1a1a1a;
+  --paper: #f4f1ea;
+  --paper-deep: #ebe6d8;
+  --accent: #c8442a;
+  --rule: #d4cdb8;
+  --whisper: #6b665a;
+  --highlight: #f7e9c8;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* 本文: 端末にあれば UDデジタル教科書体を最優先、次に BIZ UDP明朝
+   (Windows 標準搭載)、どちらもなければヒラギノ明朝等のシステム明朝 */
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "UD Digital Kyokasho",
+               "BIZ UDPMincho", "BIZ UDP明朝",
+               "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
+               "Yu Mincho", "游明朝", "YuMincho",
+               "Noto Serif CJK JP", "Noto Serif JP", serif;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  font-feature-settings: "palt";
+  overflow-x: hidden;
+}
+
+/* グレインテクスチャ(紙の質感) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   MASTHEAD(シリーズ名・章番号)
+   ============================================================ */
+.masthead {
+  border-bottom: 3px double var(--ink);
+  padding: 24px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+}
+.masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-left a { color: inherit; text-decoration: none; }
+.masthead-left a:hover { color: var(--accent); }
+.masthead-home { color: var(--whisper); }
+.masthead-sep { margin: 0 10px; color: var(--whisper); font-weight: 400; }
+.masthead-right { font-style: italic; }
+
+/* ============================================================
+   HERO(タイトル領域)
+   ============================================================ */
+.hero {
+  padding: 80px 0 60px;
+}
+.hero-meta {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-meta::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 56px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.hero-title .accent {
+  color: var(--accent);
+}
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--whisper);
+  max-width: 580px;
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+  margin-top: 32px;
+}
+.hero-byline {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ============================================================
+   ARTICLE BODY
+   ============================================================ */
+article p {
+  margin-bottom: 24px;
+}
+
+article h2 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.4;
+  margin: 72px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+article h2::before {
+  content: "§";
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  color: var(--accent);
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+article h3 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 600;
+  font-size: 19px;
+  margin: 40px 0 16px;
+  color: var(--ink);
+}
+article h3::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+article strong {
+  font-weight: 700;
+  background: linear-gradient(to top, var(--highlight) 35%, transparent 35%);
+  padding: 0 2px;
+}
+
+article em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+article a:hover {
+  color: var(--accent);
+}
+
+/* ============================================================
+   BLOCKQUOTE
+   ============================================================ */
+blockquote {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  position: relative;
+  font-size: 18px;
+  line-height: 1.85;
+  font-style: normal;
+  color: var(--ink);
+}
+blockquote::before {
+  content: "「";
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-size: 48px;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: "Hiragino Mincho ProN", serif;
+}
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+article thead th {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+}
+article tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+article tbody tr:last-child td {
+  border-bottom: none;
+}
+@media (max-width: 720px) {
+  article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ============================================================
+   ORDERED LIST(番号付きリスト)
+   ============================================================ */
+article ol {
+  margin: 32px 0;
+  counter-reset: item;
+  padding: 0;
+}
+article ol li {
+  list-style: none;
+  position: relative;
+  padding: 16px 0 16px 56px;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: item;
+}
+article ol li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* 通常のul(章末の関連リンクなど) */
+article ul {
+  margin: 24px 0;
+  padding-left: 1.5em;
+}
+article ul li {
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   CODE BLOCK(疑似ターミナル風)
+   ============================================================ */
+article pre {
+  margin: 40px 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 24px 28px;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+  overflow-x: auto;
+}
+article pre::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 8px;
+  color: var(--whisper);
+  letter-spacing: 4px;
+}
+article pre code {
+  display: block;
+  padding-top: 16px;
+  white-space: pre;
+}
+
+/* インラインコード */
+article code {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 0.9em;
+  background: var(--paper-deep);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+article pre code {
+  background: transparent;
+  padding: 16px 0 0 0;
+  color: var(--paper);
+}
+
+/* ============================================================
+   HORIZONTAL RULE(本文中の区切り)
+   ============================================================ */
+article hr {
+  border: none;
+  text-align: center;
+  margin: 64px 0;
+  height: 1em;
+}
+article hr::before {
+  content: "◆ ◆ ◆";
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+}
+
+/* ============================================================
+   RELATED LINKS(章末の関連記事)
+   ============================================================ */
+.related-links {
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.related-links h3 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+.related-links h3::before {
+  content: none;
+}
+.related-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.related-links li {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 0;
+}
+.related-links li:last-child {
+  border-bottom: none;
+}
+.related-links a {
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.related-links .related-tag {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.related-links a:hover .related-title {
+  color: var(--accent);
+}
+
+/* ============================================================
+   FOOTER(サイト内メニュー+奥付)
+   ============================================================ */
+.site-footer {
+  margin-top: 96px;
+  border-top: 3px double var(--ink);
+  padding-top: 48px;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 48px;
+}
+.footer-col h4 {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-col li {
+  padding: 6px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.footer-col a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.footer-col a:hover { color: var(--accent); }
+
+.colophon {
+  margin-top: 48px;
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--whisper);
+  text-align: center;
+  line-height: 2;
+}
+.colophon-mark {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "Hiragino Mincho ProN", serif;
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+/* ============================================================
+   SERIES TOC(全章一覧・折りたたみ式)
+   ============================================================ */
+.series-toc {
+  margin: 24px 0 40px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 0;
+}
+.series-toc details {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+}
+.series-toc summary {
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  padding: 8px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.series-toc summary::-webkit-details-marker { display: none; }
+.series-toc summary::before {
+  content: "▸";
+  color: var(--accent);
+  font-size: 10px;
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.series-toc details[open] summary::before { transform: rotate(90deg); }
+.series-toc ol {
+  list-style: none;
+  margin: 12px 0 8px;
+  padding: 0;
+  counter-reset: none;
+}
+.series-toc li {
+  list-style: none;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--rule);
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  line-height: 1.55;
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.series-toc li::before { content: none; }
+.series-toc li:last-child { border-bottom: none; }
+.series-toc li a {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--ink);
+  flex: 1;
+}
+.series-toc li a:hover .toc-title { color: var(--accent); }
+.series-toc .toc-num {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 5em;
+}
+.series-toc li.current {
+  background: var(--paper-deep);
+  margin: 0 -12px;
+  padding: 9px 12px;
+}
+.series-toc li.current .toc-title {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ============================================================
+   IMAGES
+   ============================================================ */
+article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 32px auto;
+}
+
+/* ============================================================
+   CUSTOM BLOCKS(:::chain / :::highlight / :::quote / :::compare)
+   ============================================================ */
+.chain-diagram {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+.chain-diagram .arrow {
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0.3em;
+}
+.highlight-box {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.highlight-box p { margin-bottom: 12px; }
+.highlight-box p:last-child { margin-bottom: 0; }
+.quote-block {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+}
+.quote-block .quote-text {
+  font-size: 18px;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* ============================================================
+   ASCIIDOC BLOCKS(pyasciidoc が出力するクラス。.adoc 記事用)
+   admonition / 帰属つき引用 / 画像ブロック / 脚注 / ロール
+   ============================================================ */
+.admonition {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.admonition-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.admonition p { margin-bottom: 12px; }
+.admonition p:last-child { margin-bottom: 0; }
+.quoteblock { margin: 40px 0; }
+.quoteblock blockquote { margin: 0; }
+.quoteblock .attribution {
+  margin-top: 12px;
+  text-align: right;
+  font-size: 14px;
+  color: var(--whisper);
+}
+.quoteblock .attribution cite { font-style: normal; }
+.imageblock { margin: 32px 0; text-align: center; }
+.imageblock .content img { max-width: 100%; height: auto; }
+sup.footnote { font-size: 12px; }
+sup.footnote a { text-decoration: none; }
+.footnotes {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px;
+  color: var(--whisper);
+}
+.footnotes ol { padding-left: 1.5em; }
+.footnotes li { margin-bottom: 8px; }
+.footnotes .footnote-backref { text-decoration: none; margin-left: 0.3em; }
+/* ロール: [.chain](:::chain と同じ見た目)/ [.accent]#…# */
+article .chain {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+article .accent { color: var(--accent); }
+
+/* ============================================================
+   CHAPTER NAV(前後の記事へのリンク)
+   ============================================================ */
+.chapter-nav {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 14px;
+}
+.chapter-nav a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+}
+.chapter-nav a:hover { color: var(--accent); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 40px; }
+  blockquote { padding: 24px 20px 24px 28px; }
+  article pre { padding: 20px 16px; font-size: 12px; }
+  article ol li { padding-left: 48px; }
+  .series-toc .toc-num { min-width: 4em; font-size: 10px; }
+  .series-toc li { font-size: 13px; gap: 12px; }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta, .hero-title, .hero-subtitle, .hero-byline {
+  animation: rise 0.8s ease-out backwards;
+}
+.hero-meta     { animation-delay: 0.1s; }
+.hero-title    { animation-delay: 0.25s; }
+.hero-subtitle { animation-delay: 0.45s; }
+.hero-byline   { animation-delay: 0.65s; }
+.mermaid {
+  text-align: center;
+  margin: 2.5rem 0;
+  background: var(--paper-warm, #f5f1ea);
+  padding: 1.5rem 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.mermaid svg { max-width: 100%; height: auto; }
+
+/* ============================================================
+   WIDE LAYOUT(広い画面では目次を左サイドバーに常時展開)
+   ============================================================ */
+@media (min-width: 1200px) {
+  body.has-toc .container {
+    max-width: 1320px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 880px);
+    column-gap: 64px;
+    justify-content: center;
+  }
+  body.has-toc .masthead,
+  body.has-toc .hero {
+    grid-column: 1 / -1;
+  }
+  /* グリッドアイテム自体は行いっぱいに伸ばし、内側の details を sticky に
+     する(sticky なグリッドアイテムはグリッドエリアではなくコンテナ全体で
+     制約されるブラウザ挙動があり、フッターに重なってしまうため)。 */
+  body.has-toc .series-toc {
+    grid-column: 1;
+    grid-row: 3 / span 2;
+    margin: 0;
+    padding: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+  body.has-toc .series-toc details {
+    position: sticky;
+    top: 32px;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 0 12px 12px 0;
+  }
+  /* サイドバーでは折りたたみを無効化し、見出しとして表示 */
+  body.has-toc .series-toc summary {
+    pointer-events: none;
+    cursor: default;
+  }
+  body.has-toc .series-toc summary::before { content: none; }
+  body.has-toc .series-toc li { font-size: 13.5px; }
+  body.has-toc article    { grid-column: 2; grid-row: 3; }
+  body.has-toc .chapter-nav { grid-column: 2; grid-row: 4; }
+  body.has-toc .site-footer { grid-column: 1 / -1; grid-row: 5; }
+}
+
+/* ============================================================
+   DARK MODE(OS の配色設定に追従して自動で暗色に切り替え)
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ink: #e8e3d6;
+    --paper: #16140f;
+    --paper-deep: #211d16;
+    --accent: #e8765a;
+    --rule: #393428;
+    --whisper: #a39b88;
+    --highlight: rgba(220, 168, 78, 0.30);
+  }
+  /* 紙の質感(グレイン)を暗色背景向けに反転 */
+  body::before {
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    mix-blend-mode: screen;
+    opacity: 0.4;
+  }
+  /* コードブロックは両モードとも暗いターミナル調を維持 */
+  article pre {
+    background: #0d0c0a;
+    color: #e8e3d6;
+  }
+  article pre code {
+    color: #e8e3d6;
+  }
+  /* Mermaid 図の枠を暗色に */
+  .mermaid {
+    background: #211d16;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- MASTHEAD(ホーム › シリーズ目次) -->
+  <header class="masthead">
+    <div class="masthead-left"><a href="/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="/ai-native-software/">AI ネイティブなソフトウェア開発</a></div>
+    <div class="masthead-right">2-01 / Series</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-meta">2-01 № 01 · 2026</div>
+
+    <h1 class="hero-title"><span class="accent">Microsoft と Google</span> を、<br>自前の道具に解く。</h1>
+
+    <p class="hero-subtitle">ビジネスの土台を、ベンダーの檻から自分の手元へ</p>
+
+    <div class="hero-byline">
+      <span>2026.07.01</span>
+      <span><a href="https://aiseed.dev/en/ai-native-software/independence/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">🌐 EN</a></span>
+    </div>
+  </section>
+
+  <!-- SERIES TOC(全章一覧・現在の章をハイライト) -->
+  
+
+  <!-- ARTICLE BODY -->
+  <article>
+    <p>Microsoft 365 と Google Workspace の問題は、中身が閉じていること、そして鍵(認証)が一社の手元に集中していることだ。束は、その二つを全層に広げる増幅器である。</p>
+<p>導入編で、組み込みのロジックを Python に外部化し、基幹ロジックを書けるようにした。自立編は、その手元の力を会社全体の土台に広げる。認証・文書・共有・メール・会議・Web・データ・AI が一社に束ねられた SaaS スイートを、契約から解いて、自分の側に置き直す。ここからは「コードを書く」ではなく「基盤を立てる」段になる。</p>
+<p>やることは一つだ。<strong>閉じた束を、開いた道具に解いて、鍵を自分の手元に移す</strong>。その「開かせる」力が AI である。Office スイートも、業務システムも、同じやり方で開く。この章は地図だ。各層が何にどう対応し、どの章で立てるかを、最初に一望する。</p>
+<h2>ロックインの正体は、閉じていることと、他人の鍵だ</h2>
+<p>Microsoft 365 が便利なのは、ログイン(Entra ID)が文書(Office)に、文書が共有(SharePoint)に、共有がメール(Exchange)に、そして全部に AI(Copilot)が、同じアカウントで一直線に繋がっているからだ。</p>
+<p>Google Workspace も同じ構造である。Google ID が Gmail に、Drive に、Meet に、Gemini に一直線に繋がる。名前が違うだけで、束ね方は同じだ。一つのアカウントで、文書も、メールも、会議も、AI も、すべてが一社の中で連結している。</p>
+<p>ここで正確に切り分ける。束ねること自体は、罪ではない。道具は繋がっているから仕事になるのであり、この自立編が立てるスタックも、認証を一つの門に集め、道具同士を継いで使う。束が危険になるのは、束の中身が次の二つの性質を持つときだ。</p>
+<p>第一に、閉じている。書式は独自形式、コードは読めず、データは向こうのクラウドにある。中で何が起きているかを検証できず、丸ごと持ち出すこともできない。開いた束なら、いつでも解ける。閉じた束は、出口が塞がれている。</p>
+<p>第二に、鍵が他人の手元にある。全層が Entra ID や Google ID という一つの門にぶら下がる。文書に触るにも、メールを読むにも、まず他人の門を通る。鍵を握る者は、価格も、ポリシーも、アカウントの生殺与奪も握る。</p>
+<p>この構造は、Office スイートだけのものではない。業務システム(基幹)も、同じ立ち方をしている。コードは読めず、仕様は文書化されていない。これが閉である。仕組みの理解と保守は SIer の手元にある。これが他人の鍵だ。会社の情報基盤は、事務と基幹の両側で、閉じたものが他人の鍵にぶら下がってきた。</p>
+<p>そして束は、この二つを全層に増幅する。</p>
+<ul>
+<li>値上げは全層まとめて効く。逃げ場が無い</li>
+<li>データポリシーの変更は全層まとめて効く</li>
+<li>一社の障害は全層まとめて止まる(序章の単一障害点)</li>
+<li>門を閉じられれば、全層から同時に締め出される</li>
+<li>ベンダー AI(Copilot / Gemini)の判断基準は全層に浸透する</li>
+</ul>
+<div class="quoteblock">
+<blockquote>
+<p>束ねられているから危険なのではない。閉じた束が、他人の鍵にぶら下がっている。それがロックインの正体だ。</p>
+</blockquote>
+</div>
+<p>だから解き方も決まる。各層を開いた道具に分け、鍵を自分の手元に移す。開いていれば検証でき、持ち出せる。鍵が手元にあれば、締め出されない。そして解けた束は、一本ずつ置き換えられて、一本が倒れても他は動く。これは親シリーズ2-13「1人+AI」と同じ、自立した N は集中した 1 より強い、の会社版である。</p>
+<h2>閉じたものを開かせる ── それが AI の役割だ</h2>
+<p>なぜ、いまになって解けるのか。閉が防壁として機能してきたのは、<strong>開くコストが人間には高すぎた</strong>からだ。独自形式を解析する。読めないコードを読み解く。文書化されていない業務の仕組みを復元する。どれも数年・数億円の仕事だった。だから「動いているものに触るな」が正解であり続けた。</p>
+<p>AI は、まさにこのコストを潰す。</p>
+<ul>
+<li>独自形式を開く。Office / Docs の書式は aiseed office が扱い(2-06)、埋め込まれたマクロやロジックは AI が Python に外部化する(導入編・親シリーズ第2章)</li>
+<li>読めないコードを開く。レガシー基幹のコード・SQL・手順書を、ローカル LLM が読み解いて、Markdown の業務知識に取り出す(2-10・2-12)</li>
+<li>閉じ込められた知識を開く。紙・画像・属人知を、OCR と対話で構造化された情報に変える(2-11)</li>
+</ul>
+<p>Office スイートも、業務システムも、同じ「閉じた束が他人の鍵にぶら下がる」構造で立っている。AI は、その両方の閉を同じ操作で開く。読む・抽出する・翻訳する。AI が最も得意な操作は、そのまま開錠の操作である。</p>
+<div class="quoteblock">
+<blockquote>
+<p>閉は、開くコストが高いあいだだけ、防壁だった。
+AI がそのコストを潰した。閉じたものは、開かせればいい。</p>
+</blockquote>
+</div>
+<p>鍵も同じだ。これまで鍵を自分の手元に移せなかったのは、門番(認証基盤)を自前で立てて運用する力が、普通の会社に無かったからだ。その運用も、AI が相棒になった(後述「一人 + AI」)。閉を開く力と、鍵を持つ力。二つとも、AI が自分の手に戻した。だから自立編は、いま書ける。</p>
+<h2>ベンダーは自分からは開かない ── だから、開いた道具を AI で育てる</h2>
+<p>もし Microsoft と Google が、スイートを開いた部品に分けて提供してくれたら、会社の IT は一気に簡単になる。書式を開き、鍵を返し、層ごとに差し替え可能にしてくれればいい。SIer が納品物を、読めるコードと文書で開いてくれても同じだ。</p>
+<p>だが、それは起きない。閉じていることと、鍵を握っていることが、商売の本体だからだ。開くことは、自らの堀を埋めることと同義になる(ロックインが商品そのものである構造は 3-04 で詳述)。ベンダーの善意を待つ道は、構造的に閉じている。</p>
+<p>だから、進む道は逆側にある。<strong>開いた道具を、AI の速度で育てる</strong>。AI の役割は「閉じたものを開かせる」だけではない。開いたものを育てるときにこそ、最も速く回る。OSS はコードも仕様も開いているから、あなたの連れてきた AI がそのまま開発者になれる。足りない機能は AI と書き足し、自社の業務に合わない癖は AI と直す。かつて OSS の弱点だった「痒いところは自分で書くしかない」は、AI が相棒になった瞬間、一番速い改善経路に変わった。</p>
+<p>閉じた道具では、この経路が塞がっている。あなたが AI を連れて行っても、中身に触れない。要望を出して、ベンダーのロードマップを待つだけだ。開いた道具と閉じた道具の差は、AI の登場で縮まったのではない。AI の速度で、これから開き続ける。</p>
+<p>現実は、むしろ逆方向に動いている。ベンダーは AI を、開く道具としてではなく束を締め直す道具として組み込んでいる。ベンダー AI は束の最上層に座り、閉じた各層を AI ごしに縫い合わせ、解く理由をまた一つ消しにかかる。そして既存の IT 関係者の多くも、同じ方向に流れる。使い慣れた閉じたスタックの上にベンダー AI を載せる提案が、いちばん摩擦が少ないからだ。開く方向は、内側からは出てこない。</p>
+<p>この動きの筋の悪さは、革命の見立てを一つ正すと、はっきり見える。AI はよく産業革命、つまり機械が労働を置き換えた話にたとえられる。だが、AI をどこに置くかを考えるときの正しい先例は、活版印刷と同じ「情報革命」のほうだ。活版印刷は、写本という既存の仕組みに足された便利な機能ではなかった。文字を扱う新しいインフラとして独立に立ち、既存の情報の流れのほうが、その上で組み直された。写本工房の隅に印刷機を据えて「写本が速くなった」と呼んだ者はいない。OS も Office スイートも、情報を置いて動かすインフラだ。そして AI は、情報を読み、変換し、作る別のインフラである。ベンダーの組み込み AI とは、別のインフラを既存インフラの一機能として埋め込むことだ。新しいインフラを、旧いインフラの付属品に格下げしている。独立したインフラは、独立に立てて、どの道具からも使えるようにする。自立編が AI を束の中ではなく外に、それも最後に(2-12)据えるのは、この見立ての帰結だ。</p>
+<p>見立てには、続きがある。活版印刷にも前段があった。紙が普及し、写本が数世紀かけて文字を蓄えた。印刷機が爆発させたのは、その蓄積だ。同じ関係で、「IT 革命」と呼ばれた数十年は、AI 革命の前段だった(1-01 の「成就」を、AI 革命の側から言い直した読み方だ)。そして前段が遺した最大の資産は、閉じたスイートではなく、OSS という開いたコードと知識の共有財のほうだ。新しいインフラは、この開いた蓄積の上でこそ最も速く回る。だから「開いた道具を AI の速度で育てる」は、迂回路ではなく本流である。そう見れば、IT 業界が AI に与えている扱い、つまり写本工房の隅に印刷機を据えることも説明がつく。前段の担い手が、次の革命を自分の工房の一角に収めようとする、いつもの反応にすぎない。</p>
+<p>もう一つの無駄遣いも、名指ししておく。何もないところから、AI にその場その場でコードを書かせて積み上げる。ライブコーディングだけでは、世の中の平均的なソフトウェアを、高い計算資源で再発明することにしかならない。AI の出力は、渡す構造が薄いほど平均に収束する。積み上がる使い方は一つだ。実績ある開いた道具を土台に据え、足りない差分だけを AI と書く(1-05 の OSS ファースト)。</p>
+<p>ベンダーが開くのを待つ必要はない。内側から開く動きも来ない。開いた道具を、AI の速度で育てればいい。</p>
+<h2>対応表 ── Microsoft と Google を、独立した OSS に解く</h2>
+<p>束を解くと、Microsoft 365 と Google Workspace の各層は、同じ独立した OSS に着地する。左の二列を、同じ右に置き換える。</p>
+<table class="comparison-table fade-in">
+<thead>
+<tr>
+<th>Microsoft 365</th>
+<th>Google Workspace</th>
+<th>自前(OSS)</th>
+<th>立てる章</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Microsoft のクラウド</td>
+<td>Google のクラウド</td>
+<td>Debian の PC 一台</td>
+<td><a href="/ai-native-software/ai-pc/">2-02</a></td>
+</tr>
+<tr>
+<td>Entra ID</td>
+<td>Google ID / Cloud Identity</td>
+<td>PocketBase</td>
+<td><a href="/ai-native-software/auth/">2-04</a></td>
+</tr>
+<tr>
+<td>Word / Excel / PowerPoint</td>
+<td>Docs / Sheets / Slides</td>
+<td>aiseed office</td>
+<td><a href="/ai-native-software/documents/">2-06</a></td>
+</tr>
+<tr>
+<td>SharePoint + GitHub</td>
+<td>Drive</td>
+<td>Forgejo + Zed</td>
+<td><a href="/ai-native-software/code/">2-05</a></td>
+</tr>
+<tr>
+<td>Exchange / Outlook</td>
+<td>Gmail</td>
+<td>Stalwart</td>
+<td><a href="/ai-native-software/mail/">2-07</a></td>
+</tr>
+<tr>
+<td>Teams / Bookings</td>
+<td>Google Meet / Calendar</td>
+<td>Jitsi・Cal.com(講座は BigBlueButton)</td>
+<td><a href="/ai-native-software/meetings/">2-08</a></td>
+</tr>
+<tr>
+<td>Power Pages</td>
+<td>Google Sites</td>
+<td>Cloudflare Pages</td>
+<td><a href="/ai-native-software/web/">2-09</a></td>
+</tr>
+<tr>
+<td>Azure SQL</td>
+<td>Cloud SQL / BigQuery</td>
+<td>PostgreSQL・SQLite</td>
+<td><a href="/ai-native-software/foundation/">2-03</a></td>
+</tr>
+<tr>
+<td>Power BI / Excel</td>
+<td>Looker / Sheets</td>
+<td>DuckDB + Polars</td>
+<td><a href="/ai-native-software/foundation/">2-03</a></td>
+</tr>
+<tr>
+<td>(Power Apps 等)</td>
+<td>Apps Script</td>
+<td>FastAPI</td>
+<td><a href="/ai-native-software/fastapi/">2-10</a></td>
+</tr>
+<tr>
+<td>Copilot</td>
+<td>Gemini</td>
+<td>ローカル LLM(Command A+ 等)+ RAG</td>
+<td><a href="/ai-native-software/ai/">2-12</a></td>
+</tr>
+</tbody>
+</table>
+<p>一番上の行が、新しく入った層である。会社の PC を一台 Debian にして AI に渡す。以降に立てるものは、全部その一台の上に乗る。文書の層は aiseed office(<code>aiseed-dev/officework</code>)だ。ONLYOFFICE が日本語の様式では使い物にならないという理由と、その解き方は 2-06 が受け持つ。</p>
+<p>右側の道具は、別々の組織が作った、別々の開いた道具だ。中が読めて、形式が開いていて、データはどこへでも持ち出せる。だから、一本の方針変更が他に波及せず、一本を別のものに差し替えても、残りは何も変わらない。開いていて、鍵が自分の手元にある。これが核心で、束が解けているのはその帰結だ。</p>
+<div class="mermaid">
+flowchart TB
+  subgraph Bundle["Microsoft / Google ── 閉じた束、鍵は一社の手元"]
+    direction TB
+    E1["認証(Entra ID / Google ID)"]
+    O1["文書(Office / Docs)"]
+    S1["共有(SharePoint / Drive)"]
+    X1["メール(Exchange / Gmail)"]
+    M1["会議(Teams / Meet)"]
+    C1["AI(Copilot / Gemini)"]
+    E1 --- O1 --- S1 --- X1 --- M1 --- C1
+  end
+
+  subgraph Unbundled["自前 ── 開いた道具、鍵は自分の手元"]
+    direction TB
+    E2["PocketBase"]
+    O2["aiseed office"]
+    S2["Forgejo + Zed"]
+    X2["Stalwart"]
+    M2["Jitsi / Cal.com"]
+    C2["ローカル LLM + RAG"]
+  end
+
+  Bundle ==>|束を解く = 値上げ・障害・方針が層をまたがなくなる| Unbundled
+
+  classDef bad fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  class E1,O1,S1,X1,M1,C1 bad
+  class E2,O2,S2,X2,M2,C2 good
+</div>
+<p>この章は地図だ。構築の手順は書かない。各層の docker や設定や移行は、それぞれの章にある。ここでは、どの層がどこに対応し、どの順で解けるかだけを押さえる。Microsoft でも Google でも、置き換わる先は同じだ。だから、どちらのスイートに縛られていても、進む道は一本に合流する。そして、各章が固定するのは方式であって、コマンドの網羅ではない。手順の細部は、作業のたびに AI に聞けばよい。Gmail や Google Drive 側の記述が薄く見えるのも同じ理由で、方式が同じなら、細部は AI が埋める。手順書を厚くすることこそ、旧常識である。</p>
+<h2>変わるのはコストではなく、主導権だ</h2>
+<p>自前に解くと、月額の構造が変わる。Microsoft 365 も Google Workspace も人数 × 月額である。一人あたり月 1,000〜2,500 円で、ベンダー AI を足すとさらに数千円/人が乗る。人が増えるほど線形に増える。自前の道具一式はサーバー一台分の固定費だ。VPS なら月 1,000〜数千円、社内 miniPC なら電気代で済む。人が増えても、ほぼ増えない。</p>
+<p>しかし本質はコストではない。本質は、開いていて、鍵が自分の手元にあることだ。</p>
+<ul>
+<li>入口(認証)の生殺与奪を、他人に握られない</li>
+<li>一社が値上げしても、その一層だけ差し替えればいい</li>
+<li>一社が障害を起こしても、他の層は動き続ける</li>
+<li>一社がデータポリシーを変えても、影響はその層に閉じる</li>
+<li>AI の判断基準を、会社が選べる</li>
+</ul>
+<p>束のままでは、この五つがどれも効かない。一層だけ替えたいと思っても、全層まとめて移行するしかなく、それは事実上できない。解けていれば、その一本だけを差し替えて、他は無傷で残る。</p>
+<h2>解く順番は、機械から始まる</h2>
+<p>一気にやらなくていい。束から外しやすい順に、一本ずつ進める。自立編は、その順番でそのまま章立ててある。</p>
+<ol>
+<li>機械(2-02)。会社の PC を一台 Debian にして、AI に渡す。以降に立てるものは、全部その一台の上に乗る</li>
+<li>データ基盤(2-03)。PostgreSQL・SQLite・DuckDB。分析も RAG も予約も基幹も、すべてこの上に乗る。だから最初に据える</li>
+<li>認証(2-04)。PocketBase。全アプリ共通の門番。ここを自分の側に移すと、束の根が切れる</li>
+<li>共有と版管理(2-05)。Forgejo + Zed。SharePoint / Drive を畳む</li>
+<li>文書(2-06)。aiseed office。Office / Docs 形式の書類を自分の側で作る</li>
+<li>メール(2-07)。Stalwart。通信の中身を手元に置く</li>
+<li>会議・予約(2-08)。Jitsi・Cal.com。会議とオンライン講座を自前で</li>
+<li>Web 公開(2-09)。Cloudflare Pages。ロックインの無いホスト</li>
+<li>基幹ロジック(2-10)。FastAPI。Power Apps / Apps Script を読めるコードに戻す</li>
+<li>情報の整備(2-11)。OCR・分類・属人知の成文化。AI に載せる前に、載せるに値する情報を作る。整備こそ本体、AI は最後の一手</li>
+<li>AI(2-12)。ローカル LLM + RAG。データを社外に出さず AI を持つ</li>
+</ol>
+<p>各ステップは、2-10 の並行稼働で進める。旧(Microsoft / Google)を止めず、横で新を動かし、同じ仕事が回ることを確かめてから、旧を解約する。契約更新の時期に間に合わせる。これも 2-10 どおりだ。一気に乗り換える必要はない。解けた分だけ、束が緩む。</p>
+<h2>運用は、一人 + AI で回る</h2>
+<p>ここで当然の疑問が出る。これだけ自前で抱えて、誰が面倒を見るのか。答えは一人 + AI だ。親シリーズ第11章「1人+AI」で示した新しい仕事の単位が、そのまま会社のインフラ運用に効く。</p>
+<p>なぜ一人で回るのか。理由は三つある。</p>
+<ul>
+<li>どれも標準的な、箱に入ったオープンな道具だ。PocketBase は1ファイル、ほかは docker compose 一枚。Claude が compose を書き、DNS と DKIM を整え、ログを読み、不調を切り分ける。運用の相棒が AI である</li>
+<li>束が解けているから、障害が連鎖しない。スイートなら一社の不調が全部を巻き込むが、ここでは Forgejo が落ちてもメールは生き、AI が止まっても会議は続く。一個ずつ、独立に直せる</li>
+<li>見える・読める・テストできる。設定もログも自分の手元にある。ブラックボックスのベンダー AI と違い、AI と一緒に中を読んで直せる</li>
+</ul>
+<p>正直に、重いところも書く。運用負荷が集中するのは二つ、メールと講座(BigBlueButton)だ。メールは配送(DKIM / SPF / 評判)が繊細なので、送信だけ外部リレーに逃がす手もある。講座サーバーは重いので、講座の期間だけ立てて、終わったら畳む。残りは、立てたらほぼ放っておける。そして「残りの運用」、つまりバックアップ・監視・更新・障害を、旧来の運用手順書の常識で書く必要はない。ここでも前提が変わっている。</p>
+<p><strong>守るのは、データと仕様だけだ</strong>。実装と環境は、仕様と OSS から AI がいつでも立て直せる(2-10)。だから複製するのは、再生成できないものだけでいい。データベース・ファイル(権限の xattr ごと)・メール・業務ルールの Markdown を、毎日、別の箱へ。それだけだ。復旧の試験も、儀式ではない。「まっさらな箱に、仕様とバックアップから全部立て直して」と AI に頼めば、それがそのまま復旧試験になる。</p>
+<p>監視は、読めるログがあれば足りる。監視基盤を別に立てるのは旧常識だ。ログは全部手元にあり、死活確認と通知は AI が書く数十行で済み、ログの異常は AI に読ませる。更新も、意図した操作として行う。版を上げるときはリリースノートを AI に読ませ、2-10 の並行稼働の要領で横で確かめてから切り替える。勝手に上がるのではなく、上げる。秘密(パスワード・鍵)は環境ファイルに分離して、箱の外に出さない。これだけは一行の決まりとして最初に書いておく。</p>
+<p>可用性は、冗長化ではなく、再構築の速さで受ける。箱が壊れたら、予備の箱に仕様とバックアップから立て直す。復旧が AI の速度なら、クラスタは要らない。1台に集中してよいのは、箱が使い捨てで、資産(データと仕様)が複製されているからだ。</p>
+<div class="quoteblock">
+<blockquote>
+<p>守るのは、データと仕様だけ。箱と実装は、いつでも立て直せる。運用の非機能要件は、AI への依頼文の数行に潰れる。</p>
+</blockquote>
+</div>
+<p>箱そのもの、つまり会社の PC を一台 Debian にして AI に渡すところは、2-02 が受け持つ。その床にあたる OS の入れ方・SSH・守りの基本・データを守るは、<a href="/claude-debian/server/">「Claudeと一緒に学ぶDebian サーバー編」</a>がそのまま仕様になる。ここでも、汎用は参照で済む。</p>
+<p>これは親シリーズ第11章の主旨そのものだ。縦割りの情報システム部門は要らない。業務を分かっている一人が、AI を相棒に、認証からメール、会議、AI、データベースまでを横断して持つ。個人の自立が、会社のインフラのレベルで成立する。これだけのオープンな道具を、一人 + AI が運用する。スイートを一社に預けるのと、手間は変わらない。主導権だけが、自分の側に移る。</p>
+<h2>この土台は、そのまま基幹システムの土台になる</h2>
+<p>ここまで組んだものは、そのまま基幹システムを書き換える土台になる。2-10「API を作る」で説く並行稼働の書き換えは、実は立つ場所(プラットフォーム)を前提にしていた。その場所が、自立編で全部そろう。</p>
+<ul>
+<li>新しい基幹システムが動く DB。PostgreSQL + pgvector(2-03)</li>
+<li>実行系。FastAPI / Python + Rust 下層(2-10)</li>
+<li>版管理と CI。Forgejo(2-05)</li>
+<li>認証。PocketBase が、新システムのログインを一手に引き受ける(2-04)</li>
+<li>業務ロジックの抽出。レガシーのコード・SQL・手順書を、ローカル LLM + RAG(2-12)で読み解いて Markdown に出す。ソースを一歩も社外に出さずに</li>
+</ul>
+<p>そもそも、これまで基幹システムと Microsoft / Google が共有していたのは、たった二つだけだった。認証(Entra ID / Google ID)と、文書共有(SharePoint / Drive)である。業務システムの世界とオフィスの世界は本来ほとんど別物で、この二つの継ぎ目だけで繋がっていた。</p>
+<p>その二つは、自立編で PocketBase と Forgejo に置き換える。つまり継ぎ目は、もう自分の側にある。新しい基幹システムは、オフィス系と同じ PocketBase で認証し、同じ Forgejo で文書と版を共有する。ベンダーを介さずに、二つの世界が再び一点で出会う。</p>
+<div class="mermaid">
+flowchart TB
+  Core["基幹システム<br/>FastAPI + PostgreSQL"]
+  Office["オフィス系<br/>aiseed office / メール / 会議 / 講座"]
+  Auth["PocketBase<br/>認証 = 旧 Entra ID / Google ID の継ぎ目"]
+  Share["Forgejo<br/>共有・版管理 = 旧 SharePoint / Drive の継ぎ目"]
+  Core -->|同じ認証| Auth
+  Office -->|同じ認証| Auth
+  Core -->|同じ共有| Share
+  Office -->|同じ共有| Share
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  class Core,Office,Auth,Share good
+</div>
+<p>二つの継ぎ目は、同じ重さではない。共有は「置き場所」、認証は「鍵」だ。文書の置き場所は後からいくらでも動かせる。だが認証は、両方の世界のすべてのアプリ・ログイン・権限がぶら下がる一点である。ここを握られている限り、何を自前にしても入口は他人のものだ。</p>
+<p>だから、<strong>自立編で本当に効く一手は、認証 → PocketBase(2-04)だ</strong>。識別の継ぎ目を自分の側に移した瞬間、基幹もオフィスも自分の門番に対して認証する。Microsoft も Google も最も深く食い込ませようとするのは、ここである。ID 基盤こそ、束の根だからだ。ここを押さえれば、残りは時間の問題になる。</p>
+<p>念のため言えば、PocketBase もまた、認証を一点に集める。集中そのものは消せない。全アプリが同じ門を使うから便利なのであり、それは自前でも変わらない。違いは二つだけだ。鍵が自分の手元にあること。そして開いているから、いつでも差し替えられること。冒頭の解剖に戻れば、集中が問題なのではない。閉じた集中が、他人の手元にあることが問題だったのだ。</p>
+<h2>AI ネイティブの時代には、作り直しが当然になる</h2>
+<p>最後に、一段引いて見る。Microsoft や Google のスイートを書き換えるのは、特別な決断ではない。AI ネイティブの時代には、作り直しのほうが当然になる。</p>
+<p>理由は二つが噛み合っている。</p>
+<p>一つ目。スイートの作りは、構造的に「反 AI ネイティブ」だ。中身を Office / Docs の書式に閉じ込め、データをクラウドに幽閉し、ベンダー AI を検証層なしで業務に直結する。これらは偶然ではない。AI が触れる場所、つまり素のテキスト・開いた形式・手元実行・読めるコードから、中身を遠ざける設計である。AI を同僚にしようとするほど、この壁にぶつかる。</p>
+<p>二つ目。書き換えのコストが、10 分の 1 になった(2-10)。AI が業務ロジックを抽出し、Python に翻訳し、テストを書く。数年・数億円のプロジェクトが、現場の一人 + AI の数ヶ月になった。</p>
+<p>古い構造が AI ネイティブと噛み合わず、しかも作り直しが安い。この二つが重なれば、結論は一つだ。残すほうが不自然になる。かつて「動いているものに触るな」が正解だったのは、書き換えが高すぎたからにすぎない。その前提が消えた今、作り直さない理由のほうが、説明を要する。</p>
+<p>これは Microsoft や Google への敵意ではない。IT 革命が積み上げたものを、AI 革命が作り直して引き継ぐ。その自然な一巡だ(序章・親シリーズ第11章)。問われているのは「やるか」ではなく「いつ、誰が主導でやるか」。ベンダーに預けたままにするか、自分の側で作り直すか。それだけだ。</p>
+<h2>この解き方は、公開リポジトリで確かめられる</h2>
+<p>この解き方を道具一式にしたのが、公開リポジトリ aiseed-migration-kit(<a href="https://github.com/aiseed-dev/aiseed-migration-kit"><code>aiseed-dev/aiseed-migration-kit</code></a>)だ。公開 Web の静的化(取り込み → 分類 → Markdown 化 → 生成 → 配信)と、問い合わせの様式方式(Web フォームを作らず、xlsx 様式とメール受付で機械可読に受ける)を、CLI 一式と設計書で持つ。設計書(DESIGN.md)には本章の対応表が、認証・境界・配置の理由づけごと書いてある。読んでから、自分の組織に当てはめられる。文書側の参考実装は kura(2-06)、業務システム側の実例は seminar-kit(2-10)。章で言葉にした設計は、どれもコードで確かめられる。</p>
+<h2>確かめ方</h2>
+<p>この章は、次の四つができていれば済みだ。手を動かすのは紙か画面の上だけで、サーバーはまだ立てない。</p>
+<ol>
+<li>自分の会社がいま使っている道具を、対応表の左の二列に書き出せている。機械・認証・文書・共有・メール・会議・Web・データ・基幹・AI の各層について、Microsoft 365 側か Google Workspace 側かを埋める</li>
+<li>その一行ずつに、右の列(自前の OSS)と、立てる章の番号を書けている。使っていない層は、空のまま残してよい</li>
+<li>層ごとの契約更新日を書き出せている。並行稼働は、この日付に間に合わせる</li>
+<li>解く順番を、一番目から十一番目まで自分の言葉で並べられている。先頭は機械(2-02)で、そこから先は自分の会社の事情で入れ替えてよい</li>
+</ol>
+<p>この章で動かすものは無い。確かめるコマンドも無い。表が一枚できていれば、次の章に進める。</p>
+<h2>人が持つ物</h2>
+<p><strong>人が渡す値</strong></p>
+<ul>
+<li>いま契約している SaaS の一覧。Microsoft 365 か Google Workspace か、そのうちどの層を実際に使っているか</li>
+<li>層ごとの契約更新日と、一人あたりの月額</li>
+<li>解く順番の決定。どの層から手を付けるかは、会社の事情で人が決める</li>
+</ul>
+<p><strong>AI が「やる前に言う」操作</strong></p>
+<ul>
+<li>旧スイートの解約。並行稼働で同じ仕事が回ることを確かめる前に、解約してはいけない</li>
+<li>旧スイートからのデータの書き出しと、書き出し元の削除。消す側は、写しが手元で開けることを確かめてからにする</li>
+</ul>
+<h2>確かめた版と日付</h2>
+<ul>
+<li>この章で版を決める道具は無い。対応表に載るのは製品名だけで、版はそれぞれを立てる章で決める。PocketBase、aiseed office(<code>aiseed-dev/officework</code>、<code>pip install officework</code>、エンジン 0.5.0)、Forgejo、Zed、Stalwart、Jitsi、Cal.com、BigBlueButton、Cloudflare Pages、PostgreSQL、SQLite、DuckDB、Polars、FastAPI、ローカル LLM(Command A+ 等)</li>
+<li>手順を書いたのは 2026.07.01</li>
+<li>版が上がっていたら、AI に公式の手順を確かめさせてから進める</li>
+</ul>
+<h2>まとめ</h2>
+<p>ビジネス用の Microsoft 365 と Google Workspace は、閉じた層を一社に束ね、その全部を一つの鍵(認証)にぶら下げた SaaS スイートだ。業務システムも、同じ構造で立ってきた。危険なのは束ねられていることではない。閉じた束が、他人の鍵にぶら下がっていることだ。そして、その閉を開かせることが AI の役割である。自立編は、AI と一緒にこの束を一層ずつ開いた OSS に解き、鍵を自分の手元に移す。二つのスイートが、同じ右側に着地する。</p>
+<ul>
+<li>機械:ベンダーのクラウド → Debian の PC 一台(2-02)</li>
+<li>認証:Entra ID / Google ID → PocketBase(2-04)</li>
+<li>文書:Office / Docs → aiseed office(2-06)</li>
+<li>共有・版管理:SharePoint+GitHub / Drive → Forgejo + Zed(2-05)</li>
+<li>メール:Exchange / Gmail → Stalwart(2-07)</li>
+<li>会議・予約:Teams / Meet → Jitsi・Cal.com(2-08)</li>
+<li>Web 公開:Power Pages / Sites → Cloudflare Pages(2-09)</li>
+<li>データ基盤:Azure SQL / Cloud SQL → PostgreSQL・SQLite(2-03)</li>
+<li>データ分析:Power BI / Looker → DuckDB + Polars(2-03)</li>
+<li>基幹ロジック:Power Apps / Apps Script → FastAPI(2-10)</li>
+<li>AI:Copilot / Gemini → ローカル LLM + RAG(2-12)</li>
+</ul>
+<p>一対一で、左を右に置き換える。右の道具は別々の組織が作った別々の開いた道具だから、中が読めて、持ち出せて、一本の方針変更が他に波及しない。これは効率化の話ではない。親シリーズ2-13「1人+AI」を、会社の土台の高さで言い直したものだ。<strong>集中した 1 より、自立した N が強い</strong>。</p>
+<p>閉じた束を、開いた道具に解く。鍵を、自分の手元に。開かせる力(AI)は、もう手元にある。一本ずつ、自分のペースで。解けた分だけ、会社はベンダーの人質ではなくなり、自分たちの判断で動けるようになる。次の章では、その一本目を立てる。会社の PC を一台 Debian にして、AI に渡す。以降のすべては、その一台の上に乗る。</p>
+<hr />
+<h2>関連記事</h2>
+<ul>
+<li><a href="/ai-native-software/ai-pc/">2-02: AI に PC を一台渡す ── 自立編を動かす機械</a></li>
+<li><a href="/ai-native-software/foundation/">2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars</a></li>
+<li><a href="/ai-native-software/documents/">2-06: 文書を取り戻す</a></li>
+<li><a href="/ai-native-software/fastapi/">2-10: API を作る ── FastAPI で基幹のロジックを出す</a></li>
+<li><a href="/insights/enterprise-tax/">構造分析08: 企業ITの税を引く</a></li>
+<li><a href="/blog/windows-office-facts/">それでも Windows と Office を使い続けますか?</a></li>
+</ul>
+
+  </article>
+
+  <!-- CHAPTER NAV(前後の記事) -->
+  <nav class="chapter-nav">
+  <a href="/ai-native-software/customer-codev/" rel="prev">&larr; 前: 顧客が AI と協働して開発する時代</a>
+  <a href="/ai-native-software/ai-pc/" rel="next">次: AI に PC を一台渡す ── 自立編を動かす機械 &rarr;</a>
+</nav>
+
+  <!-- FOOTER(サイト内メニュー+奥付) -->
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="サイト内リンク">
+      <div class="footer-col">
+        <h4>記事シリーズ</h4>
+        <ul>
+          <li><a href="/insights/">構造分析</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/ai-native-ways/">AIネイティブな仕事の作法</a></li>
+          <li><a href="/claude-debian/">Claudeと一緒に学ぶDebian</a></li>
+          <li><a href="/phosphorus-and-farming/">リン資源枯渇と自然農法</a></li>
+          <li><a href="/fable/">Fable 5 が帰ってきた</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>サイト</h4>
+        <ul>
+          <li><a href="/">ホーム</a></li>
+          <li><a href="/natural-farming/">自然農法とは</a></li>
+          <li><a href="/light-farming/">Light Farming</a></li>
+          <li><a href="/gallery/">畑の記録</a></li>
+          <li><a href="/about/">私たちのアプローチ</a></li>
+          <li><a href="/privacy/">プライバシー</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="colophon">
+      <div class="colophon-mark">§</div>
+      AI ネイティブなソフトウェア開発 · 2-01<br>
+      Tokushima · 2026.07.01<br>
+      <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">CC BY 4.0</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // 広い画面ではサイドバー目次を常時展開する(狭い画面では折りたたみに戻す)
+  (function () {
+    var toc = document.querySelector(".series-toc details");
+    if (!toc) return;
+    var mq = window.matchMedia("(min-width: 1200px)");
+    function sync() { toc.open = mq.matches; }
+    sync();
+    if (mq.addEventListener) mq.addEventListener("change", sync);
+    else mq.addListener(sync);
+  })();
+
+  // Mermaid loads only on pages that contain a .mermaid block.
+  // Self-hosted (no third-party CDN dependency); SRI verified.
+  if (document.querySelector(".mermaid")) {
+    const s = document.createElement("script");
+    s.src = "/js/vendor/mermaid-11.14.0.min.js";
+    s.integrity = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk";
+    s.crossOrigin = "anonymous";
+    s.onload = () => {
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      mermaid.initialize({ startOnLoad: false, theme: prefersDark ? "dark" : "default" });
+      mermaid.run();
+    };
+    document.head.appendChild(s);
+  }
+</script>
+
+
+</body>
+</html>

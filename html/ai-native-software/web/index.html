@@ -15,24 +15,24 @@
   gtag('config', 'G-9FLQ963JXM');
 </script>
 
-<title>デジタル主権 ── Microsoft 問題と Trump 問題 — AI ネイティブなソフトウェア開発 | aiseed.dev</title>
-<meta name="description" content="つい最近まで、Microsoft 365 は経済的でも安全でもある既定値だった ── だからこそ誰もが買った。その前提が反転した。OSS + ソブリン(自己ホスト・ローカル重み)AI のほうが、いまやコストでも安全保障でも有利だ。Microsoft 問題 ── 上がり続ける人数課金、CLOUD Act の下にある米国企業のクラウド上のデータ、不透明なテレメトリ、Copilot を経由して Microsoft のモデルに流れる内容。便利さこそが依存だ。Trump 問題 ── 米国ビッグテックに依存することは米国政府の善意に依存することであり、トランプ政権はその依存を武器化しないと信頼できない(制裁・遮断)。だから Microsoft から離れることは、もはやイデオロギーではない ── 新しい経済かつ安全保障の合理だ。転換編の事務(Microsoft)側の前提を据える。">
-<link rel="canonical" href="https://aiseed.dev/ai-native-software/sovereignty/">
-<link rel="alternate" hreflang="ja" href="https://aiseed.dev/ai-native-software/sovereignty/">
-<link rel="alternate" hreflang="en" href="https://aiseed.dev/en/ai-native-software/sovereignty/">
-<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/ai-native-software/sovereignty/">
+<title>Web を公開する ── Cloudflare Pages — AI ネイティブなソフトウェア開発 | aiseed.dev</title>
+<meta name="description" content="親シリーズ第6章で AI と作った静的サイトを、自分の側から公開する。動的な WordPress をやめ、焼いた HTML を Cloudflare Pages に置く ── サーバは持たない。CDN と自動 HTTPS は Cloudflare に任せ、ソースとビルドは自分の手元に残す。肝は「ビルド → 確認 → デプロイ」を分けること。確認した HTML と本番に上げる HTML を同じにする。内部の道具は門番の内側に残す ── 窓は借り、金庫は自分に。人が持つのは、ドメインと API トークン、本番へ上げる判断の三つだ。">
+<link rel="canonical" href="https://aiseed.dev/ai-native-software/web/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/ai-native-software/web/">
+<link rel="alternate" hreflang="en" href="https://aiseed.dev/en/ai-native-software/web/">
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/ai-native-software/web/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="AI時代の暮らし">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:title" content="デジタル主権 ── Microsoft 問題と Trump 問題">
-<meta property="og:description" content="つい最近まで、Microsoft 365 は経済的でも安全でもある既定値だった ── だからこそ誰もが買った。その前提が反転した。OSS + ソブリン(自己ホスト・ローカル重み)AI のほうが、いまやコストでも安全保障でも有利だ。Microsoft 問題 ── 上がり続ける人数課金、CLOUD Act の下にある米国企業のクラウド上のデータ、不透明なテレメトリ、Copilot を経由して Microsoft のモデルに流れる内容。便利さこそが依存だ。Trump 問題 ── 米国ビッグテックに依存することは米国政府の善意に依存することであり、トランプ政権はその依存を武器化しないと信頼できない(制裁・遮断)。だから Microsoft から離れることは、もはやイデオロギーではない ── 新しい経済かつ安全保障の合理だ。転換編の事務(Microsoft)側の前提を据える。">
-<meta property="og:url" content="https://aiseed.dev/ai-native-software/sovereignty/">
+<meta property="og:title" content="Web を公開する ── Cloudflare Pages">
+<meta property="og:description" content="親シリーズ第6章で AI と作った静的サイトを、自分の側から公開する。動的な WordPress をやめ、焼いた HTML を Cloudflare Pages に置く ── サーバは持たない。CDN と自動 HTTPS は Cloudflare に任せ、ソースとビルドは自分の手元に残す。肝は「ビルド → 確認 → デプロイ」を分けること。確認した HTML と本番に上げる HTML を同じにする。内部の道具は門番の内側に残す ── 窓は借り、金庫は自分に。人が持つのは、ドメインと API トークン、本番へ上げる判断の三つだ。">
+<meta property="og:url" content="https://aiseed.dev/ai-native-software/web/">
 <meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
 <meta property="article:section" content="AI ネイティブなソフトウェア開発">
-<meta property="article:published_time" content="2026.07.21">
+<meta property="article:published_time" content="2026.07.14">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="デジタル主権 ── Microsoft 問題と Trump 問題">
-<meta name="twitter:description" content="つい最近まで、Microsoft 365 は経済的でも安全でもある既定値だった ── だからこそ誰もが買った。その前提が反転した。OSS + ソブリン(自己ホスト・ローカル重み)AI のほうが、いまやコストでも安全保障でも有利だ。Microsoft 問題 ── 上がり続ける人数課金、CLOUD Act の下にある米国企業のクラウド上のデータ、不透明なテレメトリ、Copilot を経由して Microsoft のモデルに流れる内容。便利さこそが依存だ。Trump 問題 ── 米国ビッグテックに依存することは米国政府の善意に依存することであり、トランプ政権はその依存を武器化しないと信頼できない(制裁・遮断)。だから Microsoft から離れることは、もはやイデオロギーではない ── 新しい経済かつ安全保障の合理だ。転換編の事務(Microsoft)側の前提を据える。">
+<meta name="twitter:title" content="Web を公開する ── Cloudflare Pages">
+<meta name="twitter:description" content="親シリーズ第6章で AI と作った静的サイトを、自分の側から公開する。動的な WordPress をやめ、焼いた HTML を Cloudflare Pages に置く ── サーバは持たない。CDN と自動 HTTPS は Cloudflare に任せ、ソースとビルドは自分の手元に残す。肝は「ビルド → 確認 → デプロイ」を分けること。確認した HTML と本番に上げる HTML を同じにする。内部の道具は門番の内側に残す ── 窓は借り、金庫は自分に。人が持つのは、ドメインと API トークン、本番へ上げる判断の三つだ。">
 <meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
@@ -865,20 +865,20 @@ article .accent { color: var(--accent); }
   <!-- MASTHEAD(ホーム › シリーズ目次) -->
   <header class="masthead">
     <div class="masthead-left"><a href="/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="/ai-native-software/">AI ネイティブなソフトウェア開発</a></div>
-    <div class="masthead-right">3-02 / Series</div>
+    <div class="masthead-right">2-09 / Series</div>
   </header>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-meta">3-02 № 02 · 2026</div>
+    <div class="hero-meta">2-09 № 09 · 2026</div>
 
-    <h1 class="hero-title"><span class="accent">主権</span>は、いまや<br>経済でも安全保障でも有利だ。</h1>
+    <h1 class="hero-title">WordPress をやめ、<br><span class="accent">サーバ無し</span>で公開する。</h1>
 
-    <p class="hero-subtitle">OSS とソブリン AI のほうが、いまや経済でも安全保障でも有利になった</p>
+    <p class="hero-subtitle">動的な WordPress をやめ、静的サイトをサーバ無しで公開する ── ビルド・確認・デプロイを分けて</p>
 
     <div class="hero-byline">
-      <span>2026.07.21</span>
-      <span><a href="https://aiseed.dev/en/ai-native-software/sovereignty/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">🌐 EN</a></span>
+      <span>2026.07.14</span>
+      <span><a href="https://aiseed.dev/en/ai-native-software/web/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">🌐 EN</a></span>
     </div>
   </section>
 
@@ -887,129 +887,104 @@ article .accent { color: var(--accent); }
 
   <!-- ARTICLE BODY -->
   <article>
-    <p>Microsoft 365 から離れることは、もはやイデオロギーではない。*経済でも安全保障でも、それが合理的な既定値になった*。前章(3-01)で据えた前提を、もう一度置く。企業が事務をパッケージで買ったのは、自前で立てるより安くて安全だったからだ。それは正しい判断だった。</p>
-<p>その前提が、二つの方向から同時に反転した。本章は、その反転を二つの問題として見ていく。Microsoft 問題、つまり依存そのものと、Trump 問題、つまりその依存を握る米国政府を信頼しきれないことだ。</p>
-<h2>かつて Microsoft 365 は、安くて安全な既定値だった</h2>
-<p>まず、敵意から始めないことだ。Microsoft 365 を買ったのは、当時として合理的だった。自前でメールサーバーを立て、文書基盤を運用し、認証を管理するより、一社のスイートに束ねて任せるほうが、安く、安全で、確実だった。</p>
+    <p>会社の Web サイトは、静的でよい。前章で会議と予約を自分の側に置いた。ここでは、外に見せる Web を公開する。親シリーズ第6章で AI と作った静的サイトを、動的な
+WordPress をやめて、焼いた HTML のまま Cloudflare Pages に置く。サーバは持たない。</p>
+<h2>WordPress は、やめてよい</h2>
+<p>WordPress は、動的サーバ・データベース・プラグインの塊だ。更新・保守・セキュリティの負担が、ずっと続く。会社サイトの中身はめったに変わらない。だから <strong>静的でよい</strong>。静的ならサーバも DB も要らず、攻撃される面もほぼ無い。親シリーズ第6章で作った <code>html/</code> を、そのまま公開する。</p>
+<h2>サーバを持たずに、Cloudflare Pages へ置く</h2>
+<p>作った HTML は Cloudflare Pages に置く。サーバは要らない。ファイルを上げれば、世界中の CDN から配信され、HTTPS も自動でつく。</p>
+<p>配信と防御は Cloudflare に任せ、ソースとビルドは自分の手元に残す。公開する
+HTML に秘密は無いので、ここは任せられる。</p>
+<h2>ビルドと確認とデプロイを、分ける</h2>
+<p>公開は、手順を分けてやる。一つにまとめない。</p>
+<pre><code class="language-bash"># 1. ビルド ── html/ を作る
+python tools/build.py
+# 2. 確認 ── 作った html/ をそのまま開いて、目で見る
+python -m http.server --directory html 8000
+# 3. プレビューに上げる ── 本番の前に、実環境で確認
+python tools/deploy_pages.py html --branch preview
+# 4. 確認できたら、本番に上げる
+python tools/deploy_pages.py html --branch main
+</code></pre>
+<p>自動で作り直す設定や、「ビルドして上げる」を一つにまとめたコマンドは使わない。
+<strong>確認した HTML と、本番に上がる HTML を、同じにする</strong>ためだ(詳しい運用は社内マニュアルに分ける)。アップロードに npm や Node は要らない ── Cloudflare
+の API を直接叩くスクリプト一つでよい。そのスクリプトは公開パッケージ
+cf-publish(<a href="https://github.com/aiseed-dev/cf-publish"><code>aiseed-dev/cf-publish</code></a>)
+にしてある ── <code>cf-publish html --project &lt;名前&gt;</code> の一行で、変わったファイルだけが上がる。</p>
+<h2>ドメインは、カスタムドメインでつなぐ</h2>
+<p>独自ドメインは、Cloudflare Pages のカスタムドメインに追加する。DNS を
+Cloudflare で持っていれば、今までサーバを指していた A レコードが、自動で Pages
+に切り替わる。証明書も自動でつく。</p>
+<p><strong>メール(MX・SPF)は触らない</strong>。Web の置き場を替えるだけだ。不安なら、旧サーバを止めず、プレビューで確認してから本番ドメインを向ける。</p>
+<h2>動く部分だけ、裏につなぐ</h2>
+<p>問い合わせフォームのような動く部分だけ、裏につなぐ。送信先は、門番(2-04)の内側に置いた自分の API だ。認証は門番、保存は 2-03 の DB、通知は 2-07 のメールでやる。大半は静的で、動くのは要る所だけである。</p>
+<h2>内部の道具は、門番の内側に残す</h2>
+<p>公開サイトは Cloudflare Pages に借りる。だが、自立編で立てた内部の道具 ──
+門番・文書・コード・メール・会議 ── は別だ。秘密や生のデータが通るので、門番(自分のリバースプロキシ)の内側に残す。</p>
 <ul>
-<li>経済 ── 自前運用の人件費より、人数 × 月額のほうが安かった。</li>
-<li>安全保障 ── 自前のサーバーより、Microsoft のデータセンターのほうが、可用性も、暗号化も、パッチ適用も、確実に上だった。</li>
+<li><strong>公開サイト</strong>(静的・秘密なし)── Cloudflare Pages に借りる</li>
+<li><strong>内部の道具</strong>(認証・業務データ)── 自分の側、門番の内側に持つ</li>
 </ul>
-<p>これは 3-01 で見た「買うほうが安かった」と同じ構造だ。汎用の事務は、自前で立てる理由がなかった。コストでも、セキュリティでも、買うほうが勝っていたからだ。</p>
-<div class="quoteblock">
-<blockquote>
-<p>Microsoft 365 は、経済でも安全でも勝っていた。だからこそ、誰もが買った。それは怠慢ではなく、合理的な既定値だった。</p>
-</blockquote>
-</div>
-<p>問題は、この二つの前提 ── 安い・安全 ── が、両方とも反転したことにある。順に見る。</p>
-<h2>Microsoft 問題 ── 便利さこそが、依存だ</h2>
-<p>第一の反転は、依存そのものから来る。Microsoft 365 の便利さは、そのまま依存の構造でもある。2-01 で「便利さと人質は同じ一本の鎖の表と裏」と書いたが、その鎖を、ここでは安全保障の露出として見る。</p>
-<p>経済の面から見る。人数 × 月額は、上がり続ける。一度乗れば、価格はベンダーが決める。逃げ場のない人質に、値上げは効く。さらに Copilot がその上に積まれる。一人あたり数千円が、また乗る。永久に借り続け、価格は相手が決める。これが地代の構造だ。</p>
-<p>支配・統制の面から見る。ここが安全保障の核心だ。</p>
+<p>窓は借り、金庫は自分に。借りる所と、自分で持つ所を、分けて決める。</p>
+<p>借りている窓は、いつでも替えられる。公開サイトの実体は、静的ファイルの束と、手元のソースである。Cloudflare に預けているものは何も無い。明日、別のホストに同じファイルを置けば、それで引っ越しは終わる。窓は借りるが、出口はいつも開いている。</p>
+<h2>確かめ方</h2>
+<p>この章は、次の五つができていれば済みだ。</p>
+<ol>
+<li>公開した頁が独自ドメインで開き、ブラウザに鍵の印が付く</li>
+<li>手元の 8000 番で目で見た頁と、本番の頁が同じに見える</li>
+<li>本番の前に、プレビューの URL で同じ頁を開いて確認できる</li>
+<li>問い合わせフォームから送ると、2-07 のメールに通知が届き、2-03 の DB に残っている</li>
+<li>今までどおりメールが届く(MX を触っていない)</li>
+</ol>
+<pre><code class="language-bash">curl -sI https://example.com | head -1        # 公開した頁が返る
+curl -sI https://example.com | grep -i server # 配信元が Cloudflare に替わった
+</code></pre>
+<h2>人が持つ物</h2>
+<p><strong>人が渡す値</strong></p>
 <ul>
-<li>データは米国企業のクラウドにある ── 文書も、メールも、予定も、あなたの手の届かない場所にある。そして米国の CLOUD Act の下では、そのデータは米国政府の令状の対象になりうる。データが米国外にあっても、だ。</li>
-<li>テレメトリは不透明だ ── 何が、いつ、どこへ送られているか、あなたには監査できない。ブラックボックスの中で動いている。</li>
-<li>Copilot は内容を Microsoft のモデルに通す ── 業務の文書も会話も、検証層なしに、ベンダーのモデルを経由する。</li>
+<li>公開するドメイン名</li>
+<li>Cloudflare のアカウントと API トークン</li>
+<li>Pages のプロジェクト名(<code>--project &lt;名前&gt;</code> に渡す値)</li>
+<li>問い合わせフォームの送信先にする、自分の API の URL</li>
+<li>問い合わせの通知を受けるメールアドレス(2-07 のメール)</li>
 </ul>
-<p>これらは機能の弱さではない。便利であることの、裏の構造だ。同じアカウントで全層が繋がっているから便利で、同じ一点を握られているから依存している。
-2-01 が「閉じた束が、他人の鍵にぶら下がっている ── それがロックインの正体」と言ったのと、同じ構造を、ここではセキュリティの露出として読む。</p>
-<h2>Trump 問題 ── 米国政府は、信頼できない</h2>
-<p>ここが本章の核心だ。米国ビッグテックに依存することは、米国政府の善意に依存することだ。そして、その善意は、いまや前提にできない。</p>
-<p>論理は単純だ。あなたのデータも、メールも、AI も、米国企業のインフラの上にある。その米国企業は、米国政府の管轄下にある。だから、米国政府が動けば、あなたの「自分の」サービスは、あなたの意思とは無関係に切られうる。制裁、輸出規制、特定の組織・企業・国へのサービス遮断。これらはすべて、米国政府の手の内にある。</p>
-<p>これは抽象的な懸念ではない。2025 年、現実に起きた。</p>
-<h3>ICC の事例 ── 「あなたの」サービスは、外国政府に切られうる</h3>
-<p>2025 年 2 月、トランプ政権は大統領令で、国際刑事裁判所(ICC)の主任検察官カリム・カーン氏に制裁を科した。その後、カーン氏は自身の Microsoft
-アカウントにアクセスできなくなり、スイスの Proton Mail に移った。Microsoft
-は「ICC へのサービス停止には一切関与していない」と否定している。だが事実として、米国の制裁の後に、当事者は米国クラウドのメールを失った。そして同年
-10 月、ICC は Microsoft Office から、ドイツのデジタル主権機関が開発する
-OSS の OpenDesk へ移行することを決めた。</p>
-<p>構造として読めば、教訓は一つだ。*米国政府の一手で、米国クラウド上の「あなたの」サービスは断たれうる*。国際機関ですら、そうだった。詳細の責任所在 ── ベンダーか政府か ── は脇に置いていい。依存している限り、第三者の一手で切られうるという構造は、変わらないからだ。</p>
-<div class="quoteblock">
-<blockquote>
-<p>米国ビッグテックに依存することは、米国政府の善意に依存することだ。その善意は、いまや前提にできない。</p>
-</blockquote>
-</div>
-<h3>Trump は、この時代の「混乱」の側の象徴だ</h3>
-<p>ここで一段、視野を広げる。トランプ政権は、強圧的・取引的に振る舞うことを、すでに示した。関税も、制裁も、予算も、人事も、その場で振れる。だからアクセスの継続性を前提にできない。重要インフラを、依存を武器化すると示した外国政府への信頼の上に建ててはならない。</p>
-<p>これは党派的な非難ではなく、構造の話だ。親シリーズと併走する枠組みで言えばこうなる。ルネサンスが創造の時代であると同時に混乱の時代でもあったように、この時代にも二つの側面がある。AI による創造の側と、旧秩序が崩れ新秩序がまだ立たない混乱の側だ。トランプは、その混乱の側の象徴的な人物である。「私が一人で全部決める」という統治は、旧時代の判断集中の論理を、国家のレベルで極限まで押した姿だ。</p>
-<p>その予測不可能性こそが、主権をいま緊急の課題にしている。穏やかで安定した覇権の下でなら、依存は便利なままでいられた。だが覇権が取引的に振れるとき、依存は便利ではなく、負債になる。</p>
-<p>だからこそ、米国以外のあらゆる組織にとって、依存はいまや便利ではなく、安全保障上の負債だ。日本も、EU もそうである ── これが EU の「デジタル主権」推進の理由だ。米国内でも、不興を買った主体にとっては同じことが起きる。</p>
-<h2>OSS + ソブリン AI が、両方の問題を解く</h2>
-<p>二つの問題 ── Microsoft 問題(依存)と Trump 問題(その依存を握る政府の不信)── は、同じ一つの解で消える。依存をやめることだ。自立編で一層ずつ立てた OSS の土台が、そのまま答えになる。</p>
-<p>OSS の土台(自立編)が外すものは、四つある。</p>
+<p><strong>AI が「やる前に言う」操作</strong></p>
 <ul>
-<li>データは自分のインフラ上にある ── 米国企業のクラウドではない。CLOUD Act
-の令状も、外国政府の管轄も、届かない。</li>
-<li>監査できる ── 設定もログもテレメトリも、自分の手元にある。ブラックボックスではない。</li>
-<li>人数課金がない ── サーバー一台分の固定費。値上げのレバーがない。</li>
-<li>外国政府のアクセス・レバーがない。遠隔のキルスイッチもない ── 切る一手を握る第三者が、そもそも存在しない。</li>
+<li>本番ブランチ(<code>--branch main</code>)へ上げる</li>
+<li>カスタムドメインを追加して、A レコードを Pages に切り替える</li>
+<li>旧サーバを止める</li>
+<li>DNS の MX・SPF を変える(この章では触らない)</li>
 </ul>
-<p>そして、最後の一層は AI だ。<a href="/ai-native-software/ai/">2-12: 自前の AI を据える</a>で立てたローカルのオープン重みモデルを、自前のハードウェアで動かす。</p>
+<h2>確かめた版と日付</h2>
 <ul>
-<li>データは外に出ない ── 文書も会話も、米国の AI API を経由しない。</li>
-<li>エアギャップできる ── ネットから切り離しても動く。</li>
-<li>遮断・再課金されない ── 米国の AI API は、切られうるし、値上げされうる。ローカルの重みは、どちらもされない。</li>
+<li>Cloudflare Pages、cf-publish(<code>aiseed-dev/cf-publish</code>)、Python の <code>http.server</code></li>
+<li>手順を書いたのは 2026-07-14</li>
+<li>版が上がっていたら、AI に公式の手順を確かめさせてから進める</li>
 </ul>
-<p>決定的なのは、これがいまや現実的だということだ。オープンなモデルは「十分に良い」水準に達し、ハードウェアは手の届く価格になった。主権は、もはやコストや品質の犠牲ではない。<strong>より安く、かつより安全な選択だ</strong>。</p>
-<div class="mermaid">
-flowchart TB
-  subgraph Dep["米国クラウド依存 ── 切られうる構造"]
-    direction TB
-    D1["あなたのデータ・メール・AI"]
-    D2["米国企業のインフラ<br/>(Microsoft / 米国 AI API)"]
-    D3["米国政府<br/>制裁・輸出規制・CLOUD Act"]
-    D4["アクセスは断たれうる<br/>(遠隔キルスイッチ)"]
-    D1 --> D2 --> D3 ==>|一手で遮断| D4
-  end
-
-  subgraph Sov["ソブリンな自己ホスト ── 外部レバーが無い"]
-    direction TB
-    S1["あなたのデータ・メール・AI"]
-    S2["自分のインフラ<br/>(OSS + ローカル重みモデル)"]
-    S3["外部レバー = 無し<br/>令状なし・キルスイッチなし"]
-    S1 --> S2 --> S3
-  end
-
-  Dep ==>|依存をやめる = レバーが消える| Sov
-
-  classDef bad fill:#fef3e7,stroke:#c89559,color:#5a3f1a
-  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
-  class D1,D2,D3,D4 bad
-  class S1,S2,S3 good
-</div>
-<h2>構造として ── 二つの前提が、両方とも反転した</h2>
-<p>一段引いて、転換編の論理に置き直す。Microsoft 依存の構造は、米国クラウドが安く・安全で・安定していた間は、合理的だった。3-01 が「買うほうが安かった」と言ったのと、同じだ。当時、依存は便利さだった。</p>
-<p>その前提を支えていた二本の柱が、両方とも折れた。</p>
-<ul>
-<li>経済の柱 ── AI によるコスト反転。OSS の土台を一人 + AI が運用でき、ローカルの重みが「十分に良く」なった(自立編)。自前のほうが安くなった。</li>
-<li>安全保障の柱 ── トランプ時代の地政学リスク。覇権が取引的に振れ、依存が武器化されうると示された。自前のほうが安全になった。</li>
-</ul>
-<p>二本同時に折れたのだから、結論は一つだ。*Microsoft から離れることは、イデオロギーではない*。新しい経済かつ安全保障の合理的な既定値だ。かつて
-Microsoft 365 を選ばせたのと同じ合理性が、今度は離れることを選ばせる。前提が反転したのだから、結論が反転するのは当然だ。</p>
-<div class="quoteblock">
-<blockquote>
-<p>依存が合理的だったのは、米国クラウドが安く・安全・安定だった間だけ。
-AI のコスト反転と、トランプ時代の地政学リスクが、両方を反転させた。</p>
-</blockquote>
-</div>
 <h2>まとめ</h2>
-<p>本章は、転換編の事務(Microsoft)側の前提を据えた。主権は、いまやより安く、かつより安全な既定値である。Microsoft 問題と Trump 問題が重なって、
-Microsoft から離れることを、選べる選択肢ではなく合理的な既定値にした。</p>
-<p>ここまでが、二つの並立世界(3-01)のうちの事務側だ。次の章からは、もう一方、つまり基幹(SIer)側に移る。次章で問うのは、なぜ SIer 委託のモデルが、構造的に不経済になるのか、である。外注プロセスそのものの工数が、AI ネイティブの構築コストを上回る。その構造を見ていく(3-03)。</p>
+<p>WordPress をやめ、サーバ無しで公開する。</p>
+<ul>
+<li><strong>WordPress をやめる</strong> ── 動的サーバ・DB・プラグインの保守負担を捨てる</li>
+<li><strong>Cloudflare Pages</strong> ── サーバ無しで公開、CDN と自動 HTTPS を借りる</li>
+<li><strong>ビルド → 確認 → デプロイを分ける</strong> ── 確認した物を、そのまま本番へ</li>
+<li><strong>ドメインは自動で切り替わる</strong> ── カスタムドメインで A レコードが Pages を指す、メールは触らない</li>
+<li><strong>窓は借り、金庫は自分に</strong> ── 内部の道具は門番の内側に残す</li>
+</ul>
+<p>次章では、基幹システムのロジックを API(FastAPI)として出し、各アプリから使えるようにする。</p>
 <hr />
 <h2>関連記事</h2>
 <ul>
+<li><a href="/ai-native-ways/web/">親シリーズ第6章: Webを作る ── HTML+CSS+JavaScriptという原点回帰</a></li>
+<li><a href="/ai-native-software/auth/">2-04: 門番を立てる ── PocketBase で認証を一つに</a></li>
 <li><a href="/ai-native-software/independence/">2-01: Microsoft と Google から自立する ── 全体像と対応表</a></li>
-<li><a href="/ai-native-software/two-worlds/">3-01: 企業は自分でコードを書かない ── 事務と基幹、二つの世界の並立</a></li>
-<li><a href="/ai-native-software/sier-uneconomic/">3-03: SIer委託モデルの構造的不経済</a></li>
 </ul>
 
   </article>
 
   <!-- CHAPTER NAV(前後の記事) -->
   <nav class="chapter-nav">
-  <a href="/ai-native-software/two-worlds/" rel="prev">&larr; 前: 企業は自分でコードを書かない ── 事務と基幹、二つの世界の並立</a>
-  <a href="/ai-native-software/sier-uneconomic/" rel="next">次: SIer委託モデルの構造的不経済 &rarr;</a>
+  <a href="/ai-native-software/meetings/" rel="prev">&larr; 前: 会議と予約を自分の側に ── Jitsi と Cal.com</a>
+  <a href="/ai-native-software/fastapi/" rel="next">次: API を作る ── FastAPI で基幹のロジックを出す &rarr;</a>
 </nav>
 
   <!-- FOOTER(サイト内メニュー+奥付) -->
@@ -1040,8 +1015,8 @@ Microsoft から離れることを、選べる選択肢ではなく合理的な�
     </nav>
     <div class="colophon">
       <div class="colophon-mark">§</div>
-      AI ネイティブなソフトウェア開発 · 3-02<br>
-      Tokushima · 2026.07.21<br>
+      AI ネイティブなソフトウェア開発 · 2-09<br>
+      Tokushima · 2026.07.14<br>
       <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">CC BY 4.0</a>
     </div>
   </footer>

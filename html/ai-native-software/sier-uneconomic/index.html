@@ -15,24 +15,24 @@
   gtag('config', 'G-9FLQ963JXM');
 </script>
 
-<title>デジタル主権 ── Microsoft 問題と Trump 問題 — AI ネイティブなソフトウェア開発 | aiseed.dev</title>
-<meta name="description" content="つい最近まで、Microsoft 365 は経済的でも安全でもある既定値だった ── だからこそ誰もが買った。その前提が反転した。OSS + ソブリン(自己ホスト・ローカル重み)AI のほうが、いまやコストでも安全保障でも有利だ。Microsoft 問題 ── 上がり続ける人数課金、CLOUD Act の下にある米国企業のクラウド上のデータ、不透明なテレメトリ、Copilot を経由して Microsoft のモデルに流れる内容。便利さこそが依存だ。Trump 問題 ── 米国ビッグテックに依存することは米国政府の善意に依存することであり、トランプ政権はその依存を武器化しないと信頼できない(制裁・遮断)。だから Microsoft から離れることは、もはやイデオロギーではない ── 新しい経済かつ安全保障の合理だ。転換編の事務(Microsoft)側の前提を据える。">
-<link rel="canonical" href="https://aiseed.dev/ai-native-software/sovereignty/">
-<link rel="alternate" hreflang="ja" href="https://aiseed.dev/ai-native-software/sovereignty/">
-<link rel="alternate" hreflang="en" href="https://aiseed.dev/en/ai-native-software/sovereignty/">
-<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/ai-native-software/sovereignty/">
+<title>SIer委託モデルの構造的不経済 — AI ネイティブなソフトウェア開発 | aiseed.dev</title>
+<meta name="description" content="外注しても、上流の判断 ── 事務処理そのものの改善とシステムの理解 ── は顧客に残る。それは直線ではなくループで、AI を使えば社内で高速に回せる。SIer にループは回せない。一周ごとに予算の承認と契約が要り、普通は年単位になるからだ。そして委託の最も深い問題は、責任と技術の空洞化だ ── 任せた瞬間、誰も結果の全体を引き受けなくなる。その最も高価な実例が GitHub Copilot であり、失敗の責任は CEO にある。同じ手間で、自分で作れる。SIer 委託モデルの消滅は必然だ。">
+<link rel="canonical" href="https://aiseed.dev/ai-native-software/sier-uneconomic/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/ai-native-software/sier-uneconomic/">
+<link rel="alternate" hreflang="en" href="https://aiseed.dev/en/ai-native-software/sier-uneconomic/">
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/ai-native-software/sier-uneconomic/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="AI時代の暮らし">
 <meta property="og:locale" content="ja_JP">
-<meta property="og:title" content="デジタル主権 ── Microsoft 問題と Trump 問題">
-<meta property="og:description" content="つい最近まで、Microsoft 365 は経済的でも安全でもある既定値だった ── だからこそ誰もが買った。その前提が反転した。OSS + ソブリン(自己ホスト・ローカル重み)AI のほうが、いまやコストでも安全保障でも有利だ。Microsoft 問題 ── 上がり続ける人数課金、CLOUD Act の下にある米国企業のクラウド上のデータ、不透明なテレメトリ、Copilot を経由して Microsoft のモデルに流れる内容。便利さこそが依存だ。Trump 問題 ── 米国ビッグテックに依存することは米国政府の善意に依存することであり、トランプ政権はその依存を武器化しないと信頼できない(制裁・遮断)。だから Microsoft から離れることは、もはやイデオロギーではない ── 新しい経済かつ安全保障の合理だ。転換編の事務(Microsoft)側の前提を据える。">
-<meta property="og:url" content="https://aiseed.dev/ai-native-software/sovereignty/">
+<meta property="og:title" content="SIer委託モデルの構造的不経済">
+<meta property="og:description" content="外注しても、上流の判断 ── 事務処理そのものの改善とシステムの理解 ── は顧客に残る。それは直線ではなくループで、AI を使えば社内で高速に回せる。SIer にループは回せない。一周ごとに予算の承認と契約が要り、普通は年単位になるからだ。そして委託の最も深い問題は、責任と技術の空洞化だ ── 任せた瞬間、誰も結果の全体を引き受けなくなる。その最も高価な実例が GitHub Copilot であり、失敗の責任は CEO にある。同じ手間で、自分で作れる。SIer 委託モデルの消滅は必然だ。">
+<meta property="og:url" content="https://aiseed.dev/ai-native-software/sier-uneconomic/">
 <meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
 <meta property="article:section" content="AI ネイティブなソフトウェア開発">
 <meta property="article:published_time" content="2026.07.21">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="デジタル主権 ── Microsoft 問題と Trump 問題">
-<meta name="twitter:description" content="つい最近まで、Microsoft 365 は経済的でも安全でもある既定値だった ── だからこそ誰もが買った。その前提が反転した。OSS + ソブリン(自己ホスト・ローカル重み)AI のほうが、いまやコストでも安全保障でも有利だ。Microsoft 問題 ── 上がり続ける人数課金、CLOUD Act の下にある米国企業のクラウド上のデータ、不透明なテレメトリ、Copilot を経由して Microsoft のモデルに流れる内容。便利さこそが依存だ。Trump 問題 ── 米国ビッグテックに依存することは米国政府の善意に依存することであり、トランプ政権はその依存を武器化しないと信頼できない(制裁・遮断)。だから Microsoft から離れることは、もはやイデオロギーではない ── 新しい経済かつ安全保障の合理だ。転換編の事務(Microsoft)側の前提を据える。">
+<meta name="twitter:title" content="SIer委託モデルの構造的不経済">
+<meta name="twitter:description" content="外注しても、上流の判断 ── 事務処理そのものの改善とシステムの理解 ── は顧客に残る。それは直線ではなくループで、AI を使えば社内で高速に回せる。SIer にループは回せない。一周ごとに予算の承認と契約が要り、普通は年単位になるからだ。そして委託の最も深い問題は、責任と技術の空洞化だ ── 任せた瞬間、誰も結果の全体を引き受けなくなる。その最も高価な実例が GitHub Copilot であり、失敗の責任は CEO にある。同じ手間で、自分で作れる。SIer 委託モデルの消滅は必然だ。">
 <meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
@@ -865,20 +865,20 @@ article .accent { color: var(--accent); }
   <!-- MASTHEAD(ホーム › シリーズ目次) -->
   <header class="masthead">
     <div class="masthead-left"><a href="/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="/ai-native-software/">AI ネイティブなソフトウェア開発</a></div>
-    <div class="masthead-right">3-02 / Series</div>
+    <div class="masthead-right">3-03 / Series</div>
   </header>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-meta">3-02 № 02 · 2026</div>
+    <div class="hero-meta">3-03 № 03 · 2026</div>
 
-    <h1 class="hero-title"><span class="accent">主権</span>は、いまや<br>経済でも安全保障でも有利だ。</h1>
+    <h1 class="hero-title">外注の<span class="accent">手間</span>で、<br>自分で<span class="accent">作れて</span>しまう。</h1>
 
-    <p class="hero-subtitle">OSS とソブリン AI のほうが、いまや経済でも安全保障でも有利になった</p>
+    <p class="hero-subtitle">外注しても残る上流の判断と、委託が生む無責任化・空洞化 ── 同じ手間で、自分で作れる</p>
 
     <div class="hero-byline">
       <span>2026.07.21</span>
-      <span><a href="https://aiseed.dev/en/ai-native-software/sovereignty/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">🌐 EN</a></span>
+      <span><a href="https://aiseed.dev/en/ai-native-software/sier-uneconomic/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">🌐 EN</a></span>
     </div>
   </section>
 
@@ -887,129 +887,119 @@ article .accent { color: var(--accent); }
 
   <!-- ARTICLE BODY -->
   <article>
-    <p>Microsoft 365 から離れることは、もはやイデオロギーではない。*経済でも安全保障でも、それが合理的な既定値になった*。前章(3-01)で据えた前提を、もう一度置く。企業が事務をパッケージで買ったのは、自前で立てるより安くて安全だったからだ。それは正しい判断だった。</p>
-<p>その前提が、二つの方向から同時に反転した。本章は、その反転を二つの問題として見ていく。Microsoft 問題、つまり依存そのものと、Trump 問題、つまりその依存を握る米国政府を信頼しきれないことだ。</p>
-<h2>かつて Microsoft 365 は、安くて安全な既定値だった</h2>
-<p>まず、敵意から始めないことだ。Microsoft 365 を買ったのは、当時として合理的だった。自前でメールサーバーを立て、文書基盤を運用し、認証を管理するより、一社のスイートに束ねて任せるほうが、安く、安全で、確実だった。</p>
-<ul>
-<li>経済 ── 自前運用の人件費より、人数 × 月額のほうが安かった。</li>
-<li>安全保障 ── 自前のサーバーより、Microsoft のデータセンターのほうが、可用性も、暗号化も、パッチ適用も、確実に上だった。</li>
-</ul>
-<p>これは 3-01 で見た「買うほうが安かった」と同じ構造だ。汎用の事務は、自前で立てる理由がなかった。コストでも、セキュリティでも、買うほうが勝っていたからだ。</p>
+    <p>SIer に委託するモデルは、構造的に不経済になった。前章(3-02)では、事務の側
+── Microsoft への依存 ── の前提が反転したことを見た。本章は、もう一方の基幹
+(SIer)側を見る。外注しても、<strong>上流の判断は顧客に残る</strong>。そのうえ委託は、責任と技術を空洞化させる。委託の工程を一つずつ分解して、その構造を示す。本章の眼目は、コストよりも構造にある。</p>
+<h2>前提は反転した ── 優秀なエンジニアは、いまや AI として雇える</h2>
+<p>SIer 委託は、これまで合理的だった。ソフトウェアを作るには、多分野にわたる優秀なソフトウェアエンジニアが要る ── 設計、データベース、フロントエンド、インフラ、セキュリティ。それを一社一社が社内に抱えて維持するのは、現実的でなかった。人材を一か所に集めて作る ── SIer に集中させるほうが、効率的だったのだ。</p>
+<p>だが、その前提は反転した。<strong>優秀なエンジニアを、いまや AI として雇える</strong>。そして、顧客自身がビルダーになれる。1-05 で示したとおり、汎用は OSS、足りない自社固有のロジックだけ AI と作ればよい。</p>
+<p>本章はその裏面を見る。なぜ「SIer に頼んで楽になる」が幻想なのか。委託プロセスの工程に分解して確かめる。</p>
+<h2>工程は、要件定義から始まらない</h2>
+<p>そもそも工程は、要件定義から始まらない。その前に、事務処理そのものをどう改善するかを考えねばならない。業務の流れ、承認のしかた、紙やルールの見直しまで、システム化以前の部分を含めてである。何をシステムにすべきかは、その後で決まる。ここは顧客にしか分からず、SIer に丸投げできない。</p>
+<p>しかも、その事務処理の改善は、システムで何ができるかを理解していなければ、うまくいかない。何を自動化でき、どこがデータで繋がるかが見えて初めて、業務の組み替え方が決まる。</p>
 <div class="quoteblock">
 <blockquote>
-<p>Microsoft 365 は、経済でも安全でも勝っていた。だからこそ、誰もが買った。それは怠慢ではなく、合理的な既定値だった。</p>
+<p>上流の判断ほど、システムの理解を要する。だから、その理解こそ、社内に持たねばならない。</p>
 </blockquote>
 </div>
-<p>問題は、この二つの前提 ── 安い・安全 ── が、両方とも反転したことにある。順に見る。</p>
-<h2>Microsoft 問題 ── 便利さこそが、依存だ</h2>
-<p>第一の反転は、依存そのものから来る。Microsoft 365 の便利さは、そのまま依存の構造でもある。2-01 で「便利さと人質は同じ一本の鎖の表と裏」と書いたが、その鎖を、ここでは安全保障の露出として見る。</p>
-<p>経済の面から見る。人数 × 月額は、上がり続ける。一度乗れば、価格はベンダーが決める。逃げ場のない人質に、値上げは効く。さらに Copilot がその上に積まれる。一人あたり数千円が、また乗る。永久に借り続け、価格は相手が決める。これが地代の構造だ。</p>
-<p>支配・統制の面から見る。ここが安全保障の核心だ。</p>
+<h2>上流から実装までは、ループでしか回らない</h2>
+<p>上流から実装までは、直線では進まない。作っては試し、見えたことで業務を組み替え、また作る。<strong>ループで回すしかない</strong>。</p>
+<p>SIer には、これができない。一周ごとに予算の承認と契約が要り、普通は年単位になるからだ。業務システムをアジャイルで回せている現場が、ほとんどないのもそのためだ。予算と契約のゲートが、ループを禁じる。</p>
+<p>だが、AI を使えば、このループを高速に回せる。実装はすぐ返る。時間がかかるのは、テストのほうだ。テストは、全部を自動化できない。動くかは自動で測れても、「本当に欲しかったものか」「業務に合うか」は、人が確かめるしかない。この検証こそ、外に出せない顧客の判断だ。</p>
+<p>それでも一周は、SIer の一周(年単位)より桁違いに短い。何度でも回せる。これができるのは、AI を手元に持つ内製だけだ。</p>
+<h2>SIer 案件を一つ動かすには、この工程が要る</h2>
+<p>そのうえで、SIer 案件を一つ動かすには、こういう工程が要る。</p>
 <ul>
-<li>データは米国企業のクラウドにある ── 文書も、メールも、予定も、あなたの手の届かない場所にある。そして米国の CLOUD Act の下では、そのデータは米国政府の令状の対象になりうる。データが米国外にあっても、だ。</li>
-<li>テレメトリは不透明だ ── 何が、いつ、どこへ送られているか、あなたには監査できない。ブラックボックスの中で動いている。</li>
-<li>Copilot は内容を Microsoft のモデルに通す ── 業務の文書も会話も、検証層なしに、ベンダーのモデルを経由する。</li>
+<li><strong>要件定義 / RFP 作成</strong> ── 顧客側で数週間〜数ヶ月。何を作るか、どのレベルで作るか、外部に出せる形に整理する作業</li>
+<li><strong>ベンダー選定</strong> ── 複数社の提案を取り寄せて比較、数週間〜数ヶ月</li>
+<li><strong>契約交渉</strong> ── 法務、調達、SI 側との折衝、数週間</li>
+<li><strong>プロジェクト管理</strong> ── 案件期間中ずっと続く、顧客側 PM + SIer 側 PM の二重体制</li>
+<li><strong>検収・受入テスト</strong> ── 納品物が要件を満たすかの確認、数週間</li>
+<li><strong>運用保守の引き継ぎ</strong> ── 仕様の口頭伝達、ドキュメント授受、継続</li>
 </ul>
-<p>これらは機能の弱さではない。便利であることの、裏の構造だ。同じアカウントで全層が繋がっているから便利で、同じ一点を握られているから依存している。
-2-01 が「閉じた束が、他人の鍵にぶら下がっている ── それがロックインの正体」と言ったのと、同じ構造を、ここではセキュリティの露出として読む。</p>
-<h2>Trump 問題 ── 米国政府は、信頼できない</h2>
-<p>ここが本章の核心だ。米国ビッグテックに依存することは、米国政府の善意に依存することだ。そして、その善意は、いまや前提にできない。</p>
-<p>論理は単純だ。あなたのデータも、メールも、AI も、米国企業のインフラの上にある。その米国企業は、米国政府の管轄下にある。だから、米国政府が動けば、あなたの「自分の」サービスは、あなたの意思とは無関係に切られうる。制裁、輸出規制、特定の組織・企業・国へのサービス遮断。これらはすべて、米国政府の手の内にある。</p>
-<p>これは抽象的な懸念ではない。2025 年、現実に起きた。</p>
-<h3>ICC の事例 ── 「あなたの」サービスは、外国政府に切られうる</h3>
-<p>2025 年 2 月、トランプ政権は大統領令で、国際刑事裁判所(ICC)の主任検察官カリム・カーン氏に制裁を科した。その後、カーン氏は自身の Microsoft
-アカウントにアクセスできなくなり、スイスの Proton Mail に移った。Microsoft
-は「ICC へのサービス停止には一切関与していない」と否定している。だが事実として、米国の制裁の後に、当事者は米国クラウドのメールを失った。そして同年
-10 月、ICC は Microsoft Office から、ドイツのデジタル主権機関が開発する
-OSS の OpenDesk へ移行することを決めた。</p>
-<p>構造として読めば、教訓は一つだ。*米国政府の一手で、米国クラウド上の「あなたの」サービスは断たれうる*。国際機関ですら、そうだった。詳細の責任所在 ── ベンダーか政府か ── は脇に置いていい。依存している限り、第三者の一手で切られうるという構造は、変わらないからだ。</p>
-<div class="quoteblock">
-<blockquote>
-<p>米国ビッグテックに依存することは、米国政府の善意に依存することだ。その善意は、いまや前提にできない。</p>
-</blockquote>
-</div>
-<h3>Trump は、この時代の「混乱」の側の象徴だ</h3>
-<p>ここで一段、視野を広げる。トランプ政権は、強圧的・取引的に振る舞うことを、すでに示した。関税も、制裁も、予算も、人事も、その場で振れる。だからアクセスの継続性を前提にできない。重要インフラを、依存を武器化すると示した外国政府への信頼の上に建ててはならない。</p>
-<p>これは党派的な非難ではなく、構造の話だ。親シリーズと併走する枠組みで言えばこうなる。ルネサンスが創造の時代であると同時に混乱の時代でもあったように、この時代にも二つの側面がある。AI による創造の側と、旧秩序が崩れ新秩序がまだ立たない混乱の側だ。トランプは、その混乱の側の象徴的な人物である。「私が一人で全部決める」という統治は、旧時代の判断集中の論理を、国家のレベルで極限まで押した姿だ。</p>
-<p>その予測不可能性こそが、主権をいま緊急の課題にしている。穏やかで安定した覇権の下でなら、依存は便利なままでいられた。だが覇権が取引的に振れるとき、依存は便利ではなく、負債になる。</p>
-<p>だからこそ、米国以外のあらゆる組織にとって、依存はいまや便利ではなく、安全保障上の負債だ。日本も、EU もそうである ── これが EU の「デジタル主権」推進の理由だ。米国内でも、不興を買った主体にとっては同じことが起きる。</p>
-<h2>OSS + ソブリン AI が、両方の問題を解く</h2>
-<p>二つの問題 ── Microsoft 問題(依存)と Trump 問題(その依存を握る政府の不信)── は、同じ一つの解で消える。依存をやめることだ。自立編で一層ずつ立てた OSS の土台が、そのまま答えになる。</p>
-<p>OSS の土台(自立編)が外すものは、四つある。</p>
-<ul>
-<li>データは自分のインフラ上にある ── 米国企業のクラウドではない。CLOUD Act
-の令状も、外国政府の管轄も、届かない。</li>
-<li>監査できる ── 設定もログもテレメトリも、自分の手元にある。ブラックボックスではない。</li>
-<li>人数課金がない ── サーバー一台分の固定費。値上げのレバーがない。</li>
-<li>外国政府のアクセス・レバーがない。遠隔のキルスイッチもない ── 切る一手を握る第三者が、そもそも存在しない。</li>
-</ul>
-<p>そして、最後の一層は AI だ。<a href="/ai-native-software/ai/">2-12: 自前の AI を据える</a>で立てたローカルのオープン重みモデルを、自前のハードウェアで動かす。</p>
-<ul>
-<li>データは外に出ない ── 文書も会話も、米国の AI API を経由しない。</li>
-<li>エアギャップできる ── ネットから切り離しても動く。</li>
-<li>遮断・再課金されない ── 米国の AI API は、切られうるし、値上げされうる。ローカルの重みは、どちらもされない。</li>
-</ul>
-<p>決定的なのは、これがいまや現実的だということだ。オープンなモデルは「十分に良い」水準に達し、ハードウェアは手の届く価格になった。主権は、もはやコストや品質の犠牲ではない。<strong>より安く、かつより安全な選択だ</strong>。</p>
+<p>これが本来の姿だ。だが現実には、この工程を省いて「SIer に任せた」で済ませてしまう。要件も、検収も、判断も、丸ごと相手に預ける。楽に見えて、ここから
+<strong>無責任化</strong>が始まる。次の節で見るとおり、これが委託の最も深い問題だ。</p>
 <div class="mermaid">
 flowchart TB
-  subgraph Dep["米国クラウド依存 ── 切られうる構造"]
+  subgraph Sier["SIer 委託モデルの工程"]
     direction TB
-    D1["あなたのデータ・メール・AI"]
-    D2["米国企業のインフラ<br/>(Microsoft / 米国 AI API)"]
-    D3["米国政府<br/>制裁・輸出規制・CLOUD Act"]
-    D4["アクセスは断たれうる<br/>(遠隔キルスイッチ)"]
-    D1 --> D2 --> D3 ==>|一手で遮断| D4
+    S1["要件定義 / RFP 作成<br/>(顧客内: 数週間〜数ヶ月)"]
+    S2["ベンダー選定<br/>(顧客内: 数週間〜数ヶ月)"]
+    S3["契約交渉<br/>(顧客内 + SIer: 数週間)"]
+    S4["プロジェクト管理<br/>(顧客内 + SIer: 案件期間中)"]
+    S5["検収・受入テスト<br/>(顧客内: 数週間)"]
+    S6["運用保守の引き継ぎ<br/>(顧客内 + SIer: 継続)"]
+    S1 --> S2 --> S3 --> S4 --> S5 --> S6
   end
 
-  subgraph Sov["ソブリンな自己ホスト ── 外部レバーが無い"]
+  subgraph AI["AI ネイティブの工程"]
     direction TB
-    S1["あなたのデータ・メール・AI"]
-    S2["自分のインフラ<br/>(OSS + ローカル重みモデル)"]
-    S3["外部レバー = 無し<br/>令状なし・キルスイッチなし"]
-    S1 --> S2 --> S3
+    A1["顧客 + AI で要件と設計<br/>(数日〜数週間)"]
+    A2["AI が実装<br/>(すぐ)"]
+    A3["AI と人でテストで検証<br/>(全部は自動化できない)"]
+    A4["評価・統合<br/>(継続)"]
+    A1 --> A2 --> A3 --> A4
+    A3 -->|直して再実行| A2
   end
 
-  Dep ==>|依存をやめる = レバーが消える| Sov
-
-  classDef bad fill:#fef3e7,stroke:#c89559,color:#5a3f1a
   classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
-  class D1,D2,D3,D4 bad
-  class S1,S2,S3 good
+  classDef bad  fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class AI good
+  class Sier bad
 </div>
-<h2>構造として ── 二つの前提が、両方とも反転した</h2>
-<p>一段引いて、転換編の論理に置き直す。Microsoft 依存の構造は、米国クラウドが安く・安全で・安定していた間は、合理的だった。3-01 が「買うほうが安かった」と言ったのと、同じだ。当時、依存は便利さだった。</p>
-<p>その前提を支えていた二本の柱が、両方とも折れた。</p>
-<ul>
-<li>経済の柱 ── AI によるコスト反転。OSS の土台を一人 + AI が運用でき、ローカルの重みが「十分に良く」なった(自立編)。自前のほうが安くなった。</li>
-<li>安全保障の柱 ── トランプ時代の地政学リスク。覇権が取引的に振れ、依存が武器化されうると示された。自前のほうが安全になった。</li>
-</ul>
-<p>二本同時に折れたのだから、結論は一つだ。*Microsoft から離れることは、イデオロギーではない*。新しい経済かつ安全保障の合理的な既定値だ。かつて
-Microsoft 365 を選ばせたのと同じ合理性が、今度は離れることを選ばせる。前提が反転したのだから、結論が反転するのは当然だ。</p>
 <div class="quoteblock">
 <blockquote>
-<p>依存が合理的だったのは、米国クラウドが安く・安全・安定だった間だけ。
-AI のコスト反転と、トランプ時代の地政学リスクが、両方を反転させた。</p>
+<p>外注の工程に払う手間で、自分で作れてしまう。</p>
 </blockquote>
 </div>
+<h2>委託は、責任を消し、技術を空洞化させる</h2>
+<p>委託の最も深い問題は、手間でもコストでもない。<strong>委託は、責任を消す</strong>。作る側と任せる側が分かれた瞬間、「これは誰の責任か」が宙に浮く。任せた側は「専門家に任せた」と言い、任された側は「仕様どおり作った」と言う。誰も、結果の全体を引き受けない。これが無責任化だ。</p>
+<p>そして無責任化は、技術の空洞化を呼ぶ。誰も責任を負わないものは、誰も育てない。作る力を外に出し続ければ、技術は自分の中に育たず、やがて出てきたものの良し悪しを見抜く力まで失う。</p>
+<h2>空洞化した組織は、初歩的な失敗を止められない</h2>
+<p>その最も高価な実例が、GitHub Copilot だ。Microsoft は AI の中核を自社で作らず、
+OpenAI に委ねた。作る力は OpenAI、製品の責任は Microsoft と、責任が二社に割れた。そしてその間、CEO のナデラは自社の基礎研究を細らせていった。Microsoft
+Research は産業界で最も権威ある基礎研究所の一つで、チューリング賞受賞者を擁した。だが CEO 就任初年の 2014 年に MSR シリコンバレー研究所を閉鎖し(約 50 名)、
+2023 年には AI 倫理チームを丸ごと解体して、OpenAI のモデルを「最速で顧客に届ける」ことを優先した。長期の研究は、速度に置き換えられた。</p>
+<p>技術が空洞化した組織は、初歩的な失敗を止められない。Copilot は、公開された
+GitHub のコードで学習した。そこには優れたコードもあるが、ゴミのようなコードも大量にある。何を学習させるかが出力を決めるのは機械学習の常識中の常識だが、それを見抜き、優良なコードを選ぶ研究者は、もう判断の中心にいなかった。</p>
+<p>結果は、危険なコードに出た。</p>
+<ul>
+<li>スタンフォードの対照実験(Perry, Boneh ら, ACM CCS 2023、47 名、Codex 使用)
+── AI 補助を与えられた開発者は、有意に安全でないコードを書き、しかも自分のコードを安全だと誤認した(&quot;false sense of security&quot;)。</li>
+<li>NYU の初期研究(&quot;Asleep at the Keyboard?&quot;)── Copilot 出力の約 40% が脆弱性を含む(C は約 50%)。</li>
+<li>企業評価では、AI 生成コードの 78% に検出困難な脆弱性。Copilot リポジトリは
+secret 漏洩が 40% 高い。</li>
+</ul>
+<p>これは、世界最大のソフトウェア企業が、責任を散らし、技術を空洞化させた末に犯した失敗である。だが、責任を散らしても、責任は消えない。最終決定を下すのは
+CEO だ。<strong>この失敗の責任は、ナデラにある</strong>。</p>
+<p>SIer 委託も、規模が違うだけで、同じ構造を持つ。顧客は「SIer に任せた」、SIer は「仕様どおり作った」。責任は宙に浮き、顧客はソフトウェアを活用する能力を失う。委託が深いほど、空洞は深くなる。</p>
+<p>だから答えは、内製 ── 顧客自身がビルダーになることだ(1-05)。判断と技術を自分の手元に握り直すことだけが、無責任化と空洞化を止める。</p>
+<h2>SIer 委託モデルの消滅は、必然だ</h2>
+<p>委託のコストは内製と同等になり、委託は無責任化と空洞化を生み、ループを回せるのは内製だけだ。ここまで来れば、<strong>SIer 委託モデルの消滅は必然</strong>である。</p>
+<p>大半の仕事 ── AI が書ける標準的なもの ── は、顧客側に移る。残る専門領域(真に新しい技術、専門規制、スケール起因の設計)も、もはや「多年の運用委託」では支えられない。時間契約のコンサルティングに変わるか、顧客の内製チームに吸収される
+(3-05)。どちらも、SIer 委託モデルそのものではない。</p>
+<p>転換の速度、日本固有の事情(多重下請け構造)、雇用流動性は、3-06 と 3-08 で扱う。</p>
 <h2>まとめ</h2>
-<p>本章は、転換編の事務(Microsoft)側の前提を据えた。主権は、いまやより安く、かつより安全な既定値である。Microsoft 問題と Trump 問題が重なって、
-Microsoft から離れることを、選べる選択肢ではなく合理的な既定値にした。</p>
-<p>ここまでが、二つの並立世界(3-01)のうちの事務側だ。次の章からは、もう一方、つまり基幹(SIer)側に移る。次章で問うのは、なぜ SIer 委託のモデルが、構造的に不経済になるのか、である。外注プロセスそのものの工数が、AI ネイティブの構築コストを上回る。その構造を見ていく(3-03)。</p>
+<p>本章は、基幹(SIer)側の前提を分解した。外注しても、上流の判断 ── 事務処理そのものの改善と、システムの理解 ── は顧客に残る。その判断は直線では進まず、ループでしか進まない。ループを回せるのは、AI を手元に持つ内製だけだ。そして委託は、責任を消し、技術を空洞化させる。外注の工程に払う手間で、自分で作れてしまう。</p>
+<p>だが、消滅が必然でも、顧客がすぐに動けるとは限らない。既存の委託関係が、ロックインとして残るからだ。次章では、このロックインを扱う(3-04)。</p>
 <hr />
 <h2>関連記事</h2>
 <ul>
-<li><a href="/ai-native-software/independence/">2-01: Microsoft と Google から自立する ── 全体像と対応表</a></li>
-<li><a href="/ai-native-software/two-worlds/">3-01: 企業は自分でコードを書かない ── 事務と基幹、二つの世界の並立</a></li>
-<li><a href="/ai-native-software/sier-uneconomic/">3-03: SIer委託モデルの構造的不経済</a></li>
+<li><a href="/ai-native-software/coder-top/">1-01: AI は、世界で最も難しいコーディング問題を解く</a></li>
+<li><a href="/ai-native-software/builder/">1-04: ビルダーという役割</a></li>
+<li><a href="/ai-native-software/customer-codev/">1-05: 顧客が AI と協働して開発する時代</a></li>
+<li><a href="/ai-native-software/lockin/">3-04: ロックイン問題</a></li>
+<li><a href="/insights/enterprise-tax/">構造分析08: 企業ITの税を引く</a></li>
+<li><a href="/insights/ai-and-individual/">構造分析12: AIと個人事業</a></li>
+<li>ブログ <a href="/blog/verification-shock/">Fable 5 が戻ってきたら、すぐやるべきこと</a> ── 検証が無料になった日、「検証されない前提」で作られた委託の納品物が露呈する(本章の応用・緊急版)</li>
 </ul>
 
   </article>
 
   <!-- CHAPTER NAV(前後の記事) -->
   <nav class="chapter-nav">
-  <a href="/ai-native-software/two-worlds/" rel="prev">&larr; 前: 企業は自分でコードを書かない ── 事務と基幹、二つの世界の並立</a>
-  <a href="/ai-native-software/sier-uneconomic/" rel="next">次: SIer委託モデルの構造的不経済 &rarr;</a>
+  <a href="/ai-native-software/sovereignty/" rel="prev">&larr; 前: デジタル主権 ── Microsoft 問題と Trump 問題</a>
+  <a href="/ai-native-software/lockin/" rel="next">次: ロックイン問題 &rarr;</a>
 </nav>
 
   <!-- FOOTER(サイト内メニュー+奥付) -->
@@ -1040,7 +1030,7 @@ Microsoft から離れることを、選べる選択肢ではなく合理的な�
     </nav>
     <div class="colophon">
       <div class="colophon-mark">§</div>
-      AI ネイティブなソフトウェア開発 · 3-02<br>
+      AI ネイティブなソフトウェア開発 · 3-03<br>
       Tokushima · 2026.07.21<br>
       <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">CC BY 4.0</a>
     </div>

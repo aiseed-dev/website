@@ -252,12 +252,42 @@
                     </div>
                 </a>
 
+                <a href="/ai-native-software/web/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-09</div>
+                        <div class="activity-content">
+                            <h3>Web を公開する ── Cloudflare Pages — 動的な WordPress をやめ、静的サイトをサーバ無しで公開する ── ビルド・確認・デプロイを分けて</h3>
+                            <p>親シリーズ第6章で AI と作った静的サイトを、自分の側から公開する。動的な WordPress をやめ、焼いた HTML を Cloudflare Pages に置く ── サーバは持たない。CDN と自動 HTTPS は Cloudflare に任せ、ソースとビルドは自分の手元に残す。肝は「ビルド → 確認 → デプロイ」を分けること。確認した HTML と本番に上げる HTML を同じにする。内部の道具は門番の内側に残す ── 窓は借り、金庫は自分に。人が持つのは、ドメインと API トークン、本番へ上げる判断の三つだ。</p>
+                        </div>
+                    </div>
+                </a>
+
                 <a href="/ai-native-software/fastapi/" style="text-decoration: none; color: inherit;">
                     <div class="activity-item fade-in">
                         <div class="activity-number">2-10</div>
                         <div class="activity-content">
                             <h3>API を作る ── FastAPI で基幹のロジックを出す — 基幹システムを並行稼働で書き換え、自社固有のロジックを一箇所の API にまとめる</h3>
                             <p>「壊すな・触るな」はもう古い。AI で基幹システムの書き換えコストは 10 分の 1 になった。新しいシステムを FastAPI で作り、旧システムと並行で動かし、出力を実測で突き合わせる。差分が消えたら旧を止める。業務知識は一気に Markdown に出し、現場がテストを書き、委託は止める。書き換えた基幹ロジックは、2-03 の PostgreSQL を読み書きし、2-04 の門番のトークンで本人確認する一本の API として着地する。参考実装は kura。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/structure-knowledge/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-11</div>
+                        <div class="activity-content">
+                            <h3>社内情報を整える ── 整備こそ本体、AI は最後の一手 — OCR・分類・属人知の成文化 ── 散らばった・書かれていない知を、書かれた・構造化された状態へ。AI を載せなくても回収できる no-regret 投資</h3>
+                            <p>AI を載せる前に、載せるに値する情報を作る。散らばったファイル、紙・スキャン PDF、人の頭の中だけにある属人知 ── これを OCR・分類・成文化で、書かれた・構造化された状態へ移す。整備こそ本体で、AI は最後の一手だ。何を残し、どう構造化するかは人にしかできない判断であり、AI を載せなくても属人化の解消として回収できる no-regret 投資。整えた情報を 2-06 のファイルと 2-03 の pgvector に置き、次章で RAG に載せる。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/ai/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">2-12</div>
+                        <div class="activity-content">
+                            <h3>自前の AI を据える ── LLM と RAG — 全ての上に AI を乗せる ── 自社データに通じた答えを、自分の側で</h3>
+                            <p>自立編の最後に、全ての上に AI を乗せる。2-03 で有効化した pgvector が、ここで効く。まず Cohere のオープンウェイトのコーディングモデル North Mini Code を Ollama で手元に置き、データを外に出さない。RAG 用に汎用モデルと埋め込みを並べ、社内文書・コード・メールを pgvector に入れて出典つきで答えさせ、Open WebUI で使う。検索は門番を迂回しない。機密と常時処理は自前、難しい判断は Claude に借りる ── 主導権は自分、能力は借りる。Copilot 依存を断ち、自立編を締める。</p>
                         </div>
                     </div>
                 </a>
@@ -287,6 +317,16 @@
                     </div>
                 </a>
 
+                <a href="/ai-native-software/sier-uneconomic/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">3-03</div>
+                        <div class="activity-content">
+                            <h3>SIer委託モデルの構造的不経済 — 外注しても残る上流の判断と、委託が生む無責任化・空洞化 ── 同じ手間で、自分で作れる</h3>
+                            <p>外注しても、上流の判断 ── 事務処理そのものの改善とシステムの理解 ── は顧客に残る。それは直線ではなくループで、AI を使えば社内で高速に回せる。SIer にループは回せない。一周ごとに予算の承認と契約が要り、普通は年単位になるからだ。そして委託の最も深い問題は、責任と技術の空洞化だ ── 任せた瞬間、誰も結果の全体を引き受けなくなる。その最も高価な実例が GitHub Copilot であり、失敗の責任は CEO にある。同じ手間で、自分で作れる。SIer 委託モデルの消滅は必然だ。</p>
+                        </div>
+                    </div>
+                </a>
+
                 <a href="/ai-native-software/lockin/" style="text-decoration: none; color: inherit;">
                     <div class="activity-item fade-in">
                         <div class="activity-number">3-04</div>
@@ -297,12 +337,42 @@
                     </div>
                 </a>
 
+                <a href="/ai-native-software/hiring-builders/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">3-05</div>
+                        <div class="activity-content">
+                            <h3>各社がビルダーを雇用する時代 — 上級ビルダーは経営陣 ── CIO（最高情報責任者）の位置へ、責任は今より重くなる</h3>
+                            <p>専門職の仕事（弁護士・医師レベルの判断を含む）は AI がする。だから人間の上級ビルダーは判断を売る専門職ではなく、経営判断を下す経営陣 ── CIO（最高情報責任者）に位置づく。IT 判断＝業務判断＝経営判断であり、IT が業務の中核になるぶん、責任は今の CIO より重い。一般社員の枠では処遇できない。コーポレートサイトの内製化を例に、コストと構造の両方の変化を示す。さらに、ビルダーの供給源がコーダー出身者だけではないことを示す。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/japan-transition/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">3-06</div>
+                        <div class="activity-content">
+                            <h3>日本の SIer 業界の転換と雇用流動性 — 多重下請け構造は、逆説的に転換を容易にする</h3>
+                            <p>日本の SIer の多重下請け構造は転換を阻害すると思われがちだが、構造を解剖すると逆になる。コーダー需要を契約で外部化している構造は、雇用調整を伴わずに縮小できる。元請けは下請け契約の非更新で対応でき、下請けの優秀な人材は元請け・顧客企業・独立に流れる。雇用流動性は時間とともに高まる方向にあり、長期業務委託・出向・社内ベンチャーといった中間形態が緩衝として効く。同じ数年で、AI 物理インフラ・製造業リショアリング・自然農法シフトが業界外の労働需要を開く。</p>
+                        </div>
+                    </div>
+                </a>
+
                 <a href="/ai-native-software/revolution-from-below/" style="text-decoration: none; color: inherit;">
                     <div class="activity-item fade-in">
                         <div class="activity-number">3-07</div>
                         <div class="activity-content">
                             <h3>AI 革命は下から起きる — 上からの導入は必ず失敗する。回線と月 100 ドルで始められる所から始まる</h3>
                             <p>AI 革命は、経営の決定でも大きな予算でも始まらない。始まるのは、稟議なしでできる所からだ。中小企業、個人事業主、大企業の裁量のある部署、大企業の周辺部。要るのはインターネットの回線と、月 100 ドルの利用料だけ。上から入れると、情シスと SIer を通り、人を減らす話になり、現場は隠れて使い、会社には何も残らない。下から始めれば、六つが残る。コード、業務の知識が言葉になった物、答え合わせの仕組み、詰まった所と直し方の記録、作れる人、データ。経営者には細かな問題を見る時間が無く、AI が解けるのはその細かな問題だ。だから AI は現場が持つ。中心が持てば監視と検閲に使い、下が持てば問題が解ける。始まる場所が無数にあり、止める手が無い。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/ai-native-software/five-years/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">3-08</div>
+                        <div class="activity-content">
+                            <h3>もう戻らない構造転換 — 変化は連鎖し、主要な部分は近い将来に起きる。前提が逆転したから、戻らない</h3>
+                            <p>AI が実行能力で人間トップに到達したところから、コーダーの消滅、ビルダーの出現、顧客の内製、SIer 委託モデルの縮小までが連鎖する。主要な部分は近い将来に起きる。そして経済と安全保障の前提がすでに逆転した以上、動いた構造は元に戻らない。ただし完全置換が起きるのは、ルールが明確で、正解が機械で検証できる領域 ── ソフトウェア開発の中のコーディング ── に限られる。デスクワーク、自動運転、ロボットは最後の 1% で詰まり、完全置換には至らない。そこは生産性向上の話だ。そのうえでこの転換は、第二次ルネサンスの一断面である。</p>
                         </div>
                     </div>
                 </a>

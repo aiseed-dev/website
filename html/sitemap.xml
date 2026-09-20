@@ -1741,8 +1741,23 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/ai-native-software/web/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/ai-native-software/fastapi/</loc>
     <lastmod>2026-07-15</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/ai-native-software/structure-knowledge/</loc>
+    <lastmod>2026-07-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/ai-native-software/ai/</loc>
+    <lastmod>2026-07-16</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -1756,13 +1771,33 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/ai-native-software/sier-uneconomic/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/ai-native-software/lockin/</loc>
     <lastmod>2026-08-04</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/ai-native-software/hiring-builders/</loc>
+    <lastmod>2026-08-11</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/ai-native-software/japan-transition/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/ai-native-software/revolution-from-below/</loc>
     <lastmod>2026-09-20</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/ai-native-software/five-years/</loc>
+    <lastmod>2026-08-25</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
@@ -1836,6 +1871,26 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/en/ai-native-software/web/</loc>
+    <lastmod>2026-07-14</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/ai-native-software/fastapi/</loc>
+    <lastmod>2026-07-15</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/ai-native-software/structure-knowledge/</loc>
+    <lastmod>2026-07-16</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/ai-native-software/ai/</loc>
+    <lastmod>2026-07-16</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/en/ai-native-software/two-worlds/</loc>
     <lastmod>2026-07-20</lastmod>
     <priority>0.5</priority>
@@ -1846,13 +1901,33 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/en/ai-native-software/sier-uneconomic/</loc>
+    <lastmod>2026-07-21</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/en/ai-native-software/lockin/</loc>
     <lastmod>2026-08-04</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/en/ai-native-software/hiring-builders/</loc>
+    <lastmod>2026-08-11</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/ai-native-software/japan-transition/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/en/ai-native-software/revolution-from-below/</loc>
     <lastmod>2026-09-20</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/ai-native-software/five-years/</loc>
+    <lastmod>2026-08-25</lastmod>
     <priority>0.5</priority>
   </url>
   <url>

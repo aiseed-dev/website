@@ -1605,7 +1605,7 @@ ____
 組織の場合も、出発点は同じだ。まず、汎用的な基盤を OSS で立てる。会社のソフトウェアの大半は、もともと「作る」ものではなく「買う」ものだった。Microsoft 365、Copilot、WordPress、基幹のベンダーパッケージ。その置き換え先は、すでに世界中で動いている。
 
 * 認証は PocketBase(Entra ID の代わり)
-* 文書は OnlyOffice(Word・Excel・PowerPoint の代わり)
+* 文書は aiseed office(Word・Excel・PowerPoint の様式をそのまま開く)
 * 共有と版管理は Forgejo(GitHub の代わり)
 * メールは Stalwart、会議は Jitsi、Web は Cloudflare Pages(WordPress の代わり)
 * AI は手元の LLM + RAG(Copilot の代わり)
@@ -1713,7 +1713,7 @@ Each of these is about an individual who is not a professional programmer buildi
 For an organization, the starting point is the same. First, stand up the generic foundation with OSS. Most of a company's software was never something to build; it was something to buy. Microsoft 365, Copilot, WordPress, the vendor packages under the core systems. What replaces them already runs all over the world.
 
 * Authentication: PocketBase (in place of Entra ID)
-* Documents: OnlyOffice (in place of Word, Excel, PowerPoint)
+* Documents: aiseed office (opens Word, Excel, and PowerPoint forms as they are)
 * Sharing and version control: Forgejo (in place of GitHub)
 * Mail: Stalwart; meetings: Jitsi; web: Cloudflare Pages (in place of WordPress)
 * AI: a local LLM plus RAG (in place of Copilot)
@@ -1813,7 +1813,7 @@ ____
 閉じた束が、他人の鍵にぶら下がっている。それがロックインの正体だ。
 ____
 
-だから解き方も決まる。各層を開いた道具に分け、鍵を自分の手元に移す。開いていれば検証でき、持ち出せる。鍵が手元にあれば、締め出されない。そして解けた束は、一本ずつ置き換えられて、一本が倒れても他は動く。これは親シリーズ2-13「1人+AI」と同じ、自立した N は集中した 1 より強い、の会社版である。
+だから解き方も決まる。各層を開いた道具に分け、鍵を自分の手元に移す。開いていれば検証でき、持ち出せる。鍵が手元にあれば、締め出されない。そして解けた束は、一本ずつ置き換えられて、一本が倒れても他は動く。これは親シリーズ第11章「1人+AI」と同じ、自立した N は集中した 1 より強い、の会社版である。
 
 == 閉じたものを開かせる ── それが AI の役割だ
 
@@ -2068,7 +2068,7 @@ flowchart TB
 * 基幹ロジック:Power Apps / Apps Script → FastAPI(2-10)
 * AI:Copilot / Gemini → ローカル LLM + RAG(2-12)
 
-一対一で、左を右に置き換える。右の道具は別々の組織が作った別々の開いた道具だから、中が読めて、持ち出せて、一本の方針変更が他に波及しない。これは効率化の話ではない。親シリーズ2-13「1人+AI」を、会社の土台の高さで言い直したものだ。*集中した 1 より、自立した N が強い*。
+一対一で、左を右に置き換える。右の道具は別々の組織が作った別々の開いた道具だから、中が読めて、持ち出せて、一本の方針変更が他に波及しない。これは効率化の話ではない。親シリーズ第11章「1人+AI」を、会社の土台の高さで言い直したものだ。*集中した 1 より、自立した N が強い*。
 
 閉じた束を、開いた道具に解く。鍵を、自分の手元に。開かせる力(AI)は、もう手元にある。一本ずつ、自分のペースで。解けた分だけ、会社はベンダーの人質ではなくなり、自分たちの判断で動けるようになる。次の章では、その一本目を立てる。会社の PC を一台 Debian にして、AI に渡す。以降のすべては、その一台の上に乗る。
 
@@ -2119,7 +2119,7 @@ Being bundled is not what makes it dangerous.
 A closed bundle, hanging from someone else's key. That is the lock-in.
 ____
 
-So the way out follows. Split each layer into an open tool, and move the key into your own hands. Open means you can verify and carry out. Your own key means you cannot be locked out. And once untied, each layer can be replaced on its own, and if one falls, the others keep running. This is the parent series' 2-13 "one + AI" at the scale of the company: autonomous N beats centralized 1.
+So the way out follows. Split each layer into an open tool, and move the key into your own hands. Open means you can verify and carry out. Your own key means you cannot be locked out. And once untied, each layer can be replaced on its own, and if one falls, the others keep running. This is the parent series' Chapter 11 "one + AI" at the scale of the company: autonomous N beats centralized 1.
 
 == Opening what is closed — that is AI's role
 
@@ -2250,7 +2250,7 @@ Run each step in parallel, the way 2-10 describes. Do not stop the old suite. Ru
 
 == Operating it — one person + AI
 
-The obvious question arises. With this much self-hosted, who maintains it? The answer is one person plus AI. The new unit of work shown in the parent series' 2-13 "one + AI" applies directly to running the company's infrastructure.
+The obvious question arises. With this much self-hosted, who maintains it? The answer is one person plus AI. The new unit of work shown in the parent series' Chapter 11 "one + AI" applies directly to running the company's infrastructure.
 
 Why does one person suffice? Three reasons.
 
@@ -2273,7 +2273,7 @@ ____
 
 The box itself, meaning taking one company PC, putting Debian on it, and handing it to the AI, is 2-02's job. The floor under that box, installing the OS, SSH, the basics of defense, and protecting the data, is specified by link:/claude-debian/server/[Learning Debian with Claude, Server Edition]. Here too, the generic is handled by reference.
 
-This is the very thesis of the parent series' 2-13. You do not need a siloed IT department. One person who understands the business holds, with the AI as partner, everything from auth to mail, meetings, AI, and the database. Individual independence holds at the level of company infrastructure. One person plus AI operates this whole set of open tools. Compared with handing the suite to one vendor, the effort is the same. Only the control moves to your side.
+This is the very thesis of the parent series' Chapter 11. You do not need a siloed IT department. One person who understands the business holds, with the AI as partner, everything from auth to mail, meetings, AI, and the database. Individual independence holds at the level of company infrastructure. One person plus AI operates this whole set of open tools. Compared with handing the suite to one vendor, the effort is the same. Only the control moves to your side.
 
 == This foundation is also the foundation of the core systems
 
@@ -2322,7 +2322,7 @@ Second, the cost of rewriting has fallen by a factor of ten (2-10). The AI extra
 
 The old structure does not fit AI-native, and rebuilding is cheap. When those two overlap, the conclusion is one. Keeping it becomes the unnatural choice. "Don't touch what's working" was once correct only because rewriting was too expensive. Now that the premise is gone, it is the reason not to rebuild that needs explaining.
 
-This is not hostility toward Microsoft or Google. It is the natural turn in which the AI revolution rebuilds and inherits what the IT revolution stacked up (the prologue; the parent series' 2-13). The question is not whether, but when and led by whom. Leave it with the vendor, or rebuild it on your own side. That is all.
+This is not hostility toward Microsoft or Google. It is the natural turn in which the AI revolution rebuilds and inherits what the IT revolution stacked up (the prologue; the parent series' Chapter 11). The question is not whether, but when and led by whom. Leave it with the vendor, or rebuild it on your own side. That is all.
 
 == This way of untying can be checked in a public repository
 
@@ -2374,7 +2374,7 @@ Business Microsoft 365 and Google Workspace are SaaS suites that bundle closed l
 * Core logic: Power Apps / Apps Script to FastAPI (2-10)
 * AI: Copilot / Gemini to a local LLM + RAG (2-12)
 
-One to one, replace the left with the right. The tools on the right are separate open tools built by separate organizations, readable inside and portable out, so one vendor's decision cannot ripple into the others. This is not about efficiency. It restates the parent series' 2-13 "one + AI" at the height of the company's foundation. *Autonomous N beats centralized 1.*
+One to one, replace the left with the right. The tools on the right are separate open tools built by separate organizations, readable inside and portable out, so one vendor's decision cannot ripple into the others. This is not about efficiency. It restates the parent series' Chapter 11 "one + AI" at the height of the company's foundation. *Autonomous N beats centralized 1.*
 
 Untie the closed bundle into open tools. Move the key into your own hands. The force that opens, AI, is already at hand. One at a time, at your own pace. With each layer untied, the company is that much less a vendor's hostage and that much more able to move on its own judgment. The next chapter stands up the first one. Take one company PC, put Debian on it, and hand it to the AI. Everything after that sits on that one machine.
 
@@ -2919,7 +2919,7 @@ duckdb.sql("SELECT 部門, sum(売上) FROM pg.sales GROUP BY 部門 ORDER BY 2 
 === Excel のデータは Polars で捌く
 
 Excel は、人が数字を入れ、人が結果を読む入出力の道具だ。その役割は変わらない。
-だから文書の章(2-06)では、Excel 互換の OnlyOffice を自分の側に立てる。変わるのは、
+だから文書の章(2-06)では、Excel 互換の aiseed office を自分の側に置く。変わるのは、
 その裏でデータを捌く側だ。
 
 手元に積み上がった `.xlsx` は、Polars がそのまま読む。Rust 製の高速データフレームで、
@@ -3163,7 +3163,7 @@ metered, per-seat cloud, this is another dimension.
 
 Excel is the input/output tool where people enter numbers and read results. That
 role does not change, which is why the documents chapter (2-06) stands up the
-Excel-compatible OnlyOffice on your own side. What changes is the side that
+Excel-compatible aiseed office on your own side. What changes is the side that
 crunches the data behind it.
 
 The `.xlsx` files piled up on disk are read directly by Polars, a fast dataframe
@@ -3355,7 +3355,7 @@ ____
 
 == 入口の前にリバースプロキシを置く
 
-自作アプリは PocketBase の SDK でそのまま守れる。一方、文書(OnlyOffice)やコード
+自作アプリは PocketBase の SDK でそのまま守れる。一方、文書の編集エンジンやコード
 (Forgejo)のような既製の OSS は、各々が自前のログインを持つ。これらは入口の前に
 リバースプロキシ(Caddy)を一枚置き、社外には門番を通った者だけを通す。ただしこれは
 最初の一枚であって、各アプリも自分で身元と権限を確かめる。境界の中も信用しない、
@@ -3364,7 +3364,7 @@ ____
 ```caddy
 # Caddyfile ── 門番を通した先に各アプリを並べる
 auth.example.com   { reverse_proxy auth:8090 }
-docs.example.com   { reverse_proxy onlyoffice:80 }
+docs.example.com   { reverse_proxy docs:80 }
 git.example.com    { reverse_proxy forgejo:3000 }
 ```
 
@@ -3560,7 +3560,7 @@ ____
 == Put a reverse proxy in front
 
 Apps you build yourself are guarded directly by the PocketBase SDK. Packaged OSS
-like documents (OnlyOffice) or code (Forgejo), on the other hand, each carry
+like a document editing engine or code (Forgejo), on the other hand, each carry
 their own login. Put a reverse proxy (Caddy) in front and let the outside reach
 them only through the gate. But this is the first layer, not the only one: each
 app still verifies identity and permission itself. Don't trust the inside of the
@@ -3569,7 +3569,7 @@ perimeter either — that is defense in depth.
 ```caddy
 # Caddyfile — line up each app behind the gate
 auth.example.com   { reverse_proxy auth:8090 }
-docs.example.com   { reverse_proxy onlyoffice:80 }
+docs.example.com   { reverse_proxy docs:80 }
 git.example.com    { reverse_proxy forgejo:3000 }
 ```
 
@@ -3841,7 +3841,7 @@ curl -sI https://git.example.com        # 門番の内側で応答するか見�
 * *門番の内側* ── リバースプロキシで囲い、GitHub から段階移行
 
 書いたコードは、設定だけだ。汎用は、すでに OSS として在る。次章では、文書
-(OnlyOffice)を自分の側に据え、Word・Excel・PowerPoint の依存を断つ。
+を自分の側に据え、Word・Excel・PowerPoint の依存を断つ。
 
 '''
 
@@ -4007,7 +4007,7 @@ The builder's workshop, on your own side.
 * *Behind the gate* — fenced by the reverse proxy, migrate from GitHub gradually
 
 The only code written is configuration. The generic is already there, as OSS.
-Next, we set up documents (OnlyOffice) on our own side and cut the dependency on
+Next, we set up documents on our own side and cut the dependency on
 Word, Excel, and PowerPoint.
 
 '''
@@ -5969,7 +5969,7 @@ FastAPI と Flet フロント。コードは 2-05 の Forgejo に置き、2-09 �
   Python で書く(Claude が現場ヒアリングと既存 SAP の設定画面のスクショから初版を
   生成)
 . *API・画面層*: 現場用の出荷指示は FastAPI(本章)で API 化し、HTML で画面を
-  出す。社内 LAN だけで動かすので 2-05 の miniPC でホストできる
+  出す。社内 LAN だけで動かすので 2-02 の miniPC でホストできる
 . *突き合わせ*: 毎日、SAP の出荷結果と新システムの出荷結果を比較。差分があれば
   原因を Claude と一緒に追う。ほぼ毎週、SAP 側に「実は文書化されていなかったルール」
   が見つかる
@@ -6212,7 +6212,7 @@ curl -s https://api.example.com/docs  # FastAPI の自動ドキュメントが�
 
 * link:/ai-native-software/foundation/[2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars]
 * link:/ai-native-software/auth/[2-04: 門番を立てる ── PocketBase で認証を一つに]
-* link:/ai-native-software/documents/[2-06: 文書を取り戻す ── OnlyOffice Docs を PocketBase に組み込む]
+* link:/ai-native-software/documents/[2-06: 文書を取り戻す ── 原稿は adoc、様式は aiseed office]
 * link:/ai-native-software/structure-knowledge/[2-11: 社内情報を整える ── 整備こそ本体、AI は最後の一手]
 * https://github.com/aiseed-dev/workspace[参考実装 kura ── 自前の Microsoft 365 / Google Workspace 代替]
 endif::[]
@@ -6867,7 +6867,7 @@ laying an AI on it, we build information worth laying it on.
 
 * link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars]
 * link:/en/ai-native-software/auth/[2-04: Stand Up the Gate — One Login with PocketBase]
-* link:/en/ai-native-software/documents/[2-06: Take Documents Back — OnlyOffice Docs on PocketBase]
+* link:/en/ai-native-software/documents/[2-06: Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office]
 * link:/en/ai-native-software/structure-knowledge/[2-11: Put Your Information in Order — The Preparation Is the Work, AI Is the Last Step]
 * https://github.com/aiseed-dev/workspace[Reference implementation kura — a self-hosted Microsoft 365 / Google Workspace alternative]
 endif::[]
@@ -7030,7 +7030,7 @@ AI の前に、情報を整える。
 
 == 関連記事
 
-* link:/ai-native-software/documents/[2-06: 文書を取り戻す ── OnlyOffice Docs を PocketBase に組み込む]
+* link:/ai-native-software/documents/[2-06: 文書を取り戻す ── 原稿は adoc、様式は aiseed office]
 * link:/ai-native-software/fastapi/[2-10: API を作る ── FastAPI で基幹のロジックを出す]
 * link:/ai-native-software/ai/[2-12: 自前の AI を据える ── LLM と RAG]
 * link:/ai-native-software/sier-uneconomic/[3-03: SIer委託モデルの構造的不経済]
@@ -7192,7 +7192,7 @@ In the next chapter, on top of this prepared information, we set up our own AI.
 
 == Related articles
 
-* link:/en/ai-native-software/documents/[2-06: Take Documents Back — Embed OnlyOffice Docs in PocketBase]
+* link:/en/ai-native-software/documents/[2-06: Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office]
 * link:/en/ai-native-software/fastapi/[2-10: Build an API — Expose Core Logic with FastAPI]
 * link:/en/ai-native-software/ai/[2-12: Set Up Your Own AI — LLM and RAG]
 * link:/en/ai-native-software/sier-uneconomic/[3-03: The Structural Diseconomy of the SIer Outsourcing Model]
@@ -7722,7 +7722,7 @@ ____
 まとめて立てられる。事務系も基幹系も、もはや別々のベンダーに分けて調達する
 ものではない。
 
-* 事務系 ── PostgreSQL、PocketBase、OnlyOffice(link:/ai-native-software/foundation/[2-03: 土台を据える]・2-06)
+* 事務系 ── PostgreSQL、PocketBase、aiseed office(link:/ai-native-software/foundation/[2-03: 土台を据える]・2-06)
 * 基幹系 ── PostgreSQL、FastAPI、同じ認証・同じ共有(link:/ai-native-software/fastapi/[2-10: API を作る])
 
 二つは、同じデータ基盤・同じ門番・同じコードの上に乗る。汎用も固有も、
@@ -7764,7 +7764,7 @@ flowchart TB
 
   subgraph New["新: 一つの土台に合流"]
     direction TB
-    Found["同じ OSS の土台<br/>PostgreSQL / PocketBase /<br/>OnlyOffice / FastAPI"]
+    Found["同じ OSS の土台<br/>PostgreSQL / PocketBase /<br/>aiseed office / FastAPI"]
     NewO["事務系"]
     NewC["基幹系"]
     NewO --> Found
@@ -7941,7 +7941,7 @@ As the Independence part showed, one person plus AI can stand up both worlds
 on the same OSS foundation. Office and core are no longer something to
 procure from separate vendors.
 
-* Office systems — PostgreSQL, PocketBase, OnlyOffice (link:/en/ai-native-software/foundation/[2-03: Laying the Foundation], 2-06)
+* Office systems — PostgreSQL, PocketBase, aiseed office (link:/en/ai-native-software/foundation/[2-03: Laying the Foundation], 2-06)
 * Core systems — PostgreSQL, FastAPI, the same auth and the same sharing
   (link:/en/ai-native-software/fastapi/[2-10: Building the API])
 
@@ -7993,7 +7993,7 @@ flowchart TB
 
   subgraph New["New: merged onto one foundation"]
     direction TB
-    Found["the same OSS foundation<br/>PostgreSQL / PocketBase /<br/>OnlyOffice / FastAPI"]
+    Found["the same OSS foundation<br/>PostgreSQL / PocketBase /<br/>aiseed office / FastAPI"]
     NewO["office"]
     NewC["core"]
     NewO --> Found

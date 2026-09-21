@@ -140,9 +140,17 @@ AI モデルへのアクセスには、用途による段がある。
 * *書き続ける日が続くとき* ── 一日じゅう AI にコードを書かせる日が
   何日も続くなら、上の帯(Claude Max など)がある。必要になってから
   上げればよく、最初から要るものではない。
-* *API 従量課金* ── 使った分だけ払う形もあるが、*ここは使わない*。
-  開発で呼ぶ量を同じだけ通すと、実際には定額の *10 倍ほど* になる
-  (発注者の実測)。AI にコードを書かせるのは、定額のほうだ。
+* *API 従量課金* ── 使った分だけ払う形もあるが、*ここは使わない*。同じ量を
+  API で通すと、定額のおよそ *10 倍* になる。仕組みの問題だ。AI に道具を
+  使わせながら書かせると、一回の呼び出しごとに、それまでの会話と読んだ
+  ファイルを丸ごと送り直す。入力が、呼び出した回数だけ積み上がる。
+
+数えてみる。Sonnet 5 の公開価格は、入力が 100 万トークンあたり 2 ドル、出力が
+10 ドル、キャッシュからの読み出しはその 1 割(2026 年 9 月時点)。一回の呼び出しが
+文脈 8 万トークン・出力 2 千トークンで、文脈の 9 割がキャッシュから読まれるとすると、
+一回あたり約 0.05 ドル。AI に書かせ続ける日を一日 200 回、月 20 日で、約 200 ドルに
+なる。月 20 ドルの定額に対して、ちょうど 10 倍だ。同じ量を Opus 5 で通せば、
+500 ドルを超える。
 
 つまり、世界の最上層のコーディング能力に、月 3 千円で接続できる。
 クレジットカード一枚とブラウザ一つあれば、その日のうちに始められる。
@@ -414,9 +422,18 @@ use them.
   day after day, there is a tier above (Claude Max and the like). Move up
   when you need it; you do not need it to begin.
 * *API pay-as-you-go* — you can pay for what you use, but *do not use it
-  here*. Run the same developer's volume through it and it comes to roughly
-  *ten times* the flat plan in practice (the author's own measurement). Have
-  the AI write your code on the subscription.
+  here*. Run the same volume through the API and it comes to roughly *ten
+  times* the flat plan. It is a matter of mechanics: when the AI writes code
+  while using tools, every call resends the whole conversation and every file
+  it has read. The input side stacks up once per call.
+
+Count it out. Sonnet 5 lists at $2 per million input tokens and $10 per million
+output tokens, with cache reads at a tenth of the input rate (as of September
+2026). If one call carries 80,000 tokens of context and produces 2,000 tokens,
+and 90% of that context is served from cache, the call costs about $0.05. Two
+hundred calls a day, twenty days a month, and you are at roughly $200 — exactly
+ten times the $20 flat plan. Run the same volume through Opus 5 and it passes
+$500.
 
 In other words, the world's top-tier coding ability is reachable for $20
 a month. One credit card and one browser, and you can start the same day.

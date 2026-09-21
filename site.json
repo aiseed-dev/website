@@ -57,16 +57,6 @@
         "slug_strip": "claude-debian-server-"
       },
       {
-        "file": "ai-native-ways.adoc",
-        "label": "AIネイティブな仕事の作法",
-        "url_base": "/ai-native-ways"
-      },
-      {
-        "file": "ai-native-ways-software.adoc",
-        "label": "└ ソフトウェア開発編",
-        "url_base": "/ai-native-ways/software"
-      },
-      {
         "file": "phosphorus-and-farming.adoc",
         "label": "リンと農業",
         "url_base": "/phosphorus-and-farming"

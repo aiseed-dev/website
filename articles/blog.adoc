@@ -6322,7 +6322,7 @@ Windows 11 のサポート期間を調べてみるといい。Windows 11 Home / 
 
 _関連記事: link:/claude-debian/[「Claude と一緒に学ぶ Debian」 — Linux への具体的な移行手順]_
 
-_関連記事: link://ai-native-ways/[「AIネイティブな仕事の作法」 — AI 時代の自由人のための道具たち]_
+_関連記事: link:/ai-native-software/[「AI ネイティブなソフトウェア開発」 — AI 時代の自由人のための道具たち]_
 
 _関連記事: link:/blog/windows-office-facts/[「それでも Windows と Office を使い続けますか?」 — 詳細な構造分析と一次情報・参考文献]_
 endif::[]
@@ -6561,7 +6561,7 @@ If you're going to leave, leave all at once. Half-measures hurt the most.
 
 _Related: link:/en/claude-debian/[Learning Debian with Claude — A practical guide to migrating to Linux]_
 
-_Related: link:/en/ai-native-ways/[AI-Native Ways of Working — Tools for the free person of the AI era]_
+_Related: link:/en/ai-native-software/[AI-Native Software Development — Tools for the free person of the AI era]_
 
 _Related: link:/en/blog/windows-office-facts/[Are You Still Going to Keep Using Windows and Office? — Detailed structural analysis with primary sources and references]_
 endif::[]
@@ -6668,7 +6668,7 @@ Claudeのような対話型AIが、設計、コード生成、データ処理、
 
 '''
 
-その具体的な作法を、シリーズ記事「https://aiseed.dev/ai-native-ways/[*AIネイティブな仕事の作法*]」にまとめて公開している。エンジニアだけでなく、*多くの人がAIネイティブに働けるようになる*ことを目指している。
+その具体的な作法を、シリーズ記事「https://aiseed.dev/ai-native-software/[*AI ネイティブなソフトウェア開発*]」にまとめて公開している。エンジニアだけでなく、*多くの人がAIネイティブに働けるようになる*ことを目指している。
 
 この記事への感想、自分の現場での実践、改善すべき点などがあれば、Facebookグループ「https://www.facebook.com/groups/timej[*AIネイティブ時代の仕事の作法*]」までお知らせください。
 
@@ -6765,7 +6765,7 @@ The era in which our data and systems are held hostage to a giant vendor's busin
 
 '''
 
-The specific practices for working this way are gathered in a series, "https://aiseed.dev/en/ai-native-ways/[*AI-Native Ways of Working*]" (alpha). It is not just for engineers. The series aims to enable *anyone — in any occupation — to work AI-natively*.
+The specific practices for working this way are gathered in a series, "https://aiseed.dev/en/ai-native-software/[*AI-Native Software Development*]" (alpha). It is not just for engineers. The series aims to enable *anyone — in any occupation — to work AI-natively*.
 
 If you have thoughts, reports from your own field, or suggestions for improvement, please reach out at the Facebook group "https://www.facebook.com/groups/timej[*AI-Native Ways of Working*]."
 
@@ -8304,8 +8304,8 @@ title.en: In the AI era,\"Become a specialized engineer\" misreads the structure
 subtitle.ja: 第二次ルネサンスが始まっている ── ソフトウェアエンジニア → ビルダー、ソフトウェア工学 → リベラルアーツ、雇用 → 自由人
 subtitle.en: The Second Renaissance has begun — software engineer → builder, software engineering → liberal arts, employment → free person
 date: 2026.05.22
-description.ja: 業界でよく聞く「AI 時代には特化したエンジニアになれ」という助言は、構造を取り違えている。AI が引き受けつつあるのはソフトウェア工学の層全体であって、特定領域ではない。中世のたとえで言えば、農奴が「より特化した農奴になれば自由になれる」と助言されているに等しい。自由になるのは、特化を深めることではなく、領主の支配構造から抜けること。ソフトウェアエンジニア → ビルダー、ソフトウェア工学 → リベラルアーツ、雇用 → 自由人 ── この三つの転換は、第二次ルネサンス(LLMが活版印刷の役を演じる、AI時代の歴史的転換期)の中で進行している。創造と混乱は表裏一体で、トランプ大統領は混乱の側の典型例である。aiseed.dev の「AI ネイティブな仕事の作法 ── ソフトウェア開発編」(論証を担う13章) の構造論を、三対の語に圧縮して読む。
-description.en: The widely circulated advice — \"in the AI era, become a specialized engineer; hold a deep specialty AI cannot take, like security or ML\" — misreads the structure. AI is absorbing the whole layer of software engineering, not a particular subdomain. The medieval analogue: telling a serf, \"become a more specialized serf and you will be free.\" Freedom comes from stepping out of the lord's structure of control, not from deeper specialization. Software engineer → builder, software engineering → liberal arts, employment → free person — these three transitions are unfolding inside the Second Renaissance (the historical turning point of the AI era, with the LLM playing the role of the printing press). Creation and upheaval are two faces of the same time, and Trump is the canonical figure on the upheaval side. The article compresses aiseed.dev's \"AI-Native Ways of Working — Software\" sub-series (thirteen argument chapters) into three pairs of words.
+description.ja: 業界でよく聞く「AI 時代には特化したエンジニアになれ」という助言は、構造を取り違えている。AI が引き受けつつあるのはソフトウェア工学の層全体であって、特定領域ではない。中世のたとえで言えば、農奴が「より特化した農奴になれば自由になれる」と助言されているに等しい。自由になるのは、特化を深めることではなく、領主の支配構造から抜けること。ソフトウェアエンジニア → ビルダー、ソフトウェア工学 → リベラルアーツ、雇用 → 自由人 ── この三つの転換は、第二次ルネサンス(LLMが活版印刷の役を演じる、AI時代の歴史的転換期)の中で進行している。創造と混乱は表裏一体で、トランプ大統領は混乱の側の典型例である。aiseed.dev の「AI ネイティブなソフトウェア開発」の構造論を、三対の語に圧縮して読む。
+description.en: The widely circulated advice — \"in the AI era, become a specialized engineer; hold a deep specialty AI cannot take, like security or ML\" — misreads the structure. AI is absorbing the whole layer of software engineering, not a particular subdomain. The medieval analogue: telling a serf, \"become a more specialized serf and you will be free.\" Freedom comes from stepping out of the lord's structure of control, not from deeper specialization. Software engineer → builder, software engineering → liberal arts, employment → free person — these three transitions are unfolding inside the Second Renaissance (the historical turning point of the AI era, with the LLM playing the role of the printing press). Creation and upheaval are two faces of the same time, and Trump is the canonical figure on the upheaval side. The article compresses aiseed.dev's \"AI-Native Software Development\" into three pairs of words.
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
@@ -8320,7 +8320,7 @@ ifdef::lang-ja[]
 
 AI が引き受けつつあるのはソフトウェア工学の *層全体* であって、その中の特定領域ではありません。特化を深めても、特化先が AI に追い抜かれる時期がずれるだけです。中世のたとえで言えば、農奴が「より特化した農奴になれば自由になれる」と助言されているに等しい ── 自由になるのは、特化を深めることではなく、*領主の支配構造そのものから抜ける* ことでしかありません。
 
-aiseed.dev が公開している link:/ai-native-ways/software/[AI ネイティブな仕事の作法 ── ソフトウェア開発編](論証を担う13章)が論証している構造変化は、次の三つの転換に集約できます。
+aiseed.dev が公開している link:/ai-native-software/[AI ネイティブなソフトウェア開発]が論証している構造変化は、次の三つの転換に集約できます。
 
 |===
 | Before | After
@@ -8353,7 +8353,7 @@ ____
 
 「人を増やせば速くなる」は、エンジニアの世界では成立しました(上限はあったが)。ビルダーの世界では *人を増やしても速くならない* ── 判断の連鎖は、頭の数では分散できないからです。
 
-詳しくは link:/ai-native-ways/software/builder/[1-04「ビルダーという役割」]。
+詳しくは link:/ai-native-software/builder/[1-04「ビルダーという役割」]。
 
 == 転換2: ソフトウェア工学 → リベラルアーツ
 
@@ -8377,7 +8377,7 @@ ____
 
 歴史的にも符号します。中世のリベラルアーツは「*自由人(隷属していない人)が学ぶべき技芸*」と定義されました ── 奴隷の技芸(mechanical arts)と対になる概念です。ビルダーは「AI に判断を手放さない人」── つまり *自由人の技芸の現代版* です。
 
-詳しくは link:/ai-native-ways/software/builder/[1-04「ビルダーの基盤はリベラルアーツ」節]。
+詳しくは link:/ai-native-software/builder/[1-04「ビルダーの基盤はリベラルアーツ」節]。
 
 == 転換3: 雇用 → 自由人
 
@@ -8409,7 +8409,7 @@ ____
 *自営は、自由人の現代版*です。
 ____
 
-詳しくは link:/ai-native-ways/software/five-years/[3-07「雇用は AI 時代の農奴」節]。
+詳しくは link:/ai-native-software/five-years/[3-09「雇用は AI 時代の農奴」節]。
 
 == これは第二次ルネサンスだ
 
@@ -8429,7 +8429,7 @@ ____
 
 普及速度も桁違いです。数十年かかった印刷術の社会的効果が、AI 時代では *数年で* 起きる。本シリーズが描く近い将来の構造転換は、この強度の差を踏まえると、むしろ控えめな見積もりですらあります。
 
-第二次ルネサンスは「単なる AI 革命」では捕らえきれません。深い論証 ── *AI 革命は IT 革命の完成*(70年遅れの自動化約束の実現)、*LLM は超知能ではなく統計処理ツール*(AGI hype の構造的却下)、*アプリ作りは映画作りに似てくる*(ハリウッド〜YouTube の全幅で成立)、*AI 革命だけの話ではない*(化石資源・地政学・農業・金融・人口/医療/年金の同時並行転換)、*創造の時代と混乱の時代の両側*(トランプとナデラの判断集中という共通構造) ── は、link:/ai-native-ways/software/five-years/[*ソフトウェア開発編 3-07「もう戻らない構造転換」*]で展開しています。
+第二次ルネサンスは「単なる AI 革命」では捕らえきれません。深い論証 ── *AI 革命は IT 革命の完成*(70年遅れの自動化約束の実現)、*LLM は超知能ではなく統計処理ツール*(AGI hype の構造的却下)、*アプリ作りは映画作りに似てくる*(ハリウッド〜YouTube の全幅で成立)、*AI 革命だけの話ではない*(化石資源・地政学・農業・金融・人口/医療/年金の同時並行転換)、*創造の時代と混乱の時代の両側*(トランプとナデラの判断集中という共通構造) ── は、link:/ai-native-software/five-years/[*ソフトウェア開発編 3-07「もう戻らない構造転換」*]で展開しています。
 
 == 「特化エンジニア」助言の代替路
 
@@ -8442,30 +8442,30 @@ ____
 
 どちらも、領主の屋敷を出る道です。
 
-== 詳しくはソフトウェア開発編で
+== 詳しくは「AI ネイティブなソフトウェア開発」で
 
-本記事は、aiseed.dev の link:/ai-native-ways/software/[AI ネイティブな仕事の作法 ── ソフトウェア開発編](論証を担う13章)を三対の語に圧縮したものです。各章で扱われている論証:
+本記事は、aiseed.dev の link:/ai-native-software/[AI ネイティブなソフトウェア開発]を三対の語に圧縮したものです。各章で扱われている論証:
 
-* link:/ai-native-ways/software/coder-top/[1-01: AI は、世界で最も難しいコーディング問題を解く] ── Codeforces 2700 帯、月3万円で世界最上層
-* link:/ai-native-ways/software/maintenance-shift/[1-02: 保守フェーズの構造変化こそ本質] ── 保守の単位がコードから設計に移る
-* link:/ai-native-ways/software/coder-end/[1-03: ソフトウェアエンジニアの仕事を AI がするようになる] ── そろばん → 電卓と同じ構造
-* link:/ai-native-ways/software/builder/[1-04: ビルダーという役割] ── 決める・委譲する・評価する・統合する
-* link:/ai-native-ways/software/customer-codev/[1-05: 顧客が AI と協働して開発する時代] ── 9 割は顧客自身が作る
-* link:/ai-native-ways/software/two-worlds/[3-01: 企業は自分でコードを書かない ── 事務と基幹の並立] ── 二つの並立世界と二重の税、そしてその解消
-* link:/ai-native-ways/software/sovereignty/[3-02: デジタル主権 ── Microsoft 問題と Trump 問題] ── OSS とソブリン AI が経済でも安全保障でも有利に
-* link:/ai-native-ways/software/sier-uneconomic/[3-03: SIer 委託モデルの構造的不経済]
-* link:/ai-native-ways/software/lockin/[3-04: ロックイン問題] ── Palantir FDE を典型例として
-* link:/ai-native-ways/software/hiring-builders/[3-05: 上級ビルダーは経営陣（CIO）] ── 経営判断を下す側へ
-* link:/ai-native-ways/software/japan-transition/[3-06: 日本の SIer 業界の転換] ── 多重下請けは逆説的に転換を容易にする
-* link:/ai-native-ways/software/five-years/[3-07: もう戻らない構造転換] ── 不可逆性、第二次ルネサンス
+* link:/ai-native-software/coder-top/[1-01: AI は、世界で最も難しいコーディング問題を解く] ── Codeforces 2700 帯、月3万円で世界最上層
+* link:/ai-native-software/maintenance-shift/[1-02: 保守フェーズの構造変化こそ本質] ── 保守の単位がコードから設計に移る
+* link:/ai-native-software/coder-end/[1-03: ソフトウェアエンジニアの仕事を AI がするようになる] ── そろばん → 電卓と同じ構造
+* link:/ai-native-software/builder/[1-04: ビルダーという役割] ── 決める・委譲する・評価する・統合する
+* link:/ai-native-software/customer-codev/[1-05: 顧客が AI と協働して開発する時代] ── 9 割は顧客自身が作る
+* link:/ai-native-software/two-worlds/[3-01: 企業は自分でコードを書かない ── 事務と基幹の並立] ── 二つの並立世界と二重の税、そしてその解消
+* link:/ai-native-software/sovereignty/[3-03: デジタル主権 ── Microsoft 問題と Trump 問題] ── OSS とソブリン AI が経済でも安全保障でも有利に
+* link:/ai-native-software/sier-uneconomic/[3-04: SIer 委託モデルの構造的不経済]
+* link:/ai-native-software/lockin/[3-05: ロックイン問題] ── Palantir FDE を典型例として
+* link:/ai-native-software/hiring-builders/[3-06: 上級ビルダーは経営陣（CIO）] ── 経営判断を下す側へ
+* link:/ai-native-software/japan-transition/[3-07: 日本の SIer 業界の転換] ── 多重下請けは逆説的に転換を容易にする
+* link:/ai-native-software/five-years/[3-09: もう戻らない構造転換] ── 不可逆性、第二次ルネサンス
 
-「*ソフトウェア工学から、リベラルアーツへ ── 技術職の基盤転換*」── これがソフトウェア開発編の副題であり、AI 時代の構造を読み解く一つの軸です。
+「*ソフトウェア工学から、リベラルアーツへ ── 技術職の基盤転換*」── これが連載を貫く軸であり、AI 時代の構造を読み解く一つの軸です。
 
 '''
 
 == 関連記事
 
-* link:/ai-native-ways/prologue/[AIネイティブな仕事の作法 序章] ── AI 時代の自由人の輪郭
+* link:/ai-native-software/[AI ネイティブなソフトウェア開発(連載目次)] ── 導入編・自立編・転換編の三部
 * link:/insights/enterprise-tax/[構造分析08: 企業ITの税を引く] ── 企業側の構造変化
 * link:/insights/ai-and-individual/[構造分析09: AIと個人事業] ── 個人側の構造変化
 * link:/blog/nadella-hegel-cunning-of-reason/[Microsoft のナデラ CEO とヘーゲルの哲学] ── 反対側の世界観
@@ -8479,7 +8479,7 @@ This *misreads the structure*.
 
 What AI is absorbing is *the whole layer* of software engineering, not a particular subdomain inside it. Going deeper into a specialty only shifts the date by which the specialty itself is overtaken. The medieval analogue would be telling a serf, "become a more specialized serf and you will be free." Freedom does not come from going deeper into the specialty; it comes from *stepping out of the lord's structure of control*.
 
-The structural change argued in aiseed.dev's link:/en/ai-native-ways/software/[AI-Native Ways of Working — Software] sub-series (thirteen argument chapters) compresses into three transitions:
+The structural change argued in aiseed.dev's link:/en/ai-native-software/[AI-Native Software Development] compresses into three transitions:
 
 |===
 | Before | After
@@ -8512,7 +8512,7 @@ In numbers: aiseed.dev's code base (about 6,000 lines — the build tool, templa
 
 "Add people and it goes faster" held in the engineer's world (with a ceiling). In the builder's world, *adding people does not make it faster* — the chain of judgment cannot be parallelized across heads.
 
-See link:/en/ai-native-ways/software/builder/[1-04: The Builder Role].
+See link:/en/ai-native-software/builder/[1-04: The Builder Role].
 
 == Transition 2: Software engineering → liberal arts
 
@@ -8536,7 +8536,7 @@ To be clear, *computer science (CS) is a different thing*. Computability, algori
 
 The etymology lines up, too. The medieval _artes liberales_ were defined as *the arts a free person — one who is not enslaved — should learn*, set explicitly against the _artes mechanicae_, the slave's arts. The builder is the person who *does not hand judgment over to AI* — the contemporary form of the free person's arts.
 
-See link:/en/ai-native-ways/software/builder/[1-04: The Builder Role — "A builder's foundation is liberal arts"].
+See link:/en/ai-native-software/builder/[1-04: The Builder Role — "A builder's foundation is liberal arts"].
 
 == Transition 3: Employment → free person
 
@@ -8568,7 +8568,7 @@ Employment is the contemporary form of medieval serfdom.
 *Self-employment is the contemporary form of being a free person.*
 ____
 
-See link:/en/ai-native-ways/software/five-years/[3-07: "Employment is the AI era's serfdom"].
+See link:/en/ai-native-software/five-years/[3-09: "Employment is the AI era's serfdom"].
 
 == This is the Second Renaissance
 
@@ -8588,7 +8588,7 @@ History textbooks credit the printing press with preparing the ground for the Re
 
 The speed of diffusion is on another order. What took the printing press decades, the AI era achieves *in years*. The near-term horizon this sub-series draws is, against this difference in intensity, *a conservative estimate*.
 
-The Second Renaissance cannot be captured by "the AI revolution" alone. The deeper arguments — *the AI revolution is the completion of the IT revolution* (the 70-year-late fulfillment of the automation promise), *the LLM is a statistical-processing tool, not a superintelligence* (structural rejection of the AGI hype), *app-making comes to resemble film-making* (holding across the Hollywood-to-YouTube range), *not only the AI revolution* (concurrent transitions in fossil resources, geopolitics, agriculture, finance, demographics, healthcare, and pensions), and *creation AND upheaval as two sides of the era* (Trump and Nadella share the same structural error of judgment-concentration) — are developed in link:/en/ai-native-ways/software/five-years/[*Software sub-series, 3-07: "The Structural Transition That Won't Reverse"*].
+The Second Renaissance cannot be captured by "the AI revolution" alone. The deeper arguments — *the AI revolution is the completion of the IT revolution* (the 70-year-late fulfillment of the automation promise), *the LLM is a statistical-processing tool, not a superintelligence* (structural rejection of the AGI hype), *app-making comes to resemble film-making* (holding across the Hollywood-to-YouTube range), *not only the AI revolution* (concurrent transitions in fossil resources, geopolitics, agriculture, finance, demographics, healthcare, and pensions), and *creation AND upheaval as two sides of the era* (Trump and Nadella share the same structural error of judgment-concentration) — are developed in link:/en/ai-native-software/five-years/[*Software sub-series, 3-07: "The Structural Transition That Won't Reverse"*].
 
 == The alternative path to "specialized engineer" advice
 
@@ -8601,22 +8601,22 @@ There are two paths:
 
 Both are roads out of the lord's manor.
 
-== More in the Software sub-series
+== More in AI-Native Software Development
 
-This article compresses aiseed.dev's link:/en/ai-native-ways/software/[AI-Native Ways of Working — Software] sub-series (thirteen argument chapters) into three pairs of words. The arguments across the chapters:
+This article compresses aiseed.dev's link:/en/ai-native-software/[AI-Native Software Development] into three pairs of words. The arguments across the chapters:
 
-* link:/en/ai-native-ways/software/coder-top/[1-01: AI Solves the World's Hardest Coding Problems] — Codeforces 2700 tier; the top layer for $200/month
-* link:/en/ai-native-ways/software/maintenance-shift/[1-02: The Real Shift Is in Maintenance] — the unit of maintenance moves from code to design
-* link:/en/ai-native-ways/software/coder-end/[1-03: AI Now Does the Software Engineer's Work] — same structure as abacus → calculator
-* link:/en/ai-native-ways/software/builder/[1-04: The Builder Role] — decide, delegate, evaluate, integrate
-* link:/en/ai-native-ways/software/customer-codev/[1-05: Customers Co-develop with AI] — 90% is the customer; 10% goes to a specialist
-* link:/en/ai-native-ways/software/two-worlds/[3-01: Companies Don't Write Their Own Code — Office and Core, Two Parallel Worlds] — the two parallel worlds, the double tax, and their dissolution
-* link:/en/ai-native-ways/software/sovereignty/[3-02: Digital Sovereignty — The Microsoft Problem and the Trump Problem] — OSS and sovereign AI now win on both economics and security
-* link:/en/ai-native-ways/software/sier-uneconomic/[3-03: The SIer Commission Model Is Structurally Uneconomic]
-* link:/en/ai-native-ways/software/lockin/[3-04: The Lock-In Problem] — Palantir FDE as the canonical case
-* link:/en/ai-native-ways/software/hiring-builders/[3-05: The Senior Builder Is Management (the CIO)] — moving to the side that makes business decisions
-* link:/en/ai-native-ways/software/japan-transition/[3-06: Japan's SIer Industry Transition] — multi-tier subcontracting paradoxically eases the transition
-* link:/en/ai-native-ways/software/five-years/[3-07: The Structural Transition That Won't Reverse] — irreversibility; the Second Renaissance
+* link:/en/ai-native-software/coder-top/[1-01: AI Solves the World's Hardest Coding Problems] — Codeforces 2700 tier; the top layer for $200/month
+* link:/en/ai-native-software/maintenance-shift/[1-02: The Real Shift Is in Maintenance] — the unit of maintenance moves from code to design
+* link:/en/ai-native-software/coder-end/[1-03: AI Now Does the Software Engineer's Work] — same structure as abacus → calculator
+* link:/en/ai-native-software/builder/[1-04: The Builder Role] — decide, delegate, evaluate, integrate
+* link:/en/ai-native-software/customer-codev/[1-05: Customers Co-develop with AI] — 90% is the customer; 10% goes to a specialist
+* link:/en/ai-native-software/two-worlds/[3-01: Companies Don't Write Their Own Code — Office and Core, Two Parallel Worlds] — the two parallel worlds, the double tax, and their dissolution
+* link:/en/ai-native-software/sovereignty/[3-03: Digital Sovereignty — The Microsoft Problem and the Trump Problem] — OSS and sovereign AI now win on both economics and security
+* link:/en/ai-native-software/sier-uneconomic/[3-04: The SIer Commission Model Is Structurally Uneconomic]
+* link:/en/ai-native-software/lockin/[3-05: The Lock-In Problem] — Palantir FDE as the canonical case
+* link:/en/ai-native-software/hiring-builders/[3-06: The Senior Builder Is Management (the CIO)] — moving to the side that makes business decisions
+* link:/en/ai-native-software/japan-transition/[3-07: Japan's SIer Industry Transition] — multi-tier subcontracting paradoxically eases the transition
+* link:/en/ai-native-software/five-years/[3-09: The Structural Transition That Won't Reverse] — irreversibility; the Second Renaissance
 
 "*From software engineering to the liberal arts — the foundational shift of the technical profession*" is the subtitle of the sub-series and one axis for reading the structure of the AI era.
 
@@ -8624,7 +8624,7 @@ This article compresses aiseed.dev's link:/en/ai-native-ways/software/[AI-Native
 
 == Related
 
-* link:/en/ai-native-ways/prologue/[AI-Native Ways of Working — Prologue] — the contour of the AI-era free person
+* link:/en/ai-native-software/[AI-Native Software Development (series index)] — Introduction, Independence, and Shift
 * link:/en/insights/enterprise-tax/[Structural Analysis 08: Removing the Enterprise IT Tax] — the structural change on the company side
 * link:/en/insights/ai-and-individual/[Structural Analysis 09: AI and the Individual Business] — the structural change on the individual side
 * link:/en/blog/nadella-hegel-cunning-of-reason/[Microsoft's Nadella and Hegel's Philosophy] — the worldview on the opposite side
@@ -8751,7 +8751,7 @@ image:screenshot.jpg[スクリーンショット]
 
 link:/claude-debian/[*Claude と一緒に学ぶ Debian*] は、Debian への移行を Claude との対話で進めるための教科書だ。何を Claude に伝えるか、どう環境情報を取り出すか、ログをどう渡すか、詰まったときに何を試すか ── これらは、Linux の知識そのものよりも、*AI を使って学ぶための作法* に近い。
 
-link:/ai-native-ways/[*AI ネイティブな仕事の作法*] は、Debian に移った先で何をするかを書いている。Excel の VBA を Python に、Word を Markdown に、CSV を JSON や SQLite に ── AI が同僚になる時代の道具立てを整理している。
+link:/ai-native-software/[*AI ネイティブなソフトウェア開発*] は、Debian に移った先で何をするかを書いている。Excel の VBA を Python に、Word を Markdown に、CSV を JSON や SQLite に ── AI が同僚になる時代の道具立てを整理している。
 
 一度この作法を身につければ、Debian だけでなく、*この先 AI と一緒に何かを学ぶ・作るときの基礎* になる。
 
@@ -8877,7 +8877,7 @@ This site has two textbooks for learning with Claude beside you.
 
 link:/en/claude-debian/[*Learning Debian with Claude*] is a prologue-plus-23-chapter textbook for migrating to Debian through dialogue with Claude. What to tell Claude, how to pull environment information, how to hand it logs, what to try when you're stuck — these are less about Linux knowledge per se and more about *the discipline of learning with AI*.
 
-link:/en/ai-native-ways/[*AI-Native Ways of Working*] covers what to do after you arrive in Debian. Excel VBA into Python, Word into Markdown, CSV into JSON / SQLite — the toolkit for an era when AI is your colleague.
+link:/en/ai-native-software/[*AI-Native Software Development*] covers what to do after you arrive in Debian. Excel VBA into Python, Word into Markdown, CSV into JSON / SQLite — the toolkit for an era when AI is your colleague.
 
 Once you internalize this discipline, it becomes the foundation *not just for Debian, but for anything you'll learn or build alongside AI from here on*.
 
@@ -10167,8 +10167,8 @@ Microsoft は、自社の AI で穴を見つけて直す、と言うだろう。
 
 == 関連
 
-* ソフトウェア開発編 https://aiseed.dev/ai-native-ways/software/sier-uneconomic/[3-03 SIer 委託モデルの構造的不経済] ── 委託は無責任化と空洞化を生む、という本稿の前提
-* ソフトウェア開発編 https://aiseed.dev/ai-native-ways/software/lockin/[3-04 ロックイン問題] ── 後方互換性という「逃げ場のない檻」
+* AI ネイティブなソフトウェア開発 https://aiseed.dev/ai-native-software/sier-uneconomic/[3-04 SIer 委託モデルの構造的不経済] ── 委託は無責任化と空洞化を生む、という本稿の前提
+* AI ネイティブなソフトウェア開発 https://aiseed.dev/ai-native-software/lockin/[3-05 ロックイン問題] ── 後方互換性という「逃げ場のない檻」
 * ブログ https://aiseed.dev/blog/autonomy-distribution-diversity/[IT 業界の最新トレンド ── 自立・分散・多様性への構造的転換] ── Fable 5 輸出停止とソブリン AI の経緯
 
 == 参考
@@ -10264,8 +10264,8 @@ What has stood on the premise of not being verified is not only the SIer's deliv
 
 == Related
 
-* Software sub-series https://aiseed.dev/en/ai-native-ways/software/sier-uneconomic/[3-03 The Structural Uneconomy of the SIer Model] — commissioning breeds de-responsibilization and hollowing-out, the premise of this piece
-* Software sub-series https://aiseed.dev/en/ai-native-ways/software/lockin/[3-04 The Lock-In Problem] — backward compatibility as the "cage with no exit"
+* AI-Native Software Development https://aiseed.dev/en/ai-native-software/sier-uneconomic/[3-04 The Structural Uneconomy of the SIer Model] — commissioning breeds de-responsibilization and hollowing-out, the premise of this piece
+* AI-Native Software Development https://aiseed.dev/en/ai-native-software/lockin/[3-05 The Lock-In Problem] — backward compatibility as the "cage with no exit"
 * Blog https://aiseed.dev/en/blog/autonomy-distribution-diversity/[The IT Industry's Structural Shift — Toward Autonomy, Distribution, and Diversity] — the Fable 5 export ban and sovereign AI
 
 == References
@@ -10428,7 +10428,7 @@ Entra ID、VBA、Copilotは時代も技術も異なるが、「利便性と互�
 . *標準技術の採用*:特定ベンダーの独自技術(VBA、独自ID基盤等)への依存を避け、OSSと標準プロトコルで構成する。移行コストの発生源を最初から作らない。
 . *監視機能の内製化*:第2層で見た通り、外部(政府機関)の監視・調査体制は政治判断で消失しうる。ログ・監査・脆弱性対応の基本機能は自組織で保持する。
 
-米国の技術・サービスを使わないという話ではない。使い続けるとしても、それが止まったとき・法的根拠を失ったときに自組織が存続できる構造を先に作っておく、ということである。具体的な移行の手順はlink:/ai-native-ways/software/[「AIネイティブな仕事の作法 ソフトウェア開発編」の自立編]が、インフラの置き場所の判断はlink:/insights/cloud-independence/[構造分析 第三部 第4章「クラウドからの自立」]が扱っている。
+米国の技術・サービスを使わないという話ではない。使い続けるとしても、それが止まったとき・法的根拠を失ったときに自組織が存続できる構造を先に作っておく、ということである。具体的な移行の手順はlink:/ai-native-software/[「AI ネイティブなソフトウェア開発」の自立編]が、インフラの置き場所の判断はlink:/insights/cloud-independence/[構造分析 第三部 第4章「クラウドからの自立」]が扱っている。
 
 '''
 
@@ -10819,7 +10819,7 @@ This is not an argument against using US technology and services. It
 means: even if you keep using them, build first the structure in which
 your organization survives when they stop — or lose their legal basis.
 The concrete migration steps are covered by the independence part of
-link:/en/ai-native-ways/software/[AI-Native Ways of Working — Software], and
+link:/en/ai-native-software/[AI-Native Software Development], and
 the judgment of where to place infrastructure by
 link:/en/insights/cloud-independence/[Structural Analysis Part 3, Chapter 4 "Independence from the Cloud"].
 
@@ -10971,7 +10971,7 @@ ____
 * link:/insights/cloud-independence/[クラウドからの自立 ── AIが支援するのは開いた層だけ]
 * link:/insights/lord-class-collapse/[領主層の自己破壊 ── Big Techの囲い込みの限界]
 * 手元のパソコンを Debian にするところから始める手引き:link:/claude-debian/[Claudeと一緒に学ぶ Debian]
-* 会社の道具立てごと移す具体的な手順:link:/ai-native-ways/software/[AIネイティブな仕事の作法 ソフトウェア開発編]
+* 会社の道具立てごと移す具体的な手順:link:/ai-native-software/[AI ネイティブなソフトウェア開発]
 endif::[]
 ifdef::lang-en[]
 = If Your Microsoft Account Gets Stolen, You Won't Get It Back
@@ -11083,7 +11083,7 @@ Rather than searching for a way to recover after it's stolen, build in advance a
 * link:/en/insights/cloud-independence/[Independence from the Cloud — AI Supports Only the Open Layers]
 * link:/en/insights/lord-class-collapse/[The Lord Class Self-Destructs — The Limits of Big Tech's Enclosure]
 * A guide that starts from turning the computer in front of you into Debian: link:/en/claude-debian/[Learning Debian with Claude]
-* Concrete steps for moving your whole toolset: link:/en/ai-native-ways/software/[AI-Native Ways of Working — Software]
+* Concrete steps for moving your whole toolset: link:/en/ai-native-software/[AI-Native Software Development]
 endif::[]
 
 // ===== article: 031-ai-not-ignorance-but-average =====

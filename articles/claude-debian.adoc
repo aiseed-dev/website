@@ -457,7 +457,7 @@ ifdef::lang-ja[]
 Microsoft Office、Outlook、Edge。これらは LibreOffice / Thunderbird /
 Firefox-Chromium で「*置き換える*」のが従来の発想だが、本書はもう一段
 進む。*自分の作業領域は Markdown と CSV と Python に切り替える* ──
-link:/ai-native-ways/[AIネイティブな仕事の作法]シリーズで詳述したやり方。
+link:/ai-native-software/[AI ネイティブなソフトウェア開発]で詳述したやり方。
 Office 互換層は *入口と出口だけ*にして、中身は構造化テキストで保つ。
 こうすれば、後で AI に渡す・検索する・差分を取る ── すべてが楽になる。
 
@@ -641,7 +641,7 @@ A word on games up front, because this gets misread the most often. Single-playe
 
 *B. Alternatives exist, but not fully compatible.*
 Microsoft Office, Outlook, Edge. The conventional move is to "replace"
-them with LibreOffice / Thunderbird / Firefox-Chromium. *This book goes one step further: switch your own working surface to Markdown + CSV + Python* — the approach detailed in the link:/en/ai-native-ways/[AI-Native Ways of Working]
+them with LibreOffice / Thunderbird / Firefox-Chromium. *This book goes one step further: switch your own working surface to Markdown + CSV + Python* — the approach detailed in link:/en/ai-native-software/[AI-Native Software Development]
 series. Office-compatible software stays only as an *import / export adapter* at the boundary; the substance lives as structured text. This
 makes it easy to hand work to AI, search it, diff it.
 
@@ -2119,7 +2119,7 @@ Microsoft の世界の中でしか動けない。*自分の作業領域を Markd
 *入口と出口だけ Office 互換層、中身は構造化テキスト*。OnlyOffice は
 MS Office との見た目互換性が高く、本書では第11章で互換層の代表として扱う。
 
-具体的なコード・実測値はlink:/ai-native-ways/[AIネイティブな仕事の作法]
+具体的なコード・実測値は link:/ai-native-software/[AI ネイティブなソフトウェア開発]
 シリーズの実例集を参照(月次報告 30 秒、100 個の Excel を 0.07 秒で集計、等)。
 
 この見立てがあれば、サブスクの仕分けで *Microsoft 365 を解約* の判断が
@@ -2396,7 +2396,7 @@ Convert to .docx / .xlsx / .pdf via pandoc or OnlyOffice *only at the boundary* 
 stays as structured text. OnlyOffice ships strong visual compatibility
 with MS Office and is treated as this book's compat layer in Chapter 11.
 
-Concrete code and measurements live in the link:/en/ai-native-ways/[AI-Native Ways of Working]
+Concrete code and measurements live in link:/en/ai-native-software/[AI-Native Software Development]
 example sets (monthly report in 30 seconds, 100 Excel files aggregated
 in 0.07 s, etc.).
 
@@ -10122,7 +10122,7 @@ Claude Code は、エディタの裏でファイルを読み、コマンドを�
 * *使い捨てコンテナで開発する*:Docker / podman の中で `npm install`
   すれば、ホスト環境への波及を絶てる
 * *可能な限り、npm を使わない選択肢を検討する*:本書(と
-  「link:/ai-native-ways/web/[AI ネイティブな仕事の作法]」シリーズ)
+  link:/ai-native-software/web-build/[2-10「Web を作る」])
   が推す Markdown + HTML + Python のスタックなら、フロントエンド
   ビルドの大半は npm 抜きで済む
 
@@ -13521,7 +13521,7 @@ ifdef::lang-ja[]
 == 第一節 Linux 移行よりも、道具の変更を先に
 
 本書の主張は単純だ ── *OS の入れ替えを推す前に、まず道具を変える*。
-それは link:/ai-native-ways/[AI ネイティブな仕事の作法] に書いた通りで、
+それは link:/ai-native-software/[AI ネイティブなソフトウェア開発] に書いた通りで、
 *Windows のままでも今日から始められる*。
 
 === 「道具」の中身
@@ -13837,7 +13837,7 @@ go first.
 
 == Section 1 — Change the Tools Before Changing the OS
 
-The book's claim is simple — *before pushing an OS swap, change the tools first*. This is exactly what link:/en/ai-native-ways/[AI-Native Ways of Working]
+The book's claim is simple — *before pushing an OS swap, change the tools first*. This is exactly what link:/en/ai-native-software/[AI-Native Software Development]
 spells out, and *you can start it today on Windows.*
 
 === What "the tools" means

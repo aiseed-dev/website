@@ -4298,7 +4298,7 @@ Claudeが最も得意とする仕事である。
 社員がClaudeに直接要件を伝え、Claudeがシステムを作る。
 「翻訳者」としてのSIerが不要になる。
 
-これは単なるコスト削減ではなく、*ソフトウェア開発の構造そのものが組み替わる*話だ。SIer 委託モデルが数年で完了する不可逆な転換と、それに代わって立つ「ビルダー」(経営判断を下す経営陣＝CIO)の輪郭は、link:/ai-native-ways/software/[AIネイティブな仕事の作法 ソフトウェア開発編]の論証を担う11章で展開している。
+これは単なるコスト削減ではなく、*ソフトウェア開発の構造そのものが組み替わる*話だ。SIer 委託モデルが数年で完了する不可逆な転換と、それに代わって立つ「ビルダー」(経営判断を下す経営陣＝CIO)の輪郭は、link:/ai-native-software/[AI ネイティブなソフトウェア開発]の転換編で展開している。
 
 == コンサルタント税——「何をすべきか」は自分で考えろ
 
@@ -4737,7 +4737,7 @@ Operations → Claude builds monitoring and maintenance systems +
 
 The people who know the business best are your own employees. Not the SIer. When employees communicate requirements directly to Claude and Claude builds the system, the SIer as "translator" becomes unnecessary.
 
-This is not merely cost reduction; *the structure of software development itself is being reorganized*. The irreversible transition that completes within a few years, and the shape of the "builder" (management that makes business decisions — the CIO) that rises in the SIer's place, are developed across the eleven argument chapters of the link:/en/ai-native-ways/software/[AI-Native Ways of Working — Software sub-series].
+This is not merely cost reduction; *the structure of software development itself is being reorganized*. The irreversible transition that completes within a few years, and the shape of the "builder" (management that makes business decisions — the CIO) that rises in the SIer's place, are developed across the Shift part of link:/en/ai-native-software/[AI-Native Software Development].
 
 == Consultant Tax — Think for Yourself
 
@@ -7441,7 +7441,7 @@ ____
 
 四つの条件が揃って初めて自由人は成立する ── *経済的自立*(月数千円のAIで事務・専門業務を自前化)、*政治的自治*(自分のデータ・判断・システムを手元に)、*実体に触れる力*(ローカルAI、自分の土地、自分の手仕事)、*教養*(古典的にはリベラルアーツ、現代では判断・言語化・倫理・体系的思考)。
 
-これは「効率化」の話ではない。第一次ルネサンス(14〜17世紀)が活版印刷によって本格化したように、*第二次ルネサンス* がLLMによって本格化している局面 ── その入口に我々はいる。詳細な構造論はlink:/ai-native-ways/[AIネイティブな仕事の作法]シリーズで展開している(序章「AI時代の自由人」、link:/ai-native-ways/software/[ソフトウェア開発編] 3-07「これは第二次ルネサンスの始まりだ」)。
+これは「効率化」の話ではない。第一次ルネサンス(14〜17世紀)が活版印刷によって本格化したように、*第二次ルネサンス* がLLMによって本格化している局面 ── その入口に我々はいる。詳細な構造論はlink:/ai-native-software/[AI ネイティブなソフトウェア開発]で展開している(導入編、link:/ai-native-software/[ソフトウェア開発編] 3-07「これは第二次ルネサンスの始まりだ」)。
 
 == 巨大な権力は悲劇を生む
 
@@ -7638,7 +7638,7 @@ The structure described so far — one person + AI lets specialty professions li
 
 Four conditions have to converge for the free person to exist — *economic autonomy* (running one's own back office and specialty work with a few-thousand-yen-a-month AI), *political self-governance* (holding one's own data, judgment, and systems), *the means of touching reality* (local AI, one's own land, one's own handwork), and *education* (the seven liberal arts in their classical form; judgment, verbalization, ethics, and systems thinking in their modern form).
 
-This is not a story about "efficiency." Just as the First Renaissance (14th–17th centuries) was brought into full force by the printing press, the *Second Renaissance* is now being brought into full force by the LLM — and we stand at its entrance. The full structural argument lives in the link:/en/ai-native-ways/[AI-Native Ways of Working] series (prologue's "The free person of the AI era"; link:/en/ai-native-ways/software/[Software sub-series] 3-07's "This is the beginning of the Second Renaissance").
+This is not a story about "efficiency." Just as the First Renaissance (14th–17th centuries) was brought into full force by the printing press, the *Second Renaissance* is now being brought into full force by the LLM — and we stand at its entrance. The full structural argument lives in the link:/en/ai-native-software/[AI-Native Software Development] (the Introduction part; link:/en/ai-native-software/[Software sub-series] 3-07's "This is the beginning of the Second Renaissance").
 
 == Great Power Breeds Tragedy
 
@@ -9338,7 +9338,7 @@ UI を内製化していく構造で、ラッパー層の存在意義は浸食�
   コスト破綻(第一部 第6章 AGI 不採算と同じ構造)、プロンプトインジェク
   ションで認証権限を乗っ取られる脆弱性(第一部 第5章 Mythos)
 * Anthropic 自身が「自律モードで走らせるな」と警告
-  (`/ai-native-ways/ai-delegation/`)
+  (`/ai-native-software/ai-delegation/`)
 
 ____
 自律エージェントは「人手不足を解決する技術」ではなく、
@@ -9699,7 +9699,7 @@ autonomously" — is recognizable as wish, but it fails structurally:
   unprofitability in Chapter 6), and prompt injection turns authorized
   credentials into a weapon (Chapter 5 Mythos)
 * Anthropic itself warns "do not run in autonomous mode"
-  (`/en/ai-native-ways/ai-delegation/`)
+  (`/en/ai-native-software/ai-delegation/`)
 
 ____
 Autonomous agents are not "a technology that solves the labor shortage."
@@ -10928,7 +10928,7 @@ AIネイティブ基層 + LLMが翻訳労働を消すと、ステップ2〜6が�
 
 翻訳労働が消えると、*個人で完結できる範囲が劇的に広がる*。
 
-これまで30人で作っていたシステムが、1〜3人で作れる。これまで「専門家チームに発注」だった仕事が、「自分で作る」になる。AIネイティブな仕事の作法を持つ個人は、*SIerに発注する顧客から、自ら作るビルダーへ*転換できる。
+これまで30人で作っていたシステムが、1〜3人で作れる。これまで「専門家チームに発注」だった仕事が、「自分で作る」になる。AI ネイティブな開発の作法を持つ個人は、*SIerに発注する顧客から、自ら作るビルダーへ*転換できる。
 
 業務担当者 + AI + Python で、業務システムが作れる。経理担当者 + AI + DuckDB で、会計分析ツールが作れる。一人の専門家 + AI で、複数の専門領域を兼ねられる。
 
@@ -11309,7 +11309,7 @@ AI → Claude、その他LLM（複数社競争中、ロックイン回避可能�
 2. → AI + Markdown + Web（知識の蓄積と流通） +
 3. → 個人事業 + AI + インターネット（経済的独立） +
 4. → オープンソース、独立メディア、Substack等（多様な交流） +
-5. → AIネイティブな仕事の作法
+5. → AI ネイティブなソフトウェア開発
 --
 
 ルネサンスが「中世を完全に否定した」のではなく、*中世の階級構造を解体しつつ、その遺産（古典文献、技術、組織）を継承した*のと同じく、第二次ルネサンスも：
@@ -13515,7 +13515,7 @@ Linux運用 → 公開知識が豊富・仕様が安定 → *AIの支援品質�
 * 恒常的な負荷であれば、ローカル(自宅・事務所内のマシン)でも運用でき、外部のクラウド破綻リスクからも独立できる
 * いずれの場合も、認証はOIDC等の標準プロトコルに基づく自己ホスト型のID基盤(PocketBase、Keycloak等)で完結させることができ、ベンダー固有のID基盤への依存を避けられる
 
-これが「自立」の実装である。全部を自前にすることではない。*鍵(認証)と管理を手元に置き、借りるものは標準の形で借りる* ── 窓は借りても、金庫は自分の側に置く。組織のスイート全体でこれをやり切る手順は、別シリーズlink:/ai-native-ways/software/[「AIネイティブな仕事の作法 ソフトウェア開発編」の自立編]が扱っている。
+これが「自立」の実装である。全部を自前にすることではない。*鍵(認証)と管理を手元に置き、借りるものは標準の形で借りる* ── 窓は借りても、金庫は自分の側に置く。組織のスイート全体でこれをやり切る手順は、別の連載 link:/ai-native-software/[「AI ネイティブなソフトウェア開発」の自立編]が扱っている。
 
 == クラウドファーストは「遺産の付け替え」だった
 
@@ -13699,7 +13699,7 @@ This is the implementation of *independence*. It does not mean building
 everything yourself. *Keep the keys (authentication) and the management in your own hands, and rent what you rent in standard form* — rent the window,
 keep the safe on your side. The full procedure for doing this across an
 organization's entire suite is covered by the independence part of
-link:/en/ai-native-ways/software/[AI-Native Ways of Working — Software].
+link:/en/ai-native-software/[AI-Native Software Development].
 
 == Cloud-First Was a "Re-labeling of the Legacy"
 
@@ -14777,7 +14777,7 @@ AIネイティブな自由人として立つための選択は、五つある。
 ステップ5: ビルダーとして自立する道を探る +
   → 自分のプロジェクトを始める +
   → AIと共に複数の専門を兼ねる +
-  → 「AIネイティブな仕事の作法」シリーズが指南
+  → 「AI ネイティブなソフトウェア開発」シリーズが指南
 --
 
 各ステップは数週間〜数ヶ月。全部で1〜2年で「家臣からビルダーへ」の移行が完了する。*急がない、しかし確実に進む*——これが個人レベルでの実践のリズムである。
@@ -14821,7 +14821,7 @@ AIネイティブな自由人として立つための選択は、五つある。
 
 *学習の起点は「プログラミングを勉強する」ではなく「自分の仕事をPythonで自動化する」*。AIが補助してくれる時代では、これが最も効率的な学び方である。
 
-「AIネイティブな仕事の作法」シリーズの第一部 第2章「Python」が、この道筋を扱っている。
+「AI ネイティブなソフトウェア開発」の link:/ai-native-software/python/[2-04「処理を書く ── Python と Flet で、自分の道具を持つ」]が、この道筋を扱っている。
 
 == ステップ3の具体例——Debianへの移行
 
@@ -14876,7 +14876,7 @@ ONLYOFFICE（Flathubから入る）は、Microsoft Officeとの見た目互換�
 
 これは「リスクを取って起業する」ではない。*段階的に組織への依存を減らしていく*プロセスである。AIネイティブな仕事ができれば、一人で複数の専門を兼ねられるので、*「専門家チームに発注する顧客」がそのまま「自分で作るビルダー」になれる*。
 
-「AIネイティブな仕事の作法」シリーズが、この道筋の具体的なツールと作法を扱っている。
+「AI ネイティブなソフトウェア開発」が、この道筋の具体的なツールと作法を扱っている。
 
 == 三つの誤解を避ける
 
@@ -14905,7 +14905,7 @@ ONLYOFFICE（Flathubから入る）は、Microsoft Officeとの見た目互換�
 5. *今、選択するかどうか*——これだけが個人レベルの問いになる
 --
 
-*選択肢は既に揃っている*。本書シリーズ（insightsの構造分析、claude-debianの実践手引き、ai-native-waysの仕事の作法）は、その選択を支えるための道具立てである。
+*選択肢は既に揃っている*。本書シリーズ（insights の構造分析、claude-debian の実践手引き、ai-native-software の開発の作法）は、その選択を支えるための道具立てである。
 
 == この章の結論——選択は連動した一つの構造的選択である
 
@@ -14942,7 +14942,7 @@ ____
 本書シリーズの実践編は、二つの別シリーズとして展開している：
 
 * link:/claude-debian/[Claudeと一緒に学ぶDebian]——OS から日常環境までの移行手引き
-* link:/ai-native-ways/[AIネイティブな仕事の作法]——AI と共に働く具体的な作法
+* link:/ai-native-software/[AI ネイティブなソフトウェア開発]——AI と共に立てて、自分で動かす作法
 
 構造分析（insights）で全体像を、実践シリーズで具体的な手順を——両方を組み合わせて、AIネイティブな自由人への道を歩んでほしい。
 
@@ -15008,7 +15008,7 @@ Step 4: Cut the Office dependency +
 Step 5: Explore the path to standing as a builder +
   → Start your own project +
   → Cover multiple specialties alongside AI +
-  → The "AI-Native Ways of Working" series is the guide for this
+  → The "AI-Native Software Development" series is the guide for this
 --
 
 Each step takes weeks to months. The full "vassal to builder" transition completes in one to two years. *No rush, but steady progress* — that is the practical rhythm at the individual level.
@@ -15052,7 +15052,7 @@ Apply to your own work → "Do this with my CSV data"
 
 *The starting point is not "study programming" but "automate my work in Python."* In an era where AI assists you, this is the most efficient way to learn.
 
-Chapter 2 ("Python") of Part I in the "AI-Native Ways of Working" series covers this path.
+link:/en/ai-native-software/python/[2-04, "Write the Logic — Own Your Tools with Python and Flet"] in AI-Native Software Development covers this path.
 
 == Step 3 in Detail — Migrating to Debian
 
@@ -15107,7 +15107,7 @@ When you can go independent, leave the vassal role behind
 
 This is not "take a risk and start a company." It is a process of *gradually reducing dependence on an organization*. If you can do AI-native work, you can cover multiple specialties alone, so *"the client who commissioned a specialist team" can become "the builder who builds it themselves."*
 
-The "AI-Native Ways of Working" series covers the specific tools and practices for this path.
+AI-Native Software Development covers the specific tools and practices for this path.
 
 == Three Misconceptions to Avoid
 
@@ -15136,7 +15136,7 @@ Integrating the analysis so far, the stance an individual should take today beco
 5. *Whether to choose now* — this is the only question left at the individual level
 --
 
-*The options are already in place.* This series — the structural analysis in insights, the practical guide in claude-debian, the ways of working in ai-native-ways — is the toolset to support that choice.
+*The options are already in place.* This series — the structural analysis in insights, the practical guide in claude-debian, the development practice in ai-native-software — is the toolset to support that choice.
 
 == The Conclusion of This Chapter — The Choices Are a Single Interconnected Structural Choice
 
@@ -15173,7 +15173,7 @@ This is a *structural analysis series of the Second Renaissance*. The individual
 The practical sections of this series are deployed as two separate series:
 
 * link:/en/claude-debian/[Learning Debian with Claude] — A complete guide to migrating from OS to daily environment
-* link:/en/ai-native-ways/[AI-Native Ways of Working] — Concrete practices for working alongside AI
+* link:/en/ai-native-software/[AI-Native Software Development] — Standing it up with AI, and running it yourself
 
 Use the structural analysis (insights) for the overall picture, and the practice series for the specific steps — combine both to walk the road to becoming an AI-native free person.
 

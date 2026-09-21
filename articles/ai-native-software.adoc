@@ -25,9 +25,8 @@ ifdef::lang-ja[]
 
 *AI は、世界で最も難しいコーディング問題を解く側に立った*。
 
-親シリーズの序章では、AI の母国語が Python と Markdown 形式のテキストで
-あることを示した。この連載は、その一歩先を扱う。母国語の話ではなく、能力の
-水準の話だ。AI が書くコードの水準は、ある線を越えた。線を越えた先では、
+AI の母国語は、Python と Markdown 形式のテキストである。この連載が扱うのは、
+その一歩先だ。母国語の話ではなく、能力の水準の話である。AI が書くコードの水準は、ある線を越えた。線を越えた先では、
 ソフトウェア開発の構造そのものが組み替わる。この章は、その線がどこにあるかを
 示す。
 
@@ -271,7 +270,7 @@ ____
 
 * link:/ai-native-software/builder/[1-04: ビルダーという役割]
 * link:/ai-native-software/five-years/[3-09: もう戻らない構造転換]
-* link:/ai-native-ways/prologue/[親シリーズ序章: AIの母国語は、PythonとMarkdown形式のテキスト]
+* link:/ai-native-software/python/[2-04: 処理を書く ── Python と Flet で、自分の道具を持つ]
 * link:/insights/enterprise-tax/[構造分析08: 企業ITの税を引く]
 * link:/insights/ai-and-individual/[構造分析12: AIと個人事業]
 endif::[]
@@ -280,9 +279,8 @@ ifdef::lang-en[]
 
 *AI now sits on the side of the table that solves the world's hardest coding problems*.
 
-The parent series' prologue showed that AI's native tongue is Python and
-Markdown-shaped text. This sub-series goes one step further. The question
-is not language but capability level. The code AI writes has crossed a
+AI's native tongue is Python and Markdown-shaped text. This series goes one
+step further. The question is not language but capability level. The code AI writes has crossed a
 line. Past that line, the structure of software development itself
 rearranges. This chapter establishes where the line sits.
 
@@ -571,7 +569,7 @@ That is the structural change of the maintenance phase.
 
 * link:/en/ai-native-software/builder/[1-04: The Builder Role]
 * link:/en/ai-native-software/five-years/[3-09: The Structural Transition That Won't Reverse]
-* link:/en/ai-native-ways/prologue/[Parent series prologue: AI's Native Tongue Is Python and Markdown-Shaped Text]
+* link:/en/ai-native-software/python/[2-04: Write the Logic — Own Your Tools with Python and Flet]
 * link:/en/insights/enterprise-tax/[Structural analysis 08: Subtracting the enterprise-IT tax]
 * link:/en/insights/ai-and-individual/[Structural analysis 12: AI and the sole proprietor]
 endif::[]
@@ -718,7 +716,7 @@ ____
 * link:/ai-native-software/coder-top/[1-01: AI は、世界で最も難しいコーディング問題を解く]
 * link:/ai-native-software/coder-end/[1-03: ソフトウェアエンジニアの仕事を AI がするようになる]
 * link:/ai-native-software/builder/[1-04: ビルダーという役割]
-* link:/ai-native-ways/prologue/[親シリーズ序章: AIの母国語は、PythonとMarkdown形式のテキスト]
+* link:/ai-native-software/python/[2-04: 処理を書く ── Python と Flet で、自分の道具を持つ]
 * link:/insights/enterprise-tax/[構造分析08: 企業ITの税を引く]
 endif::[]
 ifdef::lang-en[]
@@ -867,7 +865,7 @@ the SIer becoming unnecessary, is taken up in the Shift part.
 * link:/en/ai-native-software/coder-top/[1-01: AI Solves the World's Hardest Coding Problems]
 * link:/en/ai-native-software/coder-end/[1-03: AI Now Does the Software Engineer's Work]
 * link:/en/ai-native-software/builder/[1-04: The Builder Role]
-* link:/en/ai-native-ways/prologue/[Parent series prologue: AI's Native Tongue Is Python and Markdown-Shaped Text]
+* link:/en/ai-native-software/python/[2-04: Write the Logic — Own Your Tools with Python and Flet]
 * link:/en/insights/enterprise-tax/[Structural analysis 08: Subtracting the enterprise-IT tax]
 endif::[]
 // ===== article: 03-coder-end =====
@@ -1536,10 +1534,10 @@ number: 05
 part: 1
 title.ja: 顧客が AI と協働して開発する時代
 title.en: Customers Co-Develop with AI
-subtitle.ja: 最初の一手は、コードではなく OSS ── 汎用は使い、個人はカスタマイズ(親シリーズ第2・6・8章)、組織は基盤から(自立編)。足りない固有だけ、AI と作る
-subtitle.en: The first move is OSS, not code — use it for the generic, customize it for the personal (parent series ch. 2, 6, 8), build the foundation for the organization (the Independence part). Only the specific gets written with AI
-description.ja: 顧客自身がビルダーになる時代である。だが最初の一手は、コードを書くことではない。実績ある OSS を使うことだ。汎用的なものは、まず OSS を使う。これがいちばん経済的で、セキュリティ対策としても有効だ。個人的なものは、OSS の上に AI と対話して自分に合わせる。その実例は親シリーズの個人トラックにある。組織は、Microsoft 365・Copilot・WordPress を代替する OSS で基盤を立てる。これが自立編だ。足りない自社固有のロジックだけを、AI と書く。AI にできないことは、SIer にもできない。
-description.en: This is the era in which customers themselves become builders. But the first move is not writing code. It is using proven OSS. For generic things, use OSS first: it is the most economical path, and it is also effective as a security measure. Personal things are customized on top of OSS in dialogue with AI, and the worked examples live in the parent series' individual track. Organizations stand up a foundation with OSS that replaces Microsoft 365, Copilot, and WordPress, which is the Independence part. Only the company-specific logic gets written with AI. What AI cannot do, the SIer cannot do either.
+subtitle.ja: 最初の一手は、コードではなく OSS ── 汎用は使い、個人はカスタマイズ(2-04・2-10・2-14)、組織は基盤から(自立編)。足りない固有だけ、AI と作る
+subtitle.en: The first move is OSS, not code — use it for the generic, customize it for the personal (2-04, 2-10, 2-14), build the foundation for the organization (the Independence part). Only the specific gets written with AI
+description.ja: 顧客自身がビルダーになる時代である。だが最初の一手は、コードを書くことではない。実績ある OSS を使うことだ。汎用的なものは、まず OSS を使う。これがいちばん経済的で、セキュリティ対策としても有効だ。個人的なものは、OSS の上に AI と対話して自分に合わせる。その実例は自立編の 2-04・2-10・2-14 にある。組織は、Microsoft 365・Copilot・WordPress を代替する OSS で基盤を立てる。これが自立編だ。足りない自社固有のロジックだけを、AI と書く。AI にできないことは、SIer にもできない。
+description.en: This is the era in which customers themselves become builders. But the first move is not writing code. It is using proven OSS. For generic things, use OSS first: it is the most economical path, and it is also effective as a security measure. Personal things are customized on top of OSS in dialogue with AI, and the worked examples live in 2-04, 2-10, and 2-14. Organizations stand up a foundation with OSS that replaces Microsoft 365, Copilot, and WordPress, which is the Independence part. Only the company-specific logic gets written with AI. What AI cannot do, the SIer cannot do either.
 date: 2026.06.29
 label: Introduction 5
 title_html.ja: 汎用は <span class="accent">OSS</span>、<br>固有は <span class="accent">AI</span> と。
@@ -1565,7 +1563,7 @@ flowchart LR
   Need -->|自分に合わせる必要があるから| P["個人的なもの"]
   Need -->|会社全体が載るから| O["組織の基盤"]
   G --> GA["実績ある OSS を使う<br/>(いちばん経済的)"]
-  P --> PA["OSS + AI と対話して<br/>自分に合わせる<br/>(親シリーズ第2・6・8章)"]
+  P --> PA["OSS + AI と対話して<br/>自分に合わせる<br/>(2-04・2-10・2-14)"]
   O --> OA["OSS で基盤を立てる<br/>(M365・Copilot・WordPress 代替)<br/>(自立編)"]
 
   classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
@@ -1592,11 +1590,11 @@ ____
 
 これが可能になったのは、*学習コストが桁違いに下がった*からだ。かつては「半年から 1 年で初級者」だった。AI と組めば「数時間から数日で動くものを持っている」になる。半年かかるなら諦めたものを、数日でできるなら自分でやる。この境目を越えた。
 
-その実例は、親シリーズの個人トラックが扱う。
+その実例は、自立編が扱う。
 
-* 親シリーズ第2章 ── 処理を Python で書く(Excel マクロも Python へ)
-* 親シリーズ第6章 ── Web を、AI と対話して作る
-* 親シリーズ第8章 ── 組み込みを作る
+* link:/ai-native-software/python/[2-04] ── 処理を Python で書く(Excel マクロも Python へ)
+* link:/ai-native-software/web-build/[2-10] ── Web を、AI と対話して作る
+* link:/ai-native-software/embedded/[2-14] ── 電子工作から IoT まで
 
 どれも、専門のプログラマーでない個人が、OSS と AI で自分の道具を作る話だ。
 
@@ -1638,7 +1636,7 @@ ____
 
 まずは個人の実例から見ていくのが分かりやすい。専門のプログラマーでない人が、OSS と AI で自分の道具を作る。
 
-その実例は親シリーズの個人トラックが扱う。Excel マクロを Python に(親シリーズ第2章)、Web を作る(親シリーズ第6章)、組み込みを作る(親シリーズ第8章)。
+その実例は自立編が扱う。Excel マクロを Python に(2-04)、Web を作る(2-10)、電子工作から IoT まで(2-14)。
 
 '''
 
@@ -1673,7 +1671,7 @@ flowchart LR
   Need -->|has to be fitted to you| P["Personal"]
   Need -->|the whole company sits on it| O["Organization's foundation"]
   G --> GA["Use proven OSS<br/>(most economical)"]
-  P --> PA["OSS + dialogue with AI<br/>to fit yourself<br/>(parent series ch. 2, 6, 8)"]
+  P --> PA["OSS + dialogue with AI<br/>to fit yourself<br/>(2-04, 2-10, 2-14)"]
   O --> OA["Stand up a foundation with OSS<br/>(replacing M365, Copilot, WordPress)<br/>(the Independence part)"]
 
   classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
@@ -1700,11 +1698,11 @@ When an individual builds a tool for themselves, using OSS as it comes is someti
 
 This became possible because *the cost of learning fell by orders of magnitude*. It used to take six months to a year to reach an entry-level grasp. Paired with AI, it becomes a few hours to a few days before you have something running. What you would have given up on at half a year, you do yourself when it takes a few days. That line has been crossed.
 
-The worked examples are handled by the parent series' individual track.
+The worked examples are handled by the Independence part.
 
-* Parent series Chapter 2 — write the processing in Python (Excel macros move to Python too)
-* Parent series Chapter 6 — build a website in dialogue with AI
-* Parent series Chapter 8 — build embedded software
+* link:/en/ai-native-software/python/[2-04] — write the processing in Python (Excel macros move to Python too)
+* link:/en/ai-native-software/web-build/[2-10] — build a website in dialogue with AI
+* link:/en/ai-native-software/embedded/[2-14] — from electronics to IoT
 
 Each of these is about an individual who is not a professional programmer building their own tool with OSS and AI.
 
@@ -1746,7 +1744,7 @@ The customer builds the generic on OSS and the specific with AI. Put in that ord
 
 It is clearest to start from the personal examples. Someone who is not a professional programmer builds their own tool with OSS and AI.
 
-Those examples are handled by the parent series' individual track: Excel macros to Python (parent series Chapter 2), building a website (parent series Chapter 6), and building embedded software (parent series Chapter 8).
+Those examples are handled by the Independence part: Excel macros to Python (2-04), building a website (2-10), and from electronics to IoT (2-14).
 
 '''
 
@@ -1813,7 +1811,7 @@ ____
 閉じた束が、他人の鍵にぶら下がっている。それがロックインの正体だ。
 ____
 
-だから解き方も決まる。各層を開いた道具に分け、鍵を自分の手元に移す。開いていれば検証でき、持ち出せる。鍵が手元にあれば、締め出されない。そして解けた束は、一本ずつ置き換えられて、一本が倒れても他は動く。これは親シリーズ第11章「1人+AI」と同じ、自立した N は集中した 1 より強い、の会社版である。
+だから解き方も決まる。各層を開いた道具に分け、鍵を自分の手元に移す。開いていれば検証でき、持ち出せる。鍵が手元にあれば、締め出されない。そして解けた束は、一本ずつ置き換えられて、一本が倒れても他は動く。これは一人 + AI と同じ形で、自立した N は集中した 1 より強い、の会社版である。
 
 == 閉じたものを開かせる ── それが AI の役割だ
 
@@ -1821,7 +1819,7 @@ ____
 
 AI は、まさにこのコストを潰す。
 
-* 独自形式を開く。Office / Docs の書式は aiseed office が扱い(2-07)、埋め込まれたマクロやロジックは AI が Python に外部化する(導入編・親シリーズ第2章)
+* 独自形式を開く。Office / Docs の書式は aiseed office が扱い(2-07)、埋め込まれたマクロやロジックは AI が Python に外部化する(導入編・2-04)
 * 読めないコードを開く。レガシー基幹のコード・SQL・手順書を、ローカル LLM が読み解いて、Markdown の業務知識に取り出す(2-12・2-16)
 * 閉じ込められた知識を開く。紙・画像・属人知を、OCR と対話で構造化された情報に変える(2-15)
 
@@ -1944,7 +1942,7 @@ flowchart TB
 
 == 運用は、一人 + AI で回る
 
-ここで当然の疑問が出る。これだけ自前で抱えて、誰が面倒を見るのか。答えは一人 + AI だ。親シリーズ第11章「1人+AI」で示した新しい仕事の単位が、そのまま会社のインフラ運用に効く。
+ここで当然の疑問が出る。これだけ自前で抱えて、誰が面倒を見るのか。答えは一人 + AI だ。「一人 + AI」という新しい仕事の単位が、そのまま会社のインフラ運用に効く。
 
 なぜ一人で回るのか。理由は三つある。
 
@@ -1967,7 +1965,7 @@ ____
 
 箱そのもの、つまり会社の PC を一台 Debian にして AI に渡すところは、2-02 が受け持つ。その床にあたる OS の入れ方・SSH・守りの基本・データを守るは、link:/claude-debian/server/[「Claudeと一緒に学ぶDebian サーバー編」]がそのまま仕様になる。ここでも、汎用は参照で済む。
 
-これは親シリーズ第11章の主旨そのものだ。縦割りの情報システム部門は要らない。業務を分かっている一人が、AI を相棒に、認証からメール、会議、AI、データベースまでを横断して持つ。個人の自立が、会社のインフラのレベルで成立する。これだけのオープンな道具を、一人 + AI が運用する。スイートを一社に預けるのと、手間は変わらない。主導権だけが、自分の側に移る。
+ここで一人 + AI が成り立つ。縦割りの情報システム部門は要らない。業務を分かっている一人が、AI を相棒に、認証からメール、会議、AI、データベースまでを横断して持つ。個人の自立が、会社のインフラのレベルで成立する。これだけのオープンな道具を、一人 + AI が運用する。スイートを一社に預けるのと、手間は変わらない。主導権だけが、自分の側に移る。
 
 == この土台は、そのまま基幹システムの土台になる
 
@@ -2016,7 +2014,7 @@ flowchart TB
 
 古い構造が AI ネイティブと噛み合わず、しかも作り直しが安い。この二つが重なれば、結論は一つだ。残すほうが不自然になる。かつて「動いているものに触るな」が正解だったのは、書き換えが高すぎたからにすぎない。その前提が消えた今、作り直さない理由のほうが、説明を要する。
 
-これは Microsoft や Google への敵意ではない。IT 革命が積み上げたものを、AI 革命が作り直して引き継ぐ。その自然な一巡だ(序章・親シリーズ第11章)。問われているのは「やるか」ではなく「いつ、誰が主導でやるか」。ベンダーに預けたままにするか、自分の側で作り直すか。それだけだ。
+これは Microsoft や Google への敵意ではない。IT 革命が積み上げたものを、AI 革命が作り直して引き継ぐ。その自然な一巡だ(導入編)。問われているのは「やるか」ではなく「いつ、誰が主導でやるか」。ベンダーに預けたままにするか、自分の側で作り直すか。それだけだ。
 
 == この解き方は、公開リポジトリで確かめられる
 
@@ -2068,7 +2066,7 @@ flowchart TB
 * 基幹ロジック:Power Apps / Apps Script → FastAPI(2-12)
 * AI:Copilot / Gemini → ローカル LLM + RAG(2-16)
 
-一対一で、左を右に置き換える。右の道具は別々の組織が作った別々の開いた道具だから、中が読めて、持ち出せて、一本の方針変更が他に波及しない。これは効率化の話ではない。親シリーズ第11章「1人+AI」を、会社の土台の高さで言い直したものだ。*集中した 1 より、自立した N が強い*。
+一対一で、左を右に置き換える。右の道具は別々の組織が作った別々の開いた道具だから、中が読めて、持ち出せて、一本の方針変更が他に波及しない。これは効率化の話ではない。一人 + AI を、会社の土台の高さで言い直したものだ。*集中した 1 より、自立した N が強い*。
 
 閉じた束を、開いた道具に解く。鍵を、自分の手元に。開かせる力(AI)は、もう手元にある。一本ずつ、自分のペースで。解けた分だけ、会社はベンダーの人質ではなくなり、自分たちの判断で動けるようになる。次の章では、その一本目を立てる。会社の PC を一台 Debian にして、AI に渡す。以降のすべては、その一台の上に乗る。
 
@@ -2119,7 +2117,7 @@ Being bundled is not what makes it dangerous.
 A closed bundle, hanging from someone else's key. That is the lock-in.
 ____
 
-So the way out follows. Split each layer into an open tool, and move the key into your own hands. Open means you can verify and carry out. Your own key means you cannot be locked out. And once untied, each layer can be replaced on its own, and if one falls, the others keep running. This is the parent series' Chapter 11 "one + AI" at the scale of the company: autonomous N beats centralized 1.
+So the way out follows. Split each layer into an open tool, and move the key into your own hands. Open means you can verify and carry out. Your own key means you cannot be locked out. And once untied, each layer can be replaced on its own, and if one falls, the others keep running. This is the same shape as one person plus AI, at the scale of the company: autonomous N beats centralized 1.
 
 == Opening what is closed — that is AI's role
 
@@ -2127,7 +2125,7 @@ Why does it come apart now? Closedness worked as a rampart only because *the cos
 
 AI crushes exactly that cost.
 
-* It opens proprietary formats. The Office / Docs formats are handled by aiseed office (2-07), and AI externalizes the embedded macros and logic into Python (the Introduction part; the parent series' Chapter 2)
+* It opens proprietary formats. The Office / Docs formats are handled by aiseed office (2-07), and AI externalizes the embedded macros and logic into Python (the Introduction part; 2-04)
 * It opens unreadable code. A local LLM reads the legacy core's code, SQL, and procedure manuals and extracts the business knowledge into Markdown (2-12, 2-16)
 * It opens imprisoned knowledge. Paper, images, and tacit know-how become structured information through OCR and dialogue (2-15)
 
@@ -2250,7 +2248,7 @@ Run each step in parallel, the way 2-12 describes. Do not stop the old suite. Ru
 
 == Operating it — one person + AI
 
-The obvious question arises. With this much self-hosted, who maintains it? The answer is one person plus AI. The new unit of work shown in the parent series' Chapter 11 "one + AI" applies directly to running the company's infrastructure.
+The obvious question arises. With this much self-hosted, who maintains it? The answer is one person plus AI. That new unit of work — one person plus AI — applies directly to running the company's infrastructure.
 
 Why does one person suffice? Three reasons.
 
@@ -2273,7 +2271,7 @@ ____
 
 The box itself, meaning taking one company PC, putting Debian on it, and handing it to the AI, is 2-02's job. The floor under that box, installing the OS, SSH, the basics of defense, and protecting the data, is specified by link:/claude-debian/server/[Learning Debian with Claude, Server Edition]. Here too, the generic is handled by reference.
 
-This is the very thesis of the parent series' Chapter 11. You do not need a siloed IT department. One person who understands the business holds, with the AI as partner, everything from auth to mail, meetings, AI, and the database. Individual independence holds at the level of company infrastructure. One person plus AI operates this whole set of open tools. Compared with handing the suite to one vendor, the effort is the same. Only the control moves to your side.
+This is where one person plus AI holds. You do not need a siloed IT department. One person who understands the business holds, with the AI as partner, everything from auth to mail, meetings, AI, and the database. Individual independence holds at the level of company infrastructure. One person plus AI operates this whole set of open tools. Compared with handing the suite to one vendor, the effort is the same. Only the control moves to your side.
 
 == This foundation is also the foundation of the core systems
 
@@ -2322,7 +2320,7 @@ Second, the cost of rewriting has fallen by a factor of ten (2-12). The AI extra
 
 The old structure does not fit AI-native, and rebuilding is cheap. When those two overlap, the conclusion is one. Keeping it becomes the unnatural choice. "Don't touch what's working" was once correct only because rewriting was too expensive. Now that the premise is gone, it is the reason not to rebuild that needs explaining.
 
-This is not hostility toward Microsoft or Google. It is the natural turn in which the AI revolution rebuilds and inherits what the IT revolution stacked up (the prologue; the parent series' Chapter 11). The question is not whether, but when and led by whom. Leave it with the vendor, or rebuild it on your own side. That is all.
+This is not hostility toward Microsoft or Google. It is the natural turn in which the AI revolution rebuilds and inherits what the IT revolution stacked up (the Introduction part). The question is not whether, but when and led by whom. Leave it with the vendor, or rebuild it on your own side. That is all.
 
 == This way of untying can be checked in a public repository
 
@@ -2374,7 +2372,7 @@ Business Microsoft 365 and Google Workspace are SaaS suites that bundle closed l
 * Core logic: Power Apps / Apps Script to FastAPI (2-12)
 * AI: Copilot / Gemini to a local LLM + RAG (2-16)
 
-One to one, replace the left with the right. The tools on the right are separate open tools built by separate organizations, readable inside and portable out, so one vendor's decision cannot ripple into the others. This is not about efficiency. It restates the parent series' Chapter 11 "one + AI" at the height of the company's foundation. *Autonomous N beats centralized 1.*
+One to one, replace the left with the right. The tools on the right are separate open tools built by separate organizations, readable inside and portable out, so one vendor's decision cannot ripple into the others. This is not about efficiency. It restates one person plus AI at the height of the company's foundation. *Autonomous N beats centralized 1.*
 
 Untie the closed bundle into open tools. Move the key into your own hands. The force that opens, AI, is already at hand. One at a time, at your own pace. With each layer untied, the company is that much less a vendor's hostage and that much more able to move on its own judgment. The next chapter stands up the first one. Take one company PC, put Debian on it, and hand it to the AI. Everything after that sits on that one machine.
 
@@ -4862,7 +4860,7 @@ curl -sI https://git.example.com        # 門番の内側で応答するか見�
 * link:/ai-native-software/auth/[2-05: 門番を立てる ── PocketBase で認証を一つに]
 * link:/ai-native-software/foundation/[2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars]
 * link:/ai-native-software/builder/[1-04: ビルダーという役割]
-* link:/ai-native-ways/apps/[親シリーズ第7章: アプリを作る ── CLIツール、Fletアプリ、Flutterアプリ]
+* link:/ai-native-software/python/[2-04: 処理を書く ── Python と Flet で、自分の道具を持つ]
 endif::[]
 ifdef::lang-en[]
 = Bring Code In-House — Forgejo and Zed
@@ -5029,7 +5027,7 @@ Word, Excel, and PowerPoint.
 * link:/en/ai-native-software/auth/[2-05: Stand Up the Gate — One Login with PocketBase]
 * link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars]
 * link:/en/ai-native-software/builder/[1-04: The Builder Role]
-* link:/en/ai-native-ways/apps/[Parent series, Chapter 7: Building Apps — CLI Tools, Flet Apps, Flutter Apps]
+* link:/en/ai-native-software/python/[2-04: Write the Logic — Own Your Tools with Python and Flet]
 endif::[]
 // ===== article: 12-documents =====
 ---
@@ -8078,7 +8076,7 @@ def orders(user=Depends(verify_token)):       # 2-05 の門番が誰かを確か
 ```
 
 基幹をいきなり全部 API 化するのではない。よく使う処理から、一本ずつ。AI と対話して
-書き、現行と突き合わせて確かめる(親シリーズ第2章 VBA→Python と同じやり方だ)。
+書き、現行と突き合わせて確かめる(2-04 の VBA→Python と同じやり方だ)。
 これは並行稼働の論理そのものを、一本の API の粒度で回すことに他ならない。重い処理は
 裏で Python が捌き、結果だけ返す。
 
@@ -8115,7 +8113,7 @@ FastAPI と Flet フロント。コードは 2-06 の Forgejo に置き、2-11 �
 中規模製造業の出荷管理を SAP で動かしている会社。ライセンス年額は数千万円。
 
 . *データ層*: SAP から夜間バッチで出荷データを Parquet にエクスポート
-  (親シリーズ第5章)── SAP は触らない、読み取りのみ
+  (2-03 の Parquet と DuckDB)── SAP は触らない、読み取りのみ
 . *新ロジック層*: Polars と DuckDB で在庫照合・出荷判定・運送業者の振分けを
   Python で書く(Claude が現場ヒアリングと既存 SAP の設定画面のスクショから初版を
   生成)
@@ -8289,7 +8287,7 @@ BIZ UD ゴシック / 明朝は Windows に標準搭載され、Google Fonts か
 済む。本サイトの本文も、この方式(端末にあれば UD 書体、無ければシステム書体)で
 組んである。
 
-図やスライドまで含めたデザインの作法は、親シリーズ第4章が扱っている。
+図やスライドまで含めたデザインの作法は、この章の後半が扱う。
 
 ____
 デザインの大部分は、感性ではなくルールだ。
@@ -8662,8 +8660,7 @@ def orders(user=Depends(verify_token)):       # the 2-05 gate confirms who this 
 
 You do not turn the whole core into an API at once. Start with the operations
 used most, one at a time. Write it in dialogue with the AI and confirm it against
-the running system (the same way as VBA to Python in the parent series, Chapter
-2). This is nothing but running the logic of parallel operation at the
+the running system (the same way as VBA to Python in 2-04). This is nothing but running the logic of parallel operation at the
 granularity of a single API. Heavy processing is handled by Python behind the
 API, which returns only the result.
 
@@ -8705,7 +8702,7 @@ A mid-sized manufacturer runs shipping management on SAP. The annual license run
 to tens of millions of yen.
 
 . *Data layer*: a nightly batch exports shipping data from SAP to Parquet
-  (parent series, Chapter 5) — SAP itself is not touched, only read
+  (Parquet and DuckDB, from 2-03) — SAP itself is not touched, only read
 . *New logic layer*: stock matching, shipping decisions, and carrier routing are
   written in Python with Polars and DuckDB (Claude produces the first draft from
   floor interviews and screenshots of the existing SAP configuration screens)
@@ -8922,8 +8919,8 @@ rule sheet, one line does it: body text in BIZ UD Gothic, otherwise the system
 font. This site's own body text is set the same way: the UD faces where the
 device has them, the system faces otherwise.
 
-Design practice in full, diagrams and slides included, is covered by the parent
-series, Chapter 4.
+Design practice in full, diagrams and slides included, is covered in the second
+half of this chapter.
 
 ____
 Most of design is rules, not taste.
@@ -12724,7 +12721,7 @@ OSS で立て、固有は AI と書く。*これが、新しい合理的な既�
 
 * link:/ai-native-software/independence/[2-01: Microsoft と Google から自立する ── 全体像と対応表]
 * link:/ai-native-software/sier-uneconomic/[3-04: SIer委託モデルの構造的不経済]
-* link:/ai-native-ways/python/[親シリーズ第2章: Python で自分の道具を持つ]
+* link:/ai-native-software/python/[2-04: 処理を書く ── Python と Flet で、自分の道具を持つ]
 endif::[]
 ifdef::lang-en[]
 = Companies Don't Write Their Own Code — Office and Core, Two Parallel Worlds
@@ -12955,7 +12952,7 @@ to trust the US government — the Trump problem.
 
 * link:/en/ai-native-software/independence/[2-01: Stand Free of Microsoft and Google — Overview and Mapping]
 * link:/en/ai-native-software/sier-uneconomic/[3-04: The Structural Uneconomy of the SIer Model]
-* link:/en/ai-native-ways/python/[Parent series Chapter 2: Owning Your Tools with Python]
+* link:/en/ai-native-software/python/[2-04: Write the Logic — Own Your Tools with Python and Flet]
 endif::[]
 // ===== article: 24-verify-narratives =====
 ---
@@ -13770,8 +13767,7 @@ ____
 アクセスの継続性を前提にできない。重要インフラを、依存を武器化すると示した
 外国政府への信頼の上に建ててはならない。
 
-これは党派的な非難ではなく、構造の話だ。親シリーズと併走する枠組みで言えば
-こうなる。ルネサンスが創造の時代であると同時に混乱の時代でもあったように、
+これは党派的な非難ではなく、構造の話だ。この連載の枠組みで言えば、こうなる。ルネサンスが創造の時代であると同時に混乱の時代でもあったように、
 この時代にも二つの側面がある。AI による創造の側と、旧秩序が崩れ新秩序が
 まだ立たない混乱の側だ。トランプは、その混乱の側の象徴的な人物である。
 「私が一人で全部決める」という統治は、旧時代の判断集中の論理を、国家の
@@ -13994,7 +13990,7 @@ infrastructure must not be built on trust in a foreign government that has
 shown it will weaponize dependence.
 
 This is not partisan denunciation. It is a matter of structure. In the frame
-that runs alongside the parent series, it reads like this. Just as the
+of this series, it reads like this. Just as the
 Renaissance was an age of creation and, at the same time, an age of upheaval,
 this era has two sides. There is the side of creation under AI, and the side
 of upheaval, where the old order collapses and the new one has not yet stood
@@ -15313,7 +15309,7 @@ ____
 * Python ── 読みやすく、AI と相性がいい
 * Flet ── 純粋な Python で desktop / mobile / web アプリが作れる。下層は
   Flutter のネイティブビルド (AOT コンパイル) なので、JavaScript ブリッジを
-  介する React Native よりコールドスタートも軽い (親シリーズ第7章)
+  介する React Native よりコールドスタートも軽い (2-04)
 
 この三層が揃うと、「作りたいけれど、コードが書けなかった」層が一気にビルダーの
 裾野に流入する。
@@ -15353,8 +15349,8 @@ AI + Python + Flet は、この層に VB / VBA の感覚を取り戻させる。
 学ぶ意欲と時間」だけだ。
 
 AI ネイティブな開発では、その壁が低くなる。VB / VBA 世代が、ビルダーとして
-帰ってくる。これは日本市場で特に大きい供給源になる (親シリーズ第2章「処理を
-書く ── AI に Python で書いてもらう」が VBA から Python への移行を具体的に
+帰ってくる。これは日本市場で特に大きい供給源になる (2-04「処理を書く ──
+Python と Flet で、自分の道具を持つ」が VBA から Python への移行を具体的に
 扱っている)。
 
 === 工作派・現場技術者が組み込みに入る
@@ -15364,7 +15360,7 @@ AI ネイティブな開発では、その壁が低くなる。VB / VBA 世代�
 
 AI ネイティブな時代では、組み込みプログラミングの障壁も同じように下がる。
 Raspberry Pi や ESP32 などのマイコン、MicroPython、AI による回路・制御コードの
-生成。工作が好きな人が、ソフトウェアを書く側に容易に入れる (親シリーズ第8章)。
+生成。工作が好きな人が、ソフトウェアを書く側に容易に入れる (2-14)。
 
 ロボットプログラミングは典型例だ。従来は ROS / C++ / 高度な数学が必要で、
 研究室か専門企業の領分だった。AI ネイティブな現在ではこうなる。
@@ -15437,9 +15433,8 @@ ____
 * link:/ai-native-software/customer-codev/[1-05: 顧客が AI と協働して開発する時代]
 * link:/ai-native-software/lockin/[3-05: ロックイン問題]
 * link:/ai-native-software/japan-transition/[3-07: 日本の SIer 業界の転換と雇用流動性]
-* link:/ai-native-ways/python/[親シリーズ第2章: 処理を書く ── AIにPythonで書いてもらう]
-* link:/ai-native-ways/apps/[親シリーズ第7章: アプリを作る ── CLIツール、Fletアプリ、Flutterアプリ]
-* link:/ai-native-ways/embedded/[親シリーズ第8章: 組み込みを作る ── Pythonで考え、Claudeに翻訳させる]
+* link:/ai-native-software/python/[2-04: 処理を書く ── Python と Flet で、自分の道具を持つ]
+* link:/ai-native-software/embedded/[2-14: 電子工作から IoT まで ── Python で考え、AI に翻訳させる]
 * link:/insights/enterprise-tax/[構造分析08: 企業ITの税を引く]
 * link:/insights/ai-and-individual/[構造分析12: AIと個人事業]
 endif::[]
@@ -15707,7 +15702,7 @@ possible.
 * Python — readable, and well-suited to working with AI.
 * Flet — desktop, mobile and web apps in pure Python. Underneath is a native
   Flutter build (AOT-compiled), so cold-start is lighter than React Native's
-  JavaScript-bridge stack (parent series Chapter 7).
+  JavaScript-bridge stack (2-04).
 
 With these three layers in place, the people who until now said "I want to build
 something but I cannot write code" flow into the base of the builder pool.
@@ -15751,7 +15746,7 @@ the time to learn the current web or enterprise stack.
 
 In AI-native development, that wall is lower. The VB / VBA generation comes back as
 builders. This is a particularly large supply source in the Japanese market, where
-that layer was widest (the parent series' Chapter 2, "Writing Logic — Have AI Write
+that layer was widest (2-04, "Write the Logic — Own Your Tools with
 Python For You," covers the VBA to Python migration in concrete detail).
 
 === Makers and shop-floor engineers enter embedded programming
@@ -15762,7 +15757,7 @@ servers. Most of the learning cost concentrated there.
 In the AI-native era, the barrier to embedded programming drops the same way.
 Raspberry Pi and ESP32 microcontrollers, MicroPython, AI generating circuit and
 control code. People who enjoy making things can step into writing software easily
-(parent series Chapter 8).
+(2-14).
 
 Robot programming is the canonical example. Historically it needed ROS, C++ and
 advanced mathematics, which made it the territory of research labs and specialist
@@ -15848,9 +15843,8 @@ subcontractor structure? Which intermediate forms appear during the transition?
 * link:/en/ai-native-software/customer-codev/[1-05: Customers Co-Develop with AI]
 * link:/en/ai-native-software/lockin/[3-05: The Lock-In Problem]
 * link:/en/ai-native-software/japan-transition/[3-07: Japan's SIer Industry Transition and Labor Mobility]
-* link:/en/ai-native-ways/python/[Parent series Chapter 2: Writing Logic — Have AI Write Python For You]
-* link:/en/ai-native-ways/apps/[Parent series Chapter 7: Building Apps — CLI tools, Flet apps, Flutter apps]
-* link:/en/ai-native-ways/embedded/[Parent series Chapter 8: Building Embedded — Think in Python, Have Claude Translate]
+* link:/en/ai-native-software/python/[2-04: Write the Logic — Own Your Tools with Python and Flet]
+* link:/en/ai-native-software/embedded/[2-14: From Electronics to IoT — Think in Python, Have the AI Translate]
 * link:/en/insights/enterprise-tax/[Structural analysis 08: Subtracting the enterprise-IT tax]
 * link:/en/insights/ai-and-individual/[Structural analysis 12: AI and the sole proprietor]
 endif::[]

@@ -9444,7 +9444,7 @@ AI を介して手元に降りる専門領域:
 共通する原理は一つ。GUI を覚えるのではなく、AI にコードを書かせて、結果を見て、調整する。
 判断の語彙は 2-12 の四原則、原稿の置き場は 2-07 ── どちらもこの章にそのまま効く。
 
-次章では、社内の情報を AI が読める形に整える。整備そのものが本体で、AI は最後の一手になる。
+次章では、この章で図と筐体を描いた先 ── 電子工作から IoT まで、手で触れる物に降ろす。
 
 '''
 
@@ -9883,8 +9883,8 @@ The principle is one. Instead of learning the GUI, have the AI write the code, l
 result, and adjust. The vocabulary for judging is the four principles from 2-12; the place
 the manuscript lives is 2-07 — both apply here unchanged.
 
-The next chapter makes in-house knowledge legible to an AI. The preparation is the main body
-of the work, and the AI is the last move.
+The next chapter carries what you drew here — the diagrams and the enclosure — down into
+things you can touch, from electronics to IoT.
 
 '''
 
@@ -9897,6 +9897,965 @@ of the work, and the AI is the last move.
 * link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map]
 endif::[]
 
+// ===== article: 19-embedded =====
+---
+slug: embedded
+number: 14
+part: 2
+title.ja: 電子工作から IoT まで ── Python で考え、AI に翻訳させる
+title.en: From Electronics to IoT — Think in Python, Have the AI Translate
+subtitle.ja: 部品を組み、基板を動かし、測った値を手元に流す ── 思考は Python の側に置く
+subtitle.en: Assemble the parts, run the board, stream the readings home — the thinking stays on the Python side
+description.ja: 部品を買ってブレッドボードに組み、センサを繋ぎ、測った値をネットワークで手元に流すところまでを一つの章にする。マイコンは最終的に C や C++、軽くても Rust や MicroPython で動くが、設計と検証は PC の Python でできる。動くと確かめてから、必要な部分だけ AI に翻訳させる。言語は開発フェーズで決め、Python から MicroPython、必要なら Rust へ進む。C と C++ は既存資産を扱うときに使う。筐体は 2-13 の CAD で刷り、集めた値は 2-03 の置き場に積み、2-12 の API で出し、2-04 の Flet で画面にする。農家の畑センサネットワークと、二十年物の PLC ラダーを一週間で Python にした例を置く。
+description.en: One chapter covering the whole span: buy parts, wire them on a breadboard, attach sensors, and stream the readings home over the network. Microcontrollers finally run C or C++, or at lightest Rust or MicroPython, but design and validation happen in Python on a PC. Confirm it works, then have the AI translate only the parts that need translating. Pick the language by development phase: Python, then MicroPython, then Rust when performance demands it; C and C++ are for existing assets. Print the housing with 2-13's CAD, stack the readings in 2-03's store, expose them with 2-12's API, and put 2-04's Flet on the screen. Includes a farmer's field-sensor network and a twenty-year-old PLC ladder turned into Python in a week.
+date: 2026.09.21
+label: Independence 14
+title_html.ja: Python で考えて、<br><span class="accent">AI</span> に翻訳させる。
+title_html.en: Think in Python.<br>Have the <span class="accent">AI</span> translate.
+---
+ifdef::lang-ja[]
+= 電子工作から IoT まで ── Python で考え、AI に翻訳させる
+
+基板を相手にするときも、思考は Python の側に置く。
+
+link:/ai-native-software/design/[2-13: 図と資料を作る ── Mermaid・Marp・そのほかの道具]で、
+センサの筐体を Build123d のコードで設計し、その日のうちに 3D プリンタで刷るところまで来た。
+刷った筐体の中には基板が入り、基板にはセンサが繋がり、測った値はネットワークを通って手元に
+戻ってくる。この章では、その一続きを作る。部品を買ってブレッドボードに組み、ロジックを PC の
+Python で確かめ、動くと分かってから必要な部分だけ C や Rust へ翻訳させ、集めた値を手元の
+置き場に積むところまでを見る。
+
+この章は、そのまま AI に渡す最初の仕様書として読める。決めるのは四つだ ── どの基板を選ぶか、
+何の言語で書くか、値をどこに置くか、どこまでを自分の手元に持つか。コードの書き方は AI が
+知っている。人が渡すのは、この四つの答えのほうだ。
+
+== 難しいのは、ロジックとハードウェアが混ざることだ
+
+組み込みのコードを書いた人は、どこで時間が溶けるかを知っている。
+
+* 実機に焼き込むまで、動作を確かめられない
+* ハードウェアのデバッグは、PC のデバッグの 10 倍の時間がかかる
+* print を一つ出すのに UART を設定する
+* メモリが足りない、バッファが溢れる、タイミングがずれる
+* 一行直すたびに、ファームウェアを焼き直す
+
+ロジックの間違いと、ハードウェアの不安定さが混ざる。動かないときに、原因がコードか、配線か、
+電源かを切り分けられない。組み込み開発が遅かった一番の理由は、ここにある。
+
+== 最初に書くのは Python だ
+
+新しい組み込みの仕事で、最初に書くのは Python になる。
+
+センサから値を読み、フィルタをかけ、判定する ── この処理を実機ではなく PC で書く。
+サンプルデータを JSON で用意し、Python で読み込み、フィルタを通し、判定結果を出す。
+
+```python
+def detect_anomaly(values):          # 判定はこの数行に収まる
+    avg = sum(values) / len(values)
+    return any(abs(v - avg) > 3 for v in values[-10:])
+```
+
+このコードは PC で動く。一秒で終わる。グラフを描いて目で確かめられる。テストデータを
+差し替えて、何度でも回せる。残りは、サンプルの JSON を読んで、この関数に渡して、結果を出す
+だけだ。そこは AI が書く。
+
+*ロジックが正しいかどうかを、ハードウェアと切り離して確かめられる。*
+
+== 翻訳は AI に任せる
+
+ロジックが Python で動いたら、それを C に翻訳する。
+
+頼むときに、人が決めて渡すのは次のあたりになる。翻訳のコード自体は AI が書く。
+
+* 翻訳先 ── Arduino で動く C++ か、`embassy` の Rust か
+* 配列は固定長にする(長さも決めて渡す)
+* 使う数値の型(`float` か `int` か)
+* 関数が返す形(判定なら真偽値)
+* 割り込みの中で動くかどうか
+
+返ってきたコードを実機に書き込んで動かす。ロジックは Python で確かめてあるので、*実機で動かないなら
+原因はハードウェアの側にある*。デバッグの向きが定まる。
+
+```mermaid
+flowchart LR
+  Idea(["やりたい制御<br/>(センサ・判定)"])
+  Py["Python で書く<br/>(PC で動かす)"]
+  Data["JSON のサンプル<br/>データで検証"]
+  OK{"ロジックは<br/>正しいか"}
+  Trans["AI に C / Rust への<br/>翻訳を頼む"]
+  HW["実機に焼く"]
+  Bug{"動くか"}
+  HWFix["ハードウェア側を見る<br/>(配線・電源・タイミング)"]
+  Done(["完成"])
+
+  Idea --> Py --> Data --> OK
+  OK -->|直す| Py
+  OK -->|正しい| Trans --> HW --> Bug
+  Bug -->|動く| Done
+  Bug -->|止まる| HWFix
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef bad  fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class Py,Data,Trans good
+  class HW,HWFix bad
+```
+
+== 言語は、ハードウェアではなく開発フェーズで決める
+
+組み込みの言語は、ハードウェアごとに決めるのではなく、開発フェーズと用途で決める。
+最初は Python、性能が要るときに Rust、C と C++ は既存のものを扱うとき ── これが
+AI ネイティブな組み込みの作法になる。
+
+|===
+| 開発フェーズ | 言語 | 環境 | 用途
+| *設計・プロトタイプ* | Python (CPython) | PC 上、Raspberry Pi | アルゴリズム検証、データ取得実験、AI モデル試験
+| *本番(性能が十分な場合)* | MicroPython | ESP32、RP2040 | センサー制御、IoT 通信、軽量な処理
+| *本番(リアルタイム性能が必要)* | Rust | STM32、RP2040、ESP32 | 高速制御、リアルタイム処理、メモリ制約下での動作
+| *本番(エッジ AI、画像処理)* | Python + C/Rust 拡張 | Raspberry Pi、Jetson Nano | 推論、画像処理、Linux 環境での動作
+| *既存資産の保守* | C、C++ | 各種マイコン | 既存コードの保守、認証済みコード
+|===
+
+第一選択肢は、ハードウェアが許すなら MicroPython または Python。性能や容量で Python が
+届かないときに Rust を選ぶ ── AI は C より Rust のほうを安全に書ける。C と C++ は、
+既存資産の保守と認証済みコードを扱うときに使う。新規に C や C++ を選ぶ場面は、ここまで
+狭くなっている。
+
+Raspberry Pi クラスなら、最終形も Python のままで足りることが多い。Python のまま動かせる
+なら、翻訳は要らない。エッジ AI や画像処理で性能が要る部分だけを、C / Rust の拡張モジュール
+にする(`pybind11`、`PyO3`)── これも AI が書ける。
+
+=== 五段階で進める
+
+上の表は静的な選択肢で、実際の開発は段階的に進む。
+
+. *設計とプロトタイプ* ── AI と対話しながら、PC の Python で動作確認。データ取得、
+  アルゴリズム、AI モデルの動作を PC で確かめる。
+. *マイコンへの移植* ── MicroPython 版への翻訳を頼む。ESP32 や RP2040 で動かす。
+  多くの IoT・センサー用途は、ここで完結する。
+. *性能ボトルネックの特定* ── 動かして測る。リアルタイム性能が足りない箇所、メモリが
+  厳しい箇所を見つける。
+. *ホットスポットの Rust 化* ── ボトルネックだけ、Rust 化を頼む。MicroPython と Rust を
+  組み合わせるか、全体を Rust + `embassy` / `RTIC` で書き直すかを決める。
+. *エッジ AI が要るとき* ── Raspberry Pi(Linux)上で、Python + C/Rust 拡張で動かす。
+  マイコンより一段上のハードウェアを使う。
+
+```mermaid
+flowchart TB
+  S1["1. 設計とプロトタイプ<br/>PC の Python + AI"]
+  S2["2. マイコンへの移植<br/>MicroPython"]
+  Q1{"性能・メモリは<br/>足りるか"}
+  Done1(["完了<br/>(多くの IoT は<br/>ここで止まる)"])
+  S3["3. ボトルネック特定<br/>動かして測る"]
+  S4["4. ホットスポットの<br/>Rust 化(AI が翻訳)"]
+  S5["5. Raspberry Pi へ<br/>Python + C/Rust 拡張"]
+  Done2(["完了<br/>(リアルタイム用)"])
+  Done3(["完了<br/>(エッジ AI 用)"])
+
+  S1 --> S2 --> Q1
+  Q1 -->|足りる| Done1
+  Q1 -->|足りない| S3 --> S4 --> Done2
+  Q1 -->|エッジ AI| S5 --> Done3
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef bad  fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class S1,S2,Done1 good
+  class S3,S4,S5 bad
+```
+
+大事なのは、*最初から Rust や C で書き始めないこと* だ。Python でロジックを確かめてから、
+必要な部分だけ翻訳する。link:/ai-native-software/python/[2-04: 処理を書く ── Python と Flet で、自分の道具を持つ]
+で Excel の中の処理を Python に出したのと、同じ手をハードウェアに使っている。AI が翻訳を
+担うので、人が複数の言語を行き来する手間は残らない。
+
+____
+思考は Python で。最終形だけ、言語が変わる。
+____
+
+== MicroPython なら、書き換えの往復が短い
+
+ESP32 や RP2040 のような小型マイコンでは、MicroPython が動く。Python のサブセットだ。
+
+PC で書いた Python を、ほぼそのままマイコンに転送できる。コンパイルが要らず、転送は数秒で
+終わる。デバッグの感覚も PC と同じだ。
+
+MicroPython の制約 ── メモリ、速度、使えるライブラリ ── にぶつかったら、その部分だけを
+C に翻訳する。全部を翻訳する必要は無い。Python のまま残せる部分は、そのまま残す。
+
+== 作るものは、市販のボードとモジュールの組み合わせだ
+
+電子工作の側から見ると、いま作るものはほとんどが組み合わせでできている。
+
+* 開発ボード ── ESP32、RP2040、Raspberry Pi のような、電源と通信と書き込み口が載った板
+* センサモジュール ── 温度、湿度、土壌水分、照度、距離、加速度。素子とその周辺回路が小さな板に載っている
+* 出力モジュール ── 表示器、リレー、モータードライバ
+* 繋ぐもの ── ブレッドボード、ジャンパ線、USB ケーブル
+
+回路を設計するのではなく、どのモジュールをどのピンに繋ぐかを決める作業になる。抵抗の計算や
+レベル変換が要る場面は残るが、そこは回路図とデータシートを AI に読ませる ── 次の節で扱う。
+
+=== ブレッドボードで試し、基板に移す
+
+最初はブレッドボードで組む。差して抜くだけなので、繋ぎ方を何度でも変えられる。ここで
+センサの値が出るところまで確かめる。
+
+繋ぎ方が決まったら、常設の形に移す。ユニバーサル基板にはんだ付けするか、基板の設計データを
+起こして製造に出す。ブレッドボードのままでも動くが、線が抜けたり、接触が不安定になったりする。
+畑や工場に置くもの、電源を入れたまま放っておくものは、はんだ付けまで進めておくほうが後が楽だ。
+
+=== はんだ付けが要る所と、要らない所
+
+はんだごてが要らない範囲は、思っているより広い。
+
+* ピンヘッダが最初から付いているモジュールを、ブレッドボードとジャンパ線で繋ぐ ── はんだ付けは要らない
+* ねじ端子やコネクタで繋ぐモジュール ── 要らない
+* ピンヘッダの付いていないモジュールに、ピンを立てる ── ここで要る
+* ユニバーサル基板に部品を固定して常設する ── ここで要る
+* 電線どうしを繋ぐ ── はんだ付けか、圧着の工具が要る
+
+試作の段階では、はんだ付けを後回しにできる。動くと分かってから、固める。
+
+=== 筐体は、前章の CAD から続く
+
+基板が動いたら、入れ物が要る。2-13 の Build123d や OpenSCAD で、基板の寸法、取り付けねじ穴、
+ケーブルの通し口、放熱のスリットを書いて、3D プリンタで刷る。寸法が合わなければ数字を直して
+刷り直す。センサの筐体は、ここで自分の手に戻ってくる。
+
+防水や防塵が要る場所では、市販の防水ケースを買って穴を開けるほうが早い場面もある。屋外に
+置くもの、水が掛かるもの、高い電圧を扱うものは、感電と火災の危険がある。商用電源側を扱う
+工事には資格が要る。低圧の直流側 ── 電池や USB 電源で動く範囲 ── から始めて、交流側は
+資格を持つ人に任せる。
+
+== 部品と道具は、通販で揃う
+
+部品は、電子部品の通販と、ボードを出している側の販売店で買える。開発ボード、センサモジュール、
+ブレッドボード、ジャンパ線、USB ケーブル ── これらは在庫として置かれていて、数日で届く。
+はんだごてとテスターは、最初に一つずつ買えば長く使える。
+
+値段の桁は、後の農家の例で出てくる。市販の IoT 機器が 1 台 5 万円のところ、ESP32 とセンサを
+自分で組むと合計 3,000 円だった。同じ場所に何ヶ所も置くときほど、この差が効く。
+
+買う前に、型番を AI に確かめさせるとよい。「このセンサは 3.3V で動くか」「このボードに
+そのまま挿さるか」「必要な部品を一覧にして」── 手元に届いてから足りないものに気づく回数が
+減る。
+
+== 回路図とデータシートも、AI に読ませる
+
+回路図、配線、データシート ── これらの読み解きも AI に頼める。
+
+「この OLED 表示モジュールを ESP32 に繋ぎたい。配線とコードを教えて」と頼めば、ピン配置、
+ライブラリ、初期化コード、表示コードが返ってくる。
+
+データシートが PDF なら、テキストにして渡せば「このセンサのレジスタ `0x21` は何か」に
+答える。*ハードウェアの知識も AI が持っている。*
+
+ただし、実機を動かす側には気をつける点がある。ファームウェアの書き込み中に電源が落ちると、
+基板の復旧に手が要る。ブートローダやヒューズの設定を書き換える操作は、一度きりで戻せない
+ものがある。リレーやバルブやモーターを動かすコードは、人が居るところで、電源を入れる前に
+読む。これらは後の「人が持つ物」にまとめる。
+
+== 測った値を、どこへ流すか
+
+基板が値を測れるようになったら、次はその値の行き先を決める。ここが IoT の側だ。
+
+まず、繋ぎ方を選ぶ。
+
+|===
+| 繋ぎ方 | 向いている場面 | 性質
+| *Wi-Fi* | 建物の中、電源が取れる場所 | 既にある無線 LAN にそのまま乗る。扱いやすく、消費電力は大きい
+| *BLE* | 手元の機械やスマートフォンと繋ぐ | 電池で長く動く。届く距離は部屋の中ぐらい
+| *LoRa* | 畑や山、建物の外に散らばる場所 | 遠くまで届き、電池で長く動く。一度に送れる量は少ない
+| *有線(Ethernet、シリアル)* | 工場のライン、固定設置 | 安定する。配線の手間がかかる
+| *携帯回線* | 電源も LAN も無い場所 | どこからでも送れる。回線の契約が要る
+|===
+
+畑や倉庫のように電源も LAN も届かない場所では、LoRa で母屋まで飛ばし、母屋の機械から先は
+Wi-Fi か有線にする、という組み合わせになる。値を送る間隔も、ここで決める ── 1 分ごとに
+記録し、10 分ごとにまとめて送る、という形にすれば、電池が長くもつ。
+
+次に、送った先での扱いを決める。ここから先は、この連載で既に立てた道具がそのまま使える。
+
+. 基板が JSON を送る ── SD カードに 1 分ごとに記録し、10 分ごとにまとめて送る
+. 受け口は FastAPI ── 値を受け取る口を一つ立てる。届いた JSON の形を確かめてから通す(2-12)
+. 保存は 2-03 の置き場 ── SQLite か PostgreSQL に入れ、貯まった分を Parquet に落とす
+. 読み出しも同じ FastAPI ── 期間と地点を指定して返す口を、隣に足す
+. 画面は 2-04 の Flet ── 現場ではタブレット、事務所ではブラウザ。日別のグラフだけなら Altair の HTML でも足りる
+
+業者のクラウドに送る代わりに、自分の機械に送る。受け口と読み出し口を FastAPI に揃えておくと、
+基板が増えても、画面が増えても、足すのは口を一つだけになる。値は手元に残り、月額の契約も
+要らない。
+
+ここで気をつける点が一つある。基板を外から届く場所に置くときは、入口を開けたままにしない。
+基板から手元の機械へ送る向きだけにして、外から基板を呼び出せる口は閉じておく。既定のままの
+パスワードや、認証なしで開く管理画面は、そのまま侵入口になる。認証の立て方は
+link:/ai-native-software/auth/[2-05: 門番を立てる ── PocketBase で認証を一つに]にある。
+
+== 取れたデータの分析も、Python で続く
+
+値が手元に貯まったら、その分析も Python でやる。
+
+link:/ai-native-software/foundation/[2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars]
+の置き場から読み出し、`polars` で集計、`matplotlib` / `altair` でグラフ、`numpy` で数値処理。
+基板の側で書いた JSON と、PC の側で読む Polars が、同じ列の名前で繋がる。
+
+「センサが温度を 1 分ごとに記録している。この JSON から、1 日のうちで温度が急に上がった
+時間帯を見つけて、グラフにして」と頼めば、コードが返ってくる。
+
+組み込みの本体が C で動いていても、その周辺 ── 検証、分析、可視化 ── は Python と AI で
+動く。これが新しい組み込み開発のかたちだ。
+
+== 例: 室温モニターは、三段階で立つ
+
+具体例を一つ。ESP32 で室温を測り、30 度を超えたら通知する。
+
+*第一段階(PC で Python)*。ロジックを Python で書く。サンプルの温度データ(JSON)を
+用意し、判定処理を書く。しきい値の調整、ノイズ除去、通知の条件 ── すべて PC で実験する。
+ここで人が決めるのは、判定の中身だ ── 「直近 5 分の平均が 30 度を超えたら通知する」。
+この一行が決まれば、Python は AI が書く。
+
+*第二段階(MicroPython で実機)*。Python のロジックを MicroPython に転送する。
+MicroPython は Python のサブセットなので、ほぼそのまま動く。温度センサ(DHT22 など)を
+繋ぎ、本物のデータで動かす。
+
+*第三段階(必要なら C に翻訳)*。電池で長く動かしたい、メモリが厳しい ── そのときに C へ
+翻訳する。AI に頼めば翻訳が出てくる。
+
+多くの場合、第二段階で終わる。MicroPython で十分に動く。
+
+== 例: 農家の畑センサネットワーク
+
+別の例。農家 B さん。畑の数箇所に、土壌水分・温度・日射のセンサを置きたい。市販品は 1 台
+5 万円で、データは業者のクラウドに集まる。
+
+*第一段階(PC で Python)*。過去の気象データで、灌水判定のロジックを書く。「日射 ○ Wh/m²
+以上 + 土壌水分 △ % 未満が 3 時間続いたら灌水推奨」── これを Polars で過去データに当て、
+しきい値を調整する。初版は AI が書く。
+
+*第二段階(MicroPython で実機)*。ESP32 + センサ(合計 3,000 円)に、上のロジックを
+移植する。MicroPython なので、PC のコードがほぼそのまま動く。SD カードに JSON で 1 分ごとに
+記録する。
+
+*第三段階(母屋の miniPC に集約)*。B さんの母屋に miniPC を置く
+(link:/ai-native-software/ai-pc/[2-02: AI に PC を一台渡す ── 自立編を動かす機械]の機械を
+そのまま使ってもよい)。ESP32 が 10 分ごとに JSON を送り、miniPC の FastAPI が受けて、
+SQLite に入れ、貯まった分を Parquet に落とす。日別グラフは Altair、異常検出の履歴は SQLite。
+
+*第四段階(自動灌水アクチュエータの設計)*。ソレノイドバルブを動かす筐体を、2-13 の
+Build123d で設計し、3D プリンタで刷る。ESP32 のリレー出力でバルブを開閉し、Python の制御
+コードは、MicroPython のメモリで足りないときだけ AI に C へ翻訳させる。
+
+結果はこうなる。1 ヶ所あたり 3,000 円が数ヶ所、データは自分のもの、業者のクラウドの月額も
+要らない。判定ロジックは Markdown で読め、故障したら 3D プリンタで部品を刷り直して自分で
+直せる。
+
+ここまでの章の道具立てが、一つの作品にまとまっている ── 2-04 の Python と Flet、2-13 の
+CAD、2-03 の Parquet、そして
+link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]の
+FastAPI が、受け口と読み出し口の両方を担う。
+
+== 二十年物のラダーが、一週間で Python になる
+
+C は 50 年前からある。これからも 50 年動く。Python は 30 年前から動いていて、これからも
+30 年動くだろう。
+
+業界ごとの独自言語(古い PLC のラダー、車載の特殊規格)に閉じ込められてきた組み込みの知識を、
+Python と C と Markdown の側へ出していく。特定ベンダーの形式から、時間を超える形式へ移す
+作業だ。長く続く仕事だが、毎日少しずつ進められる。
+
+数字で見ると、こうなる。ESP32 で温度センサの判定を作る場合。
+
+* C++ で書き始める従来法 ── *2 週間*(コンパイル + 実機焼き直し + デバッグ)
+* Python で検証してから MicroPython に転送する新法 ── *2 日*
+* 差は *7 倍*
+
+実機の焼き直しサイクル。
+
+* C++ + 書き込み ── 約 2 分
+* MicroPython 転送 ── 約 5 秒
+* Python シミュレーション ── 約 0.1 秒
+* C と Python の差は *1,200 倍*
+
+そして、この章で一番大きい例。産業用 PLC のラダー言語で書かれた二十年前の制御ロジックが
+あり、書いた担当者が引退して、社内に読める人が残っていない。AI にラダーを読ませ、Python に
+翻訳し、Markdown で意味を書き起こす ── これが *1 週間* で済む。同じことを人手でやるなら
+半年以上かかり、ベテランエンジニアを呼んでも、終わりが見えるとは限らない。
+
+センサデータの可視化も同じ形になる。自前で Web ダッシュボードを作ると 1 週間。
+`matplotlib` の `plot()` 一行に「これを HTML レポートにして」を足すと、*30 分* で実用に
+なる。
+
+== 工作が好きな人が、ソフトウェアを書く側に入る
+
+この章の内容には、もう一つの意味がある。
+
+link:/ai-native-software/hiring-builders/[3-06: 各社がビルダーを雇用する時代]で、
+ビルダーの供給源はコーダー出身者だけではない、という話をする。工場や町工場の技術者、
+電子工作をやってきた人、Maker Faire に出てきた人 ── 物を作る経験を持つ人が、ソフトウェアを
+書く側に入ってくる、と。
+
+その技術的な裏づけが、この章だ。Raspberry Pi と ESP32、MicroPython、そして AI による
+回路・制御コードの生成。この三つが揃ったので、入口にあった学習コストが下がった。
+何を作るかを決めた経験、動かないときに切り分けた経験、部品を組み合わせて構造を分ける経験 ──
+工作をやってきた人は、ビルダーに要る資質をすでに持っている。足りていなかったのは、
+コードを書く手だけだった。その手を、AI が貸す。
+
+____
+物を作ってきた人にとって、ソフトウェアは新しく学ぶ分野ではなく、手が一本増える話になった。
+____
+
+== 確かめ方
+
+この章は、次の六つができていれば済みだ。
+
+. PC の Python が、サンプルデータの JSON を読んで、判定結果を一つ返す
+. ブレッドボードに組んだ基板に MicroPython でプログラムを書き込むと、LED が点くか、REPL に値が出る
+. センサを繋いだ基板が実測値を 1 分ごとに記録し、その記録を PC の Python が読める
+. 基板が測った値がネットワークを通って手元の機械に届き、2-03 の置き場に積まれて、期間を指定して読み出せる
+. 翻訳した C か Rust を書き込んだ基板が、Python と同じ判定を返す
+. 3D プリンタで刷った筐体に基板を収め、電源を入れ直しても同じ値が返る
+
+```bash
+# 基板に入っている MicroPython に、手元のファイルを送って動かす
+mpremote connect auto fs cp main.py :main.py
+mpremote connect auto run main.py
+```
+
+== 人が持つ物
+
+*人が渡す値*
+
+* 判定のしきい値(例 直近 5 分の平均が 30 度、日射と土壌水分の組み合わせ)
+* 買う部品の一覧 ── 開発ボード、センサモジュール、繋ぐもの ── と、かけてよい金額
+* センサの型番と、繋ぐピンの番号
+* 繋ぎ方(Wi-Fi、BLE、LoRa、有線、携帯回線)と、値の行き先の機械
+* 記録の間隔(例 1 分ごと)と、送信の間隔(例 10 分ごと)
+* 電源の条件(電池か常時給電か)と、動かし続ける期間
+* どこまでを Python のまま残し、どこから C / Rust に翻訳するかの線
+
+*AI が「やる前に言う」操作*
+
+* 基板にファームウェアを書き込む(書き込み中に電源が落ちると、復旧の手が要る)
+* ブートローダやヒューズの設定を書き換える(戻せないものがある)
+* 実機のアクチュエータ ── リレー、バルブ、モーター ── を動かす
+* 記録済みのログや SD カードの中身を消す、上書きする
+* 基板を外から呼び出せる口を開ける、認証なしの管理画面を有効にする
+
+== 確かめた版と日付
+
+* ESP32、RP2040、STM32、Raspberry Pi、Jetson Nano、Arduino、DHT22 ── 版は指定していない
+* MicroPython、Rust(`embassy` / `RTIC`)、`pybind11`、`PyO3` ── 版は指定していない
+* Polars、matplotlib、Altair、SQLite、Parquet、FastAPI、Flet ── 版は指定していない
+* 部品の値段(市販品 1 台 5 万円、ESP32 とセンサで 3,000 円)は元の見積もりのまま。買う前に現在の価格を確かめる
+* 手順を書いたのは 2026-09-21
+* 版が上がっていたら、AI に公式の手順を確かめさせてから進める
+
+== まとめ
+
+基板を相手にするときも、思考は Python で。
+
+* *ハードウェアと切り離す* ── ロジックを PC の Python で確かめる。実機で動かないなら、原因はハードウェアの側にある
+* *組み合わせて作る* ── 市販のボードとモジュールをブレッドボードで試し、動いてからはんだ付けと筐体で固める。筐体は 2-13 の CAD で刷る
+* *開発フェーズで言語を決める* ── Python から MicroPython、性能が要るときに Rust。C と C++ は既存資産を扱うときに使う
+* *五段階で進める* ── 設計、移植、測定、ホットスポットの Rust 化、必要ならエッジ AI へ。多くの IoT は二段目で止まる
+* *値の行き先を決める* ── 繋ぎ方を場所で選び、2-03 に積み、2-12 の API で出し、2-04 の Flet で画面にする。値は手元に残る
+* *知識を時間を超える形式へ* ── 二十年物の PLC ラダーが、読ませて翻訳して書き起こすと 1 週間で Python と Markdown になる
+
+道具はここで揃った。土台、門番、文書、コード、メール、会議、Web、API、図、そして基板と、
+そこから流れてくる値まで。
+次章では、その上を流れる情報そのものを整える。共有フォルダの底のファイル、紙とスキャン PDF、
+そして人の頭の中にしかない知 ── これを書かれた形に移す。
+
+'''
+
+== 関連記事
+
+* link:/ai-native-software/design/[2-13: 図と資料を作る ── Mermaid・Marp・そのほかの道具]
+* link:/ai-native-software/python/[2-04: 処理を書く ── Python と Flet で、自分の道具を持つ]
+* link:/ai-native-software/foundation/[2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars]
+* link:/ai-native-software/structure-knowledge/[2-15: 社内情報を整える ── 整備こそ本体、AI は最後の一手]
+* link:/ai-native-software/hiring-builders/[3-06: 各社がビルダーを雇用する時代]
+endif::[]
+ifdef::lang-en[]
+= From Electronics to IoT — Think in Python, Have the AI Translate
+
+Even when you are working against a board, the thinking stays on the Python side.
+
+link:/en/ai-native-software/design/[2-13: Make Diagrams and Documents — Mermaid, Marp, and the Other Tools]
+took us as far as designing a sensor housing in Build123d code and 3D-printing it the same day.
+Inside that housing sits a board, sensors attach to the board, and the readings travel back to
+you over the network. This chapter builds that whole run. Buy the parts, wire them on a
+breadboard, verify the logic in Python on a PC, translate only what needs translating into C or
+Rust once it works, and stack the collected readings in your own store.
+
+This chapter can be read as the first specification you hand to an AI. There are four things to
+decide — which board, which language, where the readings live, and how much you keep in your own
+hands. The AI knows how to write the code. What the human supplies is the answer to those four.
+
+== What is hard is that logic and hardware get mixed together
+
+Anyone who has written embedded code knows where the time goes.
+
+* Behavior cannot be checked until the code is flashed to the device
+* Hardware debugging takes 10x the time of PC debugging
+* Printing a single value requires setting up UART
+* Memory runs out, buffers overflow, timing slips
+* Every one-line fix means re-flashing the firmware
+
+Logic errors and hardware instability get mixed together. When it stops working, you cannot
+separate the code from the wiring from the power supply. That is the single biggest reason
+embedded development has been slow.
+
+== The first thing you write is Python
+
+On a new embedded job, the first thing you write is Python.
+
+Read a value from a sensor, apply a filter, make a decision — write that on a PC rather than on
+the device. Prepare sample data as JSON, load it in Python, pass it through the filter, and print
+the decision.
+
+```python
+def detect_anomaly(values):          # the decision fits in these few lines
+    avg = sum(values) / len(values)
+    return any(abs(v - avg) > 3 for v in values[-10:])
+```
+
+This code runs on a PC. It finishes in a second. You can plot it and check it with your eyes. You
+can swap the test data and run it again as often as you like. The rest — read the sample JSON,
+pass it to this function, print the result — is what the AI writes.
+
+*Whether the logic is correct can be settled apart from the hardware.*
+
+== Leave the translation to the AI
+
+Once the logic works in Python, translate it to C.
+
+What the human decides and hands over looks roughly like this. The translated code itself comes
+from the AI.
+
+* The target — C++ that runs on Arduino, or Rust with `embassy`
+* Fixed-length arrays (and the length itself)
+* The numeric types to use (`float` or `int`)
+* The shape of the return value (a boolean, for a decision)
+* Whether it runs inside an interrupt
+
+Flash what comes back and run it. The logic is already settled in Python, so *if it fails on the
+device, the cause is on the hardware side*. Debugging gets a direction.
+
+```mermaid
+flowchart LR
+  Idea(["the control you want<br/>(sensor, decision)"])
+  Py["write it in Python<br/>(run it on a PC)"]
+  Data["verify with<br/>sample JSON"]
+  OK{"is the logic<br/>correct?"}
+  Trans["ask the AI to translate<br/>to C / Rust"]
+  HW["flash the device"]
+  Bug{"does it run?"}
+  HWFix["look at the hardware<br/>(wiring, power, timing)"]
+  Done(["done"])
+
+  Idea --> Py --> Data --> OK
+  OK -->|fix| Py
+  OK -->|correct| Trans --> HW --> Bug
+  Bug -->|runs| Done
+  Bug -->|stops| HWFix
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef bad  fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class Py,Data,Trans good
+  class HW,HWFix bad
+```
+
+== Pick the language by development phase, not by hardware
+
+Do not pick the embedded language per piece of hardware. Pick it by development phase and use
+case. Python first, Rust when performance demands it, C and C++ when handling what already
+exists — that is the AI-native embedded practice.
+
+|===
+| Development phase | Language | Environment | Use case
+| *Design and prototype* | Python (CPython) | On a PC, Raspberry Pi | Algorithm validation, data-collection experiments, AI model tests
+| *Production (performance suffices)* | MicroPython | ESP32, RP2040 | Sensor control, IoT communication, light processing
+| *Production (realtime performance needed)* | Rust | STM32, RP2040, ESP32 | High-speed control, realtime processing, memory-constrained operation
+| *Production (edge AI, image processing)* | Python + C/Rust extensions | Raspberry Pi, Jetson Nano | Inference, image processing, Linux deployment
+| *Maintaining existing assets* | C, C++ | Various microcontrollers | Maintaining existing code, certified code
+|===
+
+The first choice, where the hardware allows, is MicroPython or Python. When performance or
+capacity puts Python out of reach, pick Rust — the AI writes Rust more safely than C. C and C++
+are for maintaining existing assets and certified code. The room for choosing C or C++ on new
+work has narrowed to that.
+
+At the Raspberry Pi class, the final form is often Python as well. If you can ship Python, no
+translation is needed. Only the parts of edge AI or image processing that need the speed become
+C / Rust extension modules (`pybind11`, `PyO3`) — the AI writes those too.
+
+=== Move through five stages
+
+The table above is the static menu; actual development moves through it in stages.
+
+. *Design and prototype* — Work with the AI and confirm behavior in Python on a PC. Validate
+  data collection, the algorithm, and AI model behavior there.
+. *Port to the microcontroller* — Ask for a MicroPython translation. Run it on an ESP32 or
+  RP2040. Many IoT and sensor use cases finish here.
+. *Identify performance bottlenecks* — Run it and measure. Find where realtime performance is
+  short and where memory is tight.
+. *Rewrite hotspots in Rust* — Ask for Rust on the bottlenecks only. Decide whether to combine
+  MicroPython and Rust, or rewrite the whole thing in Rust with `embassy` / `RTIC`.
+. *When edge AI is needed* — Run on a Raspberry Pi (Linux) with Python + C/Rust extensions.
+  Use hardware one step above a microcontroller.
+
+```mermaid
+flowchart TB
+  S1["1. design and prototype<br/>Python on a PC + AI"]
+  S2["2. port to the MCU<br/>MicroPython"]
+  Q1{"performance and<br/>memory enough?"}
+  Done1(["done<br/>(most IoT<br/>stops here)"])
+  S3["3. find bottlenecks<br/>run and measure"]
+  S4["4. Rust the hotspots<br/>(the AI translates)"]
+  S5["5. to Raspberry Pi<br/>Python + C/Rust ext"]
+  Done2(["done<br/>(realtime)"])
+  Done3(["done<br/>(edge AI)"])
+
+  S1 --> S2 --> Q1
+  Q1 -->|enough| Done1
+  Q1 -->|short| S3 --> S4 --> Done2
+  Q1 -->|edge AI| S5 --> Done3
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef bad  fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class S1,S2,Done1 good
+  class S3,S4,S5 bad
+```
+
+The point is *not to start writing in Rust or C*. Settle the logic in Python, then translate only
+the parts that need it. It is the same move as
+link:/en/ai-native-software/python/[2-04: Write the Logic — Own Your Tools with Python and Flet],
+where the logic inside Excel went out into Python, applied here to hardware. The AI carries the
+translation, so the human is not left moving back and forth between languages.
+
+____
+Think in Python. Only the final form changes language.
+____
+
+== With MicroPython, the edit cycle is short
+
+Small microcontrollers such as the ESP32 and RP2040 run MicroPython, a subset of Python.
+
+Python written on a PC transfers to the microcontroller almost unchanged. There is no compile
+step, and the transfer takes seconds. Debugging feels the same as on a PC.
+
+When you hit MicroPython's limits — memory, speed, available libraries — translate just that part
+to C. There is no need to translate all of it. Whatever can stay in Python stays.
+
+== What you build is a combination of off-the-shelf boards and modules
+
+Seen from the electronics side, almost everything you build today is a combination.
+
+* Development boards — ESP32, RP2040, Raspberry Pi: a board carrying power, communication, and a flashing port
+* Sensor modules — temperature, humidity, soil moisture, light, distance, acceleration: the element and its surrounding circuit on a small board
+* Output modules — displays, relays, motor drivers
+* Things that connect them — breadboards, jumper wires, USB cables
+
+Rather than designing a circuit, the work is deciding which module goes on which pin. Resistor
+calculations and level shifting still come up, and that is where you have the AI read the
+schematic and the datasheet — the next section.
+
+=== Try it on a breadboard, then move it to a board
+
+Start on a breadboard. Parts push in and pull out, so you can change the wiring as often as you
+need. Get as far as seeing the sensor value here.
+
+Once the wiring is settled, move it to a permanent form: solder onto perfboard, or draw the board
+design and send it out for manufacture. A breadboard works, but wires come loose and contacts get
+unreliable. Anything that goes into a field or a factory, anything left powered and unattended,
+is easier later if you take it as far as soldering.
+
+=== Where soldering is needed, and where it is not
+
+The range that needs no soldering iron is wider than people expect.
+
+* A module that ships with pin headers, connected by breadboard and jumper wires — no soldering
+* Modules that connect by screw terminals or connectors — none needed
+* Fitting pin headers to a module that ships without them — needed here
+* Fixing parts to perfboard for permanent installation — needed here
+* Joining wire to wire — soldering, or a crimping tool
+
+At the prototype stage, soldering can wait. Fix things in place once you know they work.
+
+=== The housing continues from the previous chapter's CAD
+
+Once the board runs, it needs something to live in. In 2-13's Build123d or OpenSCAD, write the
+board dimensions, the mounting screw holes, the cable pass-through, and the cooling slots, and
+print it. If the dimensions are off, change the numbers and print again. The sensor housing comes
+back into your own hands here.
+
+Where waterproofing or dust protection matters, buying a sealed enclosure and drilling it is
+sometimes faster. Anything outdoors, anything exposed to water, and anything handling high
+voltage carries a risk of electric shock and fire. Work on the mains side requires a licence.
+Start on the low-voltage DC side — what runs on batteries or USB power — and leave the AC side
+to someone licensed.
+
+== Parts and tools arrive by mail order
+
+Parts come from electronic-component distributors and from the shops that carry the boards.
+Development boards, sensor modules, breadboards, jumper wires, USB cables — these are kept in
+stock and arrive in a few days. A soldering iron and a multimeter are one-time purchases that
+last for years.
+
+The order of magnitude shows up in the farmer example later. Where a commercial IoT unit costs
+¥50,000 each, an ESP32 plus sensors assembled yourself came to ¥3,000 in total. The more places
+you install, the more that gap matters.
+
+Before buying, have the AI check the part numbers. "Does this sensor run at 3.3V?" "Will this
+plug straight into that board?" "List the parts I need." It cuts down on discovering a missing
+piece after the box arrives.
+
+== Have the AI read schematics and datasheets too
+
+Schematics, wiring, datasheets — reading these can also go to the AI.
+
+"I want to connect this OLED display module to an ESP32. Tell me the wiring and the code." Pin
+assignments, the library, the init code, and the display code come back.
+
+If the datasheet is a PDF, extract the text and hand it over — "what does register `0x21` of this
+sensor do?" — and it answers. *The AI holds hardware knowledge as well.*
+
+There are points to watch on the side that drives real hardware. If power drops while firmware is
+being written, recovering the board takes work. Some bootloader and fuse settings cannot be
+changed back. Code that drives a relay, a valve, or a motor gets read by a person before power
+goes on, with someone present. These are collected under "What the human holds" below.
+
+== Where the readings go
+
+Once the board can measure, decide where the readings go. This is the IoT side.
+
+First, choose how it connects.
+
+|===
+| Connection | Suits | Character
+| *Wi-Fi* | Indoors, where power is available | Rides the wireless LAN you already have. Easy to work with, draws more power
+| *BLE* | Talking to a nearby machine or phone | Runs long on batteries. Reaches about as far as a room
+| *LoRa* | Fields, hills, spots spread outdoors | Reaches far and runs long on batteries. Carries little data per message
+| *Wired (Ethernet, serial)* | Factory lines, fixed installations | Stable. Takes the work of running cable
+| *Cellular* | Places with neither power nor LAN nearby | Sends from anywhere. Requires a line contract
+|===
+
+For a field or a shed with neither power nor LAN, the combination is LoRa out to the farmhouse
+and Wi-Fi or wire from there on. The sending interval is decided here too — record every minute,
+send every ten minutes together, and the batteries last.
+
+Then decide what happens at the far end. From here on, the tools this series already stood up
+carry the work.
+
+. The board sends JSON — record to the SD card every minute, send every ten minutes together
+. FastAPI receives it — stand up one endpoint for readings, check the shape of the arriving JSON, then let it through (2-12)
+. 2-03's store keeps it — into SQLite or PostgreSQL, with accumulated data dropped to Parquet
+. The same FastAPI serves it back — add an endpoint beside it that takes a period and a location
+. 2-04's Flet puts it on a screen — a tablet in the field, a browser in the office. For daily charts alone, Altair's HTML is enough
+
+Instead of sending to a vendor's cloud, send to your own machine. With both the intake and the
+readout on FastAPI, adding a board or adding a screen means adding one endpoint. The readings
+stay with you, and there is no monthly contract.
+
+One point to watch. When a board sits somewhere reachable from outside, do not leave the door
+open. Keep the direction one-way — board to your machine — and close any port that lets the board
+be called from outside. A default password, or an admin screen that opens without
+authentication, is an entry point. How to stand up authentication is in
+link:/en/ai-native-software/auth/[2-05: Stand Up the Gate — One Login with PocketBase].
+
+== Analyzing the collected data continues in Python
+
+Once readings accumulate in your hands, the analysis is Python as well.
+
+Read from the store in
+link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars],
+aggregate with `polars`, chart with `matplotlib` / `altair`, do numerics with `numpy`. The JSON
+written on the board side and the Polars read on the PC side meet at the same column names.
+
+"The sensor records temperature every minute. From this JSON, find the time of day when the
+temperature rose sharply, and chart it." The code comes back.
+
+Even when the embedded body runs in C, everything around it — verification, analysis,
+visualization — runs in Python and AI. That is the new shape of embedded development.
+
+== Example: a room-temperature monitor stands up in three stages
+
+One concrete example. An ESP32 measures room temperature and notifies when it goes above 30 °C.
+
+*Stage 1 (Python on a PC)*. Write the logic in Python. Prepare sample temperature data (JSON)
+and write the decision. Tuning the threshold, removing noise, setting the notification
+condition — experiment with all of it on the PC. What the human decides here is the decision
+itself: "notify when the average of the last five minutes goes above 30." Once that one line is
+settled, the AI writes the Python.
+
+*Stage 2 (MicroPython on the device)*. Transfer the Python logic to MicroPython. MicroPython is a
+subset of Python, so it runs almost as is. Attach a temperature sensor (a DHT22, for instance)
+and run it on real data.
+
+*Stage 3 (translate to C if needed)*. You want it to run long on batteries, or memory is tight —
+that is when you translate to C. Ask the AI and the translation comes out.
+
+In many cases it ends at stage 2. MicroPython is enough.
+
+== Example: a farmer's field-sensor network
+
+A second example. Farmer B wants soil-moisture, temperature, and solar-irradiance sensors at
+several spots in the field. Commercial units cost ¥50,000 each, and the data pools in the
+vendor's cloud.
+
+*Stage 1 (Python on a PC)*. Write the irrigation decision against historical weather data:
+"recommend irrigation if irradiance ≥ X Wh/m² and soil moisture < Y % hold for three consecutive
+hours." Apply it to the historical data with Polars and tune the thresholds. The AI writes the
+first version.
+
+*Stage 2 (MicroPython on the device)*. Port that logic to an ESP32 plus sensors (¥3,000 in
+total). Because it is MicroPython, the PC code runs almost as is. Record JSON to an SD card every
+minute.
+
+*Stage 3 (aggregate on the farmhouse miniPC)*. Put a miniPC in the farmhouse — the machine from
+link:/en/ai-native-software/ai-pc/[2-02: Give the AI a PC of Its Own — The Machine the Independence Part Runs On]
+will do. The ESP32s send JSON every ten minutes, FastAPI on the miniPC receives it, SQLite holds
+it, and accumulated data drops to Parquet. Daily charts in Altair, anomaly history in SQLite.
+
+*Stage 4 (design the irrigation actuator)*. Design the housing for the solenoid valve in 2-13's
+Build123d and print it. An ESP32 relay output opens and closes the valve, and the Python control
+code goes to the AI for a C translation only when MicroPython's memory falls short.
+
+The result: ¥3,000 per spot across several spots, the data is yours, and there is no monthly
+vendor cloud fee. The decision logic reads as Markdown, and when something breaks you print a
+fresh part and repair it yourself.
+
+The toolkit of the chapters so far converges into one project — 2-04's Python and Flet, 2-13's
+CAD, 2-03's Parquet, and FastAPI from
+link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
+carrying both the intake and the readout.
+
+== A twenty-year-old ladder becomes Python in a week
+
+C has been around for 50 years. It will run for another 50. Python has run for 30 years and will
+run for another 30.
+
+Embedded knowledge that has been held inside industry-specific languages — old PLC ladder logic,
+automotive special standards — moves out to the side of Python, C, and Markdown. It is the work
+of moving from a vendor's format to formats that cross time. It is a long job, but it advances a
+little every day.
+
+In numbers, it looks like this. Building a temperature-sensor decision on an ESP32:
+
+* The old way, starting in C++ — *2 weeks* (compile + re-flash + debug)
+* The new way, verify in Python then transfer to MicroPython — *2 days*
+* A gap of *7x*
+
+The re-flash cycle:
+
+* C++ plus flashing — about 2 minutes
+* MicroPython transfer — about 5 seconds
+* Python simulation — about 0.1 seconds
+* The gap between C and Python is *1,200x*
+
+And the largest example in this chapter. Twenty-year-old control logic written in industrial PLC
+ladder, where the engineer who wrote it has retired and no one in the company can read it now.
+Have the AI read the ladder, translate it to Python, and write the meaning out in Markdown — that
+takes *1 week*. By hand it takes half a year or more, and even calling in a veteran engineer does
+not guarantee the end is in sight.
+
+Visualizing sensor data takes the same shape. Building a web dashboard yourself takes a week. One
+`plot()` line in `matplotlib` plus "turn this into an HTML report" gets to practical quality in
+*30 minutes*.
+
+== People who like making things move to the software side
+
+This chapter carries a second meaning.
+
+link:/en/ai-native-software/hiring-builders/[3-06: Companies Hire Builders]
+argues that the supply of builders is not limited to former coders. Engineers in factories and
+small machine shops, people who have done electronics as a hobby, people who have shown at Maker
+Faire — those with experience making physical things move onto the software side.
+
+The technical grounding for that claim is this chapter. Raspberry Pi and ESP32, MicroPython, and
+AI generation of circuit and control code. With those three in place, the learning cost at the
+entrance came down. Experience deciding what to build, experience isolating a fault when
+something stops, experience combining parts and separating structure — people who have been
+making things already hold what a builder needs. What was missing was only the hand that writes
+the code. The AI lends that hand.
+
+____
+For people who have been making things, software became one more hand rather than a new field to
+learn.
+____
+
+== How to check you are done
+
+This chapter is done when these six things hold.
+
+. Python on the PC reads the sample JSON and returns one decision
+. Flashing a MicroPython program to the board wired on the breadboard lights the LED, or prints a value to the REPL
+. The board with a sensor attached records real readings every minute, and Python on the PC can read that record
+. The readings travel over the network to your own machine, land in 2-03's store, and can be read back for a given period
+. The board flashed with the translated C or Rust returns the same decision as Python
+. With the board inside the 3D-printed housing, the same values come back after a power cycle
+
+```bash
+# send a local file to the MicroPython on the board and run it
+mpremote connect auto fs cp main.py :main.py
+mpremote connect auto run main.py
+```
+
+== What the human holds
+
+*Values the human supplies*
+
+* The decision threshold (for example, the last five minutes averaging above 30 °C; the irradiance and soil-moisture combination)
+* The parts list — development board, sensor modules, things that connect them — and the budget for it
+* Sensor part numbers and the pin numbers they connect to
+* The connection (Wi-Fi, BLE, LoRa, wired, cellular) and the machine the readings go to
+* The recording interval (every minute, say) and the sending interval (every ten minutes, say)
+* The power conditions (battery or permanent supply) and how long it must keep running
+* The line: how much stays in Python, and where C / Rust translation begins
+
+*Actions the AI states before performing*
+
+* Writing firmware to the board (losing power mid-write means recovery work)
+* Changing bootloader or fuse settings (some cannot be changed back)
+* Driving actuators on real hardware — relays, valves, motors
+* Deleting or overwriting recorded logs or the contents of an SD card
+* Opening a port that lets the board be called from outside, or enabling an admin screen without authentication
+
+== Versions checked, and when
+
+* ESP32, RP2040, STM32, Raspberry Pi, Jetson Nano, Arduino, DHT22 — no versions specified
+* MicroPython, Rust (`embassy` / `RTIC`), `pybind11`, `PyO3` — no versions specified
+* Polars, matplotlib, Altair, SQLite, Parquet, FastAPI, Flet — no versions specified
+* The part prices (¥50,000 per commercial unit, ¥3,000 for an ESP32 with sensors) are the original estimates. Check current prices before buying
+* These steps were written on 2026-09-21
+* If versions have moved on, have the AI check the official procedure before proceeding
+
+== In summary
+
+Even when you are working against a board, think in Python.
+
+* *Separate from the hardware* — settle the logic in Python on a PC. If it fails on the device, the cause is on the hardware side
+* *Build by combination* — try off-the-shelf boards and modules on a breadboard, then fix them in place with solder and a housing. The housing prints from 2-13's CAD
+* *Pick the language by phase* — Python, then MicroPython, then Rust when performance demands it. C and C++ handle existing assets
+* *Move through five stages* — design, port, measure, Rust the hotspots, and edge AI when needed. Most IoT stops at the second
+* *Decide where readings go* — choose the connection by place, stack it in 2-03, serve it with 2-12's API, screen it with 2-04's Flet. The readings stay with you
+* *Move knowledge into formats that cross time* — a twenty-year-old PLC ladder becomes Python and Markdown in a week once it is read, translated, and written out
+
+The tools are in place now: the foundation, the gate, documents, code, mail, meetings, the web,
+the API, diagrams — and the board, with the readings flowing from it.
+The next chapter prepares the information that flows over all of it. Files at the bottom of a
+shared folder, paper and scanned PDFs, and knowledge that lives only in someone's head — moved
+into written form.
+
+'''
+
+== Related articles
+
+* link:/en/ai-native-software/design/[2-13: Make Diagrams and Documents — Mermaid, Marp, and the Other Tools]
+* link:/en/ai-native-software/python/[2-04: Write the Logic — Own Your Tools with Python and Flet]
+* link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars]
+* link:/en/ai-native-software/structure-knowledge/[2-15: Make Your Knowledge Legible — Preparation Is the Main Body, AI the Last Move]
+* link:/en/ai-native-software/hiring-builders/[3-06: Companies Hire Builders]
+endif::[]
 // ===== article: 20-structure-knowledge =====
 ---
 slug: structure-knowledge

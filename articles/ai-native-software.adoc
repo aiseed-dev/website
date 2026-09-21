@@ -5289,6 +5289,22 @@ rclone copy onedrive:Documents ./inbox --progress
 たいていは版のやり取りで足りる。送って、直って、返る。紙の時代から、ずっと
 そうだったように。
 
+== 一人ずつが持つことが、組織の強さになる
+
+中身を自分の側に取り戻すのは、個人だけの話ではない。組織の全員が同じクラウドに
+乗っていると、提供者が方針を一つ変えるだけで、全員の文書が同じ方向に動く。AI が
+返す判断の癖も揃う。一人ずつが自分の道具と中身を持てば、どれか一つが止まっても
+他は動き続ける。*多様性そのものが、組織の強さになる*。
+
+____
+効率化ではなく、自立と多様性。
+____
+
+上司や同僚に、新しい形式を覚えてもらう必要もない。aiseed office は
+`.docx` / `.xlsx` / `.pptx` のまま読み書きするので、渡すファイルはこれまでと同じだ。
+変わるのは中の作り方だけで、受け取る側から見れば何も変わらない。形式はそのままに、
+主導権だけが自分の側へ移る。
+
 == 人は編集の道具、機械は Polars
 
 ここで 2-03 とつながる。*人は編集の道具で入れて読み、機械は Polars と DuckDB で裏のデータを捌く*。同じ `.xlsx` を、人は編集の道具として、機械は入力として扱う。
@@ -5646,6 +5662,24 @@ the entrance and then brought in.
 Do not create gate accounts for outsiders. Parties who genuinely need to co-edit
 are rare; exchanging versions is almost always enough. Send it, it comes back
 corrected. The way it has worked since paper.
+
+== One person at a time holding it is what makes an organization strong
+
+Taking the contents back to your own side is not only an individual matter. When a
+whole organization sits on one cloud, a single change of policy by the provider moves
+everyone's documents in the same direction, and the habits of judgment the AI returns
+converge too. When each person holds their own tools and their own contents, one of
+them stopping leaves the others running. *Diversity itself is the organization's
+strength.*
+
+____
+Not efficiency. Independence, and diversity.
+____
+
+Nor does anyone above or beside you have to learn a new format. aiseed office reads
+and writes `.docx`, `.xlsx`, and `.pptx` as they are, so the file you hand over is the
+same file as before. What changes is how it is made; from the receiving side, nothing
+changes at all. The format stays, and only the control moves to your side.
 
 == People use the editor, machines use Polars
 

@@ -14836,7 +14836,7 @@ USBから試す → Live USBで起動して触る、データは何も変えな�
 主機を切り替える → 確信が持てたら、本格的に切り替え
 --
 
-*「Claudeと一緒に学ぶDebian」シリーズ*（プロローグ + 全23章）が、この移行を Claude との対話で進めるための完全な手引きである。
+*「Claudeと一緒に学ぶDebian」シリーズ*が、この移行を Claude との対話で進めるための完全な手引きである。
 
 特に第00章プロローグの「なぜ今 Linux か——AI時代に効く構造、効かない構造」が、本シリーズ（insights 第二部・第三部）と直接整合している。
 
@@ -14876,7 +14876,7 @@ ONLYOFFICE（Flathubから入る）は、Microsoft Officeとの見た目互換�
 
 これは「リスクを取って起業する」ではない。*段階的に組織への依存を減らしていく*プロセスである。AIネイティブな仕事ができれば、一人で複数の専門を兼ねられるので、*「専門家チームに発注する顧客」がそのまま「自分で作るビルダー」になれる*。
 
-「AIネイティブな仕事の作法」シリーズの全14章が、この道筋の具体的なツールと作法を扱っている。
+「AIネイティブな仕事の作法」シリーズが、この道筋の具体的なツールと作法を扱っている。
 
 == 三つの誤解を避ける
 
@@ -14941,8 +14941,8 @@ ____
 
 本書シリーズの実践編は、二つの別シリーズとして展開している：
 
-* link:/claude-debian/[Claudeと一緒に学ぶDebian]（プロローグ + 全23章）——OS から日常環境までの移行手引き
-* link:/ai-native-ways/[AIネイティブな仕事の作法]（全14章）——AI と共に働く具体的な作法
+* link:/claude-debian/[Claudeと一緒に学ぶDebian]——OS から日常環境までの移行手引き
+* link:/ai-native-ways/[AIネイティブな仕事の作法]——AI と共に働く具体的な作法
 
 構造分析（insights）で全体像を、実践シリーズで具体的な手順を——両方を組み合わせて、AIネイティブな自由人への道を歩んでほしい。
 
@@ -15067,7 +15067,7 @@ Try it from a USB → Boot from a Live USB and explore; nothing on disk changes 
 Switch your main machine → Once you have conviction, make the full switch
 --
 
-The *"Learning Debian with Claude" series* (prologue + 23 chapters) is the complete guide for advancing this migration through dialogue with Claude.
+The *"Learning Debian with Claude" series* is the complete guide for advancing this migration through dialogue with Claude.
 
 In particular, the Chapter 00 prologue — "Why Linux Now — Structures That Work in the AI Era, Structures That Don't" — aligns directly with this series (Insights Parts II and III).
 
@@ -15107,7 +15107,7 @@ When you can go independent, leave the vassal role behind
 
 This is not "take a risk and start a company." It is a process of *gradually reducing dependence on an organization*. If you can do AI-native work, you can cover multiple specialties alone, so *"the client who commissioned a specialist team" can become "the builder who builds it themselves."*
 
-All 14 chapters of the "AI-Native Ways of Working" series cover the specific tools and practices for this path.
+The "AI-Native Ways of Working" series covers the specific tools and practices for this path.
 
 == Three Misconceptions to Avoid
 
@@ -15172,8 +15172,8 @@ This is a *structural analysis series of the Second Renaissance*. The individual
 
 The practical sections of this series are deployed as two separate series:
 
-* link:/en/claude-debian/[Learning Debian with Claude] (prologue + 23 chapters) — A complete guide to migrating from OS to daily environment
-* link:/en/ai-native-ways/[AI-Native Ways of Working] (14 chapters) — Concrete practices for working alongside AI
+* link:/en/claude-debian/[Learning Debian with Claude] — A complete guide to migrating from OS to daily environment
+* link:/en/ai-native-ways/[AI-Native Ways of Working] — Concrete practices for working alongside AI
 
 Use the structural analysis (insights) for the overall picture, and the practice series for the specific steps — combine both to walk the road to becoming an AI-native free person.
 

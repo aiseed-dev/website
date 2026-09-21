@@ -171,7 +171,7 @@ AI はユーザーが呼んだ時だけ呼ばれる。カーネルは AI を知�
 
 この本を最後まで読み、「Claudeに聞いてみよう」の枠を全て自分の状況で埋めたとき、あなたは次の四つを手にしている。
 
-*一、Debianが動いているPC。* 読んでいる間に手を動かすので、序章を含めて全24章を終えたとき、あなたの主作業環境はDebianになっているはずだ。
+*一、Debianが動いているPC。* 読んでいる間に手を動かすので、最後の章を終えたとき、あなたの主作業環境はDebianになっているはずだ。
 
 *二、自分専用のメモ。* 各章の対話結果を残したテキストファイルが、章数だけ手元に残る。これは「あなたのDebian環境のドキュメント」になる。何かトラブルが起きたとき、これがあなたを助ける。
 
@@ -191,7 +191,7 @@ AI はユーザーが呼んだ時だけ呼ばれる。カーネルは AI を知�
 
 === 必要な時間と費用
 
-時間は、章ごとに30分〜1時間を見ておけばいい。全24章で12〜24時間。週末を二〜三回使えば終わる分量だ。
+時間は、章ごとに30分〜1時間を見ておけばいい。週末を二〜三回使えば終わる分量だ。
 
 費用は、ほぼゼロ。Debianは無料、ほとんどのアプリも無料。Claudeは無料枠でこの本の演習はほぼ全部こなせる。後で踏み込んで使いたくなったら有料プラン（月20ドル）に上げてもいいが、必須ではない。
 
@@ -357,7 +357,7 @@ Every concrete migration step in Chapter 1 and beyond stands on those three prem
 
 When you have read this book to the end and filled every "Ask Claude" box with your own situation, you will hold four things.
 
-*One: a PC that runs Debian.* Because you move your hands as you read, by the time you finish all 24 chapters including the prologue, your main working environment should be Debian.
+*One: a PC that runs Debian.* Because you move your hands as you read, by the time you finish the last chapter, your main working environment should be Debian.
 
 *Two: notes tailored to you.* You will end up with as many text files as there are chapters, each holding the results of a dialogue. Taken together, they become _the documentation of your Debian environment_. When something goes wrong, these notes will help you.
 
@@ -377,7 +377,7 @@ To be honest, here is what this book will not give you.
 
 === Time and Cost
 
-Budget 30 minutes to 1 hour per chapter. All 24 chapters take 12 to 24 hours — a volume you can finish over two or three weekends.
+Budget 30 minutes to 1 hour per chapter — a volume you can finish over two or three weekends.
 
 Cost is close to zero. Debian is free; most applications are free. Claude's free tier is enough to work through almost all of the exercises in this book. If you want to go deeper later you can upgrade to the paid plan ($20/month), but it is not required.
 
@@ -14393,7 +14393,7 @@ Claude は助けになるが、もう絶対に必要な相手ではない。*自
 
 '''
 
-*シリーズ完結にあたって：* この教科書全体はlink:/claude-debian/[Claudeと一緒に学ぶDebian 一覧]から辿れる。全24章（序章＋23章）を読み通していただき、ありがとうございました。
+*シリーズ完結にあたって：* この教科書全体はlink:/claude-debian/[Claudeと一緒に学ぶDebian 一覧]から辿れる。最後まで読み通していただき、ありがとうございました。
 
 フィードバック、訂正、追補は歓迎します。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
 
@@ -14626,7 +14626,7 @@ Now that you are in that state, this textbook's role is over. The rest is your t
 
 '''
 
-*On the completion of the series:* The whole textbook can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Thank you for reading through all 24 chapters (prologue + 23 chapters).
+*On the completion of the series:* The whole textbook can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Thank you for reading it through to the end.
 
 Feedback, corrections, and additions are welcome. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 

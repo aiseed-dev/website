@@ -8749,9 +8749,9 @@ image:screenshot.jpg[スクリーンショット]
 
 このサイトには、Claude を横に置きながら学ぶための二つの教科書がある。
 
-link:/claude-debian/[*Claude と一緒に学ぶ Debian*] は、Debian への移行を Claude との対話で進めるための、プロローグ＋全23章の教科書だ。何を Claude に伝えるか、どう環境情報を取り出すか、ログをどう渡すか、詰まったときに何を試すか ── これらは、Linux の知識そのものよりも、*AI を使って学ぶための作法* に近い。
+link:/claude-debian/[*Claude と一緒に学ぶ Debian*] は、Debian への移行を Claude との対話で進めるための教科書だ。何を Claude に伝えるか、どう環境情報を取り出すか、ログをどう渡すか、詰まったときに何を試すか ── これらは、Linux の知識そのものよりも、*AI を使って学ぶための作法* に近い。
 
-link:/ai-native-ways/[*AI ネイティブな仕事の作法*] は、Debian に移った先で何をするかを書いている。Excel の VBA を Python に、Word を Markdown に、CSV を JSON や SQLite に ── AI が同僚になる時代の道具立てを、14 章で整理している。
+link:/ai-native-ways/[*AI ネイティブな仕事の作法*] は、Debian に移った先で何をするかを書いている。Excel の VBA を Python に、Word を Markdown に、CSV を JSON や SQLite に ── AI が同僚になる時代の道具立てを整理している。
 
 一度この作法を身につければ、Debian だけでなく、*この先 AI と一緒に何かを学ぶ・作るときの基礎* になる。
 
@@ -8877,7 +8877,7 @@ This site has two textbooks for learning with Claude beside you.
 
 link:/en/claude-debian/[*Learning Debian with Claude*] is a prologue-plus-23-chapter textbook for migrating to Debian through dialogue with Claude. What to tell Claude, how to pull environment information, how to hand it logs, what to try when you're stuck — these are less about Linux knowledge per se and more about *the discipline of learning with AI*.
 
-link:/en/ai-native-ways/[*AI-Native Ways of Working*] covers what to do after you arrive in Debian. Excel VBA into Python, Word into Markdown, CSV into JSON / SQLite — the toolkit for an era when AI is your colleague, organized across 14 chapters.
+link:/en/ai-native-ways/[*AI-Native Ways of Working*] covers what to do after you arrive in Debian. Excel VBA into Python, Word into Markdown, CSV into JSON / SQLite — the toolkit for an era when AI is your colleague.
 
 Once you internalize this discipline, it becomes the foundation *not just for Debian, but for anything you'll learn or build alongside AI from here on*.
 

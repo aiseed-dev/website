@@ -141,9 +141,18 @@ AI モデルへのアクセスには、用途による段がある。
   何日も続くなら、上の帯(Claude Max など)がある。必要になってから
   上げればよく、最初から要るものではない。
 * *API 従量課金* ── 使った分だけ払う形もあるが、*ここは使わない*。同じ量を
-  API で通すと、定額のおよそ *10 倍* になる。仕組みの問題だ。AI に道具を
-  使わせながら書かせると、一回の呼び出しごとに、それまでの会話と読んだ
-  ファイルを丸ごと送り直す。入力が、呼び出した回数だけ積み上がる。
+  API で通すと、定額のおよそ *10 倍* になる。
+
+差は、二つの理由から出る。
+
+*一つは、量が積み上がること*。AI に道具を使わせながら書かせると、一回の
+呼び出しごとに、それまでの会話と読んだファイルを丸ごと送り直す。入力が、
+呼び出した回数だけ積み上がる。
+
+*もう一つは、単価が違うこと*。定額は、同じ量を従量で買うより安く値付け
+されている。公開の従量価格をそのまま積むと、定額の月額をはるかに超える ──
+つまり定額の側に、まとめ買いの割引が入っている。利用上限は、その代わりに
+置かれた枠だ。
 
 数えてみる。Sonnet 5 の公開価格は、入力が 100 万トークンあたり 2 ドル、出力が
 10 ドル、キャッシュからの読み出しはその 1 割(2026 年 9 月時点)。一回の呼び出しが
@@ -423,9 +432,19 @@ use them.
   when you need it; you do not need it to begin.
 * *API pay-as-you-go* — you can pay for what you use, but *do not use it
   here*. Run the same volume through the API and it comes to roughly *ten
-  times* the flat plan. It is a matter of mechanics: when the AI writes code
-  while using tools, every call resends the whole conversation and every file
-  it has read. The input side stacks up once per call.
+  times* the flat plan.
+
+The gap has two causes.
+
+*One is that the volume stacks up.* When the AI writes code while using tools,
+every call resends the whole conversation and every file it has read. The input
+side stacks up once per call.
+
+*The other is that the unit price differs.* The flat plan is priced below what
+the same volume costs when bought by the meter. Add up the published per-token
+rates and you pass the monthly subscription by a wide margin — which means the
+discount sits on the subscription side. The usage limit is the boundary placed
+there in exchange.
 
 Count it out. Sonnet 5 lists at $2 per million input tokens and $10 per million
 output tokens, with cache reads at a tenth of the input rate (as of September

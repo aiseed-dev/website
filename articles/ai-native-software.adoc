@@ -11,10 +11,10 @@ number: 01
 part: 1
 title.ja: AI は、世界で最も難しいコーディング問題を解く
 title.en: AI Solves the World's Hardest Coding Problems
-subtitle.ja: Codeforces 2700 帯から設計まで ── Mythos/Fable 時代、AI は月 3 万円で呼べる「最強の SIer」になった
-subtitle.en: From the Codeforces 2700 tier to design — in the Mythos/Fable era, AI became the strongest SIer, callable for $200 a month
-description.ja: AI のコード作成能力は、競技プログラミングの公開レーティング(Codeforces 2700 帯)で人間の最上層に並んだ。さらに、標的への攻撃工程の大半を自律的に遂行した事例が公表されている ── これは設計能力の証拠である。攻撃・設計・検証は、一つの力の三つの顔だ。Mythos/Fable 時代になって、AI は要件を読み、構造を決め、実装し、動かす「最強の SIer」になった。しかも月 3 万円で誰でも呼べる。この一点から、ソフトウェア開発編の議論がすべて導かれる。
-description.en: AI's code-writing ability has matched human top-class on public competitive-programming ratings (the Codeforces 2700 tier). It can also assemble a cyberattack autonomously — evidence of design ability. Attack, design, and verification are three faces of one power. In the Mythos/Fable era AI became the strongest SIer, handling requirements, design, and build, and callable by anyone for $200 a month. The whole sub-series argues outward from that.
+subtitle.ja: Codeforces 2700 帯から設計まで ── Mythos/Fable 時代、AI は月 3 千円で呼べる「最強の SIer」になった
+subtitle.en: From the Codeforces 2700 tier to design — in the Mythos/Fable era, AI became the strongest SIer, callable for $20 a month
+description.ja: AI のコード作成能力は、競技プログラミングの公開レーティング(Codeforces 2700 帯)で人間の最上層に並んだ。さらに、標的への攻撃工程の大半を自律的に遂行した事例が公表されている ── これは設計能力の証拠である。攻撃・設計・検証は、一つの力の三つの顔だ。Mythos/Fable 時代になって、AI は要件を読み、構造を決め、実装し、動かす「最強の SIer」になった。しかも月 3 千円で誰でも呼べる。この一点から、ソフトウェア開発編の議論がすべて導かれる。
+description.en: AI's code-writing ability has matched human top-class on public competitive-programming ratings (the Codeforces 2700 tier). It can also assemble a cyberattack autonomously — evidence of design ability. Attack, design, and verification are three faces of one power. In the Mythos/Fable era AI became the strongest SIer, handling requirements, design, and build, and callable by anyone for $20 a month. The whole series argues outward from that.
 date: 2026.06.01
 label: Introduction 1
 title_html.ja: <span class="accent">最難のコーディング問題</span>を、<br>AI が解く。
@@ -118,9 +118,9 @@ AI は、二つの別々の能力で最上層に達した。コードを書く�
 *コーディングも設計も、AI が上級エンジニアを超えはじめた*。二つが揃えば、
 結論は一つになる。Mythos/Fable 時代になって、AI は最強の SIer になった。
 要件を読み、構造を決め、実装し、動かす。SIer の仕事の全体を、一人でこなす。
-しかも、世界に数十人の希少資源ではない。月 3 万円で誰でも呼べる。
+しかも、世界に数十人の希少資源ではない。月 3 千円で誰でも呼べる。
 
-== 世界の最上層に、月 3 万円で届く
+== 世界の最上層に、月 3 千円で届く
 
 ここからが、この連載の議論の出発点になる。
 
@@ -134,17 +134,16 @@ AI は、二つの別々の能力で最上層に達した。コードを書く�
 
 AI モデルへのアクセスには、用途による段がある。
 
-* チャット中心の利用 ── Claude Pro / ChatGPT Plus / Google AI Pro などの
-  基本プラン。月額 20 ドル前後。本格的にコーディングするには足りない。
-  利用上限・コンテキスト長・モデルの選択肢のどこかでぶつかる。
-* 本格的にコーディングする利用 ── Claude Max(200 ドル/月、約 3 万円)が
-  現状の標準アンカーになる。Claude Code / Cursor / IDE 拡張から
-  Sonnet・Opus を実務量で呼び続けられる帯だ。1 日 8 時間 AI にコードを
-  書かせ続けても枯れない。
-* API 従量課金 ── 同等の使い方を API 直で組むなら、月数百ドル前後に
-  収束する。Max の月額契約は、ほぼその請求書を平準化したものだ。
+* *基本プラン* ── Claude Pro / ChatGPT Plus / Google AI Pro など。月額
+  20 ドル前後、日本円で 3 千円ほど。この連載の道具立てを立て、直し、
+  日々動かすぶんには、ここで足りる。まずこれで始めてよい。
+* *書き続ける日が続くとき* ── 一日じゅう AI にコードを書かせる日が
+  何日も続くなら、上の帯(Claude Max など)がある。必要になってから
+  上げればよく、最初から要るものではない。
+* *API 従量課金* ── 使った分だけ。自分の道具に組み込んで呼ぶときは、
+  こちらのほうが実費に近い。
 
-つまり、世界の最上層のコーディング能力に、月 3 万円で接続できる。
+つまり、世界の最上層のコーディング能力に、月 3 千円で接続できる。
 クレジットカード一枚とブラウザ一つあれば、その日のうちに始められる。
 
 ```mermaid
@@ -160,7 +159,7 @@ flowchart LR
 
   subgraph Native["AI ネイティブな経路"]
     direction TB
-    N1["Claude Max(200 ドル/月)を契約"]
+    N1["Claude Pro(20 ドル/月)を契約"]
     N2["即日アクセス可能"]
     N3["人数の制約なし"]
   end
@@ -181,12 +180,12 @@ flowchart LR
 
 ____
 かつてコーディングの最上層は、数十人の希少資源だった。
-いまは、月 3 万円のサブスクだ。
+いまは、月 3 千円のサブスクだ。
 ____
 
 == ここで、IT 革命が成就する
 
-最上層のコーディング能力が、月 3 万円で誰にでも届く。この事実が意味するのは、
+最上層のコーディング能力が、月 3 千円で誰にでも届く。この事実が意味するのは、
 AI が速くなった、便利になった、ということではない。「IT 革命」と呼ばれて
 きたものが、ここで初めて成就するということだ。
 
@@ -237,7 +236,7 @@ AI がコードも設計も担ういま、ようやくその輪が閉じる。�
 * 3-06・3-07・3-09 ── ビルダーの雇用、SIer 業界の転換、転換が近い将来に
   起き、もう戻らないこと
 
-これらの問いは、それぞれ独立した観察ではない。最強の SIer が月 3 万円で
+これらの問いは、それぞれ独立した観察ではない。最強の SIer が月 3 千円で
 手に入るという一点から、すべてが派生する。この章は、その一点を据えるために
 ある。
 
@@ -253,7 +252,7 @@ AI がコードも設計も担ういま、ようやくその輪が閉じる。�
 
 ____
 一行に圧縮すれば、この連載はこうだ。
-*最強の SIer が月 3 万円なら、外注を中心に組まれたソフトウェア開発の構造は、もう保てない*。
+*最強の SIer が月 3 千円なら、外注を中心に組まれたソフトウェア開発の構造は、もう保てない*。
 ____
 
 もう一つ、伏線を置く。AI がコーディングも設計も担うなら、人間側に残るのは、
@@ -390,9 +389,9 @@ design.* With both in hand, the conclusion is a single one. In the
 Mythos/Fable era, AI became the strongest SIer. It reads requirements,
 decides structure, implements, and runs the result. It does the whole of
 the SIer's work by itself. And it is not a scarce resource of a few dozen
-people worldwide. It is callable by anyone for $200 a month.
+people worldwide. It is callable by anyone for $20 a month.
 
-== The world's top tier is reachable for $200 a month
+== The world's top tier is reachable for $20 a month
 
 This is where the sub-series' argument starts.
 
@@ -407,18 +406,16 @@ year-long, eight-figure contracts. The mechanics are covered in 3-05.
 Access to AI models comes in tiers, depending on how hard you intend to
 use them.
 
-* Chat-grade use — the base plans, Claude Pro, ChatGPT Plus, Google AI
-  Pro, at around $20 a month. This is not enough for serious coding. You
-  run into usage limits, context length, or model selection before long.
-* Coding-grade use — Claude Max, at $200 a month, is the current standard
-  anchor. It lets Claude Code, Cursor, and IDE integrations call Sonnet
-  and Opus at production volumes. You can have AI writing code eight hours
-  a day without hitting the wall.
-* API pay-as-you-go — wiring the same usage through the API directly lands
-  at a few hundred dollars a month. The Max subscription is essentially
-  that invoice averaged out.
+* *The base plan* — Claude Pro, ChatGPT Plus, Google AI Pro, at around
+  $20 a month. For standing up the toolset in this series, fixing it, and
+  running it day to day, this is enough. Start here.
+* *When the writing days pile up* — if you have AI writing code all day,
+  day after day, there is a tier above (Claude Max and the like). Move up
+  when you need it; you do not need it to begin.
+* *API pay-as-you-go* — you pay for what you use. When you call the model
+  from inside your own tools, this tracks the real cost more closely.
 
-In other words, the world's top-tier coding ability is reachable for $200
+In other words, the world's top-tier coding ability is reachable for $20
 a month. One credit card and one browser, and you can start the same day.
 
 ```mermaid
@@ -434,7 +431,7 @@ flowchart LR
 
   subgraph Native["The AI-native path"]
     direction TB
-    N1["Subscribe to Claude Max ($200/mo)"]
+    N1["Subscribe to Claude Pro ($20/mo)"]
     N2["Access starts the same day"]
     N3["No headcount limit"]
   end
@@ -456,12 +453,12 @@ supply curves.
 
 ____
 Top-tier coding used to be a scarce resource of a few dozen people.
-It is now a $200-a-month subscription.
+It is now a $20-a-month subscription.
 ____
 
 == This is where the IT revolution completes
 
-Top-tier coding ability reaches anyone for $200 a month. What that fact
+Top-tier coding ability reaches anyone for $20 a month. What that fact
 means is not that AI got faster, or that AI got convenient. It means that
 what has long been called the IT revolution finally completes here.
 
@@ -530,7 +527,7 @@ Every chapter that follows is deduced from this one point.
   does not reverse
 
 These questions are not independent observations. They all derive from one
-point: the strongest SIer is available for $200 a month. This chapter
+point: the strongest SIer is available for $20 a month. This chapter
 exists to plant that point.
 
 And the story does not stop at writing code. Once customers can hold it
@@ -550,7 +547,7 @@ chapter by chapter.
 
 ____
 Compressed to one line, this is the sub-series.
-*If the strongest SIer costs $200 a month, the outsourcing-centered structure of software development can no longer hold*.
+*If the strongest SIer costs $20 a month, the outsourcing-centered structure of software development can no longer hold*.
 ____
 
 One more thread runs underneath. If AI carries both coding and design,
@@ -17006,7 +17003,7 @@ ifdef::lang-ja[]
 
 これまでの各章の主張を、変化の順に並べ直す。
 
-* *AI が実行能力で人間トップに到達*(1-01)── Codeforces 2700 帯、月 3 万円
+* *AI が実行能力で人間トップに到達*(1-01)── Codeforces 2700 帯、月 3 千円
 * *保守の主戦場が設計に移る*(1-02)
 * *コーダーという役割が消える*(1-03)
 * *ビルダーという新しい役割が出現する*(1-04)
@@ -17156,7 +17153,7 @@ IT 業界の AI 言説は、しばしばこの 99/100 の谷を見落とす。�
 1-04 で触れたとおり、この連載は 1 人 + AI で 1 週間ほどで書かれた。だが、その 1 週間
 には、人間による多数の修正が含まれている。
 
-* 月額数千円という価格アンカーを、Claude Max($200/月 = 月 3 万円)に修正した
+* 価格アンカーを Claude Max($200/月)から Claude Pro($20/月)へ戻した ── 立てて動かすだけなら基本プランで足りる
 * コード基盤を 30,000 行と書いたのを、実測 6,000 行に修正した
 * 計算手の例に、算盤(そろばん)を主例として追加した
 * 電卓移行を、数十年ではなくおよそ十年と事実を修正した
@@ -17224,7 +17221,7 @@ AI だけでは、事実誤認、論旨の偏り、語感のずれ ── その
   契約関係は再構築されない
 * ビルダーが経営陣(CIO)として認知されると、その役割定義は持続する(3-06)。経営の
   一翼に動いたものは戻らない
-* AI が安価に標準コードを生成する事実は変わらない。月 3 万円で最上層に届く構造は
+* AI が安価に標準コードを生成する事実は変わらない。月 3 千円で最上層に届く構造は
   維持される(1-01)
 
 各々が一方向にしか動かない。だから連鎖全体も一方向だ。逆転した前提の上では、いったん
@@ -17614,7 +17611,7 @@ Put the claims made across the preceding chapters back in the order in which
 they cascade.
 
 * *AI reaches human-top execution capability* (1-01) — the Codeforces 2700 tier,
-  $200 a month
+  $20 a month
 * *The main battleground of maintenance moves to design* (1-02)
 * *The role called "coder" goes away* (1-03)
 * *A new role, the builder, emerges* (1-04)
@@ -17797,8 +17794,8 @@ Living evidence for this claim sits in the writing process of this series itself
 As 1-04 noted, this series was written by one person plus AI in about a week. But
 that week contained a long list of corrections made by a human.
 
-* The price anchor of "a few thousand yen a month" was corrected to Claude Max
-  ($200 a month, about ¥30,000 a month)
+* The price anchor was moved back from Claude Max ($200 a month) to Claude Pro
+  ($20 a month) — the base plan is enough to stand the toolset up and run it
 * The code base written as 30,000 lines was corrected to the measured 6,000 lines
 * The abacus (soroban) was added as the primary example alongside the human
   computer
@@ -17880,7 +17877,7 @@ shows in the following concrete cases.
 * Once the builder is recognized as management, as the CIO, that role definition
   persists (3-06). What moved into a seat in management does not move back
 * The fact that AI generates standard code cheaply does not change. The structure
-  of reaching the top tier for $200 a month stays in place (1-01)
+  of reaching the top tier for $20 a month stays in place (1-01)
 
 Each piece moves in one direction only. So the chain as a whole moves in one
 direction. On top of an inverted premise, once the chain starts, no structural

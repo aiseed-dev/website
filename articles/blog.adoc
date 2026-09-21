@@ -8446,7 +8446,7 @@ ____
 
 本記事は、aiseed.dev の link:/ai-native-software/[AI ネイティブなソフトウェア開発]を三対の語に圧縮したものです。各章で扱われている論証:
 
-* link:/ai-native-software/coder-top/[1-01: AI は、世界で最も難しいコーディング問題を解く] ── Codeforces 2700 帯、月3万円で世界最上層
+* link:/ai-native-software/coder-top/[1-01: AI は、世界で最も難しいコーディング問題を解く] ── Codeforces 2700 帯、月3千円で世界最上層
 * link:/ai-native-software/maintenance-shift/[1-02: 保守フェーズの構造変化こそ本質] ── 保守の単位がコードから設計に移る
 * link:/ai-native-software/coder-end/[1-03: ソフトウェアエンジニアの仕事を AI がするようになる] ── そろばん → 電卓と同じ構造
 * link:/ai-native-software/builder/[1-04: ビルダーという役割] ── 決める・委譲する・評価する・統合する
@@ -8605,7 +8605,7 @@ Both are roads out of the lord's manor.
 
 This article compresses aiseed.dev's link:/en/ai-native-software/[AI-Native Software Development] into three pairs of words. The arguments across the chapters:
 
-* link:/en/ai-native-software/coder-top/[1-01: AI Solves the World's Hardest Coding Problems] — Codeforces 2700 tier; the top layer for $200/month
+* link:/en/ai-native-software/coder-top/[1-01: AI Solves the World's Hardest Coding Problems] — Codeforces 2700 tier; the top layer for $20/month
 * link:/en/ai-native-software/maintenance-shift/[1-02: The Real Shift Is in Maintenance] — the unit of maintenance moves from code to design
 * link:/en/ai-native-software/coder-end/[1-03: AI Now Does the Software Engineer's Work] — same structure as abacus → calculator
 * link:/en/ai-native-software/builder/[1-04: The Builder Role] — decide, delegate, evaluate, integrate

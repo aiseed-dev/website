@@ -140,8 +140,9 @@ AI モデルへのアクセスには、用途による段がある。
 * *書き続ける日が続くとき* ── 一日じゅう AI にコードを書かせる日が
   何日も続くなら、上の帯(Claude Max など)がある。必要になってから
   上げればよく、最初から要るものではない。
-* *API 従量課金* ── 使った分だけ。自分の道具に組み込んで呼ぶときは、
-  こちらのほうが実費に近い。
+* *API 従量課金* ── 使った分だけ払う形もあるが、*ここは使わない*。
+  開発で呼ぶ量を通すと、定額プランよりずっと高くつく。AI にコードを
+  書かせるのは、定額のほうだ。
 
 つまり、世界の最上層のコーディング能力に、月 3 千円で接続できる。
 クレジットカード一枚とブラウザ一つあれば、その日のうちに始められる。
@@ -412,8 +413,9 @@ use them.
 * *When the writing days pile up* — if you have AI writing code all day,
   day after day, there is a tier above (Claude Max and the like). Move up
   when you need it; you do not need it to begin.
-* *API pay-as-you-go* — you pay for what you use. When you call the model
-  from inside your own tools, this tracks the real cost more closely.
+* *API pay-as-you-go* — you can pay for what you use, but *do not use it
+  here*. Run a developer's volume through it and it costs far more than the
+  flat plan. Have the AI write your code on the subscription.
 
 In other words, the world's top-tier coding ability is reachable for $20
 a month. One credit card and one browser, and you can start the same day.

@@ -231,7 +231,7 @@ AI がコードも設計も担ういま、ようやくその輪が閉じる。�
 * 1-03 ── 「コードを書く」を仕事の中心に置く役割(コーダー)はどうなるか
 * 1-04 ── 代わりに何が役割として残るか(ビルダー)
 * 1-05 ── 顧客自身が AI と組むようになると、外注の構造はどうなるか
-* 2-01〜2-14 ── 顧客が自分で握るなら、認証・文書・メール・基幹まで、
+* 2-01〜2-16 ── 顧客が自分で握るなら、認証・文書・メール・基幹まで、
   会社の IT 基盤全体を、どう自分の側に立てるか(自立編)
 * 3-04 ── SIer の委託モデルは、閾値の上にいる AI と競争できるか
 * 3-05 ── 既存の委託関係は、どこでロックインとして機能するか
@@ -521,7 +521,7 @@ Every chapter that follows is deduced from this one point.
 * 1-04 — what role remains in its place, the builder?
 * 1-05 — when customers themselves pair with AI, what happens to the
   structure of outsourcing?
-* 2-01 to 2-14 — if customers hold it themselves, how do they stand up the
+* 2-01 to 2-16 — if customers hold it themselves, how do they stand up the
   whole company IT foundation, from authentication and documents to mail
   and core systems, on their own side? That is the independence part.
 * 3-04 — can the SIer commission model compete with AI sitting above the
@@ -1822,8 +1822,8 @@ ____
 AI は、まさにこのコストを潰す。
 
 * 独自形式を開く。Office / Docs の書式は aiseed office が扱い(2-07)、埋め込まれたマクロやロジックは AI が Python に外部化する(導入編・親シリーズ第2章)
-* 読めないコードを開く。レガシー基幹のコード・SQL・手順書を、ローカル LLM が読み解いて、Markdown の業務知識に取り出す(2-11・2-14)
-* 閉じ込められた知識を開く。紙・画像・属人知を、OCR と対話で構造化された情報に変える(2-13)
+* 読めないコードを開く。レガシー基幹のコード・SQL・手順書を、ローカル LLM が読み解いて、Markdown の業務知識に取り出す(2-12・2-16)
+* 閉じ込められた知識を開く。紙・画像・属人知を、OCR と対話で構造化された情報に変える(2-15)
 
 Office スイートも、業務システムも、同じ「閉じた束が他人の鍵にぶら下がる」構造で立っている。AI は、その両方の閉を同じ操作で開く。読む・抽出する・翻訳する。AI が最も得意な操作は、そのまま開錠の操作である。
 
@@ -1846,7 +1846,7 @@ ____
 
 現実は、むしろ逆方向に動いている。ベンダーは AI を、開く道具としてではなく束を締め直す道具として組み込んでいる。ベンダー AI は束の最上層に座り、閉じた各層を AI ごしに縫い合わせ、解く理由をまた一つ消しにかかる。そして既存の IT 関係者の多くも、同じ方向に流れる。使い慣れた閉じたスタックの上にベンダー AI を載せる提案が、いちばん摩擦が少ないからだ。開く方向は、内側からは出てこない。
 
-この動きの筋の悪さは、革命の見立てを一つ正すと、はっきり見える。AI はよく産業革命、つまり機械が労働を置き換えた話にたとえられる。だが、AI をどこに置くかを考えるときの正しい先例は、活版印刷と同じ「情報革命」のほうだ。活版印刷は、写本という既存の仕組みに足された便利な機能ではなかった。文字を扱う新しいインフラとして独立に立ち、既存の情報の流れのほうが、その上で組み直された。写本工房の隅に印刷機を据えて「写本が速くなった」と呼んだ者はいない。OS も Office スイートも、情報を置いて動かすインフラだ。そして AI は、情報を読み、変換し、作る別のインフラである。ベンダーの組み込み AI とは、別のインフラを既存インフラの一機能として埋め込むことだ。新しいインフラを、旧いインフラの付属品に格下げしている。独立したインフラは、独立に立てて、どの道具からも使えるようにする。自立編が AI を束の中ではなく外に、それも最後に(2-14)据えるのは、この見立ての帰結だ。
+この動きの筋の悪さは、革命の見立てを一つ正すと、はっきり見える。AI はよく産業革命、つまり機械が労働を置き換えた話にたとえられる。だが、AI をどこに置くかを考えるときの正しい先例は、活版印刷と同じ「情報革命」のほうだ。活版印刷は、写本という既存の仕組みに足された便利な機能ではなかった。文字を扱う新しいインフラとして独立に立ち、既存の情報の流れのほうが、その上で組み直された。写本工房の隅に印刷機を据えて「写本が速くなった」と呼んだ者はいない。OS も Office スイートも、情報を置いて動かすインフラだ。そして AI は、情報を読み、変換し、作る別のインフラである。ベンダーの組み込み AI とは、別のインフラを既存インフラの一機能として埋め込むことだ。新しいインフラを、旧いインフラの付属品に格下げしている。独立したインフラは、独立に立てて、どの道具からも使えるようにする。自立編が AI を束の中ではなく外に、それも最後に(2-16)据えるのは、この見立ての帰結だ。
 
 見立てには、続きがある。活版印刷にも前段があった。紙が普及し、写本が数世紀かけて文字を蓄えた。印刷機が爆発させたのは、その蓄積だ。同じ関係で、「IT 革命」と呼ばれた数十年は、AI 革命の前段だった(1-01 の「成就」を、AI 革命の側から言い直した読み方だ)。そして前段が遺した最大の資産は、閉じたスイートではなく、OSS という開いたコードと知識の共有財のほうだ。新しいインフラは、この開いた蓄積の上でこそ最も速く回る。だから「開いた道具を AI の速度で育てる」は、迂回路ではなく本流である。そう見れば、IT 業界が AI に与えている扱い、つまり写本工房の隅に印刷機を据えることも説明がつく。前段の担い手が、次の革命を自分の工房の一角に収めようとする、いつもの反応にすぎない。
 
@@ -1866,11 +1866,11 @@ ____
 | SharePoint + GitHub | Drive | Forgejo + Zed | link:/ai-native-software/code/[2-06]
 | Exchange / Outlook | Gmail | Stalwart | link:/ai-native-software/mail/[2-08]
 | Teams / Bookings | Google Meet / Calendar | Jitsi・Cal.com(講座は BigBlueButton) | link:/ai-native-software/meetings/[2-09]
-| Power Pages | Google Sites | Cloudflare Pages | link:/ai-native-software/web/[2-10]
+| Power Pages | Google Sites | Cloudflare Pages | link:/ai-native-software/web/[2-11]
 | Azure SQL | Cloud SQL / BigQuery | PostgreSQL・SQLite | link:/ai-native-software/foundation/[2-03]
 | Power BI / Excel | Looker / Sheets | DuckDB + Polars | link:/ai-native-software/foundation/[2-03]
-| (Power Apps 等) | Apps Script | FastAPI | link:/ai-native-software/fastapi/[2-11]
-| Copilot | Gemini | ローカル LLM(Command A+ 等)+ RAG | link:/ai-native-software/ai/[2-14]
+| (Power Apps 等) | Apps Script | FastAPI | link:/ai-native-software/fastapi/[2-12]
+| Copilot | Gemini | ローカル LLM(Command A+ 等)+ RAG | link:/ai-native-software/ai/[2-16]
 |===
 
 一番上の行が、新しく入った層である。会社の PC を一台 Debian にして AI に渡す。以降に立てるものは、全部その一台の上に乗る。文書の層は aiseed office(`aiseed-dev/officework`)だ。ONLYOFFICE が日本語の様式では使い物にならないという理由と、その解き方は 2-07 が受け持つ。
@@ -1935,12 +1935,12 @@ flowchart TB
 . 文書(2-07)。aiseed office。Office / Docs 形式の書類を自分の側で作る
 . メール(2-08)。Stalwart。通信の中身を手元に置く
 . 会議・予約(2-09)。Jitsi・Cal.com。会議とオンライン講座を自前で
-. Web 公開(2-10)。Cloudflare Pages。ロックインの無いホスト
-. 基幹ロジック(2-11)。FastAPI。Power Apps / Apps Script を読めるコードに戻す
-. 情報の整備(2-13)。OCR・分類・属人知の成文化。AI に載せる前に、載せるに値する情報を作る。整備こそ本体、AI は最後の一手
-. AI(2-14)。ローカル LLM + RAG。データを社外に出さず AI を持つ
+. Web 公開(2-11)。Cloudflare Pages。ロックインの無いホスト
+. 基幹ロジック(2-12)。FastAPI。Power Apps / Apps Script を読めるコードに戻す
+. 情報の整備(2-15)。OCR・分類・属人知の成文化。AI に載せる前に、載せるに値する情報を作る。整備こそ本体、AI は最後の一手
+. AI(2-16)。ローカル LLM + RAG。データを社外に出さず AI を持つ
 
-各ステップは、2-11 の並行稼働で進める。旧(Microsoft / Google)を止めず、横で新を動かし、同じ仕事が回ることを確かめてから、旧を解約する。契約更新の時期に間に合わせる。これも 2-11 どおりだ。一気に乗り換える必要はない。解けた分だけ、束が緩む。
+各ステップは、2-12 の並行稼働で進める。旧(Microsoft / Google)を止めず、横で新を動かし、同じ仕事が回ることを確かめてから、旧を解約する。契約更新の時期に間に合わせる。これも 2-12 どおりだ。一気に乗り換える必要はない。解けた分だけ、束が緩む。
 
 == 運用は、一人 + AI で回る
 
@@ -1954,9 +1954,9 @@ flowchart TB
 
 正直に、重いところも書く。運用負荷が集中するのは二つ、メールと講座(BigBlueButton)だ。メールは配送(DKIM / SPF / 評判)が繊細なので、送信だけ外部リレーに逃がす手もある。講座サーバーは重いので、講座の期間だけ立てて、終わったら畳む。残りは、立てたらほぼ放っておける。そして「残りの運用」、つまりバックアップ・監視・更新・障害を、旧来の運用手順書の常識で書く必要はない。ここでも前提が変わっている。
 
-*守るのは、データと仕様だけだ*。実装と環境は、仕様と OSS から AI がいつでも立て直せる(2-11)。だから複製するのは、再生成できないものだけでいい。データベース・ファイル(権限の xattr ごと)・メール・業務ルールの Markdown を、毎日、別の箱へ。それだけだ。復旧の試験も、儀式ではない。「まっさらな箱に、仕様とバックアップから全部立て直して」と AI に頼めば、それがそのまま復旧試験になる。
+*守るのは、データと仕様だけだ*。実装と環境は、仕様と OSS から AI がいつでも立て直せる(2-12)。だから複製するのは、再生成できないものだけでいい。データベース・ファイル(権限の xattr ごと)・メール・業務ルールの Markdown を、毎日、別の箱へ。それだけだ。復旧の試験も、儀式ではない。「まっさらな箱に、仕様とバックアップから全部立て直して」と AI に頼めば、それがそのまま復旧試験になる。
 
-監視は、読めるログがあれば足りる。監視基盤を別に立てるのは旧常識だ。ログは全部手元にあり、死活確認と通知は AI が書く数十行で済み、ログの異常は AI に読ませる。更新も、意図した操作として行う。版を上げるときはリリースノートを AI に読ませ、2-11 の並行稼働の要領で横で確かめてから切り替える。勝手に上がるのではなく、上げる。秘密(パスワード・鍵)は環境ファイルに分離して、箱の外に出さない。これだけは一行の決まりとして最初に書いておく。
+監視は、読めるログがあれば足りる。監視基盤を別に立てるのは旧常識だ。ログは全部手元にあり、死活確認と通知は AI が書く数十行で済み、ログの異常は AI に読ませる。更新も、意図した操作として行う。版を上げるときはリリースノートを AI に読ませ、2-12 の並行稼働の要領で横で確かめてから切り替える。勝手に上がるのではなく、上げる。秘密(パスワード・鍵)は環境ファイルに分離して、箱の外に出さない。これだけは一行の決まりとして最初に書いておく。
 
 可用性は、冗長化ではなく、再構築の速さで受ける。箱が壊れたら、予備の箱に仕様とバックアップから立て直す。復旧が AI の速度なら、クラスタは要らない。1台に集中してよいのは、箱が使い捨てで、資産(データと仕様)が複製されているからだ。
 
@@ -1971,13 +1971,13 @@ ____
 
 == この土台は、そのまま基幹システムの土台になる
 
-ここまで組んだものは、そのまま基幹システムを書き換える土台になる。2-11「API を作る」で説く並行稼働の書き換えは、実は立つ場所(プラットフォーム)を前提にしていた。その場所が、自立編で全部そろう。
+ここまで組んだものは、そのまま基幹システムを書き換える土台になる。2-12「API を作る」で説く並行稼働の書き換えは、実は立つ場所(プラットフォーム)を前提にしていた。その場所が、自立編で全部そろう。
 
 * 新しい基幹システムが動く DB。PostgreSQL + pgvector(2-03)
-* 実行系。FastAPI / Python + Rust 下層(2-11)
+* 実行系。FastAPI / Python + Rust 下層(2-12)
 * 版管理と CI。Forgejo(2-06)
 * 認証。PocketBase が、新システムのログインを一手に引き受ける(2-05)
-* 業務ロジックの抽出。レガシーのコード・SQL・手順書を、ローカル LLM + RAG(2-14)で読み解いて Markdown に出す。ソースを一歩も社外に出さずに
+* 業務ロジックの抽出。レガシーのコード・SQL・手順書を、ローカル LLM + RAG(2-16)で読み解いて Markdown に出す。ソースを一歩も社外に出さずに
 
 そもそも、これまで基幹システムと Microsoft / Google が共有していたのは、たった二つだけだった。認証(Entra ID / Google ID)と、文書共有(SharePoint / Drive)である。業務システムの世界とオフィスの世界は本来ほとんど別物で、この二つの継ぎ目だけで繋がっていた。
 
@@ -2012,7 +2012,7 @@ flowchart TB
 
 一つ目。スイートの作りは、構造的に「反 AI ネイティブ」だ。中身を Office / Docs の書式に閉じ込め、データをクラウドに幽閉し、ベンダー AI を検証層なしで業務に直結する。これらは偶然ではない。AI が触れる場所、つまり素のテキスト・開いた形式・手元実行・読めるコードから、中身を遠ざける設計である。AI を同僚にしようとするほど、この壁にぶつかる。
 
-二つ目。書き換えのコストが、10 分の 1 になった(2-11)。AI が業務ロジックを抽出し、Python に翻訳し、テストを書く。数年・数億円のプロジェクトが、現場の一人 + AI の数ヶ月になった。
+二つ目。書き換えのコストが、10 分の 1 になった(2-12)。AI が業務ロジックを抽出し、Python に翻訳し、テストを書く。数年・数億円のプロジェクトが、現場の一人 + AI の数ヶ月になった。
 
 古い構造が AI ネイティブと噛み合わず、しかも作り直しが安い。この二つが重なれば、結論は一つだ。残すほうが不自然になる。かつて「動いているものに触るな」が正解だったのは、書き換えが高すぎたからにすぎない。その前提が消えた今、作り直さない理由のほうが、説明を要する。
 
@@ -2020,7 +2020,7 @@ flowchart TB
 
 == この解き方は、公開リポジトリで確かめられる
 
-この解き方を道具一式にしたのが、公開リポジトリ aiseed-migration-kit(https://github.com/aiseed-dev/aiseed-migration-kit[`aiseed-dev/aiseed-migration-kit`])だ。公開 Web の静的化(取り込み → 分類 → Markdown 化 → 生成 → 配信)と、問い合わせの様式方式(Web フォームを作らず、xlsx 様式とメール受付で機械可読に受ける)を、CLI 一式と設計書で持つ。設計書(DESIGN.md)には本章の対応表が、認証・境界・配置の理由づけごと書いてある。読んでから、自分の組織に当てはめられる。文書側の参考実装は kura(2-07)、業務システム側の実例は seminar-kit(2-11)。章で言葉にした設計は、どれもコードで確かめられる。
+この解き方を道具一式にしたのが、公開リポジトリ aiseed-migration-kit(https://github.com/aiseed-dev/aiseed-migration-kit[`aiseed-dev/aiseed-migration-kit`])だ。公開 Web の静的化(取り込み → 分類 → Markdown 化 → 生成 → 配信)と、問い合わせの様式方式(Web フォームを作らず、xlsx 様式とメール受付で機械可読に受ける)を、CLI 一式と設計書で持つ。設計書(DESIGN.md)には本章の対応表が、認証・境界・配置の理由づけごと書いてある。読んでから、自分の組織に当てはめられる。文書側の参考実装は kura(2-07)、業務システム側の実例は seminar-kit(2-12)。章で言葉にした設計は、どれもコードで確かめられる。
 
 == 確かめ方
 
@@ -2062,11 +2062,11 @@ flowchart TB
 * 共有・版管理:SharePoint+GitHub / Drive → Forgejo + Zed(2-06)
 * メール:Exchange / Gmail → Stalwart(2-08)
 * 会議・予約:Teams / Meet → Jitsi・Cal.com(2-09)
-* Web 公開:Power Pages / Sites → Cloudflare Pages(2-10)
+* Web 公開:Power Pages / Sites → Cloudflare Pages(2-11)
 * データ基盤:Azure SQL / Cloud SQL → PostgreSQL・SQLite(2-03)
 * データ分析:Power BI / Looker → DuckDB + Polars(2-03)
-* 基幹ロジック:Power Apps / Apps Script → FastAPI(2-11)
-* AI:Copilot / Gemini → ローカル LLM + RAG(2-14)
+* 基幹ロジック:Power Apps / Apps Script → FastAPI(2-12)
+* AI:Copilot / Gemini → ローカル LLM + RAG(2-16)
 
 一対一で、左を右に置き換える。右の道具は別々の組織が作った別々の開いた道具だから、中が読めて、持ち出せて、一本の方針変更が他に波及しない。これは効率化の話ではない。親シリーズ第11章「1人+AI」を、会社の土台の高さで言い直したものだ。*集中した 1 より、自立した N が強い*。
 
@@ -2079,7 +2079,7 @@ flowchart TB
 * link:/ai-native-software/ai-pc/[2-02: AI に PC を一台渡す ── 自立編を動かす機械]
 * link:/ai-native-software/foundation/[2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars]
 * link:/ai-native-software/documents/[2-07: 文書を取り戻す]
-* link:/ai-native-software/fastapi/[2-11: API を作る ── FastAPI で基幹のロジックを出す]
+* link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
 * link:/insights/enterprise-tax/[構造分析08: 企業ITの税を引く]
 * link:/blog/windows-office-facts/[それでも Windows と Office を使い続けますか?]
 endif::[]
@@ -2128,8 +2128,8 @@ Why does it come apart now? Closedness worked as a rampart only because *the cos
 AI crushes exactly that cost.
 
 * It opens proprietary formats. The Office / Docs formats are handled by aiseed office (2-07), and AI externalizes the embedded macros and logic into Python (the Introduction part; the parent series' Chapter 2)
-* It opens unreadable code. A local LLM reads the legacy core's code, SQL, and procedure manuals and extracts the business knowledge into Markdown (2-11, 2-14)
-* It opens imprisoned knowledge. Paper, images, and tacit know-how become structured information through OCR and dialogue (2-13)
+* It opens unreadable code. A local LLM reads the legacy core's code, SQL, and procedure manuals and extracts the business knowledge into Markdown (2-12, 2-16)
+* It opens imprisoned knowledge. Paper, images, and tacit know-how become structured information through OCR and dialogue (2-15)
 
 The Office suite and the core systems stand on the same structure, a closed bundle hanging from someone else's key, and AI opens both with the same operations. Read, extract, translate. What AI does best is, precisely, the work of unlocking.
 
@@ -2152,7 +2152,7 @@ With closed tools, that path is walled off. Bring your AI along and it still can
 
 Reality is moving in the opposite direction. The vendors are embedding AI not as a tool that opens, but as a tool that re-tightens the bundle. The vendor AI sits on top of the stack, stitches the closed layers together through itself, and removes one more reason to untie. And much of the existing IT profession flows the same way, because proposing vendor AI on top of the familiar closed stack is the path of least friction. The opening move does not come from the inside.
 
-How wrong this move is comes into focus once you correct one analogy. AI is usually likened to the industrial revolution, machines replacing labor. But when the question is where AI belongs, the right precedent is an information revolution, the same kind as movable-type printing. The printing press was not a convenient feature added to the scriptorium. It stood alone as a new infrastructure for handling text, and the existing flow of information reorganized itself on top of it. Nobody set a press in the corner of a copying workshop and called it faster manuscripts. The OS and the office suite are infrastructure, the place where information sits and moves. And AI is another, separate infrastructure, the one that reads, transforms, and produces information. Vendor built-in AI embeds one infrastructure inside another as a feature. It demotes the new infrastructure to an accessory of the old. Separate infrastructure stands separately, reachable from every tool. That is why this part of the series stands AI outside the bundle, not inside it, and last (2-14). That placement is a consequence of this reading.
+How wrong this move is comes into focus once you correct one analogy. AI is usually likened to the industrial revolution, machines replacing labor. But when the question is where AI belongs, the right precedent is an information revolution, the same kind as movable-type printing. The printing press was not a convenient feature added to the scriptorium. It stood alone as a new infrastructure for handling text, and the existing flow of information reorganized itself on top of it. Nobody set a press in the corner of a copying workshop and called it faster manuscripts. The OS and the office suite are infrastructure, the place where information sits and moves. And AI is another, separate infrastructure, the one that reads, transforms, and produces information. Vendor built-in AI embeds one infrastructure inside another as a feature. It demotes the new infrastructure to an accessory of the old. Separate infrastructure stands separately, reachable from every tool. That is why this part of the series stands AI outside the bundle, not inside it, and last (2-16). That placement is a consequence of this reading.
 
 The reading has a sequel. Movable-type printing had a preparatory stage of its own. Paper spread, and manuscripts spent centuries accumulating text. What the press detonated was that accumulation. In the same relation, the decades called the "IT revolution" were the preparatory stage of the AI revolution (the "completion" of 1-01, restated from the AI revolution's side). And the preparatory stage's greatest legacy is not the closed suites. It is OSS, the open commons of code and knowledge. The new infrastructure runs fastest on exactly this open accumulation. Which makes "grow the open tools at AI speed" not a detour but the main current. Seen this way, the treatment the IT industry gives AI, a press set in the corner of the scriptorium, also explains itself. The custodians of the preparatory stage are trying to fit the next revolution into a corner of their own workshop, the usual reflex.
 
@@ -2172,11 +2172,11 @@ Untie the bundle and the layers of Microsoft 365 and Google Workspace land on th
 | SharePoint + GitHub | Drive | Forgejo + Zed | link:/en/ai-native-software/code/[2-06]
 | Exchange / Outlook | Gmail | Stalwart | link:/en/ai-native-software/mail/[2-08]
 | Teams / Bookings | Google Meet / Calendar | Jitsi / Cal.com (BigBlueButton for courses) | link:/en/ai-native-software/meetings/[2-09]
-| Power Pages | Google Sites | Cloudflare Pages | link:/en/ai-native-software/web/[2-10]
+| Power Pages | Google Sites | Cloudflare Pages | link:/en/ai-native-software/web/[2-11]
 | Azure SQL | Cloud SQL / BigQuery | PostgreSQL / SQLite | link:/en/ai-native-software/foundation/[2-03]
 | Power BI / Excel | Looker / Sheets | DuckDB + Polars | link:/en/ai-native-software/foundation/[2-03]
-| (Power Apps etc.) | Apps Script | FastAPI | link:/en/ai-native-software/fastapi/[2-11]
-| Copilot | Gemini | local LLM (Command A+ etc.) + RAG | link:/en/ai-native-software/ai/[2-14]
+| (Power Apps etc.) | Apps Script | FastAPI | link:/en/ai-native-software/fastapi/[2-12]
+| Copilot | Gemini | local LLM (Command A+ etc.) + RAG | link:/en/ai-native-software/ai/[2-16]
 |===
 
 The top row is the layer that is new. You take one company PC, put Debian on it, and hand it to the AI. Everything stood up after that sits on that one machine. With a suite you never had a machine of your own, because everything ran in the vendor's cloud. The document layer is aiseed office (`aiseed-dev/officework`). ONLYOFFICE is unusable for Japanese document forms, and the reason, along with what to do about it, is 2-07's job, not this chapter's.
@@ -2241,12 +2241,12 @@ You do not have to do it all at once. Go in order of what is easiest to pull out
 . Documents (2-07). aiseed office. Produce Office and Docs format documents on your own side
 . Mail (2-08). Stalwart. Keep the contents of your communication on your own disk
 . Meetings and scheduling (2-09). Jitsi, Cal.com. Meetings and online courses on your own side
-. Web publishing (2-10). Cloudflare Pages. Hosting with no lock-in
-. Core logic (2-11). FastAPI. Turn Power Apps and Apps Script back into readable code
-. Prepare the information (2-13). OCR, classification, codifying tacit knowledge. Before you put AI on it, build information worth putting it on. Preparation is the main body, AI the last move
-. AI (2-14). Local LLM + RAG. Hold AI without your data leaving the building
+. Web publishing (2-11). Cloudflare Pages. Hosting with no lock-in
+. Core logic (2-12). FastAPI. Turn Power Apps and Apps Script back into readable code
+. Prepare the information (2-15). OCR, classification, codifying tacit knowledge. Before you put AI on it, build information worth putting it on. Preparation is the main body, AI the last move
+. AI (2-16). Local LLM + RAG. Hold AI without your data leaving the building
 
-Run each step in parallel, the way 2-11 describes. Do not stop the old suite. Run the new alongside it, confirm the same work flows through, and only then cancel the old. Time it to the renewal date. That, too, follows 2-11. You do not need to switch all at once. Each layer you untie loosens the bundle a little more.
+Run each step in parallel, the way 2-12 describes. Do not stop the old suite. Run the new alongside it, confirm the same work flows through, and only then cancel the old. Time it to the renewal date. That, too, follows 2-12. You do not need to switch all at once. Each layer you untie loosens the bundle a little more.
 
 == Operating it — one person + AI
 
@@ -2260,9 +2260,9 @@ Why does one person suffice? Three reasons.
 
 The heavy parts deserve honesty too. Operational load concentrates in two places, mail and the course server (BigBlueButton). Mail delivery (DKIM, SPF, reputation) is delicate, so you can offload just the outbound to an external relay. The course server is heavy, so stand it up only for the duration of a course and tear it down after. The rest you can mostly leave alone once it is up. And the rest of operations, meaning backup, monitoring, updates, and failure, need not be written in the idiom of the old operations manual. The premise has changed here too.
 
-*Protect only the data and the specification.* The implementation and the environment can be rebuilt at any time by AI, from the spec and the OSS (2-11). So replicate only what cannot be regenerated: the databases, the files including their xattr permissions, the mail, and the business rules in Markdown, daily, to another box. That is all. Restore testing is not a ritual either. Ask the AI to rebuild everything on a blank box from the spec and the backup, and that is the restore test.
+*Protect only the data and the specification.* The implementation and the environment can be rebuilt at any time by AI, from the spec and the OSS (2-12). So replicate only what cannot be regenerated: the databases, the files including their xattr permissions, the mail, and the business rules in Markdown, daily, to another box. That is all. Restore testing is not a ritual either. Ask the AI to rebuild everything on a blank box from the spec and the backup, and that is the restore test.
 
-Monitoring needs nothing more than readable logs. Standing up a separate monitoring stack is the old common sense. The logs are all in your hands, liveness checks and notifications are a few dozen lines the AI writes, and log anomalies are something the AI reads. Updates, too, are deliberate acts. When you raise a version, have the AI read the release notes and verify alongside, parallel-run style (2-11), before switching. Things do not get upgraded on you. You upgrade them. Secrets, meaning passwords and keys, live in an environment file and never leave the box. Write that one line of policy first.
+Monitoring needs nothing more than readable logs. Standing up a separate monitoring stack is the old common sense. The logs are all in your hands, liveness checks and notifications are a few dozen lines the AI writes, and log anomalies are something the AI reads. Updates, too, are deliberate acts. When you raise a version, have the AI read the release notes and verify alongside, parallel-run style (2-12), before switching. Things do not get upgraded on you. You upgrade them. Secrets, meaning passwords and keys, live in an environment file and never leave the box. Write that one line of policy first.
 
 Availability is taken by speed of rebuild, not by redundancy. If the box dies, rebuild on a spare from the spec and the backup. When recovery runs at AI speed, you do not need a cluster. Concentrating on one box is fine precisely because the box is disposable and the assets, data and spec, are replicated.
 
@@ -2277,13 +2277,13 @@ This is the very thesis of the parent series' Chapter 11. You do not need a silo
 
 == This foundation is also the foundation of the core systems
 
-What you have assembled becomes, directly, the foundation for rewriting the core systems. The parallel-run rewrite 2-11 describes actually assumed a place to stand, a platform, and that place is fully in place by the end of the Independence part.
+What you have assembled becomes, directly, the foundation for rewriting the core systems. The parallel-run rewrite 2-12 describes actually assumed a place to stand, a platform, and that place is fully in place by the end of the Independence part.
 
 * The DB the new core runs on. PostgreSQL + pgvector (2-03)
-* The runtime. FastAPI / Python with a Rust layer beneath (2-11)
+* The runtime. FastAPI / Python with a Rust layer beneath (2-12)
 * Versioning and CI. Forgejo (2-06)
 * Auth. PocketBase takes on login for the new system, all in one place (2-05)
-* Extracting business logic. Read legacy code, SQL, and procedure manuals with a local LLM + RAG (2-14) and emit Markdown, without the source ever leaving the building
+* Extracting business logic. Read legacy code, SQL, and procedure manuals with a local LLM + RAG (2-16) and emit Markdown, without the source ever leaving the building
 
 In fact, all the core systems and Microsoft or Google ever shared were just two things: auth (Entra ID / Google ID) and document sharing (SharePoint / Drive). The world of business systems and the world of the office are mostly separate by nature, joined only at those two seams.
 
@@ -2318,7 +2318,7 @@ Two reasons interlock.
 
 First, the suites are structurally anti-AI-native. They lock content into Office and Docs formats, imprison data in the cloud, and wire the vendor AI directly into work with no verification layer. None of this is accidental. It is a design that keeps content away from where AI can reach it: plain text, open formats, local execution, readable code. The more you try to make AI a colleague, the harder you hit this wall.
 
-Second, the cost of rewriting has fallen by a factor of ten (2-11). The AI extracts the business logic, translates it to Python, and writes the tests. A multi-year, multi-million project becomes a few months for one person on the ground plus AI.
+Second, the cost of rewriting has fallen by a factor of ten (2-12). The AI extracts the business logic, translates it to Python, and writes the tests. A multi-year, multi-million project becomes a few months for one person on the ground plus AI.
 
 The old structure does not fit AI-native, and rebuilding is cheap. When those two overlap, the conclusion is one. Keeping it becomes the unnatural choice. "Don't touch what's working" was once correct only because rewriting was too expensive. Now that the premise is gone, it is the reason not to rebuild that needs explaining.
 
@@ -2326,7 +2326,7 @@ This is not hostility toward Microsoft or Google. It is the natural turn in whic
 
 == This way of untying can be checked in a public repository
 
-This way of untying the bundle exists as a toolkit: the public repo aiseed-migration-kit (https://github.com/aiseed-dev/aiseed-migration-kit[`aiseed-dev/aiseed-migration-kit`]). It carries the static-site migration pipeline (ingest, classify, Markdown, build, publish) and the form-sheet method for inquiries, where instead of a web form you accept an xlsx sheet by mail and read it as machine-readable data, as a CLI plus a design document. The DESIGN.md holds this chapter's mapping table with its reasoning, covering identity, boundaries, and placement, so you can read it first and then fit it to your own organization. The document-side reference is kura (2-07); the business-system-side examples are seminar-kit and mfg-kit (2-11). Every design put into words in these chapters can be checked in code.
+This way of untying the bundle exists as a toolkit: the public repo aiseed-migration-kit (https://github.com/aiseed-dev/aiseed-migration-kit[`aiseed-dev/aiseed-migration-kit`]). It carries the static-site migration pipeline (ingest, classify, Markdown, build, publish) and the form-sheet method for inquiries, where instead of a web form you accept an xlsx sheet by mail and read it as machine-readable data, as a CLI plus a design document. The DESIGN.md holds this chapter's mapping table with its reasoning, covering identity, boundaries, and placement, so you can read it first and then fit it to your own organization. The document-side reference is kura (2-07); the business-system-side examples are seminar-kit and mfg-kit (2-12). Every design put into words in these chapters can be checked in code.
 
 == How to check you are done
 
@@ -2368,11 +2368,11 @@ Business Microsoft 365 and Google Workspace are SaaS suites that bundle closed l
 * Sharing and versioning: SharePoint + GitHub / Drive to Forgejo + Zed (2-06)
 * Mail: Exchange / Gmail to Stalwart (2-08)
 * Meetings and scheduling: Teams / Meet to Jitsi and Cal.com (2-09)
-* Web publishing: Power Pages / Sites to Cloudflare Pages (2-10)
+* Web publishing: Power Pages / Sites to Cloudflare Pages (2-11)
 * Data layer: Azure SQL / Cloud SQL to PostgreSQL and SQLite (2-03)
 * Data analysis: Power BI / Looker to DuckDB + Polars (2-03)
-* Core logic: Power Apps / Apps Script to FastAPI (2-11)
-* AI: Copilot / Gemini to a local LLM + RAG (2-14)
+* Core logic: Power Apps / Apps Script to FastAPI (2-12)
+* AI: Copilot / Gemini to a local LLM + RAG (2-16)
 
 One to one, replace the left with the right. The tools on the right are separate open tools built by separate organizations, readable inside and portable out, so one vendor's decision cannot ripple into the others. This is not about efficiency. It restates the parent series' Chapter 11 "one + AI" at the height of the company's foundation. *Autonomous N beats centralized 1.*
 
@@ -2385,7 +2385,7 @@ Untie the closed bundle into open tools. Move the key into your own hands. The f
 * link:/en/ai-native-software/ai-pc/[2-02: Give the AI a PC of Its Own — The Machine the Independence Part Runs On]
 * link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars]
 * link:/en/ai-native-software/documents/[2-07: Take Documents Back]
-* link:/en/ai-native-software/fastapi/[2-11: Build an API — Expose Core Logic with FastAPI]
+* link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
 * link:/insights/enterprise-tax/[Structural Analysis 08: Subtracting the Enterprise IT Tax]
 endif::[]
 // ===== article: 07-ai-pc =====
@@ -2887,7 +2887,7 @@ pgloader mssql://user:pass@azure-host/db \
 標準 SQL(`SELECT`・`JOIN`・ウィンドウ関数)はそのまま動く。捨てるのはベンダー方言の
 T-SQL だけだ。ストアドに埋まった業務ロジックは、Claude が抽出して Python / Ruby に
 翻訳する(1-05)。あとは旧 DB と並行稼働で出力を突き合わせ、差分が消えたら旧を止める
-(2-11)。
+(2-12)。
 
 ____
 移行は「全部を書き直す」ことではない。
@@ -3000,7 +3000,7 @@ python -c "import duckdb, polars; print('ok')"
 * link:/ai-native-software/auth/[2-05: 門番を立てる ── PocketBase で認証を一つに]
 * link:/ai-native-software/customer-codev/[1-05: 顧客がAIと協働して開発する時代]
 * link:/ai-native-software/independence/[2-01: Microsoft と Google から自立する ── 全体像と対応表]
-* link:/ai-native-software/fastapi/[2-11: API を作る ── FastAPI で基幹のロジックを出す]
+* link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
 endif::[]
 ifdef::lang-en[]
 = Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars
@@ -3129,7 +3129,7 @@ Standard SQL (`SELECT`, `JOIN`, window functions) runs as-is. You drop only the
 vendor dialect, T-SQL. Business logic buried in stored procedures gets extracted
 by Claude and translated into Python / Ruby (1-05). Then run in parallel with the
 old DB, reconcile the output, and stop the old one when the difference is gone
-(2-11).
+(2-12).
 
 ____
 Migration is not "rewrite everything."
@@ -3246,7 +3246,7 @@ as the shared gatekeeper across the apps.
 * link:/en/ai-native-software/auth/[2-05: Stand Up the Gate — One Login with PocketBase]
 * link:/en/ai-native-software/customer-codev/[1-05: Customers Co-Develop with AI]
 * link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map]
-* link:/en/ai-native-software/fastapi/[2-11: Build an API — Expose Core Logic with FastAPI]
+* link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
 endif::[]
 // ===== article: 09-python =====
 ---
@@ -3547,7 +3547,7 @@ SQLite に降ろす。基幹とは、API か JSON / Parquet のエクスポー�
 何度でも回せる。Polars と DuckDB が、大量のデータを秒で返す(2-03)。
 
 *人のための入出力を手元に降ろすことは、生産性の話であると同時に、基幹を守る負荷分離
-でもある。* この分離があるから、link:/ai-native-software/fastapi/[2-11: API を作る ── FastAPI で基幹のロジックを出す]
+でもある。* この分離があるから、link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
 の基幹書き換えは、記録元だけを相手にする小さな仕事になる。
 
 === 手元に降りてくるもの
@@ -3746,7 +3746,7 @@ python -c "import polars, altair; print('ok')"
 * link:/ai-native-software/foundation/[2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars]
 * link:/ai-native-software/auth/[2-05: 門番を立てる ── PocketBase で認証を一つに]
 * link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 原稿は adoc、様式は aiseed office]
-* link:/ai-native-software/fastapi/[2-11: API を作る ── FastAPI で基幹のロジックを出す]
+* link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
 * link:/ai-native-software/customer-codev/[1-05: 顧客がAIと協働して開発する時代]
 endif::[]
 ifdef::lang-en[]
@@ -4047,7 +4047,7 @@ own machine. Polars and DuckDB return large data in seconds (2-03).
 
 *Bringing human-facing I/O down to your own machine is a productivity move and, at
 the same time, a load split that protects the core.* Because of that split, the
-core rewrite in link:/en/ai-native-software/fastapi/[2-11: Build an API — Expose Core Logic with FastAPI]
+core rewrite in link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
 becomes a small job that deals only with the system of record.
 
 === What comes down to your own machine
@@ -4256,7 +4256,7 @@ one place, so every app comes through the same entrance.
 * link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars]
 * link:/en/ai-native-software/auth/[2-05: Stand Up the Gate — One Login with PocketBase]
 * link:/en/ai-native-software/documents/[2-07: Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office]
-* link:/en/ai-native-software/fastapi/[2-11: Build an API — Expose Core Logic with FastAPI]
+* link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
 * link:/en/ai-native-software/customer-codev/[1-05: Customers Co-Develop with AI]
 endif::[]
 
@@ -4394,7 +4394,7 @@ Microsoft Entra ID は、利用者数で月額が積み上がる。門番を自�
 . 利用者を順に PocketBase の `users` へ移す(CSV で一括登録できる)
 . 全員が移ったら、OAuth2 の Microsoft を外す ── Entra への依存が切れる
 
-止めるのは一度ではない。並行で動かし、移り終えてから古い門を閉じる(2-11)。
+止めるのは一度ではない。並行で動かし、移り終えてから古い門を閉じる(2-12)。
 
 == 出るのも、一点だ
 
@@ -4470,7 +4470,7 @@ docker compose stop auth                       # 止めても業務アプリが�
 * link:/ai-native-software/code/[2-06: コードを手元に ── Forgejo と Zed]
 * https://github.com/aiseed-dev/workspace[参考実装 kura ── PocketBase を門番に使う自前ワークスペース]
 * link:/ai-native-software/independence/[2-01: Microsoft と Google から自立する ── 全体像と対応表]
-* link:/ai-native-software/fastapi/[2-11: API を作る ── FastAPI で基幹のロジックを出す]
+* link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
 endif::[]
 ifdef::lang-en[]
 = Stand Up the Gate — One Login with PocketBase
@@ -4601,7 +4601,7 @@ your own side and step off that meter. The move can be gradual.
 . Once everyone is across, remove Microsoft from OAuth2 — the Entra dependency is cut
 
 You don't cut over in one stroke. Run both in parallel, and close the old gate
-only after the move is done (2-11).
+only after the move is done (2-12).
 
 == Leaving is one point too
 
@@ -4681,7 +4681,7 @@ side.
 * link:/en/ai-native-software/code/[2-06: Bring Code In-House — Forgejo and Zed]
 * https://github.com/aiseed-dev/workspace[Reference implementation kura — a self-hosted workspace using PocketBase as the gate]
 * link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map]
-* link:/en/ai-native-software/fastapi/[2-11: Build an API — Expose Core Logic with FastAPI]
+* link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
 endif::[]
 // ===== article: 11-code =====
 ---
@@ -4795,7 +4795,7 @@ git.example.com { reverse_proxy code:3000 }
 ```
 
 一度に切り替えなくてよい。GitHub をミラーにしたまま並行で動かし、慣れたら本番を
-Forgejo に寄せる(2-11)。
+Forgejo に寄せる(2-12)。
 
 ____
 コードは、事業の中身そのものだ。
@@ -4961,7 +4961,7 @@ git.example.com { reverse_proxy code:3000 }
 ```
 
 There is no need to switch in one stroke. Keep GitHub as a mirror and run in
-parallel, then move production onto Forgejo once it feels natural (2-11).
+parallel, then move production onto Forgejo once it feels natural (2-12).
 
 ____
 Code is the substance of the business itself.
@@ -5276,7 +5276,7 @@ rclone copy onedrive:Documents ./inbox --progress
 # inbox/ の各ファイルの権限を記録する(構造化ストアへ、スクリプト一回)
 ```
 
-移行は段階的でよい。並行で動かし、移り終えてから旧ストレージを解約する(2-11)。
+移行は段階的でよい。並行で動かし、移り終えてから旧ストレージを解約する(2-12)。
 
 これから書く物は、最初から `.adoc` で書く。これまでの物を全部変換する必要は
 ない。*新しい原稿から文字にしていけば、置き場は時間とともに入れ替わる*。
@@ -5632,7 +5632,7 @@ rclone copy onedrive:Documents ./inbox --progress
 ```
 
 Migrate in stages. Run both sides in parallel, and cancel the old storage only
-after the move is finished (2-11).
+after the move is finished (2-12).
 
 Write everything new as `.adoc` from the start. You do not have to convert the
 back catalog. *Start with new manuscripts as text, and the storage turns over on
@@ -5834,7 +5834,7 @@ imapsync --host1 outlook.office365.com --user1 you@old \
 ```
 
 一斉に切り替えなくてよい。しばらく両方で受け、転送をかけて並行運用する。
-落ち着いてから MX を Stalwart に向ける(2-11)。
+落ち着いてから MX を Stalwart に向ける(2-12)。
 
 移行の手順は Gmail でも同じだ。imapsync は IMAP 同士をつなぐ道具であって、
 相手が Microsoft でも Google でも変わらない。
@@ -6000,7 +6000,7 @@ imapsync --host1 outlook.office365.com --user1 you@old \
 
 There is no need to cut over at once. Receive on both for a while, set
 forwarding, and run in parallel. Point the MX at Stalwart once things have
-settled (2-11).
+settled (2-12).
 
 Migration is the same from Gmail. imapsync connects IMAP to IMAP, and it does
 not care whether the far side is Microsoft or Google.
@@ -6170,7 +6170,7 @@ book.example.com { reverse_proxy booking:3000 }
 Teams や Google カレンダーからの移行に、プロジェクトは要らない。会議のリンク
 は使い捨てで、移すものが無い。カレンダーは*未来の予定だけ*を .ics で書き出して
 Radicale に読み込む。一度きりの操作だ。過去の録画やチャットに残す価値のある
-ものは、2-13 の情報の整備で棚卸しして、ファイルとして 2-07 の置き場に入れる。
+ものは、2-15 の情報の整備で棚卸しして、ファイルとして 2-07 の置き場に入れる。
 
 == 確かめ方
 
@@ -6312,7 +6312,7 @@ Migrating off Teams or Google Calendar needs no project. Meeting links are
 disposable, so there is nothing to carry over. For the calendar, export *future
 events only* as .ics and load them into Radicale. It is a one-time operation.
 Whatever in the old recordings and chats is worth keeping gets triaged in the
-2-13 information-preparation pass and filed into the 2-07 store.
+2-15 information-preparation pass and filed into the 2-07 store.
 
 == How to check you are done
 
@@ -6374,10 +6374,10 @@ place. Next, we build the website that shows these to the outside.
 * link:/en/ai-native-software/mail/[2-08: Mail on Your Own Side — Stalwart and Thunderbird]
 * link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map]
 endif::[]
-// ===== article: 15-web =====
+// ===== article: 16-web =====
 ---
 slug: web
-number: 10
+number: 11
 part: 2
 title.ja: Web を公開する ── Cloudflare Pages
 title.en: Publish the Web — Cloudflare Pages (a WordPress Replacement)
@@ -6386,7 +6386,7 @@ subtitle.en: Drop dynamic WordPress and publish a static site with no server —
 description.ja: 親シリーズ第6章で AI と作った静的サイトを、自分の側から公開する。動的な WordPress をやめ、焼いた HTML を Cloudflare Pages に置く ── サーバは持たない。CDN と自動 HTTPS は Cloudflare に任せ、ソースとビルドは自分の手元に残す。肝は「ビルド → 確認 → デプロイ」を分けること。確認した HTML と本番に上げる HTML を同じにする。内部の道具は門番の内側に残す ── 窓は借り、金庫は自分に。人が持つのは、ドメインと API トークン、本番へ上げる判断の三つだ。
 description.en: Publish, from your own side, the static site you built with AI in the parent series' Chapter 6. Drop dynamic WordPress and put the baked HTML on Cloudflare Pages — hold no server. Leave the CDN and automatic HTTPS to Cloudflare; keep the source and build in your own hands. The crux is to separate build, verify, and deploy, keeping what you verified identical to what goes live. Internal tools stay behind the gate — borrow the window, hold the vault. The human holds the domain, the API token, and the decision to go to production.
 date: 2026.07.14
-label: Independence 10
+label: Independence 11
 title_html.ja: WordPress をやめ、<br><span class="accent">サーバ無し</span>で公開する。
 title_html.en: Drop WordPress;<br>publish with <span class="accent">no server</span>.
 ---
@@ -6667,10 +6667,10 @@ it.
 * link:/en/ai-native-software/auth/[2-05: Stand Up the Gate — One Login with PocketBase]
 * link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map]
 endif::[]
-// ===== article: 16-fastapi =====
+// ===== article: 17-fastapi =====
 ---
 slug: fastapi
-number: 11
+number: 12
 part: 2
 title.ja: API を作る ── FastAPI で基幹のロジックを出す
 title.en: Build an API — Expose Core Logic with FastAPI
@@ -6679,7 +6679,7 @@ subtitle.en: Rewrite the core system via parallel operation and gather your own 
 description.ja: 「壊すな・触るな」はもう古い。AI で基幹システムの書き換えコストは 10 分の 1 になった。新しいシステムを FastAPI で作り、旧システムと並行で動かし、出力を実測で突き合わせる。差分が消えたら旧を止める。業務知識は一気に Markdown に出し、現場がテストを書き、委託は止める。書き換えた基幹ロジックは、2-03 の PostgreSQL を読み書きし、2-05 の門番のトークンで本人確認する一本の API として着地する。参考実装は kura。
 description.en: 'Don't break it, don't touch it' is old advice. AI has cut the cost of rewriting a core system by a factor of ten. Build the new system in FastAPI, run it beside the old one, and compare the outputs against reality. When the diffs vanish, stop the old. Push business knowledge out into Markdown all at once, let the floor write the tests, and stop outsourcing. The rewritten core logic lands as one API that reads and writes the 2-03 PostgreSQL and verifies identity with the 2-05 gate's token. The reference implementation is kura.
 date: 2026.07.15
-label: Independence 11
+label: Independence 12
 title_html.ja: 基幹を<span class="accent">並行稼働</span>で書き換え、<br>ロジックを一箇所の API に。
 title_html.en: Rewrite the core in <span class="accent">parallel</span>,<br>gather your logic into one API.
 ---
@@ -6688,7 +6688,7 @@ ifdef::lang-ja[]
 
 自社固有のロジックは、旧システムを止めずに書き換えられる。
 
-2-03 から 2-10 までで、汎用の道具は揃った ── 土台、門番、文書、コード、メール、
+2-03 から 2-11 までで、汎用の道具は揃った ── 土台、門番、文書、コード、メール、
 会議、公開 Web。残っているのは自社固有のロジック、つまり基幹システムの中身だ。
 その基幹はたいてい古い。Java や C# で書かれ、Oracle や SQL Server に乗り、
 誰も全部は理解していない。これを並行稼働で書き換え、自社固有のロジックを
@@ -6921,7 +6921,7 @@ PostgreSQL への移行が、抜ける最後のステップだ。そして、ラ
 
 新システムの論理層 ── つまり書き換えた基幹ロジック ── は、FastAPI で一箇所の API
 として出す。なぜ API にするのか。基幹ロジック(在庫・受発注・料金計算…)を、画面
-ごとに書き散らさず、一箇所にまとめるためだ。公開 Web(2-10)のフォームも、社内アプリ
+ごとに書き散らさず、一箇所にまとめるためだ。公開 Web(2-11)のフォームも、社内アプリ
 も、同じ API を呼ぶ ── 重複が消える。Python(FastAPI)なら AI が速く書け、型と自動
 ドキュメント(OpenAPI)が付く。
 
@@ -6944,7 +6944,7 @@ def orders(user=Depends(verify_token)):       # 2-05 の門番が誰かを確か
 裏で Python が捌き、結果だけ返す。
 
 公開リポジトリ kura(`aiseed-dev/workspace`)が、この構成だ ── PocketBase 認証と
-FastAPI と Flet フロント。コードは 2-06 の Forgejo に置き、2-10 の公開 Web や社内
+FastAPI と Flet フロント。コードは 2-06 の Forgejo に置き、2-11 の公開 Web や社内
 アプリから呼ぶ。並行稼働で書き換えた基幹ロジックが、最後にこの一本の API として着地
 する。
 
@@ -7092,7 +7092,7 @@ Python の宣言的 UI。kura のフロントも Flet)でいい。問題は道�
 帳票を組む ── いわゆる神エクセル(Excel 方眼紙)だ。IT 業界はこれを「機械に読めない
 データの最悪例」と嘲ってきた。だが、その「読めない」は嘘だ。神エクセルは、Python が
 普通に読む ── 中身は最初から構造化されたファイルの中にあり、数十行のスクリプトで枠から
-取り出して表に起こせる(そのスクリプトを書くのが、いまは AI の仕事だ。2-13 の整備が、
+取り出して表に起こせる(そのスクリプトを書くのが、いまは AI の仕事だ。2-15 の整備が、
 まさにこの作業だ)。では、なぜあれほど嘲られたのか。方眼の本当の効能を見れば分かる。
 *方眼に合わせる限り、素人でも組めて、素人でも直せる* ── 枠を一つ動かす、列を一本
 足す、それで帳票が変わる。現場が自分で作って自分で直せる道具は、開発の発注を要らなく
@@ -7225,7 +7225,7 @@ curl -s https://api.example.com/docs  # FastAPI の自動ドキュメントが�
 * link:/ai-native-software/foundation/[2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars]
 * link:/ai-native-software/auth/[2-05: 門番を立てる ── PocketBase で認証を一つに]
 * link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 原稿は adoc、様式は aiseed office]
-* link:/ai-native-software/structure-knowledge/[2-13: 社内情報を整える ── 整備こそ本体、AI は最後の一手]
+* link:/ai-native-software/structure-knowledge/[2-15: 社内情報を整える ── 整備こそ本体、AI は最後の一手]
 * https://github.com/aiseed-dev/workspace[参考実装 kura ── 自前の Microsoft 365 / Google Workspace 代替]
 endif::[]
 ifdef::lang-en[]
@@ -7233,7 +7233,7 @@ ifdef::lang-en[]
 
 Your own business logic can be rewritten without ever stopping the old system.
 
-Chapters 2-03 through 2-10 covered the generic tools — the foundation, the gate,
+Chapters 2-03 through 2-11 covered the generic tools — the foundation, the gate,
 documents, code, mail, meetings, the public web. What remains is your own
 business logic: the substance of the core systems. That core is usually old.
 Written in Java or C#, riding on Oracle or SQL Server, understood in full by no
@@ -7503,7 +7503,7 @@ Once the new runs, it becomes obvious to everyone that the old is not needed.
 The new system's logic layer — the rewritten core logic — is exposed with
 FastAPI as one API. Why an API? To gather the core logic (inventory, ordering,
 pricing, and the rest) in one place instead of scattering it across screens. The
-form on the public web (2-10) and the in-house apps call the same API, and the
+form on the public web (2-11) and the in-house apps call the same API, and the
 duplication disappears. In Python, with FastAPI, AI writes it fast, and types and
 automatic documentation (OpenAPI) come with it.
 
@@ -7530,7 +7530,7 @@ API, which returns only the result.
 
 The public repository kura (`aiseed-dev/workspace`) has this structure —
 PocketBase auth, FastAPI, and a Flet front end. The code lives in the Forgejo of
-2-06 and is called from the public web of 2-10 and from the in-house apps. The
+2-06 and is called from the public web of 2-11 and from the in-house apps. The
 core logic rewritten by parallel operation lands, at the end, as this single API.
 
 == Example: replace the monthly closing batch in three months
@@ -7713,7 +7713,7 @@ worst case of data a machine cannot read. But that "cannot read" is a lie.
 Kami-Excel is read by plain Python — the content sits inside a structured file
 from the start, and a few dozen lines of script lift it out of the boxes and into
 a table (writing that script is now the AI's job, and the preparation work of
-2-13 is exactly this). Then why was it mocked so hard? Look at what the graph
+2-15 is exactly this). Then why was it mocked so hard? Look at what the graph
 paper actually does. *As long as everything snaps to the squares, an amateur can
 build it and an amateur can fix it.* Move one box, add one column, and the form
 changes. A tool the floor can build and fix for itself removes the need to order
@@ -7880,13 +7880,13 @@ laying an AI on it, we build information worth laying it on.
 * link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars]
 * link:/en/ai-native-software/auth/[2-05: Stand Up the Gate — One Login with PocketBase]
 * link:/en/ai-native-software/documents/[2-07: Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office]
-* link:/en/ai-native-software/structure-knowledge/[2-13: Put Your Information in Order — The Preparation Is the Work, AI Is the Last Step]
+* link:/en/ai-native-software/structure-knowledge/[2-15: Put Your Information in Order — The Preparation Is the Work, AI Is the Last Step]
 * https://github.com/aiseed-dev/workspace[Reference implementation kura — a self-hosted Microsoft 365 / Google Workspace alternative]
 endif::[]
-// ===== article: 17-design =====
+// ===== article: 18-design =====
 ---
 slug: design
-number: 12
+number: 13
 part: 2
 title.ja: 図と資料を作る ── Mermaid・Marp・そのほかの道具
 title.en: Make Diagrams and Documents — Mermaid, Marp, and the Other Tools
@@ -7895,7 +7895,7 @@ subtitle.en: Diagrams, slides, even 3D — all produced from text and code
 description.ja: 図も、スライドも、配布する資料も、テキストとコードから出す。構造図は Mermaid、画面の下書きは Claude デザイン、スライドは Markdown と Marp。ここまでが日常の道具で、その先に D3.js、Blender(bpy)、ComfyUI、CadQuery / Build123d / OpenSCAD / FreeCAD がある。どれもスクリプトやコードで動かせるから、AI に書かせて、出てきたものを見て、調整する。商品写真 100 枚の白背景化、工場のセンサ筐体、観光プロモの動画素材、地方紙の人口データの図 ── これまで制作会社に発注していた仕事が、手元で回る。業務資料は中身とデザインを分けて持ち、一箇所を直せば、すべての出力に反映される。
 description.en: Diagrams, slides, and the documents you hand out all come out of text and code. Structural diagrams in Mermaid, screen drafts in Claude Design, slides in Markdown with Marp. Those are the everyday tools; beyond them sit D3.js, Blender (bpy), ComfyUI, and CadQuery / Build123d / OpenSCAD / FreeCAD. Every one of them is driven by a script or code, so you have the AI write it, look at what comes back, and adjust. White backgrounds for 100 product photos, a sensor housing for a factory line, video assets for a tourism campaign, a population chart for a local paper — work that used to go out to a production house now runs in your own hands. Business documents keep content and design apart, so fixing one place updates every output.
 date: 2026.09.21
-label: Independence 12
+label: Independence 13
 title_html.ja: <span class="accent">図</span>も資料も、<br>テキストから作る。
 title_html.en: <span class="accent">Diagrams</span> and documents,<br>made from text.
 ---
@@ -7904,7 +7904,7 @@ ifdef::lang-ja[]
 
 図も、スライドも、配布する資料も、テキストとコードから出す。
 
-link:/ai-native-software/fastapi/[2-11: API を作る ── FastAPI で基幹のロジックを出す]で、
+link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]で、
 画面を見て名指しするための語彙(近接・整列・反復・対比)と、デザインのルールを 1 枚に
 固定するやり方を手に入れた。同じ手が、画面の外側にも効く。
 
@@ -7988,7 +7988,7 @@ Claude: (HTML+CSS が返る)
 Claude: (修正版が返る)
 ```
 
-Figma より早く、出てくるものがコードなので、そのまま開発に渡せる。2-11 で作ったルールの 1 枚
+Figma より早く、出てくるものがコードなので、そのまま開発に渡せる。2-12 で作ったルールの 1 枚
 (12 列グリッド、余白は 8 の倍数、色 3 つ、文字サイズの段階)を一緒に渡せば、どの画面にも
 同じルールが当たる。
 
@@ -8232,7 +8232,7 @@ link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 原稿は
 * スライドのレイアウトを考える必要は無い。「この内容を Marp で 5 枚に」と頼む
 
 人がやるのは、意図を言葉にする、出てきたものを判断する、直す場所を名指しする ── この三つである。
-判断の語彙は 2-11 の四原則がそのまま使える。図なら、関係のある要素を近くに置く(近接)、矢印の向きを
+判断の語彙は 2-12 の四原則がそのまま使える。図なら、関係のある要素を近くに置く(近接)、矢印の向きを
 揃える(整列)、同じ役割のノードに同じ形を使う(反復)、幹の流れを太く見せる(対比)。スライドも同じだ。
 
 ____
@@ -8265,7 +8265,7 @@ Mermaid、Markdown、SVG、HTML+CSS は、テキストである。20 年前の�
 *人が渡す値*
 
 * 図で伝えたい構造(何と何が、どの向きでつながるか)
-* 画面の下書きに載せる項目と、2-11 で作ったデザインのルールの 1 枚(12 列グリッド、余白の刻み、色 3 つ)
+* 画面の下書きに載せる項目と、2-12 で作ったデザインのルールの 1 枚(12 列グリッド、余白の刻み、色 3 つ)
 * スライドの枚数と、1 枚に置く見出し
 * CAD に渡す寸法(実物を測った値)と、材質・公差の前提
 * 生成した画像や動画を、どこまで公開してよいかの範囲
@@ -8303,7 +8303,7 @@ AI を介して手元に降りる専門領域:
 * 機械設計と 3D プリント → *CadQuery / Build123d / OpenSCAD / FreeCAD*
 
 共通する原理は一つ。GUI を覚えるのではなく、AI にコードを書かせて、結果を見て、調整する。
-判断の語彙は 2-11 の四原則、原稿の置き場は 2-07 ── どちらもこの章にそのまま効く。
+判断の語彙は 2-12 の四原則、原稿の置き場は 2-07 ── どちらもこの章にそのまま効く。
 
 次章では、社内の情報を AI が読める形に整える。整備そのものが本体で、AI は最後の一手になる。
 
@@ -8311,10 +8311,10 @@ AI を介して手元に降りる専門領域:
 
 == 関連記事
 
-* link:/ai-native-software/fastapi/[2-11: API を作る ── FastAPI で基幹のロジックを出す]
+* link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
 * link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 原稿は adoc、様式は aiseed office]
-* link:/ai-native-software/web/[2-10: Web を公開する ── Cloudflare Pages]
-* link:/ai-native-software/structure-knowledge/[2-13: 社内情報を整える ── 整備こそ本体、AI は最後の一手]
+* link:/ai-native-software/web/[2-11: Web を公開する ── Cloudflare Pages]
+* link:/ai-native-software/structure-knowledge/[2-15: 社内情報を整える ── 整備こそ本体、AI は最後の一手]
 * link:/ai-native-software/independence/[2-01: Microsoft と Google から自立する ── 全体像と対応表]
 endif::[]
 ifdef::lang-en[]
@@ -8322,7 +8322,7 @@ ifdef::lang-en[]
 
 Diagrams, slides, and the documents you hand out all come out of text and code.
 
-link:/en/ai-native-software/fastapi/[2-11: Build an API — Expose Core Logic with FastAPI]
+link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
 gave you the vocabulary for looking at a screen and naming what is off (proximity,
 alignment, repetition, contrast), and the habit of fixing the design rules onto a single
 page. The same move works outside the screen as well.
@@ -8410,7 +8410,7 @@ Claude: (revised version returns)
 ```
 
 It is faster than Figma, and what comes back is code, so it can go straight to development.
-Hand it the rules page from 2-11 (12-column grid, spacing in multiples of 8, three colors,
+Hand it the rules page from 2-12 (12-column grid, spacing in multiples of 8, three colors,
 the type-size steps) and every screen gets the same rules applied.
 
 In business, this is how it is used.
@@ -8666,7 +8666,7 @@ What all these tools share: there is almost no point where a person has to draw.
 * No need to work out slide layout. Ask for "this content as five Marp slides"
 
 What the human does is three things: put the intent into words, judge what comes back, and
-name the place to fix. The vocabulary for judging is the four principles from 2-11, used as
+name the place to fix. The vocabulary for judging is the four principles from 2-12, used as
 they are. In a diagram: put related elements near each other (proximity), keep the arrows
 running the same way (alignment), use the same shape for nodes with the same role
 (repetition), make the main path heavier than the rest (contrast). Slides work the same way.
@@ -8703,7 +8703,7 @@ This chapter is done when these five hold.
 *Values the human supplies*
 
 * The structure the diagram must convey (what connects to what, and in which direction)
-* The items on the screen draft, and the rules page from 2-11 (12-column grid, spacing steps, three colors)
+* The items on the screen draft, and the rules page from 2-12 (12-column grid, spacing steps, three colors)
 * The number of slides, and the heading on each one
 * The dimensions handed to CAD (measured from the real object), with the material and tolerance assumptions
 * How far the generated images and video may be published
@@ -8741,7 +8741,7 @@ Specialist territory that AI brings within reach:
 * Mechanical design and 3D printing → *CadQuery / Build123d / OpenSCAD / FreeCAD*
 
 The principle is one. Instead of learning the GUI, have the AI write the code, look at the
-result, and adjust. The vocabulary for judging is the four principles from 2-11; the place
+result, and adjust. The vocabulary for judging is the four principles from 2-12; the place
 the manuscript lives is 2-07 — both apply here unchanged.
 
 The next chapter makes in-house knowledge legible to an AI. The preparation is the main body
@@ -8751,17 +8751,17 @@ of the work, and the AI is the last move.
 
 == Related articles
 
-* link:/en/ai-native-software/fastapi/[2-11: Build an API — Expose Core Logic with FastAPI]
+* link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
 * link:/en/ai-native-software/documents/[2-07: Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office]
-* link:/en/ai-native-software/web/[2-10: Publish the Web — Cloudflare Pages (a WordPress Replacement)]
-* link:/en/ai-native-software/structure-knowledge/[2-13: Make Your Knowledge Legible — Preparation Is the Main Body, AI the Last Move]
+* link:/en/ai-native-software/web/[2-11: Publish the Web — Cloudflare Pages (a WordPress Replacement)]
+* link:/en/ai-native-software/structure-knowledge/[2-15: Make Your Knowledge Legible — Preparation Is the Main Body, AI the Last Move]
 * link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map]
 endif::[]
 
-// ===== article: 18-structure-knowledge =====
+// ===== article: 20-structure-knowledge =====
 ---
 slug: structure-knowledge
-number: 13
+number: 15
 part: 2
 title.ja: 社内情報を整える ── 整備こそ本体、AI は最後の一手
 title.en: Make Your Knowledge Legible — Preparation Is the Main Body, AI the Last Move
@@ -8770,7 +8770,7 @@ subtitle.en: OCR, classification, codifying tacit knowledge — move scattered, 
 description.ja: AI を載せる前に、載せるに値する情報を作る。散らばったファイル、紙・スキャン PDF、人の頭の中だけにある属人知 ── これを OCR・分類・成文化で、書かれた・構造化された状態へ移す。整備こそ本体で、AI は最後の一手だ。何を残し、どう構造化するかは人にしかできない判断であり、AI を載せなくても属人化の解消として回収できる no-regret 投資。整えた情報を 2-07 のファイルと 2-03 の pgvector に置き、次章で RAG に載せる。
 description.en: Before you put AI on top, build information worth putting it on. Scattered files, paper and scanned PDFs, tacit knowledge that lives only in someone's head — move them into a written, structured state with OCR, classification, and codification. Preparation is the main body; AI is the last move. What to keep and how to structure it is a judgment only people can make, and it pays off as the end of personnel lock-in even if you never put AI on it — a no-regret investment. Put the prepared information into 2-07's files and 2-03's pgvector, and the next chapter mounts RAG on it.
 date: 2026.07.16
-label: Independence 13
+label: Independence 15
 title_html.ja: 整備こそ<span class="accent">本体</span>、<br>AI は最後の一手。
 title_html.en: Preparation is the <span class="accent">main body</span>,<br>AI the last move.
 ---
@@ -8813,7 +8813,7 @@ ____
 
 * 定型・活字なら、*Tesseract* などの OSS OCR でテキスト化できる。
 * レイアウトが複雑な帳票・図表混じりは、オープンウェイトのビジョンモデル
-  (2-14 で立てるローカル AI)に読ませ、Markdown に起こす。
+  (2-16 で立てるローカル AI)に読ませ、Markdown に起こす。
 
 ```bash
 # 例: スキャン PDF をテキスト層つきに(OSS OCR)
@@ -8833,7 +8833,7 @@ ocrmypdf --language jpn input.pdf output.pdf   # 検索可能な PDF + テキス
   AI に下書きさせ、人が直す。
 
 ここで AI は強力な助手になる。「この 200 ファイルを種類ごとに分類し、要約を
-付けて」── 分類も要約も、ローカルのモデル(2-14)で回せる。だが、*分類の軸を
+付けて」── 分類も要約も、ローカルのモデル(2-16)で回せる。だが、*分類の軸を
 決めるのは人*だ。業務にとって何が「同じ種類」かは、業務を知る者にしか分から
 ない。
 
@@ -8843,7 +8843,7 @@ ocrmypdf --language jpn input.pdf output.pdf   # 検索可能な PDF + テキス
 仕様の曖昧な部分、例外処理、なぜそうなっているかの理由。これが消えると、
 システムは「動くが、誰も分からない」状態になる(3-05 の人的依存)。
 
-やり方は、2-11 で基幹ロジックに使ったのと同じだ ── 現場にヒアリングし、AI に
+やり方は、2-12 で基幹ロジックに使ったのと同じだ ── 現場にヒアリングし、AI に
 下書きさせ、現場が確認する。
 
 * 担当者に聞く・録る → AI が文字起こしと構造化の下書き
@@ -8856,7 +8856,7 @@ ocrmypdf --language jpn input.pdf output.pdf   # 検索可能な PDF + テキス
 == 整った情報の上に、AI を載せる
 
 整った情報が揃って、はじめて次章だ。書かれた・構造化された文書を、2-03 の
-pgvector に埋め込み、RAG に載せる(2-14)。
+pgvector に埋め込み、RAG に載せる(2-16)。
 
 整備を飛ばして RAG を組むと、出典は曖昧で、答えは当てにならない。整備を済ませ
 てあれば、自社の実データに基づいて、出典つきで答える AI が、素直に立つ。
@@ -8895,7 +8895,7 @@ ____
 
 == 確かめた版と日付
 
-* Tesseract、`ocrmypdf`、オープンウェイトのビジョンモデル(2-14 のローカル AI)、pgvector(2-03)
+* Tesseract、`ocrmypdf`、オープンウェイトのビジョンモデル(2-16 のローカル AI)、pgvector(2-03)
 * 手順を書いたのは 2026-07-16
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
@@ -8905,8 +8905,8 @@ AI の前に、情報を整える。
 
 * *OCR* ── 紙・スキャンを、Tesseract やビジョンモデルで Markdown に
 * *分類・構造化* ── 置き場を一つに、メタデータと Markdown で揃える(軸は人が決める)
-* *属人知の成文化* ── ヒアリング → AI 下書き → 現場が確認(2-11 と同じ)
-* *AI は最後の一手* ── 整えた情報を pgvector に載せ、RAG は次章で(2-14)
+* *属人知の成文化* ── ヒアリング → AI 下書き → 現場が確認(2-12 と同じ)
+* *AI は最後の一手* ── 整えた情報を pgvector に載せ、RAG は次章で(2-16)
 
 整備は、AI を載せなくても回収できる ── 属人化が解け、引き継ぎが楽になる。整備
 こそ本体で、賢いモデルより、整った情報が効く。
@@ -8918,8 +8918,8 @@ AI の前に、情報を整える。
 == 関連記事
 
 * link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 原稿は adoc、様式は aiseed office]
-* link:/ai-native-software/fastapi/[2-11: API を作る ── FastAPI で基幹のロジックを出す]
-* link:/ai-native-software/ai/[2-14: 自前の AI を据える ── LLM と RAG]
+* link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
+* link:/ai-native-software/ai/[2-16: 自前の AI を据える ── LLM と RAG]
 * link:/ai-native-software/sier-uneconomic/[3-04: SIer委託モデルの構造的不経済]
 endif::[]
 ifdef::lang-en[]
@@ -8964,7 +8964,7 @@ PDFs, handwriting.
 
 * For fixed-form, typeset text, *Tesseract* and other OSS OCR turn it into text.
 * For complex forms and figure-laden layouts, have an open-weight vision model
-  (the local AI you stand up in 2-14) read it and render it to Markdown.
+  (the local AI you stand up in 2-16) read it and render it to Markdown.
 
 ```bash
 # example: give a scanned PDF a text layer (OSS OCR)
@@ -8987,7 +8987,7 @@ Next, align the scattered files.
   and human can read. Let AI draft, and people fix.
 
 Here AI is a powerful assistant. "Classify these 200 files by type and add a
-summary" — classification and summarization both run on the local model (2-14).
+summary" — classification and summarization both run on the local model (2-16).
 But *the axis of classification is decided by people*. What counts as "the same
 type" for the business is something only those who know the business can tell.
 
@@ -8998,7 +8998,7 @@ spec, the exception handling, the reasons things are the way they are — all in
 the head of a veteran in charge. When this disappears, the system becomes "it
 runs, but no one understands it" (the human dependency of 3-05).
 
-The method is the same one used for core logic in 2-11 — interview the people on
+The method is the same one used for core logic in 2-12 — interview the people on
 the ground, have AI draft, and have the ground confirm.
 
 * Ask and record the person in charge, then AI drafts the transcription and the
@@ -9015,7 +9015,7 @@ here.
 
 Only once the prepared information is in place comes the next chapter. Embed the
 written, structured documents into the pgvector of 2-03 and mount RAG on them
-(2-14).
+(2-16).
 
 Skip the preparation and build RAG, and the sources are vague and the answers
 unreliable. With the preparation done, an AI that answers from your own real
@@ -9056,7 +9056,7 @@ This chapter is done when these five hold.
 
 == Versions checked, and when
 
-* Tesseract, `ocrmypdf`, an open-weight vision model (the local AI of 2-14), pgvector (2-03)
+* Tesseract, `ocrmypdf`, an open-weight vision model (the local AI of 2-16), pgvector (2-03)
 * This procedure was written on 2026-07-16
 * If a version has moved, have the AI confirm the official procedure before proceeding
 
@@ -9066,8 +9066,8 @@ Before the AI, prepare the information.
 
 * *OCR* — paper and scans into Markdown, with Tesseract or a vision model
 * *Classification and structuring* — one place, aligned with metadata and Markdown (the axis decided by people)
-* *Codifying tacit knowledge* — interview, AI draft, the ground confirms (same as 2-11)
-* *AI is the last move* — mount the prepared information on pgvector; RAG is the next chapter (2-14)
+* *Codifying tacit knowledge* — interview, AI draft, the ground confirms (same as 2-12)
+* *AI is the last move* — mount the prepared information on pgvector; RAG is the next chapter (2-16)
 
 Preparation pays off even without AI on top — personnel lock-in dissolves,
 handover gets easier. Preparation is the main body, and prepared information
@@ -9080,14 +9080,14 @@ In the next chapter, on top of this prepared information, we set up our own AI.
 == Related articles
 
 * link:/en/ai-native-software/documents/[2-07: Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office]
-* link:/en/ai-native-software/fastapi/[2-11: Build an API — Expose Core Logic with FastAPI]
-* link:/en/ai-native-software/ai/[2-14: Set Up Your Own AI — LLM and RAG]
+* link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
+* link:/en/ai-native-software/ai/[2-16: Set Up Your Own AI — LLM and RAG]
 * link:/en/ai-native-software/sier-uneconomic/[3-04: The Structural Diseconomy of the SIer Outsourcing Model]
 endif::[]
-// ===== article: 19-ai =====
+// ===== article: 21-ai =====
 ---
 slug: ai
-number: 14
+number: 16
 part: 2
 title.ja: 自前の AI を据える ── LLM と RAG
 title.en: Stand Up Your Own AI — LLM and RAG
@@ -9096,7 +9096,7 @@ subtitle.en: Lay AI on top of everything — answers grounded in your own data, 
 description.ja: 自立編の最後に、全ての上に AI を乗せる。2-03 で有効化した pgvector が、ここで効く。まず Cohere のオープンウェイトのコーディングモデル North Mini Code を Ollama で手元に置き、データを外に出さない。RAG 用に汎用モデルと埋め込みを並べ、社内文書・コード・メールを pgvector に入れて出典つきで答えさせ、Open WebUI で使う。検索は門番を迂回しない。機密と常時処理は自前、難しい判断は Claude に借りる ── 主導権は自分、能力は借りる。Copilot 依存を断ち、自立編を締める。
 description.en: The Independence part closes by laying AI on top of everything. The pgvector enabled in 2-03 finally pays off. Start by holding Cohere's open-weight coding model North Mini Code locally on Ollama, so no data leaves your side. Load a general model and embeddings alongside for RAG, put documents, code, and mail into pgvector to answer with citations, and use it through Open WebUI. Search never bypasses the gate. Keep secrets and always-on processing in-house and borrow a frontier model like Claude for hard judgment — control yours, capability borrowed. Cut the Copilot dependency and close the Independence part.
 date: 2026.07.16
-label: Independence 14
+label: Independence 16
 title_html.ja: 全ての上に、<br><span class="accent">自前の AI</span>を乗せる。
 title_html.en: Lay <span class="accent">your own AI</span><br>on top of everything.
 ---
@@ -9167,7 +9167,7 @@ answer = llm(f"次の資料に基づいて答えよ:\n{hits}\n\n質問: {q}")
 社員が質問すれば、開けないはずの文書の中身が答えとして漏れる。門番(2-05)と xattr
 の権限(2-07)を、ここで迂回させてはいけない。
 
-やり方は二段でいい。既定では、RAG に載せるのは 2-13 で整備した全員が読める共有知識
+やり方は二段でいい。既定では、RAG に載せるのは 2-15 で整備した全員が読める共有知識
 だけにする ── 載せる範囲を整備の時点で決めるのが、一番確実だ。権限のある文書まで検索
 させたい場合は、pgvector の行に文書の権限を持たせ、検索をその人のトークンで絞る。
 出典が、その人の開ける文書だけになる。
@@ -9190,7 +9190,7 @@ ai.example.com { reverse_proxy open-webui:8080 }
 
 オープンモデルは実用十分まで来た。だが、*最も難しい判断や大規模なコード生成では、
 いまも Claude のような最前線モデルが強い*。これはメールの送信中継(2-08)や
-Cloudflare(2-10)と同じ構図だ。
+Cloudflare(2-11)と同じ構図だ。
 
 * *自前に持つ* ── 機密データの処理、常時の分類・要約・RAG(主導権の本体)
 * *借りる* ── 難しい判断、重い生成は、最前線モデルの API に出す
@@ -9231,7 +9231,7 @@ curl -sI https://ai.example.com | head -1  # 窓口の頁が返る
 *人が渡す値*
 
 * 窓口のドメイン名(`ai.example.com`)と、その名前を指す DNS の設定
-* RAG に載せる文書の範囲 ── 既定は 2-13 で整備した、全員が読める共有知識
+* RAG に載せる文書の範囲 ── 既定は 2-15 で整備した、全員が読める共有知識
 * pgvector を持つ DB の接続先とパスワード(2-03)
 * 門番(2-05)のトークンの設定 ── 検索を、聞いた人の権限で絞るため
 * 借りる最前線モデルの API キーと、そこへ出してよい内容の線引き
@@ -9260,7 +9260,7 @@ curl -sI https://ai.example.com | head -1  # 窓口の頁が返る
 * *Open WebUI* ── ChatGPT 風の窓口、門番の内側に
 * *自前と借用の線引き* ── データと常時処理は自前、難所は最前線モデルに借りる
 
-2-02 から 2-14 まで、Microsoft 365 と基幹のベンダー製品を、一つずつ OSS に置き換えて
+2-02 から 2-16 まで、Microsoft 365 と基幹のベンダー製品を、一つずつ OSS に置き換えて
 きた。AI に渡した一台の機械・土台・門番・文書・コード・メール・会議・予約・Web・
 API・情報の整備・AI ── そのどれも、書いたのではなく、立てた。
 
@@ -9278,7 +9278,7 @@ ____
 == 関連記事
 
 * link:/ai-native-software/foundation/[2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars]
-* link:/ai-native-software/structure-knowledge/[2-13: 社内情報を整える ── 整備こそ本体、AI は最後の一手]
+* link:/ai-native-software/structure-knowledge/[2-15: 社内情報を整える ── 整備こそ本体、AI は最後の一手]
 * link:/ai-native-software/sier-uneconomic/[3-04: SIer 委託モデルの構造的不経済]
 endif::[]
 ifdef::lang-en[]
@@ -9356,7 +9356,7 @@ never open. The gate (2-05) and the xattr permissions (2-07) must not be
 bypassed here.
 
 Two tiers are enough. By default, what goes into RAG is only the shared knowledge
-everyone can read, prepared in 2-13 — deciding the scope at preparation time is
+everyone can read, prepared in 2-15 — deciding the scope at preparation time is
 the most reliable control. If permissioned documents have to be searchable, carry
 each document's permission on its pgvector rows and filter the search by that
 person's token. The sources then come only from documents that person can open.
@@ -9380,7 +9380,7 @@ ai.example.com { reverse_proxy open-webui:8080 }
 
 Open models have reached practical sufficiency. But *for the hardest judgment and
 large-scale code generation, frontier models like Claude are still stronger*.
-This is the same shape as the outbound mail relay (2-08) and Cloudflare (2-10).
+This is the same shape as the outbound mail relay (2-08) and Cloudflare (2-11).
 
 * *Keep in-house* — processing of confidential data, always-on classification, summarization, RAG (the real body of control)
 * *Borrow* — hard judgment and heavy generation go out to a frontier model's API
@@ -9424,7 +9424,7 @@ curl -sI https://ai.example.com | head -1  # the window's page answers
 *Values the human supplies*
 
 * The window's domain name (`ai.example.com`) and the DNS entry that points it at the machine
-* The scope of documents that go into RAG — by default, the shared knowledge everyone can read, prepared in 2-13
+* The scope of documents that go into RAG — by default, the shared knowledge everyone can read, prepared in 2-15
 * The database holding pgvector, and its password (2-03)
 * The gate (2-05) token settings, so the search is filtered by the asker's permissions
 * The API key for the frontier model you borrow, and the line on what may be sent there
@@ -9453,7 +9453,7 @@ Your own AI, on top of everything.
 * *Open WebUI* — a ChatGPT-like window, behind the gate
 * *In-house versus borrowed* — data and always-on processing in-house, the hard parts borrowed from a frontier model
 
-From 2-02 through 2-14, we replaced Microsoft 365 and the vendor packages under
+From 2-02 through 2-16, we replaced Microsoft 365 and the vendor packages under
 the core systems, one at a time, with OSS. The one machine handed to the AI, the
 foundation, the gate, documents, code, mail, meetings, booking, the web, the API,
 the information preparation, and the AI — none of it was written; it was stood
@@ -9474,13 +9474,13 @@ become structurally uneconomic?
 == Related articles
 
 * link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars]
-* link:/en/ai-native-software/structure-knowledge/[2-13: Put Your Information in Order — The Preparation Is the Work, AI Is the Last Step]
+* link:/en/ai-native-software/structure-knowledge/[2-15: Put Your Information in Order — The Preparation Is the Work, AI Is the Last Step]
 * link:/en/ai-native-software/sier-uneconomic/[3-04: The Structural Uneconomy of the SIer Model]
 endif::[]
-// ===== article: 20-ai-delegation =====
+// ===== article: 22-ai-delegation =====
 ---
 slug: ai-delegation
-number: 15
+number: 17
 part: 2
 title.ja: AI に任せる範囲を決める ── 自律で動かさず、コードに凍結する
 title.en: Decide How Far the AI Goes — No Autonomous Runs, Freeze It into Code
@@ -9489,7 +9489,7 @@ subtitle.en: The AI proposes, the human approves; repeated work is frozen into c
 description.ja: 自前の AI を据えたら、次に決まるのは運用だ。エージェントを自律で動かさない ── 誤りが連鎖する、責任の所在が消える、検証が届かなくなる、外のデータが指示に化ける。自律で回してよいのは四条件が揃うときだけだ。Office に AI を入れる道は、判断のハードルが最も低く、影響範囲が最も広く、能力侵食が最も深い。AI はサンドボックスの中で使い、渡す物は人が選ぶ。繰り返す仕事は Python と Linux のコマンドに凍結する ── AI は生成器であって、動作環境ではない。費用は月 200 ドルが月 1〜5 ドルになる。
 description.en: Once your own AI is standing, the next thing to settle is how it runs. Do not run agents autonomously: errors chain, accountability disappears, verification stops reaching, and outside data turns into instructions. Autonomy is allowed only when four conditions hold together. Putting AI inside Office has the lowest decision threshold, the widest footprint, and the deepest capability erosion. Run AI inside a sandbox and hand-pick what it sees. Freeze repeated work into Python and Linux commands — AI is a generator, not a runtime. The bill goes from $200 a month to $1-5.
 date: 2026.09.21
-label: Independence 15
+label: Independence 17
 title_html.ja: AI は<span class="accent">生成器</span>。<br>動かすのは、コード。
 title_html.en: AI is the <span class="accent">generator</span>.<br>What runs is the code.
 ---
@@ -9498,7 +9498,7 @@ ifdef::lang-ja[]
 
 *AI は提案し、人が通す。繰り返す仕事は、コードとコマンドに凍結する*。
 
-link:/ai-native-software/ai/[2-14: 自前の AI を据える ── LLM と RAG]で、自社のデータに
+link:/ai-native-software/ai/[2-16: 自前の AI を据える ── LLM と RAG]で、自社のデータに
 通じた AI を自分の側に置いた。道具が揃えば、次に決まるのは運用だ。ここで、その AI に
 どこまでやらせるかの線を引く。
 
@@ -9577,7 +9577,7 @@ AI を同僚として使うが、AI に運転は任せない。
 ____
 
 自立編の各章にある「人が持つ物」は、この原則を章ごとに書き下したものだ。2-02 の
-DNS のレコード、2-05 の門番の設定、2-14 の外の API へ送る文書 ── どれも、AI が
+DNS のレコード、2-05 の門番の設定、2-16 の外の API へ送る文書 ── どれも、AI が
 「やる前に言う」形にして、人が通す操作として並べてある。
 
 == 自律で回してよいのは、四つが揃うときだけ
@@ -9684,7 +9684,7 @@ ____
 
 自立編で積み上げてきた道具立ては、この設計と最初から揃っている。データは SQLite と
 PostgreSQL で持ち(2-03)、原稿は adoc で持ち(2-07)、AI は自前の窓口で動かす
-(2-14)。Office を置き換えた側では、Copilot 問題は起きない。
+(2-16)。Office を置き換えた側では、Copilot 問題は起きない。
 
 便利として使い、依存はしない ── 自分でも考えられるが速いから AI に渡す、が便利で、
 AI の出力を確かめられないまま使う、が依存だ。線はここにある。
@@ -9870,7 +9870,7 @@ flowchart TB
 この章は、次の五つができていれば済みだ。
 
 . 動いている AI の設定に、人の承認を挟まずに進むループが無い
-. 「AI が『やる前に言う』操作」の一覧が一枚にまとまっていて、2-02 から 2-14 までの
+. 「AI が『やる前に言う』操作」の一覧が一枚にまとまっていて、2-02 から 2-16 までの
   各章の分が載っている
 . 毎日繰り返す仕事が、コードかコマンドになっていて、`cron` の一覧で見える
 . Office 側の AI 機能を使うかどうかが、決めとして書いてある
@@ -9888,7 +9888,7 @@ sudo grep -r "api.anthropic" /var/log/ | tail   # 外へ出した記録
 
 * 自律で回してよい仕事の一覧(四条件を満たすものだけ)
 * サンドボックスに置く作業場所と、そこへ渡してよいデータの範囲
-* 外の最前線モデルへ出してよい内容の線引き(2-14 で決めた線)
+* 外の最前線モデルへ出してよい内容の線引き(2-16 で決めた線)
 * 繰り返す仕事の実行時刻(`cron` の設定)
 * Office 側の AI 機能を使うかどうかの決め
 
@@ -9931,7 +9931,7 @@ sudo grep -r "api.anthropic" /var/log/ | tail   # 外へ出した記録
 == 関連記事
 
 * link:/ai-native-software/ai-pc/[2-02: AI に PC を一台渡す ── 自立編を動かす機械]
-* link:/ai-native-software/ai/[2-14: 自前の AI を据える ── LLM と RAG]
+* link:/ai-native-software/ai/[2-16: 自前の AI を据える ── LLM と RAG]
 * link:/ai-native-software/lockin/[3-05: ロックイン問題]
 * link:/insights/security-design/[構造分析03: Mythos時代のセキュリティ設計]
 * link:/insights/mythos/[構造分析05: Mythosが来た]
@@ -9941,7 +9941,7 @@ ifdef::lang-en[]
 
 *The AI proposes and the human approves. Repeated work is frozen into code and commands.*
 
-link:/en/ai-native-software/ai/[2-14: Stand Up Your Own AI — LLM and RAG] put an AI that
+link:/en/ai-native-software/ai/[2-16: Stand Up Your Own AI — LLM and RAG] put an AI that
 knows your own data on your own side. Once the tools are standing, the next thing to settle
 is how they run. This chapter draws the line for how far that AI goes.
 
@@ -10026,7 +10026,7 @@ ____
 
 The "What the human holds" section in each chapter of the Independence part is this
 principle written out chapter by chapter. The DNS records in 2-02, the gate settings in
-2-05, the documents sent to an outside API in 2-14 — each one is listed as an action the AI
+2-05, the documents sent to an outside API in 2-16 — each one is listed as an action the AI
 states before performing, for a human to approve.
 
 == Autonomy is allowed only when four conditions hold together
@@ -10139,7 +10139,7 @@ needed costs one extra step, and in exchange what went to the AI is visible.
 
 The toolkit built up across the Independence part matches this design from the start. Data
 is held in SQLite and PostgreSQL (2-03), manuscripts in adoc (2-07), and the AI runs behind
-your own window (2-14). Where Office has been replaced, the Copilot problem does not arise.
+your own window (2-16). Where Office has been replaced, the Copilot problem does not arise.
 
 Use it as convenience, without sliding into dependence — you can think it through yourself
 but hand it to the AI because that is faster, and that is convenience; you use output you
@@ -10334,7 +10334,7 @@ This chapter is done when these five hold.
 
 . No loop in the running AI's configuration proceeds without a human approval step
 . The list of "actions the AI states before performing" fits on one page and covers every
-  chapter from 2-02 through 2-14
+  chapter from 2-02 through 2-16
 . Every daily repeated job is code or a command, visible in the `cron` listing
 . Whether Office-side AI features are used is written down as a decision
 . What was sent to an outside API can be traced afterward (which document went across is known)
@@ -10351,7 +10351,7 @@ sudo grep -r "api.anthropic" /var/log/ | tail   # what went outside
 
 * The list of jobs allowed to run autonomously (only those meeting the four conditions)
 * The workspace the sandbox sits in, and the range of data allowed into it
-* The line for what may go to an outside frontier model (the line drawn in 2-14)
+* The line for what may go to an outside frontier model (the line drawn in 2-16)
 * The run times for repeated jobs (the `cron` settings)
 * The decision on whether Office-side AI features are used
 
@@ -10396,13 +10396,13 @@ worlds, office work and core systems, stand side by side.
 == Related articles
 
 * link:/en/ai-native-software/ai-pc/[2-02: Give the AI a PC of Its Own — The Machine the Independence Part Runs On]
-* link:/en/ai-native-software/ai/[2-14: Stand Up Your Own AI — LLM and RAG]
+* link:/en/ai-native-software/ai/[2-16: Stand Up Your Own AI — LLM and RAG]
 * link:/en/ai-native-software/lockin/[3-05: The Lock-In Problem]
 * link:/en/insights/security-design/[Structural analysis 03: Security Design for the Mythos Era]
 * link:/en/insights/mythos/[Structural analysis 05: Mythos Has Arrived]
 endif::[]
 
-// ===== article: 21-two-worlds =====
+// ===== article: 23-two-worlds =====
 ---
 slug: two-worlds
 number: 01
@@ -10535,7 +10535,7 @@ ____
 ものではない。
 
 * 事務系 ── PostgreSQL、PocketBase、aiseed office(link:/ai-native-software/foundation/[2-03: 土台を据える]・2-07)
-* 基幹系 ── PostgreSQL、FastAPI、同じ認証・同じ共有(link:/ai-native-software/fastapi/[2-11: API を作る])
+* 基幹系 ── PostgreSQL、FastAPI、同じ認証・同じ共有(link:/ai-native-software/fastapi/[2-12: API を作る])
 
 二つは、同じデータ基盤・同じ門番・同じコードの上に乗る。汎用も固有も、
 一人 + AI が立てる。「買う・外注するほうが安い」という前提そのものが消えた。
@@ -10755,7 +10755,7 @@ procure from separate vendors.
 
 * Office systems — PostgreSQL, PocketBase, aiseed office (link:/en/ai-native-software/foundation/[2-03: Laying the Foundation], 2-07)
 * Core systems — PostgreSQL, FastAPI, the same auth and the same sharing
-  (link:/en/ai-native-software/fastapi/[2-11: Building the API])
+  (link:/en/ai-native-software/fastapi/[2-12: Building the API])
 
 The two ride on the same data foundation, the same gatekeeper, the same code.
 Generic and specific alike are stood up by one person plus AI. The very
@@ -10859,7 +10859,7 @@ to trust the US government — the Trump problem.
 * link:/en/ai-native-software/sier-uneconomic/[3-04: The Structural Uneconomy of the SIer Model]
 * link:/en/ai-native-ways/python/[Parent series Chapter 2: Owning Your Tools with Python]
 endif::[]
-// ===== article: 22-verify-narratives =====
+// ===== article: 24-verify-narratives =====
 ---
 slug: verify-narratives
 number: 02
@@ -10914,7 +10914,7 @@ ifdef::lang-ja[]
 == だから、確かめ方のほうを設計する
 
 同じ訓練データから出た AI が、同じ訓練データを確かめても、両側に同じ偏りが
-残る。AI が AI を確かめるだけでは、思い込みは互いに補強される(2-15)。
+残る。AI が AI を確かめるだけでは、思い込みは互いに補強される(2-17)。
 だから、確かめ方を先に設計する。
 
 * *手法の違う AI を組み合わせる* ── 通常のチャット型(Gemini Pro、Claude、
@@ -11242,7 +11242,7 @@ answer.
 
 When an AI drawn from one body of training data checks that same body, the
 same lean stays on both sides. AI checking AI only reinforces the shared
-assumption (2-15). So you design the checking first.
+assumption (2-17). So you design the checking first.
 
 * *Combine AIs built by different methods* — add a Deep Research / Deep Search
   type, which requires citations to primary sources, to the ordinary chat type
@@ -11556,7 +11556,7 @@ the premise on the office side inverted.
 * link:/en/ai-native-software/sovereignty/[3-03: Digital Sovereignty — The Microsoft Problem and the Trump Problem]
 endif::[]
 
-// ===== article: 23-sovereignty =====
+// ===== article: 25-sovereignty =====
 ---
 slug: sovereignty
 number: 03
@@ -11703,7 +11703,7 @@ OSS の土台(自立編)が外すものは、四つある。
 * 外国政府のアクセス・レバーがない。遠隔のキルスイッチもない ── 切る一手を
   握る第三者が、そもそも存在しない。
 
-そして、最後の一層は AI だ。link:/ai-native-software/ai/[2-14: 自前の AI を据える]で立てたローカルのオープン重みモデルを、自前のハードウェアで動かす。
+そして、最後の一層は AI だ。link:/ai-native-software/ai/[2-16: 自前の AI を据える]で立てたローカルのオープン重みモデルを、自前のハードウェアで動かす。
 
 * データは外に出ない ── 文書も会話も、米国の AI API を経由しない。
 * エアギャップできる ── ネットから切り離しても動く。
@@ -11933,7 +11933,7 @@ The OSS foundation from the Independence part removes four things.
   third party holding the act that cuts you off in the first place.
 
 And the last layer is the AI. Run the local open-weight model you stood up in
-link:/en/ai-native-software/ai/[2-14: Standing Up Your Own AI] on your own
+link:/en/ai-native-software/ai/[2-16: Standing Up Your Own AI] on your own
 hardware.
 
 * Data never leaves — documents and conversations never pass through a US AI
@@ -12021,7 +12021,7 @@ We examine that structure (3-04).
 * link:/en/ai-native-software/two-worlds/[3-01: Companies Don't Write Their Own Code — Office and Core, Two Parallel Worlds]
 * link:/en/ai-native-software/sier-uneconomic/[3-04: The Structural Uneconomy of the SIer Model]
 endif::[]
-// ===== article: 24-sier-uneconomic =====
+// ===== article: 26-sier-uneconomic =====
 ---
 slug: sier-uneconomic
 number: 04
@@ -12449,7 +12449,7 @@ chapter takes up that lock-in (3-05).
 * link:/en/insights/ai-and-individual/[Structural analysis 12: AI and the sole proprietor]
 * Blog link:/en/blog/verification-shock/[When Fable 5 Returns, Do This First] — the day verification becomes free, the commissioned deliverables built on "never being verified" are exposed (the applied, urgent version of this chapter)
 endif::[]
-// ===== article: 25-lockin =====
+// ===== article: 27-lockin =====
 ---
 slug: lockin
 number: 05
@@ -12968,7 +12968,7 @@ get positioned, how they are paid, and how they function.
 * link:/en/insights/ai-and-individual/[Structural analysis 12: AI and the sole proprietor]
 * link:/en/blog/self-hosting-microsoft-365/[Can You Build a Microsoft 365 (Standard + Copilot) Equivalent Yourself?]
 endif::[]
-// ===== article: 26-hiring-builders =====
+// ===== article: 28-hiring-builders =====
 ---
 slug: hiring-builders
 number: 06
@@ -13756,7 +13756,7 @@ subcontractor structure? Which intermediate forms appear during the transition?
 * link:/en/insights/enterprise-tax/[Structural analysis 08: Subtracting the enterprise-IT tax]
 * link:/en/insights/ai-and-individual/[Structural analysis 12: AI and the sole proprietor]
 endif::[]
-// ===== article: 27-japan-transition =====
+// ===== article: 29-japan-transition =====
 ---
 slug: japan-transition
 number: 07
@@ -14372,7 +14372,7 @@ long the transition takes to complete is treated in the final chapter, 3-09.
 * link:/en/insights/enterprise-tax/[Structural analysis 08: Subtracting the enterprise-IT tax]
 * link:/en/insights/ai-and-individual/[Structural analysis 12: AI and the sole proprietor]
 endif::[]
-// ===== article: 28-revolution-from-below =====
+// ===== article: 30-revolution-from-below =====
 ---
 slug: revolution-from-below
 number: 08
@@ -14518,7 +14518,7 @@ IT 企業は「AI を入れて人を減らす」と言う。この言い方を�
 にもある。
 
 だから、*AI は下が、自分の側で持つ*。モデルを自分の機械で動かし、データを外に
-出さない(2-14)。これは技術の好みの話ではない。誰が使い道を決めるかの話だ。
+出さない(2-16)。これは技術の好みの話ではない。誰が使い道を決めるかの話だ。
 
 == 金の行き先が、Microsoft から変わる
 
@@ -14599,7 +14599,7 @@ AI が革命を起こすのは、上からの決定でも、大きな予算で�
 * link:/ai-native-software/sier-uneconomic/[3-04: SIer 委託モデルの構造的不経済]
 * link:/ai-native-software/sovereignty/[3-03: デジタル主権 ── Microsoft 問題と Trump 問題]
 * link:/ai-native-software/ai-pc/[2-02: AI に PC を一台渡す ── 自立編を動かす機械]
-* link:/ai-native-software/ai/[2-14: 自前の AI を据える ── LLM と RAG]
+* link:/ai-native-software/ai/[2-16: 自前の AI を据える ── LLM と RAG]
 endif::[]
 ifdef::lang-en[]
 = The AI Revolution Starts From Below
@@ -14754,7 +14754,7 @@ digital sovereignty argument in 3-03 was about control from outside the country;
 the same structure exists inside it.
 
 So *AI is held below, on your own side.* Run the model on your own machine and
-keep the data from leaving (2-14). This is not a matter of technical taste. It is
+keep the data from leaving (2-16). This is not a matter of technical taste. It is
 a matter of who decides what it is used for.
 
 == The money stops going to Microsoft
@@ -14846,9 +14846,9 @@ chapter looks at why this transition does not reverse, as a structure.
 * link:/en/ai-native-software/sier-uneconomic/[3-04: The Structural Uneconomics of the SIer Commission Model]
 * link:/en/ai-native-software/sovereignty/[3-03: Digital Sovereignty — The Microsoft Problem and the Trump Problem]
 * link:/en/ai-native-software/ai-pc/[2-02: Give the AI a PC of Its Own — The Machine the Independence Part Runs On]
-* link:/en/ai-native-software/ai/[2-14: Stand Up Your Own AI — LLM and RAG]
+* link:/en/ai-native-software/ai/[2-16: Stand Up Your Own AI — LLM and RAG]
 endif::[]
-// ===== article: 29-five-years =====
+// ===== article: 31-five-years =====
 ---
 slug: five-years
 number: 09

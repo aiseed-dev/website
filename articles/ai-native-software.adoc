@@ -6374,98 +6374,1155 @@ place. Next, we build the website that shows these to the outside.
 * link:/en/ai-native-software/mail/[2-08: Mail on Your Own Side — Stalwart and Thunderbird]
 * link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map]
 endif::[]
+// ===== article: 15-web-build =====
+---
+slug: web-build
+number: 10
+part: 2
+title.ja: Web を作る ── HTML と CSS と JavaScript に戻る
+title.en: Build the Web — Back to HTML, CSS, and JavaScript
+subtitle.ja: 中身は Markdown と Mermaid、外枠は最小限の HTML と CSS
+subtitle.en: Content in Markdown and Mermaid, the frame in minimal HTML and CSS
+description.ja: Web サイトを二層に分けて組み立てる。中身は Markdown と Mermaid、外枠は HTML と CSS と最小限の JavaScript、両者を Python が繋ぐ。フレームワークとビルドツールの列から素の Web 標準に戻ると、依存が三つか四つに収まり、ビルドは数秒で終わる。WordPress に入っている中身は、七つの手順で Markdown に移せる。作り直す時間が無ければ、Playwright で今あるサイトを丸ごと静的に写し取る手もある。npm を離れるもう一つの理由はサプライチェーンにあり、動く部分は FastAPI を一つ選んで最小限に保つ。
+description.en: Build a website in two layers. Content in Markdown and Mermaid, the frame in HTML, CSS, and minimal JavaScript, with Python connecting the two. Coming back from the row of frameworks and build tools to raw web standards leaves three or four dependencies and a build that finishes in seconds. Content held in WordPress moves to Markdown in seven steps, and where there is no time to rebuild, Playwright can mirror the existing site into static files. The other reason to leave npm is the supply chain, and the moving parts stay on one FastAPI, kept minimal.
+date: 2026.09.21
+label: Independence 10
+title_html.ja: 中身は Markdown、<br>外枠だけ <span class="accent">HTML と CSS</span>。
+title_html.en: Content in Markdown,<br>the frame only <span class="accent">HTML and CSS</span>.
+---
+ifdef::lang-ja[]
+= Web を作る ── HTML と CSS と JavaScript に戻る
+
+*Web サイトは、二層に分けて作る*。
+
+link:/ai-native-software/meetings/[2-09: 会議と予約を自分の側に ── Jitsi と Cal.com]
+で、集まりと予約を自分の側に置いた。ここでは外に見せる Web を、自分の手元で組み立てる。
+中身は Markdown と Mermaid、外枠は HTML と CSS と最小限の JavaScript、両者を Python が
+繋ぐ。焼き上がった HTML をどこに置くかは、次の章が受け持つ。
+
+== React の疲れは、道具の数から来る
+
+過去 10 年、Web 開発はフレームワークの軍拡だった。
+
+jQuery、Backbone、Angular、React、Vue、Svelte。ビルドツールは Grunt、Gulp、Webpack、
+Rollup、Vite、Turbopack。CSS は Sass、Less、PostCSS、Tailwind、CSS-in-JS。サーバー側の
+描画は Next.js、Nuxt、Remix、SvelteKit、Astro。
+
+どれも何かの問題を解いてきた。しかし、解いた問題と新しく生まれた問題を並べると、
+割に合わない場面が増えた。
+
+* ビルド設定の習得に数週間かかる
+* 依存パッケージが 1,000 個を超える
+* セキュリティ更新が毎週来る
+* 一年後にビルドが通らなくなる
+* 簡単なサイト一つに 100 MB のフォルダが要る
+
+これは技術そのものの複雑さではなく、自分たちで足した複雑さだ。素の HTML と CSS と
+JavaScript に戻ると、この五つが一度に片づく。ブラウザはこの三つを直接読むので、
+間に変換の層が要らない。そして AI が最も安定して書けるのも、この三つと Markdown だ。
+
+== WordPress には四つの罠がある
+
+「React は使っていない、うちは WordPress だ」── 多くの人がそう思っているはずだ。
+
+それは事実に合っている。世界の Web サイトの約 43% が WordPress で動いている。日本でも
+企業の公式サイト、個人ブログ、ニュースメディア、自治体の Web ── あらゆる場所にある。
+
+ただし WordPress には WordPress の罠がある。React の罠とは質が違い、深刻さは同じか、
+それ以上だ。
+
+*罠 1: 中身が MySQL に入る*
+
+WordPress の記事は、テキストファイルではなく、MySQL の中の HTML 混じりのレコードとして
+保存される。同じ記事を PDF にしたい、別のサイトに移したい、AI に渡して分析したい ──
+どの道もエクスポート作業から始まる。
+
+しかもエクスポート形式は `.xml`(WordPress 独自の WXR)で、HTML タグや独自の短縮記法
+(`[gallery]` など)が混ざっている。中身が WordPress の側に残る。これは
+link:/ai-native-software/foundation/[2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars]
+で見た「Excel に入ったままのデータ」と同じ形だ。
+
+*罠 2: プラグインが攻撃面を増やす*
+
+WordPress の機能拡張は、世界中の有志が作ったプラグインに頼る。一つのサイトに 20〜30 の
+プラグインが入っているのは普通だ。それぞれが定期的に脆弱性を出す。サイト全体が攻撃面の
+集合になる。世界の Web の 43% が同じ装置で動くということは、攻撃する側から見れば、
+43% の標的が同じ装置だということでもある。
+
+*罠 3: 更新が互いを止める*
+
+WordPress 本体、テーマ、プラグイン ── これらが互いに依存している。一つを更新すると、
+別のものが動かなくなる。「更新を当てたらサイトが落ちた」は、WordPress の運用でよく
+起きることだ。
+
+*罠 4: PHP より Python のほうが、AI の出力が安定する*
+
+WordPress のテーマとプラグインは PHP で書かれている。Claude は PHP も書けるが、
+出力の安定度は Python のほうが高い。AI と組んで道具を作るなら、Python の側に寄せた
+ほうが速い。
+
+とくに急ぐのは、ネットショップだ。決済と顧客の個人情報を扱うため、価値の高い標的に
+なる ── カード情報の抜き取り、個人情報の流出。被害が直接、お金と信用に響く。
+WordPress のネットショップは、まっ先に静的にするとよい。決済は Stripe などの外部の
+決済ページに任せ、カード情報を自分で持たない。動く PHP・データベース・管理ログインを
+手放せば、攻撃面ごと消える。
+
+== WordPress からは、七つの手順で抜ける
+
+WordPress を使っているなら、抜け道は決まっている。
+link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
+で扱う *並行稼働* と同じ形で移る。
+
+. 既存の WordPress を動かしたまま、中身を Markdown にエクスポートする(プラグインや CLI ツールで自動化できる。変換コードは Claude が書く)
+. 新しいサイトを Markdown + 最小限の HTML/CSS + Python で組む
+. 同じ URL 構造を保つ(検索の評価を引き継ぐ)
+. ステージング環境で動きを確認し、検索エンジンへのインデックス申請を用意する
+. DNS を切り替える日を決める
+. 切り替えの後、WordPress を読み取り専用にして 1 か月動かす
+. 問題が出なければ WordPress を止め、ホスティング契約を解く
+
+費用の差も大きい。WordPress のマネージドホスティング(WP Engine、Kinsta など)は月額
+数千〜数万円かかる。静的 HTML を Cloudflare Pages や GitHub Pages に置けば、月額はゼロに
+なる。年間で数万〜数十万円が浮く。
+
+____
+WordPress も並行稼働で抜ける。Markdown へエクスポートし、外枠だけ HTML と CSS で書き、
+Python で生成して、静的に配る。これで WordPress を止められる。
+____
+
+作り直す時間が無ければ、もっと速い手もある ── *今あるサイトを丸ごと静的に写し取る*。
+ヘッドレスブラウザ(Playwright)で各ページを開き、HTML と、読み込む全ファイル
+(CSS・JS・画像・フォント)を保存し、参照を相対パスに書き換える。既定では JavaScript を
+実行せず、サーバーが返す素の HTML を保存する ── 広告や解析ウィジェットが描画時に足す
+膨大な DOM が入らない、軽い HTML になる。本文を JS で組み立てるサイトのときだけ、
+描画を有効にすればいい。どちらにせよブラウザはページが実際に読み込むファイルを残らず
+辿って落とすので、`requests` や `wget` のような取りこぼしがない。これを静的配信に
+載せれば、動く WordPress を攻撃面ごと止められる。Mac の SiteSucker(有料)と同じことが、
+AI に頼めば Python で書ける(このサイトのリポジトリには `tools/mirror_site.py` がある)。
+
+== 中身と外枠を、二層に分ける
+
+Web サイトの中身は、二つに分けられる。
+
+|===
+| 種類 | 何を書くか | 道具
+| 中身 | 文章、表、引用、コード、図 | Markdown + Mermaid
+| 外枠 | ヘッダー、ナビ、フッター、レイアウト、配色 | HTML + CSS + 最小限の JavaScript
+| 接続 | 中身を外枠に流し込んで HTML を生成 | Python
+|===
+
+これを混ぜて書くのが、これまでの Web 制作の引っかかりだった。React のコンポーネントには、
+文章と書式とロジックが一緒に入っている。WordPress の記事には、HTML タグと文章が一緒に
+入っている。後から書き換えるとき、この混在が効いてくる。
+
+AI ネイティブな分け方は、中身と外枠を完全に離すことだ。中身は Markdown と Mermaid だけで
+書き、HTML タグは置かない。外枠は HTML と CSS で書き、各記事の中身には触らない。Python が
+機械的に繋ぐ。
+
+```mermaid
+flowchart LR
+  subgraph Content["中身(別の出口にも回せる)"]
+    MD["記事 *.md<br/>(Markdown)"]
+    MMD["図 *.mmd<br/>(Mermaid)"]
+  end
+  subgraph Frame["外枠"]
+    HTML["template.html"]
+    CSS["style.css"]
+    JS["main.js(最小)"]
+  end
+  Py(("Python<br/>ビルド"))
+
+  MD --> Py
+  MMD --> Py
+  HTML --> Py
+  CSS --> Py
+  JS --> Py
+  Py --> Site["静的 HTML サイト"]
+
+  MD -.->|そのまま| PDF["PDF / 印刷"]
+  MD -.->|そのまま| AI[("AI 分析")]
+  MD -.->|そのまま| Book["電子書籍"]
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef bad  fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class MD,MMD good
+  class HTML,CSS,JS bad
+```
+
+== 中身を Markdown で持つと、出口が増える
+
+中身を Markdown と Mermaid で書く最大の理由は、同じデータが Web 以外の出口にも回ることだ。
+
+同じ Markdown ファイルから、
+
+* Web ページが作れる(Python が HTML 化する)
+* PDF が作れる(`pandoc` でも Claude でも変換できる)
+* 印刷用の原稿に変換できる
+* 電子書籍(EPUB)が作れる
+* AI に渡して要約・翻訳・質問ができる
+* 別の媒体への貼り付けに回せる
+* Git で差分を見て、履歴を持てる
+* 他の人と一緒に編集できる
+
+中身が Web の側に残らない。WordPress や Wix で書いた中身は、サービスが終わるとそこまでだ。
+Notion で書いた中身は、Notion の形式の中にある。Markdown は、どこにも属さない。
+
+これは link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 原稿は adoc、様式は aiseed office]
+で見た「中身は素のテキストで持つ」考え方の、Web 版だ。入口・中身・出口を分ける。
+
+* 入口 ── 画像、PDF、音声、Word から、Claude がテキストに起こす
+* 中身 ── Markdown と Mermaid で持ち、Git で版を管理する
+* 出口 ── Web、PDF、印刷、AI 分析、電子書籍。用途に応じて Python が変換する
+
+== 外枠は最小限で書く
+
+外枠 ── ヘッダー、ナビ、フッター、レイアウト、配色 ── は、HTML と CSS で直接書く。
+最小限で足りる。
+
+* HTML テンプレートは 1〜数ファイル
+* CSS は 1 ファイル(数百〜数千行)
+* JavaScript は本当に要る所(モバイルメニューの開閉など)だけ、数十行
+
+これらは年に数回しか触らない。外枠に時間を掛けすぎない。骨格は骨格として置き、時間は
+中身に使う。
+
+*手元に置く物*
+
+* HTML(構造)── テンプレート 1 ファイル
+* CSS(見た目)── 1 ファイル
+* JavaScript(動く所だけ)── 数十行
+* Markdown + Mermaid(中身)── 記事ごとに 1 ファイル
+
+*要らなくなる物*
+
+* JavaScript フレームワーク(React、Vue、Angular、Svelte)
+* ビルドツール(Webpack、Vite、Turbopack、Parcel)
+* TypeScript(素の JS で足りる)
+* CSS フレームワーク(Tailwind、Bootstrap)
+* パッケージマネージャ(npm、yarn、pnpm)と `node_modules`
+
+残るのは、素の Web 標準と Markdown だけだ。HTML / CSS / JS には変換の層が無く、Markdown は
+AI が最もよく扱う記法だ。どちらも、Claude が出した物をそのまま置ける。
+
+== npm を離れるもう一つの理由は、サプライチェーンにある
+
+ビルドが遅いこと、依存が重いことだけが理由ではない。npm を離れるもう一つの理由は、
+*レジストリを通して他人のコードが実行される* という構造にある。
+
+npm レジストリでは、サプライチェーンを狙う攻撃が繰り返し起きている。似た名前の
+パッケージで誤インストールを誘うタイポスクワッティング、依存パッケージ経由のコード注入、
+メンテナーのアカウント侵害によるパッケージの乗っ取り、ポストインストールスクリプトでの
+秘密情報の流出 ── 確かめられる代表例だけでも、こう並ぶ。
+
+* 2018 年:`event-stream` 事件(暗号通貨ウォレット狙い)
+* 2021 年:`ua-parser-js` 事件(マイニング・情報窃取のマルウェア注入)
+* 2022 年:`colors`、`faker` 事件(作者自身による破壊コミット)
+* 2024 年:`xz-utils` のバックドア(npm ではないが、長期のメンテナー乗っ取りの典型例)
+
+ほぼ毎年、大きな事件が報告されている。大手企業が公式に配布する npm パッケージが、
+サプライチェーン経由で攻撃の踏み台になった例も繰り返し起きている。個別の事件は、
+link:/ai-native-software/verify-narratives/[3-02: AI で物語を検証する]
+の手順で、各自が一次情報に当たって確かめてほしい。
+
+=== この構造は、npm の設計から来ている
+
+問題は、npm の生態系の設計そのものにある。
+
+* 一つのプロジェクトが数百〜数千のパッケージを推移的に依存する
+* それらのパッケージは、世界中の個人メンテナーが管理している
+* 更新は自動で取られる(`npm install` で最新が来る)
+* パッケージマネージャは依存先のコードを検査せずに実行する
+* ビルド手順や postinstall フックで、任意のコードが走る
+
+このうち一つが乗っ取られれば、取り込んだプロジェクト全体に届く。1 個のパッケージが、
+推移的に 1,000 個のリポジトリに影響するという形は、npm を使う限り付いてくる。この
+構造がどう効いてくるかは link:/ai-native-software/lockin/[3-05: ロックイン問題]
+の話と噛み合う。
+
+これに対して、この章のスタックは依存が桁違いに少ない。Markdown + HTML + CSS + JS は
+外部依存ゼロ(ブラウザ標準だけ)、Python のビルドスクリプトは `markdown-it-py`、
+`Jinja2`、`Pillow` の 3 個だ。3 個なら、全てのソースを Claude と一緒に読み通せる規模に
+なる。怪しい挙動があれば気付ける。1,000 個の依存ツリーは、人の目では追い切れない。
+Python のパッケージは PyPI の重要なものほど検査が厳しく、インストール時に任意コードが
+走る形も標準ではない。侵害される表面積が、桁違いに小さい。
+
+=== 依存 1,000 個に AI を入れるということ
+
+AI 時代に、もう一つ重い点がある。
+
+Claude Code は、エディタの裏でファイルを読み、コマンドを実行する。開発機の
+`node_modules` のどこかに悪意のあるパッケージが潜んでいれば、*AI 経由でその実行が
+引き起こされる* 可能性がある。
+
+____
+依存を 1,000 個抱えるプロジェクトに AI を入れることは、信頼できない他人を 1,000 人、
+自分の作業空間に招き入れることと同じだ。
+____
+
+依存の無いスタックなら、この心配がない。HTML、CSS、Markdown は、ただのテキストだ。
+実行されるコードは、自分と Claude が書いた物だけになる。「軽い」「速い」だけでなく、
+「侵害される入口が無い」── これが依存を減らすもう一つの理由だ。
+
+== Python が中身と外枠を繋ぐ
+
+Markdown を HTML に、Mermaid の図を SVG か画像に、そして外枠のテンプレートに流し込む ──
+これは Python スクリプトの仕事だ。
+
+```
+articles/foo/ja.md  ──→  Python  ──→  html/foo/index.html
+                              ↑
+                      tools/templates/article.html(外枠)
+```
+
+このスクリプトを自分で書く必要は無い。Claude に頼んで書いてもらう。`markdown-it-py` で
+Markdown を HTML にし、`Jinja2` でテンプレートに流し込む。両方合わせて 100〜200 行だ。
+
+依存は三つか四つで収まる。
+
+* `markdown-it-py` ── CommonMark のパーサ
+* `Jinja2` ── HTML テンプレートエンジン
+* `Pillow` ── 画像処理(OG 画像の生成など、要るときだけ)
+* Mermaid の図は、ブラウザ側で描くか、`mermaid-cli` で SVG にする
+
+`uv add markdown-it-py jinja2 pillow` を一度打てば、あとは `git clone && uv sync` で
+他の機械でも動く。`node_modules` も `requirements.txt` も出てこない。
+
+このサイト ── aiseed.dev ── のビルドスクリプト(`tools/build_article.py`)も、ほとんど
+Claude が書いた。ビルドツールを自分の手元に持てる時代だ。フレームワークの規約に従う
+代わりに、自分の規約で書く。図と資料の作り方は
+link:/ai-native-software/design/[2-13: 図と資料を作る ── Mermaid・Marp・そのほかの道具]
+に続く。
+
+== 動く部分は、FastAPI を一つ選ぶ
+
+「動的なサイトは作れないのでは」と思うかもしれない。動く部分はサーバー側に置く。
+Python の FastAPI、これ一つでいい。
+
+Flask、Django、Go、Rust、Ruby ── 選択肢は山ほどある。しかし選択肢を増やすと、組織は
+そのぶん分かれる。「FastAPI で書こう」と決めれば、そこから先の議論が終わる。
+*選んだら、選んだことを忘れる*。これが道具立ての考え方だ。
+
+なぜ FastAPI か。
+
+* Python なので、この連載のスタックと揃う
+* 型ヒントと Pydantic が自然に使える
+* async が標準に入っている
+* OpenAPI のドキュメントが自動で出る
+* Claude が最も書きやすい(オープンソースで学習データが多い)
+* 定型の記述が少ない
+
+そして、その FastAPI も最小限に保つ。
+
+* ORM を使わない。PostgreSQL のドライバ(asyncpg または psycopg)で SQL を直接書く
+* 層を積まない。Repository 層、Service 層、Domain 層を置かず、リクエストを受け、SQL を実行し、HTML を返す
+* 依存を増やさない。FastAPI、PostgreSQL ドライバ、Jinja2(要るとき)の三つで足りる
+* 設定ファイルを増やさない。環境変数だけで動かす
+* 一つのプロセスで動かす
+
+一つの関数の形は、こうなる。
+
+```python
+@app.get("/items", response_class=HTMLResponse)
+async def items():
+    rows = await conn.fetch("SELECT name, price FROM items")
+    return render("items.html", rows=rows)
+```
+
+リクエストを受け、SQL を実行し、HTML を返す。ここから先は、これ以上の何が要るのかを
+問い続ける。Claude が直接 SQL を書ける以上、ORM の抽象化を挟まなくても届く。書き方は
+AI が知っているので、人が渡すのは決めたことのほうだ。
+
+クライアント側の JavaScript も最小限でいい。リンク遷移は `<a>`、フォーム送信は
+`<form>` で足りる。部分的な更新が要るなら HTMX(数 KB のライブラリで、フレームワーク
+ではない)。WebSocket は本当に必要になったときに足す。最初から SPA を組まない。
+
+FastAPI の書き方と、基幹のロジックを API として出す手順は
+link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
+が受け持つ。ここでは、選ぶ理由までで足りる。
+
+== この形で作れるもの
+
+「中身は Markdown、外枠は HTML と CSS、Python が繋ぐ」は、実例で見るのが速い。
+
+* *個人事業主のポートフォリオ* ── 作品ごとの `.md` と画像、テンプレート 1 ファイルと `style.css` 1 ファイル、Python のビルドは 50 行。30〜100 ページ、ビルド数秒、月額ゼロ
+* *中小企業のコーポレートサイト* ── 会社概要・サービス・問い合わせ・ブログの Markdown。問い合わせフォームは FastAPI 50 行と SMTP、求人一覧は SQLite + FastAPI で 30 行。50〜200 ページ、月額千円未満
+* *NPO のイベント告知* ── `events/2026-04-foo.md` のようなイベントごとの Markdown。年別の目次は Python が自動生成、申し込みは外部フォームへのリンクか FastAPI 30 行
+* *学校の学級通信*(保護者限定)── 週次の Markdown と写真、学校の色で `style.css` 1 ファイル。Basic 認証(`htpasswd`)か、link:/ai-native-software/auth/[2-05: 門番を立てる ── PocketBase で認証を一つに] の門番の内側に置く
+* *研究室の論文・データ公開* ── 論文の原稿と、データセットのメタデータ。データは Parquet のまま直接ダウンロードさせる
+
+共通するのは、依存パッケージが 3〜4 個、ビルドが数秒、月額がほぼゼロ、コードのほとんどを
+AI が書くことだ。作るのも保守するのも、桁違いに軽い。このサイト(aiseed.dev)自身が、
+この構成で動いている。
+
+== この組み合わせは、10 年後も動く
+
+React の v15 で書いたコンポーネントは、v18 ではビルドが通らないことがある。Webpack の
+設定は、一年ごとに書き直しが要る。
+
+HTML、CSS、JavaScript の基本仕様は、25 年以上にわたって後方互換が保たれている。1999 年の
+HTML ファイルは、今のブラウザでも問題なく開く。Markdown も、2004 年の初版からほとんど
+変わっていない。20 年後も同じファイルが読める。
+
+____
+フレームワークは時代に依存する。Web 標準と Markdown は時代を超える。
+____
+
+== 数字で見る
+
+決めるときに効く数字は、依存の数とビルドの時間だ。React + Next.js + TypeScript +
+Tailwind で業務 Web を作ると、依存パッケージは約 1,200 個、ビルドは 3 分、
+`node_modules` は 500 MB。同じ機能を HTML + CSS + FastAPI + Markdown で作ると、
+依存 4 個、ビルド 5 秒、合計 10 MB になる。
+
+このサイト(aiseed.dev)の規模は、150 ページ以上、合計 30,000 行のコード、24 時間で
+組み上げた。React・Next.js・TypeScript はゼロ。Markdown と Mermaid と最小限の HTML/CSS
+だけだ。
+
+== 決めたことを、そのまま渡す
+
+この章の決定を一覧にしておく。AI に作らせるときは、これを渡せば足りる。書き方は AI が
+知っているので、人が渡すのは決めたことのほうだ。
+
+|===
+| 決める所 | 決めたこと
+| 中身の形式 | Markdown + Mermaid。中身に HTML タグは書かない
+| 外枠 | HTML テンプレート 1〜数ファイル、CSS 1 ファイル、JavaScript は数十行
+| 繋ぐ所 | Python。`markdown-it-py` + `Jinja2`(画像が要るときだけ `Pillow`)
+| 置き場 | 中身は `articles/`、外枠は `tools/templates/`、出力は `html/`。すべて Git の中に置く
+| 置かない物 | JS フレームワーク、ビルドツール、TypeScript、CSS フレームワーク、npm と `node_modules`
+| 動く部分 | FastAPI。ORM は積まず SQL を直接書く。テンプレートは Jinja2、返すのは HTML
+| 部分更新 | 要るときだけ HTMX。SPA にはしない
+| 公開 | 焼いた静的ファイルを配る(手順は 2-11)
+|===
+
+== 確かめ方
+
+この章は、次の五つができていれば済みだ。
+
+. 記事一本が Markdown ファイルとして置いてあり、その中に HTML タグが一つも入っていない
+. 一つのコマンドでビルドが走り、`html/` の下にページが出て、数秒で終わる
+. できた HTML をブラウザで開くと、外枠(ヘッダー・ナビ・フッター)と本文が出て、Mermaid の図が描かれている
+. 依存パッケージの一覧が数行に収まり、`node_modules` がどこにも無い
+. 同じ Markdown から PDF を作ってみて、中身がそのまま出る
+
+```bash
+uv add markdown-it-py jinja2 pillow
+python -c "import markdown_it, jinja2; print('ok')"
+```
+
+== 人が持つ物
+
+*人が渡す値*
+
+* サイトの構成 ── どのページを出し、どういう順で並べるか
+* 配色、ロゴ、書体
+* URL の付け方(既存サイトから移すときは、元の URL 構造)
+* 公開してよい文章と画像の範囲
+* 依存に入れてよいパッケージ
+
+*AI が「やる前に言う」操作*
+
+* 生成先のフォルダを一括で消す、または既存のサイトを上書きする
+* 既存の WordPress を停止する、ホスティング契約を解く
+* 公開済みの URL 構造を変える
+* 自分以外のサイトへクロールを掛ける(`tools/mirror_site.py` の向け先)
+* 新しい依存パッケージを足す
+
+== 確かめた版と日付
+
+* `markdown-it-py`、`Jinja2`、`Pillow` ── 版は指定していない
+* Playwright、`mermaid-cli` ── 版は指定していない
+* FastAPI、asyncpg / psycopg、HTMX ── 版は指定していない
+* 手順を書いたのは 2026-09-21
+* 版が上がっていたら、AI に公式の手順を確かめさせてから進める
+
+== まとめ
+
+Web を作る道具を、二層に分ける。
+
+* *二層* ── 中身は Markdown と Mermaid、外枠は HTML と CSS と最小限の JavaScript、両者を Python が繋ぐ
+* *WordPress から抜ける* ── 七つの手順で Markdown に移す。時間が無ければ Playwright で丸ごと静的に写し取る
+* *中身の出口* ── 同じ Markdown が、Web にも PDF にも印刷にも AI への入力にも電子書籍にもなる
+* *依存を持たない* ── npm のサプライチェーンの事件は、ほぼ毎年ある。3 個の依存なら全部読み通せる。1,000 個の依存に AI を入れることは、信頼できない他人を 1,000 人招くのと同じだ
+* *動く部分* ── FastAPI を一つ選び、ORM も層も積まない
+* *時間に強い* ── 25 年後方互換の Web 標準と、20 年変わらない Markdown
+
+ここまでで、公開できる HTML が手元にできた。次章では、その `html/` を自分の側から公開
+する。動的な WordPress をやめ、焼いた HTML を Cloudflare Pages に置く ── サーバは
+持たない。
+
+'''
+
+== 関連記事
+
+* link:/ai-native-software/web/[2-11: Web を公開する ── Cloudflare Pages]
+* link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 原稿は adoc、様式は aiseed office]
+* link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
+* link:/ai-native-software/design/[2-13: 図と資料を作る ── Mermaid・Marp・そのほかの道具]
+* link:/ai-native-software/lockin/[3-05: ロックイン問題]
+endif::[]
+ifdef::lang-en[]
+= Build the Web — Back to HTML, CSS, and JavaScript
+
+*Build a website in two layers.*
+
+link:/en/ai-native-software/meetings/[2-09: Meetings and Booking on Your Own Side — Jitsi and Cal.com]
+put gatherings and booking on your own side. This chapter assembles, in your own
+hands, the web you show to the outside. Content in Markdown and Mermaid, the frame
+in HTML, CSS, and minimal JavaScript, with Python connecting the two. Where the
+baked HTML then goes is the next chapter's job.
+
+== React fatigue comes from the number of tools
+
+For the past ten years, web development has been an arms race of frameworks.
+
+jQuery, Backbone, Angular, React, Vue, Svelte. Build tools: Grunt, Gulp, Webpack,
+Rollup, Vite, Turbopack. CSS: Sass, Less, PostCSS, Tailwind, CSS-in-JS.
+Server-side rendering: Next.js, Nuxt, Remix, SvelteKit, Astro.
+
+Each of them solved some problem. But line up the problems they solved against the
+problems they created, and it stops being worth it more and more often.
+
+* Build configuration takes weeks to learn
+* Dependencies pass 1,000 packages
+* Security updates arrive every week
+* Builds stop working after a year
+* One simple site needs 100 MB of folders
+
+This is not the complexity of the technology. It is complexity we added ourselves.
+Come back to raw HTML, CSS, and JavaScript and all five clear at once. The browser
+reads those three directly, so no conversion layer sits in between. And those three
+plus Markdown are exactly what AI writes most reliably.
+
+== WordPress has four traps
+
+"I'm not using React — we're on WordPress." Many people are thinking exactly that.
+
+That matches the facts. About 43% of the world's websites run on WordPress. In
+Japan too — corporate sites, personal blogs, news media, government sites — it is
+everywhere.
+
+WordPress has its own traps, though. They differ in nature from the React traps,
+and are at least as serious, often more.
+
+*Trap 1: the content sits in MySQL*
+
+WordPress posts are not text files. They are records inside MySQL, mixed with HTML.
+Convert the same post to PDF, move it to another site, hand it to AI for analysis —
+every path starts with an export.
+
+And the export format is `.xml` (WordPress's own WXR), with HTML tags and
+proprietary shortcodes (like `[gallery]`) mixed in. The content stays on the
+WordPress side. That is the same shape as the "data still inside Excel" seen in
+link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars].
+
+*Trap 2: plugins widen the attack surface*
+
+WordPress extends through plugins built by volunteers around the world. Twenty to
+thirty plugins on one site is ordinary. Each surfaces vulnerabilities periodically.
+The whole site becomes a collection of attack surfaces. That 43% of the world's web
+runs on the same machinery means, from the attacker's side, that 43% of the targets
+are the same machinery.
+
+*Trap 3: updates stop each other*
+
+WordPress core, themes, plugins — all of them depend on each other. Update one and
+another stops working. "We applied an update and the site went down" is a common
+event in WordPress operations.
+
+*Trap 4: Python gives steadier AI output than PHP*
+
+WordPress themes and plugins are written in PHP. Claude can write PHP, but output
+is steadier in Python. If you are building tools alongside AI, leaning to the Python
+side is faster.
+
+The urgent case is the online shop. It handles payments and customer personal data,
+which makes it a high-value target — card skimming, data leaks. The damage lands
+directly on money and trust. A WordPress shop should go static first of all. Hand
+payment to an external checkout page such as Stripe and never hold card data
+yourself. Let go of the running PHP, the database, and the admin login, and the
+attack surface goes with them.
+
+== Escaping WordPress takes seven steps
+
+If you are on WordPress, the way out is settled. You move in the same *parallel
+operation* shape covered in
+link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI].
+
+. Keep the existing WordPress running, and export the content to Markdown (plugins or CLI tools automate it; Claude writes the converter)
+. Build the new site with Markdown + minimal HTML/CSS + Python
+. Preserve the URL structure (to carry the search equity over)
+. Verify behavior in a staging environment and prepare the reindex requests
+. Pick the DNS cutover date
+. After cutover, run WordPress read-only for one month
+. If nothing surfaces, stop WordPress and cancel the hosting contract
+
+The cost difference is large too. WordPress managed hosting (WP Engine, Kinsta and
+the like) runs tens to hundreds of dollars a month. Put static HTML on Cloudflare
+Pages or GitHub Pages and the monthly cost is zero. Tens of thousands of yen a year
+come back.
+
+____
+WordPress, too, is left through parallel operation. Export to Markdown, write only
+the frame in HTML and CSS, generate with Python, serve it static. That is how you
+stop WordPress.
+____
+
+If there is no time to rebuild, there is a faster move — *mirror the existing site
+whole into static files*. A headless browser (Playwright) opens each page, saves the
+HTML and every file it loads (CSS, JS, images, fonts), and rewrites references to
+relative paths. By default it does not execute JavaScript; it saves the raw HTML the
+server returns — light HTML, free of the huge DOM that ad and analytics widgets add
+at render time. Turn rendering on only for sites that assemble their body with JS.
+Either way the browser follows and downloads every file the page actually pulls in,
+so nothing slips through the way it does with `requests` or `wget`. Put that on
+static hosting and the running WordPress stops, attack surface and all. What
+SiteSucker (Mac, paid) does, AI can write for you in Python (this site's repository
+ships `tools/mirror_site.py`).
+
+== Split content from frame, in two layers
+
+What is in a website splits into two.
+
+|===
+| Kind | What you write | Tool
+| Content | Prose, tables, quotes, code, diagrams | Markdown + Mermaid
+| Frame | Header, navigation, footer, layout, color | HTML + CSS + minimal JavaScript
+| Connection | Pour content into the frame and emit HTML | Python
+|===
+
+Writing these mixed together has been the catch in web production so far. A React
+component holds prose, formatting, and logic in one place. A WordPress post holds
+HTML tags and prose in one place. The mixture makes itself felt later, when
+something has to be rewritten.
+
+The AI-native split keeps content and frame fully apart. The content is written in
+Markdown and Mermaid only, with no HTML tags. The frame is written in HTML and CSS
+and never touches the content of any individual article. Python connects them
+mechanically.
+
+```mermaid
+flowchart LR
+  subgraph Content["content (reusable at other exits)"]
+    MD["article *.md<br/>(Markdown)"]
+    MMD["diagram *.mmd<br/>(Mermaid)"]
+  end
+  subgraph Frame["frame"]
+    HTML["template.html"]
+    CSS["style.css"]
+    JS["main.js (minimal)"]
+  end
+  Py(("Python<br/>build"))
+
+  MD --> Py
+  MMD --> Py
+  HTML --> Py
+  CSS --> Py
+  JS --> Py
+  Py --> Site["static HTML site"]
+
+  MD -.->|as is| PDF["PDF / print"]
+  MD -.->|as is| AI[("AI analysis")]
+  MD -.->|as is| Book["e-book"]
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef bad  fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class MD,MMD good
+  class HTML,CSS,JS bad
+```
+
+== Holding content in Markdown adds exits
+
+The biggest reason to write content in Markdown and Mermaid is that the same data
+travels to exits beyond the web.
+
+From the same Markdown file:
+
+* A web page (Python converts it to HTML)
+* A PDF (`pandoc` or Claude does the conversion)
+* A print-ready manuscript
+* An e-book (EPUB)
+* Input to AI for summary, translation, and questions
+* Material to paste into other media
+* Diffs and history in Git
+* Co-editing with other people
+
+The content does not stay on the web side. Content written in WordPress or Wix ends
+when the service ends. Content in Notion lives inside Notion's format. Markdown
+belongs nowhere in particular.
+
+This is the web version of the "hold the content as plain text" idea from
+link:/en/ai-native-software/documents/[2-07: Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office].
+Separate entrance, content, and exit.
+
+* Entrance — Claude turns images, PDFs, audio, and Word into text
+* Content — held in Markdown and Mermaid, versioned in Git
+* Exit — web, PDF, print, AI analysis, e-book. Python converts per use
+
+== Write the frame minimally
+
+The frame — header, navigation, footer, layout, color — is written directly in HTML
+and CSS. Minimal is enough.
+
+* HTML templates: one to a few files
+* CSS: one file (a few hundred to a few thousand lines)
+* JavaScript: only where it is genuinely needed (a mobile menu toggle, say), tens of lines
+
+You touch these a few times a year. Do not spend too much on the frame. The skeleton
+stays a skeleton, and the time goes into the content.
+
+*What you keep in hand*
+
+* HTML (structure) — one template file
+* CSS (appearance) — one file
+* JavaScript (only the moving parts) — tens of lines
+* Markdown + Mermaid (content) — one file per article
+
+*What you stop needing*
+
+* JavaScript frameworks (React, Vue, Angular, Svelte)
+* Build tools (Webpack, Vite, Turbopack, Parcel)
+* TypeScript (plain JS is enough)
+* CSS frameworks (Tailwind, Bootstrap)
+* Package managers (npm, yarn, pnpm) and `node_modules`
+
+What remains is raw web standards and Markdown. HTML / CSS / JS have no conversion
+layer, and Markdown is the notation AI handles best. Both can be placed exactly as
+Claude returns them.
+
+== The other reason to leave npm is the supply chain
+
+Slow builds and heavy dependencies are not the whole of it. The other reason to
+leave npm is the structure itself: *other people's code runs on your machine,
+through the registry*.
+
+Supply-chain attacks on the npm registry happen repeatedly. Typosquatting that lures
+a mistaken install with a similar package name, code injected through a dependency,
+package takeover through a compromised maintainer account, secrets exfiltrated in a
+postinstall script. The verifiable landmarks alone line up like this.
+
+* 2018: the `event-stream` incident (aimed at cryptocurrency wallets)
+* 2021: the `ua-parser-js` incident (mining and info-stealing malware injected)
+* 2022: the `colors` and `faker` incidents (destructive commits by the author)
+* 2024: the `xz-utils` backdoor (not npm, but the classic case of a long-running maintainer takeover)
+
+Nearly every year, a large incident is reported. npm packages distributed officially
+by major companies have repeatedly become stepping stones for attacks through the
+supply chain. For any individual incident, go to the primary sources yourself with
+the procedure in
+link:/en/ai-native-software/verify-narratives/[3-02: Checking the Story — Verifying Vendor Narratives Against Primary Sources].
+
+=== The structure comes from npm's design
+
+The issue lies in the design of the npm ecosystem itself.
+
+* One project depends transitively on hundreds to thousands of packages
+* Those packages are maintained by individuals all over the world
+* Updates arrive automatically (`npm install` pulls the latest)
+* The package manager executes dependency code without inspecting it
+* Arbitrary code runs in build steps and postinstall hooks
+
+Take over any one of them and it reaches every project that pulled it in. One
+package affecting 1,000 repositories transitively is a shape that comes along with
+npm. How that shape plays out over time meshes with
+link:/en/ai-native-software/lockin/[3-05: The Lock-In Problem].
+
+Against that, this chapter's stack carries far fewer dependencies. Markdown + HTML +
+CSS + JS has zero external dependencies (browser standards only), and the Python
+build script has three: `markdown-it-py`, `Jinja2`, `Pillow`. With three, reading
+all of the source together with Claude is within reach, and odd behavior is
+noticeable. A tree of 1,000 is beyond what a person's eyes can follow. Python
+packages are scrutinized more heavily the more important they are on PyPI, and
+arbitrary code running at install time is not the norm there. The surface that can
+be compromised is smaller by orders of magnitude.
+
+=== What it means to put AI into 1,000 dependencies
+
+There is one more weight to this in the age of AI.
+
+Claude Code reads files and runs commands behind the editor. If a malicious package
+is sitting somewhere in `node_modules` on the development machine, *its execution
+can be triggered through the AI*.
+
+____
+Putting AI into a project that carries 1,000 dependencies is the same as inviting
+1,000 strangers you cannot vouch for into your own workspace.
+____
+
+A stack with no dependencies carries none of that worry. HTML, CSS, and Markdown are
+just text. The only code that runs is code you and Claude wrote. Not merely "light"
+and "fast," but "no entrance to be compromised" — that is the other reason to hold
+dependencies down.
+
+== Python connects content and frame
+
+Turning Markdown into HTML, Mermaid diagrams into SVG or images, and pouring them
+into the frame template — that is the job of a Python script.
+
+```
+articles/foo/ja.md  ──→  Python  ──→  html/foo/index.html
+                              ↑
+                  tools/templates/article.html (frame)
+```
+
+You do not need to write that script yourself. Ask Claude to write it. Convert
+Markdown to HTML with `markdown-it-py`, pour it into the template with `Jinja2`.
+Together that is 100–200 lines.
+
+Three or four dependencies cover it.
+
+* `markdown-it-py` — a CommonMark parser
+* `Jinja2` — an HTML template engine
+* `Pillow` — image processing (OG image generation, only when needed)
+* Mermaid diagrams render in the browser, or go to SVG with `mermaid-cli`
+
+Type `uv add markdown-it-py jinja2 pillow` once, and from there `git clone && uv
+sync` brings it up on another machine. No `node_modules`, and no `requirements.txt`
+either.
+
+This site's build script (`tools/build_article.py`) was mostly written by Claude.
+The build tool can be held in your own hands now. Instead of following a framework's
+conventions, write under your own. Diagrams and documents continue in
+link:/en/ai-native-software/design/[2-13: Make Diagrams and Documents — Mermaid, Marp, and the Other Tools].
+
+== For the moving parts, pick one FastAPI
+
+"You can't build dynamic sites that way," you might think. The moving parts go on
+the server side. Python's FastAPI, that one alone.
+
+Flask, Django, Go, Rust, Ruby — there are mountains of choices. But each added
+choice divides the organization by that much. "We write in FastAPI" — once decided,
+the argument past that point ends. *Pick, then forget you picked.* That is how tool
+choice works here.
+
+Why FastAPI:
+
+* It is Python, so it lines up with the rest of this series' stack
+* Type hints and Pydantic work naturally
+* async is standard
+* OpenAPI documentation generates itself
+* Claude writes it best (open source, with rich training data)
+* Little boilerplate
+
+And that FastAPI is kept minimal too.
+
+* No ORM. Write SQL directly with a PostgreSQL driver (asyncpg or psycopg)
+* No stacked layers. No repository layer, service layer, or domain layer — receive the request, run the SQL, return the HTML
+* No growing dependencies. FastAPI, the PostgreSQL driver, and Jinja2 (when needed) are enough
+* No growing config files. Environment variables run it
+* One process
+
+One handler takes this shape.
+
+```python
+@app.get("/items", response_class=HTMLResponse)
+async def items():
+    rows = await conn.fetch("SELECT name, price FROM items")
+    return render("items.html", rows=rows)
+```
+
+Receive the request, run the SQL, return the HTML. From there, keep asking what more
+is actually needed. Since Claude writes SQL directly, it reaches without an ORM's
+abstraction in between. The AI already knows the syntax; what the human hands over
+is the decisions.
+
+Client-side JavaScript stays minimal as well. `<a>` handles link navigation,
+`<form>` handles submission. If partial updates are needed, HTMX (a few KB library,
+not a framework). Add WebSocket when it becomes genuinely necessary. Do not start
+with an SPA.
+
+How to write FastAPI, and how to expose core logic as an API, belong to
+link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI].
+Here, the reason for the choice is enough.
+
+== What this shape builds
+
+"Content in Markdown, frame in HTML and CSS, Python in between" reads faster in
+cases.
+
+* *A sole proprietor's portfolio* — one `.md` per work plus images, one template file and one `style.css`, a 50-line Python build. 30–100 pages, build in seconds, zero per month
+* *A small business's corporate site* — about, services, contact, and blog as Markdown. The contact form is 50 lines of FastAPI over SMTP; the job list is 30 lines of SQLite + FastAPI. 50–200 pages, under $10 a month
+* *A non-profit's event announcements* — one Markdown file per event, like `events/2026-04-foo.md`. Python generates the yearly index; sign-ups go to an external form link or 30 lines of FastAPI
+* *A school's class newsletter* (parents only) — weekly Markdown and photos, one `style.css` in the school colors. Basic auth (`htpasswd`), or behind the gate from link:/en/ai-native-software/auth/[2-05: Stand Up the Gate — One Login with PocketBase]
+* *A research group's papers and data* — the paper manuscripts plus dataset metadata, with the data downloaded directly as Parquet
+
+What they share: three or four dependency packages, builds in seconds, nearly zero
+monthly cost, and AI writing most of the code. Both building and maintaining are
+lighter by orders of magnitude. This site (aiseed.dev) itself runs in this shape.
+
+== This combination still runs in ten years
+
+A component written for React v15 may not build under v18. Webpack configuration
+needs rewriting every year.
+
+The core specs of HTML, CSS, and JavaScript have held backward compatibility for
+25-plus years. An HTML file from 1999 opens fine in today's browser. Markdown too has
+barely changed since its 2004 first edition. The same files will read twenty years
+from now.
+
+____
+Frameworks depend on their era. Web standards and Markdown cross eras.
+____
+
+== In numbers
+
+The numbers that matter when deciding are the dependency count and the build time.
+Building a business web with React + Next.js + TypeScript + Tailwind: around 1,200
+dependency packages, 3-minute builds, 500 MB of `node_modules`. The same
+functionality with HTML + CSS + FastAPI + Markdown: 4 dependencies, 5-second builds,
+10 MB in total.
+
+The scale of this site (aiseed.dev): 150-plus pages, 30,000 lines of code in total,
+assembled in 24 hours. Zero React, Next.js, or TypeScript. Markdown, Mermaid, and
+minimal HTML/CSS only.
+
+== Hand the decisions over as they are
+
+Here are this chapter's decisions in one place. When you have AI build the site,
+handing this over is enough. The AI already knows the syntax; what the human hands
+over is the decisions.
+
+|===
+| Decision point | What is decided
+| Content format | Markdown + Mermaid. No HTML tags inside the content
+| Frame | One to a few HTML templates, one CSS file, tens of lines of JavaScript
+| The connection | Python. `markdown-it-py` + `Jinja2` (`Pillow` only when images are needed)
+| Where things live | Content in `articles/`, frame in `tools/templates/`, output in `html/` — all inside Git
+| What is not placed | JS frameworks, build tools, TypeScript, CSS frameworks, npm and `node_modules`
+| Moving parts | FastAPI. No ORM; SQL written directly. Jinja2 for templates, HTML as the response
+| Partial updates | HTMX only when needed. No SPA
+| Publishing | Serve the baked static files (the procedure is 2-11)
+|===
+
+== How to check you are done
+
+This chapter is done when these five hold.
+
+. One article sits there as a Markdown file, with no HTML tag inside it
+. One command runs the build, pages appear under `html/`, and it finishes in seconds
+. Opening the produced HTML in a browser shows the frame (header, navigation, footer) and the body, with the Mermaid diagram drawn
+. The dependency list fits in a few lines, and `node_modules` is nowhere
+. Making a PDF from the same Markdown gives you the content as it is
+
+```bash
+uv add markdown-it-py jinja2 pillow
+python -c "import markdown_it, jinja2; print('ok')"
+```
+
+== What the human holds
+
+*Values the human supplies*
+
+* The site's structure — which pages exist, and in what order
+* Colors, logo, typeface
+* How URLs are formed (when moving from an existing site, its URL structure)
+* The range of prose and images that may be published
+* Which packages may enter the dependencies
+
+*Actions the AI states before performing*
+
+* Deleting the output folder wholesale, or overwriting an existing site
+* Stopping the existing WordPress, or cancelling the hosting contract
+* Changing a published URL structure
+* Pointing a crawl at a site that is not yours (where `tools/mirror_site.py` is aimed)
+* Adding a new dependency package
+
+== Versions checked, and when
+
+* `markdown-it-py`, `Jinja2`, `Pillow` — no version pinned
+* Playwright, `mermaid-cli` — no version pinned
+* FastAPI, asyncpg / psycopg, HTMX — no version pinned
+* The procedure was written on 2026-09-21
+* If a version has moved, have the AI confirm the official procedure before proceeding
+
+== Summary
+
+Split the web-building tools into two layers.
+
+* *Two layers* — content in Markdown and Mermaid, the frame in HTML, CSS, and minimal JavaScript, with Python connecting them
+* *Leaving WordPress* — seven steps move the content to Markdown. With no time to rebuild, Playwright mirrors the whole site into static files
+* *Exits for the content* — the same Markdown becomes the web, a PDF, print, input to AI, and an e-book
+* *Holding no dependencies* — npm supply-chain incidents land nearly every year. Three dependencies can all be read through. Putting AI into 1,000 of them invites 1,000 strangers in
+* *The moving parts* — pick one FastAPI, with no ORM and no stacked layers
+* *Durable in time* — web standards with 25 years of backward compatibility, and Markdown unchanged for 20
+
+At this point the HTML that can be published exists in your hands. The next chapter
+publishes that `html/` from your own side. Dynamic WordPress goes, the baked HTML
+goes onto Cloudflare Pages — and you hold no server.
+
+'''
+
+== Related articles
+
+* link:/en/ai-native-software/web/[2-11: Publish the Web — Cloudflare Pages (a WordPress Replacement)]
+* link:/en/ai-native-software/documents/[2-07: Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office]
+* link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
+* link:/en/ai-native-software/design/[2-13: Make Diagrams and Documents — Mermaid, Marp, and the Other Tools]
+* link:/en/ai-native-software/lockin/[3-05: The Lock-In Problem]
+endif::[]
 // ===== article: 16-web =====
 ---
 slug: web
 number: 11
 part: 2
-title.ja: Web を公開する ── Cloudflare Pages
-title.en: Publish the Web — Cloudflare Pages (a WordPress Replacement)
-subtitle.ja: 動的な WordPress をやめ、静的サイトをサーバ無しで公開する ── ビルド・確認・デプロイを分けて
-subtitle.en: Drop dynamic WordPress and publish a static site with no server — build, verify, deploy as separate steps
-description.ja: 親シリーズ第6章で AI と作った静的サイトを、自分の側から公開する。動的な WordPress をやめ、焼いた HTML を Cloudflare Pages に置く ── サーバは持たない。CDN と自動 HTTPS は Cloudflare に任せ、ソースとビルドは自分の手元に残す。肝は「ビルド → 確認 → デプロイ」を分けること。確認した HTML と本番に上げる HTML を同じにする。内部の道具は門番の内側に残す ── 窓は借り、金庫は自分に。人が持つのは、ドメインと API トークン、本番へ上げる判断の三つだ。
-description.en: Publish, from your own side, the static site you built with AI in the parent series' Chapter 6. Drop dynamic WordPress and put the baked HTML on Cloudflare Pages — hold no server. Leave the CDN and automatic HTTPS to Cloudflare; keep the source and build in your own hands. The crux is to separate build, verify, and deploy, keeping what you verified identical to what goes live. Internal tools stay behind the gate — borrow the window, hold the vault. The human holds the domain, the API token, and the decision to go to production.
-date: 2026.07.14
+title.ja: Web を公開する ── 自分の一台か、Cloudflare Pages か
+title.en: Publish the Web — Your Own Machine, or Cloudflare Pages
+subtitle.ja: 焼いた HTML を、二つの置き場のどちらにも、同じ手順で出す
+subtitle.en: Ship the baked HTML to either home, by the same procedure
+description.ja: 前章で焼いた静的サイトを、外に出す。置き場は二つある。2-02 で立てた自分の一台に Caddy で載せるか、Cloudflare Pages に置くか。どちらも「ビルド → 確認 → デプロイ」を分ける同じ手順で出せて、後から入れ替えられる。自分の一台なら、公開の Web も内部の道具も動く部分も同じ機械に並び、証明書は Caddy が自動で取る。Cloudflare Pages なら、CDN と防御を借りて機械の面倒を持たない。動く部分は FastAPI 一つにまとめ、公開の側からはその一点だけを通す。人が持つのは、ドメインと鍵と、本番へ出す判断の三つだ。
+description.en: Ship the static site you baked in the previous chapter. There are two homes for it: your own machine from 2-02 with Caddy in front, or Cloudflare Pages. Both take the same procedure — build, verify, deploy as separate steps — and either can replace the other later. On your own machine, the public web, the internal tools, and the moving parts all sit on one box, and Caddy takes the certificate automatically. On Cloudflare Pages, you borrow the CDN and the defense and hold no machine. The moving parts are one FastAPI, and the public side reaches exactly that one point. The human holds the domain, the keys, and the decision to go live.
+date: 2026.09.21
 label: Independence 11
-title_html.ja: WordPress をやめ、<br><span class="accent">サーバ無し</span>で公開する。
-title_html.en: Drop WordPress;<br>publish with <span class="accent">no server</span>.
+title_html.ja: 置き場は二つ、<br>手順は<span class="accent">一つ</span>。
+title_html.en: Two homes,<br><span class="accent">one</span> procedure.
 ---
 ifdef::lang-ja[]
-= Web を公開する ── Cloudflare Pages
+= Web を公開する ── 自分の一台か、Cloudflare Pages か
 
-会社の Web サイトは、静的でよい。前章で会議と予約を自分の側に置いた。ここでは、
-外に見せる Web を公開する。親シリーズ第6章で AI と作った静的サイトを、動的な
-WordPress をやめて、焼いた HTML のまま Cloudflare Pages に置く。サーバは
-持たない。
+link:/ai-native-software/web-build/[2-10: Web を作る ── HTML と CSS と JavaScript に戻る]
+で、中身を Markdown で持ち、外枠を HTML と CSS で書き、Python で焼く形を決めた。
+ここでは、その焼いた `html/` を外に出す。
 
-== WordPress は、やめてよい
+置き場は二つある。link:/ai-native-software/ai-pc/[2-02] で立てた自分の一台に
+載せるか、Cloudflare Pages に置くかだ。出す手順はどちらも同じで、片方で始めて
+後から替えられる。
 
-WordPress は、動的サーバ・データベース・プラグインの塊だ。更新・保守・
-セキュリティの負担が、ずっと続く。会社サイトの中身はめったに変わらない。
-だから *静的でよい*。静的ならサーバも DB も要らず、攻撃される面もほぼ無い。
-親シリーズ第6章で作った `html/` を、そのまま公開する。
+== 公開する形を、先に決める
 
-== サーバを持たずに、Cloudflare Pages へ置く
+この章で決めるのは、次の六つだ。AI にこの章を渡すとき、渡すのはこの決定であって、
+コードではない。
 
-作った HTML は Cloudflare Pages に置く。サーバは要らない。ファイルを上げれば、
-世界中の CDN から配信され、HTTPS も自動でつく。
+* *公開するのは、焼いた HTML の束*(`html/`)── 生成は前章で終わっている
+* *動的サーバは置かない* ── 動く部分だけを FastAPI 一つに寄せる
+* *置き場は二つのどちらか* ── 自分の一台(Caddy)か、Cloudflare Pages。上げる
+  `html/` は同じ物
+* *HTTPS は自動* ── Caddy が取るか、Cloudflare が付ける
+* *ビルド → 確認 → デプロイを分ける* ── 確認した HTML と、本番に出る HTML を
+  同じにする
+* *公開の側と内部の道具は、名前から分ける* ── 秘密が通る側は門番
+  (link:/ai-native-software/auth/[2-05])の内側に残す
 
-配信と防御は Cloudflare に任せ、ソースとビルドは自分の手元に残す。公開する
-HTML に秘密は無いので、ここは任せられる。
+== 置き場は、二つから選ぶ
+
+[cols="1,2,2"]
+|===
+| | 自分の一台(2-02 + Caddy) | Cloudflare Pages
+
+| 機械
+| 自分で持つ(2-02 の一台にまとめる)
+| 借りる。機械の面倒は無い
+
+| 証明書
+| Caddy が Let's Encrypt から自動で取って更新する
+| Cloudflare が自動で付ける
+
+| 配信
+| 自分の回線の太さで決まる
+| 世界中の CDN から出る
+
+| 動く部分
+| 同じ機械の FastAPI に、そのまま繋ぐ
+| 門番の内側の API に、公開ドメインからだけ繋ぐ
+
+| 向く場面
+| 社内向け、規模の見える公開、IoT の受け口も同じ一台に置きたいとき
+| 閲覧が多い、回線と機械のことを考えたくないとき
+|===
+
+迷うなら、*自分の一台から始める*。2-02 で機械はもう立っていて、足すのは Caddy
+の数行だけだ。閲覧が増えて回線が気になったら、同じ `html/` を Cloudflare Pages
+に上げれば、その日のうちに移れる。
+
+== 自分の一台に載せる
+
+2-02 で立てた Debian の一台に、Caddy を前に立てる。Caddy は 80 と 443 を受け、
+証明書を自動で取って自動で更新する。設定はこれだけだ。
+
+```
+example.com {
+    root * /srv/html
+    file_server
+    handle /api/* {
+        reverse_proxy localhost:8000
+    }
+}
+```
+
+公開の Web(静的ファイル)と、動く部分(FastAPI)が、同じドメインの下に並ぶ。
+別のドメインを跨がないので、ブラウザ側の許可設定も要らない。
+
+決めることは三つ。
+
+* *公開する物の置き場* ── `/srv/html`。手元で焼いた `html/` を、そこへ送る
+* *内部の道具は、別のホスト名* ── `intra.example.com` のように分け、門番
+  (2-05)の内側に置く。同じ Caddy でよいが、公開のホスト名とは分ける
+* *外から届く道* ── 固定 IP か DDNS で名前を向け、開けるのは 80 と 443 だけ
+
+== Cloudflare Pages に置く
+
+機械を持たずに出すなら、Cloudflare Pages を使う。ファイルを上げれば世界中の CDN
+から配信され、HTTPS も自動で付く。
+
+配信と防御は Cloudflare に任せ、ソースとビルドは自分の手元に残す。公開する HTML
+に秘密は無いので、ここは任せてよい。
+
+上げるのに npm も Node も要らない。Cloudflare の API を直接叩くスクリプト一つで
+足りる。そのスクリプトは
+https://github.com/aiseed-dev/cf-publish[`aiseed-dev/cf-publish`]
+として公開してあり、一行で、変わったファイルだけが上がる。
 
 == ビルドと確認とデプロイを、分ける
 
-公開は、手順を分けてやる。一つにまとめない。
+置き場がどちらでも、出す手順は同じだ。一つのコマンドにまとめない。
 
 ```bash
-# 1. ビルド ── html/ を作る
-python tools/build.py
-# 2. 確認 ── 作った html/ をそのまま開いて、目で見る
-python -m http.server --directory html 8000
-# 3. プレビューに上げる ── 本番の前に、実環境で確認
-python tools/deploy_pages.py html --branch preview
-# 4. 確認できたら、本番に上げる
-python tools/deploy_pages.py html --branch main
+python tools/build.py                            # 1. 焼く
+python -m http.server --directory html 8000      # 2. 手元で、目で見る
+rsync -a --delete html/ user@example.com:/srv/html/   # 3a. 自分の一台へ
+cf-publish html --project <名前>                  # 3b. Cloudflare Pages へ
 ```
 
 自動で作り直す設定や、「ビルドして上げる」を一つにまとめたコマンドは使わない。
-*確認した HTML と、本番に上がる HTML を、同じにする*ためだ(詳しい運用は
-社内マニュアルに分ける)。アップロードに npm や Node は要らない ── Cloudflare
-の API を直接叩くスクリプト一つでよい。そのスクリプトは公開パッケージ
-cf-publish(https://github.com/aiseed-dev/cf-publish[`aiseed-dev/cf-publish`])
-にしてある ── `cf-publish html --project <名前>` の一行で、変わったファイル
-だけが上がる。
+*確認した HTML と、本番に出る HTML を、同じにする* ためだ。Cloudflare Pages に
+は本番の前にプレビューの枝があるので、本番の URL に向ける前にそこで見られる。
+自分の一台なら、同じ機械にもう一つのホスト名を足せば、同じことができる。
 
-== ドメインは、カスタムドメインでつなぐ
+== ドメインをつなぐ
 
-独自ドメインは、Cloudflare Pages のカスタムドメインに追加する。DNS を
-Cloudflare で持っていれば、今までサーバを指していた A レコードが、自動で Pages
-に切り替わる。証明書も自動でつく。
+* *自分の一台* ── A レコードをその機械の IP へ向ける。名前が向いた時点で、Caddy
+  が証明書を取りにいく
+* *Cloudflare Pages* ── Pages のカスタムドメインに足す。DNS を Cloudflare で
+  持っていれば、A レコードは自動で Pages を指し、証明書も自動で付く
 
-*メール(MX・SPF)は触らない*。Web の置き場を替えるだけだ。不安なら、旧サーバ
-を止めず、プレビューで確認してから本番ドメインを向ける。
+*メール(MX・SPF)は触らない*。替えるのは Web の置き場だけだ。旧サーバがあるなら、
+止めずに残したまま新しい側を確かめ、確かめてから名前を向ける。
 
-== 動く部分だけ、裏につなぐ
+== 動く部分は、FastAPI で裏につなぐ
 
-問い合わせフォームのような動く部分だけ、裏につなぐ。送信先は、門番(2-05)の
-内側に置いた自分の API だ。認証は門番、保存は 2-03 の DB、通知は 2-08 の
-メールでやる。大半は静的で、動くのは要る所だけである。
+問い合わせフォーム、予約の受け口、求人の検索 ── 動くのはこのくらいだ。ここは
+FastAPI 一つに寄せる。
 
-== 内部の道具は、門番の内側に残す
+* *受け口* ── FastAPI(link:/ai-native-software/fastapi/[2-12])
+* *保存* ── link:/ai-native-software/foundation/[2-03] の DB
+* *通知* ── link:/ai-native-software/mail/[2-08] のメール
+* *ログインが要るとき* ── 門番(2-05)に任せる
 
-公開サイトは Cloudflare Pages に借りる。だが、自立編で立てた内部の道具 ──
-門番・文書・コード・メール・会議 ── は別だ。秘密や生のデータが通るので、
-門番(自分のリバースプロキシ)の内側に残す。
+繋ぎ方は置き場で変わる。自分の一台なら、Caddy の `/api/*` を同じ機械の FastAPI
+へ回す。Cloudflare Pages なら、門番の内側の FastAPI へ外から繋ぐので、受け付ける
+出どころを公開ドメインの一つに限っておく。
 
-* *公開サイト*(静的・秘密なし)── Cloudflare Pages に借りる
-* *内部の道具*(認証・業務データ)── 自分の側、門番の内側に持つ
+== 公開の側と、門番の内側を分ける
 
-窓は借り、金庫は自分に。借りる所と、自分で持つ所を、分けて決める。
+公開サイトは、どちらの置き場でもよい。静的で、秘密は無い。自立編で立てた内部の
+道具 ── 門番・文書・コード・メール・会議 ── は別に扱う。秘密や生のデータが通るので、
+門番の内側に残す。
+
+* *公開サイト*(静的・秘密なし)── 自分の一台でも、Cloudflare Pages でもよい
+* *内部の道具*(認証・業務データ)── 門番の内側に持つ
 
 借りている窓は、いつでも替えられる。公開サイトの実体は、静的ファイルの束と、
-手元のソースである。Cloudflare に預けているものは何も無い。明日、別のホストに
-同じファイルを置けば、それで引っ越しは終わる。窓は借りるが、出口はいつも開いて
-いる。
+手元のソースだ。明日、別の置き場に同じ `html/` を送れば、それで引っ越しは終わる。
+窓は借りても、出口はいつも開いている。
 
 == 確かめ方
 
@@ -6473,13 +7530,13 @@ Cloudflare で持っていれば、今までサーバを指していた A レコ
 
 . 公開した頁が独自ドメインで開き、ブラウザに鍵の印が付く
 . 手元の 8000 番で目で見た頁と、本番の頁が同じに見える
-. 本番の前に、プレビューの URL で同じ頁を開いて確認できる
+. 本番に向ける前に、別の URL で同じ頁を開いて確かめられる
 . 問い合わせフォームから送ると、2-08 のメールに通知が届き、2-03 の DB に残っている
 . 今までどおりメールが届く(MX を触っていない)
 
 ```bash
-curl -sI https://example.com | head -1        # 公開した頁が返る
-curl -sI https://example.com | grep -i server # 配信元が Cloudflare に替わった
+curl -sI https://example.com | head -1      # 公開した頁が返る
+curl -sI https://example.com/api/health     # 動く部分も同じ名前の下で返る
 ```
 
 == 人が持つ物
@@ -6487,33 +7544,35 @@ curl -sI https://example.com | grep -i server # 配信元が Cloudflare に替�
 *人が渡す値*
 
 * 公開するドメイン名
-* Cloudflare のアカウントと API トークン
-* Pages のプロジェクト名(`--project <名前>` に渡す値)
-* 問い合わせフォームの送信先にする、自分の API の URL
+* 置き場の選択(自分の一台か、Cloudflare Pages か)
+* 自分の一台なら ── その機械の IP と、送り先のパス(`/srv/html`)
+* Cloudflare Pages なら ── アカウントと API トークン、プロジェクト名
 * 問い合わせの通知を受けるメールアドレス(2-08 のメール)
 
 *AI が「やる前に言う」操作*
 
-* 本番ブランチ(`--branch main`)へ上げる
-* カスタムドメインを追加して、A レコードを Pages に切り替える
+* 本番のドメインに名前を向ける
+* 本番の `html/` を丸ごと入れ替える(`rsync --delete` を含む)
+* Caddy の設定を替えて、公開のホスト名を足す・外す
 * 旧サーバを止める
 * DNS の MX・SPF を変える(この章では触らない)
 
 == 確かめた版と日付
 
-* Cloudflare Pages、cf-publish(`aiseed-dev/cf-publish`)、Python の `http.server`
-* 手順を書いたのは 2026-07-14
+* Caddy(自動 HTTPS)、Cloudflare Pages、`cf-publish`
+  (`aiseed-dev/cf-publish`)、`rsync`、Python の `http.server`
+* 手順を書いたのは 2026-09-21
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
 == まとめ
 
-WordPress をやめ、サーバ無しで公開する。
+焼いた HTML を、二つの置き場のどちらかに出す。
 
-* *WordPress をやめる* ── 動的サーバ・DB・プラグインの保守負担を捨てる
-* *Cloudflare Pages* ── サーバ無しで公開、CDN と自動 HTTPS を借りる
-* *ビルド → 確認 → デプロイを分ける* ── 確認した物を、そのまま本番へ
-* *ドメインは自動で切り替わる* ── カスタムドメインで A レコードが Pages を指す、メールは触らない
-* *窓は借り、金庫は自分に* ── 内部の道具は門番の内側に残す
+* *置き場は二つ* ── 2-02 の自分の一台(Caddy)か、Cloudflare Pages。同じ `html/`
+* *手順は一つ* ── ビルド → 確認 → デプロイを分け、確かめた物をそのまま出す
+* *HTTPS は自動* ── Caddy が取るか、Cloudflare が付ける
+* *動く部分は FastAPI 一つ* ── 保存は 2-03、通知は 2-08、ログインは門番
+* *公開と内部を分ける* ── 秘密が通る側は、門番の内側に残す
 
 次章では、基幹システムのロジックを API(FastAPI)として出し、各アプリから
 使えるようにする。
@@ -6522,91 +7581,169 @@ WordPress をやめ、サーバ無しで公開する。
 
 == 関連記事
 
-* link:/ai-native-ways/web/[親シリーズ第6章: Webを作る ── HTML+CSS+JavaScriptという原点回帰]
+* link:/ai-native-software/web-build/[2-10: Web を作る ── HTML と CSS と JavaScript に戻る]
+* link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
 * link:/ai-native-software/auth/[2-05: 門番を立てる ── PocketBase で認証を一つに]
-* link:/ai-native-software/independence/[2-01: Microsoft と Google から自立する ── 全体像と対応表]
 endif::[]
 ifdef::lang-en[]
-= Publish the Web — Cloudflare Pages (a WordPress Replacement)
+= Publish the Web — Your Own Machine, or Cloudflare Pages
 
-A company website can be static. The previous chapter put meetings and booking
-on your own side. Here we publish the web that faces outward. Take the static
-site you built with AI in the parent series' Chapter 6, drop dynamic WordPress,
-and put the baked HTML on Cloudflare Pages. Hold no server.
+In link:/en/ai-native-software/web-build/[2-10: Build the Web — Back to HTML, CSS, and JavaScript]
+we settled the shape: content in Markdown, the frame in HTML and CSS, and Python
+baking the two together. Here we ship that baked `html/` outward.
 
-== WordPress can go
+There are two homes for it: your own machine from
+link:/en/ai-native-software/ai-pc/[2-02], or Cloudflare Pages. The procedure is
+the same either way, so you can start on one and move to the other later.
 
-WordPress is a mass of dynamic server, database, and plugins. The burden of
-updates, maintenance, and security never stops. A company site's contents rarely
-change. So *static is enough*. Static needs no server and no DB, and has almost
-no surface to attack. Publish the `html/` you built in the parent series'
-Chapter 6, as-is.
+== Decide the shape of publishing first
 
-== Put it on Cloudflare Pages, and hold no server
+This chapter settles six things. When you hand this chapter to an AI, these
+decisions are what you are handing over — not code.
 
-Put the HTML on Cloudflare Pages. No server is needed. Upload the files and they
-are served from a global CDN, with HTTPS added automatically.
+* *What is published is the baked HTML* (`html/`) — generating it was the
+  previous chapter's job
+* *No dynamic server* — the moving parts gather on one FastAPI
+* *One of two homes* — your own machine (Caddy) or Cloudflare Pages. The
+  `html/` that goes up is the same either way
+* *HTTPS is automatic* — Caddy takes it, or Cloudflare adds it
+* *Build, verify, and deploy stay separate* — what you verified and what goes
+  live are the same bytes
+* *Public and internal are separated by name* — anything carrying secrets stays
+  behind the gate (link:/en/ai-native-software/auth/[2-05])
+
+== Choose between two homes
+
+[cols="1,2,2"]
+|===
+| | Your own machine (2-02 + Caddy) | Cloudflare Pages
+
+| The machine
+| Yours, the one box from 2-02
+| Borrowed; no machine to look after
+
+| Certificate
+| Caddy takes it from Let's Encrypt and renews it
+| Cloudflare adds it automatically
+
+| Delivery
+| As wide as your own line
+| From a global CDN
+
+| Moving parts
+| Straight to FastAPI on the same machine
+| To the API behind the gate, from the public domain only
+
+| Suits
+| Internal use, publishing at a size you can see, and keeping the IoT intake on the same box
+| Heavy traffic, and not wanting to think about the line or the machine
+|===
+
+If you are unsure, *start on your own machine*. The box from 2-02 is already
+standing, and all you add is a few lines of Caddy. If traffic grows and the line
+starts to matter, put the same `html/` on Cloudflare Pages and you have moved
+the same day.
+
+== Put it on your own machine
+
+Stand Caddy in front of the Debian box from 2-02. Caddy takes ports 80 and 443,
+fetches the certificate, and renews it. The configuration is this much.
+
+```
+example.com {
+    root * /srv/html
+    file_server
+    handle /api/* {
+        reverse_proxy localhost:8000
+    }
+}
+```
+
+The public web (static files) and the moving parts (FastAPI) now sit under one
+domain. Nothing crosses to a second origin, so the browser needs no permission
+settings.
+
+Three things to decide.
+
+* *Where the published files live* — `/srv/html`. Send the `html/` you baked
+  locally to that path
+* *Internal tools get their own hostname* — `intra.example.com` or similar,
+  behind the gate (2-05). The same Caddy is fine; the name is what separates them
+* *How the outside reaches you* — a fixed IP or DDNS for the name, and only 80
+  and 443 open
+
+== Put it on Cloudflare Pages
+
+To publish while holding no machine, use Cloudflare Pages. Upload the files and
+they are served from a global CDN, with HTTPS added automatically.
 
 Leave delivery and defense to Cloudflare, and keep the source and the build in
 your own hands. The published HTML holds no secrets, so this part is safe to
-hand off.
+hand over.
+
+Uploading needs no npm and no Node — one script hitting Cloudflare's API is
+enough. That script is published as
+https://github.com/aiseed-dev/cf-publish[`aiseed-dev/cf-publish`]: one line, and
+only the files that changed go up.
 
 == Separate build, verify, and deploy
 
-Publish in separate steps. Do not combine them.
+Whichever home you chose, the procedure is the same. Do not fold it into one
+command.
 
 ```bash
-# 1. Build — make html/
-python tools/build.py
-# 2. Verify — open the html/ you made and look at it
-python -m http.server --directory html 8000
-# 3. To a preview — check on the real platform before production
-python tools/deploy_pages.py html --branch preview
-# 4. Once verified, to production
-python tools/deploy_pages.py html --branch main
+python tools/build.py                            # 1. bake
+python -m http.server --directory html 8000      # 2. look at it locally
+rsync -a --delete html/ user@example.com:/srv/html/   # 3a. to your own machine
+cf-publish html --project <name>                 # 3b. to Cloudflare Pages
 ```
 
 Do not use auto-rebuild, and do not use a command that combines "build and
 deploy." The point is to *keep the HTML you verified identical to the HTML that
-goes live* (the detailed procedure lives in an internal manual). Uploading needs
-no npm and no Node — one script hitting Cloudflare's API is enough. That script
-is published as cf-publish
-(https://github.com/aiseed-dev/cf-publish[`aiseed-dev/cf-publish`]): one line,
-`cf-publish html --project <name>`, and only the files that changed go up.
+goes live*. Cloudflare Pages has a preview branch ahead of production, so you can
+look before pointing the production URL at it. On your own machine, adding a
+second hostname on the same box does the same thing.
 
-== Connect the domain as a custom domain
+== Connect the domain
 
-Add your own domain in Cloudflare Pages as a custom domain. If your DNS is on
-Cloudflare, the A record that used to point at your server switches to Pages
-automatically, and the certificate is added automatically.
+* *Your own machine* — point the A record at the machine's IP. The moment the
+  name resolves, Caddy goes and fetches the certificate
+* *Cloudflare Pages* — add it as a custom domain. If your DNS is on Cloudflare,
+  the A record points at Pages automatically and the certificate comes with it
 
-*Leave mail (MX, SPF) untouched*. You are only changing where the web is served.
-If you are unsure, keep the old server running and verify on the preview before
-pointing the production domain.
+*Leave mail (MX, SPF) untouched*. You are changing where the web is served, and
+nothing else. If an old server is running, keep it running while you verify the
+new side, and point the name only once you have.
 
-== Wire only the moving parts
+== Wire the moving parts with FastAPI
 
-Wire the backend only for the moving parts, such as a contact form. The target
-is your own API behind the gate of 2-05. Auth is at the gate, storage is in the
-2-03 DB, and notification goes through the 2-08 mail. Most of the site is
-static, and only what needs to move, moves.
+A contact form, a booking intake, a job search — that is about the extent of what
+moves. Gather it on one FastAPI.
 
-== Internal tools stay behind the gate
+* *The intake* — FastAPI (link:/en/ai-native-software/fastapi/[2-12])
+* *Storage* — the DB from link:/en/ai-native-software/foundation/[2-03]
+* *Notification* — the mail from link:/en/ai-native-software/mail/[2-08]
+* *When a login is needed* — leave it to the gate (2-05)
 
-The public site is borrowed on Cloudflare Pages. But the internal tools stood up
-in this part — gate, documents, code, mail, meetings — are different. They carry
-secrets and raw data, so they stay behind the gate, your own reverse proxy.
+How you wire it depends on the home. On your own machine, Caddy sends `/api/*`
+to FastAPI on the same box. On Cloudflare Pages, the public side reaches the
+FastAPI behind the gate from outside, so allow exactly one origin: the public
+domain.
 
-* *The public site* (static, no secrets) — borrowed on Cloudflare Pages
-* *The internal tools* (auth, business data) — on your own side, behind the gate
+== Separate the public side from behind the gate
 
-Borrow the window, hold the vault. Decide separately what to borrow and what to
-keep.
+The public site can live in either home. It is static and holds no secrets. The
+internal tools stood up in this part — gate, documents, code, mail, meetings —
+are handled separately. They carry secrets and raw data, so they stay behind the
+gate.
+
+* *The public site* (static, no secrets) — your own machine or Cloudflare Pages
+* *The internal tools* (auth, business data) — behind the gate
 
 A borrowed window can be swapped at any time. The public site's substance is a
-pile of static files and the sources in your own hands. Nothing is deposited
-with Cloudflare. Put the same files on another host tomorrow, and the move is
-complete. The window is borrowed, but the exit is always open.
+pile of static files and the sources in your own hands. Send the same `html/` to
+another home tomorrow, and the move is complete. The window may be borrowed, but
+the exit is always open.
 
 == How to check you are done
 
@@ -6614,13 +7751,13 @@ This chapter is done when these five hold.
 
 . The published site opens on your own domain and the browser shows the lock mark
 . The page you looked at on port 8000 locally and the production page look the same
-. Before production, the same page opens and can be checked at the preview URL
+. Before pointing production, the same page opens and can be checked at another URL
 . Sending the contact form produces a notification in the 2-08 mail and a row in the 2-03 DB
 . Mail still arrives as before, because MX was never touched
 
 ```bash
-curl -sI https://example.com | head -1        # the published page answers
-curl -sI https://example.com | grep -i server # delivery has moved to Cloudflare
+curl -sI https://example.com | head -1      # the published page answers
+curl -sI https://example.com/api/health     # the moving parts answer under the same name
 ```
 
 == What the human holds
@@ -6628,33 +7765,35 @@ curl -sI https://example.com | grep -i server # delivery has moved to Cloudflare
 *Values the human supplies*
 
 * The domain name to publish on
-* The Cloudflare account and its API token
-* The Pages project name (the value passed to `--project <name>`)
-* The URL of your own API that the contact form posts to
+* The choice of home (your own machine, or Cloudflare Pages)
+* For your own machine — the machine's IP and the destination path (`/srv/html`)
+* For Cloudflare Pages — the account and API token, and the project name
 * The address that receives contact notifications (the 2-08 mail)
 
 *Actions the AI states before performing*
 
-* Deploying to the production branch (`--branch main`)
-* Adding the custom domain and switching the A record to Pages
+* Pointing the production domain at a new home
+* Replacing the whole production `html/` (anything involving `rsync --delete`)
+* Editing the Caddy configuration to add or remove a public hostname
 * Shutting down the old server
 * Changing the MX or SPF records in DNS (this chapter does not touch them)
 
 == Versions checked, and when
 
-* Cloudflare Pages, cf-publish (`aiseed-dev/cf-publish`), Python's `http.server`
-* This procedure was written on 2026-07-14
+* Caddy (automatic HTTPS), Cloudflare Pages, `cf-publish`
+  (`aiseed-dev/cf-publish`), `rsync`, Python's `http.server`
+* This procedure was written on 2026-09-21
 * If a version has moved, have the AI confirm the official procedure before proceeding
 
 == Summary
 
-Drop WordPress, and publish with no server.
+Ship the baked HTML to one of two homes.
 
-* *Drop WordPress* — shed the maintenance burden of a dynamic server, DB, and plugins
-* *Cloudflare Pages* — publish with no server; borrow CDN and automatic HTTPS
-* *Separate build, verify, deploy* — ship exactly what you verified
-* *The domain switches automatically* — a custom domain points the A record at Pages; leave mail untouched
-* *Borrow the window, hold the vault* — internal tools stay behind the gate
+* *Two homes* — your own machine from 2-02 (Caddy), or Cloudflare Pages. Same `html/`
+* *One procedure* — build, verify, deploy, kept separate; ship exactly what you verified
+* *HTTPS is automatic* — Caddy takes it, or Cloudflare adds it
+* *One FastAPI for the moving parts* — storage in 2-03, notification in 2-08, login at the gate
+* *Public and internal stay apart* — anything carrying secrets stays behind the gate
 
 Next, we expose the core systems' logic as an API (FastAPI) so every app can use
 it.
@@ -6663,9 +7802,9 @@ it.
 
 == Related articles
 
-* link:/en/ai-native-ways/web/[parent series Chapter 6: Building for the Web — Back to HTML+CSS+JavaScript]
+* link:/en/ai-native-software/web-build/[2-10: Build the Web — Back to HTML, CSS, and JavaScript]
+* link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
 * link:/en/ai-native-software/auth/[2-05: Stand Up the Gate — One Login with PocketBase]
-* link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map]
 endif::[]
 // ===== article: 17-fastapi =====
 ---

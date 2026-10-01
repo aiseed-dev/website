@@ -13,7 +13,7 @@ title.ja: AI は、世界で最も難しいコーディング問題を解く
 title.en: AI Solves the World's Hardest Coding Problems
 subtitle.ja: Codeforces 2700 帯から設計まで ── Mythos/Fable 時代、AI は月 3 千円で呼べる「最強の SIer」になった
 subtitle.en: From the Codeforces 2700 tier to design — in the Mythos/Fable era, AI became the strongest SIer, callable for $20 a month
-description.ja: AI のコード作成能力は、競技プログラミングの公開レーティング(Codeforces 2700 帯)で人間の最上層に並んだ。さらに、標的への攻撃工程の大半を自律的に遂行した事例が公表されている ── これは設計能力の証拠である。攻撃・設計・検証は、一つの力の三つの顔だ。Mythos/Fable 時代になって、AI は要件を読み、構造を決め、実装し、動かす「最強の SIer」になった。しかも月 3 千円で誰でも呼べる。この一点から、ソフトウェア開発編の議論がすべて導かれる。
+description.ja: AI のコード作成能力は、競技プログラミングの公開レーティング(Codeforces 2700 帯)で人間の最上層に並んだ。さらに、標的への攻撃工程の大半を自律的に遂行した事例が公表されている ── これは設計能力の証拠である。攻撃・設計・検証は、一つの力の三つの顔だ。Mythos/Fable 時代になって、AI は要件を読み、構造を決め、実装し、動かす「最強の SIer」になった。しかも月 3 千円で誰でも呼べる。この一点から、連載の議論がすべて導かれる。
 description.en: AI's code-writing ability has matched human top-class on public competitive-programming ratings (the Codeforces 2700 tier). It can also assemble a cyberattack autonomously — evidence of design ability. Attack, design, and verification are three faces of one power. In the Mythos/Fable era AI became the strongest SIer, handling requirements, design, and build, and callable by anyone for $20 a month. The whole series argues outward from that.
 date: 2026.06.01
 label: Introduction 1
@@ -352,7 +352,7 @@ explicit rules. Grammar, the standard library, and the type system are all
 formally defined. Whether code compiles, and whether the output matches
 the expected values, can be judged mechanically. AI passes human levels in
 domains like this, where the rules are explicit and the answer can be
-checked. When this sub-series argues that coders disappear, the claim is
+checked. When this series argues that coders disappear, the claim is
 limited to domains with that property. Complete replacement at the same
 speed does not extend to other AI applications such as desk work,
 self-driving, or robotics. That boundary is treated in 3-09.
@@ -411,7 +411,7 @@ people worldwide. It is callable by anyone for $20 a month.
 
 == The world's top tier is reachable for $20 a month
 
-This is where the sub-series' argument starts.
+This is where the series' argument starts.
 
 The paths to top-tier coding ability used to be narrow. You got hired by
 Google, Meta, or Anthropic. You spent years climbing the
@@ -528,7 +528,7 @@ of producing software is itself taken over by machines. The revolution's
 tool comes to be built by the revolution's own process. That is what the
 completion of the IT revolution actually means.
 
-With that view, the changes this sub-series covers — the coder role
+With that view, the changes this series covers — the coder role
 ending, the structural uneconomy of the SIer model, the rearrangement of
 employment and industry structure — stop being isolated phenomena. They
 read as one delayed revolution catching up and finishing at speed.
@@ -571,21 +571,21 @@ exists to plant that point.
 
 And the story does not stop at writing code. Once customers can hold it
 themselves, authentication, documents, mail, and core systems all come to
-stand on their own side. This sub-series runs continuously from software
+stand on their own side. This series runs continuously from software
 development to company-wide digital sovereignty, which is the independence
 part.
 
-One more frame applies to everything that follows. This sub-series covers
+One more frame applies to everything that follows. This series covers
 structural change inside software development. It does not take up the
 extreme positions, neither "leave everything to AI and humans are not
 needed" nor "AI has no creativity, so the impact is bounded." Once AI
 above the threshold has been in the market for some years, how do the
 commissions, the outsourcing, the employment, and the prices of software
-development rearrange? This sub-series answers that practical question,
+development rearrange? This series answers that practical question,
 chapter by chapter.
 
 ____
-Compressed to one line, this is the sub-series.
+Compressed to one line, this is the series.
 *If the strongest SIer costs $20 a month, the outsourcing-centered structure of software development can no longer hold*.
 ____
 
@@ -593,7 +593,7 @@ One more thread runs underneath. If AI carries both coding and design,
 what remains on the human side is the broad work of building and operating
 a system, including hardware, people, operations, and responsibility. Its
 foundation is closer to the liberal arts than to software engineering.
-That thread runs through the whole sub-series, and 1-04 takes it up
+That thread runs through the whole series, and 1-04 takes it up
 directly.
 
 The next chapter takes up the most overlooked consequence of cheap coding.
@@ -990,8 +990,8 @@ title.ja: ソフトウェアエンジニアの仕事を AI がするようにな
 title.en: AI Now Does the Software Engineer's Work
 subtitle.ja: コーダーは当然消える ── 設計までするソフトウェアエンジニアも、自分で設計しコードを書く役割ではなく、AI と対話する役割(ビルダー)に変わる
 subtitle.en: The coder obviously goes — and the software engineer who designs and codes becomes, not a designer-coder, but someone who works in dialogue with AI (the builder)
-description.ja: コードを書く役割であるコーダーは、当然消える。だがこの章の主題はその先だ。設計までするソフトウェアエンジニアの仕事も、AI がするようになる。Opus はコーダー、Fable/Mythos はソフトウェアエンジニアで、設計もコードも AI が担う。人間に残るのは、自分で設計しコードを書く仕事ではない。AI と対話してシステムを作り動かす仕事、つまりビルダーだ。電卓が算盤を押し出したときと同じ分岐が、いま起きている。消えるのは役割定義であって、人ではない。
-description.en: The coder, the code-writing role, obviously disappears. But the subject of this chapter is what lies beyond. AI now does the software engineer's work too. Opus is a coder, Fable/Mythos software engineers; design and code are both carried by AI. What stays with humans is not designing and coding yourself. It is building and operating a system in dialogue with AI — that is, the builder. The same split that followed the calculator replacing the abacus is happening now. What disappears is the role definition, not people.
+description.ja: コードを書く役割であるコーダーは、当然消える。だがこの章の主題はその先だ。設計までするソフトウェアエンジニアの仕事も、AI がするようになる。コードを書く力と構造を決める力は、別々の AI が分担しているのではなく、一つの力の別の顔だ。だから設計もコードも AI が担う。人間に残るのは、自分で設計しコードを書く仕事ではない。AI と対話してシステムを作り動かす仕事、つまりビルダーだ。電卓が算盤を押し出したときと同じ分岐が、いま起きている。消えるのは役割定義であって、人ではない。
+description.en: The coder, the code-writing role, obviously disappears. But the subject of this chapter is what lies beyond. AI now does the software engineer's work too. Writing code and deciding structure are not divided between separate AIs but are faces of one power, so design and code are both carried by AI. What stays with humans is not designing and coding yourself. It is building and operating a system in dialogue with AI — that is, the builder. The same split that followed the calculator replacing the abacus is happening now. What disappears is the role definition, not people.
 date: 2026.06.15
 label: Introduction 3
 title_html.ja: ソフトウェアエンジニアの<br>仕事を、<span class="accent">AI</span> がする。
@@ -1000,7 +1000,7 @@ title_html.en: AI now does the<br><span class="accent">software engineer's</span
 ifdef::lang-ja[]
 = ソフトウェアエンジニアの仕事を AI がするようになる
 
-*コードを書くコーダーは、当然、完全に消える。だがこの章の主題はその先だ。設計までするソフトウェアエンジニアの仕事も、AI がするようになる*。
+*コードを書くコーダーという役割は、当然、立たなくなる。だがこの章の主題はその先だ。設計までするソフトウェアエンジニアの仕事も、AI がするようになる*。
 
 1-02 で、保守も開発も AI と対話する作業に変わることを見た。この章は、その
 裏面を扱う。役割の側の話だ。言っているのは「プログラマー全員が消える」では
@@ -1025,20 +1025,22 @@ ifdef::lang-ja[]
 設計する人手も揃える必要があった。SIer、受託開発、元請け下請け構造は、すべて
 この前提の上に建っている(3-04 で扱う)。
 
-== AI は、コーダーにもソフトウェアエンジニアにもなる
+== AI は、コーダーの仕事もソフトウェアエンジニアの仕事もする
 
-1-01 で、AI が最強の SIer になったという事実を据えた。コードを書き、文脈を
-理解して設計もする、という事実だ。能力には幅がある。
+1-01 で、AI が最強の SIer になったという事実を据えた。二つの能力が、同時に
+最上層に達したという事実だ。
 
-* Opus ── 一流のコーダー。意図を渡せば、動くコードに翻訳する
-* Fable / Mythos ── ソフトウェアエンジニア。文脈を理解して設計まで踏み込み、
-  構造を自分で決められる
+* *コードを書く力* ── 意図を渡せば、動くコードに翻訳する
+* *構造を決める力* ── 文脈を理解し、設計まで踏み込んで、何をどう作るかを決める
 
-つまり AI は、コーダーの仕事も、ソフトウェアエンジニアの仕事もする。コードを
-書くだけのコーダーは、当然消える。だが、設計までする SE も同じだ。設計も
+この二つは、別々の AI が分担しているのではない。1-01 で見たとおり、攻撃・設計・
+検証と同じく、一つの力の別の顔だ。だから一つの AI が、コーダーの仕事も
+ソフトウェアエンジニアの仕事もする。
+
+コードを書くだけのコーダーは、当然消える。だが、設計までする SE も同じだ。設計も
 コードも AI がやるなら、人間が「自分で設計してコードを書く」役割で立つ場所は、
-なくなる。*設計とコードの帯の市場価値は、ほぼゼロに収束する*。労働観の話では
-ない。価格の話だ。
+なくなる。*設計とコードの帯には、もう価格が立たない*。労働観の話ではない。
+価格の話だ。
 
 == 人間に残るのは、AI と対話する仕事だ
 
@@ -1063,11 +1065,11 @@ AI と対話して、システムを作り、動かす仕事だ。それはも�
 エンジニアではなく、ビルダーである。
 ____
 
-== 消えるのは、自分で設計しコードを書く役割だ
+== 自分で設計しコードを書く役割は、ビルダーに移る
 
-だから消えるのは、自分で設計しコードを書く役割 ── コーダーとソフトウェア
-エンジニア ── と、SIer がそれを量産するために組んだ役割分業だ。需要が消える
-のではない。設計もコードも AI に置き換わって、価格が立たなくなる。一人が AI と
+だから退くのは、自分で設計しコードを書く役割 ── コーダーとソフトウェア
+エンジニア ── と、SIer がそれを量産するために組んだ役割分業だ。需要が減るの
+ではない。設計もコードも AI に置き換わって、価格が立たなくなる。一人が AI と
 対話して、システムを作り、動かす。その役割に移る。1-04 で「ビルダー」と
 呼ぶ役割だ。
 
@@ -1086,7 +1088,7 @@ flowchart LR
   subgraph New["AI ネイティブ ── 一人 + AI が対話で"]
     direction TB
     H["顧客(ビルダー)<br/>(何を作るか・ハード調達<br/>関係者協議・運用・責任)"]
-    A["AI<br/>(コード=Opus<br/>設計=Fable/Mythos)"]
+    A["AI<br/>(コードを書く力<br/>構造を決める力)"]
     H <-->|対話・相互理解| A
   end
 
@@ -1101,7 +1103,7 @@ flowchart LR
 二つの図で、顧客は同じ場所にいる。違うのは、かつて SIer に発注するだけ
 だった顧客が、いまは自分で作り、動かす側に立つことだ。かつては発注する
 だけでも、RFP 作成、業者選定、要件すり合わせ、契約交渉と、相当の手間が
-かかった。設計までする AI(Fable / Mythos)の水準では、その発注する手間が
+かかった。設計まで踏み込める AI を相手にするなら、その発注する手間が
 あれば、顧客自身が作り上げてしまう(1-05 で扱う)。
 
 ____
@@ -1122,19 +1124,24 @@ ____
 むしろ、文脈を手元に持っている現場の人のほうが、ビルダーに近い(1-05 で
 「顧客自身が作る」として詳しく扱う)。
 
-歴史にも同じ形がある。日本では 1970 年代、電卓が算盤による商業計算の技能を
-消した。だが、数字の意味を読み、業務を回せる人は経理・会計に残った。欧米の
+歴史にも同じ形がある。日本では、算盤による商業計算の技能が、計算機の側に
+移った。だが、数字の意味を読み、業務を回せる人は経理・会計に残った。欧米の
 計算手(human computer)も、活版から写植に移ったときの組版工も同じだ。
 手作業が機械に置き換わると、より広い側 ── 段取り、対話、運用、責任 ── に
 移れる人と移れない人で分かれる。同じことが、ソフトウェア開発で起きている。
 コーディングも設計も、まとめてだ。
 
-注意したいのはスピードだ。電卓は、Casio Mini(1972 年、¥12,800)などの
-低価格機種が出てから、およそ十年でそろばんをオフィスと家庭から押し出した。
-「この種の変化は数十年かかる」という直感は、振り返るとゆっくりに見える
-だけだ。渦中の当事者には速い。今回の AI 化は、価格が桁違いに低い段階で
-始まっている(1-01)。同じか、それ以上の速度で進むと見るのが妥当だ。
-耐えられるかどうかは個人の選択ではなく、業界構造の問題になる(3-07)。
+注意したいのは、安い道具が入るときの速さだ。カシオミニは 1972 年 8 月に
+12,800 円で出た。従来機種の三分の一を下回る値で、*発売から 10 か月で
+100 万台*売れた(カシオ計算機の社史、情報処理学会コンピュータ博物館)。
+そろばんの側も動いている。播州そろばんの生産は 1960 年の 360 万丁が頂で、
+いまは約 45 万丁 ── 八分の一である。
+
+この数字が言っているのは「何年で入れ替わったか」ではない。*安い道具は、
+出たら一気に入る*ということだ。入れ替わりそのものは、そこから長く続く。
+今回の AI 化は、その「安い道具」の段階から始まっている(1-01)。入るのは、
+同じように速い。耐えられるかどうかは個人の選択ではなく、業界構造の問題に
+なる(3-07)。
 
 == まとめ
 
@@ -1159,7 +1166,7 @@ endif::[]
 ifdef::lang-en[]
 = AI Now Does the Software Engineer's Work
 
-*The coder who writes code obviously and completely disappears. But the subject of this chapter is what lies beyond. AI now does the work of the software engineer who designs, too*.
+*The coder, as a role, obviously stops holding. But the subject of this chapter is what lies beyond. AI now does the work of the software engineer who designs, too*.
 
 1-02 showed that both maintenance and development become work done in
 dialogue with AI. This chapter takes up the other face of that, the role
@@ -1169,7 +1176,7 @@ distinction is half of the argument.
 
 == The coder and the software engineer are different roles
 
-This sub-series distinguishes two roles.
+This series distinguishes two roles.
 
 * Coder — writing code itself is the center of the work. Requirements and
   design both arrive from someone else. The yardstick is "writes fast,
@@ -1187,23 +1194,25 @@ person-hours, and you had to assemble a workforce both to write and to
 design. In Japan, the SIer industry, contract development, and multi-tier
 subcontracting are all built on that premise. 3-04 takes it up.
 
-== AI becomes both the coder and the software engineer
+== AI does the coder's work and the software engineer's work alike
 
-1-01 established that AI became the strongest SIer. It writes code, and it
-understands context and designs. The ability has range.
+1-01 established that AI became the strongest SIer. Two abilities reached the
+top tier at once.
 
-* Opus — a first-rate coder. Hand it intent and it translates that into
+* *The ability to write code* — hand it intent and it translates that into
   running code
-* Fable / Mythos — software engineers. They understand context, go into
-  design, and decide structure themselves
+* *The ability to decide structure* — it understands context, goes into design,
+  and decides what to build and how
 
-So AI does the coder's work and the software engineer's work alike. The
-coder, who only writes code, obviously disappears. But the SE, who designs
-too, is in the same position. If AI does both the design and the code,
-there is no longer a place for a human to stand in the role of designing
-and writing the code themselves. *The market value of the design-and-code
-band converges to near zero.* This is not a statement about labor ethics.
-It is a statement about prices.
+These are not divided between separate AIs. As 1-01 showed, they are faces of
+one power, like attack, design, and verification. So one AI does the coder's
+work and the software engineer's work alike.
+
+The coder, who only writes code, obviously disappears. But the SE, who designs
+too, is in the same position. If AI does both the design and the code, there is
+no longer a place for a human to stand in the role of designing and writing the
+code themselves. *No price holds for the design-and-code band any more.* This is
+not a statement about labor ethics. It is a statement about prices.
 
 == What stays with humans is dialogue with AI
 
@@ -1231,11 +1240,11 @@ It is building and operating a system in dialogue with AI. That is no
 longer the software engineer, but the builder.
 ____
 
-== What goes away is designing and writing the code yourself
+== The role of designing and coding yourself moves to the builder
 
-So what goes away is the role of designing and writing the code yourself,
+So what steps back is the role of designing and writing the code yourself,
 the coder and the software engineer, together with the division of labor
-the SIer built to mass-produce it. Demand does not vanish. Both design and
+the SIer built to mass-produce it. Demand does not shrink. Both design and
 code get replaced by AI, so no price holds. One person, in dialogue with
 AI, builds and operates the system, and moves into that role. 1-04 names
 it the builder.
@@ -1255,7 +1264,7 @@ flowchart LR
   subgraph New["AI-native — one person + AI, in dialogue"]
     direction TB
     H["Customer (builder)<br/>(what to build, hardware,<br/>stakeholders, operations, responsibility)"]
-    A["AI<br/>(code = Opus<br/>design = Fable/Mythos)"]
+    A["AI<br/>(writes code<br/>decides structure)"]
     H <-->|dialogue, mutual understanding| A
   end
 
@@ -1271,9 +1280,9 @@ In both diagrams the customer stands in the same place. What changed is
 that the customer who used to only place the order now stands on the side
 that builds and runs it. Even just commissioning an SIer used to take real
 effort: writing the RFP, selecting the vendor, reconciling requirements,
-negotiating the contract. At the level of a design-capable AI, Fable or
-Mythos, that same effort of ordering is enough for the customer to build
-the thing outright. 1-05 takes this up.
+negotiating the contract. Working with an AI that goes into design, that
+same effort of ordering is enough for the customer to build the thing
+outright. 1-05 takes this up.
 
 ____
 Once, even just placing the order with an SIer took real effort.
@@ -1294,8 +1303,8 @@ the ability to grasp the field's context and shape it in dialogue with AI.
 If anything, the field people, who already hold the context, are closer to
 the builder. 1-05 takes this up as "the customer builds it themselves."
 
-History has the same shape. In Japan in the 1970s, calculators erased the
-skill of commercial calculation by abacus, the soroban. But people who
+History has the same shape. In Japan, the skill of commercial calculation by
+abacus, the soroban, moved over to the machine. But people who
 could read what the numbers meant and keep the work running stayed on, in
 accounting and finance. The same happened with the human computer in the
 West, and with the typesetter when phototypesetting replaced letterpress.
@@ -1304,14 +1313,18 @@ broader side, meaning orchestration, dialogue, operations, and
 responsibility, and who cannot. The same thing is happening now in
 software development, across both coding and design.
 
-The thing to flag is the speed. After the Casio Mini (1972, ¥12,800) and
-other low-priced models arrived, calculators pushed the abacus out of
-Japanese offices and homes within roughly a decade. The intuition that
-this kind of change takes decades only looks slow in hindsight. For the
-people inside it, it is fast. The AI shift is starting from a price
-structure orders of magnitude lower (1-01). It is reasonable to expect the
-same speed or faster. Whether one can absorb it becomes a question of
-industry structure, not personal choice. 3-07 takes that up.
+The thing to flag is how fast a cheap tool arrives. The Casio Mini went on
+sale in August 1972 at ¥12,800 — under a third of the price of earlier models —
+and sold *one million units in its first ten months* (Casio's own company
+history; the Information Processing Society of Japan's computer museum). The
+abacus side moved too: Banshu soroban production peaked at 3.6 million units in
+1960 and is now around 450,000, an eighth of that.
+
+What those numbers say is not "how many years the swap took." They say that *a
+cheap tool, once it exists, arrives all at once*. The swapping itself goes on
+for a long time after. The AI shift is starting from that same cheap-tool stage
+(1-01). Its arrival is just as fast. Whether one can absorb it becomes a
+question of industry structure, not personal choice. 3-07 takes that up.
 
 == Summary
 
@@ -1320,7 +1333,7 @@ hardware, people, operations, dialogue, and responsibility stay with
 humans. Who carries that role?
 
 And the foundational discipline of that role shifts from software
-engineering to the liberal arts. That is the bass line of this sub-series.
+engineering to the liberal arts. That is the bass line of this series.
 
 The next chapter defines that role: the builder.
 
@@ -1723,7 +1736,7 @@ ____
 
 *まず OSS でベンダーを外す*。そして、認証・データ・文書・メール・Web・AI という土台を自分の側に置く。その上で、本当に自社固有のロジックだけを、AI と一緒に書く。コードを書くのは、土台を据えた後半だ。しかも、書く量は自社固有の部分に縮む。
 
-この基盤づくりが、本サブシリーズの自立編(第二部)だ。一つずつ OSS を立てて、Microsoft 365・Copilot・WordPress・基幹システム・GitHub から自立していく。
+この基盤づくりが、この連載の自立編(第二部)だ。一つずつ OSS を立てて、Microsoft 365・Copilot・WordPress・基幹システム・GitHub から自立していく。
 
 ____
 組織のソフトウェアは、まず汎用の基盤を OSS で立てる。
@@ -1831,7 +1844,7 @@ For an organization, the starting point is the same. First, stand up the generic
 
 *First, untie the vendor with OSS*. Then put the foundation — identity, data, documents, mail, web, AI — on your own side. On top of that, write only the logic that is genuinely your company's own, together with AI. Writing code comes in the later half, after the foundation is laid. And the amount to write shrinks to the company-specific part.
 
-This foundation-building is the Independence part, Part 2 of this sub-series. One OSS stack at a time, you become independent of Microsoft 365, Copilot, WordPress, the core systems, and GitHub.
+This foundation-building is the Independence part, Part 2 of this series. One OSS stack at a time, you become independent of Microsoft 365, Copilot, WordPress, the core systems, and GitHub.
 
 ____
 An organization's software starts by standing up the generic foundation on OSS.
@@ -17272,7 +17285,7 @@ IT 業界の AI 言説は、しばしばこの 99/100 の谷を見落とす。�
 * 価格アンカーを Claude Max($200/月)から Claude Pro($20/月)へ戻した ── 立てて動かすだけなら基本プランで足りる
 * コード基盤を 30,000 行と書いたのを、実測 6,000 行に修正した
 * 計算手の例に、算盤(そろばん)を主例として追加した
-* 電卓移行を、数十年ではなくおよそ十年と事実を修正した
+* 電卓移行に書いた「およそ十年」は裏づけが取れず外し、カシオミニが発売 10 か月で 100 万台という普及の速さに置き換えた
 * 1-01 に「IT 革命の成就」という枠組みを追加した
 * 多重下請けの起源を、大量コーダー需要と正確に説明し直した
 * 3-07 に「ソフトウェアより物が不足する時代」の節を追加した
@@ -17416,7 +17429,7 @@ AI 時代の自由人、この連載で言うビルダーが立ち上がると�
 
 雇用は、中世の農奴の現代版である。そして *自営は、自由人の現代版だ*。
 
-ソフトウェア開発編が論じてきた構造変化 ── SIer 委託モデルの不経済(3-04)、顧客が
+この連載が論じてきた構造変化 ── SIer 委託モデルの不経済(3-04)、顧客が
 自分で作ること(1-05)、判断中心のビルダー(1-04、3-06)、特化エンジニア助言の誤り
 (この章)── は、すべてこの一点に収束する。雇用を中心に組まれた産業構造は、AI 時代
 に組み替わる。
@@ -17495,7 +17508,7 @@ AI 時代の自由人になる道筋も同じだ。エンジニアリングの�
 復活、データ主権運動、AI 倫理の議論が下地として積み重なり、LLM(2022 年代〜)が加速
 している局面に、我々はいる。
 
-ソフトウェア開発編が描いてきた近い将来の構造転換は、*第二次ルネサンスの一断面* だ。
+この連載が描いてきた近い将来の構造転換は、*第二次ルネサンスの一断面* だ。
 この連載が扱ったのはソフトウェア領域だが、同じ構造の変化は、暮らしの他の領域でも
 同時に進む。
 
@@ -17658,7 +17671,7 @@ ____
 * *雇用は AI 時代の農奴であり、自営は自由人の現代版* ── 生産手段が個人で持てるようになった
 * *これは第二次ルネサンスの一断面* ── AI 革命はその最も強力な加速器だが、原因のすべてではない
 
-ソフトウェア開発編の結論を、ここで圧縮する。
+この連載の結論を、ここで圧縮する。
 
 AI が実行能力で人間トップに到達した。これは、ルールが明確で正解が検証可能な領域だから
 起きた。結果として、コーダー(コーディングを仕事の中心に置く役割)は消え、ビルダー
@@ -17915,7 +17928,7 @@ that week contained a long list of corrections made by a human.
 * The code base written as 30,000 lines was corrected to the measured 6,000 lines
 * The abacus (soroban) was added as the primary example alongside the human
   computer
-* The calculator transition was corrected from "decades" to "roughly a decade"
+* The "roughly a decade" written for the calculator transition could not be sourced and was replaced with how fast it spread: one million Casio Minis in ten months
 * The framing of "the IT revolution completing" was added to 1-01
 * The origin of multi-tier subcontracting was restated correctly as large coder
   head-count demand
@@ -18388,7 +18401,7 @@ ____
 * *Employment is the AI era's serfdom, and self-employment is the contemporary free person* — the means of production can now be owned individually
 * *This is one cross-section of a Second Renaissance* — the AI revolution is its strongest accelerator, but not the whole cause
 
-Here is the conclusion of the Software sub-series, compressed.
+Here is the conclusion of this series, compressed.
 
 AI reached human-top execution capability. That happened because the domain has
 explicit rules and verifiable correctness. As a consequence the coder — the role

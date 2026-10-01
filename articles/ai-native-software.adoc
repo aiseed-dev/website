@@ -618,8 +618,8 @@ title.ja: 保守フェーズの構造変化こそ本質
 title.en: Maintenance-Phase Shift Is the Real Story
 subtitle.ja: コーディングコスト低下は氷山の一角 ── AI が文脈を理解するから、コードでの保守そのものが要らなくなる
 subtitle.en: Cheaper coding is the tip of the iceberg — because AI understands context, maintaining at the code level stops being necessary
-description.ja: AI がコードを書くようになったことの最も見落とされやすい帰結は、コーディングの高速化ではない。保守フェーズそのものの構造変化だ。エンタープライズシステムでは TCO の 6〜8 割が保守に落ちる。AI が文脈を理解するから、コードでの保守そのものが要らなくなり、保守の単位はコードから設計・仕様・文脈に移る。最大の単一コストだったレガシーコードの読解は消える。マニュアルを読んで自分の現実に合わせられる人なら、開発も保守もできる。
-description.en: The most overlooked consequence of AI writing code is not faster coding. It is the structural shift of the maintenance phase itself. In enterprise systems, 60 to 80 percent of TCO lands in maintenance. Because AI understands context, maintaining at the code level stops being necessary, and the unit of maintenance moves from code to design, spec, and context. The single largest cost, reading legacy code, evaporates. Anyone who can read a manual and fit it to their own reality can do development and maintenance.
+description.ja: AI がコードを書くようになったことの最も見落とされやすい帰結は、コーディングの高速化ではない。保守フェーズそのものの構造変化だ。保守はソフトウェアの費用の 4〜8 割、平均 6 割を食う(Glass, IEEE Software, 2001)。AI が文脈を理解するから、コードでの保守そのものが要らなくなり、保守の単位はコードから設計・仕様・文脈に移る。最大の単一コストだったレガシーコードの読解は消える。マニュアルを読んで自分の現実に合わせられる人なら、開発も保守もできる。
+description.en: The most overlooked consequence of AI writing code is not faster coding. It is the structural shift of the maintenance phase itself. Maintenance eats 40 to 80 percent of software cost, 60 percent on average (Glass, IEEE Software, 2001). Because AI understands context, maintaining at the code level stops being necessary, and the unit of maintenance moves from code to design, spec, and context. The single largest cost, reading legacy code, evaporates. Anyone who can read a manual and fit it to their own reality can do development and maintenance.
 date: 2026.06.08
 label: Introduction 2
 title_html.ja: 保守の単位は、<br><span class="accent">コードから文脈</span>へ。
@@ -635,19 +635,21 @@ ifdef::lang-ja[]
 帰結は、よく語られる「コーディングが速くなる」ではない。保守の構造が
 組み替わることだ。この章は、その組み替えを見る。
 
-ソフトウェアの一生で、コーディングは最初の数ヶ月にすぎない。残りの
-7 年から 15 年は保守だ。エンタープライズシステムでは、TCO の 6〜8 割が
-保守フェーズに落ちる。半世紀知られている事実である。
+ソフトウェアの一生で、コーディングは最初の数ヶ月にすぎない。残りの長い年月は
+保守だ。そして保守は、ソフトウェアの費用の *4〜8 割、平均して 6 割* を食う
+(Robert L. Glass, "Frequently Forgotten Fundamental Facts about Software
+Engineering", IEEE Software 18(3), 2001)。四半世紀前に整理され、それより前から
+測られてきた事実である。
 
 == いまの保守は、すべてがコードの周りで回っている
 
 AI の話題でよく取り上げられるのは、コードが速く書けることだ。これは事実
 だが、氷山の一角でしかない。ソフトウェア開発の支配的コストは、書くことでは
-なく、書いた後にある。Brooks の『人月の神話』以来、50 年知られてきた。
-水面下に隠れている本体は、これだ。
+なく、書いた後にある。1980 年代から繰り返し測られてきたことだ。水面下に
+隠れている本体は、これだ。
 
-* レガシーコード読解 ── 普通は半日から数日
-* 既存の挙動を壊さずに直す ── 数日
+* 既存コードの読解 ── 保守の中で最も支配的な活動
+* 既存の挙動を壊さずに直す
 * テストの追従 ── 後回しになる
 * ドキュメントの追従 ── 通常は乖離したまま
 * 仕様の暗黙化 ── 関係者がいなくなったら復元できない
@@ -655,8 +657,16 @@ AI の話題でよく取り上げられるのは、コードが速く書ける�
 
 旧来、保守の単位はコードだった。バグが出る。コードを読む。コードを直す。
 テストを書く。ドキュメントを直す。すべてがコードの周りで回る。中でも
-最大の単一コストは、*既存コードの読解*だ。20 万行の業務システムを、退職した
-前任者の意図ごと読み解く。新任者が数週間かかり、しかも 100% は復元できない。
+最大の単一コストは、*既存コードの読解*だ。
+
+ここには数字がある。Glass は、保守の中で支配的な活動は「既存の製品を理解する
+こと」であり、保守時間の約 3 割を占めると書いている(前掲)。実測もある。
+開発者 78 人の作業時間 3,148 時間を記録した調査では、作業時間の *約 6 割* が
+コードの理解に使われていた。しかも、経験の浅い開発者ほどその比率は高い
+(Xin Xia et al., "Measuring Program Comprehension: A Large-Scale Field Study
+with Professionals", IEEE Transactions on Software Engineering, 2018)。
+
+退職した前任者の意図ごと読み解く作業は、時間をかけても完全には復元できない。
 レガシーを触れないことが、システム全体の延命を強いてきた。書き換えコストの
 大半が、読解コストだったからだ。
 
@@ -689,6 +699,13 @@ ____
 構造と仕様を書く。AI 自身がコードを生成する拠り所になる。かつて、人間が
 面倒がって更新せず死なせた設計書を、AI が文脈から自動で書き、保つ。人間は
 マニュアルを読む。機械である AI は設計書を読んで、コードを生成し、再生成する。
+
+その設計書は、どこに住むのか。保守の単位が文脈に移るなら、文脈の置き場が、
+そのまま保守の基盤になる。答えは自立編で据える ── 原稿と同じく文字で持ち、
+git に入れる(link:/ai-native-software/code/[2-06: コードを手元に]・
+link:/ai-native-software/documents/[2-07: 文書を取り戻す])。文字なら、人も
+AI も同じものを読み、差分も履歴も残る。設計書が死ぬのは、文字でなく、
+履歴も残らない場所に置かれたときだ。
 
 ここから、大きな帰結が一つ出る。*マニュアルを理解でき、それを現実に合わせ
 られる人なら、開発も保守もできる*。コードを読む必要も、書く必要もない。
@@ -732,6 +749,24 @@ ____
 コードもテストもドキュメントも、AI が作り直す。
 ____
 
+== 設計・仕様・文脈は、AI に渡す最初の仕様になる
+
+保守の単位が設計・仕様・文脈に移るなら、書くべきものも決まる。何を使い、何を
+使わないか。どこに置き、どこまでを自分で持つか。どこから先は借りるか。その
+決定を、文字で持つ。これが、*AI に渡す最初の仕様*になる。
+
+渡すのはコードではない。コードの書き方は AI が知っている。AI が知らないのは、
+この会社が何を選び、何を選ばなかったかだ。それだけが、人の側に残る。
+
+この連載の自立編は、その形で書いてある。各章は手順の実演ではなく、決定の
+一覧だ。章をそのまま AI に渡せば、作り始められる。保守のときも同じ章に戻る。
+決定が変わったら、章ではなく決定を直し、AI に作り直させる。
+
+____
+人が持つのは決定で、コードは生成物だ。
+だから保守は、コードを直す作業ではなく、決定を直す作業になる。
+____
+
 == まとめ
 
 コードでの保守が要らなくなり、現場で保守ができる。保守の単位は、コードから
@@ -766,21 +801,22 @@ from that is not the often-told "coding gets faster." It is that the
 structure of maintenance rearranges. This chapter looks at that
 rearrangement.
 
-In the life of software, coding is only the first few months. The
-remaining 7 to 15 years are maintenance. In enterprise systems, 60 to 80
-percent of TCO lands in the maintenance phase. This has been known for
-half a century.
+In the life of software, coding is only the first few months. The long
+remainder is maintenance. And maintenance eats *40 to 80 percent of software
+cost, 60 percent on average* (Robert L. Glass, "Frequently Forgotten
+Fundamental Facts about Software Engineering," IEEE Software 18(3), 2001). It
+was written up a quarter of a century ago, and measured before that.
 
 == Maintenance today turns entirely around code
 
 What gets talked about with AI is that code gets written faster. That is
 true, but it is only the tip of the iceberg. The dominant cost of software
-development is not in writing but in what comes after writing. This has
-been known for fifty years, since Brooks' _The Mythical Man-Month_. The
-body hidden below the surface is this.
+development is not in writing but in what comes after writing. It has been
+measured, again and again, since the 1980s. The body hidden below the surface
+is this.
 
-* Reading legacy code — usually half a day to several days
-* Fixing without breaking existing behavior — days
+* Reading existing code — the dominant activity within maintenance
+* Fixing without breaking existing behavior
 * Keeping tests in sync — gets deferred
 * Keeping docs in sync — usually left to drift
 * Spec going implicit — unrecoverable once the people are gone
@@ -789,11 +825,21 @@ body hidden below the surface is this.
 Traditionally, the unit of maintenance was code. A bug appears. You read
 the code. You fix the code. You write the test. You fix the docs.
 Everything turns around code. The single largest cost among these is
-*reading existing code*. You decode a 200,000-line business system
-together with the intent of a predecessor who has left. A newcomer takes
-weeks, and never recovers 100 percent of it. Being unable to touch the
-legacy is what forced whole systems to be kept alive well past their time,
-because most of the cost of rewriting was the cost of reading.
+*reading existing code*.
+
+There are numbers here. Glass writes that the dominant activity within
+maintenance is "understanding the existing product," taking roughly 30 percent
+of maintenance time (cited above). There is a measurement, too. A field study
+that logged 3,148 working hours from 78 professional developers found that
+*about 60 percent* of that time went to comprehending code — and the less
+experienced the developer, the higher the share (Xin Xia et al., "Measuring
+Program Comprehension: A Large-Scale Field Study with Professionals," IEEE
+Transactions on Software Engineering, 2018).
+
+Decoding a predecessor's intent along with their code is work that no amount of
+time fully recovers. Being unable to touch the legacy is what forced whole
+systems to be kept alive well past their time, because most of the cost of
+rewriting was the cost of reading.
 
 Why does everything turn around code in the first place? Because the
 design document could not keep up with reality. The customer cannot put
@@ -833,6 +879,15 @@ document that humans, finding it tedious, stopped updating and let die is
 now written and kept by AI, from the context. Humans read the manual. The
 machine, the AI, reads the design document and generates and regenerates
 the code.
+
+Where does that design document live? If the unit of maintenance moves to
+context, then where the context is kept becomes the foundation of maintenance
+itself. The Independence part settles it: hold it as text, like a manuscript,
+and commit it to git (link:/en/ai-native-software/code/[2-06: Bring Code
+In-House] and link:/en/ai-native-software/documents/[2-07: Take Documents
+Back]). As text, humans and AI read the same thing, and the diffs and the
+history stay. A design document dies when it is kept somewhere that is not
+text and keeps no history.
 
 From here follows one large consequence. *Anyone who can understand the
 manual and fit it to their own reality can do both development and
@@ -878,6 +933,28 @@ ____
 Old maintenance was work done against code.
 Now, both maintenance and development become a dialogue with AI. Tell it
 what you want, and AI rebuilds the code, the tests, and the docs.
+____
+
+== Design, spec, and context become the first spec you hand to an AI
+
+If the unit of maintenance moves to design, spec, and context, then what you
+have to write is settled too. What you use, and what you do not. Where it goes,
+and how much of it you hold yourself. Where borrowing begins. Hold those
+decisions as text. That is the *first spec you hand to an AI*.
+
+What you hand over is not code. The AI already knows how to write code. What it
+does not know is what this company chose, and what it chose against. That part,
+and only that part, stays on the human side.
+
+The Independence part of this series is written in that shape. Each chapter is a
+list of decisions, not a demonstration of steps. Hand a chapter to an AI as it
+is and the work can start. Maintenance returns to the same chapter: when a
+decision changes, you change the decision rather than the code, and have the AI
+rebuild.
+
+____
+The human holds the decisions; the code is the output.
+So maintenance becomes the work of changing decisions, not of changing code.
 ____
 
 == Summary

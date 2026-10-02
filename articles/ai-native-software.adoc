@@ -1742,7 +1742,7 @@ ____
 
 個人が自分のための道具を作るとき、OSS をそのまま使うだけでは足りないことがある。そこで、OSS を土台にして、AI と対話しながら自分に合った形にカスタマイズする。フレームワークを学ぶ必要はない。やりたいことをふだんの言葉で伝え、返ってきたものを試し、また頼む。それだけだ。学ぶのは、何が欲しいかを言葉にすることだけである。
 
-これが可能になったのは、*学習コストが桁違いに下がった*からだ。かつては「半年から 1 年で初級者」だった。AI と組めば「数時間から数日で動くものを持っている」になる。半年かかるなら諦めたものを、数日でできるなら自分でやる。この境目を越えた。
+これが可能になったのは、*学習コストが桁違いに下がった*からだ。かつては、文法を覚え、フレームワークに慣れ、動くものを一つ作るまでに、何ヶ月もかかった。AI と組むと、動くものを持つまでが数時間から数日になる。かける時間が月の単位なら諦めたものを、日の単位ならやってみる。その境目を越えた。
 
 その実例は、自立編が扱う。
 
@@ -1756,13 +1756,19 @@ ____
 
 組織の場合も、出発点は同じだ。まず、汎用的な基盤を OSS で立てる。会社のソフトウェアの大半は、もともと「作る」ものではなく「買う」ものだった。Microsoft 365、Copilot、WordPress、基幹のベンダーパッケージ。その置き換え先は、すでに世界中で動いている。
 
-* 認証は PocketBase(Entra ID の代わり)
-* 文書は aiseed office(Word・Excel・PowerPoint の様式をそのまま開く)
-* 共有と版管理は Forgejo(GitHub の代わり)
-* メールは Stalwart、会議は Jitsi、Web は Cloudflare Pages(WordPress の代わり)
-* AI は手元の LLM + RAG(Copilot の代わり)
+* 機械は Debian の一台(link:/ai-native-software/ai-pc/[2-02])── AI に渡す場所
+* 土台は SQLite・PostgreSQL・DuckDB・Polars(link:/ai-native-software/foundation/[2-03])
+* 認証は PocketBase(Entra ID の代わり、link:/ai-native-software/auth/[2-05])
+* 共有と版管理は Forgejo(GitHub の代わり、link:/ai-native-software/code/[2-06])
+* 文書は原稿を adoc の文字で持ち、様式は aiseed office(link:/ai-native-software/documents/[2-07])
+* メールは Stalwart(link:/ai-native-software/mail/[2-08])、会議は Jitsi(link:/ai-native-software/meetings/[2-09])
+* Web は焼いた HTML を自分の一台(Caddy)か Cloudflare Pages へ(WordPress の代わり、link:/ai-native-software/web/[2-11])
+* 基幹のロジックは FastAPI で API に出す(ベンダーパッケージの代わり、link:/ai-native-software/fastapi/[2-12])
+* AI は手元の LLM + RAG(Copilot の代わり、link:/ai-native-software/ai/[2-16])
 
-*まず OSS でベンダーを外す*。そして、認証・データ・文書・メール・Web・AI という土台を自分の側に置く。その上で、本当に自社固有のロジックだけを、AI と一緒に書く。コードを書くのは、土台を据えた後半だ。しかも、書く量は自社固有の部分に縮む。
+どれも、いまこの瞬間に全部そろっているという話ではない。aiseed office は、配っているのがエンジンだけで、画面のアプリと adoc の読み書きはまだだ(2-07 に、できている所とまだの所を分けて書いてある)。Web の公開は、自分の一台なら全部自分の側、Cloudflare Pages なら窓だけ借りる形になる。*借りる所と自分で持つ所を、分けて決める* ── それが土台づくりの中身である。
+
+*まず汎用をベンダーから外す*。そして、認証・データ・文書・メール・Web・AI という土台を自分の側に置く。その上で、本当に自社固有のロジックだけを、AI と一緒に書く。コードを書くのは、土台を据えた後半だ。しかも、書く量は自社固有の部分に縮む。
 
 この基盤づくりが、この連載の自立編(第二部)だ。一つずつ OSS を立てて、Microsoft 365・Copilot・WordPress・基幹システム・GitHub から自立していく。
 
@@ -1775,7 +1781,7 @@ ____
 
 ここまでをひっくり返すと、強い帰結が一つ出る。汎用は OSS で、固有は AI と自分で作れる。それなら、SIer に丸ごと発注する理由は、どこにあるのか。
 
-旧来、SIer に頼む理由は「自分には作れないから」だった。だが、AI ネイティブな世界では、SIer が使う AI と、顧客が使う AI は、同じ AI だ。SIer 専用の Claude があるわけではない。だから、*AI にできないことは、SIer にもできない*。AI が解けない問題は、SIer の中の人が同じ AI で解いても、同様に詰まる。
+旧来、SIer に頼む理由は「自分には作れないから」だった。だが、AI ネイティブな世界では、SIer が使う AI と、顧客が使う AI は、同じ AI だ。最上層のモデルは、誰にでも同じ値段で売られている(1-01)。*SIer だけが使える、特別に強い AI は無い*。だから、*AI にできないことは、SIer にもできない*。AI が解けない問題は、SIer の中の人が同じ AI で解いても、同様に詰まる。
 
 SIer の真の優位は、AI が届かない領域での経験と判断に残る。真に新しい技術、専門規制、組織横断の交渉、経験的にしか分からない落とし穴である。だが、それはごく一部だ。助言の形で取り込めば足りる。弁護士や税理士に定常業務を丸投げしないのと同じである(3-06)。多年契約の SIer 委託は、もう要らない。
 
@@ -1786,11 +1792,17 @@ ____
 
 == まとめ
 
-顧客は、汎用を OSS で、固有を AI で作る。この順で見れば、コードを書く前にやることがあると分かる。汎用の OSS を使い、組織なら基盤から立てる。そのうえで、足りない固有の部分だけを AI と書く。
+顧客は、汎用を OSS で、固有を AI で作る。
 
-まずは個人の実例から見ていくのが分かりやすい。専門のプログラマーでない人が、OSS と AI で自分の道具を作る。
+* *汎用は OSS* ── 書かない、買わない。いちばん経済的で、守りとしても鍛えられている
+* *個人は OSS + AI* ── 土台の上に、ふだんの言葉で自分を足す
+* *組織は基盤から* ── 機械・土台・認証・コード・文書・メール・会議・Web・API・AI を自分の側に置く
+* *固有だけ AI と書く* ── コードを書くのは、土台を据えた後半になる
+* *AI にできないことは、SIer にもできない* ── 同じ AI を使っているからだ
 
-その実例は自立編が扱う。Excel マクロを Python に(2-04)、Web を作る(2-10)、電子工作から IoT まで(2-14)。
+ここで導入編は終わる。AI が最強の SIer になり(1-01)、保守の単位が文脈に移り(1-02)、設計とコードの役割がビルダーに移り(1-03・1-04)、作る側に顧客自身が立つ(1-05)。残るのは、では実際に何をどう立てるのか、という問いだけだ。
+
+次章から自立編に入る。link:/ai-native-software/independence/[2-01: Microsoft と Google から自立する ── 全体像と対応表]で、これから立てるものの全体像と対応表を置く。そこから一章ずつ、機械・土台・認証・コード・文書・メール・会議・Web・API・図・電子工作・AI を自分の側に立てていく。
 
 '''
 
@@ -1850,7 +1862,7 @@ ____
 
 When an individual builds a tool for themselves, using OSS as it comes is sometimes not enough. So you take OSS as the base and customize it, in dialogue with AI, into a shape that fits you. There is no need to learn a framework. Say what you want in ordinary words, try what comes back, and ask again. That is all. What you learn is only how to put into words what you want.
 
-This became possible because *the cost of learning fell by orders of magnitude*. It used to take six months to a year to reach an entry-level grasp. Paired with AI, it becomes a few hours to a few days before you have something running. What you would have given up on at half a year, you do yourself when it takes a few days. That line has been crossed.
+This became possible because *the cost of learning fell by orders of magnitude*. It used to take months to memorize the syntax, get used to a framework, and get one thing running. Paired with AI, having something that runs takes hours to days. What you gave up on when the unit was months, you try when the unit is days. That line has been crossed.
 
 The worked examples are handled by the Independence part.
 
@@ -1864,13 +1876,19 @@ Each of these is about an individual who is not a professional programmer buildi
 
 For an organization, the starting point is the same. First, stand up the generic foundation with OSS. Most of a company's software was never something to build; it was something to buy. Microsoft 365, Copilot, WordPress, the vendor packages under the core systems. What replaces them already runs all over the world.
 
-* Authentication: PocketBase (in place of Entra ID)
-* Documents: aiseed office (opens Word, Excel, and PowerPoint forms as they are)
-* Sharing and version control: Forgejo (in place of GitHub)
-* Mail: Stalwart; meetings: Jitsi; web: Cloudflare Pages (in place of WordPress)
-* AI: a local LLM plus RAG (in place of Copilot)
+* The machine: one Debian box (link:/en/ai-native-software/ai-pc/[2-02]) — the place you hand to the AI
+* The foundation: SQLite, PostgreSQL, DuckDB, Polars (link:/en/ai-native-software/foundation/[2-03])
+* Authentication: PocketBase, in place of Entra ID (link:/en/ai-native-software/auth/[2-05])
+* Sharing and version control: Forgejo, in place of GitHub (link:/en/ai-native-software/code/[2-06])
+* Documents: manuscripts held as AsciiDoc text, forms through aiseed office (link:/en/ai-native-software/documents/[2-07])
+* Mail: Stalwart (link:/en/ai-native-software/mail/[2-08]); meetings: Jitsi (link:/en/ai-native-software/meetings/[2-09])
+* Web: baked HTML on your own machine with Caddy, or on Cloudflare Pages, in place of WordPress (link:/en/ai-native-software/web/[2-11])
+* Core logic: exposed as an API with FastAPI, in place of the vendor package (link:/en/ai-native-software/fastapi/[2-12])
+* AI: a local LLM plus RAG, in place of Copilot (link:/en/ai-native-software/ai/[2-16])
 
-*First, untie the vendor with OSS*. Then put the foundation — identity, data, documents, mail, web, AI — on your own side. On top of that, write only the logic that is genuinely your company's own, together with AI. Writing code comes in the later half, after the foundation is laid. And the amount to write shrinks to the company-specific part.
+None of this means every piece is finished today. For aiseed office, only the engine ships; the GUI application and AsciiDoc read/write are not out yet (2-07 separates what works from what does not). For publishing the web, your own machine keeps everything on your side, while Cloudflare Pages means borrowing only the window. *Decide separately what to borrow and what to hold* — that is what laying the foundation consists of.
+
+*First, untie the generic from the vendor*. Then put the foundation — identity, data, documents, mail, web, AI — on your own side. On top of that, write only the logic that is genuinely your company's own, together with AI. Writing code comes in the later half, after the foundation is laid. And the amount to write shrinks to the company-specific part.
 
 This foundation-building is the Independence part, Part 2 of this series. One OSS stack at a time, you become independent of Microsoft 365, Copilot, WordPress, the core systems, and GitHub.
 
@@ -1883,7 +1901,7 @@ ____
 
 Turn all of this over and one strong consequence falls out. The generic can be built on OSS, and the specific can be built with AI by yourself. If so, where is the reason to commission an SIer for the whole thing?
 
-The old reason to hire an SIer was "we cannot build it ourselves." But in the AI-native world, the AI the SIer uses and the AI the customer uses are the same AI. There is no SIer-only Claude. So *what AI cannot do, the SIer cannot do either*. A problem AI cannot solve gets the people inside the SIer stuck the same way, because they use the same AI.
+The old reason to hire an SIer was "we cannot build it ourselves." But in the AI-native world, the AI the SIer uses and the AI the customer uses are the same AI. The top-tier model is sold to anyone at the same price (1-01). *There is no specially stronger AI that only an SIer can reach.* So *what AI cannot do, the SIer cannot do either*. A problem AI cannot solve gets the people inside the SIer stuck the same way, because they use the same AI.
 
 The SIer's real advantage remains in experience and judgment in the areas AI cannot reach. Genuinely new technology, specialized regulation, cross-organizational negotiation, the pitfalls you only learn from experience. But that is a small slice. Taking it in as advice is enough. It is the same as not handing routine business wholesale to a lawyer or a tax accountant (3-06). The multi-year SIer commission is no longer needed.
 
@@ -1894,11 +1912,17 @@ ____
 
 == Summary
 
-The customer builds the generic on OSS and the specific with AI. Put in that order, it becomes clear that there is work to do before any code is written. Use generic OSS, and for an organization, start from the foundation. Only then write the specific part that is still missing, together with AI.
+The customer builds the generic on OSS and the specific with AI.
 
-It is clearest to start from the personal examples. Someone who is not a professional programmer builds their own tool with OSS and AI.
+* *The generic runs on OSS* — do not write it, do not buy it. It is the most economical path, and it is hardened as a defense too
+* *The personal runs on OSS plus AI* — add yourself on top of the foundation, in everyday words
+* *An organization starts from the foundation* — machine, data, identity, code, documents, mail, meetings, web, API, AI, all on your own side
+* *Only the specific gets written with AI* — writing code comes in the later half, once the foundation is laid
+* *What AI cannot do, the SIer cannot do either* — because they are using the same AI
 
-Those examples are handled by the Independence part: Excel macros to Python (2-04), building a website (2-10), and from electronics to IoT (2-14).
+That ends the Introduction part. AI became the strongest SIer (1-01); the unit of maintenance moved to context (1-02); the roles of design and code moved to the builder (1-03, 1-04); and the customer now stands on the building side (1-05). What remains is only the question of what to actually stand up, and how.
+
+The next chapter opens the Independence part. link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map] lays out the whole map and the replacement table, and from there, one chapter at a time, the machine, the data foundation, identity, code, documents, mail, meetings, web, APIs, diagrams, electronics, and AI all move to your own side.
 
 '''
 

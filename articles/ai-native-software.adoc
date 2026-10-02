@@ -2020,15 +2020,21 @@ ____
 
 閉じた道具では、この経路が塞がっている。あなたが AI を連れて行っても、中身に触れない。要望を出して、ベンダーのロードマップを待つだけだ。開いた道具と閉じた道具の差は、AI の登場で縮まったのではない。AI の速度で、これから開き続ける。
 
+ベンダーが開くのを待つ必要はない。開いた道具を、AI の速度で育てればいい。
+
+== AI は、束の中の一機能ではなく、独立したインフラだ
+
 現実は、むしろ逆方向に動いている。ベンダーは AI を、開く道具としてではなく束を締め直す道具として組み込んでいる。ベンダー AI は束の最上層に座り、閉じた各層を AI ごしに縫い合わせ、解く理由をまた一つ消しにかかる。そして既存の IT 関係者の多くも、同じ方向に流れる。使い慣れた閉じたスタックの上にベンダー AI を載せる提案が、いちばん摩擦が少ないからだ。開く方向は、内側からは出てこない。
 
 この動きの筋の悪さは、革命の見立てを一つ正すと、はっきり見える。AI はよく産業革命、つまり機械が労働を置き換えた話にたとえられる。だが、AI をどこに置くかを考えるときの正しい先例は、活版印刷と同じ「情報革命」のほうだ。活版印刷は、写本という既存の仕組みに足された便利な機能ではなかった。文字を扱う新しいインフラとして独立に立ち、既存の情報の流れのほうが、その上で組み直された。写本工房の隅に印刷機を据えて「写本が速くなった」と呼んだ者はいない。OS も Office スイートも、情報を置いて動かすインフラだ。そして AI は、情報を読み、変換し、作る別のインフラである。ベンダーの組み込み AI とは、別のインフラを既存インフラの一機能として埋め込むことだ。新しいインフラを、旧いインフラの付属品に格下げしている。独立したインフラは、独立に立てて、どの道具からも使えるようにする。自立編が AI を束の中ではなく外に、それも最後に(2-16)据えるのは、この見立ての帰結だ。
 
 見立てには、続きがある。活版印刷にも前段があった。紙が普及し、写本が数世紀かけて文字を蓄えた。印刷機が爆発させたのは、その蓄積だ。同じ関係で、「IT 革命」と呼ばれた数十年は、AI 革命の前段だった(1-01 の「成就」を、AI 革命の側から言い直した読み方だ)。そして前段が遺した最大の資産は、閉じたスイートではなく、OSS という開いたコードと知識の共有財のほうだ。新しいインフラは、この開いた蓄積の上でこそ最も速く回る。だから「開いた道具を AI の速度で育てる」は、迂回路ではなく本流である。そう見れば、IT 業界が AI に与えている扱い、つまり写本工房の隅に印刷機を据えることも説明がつく。前段の担い手が、次の革命を自分の工房の一角に収めようとする、いつもの反応にすぎない。
 
-もう一つの無駄遣いも、名指ししておく。何もないところから、AI にその場その場でコードを書かせて積み上げる。ライブコーディングだけでは、世の中の平均的なソフトウェアを、高い計算資源で再発明することにしかならない。AI の出力は、渡す構造が薄いほど平均に収束する。積み上がる使い方は一つだ。実績ある開いた道具を土台に据え、足りない差分だけを AI と書く(1-05 の OSS ファースト)。
+== 土台に据えてから、差分だけを AI と書く
 
-ベンダーが開くのを待つ必要はない。内側から開く動きも来ない。開いた道具を、AI の速度で育てればいい。
+同じ見立てから、もう一つの無駄遣いも名指しできる。何もないところから、AI にその場その場でコードを書かせて積み上げるやり方だ。ライブコーディングだけでは、世の中の平均的なソフトウェアを、高い計算資源で再発明することにしかならない。*AI の出力は、渡す構造が薄いほど平均に収束する*。
+
+積み上がる使い方は一つだ。実績ある開いた道具を土台に据え、足りない差分だけを AI と書く(1-05 の OSS ファースト)。インフラとして独立に立てた AI は、独立に立てた道具の上でこそ速く回る。この章の対応表が、その土台の一覧になる。
 
 == 対応表 ── Microsoft と Google を、独立した OSS に解く
 
@@ -2348,15 +2354,21 @@ So the road runs the other way: *grow the open tools, at AI speed.* AI's role is
 
 With closed tools, that path is walled off. Bring your AI along and it still cannot touch the insides. You file a request and wait on the vendor's roadmap. The gap between open and closed tools did not narrow when AI arrived. It will keep widening, at AI speed.
 
+You do not need to wait for the vendors to open up. Grow the open tools, at AI speed.
+
+== AI is separate infrastructure, not a feature inside the bundle
+
 Reality is moving in the opposite direction. The vendors are embedding AI not as a tool that opens, but as a tool that re-tightens the bundle. The vendor AI sits on top of the stack, stitches the closed layers together through itself, and removes one more reason to untie. And much of the existing IT profession flows the same way, because proposing vendor AI on top of the familiar closed stack is the path of least friction. The opening move does not come from the inside.
 
 How wrong this move is comes into focus once you correct one analogy. AI is usually likened to the industrial revolution, machines replacing labor. But when the question is where AI belongs, the right precedent is an information revolution, the same kind as movable-type printing. The printing press was not a convenient feature added to the scriptorium. It stood alone as a new infrastructure for handling text, and the existing flow of information reorganized itself on top of it. Nobody set a press in the corner of a copying workshop and called it faster manuscripts. The OS and the office suite are infrastructure, the place where information sits and moves. And AI is another, separate infrastructure, the one that reads, transforms, and produces information. Vendor built-in AI embeds one infrastructure inside another as a feature. It demotes the new infrastructure to an accessory of the old. Separate infrastructure stands separately, reachable from every tool. That is why this part of the series stands AI outside the bundle, not inside it, and last (2-16). That placement is a consequence of this reading.
 
 The reading has a sequel. Movable-type printing had a preparatory stage of its own. Paper spread, and manuscripts spent centuries accumulating text. What the press detonated was that accumulation. In the same relation, the decades called the "IT revolution" were the preparatory stage of the AI revolution (the "completion" of 1-01, restated from the AI revolution's side). And the preparatory stage's greatest legacy is not the closed suites. It is OSS, the open commons of code and knowledge. The new infrastructure runs fastest on exactly this open accumulation. Which makes "grow the open tools at AI speed" not a detour but the main current. Seen this way, the treatment the IT industry gives AI, a press set in the corner of the scriptorium, also explains itself. The custodians of the preparatory stage are trying to fit the next revolution into a corner of their own workshop, the usual reflex.
 
-One more waste deserves naming. Having AI write code on the spot, from nothing, pile upon pile. Live coding alone only reinvents the world's average software at premium compute. The thinner the structure you hand AI, the more its output converges on the average. There is one use that compounds: stand proven open tools as the base, and write only the missing difference with AI (the OSS-first move of 1-05).
+== Stand the base first, then write only the difference with AI
 
-You do not need to wait for the vendors to open up, and the opening move will not come from the inside. Grow the open tools, at AI speed.
+The same reading names one more waste: having AI write code on the spot, from nothing, pile upon pile. Live coding alone only reinvents the world's average software at premium compute. *The thinner the structure you hand AI, the more its output converges on the average.*
+
+There is one use that compounds: stand proven open tools as the base, and write only the missing difference with AI (the OSS-first move of 1-05). AI stood up as separate infrastructure runs fastest on tools that were also stood up separately. This chapter's map is the list of that base.
 
 == The map — dissolving Microsoft and Google into independent OSS
 

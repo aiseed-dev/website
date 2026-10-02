@@ -1369,7 +1369,7 @@ ifdef::lang-ja[]
 ビルダーとは、何を作るかを決め、AI と対話して作り、動かし、全体を統合する役割である。
 1-03 では、コーダーとソフトウェアエンジニアの仕事を AI がするようになると書いた。
 残るのは、AI と対話してシステムを作り、動かす、もっと広い役割だ。
-本書では、これをビルダーと呼ぶ。
+この連載では、これをビルダーと呼ぶ。
 本章では、この役割の定義と、ソフトウェアエンジニアとの違いを固定する。
 
 == ビルダーの仕事は、四つの手順を回すことだ
@@ -1382,6 +1382,8 @@ ifdef::lang-ja[]
 * 統合し、動かす ── 部分を全体に組み込む。整合を保ち、動かす。そして「決める」に戻る。
 
 この四つは一方通行ではない。ループである。一周にかかる時間は、規模によって数分から数時間だ。一日に何十周も回す。コードを書く時間は、この中で最小になる。書くのは AI だからだ。
+
+一つ目の「決める」で書き出すものが、link:/ai-native-software/maintenance-shift/[1-02] で言う *AI に渡す最初の仕様* だ。何を使い、何を使わないか、どこに置き、どこまでを自分で持つか。その決定を文字にする。後の三つは、その仕様を回す手順にすぎない。だから、ループの質は一つ目で決まる。
 
 ```mermaid
 flowchart LR
@@ -1420,9 +1422,16 @@ flowchart LR
 * 狭く閉じた課題 ── 何を作るかが定義済みで、正解の条件がはっきりしている。「この仕様を、この制約で実装せよ」がこれだ。設計も実装も、課題の内側で終わる。ルールが明確で答え合わせができる課題ほど、AI は強い(1-01)。だから、SE の仕事は AI がするようになる。
 * 開いた課題 ── そもそも何を作るべきかが定まっていない。現実は矛盾する。関係者の利害は割れる。制約は動く。正解は課題の外、現実の側にある。これを現実とすり合わせ、狭く閉じた課題へ翻訳していくのが、ビルダーだ。
 
-効いてくるのは、課題の難しさではない。閉じているか、開いているかだ。狭く閉じた課題なら、どれほど高度でも AI は解く。世界で最も難しいコーディング問題(1-01)が、そうだった。難易度は障害にならない。だが、開いた課題は AI が苦手だ。そこには歴史がないからである。AI は過去の蓄積から学ぶ。前例のない現実には、学ぶ材料がない。まだ誰も解いていない状況にも、学ぶ材料がない。だから、開いた課題は人間に残る。
+効いてくるのは、課題の難しさではない。閉じているか、開いているかだ。狭く閉じた課題なら、どれほど高度でも AI は解く。世界で最も難しいコーディング問題(1-01)が、そうだった。難易度は障害にならない。だが、開いた課題では事情が変わる。正解が課題の内側になく、しかも「誰にとっての正解か」まで含んでいるからだ。AI は過去の蓄積から学ぶ。前例のない現実にも、まだ誰も解いていない状況にも、学ぶ材料がない。だから、開いた課題は人間に残る。
 
-なぜ人間にできるのか。人間には歴史があるからだ。生物としての約 40 億年、人類としての約 700 万年、そして個人として生まれてからの一生。その積み重ねが、体と文化と記憶に刻まれている。だから人間は、何が生きるに値するかを判断できる。開いた課題の正解は、この判断から立ち上がる。何を作るべきか、何が現実にとって大事か、という正解である。
+なぜ人間にできるのか。理由は二つある。
+
+* *利害がある* ── 人間は、その現実の中で生きている。何が困り、何が助かるかを、自分の身で受ける。だから、何を優先するかを決められる。
+* *責任を負える* ── 決めた結果を引き受ける主体である。現状の制度で責任の宛先になれるのは、人間だけだ。
+
+この二つがあるから、人間は何が大事かを判断できる。開いた課題の正解は、この判断から立ち上がる。何を作るべきか、何が現実にとって大事か、という正解である。
+
+積み重ねも、ここに効く。生物としての歴史、人類としての歴史、そして個人として生まれてからの一生。それが体と文化と記憶に刻まれているから、判断には拠りどころがある。ただし決め手は、拠りどころの古さではない。いま現実の中で利害を負い、結果を引き受ける位置にいることだ。
 
 == 判断は、人間が握り続ける
 
@@ -1434,7 +1443,7 @@ AI が持つのは、学習で得た重みだけだ。膨大な過去のデー�
 
 ソフトウェアエンジニアの典型は、ビッグテックの社員だ。巨大なシステムの、特定の一分野だけを深く受け持つ。検索の一機能、決済の一サービス、ある API の一層。問題は狭く、よく定義されている。だからこそ、AI が最も得意とする領域だ。その仕事から先に、AI がするようになる。
 
-そして、それは最先端ですでに起きている。Claude が Claude を作る。AI 自身の設計を、AI がする時代だ。こうなると、問いは一つになる。ビッグテックのソフトウェアエンジニアは、まだ必要か。AI が代わりをする時代になった。
+そして、それは最先端ですでに起きている。Anthropic は、本番にマージするコードの *8 割超*が Claude 製だと公表している。最新のモデルと機能では 9 割を超える(VentureBeat、2026 年 5 月)。Claude Code の研究プレビュー前、2025 年 2 月の時点では一桁パーセントだった。*Claude が Claude を作っている*。こうなると、問いは一つになる。ビッグテックのソフトウェアエンジニアは、まだ必要か。AI が代わりをする時代になった。
 
 == 出力を決めるのは、判断の質とループの回転数だ
 
@@ -1468,22 +1477,27 @@ ____
 
 == ビルダーの基盤は、ソフトウェア工学ではなくリベラルアーツだ
 
-ビルダーの中心にあるのは、文脈の読み、言語化、評価、統合判断、取捨選択、責任である。これらはすべて、伝統的にリベラルアーツ(自由七科)と呼ばれてきた技芸だ。コードを書いてきた経験が足場になることはある。だが、中心ではない。
+ビルダーの中心にあるのは、文脈の読み、言語化、評価、統合判断、取捨選択、責任である。コードを書いてきた経験が足場になることはある。だが、中心ではない。中心にあるのは、リベラルアーツと呼ばれてきた技芸のほうだ。
+
+ここで言葉を二つに分けておく。中世の *自由七科* は、trivium(文法・修辞・論理)と quadrivium(算術・幾何・音楽・天文)の七つだ。近代以降の *リベラルアーツ* は、人文学・社会科学・自然科学を含む教養の全体を指す。ビルダーの能力は、この両方に跨がる。
 
 |===
-| ビルダーに求められる能力 | リベラルアーツに対応する分野
-| 文脈の読み(顧客・現場・現実から) | 歴史学・社会科学・政治哲学
-| 言語化(暗黙の意図を明示の言葉に) | 文法・修辞学(trivium)
-| 課題の分解(開いた課題を扱える形に) | 論理学・分析(trivium の弁証法)
-| 評価(現実・目的に合うかを見る) | 美学・倫理学
-| 統合判断(全体の整合を見る) | 体系的思考(quadrivium の幾何・音楽の構成感覚)
-| 取捨選択(案から「これでいく」を選ぶ) | 倫理学・判断論
-| 価値と責任(何が大事か・判断は手放さない) | 倫理学
+| ビルダーに求められる能力 | 自由七科(中世) | 近代のリベラルアーツ
+
+| 言語化(暗黙の意図を明示の言葉に) | 文法・修辞 | 言語学・作文
+| 課題の分解(開いた課題を扱える形に) | 論理(弁証) | 論理学・分析
+| 統合判断(全体の整合を見る) | 幾何・音楽(比と構成) | 体系的思考
+| 文脈の読み(顧客・現場・現実から) | ── | 歴史学・社会科学・政治哲学
+| 評価(現実・目的に合うかを見る) | ── | 美学・倫理学
+| 取捨選択(案から「これでいく」を選ぶ) | ── | 倫理学・判断論
+| 価値と責任(何が大事か・判断は手放さない) | ── | 倫理学
 |===
+
+上の三つは七科にそのまま載る。下の四つは七科の外にあり、近代のリベラルアーツの側で育ってきた。*七科に載る三つが言葉と構造の扱い方で、七科の外にある四つが何に向けて使うかの判断だ*。ビルダーには、両方が要る。
 
 AI が代わりに引き受けたのは、ソフトウェア工学の核心だ。アルゴリズム、言語仕様、フレームワーク、設計パターン、テストの書き方。残った仕事がリベラルアーツ的な能力にしか見えないのは、*構造的な必然*である。
 
-歴史的にも符号する。中世のリベラルアーツは、自由人が学ぶべき技芸と定義された。自由人とは、隷属していない人のことだ。奴隷の技芸(mechanical arts)と対になる概念である。ビルダーは、AI に判断を手放さない人だ。つまり、自由人の技芸の現代版である。
+歴史的にも符号する。自由七科は、自由人が学ぶべき技芸と定義された。自由人とは、隷属していない人のことだ。対になるのは artes mechanicae、手を使って働く者の技芸である。ビルダーは、AI に判断を手放さない人だ。つまり、自由人の技芸の現代版である。
 
 ____
 ビルダーの基盤は、ソフトウェア工学ではない。
@@ -1514,7 +1528,7 @@ ifdef::lang-en[]
 A builder decides what to build, builds it in dialogue with AI, runs it, and integrates the whole.
 1-03 said that the work of both the coder and the software engineer comes to be done by AI.
 What remains is a broader role: building and running systems in dialogue with AI.
-This book calls that role the builder.
+This series calls that role the builder.
 This chapter fixes the definition, and fixes where the builder differs from the software engineer.
 
 == A builder's work is a loop of four steps
@@ -1527,6 +1541,8 @@ A builder's work is made of four steps.
 * Integrate and run — fold the part into the whole. Keep the whole consistent, and run it. Then return to "decide."
 
 These four are not a one-way line. They are a loop. One turn takes minutes to hours, depending on scope. A builder runs the loop tens of times a day. Time spent writing code is the smallest part of it, because AI does the writing.
+
+What you write down in the first step, "decide," is the *first spec you hand to an AI* from link:/en/ai-native-software/maintenance-shift/[1-02]. What you use and what you do not, where it goes, how much of it you hold yourself — those decisions, put into text. The other three steps are only the procedure for turning that spec. So the quality of the loop is set in the first step.
 
 ```mermaid
 flowchart LR
@@ -1565,9 +1581,16 @@ A software engineer (SE) and a builder look alike. But they are structurally dif
 * A narrowly closed problem — what to build is already defined, and the conditions for a correct answer are clear. "Implement this spec under these constraints" is such a problem. Design and implementation both finish inside the problem. The clearer the rules and the more checkable the answer, the stronger AI is (1-01). So the SE's work comes to be done by AI.
 * An open problem — what should be built is not settled in the first place. Reality contradicts itself. The stakeholders' interests split. The constraints move. The right answer sits outside the problem, on the side of reality. Reconciling that with reality and translating it into narrowly closed problems is the builder's work.
 
-What decides the outcome is not the difficulty of the problem. It is whether the problem is closed or open. A narrowly closed problem, however advanced, AI solves. The world's hardest coding problems (1-01) were such a case. Difficulty is not an obstacle. But open problems are where AI is weak, because open problems have no history behind them. AI learns from accumulated precedent. A reality without precedent gives it no material to learn from. A situation no one has solved yet gives it no material either. So the open problem stays with humans.
+What decides the outcome is not the difficulty of the problem. It is whether the problem is closed or open. A narrowly closed problem, however advanced, AI solves. The world's hardest coding problems (1-01) were such a case. Difficulty is not an obstacle. But an open problem changes the terms, because the right answer does not sit inside the problem, and it carries the question of right for whom. AI learns from accumulated precedent. A reality without precedent gives it no material to learn from, and neither does a situation no one has solved yet. So the open problem stays with humans.
 
-Why can a human do it? Because a human has history. Some four billion years as a living thing, some seven million years as humanity, and a whole life since birth. That accumulation is carved into the body, the culture, and the memory. So a human can judge what is worth living for. The right answer to an open problem rises out of that judgment. That is the answer to what should be built, and to what matters for the reality at hand.
+Why can a human do it? For two reasons.
+
+* *A human has a stake* — a human lives inside that reality and takes the trouble and the relief in their own body. So they can decide what to put first.
+* *A human can carry responsibility* — a human is a subject who bears the result of a decision. Under present institutions, only a human can be the address of responsibility.
+
+Those two are why a human can judge what matters. The right answer to an open problem rises out of that judgment: the answer to what should be built, and to what matters for the reality at hand.
+
+Accumulation counts here too. History as a living thing, history as humanity, and a whole life since birth — carved into the body, the culture, and the memory, it gives judgment something to stand on. But what decides it is not the age of that footing. It is standing, right now, in a reality where you carry the stake and bear the result.
 
 == Judgment stays with the human
 
@@ -1579,7 +1602,7 @@ The weights obtained from training can be changed easily, by the developer. What
 
 The typical software engineer is a big-tech employee. Such an engineer owns one specific slice of a giant system, deeply. One feature of search, one service of payments, one layer of an API. The problem is narrow and well defined. That is exactly where AI is strongest. That work is the first to be done by AI.
 
-And at the frontier it is already happening. Claude builds Claude. AI does the design of the AI itself. Once that is the case, the question becomes a single one. Are big-tech software engineers still needed? The era in which AI does it in their place has arrived.
+And at the frontier it is already happening. Anthropic has stated that *more than 80 percent* of the code it merges into production is written by Claude, and more than 90 percent for its newest models and features (VentureBeat, May 2026). Before Claude Code's research preview in February 2025, the figure was in the single digits. *Claude builds Claude.* Once that is the case, the question becomes a single one. Are big-tech software engineers still needed? The era in which AI does it in their place has arrived.
 
 == Output is set by the quality of judgment and the number of loop turns
 
@@ -1613,22 +1636,27 @@ None of this comes from language grammar or framework fluency. You do not have t
 
 == A builder's foundation is liberal arts, not software engineering
 
-At the center of a builder's work sit reading context, articulation, evaluation, integration judgment, selection, and responsibility. All of these have traditionally been called the liberal arts, the seven arts of the artes liberales. Experience writing code can serve as footing. But it is not the center.
+At the center of a builder's work sit reading context, articulation, evaluation, integration judgment, selection, and responsibility. Experience writing code can serve as footing, but it is not the center. What sits at the center is what has been called the liberal arts.
+
+Two senses of that phrase are worth separating. The medieval *seven liberal arts* are the trivium (grammar, rhetoric, logic) and the quadrivium (arithmetic, geometry, music, astronomy). The modern *liberal arts* name a broader education spanning the humanities, the social sciences, and the natural sciences. A builder's abilities straddle both.
 
 |===
-| What a builder needs | The matching liberal-arts field
-| Reading context (from customer, field, reality) | History, social science, political philosophy
-| Articulation (tacit intent into explicit words) | Grammar, rhetoric (the trivium)
-| Decomposing the problem (into a form that can be handled) | Logic, analysis (dialectic, in the trivium)
-| Evaluation (whether it fits reality and the purpose) | Aesthetics, ethics
-| Integration judgment (seeing the consistency of the whole) | Systems thinking (geometry, and the constructive sense of music, in the quadrivium)
-| Selection (picking "this one" from the options) | Ethics, theory of judgment
-| Value and responsibility (what matters; judgment is not handed over) | Ethics
+| What a builder needs | The seven arts (medieval) | The modern liberal arts
+
+| Articulation (tacit intent into explicit words) | Grammar, rhetoric | Linguistics, composition
+| Decomposing the problem (into a handleable form) | Logic (dialectic) | Logic, analysis
+| Integration judgment (seeing the whole stay consistent) | Geometry, music (ratio and construction) | Systems thinking
+| Reading context (from customer, field, reality) | — | History, social science, political philosophy
+| Evaluation (whether it fits reality and the purpose) | — | Aesthetics, ethics
+| Selection (picking "this one" from the options) | — | Ethics, theory of judgment
+| Value and responsibility (what matters; judgment is not handed over) | — | Ethics
 |===
+
+The first three sit squarely in the seven arts. The last four sit outside them and grew up on the modern side. *The three inside the seven are how to handle words and structure; the four outside are the judgment of what to aim them at.* A builder needs both.
 
 What AI took over is the core of software engineering. Algorithms, language specifications, frameworks, design patterns, how to write tests. The work that remains looks like nothing but liberal-arts ability, and that is a *structural necessity*.
 
-The history lines up as well. The medieval liberal arts were defined as the arts a free person should learn. A free person meant one who was not enslaved. The concept was set against the mechanical arts, the slave's arts. The builder is the person who does not hand judgment over to AI. That is, the builder is the contemporary form of the free person's arts.
+The history lines up as well. The seven liberal arts were defined as the arts a free person should learn. A free person meant one who was not enslaved. Set against them were the artes mechanicae, the arts of those who work with their hands. The builder is the person who does not hand judgment over to AI. That is, the builder is the contemporary form of the free person's arts.
 
 ____
 A builder's foundation is not software engineering.

@@ -135,11 +135,11 @@ AI は、二つの別々の能力で最上層に達した。コードを書く�
 AI モデルへのアクセスには、用途による段がある。
 
 * *基本プラン* ── Claude Pro / ChatGPT Plus / Google AI Pro など。月額
-  20 ドル前後、日本円で 3 千円ほど。この連載の道具立てを立て、直し、
-  日々動かすぶんには、ここで足りる。まずこれで始めてよい。
-* *書き続ける日が続くとき* ── 一日じゅう AI にコードを書かせる日が
-  何日も続くなら、上の帯(Claude Max など)がある。必要になってから
-  上げればよく、最初から要るものではない。
+  20 ドル前後、日本円で 3 千円ほど。運用に入った道具を見守る、ときどき
+  直す、といった軽い使い方なら、ここで足りる。まずこれで始めてよい。
+* *作る時期* ── 一日じゅう AI にコードを書かせる日が続くあいだは、上の帯
+  (Claude Max など、月 100 ドルから)を使う。作り終えて運用に入ったら、
+  基本プランに戻す。時期ごとの内訳は link:/ai-native-software/ai-pc/[2-02] に置いた。
 * *API 従量課金* ── 使った分だけ払う形もあるが、*ここは使わない*。同じ量を
   API で通すと、定額のおよそ *10 倍* になる。
 
@@ -425,11 +425,12 @@ Access to AI models comes in tiers, depending on how hard you intend to
 use them.
 
 * *The base plan* — Claude Pro, ChatGPT Plus, Google AI Pro, at around
-  $20 a month. For standing up the toolset in this series, fixing it, and
-  running it day to day, this is enough. Start here.
-* *When the writing days pile up* — if you have AI writing code all day,
-  day after day, there is a tier above (Claude Max and the like). Move up
-  when you need it; you do not need it to begin.
+  $20 a month. For light use — watching tools that are already running,
+  fixing them now and then — this is enough. Start here.
+* *The building period* — while you have AI writing code all day, day after
+  day, use the tier above (Claude Max and the like, from $100 a month). Once
+  the building is done and the tools are running, drop back to the base plan.
+  The breakdown by period is in link:/en/ai-native-software/ai-pc/[2-02].
 * *API pay-as-you-go* — you can pay for what you use, but *do not use it
   here*. Run the same volume through the API and it comes to roughly *ten
   times* the flat plan.
@@ -1135,7 +1136,8 @@ ____
 12,800 円で出た。従来機種の三分の一を下回る値で、*発売から 10 か月で
 100 万台*売れた(カシオ計算機の社史、情報処理学会コンピュータ博物館)。
 そろばんの側も動いている。播州そろばんの生産は 1960 年の 360 万丁が頂で、
-いまは約 45 万丁 ── 八分の一である。
+いまは年に約 15 万丁 ── 頂の二十四分の一ほどだ。それでも全国の約 7 割を占める
+(小野市「小野市の地場産業」)。
 
 この数字が言っているのは「何年で入れ替わったか」ではない。*安い道具は、
 出たら一気に入る*ということだ。入れ替わりそのものは、そこから長く続く。
@@ -1318,7 +1320,8 @@ sale in August 1972 at ¥12,800 — under a third of the price of earlier models
 and sold *one million units in its first ten months* (Casio's own company
 history; the Information Processing Society of Japan's computer museum). The
 abacus side moved too: Banshu soroban production peaked at 3.6 million units in
-1960 and is now around 450,000, an eighth of that.
+1960 and is now around 150,000 a year — roughly a twenty-fourth of the peak, yet
+still about 70 percent of Japan's output (Ono City, "Local industries of Ono").
 
 What those numbers say is not "how many years the swap took." They say that *a
 cheap tool, once it exists, arrives all at once*. The swapping itself goes on
@@ -1443,7 +1446,7 @@ AI が持つのは、学習で得た重みだけだ。膨大な過去のデー�
 
 ソフトウェアエンジニアの典型は、ビッグテックの社員だ。巨大なシステムの、特定の一分野だけを深く受け持つ。検索の一機能、決済の一サービス、ある API の一層。問題は狭く、よく定義されている。だからこそ、AI が最も得意とする領域だ。その仕事から先に、AI がするようになる。
 
-そして、それは最先端ですでに起きている。Anthropic は、本番にマージするコードの *8 割超*が Claude 製だと公表している。最新のモデルと機能では 9 割を超える(VentureBeat、2026 年 5 月)。Claude Code の研究プレビュー前、2025 年 2 月の時点では一桁パーセントだった。*Claude が Claude を作っている*。こうなると、問いは一つになる。ビッグテックのソフトウェアエンジニアは、まだ必要か。AI が代わりをする時代になった。
+そして、それは最先端ですでに起きている。Anthropic は、2026 年 5 月に本番へマージしたコードの *8 割超*が Claude 製だったと公表している(VentureBeat)。*Claude が Claude を作っている*。こうなると、問いは一つになる。ビッグテックのソフトウェアエンジニアは、まだ必要か。AI が代わりをする時代になった。
 
 == 出力を決めるのは、判断の質とループの回転数だ
 
@@ -1602,7 +1605,7 @@ The weights obtained from training can be changed easily, by the developer. What
 
 The typical software engineer is a big-tech employee. Such an engineer owns one specific slice of a giant system, deeply. One feature of search, one service of payments, one layer of an API. The problem is narrow and well defined. That is exactly where AI is strongest. That work is the first to be done by AI.
 
-And at the frontier it is already happening. Anthropic has stated that *more than 80 percent* of the code it merges into production is written by Claude, and more than 90 percent for its newest models and features (VentureBeat, May 2026). Before Claude Code's research preview in February 2025, the figure was in the single digits. *Claude builds Claude.* Once that is the case, the question becomes a single one. Are big-tech software engineers still needed? The era in which AI does it in their place has arrived.
+And at the frontier it is already happening. Anthropic has stated that *more than 80 percent* of the code it merged into production in May 2026 was written by Claude (VentureBeat). *Claude builds Claude.* Once that is the case, the question becomes a single one. Are big-tech software engineers still needed? The era in which AI does it in their place has arrived.
 
 == Output is set by the quality of judgment and the number of loop turns
 
@@ -3224,7 +3227,7 @@ python -c "import duckdb, polars; print('ok')"
 * *DuckDB / Polars* ── 列指向分析と高速データフレーム。Excel は人の入出力に残し、重い集計は機械側で ── Power BI を大差で抜く
 
 書いたコードは、ほとんど無い。汎用は、すでに OSS として在る。ビルダーは、それを立てる。
-次章では、その上に認証(PocketBase)を据え、アプリ共通の門番にする。
+次章では、この土台の上で処理を書く ── Excel と Word に埋まったマクロとグラフを Python に出し、画面が要るところには Flet を被せる。
 
 '''
 
@@ -3469,8 +3472,9 @@ The data layer, onto your own side, first.
 * *DuckDB / Polars* — columnar analysis and a fast dataframe; Excel stays the human's I/O, heavy crunching moves machine-side, pulling far ahead of Power BI
 
 Almost no code was written. The generic is already there, as OSS. The builder
-stands it up. The next chapter lays authentication (PocketBase) on top of this,
-as the shared gatekeeper across the apps.
+stands it up. The next chapter writes the logic on top of this foundation —
+moving the macros and charts buried in Excel and Word out into Python, and
+putting a Flet screen on where one is needed.
 
 '''
 
@@ -8619,11 +8623,11 @@ curl -s https://api.example.com/docs  # FastAPI の自動ドキュメントが�
 * *着地点* ── 2-03 の DB と 2-05 の門番に乗る、一本の API
 * *画面* ── デザインはルールだ。1 枚に書いて、画面を頼むたびに渡す
 
-やる時はやる。中途半端な共存は、組織を硬直させる。AI で書き換えのコストが 10 分の
-1 になった時代に、残す理由は無い。
+やる時はやる。中途半端な共存は、組織を硬直させる。AI で書き換えのコストが桁で
+下がった時代に、残す理由は無い。
 
-次章では、その上に載せる情報そのものを整える。AI を載せる前に、載せるに値する情報を
-作る。
+次章では、画面で使ったのと同じ手を、図と資料に広げる。構造図もスライドも配布する
+資料も、文字とコードから出す。
 
 '''
 
@@ -9276,8 +9280,8 @@ When you do it, do it. Half-hearted coexistence freezes an organization. In an
 era when AI has cut the cost of rewriting by an order of magnitude, there is no
 reason left to keep the old.
 
-The next chapter prepares the information that goes on top of all this. Before
-laying an AI on it, we build information worth laying it on.
+The next chapter carries the same approach used for screens out to diagrams and
+documents. Structure diagrams, slides, and handouts all come from text and code.
 
 '''
 
@@ -11458,8 +11462,8 @@ title.ja: 自前の AI を据える ── LLM と RAG
 title.en: Stand Up Your Own AI — LLM and RAG
 subtitle.ja: 全ての上に AI を乗せる ── 自社データに通じた答えを、自分の側で
 subtitle.en: Lay AI on top of everything — answers grounded in your own data, on your own side
-description.ja: 自立編の最後に、全ての上に AI を乗せる。2-03 で有効化した pgvector が、ここで効く。まず Cohere のオープンウェイトのコーディングモデル North Mini Code を Ollama で手元に置き、データを外に出さない。RAG 用に汎用モデルと埋め込みを並べ、社内文書・コード・メールを pgvector に入れて出典つきで答えさせ、Open WebUI で使う。検索は門番を迂回しない。機密と常時処理は自前、難しい判断は Claude に借りる ── 主導権は自分、能力は借りる。Copilot 依存を断ち、自立編を締める。
-description.en: The Independence part closes by laying AI on top of everything. The pgvector enabled in 2-03 finally pays off. Start by holding Cohere's open-weight coding model North Mini Code locally on Ollama, so no data leaves your side. Load a general model and embeddings alongside for RAG, put documents, code, and mail into pgvector to answer with citations, and use it through Open WebUI. Search never bypasses the gate. Keep secrets and always-on processing in-house and borrow a frontier model like Claude for hard judgment — control yours, capability borrowed. Cut the Copilot dependency and close the Independence part.
+description.ja: 立ててきたもの全ての上に、AI を乗せる。2-03 で有効化した pgvector が、ここで効く。まず Cohere のオープンウェイトのコーディングモデル North Mini Code を Ollama で手元に置き、データを外に出さない。RAG 用に汎用モデルと埋め込みを並べ、社内文書・コード・メールを pgvector に入れて出典つきで答えさせ、Open WebUI で使う。検索は門番を迂回しない。機密と常時処理は自前、難しい判断は Claude に借りる ── 主導権は自分、能力は借りる。Copilot 依存を断ち、自立編を締める。
+description.en: AI goes on top of everything stood up so far. The pgvector enabled in 2-03 finally pays off. Start by holding Cohere's open-weight coding model North Mini Code locally on Ollama, so no data leaves your side. Load a general model and embeddings alongside for RAG, put documents, code, and mail into pgvector to answer with citations, and use it through Open WebUI. Search never bypasses the gate. Keep secrets and always-on processing in-house and borrow a frontier model like Claude for hard judgment — control yours, capability borrowed. Cut the Copilot dependency and close the Independence part.
 date: 2026.07.16
 label: Independence 16
 title_html.ja: 全ての上に、<br><span class="accent">自前の AI</span>を乗せる。
@@ -11616,7 +11620,7 @@ curl -sI https://ai.example.com | head -1  # 窓口の頁が返る
 * 手順を書いたのは 2026-07-16
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
-== まとめ ── 自立編の終わりに
+== まとめ ── 立て終えたもの
 
 全ての上に、自前の AI を。
 
@@ -11634,9 +11638,9 @@ ____
 すでに世界で共有されている。
 ____
 
-これで「どう作るか(自立編)」は終わる。次章からは視点が変わる ──「なぜこれが産業
-構造を変えるのか(転換編)」。自分で立てられる時代に、SIer 委託モデルがなぜ構造的に
-不経済になるのかを問う。
+立て終えたら、次に決まるのは運用だ。次章では、据えた AI にどこまで任せるかの線を
+引く ── 自律で動かさず、決まったことはコードとコマンドに凍結する。それで自立編は
+閉じる。
 
 '''
 
@@ -11809,7 +11813,7 @@ curl -sI https://ai.example.com | head -1  # the window's page answers
 * This procedure was written on 2026-07-16
 * If a version has moved, have the AI confirm the official procedure before proceeding
 
-== Summary — closing the Independence part
+== Summary — what has been stood up
 
 Your own AI, on top of everything.
 
@@ -11829,10 +11833,10 @@ As written at the start of 2-03 — the effect of OSS is greater than the effect
 of AI. The generic is already shared with the world.
 ____
 
-That closes how you build it, the Independence part. From the next chapter the
-viewpoint shifts — why this changes the industry's structure, the Shift part. In
-an era when you can stand it up yourself, why does the SIer-commissioned model
-become structurally uneconomic?
+Once it is all stood up, what comes next is how it runs. The next chapter draws
+the line on how far the AI you have placed is allowed to go — not autonomously,
+and with whatever is settled frozen into code and commands. That closes the
+Independence part.
 
 '''
 
@@ -12981,9 +12985,9 @@ OSS で立て、固有は AI と書く。*これが、新しい合理的な既�
 前提の反転である。続く章は、二つの世界それぞれの帰結を、別の面から照らして
 いく。
 
-まず事務(Microsoft)側だ。次の章で問うのは、なぜ OSS とソブリン AI の
-ほうが、いまや経済でも安全保障でも有利なのか、である。Microsoft 依存の問題と、
-米国政府を信頼しきれないという地政学リスク(Trump 問題)を見ていく。
+その前に、一つ道具を置く。ベンダーの語りを、一次情報で検算する作法だ。次の章で
+それを置き、その次の 3-03 で事務(Microsoft)側に当てる ── なぜ OSS とソブリン AI の
+ほうが、いまや経済でも安全保障でも有利なのかを、その作法で確かめる。
 
 '''
 
@@ -13211,10 +13215,10 @@ This chapter set the premise of the Shift part: the parallelism of office and
 core, the double tax, and AI's inversion of the premise. The chapters that
 follow light each of the two worlds' consequences from a different face.
 
-First, the office (Microsoft) side. The next chapter asks why OSS and
-sovereign AI are now better on both economics and security. It examines the
-problem of Microsoft dependence, and the geopolitical risk of not being able
-to trust the US government — the Trump problem.
+Before that, one tool goes down: the practice of checking a vendor's narrative
+against primary sources. The next chapter sets it out, and 3-03 then applies it
+to the office (Microsoft) side — checking, with that practice, why OSS and
+sovereign AI are now better on both economics and security.
 
 '''
 

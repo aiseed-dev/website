@@ -59,10 +59,10 @@ Refer to chapters as `{part}-{number}` in prose. The article IDs inside the file
 
 **導入編**
 
-1. **1-01** AI has entered the top competitive-programming tier and can design (attack, design, verification are faces of one power), so it became the strongest SIer — callable for **$20 a month** (the base plan is enough; the API is about ten times dearer for the same volume, computed in the text from list prices).
+1. **1-01** AI has entered the top competitive-programming tier and can design (attack, design, verification are faces of one power), so it became the strongest SIer — callable for **$20 a month**. The base plan is enough for light use and running; the building period runs on Max (from $100 — breakdown in 2-02). The API is about ten times dearer for the same volume, computed in the text from list prices; do not use it.
 2. **1-02** The real shift is in maintenance (40–80 %, average 60 %, of software cost — Glass 2001; ~58 % of developer time goes to comprehension — Xia et al. 2018). The unit of maintenance moves from code to design, spec, and context — held as text in git — and *that* is the first spec you hand to an AI.
 3. **1-03** The coder's and the SE's work both move to AI, because writing code and deciding structure are one power, not two tiers. The role of designing-and-coding-yourself moves to the builder. Tools arrive fast once cheap (one million Casio Minis in ten months); the swap itself runs long.
-4. **1-04** The builder: decide → build with AI → check → integrate. The SE solves narrowly closed problems; the builder handles open ones. Humans hold judgment because they have a **stake** and can **carry responsibility**. Its foundation is the liberal arts — three abilities sit in the medieval seven arts, four outside them in the modern liberal arts. Anthropic reports 80 %+ of its merged code is Claude-written.
+4. **1-04** The builder: decide → build with AI → check → integrate. The SE solves narrowly closed problems; the builder handles open ones. Humans hold judgment because they have a **stake** and can **carry responsibility**. Its foundation is the liberal arts — three abilities sit in the medieval seven arts, four outside them in the modern liberal arts. Anthropic reported that 80 %+ of the code it merged in May 2026 was Claude-written (VentureBeat) — only that figure was verified; do not add the "90 %" or "single digits" claims.
 5. **1-05** Customers build: the generic on OSS, the personal on OSS + AI, the organization from the foundation; only the specific gets written with AI. What AI cannot do, the SIer cannot do either. Hands off to 2-01.
 
 **自立編** — 2-01 is the map (correspondence table with Microsoft 365 / Google Workspace, the order of untying, list prices). 2-02 … 2-17 each stand one layer up. 2-01's table and order **must list every 自立編 chapter**; chapters with no suite counterpart (2-14, 2-15, 2-17) are named as outside the table.
@@ -84,13 +84,14 @@ Refer to chapters as `{part}-{number}` in prose. The article IDs inside the file
 - Documents: manuscripts are AsciiDoc text in git; forms go through **aiseed office** (officework engine 0.5.0 on PyPI; the GUI app and AsciiDoc read/write are *not* shipped yet). ONLYOFFICE does not hold Japanese forms — that is why aiseed office exists.
 - **Claude Docs** (beta from 2026-09-16) is a place to pass through for drafting and co-editing, not where the finished manuscript lives — structurally it is the same as Microsoft 365 (documents live in claude.ai).
 - Web: build in 2-10 (Markdown + HTML/CSS baked by Python), publish in 2-11 (own machine with Caddy, or Cloudflare Pages).
-- Prices quoted: Claude Pro $20/month; Microsoft 365 Business ¥1,049–3,298 per seat per month (July 2026 revision, ex-tax, annual); Google Workspace Business Standard ¥1,600 (annual), Gemini included since March 2025.
-- "10 分の 1" for rewrite cost has been **removed** everywhere (no source); the text says the cost fell by an order of magnitude.
+- Prices quoted: Claude Pro $20/month for light use, Max from $100/month during the building period (2-02); Microsoft 365 Business ¥1,049–3,298 per seat per month (July 2026 revision, ex-tax, annual); Google Workspace Business Standard ¥1,600 (annual), Gemini included since March 2025.
+- The rewrite-cost figure "10 分の 1" was removed from 2-01 and 2-12 (no source); they now say the cost fell by an order of magnitude. **3-06 still carries a different claim** ("初期構築で 10 分の 1 以下" for a corporate site) — not yet reviewed.
+- 1-03's soroban figures: Banshu production peaked at 3.6 million in 1960 and is now about 150,000 a year, about 70 % of Japan's output (Ono City). Not 450,000.
 
 ## Consistency checks before committing
 
 - The JA/EN parity script and the internal-link check from authoring-series-chapter.
-- `grep` the file for: `サブシリーズ`, `ソフトウェア開発編`, `親シリーズ`, `sub-series`, `parent series`, `本書`, `序章`, `/ai-native-ways/` — all should be zero.
+- Search with line breaks removed (prose is hard-wrapped; a phrase can straddle two lines). Then check the file for: `サブシリーズ`, `ソフトウェア開発編`, `親シリーズ`, `sub-series`, `parent series`, `本書`, `序章`, `/ai-native-ways/` — all should be zero.
 - `grep` for model names used as tiers (`Opus は`, `Fable / Mythos`).
 - If you change a chapter number, grep the other series files (`blog.adoc`, `insights.adoc`, `claude-debian.adoc`, `fable.adoc`, `phosphorus-and-farming.adoc`) for the old `{part}-{number}`.
 - If you change what 自立編 contains, update 2-01's table, order list, and summary, and 1-05's list.

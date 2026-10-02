@@ -1946,8 +1946,8 @@ title.ja: Microsoft と Google から自立する ── 全体像と対応表
 title.en: Becoming Independent from Microsoft and Google — The Whole Map
 subtitle.ja: ビジネスの土台を、ベンダーの檻から自分の手元へ
 subtitle.en: Move the foundation of your business out of the vendor's cage and into your own hands
-description.ja: ロックインの正体は、機能の弱さではない。中身が閉じていること、そして鍵(認証)が他人の手元に集中していることだ。Office スイートも業務システム(基幹)も、同じ構造で立っている。閉じたものを開かせること、それが AI の役割だ。独自形式を解き、読めないコードを読み、閉じ込められた業務知識を取り出す。自立編は、AI と一緒にこの閉じた束を一層ずつ開いた OSS に解き、鍵を自分の手元に移す。機械は Debian の PC 一台、認証は PocketBase、文書は aiseed office、コードと共有は Forgejo、メールは Stalwart、会議と予約は Jitsi と Cal.com、Web は Cloudflare Pages、データは PostgreSQL と SQLite と DuckDB、AI はローカル LLM + RAG、基幹は FastAPI。この章はその全体像と対応表であり、続く各章が一本ずつ実際に立てる。
-description.en: The lock-in is not weak features. It is that the layers are closed, and that the key (identity) is concentrated in someone else's hands. The Office suite and the core business systems stand on the same structure. Opening what is closed is AI's role. It unseals proprietary formats, reads unreadable code, and extracts imprisoned business knowledge. The Independence part, working with AI, unties the closed bundle into open OSS and moves the key to your side — the machine is one Debian PC, auth is PocketBase, documents are aiseed office, code and sharing are Forgejo, mail is Stalwart, meetings and scheduling are Jitsi and Cal.com, web is Cloudflare Pages, data is PostgreSQL, SQLite and DuckDB, AI is a local LLM plus RAG, and core logic is FastAPI. This chapter is the map; the chapters that follow stand each one up.
+description.ja: ロックインの正体は、機能の弱さではない。中身が閉じていること、そして鍵(認証)が他人の手元に集中していることだ。Office スイートも業務システム(基幹)も、同じ構造で立っている。閉じたものを開かせること、それが AI の役割だ。独自形式を解き、読めないコードを読み、閉じ込められた業務知識を取り出す。自立編は、AI と一緒にこの閉じた束を一層ずつ開いた OSS に解き、鍵を自分の手元に移す。機械は Debian の PC 一台、処理は Python と Flet、認証は PocketBase、文書は adoc と aiseed office、コードと共有は Forgejo、メールは Stalwart、会議と予約は Jitsi と Cal.com、Web は自分の一台か Cloudflare Pages、データは PostgreSQL と SQLite と DuckDB、基幹は FastAPI、AI はローカル LLM + RAG。この章はその全体像と対応表であり、続く各章が一本ずつ実際に立てる。
+description.en: The lock-in is not weak features. It is that the layers are closed, and that the key (identity) is concentrated in someone else's hands. The Office suite and the core business systems stand on the same structure. Opening what is closed is AI's role. It unseals proprietary formats, reads unreadable code, and extracts imprisoned business knowledge. The Independence part, working with AI, unties the closed bundle into open OSS and moves the key to your side — the machine is one Debian PC, logic is Python and Flet, auth is PocketBase, documents are AsciiDoc and aiseed office, code and sharing are Forgejo, mail is Stalwart, meetings and scheduling are Jitsi and Cal.com, the web is your own machine or Cloudflare Pages, data is PostgreSQL, SQLite and DuckDB, core logic is FastAPI, and AI is a local LLM plus RAG. This chapter is the map; the chapters that follow stand each one up.
 date: 2026.07.01
 label: Independence 1
 title_html.ja: <span class="accent">Microsoft と Google</span> を、<br>自前の道具に解く。
@@ -1980,7 +1980,7 @@ Google Workspace も同じ構造である。Google ID が Gmail に、Drive に�
 
 * 値上げは全層まとめて効く。逃げ場が無い
 * データポリシーの変更は全層まとめて効く
-* 一社の障害は全層まとめて止まる(序章の単一障害点)
+* 一社の障害は全層まとめて止まる。単一障害点が、全層に一つだけになる
 * 門を閉じられれば、全層から同時に締め出される
 * ベンダー AI(Copilot / Gemini)の判断基準は全層に浸透する
 
@@ -2042,12 +2042,24 @@ ____
 | SharePoint + GitHub | Drive | Forgejo + Zed | link:/ai-native-software/code/[2-06]
 | Exchange / Outlook | Gmail | Stalwart | link:/ai-native-software/mail/[2-08]
 | Teams / Bookings | Google Meet / Calendar | Jitsi・Cal.com(講座は BigBlueButton) | link:/ai-native-software/meetings/[2-09]
-| Power Pages | Google Sites | Cloudflare Pages | link:/ai-native-software/web/[2-11]
+| Power Pages(作る) | Google Sites(作る) | Markdown + HTML・CSS を Python で焼く | link:/ai-native-software/web-build/[2-10]
+| Power Pages(公開) | Google Sites(公開) | 自分の一台(Caddy)か Cloudflare Pages | link:/ai-native-software/web/[2-11]
 | Azure SQL | Cloud SQL / BigQuery | PostgreSQL・SQLite | link:/ai-native-software/foundation/[2-03]
 | Power BI / Excel | Looker / Sheets | DuckDB + Polars | link:/ai-native-software/foundation/[2-03]
-| (Power Apps 等) | Apps Script | FastAPI | link:/ai-native-software/fastapi/[2-12]
+| Excel マクロ / VBA | Apps Script | Python(画面は Flet) | link:/ai-native-software/python/[2-04]
+| Power Apps | (Apps Script) | FastAPI | link:/ai-native-software/fastapi/[2-12]
+| Visio / Designer | Drawings / Slides | Mermaid・Marp・CAD | link:/ai-native-software/design/[2-13]
 | Copilot | Gemini | ローカル LLM(Command A+ 等)+ RAG | link:/ai-native-software/ai/[2-16]
 |===
+
+表の右端に一つだけ、OSS でない行がある。Web を公開する側(2-11)の Cloudflare Pages
+だ。これは借りる窓で、自分で持つ道具ではない。同じ章で、2-02 の一台に Caddy を
+立てて自分の側で公開する道も置いてある。*借りる所と自分で持つ所を、分けて決める*
+── それが 2-11 の中身だ。
+
+表に出てこない章もある。2-14(電子工作から IoT)、2-15(情報の整備)、2-17(AI に
+任せる範囲)の三つで、どれもスイートに対応する層が無い。だが自立編の一部であり、
+解く順番には入る。
 
 一番上の行が、新しく入った層である。会社の PC を一台 Debian にして AI に渡す。以降に立てるものは、全部その一台の上に乗る。文書の層は aiseed office(`aiseed-dev/officework`)だ。ONLYOFFICE が日本語の様式では使い物にならないという理由と、その解き方は 2-07 が受け持つ。
 
@@ -2088,7 +2100,9 @@ flowchart TB
 
 == 変わるのはコストではなく、主導権だ
 
-自前に解くと、月額の構造が変わる。Microsoft 365 も Google Workspace も人数 × 月額である。一人あたり月 1,000〜2,500 円で、ベンダー AI を足すとさらに数千円/人が乗る。人が増えるほど線形に増える。自前の道具一式はサーバー一台分の固定費だ。VPS なら月 1,000〜数千円、社内 miniPC なら電気代で済む。人が増えても、ほぼ増えない。
+自前に解くと、月額の構造が変わる。Microsoft 365 も Google Workspace も人数 × 月額である。公開価格でいうと、Microsoft 365 Business は一人あたり月 1,049 円(Basic)から 3,298 円(Premium)── 2026 年 7 月の改定後、税抜・年払いの月額換算だ。Google Workspace Business Standard は一人あたり月 1,600 円(年払い)で、Gemini は 2025 年 3 月から Business 以上に標準で入っている。Microsoft 側は Copilot が別売りで上に乗る。どれも、人が増えるほど線形に増える。
+
+自前の道具一式は、サーバー一台分の固定費だ。VPS なら月に数千円、社内の miniPC なら電気代で済む。人が増えても、ほぼ増えない。
 
 しかし本質はコストではない。本質は、開いていて、鍵が自分の手元にあることだ。
 
@@ -2106,15 +2120,20 @@ flowchart TB
 
 . 機械(2-02)。会社の PC を一台 Debian にして、AI に渡す。以降に立てるものは、全部その一台の上に乗る
 . データ基盤(2-03)。PostgreSQL・SQLite・DuckDB。分析も RAG も予約も基幹も、すべてこの上に乗る。だから最初に据える
+. 処理(2-04)。Python と Flet。Excel と Word に埋まったマクロとグラフを外に出し、画面が要るところに被せる
 . 認証(2-05)。PocketBase。全アプリ共通の門番。ここを自分の側に移すと、束の根が切れる
 . 共有と版管理(2-06)。Forgejo + Zed。SharePoint / Drive を畳む
-. 文書(2-07)。aiseed office。Office / Docs 形式の書類を自分の側で作る
+. 文書(2-07)。原稿は adoc の文字、様式は aiseed office。Office / Docs 形式の書類を自分の側で作る
 . メール(2-08)。Stalwart。通信の中身を手元に置く
 . 会議・予約(2-09)。Jitsi・Cal.com。会議とオンライン講座を自前で
-. Web 公開(2-11)。Cloudflare Pages。ロックインの無いホスト
+. Web を作る(2-10)。中身は Markdown、外枠は HTML と CSS、繋ぐのは Python
+. Web を公開する(2-11)。自分の一台(Caddy)か Cloudflare Pages。借りる所と自分で持つ所を分ける
 . 基幹ロジック(2-12)。FastAPI。Power Apps / Apps Script を読めるコードに戻す
+. 図と資料(2-13)。Mermaid・Marp・CAD。図もスライドも筐体も、文字とコードから作る
+. 電子工作から IoT(2-14)。要る現場だけ。基板は Python で考え、受け口は FastAPI、保存は 2-03
 . 情報の整備(2-15)。OCR・分類・属人知の成文化。AI に載せる前に、載せるに値する情報を作る。整備こそ本体、AI は最後の一手
 . AI(2-16)。ローカル LLM + RAG。データを社外に出さず AI を持つ
+. AI に任せる範囲を決める(2-17)。自律で動かさず、決まったことはコードに凍結する
 
 各ステップは、2-12 の並行稼働で進める。旧(Microsoft / Google)を止めず、横で新を動かし、同じ仕事が回ることを確かめてから、旧を解約する。契約更新の時期に間に合わせる。これも 2-12 どおりだ。一気に乗り換える必要はない。解けた分だけ、束が緩む。
 
@@ -2188,7 +2207,7 @@ flowchart TB
 
 一つ目。スイートの作りは、構造的に「反 AI ネイティブ」だ。中身を Office / Docs の書式に閉じ込め、データをクラウドに幽閉し、ベンダー AI を検証層なしで業務に直結する。これらは偶然ではない。AI が触れる場所、つまり素のテキスト・開いた形式・手元実行・読めるコードから、中身を遠ざける設計である。AI を同僚にしようとするほど、この壁にぶつかる。
 
-二つ目。書き換えのコストが、10 分の 1 になった(2-12)。AI が業務ロジックを抽出し、Python に翻訳し、テストを書く。数年・数億円のプロジェクトが、現場の一人 + AI の数ヶ月になった。
+二つ目。書き換えのコストが、桁で下がった(2-12)。AI が業務ロジックを抽出し、Python に翻訳し、テストを書く。かつて年単位でしか考えられなかった書き換えが、現場の一人 + AI で回る規模になった。
 
 古い構造が AI ネイティブと噛み合わず、しかも作り直しが安い。この二つが重なれば、結論は一つだ。残すほうが不自然になる。かつて「動いているものに触るな」が正解だったのは、書き換えが高すぎたからにすぎない。その前提が消えた今、作り直さない理由のほうが、説明を要する。
 
@@ -2205,7 +2224,7 @@ flowchart TB
 . 自分の会社がいま使っている道具を、対応表の左の二列に書き出せている。機械・認証・文書・共有・メール・会議・Web・データ・基幹・AI の各層について、Microsoft 365 側か Google Workspace 側かを埋める
 . その一行ずつに、右の列(自前の OSS)と、立てる章の番号を書けている。使っていない層は、空のまま残してよい
 . 層ごとの契約更新日を書き出せている。並行稼働は、この日付に間に合わせる
-. 解く順番を、一番目から十一番目まで自分の言葉で並べられている。先頭は機械(2-02)で、そこから先は自分の会社の事情で入れ替えてよい
+. 解く順番を、先頭から順に自分の言葉で並べられている。先頭は機械(2-02)で、そこから先は自分の会社の事情で入れ替えてよい
 
 この章で動かすものは無い。確かめるコマンドも無い。表が一枚できていれば、次の章に進める。
 
@@ -2238,10 +2257,13 @@ flowchart TB
 * 共有・版管理:SharePoint+GitHub / Drive → Forgejo + Zed(2-06)
 * メール:Exchange / Gmail → Stalwart(2-08)
 * 会議・予約:Teams / Meet → Jitsi・Cal.com(2-09)
-* Web 公開:Power Pages / Sites → Cloudflare Pages(2-11)
+* Web を作る:Power Pages / Sites → Markdown + HTML・CSS を Python で焼く(2-10)
+* Web を公開する:Power Pages / Sites → 自分の一台(Caddy)か Cloudflare Pages(2-11)
 * データ基盤:Azure SQL / Cloud SQL → PostgreSQL・SQLite(2-03)
 * データ分析:Power BI / Looker → DuckDB + Polars(2-03)
-* 基幹ロジック:Power Apps / Apps Script → FastAPI(2-12)
+* 処理:Excel マクロ / VBA → Python(画面は Flet)(2-04)
+* 基幹ロジック:Power Apps → FastAPI(2-12)
+* 図と資料:Visio / Drawings → Mermaid・Marp・CAD(2-13)
 * AI:Copilot / Gemini → ローカル LLM + RAG(2-16)
 
 一対一で、左を右に置き換える。右の道具は別々の組織が作った別々の開いた道具だから、中が読めて、持ち出せて、一本の方針変更が他に波及しない。これは効率化の話ではない。一人 + AI を、会社の土台の高さで言い直したものだ。*集中した 1 より、自立した N が強い*。
@@ -2286,7 +2308,7 @@ And the bundle amplifies both across every layer.
 
 * A price hike hits every layer at once. There is nowhere to escape
 * A data-policy change hits every layer at once
-* One vendor's outage stops every layer at once (the prologue's single point of failure)
+* One vendor's outage stops every layer at once — one single point of failure for all of them
 * Close the gate, and you are locked out of every layer at the same time
 * The vendor AI's judgment (Copilot / Gemini) seeps into every layer
 
@@ -2348,12 +2370,26 @@ Untie the bundle and the layers of Microsoft 365 and Google Workspace land on th
 | SharePoint + GitHub | Drive | Forgejo + Zed | link:/en/ai-native-software/code/[2-06]
 | Exchange / Outlook | Gmail | Stalwart | link:/en/ai-native-software/mail/[2-08]
 | Teams / Bookings | Google Meet / Calendar | Jitsi / Cal.com (BigBlueButton for courses) | link:/en/ai-native-software/meetings/[2-09]
-| Power Pages | Google Sites | Cloudflare Pages | link:/en/ai-native-software/web/[2-11]
+| Power Pages (building) | Google Sites (building) | Markdown + HTML/CSS baked by Python | link:/en/ai-native-software/web-build/[2-10]
+| Power Pages (publishing) | Google Sites (publishing) | your own machine with Caddy, or Cloudflare Pages | link:/en/ai-native-software/web/[2-11]
 | Azure SQL | Cloud SQL / BigQuery | PostgreSQL / SQLite | link:/en/ai-native-software/foundation/[2-03]
 | Power BI / Excel | Looker / Sheets | DuckDB + Polars | link:/en/ai-native-software/foundation/[2-03]
-| (Power Apps etc.) | Apps Script | FastAPI | link:/en/ai-native-software/fastapi/[2-12]
+| Excel macros / VBA | Apps Script | Python (Flet for the screen) | link:/en/ai-native-software/python/[2-04]
+| Power Apps | (Apps Script) | FastAPI | link:/en/ai-native-software/fastapi/[2-12]
+| Visio / Designer | Drawings / Slides | Mermaid, Marp, CAD | link:/en/ai-native-software/design/[2-13]
 | Copilot | Gemini | local LLM (Command A+ etc.) + RAG | link:/en/ai-native-software/ai/[2-16]
 |===
+
+One row on the right is not OSS: Cloudflare Pages, on the publishing side of the
+web (2-11). That is a borrowed window, not a tool you hold. The same chapter also
+lays out the other route — Caddy on the one machine from 2-02, publishing from
+your own side. *Decide separately what to borrow and what to hold* — that is what
+2-11 is about.
+
+Some chapters do not appear in the table at all: 2-14 (electronics to IoT), 2-15
+(preparing the information), and 2-17 (deciding how far AI runs). None of them has
+a matching suite layer, but all three are part of the Independence part, and they
+are in the order below.
 
 The top row is the layer that is new. You take one company PC, put Debian on it, and hand it to the AI. Everything stood up after that sits on that one machine. With a suite you never had a machine of your own, because everything ran in the vendor's cloud. The document layer is aiseed office (`aiseed-dev/officework`). ONLYOFFICE is unusable for Japanese document forms, and the reason, along with what to do about it, is 2-07's job, not this chapter's.
 
@@ -2394,7 +2430,9 @@ This chapter is the map. It includes no build steps. The docker, config, and mig
 
 == What changes is not the cost but the control
 
-Untie it yourself and the monthly structure changes. Microsoft 365 and Google Workspace both bill per seat per month, roughly $8 to $20 a seat, plus several dollars more once you add the vendor AI. It grows linearly as you add people. A full self-hosted set is the fixed cost of one server, a VPS at a few dollars a month or the electricity for an in-house mini PC. It barely grows as you add people.
+Untie it yourself and the monthly structure changes. Microsoft 365 and Google Workspace both bill per seat per month. At list price, Microsoft 365 Business runs ¥1,049 (Basic) to ¥3,298 (Premium) per seat per month — after the July 2026 revision, excluding tax, annual commitment averaged monthly. Google Workspace Business Standard is ¥1,600 per seat per month on an annual plan, with Gemini included in Business and above since March 2025; on the Microsoft side, Copilot is sold separately on top. All of it grows linearly as you add people.
+
+A full self-hosted set is the fixed cost of one server — a VPS at a few thousand yen a month, or just the electricity for an in-house mini PC. It barely grows as you add people.
 
 But cost is not the point. The point is that it is open, and the key is in your own hands.
 
@@ -2412,15 +2450,20 @@ You do not have to do it all at once. Go in order of what is easiest to pull out
 
 . The machine (2-02). Take one company PC, put Debian on it, and hand it to the AI. Everything stood up after this sits on that one machine
 . Data layer (2-03). PostgreSQL, SQLite, DuckDB. Analysis, RAG, scheduling, and the core systems all sit on this, so it goes first
+. Logic (2-04). Python and Flet. Move the macros and charts buried in Excel and Word outside, and put a screen on where one is needed
 . Auth (2-05). PocketBase. The shared gate for every app. Move this to your side and the root of the bundle is cut
 . Sharing and versioning (2-06). Forgejo + Zed. Folds in SharePoint and Drive
-. Documents (2-07). aiseed office. Produce Office and Docs format documents on your own side
+. Documents (2-07). Manuscripts as AsciiDoc text, forms through aiseed office. Produce Office and Docs format documents on your own side
 . Mail (2-08). Stalwart. Keep the contents of your communication on your own disk
 . Meetings and scheduling (2-09). Jitsi, Cal.com. Meetings and online courses on your own side
-. Web publishing (2-11). Cloudflare Pages. Hosting with no lock-in
+. Build the web (2-10). Content in Markdown, the frame in HTML and CSS, Python connecting the two
+. Publish the web (2-11). Your own machine with Caddy, or Cloudflare Pages. Decide separately what to borrow and what to hold
 . Core logic (2-12). FastAPI. Turn Power Apps and Apps Script back into readable code
+. Diagrams and documents (2-13). Mermaid, Marp, CAD. Diagrams, slides, and enclosures, all made from text and code
+. Electronics to IoT (2-14). Only where the field needs it. Think in Python on the board, take the values in with FastAPI, store them in 2-03
 . Prepare the information (2-15). OCR, classification, codifying tacit knowledge. Before you put AI on it, build information worth putting it on. Preparation is the main body, AI the last move
 . AI (2-16). Local LLM + RAG. Hold AI without your data leaving the building
+. Decide how far AI runs (2-17). Do not run it autonomously; freeze what is settled into code
 
 Run each step in parallel, the way 2-12 describes. Do not stop the old suite. Run the new alongside it, confirm the same work flows through, and only then cancel the old. Time it to the renewal date. That, too, follows 2-12. You do not need to switch all at once. Each layer you untie loosens the bundle a little more.
 
@@ -2494,7 +2537,7 @@ Two reasons interlock.
 
 First, the suites are structurally anti-AI-native. They lock content into Office and Docs formats, imprison data in the cloud, and wire the vendor AI directly into work with no verification layer. None of this is accidental. It is a design that keeps content away from where AI can reach it: plain text, open formats, local execution, readable code. The more you try to make AI a colleague, the harder you hit this wall.
 
-Second, the cost of rewriting has fallen by a factor of ten (2-12). The AI extracts the business logic, translates it to Python, and writes the tests. A multi-year, multi-million project becomes a few months for one person on the ground plus AI.
+Second, the cost of rewriting has fallen by an order of magnitude (2-12). The AI extracts the business logic, translates it to Python, and writes the tests. A rewrite that could once only be thought about in years becomes something one person on the ground plus AI can turn.
 
 The old structure does not fit AI-native, and rebuilding is cheap. When those two overlap, the conclusion is one. Keeping it becomes the unnatural choice. "Don't touch what's working" was once correct only because rewriting was too expensive. Now that the premise is gone, it is the reason not to rebuild that needs explaining.
 
@@ -2511,7 +2554,7 @@ This chapter is done when the following four are true. The work happens on paper
 . You have written the tools your company uses today into the two left columns of the mapping table, covering machine, auth, documents, sharing, mail, meetings, web, data, core logic, and AI, on whichever side applies, Microsoft 365 or Google Workspace
 . Each of those rows carries the right-hand column (the self-hosted OSS) and the number of the chapter that stands it up. Layers you do not use can stay blank
 . You have written down the contract renewal date for each layer. Parallel running has to finish by that date
-. You can list the order of untying, from first to eleventh, in your own words. The first is the machine (2-02); after that you may reorder to suit your own company
+. You can list the order of untying, in sequence, in your own words. The first is the machine (2-02); after that you may reorder to suit your own company
 
 Nothing runs in this chapter, and there is no command to check. One completed table is enough to move on.
 
@@ -2544,10 +2587,13 @@ Business Microsoft 365 and Google Workspace are SaaS suites that bundle closed l
 * Sharing and versioning: SharePoint + GitHub / Drive to Forgejo + Zed (2-06)
 * Mail: Exchange / Gmail to Stalwart (2-08)
 * Meetings and scheduling: Teams / Meet to Jitsi and Cal.com (2-09)
-* Web publishing: Power Pages / Sites to Cloudflare Pages (2-11)
+* Building the web: Power Pages / Sites to Markdown + HTML/CSS baked by Python (2-10)
+* Publishing the web: Power Pages / Sites to your own machine with Caddy, or Cloudflare Pages (2-11)
 * Data layer: Azure SQL / Cloud SQL to PostgreSQL and SQLite (2-03)
 * Data analysis: Power BI / Looker to DuckDB + Polars (2-03)
-* Core logic: Power Apps / Apps Script to FastAPI (2-12)
+* Logic: Excel macros / VBA to Python, with Flet for the screen (2-04)
+* Core logic: Power Apps to FastAPI (2-12)
+* Diagrams and documents: Visio / Drawings to Mermaid, Marp, CAD (2-13)
 * AI: Copilot / Gemini to a local LLM + RAG (2-16)
 
 One to one, replace the left with the right. The tools on the right are separate open tools built by separate organizations, readable inside and portable out, so one vendor's decision cannot ripple into the others. This is not about efficiency. It restates one person plus AI at the height of the company's foundation. *Autonomous N beats centralized 1.*
@@ -8025,8 +8071,8 @@ title.ja: API を作る ── FastAPI で基幹のロジックを出す
 title.en: Build an API — Expose Core Logic with FastAPI
 subtitle.ja: 基幹システムを並行稼働で書き換え、自社固有のロジックを一箇所の API にまとめる
 subtitle.en: Rewrite the core system via parallel operation and gather your own logic into one API
-description.ja: 「壊すな・触るな」はもう古い。AI で基幹システムの書き換えコストは 10 分の 1 になった。新しいシステムを FastAPI で作り、旧システムと並行で動かし、出力を実測で突き合わせる。差分が消えたら旧を止める。業務知識は一気に Markdown に出し、現場がテストを書き、委託は止める。書き換えた基幹ロジックは、2-03 の PostgreSQL を読み書きし、2-05 の門番のトークンで本人確認する一本の API として着地する。参考実装は kura。
-description.en: 'Don't break it, don't touch it' is old advice. AI has cut the cost of rewriting a core system by a factor of ten. Build the new system in FastAPI, run it beside the old one, and compare the outputs against reality. When the diffs vanish, stop the old. Push business knowledge out into Markdown all at once, let the floor write the tests, and stop outsourcing. The rewritten core logic lands as one API that reads and writes the 2-03 PostgreSQL and verifies identity with the 2-05 gate's token. The reference implementation is kura.
+description.ja: 「壊すな・触るな」はもう古い。AI で基幹システムの書き換えコストは桁で下がった。新しいシステムを FastAPI で作り、旧システムと並行で動かし、出力を実測で突き合わせる。差分が消えたら旧を止める。業務知識は一気に Markdown に出し、現場がテストを書き、委託は止める。書き換えた基幹ロジックは、2-03 の PostgreSQL を読み書きし、2-05 の門番のトークンで本人確認する一本の API として着地する。参考実装は kura。
+description.en: 'Don't break it, don't touch it' is old advice. AI has cut the cost of rewriting a core system by an order of magnitude. Build the new system in FastAPI, run it beside the old one, and compare the outputs against reality. When the diffs vanish, stop the old. Push business knowledge out into Markdown all at once, let the floor write the tests, and stop outsourcing. The rewritten core logic lands as one API that reads and writes the 2-03 PostgreSQL and verifies identity with the 2-05 gate's token. The reference implementation is kura.
 date: 2026.07.15
 label: Independence 12
 title_html.ja: 基幹を<span class="accent">並行稼働</span>で書き換え、<br>ロジックを一箇所の API に。
@@ -8057,9 +8103,9 @@ FastAPI。順に見ていく。
 
 AI が業務ロジックを Python に翻訳できる。AI が SQL の意図を Markdown で書き出せる。
 AI がテストデータを生成できる。AI がドキュメント無しのコードからルールを抽出できる。
-書き換えのコストが、10 分の 1 になった。
+書き換えのコストが、桁で下がった。
 
-10 分の 1 になったコストで、まだ「触るな」と言うのは、新しい現実を無視している。
+下がったコストの前で、まだ「触るな」と言うのは、新しい現実を無視している。
 残す理由は、もう無い。
 
 == 並行稼働は、リスクを実測で潰す
@@ -8606,9 +8652,9 @@ The era has changed.
 
 AI translates business logic into Python. AI writes out the intent of SQL as
 Markdown. AI generates test data. AI extracts rules from code that has no
-documentation. The cost of rewriting has fallen to one tenth.
+documentation. The cost of rewriting has fallen by an order of magnitude.
 
-Saying "don't touch it" at one tenth the cost is ignoring the new reality. There
+Saying "don't touch it" at that cost is ignoring the new reality. There
 is no longer a reason to keep the old system.
 
 == Parallel operation kills the risk by measurement
@@ -9215,8 +9261,8 @@ curl -s https://api.example.com/docs  # FastAPI's automatic docs answer
   screen request
 
 When you do it, do it. Half-hearted coexistence freezes an organization. In an
-era when AI has cut the cost of rewriting to one tenth, there is no reason left
-to keep the old.
+era when AI has cut the cost of rewriting by an order of magnitude, there is no
+reason left to keep the old.
 
 The next chapter prepares the information that goes on top of all this. Before
 laying an AI on it, we build information worth laying it on.

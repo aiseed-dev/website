@@ -5992,15 +5992,14 @@ ____
 Windows・Mac・Linux で同じように動く。スマホは標準のメールアプリが IMAP で
 つながる。Stalwart が話す JMAP は、自分で書く道具(2-12)から使う。
 
-== いまのサーバからは、並行で移す
+== いまのサーバは、そのまま残す
 
-一斉に切り替えなくてよい。
+移行の手順は要らない。新しいメールは Stalwart で受ける。過去のメールは、いまの
+サーバの中にそのまま残し、その中で処理すればよい。Thunderbird は複数のアカウントを
+並べて開けるので、読み返すならそこで両方を見る。
 
-. Stalwart を立て、いまのサーバから新しいアドレスへ転送をかけて、両方で受ける
-. 過去のメールは、Thunderbird に両方のアカウントを置き、残したいフォルダだけ新しい側へ引きずって写す。全部運ばなくてよい
-. 落ち着いてから MX を Stalwart に向け、旧サーバを解約する(2-12)
-
-道具は足さない。一括で運ぶ必要が出たら、AI が `imaplib` で数十行を書く。
+MX を Stalwart に向けるのは、受信が確かめられてからでよい(2-12)。旧サーバを
+解約するときに、残したいフォルダだけ Thunderbird で新しい側へ引きずって写す。
 
 == 保存も安全も、決まりごとは数行
 
@@ -6020,7 +6019,7 @@ PostgreSQL にあり、2-01 の「守るのはデータと仕様」の複製対�
 . Thunderbird から外のアドレス宛に送ったメールが、相手の受信箱に届く(迷惑メールに落ちない)
 . ssh の中を通して管理画面に入れて、作ったドメインとメールボックスが見える
 . 外から引いて、MX・SPF・DKIM・DMARC・PTR の五つが返る
-. 旧サーバから写した過去のメールが、Thunderbird の中に見える
+. Thunderbird で、旧サーバと Stalwart の両方のアカウントが並んで見える
 
 ```bash
 systemctl status stalwart                      # systemd で動いているか
@@ -6061,7 +6060,7 @@ dig +short -x <サーバの IP>                     # 逆引き(PTR)が引ける
 * *DNS(MX・SPF・DKIM・DMARC)* ── メールの本体はここ。逆引きは回線の事業者が設定済み
 * *送信は条件が揃えば自分で* ── 固定 IP・逆引き・SPF/DKIM/DMARC・25 番が通る回線。届かない相手が出たら送信だけ借りる
 * *Thunderbird* ── 無料・全 OS 共通の IMAP クライアント
-* *移行は並行で* ── 転送で両方受け、過去のメールは Thunderbird で写し、最後に MX を向ける
+* *いまのサーバは残す* ── 過去のメールはその中で処理する。Thunderbird で両方を並べ、受信が確かめられたら MX を向ける
 
 次章では、会議と予約(Jitsi・Cal.com)を立て、Teams と予約サービスを自分の側に
 置く。
@@ -6157,16 +6156,15 @@ and runs the same on Windows, Mac, and Linux. Phones connect with the stock mail
 app over IMAP. The JMAP that Stalwart speaks is for the tools you write yourself
 (2-12).
 
-== Migrate from the current server in parallel
+== Leave the current server as it is
 
-There is no need to cut over at once.
+No migration procedure is needed. New mail is received by Stalwart. Past mail
+stays inside the current server and is handled there. Thunderbird opens several
+accounts side by side, so when you look back, you see both there.
 
-. Stand up Stalwart, forward from the current server to the new address, and receive on both
-. For past mail, put both accounts in Thunderbird and drag only the folders worth keeping across to the new side. Not everything has to move
-. Once things have settled, point the MX at Stalwart and cancel the old server (2-12)
-
-No tool is added. If a bulk move ever becomes necessary, the AI writes a few
-dozen lines with `imaplib`.
+Point the MX at Stalwart once receiving has been confirmed (2-12). When the old
+server is cancelled, drag only the folders worth keeping across to the new side
+in Thunderbird.
 
 == Retention and safety are a few lines of rules
 
@@ -6187,7 +6185,7 @@ This chapter is done when these five hold.
 . A mail sent from Thunderbird to an outside address lands in that person's inbox (not in spam)
 . Through ssh, you can log in to the admin UI and see the domain and mailboxes you created
 . Queried from outside, all five records answer: MX, SPF, DKIM, DMARC, PTR
-. Past mail copied from the old server is visible inside Thunderbird
+. In Thunderbird, both the old server's account and Stalwart's sit side by side
 
 ```bash
 systemctl status stalwart                      # running under systemd
@@ -6228,7 +6226,7 @@ The inbox, on your own side.
 * *DNS (MX, SPF, DKIM, DMARC)* — the real body of mail is here; the reverse record is the line provider's, already set
 * *Send yourself when the conditions hold* — fixed IP, PTR, SPF/DKIM/DMARC, a line that lets port 25 out. Borrow the sending alone when a recipient cannot be reached
 * *Thunderbird* — a free IMAP client, identical across OSes
-* *Migrate in parallel* — forward and receive on both, copy past mail in Thunderbird, point the MX last
+* *Leave the current server* — past mail is handled there. Thunderbird shows both; point the MX once receiving is confirmed
 
 The next chapter stands up meetings and booking (Jitsi, Cal.com), bringing Teams
 and the booking services to our own side.

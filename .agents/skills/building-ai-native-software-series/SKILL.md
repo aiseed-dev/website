@@ -34,7 +34,7 @@ The series subtitle: 「SIer に頼まない ── 自分で立てて、自分�
 | 2-06 | `code` | コードを手元に ── Forgejo と Zed |
 | 2-07 | `documents` | 文書を取り戻す ── 読む物は adoc、触る表は格子、刷る紙はテンプレート |
 | 2-08 | `mail` | メールを自分の側に ── Stalwart と Thunderbird |
-| 2-09 | `meetings` | 会議と予約を自分の側に ── Jitsi と Cal.com |
+| 2-09 | `meetings` | 会議とカレンダーを自分の側に ── Jitsi と CalDAV |
 | 2-10 | `web-build` | Web を作る ── HTML と CSS と JavaScript に戻る |
 | 2-11 | `web` | Web を公開する ── 自分の一台か、Cloudflare Pages か |
 | 2-12 | `fastapi` | API を作る ── FastAPI で基幹のロジックを出す |
@@ -81,11 +81,12 @@ Refer to chapters as `{part}-{number}` in prose. The article IDs inside the file
 ## Fixed facts the chapters agree on
 
 - One Debian machine (2-02) is where the AI works and where everything else is stood up; it can also publish the public web (2-11, Caddy). **The one exception is the self-hosted LLM (2-16), which goes on a separate server.** Windows is not discussed at all.
-- **No Docker.** Services are installed with apt and run under systemd; anything apt lacks goes in as the project's single published file, registered with systemd. Docker is a tool for distributing, not for building. 2-02 gives the reasons (one update stream; the AI sees config, logs, and data directly; Docker routes published ports ahead of ufw). The single exception: software whose project ships it only as a container runs from the official image — never build an image of your own. 2-09 still shows docker compose — rewrite each at its review.
+- **No Docker.** Services are installed with apt and run under systemd; anything apt lacks goes in as the project's single published file, registered with systemd. Docker is a tool for distributing, not for building. 2-02 gives the reasons (one update stream; the AI sees config, logs, and data directly; Docker routes published ports ahead of ufw). The single exception: software whose project ships it only as a container runs from the official image — never build an image of your own. No docker compose remains in 自立編 (as of 2026-10-05).
 - In the body the AI is called "AI", not "Claude" — the reader may be running another vendor's AI (2-02). Product names appear only as sourced facts (prices, published figures).
 - Two AIs from **different vendors** check each other (2-02). Cost: $120/month while building (Claude Max $100 + another vendor's base plan $20), $40 in operation (Pro $20 + $20) — ex-tax, monthly, checked 2026-10-05. Only the builder talks to the AI; a personal plan is not shared (Anthropic Consumer Terms). The group uses the tools the AI built.
 - Documents (2-07, rewritten 2026-10-05) split three ways by use: **things you read** are AsciiDoc in the Forgejo repo (2-06), edited in Zed, printed by a build with the design in a template; **tables you work in** stay in a grid (Excel, Euro-Office, LibreOffice, or aiseed office — the series does not depend on aiseed office), with the data outside the grid (2-03); **pages you print** (published statistical tables, forms, slips) pour text values into a template — their `.docx`/`.xlsx` for other people's forms — and page-layout reproduction is not pursued. No document store, no kura, no ONLYOFFICE back-story.
 - **Claude Docs** (beta from 2026-09-16) is a place to pass through for drafting and co-editing, not where the finished manuscript lives — structurally it is the same as Microsoft 365 (documents live in claude.ai).
+- Meetings are Jitsi (official apt, behind Caddy) and calendars Radicale (CalDAV, apt) in 2-09. **Booking is not an OSS to stand up** — Cal.com's self-hosted edition became Cal.diy, "personal, non-production" — so booking is written in 2-12 as a small FastAPI app (slots and bookings in PostgreSQL, events in Radicale, confirmations via 2-08 mail, Jitsi link). BigBlueButton needs a dedicated Ubuntu machine and appears only as a one-line step-up.
 - Web: build in 2-10 (Markdown + HTML/CSS baked by Python), publish in 2-11 (own machine with Caddy, or Cloudflare Pages).
 - Prices quoted: Claude Pro $20/month for light use, Max from $100/month during the building period (2-02); Microsoft 365 Business ¥1,049–3,298 per seat per month (July 2026 revision, ex-tax, annual); Google Workspace Business Standard ¥1,600 (annual), Gemini included since March 2025.
 - The rewrite-cost figure "10 分の 1" was removed from 2-01 and 2-12 (no source); they now say the cost fell by an order of magnitude. **3-06 still carries a different claim** ("初期構築で 10 分の 1 以下" for a corporate site) — not yet reviewed.

@@ -1949,8 +1949,8 @@ title.ja: Microsoft と Google から自立する ── 全体像と対応表
 title.en: Becoming Independent from Microsoft and Google — The Whole Map
 subtitle.ja: ビジネスの土台を、ベンダーの檻から自分の手元へ
 subtitle.en: Move the foundation of your business out of the vendor's cage and into your own hands
-description.ja: ロックインの正体は、機能の弱さではない。中身が閉じていること、そして鍵(認証)が他人の手元に集中していることだ。Office スイートも業務システム(基幹)も、同じ構造で立っている。閉じたものを開かせること、それが AI の役割だ。独自形式を解き、読めないコードを読み、閉じ込められた業務知識を取り出す。自立編は、AI と一緒にこの閉じた束を一層ずつ開いた OSS に解き、鍵を自分の手元に移す。機械は Debian の PC 一台、処理は Python と Flet、認証は PocketBase、文書は adoc と aiseed office、コードと共有は Forgejo、メールは Stalwart、会議と予約は Jitsi と Cal.com、Web は自分の一台か Cloudflare Pages、データは PostgreSQL と SQLite と DuckDB、基幹は FastAPI、AI はローカル LLM + RAG。この章はその全体像と対応表であり、続く各章が一本ずつ実際に立てる。
-description.en: The lock-in is not weak features. It is that the layers are closed, and that the key (identity) is concentrated in someone else's hands. The Office suite and the core business systems stand on the same structure. Opening what is closed is AI's role. It unseals proprietary formats, reads unreadable code, and extracts imprisoned business knowledge. The Independence part, working with AI, unties the closed bundle into open OSS and moves the key to your side — the machine is one Debian PC, logic is Python and Flet, auth is PocketBase, documents are AsciiDoc and aiseed office, code and sharing are Forgejo, mail is Stalwart, meetings and scheduling are Jitsi and Cal.com, the web is your own machine or Cloudflare Pages, data is PostgreSQL, SQLite and DuckDB, core logic is FastAPI, and AI is a local LLM plus RAG. This chapter is the map; the chapters that follow stand each one up.
+description.ja: ロックインの正体は、機能の弱さではない。中身が閉じていること、そして鍵(認証)が他人の手元に集中していることだ。Office スイートも業務システム(基幹)も、同じ構造で立っている。閉じたものを開かせること、それが AI の役割だ。独自形式を解き、読めないコードを読み、閉じ込められた業務知識を取り出す。自立編は、AI と一緒にこの閉じた束を一層ずつ開いた OSS に解き、鍵を自分の手元に移す。機械は Debian の PC 一台、処理は Python と Flet、認証は PocketBase、文書は adoc と git、コードと共有は Forgejo、メールは Stalwart、会議とカレンダーは Jitsi と Radicale、Web は自分の一台か Cloudflare Pages、データは PostgreSQL と SQLite と DuckDB、基幹は FastAPI、AI はローカル LLM + RAG。この章はその全体像と対応表であり、続く各章が一本ずつ実際に立てる。
+description.en: The lock-in is not weak features. It is that the layers are closed, and that the key (identity) is concentrated in someone else's hands. The Office suite and the core business systems stand on the same structure. Opening what is closed is AI's role. It unseals proprietary formats, reads unreadable code, and extracts imprisoned business knowledge. The Independence part, working with AI, unties the closed bundle into open OSS and moves the key to your side — the machine is one Debian PC, logic is Python and Flet, auth is PocketBase, documents are AsciiDoc and git, code and sharing are Forgejo, mail is Stalwart, meetings and calendars are Jitsi and Radicale, the web is your own machine or Cloudflare Pages, data is PostgreSQL, SQLite and DuckDB, core logic is FastAPI, and AI is a local LLM plus RAG. This chapter is the map; the chapters that follow stand each one up.
 date: 2026.07.01
 label: Independence 1
 title_html.ja: <span class="accent">Microsoft と Google</span> を、<br>自前の道具に解く。
@@ -2050,7 +2050,7 @@ ____
 | Word / Excel / PowerPoint | Docs / Sheets / Slides | adoc + git(読む物)、格子(触る表)、テンプレート(刷る紙) | link:/ai-native-software/documents/[2-07]
 | SharePoint + GitHub | Drive | Forgejo + Zed | link:/ai-native-software/code/[2-06]
 | Exchange / Outlook | Gmail | Stalwart | link:/ai-native-software/mail/[2-08]
-| Teams / Bookings | Google Meet / Calendar | Jitsi・Cal.com(講座は BigBlueButton) | link:/ai-native-software/meetings/[2-09]
+| Teams / Bookings | Google Meet / Calendar | Jitsi・Radicale(予約は 2-12 で書く) | link:/ai-native-software/meetings/[2-09]
 | Power Pages(作る) | Google Sites(作る) | Markdown + HTML・CSS を Python で焼く | link:/ai-native-software/web-build/[2-10]
 | Power Pages(公開) | Google Sites(公開) | 自分の一台(Caddy)か Cloudflare Pages | link:/ai-native-software/web/[2-11]
 | Azure SQL | Cloud SQL / BigQuery | PostgreSQL・SQLite | link:/ai-native-software/foundation/[2-03]
@@ -2093,7 +2093,7 @@ flowchart TB
     O2["adoc + git / 格子 / テンプレート"]
     S2["Forgejo + Zed"]
     X2["Stalwart"]
-    M2["Jitsi / Cal.com"]
+    M2["Jitsi / Radicale"]
     C2["ローカル LLM + RAG"]
   end
 
@@ -2134,7 +2134,7 @@ flowchart TB
 . 共有と版管理(2-06)。Forgejo + Zed。SharePoint / Drive を畳む
 . 文書(2-07)。読む物は adoc の文字、触る表は格子、刷る紙はテンプレート。Office / Docs 形式は入口と出口で通過させる
 . メール(2-08)。Stalwart。通信の中身を手元に置く
-. 会議・予約(2-09)。Jitsi・Cal.com。会議とオンライン講座を自前で
+. 会議・カレンダー(2-09)。Jitsi・Radicale。会議と予定の共有を自前で。予約の受付は 2-12 で書く
 . Web を作る(2-10)。中身は Markdown、外枠は HTML と CSS、繋ぐのは Python
 . Web を公開する(2-11)。自分の一台(Caddy)か Cloudflare Pages。借りる所と自分で持つ所を分ける
 . 基幹ロジック(2-12)。FastAPI。Power Apps / Apps Script を読めるコードに戻す
@@ -2252,7 +2252,7 @@ flowchart TB
 
 == 確かめた版と日付
 
-* この章で版を決める道具は無い。対応表に載るのは製品名だけで、版はそれぞれを立てる章で決める。PocketBase、Forgejo、Zed、Stalwart、Jitsi、Cal.com、BigBlueButton、Cloudflare Pages、PostgreSQL、SQLite、DuckDB、Polars、FastAPI、ローカル LLM(Command A+ 等)
+* この章で版を決める道具は無い。対応表に載るのは製品名だけで、版はそれぞれを立てる章で決める。PocketBase、Forgejo、Zed、Stalwart、Jitsi、Radicale、Cloudflare Pages、PostgreSQL、SQLite、DuckDB、Polars、FastAPI、ローカル LLM(Command A+ 等)
 * 手順を書いたのは 2026.07.01
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
@@ -2265,7 +2265,7 @@ flowchart TB
 * 文書:Office / Docs → adoc + git、格子、テンプレート(2-07)
 * 共有・版管理:SharePoint+GitHub / Drive → Forgejo + Zed(2-06)
 * メール:Exchange / Gmail → Stalwart(2-08)
-* 会議・予約:Teams / Meet → Jitsi・Cal.com(2-09)
+* 会議・カレンダー:Teams / Meet → Jitsi・Radicale(2-09)。予約の受付は 2-12
 * Web を作る:Power Pages / Sites → Markdown + HTML・CSS を Python で焼く(2-10)
 * Web を公開する:Power Pages / Sites → 自分の一台(Caddy)か Cloudflare Pages(2-11)
 * データ基盤:Azure SQL / Cloud SQL → PostgreSQL・SQLite(2-03)
@@ -2384,7 +2384,7 @@ Untie the bundle and the layers of Microsoft 365 and Google Workspace land on th
 | Word / Excel / PowerPoint | Docs / Sheets / Slides | adoc + git (read), grid (work), templates (print) | link:/en/ai-native-software/documents/[2-07]
 | SharePoint + GitHub | Drive | Forgejo + Zed | link:/en/ai-native-software/code/[2-06]
 | Exchange / Outlook | Gmail | Stalwart | link:/en/ai-native-software/mail/[2-08]
-| Teams / Bookings | Google Meet / Calendar | Jitsi / Cal.com (BigBlueButton for courses) | link:/en/ai-native-software/meetings/[2-09]
+| Teams / Bookings | Google Meet / Calendar | Jitsi / Radicale (booking is written in 2-12) | link:/en/ai-native-software/meetings/[2-09]
 | Power Pages (building) | Google Sites (building) | Markdown + HTML/CSS baked by Python | link:/en/ai-native-software/web-build/[2-10]
 | Power Pages (publishing) | Google Sites (publishing) | your own machine with Caddy, or Cloudflare Pages | link:/en/ai-native-software/web/[2-11]
 | Azure SQL | Cloud SQL / BigQuery | PostgreSQL / SQLite | link:/en/ai-native-software/foundation/[2-03]
@@ -2429,7 +2429,7 @@ flowchart TB
     O2["adoc + git / grid / templates"]
     S2["Forgejo + Zed"]
     X2["Stalwart"]
-    M2["Jitsi / Cal.com"]
+    M2["Jitsi / Radicale"]
     C2["local LLM + RAG"]
   end
 
@@ -2470,7 +2470,7 @@ You do not have to do it all at once. Go in order of what is easiest to pull out
 . Sharing and versioning (2-06). Forgejo + Zed. Folds in SharePoint and Drive
 . Documents (2-07). Things you read as AsciiDoc text, tables you work in in a grid, pages you print from templates. Office and Docs formats pass through at the entrance and the exit
 . Mail (2-08). Stalwart. Keep the contents of your communication on your own disk
-. Meetings and scheduling (2-09). Jitsi, Cal.com. Meetings and online courses on your own side
+. Meetings and calendars (2-09). Jitsi, Radicale. Meetings and shared calendars on your own side; booking is written in 2-12
 . Build the web (2-10). Content in Markdown, the frame in HTML and CSS, Python connecting the two
 . Publish the web (2-11). Your own machine with Caddy, or Cloudflare Pages. Decide separately what to borrow and what to hold
 . Core logic (2-12). FastAPI. Turn Power Apps and Apps Script back into readable code
@@ -2588,7 +2588,7 @@ Nothing runs in this chapter, and there is no command to check. One completed ta
 
 == Versions checked, and when
 
-* No tool version is fixed in this chapter. The table carries product names only, and the versions are fixed in the chapters that stand each one up: PocketBase, Forgejo, Zed, Stalwart, Jitsi, Cal.com, BigBlueButton, Cloudflare Pages, PostgreSQL, SQLite, DuckDB, Polars, FastAPI, and a local LLM (Command A+ etc.)
+* No tool version is fixed in this chapter. The table carries product names only, and the versions are fixed in the chapters that stand each one up: PocketBase, Forgejo, Zed, Stalwart, Jitsi, Radicale, Cloudflare Pages, PostgreSQL, SQLite, DuckDB, Polars, FastAPI, and a local LLM (Command A+ etc.)
 * These steps were written on 2026.07.01
 * If a version has moved on, have the AI check the official procedure before proceeding
 
@@ -2601,7 +2601,7 @@ Business Microsoft 365 and Google Workspace are SaaS suites that bundle closed l
 * Documents: Office / Docs to adoc + git, a grid, and templates (2-07)
 * Sharing and versioning: SharePoint + GitHub / Drive to Forgejo + Zed (2-06)
 * Mail: Exchange / Gmail to Stalwart (2-08)
-* Meetings and scheduling: Teams / Meet to Jitsi and Cal.com (2-09)
+* Meetings and calendars: Teams / Meet to Jitsi and Radicale (2-09); booking in 2-12
 * Building the web: Power Pages / Sites to Markdown + HTML/CSS baked by Python (2-10)
 * Publishing the web: Power Pages / Sites to your own machine with Caddy, or Cloudflare Pages (2-11)
 * Data layer: Azure SQL / Cloud SQL to PostgreSQL and SQLite (2-03)
@@ -3092,7 +3092,7 @@ link:/ai-native-software/ai-pc/[2-02: AI に PC を一台渡す]で AI に渡し
 
 * 分析(DuckDB)は、ここのテーブルと Parquet を読む
 * AI の RAG(2-16)は、`pgvector` で類似検索する
-* 講座の予約(Cal.com)と基幹システムは、ここに読み書きする
+* 予約の受付(2-12)と基幹システムは、ここに読み書きする
 
 土台が先にあれば、上に立つものは、すでにある DB に乗せるだけになる。先に据えるほど、
 後が軽い。
@@ -3312,7 +3312,7 @@ database.
 
 * Analysis (DuckDB) reads the tables and Parquet here
 * The AI's RAG (2-16) does similarity search with `pgvector`
-* Course booking (Cal.com) and the core systems read and write here
+* Booking (2-12) and the core systems read and write here
 
 With the foundation in place first, everything above is just "put it on the DB
 that already exists." The earlier you lay it, the lighter everything after.
@@ -6064,8 +6064,8 @@ dig +short -x <サーバの IP>                     # 逆引き(PTR)が引ける
 * *Thunderbird* ── 無料・全 OS 共通の IMAP クライアント
 * *いまのサーバは残す* ── 過去のメールはその中で処理する。Thunderbird で両方を並べ、受信が確かめられたら MX を向ける
 
-次章では、会議と予約(Jitsi・Cal.com)を立て、Teams と予約サービスを自分の側に
-置く。
+次章では、会議とカレンダー(Jitsi・Radicale)を立て、Teams とカレンダーの共有を
+自分の側に置く。
 
 '''
 
@@ -6232,8 +6232,8 @@ The inbox, on your own side.
 * *Thunderbird* — a free IMAP client, identical across OSes
 * *Leave the current server* — past mail is handled there. Thunderbird shows both; point the MX once receiving is confirmed
 
-The next chapter stands up meetings and booking (Jitsi, Cal.com), bringing Teams
-and the booking services to our own side.
+The next chapter stands up meetings and calendars (Jitsi, Radicale), bringing
+Teams and calendar sharing to our own side.
 
 '''
 
@@ -6248,88 +6248,76 @@ endif::[]
 slug: meetings
 number: 09
 part: 2
-title.ja: 会議と予約を自分の側に ── Jitsi と Cal.com
-title.en: Meetings and Booking on Your Own Side — Jitsi and Cal.com
-subtitle.ja: Teams の会議も、Calendly の予約も、講座のウェビナーも ── 自分のドメインで
-subtitle.en: Teams meetings, Calendly booking, and webinars for classes — on your own domain
-description.ja: ビデオ会議は Jitsi、予約は Cal.com、講座・ウェビナーは BigBlueButton。Teams・Zoom・Calendly・Microsoft Bookings を、自分のドメインと 2-02 で AI に渡した一台に置き換える。予約は 2-03 の PostgreSQL に乗り、2-08 のメールで確認を送る。人数・分課金から降り、会議のリンクも記録も自分の側に持つ。人が持つのは、ドメインと DNS、予約の枠、外へ出る確認メールの三つだ。
-description.en: Video meetings with Jitsi, booking with Cal.com, classes and webinars with BigBlueButton. Replace Teams, Zoom, Calendly, and Microsoft Bookings with your own domain on the machine handed to the AI in 2-02. Booking rides on the PostgreSQL from 2-03 and sends confirmations through the 2-08 mail. Step off per-seat, per-minute billing and keep meeting links and records on your own side. The human holds the domain and DNS, the booking slots, and any confirmation mail that goes outside.
+title.ja: 会議とカレンダーを自分の側に ── Jitsi と CalDAV
+title.en: Meetings and Calendars on Your Own Side — Jitsi and CalDAV
+subtitle.ja: Teams の会議も、カレンダーの共有も ── 自分のドメインで。予約は 2-12 で書く
+subtitle.en: Teams meetings and shared calendars — on your own domain. Booking is written in 2-12
+description.ja: ビデオ会議は Jitsi Meet、予定の共有は Radicale(CalDAV)。Teams・Zoom とカレンダーの共有を、自分のドメインと 2-02 で AI に渡した一台に置き換える。どちらも Debian の apt で入れ、Caddy の後ろに置く。予約の受付(Calendly・Bookings の代わり)は、自前で立てられる OSS が無くなったので、2-12 で FastAPI の小さなアプリとして書く。BigBlueButton は Ubuntu の専用機が要るので、本格的な授業のときだけ別の一台に。人が持つのは、ドメインと DNS、会議を開ける人の一覧、移す未来の予定だ。
+description.en: Video meetings with Jitsi Meet, shared calendars with Radicale (CalDAV). Replace Teams, Zoom, and calendar sharing with your own domain on the machine handed to the AI in 2-02. Both install from Debian's apt and sit behind Caddy. Booking (in place of Calendly and Bookings) is written in 2-12 as a small FastAPI app, since no self-hostable OSS remains for it. BigBlueButton needs a dedicated Ubuntu machine, so it goes on a separate box only for serious teaching. The human holds the domain and DNS, the list of people who may open a meeting, and the future events to move.
 date: 2026.07.11
 label: Independence 9
-title_html.ja: 会議も予約も、<br><span class="accent">自分のドメイン</span>で。
-title_html.en: Meetings and booking,<br>on <span class="accent">your own domain</span>.
+title_html.ja: 会議も予定も、<br><span class="accent">自分のドメイン</span>で。
+title_html.en: Meetings and calendars,<br>on <span class="accent">your own domain</span>.
 ---
 ifdef::lang-ja[]
-= 会議と予約を自分の側に ── Jitsi と Cal.com
+= 会議とカレンダーを自分の側に ── Jitsi と CalDAV
 
-会議も予約も、汎用の機能だ。Teams の打ち合わせ、Calendly の日程調整、
-Microsoft Bookings の講座予約 ── どれも、すでに OSS で共有されている。前章で
-メールを自分の側に戻した。ここでは三つを立て、2-02 で AI に渡した一台と、自分
-のドメインの上に置く。
+会議も予定の共有も、汎用の機能だ。Teams の打ち合わせも、カレンダーの共有も、
+すでに OSS で共有されている。前章でメールを自分の側に戻した。ここでは二つを立て、
+2-02 で AI に渡した一台と、自分のドメインの上に置く。
 
 * *ビデオ会議* ── Jitsi Meet(Teams・Zoom の代わり)
-* *予約* ── Cal.com(Calendly・Bookings の代わり)
-* *講座・ウェビナー* ── BigBlueButton(大人数の授業向け)
+* *予定の共有* ── Radicale(CalDAV。Outlook・Google カレンダーの共有の代わり)
+
+予約の受付(Calendly・Microsoft Bookings の代わり)は、この章では立てない。自前で
+立てられる OSS が無くなったので、2-12 で FastAPI の小さなアプリとして書く。この章の
+Jitsi とカレンダーとメール(2-08)の上に、そのまま乗る。
 
 == 会議は Jitsi Meet で立てる
 
-少人数から中人数の会議は Jitsi Meet である。*参加者はブラウザだけ*でよい。
-アプリのインストールも、アカウントも要らない。リンクを送れば会議が始まる。
+会議は Jitsi Meet である。*参加者はブラウザだけ*でよい。アプリのインストールも、
+アカウントも要らない。リンクを送れば会議が始まる。挙手、ブレイクアウト、
+ホワイトボード、録画、画面共有が標準で揃う。
+
+Jitsi は公式の apt リポジトリで入る(Debian 12 以上)。2-02 の決めどおり、Docker は
+使わない。決めは三つだ。
+
+* 外に開ける口は、映像の 10000/UDP と、その予備の 5349/TCP。この章で初めて開けるので、「やる前に言う」操作だ(2-02)
+* Web の入口は Caddy が受け続ける(443)。Jitsi の導入は nginx を設定するが、2-02 の一台では nginx を localhost で待たせ、Caddy から渡す。設定は AI が書く
+* 会議を開けるのは、認証した人だけにする。開くのは自分、入るのはリンクを持つ人
 
 ```bash
-# 公式の compose 一式を使う
-git clone https://github.com/jitsi/docker-jitsi-meet
-cd docker-jitsi-meet && cp env.example .env && ./gen-passwords.sh
-docker compose up -d        # web・prosody・jicofo・jvb が立つ
+# 公式の apt リポジトリを登録したあと
+sudo apt install jitsi-meet        # web・prosody・jicofo・jvb が systemd で動く
 ```
 
-`meet.example.com` を、自分のロゴと自分のドメインで配れる。録画もチャットも
-画面共有も、標準で揃う。
+`meet.example.com` を、自分のロゴと自分のドメインで配れる。
 
 ____
-大人数(数百人)の会議は、映像中継(JVB)を増設して捌く。これは
-「立てる」より「足す」── 規模に応じてサーバを並べる作業だ。
+大人数の会議は、映像中継(JVB)を増設して捌く。これは「立てる」より「足す」──
+規模に応じてサーバを並べる作業だ。
 ____
 
-== 講座は BigBlueButton で開く
+本格的な授業(出席の記録、LMS との連携)が要るなら BigBlueButton だが、Ubuntu の
+専用機が要り、2-02 の一台には載らない。講座の期間だけ別の一台を立てて、終わったら
+畳む(2-01)。多くの講座は、Jitsi で足りる。
 
-セミナーや授業のように、ホワイトボード・挙手・ブレイクアウト・出席が要る場面
-は BigBlueButton である。教育向けに作られたウェビナー基盤で、2-03 で触れた
-「講座」のための道具だ。
+== 予定は Radicale で共有する
 
-BigBlueButton は専用のインストーラを持ち、Jitsi より重い。*日常会議は Jitsi、
-講座は BigBlueButton*、と用途で分けて立てる。
+予定の共有は CalDAV である。軽量な Radicale を一つ立てれば、Thunderbird と
+つながる。スマホは、iPhone の標準カレンダーが CalDAV を話す。Android は DAVx⁵ の
+ようなアプリを一つ入れる。Radicale は Debian 13 の apt にある。
 
-== 予約は Cal.com に乗せる
-
-日程調整・講座予約は Cal.com である。Calendly と Microsoft Bookings の置き換え
-で、データは 2-03 の PostgreSQL に乗る。
-
-```yaml
-# compose.yaml ── 予約を 2-03 の DB に乗せて立てる
-services:
-  booking:
-    image: calcom/cal.com:latest
-    environment:
-      DATABASE_URL: postgres://postgres:change-me@db:5432/calcom
-      NEXT_PUBLIC_WEBAPP_URL: https://book.example.com
-    restart: always
+```bash
+sudo apt install radicale          # systemd で動く。待ち受けは localhost
 ```
-
-予約が入れば、2-08 のメールで確認と前日リマインドが飛び、Jitsi の会議リンクが
-自動で添えられる。土台(DB)・門番(認証)・メールの上に、予約がそのまま乗る。
-先に据えたものが、ここで効いてくる。
-
-== カレンダーは CalDAV で同期し、門番の内側に置く
-
-予定の同期は CalDAV である。軽量な Radicale を一つ立てれば、Thunderbird や
-スマホの標準カレンダーとつながる。Cal.com と各アプリは、2-05 の門番の内側、
-リバースプロキシの先に置く。
 
 ```caddy
-meet.example.com { reverse_proxy jitsi-web:80 }
-book.example.com { reverse_proxy booking:3000 }
+meet.example.com { reverse_proxy localhost:8443 }   # Jitsi の nginx
+cal.example.com  { reverse_proxy localhost:5232 }   # Radicale
 ```
+
+Radicale のログインは Radicale が持つ(2-05)。アカウントの名前は門番と揃える。
 
 == 移行は、未来の予定だけでいい
 
@@ -6340,206 +6328,189 @@ Radicale に読み込む。一度きりの操作だ。過去の録画やチャ�
 
 == 確かめ方
 
-この章は、次の五つができていれば済みだ。
+この章は、次の四つができていれば済みだ。
 
 . 別の PC のブラウザから `meet.example.com` の会議に入れる。アプリもアカウントも要らない
 . 二人以上で入って、映像・音声・画面共有が通る
-. `book.example.com` で予約を入れると、確認のメールが届き、Jitsi のリンクが付いている
-. Thunderbird かスマホの標準カレンダーが、CalDAV でその予定を表示する
-. 講座を立てたなら、BigBlueButton でホワイトボードと挙手が動く
+. Thunderbird とスマホのカレンダーが、CalDAV で同じ予定を表示し、片方で入れた予定がもう片方に出る
+. 外から見て、開いている口が 80・443・ssh・25/465/587/993(2-08)・10000/UDP・5349/TCP だけになっている
 
 ```bash
-curl -sI https://meet.example.com | head -1   # 会議の頁が返る
-curl -sI https://book.example.com | head -1   # 予約の頁が返る
+systemctl status jitsi-videobridge2 prosody jicofo radicale   # systemd で動いているか
+curl -sI https://meet.example.com | head -1                   # 会議の頁が返る
 ```
 
 == 人が持つ物
 
 *人が渡す値*
 
-* 会議と予約のドメイン名(`meet.example.com`・`book.example.com`)
+* 会議とカレンダーのドメイン名(`meet.example.com`・`cal.example.com`)
 * その名前を指す DNS の設定
-* Cal.com がつなぐ DB の接続先とパスワード
-* 予約の受付時間と、一枠の長さ
-* 確認メールの差出人アドレス(2-08 のメール)
+* 会議を開ける人の一覧(Jitsi の認証)
 * 移す未来の予定の .ics
 
 *AI が「やる前に言う」操作*
 
+* 10000/UDP と 5349/TCP の口を開ける
 * DNS のレコードを変える
-* 予約の確認メールを、外のアドレスへ実際に送る
-* 既に入っている予約のデータを消す
+* 既に入っている予定のデータを消す
 * 会議の録画を、外から見える場所に置く
 
 == 確かめた版と日付
 
-* Jitsi Meet(`docker-jitsi-meet` の compose 一式)、BigBlueButton、Cal.com(`calcom/cal.com:latest`)、Radicale、Caddy、PostgreSQL
-* 手順を書いたのは 2026-07-11
+* Jitsi Meet(公式の apt リポジトリ `download.jitsi.org` の安定版)、Radicale 3.5(Debian 13 のパッケージ)、Caddy
+* 手順を書いたのは 2026-07-11、書き直したのは 2026-10-05
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
 == まとめ
 
-会議も予約も、自分のドメインで。
+会議も予定も、自分のドメインで。
 
-* *Jitsi Meet* ── ブラウザだけの会議、Teams・Zoom の代わり
-* *BigBlueButton* ── ホワイトボードと出席のある講座・ウェビナー
-* *Cal.com* ── Calendly・Bookings の代わり(2-03 の PostgreSQL に乗る)
-* *連携* ── 予約 → 2-08 のメールで確認、Jitsi リンクを自動添付
-* *CalDAV と門番* ── 標準カレンダーと同期、リバースプロキシの内側に
+* *Jitsi Meet* ── ブラウザだけの会議、Teams・Zoom の代わり。公式の apt で、Caddy の後ろに
+* *Radicale* ── CalDAV で予定を共有。Thunderbird と iPhone はそのまま、Android はアプリを一つ
+* *予約は 2-12 で書く* ── 立てられる OSS が無くなったので、FastAPI の小さなアプリにする
+* *BigBlueButton は別の一台* ── 本格的な授業のときだけ、講座の期間だけ立てて畳む
 
-ここまでで、土台・門番・文書・コード・メール・会議・予約が揃った。次章では、
+ここまでで、土台・門番・コード・文書・メール・会議・カレンダーが揃った。次章では、
 これらを社外に見せる Web サイトを作る。
 
 '''
 
 == 関連記事
 
-* link:/ai-native-software/foundation/[2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars]
 * link:/ai-native-software/mail/[2-08: メールを自分の側に ── Stalwart と Thunderbird]
+* link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
 * link:/ai-native-software/independence/[2-01: Microsoft と Google から自立する ── 全体像と対応表]
 endif::[]
 ifdef::lang-en[]
-= Meetings and Booking on Your Own Side — Jitsi and Cal.com
+= Meetings and Calendars on Your Own Side — Jitsi and CalDAV
 
-Meetings and booking are generic functions. Teams calls, Calendly scheduling,
-Microsoft Bookings for course reservations — all of it is already shared as OSS.
-The previous chapter brought mail back to your own side. Here we stand up three
-things and place them on your own domain, on the machine handed to the AI in
-2-02.
+Meetings and shared calendars are generic functions. Teams calls and shared
+calendars alike are already shared as OSS. The previous chapter brought mail back
+to your own side. Here we stand up two things and place them on your own domain,
+on the machine handed to the AI in 2-02.
 
 * *Video meetings* — Jitsi Meet (in place of Teams and Zoom)
-* *Booking* — Cal.com (in place of Calendly and Bookings)
-* *Classes and webinars* — BigBlueButton (for larger teaching sessions)
+* *Shared calendars* — Radicale (CalDAV; in place of Outlook and Google calendar sharing)
+
+Booking (in place of Calendly and Microsoft Bookings) is not stood up in this
+chapter. With no OSS left that can be self-hosted for it, it is written in 2-12 as
+a small FastAPI app. It sits directly on this chapter's Jitsi and calendar and on
+the mail of 2-08.
 
 == Stand up Jitsi Meet for meetings
 
-For small-to-mid meetings, Jitsi Meet. Participants need *only a browser* — no
-app install, no account. Send a link and the meeting starts.
+Meetings are Jitsi Meet. Participants need *only a browser* — no app install, no
+account. Send a link and the meeting starts. Raise hand, breakout rooms, a
+whiteboard, recording, and screen sharing all come standard.
+
+Jitsi installs from its official apt repository (Debian 12 or newer). As 2-02
+decided, no Docker. Three decisions go with it.
+
+* The ports opened to the outside are 10000/UDP for video and 5349/TCP as its fallback. This chapter opens them for the first time, so it is an action the AI states before performing (2-02)
+* The web entrance stays with Caddy (443). Jitsi's installer configures nginx; on the 2-02 machine, nginx listens on localhost and Caddy hands traffic to it. The AI writes the configuration
+* Only authenticated people can open a meeting. You open it; anyone with the link joins
 
 ```bash
-# use the official compose bundle
-git clone https://github.com/jitsi/docker-jitsi-meet
-cd docker-jitsi-meet && cp env.example .env && ./gen-passwords.sh
-docker compose up -d        # web, prosody, jicofo, jvb come up
+# after registering the official apt repository
+sudo apt install jitsi-meet        # web, prosody, jicofo, and jvb run under systemd
 ```
 
-Hand out `meet.example.com` with your own logo and your own domain. Recording,
-chat, and screen sharing all come standard.
+Hand out `meet.example.com` with your own logo and your own domain.
 
 ____
-Large meetings (hundreds) are handled by adding video bridges (JVB). That is
-"adding" more than "standing up" — lining up servers to match scale.
+Large meetings are handled by adding video bridges (JVB). That is "adding," not
+"standing up" — lining up servers to match the scale.
 ____
 
-== Run classes on BigBlueButton
+For serious teaching (attendance records, LMS integration) there is
+BigBlueButton, but it needs a dedicated Ubuntu machine and does not fit on the
+2-02 box. Stand up a separate machine for the duration of a course and tear it
+down after (2-01). Most courses are fine on Jitsi.
 
-Where you need a whiteboard, raise-hand, breakout rooms, and attendance — in
-seminars and lessons — use BigBlueButton. It is a webinar platform built for
-education, the tool for the "courses" mentioned back in 2-03.
+== Share calendars with Radicale
 
-BigBlueButton has its own installer and is heavier than Jitsi. *Day-to-day
-meetings on Jitsi, classes on BigBlueButton* — stand each up for its purpose.
+Shared calendars are CalDAV. Stand up the lightweight Radicale and Thunderbird
+connects. On phones, the iPhone's stock calendar speaks CalDAV; Android needs one
+app such as DAVx⁵. Radicale is in Debian 13's apt.
 
-== Put booking on Cal.com
-
-Scheduling and course booking run on Cal.com, a replacement for Calendly and
-Microsoft Bookings, with data on the PostgreSQL from 2-03.
-
-```yaml
-# compose.yaml — stand up booking on the 2-03 DB
-services:
-  booking:
-    image: calcom/cal.com:latest
-    environment:
-      DATABASE_URL: postgres://postgres:change-me@db:5432/calcom
-      NEXT_PUBLIC_WEBAPP_URL: https://book.example.com
-    restart: always
+```bash
+sudo apt install radicale          # runs under systemd; listens on localhost
 ```
-
-When a booking lands, the 2-08 mail sends a confirmation and a day-before
-reminder, with the Jitsi meeting link attached automatically. On top of the
-foundation (DB), the gate (auth), and mail, booking just sits. What was laid
-first pays off here.
-
-== Sync the calendar over CalDAV, behind the gate
-
-Schedule sync is CalDAV. Stand up one lightweight Radicale and it connects to
-Thunderbird and the stock phone calendar. Cal.com and each app sit behind the
-2-05 gate, beyond the reverse proxy.
 
 ```caddy
-meet.example.com { reverse_proxy jitsi-web:80 }
-book.example.com { reverse_proxy booking:3000 }
+meet.example.com { reverse_proxy localhost:8443 }   # Jitsi's nginx
+cal.example.com  { reverse_proxy localhost:5232 }   # Radicale
 ```
 
-== Migration means future events only
+Radicale's login is Radicale's own (2-05). Account names match the gate.
 
-Migrating off Teams or Google Calendar needs no project. Meeting links are
-disposable, so there is nothing to carry over. For the calendar, export *future
-events only* as .ics and load them into Radicale. It is a one-time operation.
-Whatever in the old recordings and chats is worth keeping gets triaged in the
-2-15 information-preparation pass and filed into the 2-07 store.
+== Migration is only the future
+
+Moving off Teams or Google Calendar needs no project. Meeting links are
+disposable; there is nothing to move. For calendars, export *only future events*
+as .ics and import them into Radicale — a one-time operation. Recordings or chat
+worth keeping are inventoried in 2-15's information tidy-up and filed into the
+2-07 home as files.
 
 == How to check you are done
 
-This chapter is done when these five hold.
+This chapter is done when these four hold.
 
-. From a browser on a different PC, you can join a meeting at `meet.example.com`, with no app and no account
-. With two or more people in the room, video, audio, and screen sharing get through
-. Making a booking at `book.example.com` produces a confirmation mail carrying the Jitsi link
-. Thunderbird or the stock phone calendar shows that booking over CalDAV
-. If you stood up classes, the whiteboard and raise-hand work in BigBlueButton
+. From a browser on another PC you can join a meeting at `meet.example.com`, with no app and no account
+. Two or more people join, and video, audio, and screen sharing work
+. Thunderbird and a phone calendar show the same events over CalDAV, and an event entered on one appears on the other
+. Seen from outside, the open ports are only 80, 443, ssh, 25/465/587/993 (2-08), 10000/UDP, and 5349/TCP
 
 ```bash
-curl -sI https://meet.example.com | head -1   # the meeting page answers
-curl -sI https://book.example.com | head -1   # the booking page answers
+systemctl status jitsi-videobridge2 prosody jicofo radicale   # running under systemd
+curl -sI https://meet.example.com | head -1                   # the meeting page answers
 ```
 
 == What the human holds
 
 *Values the human supplies*
 
-* The domain names for meetings and booking (`meet.example.com`, `book.example.com`)
-* The DNS entries that point those names at the machine
-* The database Cal.com connects to, and its password
-* The booking hours and the length of one slot
-* The sender address on confirmation mail (the 2-08 mail)
-* The .ics of future events to be carried over
+* The domain names for meetings and calendars (`meet.example.com`, `cal.example.com`)
+* The DNS records that point those names
+* The list of people who may open a meeting (Jitsi's authentication)
+* The .ics of future events to move
 
 *Actions the AI states before performing*
 
+* Opening ports 10000/UDP and 5349/TCP
 * Changing a DNS record
-* Actually sending a confirmation mail to an outside address
-* Deleting bookings that have already been made
-* Putting a meeting recording somewhere visible from outside
+* Deleting calendar data already entered
+* Placing a meeting recording where it can be seen from outside
 
 == Versions checked, and when
 
-* Jitsi Meet (the `docker-jitsi-meet` compose bundle), BigBlueButton, Cal.com (`calcom/cal.com:latest`), Radicale, Caddy, PostgreSQL
-* This procedure was written on 2026-07-11
+* Jitsi Meet (the stable channel of the official apt repository `download.jitsi.org`), Radicale 3.5 (Debian 13 package), Caddy
+* The procedure was written on 2026-07-11 and rewritten on 2026-10-05
 * If a version has moved, have the AI confirm the official procedure before proceeding
 
 == Summary
 
-Meetings and booking, on your own domain.
+Meetings and calendars, on your own domain.
 
-* *Jitsi Meet* — browser-only meetings, in place of Teams and Zoom
-* *BigBlueButton* — classes and webinars with whiteboard and attendance
-* *Cal.com* — in place of Calendly and Bookings (on the 2-03 PostgreSQL)
-* *Integration* — booking, then confirmation via the 2-08 mail, Jitsi link auto-attached
-* *CalDAV and the gate* — sync with stock calendars, behind the reverse proxy
+* *Jitsi Meet* — browser-only meetings in place of Teams and Zoom; the official apt, behind Caddy
+* *Radicale* — shared calendars over CalDAV. Thunderbird and the iPhone as they are; Android with one app
+* *Booking is written in 2-12* — with no OSS left to stand up, it becomes a small FastAPI app
+* *BigBlueButton on a separate machine* — only for serious teaching, for the duration of a course
 
-By now the foundation, gate, documents, code, mail, meetings, and booking are in
-place. Next, we build the website that shows these to the outside.
+By now the foundation, the gate, the code, the documents, the mail, the meetings,
+and the calendars are in place. The next chapter builds the website that shows
+them to the outside.
 
 '''
 
 == Related articles
 
-* link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars]
 * link:/en/ai-native-software/mail/[2-08: Mail on Your Own Side — Stalwart and Thunderbird]
+* link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
 * link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map]
 endif::[]
+
 // ===== article: 15-web-build =====
 ---
 slug: web-build
@@ -6561,8 +6532,8 @@ ifdef::lang-ja[]
 
 *Web サイトは、二層に分けて作る*。
 
-link:/ai-native-software/meetings/[2-09: 会議と予約を自分の側に ── Jitsi と Cal.com]
-で、集まりと予約を自分の側に置いた。ここでは外に見せる Web を、自分の手元で組み立てる。
+link:/ai-native-software/meetings/[2-09: 会議とカレンダーを自分の側に ── Jitsi と CalDAV]
+で、集まりと予定を自分の側に置いた。ここでは外に見せる Web を、自分の手元で組み立てる。
 中身は Markdown と Mermaid、外枠は HTML と CSS と最小限の JavaScript、両者を Python が
 繋ぐ。焼き上がった HTML をどこに置くかは、次の章が受け持つ。
 
@@ -7032,8 +7003,8 @@ ifdef::lang-en[]
 
 *Build a website in two layers.*
 
-link:/en/ai-native-software/meetings/[2-09: Meetings and Booking on Your Own Side — Jitsi and Cal.com]
-put gatherings and booking on your own side. This chapter assembles, in your own
+link:/en/ai-native-software/meetings/[2-09: Meetings and Calendars on Your Own Side — Jitsi and CalDAV]
+put gatherings and calendars on your own side. This chapter assembles, in your own
 hands, the web you show to the outside. Content in Markdown and Mermaid, the frame
 in HTML, CSS, and minimal JavaScript, with Python connecting the two. Where the
 baked HTML then goes is the next chapter's job.

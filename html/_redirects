@@ -1,2 +1,21 @@
 # 伝統野菜辞典は aiseed.page へ移転(2026-07-28)
 /vegitage/* https://aiseed.page/:splat 301
+
+# 「AIネイティブな仕事の作法」と「ソフトウェア開発編」は
+# 「AI ネイティブなソフトウェア開発」に一本化(2026-09-21)
+/ai-native-ways/software/* /ai-native-software/:splat 301
+/en/ai-native-ways/software/* /en/ai-native-software/:splat 301
+/ai-native-ways/web/* /ai-native-software/web-build/ 301
+/en/ai-native-ways/web/* /en/ai-native-software/web-build/ 301
+/ai-native-ways/python/* /ai-native-software/python/ 301
+/en/ai-native-ways/python/* /en/ai-native-software/python/ 301
+/ai-native-ways/design/* /ai-native-software/design/ 301
+/en/ai-native-ways/design/* /en/ai-native-software/design/ 301
+/ai-native-ways/embedded/* /ai-native-software/embedded/ 301
+/en/ai-native-ways/embedded/* /en/ai-native-software/embedded/ 301
+/ai-native-ways/ai-delegation/* /ai-native-software/ai-delegation/ 301
+/en/ai-native-ways/ai-delegation/* /en/ai-native-software/ai-delegation/ 301
+/ai-native-ways/verify-narratives/* /ai-native-software/verify-narratives/ 301
+/en/ai-native-ways/verify-narratives/* /en/ai-native-software/verify-narratives/ 301
+/ai-native-ways/* /ai-native-software/ 301
+/en/ai-native-ways/* /en/ai-native-software/ 301

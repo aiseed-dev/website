@@ -5669,8 +5669,8 @@ ____
 === AI を「補助役」として使う
 
 これは「AI を使うな」という話ではない。本書(aiseed.dev)は、AI
-を「同僚」として使う「link:/ai-native-ways/[AI ネイティブな仕事の作法]」
-シリーズを並行して推している。AI は、
+を「同僚」として使う link:/ai-native-software/[AI ネイティブなソフトウェア開発]
+を並行して推している。AI は、
 
 * 文献の整理・要約
 * データの集計・可視化
@@ -6518,7 +6518,7 @@ year, day by day. This too is impossible for AI to learn in advance.
 === Use AI as an "assistant"
 
 This is not a "don't use AI" story. This site (aiseed.dev) runs in
-parallel a series link:/ai-native-ways/["AI-native ways of working"] that
+parallel a series, link:/ai-native-software/[AI-Native Software Development], that
 recommends using AI as a "colleague." AI is
 
 * organizing and summarizing literature

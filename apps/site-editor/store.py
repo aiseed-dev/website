@@ -21,6 +21,7 @@ REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO / "tools"))
 
 from build.series import (  # noqa: E402
+    site_series_defs,
     _ENDIF_RE,
     _IFDEF_RE,
     _SENTINEL_RE,
@@ -68,12 +69,25 @@ def series_path(name: str) -> Path:
 
 
 def list_series() -> list[tuple[str, str]]:
-    """存在するシリーズの [(ファイル名, 表示名)]。SERIES_LABELS の順。"""
-    return [
-        (name, label)
-        for name, label in SERIES_LABELS.items()
-        if series_path(name).exists()
-    ]
+    """存在するシリーズの [(ファイル名, 表示名)]。
+
+    site.json の `builder.series` を先に見る——サイト側で連載を足したら、
+    このアプリに手を入れなくても一覧に出るようにするため。並び順と表示名も
+    site.json に従う。site.json に無いものだけ、組み込みの SERIES_LABELS で
+    補う(site.json を持たないサイトでも今までどおり動く)。
+    """
+    out: list[tuple[str, str]] = []
+    seen: set[str] = set()
+    for sdef in site_series_defs(REPO):
+        name = sdef.get("file", "")
+        if name and name not in seen and series_path(name).exists():
+            out.append((name, sdef.get("label") or name))
+            seen.add(name)
+    for name, label in SERIES_LABELS.items():
+        if name not in seen and series_path(name).exists():
+            out.append((name, label))
+            seen.add(name)
+    return out
 
 
 def load_articles(name: str) -> list[Article]:
@@ -110,7 +124,15 @@ def article_url(name: str, slug: str) -> str:
         "ai-native-ways-software.adoc": "ai-native-ways/software",
         "phosphorus-and-farming.adoc": "phosphorus-and-farming",
         "fable.adoc": "fable",
-    }[name]
+    }.get(name)
+    if root is None:
+        # site.json で宣言したシリーズは、その url_base に従う
+        for sdef in site_series_defs(REPO):
+            if sdef.get("file") == name:
+                root = (sdef.get("url_base") or "").strip("/")
+                break
+    if not root:
+        root = name[: -len(".adoc")]
     return f"/{root}/{slug}/"
 
 
@@ -453,3 +475,66 @@ def start_preview() -> subprocess.Popen | None:
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
     )
+
+
+# --- 取り込み(Claude Docs などが書き出した Markdown)------------------------
+#
+# Claude Docs で書いた原稿は、書き出すと Markdown になる。その Markdown を
+# シリーズ .adoc の一記事(下書き)として取り込む。変換そのものは移行ツール
+# tools/convert_md_to_adoc.py が持っている関数を借りる——同じ規約で変換し、
+# 二つの実装が食い違わないようにするため。
+
+def markdown_to_adoc(md_text: str) -> tuple[str, str, list[str]]:
+    """Markdown → (先頭の見出し, AsciiDoc 本文, 気になった点)。
+
+    先頭の `# 見出し` は記事のタイトルとして取り出し、本文からは外す
+    (本文の `= 題` は取り込み側で付け直す)。見出しが無ければタイトルは空。
+    戻り値の三つ目は、機械変換で意味が保てなかった箇所の報告。
+    """
+    import convert_md_to_adoc as conv  # sys.path に tools/ が入っている
+
+    lines = md_text.replace("\r\n", "\n").replace("\r", "\n").split("\n")
+    i = 0
+    while i < len(lines) and not lines[i].strip():
+        i += 1
+    title = ""
+    if i < len(lines) and lines[i].startswith("# "):
+        title = lines[i][2:].strip()
+        i += 1
+    body_md = "\n".join(lines[i:])
+
+    conv.report_lines.clear()
+    body = conv.convert_body(body_md, "取り込み")
+    warnings = list(conv.report_lines)
+    conv.report_lines.clear()
+    return title, body, warnings
+
+
+def import_markdown(name: str, md_text: str, slug: str,
+                    title_ja: str, title_en: str = "") -> tuple[str, list[str]]:
+    """Markdown を新しい記事(下書き)として取り込む。(記事ID, 報告) を返す。
+
+    下書きなので、サイト・索引・sitemap には一切出ない。取り込んだあと
+    編集画面で直し、「公開する」に切り替えてからビルドする。
+    """
+    if not md_text.strip():
+        raise ValueError("取り込む Markdown が空です")
+    head, body, warnings = markdown_to_adoc(md_text)
+    title_ja = (title_ja or head).strip()
+    if not title_ja:
+        raise ValueError("タイトルが決まりません。先頭に「# 見出し」を置くか、"
+                         "タイトル欄に入力してください")
+    if not body.strip():
+        raise ValueError("本文がありません")
+
+    article_id = add_article(name, slug, title_ja, title_en)
+    try:
+        save_body(name, article_id, "ja", f"= {title_ja}\n\n{body}")
+    except ValueError:
+        # 本文で壊れたら、作った下書きごと片づけて元に戻す
+        try:
+            delete_article(name, article_id)
+        except Exception:  # noqa: BLE001 — 片づけの失敗で原因を隠さない
+            pass
+        raise
+    return article_id, warnings

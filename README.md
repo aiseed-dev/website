@@ -18,8 +18,8 @@ html/
 ├── dashboard/             # 物理量ダッシュボード（素のHTML/CSS/JS・静的JSON）
 ├── blog/                  # Blog — 構造分析ノート（時事・速報的な分析）
 ├── claude-debian/         # Claudeと一緒に学ぶDebian（全24章）
-├── ai-native-ways/        # AIネイティブな仕事の作法（独立タイポグラフィ）
-├── en/                    # 英語版サブツリー（/en/insights, /en/blog, /en/claude-debian, /en/ai-native-ways など）
+├── ai-native-software/    # AI ネイティブなソフトウェア開発（独立タイポグラフィ）
+├── en/                    # 英語版サブツリー（/en/insights, /en/blog, /en/claude-debian, /en/ai-native-software など）
 ├── css/style.css          # メインスタイルシート
 ├── js/main.js             # JavaScript
 └── images/                # 画像素材
@@ -35,13 +35,12 @@ articles/
 ├── blog.adoc                      # Blog 全44記事
 ├── claude-debian.adoc             # Claudeと一緒に学ぶDebian 全24章
 ├── claude-debian-server.adoc      # └ サーバー編 全11章
-├── ai-native-ways.adoc            # AIネイティブな仕事の作法 全12章
-├── ai-native-ways-software.adoc   # └ ソフトウェア開発編 全23章
+├── ai-native-software.adoc        # AI ネイティブなソフトウェア開発（導入編・自立編・転換編）
 ├── phosphorus-and-farming.adoc    # リンと農業 全10章
 ├── fable.adoc                     # Fable 5 が帰ってきた 全9章(日本語のみ)
 ├── assets/<シリーズ>/<記事ID>/     # 画像・PDF(en- プレフィックスは EN 専用)
 │   └── _root/                     # シリーズ直下のビルド入力(template-example.html 等)
-└── examples/ai-native-ways/       # example-N/ サンプルコード
+└── examples/<シリーズ>/           # example-N/ サンプルコード
 ```
 
 シリーズファイルの中の1記事は次の形。記事の並び順がそのまま prev/next
@@ -89,8 +88,8 @@ Markdown からの一括変換は `tools/convert_md_to_adoc.py`、新旧ビル�
 突き合わせ検証は `tools/verify_migration.py`（判定除外は
 `verify-allowlist.txt`）。
 
-ヘッダーメニューの「記事」ドロップダウン配下に「構造分析」「AIネイティブな
-仕事の作法」「Claudeと一緒に学ぶDebian」がぶら下がる（デスクトップはホバー、
+ヘッダーメニューの「記事」ドロップダウン配下に「AI ネイティブなソフトウェア
+開発」「構造分析」「Claudeと一緒に学ぶDebian」がぶら下がる（デスクトップはホバー、
 モバイルはアコーディオン）。
 
 ## テーマ
@@ -101,13 +100,11 @@ Markdown からの一括変換は `tools/convert_md_to_adoc.py`、新旧ビル�
 - **Insights**: 構造的思考による分析（肥料危機、地政学、AIの使い方）
 - **Blog**: 時事的な構造分析ノート（イラン戦争・サプライチェーン断絶など）
 - **Claudeと一緒に学ぶDebian**: Claudeを横に置いて読む新しい形の教科書（全24章）
-- **AIネイティブな仕事の作法**: 副題「AI 時代の自由人のための道具たち」。
-  Office・Java・C# から離れて Markdown・JSON・Python で AI を同僚として
-  使う実用エッセイ（独立タイポグラフィ、親シリーズ全 14 章）。
-  第 1 章「AI（ChatGPT・Claudeなど）活用マニュアル」が普通の人向けの
-  入口で 6 つのコツを置き、第 2 章以降がそれを領域別の道具立てに
-  落としていく。サブシリーズ「ソフトウェア開発編」（全 11 章）で
-  **ソフトウェア工学からリベラルアーツへの基盤転換** を論証。底流の
+- **AI ネイティブなソフトウェア開発**: 副題「SIer に頼まない ── 自分で立てて、
+  自分で動かす」。導入編で **ソフトウェア工学からリベラルアーツへの基盤転換**
+  を論証し、自立編で Microsoft / Google から自立する道具立て（土台・門番・文書・
+  コード・メール・会議・Web・API・図・電子工作/IoT・AI）を一つずつ立て、
+  転換編で SIer 委託モデルの構造的不経済とロックインを扱う（独立タイポグラフィ）。底流の
   概念フレーム（15 概念）は `framing-second-renaissance` スキルに集約
   ── 合成的入口はブログ
   [`021-software-three-transitions`](articles/blog/021-software-three-transitions/)
@@ -151,17 +148,17 @@ pip install -r requirements.txt
 
 ### ビルド
 
-Markdown で書いた Insights / Blog / 書籍 / AIネイティブな仕事の作法を HTML に変換する:
+Markdown で書いた Insights / Blog / 書籍 / 連載を HTML に変換する:
 
 ```bash
 python3 tools/build_article.py --all                                                  # 全シリーズビルド
 python3 tools/build_article.py articles/insights/11-healthcare-fiscal/ja.md           # 単一 Insights 記事
 python3 tools/build_article.py articles/blog/013-phosphate-crisis-2027/ja.md          # 単一 Blog 記事
 python3 tools/build_article.py articles/claude-debian/00-prologue/en.md               # 単一章 (EN)
-python3 tools/build_article.py articles/ai-native-ways/00-prologue/ja.md              # 単一エッセイ
+python3 tools/build_article.py articles/insights/11-healthcare-fiscal/en.md           # 単一記事 (EN)
 ```
 
-出力は `html/insights/`, `html/blog/`, `html/claude-debian/`, `html/ai-native-ways/`
+出力は `html/insights/`, `html/blog/`, `html/claude-debian/`, `html/ai-native-software/`
 および それらの `html/en/...` 配下。`--all` の最後で `html/sitemap.xml` と
 `html/robots.txt` も再生成され、静的トップページ 10 件（JA/EN × home・about・
 natural-farming・light-farming・privacy）の `style.css` / `main.js` 参照には
@@ -169,8 +166,6 @@ natural-farming・light-farming・privacy）の `style.css` / `main.js` 参照�
 
 全シリーズの記事・章ページは共通のエッセイ型テンプレート
 （`tools/templates/chapter.html` / `chapter.en.html`）で描画される。
-ai-native-ways の詳細は [articles/ai-native-ways/README.md](articles/ai-native-ways/README.md) 参照。
-
 記法・オプションの詳細は [docs/manuals/build_article.md](docs/manuals/build_article.md) 参照（ツール全体の一覧は [tools/README.md](tools/README.md)）。
 
 ### 開発サーバー（ビルド + 監視 + 配信 + ライブリロード）
@@ -230,7 +225,7 @@ WordPress の管理画面と同じ感覚——左のシリーズ一覧 → 記�
 ├── articles/
 │   ├── insights/         # Insights 記事 (NN-slug/{ja,en}.md)
 │   ├── claude-debian/    # 任意: 書籍章 (NN-slug/{ja,en}.md)
-│   ├── ai-native-ways/   # 任意: エッセイ連載 (NN-slug/{ja,en}.md)
+│   ├── <シリーズ>/       # 任意: エッセイ連載 (NN-slug/{ja,en}.md)
 │   └── blog/             # Blog 記事 (NNN-slug/{ja,en}.md + アセット)
 ├── html/                 # 出力先（index.html, css/, js/, images/ 等）
 ├── tools/templates/      # 任意: ここにテンプレートを置けばバンドルを上書き

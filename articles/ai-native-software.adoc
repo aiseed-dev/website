@@ -3552,10 +3552,10 @@ Flet を被せる。
 これまでの常識では、プログラミングを学ぶとは、文法を覚え、アルゴリズムを設計し、
 コードを書けるようになることだった。
 
-いまは違う。何を処理したいかを言葉にし、Claude にコードを書いてもらい、実行し、
+いまは違う。何を処理したいかを言葉にし、AI にコードを書いてもらい、実行し、
 結果を確かめる。要るのは *使う能力* だ。
 
-Excel の関数を覚える時間と、Python を Claude に書いてもらえるようになる時間を比べれば、
+Excel の関数を覚える時間と、Python を AI に書いてもらえるようになる時間を比べれば、
 後者のほうがはるかに短い。そして Excel の関数は Excel の中で効くが、Python はあらゆる
 データに効く。
 
@@ -3570,28 +3570,28 @@ ____
 ```mermaid
 flowchart LR
   Want["やりたい処理<br/>(日本語で説明)"]
-  Claude(("Claude"))
+  AI(("AI"))
   Code["Python コード"]
   Run["実行"]
   Out["結果<br/>確認"]
   Err["エラー文"]
 
-  Want -->|頼む| Claude
-  Claude -->|書く| Code
+  Want -->|頼む| AI
+  AI -->|書く| Code
   Code --> Run
   Run -->|成功| Out
   Run -->|失敗| Err
-  Err -->|貼り付け| Claude
+  Err -->|貼り付け| AI
 
   classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
   classDef bad  fill:#fef3e7,stroke:#c89559,color:#5a3f1a
   class Want,Out good
-  class Claude,Code,Err bad
+  class AI,Code,Err bad
 ```
 
 頼むときのこつは三つだ。入力と出力を明示する。一つずつ頼む。結果を見て直す。
 「`orders.xlsx` を読んで、商品ごとの売上合計を `summary.json` に書き出して」と、
-入口と出口の形が決まっていれば、Claude は迷わない。
+入口と出口の形が決まっていれば、AI は迷わない。
 
 == Excel と Word に埋まった処理を、Python に出す
 
@@ -3603,7 +3603,7 @@ VBA の中身は、たいてい「セルからデータを読む → 何か計�
 組み合わせだ。これは Polars で素直に書き換えられる。
 
 . Excel の VBA エディタ(Alt + F11)を開く
-. モジュールのコードをコピーして Claude に渡す
+. モジュールのコードをコピーして AI に渡す
 . 「これを Polars + Python に書き換えて」と頼む
 . 返ってきたコードを JupyterLab のセルに貼って Shift+Enter
 
@@ -3645,12 +3645,20 @@ VBA は、Excel 互換の表計算ソフトではそのまま動かない。Offi
 
 外に出す理由は、乗り換えだけではない。
 
-* VBA マクロは、*マルウェアの主要な侵入口* である。メール添付の Excel マクロは攻撃の定番で、安全の面からも早く外に出したほうがよい
 * Python のコードはテキストなので、Git で履歴を持ち、テストし、レビューできる
 * Office の版が上がってもコードはそのまま動く。Python 3 のコードは、この先も長く読める
 
+そして、守りの理由がある。*VBA は、2022 年までメール添付によるマルウェアの主な入口
+だった*。日本で最も広がった Emotet は、マクロ付きの Excel や Word を添付し、
+「コンテンツの有効化」を押させて感染した(JPCERT/CC、2022 年 2 月の注意喚起)。
+Microsoft は 2022 年 7 月から、インターネットから届いたファイルのマクロを Windows の
+Office で既定で止め、添付のマクロを使う攻撃は約 66% 減った(Proofpoint、2022 年
+7 月)。だが止まるのは、外から届いたファイルだけだ。業務ロジックを VBA に置いている
+限り、社内ではマクロを有効にし続け、「有効化」を押す習慣が残る。処理を Python に
+出せば、マクロを有効にする理由そのものが無くなる。
+
 「VBA を Python に書き換えるのは大変では」と思うかもしれない。渡し方はコピーと貼り付け
-だけだ。十年前なら半年がかりだった作業が、いまは一日で終わる。
+だけだ。
 
 == JupyterLab を入れる ── 標準は uv、科学計算は Miniforge
 
@@ -3663,7 +3671,7 @@ Excel のピボットテーブルとの違いは、残るものにある。
 * 実行手順がコード数行として残る ── 翌月は再実行するだけで済む
 * 「なぜこの計算をしたか」を Markdown セルで隣に書ける ── 業務知識がノートに残る
 * グラフもセルの中に描ける(matplotlib / Altair)
-* 数千万行でも待たされない(Polars は Excel より桁違いに速い)
+* Excel の行数の上限(2-03)が無い
 * ノートブック(`.ipynb`)として保存し、Git で履歴を持てる
 * 担当者が替わっても、ノートブックを開けば続きから作業できる
 
@@ -3678,15 +3686,16 @@ Python 本体とライブラリの入れ方は、用途で二択だ。
 まず `uv` から入れる。ほとんどの場面はこれで足りる。
 
 ```bash
-# Mac / Linux / Windows(WSL):公式インストーラ
+# Mac / Linux:公式インストーラ(Windows は PowerShell の一行)
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# 以後はこれで Python ツールが入る
-uv tool install jupyterlab
-jupyter lab
+uv init tools && cd tools          # 仕事用の Python の環境を一つ作る
+uv add jupyterlab polars altair    # 入れる。以降の章の道具も、ここに足す
+uv run jupyter lab                 # 開く
 ```
 
 ブラウザが開き、新しいノートブックを作って、セルに書いて Shift+Enter。ここまでだ。
+この環境が、この連載の Python の置き場になる。2-03 の DuckDB も、ここに足す。
 
 `uv` で行き詰まるのは、科学計算まわりが多い。`numpy` / `scipy` / `pytorch` /
 `tensorflow` のビルドが手元で失敗する(BLAS / LAPACK / CUDA との結合)、GIS 系
@@ -3700,7 +3709,7 @@ curl -L -O https://github.com/conda-forge/miniforge/releases/latest/download/Min
 bash Miniforge3-*.sh
 
 # 以後はこれで環境を作る
-conda create -n ds python=3.12 jupyterlab polars numpy scipy scikit-learn
+conda create -n ds jupyterlab polars numpy scipy scikit-learn
 conda activate ds
 ```
 
@@ -3734,7 +3743,7 @@ df = pl.read_excel("orders.xlsx")
 df.pivot(values="price", index="item", on="month", aggregate_function="sum")
 ```
 
-セルで Shift+Enter、下にクロス集計表が出る。翌月は再実行するだけで、百万行でも一瞬だ。
+セルで Shift+Enter、下にクロス集計表が出る。翌月は再実行するだけだ。
 VLOOKUP の置き換えも同じ形になる。
 
 ```python
@@ -3756,8 +3765,8 @@ orders.join(products, on="item_id", how="left")
 可視化に使うライブラリは二つある。
 
 *matplotlib* は、何でも描ける事実上の標準だ。折れ線・棒・散布・ヒストグラム・
-ヒートマップ・3D・地図・出版品質の図まで、三十年近い蓄積がある。機能は最大で、
-書き方は長い。複雑な図なら 20〜50 行になる。
+ヒートマップ・3D・地図・出版品質の図まで、二十年を超える蓄積がある(初版は
+2003 年)。機能は最大で、書き方は長い。
 
 *Altair* は、「この列を X 軸、この列を Y 軸、この列で色分け」と宣言的に書く。
 Vega-Lite が土台で、出力はそのままインタラクティブな HTML になる。ズーム、ホバー、
@@ -3785,7 +3794,7 @@ Y 軸は 100 万単位で」と頼み、返ってきた図を見て「色をも�
 
 Excel のグラフ機能との違いは、毎月の再生成と再現性に出る。マウス操作は記録が残らず、
 翌月もう一度同じ手を動かすことになる。コードは記録として残り、Git に入り、
-`python report.py` で PNG も SVG も HTML も出る。数百万行でも待たされない。
+`python report.py` で PNG も SVG も HTML も出る。
 
 == 人のための入出力を、基幹から剥がす
 
@@ -3817,7 +3826,7 @@ SQLite に降ろす。基幹とは、API か JSON / Parquet のエクスポー�
 
 必要なデータを基幹から定期的に SQLite / Parquet にエクスポートし(または API で読み出し)、
 手元で集計と帳票化をすれば、基幹には読み出しだけの軽い負荷しか掛からない。集計は手元で
-何度でも回せる。Polars と DuckDB が、大量のデータを秒で返す(2-03)。
+何度でも回せる。集計は Polars と DuckDB の仕事だ(2-03)。
 
 *人のための入出力を手元に降ろすことは、生産性の話であると同時に、基幹を守る負荷分離
 でもある。* この分離があるから、link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
@@ -3827,20 +3836,20 @@ SQLite に降ろす。基幹とは、API か JSON / Parquet のエクスポー�
 
 剥がすと、組織が抱えていた複雑さの一部が要らなくなる。
 
-* 「営業データを月別商品別に見たい」→ IT 部門に依頼 → BI ツールでレポート → 数日後にメール、だった作業が、JupyterLab で 5 分になる
+* 「営業データを月別商品別に見たい」→ IT 部門に依頼 → BI ツールでレポート → 数日後にメール、だった作業が、JupyterLab の一つのセルになる
 * 顧客マスタを更新するための ERP 画面と権限管理が、SQLite + Python に降りる
 * ダッシュボードのための BI ツールのライセンスと専門家の代わりに、Altair が立つ。自分で書けて、HTML で配れる
 * 月次レポート用のレポーティングサーバーが、cron + Python スクリプトに降りる
 * BI 用のデータマートが、SQLite / Parquet のファイルに降りる
 
-=== 請求書発行も、同じ形で降りる
+=== 請求書の発行も、同じ形で降りる
 
-会計ソフト(freee、MoneyForward など、月額数千〜数万円)や ERP が担っていた領域も、
-同じ形をしている。
+会計ソフトや ERP の画面で出していた請求書も、同じ形をしている。会計そのもの
+(仕訳・税務)は会計ソフトに残し、降ろすのは発行の側だ。
 
 * 顧客マスタ・取引データ → SQLite(2-03)
 * 請求書の様式 → adoc / HTML(2-07)
-* 生成スクリプト → Python + Claude(本章)、PDF 化は pandoc / weasyprint
+* 生成スクリプト → Python + AI(本章)、PDF 化は pandoc / weasyprint
 
 百通の請求書 PDF を月末に一括生成し、メール送信まで Python で書ける。cron で日時を
 決めて回す。データは手元に残る。見積書、契約書、月次レポート、商品カタログ、納品書 ──
@@ -3860,7 +3869,7 @@ Swift を選ばない。三つの層を、下から順に登る。
 | 層 | 道具 | 役目
 | 第一層 | CLI ツール(Python) | 処理本体を書いて、動かして、確かめる
 | 第二層 | Flet アプリ(Python) | 画面が要るときに、Python のまま GUI を載せる
-| 第三層 | Flutter アプリ(Dart) | App Store / Play Store に出すときだけ
+| 第三層 | Flutter アプリ(Dart) | Flet の部品で足りないときだけ
 |===
 
 ```mermaid
@@ -3871,8 +3880,8 @@ flowchart TB
   Done1(["uv tool install で配る"])
   L2["第二層: Flet アプリ(Python)<br/>Mac / Win / Linux / Web / iOS / Android"]
   Q2{"Flet で足りるか"}
-  Done2(["各 OS の実行ファイルで配る"])
-  L3["第三層: Flutter アプリ(Dart)<br/>App Store / Play Store"]
+  Done2(["各 OS の実行ファイルか<br/>ストアで配る"])
+  L3["第三層: Flutter アプリ(Dart)<br/>Flet の部品で足りないとき"]
 
   Start --> L1 --> Q1
   Q1 -->|不要| Done1
@@ -3917,11 +3926,10 @@ ft.run(lambda page: page.render(Greeting))
 
 テキスト欄と表示領域のある GUI が、これで動く。*同じコードが、Mac でも Windows でも
 Linux でも、Web ブラウザでも、iOS / Android でも動く*。この連載で作る道具の画面は、
-Flet を既定にする。発注者自身が Flet でアプリを作っているので、ここは連載の中心の
-道具として扱う。
+Flet を既定にする。
 
-道具立ての軽さも効く。Flutter の開発環境は Android Studio と SDK と Xcode で数十 GB
-になるが、Flet は Python 環境だけで足りる(Flutter の配布が要るときだけ展開される)。
+道具立ての軽さも効く。Flutter の開発環境(Android Studio・SDK・Xcode)が要らず、
+Flet は Python の環境だけで足りる(Flutter の側は、配る形に組むときだけ展開される)。
 CLI で動く処理に Flet の画面を足す追加の手間は、ライブラリの導入と数十行のコードだ。
 
 === 現場で動く道具の形
@@ -3931,7 +3939,7 @@ CLI で動く処理に Flet の画面を足す追加の手間は、ライブラ�
 *CLI で足りるもの*
 
 * `invoice` ── 月末の請求書一括生成。顧客マスタ(SQLite、2-03)+ 様式 → pandoc で PDF を百通
-* `minutes` ── 議事録の整形。録音 `.m4a` を Whisper でテキスト化 → Claude が Markdown に整え、要点を抜く
+* `minutes` ── 議事録の整形。録音 `.m4a` を Whisper でテキスト化 → AI が Markdown に整え、要点を抜く
 * `fieldlog` ── 農作業の日報。写真と一言メモを受け取り日記にし、SQLite に貯めて月別の作業時間を集計する
 
 *Flet で画面を被せるもの*
@@ -3940,8 +3948,9 @@ CLI で動く処理に Flet の画面を足す追加の手間は、ライブラ�
 * 畑の管理マップ ── 地図の上で区画をタップし、その区画の作付け履歴を見て入力する
 * 小売店の棚卸し ── 商品の QR を撮って数量を入れる → SQLite で集計 → `.xlsx` で出す(2-07)
 
-第三層の Flutter が要るのは、App Store / Play Store での配布が要件になるときだ。
-社内や自分のための道具なら、第一層か第二層で足りることが多い。
+Flet は、Mac・Windows・Linux の実行ファイルも、App Store と Play Store に出す形も
+作れる(`flet build`)。第三層の Flutter に上がるのは、Flet の部品で足りない画面が
+要るときだけだ。社内や自分のための道具なら、第一層か第二層で足りる。
 
 どれも、この章の Python と 2-03 の SQLite をそのまま使う。新しい枠組みを覚え直す必要は
 無い。
@@ -3969,8 +3978,8 @@ Flet には MCP サーバ(`flet-mcp`)がある。AI の MCP 設定にこれを�
 . Flet のアプリが手元の画面で立ち上がり、同じコードが Web ブラウザでも開く
 
 ```bash
-uv tool install jupyterlab
-python -c "import polars, altair; print('ok')"
+uv run jupyter lab
+uv run python -c "import polars, altair, flet; print('ok')"
 ```
 
 == 人が持つ物
@@ -3993,9 +4002,8 @@ python -c "import polars, altair; print('ok')"
 == 確かめた版と日付
 
 * JupyterLab、uv、Miniforge、Polars、matplotlib、Altair ── 版は指定していない
-* Miniforge の例は `conda create -n ds python=3.12 ...` ── Python は 3.12 を指定している
 * Flet ── 版は指定していない。書き方は `flet-mcp` に、入っている版を確かめさせる
-* 手順を書いたのは 2026-09-21
+* 手順を書いたのは 2026-09-21、見直したのは 2026-10-05
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
 == まとめ
@@ -4037,12 +4045,12 @@ person needs a screen, Flet goes on top.
 Under the old common sense, learning to program meant memorizing syntax,
 designing algorithms, and becoming able to write code.
 
-It works differently now. You put into words what you want processed, have Claude
+It works differently now. You put into words what you want processed, have the AI
 write the code, run it, and check the result. The skill you need is the *skill of
 using*.
 
 Compare the time it takes to memorize Excel functions with the time it takes to
-start having Claude write Python for you. The second is far shorter. And Excel
+start having the AI write Python for you. The second is far shorter. And Excel
 functions work inside Excel, while Python works on any data at all.
 
 ____
@@ -4057,29 +4065,29 @@ back. An error is not the end; it is input for the next instruction.
 ```mermaid
 flowchart LR
   Want["what you want done<br/>(said in your own words)"]
-  Claude(("Claude"))
+  AI(("AI"))
   Code["Python code"]
   Run["run"]
   Out["check<br/>the result"]
   Err["error text"]
 
-  Want -->|ask| Claude
-  Claude -->|writes| Code
+  Want -->|ask| AI
+  AI -->|writes| Code
   Code --> Run
   Run -->|works| Out
   Run -->|fails| Err
-  Err -->|paste| Claude
+  Err -->|paste| AI
 
   classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
   classDef bad  fill:#fef3e7,stroke:#c89559,color:#5a3f1a
   class Want,Out good
-  class Claude,Code,Err bad
+  class AI,Code,Err bad
 ```
 
 There are three tricks to asking. State the input and the output. Ask one thing at
 a time. Look at the result and correct it. "Read `orders.xlsx`, total sales per
 product, and write it to `summary.json`" — with the entrance and the exit fixed,
-Claude does not get lost.
+the AI does not get lost.
 
 == Move the logic embedded in Excel and Word out into Python
 
@@ -4091,7 +4099,7 @@ What sits inside VBA is usually some combination of "read data from cells,
 calculate something, write to other cells." Polars rewrites that directly.
 
 . Open Excel's VBA editor (Alt + F11)
-. Copy the module's code and hand it to Claude
+. Copy the module's code and hand it to the AI
 . Ask, "rewrite this in Polars + Python"
 . Paste what comes back into a JupyterLab cell and hit Shift+Enter
 
@@ -4133,12 +4141,20 @@ link:/en/ai-native-software/documents/[2-07: Take Documents Back — Manuscripts
 
 Moving off Office is not the only reason to externalize.
 
-* VBA macros are *a primary malware vector*. Macro-bearing Excel attachments are a standard attack, so security alone argues for taking the logic out soon
 * Python code is text, so it keeps history in Git, and it can be tested and reviewed
 * The code keeps running when the Office version moves. Python 3 code stays readable for a long time to come
 
-"Isn't rewriting VBA into Python a big job?" The handoff is copy and paste. What
-would have taken half a year ten years ago finishes in a day.
+And there is a security reason. *Until 2022, VBA was the main door for malware
+arriving as mail attachments.* Emotet, the most widespread case in Japan, attached
+macro-bearing Excel or Word files and infected the machine when the reader clicked
+"Enable Content" (JPCERT/CC alert, February 2022). From July 2022 Microsoft blocked
+macros in files from the internet by default in Office on Windows, and attacks
+using macro attachments fell by about 66% (Proofpoint, July 2022). But the block
+covers only files that arrived from outside. As long as business logic lives in
+VBA, the company keeps macros enabled internally, and the habit of clicking
+"Enable" stays. Move the logic to Python, and the reason to enable macros is gone.
+
+"Isn't rewriting VBA into Python a big job?" The handoff is copy and paste.
 
 == Install JupyterLab — uv by default, Miniforge for scientific computing
 
@@ -4152,7 +4168,7 @@ The difference from an Excel pivot table is in what remains afterward.
 * The procedure remains as a few lines of code — next month is a re-run
 * "Why we compute it this way" can sit beside it in a Markdown cell — the business knowledge stays in the notebook
 * Charts draw inside the cell too (matplotlib / Altair)
-* Tens of millions of rows do not make you wait (Polars is orders of magnitude faster than Excel)
+* Excel's row limit (2-03) is gone
 * Saved as a notebook (`.ipynb`), it keeps history in Git
 * When the person in charge changes, opening the notebook is enough to carry on
 
@@ -4167,16 +4183,17 @@ How to install Python itself and its libraries is a choice between two, by purpo
 Start with `uv`. It covers almost every situation.
 
 ```bash
-# Mac / Linux / Windows (WSL): official installer
+# Mac / Linux: official installer (Windows has a one-line PowerShell version)
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# from here on, Python tools install like this
-uv tool install jupyterlab
-jupyter lab
+uv init tools && cd tools          # one Python environment for the work
+uv add jupyterlab polars altair    # install; later chapters' tools go here too
+uv run jupyter lab                 # open
 ```
 
 The browser opens, you make a new notebook, write in a cell, hit Shift+Enter. That
-is the whole of it.
+is the whole of it. This environment is where this series' Python lives; 2-03's
+DuckDB goes in here as well.
 
 Where `uv` runs into walls is mostly scientific computing: builds of `numpy` /
 `scipy` / `pytorch` / `tensorflow` failing locally (linking against BLAS / LAPACK /
@@ -4191,7 +4208,7 @@ curl -L -O https://github.com/conda-forge/miniforge/releases/latest/download/Min
 bash Miniforge3-*.sh
 
 # from here on, environments are made like this
-conda create -n ds python=3.12 jupyterlab polars numpy scipy scikit-learn
+conda create -n ds jupyterlab polars numpy scipy scikit-learn
 conda activate ds
 ```
 
@@ -4226,8 +4243,8 @@ df = pl.read_excel("orders.xlsx")
 df.pivot(values="price", index="item", on="month", aggregate_function="sum")
 ```
 
-Shift+Enter in the cell and the cross tab appears below. Next month is a re-run,
-and a million rows take an instant. Replacing VLOOKUP takes the same shape.
+Shift+Enter in the cell and the cross tab appears below. Next month is a re-run.
+Replacing VLOOKUP takes the same shape.
 
 ```python
 orders   = pl.read_excel("orders.xlsx")
@@ -4249,9 +4266,9 @@ the month-on-month percentage" — and the Polars code comes back.
 Two libraries cover visualization.
 
 *matplotlib* is the de facto standard that draws anything: line, bar, scatter,
-histogram, heatmap, 3D, maps, publication-quality figures, on nearly thirty years
-of accumulation. The capability is the largest and the writing is the longest — a
-complex figure runs 20 to 50 lines.
+histogram, heatmap, 3D, maps, publication-quality figures, on more than twenty
+years of accumulation (first released in 2003). The capability is the largest and
+the writing is the longest.
 
 *Altair* is declarative: "this column on X, this column on Y, color by this
 column." Vega-Lite is underneath, and the output is interactive HTML as it stands.
@@ -4281,7 +4298,7 @@ colors calmer." That is the whole loop.
 The difference from Excel's chart menu shows up in monthly regeneration and in
 reproducibility. Mouse work leaves no record, so next month you move the same hand
 again. Code stays as the record, goes into Git, and `python report.py` emits PNG,
-SVG, or HTML. Millions of rows do not make you wait.
+SVG, or HTML.
 
 == Peel the human-facing I/O off the core system
 
@@ -4316,7 +4333,7 @@ Run both on the same system and this follows.
 Export the data you need from the core to SQLite / Parquet on a schedule (or read it
 through an API), then aggregate and produce the forms locally, and the core carries
 only a light read-only load. The aggregation runs as many times as you like on your
-own machine. Polars and DuckDB return large data in seconds (2-03).
+own machine. Aggregation is the job of Polars and DuckDB (2-03).
 
 *Bringing human-facing I/O down to your own machine is a productivity move and, at
 the same time, a load split that protects the core.* Because of that split, the
@@ -4328,7 +4345,7 @@ becomes a small job that deals only with the system of record.
 Peel those off and part of the complexity the organization was carrying is no longer
 needed.
 
-* "I want to see sales data by month and product" — ask the IT department, report from the BI tool, email a few days later — becomes 5 minutes in JupyterLab
+* "I want to see sales data by month and product" — ask the IT department, report from the BI tool, email a few days later — becomes one cell in JupyterLab
 * The ERP screen and permission scheme for updating the customer master comes down to SQLite + Python
 * In place of BI licenses and a specialist for dashboards, Altair stands: you write it yourself and hand it out as HTML
 * The reporting server for monthly reports comes down to cron + a Python script
@@ -4336,12 +4353,13 @@ needed.
 
 === Invoicing comes down the same way
 
-The territory accounting software (freee, MoneyForward, at several thousand to
-several tens of thousands of yen a month) and ERPs used to hold has the same shape.
+The invoices that came out of accounting software or an ERP screen have the same
+shape. Accounting itself (journals, tax) stays in the accounting software; what
+comes down is the issuing side.
 
 * Customer master and transactions → SQLite (2-03)
 * The invoice form → AsciiDoc / HTML (2-07)
-* The generation script → Python + Claude (this chapter), PDF via pandoc / weasyprint
+* The generation script → Python + the AI (this chapter), PDF via pandoc / weasyprint
 
 A hundred invoice PDFs generated at month end in one pass, mail delivery included,
 all written in Python, scheduled with cron. The data stays on your side. Quotes,
@@ -4364,7 +4382,7 @@ bottom.
 | Layer | Tool | Role
 | Layer 1 | CLI tool (Python) | Write the core processing, run it, verify it
 | Layer 2 | Flet app (Python) | When a screen is needed, put a GUI on, still in Python
-| Layer 3 | Flutter app (Dart) | Only when shipping to the App Store / Play Store
+| Layer 3 | Flutter app (Dart) | Only when Flet's controls are not enough
 |===
 
 ```mermaid
@@ -4376,7 +4394,7 @@ flowchart TB
   L2["Layer 2: Flet app (Python)<br/>Mac / Win / Linux / Web / iOS / Android"]
   Q2{"is Flet enough"}
   Done2(["ship per-OS executables"])
-  L3["Layer 3: Flutter app (Dart)<br/>App Store / Play Store"]
+  L3["Layer 3: Flutter app (Dart)<br/>when Flet's controls are not enough"]
 
   Start --> L1 --> Q1
   Q1 -->|no| Done1
@@ -4421,13 +4439,11 @@ ft.run(lambda page: page.render(Greeting))
 
 That gives a GUI with an input field and an output area. *The same code runs on Mac,
 on Windows, on Linux, in the web browser, and on iOS and Android.* Screens for the
-tools built in this series default to Flet. The author of this series builds his own
-apps in Flet, so it is treated here as the series' central tool.
+tools built in this series default to Flet.
 
-The lightness of the setup counts too. A Flutter development environment runs to
-tens of gigabytes with Android Studio, the SDK, and Xcode; Flet needs only the
-Python environment (the Flutter side is unpacked only when you build for
-distribution). Adding a Flet screen to logic that already runs at the CLI costs the
+The lightness of the setup counts too. No Flutter development environment (Android
+Studio, the SDK, Xcode) is needed; Flet needs only the Python environment (the
+Flutter side is unpacked only when you build for distribution). Adding a Flet screen to logic that already runs at the CLI costs the
 library install and a few tens of lines.
 
 === The shape of tools that run in the field
@@ -4437,7 +4453,7 @@ Some tools that finish at Layer 1 or Layer 2.
 *CLI is enough*
 
 * `invoice` — month-end invoice batch. Customer master (SQLite, 2-03) plus a form template → a hundred PDFs through pandoc
-* `minutes` — meeting-minutes formatting. A `.m4a` recording transcribed by Whisper → Claude shapes the Markdown and pulls out the key points
+* `minutes` — meeting-minutes formatting. A `.m4a` recording transcribed by Whisper → the AI shapes the Markdown and pulls out the key points
 * `fieldlog` — farm daily log. Photos and one-line notes become a journal, accumulate in SQLite, and total up monthly working hours
 
 *Flet puts a screen on*
@@ -4446,8 +4462,10 @@ Some tools that finish at Layer 1 or Layer 2.
 * Field-management map — tap a plot on the map to view and enter its planting history
 * Small-shop stocktake — photograph a product QR, enter the quantity → aggregate in SQLite → output as `.xlsx` (2-07)
 
-Layer 3, Flutter, is for when App Store / Play Store distribution is a requirement.
-For internal or personal tools, Layer 1 or Layer 2 is usually enough.
+Flet builds executables for Mac, Windows, and Linux, and the packages the App Store
+and Play Store take (`flet build`). You go up to Layer 3, Flutter, only when the
+screen needs something Flet's controls do not have. For internal or personal tools,
+Layer 1 or Layer 2 is enough.
 
 All of them use this chapter's Python and 2-03's SQLite as they are. There is no new
 framework to learn from scratch.
@@ -4478,8 +4496,8 @@ This chapter is done when these five hold.
 . A Flet app starts on your own screen, and the same code opens in a web browser
 
 ```bash
-uv tool install jupyterlab
-python -c "import polars, altair; print('ok')"
+uv run jupyter lab
+uv run python -c "import polars, altair, flet; print('ok')"
 ```
 
 == What the human holds
@@ -4502,9 +4520,8 @@ python -c "import polars, altair; print('ok')"
 == Versions checked, and when
 
 * JupyterLab, uv, Miniforge, Polars, matplotlib, Altair — no version pinned
-* The Miniforge example is `conda create -n ds python=3.12 ...` — Python is pinned to 3.12
 * Flet — no version pinned. Have `flet-mcp` confirm the API of the version installed
-* The procedure was written on 2026-09-21
+* The procedure was written on 2026-09-21 and reviewed on 2026-10-05
 * If a version has moved, have the AI confirm the official procedure before proceeding
 
 == Summary

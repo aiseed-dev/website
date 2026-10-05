@@ -2689,13 +2689,14 @@ Docker は使わない。以降の章で立てるサービスは、Debian の ap
 * *AI が直接見られる* ── 設定は `/etc` に、ログは `journalctl` に、データは決まった場所にある。コンテナを挟むと、ボリューム・ネットワーク・口の対応・利用者 ID のずれという層が一つ増え、調べるのも直すのも、外と中の二か所になる。作っては直す開発では、この一層がそのまま手間になる
 * *ファイアウォールが効く* ── Docker は、公開したコンテナの口への通信を、ufw の規則より手前で振り分ける(Docker の公式文書、2026-10-05 に確認)。「外に開けるのは 80 と 443 と ssh だけ」という決めが、コンテナの口には届かない
 
-Docker が受け持つのは、どこでも同じに動かすことと、隔てることだ。一台で全部
-やるこの形では、どちらも別の手で足りる。隔てるのは別の利用者と systemd の制限で、
-立て直しは git に入れた設定とデータの写しでやる。
+*Docker は配るための道具で、作るための道具ではない*。作った物を、他人の環境で
+同じに動かしてもらうための箱だ。自分の一台で作って、そこで動かすなら、配る
+相手がいない。隔てるのは別の利用者と systemd の制限で足り、立て直しは git に
+入れた設定とデータの写しでやる。
 
-例外は一つだけだ。公式がコンテナでしか配っていない物は、そのコンテナを使う。
-そのときも、使うのは公式のイメージだけで、自分でイメージは作らない。自分で作る
-イメージは、守る物と直す場所を増やすだけだ。
+だから例外も、配る側から決まる。公式がコンテナでしか配っていない物は、その
+コンテナを受け取って使う。使うのは公式のイメージだけで、自分でイメージは
+作らない。配る相手のいないイメージは、守る物と直す場所を増やすだけだ。
 
 == 画面を入れて、動かしたままにする
 
@@ -2834,7 +2835,7 @@ sudo ss -tlnp                                 # 5 ── 待ち受けている�
 
 * *一台で全部* ── 公開の Web、社内の道具、AI の作業を、同じ機械に載せる
 * *土台は Debian* ── Windows でしか動かない物は、箱(libvirt)の中で動かす。WSL の逆
-* *Docker は使わない* ── apt で入れ、systemd で動かす。更新が一本になり、AI が直接見られ、ファイアウォールが効く。例外は公式がコンテナでしか配らない物だけで、イメージは自分で作らない
+* *Docker は使わない* ── 配るための道具で、作るための道具ではない。apt で入れ、systemd で動かす。例外は公式がコンテナでしか配らない物だけで、イメージは自分で作らない
 * *画面も入れる* ── 文書を開く、頁を見る、箱の中の Windows を使う
 * *AI に root* ── 設定は git に、データは機械の外に写す。だから初期化で戻せる
 * *人が持つのは三つ* ── 鍵と認証、外でやる操作、データの写し
@@ -2904,15 +2905,16 @@ There are three reasons.
 * *The AI sees everything directly* — configuration in `/etc`, logs in `journalctl`, data in known places. A container adds a layer of volumes, networks, port mappings, and mismatched user IDs, so every diagnosis and every fix happens in two places, outside and inside. In development, where you build and fix over and over, that layer is the cost
 * *The firewall holds* — Docker diverts traffic to a published container port before it reaches ufw's rules (Docker's own documentation, checked 2026-10-05). The rule "only 80, 443, and ssh are open" does not reach a container's ports
 
-What Docker provides is running the same everywhere, and isolation. On one
-machine that does everything, both are covered another way: isolation by
-separate users and systemd's restrictions, rebuilding by configuration in git
-and copies of the data.
+*Docker is a tool for distributing, not for building.* It is a box that lets
+someone else run what you made, unchanged, in their environment. When you build on
+your own machine and run it there, there is no one to distribute to. Isolation is
+covered by separate users and systemd's restrictions; rebuilding, by configuration
+in git and copies of the data.
 
-There is one exception. Something whose project ships it only as a container runs
-in that container. Even then, use only the official image, and never build an
-image of your own. An image you build yourself only adds things to keep and
-places to fix.
+So the exception is set from the distributing side too. Something whose project
+ships it only as a container is received as that container and run. Use only the
+official image, and never build one of your own. An image with no one to
+distribute to only adds things to keep and places to fix.
 
 == Install a desktop and leave it running
 
@@ -3058,7 +3060,7 @@ Decide the machine the Independence part runs on, first.
 
 * *One machine for all of it* — public website, in-house tools, the AI's own work
 * *Debian as the base* — anything Windows-only runs in a box (libvirt); the reverse of WSL
-* *No Docker* — install with apt, run under systemd: one update stream, the AI sees everything, the firewall holds. The only exception is software shipped only as a container, and you never build an image yourself
+* *No Docker* — a tool for distributing, not for building. Install with apt, run under systemd. The only exception is software shipped only as a container, and you never build an image yourself
 * *Install the desktop too* — open documents, look at pages, drive the Windows guest
 * *Root to the AI* — configuration in git, data copied off the machine, so a reinstall restores it
 * *Three things the human holds* — keys and accounts, outside actions, copies of the data

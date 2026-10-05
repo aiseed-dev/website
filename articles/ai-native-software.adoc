@@ -1763,13 +1763,13 @@ ____
 * 土台は SQLite・PostgreSQL・DuckDB・Polars(link:/ai-native-software/foundation/[2-03])
 * 認証は PocketBase(Entra ID の代わり、link:/ai-native-software/auth/[2-05])
 * 共有と版管理は Forgejo(GitHub の代わり、link:/ai-native-software/code/[2-06])
-* 文書は原稿を adoc の文字で持ち、様式は aiseed office(link:/ai-native-software/documents/[2-07])
+* 文書は読む物を adoc の文字で持ち、触る表は格子、刷る紙はテンプレート(link:/ai-native-software/documents/[2-07])
 * メールは Stalwart(link:/ai-native-software/mail/[2-08])、会議は Jitsi(link:/ai-native-software/meetings/[2-09])
 * Web は焼いた HTML を自分の一台(Caddy)か Cloudflare Pages へ(WordPress の代わり、link:/ai-native-software/web/[2-11])
 * 基幹のロジックは FastAPI で API に出す(ベンダーパッケージの代わり、link:/ai-native-software/fastapi/[2-12])
 * AI は手元の LLM + RAG(Copilot の代わり、link:/ai-native-software/ai/[2-16])
 
-どれも、いまこの瞬間に全部そろっているという話ではない。aiseed office は、配っているのがエンジンだけで、画面のアプリと adoc の読み書きはまだだ(2-07 に、できている所とまだの所を分けて書いてある)。Web の公開は、自分の一台なら全部自分の側、Cloudflare Pages なら窓だけ借りる形になる。*借りる所と自分で持つ所を、分けて決める* ── それが土台づくりの中身である。
+どれも、いまこの瞬間に全部そろっているという話ではない。文書は、道具を一つ立てるのではなく持ち方を決める話で、格子は Excel のままでもよい(2-07)。Web の公開は、自分の一台なら全部自分の側、Cloudflare Pages なら窓だけ借りる形になる。*借りる所と自分で持つ所を、分けて決める* ── それが土台づくりの中身である。
 
 *まず汎用をベンダーから外す*。そして、認証・データ・文書・メール・Web・AI という土台を自分の側に置く。その上で、本当に自社固有のロジックだけを、AI と一緒に書く。コードを書くのは、土台を据えた後半だ。しかも、書く量は自社固有の部分に縮む。
 
@@ -1883,13 +1883,13 @@ For an organization, the starting point is the same. First, stand up the generic
 * The foundation: SQLite, PostgreSQL, DuckDB, Polars (link:/en/ai-native-software/foundation/[2-03])
 * Authentication: PocketBase, in place of Entra ID (link:/en/ai-native-software/auth/[2-05])
 * Sharing and version control: Forgejo, in place of GitHub (link:/en/ai-native-software/code/[2-06])
-* Documents: manuscripts held as AsciiDoc text, forms through aiseed office (link:/en/ai-native-software/documents/[2-07])
+* Documents: things you read held as AsciiDoc text, tables you work in in a grid, pages you print from templates (link:/en/ai-native-software/documents/[2-07])
 * Mail: Stalwart (link:/en/ai-native-software/mail/[2-08]); meetings: Jitsi (link:/en/ai-native-software/meetings/[2-09])
 * Web: baked HTML on your own machine with Caddy, or on Cloudflare Pages, in place of WordPress (link:/en/ai-native-software/web/[2-11])
 * Core logic: exposed as an API with FastAPI, in place of the vendor package (link:/en/ai-native-software/fastapi/[2-12])
 * AI: a local LLM plus RAG, in place of Copilot (link:/en/ai-native-software/ai/[2-16])
 
-None of this means every piece is finished today. For aiseed office, only the engine ships; the GUI application and AsciiDoc read/write are not out yet (2-07 separates what works from what does not). For publishing the web, your own machine keeps everything on your side, while Cloudflare Pages means borrowing only the window. *Decide separately what to borrow and what to hold* — that is what laying the foundation consists of.
+None of this means every piece is finished today. Documents are not a tool to stand up but a way of holding content, and the grid can stay Excel (2-07). For publishing the web, your own machine keeps everything on your side, while Cloudflare Pages means borrowing only the window. *Decide separately what to borrow and what to hold* — that is what laying the foundation consists of.
 
 *First, untie the generic from the vendor*. Then put the foundation — identity, data, documents, mail, web, AI — on your own side. On top of that, write only the logic that is genuinely your company's own, together with AI. Writing code comes in the later half, after the foundation is laid. And the amount to write shrinks to the company-specific part.
 
@@ -2000,7 +2000,7 @@ ____
 
 AI は、まさにこのコストを潰す。
 
-* 独自形式を開く。Office / Docs の書式は aiseed office が扱い(2-07)、埋め込まれたマクロやロジックは AI が Python に外部化する(導入編・2-04)
+* 独自形式を開く。Office / Docs の書式は、読む物は adoc、触る表は格子、刷る紙はテンプレートに分けて扱い(2-07)、埋め込まれたマクロやロジックは AI が Python に外部化する(導入編・2-04)
 * 読めないコードを開く。レガシー基幹のコード・SQL・手順書を、ローカル LLM が読み解いて、Markdown の業務知識に取り出す(2-12・2-16)
 * 閉じ込められた知識を開く。紙・画像・属人知を、OCR と対話で構造化された情報に変える(2-15)
 
@@ -2047,7 +2047,7 @@ ____
 | Microsoft 365 | Google Workspace | 自前(OSS) | 立てる章
 | Microsoft のクラウド | Google のクラウド | Debian の PC 一台 | link:/ai-native-software/ai-pc/[2-02]
 | Entra ID | Google ID / Cloud Identity | PocketBase | link:/ai-native-software/auth/[2-05]
-| Word / Excel / PowerPoint | Docs / Sheets / Slides | aiseed office | link:/ai-native-software/documents/[2-07]
+| Word / Excel / PowerPoint | Docs / Sheets / Slides | adoc + git(読む物)、格子(触る表)、テンプレート(刷る紙) | link:/ai-native-software/documents/[2-07]
 | SharePoint + GitHub | Drive | Forgejo + Zed | link:/ai-native-software/code/[2-06]
 | Exchange / Outlook | Gmail | Stalwart | link:/ai-native-software/mail/[2-08]
 | Teams / Bookings | Google Meet / Calendar | Jitsi・Cal.com(講座は BigBlueButton) | link:/ai-native-software/meetings/[2-09]
@@ -2070,7 +2070,7 @@ ____
 任せる範囲)の三つで、どれもスイートに対応する層が無い。だが自立編の一部であり、
 解く順番には入る。
 
-一番上の行が、新しく入った層である。会社の PC を一台 Debian にして AI に渡す。以降に立てるものは、全部その一台の上に乗る。文書の層は aiseed office(`aiseed-dev/officework`)だ。ONLYOFFICE が日本語の様式では使い物にならないという理由と、その解き方は 2-07 が受け持つ。
+一番上の行が、新しく入った層である。会社の PC を一台 Debian にして AI に渡す。以降に立てるものは、全部その一台の上に乗る。文書の層は、道具を一つ立てるのではなく、持ち方を決める。読む物は adoc で git に、触る表は格子のまま、刷る紙はテンプレートに値を流す。2-07 が受け持つ。
 
 右側の道具は、別々の組織が作った、別々の開いた道具だ。中が読めて、形式が開いていて、データはどこへでも持ち出せる。だから、一本の方針変更が他に波及せず、一本を別のものに差し替えても、残りは何も変わらない。開いていて、鍵が自分の手元にある。これが核心で、束が解けているのはその帰結だ。
 
@@ -2090,7 +2090,7 @@ flowchart TB
   subgraph Unbundled["自前 ── 開いた道具、鍵は自分の手元"]
     direction TB
     E2["PocketBase"]
-    O2["aiseed office"]
+    O2["adoc + git / 格子 / テンプレート"]
     S2["Forgejo + Zed"]
     X2["Stalwart"]
     M2["Jitsi / Cal.com"]
@@ -2132,7 +2132,7 @@ flowchart TB
 . 処理(2-04)。Python と Flet。Excel と Word に埋まったマクロとグラフを外に出し、画面が要るところに被せる
 . 認証(2-05)。PocketBase。全アプリ共通の門番。ここを自分の側に移すと、束の根が切れる
 . 共有と版管理(2-06)。Forgejo + Zed。SharePoint / Drive を畳む
-. 文書(2-07)。原稿は adoc の文字、様式は aiseed office。Office / Docs 形式の書類を自分の側で作る
+. 文書(2-07)。読む物は adoc の文字、触る表は格子、刷る紙はテンプレート。Office / Docs 形式は入口と出口で通過させる
 . メール(2-08)。Stalwart。通信の中身を手元に置く
 . 会議・予約(2-09)。Jitsi・Cal.com。会議とオンライン講座を自前で
 . Web を作る(2-10)。中身は Markdown、外枠は HTML と CSS、繋ぐのは Python
@@ -2190,7 +2190,7 @@ ____
 ```mermaid
 flowchart TB
   Core["基幹システム<br/>FastAPI + PostgreSQL"]
-  Office["オフィス系<br/>aiseed office / メール / 会議 / 講座"]
+  Office["オフィス系<br/>文書 / メール / 会議 / 講座"]
   Auth["PocketBase<br/>認証 = 旧 Entra ID / Google ID の継ぎ目"]
   Share["Forgejo<br/>共有・版管理 = 旧 SharePoint / Drive の継ぎ目"]
   Core -->|同じ認証| Auth
@@ -2252,7 +2252,7 @@ flowchart TB
 
 == 確かめた版と日付
 
-* この章で版を決める道具は無い。対応表に載るのは製品名だけで、版はそれぞれを立てる章で決める。PocketBase、aiseed office(`aiseed-dev/officework`、`pip install officework`、エンジン 0.5.0)、Forgejo、Zed、Stalwart、Jitsi、Cal.com、BigBlueButton、Cloudflare Pages、PostgreSQL、SQLite、DuckDB、Polars、FastAPI、ローカル LLM(Command A+ 等)
+* この章で版を決める道具は無い。対応表に載るのは製品名だけで、版はそれぞれを立てる章で決める。PocketBase、Forgejo、Zed、Stalwart、Jitsi、Cal.com、BigBlueButton、Cloudflare Pages、PostgreSQL、SQLite、DuckDB、Polars、FastAPI、ローカル LLM(Command A+ 等)
 * 手順を書いたのは 2026.07.01
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
@@ -2262,7 +2262,7 @@ flowchart TB
 
 * 機械:ベンダーのクラウド → Debian の PC 一台(2-02)
 * 認証:Entra ID / Google ID → PocketBase(2-05)
-* 文書:Office / Docs → aiseed office(2-07)
+* 文書:Office / Docs → adoc + git、格子、テンプレート(2-07)
 * 共有・版管理:SharePoint+GitHub / Drive → Forgejo + Zed(2-06)
 * メール:Exchange / Gmail → Stalwart(2-08)
 * 会議・予約:Teams / Meet → Jitsi・Cal.com(2-09)
@@ -2334,7 +2334,7 @@ Why does it come apart now? Closedness worked as a rampart only because *the cos
 
 AI crushes exactly that cost.
 
-* It opens proprietary formats. The Office / Docs formats are handled by aiseed office (2-07), and AI externalizes the embedded macros and logic into Python (the Introduction part; 2-04)
+* It opens proprietary formats. The Office / Docs formats are split into things you read (adoc), tables you work in (a grid), and pages you print (templates) (2-07), and AI externalizes the embedded macros and logic into Python (the Introduction part; 2-04)
 * It opens unreadable code. A local LLM reads the legacy core's code, SQL, and procedure manuals and extracts the business knowledge into Markdown (2-12, 2-16)
 * It opens imprisoned knowledge. Paper, images, and tacit know-how become structured information through OCR and dialogue (2-15)
 
@@ -2381,7 +2381,7 @@ Untie the bundle and the layers of Microsoft 365 and Google Workspace land on th
 | Microsoft 365 | Google Workspace | Self-hosted (OSS) | Chapter
 | Microsoft's cloud | Google's cloud | one Debian PC | link:/en/ai-native-software/ai-pc/[2-02]
 | Entra ID | Google ID / Cloud Identity | PocketBase | link:/en/ai-native-software/auth/[2-05]
-| Word / Excel / PowerPoint | Docs / Sheets / Slides | aiseed office | link:/en/ai-native-software/documents/[2-07]
+| Word / Excel / PowerPoint | Docs / Sheets / Slides | adoc + git (read), grid (work), templates (print) | link:/en/ai-native-software/documents/[2-07]
 | SharePoint + GitHub | Drive | Forgejo + Zed | link:/en/ai-native-software/code/[2-06]
 | Exchange / Outlook | Gmail | Stalwart | link:/en/ai-native-software/mail/[2-08]
 | Teams / Bookings | Google Meet / Calendar | Jitsi / Cal.com (BigBlueButton for courses) | link:/en/ai-native-software/meetings/[2-09]
@@ -2406,7 +2406,7 @@ Some chapters do not appear in the table at all: 2-14 (electronics to IoT), 2-15
 a matching suite layer, but all three are part of the Independence part, and they
 are in the order below.
 
-The top row is the layer that is new. You take one company PC, put Debian on it, and hand it to the AI. Everything stood up after that sits on that one machine. With a suite you never had a machine of your own, because everything ran in the vendor's cloud. The document layer is aiseed office (`aiseed-dev/officework`). ONLYOFFICE is unusable for Japanese document forms, and the reason, along with what to do about it, is 2-07's job, not this chapter's.
+The top row is the layer that is new. You take one company PC, put Debian on it, and hand it to the AI. Everything stood up after that sits on that one machine. With a suite you never had a machine of your own, because everything ran in the vendor's cloud. The document layer is not one tool stood up but a way of holding content: things you read as AsciiDoc in git, tables you work in staying in a grid, pages you print poured from templates. That is 2-07's job.
 
 The tools on the right are separate open tools built by separate organizations. You can read inside them, the formats are open, and the data can be carried anywhere. So one vendor's decision cannot ripple into the others, and swapping any one for something else changes nothing around it. Open, with the key in your own hands. That is the point, and the untied bundle is its consequence.
 
@@ -2426,7 +2426,7 @@ flowchart TB
   subgraph Unbundled["Self-hosted — open tools, key in your hands"]
     direction TB
     E2["PocketBase"]
-    O2["aiseed office"]
+    O2["adoc + git / grid / templates"]
     S2["Forgejo + Zed"]
     X2["Stalwart"]
     M2["Jitsi / Cal.com"]
@@ -2468,7 +2468,7 @@ You do not have to do it all at once. Go in order of what is easiest to pull out
 . Logic (2-04). Python and Flet. Move the macros and charts buried in Excel and Word outside, and put a screen on where one is needed
 . Auth (2-05). PocketBase. The shared gate for every app. Move this to your side and the root of the bundle is cut
 . Sharing and versioning (2-06). Forgejo + Zed. Folds in SharePoint and Drive
-. Documents (2-07). Manuscripts as AsciiDoc text, forms through aiseed office. Produce Office and Docs format documents on your own side
+. Documents (2-07). Things you read as AsciiDoc text, tables you work in in a grid, pages you print from templates. Office and Docs formats pass through at the entrance and the exit
 . Mail (2-08). Stalwart. Keep the contents of your communication on your own disk
 . Meetings and scheduling (2-09). Jitsi, Cal.com. Meetings and online courses on your own side
 . Build the web (2-10). Content in Markdown, the frame in HTML and CSS, Python connecting the two
@@ -2526,7 +2526,7 @@ Those two are replaced, in the Independence part, with PocketBase and Forgejo. T
 ```mermaid
 flowchart TB
   Core["core systems<br/>FastAPI + PostgreSQL"]
-  Office["office side<br/>aiseed office / mail / meetings / courses"]
+  Office["office side<br/>documents / mail / meetings / courses"]
   Auth["PocketBase<br/>auth = the old Entra ID / Google ID seam"]
   Share["Forgejo<br/>sharing, versioning = the old SharePoint / Drive seam"]
   Core -->|same auth| Auth
@@ -2588,7 +2588,7 @@ Nothing runs in this chapter, and there is no command to check. One completed ta
 
 == Versions checked, and when
 
-* No tool version is fixed in this chapter. The table carries product names only, and the versions are fixed in the chapters that stand each one up: PocketBase, aiseed office (`aiseed-dev/officework`, `pip install officework`, engine 0.5.0), Forgejo, Zed, Stalwart, Jitsi, Cal.com, BigBlueButton, Cloudflare Pages, PostgreSQL, SQLite, DuckDB, Polars, FastAPI, and a local LLM (Command A+ etc.)
+* No tool version is fixed in this chapter. The table carries product names only, and the versions are fixed in the chapters that stand each one up: PocketBase, Forgejo, Zed, Stalwart, Jitsi, Cal.com, BigBlueButton, Cloudflare Pages, PostgreSQL, SQLite, DuckDB, Polars, FastAPI, and a local LLM (Command A+ etc.)
 * These steps were written on 2026.07.01
 * If a version has moved on, have the AI check the official procedure before proceeding
 
@@ -2598,7 +2598,7 @@ Business Microsoft 365 and Google Workspace are SaaS suites that bundle closed l
 
 * Machine: the vendor's cloud to one Debian PC (2-02)
 * Auth: Entra ID / Google ID to PocketBase (2-05)
-* Documents: Office / Docs to aiseed office (2-07)
+* Documents: Office / Docs to adoc + git, a grid, and templates (2-07)
 * Sharing and versioning: SharePoint + GitHub / Drive to Forgejo + Zed (2-06)
 * Mail: Exchange / Gmail to Stalwart (2-08)
 * Meetings and scheduling: Teams / Meet to Jitsi and Cal.com (2-09)
@@ -3207,7 +3207,7 @@ duckdb.sql("SELECT 部門, sum(売上) FROM pg.sales GROUP BY 部門 ORDER BY 2 
 === Excel のデータは Polars で捌く
 
 Excel は、人が数字を入れ、人が結果を読む入出力の道具だ。その役割は変わらない。
-様式は 2-07 の aiseed office が受け持つ。変わるのは、その裏でデータを捌く側だ。
+格子は 2-07 のとおり、そのまま使う。変わるのは、その裏でデータを捌く側だ。
 
 手元に積み上がった `.xlsx` は、Polars がそのまま読む。Rust 製の高速データフレームで、
 Excel が固まる行数でも瞬時に処理し、結果を Excel・PostgreSQL・Parquet のどれにでも
@@ -3435,8 +3435,8 @@ off Power BI's per-seat billing.
 === Crunch Excel data with Polars
 
 Excel is the input/output tool where people enter numbers and read results. That
-role does not change. Forms are the job of aiseed office in 2-07. What changes is
-the side that crunches the data behind it.
+role does not change; the grid stays, as 2-07 says. What changes is the side that
+crunches the data behind it.
 
 The `.xlsx` files piled up on disk are read directly by Polars, a fast dataframe
 built in Rust. It handles row counts that freeze Excel in an instant, and writes
@@ -3640,8 +3640,8 @@ PowerPoint のマクロも同じだ。`python-pptx` で外に出せる。
 
 VBA は、Excel 互換の表計算ソフトではそのまま動かない。Office からの乗り換えで一番
 大きな引っかかりは、ここにある。処理を Python に出してしまえば、ファイルの側は
-「データ + レイアウト」だけになり、link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 原稿は adoc、様式は aiseed office]
-の aiseed office にそのまま移せる。
+「データ + レイアウト」だけになり、link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 読む物は adoc、触る表は格子、刷る紙はテンプレート]
+の持ち方にそのまま乗る。
 
 外に出す理由は、乗り換えだけではない。
 
@@ -4026,7 +4026,7 @@ uv run python -c "import polars, altair, flet; print('ok')"
 
 * link:/ai-native-software/foundation/[2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars]
 * link:/ai-native-software/auth/[2-05: 門番を立てる ── PocketBase で認証を一つに]
-* link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 原稿は adoc、様式は aiseed office]
+* link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 読む物は adoc、触る表は格子、刷る紙はテンプレート]
 * link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
 * link:/ai-native-software/customer-codev/[1-05: 顧客がAIと協働して開発する時代]
 endif::[]
@@ -4136,8 +4136,8 @@ PowerPoint macros are the same. `python-pptx` takes them out.
 
 VBA does not run as-is in an Excel-compatible spreadsheet. That is the biggest
 catch in moving off Office. Once the logic is out in Python, the file side holds
-only data and layout, and it moves straight onto the aiseed office of
-link:/en/ai-native-software/documents/[2-07: Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office].
+only data and layout, and it sits straight on the way of holding content in
+link:/en/ai-native-software/documents/[2-07: Take Documents Back — Prose in AsciiDoc, Working Tables in a Grid, Printed Pages from Templates].
 
 Moving off Office is not the only reason to externalize.
 
@@ -4545,7 +4545,7 @@ one place, so every app comes through the same entrance.
 
 * link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars]
 * link:/en/ai-native-software/auth/[2-05: Stand Up the Gate — One Login with PocketBase]
-* link:/en/ai-native-software/documents/[2-07: Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office]
+* link:/en/ai-native-software/documents/[2-07: Take Documents Back — Prose in AsciiDoc, Working Tables in a Grid, Printed Pages from Templates]
 * link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
 * link:/en/ai-native-software/customer-codev/[1-05: Customers Co-Develop with AI]
 endif::[]
@@ -4758,7 +4758,6 @@ sudo systemctl stop pocketbase                 # 止めても業務アプリが�
 
 * link:/ai-native-software/foundation/[2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars]
 * link:/ai-native-software/code/[2-06: コードを手元に ── Forgejo と Zed]
-* https://github.com/aiseed-dev/workspace[参考実装 kura ── PocketBase を門番に使う自前ワークスペース]
 * link:/ai-native-software/independence/[2-01: Microsoft と Google から自立する ── 全体像と対応表]
 * link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
 endif::[]
@@ -4968,7 +4967,6 @@ side.
 
 * link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars]
 * link:/en/ai-native-software/code/[2-06: Bring Code In-House — Forgejo and Zed]
-* https://github.com/aiseed-dev/workspace[Reference implementation kura — a self-hosted workspace using PocketBase as the gate]
 * link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map]
 * link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
 endif::[]
@@ -5326,32 +5324,104 @@ endif::[]
 slug: documents
 number: 07
 part: 2
-title.ja: 文書を取り戻す ── 原稿は adoc、様式は aiseed office
-title.en: Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office
-subtitle.ja: 中身は文字で持って git に入れる。Word も Claude Docs も、入口と出口を通過させる道具にする
-subtitle.en: Keep the content as text in git. Word and Claude Docs become doors you pass through, not the place the content lives
-description.ja: 文書の置き場は、もう二つに分かれない。Office と自前のほかに、Claude Docs が来た。三つとも便利で、三つとも鍵は他人の手元にある。答えは置き場の選択ではなく、原稿の持ち方にある。原稿は adoc の文字で持ち、git に入れるのは原稿だけにして、デザインは入れない。そうすれば、Word も Claude Docs も aiseed office も、入口と出口を通過させる道具になる。様式の仕事は aiseed office が受け持つ。ONLYOFFICE が日本語の様式で合わないから作った道具で、エンジンは pip で入る。実体はファイルのまま置き、認証は門番、権限は構造化ストアが持つ。
-description.en: Documents no longer live in two places. Besides Office and your own stack, Claude Docs has arrived. All three are convenient, and in all three the key is held by someone else. The answer is not which place to pick — it is how you hold the manuscript. Keep it as AsciiDoc text, commit only the manuscript, and keep the design out of git. Then Word, Claude Docs, and aiseed office all become doors you pass through. Form-fidelity work belongs to aiseed office, built because ONLYOFFICE does not hold Japanese forms; its engine installs with pip. The files stay files, the gate holds identity, and a queryable store holds permissions.
+title.ja: 文書を取り戻す ── 読む物は adoc、触る表は格子、刷る紙はテンプレート
+title.en: Take Documents Back — Prose in AsciiDoc, Working Tables in a Grid, Printed Pages from Templates
+subtitle.ja: 中身は文字で持って git に入れる。Excel も Word も Claude Docs も、入口と出口を通過させる道具にする
+subtitle.en: Keep the content as text in git. Excel, Word, and Claude Docs become doors you pass through, not the place the content lives
+description.ja: Word と Excel で作っていた物は一つではない。読む物、触る表、刷る紙の三つで、持ち方が違う。読む物は AsciiDoc の文字で書き、2-06 の Forgejo に置いて Zed で直す。デザインは入れず、ビルドで PDF と HTML に刷る。触る表は格子のまま ── Excel でも Euro-Office でも LibreOffice でもよく、データは格子の外(2-03)に置く。どこまで Python に寄せるかは人による。刷る紙(公表する統計表、様式、帳票)は、形をテンプレートで、値を文字で持ち、流し込んで出す。頁割りの再現は追わない。Office も Claude Docs も、入口と出口を通過させる道具になる。縮むのは手で作っていた所で、統計表は大きく縮み、決算はそれほど縮まない。
+description.en: What was made in Word and Excel is not one kind of thing. It is three — things you read, tables you work in, and pages you print — and each is held differently. Things you read are written as AsciiDoc text, kept in the Forgejo of 2-06 and edited in Zed; the design stays out of git and a build prints PDF and HTML. Tables you work in stay in a grid — Excel, Euro-Office, or LibreOffice — with the data outside the grid (2-03); how far to push into Python depends on the person. Pages you print (published statistical tables, forms, slips) hold the shape in a template and the values as text, and pour one into the other; reproducing page layout is not pursued. Office and Claude Docs become doors you pass through. What shrinks is what was made by hand: statistical tables shrink a great deal, closing the books much less.
 date: 2026.07.04
 label: Independence 7
-title_html.ja: 原稿は<span class="accent">文字</span>で持ち、<br>様式は<span class="accent">自前</span>で開く。
-title_html.en: Keep the text as <span class="accent">text</span>,<br>open the <span class="accent">forms</span> yourself.
+title_html.ja: 中身は<span class="accent">文字</span>で持ち、<br>見た目は<span class="accent">型</span>に分ける。
+title_html.en: Keep the content as <span class="accent">text</span>,<br>keep the look in a <span class="accent">template</span>.
 ---
 ifdef::lang-ja[]
-= 文書を取り戻す ── 原稿は adoc、様式は aiseed office
+= 文書を取り戻す ── 読む物は adoc、触る表は格子、刷る紙はテンプレート
 
-*文書で取り戻すのは、置き場ではない。原稿の持ち方だ*。
+*文書で取り戻すのは、置き場ではない。中身の持ち方だ*。
 
-門番(2-05)の内側に、最初に置く道具は文書である。ただし、この章の結論は
-「どの編集ソフトを立てるか」ではない。2026 年に入って、文書が住める場所が
-三つに増えたからだ。Office、自前の道具、そして Claude Docs である。三つとも
-便利で、三つとも鍵は他人か自分かのどちらかに寄っている。だから先に決めるのは、
-*原稿をどの形で持つか*のほうだ。
+2-06 で仕事場(Forgejo と Zed)を据えた。文書は、その上に置く。文書のための別の
+仕組みは立てない。2026 年に入って、文書が住める場所は三つに増えた。Office、自前の
+道具、そして Claude Docs である。三つとも便利で、三つとも鍵は他人か自分かのどちらかに
+寄っている。だから先に決めるのは、どこに置くかではなく、*中身をどの形で持つか*のほうだ。
+
+== 事務の物を、使われ方で三つに分ける
+
+Word と Excel で作っていた物は、一つではない。読む物、触る表、刷る紙の三つで、
+それぞれ持ち方が違う。
+
+|===
+| 使われ方 | 例 | 持ち方 | 出口
+| 読む物 | 報告書、提案書、規程、手引き | AsciiDoc の文字で書き、git に置く(2-06) | PDF・HTML。相手が要るなら `.docx`
+| 触る表 | 作業中の集計表、突き合わせ、名簿、台帳 | 格子の画面で作る。データは格子の外(2-03) | そのまま `.xlsx` で出入り
+| 刷る紙 | 公表する統計表、申請書、帳票、請求書 | 形はテンプレート、値は文字 | PDF。相手の様式なら、値を入れた `.docx` `.xlsx`
+|===
+
+どれが多いかは、仕事で決まる。統計なら触る表と刷る紙、企画や士業なら読む物、総務なら
+刷る紙が大半だ。三つとも決めてあるので、自分の仕事に合う所から始めればよい。
+
+== 読む物は文字で書き、git に入れるのは原稿だけにする
+
+Word で文章を書くと、見た目に時間を使いすぎる。文章が大事なら、文字で書いてエディタで
+よい。決めることは二つしかない。
+
+*一つ目。原稿は AsciiDoc(`.adoc`)の文字で持ち、Forgejo のリポジトリに置く*。文字の
+ファイルなので、誰が、いつ、どの行を変えたかが残る。直しの相談は、コードと同じ
+プルリクエストでやる。エディタは Zed(2-06)で、その中から AI を呼ぶ。`.docx` は中身が
+圧縮された XML なので、差分が読めない。文字で持てば、AI がそのまま読み、そのまま書ける。
+
+*二つ目。git に入れるのは原稿だけにして、デザインは入れない*。見た目を決める
+テンプレートは、原稿とは別の置き場に持つ。同じ原稿に別のテンプレートを当てれば、
+別の体裁で出る。刷るのは、AI が書く数十行のビルドだ。このサイト自身が、その形で動いている。
+
+```
+原稿/            ← git に入れる。.adoc の文字だけ
+  2026-09-事業報告.adoc
+テンプレート/    ← 見た目の決め。別の置き場
+  houkoku.tmpl.adoc
+出力/            ← 刷った結果。git に入れない
+  2026-09-事業報告.pdf
+```
+
+原稿が文字なら、出口は選べる。PDF に刷る。HTML にしてサイトに載せる。相手が Word を
+要るなら `.docx` に書き出す。どれも同じ原稿から出る。
+
+== 触る表は格子で作り、データは格子の外に置く
+
+表は、読む物とは違う。並べて眺め、おかしい数字に気づき、切り口を変え、注記を足す。
+この往復が仕事の本体で、格子の画面が要る。だから *格子はそのまま使う*。Excel の
+ままでもよいし、Euro-Office(ONLYOFFICE)でも LibreOffice でもよい。使いやすい Office
+として作っている途中の aiseed office(https://github.com/aiseed-dev/officework[`aiseed-dev/officework`])
+でもよい。格子は見て触る場所であって、保管の場所ではないからだ。
+
+決めるのは、格子の外のことだ。
+
+* データの置き場は格子の中ではなく、2-03 の SQLite・PostgreSQL・Parquet
+* 重い集計と突き合わせは、2-04 の Polars と DuckDB
+* 格子との出入りは `.xlsx` のまま。CSV に落とさない(書式も数式も一緒に落ちる)
+
+どこまで Python に寄せるかは、人による。寄せられる人は、JupyterLab と Polars(2-04)が
+格子の代わりになる。表を眺めて切り口を変える往復は、セルの再実行でできる。格子が
+要る人は、格子に残せばよい。*できるだけ Python に寄せる。ただし、寄せる速さは自分で決める*。
+
+== 刷る紙は、型に値を流す
+
+公表する統計表、申請書、帳票、請求書。これらは用紙に刷る物で、*頁の形そのものが
+中身*だ。作っている間は触る表でも、刷る段になれば、ここに移る。
+
+持ち方は一つに決まる。形はテンプレートで持ち、値は文字で持つ。テンプレートに値を
+流し込んで、出す。
+
+* 自分の様式は、adoc のテンプレートから PDF に刷る。読む物と同じビルドで出る
+* 相手の様式(役所の申請書、取引先の帳票)は、相手の `.docx` `.xlsx` をテンプレートのまま使い、値だけ入れて渡す。コードは python-docx と openpyxl で足り、AI が書く
+* 頁割りを自分の側で再現することは追わない。刷るのは相手の Office か、原本が PDF ならその PDF
+
+格子の画面で見た目を整える仕事が、ここで消える。値を直せば、同じ型から同じ形で出る。
 
 == Office は「使う」のではなく「通過させる」
 
-Office から離れる理由を、まず誤解しないでほしい。これは効率化の話ではない。
-30 分の作業が 30 秒になることは結果として起きるが、本質ではない。
+Office から離れる理由を、まず誤解しないでほしい。これは効率化の話ではない。作業が
+速くなることは結果として起きるが、本質ではない。
 
 事務処理を三つに分ける。
 
@@ -5368,10 +5438,10 @@ flowchart LR
   In["入口<br/>Word / Excel / PDF<br/>(他の人から)"]
   Mid["中身<br/>adoc の原稿 + 構造化データ<br/>(git の中)"]
   Out["出口<br/>Word / PDF / HTML<br/>(他の人へ)"]
-  Claude(("AI"))
+  AI(("AI"))
 
   In -->|通過| Mid
-  Mid <-->|相談・判断| Claude
+  Mid <-->|相談・判断| AI
   Mid -->|通過| Out
 
   classDef office fill:#fef3e7,stroke:#c89559,color:#5a3f1a
@@ -5403,273 +5473,126 @@ AI が触れる場所に保つ。
 == 「処理する人」から「判断する人」へ
 
 Office の中で事務処理をしている限り、自分は処理する人のままだ。Excel を
-集計する人、Word を整える人、数字を貼り直す人である。これらは AI で代替できる
+集計する人、Word を整える人、数字を貼り直す人である。これらは AI が受け持つ
 仕事であり、AI が安くなれば、組織はその役割から人を引き上げる。
 
-中身を構造に降ろすと、役割が変わる。何をすべきかを考え、どう解釈するかを判断し、
-新しい仕組みを設計し、AI に何を頼むかを決める人になる。仕事の量ではなく、仕事の
-中身そのものが変わる。
+縮むのは、手で作っていた所だ。統計表は、手で作る工程が長い。集める、整える、
+突き合わせる、表に組む、注記を付ける。この工程を AI が受け持つようになると、作成の
+期間は大きく縮む。人に残るのは、切り口を決めることと、出た数字の意味を読むことだ。
+決算は違う。仕訳から財務諸表までは、すでに会計の仕組みが出す。AI で縮むのは、
+残っていた手作業(注記、開示の文章、照合)の分だけで、統計表ほどは縮まない。
+*縮み方は、どれだけ手で作っていたかで決まる*。自分の仕事のどこに手作業が残っている
+かを見れば、AI が効く所が分かる。
 
-____
-処理する人は AI が代替する。判断する人は代替できない。
-中身を取り戻すことは、代替されない側に移ることだ。
-____
-
-=== 具体例: 月次報告書 ── 同じ報告書、違う仕事
-
-月次の売上報告書を作る作業で見る。
-
-*従来の流れ*。Excel で売上データを開く。ピボットで集計する。グラフを作る。
-Word に貼る。文章を書く。PDF にして上司に送る。このとき自分がしている仕事は、
-数字を整えることだ。
-
-*新しい流れ*。裏のデータを読む。届いた `.xlsx` は機械が取り込む。集計を AI に
-書かせ、結果を表にする。グラフを組み込む。AI が文章を下書きする。*自分が解釈と判断を書き加える*。出口で `.docx` や PDF に変換する。このとき自分がしている
-仕事は、数字の意味を考えることだ。
-
-「今月の前月比 +12% は、どの顧客の影響か。継続するのか。営業戦略を変えるべきか」。
+月次の売上報告書なら、こうなる。届いた `.xlsx` は機械が取り込み、集計は AI が書き、
+文章も AI が下書きする。自分がするのは、「今月の前月比の伸びは、どの顧客の影響か。
+続くのか。営業の打ち方を変えるべきか」を考え、解釈と判断を書き加えることだ。
 Excel の中で集計操作をしている間は出てこなかった問いが、構造化された手元データと
 AI を前にすると立ち上がる。
 
-== 原稿は文字で持ち、git に入れるのは原稿だけにする
+____
+処理する人は AI が受け持つ。判断する人は残る。
+中身を取り戻すことは、残る側に移ることだ。
+____
 
-ここがこの章の中心だ。決めることは二つしかない。
-
-*一つ目。原稿は AsciiDoc(`.adoc`)の文字で持つ*。文字のファイルなので、git で
-差分が取れる。誰が、いつ、どの行を変えたかが残る。`.docx` は中身が圧縮された
-XML なので、差分が読めない。文字で持てば、AI がそのまま読み、そのまま書ける。
-
-*二つ目。git に入れるのは原稿だけにして、デザインは入れない*。見た目を決める
-テンプレートは、原稿とは別の置き場に持つ。同じ原稿に別のテンプレートを当てれば、
-別の体裁で出る。git の履歴に残るのは、中身が変わった差分だけになる。
-
-```
-原稿/            ← git に入れる。.adoc の文字だけ
-  2026-09-事業報告.adoc
-テンプレート/    ← git に入れない。見た目の決め
-  houkoku.tmpl.adoc
-出力/            ← git に入れない。刷った結果
-  2026-09-事業報告.pdf
-```
-
-この決めから先が楽になる。原稿が文字なら、出口は選べる。PDF に刷る。`.docx` に
-書き出して相手に渡す。HTML にしてサイトに載せる。どれも同じ原稿から出る。
-
-そして、*adoc 形式でのデータ交換が、これから効いてくる*。人と人のあいだも、人と
-AI のあいだも、やり取りする実体が文字になれば、途中で失われるものが無くなる。
-
-== 様式の仕事は aiseed office ── ONLYOFFICE は日本語で合わない
-
-原稿は文字でよい。だが、様式はそうはいかない。受け取った `.docx` の申請書を、
-決められた頁数、決められた行の位置、決められた列幅のまま開いて、直して、刷る。
-この仕事は、形式の互換そのものが中身である。
-
-この用途で *ONLYOFFICE は日本語の様式に合わない*。だから aiseed office
-(https://github.com/aiseed-dev/officework[`aiseed-dev/officework`])を作っている。
-`.docx` と `.xlsx` を読み書きし、そのまま PDF にも刷るエンジンだ。
-
-```bash
-pip install officework
-```
-
-2026-09-20 に確かめた時点で、エンジンは *0.5.0* が PyPI に出ている(2026-09-04
-公開)。ベータを外した版だ。役所が公開している PDF と、同じ字の行どうしを比べた
-数字が、公開の RELEASE に載っている。
-
-|===
-| 文書 | 行末の平均のずれ | 1pt 以内に収まる行
-| 調査票(110 行) | 9.01pt → 2.50pt | 5 → 68
-| 告知書(141 行) | 3.71pt → 2.54pt | 5 → 83
-|===
-
-まだ届いていない所も、そのまま書いておく。*配っているのはエンジンだけで、画面の
-アプリはまだ配っていない*。表の列の幅の取り方で折り返しが一字ずれる文書がある。
-表計算の頁割りが原本と合わない帳票がある。そして *AsciiDoc の読み書きは、まだ配っていない*。前の節の決めは方向であって、この道具でいま全部できるわけではない。
-
-== 文書が住める場所は三つある ── Claude Docs をどう置くか
+== Claude Docs は、通過させる道具として使う
 
 2026-09-16 に、Claude Docs がベータで出た。会話の中で文書を作り、人が直接
 編集し、コメントを付け合い、共有するところまでが Claude の中で完結する。
-2026-09-20 に確かめた時点で、Pro・Max・Team・Enterprise で使える。
+2026-10-05 に確かめた時点で、Pro・Max・Team・Enterprise で使える。
 
-これは便利だ。道具を入れる必要がない。下書きを作って、直して、相談する場所と
-しては、いまある中でいちばん手が少ない。
-
+下書きを作って、直して、相談する場所としては、いまある中でいちばん手が少ない。
 同時に、構造は Microsoft 365 と同じである。
 
-* 文書の実体は claude.ai の中にある。*外から取りに行けない*。読めるのは Claude の
-  道具からだけだ
+* 文書の実体は claude.ai の中にある。読めるのは Claude の道具からだけだ
 * 共有リンクを開くには、相手にも Claude のアカウントが要る
-* Team と Enterprise の文書は、まだ組織の外へ共有できない
+* Team と Enterprise の文書は、組織の外へ共有できない
 * 顧客管理の暗号鍵、ゼロデータ保持、HIPAA 対応の構成を使う組織では、まだ使えない
 
 違う点が一つある。*出口がはっきりある*ことだ。Word、PDF、Markdown、Google Docs に
-書き出せる。Markdown まで出せるということは、原稿を文字で手元に落とせるという
-ことだ。
+書き出せる。Markdown まで出せるということは、原稿を文字で手元に落とせるということだ。
 
-だから置き方が決まる。*Claude Docs は、原稿を作って回す場所として使う。確定した原稿は Markdown で落とし、adoc に直して git に入れる*。そうすれば、前の節の決めが
-そのまま効く。中身は手元に残り、Claude Docs は入口と出口を通過させる道具になる。
+だから置き方が決まる。*Claude Docs は、原稿を作って回す場所として使う。確定した原稿は
+Markdown で落とし、adoc に直して git に入れる*。中身は手元に残り、Claude Docs は
+入口と出口を通過させる道具になる。
 
 費用の比べ方も、ここではっきりさせておく。比べる相手は無料の道具ではない。
 *いま業者に払っている額*だ。公開する Web の原稿を制作会社に頼んでいるなら、
 その一件の費用と比べる。人数分のライセンスを毎月払っているなら、その総額と
-比べる。2026-09-20 時点で Claude Pro は月 20 ドルである。
+比べる。2026-10-05 時点で Claude Pro は月 20 ドル(税抜)である(2-02)。
 
 ____
 文書が住める場所は三つに増えた。どれを選ぶかではない。
-原稿を文字で持てば、三つとも通過させる道具になる。
+中身を文字で持てば、三つとも通過させる道具になる。
 ____
 
-== なぜ別の保管アプリを足さないのか
+== 既存の文書は移し、社外へは出口で渡す
 
-文書というと Nextcloud のような OneDrive 代替を丸ごと立てたくなる。だが
-Nextcloud は PHP の重厚なモノリスで、別のユーザ体系も別のデータベースも抱え
-込む。この自立編が選んできた単一バイナリの軽さとは、逆を向いている。
-
-2-05 で、認証を持つ PocketBase をもう立てた。文書の置き場は、それを門番にして、
-あとはファイルで足りる。
-
-* *実体* ── ファイルそのもの。重い保管アプリは要らない
-* *認証* ── 2-05 の門番がそのまま効く。別ログインを作らない
-* *権限・共有* ── 手元の構造化ストアが持ち、門番が身元を確かめる
-
-== 実体はファイル ── 認証は門番、権限は構造化ストア
-
-文書の実体は、ただのファイルとして自分のストレージに置く。レコードに埋め込ま
-ない。`.adoc` も `.docx` も `.xlsx` もファイルのまま持つ。そのほうが、後で機械
-(Polars・AI)がそのまま読める。
-
-置き場の第一の選択は、権限をどこに持つかだ。
-
-* *構造化ストア(推奨)* ── すでに PostgreSQL を立てているなら、アクセス制御も
-  そこに置く。門番しか無い小規模なら、門番の SQLite で足りる。問い合わせられ、
-  トランザクションが効き、`pg_dump` で確実に残る
-* *xattr(依存最小)* ── 別ストアを足したくないなら、ファイルの拡張属性に貼る。
-  ただし xattr は `cp`・`rsync`・`tar`・バックアップで静かに落ちる。複製と保存の
-  経路で、属性が残ることを必ず確かめる
-
-```sql
--- 構造化ストアにアクセス制御を持つ ── 問い合わせられ、消えない
--- doc_acl(doc_id, subject, perm)、subject は 'alice' か 'team:sales'
-SELECT doc_id FROM doc_acl WHERE subject IN ('alice', 'team:sales') AND perm >= 'r';
-```
-
-権限のためだけに重い別アプリは要らない。門番が身元を、構造化ストアが権限を持つ。
-
-== 既存の文書を移す
-
-OneDrive・SharePoint に積まれた文書は、形式を変えずに運べる。
+OneDrive・SharePoint に積まれた文書は、形式を変えずに運ぶ。届いた `.docx` `.xlsx`
+`.pdf` は、ファイルのままリポジトリに置く(大きい物は Git LFS)。文書のための
+保管アプリ(Nextcloud など)は足さない。認証も権限も、Forgejo が持っている。
 
 ```bash
-# rclone で吸い出し、自分のストレージへ並べる
-rclone copy onedrive:Documents ./inbox --progress
-# inbox/ の各ファイルの権限を記録する(構造化ストアへ、スクリプト一回)
+rclone copy onedrive:Documents ./docs/inbox --progress   # 吸い出して、リポジトリに並べる
 ```
 
-移行は段階的でよい。並行で動かし、移り終えてから旧ストレージを解約する(2-12)。
+これまでの物を全部変換する必要はない。これから書く物を、最初から `.adoc` で書く。
+*新しい原稿から文字にしていけば、置き場は時間とともに入れ替わる*。移行は並行で動かし、
+移り終えてから旧ストレージを解約する(2-12)。
 
-これから書く物は、最初から `.adoc` で書く。これまでの物を全部変換する必要は
-ない。*新しい原稿から文字にしていけば、置き場は時間とともに入れ替わる*。
-
-== 社外とやり取りする ── 出口で渡す
-
-取引先との共有に、専用の共有基盤は要らない。社外に渡すものは出口から出す。
-元ファイルではなく、`.docx` か PDF に変換して、メール(2-08)で送る。受け取りも
-同じで、届いたファイルは入口で開いてから、手元に入れる。
-
-社外の人に、門番のアカウントは作らない。共同で編集までしたい相手はまれで、
-たいていは版のやり取りで足りる。送って、直って、返る。紙の時代から、ずっと
-そうだったように。
-
-== 一人ずつが持つことが、組織の強さになる
-
-中身を自分の側に取り戻すのは、個人だけの話ではない。組織の全員が同じクラウドに
-乗っていると、提供者が方針を一つ変えるだけで、全員の文書が同じ方向に動く。AI が
-返す判断の癖も揃う。一人ずつが自分の道具と中身を持てば、どれか一つが止まっても
-他は動き続ける。*多様性そのものが、組織の強さになる*。
-
-____
-効率化ではなく、自立と多様性。
-____
-
-上司や同僚に、新しい形式を覚えてもらう必要もない。aiseed office は
-`.docx` / `.xlsx` / `.pptx` のまま読み書きするので、渡すファイルはこれまでと同じだ。
-変わるのは中の作り方だけで、受け取る側から見れば何も変わらない。形式はそのままに、
-主導権だけが自分の側へ移る。
-
-== 人は編集の道具、機械は Polars
-
-ここで 2-03 とつながる。*人は編集の道具で入れて読み、機械は Polars と DuckDB で裏のデータを捌く*。同じ `.xlsx` を、人は編集の道具として、機械は入力として扱う。
-
-* 人が作る集計表・申請書・提案書 ── aiseed office で開いて、しまう
-* 数百万行の突き合わせ・全社集計 ── Polars が `.xlsx` を読み、PostgreSQL に書く
-
-表計算は人の道具に戻り、重い処理は機械の道具へ移る。
-
-== 参考実装 ── kura
-
-この構成を実際に組んだのが、公開リポジトリ *kura*
-(https://github.com/aiseed-dev/workspace[`aiseed-dev/workspace`])だ。中小の
-業務利用を狙った、Microsoft 365 / Google Workspace の自前代替である。
-
-* *認証* ── PocketBase(差し替え可能なトークン検証と短期キャッシュ)
-* *権限* ── 依存最小を採り、ファイルの xattr に持つ
-* *実体* ── ファイルそのもの
-* *編集* ── 編集エンジンを JWT とコールバックで重ねる(FastAPI + Flet)
+取引先との共有に、専用の共有基盤は要らない。社外に渡すものは出口から出す。元ファイル
+ではなく、`.docx` か PDF に変換して、メール(2-08)で送る。受け取りも同じで、届いた
+ファイルは入口で開いてから、手元に入れる。社外の人に、こちらのアカウントは作らない。
+共同で編集までしたい相手はまれで、たいていは版のやり取りで足りる。
 
 == 確かめ方
 
 この章は、次の五つができていれば済みだ。
 
-. 自分の `.docx` の様式を aiseed office で開いて、Word と同じ頁数で刷れる
-. `.adoc` の原稿を git に入れて、直した行だけが差分に出る
-. 同じ原稿から PDF と `.docx` の両方が出る
-. 門番でログインした人が、自分に権限のある文書だけ一覧に見える
-. `cp -a` と `rsync -X` で複製しても、権限が消えていない(xattr を使う場合)
+. `.adoc` を Zed で書いて push すると、Forgejo で直した行だけが差分に見える
+. 同じ原稿から PDF と HTML の両方が出る
+. 格子で作った `.xlsx` を Polars が読み、集計を `.xlsx` に書き戻して、格子で開ける
+. 相手の `.xlsx` の様式に値を入れた物が、相手の Excel で崩れずに開く
+. 社外に `.docx` か PDF を出口から渡せる
 
 ```bash
-pip install officework
 git diff 原稿/2026-09-事業報告.adoc     # 直した行だけが出る
-getfattr -d 文書.docx                    # xattr を使う場合だけ
+uv run python build.py                  # 同じ原稿から PDF と HTML
 ```
 
 == 人が持つ物
 
 *人が渡す値*
 
-* 文書の置き場のパス
-* 編集エンジンと門番で共有する署名鍵
-* 誰がどの文書を開けるかの決め(部署、役割)
+* 文書のリポジトリの名前と、誰が読めて誰が直せるか(Forgejo の権限)
+* 読む物のテンプレート(体裁の決め)
+* 刷る紙のテンプレート(自分の様式の adoc、相手の `.docx` `.xlsx`)
+* 格子に何を使うか(Excel のまま、Euro-Office、LibreOffice、aiseed office)
 
 *AI が「やる前に言う」操作*
 
 * 既存の文書を一括で変換する、または移動する
-* アクセス制御の表を書き替える
-* 社外へファイルを送る
+* 相手の様式に値を入れたファイルを、社外へ送る
+* 旧ストレージ(OneDrive・SharePoint)を解約する
 
 == 確かめた版と日付
 
-* aiseed office(officework)エンジン 0.5.0。`pip install officework`。
-  2026-09-04 公開、2026-09-20 に PyPI で確認
-* 画面のアプリと AsciiDoc の読み書きは、2026-09-20 時点でまだ配っていない
 * Claude Docs は 2026-09-16 にベータ公開。Pro・Max・Team・Enterprise で使える。
-  2026-09-20 に確認
-* 権限の置き場は PostgreSQL または門番の SQLite
-* 手順を書いたのは 2026-09-20
+  組織の外への共有と、CMEK・ZDR・HIPAA 構成では未対応。2026-10-05 に確認
+* python-docx、openpyxl、rclone ── 版は指定していない
+* 手順を書いたのは 2026-09-20、書き直したのは 2026-10-05
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
 == まとめ
 
-置き場を選ぶのではなく、原稿の持ち方を決める。
+置き場を選ぶのではなく、中身の持ち方を決める。
 
-* *原稿は adoc の文字* ── git で差分が取れる。AI がそのまま読み書きする
-* *git に入れるのは原稿だけ* ── デザインは別の置き場。履歴に中身の差分だけが残る
-* *様式は aiseed office* ── ONLYOFFICE が日本語の様式に合わないから作った。
-  エンジンは 0.5.0。画面のアプリと adoc の読み書きはまだ
-* *Claude Docs は通過させる* ── 下書きと共同編集は速い。確定した原稿は Markdown で
-  落として手元に入れる
-* *実体はファイル* ── 認証は門番、権限は構造化ストア。重い保管アプリを足さない
-* *比べる相手は無料ではない* ── いま業者に払っている額と比べる
+* *使われ方で三つに分ける* ── 読む物、触る表、刷る紙。どれが多いかは仕事で決まる
+* *読む物は adoc の文字* ── Forgejo の git に置き、Zed で書く。デザインはテンプレートに分け、ビルドで刷る
+* *触る表は格子のまま* ── Excel でも Euro-Office でも LibreOffice でも aiseed office でも。データは格子の外(2-03)。Python に寄せる速さは人による
+* *刷る紙は型に値を流す* ── 公表する表も様式も帳票も同じ。頁割りの再現は追わない
+* *Office と Claude Docs は通過させる* ── 入口と出口。確定した原稿は文字で落として手元に
+* *縮むのは手で作っていた所* ── 統計表は大きく縮み、決算はそれほど縮まない
 
 次章では、もう一つの大きな事務処理であるメールを自分の側に置く(2-08)。
 
@@ -5677,48 +5600,129 @@ getfattr -d 文書.docx                    # xattr を使う場合だけ
 
 == 関連記事
 
+* link:/ai-native-software/code/[2-06: コードを手元に ── Forgejo と Zed]
 * link:/ai-native-software/foundation/[2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars]
-* link:/ai-native-software/auth/[2-05: 門番を立てる ── PocketBase で認証を一つに]
-* https://github.com/aiseed-dev/officework[aiseed office(officework)── docx と xlsx を読み書きし、PDF に刷るエンジン]
-* https://github.com/aiseed-dev/workspace[参考実装 kura ── 自前の Microsoft 365 / Google Workspace 代替]
+* link:/ai-native-software/python/[2-04: 処理を書く ── Python と Flet で、自分の道具を持つ]
 * link:/ai-native-software/independence/[2-01: Microsoft と Google から自立する ── 全体像と対応表]
 endif::[]
 ifdef::lang-en[]
-= Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office
+= Take Documents Back — Prose in AsciiDoc, Working Tables in a Grid, Printed Pages from Templates
 
-*What you take back in documents is not the storage. It is how you hold the manuscript.*
+*What you take back with documents is not where they live. It is how you hold the content.*
 
-Inside the gate (2-05), the first tool to place is documents. But the conclusion
-of this chapter is not "which editor to stand up." As of 2026, a document has
-three places it can live: Office, your own stack, and Claude Docs. All three are
-convenient, and in all three the key leans toward either someone else or you. So
-the thing to decide first is *what form the manuscript is held in.*
+2-06 set up the workshop (Forgejo and Zed). Documents go on top of it. No separate
+system is stood up for documents. In 2026 the places a document can live grew to
+three: Office, your own tools, and Claude Docs. All three are convenient, and in
+all three the key leans toward either someone else or you. So the first thing to
+decide is not where to put the document but *what form to hold the content in.*
 
-== Office is something you pass through, not something you work inside
+== Split office work three ways, by how the thing is used
 
-Do not misread the reason for stepping away from Office. This is not about
-efficiency. Thirty minutes becoming thirty seconds happens as a side effect; it
-is not the point.
+What was made in Word and Excel is not one kind of thing. It is three — things
+you read, tables you work in, and pages you print — and each is held differently.
 
-Split clerical work into three.
+|===
+| Use | Examples | How it is held | Exit
+| Things you read | Reports, proposals, rules, manuals | Written as AsciiDoc text, kept in git (2-06) | PDF, HTML; `.docx` when the other side needs it
+| Tables you work in | Aggregations in progress, reconciliations, rosters, ledgers | Made in a grid; the data lives outside the grid (2-03) | In and out as `.xlsx`, unchanged
+| Pages you print | Published statistical tables, application forms, slips, invoices | The shape in a template, the values as text | PDF; for someone else's form, their `.docx` / `.xlsx` with the values filled in
+|===
 
-* *The entrance* — files that arrive from other people (Word, Excel, PDF)
-* *The middle* — where you think, work, and save
-* *The exit* — files you hand to other people (Word, Excel, PDF)
+Which one dominates depends on the work. Statistics is mostly tables and printed
+pages; planning and the professions are mostly things you read; general affairs is
+mostly printed pages. All three are decided here, so start from the one that fits
+your work.
 
-Most people have done all three inside Office. A Word file arrives, you open it
-in Word, edit it as Word, and send it back as Word. But as long as the middle is
-also Office, AI never becomes a colleague — the next section shows why.
+== Write what is read as text, and commit only the manuscript
+
+Writing prose in Word spends too much time on how it looks. If the text is what
+matters, write it as text in an editor. There are only two decisions.
+
+*First. The manuscript is AsciiDoc (`.adoc`) text, kept in a Forgejo repository.*
+It is a text file, so who changed which line, and when, is recorded. Discussion of
+a change happens in a pull request, as with code. The editor is Zed (2-06), with
+the AI called from inside it. A `.docx` is compressed XML, so its diff cannot be
+read. Hold the text as text and the AI reads it and writes it directly.
+
+*Second. Commit only the manuscript; keep the design out of git.* The template that
+decides the look lives somewhere other than the manuscript. Apply a different
+template to the same manuscript and it comes out in a different dress. Printing is
+a build of a few dozen lines the AI writes. This site itself runs that way.
+
+```
+manuscripts/     ← in git: only the .adoc text
+  2026-09-business-report.adoc
+templates/       ← the decisions about the look; kept elsewhere
+  report.tmpl.adoc
+output/          ← what was printed; not in git
+  2026-09-business-report.pdf
+```
+
+With the manuscript as text, the exit is yours to choose. Print to PDF. Make HTML
+and put it on the site. Write out `.docx` when the other side needs Word. All come
+from the same manuscript.
+
+== Make working tables in a grid, and keep the data outside it
+
+A table is not a thing you read. You lay it out, look, notice the odd number, cut
+it another way, add a note. That back-and-forth is the substance of the work, and
+it needs a grid on screen. So *keep using a grid.* Excel as before is fine, and so
+is Euro-Office (ONLYOFFICE) or LibreOffice, or aiseed office
+(https://github.com/aiseed-dev/officework[`aiseed-dev/officework`]), which is being
+built as an Office that is easy to use. The grid is a place to look and touch, not
+a place to keep things.
+
+What you decide is what lies outside the grid.
+
+* The data lives not in the grid but in 2-03: SQLite, PostgreSQL, Parquet
+* Heavy aggregation and reconciliation go to Polars and DuckDB in 2-04
+* Movement in and out of the grid stays `.xlsx`. Do not drop to CSV (the formatting and the formulas drop with it)
+
+How far to push into Python depends on the person. For those who can, JupyterLab
+with Polars (2-04) takes the grid's place: the loop of looking at a table and
+cutting it another way is a cell re-run. Those who need the grid keep the grid.
+*Push into Python as far as you can, and set the pace yourself.*
+
+== Pour values into a template for pages you print
+
+Published statistical tables, application forms, slips, invoices. These are
+printed on paper, and *the shape of the page is itself the content.* While it is
+being made it may be a working table; once it is to be printed, it moves here.
+
+There is one way to hold it. The shape lives in a template, the values live as
+text. Pour the values into the template and put it out.
+
+* Your own forms print to PDF from an AsciiDoc template, in the same build as the things you read
+* Someone else's form (a government application, a customer's slip) is used as the template it already is, their `.docx` or `.xlsx`, and only the values go in. python-docx and openpyxl are enough, and the AI writes the code
+* Reproducing their page layout on your own side is not pursued. Printing is done by their Office, or from the original PDF when the form is published as one
+
+The work of tidying the look in a grid disappears here. Fix a value and the same
+template produces the same shape.
+
+== Office is not something you use, it is something you pass through
+
+Do not misread the reason for leaving Office. This is not about efficiency. Work
+gets faster as a result, but that is not the point.
+
+Split office work into three parts.
+
+* *Entrance* — files that arrive from other people (Word, Excel, PDF)
+* *Content* — where you think, work, and save
+* *Exit* — files you hand to other people (Word, Excel, PDF)
+
+Until now most people have done all three in Office. Word arrives, you open it in
+Word, edit it as Word, return it as Word. But as long as even the content lives in
+Office, the AI never becomes a colleague, as the next section shows.
 
 ```mermaid
 flowchart LR
   In["Entrance<br/>Word / Excel / PDF<br/>(from others)"]
-  Mid["Middle<br/>AsciiDoc manuscript + structured data<br/>(in git)"]
+  Mid["Content<br/>adoc manuscript + structured data<br/>(in git)"]
   Out["Exit<br/>Word / PDF / HTML<br/>(to others)"]
-  Claude(("AI"))
+  AI(("AI"))
 
   In -->|pass through| Mid
-  Mid <-->|discuss, decide| Claude
+  Mid <-->|consult, decide| AI
   Mid -->|pass through| Out
 
   classDef office fill:#fef3e7,stroke:#c89559,color:#5a3f1a
@@ -5727,339 +5731,176 @@ flowchart LR
   class Mid native
 ```
 
-So treat `.docx`, `.xlsx`, and `.pptx` not as where the content lives, but as
-exchange formats for dealing with people at the entrance and the exit. Do not
-change the organization's rules. Take back control of your own middle, and
-nothing else.
+So `.docx`, `.xlsx`, and `.pptx` are recast: not where the content lives, but
+exchange formats for dealing with people at the entrance and the exit. The
+organization's rules do not change. Only control of your own content comes back.
 
-== Inside Office, AI never becomes a colleague
+== Inside Office, the AI never becomes a colleague
 
-Why move the content out of a closed format? Because *as long as you are inside
-Office, AI stays a tool and never becomes a colleague.*
+Why move the content out of closed formats? Because *as long as you stay inside
+Office, the AI remains a tool and never becomes a colleague.*
 
-Hand a Word file to AI and a conversion happens every time. Unzip the `.docx`,
-read the XML, strip the formatting, pull out the text. Excel is the same: cell
-coordinates, formatting, merged cells, and cross-sheet references sit between the
-AI and the content.
+Hand a Word file to the AI and a conversion happens every time: unzip the
+`.docx`, read the XML, strip the formatting, pull out the text. Excel is the same
+— cell coordinates, formatting, merged cells, and cross-sheet references sit
+between the AI and the content.
 
-The result is that AI is usable but not a colleague. Ask it to read the whole
-thing and organize the issues, and the layout breaks. Ask it to analyze a table,
-and merged cells and formatted values confuse it.
+The result is an AI you can use but not work with. Ask it to read the whole thing
+and sort out the issues, and the layout breaks. Ask it to analyze this table, and
+it stumbles over merged cells and formatted values.
 
-The moment the content drops down to text and structured data, that wall
-disappears. The AI reads directly, writes directly, and gives back judgment.
-Office survives as an editing tool. The content, though, stays somewhere the AI
-can touch.
+The moment the content comes down to text and structured data, that wall is gone.
+The AI reads directly, writes directly, and returns its thinking. Office stays as
+an editing tool. The content, though, is kept where the AI can touch it.
 
-== From the person who processes to the person who decides
+== From the one who processes to the one who decides
 
-As long as you do clerical work inside Office, you remain the person who
-processes: the one who totals the spreadsheet, tidies the document, re-pastes the
-numbers. That work can be replaced by AI, and as AI gets cheaper, organizations
-pull people out of the role.
+As long as you do office work inside Office, you remain the one who processes:
+the one who aggregates the Excel, tidies the Word, re-pastes the numbers. That
+work is the AI's to take, and as AI becomes cheap, organizations withdraw people
+from that role.
 
-Bring the content down to structure and the role changes. You become the person
-who works out what should be done, decides how to read it, designs the new
-mechanism, and decides what to ask the AI for. Not the amount of work but the
-substance of the work changes.
+What shrinks is what was made by hand. A statistical table has a long handmade
+process: collect, clean, reconcile, lay out, annotate. When the AI takes that
+process over, the time to produce one shrinks a great deal. What is left to the
+person is choosing the cut and reading what the numbers mean. Closing the books
+is different. From journal entries to the financial statements, the accounting
+system already produces it. What AI shrinks there is only the handwork that
+remained — notes, disclosure text, reconciliation — and not as much as the
+statistical table. *How much shrinks is decided by how much was made by hand.*
+Look at where handwork remains in your own job, and you see where the AI bites.
+
+A monthly sales report goes like this. The `.xlsx` that arrived is taken in by
+the machine, the aggregation is written by the AI, and the prose is drafted by
+the AI too. What you do is think — "which customers drove this month's growth
+over last month; will it continue; should the sales approach change" — and
+write in the interpretation and the judgment. Questions that never surfaced
+while you were running aggregations inside Excel stand up in front of
+structured local data and an AI.
 
 ____
-AI replaces the person who processes. It cannot replace the person who decides.
-Taking back the content means moving to the side that is not replaced.
+The one who processes is taken over by AI. The one who decides remains.
+Taking the content back is moving to the side that remains.
 ____
 
-=== A worked example: the monthly report — same report, different job
+== Use Claude Docs as a door you pass through
 
-Take the monthly sales report.
-
-*The old flow.* Open the sales data in Excel. Pivot it. Build the chart. Paste it
-into Word. Write the prose. Export a PDF and send it to your manager. The job you
-are doing here is tidying numbers.
-
-*The new flow.* Read the underlying data; an arriving `.xlsx` is ingested by
-machine. Have the AI write the aggregation and produce a table. Embed the chart.
-Let the AI draft the prose. *You add the interpretation and the judgment.* Convert
-to `.docx` or PDF at the exit. The job you are doing here is working out what the
-numbers mean.
-
-"This month is up 12% on last month — which customer drove it? Does it continue?
-Should the sales strategy change?" Those questions never surfaced while you were
-running pivot operations. With structured data in hand and an AI beside you, they
-come up on their own.
-
-== Hold the manuscript as text, and commit only the manuscript
-
-This is the center of the chapter. There are only two decisions.
-
-*First, hold the manuscript as AsciiDoc (`.adoc`) text.* It is a text file, so git
-gives you a diff. Who changed which line, and when, is on the record. A `.docx`
-is compressed XML, so its diff is unreadable. Held as text, the AI reads it and
-writes it directly.
-
-*Second, commit only the manuscript; keep the design out of git.* The template
-that decides the appearance lives somewhere other than the repository. Apply a
-different template to the same manuscript and it comes out in a different form.
-What remains in git history is only the diff of what was said.
-
-```
-manuscripts/      ← in git. only .adoc text
-  2026-09-report.adoc
-templates/        ← not in git. appearance
-  report.tmpl.adoc
-output/           ← not in git. what was printed
-  2026-09-report.pdf
-```
-
-Everything downstream gets easier. If the manuscript is text, you choose the
-exit: print a PDF, export a `.docx` for someone else, render HTML for the site.
-All of them come out of the same manuscript.
-
-And *exchanging data as AsciiDoc is going to matter.* Between people, and between
-people and AI, once the thing being exchanged is text, nothing is lost in
-transit.
-
-== Form-fidelity work belongs to aiseed office — ONLYOFFICE does not hold Japanese forms
-
-Manuscripts can be text. Forms cannot. Take a `.docx` application form, open it
-at the prescribed page count, with the prescribed line positions and column
-widths, correct it, and print it. In that job, format compatibility *is* the
-content.
-
-For that job, *ONLYOFFICE does not hold up on Japanese forms.* That is why
-aiseed office (https://github.com/aiseed-dev/officework[`aiseed-dev/officework`])
-is being built: an engine that reads and writes `.docx` and `.xlsx` and typesets
-straight to PDF.
-
-```bash
-pip install officework
-```
-
-As checked on 2026-09-20, the engine is at *0.5.0* on PyPI, published 2026-09-04.
-The beta label is off. The published release notes carry a line-by-line
-comparison against PDFs that Japanese government offices publish.
-
-|===
-| Document | Mean line-end deviation | Lines within 1pt
-| Survey form (110 lines) | 9.01pt → 2.50pt | 5 → 68
-| Notice (141 lines) | 3.71pt → 2.54pt | 5 → 83
-|===
-
-Write down what has not arrived, too. *Only the engine is distributed; the GUI
-application is not yet.* Some documents wrap one character off because of how
-table column widths are taken. Some spreadsheets paginate differently from the
-original. And *reading and writing AsciiDoc is not shipped yet.* The decision in
-the previous section is a direction; this tool does not do all of it today.
-
-== A document now has three places to live — where to put Claude Docs
-
-On 2026-09-16, Claude Docs shipped in beta. Creating a document in conversation,
-editing it directly, commenting on it together, and sharing it all happen inside
-Claude. As checked on 2026-09-20 it is available on Pro, Max, Team, and
+Claude Docs shipped in beta on 2026-09-16. You create a document in the
+conversation, people edit it directly, comment back and forth, and share it, all
+inside Claude. As checked on 2026-10-05, it is available on Pro, Max, Team, and
 Enterprise.
 
-It is convenient. Nothing to install. As a place to draft, revise, and talk
-something through, it takes fewer steps than anything else available.
+As a place to draft, revise, and consult, it is the one with the fewest steps of
+anything available. At the same time, its structure is the same as Microsoft 365.
 
-At the same time, the structure is the same as Microsoft 365's.
+* The document itself lives inside claude.ai. It can be read only from Claude's tools
+* Opening a shared link requires that the other person also have a Claude account
+* On Team and Enterprise, documents cannot be shared outside the organization
+* Organizations using customer-managed encryption keys, zero data retention, or a HIPAA-ready configuration cannot use it yet
 
-* The document itself lives inside claude.ai. *You cannot go and fetch it from
-  outside.* Only Claude's own tools can read it
-* Opening a shared link requires the other person to have a Claude account
-* Team and Enterprise documents cannot yet be shared outside the organization
-* Organizations using customer-managed encryption keys, zero data retention, or a
-  HIPAA-ready configuration cannot use it yet
+One thing differs: *there is a clear exit.* It exports to Word, PDF, Markdown,
+and Google Docs. That it exports to Markdown means the manuscript can be dropped
+to text on your own side.
 
-One thing is different. *There is a clear exit.* It exports to Word, PDF,
-Markdown, and Google Docs. Exporting as far as Markdown means the manuscript can
-come down to your own disk as text.
+So the placement is settled. *Use Claude Docs as the place where a manuscript is
+drafted and circulated. Once it is final, drop it to Markdown, convert it to
+AsciiDoc, and commit it.* The content stays in your hands, and Claude Docs
+becomes a door you pass through at the entrance and the exit.
 
-So its place is settled. *Use Claude Docs as the place to draft and circulate a
-manuscript. Export the finished manuscript as Markdown, convert it to AsciiDoc,
-and commit it.* The decision in the previous section then holds: the content stays
-with you, and Claude Docs becomes a door you pass through.
-
-Settle how to compare the cost here, too. The comparison is not against a free
-tool. It is against *what you already pay a vendor.* If a production company
-writes the copy for your public site, compare against that invoice. If you pay
-per-seat licenses every month, compare against that total. As of 2026-09-20,
-Claude Pro is $20 a month.
+Be clear about the cost comparison too. The comparison is not with free tools. It
+is with *what you are paying vendors now.* If you commission a production company
+for the manuscript of your public website, compare with that one job. If you pay
+per-seat licenses every month, compare with that total. As of 2026-10-05, Claude
+Pro is $20 a month, excluding tax (2-02).
 
 ____
-A document now has three places to live. The question is not which to pick.
-Hold the manuscript as text and all three become doors you pass through.
+The places a document can live grew to three. The question is not which to pick.
+Hold the content as text, and all three become doors you pass through.
 ____
 
-== Why not add another storage application
+== Move existing documents in, and hand things out through the exit
 
-"Documents" tempts you to stand up a whole OneDrive replacement like Nextcloud.
-But Nextcloud is a heavy PHP monolith that drags in its own user system and its
-own database. It points the opposite way from the single-binary lightness this
-part has chosen throughout.
-
-In 2-05 you already stood up PocketBase, which holds authentication. For document
-storage, make that the gate and files are enough for the rest.
-
-* *The thing itself* — the file. No heavy storage application
-* *Authentication* — 2-05's gate works as-is. Do not create a second login
-* *Permissions and sharing* — held by a local structured store, with the gate confirming identity
-
-== The files stay files — the gate holds identity, a store holds permissions
-
-Keep documents as plain files on your own storage. Do not embed them as blobs in
-records. Keep `.adoc`, `.docx`, and `.xlsx` as files, because then machines
-(Polars, AI) can read them directly later.
-
-The first choice is where permissions live.
-
-* *A structured store (recommended)* — if PostgreSQL is already up, put access
-  control there. For a small setup with only the gate, the gate's SQLite is
-  enough. It can be queried, transactions apply, and `pg_dump` preserves it
-* *xattr (minimum dependencies)* — if you refuse to add any store, pin them to the
-  file's extended attributes. But xattrs are silently dropped by `cp`, `rsync`,
-  `tar`, and backups. Confirm that attributes survive every copy and backup path
-
-```sql
--- access control in a structured store: queryable, and it does not vanish
--- doc_acl(doc_id, subject, perm); subject is 'alice' or 'team:sales'
-SELECT doc_id FROM doc_acl WHERE subject IN ('alice', 'team:sales') AND perm >= 'r';
-```
-
-You do not need a heavy separate application just for permissions. The gate holds
-identity; the structured store holds permissions.
-
-== Moving existing documents
-
-Documents piled up in OneDrive and SharePoint move without a format change.
+Documents piled up in OneDrive and SharePoint move without changing format. The
+`.docx`, `.xlsx`, and `.pdf` that arrived go into the repository as the files
+they are (large ones through Git LFS). No storage app for documents (Nextcloud
+and the like) is added. Authentication and permissions are already Forgejo's.
 
 ```bash
-# pull them out with rclone and lay them on your own storage
-rclone copy onedrive:Documents ./inbox --progress
-# record each file's permissions into the structured store (one script run)
+rclone copy onedrive:Documents ./docs/inbox --progress   # pull them out and line them up in the repository
 ```
 
-Migrate in stages. Run both sides in parallel, and cancel the old storage only
-after the move is finished (2-12).
+There is no need to convert everything you already have. What you write from now
+on, write in `.adoc` from the start. *Make new manuscripts text, and the home
+turns over with time.* Run the migration in parallel, and cancel the old storage
+only after the move is done (2-12).
 
-Write everything new as `.adoc` from the start. You do not have to convert the
-back catalog. *Start with new manuscripts as text, and the storage turns over on
-its own.*
-
-== Dealing with the outside — hand it over at the exit
-
-You do not need a dedicated sharing platform for customers and suppliers. What
-goes outside goes out through the exit: not the source file, but a `.docx` or a
-PDF, sent by mail (2-08). Receiving is the same — a file that arrives is opened at
-the entrance and then brought in.
-
-Do not create gate accounts for outsiders. Parties who genuinely need to co-edit
-are rare; exchanging versions is almost always enough. Send it, it comes back
-corrected. The way it has worked since paper.
-
-== One person at a time holding it is what makes an organization strong
-
-Taking the contents back to your own side is not only an individual matter. When a
-whole organization sits on one cloud, a single change of policy by the provider moves
-everyone's documents in the same direction, and the habits of judgment the AI returns
-converge too. When each person holds their own tools and their own contents, one of
-them stopping leaves the others running. *Diversity itself is the organization's
-strength.*
-
-____
-Not efficiency. Independence, and diversity.
-____
-
-Nor does anyone above or beside you have to learn a new format. aiseed office reads
-and writes `.docx`, `.xlsx`, and `.pptx` as they are, so the file you hand over is the
-same file as before. What changes is how it is made; from the receiving side, nothing
-changes at all. The format stays, and only the control moves to your side.
-
-== People use the editor, machines use Polars
-
-This is where 2-03 pays off. *People enter and read through an editing tool;
-machines handle the underlying data with Polars and DuckDB.* The same `.xlsx` is
-an editing tool to a person and an input to a machine.
-
-* Summary sheets, application forms, proposals a person writes — opened and stored in aiseed office
-* Millions of rows reconciled, company-wide totals — Polars reads the `.xlsx` and writes PostgreSQL
-
-The spreadsheet goes back to being a human tool, and the heavy processing moves
-to the machine's tools.
-
-== A reference implementation — kura
-
-This arrangement is actually built in the public repository *kura*
-(https://github.com/aiseed-dev/workspace[`aiseed-dev/workspace`]), a self-hosted
-alternative to Microsoft 365 and Google Workspace aimed at small and mid-sized
-business use.
-
-* *Authentication* — PocketBase (replaceable token verification with a short cache)
-* *Permissions* — minimum dependencies, held in the file's xattrs
-* *The thing itself* — the file
-* *Editing* — an editing engine layered on with JWT and a callback (FastAPI + Flet)
+Sharing with business partners needs no dedicated sharing platform. What goes
+outside goes out through the exit: not the original file but a `.docx` or PDF,
+sent by mail (2-08). Receiving is the same — a file that arrives is opened at the
+entrance and then brought inside. No account is made for people outside. The
+partner who wants to co-edit is rare; an exchange of versions is almost always
+enough.
 
 == How to check you are done
 
 This chapter is done when these five hold.
 
-. Your own `.docx` form opens in aiseed office and prints at the same page count as Word
-. An `.adoc` manuscript committed to git shows only the lines you changed in the diff
-. Both a PDF and a `.docx` come out of the same manuscript
-. A person logged in through the gate sees only the documents they have rights to
-. Copies made with `cp -a` and `rsync -X` still carry the permissions (if you use xattrs)
+. You write `.adoc` in Zed and push, and Forgejo shows only the lines you changed as the diff
+. Both PDF and HTML come out of the same manuscript
+. An `.xlsx` made in the grid is read by Polars, the aggregate is written back to `.xlsx`, and it opens in the grid
+. Someone else's `.xlsx` form, with your values poured in, opens in their Excel without breaking
+. A `.docx` or PDF goes out to the outside through the exit
 
 ```bash
-pip install officework
-git diff manuscripts/2026-09-report.adoc   # only the changed lines
-getfattr -d document.docx                  # only if you use xattrs
+git diff manuscripts/2026-09-business-report.adoc   # only the changed lines appear
+uv run python build.py                              # PDF and HTML from the same manuscript
 ```
 
 == What the human holds
 
 *Values the human supplies*
 
-* The path of the document store
-* The signing key shared between the editing engine and the gate
-* The rule for who can open which documents (departments, roles)
+* The name of the document repository, and who may read and who may edit (Forgejo's permissions)
+* The template for things you read (the decisions about the look)
+* The templates for pages you print (your own forms as AsciiDoc; other people's `.docx` / `.xlsx`)
+* Which grid to use (Excel as before, Euro-Office, LibreOffice, aiseed office)
 
 *Actions the AI states before performing*
 
 * Converting or moving existing documents in bulk
-* Rewriting the access-control table
-* Sending a file outside the company
+* Sending a file with values poured into someone else's form to the outside
+* Cancelling the old storage (OneDrive, SharePoint)
 
 == Versions checked, and when
 
-* aiseed office (officework) engine 0.5.0. `pip install officework`. Published 2026-09-04, confirmed on PyPI on 2026-09-20
-* The GUI application and AsciiDoc read/write are not shipped as of 2026-09-20
-* Claude Docs shipped in beta on 2026-09-16, available on Pro, Max, Team, and Enterprise. Checked 2026-09-20
-* Permissions live in PostgreSQL or the gate's SQLite
-* This procedure was written on 2026-09-20
+* Claude Docs shipped in beta on 2026-09-16, available on Pro, Max, Team, and Enterprise; no sharing outside the organization, and not yet for CMEK, ZDR, or HIPAA configurations. Checked 2026-10-05
+* python-docx, openpyxl, rclone — no version pinned
+* The procedure was written on 2026-09-20 and rewritten on 2026-10-05
 * If a version has moved, have the AI confirm the official procedure before proceeding
 
 == Summary
 
-Do not pick a storage place. Decide how the manuscript is held.
+Decide not where to put the document but how to hold the content.
 
-* *Manuscript as AsciiDoc text* — git gives a diff; the AI reads and writes it directly
-* *Commit only the manuscript* — design lives elsewhere, so history carries only substance
-* *Forms belong to aiseed office* — built because ONLYOFFICE does not hold Japanese forms. Engine at 0.5.0; the GUI and AsciiDoc support are not there yet
-* *Claude Docs is a door* — drafting and co-editing are fast; export the finished manuscript as Markdown and bring it home
-* *The files stay files* — gate for identity, structured store for permissions, no heavy storage app
-* *The comparison is not against free* — compare against what you already pay a vendor
+* *Split three ways by use* — things you read, tables you work in, pages you print. Which dominates depends on the work
+* *Things you read are AsciiDoc text* — in Forgejo's git, written in Zed. The design is split off into a template and printed by a build
+* *Tables you work in stay in a grid* — Excel, Euro-Office, LibreOffice, or aiseed office. The data lives outside the grid (2-03). The pace of pushing into Python is yours
+* *Pages you print pour values into a template* — published tables, forms, and slips alike. Reproducing page layout is not pursued
+* *Office and Claude Docs are passed through* — entrance and exit. A final manuscript is dropped to text and kept in your hands
+* *What shrinks is what was made by hand* — statistical tables shrink a great deal; closing the books, much less
 
-The next chapter puts the other large piece of clerical work, mail, on your own
-side (2-08).
+The next chapter puts the other big piece of office work, mail, on your own side (2-08).
 
 '''
 
 == Related articles
 
+* link:/en/ai-native-software/code/[2-06: Bring Code In-House — Forgejo and Zed]
 * link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars]
-* link:/en/ai-native-software/auth/[2-05: Stand Up the Gate — One Login with PocketBase]
-* https://github.com/aiseed-dev/officework[aiseed office (officework) — a docx/xlsx engine that also typesets to PDF]
-* https://github.com/aiseed-dev/workspace[Reference implementation kura — a self-hosted Microsoft 365 / Google Workspace alternative]
+* link:/en/ai-native-software/python/[2-04: Write the Logic — Own Your Tools with Python and Flet]
 * link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map]
 endif::[]
+
 // ===== article: 13-mail =====
 ---
 slug: mail
@@ -6891,7 +6732,7 @@ flowchart LR
 中身が Web の側に残らない。WordPress や Wix で書いた中身は、サービスが終わるとそこまでだ。
 Notion で書いた中身は、Notion の形式の中にある。Markdown は、どこにも属さない。
 
-これは link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 原稿は adoc、様式は aiseed office]
+これは link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 読む物は adoc、触る表は格子、刷る紙はテンプレート]
 で見た「中身は素のテキストで持つ」考え方の、Web 版だ。入口・中身・出口を分ける。
 
 * 入口 ── 画像、PDF、音声、Word から、Claude がテキストに起こす
@@ -7180,7 +7021,7 @@ Web を作る道具を、二層に分ける。
 == 関連記事
 
 * link:/ai-native-software/web/[2-11: Web を公開する ── Cloudflare Pages]
-* link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 原稿は adoc、様式は aiseed office]
+* link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 読む物は adoc、触る表は格子、刷る紙はテンプレート]
 * link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
 * link:/ai-native-software/design/[2-13: 図と資料を作る ── Mermaid・Marp・そのほかの道具]
 * link:/ai-native-software/lockin/[3-05: ロックイン問題]
@@ -7376,7 +7217,7 @@ when the service ends. Content in Notion lives inside Notion's format. Markdown
 belongs nowhere in particular.
 
 This is the web version of the "hold the content as plain text" idea from
-link:/en/ai-native-software/documents/[2-07: Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office].
+link:/en/ai-native-software/documents/[2-07: Take Documents Back — Prose in AsciiDoc, Working Tables in a Grid, Printed Pages from Templates].
 Separate entrance, content, and exit.
 
 * Entrance — Claude turns images, PDFs, audio, and Word into text
@@ -7679,7 +7520,7 @@ goes onto Cloudflare Pages — and you hold no server.
 == Related articles
 
 * link:/en/ai-native-software/web/[2-11: Publish the Web — Cloudflare Pages (a WordPress Replacement)]
-* link:/en/ai-native-software/documents/[2-07: Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office]
+* link:/en/ai-native-software/documents/[2-07: Take Documents Back — Prose in AsciiDoc, Working Tables in a Grid, Printed Pages from Templates]
 * link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
 * link:/en/ai-native-software/design/[2-13: Make Diagrams and Documents — Mermaid, Marp, and the Other Tools]
 * link:/en/ai-native-software/lockin/[3-05: The Lock-In Problem]
@@ -8687,7 +8528,7 @@ curl -s https://api.example.com/docs  # FastAPI の自動ドキュメントが�
 
 * link:/ai-native-software/foundation/[2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars]
 * link:/ai-native-software/auth/[2-05: 門番を立てる ── PocketBase で認証を一つに]
-* link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 原稿は adoc、様式は aiseed office]
+* link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 読む物は adoc、触る表は格子、刷る紙はテンプレート]
 * link:/ai-native-software/structure-knowledge/[2-15: 社内情報を整える ── 整備こそ本体、AI は最後の一手]
 * https://github.com/aiseed-dev/workspace[参考実装 kura ── 自前の Microsoft 365 / Google Workspace 代替]
 endif::[]
@@ -9341,7 +9182,7 @@ documents. Structure diagrams, slides, and handouts all come from text and code.
 
 * link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars]
 * link:/en/ai-native-software/auth/[2-05: Stand Up the Gate — One Login with PocketBase]
-* link:/en/ai-native-software/documents/[2-07: Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office]
+* link:/en/ai-native-software/documents/[2-07: Take Documents Back — Prose in AsciiDoc, Working Tables in a Grid, Printed Pages from Templates]
 * link:/en/ai-native-software/structure-knowledge/[2-15: Put Your Information in Order — The Preparation Is the Work, AI Is the Last Step]
 * https://github.com/aiseed-dev/workspace[Reference implementation kura — a self-hosted Microsoft 365 / Google Workspace alternative]
 endif::[]
@@ -9682,7 +9523,7 @@ proposal-2026/
 
 *デザインと中身が分かれている*。一箇所を直せば、すべての出力に反映される。git に入れるのは原稿と
 図のテキストで、組み上がった PDF は成果物として別に置く ──
-link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 原稿は adoc、様式は aiseed office]の
+link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 読む物は adoc、触る表は格子、刷る紙はテンプレート]の
 「原稿は文字で持ち、git に入れるのは原稿だけにする」と、同じ考えである。
 
 == 描くのは AI、判断するのは人
@@ -9774,7 +9615,7 @@ AI を介して手元に降りる専門領域:
 == 関連記事
 
 * link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
-* link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 原稿は adoc、様式は aiseed office]
+* link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 読む物は adoc、触る表は格子、刷る紙はテンプレート]
 * link:/ai-native-software/web/[2-11: Web を公開する ── Cloudflare Pages]
 * link:/ai-native-software/structure-knowledge/[2-15: 社内情報を整える ── 整備こそ本体、AI は最後の一手]
 * link:/ai-native-software/independence/[2-01: Microsoft と Google から自立する ── 全体像と対応表]
@@ -10116,7 +9957,7 @@ stands on its own and can be turned to other uses.
 *Design and content are separate.* Fix one place and every output reflects it. What goes into
 git is the manuscript and the diagram text; the assembled PDF is kept separately as a build
 output — the same thinking as
-link:/en/ai-native-software/documents/[2-07: Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office]
+link:/en/ai-native-software/documents/[2-07: Take Documents Back — Prose in AsciiDoc, Working Tables in a Grid, Printed Pages from Templates]
 and its "hold the manuscript as text, and commit only the manuscript."
 
 == The AI draws; the human judges
@@ -10214,7 +10055,7 @@ things you can touch, from electronics to IoT.
 == Related articles
 
 * link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
-* link:/en/ai-native-software/documents/[2-07: Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office]
+* link:/en/ai-native-software/documents/[2-07: Take Documents Back — Prose in AsciiDoc, Working Tables in a Grid, Printed Pages from Templates]
 * link:/en/ai-native-software/web/[2-11: Publish the Web — Cloudflare Pages (a WordPress Replacement)]
 * link:/en/ai-native-software/structure-knowledge/[2-15: Make Your Knowledge Legible — Preparation Is the Main Body, AI the Last Move]
 * link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map]
@@ -11338,7 +11179,7 @@ AI の前に、情報を整える。
 
 == 関連記事
 
-* link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 原稿は adoc、様式は aiseed office]
+* link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 読む物は adoc、触る表は格子、刷る紙はテンプレート]
 * link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
 * link:/ai-native-software/ai/[2-16: 自前の AI を据える ── LLM と RAG]
 * link:/ai-native-software/sier-uneconomic/[3-04: SIer委託モデルの構造的不経済]
@@ -11500,7 +11341,7 @@ In the next chapter, on top of this prepared information, we set up our own AI.
 
 == Related articles
 
-* link:/en/ai-native-software/documents/[2-07: Take Documents Back — Manuscripts in AsciiDoc, Forms in aiseed office]
+* link:/en/ai-native-software/documents/[2-07: Take Documents Back — Prose in AsciiDoc, Working Tables in a Grid, Printed Pages from Templates]
 * link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
 * link:/en/ai-native-software/ai/[2-16: Set Up Your Own AI — LLM and RAG]
 * link:/en/ai-native-software/sier-uneconomic/[3-04: The Structural Diseconomy of the SIer Outsourcing Model]

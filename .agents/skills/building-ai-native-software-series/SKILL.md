@@ -32,7 +32,7 @@ The series subtitle: 「SIer に頼まない ── 自分で立てて、自分�
 | 2-04 | `python` | 処理を書く ── Python と Flet で、自分の道具を持つ |
 | 2-05 | `auth` | 門番を立てる ── PocketBase で認証を一つに |
 | 2-06 | `code` | コードを手元に ── Forgejo と Zed |
-| 2-07 | `documents` | 文書を取り戻す ── 原稿は adoc、様式は aiseed office |
+| 2-07 | `documents` | 文書を取り戻す ── 読む物は adoc、触る表は格子、刷る紙はテンプレート |
 | 2-08 | `mail` | メールを自分の側に ── Stalwart と Thunderbird |
 | 2-09 | `meetings` | 会議と予約を自分の側に ── Jitsi と Cal.com |
 | 2-10 | `web-build` | Web を作る ── HTML と CSS と JavaScript に戻る |
@@ -84,7 +84,7 @@ Refer to chapters as `{part}-{number}` in prose. The article IDs inside the file
 - **No Docker.** Services are installed with apt and run under systemd; anything apt lacks goes in as the project's single published file, registered with systemd. Docker is a tool for distributing, not for building. 2-02 gives the reasons (one update stream; the AI sees config, logs, and data directly; Docker routes published ports ahead of ufw). The single exception: software whose project ships it only as a container runs from the official image — never build an image of your own. 2-08, 2-09 still show docker compose — rewrite each at its review.
 - In the body the AI is called "AI", not "Claude" — the reader may be running another vendor's AI (2-02). Product names appear only as sourced facts (prices, published figures).
 - Two AIs from **different vendors** check each other (2-02). Cost: $120/month while building (Claude Max $100 + another vendor's base plan $20), $40 in operation (Pro $20 + $20) — ex-tax, monthly, checked 2026-10-05. Only the builder talks to the AI; a personal plan is not shared (Anthropic Consumer Terms). The group uses the tools the AI built.
-- Documents: manuscripts are AsciiDoc text in git; forms go through **aiseed office** (officework engine 0.5.0 on PyPI; the GUI app and AsciiDoc read/write are *not* shipped yet). ONLYOFFICE does not hold Japanese forms — that is why aiseed office exists.
+- Documents (2-07, rewritten 2026-10-05) split three ways by use: **things you read** are AsciiDoc in the Forgejo repo (2-06), edited in Zed, printed by a build with the design in a template; **tables you work in** stay in a grid (Excel, Euro-Office, LibreOffice, or aiseed office — the series does not depend on aiseed office), with the data outside the grid (2-03); **pages you print** (published statistical tables, forms, slips) pour text values into a template — their `.docx`/`.xlsx` for other people's forms — and page-layout reproduction is not pursued. No document store, no kura, no ONLYOFFICE back-story.
 - **Claude Docs** (beta from 2026-09-16) is a place to pass through for drafting and co-editing, not where the finished manuscript lives — structurally it is the same as Microsoft 365 (documents live in claude.ai).
 - Web: build in 2-10 (Markdown + HTML/CSS baked by Python), publish in 2-11 (own machine with Caddy, or Cloudflare Pages).
 - Prices quoted: Claude Pro $20/month for light use, Max from $100/month during the building period (2-02); Microsoft 365 Business ¥1,049–3,298 per seat per month (July 2026 revision, ex-tax, annual); Google Workspace Business Standard ¥1,600 (annual), Gemini included since March 2025.

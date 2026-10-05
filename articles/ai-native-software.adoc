@@ -5908,10 +5908,10 @@ number: 08
 part: 2
 title.ja: メールを自分の側に ── Stalwart と Thunderbird
 title.en: Mail on Your Own Side — Stalwart and Thunderbird
-subtitle.ja: Exchange と Outlook の外へ ── 受信は自分で、送信は正直に
-subtitle.en: Outside Exchange and Outlook — receive it yourself, send it honestly
-description.ja: メールは事業の記録そのものだ。Stalwart は Rust 製の単一サーバで、SMTP・IMAP・JMAP・スパム対策・DKIM 署名を一つに備え、Exchange を置き換える。2-03 の PostgreSQL に乗せ、2-02 で AI に渡した一台の上に立て、Thunderbird など任意のクライアントで読む。ただし送信の到達性は難しい ── そこは認証付き中継に頼り、メールボックスの主導権だけ自分が持つ、という正直な設計を示す。DNS(MX・SPF・DKIM・DMARC・PTR)と外へのメール送信は、人が通す。
-description.en: Mail is the record of the business itself. Stalwart is a Rust single server carrying SMTP, IMAP, JMAP, spam defense, and DKIM signing in one, replacing Exchange. It rides on the PostgreSQL from 2-03, stands up on the machine handed to the AI in 2-02, and is read with any client like Thunderbird. But outbound deliverability is hard — so lean on an authenticated relay for sending and keep only control of the mailbox on your own side. An honest design. DNS (MX, SPF, DKIM, DMARC, PTR) and sending mail to the outside stay with the human.
+subtitle.ja: Exchange と Outlook の外へ ── 受信箱は自分の側に、送信は条件が揃えば自分で
+subtitle.en: Outside Exchange and Outlook — the inbox on your side, sending yourself when the conditions hold
+description.ja: メールは事業の記録そのものだ。Stalwart は Rust 製の単一サーバで、SMTP・IMAP・JMAP・スパム対策・DKIM 署名を一つに備え、Exchange を置き換える。2-03 の PostgreSQL に乗せ、2-02 で AI に渡した一台の上に立て、Thunderbird など IMAP のクライアントで読む。送信は、固定 IP・逆引き・SPF/DKIM/DMARC・25 番が通る回線の四つが揃えば自分で送り、届かない相手が出たときだけ中継を借りる。立て方は公式の導入スクリプトと systemd。DNS(MX・SPF・DKIM・DMARC)と外へのメール送信は、人が通す。
+description.en: Mail is the record of the business itself. Stalwart is a Rust single server carrying SMTP, IMAP, JMAP, spam defense, and DKIM signing in one, replacing Exchange. It rides on the PostgreSQL from 2-03, stands up on the machine handed to the AI in 2-02, and is read with an IMAP client such as Thunderbird. Sending is done yourself when four conditions hold — a fixed IP, reverse DNS, SPF/DKIM/DMARC, and a line that lets port 25 out — and a relay is borrowed only when a recipient cannot be reached. Installed with the official script, run under systemd. DNS (MX, SPF, DKIM, DMARC) and sending mail to the outside stay with the human.
 date: 2026.07.09
 label: Independence 8
 title_html.ja: メールボックスを、<br><span class="accent">自分の側</span>に。
@@ -5922,15 +5922,14 @@ ifdef::lang-ja[]
 
 メールは、事業の記録そのものだ。やり取りも、契約も、履歴も、すべてそこに
 積まれている。前章までで、土台・門番・コード・文書を自分の側に置いた。この章
-では、その記録が毎日流れ込む受信箱を、自分の側に取り戻す。ただし、メールは
-正直に語るべき領域でもある。*受信は易しく、送信の到達性は難しい*。その線を
-はっきり引いたうえで立てる。
+では、その記録が毎日流れ込む受信箱を、自分の側に取り戻す。*受信は易しく、
+送信の到達性には条件がある*。その条件を先に書いたうえで立てる。
 
 == 受信箱の主導権を、自分の側に戻す
 
 * *記録の主導権* ── 過去メールの保管・検索・書き出しを、自分のルールで決める
 * *人数課金から降りる* ── メールボックスの数で月額が積み上がらない
-* *門番と一つに* ── アカウントを 2-05 の認証と揃える
+* *名前を門番と揃える* ── アカウントの名前は 2-05 の門番と同じにする。ログインは Stalwart が持つ(2-05)
 
 == Stalwart を一台で立てる
 
@@ -5938,17 +5937,20 @@ ifdef::lang-ja[]
 スパム対策・DKIM 署名まで入っている。Exchange の置き換えだ。保管は 2-03 の
 PostgreSQL に寄せられる。立てる先は、2-02 で AI に渡した一台でよい。
 
-```yaml
-# compose.yaml ── 単一のメールサーバを立てる
-services:
-  mail:
-    image: stalwartlabs/mail-server:latest
-    volumes: ["./stalwart:/opt/stalwart-mail"]
-    ports: ["25:25", "587:587", "465:465", "993:993", "8080:8080"]
-    restart: always
+公式の導入スクリプトが、バイナリ(`/usr/local/bin/stalwart`)、設定(`/etc/stalwart`)、
+データ(`/var/lib/stalwart`)、専用の `stalwart` 利用者、systemd のユニットまで作る。
+2-02 の決めどおり、Docker は使わない。
+
+* 外に開ける口は 25・465・587・993。この章で初めて開けるので、「やる前に言う」操作だ(2-02)
+* 管理画面(8080)は外に出さない。localhost だけで待ち受け、手元の PC から ssh の中を通して見る
+* 保管は 2-03 の PostgreSQL。Stalwart 用のデータベースと利用者を一つ作る
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://get.stalw.art/install.sh -o install.sh
+sudo sh install.sh                 # 公式の導入スクリプト。systemd のサービスとして入る
 ```
 
-管理画面(`:8080`)でドメインとメールボックスを作る。コードは書かない。
+管理画面でドメインとメールボックスを作る。コードは書かない。
 
 == DNS を正しく置く ── MX・SPF・DKIM・DMARC
 
@@ -5961,48 +5963,44 @@ default._domainkey.example.com.  TXT  "v=DKIM1; k=rsa; p=...(Stalwart が生成)
 _dmarc.example.com.  TXT  "v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com"
 ```
 
-逆引き(PTR)も、サーバの IP に対して設定する。ここを外すと、送ったメールが
-相手に届かない。
+逆引き(PTR)は、相手のサーバが送り手の IP を確かめるのに使う。固定 IP の回線なら
+回線の事業者が設定してあるので、こちらですることはない(2-02)。
 
-== 送信の到達性は、中継に借りる
+== 送信は、条件が揃えば自分で ── 中継は逃げ道
 
-自前サーバからの直接送信は、IP 評価・ブロックリスト・各社の判定に左右される。
-届かないことがある。これは OSS の優劣ではなく、メールという仕組みの現実だ。
+自前サーバからの送信は、相手のサーバが「信用できる送り手か」を見る。見られるのは
+四つで、揃っていれば自分で送れる。
 
-だから、現実的な設計はこうする。
+* 固定 IP(2-02)
+* 逆引き(PTR)が、その IP に設定されている
+* SPF・DKIM・DMARC が、前の節のとおり置かれている
+* 回線が 25 番の外向きの送信を止めていない。多くの回線は迷惑メール対策で止めている(OP25B)。固定 IP の法人向け回線は通ることが多い
 
-* *受信・保管・検索* ── 自分の Stalwart が持つ。ここが主導権の本体である
-* *外向きの送信* ── 認証付きの SMTP 中継(送信専用サービス)を経由する
-
-中継は、送信の到達性だけを借りる薄い層だ。メールボックスそのものは自分の側に
-残る。主導権を握る場所と、到達性を借りる場所を分ける。これが正直で堅実な
-やり方だ。
+揃っていれば、送信も自分の側で持つ。それでも、相手のサーバの判定で届かないことは
+起きる。これは OSS の優劣ではなく、メールという仕組みの現実だ。届かない相手が
+出たときは、*外向きの送信だけ*、認証付きの SMTP 中継(送信専用サービス)を借りる。
+借りるのは到達性だけで、受信箱は自分の側に残る。
 
 ____
-メールは「全部自前」が正解とは限らない。
-受信箱は自分の側に、送信の到達性は借りる ── 線を引いて立てる。
+受信箱は自分の側に。送信は、条件が揃えば自分で。
+届かない相手が出たら、送信だけ借りる ── 線を引いて立てる。
 ____
 
 == 読み書きは Thunderbird でよい
 
-読み書きは、IMAP / JMAP を話す任意のクライアントでよい。Thunderbird なら
-無料で、Windows・Mac・Linux で同じように動く。スマホは標準のメールアプリが
-そのまま JMAP / IMAP でつながる。
+読み書きは、IMAP を話す任意のクライアントでよい。Thunderbird なら無料で、
+Windows・Mac・Linux で同じように動く。スマホは標準のメールアプリが IMAP で
+つながる。Stalwart が話す JMAP は、自分で書く道具(2-12)から使う。
 
-== Microsoft 365 からは並行で移す
+== いまのサーバからは、並行で移す
 
-既存のメールは、IMAP 同士をまるごと同期する imapsync で運ぶ。
+一斉に切り替えなくてよい。
 
-```bash
-imapsync --host1 outlook.office365.com --user1 you@old \
-         --host2 mail.example.com      --user2 you@new
-```
+. Stalwart を立て、いまのサーバから新しいアドレスへ転送をかけて、両方で受ける
+. 過去のメールは、Thunderbird に両方のアカウントを置き、残したいフォルダだけ新しい側へ引きずって写す。全部運ばなくてよい
+. 落ち着いてから MX を Stalwart に向け、旧サーバを解約する(2-12)
 
-一斉に切り替えなくてよい。しばらく両方で受け、転送をかけて並行運用する。
-落ち着いてから MX を Stalwart に向ける(2-12)。
-
-移行の手順は Gmail でも同じだ。imapsync は IMAP 同士をつなぐ道具であって、
-相手が Microsoft でも Google でも変わらない。
+道具は足さない。一括で運ぶ必要が出たら、AI が `imaplib` で数十行を書く。
 
 == 保存も安全も、決まりごとは数行
 
@@ -6019,12 +6017,13 @@ PostgreSQL にあり、2-01 の「守るのはデータと仕様」の複製対�
 この章は、次の五つができていれば済みだ。
 
 . 外のアドレス(Gmail など)から自分のドメイン宛に送ったメールが、Thunderbird で読める
-. Thunderbird から外のアドレス宛に送ったメールが、相手の受信箱に届く
-. 管理画面(`:8080`)に入れて、作ったドメインとメールボックスが見える
+. Thunderbird から外のアドレス宛に送ったメールが、相手の受信箱に届く(迷惑メールに落ちない)
+. ssh の中を通して管理画面に入れて、作ったドメインとメールボックスが見える
 . 外から引いて、MX・SPF・DKIM・DMARC・PTR の五つが返る
-. imapsync で運んだ過去のメールが、Thunderbird の中に見える
+. 旧サーバから写した過去のメールが、Thunderbird の中に見える
 
 ```bash
+systemctl status stalwart                      # systemd で動いているか
 dig +short MX example.com                      # MX が引ける
 dig +short TXT default._domainkey.example.com  # DKIM が引ける
 dig +short -x <サーバの IP>                     # 逆引き(PTR)が引ける
@@ -6035,34 +6034,34 @@ dig +short -x <サーバの IP>                     # 逆引き(PTR)が引ける
 *人が渡す値*
 
 * メールのドメイン名と、メールサーバのホスト名
-* サーバの固定 IP と、逆引き(PTR)を設定してもらう先
+* サーバの固定 IP
 * 管理画面の最初の管理者の名前とパスワード
-* 送信に使う SMTP 中継のアカウントと認証情報
-* 旧サーバ(Microsoft 365 など)の、imapsync に渡すアカウントとパスワード
+* Stalwart 用の PostgreSQL の利用者名とパスワード
+* 中継を借りるときは、その SMTP 中継のアカウントと認証情報
 * メールを何年残すか
 
 *AI が「やる前に言う」操作*
 
+* 25・465・587・993 の口を開ける
 * DNS のレコードを変える。とくに MX を Stalwart に向ける切り替え
 * 外のアドレス宛にメールを送る
-* imapsync を旧サーバに対して走らせる
 * メールボックスを消す
 
 == 確かめた版と日付
 
-* Stalwart(`stalwartlabs/mail-server:latest`)、PostgreSQL、Thunderbird、imapsync
-* 手順を書いたのは 2026-07-09
+* Stalwart 0.16.25(2026-10-05、公式の導入スクリプト)、Thunderbird 140(Debian 13 のパッケージ)、PostgreSQL(2-03)
+* 手順を書いたのは 2026-07-09、見直したのは 2026-10-05
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
 == まとめ
 
 受信箱を、自分の側に。
 
-* *Stalwart* ── SMTP・IMAP・JMAP・スパム対策・DKIM を単一サーバで(2-03 の PostgreSQL に乗る)
-* *DNS(MX・SPF・DKIM・DMARC・PTR)* ── メールの本体はここ
-* *送信は中継に頼る* ── 受信箱は自分、到達性は借りる、と線を引く
-* *Thunderbird* ── 無料・全 OS 共通のクライアント
-* *imapsync* ── Microsoft 365 から並行移行、最後に MX を向ける
+* *Stalwart* ── SMTP・IMAP・JMAP・スパム対策・DKIM を単一サーバで(2-03 の PostgreSQL に乗る)。公式スクリプトで systemd に
+* *DNS(MX・SPF・DKIM・DMARC)* ── メールの本体はここ。逆引きは回線の事業者が設定済み
+* *送信は条件が揃えば自分で* ── 固定 IP・逆引き・SPF/DKIM/DMARC・25 番が通る回線。届かない相手が出たら送信だけ借りる
+* *Thunderbird* ── 無料・全 OS 共通の IMAP クライアント
+* *移行は並行で* ── 転送で両方受け、過去のメールは Thunderbird で写し、最後に MX を向ける
 
 次章では、会議と予約(Jitsi・Cal.com)を立て、Teams と予約サービスを自分の側に
 置く。
@@ -6081,15 +6080,14 @@ ifdef::lang-en[]
 Mail is the record of the business itself. Correspondence, contracts, history —
 all of it piles up there. By now the foundation, the gate, the code, and the
 documents are on your own side. This chapter takes back the inbox those records
-flow into every day. But mail is also a domain to be honest about. *Receiving is
-easy; sending — deliverability — is hard.* Stand it up with that line drawn
-clearly.
+flow into every day. *Receiving is easy; sending has conditions.* Write the
+conditions down first, then stand it up.
 
 == Take control of the inbox back to your own side
 
 * *Control of the record* — retention, search, and export of past mail by your own rules
 * *Step off per-seat billing* — the monthly bill does not stack with mailbox count
-* *One with the gate* — align accounts with the 2-05 authentication
+* *Names aligned with the gate* — account names match the gate of 2-05. The login itself is Stalwart's (2-05)
 
 == Stand up Stalwart on one machine
 
@@ -6098,18 +6096,20 @@ spam defense, and DKIM signing. It is a replacement for Exchange. Storage can be
 pointed at the PostgreSQL from 2-03. The machine it stands up on is the one
 handed to the AI in 2-02.
 
-```yaml
-# compose.yaml — stand up a single mail server
-services:
-  mail:
-    image: stalwartlabs/mail-server:latest
-    volumes: ["./stalwart:/opt/stalwart-mail"]
-    ports: ["25:25", "587:587", "465:465", "993:993", "8080:8080"]
-    restart: always
+The official install script sets up the binary (`/usr/local/bin/stalwart`), the
+configuration (`/etc/stalwart`), the data (`/var/lib/stalwart`), a dedicated
+`stalwart` user, and the systemd unit. As 2-02 decided, no Docker.
+
+* The ports opened to the outside are 25, 465, 587, and 993. This chapter opens them for the first time, so it is an action the AI states before performing (2-02)
+* The admin UI (8080) is not exposed. It listens on localhost only, reached from your own PC through ssh
+* Storage is the PostgreSQL of 2-03, with one database and one role made for Stalwart
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://get.stalw.art/install.sh -o install.sh
+sudo sh install.sh                 # the official installer; runs as a systemd service
 ```
 
-In the admin UI (`:8080`), create the domain and the mailboxes. No code is
-written.
+In the admin UI, create the domain and the mailboxes. No code is written.
 
 == Get the DNS right — MX, SPF, DKIM, DMARC
 
@@ -6123,52 +6123,50 @@ default._domainkey.example.com.  TXT  "v=DKIM1; k=rsa; p=...(generated by Stalwa
 _dmarc.example.com.  TXT  "v=DMARC1; p=quarantine; rua=mailto:dmarc@example.com"
 ```
 
-Set the reverse record (PTR) for the server's IP as well. Miss this, and the
-mail you send does not reach anyone.
+The reverse record (PTR) is what the receiving server uses to check the sender's
+IP. On a fixed-IP line the provider has already set it, so there is nothing for
+you to do (2-02).
 
-== Borrow outbound deliverability from a relay
+== Send it yourself when the conditions hold — the relay is the fallback
 
-Direct sending from a self-hosted server is at the mercy of IP reputation,
-blocklists, and each provider's judgment. Sometimes it does not arrive. This is
-not about OSS being inferior. It is the reality of how mail works.
+When you send from your own server, the receiving server asks whether the sender
+can be trusted. It looks at four things, and when all four hold, you can send
+yourself.
 
-So the realistic design is this.
+* A fixed IP (2-02)
+* A reverse record (PTR) set for that IP
+* SPF, DKIM, and DMARC in place, as in the previous section
+* A line that does not block outbound port 25. Many lines block it as an anti-spam measure (OP25B); fixed-IP business lines usually let it through
 
-* *Receiving, storage, search* — owned by your Stalwart, and this is the real body of control
-* *Outbound sending* — go through an authenticated SMTP relay, a send-only service
-
-The relay is a thin layer that borrows only sending deliverability. The mailbox
-itself stays on your side. Separate where you hold control from where you borrow
-deliverability. That is the honest, durable way.
+When they hold, sending stays on your side too. Even then, a recipient's server
+may decide not to accept. This is not about OSS being inferior; it is the reality
+of how mail works. When a recipient cannot be reached, borrow an authenticated
+SMTP relay (a send-only service) *for outbound sending only.* What you borrow is
+deliverability; the inbox stays on your side.
 
 ____
-"All in-house" is not always the right answer for mail.
-The inbox on your side, the sending deliverability borrowed — stand it up with
+The inbox on your side. Sending yourself, when the conditions hold.
+When a recipient cannot be reached, borrow the sending alone — stand it up with
 the line drawn.
 ____
 
 == Read and write with Thunderbird
 
-Reading and writing work with any client that speaks IMAP / JMAP. Thunderbird is
-free and runs the same on Windows, Mac, and Linux. Phones connect with the stock
-mail app over JMAP / IMAP.
+Reading and writing work with any client that speaks IMAP. Thunderbird is free
+and runs the same on Windows, Mac, and Linux. Phones connect with the stock mail
+app over IMAP. The JMAP that Stalwart speaks is for the tools you write yourself
+(2-12).
 
-== Migrate from Microsoft 365 in parallel
+== Migrate from the current server in parallel
 
-Existing mail moves with imapsync, which syncs one IMAP store wholesale into
-another.
+There is no need to cut over at once.
 
-```bash
-imapsync --host1 outlook.office365.com --user1 you@old \
-         --host2 mail.example.com      --user2 you@new
-```
+. Stand up Stalwart, forward from the current server to the new address, and receive on both
+. For past mail, put both accounts in Thunderbird and drag only the folders worth keeping across to the new side. Not everything has to move
+. Once things have settled, point the MX at Stalwart and cancel the old server (2-12)
 
-There is no need to cut over at once. Receive on both for a while, set
-forwarding, and run in parallel. Point the MX at Stalwart once things have
-settled (2-12).
-
-Migration is the same from Gmail. imapsync connects IMAP to IMAP, and it does
-not care whether the far side is Microsoft or Google.
+No tool is added. If a bulk move ever becomes necessary, the AI writes a few
+dozen lines with `imaplib`.
 
 == Retention and safety are a few lines of rules
 
@@ -6186,12 +6184,13 @@ the body before any attachment is opened, as input to your judgment.
 This chapter is done when these five hold.
 
 . A mail sent from an outside address, such as Gmail, to your own domain can be read in Thunderbird
-. A mail sent from Thunderbird to an outside address lands in that person's inbox
-. You can log in to the admin UI (`:8080`) and see the domain and mailboxes you created
+. A mail sent from Thunderbird to an outside address lands in that person's inbox (not in spam)
+. Through ssh, you can log in to the admin UI and see the domain and mailboxes you created
 . Queried from outside, all five records answer: MX, SPF, DKIM, DMARC, PTR
-. Past mail carried over by imapsync is visible inside Thunderbird
+. Past mail copied from the old server is visible inside Thunderbird
 
 ```bash
+systemctl status stalwart                      # running under systemd
 dig +short MX example.com                      # the MX answers
 dig +short TXT default._domainkey.example.com  # the DKIM key answers
 dig +short -x <the server's IP>                # the reverse record (PTR) answers
@@ -6202,34 +6201,34 @@ dig +short -x <the server's IP>                # the reverse record (PTR) answer
 *Values the human supplies*
 
 * The mail domain name and the mail server's hostname
-* The server's fixed IP, and whoever sets the reverse record (PTR) for it
+* The server's fixed IP
 * The name and password of the first administrator in the admin UI
-* The account and credentials of the SMTP relay used for sending
-* The account and password on the old server, such as Microsoft 365, handed to imapsync
+* The PostgreSQL role name and password for Stalwart
+* If a relay is borrowed, the account and credentials of that SMTP relay
 * How many years mail is kept
 
 *Actions the AI states before performing*
 
+* Opening ports 25, 465, 587, and 993
 * Changing a DNS record, above all switching the MX to Stalwart
 * Sending mail to an outside address
-* Running imapsync against the old server
 * Deleting a mailbox
 
 == Versions checked, and when
 
-* Stalwart (`stalwartlabs/mail-server:latest`), PostgreSQL, Thunderbird, imapsync
-* This procedure was written on 2026-07-09
+* Stalwart 0.16.25 (2026-10-05, the official install script), Thunderbird 140 (Debian 13 package), PostgreSQL (2-03)
+* This procedure was written on 2026-07-09 and reviewed on 2026-10-05
 * If a version has moved, have the AI confirm the official procedure before proceeding
 
 == Summary
 
 The inbox, on your own side.
 
-* *Stalwart* — SMTP, IMAP, JMAP, spam defense, DKIM in one server (on the 2-03 PostgreSQL)
-* *DNS (MX, SPF, DKIM, DMARC, PTR)* — the real body of mail is here
-* *Lean on a relay for sending* — inbox yours, deliverability borrowed, line drawn
-* *Thunderbird* — a free client, identical across OSes
-* *imapsync* — migrate from Microsoft 365 in parallel, point the MX last
+* *Stalwart* — SMTP, IMAP, JMAP, spam defense, DKIM in one server (on the 2-03 PostgreSQL); the official script, under systemd
+* *DNS (MX, SPF, DKIM, DMARC)* — the real body of mail is here; the reverse record is the line provider's, already set
+* *Send yourself when the conditions hold* — fixed IP, PTR, SPF/DKIM/DMARC, a line that lets port 25 out. Borrow the sending alone when a recipient cannot be reached
+* *Thunderbird* — a free IMAP client, identical across OSes
+* *Migrate in parallel* — forward and receive on both, copy past mail in Thunderbird, point the MX last
 
 The next chapter stands up meetings and booking (Jitsi, Cal.com), bringing Teams
 and the booking services to our own side.

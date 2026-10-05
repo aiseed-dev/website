@@ -2634,8 +2634,8 @@ title.ja: AI に PC を一台渡す ── 自立編を動かす機械
 title.en: Give the AI a PC of Its Own — The Machine the Independence Part Runs On
 subtitle.ja: 会社の PC を一台 Debian にして、root ごと AI に渡す。初期化で戻らない物だけ、人が持つ
 subtitle.en: Turn one company PC into Debian and hand it over, root included. The human keeps only what a reinstall cannot restore
-description.ja: 自立編で立てるものは、全部どこかで動く。その置き場をここで決める。会社の PC を一台 Debian にして、AI に渡す。公開の Web、社内の道具、AI の作業を同じ一台に載せ(自前の LLM だけは別のサーバー)、画面(GNOME)も入れて動かしたままにする。サービスは Docker を使わず、apt で入れて systemd で動かす。設定は全部 AI がやるので root を渡す。設定を git に入れ、データを機械の外に写しておけば、壊れても初期化で戻せるからだ。それでも戻らない三つ(鍵と認証、外でやる操作、データの写し)だけを人が持つ。AI は別の会社のものも入れ、作った物と確かめる基準だけを渡して相互に見張らせる。費用は作るあいだ月 120 ドル、運用に入れば月 40 ドル。稟議も、サーバーの契約も、人数分のライセンスも要らない。
-description.en: Everything the Independence part stands up has to run somewhere. This chapter decides where. Turn one company PC into Debian and hand it to the AI. The public website, the in-house tools, and the AI's own work all sit on that one machine (only the self-hosted LLM goes on a separate server), with a desktop (GNOME) installed and left running. Services are installed with apt and run under systemd, not Docker. The AI does all the configuration, so it gets root: with the configuration in git and the data copied off the machine, a broken machine is recovered by reinstalling. The human keeps only the three things even that cannot restore — keys and accounts, actions taken outside the machine, and copies of the data. Add an AI from another vendor, and have them check each other with nothing but the artifact and the criteria. The bill is $120 a month while building and $40 in steady operation. No approval process, no server contract, no per-seat licenses.
+description.ja: 自立編で立てるものは、全部どこかで動く。その置き場をここで決める。会社の PC を一台 Debian にして、AI に渡す。公開の Web、社内の道具、AI の作業を同じ一台に載せ(自前の LLM だけは別のサーバー)、画面(GNOME)も入れて動かしたままにする。サービスは Docker を使わず、apt で入れて systemd で動かす。設定は全部 AI がやるので root を渡す。設定を git に入れ、データを機械の外に写しておけば、壊れても初期化で戻せるからだ。それでも戻らない三つ(鍵と認証、外でやる操作、データの写し)だけを人が持つ。AI は別の会社のものも入れ、作った物と確かめる基準だけを渡して相互に見張らせる。費用は作るあいだ月約 120 ドル、運用に入れば月約 40 ドル。稟議も、サーバーの契約も、人数分のライセンスも要らない。
+description.en: Everything the Independence part stands up has to run somewhere. This chapter decides where. Turn one company PC into Debian and hand it to the AI. The public website, the in-house tools, and the AI's own work all sit on that one machine (only the self-hosted LLM goes on a separate server), with a desktop (GNOME) installed and left running. Services are installed with apt and run under systemd, not Docker. The AI does all the configuration, so it gets root: with the configuration in git and the data copied off the machine, a broken machine is recovered by reinstalling. The human keeps only the three things even that cannot restore — keys and accounts, actions taken outside the machine, and copies of the data. Add an AI from another vendor, and have them check each other with nothing but the artifact and the criteria. The bill is about $120 a month while building and about $40 in steady operation. No approval process, no server contract, no per-seat licenses.
 date: 2026.09.20
 label: Independence 2
 title_html.ja: AI に、<span class="accent">PC を一台</span>渡す。
@@ -2659,32 +2659,27 @@ Debian にして、AI に渡す。AI にも専用の PC を一台あげる、と
 AI が一つの機械の中で全部を見られるほうが、調べるのも直すのも速い。処理が
 足りなくなったら、そのときに分ければいい。
 
-例外は、2-16 で据える自前の LLM だけだ。これは別のサーバーに置く。モデル一つで
-メモリ 19GB を取り(Ollama の North Mini Code、4 ビット版)、重さの桁がほかの
-道具と違うからだ。
+例外は、2-16 で据える自前の LLM だけだ。これは別のサーバーに置く。GPU と
+大きなメモリが要り、ほかの道具と要るものが違うからだ。
 
-== 土台は Debian にする
+== Debian の上に、apt と systemd で立てる
 
-土台は Debian にする。Python と apt は最初から入っていて、git も apt の一行で
+OS は Debian にする。Python と apt は最初から入っていて、git も apt の一行で
 入る。更新で勝手に再起動されることもない。
 
-== サービスは apt で入れ、systemd で動かす
+以降の章で立てるサービスは、Debian の apt で入れ、systemd で動かす。apt に無い
+物は、公式が配る単体のファイルを置いて、systemd に登録する。Docker は使わない。
 
-Docker は使わない。以降の章で立てるサービスは、Debian の apt で入れ、systemd で
-動かす。apt に無い物は、公式が配る単体のファイルを置いて、systemd に登録する。
-
-理由は三つある。
+*Docker は配るための道具で、作るための道具ではない*。作った物を、他人の環境で
+同じに動かしてもらうための箱だ。自分の一台で作って、そこで動かすなら、配る
+相手がいない。隔てるのは別の利用者と systemd の制限で足り、立て直しは git に
+入れた設定とデータの写しでやる。使わない理由は、具体的には三つある。
 
 * *更新が一本になる* ── apt で入れた物は、Debian のセキュリティ更新に乗り、`apt upgrade` 一つでまとめて上がる。コンテナにすると、イメージごとに版を追う仕事が別に立つ
 * *AI が直接見られる* ── 設定は `/etc` に、ログは `journalctl` に、データは決まった場所にある。コンテナを挟むと、ボリューム・ネットワーク・口の対応・利用者 ID のずれという層が一つ増え、調べるのも直すのも、外と中の二か所になる。作っては直す開発では、この一層がそのまま手間になる
 * *ファイアウォールが効く* ── Docker は、公開したコンテナの口への通信を、ufw の規則より手前で振り分ける(Docker の公式文書、2026-10-05 に確認)。「外に開けるのは 80 と 443 と ssh だけ」という決めが、コンテナの口には届かない
 
-*Docker は配るための道具で、作るための道具ではない*。作った物を、他人の環境で
-同じに動かしてもらうための箱だ。自分の一台で作って、そこで動かすなら、配る
-相手がいない。隔てるのは別の利用者と systemd の制限で足り、立て直しは git に
-入れた設定とデータの写しでやる。
-
-だから例外も、配る側から決まる。公式がコンテナでしか配っていない物は、その
+例外も、配る側から決まる。公式がコンテナでしか配っていない物は、その
 コンテナを受け取って使う。使うのは公式のイメージだけで、自分でイメージは
 作らない。配る相手のいないイメージは、守る物と直す場所を増やすだけだ。
 
@@ -2696,13 +2691,13 @@ Docker は使わない。以降の章で立てるサービスは、Debian の ap
 * 文書を画面で開いて、中の値を取る
 * ブラウザで、作った頁を実際に見る
 
-人が見るときは、手元の PC からその画面につなぐ。この接続は外には開けない。
+人が見るときは、手元の PC からその画面につなぐ。
 
 == AI に root を渡す
 
 サーバーの設定は、全部 AI がやる。入れる、設定する、動かす、直す。どれも
 命令とファイルの仕事で、やった結果が機械で確かめられる。1-01 で見た
-*ルールが決まっていて、答え合わせができる領域* に、そのまま当てはまる。
+*ルールが明確で、答え合わせができる領域* に、そのまま当てはまる。
 
 権限を渡してよい理由は一つだ。壊れても、初期化して始め直せる。ただし、初期化で
 戻るのは OS だけだ。設定とデータは、二つの決めで戻せるようにしておく。
@@ -2727,7 +2722,7 @@ Docker は使わない。以降の章で立てるサービスは、Debian の ap
 * 画面への接続は外に開けない。手元の PC から ssh の中を通す
 * 公開の Web と AI の作業は、別の利用者で動かす
 
-公開の側に穴が出たときに、AI の側の書類と鍵に届かないようにするためだ。
+公開の側に穴が出たときに、AI の側のデータと鍵に届かないようにするためだ。
 2-05 で書く「中央は最小限、守りは各サーバーで多層に」は、機械が一台でも
 変わらない。
 
@@ -2745,32 +2740,32 @@ link:/ai-native-software/lockin/[3-05] で見るロックインを避けるの�
 * 外から届く回線。固定 IP か DDNS で名前を向ける(2-11)。メールを扱うなら、固定 IP と逆引き(PTR)が要る(2-08)
 * AI の利用料
 
-逆引き(PTR)は、IP アドレスから名前を引く記録だ。ふだんの DNS が名前から IP を
-引くのと、向きが逆になる。メールを受け取る側のサーバーは、送ってきた機械の IP を
-逆引きして、引けた名前がまた同じ IP に戻るかを確かめる。戻らなければ、迷惑メール
-として扱うか、受け取らない。Gmail は、送る機械のすべてにこれを求めている(Google
-の送信者ガイドライン、2026-10-05 に確認)。
-
-逆引きを設定するのは、IP アドレスの持ち主である回線の事業者だ。固定 IP の回線
-なら、普通は設定してあるので、こちらですることはない。
-
 メモリやディスクの量は、ここでは決めない。この連載で立てる物を AI に伝えれば、
 手元の PC で足りるか、何を足せばよいかは AI が決める。
 
 サーバーは安い物でよい。壊れたら取り替える。専用のサーバー機も、保守契約も
 要らない。
 
+逆引き(PTR)は、IP アドレスから名前を引く記録だ。ふだんの DNS が名前から IP を
+引くのと、向きが逆になる。メールを受け取る側のサーバーは、送ってきた機械の IP を
+逆引きして、引けた名前がまた同じ IP に戻るかを確かめる。戻らなければ、迷惑メール
+として扱うか、受け取らない。Gmail も Outlook.com も、送る機械にこれを求めている
+(Google の送信者ガイドライン、Outlook.com の送信者向け方針、2026-10-05 に確認)。
+
+逆引きを設定するのは、IP アドレスの持ち主である回線の事業者だ。固定 IP の回線
+なら、普通は設定してあるので、こちらですることはない。
+
 == 費用
 
 2026-10-05 時点の公開価格(税抜・月払い)で、Claude は Pro が月 20 ドル、Max が
 月 100 ドルからだ。別の会社の AI も、基本の契約は同じ価格帯にある(ChatGPT Plus
-が月 20 ドル)。二つ並ぶのは、相互に見張らせるために、別の会社と二契約する
+は日本の公式頁で月 3,000 円)。二つ並ぶのは、相互に見張らせるために、別の会社と二契約する
 からである。
 
 |===
 | 時期 | 契約 | 月額
-| 作るあいだ | Claude Max 100 ドル + 別の会社の基本の契約 20 ドル | 120 ドル
-| 運用に入ったら | Claude Pro 20 ドル + 別の会社の基本の契約 20 ドル | 40 ドル(税込みでも月 1 万円以内)
+| 作るあいだ | Claude Max 100 ドル + 別の会社の基本の契約 約 20 ドル | 約 120 ドル
+| 運用に入ったら | Claude Pro 20 ドル + 別の会社の基本の契約 約 20 ドル | 約 40 ドル(税込みでも月 1 万円以内)
 |===
 
 運用での AI の仕事は、動いているかを確かめることと、小さな直しになる。一日
@@ -2811,6 +2806,8 @@ sudo ss -tlnp               # 4 ── 待ち受けている口を見る
 
 * DNS のレコードを変える
 * ファイアウォールの口を新しく開ける
+* メールを外へ送る
+* 外のサービスのデータを消す
 * OS を初期化する
 * 機械の外に置いたデータの写しを消す
 
@@ -2826,15 +2823,15 @@ sudo ss -tlnp               # 4 ── 待ち受けている口を見る
 自立編を動かす機械を、最初に決める。
 
 * *一台で全部* ── 公開の Web、社内の道具、AI の作業を、同じ機械に載せる。自前の LLM だけは別のサーバー
-* *土台は Debian* ── Python と apt が最初からあり、更新で勝手に再起動しない
+* *OS は Debian* ── Python と apt が最初からあり、更新で勝手に再起動しない
 * *Docker は使わない* ── 配るための道具で、作るための道具ではない。apt で入れ、systemd で動かす。例外は公式がコンテナでしか配らない物だけで、イメージは自分で作らない
 * *画面も入れる* ── 文書を開く、頁を見る
 * *AI に root* ── 設定は git に、データは機械の外に写す。だから初期化で戻せる
 * *人が持つのは三つ* ── 鍵と認証、外でやる操作、データの写し
 * *AI は複数* ── 別の会社の AI に、作った物と基準だけを渡して見張らせる
-* *費用* ── 作るあいだ月 120 ドル、運用は月 40 ドル(2026-10-05 時点、税抜)
+* *費用* ── 作るあいだ月約 120 ドル、運用は月約 40 ドル(2026-10-05 時点、税抜)
 
-次章では、この機械の上に *データ基盤(SQLite・PostgreSQL・DuckDB)* を据える。
+次章では、この機械の上に *土台(SQLite・PostgreSQL・DuckDB)* を据える。
 
 '''
 
@@ -2867,33 +2864,28 @@ it can see the whole machine from inside. When the load outgrows one box, split
 it then.
 
 The one exception is the self-hosted LLM set up in 2-16. It goes on a separate
-server. One model takes 19GB of memory (North Mini Code on Ollama, 4-bit), an
-order of weight apart from every other tool.
+server. It needs a GPU and a lot of memory, which nothing else here does.
 
-== Debian is the base
+== Build on Debian, with apt and systemd
 
-The base is Debian. Python and apt are there from the start, and git is one apt
+The OS is Debian. Python and apt are there from the start, and git is one apt
 line away. Updates never reboot the machine on someone else's schedule.
 
-== Install services with apt and run them under systemd
-
-No Docker. The services the following chapters stand up are installed with
-Debian's apt and run under systemd. Anything apt does not carry is installed as
-the single file its project publishes, and registered with systemd.
-
-There are three reasons.
-
-* *One update stream* — what apt installs rides Debian's security updates, and one `apt upgrade` raises it all. Containers add a second job: tracking the version of every image
-* *The AI sees everything directly* — configuration in `/etc`, logs in `journalctl`, data in known places. A container adds a layer of volumes, networks, port mappings, and mismatched user IDs, so every diagnosis and every fix happens in two places, outside and inside. In development, where you build and fix over and over, that layer is the cost
-* *The firewall holds* — Docker diverts traffic to a published container port before it reaches ufw's rules (Docker's own documentation, checked 2026-10-05). The rule "only 80, 443, and ssh are open" does not reach a container's ports
+The services the following chapters stand up are installed with Debian's apt and
+run under systemd. Anything apt does not carry is installed as the single file its
+project publishes, and registered with systemd. No Docker.
 
 *Docker is a tool for distributing, not for building.* It is a box that lets
 someone else run what you made, unchanged, in their environment. When you build on
 your own machine and run it there, there is no one to distribute to. Isolation is
 covered by separate users and systemd's restrictions; rebuilding, by configuration
-in git and copies of the data.
+in git and copies of the data. Concretely, there are three reasons not to use it.
 
-So the exception is set from the distributing side too. Something whose project
+* *One update stream* — what apt installs rides Debian's security updates, and one `apt upgrade` raises it all. Containers add a second job: tracking the version of every image
+* *The AI sees everything directly* — configuration in `/etc`, logs in `journalctl`, data in known places. A container adds a layer of volumes, networks, port mappings, and mismatched user IDs, so every diagnosis and every fix happens in two places, outside and inside. In development, where you build and fix over and over, that layer is the cost
+* *The firewall holds* — Docker diverts traffic to a published container port before it reaches ufw's rules (Docker's own documentation, checked 2026-10-05). The rule "only 80, 443, and ssh are open" does not reach a container's ports
+
+The exception is set from the distributing side too. Something whose project
 ships it only as a container is received as that container and run. Use only the
 official image, and never build one of your own. An image with no one to
 distribute to only adds things to keep and places to fix.
@@ -2908,14 +2900,13 @@ one.
 * Look at a page you built, in a real browser
 
 When a person needs to look, they connect to that desktop from their own PC.
-That connection is never opened to the outside.
 
 == Hand the AI root
 
 The AI does all the server configuration: installing, configuring, running,
 repairing. Every one of those is work in commands and files, and the result can
 be checked mechanically. It falls squarely inside what 1-01 described as
-*a domain with fixed rules, where the answer can be verified.*
+*a domain where the rules are explicit and the answer can be checked.*
 
 There is one reason it is safe to hand over the privilege. If it breaks, you
 reinstall and start again. But a reinstall restores only the operating system.
@@ -2941,8 +2932,8 @@ Everything other than these three can be left to the AI.
 * The desktop connection is not exposed; tunnel it from your own PC through ssh
 * The public website and the AI's work run as different users
 
-The point is that a hole on the public side must not reach the documents and keys
-on the AI's side. What 2-05 says, *central minimal and defense in depth at every
+The point is that a hole on the public side must not reach the data and keys on
+the AI's side. What 2-05 says, *central minimal and defense in depth at every
 server*, does not change because there is only one machine.
 
 == Run more than one AI, and have them watch each other
@@ -2961,33 +2952,34 @@ how the thing was built. An AI that shares your reasoning shares your blind spot
 * A connection reachable from outside. Point a name at it with a fixed IP or DDNS (2-11). Handling mail needs a fixed IP and reverse DNS (PTR) (2-08)
 * The AI subscriptions
 
-Reverse DNS (PTR) is the record that looks up a name from an IP address — the
-opposite direction from ordinary DNS, which looks up an IP from a name. A
-receiving mail server takes the IP of the machine that sent to it, looks it up in
-reverse, and checks that the name it gets resolves back to the same IP. If it does
-not, the mail is treated as spam or refused. Gmail requires this of every sending
-machine (Google's email sender guidelines, checked 2026-10-05).
-
-The reverse record is set by the owner of the IP address, the line provider. On a
-fixed-IP line it is normally already in place, so there is nothing for you to do.
-
 Memory and disk sizes are not set here. Tell the AI what this series stands up,
 and it decides whether the PC at hand is enough and what to add.
 
 The server can be cheap hardware. If it breaks, replace it. No dedicated server
 machine, no maintenance contract.
 
+Reverse DNS (PTR) is the record that looks up a name from an IP address — the
+opposite direction from ordinary DNS, which looks up an IP from a name. A
+receiving mail server takes the IP of the machine that sent to it, looks it up in
+reverse, and checks that the name it gets resolves back to the same IP. If it does
+not, the mail is treated as spam or refused. Gmail and Outlook.com both require it
+of sending machines (Google's email sender guidelines and Outlook.com's sender
+policies, checked 2026-10-05).
+
+The reverse record is set by the owner of the IP address, the line provider. On a
+fixed-IP line it is normally already in place, so there is nothing for you to do.
+
 == What it costs
 
 At list prices on 2026-10-05 (excluding tax, billed monthly), Claude Pro is $20 a
 month and Claude Max starts at $100. Another vendor's base plan sits in the same
-range (ChatGPT Plus is $20 a month). Two are listed because you subscribe with two
+range (ChatGPT Plus is ¥3,000 a month on the Japanese pricing page). Two are listed because you subscribe with two
 vendors, so they can check each other.
 
 |===
 | Phase | Subscriptions | Per month
-| While building | Claude Max $100 + another vendor's base plan $20 | $120
-| In steady operation | Claude Pro $20 + another vendor's base plan $20 | $40 (under ¥10,000 even with tax)
+| While building | Claude Max $100 + another vendor's base plan, about $20 | about $120
+| In steady operation | Claude Pro $20 + another vendor's base plan, about $20 | about $40 (under ¥10,000 even with tax)
 |===
 
 In operation the AI's work is confirming things run and making small fixes. You
@@ -3029,6 +3021,8 @@ sudo ss -tlnp               # 4 — list the listening ports
 
 * Changing a DNS record
 * Opening a new port in the firewall
+* Sending mail to the outside
+* Deleting data in an external service
 * Reinstalling the operating system
 * Deleting a data copy kept off the machine
 
@@ -3044,15 +3038,15 @@ sudo ss -tlnp               # 4 — list the listening ports
 Decide the machine the Independence part runs on, first.
 
 * *One machine for all of it* — public website, in-house tools, the AI's own work; only the self-hosted LLM goes on a separate server
-* *Debian as the base* — Python and apt from the start, no reboots on someone else's schedule
+* *Debian as the OS* — Python and apt from the start, no reboots on someone else's schedule
 * *No Docker* — a tool for distributing, not for building. Install with apt, run under systemd. The only exception is software shipped only as a container, and you never build an image yourself
 * *Install the desktop too* — open documents, look at pages
 * *Root to the AI* — configuration in git, data copied off the machine, so a reinstall restores it
 * *Three things the human holds* — keys and accounts, outside actions, copies of the data
 * *More than one AI* — pair vendors and pass only the artifact and the criteria
-* *Cost* — $120 a month while building, $40 in operation (as of 2026-10-05, excluding tax)
+* *Cost* — about $120 a month while building, about $40 in operation (as of 2026-10-05, excluding tax)
 
-The next chapter lays the *data foundation (SQLite, PostgreSQL, DuckDB)* on this
+The next chapter lays the *foundation (SQLite, PostgreSQL, DuckDB)* on this
 machine.
 
 '''

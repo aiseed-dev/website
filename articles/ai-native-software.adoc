@@ -7954,8 +7954,8 @@ title.ja: API を作る ── FastAPI で基幹のロジックを出す
 title.en: Build an API — Expose Core Logic with FastAPI
 subtitle.ja: 基幹システムを並行稼働で書き換え、自社固有のロジックを一箇所の API にまとめる
 subtitle.en: Rewrite the core system via parallel operation and gather your own logic into one API
-description.ja: 「壊すな・触るな」はもう古い。AI で基幹システムの書き換えコストは桁で下がった。新しいシステムを FastAPI で作り、旧システムと並行で動かし、出力を実測で突き合わせる。差分が消えたら旧を止める。業務知識は一気に Markdown に出し、現場がテストを書き、委託は止める。書き換えた基幹ロジックは、2-03 の PostgreSQL を読み書きし、2-05 の門番のトークンで本人確認する一本の API として着地する。参考実装は kura。
-description.en: 'Don't break it, don't touch it' is old advice. AI has cut the cost of rewriting a core system by an order of magnitude. Build the new system in FastAPI, run it beside the old one, and compare the outputs against reality. When the diffs vanish, stop the old. Push business knowledge out into Markdown all at once, let the floor write the tests, and stop outsourcing. The rewritten core logic lands as one API that reads and writes the 2-03 PostgreSQL and verifies identity with the 2-05 gate's token. The reference implementation is kura.
+description.ja: 「壊すな・触るな」はもう古い。AI で基幹システムの書き換えコストは桁で下がった。新しいシステムを FastAPI で作り、旧システムと並行で動かし、出力を実測で突き合わせる。差分が消えたら旧を止める。業務知識は一気に Markdown に出し、現場がテストを書き、委託は止める。書き換えた基幹ロジックは、2-03 の PostgreSQL を読み書きし、2-05 の門番のトークンで本人確認する一本の API として着地する。最初の一本は、予約の受け口でよい。
+description.en: 'Don't break it, don't touch it' is old advice. AI has cut the cost of rewriting a core system by an order of magnitude. Build the new system in FastAPI, run it beside the old one, and compare the outputs against reality. When the diffs vanish, stop the old. Push business knowledge out into Markdown all at once, let the floor write the tests, and stop outsourcing. The rewritten core logic lands as one API that reads and writes the 2-03 PostgreSQL and verifies identity with the 2-05 gate's token. The first one can be the booking intake.
 date: 2026.07.15
 label: Independence 12
 title_html.ja: 基幹を<span class="accent">並行稼働</span>で書き換え、<br>ロジックを一箇所の API に。
@@ -7975,11 +7975,11 @@ FastAPI。順に見ていく。
 
 == 「壊すな」「触るな」は、コストが高かった時代の助言だ
 
-過去 20 年、基幹システムを担当する人間に与えられてきた助言は、こうだ。
+長いあいだ、基幹システムを担当する人間に与えられてきた助言は、こうだ。
 
 「壊すな」「触るな」「動いているものに手を入れるな」「既存資産を活かせ」。
 
-これは、書き換えのコストが高すぎた時代の助言だった。書き換えに数年・数億円
+これは、書き換えのコストが高すぎた時代の助言だった。書き換えに何年も、何億も
 かかる時代には、「動いているものは触らない」が確かに正解だった。
 
 時代が変わった。
@@ -8023,24 +8023,26 @@ flowchart LR
 ```
 
 二つの出力が一致するなら、新システムは正しい。一致しないなら、どちらかが間違って
-いる。だいたい、旧システムに 20 年前から残っていたバグが先に見つかる。ドキュメント
-に書かれていなかったバグだ。
+いる。たいてい、旧システムに昔から残っていたバグが先に見つかる。ドキュメントに
+書かれていなかったバグだ。
 
-これを 1 ヶ月、3 ヶ月続ける。差分がゼロになり、想定外のケースもカバーされたと確認
-できたら、旧システムを止める。
+これを、先に決めた期間だけ続ける。差分がゼロになり、想定外のケースもカバーされたと
+確認できたら、旧システムを止める。
 
 並行稼働は、書き換えのリスクを *実測* で潰す手段だ。机上の検証ではない。仕様書の
 レビューではない。本番環境で、実データで、動かして確かめる。
 
-== 旧システムは、長くても六ヶ月で止める
+== 旧システムを止める日は、先に決める
 
-並行稼働の期間は、長くて 6 ヶ月、ふつう 3 ヶ月もあれば充分だ。
+並行稼働の期間は、始める前に決める。月次の処理なら「差分ゼロの月が三回続いたら
+止める」、日次なら「差分ゼロの日が決めた日数続いたら止める」のように、止める条件を
+数字で書いておく。
 
-それ以上長く並行稼働させる必要があるなら、そもそも新システムが正しくない。新システム
-を直す。並行稼働を「ずっと」やってはいけない。
+その条件を過ぎても止められないなら、そもそも新システムが正しくない。新システムを
+直す。並行稼働を「ずっと」やってはいけない。
 
-組織の中には「旧システムを念のため残しておく」という心理が働く。これは罠だ。残し
-続けると、こうなる。
+組織の中には「旧システムを念のため残しておく」という心理が働く。ここに問題がある。
+残し続けると、こうなる。
 
 * 運用コストが二重になる
 * 担当者が分散する
@@ -8055,16 +8057,16 @@ ____
 止められないなら、最初から書き換えるべきではなかった。やる時はやる。
 
 「既存資産を活かしつつ AI で補う」── これは、結局、旧システムが残り続けることを許容
-する考え方だ。新しい機能は外側に積み上がり、中身は古いまま。3 年経っても 5 年経っても、
+する考え方だ。新しい機能は外側に積み上がり、中身は古いまま。何年経っても、
 組織は AI ネイティブにならない。中途半端な共存は、組織を硬直させる。「補う」が
 許されるのは、書き換えコストが本当に高すぎた過去の話だ。今は違う。
 
-== ベンダー製品も、同じ手で殺す
+== ベンダー製品も、同じ手で止める
 
 Oracle、SAP、Salesforce、Microsoft の業務製品 ── これらは「製品」を売っているのでは
 ない。「製品を使い続けないといけない状況」を売っている。
 
-並行稼働で殺す段取りは、こうなる。
+並行稼働で抜ける段取りは、こうなる。
 
 . 製品からデータを毎日エクスポートする(製品はそのまま動かす)
 . AI で書いた新システムが、エクスポートを処理して同じ業務を回す
@@ -8072,13 +8074,12 @@ Oracle、SAP、Salesforce、Microsoft の業務製品 ── これらは「製�
 . 数字が一致したら、製品契約を更新しない
 . 製品から「全データエクスポート」を最後にもらって、新システムに完全移行
 
-契約更新時期に間に合わせる。これは戦略的なスケジュールだ。10 月に契約更新が
-あるなら、6 月までに並行稼働を始める。3 ヶ月走らせて、9 月に意思決定。
+契約更新の時期に間に合わせる。これは戦略的なスケジュールだ。更新日から、並行稼働の
+期間と意思決定の時間を逆算して、始める日を決める。
 
 ベンダーは「移行リスク」「データ整合性」「ベテラン担当者の引き止め」── あらゆる
 カードで引き止めにかかる。並行稼働で同じ出力が出ていれば、それらは全部反論できる。
-証拠が手元にある。ライセンス料は年に数千万円単位だ。それを止められれば、新システム
-の開発コストは数ヶ月で回収できる。
+証拠が手元にある。ライセンス料は契約書に書いてある。それが止まる。
 
 == 業務知識は、一気に Markdown に出す
 
@@ -8091,16 +8092,15 @@ Oracle、SAP、Salesforce、Microsoft の業務製品 ── これらは「製�
 時代が変わった。
 
 旧システムのコード、コメント、SQL、運用手順書、過去の障害報告 ── これらを全部
-Claude に渡す。「業務ロジックを抽出して Markdown で整理しろ」と頼む。数千行の
-コードベースなら、数時間で初版が出る。数万行でも、数日で完了する。数ヶ月の作業が、
-数日に縮む。
+AI に渡す。「業務ロジックを抽出して Markdown で整理しろ」と頼む。初版は、人が
+空き時間に書くのとは桁の違う速さで出る。
 
-完璧でなくていい。80% で十分だ。残り 20% は、並行稼働中に出力差分として現れる。
-差分を一つずつ潰していけば、業務知識は完成する。
+完璧でなくていい。初版は、たたき台で十分だ。足りない分は、並行稼働中に出力差分と
+して現れる。差分を一つずつ潰していけば、業務知識は完成する。
 
 これが、並行稼働の隠れた効用でもある。*書かれていなかった業務ルールが、並行稼働で
 全部炙り出される*。机上で書かれた仕様書には現れない、実運用で初めて分かるルール ──
-これが、Claude による初版 Markdown と、並行稼働の出力差分の両方から、引き出される。
+これが、AI による初版 Markdown と、並行稼働の出力差分の両方から、引き出される。
 文書を自分の側に取り戻す話は 2-07 で扱った。基幹の業務知識もまた、同じく読める素材
 に落ちる。
 
@@ -8115,22 +8115,22 @@ Claude に渡す。「業務ロジックを抽出して Markdown で整理しろ
 
 今は違う。
 
-コードを書く能力は、Claude が持っている。残るのは業務ルールの知識だけだ。そして、
+コードを書く能力は、AI が持っている。残るのは業務ルールの知識だけだ。そして、
 業務ルールを最も深く知っているのは、毎日その業務を回している現場の人間である。現場の
-人間が、Claude にコードを書かせる。これで完結する。途中の伝言ゲームが要らない。
+人間が、AI にコードを書かせる。これで完結する。途中の伝言ゲームが要らない。
 
 並行稼働で重要なのは、出力差分を見つけることだ。新システムが旧と同じ出力を出すか ──
 これを判定するためのテストデータが要る。このテストデータを作るのに、最も向いて
 いるのが現場の人間だ。
 
 「7 月の請求は 10 日締めだが、お盆休みを考慮して翌月 5 日まで延長する」── このルールを
-知っている現場の人間が、Claude にこう頼む。「7 月のお盆延長を考慮した請求テストデータ
-を 50 件作って」。Claude が作る。実際に旧システムを通して、期待出力を生成する。これが
+知っている現場の人間が、AI にこう頼む。「7 月のお盆延長を考慮した請求テストデータ
+を作って」。AI が作る。実際に旧システムを通して、期待出力を生成する。これが
 テストデータになる。
 
 机上の仕様書には書かれていなかったルールが、テストの形で実体化する。業務知識が、現場
-からテストへ、そしてコードへと流れる。これは、IT 部門には絶対に書けないテストだ。
-彼らはルールを知らない。ルールを知らない者がテストを書くから、書き換えは失敗してきた。
+からテストへ、そしてコードへと流れる。このテストは IT 部門では書けない。ルールは
+現場にある。ルールを知らない者がテストを書くから、書き換えは失敗してきた。
 
 == 委託は止める
 
@@ -8139,16 +8139,16 @@ Claude に渡す。「業務ロジックを抽出して Markdown で整理しろ
 基幹システムの書き換えを、IT ベンダーやコンサルタントに委託する必要は無い。
 
 委託の伝統的な根拠は二つだった。(1) コードを書く能力が外側にしかない。(2) 業務ルール
-の知識を外側に伝える必要がある。(1) は、Claude が解決した。(2) は、そもそも外に伝える
-必要が無くなった。現場と Claude で完結する。
+の知識を外側に伝える必要がある。(1) は、AI が解決した。(2) は、そもそも外に伝える
+必要が無くなった。現場と AI で完結する。
 
-ベンダーへの委託費は、基幹システム書き換えで最大のコスト項目だ。年間数千万円から
-数億円。これが要らなくなる。業務ルールを知っている現場の人間が、Claude にコードを
-書かせ、Claude にテストを書かせ、並行稼働で実測する。書き換えは、外注するものではなく、
-内製で行うものに変わる。業務を知る者が、Claude を使って、自分の業務を書き換える ──
-これが新しい現場の作法だ。
+ベンダーへの委託費は、基幹システム書き換えで最大のコスト項目だ。これが要らなく
+なる。業務ルールを知っている現場の人間が、AI にコードを書かせ、AI にテストを
+書かせ、並行稼働で実測する。書き換えは、外注するものではなく、内製で行うものに
+変わる。業務を知る者が、AI を使って、自分の業務を書き換える ── これが新しい現場の
+作法だ。
 
-これは IT 部門の役割の縮小ではない。IT 部門は、現場と Claude のチームを支える基盤
+これは IT 部門の役割の縮小ではない。IT 部門は、現場と AI のチームを支える基盤
 (インフラ、データベース、デプロイ環境、セキュリティ)を整える役割に集中できる。
 重複した「業務ロジックの仲介」役を抜ける。
 
@@ -8157,13 +8157,13 @@ Claude に渡す。「業務ロジックを抽出して Markdown で整理しろ
 論理層を FastAPI に書き換えるのと同じ要領で、DB も並行稼働で置き換える。
 
 データベースは残す。しかし、ベンダー方言は捨てる。`SELECT`、`JOIN`、`GROUP BY`、
-ウィンドウ関数 ── 標準 SQL は 50 年前から動いていて、これからも 50 年動く。Claude も
+ウィンドウ関数 ── 標準 SQL は 1970 年代から動いていて、この先も動く。AI も
 完全に書ける。残すのは標準 SQL、捨てるのはベンダー方言 ── この線引きが要だ。
 
 Oracle の PL/SQL、Microsoft SQL Server の T-SQL ── これらは捨てる。ベンダー固有の
 方言だ。データベースに業務ロジックを埋め込むことで、ベンダーロックインの最後の砦を
 作ってきた。PL/SQL のストアドプロシージャに埋め込まれた業務ロジックは、Python に
-書き直す。Claude に PL/SQL を渡せば、業務ルールを抽出した上で Python に翻訳して出す。
+書き直す。AI に PL/SQL を渡せば、業務ルールを抽出した上で Python に翻訳して出す。
 業務ロジックが、不可視のストアドからコードに戻る。可読性が上がり、バージョン管理でき、
 テストできる。
 
@@ -8175,8 +8175,8 @@ Oracle / SQL Server を捨てることが、ベンダーロックインからの
 DDL の方言変換、Azure SQL や pgloader を使った具体的な移行手順は、2-03 で詳しく
 扱った。本章では「標準 SQL は残し、方言とロジックは抜く」という判断だけ押さえて
 おけばいい。論理層を Python にするだけでは、ロックインは半分しか抜けない。
-PostgreSQL への移行が、抜ける最後のステップだ。そして、ライセンス費の年間コストが、
-新システムの開発費を数ヶ月で回収する。財務的にも、書き換えない理由が無い。
+PostgreSQL への移行が、抜ける最後のステップだ。そして、止まるライセンス費は
+契約書にある。新システムの開発費と並べれば、書き換えない理由が無いことが分かる。
 
 == ロックインから抜ける方法は、いつも同じだ
 
@@ -8186,7 +8186,7 @@ PostgreSQL への移行が、抜ける最後のステップだ。そして、ラ
 * Oracle / SQL Server → PostgreSQL に置き換える
 * PL/SQL のストアドプロシージャ → Python の関数に置き換える
 * SAP / Salesforce → 自前システムに置き換える
-* IT ベンダーやコンサルタントの委託 → 現場と Claude に置き換える
+* IT ベンダーやコンサルタントの委託 → 現場と AI に置き換える
 
 これらは別々の問題ではない。同じ手で全部抜ける ── 並行稼働で書き換える。
 
@@ -8221,73 +8221,86 @@ def orders(user=Depends(verify_token)):       # 2-05 の門番が誰かを確か
 これは並行稼働の論理そのものを、一本の API の粒度で回すことに他ならない。重い処理は
 裏で Python が捌き、結果だけ返す。
 
-公開リポジトリ kura(`aiseed-dev/workspace`)が、この構成だ ── PocketBase 認証と
-FastAPI と Flet フロント。コードは 2-06 の Forgejo に置き、2-11 の公開 Web や社内
-アプリから呼ぶ。並行稼働で書き換えた基幹ロジックが、最後にこの一本の API として着地
-する。
+コードは 2-06 の Forgejo に置き、2-11 の公開 Web や社内アプリから呼ぶ。並行稼働で
+書き換えた基幹ロジックが、最後にこの一本の API として着地する。
 
-== 例: 月次決算処理を三ヶ月で置き換える
+== 最初の一本は、予約の受け口でよい
+
+いきなり基幹から始めなくてよい。2-09 で送った予約の受け口は、この章の形をそのまま
+小さく持っている。決めは五つだ。
+
+* 受付の枠と予約は、2-03 の PostgreSQL に置く
+* 予定は、2-09 の Radicale に CalDAV で書く。Thunderbird とスマホに、そのまま出る
+* 確認と前日の連絡は、2-08 のメールで送る。会議なら 2-09 の Jitsi のリンクを添える
+* 身元は、2-11 のとおり門番のワンタイムで確かめてから受ける
+* 画面は、公開 Web(2-11)の静的な頁から、この API を呼ぶ
+
+```python
+@app.post("/bookings")
+def book(slot_id: int, user=Depends(verify_otp)):   # 2-11 ── ワンタイムで確かめた人だけ
+    db.execute("INSERT INTO bookings ...", [slot_id, user.email])   # 2-03
+    caldav.put(event_for(slot_id, user.email))                    # 2-09
+    mail.send(user.email, confirmation(slot_id))                  # 2-08
+```
+
+土台・門番・メール・カレンダーの上に、関数一つが乗る。これが「立てた物の上に
+書く」ということだ。基幹の一本も、同じ形で大きくなる。
+
+== 例: 月次決算処理を並行稼働で置き換える
 
 月末に動く決算処理バッチを考える。
 
-*旧*: COBOL や Java で書かれた、5 年前から動いているバッチ。中身は誰も完全には
+*旧*: COBOL や Java で書かれた、長く動いているバッチ。中身は誰も完全には
 理解していない。月末に動く。失敗すると経理が止まる。
 
-*第一週*: 旧バッチの入力(前月の取引データ)と出力(決算サマリ)を 12 ヶ月分
+*第一週*: 旧バッチの入力(前月の取引データ)と出力(決算サマリ)を一年分
 エクスポートする。これを正解データとする。
 
-*第二週*: Claude に旧コードと運用ドキュメントを渡し、FastAPI 上の Python で同等
-処理を書かせる。12 ヶ月分のデータを流し、出力が正解と一致するか確認する。一致しない
+*第二週*: AI に旧コードと運用ドキュメントを渡し、FastAPI 上の Python で同等
+処理を書かせる。一年分のデータを流し、出力が正解と一致するか確認する。一致しない
 ところを潰す。
 
 *第三週〜第六週*: 旧システムが動く本番タイミングで、同じ入力を新システムにも流す。
 毎月、出力を突き合わせる。差分があれば原因を特定して修正。
 
-*第三月*: 差分がゼロの月が連続したら、責任者が決断する。「来月から新システムで
-運用」。旧バッチは止める。
+*決めた月*: 差分がゼロの月が決めた回数続いたら、責任者が決断する。「来月から
+新システムで運用」。旧バッチは止める。
 
-3 ヶ月で書き換え完了。担当者の負担は、並行稼働中だけ二重になるが、それが終わると
-半減する。そして、業務ロジックがコードと Markdown の両方で読める状態になる。
+担当者の負担は、並行稼働中だけ二重になるが、それが終わると軽くなる。そして、業務ロジックがコードと Markdown の両方で読める状態になる。
 
 == 例: SAP の出荷管理から抜ける
 
-中規模製造業の出荷管理を SAP で動かしている会社。ライセンス年額は数千万円。
+中規模製造業の出荷管理を SAP で動かしている会社。
 
 . *データ層*: SAP から夜間バッチで出荷データを Parquet にエクスポート
   (2-03 の Parquet と DuckDB)── SAP は触らない、読み取りのみ
 . *新ロジック層*: Polars と DuckDB で在庫照合・出荷判定・運送業者の振分けを
-  Python で書く(Claude が現場ヒアリングと既存 SAP の設定画面のスクショから初版を
+  Python で書く(AI が現場ヒアリングと既存 SAP の設定画面のスクショから初版を
   生成)
-. *API・画面層*: 現場用の出荷指示は FastAPI(本章)で API 化し、HTML で画面を
-  出す。社内 LAN だけで動かすので 2-02 の miniPC でホストできる
+. *API・画面層*: 現場用の出荷指示は FastAPI(この章)で API 化し、HTML で画面を
+  出す。社内 LAN だけで動かすので 2-02 の一台でホストできる
 . *突き合わせ*: 毎日、SAP の出荷結果と新システムの出荷結果を比較。差分があれば
-  原因を Claude と一緒に追う。ほぼ毎週、SAP 側に「実は文書化されていなかったルール」
-  が見つかる
-. *3 ヶ月後*: 差分ゼロが 2 週間続いたら、新システムを本番に昇格、SAP は来年度の
+  原因を AI と一緒に追う。SAP 側に「実は文書化されていなかったルール」が何度も
+  見つかる
+. *決めた日*: 差分ゼロが決めた日数続いたら、新システムを本番に昇格、SAP は次の
   契約更新前に止める
 
-結果はこうなる。ライセンス費の年間数千万円が消える。業務ロジックが Markdown と
-Python に出る(SAP の「業務コンサルタント」が二度と要らない)。カスタマイズが現場で
-当日できる(これまでは SAP ベンダーに依頼、数ヶ月待ち)。
+結果はこうなる。ライセンス費が消える。業務ロジックが Markdown と Python に出る
+(SAP の「業務コンサルタント」が二度と要らない)。カスタマイズが現場で当日できる
+(これまでは SAP ベンダーに依頼して待っていた)。
 
-これは 2-07 の「文書を自分の側に取り戻す」の基幹システム版だ。「Office を一度に
-捨てない、CSV から抜ける」と同じ構造で、「SAP を一度に捨てない、並行稼働で殺す」。
+これは 2-07 の「中身を自分の側に取り戻す」の基幹システム版だ。一度に捨てず、
+並行で抜ける。「SAP を一度に捨てない、並行稼働で抜ける」。
 
-== 数字が、書き換えの安さを示す
+== 数字は、自分の契約書と見積もりにある
 
-PL/SQL 5,000 行の業務ロジックを Python に翻訳、SI ベンダーの外注見積もり: 約
-3,000 万円。現場担当者が Claude で書き換え、開発期間 1 ヶ月、人件費約 100 万円。
-30 分の 1 だ。
+書き換えるかどうかを決めるときに効く数字は、二つしかない。どちらも自分の手元にある。
 
-Oracle Enterprise Edition のライセンス: 20 CPU で年間約 4,000 万円 + 保守料 22%。
-PostgreSQL に移行で年間ゼロ円。新システム開発費を 1 ヶ月で回収する。
+* *いま払っているライセンス料* ── 契約書に書いてある。製品を止めれば、これが止まる
+* *書き換えの見積もり* ── 外注するなら、ベンダーから見積もりを取る。内製なら、並行稼働の期間に担当者が割く時間だ
 
-並行稼働 3 ヶ月で発見した未文書化の業務ルール: 1 つの業務システムで平均
-20〜50 件。机上の仕様書では一つも見えなかったルールが、出力差分として全部
-炙り出される。
-
-業務知識を Markdown 化する作業: 担当者の空き時間でやると 6 ヶ月〜1 年。Claude に全
-コードベースを渡して一気にやれば、1 週間で 80%。
+この二つを並べれば、自分の会社の数字で判断できる。一般の相場や他社の事例は要らない。
+並行稼働で見つかる未文書化のルールの数も、書き換えてみれば自分の数字が出る。
 
 小さな業務システムを丸ごと見たければ、公開リポジトリに実例がある ── seminar-kit
 (https://github.com/aiseed-dev/seminar-kit[`aiseed-dev/seminar-kit`]。
@@ -8318,7 +8331,7 @@ mfg-kit(https://github.com/aiseed-dev/mfg-kit[`aiseed-dev/mfg-kit`]。
 == 画面を作る前に、デザインの基本を四つだけ押さえる
 
 書き換えた基幹は、API として着地した。残るのは画面だ。道具は Flet(API と同じ
-Python の宣言的 UI。kura のフロントも Flet)でいい。問題は道具ではない ──
+Python の宣言的 UI、2-04)でいい。問題は道具ではない ──
 フロントエンドエンジニア以外は、デザインを教わったことが無い。だから AI が出した
 画面の良し悪しを判定できず、「もっと良い感じに」としか言えなくなる。
 
@@ -8368,14 +8381,13 @@ Python の宣言的 UI。kura のフロントも Flet)でいい。問題は道�
 
 それに、現場はグリッドをよく知っている。Excel のセルを小さな方眼に切り、枠に合わせて
 帳票を組む ── いわゆる神エクセル(Excel 方眼紙)だ。IT 業界はこれを「機械に読めない
-データの最悪例」と嘲ってきた。だが、その「読めない」は嘘だ。神エクセルは、Python が
+データの最悪例」と呼んできた。だが、「読めない」は正確ではない。神エクセルは、Python が
 普通に読む ── 中身は最初から構造化されたファイルの中にあり、数十行のスクリプトで枠から
 取り出して表に起こせる(そのスクリプトを書くのが、いまは AI の仕事だ。2-15 の整備が、
-まさにこの作業だ)。では、なぜあれほど嘲られたのか。方眼の本当の効能を見れば分かる。
+まさにこの作業だ)。方眼の本当の効能は、別の所にある。
 *方眼に合わせる限り、素人でも組めて、素人でも直せる* ── 枠を一つ動かす、列を一本
 足す、それで帳票が変わる。現場が自分で作って自分で直せる道具は、開発の発注を要らなく
-する。「最悪例」という嘲りは、現場の自給を封じて、作り直し案件の値段を支えるための
-口実だった。誰に教わらなくても、現場は帳票を組むときに方眼を敷いた ── 置き場所を
+する。誰に教わらなくても、現場は帳票を組むときに方眼を敷いた ── 置き場所を
 格子に合わせるという勘どころは、ずっと正しかったのだ。グリッドデザインは、その勘を
 そのまま受け継ぐ ── 枠は画面のグリッドへ、中身はデータベースへ。素人の修正に強いと
 いう方眼の効能も、そのまま画面に持ち込まれる。中身を移すのは「読めないから」ではない。
@@ -8428,7 +8440,7 @@ BIZ UD ゴシック / 明朝は Windows に標準搭載され、Google Fonts か
 済む。本サイトの本文も、この方式(端末にあれば UD 書体、無ければシステム書体)で
 組んである。
 
-図やスライドまで含めたデザインの作法は、この章の後半が扱う。
+図やスライドまで含めたデザインの作法は、次章(2-13)が扱う。
 
 ____
 デザインの大部分は、感性ではなくルールだ。
@@ -8473,10 +8485,9 @@ curl -s https://api.example.com/docs  # FastAPI の自動ドキュメントが�
 
 == 確かめた版と日付
 
-* FastAPI、PostgreSQL、Flet、Polars、DuckDB、Parquet ── 元の手順に版は書いていない
-* 移行の道具は pgloader と Azure SQL、書き換えに使う AI は Claude
-* 外注見積もり、ライセンス費、未文書化ルールの件数は、元の章の数字
-* 手順を書いたのは 2026-07-15
+* FastAPI、PostgreSQL、Flet、Polars、DuckDB、Parquet ── 版は指定していない
+* 移行の道具は pgloader(2-03)
+* 手順を書いたのは 2026-07-15、見直したのは 2026-10-06
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
 == まとめ
@@ -8484,10 +8495,10 @@ curl -s https://api.example.com/docs  # FastAPI の自動ドキュメントが�
 基幹システムと「うまく付き合う」のは、もう古い。
 
 * *並行稼働* ── 新を FastAPI で作り、旧と並べて動かし、出力を実測で突き合わせる
-* *旧を止める* ── 差分が消えたら止める。長くて 6 ヶ月、ふつう 3 ヶ月
-* *業務知識* ── 一気に Markdown に出す。80% で十分、残りは差分が教える
+* *旧を止める* ── 止める条件を先に決め、差分が消えたら止める
+* *業務知識* ── 一気に Markdown に出す。初版はたたき台で十分、残りは差分が教える
 * *現場がテストを書く* ── ルールを知る者がテストを書く。委託は止める
-* *着地点* ── 2-03 の DB と 2-05 の門番に乗る、一本の API
+* *着地点* ── 2-03 の DB と 2-05 の門番に乗る、一本の API。最初の一本は予約の受け口
 * *画面* ── デザインはルールだ。1 枚に書いて、画面を頼むたびに渡す
 
 やる時はやる。中途半端な共存は、組織を硬直させる。AI で書き換えのコストが桁で
@@ -8504,7 +8515,7 @@ curl -s https://api.example.com/docs  # FastAPI の自動ドキュメントが�
 * link:/ai-native-software/auth/[2-05: 門番を立てる ── PocketBase で認証を一つに]
 * link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 読む物は adoc、触る表は格子、刷る紙はテンプレート]
 * link:/ai-native-software/structure-knowledge/[2-15: 社内情報を整える ── 整備こそ本体、AI は最後の一手]
-* https://github.com/aiseed-dev/workspace[参考実装 kura ── 自前の Microsoft 365 / Google Workspace 代替]
+* link:/ai-native-software/meetings/[2-09: 会議とカレンダーを自分の側に ── Jitsi と CalDAV]
 endif::[]
 ifdef::lang-en[]
 = Build an API — Expose Core Logic with FastAPI
@@ -8521,7 +8532,7 @@ the tool is FastAPI. In order.
 
 == "Don't break it" and "don't touch it" were advice from an era when rewriting was expensive
 
-For the past 20 years, the standard advice given to anyone responsible for a core
+For a long time, the standard advice given to anyone responsible for a core
 system has been this.
 
 "Don't break it." "Don't touch it." "Don't change something that works." "Use the
@@ -8573,24 +8584,25 @@ flowchart LR
 
 If the two outputs match, the new system is correct. If they do not, one of the
 two is wrong. Usually what surfaces first is a bug that has sat in the old system
-for 20 years. A bug that was never written in any document.
+for years. A bug that was never written in any document.
 
-Keep this up for one month, for three months. When the diffs reach zero and the
-unexpected cases have been covered, stop the old system.
+Keep this up for the period you decided in advance. When the diffs reach zero and
+the unexpected cases have been covered, stop the old system.
 
-Parallel operation is a way of killing rewrite risk by *measurement*. Not a desk
+Parallel operation is a way of crushing rewrite risk by *measurement*. Not a desk
 check. Not a spec review. Running it in production, on real data, and confirming.
 
-== Stop the old system within six months at the outside
+== Decide the day you stop the old system in advance
 
-The parallel period runs six months at the outside, and three months is normally
-enough.
+Decide the parallel period before you start. For a monthly process, "stop after
+three consecutive months with zero diffs"; for a daily one, "stop after the agreed
+number of zero-diff days" — write the stopping condition down as a number.
 
-If you need longer than that, the new system is not actually correct. Fix the new
-system. Do not run parallel operation "indefinitely."
+If you cannot stop once that condition has passed, the new system is not actually
+correct. Fix the new system. Do not run parallel operation "indefinitely."
 
 Inside an organization, a psychology sets in: keep the old system around just in
-case. That is a trap. Keep it, and this is what follows.
+case. Here lies the problem. Keep it, and this is what follows.
 
 * Operating cost doubles
 * The people responsible are split across two systems
@@ -8608,18 +8620,18 @@ do it.
 
 "Use the legacy assets and augment them with AI" — in the end, this is a way of
 thinking that permits the old system to remain. New features pile up on the
-outside while the substance stays old. Three years pass, five years pass, and the
-organization is still not AI-native. Half-hearted coexistence freezes an
+outside while the substance stays old. The years pass, and the organization is
+still not AI-native. Half-hearted coexistence freezes an
 organization. "Augment" was allowed back when rewriting really was too expensive.
 That is no longer the case.
 
-== Vendor products die by the same move
+== Vendor products are stopped by the same move
 
 Oracle, SAP, Salesforce, the Microsoft business products — these are not selling
 a "product." They are selling the situation in which you have to keep using the
 product.
 
-The sequence for killing one by parallel operation goes like this.
+The sequence for getting out by parallel operation goes like this.
 
 . Export data from the product every day (the product keeps running)
 . The new system, written with AI, processes the export and runs the same business
@@ -8627,15 +8639,14 @@ The sequence for killing one by parallel operation goes like this.
 . When the numbers match, do not renew the product contract
 . Take one final "full data export" from the product and move over completely
 
-Time it to the contract renewal date. That is a strategic schedule. If renewal
-falls in October, start parallel operation by June. Run it for three months and
-decide in September.
+Time it to the contract renewal date. That is a strategic schedule. Count back
+from the renewal date — the parallel period plus the time to decide — and set the
+day you start.
 
 The vendor will play every card to hold you — "migration risk," "data
 integrity," "you will lose the veteran who knows it." If parallel operation is
 producing the same outputs, all of them can be answered. The evidence is in your
-hands. License fees run to tens of millions of yen a year. Stop those, and the
-development cost of the new system is recovered in a few months.
+hands. The license fee is written in the contract. That is what stops.
 
 == Push business knowledge out into Markdown all at once
 
@@ -8649,20 +8660,19 @@ partway. In the end, it never gets written.
 
 The era has changed.
 
-Hand Claude everything — the old system's code, its comments, its SQL, the
+Hand the AI everything — the old system's code, its comments, its SQL, the
 operating manuals, the past incident reports. Ask it to extract the business
-logic and organize it as Markdown. For a codebase of a few thousand lines, a
-first draft comes out in a few hours. For tens of thousands of lines, it finishes
-in days. Months of work shrink to days.
+logic and organize it as Markdown. The first draft comes out at a speed that is
+orders apart from a person writing in spare hours.
 
-It does not have to be perfect. 80% is enough. The remaining 20% shows up as
-output diffs during parallel operation. Resolve those one by one and the business
+It does not have to be perfect. A first draft is enough as a starting point. What
+is missing shows up as output diffs during parallel operation. Resolve those one by one and the business
 knowledge completes itself.
 
 This is also the hidden benefit of parallel operation. *Business rules that were
 never written down all get flushed out by the parallel run.* Rules that appear in
 no desk-written spec, that only real operation reveals, are drawn out both from
-Claude's first-draft Markdown and from the output diffs of the parallel run.
+the AI's first-draft Markdown and from the output diffs of the parallel run.
 Taking documents back onto your own side was the subject of 2-07. The core
 system's business knowledge, too, lands as readable material in the same way.
 
@@ -8678,9 +8688,9 @@ the IT department; the knowledge of business rules sat on the floor.
 
 That is no longer the case.
 
-The ability to write code is held by Claude. What remains is only the knowledge
+The ability to write code is held by the AI. What remains is only the knowledge
 of the business rules. And the people who know those rules most deeply are the
-people who run that business every day. The people on the floor have Claude write
+people who run that business every day. The people on the floor have the AI write
 the code. That closes the loop. No relay of translators in between.
 
 What matters in parallel operation is finding the output diffs. Does the new
@@ -8690,14 +8700,14 @@ people best suited to producing that test data are the people on the floor.
 "July billing closes on the 10th, but we extend it to the 5th of the following
 month to allow for the Obon holidays" — Obon is the mid-August period when much
 of Japan takes leave, and the floor is where that rule is known. That person asks
-Claude: make 50 billing test cases that account for the July Obon extension.
-Claude makes them. They are run through the old system to produce the expected
-output. That becomes the test data.
+the AI: make billing test cases that account for the July Obon extension. The AI
+makes them. They are run through the old system to produce the expected output.
+That becomes the test data.
 
 A rule that was in no desk-written spec takes material form as a test. Business
 knowledge flows from the floor into tests, and from tests into code. This is a
-test the IT department could never write. They do not know the rules. Rewrites
-have failed because people who did not know the rules were writing the tests.
+test the IT department cannot write; the rules are on the floor. Rewrites have
+failed because people who did not know the rules were writing the tests.
 
 == Stop outsourcing
 
@@ -8708,19 +8718,18 @@ consultant.
 
 The traditional grounds for outsourcing were two. First, the ability to write
 code existed only outside. Second, the knowledge of business rules had to be
-conveyed to the outside. Claude has settled the first. The second no longer needs
-to happen at all: the floor and Claude close the loop between them.
+conveyed to the outside. The AI has settled the first. The second no longer needs
+to happen at all: the floor and the AI close the loop between them.
 
-Vendor fees are the single largest cost item in a core-system rewrite. Tens of
-millions to hundreds of millions of yen a year. That goes away. The people on the
-floor who know the business rules have Claude write the code, have Claude write
-the tests, and verify by measurement through parallel operation. A rewrite stops
-being something you outsource and becomes something you do in house. The people
-who know the business use Claude to rewrite their own business. That is the new
-practice on the floor.
+Vendor fees are the single largest cost item in a core-system rewrite. That goes
+away. The people on the floor who know the business rules have the AI write the
+code, have the AI write the tests, and verify by measurement through parallel
+operation. A rewrite stops being something you outsource and becomes something
+you do in house. The people who know the business use the AI to rewrite their
+own business. That is the new practice on the floor.
 
 This is not a shrinking of the IT department's role. The IT department can
-concentrate on the base that supports the floor-and-Claude teams: infrastructure,
+concentrate on the base that supports the floor-and-AI teams: infrastructure,
 databases, deployment environments, security. It sheds the duplicated role of
 acting as intermediary for business logic.
 
@@ -8730,14 +8739,14 @@ The database gets replaced by parallel operation in exactly the way the logic
 layer gets rewritten into FastAPI.
 
 Keep the database. But drop the vendor dialect. `SELECT`, `JOIN`, `GROUP BY`,
-window functions — standard SQL has run for 50 years and will run for 50 more.
-Claude writes it completely. Keep the standard SQL, drop the vendor dialect. That
+window functions — standard SQL has run since the 1970s and will keep running.
+The AI writes it completely. Keep the standard SQL, drop the vendor dialect. That
 line is the crux.
 
 Oracle's PL/SQL and Microsoft SQL Server's T-SQL get dropped. They are
 vendor-specific dialects. Embedding business logic inside the database was how
 the last stronghold of vendor lock-in got built. Business logic embedded in a
-PL/SQL stored procedure gets rewritten in Python. Hand Claude the PL/SQL and it
+PL/SQL stored procedure gets rewritten in Python. Hand the AI the PL/SQL and it
 extracts the business rules and translates them into Python. Business logic comes
 back out of invisible stored procedures and into code. It becomes readable,
 version-controlled, testable.
@@ -8753,8 +8762,8 @@ DDL dialect conversion, and the concrete migration steps using Azure SQL and
 pgloader, were covered in detail in 2-03. In this chapter you only need to hold
 the judgment: keep standard SQL, pull out the dialect and the logic. Rewriting
 only the logic layer escapes the lock-in halfway. Migrating to PostgreSQL is the
-last step out. And the annual license cost recovers the new system's development
-cost in a few months. Financially, too, there is no reason left not to rewrite.
+last step out. And the license cost that stops is in the contract. Set it beside
+the new system's development cost, and the reason not to rewrite disappears.
 
 == The way out of every lock-in is the same
 
@@ -8764,7 +8773,7 @@ Everything covered so far has the same structure.
 * Oracle / SQL Server, replaced by PostgreSQL
 * PL/SQL stored procedures, replaced by Python functions
 * SAP / Salesforce, replaced by systems you build
-* Outsourcing to IT vendors and consultants, replaced by the floor and Claude
+* Outsourcing to IT vendors and consultants, replaced by the floor and the AI
 
 These are not separate problems. One move escapes all of them — rewrite by
 parallel operation.
@@ -8805,23 +8814,45 @@ the running system (the same way as VBA to Python in 2-04). This is nothing but 
 granularity of a single API. Heavy processing is handled by Python behind the
 API, which returns only the result.
 
-The public repository kura (`aiseed-dev/workspace`) has this structure —
-PocketBase auth, FastAPI, and a Flet front end. The code lives in the Forgejo of
-2-06 and is called from the public web of 2-11 and from the in-house apps. The
-core logic rewritten by parallel operation lands, at the end, as this single API.
+The code lives in the Forgejo of 2-06 and is called from the public web of 2-11
+and from the in-house apps. The core logic rewritten by parallel operation lands,
+at the end, as this single API.
 
-== Example: replace the monthly closing batch in three months
+== The first one can be the booking intake
+
+You need not start with the core. The booking intake handed over from 2-09 holds
+this chapter's shape in miniature. Five decisions.
+
+* Slots and bookings live in the PostgreSQL of 2-03
+* Events are written to the Radicale of 2-09 over CalDAV, and appear as they are in Thunderbird and on phones
+* The confirmation and the day-before reminder go out through the mail of 2-08; for a meeting, the Jitsi link from 2-09 is attached
+* Identity is confirmed first by the gate's one-time code, as in 2-11
+* The screen is the static page of the public web (2-11), which calls this API
+
+```python
+@app.post("/bookings")
+def book(slot_id: int, user=Depends(verify_otp)):   # 2-11 — only people confirmed by the one-time code
+    db.execute("INSERT INTO bookings ...", [slot_id, user.email])   # 2-03
+    caldav.put(event_for(slot_id, user.email))                    # 2-09
+    mail.send(user.email, confirmation(slot_id))                  # 2-08
+```
+
+One function sits on the foundation, the gate, the mail, and the calendar. That
+is what "writing on top of what you stood up" means. The core's own API grows in
+the same shape.
+
+== Example: replace the monthly closing batch by parallel operation
 
 Consider the closing batch that runs at month end.
 
-*Old*: a batch written in COBOL or Java, running for five years. No one fully
+*Old*: a batch written in COBOL or Java, running for years. No one fully
 understands the inside. It runs at month end. If it fails, accounting stops.
 
-*Week one*: export 12 months of the old batch's input (the previous month's
+*Week one*: export a year of the old batch's input (the previous month's
 transaction data) and output (the closing summary). Treat this as ground truth.
 
-*Week two*: hand Claude the old code and the operating documents, and have it
-write equivalent processing in Python on FastAPI. Run the 12 months of data
+*Week two*: hand the AI the old code and the operating documents, and have it
+write equivalent processing in Python on FastAPI. Run the year of data
 through it and check whether the output matches the ground truth. Resolve the
 places that do not match.
 
@@ -8829,58 +8860,53 @@ places that do not match.
 same input to the new system as well. Compare the outputs every month. Where a
 diff appears, identify the cause and fix it.
 
-*Month three*: when months with zero diffs run consecutively, the person
-responsible decides — from next month, operations run on the new system. The old
-batch is stopped.
+*The month you decided*: when zero-diff months have run for the agreed count, the
+person responsible decides — from next month, operations run on the new system.
+The old batch is stopped.
 
-Three months to finish the rewrite. The load on the people responsible doubles
-only during the parallel run, and halves once it ends. And the business logic
+The load on the people responsible doubles only during the parallel run, and
+lightens once it ends. And the business logic
 ends up readable in both code and Markdown.
 
 == Example: getting out from under SAP shipping
 
-A mid-sized manufacturer runs shipping management on SAP. The annual license runs
-to tens of millions of yen.
+A mid-sized manufacturer runs shipping management on SAP.
 
 . *Data layer*: a nightly batch exports shipping data from SAP to Parquet
   (Parquet and DuckDB, from 2-03) — SAP itself is not touched, only read
 . *New logic layer*: stock matching, shipping decisions, and carrier routing are
-  written in Python with Polars and DuckDB (Claude produces the first draft from
+  written in Python with Polars and DuckDB (the AI produces the first draft from
   floor interviews and screenshots of the existing SAP configuration screens)
 . *API and screen layer*: the shipping instruction the floor uses is exposed as
   an API with FastAPI (this chapter) and rendered as HTML. Since it runs on the
-  internal LAN only, it can be hosted on the miniPC of 2-06
+  internal LAN only, it can be hosted on the machine of 2-02
 . *Reconciliation*: compare SAP's shipping results with the new system's every
-  day. Where there is a diff, chase the cause together with Claude. Nearly every
-  week, an undocumented rule turns up on the SAP side
-. *Three months in*: once the diff has stayed at zero for two weeks, promote the
-  new system to production and stop SAP before next year's contract renewal
+  day. Where there is a diff, chase the cause together with the AI. Undocumented
+  rules turn up on the SAP side again and again
+. *The day you decided*: once the diff has stayed at zero for the agreed number
+  of days, promote the new system to production and stop SAP before the next
+  contract renewal
 
-The result is this. Tens of millions of yen a year in license fees disappear. The
-business logic comes out into Markdown and Python (the SAP "business consultant"
-is never needed again). Customization happens on the floor the same day, where
-until now it meant asking the SAP vendor and waiting months.
+The result is this. The license fee disappears. The business logic comes out into
+Markdown and Python (the SAP "business consultant" is never needed again).
+Customization happens on the floor the same day, where until now it meant asking
+the SAP vendor and waiting.
 
-This is the core-system version of 2-07, taking documents back onto your own
-side. The same structure as "don't drop Office all at once, get out of CSV"
-becomes "don't drop SAP all at once, kill it by parallel operation."
+This is the core-system version of 2-07, taking the content back onto your own
+side. Do not drop it all at once; get out in parallel. "Don't drop SAP all at
+once — get out by parallel operation."
 
-== The numbers show how cheap rewriting has become
+== The numbers are in your own contract and your own quote
 
-Translating 5,000 lines of PL/SQL business logic into Python, quoted by an SI
-vendor: about 30 million yen. The same work done on the floor with Claude: one
-month of development, about 1 million yen in personnel cost. One thirtieth.
+Only two numbers matter when deciding whether to rewrite, and both are already in
+your hands.
 
-An Oracle Enterprise Edition license: about 40 million yen a year for 20 CPUs,
-plus 22% maintenance. Migrated to PostgreSQL: zero per year. The development cost
-of the new system is recovered in one month.
+* *The license fee you pay now* — it is written in the contract. Stop the product and this stops
+* *The quote for the rewrite* — if you outsource, get a quote from the vendor; if you do it in house, it is the time the people responsible give to the parallel run
 
-Undocumented business rules found during three months of parallel operation: 20
-to 50 in an average business system. Rules that no desk-written spec showed are
-all flushed out as output diffs.
-
-Turning business knowledge into Markdown: six months to a year if done in spare
-hours. Hand Claude the whole codebase and do it in one sweep: 80% in one week.
+Set the two side by side and you decide on your own company's numbers. Market
+rates and other companies' cases are not needed. How many undocumented rules the
+parallel run turns up is also a number that becomes yours once you rewrite.
 
 To see a small business system whole, there are worked examples in public
 repositories — seminar-kit
@@ -8920,8 +8946,8 @@ all there. No product is needed; only the rules are.
 == Before you build a screen, hold on to four design basics and no more
 
 The rewritten core has landed as an API. What remains is the screens. The tool
-can simply be Flet (declarative UI in the same Python as the API; kura's front
-end is Flet as well). The tool is not the problem. The problem is that nobody
+can simply be Flet (declarative UI in the same Python as the API, 2-04). The
+tool is not the problem. The problem is that nobody
 outside front-end engineering was ever taught design. So they cannot judge
 whether the screen the AI produced is good or bad, and all they can say is "make
 it look nicer."
@@ -8985,18 +9011,16 @@ case where fixing hurts never reaches the screen.
 
 Besides, the floor knows the grid well already. Shrink Excel's cells into small
 squares and compose a form against the frame — this is what Japan calls
-kami-Excel, graph-paper Excel. The IT industry has long sneered at it as the
-worst case of data a machine cannot read. But that "cannot read" is a lie.
-Kami-Excel is read by plain Python — the content sits inside a structured file
-from the start, and a few dozen lines of script lift it out of the boxes and into
-a table (writing that script is now the AI's job, and the preparation work of
-2-15 is exactly this). Then why was it mocked so hard? Look at what the graph
-paper actually does. *As long as everything snaps to the squares, an amateur can
-build it and an amateur can fix it.* Move one box, add one column, and the form
-changes. A tool the floor can build and fix for itself removes the need to order
-development. The sneer about the "worst case" was a pretext for sealing off the
-floor's self-sufficiency and holding up the price of rebuild projects. Nobody
-taught the floor to do this; laying out a form, they reached for graph paper
+kami-Excel, graph-paper Excel. The IT industry has long called it the worst case
+of data a machine cannot read. But "cannot read" is not accurate. Kami-Excel is
+read by plain Python — the content sits inside a structured file from the start,
+and a few dozen lines of script lift it out of the boxes and into a table
+(writing that script is now the AI's job, and the preparation work of 2-15 is
+exactly this). The graph paper's real virtue lies elsewhere. *As long as
+everything snaps to the squares, an amateur can build it and an amateur can fix
+it.* Move one box, add one column, and the form changes. A tool the floor can
+build and fix for itself removes the need to order development. Nobody taught the
+floor to do this; laying out a form, they reached for graph paper
 anyway. The instinct of snapping every box to a lattice was right all along. Grid
 design inherits that instinct as it is — the frame goes to the screen's grid, the
 content goes to the database. And the graph paper's real virtue, that an amateur
@@ -9060,8 +9084,8 @@ rule sheet, one line does it: body text in BIZ UD Gothic, otherwise the system
 font. This site's own body text is set the same way: the UD faces where the
 device has them, the system faces otherwise.
 
-Design practice in full, diagrams and slides included, is covered in the second
-half of this chapter.
+Design practice in full, diagrams and slides included, is covered in the next
+chapter (2-13).
 
 ____
 Most of design is rules, not taste.
@@ -9117,13 +9141,9 @@ curl -s https://api.example.com/docs  # FastAPI's automatic docs answer
 
 == Versions checked, and when
 
-* FastAPI, PostgreSQL, Flet, Polars, DuckDB, Parquet — the original procedure
-  records no versions
-* The migration tools are pgloader and Azure SQL; the AI used for the rewrite is
-  Claude
-* The outsourcing quote, the license fees, and the counts of undocumented rules
-  are the numbers from the original chapter
-* This procedure was written on 2026-07-15
+* FastAPI, PostgreSQL, Flet, Polars, DuckDB, Parquet — no version pinned
+* The migration tool is pgloader (2-03)
+* This procedure was written on 2026-07-15 and reviewed on 2026-10-06
 * If a version has moved, have the AI confirm the official procedure before
   proceeding
 
@@ -9133,13 +9153,13 @@ curl -s https://api.example.com/docs  # FastAPI's automatic docs answer
 
 * *Parallel operation* — build the new in FastAPI, run it beside the old, and
   compare the outputs by measurement
-* *Stop the old* — stop it when the diffs vanish. Six months at the outside,
-  normally three
-* *Business knowledge* — push it into Markdown in one sweep. 80% is enough; the
-  diffs teach the rest
+* *Stop the old* — decide the stopping condition first, and stop when the diffs
+  vanish
+* *Business knowledge* — push it into Markdown in one sweep. A first draft is
+  enough; the diffs teach the rest
 * *The floor writes the tests* — the people who know the rules write them.
   Outsourcing stops
-* *Where it lands* — one API, riding on the DB of 2-03 and the gate of 2-05
+* *Where it lands* — one API, riding on the DB of 2-03 and the gate of 2-05. The first one is the booking intake
 * *Screens* — design is rules. Write them on one page and hand it over with every
   screen request
 
@@ -9158,7 +9178,7 @@ documents. Structure diagrams, slides, and handouts all come from text and code.
 * link:/en/ai-native-software/auth/[2-05: Stand Up the Gate — One Login with PocketBase]
 * link:/en/ai-native-software/documents/[2-07: Take Documents Back — Prose in AsciiDoc, Working Tables in a Grid, Printed Pages from Templates]
 * link:/en/ai-native-software/structure-knowledge/[2-15: Put Your Information in Order — The Preparation Is the Work, AI Is the Last Step]
-* https://github.com/aiseed-dev/workspace[Reference implementation kura — a self-hosted Microsoft 365 / Google Workspace alternative]
+* link:/en/ai-native-software/meetings/[2-09: Meetings and Calendars on Your Own Side — Jitsi and CalDAV]
 endif::[]
 // ===== article: 18-design =====
 ---

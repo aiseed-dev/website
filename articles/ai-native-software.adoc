@@ -2749,8 +2749,8 @@ link:/ai-native-software/lockin/[3-05] で見るロックインを避けるの�
 逆引き(PTR)は、IP アドレスから名前を引く記録だ。ふだんの DNS が名前から IP を
 引くのと、向きが逆になる。メールを受け取る側のサーバーは、送ってきた機械の IP を
 逆引きして、引けた名前がまた同じ IP に戻るかを確かめる。戻らなければ、迷惑メール
-として扱うか、受け取らない。Gmail も Outlook.com も、送る機械にこれを求めている
-(Google の送信者ガイドライン、Outlook.com の送信者向け方針、2026-10-05 に確認)。
+として扱うか、受け取らない。Gmail は、送る機械のすべてにこれを求めている(Google
+の送信者ガイドライン、2026-10-05 に確認)。
 
 逆引きを設定するのは、IP アドレスの持ち主である回線の事業者だ。固定 IP の回線
 なら、普通は設定してあるので、こちらですることはない。
@@ -2962,9 +2962,8 @@ Reverse DNS (PTR) is the record that looks up a name from an IP address — the
 opposite direction from ordinary DNS, which looks up an IP from a name. A
 receiving mail server takes the IP of the machine that sent to it, looks it up in
 reverse, and checks that the name it gets resolves back to the same IP. If it does
-not, the mail is treated as spam or refused. Gmail and Outlook.com both require it
-of sending machines (Google's email sender guidelines and Outlook.com's sender
-policies, checked 2026-10-05).
+not, the mail is treated as spam or refused. Gmail requires this of every sending
+machine (Google's email sender guidelines, checked 2026-10-05).
 
 The reverse record is set by the owner of the IP address, the line provider. On a
 fixed-IP line it is normally already in place, so there is nothing for you to do.

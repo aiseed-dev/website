@@ -3066,8 +3066,8 @@ title.ja: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Po
 title.en: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars
 subtitle.ja: すべてが乗るデータ基盤を、最初に自分の側に立てる
 subtitle.en: Stand up the data layer everything sits on, first, on your own side
-description.ja: 自立編で最初に立てるのは、すべてが乗るデータ基盤。普通は SQLite で十分 ── サーバ不要の単一ファイルだ。共有して複数人で書くときだけ PostgreSQL に上げる。pgvector で意味検索、DuckDB と Polars で列指向分析 ── Excel は人の入出力に残し、その裏のデータは機械が捌く。Power BI を大差で抜く。汎用は OSS で共有されている ── 書くのではなく、立てる。立てる先は、2-02 で AI に渡した一台だ。
-description.en: The Independence part starts with the data layer everything sits on. SQLite is usually enough — a single file, no server, already built into Python. Step up to PostgreSQL only when you share and several people write at once. Enable pgvector for semantic search; analyze with columnar DuckDB and Polars — Excel stays the human's I/O while machines crunch the data behind it; pull far ahead of Power BI. The generic is already shared as OSS — you don't write it, you stand it up. It all goes on the one machine handed to the AI in 2-02.
+description.ja: 自立編で最初に立てるのは、すべてが乗るデータ基盤。普通は SQLite で十分 ── サーバ不要の単一ファイルだ。共有して複数人で書くときだけ PostgreSQL に上げる。pgvector で意味検索、DuckDB と Polars で列指向分析 ── Excel は人の入出力に残し、その裏のデータは機械が捌く。Power BI の人数課金から離れる。立て方は apt と systemd。汎用は OSS で共有されている ── 書くのではなく、立てる。立てる先は、2-02 で AI に渡した一台だ。
+description.en: The Independence part starts with the data layer everything sits on. SQLite is usually enough — a single file, no server, already built into Python. Step up to PostgreSQL only when you share and several people write at once. Enable pgvector for semantic search; analyze with columnar DuckDB and Polars — Excel stays the human's I/O while machines crunch the data behind it; step off Power BI's per-seat billing. Installed with apt, run under systemd. The generic is already shared as OSS — you don't write it, you stand it up. It all goes on the one machine handed to the AI in 2-02.
 date: 2026.07.01
 label: Independence 3
 title_html.ja: まず<span class="accent">データ基盤</span>を、<br>自分の手元に立てる。
@@ -3091,7 +3091,7 @@ link:/ai-native-software/ai-pc/[2-02: AI に PC を一台渡す]で AI に渡し
 順番には理由がある。後の章で立てるものの多くが、データベースに依存する。
 
 * 分析(DuckDB)は、ここのテーブルと Parquet を読む
-* AI の RAG(Command A+)は、`pgvector` で類似検索する
+* AI の RAG(2-16)は、`pgvector` で類似検索する
 * 講座の予約(Cal.com)と基幹システムは、ここに読み書きする
 
 土台が先にあれば、上に立つものは、すでにある DB に乗せるだけになる。先に据えるほど、
@@ -3109,62 +3109,49 @@ ____
 == 単一ファイルで持つ
 
 データベースの既定は SQLite だ。サーバを立てず、一つのファイルに収まる。Python に
-最初から入っていて、追加のインストールも要らない。世界で最も多く使われている
-データベースで、スマホにもブラウザにも入っている。
+最初から入っていて、追加のインストールも要らない。スマホにもブラウザにも入って
+いて、世界で最も多く配られているデータベースだと SQLite 自身が述べている
+(sqlite.org「Most Widely Deployed」)。
 
 ```bash
 # ライブラリも不要 ── 標準で入っている
 sqlite3 app.db 'CREATE TABLE memo(id integer primary key, body text)'
 ```
 
-一人で持つ設定も、端末の手元の小さなデータも、これで足りる。次章で立てる門番
+一人で持つ設定も、端末の手元の小さなデータも、これで足りる。2-05 で立てる門番
 (PocketBase)も、この SQLite の上で動く。一つのアプリが手元で持つだけなら、まず
-SQLite だ。標準 SQL なので、Claude がそのまま書く。
+SQLite だ。標準 SQL なので、AI がそのまま書く。
 
 足りなくなるのは、共有して複数人が同時に書くときだ。そのときだけ、倉庫を一段上げる。
 
 == 共有して複数人で書くなら PostgreSQL に上げる
 
 複数のアプリや人が同時に読み書きする共有の倉庫が要るなら、PostgreSQL に上げる。
-オープンソース、無料、商用可だ。Oracle や SQL Server と同等以上の機能を持ち、
-Claude が最も得意とする方言でもある(1-05・2-01)。SQLite と同じ標準 SQL だから、
-上げても書き方は変わらない。手帳(SQLite)から倉庫(PostgreSQL)へ、用途で持ち替える。
+オープンソースで、無料で、商用に使える。SQLite と同じ標準 SQL だから、上げても
+書き方は変わらない。手帳(SQLite)から倉庫(PostgreSQL)へ、用途で持ち替える。
 
-`compose.yaml` 一枚で立つ。
+立て方の決めは四つだ。
 
-```yaml
-# compose.yaml ── PostgreSQL + pgvector 同梱イメージ
-services:
-  db:
-    image: pgvector/pgvector:pg17
-    environment:
-      POSTGRES_PASSWORD: change-me
-      POSTGRES_DB: app
-    ports: ["5432:5432"]
-    volumes: ["./pgdata:/var/lib/postgresql/data"]
-    restart: always
-```
+* Debian 13 の apt で入れ、systemd で動かす(2-02)。PostgreSQL 17 と pgvector が公式のパッケージにある
+* データの置き場は、Debian の既定のまま(`/var/lib/postgresql`)
+* 待ち受けは localhost だけ。外の口は開けない
+* アプリ用の利用者を一つ作る。管理者(`postgres`)ではアプリを動かさない
 
 ```bash
-docker compose up -d            # 起動
-docker compose exec db psql -U postgres -d app -c '\l'   # 接続確認
+sudo apt install postgresql postgresql-17-pgvector   # 入れる。systemd で起動する
+sudo -u postgres createdb app                        # データベースを作る
+sudo -u postgres psql -d app -c 'CREATE EXTENSION vector'   # 拡張を有効にする
 ```
 
-`pgvector/pgvector` イメージを使うと、後で要るベクトル拡張が最初から入っている。
-素の `postgres` イメージでも動く。その場合は、拡張を別途入れる(次節)。
-
-`POSTGRES_PASSWORD` の `change-me` は、人が決めた値に置き換える。
+アプリ用の利用者の名前とパスワードは、人が決める。
 
 == pgvector をいま有効にする
 
-AI の RAG(自立編の後の章)で使うベクトル検索を、いま有効にしておく。拡張を一行で
-足すだけだ。
+AI の RAG(2-16)で使うベクトル検索を、いま有効にしておく。前節の三行目が、その
+一行だ。
 
 ```sql
--- データベースに一度だけ実行
-CREATE EXTENSION IF NOT EXISTS vector;
-
--- 埋め込みを持つテーブルの例(1024 次元は bge-m3 の例)
+-- 埋め込みを持つテーブルの例。次元数は 2-16 で選ぶ埋め込みモデルで決まる
 CREATE TABLE docs (
   id    bigserial PRIMARY KEY,
   body  text,
@@ -3173,8 +3160,8 @@ CREATE TABLE docs (
 ```
 
 これで、文書を「意味」で検索する土台ができた。`embedding` に埋め込みを入れ、
-`ORDER BY embedding <=> :query` で近いものを引く。実際の RAG パイプラインは AI の
-章で組む。いまは器だけ用意しておく。
+`ORDER BY embedding <=> :query` で近いものを引く。実際の RAG パイプラインは 2-16 で
+組む。いまは器だけ用意しておく。
 
 == Azure SQL から移す
 
@@ -3182,12 +3169,12 @@ CREATE TABLE docs (
 
 ```bash
 pgloader mssql://user:pass@azure-host/db \
-         postgresql://postgres:change-me@localhost/app
+         postgresql://app:pass@localhost/app
 ```
 
 標準 SQL(`SELECT`・`JOIN`・ウィンドウ関数)はそのまま動く。捨てるのはベンダー方言の
-T-SQL だけだ。ストアドに埋まった業務ロジックは、Claude が抽出して Python / Ruby に
-翻訳する(1-05)。あとは旧 DB と並行稼働で出力を突き合わせ、差分が消えたら旧を止める
+T-SQL だけだ。ストアドに埋まった業務ロジックは、AI が抽出して Python に翻訳する
+(1-05)。あとは旧 DB と並行稼働で出力を突き合わせ、差分が消えたら旧を止める
 (2-12)。
 
 ____
@@ -3195,14 +3182,14 @@ ____
 *標準に乗せ替え、方言だけ捨てる* ことだ。
 ____
 
-== DuckDB で分析する ── Excel と Power BI を大差で抜く
+== DuckDB で分析する ── 手元の一台で、追加料金なしに
 
 集計・分析は、PostgreSQL の上に DuckDB を重ねる。列指向(カラムナ)の分析エンジンで、
-1 ファイル、サーバー不要だ。Excel が約 104 万行で頭打ちなのに対し、*ノート PC 一台で
-数億行を秒で集計する*。
+1 ファイル、サーバー不要だ。Excel の 1,048,576 行という上限(Microsoft の仕様)が
+無く、*手元の一台で、ファイルの大きさまで集計する*。
 
 ```bash
-pip install duckdb polars       # これだけ
+uv add duckdb polars            # 2-04 で作る Python の環境に入れる
 ```
 
 ```python
@@ -3213,15 +3200,14 @@ duckdb.sql("ATTACH 'dbname=app user=postgres host=localhost' AS pg (TYPE postgre
 duckdb.sql("SELECT 部門, sum(売上) FROM pg.sales GROUP BY 部門 ORDER BY 2 DESC")
 ```
 
-データを移し替えず、置いた場所のまま分析できる。SQL は Claude が書く。「先月比で
-異常な部門は」を、手元の実データに対して、追加料金ゼロで何度でも問える。Power BI の
-クラウド従量・人数課金から見れば、これは別次元だ。
+データを移し替えず、置いた場所のまま分析できる。SQL は AI が書く。「先月比で
+異常な部門は」を、手元の実データに対して、追加料金なしに何度でも問える。Power BI の
+人数課金から、ここで離れる。
 
 === Excel のデータは Polars で捌く
 
 Excel は、人が数字を入れ、人が結果を読む入出力の道具だ。その役割は変わらない。
-だから文書の章(2-07)では、Excel 互換の aiseed office を自分の側に置く。変わるのは、
-その裏でデータを捌く側だ。
+様式は 2-07 の aiseed office が受け持つ。変わるのは、その裏でデータを捌く側だ。
 
 手元に積み上がった `.xlsx` は、Polars がそのまま読む。Rust 製の高速データフレームで、
 Excel が固まる行数でも瞬時に処理し、結果を Excel・PostgreSQL・Parquet のどれにでも
@@ -3246,38 +3232,38 @@ agg.write_excel("部門集計.xlsx")                      # 人が読む Excel �
 この章は、次の五つができていれば済みだ。
 
 . `sqlite3 app.db` で作った表が、`.tables` に出る
-. `docker compose up -d` の後、psql でつないでデータベースの一覧が返る
+. `systemctl status postgresql` が動いていて、psql でつないでデータベースの一覧が返る
 . psql で `\dx` を打つと、一覧に `vector` が出る
 . Python から DuckDB で PostgreSQL の表を集計し、部門ごとの合計が画面に出る
 . 人が作った `.xlsx` を Polars が読み、集計を `.xlsx` に書き戻し、そのファイルが表計算ソフトで開ける
 
 ```bash
 sqlite3 app.db '.tables'
-docker compose exec db psql -U postgres -d app -c '\dx'
-python -c "import duckdb, polars; print('ok')"
+sudo -u postgres psql -d app -c '\dx'
+uv run python -c "import duckdb, polars; print('ok')"
 ```
 
 == 人が持つ物
 
 *人が渡す値*
 
-* PostgreSQL の管理者パスワード(`compose.yaml` の `change-me` を置き換える)
-* データベースの名前(例 `app`)と、データを置くディレクトリ(例 `./pgdata`)
-* 埋め込みの次元数(例 1024 ── bge-m3 の場合)
+* アプリ用の利用者の名前とパスワード
+* データベースの名前(例 `app`)
+* 埋め込みの次元数(2-16 で選ぶモデルで決まる)
 * Azure SQL から移す場合は、その接続先・利用者名・パスワード
 
 *AI が「やる前に言う」操作*
 
 * 旧 DB(Azure SQL / SQL Server)を止める
-* `./pgdata` を消す、または作り直す
+* PostgreSQL のデータディレクトリを消す、または作り直す
 * 本番のデータに対して `DROP` や `DELETE` を実行する
 * 人が作った `.xlsx` に上書きする
 
 == 確かめた版と日付
 
-* `pgvector/pgvector:pg17` ── PostgreSQL と pgvector が同梱されたイメージ
-* SQLite(Python 同梱)、DuckDB、Polars、pgloader、ClickHouse ── 版は指定していない
-* 手順を書いたのは 2026-07-01
+* Debian 13(trixie)の PostgreSQL 17、postgresql-17-pgvector(pgvector 0.8)、pgloader 3.6
+* SQLite(Python 同梱)、DuckDB、Polars ── 版は指定していない
+* 手順を書いたのは 2026-07-01、見直したのは 2026-10-05
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
 == まとめ
@@ -3288,7 +3274,7 @@ python -c "import duckdb, polars; print('ok')"
 * *PostgreSQL*(+ pgvector)── 共有して複数人で書くときだけ上げる、予約・基幹・RAG が乗る倉庫
 * *pgvector* ── 意味検索の土台(RAG は AI の章で)
 * *pgloader* ── Azure SQL からの一括移行、方言だけ捨てる
-* *DuckDB / Polars* ── 列指向分析と高速データフレーム。Excel は人の入出力に残し、重い集計は機械側で ── Power BI を大差で抜く
+* *DuckDB / Polars* ── 列指向分析と高速データフレーム。Excel は人の入出力に残し、重い集計は機械側で。Power BI の人数課金から離れる
 
 書いたコードは、ほとんど無い。汎用は、すでに OSS として在る。ビルダーは、それを立てる。
 次章では、この土台の上で処理を書く ── Excel と Word に埋まったマクロとグラフを Python に出し、画面が要るところには Flet を被せる。
@@ -3325,7 +3311,7 @@ The order has a reason. Much of what later chapters stand up depends on the
 database.
 
 * Analysis (DuckDB) reads the tables and Parquet here
-* The AI's RAG (Command A+) does similarity search with `pgvector`
+* The AI's RAG (2-16) does similarity search with `pgvector`
 * Course booking (Cal.com) and the core systems read and write here
 
 With the foundation in place first, everything above is just "put it on the DB
@@ -3344,8 +3330,8 @@ lay things follows from that.
 
 The default database is SQLite. There is no server to run; it fits in one file.
 It is built into Python from the start, so there is nothing extra to install. It
-is the most widely deployed database in the world, and it ships inside every
-phone and browser.
+ships inside every phone and browser, and SQLite itself says it is the most
+widely deployed database in the world (sqlite.org, "Most Widely Deployed").
 
 ```bash
 # no library needed — it's in the standard install
@@ -3353,9 +3339,9 @@ sqlite3 app.db 'CREATE TABLE memo(id integer primary key, body text)'
 ```
 
 Settings one person keeps, and small data sitting on the device, are both covered
-by this. The gate (PocketBase) stood up next chapter also runs on this SQLite. If
-a single app just keeps data locally, start with SQLite. It is standard SQL, so
-Claude writes it as-is.
+by this. The gate (PocketBase) stood up in 2-05 also runs on this SQLite. If a
+single app just keeps data locally, start with SQLite. It is standard SQL, so the
+AI writes it as-is.
 
 What runs out is the moment you share and several people write at the same time.
 Only then do you step the warehouse up a level.
@@ -3364,47 +3350,32 @@ Only then do you step the warehouse up a level.
 
 When you need a shared warehouse that several apps or people read and write at
 once, step up to PostgreSQL. It is open source, free, and fine for commercial
-use. It matches or exceeds Oracle and SQL Server, and it is the dialect Claude
-handles best (1-05; 2-01). It is the same standard SQL as SQLite, so stepping up
-does not change how you write. Trade the notebook (SQLite) for the warehouse
-(PostgreSQL) by what each is for.
+use. It is the same standard SQL as SQLite, so stepping up does not change how
+you write. Trade the notebook (SQLite) for the warehouse (PostgreSQL) by what
+each is for.
 
-One `compose.yaml` stands it up.
+Four decisions set it up.
 
-```yaml
-# compose.yaml — PostgreSQL image with pgvector bundled
-services:
-  db:
-    image: pgvector/pgvector:pg17
-    environment:
-      POSTGRES_PASSWORD: change-me
-      POSTGRES_DB: app
-    ports: ["5432:5432"]
-    volumes: ["./pgdata:/var/lib/postgresql/data"]
-    restart: always
-```
+* Install with Debian 13's apt and run under systemd (2-02). PostgreSQL 17 and pgvector are both official packages
+* Keep the data where Debian puts it (`/var/lib/postgresql`)
+* Listen on localhost only. No port is opened to the outside
+* Create one role for the application. The application never runs as the administrator (`postgres`)
 
 ```bash
-docker compose up -d            # start
-docker compose exec db psql -U postgres -d app -c '\l'   # check
+sudo apt install postgresql postgresql-17-pgvector   # install; systemd starts it
+sudo -u postgres createdb app                        # create the database
+sudo -u postgres psql -d app -c 'CREATE EXTENSION vector'   # enable the extension
 ```
 
-Using the `pgvector/pgvector` image means the vector extension you will need
-later is already in. The plain `postgres` image works too; in that case you add
-the extension separately (next section).
-
-The `change-me` in `POSTGRES_PASSWORD` is replaced with a value the human decides.
+The application role's name and password are the human's to decide.
 
 == Enable pgvector now
 
-Enable now the vector search that the AI's RAG (a later Independence chapter)
-will use. It is a one-line extension.
+Enable now the vector search that the AI's RAG (2-16) will use. The third line
+of the previous section is that one line.
 
 ```sql
--- run once on the database
-CREATE EXTENSION IF NOT EXISTS vector;
-
--- example table holding embeddings (1024 dims, e.g. bge-m3)
+-- example table holding embeddings; the dimension is set by the embedding model chosen in 2-16
 CREATE TABLE docs (
   id    bigserial PRIMARY KEY,
   body  text,
@@ -3414,7 +3385,7 @@ CREATE TABLE docs (
 
 Now you have the foundation for searching documents by meaning. Put embeddings in
 `embedding` and pull the nearest with `ORDER BY embedding <=> :query`. The real
-RAG pipeline gets built in the AI chapter. For now, just have the vessel ready.
+RAG pipeline gets built in 2-16. For now, just have the vessel ready.
 
 == Migrate from Azure SQL
 
@@ -3423,12 +3394,12 @@ data in one pass.
 
 ```bash
 pgloader mssql://user:pass@azure-host/db \
-         postgresql://postgres:change-me@localhost/app
+         postgresql://app:pass@localhost/app
 ```
 
 Standard SQL (`SELECT`, `JOIN`, window functions) runs as-is. You drop only the
 vendor dialect, T-SQL. Business logic buried in stored procedures gets extracted
-by Claude and translated into Python / Ruby (1-05). Then run in parallel with the
+by the AI and translated into Python (1-05). Then run in parallel with the
 old DB, reconcile the output, and stop the old one when the difference is gone
 (2-12).
 
@@ -3437,14 +3408,15 @@ Migration is not "rewrite everything."
 It is *move onto the standard and drop only the dialect.*
 ____
 
-== Analyze with DuckDB — pull far ahead of Excel and Power BI
+== Analyze with DuckDB — on your own machine, at no extra charge
 
 For aggregation and analysis, layer DuckDB on top of PostgreSQL. It is a columnar
-analytics engine: one file, no server. Where Excel caps at about 1.05 million
-rows, *one laptop aggregates hundreds of millions of rows in seconds.*
+analytics engine: one file, no server. Excel's ceiling of 1,048,576 rows
+(Microsoft's specification) is gone; *your own machine aggregates up to the size
+of the file.*
 
 ```bash
-pip install duckdb polars       # that's it
+uv add duckdb polars            # into the Python environment built in 2-04
 ```
 
 ```python
@@ -3455,17 +3427,16 @@ duckdb.sql("ATTACH 'dbname=app user=postgres host=localhost' AS pg (TYPE postgre
 duckdb.sql("SELECT dept, sum(sales) FROM pg.sales GROUP BY dept ORDER BY 2 DESC")
 ```
 
-You analyze where the data already sits, without copying it. Claude writes the
+You analyze where the data already sits, without copying it. The AI writes the
 SQL. "Which department is anomalous versus last month?" can be asked against your
-own real data, any number of times, at zero marginal cost. Seen from Power BI's
-metered, per-seat cloud, this is another dimension.
+own real data, any number of times, at no extra charge. This is where you step
+off Power BI's per-seat billing.
 
 === Crunch Excel data with Polars
 
 Excel is the input/output tool where people enter numbers and read results. That
-role does not change, which is why the documents chapter (2-07) stands up the
-Excel-compatible aiseed office on your own side. What changes is the side that
-crunches the data behind it.
+role does not change. Forms are the job of aiseed office in 2-07. What changes is
+the side that crunches the data behind it.
 
 The `.xlsx` files piled up on disk are read directly by Polars, a fast dataframe
 built in Rust. It handles row counts that freeze Excel in an instant, and writes
@@ -3491,38 +3462,38 @@ But most in-house analysis needs only DuckDB and Polars.
 This chapter is done when these five hold.
 
 . The table you created with `sqlite3 app.db` shows up under `.tables`
-. After `docker compose up -d`, psql connects and lists the databases
+. `systemctl status postgresql` shows it running, and psql connects and lists the databases
 . Typing `\dx` in psql lists `vector`
 . From Python, DuckDB aggregates a PostgreSQL table and the per-department totals print
 . Polars reads an `.xlsx` a person made, writes the aggregate back to an `.xlsx`, and that file opens in a spreadsheet application
 
 ```bash
 sqlite3 app.db '.tables'
-docker compose exec db psql -U postgres -d app -c '\dx'
-python -c "import duckdb, polars; print('ok')"
+sudo -u postgres psql -d app -c '\dx'
+uv run python -c "import duckdb, polars; print('ok')"
 ```
 
 == What the human holds
 
 *Values the human supplies*
 
-* The PostgreSQL superuser password (replacing `change-me` in `compose.yaml`)
-* The database name (e.g. `app`) and the directory the data sits in (e.g. `./pgdata`)
-* The embedding dimension (e.g. 1024, for bge-m3)
+* The application role's name and password
+* The database name (e.g. `app`)
+* The embedding dimension (set by the model chosen in 2-16)
 * If migrating from Azure SQL: that server's host, user, and password
 
 *Actions the AI states before performing*
 
 * Stopping the old DB (Azure SQL / SQL Server)
-* Deleting or recreating `./pgdata`
+* Deleting or recreating PostgreSQL's data directory
 * Running `DROP` or `DELETE` against production data
 * Overwriting an `.xlsx` a person made
 
 == Versions checked, and when
 
-* `pgvector/pgvector:pg17` — the image with PostgreSQL and pgvector bundled
-* SQLite (bundled with Python), DuckDB, Polars, pgloader, ClickHouse — no version pinned
-* The procedure was written on 2026-07-01
+* Debian 13 (trixie): PostgreSQL 17, postgresql-17-pgvector (pgvector 0.8), pgloader 3.6
+* SQLite (bundled with Python), DuckDB, Polars — no version pinned
+* The procedure was written on 2026-07-01 and reviewed on 2026-10-05
 * If a version has moved, have the AI confirm the official procedure before proceeding
 
 == Summary
@@ -3533,7 +3504,7 @@ The data layer, onto your own side, first.
 * *PostgreSQL* (+ pgvector) — step up only when you share and several people write; the warehouse booking, the core, and RAG sit on
 * *pgvector* — the foundation for semantic search (RAG comes in the AI chapter)
 * *pgloader* — one-pass migration from Azure SQL, dropping only the dialect
-* *DuckDB / Polars* — columnar analysis and a fast dataframe; Excel stays the human's I/O, heavy crunching moves machine-side, pulling far ahead of Power BI
+* *DuckDB / Polars* — columnar analysis and a fast dataframe; Excel stays the human's I/O, heavy crunching moves machine-side, stepping off Power BI's per-seat billing
 
 Almost no code was written. The generic is already there, as OSS. The builder
 stands it up. The next chapter writes the logic on top of this foundation —

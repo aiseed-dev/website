@@ -11555,9 +11555,13 @@ ifdef::lang-ja[]
 連載の中心の道具にあたる。30B の MoE でアクティブは 3B と軽く、ローカル機でも低遅延
 で動く。
 
+置き場は、2-02 の一台ではなく別のサーバーだ。入れ方は Docker を使わず、公式の
+入れ方で systemd のサービスとして入れる(2-02)。待ち受けは社内の口に限り、
+2-02 の一台からだけ届くようにする。
+
 ```bash
-docker run -d -p 11434:11434 ollama/ollama
-docker exec -it ollama ollama pull north-mini-code    # オープンウェイト、手元で動く
+curl -fsSL https://ollama.com/install.sh | sh   # 公式の配布。systemd のサービスとして入る
+ollama pull north-mini-code-1.0                  # オープンウェイト、手元で動く
 ```
 
 試すだけなら OpenRouter の無料枠で叩けるが、本番は自前で動かし、コードもデータも外
@@ -11612,7 +11616,7 @@ ____
 RAG につながる。2-05 の門番の内側、リバースプロキシの先に置く。
 
 ```caddy
-ai.example.com { reverse_proxy open-webui:8080 }
+ai.example.com { reverse_proxy localhost:8080 }
 ```
 
 == 自前と借用の線は、正直に引く
@@ -11738,9 +11742,13 @@ agentic coding model. It is exactly the tool this series centers on: the builder
 has the AI write the code. A 30B MoE with only 3B active, it is light enough to
 run with low latency even on local hardware.
 
+It lives on a separate server, not on the one machine from 2-02. Install it the
+official way, as a systemd service, without Docker (2-02). Listen only on the
+internal network, reachable from the 2-02 machine alone.
+
 ```bash
-docker run -d -p 11434:11434 ollama/ollama
-docker exec -it ollama ollama pull north-mini-code    # open-weight, runs on your own side
+curl -fsSL https://ollama.com/install.sh | sh   # official installer; sets up a systemd service
+ollama pull north-mini-code-1.0                  # open-weight, runs on your own side
 ```
 
 You can hit it on OpenRouter's free tier to try it out, but in production you run
@@ -11802,7 +11810,7 @@ connected to the model and the RAG you stood up. Place it behind the 2-05 gate,
 beyond the reverse proxy.
 
 ```caddy
-ai.example.com { reverse_proxy open-webui:8080 }
+ai.example.com { reverse_proxy localhost:8080 }
 ```
 
 == Draw the line between in-house and borrowed, honestly

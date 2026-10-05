@@ -2693,6 +2693,10 @@ Docker が受け持つのは、どこでも同じに動かすことと、隔て�
 やるこの形では、どちらも別の手で足りる。隔てるのは別の利用者と systemd の制限で、
 立て直しは git に入れた設定とデータの写しでやる。
 
+例外は一つだけだ。公式がコンテナでしか配っていない物は、そのコンテナを使う。
+そのときも、使うのは公式のイメージだけで、自分でイメージは作らない。自分で作る
+イメージは、守る物と直す場所を増やすだけだ。
+
 == 画面を入れて、動かしたままにする
 
 デスクトップ環境(GNOME)も入れて、起動したままにする。サーバーだから画面は
@@ -2830,7 +2834,7 @@ sudo ss -tlnp                                 # 5 ── 待ち受けている�
 
 * *一台で全部* ── 公開の Web、社内の道具、AI の作業を、同じ機械に載せる
 * *土台は Debian* ── Windows でしか動かない物は、箱(libvirt)の中で動かす。WSL の逆
-* *Docker は使わない* ── apt で入れ、systemd で動かす。更新が一本になり、AI が直接見られ、ファイアウォールが効く
+* *Docker は使わない* ── apt で入れ、systemd で動かす。更新が一本になり、AI が直接見られ、ファイアウォールが効く。例外は公式がコンテナでしか配らない物だけで、イメージは自分で作らない
 * *画面も入れる* ── 文書を開く、頁を見る、箱の中の Windows を使う
 * *AI に root* ── 設定は git に、データは機械の外に写す。だから初期化で戻せる
 * *人が持つのは三つ* ── 鍵と認証、外でやる操作、データの写し
@@ -2904,6 +2908,11 @@ What Docker provides is running the same everywhere, and isolation. On one
 machine that does everything, both are covered another way: isolation by
 separate users and systemd's restrictions, rebuilding by configuration in git
 and copies of the data.
+
+There is one exception. Something whose project ships it only as a container runs
+in that container. Even then, use only the official image, and never build an
+image of your own. An image you build yourself only adds things to keep and
+places to fix.
 
 == Install a desktop and leave it running
 
@@ -3049,7 +3058,7 @@ Decide the machine the Independence part runs on, first.
 
 * *One machine for all of it* — public website, in-house tools, the AI's own work
 * *Debian as the base* — anything Windows-only runs in a box (libvirt); the reverse of WSL
-* *No Docker* — install with apt, run under systemd: one update stream, the AI sees everything, the firewall holds
+* *No Docker* — install with apt, run under systemd: one update stream, the AI sees everything, the firewall holds. The only exception is software shipped only as a container, and you never build an image yourself
 * *Install the desktop too* — open documents, look at pages, drive the Windows guest
 * *Root to the AI* — configuration in git, data copied off the machine, so a reinstall restores it
 * *Three things the human holds* — keys and accounts, outside actions, copies of the data

@@ -2754,10 +2754,8 @@ link:/ai-native-software/lockin/[3-05] で見るロックインを避けるの�
 として扱うか、受け取らない。Gmail は、送る機械のすべてにこれを求めている(Google
 の送信者ガイドライン、2026-10-05 に確認)。
 
-逆引きを設定できるのは、IP アドレスの持ち主、つまり回線の事業者だけだ。自分の
-ドメインの DNS では設定できない。だから、これは回線を選ぶときに決まる。固定 IP を
-出し、逆引きを設定してくれる回線にする。2-08 では送信を中継に任せるので、相手が
-確かめるのは中継の機械の逆引きになる。それでも、自分の機械の逆引きは設定しておく。
+逆引きを設定するのは、IP アドレスの持ち主である回線の事業者だ。固定 IP の回線
+なら、普通は設定してあるので、こちらですることはない。
 
 メモリやディスクの量は、ここでは決めない。この連載で立てる物を AI に伝えれば、
 手元の PC で足りるか、何を足せばよいかは AI が決める。
@@ -2811,7 +2809,6 @@ sudo ss -tlnp               # 4 ── 待ち受けている口を見る
 * 手元の PC の ssh 公開鍵
 * 最初の管理者の名前
 * データの写しを置く、機械の外の場所
-* 回線の事業者に頼む、固定 IP の逆引きの設定
 
 *AI が「やる前に言う」操作*
 
@@ -2975,11 +2972,8 @@ reverse, and checks that the name it gets resolves back to the same IP. If it do
 not, the mail is treated as spam or refused. Gmail requires this of every sending
 machine (Google's email sender guidelines, checked 2026-10-05).
 
-Only the owner of the IP address can set its reverse record — that is, the line
-provider. Your own domain's DNS cannot. So this is decided when you choose the
-line: pick one that gives a fixed IP and will set the reverse record. In 2-08,
-outbound mail goes through a relay, so what the other side checks is the relay's
-reverse record. Set your own machine's anyway.
+The reverse record is set by the owner of the IP address, the line provider. On a
+fixed-IP line it is normally already in place, so there is nothing for you to do.
 
 Memory and disk sizes are not set here. Tell the AI what this series stands up,
 and it decides whether the PC at hand is enough and what to add.
@@ -3034,7 +3028,6 @@ sudo ss -tlnp               # 4 — list the listening ports
 * The ssh public key of the human's own PC
 * The name of the first administrator
 * The place off the machine where the data copies go
-* The reverse record for the fixed IP, requested from the line provider
 
 *Actions the AI states before performing*
 

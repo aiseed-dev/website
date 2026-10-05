@@ -2744,14 +2744,12 @@ link:/ai-native-software/lockin/[3-05] で見るロックインを避けるの�
 
 == 要る物
 
-* PC が一台。メモリ 32GB、SSD 512GB。メモリを後から足せる機種にする(ノートより、デスクトップか小型の PC)。電源は入れたままにする
+* PC が一台。電源は入れたままにする
 * 外から届く回線。固定 IP か DDNS で名前を向ける(2-11)。メールを受けるなら、固定 IP と逆引き(PTR)が要る(2-08)
 * AI の利用料
 
-メモリの内訳はこうなる。Debian と GNOME で 2GB(Debian 13 のインストール
-ガイドの推奨)。2-09 の会議(Jitsi)で 8GB(Jitsi の公式ハンドブックの推奨で、
-小さな会議なら 4GB)。ほかのサービスは軽い。32GB あれば、AI の作業も含めて
-余裕を持って載る。
+メモリやディスクの量は、ここでは決めない。この連載で立てる物を AI に伝えれば、
+手元の PC で足りるか、何を足せばよいかは AI が決める。
 
 サーバーは安い物でよい。壊れたら取り替える。専用のサーバー機も、保守契約も
 要らない。
@@ -2954,14 +2952,12 @@ how the thing was built. An AI that shares your reasoning shares your blind spot
 
 == What you need
 
-* One PC: 32GB of memory, a 512GB SSD. Pick a model whose memory can be added later (a desktop or small-form-factor PC rather than a laptop). Leave it powered on
+* One PC, left powered on
 * A connection reachable from outside. Point a name at it with a fixed IP or DDNS (2-11). Receiving mail needs a fixed IP and reverse DNS (PTR) (2-08)
 * The AI subscriptions
 
-The memory breaks down like this. Debian with GNOME, 2GB (the recommendation in
-Debian 13's installation guide). Meetings in 2-09 (Jitsi), 8GB (the Jitsi
-handbook's suggestion; 4GB for small meetings). The other services are light.
-32GB holds all of it, with room for the AI's own work.
+Memory and disk sizes are not set here. Tell the AI what this series stands up,
+and it decides whether the PC at hand is enough and what to add.
 
 The server can be cheap hardware. If it breaks, replace it. No dedicated server
 machine, no maintenance contract.

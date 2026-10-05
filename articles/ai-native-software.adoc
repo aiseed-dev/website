@@ -2697,9 +2697,7 @@ Docker は使わない。以降の章で立てるサービスは、Debian の ap
 * 文書を画面で開いて、中の値を取る
 * ブラウザで、作った頁を実際に見る
 
-AI は、画面の取り込みとブラウザの自動操作で、この画面を使う。人が見るときは、
-手元の PC から GNOME のリモートデスクトップ(RDP)につなぐ。この接続は外には
-開けず、ssh の中を通す。
+人が見るときは、手元の PC からその画面につなぐ。この接続は外には開けない。
 
 == AI に root を渡す
 
@@ -2819,7 +2817,7 @@ sudo ss -tlnp               # 4 ── 待ち受けている口を見る
 
 == 確かめた版と日付
 
-* Debian 13(trixie)、GNOME 48、gnome-remote-desktop
+* Debian 13(trixie)、GNOME 48
 * Claude と ChatGPT の料金は 2026-10-05 に確認した
 * 手順を書いたのは 2026-09-20、見直したのは 2026-10-05
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
@@ -2910,9 +2908,8 @@ one.
 * Open a document on screen and read the values out of it
 * Look at a page you built, in a real browser
 
-The AI uses this desktop through screen capture and browser automation. When a
-person needs to look, they connect from their own PC with GNOME's remote desktop
-(RDP). That connection is never opened to the outside; it runs inside ssh.
+When a person needs to look, they connect to that desktop from their own PC.
+That connection is never opened to the outside.
 
 == Hand the AI root
 
@@ -3038,7 +3035,7 @@ sudo ss -tlnp               # 4 — list the listening ports
 
 == Versions checked, and when
 
-* Debian 13 (trixie), GNOME 48, gnome-remote-desktop
+* Debian 13 (trixie), GNOME 48
 * Claude's and ChatGPT's prices were checked on 2026-10-05
 * This procedure was written on 2026-09-20 and reviewed on 2026-10-05
 * If a version has moved, have the AI confirm the official procedure before proceeding

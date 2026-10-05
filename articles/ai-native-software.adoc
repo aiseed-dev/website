@@ -5996,7 +5996,9 @@ Windows・Mac・Linux で同じように動く。スマホは標準のメール�
 
 移行の手順は要らない。新しいメールは Stalwart で受ける。過去のメールは、いまの
 サーバの中にそのまま残し、その中で処理すればよい。Thunderbird は複数のアカウントを
-並べて開けるので、読み返すならそこで両方を見る。
+並べて開けるので、読み返すならそこで両方を見る。Microsoft 365 も Gmail も、
+Thunderbird で開ける(どちらも OAuth2 で入る。Microsoft Learn と Mozilla の
+サポート頁、2026-10-05 に確認)。
 
 MX を Stalwart に向けるのは、受信が確かめられてからでよい(2-12)。旧サーバを
 解約するときに、残したいフォルダだけ Thunderbird で新しい側へ引きずって写す。
@@ -6160,7 +6162,9 @@ app over IMAP. The JMAP that Stalwart speaks is for the tools you write yourself
 
 No migration procedure is needed. New mail is received by Stalwart. Past mail
 stays inside the current server and is handled there. Thunderbird opens several
-accounts side by side, so when you look back, you see both there.
+accounts side by side, so when you look back, you see both there. Microsoft 365
+and Gmail both open in Thunderbird (both sign in with OAuth2; Microsoft Learn and
+Mozilla's support pages, checked 2026-10-05).
 
 Point the MX at Stalwart once receiving has been confirmed (2-12). When the old
 server is cancelled, drag only the folders worth keeping across to the new side

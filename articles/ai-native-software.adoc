@@ -4596,23 +4596,17 @@ ifdef::lang-ja[]
 == PocketBase を立てる
 
 門番は PocketBase だ。Go 製の単一バイナリに、認証・管理画面・REST / リアルタイム
-API・ファイル保管まで入っている。2-03 で触れた SQLite の上で動くので、別のサーバも
-要らない。`compose.yaml` 一枚で立つ。
+API・ファイル保管まで入っている。SQLite を内蔵しているので、別のサーバも要らない。
+公式が配るのは単体のファイルで、Docker のイメージは無い(公式文書に明記)。だから
+2-02 の決めどおり、ファイルを置いて systemd に登録する。
 
-```yaml
-# compose.yaml ── 単一バイナリの門番を置くだけ
-services:
-  auth:
-    image: ghcr.io/muchobien/pocketbase:latest
-    ports: ["8090:8090"]
-    volumes: ["./pb_data:/pb_data"]
-    restart: always
-```
+* 置き場は `/opt/pocketbase`、データは同じ所の `pb_data`
+* 待ち受けは localhost だけ(`--http=127.0.0.1:8090`)。外からは Caddy が受ける(後述)
+* 公式文書が勧める systemd のユニットで動かす。ユニットは AI が書く
 
 ```bash
-docker compose up -d
-# 管理者を一人作る
-docker compose exec auth pocketbase superuser create admin@example.com 'change-me'
+# GitHub Releases の zip を /opt/pocketbase に展開し、systemd に登録したあと
+sudo -u pocketbase /opt/pocketbase/pocketbase superuser create admin@example.com 'change-me'
 ```
 
 `http://localhost:8090/_/` が管理画面だ。ユーザー、ログイン方法、発行するトークンの
@@ -4637,12 +4631,14 @@ Microsoft アカウントのまま入れる。門番だけ自分の側へ移し�
 置く(2-03)。門番と倉庫を分ける。
 
 アプリは、門番が発行したトークンの署名を手元で確かめて `user.id` を取り出す。門番に
-毎回問い合わせない。だから門番が一瞬落ちても動く。そのうえで、この利用者がこの操作を
+毎回問い合わせない。だから門番が一瞬落ちても動く。PocketBase のトークンは共通鍵
+(HS256)で署名されていて公開鍵は無いので、管理画面の「Auth token secret」をアプリと
+共有する。同じ一台の上だから、これで足りる。そのうえで、この利用者がこの操作を
 してよいかは、アプリ自身が判断する。
 
 ```python
 # 業務アプリ側 ── 署名を手元で確かめ、権限も自分で判断する
-user_id = verify_token(request.headers["Authorization"])   # 門番の公開鍵で署名検証(毎回問い合わせない)
+user_id = verify_token(request.headers["Authorization"])   # 門番と共有した秘密で署名検証(毎回問い合わせない)
 require(can_read_orders(user_id))                           # 「何ができるか」は、このアプリが決める
 orders  = pg.execute("SELECT * FROM orders WHERE user_id = %s", [user_id])
 ```
@@ -4657,31 +4653,35 @@ ____
 
 == 入口の前にリバースプロキシを置く
 
-自作アプリは PocketBase の SDK でそのまま守れる。一方、文書の編集エンジンやコード
-(Forgejo)のような既製の OSS は、各々が自前のログインを持つ。これらは入口の前に
-リバースプロキシ(Caddy)を一枚置き、社外には門番を通った者だけを通す。ただしこれは
-最初の一枚であって、各アプリも自分で身元と権限を確かめる。境界の中も信用しない、
-つまり多層防御だ。
+自作のアプリは、門番のトークンで守る。一方、コードの置き場(Forgejo、2-06)やメール
+(2-08)のような既製の OSS は、各々が自前のログインを持つ。PocketBase は OAuth2 の
+利用者であって提供者(OIDC)ではないので、既製の OSS を門番で直接は束ねられない。
+だから決めはこうなる。
+
+* 既製の OSS は、自分のログインを持ったまま並べる
+* 入口の前にリバースプロキシ(Caddy)を一枚置く。Caddy が受け持つのは TLS と、名前ごとの振り分けだ
+* 一度のログインで全部を束ねる(SSO)のは、OIDC を話す層を足すときで、後でよい
 
 ```caddy
-# Caddyfile ── 門番を通した先に各アプリを並べる
-auth.example.com   { reverse_proxy auth:8090 }
-docs.example.com   { reverse_proxy docs:80 }
-git.example.com    { reverse_proxy forgejo:3000 }
+# Caddyfile ── 名前ごとに振り分ける。証明書は Caddy が取る
+auth.example.com { reverse_proxy localhost:8090 }
+git.example.com  { reverse_proxy localhost:3000 }
 ```
 
-`example.com` の部分は、人が決めたドメイン名に置き換える。将来、これらを一度の
-ログインで束ねる(SSO)なら、OIDC を話す層を前に足す。だが多くの社内利用は、門番と
-各アプリのログインで足りる。まず身元を一つに共有することが先で、完全な統合は後でよい。
+`example.com` の部分は、人が決めたドメイン名に置き換える。まず身元を一つに共有する
+ことが先で、完全な統合は後でよい。多くの社内利用は、門番と各アプリのログインで
+足りる。
 
 == Entra ID から降りる
 
-Microsoft Entra ID は、利用者数で月額が積み上がる。門番を自分の側に立てれば、その
+Microsoft Entra ID の無料版は Microsoft 365 に含まれていて、人数課金の一部だ。
+条件付きアクセスなどを使う P1・P2 は、さらに利用者ごとに積む(P1 が月 7 ドル、P2 が
+月 10 ドル。2026-10-05 時点の公開価格、年払い)。門番を自分の側に立てれば、その
 課金から降りる。手順は段階的でよい。
 
 . PocketBase を立て、OAuth2 に Microsoft を残す(既存アカウントで入れる)
 . 新しいアプリは PocketBase のトークンで作る
-. 利用者を順に PocketBase の `users` へ移す(CSV で一括登録できる)
+. 利用者を順に PocketBase の `users` へ移す(API で一括登録する。スクリプトは AI が書く)
 . 全員が移ったら、OAuth2 の Microsoft を外す ── Entra への依存が切れる
 
 止めるのは一度ではない。並行で動かし、移り終えてから古い門を閉じる(2-12)。
@@ -4693,7 +4693,7 @@ Microsoft Entra ID は、利用者数で月額が積み上がる。門番を自�
 一点を閉じれば同時に閉じる。
 
 旧世界で退職処理が大仕事だったのは、鍵が SaaS ごとに散らばっていたからだ。棚卸しを
-して、一つずつ止めて回る。2-01 で見た「閉じた束は全層から同時に締め出される」という
+して、一つずつ止めて回る。2-01 で見た「門を閉じられれば、全層から同時に締め出される」という
 怖さは、鍵が自分の手元にある世界では、そのまま退職処理の確実さに裏返る。
 
 == 確かめ方
@@ -4704,48 +4704,48 @@ Microsoft Entra ID は、利用者数で月額が積み上がる。門番を自�
 . 管理画面で利用者を一人作り、その利用者でログインできる
 . 管理画面の `users` で、メール + パスワード・OAuth2・OTP・MFA の入口を切り替えられる
 . アプリが、門番に問い合わせずにトークンの署名を確かめ、`user.id` を取り出せる。門番を止めても、そのアプリは動き続ける
-. `auth.example.com`・`docs.example.com`・`git.example.com` をブラウザで開くと、Caddy 越しに各アプリが出る
+. `auth.example.com` と `git.example.com` をブラウザで開くと、Caddy 越しに各アプリが出る
 . 管理画面でその利用者のアカウントを止めると、その人はどのアプリにも入れなくなる
 
 ```bash
-docker compose exec auth pocketbase superuser create admin@example.com 'change-me'
-curl -s http://localhost:8090/api/health       # 門番が動いているか
-docker compose stop auth                       # 止めても業務アプリが動くか見る
+systemctl status pocketbase                    # systemd で動いているか
+curl -s http://localhost:8090/api/health       # 門番が答えるか
+sudo systemctl stop pocketbase                 # 止めても業務アプリが動くか見る
 ```
 
 == 人が持つ物
 
 *人が渡す値*
 
-* 門番と各アプリのドメイン名(`auth.example.com`・`docs.example.com`・`git.example.com`)
+* 門番と各アプリのドメイン名(`auth.example.com`・`git.example.com`)
 * 最初の管理者のメールアドレスとパスワード
 * OAuth2 で使う Microsoft・Google・GitHub のクライアント ID と秘密
 * 発行するトークンの寿命と、MFA を全体に強制するか管理者だけにするか
-* Entra ID から移す利用者の一覧(CSV)
+* Entra ID から移す利用者の一覧
 
 *AI が「やる前に言う」操作*
 
 * OAuth2 から Microsoft を外す(Entra への橋を落とす)
 * 利用者のアカウントを止める、または消す
 * DNS のレコードを、これらのドメイン名に向ける
-* `./pb_data` を消す、または作り直す
+* `pb_data` を消す、または作り直す
 
 == 確かめた版と日付
 
-* `ghcr.io/muchobien/pocketbase:latest` ── PocketBase の Docker イメージ
-* Caddy、SQLite(門番のデータはこの上)、PostgreSQL(業務データ側)── 版は指定していない
-* 手順を書いたのは 2026-07-02
+* PocketBase 0.40.4(2026-09-12、GitHub Releases の単体ファイル)
+* Caddy、PostgreSQL(業務データ側)── 版は指定していない
+* 手順を書いたのは 2026-07-02、見直したのは 2026-10-05
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
 == まとめ
 
 土台の上に、最初の門番を。
 
-* *PocketBase* ── 単一バイナリに認証・管理画面・API・ファイル保管(SQLite の上)
+* *PocketBase* ── 単一バイナリに認証・管理画面・API・ファイル保管(SQLite 内蔵)。ファイルを置いて systemd で動かす
 * *メール / OAuth2 / OTP / MFA* ── 要る入口だけ管理画面から開く
 * *門番と倉庫を分ける* ── 身元は PocketBase、業務データは PostgreSQL
 * *中央は最小限、守りは各サーバーで* ── 門番は身元だけ、アクセス制御は各アプリ(多層防御)
-* *リバースプロキシ* ── 既製 OSS は門を通した先に並べる(最初の一枚であって、唯一の壁ではない)
+* *リバースプロキシ* ── Caddy は TLS と名前の振り分け。既製 OSS は自分のログインのまま並べ、SSO は OIDC の層を足すときに
 * *Entra ID から降りる* ── OAuth2 で橋を架け、移り終えてから断つ
 
 書いたコードは、署名を確かめ、権限を判断する数行だけだ。身元は共有し、守りは各
@@ -4797,23 +4797,18 @@ app, is faster, safer, and stronger.
 == Stand up PocketBase
 
 The gate is PocketBase. A single Go binary carries authentication, an admin UI,
-REST / realtime APIs, and file storage. It runs on the SQLite introduced in 2-03,
-so there is no separate server to run. One `compose.yaml` stands it up.
+REST / realtime APIs, and file storage. SQLite is built in, so there is no separate
+server to run. The project ships a single file and no Docker image (its own
+documentation says so). So, as 2-02 decided, place the file and register it with
+systemd.
 
-```yaml
-# compose.yaml — just place the single-binary gate
-services:
-  auth:
-    image: ghcr.io/muchobien/pocketbase:latest
-    ports: ["8090:8090"]
-    volumes: ["./pb_data:/pb_data"]
-    restart: always
-```
+* It lives in `/opt/pocketbase`, with its data in `pb_data` alongside
+* It listens on localhost only (`--http=127.0.0.1:8090`). Caddy takes the outside (below)
+* It runs under the systemd unit the official guide recommends; the AI writes the unit
 
 ```bash
-docker compose up -d
-# create one superuser
-docker compose exec auth pocketbase superuser create admin@example.com 'change-me'
+# after unpacking the GitHub Releases zip into /opt/pocketbase and registering it with systemd
+sudo -u pocketbase /opt/pocketbase/pocketbase superuser create admin@example.com 'change-me'
 ```
 
 The admin UI is at `http://localhost:8090/_/`. Users, login methods, and token
@@ -4840,12 +4835,14 @@ This is the crux of the design. Identity (who) lives in the gate; business data
 
 An app verifies the token's signature locally and pulls out `user.id`. There is
 no per-request call to the gate, so the app keeps working even if the gate
-blinks. Then whether this user may do this operation is decided by the app
-itself.
+blinks. PocketBase signs its tokens with a shared key (HS256) and has no public
+key, so the collection's "Auth token secret" from the admin UI is shared with the
+app. On the same machine, that is enough. Then whether this user may do this
+operation is decided by the app itself.
 
 ```python
 # app side — verify the signature locally, decide permission yourself
-user_id = verify_token(request.headers["Authorization"])   # signature-checked with the gate's public key (no per-request call)
+user_id = verify_token(request.headers["Authorization"])   # signature-checked with the secret shared by the gate (no per-request call)
 require(can_read_orders(user_id))                          # "what you can do" is decided by this app
 orders  = pg.execute("SELECT * FROM orders WHERE user_id = %s", [user_id])
 ```
@@ -4861,33 +4858,35 @@ ____
 
 == Put a reverse proxy in front
 
-Apps you build yourself are guarded directly by the PocketBase SDK. Packaged OSS
-like a document editing engine or code (Forgejo), on the other hand, each carry
-their own login. Put a reverse proxy (Caddy) in front and let the outside reach
-them only through the gate. But this is the first layer, not the only one: each
-app still verifies identity and permission itself. Don't trust the inside of the
-perimeter either — that is defense in depth.
+Apps you build yourself are guarded by the gate's tokens. Packaged OSS such as the
+code host (Forgejo, 2-06) or mail (2-08), on the other hand, each carry their own
+login. PocketBase is an OAuth2 client, not a provider (OIDC), so it cannot bind
+packaged OSS directly. So the decisions are these.
+
+* Packaged OSS keeps its own login and sits alongside
+* One reverse proxy (Caddy) goes in front. Caddy's job is TLS and routing by name
+* Binding everything into one login (SSO) comes when you add a layer that speaks OIDC — later
 
 ```caddy
-# Caddyfile — line up each app behind the gate
-auth.example.com   { reverse_proxy auth:8090 }
-docs.example.com   { reverse_proxy docs:80 }
-git.example.com    { reverse_proxy forgejo:3000 }
+# Caddyfile — route by name; Caddy takes the certificates
+auth.example.com { reverse_proxy localhost:8090 }
+git.example.com  { reverse_proxy localhost:3000 }
 ```
 
-The `example.com` part is replaced with the domain name the human decides. To
-later bind these into one login (SSO), add a layer that speaks OIDC in front. But
-for most in-house use, the gate plus each app's own login is enough. Sharing one
-identity comes first; full unification can wait.
+The `example.com` part is replaced with the domain name the human decides. Sharing
+one identity comes first; full unification can wait. For most in-house use, the
+gate plus each app's own login is enough.
 
 == Step off Entra ID
 
-Microsoft Entra ID bills monthly, stacking with every user. Stand the gate up on
-your own side and step off that meter. The move can be gradual.
+Microsoft Entra ID's free tier comes with Microsoft 365, as part of its per-seat
+bill. P1 and P2, which add conditional access and the like, stack a further charge
+per user (P1 $7, P2 $10 a month; list prices on 2026-10-05, billed yearly). Stand
+the gate up on your own side and step off that meter. The move can be gradual.
 
 . Stand up PocketBase, keep Microsoft in OAuth2 (existing accounts still work)
 . Build new apps against PocketBase tokens
-. Move users into PocketBase's `users` in batches (bulk-import by CSV)
+. Move users into PocketBase's `users` in batches (bulk-load through the API; the AI writes the script)
 . Once everyone is across, remove Microsoft from OAuth2 — the Entra dependency is cut
 
 You don't cut over in one stroke. Run both in parallel, and close the old gate
@@ -4902,8 +4901,8 @@ at once.
 
 In the old world, offboarding was a major task because the keys were scattered
 across SaaS products — take inventory, then walk around turning them off one by
-one. The fear we saw in 2-01, that "a closed bundle locks you out of every layer
-at once," flips, when the key is in your own hands, into the reliability of
+one. The fear we saw in 2-01, that "close the gate and you are locked out of every
+layer at once," flips, when the key is in your own hands, into the reliability of
 offboarding.
 
 == How to check you are done
@@ -4914,48 +4913,48 @@ This chapter is done when these six hold.
 . You create one user in the admin UI, and that user can log in
 . In the `users` collection you can switch email + password, OAuth2, OTP, and MFA on and off
 . An app verifies a token's signature without calling the gate and pulls out `user.id`; stop the gate and that app keeps working
-. Opening `auth.example.com`, `docs.example.com`, and `git.example.com` in a browser reaches each app through Caddy
+. Opening `auth.example.com` and `git.example.com` in a browser reaches each app through Caddy
 . Stopping that user's account in the admin UI locks the person out of every app
 
 ```bash
-docker compose exec auth pocketbase superuser create admin@example.com 'change-me'
-curl -s http://localhost:8090/api/health       # is the gate up
-docker compose stop auth                       # see that the app still serves
+systemctl status pocketbase                    # running under systemd
+curl -s http://localhost:8090/api/health       # does the gate answer
+sudo systemctl stop pocketbase                 # see that the app still serves
 ```
 
 == What the human holds
 
 *Values the human supplies*
 
-* The domain names for the gate and each app (`auth.example.com`, `docs.example.com`, `git.example.com`)
+* The domain names for the gate and each app (`auth.example.com`, `git.example.com`)
 * The first administrator's email address and password
 * The client IDs and secrets for Microsoft, Google, and GitHub used by OAuth2
 * The token lifetime, and whether MFA is enforced for everyone or only administrators
-* The list of users to move over from Entra ID (CSV)
+* The list of users to move over from Entra ID
 
 *Actions the AI states before performing*
 
 * Removing Microsoft from OAuth2 (dropping the bridge to Entra)
 * Stopping or deleting a user's account
 * Pointing DNS records at these domain names
-* Deleting or recreating `./pb_data`
+* Deleting or recreating `pb_data`
 
 == Versions checked, and when
 
-* `ghcr.io/muchobien/pocketbase:latest` — the PocketBase Docker image
-* Caddy, SQLite (the gate's own data), PostgreSQL (the business-data side) — no version pinned
-* The procedure was written on 2026-07-02
+* PocketBase 0.40.4 (2026-09-12, the single file from GitHub Releases)
+* Caddy, PostgreSQL (the business-data side) — no version pinned
+* The procedure was written on 2026-07-02 and reviewed on 2026-10-05
 * If a version has moved, have the AI confirm the official procedure before proceeding
 
 == Summary
 
 On the foundation, the first gate.
 
-* *PocketBase* — auth, admin UI, API, and file storage in a single binary (on SQLite)
+* *PocketBase* — auth, admin UI, API, and file storage in a single binary (SQLite built in); place the file, run it under systemd
 * *Email / OAuth2 / OTP / MFA* — open only the doors you need, from the admin UI
 * *Separate gate from warehouse* — identity in PocketBase, business data in PostgreSQL
 * *Central minimal, defense at every server* — the gate holds only identity; access control lives in each app (defense in depth)
-* *Reverse proxy* — line packaged OSS up behind the gate (the first layer, not the only wall)
+* *Reverse proxy* — Caddy does TLS and routing by name. Packaged OSS keeps its own login alongside; SSO comes when an OIDC layer is added
 * *Step off Entra ID* — bridge with OAuth2, then cut once the move is done
 
 The only code written is a few lines that check a signature and decide a

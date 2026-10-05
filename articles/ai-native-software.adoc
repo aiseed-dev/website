@@ -2634,8 +2634,8 @@ title.ja: AI に PC を一台渡す ── 自立編を動かす機械
 title.en: Give the AI a PC of Its Own — The Machine the Independence Part Runs On
 subtitle.ja: 会社の PC を一台 Debian にして、root ごと AI に渡す。初期化で戻らない物だけ、人が持つ
 subtitle.en: Turn one company PC into Debian and hand it over, root included. The human keeps only what a reinstall cannot restore
-description.ja: 自立編で立てるものは、全部どこかで動く。その置き場をここで決める。会社の PC を一台 Debian にして、AI に渡す。公開の Web、社内の道具、AI の作業を同じ一台に載せ、画面(GNOME)も入れて動かしたままにする。Windows でしか動かない物は、Debian の中の仮想環境で動かす。WSL の逆で、土台が Debian、Windows が客だ。サービスは Docker を使わず、apt で入れて systemd で動かす。設定は全部 AI がやるので root を渡す。設定を git に入れ、データを機械の外に写しておけば、壊れても初期化で戻せるからだ。それでも戻らない三つ(鍵と認証、外でやる操作、データの写し)だけを人が持つ。AI は別の会社のものも入れ、作った物と確かめる基準だけを渡して相互に見張らせる。費用は作るあいだ月 120 ドル、運用に入れば月 40 ドル。稟議も、サーバーの契約も、人数分のライセンスも要らない。
-description.en: Everything the Independence part stands up has to run somewhere. This chapter decides where. Turn one company PC into Debian and hand it to the AI. The public website, the in-house tools, and the AI's own work all sit on that one machine, with a desktop (GNOME) installed and left running. Anything that only runs on Windows runs in a virtual machine inside Debian — the reverse of WSL, with Debian as the base and Windows as the guest. Services are installed with apt and run under systemd, not Docker. The AI does all the configuration, so it gets root: with the configuration in git and the data copied off the machine, a broken machine is recovered by reinstalling. The human keeps only the three things even that cannot restore — keys and accounts, actions taken outside the machine, and copies of the data. Add an AI from another vendor, and have them check each other with nothing but the artifact and the criteria. The bill is $120 a month while building and $40 in steady operation. No approval process, no server contract, no per-seat licenses.
+description.ja: 自立編で立てるものは、全部どこかで動く。その置き場をここで決める。会社の PC を一台 Debian にして、AI に渡す。公開の Web、社内の道具、AI の作業を同じ一台に載せ、画面(GNOME)も入れて動かしたままにする。サービスは Docker を使わず、apt で入れて systemd で動かす。設定は全部 AI がやるので root を渡す。設定を git に入れ、データを機械の外に写しておけば、壊れても初期化で戻せるからだ。それでも戻らない三つ(鍵と認証、外でやる操作、データの写し)だけを人が持つ。AI は別の会社のものも入れ、作った物と確かめる基準だけを渡して相互に見張らせる。費用は作るあいだ月 120 ドル、運用に入れば月 40 ドル。稟議も、サーバーの契約も、人数分のライセンスも要らない。
+description.en: Everything the Independence part stands up has to run somewhere. This chapter decides where. Turn one company PC into Debian and hand it to the AI. The public website, the in-house tools, and the AI's own work all sit on that one machine, with a desktop (GNOME) installed and left running. Services are installed with apt and run under systemd, not Docker. The AI does all the configuration, so it gets root: with the configuration in git and the data copied off the machine, a broken machine is recovered by reinstalling. The human keeps only the three things even that cannot restore — keys and accounts, actions taken outside the machine, and copies of the data. Add an AI from another vendor, and have them check each other with nothing but the artifact and the criteria. The bill is $120 a month while building and $40 in steady operation. No approval process, no server contract, no per-seat licenses.
 date: 2026.09.20
 label: Independence 2
 title_html.ja: AI に、<span class="accent">PC を一台</span>渡す。
@@ -2660,23 +2660,10 @@ Debian にして、AI に渡す。AI にも専用の PC を一台あげる、と
 AI が一つの機械の中で全部を見られるほうが、調べるのも直すのも速い。処理が
 足りなくなったら、そのときに分ければいい。
 
-== Debian を土台にして、Windows は箱の中で動かす
+== 土台は Debian にする
 
 土台は Debian にする。Python と apt は最初から入っていて、git も apt の一行で
 入る。更新で勝手に再起動されることもない。
-
-Windows でしか動かない物は、捨てない。Debian の中の仮想環境(libvirt の
-QEMU/KVM)で Windows を動かして、そこで使う。会計ソフトのような、代わりの無い
-物のためだ。AI はコマンド(`virsh`)で動かし、人は画面(virt-manager)で見る。
-PC は一台のままである。
-
-*これは WSL の逆だ*。WSL は Windows の中に Linux を入れる。こちらは Debian の
-中に Windows を入れる。土台が Debian で、Windows が客になる。データとコードは
-土台の側にあるので、更新や再起動が Windows の都合で降りてこない。
-
-仮想環境には、もう一つ利点がある。写し(スナップショット)を取れることだ。
-何かを入れる前に写しを取れば、気に入らなければ戻せる。メールで届いたファイルの
-マクロが動いても、箱の中で止まる。
 
 == サービスは apt で入れ、systemd で動かす
 
@@ -2705,7 +2692,6 @@ Docker は使わない。以降の章で立てるサービスは、Debian の ap
 
 * 文書を画面で開いて、中の値を取る
 * ブラウザで、作った頁を実際に見る
-* 箱の中の Windows を動かして、そこでしか動かない道具を使う
 
 AI は、画面の取り込みとブラウザの自動操作で、この画面を使う。人が見るときは、
 手元の PC から GNOME のリモートデスクトップ(RDP)につなぐ。この接続は外には
@@ -2754,12 +2740,19 @@ link:/ai-native-software/lockin/[3-05] で見るロックインを避けるの�
 
 == 要る物
 
-* PC が一台。メモリ 16GB 以上(32GB を勧める)、SSD 512GB 以上
+* PC が一台。メモリ 32GB、SSD 1TB。メモリを後から足せる機種にする(ノートより、デスクトップか小型の PC)。電源は入れたままにする
 * 外から届く回線。固定 IP か DDNS で名前を向ける(2-11)。メールを受けるなら、固定 IP と逆引き(PTR)が要る(2-08)
 * AI の利用料
 
-箱の中の Windows 11 だけで、メモリ 4GB とディスク 64GB を最低限として取る
-(Microsoft の公表する要件)。その上に GNOME と、以降の章のサービスが乗る。
+メモリの内訳はこうなる。Debian と GNOME で 2GB(Debian 13 のインストール
+ガイドの推奨)。2-09 の会議(Jitsi)で 8GB(Jitsi の公式ハンドブックの推奨で、
+小さな会議なら 4GB)。ほかのサービスは軽い。32GB あれば、AI の作業も含めて
+余裕を持って載る。
+
+2-16 で自前の LLM を据えるときは、モデルだけでメモリ 19GB を取る(Ollama の
+North Mini Code、4 ビット版)。そのときに 64GB に足すか、もう一台に分ける。
+最初から大きな機械は買わない。ディスクを 1TB にするのは、LLM のモデルが一つで
+19〜61GB になるからだ。
 
 サーバーは安い物でよい。壊れたら取り替える。専用のサーバー機も、保守契約も
 要らない。
@@ -2787,21 +2780,19 @@ link:/ai-native-software/lockin/[3-05] で見るロックインを避けるの�
 
 == 確かめ方
 
-この章は、次の七つができていれば済みだ。
+この章は、次の六つができていれば済みだ。
 
 . 手元の PC から、ssh でサーバーに入れる
 . 手元の PC から ssh の中を通して画面につなぎ、GNOME のデスクトップが見える
-. 箱の中の Windows が起動して、写しが取れる
 . `systemctl --failed` が、止まったサービスを一つも返さない
 . 外から見て、80 と 443 と ssh 以外の口が閉じている
 . AI がやった設定が git に入っていて、データの写しが機械の外に届いている
 . AI に「この機械の状態を報告して」と言うと、報告が返る
 
 ```bash
-ssh builder@example.com                       # 1
-virsh snapshot-create-as windows before-test  # 3 ── 箱の写しを取る
-systemctl --failed                            # 4
-sudo ss -tlnp                                 # 5 ── 待ち受けている口を見る
+ssh builder@example.com     # 1
+systemctl --failed          # 3
+sudo ss -tlnp               # 4 ── 待ち受けている口を見る
 ```
 
 == 人が持つ物
@@ -2811,7 +2802,6 @@ sudo ss -tlnp                                 # 5 ── 待ち受けている�
 * サーバーのドメイン名
 * 手元の PC の ssh 公開鍵
 * 最初の管理者の名前
-* 箱の中で使う Windows のライセンス
 * データの写しを置く、機械の外の場所
 
 *AI が「やる前に言う」操作*
@@ -2819,12 +2809,11 @@ sudo ss -tlnp                                 # 5 ── 待ち受けている�
 * DNS のレコードを変える
 * ファイアウォールの口を新しく開ける
 * OS を初期化する
-* 仮想環境の写しを消す
 * 機械の外に置いたデータの写しを消す
 
 == 確かめた版と日付
 
-* Debian 13(trixie)、GNOME 48、gnome-remote-desktop、libvirt(QEMU/KVM)と virt-manager
+* Debian 13(trixie)、GNOME 48、gnome-remote-desktop
 * Claude と ChatGPT の料金は 2026-10-05 に確認した
 * 手順を書いたのは 2026-09-20、見直したのは 2026-10-05
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
@@ -2834,9 +2823,9 @@ sudo ss -tlnp                                 # 5 ── 待ち受けている�
 自立編を動かす機械を、最初に決める。
 
 * *一台で全部* ── 公開の Web、社内の道具、AI の作業を、同じ機械に載せる
-* *土台は Debian* ── Windows でしか動かない物は、箱(libvirt)の中で動かす。WSL の逆
+* *土台は Debian* ── Python と apt が最初からあり、更新で勝手に再起動しない
 * *Docker は使わない* ── 配るための道具で、作るための道具ではない。apt で入れ、systemd で動かす。例外は公式がコンテナでしか配らない物だけで、イメージは自分で作らない
-* *画面も入れる* ── 文書を開く、頁を見る、箱の中の Windows を使う
+* *画面も入れる* ── 文書を開く、頁を見る
 * *AI に root* ── 設定は git に、データは機械の外に写す。だから初期化で戻せる
 * *人が持つのは三つ* ── 鍵と認証、外でやる操作、データの写し
 * *AI は複数* ── 別の会社の AI に、作った物と基準だけを渡して見張らせる
@@ -2874,24 +2863,10 @@ the configuration and the updates. And the AI diagnoses and repairs faster when
 it can see the whole machine from inside. When the load outgrows one box, split
 it then.
 
-== Debian is the base; Windows runs in a box
+== Debian is the base
 
 The base is Debian. Python and apt are there from the start, and git is one apt
 line away. Updates never reboot the machine on someone else's schedule.
-
-Anything that only runs on Windows is not thrown away. Run Windows in a virtual
-machine inside Debian (QEMU/KVM under libvirt) and use it there. Accounting
-software with no substitute is the usual case. The AI drives it with commands
-(`virsh`); a person looks at it through a window (virt-manager). It is still one
-PC.
-
-*This is the reverse of WSL.* WSL puts Linux inside Windows. This puts Windows
-inside Debian. Debian is the base and Windows is the guest. The data and the code
-live on the base, so Windows updates and restarts no longer reach them.
-
-The virtual machine has one more advantage: snapshots. Take a snapshot before
-installing anything, and you can go back. A macro in a file that arrived by mail
-stops inside the box.
 
 == Install services with apt and run them under systemd
 
@@ -2924,7 +2899,6 @@ one.
 
 * Open a document on screen and read the values out of it
 * Look at a page you built, in a real browser
-* Drive the Windows guest and use a tool that runs nowhere else
 
 The AI uses this desktop through screen capture and browser automation. When a
 person needs to look, they connect from their own PC with GNOME's remote desktop
@@ -2977,13 +2951,19 @@ how the thing was built. An AI that shares your reasoning shares your blind spot
 
 == What you need
 
-* One PC: 16GB of memory or more (32GB recommended), a 512GB SSD or more
+* One PC: 32GB of memory, a 1TB SSD. Pick a model whose memory can be added later (a desktop or small-form-factor PC rather than a laptop). Leave it powered on
 * A connection reachable from outside. Point a name at it with a fixed IP or DDNS (2-11). Receiving mail needs a fixed IP and reverse DNS (PTR) (2-08)
 * The AI subscriptions
 
-The Windows 11 guest alone takes a minimum of 4GB of memory and 64GB of disk
-(Microsoft's published requirements). GNOME and the services of the following
-chapters sit on top of that.
+The memory breaks down like this. Debian with GNOME, 2GB (the recommendation in
+Debian 13's installation guide). Meetings in 2-09 (Jitsi), 8GB (the Jitsi
+handbook's suggestion; 4GB for small meetings). The other services are light.
+32GB holds all of it, with room for the AI's own work.
+
+When 2-16 sets up a self-hosted LLM, the model alone takes 19GB of memory
+(North Mini Code on Ollama, 4-bit). At that point, add memory to 64GB or split
+onto a second machine. Do not buy a big machine up front. The disk is 1TB because
+one LLM model runs from 19 to 61GB.
 
 The server can be cheap hardware. If it breaks, replace it. No dedicated server
 machine, no maintenance contract.
@@ -3012,21 +2992,19 @@ seat per head.
 
 == How to check you are done
 
-This chapter is done when these seven hold.
+This chapter is done when these six hold.
 
 . You can ssh into the server from your own PC
 . You can connect to the desktop from your own PC through ssh and see GNOME
-. The Windows guest boots and you can take a snapshot of it
 . `systemctl --failed` lists no failed service
 . Seen from outside, nothing but 80, 443, and ssh is open
 . The AI's configuration is in git, and the copy of the data has arrived off the machine
 . Asking the AI to report the state of this machine produces a report
 
 ```bash
-ssh builder@example.com                       # 1
-virsh snapshot-create-as windows before-test  # 3 — snapshot the guest
-systemctl --failed                            # 4
-sudo ss -tlnp                                 # 5 — list the listening ports
+ssh builder@example.com     # 1
+systemctl --failed          # 3
+sudo ss -tlnp               # 4 — list the listening ports
 ```
 
 == What the human holds
@@ -3036,7 +3014,6 @@ sudo ss -tlnp                                 # 5 — list the listening ports
 * The server's domain name
 * The ssh public key of the human's own PC
 * The name of the first administrator
-* The Windows license used inside the box
 * The place off the machine where the data copies go
 
 *Actions the AI states before performing*
@@ -3044,12 +3021,11 @@ sudo ss -tlnp                                 # 5 — list the listening ports
 * Changing a DNS record
 * Opening a new port in the firewall
 * Reinstalling the operating system
-* Deleting a virtual-machine snapshot
 * Deleting a data copy kept off the machine
 
 == Versions checked, and when
 
-* Debian 13 (trixie), GNOME 48, gnome-remote-desktop, libvirt (QEMU/KVM) and virt-manager
+* Debian 13 (trixie), GNOME 48, gnome-remote-desktop
 * Claude's and ChatGPT's prices were checked on 2026-10-05
 * This procedure was written on 2026-09-20 and reviewed on 2026-10-05
 * If a version has moved, have the AI confirm the official procedure before proceeding
@@ -3059,9 +3035,9 @@ sudo ss -tlnp                                 # 5 — list the listening ports
 Decide the machine the Independence part runs on, first.
 
 * *One machine for all of it* — public website, in-house tools, the AI's own work
-* *Debian as the base* — anything Windows-only runs in a box (libvirt); the reverse of WSL
+* *Debian as the base* — Python and apt from the start, no reboots on someone else's schedule
 * *No Docker* — a tool for distributing, not for building. Install with apt, run under systemd. The only exception is software shipped only as a container, and you never build an image yourself
-* *Install the desktop too* — open documents, look at pages, drive the Windows guest
+* *Install the desktop too* — open documents, look at pages
 * *Root to the AI* — configuration in git, data copied off the machine, so a reinstall restores it
 * *Three things the human holds* — keys and accounts, outside actions, copies of the data
 * *More than one AI* — pair vendors and pass only the artifact and the criteria
@@ -17026,7 +17002,7 @@ AI が革命を起こすのは、上からの決定でも、大きな予算で�
 * *aiseed office* ── Word でしか開けなかった様式が、Linux で同じに開く
   (https://github.com/aiseed-dev/officework[`aiseed-dev/officework`]、2-07)
 * *Debian の中の仮想環境で Windows を動かす* ── 2026-09-20 に通した。詰まる所は
-  無かった(2-02)
+  無かった
 
 どれも、稟議も予算も通していない。回線と、月々の利用料だけで足りた。
 
@@ -17272,7 +17248,7 @@ my own hands.
 * *aiseed office* — forms that only opened in Word now open the same way on Linux
   (https://github.com/aiseed-dev/officework[`aiseed-dev/officework`], 2-07)
 * *Running Windows in a virtual machine inside Debian* — done on 2026-09-20.
-  Nothing got stuck (2-02)
+  Nothing got stuck
 
 None of it went through an approval process or a budget. A line and a monthly
 subscription were enough.

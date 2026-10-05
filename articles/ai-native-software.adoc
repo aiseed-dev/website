@@ -4981,8 +4981,8 @@ title.ja: コードを手元に ── Forgejo と Zed
 title.en: Bring Code In-House — Forgejo and Zed
 subtitle.ja: ビルダーの仕事場を、自分の側に ── リポジトリも CI も、Microsoft の外へ
 subtitle.en: The builder's workshop, on your own side — repositories and CI, outside Microsoft
-description.ja: ビルダーの仕事は、AI にコードを書かせ、評価し、統合すること。その置き場 ── リポジトリ ── を自分の側に立てる。Forgejo は GitHub・Azure DevOps を置き換える単一の Git フォージで、Actions で CI/CD まで賄う。2-03の PostgreSQL に乗せ、2-04の門番の内側に。動くのは 2-02 で AI に渡した一台の上だ。手元の道具は Zed と Claude。コードは資産であり、置き場の主導権は自分が持つ。
-description.en: A builder's work is to have AI write code, evaluate it, and integrate it. The place that code lives — the repository — gets stood up on your own side. Forgejo is a single Git forge that replaces GitHub and Azure DevOps, with Actions covering CI/CD. It rides on the PostgreSQL from 2-03 and sits behind the gate from 2-05, on the one machine handed to the AI in 2-02. The local tools are Zed and Claude. Code is an asset; control of where it lives stays with you.
+description.ja: ビルダーの仕事は、AI にコードを書かせ、評価し、統合すること。その置き場 ── リポジトリ ── を自分の側に立てる。Forgejo は GitHub・Azure DevOps を置き換える単一の Git フォージで、Actions で CI/CD まで賄う。2-03の PostgreSQL に乗せ、2-05の門番の内側に。動くのは 2-02 で AI に渡した一台の上だ。手元の道具は Zed と、その中から呼ぶ AI。コードは資産であり、置き場の主導権は自分が持つ。
+description.en: A builder's work is to have AI write code, evaluate it, and integrate it. The place that code lives — the repository — gets stood up on your own side. Forgejo is a single Git forge that replaces GitHub and Azure DevOps, with Actions covering CI/CD. It rides on the PostgreSQL from 2-03 and sits behind the gate from 2-05, on the one machine handed to the AI in 2-02. The local tools are Zed and the AI called from inside it. Code is an asset; control of where it lives stays with you.
 date: 2026.07.06
 label: Independence 6
 title_html.ja: コードの置き場を、<br><span class="accent">自分の側</span>に。
@@ -5014,32 +5014,23 @@ AI に渡した一台の上に立てる。
 == Forgejo を立てる
 
 仕事場は Forgejo だ。Gitea 系の単一バイナリで、リポジトリ・Issue・プルリクエスト・
-レビュー・CI を一つに備える。GitHub・GitLab・Azure DevOps の置き換えである。データは
-2-03 の PostgreSQL に乗せる。
+レビュー・CI を一つに備える。GitHub・GitLab・Azure DevOps の置き換えである。公式が
+単体のバイナリを配り、systemd のユニットも公式文書にある。だから 2-02 の決めどおり、
+ファイルを置いて systemd に登録する。
 
-```yaml
-# compose.yaml ── Forgejo を 2-03 の DB に乗せて立てる
-services:
-  code:
-    image: codeberg.org/forgejo/forgejo:latest
-    environment:
-      FORGEJO__database__DB_TYPE: postgres
-      FORGEJO__database__HOST: db:5432      # 2-03 の PostgreSQL
-      FORGEJO__database__NAME: forgejo
-      FORGEJO__database__USER: postgres
-      FORGEJO__database__PASSWD: change-me
-    volumes: ["./forgejo:/data"]
-    ports: ["3000:3000", "2222:22"]
-    restart: always
-```
+* バイナリは `/usr/local/bin/forgejo`、データは `/var/lib/forgejo`、設定は `/etc/forgejo`(公式の手順のまま)
+* `git` 利用者で動かす。ssh の push は、機械の sshd をこの利用者で受ける。新しい口は開けない(2-02)
+* データは 2-03 の PostgreSQL に乗せる。Forgejo 用のデータベースと利用者を一つ作る
+* 待ち受けは localhost の 3000 番だけ。外は Caddy が受ける(後述)
 
 ```bash
-docker compose up -d
-git remote add origin ssh://git@localhost:2222/team/app.git
+# バイナリを置き、git 利用者を作り、公式の forgejo.service を登録したあと
+sudo systemctl enable --now forgejo
+git remote add origin git@git.example.com:team/app.git
 git push -u origin main          # もう自分のサーバに乗っている
 ```
 
-`PASSWD` の値は、2-03 で人が決めた PostgreSQL のパスワードを使う。
+Forgejo 用の PostgreSQL の利用者名とパスワードは、人が決めて渡す。
 
 == CI/CD は Forgejo Actions で回す
 
@@ -5051,24 +5042,32 @@ git push -u origin main          # もう自分のサーバに乗っている
 on: [push]
 jobs:
   test:
-    runs-on: docker
+    runs-on: host            # コンテナを使わず、この機械の上で直接走る
     steps:
       - uses: actions/checkout@v4
-      - run: pytest          # 自分のランナーで、追加料金ゼロ
+      - run: uv run pytest   # 自分のランナーで、追加料金なし
 ```
 
-GitHub Actions の従量課金から降りる。*ランナーも自分の側にある*ので、回す回数を
-気にせず、AI が書いたコードを何度でも検証できる。
+ランナー(`forgejo-runner`)も単体のバイナリで、systemd で動かす。Docker を使わない
+ので、ジョブは機械の上で直接走る(`host`)。公式文書は「隔離が無く、一つのジョブが
+機械を壊しうる」と注意しているので、決めを三つ置く。
 
-== 手元の道具は Zed と Claude
+* ランナーは専用の利用者で動かす(2-02 の「別の利用者」)
+* CI で走らせるのはテストまで。本番へ出す手順は「やる前に言う」操作に残す
+* 隔離が要るようになったら、Forgejo が対応している LXC(apt にある)に上げる
 
-サーバが Forgejo なら、手元の編集は Zed だ。Rust 製で軽く、複数人の同時編集と AI 連携を
-備えたエディタである。Claude をその場に呼び、生成・修正・説明をさせながら、ビルダーは
-評価と統合に集中する。
+GitHub Actions の分数の上限と課金から離れる。*ランナーも自分の側にある*ので、回す
+回数を気にせず、AI が書いたコードを何度でも検証できる。
+
+== 手元の道具は Zed と、その中から呼ぶ AI
+
+サーバが Forgejo なら、手元の編集は Zed だ。Rust 製で軽く、複数人の同時編集を備えた
+エディタで、AI のエージェントをエディタの中から呼べる(ACP)。2-02 で契約した AI を
+その場に呼び、生成・修正・説明をさせながら、ビルダーは評価と統合に集中する。
 
 ```bash
-git clone ssh://git@localhost:2222/team/app.git
-zed app/          # Claude を呼んで、書かせ、評価し、push する
+git clone git@git.example.com:team/app.git
+zed app/          # AI を呼んで、書かせ、評価し、push する
 ```
 
 書くのは AI、決めるのは人。仕事場(Forgejo)と道具(Zed)が揃えば、その分担がそのまま
@@ -5080,7 +5079,7 @@ Forgejo はリバースプロキシの内側に置く(2-05)。GitHub からの�
 「新規移行」が Issue・PR ごとリポジトリを取り込む。
 
 ```caddy
-git.example.com { reverse_proxy code:3000 }
+git.example.com { reverse_proxy localhost:3000 }
 ```
 
 一度に切り替えなくてよい。GitHub をミラーにしたまま並行で動かし、慣れたら本番を
@@ -5098,13 +5097,13 @@ ____
 . ブラウザで `git.example.com` を開き、作った管理者でログインできる
 . 手元から `git push` したコードが、Forgejo の画面にそのまま出る
 . push の後、Forgejo の Actions の画面でワークフローが走り、`pytest` の結果が見える
-. Zed でリポジトリを開き、Claude を呼んでコードを書かせ、そのまま push できる
+. Zed でリポジトリを開き、AI を呼んでコードを書かせ、そのまま push できる
 . GitHub から「新規移行」で取り込んだリポジトリに、Issue と PR が付いてきている
 
 ```bash
-docker compose up -d
+systemctl status forgejo forgejo-runner # 二つとも systemd で動いているか
 git push -u origin main                 # 画面に出るか見る
-curl -sI https://git.example.com        # 門番の内側で応答するか見る
+curl -sI https://git.example.com        # Caddy 越しに応答するか見る
 ```
 
 == 人が持つ物
@@ -5112,9 +5111,9 @@ curl -sI https://git.example.com        # 門番の内側で応答するか見�
 *人が渡す値*
 
 * Forgejo のドメイン名(例 `git.example.com`)
-* 2-03 で決めた PostgreSQL の利用者名とパスワード
+* Forgejo 用の PostgreSQL の利用者名とパスワード
 * 最初の管理者の名前とメールアドレス
-* 手元の PC の ssh 公開鍵(`2222` 番の口から push するため)
+* 手元の PC の ssh 公開鍵(push に使う。Forgejo の画面で登録する)
 * GitHub から取り込むときのアクセストークン
 
 *AI が「やる前に言う」操作*
@@ -5122,27 +5121,27 @@ curl -sI https://git.example.com        # 門番の内側で応答するか見�
 * GitHub のリポジトリを消す、または公開範囲を変える
 * DNS のレコードを `git.example.com` に向ける
 * 本番へデプロイするワークフローを有効にする、または走らせる
-* `./forgejo` のデータを消す、または作り直す
+* `/var/lib/forgejo` のデータを消す、または作り直す
 
 == 確かめた版と日付
 
-* `codeberg.org/forgejo/forgejo:latest` ── Forgejo の Docker イメージ
+* Forgejo 16.0.5(2026-09-17、Codeberg の単体バイナリ)、forgejo-runner
 * `actions/checkout@v4` ── ワークフローで使う取り込みアクション
-* Forgejo Actions、Zed、Caddy、PostgreSQL(2-03 の `pgvector/pgvector:pg17`)
-* 手順を書いたのは 2026-07-06
+* Zed、Caddy、PostgreSQL(2-03 の Debian 13 のパッケージ)── 版は指定していない
+* 手順を書いたのは 2026-07-06、見直したのは 2026-10-05
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
 == まとめ
 
 ビルダーの仕事場を、自分の側に。
 
-* *Forgejo* ── リポジトリ・Issue・PR・レビューを一つに(2-03 の PostgreSQL に乗る)
-* *Forgejo Actions* ── GitHub Actions 互換の CI/CD、ランナーも自分の側
-* *Zed + Claude* ── 軽量エディタに AI を呼び、書かせ・評価し・push する
+* *Forgejo* ── リポジトリ・Issue・PR・レビューを一つに(2-03 の PostgreSQL に乗る)。単体バイナリを systemd で
+* *Forgejo Actions* ── GitHub Actions 互換の CI/CD。ランナーは専用の利用者で、機械の上で直接走らせる
+* *Zed + AI* ── 軽量エディタの中から AI を呼び、書かせ・評価し・push する
 * *門番の内側* ── リバースプロキシで囲い、GitHub から段階移行
 
-書いたコードは、設定だけだ。汎用は、すでに OSS として在る。次章では、文書
-を自分の側に据え、Word・Excel・PowerPoint の依存を断つ。
+書いたコードは、設定だけだ。汎用は、すでに OSS として在る。次章では、文書の原稿を
+文字で持ち、Word も Claude Docs も通過させる道具にする。
 
 '''
 
@@ -5181,31 +5180,23 @@ Generic Git hosting is already there as OSS. You don't write it, you stand it up
 
 The workshop is Forgejo, a single Gitea-family binary carrying repositories,
 issues, pull requests, review, and CI in one. It is a replacement for GitHub,
-GitLab, and Azure DevOps. The data rides on the PostgreSQL from 2-03.
+GitLab, and Azure DevOps. The project ships a single binary, and its documentation
+carries the systemd unit. So, as 2-02 decided, place the file and register it with
+systemd.
 
-```yaml
-# compose.yaml — stand up Forgejo on the 2-03 DB
-services:
-  code:
-    image: codeberg.org/forgejo/forgejo:latest
-    environment:
-      FORGEJO__database__DB_TYPE: postgres
-      FORGEJO__database__HOST: db:5432      # the 2-03 PostgreSQL
-      FORGEJO__database__NAME: forgejo
-      FORGEJO__database__USER: postgres
-      FORGEJO__database__PASSWD: change-me
-    volumes: ["./forgejo:/data"]
-    ports: ["3000:3000", "2222:22"]
-    restart: always
-```
+* The binary at `/usr/local/bin/forgejo`, data in `/var/lib/forgejo`, configuration in `/etc/forgejo` (as the official guide has it)
+* It runs as the `git` user. Pushes over ssh go through the machine's own sshd as that user; no new port is opened (2-02)
+* The data rides on the PostgreSQL from 2-03, with one database and one role made for Forgejo
+* It listens on localhost port 3000 only. Caddy takes the outside (below)
 
 ```bash
-docker compose up -d
-git remote add origin ssh://git@localhost:2222/team/app.git
+# after placing the binary, creating the git user, and registering the official forgejo.service
+sudo systemctl enable --now forgejo
+git remote add origin git@git.example.com:team/app.git
 git push -u origin main          # already on your own server
 ```
 
-The value of `PASSWD` is the PostgreSQL password the human decided in 2-03.
+The PostgreSQL role name and password for Forgejo are the human's to decide and supply.
 
 == Run CI/CD with Forgejo Actions
 
@@ -5217,24 +5208,34 @@ syntax as GitHub Actions run as-is. Just drop one file in the repository.
 on: [push]
 jobs:
   test:
-    runs-on: docker
+    runs-on: host            # no container; runs directly on this machine
     steps:
       - uses: actions/checkout@v4
-      - run: pytest          # on your own runner, at zero marginal cost
+      - run: uv run pytest   # on your own runner, at no extra charge
 ```
 
-Step off GitHub Actions' metered billing. *The runner is on your side too,* so
-you can verify AI-written code any number of times without watching a meter.
+The runner (`forgejo-runner`) is a single binary too, run under systemd. With no
+Docker, jobs run directly on the machine (`host`). The official documentation
+warns that there is no isolation and a single job can destroy the host, so three
+decisions go with it.
 
-== The local tools are Zed and Claude
+* The runner runs as its own dedicated user (the "separate users" of 2-02)
+* CI runs tests, and no further. Steps that deploy to production stay among the actions the AI states before performing
+* When isolation becomes necessary, step up to LXC, which Forgejo supports and apt carries
+
+Step off GitHub Actions' minute caps and billing. *The runner is on your side too,*
+so you can verify AI-written code any number of times without watching a meter.
+
+== The local tools are Zed and the AI called from inside it
 
 If the server is Forgejo, local editing is Zed: a Rust-built, lightweight editor
-with co-editing and AI integration. Call Claude in place to generate, fix, and
-explain, while the builder concentrates on evaluation and integration.
+with co-editing, which can host an AI agent inside the editor (ACP). Call the AI
+subscribed to in 2-02 in place to generate, fix, and explain, while the builder
+concentrates on evaluation and integration.
 
 ```bash
-git clone ssh://git@localhost:2222/team/app.git
-zed app/          # call Claude, have it write, evaluate, and push
+git clone git@git.example.com:team/app.git
+zed app/          # call the AI, have it write, evaluate, and push
 ```
 
 AI writes; the human decides. With the workshop (Forgejo) and the tool (Zed) in
@@ -5246,7 +5247,7 @@ Put Forgejo behind the reverse proxy (2-05). Migrating from GitHub, Forgejo's
 "New Migration" imports a repository together with its issues and PRs.
 
 ```caddy
-git.example.com { reverse_proxy code:3000 }
+git.example.com { reverse_proxy localhost:3000 }
 ```
 
 There is no need to switch in one stroke. Keep GitHub as a mirror and run in
@@ -5264,13 +5265,13 @@ This chapter is done when these five hold.
 . You open `git.example.com` in a browser and log in as the administrator you created
 . Code you `git push` from your own machine appears in the Forgejo web UI
 . After the push, the workflow runs on Forgejo's Actions page and the `pytest` result is visible
-. You open the repository in Zed, call Claude to write code, and push it from there
+. You open the repository in Zed, call the AI to write code, and push it from there
 . A repository imported from GitHub with "New Migration" arrives with its issues and PRs attached
 
 ```bash
-docker compose up -d
+systemctl status forgejo forgejo-runner # both running under systemd
 git push -u origin main                 # then look at the web UI
-curl -sI https://git.example.com        # does it answer behind the gate
+curl -sI https://git.example.com        # does it answer through Caddy
 ```
 
 == What the human holds
@@ -5278,9 +5279,9 @@ curl -sI https://git.example.com        # does it answer behind the gate
 *Values the human supplies*
 
 * The Forgejo domain name (e.g. `git.example.com`)
-* The PostgreSQL user and password decided in 2-03
+* The PostgreSQL role name and password for Forgejo
 * The first administrator's name and email address
-* The ssh public key of the human's own PC (to push over port `2222`)
+* The ssh public key of the human's own PC (used for pushes; registered in Forgejo's web UI)
 * The access token used to import from GitHub
 
 *Actions the AI states before performing*
@@ -5288,28 +5289,28 @@ curl -sI https://git.example.com        # does it answer behind the gate
 * Deleting a GitHub repository, or changing its visibility
 * Pointing a DNS record at `git.example.com`
 * Enabling or running a workflow that deploys to production
-* Deleting or recreating the data under `./forgejo`
+* Deleting or recreating the data under `/var/lib/forgejo`
 
 == Versions checked, and when
 
-* `codeberg.org/forgejo/forgejo:latest` — the Forgejo Docker image
+* Forgejo 16.0.5 (2026-09-17, the single binary from Codeberg), forgejo-runner
 * `actions/checkout@v4` — the checkout action used in the workflow
-* Forgejo Actions, Zed, Caddy, PostgreSQL (the `pgvector/pgvector:pg17` from 2-03)
-* The procedure was written on 2026-07-06
+* Zed, Caddy, PostgreSQL (2-03's Debian 13 package) — no version pinned
+* The procedure was written on 2026-07-06 and reviewed on 2026-10-05
 * If a version has moved, have the AI confirm the official procedure before proceeding
 
 == Summary
 
 The builder's workshop, on your own side.
 
-* *Forgejo* — repositories, issues, PRs, and review in one (on the 2-03 PostgreSQL)
-* *Forgejo Actions* — GitHub Actions-compatible CI/CD, the runner on your side
-* *Zed + Claude* — call AI into a lightweight editor; write, evaluate, push
+* *Forgejo* — repositories, issues, PRs, and review in one (on the 2-03 PostgreSQL); a single binary under systemd
+* *Forgejo Actions* — GitHub Actions-compatible CI/CD; the runner runs as its own user, directly on the machine
+* *Zed + AI* — call the AI from inside a lightweight editor; write, evaluate, push
 * *Behind the gate* — fenced by the reverse proxy, migrate from GitHub gradually
 
 The only code written is configuration. The generic is already there, as OSS.
-Next, we set up documents on our own side and cut the dependency on
-Word, Excel, and PowerPoint.
+The next chapter keeps the manuscript of every document as text, and turns Word
+and Claude Docs into doors you pass through.
 
 '''
 

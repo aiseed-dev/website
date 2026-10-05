@@ -5542,8 +5542,8 @@ rclone copy onedrive:Documents ./docs/inbox --progress   # 吸い出して、リ
 
 取引先との共有に、専用の共有基盤は要らない。社外に渡すものは出口から出す。元ファイル
 ではなく、`.docx` か PDF に変換して、メール(2-08)で送る。受け取りも同じで、届いた
-ファイルは入口で開いてから、手元に入れる。社外の人に、こちらのアカウントは作らない。
-共同で編集までしたい相手はまれで、たいていは版のやり取りで足りる。
+ファイルは入口で開いてから、手元に入れる。共同で編集までしたい相手には、門番の
+アカウントを渡せばよい。たいていは、版のやり取りで足りる。
 
 == 確かめ方
 
@@ -5837,9 +5837,8 @@ only after the move is done (2-12).
 Sharing with business partners needs no dedicated sharing platform. What goes
 outside goes out through the exit: not the original file but a `.docx` or PDF,
 sent by mail (2-08). Receiving is the same — a file that arrives is opened at the
-entrance and then brought inside. No account is made for people outside. The
-partner who wants to co-edit is rare; an exchange of versions is almost always
-enough.
+entrance and then brought inside. A partner who wants to co-edit can be given an
+account at the gate. An exchange of versions is almost always enough.
 
 == How to check you are done
 
@@ -7506,7 +7505,7 @@ ifdef::lang-ja[]
 = Web を公開する ── 自分の一台か、Cloudflare Pages か
 
 link:/ai-native-software/web-build/[2-10: Web を作る ── HTML と CSS と JavaScript に戻る]
-で、中身を Markdown で持ち、外枠を HTML と CSS で書き、Python で焼く形を決めた。
+で、中身を文字で持ち、外枠を HTML と CSS で書き、Python で焼く形を決めた。
 ここでは、その焼いた `html/` を外に出す。
 
 置き場は二つある。link:/ai-native-software/ai-pc/[2-02] で立てた自分の一台に
@@ -7548,7 +7547,7 @@ link:/ai-native-software/web-build/[2-10: Web を作る ── HTML と CSS と 
 
 | 動く部分
 | 同じ機械の FastAPI に、そのまま繋ぐ
-| 門番の内側の API に、公開ドメインからだけ繋ぐ
+| 自分の一台の門番の内側の API に、外から繋ぐ
 
 | 向く場面
 | 社内向け、規模の見える公開、IoT の受け口も同じ一台に置きたいとき
@@ -7561,8 +7560,9 @@ link:/ai-native-software/web-build/[2-10: Web を作る ── HTML と CSS と 
 
 == 自分の一台に載せる
 
-2-02 で立てた Debian の一台に、Caddy を前に立てる。Caddy は 80 と 443 を受け、
-証明書を自動で取って自動で更新する。設定はこれだけだ。
+2-02 で立てた Debian の一台に、Caddy を前に立てる。Caddy は Debian 13 の apt にあり、
+systemd で動く(2-02)。80 と 443 を受け、証明書を自動で取って自動で更新する。設定は
+これだけだ。
 
 ```
 example.com {
@@ -7595,15 +7595,16 @@ example.com {
 上げるのに npm も Node も要らない。Cloudflare の API を直接叩くスクリプト一つで
 足りる。そのスクリプトは
 https://github.com/aiseed-dev/cf-publish[`aiseed-dev/cf-publish`]
-として公開してあり、一行で、変わったファイルだけが上がる。
+として公開してあり(PyPI、`uv tool install cf-publish`)、一行で、変わったファイルだけが
+上がる。本番とは別の枝に上げれば、プレビューの URL が出る。
 
 == ビルドと確認とデプロイを、分ける
 
 置き場がどちらでも、出す手順は同じだ。一つのコマンドにまとめない。
 
 ```bash
-python tools/build.py                            # 1. 焼く
-python -m http.server --directory html 8000      # 2. 手元で、目で見る
+uv run python tools/build.py                     # 1. 焼く
+uv run python -m http.server --directory html 8000   # 2. 手元で、目で見る
 rsync -a --delete html/ user@example.com:/srv/html/   # 3a. 自分の一台へ
 cf-publish html --project <名前>                  # 3b. Cloudflare Pages へ
 ```
@@ -7618,7 +7619,7 @@ cf-publish html --project <名前>                  # 3b. Cloudflare Pages へ
 * *自分の一台* ── A レコードをその機械の IP へ向ける。名前が向いた時点で、Caddy
   が証明書を取りにいく
 * *Cloudflare Pages* ── Pages のカスタムドメインに足す。DNS を Cloudflare で
-  持っていれば、A レコードは自動で Pages を指し、証明書も自動で付く
+  持っていれば、レコードは自動で入り、証明書も自動で付く
 
 *メール(MX・SPF)は触らない*。替えるのは Web の置き場だけだ。旧サーバがあるなら、
 止めずに残したまま新しい側を確かめ、確かめてから名前を向ける。
@@ -7628,14 +7629,19 @@ cf-publish html --project <名前>                  # 3b. Cloudflare Pages へ
 問い合わせフォーム、予約の受け口、求人の検索 ── 動くのはこのくらいだ。ここは
 FastAPI 一つに寄せる。
 
-* *受け口* ── FastAPI(link:/ai-native-software/fastapi/[2-12])
+* *受け口* ── FastAPI(link:/ai-native-software/fastapi/[2-12]。予約もそこで書く)
 * *保存* ── link:/ai-native-software/foundation/[2-03] の DB
 * *通知* ── link:/ai-native-software/mail/[2-08] のメール
-* *ログインが要るとき* ── 門番(2-05)に任せる
+* *身元* ── 門番(2-05)。問い合わせも予約も、門番のワンタイム(メールに届く番号)で
+  アドレスを確かめてから受ける
+
+外から来る人にも、先にメールアドレスを確かめさせる。返事を書くには宛先が要るし、
+確かめた宛先なら打ち間違いも偽の投稿も来ない。パスワードもアカウントの作成も
+要らず、番号を一つ入れるだけだ。これで、動く部分は全部、門番の内側に置ける。
 
 繋ぎ方は置き場で変わる。自分の一台なら、Caddy の `/api/*` を同じ機械の FastAPI
-へ回す。Cloudflare Pages なら、門番の内側の FastAPI へ外から繋ぐので、受け付ける
-出どころを公開ドメインの一つに限っておく。
+へ回す。Cloudflare Pages なら、自分の一台の FastAPI へ外から繋ぐ。どちらでも、
+通るのは門番で身元を確かめた人だけだ。
 
 == 公開の側と、門番の内側を分ける
 
@@ -7657,7 +7663,7 @@ FastAPI 一つに寄せる。
 . 公開した頁が独自ドメインで開き、ブラウザに鍵の印が付く
 . 手元の 8000 番で目で見た頁と、本番の頁が同じに見える
 . 本番に向ける前に、別の URL で同じ頁を開いて確かめられる
-. 問い合わせフォームから送ると、2-08 のメールに通知が届き、2-03 の DB に残っている
+. 問い合わせフォームで、メールに届いた番号を入れてから送ると、2-08 のメールに通知が届き、2-03 の DB に残っている
 . 今までどおりメールが届く(MX を触っていない)
 
 ```bash
@@ -7685,9 +7691,9 @@ curl -sI https://example.com/api/health     # 動く部分も同じ名前の下�
 
 == 確かめた版と日付
 
-* Caddy(自動 HTTPS)、Cloudflare Pages、`cf-publish`
-  (`aiseed-dev/cf-publish`)、`rsync`、Python の `http.server`
-* 手順を書いたのは 2026-09-21
+* Caddy 2.6(Debian 13 のパッケージ、自動 HTTPS)、Cloudflare Pages、`cf-publish` 0.3
+  (`aiseed-dev/cf-publish`、PyPI)、`rsync`、Python の `http.server`
+* 手順を書いたのは 2026-09-21、見直したのは 2026-10-06
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
 == まとめ
@@ -7697,7 +7703,7 @@ curl -sI https://example.com/api/health     # 動く部分も同じ名前の下�
 * *置き場は二つ* ── 2-02 の自分の一台(Caddy)か、Cloudflare Pages。同じ `html/`
 * *手順は一つ* ── ビルド → 確認 → デプロイを分け、確かめた物をそのまま出す
 * *HTTPS は自動* ── Caddy が取るか、Cloudflare が付ける
-* *動く部分は FastAPI 一つ* ── 保存は 2-03、通知は 2-08、ログインは門番
+* *動く部分は FastAPI 一つ* ── 保存は 2-03、通知は 2-08。外から来る人も門番のワンタイムでアドレスを確かめてから通す
 * *公開と内部を分ける* ── 秘密が通る側は、門番の内側に残す
 
 次章では、基幹システムのロジックを API(FastAPI)として出し、各アプリから
@@ -7715,7 +7721,7 @@ ifdef::lang-en[]
 = Publish the Web — Your Own Machine, or Cloudflare Pages
 
 In link:/en/ai-native-software/web-build/[2-10: Build the Web — Back to HTML, CSS, and JavaScript]
-we settled the shape: content in Markdown, the frame in HTML and CSS, and Python
+we settled the shape: content as text, the frame in HTML and CSS, and Python
 baking the two together. Here we ship that baked `html/` outward.
 
 There are two homes for it: your own machine from
@@ -7758,7 +7764,7 @@ decisions are what you are handing over — not code.
 
 | Moving parts
 | Straight to FastAPI on the same machine
-| To the API behind the gate, from the public domain only
+| To the API behind the gate on your own machine, from outside
 
 | Suits
 | Internal use, publishing at a size you can see, and keeping the IoT intake on the same box
@@ -7772,8 +7778,9 @@ the same day.
 
 == Put it on your own machine
 
-Stand Caddy in front of the Debian box from 2-02. Caddy takes ports 80 and 443,
-fetches the certificate, and renews it. The configuration is this much.
+Stand Caddy in front of the Debian box from 2-02. Caddy is in Debian 13's apt and
+runs under systemd (2-02). It takes ports 80 and 443, fetches the certificate, and
+renews it. The configuration is this much.
 
 ```
 example.com {
@@ -7809,7 +7816,8 @@ hand over.
 
 Uploading needs no npm and no Node — one script hitting Cloudflare's API is
 enough. That script is published as
-https://github.com/aiseed-dev/cf-publish[`aiseed-dev/cf-publish`]: one line, and
+https://github.com/aiseed-dev/cf-publish[`aiseed-dev/cf-publish`] (on PyPI,
+`uv tool install cf-publish`): one line, and
 only the files that changed go up.
 
 == Separate build, verify, and deploy
@@ -7818,8 +7826,8 @@ Whichever home you chose, the procedure is the same. Do not fold it into one
 command.
 
 ```bash
-python tools/build.py                            # 1. bake
-python -m http.server --directory html 8000      # 2. look at it locally
+uv run python tools/build.py                     # 1. bake
+uv run python -m http.server --directory html 8000   # 2. look at it locally
 rsync -a --delete html/ user@example.com:/srv/html/   # 3a. to your own machine
 cf-publish html --project <name>                 # 3b. to Cloudflare Pages
 ```
@@ -7835,7 +7843,7 @@ second hostname on the same box does the same thing.
 * *Your own machine* — point the A record at the machine's IP. The moment the
   name resolves, Caddy goes and fetches the certificate
 * *Cloudflare Pages* — add it as a custom domain. If your DNS is on Cloudflare,
-  the A record points at Pages automatically and the certificate comes with it
+  the record is added automatically and the certificate comes with it
 
 *Leave mail (MX, SPF) untouched*. You are changing where the web is served, and
 nothing else. If an old server is running, keep it running while you verify the
@@ -7846,15 +7854,20 @@ new side, and point the name only once you have.
 A contact form, a booking intake, a job search — that is about the extent of what
 moves. Gather it on one FastAPI.
 
-* *The intake* — FastAPI (link:/en/ai-native-software/fastapi/[2-12])
+* *The intake* — FastAPI (link:/en/ai-native-software/fastapi/[2-12], where booking is written too)
 * *Storage* — the DB from link:/en/ai-native-software/foundation/[2-03]
 * *Notification* — the mail from link:/en/ai-native-software/mail/[2-08]
-* *When a login is needed* — leave it to the gate (2-05)
+* *Identity* — the gate (2-05). Contact and booking alike are accepted only after the gate's one-time code (a number sent by mail) has confirmed the address
+
+People from outside confirm their mail address first, too. A reply needs an
+address, and a confirmed address brings neither typos nor fake submissions. No
+password and no account creation — one number to type. With that, every moving
+part sits behind the gate.
 
 How you wire it depends on the home. On your own machine, Caddy sends `/api/*`
 to FastAPI on the same box. On Cloudflare Pages, the public side reaches the
-FastAPI behind the gate from outside, so allow exactly one origin: the public
-domain.
+FastAPI on your own machine from outside. Either way, only people whose identity
+the gate has confirmed get through.
 
 == Separate the public side from behind the gate
 
@@ -7878,7 +7891,7 @@ This chapter is done when these five hold.
 . The published site opens on your own domain and the browser shows the lock mark
 . The page you looked at on port 8000 locally and the production page look the same
 . Before pointing production, the same page opens and can be checked at another URL
-. Sending the contact form produces a notification in the 2-08 mail and a row in the 2-03 DB
+. Sending the contact form after typing the number that arrived by mail produces a notification in the 2-08 mail and a row in the 2-03 DB
 . Mail still arrives as before, because MX was never touched
 
 ```bash
@@ -7906,9 +7919,9 @@ curl -sI https://example.com/api/health     # the moving parts answer under the 
 
 == Versions checked, and when
 
-* Caddy (automatic HTTPS), Cloudflare Pages, `cf-publish`
-  (`aiseed-dev/cf-publish`), `rsync`, Python's `http.server`
-* This procedure was written on 2026-09-21
+* Caddy 2.6 (Debian 13 package, automatic HTTPS), Cloudflare Pages, `cf-publish` 0.3
+  (`aiseed-dev/cf-publish`, PyPI), `rsync`, Python's `http.server`
+* This procedure was written on 2026-09-21 and reviewed on 2026-10-06
 * If a version has moved, have the AI confirm the official procedure before proceeding
 
 == Summary
@@ -7918,7 +7931,7 @@ Ship the baked HTML to one of two homes.
 * *Two homes* — your own machine from 2-02 (Caddy), or Cloudflare Pages. Same `html/`
 * *One procedure* — build, verify, deploy, kept separate; ship exactly what you verified
 * *HTTPS is automatic* — Caddy takes it, or Cloudflare adds it
-* *One FastAPI for the moving parts* — storage in 2-03, notification in 2-08, login at the gate
+* *One FastAPI for the moving parts* — storage in 2-03, notification in 2-08; people from outside pass the gate's one-time code before they get through
 * *Public and internal stay apart* — anything carrying secrets stays behind the gate
 
 Next, we expose the core systems' logic as an API (FastAPI) so every app can use

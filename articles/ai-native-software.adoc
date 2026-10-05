@@ -2105,7 +2105,7 @@ flowchart TB
   class E2,O2,S2,X2,M2,C2 good
 ```
 
-この章は地図だ。構築の手順は書かない。各層の docker や設定や移行は、それぞれの章にある。ここでは、どの層がどこに対応し、どの順で解けるかだけを押さえる。Microsoft でも Google でも、置き換わる先は同じだ。だから、どちらのスイートに縛られていても、進む道は一本に合流する。そして、各章が固定するのは方式であって、コマンドの網羅ではない。手順の細部は、作業のたびに AI に聞けばよい。Gmail や Google Drive 側の記述が薄く見えるのも同じ理由で、方式が同じなら、細部は AI が埋める。手順書を厚くすることこそ、旧常識である。
+この章は地図だ。構築の手順は書かない。各層の入れ方や設定や移行は、それぞれの章にある。ここでは、どの層がどこに対応し、どの順で解けるかだけを押さえる。Microsoft でも Google でも、置き換わる先は同じだ。だから、どちらのスイートに縛られていても、進む道は一本に合流する。そして、各章が固定するのは方式であって、コマンドの網羅ではない。手順の細部は、作業のたびに AI に聞けばよい。Gmail や Google Drive 側の記述が薄く見えるのも同じ理由で、方式が同じなら、細部は AI が埋める。手順書を厚くすることこそ、旧常識である。
 
 == 変わるのはコストではなく、主導権だ
 
@@ -2152,7 +2152,7 @@ flowchart TB
 
 なぜ一人で回るのか。理由は三つある。
 
-* どれも標準的な、箱に入ったオープンな道具だ。PocketBase は1ファイル、ほかは docker compose 一枚。Claude が compose を書き、DNS と DKIM を整え、ログを読み、不調を切り分ける。運用の相棒が AI である
+* どれも標準的なオープンな道具だ。Debian の apt か公式の単体ファイル一つで入り、systemd で動く。Docker は使わない(理由は 2-02)。AI が設定を書き、DNS と DKIM を整え、ログを読み、不調を切り分ける。運用の相棒が AI である
 * 束が解けているから、障害が連鎖しない。スイートなら一社の不調が全部を巻き込むが、ここでは Forgejo が落ちてもメールは生き、AI が止まっても会議は続く。一個ずつ、独立に直せる
 * 見える・読める・テストできる。設定もログも自分の手元にある。ブラックボックスのベンダー AI と違い、AI と一緒に中を読んで直せる
 
@@ -2441,7 +2441,7 @@ flowchart TB
   class E2,O2,S2,X2,M2,C2 good
 ```
 
-This chapter is the map. It includes no build steps. The docker, config, and migration for each layer live in that layer's own chapter. Here we fix only which layer maps to which, and in what order they untie. Microsoft or Google, the destination is the same, so whichever suite holds you, the road ahead merges into one. And what each chapter fixes is the method, not an exhaustive command list. Ask the AI for the fine steps each time you work. That is also why the Google-side specifics, Gmail and Drive, look thin: when the method is the same, the AI fills in the details. Fattening the manual is itself the old common sense.
+This chapter is the map. It includes no build steps. The installation, config, and migration for each layer live in that layer's own chapter. Here we fix only which layer maps to which, and in what order they untie. Microsoft or Google, the destination is the same, so whichever suite holds you, the road ahead merges into one. And what each chapter fixes is the method, not an exhaustive command list. Ask the AI for the fine steps each time you work. That is also why the Google-side specifics, Gmail and Drive, look thin: when the method is the same, the AI fills in the details. Fattening the manual is itself the old common sense.
 
 == What changes is not the cost but the control
 
@@ -2488,7 +2488,7 @@ The obvious question arises. With this much self-hosted, who maintains it? The a
 
 Why does one person suffice? Three reasons.
 
-* Every piece is a standard, boxed open tool. PocketBase is one file, the rest are one docker compose file each. Claude writes the compose, sets up DNS and DKIM, reads the logs, and isolates the fault. Your operations partner is the AI
+* Every piece is a standard open tool. Each installs from Debian's apt or as a single file from its project, and runs under systemd. No Docker (the reasons are in 2-02). The AI writes the configuration, sets up DNS and DKIM, reads the logs, and isolates the fault. Your operations partner is the AI
 * Because the bundle is untied, faults do not cascade. With a suite, one vendor's trouble drags everything down. Here, mail lives even if Forgejo falls, and meetings continue even if the AI stops. You fix them one at a time, independently
 * Visible, readable, testable. Config and logs are in your own hands. Unlike a black-box vendor AI, you can read inside and fix it together with the AI
 
@@ -2634,8 +2634,8 @@ title.ja: AI に PC を一台渡す ── 自立編を動かす機械
 title.en: Give the AI a PC of Its Own — The Machine the Independence Part Runs On
 subtitle.ja: 会社の PC を一台 Debian にして、root ごと AI に渡す。初期化で戻らない物だけ、人が持つ
 subtitle.en: Turn one company PC into Debian and hand it over, root included. The human keeps only what a reinstall cannot restore
-description.ja: 自立編で立てるものは、全部どこかで動く。その置き場をここで決める。会社の PC を一台 Debian にして、AI に渡す。公開の Web、社内の道具、AI の作業を同じ一台に載せ、画面(GNOME)も入れて動かしたままにする。Windows でしか動かない物は、Debian の中の仮想環境で動かす。WSL の逆で、土台が Debian、Windows が客だ。設定は全部 AI がやるので root を渡す。壊れても初期化で戻るからだ。初期化で戻らない三つ(鍵と認証、外でやる操作、書類の写し)だけを人が持つ。AI は別の会社のものを複数入れ、作った物と確かめる基準だけを渡して相互に見張らせる。費用は運用に入れば月 40 ドル。稟議も、サーバーの契約も、人数分のライセンスも要らない。
-description.en: Everything the Independence part stands up has to run somewhere. This chapter decides where. Turn one company PC into Debian and hand it to the AI. The public website, the in-house tools, and the AI's own work all sit on that one machine, with a desktop (GNOME) installed and left running. Anything that only runs on Windows runs in a virtual machine inside Debian — the reverse of WSL, with Debian as the base and Windows as the guest. The AI does all the configuration, so it gets root: a broken machine is recovered by reinstalling. The human keeps only the three things a reinstall cannot restore — keys and accounts, actions taken outside the machine, and copies of the documents. Run more than one AI, from different vendors, and have them check each other with nothing but the artifact and the criteria. In steady operation the bill is $40 a month. No approval process, no server contract, no per-seat licenses.
+description.ja: 自立編で立てるものは、全部どこかで動く。その置き場をここで決める。会社の PC を一台 Debian にして、AI に渡す。公開の Web、社内の道具、AI の作業を同じ一台に載せ、画面(GNOME)も入れて動かしたままにする。Windows でしか動かない物は、Debian の中の仮想環境で動かす。WSL の逆で、土台が Debian、Windows が客だ。サービスは Docker を使わず、apt で入れて systemd で動かす。設定は全部 AI がやるので root を渡す。設定を git に入れ、データを機械の外に写しておけば、壊れても初期化で戻せるからだ。それでも戻らない三つ(鍵と認証、外でやる操作、データの写し)だけを人が持つ。AI は別の会社のものも入れ、作った物と確かめる基準だけを渡して相互に見張らせる。費用は作るあいだ月 120 ドル、運用に入れば月 40 ドル。稟議も、サーバーの契約も、人数分のライセンスも要らない。
+description.en: Everything the Independence part stands up has to run somewhere. This chapter decides where. Turn one company PC into Debian and hand it to the AI. The public website, the in-house tools, and the AI's own work all sit on that one machine, with a desktop (GNOME) installed and left running. Anything that only runs on Windows runs in a virtual machine inside Debian — the reverse of WSL, with Debian as the base and Windows as the guest. Services are installed with apt and run under systemd, not Docker. The AI does all the configuration, so it gets root: with the configuration in git and the data copied off the machine, a broken machine is recovered by reinstalling. The human keeps only the three things even that cannot restore — keys and accounts, actions taken outside the machine, and copies of the data. Add an AI from another vendor, and have them check each other with nothing but the artifact and the criteria. The bill is $120 a month while building and $40 in steady operation. No approval process, no server contract, no per-seat licenses.
 date: 2026.09.20
 label: Independence 2
 title_html.ja: AI に、<span class="accent">PC を一台</span>渡す。
@@ -2662,11 +2662,12 @@ AI が一つの機械の中で全部を見られるほうが、調べるのも�
 
 == Debian を土台にして、Windows は箱の中で動かす
 
-土台は Debian にする。Python も git も apt も最初から入っている。更新で
-勝手に再起動されることもない。
+土台は Debian にする。Python と apt は最初から入っていて、git も apt の一行で
+入る。更新で勝手に再起動されることもない。
 
-Windows でしか動かない物は、捨てない。Debian の中の仮想環境(GNOME Boxes)で
-Windows を動かして、そこで使う。会計ソフトのような、代わりの無い物のためだ。
+Windows でしか動かない物は、捨てない。Debian の中の仮想環境(libvirt の
+QEMU/KVM)で Windows を動かして、そこで使う。会計ソフトのような、代わりの無い
+物のためだ。AI はコマンド(`virsh`)で動かし、人は画面(virt-manager)で見る。
 PC は一台のままである。
 
 *これは WSL の逆だ*。WSL は Windows の中に Linux を入れる。こちらは Debian の
@@ -2677,6 +2678,21 @@ PC は一台のままである。
 何かを入れる前に写しを取れば、気に入らなければ戻せる。メールで届いたファイルの
 マクロが動いても、箱の中で止まる。
 
+== サービスは apt で入れ、systemd で動かす
+
+Docker は使わない。以降の章で立てるサービスは、Debian の apt で入れ、systemd で
+動かす。apt に無い物は、公式が配る単体のファイルを置いて、systemd に登録する。
+
+理由は三つある。
+
+* *更新が一本になる* ── apt で入れた物は、Debian のセキュリティ更新に乗り、`apt upgrade` 一つでまとめて上がる。コンテナにすると、イメージごとに版を追う仕事が別に立つ
+* *AI が直接見られる* ── 設定は `/etc` に、ログは `journalctl` に、データは決まった場所にある。コンテナを挟むと、ボリューム・ネットワーク・口の対応・利用者 ID のずれという層が一つ増え、調べるのも直すのも、外と中の二か所になる。作っては直す開発では、この一層がそのまま手間になる
+* *ファイアウォールが効く* ── Docker は、公開したコンテナの口への通信を、ufw の規則より手前で振り分ける(Docker の公式文書、2026-10-05 に確認)。「外に開けるのは 80 と 443 と ssh だけ」という決めが、コンテナの口には届かない
+
+Docker が受け持つのは、どこでも同じに動かすことと、隔てることだ。一台で全部
+やるこの形では、どちらも別の手で足りる。隔てるのは別の利用者と systemd の制限で、
+立て直しは git に入れた設定とデータの写しでやる。
+
 == 画面を入れて、動かしたままにする
 
 デスクトップ環境(GNOME)も入れて、起動したままにする。サーバーだから画面は
@@ -2686,7 +2702,9 @@ PC は一台のままである。
 * ブラウザで、作った頁を実際に見る
 * 箱の中の Windows を動かして、そこでしか動かない道具を使う
 
-人が見るときは、手元の PC からその画面につなぐ。この接続は外には開けない。
+AI は、画面の取り込みとブラウザの自動操作で、この画面を使う。人が見るときは、
+手元の PC から GNOME のリモートデスクトップ(RDP)につなぐ。この接続は外には
+開けず、ssh の中を通す。
 
 == AI に root を渡す
 
@@ -2694,28 +2712,26 @@ PC は一台のままである。
 命令とファイルの仕事で、やった結果が機械で確かめられる。1-01 で見た
 *ルールが決まっていて、答え合わせができる領域* に、そのまま当てはまる。
 
-権限を渡してよい理由は一つだ。壊れても、初期化して始め直せる。PC ならそれで
-戻る。だから、初期化で戻らない物だけを人が持つ。それが下の二つの節だ。
+権限を渡してよい理由は一つだ。壊れても、初期化して始め直せる。ただし、初期化で
+戻るのは OS だけだ。設定とデータは、二つの決めで戻せるようにしておく。
 
-== AI を複数入れて、相互に見張らせる
+* AI がやった設定は、全部ファイルにして git に入れる。初期化した機械に、git から同じ設定を戻せる
+* データは、毎日、機械の外に写す(次の節)
 
-AI は一つにしない。複数入れる。一社に頼らないのは、SIer に頼らないのと同じ
-考えだ(3-04)。
-
-そのうえで、相互に見張らせる。別の会社の AI を組ませ、見張る側には *作った物と、確かめる基準だけ* を渡す。どう作ったかの経緯は渡さない。同じ経緯を
-共有した相手は、同じ見落としをする。
+これで、初期化しても元の姿に戻る。だから、それでも戻らない物だけを人が持つ。
+それが次の節だ。
 
 == 初期化で戻らない物だけ、人が持つ
 
-* *鍵と認証* ── ドメインの登録、支払いに関わるサービスの認証は、この機械に置かない
+* *鍵と認証* ── ドメインの登録と、契約・支払いの管理は、この機械に置かない。置くのは、AI のログインと、サービスが動くのに要る秘密だけだ
 * *外でやる操作* ── DNS を替える、メールを送る、外のサービスのデータを消す。この類は、AI が「やる前に言う」形にして、人が通す
-* *書類そのもの* ── 機械の外にも写しを置く
+* *データの写し* ── データベース・ファイル・メール・リポジトリを、毎日、機械の外へ写す。写しは外の側から取りに来させて、この機械の root からは消せないようにする(2-01 の「守るのは、データと仕様だけ」)
 
 この三つ以外は、AI に任せてよい。
 
 == 公開の側と AI の側を分ける
 
-* 外に開ける入り口は、80 と 443 と ssh だけにする
+* この章の時点で、外に開ける入り口は 80 と 443 と ssh だけにする。ほかの口は、それが要る章(2-08 のメールなど)で開ける。口を開けるのは、AI が「やる前に言う」操作だ
 * 画面への接続は外に開けない。手元の PC から ssh の中を通す
 * 公開の Web と AI の作業は、別の利用者で動かす
 
@@ -2723,48 +2739,64 @@ AI は一つにしない。複数入れる。一社に頼らないのは、SIer 
 2-05 で書く「中央は最小限、守りは各サーバーで多層に」は、機械が一台でも
 変わらない。
 
+== AI を複数入れて、相互に見張らせる
+
+AI は一つにしない。別の会社の AI も入れる。一社に頼らないのは、
+link:/ai-native-software/lockin/[3-05] で見るロックインを避けるのと同じ考えだ。
+
+そのうえで、相互に見張らせる。別の会社の AI を組ませ、見張る側には *作った物と、確かめる基準だけ* を渡す。どう作ったかの経緯は渡さない。同じ経緯を
+共有した相手は、同じ見落としをする。
+
 == 要る物
 
-* PC が一台。メモリ 8GB 以上、ディスク 128GB 以上
-* インターネットの回線
+* PC が一台。メモリ 16GB 以上(32GB を勧める)、SSD 512GB 以上
+* 外から届く回線。固定 IP か DDNS で名前を向ける(2-11)。メールを受けるなら、固定 IP と逆引き(PTR)が要る(2-08)
 * AI の利用料
+
+箱の中の Windows 11 だけで、メモリ 4GB とディスク 64GB を最低限として取る
+(Microsoft の公表する要件)。その上に GNOME と、以降の章のサービスが乗る。
 
 サーバーは安い物でよい。壊れたら取り替える。専用のサーバー機も、保守契約も
 要らない。
 
 == 費用
 
-2026-09-20 時点で、Claude の個人向けは Pro が月 20 ドル、Max が月 100 ドル
-からだ。二つ並ぶのは、相互に見張らせるために二契約するからである。
+2026-10-05 時点の公開価格(税抜・月払い)で、Claude は Pro が月 20 ドル、Max が
+月 100 ドルからだ。別の会社の AI も、基本の契約は同じ価格帯にある(ChatGPT Plus
+が月 20 ドル)。二つ並ぶのは、相互に見張らせるために、別の会社と二契約する
+からである。
 
 |===
 | 時期 | 契約 | 月額
-| 開発のあいだ | 100 ドル + 100 ドル、または 100 ドル + 20 ドル | 120〜200 ドル
-| 運用に入ったら | 20 ドル + 20 ドル | 40 ドル(月 1 万円以内)
+| 作るあいだ | Claude Max 100 ドル + 別の会社の基本の契約 20 ドル | 120 ドル
+| 運用に入ったら | Claude Pro 20 ドル + 別の会社の基本の契約 20 ドル | 40 ドル(税込みでも月 1 万円以内)
 |===
 
-運用での AI の役割は、動いているかの確認だけになる。エージェントとして走らせ
-続けるわけではないので、定額で足りる。
+運用での AI の仕事は、動いているかを確かめることと、小さな直しになる。一日
+じゅう書かせるわけではないので、基本の契約で足りる。
 
-稟議も、サーバーの契約も、人数分のライセンスも要らない。AI はこの一台に入れ
-れば、グループの全員が使う。人数分の契約は要らない。SIer に委託しても、やって
-いることは大きくない。SIer を雇うのと同じことが、月 20 ドルほどでできる。
+稟議も、サーバーの契約も、人数分のライセンスも要らない。AI と話すのは作る人
+(ビルダー)だけで、契約はその一人のものだ。個人の契約を他人に使わせることは、
+規約で禁じられている(Anthropic の利用規約)。グループの全員が使うのは、AI が
+作った道具のほうで、道具には人数分の契約が要らない。
 
 == 確かめ方
 
-この章は、次の六つができていれば済みだ。
+この章は、次の七つができていれば済みだ。
 
 . 手元の PC から、ssh でサーバーに入れる
-. 手元の PC から画面につないで、GNOME のデスクトップが見える
+. 手元の PC から ssh の中を通して画面につなぎ、GNOME のデスクトップが見える
 . 箱の中の Windows が起動して、写しが取れる
-. サーバーの中で `docker compose version` が返る
+. `systemctl --failed` が、止まったサービスを一つも返さない
 . 外から見て、80 と 443 と ssh 以外の口が閉じている
+. AI がやった設定が git に入っていて、データの写しが機械の外に届いている
 . AI に「この機械の状態を報告して」と言うと、報告が返る
 
 ```bash
-ssh builder@example.com            # 1
-docker compose version             # 4
-sudo ss -tlnp                      # 5 ── 開いている口を見る
+ssh builder@example.com                       # 1
+virsh snapshot-create-as windows before-test  # 3 ── 箱の写しを取る
+systemctl --failed                            # 4
+sudo ss -tlnp                                 # 5 ── 待ち受けている口を見る
 ```
 
 == 人が持つ物
@@ -2775,6 +2807,7 @@ sudo ss -tlnp                      # 5 ── 開いている口を見る
 * 手元の PC の ssh 公開鍵
 * 最初の管理者の名前
 * 箱の中で使う Windows のライセンス
+* データの写しを置く、機械の外の場所
 
 *AI が「やる前に言う」操作*
 
@@ -2782,12 +2815,13 @@ sudo ss -tlnp                      # 5 ── 開いている口を見る
 * ファイアウォールの口を新しく開ける
 * OS を初期化する
 * 仮想環境の写しを消す
+* 機械の外に置いたデータの写しを消す
 
 == 確かめた版と日付
 
-* Debian 13(trixie)、GNOME、GNOME Boxes、Docker Engine + Docker Compose v2
-* Claude の料金は 2026-09-20 に確認した
-* 手順を書いたのは 2026-09-20
+* Debian 13(trixie)、GNOME 48、gnome-remote-desktop、libvirt(QEMU/KVM)と virt-manager
+* Claude と ChatGPT の料金は 2026-10-05 に確認した
+* 手順を書いたのは 2026-09-20、見直したのは 2026-10-05
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
 == まとめ
@@ -2795,12 +2829,13 @@ sudo ss -tlnp                      # 5 ── 開いている口を見る
 自立編を動かす機械を、最初に決める。
 
 * *一台で全部* ── 公開の Web、社内の道具、AI の作業を、同じ機械に載せる
-* *土台は Debian* ── Windows でしか動かない物は、箱の中で動かす。WSL の逆
+* *土台は Debian* ── Windows でしか動かない物は、箱(libvirt)の中で動かす。WSL の逆
+* *Docker は使わない* ── apt で入れ、systemd で動かす。更新が一本になり、AI が直接見られ、ファイアウォールが効く
 * *画面も入れる* ── 文書を開く、頁を見る、箱の中の Windows を使う
-* *AI に root* ── 壊れても初期化で戻るから渡せる
+* *AI に root* ── 設定は git に、データは機械の外に写す。だから初期化で戻せる
+* *人が持つのは三つ* ── 鍵と認証、外でやる操作、データの写し
 * *AI は複数* ── 別の会社の AI に、作った物と基準だけを渡して見張らせる
-* *人が持つのは三つ* ── 鍵と認証、外でやる操作、書類の写し
-* *費用* ── 運用は月 40 ドル、月 1 万円以内(2026-09-20 時点)
+* *費用* ── 作るあいだ月 120 ドル、運用は月 40 ドル(2026-10-05 時点、税抜)
 
 次章では、この機械の上に *データ基盤(SQLite・PostgreSQL・DuckDB)* を据える。
 
@@ -2810,6 +2845,7 @@ sudo ss -tlnp                      # 5 ── 開いている口を見る
 
 * link:/ai-native-software/independence/[2-01: Microsoft と Google から自立する ── 全体像と対応表]
 * link:/ai-native-software/foundation/[2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars]
+* link:/ai-native-software/lockin/[3-05: ロックイン問題]
 * link:/claude-debian/[Claudeと一緒に学ぶDebian ── Debian への移行を、対話しながら]
 endif::[]
 ifdef::lang-en[]
@@ -2835,12 +2871,14 @@ it then.
 
 == Debian is the base; Windows runs in a box
 
-The base is Debian. Python, git, and apt are there from the start. Updates never
-reboot the machine on someone else's schedule.
+The base is Debian. Python and apt are there from the start, and git is one apt
+line away. Updates never reboot the machine on someone else's schedule.
 
 Anything that only runs on Windows is not thrown away. Run Windows in a virtual
-machine inside Debian (GNOME Boxes) and use it there. Accounting software with
-no substitute is the usual case. It is still one PC.
+machine inside Debian (QEMU/KVM under libvirt) and use it there. Accounting
+software with no substitute is the usual case. The AI drives it with commands
+(`virsh`); a person looks at it through a window (virt-manager). It is still one
+PC.
 
 *This is the reverse of WSL.* WSL puts Linux inside Windows. This puts Windows
 inside Debian. Debian is the base and Windows is the guest. The data and the code
@@ -2849,6 +2887,23 @@ live on the base, so Windows updates and restarts no longer reach them.
 The virtual machine has one more advantage: snapshots. Take a snapshot before
 installing anything, and you can go back. A macro in a file that arrived by mail
 stops inside the box.
+
+== Install services with apt and run them under systemd
+
+No Docker. The services the following chapters stand up are installed with
+Debian's apt and run under systemd. Anything apt does not carry is installed as
+the single file its project publishes, and registered with systemd.
+
+There are three reasons.
+
+* *One update stream* — what apt installs rides Debian's security updates, and one `apt upgrade` raises it all. Containers add a second job: tracking the version of every image
+* *The AI sees everything directly* — configuration in `/etc`, logs in `journalctl`, data in known places. A container adds a layer of volumes, networks, port mappings, and mismatched user IDs, so every diagnosis and every fix happens in two places, outside and inside. In development, where you build and fix over and over, that layer is the cost
+* *The firewall holds* — Docker diverts traffic to a published container port before it reaches ufw's rules (Docker's own documentation, checked 2026-10-05). The rule "only 80, 443, and ssh are open" does not reach a container's ports
+
+What Docker provides is running the same everywhere, and isolation. On one
+machine that does everything, both are covered another way: isolation by
+separate users and systemd's restrictions, rebuilding by configuration in git
+and copies of the data.
 
 == Install a desktop and leave it running
 
@@ -2860,8 +2915,9 @@ one.
 * Look at a page you built, in a real browser
 * Drive the Windows guest and use a tool that runs nowhere else
 
-When a person needs to look, they connect to that desktop from their own PC.
-That connection is never opened to the outside.
+The AI uses this desktop through screen capture and browser automation. When a
+person needs to look, they connect from their own PC with GNOME's remote desktop
+(RDP). That connection is never opened to the outside; it runs inside ssh.
 
 == Hand the AI root
 
@@ -2871,29 +2927,26 @@ be checked mechanically. It falls squarely inside what 1-01 described as
 *a domain with fixed rules, where the answer can be verified.*
 
 There is one reason it is safe to hand over the privilege. If it breaks, you
-reinstall and start again. On a PC, that restores it. So the human keeps only
-what a reinstall cannot restore, which is the next two sections.
+reinstall and start again. But a reinstall restores only the operating system.
+Two decisions make the configuration and the data restorable too.
 
-== Run more than one AI, and have them watch each other
+* Every configuration the AI makes is written to files and committed to git. A reinstalled machine gets the same configuration back from git
+* The data is copied off the machine every day (next section)
 
-Do not run a single AI. Run several. Not depending on one vendor is the same
-reasoning as not depending on one SIer (3-04).
-
-Then have them check each other. Pair AIs from different vendors, and give the
-checking side *only the artifact and the criteria.* Do not give it the history of
-how the thing was built. An AI that shares your reasoning shares your blind spots.
+With these, a reinstall brings the machine back as it was. So the human keeps
+only what even that cannot restore, which is the next section.
 
 == The human keeps only what a reinstall cannot restore
 
-* *Keys and accounts* — domain registration and anything tied to payment never live on this machine
+* *Keys and accounts* — domain registration and the management of contracts and payment never live on this machine. What lives here is the AI's own login and the secrets the services need to run
 * *Actions taken outside it* — changing DNS, sending mail, deleting data in an external service. The AI states these before doing them, and a person approves
-* *The documents themselves* — keep copies off the machine
+* *Copies of the data* — databases, files, mail, and repositories are copied off the machine every day. The copy is pulled from outside, so root on this machine cannot delete it (2-01: "protect only the data and the spec")
 
 Everything other than these three can be left to the AI.
 
 == Separate the public side from the AI's side
 
-* The only ports open to the outside are 80, 443, and ssh
+* At this chapter, the only ports open to the outside are 80, 443, and ssh. Other ports are opened in the chapter that needs them (mail in 2-08, for one). Opening a port is an action the AI states before doing
 * The desktop connection is not exposed; tunnel it from your own PC through ssh
 * The public website and the AI's work run as different users
 
@@ -2901,50 +2954,68 @@ The point is that a hole on the public side must not reach the documents and key
 on the AI's side. What 2-05 says, *central minimal and defense in depth at every
 server*, does not change because there is only one machine.
 
+== Run more than one AI, and have them watch each other
+
+Do not run a single AI. Add one from another vendor. Not depending on one vendor
+is the same reasoning as avoiding the lock-in examined in
+link:/en/ai-native-software/lockin/[3-05].
+
+Then have them check each other. Pair AIs from different vendors, and give the
+checking side *only the artifact and the criteria.* Do not give it the history of
+how the thing was built. An AI that shares your reasoning shares your blind spots.
+
 == What you need
 
-* One PC: 8GB of memory or more, 128GB of disk or more
-* An internet connection
+* One PC: 16GB of memory or more (32GB recommended), a 512GB SSD or more
+* A connection reachable from outside. Point a name at it with a fixed IP or DDNS (2-11). Receiving mail needs a fixed IP and reverse DNS (PTR) (2-08)
 * The AI subscriptions
+
+The Windows 11 guest alone takes a minimum of 4GB of memory and 64GB of disk
+(Microsoft's published requirements). GNOME and the services of the following
+chapters sit on top of that.
 
 The server can be cheap hardware. If it breaks, replace it. No dedicated server
 machine, no maintenance contract.
 
 == What it costs
 
-As of 2026-09-20, Claude's individual plans are $20 a month for Pro and from $100
-a month for Max. Two of them are listed because you subscribe twice, so they can
-check each other.
+At list prices on 2026-10-05 (excluding tax, billed monthly), Claude Pro is $20 a
+month and Claude Max starts at $100. Another vendor's base plan sits in the same
+range (ChatGPT Plus is $20 a month). Two are listed because you subscribe with two
+vendors, so they can check each other.
 
 |===
 | Phase | Subscriptions | Per month
-| While building | $100 + $100, or $100 + $20 | $120–200
-| In steady operation | $20 + $20 | $40 (under ¥10,000)
+| While building | Claude Max $100 + another vendor's base plan $20 | $120
+| In steady operation | Claude Pro $20 + another vendor's base plan $20 | $40 (under ¥10,000 even with tax)
 |===
 
-In operation the AI's role is only to confirm things are running. You are not
-keeping an agent running continuously, so the flat plans are enough.
+In operation the AI's work is confirming things run and making small fixes. You
+are not having it write all day, so the base plans are enough.
 
-No approval process, no server contract, no per-seat licenses. One AI on this
-machine serves the whole group; you do not buy a seat per head. Commissioning an
-SIer does not buy much more than this. What hiring an SIer gets you, you can get
-for about $20 a month.
+No approval process, no server contract, no per-seat licenses. Only the person
+who builds talks to the AI, and the subscription is that one person's. Letting
+others use a personal account is forbidden by the terms (Anthropic's Consumer
+Terms). What the whole group uses is the tools the AI built, and those need no
+seat per head.
 
 == How to check you are done
 
-This chapter is done when these six hold.
+This chapter is done when these seven hold.
 
 . You can ssh into the server from your own PC
-. You can connect to the desktop from your own PC and see GNOME
+. You can connect to the desktop from your own PC through ssh and see GNOME
 . The Windows guest boots and you can take a snapshot of it
-. `docker compose version` answers inside the server
+. `systemctl --failed` lists no failed service
 . Seen from outside, nothing but 80, 443, and ssh is open
+. The AI's configuration is in git, and the copy of the data has arrived off the machine
 . Asking the AI to report the state of this machine produces a report
 
 ```bash
-ssh builder@example.com            # 1
-docker compose version             # 4
-sudo ss -tlnp                      # 5 — list the open ports
+ssh builder@example.com                       # 1
+virsh snapshot-create-as windows before-test  # 3 — snapshot the guest
+systemctl --failed                            # 4
+sudo ss -tlnp                                 # 5 — list the listening ports
 ```
 
 == What the human holds
@@ -2955,6 +3026,7 @@ sudo ss -tlnp                      # 5 — list the open ports
 * The ssh public key of the human's own PC
 * The name of the first administrator
 * The Windows license used inside the box
+* The place off the machine where the data copies go
 
 *Actions the AI states before performing*
 
@@ -2962,12 +3034,13 @@ sudo ss -tlnp                      # 5 — list the open ports
 * Opening a new port in the firewall
 * Reinstalling the operating system
 * Deleting a virtual-machine snapshot
+* Deleting a data copy kept off the machine
 
 == Versions checked, and when
 
-* Debian 13 (trixie), GNOME, GNOME Boxes, Docker Engine + Docker Compose v2
-* Claude's prices were checked on 2026-09-20
-* This procedure was written on 2026-09-20
+* Debian 13 (trixie), GNOME 48, gnome-remote-desktop, libvirt (QEMU/KVM) and virt-manager
+* Claude's and ChatGPT's prices were checked on 2026-10-05
+* This procedure was written on 2026-09-20 and reviewed on 2026-10-05
 * If a version has moved, have the AI confirm the official procedure before proceeding
 
 == Summary
@@ -2975,12 +3048,13 @@ sudo ss -tlnp                      # 5 — list the open ports
 Decide the machine the Independence part runs on, first.
 
 * *One machine for all of it* — public website, in-house tools, the AI's own work
-* *Debian as the base* — anything Windows-only runs in a box; the reverse of WSL
+* *Debian as the base* — anything Windows-only runs in a box (libvirt); the reverse of WSL
+* *No Docker* — install with apt, run under systemd: one update stream, the AI sees everything, the firewall holds
 * *Install the desktop too* — open documents, look at pages, drive the Windows guest
-* *Root to the AI* — safe to hand over, because a reinstall restores the machine
+* *Root to the AI* — configuration in git, data copied off the machine, so a reinstall restores it
+* *Three things the human holds* — keys and accounts, outside actions, copies of the data
 * *More than one AI* — pair vendors and pass only the artifact and the criteria
-* *Three things the human holds* — keys and accounts, outside actions, copies of documents
-* *Cost* — $40 a month in operation, under ¥10,000 (as of 2026-09-20)
+* *Cost* — $120 a month while building, $40 in operation (as of 2026-10-05, excluding tax)
 
 The next chapter lays the *data foundation (SQLite, PostgreSQL, DuckDB)* on this
 machine.
@@ -2991,6 +3065,7 @@ machine.
 
 * link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map]
 * link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars]
+* link:/en/ai-native-software/lockin/[3-05: The Lock-In Problem]
 * link:/en/claude-debian/[Learning Debian with Claude — migrating to Debian, in dialogue]
 endif::[]
 // ===== article: 08-foundation =====

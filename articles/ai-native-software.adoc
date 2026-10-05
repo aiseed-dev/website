@@ -2649,7 +2649,6 @@ ifdef::lang-ja[]
 2-01 で、Microsoft と Google に束ねられた層を、開いた道具に解く地図を引いた。
 この章は、その道具を載せる機械の話だ。やることは一つ。会社の PC を一台
 Debian にして、AI に渡す。AI にも専用の PC を一台あげる、ということだ。
-以降の章で立てるものは、全部この一台の上に乗る。
 
 == 一台で全部やる
 
@@ -2854,7 +2853,7 @@ ifdef::lang-en[]
 2-01 drew the map: the layers bundled inside Microsoft and Google, untied into
 open tools. This chapter is about the machine those tools sit on. There is one
 move. Turn one company PC into Debian and hand it to the AI. Give the AI a PC of
-its own. Everything the following chapters stand up runs on that one machine.
+its own.
 
 == One machine does everything
 

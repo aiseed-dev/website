@@ -16633,7 +16633,7 @@ number: 08
 part: 3
 title.ja: AI 革命は下から起きる
 title.en: The AI Revolution Starts From Below
-subtitle.ja: 上からの導入は必ず失敗する。回線と月 100 ドルで始められる所から始まる
+subtitle.ja: 上からの導入は必ず失敗する。回線と月 100 ドル台で始められる所から始まる
 subtitle.en: Top-down adoption always fails. It starts where a line and $100 a month are all you need
 description.ja: AI 革命は、経営の決定でも大きな予算でも始まらない。始まるのは、稟議なしでできる所からだ。中小企業、個人事業主、大企業の裁量のある部署、大企業の周辺部。要るのはインターネットの回線と、月 100 ドルの利用料だけ。上から入れると、情シスと SIer を通り、人を減らす話になり、現場は隠れて使い、会社には何も残らない。下から始めれば、六つが残る。コード、業務の知識が言葉になった物、答え合わせの仕組み、詰まった所と直し方の記録、作れる人、データ。経営者には細かな問題を見る時間が無く、AI が解けるのはその細かな問題だ。だから AI は現場が持つ。中心が持てば監視と検閲に使い、下が持てば問題が解ける。始まる場所が無数にあり、止める手が無い。
 description.en: The AI revolution does not start with an executive decision or a large budget. It starts where no approval process is needed: small companies, sole traders, a department with real discretion inside a large company, and the periphery of large companies. All it takes is an internet line and $100 a month. Adopted from the top, it passes through the IT department and the SIer, turns into a headcount-reduction story, drives the floor to use AI in hiding, and leaves the company with nothing. Started from below, six things stay: the code, the business knowledge put into words, the checking mechanism, the record of what got stuck and how it was fixed, the people who can build, and the data. Executives have no time to look at small problems, and small problems are exactly what AI solves. So AI belongs to the floor. Held at the center it is used for surveillance and censorship; held below it solves problems. There are countless places for it to start, and no hand that can stop it.
@@ -16728,9 +16728,9 @@ IT 企業は「AI を入れて人を減らす」と言う。この言い方を�
 
 会社全体の合意も、全社の方針も要らない。要るのは、部署の裁量だけだ。
 
-== 要るのは、回線と月 100 ドルだけだ
+== 要るのは、回線と月 100 ドル台だけだ
 
-要る物は二つしかない。*インターネットの回線と、月 100 ドルの利用料*だ。稟議も、
+要る物は二つしかない。*インターネットの回線と、月 100 ドル台の利用料*(2-02)だ。稟議も、
 サーバーの予算も、人数分のライセンスも要らない。運用に入れば、2-02 に書いた
 とおり月 40 ドルで足りる。
 
@@ -16791,7 +16791,7 @@ IT 企業は「AI を入れて人を減らす」と言う。この言い方を�
 
 ここまでを一つにする。
 
-AI が革命を起こすのは、上からの決定でも、大きな予算でもない。*稟議なしでできる所が、回線と月 100 ドルで始め、動いた物が広がる*からだ。
+AI が革命を起こすのは、上からの決定でも、大きな予算でもない。*稟議なしでできる所が、回線と月 100 ドル台で始め、動いた物が広がる*からだ。
 
 始まる場所が無数にある。中小企業にも、個人事業主にも、大企業の部署にも、子会社
 にも、地方の拠点にもある。そして、*止める手が無い*。誰かの許可が要らないものを、
@@ -16838,7 +16838,7 @@ AI が革命を起こすのは、上からの決定でも、大きな予算で�
 * *現場を本来の姿に戻すだけ* ── 情シスは要らず、現場には人が追加で要る
 * *「人を減らす」と言えば、隠れて使われる* ── 会社には何も残らない
 * *残るのは六つ* ── コード、言葉になった業務知識、答え合わせ、詰まった所の記録、作れる人、データ
-* *要るのは回線と月 100 ドル* ── 稟議なしでできる所から始まる
+* *要るのは回線と月 100 ドル台* ── 稟議なしでできる所から始まる
 * *上から入れると必ず失敗する* ── 情シスと SIer を通り、人減らしの話になる
 * *AI は現場が持つ* ── 経営者には細かな問題を見る時間が無く、AI が解けるのはその細かな問題だ
 
@@ -16959,9 +16959,9 @@ revolution begins.
 No company-wide agreement is needed, and no company-wide policy. What is needed
 is the department's own discretion.
 
-== All it takes is a line and $100 a month
+== All it takes is a line and a hundred-odd dollars a month
 
-Two things are needed. *An internet line, and $100 a month in subscription fees.*
+Two things are needed. *An internet line, and a hundred-odd dollars a month in subscription fees* (2-02).
 No approval process, no server budget, no per-seat licenses. Once it is in steady
 operation, $40 a month is enough, as 2-02 sets out.
 
@@ -17033,7 +17033,7 @@ Put it together.
 
 AI produces a revolution not through a decision from the top and not through a
 large budget. It does so because *anywhere that can act without an approval
-process starts with a line and $100 a month, and what works spreads.*
+process starts with a line and a hundred-odd dollars a month, and what works spreads.*
 
 There are countless places for it to start: small companies, sole traders,
 departments inside large companies, subsidiaries, regional sites. And *there is no
@@ -17085,7 +17085,7 @@ subscription were enough.
 * *It is only putting the floor back to what it should be* — no IT department, more people on the floor
 * *Say "cut headcount" and it gets used in hiding* — the company is left with nothing
 * *Six things stay* — code, business knowledge in words, the checking mechanism, the record of what got stuck, people who can build, the data
-* *A line and $100 a month* — it starts where no approval process is needed
+* *A line and a hundred-odd dollars a month* — it starts where no approval process is needed
 * *Top-down adoption always fails* — it goes through the IT department and the SIer and becomes headcount reduction
 * *AI belongs to the floor* — executives have no time for small problems, and small problems are what AI solves
 

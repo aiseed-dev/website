@@ -10075,8 +10075,8 @@ title.ja: 電子工作から IoT まで ── Python で考え、AI に翻訳�
 title.en: From Electronics to IoT — Think in Python, Have the AI Translate
 subtitle.ja: 部品を組み、基板を動かし、測った値を手元に流す ── 思考は Python の側に置く
 subtitle.en: Assemble the parts, run the board, stream the readings home — the thinking stays on the Python side
-description.ja: 部品を買ってブレッドボードに組み、センサを繋ぎ、測った値をネットワークで手元に流すところまでを一つの章にする。マイコンは最終的に C や C++、軽くても Rust や MicroPython で動くが、設計と検証は PC の Python でできる。動くと確かめてから、必要な部分だけ AI に翻訳させる。言語は開発フェーズで決め、Python から MicroPython、必要なら Rust へ進む。C と C++ は既存資産を扱うときに使う。筐体は 2-13 の CAD で刷り、集めた値は 2-03 の置き場に積み、2-12 の API で出し、2-04 の Flet で画面にする。農家の畑センサネットワークと、二十年物の PLC ラダーを一週間で Python にした例を置く。
-description.en: One chapter covering the whole span: buy parts, wire them on a breadboard, attach sensors, and stream the readings home over the network. Microcontrollers finally run C or C++, or at lightest Rust or MicroPython, but design and validation happen in Python on a PC. Confirm it works, then have the AI translate only the parts that need translating. Pick the language by development phase: Python, then MicroPython, then Rust when performance demands it; C and C++ are for existing assets. Print the housing with 2-13's CAD, stack the readings in 2-03's store, expose them with 2-12's API, and put 2-04's Flet on the screen. Includes a farmer's field-sensor network and a twenty-year-old PLC ladder turned into Python in a week.
+description.ja: 部品を買ってブレッドボードに組み、センサを繋ぎ、測った値をネットワークで手元に流すところまでを一つの章にする。マイコンは最終的に C や C++、軽くても Rust や MicroPython で動くが、設計と検証は PC の Python でできる。動くと確かめてから、必要な部分だけ AI に翻訳させる。言語は開発フェーズで決め、Python から MicroPython、必要なら Rust へ進む。C と C++ は既存資産を扱うときに使う。筐体は 2-13 の CAD で刷り、集めた値は 2-03 の置き場に積み、2-12 の API で出し、2-04 の Flet で画面にする。農家の畑センサネットワークと、二十年物の PLC ラダーを Python にした例を置く。
+description.en: One chapter covering the whole span: buy parts, wire them on a breadboard, attach sensors, and stream the readings home over the network. Microcontrollers finally run C or C++, or at lightest Rust or MicroPython, but design and validation happen in Python on a PC. Confirm it works, then have the AI translate only the parts that need translating. Pick the language by development phase: Python, then MicroPython, then Rust when performance demands it; C and C++ are for existing assets. Print the housing with 2-13's CAD, stack the readings in 2-03's store, expose them with 2-12's API, and put 2-04's Flet on the screen. Includes a farmer's field-sensor network and a twenty-year-old PLC ladder turned into Python.
 date: 2026.09.21
 label: Independence 14
 title_html.ja: Python で考えて、<br><span class="accent">AI</span> に翻訳させる。
@@ -10103,7 +10103,7 @@ Python で確かめ、動くと分かってから必要な部分だけ C や Rus
 組み込みのコードを書いた人は、どこで時間が溶けるかを知っている。
 
 * 実機に焼き込むまで、動作を確かめられない
-* ハードウェアのデバッグは、PC のデバッグの 10 倍の時間がかかる
+* ハードウェアのデバッグは、PC のデバッグより、はるかに時間がかかる
 * print を一つ出すのに UART を設定する
 * メモリが足りない、バッファが溢れる、タイミングがずれる
 * 一行直すたびに、ファームウェアを焼き直す
@@ -10180,12 +10180,13 @@ AI ネイティブな組み込みの作法になる。
 | *設計・プロトタイプ* | Python (CPython) | PC 上、Raspberry Pi | アルゴリズム検証、データ取得実験、AI モデル試験
 | *本番(性能が十分な場合)* | MicroPython | ESP32、RP2040 | センサー制御、IoT 通信、軽量な処理
 | *本番(リアルタイム性能が必要)* | Rust | STM32、RP2040、ESP32 | 高速制御、リアルタイム処理、メモリ制約下での動作
-| *本番(エッジ AI、画像処理)* | Python + C/Rust 拡張 | Raspberry Pi、Jetson Nano | 推論、画像処理、Linux 環境での動作
+| *本番(エッジ AI、画像処理)* | Python + C/Rust 拡張 | Raspberry Pi、Jetson | 推論、画像処理、Linux 環境での動作
 | *既存資産の保守* | C、C++ | 各種マイコン | 既存コードの保守、認証済みコード
 |===
 
 第一選択肢は、ハードウェアが許すなら MicroPython または Python。性能や容量で Python が
-届かないときに Rust を選ぶ ── AI は C より Rust のほうを安全に書ける。C と C++ は、
+届かないときに Rust を選ぶ ── Rust は型と所有権の検査がコンパイル時にあるので、AI が
+書いたコードの誤りがコンパイルで止まる。C と C++ は、
 既存資産の保守と認証済みコードを扱うときに使う。新規に C や C++ を選ぶ場面は、ここまで
 狭くなっている。
 
@@ -10300,8 +10301,8 @@ C に翻訳する。全部を翻訳する必要は無い。Python のまま残�
 ブレッドボード、ジャンパ線、USB ケーブル ── これらは在庫として置かれていて、数日で届く。
 はんだごてとテスターは、最初に一つずつ買えば長く使える。
 
-値段の桁は、後の農家の例で出てくる。市販の IoT 機器が 1 台 5 万円のところ、ESP32 とセンサを
-自分で組むと合計 3,000 円だった。同じ場所に何ヶ所も置くときほど、この差が効く。
+値段の構造は、後の農家の例で出てくる。市販の IoT 機器は 1 台ごとの値段で買うが、ESP32 と
+センサを自分で組めば部品代だけになる。同じ場所に何ヶ所も置くときほど、この差が効く。
 
 買う前に、型番を AI に確かめさせるとよい。「このセンサは 3.3V で動くか」「このボードに
 そのまま挿さるか」「必要な部品を一覧にして」── 手元に届いてから足りないものに気づく回数が
@@ -10393,27 +10394,26 @@ MicroPython は Python のサブセットなので、ほぼそのまま動く。
 == 例: 農家の畑センサネットワーク
 
 別の例。農家 B さん。畑の数箇所に、土壌水分・温度・日射のセンサを置きたい。市販品は 1 台
-5 万円で、データは業者のクラウドに集まる。
+ごとの値段で、データは業者のクラウドに集まる。
 
 *第一段階(PC で Python)*。過去の気象データで、灌水判定のロジックを書く。「日射 ○ Wh/m²
 以上 + 土壌水分 △ % 未満が 3 時間続いたら灌水推奨」── これを Polars で過去データに当て、
 しきい値を調整する。初版は AI が書く。
 
-*第二段階(MicroPython で実機)*。ESP32 + センサ(合計 3,000 円)に、上のロジックを
-移植する。MicroPython なので、PC のコードがほぼそのまま動く。SD カードに JSON で 1 分ごとに
+*第二段階(MicroPython で実機)*。ESP32 + センサに、上のロジックを移植する。MicroPython なので、PC のコードがほぼそのまま動く。SD カードに JSON で 1 分ごとに
 記録する。
 
-*第三段階(母屋の miniPC に集約)*。B さんの母屋に miniPC を置く
+*第三段階(母屋の一台に集約)*。B さんの母屋に一台を置く
 (link:/ai-native-software/ai-pc/[2-02: AI に PC を一台渡す ── 自立編を動かす機械]の機械を
-そのまま使ってもよい)。ESP32 が 10 分ごとに JSON を送り、miniPC の FastAPI が受けて、
+そのまま使ってもよい)。ESP32 が 10 分ごとに JSON を送り、その一台の FastAPI が受けて、
 SQLite に入れ、貯まった分を Parquet に落とす。日別グラフは Altair、異常検出の履歴は SQLite。
 
 *第四段階(自動灌水アクチュエータの設計)*。ソレノイドバルブを動かす筐体を、2-13 の
 Build123d で設計し、3D プリンタで刷る。ESP32 のリレー出力でバルブを開閉し、Python の制御
 コードは、MicroPython のメモリで足りないときだけ AI に C へ翻訳させる。
 
-結果はこうなる。1 ヶ所あたり 3,000 円が数ヶ所、データは自分のもの、業者のクラウドの月額も
-要らない。判定ロジックは Markdown で読め、故障したら 3D プリンタで部品を刷り直して自分で
+結果はこうなる。1 ヶ所あたり部品代だけで何ヶ所にも置け、データは自分のもの、業者の
+クラウドの月額も要らない。判定ロジックは Markdown で読め、故障したら 3D プリンタで部品を刷り直して自分で
 直せる。
 
 ここまでの章の道具立てが、一つの作品にまとまっている ── 2-04 の Python と Flet、2-13 の
@@ -10421,36 +10421,25 @@ CAD、2-03 の Parquet、そして
 link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]の
 FastAPI が、受け口と読み出し口の両方を担う。
 
-== 二十年物のラダーが、一週間で Python になる
+== 二十年物のラダーが、Python になる
 
-C は 50 年前からある。これからも 50 年動く。Python は 30 年前から動いていて、これからも
-30 年動くだろう。
+C は 1970 年代から、Python は 1990 年代から動いていて、この先も動く。
 
 業界ごとの独自言語(古い PLC のラダー、車載の特殊規格)に閉じ込められてきた組み込みの知識を、
 Python と C と Markdown の側へ出していく。特定ベンダーの形式から、時間を超える形式へ移す
 作業だ。長く続く仕事だが、毎日少しずつ進められる。
 
-数字で見ると、こうなる。ESP32 で温度センサの判定を作る場合。
-
-* C++ で書き始める従来法 ── *2 週間*(コンパイル + 実機焼き直し + デバッグ)
-* Python で検証してから MicroPython に転送する新法 ── *2 日*
-* 差は *7 倍*
-
-実機の焼き直しサイクル。
-
-* C++ + 書き込み ── 約 2 分
-* MicroPython 転送 ── 約 5 秒
-* Python シミュレーション ── 約 0.1 秒
-* C と Python の差は *1,200 倍*
+差が出るのは、一回の往復の長さだ。C++ で書き始めると、直すたびにコンパイルして実機に
+焼き直す ── 一回が分の単位になる。MicroPython なら転送は秒で済み、PC の Python なら
+シミュレーションは一瞬だ。往復が短いほど、試す回数が増え、判定の中身が早く固まる。
 
 そして、この章で一番大きい例。産業用 PLC のラダー言語で書かれた二十年前の制御ロジックが
 あり、書いた担当者が引退して、社内に読める人が残っていない。AI にラダーを読ませ、Python に
-翻訳し、Markdown で意味を書き起こす ── これが *1 週間* で済む。同じことを人手でやるなら
-半年以上かかり、ベテランエンジニアを呼んでも、終わりが見えるとは限らない。
+翻訳し、Markdown で意味を書き起こす。人手で読み解くなら終わりが見えない仕事が、読める形に
+なって戻ってくる。
 
-センサデータの可視化も同じ形になる。自前で Web ダッシュボードを作ると 1 週間。
-`matplotlib` の `plot()` 一行に「これを HTML レポートにして」を足すと、*30 分* で実用に
-なる。
+センサデータの可視化も同じ形になる。自前で Web ダッシュボードを一から組む代わりに、
+`matplotlib` の `plot()` 一行に「これを HTML レポートにして」を足せば、実用になる。
 
 == 工作が好きな人が、ソフトウェアを書く側に入る
 
@@ -10483,7 +10472,7 @@ ____
 . 3D プリンタで刷った筐体に基板を収め、電源を入れ直しても同じ値が返る
 
 ```bash
-# 基板に入っている MicroPython に、手元のファイルを送って動かす
+# 基板に入っている MicroPython に、手元のファイルを送って動かす(mpremote は uv tool install で入る)
 mpremote connect auto fs cp main.py :main.py
 mpremote connect auto run main.py
 ```
@@ -10510,11 +10499,12 @@ mpremote connect auto run main.py
 
 == 確かめた版と日付
 
-* ESP32、RP2040、STM32、Raspberry Pi、Jetson Nano、Arduino、DHT22 ── 版は指定していない
+* ESP32、RP2040、STM32、Raspberry Pi、Jetson、Arduino、DHT22 ── 版は指定していない
 * MicroPython、Rust(`embassy` / `RTIC`)、`pybind11`、`PyO3` ── 版は指定していない
+* `mpremote`(PyPI、`uv tool install`)、`esptool`(Debian 13 のパッケージ 4.7)
 * Polars、matplotlib、Altair、SQLite、Parquet、FastAPI、Flet ── 版は指定していない
-* 部品の値段(市販品 1 台 5 万円、ESP32 とセンサで 3,000 円)は元の見積もりのまま。買う前に現在の価格を確かめる
-* 手順を書いたのは 2026-09-21
+* 部品の値段は本文に書いていない。買う前に現在の価格を確かめる
+* 手順を書いたのは 2026-09-21、見直したのは 2026-10-06
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
 == まとめ
@@ -10526,7 +10516,7 @@ mpremote connect auto run main.py
 * *開発フェーズで言語を決める* ── Python から MicroPython、性能が要るときに Rust。C と C++ は既存資産を扱うときに使う
 * *五段階で進める* ── 設計、移植、測定、ホットスポットの Rust 化、必要ならエッジ AI へ。多くの IoT は二段目で止まる
 * *値の行き先を決める* ── 繋ぎ方を場所で選び、2-03 に積み、2-12 の API で出し、2-04 の Flet で画面にする。値は手元に残る
-* *知識を時間を超える形式へ* ── 二十年物の PLC ラダーが、読ませて翻訳して書き起こすと 1 週間で Python と Markdown になる
+* *知識を時間を超える形式へ* ── 二十年物の PLC ラダーが、読ませて翻訳して書き起こすと Python と Markdown になる
 
 道具はここで揃った。土台、門番、文書、コード、メール、会議、Web、API、図、そして基板と、
 そこから流れてくる値まで。
@@ -10564,7 +10554,7 @@ hands. The AI knows how to write the code. What the human supplies is the answer
 Anyone who has written embedded code knows where the time goes.
 
 * Behavior cannot be checked until the code is flashed to the device
-* Hardware debugging takes 10x the time of PC debugging
+* Hardware debugging takes far longer than PC debugging
 * Printing a single value requires setting up UART
 * Memory runs out, buffers overflow, timing slips
 * Every one-line fix means re-flashing the firmware
@@ -10644,12 +10634,13 @@ exists — that is the AI-native embedded practice.
 | *Design and prototype* | Python (CPython) | On a PC, Raspberry Pi | Algorithm validation, data-collection experiments, AI model tests
 | *Production (performance suffices)* | MicroPython | ESP32, RP2040 | Sensor control, IoT communication, light processing
 | *Production (realtime performance needed)* | Rust | STM32, RP2040, ESP32 | High-speed control, realtime processing, memory-constrained operation
-| *Production (edge AI, image processing)* | Python + C/Rust extensions | Raspberry Pi, Jetson Nano | Inference, image processing, Linux deployment
+| *Production (edge AI, image processing)* | Python + C/Rust extensions | Raspberry Pi, Jetson | Inference, image processing, Linux deployment
 | *Maintaining existing assets* | C, C++ | Various microcontrollers | Maintaining existing code, certified code
 |===
 
 The first choice, where the hardware allows, is MicroPython or Python. When performance or
-capacity puts Python out of reach, pick Rust — the AI writes Rust more safely than C. C and C++
+capacity puts Python out of reach, pick Rust — its type and ownership checks run at compile
+time, so a mistake in AI-written code stops at the compiler. C and C++
 are for maintaining existing assets and certified code. The room for choosing C or C++ on new
 work has narrowed to that.
 
@@ -10770,9 +10761,9 @@ Development boards, sensor modules, breadboards, jumper wires, USB cables — th
 stock and arrive in a few days. A soldering iron and a multimeter are one-time purchases that
 last for years.
 
-The order of magnitude shows up in the farmer example later. Where a commercial IoT unit costs
-¥50,000 each, an ESP32 plus sensors assembled yourself came to ¥3,000 in total. The more places
-you install, the more that gap matters.
+The shape of the cost shows up in the farmer example later. A commercial IoT unit is bought at
+a per-unit price; an ESP32 plus sensors you assemble yourself costs only the parts. The more
+places you install, the more that gap matters.
 
 Before buying, have the AI check the part numbers. "Does this sensor run at 3.3V?" "Will this
 plug straight into that board?" "List the parts I need." It cuts down on discovering a missing
@@ -10868,7 +10859,7 @@ In many cases it ends at stage 2. MicroPython is enough.
 == Example: a farmer's field-sensor network
 
 A second example. Farmer B wants soil-moisture, temperature, and solar-irradiance sensors at
-several spots in the field. Commercial units cost ¥50,000 each, and the data pools in the
+several spots in the field. Commercial units are priced per unit, and the data pools in the
 vendor's cloud.
 
 *Stage 1 (Python on a PC)*. Write the irrigation decision against historical weather data:
@@ -10876,20 +10867,20 @@ vendor's cloud.
 hours." Apply it to the historical data with Polars and tune the thresholds. The AI writes the
 first version.
 
-*Stage 2 (MicroPython on the device)*. Port that logic to an ESP32 plus sensors (¥3,000 in
-total). Because it is MicroPython, the PC code runs almost as is. Record JSON to an SD card every
+*Stage 2 (MicroPython on the device)*. Port that logic to an ESP32 plus sensors. Because it
+is MicroPython, the PC code runs almost as is. Record JSON to an SD card every
 minute.
 
-*Stage 3 (aggregate on the farmhouse miniPC)*. Put a miniPC in the farmhouse — the machine from
+*Stage 3 (aggregate on the farmhouse machine)*. Put one machine in the farmhouse — the machine from
 link:/en/ai-native-software/ai-pc/[2-02: Give the AI a PC of Its Own — The Machine the Independence Part Runs On]
-will do. The ESP32s send JSON every ten minutes, FastAPI on the miniPC receives it, SQLite holds
+will do. The ESP32s send JSON every ten minutes, FastAPI on that machine receives it, SQLite holds
 it, and accumulated data drops to Parquet. Daily charts in Altair, anomaly history in SQLite.
 
 *Stage 4 (design the irrigation actuator)*. Design the housing for the solenoid valve in 2-13's
 Build123d and print it. An ESP32 relay output opens and closes the valve, and the Python control
 code goes to the AI for a C translation only when MicroPython's memory falls short.
 
-The result: ¥3,000 per spot across several spots, the data is yours, and there is no monthly
+The result: only the parts cost per spot, across as many spots as you like; the data is yours; and there is no monthly
 vendor cloud fee. The decision logic reads as Markdown, and when something breaks you print a
 fresh part and repair it yourself.
 
@@ -10898,38 +10889,27 @@ CAD, 2-03's Parquet, and FastAPI from
 link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
 carrying both the intake and the readout.
 
-== A twenty-year-old ladder becomes Python in a week
+== A twenty-year-old ladder becomes Python
 
-C has been around for 50 years. It will run for another 50. Python has run for 30 years and will
-run for another 30.
+C has run since the 1970s and Python since the 1990s, and both will keep running.
 
 Embedded knowledge that has been held inside industry-specific languages — old PLC ladder logic,
 automotive special standards — moves out to the side of Python, C, and Markdown. It is the work
 of moving from a vendor's format to formats that cross time. It is a long job, but it advances a
 little every day.
 
-In numbers, it looks like this. Building a temperature-sensor decision on an ESP32:
-
-* The old way, starting in C++ — *2 weeks* (compile + re-flash + debug)
-* The new way, verify in Python then transfer to MicroPython — *2 days*
-* A gap of *7x*
-
-The re-flash cycle:
-
-* C++ plus flashing — about 2 minutes
-* MicroPython transfer — about 5 seconds
-* Python simulation — about 0.1 seconds
-* The gap between C and Python is *1,200x*
+The difference is the length of one round trip. Start in C++ and every fix means compiling and
+re-flashing the device — a round trip measured in minutes. With MicroPython the transfer takes
+seconds, and with Python on the PC the simulation is instant. The shorter the round trip, the
+more tries you get, and the sooner the decision logic settles.
 
 And the largest example in this chapter. Twenty-year-old control logic written in industrial PLC
 ladder, where the engineer who wrote it has retired and no one in the company can read it now.
-Have the AI read the ladder, translate it to Python, and write the meaning out in Markdown — that
-takes *1 week*. By hand it takes half a year or more, and even calling in a veteran engineer does
-not guarantee the end is in sight.
+Have the AI read the ladder, translate it to Python, and write the meaning out in Markdown. A job
+with no end in sight when read by hand comes back in a form that can be read.
 
-Visualizing sensor data takes the same shape. Building a web dashboard yourself takes a week. One
-`plot()` line in `matplotlib` plus "turn this into an HTML report" gets to practical quality in
-*30 minutes*.
+Visualizing sensor data takes the same shape. Instead of building a web dashboard from scratch,
+one `plot()` line in `matplotlib` plus "turn this into an HTML report" gets to practical quality.
 
 == People who like making things move to the software side
 
@@ -10964,7 +10944,7 @@ This chapter is done when these six things hold.
 . With the board inside the 3D-printed housing, the same values come back after a power cycle
 
 ```bash
-# send a local file to the MicroPython on the board and run it
+# send a local file to the MicroPython on the board and run it (mpremote installs with uv tool install)
 mpremote connect auto fs cp main.py :main.py
 mpremote connect auto run main.py
 ```
@@ -10991,11 +10971,12 @@ mpremote connect auto run main.py
 
 == Versions checked, and when
 
-* ESP32, RP2040, STM32, Raspberry Pi, Jetson Nano, Arduino, DHT22 — no versions specified
+* ESP32, RP2040, STM32, Raspberry Pi, Jetson, Arduino, DHT22 — no versions specified
 * MicroPython, Rust (`embassy` / `RTIC`), `pybind11`, `PyO3` — no versions specified
+* `mpremote` (PyPI, `uv tool install`), `esptool` (Debian 13 package 4.7)
 * Polars, matplotlib, Altair, SQLite, Parquet, FastAPI, Flet — no versions specified
-* The part prices (¥50,000 per commercial unit, ¥3,000 for an ESP32 with sensors) are the original estimates. Check current prices before buying
-* These steps were written on 2026-09-21
+* No part prices are given in the text. Check current prices before buying
+* These steps were written on 2026-09-21 and reviewed on 2026-10-06
 * If versions have moved on, have the AI check the official procedure before proceeding
 
 == In summary
@@ -11007,7 +10988,7 @@ Even when you are working against a board, think in Python.
 * *Pick the language by phase* — Python, then MicroPython, then Rust when performance demands it. C and C++ handle existing assets
 * *Move through five stages* — design, port, measure, Rust the hotspots, and edge AI when needed. Most IoT stops at the second
 * *Decide where readings go* — choose the connection by place, stack it in 2-03, serve it with 2-12's API, screen it with 2-04's Flet. The readings stay with you
-* *Move knowledge into formats that cross time* — a twenty-year-old PLC ladder becomes Python and Markdown in a week once it is read, translated, and written out
+* *Move knowledge into formats that cross time* — a twenty-year-old PLC ladder becomes Python and Markdown once it is read, translated, and written out
 
 The tools are in place now: the foundation, the gate, documents, code, mail, meetings, the web,
 the API, diagrams — and the board, with the readings flowing from it.

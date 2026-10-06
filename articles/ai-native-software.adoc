@@ -9189,8 +9189,8 @@ title.ja: 図と資料を作る ── Mermaid・Marp・そのほかの道具
 title.en: Make Diagrams and Documents — Mermaid, Marp, and the Other Tools
 subtitle.ja: 図もスライドも 3D も、テキストとコードから出す
 subtitle.en: Diagrams, slides, even 3D — all produced from text and code
-description.ja: 図も、スライドも、配布する資料も、テキストとコードから出す。構造図は Mermaid、画面の下書きは Claude デザイン、スライドは Markdown と Marp。ここまでが日常の道具で、その先に D3.js、Blender(bpy)、ComfyUI、CadQuery / Build123d / OpenSCAD / FreeCAD がある。どれもスクリプトやコードで動かせるから、AI に書かせて、出てきたものを見て、調整する。商品写真 100 枚の白背景化、工場のセンサ筐体、観光プロモの動画素材、地方紙の人口データの図 ── これまで制作会社に発注していた仕事が、手元で回る。業務資料は中身とデザインを分けて持ち、一箇所を直せば、すべての出力に反映される。
-description.en: Diagrams, slides, and the documents you hand out all come out of text and code. Structural diagrams in Mermaid, screen drafts in Claude Design, slides in Markdown with Marp. Those are the everyday tools; beyond them sit D3.js, Blender (bpy), ComfyUI, and CadQuery / Build123d / OpenSCAD / FreeCAD. Every one of them is driven by a script or code, so you have the AI write it, look at what comes back, and adjust. White backgrounds for 100 product photos, a sensor housing for a factory line, video assets for a tourism campaign, a population chart for a local paper — work that used to go out to a production house now runs in your own hands. Business documents keep content and design apart, so fixing one place updates every output.
+description.ja: 図も、スライドも、配布する資料も、テキストとコードから出す。構造図は Mermaid、画面の下書きは AI に HTML で、スライドは Markdown と Marp(単体のバイナリ)か pandoc。ここまでが日常の道具で、その先に D3.js、Blender(bpy)、ComfyUI、CadQuery / Build123d / OpenSCAD / FreeCAD がある。どれもスクリプトやコードで動かせるから、AI に書かせて、出てきたものを見て、調整する。商品写真の白背景化、工場のセンサ筐体、観光プロモの動画素材、地方紙の人口データの図 ── これまで制作会社に発注していた仕事が、手元で回る。業務資料は中身とデザインを分けて持ち、一箇所を直せば、すべての出力に反映される。
+description.en: Diagrams, slides, and the documents you hand out all come out of text and code. Structural diagrams in Mermaid, screen drafts asked of the AI as HTML, slides in Markdown with Marp (a standalone binary) or pandoc. Those are the everyday tools; beyond them sit D3.js, Blender (bpy), ComfyUI, and CadQuery / Build123d / OpenSCAD / FreeCAD. Every one of them is driven by a script or code, so you have the AI write it, look at what comes back, and adjust. White backgrounds for product photos, a sensor housing for a factory line, video assets for a tourism campaign, a population chart for a local paper — work that used to go out to a production house now runs in your own hands. Business documents keep content and design apart, so fixing one place updates every output.
 date: 2026.09.21
 label: Independence 13
 title_html.ja: <span class="accent">図</span>も資料も、<br>テキストから作る。
@@ -9215,7 +9215,7 @@ link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹�
 flowchart LR
   Intent["伝えたい意図<br/>(言葉)"]
   Intent --> MM["構造図<br/>Mermaid"]
-  Intent --> UI["画面の下書き<br/>Claude デザイン"]
+  Intent --> UI["画面の下書き<br/>AI に HTML で"]
   Intent --> MP["スライド<br/>Markdown + Marp"]
   MM --> Out[("PDF / HTML / PNG")]
   UI --> Out
@@ -9245,7 +9245,7 @@ graph TD
 これだけで、4 つのノードと矢印の関係が出る。
 
 *Mermaid はテキストである*。図を 1 か所直した差分は、Git に 1 行追加・1 行削除として出て、
-レビューは 30 秒で済む。AI がそのまま読んで書き換えられる。10 年後のレンダラでも、同じ図が出る。
+一目でレビューできる。AI がそのまま読んで書き換えられる。先のレンダラでも、同じ図が出る。
 
 書ける図の種類は広い。
 
@@ -9266,23 +9266,24 @@ graph TD
 * 色は `classDef` で 2 色だけ決めて、ノードにまとめて当てる
 * 1 枚に載せるノードは 10 個ほどまで。増えたら 2 枚に割る
 
-GitHub、Notion、Zed など、ほとんどの場所が Mermaid をそのまま描画する。記号は、覚えなくてよい。
+GitHub、Forgejo(2-06)、Notion など、ほとんどの場所が Mermaid をそのまま描画する。記号は、覚えなくてよい。
 「この構造を Mermaid で書いて」と頼めば返ってくる。読めれば足りる。
 
-== 画面の下書きは、Claude デザインに頼む
+== 画面の下書きは、AI に HTML で頼む
 
 「画面の下書き」「UI モックアップ」は、Figma や Sketch の領域だった。学習に時間がかかり、
 利用には月額がかかる。
 
-Claude デザインで、ここが変わる。「ログインフォームを作って」と頼むと、HTML + CSS +
+AI で、ここが変わる。「ログインフォームを作って」と頼むと、HTML + CSS +
 (必要なら)JavaScript が返る。ブラウザで開けば、その場で動く画面になる。「もっと余白を広く」
-「青基調で」「左寄せで」── 言葉で指示すれば、コードが書き換わる。
+「青基調で」「左寄せで」── 言葉で指示すれば、コードが書き換わる。画面専用の機能を持つ
+AI もあるが、普通の対話で足りる。
 
 ```text
-あなた:  在庫管理画面の UI を作って。商品リスト、検索ボックス、追加ボタン
-Claude: (HTML+CSS が返る)
-あなた:  もっと余白を広く、カラムを 3 つに
-Claude: (修正版が返る)
+あなた: 在庫管理画面の UI を作って。商品リスト、検索ボックス、追加ボタン
+AI:     (HTML+CSS が返る)
+あなた: もっと余白を広く、カラムを 3 つに
+AI:     (修正版が返る)
 ```
 
 Figma より早く、出てくるものがコードなので、そのまま開発に渡せる。2-12 で作ったルールの 1 枚
@@ -9298,12 +9299,14 @@ Figma より早く、出てくるものがコードなので、そのまま開�
 * 説明の場で、その場の指摘を反映して出し直す
 
 専門デザイナーがいる場合は、下書きを作って渡す。「この方向で、もう少し洗練して」と頼める。
-往復が 1 回で済み、デザイナーの時間はブランド統一・印刷物の精度・写真選定 ── 専門性が要る
+往復が減り、デザイナーの時間はブランド統一・印刷物の精度・写真選定 ── 専門性が要る
 部分に向く。
 
 == スライドは Markdown で書き、Marp が組む
 
-プレゼン資料も、Markdown で書く。`Marp` や `reveal.js` が、Markdown を HTML スライドに変換する。
+プレゼン資料も、Markdown で書く。`Marp` が、Markdown を HTML スライドや PDF に変換する。
+Marp は単体のバイナリが配られているので、npm は要らない(2-10)。apt で済ませるなら、
+`pandoc`(Debian 13 にある)が同じ Markdown から reveal.js のスライドと PDF を出す。
 スライド 1 枚が、`---` で区切られた 1 区画になる。
 
 ```markdown
@@ -9326,12 +9329,12 @@ Figma より早く、出てくるものがコードなので、そのまま開�
 
 これで 3 枚のスライドになり、PDF・HTML・PNG に変換できる。
 
-数字で見ると差が分かる。PowerPoint で 30 ページのスライドを作ると、文章とレイアウトが混ざって
-4 時間かかる。同じ内容を Marp で書けば、Markdown 30 行、ビルド 1 秒、修正は Markdown を直すだけで、
-合計 30 分。8 倍の差になる。
+差は、文章とレイアウトが混ざるかどうかで出る。PowerPoint では、一枚ごとに置き場所と
+文章を同時に決める。Markdown なら、書くのは文章だけで、置き場所はテンプレートが決める。
+直すのも Markdown を直すだけだ。
 
-複雑なレイアウトが要るスライドだけ、Claude デザインに HTML を書かせる。*ベースは Markdown、
-装飾だけ Claude*。
+複雑なレイアウトが要るスライドだけ、AI に HTML を書かせる。*ベースは Markdown、
+装飾だけ AI*。
 
 副産物も大きい。
 
@@ -9341,13 +9344,13 @@ Figma より早く、出てくるものがコードなので、そのまま開�
 
 == 学習コストが高かった道具も、コードから動かせる
 
-Mermaid・Claude デザイン・Marp は、日常のデザインの話だ。ここから先は、学習コストが高くて
+Mermaid・AI の HTML・Marp は、日常のデザインの話だ。ここから先は、学習コストが高くて
 手を出さずにいた専門ツールの話になる。AI がスクリプト・コード・JSON を書くので、これらの道具が
 事務職・個人事業主・現場担当者の手元に降りてくる。
 
 ____
 ここから先(D3 / Blender / ComfyUI / CAD)は、あとからこんなことも可能になる、という見通しである。
-最初は Mermaid と Claude デザインだけで足りる。日常の図と資料が手元に降りてから、必要に応じて
+最初は Mermaid と AI の HTML だけで足りる。日常の図と資料が手元に降りてから、必要に応じて
 この節に戻ってくればよい。読める能力さえあれば、いつでも入れる。
 ____
 
@@ -9377,7 +9380,7 @@ D3.js は、ブラウザで動く可視化ライブラリである。階層ツ�
 地図ベースの図、ホバーで反応する図、ズームできるタイムライン ── 新聞や調査報道で見る凝った図は、
 たいてい D3 だ。
 
-学習には時間がかかる。データバインディングとセレクションという独自の概念があり、独学だと数ヶ月かかる。
+学習には時間がかかる。データバインディングとセレクションという独自の概念があり、独学では遠い。
 
 AI を介すと、そこが縮む。「この JSON を D3 の force layout で描いて。ノードを色分け、ホバーで
 情報表示、ズーム可」と頼めば、Web に貼れる JavaScript が返る。文法は、覚えなくてよい。
@@ -9387,7 +9390,8 @@ AI を介すと、そこが縮む。「この JSON を D3 の force layout で�
 === Blender は Python から動かす
 
 Blender は、無料でオープンソースの 3D 制作スイートである。3D モデル、アニメーション、
-レンダリング、動画編集まで入っているが、メニューが膨大で、ショートカットを覚えるだけで数ヶ月かかる。
+レンダリング、動画編集まで入っているが、メニューが膨大で、ショートカットを覚えるだけでも遠い。
+Debian 13 の apt にある。
 
 その Blender は、Python(`bpy`)から全機能を呼び出せる。GUI を触らなくても、スクリプトで 3D
 シーンが組める。「立方体の上に球体を載せて、光源は左上、カメラは正面少し下、PNG でレンダリング」
@@ -9418,8 +9422,9 @@ ComfyUI は、Stable Diffusion などの生成 AI をノードを繋ぐ形で扱
 * プレゼン資料の図解イラスト
 * マニュアルや説明動画の素材
 
-これまで広告代理店や制作会社に外注していた画像作りが、手元で完結する。ComfyUI を社内に立てて
-Web UI として公開すれば、チームでも使える。
+これまで広告代理店や制作会社に外注していた画像作りが、手元で完結する。ComfyUI には GPU が
+要るので、立てる先は 2-02 の一台ではなく、2-16 の AI のサーバーだ。そこで Web UI として
+社内に公開すれば、チームでも使える。
 
 === CAD はコードで書ける
 
@@ -9432,7 +9437,7 @@ CAD の操作は覚えなくてよい。
 | *OpenSCAD* | 独自スクリプト言語 | 古参、シンプル、3D プリント界の標準の一つ
 | *CadQuery* | Python | Python で書ける、業界の寸法の概念に親和的
 | *Build123d* | Python | CadQuery 系統の後継、より自然な Python 表現
-| *FreeCAD* | GUI + Python | フル機能のパラメトリック CAD、Python で操作可
+| *FreeCAD* | GUI + Python | フル機能のパラメトリック CAD、Python で操作可。OpenSCAD とともに Debian 13 の apt にある
 |===
 
 例として、ねじ穴付きのブラケットを頼む。「幅 50mm × 高さ 30mm × 厚さ 3mm のブラケット。上端から
@@ -9451,41 +9456,41 @@ CAD の操作は覚えなくてよい。
 
 手元に降りる、という話は、具体例で見ると早い。
 
-=== 商品写真 100 枚を、その日のうちに白背景にする
+=== 商品写真を、その日のうちに白背景にする
 
-ある小売店主が、季節商品 100 種類の写真を撮った。背景が雑然としていて、Web カタログにはそのまま
+ある小売店主が、季節商品の写真を何十枚も撮った。背景が雑然としていて、Web カタログにはそのまま
 使えない。
 
-* 旧来:撮り直すか、写真スタジオや編集会社に依頼する。1 枚 500 円 × 100 = 5 万円、納品まで 1 週間
-* AI ネイティブ:ComfyUI のワークフロー(JSON は Claude が書く)で、100 枚を白背景に置換し、
-  商品にロゴを重ねる。所要は数十分、追加費用はゼロ
+* 旧来:撮り直すか、写真スタジオや編集会社に依頼して、納品を待つ
+* AI ネイティブ:ComfyUI のワークフロー(JSON は AI が書く)で、全部を白背景に置換し、
+  商品にロゴを重ねる。その日のうちに終わり、追加の費用は無い
 
 === 工場のセンサ筐体を、現場でその日に試作する
 
 中小製造業の現場担当者が、ライン上の温度センサを保護する筐体を作りたい。
 
-* 旧来:設計事務所に発注(15 万円、1 ヶ月)→ 試作 → 修正 → 再発注
+* 旧来:設計事務所に発注 → 待つ → 試作 → 修正 → 再発注
 * AI ネイティブ:現場担当者が「センサのサイズ、取り付けねじ穴、ケーブル通し、放熱スリット」を
-  Claude に伝える → Build123d の Python が返る → STL を出力 → 工場の 3D プリンタでその日に試作
+  AI に伝える → Build123d の Python が返る → STL を出力 → 工場の 3D プリンタでその日に試作
 
-合わなければ寸法を変えて、30 分後に次の試作が出る。現場の人が、現場で、設計のサイクルを回す。
+合わなければ寸法を変えて、すぐ次の試作が出る。現場の人が、現場で、設計のサイクルを回す。
 
-=== 観光プロモの動画素材を、1 週間で作る
+=== 観光プロモの動画素材を、手元で作る
 
 地域の観光協会が、移住促進の説明動画を作る。
 
-* 旧来:映像制作会社に発注(50〜200 万円、納品 2〜3 ヶ月)
-* AI ネイティブ:地域の地図と建物配置を、Claude が `bpy` で 3D シーン化(住宅、田畑、駅、
+* 旧来:映像制作会社に発注し、納品を待つ
+* AI ネイティブ:地域の地図と建物配置を、AI が `bpy` で 3D シーン化(住宅、田畑、駅、
   コミュニティセンター)。季節を変えたライティング、ドローン視点のカメラパス、書き出した動画素材を
-  普通の動画編集で組み上げる。1 週間、追加費用は AI の利用料のみ
+  普通の動画編集で組み上げる。追加の費用は AI の利用料だけ
 
-=== 人口データの図を、記者が 1 日で記事に入れる
+=== 人口データの図を、記者が自分で記事に入れる
 
 地方紙の記者が、人口減少のデータを記事に組み込みたい。
 
 * 旧来:データジャーナリスト(別の専門職)を外から雇い、Web 制作会社に組み込みを依頼する
-* AI ネイティブ:記者が SQLite に過去 20 年の人口データを取り込み、「町別人口の force layout、
-  年で色を変えて、ホバーで詳細表示」を Claude に頼む → D3 のコードが返る → 新聞社の Web に貼る。1 日
+* AI ネイティブ:記者が SQLite に人口データを取り込み、「町別人口の force layout、
+  年で色を変えて、ホバーで詳細表示」を AI に頼む → D3 のコードが返る → 新聞社の Web に貼る
 
 記者、観光協会の職員、現場担当者、小売店主 ── これまで制作会社に発注していた側の人が、自分の手で
 作る側に回る。
@@ -9503,7 +9508,7 @@ ____
 proposal-2026/
   ├── ja.adoc            # 本文(原稿)
   ├── architecture.mmd   # 構造図(Mermaid)
-  ├── ui-mockup.html     # 画面例(Claude デザインの出力)
+  ├── ui-mockup.html     # 画面例(AI が書いた HTML)
   └── cover.svg          # 表紙(SVG)
 ```
 
@@ -9536,14 +9541,15 @@ ____
 デザインの記号や規則を覚えるのではなく、意図を伝える能力を持つ。これが新しいリテラシーである。
 ____
 
-== テキストで持てば、十年後も開ける
+== テキストで持てば、先々も開ける
 
-20 年前の PowerPoint ファイルは、フォントが置換され、図形がずれ、開けないことがある。Adobe
+古い PowerPoint ファイルは、フォントが置換され、図形がずれ、開けないことがある。Adobe
 Illustrator の古い `.ai` 形式も、最新版で開けないことがある。Figma のデザインは、サービスが
 終われば手元から消える。
 
-Mermaid、Markdown、SVG、HTML+CSS は、テキストである。20 年前のファイルが、今のレンダラで問題なく
-出る。20 年後も同じだ。AI が読むのも、テキストのほうが容易である。
+Mermaid、Markdown、SVG、HTML+CSS は、テキストである。記法が初版からほとんど変わっていない
+(2-10)ので、古いファイルが今のレンダラで出るし、この先も出る。AI が読むのも、テキストの
+ほうが容易である。
 
 書式は表示を飾る。構造は時間を超える。
 
@@ -9551,9 +9557,9 @@ Mermaid、Markdown、SVG、HTML+CSS は、テキストである。20 年前の�
 
 この章は、次の五つができていれば済みだ。
 
-. 章の構造図を Mermaid で書き、GitHub か Zed で開くと、図として描画される
+. 章の構造図を Mermaid で書き、GitHub か Forgejo で開くと、図として描画される
 . その図の 1 行を直した差分が、git で 1 行追加・1 行削除として見える
-. Claude デザインに画面の下書きを頼み、返ってきた HTML をブラウザで開くと、その場で動く
+. AI に画面の下書きを頼み、返ってきた HTML をブラウザで開くと、その場で動く
 . Markdown で書いたスライドを Marp に通すと、PDF が出て、区切りとページが一致している
 . 業務資料が本文・図・画面の別ファイルに分かれていて、図を 1 か所直して組み直すと、PDF に反映される
 
@@ -9576,9 +9582,9 @@ Mermaid、Markdown、SVG、HTML+CSS は、テキストである。20 年前の�
 
 == 確かめた版と日付
 
-* Mermaid、Marp、reveal.js、D3.js、Blender(`bpy`)、ComfyUI ── 版は指定していない
-* CadQuery、Build123d、OpenSCAD、FreeCAD、`pandoc`、`weasyprint` ── 版は指定していない
-* 手順を書いたのは 2026-09-21
+* Marp CLI 4.5(GitHub Releases の単体バイナリ)、pandoc 3.1・Blender 4.3・FreeCAD 1.0・OpenSCAD(Debian 13 のパッケージ)
+* Mermaid、D3.js、ComfyUI(2-16 のサーバーに)、CadQuery、Build123d、`weasyprint` ── 版は指定していない
+* 手順を書いたのは 2026-09-21、見直したのは 2026-10-06
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
 == まとめ
@@ -9587,9 +9593,9 @@ Mermaid、Markdown、SVG、HTML+CSS は、テキストである。20 年前の�
 
 日常の道具:
 
-* 構造図は *Mermaid* ── git の差分が出て、10 年後も読める
-* 画面の下書きは *Claude デザイン* ── HTML+CSS が返り、そのまま開発に渡せる
-* スライドは *Markdown + Marp / reveal.js* ── 提案書と同じ原稿から両方出る
+* 構造図は *Mermaid* ── git の差分が出て、先々も読める
+* 画面の下書きは *AI に HTML で* ── HTML+CSS が返り、そのまま開発に渡せる
+* スライドは *Markdown + Marp(単体バイナリ)か pandoc* ── 提案書と同じ原稿から両方出る
 * 業務資料は、原稿が本体、図と画面は別ファイル ── 一箇所を直せば全部に反映される
 
 AI を介して手元に降りる専門領域:
@@ -9610,7 +9616,7 @@ AI を介して手元に降りる専門領域:
 
 * link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
 * link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 読む物は adoc、触る表は格子、刷る紙はテンプレート]
-* link:/ai-native-software/web/[2-11: Web を公開する ── Cloudflare Pages]
+* link:/ai-native-software/web/[2-11: Web を公開する ── 自分の一台か、Cloudflare Pages か]
 * link:/ai-native-software/structure-knowledge/[2-15: 社内情報を整える ── 整備こそ本体、AI は最後の一手]
 * link:/ai-native-software/independence/[2-01: Microsoft と Google から自立する ── 全体像と対応表]
 endif::[]
@@ -9635,7 +9641,7 @@ The diagrams and documents you make day to day fall into three kinds.
 flowchart LR
   Intent["what you want<br/>to convey (words)"]
   Intent --> MM["structural diagram<br/>Mermaid"]
-  Intent --> UI["screen draft<br/>Claude Design"]
+  Intent --> UI["screen draft<br/>ask the AI for HTML"]
   Intent --> MP["slides<br/>Markdown + Marp"]
   MM --> Out[("PDF / HTML / PNG")]
   UI --> Out
@@ -9665,8 +9671,8 @@ graph TD
 Four nodes and the arrows between them, in plain text.
 
 *Mermaid is text.* A one-place edit to a diagram shows up in Git as one line added and one
-line removed, and review takes thirty seconds. The AI reads it and rewrites it directly. A
-renderer ten years from now produces the same diagram.
+line removed, and the review is a glance. The AI reads it and rewrites it directly. A
+renderer years from now produces the same diagram.
 
 The range is wide.
 
@@ -9687,23 +9693,24 @@ There is little to remember about writing it.
 * Pick two colors with `classDef` and apply them to nodes in one go
 * Keep a diagram to about ten nodes; past that, split it in two
 
-GitHub, Notion, Zed — most places render Mermaid as it is. There is no need to memorize the
+GitHub, Forgejo (2-06), Notion — most places render Mermaid as it is. There is no need to memorize the
 syntax. Ask "draw this structure in Mermaid" and it comes back. Reading it is enough.
 
-== Ask Claude Design for the screen draft
+== Ask the AI for the screen draft, as HTML
 
 "Screen drafts" and "UI mockups" belonged to Figma and Sketch. They take time to learn and
 carry a monthly fee.
 
-Claude Design changes that. Ask "make a login form" and HTML + CSS + (if needed) JavaScript
+The AI changes that. Ask "make a login form" and HTML + CSS + (if needed) JavaScript
 come back. Open it in a browser and there is a working screen. "More whitespace." "Use a
-blue palette." "Left-align it." Say it in words, and the code rewrites itself.
+blue palette." "Left-align it." Say it in words, and the code rewrites itself. Some AIs
+carry a dedicated screen-design feature; ordinary conversation is enough.
 
 ```text
-You:    Make an inventory management screen UI. Product list, search box, add button.
-Claude: (HTML+CSS returns)
-You:    More whitespace, three columns.
-Claude: (revised version returns)
+You: Make an inventory management screen UI. Product list, search box, add button.
+AI:  (HTML+CSS returns)
+You: More whitespace, three columns.
+AI:  (revised version returns)
 ```
 
 It is faster than Figma, and what comes back is code, so it can go straight to development.
@@ -9719,13 +9726,15 @@ In business, this is how it is used.
 * Rework it live in a meeting as comments come in
 
 If a specialist designer is involved, make the draft and hand it over: "this direction,
-polished further." One round trip is enough, and the designer's time goes to brand
+polished further." Fewer round trips, and the designer's time goes to brand
 consistency, print accuracy, and photo selection — the parts that need the expertise.
 
 == Write slides in Markdown and let Marp assemble them
 
-Presentation decks, too, are written in Markdown. `Marp` and `reveal.js` convert Markdown
-into HTML slides. One slide is one section separated by `---`.
+Presentation decks, too, are written in Markdown. `Marp` converts Markdown into HTML
+slides or a PDF. Marp ships as a standalone binary, so no npm is needed (2-10). To stay
+inside apt, `pandoc` (in Debian 13) turns the same Markdown into reveal.js slides and a
+PDF. One slide is one section separated by `---`.
 
 ```markdown
 # AI-Native Software Development
@@ -9747,12 +9756,12 @@ One person plus AI keeps the work running
 
 That is three slides, exportable to PDF, HTML, and PNG.
 
-The numbers show the gap. A 30-page deck in PowerPoint mixes prose and layout and takes 4
-hours. The same content in Marp is 30 lines of Markdown, a one-second build, and edits are
-edits to Markdown — 30 minutes in total. Eight times the difference.
+The gap comes from whether prose and layout are mixed. In PowerPoint, every slide means
+deciding placement and text at the same time. In Markdown you write only the text; the
+template decides the placement. Fixing it is fixing the Markdown.
 
-For the few slides that need a complex layout, have Claude Design write the HTML for that
-slide. *Base in Markdown; decoration in Claude.*
+For the few slides that need a complex layout, have the AI write the HTML for that slide.
+*Base in Markdown; decoration by the AI.*
 
 The side effects are large too.
 
@@ -9762,14 +9771,14 @@ The side effects are large too.
 
 == The tools with steep learning curves are driven by code too
 
-Mermaid, Claude Design, and Marp are everyday design. What follows are the specialist tools
+Mermaid, the AI's HTML, and Marp are everyday design. What follows are the specialist tools
 you had left alone because the learning curve was steep. Because the AI writes the scripts,
 code, and JSON, these tools drop into the hands of office workers, sole proprietors, and
 on-the-floor staff.
 
 ____
 What follows (D3 / Blender / ComfyUI / CAD) is a preview of what becomes possible later. To
-start, Mermaid and Claude Design are enough. Once the everyday diagrams and documents are in
+start, Mermaid and the AI's HTML are enough. Once the everyday diagrams and documents are in
 your hands, come back to this section as needs arise. The skill of reading is all you ever
 need to enter.
 ____
@@ -9801,7 +9810,7 @@ map-based views, hover-reactive diagrams, zoomable timelines — the elaborate g
 see in newspapers and investigative reporting are usually D3.
 
 It takes time to learn. It has its own concepts, data binding and selections, and
-self-taught it runs to months.
+self-taught it is a long road.
 
 Through AI, that shrinks. Ask "draw this JSON as a D3 force layout, color the nodes, show
 info on hover, zoom enabled" and JavaScript you can paste into a page comes back. The grammar
@@ -9813,7 +9822,8 @@ visualization. Pick by purpose.
 === Drive Blender from Python
 
 Blender is a free, open-source 3D production suite. Models, animation, rendering, and video
-editing are all in it, but the menu is vast and the shortcuts alone take months.
+editing are all in it, but the menu is vast and the shortcuts alone are a long road. It
+is in Debian 13's apt.
 
 That same Blender exposes every feature to Python (`bpy`). Without touching the GUI, a script
 can build a 3D scene. Ask for "a cube with a sphere on top, light from the upper left, camera
@@ -9846,7 +9856,8 @@ Uses in business run about here.
 * Assets for manuals and instructional video
 
 Image work that used to go to agencies and production houses now finishes in your own hands.
-Stand ComfyUI up in-house and publish its web UI, and the team can use it together.
+ComfyUI needs a GPU, so it stands up not on the 2-02 machine but on the AI server of 2-16.
+Publish its web UI inside the company from there, and the team can use it together.
 
 === CAD can be written as code
 
@@ -9878,46 +9889,46 @@ Uses in business run about here.
 
 "It drops into your hands" is quicker to see in cases.
 
-=== White backgrounds for 100 product photos, the same day
+=== White backgrounds for the product photos, the same day
 
-A small retailer photographed 100 seasonal items. The backgrounds are cluttered and cannot
-go into the web catalog as they are.
+A small retailer photographed dozens of seasonal items. The backgrounds are cluttered and
+cannot go into the web catalog as they are.
 
-* Old: reshoot, or hire a photo studio or retouch shop. ~$5 per shot × 100 = $500, delivered in a week
-* AI-native: a ComfyUI workflow (Claude writes the JSON) replaces every background with white
-  and overlays the logo across all 100 — tens of minutes, zero extra cost
+* Old: reshoot, or hire a photo studio or retouch shop, and wait for delivery
+* AI-native: a ComfyUI workflow (the AI writes the JSON) replaces every background with white
+  and overlays the logo across all of them — done the same day, at no extra cost
 
 === A factory sensor housing, prototyped on the floor that day
 
 A floor engineer at a small manufacturer wants a housing to protect a temperature sensor on
 the line.
 
-* Old: contract a design firm ($1k, one month) → prototype → fix → contract again
-* AI-native: the floor engineer tells Claude the sensor dimensions, mounting screw holes,
+* Old: contract a design firm → wait → prototype → fix → contract again
+* AI-native: the floor engineer tells the AI the sensor dimensions, mounting screw holes,
   cable pass-through, and cooling slits → Build123d Python comes back → STL output →
   3D-printed on the factory floor the same day
 
-If it does not fit, change the dimensions and the next prototype is 30 minutes away. The
+If it does not fit, change the dimensions and the next prototype follows at once. The
 floor person, on the floor, runs the design cycle.
 
-=== Video assets for a tourism campaign, in a week
+=== Video assets for a tourism campaign, in your own hands
 
 A regional tourism board makes a video explaining its relocation program.
 
-* Old: contract a video production house ($5k–20k, delivered in 2–3 months)
-* AI-native: Claude builds a 3D scene from the area's map and building layout with `bpy`
+* Old: contract a video production house and wait for delivery
+* AI-native: the AI builds a 3D scene from the area's map and building layout with `bpy`
   (houses, fields, station, community center), varies the lighting by season, plans a
   drone-camera path, and the exported assets are composed in an ordinary video editor.
-  A week; the only added cost is AI usage
+  The only added cost is AI usage
 
-=== A population chart in the paper, by the reporter, in a day
+=== A population chart in the paper, by the reporter
 
 A local-paper reporter wants population-decline data inside an article.
 
 * Old: hire a data journalist (a separate specialty) from outside, and contract a web shop to embed it
-* AI-native: the reporter loads 20 years of population data into SQLite, asks Claude for "a
-  force layout of population by town, color by year, hover for detail" → D3 code comes back →
-  pasted into the paper's web. One day
+* AI-native: the reporter loads the population data into SQLite, asks the AI for "a force
+  layout of population by town, color by year, hover for detail" → D3 code comes back →
+  pasted into the paper's web
 
 Reporters, tourism-board staff, floor engineers, small-shop owners — the people who used to
 be the side that contracts a production house become the side that builds.
@@ -9936,7 +9947,7 @@ manuscript, diagrams are Mermaid, screens are HTML, the cover is SVG.
 proposal-2026/
   ├── ja.adoc            # Body (manuscript)
   ├── architecture.mmd   # Structural diagram (Mermaid)
-  ├── ui-mockup.html     # Screen example (Claude Design output)
+  ├── ui-mockup.html     # Screen example (HTML the AI wrote)
   └── cover.svg          # Cover page (SVG)
 ```
 
@@ -9973,15 +9984,15 @@ Don't memorize design symbols and rules. Acquire the ability to convey intent. T
 new literacy.
 ____
 
-== Held as text, it still opens in ten years
+== Held as text, it still opens years from now
 
-A 20-year-old PowerPoint file may come back with substituted fonts, shifted shapes, or not
-open at all. Old Adobe Illustrator `.ai` files may not open in current versions. A Figma
+An old PowerPoint file may come back with substituted fonts, shifted shapes, or not open at
+all. Old Adobe Illustrator `.ai` files may not open in current versions. A Figma
 design leaves your hands when the service ends.
 
-Mermaid, Markdown, SVG, HTML+CSS are text. A file from 20 years ago renders fine in today's
-renderer, and the same will hold 20 years from now. Text is also the easier thing for an AI
-to read.
+Mermaid, Markdown, SVG, HTML+CSS are text. Their notations have barely changed since their
+first editions (2-10), so an old file renders in today's renderer and will go on rendering.
+Text is also the easier thing for an AI to read.
 
 Formatting decorates display. Structure crosses time.
 
@@ -9989,9 +10000,9 @@ Formatting decorates display. Structure crosses time.
 
 This chapter is done when these five hold.
 
-. A chapter's structural diagram is written in Mermaid, and GitHub or Zed renders it as a diagram
+. A chapter's structural diagram is written in Mermaid, and GitHub or Forgejo renders it as a diagram
 . A one-line edit to that diagram shows in git as one line added and one line removed
-. Claude Design returns a screen draft, and the HTML runs in the browser when opened
+. The AI returns a screen draft, and the HTML runs in the browser when opened
 . Markdown slides passed through Marp produce a PDF whose pages match the `---` separators
 . A business document is split into body, diagram, and screen files, and fixing the diagram in one place and rebuilding updates the PDF
 
@@ -10014,9 +10025,9 @@ This chapter is done when these five hold.
 
 == Versions checked, and when
 
-* Mermaid, Marp, reveal.js, D3.js, Blender (`bpy`), ComfyUI — no version pinned
-* CadQuery, Build123d, OpenSCAD, FreeCAD, `pandoc`, `weasyprint` — no version pinned
-* The procedure was written on 2026-09-21
+* Marp CLI 4.5 (the standalone binary from GitHub Releases); pandoc 3.1, Blender 4.3, FreeCAD 1.0, OpenSCAD (Debian 13 packages)
+* Mermaid, D3.js, ComfyUI (on the 2-16 server), CadQuery, Build123d, `weasyprint` — no version pinned
+* The procedure was written on 2026-09-21 and reviewed on 2026-10-06
 * If a version has moved, have the AI confirm the official procedure before proceeding
 
 == Summary
@@ -10025,9 +10036,9 @@ Diagrams and documents, produced from text and code.
 
 The everyday tools:
 
-* Structural diagrams: *Mermaid* — Git diffs work, and it still reads in ten years
-* Screen drafts: *Claude Design* — HTML+CSS comes back, ready for development
-* Slides: *Markdown + Marp / reveal.js* — the deck and the proposal come from one manuscript
+* Structural diagrams: *Mermaid* — Git diffs work, and it still reads years from now
+* Screen drafts: *ask the AI for HTML* — HTML+CSS comes back, ready for development
+* Slides: *Markdown + Marp (standalone binary) or pandoc* — the deck and the proposal come from one manuscript
 * Business documents: the manuscript is the body, diagrams and screens are separate files — one fix reaches every output
 
 Specialist territory that AI brings within reach:
@@ -10050,7 +10061,7 @@ things you can touch, from electronics to IoT.
 
 * link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
 * link:/en/ai-native-software/documents/[2-07: Take Documents Back — Prose in AsciiDoc, Working Tables in a Grid, Printed Pages from Templates]
-* link:/en/ai-native-software/web/[2-11: Publish the Web — Cloudflare Pages (a WordPress Replacement)]
+* link:/en/ai-native-software/web/[2-11: Publish the Web — Your Own Machine, or Cloudflare Pages]
 * link:/en/ai-native-software/structure-knowledge/[2-15: Make Your Knowledge Legible — Preparation Is the Main Body, AI the Last Move]
 * link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map]
 endif::[]

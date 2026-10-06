@@ -14433,8 +14433,10 @@ GitHub のコードで学習した。そこには優れたコードもあるが�
   コードを安全だと誤認した("false sense of security")。
 * NYU の初期研究("Asleep at the Keyboard?")── Copilot 出力の約 40% が
   脆弱性を含む(C は約 50%)。
-* 企業評価では、AI 生成コードの 78% に検出困難な脆弱性。Copilot リポジトリは
-  secret 漏洩が 40% 高い。
+* Veracode の 2025 年の調査 ── 100 を超える LLM に 80 の課題を解かせ、AI が
+  生成したコードの 45% に脆弱性があった(2025 年 7 月公表)。
+* GitGuardian の 2025 年の報告 ── Copilot を使うリポジトリは、秘密情報の漏洩率が
+  6.4% で、公開リポジトリ全体の 4.6% より 40% 高い。
 
 これは、世界最大のソフトウェア企業が、責任を散らし、技術を空洞化させた末に
 犯した失敗である。だが、責任を散らしても、責任は消えない。最終決定を下すのは
@@ -14644,9 +14646,10 @@ The result showed in dangerous code.
   security").
 * Early research ("Asleep at the Keyboard?") — roughly 40% of the code
   GitHub Copilot produced contained a vulnerability (about 50% in C).
-* In enterprise assessments, 78% of AI-generated code carried a
-  hard-to-detect vulnerability, and Copilot repositories leaked secrets at a
-  40% higher rate.
+* Veracode's 2025 study — 80 tasks across more than 100 LLMs, and 45% of the
+  AI-generated code carried a vulnerability (published July 2025).
+* GitGuardian's 2025 report — repositories using Copilot leaked secrets at a
+  6.4% rate, 40% higher than the 4.6% across public repositories.
 
 This is the mistake the world's largest software company made after
 scattering responsibility and hollowing out its own capability. But

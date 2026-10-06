@@ -13347,7 +13347,7 @@ flowchart TB
   S5["5. 分かったことと<br/>分からないことを分ける"]
   Out(["判断<br/>(結論を急がない)"])
 
-  AI[("チャット型 AI<br/>(Claude / Gemini / GPT)")]
+  AI[("チャット型 AI<br/>(別の会社の物を複数)")]
   Deep[("Deep Research 型 AI<br/>(引用が必須)")]
 
   N --> S1 --> S2 --> S3 --> S4 --> S5 --> Out
@@ -13692,7 +13692,7 @@ flowchart TB
   S5["5. separate what is known<br/>from what is not known"]
   Out(["the decision<br/>(don't rush the conclusion)"])
 
-  AI[("chat-type AI<br/>(Claude / Gemini / GPT)")]
+  AI[("chat-type AI<br/>(several, from different vendors)")]
   Deep[("Deep Research type AI<br/>(citations required)")]
 
   N --> S1 --> S2 --> S3 --> S4 --> S5 --> Out

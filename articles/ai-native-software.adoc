@@ -2058,7 +2058,7 @@ ____
 | Excel マクロ / VBA | Apps Script | Python(画面は Flet) | link:/ai-native-software/python/[2-04]
 | Power Apps | (Apps Script) | FastAPI | link:/ai-native-software/fastapi/[2-12]
 | Visio / Designer | Drawings / Slides | Mermaid・Marp・CAD | link:/ai-native-software/design/[2-13]
-| Copilot | Gemini | ローカル LLM(Command A+ 等)+ RAG | link:/ai-native-software/ai/[2-16]
+| Copilot | Gemini | ローカル LLM + RAG(別のサーバー) | link:/ai-native-software/ai/[2-16]
 |===
 
 表の右端に一つだけ、OSS でない行がある。Web を公開する側(2-11)の Cloudflare Pages
@@ -2158,7 +2158,7 @@ flowchart TB
 
 正直に、重いところも書く。運用負荷が集中するのは二つ、メールと講座(BigBlueButton)だ。メールは配送(DKIM / SPF / 評判)が繊細なので、送信だけ外部リレーに逃がす手もある。講座サーバーは重いので、講座の期間だけ立てて、終わったら畳む。残りは、立てたらほぼ放っておける。そして「残りの運用」、つまりバックアップ・監視・更新・障害を、旧来の運用手順書の常識で書く必要はない。ここでも前提が変わっている。
 
-*守るのは、データと仕様だけだ*。実装と環境は、仕様と OSS から AI がいつでも立て直せる(2-12)。だから複製するのは、再生成できないものだけでいい。データベース・ファイル(権限の xattr ごと)・メール・業務ルールの Markdown を、毎日、別の箱へ。それだけだ。復旧の試験も、儀式ではない。「まっさらな箱に、仕様とバックアップから全部立て直して」と AI に頼めば、それがそのまま復旧試験になる。
+*守るのは、データと仕様だけだ*。実装と環境は、仕様と OSS から AI がいつでも立て直せる(2-12)。だから複製するのは、再生成できないものだけでいい。データベース・ファイル・メール・リポジトリ・業務ルールの Markdown を、毎日、別の箱へ(2-02)。それだけだ。復旧の試験も、儀式ではない。「まっさらな箱に、仕様とバックアップから全部立て直して」と AI に頼めば、それがそのまま復旧試験になる。
 
 監視は、読めるログがあれば足りる。監視基盤を別に立てるのは旧常識だ。ログは全部手元にあり、死活確認と通知は AI が書く数十行で済み、ログの異常は AI に読ませる。更新も、意図した操作として行う。版を上げるときはリリースノートを AI に読ませ、2-12 の並行稼働の要領で横で確かめてから切り替える。勝手に上がるのではなく、上げる。秘密(パスワード・鍵)は環境ファイルに分離して、箱の外に出さない。これだけは一行の決まりとして最初に書いておく。
 
@@ -2252,7 +2252,7 @@ flowchart TB
 
 == 確かめた版と日付
 
-* この章で版を決める道具は無い。対応表に載るのは製品名だけで、版はそれぞれを立てる章で決める。PocketBase、Forgejo、Zed、Stalwart、Jitsi、Radicale、Cloudflare Pages、PostgreSQL、SQLite、DuckDB、Polars、FastAPI、ローカル LLM(Command A+ 等)
+* この章で版を決める道具は無い。対応表に載るのは製品名だけで、版はそれぞれを立てる章で決める。PocketBase、Forgejo、Zed、Stalwart、Jitsi、Radicale、Cloudflare Pages、PostgreSQL、SQLite、DuckDB、Polars、FastAPI、ローカル LLM
 * 手順を書いたのは 2026.07.01
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
@@ -2392,7 +2392,7 @@ Untie the bundle and the layers of Microsoft 365 and Google Workspace land on th
 | Excel macros / VBA | Apps Script | Python (Flet for the screen) | link:/en/ai-native-software/python/[2-04]
 | Power Apps | (Apps Script) | FastAPI | link:/en/ai-native-software/fastapi/[2-12]
 | Visio / Designer | Drawings / Slides | Mermaid, Marp, CAD | link:/en/ai-native-software/design/[2-13]
-| Copilot | Gemini | local LLM (Command A+ etc.) + RAG | link:/en/ai-native-software/ai/[2-16]
+| Copilot | Gemini | local LLM + RAG (on a separate server) | link:/en/ai-native-software/ai/[2-16]
 |===
 
 One row on the right is not OSS: Cloudflare Pages, on the publishing side of the
@@ -2494,7 +2494,7 @@ Why does one person suffice? Three reasons.
 
 The heavy parts deserve honesty too. Operational load concentrates in two places, mail and the course server (BigBlueButton). Mail delivery (DKIM, SPF, reputation) is delicate, so you can offload just the outbound to an external relay. The course server is heavy, so stand it up only for the duration of a course and tear it down after. The rest you can mostly leave alone once it is up. And the rest of operations, meaning backup, monitoring, updates, and failure, need not be written in the idiom of the old operations manual. The premise has changed here too.
 
-*Protect only the data and the specification.* The implementation and the environment can be rebuilt at any time by AI, from the spec and the OSS (2-12). So replicate only what cannot be regenerated: the databases, the files including their xattr permissions, the mail, and the business rules in Markdown, daily, to another box. That is all. Restore testing is not a ritual either. Ask the AI to rebuild everything on a blank box from the spec and the backup, and that is the restore test.
+*Protect only the data and the specification.* The implementation and the environment can be rebuilt at any time by AI, from the spec and the OSS (2-12). So replicate only what cannot be regenerated: the databases, the files, the mail, the repositories, and the business rules in Markdown, daily, to another box (2-02). That is all. Restore testing is not a ritual either. Ask the AI to rebuild everything on a blank box from the spec and the backup, and that is the restore test.
 
 Monitoring needs nothing more than readable logs. Standing up a separate monitoring stack is the old common sense. The logs are all in your hands, liveness checks and notifications are a few dozen lines the AI writes, and log anomalies are something the AI reads. Updates, too, are deliberate acts. When you raise a version, have the AI read the release notes and verify alongside, parallel-run style (2-12), before switching. Things do not get upgraded on you. You upgrade them. Secrets, meaning passwords and keys, live in an environment file and never leave the box. Write that one line of policy first.
 
@@ -2588,7 +2588,7 @@ Nothing runs in this chapter, and there is no command to check. One completed ta
 
 == Versions checked, and when
 
-* No tool version is fixed in this chapter. The table carries product names only, and the versions are fixed in the chapters that stand each one up: PocketBase, Forgejo, Zed, Stalwart, Jitsi, Radicale, Cloudflare Pages, PostgreSQL, SQLite, DuckDB, Polars, FastAPI, and a local LLM (Command A+ etc.)
+* No tool version is fixed in this chapter. The table carries product names only, and the versions are fixed in the chapters that stand each one up: PocketBase, Forgejo, Zed, Stalwart, Jitsi, Radicale, Cloudflare Pages, PostgreSQL, SQLite, DuckDB, Polars, FastAPI, and a local LLM
 * These steps were written on 2026.07.01
 * If a version has moved on, have the AI check the official procedure before proceeding
 
@@ -11341,8 +11341,8 @@ title.ja: 自前の AI を据える ── LLM と RAG
 title.en: Stand Up Your Own AI — LLM and RAG
 subtitle.ja: 全ての上に AI を乗せる ── 自社データに通じた答えを、自分の側で
 subtitle.en: Lay AI on top of everything — answers grounded in your own data, on your own side
-description.ja: 立ててきたもの全ての上に、AI を乗せる。2-03 で有効化した pgvector が、ここで効く。まず Cohere のオープンウェイトのコーディングモデル North Mini Code を Ollama で手元に置き、データを外に出さない。RAG 用に汎用モデルと埋め込みを並べ、社内文書・コード・メールを pgvector に入れて出典つきで答えさせ、Open WebUI で使う。検索は門番を迂回しない。機密と常時処理は自前、難しい判断は Claude に借りる ── 主導権は自分、能力は借りる。Copilot 依存を断ち、自立編を締める。
-description.en: AI goes on top of everything stood up so far. The pgvector enabled in 2-03 finally pays off. Start by holding Cohere's open-weight coding model North Mini Code locally on Ollama, so no data leaves your side. Load a general model and embeddings alongside for RAG, put documents, code, and mail into pgvector to answer with citations, and use it through Open WebUI. Search never bypasses the gate. Keep secrets and always-on processing in-house and borrow a frontier model like Claude for hard judgment — control yours, capability borrowed. Cut the Copilot dependency and close the Independence part.
+description.ja: 立ててきたもの全ての上に、AI を乗せる。2-03 で有効化した pgvector が、ここで効く。まず Cohere のオープンウェイトのコーディングモデル North Mini Code を Ollama で手元に置き、データを外に出さない。RAG 用に汎用モデルと埋め込みを並べ、社内文書・コード・メールを pgvector に入れて出典つきで答えさせ、Open WebUI で使う。検索は門番を迂回しない。機密と常時処理は自前、難しい判断は最前線のモデルに借りる ── 主導権は自分、能力は借りる。Copilot から離れ、自立編を締める。
+description.en: AI goes on top of everything stood up so far. The pgvector enabled in 2-03 finally pays off. Start by holding Cohere's open-weight coding model North Mini Code locally on Ollama, so no data leaves your side. Load a general model and embeddings alongside for RAG, put documents, code, and mail into pgvector to answer with citations, and use it through Open WebUI. Search never bypasses the gate. Keep secrets and always-on processing in-house and borrow a frontier model for hard judgment — control yours, capability borrowed. Step away from Copilot and close the Independence part.
 date: 2026.07.16
 label: Independence 16
 title_html.ja: 全ての上に、<br><span class="accent">自前の AI</span>を乗せる。
@@ -11388,9 +11388,8 @@ ollama pull north-mini-code-1.0                  # オープンウェイト、�
 link:/blog/autonomy-distribution-diversity/[ブログ 027])。
 
 RAG やチャットには、これとは別に汎用モデル(Qwen など)と埋め込みモデルを、同じ
-Ollama に並べて乗せる。処理量が増えたら、スループットの高い vLLM に載せ替える。より
-高い品質が要る常時処理には、私的デプロイできる Command A(Cohere、2-03 で触れた)を
-選ぶこともできる。まず立てて、必要に応じて差し替える。
+Ollama に並べて乗せる。処理量が増えたら、スループットの高い vLLM(PyPI)に載せ替える。
+まず立てて、必要に応じて差し替える。
 
 == RAG で、2-03 の pgvector に中身を入れる
 
@@ -11416,8 +11415,8 @@ answer = llm(f"次の資料に基づいて答えよ:\n{hits}\n\n質問: {q}")
 
 一つだけ、先に設計として決めておくことがある。*RAG は、聞いた人が開ける文書の中で
 だけ検索する* ── これを最初から仕様に書く。全社の文書を食わせた AI に、権限のない
-社員が質問すれば、開けないはずの文書の中身が答えとして漏れる。門番(2-05)と xattr
-の権限(2-07)を、ここで迂回させてはいけない。
+社員が質問すれば、開けないはずの文書の中身が答えとして漏れる。門番(2-05)と文書の
+置き場の権限(2-07)を、ここで迂回させてはいけない。
 
 やり方は二段でいい。既定では、RAG に載せるのは 2-15 で整備した全員が読める共有知識
 だけにする ── 載せる範囲を整備の時点で決めるのが、一番確実だ。権限のある文書まで検索
@@ -11432,16 +11431,18 @@ ____
 == 人が使う窓口は Open WebUI で立てる
 
 人が使う窓口は Open WebUI である。ChatGPT や Copilot に似た画面で、立てたモデルと
-RAG につながる。2-05 の門番の内側、リバースプロキシの先に置く。
+RAG につながる。PyPI にあるので `uv tool install open-webui` で入り(Docker は要らない)、
+Ollama と同じ AI のサーバーに置く。外からの入口は 2-02 の一台の Caddy が受け、門番の
+内側で、AI のサーバーの社内の口へ渡す。
 
 ```caddy
-ai.example.com { reverse_proxy localhost:8080 }
+ai.example.com { reverse_proxy <AI のサーバーの社内アドレス>:8080 }
 ```
 
 == 自前と借用の線は、正直に引く
 
 オープンモデルは実用十分まで来た。だが、*最も難しい判断や大規模なコード生成では、
-いまも Claude のような最前線モデルが強い*。これはメールの送信中継(2-08)や
+いまも最前線のモデル(2-02 で契約した AI)が強い*。これはメールの送信中継(2-08)や
 Cloudflare(2-11)と同じ構図だ。
 
 * *自前に持つ* ── 機密データの処理、常時の分類・要約・RAG(主導権の本体)
@@ -11451,11 +11452,10 @@ Cloudflare(2-11)と同じ構図だ。
 データと日常処理を手元に置き、難所だけ外に出す。
 
 そして、自前に持てる範囲は、ハードの進化とともに広がる。AMD の Ryzen AI Max PRO 400
-シリーズ(2026 年 Q3、ASUS・HP・Lenovo から)は、最大 192GB の統合メモリ(うち最大
-160GB を VRAM に)を積み、x86 クライアントで初めて 300B 級のモデルをローカルで動かせ
-る。これが載った PC が手元に来れば、社内文書管理を主目的に、Command A+(Cohere、私的
-デプロイ可、出典つきの RAG)を、丸ごと自前で回せる。いま借りるしかない重い文書 RAG
-も、手元に降りてくる ── 借りる側の線は、年々後退していく。
+シリーズ(2026 年第 3 四半期、ASUS・HP・Lenovo から)は、最大 192GB の統合メモリ(うち最大
+160GB を VRAM に)を積み、300B 級のモデルをローカルで動かせる(AMD の発表、2026 年)。
+これが載った機械が AI のサーバーになれば、いま借りるしかない重い文書 RAG も、手元に
+降りてくる ── 借りる側の線は、年々後退していく。
 
 ____
 自前の AI の価値は、賢さの最大化ではない。
@@ -11498,18 +11498,19 @@ curl -sI https://ai.example.com | head -1  # 窓口の頁が返る
 
 == 確かめた版と日付
 
-* Ollama、North Mini Code(Cohere、Apache 2.0、30B の MoE でアクティブ 3B)、汎用モデル(Qwen など)と埋め込みモデル、vLLM、Command A、pgvector、Open WebUI、Caddy
-* AMD Ryzen AI Max PRO 400 シリーズは 2026 年 Q3、ASUS・HP・Lenovo から
-* 手順を書いたのは 2026-07-16
+* Ollama(公式の導入スクリプト)、North Mini Code 1.0(Cohere、Apache 2.0、30B の MoE でアクティブ 3B。Ollama のライブラリで 2026-10-05 に確認)、汎用モデル(Qwen など)と埋め込みモデル
+* Open WebUI 0.11(PyPI)、vLLM 0.31(PyPI)、pgvector(2-03)、Caddy(2-11)
+* AMD Ryzen AI Max PRO 400 シリーズは 2026 年第 3 四半期、ASUS・HP・Lenovo から(AMD の発表)
+* 手順を書いたのは 2026-07-16、見直したのは 2026-10-06
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
 == まとめ ── 立て終えたもの
 
 全ての上に、自前の AI を。
 
-* *Ollama / vLLM* ── North Mini Code(Cohere、オープンウェイトのコーディングモデル)から始め、RAG 用に汎用モデルを併置、品質が要れば Command A
+* *Ollama / vLLM* ── North Mini Code(Cohere、オープンウェイトのコーディングモデル)から始め、RAG 用に汎用モデルを併置。別のサーバーに、公式の入れ方で
 * *RAG(pgvector)* ── 2-03 の器に社内データを入れ、出典つきで答える
-* *Open WebUI* ── ChatGPT 風の窓口、門番の内側に
+* *Open WebUI* ── ChatGPT 風の窓口、門番の内側に。PyPI から入れ、AI のサーバーに
 * *自前と借用の線引き* ── データと常時処理は自前、難所は最前線モデルに借りる
 
 2-02 から 2-16 まで、Microsoft 365 と基幹のベンダー製品を、一つずつ OSS に置き換えて
@@ -11517,7 +11518,7 @@ curl -sI https://ai.example.com | head -1  # 窓口の頁が返る
 API・情報の整備・AI ── そのどれも、書いたのではなく、立てた。
 
 ____
-2-03 の最初に書いたとおり ── AI の効果より、OSS の効果のほうが大きい。汎用は、
+1-05 に書いたとおり ── AI の効果より、OSS の効果のほうが大きい。汎用は、
 すでに世界で共有されている。
 ____
 
@@ -11577,9 +11578,7 @@ link:/en/blog/autonomy-distribution-diversity/[blog 027]).
 
 For RAG and chat, load a general model (Qwen and the like) and an embedding model
 separately on the same Ollama. As volume grows, move to the higher-throughput
-vLLM. For always-on processing that needs higher quality, you can choose the
-privately deployable Command A (Cohere, mentioned in 2-03). Stand one up first,
-swap as needed.
+vLLM (on PyPI). Stand one up first, swap as needed.
 
 == Put contents into the 2-03 pgvector with RAG
 
@@ -11608,8 +11607,8 @@ One thing has to be decided as design, up front. *RAG searches only within the
 documents the person asking can open* — write this into the spec from day one.
 Feed the whole company's documents to an AI, and an employee without clearance
 who asks a question gets, as the answer, the contents of documents they could
-never open. The gate (2-05) and the xattr permissions (2-07) must not be
-bypassed here.
+never open. The gate (2-05) and the document store's permissions (2-07) must not
+be bypassed here.
 
 Two tiers are enough. By default, what goes into RAG is only the shared knowledge
 everyone can read, prepared in 2-15 — deciding the scope at preparation time is
@@ -11625,17 +11624,20 @@ ____
 == Stand up Open WebUI as the window people use
 
 The window people use is Open WebUI — a screen resembling ChatGPT or Copilot,
-connected to the model and the RAG you stood up. Place it behind the 2-05 gate,
-beyond the reverse proxy.
+connected to the model and the RAG you stood up. It is on PyPI, so
+`uv tool install open-webui` installs it (no Docker), and it sits on the same AI
+server as Ollama. The entrance from outside is Caddy on the 2-02 machine, which
+hands traffic, behind the gate, to the AI server's internal port.
 
 ```caddy
-ai.example.com { reverse_proxy localhost:8080 }
+ai.example.com { reverse_proxy <the AI server's internal address>:8080 }
 ```
 
 == Draw the line between in-house and borrowed, honestly
 
 Open models have reached practical sufficiency. But *for the hardest judgment and
-large-scale code generation, frontier models like Claude are still stronger*.
+large-scale code generation, a frontier model (the AI subscribed to in 2-02) is
+still stronger*.
 This is the same shape as the outbound mail relay (2-08) and Cloudflare (2-11).
 
 * *Keep in-house* — processing of confidential data, always-on classification, summarization, RAG (the real body of control)
@@ -11647,12 +11649,10 @@ your own hands, and send only the hardest parts out.
 
 And the range you can hold yourself widens as hardware advances. AMD's Ryzen AI
 Max PRO 400 series (Q3 2026, from ASUS, HP, and Lenovo) carries up to 192GB of
-unified memory, of which up to 160GB can be allocated as VRAM, and is the first
-x86 client capable of running 300B-class models locally. Once a PC with this is
-on your desk, you can run Command A+ (Cohere, privately deployable, RAG with
-citations) entirely in-house, mainly for company document management. The heavy
-document RAG that today can only be borrowed comes home — the line of what you
-borrow recedes year by year.
+unified memory, of which up to 160GB can be allocated as VRAM, and runs 300B-class
+models locally (AMD's announcement, 2026). Once a machine with this is your AI
+server, the heavy document RAG that today can only be borrowed comes home — the
+line of what you borrow recedes year by year.
 
 ____
 The value of your own AI is not maximizing cleverness.
@@ -11695,18 +11695,19 @@ curl -sI https://ai.example.com | head -1  # the window's page answers
 
 == Versions checked, and when
 
-* Ollama, North Mini Code (Cohere, Apache 2.0, a 30B MoE with 3B active), a general model (Qwen and the like) and an embedding model, vLLM, Command A, pgvector, Open WebUI, Caddy
-* The AMD Ryzen AI Max PRO 400 series is Q3 2026, from ASUS, HP, and Lenovo
-* This procedure was written on 2026-07-16
+* Ollama (the official install script), North Mini Code 1.0 (Cohere, Apache 2.0, a 30B MoE with 3B active; checked in the Ollama library on 2026-10-05), a general model (Qwen and the like) and an embedding model
+* Open WebUI 0.11 (PyPI), vLLM 0.31 (PyPI), pgvector (2-03), Caddy (2-11)
+* The AMD Ryzen AI Max PRO 400 series is Q3 2026, from ASUS, HP, and Lenovo (AMD's announcement)
+* This procedure was written on 2026-07-16 and reviewed on 2026-10-06
 * If a version has moved, have the AI confirm the official procedure before proceeding
 
 == Summary — what has been stood up
 
 Your own AI, on top of everything.
 
-* *Ollama / vLLM* — start with North Mini Code (Cohere, an open-weight coding model), add a general model alongside for RAG, and Command A where quality is needed
+* *Ollama / vLLM* — start with North Mini Code (Cohere, an open-weight coding model), add a general model alongside for RAG. On a separate server, installed the official way
 * *RAG (pgvector)* — fill the 2-03 vessel with internal data and answer with citations
-* *Open WebUI* — a ChatGPT-like window, behind the gate
+* *Open WebUI* — a ChatGPT-like window, behind the gate; installed from PyPI on the AI server
 * *In-house versus borrowed* — data and always-on processing in-house, the hard parts borrowed from a frontier model
 
 From 2-02 through 2-16, we replaced Microsoft 365 and the vendor packages under
@@ -11716,8 +11717,7 @@ the information preparation, and the AI — none of it was written; it was stood
 up.
 
 ____
-As written at the start of 2-03 — the effect of OSS is greater than the effect
-of AI. The generic is already shared with the world.
+As written in 1-05 — the effect of OSS is greater than the effect of AI. The generic is already shared with the world.
 ____
 
 Once it is all stood up, what comes next is how it runs. The next chapter draws

@@ -11742,8 +11742,8 @@ title.ja: AI に任せる範囲を決める ── 自律で動かさず、コ�
 title.en: Decide How Far the AI Goes — No Autonomous Runs, Freeze It into Code
 subtitle.ja: 提案は AI、実行は人が通す。繰り返す仕事は、コードとコマンドに凍結する
 subtitle.en: The AI proposes, the human approves; repeated work is frozen into code and commands
-description.ja: 自前の AI を据えたら、次に決まるのは運用だ。エージェントを自律で動かさない ── 誤りが連鎖する、責任の所在が消える、検証が届かなくなる、外のデータが指示に化ける。自律で回してよいのは四条件が揃うときだけだ。Office に AI を入れる道は、判断のハードルが最も低く、影響範囲が最も広く、能力侵食が最も深い。AI はサンドボックスの中で使い、渡す物は人が選ぶ。繰り返す仕事は Python と Linux のコマンドに凍結する ── AI は生成器であって、動作環境ではない。費用は月 200 ドルが月 1〜5 ドルになる。
-description.en: Once your own AI is standing, the next thing to settle is how it runs. Do not run agents autonomously: errors chain, accountability disappears, verification stops reaching, and outside data turns into instructions. Autonomy is allowed only when four conditions hold together. Putting AI inside Office has the lowest decision threshold, the widest footprint, and the deepest capability erosion. Run AI inside a sandbox and hand-pick what it sees. Freeze repeated work into Python and Linux commands — AI is a generator, not a runtime. The bill goes from $200 a month to $1-5.
+description.ja: 自前の AI を据えたら、次に決まるのは運用だ。エージェントを自律で動かさない ── 誤りが連鎖する、責任の所在が消える、検証が届かなくなる、外のデータが指示に化ける。自律で回してよいのは四条件が揃うときだけだ。Office に AI を入れる道は、判断のハードルが最も低く、影響範囲が最も広く、能力侵食が最も深い。AI はサンドボックスの中で使い、渡す物は人が選ぶ。繰り返す仕事は Python と Linux のコマンドに凍結する ── AI は生成器であって、動作環境ではない。費用は、毎回の利用料から、最初の一回だけになる。
+description.en: Once your own AI is standing, the next thing to settle is how it runs. Do not run agents autonomously: errors chain, accountability disappears, verification stops reaching, and outside data turns into instructions. Autonomy is allowed only when four conditions hold together. Putting AI inside Office has the lowest decision threshold, the widest footprint, and the deepest capability erosion. Run AI inside a sandbox and hand-pick what it sees. Freeze repeated work into Python and Linux commands — AI is a generator, not a runtime. The bill goes from a fee on every run to a fee on the first run only.
 date: 2026.09.21
 label: Independence 17
 title_html.ja: AI は<span class="accent">生成器</span>。<br>動かすのは、コード。
@@ -11786,10 +11786,10 @@ link:/ai-native-software/ai/[2-16: 自前の AI を据える ── LLM と RAG]
 直せる。
 
 自律モードでは、最初の判断を起点に、次の判断、次の行動と連鎖する。小さな誤りが、
-10 ステップ後には致命的な行動になる。AI の中では整合が取れているように見えても、人の
+何歩か先では致命的な行動になる。AI の中では整合が取れているように見えても、人の
 目から見れば筋違いの方向へ走り続ける。
 
-ファイルを 100 個消したあとで気づいても、戻せない。データベースを書き換えたあとで
+ファイルを大量に消したあとで気づいても、戻せない。データベースを書き換えたあとで
 気づいても、戻せない。
 
 === 責任の所在が消える
@@ -11799,7 +11799,7 @@ AI が自律で動いた結果に、誰が責任を負うのか。AI は責任�
 
 === あとから検証が届かなくなる
 
-自律モードで 50 ステップ実行したあと、「なぜそうなったか」を遡るのは、ほぼ届かない。
+自律モードで何十歩も実行したあと、「なぜそうなったか」を遡るのは、ほぼ届かない。
 各ステップで何を考え、どのツールを呼び、なぜその選択をしたか ── ログには残っている。
 ただ、読み解くのに人の時間が膨大に要る。結局、誰も見ない。ブラックボックスが残る。
 
@@ -11811,7 +11811,7 @@ Web 頁、メール、ファイル名、PDF の中身 ── AI が外のデー�
 
 人が確認する運用なら、AI が突然おかしな行動を始めようとしても、止められる。自律
 モードでは、AI がそのまま実行する。外部データが AI の指揮系統を乗っ取る。これは
-Mythos 時代の最大の攻撃面の一つだ。
+いまの AI の最大の攻撃面の一つだ。
 
 == 対話で回して、人が通す
 
@@ -11886,7 +11886,7 @@ SharePoint のデータが、すべてインデックスされて AI に流れ�
 === 判断のハードルが最も低い
 
 新しいシステムを評価するのでも、既存のソフトを置き換えるのでもない。サブスクリプション
-のプランを変更するだけで導入できる。30 秒の管理画面の操作で、組織全体に AI が入る。
+のプランを変更するだけで導入できる。管理画面の操作一つで、組織全体に AI が入る。
 重い意思決定が、軽い手続きの陰で済んでしまう。
 
 === 影響範囲が最も広い
@@ -11901,7 +11901,7 @@ Slack や Notion の AI 機能は、それを使う部門に閉じる。Office �
 組織が考える行為の基本動作だ。
 
 ここを AI に肩代わりさせると、侵食されるのは専門能力ではなく、考える行為そのものに
-なる。新人は「考える練習」を経ずに、いきなり AI 出力のレビュアーになる。5 年経つと、
+なる。新人は「考える練習」を経ずに、いきなり AI 出力のレビュアーになる。年を経ると、
 AI 抜きで判断できる人がいなくなる。組織は変化対応の力と、人が育つ機会を、同時に失う。
 育成をやめて有名選手を外から連れてくるのに似ている ── 短期の試合は勝てるが、育成の場
 は残らない。
@@ -11960,7 +11960,7 @@ AI の出力を確かめられないまま使う、が依存だ。線はここ�
 
 コードに凍結すると、こうなる。
 
-* 一度、Claude にコードを書かせる(対話で、人がレビューする)
+* 一度、AI にコードを書かせる(対話で、人がレビューする)
 * 以降は、コードを実行するだけ
 * AI の利用料はかからない
 * 動作が決定的で、再現できる
@@ -11996,12 +11996,12 @@ for f in *.jpg; do
 done
 ```
 
-これは AI を呼ばない。CPU の速度で動くので、AI の応答を待つより数百倍速い。速く、
+これは AI を呼ばない。CPU の速度で動くので、AI の応答を待つよりはるかに速い。速く、
 無料で、同じ結果が出る。
 
-AI に頼むのは、どのコマンドを使うか分からないとき、組み合わせが複雑なときだ。Claude に
+AI に頼むのは、どのコマンドを使うか分からないとき、組み合わせが複雑なときだ。AI に
 聞けばコマンドが返り、シェルスクリプトが返る。出てきたコマンドは自分のメモに残す。
-次からは、Claude を呼ばずにメモを見ればいい。AI は教える役で、覚えて使うのは Linux の
+次からは、AI を呼ばずにメモを見ればいい。AI は教える役で、覚えて使うのは Linux の
 コマンドだ。
 
 2-02 で Debian の機械を一台持っているから、コマンドラインは既に標準の環境になっている。
@@ -12017,7 +12017,7 @@ AI に頼むのは、どのコマンドを使うか分からないとき、組�
 | 毎回 AI の利用料がかかる | コードを書くときだけ利用料がかかる
 | 動作がぶれる | 動作が再現できる
 | 自律モードの危険を負う | 危険は設計時の人の判断に集まる
-| 速さは AI の応答速度 | 速さは CPU の速度(数百倍速い)
+| 速さは AI の応答速度 | 速さは CPU の速度
 | プロンプト・インジェクションの侵入経路 | コードとコマンドは、インジェクションされない
 |===
 
@@ -12031,22 +12031,22 @@ ____
 
 == 費用で比べる
 
-同じ仕事を、エージェント運用とスクリプトで比べる。数字は元の章の見積もりで、
-2026-05-02 時点のものだ。
+同じ仕事を、エージェント運用とスクリプトで比べる。数字は自分の利用料の明細で見れば
+よい。構造はこうなる。
 
 |===
 | 同じ仕事 | エージェントに毎回頼む | コードに凍結する
-| メールの自動対応(月) | $200〜(処理量で変動) | $1〜5(週 1 回の文面生成のみ)
-| 同じ処理を 1 年間毎日 | 年 $2,400〜 | 年 $5〜10(最初のコード生成のみ)
-| JPEG 1,000 枚の変換 | 約 60 分・約 $5 | 約 3 秒・利用料ゼロ
+| メールの自動対応 | 処理した通数ぶん、毎回の利用料 | 文面の生成を呼ぶ分だけ。処理そのものは無料
+| 同じ処理を毎日 | 毎日、利用料がかかる | 最初にコードを書かせた一回だけ
+| 画像の一括変換 | 一枚ごとに AI の応答を待つ | CPU の速度で終わる。利用料は無い
 |===
 
-メールの自動対応で 40〜200 倍、画像の一括変換で 1,200 倍の差が出る。画像変換の遅さは、
+差は、処理の回数に比例して開く。繰り返すほど、凍結した側が安く速い。画像変換の遅さは、
 LLM の応答待ちが主な原因だ。
 
-事故の側も見ておく。自律エージェントがプロンプト・インジェクションを受けて 1,000 件の
-誤ったデータ更新を行い、修復に 3 日と顧客の信用を要した、という形の事故が起こり得る。
-対話で回していれば、最初の数件で人が止められた。
+事故の側も見ておく。自律エージェントがプロンプト・インジェクションを受けて大量の
+誤ったデータ更新を行い、修復と顧客の信用の回復に時間を要した、という形の事故が起こり
+得る。対話で回していれば、最初の数件で人が止められた。
 
 == 得意な仕事と、苦手な仕事
 
@@ -12135,7 +12135,7 @@ flowchart TB
 ```bash
 crontab -l                       # 凍結した仕事の一覧
 systemctl list-timers --all      # タイマーで動かしている分
-sudo grep -r "api.anthropic" /var/log/ | tail   # 外へ出した記録
+sudo grep -r "<外の API のホスト名>" /var/log/ | tail   # 外へ出した記録
 ```
 
 == 人が持つ物
@@ -12158,9 +12158,9 @@ sudo grep -r "api.anthropic" /var/log/ | tail   # 外へ出した記録
 
 == 確かめた版と日付
 
-* Claude Code、`cron`、`grep`、`sed`、`awk`、`jq`、ImageMagick、ffmpeg、Python
-* 費用と速さの見積もりは 2026-05-02 時点のもの
-* 手順を書いたのは 2026-09-21
+* AI のエージェント(2-02 で契約した物)、`cron`、`grep`、`sed`、`awk`、`jq`、ImageMagick、ffmpeg、Python
+* 費用の数字は本文に書いていない。自分の利用料の明細で見る
+* 手順を書いたのは 2026-09-21、見直したのは 2026-10-06
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
 == まとめ
@@ -12172,8 +12172,8 @@ sudo grep -r "api.anthropic" /var/log/ | tail   # 外へ出した記録
 * *自律は四条件が揃うときだけ* ── 被害が小さい、サンドボックスに収まる、人があとで
   見る、失敗の合図が明確
 * *AI はサンドボックスの中で* ── Office の中に統合せず、渡す物は人が選ぶ
-* *コードとコマンドに凍結する* ── AI は生成器、動かすのはコード。月 200 ドルが
-  月 1〜5 ドルになる
+* *コードとコマンドに凍結する* ── AI は生成器、動かすのはコード。費用は、毎回の
+  利用料から、最初の一回だけになる
 
 自立編の各章で並べてきた「人が持つ物」は、この原則を章ごとに書き下したものだ。鍵と
 認証、外でやる操作、取り消せない操作 ── これらを人が持ち続ける限り、AI に渡した一台
@@ -12231,10 +12231,10 @@ When the human confirms each step, a wrong judgment stops there. You say "that i
 and fix it.
 
 In autonomous mode the first judgment chains into the next judgment, the next action, and
-onward. A small error becomes a fatal action ten steps later. Inside, the AI looks
+onward. A small error becomes a fatal action a few steps later. Inside, the AI looks
 consistent; from outside, it keeps running in the wrong direction.
 
-After 100 files are deleted, noticing does not bring them back. After a database is
+After files are deleted in bulk, noticing does not bring them back. After a database is
 overwritten, noticing does not bring it back.
 
 === Accountability disappears
@@ -12245,7 +12245,7 @@ For an organization, this is the heaviest part.
 
 === Verification stops reaching
 
-After 50 autonomous steps, tracing back "why did this happen" barely reaches. What the AI
+After dozens of autonomous steps, tracing back "why did this happen" barely reaches. What the AI
 was thinking at each step, which tool it called, why it chose what it chose — all of it is
 in the logs. Reading it back takes an enormous amount of human time, so in practice no one
 looks. A black box remains.
@@ -12258,7 +12258,7 @@ This is prompt injection.
 
 When the human confirms, an AI about to do something strange can be stopped. In autonomous
 mode, the AI carries it out. Outside data takes over the AI's chain of command. This is one
-of the largest attack surfaces of the Mythos era.
+of the largest attack surfaces of today's AI.
 
 == Run it as dialogue, and let the human approve
 
@@ -12337,7 +12337,7 @@ The danger separates into three layers.
 === The decision threshold is the lowest
 
 This is not evaluating a new system, and not replacing existing software. Changing a
-subscription plan deploys it. A 30-second operation in an admin console puts AI across the
+subscription plan deploys it. One operation in an admin console puts AI across the
 whole organization. A heavy decision goes through under the cover of a light procedure.
 
 === The footprint is the widest
@@ -12353,8 +12353,8 @@ Writing email, building decks, organizing data — these are not a specific spec
 They are the basic motions of an organization's act of thinking.
 
 When AI takes over here, what erodes is not a specialty but the act of thinking itself. New
-hires skip the practice of thinking and start out as reviewers of AI output. Five years on,
-no one can decide anything without AI. The organization loses its adaptive capacity and its
+hires skip the practice of thinking and start out as reviewers of AI output. As the years
+pass, no one can decide anything without AI. The organization loses its adaptive capacity and its
 chances to grow people at the same time. It resembles a team that gives up on development
 and brings in star players from outside — the next game is won, but the place where people
 grew is gone.
@@ -12416,7 +12416,7 @@ Running an agent every time looks like this.
 
 Freezing it into code looks like this.
 
-* Once, have Claude write the code (in dialogue, reviewed by a human)
+* Once, have the AI write the code (in dialogue, reviewed by a human)
 * After that, just run the code
 * No AI usage fees
 * Behavior is deterministic and reproducible
@@ -12454,12 +12454,12 @@ for f in *.jpg; do
 done
 ```
 
-This calls no AI. It runs at CPU speed, hundreds of times faster than waiting for an AI
+This calls no AI. It runs at CPU speed, far faster than waiting for an AI
 response. Fast, free, and the same result every time.
 
 Ask the AI when you do not know which command to use, or when the combination is complex.
-Ask Claude and a command comes back, or a shell script comes back. Save what comes back into
-your own notes. Next time, read your notes instead of calling Claude. AI is the teacher;
+Ask the AI and a command comes back, or a shell script comes back. Save what comes back into
+your own notes. Next time, read your notes instead of calling the AI. AI is the teacher;
 what you remember and use is the Linux command.
 
 Since 2-02 gave you a Debian machine, the command line is already the standard environment.
@@ -12475,7 +12475,7 @@ looking rules, one principle. Use AI as a generator, not as a runtime.
 | Usage fees on every run | Usage fees only while writing the code
 | Behavior varies | Behavior is reproducible
 | You carry autonomous-mode danger | Danger gathers at the human judgment made at design time
-| Speed is the AI's response speed | Speed is CPU speed (hundreds of times faster)
+| Speed is the AI's response speed | Speed is CPU speed
 | An entry path for prompt injection | Code and commands cannot be injected
 |===
 
@@ -12489,22 +12489,23 @@ ____
 
 == Compare the cost
 
-Compare the same job run by an agent and run as a script. The numbers come from the original
-chapter's estimates, as of 2026-05-02.
+Compare the same job run by an agent and run as a script. The numbers are on your own usage
+bill. The structure is this.
 
 |===
 | The same job | Asking an agent every time | Frozen into code
-| Automated email handling (month) | $200 and up (varies with volume) | $1-5 (weekly message generation only)
-| The same processing, daily for a year | $2,400 and up per year | $5-10 per year (initial code generation only)
-| Converting 1,000 JPEGs | about 60 minutes, about $5 | about 3 seconds, no usage fees
+| Automated email handling | A usage fee on every message handled | Only the calls that generate wording; the handling itself is free
+| The same processing, daily | A usage fee every day | The one call that wrote the code at the start
+| Batch image conversion | Waiting for an AI response per image | Done at CPU speed, with no usage fee
 |===
 
-That is a 40x to 200x gap on email handling and a 1,200x gap on batch image conversion. The
-slowness of the image conversion is mostly waiting for the LLM to respond.
+The gap widens in proportion to how many times the job runs. The more it repeats, the
+cheaper and faster the frozen side is. The slowness of the image conversion is mostly
+waiting for the LLM to respond.
 
-Look at the failure side too. An autonomous agent can take a prompt injection, push 1,000
-wrong data updates, and cost 3 days of repair plus customer trust. Run as dialogue, a human
-would have stopped it within the first few records.
+Look at the failure side too. An autonomous agent can take a prompt injection, push a mass
+of wrong data updates, and cost time in repair and in winning back customer trust. Run as
+dialogue, a human would have stopped it within the first few records.
 
 == What it is good at, and what it is not
 
@@ -12598,7 +12599,7 @@ This chapter is done when these five hold.
 ```bash
 crontab -l                       # the frozen jobs
 systemctl list-timers --all      # what runs on timers
-sudo grep -r "api.anthropic" /var/log/ | tail   # what went outside
+sudo grep -r "<the outside API hostname>" /var/log/ | tail   # what went outside
 ```
 
 == What the human holds
@@ -12621,9 +12622,9 @@ sudo grep -r "api.anthropic" /var/log/ | tail   # what went outside
 
 == Versions checked, and when
 
-* Claude Code, `cron`, `grep`, `sed`, `awk`, `jq`, ImageMagick, ffmpeg, Python
-* The cost and speed estimates are as of 2026-05-02
-* These steps were written on 2026-09-21
+* The AI agent (the one subscribed to in 2-02), `cron`, `grep`, `sed`, `awk`, `jq`, ImageMagick, ffmpeg, Python
+* No cost figures are given in the text; read them on your own usage bill
+* These steps were written on 2026-09-21 and reviewed on 2026-10-06
 * If versions have moved, have the AI confirm the official steps before proceeding
 
 == Summary
@@ -12635,8 +12636,8 @@ Once the tools are standing, decide how far the AI goes.
 * *Autonomy only when four conditions hold* — small damage, contained in a sandbox, reviewed
   by a human afterward, a clear signal of failure
 * *AI inside a sandbox* — not embedded in Office, with the human picking what goes across
-* *Freeze it into code and commands* — AI is the generator, and the code is what runs. $200
-  a month becomes $1-5 a month
+* *Freeze it into code and commands* — AI is the generator, and the code is what runs. The
+  bill goes from a fee on every run to a fee on the first run only
 
 The "What the human holds" section in every chapter of the Independence part is this
 principle written out chapter by chapter. Keys and accounts, actions taken outside the

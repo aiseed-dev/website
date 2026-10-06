@@ -102,4 +102,7 @@ Refer to chapters as `{part}-{number}` in prose. The article IDs inside the file
 
 ## Review status
 
+自立編 (2-01 … 2-17) was reviewed chapter by chapter on 2026-10-02 … 2026-10-06; 転換編 (3-01 … 3-09) is next.
+
+
 The chapter-by-chapter review with the site owner is tracked in `docs/plan/rensai-minaoshi-hikitsugi.md` — which chapters are done, what was changed, and the rules that came out of it. Read it before touching a chapter.

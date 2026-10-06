@@ -12791,7 +12791,7 @@ ____
 まとめて立てられる。事務系も基幹系も、もはや別々のベンダーに分けて調達する
 ものではない。
 
-* 事務系 ── PostgreSQL、PocketBase、aiseed office(link:/ai-native-software/foundation/[2-03: 土台を据える]・2-07)
+* 事務系 ── PostgreSQL、PocketBase、adoc と Forgejo(link:/ai-native-software/foundation/[2-03: 土台を据える]・2-07)
 * 基幹系 ── PostgreSQL、FastAPI、同じ認証・同じ共有(link:/ai-native-software/fastapi/[2-12: API を作る])
 
 二つは、同じデータ基盤・同じ門番・同じコードの上に乗る。汎用も固有も、
@@ -12802,7 +12802,7 @@ ____
 
 ここが本章の核心だ。事務系と基幹系が同じ土台に乗ると、二つを隔てていた
 継ぎ目が消える。認証も文書共有も、もはや二つの世界を繋ぐ細い橋ではなく、
-一つの土台の一部になる(2-01 の「そして、基幹システムへ」)。
+一つの土台の一部になる(2-01 の「この土台は、そのまま基幹システムの土台になる」)。
 
 そして、ここから帰結が出る。Microsoft の事務系支配と、SIer の基幹系支配は、
 もともと別々の現象ではなかった。両者は、「自前で書かない」という一つの
@@ -12833,7 +12833,7 @@ flowchart TB
 
   subgraph New["新: 一つの土台に合流"]
     direction TB
-    Found["同じ OSS の土台<br/>PostgreSQL / PocketBase /<br/>aiseed office / FastAPI"]
+    Found["同じ OSS の土台<br/>PostgreSQL / PocketBase /<br/>Forgejo / FastAPI"]
     NewO["事務系"]
     NewC["基幹系"]
     NewO --> Found
@@ -13010,7 +13010,7 @@ As the Independence part showed, one person plus AI can stand up both worlds
 on the same OSS foundation. Office and core are no longer something to
 procure from separate vendors.
 
-* Office systems — PostgreSQL, PocketBase, aiseed office (link:/en/ai-native-software/foundation/[2-03: Laying the Foundation], 2-07)
+* Office systems — PostgreSQL, PocketBase, AsciiDoc and Forgejo (link:/en/ai-native-software/foundation/[2-03: Laying the Foundation], 2-07)
 * Core systems — PostgreSQL, FastAPI, the same auth and the same sharing
   (link:/en/ai-native-software/fastapi/[2-12: Building the API])
 
@@ -13024,7 +13024,7 @@ yourself is no longer inefficient*.
 This is the heart of the chapter. When office and core ride the same
 foundation, the seam that separated them disappears. Auth and document
 sharing are no longer thin bridges between two worlds but part of one
-foundation (2-01's section "And then, to the core systems").
+foundation (2-01's section "This foundation becomes the core systems' foundation as it is").
 
 And from here the consequence follows. Microsoft's grip on office and the
 SIer's grip on core were never separate phenomena. They were the two sides of
@@ -13062,7 +13062,7 @@ flowchart TB
 
   subgraph New["New: merged onto one foundation"]
     direction TB
-    Found["the same OSS foundation<br/>PostgreSQL / PocketBase /<br/>aiseed office / FastAPI"]
+    Found["the same OSS foundation<br/>PostgreSQL / PocketBase /<br/>Forgejo / FastAPI"]
     NewO["office"]
     NewC["core"]
     NewO --> Found

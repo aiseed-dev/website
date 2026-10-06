@@ -2111,7 +2111,7 @@ flowchart TB
 
 自前に解くと、月額の構造が変わる。Microsoft 365 も Google Workspace も人数 × 月額である。公開価格でいうと、Microsoft 365 Business は一人あたり月 1,049 円(Basic)から 3,298 円(Premium)── 2026 年 7 月の改定後、税抜・年払いの月額換算だ。Google Workspace Business Standard は一人あたり月 1,600 円(年払い)で、Gemini は 2025 年 3 月から Business 以上に標準で入っている。Microsoft 側は Copilot が別売りで上に乗る。どれも、人が増えるほど線形に増える。
 
-自前の道具一式は、サーバー一台分の固定費だ。VPS なら月に数千円、社内の miniPC なら電気代で済む。人が増えても、ほぼ増えない。
+自前の道具一式は、サーバー一台分の固定費だ。2-02 の一台なら、電気代と回線で済む。人が増えても、ほぼ増えない。
 
 しかし本質はコストではない。本質は、開いていて、鍵が自分の手元にあることだ。
 
@@ -2447,7 +2447,7 @@ This chapter is the map. It includes no build steps. The installation, config, a
 
 Untie it yourself and the monthly structure changes. Microsoft 365 and Google Workspace both bill per seat per month. At list price, Microsoft 365 Business runs ¥1,049 (Basic) to ¥3,298 (Premium) per seat per month — after the July 2026 revision, excluding tax, annual commitment averaged monthly. Google Workspace Business Standard is ¥1,600 per seat per month on an annual plan, with Gemini included in Business and above since March 2025; on the Microsoft side, Copilot is sold separately on top. All of it grows linearly as you add people.
 
-A full self-hosted set is the fixed cost of one server — a VPS at a few thousand yen a month, or just the electricity for an in-house mini PC. It barely grows as you add people.
+A full self-hosted set is the fixed cost of one server — with the machine of 2-02, just the electricity and the line. It barely grows as you add people.
 
 But cost is not the point. The point is that it is open, and the key is in your own hands.
 
@@ -13906,11 +13906,13 @@ ____
 
 2025 年 2 月、トランプ政権は大統領令で、国際刑事裁判所(ICC)の主任検察官
 カリム・カーン氏に制裁を科した。その後、カーン氏は自身の Microsoft
-アカウントにアクセスできなくなり、スイスの Proton Mail に移った。Microsoft
-は「ICC へのサービス停止には一切関与していない」と否定している。だが事実
-として、米国の制裁の後に、当事者は米国クラウドのメールを失った。そして同年
-10 月、ICC は Microsoft Office から、ドイツのデジタル主権機関が開発する
-OSS の OpenDesk へ移行することを決めた。
+アカウントにアクセスできなくなり、スイスの Proton Mail に移った(AP の報道、
+2025 年 5 月)。Microsoft は「ICC へのサービス停止には一切関与していない」と
+否定している。だが事実として、米国の制裁の後に、当事者は米国クラウドのメールを
+失った。そして同年 10 月、ICC は Microsoft Office から、ドイツの連邦政府が持つ
+デジタル主権センター(ZenDiS)が開発する OSS の OpenDesk へ移行することを決めた
+(https://www.computing.co.uk/news/2025/open-source/international-criminal-court-drops-microsoft[Computing]、
+2025 年 10 月。2026-10-06 に確認)。
 
 構造として読めば、教訓は一つだ。*米国政府の一手で、米国クラウド上の
 「あなたの」サービスは断たれうる*。国際機関ですら、そうだった。詳細の責任
@@ -14125,12 +14127,14 @@ This is not an abstract worry. It happened, in reality, in 2025.
 
 In February 2025, the Trump administration sanctioned the International
 Criminal Court's chief prosecutor, Karim Khan, by executive order. He then
-lost access to his Microsoft account and moved to Switzerland's Proton Mail.
+lost access to his Microsoft account and moved to Switzerland's Proton Mail (AP, May 2025).
 Microsoft denies that it "in any way involved the cessation of services to
 the ICC." But as a matter of fact, following US sanctions, the targeted party
 lost his US-cloud email. That October, the ICC decided to move from Microsoft
-Office to OpenDesk, the OSS developed by Germany's center for digital
-sovereignty.
+Office to OpenDesk, the OSS developed by ZenDiS, the center for digital
+sovereignty owned by Germany's federal government
+(https://www.computing.co.uk/news/2025/open-source/international-criminal-court-drops-microsoft[Computing],
+October 2025; checked 2026-10-06).
 
 Read structurally, the lesson is one. *A single act by the US government can
 sever "your" services on a US cloud.* Even an international institution was

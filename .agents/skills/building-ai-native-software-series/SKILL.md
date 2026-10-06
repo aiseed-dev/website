@@ -89,7 +89,7 @@ Refer to chapters as `{part}-{number}` in prose. The article IDs inside the file
 - Meetings are Jitsi (official apt, behind Caddy) and calendars Radicale (CalDAV, apt) in 2-09. **Booking is not an OSS to stand up** — Cal.com's self-hosted edition became Cal.diy, "personal, non-production" — so booking is written in 2-12 as a small FastAPI app (slots and bookings in PostgreSQL, events in Radicale, confirmations via 2-08 mail, Jitsi link). BigBlueButton needs a dedicated Ubuntu machine and appears only as a one-line step-up.
 - Web: build in 2-10 (AsciiDoc — Markdown works the same — + HTML/CSS baked by Python with `pyasciidoc` + Jinja2; a single-digit dependency count), publish in 2-11 (own machine with Caddy, or Cloudflare Pages).
 - Prices quoted: Claude Pro $20/month for light use, Max from $100/month during the building period (2-02); Microsoft 365 Business ¥1,049–3,298 per seat per month (July 2026 revision, ex-tax, annual); Google Workspace Business Standard ¥1,600 (annual), Gemini included since March 2025.
-- The rewrite-cost figure "10 分の 1" was removed from 2-01 and 2-12 (no source); they now say the cost fell by an order of magnitude. **3-06 still carries a different claim** ("初期構築で 10 分の 1 以下" for a corporate site) — not yet reviewed.
+- The rewrite-cost figure "10 分の 1" was removed from 2-01, 2-12 and 3-06 (no source); they now say the cost fell by an order of magnitude.
 - 1-03's soroban figures: Banshu production peaked at 3.6 million in 1960 and is now about 150,000 a year, about 70 % of Japan's output (Ono City). Not 450,000.
 
 ## Consistency checks before committing
@@ -102,7 +102,7 @@ Refer to chapters as `{part}-{number}` in prose. The article IDs inside the file
 
 ## Review status
 
-自立編 (2-01 … 2-17) was reviewed chapter by chapter on 2026-10-02 … 2026-10-06; 転換編 (3-01 … 3-09) is next.
+All three parts were reviewed chapter by chapter on 2026-10-02 … 2026-10-06. Open items are listed in the memo under 確認待ち.
 
 
 The chapter-by-chapter review with the site owner is tracked in `docs/plan/rensai-minaoshi-hikitsugi.md` — which chapters are done, what was changed, and the rules that came out of it. Read it before touching a chapter.

@@ -14794,7 +14794,7 @@ FDE モデルの仕組みはこうだ。
 * Palantir のエンジニア (FDE) が、顧客企業の内部に長期間張り付く
 * 顧客の業務を Foundry / Gotham という Palantir 独自プラットフォーム上で動かす
 * 業務概念を Ontology ── Palantir 独自の意味モデル ── に翻訳する
-* 契約は数年単位、案件規模は数千万円〜数十億円規模
+* 契約は数年単位で、案件の規模は大きい
 
 三層のロックインがすべて発生する。
 
@@ -14814,7 +14814,7 @@ FDE モデルの仕組みはこうだ。
 
 ____
 Palantir FDE は、SIer 委託の最終形だ。
-三層のロックインを最大化した結果、顧客は数十億円を払い続ける構造ができあがる。
+三層のロックインを最大化した結果、顧客が払い続ける構造ができあがる。
 ____
 
 == AI ネイティブ開発は、標準的なコードを生成する
@@ -14858,7 +14858,7 @@ ____
 これが意味するのは、別の AI、別のビルダーが、最小コストで引き継げるという
 ことだ。
 
-* 別の AI モデル (Claude から GPT、またはその逆) に移行しても、コード自体は
+* 別の会社の AI モデルに移行しても、コード自体は
   そのまま動く
 * 元のビルダーが去っても、後任が AI に読ませて理解できる
 * 顧客が内製化したくなれば、コードを引き取って続きが書ける
@@ -15040,8 +15040,7 @@ How the FDE model works:
   platforms.
 * Business concepts are translated into Ontology, Palantir's proprietary semantic
   model.
-* Contracts span years. Engagement sizes range from tens of millions to billions
-  of yen.
+* Contracts span years, and the engagements are large.
 
 All three layers of lock-in are active.
 
@@ -15062,7 +15061,7 @@ intelligence, and large-enterprise customers.
 ____
 Palantir's FDE is the end-state form of SIer commissioning.
 Maximizing the three layers of lock-in produces a structure in which the customer
-keeps paying in the billions of yen.
+keeps paying.
 ____
 
 == AI-native development produces standard code
@@ -15112,7 +15111,7 @@ properties.
 What this means is that another AI or another builder can pick up the work at
 minimal cost.
 
-* Switch AI models (Claude to GPT, or back) and the code keeps running.
+* Switch to another vendor's AI model and the code keeps running.
 * The original builder leaves, and the successor reads the code with AI and
   understands it.
 * The customer decides to go in-house, takes over the code, and keeps building.

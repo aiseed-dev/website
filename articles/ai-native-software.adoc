@@ -15415,21 +15415,20 @@ ____
 
 * Web 制作会社・代理店に発注する
 * 要件定義 + デザイン + 実装 + 運用保守
-* 中小企業で数百万円
-* 中堅以上で数千万円
+* 初期費用はまとまった額になる
 * 改修のたびに追加見積もりが出る
 * ドメイン・サーバー・分析ツールも別契約になる
 
 社内ビルダー (1 人 + AI) でやる場合はこうなる。
 
-* ビルダーの工数は 1〜数週間 (内容による)
-* ツールは Claude Max など、月数万円
-* ホスティングは月数千円から
+* ビルダーの工数は、内容による
+* AI の契約は 2-02 のとおり(作るあいだ月 100 ドル台、運用は月 40 ドルほど)
+* ホスティングは自分の一台か Cloudflare Pages(2-11)で、追加の費用はほぼ無い
 * 改修はビルダーが直接、その日のうちに入れる
 * 同じ社内ビルダーが他業務にも使える
 
-数字で見ると、初期構築で 10 分の 1 以下、運用フェーズでは圧倒的に安く、速くなる。
-これは 10 倍〜100 倍の価格差の、コーポレートサイト案件版だ。
+初期構築の費用は桁で下がり、運用に入ってからは、改修がその日のうちに入る分だけ
+速くなる。数字は、いまの制作会社の見積もりと並べれば自分の会社の値で出る。
 
 しかし重要なのは、コスト比較ではなく構造の比較である。
 
@@ -15576,7 +15575,7 @@ ____
 * 責任 ── IT が業務の中核へ移るぶん、今の CIO より重くなる
 * 処遇 ── 等級・配属ではなく、経営判断の対象範囲と責任で位置づける。一般社員の
   枠には入らない
-* コーポレートサイト ── 初期構築で 10 分の 1 以下。だが本質は、判断と実装の
+* コーポレートサイト ── 初期構築の費用は桁で下がる。だが本質は、判断と実装の
   距離がゼロになることだ
 * 供給源 ── 元 SIer コーダーだけではない。AI + Python + Flet が、VB / VBA 世代と
   工作派を新しい供給源として開く
@@ -15803,22 +15802,21 @@ Commissioning a corporate website the old way looks like this.
 
 * A web agency or production company takes the order.
 * Requirements, design, implementation and maintenance are all in scope.
-* Small to mid-size firms: millions of yen.
-* Larger firms: tens of millions of yen.
+* The initial cost is a substantial sum.
 * Each revision triggers a new quote.
 * Domain, server and analytics are separate contracts.
 
 Doing it with an in-house builder (one person plus AI) looks like this.
 
-* Builder labor: a week to a few weeks, depending on scope.
-* Tooling: tens of thousands of yen per month, for example Claude Max.
-* Hosting: thousands of yen per month and up.
+* Builder labor: depends on scope.
+* AI subscriptions: as 2-02 sets out (a hundred-odd dollars a month while building, about $40 in operation).
+* Hosting: your own machine or Cloudflare Pages (2-11), at almost no extra cost.
 * Revisions: the builder ships them the same day.
 * The same in-house builder serves other business areas too.
 
-In numbers, this lands at less than one-tenth of the initial build cost, and
-ongoing operation is dramatically cheaper and faster. It is the corporate-website
-case of the 10x to 100x price gap.
+The initial build cost drops by an order of magnitude, and operation gets faster
+by exactly as much as same-day revisions allow. The number comes out in your own
+company's figures once you set it beside your current agency's quote.
 
 But the more important comparison is structural, not financial.
 
@@ -15985,7 +15983,7 @@ decisions.
   business
 * Compensation — positioned by the scope and responsibility of management
   decisions, not by grade or assignment. It does not fit a general-employee frame
-* Corporate website — less than one-tenth of the initial build cost, but the
+* Corporate website — the initial build cost drops by an order of magnitude, but the
   substance is that the distance between judgment and implementation goes to zero
 * Supply — not only former SIer coders. AI + Python + Flet open the VB / VBA
   generation and the maker population as new sources

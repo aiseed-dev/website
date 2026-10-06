@@ -16157,10 +16157,10 @@ ____
 ここまでの話は、雇用流動性という条件の上に成立する。
 
 旧来の日本型雇用 ── 終身雇用、年功序列、社内異動による配置転換 ── は、多重
-下請け構造を支えていた。元請けは新卒で採用したコーダーを 40 年間抱え続ける
+下請け構造を支えていた。元請けは新卒で採用したコーダーを定年まで抱え続ける
 ことが期待され、不足分は下請けで埋めた。流動性は低かった。
 
-この前提は、ここ 20 年で徐々に崩れてきた。中途採用が当たり前になり、転職市場が
+この前提は、長い時間をかけて徐々に崩れてきた。中途採用が当たり前になり、転職市場が
 整備され、フリーランス・個人事業主としての契約形態が増えた。AI による業界転換
 は、この流動性の上限を試す試金石になる。
 
@@ -16247,7 +16247,7 @@ ____
 転換期の方向性を確認する。
 
 雇用流動性、ジョブ型雇用、ビルダーを経営層 (CIO) として処遇するモデル、業務
-委託の社会的受容。これらは、ここ 10 年で確実に高まってきた。今後も同じ方向に
+委託の社会的受容。これらは、近年確実に高まってきた。今後も同じ方向に
 進む要因が多い。
 
 * 少子高齢化 ── 労働力供給が減るため、人材の流動性は経済合理性からも上がる
@@ -16449,10 +16449,10 @@ Everything above rests on the precondition of labor mobility.
 
 Old-style Japanese employment — lifetime employment, seniority-based advancement,
 internal reassignment — supported the multi-tier structure. The prime was expected
-to hold a new graduate as a coder for forty years, and the shortfall was filled
+to hold a new graduate as a coder until retirement, and the shortfall was filled
 with subcontractors. Mobility was low.
 
-That premise has been gradually weakening for two decades. Mid-career hiring has
+That premise has been gradually weakening over a long time. Mid-career hiring has
 become normal, the recruiting market has matured, and freelance and
 independent-contractor arrangements have proliferated. The AI-driven industry
 transition tests the upper bound of that mobility.
@@ -16554,7 +16554,7 @@ Confirm the direction of the transition period.
 
 Labor mobility, job-type employment, treating builders as management in the CIO
 seat, and social acceptance of business commissions have all measurably risen over
-the past decade. Multiple forces will keep them rising.
+recent years. Multiple forces will keep them rising.
 
 * Demographics — a shrinking working-age population pushes mobility up on pure
   economic grounds.

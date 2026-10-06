@@ -17420,7 +17420,7 @@ AI 時代の自由人、この連載で言うビルダーが立ち上がると�
 
 . *生産手段が個人で持てるようになった* ── 月数千円の AI、ローカル LLM、OSS、自前
    サーバー。雇用主が独占する必要が消える
-. *1 人 + AI = 10 人チーム*(1-04)── 集中化のメリットが消える
+. *1 人 + AI が、チームの仕事をこなす*(1-04)── 集中化のメリットが消える
 . *判断と実行の境界が一人の中で閉じる*(1-04)── 集約・調整・管理の overhead が
    純粋な無駄になる
 . *経営判断を下す者は本質的に独立志向* ── 経営者や自営業が自分の判断で事業を回す
@@ -17585,7 +17585,7 @@ AI が工学的作業を引き受ける、エンドユーザーはどう作ら�
 するが、アプリは消さない。変わるのは作り方だけで、その変わり方は、本作りより映画作り
 に近い。
 
-ただし映像制作には大きな幅がある。ハリウッド大作は今でも大量のスタッフと数百億円と
+ただし映像制作には大きな幅がある。ハリウッド大作は今でも大量のスタッフと巨額の予算と
 数年を要する一方、YouTube はスマホ一つで誰でも作れる。AI 時代のアプリも、同じ幅を持つ。
 
 |===
@@ -17637,7 +17637,7 @@ focused なシステムの組み合わせに分解されていく。
 
 ルネサンス期は、輝かしい創造の時代として教科書に載っている。レオナルド、ミケラン
 ジェロ、ガリレオ、グーテンベルク。しかしその同じ時代は、激しい混乱の時代でもあった。
-宗教改革と宗教戦争(三十年戦争で中欧の人口が 3 割減少)、教皇庁の腐敗と分裂、断続する
+宗教改革と宗教戦争(三十年戦争は中欧の人口を大きく減らした)、教皇庁の腐敗と分裂、断続する
 ペスト、サヴォナローラのような populist demagogue がフィレンツェで虚栄の焚き火を
 起こし、チェーザレ・ボルジアのような強権政治家がマキャヴェッリの『君主論』のモデルに
 なった。古い秩序が崩れて新しい秩序がまだ立っていない間、人々は強い男と過激な言葉に
@@ -18089,7 +18089,7 @@ And the reasons employment stops fitting in the AI era are structurally clear.
 . *The means of production can now be owned individually* — a
    few-thousand-yen-a-month AI, local LLMs, open source, one's own server. The
    employer no longer needs to monopolize them
-. *One person plus AI equals a ten-person team* (1-04) — the payoff of
+. *One person plus AI does a team's work* (1-04) — the payoff of
    concentration disappears
 . *The boundary between judgment and execution closes within one person* (1-04)
    — the overhead of aggregation, coordination, and management becomes pure waste
@@ -18291,7 +18291,7 @@ the software engineer but does not remove the app. Only the way of making
 changes, and the way it changes is closer to film-making than to book-printing.
 
 Film-making, though, has an enormous range. A Hollywood blockbuster still
-requires a large crew, hundreds of millions of dollars, and years of work, while
+requires a large crew, an enormous budget, and years of work, while
 a YouTube video can be made by anyone with one smartphone. AI-era apps have the
 same range.
 
@@ -18360,7 +18360,7 @@ before. AI is the strongest accelerator among them, but it is not the whole caus
 The Renaissance sits in the textbooks as a luminous age of creation: Leonardo,
 Michelangelo, Galileo, Gutenberg. But that same age was also an age of violent
 upheaval. The Reformation and the wars of religion (the Thirty Years' War cut
-Central Europe's population by about 30%), the corruption and schism of the
+Central Europe's population severely), the corruption and schism of the
 papacy, recurring plague, a populist demagogue like Savonarola staging the
 bonfire of the vanities in Florence, and a strongman politician like Cesare
 Borgia becoming Machiavelli's model in _The Prince_. While the old order is

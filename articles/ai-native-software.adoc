@@ -11034,8 +11034,8 @@ AI を載せる前に、載せるに値する情報を作る。前章までで�
 == 整備こそ本体、AI は最後の一手
 
 順序を間違えてはいけない。RAG も、自前の AI も、整った情報の上にしか立たない。
-散らばった・書かれていない情報に、いくら賢いモデルを載せても、出てくるのは
-ゴミだ(garbage in, garbage out)。
+散らばった・書かれていない情報に、いくら賢いモデルを載せても、出てくるものも
+整わない(garbage in, garbage out)。
 
 だから本章は、AI の前に置く。やることは三つ ── 紙を読む(OCR)、散らばりを
 揃える(分類・構造化)、頭の中を書き出す(属人知の成文化)。
@@ -11043,7 +11043,7 @@ AI を載せる前に、載せるに値する情報を作る。前章までで�
 そして、この整備には、二つの性質がある。
 
 * *人にしかできない判断*だ。何を残し、何を捨て、どう構造化するか ── これは
-  業務を知る人間の判断で、AI に丸投げできない(3-04)。AI は下書きを助けるが、
+  業務を知る人間の判断で、AI に丸投げできない(1-04)。AI は下書きを助けるが、
   決めるのは人だ。
 * no-regret 投資だ。情報を構造化すれば、AI を一切載せなくても回収できる。
   属人化が解け、引き継ぎが楽になり、業務が健全になる。AI は、その上に最後に
@@ -11059,7 +11059,7 @@ ____
 最初の関門は、これまで機械が読めなかった情報だ。紙、スキャン、画像 PDF、
 手書き。
 
-* 定型・活字なら、*Tesseract* などの OSS OCR でテキスト化できる。
+* 定型・活字なら、*Tesseract* などの OSS OCR でテキスト化できる。Tesseract も `ocrmypdf` も Debian 13 の apt にある。
 * レイアウトが複雑な帳票・図表混じりは、オープンウェイトのビジョンモデル
   (2-16 で立てるローカル AI)に読ませ、Markdown に起こす。
 
@@ -11068,15 +11068,15 @@ ____
 ocrmypdf --language jpn input.pdf output.pdf   # 検索可能な PDF + テキスト
 ```
 
-出力は、Markdown とプレーンテキストに寄せる。専用フォーマットに閉じ込めない
-── 後で誰でも・どの AI でも読めるようにするためだ(2-06 の標準形式の原則)。
+出力は、文字(AsciiDoc か Markdown)とプレーンテキストに寄せる。専用フォーマットに
+閉じ込めない ── 後で誰でも・どの AI でも読めるようにするためだ(2-07 の原則)。
 
 == 散らばりは、分類と構造化で揃える
 
 次に、散らばったファイルを揃える。
 
-* 置き場を一つに ── 2-07 で取り戻した、ファイルのままの文書置き場に集める。
-* メタデータを付ける ── 種類・部門・日付・版を、ファイル名か xattr(2-07)で持つ。
+* 置き場を一つに ── 2-07 で決めた、Forgejo のリポジトリに集める。届いたファイルはファイルのまま。
+* メタデータを付ける ── 種類・部門・日付・版を、フォルダとファイル名で持つ。
 * 構造を Markdown で ── 見出し・箇条書き・表で、機械にも人にも読める形に整える。
   AI に下書きさせ、人が直す。
 
@@ -11119,7 +11119,7 @@ ____
 
 . 紙の帳票が、検索できるテキストになっている(PDF を開いて語を検索すると当たる)
 . 図表混じりの帳票が、Markdown として読める形に起きている
-. 文書置き場が一つになり、種類・部門・日付・版が、ファイル名か xattr で分かる
+. 文書置き場が一つになり、種類・部門・日付・版が、フォルダとファイル名で分かる
 . 担当者一人しか知らなかった手順が Markdown になり、本人が読んで直した版が置き場にある
 . 置き場の文書が、専用フォーマットではなく Markdown とプレーンテキストで開ける
 
@@ -11143,8 +11143,8 @@ ____
 
 == 確かめた版と日付
 
-* Tesseract、`ocrmypdf`、オープンウェイトのビジョンモデル(2-16 のローカル AI)、pgvector(2-03)
-* 手順を書いたのは 2026-07-16
+* Tesseract 5.5、`ocrmypdf` 16.7(Debian 13 のパッケージ)、オープンウェイトのビジョンモデル(2-16 の AI のサーバー)、pgvector(2-03)
+* 手順を書いたのは 2026-07-16、見直したのは 2026-10-06
 * 版が上がっていたら、AI に公式の手順を確かめさせてから進める
 
 == まとめ
@@ -11168,7 +11168,7 @@ AI の前に、情報を整える。
 * link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 読む物は adoc、触る表は格子、刷る紙はテンプレート]
 * link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
 * link:/ai-native-software/ai/[2-16: 自前の AI を据える ── LLM と RAG]
-* link:/ai-native-software/sier-uneconomic/[3-04: SIer委託モデルの構造的不経済]
+* link:/ai-native-software/builder/[1-04: ビルダーという役割]
 endif::[]
 ifdef::lang-en[]
 = Make Your Knowledge Legible — Preparation Is the Main Body, AI the Last Move
@@ -11184,7 +11184,7 @@ someone's head. Here we move those three into a written, structured state.
 
 Do not get the order wrong. RAG, and your own AI, stand only on prepared
 information. Put the cleverest model you like on scattered, unwritten
-information, and what comes out is garbage (garbage in, garbage out).
+information, and what comes out is just as unprepared (garbage in, garbage out).
 
 So this chapter comes before the AI. The work is three things — read the paper
 (OCR), align the scatter (classification and structuring), write out what is in
@@ -11194,7 +11194,7 @@ And this preparation has two properties.
 
 * It is *judgment only people can make*. What to keep, what to discard, how to
   structure it — this is the judgment of people who know the work, and it cannot
-  be handed off wholesale to AI (3-04). AI helps with the draft, but people
+  be handed off wholesale to AI (1-04). AI helps with the draft, but people
   decide.
 * It is a no-regret investment. Structure the information and you recover it
   even if you put no AI on it at all. Personnel lock-in dissolves, handover gets
@@ -11210,7 +11210,7 @@ ____
 The first barrier is information a machine cannot read. Paper, scans, image
 PDFs, handwriting.
 
-* For fixed-form, typeset text, *Tesseract* and other OSS OCR turn it into text.
+* For fixed-form, typeset text, *Tesseract* and other OSS OCR turn it into text. Tesseract and `ocrmypdf` are both in Debian 13's apt.
 * For complex forms and figure-laden layouts, have an open-weight vision model
   (the local AI you stand up in 2-16) read it and render it to Markdown.
 
@@ -11219,18 +11219,18 @@ PDFs, handwriting.
 ocrmypdf --language eng input.pdf output.pdf   # searchable PDF + text
 ```
 
-Aim the output at Markdown and plain text. Do not lock it into a proprietary
-format, so that later anyone, and any AI, can read it (the standard-format
-principle of 2-06).
+Aim the output at text (AsciiDoc or Markdown) and plain text. Do not lock it into
+a proprietary format, so that later anyone, and any AI, can read it (the
+principle of 2-07).
 
 == Align the scatter by classifying and structuring
 
 Next, align the scattered files.
 
-* One place — gather them into the file-shaped document store you took back in
-  2-07.
-* Add metadata — type, department, date, version, held in the filename or xattr
-  (2-07).
+* One place — gather them into the Forgejo repository decided in 2-07. Files that
+  arrived stay as the files they are.
+* Add metadata — type, department, date, version, held in the folder and the
+  filename.
 * Structure in Markdown — headings, bullets, tables, into a form both machine
   and human can read. Let AI draft, and people fix.
 
@@ -11280,7 +11280,7 @@ This chapter is done when these five hold.
 
 . A paper form has become searchable text — open the PDF, search for a word, and it is found
 . A figure-laden form has been rendered into readable Markdown
-. There is one document store, and type, department, date, and version are visible in the filename or the xattr
+. There is one document store, and type, department, date, and version are visible in the folder and the filename
 . A procedure only one person knew is now in Markdown, and the version that person read and corrected is in the store
 . Documents in the store open as Markdown and plain text, not as a proprietary format
 
@@ -11304,8 +11304,8 @@ This chapter is done when these five hold.
 
 == Versions checked, and when
 
-* Tesseract, `ocrmypdf`, an open-weight vision model (the local AI of 2-16), pgvector (2-03)
-* This procedure was written on 2026-07-16
+* Tesseract 5.5, `ocrmypdf` 16.7 (Debian 13 packages), an open-weight vision model (the AI server of 2-16), pgvector (2-03)
+* This procedure was written on 2026-07-16 and reviewed on 2026-10-06
 * If a version has moved, have the AI confirm the official procedure before proceeding
 
 == Summary
@@ -11330,7 +11330,7 @@ In the next chapter, on top of this prepared information, we set up our own AI.
 * link:/en/ai-native-software/documents/[2-07: Take Documents Back — Prose in AsciiDoc, Working Tables in a Grid, Printed Pages from Templates]
 * link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
 * link:/en/ai-native-software/ai/[2-16: Set Up Your Own AI — LLM and RAG]
-* link:/en/ai-native-software/sier-uneconomic/[3-04: The Structural Diseconomy of the SIer Outsourcing Model]
+* link:/en/ai-native-software/builder/[1-04: The Builder Role]
 endif::[]
 // ===== article: 21-ai =====
 ---

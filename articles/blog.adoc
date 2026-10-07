@@ -14426,3 +14426,84 @@ Whichever way it falls, the result will be written here.
 . IFA Medium-Term Fertilizer Outlook 2026-2030 (6 May 2026) — https://www.fertilizer.org/wp-content/uploads/2026/05/2026_IFA_Medium_Term_Outlook_Report_English.pdf
 . Qatar to double urea output by 2030, blue ammonia on-track for 2026 (Quantum Commodity Intelligence) — https://www.qcintel.com/ammonia/article/qatar-to-double-urea-output-by-2030-blue-ammonia-on-track-for-2026-38596.html
 endif::[]
+
+// ===== article: 046-cloud-vanished =====
+---
+slug: cloud-vanished
+title.ja: クラウドが丸ごと消えた日 ── IDCF の事故から、五つの教訓
+title.en: The Day a Cloud Vanished — Five Lessons from the IDCF Incident
+subtitle.ja: 事業者は「スナップショットからの復元も困難、他リージョンも当面推奨しない」と通知した。控えは、本体と別の機械・別の場所・別の権限に置く
+subtitle.en: The provider told customers that snapshots could not be restored and that its other regions were not recommended for now. Keep your copy on another machine, in another place, under another authority
+date: 2026.10.08
+description.ja: 2026年10月7日、IDCFクラウドの東日本第1リージョンがランサムウェアで止まり、事業者は仮想マシンもスナップショットも復旧困難と通知した。細部は AI に調べさせればよい。残すべきは五つの教訓である
+description.en: On 7 October 2026 ransomware took down IDCF Cloud's East Japan Region 1, and the provider told customers that neither the virtual machines nor the snapshots could be recovered. Leave the details to an AI. What is worth keeping is five lessons
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+---
+ifdef::lang-ja[]
+= クラウドが丸ごと消えた日
+
+== 何が起きたか
+
+2026年10月7日の未明、ソフトバンク子会社 IDCフロンティアの「IDCFクラウド」東日本第1リージョンに第三者が侵入し、ランサムウェアで基盤が止まった。利用者向けの通知(第7報)で、事業者はこう書いた。対象環境のデータと仮想マシンの復旧は極めて困難、スナップショットからの復元も困難、他リージョンでの再構築も安全性が確認できるまで推奨しない、データの復元は利用者自身が持つバックアップからのみ可能。
+
+このクラウドの上には、電話サービス、EC の在庫管理、セキュリティ製品の管理画面、音声認識アプリが載っていた。利用者 → SaaS → 基盤という三段の委託で、それぞれの利用者にまで止まった。侵入経路、被害の正確な範囲、攻撃者の声明の真偽は、本稿を書いた時点では確認できていない。
+
+事例の細部は、知りたい人が AI に調べさせればよい。ここに残すのは教訓だけである。
+
+== 五つの教訓
+
+. *スナップショットはバックアップではない。* 本体と同じ基盤に載った控えは、基盤ごと消える。控えは、本体とは別の機械・別の場所・別の権限に置く。
+. *リージョンを分けても、管理面が一つなら障害領域は一つ。* 事業者自身が「他リージョンも当面推奨しない」と言った。地理の分散と、権限の分散は別のものである。
+. *委託の鎖の上にいる人ほど、契約を読んでいない。* クラウドの契約は昔から、データの控えを利用者の責任としている。SaaS に載せた会社も、その SaaS の利用者も、下の段が控えを持っていると思っていた。
+. *守る側の人数が、守れる範囲を決める。* 24時間監視をうたう基盤でも、見る人がいなければ看板にすぎない。自分の一台なら、管理面を握るのは自分一人で、障害領域もその一台で閉じる。
+. *教訓は読み物ではなく手順に置く。* 最初の二つは、link:/debian-server/10-backup/[サーバー編の第10章]の 3-2-1 ルールの項に書き足した。読んだだけの教訓は、次の事故までに消える。
+
+'''
+
+== 関連
+
+* link:/debian-server/10-backup/[Claudeと一緒に育てるDebian サーバー 第10章 データを守る] ── 3-2-1 ルール、restic、復元の演習
+* link:/debian-server/05-security-basics/[同 第5章 守りの基本] ── 入りも出も既定拒否のファイアウォール
+* link:/ai-native-software/web/[AI ネイティブなソフトウェア開発 2-11 Web を公開する] ── 自分の一台か、借りた窓か
+
+== 出どころ
+
+. ITmedia NEWS「IDCFクラウドに不正アクセス 東日本の第1リージョンで障害」(2026年10月7日) ── https://www.itmedia.co.jp/news/article/2610/07/2000002087/
+. IDCフロンティア「【障害連絡】IDCFクラウド障害発生のご連絡(第7報)」(2026年10月、利用者向け通知)
+. 影響を受けたサービスの一覧(セキュリティ対策Lab、2026年10月7日) ── https://rocket-boys.co.jp/security-measures-lab/idcf-cloud-outage-affected-services-2026/
+endif::[]
+ifdef::lang-en[]
+= The Day a Cloud Vanished
+
+== What Happened
+
+In the early hours of 7 October 2026, a third party broke into East Japan Region 1 of IDCF Cloud, run by SoftBank subsidiary IDC Frontier, and ransomware brought the platform down. In its seventh notice to customers, the provider wrote: recovery of the data and virtual machines in the affected environment is extremely difficult; restoring from snapshots is also difficult; rebuilding in its other regions is not recommended until their safety is confirmed; data can be restored only from backups the customers hold themselves.
+
+On top of this cloud sat telephone services, e-commerce inventory systems, the management consoles of security products, and a speech-recognition app. The outage ran down a three-tier chain — user, SaaS, platform — all the way to each end user. The entry route, the exact extent of the damage, and the truth of the attacker's claims were unconfirmed when this was written.
+
+Anyone who wants the details can have an AI look them up. What stays here is the lessons.
+
+== Five Lessons
+
+. *A snapshot is not a backup.* A copy that sits on the same platform as the original disappears with the platform. Keep your copy on another machine, in another place, under another authority.
+. *Separate regions are one failure domain if the management plane is one.* The provider itself said its other regions were not recommended for now. Geographic separation and separation of authority are different things.
+. *The higher you sit in the chain of outsourcing, the less you have read the contract.* Cloud contracts have always made the customer responsible for keeping a copy of the data. The company that put its service on the cloud, and the users of that service, each assumed the tier below held a copy.
+. *The number of defenders decides what can be defended.* A platform that advertises 24-hour monitoring is a signboard if nobody is looking. On a machine of your own, one person holds the management plane, and the failure domain closes at that one machine.
+. *Put lessons in procedures, not in reading matter.* The first two were added to the 3-2-1 rule in link:/en/debian-server/10-backup/[Chapter 10 of the server series]. A lesson that was only read is gone by the next incident.
+
+'''
+
+== Related
+
+* link:/en/debian-server/10-backup/[Growing a Debian Server with Claude, Chapter 10 — Protecting Your Data] — the 3-2-1 rule, restic, restore rehearsals
+* link:/en/debian-server/05-security-basics/[Chapter 5 — The Basics of Defense] — a firewall that denies by default, in and out
+* link:/en/ai-native-software/web/[AI-Native Software Development 2-11 — Publishing the Web] — your own machine, or a borrowed window
+
+== References
+
+. ITmedia NEWS, "Unauthorized access to IDCF Cloud; outage in East Japan Region 1" (7 October 2026) — https://www.itmedia.co.jp/news/article/2610/07/2000002087/
+. IDC Frontier, "IDCF Cloud incident notice (7th report)" (October 2026, notice to customers)
+. List of affected services (Security Measures Lab, 7 October 2026) — https://rocket-boys.co.jp/security-measures-lab/idcf-cloud-outage-affected-services-2026/
+endif::[]

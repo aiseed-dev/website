@@ -4526,6 +4526,8 @@ OSそのもの（`/usr` や `/bin`、パッケージで入ったファイル）�
 
 バックアップの世界に、古くからの目安がある。*3-2-1ルール*だ。データのコピーを *3* つ持つ（本番1つ＋バックアップ2つ）、*2* 種類の異なる媒体に置く（例：内蔵SSDと外付けディスク）、そのうち *1* つは別の場所（オフサイト）に置く。一箇所が火事や水害や盗難で消えても、別の場所のコピーが生き残る、という考え方だ。個人サーバーなら厳密に守らなくてもいいが、「コピーは一つでは不安、できれば離れた場所にも一つ」という感覚だけは持っておきたい。
 
+この目安に、二つ足しておく。*スナップショットはバックアップではない。* 基盤が用意するスナップショットは本体と同じ基盤に載った差分で、基盤ごと取られれば一緒に消える。控えは、本体とは別の機械・別の場所・別の権限に置く。もう一つ、*基盤の管理面を共有している事業者は、リージョンを分けても一つの障害領域だ。* 2026年10月の IDCF クラウドの事故では、事業者自身が「スナップショットからの復元も困難、他リージョンでの再構築も当面推奨しない」と利用者に通知した(ITmedia、2026年10月7日)。地理の分散と、権限の分散は別のものである。
+
 === Claudeに聞いてみよう①：守るべきものリストを作る
 
 ____
@@ -4835,6 +4837,8 @@ The reason for the two tracks is this: with the configuration in git, recovery b
 === The 3-2-1 Rule
 
 The backup world has a long-standing rule of thumb: *the 3-2-1 rule.* Keep *3* copies of your data (1 live plus 2 backups), on *2* different kinds of media (say, internal SSD and an external disk), with *1* of them in another location (off-site). If one place is wiped out by fire, flood, or theft, a copy elsewhere survives. A personal server need not follow it strictly, but do keep the instinct: "one copy is not enough; ideally one more in a separate place."
+
+Add two points to that rule of thumb. *A snapshot is not a backup.* A snapshot the platform provides is a delta that sits on the same platform as the original, and if the platform is taken, it goes with it. Keep your copy on another machine, in another place, under another authority. And *a provider whose management plane is shared is one failure domain, even across regions.* In the IDCF Cloud incident of October 2026, the provider itself told customers that restoring from snapshots was difficult and that rebuilding in its other regions was not recommended for now (ITmedia, 7 October 2026). Geographic separation and separation of authority are different things.
 
 === Ask Claude ①: Build the List of What to Protect
 

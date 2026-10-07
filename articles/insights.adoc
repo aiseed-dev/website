@@ -10,9 +10,9 @@ number: 01
 title.ja: 気候変動対策の過ち
 title.en: The Climate Change Mistake
 subtitle.ja: 2026 年イラン戦争が気づかせてくれたこと
-subtitle.en: CO2 Reduction Won't Solve This. Soil and Ecosystems Are the Answer.
+subtitle.en: What the 2026 Iran War made us see
 description.ja: 30 年間の気候変動対策は二つの根本的な問いを見落としていた。エネルギーを再生可能にしても素材と食料はどうするのか。そして、CO2 排出量の削減ばかりが中心で、生態系の回復が影が薄かったのではないか。
-description.en: Climate change policy sees oil only as fuel. But oil is the material foundation of civilization — and even renewable energy hardware depends on petrochemicals. The real solution is soil and ecosystem restoration.
+description.en: Thirty years of climate policy overlooked two fundamental questions. Once energy is renewable, what about materials and food? And with CO2 reduction at the center, was the restoration of ecosystems left in the shade?
 date.ja: 2025.04.03
 date.en: 2025.04.04
 label: Structural Analysis 1
@@ -230,270 +230,233 @@ ____
 ____
 endif::[]
 ifdef::lang-en[]
-== Oil Is Not "Fuel" — It Is "Material"
+== What the 2026 Iran War Made Us See
 
-When oil comes up in the climate change debate, it is always as fuel — the thing that emits CO2. The unspoken assumption is that once we stop burning oil, the problem is solved.
+Climate action means renewable energy. Solar, wind, EVs, hydrogen — for
+thirty years the world has poured enormous investment in that direction.
 
-But the Hormuz crisis revealed a different truth: oil, as a raw material, underpins the physical foundation of modern civilization.
+But in the Hormuz crisis of 2026, the first shortage to surface in Japan
+was not the price of gasoline. *Food packaging ran short, stocks of
+medical plastics tightened, supplies of agricultural film stopped* — it
+was not energy that halted, but materials. Chemical fertilizer tightened
+next, because its raw materials sit on the far side of the Strait of
+Hormuz.
 
-[.chain-diagram]
---
-*What oil supports as a material:*
+Thirty years of climate policy overlooked two fundamental questions.
 
-Dialysis membranes (polysulfone) +
-Diaper absorbents (superabsorbent polymers) +
-Food packaging (polyethylene, PET, polystyrene) +
-Medical devices (PVC) +
-Agricultural films (polyethylene, polyolefin) +
-Synthetic fibers (polyester, nylon) +
-Building materials, automotive parts, electronic housings
---
+== Issue 1 — Once energy is renewable, what about materials? What about food?
 
-None of these involve burning oil. They involve transforming oil into materials. This is not a problem that disappears when you stop emitting CO2. Even without combustion, oil is essential as a material.
+Solar can make electricity, but it cannot make the plastic that wraps
+food. Wind can turn a factory, but it cannot produce the raw material of
+chemical fertilizer. An EV can drive, but it cannot manufacture the
+membrane of a dialysis machine.
 
-== Renewables and EVs Depend on Petrochemicals Too
+Naphtha, made from oil, carries the material foundation of modern
+civilization — dialysis membranes, the absorbent in diapers, food
+packaging, medical devices, agricultural film, synthetic fibers, building
+materials, car parts, the housings of electronics. None of these "burn"
+oil. They "convert" oil into material. *This is not a problem that
+disappears once CO2 is no longer emitted. Even unburned, oil is needed as
+material.*
 
-Here is the irony: the very technologies meant to replace oil are themselves dependent on petrochemistry.
+And in an irony, renewable-energy hardware itself depends on
+petrochemicals. The EVA film and backsheet of a solar panel, the
+glass-fiber-reinforced plastic blades of a wind turbine, the battery
+components and lightweight plastics of an EV, the electrolyzer membrane
+and carbon-fiber tank of hydrogen — *none can be made without
+petrochemicals.* Renewables are not a replacement for oil; they are an
+extra layer resting on top of it.
 
-[.chain-diagram]
---
-*The petrochemical dependence of "post-oil" technologies:*
-
-Solar panels → EVA film and backsheets → *petrochemical products* +
-Wind turbines → fiberglass-reinforced plastic blades → *petrochemical products* +
-EVs → battery components and lightweight body plastics → *petrochemical products* +
-Hydrogen → electrolyzer membranes and carbon-fiber storage tanks → *petrochemical products*
---
-
-The hardware of renewable energy depends on oil. The infrastructure needed to build a society that "doesn't burn oil" cannot be built without petrochemistry.
-
-[.highlight-box]
---
-*"Not burning oil" and "not depending on oil" are entirely different problems.*
-Climate policy only addresses the former.
---
-
-== What Synthetic Fertilizers Replaced — the Lifeline of Soil Microbes
-
-Just as petrochemistry supports civilization as a material, natural gas supports the food supply of 8 billion people as the raw material for fertilizer.
-
-So how did plants obtain nitrogen before the Haber-Bosch process was commercialized in 1913?
-
-*Soil microorganisms did the work.*
-
-[.chain-diagram]
---
-*A biological network hundreds of millions of years in the making:*
-
-Rhizobia → live symbiotically in legume roots → fix atmospheric nitrogen +
-Mycorrhizal fungi → connect plant roots to soil → transport phosphorus and minerals +
-Countless microorganisms → decompose organic matter → cycle nutrients +
-An estimated *1 billion* microorganisms per gram of soil +
-A network built over hundreds of millions of years, sustaining every terrestrial ecosystem on Earth
---
-
-In just 100 years, humanity replaced this system with synthetic fertilizer.
-
-== The Soil Lost Its Ability to Feed Itself
-
-Mass application of synthetic fertilizers weakened the soil microbiome itself.
-
-[.chain-diagram]
---
-*A vicious cycle of dependency:*
-
-Abundant nitrogen fertilizer → plants "no longer need" their symbiosis with mycorrhizal fungi +
-→ Symbiotic relationships deteriorate +
-→ Microbial diversity declines +
-→ The soil loses its self-sustaining capacity +
-→ Crops need even more synthetic fertilizer +
-→ Microbes weaken further → (negative feedback loop)
---
-
-And the raw materials for that synthetic fertilizer lie on the other side of the Strait of Hormuz. When the strait closes, soil that has lost its self-sustaining power cannot feed crops on its own.
-
-[.highlight-box]
---
-*The Sulfur Trap — another structural vulnerability:*
-Producing phosphate fertilizer requires sulfuric acid.
-Sulfur, the raw material for sulfuric acid, is recovered as a byproduct of oil refining.
-Roughly 90% of global sulfur production is a byproduct of oil and natural gas refining.
-U.S. shale oil (light sweet crude) has a sulfur content of 0.1–0.5%.
-Middle Eastern sour crude has a sulfur content of 2–3%.
-"Energy independence" does not mean "material independence."
-If refineries shut down, no amount of fusion energy will produce fertilizer.
---
-
-== Three Blind Spots in Climate Policy
-
-Current climate policy is fixated on reducing CO2 emissions. But the Hormuz crisis exposes three critical blind spots.
-
-=== Blind Spot 1: Oil as Material
-
-As discussed above, oil is not just fuel — it is material. Food packaging, medical devices, agricultural supplies — reducing CO2 without replacing these means civilization's material foundation remains dependent on oil. Even renewable energy hardware is made from petrochemical products.
+Food has the same structure. Synthetic fertilizer made from natural gas
+(the Haber-Bosch process) supports roughly half of the world's food
+production. Renewable energy cannot replace synthetic fertilizer. The
+raw material of the sulfuric acid that makes phosphate fertilizer is
+sulfur, recovered as a by-product of oil refining. *If the refineries
+stop, no amount of fusion power will make fertilizer.*
 
 [.highlight-box]
 --
 *"Not burning oil" and "not depending on oil" are entirely different problems.*
-Climate policy only addresses the former.
+Thirty years of climate policy have debated only the first.
 --
-
-=== Blind Spot 2: The Structural Contradiction Between Fertilizer and Food
-
-[.chain-diagram]
---
-*The trade-off between CO2 reduction and food production:*
-
-Reduce natural gas use → nitrogen fertilizer production costs rise +
-Without synthetic fertilizer → approximately half the world's population cannot be fed +
-Full conversion to organic farming → yields drop an estimated 30–50% compared to conventional agriculture +
-Between reducing CO2 and feeding 8 billion people, there is a *structural trade-off*
---
-
-Yet this issue is rarely confronted head-on in the climate debate.
-
-=== Blind Spot 3: Soil Is the Solution Itself
-
-The biggest blind spot is the failure to recognize that *soil and ecosystems are themselves the solution to the CO2 problem*.
-
-[.highlight-box]
---
-*Soil is the largest carbon reservoir:*
-The world's soils store *2–3 times* more carbon than the atmosphere.
-Healthy soil is the largest carbon reservoir and the cheapest carbon capture device.
-When soil microbial activity is restored, organic matter accumulates in stable forms underground.
-Restoring degraded farmland soil is far more cost-effective
-than building expensive industrial CO2 capture facilities.
---
-
-For 30 years, the priorities have been backwards.
-
-|===
-|  | Current Climate Policy | Ecosystem-Centered Approach
-| Focus | CO2 emission reduction | Soil and ecosystem restoration
-| Methods | Renewables, EVs, carbon pricing | Soil regeneration, biodiversity recovery
-| Relationship to oil | "Don't burn it" | "Don't depend on it"
-| Food security | Outside the discussion | Integrated at the core
-| Cost | Trillions in infrastructure investment | Implementable on existing farmland
-| Carbon sequestration | Industrial CCS (high cost) | Soil microbiomes (virtually free)
-|===
-
-Why did the priorities stay backwards? Look at where the money went, and one
-thing is common to all of it — *every funded measure is something you buy.*
-Panels, turbines, EVs, CCS plants: equipment bought, upgraded, and bought
-again — a countermeasure that is also a permanent purchase. The unfunded
-side — restoring soil and ecosystems — is a measure *you carry out on your own land*, with almost nothing left to keep buying. A measure that can be
-sold has someone to push it. A measure that cannot be sold has no one to push
-it past its technical hurdles, so a difficulty like the MRV wall simply
-hardened into a reason for exclusion. The split in funding does not measure
-effectiveness. *It measures sellability.*
-
-== Toward an Ecosystem-Centered Climate Strategy
-
-What I propose is a paradigm shift in climate policy — from "CO2 reduction" to *"ecosystem restoration."*
-
-=== 1. Soil Restoration = Carbon Capture
-
-Cover crops, composting, diverse crop rotations, strategic planting of legumes. These are not new technologies. They are a re-evaluation of traditional farming wisdom.
-
-As Dr. Christine Jones's Light Farming demonstrates, liquid carbon exuded from living roots is sequestered in soil roughly 5 times more efficiently than aboveground biomass.
-
-[.chain-diagram]
---
-*The carbon sequestration mechanism of Light Farming:*
-
-Sunlight → photosynthesis → plants produce sugars +
-Sugars → exuded from roots into soil (Liquid Carbon) +
-Liquid Carbon → energy source for soil microorganisms +
-Soil microorganisms → solubilize and deliver minerals to plants +
-Plants → more photosynthesis → (positive feedback loop) +
-*When soil microbiomes recover, carbon is locked into the soil and dependence on synthetic fertilizer decreases.* +
-*CO2 reduction and food security are achieved simultaneously.*
---
-
-=== 2. Biodiversity Recovery = Resilience
-
-The essence of biodiversity is system resilience.
-
-[.chain-diagram]
---
-*Diversity creates crisis resistance:*
-
-Diverse microbes → if one species declines, others compensate +
-Diverse crops → a single disease cannot wipe out everything +
-Shifting from monoculture to polyculture +
-→ creates a food supply that does not collapse when a single strait is closed
---
-
-This is not about sacrificing efficiency. It is about *redefining efficiency* — from "short-term yield per cost" to "long-term sustainability that includes crisis resilience."
-
-=== 3. De-Petrochemicalizing Materials
-
-Developing biomass- and CO2-derived alternatives to plastics should be prioritized on par with the energy transition. Food packaging and medical plastics in particular are directly tied to human life and food distribution. To ensure we never again face a situation where goods cannot be shipped for lack of packaging.
-
-[.highlight-box]
---
-*The asymmetry in stockpiles — proof of what was overlooked:*
-Oil reserves → *254 days*
-Naphtha reserves → *20 days*
-Fertilizer reserves → *Zero*
-This asymmetry itself is evidence that only energy was being considered.
---
-
-=== 4. Restoring the Water Cycle
-
-What kills the most people in climate change is not rising temperatures themselves — it is *floods and droughts*.
-
-[.chain-diagram]
---
-*Ecosystems control water:*
-
-Healthy forests → retain rainwater and release it slowly +
-Healthy soil → absorbs water and recharges groundwater +
-Ecosystem restoration → directly addresses the water problem
---
-
-== Mars Has No Soil, and AI Cannot Create It
-
-Elon Musk says humanity's future is on Mars. But Mars has no soil. No microorganisms. No ecosystem built over hundreds of millions of years of evolution.
-
-Growing food on Mars would require industrially replicating every function of soil microbes. Yet that very kind of industrial system nearly collapsed on Earth because of a single strait. If humanity cannot even maintain ecosystems on Earth, there is no chance of building them from scratch on Mars.
-
-The same applies to AI. AI is a powerful tool, but it cannot produce naphtha or cultivate soil microorganisms. Designing the interaction network of a billion microbes in a single gram of soil is beyond AI in principle. Ecosystems were not "designed" — they "evolved."
-
-[.highlight-box]
---
-*An inversion of priorities:*
-Restoring Earth's soil would save far more lives than pouring vast resources into Mars colonization.
-Letting soil microbes do their work is far more sustainable than delegating everything to AI.
---
-
-== Masanobu Fukuoka Already Had the Answer
-
-In the 1940s, Masanobu Fukuoka began practicing natural farming. No tilling, no fertilizer, no pesticides, no weeding.
-
-[.chain-diagram]
---
-*The structural meaning of Fukuoka's four principles:*
-
-No fertilizer = zero dependence on oil and natural gas (free from supply chains) +
-No tilling = soil structure remains intact (microbial networks stay alive) +
-No pesticides = ecosystems are not destroyed (nature's defenses are preserved) +
-*No weeding* = *maximizing photosynthetic area (the very principle of Light Farming)*
---
-
-Fukuoka's "don't pull the weeds" aligns perfectly with Dr. Christine Jones's first principle of Light Farming: "Green is good. Year-long green is even better."
-
-Fukuoka said "don't pull the weeds" as philosophy.
-Dr. Christine Jones said "don't create bare soil" as science.
-Eighty years apart, they were looking at the same structure.
 
 ____
-The answer to climate change is not in technology. +
-It is in soil. +
-Masanobu Fukuoka and Dr. Christine Jones proved it — through practice and through science. +
+Oil as material is treated in detail in link:/en/insights/fossil-materials/[Part 1, Chapter 2: Fossil Materials and Modern Civilization];
+the production routes of chemical fertilizer and the regenerative-agriculture answer in link:/en/insights/agriculture/[Part 1, Chapter 3: The Agriculture Mistake].
+____
+
+== Issue 2 — "Cutting CO2 emissions" took center stage, and restoring ecosystems was left in the shade
+
+Today's climate policy is condensed into "cutting CO2 emissions."
+Renewables, EVs, carbon pricing, industrial CCS — trillions of dollars of
+capital investment are aimed there. Meanwhile the restoration of the
+largest carbon sink, *soil and ecosystems*, was long left in a policy
+blind spot.
+
+=== Soil carbon was the "blind spot" of policy
+
+Through 12,000 years of farmland expansion and the conversion of forest
+and grassland, an estimated *about 110 billion metric tons* of carbon was
+lost from the surface layer of the soil — roughly eighty years of
+present-day U.S. greenhouse-gas emissions. Under continuing industrial
+agriculture, *1.9–2.4 Pg (7.9 Pg CO2-equivalent)* of soil organic carbon
+is still lost every year.
+
+Even so, early climate policy slighted soil carbon for a long time. The
+greatest barrier was the *MRV (measurement, reporting, verification)
+wall* under the Kyoto Protocol. Above-ground biomass can be measured
+from satellite images, but measuring the change in soil carbon stocks
+across vast farmland and forest to a statistically defensible precision
+was extremely hard in both cost and technique. As of 2006, among the
+EU-15, only *six countries* — Belgium, Finland, Italy, Luxembourg,
+Portugal, and Sweden — could report a non-zero valid figure for soil
+carbon change in the "forest remaining forest" category.
+
+As a result, the *"not-source principle"* operated inside the Kyoto
+Protocol — a rule that a carbon pool could be excluded from accounting
+when it could not be shown, to a "practicable" precision, not to be a
+source of emissions. Many countries leaned heavily on the *assumption
+that soil carbon change was "zero."* This became *the decisive factor
+that kept the potential mitigation effect of soil carbon storage off the
+policy agenda for a long time.*
+
+=== The LULUCF rules turned the role of plants into an "accounting trick"
+
+The rules for land use, land-use change, and forestry (LULUCF) were an
+institutional design that favored countries with vast forest resources.
+Climate Action Network denounced the setting of certain reference levels
+as a *"logging loophole"* that tolerated *up to 451 million tonnes* of
+additional emissions a year. A provision that let natural disturbances
+(wildfire, drought, pest damage) be excluded from accounting as "force
+majeure" lowered accountability further.
+
+The decisive error was the *Searchinger error of 2009*. Under the EU ETS
+and the Kyoto rules, CO2 emissions from burning biomass were treated as
+*"zero" (carbon-neutral)* on the premise that plants absorb the same
+amount as they grow. But what Searchinger and colleagues at Princeton
+demonstrated in Science was that *the enormous carbon emissions from
+forest destruction to procure biofuel feedstock were being completely
+ignored in the accounting.*
+
+In the early international frameworks, the role of plants was used less
+as a genuine mechanism of climate mitigation than as *a tool in each
+country's political negotiation and a buffer for meeting targets.*
+
+=== After 2015: the two poles of reappraisal and hype
+
+Long in the blind spot, soil carbon came into the light with the Paris
+Agreement (COP21) of 2015. The turning point was the *"4 per 1000"
+initiative* led by the French government: increase the world's soil
+organic carbon stock by *0.4% (4 per 1,000)* every year, and the
+increase in anthropogenic CO2 emissions could be offset.
+
+In 2019, a paper from ETH Zurich's Crowther Lab in Science concluded that
+*"there is room on Earth for a trillion new trees, which could absorb
+about 205 billion tonnes, two-thirds of humanity's emissions since the
+industrial revolution."* It triggered the founding of the World Economic
+Forum's 1T.org, but was immediately exposed to strong rebuttal and
+scientific scrutiny. In 2020, Crowther and colleagues published a
+correction in Science, lowering the estimate of the carbon uptake of new
+forest to *about half the initial figure.*
+
+=== Scientific limits — no overconfidence
+
+Front-line soil scientists rejected the 4-per-1000 target and the
+"tree-planting hype" on four constraints.
+
+|===
+| Constraint | Mechanism and impact
+| *Stoichiometric constraint (nitrogen, phosphorus)* | Sequestering 12 tonnes of carbon needs about 1 tonne of nitrogen → fertilizer inputs induce emissions of nitrous oxide (N2O), a powerful GHG
+| *Absolute shortage of biomass* | A physical limit on the total biomass available → concentrating it on one field takes organic matter from another, a "zero-sum game"
+| *Saturation* | The accumulation rate falls and eventually reaches zero. Sequestration potential to 2100 overestimated by up to 53%
+| *Impermanence* | Easily decomposed by tillage or environmental change. Till once every few years and the stored carbon is rapidly re-released
+|===
+
+By WRI's estimate, even if cover crops were introduced on *85%* of all
+U.S. farmland, the offset would be only *1.5%* of total U.S. emissions.
+The present adoption rate of cover crops stays *below 4%*.
+
+=== IPCC SRCCL — rebuilt as "an indispensable part"
+
+The IPCC's *Special Report on Climate Change and Land (SRCCL)* of 2019
+sorted out the excess expectation and the pessimism. If every country's
+NDC were fully implemented, it estimated a net uptake of *0.4–1.3 GtCO2
+per year* in 2030 from agricultural management, soil carbon
+sequestration, and the like — a realistic, modest figure, a world apart
+from the hype of "offsetting all the CO2 in the atmosphere," while
+officially establishing soil's standing as *"an indispensable and
+important part"* of climate mitigation.
+
+Griscom and colleagues' 2017 PNAS paper (Natural Climate Solutions) showed
+that the fullest use of protecting, managing, and restoring forest,
+wetland, grassland, and farmland could deliver *more than one-third
+(about 37%, up to 23.8 GtCO2-equivalent per year)* of the emission
+reductions needed by 2030. Even so, efforts aimed at terrestrial carbon
+sequestration receive *only 2.5%* of the world's climate-mitigation
+finance.
+
+=== Japan's unusual soil resource — Andosols and biochar
+
+Japan's distinctive *volcanic-ash soils (kuroboku, Andosols)* have a
+carbon-retention capacity high by world standards. In field studies
+around Lake Toya in Hokkaido, the soil organic carbon stock in the 0–30 cm
+layer reached *86.4 ± 12.7 Mg C/ha* in allophanic Andosols. Because
+aluminum and iron form strong complexes with humus, the carbon resists
+microbial decomposition and suits long-term storage.
+
+The *Strategy for Sustainable Food Systems (MeaDRI)*, set in 2021,
+targets by 2050 a 50% cut in chemical pesticides, a 30% cut in chemical
+fertilizer, organic farming on *25% (one million ha)* of farmland, and
+elite trees for over 90% of forestry seedlings. The J-Credit scheme added
+and revised a methodology for soil carbon storage through the application
+of *biochar* to farmland. Biochar is a porous char stabilized by
+pyrolysis; it sidesteps the "saturation limit" and "impermanence" that
+ordinary soil organic carbon carries, and *keeps carbon fixed for
+hundreds to thousands of years.*
+
+=== For thirty years, the order was backwards
+
+|===
+| Item | Current climate policy | Ecosystem-centered policy
+| Focus | Cutting CO2 emissions | Restoring soil and ecosystems
+| Means | Renewables, EVs, carbon pricing, industrial CCS | Soil regeneration, biodiversity recovery, biochar
+| Food | Outside the discussion | Integrated at the core
+| Cost | Trillions of dollars of capital investment | Doable on existing farmland
+| Carbon fixation | Industrial CCS (high cost) | Soil microbes and biochar (low cost)
+| Share of finance | *97.5%* | *2.5%*
+|===
+
+Why did it stay backwards? The destinations of the money share one
+feature — *every one of them is a measure you buy.* Panels, turbines,
+EVs, CCS plants. You buy the equipment, renew it, keep buying — a
+countermeasure that is at the same time a permanent purchase. The side
+the money did not go to — restoring soil and ecosystems — is *a measure
+you can take on your own land*, with almost nothing to keep buying. A
+measure that can be sold has people pushing it. For a measure that cannot
+be sold, no force worked to overcome technical difficulties like the
+measurement wall (MRV), and the wall stayed on as the reason for
+exclusion. The 97.5-to-2.5 allocation is not a ratio of effectiveness.
+*It is a ratio of saleability.*
+
+Soil carbon is no "magic wand" — bound by stoichiometric constraints and
+saturation limits, it cannot by itself offset humanity's emissions. But
+it is *an indispensable part* of climate mitigation, and it carries at
+the same time *an overall value as "adaptation"*: biodiversity, water
+retention, human health (lower NCD risk), and stronger resilience of farm
+systems against extreme weather. Still the allocation of finance leans
+overwhelmingly toward industrial solutions — that is the inversion of
+order that lasted thirty years.
+
+____
+For the detailed references, see the two documents in this article's folder: link:./土壌のCO2吸収源としての役割の議論.pdf[The debate on soil as a CO2 sink (PDF, Japanese)] and
+link:./植物の気候変動対策における役割の歴史.pdf[The history of the role of plants in climate policy (PDF, Japanese)].
+____
+
+____
+The answer to climate change is not only in technology. +
+*It is also in the soil.* +
 With nature, we can live. +
-The further we move from nature, the higher the cost of survival.
+The further we move from nature, the more it costs to live.
 ____
 endif::[]
 
@@ -504,7 +467,7 @@ number: 02
 title.ja: 化石資源と現代文明
 title.en: Fossil Materials and Modern Civilization
 subtitle.ja: 便利な生活の正体は、石油から作られた素材だった。
-subtitle.en: What Comes After Plastic
+subtitle.en: The convenience of modern life is material made from oil.
 description.ja: 現代文明の便利さは化石資源の素材機能に依存している。プラスチック、医薬品、繊維、建材——エネルギーを代替しても素材は残る。バイオ素材への移行は単純ではない。バイオ素材自体が化学肥料に依存して栽培されており、化学肥料の原料(リン酸・天然ガス)も化石資源から来る。しかも、自動車・データセンター・核融合炉など、バイオ素材で代替不能な領域が大量にある。化石資源後の世界に備える唯一の道は、化学肥料に依存しないリジェネラティブ農業を同時に確立すること。
 description.en: Modern civilization's convenience depends on fossil resources as materials, not just energy. Energy can be replaced. Plastics, medical devices, and semiconductors cannot — unless we turn to microorganisms and plants. But the transition to bio-materials is not simple: bio-materials themselves are grown using chemical fertilizers, whose feedstocks (phosphate rock, natural gas) also come from fossil resources. And large domains — cars, data centers, fusion reactors — cannot be replaced by bio-materials at all. The only path is to establish regenerative agriculture in parallel.
 date.ja: 2025.04.03
@@ -1026,762 +989,550 @@ ____
 ____
 endif::[]
 ifdef::lang-en[]
-== The Question Everyone Gets Wrong
+== Almost All of Your Life Is Made of Oil
 
-"What happens when we run out of oil?"
+You wake up. You rise from polyester sheets.
+You brush your teeth with a plastic toothbrush.
+You put on nylon clothes. You step into shoes of synthetic rubber.
+You pick up a smartphone in a polycarbonate case.
+You walk on an asphalt road.
+You take food out of a polyethylene bag.
+You eat a lunch packed in a polypropylene container.
 
-The standard answer: "We switch to renewable energy."
-
-This answer reveals a fundamental misunderstanding. Oil is not just energy.
-Oil is *materials*.
-
-[.chain-diagram]
---
-*What oil actually provides:*
-
-Energy (30-40%) → Gasoline, diesel, jet fuel → CAN be replaced (solar, wind, nuclear) +
-Materials (60-70%) → Plastics, pharmaceuticals, fertilizers, fibers, coatings → CANNOT be easily replaced
---
-
-When a refinery is destroyed, you don't just lose fuel.
-You lose naphtha — the feedstock for virtually all plastics.
-You lose sulfur — essential for phosphate fertilizer.
-You lose the chemical precursors for pharmaceuticals.
-
-== Everything Around You Is Fossil Material
-
-Look around your room right now.
-
-|===
-| Object | Fossil Material | Can it be replaced?
-| Phone case | Polycarbonate (petroleum) | Not at current scale
-| Clothes (synthetic) | Polyester, nylon (petroleum) | Partially (natural fibers)
-| Food packaging | Polyethylene, PET (petroleum) | Difficult at scale
-| Medical syringes | Polypropylene (petroleum) | No current alternative
-| Dialysis equipment | Polysulfone, PVC (petroleum) | No current alternative
-| Computer housing | ABS plastic (petroleum) | Not at current quality
-| Insulation | Polystyrene foam (petroleum) | Alternatives exist but costly
-| Tires | Synthetic rubber (petroleum) | Partially (natural rubber)
-| Paint | Petrochemical solvents | Partially
-| Fertilizer | Sulfur, ammonia (petroleum byproducts) | No structural alternative
-|===
-
-Modern corporations exist because of fossil materials.
-Modern convenience exists because of fossil materials.
-Remove them, and you don't just lose energy — you lose *civilization's material base*.
-
-== The Dialysis Example — Life Support on Fossil Fuels
-
-Japan has 337,414 dialysis patients. Each costs approximately ¥4.8 million per year.
-Total: *¥1.6 trillion annually*.
-
-Every component is petroleum-derived:
+Where in this day is "oil"? Everywhere.
 
 [.chain-diagram]
 --
-Dialyzer (artificial kidney) → Polysulfone membrane + polycarbonate housing → *Petroleum* +
-Blood circuits → PVC tubing → *Petroleum* +
-Dialysis fluid bags → Plastic → *Petroleum* +
-Ultrapure water generation → RO systems running 24/7 → *Massive electricity* +
-Fluid heating to 37°C → *Massive electricity* +
-148,339 consoles nationwide → *Massive electricity*
+*Everyday materials made from oil:* +
+Naphtha → ethylene → polyethylene (shopping bags, cling film, containers) +
+Naphtha → propylene → polypropylene (food containers, car parts) +
+Naphtha → benzene → nylon, polyurethane (clothing, insulation) +
+Naphtha → styrene → polystyrene (foam, food trays) +
+Naphtha → PET (bottles, polyester fiber) +
+Naphtha → PVC (pipes, window frames, cable sheathing) +
+Heavy fraction → asphalt (roads) +
+Heavy fraction → lubricants (the motion of every machine) +
+By-product → paraffin (candles, cosmetics, drug coatings)
 --
 
-63.3% of Japanese dialysis uses HDF (hemodiafiltration) — consuming
-even more electricity and ultrapure water than standard HD.
+Plastic is usually discussed as "a disposable product that is bad for
+the environment." That is only the surface of the problem. The real
+problem is that the infrastructure of modern civilization itself depends
+on the material function of fossil resources.
 
-The 2026 Iran War oil shock is pushing per-patient costs from ¥4.8M to over ¥6M.
-Total national cost exploding from ¥1.6 trillion toward *¥2 trillion*.
+== The Essence of the Plastic Problem Is "Irreplaceability"
 
-This is what "fossil material dependency" means in human terms:
-337,000 lives depend on petroleum-derived plastic and fossil-fuel electricity.
+"Let's quit plastic," "de-plasticize" — this debate treats plastic as
+one option among several. Switch to paper. Switch to bamboo. Switch to
+glass.
+
+Structurally, though, there is a mass of uses in which plastic cannot be
+replaced.
+
+|===
+| Use | Why plastic | The reality of substitution
+| Medical devices (syringes, tubing, blood bags) | Sterilizable, light, single-use prevents infection | Glass is heavy and breaks. Metal is costly. No realistic substitute
+| Food packaging | Airtight, light, cheap, non-reactive with food | Paper fails against water. Glass is heavy and raises transport cost. Partial substitution only
+| Cable sheathing | Insulating, flexible, weather-resistant | Rubber degrades fast. No substitute
+| Water and sewer pipes | Non-corroding, light, long-lived | Metal pipe corrodes. Ceramic pipe is heavy and brittle. Large-scale substitution is unrealistic
+| Car parts | Lighter weight (fuel economy), freedom of molding | Making everything in metal raises weight and cost
+| Semiconductor photoresist | Indispensable for forming fine patterns | No substitute. Chip manufacturing stops
+|===
+
+"De-plasticizing" talks about shopping bags and straws. But quit the
+plastic in medical devices, cables, water pipes, and semiconductors, and
+civilization stops.
+
+[.highlight-box]
+--
+*The structure of the plastic problem:*
+The surface problem: environmental pollution by disposable plastic (bags, straws)
+The essential problem: the infrastructure of modern civilization does not work without plastic
+The unseen problem: the raw material of that plastic (naphtha) comes from oil refining
+--
+
+== Big Companies Exist Because Fossil Resources Exist
+
+Today's big companies — Amazon, Apple, Toyota, Walmart — stand on the
+infrastructure of fossil resources.
+
+[.chain-diagram]
+--
+*The fossil dependency of the infrastructure behind big companies:* +
+*Logistics:* diesel (trucks, ships) + asphalt (roads) + plastic (packaging) +
+*Manufacturing:* naphtha (component materials) + lubricants (machine motion) + synthetic rubber (seals, belts) +
+*Communications:* PVC (cable sheathing) + photoresist (semiconductors) + optical-fiber coating +
+*Food:* polyethylene (packaging) + sulfur (fertilizer) + naphtha (pesticide feedstock) +
+*Construction:* asphalt + PVC piping + insulation (polyurethane) + paint
+--
+
+Amazon's next-day delivery does not exist without asphalt roads and
+plastic packaging. Apple's products cannot be made without semiconductor
+photoresist and polycarbonate housings. Toyota's cars do not run without
+synthetic-rubber seals and lubricants.
+
+Big companies call themselves "technology companies" or
+"manufacturers," but structurally they are "processors of fossil
+resources." Take away the material function of fossil resources and
+their business models collapse.
 
 == Going All-EV Is Reckless
 
-"If every car goes electric, we won't need oil anymore" —
-this idea completely ignores the structure of materials.
-
-=== Refining produces fuel. So use it.
-
-Refine crude oil for naphtha, and gasoline and diesel *inevitably* come out alongside it.
+"Make every car electric and oil will no longer be needed" — this idea
+ignores the structure of refining.
 
 [.chain-diagram]
 --
 *The structural fact of refining:* +
-Plastics, medical devices, and fertilizer feedstock require naphtha +
-→ Naphtha can only be obtained through crude oil refining +
-→ Refining crude oil produces gasoline, diesel, and heavy fuel oil simultaneously +
-→ As long as materials are needed, oil refining cannot stop +
-→ If refining cannot stop, *both gasoline and diesel will keep coming out* +
-→ The fuel that comes out must be used. You cannot even discard it.
+Plastics, medical devices, and fertilizer feedstock need naphtha +
+→ naphtha comes only from refining crude +
+→ refine crude, and gasoline, diesel, and fuel oil come out at the same time +
+→ as long as materials are needed, refining cannot stop +
+→ *the fuel that comes out has to be used. It cannot even be thrown away*
 --
 
-=== Diesel — sectors that cannot electrify
+Diesel cannot be electrified on the demand side either. Heavy trucks
+(battery weight slashes payload), container ships (physically impossible
+to electrify), construction machinery (high load, long hours), farm
+machinery (no charging infrastructure in the field) — none has a
+realistic path to electrification. *It cannot be electrified on the
+demand side, and it always comes out of refining* — diesel will not
+disappear, for two reasons at once.
 
-Diesel users cannot switch to electricity even if they wanted to.
+Gasoline, too, comes out of refining. Make every passenger car an EV and
+the gasoline that comes out has nowhere to go — it is hazardous and
+cannot be dumped, so fuel with no destination keeps piling up. *Under
+the present supply chain*, a hybrid car is the rational choice that uses
+up the gasoline that comes out at high efficiency (it burns more fuel
+than an EV, but wastes no refining by-product, and with its smaller
+battery eases the resource constraint on lithium and cobalt).
 
-[.highlight-box]
---
-*Sectors that are extremely difficult to electrify:*
-Heavy trucks (long-haul transport) → Battery weight destroys payload capacity. Charging time halts logistics.
-Ships → Electrifying large container ships is physically impossible. Heavy fuel oil and diesel are the only realistic options.
-Construction machinery → High-load, long-duration operation. Only small machines can go electric.
-Agricultural machinery → No charging infrastructure in fields. Diesel is the only option.
---
-
-Diesel will not disappear — for two reasons:
-*The users cannot electrify.* And *refining inevitably produces it.*
-
-=== Gasoline — the case for keeping hybrid vehicles
-
-Gasoline also comes out of refining. If it comes out, it should be used.
-
-If all passenger cars go fully electric, the gasoline produced has nowhere to go.
-But gasoline is a hazardous material. It cannot be discarded.
-Fuel with nowhere to go keeps accumulating — this is a structural breakdown.
-
-[.highlight-box]
---
-*Why hybrid vehicles are reasonable under the current refining structure:*
-Refining for naphtha → Gasoline comes out
-→ Hybrid vehicles use that gasoline at high efficiency
-→ More gasoline consumption than EVs, but no refining byproduct goes to waste
-→ Less battery usage (eases resource constraints on lithium and cobalt)
-→ Overall optimization across refining, materials, and energy
---
-
-Going all-EV eliminates the destination for gasoline that refining inevitably produces,
-then generates separate electricity to power cars — *double investment in energy*.
-And yet the all-EV push keeps being pushed — for the same reason as the funding
-split in the previous chapter. Vehicles, charging networks, batteries:
-*every part of it is something you buy, so it never lacks a promoter.*
-And the gasoline cannot be discarded. Hazardous fuel with nowhere to go simply accumulates.
-*Under the current supply-chain structure*, hybrid vehicles are the reasonable choice:
-they use the fuel that comes out anyway.
+Going all-EV erases the destination of the gasoline that refining must
+produce, and then generates electricity separately to drive on — *a
+double investment in energy.* Why, then, does the push for all-EV go on?
+The same picture of money allocation as in the previous chapter explains
+it. Vehicles, charging networks, batteries — *all of it is "a measure you
+buy," and there is no shortage of people pushing it.*
 
 ____
-But this is conditioned on "the refining structure of 2026."
-*What cars should look like on a 20- or 30-year horizon is something this chapter does not answer.*
-That is taken up later.
+This, however, assumes "the refining structure as of 2026."
+*What cars should be on a 20- or 30-year horizon is a question this chapter does not answer.*
 ____
 
 [.highlight-box]
 --
-*Structural fact:*
-Currently, refining costs are covered by revenue from the 86% of oil used as energy (gasoline, diesel).
-The remaining 14% used as chemical feedstock (naphtha, etc.) is supplied cheaply — essentially as a side product.
-If fuel demand drops dramatically, refineries must operate solely for materials.
-Refining costs multiply several times over.
-Naphtha prices skyrocket — plastics, medical devices, fertilizer — everything gets more expensive.
+*A further structural fact:*
+Today, 86% of the cost of oil refining is covered by sales for energy use
+(gasoline, diesel), and the remaining 14% — chemical feedstock such as
+naphtha — is supplied cheaply "on the side." If fuel demand falls
+sharply, oil will be refined for material uses alone, and *the cost of
+refining leaps several-fold.* The price of naphtha soars, and plastics,
+medical devices, fertilizer — everything — soar with it.
 --
 
-The question is not "gasoline cars or EVs."
-It is *how far along bio-material alternatives to naphtha have progressed*.
-Only when bio-materials can replace naphtha does the option
-to scale down oil refining emerge. The order is backwards.
+The question is not "gasoline car or EV." It is *how far the
+substitution of materials (bio-materials) has come.* Only once
+bio-materials can replace naphtha does the option of shrinking oil
+refining appear. The order is backwards.
 
 ____
-Now you can see how wrong climate change policy has been all along. +
-"Stop burning oil" → EVs, renewable energy — this has been mainstream climate policy. +
+Here it becomes visible how wrong past climate policy has been. +
+"Don't burn oil" → EVs and renewables were the mainstream. +
 But as long as materials depend on fossil feedstock, refining cannot stop. +
-Refining produces fuel. That fuel cannot be discarded. It must be used. +
-Yet they generate electricity separately to power cars — double investment. +
-They looked only at CO₂ emissions and ignored the structure of materials. +
-They looked only at energy and ignored the full picture of the refining process. +
-Climate policy should not have started with "stop burning oil." +
-It should have started with *"change the structure that makes materials depend on oil."*
+Leave the fuel unused and generate electricity separately to drive on — a double investment, +
+the result of looking only at CO2 emissions and not at the structure of materials. +
+Climate policy should have begun not with "don't burn oil" but with +
+*"change the structure that makes materials depend on oil."*
 ____
 
 == Fossil Resources Are Finite — Depletion Is Unavoidable
 
-So far, we have examined the structure of refining. As long as materials are needed, refining cannot stop. Fuel comes out. It must be used. That is the current structure.
-
-But this structure itself will not last forever.
-*Because fossil resources are finite.*
+As long as materials are needed, refining cannot stop — that is the
+present structure. But the structure itself does not last forever —
+*because fossil resources are finite.*
 
 [.highlight-box]
 --
-*Oil's remaining extractable years:*
-Approximately 50 years based on proven reserves. Including new discoveries, perhaps 100–150 years.
-But "years of extractable reserves" is a misleading number.
-Depletion does not arrive suddenly. *Extraction costs rise year after year.*
-The cheapest fields are exhausted first. What remains is deep-sea, arctic, oil sands —
-expensive to extract, with massive environmental costs.
-Before oil "runs out," it becomes *too expensive to use*.
+*Oil's reserve life:* about 50 years on proven reserves, 100–150 years
+including new discoveries. But depletion does not arrive all at once;
+*the cost of extraction rises year by year.* The cheap fields are
+exhausted first, leaving deep sea, polar regions, and oil sands —
+costly, and heavy on the environment. *Before oil "runs out," it
+becomes "too expensive to use."*
 --
 
-Natural gas faces the same fate. Ammonia, the basis of nitrogen fertilizer, is made from natural gas. Natural gas has roughly 50 years of extractable reserves. The era when chemical fertilizer feedstock becomes "too expensive to afford" arrives before depletion itself.
+Natural gas is the same. Ammonia, the raw material of nitrogen
+fertilizer, is made from natural gas, and natural gas too has a reserve
+life of about 50 years. *The era when fertilizer feedstock is "too
+expensive to buy" comes before depletion.* A geopolitical shock like the
+Hormuz crisis *fast-forwards* this process in an instant — a blockade or
+an airstrike sends costs leaping overnight.
 
-[.chain-diagram]
---
-*How fossil resources end:* +
-Cheap fields depleted → Extraction costs rise +
-→ Naphtha prices rise → Plastics and fertilizer get expensive +
-→ Food prices soar → Social instability +
-→ Even more costly fields developed → Environmental destruction accelerates +
-→ Eventually extraction becomes economically impossible +
-→ *This process has already begun*
---
-
-Geopolitical risks like the Hormuz crisis *fast-forward this process overnight*. Costs that would rise gradually over 50 years spike in a single night from a blockade or airstrike.
-
-The fact that fossil resources are finite is the foundation of every argument. The structure of depending on fossil resources for materials will inevitably end. The question is not "whether it ends" but "whether alternatives exist when it does."
+The question is not "whether fossil dependency ends," but "whether a
+substitute exists when it does."
 
 == Fossil Resources Themselves Were Once Plants and Microbes
 
-Before going further, the most basic fact at the foundation of this chapter must be stated.
+Here let us confirm the most basic fact underlying this chapter's
+argument.
 
-*Fossil resources are past plants and microorganisms.*
+*Fossil resources are past plants and microbes themselves.*
 
 [.chain-diagram]
 --
-*What fossil resources actually are:* +
-Oil → Marine plankton (algae, zooplankton) from hundreds of millions of years ago, deposited and transformed by heat and pressure underground +
-Natural gas → The same — marine and terrestrial organic matter, decomposed and transformed +
-Coal → Carboniferous-era forests (ferns, gymnosperms) from about 300 million years ago +
-Phosphate rock → Bones and excretions of marine organisms (phosphate salts) deposited over geological time +
-Potash → Evaporite salts from ancient seas and lakes — also entangled with the biosphere
+*What fossil resources really are:* +
+Oil → marine plankton (algae and zooplankton) of hundreds of millions of years ago, deposited +
+        and transformed underground by heat and pressure +
+Natural gas → likewise, marine and terrestrial organic matter decomposed and transformed +
+Coal → the forests of the Carboniferous, about 300 million years ago (ferns, gymnosperms), deposited and transformed +
+Phosphate rock → deposits of the bones and excreta (phosphates) of marine life +
+Potash → the evaporite salts of ancient seas and lakes (the biosphere is involved here too)
 --
 
-When we use "things made from fossil resources," we are in fact *using material that ancient plants and microbes synthesized hundreds of millions of years ago*. Plastics, synthetic fibers,
-chemical fertilizer — trace any of them back and the origin is ancient algae and ferns.
+So when we use "things made from fossil resources," *we are in fact
+using substances made by plants and microbes hundreds of millions of
+years ago.* Plastics, synthetic fibers, chemical fertilizer — trace
+their origin and you arrive at ancient algae and ferns.
 
 [.highlight-box]
 --
-*What the fossil-resource era actually is:*
-The fossil-resource era = *drawing down materials accumulated by past plants and microbes*
-The bio-material era = *using materials being synthesized by current plants and microbes*
-The only difference is the *time axis*. The producer is the same — *plants and microbes*.
+*What the fossil age really is:*
+The fossil age = *the age of drawing down the materials that past plants and microbes stored*
+The bio-material age = *the age of using the materials that present plants and microbes make*
+The only difference is the time axis. *The supplier of materials is the same — plants and microbes.*
 --
 
-This reframes the whole picture.
+The implication is large.
 
-The transition "from fossil resources to bio-materials" is, structurally, a transition
-*from past biological materials to present biological materials*.
-We are not changing to something fundamentally different —
-we are *letting the same biological synthesis run in real time*.
-Earth has always made materials this way. After spending hundreds of millions of years' worth of
-inventory in 100 years, we are simply going back to the active production line.
+The shift "from fossil resources to bio-materials" is in fact a shift
+*"from the biological materials of the past to the biological materials
+of the present."* It is not a change to something entirely different; it
+is *having the same biological synthesis performed in the present tense.*
+The Earth has always made materials this way — after spending several
+hundred million years of inventory in a hundred years, we simply return
+to the production line that is still running.
 
-Whether current plants and microbes can produce the same materials as past ones
-*depends on the diversity and health of today's plants and microbes*.
-That is why:
+And whether present plants and microbes can make the same materials as
+their predecessors *depends on the diversity and health of present plants
+and microbes.* Preserving plant varieties that are being lost, restoring
+soil microbes (regenerative agriculture), securing places to grow diverse
+fungi and algae, refining the techniques that put photosynthesis and
+microbial fermentation to use — these are *direct preparation* of the
+material infrastructure of the post-fossil world.
 
-* preserving plant cultivars that are being lost
-* restoring soil microbes (regenerative agriculture)
-* protecting space for diverse fungi and algae
-* refining the techniques that use photosynthesis and microbial fermentation
-
-— are all *direct preparation* for the post-fossil material infrastructure.
-This is not a separate topic. It is the single story of switching Earth's material-production
-system from past savings to present generation.
+In an age when naphtha-based materials are no longer available, there
+are only two sources of material. *Microbes and plants* — bioplastics
+(PHA by microbial fermentation), bacterial cellulose, mycelium
+(insulation, packaging, building material, leather substitute),
+cellulose and lignin (wood, hemp, bamboo), natural rubber, plant oils,
+starch, microalgae (cultivable while absorbing CO2).
 
 ____
-Fossil resources were a *biological-capital savings account* that Earth filled over hundreds of millions of years.
-We are spending that account down in a single century.
-What we need next is not new technology, but *the conditions in which today's organisms can do the same work*.
+Fossil resources were the *savings box of biological capital* that the Earth filled over hundreds of millions of years.
+We are spending those savings in a hundred years.
+What is needed next is not new technology, but
+*regaining the environment in which present living things can do the same work.*
 ____
-
-== After Fossil Materials — Biology
-
-When fossil resources are depleted, or when material substitution
-advances enough for refining to scale down —
-either way, an era when naphtha-based materials become unavailable is coming.
-The replacement must come from biology:
-
-[.highlight-box]
---
-*Microbial materials:*
-Bioplastics (PHA) from bacterial fermentation. Biodegradable.
-Bacterial cellulose — same principle as nata de coco.
-Bio-adhesives from mycelium.
-Fermented chemicals: ethanol, lactic acid, succinic acid.
---
-
-[.highlight-box]
---
-*Plant materials:*
-Cellulose from wood, hemp, bamboo — paper, fiber, building materials.
-Lignin — adhesive, potential carbon fiber precursor.
-Natural rubber. Plant oils for coatings and lubricants.
-Starch-based biodegradable plastics.
---
-
-[.highlight-box]
---
-*Mycelium (fungal networks):*
-Insulation, packaging, building materials, leather alternatives.
-Grows on agricultural waste. Fully biodegradable.
-Direct replacement candidate for polystyrene foam.
---
-
-[.highlight-box]
---
-*Algae:*
-Microalgae produce bioplastics, food additives, cosmetics, feed.
-Absorb CO₂ while growing. Require no farmland.
-Water, light, and CO₂ — cultivatable anywhere.
---
-
-These bio-materials currently cannot match petroleum plastics on cost or performance.
-That is a fact. But when petroleum plastics become unavailable,
-the question of "inferior performance" becomes irrelevant.
-They are all that remains.
 
 == The Honest Limits of Bio-Materials
 
-Here is what must be said honestly.
-*The transition to bio-materials is not simple.*
-At present, bio-materials are not a comprehensive substitute for petrochemicals.
+Here something must be said honestly. *The move to bio-materials is not
+easy at all.* At present, bio-materials are no comprehensive substitute
+for petrochemical products.
 
 [.highlight-box]
 --
-*Structural problems with bio-materials:*
-*Cost* — Bioplastics (PHA) cost 3–5x more than petroleum plastics. Mass production does not easily close the gap.
-*Scale* — Global plastic production is ~400 million tons/year. Bioplastics account for less than 1%. A 100x scale-up is impossible in 10–20 years.
-*Performance* — Heat resistance, strength, and durability are inferior in many applications. No bio-alternative exists for medical devices or semiconductor photoresists.
-*Land* — Biomass feedstock requires farmland. It competes with food production.
-*Energy* — Fermentation and refining require massive energy. The paradox: "escaping oil" demands enormous energy consumption.
+*The structural problems of bio-materials:*
+*Cost* — bioplastic (PHA) costs three to five times as much to make as oil-based plastic. Mass production does not easily close the gap.
+*Scale* — the world makes about 400 million tonnes of plastic a year. Bioplastics are under 1% of it. A hundredfold scale-up is impossible in 10–20 years.
+*Performance* — in many uses they fall short of oil-based plastics in heat resistance, strength, and durability. There is at present no substitute for medical devices or semiconductor photoresist.
+*Land* — growing biomass feedstock needs farmland, competing with food production.
+*Energy* — fermentation and refining consume vast energy. The paradox of burning a lot of energy to get "off oil."
 --
 
-These are not "technical challenges that will eventually be solved."
-They are physical and biological constraints.
-Microbial growth rates cannot match chemical plant processing speeds.
-Plant growth rates cannot keep up with demand growth.
+These are not "technical problems that will be solved in time." They are
+physical and biological constraints. The growth rate of microbes does not
+match the throughput of a chemical plant. The growth rate of plants does
+not keep up with the growth rate of demand.
 
 === One More Fatal Limit — Bio-Materials Themselves Depend on Chemical Fertilizer
 
-On top of the five constraints above, the most serious one is this:
-*bio-material feedstocks are agricultural products, and modern agriculture cannot grow at scale without chemical fertilizers.* And those fertilizers
-are themselves manufactured from fossil resources.
+Beyond the five constraints above lies the most serious one. *The raw
+materials of bio-materials are farm products, and today's farm products
+cannot be grown at scale without chemical fertilizer.* And chemical
+fertilizer is made from fossil resources themselves.
 
 [.chain-diagram]
 --
-*Fossil-resource dependency of the fertilizers that grow bio-materials:* +
-Nitrogen fertilizer (urea, ammonia) ← Natural gas (Haber-Bosch process) +
-Phosphate fertilizer ← Phosphate rock (70% concentrated in Morocco / Western Sahara) + sulfuric acid + natural gas +
-Potassium fertilizer ← Potash (Russia and Belarus hold ~40% of global supply) +
-Pesticides (insecticides, herbicides, fungicides) ← Many are phosphorus-based or petrochemical-derived +
-Seed-treatment agents and adjuvants ← Petrochemicals and surfactants
+*The fossil dependency of the fertilizer that grows bio-materials:* +
+Nitrogen fertilizer (urea, ammonia) ← natural gas (Haber-Bosch process) +
+Phosphate fertilizer ← phosphate rock (70% concentrated in Morocco and Western Sahara) + sulfuric acid + natural gas +
+Potash fertilizer ← potash ore (Russia and Belarus hold 40% of the world's) +
+Pesticides (insecticides, herbicides, fungicides) ← mostly phosphorus compounds and petrochemicals +
+Seed treatments and spreaders ← petrochemicals and surfactants
 --
 
-In other words, the scenario "replace fossil resources with bio-materials"
-is internally contradictory: *growing bio-materials requires the very fossil-resource-derived chemical fertilizers and pesticides we are trying to escape.* When fossil resources
-shrink, the agricultural foundation of bio-material production shrinks at the same time.
+So the scenario "replace fossil resources with bio-materials" carries a
+self-contradiction: *to grow the bio-materials, you put in fertilizer and
+pesticides derived from fossil resources.* As fossil resources thin, the
+agricultural base for making bio-materials thins at the same time.
 
 [.highlight-box]
 --
-*The double squeeze:*
-Fossil resources → naphtha → petrochemical materials — shrinks
-Fossil resources → chemical fertilizers → industrial agriculture → bio-material feedstock — shrinks at the same time
+*The structure that thins twice:*
+Fossil resources → naphtha → petrochemical materials — thinning
+Fossil resources → chemical fertilizer → large-scale agriculture → bio-material feedstock — thinning at the same time
 --
 
-For phosphate fertilizer specifically, the supply constraint after 2027 is already visible
-(China's March 2026 export halt, the Strait of Hormuz blockade, peak phosphorus).
-The fertilizer constraint hits earlier than the time horizon needed for bio-material mass production to ramp up.
+And for phosphate fertilizer, the supply constraint from 2027 on is
+already in view (China's export halt of March 2026, the blockade of the
+Strait of Hormuz, peak phosphorus). The fertilizer constraint bites
+before the time frame in which mass production of bio-materials is
+supposed to get going.
 
-The full argument lives in a separate series — link:/en/phosphorus-and-farming/[Phosphorus and Farming: When Phosphate Fertilizer Stops Coming] — but the conclusion is:
+The details are argued in the separate series
+link:/en/phosphorus-and-farming/[Phosphorus Depletion and Natural
+Farming], but the conclusion alone is this:
 
 ____
-*The "mass-produce bio-materials to replace fossil resources" scenario only holds if a non-fertilizer-dependent cultivation system (regenerative agriculture, natural farming, mycorrhizal symbiosis) is established in parallel.*
+*The scenario "mass-produce bio-materials as the substitute for fossil resources" holds only if a cropping system that does not depend on chemical fertilizer (regenerative agriculture, natural farming, mycorrhizal symbiosis) can be established at the same time.*
 ____
 
-This is not a "nice to have" — it is a *prerequisite*.
-Without recovery of soil microbes, mycorrhizal networks, and PSB (phosphate-solubilizing bacteria),
-the bio-material scenario does not stand up either.
+This is not "a desirable extra" but *a necessary precondition.*
+Restoring soil microbes, rebuilding mycorrhizal networks, using PSB
+(phosphate-solubilizing bacteria) — until these get going, the
+bio-material scenario does not get going either.
 
-=== Bio-Materials Cannot Make Everything
+=== Where Bio-Materials Cannot Substitute — Cars, Data Centers, Fusion Reactors
 
-Even if the cultivation problem is solved, *vast domains remain that bio-materials simply cannot replace.*
-Next, we examine three pillars of modern civilization — cars, data centers, and fusion reactors —
-to see, concretely, what bio-materials can and cannot replace.
+Even if the cultivation problem were solved, *a mass of domains remains
+in which bio-materials cannot substitute.* Take the three core
+infrastructures of modern civilization in turn.
 
-=== Can bio-materials build a car?
+==== Cars
 
-The car is the clearest illustration of bio-materials' limits.
-EV advocates say "just run on electricity," but they forget
-that *the vehicle itself is a mass of fossil-derived materials*.
-
-|===
-| Component | Current material | Bio alternative | Feasibility
-| Body panels | Steel, aluminum | — | Metals are not fossil-derived (but smelting requires massive energy)
-| Bumpers | Polypropylene (petroleum) | Bioplastics | Insufficient impact absorption
-| Interior (dashboard, etc.) | ABS, polyurethane (petroleum) | Bioplastics, mycelium | Partially possible, but heat resistance issues
-| Seats | Polyurethane foam (petroleum) | Natural latex, mycelium | Several times the cost. Mass production difficult
-| Tires | Synthetic rubber (petroleum) 60% + natural rubber 40% | 100% natural rubber | Rubber tree cultivation has limits. Full substitution impossible
-| Paint | Petroleum-based solvents and resins | Plant oil-based paint | Inferior weathering resistance and gloss
-| Wire insulation | PVC, polyethylene (petroleum) | Bioplastics | Insufficient heat resistance and flame retardancy
-| Brake hoses | Synthetic rubber (petroleum) | Natural rubber | Insufficient heat and oil resistance. Safety-critical
-| Windshield interlayer | PVB (petroleum) | No alternative | Essential for safety glass
-|===
-
-Even an EV uses roughly the same amount of petroleum-derived materials as a combustion engine car, minus the battery.
-*An EV doesn't use oil "when driving," but it cannot be built without oil.*
-
-[.highlight-box]
---
-*The reality cars force us to face:*
-Replacing all automotive components with bio-materials is currently impossible.
-Safety-critical parts (brake hoses, tires, safety glass interlayer) are especially difficult to substitute.
-As long as we keep building cars, petroleum-derived materials are needed,
-oil refining continues, and gasoline and diesel keep coming out.
-This is yet another reason why "going all-EV" is reckless.
---
-
-=== Can bio-materials build a data center?
-
-The very IT companies waving the "decarbonization" flag are doing business atop a mass of fossil resources.
+EV advocates say "just drive on electricity," forgetting that *the car
+body itself is a lump of fossil resources.*
 
 |===
-| Component | Current material | Bio alternative | Feasibility
-| Server housings | ABS, polycarbonate (petroleum) | Bioplastics | Insufficient heat resistance and flame retardancy
-| Circuit boards (PCB) | Epoxy resin + glass fiber (petroleum) | No alternative | Precision and heat resistance required for semiconductor mounting
-| Semiconductor packaging | Epoxy mold compound (petroleum) | No alternative | Nanoscale precision required
-| Photoresist | Photosensitive resin (petrochemical) | No alternative | The foundation of semiconductor fabrication
-| Coolant hoses | Synthetic rubber, PVC (petroleum) | Natural rubber | Insufficient chemical resistance
-| Cable insulation | PVC, polyethylene (petroleum) | Bioplastics | Cannot meet flame-retardancy standards
-| Fiber optic coating | Acrylate (petroleum) | No alternative | Optical precision required
-| Flooring (anti-static) | Petroleum-based vinyl | No alternative | Electrostatic discharge directly destroys equipment
+| Part | Current material | Bio substitute | Reality
+| Body panels | Steel sheet, aluminum | — | Metal is not a fossil resource (though smelting takes vast energy)
+| Bumpers | Polypropylene (oil) | Bioplastic | Insufficient impact absorption
+| Interior (dashboard etc.) | ABS, polyurethane (oil) | Bioplastic, mycelium | Partly possible, but heat resistance is an issue
+| Seats | Polyurethane foam (oil) | Natural latex, mycelium | Several times the cost. Hard to mass-produce
+| Tires | Synthetic rubber (oil) 60% + natural rubber 40% | 100% natural rubber | Rubber-tree cultivation has limits. Full substitution impossible
+| Paint | Oil-based solvents and resins | Plant-oil paints | Inferior weather resistance and gloss
+| Wiring sheathing | PVC, polyethylene (oil) | Bioplastic | Insufficient heat and flame resistance
+| Brake hoses | Synthetic rubber (oil) | Natural rubber | Insufficient heat and oil resistance. A safety part
+| Windshield interlayer | PVB (oil) | None | Indispensable to safety glass
 |===
 
-AI, cloud computing, social media — all run inside boxes built from petrochemical materials. Semiconductor fabrication requires photoresist, which can only be made from petrochemicals. *Digital civilization sits on top of petroleum civilization.*
+Even for an EV, the body structure apart from the battery differs little
+from a combustion car and uses the same quantity of oil-derived
+materials. *An EV merely uses no oil "while driving"; it cannot be made
+"without oil."* The safety-critical parts (brake hoses, tires, the
+safety-glass interlayer) are especially hard to replace.
 
-=== Can bio-materials build a fusion reactor?
+==== Data centers
 
-Nuclear fusion is called the "ultimate clean energy." But few have considered *what the reactor itself is made of*.
+The IT companies waving the "decarbonization" flag do business on a lump
+of fossil resources themselves.
 
 |===
-| Component | Current material | Bio alternative | Feasibility
-| Plasma-facing wall | Tungsten, beryllium | — | Metals. Beyond the scope of substitution
-| Blanket structural material | Reduced-activation ferritic steel | — | Metals
-| Superconducting coil insulation | Epoxy resin + glass fiber (petroleum) | No alternative | Must function at cryogenic temperatures (-269°C)
-| Vacuum vessel seals | Fluorocarbon rubber, synthetic rubber (petroleum) | No alternative | Maintains ultra-high vacuum. Natural rubber cannot
-| Tritium piping seals | Specialized fluoropolymer (petroleum) | No alternative | Prevents radioactive tritium leakage
-| Diagnostic optical windows | Synthetic quartz + petroleum-based coatings | No alternative | Optical measurement in high-radiation environments
-| Control system cables | Radiation-resistant polyimide (petroleum) | No alternative | Standard plastics degrade under radiation
+| Part | Current material | Bio substitute | Reality
+| Server chassis | ABS, polycarbonate (oil) | Bioplastic | Insufficient heat and flame resistance
+| Circuit boards (PCB) | Epoxy resin plus glass fiber (oil) | None | Precision and heat resistance needed for chip mounting
+| Chip packaging | Epoxy mold compound (oil) | None | Nanoscale precision required
+| Photoresist | Photosensitive resin (petrochemical) | None | The root of semiconductor manufacturing
+| Coolant hoses | Synthetic rubber, PVC (oil) | Natural rubber | Insufficient chemical resistance
+| Cable sheathing | PVC, polyethylene (oil) | Bioplastic | Cannot meet flame-retardancy standards
+| Optical-fiber coating | Acrylate (oil) | None | Optical precision required
+| Flooring (anti-static) | Oil-based vinyl | None | Electrostatic discharge destroys equipment
 |===
 
-[.highlight-box]
---
-*The fusion paradox:*
-Fusion is expected to replace oil as an energy source.
-But building a fusion reactor requires petrochemical materials.
-Superconducting coil insulation, vacuum seals, radiation-resistant cables —
-all can only be made from petrochemicals.
-*Without oil, you cannot even build the reactor meant to replace oil.*
---
+AI, the cloud, social media — all of it runs inside boxes made of
+petrochemical materials. The photoresist of chip manufacturing can be
+made only from petrochemicals. *Digital civilization rides on oil
+civilization.*
 
-Cars, data centers, fusion reactors — every pillar of modern civilization's infrastructure cannot exist without petrochemical materials. Bio-materials can substitute only a fraction. This is the most fundamental reason why fossil resources must be used carefully.
+==== Fusion reactors
 
-== And Yet We Have No Choice
+Fusion is called "the ultimate clean energy," but few have asked *what
+the reactor is made of.*
 
-But fossil resources are finite.
-Oil depletes as you extract it. So does natural gas.
-In 100 years, 200 years, they will run out.
-Geopolitical risks like the Hormuz crisis can cut supply overnight.
+|===
+| Part | Current material | Bio substitute | Reality
+| Plasma-facing wall | Tungsten, beryllium | — | Metal. Not even a question of substitution
+| Blanket structure | Reduced-activation ferritic steel | — | Metal
+| Superconducting-coil insulation | Epoxy resin plus glass fiber (oil) | None | Insulation that works at cryogenic temperature (-269°C)
+| Vacuum-vessel seals | Fluoroelastomer, synthetic rubber (oil) | None | Holds ultra-high vacuum. Impossible with natural rubber
+| Tritium-piping seals | Special fluororesin (oil) | None | Prevents leakage of radioactive tritium
+| Diagnostic optical windows | Synthetic quartz plus oil-based coating | None | Optical measurement in a high-radiation environment
+| Control cables | Radiation-resistant polyimide (oil) | None | Ordinary plastics degrade under radiation
+|===
 
-Bio-materials are inferior to petrochemicals — that is a fact.
-But we cannot live on the assumption that petrochemicals will always be available.
-The question is not "inferior, so don't bother."
-It is "inferior, but if we don't start now, we won't make it in time."
+The coil insulation, the vacuum seals, the radiation-resistant cables —
+all can be made only from petrochemicals. *Without oil, we cannot even
+build the reactor for the energy meant to replace oil.*
 
-[.chain-diagram]
---
-*Transition timeline:* +
-Bio-material technology development → 10–20 years +
-Manufacturing scale-up → 20–30 years +
-Social infrastructure conversion → 30–50 years +
-Remaining time with guaranteed oil supply → *Unknown* (geopolitical risks can halt it overnight)
---
-
-This is precisely why we must use existing fossil resources carefully.
-
-== What to Do About Cars in the Future — Don't Decide Now
-
-So far this chapter has shown a 2026 structural analysis: a rushed all-EV transition
-breaks the refining structure; hybrids are the reasonable answer that makes use of
-current refining byproducts; and replacing every part of a car with bio-materials is
-impossible today.
-
-But what cars should look like in 20, 30, or 50 years *is not a question we should try to answer now*.
-
-The future will be decided by elements interacting in ways we cannot yet see.
-
-[.highlight-box]
---
-*Forces moving on a 20-year horizon:*
-Battery technology (solid-state, sodium-ion, semi-solid)
-Autonomy and ownership models (more people not owning cars at all)
-Decentralization of cities (Chapter 11) → fewer people need long-distance commuting
-The shift from desk work to land-based work
-The redesign of public transport
-Stepwise progress in bio-materials
-Synthetic-fuel technology (eFuel, synthetic aviation fuel)
-The timing of fossil-resource constraints (geopolitical risk could pull this forward)
-Agricultural restructuring driven by phosphate-fertilizer constraints
---
-
-How those combine in 20 years cannot be predicted now.
-No one in 2006 who tried to forecast "what cars in 2026 should be" got it right —
-that was before the smartphone, before self-driving, before mass lithium-ion adoption.
-
-The harder we try to lock in the "future car," the further we drift from reality.
-
-[.highlight-box]
---
-*What we can actually do now:*
-. Get the current structural analysis right (a rushed all-EV move breaks refining byproducts, etc.)
-. *Avoid lock-in* — do not freeze "this is the answer" into law and subsidies
-. Prepare societal infrastructure that can adapt to change
-. When it becomes a real question, take it seriously with the conditions of that moment
---
-
-____
-Trying to decide "what future cars should be" with 2026's knowledge will get it wrong.
-We should not try to decide.
-What we should build is *a structure that can respond when the change actually arrives.*
-____
+Cars, data centers, fusion reactors — every infrastructure of modern
+civilization stands on petrochemical materials, and bio-materials can
+replace only part of it. That is the most fundamental reason fossil
+resources must be used with care.
 
 == Building a Society That Can Adapt to Change
 
-What this chapter has shown is the structural interdependence of fossil resources and
-modern civilization, and the constraints inside it. But the conclusion is not "so let's decide
-all the answers now." It is *let's build a society that can adapt to change.*
+What this chapter has shown is the structural interdependence of fossil
+resources and modern civilization, and its constraints. But the
+conclusion is not "so let us decide every answer now." It is *let us
+build a society that can adapt to change.*
 
-=== The core of adaptability — diversity and distributed dependency
+=== The core of adaptability is "distributed dependency" and "diversity"
 
-The most important condition is this: *do not depend too heavily on any single thing. Value diversity.*
+What matters most for that is *not depending too much on any one thing,
+and valuing diversity.*
 
-The more you depend on something specific, the more fragile you become when that thing changes.
-Conversely, *distribute dependencies and preserve diversity, and you can absorb whatever changes*.
-This is the most basic principle from ecology: monoculture is fragile, polyculture is resilient.
-Societies move on the same structure.
+The more you depend on one particular thing, the more fragile you are
+when it changes. Turned around: *distribute dependency and keep
+diversity, and you can respond whatever changes.* This is the most basic
+principle learned from ecosystems. Monoculture is fragile; mixed planting
+is resilient. Society moves by the same structure.
 
 |===
-| Don't over-depend on | Substitute with diversity
-| Specific fossil resources (oil, natural gas, phosphate rock) | Combine bio-materials, renewables, and stockpiled resources
-| Specific source countries (Morocco/Western Sahara phosphate, Russian potash) | Domestic production, alternative sources, recycling, natural farming
-| Specific crops or cultivars (F1 hybrids, monoculture) | Polyculture, heirloom varieties, saved seeds
-| Specific vendors / supply chains (SaaS, SIers, single OS) | OSS, in-house systems, alternative vendors
-| Specific energy sources (electricity, gasoline, diesel) | Diverse energy sources matched to use case
-| Specific regions (Tokyo concentration) | Regional distribution, distributed infrastructure
-| Specific currencies (yen, dollar) | Multi-currency holdings, real assets
-| Specific technologies (proprietary AI) | OSS AI, local inference
-| Specific products from specific companies (Office, Photoshop, Salesforce) | Multiple interoperable choices
-| A specific "right answer" | Flexibility to change the answer
+| Do not depend too much on | Replace with diversity
+| Particular fossil resources (oil, natural gas, phosphate rock) | A combination of bio-materials, renewables, and stored resources
+| Particular import countries (Morocco and Western Sahara for phosphate, Russia for potash) | Domestic production, alternative sources, recycling, natural farming
+| Particular crops and varieties (F1, monoculture) | Mixed cropping, heirloom varieties, seed saving
+| Particular companies and supply chains (SaaS, SIers, a particular OS) | OSS, building your own, alternative vendors
+| Particular energy sources (electricity, gasoline, diesel) | Diverse sources, optimized by use
+| Particular regions (concentration in Tokyo) | Regional dispersion, distributed infrastructure
+| Particular currencies (yen, dollar) | Multiple currencies, real assets
+| Particular technologies (proprietary AI) | OSS AI, local inference
+| Particular products of particular companies (Office, Photoshop, Salesforce) | Several compatible options
+| Particular answers and images of "correct" | The flexibility to change the answer
 |===
 
 ____
-Don't build "this alone is enough."
-Don't build "without this, nothing works."
+Do not create "with this alone, we are fine."
+Do not create "without this, we are done."
 — That is the essence of diversity.
 ____
 
-=== Preserving plant diversity as a material resource
+=== Preserving plant diversity as material
 
-Within diversity, *plant diversity* matters in a specific and underappreciated way.
-This is not just about food. *Plants as materials and resources* form the foundation of any
+Among all diversity, *plant diversity* matters most. Not only for food.
+*Plant diversity as material and resource* becomes the foundation of the
 post-fossil society.
 
-Before fossil resources, humanity drew nearly every material it needed from plants.
+Before fossil resources, humanity drew every material from plants.
 
 |===
-| Use | Plants historically used
-| Fibers | Hemp, ramie, cotton, jute, kuzu (kudzu), kōzo (paper mulberry), mitsumata, gampi
-| Construction & woodwork | Cedar, cypress, pine, oak, chestnut, paulownia, bamboo, zelkova, mulberry
-| Adhesives & coatings | Urushi (Japanese lacquer), pine resin, kakishibu (persimmon tannin), tung oil, linseed oil, perilla oil
-| Rubber & natural polymers | Pará rubber tree, guayule, Russian dandelion, jatropha
-| Dyes | Indigo, safflower, madder, murasaki (gromwell), kariyasu, sappanwood
-| Medicinal feedstocks | Quinine, morphine, taxol (yew), and many medicinal plants
-| Fragrances & essential oils | Cypress, mint, rose, herbs, citrus
-| Oils & fats | Rapeseed, soybean, coconut, palm, perilla, linseed, tung
-| Paper | Kōzo, mitsumata, gampi, various wood pulps
-| Food packaging & vessels | Magnolia leaves, sasa bamboo leaves, bamboo sheath, palm leaves, lotus leaves
-| Bioplastic feedstocks | Potato, corn, sugarcane, cassava
-| Mycelium substrates | Agricultural residues (rice straw, husk, sawdust)
+| Use | Examples of plants that have served
+| Fiber | Hemp, ramie, cotton, banana fiber, kudzu, wisteria, kozo, mitsumata, gampi
+| Building and woodwork | Cedar, cypress, pine, oak, chestnut, paulownia, bamboo, zelkova, mulberry, spindle tree
+| Adhesives and coatings | Lacquer, pine resin, persimmon tannin, tung oil, linseed oil, perilla oil
+| Rubber and resin | Pará rubber tree, guayule, Russian dandelion, jatropha
+| Dyes | Indigo, safflower, madder, gromwell, kariyasu, sappanwood
+| Pharmaceutical raw materials | Quinine, morphine, taxol (yew), many medicinal plants
+| Fragrance and essential oils | Cypress, mint, rose, herbs, citrus
+| Oils and fats | Rapeseed, soybean, coconut, palm, perilla, flax, tung
+| Paper | Kozo, mitsumata, gampi, wood pulps of many kinds
+| Food packaging and containers | Magnolia leaf, bamboo-grass leaf, bamboo sheath, palm leaf, lotus leaf
+| Bioplastic feedstock | Potato, corn, sugarcane, cassava
+| Substrate for mycelium culture | Farm residues of many kinds (straw, rice husk, wood chips)
 |===
 
-But as petroleum-based plastics, synthetic fibers, synthetic dyes, and synthetic medicines
-took over, *the know-how to use these plants and the diversity of cultivars themselves are disappearing rapidly*.
+But with the spread of fossil-based plastics, synthetic fibers, synthetic
+dyes, and synthetic pharmaceuticals, *the know-how of using these plant
+materials and the diversity of their varieties* are being lost fast.
 
-* Domestic urushi production in Japan is *less than 1/100 of its level a century ago*
-* Native Japanese cotton has nearly vanished (replaced by American cotton in the Meiji era)
-* Cultivation of dye plants survives only in specialized craft contexts
-* Medicinal-plant production has become heavily import-dependent
-* Planting of timber species like paulownia and mayumi has plummeted
-* Ramie, kōzo, mitsumata, and gampi farms are at the edge of disappearing as growers age out
+* Domestic lacquer production has fallen to under 1/100 in a hundred years
+* Native cotton has all but vanished (switched to American cotton in the Meiji era)
+* Dye plants survive only in tiny quantities for crafts
+* Medicinal plant production depends on imports from China
+* Planting of building-timber species such as paulownia and spindle tree has collapsed
+* Growers of ramie, kozo, mitsumata, and gampi are aging toward extinction
 
-When these become needed again in a post-fossil world, we must avoid the situation where
-*the plant itself is gone, no one knows how to grow it, and no one knows how to process it*.
-A cultivar that has gone extinct is extremely hard to bring back, and processing know-how —
-even when documented — loses its embodied-skill component.
+When these are needed again in the post-fossil world, we must avoid the
+situation where *"the plant itself no longer exists," "no one knows how
+to grow it," "the processing technique is lost."* A variety once lost is
+extremely hard to restore, and processing techniques, even when
+documented, lose their embodied part.
 
 [.highlight-box]
 --
-*Three layers that must be preserved:*
-. *Genetic resources* — seed banks, farm-level seed saving, botanical gardens,
-   field plots, in-situ tree preservation
-. *Cultivation know-how* — regional traditional knowledge, generational transfer of grower
-   and craftsman skills, experience matching cultivar to climate and soil
-. *Materialization techniques* — urushi tapping, log sawing, paper making, indigo dyeing,
-   herbal processing, oil pressing — AI can document these, but *embodied physical skill can only be preserved by humans*
+*Three layers to preserve:*
+. *Seeds and varieties as genetic resources* — seed banks, farmers' seed saving,
+   botanical gardens, field plots, on-site conservation of trees
+. *The know-how of growing* — regional traditional knowledge, handing down the skills of farmers and artisans,
+   experience in selecting varieties suited to the climate
+. *The techniques of turning plants into material* — lacquer tapping, sawing, papermaking, indigo dyeing, herb processing,
+   oil pressing — AI can document these, but *bodily skill can be kept only by people*
 --
 
-The key to material supply in a post-fossil world is *diverse plant seeds and species*.
-This is not "cultural heritage that should be protected." It is the *physical infrastructure of future materials.*
+The key to the material supply of the post-fossil world is *the seeds
+and the species of diverse plants.* This is not "cultural heritage to be
+protected." It is the material infrastructure of the future itself.
 
 ____
-The plant diversity and materialization techniques we are losing in the fossil-resource era
-are the *physical survival base of the post-fossil era*.
-We do not preserve them out of economic rationality.
-We preserve them because *if we don't, we won't be able to recreate them later*.
+The plant diversity and the material-making techniques that are nearly lost in the fossil age
+are the *physical basis of survival* in the post-fossil age.
+We keep them not for economic rationality. We keep them *because, if we do not, we cannot make them later.*
 ____
 
-=== Conditions of an adaptive society
+=== The order of change cannot be predicted, but preparation is possible
 
-Made concrete at the level of social systems, distributed dependency and diversity look like this.
+"When, and in what order, will change come" cannot be predicted. Climate
+change first, geopolitical risk first, or a technological breakthrough
+first. The phosphate-fertilizer constraint of 2027 is certainly near; the
+rest is unknown.
 
-[.chain-diagram]
---
-*Conditions of an adaptive society:* +
-Understanding the material function of fossil resources → no surprise attacks +
-Policy design that avoids lock-in → no "right answer" frozen into law +
-Implementation of regenerative agriculture → food holds even as chemical fertilizer shrinks +
-Distributed infrastructure → avoid the fragility of central concentration +
-Rebuilt local production and distribution → resilience to logistics shocks +
-Faster learning via education and AI → quicker response to changing conditions +
-Autonomy of individuals and small organizations → insulation from large-corporate / large-state misjudgments
---
-
-"When and in what order change arrives" cannot be predicted.
-Climate first? Geopolitics first? A technology breakthrough first?
-The phosphate-fertilizer constraint of 2027 is certainly close. The rest is unknown.
-
-But *how quickly and intelligently we can respond when change arrives* is something we
-can prepare for now. That is the direction this series' structural analysis points to.
+But *"how fast and how wisely we can respond when change comes" can be
+prepared now.*
 
 ____
-Don't predict the future — *strengthen the capacity to respond to it.*
-Don't decide the answer now — *leave behind a society that can change its answer.*
-Don't bet on one thing — *preserve diversity.*
+Not predicting the future, but *raising the capacity to respond to it.*
+Not deciding the answer now, but *leaving a society that can change its answer.*
+Not betting on one thing, but *keeping diversity.*
 ____
 
-== Use Fossil Resources Wisely
+== Use Fossil Resources With Care — The Time Axis of Strategy
 
-Once you understand that fossil resources are finite,
-the stupidity of current usage becomes clear.
-
-[.highlight-box]
---
-*Current usage:*
-86% of oil is *burned* as energy.
-Once burned, it becomes CO₂ and can never return to material form.
-Only 14% is used as chemical feedstock (naphtha, etc.) for materials.
-We do not have the luxury of burning 86%.
---
-
-But there is a structural contradiction here.
-
-[.highlight-box]
---
-*The structural constraint of refining:*
-When you refine crude oil, naphtha, gasoline, diesel, and heavy fuel oil come out *simultaneously*.
-You cannot extract naphtha alone.
-As long as we need the current volume of chemical feedstock (naphtha), oil refining continues.
-And if refining continues, fuel is inevitably produced as a co-product.
-In other words, "stop burning oil" is structurally impossible as long as material demand persists.
---
-
-So what do we do?
-
-*In the short term, use the fuel that refining produces — but change the demand structure.*
-Disposable plastic waste, excessive packaging, short-lifespan product design —
-reduce these, and naphtha demand drops, refining volume drops, and fuel byproducts drop with it.
-
-*In the medium to long term, reduce naphtha demand itself through bio-materials.*
-As naphtha demand falls, refining volume falls, and fuel byproducts fall.
-Combine this with expanding renewable energy,
-and oil refining can be scaled down step by step.
-
-The transition to renewable energy is not just "for the environment."
-It is also *to extend the usable life of finite fossil resources as materials*.
-But as long as material demand exists, refining cannot stop —
-any vision of "post-oil" that ignores this structural constraint is empty rhetoric.
+Given the structural constraint of refining, the order is this: in the
+short term, use the fuel that refining produces while *cutting the waste
+of disposable plastic, over-packaging, and short-lived design to lower
+naphtha demand itself*; in the medium and long term, reduce naphtha
+demand further with bio-materials, and combined with the expansion of
+renewable energy, shrink refining step by step.
 
 |===
-| Strategy | Short-term (5 yrs) | Mid-term (20 yrs) | Long-term (50 yrs)
-| Energy | Expand renewables. Reduce fuel byproduct dependence | Renewables become primary | Drastically reduce refining volume
-| Materials | Reduce disposables. Lower naphtha demand | Scale up bio-materials | Bio-materials become primary
-| Soil | Begin regenerative agriculture | Restore soil microbiology | Establish biological infrastructure
-| Stockpiles | Create strategic naphtha/fertilizer reserves | Expand reserves | Reserves unnecessary (self-sufficient)
+| Strategy | Short term (5 years) | Medium term (20 years) | Long term (50 years)
+| Energy | Expand renewables, reduce reliance on fuel by-products | Renewables as the main source | Large reduction in refining volume
+| Materials | Cut disposables, reduce naphtha demand | Scale up bio-materials | Bio-materials as the main source
+| Soil | Begin regenerative farming | Restore soil microbes | Establish biological infrastructure
+| Stockpiles | Create strategic stockpiles of naphtha and fertilizer | Expand stockpiles | Stockpiles unnecessary (self-sufficiency)
 |===
 
-== The Connection to Natural Farming
+== Conclusion — Preparing for the Post-Fossil World Begins With Regenerating Soil
 
-Building this biological material infrastructure requires
-massive "biological infrastructure" — microbial cultivation facilities,
-plant growing systems, mycelium production sites.
+The convenience of modern civilization is, in reality, material made
+from fossil resources. Energy can be replaced, but replacing materials
+needs microbes and plants. Yet bio-materials themselves depend on
+chemical fertilizer, and the feedstock of chemical fertilizer also comes
+from fossil resources. And bio-materials cannot make everything (cars,
+semiconductors, fusion reactors).
 
-All of these depend on *healthy soil and biodiversity*.
-
-[.chain-diagram]
---
-*The structural connection:*
-
-Healthy soil → Diverse microorganisms → Bio-material production capacity +
-Degraded soil → Dead biology → No bio-material feedstock
-
-Natural farming rebuilds soil biology. +
-Soil biology is the foundation of post-fossil material supply. +
-Therefore: natural farming is preparation for the post-fossil world.
---
-
-Masanobu Fukuoka wrote "The One-Straw Revolution" in the 1970s,
-right after the first oil crisis. But what he criticized was not
-energy dependency — it was dependency on chemical fertilizers and pesticides.
-The *material* function of fossil resources.
-
-He saw this 50 years before most analysts.
+There is only one road to prepare for the post-fossil world — *regain
+the power to raise microbes and plants, and at the same time establish a
+cropping system that does not depend on chemical fertilizer.* Regenerate
+the soil before the supply constraint on phosphate fertilizer surfaces.
+This is neither "for the environment" nor "a farming matter." It is *a
+necessary precondition for rebuilding the entire infrastructure of modern
+civilization.*
 
 ____
-Natural farming is not a post-petroleum agricultural model. +
-It is a model that existed before petroleum civilization began. +
-Microorganisms and plants supplied materials. Humans lived within that system. +
-That was the original state — and the place we must return to.
-____
-
-== Conclusion — Three Honest Truths
-
-This chapter ends with three structural facts that must be held together at once.
-
-[.highlight-box]
---
-*1. Bio-materials cannot make everything.*
-Cars, data centers, fusion reactors, medical devices, semiconductors — large domains
-remain where bio-materials simply cannot substitute. We need to use the remaining
-fossil materials carefully, for what only they can do.
-
-*2. The transition to bio-materials is not simple.*
-Cost, scale, performance, land, energy — every axis is hard.
-Mass production of bio-materials is a 30–50 year project.
-
-*3. Bio-materials themselves cannot be cultivated without chemical fertilizers.*
-And chemical fertilizers come from fossil resources. The fossil-resource constraint
-hits the agricultural foundation of bio-material production at the same time it hits
-petrochemicals. The only way out is to establish *a cultivation system that does not depend on chemical fertilizers* — regenerative agriculture, mycorrhizal symbiosis, PSB —
-in parallel.
-
-The preparation for the post-fossil world begins with *soil regeneration*.
-This is not "the agriculture story." It is the *prerequisite* for rebuilding the
-material infrastructure of modern civilization.
---
-
-____
-*Related series:* link:/en/phosphorus-and-farming/[Phosphorus and Farming — When Phosphate Fertilizer Stops Coming]
-covers the non-fertilizer-dependent cultivation systems (regenerative agriculture,
-mycorrhizal symbiosis, PSB) at the level of technique, implementation, and operating
-principles. Readers who want to make concrete the "prerequisite" identified in this
-chapter should start there.
+Related series: link:/en/phosphorus-and-farming/[Phosphorus Depletion and Natural Farming — the structural change in food and farming from 2027] argues the cropping system without chemical fertilizer
+(regenerative agriculture, mycorrhizal symbiosis, PSB) at the level of technique, implementation, and operation.
 ____
 endif::[]
 
@@ -2582,208 +2333,249 @@ endif::[]
 ifdef::lang-en[]
 == Without Oil, Fusion Reactors Stop
 
-Nuclear fusion is hailed as the "ultimate energy source."
-Limitless fuel, zero CO₂ emissions, inherent safety —
-the technology expected to solve all energy problems.
+Fusion is spoken of as "the ultimate energy." Inexhaustible fuel, zero
+CO2, safety — it is expected to solve every energy problem.
 
-But the fusion reactor itself cannot operate without petrochemical materials.
+But a fusion reactor itself cannot run without petrochemical materials.
 
 [.highlight-box]
 --
-*Petrochemical materials essential to fusion reactors:*
-Superconducting coil insulation → Epoxy resin + glass fiber (petroleum). Must function at cryogenic temperatures (-269°C). No alternative.
-Vacuum vessel seals → Fluorocarbon rubber, synthetic rubber (petroleum). Maintains ultra-high vacuum. Natural rubber cannot.
-Tritium piping seals → Specialized fluoropolymer (petroleum). Prevents radioactive tritium leakage. No alternative.
-Control system cables → Radiation-resistant polyimide (petroleum). Standard plastics degrade under radiation. No alternative.
-Diagnostic optical windows → Synthetic quartz + petroleum-based coatings. No alternative.
+*Petrochemical materials a fusion reactor cannot do without:*
+Superconducting-coil insulation → epoxy resin plus glass fiber (oil). Insulation that works at cryogenic temperature (-269°C). No substitute.
+Vacuum-vessel seals → fluoroelastomer and synthetic rubber (oil). Holds ultra-high vacuum. Impossible with natural rubber.
+Tritium-piping seals → special fluororesin (oil). Prevents leakage of radioactive tritium. No substitute.
+Control cables → radiation-resistant polyimide (oil). Ordinary plastics degrade under radiation. No substitute.
+Optical windows for diagnostics → synthetic quartz plus oil-based coatings. No substitute.
 --
 
-These components require periodic replacement.
-Insulation and seal materials that degrade under radiation
-must be continuously supplied as consumables.
+These parts need periodic replacement. Insulation and seals that degrade
+in a radiation environment must keep being supplied as consumables.
 
 [.chain-diagram]
 --
-*The fatal dependency of fusion reactors:* +
-Operating a fusion reactor → Components degrade under radiation +
-→ Seals, insulation, cables need replacement +
-→ All are petrochemical materials +
-→ Petrochemical materials require naphtha +
-→ Naphtha requires crude oil refining +
-→ *When oil runs out, fusion reactor replacement parts cannot be made* +
-→ The fusion reactor stops
+*The fatal dependency of a fusion reactor:* +
+Run the reactor → parts degrade under radiation +
+→ seals, insulation, and cables must be replaced +
+→ all of them are petrochemical materials +
+→ petrochemicals need naphtha +
+→ naphtha needs crude-oil refining +
+→ *without oil, the repair parts for the reactor cannot be made* +
+→ the reactor stops
 --
 
-The reactor built to "replace oil" cannot be maintained without oil —
-this is the structural contradiction.
+A fusion reactor built as "the energy that replaces oil" cannot be
+maintained without oil — that is the structural contradiction.
 
 And what a fusion reactor produces is electricity alone.
 
-[.chain-diagram]
+[.highlight-box]
 --
-*What oil refining actually produces:*
-
-Crude oil → Refinery fractionation → +
-LPG, Naphtha, Gasoline, Jet fuel, Diesel, Lubricating oil, Asphalt, *Sulfur*
-
-Nuclear fusion → Electricity +
-*No sulfur. No naphtha. No plastics. No fertilizer.*
+*What fusion produces:* electricity (heat → steam → turbine → power)
+*What fusion does not produce:* sulfur, naphtha, urea, asphalt, lubricants, waxes, solvents
 --
 
-Fusion reactors produce electrons. They do not produce molecules.
-No matter how much electricity you generate, you cannot synthesize
-the sulfur needed for phosphate fertilizer, the naphtha needed for plastics,
-or the chemical precursors needed for pharmaceuticals.
+Oil refining is not an energy-production process. It is a
+material-production process. Gasoline, kerosene, and diesel are only some
+of its products. The other products — sulfur, naphtha, propylene,
+butadiene, asphalt — cannot be replaced by electricity.
 
-== The Sulfur Problem Is Unsolvable by Energy
+== Oil Refining Is the Source of Materials
 
-~90% of global sulfur production comes as a byproduct of oil and gas refining.
-Without refining sour crude oil (2–3% sulfur), there is no sulfur.
-Without sulfur, there is no sulfuric acid.
-Without sulfuric acid, there is no phosphate fertilizer.
-Without phosphate fertilizer, modern agriculture collapses.
+Refine crude oil and it separates, by boiling point, into a range of
+fractions. These fractions make up the material base of modern
+civilization.
 
 [.chain-diagram]
 --
-*The chain that fusion cannot break:*
-
-Fusion → Unlimited electricity → Can electrolyze water → Hydrogen +
-Hydrogen + Nitrogen → Ammonia → Nitrogen fertilizer ✓
-
-*But:* +
-Fusion → Electricity → ??? → Sulfur → *Impossible* +
-No sulfur → No sulfuric acid → No phosphate fertilizer → *Food crisis remains*
+*The main products of crude refining:* +
+Gas fraction → LPG, ethylene, propylene (plastic feedstock) +
+Light fraction → naphtha (food packaging, synthetic fibers, pharmaceuticals) +
+Middle distillates → kerosene, jet fuel, diesel +
+Heavy fraction → fuel oil, lubricants, asphalt +
+By-product → *sulfur* (the raw material of fertilizer)
 --
 
-The hydrogen economy can potentially replace ammonia-based nitrogen fertilizer.
-But it *cannot* replace sulfur-based phosphate fertilizer.
-This is not an engineering challenge. It is a *physical impossibility*.
+Make electricity with fusion and none of these materials appear.
+Electricity cannot make plastic. Electricity cannot make sulfuric acid.
+Electricity cannot make asphalt.
 
-== US Shale Oil Makes It Worse
+== The Mistake in Framing It as an "Energy Problem"
 
-US shale oil is light sweet crude — sulfur content 0.1–0.5%.
-Middle Eastern crude is sour — sulfur content 2–3%.
+The world is trying to solve "the energy problem." Renewables, fusion,
+hydrogen — all aim at "replacing energy."
 
-The sulfur yield difference: *4 to 30 times less* from US shale.
+But oil and natural gas play a double role.
 
 |===
-| Factor | Middle East Sour Crude | US Shale (Light Sweet)
-| Sulfur content | 2–3% | 0.1–0.5%
-| Sulfur yield | High | 4-30x lower
-| Naphtha yield | High (heavy fractions) | Lower
-| Helium | Available from specific fields | Not available
-| Energy value | High | High
-| Material value | *Irreplaceable* | Low
+| Role of oil | Replaceable? | Replaced by fusion?
+| Energy source (combustion → power) | Replaceable (solar, wind, fusion) | Yes
+| Material source (chemical feedstock → products) | Hard to replace (physically required) | No
+| Source of sulfur (refining by-product) | No substitute | No
+| Source of naphtha (chemical feedstock) | No large-scale substitute established | No
 |===
 
-"Energy independence" through shale oil is real.
-"Material independence" is not.
-The US can power itself. It cannot feed itself without Middle Eastern sulfur —
-unless it abandons chemical fertilizer entirely.
+"Solve the energy problem and civilization endures" — that is the error
+in the framing. Energy can be replaced. Materials cannot. The problem is
+not an "energy problem" but a "materials problem."
 
-== What Fusion Advocates Miss
+Then why did the wrong framing become the world standard? The same
+dynamics of money allocation seen in
+link:/en/insights/climate-mistake/[The Climate Change Mistake] work on
+the very way the problem is posed. Replacing energy *can be sold* —
+reactors sell, panels sell, cars sell, charging networks sell. The
+solution to the materials problem — reducing the dependency itself —
+has nothing to keep buying, and cannot be sold. The problem was *cut out
+in a saleable shape and named "the energy problem."*
 
-[.chain-diagram]
---
-*The framing error:*
+== U.S. Shale Oil Does Not Solve It Either
 
-"Energy problem" → "Solve with fusion/solar/wind" → ✓ Possible
+"Even without depending on the Gulf, there is American shale oil" — this
+objection too misses the structure.
 
-*The real problem:*
+U.S. shale is light sweet crude, with very little sulfur (0.1–0.5%).
+Middle Eastern sour crude contains 2–3% sulfur. Most of the world's
+sulfur supply is recovered in the desulfurization step when this sour
+crude is refined.
 
-"Materials problem" → "Solve with ???" → No answer from energy technology
+So however much shale oil the United States produces, it cannot supply
+the sulfur that phosphate fertilizer needs. Fusion cannot solve it, and
+U.S. shale cannot solve it. The sulfur trap is not a problem of energy
+technology but of geology.
 
-Oil provides both energy AND materials. +
-Replacing the energy function is straightforward. +
-Replacing the material function requires biology, not physics.
---
-
-Every dollar spent on fusion research is a dollar not spent on
-soil biology research, microbial material production, or
-plant-based chemical alternatives.
-
-The priority is inverted. And the inversion is no accident — the same
-mechanics as the funding split in
-link:/en/insights/climate-mistake/[The Climate Policy Mistake] are at work in
-how the problem itself gets stated. Substituting energy is *something you can sell* — reactors sell, panels sell, cars sell, charging networks sell.
-The answer to the materials problem — reducing the dependence itself — has
-nothing to keep buying, so there is nothing to sell. The problem was
-*carved into a sellable shape and named "the energy problem."*
-
-== The Real Answer
+Helium is the same. It can be recovered only from gas fields with
+particular geology, it cannot be synthesized (it is an element), and it
+is hard to recycle. A material indispensable to MRI, semiconductor
+manufacturing, and space development depends entirely on particular
+natural-gas fields.
 
 [.highlight-box]
 --
-*What CAN replace fossil materials:*
-
-Soil microorganisms → Bioplastics, fermentation chemicals
-Plants → Cellulose, lignin, natural rubber, fibers
-Mycelium → Packaging, insulation, building materials
-Algae → Bio-oils, chemical feedstocks
-
-*What CANNOT replace fossil materials:*
-
-Nuclear fusion, solar panels, wind turbines, hydrogen fuel cells
-(These produce energy, not materials)
+*The structural limit of "energy independence":*
+Fusion → can make electricity, but not sulfur, naphtha, or helium
+U.S. shale → can make fuel, but recovers far too little sulfur
+Both replace "energy," not "materials."
 --
 
-The replacement for fossil materials is biological, not physical.
-And biological systems require healthy soil.
-And healthy soil requires natural farming.
+== The Sulfur Trap: The Food Crisis Fusion Cannot Solve
+
+The sulfur trap shown in link:/en/insights/agriculture/[The Agriculture
+Mistake] is the clearest example of fusion's limits.
 
 [.chain-diagram]
 --
-*The structural conclusion:*
-
-Fusion → Solves electricity → Does NOT solve materials +
-Materials → Require biology → Biology requires healthy soil +
-Healthy soil → Requires natural farming → Light Farming mechanism +
-*Fusion is irrelevant. Soil is essential.*
+*What happens even with fusion:* +
+Oil refining stops → the supply of sulfur vanishes +
+Fusion can supply electricity → but cannot make sulfur +
+Sulfuric acid cannot be made → phosphate fertilizer cannot be made +
+→ *food production collapses* (regardless of fusion)
 --
+
+About 90% of the world's sulfur production is a by-product of refining oil
+and natural gas. Mining from sulfur deposits is negligible. So if oil
+refining stops, however much electricity fusion supplies, phosphate
+fertilizer cannot be made.
+
+The food crisis is not an energy crisis. It is a materials crisis.
+
+== Can Hydrogen Replace Chemical Feedstock?
+
+"Use fusion electricity to electrolyze water into hydrogen, and
+synthesize chemical feedstock from hydrogen" — so runs one objection.
+
+In theory it is partly right. Ammonia can be synthesized from green
+hydrogen to make nitrogen fertilizer. But there are some fundamental
+constraints.
+
+[.highlight-box]
+--
+*Structural constraints of a hydrogen economy:*
+. Hydrogen can make ammonia → nitrogen fertilizer is possible in theory
+. Hydrogen cannot make sulfur → phosphate fertilizer is impossible
+. Hydrogen cannot make naphtha → packaging and plastics need a substitute
+. CO2 capture plus hydrogen → synthetic fuel is possible, but at ten times the cost or more
+. Scaling up takes 10–20 years → it cannot answer the crisis of the transition period
+--
+
+So a hydrogen economy solves some of the problems, but it is powerless
+against the sulfur trap. The phosphate-fertilizer problem cannot be
+solved by an energy transition.
+
+== The Right Framing
+
+Fusion is a wonderful technology. It will contribute to solving the
+energy problem. But the hope placed in fusion is turning eyes away from
+a more fundamental problem.
+
+[.chain-diagram]
+--
+*The problem, framed correctly:* +
+"How do we replace energy?" +
+↓ +
+"How do we replace the material function of oil refining?" +
+"How do we cope with the part that cannot be replaced (sulfur)?" +
+"How do we get through the transition until the replacement is complete?"
+--
+
+And the most realistic answer for the transition is to reduce the
+dependency on chemical fertilizer — that is, natural farming and
+regenerative agriculture.
+
+____
+Fusion solves the problem of electricity. +
+But the problem of food is solved by soil. +
+Do not confuse a problem of technology with a problem of life.
+____
 
 == The EV Mistake — The Same Structure
 
-EVs (electric vehicles) carry the same structural error as nuclear fusion. They promise to "replace fossil fuels" while requiring massive amounts of fossil resources and rare minerals to manufacture.
+EVs carry the same structural mistake as fusion. While advertised as "the
+replacement for fossil fuel," their manufacture needs fossil resources and
+rare minerals in quantity.
 
 [.highlight-box]
 --
-*Rare resources required for EV manufacturing:*
-Lithium-ion batteries → Lithium, cobalt, nickel, manganese
-Motors → Rare earths (neodymium, dysprosium)
-Lightweight body → Aluminum (enormous energy for smelting)
-Charging infrastructure → Copper (global supply tightening)
-Tires → Synthetic rubber (petrochemical). Natural rubber insufficient for performance
+*Scarce resources needed to build an EV:*
+Lithium-ion battery → lithium, cobalt, nickel, manganese
+Motor → rare earths (neodymium, dysprosium)
+Lightweight body → aluminum (smelting takes vast electricity)
+Charging infrastructure → copper (supply tight worldwide)
+Tires → synthetic rubber (petrochemical). Natural rubber falls short on performance
 --
 
 [.chain-diagram]
 --
-*EV material dependency:* +
-Making EVs → Requires lithium, cobalt, copper, rare earths +
-→ All depend on mining → Mining requires diesel-powered heavy equipment +
-→ Refining requires massive energy and chemical reagents +
-→ Chemical reagent manufacturing requires petrochemicals +
-→ *EVs produce zero CO2 "while driving" — but manufacturing depends on fossil resources*
+*The EV's material dependency:* +
+Build an EV → lithium, cobalt, copper, rare earths are needed +
+→ all depend on mining → mining needs diesel heavy machinery +
+→ refining needs vast energy and chemicals +
+→ making the chemicals needs petrochemicals +
+→ *an EV merely emits no CO2 "while driving"; its manufacture depends on fossil resources*
 --
 
-Over 60% of cobalt is mined in the Democratic Republic of Congo — a supply chain built on child labor and environmental destruction. Lithium is concentrated in Chile, Australia, and China. China controls 90% of the world's rare earth refining.
+More than 60% of cobalt is mined in the Democratic Republic of the Congo,
+a supply chain built on child labor and environmental destruction.
+Lithium is concentrated in Chile, Australia, and China. China controls
+90% of the world's rare-earth refining.
 
 [.highlight-box]
 --
-*The shared structure of fusion and EVs:*
-Fusion → Reactor walls need tungsten and beryllium. Cooling needs lithium. All rare resources
-EVs → Batteries need lithium and cobalt. Motors need rare earths. All rare resources
-Both claim to "replace fossil fuels" while *requiring fossil resources and rare minerals to manufacture*
-Both replace "energy" but not "materials"
+*What fusion and EVs share:*
+Fusion → tungsten and beryllium for the reactor wall, lithium for cooling. All scarce
+EV → lithium and cobalt in the battery, rare earths in the motor. All scarce
+Both are advertised as "the replacement for fossil fuel," yet *fossil resources and rare minerals are indispensable to their manufacture*
+Both replace "energy," not "materials"
 *The same mistake. The same structure.*
 --
 
-____
-The question is not "when will fusion give us unlimited energy." +
-The question is "when will we rebuild the soil biology that gives us materials." +
-Energy can be replaced. Materials require microorganisms and plants. +
-EVs eliminate tailpipe CO2 but cannot eliminate the mining and petrochemicals in their supply chain. +
-Fukuoka knew this. The rest of the world is still asking the wrong question.
-____
+[.highlight-box]
+--
+*Conclusion:*
+Energy can be replaced; materials cannot.
+Fusion supplies electricity but produces neither sulfur nor naphtha.
+EVs cut CO2 while driving, but their manufacture depends on rare minerals and fossil resources.
+The very framing of "the energy problem" is wrong.
+The answer to food security lies not in fusion reactors or EVs, but in the soil.
+--
 endif::[]
 
 // ===== article: part-1-collapse/05-mythos =====
@@ -12382,8 +12174,6 @@ No fertilizer → Minerals cycle through microbial-plant symbiosis +
 
 ADWO asks "how do we keep making chemical fertilizer?"
 But the real question is "*why are we still using chemical fertilizer at all?*"
-
-== This Is What Regulation Redesign Means
 
 == Agricultural Researchers — Another Tax
 

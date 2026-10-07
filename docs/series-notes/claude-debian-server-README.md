@@ -1,5 +1,7 @@
 # サーバー編 — Claudeと一緒に学ぶDebian
 
+> 2026-10-07:サブシリーズをやめ、独立したシリーズ「Claudeと一緒に育てるDebian サーバー」(articles/debian-server.adoc、/debian-server/)になった。以下は元の記録。
+
 **副題: GUIのない世界で、Claudeと一緒に自分のインフラを持つ**
 
 親シリーズ「Claudeと一緒に学ぶDebian」(`../`)のサブシリーズ。親シリーズは
@@ -27,7 +29,7 @@ systemdのサンドボックスで隔離する方針。
 ## ファイル構成
 
 ```
-articles/claude-debian/server/
+articles/debian-server/
 ├── README.md           ── このファイル (JA)
 ├── README.en.md        ── EN 版
 └── NN-slug/            ── サブシリーズ内で 01 から再採番
@@ -44,10 +46,10 @@ articles/claude-debian/server/
 
 | ソース | 出力 | URL |
 |---|---|---|
-| `01-what-is-a-server/ja.md` | `html/claude-debian/server/01-what-is-a-server/index.html` | `/claude-debian/server/01-what-is-a-server/` |
-| `01-what-is-a-server/en.md` | `html/en/claude-debian/server/01-what-is-a-server/index.html` | `/en/claude-debian/server/01-what-is-a-server/` |
-| (サブシリーズ目次・自動生成) | `html/claude-debian/server/index.html` | `/claude-debian/server/` |
-| (サブシリーズ目次・自動生成) | `html/en/claude-debian/server/index.html` | `/en/claude-debian/server/` |
+| `01-what-is-a-server/ja.md` | `html/debian-server/01-what-is-a-server/index.html` | `/debian-server/01-what-is-a-server/` |
+| `01-what-is-a-server/en.md` | `html/en/debian-server/01-what-is-a-server/index.html` | `/en/debian-server/01-what-is-a-server/` |
+| (サブシリーズ目次・自動生成) | `html/debian-server/index.html` | `/debian-server/` |
+| (サブシリーズ目次・自動生成) | `html/en/debian-server/index.html` | `/en/debian-server/` |
 
 ## 章ラベル
 
@@ -71,7 +73,7 @@ frontmatter の `label` は次の形を使う。
 - 親シリーズ目次 (`/claude-debian/`) は先頭にヒーローカードでこの
   サブシリーズへ誘導する(自動生成)。
 - 親シリーズの章リスト本体にこのサブシリーズの章は **含まれない**。
-- サブシリーズ目次 (`/claude-debian/server/`) は親シリーズ目次への
+- サブシリーズ目次 (`/debian-server/`) は親シリーズ目次への
   「← 目次へ戻る」リンクを冒頭に持つ(自動生成)。
 
 ## 章一覧
@@ -96,5 +98,5 @@ slug は確定済み。URL の安定性のため、以後変更しない。
 
 ```bash
 python3 tools/build_article.py --all                                        # 全部
-python3 tools/build_article.py articles/claude-debian/server/01-what-is-a-server/ja.md  # 1章だけ
+python3 tools/build_article.py articles/debian-server/01-what-is-a-server/ja.md  # 1章だけ
 ```

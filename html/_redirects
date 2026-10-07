@@ -26,3 +26,29 @@
 # サーバー編は「Claudeと一緒に育てるDebian サーバー」として独立した(2026-10-07)
 /claude-debian/server/* /debian-server/:splat 301
 /en/claude-debian/server/* /en/debian-server/:splat 301
+
+# 第12章「Windowsを仮想マシンに閉じ込める」を挿したので、第12〜23章は一つ繰り下がった(2026-10-07)
+/claude-debian/12-config-management/* /claude-debian/13-config-management/:splat 301
+/en/claude-debian/12-config-management/* /en/claude-debian/13-config-management/:splat 301
+/claude-debian/13-dev-tools/* /claude-debian/14-dev-tools/:splat 301
+/en/claude-debian/13-dev-tools/* /en/claude-debian/14-dev-tools/:splat 301
+/claude-debian/14-widget-architecture/* /claude-debian/15-widget-architecture/:splat 301
+/en/claude-debian/14-widget-architecture/* /en/claude-debian/15-widget-architecture/:splat 301
+/claude-debian/15-claude-development/* /claude-debian/16-claude-development/:splat 301
+/en/claude-debian/15-claude-development/* /en/claude-debian/16-claude-development/:splat 301
+/claude-debian/16-python-flutter-other/* /claude-debian/17-python-flutter-other/:splat 301
+/en/claude-debian/16-python-flutter-other/* /en/claude-debian/17-python-flutter-other/:splat 301
+/claude-debian/17-updates-maintenance/* /claude-debian/18-updates-maintenance/:splat 301
+/en/claude-debian/17-updates-maintenance/* /en/claude-debian/18-updates-maintenance/:splat 301
+/claude-debian/18-when-things-break/* /claude-debian/19-when-things-break/:splat 301
+/en/claude-debian/18-when-things-break/* /en/claude-debian/19-when-things-break/:splat 301
+/claude-debian/19-growing-environment/* /claude-debian/20-growing-environment/:splat 301
+/en/claude-debian/19-growing-environment/* /en/claude-debian/20-growing-environment/:splat 301
+/claude-debian/20-community/* /claude-debian/21-community/:splat 301
+/en/claude-debian/20-community/* /en/claude-debian/21-community/:splat 301
+/claude-debian/21-telling-others/* /claude-debian/22-telling-others/:splat 301
+/en/claude-debian/21-telling-others/* /en/claude-debian/22-telling-others/:splat 301
+/claude-debian/22-organization-adoption/* /claude-debian/23-organization-adoption/:splat 301
+/en/claude-debian/22-organization-adoption/* /en/claude-debian/23-organization-adoption/:splat 301
+/claude-debian/23-passing-on/* /claude-debian/24-passing-on/:splat 301
+/en/claude-debian/23-passing-on/* /en/claude-debian/24-passing-on/:splat 301

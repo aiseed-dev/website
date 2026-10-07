@@ -342,6 +342,19 @@
 - 外部リンクの生死:239 本を確かめ、404 は三本(aljazeera・npr・project-syndicate、
   いずれも 2026 年のイランの記事)。403/406/429 はボット除けで、死んではいない。
 - リン資源と伝統野菜辞典は近く別の場所へ移る予定だが、いまは触らない(発注者)。
+- 2026-10-07(続き、main 直作業):トップの並びは構造分析 → ソフトウェア開発。aiseed office の
+  カードは外し、サーバー編を独立したシリーズ「Claudeと一緒に育てるDebian サーバー」
+  (articles/debian-server.adoc、/debian-server/、旧 /claude-debian/server/ は 301)として
+  カードにした。関連サイト(aiai.aiseed.dev、weather.time-j.net)はトップのカード
+  (見出し「関連サイト」)とフッター。ブログ一覧とトップの最新記事は description でなく
+  subtitle を出す。「デジタルドア」の記事(046)は削除。
+- 「Claudeと一緒に学ぶDebian」に第12章「Windowsを仮想マシンに閉じ込める」を挿し、旧 12〜23 章は
+  13〜24 に繰り下げ(URL も。旧 URL は 301)。第3部は 9〜13 章、第4部 14〜17、第5部 18〜21、
+  第6部 22〜24。手順は実機で未確認なので「Claude に公式の最新を確かめさせる」書き方。
+  出どころ:Microsoft の Windows 11 要件ページ(2026-07-14 版、VM 対応の明記)、Debian 13 の
+  ovmf 2025.02 / swtpm 0.7.1、virtio-win(fedorapeople、Windows 10 以降は Microsoft 署名)。
+  旧 16 章(いま 17 章「Python・Flutter・その他」)は以前から日英の小節数が合っていない
+  (31 対 27、引用 16 対 10)。今回は触っていない。
 
 ## まだ決めていないこと
 

@@ -836,62 +836,67 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/claude-debian/12-config-management/</loc>
+    <loc>https://aiseed.dev/claude-debian/12-windows-vm/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/claude-debian/13-config-management/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/claude-debian/13-dev-tools/</loc>
+    <loc>https://aiseed.dev/claude-debian/14-dev-tools/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/claude-debian/14-widget-architecture/</loc>
+    <loc>https://aiseed.dev/claude-debian/15-widget-architecture/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/claude-debian/15-claude-development/</loc>
+    <loc>https://aiseed.dev/claude-debian/16-claude-development/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/claude-debian/16-python-flutter-other/</loc>
+    <loc>https://aiseed.dev/claude-debian/17-python-flutter-other/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/claude-debian/17-updates-maintenance/</loc>
+    <loc>https://aiseed.dev/claude-debian/18-updates-maintenance/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/claude-debian/18-when-things-break/</loc>
+    <loc>https://aiseed.dev/claude-debian/19-when-things-break/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/claude-debian/19-growing-environment/</loc>
+    <loc>https://aiseed.dev/claude-debian/20-growing-environment/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/claude-debian/20-community/</loc>
+    <loc>https://aiseed.dev/claude-debian/21-community/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/claude-debian/21-telling-others/</loc>
+    <loc>https://aiseed.dev/claude-debian/22-telling-others/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/claude-debian/22-organization-adoption/</loc>
+    <loc>https://aiseed.dev/claude-debian/23-organization-adoption/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/claude-debian/23-passing-on/</loc>
+    <loc>https://aiseed.dev/claude-debian/24-passing-on/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.6</priority>
   </url>
@@ -961,62 +966,67 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/en/claude-debian/12-config-management/</loc>
+    <loc>https://aiseed.dev/en/claude-debian/12-windows-vm/</loc>
+    <lastmod>2026-10-07</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/claude-debian/13-config-management/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/en/claude-debian/13-dev-tools/</loc>
+    <loc>https://aiseed.dev/en/claude-debian/14-dev-tools/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/en/claude-debian/14-widget-architecture/</loc>
+    <loc>https://aiseed.dev/en/claude-debian/15-widget-architecture/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/en/claude-debian/15-claude-development/</loc>
+    <loc>https://aiseed.dev/en/claude-debian/16-claude-development/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/en/claude-debian/16-python-flutter-other/</loc>
+    <loc>https://aiseed.dev/en/claude-debian/17-python-flutter-other/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/en/claude-debian/17-updates-maintenance/</loc>
+    <loc>https://aiseed.dev/en/claude-debian/18-updates-maintenance/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/en/claude-debian/18-when-things-break/</loc>
+    <loc>https://aiseed.dev/en/claude-debian/19-when-things-break/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/en/claude-debian/19-growing-environment/</loc>
+    <loc>https://aiseed.dev/en/claude-debian/20-growing-environment/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/en/claude-debian/20-community/</loc>
+    <loc>https://aiseed.dev/en/claude-debian/21-community/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/en/claude-debian/21-telling-others/</loc>
+    <loc>https://aiseed.dev/en/claude-debian/22-telling-others/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/en/claude-debian/22-organization-adoption/</loc>
+    <loc>https://aiseed.dev/en/claude-debian/23-organization-adoption/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://aiseed.dev/en/claude-debian/23-passing-on/</loc>
+    <loc>https://aiseed.dev/en/claude-debian/24-passing-on/</loc>
     <lastmod>2026-04-23</lastmod>
     <priority>0.5</priority>
   </url>

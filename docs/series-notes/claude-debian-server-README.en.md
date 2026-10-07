@@ -1,5 +1,7 @@
 # Server Edition — Learning Debian with Claude
 
+> 2026-10-07: no longer a sub-series; now the independent series "Growing a Debian Server with Claude" (articles/debian-server.adoc, /debian-server/). The notes below are the original record.
+
 **Subtitle: Own your infrastructure with Claude, in a world without a GUI**
 
 A sub-series of the parent series "Learning Debian with Claude" (`../`). The
@@ -27,7 +29,7 @@ their own situation. The JA README is [`README.md`](README.md).
 ## Layout
 
 ```
-articles/claude-debian/server/
+articles/debian-server/
 ├── README.md           ── JA version
 ├── README.en.md        ── this file
 └── NN-slug/            ── renumbered from 01 within the sub-series
@@ -44,10 +46,10 @@ the form `claude-debian-server-NN-…`; the URL stem strips that prefix.
 
 | Source | Output | URL |
 |---|---|---|
-| `01-what-is-a-server/ja.md` | `html/claude-debian/server/01-what-is-a-server/index.html` | `/claude-debian/server/01-what-is-a-server/` |
-| `01-what-is-a-server/en.md` | `html/en/claude-debian/server/01-what-is-a-server/index.html` | `/en/claude-debian/server/01-what-is-a-server/` |
-| (sub-series TOC, generated) | `html/claude-debian/server/index.html` | `/claude-debian/server/` |
-| (sub-series TOC, generated) | `html/en/claude-debian/server/index.html` | `/en/claude-debian/server/` |
+| `01-what-is-a-server/ja.md` | `html/debian-server/01-what-is-a-server/index.html` | `/debian-server/01-what-is-a-server/` |
+| `01-what-is-a-server/en.md` | `html/en/debian-server/01-what-is-a-server/index.html` | `/en/debian-server/01-what-is-a-server/` |
+| (sub-series TOC, generated) | `html/debian-server/index.html` | `/debian-server/` |
+| (sub-series TOC, generated) | `html/en/debian-server/index.html` | `/en/debian-server/` |
 
 ## Chapter labels
 
@@ -70,7 +72,7 @@ series (pointing the final chapter's CTA buttons at the parent series is fine).
 - The parent index (`/claude-debian/`) announces this sub-series with a hero
   card at the top (generated).
 - The parent chapter list does **not** include the sub-series chapters.
-- The sub-series index (`/claude-debian/server/`) opens with a back-link to
+- The sub-series index (`/debian-server/`) opens with a back-link to
   the parent index (generated).
 
 ## Chapters
@@ -95,5 +97,5 @@ Slugs are final; do not change them, for URL stability.
 
 ```bash
 python3 tools/build_article.py --all                                        # everything
-python3 tools/build_article.py articles/claude-debian/server/01-what-is-a-server/ja.md  # one chapter
+python3 tools/build_article.py articles/debian-server/01-what-is-a-server/ja.md  # one chapter
 ```

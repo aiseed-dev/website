@@ -3299,7 +3299,7 @@ ifdef::lang-ja[]
 
 ただし、コンテナを使わないということは、コンテナが代わりにやってくれていた「整理」を、自分でやるということでもある。どこにコードを置き、どこに秘密を置き、何をgitで管理し、何をバックアップするか。*コンテナの代わりに秩序を作るのは、ディレクトリ構成の規約だ。* この章は、まずその規約を決めることから始める。
 
-そしてもう一つ。*2026年、アプリのコードはClaudeが書く。* あなたが一行ずつタイプするのではない。本編link:/claude-debian/15-claude-development/[第15章「Claudeとの開発」]で身につけた開発の作法——仕様を言葉にし、書かせ、レビューし、動かして直す——を、今度はサーバーの上で実践する。コードを書くのはClaudeの仕事で、*構成を決め、動かして守るのが、あなたの仕事*だ。
+そしてもう一つ。*2026年、アプリのコードはClaudeが書く。* あなたが一行ずつタイプするのではない。本編link:/claude-debian/16-claude-development/[第16章「Claudeとの開発」]で身につけた開発の作法——仕様を言葉にし、書かせ、レビューし、動かして直す——を、今度はサーバーの上で実践する。コードを書くのはClaudeの仕事で、*構成を決め、動かして守るのが、あなたの仕事*だ。
 
 == 第一節 ディレクトリ構成を決める
 
@@ -3584,7 +3584,7 @@ ____
 
 == 第四節 Claudeと開発を回す
 
-ここまでで、アプリ・データベース・サービスが繋がった。最後に、この先ずっと使う*開発のループ*を型として確認する。本編link:/claude-debian/15-claude-development/[第15章]で身につけた作法の、サーバー版だ。
+ここまでで、アプリ・データベース・サービスが繋がった。最後に、この先ずっと使う*開発のループ*を型として確認する。本編link:/claude-debian/16-claude-development/[第16章]で身につけた作法の、サーバー版だ。
 
 ループはこうだ。*仕様を言葉で伝える → Claudeがコードを書く → あなたがレビューして動かす → エラーをそのまま貼る → 直す。* この輪を回し続けるのが、2026年の開発だ。あなたが一行ずつ書くのではなく、何を作りたいかを正確に伝え、出てきたものを動かして守る。
 
@@ -3655,7 +3655,7 @@ This book never uses containers. There is no Docker, no Kubernetes. *Apps run as
 
 But not using containers means you take on the "tidying" a container would otherwise have done for you. Where the code goes, where the secrets go, what is tracked in git, what gets backed up. *What creates order in place of a container is the convention for your directory layout.* This chapter starts by deciding that convention.
 
-And one more thing. *In 2026, the app's code is written by Claude.* You do not type it out line by line. The development craft you picked up in the main series, link:/en/claude-debian/15-claude-development/[Chapter 15 "Developing with Claude"] — put the spec into words, have it written, review it, run it and fix it — you now practice on a server. Writing the code is Claude's job; *deciding the structure, running it, and protecting it is yours.*
+And one more thing. *In 2026, the app's code is written by Claude.* You do not type it out line by line. The development craft you picked up in the main series, link:/en/claude-debian/16-claude-development/[Chapter 16 "Developing with Claude"] — put the spec into words, have it written, review it, run it and fix it — you now practice on a server. Writing the code is Claude's job; *deciding the structure, running it, and protecting it is yours.*
 
 == Section 1 — Deciding the Directory Layout
 
@@ -3941,7 +3941,7 @@ As in Chapter 6, the trick is to paste *both the unit file and the error log*. W
 
 == Section 4 — Running the Development Loop with Claude
 
-By now the app, the database, and the service are connected. Finally, confirm as a pattern the *development loop* you will use from here on. It is the server version of the craft you picked up in the main series, link:/en/claude-debian/15-claude-development/[Chapter 15].
+By now the app, the database, and the service are connected. Finally, confirm as a pattern the *development loop* you will use from here on. It is the server version of the craft you picked up in the main series, link:/en/claude-debian/16-claude-development/[Chapter 16].
 
 The loop is this. *Put the spec into words → Claude writes the code → you review and run it → paste the error as-is → fix.* Keeping that circle turning is development in 2026. You don't write line by line; you convey accurately what you want to make, then run and protect what comes out.
 
@@ -4448,7 +4448,7 @@ OSそのもの（`/usr` や `/bin`、パッケージで入ったファイル）�
 
 ここで一つ、作法を分ける。
 
-*設定（テキストファイル）は、git で管理する。* これは本編link:/claude-debian/12-config-management/[第12章「設定管理の作法」]でデスクトップ向けにやったことの、そのままサーバー版だ。`Caddyfile` も自作 unit も、すべてテキストだ。テキストは git が最も得意とする。変更の履歴が残り、「いつ・なぜこの設定にしたか」が後から辿れる。
+*設定（テキストファイル）は、git で管理する。* これは本編link:/claude-debian/13-config-management/[第13章「設定管理の作法」]でデスクトップ向けにやったことの、そのままサーバー版だ。`Caddyfile` も自作 unit も、すべてテキストだ。テキストは git が最も得意とする。変更の履歴が残り、「いつ・なぜこの設定にしたか」が後から辿れる。
 
 *データ（写真や文書やデータベース）は、バックアップツールで取る。* こちらはテキストではなく、量も大きく、頻繁に変わる。git には向かない。専用のバックアップツール（このあと使う restic）の仕事だ。
 
@@ -4758,7 +4758,7 @@ The OS itself (`/usr`, `/bin`, files installed by packages) you can, as a rule, 
 
 Here, split the craft in two.
 
-*Configuration (text files) goes under git.* This is simply the server version of what you did for the desktop in link:/en/claude-debian/12-config-management/[Chapter 12, "The Craft of Config Management"] of the main series. The `Caddyfile`, your home-grown units — all of it is text. Text is exactly what git is best at. The history of changes stays, and "when and why did I set it this way" can be traced afterward.
+*Configuration (text files) goes under git.* This is simply the server version of what you did for the desktop in link:/en/claude-debian/13-config-management/[Chapter 13, "The Craft of Config Management"] of the main series. The `Caddyfile`, your home-grown units — all of it is text. Text is exactly what git is best at. The history of changes stays, and "when and why did I set it this way" can be traced afterward.
 
 *Data (photos, documents, databases) is taken with a backup tool.* This is not text; it is large in volume and changes often. It is unsuited to git. It is the job of a dedicated backup tool — restic, which we use next.
 
@@ -5163,7 +5163,7 @@ sudo needrestart
 
 ここで、Debianという土台の性格を一段深く理解しておきたい。Debianの安定版（あなたが入れた trixie）は、*約2年ごとにメジャーリリース*が出る。その間は、機能を大きく変えず、セキュリティ修正とバグ修正だけを当て続ける（これがポイントリリース）。だから日々の `full-upgrade` で、いきなり世界が変わることはまずない。*「安定して、予測可能で、退屈」——これがサーバー向けDebianの最大の美点だ。*
 
-数年に一度、次のメジャーリリースへ上げる日が来る。これは日々の更新とは別物で、心構えが要る作業だ。本編link:/claude-debian/17-updates-maintenance/[第17章「アップデートとメンテナンス」]でデスクトップ向けに書いた作法——更新前にバックアップ、リリースノートを読む、一気にやらず段階を踏む——が、サーバーでもそのまま効く。そしてサーバーには第10章のバックアップと復元演習があるから、メジャーアップグレードに踏み切る不安はずっと小さい。最悪でも、バックアップから戻せる。
+数年に一度、次のメジャーリリースへ上げる日が来る。これは日々の更新とは別物で、心構えが要る作業だ。本編link:/claude-debian/18-updates-maintenance/[第18章「アップデートとメンテナンス」]でデスクトップ向けに書いた作法——更新前にバックアップ、リリースノートを読む、一気にやらず段階を踏む——が、サーバーでもそのまま効く。そしてサーバーには第10章のバックアップと復元演習があるから、メジャーアップグレードに踏み切る不安はずっと小さい。最悪でも、バックアップから戻せる。
 
 === Claudeに聞いてみよう②：定例チェックの出力で健康診断
 
@@ -5185,7 +5185,7 @@ ____
 
 === デスクトップ編の作法は、サーバーでもそのまま効く
 
-サーバーも、いつかは壊れる。あるいは、設定をいじって動かなくなる。そのとき頼りになるのは、本編link:/claude-debian/18-when-things-break/[第18章「問題が起きた時の対処」]で身につけた作法だ。*焦って再インストールしない。症状を切り分ける。ログを取る。Claudeに渡す。* この型は、デスクトップでもサーバーでも変わらない。
+サーバーも、いつかは壊れる。あるいは、設定をいじって動かなくなる。そのとき頼りになるのは、本編link:/claude-debian/19-when-things-break/[第19章「問題が起きた時の対処」]で身につけた作法だ。*焦って再インストールしない。症状を切り分ける。ログを取る。Claudeに渡す。* この型は、デスクトップでもサーバーでも変わらない。
 
 ただし、一つだけ決定的な違いがある。*サーバーには画面がない。* デスクトップなら、最悪その場の画面を見て操作できた。サーバーは普段リモートから入っているから、SSHが死ぬと「入る手段そのもの」を失う。
 
@@ -5225,7 +5225,7 @@ ____
 
 今のサーバーに、新しいサービスを足していく。写真サーバーの次はメモ同期、その次は家計簿、その次は——と、自前化したいものを一つずつ増やす。第6章のサービスの作法、第7章のデータベース、第8章のFastAPIの型があれば、新しいサービスを足すのは難しくない。
 
-そして最も面白いのは、*自分で作ったアプリを載せること*だ。本編link:/claude-debian/15-claude-development/[第15章「Claudeとの開発」]で、Claudeと一緒に小さなアプリを作る話をした。そこで作ったアプリを、このサーバーに載せて、いつでもどこからでも使えるようにする。「Claudeと作って、自分のサーバーで動かす」——これは、個人が持てる最も完結した循環だ。
+そして最も面白いのは、*自分で作ったアプリを載せること*だ。本編link:/claude-debian/16-claude-development/[第16章「Claudeとの開発」]で、Claudeと一緒に小さなアプリを作る話をした。そこで作ったアプリを、このサーバーに載せて、いつでもどこからでも使えるようにする。「Claudeと作って、自分のサーバーで動かす」——これは、個人が持てる最も完結した循環だ。
 
 === 二. 二台目を持つ
 
@@ -5235,7 +5235,7 @@ ____
 
 これが最も本質的な「次の一手」だ。今あなたがやっているセットアップ手順——どのパッケージを入れ、どう設定し、どのサービスを動かすか——を、頭の中やバラバラのメモから、*一つのスクリプトとドキュメント*にまとめ、git に置く。
 
-なぜこれが本質的か。*手順がテキストになっていれば、Claudeと一緒に何度でも再現できるからだ。* 新しいサーバーを立てるとき、スクリプトを流せば同じ環境ができる。手順を変えたくなったら、Claudeに相談して書き換える。第10章の再構築演習で見つけた「抜けていた手順」を、ここに埋めていく。サーバーが「自分の頭の中にしかない属人的なもの」から、「テキストで再現できる資産」に変わる。これは、本編link:/claude-debian/12-config-management/[第12章]の設定管理を、サーバー全体に押し広げることに他ならない。
+なぜこれが本質的か。*手順がテキストになっていれば、Claudeと一緒に何度でも再現できるからだ。* 新しいサーバーを立てるとき、スクリプトを流せば同じ環境ができる。手順を変えたくなったら、Claudeに相談して書き換える。第10章の再構築演習で見つけた「抜けていた手順」を、ここに埋めていく。サーバーが「自分の頭の中にしかない属人的なもの」から、「テキストで再現できる資産」に変わる。これは、本編link:/claude-debian/13-config-management/[第13章]の設定管理を、サーバー全体に押し広げることに他ならない。
 
 === Claudeに聞いてみよう④：次の一手を相談する
 
@@ -5263,7 +5263,7 @@ ____
 
 === あなたの問いの立て方とともに、サーバーは育つ
 
-最後に、本編の結章（link:/claude-debian/23-passing-on/[第23章「次世代への継承」]）と同じことを、サーバーの言葉で書いておく。
+最後に、本編の結章（link:/claude-debian/24-passing-on/[第24章「次世代への継承」]）と同じことを、サーバーの言葉で書いておく。
 
 Claudeは進化し続ける。数年後には、もっと強いClaudeが出ているだろう。だが、*「自分の状況をテキストにして渡し、返った答えを吟味して、自分で判断する」という基本は変わらない。* あなたのサーバーは、性能の良いハードや高価なソフトでではなく、*あなたの問いの立て方とともに育っていく。* 何を載せるか、何を守るか、どこで止めるか——それを決めるのは、最後まであなただ。
 
@@ -5278,7 +5278,7 @@ Claudeは進化し続ける。数年後には、もっと強いClaudeが出て�
 . サーバーは「作って終わり」ではなく「育てる」ものであり、週に15分の定例で回る設計を目指すと定めた
 . 見守りの最小セット（`weekly-check.sh`）を作り、出力をまるごとClaudeに渡して健康診断する運用を身につけた
 . 保守のリズム（日々は unattended-upgrades に自動、月次は手動の `full-upgrade` と再起動判断）と、Debian安定版の世界観を確認した
-. 壊れたときの型（本編第18章の作法、SSHが死んだときの退路、最悪は作り直す）を整えた
+. 壊れたときの型（本編第19章の作法、SSHが死んだときの退路、最悪は作り直す）を整えた
 . 次の一手（載せるものを増やす／二台目／構成のコード化）の三方向を、自分の目的・時間・予算でClaudeと相談した
 
 手元に残ったもの：
@@ -5387,7 +5387,7 @@ When the kernel is updated, a reboot is needed. As written in Chapter 1, a serve
 
 Here, let us understand the character of the Debian foundation one level more deeply. Debian stable (trixie, which you installed) gets a *major release roughly every two years*. In between, it keeps applying only security and bug fixes without changing functionality much (these are the point releases). So a daily `full-upgrade` will almost never make the world suddenly change on you. *"Stable, predictable, and boring" — this is the greatest virtue of Debian for servers.*
 
-Once every few years, the day comes to move up to the next major release. This is a different beast from the daily updates, and it takes a frame of mind. The craft written for the desktop in link:/en/claude-debian/17-updates-maintenance/[Chapter 17, "Updates and Maintenance"] of the main series — back up before updating, read the release notes, take it in stages rather than all at once — works as-is on a server too. And because a server has the backup and restore rehearsal of Chapter 10, the anxiety of committing to a major upgrade is far smaller. At worst, you can come back from a backup.
+Once every few years, the day comes to move up to the next major release. This is a different beast from the daily updates, and it takes a frame of mind. The craft written for the desktop in link:/en/claude-debian/18-updates-maintenance/[Chapter 18, "Updates and Maintenance"] of the main series — back up before updating, read the release notes, take it in stages rather than all at once — works as-is on a server too. And because a server has the backup and restore rehearsal of Chapter 10, the anxiety of committing to a major upgrade is far smaller. At worst, you can come back from a backup.
 
 === Ask Claude ②: Health-Check the Routine Output
 
@@ -5409,7 +5409,7 @@ Do this every week and Claude picks up changes like "the disk grew 2% from last 
 
 === The Desktop Edition's Craft Works on a Server As-Is
 
-A server, too, will break someday. Or you tinker with the config and it stops working. What you rely on then is the craft you picked up in link:/en/claude-debian/18-when-things-break/[Chapter 18, "Dealing with Problems When They Arise"] of the main series. *Do not panic-reinstall. Isolate the symptom. Capture the logs. Hand them to Claude.* This pattern is the same on desktop and on server.
+A server, too, will break someday. Or you tinker with the config and it stops working. What you rely on then is the craft you picked up in link:/en/claude-debian/19-when-things-break/[Chapter 19, "Dealing with Problems When They Arise"] of the main series. *Do not panic-reinstall. Isolate the symptom. Capture the logs. Hand them to Claude.* This pattern is the same on desktop and on server.
 
 But there is one decisive difference. *A server has no screen.* On a desktop, at worst you could look at the screen in front of you and operate. Since you normally enter a server remotely, when SSH dies you lose "the very means of getting in."
 
@@ -5449,7 +5449,7 @@ By now you can operate a single server. Assemble, publish, protect, watch, maint
 
 Add new services onto your current server. After the photo server, note sync; after that, household accounts; after that — adding things you want to self-host, one at a time. With the service craft of Chapter 6, the database of Chapter 7, and the FastAPI pattern of Chapter 8, adding a new service is not hard.
 
-And the most interesting of all is to *carry an app you built yourself.* In link:/en/claude-debian/15-claude-development/[Chapter 15, "Development with Claude"] of the main series, we talked about building a small app together with Claude. Take the app you built there, carry it on this server, and make it usable anytime, anywhere. "Build with Claude, run on your own server" — this is the most self-contained loop an individual can hold.
+And the most interesting of all is to *carry an app you built yourself.* In link:/en/claude-debian/16-claude-development/[Chapter 16, "Development with Claude"] of the main series, we talked about building a small app together with Claude. Take the app you built there, carry it on this server, and make it usable anytime, anywhere. "Build with Claude, run on your own server" — this is the most self-contained loop an individual can hold.
 
 === 2. Own a Second Machine
 
@@ -5459,7 +5459,7 @@ Once you can run one machine, owning a second becomes an option. Split the roles
 
 This is the most essential "next move." Take the setup steps you now perform — which packages to install, how to configure them, which services to run — and consolidate them from your head and scattered notes into *a single script and document*, and put it in git.
 
-Why is this essential? *Because once the steps are text, you can reproduce them any number of times together with Claude.* When you set up a new server, run the script and the same environment comes up. When you want to change a step, consult Claude and rewrite it. Fill in here the "missing steps" you found in the Chapter 10 rebuild rehearsal. The server changes from "something personal that exists only in your head" into "an asset reproducible as text." This is nothing other than spreading the config management of link:/en/claude-debian/12-config-management/[Chapter 12] of the main series across the whole server.
+Why is this essential? *Because once the steps are text, you can reproduce them any number of times together with Claude.* When you set up a new server, run the script and the same environment comes up. When you want to change a step, consult Claude and rewrite it. Fill in here the "missing steps" you found in the Chapter 10 rebuild rehearsal. The server changes from "something personal that exists only in your head" into "an asset reproducible as text." This is nothing other than spreading the config management of link:/en/claude-debian/13-config-management/[Chapter 13] of the main series across the whole server.
 
 === Ask Claude ④: Consult on the Next Move
 
@@ -5487,7 +5487,7 @@ Not long ago, standing up and operating a single server was the work of a dedica
 
 === The Server Grows Along with How You Frame Your Questions
 
-Finally, let me write, in the language of servers, the same thing as the closing chapter of the main series (link:/en/claude-debian/23-passing-on/[Chapter 23, "Passing It On"]).
+Finally, let me write, in the language of servers, the same thing as the closing chapter of the main series (link:/en/claude-debian/24-passing-on/[Chapter 24, "Passing It On"]).
 
 Claude keeps evolving. In a few years a stronger Claude will be out. But *the basics — "put your situation into text and hand it over, weigh the answer that comes back, decide for yourself" — do not change.* Your server grows not on high-performance hardware or expensive software, but *along with how you frame your questions.* What to carry, what to protect, where to stop — to the very end, it is you who decides.
 
@@ -5502,7 +5502,7 @@ What you did in this chapter:
 . Set that a server is not "done when built" but "grown," and aimed for a design that runs on fifteen minutes of routine a week.
 . Built the minimal watching set (`weekly-check.sh`) and picked up the practice of handing the whole output to Claude for a health check.
 . Confirmed the rhythm of maintenance (daily automatic via unattended-upgrades, monthly manual `full-upgrade` and reboot decision) and the worldview of Debian stable.
-. Laid out the pattern for when things break (the craft of main-series Chapter 18, escape routes when SSH dies, rebuild at worst).
+. Laid out the pattern for when things break (the craft of main-series Chapter 19, escape routes when SSH dies, rebuild at worst).
 . Consulted Claude on the three directions of the next move (add more to carry / a second machine / encode the configuration as code) by your own goal, time, and budget.
 
 What you hold now:

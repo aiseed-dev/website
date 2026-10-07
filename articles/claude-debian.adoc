@@ -3269,10 +3269,10 @@ of these depend much on what the DE looks like.
 Given that, *a lean DE is an advantage*, not a compromise.
 
 * Memory and CPU stay with the work (editor, browser, Python).
-* Old PCs keep being useful (matches Chapter 17's "revive old hardware").
+* Old PCs keep being useful (matches Chapter 18's "revive old hardware").
 * The DE itself is less likely to break across updates.
 * Settings are simple enough to be tracked as Markdown (matches the
-  Chapter 12 dotfiles workflow).
+  Chapter 13 dotfiles workflow).
 
 We compare four candidates below, but *Xfce / LXQt and similarly thin DEs are not a "safe compromise" — they can be the first AI-native choice.* Read with that lens.
 
@@ -4399,7 +4399,7 @@ ____
 * 日常で使えるDebian環境
 * 躓いたときの自分専用のログ
 
-ここで第2部（インストール）が終わる。次の第3部（第9〜12章）では、*日常環境の構築*に入る。デスクトップ環境の深い使いこなし、日本語入力の仕上げ、日常アプリケーションの選択、設定ファイルの管理を Claude と一緒に進める。
+ここで第2部（インストール）が終わる。次の第3部（第9〜13章）では、*日常環境の構築*に入る。デスクトップ環境の深い使いこなし、日本語入力の仕上げ、日常アプリケーションの選択、設定ファイルの管理を Claude と一緒に進める。
 
 '''
 
@@ -4728,7 +4728,7 @@ Where you are now:
 * A Debian environment usable day to day.
 * A personal log for when things stumble.
 
-This closes Part 2 (Installation). In Part 3 (Chapters 9–12), we move into *building the daily environment*. Going deeper into the desktop environment, finalizing Japanese input, choosing daily-use applications, and managing config files — together with Claude.
+This closes Part 2 (Installation). In Part 3 (Chapters 9–13), we move into *building the daily environment*. Going deeper into the desktop environment, finalizing Japanese input, choosing daily-use applications, and managing config files — together with Claude.
 
 '''
 
@@ -4786,7 +4786,7 @@ DE は次の 3 役だけ満たせば十分:
 これだけなら、Xfce や LXQt のような *薄い DE* でも何の不都合もない。
 「GNOME / KDE じゃないと作業できない」という人は、たいてい *作業の中身が DE 依存になっている*(画面の見た目に依存する仕事をしている)。
 
-本書の立場では、*Zed / Neovim を中心に置き、ブラウザ + ターミナルで 1 日が回る*なら、DE は最小で十分。第 13 章のエディタ三選(Zed / Neovim /
+本書の立場では、*Zed / Neovim を中心に置き、ブラウザ + ターミナルで 1 日が回る*なら、DE は最小で十分。第 14 章のエディタ三選(Zed / Neovim /
 PyCharm)と組み合わせれば、DE が薄くても困らない。
 
 === Claudeに聞いてみよう①：一週間の使用感を整理
@@ -4999,7 +4999,7 @@ typically have *work whose substance has become DE-dependent* (the
 visual chrome of the screen has bled into the job).
 
 In this book's stance, *with Zed / Neovim at the center and browser + terminal carrying the day, the DE can stay minimal.* Combined with the
-three editors of Chapter 13 (Zed / Neovim / PyCharm), a thin DE is
+three editors of Chapter 14 (Zed / Neovim / PyCharm), a thin DE is
 fine.
 
 === Ask Claude ①: Sort Through a Week of Usage
@@ -5731,8 +5731,8 @@ cta_text.ja: 「Officeの代わりに何？」という問いには、文脈ご�
 cta_text.en: To "what replaces Office?" there are several answers depending on context. Talk it through with Claude and narrow down to the best fit for your use.
 cta_btn1_text.ja: 第12章へ進む
 cta_btn1_text.en: Continue to Chapter 12
-cta_btn1_link.ja: /claude-debian/12-config-management/
-cta_btn1_link.en: /en/claude-debian/12-config-management/
+cta_btn1_link.ja: /claude-debian/12-windows-vm/
+cta_btn1_link.en: /en/claude-debian/12-windows-vm/
 cta_btn2_text.ja: 第10章に戻る
 cta_btn2_text.en: Back to Chapter 10
 cta_btn2_link.ja: /claude-debian/10-japanese-input/
@@ -5854,7 +5854,7 @@ flatpak install flathub com.github.tchx84.Flatseal
 | Bitwarden / Signal / Element | *Flatpak* | 同上、暗号化アプリは新しいほうが安心
 | OBS / Krita / Inkscape / GIMP(最新) | *Flatpak* | apt 版だと数バージョン古い
 | 開発ツール(Python / git / Docker) | *apt* | サンドボックスがむしろ邪魔
-| エディタ・IDE(Zed / Neovim / PyCharm) | *Flatpak*(Neovim は apt) | 詳細は第 13 章。VS Code は本書では推奨しない
+| エディタ・IDE(Zed / Neovim / PyCharm) | *Flatpak*(Neovim は apt) | 詳細は第 14 章。VS Code は本書では推奨しない
 |===
 
 === Snap には触れない
@@ -6062,7 +6062,7 @@ flatpak install flathub org.onlyoffice.desktopeditors
 * *複雑な Excel マクロの置き換え*：VBA を捨て、Python スクリプトで書き直す。*翌月も翌年も同じコードで動く*
 * *複数ファイル横断*：何十枚もの Excel を一括処理（人間が GUI で開いて回るのは時間の無駄）
 
-uv で隔離環境を切るのが楽だ（詳細は第16章）。
+uv で隔離環境を切るのが楽だ（詳細は第17章）。
 
 ```bash
 uv init my-report && cd my-report
@@ -6371,7 +6371,7 @@ ____
 * 日常で使えるDebianアプリ一式
 * 移行計画表
 
-次の第12章「設定の理解と管理」では、Debianの設定ファイルの場所、dotfilesの管理、バックアップ、Gitでの追跡を扱う。自分の環境を*ドキュメントとして残す*作法を身につける。
+次の第12章「Windowsを仮想マシンに閉じ込める」では、代替のないアプリの行き先を作る。Debian の中に小さな Windows を一台立て、数えるほどの物だけを入れる。
 
 '''
 
@@ -6495,7 +6495,7 @@ This book's recommendation:
 | Bitwarden / Signal / Element | *Flatpak* | Same; encryption apps benefit from being current
 | OBS / Krita / Inkscape / GIMP (latest) | *Flatpak* | apt versions lag
 | Dev tools (Python / git / Docker) | *apt* | Sandboxing is in the way
-| Editors / IDEs (Zed / Neovim / PyCharm) | *Flatpak* (Neovim is apt) | See Chapter 13. This book does not recommend VS Code
+| Editors / IDEs (Zed / Neovim / PyCharm) | *Flatpak* (Neovim is apt) | See Chapter 14. This book does not recommend VS Code
 |===
 
 === Skip Snap
@@ -6704,7 +6704,7 @@ Anything "you actually compute" should leave OnlyOffice and live in Python.
 * *Replacing complex Excel macros.* Drop VBA; rewrite in Python. *The same script keeps working next month and next year.*
 * *Cross-file work.* Process dozens of Excel files in one pass (opening them by hand in a GUI is wasted time).
 
-Use `uv` to keep environments isolated (details in Chapter 16).
+Use `uv` to keep environments isolated (details in Chapter 17).
 
 ```bash
 uv init my-report && cd my-report
@@ -7012,39 +7012,325 @@ Where you are now:
 * A set of Debian apps usable for daily life.
 * A migration plan.
 
-In Chapter 12, "Understanding and Managing Configuration," we cover where Debian's configuration files live, dotfiles management, backup, and tracking with Git. Get into the practice of *leaving your environment as documentation*.
+In Chapter 12, "Confining Windows to a Virtual Machine," we build the destination for the apps with no substitute: one small Windows inside Debian, holding only that handful.
 
 '''
 
 The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
-// ===== article: 12-config-management =====
+// ===== article: 12-windows-vm =====
 ---
-slug: claude-debian-12-config-management
+slug: claude-debian-12-windows-vm
 number: 12
-title.ja: 第12章 設定の理解と管理
-title.en: Chapter 12 — Understanding and Managing Configuration
+title.ja: 第12章 Windowsを仮想マシンに閉じ込める
+title.en: Chapter 12 — Confining Windows to a Virtual Machine
+subtitle.ja: 代替のないアプリだけを、Debianの中の小さなWindowsで動かす
+subtitle.en: Run only the apps with no substitute, in a small Windows inside Debian
+description.ja: 第4章の棚卸しで「代替なし」と出たものの行き先を作る。Debian 標準の KVM と virt-manager に、Windows 11 が要求する UEFI・Secure Boot・TPM 2.0 を ovmf と swtpm で足し、virtio のドライバで動かす。仮想マシンは本籍ではなく物置——何を入れ、何を入れないかを先に決め、スナップショットを取ってから使う。手順の細部は Claude に公式の最新を確かめさせる。
+description.en: Build the destination for whatever your Chapter 4 inventory marked "no substitute." Debian's standard KVM and virt-manager, plus ovmf and swtpm to satisfy the UEFI, Secure Boot and TPM 2.0 that Windows 11 demands, with virtio drivers to make it run. The VM is a storeroom, not your home — decide what goes in and what stays out first, take a snapshot, then use it. Have Claude check the official, current procedure for the details.
+date: 2026.10.07
+label: Claude × Debian 12
+cta_label.ja: Claudeと学ぶ
+cta_label.en: Learn with Claude
+cta_title.ja: 捨てられない物は、閉じ込めればいい。
+cta_title.en: What you cannot throw away, you can confine.
+cta_text.ja: Windows でしか動かない物は数えるほどしか残らない。その数えるほどを仮想マシンに入れれば、移行を止める理由は消える。何を入れるかの線引きは、あなたの棚卸し表を Claude に渡して決める。
+cta_text.en: Only a handful of things still need Windows. Put that handful in a virtual machine and the reason to stall the migration disappears. Where to draw the line is decided by handing Claude your inventory table.
+cta_btn1_text.ja: 第13章へ進む
+cta_btn1_text.en: Continue to Chapter 13
+cta_btn1_link.ja: /claude-debian/13-config-management/
+cta_btn1_link.en: /en/claude-debian/13-config-management/
+cta_btn2_text.ja: 第11章に戻る
+cta_btn2_text.en: Back to Chapter 11
+cta_btn2_link.ja: /claude-debian/11-application-selection/
+cta_btn2_link.en: /en/claude-debian/11-application-selection/
+---
+ifdef::lang-ja[]
+== Windowsは捨てない。閉じ込める
+
+第4章の棚卸しで、*A「動かない」*に残ったものがある。役所や銀行の専用ソフト、業界でしか使われない業務アプリ、古い周辺機器の設定ツール、年に数回だけ開く何か。第11章で代替を探しても、*Windows でしか動かないものは数えるほど*残る。
+
+本書はここでデュアルブートを取らない（序章）。取るのは*仮想マシン*だ。Debian の中に小さな Windows を一台作り、その数えるほどを入れる。Debian が本籍で、Windows は物置。物置は、必要なときだけ開ける。
+
+線引きを先に決める。
+
+* *入れる*：代替がなく、年に数回でも確実に要るもの。専用ソフト、業務アプリ、周辺機器のユーティリティ
+* *入れない*：ブラウザ、メール、オフィス、日常のファイル。これは第11章で Debian 側に移した
+* *入れない*：LINE やゲームのように、別の道があるもの（第11章）
+
+物置に日常を持ち込むと、移行は終わらない。*仮想マシンに入れる物の一覧は、棚卸し表（第4章）に一列足して管理する*。
+
+== 第一節 道具は virt-manager（KVM）
+
+仮想化の道具は、Debian 標準の *KVM*（カーネルに入っている）と、それを操る *libvirt*、画面で扱う *virt-manager* を使う。VirtualBox は使わない。apt で入り、第17章で実験機に使う道具と同じで、カーネルと一緒に更新される——理由はそれで足りる。
+
+Windows 11 には、仮想マシンでも満たすべき要件がある。Microsoft の要件ページ（2026年7月版）は、UEFI で Secure Boot に対応した firmware、*TPM 2.0*、メモリ 4GB 以上、ディスク 64GB 以上、2 コア以上を挙げ、仮想マシンでの利用も対応と明記している。Debian 側で足す部品は二つ。
+
+* *ovmf*：仮想マシン用の UEFI firmware。Secure Boot に対応する（Debian 13 のパッケージ）
+* *swtpm*：TPM 2.0 をソフトウェアで模す。物理の TPM は要らない（Debian 13 のパッケージ）
+
+```bash
+# 仮想化の本体と、Windows 11 の要件を満たす部品
+sudo apt install qemu-system libvirt-daemon-system virt-manager ovmf swtpm swtpm-tools
+
+# 自分のユーザーで仮想マシンを扱えるようにする（ログインし直す）
+sudo adduser $USER libvirt
+
+# CPU の仮想化支援が有効か（0 なら UEFI/BIOS で VT-x / AMD-V を有効にする）
+grep -c -E 'vmx|svm' /proc/cpuinfo
+```
+
+=== Claudeに聞いてみよう①：自分の機械で動くか
+
+____
+私の PC は〔my-system.md を貼る〕です。Debian 13 の上で KVM と virt-manager を使い、Windows 11 の仮想マシンを動かしたいです。
+(1) この CPU とメモリで、Windows 11 の VM（4GB 以上、2 コア以上）を動かしながら Debian 側の日常作業も回せるか
+(2) UEFI/BIOS で確認・変更すべき項目（仮想化支援）
+(3) 入れるべき Debian のパッケージと、libvirt グループの設定
+(4) ディスクに 64GB 以上を割く余裕があるか、どこに置くべきか
+Debian 13 の公式の手順を確かめたうえで、私の機械に合わせて答えてください。
+____
+
+== 第二節 Windows の入手とライセンス
+
+Windows 11 の ISO は、Microsoft のサイトから直接ダウンロードする。第三者のサイトから取らない。
+
+ライセンスは、*自分の版を確かめてから*決める。移行元の PC に付いていた Windows（OEM 版）をそのまま仮想マシンに移せるかどうかは、版と条件によって違う。本書はここで断定しない。手元のプロダクトキーと版（Home / Pro、OEM / 小売）を確かめ、条件を Microsoft のページで読み、合わなければ買う。*数えるほどのアプリのためにライセンスを一本買う*のは、Windows を本籍のまま残すより安い。
+
+もう一つ、Microsoft の要件ページにある条件を知っておく。Windows 11 Home は初回セットアップにインターネット接続と Microsoft アカウントが要る。仮想マシンでも同じだ。
+
+== 第三節 仮想マシンを作る
+
+手順の細部は版が上がるたびに変わる。ここでは*決めること*だけを書き、手順は Claude に公式の最新を確かめさせる。
+
+virt-manager の「新しい仮想マシン」で、Windows の ISO を指定し、*インストール前に設定をカスタマイズ*を選ぶ。決めることは六つ。
+
+. *Firmware*：UEFI。ovmf の Secure Boot 対応の firmware を選ぶ
+. *TPM*：エミュレートの TPM を追加し、版は 2.0
+. *メモリと CPU*：最低は 4GB・2 コア。実用は 8GB・4 コアを目安に、自分の機械と相談する
+. *ディスク*：qcow2 で 64GB 以上。使った分だけ実際の容量が増える
+. *ディスクとネットワークの方式*：virtio。速いが、Windows は標準でドライバを持たない
+. *二枚目の CD*：virtio-win の ISO。インストール中にディスクが見えなければ、ここからドライバを読み込む
+
+virtio-win は Fedora プロジェクトが配っている Windows 用のドライバ集で、安定版の ISO を一つ落として CD として付ける。Windows 10 以降向けのドライバは Microsoft の署名付きなので、Secure Boot を有効にしたまま使える。インストールが終わったら、同じ ISO から guest tools を入れる。ネットワーク、画面の大きさの追従、クリップボードの共有が揃う。
+
+=== Claudeに聞いてみよう②：手順を書かせる
+
+____
+Debian 13 の virt-manager で Windows 11 の仮想マシンを作ります。決めたことは次のとおり：UEFI（ovmf、Secure Boot 対応）、エミュレートの TPM 2.0（swtpm）、メモリ〔〕GB、CPU〔〕コア、qcow2 のディスク〔〕GB、ディスクとネットワークは virtio、二枚目の CD に virtio-win の安定版 ISO。
+(1) virt-manager の画面でどこを選ぶか、順に
+(2) インストール中にディスクが見えないときの、viostor ドライバの読み込み方
+(3) インストール後に virtio-win の guest tools を入れる手順
+(4) 画面の大きさの追従とクリップボードの共有を効かせる設定
+Debian 13 と virt-manager の公式の最新の手順を確かめてから、私の環境に合わせて書いてください。
+____
+
+== 第四節 物置の作法
+
+仮想マシンができたら、使い方を三つ決める。
+
+=== 入れる前にスナップショットを取る
+
+virt-manager のスナップショットで、*アプリを入れる前の素の状態*を一枚残す。何かを入れて壊れたら、そこに戻す。これが仮想マシンの最大の利点で、実機の Windows にはなかった自由だ。
+
+=== ファイルの渡し方を一つに決める
+
+Debian 側と Windows 側でファイルを行き来させる経路は、一つに決める。クリップボード（guest tools）で足りるなら、それだけ。フォルダを共有するなら、virt-manager の共有フォルダ（virtiofs）を一つだけ作る。経路を増やすと、どこに何があるか分からなくなる。
+
+=== 開けるのは必要なときだけ
+
+年に数回しか使わないなら、起動したらまず Windows Update を済ませ、用事を済ませ、閉じる。常時起動しない。ネットワークは NAT のまま、外から入れる口は作らない。Windows 側に Debian のファイルを置かない。
+
+=== Claudeに聞いてみよう③：入れる物の線引き
+
+____
+第4章で作った私の棚卸し表〔貼る〕です。Debian への移行はほぼ終わり、Windows 11 の仮想マシンを一台作りました。
+(1) 表の中で、仮想マシンに入れるべきもの（代替がなく、確実に要るもの）
+(2) 入れるべきでないもの（Debian 側で済むもの、別の道があるもの）
+(3) 判断に迷うものと、その理由
+(4) 仮想マシンに入れる物の一覧を、棚卸し表の新しい列として
+表の形で返してください。
+____
+
+== 第五節 物置が空になる日
+
+仮想マシンに入れたものは、年に一度見直す。Web 版に移ったもの、使わなくなったもの、Debian で動くようになったものを外す。一覧が空になったら、仮想マシンを消す。*物置は、いつか空にするために作る*。
+
+== この章でやったこと
+
+. 仮想マシンに入れる物と入れない物の線引きを決めた
+. KVM・libvirt・virt-manager と、Windows 11 の要件を満たす ovmf・swtpm を入れた
+. Windows の入手先とライセンスの確かめ方を決めた
+. 仮想マシンの設定（UEFI・TPM 2.0・virtio・virtio-win）を決め、手順は Claude に書かせた
+. スナップショット、ファイルの渡し方、開け閉めの作法を決めた
+
+手元の状態：
+* 代替のないアプリだけが入った Windows 11 の仮想マシン
+* 棚卸し表に「仮想マシン」の列
+
+次の第13章「設定の理解と管理」では、Debianの設定ファイルの場所、dotfilesの管理、バックアップ、Gitでの追跡を扱う。自分の環境を*ドキュメントとして残す*作法を身につける。
+
+'''
+
+シリーズ全体はlink:/claude-debian/[Claudeと一緒に学ぶDebian 一覧]から辿れる。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
+endif::[]
+ifdef::lang-en[]
+== Don't throw Windows away. Confine it.
+
+Your Chapter 4 inventory left some items in *category A, "won't run."* A government or bank's dedicated software, a business app used only in your industry, the setup tool for an old peripheral, something you open a few times a year. Even after Chapter 11's search for substitutes, *the things that genuinely need Windows count on one hand.*
+
+This book does not take the dual-boot route (Prologue). It takes a *virtual machine*. Build one small Windows inside Debian and put that handful in it. Debian is home; Windows is the storeroom. You open the storeroom only when you need to.
+
+Draw the line first.
+
+* *Goes in*: anything with no substitute that you definitely need, even a few times a year — dedicated software, business apps, peripheral utilities
+* *Stays out*: browser, mail, office, everyday files. Chapter 11 moved these to the Debian side
+* *Stays out*: things with another route, such as LINE and games (Chapter 11)
+
+Carry daily life into the storeroom and the migration never ends. *Keep the list of what goes into the VM as one extra column in the Chapter 4 inventory table.*
+
+== Section 1 — The tool is virt-manager (KVM)
+
+For virtualization, use Debian's standard *KVM* (built into the kernel), *libvirt* to drive it, and *virt-manager* for the screen. Not VirtualBox. It installs from apt, it is the same tool Chapter 17 uses for the experiment machine, and it updates together with the kernel — reason enough.
+
+Windows 11 has requirements that a virtual machine must meet too. Microsoft's requirements page (July 2026 edition) lists UEFI firmware that is Secure Boot capable, *TPM 2.0*, 4 GB or more of memory, 64 GB or more of disk, and two or more cores, and states explicitly that Windows 11 is supported on a virtual machine. Debian needs two extra parts.
+
+* *ovmf*: UEFI firmware for virtual machines, with Secure Boot support (Debian 13 package)
+* *swtpm*: emulates TPM 2.0 in software. No physical TPM needed (Debian 13 package)
+
+```bash
+# the virtualization core, plus the parts that satisfy Windows 11
+sudo apt install qemu-system libvirt-daemon-system virt-manager ovmf swtpm swtpm-tools
+
+# let your own user manage VMs (log out and back in)
+sudo adduser $USER libvirt
+
+# is CPU virtualization support on? (0 means enable VT-x / AMD-V in UEFI/BIOS)
+grep -c -E 'vmx|svm' /proc/cpuinfo
+```
+
+=== Ask Claude ①: Will it run on my machine?
+
+____
+My PC is [paste my-system.md]. I want to run a Windows 11 virtual machine with KVM and virt-manager on Debian 13.
+(1) With this CPU and memory, can I run a Windows 11 VM (4 GB+, 2 cores+) while still doing my daily work on the Debian side?
+(2) What to check or change in UEFI/BIOS (virtualization support)
+(3) The Debian packages to install and the libvirt group setup
+(4) Whether I have room for 64 GB+ of disk, and where to put it
+Check the official Debian 13 procedure first, then answer for my machine.
+____
+
+== Section 2 — Obtaining Windows, and the license
+
+Download the Windows 11 ISO directly from Microsoft's site. Not from a third-party site.
+
+Decide the license *after checking your own edition.* Whether the Windows that came with your old PC (an OEM license) can move into a virtual machine depends on the edition and its terms. This book does not pronounce on it. Check the product key and edition you have (Home / Pro, OEM / retail), read the terms on Microsoft's pages, and if they don't fit, buy one. *Buying one license for a handful of apps* is cheaper than keeping Windows as your home.
+
+One more condition from Microsoft's requirements page worth knowing: Windows 11 Home needs an internet connection and a Microsoft account to complete first-time setup. The same holds in a VM.
+
+== Section 3 — Building the virtual machine
+
+The details of the procedure change with every version. Here we write down only the *decisions*; the steps, you have Claude check against the current official documentation.
+
+In virt-manager's "New virtual machine," point it at the Windows ISO and choose *customize configuration before install*. Six decisions.
+
+. *Firmware*: UEFI. Pick ovmf's Secure Boot-capable firmware
+. *TPM*: add an emulated TPM, version 2.0
+. *Memory and CPU*: the minimum is 4 GB and 2 cores. For real use, aim for 8 GB and 4 cores, within what your machine allows
+. *Disk*: qcow2, 64 GB or more. Actual space grows only as it is used
+. *Disk and network type*: virtio. Fast, but Windows carries no driver for it out of the box
+. *A second CD*: the virtio-win ISO. If the disk is not visible during installation, load the driver from here
+
+virtio-win is the Windows driver collection distributed by the Fedora project; download the stable ISO once and attach it as a CD. Its drivers for Windows 10 and later carry Microsoft signatures, so Secure Boot can stay on. When installation is done, install the guest tools from the same ISO — networking, display resizing, and clipboard sharing all come together.
+
+=== Ask Claude ②: Have it write the procedure
+
+____
+I am creating a Windows 11 virtual machine in virt-manager on Debian 13. My decisions: UEFI (ovmf, Secure Boot capable), emulated TPM 2.0 (swtpm), [ ] GB memory, [ ] CPU cores, a [ ] GB qcow2 disk, virtio for disk and network, and the stable virtio-win ISO as a second CD.
+(1) What to select in virt-manager's screens, in order
+(2) How to load the viostor driver when the disk is not visible during installation
+(3) How to install the virtio-win guest tools after installation
+(4) The settings that make display resizing and clipboard sharing work
+Check the current official procedures for Debian 13 and virt-manager first, then write it for my setup.
+____
+
+== Section 4 — Storeroom manners
+
+Once the VM exists, settle three habits.
+
+=== Take a snapshot before installing anything
+
+Use virt-manager's snapshots to keep one copy of the *clean state before any app goes in.* If something you install breaks it, go back there. This is the VM's greatest advantage — a freedom the physical Windows never had.
+
+=== Decide on one way to pass files
+
+Pick a single route for moving files between the Debian side and the Windows side. If the clipboard (guest tools) is enough, use only that. If you need a shared folder, create exactly one in virt-manager (virtiofs). Add routes and you stop knowing where anything is.
+
+=== Open it only when you need it
+
+If you use it a few times a year: start it, run Windows Update first, do the job, close it. Don't keep it running. Leave the network on NAT and open no port from outside. Don't keep Debian's files on the Windows side.
+
+=== Ask Claude ③: Drawing the line
+
+____
+Here is the inventory table I made in Chapter 4 [paste]. My migration to Debian is nearly done, and I have built one Windows 11 virtual machine.
+(1) Which items in the table should go into the VM (no substitute, definitely needed)
+(2) Which should not (handled on the Debian side, or with another route)
+(3) The ones that are hard to call, and why
+(4) The list of what goes into the VM, as a new column of the inventory table
+Answer as a table.
+____
+
+== Section 5 — The day the storeroom is empty
+
+Review what is in the VM once a year. Drop what moved to a web version, what you stopped using, and what now runs on Debian. When the list is empty, delete the VM. *A storeroom is built to be emptied one day.*
+
+== What we did in this chapter
+
+. Drew the line between what goes into the VM and what stays out
+. Installed KVM, libvirt and virt-manager, plus ovmf and swtpm to meet Windows 11's requirements
+. Settled where to obtain Windows and how to check the license
+. Fixed the VM configuration (UEFI, TPM 2.0, virtio, virtio-win) and had Claude write the steps
+. Settled the habits: snapshots, one file route, open-and-close
+
+Where you are now:
+* A Windows 11 virtual machine holding only the apps with no substitute
+* A "virtual machine" column in the inventory table
+
+In Chapter 13, "Understanding and Managing Configuration," we cover where Debian's configuration files live, dotfiles management, backup, and tracking with Git. Get into the practice of *leaving your environment as documentation*.
+
+'''
+
+The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
+endif::[]
+
+// ===== article: 13-config-management =====
+---
+slug: claude-debian-13-config-management
+number: 13
+title.ja: 第13章 設定の理解と管理
+title.en: Chapter 13 — Understanding and Managing Configuration
 subtitle.ja: dotfiles と apt を Git で追跡する
 subtitle.en: Track dotfiles and apt with Git
 description.ja: Debianの設定ファイルは全て開かれたテキスト。これをGitで管理すれば、あなたの環境は再現可能なドキュメントになる。dotfiles、aptパッケージ一覧、自動復元スクリプトまで、Claudeと設計する。
 description.en: Debian's configuration files are all open text. Manage them with Git and your environment becomes a reproducible document. Together with Claude, design dotfiles, an apt package list, and an auto-restore script.
 date: 2026.04.23
-label: Claude × Debian 12
+label: Claude × Debian 13
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
 cta_title.ja: 環境は、ドキュメントとして残せる。
 cta_title.en: An environment can live as documentation.
 cta_text.ja: 二度目のインストール、新しいPCへの移行、別PCへの複製——全部コマンド一発になる。これがDebianの最大の強みの一つだ。
 cta_text.en: Reinstall, migrate to a new PC, replicate to another machine — all of it becomes a single command. This is one of Debian's biggest strengths.
-cta_btn1_text.ja: 第4部 第13章へ進む
-cta_btn1_text.en: Continue to Part 4 / Chapter 13
-cta_btn1_link.ja: /claude-debian/13-dev-tools/
-cta_btn1_link.en: /en/claude-debian/13-dev-tools/
-cta_btn2_text.ja: 第11章に戻る
-cta_btn2_text.en: Back to Chapter 11
-cta_btn2_link.ja: /claude-debian/11-application-selection/
-cta_btn2_link.en: /en/claude-debian/11-application-selection/
+cta_btn1_text.ja: 第4部 第14章へ進む
+cta_btn1_text.en: Continue to Part 4 / Chapter 14
+cta_btn1_link.ja: /claude-debian/14-dev-tools/
+cta_btn1_link.en: /en/claude-debian/14-dev-tools/
+cta_btn2_text.ja: 第12章に戻る
+cta_btn2_text.en: Back to Chapter 12
+cta_btn2_link.ja: /claude-debian/12-windows-vm/
+cta_btn2_link.en: /en/claude-debian/12-windows-vm/
 ---
 ifdef::lang-ja[]
 == 設定ファイルがテキストである意味
@@ -7312,7 +7598,7 @@ ____
 
 ここで第3部が終わる。*あなたのDebian環境は「作って使うだけ」から「再現可能な設計図」に進化した*。これは Windows では構造的に難しかったことだ。
 
-次の第4部（第13〜16章）では、開発環境の構築に入る。ターミナル、エディタ、Git、言語環境、そして Claude Code——これらを Debian 上で組み合わせて、ビルダーとしての一歩を踏み出す。
+次の第4部（第14〜17章）では、開発環境の構築に入る。ターミナル、エディタ、Git、言語環境、そして Claude Code——これらを Debian 上で組み合わせて、ビルダーとしての一歩を踏み出す。
 
 '''
 
@@ -7584,46 +7870,46 @@ What you hold now:
 
 This closes Part 3. *Your Debian environment has evolved from "made it and use it" to "a reproducible blueprint."* This was structurally hard on Windows.
 
-In Part 4 (Chapters 13–16), we move into building the development environment. Terminal, editor, Git, language runtimes, and Claude Code — combined on Debian, you take a step into being a builder.
+In Part 4 (Chapters 14–17), we move into building the development environment. Terminal, editor, Git, language runtimes, and Claude Code — combined on Debian, you take a step into being a builder.
 
 '''
 
 The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
-// ===== article: 13-dev-tools =====
+// ===== article: 14-dev-tools =====
 ---
-slug: claude-debian-13-dev-tools
-number: 13
-title.ja: 第13章 開発ツールの構築
-title.en: Chapter 13 — Building the Development Tools
+slug: claude-debian-14-dev-tools
+number: 14
+title.ja: 第14章 開発ツールの構築
+title.en: Chapter 14 — Building the Development Tools
 subtitle.ja: ターミナル、シェル、エディタ、Git——ビルダーの道具を揃える
 subtitle.en: Terminal, shell, editor, Git — the toolkit of a builder
 description.ja: Debianに開発のための基盤を整える。ターミナルエミュレータ、シェル（bash/zsh/fish）、エディタ（Zed/Neovim/PyCharm Community）、Git、SSH鍵。Claudeと一緒に、自分のワークフローに合った道具立てを決める。
 description.en: Lay the foundation for development on Debian. Terminal emulator, shell (bash / zsh / fish), editor (Zed / Neovim / PyCharm Community), Git, SSH keys. Together with Claude, decide on a toolkit that fits your workflow.
 date: 2026.04.23
-label: Claude × Debian 13
+label: Claude × Debian 14
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
 cta_title.ja: 開発は、道具から始まる。
 cta_title.en: Development starts from the tools.
 cta_text.ja: 一番使うツールが一番手に馴染むことが、生産性の土台になる。派手な機能より、キー一つの反応速度が効く。
 cta_text.en: When the tools you use most fit your hands best, productivity has its foundation. The response speed of one keypress matters more than flashy features.
-cta_btn1_text.ja: 第14章へ進む
-cta_btn1_text.en: Continue to Chapter 14
-cta_btn1_link.ja: /claude-debian/14-widget-architecture/
-cta_btn1_link.en: /en/claude-debian/14-widget-architecture/
-cta_btn2_text.ja: 第12章に戻る
-cta_btn2_text.en: Back to Chapter 12
-cta_btn2_link.ja: /claude-debian/12-config-management/
-cta_btn2_link.en: /en/claude-debian/12-config-management/
+cta_btn1_text.ja: 第15章へ進む
+cta_btn1_text.en: Continue to Chapter 15
+cta_btn1_link.ja: /claude-debian/15-widget-architecture/
+cta_btn1_link.en: /en/claude-debian/15-widget-architecture/
+cta_btn2_text.ja: 第13章に戻る
+cta_btn2_text.en: Back to Chapter 13
+cta_btn2_link.ja: /claude-debian/13-config-management/
+cta_btn2_link.en: /en/claude-debian/13-config-management/
 ---
 ifdef::lang-ja[]
 == この部の位置づけ
 
 第3部までで Debian を日常業務に使える状態にした。第4部は、その環境の上に*自分でものを作るための基盤*を組む。
 
-第4部は開発の話だが、「プログラマ向け」ではない。Claudeと一緒にコードを書く時代、*誰もが少しずつビルダーになれる*。この教科書を読んでいるあなたが、一行もコードを書いたことがなくても問題ない。ただ、道具立てだけは揃えておく。必要になったときに動ける状態にする——それが第13章の目的だ。
+第4部は開発の話だが、「プログラマ向け」ではない。Claudeと一緒にコードを書く時代、*誰もが少しずつビルダーになれる*。この教科書を読んでいるあなたが、一行もコードを書いたことがなくても問題ない。ただ、道具立てだけは揃えておく。必要になったときに動ける状態にする——それが第14章の目的だ。
 
 == 第一節 ターミナルエミュレータ
 
@@ -7965,7 +8251,7 @@ ____
 * Git が使えるエディタ環境
 * Claudeとコードで対話できる環境
 
-次の第14章では、具体的に*Widgetアーキテクチャ*——シンプルで再利用可能なUIコンポーネントの作り方——を題材に、Claude と一緒にコードを書く実例を進める。題材は小さなGUIアプリだが、考え方は別の領域にも転用できる。
+次の第15章では、具体的に*Widgetアーキテクチャ*——シンプルで再利用可能なUIコンポーネントの作り方——を題材に、Claude と一緒にコードを書く実例を進める。題材は小さなGUIアプリだが、考え方は別の領域にも転用できる。
 
 '''
 
@@ -7976,7 +8262,7 @@ ifdef::lang-en[]
 
 Through Part 3, we got Debian to a state where you can do daily work. Part 4 builds, on top of that environment, *the foundation for making things yourself*.
 
-Part 4 is about development, but it isn't "for programmers." In an era when you write code together with Claude, *everyone can become a builder, a little at a time*. Even if you, reading this textbook, have never written a single line of code, that's fine. You just want the toolkit ready — so that when you need to act, you can. That is what Chapter 13 is for.
+Part 4 is about development, but it isn't "for programmers." In an era when you write code together with Claude, *everyone can become a builder, a little at a time*. Even if you, reading this textbook, have never written a single line of code, that's fine. You just want the toolkit ready — so that when you need to act, you can. That is what Chapter 14 is for.
 
 == Section 1 — Terminal Emulators
 
@@ -8318,39 +8604,39 @@ Where you are now:
 * An editor environment with Git wired in.
 * An environment where you can dialogue with Claude through code.
 
-In Chapter 14, we move into a concrete example: writing code with Claude while exploring *the Widget architecture* — the practice of building simple, reusable UI components. The subject is a small GUI app, but the way of thinking transfers to other domains.
+In Chapter 15, we move into a concrete example: writing code with Claude while exploring *the Widget architecture* — the practice of building simple, reusable UI components. The subject is a small GUI app, but the way of thinking transfers to other domains.
 
 '''
 
 The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
-// ===== article: 14-widget-architecture =====
+// ===== article: 15-widget-architecture =====
 ---
-slug: claude-debian-14-widget-architecture
-number: 14
-title.ja: 第14章 Widget アーキテクチャの実装
-title.en: Chapter 14 — Implementing the Widget Architecture
+slug: claude-debian-15-widget-architecture
+number: 15
+title.ja: 第15章 Widget アーキテクチャの実装
+title.en: Chapter 15 — Implementing the Widget Architecture
 subtitle.ja: 小さな再利用可能な部品から、自分のアプリを組み立てる
 subtitle.en: Build your own app from small, reusable parts
 description.ja: Widgetアーキテクチャ——独立した小さな部品を組み合わせてアプリを作る設計——をClaudeと一緒に学ぶ。小さな時計アプリを題材に、Widget分割、状態管理、レイアウト、再利用の原則を実装してみる。
 description.en: Learn the Widget architecture — designing apps as a composition of small independent parts — together with Claude. Take a small clock app as the subject and implement Widget decomposition, state management, layout, and reuse.
 date: 2026.04.23
-label: Claude × Debian 14
+label: Claude × Debian 15
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
 cta_title.ja: 大きな機能は、小さな部品の和。
 cta_title.en: A big feature is the sum of small parts.
 cta_text.ja: 一つのWidgetを、独立した小さな単位として作る。それを組み合わせる。このパターンを身につければ、あらゆるUIが手の届く範囲に入る。
 cta_text.en: Build a single Widget as an independent small unit. Combine them. Once this pattern is in your hands, every UI is within reach.
-cta_btn1_text.ja: 第15章へ進む
-cta_btn1_text.en: Continue to Chapter 15
-cta_btn1_link.ja: /claude-debian/15-claude-development/
-cta_btn1_link.en: /en/claude-debian/15-claude-development/
-cta_btn2_text.ja: 第13章に戻る
-cta_btn2_text.en: Back to Chapter 13
-cta_btn2_link.ja: /claude-debian/13-dev-tools/
-cta_btn2_link.en: /en/claude-debian/13-dev-tools/
+cta_btn1_text.ja: 第16章へ進む
+cta_btn1_text.en: Continue to Chapter 16
+cta_btn1_link.ja: /claude-debian/16-claude-development/
+cta_btn1_link.en: /en/claude-debian/16-claude-development/
+cta_btn2_text.ja: 第14章に戻る
+cta_btn2_text.en: Back to Chapter 14
+cta_btn2_link.ja: /claude-debian/14-dev-tools/
+cta_btn2_link.en: /en/claude-debian/14-dev-tools/
 ---
 ifdef::lang-ja[]
 == Widgetとは何か
@@ -8385,7 +8671,7 @@ Widgetは、*独立して動く小さなUIの部品*のことだ。ボタン、�
 本書の推奨は *Python + Flet*(Flutter ベース、Python から扱える)。
 Dart / Flutter の準備が要らず、最短で動く。
 
-Python のパッケージ管理は *`uv`* を使う(第 16 章で詳述)。`pip` + `venv`
+Python のパッケージ管理は *`uv`* を使う(第 17 章で詳述)。`pip` + `venv`
 の組み合わせよりも 10〜100 倍速く、*プロジェクトの再現性が高い*。
 `requirements.txt` の代わりに `pyproject.toml` + `uv.lock` を使う。
 
@@ -8634,7 +8920,7 @@ ____
 * Widget分割の設計メモ
 * 「小さく作って組み合わせる」という考え方
 
-次の第15章では、Claude Code を使って、*このアプリをもっと実用的な形に育てる実践*に入る。実データへの接続、エラー処理、テスト、ビルドと配布——本格的なアプリ開発の最初の一周を体験する。
+次の第16章では、Claude Code を使って、*このアプリをもっと実用的な形に育てる実践*に入る。実データへの接続、エラー処理、テスト、ビルドと配布——本格的なアプリ開発の最初の一周を体験する。
 
 '''
 
@@ -8673,7 +8959,7 @@ A structure of three stacked Widgets. Each one runs independently and has its ow
 This book recommends *Python + Flet* (Flutter-based, callable from Python).
 No Dart / Flutter setup required, runs as fast as possible.
 
-For Python package management we use *`uv`* (covered in Chapter 16).
+For Python package management we use *`uv`* (covered in Chapter 17).
 It's 10–100× faster than `pip` + `venv`, and *projects are far more reproducible*. Instead of `requirements.txt`, use `pyproject.toml` plus
 `uv.lock`.
 
@@ -8922,46 +9208,46 @@ What you hold now:
 * Design notes for Widget decomposition.
 * The way of thinking: "build small and compose."
 
-In Chapter 15, we move into the practice of using Claude Code to *grow this app into something more practical*. Connecting to real data, error handling, tests, build and distribution — you experience the first lap of full-fledged app development.
+In Chapter 16, we move into the practice of using Claude Code to *grow this app into something more practical*. Connecting to real data, error handling, tests, build and distribution — you experience the first lap of full-fledged app development.
 
 '''
 
 The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
-// ===== article: 15-claude-development =====
+// ===== article: 16-claude-development =====
 ---
-slug: claude-debian-15-claude-development
-number: 15
-title.ja: 第15章 Claudeとの開発の実践
-title.en: Chapter 15 — Development with Claude in Practice
+slug: claude-debian-16-claude-development
+number: 16
+title.ja: 第16章 Claudeとの開発の実践
+title.en: Chapter 16 — Development with Claude in Practice
 subtitle.ja: 小さなアプリを、実データと使い続けられる形に育てる
 subtitle.en: Grow a small app into something connected to real data and worth using every day
-description.ja: 第14章のダッシュボードを実データに繋ぎ、テストを書き、エラーを扱い、配布可能にする。Claude Codeを使って「動くだけ」から「使えるアプリ」までの一周を体験する。
-description.en: Connect the Chapter 14 dashboard to real data, write tests, handle errors, and make it distributable. Use Claude Code to walk the lap from "it just runs" to "an app you can use."
+description.ja: 第15章のダッシュボードを実データに繋ぎ、テストを書き、エラーを扱い、配布可能にする。Claude Codeを使って「動くだけ」から「使えるアプリ」までの一周を体験する。
+description.en: Connect the Chapter 15 dashboard to real data, write tests, handle errors, and make it distributable. Use Claude Code to walk the lap from "it just runs" to "an app you can use."
 date: 2026.04.23
-label: Claude × Debian 15
+label: Claude × Debian 16
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
 cta_title.ja: 動くだけでは、使えない。
 cta_title.en: Just running isn't usable.
 cta_text.ja: 実データに繋ぎ、失敗を扱い、テストを添え、配布可能な形にする。これが「動く」から「使える」までの距離。Claudeと一緒に、その距離を歩く。
 cta_text.en: Connect to real data, handle failures, add tests, make it distributable. That is the distance between "runs" and "usable." Walk it together with Claude.
-cta_btn1_text.ja: 第16章へ進む
-cta_btn1_text.en: Continue to Chapter 16
-cta_btn1_link.ja: /claude-debian/16-python-flutter-other/
-cta_btn1_link.en: /en/claude-debian/16-python-flutter-other/
-cta_btn2_text.ja: 第14章に戻る
-cta_btn2_text.en: Back to Chapter 14
-cta_btn2_link.ja: /claude-debian/14-widget-architecture/
-cta_btn2_link.en: /en/claude-debian/14-widget-architecture/
+cta_btn1_text.ja: 第17章へ進む
+cta_btn1_text.en: Continue to Chapter 17
+cta_btn1_link.ja: /claude-debian/17-python-flutter-other/
+cta_btn1_link.en: /en/claude-debian/17-python-flutter-other/
+cta_btn2_text.ja: 第15章に戻る
+cta_btn2_text.en: Back to Chapter 15
+cta_btn2_link.ja: /claude-debian/15-widget-architecture/
+cta_btn2_link.en: /en/claude-debian/15-widget-architecture/
 ---
 ifdef::lang-ja[]
 == 実アプリへの一周
 
-第14章で作ったダッシュボードは動くが、まだ「玩具」だ。実データに繋がっていない、エラーが起きたらクラッシュする、テストがない、他人に配布できない。
+第15章で作ったダッシュボードは動くが、まだ「玩具」だ。実データに繋がっていない、エラーが起きたらクラッシュする、テストがない、他人に配布できない。
 
-第15章では、この玩具を*毎日使えるアプリ*に育てる。開発の基本サイクルを Claude Code と一緒に一周する。
+第16章では、この玩具を*毎日使えるアプリ*に育てる。開発の基本サイクルを Claude Code と一緒に一周する。
 
 == 第一節 Claude Code の本格運用
 
@@ -8975,7 +9261,7 @@ claude
 起動したら、Claude Code にプロジェクトの状況を伝える。
 
 ____
-このディレクトリには、第14章で作ったFletベースのダッシュボードアプリがあります。
+このディレクトリには、第15章で作ったFletベースのダッシュボードアプリがあります。
 今日は次を進めたい：
 (1) WeatherWidgetを実データ（Open-Meteo API）に接続
 (2) 失敗時のエラー表示
@@ -9249,7 +9535,7 @@ git checkout -b experiment/dark-theme
 
 == 第八節 「動く」から「使える」までの距離を振り返る
 
-第14章の「玩具」から、第15章の「実アプリ」まで、次を進めた。
+第15章の「玩具」から、第16章の「実アプリ」まで、次を進めた。
 
 |===
 | 観点 | 玩具（Ch14） | 実アプリ（Ch15）
@@ -9280,7 +9566,7 @@ Claudeが返したコードで、ひとつも理解できない関数が出て�
 === Claudeに聞いてみよう④：自己評価
 
 ____
-私はこの章で、第14章から第15章までの一周を進めました。
+私はこの章で、第15章から第16章までの一周を進めました。
 現在のコード〔最終版を貼る〕を見て、次を評価してください：
 (1) 保守性（半年後の私が読んで理解できるか）
 (2) 拡張性（新しいWidgetを足しやすいか）
@@ -9308,7 +9594,7 @@ ____
 * Claude Code とのまっとうな協業パターン
 * 「動く」から「使える」までのエンジニアリングの一周の経験
 
-次の第16章では、Python と Flet 以外の環境——Flutter / Dart、Node.js、Rust、Docker——へ視野を広げる。必要になったときにClaudeと組み立てられる状態にする。
+次の第17章では、Python と Flet 以外の環境——Flutter / Dart、Node.js、Rust、Docker——へ視野を広げる。必要になったときにClaudeと組み立てられる状態にする。
 
 '''
 
@@ -9317,9 +9603,9 @@ endif::[]
 ifdef::lang-en[]
 == A Lap of a Real App
 
-The dashboard you built in Chapter 14 runs, but it is still a "toy." It isn't connected to real data; it crashes if an error happens; it has no tests; you can't distribute it.
+The dashboard you built in Chapter 15 runs, but it is still a "toy." It isn't connected to real data; it crashes if an error happens; it has no tests; you can't distribute it.
 
-In Chapter 15, we grow that toy into *an app you can use every day*. Walk the basic development cycle once around, with Claude Code.
+In Chapter 16, we grow that toy into *an app you can use every day*. Walk the basic development cycle once around, with Claude Code.
 
 == Section 1 — Real-World Use of Claude Code
 
@@ -9333,7 +9619,7 @@ claude
 Once it's up, tell Claude Code the state of the project.
 
 ____
-This directory holds the Flet-based dashboard app I built in Chapter 14.
+This directory holds the Flet-based dashboard app I built in Chapter 15.
 Today I want to do the following:
 (1) Connect WeatherWidget to real data (Open-Meteo API).
 (2) Show errors in the UI on failure.
@@ -9606,7 +9892,7 @@ git checkout -b experiment/dark-theme
 
 == Section 8 — Look Back at the Distance from "Runs" to "Usable"
 
-From the "toy" of Chapter 14 to the "real app" of Chapter 15, here is what changed.
+From the "toy" of Chapter 15 to the "real app" of Chapter 16, here is what changed.
 
 |===
 | Aspect | Toy (Ch 14) | Real app (Ch 15)
@@ -9637,7 +9923,7 @@ In that case, ask Claude: "Explain each line of this code. What it does, and why
 === Ask Claude ④: Self-Evaluation
 
 ____
-I have walked the lap from Chapter 14 to Chapter 15 in this chapter.
+I have walked the lap from Chapter 15 to Chapter 16 in this chapter.
 Looking at the current code [paste the final version], please evaluate:
 (1) Maintainability (will the future me, six months from now, read it and understand?).
 (2) Extensibility (is it easy to add a new Widget?).
@@ -9665,44 +9951,44 @@ What you hold now:
 * A sound pattern of collaboration with Claude Code.
 * A lap's worth of experience of engineering, from "runs" to "usable."
 
-In Chapter 16, we widen the view beyond Python and Flet — to Flutter / Dart, Node.js, Rust, Docker. Get to a state where, when you need them, you can put them together with Claude.
+In Chapter 17, we widen the view beyond Python and Flet — to Flutter / Dart, Node.js, Rust, Docker. Get to a state where, when you need them, you can put them together with Claude.
 
 '''
 
 The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
-// ===== article: 16-python-flutter-other =====
+// ===== article: 17-python-flutter-other =====
 ---
-slug: claude-debian-16-python-flutter-other
-number: 16
-title.ja: 第16章 Python、Flutter、その他の環境
-title.en: Chapter 16 — Python, Flutter, and Other Environments
+slug: claude-debian-17-python-flutter-other
+number: 17
+title.ja: 第17章 Python、Flutter、その他の環境
+title.en: Chapter 17 — Python, Flutter, and Other Environments
 subtitle.ja: 必要になったとき、その言語をClaudeと組み立てる
 subtitle.en: When you need a language, build it up with Claude
 description.ja: Python は uv を主軸に、データサイエンス・機械学習は miniforge を併用。GUI は Flutter/Dart、Rust は Python の高速化(PyO3)に絞る。Web/CLI など他の選択肢は地図として位置を把握。Claude と組むコツを整理する。
 description.en: Python on `uv` as the main line, miniforge alongside for data science and ML. GUI via Flutter/Dart; Rust narrowed to speeding up Python hot spots (PyO3). Other choices (web, CLI) live as a map for when you need them. Working alongside Claude on Debian.
 date: 2026.04.23
-label: Claude × Debian 16
+label: Claude × Debian 17
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
 cta_title.ja: 地図として持っておく。
 cta_title.en: Keep it as a map.
 cta_text.ja: 今すぐ全部を覚える必要はない。必要になったときに戻ってこれる地図として、この章を残す。Claudeがあれば、地図の上でどこへでも行ける。
 cta_text.en: You don't need to memorize all of this right now. Keep this chapter as a map you can come back to when you need it. With Claude, you can travel anywhere on the map.
-cta_btn1_text.ja: 第5部 第17章へ進む
-cta_btn1_text.en: Continue to Part 5 / Chapter 17
-cta_btn1_link.ja: /claude-debian/17-updates-maintenance/
-cta_btn1_link.en: /en/claude-debian/17-updates-maintenance/
-cta_btn2_text.ja: 第15章に戻る
-cta_btn2_text.en: Back to Chapter 15
-cta_btn2_link.ja: /claude-debian/15-claude-development/
-cta_btn2_link.en: /en/claude-debian/15-claude-development/
+cta_btn1_text.ja: 第5部 第18章へ進む
+cta_btn1_text.en: Continue to Part 5 / Chapter 18
+cta_btn1_link.ja: /claude-debian/18-updates-maintenance/
+cta_btn1_link.en: /en/claude-debian/18-updates-maintenance/
+cta_btn2_text.ja: 第16章に戻る
+cta_btn2_text.en: Back to Chapter 16
+cta_btn2_link.ja: /claude-debian/16-claude-development/
+cta_btn2_link.en: /en/claude-debian/16-claude-development/
 ---
 ifdef::lang-ja[]
 == この章の読み方
 
-第16章は、*地図*として機能する。今すぐ全部を手を動かすのではなく、各言語・環境の位置関係、Debianでの入れ方、Claudeと組むときの勘所を整理しておく。
+第17章は、*地図*として機能する。今すぐ全部を手を動かすのではなく、各言語・環境の位置関係、Debianでの入れ方、Claudeと組むときの勘所を整理しておく。
 
 必要になったときに戻ってきて、該当部分を読み、Claude Code を開く。*「覚える」ことを目的にしない*。
 
@@ -9713,7 +9999,7 @@ ifdef::lang-ja[]
 Python のパッケージ管理は *`uv`(Astral 製、Rust 実装)* で統一する。
 `pip` + `venv` 比 10〜100 倍速く、`requirements.txt` を捨てて
 `pyproject.toml` + `uv.lock` で *完全な再現性* が出る。`poetry` の
-代替候補だが、*uv の方が速くシンプル*。第 14 章・第 15 章のすべてが
+代替候補だが、*uv の方が速くシンプル*。第 15 章・第 16 章のすべてが
 uv 前提で動く。
 
 ```bash
@@ -9975,7 +10261,7 @@ Rust を使うのは *「Python のホットスポットを Rust に置き換え
 | *polars* | Rust | pandas より数倍〜十倍速い DataFrame
 | *pydantic v2* | Rust(コア部分) | データバリデーションが桁違いに速い
 | *fnm* | Rust | Node.js バージョン管理
-| *Zed* | Rust | エディタ(第13章で採用)
+| *Zed* | Rust | エディタ(第14章で採用)
 |===
 
 つまり Rust を *書かなくても*、書かれた成果は享受できている。これが
@@ -10175,7 +10461,7 @@ ____
 | 隔離環境 | Docker | —
 |===
 
-第16章の最大の目的は、*この表が頭に入った状態*にすること。個々の技術の習熟は、必要になってから Claude と進めればよい。
+第17章の最大の目的は、*この表が頭に入った状態*にすること。個々の技術の習熟は、必要になってから Claude と進めればよい。
 
 == まとめ
 
@@ -10190,7 +10476,7 @@ ____
 
 ここで第4部が終わる。*あなたの Debian は、いつでも手を動かせる開発基盤になった*。何か作りたくなったとき、その言語の環境を30分で整えられる状態にある。
 
-第5部（第17〜20章）では、*運用と成長*に入る。アップデート、トラブル、育てる、コミュニティとの関わり——日常を回しながら、環境を長く保つ作法を身につける。
+第5部（第18〜21章）では、*運用と成長*に入る。アップデート、トラブル、育てる、コミュニティとの関わり——日常を回しながら、環境を長く保つ作法を身につける。
 
 '''
 
@@ -10199,7 +10485,7 @@ endif::[]
 ifdef::lang-en[]
 == How to Read This Chapter
 
-Chapter 16 functions as *a map*. Don't put your hands on every one of these right now. Just sort out where each language and environment sits, how to install it on Debian, and the knack of putting it together with Claude.
+Chapter 17 functions as *a map*. Don't put your hands on every one of these right now. Just sort out where each language and environment sits, how to install it on Debian, and the knack of putting it together with Claude.
 
 When you need it, come back, read the relevant section, and open Claude Code. *Don't make "memorizing" the goal.*
 
@@ -10474,7 +10760,7 @@ Many of the main tools in this book are *written in Rust under the hood*:
 | *polars* | Rust | several to ten times faster than pandas DataFrames
 | *pydantic v2* | Rust (core) | data validation an order of magnitude faster
 | *fnm* | Rust | Node.js version management
-| *Zed* | Rust | the editor we adopted in Chapter 13
+| *Zed* | Rust | the editor we adopted in Chapter 14
 |===
 
 You enjoy Rust without writing it. That is the 2026 reality of where
@@ -10607,7 +10893,7 @@ The environments listed in this chapter can all be revisited when you need them.
 | Isolated environment | Docker | —
 |===
 
-The biggest goal of Chapter 16 is *to have this table in your head*. Mastery of any one technology can wait until you need it, then proceed with Claude.
+The biggest goal of Chapter 17 is *to have this table in your head*. Mastery of any one technology can wait until you need it, then proceed with Claude.
 
 == Summary
 
@@ -10622,39 +10908,39 @@ What you did in this chapter:
 
 This closes Part 4. *Your Debian is now a development foundation you can put your hands on at any time.* When something you want to build appears, you can have its language environment ready in 30 minutes.
 
-In Part 5 (Chapters 17–20), we move into *operation and growth*. Updates, troubles, growing the environment, engaging with the community — the practice of running the daily life and keeping the environment alive over time.
+In Part 5 (Chapters 18–21), we move into *operation and growth*. Updates, troubles, growing the environment, engaging with the community — the practice of running the daily life and keeping the environment alive over time.
 
 '''
 
 The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
-// ===== article: 17-updates-maintenance =====
+// ===== article: 18-updates-maintenance =====
 ---
-slug: claude-debian-17-updates-maintenance
-number: 17
-title.ja: 第17章 アップデートとメンテナンス
-title.en: Chapter 17 — Updates and Maintenance
+slug: claude-debian-18-updates-maintenance
+number: 18
+title.ja: 第18章 アップデートとメンテナンス
+title.en: Chapter 18 — Updates and Maintenance
 subtitle.ja: 日常を崩さずにシステムを最新に保つ
 subtitle.en: Keep the system up to date without disrupting daily life
 description.ja: Debianのアップデートの考え方、安全な手順、ディスク整理、ログの見方。月次・年次のメンテナンスリズム、メジャーアップグレード（Debian 13→14）の準備。Claudeと一緒に、長く使える状態を維持する。
 description.en: Debian's update philosophy, safe procedures, disk cleanup, reading logs. The monthly and yearly maintenance rhythm, and preparing for major upgrades (Debian 13 → 14). Together with Claude, keep your environment in long-term shape.
 date: 2026.04.23
-label: Claude × Debian 17
+label: Claude × Debian 18
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
 cta_title.ja: 毎日使い続けるために、週一で世話をする。
 cta_title.en: To use it daily, look after it weekly.
 cta_text.ja: Debianは放っておいても動くが、定期的な世話をすれば長く快適に動く。週一、月一、年一のリズムを作れば、トラブルの9割は予防できる。
 cta_text.en: Debian runs even when you leave it alone, but routine care keeps it comfortable for the long term. Build a weekly / monthly / yearly rhythm and 90% of trouble is prevented.
-cta_btn1_text.ja: 第18章へ進む
-cta_btn1_text.en: Continue to Chapter 18
-cta_btn1_link.ja: /claude-debian/18-when-things-break/
-cta_btn1_link.en: /en/claude-debian/18-when-things-break/
-cta_btn2_text.ja: 第16章に戻る
-cta_btn2_text.en: Back to Chapter 16
-cta_btn2_link.ja: /claude-debian/16-python-flutter-other/
-cta_btn2_link.en: /en/claude-debian/16-python-flutter-other/
+cta_btn1_text.ja: 第19章へ進む
+cta_btn1_text.en: Continue to Chapter 19
+cta_btn1_link.ja: /claude-debian/19-when-things-break/
+cta_btn1_link.en: /en/claude-debian/19-when-things-break/
+cta_btn2_text.ja: 第17章に戻る
+cta_btn2_text.en: Back to Chapter 17
+cta_btn2_link.ja: /claude-debian/17-python-flutter-other/
+cta_btn2_link.en: /en/claude-debian/17-python-flutter-other/
 ---
 ifdef::lang-ja[]
 == アップデートの三層
@@ -10738,7 +11024,7 @@ uv tool list
 uv tool upgrade --all
 ```
 
-第 16 章で uv tool / pipx に入れた CLI(ruff、httpie、pre-commit 等)も
+第 17 章で uv tool / pipx に入れた CLI(ruff、httpie、pre-commit 等)も
 別系統で更新する必要がある。
 
 === miniforge / conda 側の更新
@@ -11038,7 +11324,7 @@ GNOME Calendar、Thunderbird Lightning、KOrganizer——どれを使っても�
 * メンテナンス記録 `maintenance-log.md`
 * カレンダーに入った予定
 
-次の第18章では、*実際に問題が起きたときの対処*を扱う。起動できない、画面が出ない、アプリが動かない——それぞれに Claude と対応する作法を身につける。
+次の第19章では、*実際に問題が起きたときの対処*を扱う。起動できない、画面が出ない、アプリが動かない——それぞれに Claude と対応する作法を身につける。
 
 '''
 
@@ -11127,7 +11413,7 @@ uv tool list
 uv tool upgrade --all
 ```
 
-CLIs you installed via uv tool / pipx in Chapter 16 (ruff, httpie,
+CLIs you installed via uv tool / pipx in Chapter 17 (ruff, httpie,
 pre-commit, etc.) update on their own schedule — not under apt's control.
 
 === Updating miniforge / conda
@@ -11427,39 +11713,39 @@ What you hold now:
 * A maintenance record `maintenance-log.md`.
 * Calendar entries.
 
-In Chapter 18, we cover *what to do when things actually break*. Won't boot, no screen, an app won't run — for each, develop the practice of responding with Claude.
+In Chapter 19, we cover *what to do when things actually break*. Won't boot, no screen, an app won't run — for each, develop the practice of responding with Claude.
 
 '''
 
 The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
-// ===== article: 18-when-things-break =====
+// ===== article: 19-when-things-break =====
 ---
-slug: claude-debian-18-when-things-break
-number: 18
-title.ja: 第18章 問題が起きた時の対処
-title.en: Chapter 18 — When Things Break
+slug: claude-debian-19-when-things-break
+number: 19
+title.ja: 第19章 問題が起きた時の対処
+title.en: Chapter 19 — When Things Break
 subtitle.ja: 起動しない、画面が出ない、アプリが動かない——段階的に戻す
 subtitle.en: Won't boot, no screen, an app won't run — recover step by step
 description.ja: Debianが起動しない、ログインできない、画面が真っ黒、アプリが落ちる——こうした危機をClaudeと段階的に切り分けて解決する。リカバリーモード、レスキューUSB、chroot 復旧の実践。
 description.en: When Debian won't boot, you can't log in, the screen is black, an app crashes — work through these crises with Claude in graduated stages. Practical use of recovery mode, a rescue USB, and chroot recovery.
 date: 2026.04.23
-label: Claude × Debian 18
+label: Claude × Debian 19
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
 cta_title.ja: 壊れた日ほど、冷静に。
 cta_title.en: The day it breaks is the day to stay calm.
 cta_text.ja: 最もまずい判断は「焦って再インストール」。この章の手順で段階的に切り分ければ、9割のトラブルはデータを保ったまま戻せる。
 cta_text.en: The worst call is "panic-reinstall." Work through this chapter's stages step by step, and 90% of trouble can be recovered with your data intact.
-cta_btn1_text.ja: 第19章へ進む
-cta_btn1_text.en: Continue to Chapter 19
-cta_btn1_link.ja: /claude-debian/19-growing-environment/
-cta_btn1_link.en: /en/claude-debian/19-growing-environment/
-cta_btn2_text.ja: 第17章に戻る
-cta_btn2_text.en: Back to Chapter 17
-cta_btn2_link.ja: /claude-debian/17-updates-maintenance/
-cta_btn2_link.en: /en/claude-debian/17-updates-maintenance/
+cta_btn1_text.ja: 第20章へ進む
+cta_btn1_text.en: Continue to Chapter 20
+cta_btn1_link.ja: /claude-debian/20-growing-environment/
+cta_btn1_link.en: /en/claude-debian/20-growing-environment/
+cta_btn2_text.ja: 第18章に戻る
+cta_btn2_text.en: Back to Chapter 18
+cta_btn2_link.ja: /claude-debian/18-updates-maintenance/
+cta_btn2_link.en: /en/claude-debian/18-updates-maintenance/
 ---
 ifdef::lang-ja[]
 == 危機の段階
@@ -11695,7 +11981,7 @@ sudo rsync -av . /mnt/backup/rescued-home/
 
 どうしても復旧できない場合、*再インストールは失敗ではない*。
 
-第12章で dotfiles と apt-manual.txt を Git 管理にしていれば、再インストール後は：
+第13章で dotfiles と apt-manual.txt を Git 管理にしていれば、再インストール後は：
 
 ```bash
 # 新Debian で
@@ -11754,7 +12040,7 @@ ____
 * トラブル時のテンプレプロンプト
 * dotfiles + apt-manual.txt による「再インストールでも戻せる」安心
 
-次の第19章では、*育てる*視点に入る。目の前を回すだけでなく、あなたのDebian環境を長期的に自分色に変えていく方法を扱う。
+次の第20章では、*育てる*視点に入る。目の前を回すだけでなく、あなたのDebian環境を長期的に自分色に変えていく方法を扱う。
 
 '''
 
@@ -11994,7 +12280,7 @@ Even if you reinstall the OS, the data is safe.
 
 When recovery truly isn't possible, *reinstalling is not failure*.
 
-If, in Chapter 12, you put dotfiles and `apt-manual.txt` under Git, after reinstalling:
+If, in Chapter 13, you put dotfiles and `apt-manual.txt` under Git, after reinstalling:
 
 ```bash
 # On the new Debian
@@ -12053,39 +12339,39 @@ What you hold now:
 * A template prompt for trouble time.
 * The peace of mind that "even if reinstalling is needed, dotfiles + apt-manual.txt brings me back."
 
-In Chapter 19, we move to the *growing* view. Beyond just running daily life, the methods to evolve your Debian environment over the long term, in your own colors.
+In Chapter 20, we move to the *growing* view. Beyond just running daily life, the methods to evolve your Debian environment over the long term, in your own colors.
 
 '''
 
 The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
-// ===== article: 19-growing-environment =====
+// ===== article: 20-growing-environment =====
 ---
-slug: claude-debian-19-growing-environment
-number: 19
-title.ja: 第19章 自分の環境を育てる
-title.en: Chapter 19 — Growing Your Own Environment
+slug: claude-debian-20-growing-environment
+number: 20
+title.ja: 第20章 自分の環境を育てる
+title.en: Chapter 20 — Growing Your Own Environment
 subtitle.ja: 三ヶ月、半年、一年——少しずつ自分色にしていく
 subtitle.en: Three months, six months, a year — make it yours, a little at a time
 description.ja: Debianを使い続ける中で、自分の環境を育てていく。小さな自動化、キーバインドの最適化、独自スクリプト、自分の「生産性の形」を観察して進化させる。
 description.en: As you keep using Debian, grow your environment. Small automations, optimized key bindings, your own scripts; observe and evolve your "shape of productivity."
 date: 2026.04.23
-label: Claude × Debian 19
+label: Claude × Debian 20
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
 cta_title.ja: 環境は、完成品ではない。
 cta_title.en: An environment is not a finished product.
 cta_text.ja: Windowsは与えられる箱だった。Debianは育てる庭だ。毎日の小さな手入れが、半年後に驚くほど自分に馴染んだ環境を生む。
 cta_text.en: Windows was a box delivered to you. Debian is a garden you tend. Small daily care produces, six months later, an environment that fits you in surprising ways.
-cta_btn1_text.ja: 第20章へ進む
-cta_btn1_text.en: Continue to Chapter 20
-cta_btn1_link.ja: /claude-debian/20-community/
-cta_btn1_link.en: /en/claude-debian/20-community/
-cta_btn2_text.ja: 第18章に戻る
-cta_btn2_text.en: Back to Chapter 18
-cta_btn2_link.ja: /claude-debian/18-when-things-break/
-cta_btn2_link.en: /en/claude-debian/18-when-things-break/
+cta_btn1_text.ja: 第21章へ進む
+cta_btn1_text.en: Continue to Chapter 21
+cta_btn1_link.ja: /claude-debian/21-community/
+cta_btn1_link.en: /en/claude-debian/21-community/
+cta_btn2_text.ja: 第19章に戻る
+cta_btn2_text.en: Back to Chapter 19
+cta_btn2_link.ja: /claude-debian/19-when-things-break/
+cta_btn2_link.en: /en/claude-debian/19-when-things-break/
 ---
 ifdef::lang-ja[]
 == 「育てる」という視点
@@ -12227,7 +12513,7 @@ ____
 
 一年使うと、「毎週やる一連の作業」が見えてくる。それを一つのアプリにする。
 
-第14〜15章で作ったダッシュボードの要領で、自分専用ツールをClaudeと組む。
+第15〜16章で作ったダッシュボードの要領で、自分専用ツールをClaudeと組む。
 
 例：
 * 家計簿ツール（CSVを読んで月次集計）
@@ -12336,7 +12622,7 @@ Debianが自分にぴったりになった瞬間、それは「完成」では�
 * 自分の小さなアプリ
 * 月次の環境日誌
 
-次の第20章では、自分の外側に目を向ける。*Debianコミュニティとの関わり*——IRCやメーリングリスト、バグ報告、翻訳、そしてClaudeが変えつつあるオープンソースへの貢献の形を扱う。
+次の第21章では、自分の外側に目を向ける。*Debianコミュニティとの関わり*——IRCやメーリングリスト、バグ報告、翻訳、そしてClaudeが変えつつあるオープンソースへの貢献の形を扱う。
 
 '''
 
@@ -12482,7 +12768,7 @@ ____
 
 After a year, "the sequence of things I do every week" becomes visible. Make it into a single app.
 
-Following the dashboard from Chapters 14–15, build a personal tool with Claude.
+Following the dashboard from Chapters 15–16, build a personal tool with Claude.
 
 Examples:
 * A household-budget tool (read CSV, summarize monthly).
@@ -12592,39 +12878,39 @@ What you hold now:
 * Your own small app.
 * A monthly environment journal.
 
-In Chapter 20, we turn outward. *Engagement with the Debian community* — IRC and mailing lists, bug reports, translation — and the new shape of contribution to open source that Claude is bringing.
+In Chapter 21, we turn outward. *Engagement with the Debian community* — IRC and mailing lists, bug reports, translation — and the new shape of contribution to open source that Claude is bringing.
 
 '''
 
 The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
-// ===== article: 20-community =====
+// ===== article: 21-community =====
 ---
-slug: claude-debian-20-community
-number: 20
-title.ja: 第20章 コミュニティとの関わり
-title.en: Chapter 20 — Engaging with the Community
+slug: claude-debian-21-community
+number: 21
+title.ja: 第21章 コミュニティとの関わり
+title.en: Chapter 21 — Engaging with the Community
 subtitle.ja: 受け取るだけでなく、返す側になる
 subtitle.en: Become a giver, not just a receiver
 description.ja: Debianコミュニティとの関わり方。バグ報告、翻訳、パッケージメンテナンス、メーリングリスト、IRC、そしてClaudeが変えつつあるオープンソース貢献の新しい形。小さく始めて、続ける。
 description.en: How to engage with the Debian community. Bug reports, translation, package maintenance, mailing lists, IRC, and the new shape of open-source contribution that Claude is bringing. Start small and keep going.
 date: 2026.04.23
-label: Claude × Debian 20
+label: Claude × Debian 21
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
 cta_title.ja: 無料のOSには、誰かの時間が詰まっている。
 cta_title.en: A free OS holds someone's time inside.
 cta_text.ja: Debianを使えるのは、数千人のボランティアが時間を捧げてきたからだ。受け取るだけでなく、小さくでも返す側になる。そこから見える景色がある。
 cta_text.en: You can use Debian because thousands of volunteers have given their time. Become a giver too, even in small ways. The view from there is different.
-cta_btn1_text.ja: 第6部 第21章へ進む
-cta_btn1_text.en: Continue to Part 6 / Chapter 21
-cta_btn1_link.ja: /claude-debian/21-telling-others/
-cta_btn1_link.en: /en/claude-debian/21-telling-others/
-cta_btn2_text.ja: 第19章に戻る
-cta_btn2_text.en: Back to Chapter 19
-cta_btn2_link.ja: /claude-debian/19-growing-environment/
-cta_btn2_link.en: /en/claude-debian/19-growing-environment/
+cta_btn1_text.ja: 第6部 第22章へ進む
+cta_btn1_text.en: Continue to Part 6 / Chapter 22
+cta_btn1_link.ja: /claude-debian/22-telling-others/
+cta_btn1_link.en: /en/claude-debian/22-telling-others/
+cta_btn2_text.ja: 第20章に戻る
+cta_btn2_text.en: Back to Chapter 20
+cta_btn2_link.ja: /claude-debian/20-growing-environment/
+cta_btn2_link.en: /en/claude-debian/20-growing-environment/
 ---
 ifdef::lang-ja[]
 == なぜ「関わる」のか
@@ -12854,7 +13140,7 @@ ____
 
 ここで第5部が終わる。*あなたは Debian の受益者から、コミュニティの一員へと位置づけを変えつつある*。
 
-次の第6部（第21〜23章）では、関わりを*外側に広げる*。家族や同僚にDebianを伝える、組織での導入、そして次世代への継承——あなたの経験を他者へ繋ぐ章に入る。
+次の第6部（第22〜24章）では、関わりを*外側に広げる*。家族や同僚にDebianを伝える、組織での導入、そして次世代への継承——あなたの経験を他者へ繋ぐ章に入る。
 
 '''
 
@@ -13091,39 +13377,39 @@ What you hold now:
 
 This closes Part 5. *You are shifting from being a beneficiary of Debian to being a member of the community.*
 
-In Part 6 (Chapters 21–23), we widen the engagement *outward*. Telling family and colleagues about Debian, adoption in organizations, and passing it on to the next generation — chapters about connecting your experience to others.
+In Part 6 (Chapters 22–24), we widen the engagement *outward*. Telling family and colleagues about Debian, adoption in organizations, and passing it on to the next generation — chapters about connecting your experience to others.
 
 '''
 
 The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
-// ===== article: 21-telling-others =====
+// ===== article: 22-telling-others =====
 ---
-slug: claude-debian-21-telling-others
-number: 21
-title.ja: 第21章 周囲に伝える
-title.en: Chapter 21 — Telling Those Around You
+slug: claude-debian-22-telling-others
+number: 22
+title.ja: 第22章 周囲に伝える
+title.en: Chapter 22 — Telling Those Around You
 subtitle.ja: 家族、友人、同僚——説得ではなく、使い方を見せる
 subtitle.en: Family, friends, colleagues — show the use, don't try to convince
 description.ja: Debianの良さを身近な人に伝えるには、説得ではなく「使い方を見せる」ことが効く。家族、友人、同僚それぞれに合った伝え方。Claudeを使って、相手の状況に合わせた説明を組み立てる。
 description.en: To tell people close to you about Debian, "showing how you use it" works better than persuasion. Tailor the message to family, friends, and colleagues. Use Claude to put together explanations that fit the listener.
 date: 2026.04.23
-label: Claude × Debian 21
+label: Claude × Debian 22
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
 cta_title.ja: 説得ではなく、実例を。
 cta_title.en: Examples, not arguments.
 cta_text.ja: 「Linuxがいい」と主張しても誰も動かない。あなたがDebianで日常を快適に回しているのを見せれば、興味を持つ人が出てくる。そこからが始まり。
 cta_text.en: Insisting "Linux is better" moves no one. When they see you running daily life comfortably on Debian, the curious ones come forward. That's where it starts.
-cta_btn1_text.ja: 第22章へ進む
-cta_btn1_text.en: Continue to Chapter 22
-cta_btn1_link.ja: /claude-debian/22-organization-adoption/
-cta_btn1_link.en: /en/claude-debian/22-organization-adoption/
-cta_btn2_text.ja: 第20章に戻る
-cta_btn2_text.en: Back to Chapter 20
-cta_btn2_link.ja: /claude-debian/20-community/
-cta_btn2_link.en: /en/claude-debian/20-community/
+cta_btn1_text.ja: 第23章へ進む
+cta_btn1_text.en: Continue to Chapter 23
+cta_btn1_link.ja: /claude-debian/23-organization-adoption/
+cta_btn1_link.en: /en/claude-debian/23-organization-adoption/
+cta_btn2_text.ja: 第21章に戻る
+cta_btn2_text.en: Back to Chapter 21
+cta_btn2_link.ja: /claude-debian/21-community/
+cta_btn2_link.en: /en/claude-debian/21-community/
 ---
 ifdef::lang-ja[]
 == 伝えるという難しさ
@@ -13210,7 +13496,7 @@ ____
 
 === 業務に関わるので慎重に
 
-会社のPC環境は、多くの場合、自分の一存で変えられない。*業務PCでの移行話は、組織の正式な話（第22章）*に繋がる。ここでは、自分の業務PCは別として、*同僚個人のプライベートPC*の話に限る。
+会社のPC環境は、多くの場合、自分の一存で変えられない。*業務PCでの移行話は、組織の正式な話（第23章）*に繋がる。ここでは、自分の業務PCは別として、*同僚個人のプライベートPC*の話に限る。
 
 === 共通の痛みから入る
 
@@ -13297,7 +13583,7 @@ ____
 * この教科書を渡せる準備
 * 「使い続けることが伝達」という姿勢
 
-次の第22章では、個人を超えて*組織での導入*に入る。チームや会社でDebianを使うときの、技術だけでない政治的・組織的な課題を Claude と整理する。
+次の第23章では、個人を超えて*組織での導入*に入る。チームや会社でDebianを使うときの、技術だけでない政治的・組織的な課題を Claude と整理する。
 
 '''
 
@@ -13387,7 +13673,7 @@ ____
 
 === Be Careful Because Work Is Involved
 
-A company PC environment is, often, not yours to change. *Conversations about migrating a work PC connect to formal organizational topics (Chapter 22).* Here we limit to *a colleague's personal PC*, separate from work.
+A company PC environment is, often, not yours to change. *Conversations about migrating a work PC connect to formal organizational topics (Chapter 23).* Here we limit to *a colleague's personal PC*, separate from work.
 
 === Start from a Shared Pain
 
@@ -13474,39 +13760,39 @@ What you hold now:
 * The setup to hand over this textbook.
 * The posture of "continued use is the message."
 
-In Chapter 22, we go beyond the individual to *adoption in an organization*. The political and organizational challenges, not just technical ones, of using Debian on a team or company — sorted out with Claude.
+In Chapter 23, we go beyond the individual to *adoption in an organization*. The political and organizational challenges, not just technical ones, of using Debian on a team or company — sorted out with Claude.
 
 '''
 
 The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
-// ===== article: 22-organization-adoption =====
+// ===== article: 23-organization-adoption =====
 ---
-slug: claude-debian-22-organization-adoption
-number: 22
-title.ja: 第22章 組織での導入
-title.en: Chapter 22 — Adoption in an Organization
+slug: claude-debian-23-organization-adoption
+number: 23
+title.ja: 第23章 組織での導入
+title.en: Chapter 23 — Adoption in an Organization
 subtitle.ja: Linux 移行よりも、道具の変更を先に。
 subtitle.en: Change the tools before changing the OS.
 description.ja: チームや会社で Debian を導入する現実的な道筋。OS の入れ替えを推す前に、Markdown / CSV / Python(uv) / Claude / Element ── 道具を変える。これは Windows 上でも始められる。中身が構造化テキストに移れば、Linux 移行は小さな最後の一歩になる。
 description.en: A realistic path for adopting Debian on a team or in a company. Before pushing the OS swap, change the tools — Markdown / CSV / Python (uv) / Claude / Element. These work on Windows already. Once the substance moves to structured text, Linux migration becomes a small final step.
 date: 2026.04.23
-label: Claude × Debian 22
+label: Claude × Debian 23
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
 cta_title.ja: OS より先に、道具を変える。
 cta_title.en: Tools first, OS later.
 cta_text.ja: 「全社で Linux に移行する」と宣言すると必ず失敗する。先にやるのは、Markdown と Python と Claude ── これは Windows でも始められる。道具が変わってから OS を変えれば、衝突は最小になる。
 cta_text.en: Declaring "the whole company will migrate to Linux" almost always fails. What you do first is Markdown, Python, and Claude — these run on Windows. Change the tools first, then change the OS, and the friction drops to a minimum.
-cta_btn1_text.ja: 第23章へ進む
-cta_btn1_text.en: Continue to Chapter 23
-cta_btn1_link.ja: /claude-debian/23-passing-on/
-cta_btn1_link.en: /en/claude-debian/23-passing-on/
-cta_btn2_text.ja: 第21章に戻る
-cta_btn2_text.en: Back to Chapter 21
-cta_btn2_link.ja: /claude-debian/21-telling-others/
-cta_btn2_link.en: /en/claude-debian/21-telling-others/
+cta_btn1_text.ja: 第24章へ進む
+cta_btn1_text.en: Continue to Chapter 24
+cta_btn1_link.ja: /claude-debian/24-passing-on/
+cta_btn1_link.en: /en/claude-debian/24-passing-on/
+cta_btn2_text.ja: 第22章に戻る
+cta_btn2_text.en: Back to Chapter 22
+cta_btn2_link.ja: /claude-debian/22-telling-others/
+cta_btn2_link.en: /en/claude-debian/22-telling-others/
 ---
 ifdef::lang-ja[]
 == 組織導入の現実
@@ -13650,7 +13936,7 @@ Debianに移行したあなたが、次を見せる。
 
 === 興味を示した人を支援する
 
-あなたの成果を見て「自分もやってみたい」という人が出てきたら、第21章の「周囲に伝える」を実行する。
+あなたの成果を見て「自分もやってみたい」という人が出てきたら、第22章の「周囲に伝える」を実行する。
 
 * この教科書を渡す
 * 一緒にインストール日を設定する
@@ -13817,7 +14103,7 @@ ____
 * 撤退基準
 * 二人目・三人目の候補
 
-次の第23章——教科書の最終章——では、*次世代への継承*を扱う。あなたが学んだことを、子供や後進にどう渡すか。Claudeと一緒に学ぶ時代の、学びの継承のあり方を考える。
+次の第24章——教科書の最終章——では、*次世代への継承*を扱う。あなたが学んだことを、子供や後進にどう渡すか。Claudeと一緒に学ぶ時代の、学びの継承のあり方を考える。
 
 '''
 
@@ -13968,7 +14254,7 @@ Record your migration and operation on the internal wiki or your team's document
 
 === Support Those Who Show Interest
 
-When someone sees your results and says "I want to try too," apply Chapter 21's "telling those around you."
+When someone sees your results and says "I want to try too," apply Chapter 22's "telling those around you."
 
 * Hand them this textbook.
 * Pick an install day together.
@@ -14132,25 +14418,25 @@ What you hold now:
 * Withdrawal criteria.
 * Candidates for the second and third person.
 
-In Chapter 23 — the textbook's final chapter — we cover *passing it on to the next generation*. How to hand what you've learned to your children and to those who follow. The shape of inheritance of learning, in an era of learning together with Claude.
+In Chapter 24 — the textbook's final chapter — we cover *passing it on to the next generation*. How to hand what you've learned to your children and to those who follow. The shape of inheritance of learning, in an era of learning together with Claude.
 
 '''
 
 The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
-// ===== article: 23-passing-on =====
+// ===== article: 24-passing-on =====
 ---
-slug: claude-debian-23-passing-on
-number: 23
-title.ja: 第23章 次世代への継承
-title.en: Chapter 23 — Passing It On to the Next Generation
+slug: claude-debian-24-passing-on
+number: 24
+title.ja: 第24章 次世代への継承
+title.en: Chapter 24 — Passing It On to the Next Generation
 subtitle.ja: 学んだことは、次の人の出発点になる
 subtitle.en: What you have learned becomes someone else's starting point
 description.ja: Claudeと一緒に学ぶ時代の、学びの継承のかたち。子供、後進、将来の自分へ、何を・どう残すか。教科書の最終章として、この一連の学びが何を育てたかを振り返る。
 description.en: The shape of inheritance of learning, in an era of learning together with Claude. To children, to those who follow, to the future you — what to leave, and how. As the textbook's final chapter, look back at what this whole series of learning has cultivated.
 date: 2026.04.23
-label: Claude × Debian 23
+label: Claude × Debian 24
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
 cta_title.ja: 地図を渡す人になる。
@@ -14169,7 +14455,7 @@ cta_btn2_link.en: /en/claude-debian/
 ifdef::lang-ja[]
 == 最終章の位置
 
-序章から第22章まで、Claudeと一緒にDebianを学んできた。あなたは今、Debianが動くPCと、自分の dotfiles と、Claudeとの対話の作法と、少しばかりの技能を手にしている。
+序章から第23章まで、Claudeと一緒にDebianを学んできた。あなたは今、Debianが動くPCと、自分の dotfiles と、Claudeとの対話の作法と、少しばかりの技能を手にしている。
 
 この最終章では、*その先*を考える。学んだことをどう次に渡すか。何を残し、何を変え、誰に何を渡すのか。そして、この教科書全体が何を育てたかを振り返る。
 
@@ -14227,7 +14513,7 @@ ____
 * 質問があれば、一緒にClaudeに聞く
 * 「完全なサポートはできない」と最初に伝える
 
-これは第21章「周囲に伝える」の延長だ。押し付けないことで、むしろ続く関係になる。
+これは第22章「周囲に伝える」の延長だ。押し付けないことで、むしろ続く関係になる。
 
 === 「一緒に学ぶ」を継続する
 
@@ -14273,7 +14559,7 @@ ____
 
 === 一人のノートが、他人の出発点に
 
-第19章で書いた通り、あなたの経験を公開すると、それが他人の出発点になる。
+第20章で書いた通り、あなたの経験を公開すると、それが他人の出発点になる。
 
 * ブログ記事
 * GitHub の dotfiles リポジトリ（READMEで意図を説明）
@@ -14304,7 +14590,7 @@ ____
 
 === 技能としての獲得
 
-序章から第22章まで、あなたは次を手にした。
+序章から第23章まで、あなたは次を手にした。
 
 * Debianが動くPC
 * dotfiles と再現可能な環境
@@ -14402,7 +14688,7 @@ endif::[]
 ifdef::lang-en[]
 == Where the Final Chapter Sits
 
-From the prologue through Chapter 22, you have learned Debian together with Claude. You now hold a PC running Debian, your dotfiles, the practice of dialogue with Claude, and a measure of skill.
+From the prologue through Chapter 23, you have learned Debian together with Claude. You now hold a PC running Debian, your dotfiles, the practice of dialogue with Claude, and a measure of skill.
 
 In this final chapter, we consider *what comes next*. How to pass on what you have learned. What to keep, what to change, what to give to whom. And we look back at what this whole textbook has cultivated.
 
@@ -14460,7 +14746,7 @@ When new hires arrive at the company, if you are a Debian user, someone may show
 * For their questions, ask Claude together with them.
 * State up front: "I can't be your full support."
 
-This is the extension of Chapter 21, "Telling Those Around You." Not pushing, paradoxically, makes the relationship last.
+This is the extension of Chapter 22, "Telling Those Around You." Not pushing, paradoxically, makes the relationship last.
 
 === Keep "Learning Together"
 
@@ -14506,7 +14792,7 @@ ____
 
 === One Person's Notes Become Someone's Starting Point
 
-As I wrote in Chapter 19, publishing your experience makes it a starting point for someone else.
+As I wrote in Chapter 20, publishing your experience makes it a starting point for someone else.
 
 * A blog post.
 * A GitHub dotfiles repository (with a README explaining intent).
@@ -14537,7 +14823,7 @@ ____
 
 === Acquired as Skills
 
-From the prologue through Chapter 22, you have gained:
+From the prologue through Chapter 23, you have gained:
 
 * A PC that runs Debian.
 * dotfiles and a reproducible environment.

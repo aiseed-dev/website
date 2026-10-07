@@ -1447,7 +1447,7 @@ AI が持つのは、学習で得た重みだけだ。膨大な過去のデー�
 
 ソフトウェアエンジニアの典型は、ビッグテックの社員だ。巨大なシステムの、特定の一分野だけを深く受け持つ。検索の一機能、決済の一サービス、ある API の一層。問題は狭く、よく定義されている。だからこそ、AI が最も得意とする領域だ。その仕事から先に、AI がするようになる。
 
-そして、それは最先端ですでに起きている。Anthropic は、2026 年 5 月に本番へマージしたコードの *8 割超*が Claude 製だったと公表している(VentureBeat)。*Claude が Claude を作っている*。こうなると、問いは一つになる。ビッグテックのソフトウェアエンジニアは、まだ必要か。AI が代わりをする時代になった。
+そして、それは最先端ですでに起きている。Anthropic は、2026 年 5 月に本番へマージしたコードの *8 割超*が Claude 製だったと公表している(VentureBeat)。*Claude が Claude を作っている*。ここで問うべきは「人はまだ必要か」ではなく、「人は何をするか」だ。設計とコードは AI に移り、人は計画と運用に移る。最先端の会社で起きたのは、人がいなくなったことではなく、人の書くコードがほとんど無くなったことだ。
 
 == 出力を決めるのは、判断の質とループの回転数だ
 
@@ -1461,7 +1461,7 @@ AI が持つのは、学習で得た重みだけだ。膨大な過去のデー�
 | スループット | 設計・実装の速度に比例 | 判断の質 × ループの回転数
 |===
 
-特に最後の二行が、本章の中心だ。SE の出力は「人数 × 設計・実装の速度」で決まる。人を増やせば速くなる。上限はあったが、増やせば効いた。ビルダーの出力は「判断の質 × ループの回転数」で決まる。*人を増やしても速くならない*。判断の連鎖は、頭の数では分散できないからだ。AI が狭く閉じた課題、つまり設計とコードを引き受けた世界では、後者の式が支配的になる。
+特に最後の二行が、本章の中心だ。SE の出力は「人数 × 設計・実装の速度」で決まる。人を増やせば速くなる。上限はあったが、増やせば効いた。ビルダーの出力は「判断の質 × ループの回転数」で決まる。*人を増やしても速くならない*。判断の連鎖は、頭の数では分散できないからだ。AI が狭く閉じた課題、つまり設計とコードを引き受けた世界では、後者の式が支配的になる。人が要らないのではない。人数を決めるのは、回す計画の数だ。コードの量で人を数える時代が終わっただけである。
 
 ____
 SE は、狭く閉じた課題を解く。そこは AI が強い。
@@ -1607,7 +1607,7 @@ The weights obtained from training can be changed easily, by the developer. What
 
 The typical software engineer is a big-tech employee. Such an engineer owns one specific slice of a giant system, deeply. One feature of search, one service of payments, one layer of an API. The problem is narrow and well defined. That is exactly where AI is strongest. That work is the first to be done by AI.
 
-And at the frontier it is already happening. Anthropic has stated that *more than 80 percent* of the code it merged into production in May 2026 was written by Claude (VentureBeat). *Claude builds Claude.* Once that is the case, the question becomes a single one. Are big-tech software engineers still needed? The era in which AI does it in their place has arrived.
+And at the frontier it is already happening. Anthropic has stated that *more than 80 percent* of the code it merged into production in May 2026 was written by Claude (VentureBeat). *Claude builds Claude.* The question to ask here is not whether people are still needed, but what people do. Design and code move to AI; people move to planning and running. What happened at the frontier company is not that the people went away, but that the code people write nearly did.
 
 == Output is set by the quality of judgment and the number of loop turns
 
@@ -1621,7 +1621,7 @@ And at the frontier it is already happening. Anthropic has stated that *more tha
 | Throughput | Proportional to design-and-build speed | Decision quality × loop turns
 |===
 
-The last two rows are the heart of this chapter. An SE's output is set by "headcount × design-and-build speed." Adding people makes it faster. There were limits, but adding people did work. A builder's output is set by "decision quality × loop turns." *Adding people does not make it faster*, because a chain of judgments cannot be split across heads. Once AI takes on the narrowly closed problem, which is the design and the code, the second equation dominates.
+The last two rows are the heart of this chapter. An SE's output is set by "headcount × design-and-build speed." Adding people makes it faster. There were limits, but adding people did work. A builder's output is set by "decision quality × loop turns." *Adding people does not make it faster*, because a chain of judgments cannot be split across heads. Once AI takes on the narrowly closed problem, which is the design and the code, the second equation dominates. That does not mean people are not needed. What sets the headcount is the number of plans being turned. Only the era of counting people by the volume of code is over.
 
 ____
 The SE solves a narrowly closed problem. There, AI is strong.

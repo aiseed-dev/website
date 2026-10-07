@@ -10358,8 +10358,7 @@ ____
 *npm は、サプライチェーンの観点でとても脆弱なエコシステムである*。
 ____
 
-2026 年に *SAP の npm 公式パッケージ 4 種が汚染* され、*1,100 を超える GitHub リポジトリのデータが流出* した事件があった
-`[要検証:具体的な日付・パッケージ名]`。これは特殊例ではない。
+2026 年 4 月 29 日、*SAP の CAP 向け npm パッケージ 4 種*(`mbt`、`@cap-js/db-service`、`@cap-js/postgres`、`@cap-js/sqlite`)に悪意のあるコードが混ぜられ、開発機の認証情報やクラウドの秘密情報が、*被害者自身の GitHub アカウントに作られた公開リポジトリへ流出* した(The Register、2026-04-30)。これは特殊例ではない。
 
 過去にも、
 
@@ -10848,6 +10847,77 @@ As discussed in link:/en/insights/security-design/[Chapter 15, "Security Design 
 *Don't install directly into the system Python or system npm.* Each
 project gets its own isolated environment, so when one breaks, the rest
 don't go with it.
+
+=== npm Is Structurally Fragile — Watch the Supply Chain
+
+One fact here deserves to be kept firmly in mind.
+
+____
+*npm is a very fragile ecosystem from a supply-chain point of view.*
+____
+
+On 29 April 2026, *four SAP npm packages for CAP* (`mbt`, `@cap-js/db-service`,
+`@cap-js/postgres`, `@cap-js/sqlite`) were laced with malicious code, and
+credentials from developer machines and cloud secrets were
+*leaked to public GitHub repositories created on the victims' own accounts*
+(The Register, 2026-04-30). This was no isolated case.
+
+Before that,
+
+* `event-stream` (2018): targeting cryptocurrency wallets
+* `ua-parser-js` (2021): planting miners and a RAT
+* `colors` / `faker` (2022): deliberate sabotage by the maintainer
+* countless typosquats (look-alike package names that invite a mistaken install)
+
+— *a major incident almost every year.*
+
+=== Why npm Is Structurally Dangerous
+
+* One project depends, transitively, on *hundreds to thousands* of packages
+* Those are stray packages maintained by *individuals all over the world*
+* `npm install` fetches and runs the whole dependency tree *unchecked*
+* A `postinstall` hook runs arbitrary code
+* If one dependency is hijacked, every project that depends on it is compromised
+
+This is the opposite of Debian's `apt` model, where
+*maintainers review and distribute signed packages*. Debian is called slow, but that slowness is the
+*slowness of verification* — the cost of safety.
+
+____
+Debian's `apt install` and npm's `npm install` look alike and are not. The
+former fetches *verified code*. The latter fetches
+*unverified code written by strangers*, thousands of packages at a time,
+transitively.
+____
+
+=== If You Use Claude Code, Be Even More Careful
+
+Claude Code reads files and runs commands behind the editor. If a malicious
+package is lurking somewhere in `node_modules` on your development machine,
+*the AI could be what triggers it.*
+
+Bringing Claude into a project that carries 1,000 dependencies is
+*inviting 1,000 strangers you cannot vouch for into your workspace.*
+
+=== Practical Countermeasures
+
+* *Know your total npm dependency count*: check with `npm ls --all | wc -l`.
+  Past a few hundred, think seriously about cutting dependencies
+* *Commit the lockfile*: pin exact versions with `package-lock.json`.
+  *Never let it pick up latest on its own*
+* *Put `npm audit` into CI*: automatic checks for known vulnerabilities
+* *Don't trust `postinstall`*: make `npm install --ignore-scripts` the habit
+* *Develop in a throwaway container*: run `npm install` inside Docker / podman
+  and the host stays untouched
+* *Wherever possible, consider the option of not using npm at all*: with the
+  Markdown + HTML + Python stack this book (and
+  link:/en/ai-native-software/web-build/[2-10, "Build the Web"]) recommends,
+  most front-end builds need no npm
+
+____
+Not "use it because it's convenient" but "*don't use it unless you have to*"
+— that is the basis of supply-chain security.
+____
 
 === Throw Away Environments You Don't Use
 

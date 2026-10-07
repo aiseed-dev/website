@@ -598,7 +598,8 @@ def build_blog_index(lang="ja"):
         slug = p.get("slug", "")
         title = p.get("title", "")
         date = p.get("date", "")
-        description = p.get("description", "")
+        # 一覧に出すのは一行の subtitle。description は検索・SNS 向けの要旨で、画面には出さない
+        description = p.get("subtitle") or p.get("description", "")
         post_list += f'''
                 <a href="{blog_base}/{slug}/" style="text-decoration: none; color: inherit;">
                     <div class="activity-item">
@@ -2084,7 +2085,7 @@ def update_home_latest_posts(lang="ja", count=HOME_LATEST_COUNT):
         slug = p.get("slug", "")
         title = p.get("title", "")
         date = p.get("date", "")
-        description = p.get("description", "")
+        description = p.get("subtitle") or p.get("description", "")  # 一覧は一行の subtitle
         cards.append(
             f'                <a href="{blog_base}/{slug}/" class="article-link">\n'
             f'                    <div class="activity-item">\n'

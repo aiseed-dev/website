@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-9FLQ963JXM');
+</script>
+
+<title>第2章 サーバーをどこに置くか — Claudeと一緒に育てるDebian サーバー | aiseed.dev</title>
+<meta name="description" content="本書の前提は「自宅サーバーかVPSで、データも自分で管理する」。自宅・VPS・大手クラウドの三つを費用と責任の地図にして見比べ、自分はどちらで始めるかを数字で決める。データ管理を他社サービスに預ける道を本書が選ばない理由も、ここではっきりする。">
+<link rel="canonical" href="https://aiseed.dev/debian-server/02-where-to-run/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/debian-server/02-where-to-run/">
+<link rel="alternate" hreflang="en" href="https://aiseed.dev/en/debian-server/02-where-to-run/">
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/debian-server/02-where-to-run/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI時代の暮らし">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第2章 サーバーをどこに置くか">
+<meta property="og:description" content="本書の前提は「自宅サーバーかVPSで、データも自分で管理する」。自宅・VPS・大手クラウドの三つを費用と責任の地図にして見比べ、自分はどちらで始めるかを数字で決める。データ管理を他社サービスに預ける道を本書が選ばない理由も、ここではっきりする。">
+<meta property="og:url" content="https://aiseed.dev/debian-server/02-where-to-run/">
+<meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<meta property="article:section" content="Claudeと一緒に育てるDebian サーバー">
+<meta property="article:published_time" content="2026.06.10">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="第2章 サーバーをどこに置くか">
+<meta name="twitter:description" content="本書の前提は「自宅サーバーかVPSで、データも自分で管理する」。自宅・VPS・大手クラウドの三つを費用と責任の地図にして見比べ、自分はどちらで始めるかを数字で決める。データ管理を他社サービスに預ける道を本書が選ばない理由も、ここではっきりする。">
+<meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
+<!-- フォントは Web 配信せず、すべて端末のローカルフォントで賄う。
+     和文: UDデジタル教科書体 → BIZ UDP明朝(いずれも Windows 標準搭載の
+     モリサワ UD 書体) → ヒラギノ明朝・游明朝などのシステム明朝。
+     等幅: 端末のシステム等幅フォント。 -->
+
+<style>
+/* ============================================================
+   LOCAL FONT: UDデジタル教科書体(モリサワ)
+   Windows・教育向け端末に無償搭載。端末にあれば local() で拾い、
+   なければ BIZ UDP明朝(同じく Windows 標準搭載)→ システム明朝へ
+   フォールバックする。R と B は別ファミリー名なので、太字(700)を
+   B 書体に明示的にマッピングして疑似ボールドを避ける。
+   ============================================================ */
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 400;
+  src: local("UD デジタル 教科書体 NK-R"), local("UD Digital Kyokasho NK-R"),
+       local("UD デジタル 教科書体 NP-R"), local("UD Digital Kyokasho NP-R"),
+       local("UD デジタル 教科書体 N-R"), local("UD Digital Kyokasho N-R");
+}
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 700;
+  src: local("UD デジタル 教科書体 NK-B"), local("UD Digital Kyokasho NK-B"),
+       local("UD デジタル 教科書体 NP-B"), local("UD Digital Kyokasho NP-B"),
+       local("UD デジタル 教科書体 N-B"), local("UD Digital Kyokasho N-B");
+}
+
+/* ============================================================
+   COLOR & DESIGN TOKENS
+   aiseed.dev 全体のスタイルに合わせる場合は、ここの変数を
+   既存サイトのCSS変数に差し替える。
+   ============================================================ */
+:root {
+  --ink: #1a1a1a;
+  --paper: #f4f1ea;
+  --paper-deep: #ebe6d8;
+  --accent: #c8442a;
+  --rule: #d4cdb8;
+  --whisper: #6b665a;
+  --highlight: #f7e9c8;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* 本文: 端末にあれば UDデジタル教科書体を最優先、次に BIZ UDP明朝
+   (Windows 標準搭載)、どちらもなければヒラギノ明朝等のシステム明朝 */
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "UD Digital Kyokasho",
+               "BIZ UDPMincho", "BIZ UDP明朝",
+               "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
+               "Yu Mincho", "游明朝", "YuMincho",
+               "Noto Serif CJK JP", "Noto Serif JP", serif;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  font-feature-settings: "palt";
+  overflow-x: hidden;
+}
+
+/* グレインテクスチャ(紙の質感) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   MASTHEAD(シリーズ名・章番号)
+   ============================================================ */
+.masthead {
+  border-bottom: 3px double var(--ink);
+  padding: 24px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+}
+.masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-left a { color: inherit; text-decoration: none; }
+.masthead-left a:hover { color: var(--accent); }
+.masthead-home { color: var(--whisper); }
+.masthead-sep { margin: 0 10px; color: var(--whisper); font-weight: 400; }
+.masthead-right { font-style: italic; }
+
+/* ============================================================
+   HERO(タイトル領域)
+   ============================================================ */
+.hero {
+  padding: 80px 0 60px;
+}
+.hero-meta {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-meta::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 56px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.hero-title .accent {
+  color: var(--accent);
+}
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--whisper);
+  max-width: 580px;
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+  margin-top: 32px;
+}
+.hero-byline {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ============================================================
+   ARTICLE BODY
+   ============================================================ */
+article p {
+  margin-bottom: 24px;
+}
+
+article h2 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.4;
+  margin: 72px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+article h2::before {
+  content: "§";
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  color: var(--accent);
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+article h3 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 600;
+  font-size: 19px;
+  margin: 40px 0 16px;
+  color: var(--ink);
+}
+article h3::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+article strong {
+  font-weight: 700;
+  background: linear-gradient(to top, var(--highlight) 35%, transparent 35%);
+  padding: 0 2px;
+}
+
+article em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+article a:hover {
+  color: var(--accent);
+}
+
+/* ============================================================
+   BLOCKQUOTE
+   ============================================================ */
+blockquote {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  position: relative;
+  font-size: 18px;
+  line-height: 1.85;
+  font-style: normal;
+  color: var(--ink);
+}
+blockquote::before {
+  content: "「";
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-size: 48px;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: "Hiragino Mincho ProN", serif;
+}
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+article thead th {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+}
+article tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+article tbody tr:last-child td {
+  border-bottom: none;
+}
+@media (max-width: 720px) {
+  article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ============================================================
+   ORDERED LIST(番号付きリスト)
+   ============================================================ */
+article ol {
+  margin: 32px 0;
+  counter-reset: item;
+  padding: 0;
+}
+article ol li {
+  list-style: none;
+  position: relative;
+  padding: 16px 0 16px 56px;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: item;
+}
+article ol li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* 通常のul(章末の関連リンクなど) */
+article ul {
+  margin: 24px 0;
+  padding-left: 1.5em;
+}
+article ul li {
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   CODE BLOCK(疑似ターミナル風)
+   ============================================================ */
+article pre {
+  margin: 40px 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 24px 28px;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+  overflow-x: auto;
+}
+article pre::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 8px;
+  color: var(--whisper);
+  letter-spacing: 4px;
+}
+article pre code {
+  display: block;
+  padding-top: 16px;
+  white-space: pre;
+}
+
+/* インラインコード */
+article code {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 0.9em;
+  background: var(--paper-deep);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+article pre code {
+  background: transparent;
+  padding: 16px 0 0 0;
+  color: var(--paper);
+}
+
+/* ============================================================
+   HORIZONTAL RULE(本文中の区切り)
+   ============================================================ */
+article hr {
+  border: none;
+  text-align: center;
+  margin: 64px 0;
+  height: 1em;
+}
+article hr::before {
+  content: "◆ ◆ ◆";
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+}
+
+/* ============================================================
+   RELATED LINKS(章末の関連記事)
+   ============================================================ */
+.related-links {
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.related-links h3 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+.related-links h3::before {
+  content: none;
+}
+.related-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.related-links li {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 0;
+}
+.related-links li:last-child {
+  border-bottom: none;
+}
+.related-links a {
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.related-links .related-tag {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.related-links a:hover .related-title {
+  color: var(--accent);
+}
+
+/* ============================================================
+   FOOTER(サイト内メニュー+奥付)
+   ============================================================ */
+.site-footer {
+  margin-top: 96px;
+  border-top: 3px double var(--ink);
+  padding-top: 48px;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 48px;
+}
+.footer-col h4 {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-col li {
+  padding: 6px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.footer-col a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.footer-col a:hover { color: var(--accent); }
+
+.colophon {
+  margin-top: 48px;
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--whisper);
+  text-align: center;
+  line-height: 2;
+}
+.colophon-mark {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "Hiragino Mincho ProN", serif;
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+/* ============================================================
+   SERIES TOC(全章一覧・折りたたみ式)
+   ============================================================ */
+.series-toc {
+  margin: 24px 0 40px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 0;
+}
+.series-toc details {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+}
+.series-toc summary {
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  padding: 8px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.series-toc summary::-webkit-details-marker { display: none; }
+.series-toc summary::before {
+  content: "▸";
+  color: var(--accent);
+  font-size: 10px;
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.series-toc details[open] summary::before { transform: rotate(90deg); }
+.series-toc ol {
+  list-style: none;
+  margin: 12px 0 8px;
+  padding: 0;
+  counter-reset: none;
+}
+.series-toc li {
+  list-style: none;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--rule);
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  line-height: 1.55;
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.series-toc li::before { content: none; }
+.series-toc li:last-child { border-bottom: none; }
+.series-toc li a {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--ink);
+  flex: 1;
+}
+.series-toc li a:hover .toc-title { color: var(--accent); }
+.series-toc .toc-num {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 5em;
+}
+.series-toc li.current {
+  background: var(--paper-deep);
+  margin: 0 -12px;
+  padding: 9px 12px;
+}
+.series-toc li.current .toc-title {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ============================================================
+   IMAGES
+   ============================================================ */
+article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 32px auto;
+}
+
+/* ============================================================
+   CUSTOM BLOCKS(:::chain / :::highlight / :::quote / :::compare)
+   ============================================================ */
+.chain-diagram {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+.chain-diagram .arrow {
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0.3em;
+}
+.highlight-box {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.highlight-box p { margin-bottom: 12px; }
+.highlight-box p:last-child { margin-bottom: 0; }
+.quote-block {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+}
+.quote-block .quote-text {
+  font-size: 18px;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* ============================================================
+   ASCIIDOC BLOCKS(pyasciidoc が出力するクラス。.adoc 記事用)
+   admonition / 帰属つき引用 / 画像ブロック / 脚注 / ロール
+   ============================================================ */
+.admonition {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.admonition-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.admonition p { margin-bottom: 12px; }
+.admonition p:last-child { margin-bottom: 0; }
+.quoteblock { margin: 40px 0; }
+.quoteblock blockquote { margin: 0; }
+.quoteblock .attribution {
+  margin-top: 12px;
+  text-align: right;
+  font-size: 14px;
+  color: var(--whisper);
+}
+.quoteblock .attribution cite { font-style: normal; }
+.imageblock { margin: 32px 0; text-align: center; }
+.imageblock .content img { max-width: 100%; height: auto; }
+sup.footnote { font-size: 12px; }
+sup.footnote a { text-decoration: none; }
+.footnotes {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px;
+  color: var(--whisper);
+}
+.footnotes ol { padding-left: 1.5em; }
+.footnotes li { margin-bottom: 8px; }
+.footnotes .footnote-backref { text-decoration: none; margin-left: 0.3em; }
+/* ロール: [.chain](:::chain と同じ見た目)/ [.accent]#…# */
+article .chain {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+article .accent { color: var(--accent); }
+
+/* ============================================================
+   CHAPTER NAV(前後の記事へのリンク)
+   ============================================================ */
+.chapter-nav {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 14px;
+}
+.chapter-nav a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+}
+.chapter-nav a:hover { color: var(--accent); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 40px; }
+  blockquote { padding: 24px 20px 24px 28px; }
+  article pre { padding: 20px 16px; font-size: 12px; }
+  article ol li { padding-left: 48px; }
+  .series-toc .toc-num { min-width: 4em; font-size: 10px; }
+  .series-toc li { font-size: 13px; gap: 12px; }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta, .hero-title, .hero-subtitle, .hero-byline {
+  animation: rise 0.8s ease-out backwards;
+}
+.hero-meta     { animation-delay: 0.1s; }
+.hero-title    { animation-delay: 0.25s; }
+.hero-subtitle { animation-delay: 0.45s; }
+.hero-byline   { animation-delay: 0.65s; }
+.mermaid {
+  text-align: center;
+  margin: 2.5rem 0;
+  background: var(--paper-warm, #f5f1ea);
+  padding: 1.5rem 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.mermaid svg { max-width: 100%; height: auto; }
+
+/* ============================================================
+   WIDE LAYOUT(広い画面では目次を左サイドバーに常時展開)
+   ============================================================ */
+@media (min-width: 1200px) {
+  body.has-toc .container {
+    max-width: 1320px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 880px);
+    column-gap: 64px;
+    justify-content: center;
+  }
+  body.has-toc .masthead,
+  body.has-toc .hero {
+    grid-column: 1 / -1;
+  }
+  /* グリッドアイテム自体は行いっぱいに伸ばし、内側の details を sticky に
+     する(sticky なグリッドアイテムはグリッドエリアではなくコンテナ全体で
+     制約されるブラウザ挙動があり、フッターに重なってしまうため)。 */
+  body.has-toc .series-toc {
+    grid-column: 1;
+    grid-row: 3 / span 2;
+    margin: 0;
+    padding: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+  body.has-toc .series-toc details {
+    position: sticky;
+    top: 32px;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 0 12px 12px 0;
+  }
+  /* サイドバーでは折りたたみを無効化し、見出しとして表示 */
+  body.has-toc .series-toc summary {
+    pointer-events: none;
+    cursor: default;
+  }
+  body.has-toc .series-toc summary::before { content: none; }
+  body.has-toc .series-toc li { font-size: 13.5px; }
+  body.has-toc article    { grid-column: 2; grid-row: 3; }
+  body.has-toc .chapter-nav { grid-column: 2; grid-row: 4; }
+  body.has-toc .site-footer { grid-column: 1 / -1; grid-row: 5; }
+}
+
+/* ============================================================
+   DARK MODE(OS の配色設定に追従して自動で暗色に切り替え)
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ink: #e8e3d6;
+    --paper: #16140f;
+    --paper-deep: #211d16;
+    --accent: #e8765a;
+    --rule: #393428;
+    --whisper: #a39b88;
+    --highlight: rgba(220, 168, 78, 0.30);
+  }
+  /* 紙の質感(グレイン)を暗色背景向けに反転 */
+  body::before {
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    mix-blend-mode: screen;
+    opacity: 0.4;
+  }
+  /* コードブロックは両モードとも暗いターミナル調を維持 */
+  article pre {
+    background: #0d0c0a;
+    color: #e8e3d6;
+  }
+  article pre code {
+    color: #e8e3d6;
+  }
+  /* Mermaid 図の枠を暗色に */
+  .mermaid {
+    background: #211d16;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- MASTHEAD(ホーム › シリーズ目次) -->
+  <header class="masthead">
+    <div class="masthead-left"><a href="/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="/debian-server/">Claudeと一緒に育てるDebian サーバー</a></div>
+    <div class="masthead-right">第2章 / Series</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-meta">第2章 № 02 · 2026</div>
+
+    <h1 class="hero-title">第2章 サーバーをどこに置くか</h1>
+
+    <p class="hero-subtitle">古いPC、自宅、VPS——費用と責任の地図</p>
+
+    <div class="hero-byline">
+      <span>2026.06.10</span>
+      <span><a href="https://aiseed.dev/en/debian-server/02-where-to-run/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">🌐 EN</a></span>
+    </div>
+  </section>
+
+  <!-- SERIES TOC(全章一覧・現在の章をハイライト) -->
+  
+
+  <!-- ARTICLE BODY -->
+  <article>
+    <h2>なぜ「置き場所」が最初の設計判断か</h2>
+<p>サーバーを始めると聞くと、多くの人はまず「どんな機械を買えばいいか」を考える。だが、それは順番が逆だ。<strong>ハードを選ぶ前に、置き場所を決める必要がある。</strong></p>
+<p>なぜなら、置き場所が決まると、その上に乗る三つの構造が自動的に決まるからだ——費用（初期と月額）、責任（壊れたとき誰が直すか）、ネットワーク（どうやって接続するか、公開できるか）。自宅の古いPCに置くのと、ネットの向こうのVPSに置くのとでは、この三つがまるごと変わる。機械の型番を選ぶのは、その後でいい。</p>
+<p>第1章で宣言したとおり、本書の前提は「<strong>自宅サーバーかVPS</strong>で、データも自分で管理する」だ。この章では三つの選択肢を費用と責任の地図にして、自宅とVPSのどちらで始めるかを自分の数字で決める。データの管理そのものを他社のサービスに預けてしまう道を本書が選ばない理由も、ここではっきりする。読み終えたとき、あなたは自分の置き場所を、根拠を持って自分の決断として言えるようになる。</p>
+<h2>第一節 三つの選択肢の地図</h2>
+<p>サーバーの置き場所は、大きく三つに分かれる。</p>
+<ul>
+<li><strong>(a) 自宅の機械</strong>：使わなくなった古いPC、ミニPC、Raspberry Pi など。あなたの家に物理的に置く。</li>
+<li><strong>(b) VPS</strong>：仮想専用サーバー。事業者のデータセンターにある仮想マシンを月額で借りる。月数百円から。</li>
+<li><strong>(c) 大手クラウド</strong>：従量課金。使った分だけ払う。柔軟だが、油断すると費用が読めない。</li>
+</ul>
+<p>三つの違いを、一枚の表で見比べてみる。</p>
+<table class="comparison-table fade-in">
+<thead>
+<tr>
+<th>観点</th>
+<th>(a) 自宅の機械</th>
+<th>(b) VPS</th>
+<th>(c) 大手クラウド</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>初期費用</td>
+<td>古いPCなら0円（新規ミニPCなら数万円）</td>
+<td>0円</td>
+<td>0円</td>
+</tr>
+<tr>
+<td>月額</td>
+<td>0円（機械代を除く）</td>
+<td>数百円〜数千円</td>
+<td>使った分だけ（読みにくい）</td>
+</tr>
+<tr>
+<td>電気代</td>
+<td>自己負担（後述）</td>
+<td>事業者持ち</td>
+<td>事業者持ち</td>
+</tr>
+<tr>
+<td>騒音・設置場所</td>
+<td>自分で確保</td>
+<td>不要</td>
+<td>不要</td>
+</tr>
+<tr>
+<td>回線</td>
+<td>自宅回線に依存</td>
+<td>事業者の太い回線</td>
+<td>事業者の太い回線</td>
+</tr>
+<tr>
+<td>障害時に誰が直すか</td>
+<td>全部あなた</td>
+<td>物理はあなた以外、OS内はあなた</td>
+<td>物理はあなた以外、OS内はあなた</td>
+</tr>
+<tr>
+<td>データの物理的所在</td>
+<td>あなたの家</td>
+<td>事業者のデータセンター</td>
+<td>事業者のデータセンター</td>
+</tr>
+</tbody>
+</table>
+<p>この表で一番大事なのは、一番下の二行だ。<strong>自宅サーバーは「全部の責任が自分」だが「データは物理的に自分の手元」にある。</strong> VPSやクラウドは「物理故障や回線は事業者が面倒を見てくれる」が「データは他人のデータセンターにある」。第1章で宣言したとおり、本書はデータ主権を最優先する。物理的な所在まで手元に置きたいなら自宅、物理の世話を事業者に任せつつ<strong>OSとデータの管理権は自分で持つ</strong>ならVPS——どちらも「自分のサーバー」だ。本書が選ばないのは、データの管理そのものを他社のサービスに預けてしまう道だけだ。</p>
+<p>本編で繰り返した「<strong>古いPCを蘇らせる</strong>」という思想は、ここで自然につながる。Windows 11に対応できず、デスクトップとしては引退した古いPCは、<strong>サーバー機として理想的</strong>だ。性能は十分すぎるほど余っているし、捨てるはずだったものに第二の人生を与えられる。</p>
+<h3>Claudeに聞いてみよう①：手元の機械のサーバー適性を診断</h3>
+<div class="quoteblock">
+<blockquote>
+<p>私の手元に、サーバーに転用できそうな古いPCがあります。スペックは次のとおりです：〔本編第3章で作った my-system.md があれば貼る。なければ CPU・メモリ・ディスク・年式・消費電力の分かる範囲を箇条書きで〕</p>
+<p>このマシンをDebianサーバーとして使う場合の適性を診断してください。第1章で整理した「動かしたいもの」〔ここに貼る〕に対して、性能は足りますか。足りない場合、何を増設すれば改善しますか。常時稼働させたときの不安点（発熱・寿命・消費電力）も指摘してください。</p>
+</blockquote>
+</div>
+<p>本編で作った <code>my-system.md</code> がそのまま再利用できる。これがサーバー編でも効く、本編の作法の継承だ。</p>
+<h2>第二節 自宅サーバーの現実</h2>
+<p>自宅サーバーは魅力的だが、デスクトップにはなかった現実がいくつかある。始める前に直視しておく。</p>
+<h3>電気代の概算</h3>
+<p>サーバーは24時間動き続ける。だから消費電力が、そのまま月々の電気代になる。古いノートPCのアイドル時消費は数W、デスクトップやミニPCで十数W〜数十Wが目安だ。</p>
+<p>ごく粗い計算をしてみる。</p>
+<pre><code>消費電力 10W で 24時間 × 30日 = 7.2 kWh/月
+電気料金を 31円/kWh とすると、約 223円/月
+
+消費電力 30W なら、約 670円/月
+</code></pre>
+<p>つまり、低消費電力の機械なら月数百円。これがVPSの月額と直接比較できる数字になる。<strong>「自宅は0円」ではなく「電気代という月額がある」</strong>ことを最初に押さえておく。</p>
+<h3>回線とルーター</h3>
+<p>自宅サーバーは、あなたの家の回線にぶら下がる。LAN内で使う分には、ルーターさえあれば今日から動く。問題になるのは、外から接続したくなったときだ。</p>
+<p>近年の家庭回線は、<strong>CGNAT</strong>（複数の家庭で一つのグローバルIPを共有する仕組み）になっていることが多く、その場合は「家のサーバーに外から直接つなぐ」ことが原則できない。固定のグローバルIPが割り当てられているかどうかは、契約と回線種別による。この「外から繋ぐ」問題は公開の話なので、第9章でトンネルなどの解決策とあわせて扱う。<strong>LAN内だけで使うなら、この問題は一切関係ない。今日から安全に始められる。</strong></p>
+<h3>停電・熱・ホコリ</h3>
+<p>物理的な機械を家に置く以上、物理的なトラブルはすべて自分の責任になる。</p>
+<ul>
+<li><strong>停電</strong>：停電すればサーバーは落ちる。大事なデータを載せるなら、いずれUPS（無停電電源装置）も検討する。</li>
+<li><strong>熱</strong>：24時間動く機械は熱を持つ。風通しの悪い場所や密閉した棚は避ける。</li>
+<li><strong>ホコリ</strong>：吸気ファンにホコリが溜まると冷却が悪化する。数ヶ月に一度の掃除が要る。</li>
+</ul>
+<p>これらは「だから自宅サーバーはやめろ」という話ではない。<strong>LAN内の実験機なら、停電で落ちても作り直せばいいし、熱もホコリも常識的な置き方で十分対処できる。</strong> 本番データを載せる段階で、改めて真剣に考えればいい。</p>
+<h3>Claudeに聞いてみよう②：置き場所を相談する</h3>
+<div class="quoteblock">
+<blockquote>
+<p>私はDebianサーバーを始めたいと思っています。私の状況は次のとおりです：</p>
+<ul>
+<li>目的：〔第1章で整理した「動かしたいもの」〕</li>
+<li>月額の予算：〔例：できれば電気代込みで1000円以内〕</li>
+<li>手元の機械：〔古いPCがある / ない、ある場合はスペック〕</li>
+<li>回線環境：〔自宅の回線種別、固定IPの有無が分かれば〕</li>
+<li>公開したいか：〔当面LAN内だけ / いずれ外からも使いたい〕</li>
+</ul>
+<p>本書の前提（自宅サーバーかVPSで、データも自分で管理）で始めるにあたり、私は自宅とVPSのどちらで始めるのが向いているか、理由を添えて勧めてください。第一段階の実験機の用意——手元の古いPCを使う / 中古PCやミニPCを買う / 数日だけVPSを借りる——についても、長所短所を比べてください。</p>
+</blockquote>
+</div>
+<p>予算・目的・回線・公開方針の四点を渡すのがコツだ。この四点がそろうと、Claudeは一般論ではなくあなた専用の推奨を返せる。</p>
+<h2>第三節 VPSという選択——借りるのは「鉄」だけ</h2>
+<p>自宅の物理的な世話を避けたいなら、VPSが有力な選択肢になる。</p>
+<h3>何が楽になるか</h3>
+<p>VPSは、事業者のデータセンターにある仮想マシンを借りる仕組みだ。<strong>電源・回線・物理故障は、すべて事業者が面倒を見てくれる。</strong> 停電もホコリも気にしなくていい。太い回線が最初からついていて、グローバルIPも（多くのプランで）割り当てられるので、第9章の「外から繋ぐ」問題が自宅より格段に楽になる。あなたが責任を持つのは、借りた仮想マシンの「OSの中身」だけだ。</p>
+<h3>何を失うか</h3>
+<p>代わりに失うものもある。<strong>データは事業者のデータセンターにあり、あなたの家にはない。</strong> これは第1章で書いたデータ主権の観点では一歩後退だ。また、当然ながら月額がかかり続ける。物理的に手元にないので、究極の自立を求める人には物足りないかもしれない。</p>
+<p>それでもVPSは、本書の前提の内側にある。<strong>借りているのは「鉄」——電源・回線・物理の箱——だけで、OSの中身とデータの管理権は完全にあなたのものだからだ。</strong> rootはあなたが持ち、データベースもバックアップも自分で面倒を見る。この本でやることは、自宅でもVPSでも一行も変わらない。データの管理そのものを預けてしまう「他社のサービス」とは、そこが決定的に違う。</p>
+<h3>選ぶときの軸</h3>
+<p>VPSを選ぶときは、おおよそ次の軸で考える。</p>
+<ul>
+<li><strong>国内事業者か、海外事業者か</strong>：応答速度（日本から使うなら国内が速い）、料金、サポート言語で選ぶ。</li>
+<li><strong>メモリ</strong>：第1章で挙げた「ファイル共有・写真・メモ」程度なら、<strong>メモリ2GBもあれば十分始められる。</strong> 足りなくなってから上げればいい。</li>
+<li><strong>ディスク</strong>：写真や動画を大量に置くなら、容量と追加ディスクの料金を確認する。</li>
+<li><strong>課金形態</strong>：月額固定か、時間課金か。</li>
+</ul>
+<h3>「壊しては作り直す」練習台として優秀</h3>
+<p>VPSには、もう一つ見逃せない利点がある。多くの事業者が<strong>時間課金</strong>や<strong>簡単な再作成</strong>を提供しており、サーバーを作っては消し、また作る、を気軽に繰り返せる。第1章で書いた「壊してよい実験機」を、自分の機械を物理的に汚さずに用意できるわけだ。数日だけ借りて、第3章の最小インストールを練習し、気が済んだら消す——という使い方もできる。</p>
+<h3>Claudeに聞いてみよう③：電気代とVPS月額を比較する</h3>
+<div class="quoteblock">
+<blockquote>
+<p>自宅サーバーとVPSのどちらが安いか、私のケースで概算したいです。</p>
+<ul>
+<li>自宅候補の機械の消費電力：〔分かれば W 数、不明なら機械の型番〕</li>
+<li>私の地域の電気料金：〔例：31円/kWh、不明なら「一般的な日本の家庭料金で」〕</li>
+<li>検討中のVPSプラン：〔例：メモリ2GB・ディスク50GBで月額〇〇円〕</li>
+</ul>
+<p>24時間稼働を前提に、自宅サーバーの月あたり電気代を計算し、VPS月額と並べて比較してください。費用以外の違い（責任範囲・データの所在）も一言添えてください。</p>
+</blockquote>
+</div>
+<p>電気代という「見えにくい月額」を数字にすると、自宅とVPSが初めて公平に比較できる。Claudeに計算させれば、桁を間違える心配もない。</p>
+<h2>第四節 結論——どう決めるか</h2>
+<p>ここまでの地図を踏まえて、このサーバー編が勧める道筋は明快だ。</p>
+<p><strong>まず自宅のLAN内に実験機を置き、そこで第3〜8章を回す。</strong> LAN内なら公開の危険がなく、電気代も小さく、何度壊しても作り直せる。古いPCがあるならそれを使い、なければVPSを数日借りて練習台にしてもいい。サーバーの基本——最小インストール、ユーザー管理、SSH、サービスの動かし方——は、この実験機の上で全部学べる。</p>
+<p><strong>公開（第9章）の段階になって初めて、本番の構えを選ぶ。</strong> 自宅に本体を置いたまま「入口」だけ借りるか、VPSに本体ごと載せるか——ここで第二節のCGNAT問題と第三節の比較が効いてくる。公開は重い決断であり、脅威モデル（第5章）を理解してから踏み出すべきものだ。だからこの決定を公開の段階まで先送りできるこの道筋が、最も安全で学びが深い。</p>
+<p>つまり、急いで決めるべきものは何もない。実験は自宅のLAN内（または数日借りたVPS）で始め、公開の段になって本番の構え——自宅＋入口か、VPS本体か——を決める。この二段構えが、費用と責任のリスクを最小にする。</p>
+<h3>Claudeに聞いてみよう④：自分用の二段構え計画を立てる</h3>
+<div class="quoteblock">
+<blockquote>
+<p>第2章の結論として、「まず実験機（自宅LAN内か、数日借りたVPS）で第3〜8章を回し、公開の段階で本番の構え——自宅＋入口か、VPS本体か——を選ぶ」という二段構えが勧められていました。</p>
+<p>私の状況〔第二節②で渡した予算・目的・機械・回線・公開方針をもう一度貼る〕に合わせて、この二段構えを具体的な計画に落としてください。第一段階（実験機）で使うべき機械、第二段階（公開）で取りうる選択肢を、それぞれ理由付きで示してください。</p>
+</blockquote>
+</div>
+<p>この計画を <code>my-server.md</code> の「ネットワーク」「公開方針」欄に書き写しておくと、第3章以降がぶれない。第1章で作った下書きが、ここで一段具体的になる。</p>
+<h2>まとめ</h2>
+<p>この章でやったこと：</p>
+<ol>
+<li>置き場所が「費用・責任・ネットワーク」の三つを決める最初の設計判断だと理解した</li>
+<li>自宅の機械・VPS・大手クラウドの三つを、比較表で見比べた</li>
+<li>自宅サーバーの現実（電気代の概算・回線とCGNAT・停電/熱/ホコリ）を直視した</li>
+<li>VPSの長所と短所、選ぶときの軸を整理した</li>
+<li>「まず実験機、本番の構えは公開の段で選ぶ」二段構えの計画を、Claudeと立てた</li>
+</ol>
+<p>手元に残ったもの：</p>
+<ul>
+<li>三つの選択肢の比較表（自分の状況に当てはめたもの）</li>
+<li>自宅とVPSの費用概算</li>
+<li><code>my-server.md</code> に書き写した二段構えの計画</li>
+</ul>
+<p>次の第3章では、決めた実験機の上で、いよいよ<strong>最小インストール</strong>をする。デスクトップ編のインストールとは何が違うのか、サーバー向けに何を選び、何を入れないのか——Claudeと一緒に、画面のないDebianを一台立ち上げる。</p>
+<hr />
+<p>シリーズ全体は<a href="/debian-server/">Claudeと一緒に学ぶDebian サーバー編 一覧</a>から辿れる。本編（デスクトップ編）は<a href="/claude-debian/">全章一覧</a>へ。コメント・議論は Facebook グループへ：<a href="https://www.facebook.com/groups/vegitage">AISeed — 生物多様性・食料・AIと暮らし</a></p>
+
+  </article>
+
+  <!-- CHAPTER NAV(前後の記事) -->
+  <nav class="chapter-nav">
+  <a href="/debian-server/01-what-is-a-server/" rel="prev">&larr; 前: 第1章 サーバーとは何か</a>
+  <a href="/debian-server/03-minimal-install/" rel="next">次: 第3章 最小インストール &rarr;</a>
+</nav>
+
+  <!-- FOOTER(サイト内メニュー+奥付) -->
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="サイト内リンク">
+      <div class="footer-col">
+        <h4>記事シリーズ</h4>
+        <ul>
+          <li><a href="/insights/">構造分析</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/ai-native-software/">AI ネイティブなソフトウェア開発</a></li>
+          <li><a href="/claude-debian/">Claudeと一緒に学ぶDebian</a></li>
+          <li><a href="/debian-server/">Claudeと一緒に育てるDebian サーバー</a></li>
+          <li><a href="/phosphorus-and-farming/">リン資源枯渇と自然農法</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>サイト</h4>
+        <ul>
+          <li><a href="/">ホーム</a></li>
+          <li><a href="/natural-farming/">自然農法とは</a></li>
+          <li><a href="/light-farming/">Light Farming</a></li>
+          <li><a href="/gallery/">畑の記録</a></li>
+          <li><a href="/about/">私たちのアプローチ</a></li>
+          <li><a href="/privacy/">プライバシー</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>関連サイト</h4>
+        <ul>
+          <li><a href="https://aiai.aiseed.dev/">aiai ── AI 時代の学び方</a></li>
+          <li><a href="https://weather.time-j.net/">個人開発気象統計</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="colophon">
+      <div class="colophon-mark">§</div>
+      Claudeと一緒に育てるDebian サーバー · 第2章<br>
+      Tokushima · 2026.06.10<br>
+      <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">CC BY 4.0</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // 広い画面ではサイドバー目次を常時展開する(狭い画面では折りたたみに戻す)
+  (function () {
+    var toc = document.querySelector(".series-toc details");
+    if (!toc) return;
+    var mq = window.matchMedia("(min-width: 1200px)");
+    function sync() { toc.open = mq.matches; }
+    sync();
+    if (mq.addEventListener) mq.addEventListener("change", sync);
+    else mq.addListener(sync);
+  })();
+
+  // Mermaid loads only on pages that contain a .mermaid block.
+  // Self-hosted (no third-party CDN dependency); SRI verified.
+  if (document.querySelector(".mermaid")) {
+    const s = document.createElement("script");
+    s.src = "/js/vendor/mermaid-11.14.0.min.js";
+    s.integrity = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk";
+    s.crossOrigin = "anonymous";
+    s.onload = () => {
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      mermaid.initialize({ startOnLoad: false, theme: prefersDark ? "dark" : "default" });
+      mermaid.run();
+    };
+    document.head.appendChild(s);
+  }
+</script>
+
+
+</body>
+</html>

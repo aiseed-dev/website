@@ -22,3 +22,7 @@
 
 # 「Fable 5 が帰ってきた」番外編は構造分析 09 に移した(2026-10-07)
 /fable/ai-will-not-converge/* /insights/ai-will-not-converge/ 301
+
+# サーバー編は「Claudeと一緒に育てるDebian サーバー」として独立した(2026-10-07)
+/claude-debian/server/* /debian-server/:splat 301
+/en/claude-debian/server/* /en/debian-server/:splat 301

@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-9FLQ963JXM');
+</script>
+
+<title>Chapter 11 — Growing Your Server — Growing a Debian Server with Claude | aiseed.dev</title>
+<meta name="description" content="A server is not done once you build it; it is something you tend and grow like a living thing. But you do not need to hover over it daily. A design that runs on fifteen minutes of watching a week, a monthly rhythm of maintenance, a pattern for when things break, and the next move — get the craft of growing a single server over the long run in place with Claude at your side. As the close of the Server Edition, we look back on what it means to "own your own infrastructure."">
+<link rel="canonical" href="https://aiseed.dev/en/debian-server/11-operations/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/debian-server/11-operations/">
+<link rel="alternate" hreflang="en" href="https://aiseed.dev/en/debian-server/11-operations/">
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/debian-server/11-operations/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Living in the AI Era">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Chapter 11 — Growing Your Server">
+<meta property="og:description" content="A server is not done once you build it; it is something you tend and grow like a living thing. But you do not need to hover over it daily. A design that runs on fifteen minutes of watching a week, a monthly rhythm of maintenance, a pattern for when things break, and the next move — get the craft of growing a single server over the long run in place with Claude at your side. As the close of the Server Edition, we look back on what it means to "own your own infrastructure."">
+<meta property="og:url" content="https://aiseed.dev/en/debian-server/11-operations/">
+<meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<meta property="article:section" content="Growing a Debian Server with Claude">
+<meta property="article:published_time" content="2026.06.10">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chapter 11 — Growing Your Server">
+<meta name="twitter:description" content="A server is not done once you build it; it is something you tend and grow like a living thing. But you do not need to hover over it daily. A design that runs on fifteen minutes of watching a week, a monthly rhythm of maintenance, a pattern for when things break, and the next move — get the craft of growing a single server over the long run in place with Claude at your side. As the close of the Server Edition, we look back on what it means to "own your own infrastructure."">
+<meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
+<!-- No webfont delivery: local system fonts only (Georgia serif / system monospace) -->
+
+<style>
+:root {
+  --ink: #1a1a1a;
+  --paper: #f4f1ea;
+  --paper-deep: #ebe6d8;
+  --accent: #c8442a;
+  --rule: #d4cdb8;
+  --whisper: #6b665a;
+  --highlight: #f7e9c8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", "Hiragino Mincho ProN", serif;
+  font-size: 18px;
+  line-height: 1.7;
+  letter-spacing: 0.005em;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* MASTHEAD */
+.masthead {
+  border-bottom: 3px double var(--ink);
+  padding: 24px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+}
+.masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-left a { color: inherit; text-decoration: none; }
+.masthead-left a:hover { color: var(--accent); }
+.masthead-home { color: var(--whisper); }
+.masthead-sep { margin: 0 10px; color: var(--whisper); font-weight: 400; }
+.masthead-right { font-style: italic; }
+
+/* HERO */
+.hero {
+  padding: 80px 0 60px;
+}
+.hero-meta {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-meta::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 800;
+  font-size: clamp(34px, 5.2vw, 54px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin-bottom: 24px;
+}
+.hero-title .accent {
+  color: var(--accent);
+  font-style: italic;
+}
+.hero-subtitle {
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--whisper);
+  max-width: 580px;
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+  margin-top: 32px;
+  font-style: italic;
+}
+.hero-byline {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  text-transform: uppercase;
+}
+
+/* ARTICLE */
+article p {
+  margin-bottom: 24px;
+}
+
+article h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.3;
+  margin: 72px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+  letter-spacing: -0.01em;
+}
+article h2::before {
+  content: "§";
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  color: var(--accent);
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+article h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  font-size: 22px;
+  margin: 40px 0 16px;
+  color: var(--ink);
+}
+article h3::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+article strong {
+  font-weight: 700;
+  background: linear-gradient(to top, var(--highlight) 35%, transparent 35%);
+  padding: 0 2px;
+}
+
+article em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+article a:hover {
+  color: var(--accent);
+}
+
+/* BLOCKQUOTE */
+blockquote {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  position: relative;
+  font-size: 20px;
+  line-height: 1.6;
+  font-style: italic;
+}
+blockquote::before {
+  content: "\201C";
+  position: absolute;
+  top: 0;
+  left: 12px;
+  font-size: 64px;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1;
+}
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* TABLE */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+article thead th {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+}
+article tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+article tbody tr:last-child td {
+  border-bottom: none;
+}
+@media (max-width: 720px) {
+  article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* LISTS */
+article ol {
+  margin: 32px 0;
+  counter-reset: item;
+  padding: 0;
+}
+article ol li {
+  list-style: none;
+  position: relative;
+  padding: 16px 0 16px 56px;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: item;
+}
+article ol li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+article ul {
+  margin: 24px 0;
+  padding-left: 1.5em;
+}
+article ul li {
+  margin-bottom: 8px;
+}
+
+/* CODE BLOCK */
+article pre {
+  margin: 40px 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 24px 28px;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+  overflow-x: auto;
+}
+article pre::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 8px;
+  color: var(--whisper);
+  letter-spacing: 4px;
+}
+article pre code {
+  display: block;
+  padding-top: 16px;
+  white-space: pre;
+  background: transparent;
+  color: var(--paper);
+}
+
+article code {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: var(--paper-deep);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+
+/* HR */
+article hr {
+  border: none;
+  text-align: center;
+  margin: 64px 0;
+  height: 1em;
+}
+article hr::before {
+  content: "◆ ◆ ◆";
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+}
+
+/* RELATED */
+.related-links {
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.related-links h3 {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  margin: 0 0 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.related-links h3::before { content: none; }
+.related-links ul { list-style: none; margin: 0; padding: 0; }
+.related-links li {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 0;
+}
+.related-links li:last-child { border-bottom: none; }
+.related-links a {
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.related-links .related-tag {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.related-links a:hover .related-title {
+  color: var(--accent);
+}
+
+/* FOOTER (site menu + colophon) */
+.site-footer {
+  margin-top: 96px;
+  border-top: 3px double var(--ink);
+  padding-top: 48px;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 48px;
+}
+.footer-col h4 {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-col li {
+  padding: 6px 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.footer-col a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.footer-col a:hover { color: var(--accent); }
+
+.colophon {
+  margin-top: 48px;
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--whisper);
+  text-align: center;
+  line-height: 2;
+  text-transform: uppercase;
+}
+.colophon-mark {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 16px;
+  text-transform: none;
+}
+
+/* SERIES TOC (all chapters in this series, collapsible) */
+.series-toc {
+  margin: 24px 0 40px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 0;
+}
+.series-toc details {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+}
+.series-toc summary {
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  padding: 8px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.series-toc summary::-webkit-details-marker { display: none; }
+.series-toc summary::before {
+  content: "▸";
+  color: var(--accent);
+  font-size: 10px;
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.series-toc details[open] summary::before { transform: rotate(90deg); }
+.series-toc ol {
+  list-style: none;
+  margin: 12px 0 8px;
+  padding: 0;
+  counter-reset: none;
+}
+.series-toc li {
+  list-style: none;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--rule);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  line-height: 1.55;
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.series-toc li::before { content: none; }
+.series-toc li:last-child { border-bottom: none; }
+.series-toc li a {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--ink);
+  flex: 1;
+}
+.series-toc li a:hover .toc-title { color: var(--accent); }
+.series-toc .toc-num {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 6em;
+}
+.series-toc li.current {
+  background: var(--paper-deep);
+  margin: 0 -12px;
+  padding: 9px 12px;
+}
+.series-toc li.current .toc-title {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* IMAGES */
+article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 32px auto;
+}
+
+/* CUSTOM BLOCKS (:::chain / :::highlight / :::quote / :::compare) */
+.chain-diagram {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 16px;
+  line-height: 2;
+}
+.chain-diagram .arrow {
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0.3em;
+}
+.highlight-box {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.highlight-box p { margin-bottom: 12px; }
+.highlight-box p:last-child { margin-bottom: 0; }
+.quote-block {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+}
+.quote-block .quote-text {
+  font-size: 19px;
+  line-height: 1.7;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ASCIIDOC BLOCKS (classes emitted by pyasciidoc for .adoc articles):
+   admonitions / attributed quotes / image blocks / footnotes / roles */
+.admonition {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.admonition-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.admonition p { margin-bottom: 12px; }
+.admonition p:last-child { margin-bottom: 0; }
+.quoteblock { margin: 40px 0; }
+.quoteblock blockquote { margin: 0; }
+.quoteblock .attribution {
+  margin-top: 12px;
+  text-align: right;
+  font-size: 14px;
+  color: var(--whisper);
+}
+.quoteblock .attribution cite { font-style: normal; }
+.imageblock { margin: 32px 0; text-align: center; }
+.imageblock .content img { max-width: 100%; height: auto; }
+sup.footnote { font-size: 12px; }
+sup.footnote a { text-decoration: none; }
+.footnotes {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px;
+  color: var(--whisper);
+}
+.footnotes ol { padding-left: 1.5em; }
+.footnotes li { margin-bottom: 8px; }
+.footnotes .footnote-backref { text-decoration: none; margin-left: 0.3em; }
+/* Roles: [.chain] (same look as :::chain) / [.accent]#…# */
+article .chain {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+article .accent { color: var(--accent); }
+
+/* CHAPTER NAV (prev / next links) */
+.chapter-nav {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 15px;
+}
+.chapter-nav a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+}
+.chapter-nav a:hover { color: var(--accent); }
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 40px; }
+  blockquote { padding: 24px 20px 24px 36px; }
+  article pre { padding: 20px 16px; font-size: 12px; }
+  article ol li { padding-left: 48px; }
+  .series-toc .toc-num { min-width: 5em; font-size: 10px; }
+  .series-toc li { font-size: 13px; gap: 12px; }
+}
+
+/* ANIMATIONS */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta, .hero-title, .hero-subtitle, .hero-byline {
+  animation: rise 0.8s ease-out backwards;
+}
+.hero-meta     { animation-delay: 0.1s; }
+.hero-title    { animation-delay: 0.25s; }
+.hero-subtitle { animation-delay: 0.45s; }
+.hero-byline   { animation-delay: 0.65s; }
+.mermaid {
+  text-align: center;
+  margin: 2.5rem 0;
+  background: var(--paper-warm, #f5f1ea);
+  padding: 1.5rem 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.mermaid svg { max-width: 100%; height: auto; }
+
+/* WIDE LAYOUT (contents pinned as a left sidebar on wide screens) */
+@media (min-width: 1200px) {
+  body.has-toc .container {
+    max-width: 1300px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 860px);
+    column-gap: 64px;
+    justify-content: center;
+  }
+  body.has-toc .masthead,
+  body.has-toc .hero {
+    grid-column: 1 / -1;
+  }
+  /* Keep the grid item stretched to its rows and make the inner details
+     sticky instead (sticky grid items are constrained by the grid container,
+     not their grid area, in some browsers — the TOC would slide over the
+     footer otherwise). */
+  body.has-toc .series-toc {
+    grid-column: 1;
+    grid-row: 3 / span 2;
+    margin: 0;
+    padding: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+  body.has-toc .series-toc details {
+    position: sticky;
+    top: 32px;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 0 12px 12px 0;
+  }
+  /* Sidebar mode: no collapsing — the summary acts as a heading */
+  body.has-toc .series-toc summary {
+    pointer-events: none;
+    cursor: default;
+  }
+  body.has-toc .series-toc summary::before { content: none; }
+  body.has-toc .series-toc li { font-size: 14px; }
+  body.has-toc article    { grid-column: 2; grid-row: 3; }
+  body.has-toc .chapter-nav { grid-column: 2; grid-row: 4; }
+  body.has-toc .site-footer { grid-column: 1 / -1; grid-row: 5; }
+}
+
+/* ============================================================
+   DARK MODE (follows the OS color-scheme preference)
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ink: #e8e3d6;
+    --paper: #16140f;
+    --paper-deep: #211d16;
+    --accent: #e8765a;
+    --rule: #393428;
+    --whisper: #a39b88;
+    --highlight: rgba(220, 168, 78, 0.30);
+  }
+  /* Invert the paper-grain texture for a dark background */
+  body::before {
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    mix-blend-mode: screen;
+    opacity: 0.4;
+  }
+  /* Keep code blocks as a dark terminal in both modes */
+  article pre {
+    background: #0d0c0a;
+    color: #e8e3d6;
+  }
+  article pre code {
+    color: #e8e3d6;
+  }
+  /* Dark frame for Mermaid diagrams */
+  .mermaid {
+    background: #211d16;
+  }
+}
+</style>
+
+</head>
+
+<body>
+<div class="container">
+
+  <header class="masthead">
+    <div class="masthead-left"><a href="/en/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="/en/debian-server/">Growing a Debian Server with Claude</a></div>
+    <div class="masthead-right">Chapter 11 / Series</div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-meta">Chapter 11 № 11 · 2026</div>
+
+    <h1 class="hero-title">Chapter 11 — Growing Your Server</h1>
+
+    <p class="hero-subtitle">Watch it, maintain it, decide the next move</p>
+
+    <div class="hero-byline">
+      <span>2026.06.10</span>
+      <span><a href="https://aiseed.dev/debian-server/11-operations/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">🌐 日本語</a></span>
+    </div>
+  </section>
+
+  <!-- SERIES TOC (full chapter list for this series, current chapter highlighted) -->
+  
+
+  <article>
+    <h2>Why &quot;Grow&quot; It</h2>
+<p>A server is not finished once you assemble it, publish it, and set up backups. <strong>A server is something you tend and grow like a living thing.</strong> The disk fills up little by little, security fixes come out for the software daily, and small anomalies pile up in the logs. Leave it alone and one day it stops without warning. Keep tending it and it runs healthily for years.</p>
+<p>Do not brace yourself here. The worry &quot;if I own a server I'll have to look after it every day&quot; is a common one. But it is mistaken. <strong>What this chapter aims for is a design that runs on fifteen minutes of routine a week.</strong> You do not need to hover. Rather, you build the mechanisms so that it runs even without your hovering — that is what &quot;growing it&quot; means.</p>
+<p>In Chapter 5 you put up a firewall; in Chapter 10 you made backups automatic. That accumulation of automation pays off here. Leave the day-to-day defense to the mechanisms, and the human only watches briefly, once a week. In this chapter we lay out, in turn, the minimal watching set, the rhythm of maintenance, the pattern for when things break, and the next move.</p>
+<h2>Section 1 — The Minimal Watching Set</h2>
+<h3>The Weekly Routine Commands</h3>
+<p>You need no special monitoring software to check a server's health. A plain set of commands is enough to start. Once a week, run the following in turn and look at the output.</p>
+<pre><code class="language-bash">df -h                              # Free disk space (is it getting too full?)
+free -h                            # Free memory
+journalctl -p err --since -7d      # Error logs from the last week
+systemctl --failed                 # Are any services failing?
+sudo tail -n 30 /var/log/auth.log  # The state of suspicious login attempts
+sudo fail2ban-client status sshd   # How many fail2ban blocked (if you set it up in Chapter 5)
+systemctl is-active postgresql     # Is the database alive (if you installed it in Chapter 7)?
+</code></pre>
+<p>Typing these by hand every week is tedious. So bundle them into one shell script.</p>
+<pre><code class="language-bash">#!/bin/bash
+# ~/weekly-check.sh — weekly health check
+echo &quot;===== disk =====&quot;            ; df -h
+echo &quot;===== memory =====&quot;          ; free -h
+echo &quot;===== errors (7d) =====&quot;     ; journalctl -p err --since -7d --no-pager
+echo &quot;===== failed units =====&quot;    ; systemctl --failed --no-pager
+echo &quot;===== fail2ban =====&quot;        ; sudo fail2ban-client status sshd 2&gt;/dev/null
+echo &quot;===== database =====&quot;        ; systemctl is-active postgresql 2&gt;/dev/null
+</code></pre>
+<pre><code class="language-bash">chmod +x ~/weekly-check.sh
+./weekly-check.sh
+</code></pre>
+<h3>Hand the Whole Output to Claude</h3>
+<p>Here is the crux of operations in the AI era. Just staring at the script's output, a beginner cannot tell &quot;what is normal and what is anomalous.&quot; So <strong>paste the whole output to Claude and ask, &quot;is there anything notable compared with last week?&quot;</strong></p>
+<p>The human does not need to judge the meaning of each line. Have Claude judge &quot;is the disk okay,&quot; &quot;can this error be left alone,&quot; &quot;should I worry about this login attempt,&quot; and the human weighs that advice and acts. This is the final form, in the operations phase, of the &quot;craft of telling your environment&quot; that has run since Chapter 3. The property written in Chapter 1 — that a server's state can all be pulled as text — pays off here to the fullest.</p>
+<h3>Beyond That: A Light Monitoring Tool</h3>
+<p>Once you are used to the weekly manual check and want to go a step further, a light monitoring tool is worth adding. <strong>Uptime Kuma</strong>, for instance, is a light monitoring tool that notifies you when a service goes down. It tells you &quot;a service stopped while I wasn't watching&quot; before the human would notice. But there is no need to rush. First, with the manual weekly check, learn &quot;the normal face of your own server.&quot;</p>
+<h3>Ask Claude ①: Have It Write weekly-check.sh for Your Setup</h3>
+<div class="quoteblock">
+<blockquote>
+<p>My Debian server's setup is as follows:
+[paste my-server.md. The services you run, the firewall (Chapter 5), whether you have fail2ban, the database (Chapter 7), etc.]</p>
+<p>Please write a shell script <code>weekly-check.sh</code>, tuned to my setup, to run once a week as a &quot;server health check.&quot;
+It should output, in turn with headings, disk, memory, error logs, failed services, signs of unauthorized access, and the running state of each service.
+For each check, add a one-line note on &quot;what it looks at&quot; and &quot;what output should make me suspect an anomaly.&quot;</p>
+</blockquote>
+</div>
+<p>Hand over your own setup and the checks line up tuned to your service names. Put the resulting script in git (per the config-management craft you settled on in Chapter 10).</p>
+<h2>Section 2 — The Rhythm of Maintenance</h2>
+<h3>Daily Is Automatic, Monthly Is Manual</h3>
+<p>Security fixes will not wait. So leave the daily security updates to <strong>unattended-upgrades</strong> (which you configured in Chapter 5). It quietly applies the important fixes every night. The daily maintenance is already automated.</p>
+<p>What the human does is the monthly upkeep. Once a month, run the following.</p>
+<pre><code class="language-bash">sudo apt update
+sudo apt full-upgrade
+</code></pre>
+<p><code>full-upgrade</code> brings everything properly up to date, including packages that have come to need new dependencies. When the update finishes, check whether a reboot is needed.</p>
+<pre><code class="language-bash"># Check whether a reboot is required
+[ -f /var/run/reboot-required ] &amp;&amp; echo &quot;reboot required&quot; || echo &quot;no reboot needed&quot;
+
+# Which services are still running while holding onto old libraries
+sudo needrestart
+</code></pre>
+<p>When the kernel is updated, a reboot is needed. As written in Chapter 1, a server reboot carries the weight that &quot;all services stop while it happens.&quot; So pick a low-impact time of day and reboot on a plan.</p>
+<h3>The Worldview of Debian Stable</h3>
+<p>Here, let us understand the character of the Debian foundation one level more deeply. Debian stable (trixie, which you installed) gets a <strong>major release roughly every two years</strong>. In between, it keeps applying only security and bug fixes without changing functionality much (these are the point releases). So a daily <code>full-upgrade</code> will almost never make the world suddenly change on you. <strong>&quot;Stable, predictable, and boring&quot; — this is the greatest virtue of Debian for servers.</strong></p>
+<p>Once every few years, the day comes to move up to the next major release. This is a different beast from the daily updates, and it takes a frame of mind. The craft written for the desktop in <a href="/en/claude-debian/17-updates-maintenance/">Chapter 17, &quot;Updates and Maintenance&quot;</a> of the main series — back up before updating, read the release notes, take it in stages rather than all at once — works as-is on a server too. And because a server has the backup and restore rehearsal of Chapter 10, the anxiety of committing to a major upgrade is far smaller. At worst, you can come back from a backup.</p>
+<h3>Ask Claude ②: Health-Check the Routine Output</h3>
+<div class="quoteblock">
+<blockquote>
+<p>I ran <code>weekly-check.sh</code> on my Debian server. The output is as follows:</p>
+<pre><code>[paste the whole output of weekly-check.sh]
+</code></pre>
+<p>Please health-check this output.
+Split it into (1) problems to address right away, (2) things not urgent but worth addressing soon, and (3) things that are normal and fine.
+For anything that needs addressing, add the concrete command and what to confirm before running it.
+Compared with last week's output [paste the previous one if you have it], point out any changes.</p>
+</blockquote>
+</div>
+<p>Do this every week and Claude picks up changes like &quot;the disk grew 2% from last week&quot; or &quot;an error appears that wasn't there last week.&quot; Gradual signs of deterioration, hard for a lone human to notice, become visible.</p>
+<h2>Section 3 — The Pattern for When Things Break</h2>
+<h3>The Desktop Edition's Craft Works on a Server As-Is</h3>
+<p>A server, too, will break someday. Or you tinker with the config and it stops working. What you rely on then is the craft you picked up in <a href="/en/claude-debian/18-when-things-break/">Chapter 18, &quot;Dealing with Problems When They Arise&quot;</a> of the main series. <strong>Do not panic-reinstall. Isolate the symptom. Capture the logs. Hand them to Claude.</strong> This pattern is the same on desktop and on server.</p>
+<p>But there is one decisive difference. <strong>A server has no screen.</strong> On a desktop, at worst you could look at the screen in front of you and operate. Since you normally enter a server remotely, when SSH dies you lose &quot;the very means of getting in.&quot;</p>
+<h3>Escape Routes When SSH Dies</h3>
+<p>So know in advance the escape routes for when you can no longer get in over SSH.</p>
+<ul>
+<li><strong>For a physical server at home:</strong> connect a monitor and keyboard directly. Even though there is normally no screen, when it counts there is a physical console.</li>
+<li><strong>For a VPS:</strong> your VPS provider's control panel almost always has a <strong>web console</strong> (a feature to hit the server's screen directly from a browser). When SSH dies, you can still get in this way. Many also provide a <strong>rescue mode</strong> (booting with a different OS to repair the disk).</li>
+</ul>
+<p>Whether you know these escape routes exist makes all the difference to how calm you stay when &quot;SSH died.&quot; It is worth confirming now which routes are available in your own environment.</p>
+<h3>At Worst, &quot;Just Rebuild It&quot;</h3>
+<p>And here Chapter 10 pays off. When it simply will not be fixed, a server has a <strong>last resort: &quot;rebuild it.&quot;</strong> The OS can be redone from a minimal install. The config can come back from git. The data can come back from restic. If you went as far as the rebuild rehearsal in Chapter 10, this is not theory — it is a road you have already walked once.</p>
+<p><strong>The conviction that &quot;at worst I can just rebuild it&quot; gives operational slack.</strong> You stop being excessively afraid of each individual trouble. With the fear gone, you can actually isolate problems more calmly. This is less about technology than about a state of mind. And the foundation of that slack is held up by the backup and restore rehearsal of Chapter 10.</p>
+<h3>Ask Claude ③: The Server-Side Trouble Template</h3>
+<div class="quoteblock">
+<blockquote>
+<p>The following trouble is happening on my Debian server: [symptom]</p>
+<p>The server's setup: [paste my-server.md]
+The means I can access it by now: [SSH is alive / SSH died so via the VPS web console / physical console, etc.]
+What I have tried so far: [bulleted list]</p>
+<p>Give me three things to try next, in order from lowest risk. For each, how to confirm it and the next move if it fails.
+Prioritize ways to fix it without stopping the services. Also add the criteria for deciding to rebuild from the Chapter 10 backup as a last resort.</p>
+</blockquote>
+</div>
+<h2>Section 4 — The Next Move</h2>
+<p>By now you can operate a single server. Assemble, publish, protect, watch, maintain — you have the whole set of craft. So from here, how do you grow it? There are three broad directions.</p>
+<h3>1. Add More to Carry</h3>
+<p>Add new services onto your current server. After the photo server, note sync; after that, household accounts; after that — adding things you want to self-host, one at a time. With the service craft of Chapter 6, the database of Chapter 7, and the FastAPI pattern of Chapter 8, adding a new service is not hard.</p>
+<p>And the most interesting of all is to <strong>carry an app you built yourself.</strong> In <a href="/en/claude-debian/15-claude-development/">Chapter 15, &quot;Development with Claude&quot;</a> of the main series, we talked about building a small app together with Claude. Take the app you built there, carry it on this server, and make it usable anytime, anywhere. &quot;Build with Claude, run on your own server&quot; — this is the most self-contained loop an individual can hold.</p>
+<h3>2. Own a Second Machine</h3>
+<p>Once you can run one machine, owning a second becomes an option. Split the roles (one for files, one for public web services), or <strong>make them each other's backup destination</strong> (satisfy the &quot;different location&quot; of the Chapter 10 3-2-1 rule with the second machine). The second machine applies what you learned on the first, so it is not as much trouble as the first one.</p>
+<h3>3. Encode the Configuration as Code</h3>
+<p>This is the most essential &quot;next move.&quot; Take the setup steps you now perform — which packages to install, how to configure them, which services to run — and consolidate them from your head and scattered notes into <strong>a single script and document</strong>, and put it in git.</p>
+<p>Why is this essential? <strong>Because once the steps are text, you can reproduce them any number of times together with Claude.</strong> When you set up a new server, run the script and the same environment comes up. When you want to change a step, consult Claude and rewrite it. Fill in here the &quot;missing steps&quot; you found in the Chapter 10 rebuild rehearsal. The server changes from &quot;something personal that exists only in your head&quot; into &quot;an asset reproducible as text.&quot; This is nothing other than spreading the config management of <a href="/en/claude-debian/12-config-management/">Chapter 12</a> of the main series across the whole server.</p>
+<h3>Ask Claude ④: Consult on the Next Move</h3>
+<div class="quoteblock">
+<blockquote>
+<p>I have become able to operate a single Debian server. Here is where things stand:
+[paste my-server.md. What I run, the time I spend, the budget I can spare, etc.]</p>
+<p>I want to consult on the &quot;next move&quot; from here. My goal is [e.g. to hold all of my family's data myself / to deepen my technical skill as study / to publish an app I built], the time I can give the server is about [N] hours a week, and the extra budget I can use is about [N] per month.
+Of (1) adding more to carry, (2) owning a second machine, and (3) encoding the configuration as code, which should I start with given my situation? Propose with reasons. Also give a concrete first step for the direction you choose.</p>
+</blockquote>
+</div>
+<h2>Closing — On Owning Your Own Infrastructure</h2>
+<h3>A Counterpart to the Desktop Edition</h3>
+<p>The main series (the Desktop Edition) was about <strong>&quot;taking back your own desk.&quot;</strong> About making the PC you face every day a machine with no ads, no surveillance, whose insides you can see for yourself.</p>
+<p>This Server Edition was about <strong>&quot;owning your own infrastructure.&quot;</strong> About holding in your own hands the backstage worker that keeps running while you are not touching it. Put your data on your own machine, run your own services, and grow them over the long run. After the desk, you have now taken back the very foundation beyond the desk to your own side.</p>
+<h3>Work That Once Required a Dedicated Administrator</h3>
+<p>Not long ago, standing up and operating a single server was the work of a dedicated system administrator. Read thick manuals, look up the meaning of error messages as if in a dictionary, memorize the grammar of config files — the height of that entrance kept individuals away.</p>
+<p><strong>Claude broke down that entrance.</strong> Paste an error and the meaning comes back. State what you want to do and an example config comes back. Paste the weekly check output and a health check comes back. Work that once required a dedicated administrator has come within reach of an individual with Claude at their side. You now hold the proof of it, as a single server, on your desk.</p>
+<h3>The Server Grows Along with How You Frame Your Questions</h3>
+<p>Finally, let me write, in the language of servers, the same thing as the closing chapter of the main series (<a href="/en/claude-debian/23-passing-on/">Chapter 23, &quot;Passing It On&quot;</a>).</p>
+<p>Claude keeps evolving. In a few years a stronger Claude will be out. But <strong>the basics — &quot;put your situation into text and hand it over, weigh the answer that comes back, decide for yourself&quot; — do not change.</strong> Your server grows not on high-performance hardware or expensive software, but <strong>along with how you frame your questions.</strong> What to carry, what to protect, where to stop — to the very end, it is you who decides.</p>
+<p>The Server Edition's role ends here. On your desk now sit a running server, backups taken automatically, a weekly health-check script, and above all, <strong>the conviction that &quot;I can grow my own infrastructure myself.&quot;</strong></p>
+<p>The rest is your time. Grow your server, slowly.</p>
+<h2>Summary</h2>
+<p>What you did in this chapter:</p>
+<ol>
+<li>Set that a server is not &quot;done when built&quot; but &quot;grown,&quot; and aimed for a design that runs on fifteen minutes of routine a week.</li>
+<li>Built the minimal watching set (<code>weekly-check.sh</code>) and picked up the practice of handing the whole output to Claude for a health check.</li>
+<li>Confirmed the rhythm of maintenance (daily automatic via unattended-upgrades, monthly manual <code>full-upgrade</code> and reboot decision) and the worldview of Debian stable.</li>
+<li>Laid out the pattern for when things break (the craft of main-series Chapter 18, escape routes when SSH dies, rebuild at worst).</li>
+<li>Consulted Claude on the three directions of the next move (add more to carry / a second machine / encode the configuration as code) by your own goal, time, and budget.</li>
+</ol>
+<p>What you hold now:</p>
+<ul>
+<li><code>weekly-check.sh</code> (a weekly health-check script, managed in git).</li>
+<li>A monthly maintenance habit and a frame of mind for major upgrades.</li>
+<li>Knowledge of the escape routes when SSH dies.</li>
+<li>A direction for &quot;the next move.&quot;</li>
+<li>And — <strong>the conviction that you can grow your own infrastructure yourself.</strong></li>
+</ul>
+<hr />
+<p>The server sub-series can be navigated from <a href="/en/debian-server/">Learning Debian with Claude — Server Edition</a>. The main desktop series is at <a href="/en/claude-debian/">all chapters</a>. Comments and discussion go to the Facebook group: <a href="https://www.facebook.com/groups/vegitage">AISeed — Biodiversity, Food, AI and Life</a>.</p>
+
+  </article>
+
+  <nav class="chapter-nav">
+  <a href="/en/debian-server/10-backup/" rel="prev">&larr; Prev: Chapter 10 — Protecting Your Data</a>
+  <a href="/en/debian-server/">Contents &rarr;</a>
+</nav>
+
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="Site links">
+      <div class="footer-col">
+        <h4>Series</h4>
+        <ul>
+          <li><a href="/en/insights/">Structural Analysis</a></li>
+          <li><a href="/en/blog/">Blog</a></li>
+          <li><a href="/en/ai-native-software/">AI-Native Software Development</a></li>
+          <li><a href="/en/claude-debian/">Learning Debian with Claude</a></li>
+          <li><a href="/en/debian-server/">Growing a Debian Server with Claude</a></li>
+          <li><a href="/en/phosphorus-and-farming/">Phosphorus Depletion and Natural Farming</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="/en/">Home</a></li>
+          <li><a href="/en/natural-farming/">Natural Farming</a></li>
+          <li><a href="/en/light-farming/">Light Farming</a></li>
+          <li><a href="/gallery/">Field Notes</a></li>
+          <li><a href="/en/about/">Our Approach</a></li>
+          <li><a href="/en/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Related Sites</h4>
+        <ul>
+          <li><a href="https://aiai.aiseed.dev/">aiai — Learning in the AI Era</a></li>
+          <li><a href="https://weather.time-j.net/">Personal Weather Statistics for Japan</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="colophon">
+      <div class="colophon-mark">§</div>
+      Growing a Debian Server with Claude · Chapter 11<br>
+      Tokushima · 2026.06.10<br>
+      <a href="/en/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">CC BY 4.0</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Keep the contents sidebar expanded on wide screens (collapsible on narrow ones)
+  (function () {
+    var toc = document.querySelector(".series-toc details");
+    if (!toc) return;
+    var mq = window.matchMedia("(min-width: 1200px)");
+    function sync() { toc.open = mq.matches; }
+    sync();
+    if (mq.addEventListener) mq.addEventListener("change", sync);
+    else mq.addListener(sync);
+  })();
+
+  // Mermaid loads only on pages that contain a .mermaid block.
+  // Self-hosted (no third-party CDN dependency); SRI verified.
+  if (document.querySelector(".mermaid")) {
+    const s = document.createElement("script");
+    s.src = "/js/vendor/mermaid-11.14.0.min.js";
+    s.integrity = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk";
+    s.crossOrigin = "anonymous";
+    s.onload = () => {
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      mermaid.initialize({ startOnLoad: false, theme: prefersDark ? "dark" : "default" });
+      mermaid.run();
+    };
+    document.head.appendChild(s);
+  }
+</script>
+
+</body>
+</html>

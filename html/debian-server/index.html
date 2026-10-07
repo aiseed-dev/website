@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- Apply saved theme immediately to avoid FOUC -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('aiseed-theme');
+          if (t === 'light' || t === 'dark') {
+            document.documentElement.setAttribute('data-theme', t);
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-9FLQ963JXM');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="前提は「自宅サーバーかVPSで、データも自分で管理する」── 本体は自分が root を持つ機械、データは自分のデータベースに。画面のない Debian を SSH で操り、守りを固め、データベースと自作アプリを動かし、公開し、データを守り、育てていく。Claude と学ぶ方式が最も深く効く領域を、11 章で歩く。">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+    <title>Claudeと一緒に育てるDebian サーバー | AI時代の暮らし</title>
+    <link rel="canonical" href="https://aiseed.dev/fable/">
+    <link rel="alternate" hreflang="ja" href="https://aiseed.dev/fable/">
+    <link rel="alternate" hreflang="en" href="https://aiseed.dev/en/fable/">
+    <!-- OGP -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Claudeと一緒に育てるDebian サーバー">
+    <meta property="og:description" content="前提は「自宅サーバーかVPSで、データも自分で管理する」── 本体は自分が root を持つ機械、データは自分のデータベースに。画面のない Debian を SSH で操り、守りを固め、データベースと自作アプリを動かし、公開し、データを守り、育てていく。Claude と学ぶ方式が最も深く効く領域を、11 章で歩く。">
+    <meta property="og:url" content="https://aiseed.dev/fable/">
+    <meta property="og:site_name" content="aiseed.dev">
+    <meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+    <meta property="og:locale" content="ja_JP">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Claudeと一緒に育てるDebian サーバー">
+    <meta name="twitter:description" content="前提は「自宅サーバーかVPSで、データも自分で管理する」── 本体は自分が root を持つ機械、データは自分のデータベースに。画面のない Debian を SSH で操り、守りを固め、データベースと自作アプリを動かし、公開し、データを守り、育てていく。Claude と学ぶ方式が最も深く効く領域を、11 章で歩く。">
+    <meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+    <link rel="stylesheet" href="../css/style.css?v=36fe4824">
+    <style>
+        .highlight-box {
+            background: rgba(122, 154, 109, 0.08);
+            border: 1px solid rgba(122, 154, 109, 0.2);
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+        }
+        .highlight-box p { margin-bottom: 0.5rem; }
+        .highlight-box p:last-child { margin-bottom: 0; }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-inner">
+            <a href="/" class="logo">
+                AI時代の暮らし
+                <span>aiseed.dev</span>
+            </a>
+            <nav class="nav">
+                <a href="/">ホーム</a>
+                <div class="nav-group">
+                    <button type="button" class="nav-parent" aria-haspopup="true" aria-expanded="false">記事<span class="nav-caret" aria-hidden="true">▾</span></button>
+                    <div class="nav-submenu" role="menu">
+                        <a href="/insights/" role="menuitem">構造分析</a>
+                        <a href="/ai-native-software/" role="menuitem">AI ネイティブなソフトウェア開発</a>
+                        <a href="/claude-debian/" role="menuitem">Claudeと一緒に学ぶDebian</a>
+                        <a href="/debian-server/" role="menuitem">Claudeと一緒に育てるDebian サーバー</a>
+                        <a href="/phosphorus-and-farming/" role="menuitem">リン資源枯渇と自然農法</a>
+                    </div>
+                </div>
+                <a href="/blog/">Blog</a>
+                <a href="/natural-farming/">自然農法とは</a>
+                <a href="/light-farming/">Light Farming</a>
+                <a href="/gallery/">畑の記録</a>
+                <a href="/en/debian-server/" class="lang-switch" hreflang="en" aria-label="View in English">🌐 EN</a>
+                <button type="button" class="theme-toggle" aria-label="テーマを切り替え" title="テーマ切り替え (Light / Dark)">
+                    <span class="theme-icon theme-icon-sun" aria-hidden="true">☀</span>
+                    <span class="theme-icon theme-icon-moon" aria-hidden="true">☾</span>
+                </button>
+            </nav>
+            <button class="nav-toggle" aria-label="メニュー">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="page-hero-image" style="background-image: url('../images/IMG_3285.jpg');"></div>
+        <div class="page-hero-content">
+            <p class="hero-label">連載</p>
+            <h1 class="hero-title">Claudeと一緒に育てるDebian サーバー</h1>
+            <p class="hero-subtitle">自宅サーバーかVPSで、データも自分で管理する ── Claudeと一緒に自分のインフラを持つ</p>
+        </div>
+    </section>
+
+    <!-- Article List -->
+    <section class="section section-alt" id="series">
+        <div class="container">
+            <div class="activity-list">
+
+                <a href="/debian-server/01-what-is-a-server/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">01</div>
+                        <div class="activity-content">
+                            <h3>第1章 サーバーとは何か — 画面のないDebianと、リモートで触る暮らし方</h3>
+                            <p>サーバーは「自分が触っていない間も働き続ける裏方」だ。本書の前提は「自宅サーバーかVPSで、データも自分で管理する」——データは他社のクラウドサービスに預けず、自分がrootを持つ機械の上で管理する。GUIを持たないテキストだけの世界はClaudeと一緒に学ぶ方式と最高に相性が良い。その前提と理由を、この章で整える。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/debian-server/02-where-to-run/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">02</div>
+                        <div class="activity-content">
+                            <h3>第2章 サーバーをどこに置くか — 古いPC、自宅、VPS——費用と責任の地図</h3>
+                            <p>本書の前提は「自宅サーバーかVPSで、データも自分で管理する」。自宅・VPS・大手クラウドの三つを費用と責任の地図にして見比べ、自分はどちらで始めるかを数字で決める。データ管理を他社サービスに預ける道を本書が選ばない理由も、ここではっきりする。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/debian-server/03-minimal-install/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">03</div>
+                        <div class="activity-content">
+                            <h3>第3章 最小インストール — デスクトップの無いDebianを入れる</h3>
+                            <p>サーバーには、デスクトップ編で入れたものの大半が要らない。netinstイメージとtaskselの一画面で、SSHサーバーと標準ユーティリティだけのDebianを作る。本編第7章との差分だけを扱い、IPアドレスの固定までを通す章。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/debian-server/04-ssh/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">04</div>
+                        <div class="activity-content">
+                            <h3>第4章 SSHという玄関 — 鍵をつくり、パスワードを閉じ、安全に出入りする</h3>
+                            <p>サーバーにはもうモニタを繋がない。手元のPCから全てを行う。その出入り口がSSHだ。鍵を作り、パスワード認証を閉じ、玄関を狭める。締め出しを防ぐ作法と、日々の出入りを快適にする設定までを、Claudeと一緒に固める章。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/debian-server/05-security-basics/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">05</div>
+                        <div class="activity-content">
+                            <h3>第5章 守りの基本 — 攻撃面を減らし、更新を自動化する</h3>
+                            <p>サーバーを公開した瞬間、世界中のbotが扉を叩き始める。攻撃面という考え方、ufwによる最小許可、unattended-upgradesによる更新の自動化、fail2banという番犬——守りの基本を、ログをClaudeに渡しながら一つずつ組み立てる。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/debian-server/06-systemd-services/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">06</div>
+                        <div class="activity-content">
+                            <h3>第6章 サービスという単位 — systemdで動かし、journalctlで読む</h3>
+                            <p>サーバーの中身は結局「systemdが面倒を見るプロセスの集まり」だ。systemctlの基本動詞、journalctlでのログの読み方、自作スクリプトをサービスにするunit fileの書き方、systemd timerによる定期実行——「サービス」という一つの単位で、起動も停止もログも障害対応も扱えるようにする。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/debian-server/07-database/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">07</div>
+                        <div class="activity-content">
+                            <h3>第7章 データベースという土台 — SQLiteとPostgreSQLの使い分け、PostgreSQLを入れる</h3>
+                            <p>サーバー本体は作り直せる。作り直せないのはデータだけだ。だからデータの置き場所こそ、最初に設計すべき土台になる。ファイルの山とデータベースの違いを押さえ、SQLiteとPostgreSQLの守備範囲を分け、Debian 13にPostgreSQL 17を入れて自分のデータベースを持つ——その土台をこの章で据える。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/debian-server/08-fastapi/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">08</div>
+                        <div class="activity-content">
+                            <h3>第8章 自作アプリを動かす — ディレクトリ構成、Python、FastAPI</h3>
+                            <p>コンテナを使わないこの本では、アプリは「ふつうのディレクトリ + venv + systemd」で動かす。だからこそ、どこに何を置くかという規約が、コンテナの代わりに秩序を作る。ディレクトリ構成を決め、PythonとFastAPIで最小のAPIを建て、systemdのサービスにして、第7章のデータベースの上で動かす——コードはClaudeに書かせ、あなたは構成を決めて動かして守る。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/debian-server/09-publishing/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">09</div>
+                        <div class="activity-content">
+                            <h3>第9章 外の世界に公開する — ドメイン、リバースプロキシ、TLS</h3>
+                            <p>ここまではすべてLAN内で安全に練習できた。公開は不可逆に近い決断だ——攻撃面が一気に変わる。ドメイン、リバースプロキシ、TLS証明書という三点セットを押さえ、自宅回線の難所（CGNAT）まで含めて、自分の状況に合った公開経路をClaudeと一緒に設計する。「公開しない」も立派な選択だ。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/debian-server/10-backup/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">10</div>
+                        <div class="activity-content">
+                            <h3>第10章 データを守る — バックアップを自動にし、復元を演習する</h3>
+                            <p>サーバー本体は使い捨て、データだけが本体だ。OSもサービスも数十分で作り直せるが、データだけは作り直せない。何を守るかを決め、resticで暗号化バックアップを取り、systemd timerで自動化し、そして復元を実際に演習する——「復元したことのないバックアップは無いのと同じ」という原則を、Claudeと一緒に手で確かめる章。</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="/debian-server/11-operations/" style="text-decoration: none; color: inherit;">
+                    <div class="activity-item fade-in">
+                        <div class="activity-number">11</div>
+                        <div class="activity-content">
+                            <h3>第11章 サーバーを育てる — 見守り、保守し、次の一手を決める</h3>
+                            <p>サーバーは作って終わりではなく、生き物のように手入れして育てるものだ。だが毎日張り付く必要はない。週に15分の定例で回る設計、月次の保守のリズム、壊れたときの型、そして次の一手——一台のサーバーを長く育てる作法を、Claudeを横に置いて整える。サーバー編の結びとして、「自分のインフラを持つ」とは何かを振り返る。</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="section">
+        <div class="container-narrow">
+            <div class="quote-block fade-in">
+                <p class="quote-text">方向性の決定は人間、実現はAI。<br>
+実現力の上限は上がった。方向性を決める仕事は、むしろ重くなった。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section section-green">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Explore</p>
+                <h2 class="section-title">第1回から読み始める</h2>
+            </div>
+            <p class="cta-text">まずは「Fable 5 とは何か、何が得意か」から。得意でないことも、そこで分かる。</p>
+            
+            <div class="cta-buttons">
+                <a href="/light-farming/" class="btn btn-light">Light Farming</a>
+                <a href="/natural-farming/" class="btn btn-outline">自然農法とは</a>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-about">
+                <h3>AI時代の暮らし</h3>
+                <p>AIが仕事、農業、暮らしを変える。化石資源、食料、エネルギー、AI、医療、年金——全ての構造は一つに繋がっている。</p>
+            </div>
+            <div class="footer-nav">
+                <h4>ページ</h4>
+                <ul>
+                    <li><a href="/">ホーム</a></li>
+                    <li><a href="/natural-farming/">自然農法とは</a></li>
+                    <li><a href="/light-farming/">Light Farming</a></li>
+                    <li><a href="/about/">私たちのアプローチ</a></li>
+                    <li><a href="/gallery/">畑の記録</a></li>
+                    <li><a href="/insights/">構造分析</a></li>
+                    <li><a href="/ai-native-software/">AI ネイティブなソフトウェア開発</a></li>
+                    <li><a href="/claude-debian/">Claudeと一緒に学ぶDebian</a></li>
+                    <li><a href="/debian-server/">Claudeと一緒に育てるDebian サーバー</a></li>
+                    <li><a href="/phosphorus-and-farming/">リン資源枯渇と自然農法</a></li>
+                    <li><a href="/privacy/">プライバシー</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>関連サイト</h4>
+                <ul>
+                    <li><a href="https://aiai.aiseed.dev/">aiai ── AI 時代の学び方</a></li>
+                    <li><a href="https://weather.time-j.net/">個人開発気象統計</a></li>
+                </ul>
+                <h4 style="margin-top: 1.5rem;">関連リンク</h4>
+                <ul>
+                    <li><a href="https://www.facebook.com/groups/vegitage" target="_blank" rel="noopener noreferrer"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" style="vertical-align: -2px; margin-right: 4px;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>AISeed — 生物多様性・食料・AIと暮らし</a></li>
+                    <li><a href="https://www.amazingcarbon.com/">Amazing Carbon (Dr. Christine Jones)</a></li>
+                    <li><a href="https://github.com/aiseed-dev/website" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">&copy; 2026 aiseed.dev — <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: underline;">CC BY 4.0</a></p>
+        </div>
+    </footer>
+
+    <script src="../js/main.js?v=36fe4824"></script>
+</body>
+
+</html>

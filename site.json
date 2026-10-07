@@ -51,10 +51,14 @@
         "slug_strip": "claude-debian-"
       },
       {
-        "file": "claude-debian-server.adoc",
-        "label": "└ サーバー編",
-        "url_base": "/claude-debian/server",
-        "slug_strip": "claude-debian-server-"
+        "file": "debian-server.adoc",
+        "label": "Claudeと一緒に育てるDebian サーバー",
+        "label_en": "Growing a Debian Server with Claude",
+        "url_base": "/debian-server",
+        "subtitle": "自宅サーバーかVPSで、データも自分で管理する ── Claudeと一緒に自分のインフラを持つ",
+        "subtitle_en": "A server at home or on a VPS, your data in your own hands — own your infrastructure with Claude",
+        "description": "前提は「自宅サーバーかVPSで、データも自分で管理する」── 本体は自分が root を持つ機械、データは自分のデータベースに。画面のない Debian を SSH で操り、守りを固め、データベースと自作アプリを動かし、公開し、データを守り、育てていく。Claude と学ぶ方式が最も深く効く領域を、11 章で歩く。",
+        "description_en": "The premise: a home server or a VPS, with your data managed by you — apps and data live on a machine where you hold root, in your own databases. Drive a screenless Debian over SSH, harden it, run databases and your own apps, publish them, protect your data, and grow it — 11 chapters in the domain where learning with Claude works best."
       },
       {
         "file": "phosphorus-and-farming.adoc",

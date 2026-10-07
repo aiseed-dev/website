@@ -42,13 +42,13 @@ from pathlib import Path
 from .frontmatter import parse_frontmatter
 
 # シリーズファイル名 → .build/articles/ 配下の展開先サブディレクトリ。
-# サブシリーズ(server/software)は章番号が1から振り直され、URLも別系統
+# サブシリーズ(software)は章番号が1から振り直され、URLも別系統
 # なので独立したファイルにする(展開先は親シリーズの下の従来位置)。
+# サーバー編は 2026-10-07 に独立したシリーズ(debian-server.adoc、site.json)になった。
 SERIES_MAP = {
     "insights.adoc": "insights",
     "blog.adoc": "blog",
     "claude-debian.adoc": "claude-debian",
-    "claude-debian-server.adoc": "claude-debian/server",
     "ai-native-ways.adoc": "ai-native-ways",
     "ai-native-ways-software.adoc": "ai-native-ways/software",
     "phosphorus-and-farming.adoc": "phosphorus-and-farming",

@@ -2171,7 +2171,7 @@ ____
 箱と実装は、いつでも立て直せる。運用の非機能要件は、AI への依頼文の数行に潰れる。
 ____
 
-箱そのもの、つまり会社の PC を一台 Debian にして AI に渡すところは、2-02 が受け持つ。その床にあたる OS の入れ方・SSH・守りの基本・データを守るは、link:/claude-debian/server/[「Claudeと一緒に学ぶDebian サーバー編」]がそのまま仕様になる。ここでも、汎用は参照で済む。
+箱そのもの、つまり会社の PC を一台 Debian にして AI に渡すところは、2-02 が受け持つ。その床にあたる OS の入れ方・SSH・守りの基本・データを守るは、link:/debian-server/[「Claudeと一緒に学ぶDebian サーバー編」]がそのまま仕様になる。ここでも、汎用は参照で済む。
 
 ここで一人 + AI が成り立つ。縦割りの情報システム部門は要らない。業務を分かっている一人が、AI を相棒に、認証からメール、会議、AI、データベースまでを横断して持つ。個人の自立が、会社のインフラのレベルで成立する。これだけのオープンな道具を、一人 + AI が運用する。スイートを一社に預けるのと、手間は変わらない。主導権だけが、自分の側に移る。
 
@@ -2507,7 +2507,7 @@ Protect only the data and the spec.
 The box and the implementation can always be rebuilt. The non-functional requirements collapse into a few lines of instructions to AI.
 ____
 
-The box itself, meaning taking one company PC, putting Debian on it, and handing it to the AI, is 2-02's job. The floor under that box, installing the OS, SSH, the basics of defense, and protecting the data, is specified by link:/claude-debian/server/[Learning Debian with Claude, Server Edition]. Here too, the generic is handled by reference.
+The box itself, meaning taking one company PC, putting Debian on it, and handing it to the AI, is 2-02's job. The floor under that box, installing the OS, SSH, the basics of defense, and protecting the data, is specified by link:/debian-server/[Learning Debian with Claude, Server Edition]. Here too, the generic is handled by reference.
 
 This is where one person plus AI holds. You do not need a siloed IT department. One person who understands the business holds, with the AI as partner, everything from auth to mail, meetings, AI, and the database. Individual independence holds at the level of company infrastructure. One person plus AI operates this whole set of open tools. Compared with handing the suite to one vendor, the effort is the same. Only the control moves to your side.
 

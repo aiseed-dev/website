@@ -1,11 +1,11 @@
-// claude-debian-server — シリーズ全記事(このファイル1つで管理)
+// debian-server — シリーズ全記事(このファイル1つで管理)
 // 記事の区切り: // ===== article: <記事ID> =====
 // フロントマター: 日英共通は裸キー、異なる値は key.ja / key.en
 // 本文: ifdef::lang-ja[] / ifdef::lang-en[] で言語別
 // prev/next 連鎖は書かない(記事の並び順から自動導出)
 // ===== article: 01-what-is-a-server =====
 ---
-slug: claude-debian-server-01-what-is-a-server
+slug: 01-what-is-a-server
 number: 01
 title.ja: 第1章 サーバーとは何か
 title.en: Chapter 1 — What Is a Server
@@ -14,7 +14,7 @@ subtitle.en: Debian without a screen, and a life of touching it remotely
 description.ja: サーバーは「自分が触っていない間も働き続ける裏方」だ。本書の前提は「自宅サーバーかVPSで、データも自分で管理する」——データは他社のクラウドサービスに預けず、自分がrootを持つ機械の上で管理する。GUIを持たないテキストだけの世界はClaudeと一緒に学ぶ方式と最高に相性が良い。その前提と理由を、この章で整える。
 description.en: A server is "the backstage worker that keeps running while you are not touching it." This book's premise: a home server or a VPS, with your data managed by you — not entrusted to someone else's cloud service, but kept on a machine where you hold root. The all-text, GUI-less world pairs perfectly with learning alongside Claude. This chapter settles that premise and the reasons behind it.
 date: 2026.06.10
-label.ja: Claude × Debian サーバー編 01
+label.ja: Claude × Debian サーバー 01
 label.en: Claude × Debian Server 01
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
@@ -24,12 +24,12 @@ cta_text.ja: サーバーには画面がない。だからこそ、すべてが�
 cta_text.en: A server has no screen. That is exactly why everything becomes text — and text is Claude's home turf. Hand Claude your situation, get your own tailored answer. From here, you carry that craft into the backstage world.
 cta_btn1_text.ja: 第2章へ進む
 cta_btn1_text.en: Continue to Chapter 2
-cta_btn1_link.ja: /claude-debian/server/02-where-to-run/
-cta_btn1_link.en: /en/claude-debian/server/02-where-to-run/
-cta_btn2_text.ja: サーバー編 全章一覧
-cta_btn2_text.en: Server Edition — All chapters
-cta_btn2_link.ja: /claude-debian/server/
-cta_btn2_link.en: /en/claude-debian/server/
+cta_btn1_link.ja: /debian-server/02-where-to-run/
+cta_btn1_link.en: /en/debian-server/02-where-to-run/
+cta_btn2_text.ja: 全章一覧
+cta_btn2_text.en: All chapters
+cta_btn2_link.ja: /debian-server/
+cta_btn2_link.en: /en/debian-server/
 ---
 ifdef::lang-ja[]
 == なぜサーバー編から始めるか
@@ -206,7 +206,7 @@ ____
 
 '''
 
-シリーズ全体はlink:/claude-debian/server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
+シリーズ全体はlink:/debian-server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
 endif::[]
 ifdef::lang-en[]
 == Why We Start the Server Edition Here
@@ -383,12 +383,12 @@ In Chapter 2, we decide *where to put* that experimental machine. An old PC at h
 
 '''
 
-The server sub-series can be navigated from link:/en/claude-debian/server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
+The server sub-series can be navigated from link:/en/debian-server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
 // ===== article: 02-where-to-run =====
 ---
-slug: claude-debian-server-02-where-to-run
+slug: 02-where-to-run
 number: 02
 title.ja: 第2章 サーバーをどこに置くか
 title.en: Chapter 2 — Where to Put Your Server
@@ -397,7 +397,7 @@ subtitle.en: Old PCs, your home, VPS — a map of costs and responsibilities
 description.ja: 本書の前提は「自宅サーバーかVPSで、データも自分で管理する」。自宅・VPS・大手クラウドの三つを費用と責任の地図にして見比べ、自分はどちらで始めるかを数字で決める。データ管理を他社サービスに預ける道を本書が選ばない理由も、ここではっきりする。
 description.en: This book's premise: a home server or a VPS, with your data managed by you. We map all three options (home, VPS, major cloud) by cost and responsibility, and decide with your own numbers which to start with. Why this book never hands data management itself to someone else's service also becomes clear here.
 date: 2026.06.10
-label.ja: Claude × Debian サーバー編 02
+label.ja: Claude × Debian サーバー 02
 label.en: Claude × Debian Server 02
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
@@ -407,12 +407,12 @@ cta_text.ja: 自宅か、VPSか——どちらでも「自分のサーバー」�
 cta_text.en: Home, or VPS — either way, it is your own server. Who carries power, the line, and physical failure changes the scope of your responsibility. Spread out the map of cost and responsibility, and decide your own location with your own numbers.
 cta_btn1_text.ja: 第3章へ進む
 cta_btn1_text.en: Continue to Chapter 3
-cta_btn1_link.ja: /claude-debian/server/03-minimal-install/
-cta_btn1_link.en: /en/claude-debian/server/03-minimal-install/
+cta_btn1_link.ja: /debian-server/03-minimal-install/
+cta_btn1_link.en: /en/debian-server/03-minimal-install/
 cta_btn2_text.ja: 第1章に戻る
 cta_btn2_text.en: Back to Chapter 1
-cta_btn2_link.ja: /claude-debian/server/01-what-is-a-server/
-cta_btn2_link.en: /en/claude-debian/server/01-what-is-a-server/
+cta_btn2_link.ja: /debian-server/01-what-is-a-server/
+cta_btn2_link.en: /en/debian-server/01-what-is-a-server/
 ---
 ifdef::lang-ja[]
 == なぜ「置き場所」が最初の設計判断か
@@ -588,7 +588,7 @@ ____
 
 '''
 
-シリーズ全体はlink:/claude-debian/server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
+シリーズ全体はlink:/debian-server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
 endif::[]
 ifdef::lang-en[]
 == Why "Where to Put It" Is the First Design Decision
@@ -764,12 +764,12 @@ In Chapter 3, on the experimental machine you decided on, we finally do the *min
 
 '''
 
-The server sub-series can be navigated from link:/en/claude-debian/server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
+The server sub-series can be navigated from link:/en/debian-server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
 // ===== article: 03-minimal-install =====
 ---
-slug: claude-debian-server-03-minimal-install
+slug: 03-minimal-install
 number: 03
 title.ja: 第3章 最小インストール
 title.en: Chapter 3 — The Minimal Install
@@ -778,7 +778,7 @@ subtitle.en: Installing Debian without a desktop
 description.ja: サーバーには、デスクトップ編で入れたものの大半が要らない。netinstイメージとtaskselの一画面で、SSHサーバーと標準ユーティリティだけのDebianを作る。本編第7章との差分だけを扱い、IPアドレスの固定までを通す章。
 description.en: A server does not need most of what the desktop edition installed. With the netinst image and a single tasksel screen, you build a Debian that carries only an SSH server and standard utilities. This chapter handles just the delta from the main edition's Chapter 7, and carries you through to a fixed IP address.
 date: 2026.06.10
-label.ja: Claude × Debian サーバー編 03
+label.ja: Claude × Debian サーバー 03
 label.en: Claude × Debian Server 03
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
@@ -788,12 +788,12 @@ cta_text.ja: サーバーは載せるものが少ないほど安全で、把握�
 cta_text.en: A server is safer, easier to grasp, and harder to break the less it carries. This chapter is about choosing what NOT to install, not what to install. When a screen confuses you, paste its exact wording to Claude and check.
 cta_btn1_text.ja: 第4章へ進む
 cta_btn1_text.en: Continue to Chapter 4
-cta_btn1_link.ja: /claude-debian/server/04-ssh/
-cta_btn1_link.en: /en/claude-debian/server/04-ssh/
+cta_btn1_link.ja: /debian-server/04-ssh/
+cta_btn1_link.en: /en/debian-server/04-ssh/
 cta_btn2_text.ja: 第2章に戻る
 cta_btn2_text.en: Back to Chapter 2
-cta_btn2_link.ja: /claude-debian/server/02-where-to-run/
-cta_btn2_link.en: /en/claude-debian/server/02-where-to-run/
+cta_btn2_link.ja: /debian-server/02-where-to-run/
+cta_btn2_link.en: /en/debian-server/02-where-to-run/
 ---
 ifdef::lang-ja[]
 == なぜ「最小」か
@@ -979,11 +979,11 @@ ____
 * 家のネットワークの中で固定されたIPアドレス（次章のSSHの宛先になる）
 * このサーバーの素性をまとめたメモ（IP、インターフェース名、ホスト名）
 
-ここまでは、まだサーバーに直接モニタとキーボードを繋いで操作していた。次のlink:/claude-debian/server/04-ssh/[第4章「SSHという玄関」]で、別のPCから安全に出入りする仕組みを作る。それが済めば、サーバーからモニタを外し、本来の「画面の無いサーバー」として動かし始められる。
+ここまでは、まだサーバーに直接モニタとキーボードを繋いで操作していた。次のlink:/debian-server/04-ssh/[第4章「SSHという玄関」]で、別のPCから安全に出入りする仕組みを作る。それが済めば、サーバーからモニタを外し、本来の「画面の無いサーバー」として動かし始められる。
 
 '''
 
-シリーズ全体はlink:/claude-debian/server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
+シリーズ全体はlink:/debian-server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
 endif::[]
 ifdef::lang-en[]
 == Why "Minimal"
@@ -1169,16 +1169,16 @@ What you hold now:
 * An IP address fixed inside your home network (it becomes the destination for SSH next chapter).
 * A note of this server's particulars (IP, interface name, hostname).
 
-Up to here, you were still operating the server with a monitor and keyboard plugged in directly. In the next chapter, link:/en/claude-debian/server/04-ssh/[Chapter 4, "SSH, the Front Door"], you build the mechanism to come and go safely from another PC. Once that is done, you can unplug the monitor and start running it as the screenless server it was always meant to be.
+Up to here, you were still operating the server with a monitor and keyboard plugged in directly. In the next chapter, link:/en/debian-server/04-ssh/[Chapter 4, "SSH, the Front Door"], you build the mechanism to come and go safely from another PC. Once that is done, you can unplug the monitor and start running it as the screenless server it was always meant to be.
 
 '''
 
-The server sub-series can be navigated from link:/en/claude-debian/server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
+The server sub-series can be navigated from link:/en/debian-server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
 // ===== article: 04-ssh =====
 ---
-slug: claude-debian-server-04-ssh
+slug: 04-ssh
 number: 04
 title.ja: 第4章 SSHという玄関
 title.en: Chapter 4 — SSH, the Front Door
@@ -1187,7 +1187,7 @@ subtitle.en: Make keys, close passwords, come and go safely
 description.ja: サーバーにはもうモニタを繋がない。手元のPCから全てを行う。その出入り口がSSHだ。鍵を作り、パスワード認証を閉じ、玄関を狭める。締め出しを防ぐ作法と、日々の出入りを快適にする設定までを、Claudeと一緒に固める章。
 description.en: You will never plug a monitor into the server again. You do everything from your own PC. The doorway for that is SSH. Make keys, close password authentication, narrow the door. This chapter locks down the front door together with Claude — including the craft of not locking yourself out and the settings that make daily access pleasant.
 date: 2026.06.10
-label.ja: Claude × Debian サーバー編 04
+label.ja: Claude × Debian サーバー 04
 label.en: Claude × Debian Server 04
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
@@ -1197,12 +1197,12 @@ cta_text.ja: サーバーのセキュリティは、どこから入れるかで�
 cta_text.en: Eighty percent of a server's security is decided by where you can get in. Make a key, close the password. Just two tasks — but getting locked out here hurts. Have Claude review your settings, and proceed leaving yourself a way back.
 cta_btn1_text.ja: 第5章へ進む
 cta_btn1_text.en: Continue to Chapter 5
-cta_btn1_link.ja: /claude-debian/server/05-security-basics/
-cta_btn1_link.en: /en/claude-debian/server/05-security-basics/
+cta_btn1_link.ja: /debian-server/05-security-basics/
+cta_btn1_link.en: /en/debian-server/05-security-basics/
 cta_btn2_text.ja: 第3章に戻る
 cta_btn2_text.en: Back to Chapter 3
-cta_btn2_link.ja: /claude-debian/server/03-minimal-install/
-cta_btn2_link.en: /en/claude-debian/server/03-minimal-install/
+cta_btn2_link.ja: /debian-server/03-minimal-install/
+cta_btn2_link.en: /en/debian-server/03-minimal-install/
 ---
 ifdef::lang-ja[]
 == なぜSSHが「玄関」か
@@ -1400,11 +1400,11 @@ ____
 * 短い別名で繋げる `~/.ssh/config`
 * いざという時の退路（物理コンソールまたはWebコンソール）の確認
 
-これでサーバーからモニタを外せる。*画面の無い、ネットワーク越しに使うサーバー* が、ここに完成した。次のlink:/claude-debian/server/05-security-basics/[第5章「守りの基本」]では、玄関の次の層——ファイアウォール、不要なサービスの停止、自動更新、そして総当たりを仕掛けてくる相手をどう遮断するか——を、Claudeと一緒に固めていく。
+これでサーバーからモニタを外せる。*画面の無い、ネットワーク越しに使うサーバー* が、ここに完成した。次のlink:/debian-server/05-security-basics/[第5章「守りの基本」]では、玄関の次の層——ファイアウォール、不要なサービスの停止、自動更新、そして総当たりを仕掛けてくる相手をどう遮断するか——を、Claudeと一緒に固めていく。
 
 '''
 
-シリーズ全体はlink:/claude-debian/server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
+シリーズ全体はlink:/debian-server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
 endif::[]
 ifdef::lang-en[]
 == Why SSH Is the "Front Door"
@@ -1602,16 +1602,16 @@ What you hold now:
 * A `~/.ssh/config` that connects by a short alias.
 * Confirmation of a way back for emergencies (physical console or web console).
 
-Now you can unplug the monitor from the server. A *screenless server, used across the network*, is complete here. In the next chapter, link:/en/claude-debian/server/05-security-basics/[Chapter 5, "The Basics of Defense"], you lock down the layer beyond the door — the firewall, stopping unneeded services, automatic updates, and how to shut out the parties hammering you with brute force — together with Claude.
+Now you can unplug the monitor from the server. A *screenless server, used across the network*, is complete here. In the next chapter, link:/en/debian-server/05-security-basics/[Chapter 5, "The Basics of Defense"], you lock down the layer beyond the door — the firewall, stopping unneeded services, automatic updates, and how to shut out the parties hammering you with brute force — together with Claude.
 
 '''
 
-The server sub-series can be navigated from link:/en/claude-debian/server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
+The server sub-series can be navigated from link:/en/debian-server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
 // ===== article: 05-security-basics =====
 ---
-slug: claude-debian-server-05-security-basics
+slug: 05-security-basics
 number: 05
 title.ja: 第5章 守りの基本
 title.en: Chapter 5 — The Basics of Defense
@@ -1620,7 +1620,7 @@ subtitle.en: Shrink the attack surface, automate updates
 description.ja: サーバーを公開した瞬間、世界中のbotが扉を叩き始める。攻撃面という考え方、ufwによる最小許可、unattended-upgradesによる更新の自動化、fail2banという番犬——守りの基本を、ログをClaudeに渡しながら一つずつ組み立てる。
 description.en: The moment you expose a server to the internet, bots from all over the world start knocking on the door. The idea of an attack surface, minimal allow-listing with ufw, automated updates with unattended-upgrades, and a watchdog called fail2ban — build up the basics of defense one piece at a time, handing logs to Claude as you go.
 date: 2026.06.10
-label.ja: Claude × Debian サーバー編 05
+label.ja: Claude × Debian サーバー 05
 label.en: Claude × Debian Server 05
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
@@ -1630,12 +1630,12 @@ cta_text.ja: サービスを動かすのは楽しい。だが公開した瞬間�
 cta_text.en: Running a service is fun. But the moment you expose it, bots from all over the world start knocking on the door. Shrink the attack surface, automate updates, post a watchdog — this chapter builds the foundation for running anything with peace of mind.
 cta_btn1_text.ja: 第6章へ進む
 cta_btn1_text.en: Continue to Chapter 6
-cta_btn1_link.ja: /claude-debian/server/06-systemd-services/
-cta_btn1_link.en: /en/claude-debian/server/06-systemd-services/
+cta_btn1_link.ja: /debian-server/06-systemd-services/
+cta_btn1_link.en: /en/debian-server/06-systemd-services/
 cta_btn2_text.ja: 第4章に戻る
 cta_btn2_text.en: Back to Chapter 4
-cta_btn2_link.ja: /claude-debian/server/04-ssh/
-cta_btn2_link.en: /en/claude-debian/server/04-ssh/
+cta_btn2_link.ja: /debian-server/04-ssh/
+cta_btn2_link.en: /en/debian-server/04-ssh/
 ---
 ifdef::lang-ja[]
 == なぜ守りの章が、サービスを動かす章より先か
@@ -1882,11 +1882,11 @@ ____
 * ログを読み、Claudeに渡して点検する作法（本編第8章からの継承）
 * 「公開してよいか」をClaudeに点検させるチェックリスト的な対話
 
-守りの土台ができた。次のlink:/claude-debian/server/06-systemd-services/[第6章「サービスという単位」]では、いよいよ*何かを動かす*。サーバーの中身は結局「systemdが面倒を見るプロセスの集まり」だ。起動・停止・自動起動・ログ・障害対応を、すべて同じ型——「サービス」という単位——で扱えるようにする。この章で `systemctl disable --now` を打ったその動詞が、次の章の入口になる。
+守りの土台ができた。次のlink:/debian-server/06-systemd-services/[第6章「サービスという単位」]では、いよいよ*何かを動かす*。サーバーの中身は結局「systemdが面倒を見るプロセスの集まり」だ。起動・停止・自動起動・ログ・障害対応を、すべて同じ型——「サービス」という単位——で扱えるようにする。この章で `systemctl disable --now` を打ったその動詞が、次の章の入口になる。
 
 '''
 
-シリーズ全体はlink:/claude-debian/server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
+シリーズ全体はlink:/debian-server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
 endif::[]
 ifdef::lang-en[]
 == Why the Defense Chapter Comes Before the Run-a-Service Chapter
@@ -2133,16 +2133,16 @@ What you hold now:
 * The craft of reading logs and handing them to Claude for inspection (carried over from Chapter 8 of the main series).
 * A checklist-like dialogue that has Claude inspect "is it OK to go public?"
 
-The foundation of defense is in place. In link:/en/claude-debian/server/06-systemd-services/[Chapter 6, "The Service as a Unit,"] you finally *run something*. The insides of a server are, in the end, "a collection of processes that systemd looks after." You will learn to handle starting, stopping, auto-start, logs, and failure response all through the same shape — the unit called a "service." The very verb you typed with `systemctl disable --now` in this chapter is the doorway into the next.
+The foundation of defense is in place. In link:/en/debian-server/06-systemd-services/[Chapter 6, "The Service as a Unit,"] you finally *run something*. The insides of a server are, in the end, "a collection of processes that systemd looks after." You will learn to handle starting, stopping, auto-start, logs, and failure response all through the same shape — the unit called a "service." The very verb you typed with `systemctl disable --now` in this chapter is the doorway into the next.
 
 '''
 
-The server sub-series can be navigated from link:/en/claude-debian/server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
+The server sub-series can be navigated from link:/en/debian-server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
 // ===== article: 06-systemd-services =====
 ---
-slug: claude-debian-server-06-systemd-services
+slug: 06-systemd-services
 number: 06
 title.ja: 第6章 サービスという単位
 title.en: Chapter 6 — The Service as a Unit
@@ -2151,7 +2151,7 @@ subtitle.en: Run things with systemd, read them with journalctl
 description.ja: サーバーの中身は結局「systemdが面倒を見るプロセスの集まり」だ。systemctlの基本動詞、journalctlでのログの読み方、自作スクリプトをサービスにするunit fileの書き方、systemd timerによる定期実行——「サービス」という一つの単位で、起動も停止もログも障害対応も扱えるようにする。
 description.en: The insides of a server are, in the end, "a collection of processes that systemd looks after." The basic verbs of systemctl, reading logs with journalctl, writing a unit file that turns your own script into a service, and scheduled runs with a systemd timer — learn to handle starting, stopping, logs, and failure response all through one unit called a "service."
 date: 2026.06.10
-label.ja: Claude × Debian サーバー編 06
+label.ja: Claude × Debian サーバー 06
 label.en: Claude × Debian Server 06
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
@@ -2161,12 +2161,12 @@ cta_text.ja: 起動、停止、自動起動、ログ、障害対応——バラ�
 cta_text.en: Starting, stopping, auto-start, logs, failure response — operations that look scattered all reduce to one unit: the service. Once you hold this shape, you can handle unfamiliar software with the same touch.
 cta_btn1_text.ja: 第7章へ進む
 cta_btn1_text.en: Continue to Chapter 7
-cta_btn1_link.ja: /claude-debian/server/07-database/
-cta_btn1_link.en: /en/claude-debian/server/07-database/
+cta_btn1_link.ja: /debian-server/07-database/
+cta_btn1_link.en: /en/debian-server/07-database/
 cta_btn2_text.ja: 第5章に戻る
 cta_btn2_text.en: Back to Chapter 5
-cta_btn2_link.ja: /claude-debian/server/05-security-basics/
-cta_btn2_link.en: /en/claude-debian/server/05-security-basics/
+cta_btn2_link.ja: /debian-server/05-security-basics/
+cta_btn2_link.en: /en/debian-server/05-security-basics/
 ---
 ifdef::lang-ja[]
 == なぜ「サービス」という単位を学ぶか
@@ -2421,11 +2421,11 @@ systemctl list-timers
 * 「設定（unit file）と結果（ログ）を両方Claudeに渡して切り分ける」対話の型
 * 未知のソフトも「これもサービスだろう」と同じ動詞で扱える手つき
 
-「サービス」という単位を手に入れた。だが、サービスが動くだけでは半分だ。サービスが読み書きする*データ*を、どこに・どんな形で置くか。次のlink:/claude-debian/server/07-database/[第7章「データベースという土台」]では、SQLiteとPostgreSQLの使い分けを整理し、PostgreSQLを実際にインストールして、データの置き場所という土台を作る。
+「サービス」という単位を手に入れた。だが、サービスが動くだけでは半分だ。サービスが読み書きする*データ*を、どこに・どんな形で置くか。次のlink:/debian-server/07-database/[第7章「データベースという土台」]では、SQLiteとPostgreSQLの使い分けを整理し、PostgreSQLを実際にインストールして、データの置き場所という土台を作る。
 
 '''
 
-シリーズ全体はlink:/claude-debian/server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
+シリーズ全体はlink:/debian-server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
 endif::[]
 ifdef::lang-en[]
 == Why Learn the "Service" as a Unit
@@ -2680,16 +2680,16 @@ What you hold now:
 * A dialogue shape of "hand both the config (unit file) and the result (log) to Claude to narrow it down."
 * The touch to handle unfamiliar software with the same verbs by guessing "this is probably a service too."
 
-You have the "service" as a unit. But a running service is only half the story. Where, and in what form, does the *data* it reads and writes live? In link:/en/claude-debian/server/07-database/[Chapter 7, "The Database as a Foundation,"] we sort out when to use SQLite and when PostgreSQL, install PostgreSQL for real, and lay the foundation of where your data lives.
+You have the "service" as a unit. But a running service is only half the story. Where, and in what form, does the *data* it reads and writes live? In link:/en/debian-server/07-database/[Chapter 7, "The Database as a Foundation,"] we sort out when to use SQLite and when PostgreSQL, install PostgreSQL for real, and lay the foundation of where your data lives.
 
 '''
 
-The server sub-series can be navigated from link:/en/claude-debian/server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
+The server sub-series can be navigated from link:/en/debian-server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
 // ===== article: 07-database =====
 ---
-slug: claude-debian-server-07-database
+slug: 07-database
 number: 07
 title.ja: 第7章 データベースという土台
 title.en: Chapter 7 — The Database as a Foundation
@@ -2698,7 +2698,7 @@ subtitle.en: When to use SQLite and PostgreSQL, and installing PostgreSQL
 description.ja: サーバー本体は作り直せる。作り直せないのはデータだけだ。だからデータの置き場所こそ、最初に設計すべき土台になる。ファイルの山とデータベースの違いを押さえ、SQLiteとPostgreSQLの守備範囲を分け、Debian 13にPostgreSQL 17を入れて自分のデータベースを持つ——その土台をこの章で据える。
 description.en: The server itself can be rebuilt. The only thing that cannot be rebuilt is the data. So the place where your data lives is the foundation you should design first. Grasp the difference between a pile of files and a database, split the territory between SQLite and PostgreSQL, and put PostgreSQL 17 on your Debian 13 box so you own your own database — this chapter lays that foundation.
 date: 2026.06.10
-label.ja: Claude × Debian サーバー編 07
+label.ja: Claude × Debian サーバー 07
 label.en: Claude × Debian Server 07
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
@@ -2708,17 +2708,17 @@ cta_text.ja: サーバーは何度でも入れ直せる。だが、あなたの�
 cta_text.en: A server can be reinstalled as many times as you like. But your records, photos, and ledgers happen only once. Rather than scattering them across someone else's cloud, you gather them into your own database on your own machine. This is the chapter where you lay the foundation.
 cta_btn1_text.ja: 第8章へ進む
 cta_btn1_text.en: Continue to Chapter 8
-cta_btn1_link.ja: /claude-debian/server/08-fastapi/
-cta_btn1_link.en: /en/claude-debian/server/08-fastapi/
+cta_btn1_link.ja: /debian-server/08-fastapi/
+cta_btn1_link.en: /en/debian-server/08-fastapi/
 cta_btn2_text.ja: 第6章に戻る
 cta_btn2_text.en: Back to Chapter 6
-cta_btn2_link.ja: /claude-debian/server/06-systemd-services/
-cta_btn2_link.en: /en/claude-debian/server/06-systemd-services/
+cta_btn2_link.ja: /debian-server/06-systemd-services/
+cta_btn2_link.en: /en/debian-server/06-systemd-services/
 ---
 ifdef::lang-ja[]
 == なぜデータベースの章か
 
-このサーバー編の根底に、一つの思想が流れている。*サーバー本体は作り直せる。作り直せないのは、データだけだ。* OSが壊れても入れ直せる。設定ファイルは書き直せる。アプリは再インストールできる。だが、あなたが三年かけて貯めた家計の記録、家族の写真、仕事のメモ——それは一度失えば戻らない。この思想はlink:/claude-debian/server/10-backup/[第10章]で全面的に展開するが、その前にどうしても済ませておくべきことがある。*データの置き場所を、土台として設計することだ。*
+このサーバー編の根底に、一つの思想が流れている。*サーバー本体は作り直せる。作り直せないのは、データだけだ。* OSが壊れても入れ直せる。設定ファイルは書き直せる。アプリは再インストールできる。だが、あなたが三年かけて貯めた家計の記録、家族の写真、仕事のメモ——それは一度失えば戻らない。この思想はlink:/debian-server/10-backup/[第10章]で全面的に展開するが、その前にどうしても済ませておくべきことがある。*データの置き場所を、土台として設計することだ。*
 
 そしてもう一つ。写真はあのクラウド、家計簿は別のアプリ、メモはまた別のサービス——気づけば自分の暮らしのデータは、いくつもの他社のサーバーにバラバラに預けられている。*データを他社のクラウドサービスに散らばせたままでは、主導権は戻らない。自分の機械の上の、自分のデータベースに集める。* これが、第1章で確認した「データ主権」を、具体的な形にする一歩だ。
 
@@ -2982,16 +2982,16 @@ ____
 * `\d` の出力を渡してSQLを書かせる対話の型
 * 壊れないバックアップの取り方（第10章への入口）
 
-データの土台ができた。OSもアプリも作り直せるが、いまこの土台に載せ始めたデータだけは作り直せない——その重みを抱えたまま、次に進む。次のlink:/claude-debian/server/08-fastapi/[第8章「自作アプリを動かす」]では、この土台の上に、PythonとFastAPIで*自分のアプリ*を建てる。ディレクトリ構成を決め、systemdのサービスとして動かすところまで、Claudeと一緒に進む。
+データの土台ができた。OSもアプリも作り直せるが、いまこの土台に載せ始めたデータだけは作り直せない——その重みを抱えたまま、次に進む。次のlink:/debian-server/08-fastapi/[第8章「自作アプリを動かす」]では、この土台の上に、PythonとFastAPIで*自分のアプリ*を建てる。ディレクトリ構成を決め、systemdのサービスとして動かすところまで、Claudeと一緒に進む。
 
 '''
 
-シリーズ全体はlink:/claude-debian/server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
+シリーズ全体はlink:/debian-server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
 endif::[]
 ifdef::lang-en[]
 == Why a Chapter on Databases
 
-One idea runs underneath this whole server sub-series. *The server itself can be rebuilt. The only thing that cannot be rebuilt is the data.* If the OS breaks, you reinstall it. If a config file is wrong, you rewrite it. An app can be reinstalled. But the household records you built up over three years, your family's photos, your work notes — once those are lost, they do not come back. This idea gets its full treatment in link:/en/claude-debian/server/10-backup/[Chapter 10], but there is one thing that absolutely must come first: *designing where your data lives, as a foundation.*
+One idea runs underneath this whole server sub-series. *The server itself can be rebuilt. The only thing that cannot be rebuilt is the data.* If the OS breaks, you reinstall it. If a config file is wrong, you rewrite it. An app can be reinstalled. But the household records you built up over three years, your family's photos, your work notes — once those are lost, they do not come back. This idea gets its full treatment in link:/en/debian-server/10-backup/[Chapter 10], but there is one thing that absolutely must come first: *designing where your data lives, as a foundation.*
 
 And one more thing. Photos in that cloud, the budget in another app, notes in yet another service — before you know it, the data of your daily life is scattered across the servers of several different companies. *As long as your data stays scattered across other companies' cloud services, you never get the initiative back. You gather it into your own database, on your own machine.* This is the step that gives concrete form to the "data sovereignty" we confirmed in Chapter 1.
 
@@ -3255,16 +3255,16 @@ What you hold now:
 * The dialogue pattern of handing over `\d` output and having SQL written for you.
 * How to take an uncorrupted backup (the entrance to Chapter 10).
 
-The data foundation is in place. The OS and the apps can be rebuilt, but the data you have just started loading onto this foundation cannot — carrying that weight, we move on. In link:/en/claude-debian/server/08-fastapi/[Chapter 8, "Running Your Own App,"] we build *your own app* on top of this foundation with Python and FastAPI — settling the directory layout and running it as a systemd service, together with Claude.
+The data foundation is in place. The OS and the apps can be rebuilt, but the data you have just started loading onto this foundation cannot — carrying that weight, we move on. In link:/en/debian-server/08-fastapi/[Chapter 8, "Running Your Own App,"] we build *your own app* on top of this foundation with Python and FastAPI — settling the directory layout and running it as a systemd service, together with Claude.
 
 '''
 
-The server sub-series can be navigated from link:/en/claude-debian/server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
+The server sub-series can be navigated from link:/en/debian-server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
 // ===== article: 08-fastapi =====
 ---
-slug: claude-debian-server-08-fastapi
+slug: 08-fastapi
 number: 08
 title.ja: 第8章 自作アプリを動かす
 title.en: Chapter 8 — Running Your Own App
@@ -3273,7 +3273,7 @@ subtitle.en: Directory layout, Python, and FastAPI
 description.ja: コンテナを使わないこの本では、アプリは「ふつうのディレクトリ + venv + systemd」で動かす。だからこそ、どこに何を置くかという規約が、コンテナの代わりに秩序を作る。ディレクトリ構成を決め、PythonとFastAPIで最小のAPIを建て、systemdのサービスにして、第7章のデータベースの上で動かす——コードはClaudeに書かせ、あなたは構成を決めて動かして守る。
 description.en: This book never uses containers — apps run as a plain directory plus a venv plus a systemd service. That is exactly why the convention for where things go, instead of a container, is what creates order. Decide a directory layout, build a minimal API with Python and FastAPI, turn it into a systemd service, and run it on top of Chapter 7's database — Claude writes the code; you decide the structure, run it, and protect it.
 date: 2026.06.10
-label.ja: Claude × Debian サーバー編 08
+label.ja: Claude × Debian サーバー 08
 label.en: Claude × Debian Server 08
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
@@ -3283,12 +3283,12 @@ cta_text.ja: コンテナを使わなくても、自作アプリは動く。ふ�
 cta_text.en: You can run your own app without a container. A plain directory, a venv, and a systemd service — those three are enough to stand up your own app on your own server. Claude writes the code. You decide the structure, run it, and protect it.
 cta_btn1_text.ja: 第9章へ進む
 cta_btn1_text.en: Continue to Chapter 9
-cta_btn1_link.ja: /claude-debian/server/09-publishing/
-cta_btn1_link.en: /en/claude-debian/server/09-publishing/
+cta_btn1_link.ja: /debian-server/09-publishing/
+cta_btn1_link.en: /en/debian-server/09-publishing/
 cta_btn2_text.ja: 第7章に戻る
 cta_btn2_text.en: Back to Chapter 7
-cta_btn2_link.ja: /claude-debian/server/07-database/
-cta_btn2_link.en: /en/claude-debian/server/07-database/
+cta_btn2_link.ja: /debian-server/07-database/
+cta_btn2_link.en: /en/debian-server/07-database/
 ---
 ifdef::lang-ja[]
 == なぜ自作アプリの章か
@@ -3640,11 +3640,11 @@ ____
 * 第7章の `myappdb` に繋がって動く、最初の自作API
 * 「見本を渡して作り替えさせる」「公開前に構成を点検させる」対話の型
 
-自分のアプリが、自分のサーバーの上で、自分のデータベースを使って動いた。だがいまはまだ、`127.0.0.1` という自分のマシンの中だけの世界だ。外からは誰にも見えない——それは弱さではなく、いまは守りだ。次のlink:/claude-debian/server/09-publishing/[第9章「外の世界に公開する」]で、このアプリをCaddyというリバースプロキシの後ろに置き、TLSをまとって、いよいよ世界から見える場所に出す。公開という不可逆な一歩を、第5章の守りと、この章で通した公開前チェックを携えて踏み出す。
+自分のアプリが、自分のサーバーの上で、自分のデータベースを使って動いた。だがいまはまだ、`127.0.0.1` という自分のマシンの中だけの世界だ。外からは誰にも見えない——それは弱さではなく、いまは守りだ。次のlink:/debian-server/09-publishing/[第9章「外の世界に公開する」]で、このアプリをCaddyというリバースプロキシの後ろに置き、TLSをまとって、いよいよ世界から見える場所に出す。公開という不可逆な一歩を、第5章の守りと、この章で通した公開前チェックを携えて踏み出す。
 
 '''
 
-シリーズ全体はlink:/claude-debian/server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
+シリーズ全体はlink:/debian-server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
 endif::[]
 ifdef::lang-en[]
 == Why a Chapter on Running Your Own App
@@ -3997,16 +3997,16 @@ What you hold now:
 * Your first homemade API, running connected to Chapter 7's `myappdb`.
 * The dialogue patterns "hand over the sample and have it reworked" and "have the structure reviewed before publishing."
 
-Your own app ran, on your own server, using your own database. But for now it is still a world inside `127.0.0.1`, your own machine alone. No one can see it from outside — and that is not a weakness; for now it is defense. In the next link:/en/claude-debian/server/09-publishing/[Chapter 9 "Opening Up to the Outside World"], you place this app behind a reverse proxy called Caddy, dress it in TLS, and finally bring it out to a place visible from the world. You take the irreversible step of publishing carrying Chapter 5's defenses and the pre-publish check you ran in this chapter.
+Your own app ran, on your own server, using your own database. But for now it is still a world inside `127.0.0.1`, your own machine alone. No one can see it from outside — and that is not a weakness; for now it is defense. In the next link:/en/debian-server/09-publishing/[Chapter 9 "Opening Up to the Outside World"], you place this app behind a reverse proxy called Caddy, dress it in TLS, and finally bring it out to a place visible from the world. You take the irreversible step of publishing carrying Chapter 5's defenses and the pre-publish check you ran in this chapter.
 
 '''
 
-The server sub-series can be navigated from link:/en/claude-debian/server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
+The server sub-series can be navigated from link:/en/debian-server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
 // ===== article: 09-publishing =====
 ---
-slug: claude-debian-server-09-publishing
+slug: 09-publishing
 number: 09
 title.ja: 第9章 外の世界に公開する
 title.en: Chapter 9 — Opening Up to the Outside World
@@ -4015,7 +4015,7 @@ subtitle.en: Domains, reverse proxies, TLS
 description.ja: ここまではすべてLAN内で安全に練習できた。公開は不可逆に近い決断だ——攻撃面が一気に変わる。ドメイン、リバースプロキシ、TLS証明書という三点セットを押さえ、自宅回線の難所（CGNAT）まで含めて、自分の状況に合った公開経路をClaudeと一緒に設計する。「公開しない」も立派な選択だ。
 description.en: Until now everything could be practiced safely on the LAN. Publishing is a near-irreversible decision — the attack surface changes all at once. We cover the three-piece set of domain, reverse proxy, and TLS certificate, all the way through the home-line obstacle (CGNAT), and design a publishing route that fits your situation together with Claude. "Not publishing" is a perfectly respectable choice.
 date: 2026.06.10
-label.ja: Claude × Debian サーバー編 09
+label.ja: Claude × Debian サーバー 09
 label.en: Claude × Debian Server 09
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
@@ -4025,12 +4025,12 @@ cta_text.ja: 公開は不可逆に近い。接続してくる相手が一気に�
 cta_text.en: Publishing is near-irreversible. The parties connecting to you become the whole world at once. That is exactly why you must design a route that fits your line and situation. Including the choice "not to publish," draw the map together with Claude.
 cta_btn1_text.ja: 第10章へ進む
 cta_btn1_text.en: Continue to Chapter 10
-cta_btn1_link.ja: /claude-debian/server/10-backup/
-cta_btn1_link.en: /en/claude-debian/server/10-backup/
+cta_btn1_link.ja: /debian-server/10-backup/
+cta_btn1_link.en: /en/debian-server/10-backup/
 cta_btn2_text.ja: 第8章に戻る
 cta_btn2_text.en: Back to Chapter 8
-cta_btn2_link.ja: /claude-debian/server/08-fastapi/
-cta_btn2_link.en: /en/claude-debian/server/08-fastapi/
+cta_btn2_link.ja: /debian-server/08-fastapi/
+cta_btn2_link.en: /en/debian-server/08-fastapi/
 ---
 ifdef::lang-ja[]
 == なぜ公開が一つの章になるか
@@ -4209,7 +4209,7 @@ ____
 
 '''
 
-シリーズ全体はlink:/claude-debian/server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
+シリーズ全体はlink:/debian-server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
 endif::[]
 ifdef::lang-en[]
 == Why Publishing Is a Chapter of Its Own
@@ -4388,12 +4388,12 @@ In Chapter 10, we consider finally *protecting* the services and data you have b
 
 '''
 
-The server sub-series can be navigated from link:/en/claude-debian/server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
+The server sub-series can be navigated from link:/en/debian-server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
 // ===== article: 10-backup =====
 ---
-slug: claude-debian-server-10-backup
+slug: 10-backup
 number: 10
 title.ja: 第10章 データを守る
 title.en: Chapter 10 — Protecting Your Data
@@ -4402,7 +4402,7 @@ subtitle.en: Automate backups, rehearse restores
 description.ja: サーバー本体は使い捨て、データだけが本体だ。OSもサービスも数十分で作り直せるが、データだけは作り直せない。何を守るかを決め、resticで暗号化バックアップを取り、systemd timerで自動化し、そして復元を実際に演習する——「復元したことのないバックアップは無いのと同じ」という原則を、Claudeと一緒に手で確かめる章。
 description.en: The server itself is disposable; only the data is the real thing. The OS and your services can be rebuilt in tens of minutes, but the data cannot. Decide what to protect, take encrypted backups with restic, automate them with a systemd timer, and then actually rehearse a restore — proving, with your own hands and alongside Claude, the principle that a backup you have never restored is the same as no backup at all.
 date: 2026.06.10
-label.ja: Claude × Debian サーバー編 10
+label.ja: Claude × Debian サーバー 10
 label.en: Claude × Debian Server 10
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
@@ -4412,12 +4412,12 @@ cta_text.ja: サーバーは何度でも作り直せる。作り直せないの�
 cta_text.en: A server can be rebuilt any number of times. The only thing that cannot be rebuilt is the data. Take backups automatically, and then actually try restoring — rehearse the "what if" once, and the day your server breaks you will not panic. Get that preparation in place together with Claude.
 cta_btn1_text.ja: 第11章へ進む
 cta_btn1_text.en: Continue to Chapter 11
-cta_btn1_link.ja: /claude-debian/server/11-operations/
-cta_btn1_link.en: /en/claude-debian/server/11-operations/
+cta_btn1_link.ja: /debian-server/11-operations/
+cta_btn1_link.en: /en/debian-server/11-operations/
 cta_btn2_text.ja: 第9章に戻る
 cta_btn2_text.en: Back to Chapter 9
-cta_btn2_link.ja: /claude-debian/server/09-publishing/
-cta_btn2_link.en: /en/claude-debian/server/09-publishing/
+cta_btn2_link.ja: /debian-server/09-publishing/
+cta_btn2_link.en: /en/debian-server/09-publishing/
 ---
 ifdef::lang-ja[]
 == なぜバックアップが独立した章か
@@ -4727,7 +4727,7 @@ ____
 
 '''
 
-シリーズ全体はlink:/claude-debian/server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
+シリーズ全体はlink:/debian-server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
 endif::[]
 ifdef::lang-en[]
 == Why Backup Gets Its Own Chapter
@@ -5037,12 +5037,12 @@ With this, even if the server physically breaks, you will not panic. The OS and 
 
 '''
 
-The server sub-series can be navigated from link:/en/claude-debian/server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
+The server sub-series can be navigated from link:/en/debian-server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]
 
 // ===== article: 11-operations =====
 ---
-slug: claude-debian-server-11-operations
+slug: 11-operations
 number: 11
 title.ja: 第11章 サーバーを育てる
 title.en: Chapter 11 — Growing Your Server
@@ -5051,7 +5051,7 @@ subtitle.en: Watch it, maintain it, decide the next move
 description.ja: サーバーは作って終わりではなく、生き物のように手入れして育てるものだ。だが毎日張り付く必要はない。週に15分の定例で回る設計、月次の保守のリズム、壊れたときの型、そして次の一手——一台のサーバーを長く育てる作法を、Claudeを横に置いて整える。サーバー編の結びとして、「自分のインフラを持つ」とは何かを振り返る。
 description.en: A server is not done once you build it; it is something you tend and grow like a living thing. But you do not need to hover over it daily. A design that runs on fifteen minutes of watching a week, a monthly rhythm of maintenance, a pattern for when things break, and the next move — get the craft of growing a single server over the long run in place with Claude at your side. As the close of the Server Edition, we look back on what it means to "own your own infrastructure."
 date: 2026.06.10
-label.ja: Claude × Debian サーバー編 11
+label.ja: Claude × Debian サーバー 11
 label.en: Claude × Debian Server 11
 cta_label.ja: Claudeと学ぶ
 cta_label.en: Learn with Claude
@@ -5061,8 +5061,8 @@ cta_text.ja: サーバーは生き物に似ている。毎日張り付く必要�
 cta_text.en: A server is like a living thing. You do not need to hover over it daily, but fifteen minutes of watching a week keeps it healthy for a long time. Hand the whole output to Claude and ask, "anything notable compared with last week?" — pick up the entry point to operations in the AI era right here.
 cta_btn1_text.ja: サーバー編 全章一覧
 cta_btn1_text.en: Server Edition — All Chapters
-cta_btn1_link.ja: /claude-debian/server/
-cta_btn1_link.en: /en/claude-debian/server/
+cta_btn1_link.ja: /debian-server/
+cta_btn1_link.en: /en/debian-server/
 cta_btn2_text.ja: 本編（デスクトップ編）へ
 cta_btn2_text.en: To the Main (Desktop) Series
 cta_btn2_link.ja: /claude-debian/
@@ -5290,7 +5290,7 @@ Claudeは進化し続ける。数年後には、もっと強いClaudeが出て�
 
 '''
 
-シリーズ全体はlink:/claude-debian/server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
+シリーズ全体はlink:/debian-server/[Claudeと一緒に学ぶDebian サーバー編 一覧]から辿れる。本編（デスクトップ編）はlink:/claude-debian/[全章一覧]へ。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
 endif::[]
 ifdef::lang-en[]
 == Why "Grow" It
@@ -5514,5 +5514,5 @@ What you hold now:
 
 '''
 
-The server sub-series can be navigated from link:/en/claude-debian/server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
+The server sub-series can be navigated from link:/en/debian-server/[Learning Debian with Claude — Server Edition]. The main desktop series is at link:/en/claude-debian/[all chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
 endif::[]

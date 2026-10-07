@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-9FLQ963JXM');
+</script>
+
+<title>第8章 自作アプリを動かす — Claudeと一緒に育てるDebian サーバー | aiseed.dev</title>
+<meta name="description" content="コンテナを使わないこの本では、アプリは「ふつうのディレクトリ + venv + systemd」で動かす。だからこそ、どこに何を置くかという規約が、コンテナの代わりに秩序を作る。ディレクトリ構成を決め、PythonとFastAPIで最小のAPIを建て、systemdのサービスにして、第7章のデータベースの上で動かす——コードはClaudeに書かせ、あなたは構成を決めて動かして守る。">
+<link rel="canonical" href="https://aiseed.dev/debian-server/08-fastapi/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/debian-server/08-fastapi/">
+<link rel="alternate" hreflang="en" href="https://aiseed.dev/en/debian-server/08-fastapi/">
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/debian-server/08-fastapi/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI時代の暮らし">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第8章 自作アプリを動かす">
+<meta property="og:description" content="コンテナを使わないこの本では、アプリは「ふつうのディレクトリ + venv + systemd」で動かす。だからこそ、どこに何を置くかという規約が、コンテナの代わりに秩序を作る。ディレクトリ構成を決め、PythonとFastAPIで最小のAPIを建て、systemdのサービスにして、第7章のデータベースの上で動かす——コードはClaudeに書かせ、あなたは構成を決めて動かして守る。">
+<meta property="og:url" content="https://aiseed.dev/debian-server/08-fastapi/">
+<meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<meta property="article:section" content="Claudeと一緒に育てるDebian サーバー">
+<meta property="article:published_time" content="2026.06.10">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="第8章 自作アプリを動かす">
+<meta name="twitter:description" content="コンテナを使わないこの本では、アプリは「ふつうのディレクトリ + venv + systemd」で動かす。だからこそ、どこに何を置くかという規約が、コンテナの代わりに秩序を作る。ディレクトリ構成を決め、PythonとFastAPIで最小のAPIを建て、systemdのサービスにして、第7章のデータベースの上で動かす——コードはClaudeに書かせ、あなたは構成を決めて動かして守る。">
+<meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
+<!-- フォントは Web 配信せず、すべて端末のローカルフォントで賄う。
+     和文: UDデジタル教科書体 → BIZ UDP明朝(いずれも Windows 標準搭載の
+     モリサワ UD 書体) → ヒラギノ明朝・游明朝などのシステム明朝。
+     等幅: 端末のシステム等幅フォント。 -->
+
+<style>
+/* ============================================================
+   LOCAL FONT: UDデジタル教科書体(モリサワ)
+   Windows・教育向け端末に無償搭載。端末にあれば local() で拾い、
+   なければ BIZ UDP明朝(同じく Windows 標準搭載)→ システム明朝へ
+   フォールバックする。R と B は別ファミリー名なので、太字(700)を
+   B 書体に明示的にマッピングして疑似ボールドを避ける。
+   ============================================================ */
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 400;
+  src: local("UD デジタル 教科書体 NK-R"), local("UD Digital Kyokasho NK-R"),
+       local("UD デジタル 教科書体 NP-R"), local("UD Digital Kyokasho NP-R"),
+       local("UD デジタル 教科書体 N-R"), local("UD Digital Kyokasho N-R");
+}
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 700;
+  src: local("UD デジタル 教科書体 NK-B"), local("UD Digital Kyokasho NK-B"),
+       local("UD デジタル 教科書体 NP-B"), local("UD Digital Kyokasho NP-B"),
+       local("UD デジタル 教科書体 N-B"), local("UD Digital Kyokasho N-B");
+}
+
+/* ============================================================
+   COLOR & DESIGN TOKENS
+   aiseed.dev 全体のスタイルに合わせる場合は、ここの変数を
+   既存サイトのCSS変数に差し替える。
+   ============================================================ */
+:root {
+  --ink: #1a1a1a;
+  --paper: #f4f1ea;
+  --paper-deep: #ebe6d8;
+  --accent: #c8442a;
+  --rule: #d4cdb8;
+  --whisper: #6b665a;
+  --highlight: #f7e9c8;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* 本文: 端末にあれば UDデジタル教科書体を最優先、次に BIZ UDP明朝
+   (Windows 標準搭載)、どちらもなければヒラギノ明朝等のシステム明朝 */
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "UD Digital Kyokasho",
+               "BIZ UDPMincho", "BIZ UDP明朝",
+               "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
+               "Yu Mincho", "游明朝", "YuMincho",
+               "Noto Serif CJK JP", "Noto Serif JP", serif;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  font-feature-settings: "palt";
+  overflow-x: hidden;
+}
+
+/* グレインテクスチャ(紙の質感) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   MASTHEAD(シリーズ名・章番号)
+   ============================================================ */
+.masthead {
+  border-bottom: 3px double var(--ink);
+  padding: 24px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+}
+.masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-left a { color: inherit; text-decoration: none; }
+.masthead-left a:hover { color: var(--accent); }
+.masthead-home { color: var(--whisper); }
+.masthead-sep { margin: 0 10px; color: var(--whisper); font-weight: 400; }
+.masthead-right { font-style: italic; }
+
+/* ============================================================
+   HERO(タイトル領域)
+   ============================================================ */
+.hero {
+  padding: 80px 0 60px;
+}
+.hero-meta {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-meta::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 56px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.hero-title .accent {
+  color: var(--accent);
+}
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--whisper);
+  max-width: 580px;
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+  margin-top: 32px;
+}
+.hero-byline {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ============================================================
+   ARTICLE BODY
+   ============================================================ */
+article p {
+  margin-bottom: 24px;
+}
+
+article h2 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.4;
+  margin: 72px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+article h2::before {
+  content: "§";
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  color: var(--accent);
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+article h3 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 600;
+  font-size: 19px;
+  margin: 40px 0 16px;
+  color: var(--ink);
+}
+article h3::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+article strong {
+  font-weight: 700;
+  background: linear-gradient(to top, var(--highlight) 35%, transparent 35%);
+  padding: 0 2px;
+}
+
+article em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+article a:hover {
+  color: var(--accent);
+}
+
+/* ============================================================
+   BLOCKQUOTE
+   ============================================================ */
+blockquote {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  position: relative;
+  font-size: 18px;
+  line-height: 1.85;
+  font-style: normal;
+  color: var(--ink);
+}
+blockquote::before {
+  content: "「";
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-size: 48px;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: "Hiragino Mincho ProN", serif;
+}
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+article thead th {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+}
+article tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+article tbody tr:last-child td {
+  border-bottom: none;
+}
+@media (max-width: 720px) {
+  article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ============================================================
+   ORDERED LIST(番号付きリスト)
+   ============================================================ */
+article ol {
+  margin: 32px 0;
+  counter-reset: item;
+  padding: 0;
+}
+article ol li {
+  list-style: none;
+  position: relative;
+  padding: 16px 0 16px 56px;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: item;
+}
+article ol li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* 通常のul(章末の関連リンクなど) */
+article ul {
+  margin: 24px 0;
+  padding-left: 1.5em;
+}
+article ul li {
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   CODE BLOCK(疑似ターミナル風)
+   ============================================================ */
+article pre {
+  margin: 40px 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 24px 28px;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+  overflow-x: auto;
+}
+article pre::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 8px;
+  color: var(--whisper);
+  letter-spacing: 4px;
+}
+article pre code {
+  display: block;
+  padding-top: 16px;
+  white-space: pre;
+}
+
+/* インラインコード */
+article code {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 0.9em;
+  background: var(--paper-deep);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+article pre code {
+  background: transparent;
+  padding: 16px 0 0 0;
+  color: var(--paper);
+}
+
+/* ============================================================
+   HORIZONTAL RULE(本文中の区切り)
+   ============================================================ */
+article hr {
+  border: none;
+  text-align: center;
+  margin: 64px 0;
+  height: 1em;
+}
+article hr::before {
+  content: "◆ ◆ ◆";
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+}
+
+/* ============================================================
+   RELATED LINKS(章末の関連記事)
+   ============================================================ */
+.related-links {
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.related-links h3 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+.related-links h3::before {
+  content: none;
+}
+.related-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.related-links li {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 0;
+}
+.related-links li:last-child {
+  border-bottom: none;
+}
+.related-links a {
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.related-links .related-tag {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.related-links a:hover .related-title {
+  color: var(--accent);
+}
+
+/* ============================================================
+   FOOTER(サイト内メニュー+奥付)
+   ============================================================ */
+.site-footer {
+  margin-top: 96px;
+  border-top: 3px double var(--ink);
+  padding-top: 48px;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 48px;
+}
+.footer-col h4 {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-col li {
+  padding: 6px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.footer-col a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.footer-col a:hover { color: var(--accent); }
+
+.colophon {
+  margin-top: 48px;
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--whisper);
+  text-align: center;
+  line-height: 2;
+}
+.colophon-mark {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "Hiragino Mincho ProN", serif;
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+/* ============================================================
+   SERIES TOC(全章一覧・折りたたみ式)
+   ============================================================ */
+.series-toc {
+  margin: 24px 0 40px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 0;
+}
+.series-toc details {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+}
+.series-toc summary {
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  padding: 8px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.series-toc summary::-webkit-details-marker { display: none; }
+.series-toc summary::before {
+  content: "▸";
+  color: var(--accent);
+  font-size: 10px;
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.series-toc details[open] summary::before { transform: rotate(90deg); }
+.series-toc ol {
+  list-style: none;
+  margin: 12px 0 8px;
+  padding: 0;
+  counter-reset: none;
+}
+.series-toc li {
+  list-style: none;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--rule);
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  line-height: 1.55;
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.series-toc li::before { content: none; }
+.series-toc li:last-child { border-bottom: none; }
+.series-toc li a {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--ink);
+  flex: 1;
+}
+.series-toc li a:hover .toc-title { color: var(--accent); }
+.series-toc .toc-num {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 5em;
+}
+.series-toc li.current {
+  background: var(--paper-deep);
+  margin: 0 -12px;
+  padding: 9px 12px;
+}
+.series-toc li.current .toc-title {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ============================================================
+   IMAGES
+   ============================================================ */
+article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 32px auto;
+}
+
+/* ============================================================
+   CUSTOM BLOCKS(:::chain / :::highlight / :::quote / :::compare)
+   ============================================================ */
+.chain-diagram {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+.chain-diagram .arrow {
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0.3em;
+}
+.highlight-box {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.highlight-box p { margin-bottom: 12px; }
+.highlight-box p:last-child { margin-bottom: 0; }
+.quote-block {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+}
+.quote-block .quote-text {
+  font-size: 18px;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* ============================================================
+   ASCIIDOC BLOCKS(pyasciidoc が出力するクラス。.adoc 記事用)
+   admonition / 帰属つき引用 / 画像ブロック / 脚注 / ロール
+   ============================================================ */
+.admonition {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.admonition-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.admonition p { margin-bottom: 12px; }
+.admonition p:last-child { margin-bottom: 0; }
+.quoteblock { margin: 40px 0; }
+.quoteblock blockquote { margin: 0; }
+.quoteblock .attribution {
+  margin-top: 12px;
+  text-align: right;
+  font-size: 14px;
+  color: var(--whisper);
+}
+.quoteblock .attribution cite { font-style: normal; }
+.imageblock { margin: 32px 0; text-align: center; }
+.imageblock .content img { max-width: 100%; height: auto; }
+sup.footnote { font-size: 12px; }
+sup.footnote a { text-decoration: none; }
+.footnotes {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px;
+  color: var(--whisper);
+}
+.footnotes ol { padding-left: 1.5em; }
+.footnotes li { margin-bottom: 8px; }
+.footnotes .footnote-backref { text-decoration: none; margin-left: 0.3em; }
+/* ロール: [.chain](:::chain と同じ見た目)/ [.accent]#…# */
+article .chain {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+article .accent { color: var(--accent); }
+
+/* ============================================================
+   CHAPTER NAV(前後の記事へのリンク)
+   ============================================================ */
+.chapter-nav {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 14px;
+}
+.chapter-nav a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+}
+.chapter-nav a:hover { color: var(--accent); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 40px; }
+  blockquote { padding: 24px 20px 24px 28px; }
+  article pre { padding: 20px 16px; font-size: 12px; }
+  article ol li { padding-left: 48px; }
+  .series-toc .toc-num { min-width: 4em; font-size: 10px; }
+  .series-toc li { font-size: 13px; gap: 12px; }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta, .hero-title, .hero-subtitle, .hero-byline {
+  animation: rise 0.8s ease-out backwards;
+}
+.hero-meta     { animation-delay: 0.1s; }
+.hero-title    { animation-delay: 0.25s; }
+.hero-subtitle { animation-delay: 0.45s; }
+.hero-byline   { animation-delay: 0.65s; }
+.mermaid {
+  text-align: center;
+  margin: 2.5rem 0;
+  background: var(--paper-warm, #f5f1ea);
+  padding: 1.5rem 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.mermaid svg { max-width: 100%; height: auto; }
+
+/* ============================================================
+   WIDE LAYOUT(広い画面では目次を左サイドバーに常時展開)
+   ============================================================ */
+@media (min-width: 1200px) {
+  body.has-toc .container {
+    max-width: 1320px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 880px);
+    column-gap: 64px;
+    justify-content: center;
+  }
+  body.has-toc .masthead,
+  body.has-toc .hero {
+    grid-column: 1 / -1;
+  }
+  /* グリッドアイテム自体は行いっぱいに伸ばし、内側の details を sticky に
+     する(sticky なグリッドアイテムはグリッドエリアではなくコンテナ全体で
+     制約されるブラウザ挙動があり、フッターに重なってしまうため)。 */
+  body.has-toc .series-toc {
+    grid-column: 1;
+    grid-row: 3 / span 2;
+    margin: 0;
+    padding: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+  body.has-toc .series-toc details {
+    position: sticky;
+    top: 32px;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 0 12px 12px 0;
+  }
+  /* サイドバーでは折りたたみを無効化し、見出しとして表示 */
+  body.has-toc .series-toc summary {
+    pointer-events: none;
+    cursor: default;
+  }
+  body.has-toc .series-toc summary::before { content: none; }
+  body.has-toc .series-toc li { font-size: 13.5px; }
+  body.has-toc article    { grid-column: 2; grid-row: 3; }
+  body.has-toc .chapter-nav { grid-column: 2; grid-row: 4; }
+  body.has-toc .site-footer { grid-column: 1 / -1; grid-row: 5; }
+}
+
+/* ============================================================
+   DARK MODE(OS の配色設定に追従して自動で暗色に切り替え)
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ink: #e8e3d6;
+    --paper: #16140f;
+    --paper-deep: #211d16;
+    --accent: #e8765a;
+    --rule: #393428;
+    --whisper: #a39b88;
+    --highlight: rgba(220, 168, 78, 0.30);
+  }
+  /* 紙の質感(グレイン)を暗色背景向けに反転 */
+  body::before {
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    mix-blend-mode: screen;
+    opacity: 0.4;
+  }
+  /* コードブロックは両モードとも暗いターミナル調を維持 */
+  article pre {
+    background: #0d0c0a;
+    color: #e8e3d6;
+  }
+  article pre code {
+    color: #e8e3d6;
+  }
+  /* Mermaid 図の枠を暗色に */
+  .mermaid {
+    background: #211d16;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- MASTHEAD(ホーム › シリーズ目次) -->
+  <header class="masthead">
+    <div class="masthead-left"><a href="/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="/debian-server/">Claudeと一緒に育てるDebian サーバー</a></div>
+    <div class="masthead-right">第8章 / Series</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-meta">第8章 № 08 · 2026</div>
+
+    <h1 class="hero-title">第8章 自作アプリを動かす</h1>
+
+    <p class="hero-subtitle">ディレクトリ構成、Python、FastAPI</p>
+
+    <div class="hero-byline">
+      <span>2026.06.10</span>
+      <span><a href="https://aiseed.dev/en/debian-server/08-fastapi/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">🌐 EN</a></span>
+    </div>
+  </section>
+
+  <!-- SERIES TOC(全章一覧・現在の章をハイライト) -->
+  
+
+  <!-- ARTICLE BODY -->
+  <article>
+    <h2>なぜ自作アプリの章か</h2>
+<p>第6章で「サービスという単位」が手に入り、第7章で「データという土台」が据わった。動かす型と、載せるデータ。ここまで来れば、もう自分のアプリを建てられる。</p>
+<p>この本は、最後までコンテナを使わない。Docker も Kubernetes も出てこない。<strong>アプリは「ふつうのディレクトリ + venv + systemd」で動かす</strong>——これがこの本の一貫した方針だ。なぜか。コンテナは便利だが、その下で何が起きているかを覆い隠す。この本が目指すのは、覆いを外して、自分の手で直せる範囲を広げることだ。だからアプリも、ディレクトリにコードを置き、Pythonの仮想環境を作り、第6章のsystemdで動かす——それだけで、ちゃんと動く。</p>
+<p>ただし、コンテナを使わないということは、コンテナが代わりにやってくれていた「整理」を、自分でやるということでもある。どこにコードを置き、どこに秘密を置き、何をgitで管理し、何をバックアップするか。<strong>コンテナの代わりに秩序を作るのは、ディレクトリ構成の規約だ。</strong> この章は、まずその規約を決めることから始める。</p>
+<p>そしてもう一つ。<strong>2026年、アプリのコードはClaudeが書く。</strong> あなたが一行ずつタイプするのではない。本編<a href="/claude-debian/15-claude-development/">第15章「Claudeとの開発」</a>で身につけた開発の作法——仕様を言葉にし、書かせ、レビューし、動かして直す——を、今度はサーバーの上で実践する。コードを書くのはClaudeの仕事で、<strong>構成を決め、動かして守るのが、あなたの仕事</strong>だ。</p>
+<h2>第一節 ディレクトリ構成を決める</h2>
+<p>コンテナが無い分、置き場所の規約がすべての土台になる。ここでは本書の規約を一例として示すが、これは絶対ではない——意味を理解したうえで、自分流に変えてよい。</p>
+<p>アプリの家を <code>/srv/myapp/</code> に置く。<code>/srv</code> は「このマシンが提供するサービスのデータ」を置くための、Debianが昔から用意している場所だ。中身はこう分ける。</p>
+<pre><code>/srv/myapp/
+├── app/        コード本体（git管理）
+├── .venv/      Pythonの仮想環境（使い捨て・git外）
+├── .env        接続情報などの秘密（chmod 600・git外）
+└── data/       アプリが書くファイルがあれば（任意）
+</code></pre>
+<p>四つの役割をはっきり分ける。<strong><code>app/</code> はコード</strong>で、gitで管理する。<strong><code>.venv/</code> は仮想環境</strong>で、次節で作るが、これは「いつでも作り直せる使い捨て」だからgitには入れない。<strong><code>.env</code> は秘密</strong>——データベースのパスワードなどが入るので <code>chmod 600</code> で本人しか読めなくし、これもgitには絶対に入れない。<strong><code>data/</code> はアプリが書くファイル置き場</strong>だが、これは必要な場合だけだ。</p>
+<p>データの本体は、第7章で据えたPostgreSQL（または SQLite）に入る。<code>data/</code> を作るのは、アップロードされた画像のような「ファイルそのもの」を置く必要があるときだけで、構造を持ったデータはデータベースに任せる。</p>
+<p>ログも自前で作らない。<strong>ログは journald に任せる。</strong> 第6章で <code>journalctl -u myapp</code> を覚えたが、systemdのサービスとして動かす限り、アプリが標準出力に吐いた行は自動でジャーナルに集まる。自分でログファイルを作って肥大化を心配するより、systemdに任せるほうが筋がいい。</p>
+<p>そして、アプリは<strong>専用のシステムユーザー</strong>で動かす。第5章で叩き込んだ「必要最小限の権限」の実践だ。アプリが乗っ取られても、そのユーザーにできることしかできない。</p>
+<pre><code class="language-bash"># myapp という専用ユーザーを作る（ログインさせない・/srv/myapp を家とする）
+sudo adduser --system --group --home /srv/myapp myapp
+</code></pre>
+<p><code>--system</code> はログイン用でないシステムユーザー、<code>--group</code> は同名のグループも作る、<code>--home</code> は家のディレクトリだ。第7章で作ったデータベースのロール名 <code>myapp</code> と、ここで作るOSユーザー名 <code>myapp</code> を揃えておくと、後で頭がこんがらがらない。</p>
+<p>作ったら、家全体の所有権を渡し、よそからは覗けないようにしておく。</p>
+<pre><code class="language-bash"># /srv/myapp 以下を myapp のものにする
+sudo chown -R myapp:myapp /srv/myapp
+
+# 家の中は本人と同グループだけが入れるようにする
+sudo chmod 750 /srv/myapp
+</code></pre>
+<p>コンテナを使う流儀では、この「誰が何に触れるか」をコンテナの壁が引き受けていた。コンテナを使わない本書では、<strong>Linuxの所有権とパーミッションがその壁になる。</strong> アプリは <code>myapp</code> ユーザーの権限しか持たず、<code>/srv/myapp</code> の外には書き込めない。壁の素材が違うだけで、やっていることは同じ「隔離」だ。この壁は第三節で、systemdの砂場機能を使ってもう一段厚くする。</p>
+<p>ここで、この章でいちばん効く一枚の表を作る。何を、どこに置き、gitで管理するか、そしてバックアップ対象か。</p>
+<table class="comparison-table fade-in">
+<thead>
+<tr>
+<th>何を</th>
+<th>どこに</th>
+<th>git管理</th>
+<th>復旧の方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>コード</td>
+<td><code>/srv/myapp/app/</code></td>
+<td>する</td>
+<td>gitから戻す</td>
+</tr>
+<tr>
+<td>仮想環境</td>
+<td><code>/srv/myapp/.venv/</code></td>
+<td>しない</td>
+<td>作り直す（次節の手順）</td>
+</tr>
+<tr>
+<td>秘密（接続情報）</td>
+<td><code>/srv/myapp/.env</code></td>
+<td>しない</td>
+<td><strong>バックアップ（第10章）</strong></td>
+</tr>
+<tr>
+<td>アプリが書くファイル</td>
+<td><code>/srv/myapp/data/</code></td>
+<td>しない</td>
+<td>バックアップ（第10章）</td>
+</tr>
+<tr>
+<td>データ本体</td>
+<td>PostgreSQL <code>myappdb</code></td>
+<td>しない</td>
+<td>DBダンプ（第7章 <code>pg_dump</code>）</td>
+</tr>
+</tbody>
+</table>
+<p>この表を眺めると、第10章のバックアップ思想がディレクトリ構成にそのまま現れていることが見えてくる。<strong>コードはgitで戻せる。venvは作り直せる。戻せないのは <code>.env</code> とデータだけだ。</strong> だからバックアップで本当に守るべきは、その二つに絞られる。構成をこう分けておくと、「何を守ればいいのか」が構成図そのものから読める。逆に言えば、すべてを一つのディレクトリにごちゃ混ぜにすると、この区別が消えてしまう。</p>
+<h3>Claudeに聞いてみよう①：自分のアプリの構成とテーブルを設計させる</h3>
+<div class="quoteblock">
+<blockquote>
+<p>私はDebian 13サーバーで、次のアプリを自作したいです：〔例：自分用の家計簿API、家族で使うメモ共有、小さな在庫管理……など、作りたいものを具体的に〕</p>
+<p>このアプリを、コンテナを使わず「<code>/srv/アプリ名/</code> の下に app/（コード）・.venv/・.env・data/ を分ける」という規約に沿って配置する構成を提案してください。あわせて、このアプリが必要とするデータを入れる PostgreSQL 17 のテーブルを、第7章の流儀で設計してください（<code>CREATE TABLE</code> 文と、各カラムの型を選んだ理由つきで）。「git管理するもの・作り直せるもの・バックアップすべきもの」の対応表も付けてください。</p>
+</blockquote>
+</div>
+<p>作りたいものを最初に言葉にして、構成とテーブルを一度に設計させる。ここで構成の地図ができていれば、この先の節がすべて「その地図を埋める作業」に変わる。</p>
+<h2>第二節 PythonとFastAPI</h2>
+<p>構成が決まった。中身を建てる。Webアプリのフレームワークは数あるが、ここでは <strong>FastAPI</strong> を使う。理由は三つ。<strong>少ないコードでWeb APIになる</strong>こと。<strong>ドキュメント（<code>/docs</code>）が自動で生える</strong>こと。そして<strong>Claudeが最も書き慣れているフレームワークの一つ</strong>だということだ。この本の方針は「コードはClaudeに書かせる」だから、Claudeが得意なものを選ぶのは理にかなっている。</p>
+<h3>なぜvenvが必須か——PEP 668</h3>
+<p>まず、ここで一つ関門がある。Debian 13 のシステムPythonは「externally managed（外部管理）」とマークされていて、<code>pip install</code> を直接叩くと<strong>拒否される</strong>。</p>
+<pre><code>error: externally-managed-environment
+</code></pre>
+<p>これはバグではない。<strong>OSが動かすためのPythonと、あなたのアプリのためのPythonを、混ぜないための設計</strong>だ（PEP 668という取り決めで決まっている）。システムのPythonに勝手にパッケージを足すと、Debian自身が使っているPythonの土台が壊れかねない。だから、アプリ専用のPythonの箱——<strong>仮想環境（venv）</strong>——を別に作る。これは第一節で「使い捨て・作り直せる」と位置づけたものだ。</p>
+<pre><code class="language-bash"># venv を作るためのパッケージを入れる
+sudo apt install python3-venv
+
+# /srv/myapp の中に .venv を作る（myapp ユーザーとして）
+cd /srv/myapp
+sudo -u myapp python3 -m venv .venv
+
+# その .venv の中に FastAPI と PostgreSQL ドライバを入れる
+sudo -u myapp .venv/bin/pip install &quot;fastapi[standard]&quot; &quot;psycopg[binary]&quot;
+</code></pre>
+<p><code>.venv/bin/pip</code> という、<code>.venv</code> の中のpipを名指しで叩くのがポイントだ。これなら <code>externally-managed</code> に弾かれない。システムのPythonには一切触らず、<code>/srv/myapp/.venv/</code> の中だけにパッケージが入る。Debian 13 で入るPythonは <strong>3.13</strong> だ。<code>fastapi[standard]</code> はFastAPI本体と開発に必要な一式、<code>psycopg[binary]</code> は第7章のPostgreSQLに繋ぐためのドライバだ。</p>
+<h3>最小のFastAPIアプリ</h3>
+<p><code>app/main.py</code> を一つ、丸ごと載せる。メモを保存・一覧するだけの最小APIで、第7章で作った <code>myappdb</code> に psycopg で繋ぐ。</p>
+<pre><code class="language-python"># /srv/myapp/app/main.py
+import os
+import psycopg
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+# 接続情報は .env から環境変数で受け取る（コードに秘密を書かない）
+DB = os.environ[&quot;DATABASE_URL&quot;]
+
+app = FastAPI()
+
+class Note(BaseModel):
+    body: str
+
+@app.on_event(&quot;startup&quot;)
+def init_db():
+    # 起動時にテーブルが無ければ作る
+    with psycopg.connect(DB) as conn:
+        conn.execute(
+            &quot;CREATE TABLE IF NOT EXISTS notes (&quot;
+            &quot;id SERIAL PRIMARY KEY, body TEXT NOT NULL, &quot;
+            &quot;created TIMESTAMP DEFAULT now())&quot;
+        )
+
+@app.get(&quot;/notes&quot;)
+def list_notes():
+    # 全件を新しい順で返す
+    with psycopg.connect(DB) as conn:
+        rows = conn.execute(
+            &quot;SELECT id, body, created FROM notes ORDER BY id DESC&quot;
+        ).fetchall()
+    return [{&quot;id&quot;: r[0], &quot;body&quot;: r[1], &quot;created&quot;: r[2]} for r in rows]
+
+@app.post(&quot;/notes&quot;)
+def add_note(note: Note):
+    # 一件追加して、付いたidを返す
+    with psycopg.connect(DB) as conn:
+        row = conn.execute(
+            &quot;INSERT INTO notes (body) VALUES (%s) RETURNING id&quot;,
+            (note.body,),
+        ).fetchone()
+    return {&quot;id&quot;: row[0], &quot;body&quot;: note.body}
+</code></pre>
+<p>40行ほどだ。これは<strong>読んで理解するための見本</strong>であって、丸暗記するものではない。秘密（接続情報）はコードに書かず <code>os.environ</code> から受け取る、<code>%s</code> でSQLに値を渡す（文字列連結ではなく、こうすると不正な入力を防げる）、<code>pydantic</code> の <code>Note</code> で入力の形を決める——この三つだけ目で追えれば十分だ。自分のアプリは、この見本を出発点にClaudeに書かせてよい。</p>
+<p>接続情報を <code>.env</code> に書く。ここが第一節で <code>chmod 600</code> にした秘密のファイルだ。</p>
+<pre><code class="language-bash"># /srv/myapp/.env （myapp だけが読める秘密ファイル）
+sudo -u myapp tee /srv/myapp/.env &gt; /dev/null &lt;&lt;'EOF'
+DATABASE_URL=postgresql://myapp:あなたのパスワード@localhost/myappdb
+EOF
+sudo chmod 600 /srv/myapp/.env
+</code></pre>
+<h3>起動と確認</h3>
+<p>開発中の動作確認は、<code>.venv</code> の中の uvicorn（FastAPIを動かすサーバー）を名指しで叩く。</p>
+<pre><code class="language-bash">cd /srv/myapp
+# .env を読み込んでから、127.0.0.1:8000 で起動する
+sudo -u myapp bash -c 'set -a; . .env; .venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000'
+</code></pre>
+<p>別の端末から、ブラウザを使わずに <code>curl</code> で叩いて確かめる。</p>
+<pre><code class="language-bash"># 一件追加する
+curl -X POST http://127.0.0.1:8000/notes -H &quot;Content-Type: application/json&quot; -d '{&quot;body&quot;:&quot;最初のメモ&quot;}'
+
+# 一覧を取る
+curl http://127.0.0.1:8000/notes
+</code></pre>
+<p>FastAPIの嬉しいところは、<code>/docs</code> に<strong>自動のドキュメント</strong>が生えることだ。<code>GET /notes</code> も <code>POST /notes</code> も、説明と試せるフォーム付きで一覧される。ただしサーバーには画面が無いので、手元のブラウザから見るにはSSHのポート転送という小技を使う。</p>
+<pre><code class="language-bash"># 手元のPCから：サーバーの8000番を、手元の8000番に繋ぐ
+ssh -L 8000:127.0.0.1:8000 あなたのサーバー
+# これを張ったまま、手元のブラウザで http://127.0.0.1:8000/docs を開く
+</code></pre>
+<p>ここで <code>--host 127.0.0.1</code> にした意味を、第5章の言葉で確かめておく。<strong>127.0.0.1 にバインドする</strong>とは、「同じマシンの中からしか繋げない」という意味だ。アプリは外の世界には一切耳を開いていない。第7章でPostgreSQLが <code>127.0.0.1:5432</code> に閉じていたのと同じ、安全側の構えだ。外に出す経路は、第9章のリバースプロキシ一本に限る——攻撃面を、自分の手で最小に保つ。</p>
+<h3>Claudeに聞いてみよう②：見本を自分の用途のAPIに作り替えさせる</h3>
+<div class="quoteblock">
+<blockquote>
+<p>次の <code>main.py</code> を出発点に、〔自分の用途。例：家計簿（日付・品目・金額を記録して月別合計も返す）／在庫管理／読書記録〕のAPIに作り替えてください。FastAPIとpsycopgで、PostgreSQL 17の <code>myappdb</code> に繋ぐ前提です。</p>
+<pre><code>〔上の main.py をそのまま貼る〕
+</code></pre>
+<p>作り替えたコードを示したうえで、追加・変更した各部分が何をしているかを説明してください。秘密（接続情報）はコードに書かず .env から読む形を保ってください。</p>
+</blockquote>
+</div>
+<p>見本をそのまま渡して「これを土台に作り替えて」と頼むのがコツだ。ゼロから書かせるより、動く形を起点にしたほうが、構成も流儀もブレない。返ってきたコードは、第6章のunit fileと同じく、各部分の意味を一度は説明させて読む。</p>
+<h2>第三節 systemdサービスにする</h2>
+<p>uvicornを手で起動するのは、確認のためだけだ。端末を閉じれば止まってしまう。<strong>第6章で学んだ「サービスにする型」を、そのまま当てる。</strong> 落ちても自動で復活し、サーバーを再起動しても勝手に立ち上がる、本物のサービスにする。</p>
+<p>unit fileを <code>/etc/systemd/system/myapp.service</code> として書く。</p>
+<pre><code class="language-ini"># /etc/systemd/system/myapp.service
+[Unit]
+Description=My FastAPI app
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+User=myapp
+Group=myapp
+WorkingDirectory=/srv/myapp
+EnvironmentFile=/srv/myapp/.env
+ExecStart=/srv/myapp/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>第6章の三段構成がそのまま生きている。第6章との違いを三点だけ押さえる。<strong><code>After=...postgresql.service</code></strong> は、データベースが立ち上がってからアプリを起こすため——アプリはDBに繋ぐので、順番が大事だ。<strong><code>EnvironmentFile=/srv/myapp/.env</code></strong> は、第二節の <code>.env</code> をsystemdが読み込んで環境変数にしてくれる仕組みで、これで <code>DATABASE_URL</code> がアプリに渡る。<strong><code>ExecStart</code></strong> が <code>.venv</code> の中のuvicornを名指ししている——システムのpythonではなく、第二節で作った仮想環境のものを使う。<code>User=myapp</code> で、第一節の専用ユーザーとして動かす。</p>
+<p>書いたら、第6章で一本に繋いだ流れをそのまま通す。</p>
+<pre><code class="language-bash"># 1. unit file を書いたら、まず読み直させる
+sudo systemctl daemon-reload
+
+# 2. いま起動し、自動起動も有効にする
+sudo systemctl enable --now myapp
+
+# 3. 動いているか確認
+systemctl status myapp
+
+# 4. ログを追う
+journalctl -u myapp -f
+</code></pre>
+<p><code>status</code> が <code>active (running)</code> なら、もうサービスとして動いている。<code>curl http://127.0.0.1:8000/notes</code> がそのまま通るはずだ。もし <code>failed</code> なら、慌てずに <code>journalctl -u myapp</code> のエラーを読む——第6章でやったとおり、<strong>エラーはそのままClaudeに貼る</strong>のが基本動作だ。</p>
+<h3>systemdの砂場——コンテナ無しの隔離</h3>
+<p>ここで、当然の疑問に答えておく。<strong>「コンテナを使わないなら、隔離はどうするのか」。</strong> 実は、コンテナの隔離とは、Linuxカーネルが持つ機能（名前空間、cgroups、権限の制限）の包装だ。そしてsystemdは、同じカーネル機能を unit file の数行で直接使える。<code>[Service]</code> に次を足す。</p>
+<pre><code class="language-ini"># [Service] に追記する——systemdの砂場（サンドボックス）
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/srv/myapp/data
+</code></pre>
+<p>意味は上から順に、「実行中に権限を昇格できない」「OS領域（<code>/usr</code> や <code>/etc</code>）を読み取り専用にする」「他ユーザーの家（<code>/home</code>）を見えなくする」「<code>/tmp</code> をこのサービス専用にする」「書き込みは <code>data/</code> だけ許す」。これでアプリが乗っ取られても、<strong>書けるのは <code>/srv/myapp/data</code> と、journaldへ流れるログだけ</strong>になる。第一節の所有権が一枚目の壁、この砂場が二枚目の壁だ。</p>
+<p>全部を一度に暗記しなくていい。<code>systemd-analyze security myapp</code> と打つと、いまのサービスの「無防備さ」が項目ごとに採点される。その出力をClaudeに貼って、「この中で、私のアプリに今すぐ足すべき設定はどれですか。足すと壊れる可能性があるものはどれですか」と聞く——砂場の設計も、対話で詰めればいい。</p>
+<p>コードを直したときの再反映も覚えておく。<code>app/main.py</code> を書き換えたら、サービスを再起動する。</p>
+<pre><code class="language-bash">sudo systemctl restart myapp
+</code></pre>
+<h3>Claudeに聞いてみよう③：起動失敗のエラーを診断させる</h3>
+<div class="quoteblock">
+<blockquote>
+<p>私のFastAPIアプリ myapp がサービスとして起動に失敗しています。<code>systemctl status myapp</code> は failed です。
+<code>journalctl -u myapp -p err -b --no-pager | tail -n 50</code> の出力はこれです：</p>
+<pre><code>〔エラー行をそのまま貼る〕
+</code></pre>
+<p>unit file はこれです：</p>
+<pre><code>〔/etc/systemd/system/myapp.service の中身を貼る〕
+</code></pre>
+<p>原因の候補を可能性の高い順に挙げ、それぞれの確認手順を教えてください。.env の読み込み・venvのパス・データベース接続・ユーザー権限のどれが怪しいか、切り分けの順番も示してください。</p>
+</blockquote>
+</div>
+<p>第6章と同じく、<strong>unit fileとエラーログを両方貼る</strong>のがコツだ。FastAPIのアプリでよく詰まるのは、<code>.env</code> が読めていない（<code>DATABASE_URL</code> が無い）か、<code>.venv</code> のパスが違うか、DBのパスワードが合わないかの三つ。Claudeは設定と結果を突き合わせて、その切り分けを示してくれる。</p>
+<h2>第四節 Claudeと開発を回す</h2>
+<p>ここまでで、アプリ・データベース・サービスが繋がった。最後に、この先ずっと使う<strong>開発のループ</strong>を型として確認する。本編<a href="/claude-debian/15-claude-development/">第15章</a>で身につけた作法の、サーバー版だ。</p>
+<p>ループはこうだ。<strong>仕様を言葉で伝える → Claudeがコードを書く → あなたがレビューして動かす → エラーをそのまま貼る → 直す。</strong> この輪を回し続けるのが、2026年の開発だ。あなたが一行ずつ書くのではなく、何を作りたいかを正確に伝え、出てきたものを動かして守る。</p>
+<p>この輪で最も効くのは、<strong>要件の伝え方</strong>だ。三つを揃えて渡すと、返ってくるコードの質が一段上がる。</p>
+<ul>
+<li><strong>何のデータを</strong>扱うのか（例：メモの本文と作成日時）</li>
+<li><strong>誰が、どう読み書きするのか</strong>（例：自分だけが、追加と一覧をする）</li>
+<li><strong>第7章のスキーマ</strong>をそのまま貼る（<code>\d notes</code> の出力）</li>
+</ul>
+<p>そして、<strong>「動いたら終わり」ではない。</strong> サービスが動いた後に、公開前のチェックを必ず一度通す。第9章で外に出す前の、最後の確認だ。</p>
+<ul>
+<li>秘密は <code>.env</code> にあるか（コードやgitに漏れていないか）</li>
+<li>バインドは <code>127.0.0.1</code> か（<code>ss -tlnp | grep 8000</code> で確かめる）</li>
+<li>専用ユーザー（<code>myapp</code>）で動いているか（<code>systemctl status myapp</code> の <code>User=</code> 行）</li>
+</ul>
+<p>この三点は、第5章の守りと第一節の構成が、アプリの上で正しく効いているかの確認だ。ここが通っていれば、第9章でリバースプロキシの後ろに置く準備が整っている。</p>
+<h3>Claudeに聞いてみよう④：公開前チェックリストを点検させる</h3>
+<div class="quoteblock">
+<blockquote>
+<p>私はDebian 13サーバーで、FastAPIアプリ myapp を /srv/myapp に置き、systemdのサービスとして動かしています。第9章で外に公開する前に、構成を点検したいです。次の出力を渡します：</p>
+<pre><code>〔systemctl status myapp の出力〕
+</code></pre>
+<pre><code>〔ss -tlnp | grep 8000 の出力〕
+</code></pre>
+<pre><code>〔ls -l /srv/myapp の出力（.env の権限が分かるように）〕
+</code></pre>
+<p>これらから、(1) 秘密がコード外の .env に隔離されているか、(2) アプリが 127.0.0.1 にだけバインドされているか、(3) 専用ユーザーで動いているか、を点検してください。公開前に直すべき点があれば、優先度つきで挙げてください。</p>
+</blockquote>
+</div>
+<p>公開という不可逆な一歩の前に、自分の構成をClaudeの目で一度点検させる。出力を貼るだけで、見落としていた穴が一つは見つかる。これが第9章への準備運動になる。</p>
+<h2>まとめ</h2>
+<p>この章でやったこと：</p>
+<ol>
+<li>コンテナを使わず「ふつうのディレクトリ + venv + systemd」でアプリを動かす方針と、その代わりにディレクトリ構成の規約が秩序を作ることを確認した</li>
+<li><code>/srv/myapp/</code> に app/・.venv/・.env・data/ を分け、専用ユーザー <code>myapp</code> を作り、「git管理・作り直せる・バックアップ」の対応表を引いた</li>
+<li>PEP 668（externally managed）の理由を押さえ、<code>python3-venv</code> で仮想環境を作り、FastAPIとpsycopgを <code>.venv</code> に入れた</li>
+<li>最小のメモAPI <code>app/main.py</code> を読み、第7章の <code>myappdb</code> に繋いで <code>curl</code> で動作を確かめた（<code>/docs</code> の自動ドキュメントとSSHポート転送も）</li>
+<li>第6章の型で <code>myapp.service</code> を書き、daemon-reload → enable --now → status → journalctl を通してサービスにした</li>
+<li>仕様を伝えて書かせ、動かして直す開発ループと、公開前チェック（秘密・バインド・専用ユーザー）を型にした</li>
+</ol>
+<p>手元に残ったもの：</p>
+<ul>
+<li>専用ユーザーで動き、落ちても復活する自作のFastAPIサービス（<code>myapp.service</code>）</li>
+<li>git管理のコード・使い捨てのvenv・秘密の <code>.env</code> を分けたディレクトリ構成（<code>/srv/myapp/</code>）</li>
+<li>第7章の <code>myappdb</code> に繋がって動く、最初の自作API</li>
+<li>「見本を渡して作り替えさせる」「公開前に構成を点検させる」対話の型</li>
+</ul>
+<p>自分のアプリが、自分のサーバーの上で、自分のデータベースを使って動いた。だがいまはまだ、<code>127.0.0.1</code> という自分のマシンの中だけの世界だ。外からは誰にも見えない——それは弱さではなく、いまは守りだ。次の<a href="/debian-server/09-publishing/">第9章「外の世界に公開する」</a>で、このアプリをCaddyというリバースプロキシの後ろに置き、TLSをまとって、いよいよ世界から見える場所に出す。公開という不可逆な一歩を、第5章の守りと、この章で通した公開前チェックを携えて踏み出す。</p>
+<hr />
+<p>シリーズ全体は<a href="/debian-server/">Claudeと一緒に学ぶDebian サーバー編 一覧</a>から辿れる。本編（デスクトップ編）は<a href="/claude-debian/">全章一覧</a>へ。コメント・議論は Facebook グループへ：<a href="https://www.facebook.com/groups/vegitage">AISeed — 生物多様性・食料・AIと暮らし</a></p>
+
+  </article>
+
+  <!-- CHAPTER NAV(前後の記事) -->
+  <nav class="chapter-nav">
+  <a href="/debian-server/07-database/" rel="prev">&larr; 前: 第7章 データベースという土台</a>
+  <a href="/debian-server/09-publishing/" rel="next">次: 第9章 外の世界に公開する &rarr;</a>
+</nav>
+
+  <!-- FOOTER(サイト内メニュー+奥付) -->
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="サイト内リンク">
+      <div class="footer-col">
+        <h4>記事シリーズ</h4>
+        <ul>
+          <li><a href="/insights/">構造分析</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/ai-native-software/">AI ネイティブなソフトウェア開発</a></li>
+          <li><a href="/claude-debian/">Claudeと一緒に学ぶDebian</a></li>
+          <li><a href="/debian-server/">Claudeと一緒に育てるDebian サーバー</a></li>
+          <li><a href="/phosphorus-and-farming/">リン資源枯渇と自然農法</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>サイト</h4>
+        <ul>
+          <li><a href="/">ホーム</a></li>
+          <li><a href="/natural-farming/">自然農法とは</a></li>
+          <li><a href="/light-farming/">Light Farming</a></li>
+          <li><a href="/gallery/">畑の記録</a></li>
+          <li><a href="/about/">私たちのアプローチ</a></li>
+          <li><a href="/privacy/">プライバシー</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>関連サイト</h4>
+        <ul>
+          <li><a href="https://aiai.aiseed.dev/">aiai ── AI 時代の学び方</a></li>
+          <li><a href="https://weather.time-j.net/">個人開発気象統計</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="colophon">
+      <div class="colophon-mark">§</div>
+      Claudeと一緒に育てるDebian サーバー · 第8章<br>
+      Tokushima · 2026.06.10<br>
+      <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">CC BY 4.0</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // 広い画面ではサイドバー目次を常時展開する(狭い画面では折りたたみに戻す)
+  (function () {
+    var toc = document.querySelector(".series-toc details");
+    if (!toc) return;
+    var mq = window.matchMedia("(min-width: 1200px)");
+    function sync() { toc.open = mq.matches; }
+    sync();
+    if (mq.addEventListener) mq.addEventListener("change", sync);
+    else mq.addListener(sync);
+  })();
+
+  // Mermaid loads only on pages that contain a .mermaid block.
+  // Self-hosted (no third-party CDN dependency); SRI verified.
+  if (document.querySelector(".mermaid")) {
+    const s = document.createElement("script");
+    s.src = "/js/vendor/mermaid-11.14.0.min.js";
+    s.integrity = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk";
+    s.crossOrigin = "anonymous";
+    s.onload = () => {
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      mermaid.initialize({ startOnLoad: false, theme: prefersDark ? "dark" : "default" });
+      mermaid.run();
+    };
+    document.head.appendChild(s);
+  }
+</script>
+
+
+</body>
+</html>

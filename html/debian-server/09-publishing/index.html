@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-9FLQ963JXM');
+</script>
+
+<title>第9章 外の世界に公開する — Claudeと一緒に育てるDebian サーバー | aiseed.dev</title>
+<meta name="description" content="ここまではすべてLAN内で安全に練習できた。公開は不可逆に近い決断だ——攻撃面が一気に変わる。ドメイン、リバースプロキシ、TLS証明書という三点セットを押さえ、自宅回線の難所（CGNAT）まで含めて、自分の状況に合った公開経路をClaudeと一緒に設計する。「公開しない」も立派な選択だ。">
+<link rel="canonical" href="https://aiseed.dev/debian-server/09-publishing/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/debian-server/09-publishing/">
+<link rel="alternate" hreflang="en" href="https://aiseed.dev/en/debian-server/09-publishing/">
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/debian-server/09-publishing/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI時代の暮らし">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第9章 外の世界に公開する">
+<meta property="og:description" content="ここまではすべてLAN内で安全に練習できた。公開は不可逆に近い決断だ——攻撃面が一気に変わる。ドメイン、リバースプロキシ、TLS証明書という三点セットを押さえ、自宅回線の難所（CGNAT）まで含めて、自分の状況に合った公開経路をClaudeと一緒に設計する。「公開しない」も立派な選択だ。">
+<meta property="og:url" content="https://aiseed.dev/debian-server/09-publishing/">
+<meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<meta property="article:section" content="Claudeと一緒に育てるDebian サーバー">
+<meta property="article:published_time" content="2026.06.10">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="第9章 外の世界に公開する">
+<meta name="twitter:description" content="ここまではすべてLAN内で安全に練習できた。公開は不可逆に近い決断だ——攻撃面が一気に変わる。ドメイン、リバースプロキシ、TLS証明書という三点セットを押さえ、自宅回線の難所（CGNAT）まで含めて、自分の状況に合った公開経路をClaudeと一緒に設計する。「公開しない」も立派な選択だ。">
+<meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
+<!-- フォントは Web 配信せず、すべて端末のローカルフォントで賄う。
+     和文: UDデジタル教科書体 → BIZ UDP明朝(いずれも Windows 標準搭載の
+     モリサワ UD 書体) → ヒラギノ明朝・游明朝などのシステム明朝。
+     等幅: 端末のシステム等幅フォント。 -->
+
+<style>
+/* ============================================================
+   LOCAL FONT: UDデジタル教科書体(モリサワ)
+   Windows・教育向け端末に無償搭載。端末にあれば local() で拾い、
+   なければ BIZ UDP明朝(同じく Windows 標準搭載)→ システム明朝へ
+   フォールバックする。R と B は別ファミリー名なので、太字(700)を
+   B 書体に明示的にマッピングして疑似ボールドを避ける。
+   ============================================================ */
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 400;
+  src: local("UD デジタル 教科書体 NK-R"), local("UD Digital Kyokasho NK-R"),
+       local("UD デジタル 教科書体 NP-R"), local("UD Digital Kyokasho NP-R"),
+       local("UD デジタル 教科書体 N-R"), local("UD Digital Kyokasho N-R");
+}
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 700;
+  src: local("UD デジタル 教科書体 NK-B"), local("UD Digital Kyokasho NK-B"),
+       local("UD デジタル 教科書体 NP-B"), local("UD Digital Kyokasho NP-B"),
+       local("UD デジタル 教科書体 N-B"), local("UD Digital Kyokasho N-B");
+}
+
+/* ============================================================
+   COLOR & DESIGN TOKENS
+   aiseed.dev 全体のスタイルに合わせる場合は、ここの変数を
+   既存サイトのCSS変数に差し替える。
+   ============================================================ */
+:root {
+  --ink: #1a1a1a;
+  --paper: #f4f1ea;
+  --paper-deep: #ebe6d8;
+  --accent: #c8442a;
+  --rule: #d4cdb8;
+  --whisper: #6b665a;
+  --highlight: #f7e9c8;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* 本文: 端末にあれば UDデジタル教科書体を最優先、次に BIZ UDP明朝
+   (Windows 標準搭載)、どちらもなければヒラギノ明朝等のシステム明朝 */
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "UD Digital Kyokasho",
+               "BIZ UDPMincho", "BIZ UDP明朝",
+               "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
+               "Yu Mincho", "游明朝", "YuMincho",
+               "Noto Serif CJK JP", "Noto Serif JP", serif;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  font-feature-settings: "palt";
+  overflow-x: hidden;
+}
+
+/* グレインテクスチャ(紙の質感) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   MASTHEAD(シリーズ名・章番号)
+   ============================================================ */
+.masthead {
+  border-bottom: 3px double var(--ink);
+  padding: 24px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+}
+.masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-left a { color: inherit; text-decoration: none; }
+.masthead-left a:hover { color: var(--accent); }
+.masthead-home { color: var(--whisper); }
+.masthead-sep { margin: 0 10px; color: var(--whisper); font-weight: 400; }
+.masthead-right { font-style: italic; }
+
+/* ============================================================
+   HERO(タイトル領域)
+   ============================================================ */
+.hero {
+  padding: 80px 0 60px;
+}
+.hero-meta {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-meta::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 56px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.hero-title .accent {
+  color: var(--accent);
+}
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--whisper);
+  max-width: 580px;
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+  margin-top: 32px;
+}
+.hero-byline {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ============================================================
+   ARTICLE BODY
+   ============================================================ */
+article p {
+  margin-bottom: 24px;
+}
+
+article h2 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.4;
+  margin: 72px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+article h2::before {
+  content: "§";
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  color: var(--accent);
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+article h3 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 600;
+  font-size: 19px;
+  margin: 40px 0 16px;
+  color: var(--ink);
+}
+article h3::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+article strong {
+  font-weight: 700;
+  background: linear-gradient(to top, var(--highlight) 35%, transparent 35%);
+  padding: 0 2px;
+}
+
+article em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+article a:hover {
+  color: var(--accent);
+}
+
+/* ============================================================
+   BLOCKQUOTE
+   ============================================================ */
+blockquote {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  position: relative;
+  font-size: 18px;
+  line-height: 1.85;
+  font-style: normal;
+  color: var(--ink);
+}
+blockquote::before {
+  content: "「";
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-size: 48px;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: "Hiragino Mincho ProN", serif;
+}
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+article thead th {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+}
+article tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+article tbody tr:last-child td {
+  border-bottom: none;
+}
+@media (max-width: 720px) {
+  article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ============================================================
+   ORDERED LIST(番号付きリスト)
+   ============================================================ */
+article ol {
+  margin: 32px 0;
+  counter-reset: item;
+  padding: 0;
+}
+article ol li {
+  list-style: none;
+  position: relative;
+  padding: 16px 0 16px 56px;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: item;
+}
+article ol li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* 通常のul(章末の関連リンクなど) */
+article ul {
+  margin: 24px 0;
+  padding-left: 1.5em;
+}
+article ul li {
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   CODE BLOCK(疑似ターミナル風)
+   ============================================================ */
+article pre {
+  margin: 40px 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 24px 28px;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+  overflow-x: auto;
+}
+article pre::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 8px;
+  color: var(--whisper);
+  letter-spacing: 4px;
+}
+article pre code {
+  display: block;
+  padding-top: 16px;
+  white-space: pre;
+}
+
+/* インラインコード */
+article code {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 0.9em;
+  background: var(--paper-deep);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+article pre code {
+  background: transparent;
+  padding: 16px 0 0 0;
+  color: var(--paper);
+}
+
+/* ============================================================
+   HORIZONTAL RULE(本文中の区切り)
+   ============================================================ */
+article hr {
+  border: none;
+  text-align: center;
+  margin: 64px 0;
+  height: 1em;
+}
+article hr::before {
+  content: "◆ ◆ ◆";
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+}
+
+/* ============================================================
+   RELATED LINKS(章末の関連記事)
+   ============================================================ */
+.related-links {
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.related-links h3 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+.related-links h3::before {
+  content: none;
+}
+.related-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.related-links li {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 0;
+}
+.related-links li:last-child {
+  border-bottom: none;
+}
+.related-links a {
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.related-links .related-tag {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.related-links a:hover .related-title {
+  color: var(--accent);
+}
+
+/* ============================================================
+   FOOTER(サイト内メニュー+奥付)
+   ============================================================ */
+.site-footer {
+  margin-top: 96px;
+  border-top: 3px double var(--ink);
+  padding-top: 48px;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 48px;
+}
+.footer-col h4 {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-col li {
+  padding: 6px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.footer-col a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.footer-col a:hover { color: var(--accent); }
+
+.colophon {
+  margin-top: 48px;
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--whisper);
+  text-align: center;
+  line-height: 2;
+}
+.colophon-mark {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "Hiragino Mincho ProN", serif;
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+/* ============================================================
+   SERIES TOC(全章一覧・折りたたみ式)
+   ============================================================ */
+.series-toc {
+  margin: 24px 0 40px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 0;
+}
+.series-toc details {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+}
+.series-toc summary {
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  padding: 8px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.series-toc summary::-webkit-details-marker { display: none; }
+.series-toc summary::before {
+  content: "▸";
+  color: var(--accent);
+  font-size: 10px;
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.series-toc details[open] summary::before { transform: rotate(90deg); }
+.series-toc ol {
+  list-style: none;
+  margin: 12px 0 8px;
+  padding: 0;
+  counter-reset: none;
+}
+.series-toc li {
+  list-style: none;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--rule);
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  line-height: 1.55;
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.series-toc li::before { content: none; }
+.series-toc li:last-child { border-bottom: none; }
+.series-toc li a {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--ink);
+  flex: 1;
+}
+.series-toc li a:hover .toc-title { color: var(--accent); }
+.series-toc .toc-num {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 5em;
+}
+.series-toc li.current {
+  background: var(--paper-deep);
+  margin: 0 -12px;
+  padding: 9px 12px;
+}
+.series-toc li.current .toc-title {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ============================================================
+   IMAGES
+   ============================================================ */
+article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 32px auto;
+}
+
+/* ============================================================
+   CUSTOM BLOCKS(:::chain / :::highlight / :::quote / :::compare)
+   ============================================================ */
+.chain-diagram {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+.chain-diagram .arrow {
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0.3em;
+}
+.highlight-box {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.highlight-box p { margin-bottom: 12px; }
+.highlight-box p:last-child { margin-bottom: 0; }
+.quote-block {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+}
+.quote-block .quote-text {
+  font-size: 18px;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* ============================================================
+   ASCIIDOC BLOCKS(pyasciidoc が出力するクラス。.adoc 記事用)
+   admonition / 帰属つき引用 / 画像ブロック / 脚注 / ロール
+   ============================================================ */
+.admonition {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.admonition-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.admonition p { margin-bottom: 12px; }
+.admonition p:last-child { margin-bottom: 0; }
+.quoteblock { margin: 40px 0; }
+.quoteblock blockquote { margin: 0; }
+.quoteblock .attribution {
+  margin-top: 12px;
+  text-align: right;
+  font-size: 14px;
+  color: var(--whisper);
+}
+.quoteblock .attribution cite { font-style: normal; }
+.imageblock { margin: 32px 0; text-align: center; }
+.imageblock .content img { max-width: 100%; height: auto; }
+sup.footnote { font-size: 12px; }
+sup.footnote a { text-decoration: none; }
+.footnotes {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px;
+  color: var(--whisper);
+}
+.footnotes ol { padding-left: 1.5em; }
+.footnotes li { margin-bottom: 8px; }
+.footnotes .footnote-backref { text-decoration: none; margin-left: 0.3em; }
+/* ロール: [.chain](:::chain と同じ見た目)/ [.accent]#…# */
+article .chain {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+article .accent { color: var(--accent); }
+
+/* ============================================================
+   CHAPTER NAV(前後の記事へのリンク)
+   ============================================================ */
+.chapter-nav {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 14px;
+}
+.chapter-nav a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+}
+.chapter-nav a:hover { color: var(--accent); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 40px; }
+  blockquote { padding: 24px 20px 24px 28px; }
+  article pre { padding: 20px 16px; font-size: 12px; }
+  article ol li { padding-left: 48px; }
+  .series-toc .toc-num { min-width: 4em; font-size: 10px; }
+  .series-toc li { font-size: 13px; gap: 12px; }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta, .hero-title, .hero-subtitle, .hero-byline {
+  animation: rise 0.8s ease-out backwards;
+}
+.hero-meta     { animation-delay: 0.1s; }
+.hero-title    { animation-delay: 0.25s; }
+.hero-subtitle { animation-delay: 0.45s; }
+.hero-byline   { animation-delay: 0.65s; }
+.mermaid {
+  text-align: center;
+  margin: 2.5rem 0;
+  background: var(--paper-warm, #f5f1ea);
+  padding: 1.5rem 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.mermaid svg { max-width: 100%; height: auto; }
+
+/* ============================================================
+   WIDE LAYOUT(広い画面では目次を左サイドバーに常時展開)
+   ============================================================ */
+@media (min-width: 1200px) {
+  body.has-toc .container {
+    max-width: 1320px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 880px);
+    column-gap: 64px;
+    justify-content: center;
+  }
+  body.has-toc .masthead,
+  body.has-toc .hero {
+    grid-column: 1 / -1;
+  }
+  /* グリッドアイテム自体は行いっぱいに伸ばし、内側の details を sticky に
+     する(sticky なグリッドアイテムはグリッドエリアではなくコンテナ全体で
+     制約されるブラウザ挙動があり、フッターに重なってしまうため)。 */
+  body.has-toc .series-toc {
+    grid-column: 1;
+    grid-row: 3 / span 2;
+    margin: 0;
+    padding: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+  body.has-toc .series-toc details {
+    position: sticky;
+    top: 32px;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 0 12px 12px 0;
+  }
+  /* サイドバーでは折りたたみを無効化し、見出しとして表示 */
+  body.has-toc .series-toc summary {
+    pointer-events: none;
+    cursor: default;
+  }
+  body.has-toc .series-toc summary::before { content: none; }
+  body.has-toc .series-toc li { font-size: 13.5px; }
+  body.has-toc article    { grid-column: 2; grid-row: 3; }
+  body.has-toc .chapter-nav { grid-column: 2; grid-row: 4; }
+  body.has-toc .site-footer { grid-column: 1 / -1; grid-row: 5; }
+}
+
+/* ============================================================
+   DARK MODE(OS の配色設定に追従して自動で暗色に切り替え)
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ink: #e8e3d6;
+    --paper: #16140f;
+    --paper-deep: #211d16;
+    --accent: #e8765a;
+    --rule: #393428;
+    --whisper: #a39b88;
+    --highlight: rgba(220, 168, 78, 0.30);
+  }
+  /* 紙の質感(グレイン)を暗色背景向けに反転 */
+  body::before {
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    mix-blend-mode: screen;
+    opacity: 0.4;
+  }
+  /* コードブロックは両モードとも暗いターミナル調を維持 */
+  article pre {
+    background: #0d0c0a;
+    color: #e8e3d6;
+  }
+  article pre code {
+    color: #e8e3d6;
+  }
+  /* Mermaid 図の枠を暗色に */
+  .mermaid {
+    background: #211d16;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- MASTHEAD(ホーム › シリーズ目次) -->
+  <header class="masthead">
+    <div class="masthead-left"><a href="/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="/debian-server/">Claudeと一緒に育てるDebian サーバー</a></div>
+    <div class="masthead-right">第9章 / Series</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-meta">第9章 № 09 · 2026</div>
+
+    <h1 class="hero-title">第9章 外の世界に公開する</h1>
+
+    <p class="hero-subtitle">ドメイン、リバースプロキシ、TLS</p>
+
+    <div class="hero-byline">
+      <span>2026.06.10</span>
+      <span><a href="https://aiseed.dev/en/debian-server/09-publishing/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">🌐 EN</a></span>
+    </div>
+  </section>
+
+  <!-- SERIES TOC(全章一覧・現在の章をハイライト) -->
+  
+
+  <!-- ARTICLE BODY -->
+  <article>
+    <h2>なぜ公開が一つの章になるか</h2>
+<p>ここまでの章は、すべて自宅のLAN内で安全に練習できた。ファイル共有も、メモ同期も、第7章のデータベースも、第8章で建てた自作アプリも、家の中だけで動かしているうちは、接続してくる相手はあなた一人だ。失敗しても、誰にも見られていない。だから気楽に壊して、作り直せた。</p>
+<p>公開は、その安全圏から一歩外に出る決断だ。そして、<strong>公開は不可逆に近い。</strong> 一度サーバーをインターネットに晒すと、第1章で書いたとおり、接続してくる相手は全世界になる。世界中の自動化された探査プログラムが、公開直後から24時間休みなくあなたのサーバーを叩き始める。これは脅し文句ではなく、公開した日のログに必ず現れる観測事実だ。攻撃面が一気に変わる。だから公開は、第5章で築いた守り（ファイアウォール、SSHの鍵認証、fail2ban）がすべて前提になる。</p>
+<p>ここで最初に、はっきり言っておきたい。<strong>「公開しない」も立派な選択だ。</strong> あなたが自分のサーバーに外から入りたいだけなら、世界に向けて入口を開ける必要はない。Tailscale のような仕組みを使えば、「自分（と許可した人）だけが、外から自宅のLANに安全に入る」ことができる。これは公開ではなく、いわば自分専用の延長ケーブルだ。攻撃面はほとんど増えない。家族の写真サーバーや自分のメモ同期なら、これで十分なことが多い。</p>
+<p>それでもなお「世界に向けて何かを公開したい」——自分のブログ、誰かと共有したいサービス、外部から使ってもらうアプリ——という場面はある。この章は、そのときに必要な部品と、自宅回線特有の難所を、正直に整理する。</p>
+<h2>第一節 公開の三点セット</h2>
+<p>何かを「インターネットで誰でも見られる」状態にするには、最低限三つの部品が要る。それぞれが何者なのかを、一段落ずつで掴んでおく。</p>
+<p><strong>ドメイン。</strong> <code>example.com</code> のような、人間が覚えられる名前だ。サーバーには数字のIPアドレスしかないが、それを覚えるのは現実的でない。ドメインは、その数字に付ける「看板」だ。レジストラ（ドメイン登録業者）で取得し、費用は <code>.com</code> などで年に千円前後。これがあなたのサーバーの住所表記になる。</p>
+<p><strong>DNS。</strong> ドメインという名前を、実際のIPアドレスに変換する電話帳の仕組みだ。あなたは取得したドメインの管理画面で、「この名前は、このIPアドレスを指す」という対応を登録する。IPv4なら<strong>Aレコード</strong>、IPv6なら<strong>AAAAレコード</strong>と呼ぶ。これを設定して初めて、世界中の人が名前であなたのサーバーにたどり着ける。</p>
+<p><strong>TLS証明書。</strong> 通信を暗号化し、<code>https://</code> の鍵マークを成立させるものだ。これがないと、通信が平文で流れ、パスワードなどが盗み見られる。かつては有料で手間もかかったが、今は <strong>Let's Encrypt</strong> という仕組みで無料・自動で取れる。後述のリバースプロキシが、これをほぼ全自動で面倒みてくれる。</p>
+<p>この三つが揃って初めて、<code>https://あなたのドメイン</code> が世界から見える状態になる。</p>
+<h3>Claudeに聞いてみよう①：自分の回線に合った公開経路を設計させる</h3>
+<div class="quoteblock">
+<blockquote>
+<p>私はDebian 13で自宅サーバーを運用していて、〔公開したいもの。例：自分のブログ / 友人と共有する写真アルバム / 外部から使う自作アプリ〕を公開したいです。回線の状況は次のとおりです：〔契約しているプロバイダ名、回線種別（光/モバイル等）、グローバルIPがあるか、IPv6が使えるか、分かる範囲で〕</p>
+<p>この回線でその公開を実現する経路を、いくつか案として設計してください。それぞれの案について、必要な部品、費用の目安、攻撃面がどれだけ増えるか、私の状況での向き不向きを添えてください。</p>
+</blockquote>
+</div>
+<p>公開経路は、回線の素性によって取れる手が変わる。後述するCGNATの問題は、自分で気づきにくい。まず自分の回線をClaudeに伝えて、現実的な選択肢を絞り込むのが出発点だ。</p>
+<h2>第二節 リバースプロキシという型</h2>
+<p>公開するサービスが一つでも、複数でも、現代的な公開には<strong>リバースプロキシ</strong>という型を使う。</p>
+<p>リバースプロキシとは、<strong>一台の入口（443番ポート、つまり <code>https://</code>）が、後ろにある複数のサービスへ、ホスト名で振り分ける仕組み</strong>だ。<code>blog.example.com</code> への接続はブログのサービスへ、<code>photos.example.com</code> への接続は写真サーバーへ、と一台が交通整理する。外から見える入口は一つだけで、TLSの面倒もこの入口がまとめて見る。第6章の作法で複数のサービスを動かしているなら、その出口をこのリバースプロキシ一つに集約できる。</p>
+<p>この章では <strong>Caddy</strong> を例にする。理由は、設定ファイル（Caddyfile）が数行で済み、しかも<strong>TLS証明書の取得・更新まで全自動</strong>だからだ。Let's Encrypt とのやり取りを、Caddyが裏で勝手にやってくれる。設定テキストが短いということは、Claudeと相性が良いということでもある。</p>
+<pre><code class="language-caddyfile"># /etc/caddy/Caddyfile
+# 2つのサービスをホスト名で振り分ける例
+
+blog.example.com {
+    reverse_proxy localhost:8080
+}
+
+photos.example.com {
+    reverse_proxy localhost:8081
+}
+</code></pre>
+<p>これだけだ。<code>blog.example.com</code> に来た <code>https://</code> の通信を、手元の 8080 番で動いているブログ（第6章のサービスや、第8章で建てたFastAPIアプリなど）に渡す。<code>photos.example.com</code> は 8081 番へ。TLS証明書は、Caddyが起動時に Let's Encrypt から自動で取得し、期限が来れば自動で更新する。証明書の存在を意識しなくていい。</p>
+<pre><code class="language-bash"># Caddyを入れて、設定を反映する
+sudo apt install caddy
+sudo nano /etc/caddy/Caddyfile   # 上の内容を書く
+sudo systemctl reload caddy      # 設定を読み直す
+systemctl status caddy           # 動いているか確認
+</code></pre>
+<p>なお、同じことは <strong>nginx</strong> でもできる。nginxは情報量が多く、細かい制御もきくが、TLSの自動化は certbot という別ツールを組み合わせる必要があり、設定テキストはCaddyより長くなる。<strong>「短いテキストで自動TLSまで終わる」という一点でCaddyを推す</strong>が、すでにnginxに慣れているなら無理に乗り換える必要はない。</p>
+<h3>Claudeに聞いてみよう②：Caddyfile を書かせて各行を説明させる</h3>
+<div class="quoteblock">
+<blockquote>
+<p>私はDebian 13のサーバーで、次のサービスを公開したいです：〔例：blog.example.com → localhost:8080 のブログ、photos.example.com → localhost:8081 の写真サーバー、など。自分のドメインとサービスを列挙〕</p>
+<p>これを実現する Caddyfile を書いてください。そのうえで、<strong>各行が何をしているのかを一行ずつ解説</strong>してください。TLS証明書がどう扱われるかも説明してください。</p>
+</blockquote>
+</div>
+<p>ここでも、第6章の unit file と同じ作法を使う。<strong>書かせるだけでなく、各行の意味を説明させる。</strong> リバースプロキシは「外から内への入口」そのものなので、意味の分からない行を残したまま動かすのは危険だ。一行ずつ解説させて、自分の入口を自分で読めるようにしておく。</p>
+<h2>第三節 自宅からの公開という難所</h2>
+<p>公開の三点セットを揃えても、自宅サーバーには独特の壁がある。家のネットワークは、もともと「外から入られない」ように作られているからだ。</p>
+<p>第一の壁が<strong>ポート開放</strong>だ。自宅のルーターは、外から来る接続を初期状態ですべて遮断している。サーバーを公開するには、ルーターの設定で「443番ポートに来た接続は、このサーバーへ通す」という穴を開ける（ポートフォワーディング）必要がある。これは家の玄関に鍵穴を一つ増やすようなものだ。<strong>開けた瞬間、世界中の探査がその穴を叩き始める。</strong> だから第5章の守りが前提になる。</p>
+<p>第二の、そしてより厄介な壁が <strong>CGNAT</strong> だ。近年の多くの回線（特にモバイル回線や一部の光回線）では、契約者に固有のグローバルIPアドレスが割り当てられていない。複数の契約者が一つのグローバルIPを共有する <strong>CGNAT（キャリアグレードNAT）</strong> という方式が使われている。この場合、<strong>そもそも外から指せる住所が自分にないので、従来型のポート開放は不可能だ。</strong> 自分の回線がこれに該当するかどうかは、第一節①でClaudeに確認するのが早い。</p>
+<p>CGNATの壁を越える、現代的な迂回路がいくつかある。いずれも一長一短だ。</p>
+<ul>
+<li><strong>Cloudflare Tunnel</strong>：自宅から外向きにトンネルを張り、Cloudflare経由で公開する。ポート開放もグローバルIPも不要。手軽だが、通信がCloudflareを通る（依存先が一つ増える）。</li>
+<li><strong>Tailscale Funnel</strong>：第1章でも触れたTailscaleの公開機能。同じくポート開放不要で、設定が素直。小規模な公開向き。</li>
+<li><strong>安いVPSを入口にする</strong>：ネット上に小さなVPSを一台借りて公開の入口にし、そこから自宅サーバーへトンネルでつなぐ。自由度は高いが、VPSという管理対象が一つ増える。</li>
+</ul>
+<p>ここで正直に書いておく。これらの迂回路は、どれも<strong>「自分の手の外にある誰か」に依存先を一つ増やす</strong>ことを意味する。これは本書が一貫して掲げてきた「依存先を減らし、自分の手で直せる範囲を広げる」という思想と、緊張関係にある。便利さと自立は、ここで一度ぶつかる。</p>
+<p>その緊張を踏まえたうえで、本書の前提（自宅サーバーかVPSで、データも自分で管理）に沿った整理を示す。<strong>本体がVPSにあるなら、この難所はそもそも存在しない。</strong> VPSにはグローバルIPがあるので、第二節のCaddyをそのまま外に向けて開けばいい。<strong>本体が自宅にあるなら、本体は動かさず「入口」だけを借りる。</strong> Cloudflare TunnelやTailscale Funnelはまさにこの形だし、安いVPSを入口（トンネルの出口）にして、データベースもファイルも自宅側に残す手もある。どちらの構えでも、データは自分がrootを持つ機械の上にあり、主導権は手放さない。</p>
+<h3>静的サイトなら、Cloudflareで無料で公開できる</h3>
+<p>もう一つ、覚えておくと構えが軽くなる事実がある。<strong>中身が動かないサイト——HTMLとCSSだけのブログや紹介ページ——なら、そもそも自分のサーバーから公開する必要がない。</strong> Cloudflare Pages のような静的ホスティングに置けば、<strong>無料</strong>で、独自ドメインとTLS込みで、世界中に配信される。ポート開放もトンネルも、この章の難所のほとんどが要らない。</p>
+<p>しかも、線引きは「完全に静的」よりもう少し先まで延ばせる。<strong>お問い合わせフォーム程度の軽い動的処理なら、Cloudflare側のJavaScript実行環境（Pages Functions / Workers）の無料枠で済んでしまう。</strong> フォームの送信を受け取って、メールに転送したり小さなストレージに記録したりする数十行のJavaScriptは、まさにClaudeが得意とする規模だ。「フォームの内容をメールで受け取るPages Functionを書いて」と頼めばいい。</p>
+<p>だから役割を分ければいい。<strong>読まれるだけのページと、お問い合わせ程度の軽い処理まではCloudflareへ。自分のデータベースを持つ本体——第7章のデータベースを読み書きする、第8章のような自作アプリ——は自分のサーバーへ。</strong> 自分のサーバーから公開する価値があるのは、後者だけだ。静的サイトの作り方そのものは本書の範囲外だが、手元のMarkdownやHTMLをClaudeに渡して「Cloudflare Pagesで公開する手順を教えて」と聞けば、その日のうちに公開できるはずだ。</p>
+<h3>Claudeに聞いてみよう③：自分の回線でCGNATか確認し、経路を決める</h3>
+<div class="quoteblock">
+<blockquote>
+<p>私の自宅回線の状況は次のとおりです：〔プロバイダ名、回線種別。ルーターの管理画面で見えるWAN側IPアドレス（例：100.x.x.x や 10.x.x.x なら共有IPの可能性）、IPv6の有無〕</p>
+<p>この回線が CGNAT（グローバルIPを共有する方式）かどうかを、判断する方法と一緒に教えてください。そのうえで、第二節で挙げた迂回路（Cloudflare Tunnel / Tailscale Funnel / VPS入口）のうち、私の状況に向くものを理由を添えて勧めてください。</p>
+</blockquote>
+</div>
+<p>CGNATかどうかは、ルーターのWAN側IPと、外部から見た自分のIPが一致するかで判断できる。判断の手順ごとClaudeに聞けば、自分の回線で何が可能かが一度ではっきりする。</p>
+<h2>第四節 公開した日にやること</h2>
+<p>設定を終えて公開した「その日」に、必ずやるべきことがある。守りの確認と、外からの観察だ。</p>
+<p>まず、第5章で築いた守りを、公開状態でもう一度見直す。</p>
+<pre><code class="language-bash"># ファイアウォールが意図したポートだけ開けているか
+sudo ufw status verbose
+
+# SSHへのログイン試行を観察する（公開後は急増する）
+sudo journalctl -u ssh --since &quot;1 hour ago&quot;
+
+# fail2ban が攻撃元を弾いているか
+sudo fail2ban-client status sshd
+</code></pre>
+<p>次に、外から実際に見えているかを確認する。サーバー自身からではなく、できれば回線の外（スマホのモバイル回線など）から打つのがいい。</p>
+<pre><code class="language-bash"># 外から、自分のサイトのヘッダだけ取って疎通とTLSを確認する
+curl -I https://あなたのドメイン
+</code></pre>
+<p><code>HTTP/2 200</code> のような応答と、証明書のエラーが出ないことを確認できれば、公開は成立している。</p>
+<p>そして、公開直後ならではの体験がある。<strong>何もしていないのに、ログには見知らぬアクセスが流れ始める。</strong> 存在しないURL（<code>/wp-login.php</code> や <code>/.env</code> など）への執拗なアクセス、ありふれたユーザー名でのSSHログイン試行——これらはすべて、世界中の自動化された探査プログラムが、公開されたばかりのサーバーを機械的に叩いている痕跡だ。</p>
+<p>このログを、ぜひそのままClaudeに読ませてほしい。「これは何を狙った偵察なのか」を解説させると、攻撃の世界の地図が一気に具体的になる。<strong>「世界に晒す」とはこういうことか</strong>、という実感が、教科書の文字ではなく自分のログとして手に入る。第5章の脅威モデルが、ここで初めて目の前の現実になる。</p>
+<h3>Claudeに聞いてみよう④：公開後のアクセスログの不審な行を読ませる</h3>
+<div class="quoteblock">
+<blockquote>
+<p>自宅サーバーを公開しました。公開直後のアクセスログ（またはSSHのログ）に、次のような行が流れています：</p>
+<pre><code>〔Caddyのアクセスログや journalctl -u ssh の出力から、不審な行をそのまま貼る〕
+</code></pre>
+<p>これらはそれぞれ、何を狙った偵察や攻撃ですか。私のサーバーで対策できていること・まだ穴がありそうなことを、第5章で設定したファイアウォール・鍵認証・fail2ban を前提に教えてください。</p>
+</blockquote>
+</div>
+<p>第3章で身につけた「ログをテキストのまま貼る」作法が、公開という最も緊張する場面でそのまま効く。不審な行の意味が分かれば、過剰に怯える必要も、油断する必要もなくなる。何が来ていて、何を防げているのかを、自分の言葉で説明できるようになる。</p>
+<h2>まとめ</h2>
+<p>この章でやったこと：</p>
+<ol>
+<li>公開が不可逆に近い決断であること、「公開しない（Tailscale等）」も立派な選択であることを確認した</li>
+<li>公開の三点セット（ドメイン・DNS・TLS証明書）が何者かを押さえた</li>
+<li>リバースプロキシという型を理解し、Caddyfile で複数サービスを振り分ける例を書いた</li>
+<li>自宅公開の難所（ポート開放・CGNAT）と迂回路の一長一短を整理し、静的サイトならCloudflareで無料公開できる——自分のサーバーから公開するのはデータを持つ動的なものだけ——と役割を分けた</li>
+<li>公開した日にやること（守りの再確認・外からの疎通確認・bot観察）をClaudeと一緒にやった</li>
+</ol>
+<p>手元に残ったもの：</p>
+<ul>
+<li>自分の回線に合った公開経路の設計（または「公開せずTailscaleで入る」という結論）</li>
+<li>動いた Caddyfile（または公開しない判断のメモ）</li>
+<li>公開直後のログを読んだ経験——「世界に晒す」の実感</li>
+</ul>
+<p>次の第10章では、ここまで動かしてきたサービスとデータを、いよいよ<strong>守る</strong>ことを考える。第7章でデータをデータベースという一箇所に集めた意味が、ここで効いてくる。何を、どこへ、どのくらいの頻度でバックアップし、どうやって「本当に戻せるか」を確かめるのか——壊れる前提で備える作法を、Claudeと一緒に組み立てる。</p>
+<hr />
+<p>シリーズ全体は<a href="/debian-server/">Claudeと一緒に学ぶDebian サーバー編 一覧</a>から辿れる。本編（デスクトップ編）は<a href="/claude-debian/">全章一覧</a>へ。コメント・議論は Facebook グループへ：<a href="https://www.facebook.com/groups/vegitage">AISeed — 生物多様性・食料・AIと暮らし</a></p>
+
+  </article>
+
+  <!-- CHAPTER NAV(前後の記事) -->
+  <nav class="chapter-nav">
+  <a href="/debian-server/08-fastapi/" rel="prev">&larr; 前: 第8章 自作アプリを動かす</a>
+  <a href="/debian-server/10-backup/" rel="next">次: 第10章 データを守る &rarr;</a>
+</nav>
+
+  <!-- FOOTER(サイト内メニュー+奥付) -->
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="サイト内リンク">
+      <div class="footer-col">
+        <h4>記事シリーズ</h4>
+        <ul>
+          <li><a href="/insights/">構造分析</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/ai-native-software/">AI ネイティブなソフトウェア開発</a></li>
+          <li><a href="/claude-debian/">Claudeと一緒に学ぶDebian</a></li>
+          <li><a href="/debian-server/">Claudeと一緒に育てるDebian サーバー</a></li>
+          <li><a href="/phosphorus-and-farming/">リン資源枯渇と自然農法</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>サイト</h4>
+        <ul>
+          <li><a href="/">ホーム</a></li>
+          <li><a href="/natural-farming/">自然農法とは</a></li>
+          <li><a href="/light-farming/">Light Farming</a></li>
+          <li><a href="/gallery/">畑の記録</a></li>
+          <li><a href="/about/">私たちのアプローチ</a></li>
+          <li><a href="/privacy/">プライバシー</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>関連サイト</h4>
+        <ul>
+          <li><a href="https://aiai.aiseed.dev/">aiai ── AI 時代の学び方</a></li>
+          <li><a href="https://weather.time-j.net/">個人開発気象統計</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="colophon">
+      <div class="colophon-mark">§</div>
+      Claudeと一緒に育てるDebian サーバー · 第9章<br>
+      Tokushima · 2026.06.10<br>
+      <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">CC BY 4.0</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // 広い画面ではサイドバー目次を常時展開する(狭い画面では折りたたみに戻す)
+  (function () {
+    var toc = document.querySelector(".series-toc details");
+    if (!toc) return;
+    var mq = window.matchMedia("(min-width: 1200px)");
+    function sync() { toc.open = mq.matches; }
+    sync();
+    if (mq.addEventListener) mq.addEventListener("change", sync);
+    else mq.addListener(sync);
+  })();
+
+  // Mermaid loads only on pages that contain a .mermaid block.
+  // Self-hosted (no third-party CDN dependency); SRI verified.
+  if (document.querySelector(".mermaid")) {
+    const s = document.createElement("script");
+    s.src = "/js/vendor/mermaid-11.14.0.min.js";
+    s.integrity = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk";
+    s.crossOrigin = "anonymous";
+    s.onload = () => {
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      mermaid.initialize({ startOnLoad: false, theme: prefersDark ? "dark" : "default" });
+      mermaid.run();
+    };
+    document.head.appendChild(s);
+  }
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-9FLQ963JXM');
+</script>
+
+<title>Chapter 8 — Running Your Own App — Growing a Debian Server with Claude | aiseed.dev</title>
+<meta name="description" content="This book never uses containers — apps run as a plain directory plus a venv plus a systemd service. That is exactly why the convention for where things go, instead of a container, is what creates order. Decide a directory layout, build a minimal API with Python and FastAPI, turn it into a systemd service, and run it on top of Chapter 7's database — Claude writes the code; you decide the structure, run it, and protect it.">
+<link rel="canonical" href="https://aiseed.dev/en/debian-server/08-fastapi/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/debian-server/08-fastapi/">
+<link rel="alternate" hreflang="en" href="https://aiseed.dev/en/debian-server/08-fastapi/">
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/debian-server/08-fastapi/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Living in the AI Era">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Chapter 8 — Running Your Own App">
+<meta property="og:description" content="This book never uses containers — apps run as a plain directory plus a venv plus a systemd service. That is exactly why the convention for where things go, instead of a container, is what creates order. Decide a directory layout, build a minimal API with Python and FastAPI, turn it into a systemd service, and run it on top of Chapter 7's database — Claude writes the code; you decide the structure, run it, and protect it.">
+<meta property="og:url" content="https://aiseed.dev/en/debian-server/08-fastapi/">
+<meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<meta property="article:section" content="Growing a Debian Server with Claude">
+<meta property="article:published_time" content="2026.06.10">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Chapter 8 — Running Your Own App">
+<meta name="twitter:description" content="This book never uses containers — apps run as a plain directory plus a venv plus a systemd service. That is exactly why the convention for where things go, instead of a container, is what creates order. Decide a directory layout, build a minimal API with Python and FastAPI, turn it into a systemd service, and run it on top of Chapter 7's database — Claude writes the code; you decide the structure, run it, and protect it.">
+<meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
+<!-- No webfont delivery: local system fonts only (Georgia serif / system monospace) -->
+
+<style>
+:root {
+  --ink: #1a1a1a;
+  --paper: #f4f1ea;
+  --paper-deep: #ebe6d8;
+  --accent: #c8442a;
+  --rule: #d4cdb8;
+  --whisper: #6b665a;
+  --highlight: #f7e9c8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, "Times New Roman", "Hiragino Mincho ProN", serif;
+  font-size: 18px;
+  line-height: 1.7;
+  letter-spacing: 0.005em;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* MASTHEAD */
+.masthead {
+  border-bottom: 3px double var(--ink);
+  padding: 24px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+}
+.masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-left a { color: inherit; text-decoration: none; }
+.masthead-left a:hover { color: var(--accent); }
+.masthead-home { color: var(--whisper); }
+.masthead-sep { margin: 0 10px; color: var(--whisper); font-weight: 400; }
+.masthead-right { font-style: italic; }
+
+/* HERO */
+.hero {
+  padding: 80px 0 60px;
+}
+.hero-meta {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-meta::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 800;
+  font-size: clamp(34px, 5.2vw, 54px);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin-bottom: 24px;
+}
+.hero-title .accent {
+  color: var(--accent);
+  font-style: italic;
+}
+.hero-subtitle {
+  font-size: 19px;
+  line-height: 1.65;
+  color: var(--whisper);
+  max-width: 580px;
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+  margin-top: 32px;
+  font-style: italic;
+}
+.hero-byline {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  text-transform: uppercase;
+}
+
+/* ARTICLE */
+article p {
+  margin-bottom: 24px;
+}
+
+article h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.3;
+  margin: 72px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+  letter-spacing: -0.01em;
+}
+article h2::before {
+  content: "§";
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  color: var(--accent);
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+article h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 600;
+  font-size: 22px;
+  margin: 40px 0 16px;
+  color: var(--ink);
+}
+article h3::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+article strong {
+  font-weight: 700;
+  background: linear-gradient(to top, var(--highlight) 35%, transparent 35%);
+  padding: 0 2px;
+}
+
+article em {
+  font-style: italic;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+article a:hover {
+  color: var(--accent);
+}
+
+/* BLOCKQUOTE */
+blockquote {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  position: relative;
+  font-size: 20px;
+  line-height: 1.6;
+  font-style: italic;
+}
+blockquote::before {
+  content: "\201C";
+  position: absolute;
+  top: 0;
+  left: 12px;
+  font-size: 64px;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: Georgia, "Times New Roman", serif;
+  line-height: 1;
+}
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* TABLE */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+article thead th {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+}
+article tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+article tbody tr:last-child td {
+  border-bottom: none;
+}
+@media (max-width: 720px) {
+  article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* LISTS */
+article ol {
+  margin: 32px 0;
+  counter-reset: item;
+  padding: 0;
+}
+article ol li {
+  list-style: none;
+  position: relative;
+  padding: 16px 0 16px 56px;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: item;
+}
+article ol li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+article ul {
+  margin: 24px 0;
+  padding-left: 1.5em;
+}
+article ul li {
+  margin-bottom: 8px;
+}
+
+/* CODE BLOCK */
+article pre {
+  margin: 40px 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 24px 28px;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+  overflow-x: auto;
+}
+article pre::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 8px;
+  color: var(--whisper);
+  letter-spacing: 4px;
+}
+article pre code {
+  display: block;
+  padding-top: 16px;
+  white-space: pre;
+  background: transparent;
+  color: var(--paper);
+}
+
+article code {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.9em;
+  background: var(--paper-deep);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+
+/* HR */
+article hr {
+  border: none;
+  text-align: center;
+  margin: 64px 0;
+  height: 1em;
+}
+article hr::before {
+  content: "◆ ◆ ◆";
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+}
+
+/* RELATED */
+.related-links {
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.related-links h3 {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  margin: 0 0 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.related-links h3::before { content: none; }
+.related-links ul { list-style: none; margin: 0; padding: 0; }
+.related-links li {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 0;
+}
+.related-links li:last-child { border-bottom: none; }
+.related-links a {
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.related-links .related-tag {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.related-links a:hover .related-title {
+  color: var(--accent);
+}
+
+/* FOOTER (site menu + colophon) */
+.site-footer {
+  margin-top: 96px;
+  border-top: 3px double var(--ink);
+  padding-top: 48px;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 48px;
+}
+.footer-col h4 {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-col li {
+  padding: 6px 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.footer-col a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.footer-col a:hover { color: var(--accent); }
+
+.colophon {
+  margin-top: 48px;
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--whisper);
+  text-align: center;
+  line-height: 2;
+  text-transform: uppercase;
+}
+.colophon-mark {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 16px;
+  text-transform: none;
+}
+
+/* SERIES TOC (all chapters in this series, collapsible) */
+.series-toc {
+  margin: 24px 0 40px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 0;
+}
+.series-toc details {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+}
+.series-toc summary {
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  padding: 8px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.series-toc summary::-webkit-details-marker { display: none; }
+.series-toc summary::before {
+  content: "▸";
+  color: var(--accent);
+  font-size: 10px;
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.series-toc details[open] summary::before { transform: rotate(90deg); }
+.series-toc ol {
+  list-style: none;
+  margin: 12px 0 8px;
+  padding: 0;
+  counter-reset: none;
+}
+.series-toc li {
+  list-style: none;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--rule);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 14px;
+  line-height: 1.55;
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.series-toc li::before { content: none; }
+.series-toc li:last-child { border-bottom: none; }
+.series-toc li a {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--ink);
+  flex: 1;
+}
+.series-toc li a:hover .toc-title { color: var(--accent); }
+.series-toc .toc-num {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 6em;
+}
+.series-toc li.current {
+  background: var(--paper-deep);
+  margin: 0 -12px;
+  padding: 9px 12px;
+}
+.series-toc li.current .toc-title {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* IMAGES */
+article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 32px auto;
+}
+
+/* CUSTOM BLOCKS (:::chain / :::highlight / :::quote / :::compare) */
+.chain-diagram {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 16px;
+  line-height: 2;
+}
+.chain-diagram .arrow {
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0.3em;
+}
+.highlight-box {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.highlight-box p { margin-bottom: 12px; }
+.highlight-box p:last-child { margin-bottom: 0; }
+.quote-block {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+}
+.quote-block .quote-text {
+  font-size: 19px;
+  line-height: 1.7;
+  font-style: italic;
+  margin: 0;
+}
+
+/* ASCIIDOC BLOCKS (classes emitted by pyasciidoc for .adoc articles):
+   admonitions / attributed quotes / image blocks / footnotes / roles */
+.admonition {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.admonition-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.admonition p { margin-bottom: 12px; }
+.admonition p:last-child { margin-bottom: 0; }
+.quoteblock { margin: 40px 0; }
+.quoteblock blockquote { margin: 0; }
+.quoteblock .attribution {
+  margin-top: 12px;
+  text-align: right;
+  font-size: 14px;
+  color: var(--whisper);
+}
+.quoteblock .attribution cite { font-style: normal; }
+.imageblock { margin: 32px 0; text-align: center; }
+.imageblock .content img { max-width: 100%; height: auto; }
+sup.footnote { font-size: 12px; }
+sup.footnote a { text-decoration: none; }
+.footnotes {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px;
+  color: var(--whisper);
+}
+.footnotes ol { padding-left: 1.5em; }
+.footnotes li { margin-bottom: 8px; }
+.footnotes .footnote-backref { text-decoration: none; margin-left: 0.3em; }
+/* Roles: [.chain] (same look as :::chain) / [.accent]#…# */
+article .chain {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+article .accent { color: var(--accent); }
+
+/* CHAPTER NAV (prev / next links) */
+.chapter-nav {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 15px;
+}
+.chapter-nav a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+}
+.chapter-nav a:hover { color: var(--accent); }
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 40px; }
+  blockquote { padding: 24px 20px 24px 36px; }
+  article pre { padding: 20px 16px; font-size: 12px; }
+  article ol li { padding-left: 48px; }
+  .series-toc .toc-num { min-width: 5em; font-size: 10px; }
+  .series-toc li { font-size: 13px; gap: 12px; }
+}
+
+/* ANIMATIONS */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta, .hero-title, .hero-subtitle, .hero-byline {
+  animation: rise 0.8s ease-out backwards;
+}
+.hero-meta     { animation-delay: 0.1s; }
+.hero-title    { animation-delay: 0.25s; }
+.hero-subtitle { animation-delay: 0.45s; }
+.hero-byline   { animation-delay: 0.65s; }
+.mermaid {
+  text-align: center;
+  margin: 2.5rem 0;
+  background: var(--paper-warm, #f5f1ea);
+  padding: 1.5rem 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.mermaid svg { max-width: 100%; height: auto; }
+
+/* WIDE LAYOUT (contents pinned as a left sidebar on wide screens) */
+@media (min-width: 1200px) {
+  body.has-toc .container {
+    max-width: 1300px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 860px);
+    column-gap: 64px;
+    justify-content: center;
+  }
+  body.has-toc .masthead,
+  body.has-toc .hero {
+    grid-column: 1 / -1;
+  }
+  /* Keep the grid item stretched to its rows and make the inner details
+     sticky instead (sticky grid items are constrained by the grid container,
+     not their grid area, in some browsers — the TOC would slide over the
+     footer otherwise). */
+  body.has-toc .series-toc {
+    grid-column: 1;
+    grid-row: 3 / span 2;
+    margin: 0;
+    padding: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+  body.has-toc .series-toc details {
+    position: sticky;
+    top: 32px;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 0 12px 12px 0;
+  }
+  /* Sidebar mode: no collapsing — the summary acts as a heading */
+  body.has-toc .series-toc summary {
+    pointer-events: none;
+    cursor: default;
+  }
+  body.has-toc .series-toc summary::before { content: none; }
+  body.has-toc .series-toc li { font-size: 14px; }
+  body.has-toc article    { grid-column: 2; grid-row: 3; }
+  body.has-toc .chapter-nav { grid-column: 2; grid-row: 4; }
+  body.has-toc .site-footer { grid-column: 1 / -1; grid-row: 5; }
+}
+
+/* ============================================================
+   DARK MODE (follows the OS color-scheme preference)
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ink: #e8e3d6;
+    --paper: #16140f;
+    --paper-deep: #211d16;
+    --accent: #e8765a;
+    --rule: #393428;
+    --whisper: #a39b88;
+    --highlight: rgba(220, 168, 78, 0.30);
+  }
+  /* Invert the paper-grain texture for a dark background */
+  body::before {
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    mix-blend-mode: screen;
+    opacity: 0.4;
+  }
+  /* Keep code blocks as a dark terminal in both modes */
+  article pre {
+    background: #0d0c0a;
+    color: #e8e3d6;
+  }
+  article pre code {
+    color: #e8e3d6;
+  }
+  /* Dark frame for Mermaid diagrams */
+  .mermaid {
+    background: #211d16;
+  }
+}
+</style>
+
+</head>
+
+<body>
+<div class="container">
+
+  <header class="masthead">
+    <div class="masthead-left"><a href="/en/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="/en/debian-server/">Growing a Debian Server with Claude</a></div>
+    <div class="masthead-right">Chapter 8 / Series</div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-meta">Chapter 8 № 08 · 2026</div>
+
+    <h1 class="hero-title">Chapter 8 — Running Your Own App</h1>
+
+    <p class="hero-subtitle">Directory layout, Python, and FastAPI</p>
+
+    <div class="hero-byline">
+      <span>2026.06.10</span>
+      <span><a href="https://aiseed.dev/debian-server/08-fastapi/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">🌐 日本語</a></span>
+    </div>
+  </section>
+
+  <!-- SERIES TOC (full chapter list for this series, current chapter highlighted) -->
+  
+
+  <article>
+    <h2>Why a Chapter on Running Your Own App</h2>
+<p>Chapter 6 handed you &quot;the service as a unit,&quot; and Chapter 7 set down &quot;the database as a foundation.&quot; A pattern for running things, and data to put on it. With both in hand, you can finally stand up your own app.</p>
+<p>This book never uses containers. There is no Docker, no Kubernetes. <strong>Apps run as a plain directory plus a venv plus a systemd service</strong> — that is this book's consistent stance. Why? Containers are convenient, but they hide what is happening underneath. What this book aims for is to lift the lid and widen the range you can fix with your own hands. So your app, too: put code in a directory, create a Python virtual environment, run it with the systemd from Chapter 6 — and that alone makes it work.</p>
+<p>But not using containers means you take on the &quot;tidying&quot; a container would otherwise have done for you. Where the code goes, where the secrets go, what is tracked in git, what gets backed up. <strong>What creates order in place of a container is the convention for your directory layout.</strong> This chapter starts by deciding that convention.</p>
+<p>And one more thing. <strong>In 2026, the app's code is written by Claude.</strong> You do not type it out line by line. The development craft you picked up in the main series, <a href="/en/claude-debian/15-claude-development/">Chapter 15 &quot;Developing with Claude&quot;</a> — put the spec into words, have it written, review it, run it and fix it — you now practice on a server. Writing the code is Claude's job; <strong>deciding the structure, running it, and protecting it is yours.</strong></p>
+<h2>Section 1 — Deciding the Directory Layout</h2>
+<p>Without a container, the convention for where things go is the whole foundation. Here I present this book's convention as one example, not as an absolute — once you understand the meaning, change it to your own taste.</p>
+<p>Put the app's home at <code>/srv/myapp/</code>. <code>/srv</code> is the place Debian has long provided for &quot;data served by this machine.&quot; Split the contents like this.</p>
+<pre><code>/srv/myapp/
+├── app/        the code itself (tracked in git)
+├── .venv/      the Python virtual environment (disposable, not in git)
+├── .env        secrets such as connection info (chmod 600, not in git)
+└── data/       files the app writes, if any (optional)
+</code></pre>
+<p>Keep four roles cleanly separate. <strong><code>app/</code> is the code</strong>, tracked in git. <strong><code>.venv/</code> is the virtual environment</strong>, created in the next section — because it is &quot;disposable, recreatable at any time,&quot; it does not go in git. <strong><code>.env</code> is secrets</strong> — it holds things like the database password, so <code>chmod 600</code> makes it readable only by its owner, and it absolutely never goes in git. <strong><code>data/</code> is where files the app writes live</strong>, but only if you need it.</p>
+<p>The data itself goes into the PostgreSQL (or SQLite) you set up in Chapter 7. You create <code>data/</code> only when you need to store &quot;files as such,&quot; like uploaded images; structured data is left to the database.</p>
+<p>Don't roll your own logs either. <strong>Leave logging to journald.</strong> You learned <code>journalctl -u myapp</code> in Chapter 6: as long as you run as a systemd service, lines the app prints to standard output are gathered into the journal automatically. Better to leave it to systemd than to create your own log file and worry about it bloating.</p>
+<p>And run the app as a <strong>dedicated system user</strong>. This is the practice of &quot;least privilege&quot; drilled in Chapter 5. Even if the app is taken over, the attacker can only do what that user can.</p>
+<pre><code class="language-bash"># Create a dedicated user named myapp (no login, home at /srv/myapp)
+sudo adduser --system --group --home /srv/myapp myapp
+</code></pre>
+<p><code>--system</code> makes a non-login system user, <code>--group</code> creates a group of the same name, and <code>--home</code> sets the home directory. Matching the database role name <code>myapp</code> from Chapter 7 with the OS user name <code>myapp</code> here keeps your head from getting tangled later.</p>
+<p>Once it exists, hand over ownership of the whole house and keep strangers out.</p>
+<pre><code class="language-bash"># Make everything under /srv/myapp belong to myapp
+sudo chown -R myapp:myapp /srv/myapp
+
+# Only the owner and its group may enter
+sudo chmod 750 /srv/myapp
+</code></pre>
+<p>In the container way of working, &quot;who may touch what&quot; was carried by the container's walls. In this book, which uses no containers, <strong>Linux ownership and permissions become those walls.</strong> The app holds only the <code>myapp</code> user's privileges and cannot write outside <code>/srv/myapp</code>. The material of the wall differs; the isolation is the same. In Section 3 we make this wall one layer thicker with systemd's sandboxing.</p>
+<p>Now make the single most useful table in this chapter. What, where, tracked in git, and is it a backup target.</p>
+<table class="comparison-table fade-in">
+<thead>
+<tr>
+<th>What</th>
+<th>Where</th>
+<th>In git</th>
+<th>How to recover</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Code</td>
+<td><code>/srv/myapp/app/</code></td>
+<td>yes</td>
+<td>restore from git</td>
+</tr>
+<tr>
+<td>Virtual environment</td>
+<td><code>/srv/myapp/.venv/</code></td>
+<td>no</td>
+<td>recreate (next section's steps)</td>
+</tr>
+<tr>
+<td>Secrets (connection info)</td>
+<td><code>/srv/myapp/.env</code></td>
+<td>no</td>
+<td><strong>back up (Chapter 10)</strong></td>
+</tr>
+<tr>
+<td>Files the app writes</td>
+<td><code>/srv/myapp/data/</code></td>
+<td>no</td>
+<td>back up (Chapter 10)</td>
+</tr>
+<tr>
+<td>The data itself</td>
+<td>PostgreSQL <code>myappdb</code></td>
+<td>no</td>
+<td>DB dump (Chapter 7 <code>pg_dump</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>Stare at this table and you see Chapter 10's backup philosophy appearing directly in the directory layout. <strong>Code can be restored from git. The venv can be recreated. The only things you cannot recreate are <code>.env</code> and the data.</strong> So what backups truly need to protect narrows down to those two. Lay out the structure this way and &quot;what do I need to protect?&quot; reads straight off the layout itself. Conversely, jumble everything into a single directory and that distinction vanishes.</p>
+<h3>Ask Claude ①: Design Your App's Layout and Tables</h3>
+<div class="quoteblock">
+<blockquote>
+<p>I want to build my own app on a Debian 13 server:
+[e.g. a personal household-budget API, a memo share for the family, a small inventory tracker — describe concretely what you want to make]</p>
+<p>Without using a container, propose a layout that follows the convention &quot;under <code>/srv/appname/</code>, split app/ (code), .venv/, .env, and data/.&quot; Along with that, design the PostgreSQL 17 tables to hold this app's data, in Chapter 7's style (with <code>CREATE TABLE</code> statements and the reason for each column's type). Include a mapping table of &quot;tracked in git / recreatable / should be backed up.&quot;</p>
+</blockquote>
+</div>
+<p>Put what you want to make into words first, and design the layout and tables in one pass. With the map of the structure in hand, every section ahead turns into &quot;filling in that map.&quot;</p>
+<h2>Section 2 — Python and FastAPI</h2>
+<p>The structure is decided. Now build the contents. There are many web frameworks, but here we use <strong>FastAPI</strong>. Three reasons. It <strong>becomes a web API with little code</strong>. Its <strong>documentation (<code>/docs</code>) grows automatically</strong>. And it is <strong>one of the frameworks Claude is most fluent in</strong>. This book's stance is &quot;have Claude write the code,&quot; so choosing something Claude is good at makes sense.</p>
+<h3>Why a venv Is Mandatory — PEP 668</h3>
+<p>First, there is a gate here. Debian 13's system Python is marked &quot;externally managed,&quot; and hitting <code>pip install</code> directly is <strong>refused</strong>.</p>
+<pre><code>error: externally-managed-environment
+</code></pre>
+<p>This is not a bug. It is <strong>a design to keep the Python the OS runs on separate from the Python for your app</strong> (set down in an agreement called PEP 668). Adding packages to the system Python on a whim could break the very Python foundation Debian itself uses. So you make a separate box of Python just for your app — a <strong>virtual environment (venv)</strong>. This is the thing positioned in Section 1 as &quot;disposable, recreatable.&quot;</p>
+<pre><code class="language-bash"># Install the package for creating venvs
+sudo apt install python3-venv
+
+# Create .venv inside /srv/myapp (as the myapp user)
+cd /srv/myapp
+sudo -u myapp python3 -m venv .venv
+
+# Install FastAPI and the PostgreSQL driver into that .venv
+sudo -u myapp .venv/bin/pip install &quot;fastapi[standard]&quot; &quot;psycopg[binary]&quot;
+</code></pre>
+<p>The point is naming <code>.venv/bin/pip</code> — the pip inside <code>.venv</code> — explicitly. That way it is not rejected by <code>externally-managed</code>. The system Python is never touched; packages land only inside <code>/srv/myapp/.venv/</code>. The Python that comes with Debian 13 is <strong>3.13</strong>. <code>fastapi[standard]</code> is FastAPI itself plus the set needed for development; <code>psycopg[binary]</code> is the driver for connecting to Chapter 7's PostgreSQL.</p>
+<h3>A Minimal FastAPI App</h3>
+<p>Here is <code>app/main.py</code> in full. It is a minimal API that just saves and lists notes, connecting to the <code>myappdb</code> you made in Chapter 7 via psycopg.</p>
+<pre><code class="language-python"># /srv/myapp/app/main.py
+import os
+import psycopg
+from fastapi import FastAPI
+from pydantic import BaseModel
+
+# Receive connection info from .env as an environment variable
+# (no secrets written in the code)
+DB = os.environ[&quot;DATABASE_URL&quot;]
+
+app = FastAPI()
+
+class Note(BaseModel):
+    body: str
+
+@app.on_event(&quot;startup&quot;)
+def init_db():
+    # Create the table at startup if it does not exist
+    with psycopg.connect(DB) as conn:
+        conn.execute(
+            &quot;CREATE TABLE IF NOT EXISTS notes (&quot;
+            &quot;id SERIAL PRIMARY KEY, body TEXT NOT NULL, &quot;
+            &quot;created TIMESTAMP DEFAULT now())&quot;
+        )
+
+@app.get(&quot;/notes&quot;)
+def list_notes():
+    # Return everything, newest first
+    with psycopg.connect(DB) as conn:
+        rows = conn.execute(
+            &quot;SELECT id, body, created FROM notes ORDER BY id DESC&quot;
+        ).fetchall()
+    return [{&quot;id&quot;: r[0], &quot;body&quot;: r[1], &quot;created&quot;: r[2]} for r in rows]
+
+@app.post(&quot;/notes&quot;)
+def add_note(note: Note):
+    # Add one row and return the assigned id
+    with psycopg.connect(DB) as conn:
+        row = conn.execute(
+            &quot;INSERT INTO notes (body) VALUES (%s) RETURNING id&quot;,
+            (note.body,),
+        ).fetchone()
+    return {&quot;id&quot;: row[0], &quot;body&quot;: note.body}
+</code></pre>
+<p>About 40 lines. This is <strong>a sample to read and understand</strong>, not something to memorize whole. Secrets (connection info) are not written in the code but received from <code>os.environ</code>; values are passed to SQL with <code>%s</code> (not string concatenation — this prevents malformed input); the input shape is fixed by pydantic's <code>Note</code>. Following just those three with your eyes is enough. For your own app, you may have Claude write it, starting from this sample.</p>
+<p>Write the connection info into <code>.env</code>. This is the secret file you set to <code>chmod 600</code> in Section 1.</p>
+<pre><code class="language-bash"># /srv/myapp/.env  (a secret file only myapp can read)
+sudo -u myapp tee /srv/myapp/.env &gt; /dev/null &lt;&lt;'EOF'
+DATABASE_URL=postgresql://myapp:your-password@localhost/myappdb
+EOF
+sudo chmod 600 /srv/myapp/.env
+</code></pre>
+<h3>Starting and Checking</h3>
+<p>To check behavior during development, invoke the uvicorn inside <code>.venv</code> (the server that runs FastAPI) by name.</p>
+<pre><code class="language-bash">cd /srv/myapp
+# Load .env, then start on 127.0.0.1:8000
+sudo -u myapp bash -c 'set -a; . .env; .venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000'
+</code></pre>
+<p>From another terminal, check with <code>curl</code>, no browser needed.</p>
+<pre><code class="language-bash"># Add one
+curl -X POST http://127.0.0.1:8000/notes -H &quot;Content-Type: application/json&quot; -d '{&quot;body&quot;:&quot;first note&quot;}'
+
+# Get the list
+curl http://127.0.0.1:8000/notes
+</code></pre>
+<p>A nice thing about FastAPI is that <strong>automatic documentation</strong> grows at <code>/docs</code>. Both <code>GET /notes</code> and <code>POST /notes</code> are listed with descriptions and forms you can try. But the server has no screen, so to view it from your own browser, use a small SSH port-forwarding trick.</p>
+<pre><code class="language-bash"># From your own PC: connect the server's port 8000 to your local 8000
+ssh -L 8000:127.0.0.1:8000 your-server
+# Keep this open, then open http://127.0.0.1:8000/docs in your local browser
+</code></pre>
+<p>Now confirm, in Chapter 5's terms, what <code>--host 127.0.0.1</code> means. <strong>Binding to 127.0.0.1</strong> means &quot;reachable only from within the same machine.&quot; The app keeps no ears open to the outside world at all. It is the same safe-side posture as PostgreSQL being closed to <code>127.0.0.1:5432</code> in Chapter 7. The only route out is Chapter 9's reverse proxy — keep the attack surface minimal with your own hands.</p>
+<h3>Ask Claude ②: Rework the Sample into an API for Your Use</h3>
+<div class="quoteblock">
+<blockquote>
+<p>Starting from the following <code>main.py</code>, rework it into an API for [your use, e.g. a household budget (record date / item / amount and also return a monthly total) / inventory / reading log]. Assume FastAPI and psycopg, connecting to PostgreSQL 17's <code>myappdb</code>.</p>
+<pre><code>[paste the main.py above as-is]
+</code></pre>
+<p>Show the reworked code, then explain what each added or changed part does. Keep the form where secrets (connection info) are not written in the code but read from .env.</p>
+</blockquote>
+</div>
+<p>The trick is to hand over the sample as-is and ask &quot;rework this as the base.&quot; Starting from a working shape, rather than writing from zero, keeps the structure and style from drifting. Read the returned code as you did the unit file in Chapter 6, having each part explained once.</p>
+<h2>Section 3 — Making It a systemd Service</h2>
+<p>Starting uvicorn by hand is only for checking. Close the terminal and it stops. <strong>Apply &quot;the pattern for making a service&quot; you learned in Chapter 6, as-is.</strong> Make it a real service that revives automatically when it falls and comes up on its own when the server reboots.</p>
+<p>Write the unit file as <code>/etc/systemd/system/myapp.service</code>.</p>
+<pre><code class="language-ini"># /etc/systemd/system/myapp.service
+[Unit]
+Description=My FastAPI app
+After=network-online.target postgresql.service
+Wants=network-online.target
+
+[Service]
+User=myapp
+Group=myapp
+WorkingDirectory=/srv/myapp
+EnvironmentFile=/srv/myapp/.env
+ExecStart=/srv/myapp/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>Chapter 6's three-section structure is alive here. Note just three differences from Chapter 6. <strong><code>After=...postgresql.service</code></strong> wakes the app only after the database has come up — the app connects to the DB, so order matters. <strong><code>EnvironmentFile=/srv/myapp/.env</code></strong> is the mechanism by which systemd reads Section 2's <code>.env</code> and turns it into environment variables, which is how <code>DATABASE_URL</code> reaches the app. <strong><code>ExecStart</code></strong> names the uvicorn inside <code>.venv</code> — using the virtual environment built in Section 2, not the system python. <code>User=myapp</code> runs it as Section 1's dedicated user.</p>
+<p>Once written, run the flow you joined into one line in Chapter 6.</p>
+<pre><code class="language-bash"># 1. After writing the unit file, have it re-read
+sudo systemctl daemon-reload
+
+# 2. Start now, and enable auto-start too
+sudo systemctl enable --now myapp
+
+# 3. Confirm it is running
+systemctl status myapp
+
+# 4. Follow the logs
+journalctl -u myapp -f
+</code></pre>
+<p>If <code>status</code> shows <code>active (running)</code>, it is already up as a service. <code>curl http://127.0.0.1:8000/notes</code> should go straight through. If <code>failed</code>, don't panic — read the error in <code>journalctl -u myapp</code>. As in Chapter 6, <strong>pasting the error straight to Claude</strong> is the basic move.</p>
+<h3>The systemd Sandbox — Isolation Without Containers</h3>
+<p>Let me answer the obvious question here: <strong>&quot;without containers, where does the isolation come from?&quot;</strong> Container isolation is, in fact, a packaging of capabilities the Linux kernel already has (namespaces, cgroups, privilege restrictions). And systemd can use those same kernel capabilities directly, with a few lines in the unit file. Add this to <code>[Service]</code>:</p>
+<pre><code class="language-ini"># Add to [Service] — systemd's sandbox
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/srv/myapp/data
+</code></pre>
+<p>From the top: &quot;no privilege escalation while running,&quot; &quot;mount the OS areas (<code>/usr</code>, <code>/etc</code>) read-only,&quot; &quot;hide other users' homes (<code>/home</code>),&quot; &quot;give this service its own private <code>/tmp</code>,&quot; &quot;allow writes only to <code>data/</code>.&quot; Now even if the app is taken over, <strong>all it can write is <code>/srv/myapp/data</code> and the log lines flowing into journald.</strong> Section 1's ownership was the first wall; this sandbox is the second.</p>
+<p>You do not need to memorize all of it at once. Run <code>systemd-analyze security myapp</code> and the &quot;exposure&quot; of your service is scored item by item. Paste that output into Claude and ask, &quot;which of these should I add to my app right now, and which might break it?&quot; — the sandbox, too, is something you design through dialogue.</p>
+<p>Remember how to re-apply after editing code, too. After changing <code>app/main.py</code>, restart the service.</p>
+<pre><code class="language-bash">sudo systemctl restart myapp
+</code></pre>
+<h3>Ask Claude ③: Diagnose a Startup Failure</h3>
+<div class="quoteblock">
+<blockquote>
+<p>My FastAPI app myapp is failing to start as a service. <code>systemctl status myapp</code> shows failed.
+The output of <code>journalctl -u myapp -p err -b --no-pager | tail -n 50</code> is this:</p>
+<pre><code>[paste the error lines as-is]
+</code></pre>
+<p>The unit file is this:</p>
+<pre><code>[paste the contents of /etc/systemd/system/myapp.service]
+</code></pre>
+<p>List candidate causes in order of likelihood, with how to check each. Show the order in which to narrow it down — which of these is suspect: .env loading, the venv path, the database connection, or user permissions.</p>
+</blockquote>
+</div>
+<p>As in Chapter 6, the trick is to paste <strong>both the unit file and the error log</strong>. With FastAPI apps the common snags are three: <code>.env</code> not being read (<code>DATABASE_URL</code> missing), a wrong <code>.venv</code> path, or a mismatched DB password. Claude cross-checks config against result and shows the way to isolate it.</p>
+<h2>Section 4 — Running the Development Loop with Claude</h2>
+<p>By now the app, the database, and the service are connected. Finally, confirm as a pattern the <strong>development loop</strong> you will use from here on. It is the server version of the craft you picked up in the main series, <a href="/en/claude-debian/15-claude-development/">Chapter 15</a>.</p>
+<p>The loop is this. <strong>Put the spec into words → Claude writes the code → you review and run it → paste the error as-is → fix.</strong> Keeping that circle turning is development in 2026. You don't write line by line; you convey accurately what you want to make, then run and protect what comes out.</p>
+<p>What matters most in this circle is <strong>how you convey requirements</strong>. Hand over three things together and the quality of the returned code jumps a level.</p>
+<ul>
+<li><strong>What data</strong> it handles (e.g. a note's body and creation time)</li>
+<li><strong>Who reads and writes it, and how</strong> (e.g. only I, adding and listing)</li>
+<li><strong>Chapter 7's schema</strong>, pasted as-is (the <code>\d notes</code> output)</li>
+</ul>
+<p>And <strong>&quot;it works&quot; is not the end.</strong> After the service is up, always run one pre-publish check. It is the last confirmation before going outside in Chapter 9.</p>
+<ul>
+<li>Are secrets in <code>.env</code>? (Not leaked into the code or git.)</li>
+<li>Is the bind <code>127.0.0.1</code>? (Confirm with <code>ss -tlnp | grep 8000</code>.)</li>
+<li>Is it running as the dedicated user (<code>myapp</code>)? (The <code>User=</code> line in <code>systemctl status myapp</code>.)</li>
+</ul>
+<p>These three confirm that Chapter 5's defenses and Section 1's structure are working correctly on top of the app. Pass here and you are ready to place it behind a reverse proxy in Chapter 9.</p>
+<h3>Ask Claude ④: Review the Pre-Publish Checklist</h3>
+<div class="quoteblock">
+<blockquote>
+<p>On a Debian 13 server I have placed a FastAPI app, myapp, at /srv/myapp and run it as a systemd service. Before publishing it to the outside in Chapter 9, I want to review the structure.
+Here is some output:</p>
+<pre><code>[systemctl status myapp output]
+</code></pre>
+<pre><code>[ss -tlnp | grep 8000 output]
+</code></pre>
+<pre><code>[ls -l /srv/myapp output (so the .env permissions are visible)]
+</code></pre>
+<p>From these, check whether (1) secrets are isolated in .env outside the code, (2) the app is bound only to 127.0.0.1, and (3) it runs as a dedicated user. If anything should be fixed before publishing, list it with priorities.</p>
+</blockquote>
+</div>
+<p>Before the irreversible step of publishing, have Claude review your structure once. Just by pasting the output, you'll find at least one hole you overlooked. This is the warm-up for Chapter 9.</p>
+<h2>Summary</h2>
+<p>What you did in this chapter:</p>
+<ol>
+<li>Confirmed the stance of running the app as &quot;a plain directory plus a venv plus systemd&quot; without a container, and that the directory-layout convention creates order in its place.</li>
+<li>Split app/, .venv/, .env, and data/ under <code>/srv/myapp/</code>, created the dedicated user <code>myapp</code>, and drew the &quot;in git / recreatable / back up&quot; mapping table.</li>
+<li>Grasped the reason for PEP 668 (externally managed), created a virtual environment with <code>python3-venv</code>, and installed FastAPI and psycopg into <code>.venv</code>.</li>
+<li>Read the minimal note API <code>app/main.py</code>, connected it to Chapter 7's <code>myappdb</code>, and checked it with <code>curl</code> (plus the <code>/docs</code> auto-docs and SSH port forwarding).</li>
+<li>Wrote <code>myapp.service</code> in Chapter 6's pattern and made it a service through daemon-reload → enable --now → status → journalctl.</li>
+<li>Made a pattern of the development loop — convey the spec, have it written, run and fix — and the pre-publish check (secrets, bind, dedicated user).</li>
+</ol>
+<p>What you hold now:</p>
+<ul>
+<li>Your own FastAPI service that runs as a dedicated user and revives when it falls (<code>myapp.service</code>).</li>
+<li>A directory layout (<code>/srv/myapp/</code>) separating git-tracked code, a disposable venv, and the secret <code>.env</code>.</li>
+<li>Your first homemade API, running connected to Chapter 7's <code>myappdb</code>.</li>
+<li>The dialogue patterns &quot;hand over the sample and have it reworked&quot; and &quot;have the structure reviewed before publishing.&quot;</li>
+</ul>
+<p>Your own app ran, on your own server, using your own database. But for now it is still a world inside <code>127.0.0.1</code>, your own machine alone. No one can see it from outside — and that is not a weakness; for now it is defense. In the next <a href="/en/debian-server/09-publishing/">Chapter 9 &quot;Opening Up to the Outside World&quot;</a>, you place this app behind a reverse proxy called Caddy, dress it in TLS, and finally bring it out to a place visible from the world. You take the irreversible step of publishing carrying Chapter 5's defenses and the pre-publish check you ran in this chapter.</p>
+<hr />
+<p>The server sub-series can be navigated from <a href="/en/debian-server/">Learning Debian with Claude — Server Edition</a>. The main desktop series is at <a href="/en/claude-debian/">all chapters</a>. Comments and discussion go to the Facebook group: <a href="https://www.facebook.com/groups/vegitage">AISeed — Biodiversity, Food, AI and Life</a>.</p>
+
+  </article>
+
+  <nav class="chapter-nav">
+  <a href="/en/debian-server/07-database/" rel="prev">&larr; Prev: Chapter 7 — The Database as a Foundation</a>
+  <a href="/en/debian-server/09-publishing/" rel="next">Next: Chapter 9 — Opening Up to the Outside World &rarr;</a>
+</nav>
+
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="Site links">
+      <div class="footer-col">
+        <h4>Series</h4>
+        <ul>
+          <li><a href="/en/insights/">Structural Analysis</a></li>
+          <li><a href="/en/blog/">Blog</a></li>
+          <li><a href="/en/ai-native-software/">AI-Native Software Development</a></li>
+          <li><a href="/en/claude-debian/">Learning Debian with Claude</a></li>
+          <li><a href="/en/debian-server/">Growing a Debian Server with Claude</a></li>
+          <li><a href="/en/phosphorus-and-farming/">Phosphorus Depletion and Natural Farming</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Site</h4>
+        <ul>
+          <li><a href="/en/">Home</a></li>
+          <li><a href="/en/natural-farming/">Natural Farming</a></li>
+          <li><a href="/en/light-farming/">Light Farming</a></li>
+          <li><a href="/gallery/">Field Notes</a></li>
+          <li><a href="/en/about/">Our Approach</a></li>
+          <li><a href="/en/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Related Sites</h4>
+        <ul>
+          <li><a href="https://aiai.aiseed.dev/">aiai — Learning in the AI Era</a></li>
+          <li><a href="https://weather.time-j.net/">Personal Weather Statistics for Japan</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="colophon">
+      <div class="colophon-mark">§</div>
+      Growing a Debian Server with Claude · Chapter 8<br>
+      Tokushima · 2026.06.10<br>
+      <a href="/en/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">CC BY 4.0</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Keep the contents sidebar expanded on wide screens (collapsible on narrow ones)
+  (function () {
+    var toc = document.querySelector(".series-toc details");
+    if (!toc) return;
+    var mq = window.matchMedia("(min-width: 1200px)");
+    function sync() { toc.open = mq.matches; }
+    sync();
+    if (mq.addEventListener) mq.addEventListener("change", sync);
+    else mq.addListener(sync);
+  })();
+
+  // Mermaid loads only on pages that contain a .mermaid block.
+  // Self-hosted (no third-party CDN dependency); SRI verified.
+  if (document.querySelector(".mermaid")) {
+    const s = document.createElement("script");
+    s.src = "/js/vendor/mermaid-11.14.0.min.js";
+    s.integrity = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk";
+    s.crossOrigin = "anonymous";
+    s.onload = () => {
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      mermaid.initialize({ startOnLoad: false, theme: prefersDark ? "dark" : "default" });
+      mermaid.run();
+    };
+    document.head.appendChild(s);
+  }
+</script>
+
+</body>
+</html>

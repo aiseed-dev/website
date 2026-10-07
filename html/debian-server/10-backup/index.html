@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://static.cloudflareinsights.com https://challenges.cloudflare.com 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://cloudflareinsights.com https://challenges.cloudflare.com">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-9FLQ963JXM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-9FLQ963JXM');
+</script>
+
+<title>第10章 データを守る — Claudeと一緒に育てるDebian サーバー | aiseed.dev</title>
+<meta name="description" content="サーバー本体は使い捨て、データだけが本体だ。OSもサービスも数十分で作り直せるが、データだけは作り直せない。何を守るかを決め、resticで暗号化バックアップを取り、systemd timerで自動化し、そして復元を実際に演習する——「復元したことのないバックアップは無いのと同じ」という原則を、Claudeと一緒に手で確かめる章。">
+<link rel="canonical" href="https://aiseed.dev/debian-server/10-backup/">
+<link rel="alternate" hreflang="ja" href="https://aiseed.dev/debian-server/10-backup/">
+<link rel="alternate" hreflang="en" href="https://aiseed.dev/en/debian-server/10-backup/">
+<link rel="alternate" hreflang="x-default" href="https://aiseed.dev/debian-server/10-backup/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="AI時代の暮らし">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:title" content="第10章 データを守る">
+<meta property="og:description" content="サーバー本体は使い捨て、データだけが本体だ。OSもサービスも数十分で作り直せるが、データだけは作り直せない。何を守るかを決め、resticで暗号化バックアップを取り、systemd timerで自動化し、そして復元を実際に演習する——「復元したことのないバックアップは無いのと同じ」という原則を、Claudeと一緒に手で確かめる章。">
+<meta property="og:url" content="https://aiseed.dev/debian-server/10-backup/">
+<meta property="og:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<meta property="article:section" content="Claudeと一緒に育てるDebian サーバー">
+<meta property="article:published_time" content="2026.06.10">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="第10章 データを守る">
+<meta name="twitter:description" content="サーバー本体は使い捨て、データだけが本体だ。OSもサービスも数十分で作り直せるが、データだけは作り直せない。何を守るかを決め、resticで暗号化バックアップを取り、systemd timerで自動化し、そして復元を実際に演習する——「復元したことのないバックアップは無いのと同じ」という原則を、Claudeと一緒に手で確かめる章。">
+<meta name="twitter:image" content="https://aiseed.dev/images/IMG_3285.jpg">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+
+<!-- フォントは Web 配信せず、すべて端末のローカルフォントで賄う。
+     和文: UDデジタル教科書体 → BIZ UDP明朝(いずれも Windows 標準搭載の
+     モリサワ UD 書体) → ヒラギノ明朝・游明朝などのシステム明朝。
+     等幅: 端末のシステム等幅フォント。 -->
+
+<style>
+/* ============================================================
+   LOCAL FONT: UDデジタル教科書体(モリサワ)
+   Windows・教育向け端末に無償搭載。端末にあれば local() で拾い、
+   なければ BIZ UDP明朝(同じく Windows 標準搭載)→ システム明朝へ
+   フォールバックする。R と B は別ファミリー名なので、太字(700)を
+   B 書体に明示的にマッピングして疑似ボールドを避ける。
+   ============================================================ */
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 400;
+  src: local("UD デジタル 教科書体 NK-R"), local("UD Digital Kyokasho NK-R"),
+       local("UD デジタル 教科書体 NP-R"), local("UD Digital Kyokasho NP-R"),
+       local("UD デジタル 教科書体 N-R"), local("UD Digital Kyokasho N-R");
+}
+@font-face {
+  font-family: "UD Digital Kyokasho";
+  font-weight: 700;
+  src: local("UD デジタル 教科書体 NK-B"), local("UD Digital Kyokasho NK-B"),
+       local("UD デジタル 教科書体 NP-B"), local("UD Digital Kyokasho NP-B"),
+       local("UD デジタル 教科書体 N-B"), local("UD Digital Kyokasho N-B");
+}
+
+/* ============================================================
+   COLOR & DESIGN TOKENS
+   aiseed.dev 全体のスタイルに合わせる場合は、ここの変数を
+   既存サイトのCSS変数に差し替える。
+   ============================================================ */
+:root {
+  --ink: #1a1a1a;
+  --paper: #f4f1ea;
+  --paper-deep: #ebe6d8;
+  --accent: #c8442a;
+  --rule: #d4cdb8;
+  --whisper: #6b665a;
+  --highlight: #f7e9c8;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* 本文: 端末にあれば UDデジタル教科書体を最優先、次に BIZ UDP明朝
+   (Windows 標準搭載)、どちらもなければヒラギノ明朝等のシステム明朝 */
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "UD Digital Kyokasho",
+               "BIZ UDPMincho", "BIZ UDP明朝",
+               "Hiragino Mincho ProN", "ヒラギノ明朝 ProN",
+               "Yu Mincho", "游明朝", "YuMincho",
+               "Noto Serif CJK JP", "Noto Serif JP", serif;
+  font-size: 17px;
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  font-feature-settings: "palt";
+  overflow-x: hidden;
+}
+
+/* グレインテクスチャ(紙の質感) */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.5;
+  mix-blend-mode: multiply;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ============================================================
+   MASTHEAD(シリーズ名・章番号)
+   ============================================================ */
+.masthead {
+  border-bottom: 3px double var(--ink);
+  padding: 24px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+}
+.masthead-left  { font-weight: 700; color: var(--ink); }
+.masthead-left a { color: inherit; text-decoration: none; }
+.masthead-left a:hover { color: var(--accent); }
+.masthead-home { color: var(--whisper); }
+.masthead-sep { margin: 0 10px; color: var(--whisper); font-weight: 400; }
+.masthead-right { font-style: italic; }
+
+/* ============================================================
+   HERO(タイトル領域)
+   ============================================================ */
+.hero {
+  padding: 80px 0 60px;
+}
+.hero-meta {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  color: var(--accent);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-meta::before {
+  content: "";
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-title {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 800;
+  font-size: clamp(32px, 5.5vw, 56px);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  margin-bottom: 24px;
+}
+.hero-title .accent {
+  color: var(--accent);
+}
+.hero-subtitle {
+  font-size: 18px;
+  line-height: 1.85;
+  color: var(--whisper);
+  max-width: 580px;
+  border-left: 2px solid var(--accent);
+  padding-left: 20px;
+  margin-top: 32px;
+}
+.hero-byline {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* ============================================================
+   ARTICLE BODY
+   ============================================================ */
+article p {
+  margin-bottom: 24px;
+}
+
+article h2 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.4;
+  margin: 72px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+  position: relative;
+}
+article h2::before {
+  content: "§";
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  color: var(--accent);
+  margin-right: 16px;
+  font-size: 22px;
+}
+
+article h3 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 600;
+  font-size: 19px;
+  margin: 40px 0 16px;
+  color: var(--ink);
+}
+article h3::before {
+  content: "—";
+  color: var(--accent);
+  margin-right: 12px;
+  font-weight: 400;
+}
+
+article strong {
+  font-weight: 700;
+  background: linear-gradient(to top, var(--highlight) 35%, transparent 35%);
+  padding: 0 2px;
+}
+
+article em {
+  font-style: normal;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  transition: color 0.2s;
+}
+article a:hover {
+  color: var(--accent);
+}
+
+/* ============================================================
+   BLOCKQUOTE
+   ============================================================ */
+blockquote {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  position: relative;
+  font-size: 18px;
+  line-height: 1.85;
+  font-style: normal;
+  color: var(--ink);
+}
+blockquote::before {
+  content: "「";
+  position: absolute;
+  top: 4px;
+  left: 8px;
+  font-size: 48px;
+  color: var(--accent);
+  opacity: 0.3;
+  font-family: "Hiragino Mincho ProN", serif;
+}
+blockquote p {
+  margin-bottom: 0;
+}
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+article thead th {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-weight: 700;
+  text-align: left;
+  padding: 14px 16px;
+  border-bottom: 2px solid var(--ink);
+  color: var(--ink);
+}
+article tbody td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+article tbody tr:last-child td {
+  border-bottom: none;
+}
+@media (max-width: 720px) {
+  article table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ============================================================
+   ORDERED LIST(番号付きリスト)
+   ============================================================ */
+article ol {
+  margin: 32px 0;
+  counter-reset: item;
+  padding: 0;
+}
+article ol li {
+  list-style: none;
+  position: relative;
+  padding: 16px 0 16px 56px;
+  border-bottom: 1px dashed var(--rule);
+  counter-increment: item;
+}
+article ol li::before {
+  content: counter(item, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 16px;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+/* 通常のul(章末の関連リンクなど) */
+article ul {
+  margin: 24px 0;
+  padding-left: 1.5em;
+}
+article ul li {
+  margin-bottom: 8px;
+}
+
+/* ============================================================
+   CODE BLOCK(疑似ターミナル風)
+   ============================================================ */
+article pre {
+  margin: 40px 0;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 24px 28px;
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 13px;
+  line-height: 1.8;
+  position: relative;
+  overflow-x: auto;
+}
+article pre::before {
+  content: "● ● ●";
+  position: absolute;
+  top: 8px;
+  left: 12px;
+  font-size: 8px;
+  color: var(--whisper);
+  letter-spacing: 4px;
+}
+article pre code {
+  display: block;
+  padding-top: 16px;
+  white-space: pre;
+}
+
+/* インラインコード */
+article code {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 0.9em;
+  background: var(--paper-deep);
+  padding: 2px 6px;
+  border-radius: 2px;
+  color: var(--ink);
+}
+article pre code {
+  background: transparent;
+  padding: 16px 0 0 0;
+  color: var(--paper);
+}
+
+/* ============================================================
+   HORIZONTAL RULE(本文中の区切り)
+   ============================================================ */
+article hr {
+  border: none;
+  text-align: center;
+  margin: 64px 0;
+  height: 1em;
+}
+article hr::before {
+  content: "◆ ◆ ◆";
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 14px;
+  color: var(--accent);
+  letter-spacing: 0.5em;
+}
+
+/* ============================================================
+   RELATED LINKS(章末の関連記事)
+   ============================================================ */
+.related-links {
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.related-links h3 {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: var(--whisper);
+  margin: 0 0 20px;
+  font-weight: 600;
+}
+.related-links h3::before {
+  content: none;
+}
+.related-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.related-links li {
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--rule);
+  margin-bottom: 0;
+}
+.related-links li:last-child {
+  border-bottom: none;
+}
+.related-links a {
+  text-decoration: none;
+  color: var(--ink);
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.related-links .related-tag {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.related-links a:hover .related-title {
+  color: var(--accent);
+}
+
+/* ============================================================
+   FOOTER(サイト内メニュー+奥付)
+   ============================================================ */
+.site-footer {
+  margin-top: 96px;
+  border-top: 3px double var(--ink);
+  padding-top: 48px;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px 48px;
+}
+.footer-col h4 {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.footer-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer-col li {
+  padding: 6px 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.footer-col a {
+  color: var(--ink);
+  text-decoration: none;
+}
+.footer-col a:hover { color: var(--accent); }
+
+.colophon {
+  margin-top: 48px;
+  padding: 32px 0 40px;
+  border-top: 1px solid var(--rule);
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  color: var(--whisper);
+  text-align: center;
+  line-height: 2;
+}
+.colophon-mark {
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "Hiragino Mincho ProN", serif;
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+/* ============================================================
+   SERIES TOC(全章一覧・折りたたみ式)
+   ============================================================ */
+.series-toc {
+  margin: 24px 0 40px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 8px 0;
+}
+.series-toc details {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+}
+.series-toc summary {
+  cursor: pointer;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--whisper);
+  font-weight: 700;
+  padding: 8px 0;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.series-toc summary::-webkit-details-marker { display: none; }
+.series-toc summary::before {
+  content: "▸";
+  color: var(--accent);
+  font-size: 10px;
+  display: inline-block;
+  transition: transform 0.15s ease;
+}
+.series-toc details[open] summary::before { transform: rotate(90deg); }
+.series-toc ol {
+  list-style: none;
+  margin: 12px 0 8px;
+  padding: 0;
+  counter-reset: none;
+}
+.series-toc li {
+  list-style: none;
+  padding: 9px 0;
+  border-bottom: 1px dashed var(--rule);
+  font-family: "UD Digital Kyokasho", "BIZ UDPMincho", "BIZ UDP明朝", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  font-size: 14px;
+  line-height: 1.55;
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+}
+.series-toc li::before { content: none; }
+.series-toc li:last-child { border-bottom: none; }
+.series-toc li a {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  text-decoration: none;
+  color: var(--ink);
+  flex: 1;
+}
+.series-toc li a:hover .toc-title { color: var(--accent); }
+.series-toc .toc-num {
+  font-family: "SF Mono", Menlo, Consolas, "BIZ UDGothic", "BIZ UDゴシック", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 5em;
+}
+.series-toc li.current {
+  background: var(--paper-deep);
+  margin: 0 -12px;
+  padding: 9px 12px;
+}
+.series-toc li.current .toc-title {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ============================================================
+   IMAGES
+   ============================================================ */
+article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 32px auto;
+}
+
+/* ============================================================
+   CUSTOM BLOCKS(:::chain / :::highlight / :::quote / :::compare)
+   ============================================================ */
+.chain-diagram {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+.chain-diagram .arrow {
+  color: var(--accent);
+  font-weight: 700;
+  margin: 0 0.3em;
+}
+.highlight-box {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.highlight-box p { margin-bottom: 12px; }
+.highlight-box p:last-child { margin-bottom: 0; }
+.quote-block {
+  margin: 40px 0;
+  padding: 32px 40px;
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+}
+.quote-block .quote-text {
+  font-size: 18px;
+  line-height: 1.85;
+  margin: 0;
+}
+
+/* ============================================================
+   ASCIIDOC BLOCKS(pyasciidoc が出力するクラス。.adoc 記事用)
+   admonition / 帰属つき引用 / 画像ブロック / 脚注 / ロール
+   ============================================================ */
+.admonition {
+  background: var(--paper-deep);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+}
+.admonition-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.admonition p { margin-bottom: 12px; }
+.admonition p:last-child { margin-bottom: 0; }
+.quoteblock { margin: 40px 0; }
+.quoteblock blockquote { margin: 0; }
+.quoteblock .attribution {
+  margin-top: 12px;
+  text-align: right;
+  font-size: 14px;
+  color: var(--whisper);
+}
+.quoteblock .attribution cite { font-style: normal; }
+.imageblock { margin: 32px 0; text-align: center; }
+.imageblock .content img { max-width: 100%; height: auto; }
+sup.footnote { font-size: 12px; }
+sup.footnote a { text-decoration: none; }
+.footnotes {
+  margin-top: 64px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  font-size: 14px;
+  color: var(--whisper);
+}
+.footnotes ol { padding-left: 1.5em; }
+.footnotes li { margin-bottom: 8px; }
+.footnotes .footnote-backref { text-decoration: none; margin-left: 0.3em; }
+/* ロール: [.chain](:::chain と同じ見た目)/ [.accent]#…# */
+article .chain {
+  background: var(--paper-deep);
+  border-left: 4px solid var(--accent);
+  padding: 24px 28px;
+  margin: 32px 0;
+  font-size: 15px;
+  line-height: 2.2;
+}
+article .accent { color: var(--accent); }
+
+/* ============================================================
+   CHAPTER NAV(前後の記事へのリンク)
+   ============================================================ */
+.chapter-nav {
+  margin-top: 64px;
+  padding: 24px 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  font-size: 14px;
+}
+.chapter-nav a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 4px;
+}
+.chapter-nav a:hover { color: var(--accent); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  .container { padding: 0 20px; }
+  .hero { padding: 48px 0 40px; }
+  blockquote { padding: 24px 20px 24px 28px; }
+  article pre { padding: 20px 16px; font-size: 12px; }
+  article ol li { padding-left: 48px; }
+  .series-toc .toc-num { min-width: 4em; font-size: 10px; }
+  .series-toc li { font-size: 13px; gap: 12px; }
+}
+
+/* ============================================================
+   ANIMATIONS
+   ============================================================ */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-meta, .hero-title, .hero-subtitle, .hero-byline {
+  animation: rise 0.8s ease-out backwards;
+}
+.hero-meta     { animation-delay: 0.1s; }
+.hero-title    { animation-delay: 0.25s; }
+.hero-subtitle { animation-delay: 0.45s; }
+.hero-byline   { animation-delay: 0.65s; }
+.mermaid {
+  text-align: center;
+  margin: 2.5rem 0;
+  background: var(--paper-warm, #f5f1ea);
+  padding: 1.5rem 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+.mermaid svg { max-width: 100%; height: auto; }
+
+/* ============================================================
+   WIDE LAYOUT(広い画面では目次を左サイドバーに常時展開)
+   ============================================================ */
+@media (min-width: 1200px) {
+  body.has-toc .container {
+    max-width: 1320px;
+    display: grid;
+    grid-template-columns: 280px minmax(0, 880px);
+    column-gap: 64px;
+    justify-content: center;
+  }
+  body.has-toc .masthead,
+  body.has-toc .hero {
+    grid-column: 1 / -1;
+  }
+  /* グリッドアイテム自体は行いっぱいに伸ばし、内側の details を sticky に
+     する(sticky なグリッドアイテムはグリッドエリアではなくコンテナ全体で
+     制約されるブラウザ挙動があり、フッターに重なってしまうため)。 */
+  body.has-toc .series-toc {
+    grid-column: 1;
+    grid-row: 3 / span 2;
+    margin: 0;
+    padding: 0;
+    border-top: none;
+    border-bottom: none;
+  }
+  body.has-toc .series-toc details {
+    position: sticky;
+    top: 32px;
+    max-height: calc(100vh - 64px);
+    overflow-y: auto;
+    padding: 0 12px 12px 0;
+  }
+  /* サイドバーでは折りたたみを無効化し、見出しとして表示 */
+  body.has-toc .series-toc summary {
+    pointer-events: none;
+    cursor: default;
+  }
+  body.has-toc .series-toc summary::before { content: none; }
+  body.has-toc .series-toc li { font-size: 13.5px; }
+  body.has-toc article    { grid-column: 2; grid-row: 3; }
+  body.has-toc .chapter-nav { grid-column: 2; grid-row: 4; }
+  body.has-toc .site-footer { grid-column: 1 / -1; grid-row: 5; }
+}
+
+/* ============================================================
+   DARK MODE(OS の配色設定に追従して自動で暗色に切り替え)
+   ============================================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --ink: #e8e3d6;
+    --paper: #16140f;
+    --paper-deep: #211d16;
+    --accent: #e8765a;
+    --rule: #393428;
+    --whisper: #a39b88;
+    --highlight: rgba(220, 168, 78, 0.30);
+  }
+  /* 紙の質感(グレイン)を暗色背景向けに反転 */
+  body::before {
+    background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px);
+    mix-blend-mode: screen;
+    opacity: 0.4;
+  }
+  /* コードブロックは両モードとも暗いターミナル調を維持 */
+  article pre {
+    background: #0d0c0a;
+    color: #e8e3d6;
+  }
+  article pre code {
+    color: #e8e3d6;
+  }
+  /* Mermaid 図の枠を暗色に */
+  .mermaid {
+    background: #211d16;
+  }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- MASTHEAD(ホーム › シリーズ目次) -->
+  <header class="masthead">
+    <div class="masthead-left"><a href="/" class="masthead-home">aiseed.dev</a><span class="masthead-sep">›</span><a href="/debian-server/">Claudeと一緒に育てるDebian サーバー</a></div>
+    <div class="masthead-right">第10章 / Series</div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-meta">第10章 № 10 · 2026</div>
+
+    <h1 class="hero-title">第10章 データを守る</h1>
+
+    <p class="hero-subtitle">バックアップを自動にし、復元を演習する</p>
+
+    <div class="hero-byline">
+      <span>2026.06.10</span>
+      <span><a href="https://aiseed.dev/en/debian-server/10-backup/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">🌐 EN</a></span>
+    </div>
+  </section>
+
+  <!-- SERIES TOC(全章一覧・現在の章をハイライト) -->
+  
+
+  <!-- ARTICLE BODY -->
+  <article>
+    <h2>なぜバックアップが独立した章か</h2>
+<p>ここまでの章で、あなたはサーバーを一台組み立て、サービスを動かし、外の世界に公開するところまで来た。ここで一度、立ち止まって考えてほしい。<strong>もし今、このサーバーのディスクが物理的に壊れたら、何が失われるか。</strong></p>
+<p>OSは失われる。だが、それは惜しくない。第3章でやった最小インストールは、手順さえ残っていれば数十分でやり直せる。第6章で作ったサービスは unit file から数分で戻せるし、第7章で入れたPostgreSQLも <code>apt</code> で入れ直せる。<strong>サーバー本体は、思想として最初から使い捨てだ。</strong> 第3章で最小インストールを勧めたのも、第7章でデータをデータベースに集めたのも、実はこの章への伏線だった——「作り直せるもの」と「作り直せない データ」を、最初から分けて作ってきた。</p>
+<p>作り直せないものが一つだけある。<strong>データだ。</strong> 家族の写真、仕事のファイル、メモ、自作アプリがため込んできた記録。これらは世界に一つしかない。ディスクと一緒に消えたら、もう戻らない。</p>
+<p>だから、この章は独立している。<strong>サーバー編で最も重要な章はここだ</strong>と言ってもいい。守るべきものを決め、それを自動で取り、そして——ここが肝心だが——<strong>復元を実際に演習する</strong>。</p>
+<h2>第一節 何を守るかを決める</h2>
+<h3>守る対象の棚卸し</h3>
+<p>闇雲に「全部バックアップする」のは、実は下手なやり方だ。OSのシステムファイルまで丸ごと取ると、バックアップは肥大化し、復元も遅くなる。先に「何が作り直せて、何が作り直せないか」を仕分けする。</p>
+<p>サーバーで守るべきものは、おおむね三種類に分かれる。</p>
+<ol>
+<li><strong>アプリのデータ</strong>：第7章のPostgreSQLとSQLiteの中身、<code>/srv/photos</code> や <code>~/data</code> のファイル群など。これが本体中の本体だ。</li>
+<li><strong>設定</strong>：第9章で書いた <code>Caddyfile</code>、第6章で作った自作の systemd unit、第7章で触ったPostgreSQLの設定、<code>/etc</code> 以下に手で加えた変更。</li>
+<li><strong>この本を通じて作ってきたメモ</strong>：<code>my-server.md</code>、各章の「Claudeに聞いてみよう」の回答集、トラブル解決ログ。</li>
+</ol>
+<p>OSそのもの（<code>/usr</code> や <code>/bin</code>、パッケージで入ったファイル）は、原則として守らなくていい。それらは <code>apt</code> で作り直せる。</p>
+<h3>設定はgitに、データはバックアップツールに——二本立て</h3>
+<p>ここで一つ、作法を分ける。</p>
+<p><strong>設定（テキストファイル）は、git で管理する。</strong> これは本編<a href="/claude-debian/12-config-management/">第12章「設定管理の作法」</a>でデスクトップ向けにやったことの、そのままサーバー版だ。<code>Caddyfile</code> も自作 unit も、すべてテキストだ。テキストは git が最も得意とする。変更の履歴が残り、「いつ・なぜこの設定にしたか」が後から辿れる。</p>
+<p><strong>データ（写真や文書やデータベース）は、バックアップツールで取る。</strong> こちらはテキストではなく、量も大きく、頻繁に変わる。git には向かない。専用のバックアップツール（このあと使う restic）の仕事だ。</p>
+<p>二本立てにする理由はこうだ。設定を git に置いておけば、復旧は「git clone して、データを書き戻す」の二段になる。設定とデータが分かれていると、何が壊れても落ち着いて対処できる。</p>
+<h3>3-2-1ルール</h3>
+<p>バックアップの世界に、古くからの目安がある。<strong>3-2-1ルール</strong>だ。データのコピーを <strong>3</strong> つ持つ（本番1つ＋バックアップ2つ）、<strong>2</strong> 種類の異なる媒体に置く（例：内蔵SSDと外付けディスク）、そのうち <strong>1</strong> つは別の場所（オフサイト）に置く。一箇所が火事や水害や盗難で消えても、別の場所のコピーが生き残る、という考え方だ。個人サーバーなら厳密に守らなくてもいいが、「コピーは一つでは不安、できれば離れた場所にも一つ」という感覚だけは持っておきたい。</p>
+<h3>Claudeに聞いてみよう①：守るべきものリストを作る</h3>
+<div class="quoteblock">
+<blockquote>
+<p>私はDebianサーバーで次のものを動かしています：〔第8章までで動かしているもの一覧。例：写真サーバー（データは /srv/photos）、ファイル共有（~/share）、自作のメモアプリ（DBはPostgreSQLの notesdb）……〕</p>
+<p>これらについて、「データ（作り直せない・バックアップ必須）」「設定（テキスト・gitで管理）」「OS/再作成可能（守らなくてよい）」の三つに仕分けて、表にしてください。データに分類したものについては、サーバー上の具体的なパスの候補と、バックアップで取りこぼしやすい場所（データベースは稼働中にファイルを直接コピーすると壊れる、等の注意点）も添えてください。</p>
+</blockquote>
+</div>
+<p>自分の構成を渡すと、「そのDBは稼働中のファイルコピーでは壊れる。ダンプを取るべきだ」「その設定はgit側に寄せられる」といった、自分では見落としがちな点が表に並ぶ。守るべきものリストは、この章の出発点だ。</p>
+<h2>第二節 restic で取る</h2>
+<h3>なぜ restic か</h3>
+<p>バックアップツールは数多いが、このサーバー編では <strong>restic</strong> を使う。理由は四つ。</p>
+<ul>
+<li><strong>一本のバイナリで動く</strong>：複雑な依存関係がない。<code>apt</code> 一発で入る。</li>
+<li><strong>暗号化が標準</strong>：バックアップは最初から暗号化される。外付けディスクを盗まれても、鍵がなければ中身は読めない。</li>
+<li><strong>重複排除する</strong>：同じデータは一度しか保存しない。毎日取っても、ディスクは思ったほど増えない。</li>
+<li><strong>宛先が多彩</strong>：ローカルディスク、別のマシン、S3互換ストレージ、rclone経由のクラウドなど、同じ操作で様々な場所に取れる。</li>
+</ul>
+<p>インストールは一行だ。</p>
+<pre><code class="language-bash">sudo apt update
+sudo apt install restic
+</code></pre>
+<h3>ローカルUSBディスクに取ってみる</h3>
+<p>まずは一番分かりやすい、外付けUSBディスクへのバックアップで感覚を掴む。USBディスクを <code>/mnt/backup</code> にマウントしてある前提で進める。</p>
+<p>最初に一度だけ、<strong>リポジトリ（バックアップの保管庫）を初期化</strong>する。</p>
+<pre><code class="language-bash"># リポジトリを初期化する（最初の一度だけ）
+restic init -r /mnt/backup/repo
+# パスワード（リポジトリ鍵）の設定を求められる。後述するが、これは絶対に失くしてはいけない
+</code></pre>
+<p>初期化できたら、実際にバックアップを取る。第一節で仕分けた「守るべきもの」を指定する。</p>
+<pre><code class="language-bash"># データと設定を指定してバックアップ
+restic backup -r /mnt/backup/repo /srv/photos /srv/notes ~/share /etc
+
+# Caddyfile や自作 unit を集めた git 作業ディレクトリも忘れずに
+restic backup -r /mnt/backup/repo ~/server-config
+</code></pre>
+<p>取れたかどうかは、スナップショット一覧で確認する。</p>
+<pre><code class="language-bash"># これまでに取ったバックアップ（スナップショット）の一覧
+restic snapshots -r /mnt/backup/repo
+</code></pre>
+<p>日付とIDの並んだ一覧が出れば成功だ。二回目以降は、変わったところだけが追加される（重複排除のおかげで速いし小さい）。</p>
+<h3>データベースは「ダンプしてから」取る</h3>
+<p>一つだけ、特別扱いが要るものがある。<strong>稼働中のデータベースだ。</strong> 第7章で入れたPostgreSQLのデータファイルを、動いたまま restic で直接コピーすると、書き込みの途中を写してしまい、<strong>戻せないバックアップ</strong>ができることがある。</p>
+<p>正しい型は、「<strong>まずダンプ（テキストへの書き出し）、それをバックアップ</strong>」だ。</p>
+<pre><code class="language-bash">mkdir -p ~/backup-staging
+
+# PostgreSQL：データベースをSQLテキストに書き出す
+sudo -u postgres pg_dump myappdb &gt; ~/backup-staging/myappdb.sql
+
+# SQLite：稼働中でも安全なコピーを作る
+sqlite3 ~/data/notes.db &quot;.backup $HOME/backup-staging/notes-backup.db&quot;
+
+# 書き出した先ごと restic で取る
+restic backup -r /mnt/backup/repo ~/backup-staging
+</code></pre>
+<p><code>pg_dump</code> の出力はただのSQLテキストなので、中身を自分の目でもClaudeでも点検できる。戻すときは <code>psql myappdb &lt; myappdb.sql</code> で流し込むだけだ。第7章の最後で予告した「データを守る入口」が、ここで本流に合流する。</p>
+<h3>リモートの宛先</h3>
+<p>3-2-1ルールを思い出してほしい。外付けディスクへのバックアップは「別の媒体」までは満たすが、「別の場所」はまだだ。restic は宛先を変えるだけで、離れた場所にも取れる。</p>
+<ul>
+<li><strong>別マシン（SFTP経由）</strong>：<code>-r sftp:ユーザー@別のホスト:/path/to/repo</code></li>
+<li><strong>S3互換ストレージ</strong>：環境変数で鍵を渡し、<code>-r s3:...</code> を指定</li>
+<li><strong>rclone経由</strong>：rclone が対応する多数のクラウドへ、<code>-r rclone:remote:path</code></li>
+</ul>
+<p>ここで、本書の前提（データは自分で管理する）とクラウド宛先の関係をはっきりさせておく。<strong>restic は、バックアップを手元で暗号化してから送る。</strong> だから宛先にクラウドを使っても、事業者に見えるのは意味を持たない暗号データの塊だけで、鍵はあなたの手元にある。「別の場所」を二台目の機械や実家・職場のディスクで満たせるなら、それが前提に最も素直だ。本体がVPSにあるなら、自宅の機械を「別の場所」にする逆向きのバックアップが自然だ。だが暗号化済みのバックアップに限っては、クラウドを借りても主導権は手放していない——線はここに引ける。</p>
+<p>具体的なコマンドは、あなたが選ぶ宛先によって細部が変わる。自分の宛先に合わせたコマンドは、Claudeに書いてもらうのが速い（後述の枠②）。</p>
+<h3>鍵を失くしたバックアップは、ただの乱数</h3>
+<p>ここで最も大事な注意を一つ。restic のバックアップは暗号化されている。つまり、<strong>初期化のときに設定したパスワード（リポジトリ鍵）を失くすと、バックアップは永遠に復元できない。</strong> 暗号化された乱数の山が残るだけだ。</p>
+<p>だから鍵は、サーバーの外に、安全に保管する。パスワードマネージャに入れる、紙に書いて金庫に置く、信頼できる別の場所に控える——方法は何でもいいが、<strong>「サーバーが丸ごと消えても手元に残る場所」</strong>に置くこと。サーバーの中だけに鍵を置いていたら、サーバーが壊れた瞬間に鍵も一緒に消える。これでは本末転倒だ。</p>
+<h3>Claudeに聞いてみよう②：バックアップ用のコマンドを自分の宛先向けに書かせる</h3>
+<div class="quoteblock">
+<blockquote>
+<p>私はDebianサーバーで restic を使ってバックアップを取りたいです。守る対象（パス）：〔第一節①で作った表のデータ部分を貼る〕バックアップの宛先：〔例：自宅NASのSFTP / Backblaze B2 / rclone経由のGoogle Drive など、決まっている範囲で〕</p>
+<p>この宛先向けに、(1) リポジトリの初期化コマンド (2) バックアップを取るコマンド (3) スナップショットを確認するコマンド を書いてください。パスワード（リポジトリ鍵）と、宛先の認証情報を、どこに・どう保管するのが安全かも教えてください。各コマンドが何をしているか一行ずつ説明を添えてください。</p>
+</blockquote>
+</div>
+<p>宛先ごとの細かな違い（環境変数の名前、URLの書式）は、自分で覚える必要はない。Claudeに自分の構成を渡し、出てきたコマンドを一行ずつ理解しながら使う。これがこの本の流儀だ。</p>
+<h2>第三節 自動化する</h2>
+<h3>第6章の systemd timer をそのまま使う</h3>
+<p>バックアップは「気が向いたときに手で取る」では続かない。必ず取り忘れる。だから自動化する。ここで使う道具は、第6章で学んだ <strong>systemd timer</strong> だ。新しいことは何も覚えなくていい——あのとき身につけた仕組みを、バックアップに当てはめるだけだ。</p>
+<p>まず、バックアップを実行するサービスを書く。</p>
+<pre><code class="language-ini"># /etc/systemd/system/backup.service
+[Unit]
+Description=restic backup of server data
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+# 鍵と宛先は環境ファイルに分けておく（中身は次の説明を参照）
+EnvironmentFile=/etc/restic/backup.env
+# データベースは先にダンプしてから取る（第二節）
+ExecStartPre=/bin/sh -c 'runuser -u postgres -- pg_dump myappdb &gt; /srv/backup-staging/myappdb.sql'
+ExecStart=/usr/bin/restic backup /srv/photos /srv/notes /srv/backup-staging /home/youruser/share /etc
+# 古いスナップショットを整理する（直近7日 + 4週間 + 6ヶ月分を残す）
+ExecStartPost=/usr/bin/restic forget --prune --keep-daily 7 --keep-weekly 4 --keep-monthly 6
+</code></pre>
+<p>鍵と宛先は、サービス本体に直書きせず、環境ファイルに分ける。</p>
+<pre><code class="language-bash"># /etc/restic/backup.env （root だけが読める権限にすること）
+RESTIC_REPOSITORY=/mnt/backup/repo
+RESTIC_PASSWORD=（リポジトリ鍵）
+</code></pre>
+<pre><code class="language-bash"># 環境ファイルは root 以外に読まれないよう、権限を絞る
+sudo chmod 600 /etc/restic/backup.env
+</code></pre>
+<p>次に、それを「毎日決まった時刻に動かす」タイマーを書く。</p>
+<pre><code class="language-ini"># /etc/systemd/system/backup.timer
+[Unit]
+Description=Run restic backup daily
+
+[Timer]
+# 毎日 04:00 に実行（時刻は負荷の低い時間帯を選ぶ）
+OnCalendar=daily
+# サーバーが止まっていて実行を逃したら、起動後に取り返す
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+</code></pre>
+<p>タイマーを有効にして起動する。</p>
+<pre><code class="language-bash">sudo systemctl daemon-reload
+sudo systemctl enable --now backup.timer
+</code></pre>
+<h3>動いているか確認する</h3>
+<p>タイマーが仕込めたら、ちゃんと予定されているか確認する。</p>
+<pre><code class="language-bash"># 登録されているタイマーの一覧と、次回実行予定の時刻
+systemctl list-timers
+
+# バックアップの実行結果（成功したか、失敗したか）を見る
+journalctl -u backup.service
+</code></pre>
+<p><code>list-timers</code> に <code>backup.timer</code> が並び、次回実行時刻が表示されていれば、自動化は完成だ。</p>
+<h3>失敗に気付く仕組み</h3>
+<p>自動化には落とし穴が一つある。<strong>「自動で取れているつもり」が一番危ない。</strong> ある日ディスクが満杯になって、あるいは外付けが外れていて、何週間もバックアップが失敗し続けていた——いざ復元しようとしたら何もなかった、という事故は実際によくある。</p>
+<p>凝った監視を組むのは第11章に譲るとして、まずは素朴な運用から始めればいい。<strong>週に一度、自分の目で <code>restic snapshots</code> を見る。</strong> 一覧の一番上の日付が、ちゃんと「昨日」や「今朝」になっているか確かめる。これだけで、「気付かないうちに止まっていた」を防げる。</p>
+<pre><code class="language-bash"># 週に一度、これを自分の目で見る習慣をつける
+restic snapshots -r /mnt/backup/repo | tail
+</code></pre>
+<h2>第四節 復元の演習</h2>
+<h3>復元したことのないバックアップは、無いのと同じ</h3>
+<p>この章で一番伝えたいことを書く。<strong>復元したことのないバックアップは、無いのと同じだ。</strong></p>
+<p>バックアップは「取れている」だけでは半分でしかない。本当に大事なのは「いざというときに戻せる」ことだ。だが、取りっぱなしで一度も復元を試していないバックアップは、本当に戻せるかどうか誰も知らない。鍵を取り違えていた、肝心のディレクトリを指定し忘れていた、ファイルが壊れていた——こうした「いざ戻そうとしたら戻らなかった」は、復元を一度も演習していないから起きる。</p>
+<p>だから、取れたら<strong>必ず一度、復元してみる</strong>。</p>
+<h3>実際に復元してみる</h3>
+<p>復元の演習は、本番を上書きしないよう、別の場所（<code>/tmp/restore-test</code> など）に書き出す形でやる。これなら何も壊さずに試せる。</p>
+<pre><code class="language-bash"># 最新のスナップショットを、テスト用の場所に復元してみる
+restic restore latest -r /mnt/backup/repo --target /tmp/restore-test
+
+# 中身を確認する。守りたかったファイルが、ちゃんと入っているか
+ls -R /tmp/restore-test
+</code></pre>
+<p><code>/tmp/restore-test</code> の中に、写真も文書も設定ファイルも、見覚えのある形で並んでいれば成功だ。<strong>この瞬間、あなたのバックアップは「あるかもしれないもの」から「確かに戻せるもの」に変わる。</strong> 確認が終わったらテスト用ディレクトリは消してよい。</p>
+<h3>上級演習：サーバー再構築</h3>
+<p>もう一段進んだ演習を提案しておく。<strong>もう一台（または手元のVMやVPS）に、ゼロからサーバーを再現してみる</strong>のだ。</p>
+<p>手順はこうなる。第3章の最小インストールから始め、git に置いた設定（<code>Caddyfile</code>、自作 unit、セットアップメモ）を clone し、restic でデータを書き戻し、データベースは <code>pg_dump</code> のダンプを <code>psql</code> で流し込んで戻す。これで、本番とほぼ同じサーバーが新しい機械の上に立ち上がるはずだ。</p>
+<p>この演習をやり遂げると、二つのことが手に入る。一つは「本当に最初から作り直せる」という確信。もう一つは、再構築の途中で必ず見つかる<strong>「手順に抜けていたもの」</strong>——メモし忘れていた設定、git に入れ忘れていたファイル。それを見つけて埋めておけば、本物の「いざ」のときに慌てずに済む。第11章で扱う「構成のコード化」は、ここに直結する。</p>
+<h3>Claudeに聞いてみよう③：復元演習の手順書を作る</h3>
+<div class="quoteblock">
+<blockquote>
+<p>私は restic で次の構成のバックアップを取っています：守っているデータ：〔パス一覧〕設定の管理：〔git リポジトリに Caddyfile / 自作 unit / セットアップメモを置いている、等〕バックアップ宛先：〔ローカルUSB / SFTP / クラウド など〕</p>
+<p>この構成を、新しい機械（VPSまたはVM）にゼロから再現する「サーバー再構築演習」の手順書を作ってください。
+(1) OSの最小インストール後にやること (2) 設定をgitから戻す手順 (3) resticからデータを戻す手順 (4) 各サービスが正しく動いているか確認する方法 の順で、私の構成に合わせて具体的に。演習の途中で「手順に抜けがあった」と気づくためのチェックリストも添えてください。</p>
+</blockquote>
+</div>
+<p>この手順書は、演習のためだけのものではない。本物の災害が起きたとき、これがそのまま復旧マニュアルになる。一度作って git に置いておけば、未来のあなた（知識が抜けた一年後のあなた）を救う。</p>
+<h2>まとめ</h2>
+<p>この章でやったこと：</p>
+<ol>
+<li>「サーバー本体は使い捨て、データだけが本体」という思想を確認し、守るべきものを棚卸しした</li>
+<li>設定は git に、データは restic に、という二本立ての方針を決めた</li>
+<li>restic でローカルディスクへ実際にバックアップを取り、スナップショットを確認した</li>
+<li>systemd timer でバックアップを毎日自動化し、<code>list-timers</code> と <code>journalctl</code> で動作を確かめた</li>
+<li><strong>復元を実際に演習し</strong>、バックアップが「確かに戻せるもの」であることを確認した</li>
+<li>サーバー再構築という上級演習で、「最初から作り直せる」確信を手に入れた</li>
+</ol>
+<p>手元に残ったもの：</p>
+<ul>
+<li>暗号化されたバックアップリポジトリと、安全な場所に保管したリポジトリ鍵</li>
+<li><code>backup.service</code> と <code>backup.timer</code>（毎日自動でバックアップを取る仕組み）</li>
+<li>「守るべきものリスト」と「復元演習の手順書」（これらは git に置く）</li>
+<li>「いざとなれば作り直せる」という、運用の余裕を生む安心感</li>
+</ul>
+<p>これで、サーバーが物理的に壊れても、あなたは慌てない。OSもサービスも作り直せて、データは戻せる。最後の第11章では、この安心感を土台に、サーバーを<strong>長く育てていく</strong>話をする。週に15分の見守りで回す設計、保守のリズム、壊れたときの型、そして「次の一手」——一台のサーバーを、生き物のように手入れして育てる作法だ。</p>
+<hr />
+<p>シリーズ全体は<a href="/debian-server/">Claudeと一緒に学ぶDebian サーバー編 一覧</a>から辿れる。本編（デスクトップ編）は<a href="/claude-debian/">全章一覧</a>へ。コメント・議論は Facebook グループへ：<a href="https://www.facebook.com/groups/vegitage">AISeed — 生物多様性・食料・AIと暮らし</a></p>
+
+  </article>
+
+  <!-- CHAPTER NAV(前後の記事) -->
+  <nav class="chapter-nav">
+  <a href="/debian-server/09-publishing/" rel="prev">&larr; 前: 第9章 外の世界に公開する</a>
+  <a href="/debian-server/11-operations/" rel="next">次: 第11章 サーバーを育てる &rarr;</a>
+</nav>
+
+  <!-- FOOTER(サイト内メニュー+奥付) -->
+  <footer class="site-footer">
+    <nav class="footer-nav" aria-label="サイト内リンク">
+      <div class="footer-col">
+        <h4>記事シリーズ</h4>
+        <ul>
+          <li><a href="/insights/">構造分析</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/ai-native-software/">AI ネイティブなソフトウェア開発</a></li>
+          <li><a href="/claude-debian/">Claudeと一緒に学ぶDebian</a></li>
+          <li><a href="/debian-server/">Claudeと一緒に育てるDebian サーバー</a></li>
+          <li><a href="/phosphorus-and-farming/">リン資源枯渇と自然農法</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>サイト</h4>
+        <ul>
+          <li><a href="/">ホーム</a></li>
+          <li><a href="/natural-farming/">自然農法とは</a></li>
+          <li><a href="/light-farming/">Light Farming</a></li>
+          <li><a href="/gallery/">畑の記録</a></li>
+          <li><a href="/about/">私たちのアプローチ</a></li>
+          <li><a href="/privacy/">プライバシー</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>関連サイト</h4>
+        <ul>
+          <li><a href="https://aiai.aiseed.dev/">aiai ── AI 時代の学び方</a></li>
+          <li><a href="https://weather.time-j.net/">個人開発気象統計</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="colophon">
+      <div class="colophon-mark">§</div>
+      Claudeと一緒に育てるDebian サーバー · 第10章<br>
+      Tokushima · 2026.06.10<br>
+      <a href="/" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">aiseed.dev</a> · <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" style="color: var(--whisper); text-decoration: underline; text-decoration-color: var(--rule);">CC BY 4.0</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // 広い画面ではサイドバー目次を常時展開する(狭い画面では折りたたみに戻す)
+  (function () {
+    var toc = document.querySelector(".series-toc details");
+    if (!toc) return;
+    var mq = window.matchMedia("(min-width: 1200px)");
+    function sync() { toc.open = mq.matches; }
+    sync();
+    if (mq.addEventListener) mq.addEventListener("change", sync);
+    else mq.addListener(sync);
+  })();
+
+  // Mermaid loads only on pages that contain a .mermaid block.
+  // Self-hosted (no third-party CDN dependency); SRI verified.
+  if (document.querySelector(".mermaid")) {
+    const s = document.createElement("script");
+    s.src = "/js/vendor/mermaid-11.14.0.min.js";
+    s.integrity = "sha384-1CMXl090wj8Dd6YfnzSQUOgWbE6suWCaenYG7pox5AX7apTpY3PmJMeS2oPql4Gk";
+    s.crossOrigin = "anonymous";
+    s.onload = () => {
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      mermaid.initialize({ startOnLoad: false, theme: prefersDark ? "dark" : "default" });
+      mermaid.run();
+    };
+    document.head.appendChild(s);
+  }
+</script>
+
+
+</body>
+</html>

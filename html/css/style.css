@@ -268,6 +268,52 @@ p {
     width: 100%;
 }
 
+/* 一行に収める: サイト名と項目名は折り返さない。英語は項目名が長いので、
+   字間と間隔を詰める(768px 以下は縦並びのメニューになるので対象外) */
+.logo,
+.nav a,
+.nav .nav-parent {
+    white-space: nowrap;
+}
+
+@media (min-width: 769px) {
+    html[lang="en"] .nav {
+        gap: 1.6rem;
+    }
+
+    html[lang="en"] .nav a,
+    html[lang="en"] .nav .nav-parent {
+        font-size: 0.8rem;
+        letter-spacing: 0.04em;
+    }
+}
+
+/* 769〜1100px: 折り返さない項目が収まるように、字と間隔をさらに詰める。
+   それでも収まらないときは右端で折り返し、切れないようにする */
+@media (min-width: 769px) and (max-width: 1100px) {
+    .nav {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .nav a,
+    .nav .nav-parent {
+        font-size: 0.75rem;
+        letter-spacing: 0.03em;
+    }
+
+    html[lang="en"] .nav {
+        gap: 0.9rem;
+    }
+
+    html[lang="en"] .nav a,
+    html[lang="en"] .nav .nav-parent {
+        font-size: 0.72rem;
+        letter-spacing: 0.02em;
+    }
+}
+
 .nav .lang-switch {
     opacity: 0.75;
     letter-spacing: 0.05em;

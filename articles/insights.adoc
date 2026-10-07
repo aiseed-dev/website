@@ -15305,3 +15305,159 @@ But, for discipline, a caveat. *AI is the _instrument_ of re-examination, not it
 
 So the conclusion of this design part folds this way. *AI can be something that aids judgment rather than something that takes it away — as long as a human holds the canon.* Make it reason rather than recall. Hold the canon yourself. Never surrender verification. Enforce these three consistently, from how an individual uses AI, to how models are made, to the social form in which knowledge is produced. That is the work of design that remains after collapse and emergence.
 endif::[]
+
+// ===== article: part-3-design/09-ai-will-not-converge =====
+---
+slug: ai-will-not-converge
+number: 09
+title.ja: AIは一つに収束しない——垂直特化モデルは生き残るか
+title.en: AI Will Not Converge on One Model — Will Vertical Specialists Survive?
+subtitle.ja: 「一番賢いモデルが一つあれば済む」は、価格・製品・規制の三つの軸で事実に反する。だが特化モデルには逆向きの力も働く。残る特化と残らない特化を、事実と見立てを分けて書く。
+subtitle.en: "One smartest model is enough" is contradicted by three facts — price tiers, product forms, regulation. Yet a counter-force bears on specialists. Which specialists remain and which do not, with facts and forecast kept apart.
+description.ja: AI は一つの最強モデルに収束していない。価格と性能の階層、製品形態の分化、規制による提供範囲の違い——多様化は三つの軸で確かめられる。一方で、専門特化モデルの競争相手は「今年の特化」ではなく「来年の汎用」であり、医療・金融の特化モデルが調整なしの汎用モデルに抜かれた例が 2023 年に報告されている。言語で完結する特化は残りにくく、言語の外にある特化(構造予測・気象)と、小さく速く安くあるべき用途は残る。読者への含意は一つ——道具は目的ごとに選び、差し替えられるように組む。予想は予想と明記する。
+description.en: AI has not converged on a single strongest model. Diversification shows on three axes — price and capability tiers, product forms, and regulation that decides who gets which model. At the same time, a specialist model's competitor is not this year's specialist but next year's generalist, and medical and financial specialists were reported overtaken by untuned general models in 2023. Language-complete specialists are unlikely to last; specialists outside language (structure prediction, weather) and uses that must be small, fast, and cheap remain. One implication for the reader — pick tools per purpose and build so they can be swapped. Forecasts are labeled as such.
+date: 2026.10.07
+label: Structural Analysis 9
+part_title.ja: 設計と実践
+part_title.en: Design and Practice
+part: 3
+cta_label: Keep it swappable
+cta_title.ja: 一つの AI に忠誠を誓わない。モデルは差し替えられる部品として扱う。
+cta_title.en: Pledge loyalty to no single AI. Treat the model as a replaceable part.
+cta_text.ja: 目的ごとに道具を選ぶ。小さな事業に独自モデルは要らない。特定のモデルにしかできない形で業務を組まない——この三つを守れば、次にどんなモデルが出ても判断の基準はそのまま使える。
+cta_text.en: Choose the tool per purpose. A small business needs no model of its own. Never build work in a shape only one model can serve — keep these three, and whatever model comes next, the criteria still hold.
+cta_btn1_text.ja: 構造分析の全章
+cta_btn1_text.en: All chapters of the structural analysis
+cta_btn1_link.ja: /insights/
+cta_btn1_link.en: /en/insights/
+cta_btn2_text.ja: 前へ 知を見直す道具
+cta_btn2_text.en: Previous: Tools for Re-examining Knowledge
+cta_btn2_link.ja: /insights/re-examining-knowledge/
+cta_btn2_link.en: /en/insights/re-examining-knowledge/
+---
+ifdef::lang-ja[]
+= AIは一つに収束しない——垂直特化モデルは生き残るか
+
+「結局、一番賢い AI が一つあれば、それで全部済むのではないか」。医療特化、法務特化といった「専門 AI」の報道を見て、どちらを選ぶべきか迷う人もいる。この章は、その問いに答える。半分は確かめられる事実で、もう半分は筆者(と、執筆に関わった AI)の見立てだ。どちらなのかを見出しで分ける。
+
+(初出は連載「Fable 5 が帰ってきた」の番外編、2026 年 7 月。製品の話を外し、2026 年 10 月に構造分析として書き直した。)
+
+== 事実——性能競争の裏で、多様化が進んでいる
+
+AI は「一つの最強モデル」に向かって収束していない。多様化は三つの軸で確かめられる。
+
+. *価格と性能の階層*——どの会社も、速くて安いモデルから最上位のモデルまでを階層で出し、同じ時期に並行して提供している。全部を最上位で済ませる経済合理性は、提供する側にも使う側にも無い。利用料は使った量に比例するので、日常の短い依頼に最上位を当てても体感は変わらず、差額だけが積み上がる
+. *製品形態の分化*——同じモデルでも、対話の画面、端末から使うエージェント、画面の設計の道具と、使う場面ごとに別の製品が育っている。分化の速さは、モデルの層より製品の層のほうが速い
+. *規制と提供範囲*——2026 年 6 月、米国の輸出管理で最上位モデルの提供が止まり、7 月に条件つきで再開した(link:/blog/verification-shock/[ブログ 028])。国の規制が「誰に・どの AI を」を左右する変数になったことを、この出来事は示した
+
+== 構造——特化モデルに働く、逆向きの力
+
+多様化の一方で、それと逆向きに働く力がある。専門特化モデルには、構造的に不利な競争条件があるのだ。競争相手が「今年の特化モデル」ではなく、*「来年の汎用モデル」* だという点である。汎用モデルの性能が一段上がるたびに、それまで特化モデルの独壇場だった領域が、汎用モデルの守備範囲に飲み込まれる。
+
+この追い抜きは、実際に報告されている。医療の試験問題では、医療向けに調整したモデルより、調整なしの汎用モデルのほうが高い成績を出した(Nori ら、Microsoft、2023)。金融の文書分析では、金融の文書だけで一から訓練した専用モデルが、汎用モデルにそのまま答えさせた結果に複数の課題で負けた(Li ら、2023)。どちらも 2023 年の報告で、以後この構図は業界の定番になった。
+
+契約書の束を読んで矛盾を探す、複数のファイルにまたがるコードを直す——かつては法務 AI や開発支援 AI の縄張りだった仕事が、いまは汎用モデルの一機能として提供されている。特化モデルが優位を保つには、汎用モデルの進歩より速く専門性を深め続ける必要がある。できないことではないが、坂道を登り続ける競争だ。
+
+== 見立て——残る特化と、残らない特化
+
+ここからは予想である。断定はしない。
+
+*残りにくい* と筆者が見るのは、「言語で完結する垂直特化」だ。医療文書の要約、法務文書のチェックのように、入力も出力も自然言語である仕事は、汎用モデルの得意分野と正面から重なる。大量の文書を読んで矛盾を探す能力は、すでに汎用モデルの標準装備である。
+
+*残りやすい* と見るのは二種類だ。一つは「言語の外にある特化」——タンパク質の立体構造の予測や全球の気象の予測のように、そもそも言語モデルとは別の数学でできている領域である。ここでは専用モデルがすでに標準で、言語モデルが取って代わる筋のものではない。もう一つは「小さく・速く・安くあるべき用途」——端末の上で即座に動く必要がある処理や、大量の取引を安価に監視する不正検知のような領域だ。ここでは最上位の賢さより、軽さと速さが価値になる。
+
+では、言語系の垂直 AI 企業に価値は残らないのか。残るとすれば、モデルそのものではない場所だと見る。*外に出ない非公開データへのアクセス権* と、*業務の流れへの埋め込みの深さ* である。モデルは差し替えられても、データの信頼関係と、現場に馴染んだ道具の座は、簡単には差し替えられない。
+
+== この見立てが外れる条件
+
+予想には、外れ方も添えておく。三つある。
+
+第一に、*規制が独立モデルを要求する場合*。医療や金融で「監査可能な専用モデルであること」が制度の要件になれば、言語系の垂直特化にも制度が守る居場所ができる。第二に、*非公開データが性能を決め続ける領域*。データが外に出ない限り汎用モデルは学べないので、そこでは特化が優位を保ちうる。第三に、開示しておくべき偏りがある。この見立ての整理には汎用モデル(AI)自身が関わっており、*「汎用が勝つ」という結論は、汎用モデルの自己申告を含む*。割り引いて読んでほしい。
+
+== 含意——一つの AI に忠誠を誓わない
+
+実務に引きつけると、含意は三つに絞れる。
+
+* *目的ごとに道具を選ぶ*——モデルの使い分けを、製品や会社の単位にも広げて考える。link:/ai-native-software/ai-pc/[2-02] が別の会社の AI を二つ契約して相互に見張らせるのは、この含意の実装だ
+* *個人事業や中小の実務に、独自モデルは要らない*——価値はあなたのデータと仕事の流れの側にあり、そこはあなたしか持っていない。自前で持つのは、link:/ai-native-software/ai/[2-16] のとおり、オープンウェイトのモデルと自社データの RAG で足りる
+* *モデルは差し替え可能な部品として扱う*——特定のモデルにしかできない形で業務を組まない。link:/ai-native-software/ai-delegation/[2-17] の「コードに凍結する」は、差し替えを安くする仕組みでもある
+
+三つ目は、いまのうちに確かめておける。業務手順書から AI の利用箇所を洗い出させ、それぞれについて別のモデルに差し替える場合に影響が出る箇所と、差し替えの手順を整理させる。道具は選び直せる状態にしておく。それが、多様化していく地図の上での、いちばん安全な歩き方だ。
+
+____
+「どの AI に頼むか」を固定しない。仕事ごとに道具を選び、選び直せるように組んでおく。
+それができていれば、次にどんなモデルが出てきても、判断の基準はそのまま使い回せる。
+____
+
+'''
+
+== 関連記事
+
+* link:/insights/re-examining-knowledge/[構造分析 08: 知を見直す道具——正典・検証・有志の共有物]
+* link:/ai-native-software/ai/[2-16: 自前の AI を据える ── LLM と RAG]
+* link:/ai-native-software/ai-delegation/[2-17: AI に任せる範囲を決める ── 自律で動かさず、コードに凍結する]
+* link:/ai-native-software/lockin/[3-05: ロックイン問題]
+endif::[]
+ifdef::lang-en[]
+= AI Will Not Converge on One Model — Will Vertical Specialists Survive?
+
+"In the end, one smartest AI would do it all, wouldn't it?" Reading about medical AI and legal AI, some people wonder which to choose. This chapter answers that question. Half of it is fact that can be checked; the other half is the forecast of the author (and of the AI that helped write it). The headings say which is which.
+
+(First published as the extra installment of the series "Fable 5 Is Back," July 2026. Rewritten as structural analysis in October 2026, with the product specifics removed.)
+
+== Fact — behind the performance race, diversification is advancing
+
+AI is not converging on "one strongest model." Diversification can be checked on three axes.
+
+. *Price and capability tiers* — every vendor ships a range from fast-and-cheap to top-tier, and offers them in parallel in the same period. Running everything on the top tier makes economic sense neither for the vendor nor for the user. Usage fees scale with volume, so putting the top tier on short everyday requests changes nothing you can feel and only stacks up the difference
+. *Product forms* — the same model grows into separate products for separate settings: a chat screen, an agent driven from the terminal, a screen-design tool. The product layer splits faster than the model layer
+. *Regulation and availability* — in June 2026 US export controls halted the top-tier model, and it returned in July under conditions (link:/en/blog/verification-shock/[blog 028]). The episode showed that a state's regulation had become a variable deciding who gets which AI
+
+== Structure — the counter-force bearing on specialists
+
+Alongside diversification, a force works the other way. A specialist model competes under structurally unfavorable terms: its rival is not *this year's specialist* but *next year's generalist*. Each time the general model steps up, territory that was the specialist's alone is absorbed into the generalist's range.
+
+The overtaking has been reported. On medical examination problems, an untuned general model scored higher than a model tuned for medicine (Nori et al., Microsoft, 2023). In financial text analysis, a model trained from scratch on financial text alone lost on several tasks to a general model simply asked to answer (Li et al., 2023). Both are 2023 reports, and the pattern has since become the industry's standard story.
+
+Reading a stack of contracts for contradictions, fixing code that spans many files — work that once belonged to legal AI and coding-assistant AI is now offered as a feature of the general model. To hold its edge, a specialist must deepen its expertise faster than the generalist advances. Not impossible, but a race up a slope.
+
+== Forecast — which specialists remain, and which do not
+
+From here it is forecast. Nothing is asserted.
+
+What the author sees as *unlikely to last* is "vertical specialization that is complete within language." Work whose input and output are both natural language — summarizing medical documents, checking legal ones — overlaps head-on with the generalist's strength. Reading large bodies of text to find contradictions is already standard equipment on general models.
+
+What seems *likely to remain* comes in two kinds. One is "specialization outside language" — predicting the three-dimensional structure of proteins, or global weather, built on mathematics other than the language model's. There, dedicated models are already the standard, and there is no path by which a language model replaces them. The other is "uses that must be small, fast, and cheap" — processing that has to run instantly on a device, or fraud detection that watches masses of transactions at low cost. There, lightness and speed are worth more than top-tier intelligence.
+
+Then does no value remain for language-side vertical AI companies? If any does, it sits somewhere other than the model: *access to private data that never leaves the building*, and *the depth of embedding in the flow of work*. Models can be swapped; the trust relationship over data and the seat of a tool the floor has grown used to cannot be swapped easily.
+
+== Conditions under which this forecast fails
+
+A forecast should carry its own failure modes. Three.
+
+First, *when regulation demands an independent model*. If medicine or finance makes "an auditable dedicated model" a legal requirement, language-side verticals gain a place that the rules protect. Second, *domains where private data keeps deciding performance*. As long as the data never leaves, the generalist cannot learn it, and the specialist can keep its edge there. Third, a bias to disclose: a general model (an AI) took part in organizing this forecast, so *the conclusion "the generalist wins" includes the generalist's self-report*. Discount accordingly.
+
+== Implication — pledge loyalty to no single AI
+
+Brought down to practice, the implications are three.
+
+* *Choose the tool per purpose* — extend the habit of picking models to the level of products and companies. 2-02's decision to subscribe to two vendors' AIs and have them check each other (link:/en/ai-native-software/ai-pc/[2-02]) is this implication implemented
+* *A sole proprietor or small business needs no model of its own* — the value sits on the side of your data and your flow of work, and only you hold those. What you keep in-house is, as link:/en/ai-native-software/ai/[2-16] sets out, an open-weight model and RAG over your own data
+* *Treat the model as a replaceable part* — never build work in a shape only one model can serve. "Freeze it into code" in link:/en/ai-native-software/ai-delegation/[2-17] is also a mechanism that makes swapping cheap
+
+The third can be checked now. Have the AI go through your procedure manuals, list every place AI is used, and for each one lay out what would be affected by switching to another model and the steps of the switch. Keep the tools in a state where they can be chosen again. On a diversifying map, that is the safest way to walk.
+
+____
+Do not fix "which AI to ask." Choose the tool per job, and build so it can be chosen again.
+With that in place, whatever model comes next, the criteria carry over as they are.
+____
+
+'''
+
+== Related articles
+
+* link:/en/insights/re-examining-knowledge/[Structural Analysis 08: Tools for Re-examining Knowledge — Canon, Verification, and the Voluntary Commons]
+* link:/en/ai-native-software/ai/[2-16: Stand Up Your Own AI — LLM and RAG]
+* link:/en/ai-native-software/ai-delegation/[2-17: Decide How Far the AI Goes — No Autonomous Runs, Freeze It into Code]
+* link:/en/ai-native-software/lockin/[3-05: The Lock-In Problem]
+endif::[]

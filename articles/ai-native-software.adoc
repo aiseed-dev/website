@@ -1088,7 +1088,7 @@ flowchart LR
 
   subgraph New["AI ネイティブ ── 一人 + AI が対話で"]
     direction TB
-    H["顧客(ビルダー)<br/>(何を作るか・ハード調達<br/>関係者協議・運用・責任)"]
+    H["顧客(ビルダー)<br/>(計画と仕様・ハード調達<br/>関係者協議・運用・責任)"]
     A["AI<br/>(コードを書く力<br/>構造を決める力)"]
     H <-->|対話・相互理解| A
   end
@@ -1265,7 +1265,7 @@ flowchart LR
 
   subgraph New["AI-native — one person + AI, in dialogue"]
     direction TB
-    H["Customer (builder)<br/>(what to build, hardware,<br/>stakeholders, operations, responsibility)"]
+    H["Customer (builder)<br/>(plan and spec, hardware,<br/>stakeholders, operations, responsibility)"]
     A["AI<br/>(writes code<br/>decides structure)"]
     H <-->|dialogue, mutual understanding| A
   end
@@ -1357,21 +1357,21 @@ number: 04
 part: 1
 title.ja: ビルダーという役割
 title.en: The Builder Role
-subtitle.ja: 何を作るかを決め、AI と対話して作り、動かし、全体を統合する
-subtitle.en: Decide what to build, build it in dialogue with AI, run it, integrate the whole
-description.ja: ビルダーは、AI と対話してシステムを作り、動かす役割である。ソフトウェアエンジニアの後継ではない。ソフトウェアエンジニアは狭く閉じた課題を解く仕事で、そこは AI が引き受ける。ビルダーが扱うのは開いた課題、つまり現実から何を作るかを立ち上げる仕事だ。本章では、ビルダーの仕事を「決める・AI と作る・確かめる・統合する」の四つのループとして定義する。そのうえで、狭く閉じた課題と開いた課題という軸から、なぜ判断を AI にまかせられないかを示す。
-description.en: The builder builds and runs whole systems in dialogue with AI, and is not the next version of the software engineer. The software engineer solves narrowly closed problems, and that is the work AI takes over. The builder handles the open problem of raising what to build out of reality. This chapter defines the builder as a loop of four steps — decide, build with AI, check, integrate — and then, along the axis of the narrowly closed problem versus the open problem, shows why judgment cannot be left to AI.
+subtitle.ja: 何を作るかを計画して仕様に書き、AI と対話して作り、動かし、全体を統合する
+subtitle.en: Plan what to build and write the spec, build it in dialogue with AI, run it, integrate the whole
+description.ja: ビルダーは、AI と対話してシステムを作り、動かす役割である。ソフトウェアエンジニアの後継ではない。ソフトウェアエンジニアは狭く閉じた課題を解く仕事で、そこは AI が引き受ける。ビルダーが扱うのは開いた課題、つまり現実から何を作るかを立ち上げる仕事だ。本章では、ビルダーの仕事を「計画する・AI と作る・確かめる・統合する」の四つのループとして定義する。そのうえで、狭く閉じた課題と開いた課題という軸から、なぜ判断を AI にまかせられないかを示す。
+description.en: The builder builds and runs whole systems in dialogue with AI, and is not the next version of the software engineer. The software engineer solves narrowly closed problems, and that is the work AI takes over. The builder handles the open problem of raising what to build out of reality. This chapter defines the builder as a loop of four steps — plan, build with AI, check, integrate — and then, along the axis of the narrowly closed problem versus the open problem, shows why judgment cannot be left to AI.
 date: 2026.06.22
 label: Introduction 4
-title_html.ja: 決めて、<span class="accent">AI と作り</span>、<br>動かす。
-title_html.en: Decide it, <span class="accent">build it with AI</span>,<br>run it.
+title_html.ja: 計画して、<span class="accent">AI と作り</span>、<br>動かす。
+title_html.en: Plan it, <span class="accent">build it with AI</span>,<br>run it.
 ---
 ifdef::lang-ja[]
 = ビルダーという役割
 
-ビルダーとは、何を作るかを決め、AI と対話して作り、動かし、全体を統合する役割である。
+ビルダーとは、何を作るかを計画して仕様に書き、AI と対話して作り、動かし、全体を統合する役割である。
 1-03 では、コーダーとソフトウェアエンジニアの仕事を AI がするようになると書いた。
-残るのは、AI と対話してシステムを作り、動かす、もっと広い役割だ。
+その先にあるのは、自分で計画し、AI と対話してシステムを作り、動かす、もっと広い役割だ。
 この連載では、これをビルダーと呼ぶ。
 本章では、この役割の定義と、ソフトウェアエンジニアとの違いを固定する。
 
@@ -1379,14 +1379,14 @@ ifdef::lang-ja[]
 
 ビルダーの仕事は、四つの手順でできている。
 
-* 決める ── 顧客と現場と自分の文脈から、何を作るかを決める。どう分けるかも決める。仕様の骨格を書き出す。
+* 計画する ── 顧客と現場と自分の文脈から、何を作るかの案を立てる。どう分けるか、何を使い何を使わないか、どこに置き、どこまでを自分で持つかまで含めて、AI に渡せる仕様に書く。案を作るのも、仕様に書くのも、ビルダーの仕事だ。
 * AI と作る ── 意図と制約と文脈を AI に渡す。AI はコードを書き、設計を提案する。一度の指示では終わらない。やり取りを重ねる。
 * 確かめる ── 返ってきたものが動くかを見る。設計と合っているかを見る。想定した文脈で壊れないかを見る。
-* 統合し、動かす ── 部分を全体に組み込む。整合を保ち、動かす。そして「決める」に戻る。
+* 統合し、動かす ── 部分を全体に組み込む。整合を保ち、動かす。そして「計画する」に戻り、仕様を直す。
 
 この四つは一方通行ではない。ループである。一周にかかる時間は、規模によって数分から数時間だ。一日に何十周も回す。コードを書く時間は、この中で最小になる。書くのは AI だからだ。
 
-一つ目の「決める」で書き出すものが、link:/ai-native-software/maintenance-shift/[1-02] で言う *AI に渡す最初の仕様* だ。何を使い、何を使わないか、どこに置き、どこまでを自分で持つか。その決定を文字にする。後の三つは、その仕様を回す手順にすぎない。だから、ループの質は一つ目で決まる。
+一つ目の「計画する」で書くものが、link:/ai-native-software/maintenance-shift/[1-02] で言う *AI に渡す最初の仕様* だ。後の三つは、その仕様を回す手順であり、一周するたびに仕様に戻って直す。保守の単位が仕様に移る(1-02)とは、このことだ。だから、ループの質は一つ目で決まる。
 
 ```mermaid
 flowchart LR
@@ -1394,7 +1394,7 @@ flowchart LR
 
   subgraph Builder["ビルダーの仕事(AI と作るループ)"]
     direction TB
-    D["決める<br/>(何を・どう分けるか)"]
+    D["計画する<br/>(何を・どう分けるか・<br/>仕様に書く)"]
     Hand["AI と作る<br/>(意図・制約・文脈を渡す)"]
     Eval["確かめる<br/>(動くか・整合するか)"]
     Int["統合し動かす<br/>(全体の整合を保つ)"]
@@ -1404,7 +1404,7 @@ flowchart LR
   AI(("AI<br/>コード・設計"))
   Out["動く<br/>ソフトウェア"]
 
-  Ctx -->|何を作るかの材料はここから来る| D
+  Ctx -->|計画の材料はここから来る| D
   Hand <-->|意図を渡し、コードと設計案を受け取る| AI
   Int -->|全体の整合を保ったまま外へ出す| Out
 
@@ -1453,7 +1453,7 @@ AI が持つのは、学習で得た重みだけだ。膨大な過去のデー�
 |===
 | 軸 | ソフトウェアエンジニア | ビルダー
 | 扱う問題 | 狭く閉じた課題(定義済み) | 開いた課題(現実・文脈)
-| 仕事の中心 | 設計してコードを書く | 何を作るかを決める
+| 仕事の中心 | 設計してコードを書く | 計画して仕様を書く
 | 文脈 | 仕様として与えられる | 自分で現実から切り出す
 | スキルの中心 | 設計・実装・技術習熟 | 構造分解・評価眼・統合
 | 一案件の人数 | チーム(複数人) | 1 人 + AI
@@ -1464,8 +1464,8 @@ AI が持つのは、学習で得た重みだけだ。膨大な過去のデー�
 
 ____
 SE は、狭く閉じた課題を解く。そこは AI が強い。
-ビルダーは、開いた課題を扱う。現実とすり合わせ、何を作るかを決める。
-だから、ここが人間に残る。
+ビルダーは、開いた課題を扱う。現実とすり合わせ、何を作るかを計画して仕様に書く。
+だから、ここは人間の仕事だ。
 ____
 
 スキルの中身も別物だ。ビルダーが磨くのは、次の能力である。
@@ -1509,7 +1509,7 @@ ____
 
 == まとめ
 
-ビルダーは、決める、AI と作る、確かめる、統合するの四つを回す。SE が解いてきた狭く閉じた課題は、AI が引き受ける。ビルダーに残るのは、現実から何を作るかを立ち上げる開いた課題だ。その基盤は、ソフトウェア工学ではなくリベラルアーツにある。
+ビルダーは、計画する、AI と作る、確かめる、統合するの四つを回す。SE が解いてきた狭く閉じた課題は、AI が引き受ける。ビルダーが扱うのは、現実から何を作るかを立ち上げて仕様にする開いた課題だ。その基盤は、ソフトウェア工学ではなくリベラルアーツにある。
 
 ビルダーは、AI と組めば、一人でも大きなスコープを担える。これは社内の話だけではない。顧客が直接ビルダーをやることも、同じ理屈で可能になる。
 
@@ -1528,9 +1528,9 @@ endif::[]
 ifdef::lang-en[]
 = The Builder Role
 
-A builder decides what to build, builds it in dialogue with AI, runs it, and integrates the whole.
+A builder plans what to build and writes it as a spec, builds it in dialogue with AI, runs it, and integrates the whole.
 1-03 said that the work of both the coder and the software engineer comes to be done by AI.
-What remains is a broader role: building and running systems in dialogue with AI.
+Beyond that lies a broader role: planning for yourself, then building and running systems in dialogue with AI.
 This series calls that role the builder.
 This chapter fixes the definition, and fixes where the builder differs from the software engineer.
 
@@ -1538,14 +1538,14 @@ This chapter fixes the definition, and fixes where the builder differs from the 
 
 A builder's work is made of four steps.
 
-* Decide — decide what to build, drawing on the customer, the field, and the builder's own context. Decide how to split it, too. Lay down the skeleton of the spec.
+* Plan — from the customer, the field, and the builder's own context, draft what to build. Write it as a spec the AI can read, down to how to split it, what to use and what not to, where it goes, and how much to hold yourself. Making the draft and writing the spec are both the builder's work.
 * Build with AI — hand AI the intent, the constraints, and the context. AI writes the code and proposes the design. One instruction is not the end of it. The exchange goes back and forth.
 * Check — see whether what comes back runs. See whether it fits the design. See whether it breaks in the context it was meant for.
-* Integrate and run — fold the part into the whole. Keep the whole consistent, and run it. Then return to "decide."
+* Integrate and run — fold the part into the whole. Keep the whole consistent, and run it. Then return to "plan" and revise the spec.
 
 These four are not a one-way line. They are a loop. One turn takes minutes to hours, depending on scope. A builder runs the loop tens of times a day. Time spent writing code is the smallest part of it, because AI does the writing.
 
-What you write down in the first step, "decide," is the *first spec you hand to an AI* from link:/en/ai-native-software/maintenance-shift/[1-02]. What you use and what you do not, where it goes, how much of it you hold yourself — those decisions, put into text. The other three steps are only the procedure for turning that spec. So the quality of the loop is set in the first step.
+What you write in the first step, "plan," is the *first spec you hand to an AI* from link:/en/ai-native-software/maintenance-shift/[1-02]. The other three steps are the procedure for turning that spec, and every turn comes back to the spec and revises it. That is what it means for the unit of maintenance to move to the spec (1-02). So the quality of the loop is set in the first step.
 
 ```mermaid
 flowchart LR
@@ -1553,7 +1553,7 @@ flowchart LR
 
   subgraph Builder["Builder's work (the loop of building with AI)"]
     direction TB
-    D["Decide<br/>(what, and how to split it)"]
+    D["Plan<br/>(what, how to split it,<br/>written as a spec)"]
     Hand["Build with AI<br/>(pass intent, constraints, context)"]
     Eval["Check<br/>(does it run? does it fit?)"]
     Int["Integrate and run<br/>(keep the whole consistent)"]
@@ -1563,7 +1563,7 @@ flowchart LR
   AI(("AI<br/>code, design"))
   Out["Running<br/>software"]
 
-  Ctx -->|this is where the material for deciding comes from| D
+  Ctx -->|this is where the material for the plan comes from| D
   Hand <-->|intent goes out, code and design proposals come back| AI
   Int -->|released only with the whole kept consistent| Out
 
@@ -1612,7 +1612,7 @@ And at the frontier it is already happening. Anthropic has stated that *more tha
 |===
 | Axis | Software engineer | Builder
 | Problem handled | Narrowly closed (defined) | Open (reality, context)
-| Center of the work | Designing and writing code | Deciding what to build
+| Center of the work | Designing and writing code | Planning, and writing the spec
 | Context | Given as a spec | Carved out of reality by oneself
 | Center of the skill | Design, implementation, technical fluency | Decomposition, evaluation, integration
 | Headcount per project | A team | One person plus AI
@@ -1623,8 +1623,8 @@ The last two rows are the heart of this chapter. An SE's output is set by "headc
 
 ____
 The SE solves a narrowly closed problem. There, AI is strong.
-The builder handles an open problem. The builder reconciles with reality and decides what to build.
-So this is what stays with humans.
+The builder handles an open problem. The builder reconciles with reality, plans what to build, and writes the spec.
+So this is the human's work.
 ____
 
 The content of the skills differs as well. What a builder sharpens is the following.
@@ -1668,7 +1668,7 @@ ____
 
 == Summary
 
-A builder runs four steps: decide, build with AI, check, integrate. The narrowly closed problems the SE used to solve are taken over by AI. What remains for the builder is the open problem of raising what to build out of reality. The foundation for that is liberal arts, not software engineering.
+A builder runs four steps: plan, build with AI, check, integrate. The narrowly closed problems the SE used to solve are taken over by AI. What the builder handles is the open problem of raising what to build out of reality and turning it into a spec. The foundation for that is liberal arts, not software engineering.
 
 Paired with AI, a builder can carry a large scope alone. This is not only an internal-staff story. By the same logic, the customer can be the builder directly.
 
@@ -17812,7 +17812,7 @@ AI が実行能力で人間トップに到達した。これは、ルールが�
 
 ただし、これはソフトウェア開発の中のコーディングという特殊な領域の話だ。ソフトウェア
 開発の他の部分(要件定義、設計、運用、障害対応、関係者調整)は、自動運転や新幹線と
-同じ構造の 1% 問題を持つ。ここにビルダーが残る。同じ速度の完全置換が他の領域(デスク
+同じ構造の 1% 問題を持つ。ここを引き受けるのがビルダーだ。同じ速度の完全置換が他の領域(デスク
 ワーク、自動運転、ロボット)で起きるとも主張しない。それらの領域では、AI は生産性向上
 の道具として動き、完全置換には至らない。
 
@@ -18546,8 +18546,7 @@ move back.
 But this is the story of one specific area, coding inside software development.
 The other parts of software development — requirements, design, operations,
 incident response, stakeholder coordination — carry the same structural 1%
-problem as self-driving and the Shinkansen, and that is where the builder
-remains. Nor is complete replacement at the same speed claimed for other domains,
+problem as self-driving and the Shinkansen, and that is where the builder works. Nor is complete replacement at the same speed claimed for other domains,
 whether desk work, self-driving, or robotics. In those, AI works as a
 productivity tool and does not reach complete replacement.
 

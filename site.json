@@ -14,8 +14,8 @@
         "url_base": "/ai-native-software",
         "subtitle": "SIer に頼まない ── 自分で立てて、自分で動かす",
         "subtitle_en": "Don't commission an SIer — stand it up yourself, and run it yourself",
-        "description": "AI がコードを書く能力で人間の最上層に並んだ。コーダーの仕事は AI に移り、決める側のビルダーが残る。導入編で何が変わったかを示し、自立編で Microsoft と Google から自立する道具一式を AI に読ませて実行できる仕様書として並べ、転換編で SIer 委託モデルがなぜ構造的に不経済になるのかを問う。AI 革命は上からの決定では始まらない ── 稟議なしでできる所から始まる。",
-        "description_en": "AI has drawn level with the top human tier at writing code. The coder's work moves to AI; the builder, who decides, is what remains. The Introduction part shows what changed, the Independence part lays out the whole toolkit for stepping off Microsoft and Google as a specification the AI can read and execute, and the Shift part asks why the SIer commission model became structurally uneconomic. The AI revolution does not start with a decision from the top — it starts where no approval process is needed.",
+        "description": "AI がコードを書く能力で人間の最上層に並んだ。コーダーの仕事も、設計するソフトウェアエンジニアの仕事も AI に移る。計画して仕様を書き、AI に作らせ、自分で動かす役割 ── ビルダー ── が、発注する側に生まれる。導入編で何が変わったかを示し、自立編で Microsoft と Google から自立する道具一式を AI に読ませて実行できる仕様書として並べ、転換編で SIer 委託モデルがなぜ構造的に不経済になるのかを問う。AI 革命は上からの決定では始まらない ── 稟議なしでできる所から始まる。",
+        "description_en": "AI has drawn level with the top human tier at writing code. The work of the coder and of the software engineer alike moves to AI. A new role arises on the customer's side — the builder, who plans and writes the spec, has the AI build it, and runs the result. The Introduction part shows what changed, the Independence part lays out the whole toolkit for stepping off Microsoft and Google as a specification the AI can read and execute, and the Shift part asks why the SIer commission model became structurally uneconomic. The AI revolution does not start with a decision from the top — it starts where no approval process is needed.",
         "parts": [
           {
             "key": "1",

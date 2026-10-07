@@ -5853,7 +5853,7 @@ flatpak install flathub com.github.tchx84.Flatseal
 | Slack / Zoom / Discord / Spotify | *Flatpak* | 更新の速さ + サンドボックス
 | Bitwarden / Signal / Element | *Flatpak* | 同上、暗号化アプリは新しいほうが安心
 | OBS / Krita / Inkscape / GIMP(最新) | *Flatpak* | apt 版だと数バージョン古い
-| 開発ツール(Python / git / Docker) | *apt* | サンドボックスがむしろ邪魔
+| 開発ツール(Python / git) | *apt* | サンドボックスがむしろ邪魔
 | エディタ・IDE(Zed / Neovim / PyCharm) | *Flatpak*(Neovim は apt) | 詳細は第 14 章。VS Code は本書では推奨しない
 |===
 
@@ -6494,7 +6494,7 @@ This book's recommendation:
 | Slack / Zoom / Discord / Spotify | *Flatpak* | Faster updates + sandboxing
 | Bitwarden / Signal / Element | *Flatpak* | Same; encryption apps benefit from being current
 | OBS / Krita / Inkscape / GIMP (latest) | *Flatpak* | apt versions lag
-| Dev tools (Python / git / Docker) | *apt* | Sandboxing is in the way
+| Dev tools (Python / git) | *apt* | Sandboxing is in the way
 | Editors / IDEs (Zed / Neovim / PyCharm) | *Flatpak* (Neovim is apt) | See Chapter 14. This book does not recommend VS Code
 |===
 
@@ -12602,7 +12602,7 @@ ____
 最初に移行した主力機とは別に、古いPCが眠っているかもしれない。Debianで新しい役割を与える。
 
 * 家庭用サーバー：Nextcloud、Syncthing、メディアサーバー（Jellyfin）
-* 開発用サーバー：Dockerでサービスを動かす、ビルド専用
+* 開発用サーバー：ビルド専用、第12章の実験機（virt-manager）を置く
 * 子供用PC：Debian Xfce、制限付きアカウントで
 * 実験機：最新カーネルや別DEを安全に試す
 
@@ -12857,7 +12857,7 @@ ____
 Aside from the main machine you migrated, an older PC may be sleeping somewhere. Give it a new role with Debian.
 
 * Home server: Nextcloud, Syncthing, media server (Jellyfin).
-* Development server: Docker-running services, dedicated build machine.
+* Development server: a dedicated build machine, and home for the Chapter 12 experiment VMs (virt-manager).
 * A PC for the kids: Debian Xfce with a restricted account.
 * Lab machine: safely try the latest kernel or another DE.
 

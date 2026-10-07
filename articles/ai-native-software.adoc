@@ -2720,7 +2720,11 @@ OS は Debian にする。Python と apt は最初から入っていて、git �
 
 * この章の時点で、外に開ける入り口は 80 と 443 と ssh だけにする。ほかの口は、それが要る章(2-08 のメールなど)で開ける。口を開けるのは、AI が「やる前に言う」操作だ
 * 画面への接続は外に開けない。手元の PC から ssh の中を通す
-* 公開の Web と AI の作業は、別の利用者で動かす
+* 公開の Web と AI の作業は、別の利用者で動かす。サービスも、それぞれ専用の利用者で動かし、systemd の制限を掛ける
+* ssh は鍵だけにし、パスワードと root でのログインを切る
+* セキュリティ更新は自動で当てる(`unattended-upgrades`)
+* ログイン・ワンタイム・受け口には試行回数の制限を掛ける(`fail2ban` か、アプリの側で)
+* 依存は固定した版で入れる(`uv.lock` を git に入れる。2-10)
 
 公開の側に穴が出たときに、AI の側のデータと鍵に届かないようにするためだ。
 2-05 で書く「中央は最小限、守りは各サーバーで多層に」は、機械が一台でも
@@ -2930,7 +2934,11 @@ Everything other than these three can be left to the AI.
 
 * At this chapter, the only ports open to the outside are 80, 443, and ssh. Other ports are opened in the chapter that needs them (mail in 2-08, for one). Opening a port is an action the AI states before doing
 * The desktop connection is not exposed; tunnel it from your own PC through ssh
-* The public website and the AI's work run as different users
+* The public website and the AI's work run as different users. Each service, too, runs as its own user with systemd's restrictions
+* ssh is keys only; password and root logins are turned off
+* Security updates are applied automatically (`unattended-upgrades`)
+* Logins, one-time codes, and intake endpoints get an attempt limit (`fail2ban`, or in the app)
+* Dependencies are installed at pinned versions (`uv.lock` in git; 2-10)
 
 The point is that a hole on the public side must not reach the data and keys on
 the AI's side. What 2-05 says, *central minimal and defense in depth at every
@@ -7610,7 +7618,8 @@ cf-publish html --project <名前>                  # 3b. Cloudflare Pages へ
 ```
 
 自動で作り直す設定や、「ビルドして上げる」を一つにまとめたコマンドは使わない。
-*確認した HTML と、本番に出る HTML を、同じにする* ためだ。Cloudflare Pages に
+*確認した HTML と、本番に出る HTML を、同じにする* ためだ。動く部分があるなら、
+「確認」の段で 2-12 の公開の前の四つの点検を回す。Cloudflare Pages に
 は本番の前にプレビューの枝があるので、本番の URL に向ける前にそこで見られる。
 自分の一台なら、同じ機械にもう一つのホスト名を足せば、同じことができる。
 
@@ -7834,7 +7843,8 @@ cf-publish html --project <name>                 # 3b. to Cloudflare Pages
 
 Do not use auto-rebuild, and do not use a command that combines "build and
 deploy." The point is to *keep the HTML you verified identical to the HTML that
-goes live*. Cloudflare Pages has a preview branch ahead of production, so you can
+goes live*. Where there are moving parts, the "verify" step runs the four
+pre-launch checks of 2-12. Cloudflare Pages has a preview branch ahead of production, so you can
 look before pointing the production URL at it. On your own machine, adding a
 second hostname on the same box does the same thing.
 
@@ -8447,9 +8457,64 @@ ____
 ルールなら、書いて渡せる ── 業務ルールと、同じように。
 ____
 
+== 公開の前に、四つの点検をする
+
+動く部分を外に出す前に、点検を四つ回す。2-11 の「ビルド → 確認 → デプロイ」の
+「確認」の段で、毎回やる。結果は設計書に残す。探す作業は AI に手伝わせてよいが、
+表と突き合わせて決めるのは人だ。
+
+四つは、特殊な事故の型ではない。OWASP Top 10 の 2025 年版は、1 位が権限の不備、
+4 位が暗号の不備、5 位が注入、10 位が例外の扱いの誤りだ(https://owasp.org/Top10/2025/[OWASP])。
+MITRE の CWE Top 25 の 2025 年版では、権限確認の欠落が 4 位(前年の 9 位から上がった)、
+他人の ID を指定して取れる不備が 24 位にある(https://cwe.mitre.org/top25/archive/2025/2025_cwe_top25.html[MITRE])。
+どちらも 2026-10-07 に確認した。四つの点検は、この上位にそのまま対応する。
+
+=== 一つ目 ── 全部の API の権限を確かめる
+
+* FastAPI の全ルートと、PocketBase の全コレクションを一覧にする。設計書の表に、ルートごとに「誰が呼べるか」(公開・ワンタイムで確かめた人・ログインした人・本人・管理者)を書く。表と実装を突き合わせ、表に無いルートは消す
+* 新しいルートを足したら、既存のルートも全部点検し直す。認証はルーター単位でまとめて掛け、付け忘れたときに「拒否」の側に倒れる形にする
+* ID を受け取る API は、そのレコードの持ち主がトークンの本人かを比べる。他人の ID を指定して取れないことを、テストで確かめる
+* PocketBase のルールは list・view・create・update・delete の五つを全部確かめる。空文字は「誰でも」、null は「管理者だけ」。本人に限るなら `owner = @request.auth.id`
+* ワンタイム(2-11)は、番号の有効期限、一度使った番号の拒否、試行回数の制限を確かめる
+* Flet の画面でボタンを隠すのは、権限の確認に数えない。拒否するのは API の側だ
+* 回避用のルートが残っていないか探す。`bypass`、`debug`、`test`、`dev` の名前と、`if DEBUG` で認証を外す分岐
+* 例外が起きたとき、許可の側に倒れていないか確かめる。トークンの検証で例外が出たら、通さず拒否する
+
+=== 二つ目 ── 入力の扱い
+
+* SQL は文字列を結合して作らず、パラメータで渡す。f-string や `+` で SQL を組んでいる箇所を検索する
+* PocketBase の filter に利用者の入力を直接埋め込まない。SDK のパラメータ付き filter を使う
+* HTML への出力は、`innerHTML` と `document.write` を使わず `textContent` に。Jinja2 は自動エスケープを有効にし、`|safe` を検索する。AsciiDoc や Markdown を HTML にするときは、生の HTML の通過を無効にする(2-10)
+* 外部コマンドは、`subprocess` に `shell=True` で入力を渡さず、引数はリストで渡す
+* アップロードされたファイル名やパスの引数は正規化し、決めたディレクトリの外に出ないことを確かめる(`../` 対策)
+* 検証はサーバー側でする。FastAPI の入力は Pydantic で型・長さ・範囲を決める。Flet 側の検証は数えない
+* 入力の URL を取りに行く処理は、行き先を許可リストで限る
+* CORS は、`allow_origins=["*"]` と認証情報の送信を同時に許可しない。エラーを消すために `*` にしない
+
+=== 三つ目 ── 秘密情報
+
+* 鍵・パスワード・トークンを、コード・配る Flet アプリ・JS に書かない。配った物に入れた鍵は、誰でも取り出せる。外部 API の鍵が要る処理はサーバー側に置く
+* `.env`、`*.db`、バックアップ、エクスポートしたファイルは `.gitignore` に入れる。コミットの前に、入る物の一覧を確かめる
+* 公開する前に、全履歴を gitleaks などで走査する。履歴に入っていた鍵は、履歴を消すのではなく鍵を取り替える
+* 初期パスワード、デモ用アカウント、サンプルの鍵が残っていないか確かめる
+* パスワードは自前で保存せず、門番(PocketBase)に任せる
+* 配る Flet アプリにトークンを置くなら、OS の安全な保管場所(鍵束)に置く。Web 版は寿命の短いトークンにして、ブラウザに長く置かない
+* Base64 は暗号ではない。暗号化に使う関数が実在するか、失敗したときに平文のまま続けていないかを確かめる
+* ログにトークンや秘密情報を出さない。AI のエージェントが読める場所(作業ディレクトリ)に `.env` を置かない(2-17)
+
+=== 四つ目 ── 残っている TODO
+
+* `TODO`、`FIXME`、`XXX`、`HACK`、`仮`、`暫定`、`demo`、`temporary`、`for now`、`skip`、`bypass` と、コメントアウトされた認証・権限のチェックを探す
+* 見つけた物は、設計書の「未完了」の表に移す。内容・場所・公開前に必須かどうかを書く
+* 認証・権限・暗号・入力検証に関わる物が一つでも残っていたら、公開しない
+
+____
+点検は、ビルドと本番のあいだに置く。四つのうち一つでも通らなければ、出さない。
+____
+
 == 確かめ方
 
-この章は、次の六つができていれば済みだ。
+この章は、次の七つができていれば済みだ。
 
 . 旧システムと新 API に同じ入力を流すと、出力が一致する
 . 差分ゼロの日が、決めた期間ずっと並んでいる(月次なら、差分ゼロの月が連続する)
@@ -8458,6 +8523,7 @@ ____
   二箇所に無い
 . 法定保存の対象データが、自分の DB とファイルに揃っている
 . 旧システムを止めたあと、月次の業務が新システムだけで一周した
+. 公開の前の四つの点検が通っていて、結果が設計書に残っている
 
 ```bash
 diff old_output.csv new_output.csv    # 旧と新の出力を突き合わせる
@@ -9092,9 +9158,69 @@ Most of design is rules, not taste.
 Rules can be written down and handed over — exactly like business rules.
 ____
 
+== Before going live, run four checks
+
+Before any moving part goes outside, run four checks. They belong in the "verify"
+step of 2-11's "build → verify → deploy," every time. Record the result in the
+design document. The AI may help with the searching; matching the table against
+the implementation and deciding is the human's job.
+
+The four are not exotic failure modes. In the OWASP Top 10 for 2025, broken
+access control is #1, cryptographic failures #4, injection #5, and mishandling of
+exceptional conditions #10 (https://owasp.org/Top10/2025/[OWASP]). In MITRE's
+2025 CWE Top 25, missing authorization is #4 (up from #9 the year before) and
+authorization bypass through a user-controlled key — fetching someone else's
+record by its ID — is #24
+(https://cwe.mitre.org/top25/archive/2025/2025_cwe_top25.html[MITRE]). Both
+checked 2026-10-07. The four checks map straight onto the top of those lists.
+
+=== First — confirm the permissions on every API
+
+* List every FastAPI route and every PocketBase collection. In the design document's table, write for each route who may call it (public; confirmed by one-time code; logged in; the owner; an administrator). Match the table against the implementation, and delete any route not in the table
+* When you add a route, re-check every existing route. Apply authentication per router, so that forgetting it fails toward "deny"
+* An API that takes an ID compares the record's owner with the token's user. Write a test that confirms someone else's ID cannot be fetched
+* Check all five PocketBase rules: list, view, create, update, delete. An empty string means "anyone"; null means "administrators only." To restrict to the owner, `owner = @request.auth.id`
+* For the one-time code (2-11), check the code's expiry, rejection of a code already used, and the limit on attempts
+* Hiding a button in a Flet screen does not count as a permission check. The API side denies
+* Search for bypass routes left behind: names like `bypass`, `debug`, `test`, `dev`, and branches that drop authentication under `if DEBUG`
+* Check that an exception does not fail toward "allow." If token verification raises, deny rather than pass
+
+=== Second — how input is handled
+
+* Never build SQL by string concatenation; pass parameters. Search for SQL assembled with f-strings or `+`
+* Never embed user input directly in a PocketBase filter. Use the SDK's parameterized filter
+* For output into HTML, use `textContent`, not `innerHTML` or `document.write`. Keep Jinja2 autoescape on, and search for `|safe`. When converting AsciiDoc or Markdown to HTML, disable raw HTML passthrough (2-10)
+* For external commands, do not pass input to `subprocess` with `shell=True`; pass arguments as a list
+* Normalize uploaded filenames and path arguments, and confirm they cannot leave the directory you decided on (the `../` defense)
+* Validate on the server. FastAPI input gets its type, length, and range from Pydantic. Validation on the Flet side does not count
+* Any code that fetches a user-supplied URL limits the destination to an allow-list
+* For CORS, never allow `allow_origins=["*"]` together with credentials. Do not set `*` just to make an error go away
+
+=== Third — secrets
+
+* Never write keys, passwords, or tokens into code, into a Flet app you distribute, or into JS. Anything put into a distributed artifact can be extracted by anyone. Code that needs an external API key lives on the server
+* `.env`, `*.db`, backups, and exported files go in `.gitignore`. Before committing, check the list of what goes in
+* Before publishing, scan the whole history with gitleaks or the like. A key that was in the history is rotated, not erased from the history
+* Check that no initial password, demo account, or sample key remains
+* Do not store passwords yourself; leave them to the gate (PocketBase)
+* If a distributed Flet app holds a token, keep it in the OS's secure store (the keychain). On the web, use short-lived tokens and do not leave them in the browser for long
+* Base64 is not encryption. Confirm the encryption function actually exists, and that a failure does not continue in plaintext
+* Never log tokens or secrets. Do not put `.env` where the AI agent can read it (its working directory) (2-17)
+
+=== Fourth — the TODOs still open
+
+* Search for `TODO`, `FIXME`, `XXX`, `HACK`, `仮`, `暫定`, `demo`, `temporary`, `for now`, `skip`, `bypass`, and for commented-out authentication or permission checks
+* Move what you find into the design document's "open" table: what, where, and whether it must be done before going live
+* If a single item touching authentication, permissions, encryption, or input validation remains, do not go live
+
+____
+The checks sit between the build and production. If any one of the four fails,
+it does not ship.
+____
+
 == How to check you are done
 
-This chapter is done when these six hold.
+This chapter is done when these seven hold.
 
 . Feeding the same input to the old system and to the new API produces matching
   output
@@ -9108,6 +9234,7 @@ This chapter is done when these six hold.
   files
 . After the old system was stopped, one monthly cycle of the business ran through
   on the new system alone
+. The four pre-launch checks pass, and the result is recorded in the design document
 
 ```bash
 diff old_output.csv new_output.csv    # compare the old and new outputs
@@ -11932,7 +12059,7 @@ ____
 * 業務データは、人が選んで渡す(全自動のアクセスを許さない)
 * 機密の情報は、人が判断して手元に残す
 * AI が書いたものは、人が持ち帰って業務環境に入れる
-* 業務環境(エディタ、メール、ファイルシステム)は、AI が直接さわれない範囲に置く
+* 業務環境(エディタ、メール、ファイルシステム)は、AI が直接さわれない範囲に置く。鍵や `.env` は、AI の作業場所の外に置く
 
 *面倒に見える。その面倒さが安全装置になっている*。Word の中に AI を入れれば便利だが、
 サンドボックスは崩れる。原稿を adoc で書いて、必要な分だけ AI に渡す ── 一手間多い
@@ -12387,7 +12514,7 @@ ____
 * The human picks what business data goes across (no fully automatic access)
 * Confidential information stays on your side, by human judgment
 * What the AI writes is carried back into the work environment by a human
-* The work environment (editor, mail, filesystem) sits where the AI cannot touch it directly
+* The work environment (editor, mail, filesystem) sits where the AI cannot touch it directly. Keys and `.env` stay outside the AI's working area
 
 *It looks inconvenient. That inconvenience is the safety mechanism.* Putting AI inside Word
 is convenient, and it breaks the sandbox. Writing in adoc and handing over only what is

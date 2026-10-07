@@ -1382,7 +1382,7 @@ ifdef::lang-ja[]
 * 計画する ── 顧客と現場と自分の文脈から、何を作るかの案を立てる。どう分けるか、何を使い何を使わないか、どこに置き、どこまでを自分で持つかまで含めて、AI に渡せる仕様に書く。案を作るのも、仕様に書くのも、ビルダーの仕事だ。
 * AI と作る ── 意図と制約と文脈を AI に渡す。AI はコードを書き、設計を提案する。一度の指示では終わらない。やり取りを重ねる。
 * 確かめる ── 返ってきたものが動くかを見る。設計と合っているかを見る。想定した文脈で壊れないかを見る。
-* 統合し、動かす ── 部分を全体に組み込む。整合を保ち、動かす。そして「計画する」に戻り、仕様を直す。
+* 統合し、動かす ── 部分を全体に組み込み、整合を保って動かす。動かすとは、業務に載せて成果を出すことだ。企業が作った物なら、収益を上げるか、費用を下げるかしなければ、作った意味がない。動かして出た結果が、次の計画の材料になる。そして「計画する」に戻り、仕様を直す。
 
 この四つは一方通行ではない。ループである。一周にかかる時間は、規模によって数分から数時間だ。一日に何十周も回す。コードを書く時間は、この中で最小になる。書くのは AI だからだ。
 
@@ -1397,16 +1397,17 @@ flowchart LR
     D["計画する<br/>(何を・どう分けるか・<br/>仕様に書く)"]
     Hand["AI と作る<br/>(意図・制約・文脈を渡す)"]
     Eval["確かめる<br/>(動くか・整合するか)"]
-    Int["統合し動かす<br/>(全体の整合を保つ)"]
+    Int["統合し動かす<br/>(業務に載せて成果を出す)"]
     D --> Hand --> Eval --> Int --> D
   end
 
   AI(("AI<br/>コード・設計"))
-  Out["動く<br/>ソフトウェア"]
+  Out["動いて成果を出す<br/>ソフトウェア"]
 
   Ctx -->|計画の材料はここから来る| D
   Hand <-->|意図を渡し、コードと設計案を受け取る| AI
   Int -->|全体の整合を保ったまま外へ出す| Out
+  Out -.->|収益・費用の結果が次の計画に戻る| Ctx
 
   classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
   classDef bad  fill:#fef3e7,stroke:#c89559,color:#5a3f1a
@@ -1414,7 +1415,7 @@ flowchart LR
   class AI bad
 ```
 
-このループ全体を握るのがビルダーだ。方向と責任も、ビルダーが負う。AI はコードを書き、設計を提案する。だが、何を作るか、現実と何をすり合わせるか、どう動かすかは、ビルダーの側にある。
+このループ全体を握るのがビルダーだ。方向と責任も、ビルダーが負う。AI はコードを書き、設計を提案する。だが、何を作るか、現実と何をすり合わせるか、どう動かすかは、ビルダーの側にある。動かした結果 ── 収益が上がったか、費用が下がったか ── を負うのも、ビルダーだ。
 
 この役割にいちばん近い既存の職能は、映画監督だ。監督はカメラを操作しない。編集ソフトも触らない。衣装も作らない。それでも、何を作るか、どう見せるか、どこを切るか、どの順で繋ぐかを決める。全体の整合も監督が保つ。スタッフは監督とやり取りしながら形にする。ビルダーと AI の関係は、これに重なる。方向と全体はビルダーが持つ。コードと設計の作り込みは、AI との対話で進む。出来上がるものは、両者の協同が生む。3-09 では「アプリ作りは映画作りに似てくる」として、この並びを改めて扱う。
 
@@ -1541,7 +1542,7 @@ A builder's work is made of four steps.
 * Plan — from the customer, the field, and the builder's own context, draft what to build. Write it as a spec the AI can read, down to how to split it, what to use and what not to, where it goes, and how much to hold yourself. Making the draft and writing the spec are both the builder's work.
 * Build with AI — hand AI the intent, the constraints, and the context. AI writes the code and proposes the design. One instruction is not the end of it. The exchange goes back and forth.
 * Check — see whether what comes back runs. See whether it fits the design. See whether it breaks in the context it was meant for.
-* Integrate and run — fold the part into the whole. Keep the whole consistent, and run it. Then return to "plan" and revise the spec.
+* Integrate and run — fold the part into the whole, keep it consistent, and run it. Running means putting it into the business and getting results. What a company builds has to raise revenue or cut cost, or there was no point building it. What comes out of running it is the material for the next plan. Then return to "plan" and revise the spec.
 
 These four are not a one-way line. They are a loop. One turn takes minutes to hours, depending on scope. A builder runs the loop tens of times a day. Time spent writing code is the smallest part of it, because AI does the writing.
 
@@ -1556,16 +1557,17 @@ flowchart LR
     D["Plan<br/>(what, how to split it,<br/>written as a spec)"]
     Hand["Build with AI<br/>(pass intent, constraints, context)"]
     Eval["Check<br/>(does it run? does it fit?)"]
-    Int["Integrate and run<br/>(keep the whole consistent)"]
+    Int["Integrate and run<br/>(into the business, for results)"]
     D --> Hand --> Eval --> Int --> D
   end
 
   AI(("AI<br/>code, design"))
-  Out["Running<br/>software"]
+  Out["Software running<br/>and producing results"]
 
   Ctx -->|this is where the material for the plan comes from| D
   Hand <-->|intent goes out, code and design proposals come back| AI
   Int -->|released only with the whole kept consistent| Out
+  Out -.->|revenue and cost results feed the next plan| Ctx
 
   classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
   classDef bad  fill:#fef3e7,stroke:#c89559,color:#5a3f1a
@@ -1573,7 +1575,7 @@ flowchart LR
   class AI bad
 ```
 
-The builder holds the whole loop. The builder also carries the direction and the responsibility. AI writes the code and proposes the design. But what to build, what to reconcile with reality, and how to run it stay on the builder's side.
+The builder holds the whole loop. The builder also carries the direction and the responsibility. AI writes the code and proposes the design. But what to build, what to reconcile with reality, and how to run it stay on the builder's side. So does the result of running it — whether revenue went up, or cost went down.
 
 The closest existing job to this role is the film director. A director does not operate the camera. A director does not touch the editing software. A director does not sew costumes. Even so, the director decides what to make, how to show it, where to cut, and in what order to assemble. The director also keeps the whole consistent. The crew gives it form in dialogue with the director. The relationship between the builder and AI maps onto this. Direction and the whole stay with the builder. The code and the design get built through dialogue with AI. What comes out is born of the collaboration. 3-09 returns to this pairing under the heading "app-making comes to resemble film-making."
 

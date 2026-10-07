@@ -8451,12 +8451,12 @@ ____
 * link:/ai-native-software/coder-end/[1-03: ソフトウェアエンジニアの仕事を AI がするようになる] ── そろばん → 電卓と同じ構造
 * link:/ai-native-software/builder/[1-04: ビルダーという役割] ── 決める・委譲する・評価する・統合する
 * link:/ai-native-software/customer-codev/[1-05: 顧客が AI と協働して開発する時代] ── 9 割は顧客自身が作る
-* link:/ai-native-software/two-worlds/[3-01: 企業は自分でコードを書かない ── 事務と基幹の並立] ── 二つの並立世界と二重の税、そしてその解消
+* link:/ai-native-software/two-worlds/[3-01: 企業は自分でコードを書かない ── 事務と基幹、二つの世界の並立] ── 二つの並立世界と二重の税、そしてその解消
 * link:/ai-native-software/sovereignty/[3-03: デジタル主権 ── Microsoft 問題と Trump 問題] ── OSS とソブリン AI が経済でも安全保障でも有利に
-* link:/ai-native-software/sier-uneconomic/[3-04: SIer 委託モデルの構造的不経済]
+* link:/ai-native-software/sier-uneconomic/[3-04: SIer委託モデルの構造的不経済]
 * link:/ai-native-software/lockin/[3-05: ロックイン問題] ── Palantir FDE を典型例として
-* link:/ai-native-software/hiring-builders/[3-06: 上級ビルダーは経営陣（CIO）] ── 経営判断を下す側へ
-* link:/ai-native-software/japan-transition/[3-07: 日本の SIer 業界の転換] ── 多重下請けは逆説的に転換を容易にする
+* link:/ai-native-software/hiring-builders/[3-06: 各社がビルダーを雇用する時代] ── 経営判断を下す側へ
+* link:/ai-native-software/japan-transition/[3-07: 日本の SIer 業界の転換と雇用流動性] ── 多重下請けは逆説的に転換を容易にする
 * link:/ai-native-software/five-years/[3-09: もう戻らない構造転換] ── 不可逆性、第二次ルネサンス
 
 「*ソフトウェア工学から、リベラルアーツへ ── 技術職の基盤転換*」── これが連載を貫く軸であり、AI 時代の構造を読み解く一つの軸です。
@@ -8536,7 +8536,7 @@ To be clear, *computer science (CS) is a different thing*. Computability, algori
 
 The etymology lines up, too. The medieval _artes liberales_ were defined as *the arts a free person — one who is not enslaved — should learn*, set explicitly against the _artes mechanicae_, the slave's arts. The builder is the person who *does not hand judgment over to AI* — the contemporary form of the free person's arts.
 
-See link:/en/ai-native-software/builder/[1-04: The Builder Role — "A builder's foundation is liberal arts"].
+See link:/en/ai-native-software/builder/[1-04: The Builder Role].
 
 == Transition 3: Employment → free person
 
@@ -8568,7 +8568,7 @@ Employment is the contemporary form of medieval serfdom.
 *Self-employment is the contemporary form of being a free person.*
 ____
 
-See link:/en/ai-native-software/five-years/[3-09: "Employment is the AI era's serfdom"].
+See link:/en/ai-native-software/five-years/[3-09: The Structural Transition That Won't Reverse].
 
 == This is the Second Renaissance
 
@@ -8588,7 +8588,7 @@ History textbooks credit the printing press with preparing the ground for the Re
 
 The speed of diffusion is on another order. What took the printing press decades, the AI era achieves *in years*. The near-term horizon this sub-series draws is, against this difference in intensity, *a conservative estimate*.
 
-The Second Renaissance cannot be captured by "the AI revolution" alone. The deeper arguments — *the AI revolution is the completion of the IT revolution* (the 70-year-late fulfillment of the automation promise), *the LLM is a statistical-processing tool, not a superintelligence* (structural rejection of the AGI hype), *app-making comes to resemble film-making* (holding across the Hollywood-to-YouTube range), *not only the AI revolution* (concurrent transitions in fossil resources, geopolitics, agriculture, finance, demographics, healthcare, and pensions), and *creation AND upheaval as two sides of the era* (Trump and Nadella share the same structural error of judgment-concentration) — are developed in link:/en/ai-native-software/five-years/[*Software sub-series, 3-07: "The Structural Transition That Won't Reverse"*].
+The Second Renaissance cannot be captured by "the AI revolution" alone. The deeper arguments — *the AI revolution is the completion of the IT revolution* (the 70-year-late fulfillment of the automation promise), *the LLM is a statistical-processing tool, not a superintelligence* (structural rejection of the AGI hype), *app-making comes to resemble film-making* (holding across the Hollywood-to-YouTube range), *not only the AI revolution* (concurrent transitions in fossil resources, geopolitics, agriculture, finance, demographics, healthcare, and pensions), and *creation AND upheaval as two sides of the era* (Trump and Nadella share the same structural error of judgment-concentration) — are developed in link:/en/ai-native-software/five-years/[3-09: The Structural Transition That Won't Reverse].
 
 == The alternative path to "specialized engineer" advice
 
@@ -8606,16 +8606,16 @@ Both are roads out of the lord's manor.
 This article compresses aiseed.dev's link:/en/ai-native-software/[AI-Native Software Development] into three pairs of words. The arguments across the chapters:
 
 * link:/en/ai-native-software/coder-top/[1-01: AI Solves the World's Hardest Coding Problems] — Codeforces 2700 tier; the top layer for $20/month
-* link:/en/ai-native-software/maintenance-shift/[1-02: The Real Shift Is in Maintenance] — the unit of maintenance moves from code to design
+* link:/en/ai-native-software/maintenance-shift/[1-02: Maintenance-Phase Shift Is the Real Story] — the unit of maintenance moves from code to design
 * link:/en/ai-native-software/coder-end/[1-03: AI Now Does the Software Engineer's Work] — same structure as abacus → calculator
 * link:/en/ai-native-software/builder/[1-04: The Builder Role] — decide, delegate, evaluate, integrate
-* link:/en/ai-native-software/customer-codev/[1-05: Customers Co-develop with AI] — 90% is the customer; 10% goes to a specialist
+* link:/en/ai-native-software/customer-codev/[1-05: Customers Co-Develop with AI] — 90% is the customer; 10% goes to a specialist
 * link:/en/ai-native-software/two-worlds/[3-01: Companies Don't Write Their Own Code — Office and Core, Two Parallel Worlds] — the two parallel worlds, the double tax, and their dissolution
 * link:/en/ai-native-software/sovereignty/[3-03: Digital Sovereignty — The Microsoft Problem and the Trump Problem] — OSS and sovereign AI now win on both economics and security
-* link:/en/ai-native-software/sier-uneconomic/[3-04: The SIer Commission Model Is Structurally Uneconomic]
+* link:/en/ai-native-software/sier-uneconomic/[3-04: The Structural Uneconomy of the SIer Model]
 * link:/en/ai-native-software/lockin/[3-05: The Lock-In Problem] — Palantir FDE as the canonical case
-* link:/en/ai-native-software/hiring-builders/[3-06: The Senior Builder Is Management (the CIO)] — moving to the side that makes business decisions
-* link:/en/ai-native-software/japan-transition/[3-07: Japan's SIer Industry Transition] — multi-tier subcontracting paradoxically eases the transition
+* link:/en/ai-native-software/hiring-builders/[3-06: Companies Hire Builders] — moving to the side that makes business decisions
+* link:/en/ai-native-software/japan-transition/[3-07: Japan's SIer Industry Transition and Labor Mobility] — multi-tier subcontracting paradoxically eases the transition
 * link:/en/ai-native-software/five-years/[3-09: The Structural Transition That Won't Reverse] — irreversibility; the Second Renaissance
 
 "*From software engineering to the liberal arts — the foundational shift of the technical profession*" is the subtitle of the sub-series and one axis for reading the structure of the AI era.

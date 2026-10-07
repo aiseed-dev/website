@@ -3293,7 +3293,7 @@ uv run python -c "import duckdb, polars; print('ok')"
 
 * link:/ai-native-software/ai-pc/[2-02: AI に PC を一台渡す ── 自立編を動かす機械]
 * link:/ai-native-software/auth/[2-05: 門番を立てる ── PocketBase で認証を一つに]
-* link:/ai-native-software/customer-codev/[1-05: 顧客がAIと協働して開発する時代]
+* link:/ai-native-software/customer-codev/[1-05: 顧客が AI と協働して開発する時代]
 * link:/ai-native-software/independence/[2-01: Microsoft と Google から自立する ── 全体像と対応表]
 * link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
 endif::[]
@@ -4036,7 +4036,7 @@ uv run python -c "import polars, altair, flet; print('ok')"
 * link:/ai-native-software/auth/[2-05: 門番を立てる ── PocketBase で認証を一つに]
 * link:/ai-native-software/documents/[2-07: 文書を取り戻す ── 読む物は adoc、触る表は格子、刷る紙はテンプレート]
 * link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹のロジックを出す]
-* link:/ai-native-software/customer-codev/[1-05: 顧客がAIと協働して開発する時代]
+* link:/ai-native-software/customer-codev/[1-05: 顧客が AI と協働して開発する時代]
 endif::[]
 ifdef::lang-en[]
 = Write the Logic — Own Your Tools with Python and Flet
@@ -9304,7 +9304,7 @@ documents. Structure diagrams, slides, and handouts all come from text and code.
 * link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars]
 * link:/en/ai-native-software/auth/[2-05: Stand Up the Gate — One Login with PocketBase]
 * link:/en/ai-native-software/documents/[2-07: Take Documents Back — Prose in AsciiDoc, Working Tables in a Grid, Printed Pages from Templates]
-* link:/en/ai-native-software/structure-knowledge/[2-15: Put Your Information in Order — The Preparation Is the Work, AI Is the Last Step]
+* link:/en/ai-native-software/structure-knowledge/[2-15: Make Your Knowledge Legible — Preparation Is the Main Body, AI the Last Move]
 * link:/en/ai-native-software/meetings/[2-09: Meetings and Calendars on Your Own Side — Jitsi and CalDAV]
 endif::[]
 // ===== article: 18-design =====
@@ -11456,7 +11456,7 @@ In the next chapter, on top of this prepared information, we set up our own AI.
 
 * link:/en/ai-native-software/documents/[2-07: Take Documents Back — Prose in AsciiDoc, Working Tables in a Grid, Printed Pages from Templates]
 * link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
-* link:/en/ai-native-software/ai/[2-16: Set Up Your Own AI — LLM and RAG]
+* link:/en/ai-native-software/ai/[2-16: Stand Up Your Own AI — LLM and RAG]
 * link:/en/ai-native-software/builder/[1-04: The Builder Role]
 endif::[]
 // ===== article: 21-ai =====
@@ -11659,7 +11659,7 @@ ____
 
 * link:/ai-native-software/foundation/[2-03: 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars]
 * link:/ai-native-software/structure-knowledge/[2-15: 社内情報を整える ── 整備こそ本体、AI は最後の一手]
-* link:/ai-native-software/sier-uneconomic/[3-04: SIer 委託モデルの構造的不経済]
+* link:/ai-native-software/sier-uneconomic/[3-04: SIer委託モデルの構造的不経済]
 endif::[]
 ifdef::lang-en[]
 = Stand Up Your Own AI — LLM and RAG
@@ -11857,7 +11857,7 @@ Independence part.
 == Related articles
 
 * link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars]
-* link:/en/ai-native-software/structure-knowledge/[2-15: Put Your Information in Order — The Preparation Is the Work, AI Is the Last Step]
+* link:/en/ai-native-software/structure-knowledge/[2-15: Make Your Knowledge Legible — Preparation Is the Main Body, AI the Last Move]
 * link:/en/ai-native-software/sier-uneconomic/[3-04: The Structural Uneconomy of the SIer Model]
 endif::[]
 // ===== article: 22-ai-delegation =====
@@ -13067,7 +13067,7 @@ eras, by different vendors, from different talent pools. Office was carried
 by global product vendors. Core was carried by the domestic SIer pyramid.
 Inside the same company, the two stood side by side and barely touched.
 
-The connection was just two thin seams. As link:/en/ai-native-software/independence/[2-01: Stand Free of Microsoft and Google] showed, they were auth
+The connection was just two thin seams. As link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map] showed, they were auth
 (Entra ID) and document sharing (SharePoint). Those two points were all that
 the core-system world and the office world shared.
 
@@ -13137,9 +13137,9 @@ As the Independence part showed, one person plus AI can stand up both worlds
 on the same OSS foundation. Office and core are no longer something to
 procure from separate vendors.
 
-* Office systems — PostgreSQL, PocketBase, AsciiDoc and Forgejo (link:/en/ai-native-software/foundation/[2-03: Laying the Foundation], 2-07)
+* Office systems — PostgreSQL, PocketBase, AsciiDoc and Forgejo (link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars], 2-07)
 * Core systems — PostgreSQL, FastAPI, the same auth and the same sharing
-  (link:/en/ai-native-software/fastapi/[2-12: Building the API])
+  (link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI])
 
 The two ride on the same data foundation, the same gatekeeper, the same code.
 Generic and specific alike are stood up by one person plus AI. The very
@@ -13173,8 +13173,7 @@ view this single collapse from a different face — digital sovereignty and the
 Microsoft problem (3-03), the uneconomy of SIer commissioning (3-04), the
 nature of lock-in (3-05), companies hiring builders directly (3-06), Japan's
 specific transition (3-07), the revolution starting from below
-(link:/en/ai-native-software/revolution-from-below/[3-08: The AI Revolution
-Starts from Below]), and the near-term transition and its irreversibility
+(link:/en/ai-native-software/revolution-from-below/[3-08: The AI Revolution Starts From Below]), and the near-term transition and its irreversibility
 from inversion (3-09). Each is the same single collapse, lit from a different
 angle.
 
@@ -13239,7 +13238,7 @@ sovereign AI are now better on both economics and security.
 
 == Related articles
 
-* link:/en/ai-native-software/independence/[2-01: Stand Free of Microsoft and Google — Overview and Mapping]
+* link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map]
 * link:/en/ai-native-software/sier-uneconomic/[3-04: The Structural Uneconomy of the SIer Model]
 * link:/en/ai-native-software/python/[2-04: Write the Logic — Own Your Tools with Python and Flet]
 endif::[]
@@ -14320,7 +14319,7 @@ The OSS foundation from the Independence part removes four things.
   third party holding the act that cuts you off in the first place.
 
 And the last layer is the AI. Run the local open-weight model you stood up in
-link:/en/ai-native-software/ai/[2-16: Standing Up Your Own AI] on your own
+link:/en/ai-native-software/ai/[2-16: Stand Up Your Own AI — LLM and RAG] on your own
 hardware.
 
 * Data never leaves — documents and conversations never pass through a US AI
@@ -14404,7 +14403,7 @@ We examine that structure (3-04).
 
 == Related articles
 
-* link:/en/ai-native-software/independence/[2-01: Stand Free of Microsoft and Google — Overview and Mapping]
+* link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map]
 * link:/en/ai-native-software/two-worlds/[3-01: Companies Don't Write Their Own Code — Office and Core, Two Parallel Worlds]
 * link:/en/ai-native-software/sier-uneconomic/[3-04: The Structural Uneconomy of the SIer Model]
 endif::[]
@@ -16432,7 +16431,7 @@ ____
 == 関連記事
 
 * link:/ai-native-software/coder-end/[1-03: ソフトウェアエンジニアの仕事を AI がするようになる]
-* link:/ai-native-software/sier-uneconomic/[3-04: SIer 委託モデルの構造的不経済]
+* link:/ai-native-software/sier-uneconomic/[3-04: SIer委託モデルの構造的不経済]
 * link:/ai-native-software/hiring-builders/[3-06: 各社がビルダーを雇用する時代]
 * link:/ai-native-software/revolution-from-below/[3-08: AI 革命は下から起きる]
 * link:/phosphorus-and-farming/[リン資源枯渇と自然農法]
@@ -16981,7 +16980,7 @@ AI が革命を起こすのは、上からの決定でも、大きな予算で�
 == 関連記事
 
 * link:/ai-native-software/japan-transition/[3-07: 日本の SIer 業界の転換と雇用流動性]
-* link:/ai-native-software/sier-uneconomic/[3-04: SIer 委託モデルの構造的不経済]
+* link:/ai-native-software/sier-uneconomic/[3-04: SIer委託モデルの構造的不経済]
 * link:/ai-native-software/sovereignty/[3-03: デジタル主権 ── Microsoft 問題と Trump 問題]
 * link:/ai-native-software/ai-pc/[2-02: AI に PC を一台渡す ── 自立編を動かす機械]
 * link:/ai-native-software/ai/[2-16: 自前の AI を据える ── LLM と RAG]
@@ -17227,8 +17226,8 @@ chapter looks at why this transition does not reverse, as a structure.
 
 == Related articles
 
-* link:/en/ai-native-software/japan-transition/[3-07: The Transition of Japan's SIer Industry and Labor Mobility]
-* link:/en/ai-native-software/sier-uneconomic/[3-04: The Structural Uneconomics of the SIer Commission Model]
+* link:/en/ai-native-software/japan-transition/[3-07: Japan's SIer Industry Transition and Labor Mobility]
+* link:/en/ai-native-software/sier-uneconomic/[3-04: The Structural Uneconomy of the SIer Model]
 * link:/en/ai-native-software/sovereignty/[3-03: Digital Sovereignty — The Microsoft Problem and the Trump Problem]
 * link:/en/ai-native-software/ai-pc/[2-02: Give the AI a PC of Its Own — The Machine the Independence Part Runs On]
 * link:/en/ai-native-software/ai/[2-16: Stand Up Your Own AI — LLM and RAG]
@@ -18591,7 +18590,7 @@ that read the structure.
 * link:/en/ai-native-software/coder-top/[1-01: AI Solves the World's Hardest Coding Problems]
 * link:/en/ai-native-software/coder-end/[1-03: AI Now Does the Software Engineer's Work]
 * link:/en/ai-native-software/builder/[1-04: The Builder Role]
-* link:/en/ai-native-software/japan-transition/[3-07: The Transition of Japan's SIer Industry and Labor Mobility]
+* link:/en/ai-native-software/japan-transition/[3-07: Japan's SIer Industry Transition and Labor Mobility]
 * link:/en/phosphorus-and-farming/[Phosphorus Depletion and Natural Farming]
 * link:/en/insights/enterprise-tax/[Structural analysis 08: Subtracting the Enterprise-IT Tax]
 * link:/en/insights/ai-and-individual/[Structural analysis 12: AI and the Individual Business]

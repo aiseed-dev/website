@@ -7927,22 +7927,19 @@ AI群制御により、数百人のオペレーターで数万機を運用可能
 [.highlight-box]
 --
 *戦闘における比率の逆転*
-2024年初頭、戦場での攻撃のうちドローン経由は約10%だった。
-2026年時点では約70%。砲兵による攻撃は10〜15%まで低下。
-わずか2年で、戦場の主役が砲弾からドローンに切り替わった。
-2026年3月、ロシア軍の戦闘損耗（35,551人）の96%がドローンに
-よるものとされている。`[要検証：CEPA、Kyiv Independent、CSIS等の報道]`
+2025年11月の時点で、ロシア・ウクライナ双方の戦闘損耗の最大75%がドローンによる（ハドソン研究所）。
+2026年2月、シルスキー総司令官は、前線の火力損害の約60%がドローン、約40%が砲兵と述べた（Kyiv Post）。
+2026年3月、ロシア軍の戦闘損耗35,351人のうち96%（33,988人）がドローン攻撃、砲兵などは1,363人だった（ゼレンスキー大統領の発表、Al Jazeera 2026-04-10）。
+戦場の主役が砲弾からドローンに切り替わった。
 --
 
 [.highlight-box]
 --
-*AIが命中率を4倍に引き上げた*
-オペレーターが手動操縦するFPVドローンの命中率は10〜20%程度。
-これにAIによる自律航法・終末誘導モジュール（1機あたり約50ドル）を
-追加するだけで、命中率は70〜80%まで跳ね上がる。
-50ドルのAIモジュールが、ドローン1機の戦果を*約4倍*に押し上げる。
+*AIが戦果を最大4倍に引き上げた*
+ウクライナの The Fourth Law 社の自律モジュール TFL-1 は、1機あたり約50ドル。
+飛行の最後の400〜500メートルをAIが誘導し、電波妨害で操縦が切れても目標に届く。
+このモジュールを付けた機体は、手動操縦だけの機体に比べて攻撃の成功率が*最大4倍*になる（IEEE Spectrum、2026-03-24）。
 これは単価数万ドルの兵器を、さらに桁違いに高効率化する変化である。
-`[要検証：IEEE Spectrum、Ukraine's Arms Monitor等]`
 --
 
 === 制度的アーキテクチャの勝利 ── Brave1 / Delta / Army+ / E-Points
@@ -8610,23 +8607,20 @@ important insight of this section.
 [.highlight-box]
 --
 *The inversion of battle ratios*
-In early 2024, about 10% of battlefield strikes were drone-delivered.
-By 2026, about 70%. Artillery strikes fell to 10–15%.
-In just two years, the lead role passed from shells to drones.
-In March 2026, 96% of Russian combat losses (35,551 men) were
-attributed to drones. `[needs verification: CEPA, Kyiv Independent, CSIS and other reporting]`
+As of November 2025, drones caused up to 75% of combat losses on both the Russian and Ukrainian sides (Hudson Institute).
+In February 2026, Commander-in-Chief Syrskyi said drones account for about 60% of fire damage at the front, artillery about 40% (Kyiv Post).
+In March 2026, of 35,351 Russian casualties, 96% (33,988) came from drone strikes and 1,363 from artillery and other fire (President Zelensky's figures, Al Jazeera, 2026-04-10).
+The lead role has passed from shells to drones.
 --
 
 [.highlight-box]
 --
-*AI quadrupled the hit rate*
-Manually piloted FPV drones hit their targets around 10–20% of the time.
-Add an AI autonomous-navigation and terminal-guidance module (about $50
-per drone), and the hit rate jumps to 70–80%.
-A $50 AI module multiplies one drone's results *about fourfold* —
+*AI raises the strike results up to fourfold*
+The TFL-1 autonomy module from Ukraine's The Fourth Law costs about $50 per drone.
+It guides the last 400–500 meters of flight, so the drone reaches its target even when jamming cuts the operator's link.
+Drones carrying it achieve a strike success rate *up to four times* that of purely operator-controlled drones (IEEE Spectrum, 2026-03-24) —
 making a weapon already costing only tens of thousands another order of
 magnitude more efficient.
-`[needs verification: IEEE Spectrum, Ukraine's Arms Monitor, etc.]`
 --
 
 === The Victory of Institutional Architecture — Brave1 / Delta / Army+ / E-Points

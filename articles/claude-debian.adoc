@@ -10345,7 +10345,6 @@ link:/insights/security-design/[第15章「Mythos時代のセキュリティ設�
 * Python:`uv`(プロジェクト直下の `.venv/`)
 * Node:`fnm`
 * Rust:`rustup` の toolchain
-* Docker:コンテナ単位
 
 *システムの Python や npm に直接インストールしない*。プロジェクトごとに
 独立した環境を持つことで、一つが壊れても他に波及しない。
@@ -10840,7 +10839,6 @@ As discussed in link:/en/insights/security-design/[Chapter 15, "Security Design 
 * Python: `uv` (project-local `.venv/`).
 * Node: `fnm`.
 * Rust: `rustup` toolchains.
-* Docker: per-container.
 
 *Don't install directly into the system Python or system npm.* Each
 project gets its own isolated environment, so when one breaks, the rest
@@ -11260,7 +11258,6 @@ sudo journalctl --vacuum-time=30d     # 30日より古いログを削除
 # 各言語のキャッシュ
 # Python: ~/.cache/pip
 # Node: ~/.npm
-# Docker: docker system prune -af
 ```
 
 === Claudeに聞いてみよう③：ディスクの棚卸し
@@ -11649,7 +11646,6 @@ sudo journalctl --vacuum-time=30d     # delete older than 30 days
 # Caches per language
 # Python: ~/.cache/pip
 # Node: ~/.npm
-# Docker: docker system prune -af
 ```
 
 === Ask Claude ③: A Disk Stock-Take

@@ -2159,8 +2159,7 @@ ____
 
 世界の農薬生産は、*インドと中国に集中* している。
 
-* *中国* ── 世界最大のグリホサート生産国(世界シェア 60% 超
-  `[要検証]`)、有機リン系農薬の主要産地
+* *中国* ── 世界最大のグリホサート生産国(世界の生産能力の約 64%、2017 年、CCM の集計)、有機リン系農薬の主要産地
 * *インド* ── 世界第二位の農薬生産国、特にジェネリック農薬で
   圧倒的なシェア
 * 日本は農薬原体(有効成分)の *多くをインド・中国経由で輸入*
@@ -2474,9 +2473,9 @@ ____
 
 日本の食卓に並ぶ農産物の多くは、すでに海外と価格競争している。
 
-* 小麦の自給率は *約 1〜2 割* `[要検証]`
-* 大豆の自給率は *約 6〜7%* `[要検証]`
-* 飼料用穀物の自給率は *約 2 割以下* `[要検証]`
+* 小麦の自給率は *17%*(令和 5 年度、重量ベース。以下同じ。農林水産省「食料需給表」)
+* 大豆の自給率は *7%*
+* 飼料は全体で *27%*、輸入に頼る濃厚飼料は *13%*(TDN ベース)
 * 野菜の自給率は *約 8 割* だが、加工品・冷凍品は輸入依存度が高い
 
 国内農家がコスト上昇分を価格に転嫁しようとしても、消費者は安価な輸入
@@ -2573,9 +2572,9 @@ ____
 
 日本の耕作放棄地は、すでに長期的に拡大してきた。
 
-* 2000 年:約 21 万 ha
-* 2020 年:約 42 万 ha `[要検証:具体的な数字と年度]`
-* 2026 年:さらに拡大中
+* 2000 年:34.3 万 ha(農林業センサス)
+* 2015 年:42.3 万 ha(同。耕作放棄地の調査はこの回が最後)
+* 2024 年度:荒廃農地 25.7 万 ha(農林水産省の調査。定義が違うので上と直接は比べられない)
 
 主な理由は、
 
@@ -3027,7 +3026,7 @@ ____
 *生物的マイニング・リジェネラティブ農業*
 
 * Gabe Brown(ノースダコタ州)── 不耕起・カバークロップ・
-  回転放牧の統合経営、SOM 1.7% → 11% への向上
+  回転放牧の統合経営、SOM 1.7% → 5〜8% への向上
 * Christine Jones "Light Farming"(2018)── 液状炭素経路理論
 * Allan Savory "Holistic Management" ── 総合的管理の畜産経営
   データ(母牛死亡率 80% 減、牛乳生産性 2.5 倍)
@@ -3094,7 +3093,7 @@ The short-term (2027) and long-term (peak phosphorus) supply constraints we saw 
 
 World pesticide production is *concentrated in India and China*.
 
-* *China* — the world's largest glyphosate producer (over 60% global share `[unverified]`), and a major center for organophosphate pesticides.
+* *China* — the world's largest glyphosate producer (about 64% of world production capacity in 2017, per CCM), and a major center for organophosphate pesticides.
 * *India* — the world's second-largest pesticide producer, with overwhelming share especially in generic pesticides.
 * Japan *imports much of its active ingredient (AI) supply via India and China*.
 
@@ -3330,9 +3329,9 @@ But agriculture cannot do this. Why?
 
 Much of what reaches Japanese tables is already in price competition with imports.
 
-* Wheat self-sufficiency is *about 10–20%* `[unverified]`.
-* Soybean self-sufficiency is *about 6–7%* `[unverified]`.
-* Feed grain self-sufficiency is *about 20% or less* `[unverified]`.
+* Wheat self-sufficiency is *17%* (FY2023, by weight, as below; MAFF Food Balance Sheet).
+* Soybean self-sufficiency is *7%*.
+* Feed self-sufficiency is *27%* overall, and *13%* for the import-dependent concentrate feed (TDN basis).
 * Vegetable self-sufficiency is *about 80%*, but processed and frozen products lean heavily on imports.
 
 When domestic farmers try to pass cost increases through to prices, consumers pick the cheaper imports. Supermarkets stock the cheaper imports. *Raising the price of domestic produce means it stops selling on the market.*
@@ -3409,9 +3408,9 @@ If profit is not there, what do farmers do? *They quit.* That is a rational choi
 
 Japan's abandoned farmland has long been expanding.
 
-* 2000: about 210,000 ha
-* 2020: about 420,000 ha `[unverified: exact figure and year]`
-* 2026: still expanding
+* 2000: 343,000 ha (Census of Agriculture and Forestry)
+* 2015: 423,000 ha (same census; the last one to survey abandoned farmland)
+* FY2024: 257,000 ha of "devastated farmland" (MAFF survey; a different definition, not directly comparable)
 
 Main reasons:
 
@@ -3739,7 +3738,7 @@ ____
 
 *Biological mining and regenerative agriculture*
 
-* Gabe Brown (North Dakota) — integrated management of no-till, cover crops, and rotational grazing; lifting SOM from 1.7% to 11%.
+* Gabe Brown (North Dakota) — integrated management of no-till, cover crops, and rotational grazing; lifting SOM from 1.7% to 5–8%.
 * Christine Jones, "Light Farming" (2018) — the liquid-carbon pathway theory.
 * Allan Savory, "Holistic Management" — livestock-management data from holistic management (80% reduction in mother-cow mortality, 2.5× milk productivity).
 endif::[]
@@ -3920,7 +3919,7 @@ ____
 しかし、日本の地理的条件では、これにも限界がある。
 
 ____
-*牛 1 頭を草だけで飼育するには、約 1 ヘクタール以上の牧草地が必要* とされる `[要検証:北海道酪農の標準]`。
+*牛 1 頭を草だけで一年飼うには、およそ 1 ヘクタールの草地が要る*。放牧地だけなら 1 頭あたり 0.3〜0.45 ha(道北の目安、昼夜放牧。日本草地畜産種子協会「放牧ガイド」)だが、冬の乾草を作る採草地を足せばその倍近くになる。
 ____
 
 日本の全国耕地面積は *423.9 万 ha*(2025 年、第7章で詳述)。仮に
@@ -4181,7 +4180,7 @@ ____
 すでに実証されている。
 
 * *Gabe Brown(ノースダコタ)*:不耕起+カバークロップで 20 年
-  以上、SOM(土壌有機物)を 1.7% → 11% へ
+  以上、SOM(土壌有機物)を 1.7% → 5〜8% へ
 * *オーストラリア*:全小麦面積の 8 割超が不耕起栽培
 * *アルゼンチン・ブラジル*:大規模な不耕起大豆経営
 * *Allan Savory(総合的管理)*:放牧で母牛死亡率 5% → 1%、牛乳
@@ -4261,14 +4260,16 @@ ____
 ここで、しばしば見落とされる重要な事実を一つ示す。
 
 世界で生産される穀物は、人間がそのまま食べているわけではない。
-用途別に大きく異なる配分になっている `[数値は要検証]`。
+用途別に大きく異なる配分になっている。
 
 |===
 | 穀物 | 食用(直接) | 飼料 | 工業用(エタノール等)
-| トウモロコシ(米国) | 約 10% | 約 36% | 約 40%(エタノール)
-| 大豆(世界) | 約 6% | 約 75〜77%(油糧種子由来ミール) | 残り(油・工業用)
-| 小麦(世界) | 約 65〜70% | 約 20% | 残り
+| トウモロコシ(米国、2023/24 年度) | 約 10%(種子・その他工業用を含む) | 約 39% | 約 37%(エタノール。ほかに輸出が約 14%)
+| 大豆(世界) | 約 9%(直接の食用) | 約 85% が搾油され、ミールはほぼ全部が飼料 | 油(食用・燃料)
+| 小麦(世界、2023/24 年度) | 約 68% | 約 20% | 残り
 |===
+
+(出どころ:米国農務省 ERS「Feed Outlook」2023/24 年度、Soyatech、FAO「Cereal Supply and Demand Brief」2023/24 年度)
 
 この表は、*人間が食料不足だから穀物が足りないのではない* ことを
 示している。
@@ -4387,7 +4388,7 @@ ____
 *国際リジェネラティブ農業の実証*
 
 * Gabe Brown "Dirt to Soil: One Family's Journey into Regenerative
-  Agriculture"(ノースダコタ州、SOM 1.7% → 11%)
+  Agriculture"(ノースダコタ州、SOM 1.7% → 5〜8%)
 * オーストラリア政府農業省 ── 全小麦面積の 8 割超が不耕起栽培
 * アルゼンチン・ブラジル ── 大規模な不耕起大豆経営の事例
 * Allan Savory "Holistic Management: A New Framework for Decision
@@ -4576,7 +4577,7 @@ Savory's holistic management and so on, detailed in Chapter 6).
 But under Japan's geographic conditions, this too has a limit.
 
 ____
-*Raising 1 head of cattle on grass alone requires roughly 1 hectare or more of pasture* `[unverified: Hokkaido dairy standard]`.
+*Keeping one head of cattle on grass alone for a year takes roughly 1 hectare of grassland.* Grazing land alone comes to 0.3–0.45 ha per head (northern Hokkaido guideline, day-and-night grazing; Japan Grassland Agriculture and Forage Seed Association grazing guide), and the hay land for winter nearly doubles it.
 ____
 
 Japan's nationwide arable area is *4.239 million hectares* (2025,
@@ -4869,7 +4870,7 @@ Fortunately, *large-scale production via regenerative agriculture* has
 already been demonstrated in many places around the world.
 
 * *Gabe Brown (North Dakota)*: 20+ years of no-till + cover crops,
-  SOM (soil organic matter) from 1.7% → 11%
+  SOM (soil organic matter) from 1.7% → 5〜8%
 * *Australia*: more than 80% of total wheat area is no-till
 * *Argentina / Brazil*: large-scale no-till soybean operations
 * *Allan Savory (Holistic Management)*: in grazing, mother cow
@@ -4952,14 +4953,16 @@ ____
 Here, one important fact often overlooked.
 
 The grains produced in the world are not eaten directly by humans. They
-are allocated by use in very different shares `[numbers unverified]`.
+are allocated by use in very different shares.
 
 |===
 | Grain | Food (direct) | Feed | Industrial (ethanol, etc.)
-| Corn (U.S.) | ~10% | ~36% | ~40% (ethanol)
-| Soy (world) | ~6% | ~75–77% (oilseed-derived meal) | rest (oil, industrial)
-| Wheat (world) | ~65–70% | ~20% | rest
+| Corn (U.S., 2023/24) | about 10% (incl. seed and other industrial) | about 39% | about 37% (ethanol; exports another 14%)
+| Soybean (world) | about 9% (direct food) | about 85% is crushed, and the meal is almost all feed | oil (food and fuel)
+| Wheat (world, 2023/24) | about 68% | about 20% | the rest
 |===
+
+(Sources: USDA ERS Feed Outlook 2023/24; Soyatech; FAO Cereal Supply and Demand Brief 2023/24)
 
 This table shows that *grain is not short because humans face a food shortage.*
 
@@ -5081,7 +5084,7 @@ mechanism it holds: biological mining by soil microbes.
 
 *International demonstrations of regenerative agriculture*
 
-* Gabe Brown, _Dirt to Soil: One Family's Journey into Regenerative Agriculture_ (North Dakota, SOM 1.7% → 11%)
+* Gabe Brown, _Dirt to Soil: One Family's Journey into Regenerative Agriculture_ (North Dakota, SOM 1.7% → 5〜8%)
 * Australian Department of Agriculture — over 80% of total wheat area
   is no-till
 * Argentina / Brazil — cases of large-scale no-till soybean operations
@@ -5242,13 +5245,13 @@ ____
 
 植物は、根から直接栄養を吸っているように見える。しかし実態は違う。
 
-*陸上植物の約 80% は、菌根菌(きんこんきん、mycorrhizal fungi)と共生関係を結んでいる* `[要検証]`。
+*維管束植物の 8 割以上の種は、菌根菌(きんこんきん、mycorrhizal fungi)と共生関係を結んでいる*(Brundrett & Tedersoo 2018。アーバスキュラー菌根が 72%、菌根を作らない種は 8%)。
 
 菌根菌とは、根の中または周囲に住み着く真菌(カビの仲間)である。
 植物の根に菌糸を伸ばし、根の細胞の中まで入り込む。そこから外に向けて
 無数の菌糸を伸ばし、土壌中に *広大なネットワーク* を作る。
 
-このネットワークの広さは、根そのものの数百倍〜数千倍に達する `[要検証]`。
+このネットワークは、根そのものよりはるかに広い範囲に届く。
 植物は、自分の根が届かない領域からも、菌根菌経由で水と栄養を集める
 ことができる。
 
@@ -5270,7 +5273,7 @@ ____
 *「菌根菌への外部委託(アウトソーシング)」が植物の生存戦略の基本(デフォルト)* であることを示している。
 ____
 
-=== 菌糸ネットワークの空間的拡張 ── 数百倍から数千倍
+=== 菌糸ネットワークの空間的拡張 ── 根の届かない所まで
 
 植物が自らの根毛だけで探索できる土壌の体積は、土壌全体のわずか
 数パーセントに満たない。土壌内部の微細な隙間(微小孔隙)の大部分
@@ -5287,7 +5290,7 @@ ____
 を持つ:
 
 * 植物の根そのものの周囲から *45〜60cm 以上の広範囲* に及ぶ
-* 植物の有効栄養吸収表面積を *数百倍から数千倍* にまで劇的に拡張
+* 植物の有効栄養吸収表面積を *大きく* 拡張
 * わずか *1 グラムの健康な土壌の中に、最長で約 90 メートルもの菌糸* が含まれている
 * 小さじ 1 杯の土壌中に *数キロメートルに及ぶ菌糸* が張り巡らされ
   ていることも珍しくない
@@ -5470,7 +5473,7 @@ ____
 . *物理的構造の崩壊*:菌根菌が死滅することで、土壌の接着剤で
    あるグロマリンの継続的な生成が止まる。土壌団粒構造が徐々に崩壊し、
    土壌は硬く固まり(コンパクション)、水はけと通気性が極端に悪化
-. *環境耐性の喪失*:数百倍から数千倍の広がりを持つ菌糸ネット
+. *環境耐性の喪失*:根よりはるかに広い菌糸ネット
    ワークによる水分収集システムが失われるため、植物は干ばつに対して
    極めて脆弱になる
 . *微量要素の欠乏と栄養価の低下*:化学肥料は N・P・K などの主要
@@ -6048,16 +6051,14 @@ This is where soil microbes — especially mycorrhizal fungi — enter.
 Plants look as if they are absorbing nutrients directly through their
 roots. The reality is different.
 
-*About 80% of land plants form symbioses with mycorrhizal fungi*
-`[unverified]`.
+*More than 80% of vascular plant species form symbioses with mycorrhizal fungi* (Brundrett & Tedersoo 2018: 72% arbuscular mycorrhizal, 8% non-mycorrhizal).
 
 Mycorrhizal fungi are fungi (relatives of molds) that live inside or
 around plant roots. They extend hyphae into the plant's roots,
 penetrating into the cells of the root. From there they extend
 countless hyphae outward, building a *vast network* in the soil.
 
-The breadth of this network reaches hundreds to thousands of times
-that of the roots themselves `[unverified]`. Plants can collect water
+This network reaches far beyond the roots themselves. Plants can collect water
 and nutrients via mycorrhizal fungi from regions their own roots
 cannot reach.
 
@@ -6078,7 +6079,7 @@ In nature, plants absorbing nutrients alone is the exception, not
 the rule. *"Outsourcing to mycorrhizal fungi" is the default strategy* of plant survival.
 ____
 
-=== The spatial reach of the hyphal network — hundreds to thousands of times
+=== The spatial reach of the hyphal network — beyond the roots
 
 The volume of soil a plant can explore with its own root hairs alone
 amounts to just a few percent of the total soil. Most of the fine
@@ -6095,8 +6096,8 @@ building a vast three-dimensional network (mycelium).
 The physical scale of this hyphal network is hard to imagine:
 
 * Reaching a wide area, *45–60 cm or more* beyond the root itself
-* Expanding the plant's effective nutrient-absorbing surface area by
-  *hundreds to thousands of times*
+* Expanding the plant's effective nutrient-absorbing surface area
+  *greatly*
 * *Up to about 90 m of fungal hyphae per 1 g of healthy soil*
 * It is not unusual for *several kilometers of hyphae* to be
   threaded through a single teaspoon of soil
@@ -6303,7 +6304,7 @@ negative loop) propagates through the entire soil ecosystem.
    (compaction), and drainage and air permeability deteriorate
    sharply
 . *Loss of environmental tolerance*: the water-collection system
-   provided by hyphal networks hundreds to thousands of times wider
+   provided by hyphal networks far wider
    than the root system is lost, leaving plants extremely vulnerable
    to drought
 . *Trace-element deficiency and falling nutrient density*:
@@ -6825,21 +6826,21 @@ ifdef::lang-ja[]
 (CO2 施用)技術として、すでに確立している。
 
 ____
-温室で CO2 を増やすと、トマトの収量は 20〜40% 増える `[要検証]`。
+温室で CO2 を 1,000 ppm まで増やすと、トマトの収量は 2〜4 割、条件によっては 8 割増える(50 年分の観察のまとめ、Horticulture Research 2023)。
 これは農業現場の常識である。
 ____
 
 === 産業革命前後での変化
 
-大気中の CO2 濃度の歴史的推移は、こうである `[要検証:正確な数値]`。
+大気中の CO2 濃度の歴史的推移は、こうである(NOAA GML、マウナロアの年平均)。
 
 |===
 | 時代 | CO2 濃度
 | 産業革命前(〜1800 年) | 約 280 ppm
-| 1960 年 | 約 315 ppm
-| 2000 年 | 約 370 ppm
-| 2020 年 | 約 415 ppm
-| 2026 年 | 約 425 ppm 前後
+| 1960 年 | 317 ppm
+| 2000 年 | 370 ppm
+| 2020 年 | 414 ppm
+| 2025 年 | 約 427 ppm(予測の年平均)
 |===
 
 産業革命前と比べて *約 50% 増加* している。
@@ -6857,7 +6858,7 @@ ____
 
 ここで、Christine Jones の研究の核心が出てくる。
 
-植物は光合成で得た炭素を、すべて自分の体に使うわけではない。*20〜 60% を、根から土壌中に放出する* `[要検証]`。
+植物は光合成で得た炭素を、すべて自分の体に使うわけではない。*そのかなりの分を、根から土壌中に放出する*。測られた値では、作物が固定した炭素の平均 11%、根に回した分の 27% が根から出ている(Pausch & Kuzyakov 2018 のまとめ)。
 
 これは「漏れ」ではなく、意図的な放出である。何のために?
 
@@ -6980,7 +6981,7 @@ ____
 理論だけではない。実例がある。
 
 米国ノースダコタ州の農家 Gabe Brown は、20 年以上にわたって再生農業
-を実践した結果、自分の畑の *土壌有機物含量(SOM)を 1.7% から 11% 以上に上げた* ことで知られる `[要検証]`。
+を実践した結果、自分の畑の *土壌有機物含量(SOM)を 1.7〜1.9% から 5〜8% に上げた* ことで知られる(1991 年と 2020 年代の比較、DTN 2023。一部の圃場は 6 年で 3% から 11% に)。
 
 土壌有機物が増えるということは、*炭素が土に固定された* ということ
 だ。具体的には、
@@ -7001,7 +7002,7 @@ ____
 
 ____
 米国農業省 NRCS の試算では、SOM が 1% 上がると、1 エーカーあたり
-水保持量が *約 20,000 ガロン(75 トン)* 増える `[要検証]`。
+水保持量が *最大で約 20,000 ガロン(75 トン)* 増える(NRCS の土壌の健康の資料。土性によってはもっと少ない)。
 ____
 
 これは灌漑コストや干ばつリスクに直接効く。SOM は、肥料コストだけ
@@ -7073,7 +7074,7 @@ CO2 上昇が農業にとってプラスに働く面がある、というのは�
 * 植物は光合成炭素の 20〜60% を液体炭素として根から微生物に渡す
 * CO2 上昇 → 光合成増 → 液体炭素増 → 土壌微生物の活性増
 * 結果として、微生物型農業は土の肥沃化を加速できる
-* Gabe Brown の事例(SOM 1.7% → 11%、20 年)が実証している
+* Gabe Brown の事例(SOM 1.7% → 5〜8%、20 年)が実証している
 * 経済的圧力(肥料高騰)と生物学的追い風(CO2)が同時に存在する
 * これは農法転換にとっての歴史的な好機である
 
@@ -7140,21 +7141,21 @@ Plants use photosynthesis to make glucose (carbohydrate) from CO2, water, and su
 Plant growth speed depends heavily on the CO2 concentration in the atmosphere. More CO2, more active photosynthesis. This is already established as the practice of intentionally raising CO2 in greenhouses (CO2 enrichment).
 
 ____
-When CO2 is increased in greenhouses, tomato yield rises by 20-40% `[unverified]`.
+Raising greenhouse CO2 to 1,000 ppm lifts tomato yield by 20–40%, and under some conditions by as much as 80% (a review of fifty years of observations, Horticulture Research 2023).
 This is common knowledge in farming.
 ____
 
 === The change before and after the industrial revolution
 
-The historical trajectory of atmospheric CO2 looks like this `[unverified: exact figures]`.
+The historical trajectory of atmospheric CO2 looks like this (NOAA GML, Mauna Loa annual means).
 
 |===
 | Era | CO2 concentration
 | Pre-industrial (~1800) | ~280 ppm
-| 1960 | ~315 ppm
-| 2000 | ~370 ppm
-| 2020 | ~415 ppm
-| 2026 | ~425 ppm
+| 1960 | 317 ppm
+| 2000 | 370 ppm
+| 2020 | 414 ppm
+| 2025 | about 427 ppm (forecast annual mean)
 |===
 
 Compared with pre-industrial levels, that is *roughly a 50% increase*.
@@ -7169,7 +7170,7 @@ The earth is "processing" this CO2 increase, in part, by accelerating plant grow
 
 This is where the heart of Christine Jones's work comes in.
 
-Plants do not use all of the carbon they capture through photosynthesis to build their own bodies. *They release 20-60% of it from their roots into the soil* `[unverified]`.
+Plants do not use all of the carbon they capture through photosynthesis to build their own bodies. *They release a substantial share of it from their roots into the soil.* Measured values put it at 11% of the carbon crops fix, or 27% of what is allocated to roots (Pausch & Kuzyakov 2018).
 
 This is not a "leak" — it is deliberate release. For what purpose?
 
@@ -7255,7 +7256,7 @@ ____
 
 This is not theory only. There is a real example.
 
-Gabe Brown, a farmer in North Dakota, is known for *raising the soil organic matter (SOM) content of his fields from 1.7% to over 11%* through more than 20 years of regenerative practice `[unverified]`.
+Gabe Brown, a farmer in North Dakota, is known for *raising the soil organic matter (SOM) content of his fields from 1.7–1.9% to 5–8%* through more than 20 years of regenerative practice (1991 versus the 2020s, DTN 2023; one field went from 3% to 11% in six years).
 
 A rise in soil organic matter means *carbon has been fixed into the soil*. Concretely:
 
@@ -7274,7 +7275,7 @@ The implications:
 * Improved farm finances
 
 ____
-By NRCS (USDA) estimates, raising SOM by 1% adds about *20,000 gallons (75 tonnes)* of water-holding capacity per acre `[unverified]`.
+By NRCS (USDA) estimates, raising SOM by 1% adds *up to about 20,000 gallons (75 tonnes)* of water-holding capacity per acre (NRCS soil-health material; less on some soil textures).
 ____
 
 This bears directly on irrigation cost and drought risk. SOM lowers not only fertilizer cost but also water cost.
@@ -7364,7 +7365,7 @@ The next chapter, Chapter 7, looks at *how to implement it* — concrete impleme
 
 *Gabe Brown and regenerative agriculture*
 
-* Gabe Brown, "Dirt to Soil" (2018) — North Dakota, SOM raised from 1.7% to 11%
+* Gabe Brown, "Dirt to Soil" (2018) — North Dakota, SOM raised from 1.7% to 5–8%
 * USDA NRCS (Natural Resources Conservation Service) — a 1% rise in SOM adds 75 tonnes (20,000 gallons) of water-holding capacity per acre
 
 *Nitrogen limitation paradox and hidden hunger*
@@ -7591,7 +7592,7 @@ ____
 播けば、生きた根もすぐに復活する。*不耕起と両立する*。
 
 実際、Gabe Brown は不耕起のコンバイン収穫穀物・大豆を 20 年以上
-続け、SOM を 1.7% から 11% 以上に上げた(第6章)。*再生農業 × 機械化 × 大量生産が成立する典型例* がここである。
+続け、SOM を 1.7% から 5〜8% に上げた(第6章)。*再生農業 × 機械化 × 大量生産が成立する典型例* がここである。
 
 *ハーベスタで掘り起こす作物 ── 再生農業と衝突する*
 
@@ -7647,7 +7648,7 @@ ____
 は、*根こぶ病(クラブルート、Plasmodiophora brassicae)* という
 土壌病害を持つ。
 
-* 一度発生すると、胞子は土壌中で *5〜10 年以上* 生存する `[要検証]`
+* 一度発生すると、休眠胞子は土壌中で *10 年以上、最長 20 年* 生きる(半減期 3〜6 年。米国北西部の植物病害ハンドブック)
 * 化学殺菌剤や土壌消毒で抑え込んできたのが工業型の方法
 * 再生農業ではこれが使えない ── *5〜7 年のローテーション* で
   アブラナ科を空けるしか対処手段がない
@@ -7658,8 +7659,8 @@ ____
 *タマネギ ── 白色腐敗病で長期ローテーション*
 
 タマネギも、*白色腐敗病(White rot、Sclerotium cepivorum)* という
-土壌病害を持つ。菌核(休眠体)は土壌中で *十数年〜数十年* 生存する
-とされる `[要検証]`。
+土壌病害を持つ。菌核(休眠体)は土壌中で *15〜20 年以上* 生きる
+(英国王立園芸協会、カリフォルニア大学 IPM)。
 
 これも、化学殺菌剤抜きでは長いローテーション(7 年以上)が要る。
 タマネギを毎年同じ畑で機械化大量生産する、という構造は、再生農業
@@ -7668,7 +7669,7 @@ ____
 *加工用トマト ── 3〜4 年ローテーション*
 
 加工用トマトも、*青枯病、萎黄病、根腐れ病* などの土壌病害が連作で
-蓄積する。標準的には *3〜4 年のローテーション* が必要 `[要検証]`。
+蓄積する。ナス科の輪作年限は *3〜4 年* とされる(日本の栽培指針の通例。カリフォルニア大学 IPM は萎凋病に 2 年以上の輪作)。
 
 トマトはアブラナ科ほど深刻ではないが、それでも工業型のような毎年
 連作はできない。
@@ -7750,12 +7751,12 @@ ____
 広く実践されている。
 
 * *Gabe Brown*(ノースダコタ):近代小麦・大豆を 20 年以上不耕起・
-  カバークロップで栽培、SOM を 1.7% → 11% に向上(第6章)
-* *オーストラリア*:全小麦面積の *8 割以上が不耕起栽培* `[要検証]`
+  カバークロップで栽培、SOM を 1.7% → 5〜8% に向上(第6章)
+* *オーストラリア*:穀物作付面積の *74% が不耕起*(2016 年、豪統計局)、西オーストラリアでは 9 割超
 * *アルゼンチン、カナダのプレーリー*:同様に大規模な不耕起・
   カバークロップ穀物経営
-* *Rodale Institute の 40 年長期試験*:有機栽培の小麦収量は
-  慣行栽培と同等水準に到達 `[要検証]`
+* *Rodale Institute の 40 年長期試験*:有機栽培の穀物収量は、
+  5 年の移行期間を過ぎると慣行と統計的に同等、干ばつの年は上回る
 
 つまり、*近代小麦は再生農業 × 機械化 × 大規模で十分に成立する*。
 緑の革命品種だからといって、化学肥料前提と決めつける必要はない。
@@ -7828,7 +7829,7 @@ ____
 ある。
 
 キャベツ・白菜・ブロッコリー・カリフラワー・ダイコン・カブなどの
-*アブラナ科(ブラシカ科、Brassicaceae)* は、*菌根菌とほぼ共生しない* 植物群である `[要検証:botanical fact]`。これは植物学的に
+*アブラナ科(ブラシカ科、Brassicaceae)* は、*菌根菌とほぼ共生しない* 植物群である(Brundrett & Tedersoo 2018 ほか。根に菌根菌を呼ぶ物質が無く、抗菌物質を出すため)。これは植物学的に
 確立した事実で、アブラナ科は進化の過程で菌根菌との共生関係をほぼ
 失った数少ない科のひとつ。
 
@@ -7938,7 +7939,7 @@ F1 ブラシカ科野菜は、*作物としては別物でも、化学肥料へ�
 できる。しかし量を計算すると、
 
 * 単位面積あたりのブラシカ科の収量は、*工業型の 3〜5 割* 程度に
-  落ちる(混植による株間スペース、低投入での生育)`[要検証]`
+  落ちる(混植による株間スペース、低投入での生育。本稿の仮定)
 * ローテーションで実際にブラシカ科を作るのは *5〜7 年に 1 度* だけ
 * 結果として、*畑全体での年間ブラシカ科生産量は工業型の 5〜10% 程度* にしかならない
 
@@ -8137,8 +8138,8 @@ ____
 
 米国農務省 (USDA) の統計によれば、
 
-* *米国の生鮮野菜の約 30% は輸入* `[要検証:具体的な数値・年度]`
-* *生鮮果実は約 50% が輸入* `[要検証]`
+* *米国の生鮮野菜の 35% は輸入*(2023 年)
+* *生鮮果実は 59% が輸入*(同年。農務省 ERS)
 * 主要な輸入元は *メキシコ*(トマト、ピーマン、きゅうり、ズッキーニ、
   ベリー類など)、次いで *カナダ、グアテマラ、コスタリカ、ペルー* など
 * 冬季には特に輸入比率が高くなる(米国本土が低温で野菜を作れない時期)
@@ -8300,11 +8301,10 @@ ____
 一反は約 10 アール、つまり 1,000 平方メートル。30m × 33m 程度の
 広さである。
 
-福岡氏は、四国・伊予で長年実践してきた経験から、こう述べている
-`[要検証:正確な引用]`。
+福岡氏は、四国・伊予で長年実践してきた経験から、『わら一本の革命』でこう書いている。
 
 ____
-一反の田と一反の畑があれば、一家族が食べる米と野菜は十分にまかなえる。
+一反(4 分の 1 エーカー)の田から米 22 ブッシェル(約 590 kg)と裏作の麦 22 ブッシェルが取れれば、その田は一人一日 1 時間足らずの労働で 5〜10 人を養う。一人に一反ずつあれば、一年を暮らすのに十分すぎる。
 ____
 
 この主張は、戦後農業の常識からすると小さすぎる。慣行農法の専業農家
@@ -8332,14 +8332,14 @@ ____
 | 燃料 | 年 0.8 万円 | 0
 | 種苗 | 年 0.5〜1 万円 | 自家採種(0)〜少額
 | 労働時間 | 年 200〜300 時間 | 年 100〜200 時間
-| 米収量 | 年 約 540 kg | 年 約 300〜400 kg `[要検証]`
+| 米収量 | 年 約 530 kg(令和 5 年産の全国平均) | 年 300〜400 kg と置く(福岡氏自身は約 590 kg を報告)
 | 食料価値 | 一家族の主食 | 一家族の主食
 | 必要支出 | 年 8〜10 万円 | 年 1〜2 万円
 |===
 
-`[数値はすべて概算・要検証]`
+(数値はすべて本稿の概算。米の慣行収量は農林水産省の作況統計、福岡氏の収量は『わら一本の革命』)
 
-収量は工業型より下がる。しかしコストも下がる。*一家族が食べる分だけ作る* という視点で見れば、コストの低さの方が効いてくる。
+収量は、本稿では保守的に工業型より低く置いた。しかしコストも下がる。*一家族が食べる分だけ作る* という視点で見れば、コストの低さの方が効いてくる。
 
 ____
 「商品作物」として考えると、慣行農法より儲からない。
@@ -8525,9 +8525,8 @@ ____
   動員し始める
 * *3 年目:土壌微生物相が機能的に回復*、収量も実用水準に戻る
 * 4 年目以降:継続的に土壌が豊かになり、収量と品質が安定する
-* 10 年目以降:慣行農法を超える水準に到達(Gabe Brown の SOM
-  1.7% → 11% は 20 年だが、生産性は 5〜10 年で慣行を上回る
-  `[要検証]`)
+* 10 年目以降:慣行農法を超える水準に到達(Rodale の 40 年試験では、5 年の移行期間を
+  過ぎると収量は慣行と統計的に同等になり、干ばつの年は上回る)
 
 ____
 「短期収量崩壊リスク」は *転換の方法に依存する*。
@@ -8714,7 +8713,7 @@ ____
 
 * Gabe Brown "Dirt to Soil: One Family's Journey into Regenerative
   Agriculture"(2018)── 数十種類の種子混合カバークロップ・カクテル、
-  SOM 1.7% → 11%
+  SOM 1.7% → 5〜8%
 
 *日本農業の構造データ*
 
@@ -9017,7 +9016,7 @@ heavily, especially on the *"middle" tier* of crops.
 Brassicas (Brassicaceae) such as processing cabbage, broccoli, and
 Chinese cabbage carry the soil disease *clubroot (Plasmodiophora brassicae).*
 
-* Once it appears, the spores survive in the soil for *5–10 years or more* `[unverified]`
+* Once it appears, the resting spores survive in the soil for *over 10 years, up to 20* (half-life 3–6 years; PNW plant disease handbook)
 * Industrial methods have suppressed it with chemical fungicides and soil sterilization
 * Regenerative agriculture cannot use these — the only countermeasure is to *leave a 5–7 year rotation* during which the field carries no Brassicas
 
@@ -9028,8 +9027,8 @@ crops).
 
 *Onion — long rotation due to white rot*
 
-Onion also carries the soil disease *white rot (Sclerotium cepivorum).* The sclerotia (resting bodies) are said to survive in the
-soil *for over a decade to several decades* `[unverified]`.
+Onion also carries the soil disease *white rot (Sclerotium cepivorum).* The sclerotia (resting bodies) survive in the
+soil *for 15–20 years or more* (RHS; UC IPM).
 
 This too, without chemical fungicides, requires a long rotation
 (7+ years). The structure of mechanized mass production of onions on
@@ -9038,8 +9037,8 @@ the same field every year does not hold under regenerative agriculture.
 *Processing tomato — 3–4 year rotation*
 
 Processing tomato also accumulates soil diseases under monoculture —
-*bacterial wilt, fusarium wilt, root rot.* A standard rotation of
-*3–4 years* is needed `[unverified]`.
+*bacterial wilt, fusarium wilt, root rot.* The usual rotation interval for
+solanaceous crops is *3–4 years* (standard Japanese growing guidance; UC IPM calls for two or more years against fusarium wilt).
 
 Tomato is not as severe as Brassicas, but even so, industrial-style
 yearly continuous cropping is not possible.
@@ -9115,10 +9114,10 @@ To be distinguished are the *grains.*
 
 In fact, *large-scale no-till and cover-crop operation of modern wheat is widely practiced around the world.*
 
-* *Gabe Brown* (North Dakota): modern wheat and soy, no-till and cover-cropped for over 20 years, SOM raised from 1.7% to 11% (Chapter 6)
-* *Australia*: *over 80% of total wheat acreage is no-till* `[unverified]`
+* *Gabe Brown* (North Dakota): modern wheat and soy, no-till and cover-cropped for over 20 years, SOM raised from 1.7% to 5–8% (Chapter 6)
+* *Australia*: *74% of grain crop area is no-till* (2016, Australian Bureau of Statistics), over 90% in Western Australia
 * *Argentina, Canadian prairies*: similarly large-scale no-till and cover-crop grain operations
-* *Rodale Institute's 40-year long-term trial*: organic wheat yields reached parity with conventional `[unverified]`
+* *Rodale Institute's 40-year long-term trial*: organic grain yields are statistically equal to conventional once the five-year transition is over, and higher in drought years
 
 In other words, *modern wheat clearly works under regenerative agriculture × mechanization × at scale.* Just because it's a
 green-revolution cultivar doesn't mean it's chemical-fertilizer-only.
@@ -9193,7 +9192,7 @@ The reverse — why the Stage A crop group depends so strongly on
 chemical fertilizer — has its root here too.
 
 Brassicas (Brassicaceae) such as cabbage, Chinese cabbage, broccoli,
-cauliflower, daikon, and turnip are a plant group that *scarcely symbioses with mycorrhizal fungi* `[unverified: botanical fact]`. This
+cauliflower, daikon, and turnip are a plant group that *scarcely symbioses with mycorrhizal fungi* (Brundrett & Tedersoo 2018 and others; their roots lack the signal that recruits the fungi and secrete antifungal compounds). This
 is botanically established; Brassicaceae is one of the few families that
 largely lost mycorrhizal symbiosis over evolutionary time.
 
@@ -9297,7 +9296,7 @@ remaining 6 years another crop uses the same field.
 With intercropping and rotation, you can indeed grow Brassicas and
 Chenopodiaceae without chemical fertilizer. But when you do the math:
 
-* Brassica yield per unit area drops to roughly *30–50% of industrial* (spacing under intercropping, low-input growth) `[unverified]`
+* Brassica yield per unit area drops to roughly *30–50% of industrial* (spacing under intercropping, low-input growth — this essay's assumption)
 * In rotation, Brassicas are actually grown only *once every 5–7 years*
 * The result: *annual Brassica production across the field is on the order of 5–10% of industrial*
 
@@ -9501,8 +9500,8 @@ It may come as a surprise, but *the world's largest agricultural country, the Un
 
 According to USDA statistics:
 
-* About *30% of fresh vegetables in the U.S. are imported* `[unverified: exact figure and year]`
-* About *50% of fresh fruit is imported* `[unverified]`
+* *35% of fresh vegetables in the U.S. are imported* (2023)
+* *59% of fresh fruit is imported* (same year; USDA ERS)
 * Main sources: *Mexico* (tomato, pepper, cucumber, zucchini, berries, etc.), then *Canada, Guatemala, Costa Rica, Peru*, etc.
 * Import share is especially high in winter (when the U.S. mainland is too cold to grow vegetables)
 
@@ -9672,12 +9671,14 @@ As a scale anchor, there is the *tan-no-hyakushō (one-tan smallholder farming)*
 
 One tan is about 10 ares, that is, 1,000 square meters. About 30 m × 33 m.
 
-From years of practice in Iyo, Shikoku, Fukuoka stated `[unverified:
-exact quote]`:
+From years of practice in Iyo, Shikoku, Fukuoka wrote in _The One-Straw Revolution_:
 
 ____
-If you have one tan of paddy and one tan of dryland field, that is
-enough for a family's rice and vegetables.
+If 22 bushels (about 590 kg) of rice and 22 bushels of winter grain
+are harvested from a quarter-acre field (one tan), the field will
+support five to ten people, each investing less than an hour of labor
+a day. A quarter acre per person is more than enough to live on for a
+year.
 ____
 
 This claim sounds too small by the standards of postwar agriculture.
@@ -9705,14 +9706,14 @@ Let's think about it in modern numbers (rough order of magnitude).
 | Fuel | ¥8,000/yr | 0
 | Seed | ¥5,000–10,000/yr | self-saved (0) to little
 | Labor hours | 200–300 hrs/yr | 100–200 hrs/yr
-| Rice yield | ~540 kg/yr | ~300–400 kg/yr `[unverified]`
+| Rice yield | ~530 kg/yr (FY2023 national average) | assumed 300–400 kg/yr (Fukuoka himself reported about 590 kg)
 | Food value | a family's staple | a family's staple
 | Required outlay | ¥80,000–100,000/yr | ¥10,000–20,000/yr
 |===
 
-`[All figures are rough; unverified]`
+(All figures are this essay's rough estimates. Conventional rice yield from MAFF crop statistics; Fukuoka's yield from _The One-Straw Revolution_.)
 
-Yield is below industrial. But cost is also lower. From the standpoint
+Yield, in this essay's conservative assumption, is below industrial. But cost is also lower. From the standpoint
 of "growing only what a family eats," the lower cost is what tells.
 
 ____
@@ -9908,7 +9909,7 @@ Intercrop grasses + legumes + resilient crops + diverse cover crops:
 * Year 2: hyphal networks spread, beginning to mobilize accumulated phosphorus (legacy P)
 * *Year 3: soil microbiome functionally recovers*, yields return to practical levels
 * Year 4 onward: soil continues to enrich, yield and quality stabilize
-* Year 10 onward: reaches levels above conventional farming (Gabe Brown's SOM 1.7% → 11% took 20 years, but productivity exceeded conventional in 5–10 years `[unverified]`)
+* Year 10 onward: reaches levels above conventional farming (in Rodale's 40-year trial, yields match conventional once the five-year transition is over, and exceed it in drought years)
 
 ____
 "Short-term yield-collapse risk" *depends on the method of transition.*
@@ -10071,7 +10072,7 @@ distribution. And we present the conclusion of the entire series.
 
 *Pioneers: Gabe Brown*
 
-* Gabe Brown, _Dirt to Soil: One Family's Journey into Regenerative Agriculture_ (2018) — multi-dozen-species cover-crop cocktails, SOM 1.7% → 11%
+* Gabe Brown, _Dirt to Soil: One Family's Journey into Regenerative Agriculture_ (2018) — multi-dozen-species cover-crop cocktails, SOM 1.7% → 5〜8%
 
 *Structural data on Japanese agriculture*
 
@@ -10382,8 +10383,7 @@ ____
 そのような場合、雑草を刈ることはあってよい。しかし、刈り方に注意
 が要る。
 
-Christine Jones の論文には、*50% ルール* とでも呼べる原則が示唆
-されている `[要検証:正確な引用]`。
+放牧の研究には、*50% ルール* とでも呼べる原則がある(米国 NRCS の放牧管理の手引き。Christine Jones も同じ原則の上に立つ)。
 
 ____
 一度に刈り取るのは、植物の地上部の 50% 以下にとどめる。
@@ -10871,7 +10871,7 @@ Even so, there are situations where complete no-weeding is not possible.
 
 In such cases, cutting weeds is fine. But how you cut matters.
 
-Christine Jones's papers suggest a principle that could be called the *50% rule* `[unverified: exact citation]`.
+Grazing research has a principle that could be called the *50% rule* (USDA NRCS grazing-management guides; Christine Jones builds on the same principle).
 
 ____
 Cut no more than 50% of the plant's aboveground portion at one time.

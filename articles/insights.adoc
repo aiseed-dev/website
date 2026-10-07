@@ -86,13 +86,15 @@ EV、カーボンプライシング、工業的 CCS ── 兆ドル規模の設
 そこに向けられている。一方、最大の炭素吸収源である *土壌と生態系*
 の回復は、長らく政策の死角に置かれてきた。
 
+以下、出どころを書いていない数字は、記事末に挙げた二つの資料による。
+
 === 土壌炭素は政策の「死角」だった
 
 過去 12,000 年間の農地拡大と森林・草原の転換で、土壌の表層から
-推定 *約 1,100 億メートルトン* の炭素が失われた ── 現在の米国の
-温室効果ガス排出量の約 80 年分に相当する。工業型農業の継続により、
-毎年 *1.9〜2.4 Pg(CO2 換算 7.9 Pg)* の土壌有機炭素が失われ
-続けている。
+推定 *約 1,330 億トン* の炭素が失われた(Sanderman ら 2017、PNAS、表層 2 m)── 現在の米国の
+温室効果ガス排出量の約 80 年分に相当する(本稿の計算)。土地被覆の変化により、
+毎年 *約 1.9 Pg(CO2 換算 約 7 Pg)* の土壌有機炭素が失われ
+続けている(2001〜2020 年の推計、Remote Sensing of Environment)。
 
 それにもかかわらず、初期の気候変動対策で土壌炭素は長らく軽視
 されてきた。最大の障壁が、京都議定書下の *MRV(測定・報告・検証) の壁* だった。地上のバイオマスは衛星画像で測れるが、広大な農地
@@ -113,7 +115,7 @@ EV、カーボンプライシング、工業的 CCS ── 兆ドル規模の設
 土地利用・土地利用変化・林業 (LULUCF) ルールは、広大な森林資源
 を持つ国に有利な制度設計だった。Climate Action Network は、特定
 の参照レベル設定が *年間最大 4 億 5,100 万トン* の排出増加を
-許容する *「ロギング・ループホール(伐採の抜け穴)」* だと告発。
+許容する(2010 年 12 月、閣僚宛メモ) *「ロギング・ループホール(伐採の抜け穴)」* だと告発。
 自然撹乱(山火事・干ばつ・害虫被害)を「不可抗力」として算定から
 除外できる規定もあり、アカウンタビリティを著しく低下させた。
 
@@ -149,20 +151,21 @@ Science 誌で実証したのは、*バイオ燃料原料調達のための森�
 | 制約 | メカニズムと影響
 | *化学量論的制約(窒素・リン)* | 12 トンの炭素隔離に約 1 トンの窒素が必要 → 化学肥料投入が強力な GHG である一酸化二窒素 (N2O) の排出を誘発
 | *バイオマスの絶対不足* | 利用可能なバイオマス総量に物理的限界 → 一農地への集中は他から有機物を奪う「ゼロサム・ゲーム」
-| *飽和限界 (Saturation)* | 蓄積速度が低下し最終的にゼロ。2100 年までの隔離ポテンシャルを最大 53% 過大評価
+| *飽和限界 (Saturation)* | 蓄積速度が低下し最終的にゼロ。飽和を無視すると 2100 年までの隔離ポテンシャルを 53〜81% 過大評価(Moinet ら 2023)
 | *非永続性 (Impermanence)* | 耕起や環境変化で容易に分解。数年に一度耕起すれば、蓄積炭素は急速に再放出
 |===
 
-WRI 試算では、米国全農地の *85%* に被覆作物を導入しても、相殺
-できるのは米国総排出量のわずか *1.5%*。現状の被覆作物の導入率
-は *4% 未満* に留まる。
+WRI(2020)が引く Fargione ら(2018)の試算では、米国の作付地
+2 億 1,700 万エーカーに被覆作物を導入しても、相殺できるのは米国の
+純排出量の *1.6%*。実際の導入面積は 2017 年の農業センサスで
+1,530 万エーカー、作付地の *4% 未満* に留まる。
 
 === IPCC SRCCL ── 「欠かせない一部」として再構築
 
-2019 年に IPCC が発表した *「気候変動と土地に関する特別報告書 (SRCCL)」* が、過剰な期待と悲観論を整理した。各国の NDC が完全
-実施された場合、農業管理や土壌炭素隔離等により 2030 年時点で
-*0.4〜1.3 GtCO2/年* の純吸収を推定 ── 「大気中の CO2 をすべて
-相殺する」ハイプとは一線を画す現実的・控えめな数値だが、同時に
+2019 年に IPCC が発表した *「気候変動と土地に関する特別報告書 (SRCCL)」* が、過剰な期待と悲観論を整理した。各国の NDC が完全に
+実施されれば土地部門は 2030 年に *最大 年 1.1 GtCO2e* の純吸収源に
+転じる(Grassi ら 2017)── 「大気中の CO2 をすべて相殺する」ハイプ
+とは一線を画す現実的・控えめな数値を踏まえ、同時に
 気候変動緩和における *「欠かすことのできない重要な一部」* として
 土壌の地位を公式に確立した。
 
@@ -175,9 +178,9 @@ Griscom らの 2017 年 PNAS 論文 (Natural Climate Solutions) は、
 === 日本の特異な土壌資源 ── 黒ボク土とバイオ炭
 
 日本特有の *火山灰土壌(黒ボク土、Andosols)* は、世界的に高い
-炭素保持能力を持つ。北海道洞爺湖周辺の実証研究では、深さ
-0〜30 cm 層の土壌有機炭素ストックは、アロフェン質黒ボク土で
-*86.4 ± 12.7 Mg C/ha* に達した。アルミニウムや鉄が腐植と強固な
+炭素保持能力を持つ。北海道洞爺の畑の調査では、表層
+0〜15 cm だけで土壌有機炭素ストックが *約 40 Mg C/ha* に達した
+(2012 年、34 圃場、北海道大学)。アルミニウムや鉄が腐植と強固な
 複合体を形成するため、微生物による分解を受けにくく、長期保存に
 適している。
 
@@ -293,14 +296,16 @@ capital investment are aimed there. Meanwhile the restoration of the
 largest carbon sink, *soil and ecosystems*, was long left in a policy
 blind spot.
 
+Figures below without a stated source come from the two documents listed at the end of this article.
+
 === Soil carbon was the "blind spot" of policy
 
 Through 12,000 years of farmland expansion and the conversion of forest
-and grassland, an estimated *about 110 billion metric tons* of carbon was
-lost from the surface layer of the soil — roughly eighty years of
-present-day U.S. greenhouse-gas emissions. Under continuing industrial
-agriculture, *1.9–2.4 Pg (7.9 Pg CO2-equivalent)* of soil organic carbon
-is still lost every year.
+and grassland, an estimated *about 133 billion tonnes* of carbon was
+lost from the top two meters of the soil (Sanderman et al. 2017, PNAS) — roughly eighty years of
+present-day U.S. greenhouse-gas emissions (this essay's calculation). Through land-cover change,
+*about 1.9 Pg (about 7 Pg CO2-equivalent)* of soil organic carbon
+is still lost every year (estimate for 2001–2020, Remote Sensing of Environment).
 
 Even so, early climate policy slighted soil carbon for a long time. The
 greatest barrier was the *MRV (measurement, reporting, verification)
@@ -326,7 +331,7 @@ The rules for land use, land-use change, and forestry (LULUCF) were an
 institutional design that favored countries with vast forest resources.
 Climate Action Network denounced the setting of certain reference levels
 as a *"logging loophole"* that tolerated *up to 451 million tonnes* of
-additional emissions a year. A provision that let natural disturbances
+additional emissions a year (memo to ministers, December 2010). A provision that let natural disturbances
 (wildfire, drought, pest damage) be excluded from accounting as "force
 majeure" lowered accountability further.
 
@@ -368,23 +373,24 @@ Front-line soil scientists rejected the 4-per-1000 target and the
 | Constraint | Mechanism and impact
 | *Stoichiometric constraint (nitrogen, phosphorus)* | Sequestering 12 tonnes of carbon needs about 1 tonne of nitrogen → fertilizer inputs induce emissions of nitrous oxide (N2O), a powerful GHG
 | *Absolute shortage of biomass* | A physical limit on the total biomass available → concentrating it on one field takes organic matter from another, a "zero-sum game"
-| *Saturation* | The accumulation rate falls and eventually reaches zero. Sequestration potential to 2100 overestimated by up to 53%
+| *Saturation* | The accumulation rate falls and eventually reaches zero. Ignoring it overestimates sequestration potential to 2100 by 53–81% (Moinet et al. 2023)
 | *Impermanence* | Easily decomposed by tillage or environmental change. Till once every few years and the stored carbon is rapidly re-released
 |===
 
-By WRI's estimate, even if cover crops were introduced on *85%* of all
-U.S. farmland, the offset would be only *1.5%* of total U.S. emissions.
-The present adoption rate of cover crops stays *below 4%*.
+By the estimate of Fargione et al. (2018), cited by WRI (2020), cover
+crops on 217 million acres of U.S. cropland would offset only *1.6%* of
+U.S. net emissions. Actual adoption was 15.3 million acres in the 2017
+Census of Agriculture — *below 4%* of cropland.
 
 === IPCC SRCCL — rebuilt as "an indispensable part"
 
 The IPCC's *Special Report on Climate Change and Land (SRCCL)* of 2019
 sorted out the excess expectation and the pessimism. If every country's
-NDC were fully implemented, it estimated a net uptake of *0.4–1.3 GtCO2
-per year* in 2030 from agricultural management, soil carbon
-sequestration, and the like — a realistic, modest figure, a world apart
-from the hype of "offsetting all the CO2 in the atmosphere," while
-officially establishing soil's standing as *"an indispensable and
+NDC were fully implemented, the land sector would turn into a net sink of
+*up to 1.1 GtCO2e per year* by 2030 (Grassi et al. 2017) — a realistic,
+modest figure, a world apart from the hype of "offsetting all the CO2 in
+the atmosphere" — and on that footing it went on to
+officially establish soil's standing as *"an indispensable and
 important part"* of climate mitigation.
 
 Griscom and colleagues' 2017 PNAS paper (Natural Climate Solutions) showed
@@ -398,9 +404,9 @@ finance.
 === Japan's unusual soil resource — Andosols and biochar
 
 Japan's distinctive *volcanic-ash soils (kuroboku, Andosols)* have a
-carbon-retention capacity high by world standards. In field studies
-around Lake Toya in Hokkaido, the soil organic carbon stock in the 0–30 cm
-layer reached *86.4 ± 12.7 Mg C/ha* in allophanic Andosols. Because
+carbon-retention capacity high by world standards. In a survey of
+fields at Toya in Hokkaido, the soil organic carbon stock in the top
+15 cm alone reached *about 40 Mg C/ha* (2012, 34 fields, Hokkaido University). Because
 aluminum and iron form strong complexes with humus, the carbon resists
 microbial decomposition and suits long-term storage.
 
@@ -613,9 +619,9 @@ ____
 [.highlight-box]
 --
 *さらに構造的事実:*
-現在、石油精製コストの 86% はエネルギー用途(ガソリン・軽油)の
-売上で賄われ、残り 14% の化学原料(ナフサ等)は「ついで」に安く
-供給されている。燃料需要が大幅に減れば、素材用途のためだけに石油
+現在、世界の石油需要のうち石油化学原料は約 16%(IEA、2025 年)で、
+精製の採算は残り 8 割強の燃料(ガソリン・軽油など)の売上で立ち、
+化学原料は「ついで」に安く供給されている。燃料需要が大幅に減れば、素材用途のためだけに石油
 を精製することになり、*精製コストは何倍にも跳ね上がる*。
 ナフサの価格が暴騰し、プラスチック、医療器具、肥料 ── 全てが高騰
 する。
@@ -721,8 +727,8 @@ ____
 [.highlight-box]
 --
 *バイオ素材の構造的問題：*
-*コスト* — バイオプラスチック（PHA）の製造コストは石油由来プラスチックの3〜5倍。大量生産してもコスト差は簡単には縮まらない。
-*スケール* — 世界のプラスチック生産量は年間約4億トン。バイオプラスチックは全体の1%未満。100倍のスケールアップは10〜20年では不可能。
+*コスト* — バイオプラスチック（PHA）の製造コストは石油由来プラスチックの数倍。大量生産してもコスト差は簡単には縮まらない。
+*スケール* — 世界のプラスチック生産量は年間約4億トン（2022年、Plastics Europe）。バイオプラスチックは全体の1%未満（European Bioplastics）。100倍のスケールアップは10〜20年では不可能。
 *性能* — 耐熱性、強度、耐久性で石油由来に劣る用途が多い。医療器具や半導体のフォトレジストの代替は現時点で存在しない。
 *土地* — バイオマス原料の栽培には農地が必要。食料生産と競合する。
 *エネルギー* — 発酵・精製プロセスに大量のエネルギーが必要。「脱石油」のためにエネルギーを大量消費するパラドックス。
@@ -743,8 +749,8 @@ ____
 --
 *バイオ素材を栽培する化学肥料の化石資源依存：* +
 窒素肥料(尿素・アンモニア) ← 天然ガス(ハーバー・ボッシュ法) +
-リン酸肥料 ← リン鉱石(モロッコ・西サハラ70%偏在)＋硫酸＋天然ガス +
-カリウム肥料 ← カリ鉱石(ロシア・ベラルーシで世界の40%) +
+リン酸肥料 ← リン鉱石(埋蔵量の約7割がモロッコ・西サハラ、USGS)＋硫酸＋天然ガス +
+カリウム肥料 ← カリ鉱石(生産量の約3分の1がロシア・ベラルーシ、USGS) +
 農薬(殺虫剤・除草剤・殺菌剤) ← 多くがリン化合物・石油化学 +
 種子処理剤・展着剤 ← 石油化学・界面活性剤
 --
@@ -792,7 +798,7 @@ EV 推進論者は「電気で走ればいい」と言うが、*車体そのも�
 | バンパー | ポリプロピレン（石油） | バイオプラスチック | 衝撃吸収性能が不足
 | 内装（ダッシュボード等） | ABS、ポリウレタン（石油） | バイオプラスチック、菌糸体 | 一部可能だが耐熱性に課題
 | シート | ポリウレタンフォーム（石油） | 天然ラテックス、菌糸体 | コスト数倍。大量生産困難
-| タイヤ | 合成ゴム（石油）60%＋天然ゴム40% | 天然ゴム100% | ゴムの木の栽培に限界。全量代替は不可能
+| タイヤ | 合成ゴム（石油）が主＋天然ゴム | 天然ゴム100% | ゴムの木の栽培に限界。全量代替は不可能
 | 塗装 | 石油系溶剤・樹脂 | 植物油系塗料 | 耐候性・光沢で劣る
 | 配線被覆 | PVC、ポリエチレン（石油） | バイオプラスチック | 耐熱性・難燃性が不足
 | ブレーキホース | 合成ゴム（石油） | 天然ゴム | 耐熱・耐油性が不足。安全に関わる
@@ -1122,9 +1128,10 @@ ____
 [.highlight-box]
 --
 *A further structural fact:*
-Today, 86% of the cost of oil refining is covered by sales for energy use
-(gasoline, diesel), and the remaining 14% — chemical feedstock such as
-naphtha — is supplied cheaply "on the side." If fuel demand falls
+Today, petrochemical feedstock is about 16% of world oil demand (IEA,
+2025); refining pays for itself on the other 80-odd percent sold as fuel
+(gasoline, diesel), and the chemical feedstock is supplied cheaply "on
+the side." If fuel demand falls
 sharply, oil will be refined for material uses alone, and *the cost of
 refining leaps several-fold.* The price of naphtha soars, and plastics,
 medical devices, fertilizer — everything — soar with it.
@@ -1243,8 +1250,8 @@ for petrochemical products.
 [.highlight-box]
 --
 *The structural problems of bio-materials:*
-*Cost* — bioplastic (PHA) costs three to five times as much to make as oil-based plastic. Mass production does not easily close the gap.
-*Scale* — the world makes about 400 million tonnes of plastic a year. Bioplastics are under 1% of it. A hundredfold scale-up is impossible in 10–20 years.
+*Cost* — bioplastic (PHA) costs several times as much to make as oil-based plastic. Mass production does not easily close the gap.
+*Scale* — the world makes about 400 million tonnes of plastic a year (2022, Plastics Europe). Bioplastics are under 1% of it (European Bioplastics). A hundredfold scale-up is impossible in 10–20 years.
 *Performance* — in many uses they fall short of oil-based plastics in heat resistance, strength, and durability. There is at present no substitute for medical devices or semiconductor photoresist.
 *Land* — growing biomass feedstock needs farmland, competing with food production.
 *Energy* — fermentation and refining consume vast energy. The paradox of burning a lot of energy to get "off oil."
@@ -1266,8 +1273,8 @@ fertilizer is made from fossil resources themselves.
 --
 *The fossil dependency of the fertilizer that grows bio-materials:* +
 Nitrogen fertilizer (urea, ammonia) ← natural gas (Haber-Bosch process) +
-Phosphate fertilizer ← phosphate rock (70% concentrated in Morocco and Western Sahara) + sulfuric acid + natural gas +
-Potash fertilizer ← potash ore (Russia and Belarus hold 40% of the world's) +
+Phosphate fertilizer ← phosphate rock (about 70% of reserves in Morocco and Western Sahara, USGS) + sulfuric acid + natural gas +
+Potash fertilizer ← potash ore (Russia and Belarus produce about a third of the world's, USGS) +
 Pesticides (insecticides, herbicides, fungicides) ← mostly phosphorus compounds and petrochemicals +
 Seed treatments and spreaders ← petrochemicals and surfactants
 --
@@ -1320,7 +1327,7 @@ body itself is a lump of fossil resources.*
 | Bumpers | Polypropylene (oil) | Bioplastic | Insufficient impact absorption
 | Interior (dashboard etc.) | ABS, polyurethane (oil) | Bioplastic, mycelium | Partly possible, but heat resistance is an issue
 | Seats | Polyurethane foam (oil) | Natural latex, mycelium | Several times the cost. Hard to mass-produce
-| Tires | Synthetic rubber (oil) 60% + natural rubber 40% | 100% natural rubber | Rubber-tree cultivation has limits. Full substitution impossible
+| Tires | Mainly synthetic rubber (oil), plus natural rubber | 100% natural rubber | Rubber-tree cultivation has limits. Full substitution impossible
 | Paint | Oil-based solvents and resins | Plant-oil paints | Inferior weather resistance and gloss
 | Wiring sheathing | PVC, polyethylene (oil) | Bioplastic | Insufficient heat and flame resistance
 | Brake hoses | Synthetic rubber (oil) | Natural rubber | Insufficient heat and oil resistance. A safety part
@@ -1647,7 +1654,7 @@ ITの世界では、単一障害点を持つシステムは設計ミスとされ
 [.highlight-box]
 --
 *表土の喪失——取り返しのつかない損失：*
-アメリカの農地は、過去150年で表土の約50%を失った。
+米国コーンベルトの農地は、約3分の1で表土（A層）を失った（Thaler ら 2021、PNAS）。世界では150年で表土の半分が失われたとされる（WWF）。
 表土1インチ（2.5cm）の形成には500〜1,000年かかる。
 大規模農業は、数千年かけて蓄積された土壌資本を、
 数十年で使い果たしている。
@@ -1673,12 +1680,12 @@ ITの世界では、単一障害点を持つシステムは設計ミスとされ
 * *2026 年の秋作*: 在庫が尽きる
 * *2027 年*: リン酸肥料は事実上、入手できなくなる
 
-日本のリン酸肥料は三つの経路で供給されている。*製品輸入(約 85%、うち中国 76%・モロッコ 18%)*、*鉱石輸入・国内加工(約 13%)*、
-*国内回収・下水汚泥(約 0.2%)* ── この三つすべてが同時に機能不全
+日本のリン酸肥料は三つの経路で供給されている。*製品(リン安)の輸入 ── ほぼ全量が輸入で、中国 72%・モロッコ 21%(令和 6 肥料年度、農林水産省)*、*鉱石を輸入して国内で加工する分*、
+*国内回収・下水汚泥(ごくわずか)* ── この三つすべてが同時に機能不全
 に陥る。
 
 |===
-| 調達ルート | 平時依存度 | 2027 年確保率 | 実効寄与度
+| 調達ルート | 平時依存度(本稿の概算) | 2027 年確保率(本稿の仮定) | 実効寄与度
 | 製品輸入(中国) | 65% | 0% | 0%
 | 製品輸入(モロッコ他) | 20% | 20% | 4%
 | 鉱石輸入・国内加工 | 13% | 50〜90% | 7〜12%
@@ -1699,14 +1706,12 @@ ITの世界では、単一障害点を持つシステムは設計ミスとされ
 === モロッコも長期間減少 ── 硫黄トラップ
 
 世界最大のリン鉱石保有国モロッコだが、肥料を作るには硫酸が必要で、
-硫酸の原料となる硫黄を自国ではほとんど生産できない。必要な硫黄の
-*52% を中東から輸入* していた。
+硫酸の原料となる硫黄を自国ではほとんど生産できない。必要な硫黄を
+*ほぼ全量輸入し、その大半を中東の湾岸に頼っていた*(年約 370 万トン、Fertilizer Daily 2026-05)。
 
 ホルムズ海峡封鎖と湾岸生産施設の破損で、世界の硫黄供給網が崩壊
 した。硫黄は石油精製・ガス処理プラントの副産物として得られるため、
-*施設が止まれば硫黄も出てこない*。中核機器は受注生産で納期
-40〜50 週、特殊触媒も BASF・Dow 等のリストラで供給逼迫 ──
-IEA は復旧に「最低 2 年以上」、完全な復旧は 2030 年以降と予測する。
+*施設が止まれば硫黄も出てこない*。IEA は、中東のエネルギー生産が戦前の水準に戻るまで「約 2 年」かかると見る(2026 年 4 月、ビロル事務局長)。
 
 加えて、硫酸は半導体製造の超純硫酸や EV 電池向けニッケル/コバルト
 製錬にも使われる。*TSMC や HPAL プロジェクトはいかなるプレミアムでも硫酸を確保する*。薄利多売の農業用肥料は、争奪戦で構造的に敗北
@@ -1725,9 +1730,7 @@ IEA は復旧に「最低 2 年以上」、完全な復旧は 2030 年以降と�
 原油・LNG が暴騰すれば、このシステム全体が同時に機能不全に陥る。
 
 *PFAS 汚染* ── 下水汚泥は PFAS(永遠の化学物質)を流入水の数倍
-〜数十倍に濃縮し、堆肥化発酵でも分解されない。2025 年に大阪府摂津
-市で地元の豆が「食べてはいけない」と報道され、住民血液中 PFOA が
-基準値の 40 倍に達した例も確認された。汚泥由来の堆肥を農地に入れる
+〜数十倍に濃縮し、堆肥化発酵でも分解されない。大阪府摂津市では、工場の元従業員と周辺住民約 1,200 人の血液検査で約 3 割が米国の指針値を超え、約 30 倍の人もいた(京都大学の調査、2022 年以降)。汚泥由来の堆肥を農地に入れる
 ことは、*何十年もかけて育てた健全な土壌を一瞬で汚染するリスク*
 を意味する。一度汚染された土壌は浄化できない。
 
@@ -1769,7 +1772,7 @@ IEA は復旧に「最低 2 年以上」、完全な復旧は 2030 年以降と�
 結合した難溶性の形で固定されている。問題は「量」ではなく「可給化」
 だ。
 
-*菌根菌ネットワークが機能すれば、植物は土壌中の窒素・リンの最大 90% を微生物共生から得ることができる*。そして日本の高温多湿気候
+*菌根菌ネットワークが機能すれば、植物はリンの供給の大半を菌根菌経由で得る*(Smith ら 2003)。そして日本の高温多湿気候
 では、無除草・不耕起によって菌根菌ネットワークが比較的速く再生
 する。必要なのは新しい肥料ではなく、*土壌が本来持っている再生能力を機能させること* である。見方を変えれば、過剰施肥の数十年は、
 *農家自身の土の中に閉じた資産を遺した*。それを開く鍵は、また何かを
@@ -1896,7 +1899,7 @@ Dependence on irrigation → depletion of the Ogallala Aquifer → recovery take
 [.highlight-box]
 --
 *Topsoil loss — the irreversible cost:*
-American farmland has lost roughly 50% of its topsoil in 150 years.
+About a third of the U.S. Corn Belt has lost its topsoil (A horizon) entirely (Thaler et al. 2021, PNAS); worldwide, half the topsoil is said to have gone in 150 years (WWF).
 One inch (2.5 cm) of topsoil takes 500 to 1,000 years to form.
 Industrial agriculture is spending, in decades, soil capital
 that took millennia to accumulate.
@@ -1923,10 +1926,10 @@ Iran war.
 * *Autumn 2026 crop*: inventories run out
 * *2027*: phosphate fertilizer becomes effectively unobtainable
 
-Japan's phosphate comes through three routes: *finished-product imports (about 85%, of which China 76%, Morocco 18%)*, *ore imports processed domestically (about 13%)*, and *domestic recovery from sewage sludge (about 0.2%)* — and all three fail at once.
+Japan's phosphate comes through three routes: *imports of finished product (ammonium phosphate) — almost all of it imported, China 72%, Morocco 21% (fertilizer year 2024, MAFF)*, *ore imported and processed domestically*, and *domestic recovery from sewage sludge (negligible)* — and all three fail at once.
 
 |===
-| Route | Normal share | 2027 secured rate | Effective contribution
+| Route | Normal share (this essay's estimate) | 2027 secured rate (this essay's assumption) | Effective contribution
 | Product imports (China) | 65% | 0% | 0%
 | Product imports (Morocco etc.) | 20% | 20% | 4%
 | Ore imports + domestic processing | 13% | 50–90% | 7–12%
@@ -1949,14 +1952,13 @@ phosphate is *shrinking structurally and irreversibly*.
 
 Morocco holds the world's largest phosphate rock reserves, but making
 fertilizer requires sulfuric acid, and Morocco produces almost none of the
-sulfur behind it — *52% of its sulfur was imported from the Middle East*.
+sulfur behind it — *it imports nearly all of its sulfur, most of it from the Gulf* (about 3.7 million tonnes a year, Fertilizer Daily, May 2026).
 
 The Hormuz blockade and damage to Gulf production facilities broke the
 world's sulfur supply network. Sulfur comes out of oil refining and gas
 processing as a byproduct — *if the plants stop, the sulfur stops too*.
-Core equipment is built to order with 40–50 week lead times; specialty
-catalysts are tight after restructuring at BASF, Dow, and others — the IEA
-projects "at least two years" for recovery, with full recovery after 2030.
+The IEA expects it to take "about two years" for Middle Eastern energy
+output to return to pre-war levels (April 2026, Executive Director Birol).
 
 Sulfuric acid is also used for ultra-pure semiconductor acid and for
 nickel/cobalt refining for EV batteries. *TSMC and the HPAL projects will secure their acid at any premium.* Thin-margin agricultural fertilizer
@@ -1978,9 +1980,9 @@ sends crude and LNG soaring, the whole system fails together.
 
 *PFAS contamination* — sewage sludge concentrates PFAS ("forever
 chemicals") to several times or tens of times the inflow level, and
-composting does not break them down. In 2025, beans grown in Settsu, Osaka
-were reported "unfit to eat," and residents' blood PFOA reached 40 times the
-reference value. Putting sludge-derived compost on farmland means *risking instant contamination of soil that took decades to build*. Contaminated
+composting does not break them down. In Settsu, Osaka, blood tests of about 1,200 former plant workers and
+nearby residents found about 30% above the U.S. guideline value, some at
+about 30 times it (Kyoto University survey, from 2022). Putting sludge-derived compost on farmland means *risking instant contamination of soil that took decades to build*. Contaminated
 soil cannot be cleaned.
 
 == Long Term, Phosphate Stays Out of Reach
@@ -2024,7 +2026,7 @@ enormous quantities of phosphate have been fixed in sparingly soluble forms
 bound to aluminum and iron. The problem is not *quantity* but
 *availability*.
 
-*When mycorrhizal networks function, plants can obtain up to 90% of their nitrogen and phosphorus through microbial symbiosis.* And in Japan's hot,
+*When mycorrhizal networks function, plants obtain most of their phosphorus supply through the fungi* (Smith et al. 2003). And in Japan's hot,
 humid climate, no-weeding and no-till farming regenerate mycorrhizal
 networks comparatively fast. What is needed is not new fertilizer but
 *putting the soil's own regenerative capacity back to work*. Seen the
@@ -2230,7 +2232,7 @@ link:/insights/agriculture/[農業の間違い]で示した硫黄トラップは
 → *食料生産が崩壊*（核融合の有無に関係なく）
 --
 
-世界の硫黄生産の約90%は、石油精製と天然ガス精製の副産物だ。
+世界の硫黄生産の4分の3以上は、石油精製と天然ガス処理で回収される副産物だ（USGS）。
 硫黄鉱山からの採掘はごくわずか。
 つまり、石油精製が止まれば、核融合がいくら電力を供給しても、
 リン酸肥料は作れない。
@@ -2252,7 +2254,7 @@ link:/insights/agriculture/[農業の間違い]で示した硫黄トラップは
 . 水素からアンモニアは作れる → 窒素肥料は理論上可能
 . 水素から硫黄は作れない → リン酸肥料は不可能
 . 水素からナフサは作れない → 包装材・プラスチックの代替が必要
-. CO2回収 + 水素 → 合成燃料は可能だが、コストが10倍以上
+. CO2回収 + 水素 → 合成燃料は可能だが、コストは化石燃料の3〜10倍（2025年の試算）
 . スケールアップに10〜20年かかる → 移行期間中の危機に対応できない
 --
 
@@ -2308,7 +2310,7 @@ EVを作る → リチウム、コバルト、銅、レアアースが必要 +
 → *EVは「走行時」にCO2を出さないだけで、製造は化石資源に依存している*
 --
 
-コバルトの60%以上がコンゴ民主共和国で採掘されている。児童労働と環境破壊の上に成り立つサプライチェーン。リチウムはチリ、オーストラリア、中国に集中。レアアースの精製は中国が世界の90%を支配している。
+コバルトの7割前後がコンゴ民主共和国で採掘されている（2025年、USGS）。児童労働と環境破壊の上に成り立つサプライチェーン。リチウムはチリ、オーストラリア、中国に集中。レアアースの分離・精製は中国が世界の約9割を握る（IEA）。
 
 [.highlight-box]
 --
@@ -2470,8 +2472,8 @@ Sulfuric acid cannot be made → phosphate fertilizer cannot be made +
 → *food production collapses* (regardless of fusion)
 --
 
-About 90% of the world's sulfur production is a by-product of refining oil
-and natural gas. Mining from sulfur deposits is negligible. So if oil
+More than three-quarters of the world's sulfur production is a by-product recovered in oil refining
+and natural-gas processing (USGS). Mining from sulfur deposits is negligible. So if oil
 refining stops, however much electricity fusion supplies, phosphate
 fertilizer cannot be made.
 
@@ -2492,7 +2494,7 @@ constraints.
 . Hydrogen can make ammonia → nitrogen fertilizer is possible in theory
 . Hydrogen cannot make sulfur → phosphate fertilizer is impossible
 . Hydrogen cannot make naphtha → packaging and plastics need a substitute
-. CO2 capture plus hydrogen → synthetic fuel is possible, but at ten times the cost or more
+. CO2 capture plus hydrogen → synthetic fuel is possible, but at three to ten times the cost of fossil fuel (2025 estimates)
 . Scaling up takes 10–20 years → it cannot answer the crisis of the transition period
 --
 
@@ -2552,10 +2554,10 @@ Build an EV → lithium, cobalt, copper, rare earths are needed +
 → *an EV merely emits no CO2 "while driving"; its manufacture depends on fossil resources*
 --
 
-More than 60% of cobalt is mined in the Democratic Republic of the Congo,
+Around 70% of cobalt is mined in the Democratic Republic of the Congo (2025, USGS),
 a supply chain built on child labor and environmental destruction.
-Lithium is concentrated in Chile, Australia, and China. China controls
-90% of the world's rare-earth refining.
+Lithium is concentrated in Chile, Australia, and China. China holds
+about 90% of the world's rare-earth separation and refining (IEA).
 
 [.highlight-box]
 --
@@ -2612,7 +2614,7 @@ ifdef::lang-ja[]
 
 2026年4月7日、Anthropicが「Claude Mythos Preview」を発表した。翌8日、パウエルFRB議長とベセント財務長官が米国メガバンクのCEOをワシントンに緊急招集した。リーマン・ショック以来の異常事態だ。議題は金利でもインフレでもない。Mythosが金融システムにもたらすサイバー脅威だった。
 
-Mythosは、すべての主要OS——Windows、macOS、Linux——とすべての主要ブラウザで、数千のゼロデイ脆弱性を完全自律的に発見した。FreeBSDカーネルに17年間潜んでいたバグを発見し、エクスプロイトを構築し、認証なしでルート権限を奪取した。OpenBSDに27年間潜伏していたバグ、自動テスト500万回で発見できなかったFFmpegの16年来のバグも発見した。人間の介入はゼロだ。
+Anthropic の発表（2026年4月7日）によれば、Mythosは、すべての主要OS——Windows、macOS、Linux——とすべての主要ブラウザで、数千のゼロデイ脆弱性を完全自律的に発見した。FreeBSDカーネルに17年間潜んでいたバグを発見し、エクスプロイトを構築し、認証なしでルート権限を奪取した。OpenBSDに27年間潜伏していたバグ、自動テスト500万回で発見できなかったFFmpegの16年来のバグも発見した。人間の介入はゼロだ。
 
 [.highlight-box]
 --
@@ -2624,9 +2626,9 @@ Firefoxエクスプロイト成功率 → 前世代の2回 → Mythosは181回�
 *このサイバー能力はハッキングの訓練なしに発現した。推論能力の向上の「副産物」だ。*
 --
 
-国家レベルのエリートハッカーが数ヶ月・数百万ドルかけていたことが、一晩・50ドルでできるようになった。サイバー攻撃の経済学が根本から破壊された。
+国家レベルのエリートハッカーが数ヶ月・数百万ドルかけていたことが、一晩・50ドル以下でできるようになった（Anthropic の発表）。サイバー攻撃の経済学が根本から破壊された。
 
-現在はAnthropicが「危険すぎる」と判断し一般公開していない。防御側の11社にのみ限定提供している。しかし他のAI企業——OpenAI、Google DeepMind、Meta——が同等の能力に到達すれば、非公開を維持する理由がなくなる。*一般公開は2026年後半から2027年前半が現実的な時間軸だ。*
+現在はAnthropicが「危険すぎる」と判断し一般公開していない。防御側の 12 の創設組織と約 40 の重要インフラ事業者にのみ限定提供している（Project Glasswing）。しかし他のAI企業——OpenAI、Google DeepMind、Meta——が同等の能力に到達すれば、非公開を維持する理由がなくなる。*一般公開は2026年後半から2027年前半が現実的な時間軸だ。*
 
 == 金融システムの三層構造——なぜ崩壊するのか
 
@@ -2635,9 +2637,9 @@ Firefoxエクスプロイト成功率 → 前世代の2回 → Mythosは181回�
 [.chain-diagram]
 --
 *金融が脆弱な理由：* +
-第一層：COBOL（1960年代の言語。コアバンキングの43%。数億行のブラックボックス） +
+第一層：COBOL（1960年代の言語。コアバンキングの43%（Reuters、2017年）。数億行のブラックボックス） +
 → 第二層：Microsoft Copilot（ユーザー権限を丸ごと継承。決定的システムに非決定的AIを密結合） +
-→ 第三層：SWIFT（1日5,000万件の国際送金。グローバル金融の血流） +
+→ 第三層：SWIFT（1日約6,000万件のメッセージ（2025年）。グローバル金融の血流） +
 → *三層が密結合。一つが崩れれば全体が崩壊する*
 --
 
@@ -2671,7 +2673,7 @@ PostgreSQL＋Claude Code → 開発時にAIを使う → 人間がレビュー �
 
 == WordPressの43%モノカルチャー——ウェブの崩壊
 
-WordPress は世界のウェブサイトの43%を動かしている。約5億サイト。CMS市場では60%。デスクトップ市場のMicrosoftに匹敵するモノカルチャーだ。
+WordPress は世界のウェブサイトの約43%を動かしている（W3Techs、2026年）。約5億サイト。CMS市場では約60%。デスクトップ市場のMicrosoftに匹敵するモノカルチャーだ。
 
 この巨大なモノカルチャーの上に、AIプラグインが密結合されている。
 
@@ -2679,11 +2681,11 @@ WordPress は世界のウェブサイトの43%を動かしている。約5億サ
 --
 *WordPressの脆弱性の実態（Patchstack 2026）：*
 2025年の新規脆弱性 → 11,334件（前年比42%増）
-97%がサードパーティのプラグインとテーマから
-57.6%が認証不要（外部から直接攻撃可能）
+91%がプラグイン、9%がテーマから（本体は6件のみ）
+43%が認証不要（外部から直接攻撃可能）
 46%がパッチなしの状態で公開
-WAFが防いだ攻撃 → わずか12.2%（87.8%は素通り）
-エコシステム累積脆弱性 → 64,782件（CMS史上最大）
+従来型WAFが防ぐWordPress固有の攻撃 → わずか12%
+（出どころ：Patchstack「State of WordPress Security in 2026」）
 --
 
 WordPressのプラグインアーキテクチャは、Copilotと同じ構造的欠陥を持つ。プラグインはインストールした瞬間にWordPressコアと同じ権限レベルで動作する。データベースのSELECT、INSERT、UPDATE、DELETE——全て。サンドボックスはない。
@@ -2691,7 +2693,7 @@ WordPressのプラグインアーキテクチャは、Copilotと同じ構造的�
 [.chain-diagram]
 --
 *ウェブが脆弱な理由：* +
-WordPressは世界のウェブサイトの43%を動かしている（約5億サイト） +
+WordPressは世界のウェブサイトの約43%を動かしている（約5億サイト） +
 → 65,000個のプラグインにサンドボックスなし。フルアクセス権限 +
 → ここにAIプラグインが密結合されている +
 → 金融システムより脆弱。インターネットに直接露出している +
@@ -2706,7 +2708,7 @@ AIプラグイン「AI Power」はすでに重大な脆弱性が繰り返し発�
 
 === WooCommerceとPCI DSS——支払いシステムの根本矛盾
 
-WooCommerceは推定650万〜1億2,000万サイトで稼働し、EC市場の33〜39%を占める。顧客名、住所、メール、注文履歴——高度な個人情報がWordPressと同じ単一データベースに格納されている。
+WooCommerceは推定450万〜620万サイトで稼働し（Store Leads / BuiltWith、2025年）、ECサイトの2〜4割を占める（測り方で幅がある）。顧客名、住所、メール、注文履歴——高度な個人情報がWordPressと同じ単一データベースに格納されている。
 
 AIエージェントが導入された瞬間、このデータベースへの直接アクセスを得る。これはPCI DSS v4.0.1（クレジットカード業界のグローバルセキュリティ基準）と根本的に矛盾する。
 
@@ -2793,7 +2795,7 @@ ifdef::lang-en[]
 
 On April 7, 2026, Anthropic announced "Claude Mythos Preview." The next day, Fed Chair Powell and Treasury Secretary Bessent urgently summoned the CEOs of America's megabanks to Washington. An extraordinary event not seen since the 2008 Lehman crisis. The agenda was neither interest rates nor inflation. It was the cyber threat Mythos poses to the financial system.
 
-Mythos autonomously discovered thousands of zero-day vulnerabilities across every major OS — Windows, macOS, Linux — and every major browser. It found a 17-year-old bug in the FreeBSD kernel, built an exploit, and achieved root access without authentication. It found a 27-year-old bug in OpenBSD and a 16-year-old FFmpeg bug that survived five million automated fuzz tests. Zero human intervention.
+By Anthropic's announcement (7 April 2026), Mythos autonomously discovered thousands of zero-day vulnerabilities across every major OS — Windows, macOS, Linux — and every major browser. It found a 17-year-old bug in the FreeBSD kernel, built an exploit, and achieved root access without authentication. It found a 27-year-old bug in OpenBSD and a 16-year-old FFmpeg bug that survived five million automated fuzz tests. Zero human intervention.
 
 [.highlight-box]
 --
@@ -2805,9 +2807,9 @@ Firefox exploit success rate → Previous generation: 2 → Mythos: 181 (90x imp
 *This cyber capability emerged without deliberate hacking training. It was a "byproduct" of improved reasoning.*
 --
 
-What state-sponsored elite hackers spent months and millions of dollars on can now be done overnight for under $50. The economics of cyberattacks have been fundamentally destroyed.
+What state-sponsored elite hackers spent months and millions of dollars on can now be done overnight for under $50 (Anthropic). The economics of cyberattacks have been fundamentally destroyed.
 
-Currently, Anthropic has deemed Mythos "too dangerous for public release" and provides it only to 11 defensive partners. But once other AI companies — OpenAI, Google DeepMind, Meta — reach equivalent capability, there is no reason to maintain the restriction. *Public release in late 2026 to early 2027 is a realistic timeline.*
+Currently, Anthropic has deemed Mythos "too dangerous for public release" and provides it only to 12 founding partners and about 40 critical-infrastructure operators (Project Glasswing). But once other AI companies — OpenAI, Google DeepMind, Meta — reach equivalent capability, there is no reason to maintain the restriction. *Public release in late 2026 to early 2027 is a realistic timeline.*
 
 == The Financial System's Three-Layer Structure — Why It Will Collapse
 
@@ -2816,9 +2818,9 @@ Why Powell and Bessent summoned the CEOs. The financial system's structure itsel
 [.chain-diagram]
 --
 *Why finance is vulnerable:* +
-Layer 1: COBOL (1960s language. 43% of core banking. Hundreds of millions of lines of black-box code) +
+Layer 1: COBOL (1960s language. 43% of core banking (Reuters, 2017). Hundreds of millions of lines of black-box code) +
 → Layer 2: Microsoft Copilot (inherits full user permissions. Non-deterministic AI tightly coupled to deterministic systems) +
-→ Layer 3: SWIFT (50 million international transfers per day. The bloodstream of global finance) +
+→ Layer 3: SWIFT (about 60 million messages per day (2025). The bloodstream of global finance) +
 → *Three layers tightly coupled. If one collapses, everything collapses*
 --
 
@@ -2852,7 +2854,7 @@ PostgreSQL + Claude Code → AI used during development → Human review → Tes
 
 == WordPress's 43% Monoculture — The Web's Collapse
 
-WordPress powers 43% of all websites in the world. Approximately 500 million sites. 60% of the CMS market. A monoculture rivaling Microsoft's desktop monopoly.
+WordPress powers about 43% of all websites in the world (W3Techs, 2026). Approximately 500 million sites. About 60% of the CMS market. A monoculture rivaling Microsoft's desktop monopoly.
 
 AI plugins are being tightly coupled onto this massive monoculture.
 
@@ -2860,11 +2862,11 @@ AI plugins are being tightly coupled onto this massive monoculture.
 --
 *WordPress vulnerability reality (Patchstack 2026):*
 New vulnerabilities in 2025 → 11,334 (42% increase year-over-year)
-97% originate from third-party plugins and themes
-57.6% require no authentication (directly exploitable from outside)
+91% in plugins, 9% in themes (only six in core)
+43% require no authentication (directly exploitable from outside)
 46% had no patch at time of disclosure
-Attacks blocked by WAFs → only 12.2% (87.8% pass through)
-Cumulative ecosystem vulnerabilities → 64,782 (largest for any CMS in history)
+WordPress-specific attacks blocked by traditional WAFs → only 12%
+(Source: Patchstack, State of WordPress Security in 2026)
 --
 
 WordPress's plugin architecture shares the same structural flaw as Copilot. The moment a plugin is installed, it runs at the same privilege level as WordPress core. SELECT, INSERT, UPDATE, DELETE on the database — full access. No sandbox.
@@ -2872,7 +2874,7 @@ WordPress's plugin architecture shares the same structural flaw as Copilot. The 
 [.chain-diagram]
 --
 *Why the web is vulnerable:* +
-WordPress powers 43% of all websites (approximately 500 million sites) +
+WordPress powers about 43% of all websites (approximately 500 million sites) +
 → 65,000 plugins with no sandbox. Full access permissions +
 → AI plugins are being tightly coupled into this +
 → More vulnerable than the financial system. Directly exposed to the internet +
@@ -2887,7 +2889,7 @@ An invisible prompt planted in a comment field — the moment an AI plugin reads
 
 === WooCommerce and PCI DSS — A Fundamental Contradiction in Payment Systems
 
-WooCommerce operates on an estimated 6.5 million to 120 million websites, holding 33–39% of the e-commerce market. Customer names, addresses, emails, order histories — highly sensitive personal information stored in the same single database as WordPress core.
+WooCommerce runs on an estimated 4.5 to 6.2 million websites (Store Leads / BuiltWith, 2025), some 20–40% of e-commerce sites depending on how they are counted. Customer names, addresses, emails, order histories — highly sensitive personal information stored in the same single database as WordPress core.
 
 The moment an AI agent is introduced, it gains direct access to this database. This fundamentally contradicts PCI DSS v4.0.1, the global security standard for the credit card industry.
 
@@ -3341,7 +3343,7 @@ GPU（シャベル）を売っている。
 [.highlight-box]
 --
 *NVIDIAの収益構造：*
-データセンター向けGPU売上 → 全体の80%以上
+データセンター向けGPU売上 → 全体の約88%（2025会計年度）
 主な顧客 → Google、Microsoft、Meta、Amazon、OpenAI
 顧客が買う理由 → AGIを実現するため
 NVIDIAの時価総額 → *AGI需要が続くことが前提*
@@ -3473,7 +3475,7 @@ NVIDIAは「AI革命の中心」を自称するが、
 
 == 時価総額3兆ドルの前提
 
-NVIDIAの時価総額は約3兆ドル（2024年時点）。
+NVIDIAの時価総額は2024年6月に3兆ドルに達した。
 この数字は何を前提にしているか。
 
 [.highlight-box]
@@ -3529,7 +3531,7 @@ NVIDIA is the modern shovel seller. It sells GPUs (shovels) to Google, Microsoft
 [.highlight-box]
 --
 *NVIDIA's revenue structure:*
-Data center GPU sales → Over 80% of total revenue
+Data center GPU sales → About 88% of total revenue (fiscal 2025)
 Main customers → Google, Microsoft, Meta, Amazon, OpenAI
 Why they buy → To build AGI
 NVIDIA's market cap → *Assumes AGI demand continues indefinitely*
@@ -3641,7 +3643,7 @@ NVIDIA calls itself "the center of the AI revolution," but the physical foundati
 
 == The Premise Behind a $3 Trillion Market Cap
 
-NVIDIA's market cap reached approximately $3 trillion (as of 2024). What does this number assume?
+NVIDIA's market cap reached $3 trillion in June 2024. What does this number assume?
 
 [.highlight-box]
 --
@@ -3744,7 +3746,7 @@ Oracle Database Enterprise Edition → 1プロセッサあたり年間数百万�
 Oracle RAC（高可用性）→ 追加ライセンス
 Oracle Partitioning → 追加ライセンス
 Oracle Advanced Security → 追加ライセンス
-Oracle サポート契約 → ライセンス費の22%を毎年支払い続ける
+Oracle サポート契約 → ライセンス費の22%（Oracleの標準料率）を毎年支払い続ける
 *機能を使うたびに課金される。使わなくても基本料を取られる。*
 --
 
@@ -3820,7 +3822,7 @@ Microsoftは企業に対して複数の「税」を同時に課している。
 --
 *Microsoft税の内訳：*
 Windows → PCごとにOEMライセンス。選択の余地なし。
-Office 365 → 月額1,000〜4,000円/ユーザー × 全社員 × 12ヶ月
+Microsoft 365 → 月額1,049〜3,298円/ユーザー（2026年7月改定、税抜・年払い）× 全社員 × 12ヶ月
 Azure → 「Windowsとの親和性」でロックイン
 Teams → Office 365にバンドル。「無料」に見えるが、バンドルの一部
 *中堅企業（500人）で年間数千万円。*
@@ -3868,7 +3870,7 @@ EchoLeak脆弱性（CVE-2025-32711、CVSSスコア9.3）——見えないプロ
 *Copilotの便利機能が、そのままシステム制圧のバックドアとして機能する。*
 --
 
-Claude Mythos Previewが証明したのは、このバックドアを突くAIが既に存在するということだ。国家レベルのハッカーが数ヶ月かけていたエクスプロイトが、一晩・50ドルで作れる。パッチ適用の中央値は70日。Mythosの脆弱性発見・兵器化は数時間。*「段階的に移行する」時間はもうない。*
+Claude Mythos Previewが証明したのは、このバックドアを突くAIが既に存在するということだ。国家レベルのハッカーが数ヶ月かけていたエクスプロイトが、一晩・50ドル以下で作れる（Anthropic の発表）。パッチ適用の中央値は70日。Mythosの脆弱性発見・兵器化は数時間。*「段階的に移行する」時間はもうない。*
 
 Claudeが引けるMicrosoft税——これは今すぐ着手すべきだ：
 
@@ -4198,7 +4200,7 @@ Oracle Database Enterprise Edition → Millions of yen per processor per year
 Oracle RAC (high availability) → Additional license
 Oracle Partitioning → Additional license
 Oracle Advanced Security → Additional license
-Oracle support contract → 22% of license cost paid annually, forever
+Oracle support contract → 22% of license cost (Oracle's standard rate) paid annually, forever
 *You're charged for every feature you use. You pay the base fee even for features you don't.*
 --
 
@@ -4267,7 +4269,7 @@ Windows, Office 365, Azure, Teams — Microsoft levies multiple "taxes" on enter
 --
 *Microsoft tax breakdown:*
 Windows → OEM license per PC. No choice.
-Office 365 → ¥1,000–4,000/user/month × all employees × 12 months
+Microsoft 365 → ¥1,049–3,298/user/month (July 2026 pricing, ex-tax, annual) × all employees × 12 months
 Azure → Lock-in via "Windows compatibility"
 Teams → Bundled with Office 365. Looks "free" but it's part of the bundle
 *For a midsize company (500 employees): tens of millions of yen annually.*
@@ -4315,7 +4317,7 @@ EchoLeak vulnerability (CVE-2025-32711, CVSS 9.3) — hidden prompts in emails c
 *Copilot's convenience features function directly as a backdoor for system compromise.*
 --
 
-What Claude Mythos Preview proved is that AI capable of exploiting this backdoor already exists. Exploits that once required state-sponsored hackers and months of work can now be generated overnight for under $50. The median patch window is 70 days. Mythos discovers and weaponizes vulnerabilities in hours. *There is no longer time for "gradual migration."*
+What Claude Mythos Preview proved is that AI capable of exploiting this backdoor already exists. Exploits that once required state-sponsored hackers and months of work can now be generated overnight for under $50 (Anthropic). The median patch window is 70 days. Mythos discovers and weaponizes vulnerabilities in hours. *There is no longer time for "gradual migration."*
 
 Microsoft taxes Claude can eliminate — and this must begin immediately:
 
@@ -4656,9 +4658,9 @@ ifdef::lang-ja[]
 [.highlight-box]
 --
 *ダストボウルの規模：*
-影響を受けた面積：約4,000万ヘクタール（日本の国土面積以上）
+影響を受けた面積：約4,000万ヘクタール（1億エーカー超。日本の国土面積以上）
 失われた表土：推定数十億トン
-移住を余儀なくされた人：250万人以上
+移住を余儀なくされた人：250万人以上（1940年まで）
 期間：約10年（1930〜1940年）
 原因：草原の無計画な耕起
 --
@@ -4756,7 +4758,7 @@ ifdef::lang-ja[]
 → モスクワの官僚が、何をいつ植えるかを決めた +
 → 現場を知らない人間が、農業を「計画」した +
 → *ウクライナで大飢饉（ホロドモール）が発生* +
-→ *推定400〜700万人が餓死した*
+→ *推定350万〜500万人が餓死した*（近年の研究。700万人以上とする推計もある）
 --
 
 ウクライナは「ヨーロッパのパンかご」と呼ばれるほど肥沃な土地だった。
@@ -4898,7 +4900,7 @@ GPU → AI投資の失速＋競合の参入 → NVIDIA税が崩壊
 [.chain-diagram]
 --
 *パナマ文書（2016年）の構造：* +
-パナマの法律事務所から1,150万件の内部文書が流出 +
+パナマの法律事務所から1,150万件の内部文書が流出（ICIJ） +
 → 世界中の政治家・富裕層のタックスヘイブン利用が発覚 +
 → アイスランド首相が辞任、各国で調査開始 +
 しかし：解析に数百人のジャーナリストが1年以上かかった +
@@ -5082,9 +5084,9 @@ The 1930s brought severe drought → Crops died, topsoil lay bare +
 [.highlight-box]
 --
 *Scale of the Dust Bowl:*
-Area affected: ~40 million hectares (larger than Japan's total land area)
+Area affected: ~40 million hectares (over 100 million acres, larger than Japan's total land area)
 Topsoil lost: estimated billions of tons
-People displaced: over 2.5 million
+People displaced: over 2.5 million (by 1940)
 Duration: ~10 years (1930–1940)
 Cause: Unplanned plowing of grasslands
 --
@@ -5181,7 +5183,7 @@ Stalin ordered agricultural collectivization (1929) +
 → Bureaucrats in Moscow decided what to plant and when +
 → People who had never seen a field "planned" agriculture +
 → *Mass famine struck Ukraine (Holodomor)* +
-→ *An estimated 4–7 million people starved to death*
+→ *An estimated 3.5–5 million people starved to death* (recent scholarship; some estimates exceed 7 million)
 --
 
 Ukraine was called "the breadbasket of Europe" — some of the most fertile land on Earth.
@@ -5323,7 +5325,7 @@ Investigative journalism teams, whistleblower protection agencies, international
 [.chain-diagram]
 --
 *The Panama Papers (2016):* +
-11.5 million internal documents leaked from a Panamanian law firm +
+11.5 million internal documents leaked from a Panamanian law firm (ICIJ) +
 → Tax haven usage by politicians and the wealthy worldwide exposed +
 → Iceland's prime minister resigned, investigations launched globally +
 But: analysis took hundreds of journalists over a year +
@@ -6077,7 +6079,7 @@ Cambridge Analytica は氷山の一角に過ぎなかった。今やすべての
 
 これは link:/insights/mythos/[第一部 第5章「Mythosが来た」]とlink:/insights/microsoft/[06「Microsoftの崩壊」]で詳しく扱った構造である。封建制の論理（規模拡大）が、AI 時代に最大の弱点になった。
 
-CrowdStrike 障害（850 万台の Windows 停止、$54B の損失）、SolarWinds 事件、Microsoft Exchange Online 不正アクセス——どれもこの矛盾の現れである。*封建制を解体せず、規模を拡大し続ける限り、サイバー脆弱性は深まり続ける*。
+CrowdStrike 障害（850 万台の Windows 停止、Fortune 500 企業だけで $5.4B の直接損失 ── Parametrix の推計）、SolarWinds 事件、Microsoft Exchange Online 不正アクセス——どれもこの矛盾の現れである。*封建制を解体せず、規模を拡大し続ける限り、サイバー脆弱性は深まり続ける*。
 
 そして、link:/insights/nvidia/[第一部 第7章「NVIDIAの崩壊」]で扱ったように、AI チップの寡占もまた同じ規模の論理に従っている。寡占が単一障害点を作る——これは封建制構造の必然である。
 
@@ -6351,7 +6353,7 @@ Giant platforms → carry decades of compatibility debt +
 
 This is the structure examined in detail in link:/en/insights/mythos/[Part 1, Chapter 5 "Mythos Has Arrived"] and link:/en/insights/microsoft/[Chapter 6 "Microsoft's Collapse"]. The feudal logic of scale expansion became the greatest weakness of the AI era.
 
-The CrowdStrike outage (8.5 million Windows machines halted, $54B in losses), the SolarWinds incident, the Microsoft Exchange Online unauthorized access — these are all manifestations of this contradiction. *As long as feudalism is not dismantled and scale keeps expanding, cyber vulnerability will keep deepening.*
+The CrowdStrike outage (8.5 million Windows machines halted, $5.4B in direct losses to Fortune 500 companies alone, per Parametrix), the SolarWinds incident, the Microsoft Exchange Online unauthorized access — these are all manifestations of this contradiction. *As long as feudalism is not dismantled and scale keeps expanding, cyber vulnerability will keep deepening.*
 
 And as covered in link:/en/insights/nvidia/[Part 1, Chapter 7 "NVIDIA's Collapse"], the oligopoly of AI chips follows the same logic of scale. Oligopoly creates a single point of failure — this is a structural inevitability of feudalism.
 
@@ -6624,7 +6626,7 @@ AI革命に対するBig Techの反応を、最も明確に体現しているの�
 5. *Copilot強制バンドル* +
    Word、Excel、PPT、Outlook、Teams、Windows、GitHubへの統合的押し付け +
 6. *Copilot+ PC（NPU 40 TOPS要件）* +
-   既存30億人のWindowsユーザーへのハード買い替え強制 +
+   既存14億台（月間アクティブ、Microsoft）のWindows機の利用者へのハード買い替え強制 +
 7. *テイク・オア・ペイ契約（Kenya等）* +
    途上国に巨額のリスクを転嫁し、失敗時に責任を負わない契約構造
 --
@@ -6682,7 +6684,7 @@ Windowsのスタックは融合型（カーネル＋シェル＋AI＋アプリ�
 
 *第二に、広告が攻撃面になった*。Microsoft は、ユーザーが自分のファイルを見る画面(エクスプローラー)にまで広告を差し込んだ。これは融合スタックの帰結そのものだ──*最も信頼される面に第三者コンテンツの経路を通せば、その経路はマルウェアの経路になる*。収益のために信頼面を売る判断が、そのままセキュリティの穴になる。Recall と同じ設計論理が、今度は「広告」という形で噴き出した。
 
-*第三に、鍵の集中が乗っ取りとして跳ね返った*。2026年、Microsoft アカウントの乗っ取り被害が続発した。パスワードを変えられ、回復用の連絡先まで書き換えられ、本人証明をしても復旧できない ── メール・ファイル・OSログイン・購入・そして復旧の窓口までが一つの鍵に束ねられているため、*鍵一本の窃取が生活全体の乗っ取りになり、助けを求める入口すら鍵の内側にある*。インフォスティーラーが2025年の一年で約18億件の資格情報を盗み、Microsoft はフィッシングで世界一なりすまされるブランドになった。集中こそが、攻撃の的を一点に絞らせている。
+*第三に、鍵の集中が乗っ取りとして跳ね返った*。2026年、Microsoft アカウントの乗っ取り被害が続発した。パスワードを変えられ、回復用の連絡先まで書き換えられ、本人証明をしても復旧できない ── メール・ファイル・OSログイン・購入・そして復旧の窓口までが一つの鍵に束ねられているため、*鍵一本の窃取が生活全体の乗っ取りになり、助けを求める入口すら鍵の内側にある*。インフォスティーラーが2025年上半期だけで約18億件の資格情報を盗み（Flashpoint）、Microsoft はフィッシングで世界一なりすまされるブランドになった（Check Point、2025年）。集中こそが、攻撃の的を一点に絞らせている。
 
 三つとも、別々の不祥事ではない。*融合スタックと鍵の集中という一つの設計から、品質崩壊・広告=攻撃面・アカウント乗っ取りが同時に噴き出した*。領主が城壁を高くするほど、城の中が危うくなる ── 自己破壊は、いまや設計思想ではなく、ユーザーの日常に現れている(具体的な被害と出口は、ブログlink:/blog/end-of-us-ai-hegemony/[「アメリカのAI覇権の終わりの始まり」]第3層とlink:/blog/windows-account-danger/[「あなたの Microsoft アカウント、盗まれたら戻ってきません」]で扱った)。
 
@@ -6851,7 +6853,7 @@ The clearest embodiment of Big Tech's response to the AI revolution is Microsoft
 5. *Forced Copilot bundling* +
    Systematic imposition into Word, Excel, PowerPoint, Outlook, Teams, Windows, and GitHub. +
 6. *Copilot+ PC (NPU 40 TOPS requirement)* +
-   Forces hardware replacement on the existing 3 billion Windows users. +
+   Forces hardware replacement on the users of the existing 1.4 billion monthly active Windows devices (Microsoft). +
 7. *Take-or-pay contracts (Kenya, etc.)* +
    Transfers enormous risk onto developing countries under a contract structure that bears no accountability on failure.
 --
@@ -6909,7 +6911,7 @@ Recall became inevitable the moment *Microsoft decided "our stack maintains a fu
 
 *Second, ads became an attack surface.* Microsoft inserted ads even into the screen where users view their own files (File Explorer). This is the fused stack's own consequence — *run a channel for third-party content into the most trusted surface, and that channel becomes a channel for malware.* The decision to sell the trusted surface for revenue becomes, directly, a security hole. The same design logic as Recall erupted this time as "ads."
 
-*Third, key concentration rebounded as account takeover.* In 2026, Microsoft account takeovers surged. Passwords changed, recovery contacts rewritten, and even proof of ownership failing to restore access — because email, files, OS login, purchases, and the recovery desk itself are all bundled into one key, *the theft of a single key becomes the takeover of an entire life, with even the entrance for help locked inside that same key.* Infostealers stole roughly 1.8 billion credentials in 2025 alone, and Microsoft became the world's most impersonated phishing brand. It is concentration that narrows the attacker's aim to a single point.
+*Third, key concentration rebounded as account takeover.* In 2026, Microsoft account takeovers surged. Passwords changed, recovery contacts rewritten, and even proof of ownership failing to restore access — because email, files, OS login, purchases, and the recovery desk itself are all bundled into one key, *the theft of a single key becomes the takeover of an entire life, with even the entrance for help locked inside that same key.* Infostealers stole roughly 1.8 billion credentials in the first half of 2025 alone (Flashpoint), and Microsoft became the world's most impersonated phishing brand (Check Point, 2025). It is concentration that narrows the attacker's aim to a single point.
 
 None of the three are separate scandals. *From one design — a fused stack plus key concentration — quality collapse, ads-as-attack-surface, and account takeover erupted at once.* The higher the lord builds the walls, the more dangerous it gets inside the castle — self-destruction now appears not as design philosophy but in the user's daily life (the concrete harm and the way out are covered in the posts link:/en/blog/end-of-us-ai-hegemony/["The Beginning of the End of American AI Hegemony"], Layer 3, and link:/en/blog/windows-account-danger/["If Your Microsoft Account Gets Stolen, You Won't Get It Back"]).
 
@@ -7490,7 +7492,7 @@ cta_text.en: In warfare, in agriculture, in business — distributed systems bea
 ifdef::lang-ja[]
 == 400万ドル vs 数万ドル
 
-Patriotミサイル1発400万ドル。
+Patriotミサイル1発400万ドル（米陸軍。最新型は約530万ドル）。
 ウクライナが使っているドローン迎撃の単価は数万ドル。
 100倍のコスト差。
 
@@ -7513,14 +7515,14 @@ Patriotミサイル1発400万ドル。
 
 2026年3月、米国はイランに対して「Operation Epic Fury」を開始した。
 世界最強の軍事力による、5週間にわたる連日の空爆。
-12,300以上の標的を攻撃した。
+13,000以上の標的を攻撃した（CENTCOM、2026年4月6日）。
 
 結果はどうか。
 
 [.chain-diagram]
 --
 *米国情報機関の評価（2026年4月時点）：* +
-ミサイルランチャー → 約50%が依然健在 +
+移動式ミサイル発射機 → 約3分の2が依然健在（破壊・無力化は約3分の1、米・イスラエル当局者の評価） +
 一方向攻撃ドローン → 数千機が残存（能力の約50%） +
 沿岸防衛巡航ミサイル → 大部分が健在 +
 IRGC海軍 → 小型船舶・無人水上艇が数百〜数千隻残存 +
@@ -7547,7 +7549,7 @@ IRGC海軍 → 小型船舶・無人水上艇が数百〜数千隻残存 +
 *コスト非対称性の現実*
 米国の精密誘導爆弾1発＝数十万〜数百万ドル。
 イランのドローン1機＝数万ドル。
-12,300以上の標的を攻撃しても、相手の能力の半分しか削れない。
+13,000以上の標的を攻撃しても、相手の能力の大半は残る。
 攻撃する側のコストが、防御する側の資産価値を上回る。
 これが非対称戦の本質だ。
 --
@@ -7672,7 +7674,7 @@ AI群制御により、数百人のオペレーターで数万機を運用可能
 == ニュージーランドの例
 
 ニュージーランドは人口500万人。
-防衛予算はGDPの約1.5%。
+防衛予算はGDPの約1.1%（2%へ引き上げる計画、2025年）。
 地理的に孤立しており、従来は豪州・米国との同盟に安全保障を依存してきた。
 
 しかし、ドローン＋AI防衛モデルでは：
@@ -7707,8 +7709,8 @@ AI群制御により、数百人のオペレーターで数万機を運用可能
 --
 *産業規模の天文学的成長：*
 2022年:国内防衛産業の生産能力 約*10億ドル*
-2025年:推定*350億ドル*(35倍)
-戦場で使用される兵器の*33〜34%が国内生産*(欧州供給割合を上回る)
+2025〜26年:見込み*350億ドル*（35倍。ゼレンスキー大統領、2025年10月）
+戦場で使用される兵器の*4割超が国内生産か国内参加*（ゼレンスキー大統領、2025年10月）
 2025年:軍用ドローン最大*450万機*の製造計画、予算*1,100億UAH(約26億ドル)以上*
 ロシア領内攻撃ドローンの*100%が国産*
 --
@@ -7748,7 +7750,7 @@ AI群制御により、数百人のオペレーターで数万機を運用可能
 [.highlight-box]
 --
 *Brave1の規模(2025年時点):*
-統合された企業数:*1,500社以上*
+統合された企業数:*1,500社以上*（以下、Brave1 の公表値）
 助成プロジェクト数:*540件以上*
 助成総額:*22億UAH*
 2025年度追加予算:*29億UAH*
@@ -7976,7 +7978,7 @@ ____
 *Viber*はウクライナで圧倒的な普及率を誇り、*情報共有や軍事的なネットワークの基盤*として機能している。
 
 * 2025年5月、幕張メッセで開催された防衛装備展示会*DSEI Japan*
-  で、*楽天はBrave1と提携してウクライナのディフェンステック・スタートアップ6社の出展を支援*
+  で、*楽天はBrave1と提携してウクライナのディフェンステック企業の出展を支援*（Brave1 の発表では3社）
 * このイニシアチブは、ウクライナの戦場証明済みAIや自律制御技術
   を*日本市場および日本の防衛産業に導入する橋渡し*となっている
 * *楽天シンフォニー*はKyivstar(ウクライナ最大の通信キャリア)の
@@ -8128,7 +8130,7 @@ AI：個人＋Claude → 大組織と同等の分析力
 [.highlight-box]
 --
 *3. テクノロジーへの過信*
-12,300以上の標的を精密爆撃しても、能力の半分が残る。
+13,000以上の標的を精密爆撃しても、能力の大半が残る。
 テクノロジーで全てを解決できるという信念は、
 地形と時間と意志の力を過小評価する。
 歴史を持つ国は、テクノロジーが万能ではないことを経験的に知っている。
@@ -8163,7 +8165,7 @@ endif::[]
 ifdef::lang-en[]
 == $4 Million vs. Tens of Thousands
 
-One Patriot missile: $4 million.
+One Patriot missile: $4 million (US Army; the newest version about $5.3 million).
 The unit cost of the drone interceptors Ukraine uses: tens of thousands of dollars.
 A hundredfold cost gap.
 
@@ -8186,14 +8188,14 @@ Drones + AI → low-cost means of defense +
 
 In March 2026, the United States launched "Operation Epic Fury" against
 Iran. Five weeks of daily airstrikes by the world's strongest military.
-More than 12,300 targets struck.
+More than 13,000 targets struck (CENTCOM, 6 April 2026).
 
 The result?
 
 [.chain-diagram]
 --
 *US intelligence assessment (as of April 2026):* +
-Missile launchers → about 50% still intact +
+Mobile missile launchers → about two-thirds still intact (about a third destroyed or disabled, per US and Israeli officials) +
 One-way attack drones → thousands remain (about 50% of capability) +
 Coastal-defense cruise missiles → mostly intact +
 IRGC navy → hundreds to thousands of small boats and unmanned surface vessels remain +
@@ -8220,7 +8222,7 @@ The same structure as Yemen's Houthis.
 *The reality of cost asymmetry*
 One US precision-guided bomb = hundreds of thousands to millions of dollars.
 One Iranian drone = tens of thousands.
-Strike more than 12,300 targets, and you still cut only half the
+Strike more than 13,000 targets, and you still leave most of the
 opponent's capability.
 The attacker's cost exceeds the value of the defender's assets.
 This is the essence of asymmetric war.
@@ -8350,7 +8352,7 @@ A middle power can build it.
 == The New Zealand Example
 
 New Zealand: population five million.
-Defense budget around 1.5% of GDP.
+Defense budget around 1.1% of GDP (with a plan to reach 2%, 2025).
 Geographically isolated; security traditionally dependent on alliance with
 Australia and the US.
 
@@ -8386,8 +8388,8 @@ feedback from the front.
 --
 *Astronomical industrial growth:*
 2022: domestic defense-industry production capacity about *$1B*
-2025: estimated *$35B* (35x)
-*33–34% of weapons used on the battlefield are domestically produced* (exceeding the European share)
+2025–26: projected *$35B* (35x; President Zelensky, October 2025)
+*over 40% of weapons used on the battlefield are produced in Ukraine or with Ukrainian participation* (President Zelensky, October 2025)
 2025: plans to manufacture up to *4.5 million military drones*, budgeted at *over 110 billion UAH (~$2.6B)*
 *100% of drones striking inside Russian territory are domestic*
 --
@@ -8431,7 +8433,7 @@ directly with private technology companies and investors.
 [.highlight-box]
 --
 *Brave1's scale (as of 2025):*
-Companies integrated: *over 1,500*
+Companies integrated: *over 1,500* (these and the figures below are Brave1's published numbers)
 Grant projects: *over 540*
 Total grants: *2.2 billion UAH*
 Additional 2025 budget: *2.9 billion UAH*
@@ -8666,7 +8668,7 @@ messaging app *Viber* enjoys dominant penetration in Ukraine and
 functions as *infrastructure for information sharing and military networks.*
 
 * At *DSEI Japan*, the defense-equipment exhibition held at Makuhari
-  Messe in May 2025, *Rakuten partnered with Brave1 to support the exhibition of six Ukrainian defense-tech startups*
+  Messe in May 2025, *Rakuten partnered with Brave1 to support the exhibition of Ukrainian defense-tech companies* (three, by Brave1's announcement)
 * The initiative serves as *a bridge bringing Ukraine's battle-proven AI and autonomy technology into the Japanese market and Japan's defense industry*
 * *Rakuten Symphony* signed an agreement with Veon, parent of Kyivstar
   (Ukraine's largest carrier), joining the *rebuild of Ukraine's next-generation 5G infrastructure with O-RAN (Open RAN) technology*
@@ -8818,7 +8820,7 @@ A country without history cannot understand what a long war means.
 [.highlight-box]
 --
 *3. Overconfidence in technology*
-Precision-bomb more than 12,300 targets, and half the capability remains.
+Precision-bomb more than 13,000 targets, and most of the capability remains.
 The belief that technology solves everything underestimates
 the power of terrain, time, and will.
 Countries with history know from experience that technology is not
@@ -8906,12 +8908,12 @@ $50 の AI 自律航法モジュール × 数万ドルのドローン、$30,000 
 ウクライナの事例は特殊と思えるかもしれない。だが、2026 年のイラン
 戦争で同じ構造が *異なる文脈* で繰り返されている。
 
-2026 年 3 月、米国は Operation Epic Fury を発動し、5 週間で
-*12,300 以上の標的* を攻撃した。世界最強の軍事力による、現代史上
+2026 年 2 月末、米国は Operation Epic Fury を発動し、5 週間で
+*13,000 以上の標的* を攻撃した(CENTCOM、2026 年 4 月 6 日)。世界最強の軍事力による、現代史上
 類を見ない規模のキャンペーンだ。しかし米情報機関の評価(2026 年 4
 月時点):
 
-* ミサイルランチャー *約 50% 健在*
+* 移動式ミサイル発射機 *約 3 分の 2 が健在*(破壊・無力化は約 3 分の 1、米・イスラエル当局者の評価)
 * 一方向攻撃ドローン *数千機残存*
 * 沿岸防衛巡航ミサイル *大部分健在*
 * IRGC 海軍 *数百〜数千隻残存*
@@ -8948,7 +8950,7 @@ $50 の AI 自律航法モジュール × 数万ドルのドローン、$30,000 
 
 旧来の縮小と並行して、ドローン+AI 中核の新しい軍需産業が台頭し
 ている。Brave1 ── AI プロジェクト 300+、戦場運用 70+、企業 100+、
-年産 700 万機目標、AI モジュール $50/機。
+年産 1,000 万機(2026 年 7 月、ゼレンスキー大統領)、AI モジュール $50/機。
 
 |===
 | 旧来の軍需産業 | 新しい軍需産業
@@ -9189,7 +9191,7 @@ OSS AI が広がれば AI 自体がどこからでもアクセスできるイン
 
 |===
 |  | 現在 | 転換後
-| 東京圏 | 3,600 万人がオフィス通勤 | 集中する理由が消える
+| 東京圏 | 約 3,700 万人が集まる(国勢調査) | 集中する理由が消える
 | 地方の町 | 過疎化が進行 | 受け皿として機能する
 | 主な雇用 | デスクワーク、IT、サービス業 | バイオ素材製造、食料生産、林業、土壌再生
 | 必要な資源 | オフィス、データセンター、電力 | 農地、林地、水、日照、土壌
@@ -9224,8 +9226,8 @@ ____
 大幅に減る。構図はlink:/insights/climate-mistake/[第一部 第1章]の気候対策と
 同じだ ── 治療は「買う対策」(薬と処置を買い続ける)であり、推す者に
 事欠かない。予防の大部分は「自分の暮らしでできる対策」であり、売り物に
-ならないから、制度の中心に来なかった。GDP 一人あたり約 1 万ドル(日本の約四分の一)の
-キューバが、平均寿命 *78.1 歳*(米国 79.25 歳とほぼ同水準)、
+ならないから、制度の中心に来なかった。GDP 一人あたり約 7,400 ドル(日本の 5 分の 1 ほど、世界銀行 2024 年)の
+キューバが、平均寿命 *78.3 歳*(2024 年。米国の 79 歳とほぼ同水準)、
 5 歳未満児死亡率 *0.8%*、発育阻害(5 歳未満)*7.1%*(LAC 平均
 11.3% を大きく下回る)を達成してきた。
 
@@ -9233,18 +9235,17 @@ ____
 *家庭医プログラム*(1983 年創設、2024 年で 40 周年)を基盤に、
 家庭医オフィス *11,548* → ポリクリニック *451* → 病院 という
 三層構造で *問題の大半を最下層で解決する*。医師密度は人口
-1,000 人あたり *9 人*(LAC 諸国の 2 倍以上)、出産の 100% に
+1,000 人あたり *8.6 人*(世界銀行。LAC 諸国の 2 倍以上)、出産の 100% に
 熟練医療従事者が立ち会う。2026 年にはトランプ前大統領が、米国
 の一次医療不足への対応として「キューバのシステムから学ぶべきだ」
 と言及した。
 
 ただし現在のキューバは、この制度が崩壊する局面にある。米国の
 燃料封鎖と金融制裁で停電が常態化し、保育器・人工呼吸器が止まり、
-*基礎医薬品 651 品目のうち 70% が薬局から消えた*。乳児死亡率は
+*基礎医薬品 651 品目のうち 70% が薬局から消えた*(保健省の説明)。乳児死亡率は
 2018 年の 4.0 から 2025 年に *9.9 へ 148% 悪化*(CEPR 推計で
 2019〜2025 年に 1,800 人の新生児が失われずに済んだ)、1 年間
-(2021〜2022)で医師 12,000 人を含む *46,000 人* の医療従事者
-が国を離れた。
+(2021→2022 年)で医師が *12,000 人* 減った(国家統計局 ONEI)。
 
 教訓は二つ:
 
@@ -9257,13 +9258,13 @@ ____
 === 社会保険料 30% ── 現役世代の限界
 
 社会保障全体で、健康保険 約 10% + 厚生年金
-約 18.3% + 介護保険 約 1.8% + 雇用保険 約 0.9% = *合計約 31%*
+約 18.3% + 介護保険 約 1.8% + 雇用保険 約 0.9% = *合計約 31%*(2025 年度の料率、労使合計)
 が現役世代の給与から消える。比率は毎年上がっており、少子高齢化が
 進めば 40〜50% になる。
 
 [.highlight-box]
 --
-1970 年:現役世代 8.5 人で高齢者 1 人
+1970 年:現役世代 9.8 人で高齢者 1 人(国勢調査)
 2020 年:2.1 人で 1 人
 2040 年:1.5 人で 1 人(予測)
 1.5 人で 1 人を支える社会保障は、どんな制度設計でも破綻する。
@@ -9306,9 +9307,9 @@ While peacetime Lockheed Martin runs one cycle in 20 years, Brave1 runs *hundred
 
 Ukraine's case might seem unique. But the 2026 Iran War repeats the same structure in a different context.
 
-In March 2026, the US launched Operation Epic Fury and struck *12,300+ targets* in five weeks — the largest such campaign in modern history. Yet by US intelligence assessment (April 2026):
+At the end of February 2026, the US launched Operation Epic Fury and struck *13,000+ targets* in five weeks (CENTCOM, 6 April 2026) — the largest such campaign in modern history. Yet by US intelligence assessment (April 2026):
 
-* Missile launchers: *~50% intact*
+* Mobile missile launchers: *about two-thirds intact* (about a third destroyed or disabled, per US and Israeli officials)
 * One-way attack drones: *thousands remaining*
 * Coastal-defense cruise missiles: *mostly intact*
 * IRGC navy: *hundreds to thousands* of small boats and unmanned surface vessels remaining
@@ -9337,7 +9338,7 @@ In short, *mobile / dispersed / underground / mass-produced weapons survive; con
 
 === Rise of the new defense industry — "who can have a defense industry" is being rewritten
 
-In parallel with the legacy contraction, a new defense industry built around drones + AI rises. Ukraine's Brave1: 300+ AI projects, 70+ in active battlefield use, 100+ companies, 2026 production target 7 million drones/year, AI modules ~$50 per unit.
+In parallel with the legacy contraction, a new defense industry built around drones + AI rises. Ukraine's Brave1: 300+ AI projects, 70+ in active battlefield use, 100+ companies, 10 million drones a year (President Zelensky, July 2026), AI modules ~$50 per unit.
 
 |===
 | Legacy defense industry | New defense industry
@@ -9553,7 +9554,7 @@ And the work that grows in the post-fossil society — bio-material manufacturin
 
 |===
 |  | Present | After transformation
-| Greater Tokyo | 36M commuting to offices | No reason to concentrate
+| Greater Tokyo | About 37M people gathered (census) | No reason to concentrate
 | Regional towns | Depopulation accelerating | Function as the receiving capacity
 | Primary employment | Desk work, IT, service industry | Bio-material manufacturing, food production, forestry, soil regeneration
 | Required resources | Offices, data centers, electricity | Farmland, forestland, water, sunlight, soil
@@ -9583,8 +9584,8 @@ policy in link:/en/insights/climate-mistake/[Part 1, Chapter 1] — treatment is
 *a measure you keep buying* (drugs and procedures), so it never lacks a
 promoter. Most of prevention is a measure carried out in your own daily
 life, unsellable — which is why it never became the system's center. Cuba — at GDP per capita
-around $10,000 (roughly a quarter of Japan's) — has sustained
-*life expectancy 78.1 years* (close to the US's 79.25),
+around $7,400 (roughly a fifth of Japan's, World Bank 2024) — has sustained
+*life expectancy 78.3 years* (2024; close to the US's 79),
 *under-5 mortality 0.8%*, and *stunting (under 5) 7.1%* (well
 below the LAC average of 11.3%).
 
@@ -9593,18 +9594,17 @@ old in 2024), where a doctor-and-nurse pair continuously cares for
 ~600–700 residents, sitting on a three-layer structure —
 *11,548* family-doctor offices → *451* polyclinics → hospitals —
 that *resolves most problems at the lowest layer*. Doctor density
-is *9 per 1,000* (more than twice the LAC average). 100% of births
+is *8.6 per 1,000* (World Bank; more than twice the LAC average). 100% of births
 attended by skilled medical personnel. In 2026, former President
 Trump publicly said the US "should learn from Cuba's system" for its
 primary-care provider shortage.
 
 But Cuba's system is now collapsing. Under the US fuel blockade and
 financial sanctions, blackouts have become routine, neonatal
-incubators and ventilators stop, and *70% of the 651 essential medicines have disappeared from pharmacies*. Infant mortality rose
+incubators and ventilators stop, and *70% of the 651 essential medicines have disappeared from pharmacies* (health-ministry account). Infant mortality rose
 from 4.0 in 2018 to *9.9 in 2025 — a 148% increase* (CEPR estimates
 ~1,800 newborn lives could have been saved 2019–2025 had the 2018
-rate held). In a single year (2021–2022), *46,000* healthcare
-workers, including 12,000+ doctors, left the country.
+rate held). In a single year (2021 to 2022), the number of doctors fell by *12,000* (national statistics office ONEI).
 
 The lesson is two-sided:
 
@@ -9617,13 +9617,13 @@ ____
 
 Across all social security: health
 insurance ~10% + pension ~18.3% + long-term care ~1.8% + employment
-insurance ~0.9% = *~31% total* disappears from working-age wages. The
+insurance ~0.9% = *~31% total* (FY2025 rates, employer and employee combined) disappears from working-age wages. The
 ratio rises every year; with continued demographic decline it heads
 toward 40–50%.
 
 [.highlight-box]
 --
-1970: 8.5 working-age adults per 1 elderly person
+1970: 9.8 working-age adults per 1 elderly person (census)
 2020: 2.1 per 1
 2040: 1.5 per 1 (projected)
 A system where 1.5 people support 1 person mathematically collapses
@@ -10592,6 +10592,8 @@ JSON ↔ フロントエンド状態 → ViewModel（手で定義） +
 
 == 工数の分解——70-80%が翻訳労働
 
+以下の配分は、本稿の見積もりである。
+
 実際のプロジェクト工数を経験的に分解すると：
 
 |===
@@ -10795,6 +10797,8 @@ Look at the team composition of a traditional Java or C# project:
 This is the answer to "why does software development need so many people?" *It was not a technical necessity — it was a necessity imposed by weak languages.*
 
 == Effort Breakdown — 70–80% Is Translation Labor
+
+The breakdown below is this essay's estimate.
 
 Breaking down real project effort empirically:
 
@@ -11693,8 +11697,8 @@ ifdef::lang-ja[]
 リン鉱石（リン酸カルシウム）＋ 硫酸 → リン酸 ＋ 石膏（副産物）
 
 硫酸は触媒ではない。*消費される反応物*だ。 +
-DAP（リン酸二アンモニウム）1トンの生産に、硫酸約1.2トンが必要。 +
-P₂O₅（五酸化二リン）1トンあたり、硫酸約2.4トンが消費される。
+DAP（リン酸二アンモニウム）1トンの生産に、硫酸約1.2トンが必要（業界の目安）。 +
+P₂O₅（五酸化二リン）1トンあたり、硫酸約2.7トンが消費される（半水法プラントの例）。
 --
 
 しかも硫酸の役割は化学反応だけではない。
@@ -11719,7 +11723,7 @@ P₂O₅（五酸化二リン）1トンあたり、硫酸約2.4トンが消費�
 → そのまま燃やすと酸性雨になる +
 → 環境規制により、製油所で脱硫が義務付けられている +
 → 脱硫の副産物として硫黄が回収される +
-→ *世界の硫黄供給の80%以上がこの副産物*
+→ *世界の硫黄供給の80%以上がこの副産物*（Maslin ら 2022）
 --
 
 これは「非自発的副産物（Nondiscretionary byproduct）」と呼ばれる。
@@ -11752,7 +11756,7 @@ P₂O₅（五酸化二リン）1トンあたり、硫酸約2.4トンが消費�
 --
 
 予測によれば、急速な脱炭素化シナリオでは、
-2040年までに*年間最大3億2,000万トン*の硫黄供給ギャップが生じる。
+2040年までに*年間最大3億2,000万トン*の硫黄供給ギャップが生じる（Maslin ら 2022、Geographical Journal）。
 
 さらに問題がある。脱炭素化に必要なグリーンテクノロジー自体が、硫酸を大量に消費する。
 
@@ -11808,13 +11812,13 @@ P₂O₅（五酸化二リン）1トンあたり、硫酸約2.4トンが消費�
 |===
 |  | 従来のリン酸肥料 | 下水汚泥からの回収リン
 | 原料 | リン鉱石＋硫酸 | 下水汚泥
-| コスト | 政府補助後 0.76ドル/kg | 37〜99ドル/kg
-| コスト比 | 1倍 | *50〜130倍*
+| コスト | リン鉱石 約0.15ドル/kg（2026年、世界平均） | 回収リン 1.7〜6.6ドル/kg P（ストルバイト法の試算）
+| コスト比 | 1倍 | *10〜40倍*
 | エネルギー | 大量消費 | さらに大量消費
 | やっていること | 化学肥料を作る | *化学肥料を別の方法で作る*
 |===
 
-37〜99ドル/kgのコストをかけて下水からリンを回収する。
+鉱石の10倍以上のコストをかけて下水からリンを回収する。
 その回収したリンで何をするのか。*化学肥料を作るのだ。*
 化学肥料依存のシステムを、莫大なコストとエネルギーで延命しているに過ぎない。
 
@@ -11849,7 +11853,7 @@ ADWOの解決策：化学肥料の原料を下水から回収する
 |===
 |  | ADWO（下水リン回収） | リジェネラティブ農業
 | 化学肥料依存 | 維持（原料を変えただけ） | *不要*
-| コスト | 37〜99ドル/kg | ゼロ（土壌微生物が供給）
+| コスト | 鉱石の10倍以上 | ゼロ（土壌微生物が供給）
 | エネルギー消費 | 大量 | 最小限
 | 硫黄問題 | 部分的に回避 | *問題自体が存在しない*
 | 持続可能性 | 下水に依存 | 土壌が自律的に循環
@@ -12010,8 +12014,8 @@ Manufacturing phosphate fertilizer requires not just phosphate rock, but *massiv
 Phosphate rock (calcium phosphate) + Sulfuric acid → Phosphoric acid + Gypsum (byproduct)
 
 Sulfuric acid is not a catalyst. It is a *consumed reactant.* +
-Producing 1 ton of DAP (diammonium phosphate) requires ~1.2 tons of sulfuric acid. +
-Per ton of P₂O₅, approximately 2.4 tons of sulfuric acid are consumed.
+Producing 1 ton of DAP (diammonium phosphate) requires ~1.2 tons of sulfuric acid (industry rule of thumb). +
+Per ton of P₂O₅, approximately 2.7 tons of sulfuric acid are consumed (hemihydrate-plant example).
 --
 
 Sulfuric acid's role goes beyond chemistry.
@@ -12036,7 +12040,7 @@ Crude oil and natural gas contain sulfur as an impurity (1–3% by weight) +
 → Burning it directly causes acid rain +
 → Environmental regulations mandate desulfurization at refineries +
 → Sulfur is recovered as a byproduct of desulfurization +
-→ *Over 80% of the world's sulfur supply is this byproduct*
+→ *Over 80% of the world's sulfur supply is this byproduct* (Maslin et al. 2022)
 --
 
 This is called a "nondiscretionary byproduct."
@@ -12069,7 +12073,7 @@ Decarbonization → Reduced fossil fuel consumption +
 --
 
 Projections show that under rapid decarbonization scenarios,
-a sulfur supply gap of up to *320 million tons per year* could emerge by 2040.
+a sulfur supply gap of up to *320 million tons per year* could emerge by 2040 (Maslin et al. 2022, Geographical Journal).
 
 The problem compounds further. Green technologies needed for decarbonization themselves consume massive sulfuric acid.
 
@@ -12125,13 +12129,13 @@ But it is *a waste of resources and energy.*
 |===
 |  | Conventional phosphate fertilizer | Recovered phosphorus from sewage
 | Feedstock | Phosphate rock + sulfuric acid | Sewage sludge
-| Cost | $0.76/kg (after government subsidy) | $37–99/kg
-| Cost ratio | 1x | *50–130x*
+| Cost | Phosphate rock about $0.15/kg (2026, world average) | Recovered P $1.7–6.6/kg P (struvite-process estimates)
+| Cost ratio | 1x | *10–40x*
 | Energy | High consumption | Even higher consumption
 | What it does | Make chemical fertilizer | *Make chemical fertilizer by a different method*
 |===
 
-Spending $37–99/kg to recover phosphorus from sewage.
+Spending more than ten times the cost of rock to recover phosphorus from sewage.
 And what is that recovered phosphorus used for? *To make chemical fertilizer.*
 This merely prolongs the chemical fertilizer system at enormous cost and energy.
 
@@ -12166,7 +12170,7 @@ No fertilizer → Minerals cycle through microbial-plant symbiosis +
 |===
 |  | ADWO (sewage P-recovery) | Regenerative agriculture
 | Chemical fertilizer dependency | Maintained (only feedstock changed) | *Eliminated*
-| Cost | $37–99/kg | Zero (soil microorganisms supply)
+| Cost | More than ten times rock | Zero (soil microorganisms supply)
 | Energy consumption | High | Minimal
 | Sulfur problem | Partially avoided | *Problem does not exist*
 | Sustainability | Depends on sewage | Soil cycles autonomously
@@ -12365,7 +12369,7 @@ link:/insights/healthcare-fiscal/[第二部 第3章「社会の再生」]で、�
 
 == 引くもの① 東京一極集中
 
-第二部 第1章で見たように、東京に3,600万人が集中する理由はデスクワークだった。
+第二部 第1章で見たように、東京圏に約3,700万人が集中する理由はデスクワークだった。
 デスクワークが消えれば、集中する理由が消える。
 
 [.chain-diagram]
@@ -12540,10 +12544,10 @@ KPI パイプライン、詳細なログ ── 「貯めて分析すれば、�
 
 |===
 | 引くもの | 現在 | 引いた後
-| 東京一極集中 | 3,600万人がオフィスに通勤 | 地方の町で、農地・林地に囲まれて暮らす
+| 東京一極集中 | 約3,700万人が集まる | 地方の町で、農地・林地に囲まれて暮らす
 | 自由貿易の前提 | 地球の裏側から安いモノを運ぶ | 地産地消。国内の農地・林地で生産
 | 中間業者 | 農家→JA→卸→仲卸→小売→消費者 | 農家→消費者（直接）
-| 都市型医療 | 病気を治す（年間1.6兆円の透析） | 病気にならない（自然な食と運動）
+| 都市型医療 | 病気を治す（年間1.6兆円の透析、日本透析医学会の推計） | 病気にならない（自然な食と運動）
 | 年金依存 | 65歳で引退→年金で養う | 長く働ける→年金が不要に
 | 企業IT税 | Oracle税＋Microsoft税＋SIer税 | PostgreSQL＋Claude＋自前サーバー
 | 大組織 | 100人＋管理コスト | 1人＋AI。固定費ゼロ
@@ -12608,7 +12612,7 @@ Apply this principle to all of society.
 
 == Subtract #1: Tokyo's Extreme Concentration
 
-As Chapter 9 showed, 36 million people concentrated in Tokyo because of desk work.
+As Chapter 9 showed, about 37 million people concentrated in the Tokyo area because of desk work.
 When desk work disappears, the reason for concentration disappears.
 
 [.chain-diagram]
@@ -12785,10 +12789,10 @@ apparatus. Ask AI the question, each time it arises.
 
 |===
 | What to subtract | Present | After subtraction
-| Tokyo concentration | 36 million commuting to offices | Living in regional towns, surrounded by farmland and forestland
+| Tokyo concentration | About 37 million people gathered | Living in regional towns, surrounded by farmland and forestland
 | Free trade premise | Shipping cheap goods from the other side of the planet | Local production, local consumption. Domestic farmland and forestland
 | Middlemen | Farmer→Coop→Wholesaler→Secondary wholesaler→Retailer→Consumer | Farmer→Consumer (direct)
-| Urban healthcare | Cure disease (¥1.6T/year on dialysis alone) | Prevent disease (natural diet and exercise)
+| Urban healthcare | Cure disease (¥1.6T/year on dialysis alone, Japanese Society for Dialysis Therapy estimate) | Prevent disease (natural diet and exercise)
 | Pension dependency | Retire at 65 → Pensions support | Work continues → Pensions unnecessary
 | Enterprise IT taxes | Oracle tax + Microsoft tax + SIer tax | PostgreSQL + Claude + self-hosted server
 | Large organizations | 100 people + management overhead | 1 person + AI. Zero fixed costs
@@ -13326,9 +13330,9 @@ link:/insights/nvidia/[第一部 第7章]の一般法則 ── ロックイン�
 
 同じ「クラウド」でも、AWS・Google Cloud・Azureでは、この構造的リスクへの晒され方が異なる。
 
-*AWS*は、外部の事業者・AI開発企業に広く使われる基盤としての性格が強い。2025年通年の売上は1,287億ドル(前年比+19%)と三社中最大で、Bedrockには複数のAIラボのモデルが載っている。既存のAWSエコシステム(IAM、VPC等)に深く入っている組織にとって、AI導入の抵抗が少ない。自社開発のAIチップ(Trainium)も外部提供を前提に育てている。顧客基盤が広く分散しているため、特定のロックイン構造への依存度は相対的に薄い。
+*AWS*は、外部の事業者・AI開発企業に広く使われる基盤としての性格が強い。2025年通年の売上は1,287億ドル(前年比+20%)と三社中最大で、Bedrockには複数のAIラボのモデルが載っている。既存のAWSエコシステム(IAM、VPC等)に深く入っている組織にとって、AI導入の抵抗が少ない。自社開発のAIチップ(Trainium)も外部提供を前提に育てている。顧客基盤が広く分散しているため、特定のロックイン構造への依存度は相対的に薄い。
 
-*Google*は、自社利用の比重が大きい。Google Cloud単体の売上(2025年通年で約590億ドル、年末時点の年間換算では700億ドル超)は成長しているが、Alphabet全体のAI・データセンター投資規模(2025年実績910億ドル、2026年計画は1,800億〜1,900億ドルへ倍増、2027年はさらに大幅増の見通し)と比べると、検索・YouTube・Gemini自体の内部利用が投資の相当部分を占めていると考えられる。外部クラウド事業として顧客に依存する比率は、AWSほど高くない。
+*Google*は、自社利用の比重が大きい。Google Cloud単体の売上(2025年通年で約590億ドル、年末時点の年間換算では700億ドル超)は成長しているが、Alphabet全体のAI・データセンター投資規模(2025年実績910億ドル、2026年計画は1,950億〜2,050億ドルへ倍増(2026年5月の上方修正)、2027年はさらに大幅増の見通し)と比べると、検索・YouTube・Gemini自体の内部利用が投資の相当部分を占めていると考えられる。外部クラウド事業として顧客に依存する比率は、AWSほど高くない。
 
 *Azure*は、深い統合による企業ロックインへの依存度が三社の中で最も高い。売上は FY2025(2025年6月期)に初めて開示され、*750億ドル超*(前年比+34%)。Entra ID・Microsoft 365・Copilotとの統合を前面に押し出す戦略を取っており、独自の管理・ID基盤への依存を顧客に強いる度合いが強い。これが、AIによる「閉じていて仕様が安定した問題」の代替圧力に最も直接さらされる理由である。
 
@@ -13522,7 +13526,7 @@ The same "cloud" faces this structural risk differently at AWS, Google
 Cloud, and Azure.
 
 *AWS* has the character of a base widely used by outside businesses and AI
-developers. Full-year 2025 revenue was $128.7B (+19% YoY), the largest of the three;
+developers. Full-year 2025 revenue was $128.7B (+20% YoY), the largest of the three;
 Bedrock carries models from multiple AI labs. Organizations already deep in
 the AWS ecosystem (IAM, VPC) find AI adoption low-friction. Its in-house AI
 chip (Trainium) is grown with external provision in mind. With a widely
@@ -13532,7 +13536,7 @@ comparatively thin.
 *Google* weights internal use heavily. Google Cloud's standalone revenue
 (about $59B for full-year 2025; an annualized run rate above $70B at
 year-end) is growing, but against Alphabet's overall AI and data-center
-investment ($91B actual in 2025, a 2026 plan doubled to $180–190B, and 2027
+investment ($91B actual in 2025, a 2026 plan doubled to $195–205B (raised in May 2026), and 2027
 guided to increase significantly again), a substantial share of that
 investment plausibly serves Search, YouTube, and Gemini itself. Its reliance on external cloud customers is lower than AWS's.
 

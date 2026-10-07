@@ -9594,7 +9594,7 @@ ____
 * Claude Code とのまっとうな協業パターン
 * 「動く」から「使える」までのエンジニアリングの一周の経験
 
-次の第17章では、Python と Flet 以外の環境——Flutter / Dart、Node.js、Rust、Docker——へ視野を広げる。必要になったときにClaudeと組み立てられる状態にする。
+次の第17章では、Python と Flet 以外の環境——Flutter / Dart、Node.js、Rust——へ視野を広げる。必要になったときにClaudeと組み立てられる状態にする。
 
 '''
 
@@ -9951,7 +9951,7 @@ What you hold now:
 * A sound pattern of collaboration with Claude Code.
 * A lap's worth of experience of engineering, from "runs" to "usable."
 
-In Chapter 17, we widen the view beyond Python and Flet — to Flutter / Dart, Node.js, Rust, Docker. Get to a state where, when you need them, you can put them together with Claude.
+In Chapter 17, we widen the view beyond Python and Flet — to Flutter / Dart, Node.js, Rust. Get to a state where, when you need them, you can put them together with Claude.
 
 '''
 
@@ -10454,7 +10454,6 @@ ____
 | CLI ツール | Rust / Go | Python
 | システム寄り、性能 | Rust | Go
 | データベース | SQLite | PostgreSQL
-| 隔離環境 | Docker | —
 |===
 
 第17章の最大の目的は、*この表が頭に入った状態*にすること。個々の技術の習熟は、必要になってから Claude と進めればよい。
@@ -10954,7 +10953,6 @@ The environments listed in this chapter can all be revisited when you need them.
 | CLI tool | Rust / Go | Python
 | Systems-adjacent, performance | Rust | Go
 | Database | SQLite | PostgreSQL
-| Isolated environment | Docker | —
 |===
 
 The biggest goal of Chapter 17 is *to have this table in your head*. Mastery of any one technology can wait until you need it, then proceed with Claude.

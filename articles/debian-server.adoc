@@ -1617,8 +1617,8 @@ title.ja: 第5章 守りの基本
 title.en: Chapter 5 — The Basics of Defense
 subtitle.ja: 攻撃面を減らし、更新を自動化する
 subtitle.en: Shrink the attack surface, automate updates
-description.ja: サーバーを公開した瞬間、世界中のbotが扉を叩き始める。攻撃面という考え方、ufwによる最小許可、unattended-upgradesによる更新の自動化、fail2banという番犬——守りの基本を、ログをClaudeに渡しながら一つずつ組み立てる。
-description.en: The moment you expose a server to the internet, bots from all over the world start knocking on the door. The idea of an attack surface, minimal allow-listing with ufw, automated updates with unattended-upgrades, and a watchdog called fail2ban — build up the basics of defense one piece at a time, handing logs to Claude as you go.
+description.ja: サーバーを公開した瞬間、世界中のbotが扉を叩き始める。攻撃面という考え方、ufwによる入りも出も既定拒否の最小許可、unattended-upgradesによる更新の自動化、fail2banという番犬——守りの基本を、ログをClaudeに渡しながら一つずつ組み立てる。
+description.en: The moment you expose a server to the internet, bots from all over the world start knocking on the door. The idea of an attack surface, allow-listing with ufw that denies by default in both directions, automated updates with unattended-upgrades, and a watchdog called fail2ban — build up the basics of defense one piece at a time, handing logs to Claude as you go.
 date: 2026.06.10
 label.ja: Claude × Debian サーバー 05
 label.en: Claude × Debian Server 05
@@ -1709,34 +1709,55 @@ ss -tlnp
 
 `disable --now` は「いま止める（stop）」と「次回以降も起動しない（disable）」を一度にやる。攻撃面が一つ減った。
 
-== 第二節 ファイアウォール——最小の許可から始める
+== 第二節 ファイアウォール——入りも出も、既定は拒否
 
-攻撃面を引いたら、次は「残った耳のうち、誰に応答するか」を決める。これがファイアウォールの仕事だ。Debianでは `ufw`（Uncomplicated Firewall）が扱いやすい。
+攻撃面を引いたら、次は二つを決める。「残った耳のうち、誰に応答するか」と、「この機械が、外のどこへ話しかけてよいか」だ。これがファイアウォールの仕事だ。Debianでは `ufw`（Uncomplicated Firewall）が扱いやすい。
 
-考え方は一つ。*デフォルトはすべて拒否。必要なものだけを名指しで許可する。* ホワイトリスト方式だ。
+考え方は一つ。*入ってくる通信も、出ていく通信も、既定はすべて拒否。必要なものだけを名指しで許可する。* 多くの入門書は「入りは拒否、出は許可」で止める。この連載は出も閉じる。理由は 2025〜2026 年の侵入事例にある。入り込んだあとの攻撃者がすることは、盗んだデータを外へ送ることと、外の指令サーバーへ HTTPS で話しかけることだ。出が開いていると、入りをどれだけ固めても、一度入られたら後は素通りになる。出を閉じれば、入られても外へ出る道が無い。米 NIST のファイアウォール指針（SP 800-41 Rev.1、2009年）も、既定の方針は入りも出も拒否とするよう求めている。
+
+まず決めること。このサーバーが外へ話しかける相手は、普通は四つしかない。
+
+* 名前の解決（DNS、53番）
+* 時刻合わせ（NTP、UDP 123番。Debian既定の systemd-timesyncd が使う）
+* パッケージの更新（apt。Debianのミラーは HTTP 80番と HTTPS 443番）
+* 後の章で足すWeb公開と証明書の取得（Caddy。HTTPS 443番と HTTP 80番）
+
+これ以外へ出る必要が生まれたら、足すたびに「何が、どこへ、なぜ」を一行書き残す。
 
 ```bash
 sudo apt install ufw
 ```
 
-ここで*順番を絶対に間違えないこと*。先に「全部拒否」を有効化してから SSH を許可すると、SSH で繋いでいる自分自身が締め出される。*必ず `allow ssh` を先に書いてから `enable` する。*
+ここで*順番を絶対に間違えないこと*。先に「全部拒否」を有効化してから SSH を許可すると、SSH で繋いでいる自分自身が締め出される。*必ず `allow ssh` と出る側の許可を先に書いてから `enable` する。*
 
 ```bash
-# 1. まず方針：入ってくる通信はデフォルト拒否、出ていく通信は許可
+# 1. まず方針：入りも出も既定拒否
 sudo ufw default deny incoming
-sudo ufw default allow outgoing
+sudo ufw default deny outgoing
 
 # 2. 自分が締め出されないよう、SSHを先に許可する（最重要）
 sudo ufw allow ssh
 
-# 3. ここでようやく有効化
+# 3. 出てよい相手を名指しで許可する（DNS・NTP・aptとWeb）
+sudo ufw allow out 53
+sudo ufw allow out 123/udp
+sudo ufw allow out 80,443/tcp
+
+# 4. ここでようやく有効化
 sudo ufw enable
 
-# 4. いまのルールを確認
+# 5. いまのルールを確認
 sudo ufw status verbose
 ```
 
-`enable` の直前に一拍置いて、`allow ssh` が入っているか必ず見返す癖をつける。リモートのサーバーでこれを間違えると、物理コンソールか復旧手段がない限り入れなくなる。
+`enable` の直前に一拍置いて、`allow ssh` と `allow out 53` が入っているか必ず見返す癖をつける。いま繋いでいる SSH の返事は「確立済みの接続」として自動で通るので、出を閉じても切れない。だが DNS を忘れると、次の `apt` が名前を引けずに止まる。それが「出を閉じた」最初の手応えになる。リモートのサーバーで `allow ssh` を忘れると、物理コンソールか復旧手段がない限り入れなくなる。
+
+出を閉じると何が止まるかも、先に知っておく。`apt` と `git clone`、証明書の取得は、上の 80番・443番で足りる。後の章で足すサービスが別の番号で外に出るとき（例：メール送信の 587番）は、その章で一行足す。何かが黙って止まったら、まずファイアウォールを疑い、カーネルのログを読む。
+
+```bash
+# 誰が、どこへ出ようとして止められたか
+sudo journalctl -k --grep UFW
+```
 
 LAN内だけで使うサービスなら、「特定のネットワークからだけ許可する」と書ける。これが攻撃面をさらに絞る。
 
@@ -1745,9 +1766,21 @@ LAN内だけで使うサービスなら、「特定のネットワークから�
 sudo ufw allow from 192.168.1.0/24 to any port 80
 # 自宅LANからだけSSHを許可したい場合（公開しないサーバー向け）
 sudo ufw allow from 192.168.1.0/24 to any port 22
+# サーバーからLAN内の機器（NASやプリンター）へ話しかける必要があれば、出る側も名指しで
+sudo ufw allow out to 192.168.1.0/24
 ```
 
 `from 192.168.1.0/24` は「このサブネット内の機器からだけ」という意味だ。外からはそもそも届かない設定になる。
+
+ここまでで、外へ出る道は四つの番号に絞れた。ただし 443番は、どのプロセスにも、どの相手にも開いている。*2025〜2026 年の侵入事例が使ったのは、まさにこの「誰でも通れる 443番」だ。* 次の段は、この穴をサービスごとに絞ることになる。第8章でアプリを systemd の unit で動かすとき、砂場の設定と同じ `[Service]` の場所に、次の三行を足す。
+
+```ini
+# このサービスは外へ話しかけない（必要な相手だけ IPAddressAllow に書く）
+IPAddressDeny=any
+IPAddressAllow=localhost
+```
+
+443番を本当に必要とするのは apt と Caddy だけだ。それ以外のサービスには `IPAddressDeny=any` を書き、外へ出る権利を持たせない。ファイアウォールが機械の出入口を守り、unit がサービスごとの出入口を守る。二重に絞る。
 
 === Claudeに聞いてみよう②：自分の利用形態からufwルール一式を設計させる
 
@@ -1756,12 +1789,13 @@ ____
 * 設置場所：〔例：自宅LANの内側 / VPSでインターネットに公開〕
 * 動かす予定のサービス：〔例：SSH、ファイル共有(Samba)、後でWebサーバー〕
 * 管理する端末のIP帯：〔例：自宅LANは 192.168.1.0/24〕
+* このサーバーが外へ話しかける必要があるもの：〔例：aptの更新、Let's Encryptの証明書、メール送信〕
 
-締め出し事故を避ける順番を守った上で、`ufw` のコマンドを上から順に実行できる形で出してください。
-各コマンドが何を許可・拒否しているか、一行コメントを添えてください。
+入りも出も既定拒否にした上で、締め出し事故を避ける順番を守り、`ufw` のコマンドを上から順に実行できる形で出してください。
+各コマンドが何を許可・拒否しているか、一行コメントを添えてください。出る側の許可は「何が、どこへ出るための一行か」をコメントに書いてください。
 ____
 
-利用形態を正確に伝えれば、ルール一式がそのまま手元に降りてくる。*自分はそれを一行ずつ吟味して実行する。* ファイアウォールは一文字の間違いが締め出しに直結するので、丸呑みせずレビューする姿勢が要る。
+利用形態を正確に伝えれば、ルール一式がそのまま手元に降りてくる。*自分はそれを一行ずつ吟味して実行する。* ファイアウォールは一文字の間違いが締め出しに直結するので、丸呑みせずレビューする姿勢が要る。出る側の一行は特に、「本当にそこへ出る必要があるか」を自分に問う。
 
 == 第三節 更新の自動化
 
@@ -1872,12 +1906,12 @@ ____
 
 . 公開前のSSH失敗ログを覗き、「静けさ」を基準として記録した
 . `ss -tlnp` で開いている耳を全部読み、要らないサービスを `disable --now` した
-. ufwで「デフォルト拒否＋SSHのみ許可」から始め、LAN限定の許可も覚えた
+. ufwを「入りも出も既定拒否」から始め、出てよい四つの相手（DNS・NTP・apt・Web）を名指しで許可し、LAN限定の許可も覚えた
 . unattended-upgradesでセキュリティ更新を自動化し、再起動要否の見分け方を押さえた
 . fail2banを番犬として置き、鍵認証との優先順位を整理した
 
 手元に残ったもの：
-* 攻撃面を絞った、ufwで守られたサーバー
+* 攻撃面を絞り、入りも出も既定拒否の ufw で守られたサーバー
 * セキュリティ更新が自動で当たり続ける状態
 * ログを読み、Claudeに渡して点検する作法（本編第8章からの継承）
 * 「公開してよいか」をClaudeに点検させるチェックリスト的な対話
@@ -1960,34 +1994,55 @@ ss -tlnp
 
 `disable --now` does both "stop it now" and "do not start it from now on" at once. One less item on the attack surface.
 
-== Section 2 — Firewall: Start from Minimal Allow
+== Section 2 — Firewall: Deny by Default, In and Out
 
-Once you have subtracted the attack surface, the next step decides "of the ears that remain, who do we answer?" That is the firewall's job. On Debian, `ufw` (Uncomplicated Firewall) is easy to handle.
+Once you have subtracted the attack surface, two things remain to decide: "of the ears that remain, who do we answer?" and "where may this machine speak to, outside?" That is the firewall's job. On Debian, `ufw` (Uncomplicated Firewall) is easy to handle.
 
-The idea is one thing. *Deny everything by default. Allow only what is needed, by name.* A whitelist approach.
+The idea is one thing. *Deny everything by default, incoming and outgoing. Allow only what is needed, by name.* Most introductions stop at "deny in, allow out." This series closes outgoing too. The reason lies in the intrusions of 2025–2026. What an attacker does after getting in is send stolen data out, and talk to a command server outside over HTTPS. With outgoing open, however hard you make the way in, once they are in everything after that passes freely. With outgoing closed, even an intruder has no road out. The US NIST firewall guideline (SP 800-41 Rev.1, 2009) likewise asks that the default policy deny both inbound and outbound.
+
+Decide first. The parties this server needs to speak to are normally just four.
+
+* Name resolution (DNS, port 53)
+* Time sync (NTP, UDP 123. Used by Debian's default systemd-timesyncd)
+* Package updates (apt. Debian mirrors on HTTP 80 and HTTPS 443)
+* Web publishing and certificate issuance added in later chapters (Caddy. HTTPS 443 and HTTP 80)
+
+Whenever a need to reach anything else arises, write down one line — "what, to where, why" — each time you add it.
 
 ```bash
 sudo apt install ufw
 ```
 
-*Never get the order wrong here.* If you enable "deny everything" before allowing SSH, you lock out the very SSH session you are connected with. *Always write `allow ssh` first, then `enable`.*
+*Never get the order wrong here.* If you enable "deny everything" before allowing SSH, you lock out the very SSH session you are connected with. *Always write `allow ssh` and the outgoing allows first, then `enable`.*
 
 ```bash
-# 1. Policy first: deny incoming by default, allow outgoing
+# 1. Policy first: deny by default, incoming and outgoing
 sudo ufw default deny incoming
-sudo ufw default allow outgoing
+sudo ufw default deny outgoing
 
 # 2. Allow SSH first so you do not lock yourself out (most important)
 sudo ufw allow ssh
 
-# 3. Only now, enable it
+# 3. Allow the outgoing destinations by name (DNS, NTP, apt and the web)
+sudo ufw allow out 53
+sudo ufw allow out 123/udp
+sudo ufw allow out 80,443/tcp
+
+# 4. Only now, enable it
 sudo ufw enable
 
-# 4. Check the current rules
+# 5. Check the current rules
 sudo ufw status verbose
 ```
 
-Make it a habit to pause right before `enable` and look back to confirm `allow ssh` is in place. Get this wrong on a remote server, and you cannot get back in short of a physical console or recovery means.
+Make it a habit to pause right before `enable` and confirm that `allow ssh` and `allow out 53` are in place. The replies of the SSH session you are on pass automatically as an "established connection," so closing outgoing does not cut it. Forget DNS, though, and the next `apt` stops, unable to resolve a name. That is the first tangible sign that you have closed outgoing. Forget `allow ssh` on a remote server, and you cannot get back in short of a physical console or recovery means.
+
+Know in advance what stops when outgoing is closed. `apt`, `git clone`, and certificate issuance are covered by ports 80 and 443 above. When a service added in a later chapter needs another port outward (say, 587 for sending mail), add one line in that chapter. If something stops silently, suspect the firewall first and read the kernel log.
+
+```bash
+# Who tried to go where, and was stopped
+sudo journalctl -k --grep UFW
+```
 
 For a service used only inside your LAN, you can write "allow only from a specific network." This narrows the attack surface further.
 
@@ -1996,9 +2051,21 @@ For a service used only inside your LAN, you can write "allow only from a specif
 sudo ufw allow from 192.168.1.0/24 to any port 80
 # To allow SSH only from the home LAN (for a non-public server)
 sudo ufw allow from 192.168.1.0/24 to any port 22
+# If the server must speak to LAN devices (a NAS or a printer), name the outgoing side too
+sudo ufw allow out to 192.168.1.0/24
 ```
 
 `from 192.168.1.0/24` means "only from devices within this subnet." It becomes a setting that the outside cannot reach in the first place.
+
+By now the roads out are narrowed to four port numbers. Port 443, however, is open to every process and every destination. *What the intrusions of 2025–2026 used was exactly this "443 anyone can pass through."* The next step narrows this hole per service. When you run an app as a systemd unit in Chapter 8, add these lines in the same `[Service]` place as the sandbox settings.
+
+```ini
+# This service does not speak to the outside (write only the needed destinations in IPAddressAllow)
+IPAddressDeny=any
+IPAddressAllow=localhost
+```
+
+Only apt and Caddy truly need port 443. Give every other service `IPAddressDeny=any`, and it holds no right to go outside. The firewall guards the machine's doors; the unit guards each service's doors. Narrow twice.
 
 === Ask Claude ②: Design a Full ufw Ruleset from Your Use Case
 
@@ -2007,12 +2074,13 @@ I am setting up ufw on my Debian 13 server. My usage is as follows:
 * Location: [e.g., inside my home LAN / on a VPS exposed to the internet]
 * Services I plan to run: [e.g., SSH, file sharing (Samba), a web server later]
 * IP range of my management devices: [e.g., home LAN is 192.168.1.0/24]
+* What this server needs to reach outside: [e.g., apt updates, Let's Encrypt certificates, sending mail]
 
-Keeping the order that avoids a lockout, give me the `ufw` commands to run from top to bottom.
-Add a one-line comment on what each command allows or denies.
+With deny-by-default for both incoming and outgoing, and keeping the order that avoids a lockout, give me the `ufw` commands to run from top to bottom.
+Add a one-line comment on what each command allows or denies. For each outgoing allow, say in the comment what it lets reach where.
 ____
 
-Convey your use case accurately, and the full ruleset drops straight onto your desk. *Then you vet it line by line and run it.* With a firewall, a one-character mistake leads directly to a lockout, so you need the stance of reviewing it rather than swallowing it whole.
+Convey your use case accurately, and the full ruleset drops straight onto your desk. *Then you vet it line by line and run it.* With a firewall, a one-character mistake leads directly to a lockout, so you need the stance of reviewing it rather than swallowing it whole. For each outgoing line in particular, ask yourself whether it truly needs to reach there.
 
 == Section 3 — Automating Updates
 
@@ -2123,12 +2191,12 @@ What you did in this chapter:
 
 . Peeked at pre-publication SSH failure logs and recorded the "quiet" as a baseline.
 . Read every open ear with `ss -tlnp` and `disable --now`'d the services you did not need.
-. Started ufw from "deny by default, allow SSH only," and learned LAN-restricted allows too.
+. Started ufw from "deny by default, in and out," allowed the four outgoing destinations (DNS, NTP, apt, web) by name, and learned LAN-restricted allows too.
 . Automated security updates with unattended-upgrades and learned to tell when a reboot is needed.
 . Posted fail2ban as a watchdog and sorted out its priority relative to key authentication.
 
 What you hold now:
-* A server with a narrowed attack surface, guarded by ufw.
+* A server with a narrowed attack surface, guarded by ufw that denies by default in both directions.
 * A state where security updates keep applying automatically.
 * The craft of reading logs and handing them to Claude for inspection (carried over from Chapter 8 of the main series).
 * A checklist-like dialogue that has Claude inspect "is it OK to go public?"
@@ -4154,7 +4222,7 @@ CGNATかどうかは、ルーターのWAN側IPと、外部から見た自分のI
 まず、第5章で築いた守りを、公開状態でもう一度見直す。
 
 ```bash
-# ファイアウォールが意図したポートだけ開けているか
+# ファイアウォールが意図したポートだけ開けているか（入りも出も）
 sudo ufw status verbose
 
 # SSHへのログイン試行を観察する（公開後は急増する）
@@ -4333,7 +4401,7 @@ There are things you must do on the very "day" you finish the setup and publish:
 First, review the defenses you built in Chapter 5, once more, in the published state.
 
 ```bash
-# Is the firewall opening only the intended ports?
+# Is the firewall opening only the intended ports, in and out?
 sudo ufw status verbose
 
 # Observe login attempts to SSH (they spike sharply after publishing)

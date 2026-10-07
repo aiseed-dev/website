@@ -2051,7 +2051,7 @@ ____
 | SharePoint + GitHub | Drive | Forgejo + Zed | link:/ai-native-software/code/[2-06]
 | Exchange / Outlook | Gmail | Stalwart | link:/ai-native-software/mail/[2-08]
 | Teams / Bookings | Google Meet / Calendar | Jitsi・Radicale(予約は 2-12 で書く) | link:/ai-native-software/meetings/[2-09]
-| Power Pages(作る) | Google Sites(作る) | Markdown + HTML・CSS を Python で焼く | link:/ai-native-software/web-build/[2-10]
+| Power Pages(作る) | Google Sites(作る) | AsciiDoc + HTML・CSS を Python で焼く | link:/ai-native-software/web-build/[2-10]
 | Power Pages(公開) | Google Sites(公開) | 自分の一台(Caddy)か Cloudflare Pages | link:/ai-native-software/web/[2-11]
 | Azure SQL | Cloud SQL / BigQuery | PostgreSQL・SQLite | link:/ai-native-software/foundation/[2-03]
 | Power BI / Excel | Looker / Sheets | DuckDB + Polars | link:/ai-native-software/foundation/[2-03]
@@ -2070,7 +2070,7 @@ ____
 任せる範囲)の三つで、どれもスイートに対応する層が無い。だが自立編の一部であり、
 解く順番には入る。
 
-一番上の行が、新しく入った層である。会社の PC を一台 Debian にして AI に渡す。以降に立てるものは、全部その一台の上に乗る。文書の層は、道具を一つ立てるのではなく、持ち方を決める。読む物は adoc で git に、触る表は格子のまま、刷る紙はテンプレートに値を流す。2-07 が受け持つ。
+一番上の行が、新しく入った層である。会社の PC を一台 Debian にして AI に渡す。以降の道具は、この一台の上に立てる(自前の LLM だけは別のサーバー)。文書の層は、道具を一つ立てるのではなく、持ち方を決める。読む物は adoc で git に、触る表は格子のまま、刷る紙はテンプレートに値を流す。2-07 が受け持つ。
 
 右側の道具は、別々の組織が作った、別々の開いた道具だ。中が読めて、形式が開いていて、データはどこへでも持ち出せる。だから、一本の方針変更が他に波及せず、一本を別のものに差し替えても、残りは何も変わらない。開いていて、鍵が自分の手元にある。これが核心で、束が解けているのはその帰結だ。
 
@@ -2127,7 +2127,7 @@ flowchart TB
 
 一気にやらなくていい。束から外しやすい順に、一本ずつ進める。自立編は、その順番でそのまま章立ててある。
 
-. 機械(2-02)。会社の PC を一台 Debian にして、AI に渡す。以降に立てるものは、全部その一台の上に乗る
+. 機械(2-02)。会社の PC を一台 Debian にして、AI に渡す。以降の道具は、この一台の上に立てる(自前の LLM だけは別のサーバー)
 . データ基盤(2-03)。PostgreSQL・SQLite・DuckDB。分析も RAG も予約も基幹も、すべてこの上に乗る。だから最初に据える
 . 処理(2-04)。Python と Flet。Excel と Word に埋まったマクロとグラフを外に出し、画面が要るところに被せる
 . 認証(2-05)。PocketBase。全アプリ共通の門番。ここを自分の側に移すと、束の根が切れる
@@ -2135,7 +2135,7 @@ flowchart TB
 . 文書(2-07)。読む物は adoc の文字、触る表は格子、刷る紙はテンプレート。Office / Docs 形式は入口と出口で通過させる
 . メール(2-08)。Stalwart。通信の中身を手元に置く
 . 会議・カレンダー(2-09)。Jitsi・Radicale。会議と予定の共有を自前で。予約の受付は 2-12 で書く
-. Web を作る(2-10)。中身は Markdown、外枠は HTML と CSS、繋ぐのは Python
+. Web を作る(2-10)。中身は AsciiDoc、外枠は HTML と CSS、繋ぐのは Python
 . Web を公開する(2-11)。自分の一台(Caddy)か Cloudflare Pages。借りる所と自分で持つ所を分ける
 . 基幹ロジック(2-12)。FastAPI。Power Apps / Apps Script を読めるコードに戻す
 . 図と資料(2-13)。Mermaid・Marp・CAD。図もスライドも筐体も、文字とコードから作る
@@ -2266,14 +2266,14 @@ flowchart TB
 * 共有・版管理:SharePoint+GitHub / Drive → Forgejo + Zed(2-06)
 * メール:Exchange / Gmail → Stalwart(2-08)
 * 会議・カレンダー:Teams / Meet → Jitsi・Radicale(2-09)。予約の受付は 2-12
-* Web を作る:Power Pages / Sites → Markdown + HTML・CSS を Python で焼く(2-10)
+* Web を作る:Power Pages / Sites → AsciiDoc + HTML・CSS を Python で焼く(2-10)
 * Web を公開する:Power Pages / Sites → 自分の一台(Caddy)か Cloudflare Pages(2-11)
 * データ基盤:Azure SQL / Cloud SQL → PostgreSQL・SQLite(2-03)
 * データ分析:Power BI / Looker → DuckDB + Polars(2-03)
 * 処理:Excel マクロ / VBA → Python(画面は Flet)(2-04)
 * 基幹ロジック:Power Apps → FastAPI(2-12)
 * 図と資料:Visio / Drawings → Mermaid・Marp・CAD(2-13)
-* AI:Copilot / Gemini → ローカル LLM + RAG(2-16)
+* AI:Copilot / Gemini → ローカル LLM + RAG、別のサーバーに(2-16)
 
 一対一で、左を右に置き換える。右の道具は別々の組織が作った別々の開いた道具だから、中が読めて、持ち出せて、一本の方針変更が他に波及しない。これは効率化の話ではない。一人 + AI を、会社の土台の高さで言い直したものだ。*集中した 1 より、自立した N が強い*。
 
@@ -2385,7 +2385,7 @@ Untie the bundle and the layers of Microsoft 365 and Google Workspace land on th
 | SharePoint + GitHub | Drive | Forgejo + Zed | link:/en/ai-native-software/code/[2-06]
 | Exchange / Outlook | Gmail | Stalwart | link:/en/ai-native-software/mail/[2-08]
 | Teams / Bookings | Google Meet / Calendar | Jitsi / Radicale (booking is written in 2-12) | link:/en/ai-native-software/meetings/[2-09]
-| Power Pages (building) | Google Sites (building) | Markdown + HTML/CSS baked by Python | link:/en/ai-native-software/web-build/[2-10]
+| Power Pages (building) | Google Sites (building) | AsciiDoc + HTML/CSS baked by Python | link:/en/ai-native-software/web-build/[2-10]
 | Power Pages (publishing) | Google Sites (publishing) | your own machine with Caddy, or Cloudflare Pages | link:/en/ai-native-software/web/[2-11]
 | Azure SQL | Cloud SQL / BigQuery | PostgreSQL / SQLite | link:/en/ai-native-software/foundation/[2-03]
 | Power BI / Excel | Looker / Sheets | DuckDB + Polars | link:/en/ai-native-software/foundation/[2-03]
@@ -2406,7 +2406,7 @@ Some chapters do not appear in the table at all: 2-14 (electronics to IoT), 2-15
 a matching suite layer, but all three are part of the Independence part, and they
 are in the order below.
 
-The top row is the layer that is new. You take one company PC, put Debian on it, and hand it to the AI. Everything stood up after that sits on that one machine. With a suite you never had a machine of your own, because everything ran in the vendor's cloud. The document layer is not one tool stood up but a way of holding content: things you read as AsciiDoc in git, tables you work in staying in a grid, pages you print poured from templates. That is 2-07's job.
+The top row is the layer that is new. You take one company PC, put Debian on it, and hand it to the AI. The tools that follow are stood up on that one machine (only the self-hosted LLM goes on a separate server). With a suite you never had a machine of your own, because everything ran in the vendor's cloud. The document layer is not one tool stood up but a way of holding content: things you read as AsciiDoc in git, tables you work in staying in a grid, pages you print poured from templates. That is 2-07's job.
 
 The tools on the right are separate open tools built by separate organizations. You can read inside them, the formats are open, and the data can be carried anywhere. So one vendor's decision cannot ripple into the others, and swapping any one for something else changes nothing around it. Open, with the key in your own hands. That is the point, and the untied bundle is its consequence.
 
@@ -2471,7 +2471,7 @@ You do not have to do it all at once. Go in order of what is easiest to pull out
 . Documents (2-07). Things you read as AsciiDoc text, tables you work in in a grid, pages you print from templates. Office and Docs formats pass through at the entrance and the exit
 . Mail (2-08). Stalwart. Keep the contents of your communication on your own disk
 . Meetings and calendars (2-09). Jitsi, Radicale. Meetings and shared calendars on your own side; booking is written in 2-12
-. Build the web (2-10). Content in Markdown, the frame in HTML and CSS, Python connecting the two
+. Build the web (2-10). Content in AsciiDoc, the frame in HTML and CSS, Python connecting the two
 . Publish the web (2-11). Your own machine with Caddy, or Cloudflare Pages. Decide separately what to borrow and what to hold
 . Core logic (2-12). FastAPI. Turn Power Apps and Apps Script back into readable code
 . Diagrams and documents (2-13). Mermaid, Marp, CAD. Diagrams, slides, and enclosures, all made from text and code
@@ -2602,14 +2602,14 @@ Business Microsoft 365 and Google Workspace are SaaS suites that bundle closed l
 * Sharing and versioning: SharePoint + GitHub / Drive to Forgejo + Zed (2-06)
 * Mail: Exchange / Gmail to Stalwart (2-08)
 * Meetings and calendars: Teams / Meet to Jitsi and Radicale (2-09); booking in 2-12
-* Building the web: Power Pages / Sites to Markdown + HTML/CSS baked by Python (2-10)
+* Building the web: Power Pages / Sites to AsciiDoc + HTML/CSS baked by Python (2-10)
 * Publishing the web: Power Pages / Sites to your own machine with Caddy, or Cloudflare Pages (2-11)
 * Data layer: Azure SQL / Cloud SQL to PostgreSQL and SQLite (2-03)
 * Data analysis: Power BI / Looker to DuckDB + Polars (2-03)
 * Logic: Excel macros / VBA to Python, with Flet for the screen (2-04)
 * Core logic: Power Apps to FastAPI (2-12)
 * Diagrams and documents: Visio / Drawings to Mermaid, Marp, CAD (2-13)
-* AI: Copilot / Gemini to a local LLM + RAG (2-16)
+* AI: Copilot / Gemini to a local LLM + RAG, on a separate server (2-16)
 
 One to one, replace the left with the right. The tools on the right are separate open tools built by separate organizations, readable inside and portable out, so one vendor's decision cannot ripple into the others. This is not about efficiency. It restates one person plus AI at the height of the company's foundation. *Autonomous N beats centralized 1.*
 

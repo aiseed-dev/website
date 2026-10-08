@@ -14518,8 +14518,8 @@ title.en: Gather on One Platform, and One Incident Stops Everyone — Centraliza
 subtitle.ja: クラウドと共通基盤が売っていたのは、導入の手間、運用の手間、運用を任せる人、伸縮と置き場所の四つ。前の三つは AI を持った一人に移った
 subtitle.en: Cloud and shared platforms sold four things: setup, operations, people to run it for you, and elasticity with a place to sit. The first three moved to one person with an AI
 date: 2026.10.08
-description.ja: 人手不足を理由にした集中化は、理由を失った。導入と運用の手間は AI を持った一人に移り、残ったのは、同じ基盤に集まることだった。一つの事故で全員が止まる。IDCF と 2025 年秋の三つの大障害、戻す企業の数字で確かめる
-description.en: Centralization justified by staff shortages has lost its justification. Setup and operations moved to one person with an AI, and what remained was gathering on one platform, where one incident stops everyone. Checked against IDCF, three major outages in autumn 2025, and the numbers on companies moving back
+description.ja: 人手不足を理由にした集中化は、理由を失った。導入と運用の手間は AI を持った一人に移った。一方で、同じ基盤に集まれば一つの事故で全員が止まる弱さは、変わらない。IDCF と 2025 年秋の三つの大障害、戻す企業の数字で確かめる
+description.en: Centralization justified by staff shortages has lost its justification. Setup and operations moved to one person with an AI. Meanwhile the weakness of gathering on one platform, where one incident stops everyone, has not changed. Checked against IDCF, three major outages in autumn 2025, and the numbers on companies moving back
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
@@ -14529,7 +14529,7 @@ ifdef::lang-ja[]
 
 == 結論
 
-*人手不足を理由にした集中化は、理由を失った。* 人手不足の答えは共通基盤ではなく、AI を持った一人になった。そして残ったのは、運用を同じ会社に任せて同じ基盤に集まることだった。集まれば、一つの事故で全員が止まる。
+*人手不足を理由にした集中化は、理由を失った。* 人手不足の答えは共通基盤ではなく、AI を持った一人になった。一方で、同じ基盤に集まる弱さは変わらない。集まれば、一つの事故で全員が止まる。
 
 「集中化をやめる時期だ」とまでは言わない。集中する理由が一つ減った、が正確である。どの理由が減り、どの理由が残るかを分けて書く。
 
@@ -14588,7 +14588,7 @@ ifdef::lang-en[]
 
 == Conclusion
 
-*Centralization justified by staff shortages has lost its justification.* The answer to a staff shortage is no longer a shared platform but one person with an AI. And what remained was handing operations to the same company and gathering on one platform. Gather, and one incident stops everyone.
+*Centralization justified by staff shortages has lost its justification.* The answer to a staff shortage is no longer a shared platform but one person with an AI. Meanwhile the weakness of gathering on one platform has not changed. Gather, and one incident stops everyone.
 
 This does not go as far as "it is time to stop centralizing." The precise statement is that centralization has one reason fewer. Which reasons fell away and which remain is set out below.
 

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Development server with auto-rebuild + live reload for aiseed-style sites.
+"""Development server with auto-rebuild for aiseed-style sites.
 
 Watches <site>/{articles,tools/templates} and <site>/html/{css,js},
 rebuilds on changes, and serves <site>/html/ over HTTP.
 
-保存 → ビルド → ブラウザ自動リロード:
+保存 → ビルド(ブラウザは手動で読み直す):
   - articles/<series>.adoc の変更は、そのシリーズだけの差分ビルド(数秒)
   - テンプレート・CSS/JS・資産の変更はフルビルド
-  - 配信する HTML に SSE クライアントを注入し、ビルド完了で自動リロード
+  - ビルドが終わっても画面は書き換えない。見るときは手動で読み直す
   - ビルド失敗(シリーズファイルの書き損じ等)は、ブラウザ画面上部に
     行番号付きのエラーバナーを表示する(修正して保存すれば消える)
 
@@ -73,7 +73,7 @@ LIVERELOAD_SNIPPET = """
   const BANNER_ID = "__serve_error_banner";
   es.onmessage = (e) => {
     const d = JSON.parse(e.data);
-    if (d.type === "reload") { location.reload(); return; }
+    if (d.type === "reload") { return; }  // 自動では読み直さない
     if (d.type === "error") {
       let b = document.getElementById(BANNER_ID);
       if (!b) {
@@ -198,7 +198,7 @@ class RebuildHandler(FileSystemEventHandler):
                     break
 
         if ok:
-            print("[serve] build ok — reloading browsers", flush=True)
+            print("[serve] build ok — reload the page by hand to see it", flush=True)
             livereload.notify()
         else:
             print(f"[serve] build failed:\n{err}", flush=True)

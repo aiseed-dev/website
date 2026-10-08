@@ -166,6 +166,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://aiseed.dev/insights/defense-cannot-be-bought/</loc>
+    <lastmod>2026-10-08</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://aiseed.dev/en/insights/climate-mistake/</loc>
     <lastmod>2025-04-04</lastmod>
     <priority>0.6</priority>
@@ -308,6 +313,11 @@
   <url>
     <loc>https://aiseed.dev/en/insights/ai-will-not-converge/</loc>
     <lastmod>2026-10-07</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://aiseed.dev/en/insights/defense-cannot-be-bought/</loc>
+    <lastmod>2026-10-08</lastmod>
     <priority>0.6</priority>
   </url>
   <url>

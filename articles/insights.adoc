@@ -15249,3 +15249,221 @@ ____
 * link:/en/ai-native-software/ai-delegation/[2-17: Decide How Far the AI Goes — No Autonomous Runs, Freeze It into Code]
 * link:/en/ai-native-software/lockin/[3-05: The Lock-In Problem]
 endif::[]
+
+// ===== article: part-3-design/10-defense-cannot-be-bought =====
+---
+slug: defense-cannot-be-bought
+number: 10
+title.ja: 守りは買えない——委託・製品・基盤、三つの出口が同じ入口になる
+title.en: Defense Cannot Be Bought — Outsourcing, Products, Platforms: Three Exits That Become One Entrance
+subtitle.ja: 2025〜26 年の事件は、買った守りが入口になった記録である。守りの特需は守れない。守りは買うものではなく、root を渡さずに持つものになる。
+subtitle.en: The incidents of 2025–26 are a record of purchased defenses becoming the entrance. A defense boom cannot defend. Defense is not bought; it is held, without handing over root.
+description.ja: 委託先の管理者アカウント、守りの製品そのもの、基盤の管理面——2025〜26 年の大型事件は、買った守りが入口になった記録である。共通項は入口と root の距離がゼロなこと。守りの需要は伸びるが、守れる人は増えない。だから守りは買うものではなく、引き算と規律で持つものになる。
+description.en: Contractors' admin accounts, the defense products themselves, the platform's management plane — the major incidents of 2025–26 are a record of purchased defenses becoming the entrance. The common factor is zero distance between the entrance and root. Demand for defense grows, but the people who can defend do not. So defense is not bought; it is held, by subtraction and discipline.
+date: 2026.10.08
+label: Structural Analysis 10
+part_title.ja: 設計と実践
+part_title.en: Design and Practice
+part: 3
+cta_label: Hold, do not buy
+cta_title.ja: 守りは買えない。root を渡さず、攻撃面を引き、一台を規律で持つ。
+cta_title.en: Defense cannot be bought. Hand over no root, subtract the attack surface, hold one machine with discipline.
+cta_text.ja: 委託先には期限付きの権限を。root で動く製品は減らす。基盤の管理面は共有しない。誰が root を持っているかの一覧を、いまのうちに AI に作らせておく。
+cta_text.en: Give contractors time-limited privileges. Reduce the products that run as root. Share no management plane. Have an AI draw up the list of who holds root, now.
+cta_btn1_text.ja: 構造分析の全章
+cta_btn1_text.en: All chapters of the structural analysis
+cta_btn1_link.ja: /insights/
+cta_btn1_link.en: /en/insights/
+cta_btn2_text.ja: 前へ AIは一つに収束しない
+cta_btn2_text.en: Previous: AI Will Not Converge on One Model
+cta_btn2_link.ja: /insights/ai-will-not-converge/
+cta_btn2_link.en: /en/insights/ai-will-not-converge/
+---
+ifdef::lang-ja[]
+= 守りは買えない——委託・製品・基盤、三つの出口が同じ入口になる
+
+*守りは、買った分だけ増えない。* 2025〜26 年の大型事件を並べると、入口になったのは、守りとして買ったものだった。委託先に渡した管理者アカウント、守りの製品そのもの、基盤の管理面。三つの出口が、同じ入口になっている。
+
+link:/insights/security-design/[構造分析 03] は、AI で開発し製品に AI を入れないことで攻撃面をゼロに近づける実践を書いた。link:/insights/cloud-independence/[04] は、基盤から自立できる時代になったことを書いた。この章はその二つの間を埋める。守りを買う側に何が起きているかを事実で確かめ、守りが「買うもの」から「持つもの」へ移る構造を書く。
+
+== 事実——買った守りが、入口になった
+
+三つの形に分けて並べる。日付と出どころは、巻末の調査メモと同じである。
+
+*第一の形、委託。* アスクル(2025 年 6 月侵入、10 月発覚)は、業務委託先向けの管理者アカウントの ID とパスワードが漏れ、VPN から入られた。そのアカウントは「例外的に多要素認証を適用していなかった」。侵入から発覚まで約 4 か月半、EDR の無効化と横展開とバックアップの削除まで進み、約 74 万件が影響を受けた。東海大学の委託先(2025 年 11 月)はリモート保守用の入り口と窃取された管理者アカウント。山形市などの委託先 YCC(2026 年 4 月)はネットワーク機器の管理者アカウントが「推測または取得」された。英国の Marks & Spencer(2025 年 4 月)は CEO が「システムの弱点ではなく、第三者を通って入られた」と証言し、営業利益への影響を 3 億ポンドと公表した。米国では、MSP の遠隔管理ツールの管理者一つを取られて複数の顧客に一斉配布された事例が、2025 年だけで二件報告されている(Sophos)。
+
+*第二の形、製品。* 守りの製品そのものが入口になった。CrowdStrike(2024 年 7 月 19 日)は更新の不具合で 850 万台の Windows を止めた。F5(2025 年 10 月公表)は国家支援の攻撃者にソースコードと未公開の脆弱性情報を持ち出され、米 CISA が緊急指令を出した。Cisco ASA(2025 年 9 月)、Citrix NetScaler(2025 年 8 月)、オンプレミスの SharePoint(2025 年 7 月、400 超のシステム)。いずれも境界に置いた守りの機器か、root で動く製品である。
+
+*第三の形、基盤。* IDCF クラウド(2026 年 10 月 7 日)は一度の侵入で東日本第 1 リージョンが丸ごと止まり、事業者は「スナップショットからの復元も困難、他リージョンでの再構築も当面推奨しない」と通知した。攻撃でなくても同じことが起きる。2025 年秋には AWS、Azure、Cloudflare が自分の操作で、それぞれ約 15 時間、約 8 時間、約 6 時間止まった。
+
+統計もこの並びを支える。Mandiant の M-Trends 2026 では初期侵入の首位は脆弱性の悪用で 32%、6 年連続である。Verizon の DBIR 2026 でも脆弱性が 31% で首位に立った。警察庁の統計ではランサムウェアの侵入経路の 5〜6 割が VPN 機器である。IPA の 10 大脅威 2026 では「サプライチェーンや委託先を狙った攻撃」が 8 年連続で組織編の 2 位にある。そして Sophos の 2026 年調査では、認証情報の侵害で被害を受けた組織の 97% が、事故の時点で何らかの多要素認証を導入済みだった。導入していなかったのではない。例外があった。
+
+== 構造——共通項は、入口と root の距離がゼロなこと
+
+事件の共通項は「入られたこと」ではない。*入った後に、全体の管理者権限まで一本道で行けたこと*である。
+
+委託先のアカウントは、最初から管理者である。保守のためにそう作る。守りの製品は、root で動く。EDR も VPN 機器もハイパーバイザーも、全部を見るために全部に触れる。基盤の管理面は、載っている全部に届く。だから入口になったとき、入口と root の距離がゼロになる。
+
+買った守りとは、*root を他人に渡すこと*の別名である。委託は人に、製品は会社に、基盤は事業者に渡す。渡した相手が守り切れている間は守りで、守り切れなくなった瞬間に、渡した root がそのまま相手の root になる。
+
+____
+守りを買うとは、root を渡すことである。
+渡した先が持ちこたえている間だけ、それは守りと呼ばれる。
+____
+
+公的な指針は、この構造をすでに書いている。CISA と英加豪 NZ の共同勧告(AA22-131A)は、委託先のアカウントを特権として扱い、顧客間で管理者の資格情報を使い回さず、期限付きの権限を検討し、委託先の接続と操作を顧客側で記録せよと書く。英 NCSC は「識別のサービスは決して共有してはならず、委託先の利用者は委託元が管理するアカウントを使う」と書く。NIST の SP 800-41 は、入りも出も既定で拒否せよと書く。指針は揃っている。揃っていないのは、それを実行する人の数である。
+
+== 構造——守りの特需は、守れない
+
+攻撃にさらされると、仕事は増える。調査、復旧、再発防止、監査、報告。守りの需要は伸びる。Gartner は 2026 年の情報セキュリティ支出を 2,440 億ドル、前年比 11.6% 増(恒常通貨)と予測した(2026 年 2 月)。短期的には、IT 企業の収入は守りの側で大きく伸びる。
+
+だが人は増えない。ISC2 の 2024 年調査は、世界の不足を 480 万人と見積もった。2025 年調査(回答 16,029 人)は、人数よりも技能の不足が主な懸念に変わったと報告し、日本の回答者(1,225 人)は雇用は安定しているが予算と給与の競争力が弱いと答えている。攻撃が増えた分だけ守り手を増やすことは、どの国でもできていない。
+
+増やせない人を、薄く伸ばすしかない。薄く伸ばす形が、委託であり、製品であり、基盤である。少人数が多くの顧客を見るから、一人の管理者が多くの root を持つ。*人手の共有は、爆心地の共有になる。* ここに矛盾がある。守りの特需は、守る人を増やさずに守りの約束を増やす。約束は売れるが、守りは人数でしか裏付けられない。だから、*守りの特需は、守れない。*
+
+これは「守りに金を使うな」ではない。買える守りと買えない守りを分けよ、である。
+
+== 見立て——守りは、買うものから持つものへ移る
+
+買えない守りは、持つしかない。持つ守りの形は、この連載がすでに書いてきたものと一致する。
+
+* *引き算。* 守る対象を減らす。link:/insights/security-design/[03] の、製品に AI を入れず、CMS もデータベースも置かない静的な公開面は、守りを買わずに攻撃面を消した例である。耳を減らし、root で動くものを減らす。
+* *一人と一台。* AI を持った一人が、一台を規律で持つ。入りも出も既定で拒否し、更新は自動にし、控えは別の機械・別の場所・別の権限に置く。この規律は、link:/debian-server/[サーバー編]の第 5 章と第 10 章に手順として凍結してある。一台の root は一人が持ち、障害領域はその一台で閉じる。
+* *root を渡さない委託。* 委託はしてよい。ただし自分の ID で、期限付きで、記録を自分の側に残し、共有アカウントを作らない。委託先が消えても、root は自分の手元に残る。
+
+AI はここで効く。守りの手順を書かせ、ログを貼って点検させ、誰が root を持っているかの一覧を作らせる。link:/insights/ai-native-free-individual/[07] で書いた通り、AI は個人の能力を高める道具であり、守りはその最も分かりやすい使い道である。同時に AI は攻撃側も強くする。link:/insights/mythos/[構造分析 1-05] に書いた通り、数千のゼロデイを自律的に見つける能力はすでに公表されている。攻撃側が強くなるほど、守りを買い足すより、守る対象を減らすほうが効く。引き算は AI の時代に価値が上がる守りである。
+
+上から導入する AI は、この構造の中では第四の形になる。全社に配られる AI 製品は、全部を見るために全部に触れる権限を持つ。文書も、メールも、基幹のデータも、エージェントが代わりに操作するために渡される。それは EDR やハイパーバイザーと同じ、root で動く製品である。*守りは買えない、という問題は、上から導入する AI の問題そのものだ。* 入口と root の距離がゼロの場所が、守りの製品に続いてもう一つ増える。下から持つ AI はこの形を取らない。一人が一台の root を持ったまま、AI には手順を書かせ、ログを読ませ、作ったものはコードに凍結する。AI に渡すのは仕事であって、root ではない。
+
+買ってよいものも残る。急に増える負荷の吸収、DDoS を受け止める薄い窓、第三者による点検の目。共通するのは、*root を渡さずに買えること*だ。借りた窓は公開面の前に置くだけで、中の一台には触れない。点検は読むだけで、書く権限を持たない。root に届く守りだけを、買わない。
+
+== この見立てが外れる条件
+
+予想には、外れ方も添えておく。三つある。
+
+第一に、*AI が守り手を本当に増やした場合*。検知と対応の自動化が人の代わりを務め、少人数で多くの顧客を守り切れるようになれば、特需は守れる。ただしその AI もまた root で動く製品であり、第二の形に戻る危険を持つ。
+
+第二に、*規制と保険が、買う守りを要求する場合*。監査が特定の製品の導入を条件にし、保険が委託先の認定を条件にすれば、持つ守りだけでは済まなくなる。その場合も、root に届かない形で買う工夫は残る。
+
+第三に、*引き算では消えない漏れ方が主流になる場合*。SharePoint の事件では、鍵は入ってきた要求への応答で出ていった。出口を閉じても、応答で漏れるものは止まらない。公開面に何かを置く限り、この漏れ方は残る。だから公開面に置くものを最小にする、という結論は変わらない。
+
+== 含意——誰が root を持っているかを、数える
+
+実務に引きつけると、含意は三つに絞れる。
+
+* *委託するなら、root を渡さない形で。* 期限付き、自分の ID、記録は自分の側、共有アカウントなし。多要素認証の「例外」を作らない。例外は、97% の側に入る道である。
+* *root で動く製品を数え、減らす。* EDR、VPN 機器、遠隔管理ツール、ハイパーバイザー。一つ減るごとに、入口と root の距離がゼロの場所が一つ減る。
+* *基盤の管理面を共有しない。* 自分の一台と、借りた窓。地理の分散と権限の分散は別のものである。
+
+三つ目まで含めて、いまのうちに確かめておける。自分の環境で root に相当する権限を持つ人・製品・事業者の一覧を AI に作らせ、それぞれについて「期限があるか」「記録が自分の側にあるか」「消えたら何が残るか」を並べさせる。一覧が長ければ、それが買った守りの長さである。
+
+____
+守りは買えない。買えるのは、root に届かない守りだけである。
+root に届く守りは、自分で持つ。一人と一台と AI で、持てる大きさに引き算する。
+____
+
+'''
+
+== 関連記事
+
+* link:/insights/security-design/[構造分析 03: Mythos時代のセキュリティ設計]
+* link:/insights/cloud-independence/[構造分析 04: クラウドからの自立——AIが支援するのは開いた層だけ]
+* link:/blog/cloud-vanished/[ブログ: クラウドが丸ごと消えた日 ── IDCF の事故から、五つの教訓]
+* link:/blog/shared-blast-radius/[ブログ: 人手の共有は、爆心地の共有 ── 集中化の理由が一つ減った]
+* link:/debian-server/05-security-basics/[Claudeと一緒に育てるDebian サーバー 第5章 守りの基本]
+* link:/ai-native-software/auth/[2-05: 門番を立てる ── PocketBase で認証を一つに]
+endif::[]
+ifdef::lang-en[]
+= Defense Cannot Be Bought — Outsourcing, Products, Platforms: Three Exits That Become One Entrance
+
+*Defense does not grow by the amount you buy.* Line up the major incidents of 2025–26 and the entrance, each time, was something bought as defense: the admin account handed to a contractor, the defense product itself, the platform's management plane. Three exits became one entrance.
+
+link:/en/insights/security-design/[Structural Analysis 03] described the practice of developing with AI and putting no AI into the product, bringing the attack surface close to zero. link:/en/insights/cloud-independence/[04] described the arrival of an age in which you can stand independent of the platform. This chapter fills the gap between them. It checks, with facts, what is happening to those who buy defense, and sets out the structure by which defense moves from something bought to something held.
+
+== Fact — purchased defenses became the entrance
+
+Three forms. Dates and sources follow the survey memo behind this chapter.
+
+*The first form: outsourcing.* ASKUL (intrusion June 2025, discovered October) was entered through a VPN with the leaked ID and password of an admin account for a contractor. That account "exceptionally had no multi-factor authentication." About four and a half months passed between intrusion and discovery; the attacker disabled EDR, moved laterally, and deleted backups; some 740,000 records were affected. Tokai University's contractor (November 2025): a remote-maintenance entrance and a stolen admin account. YCC, contractor to Yamagata City and others (April 2026): the admin account of a network device, "guessed or obtained." Marks & Spencer in the UK (April 2025): the CEO testified that the attacker came "through a third party rather than a system weakness," and the company put the hit to operating profit at £300 million. In the US, Sophos reported two cases in 2025 alone in which a single admin account of an MSP's remote-management tool was taken and used to push malware to many customers at once.
+
+*The second form: products.* The defense product itself became the entrance. CrowdStrike (19 July 2024) halted 8.5 million Windows machines with a faulty update. F5 (disclosed October 2025) had source code and unpublished vulnerability information taken by a state-backed actor, and CISA issued an emergency directive. Cisco ASA (September 2025), Citrix NetScaler (August 2025), on-premises SharePoint (July 2025, over 400 systems). Every one is a defensive device at the perimeter or a product that runs as root.
+
+*The third form: platforms.* IDCF Cloud (7 October 2026): a single intrusion stopped the whole of East Japan Region 1, and the provider told customers that restoring from snapshots was difficult and that rebuilding in its other regions was not recommended for now. The same happens without an attack. In autumn 2025, AWS, Azure, and Cloudflare were stopped by their own operations for about 15, 8, and 6 hours respectively.
+
+The statistics support the line-up. In Mandiant's M-Trends 2026, exploitation of vulnerabilities leads initial access at 32%, the sixth year running. Verizon's DBIR 2026 also puts vulnerabilities first, at 31%. Japan's National Police Agency finds 50–60% of ransomware intrusions come through VPN devices. In IPA's Ten Major Threats 2026, "attacks on the supply chain and contractors" sits second for organizations for the eighth year in a row. And in Sophos's 2026 survey, 97% of organizations breached through compromised credentials already had some multi-factor authentication in place at the time. It was not absent. There was an exception.
+
+== Structure — the common factor is zero distance between the entrance and root
+
+The common factor is not "they got in." It is that *once in, there was a straight road to full administrative rights.*
+
+A contractor's account is an administrator from the start; it is created that way for maintenance. A defense product runs as root; EDR, VPN appliances, hypervisors touch everything in order to see everything. A platform's management plane reaches everything that sits on it. So when any of these becomes the entrance, the distance from the entrance to root is zero.
+
+Purchased defense is another name for *handing root to someone else*: to a person in outsourcing, to a company in a product, to a provider in a platform. While the recipient holds out, it is called defense. The moment the recipient fails, the root you handed over becomes the attacker's root as it is.
+
+____
+To buy defense is to hand over root.
+Only while the recipient holds out is it called defense.
+____
+
+Public guidance already describes this structure. The joint advisory from CISA with the UK, Canada, Australia and New Zealand (AA22-131A) says to treat contractor accounts as privileged, never reuse admin credentials across customers, consider time-based privileges, and log the contractor's connections and actions on the customer's side. The UK's NCSC writes that "identity services should never be shared" and that contractor users should use accounts administered by the customer. NIST SP 800-41 says to deny both inbound and outbound by default. The guidance is in place. What is not in place is the number of people to carry it out.
+
+== Structure — a defense boom cannot defend
+
+Exposure to attack creates work: investigation, recovery, prevention, audit, reporting. Demand for defense grows. Gartner forecast information-security spending of $244 billion in 2026, up 11.6% in constant currency (February 2026). In the short run, IT companies' revenue grows strongly on the defense side.
+
+But the people do not grow. ISC2's 2024 study estimated the global shortfall at 4.8 million. Its 2025 study (16,029 respondents) reports that the main concern has shifted from headcount to skills, and the Japanese respondents (1,225) say employment is stable while budgets and pay are uncompetitive. No country has added defenders in proportion to the attacks.
+
+People who cannot be added must be spread thin. The forms of spreading thin are outsourcing, products, and platforms. A few people watch many customers, so one administrator holds many roots. *Sharing staff becomes sharing the blast radius.* Here is the contradiction. A defense boom multiplies promises of defense without multiplying defenders. Promises sell, but defense is backed only by people. So *a defense boom cannot defend.*
+
+This is not "spend nothing on defense." It is: separate the defense you can buy from the defense you cannot.
+
+== Forecast — defense moves from something bought to something held
+
+Defense that cannot be bought must be held. The shape of held defense matches what this series has already written.
+
+* *Subtraction.* Reduce what has to be defended. The static public face of link:/en/insights/security-design/[03] — no AI in the product, no CMS, no database — is an example of erasing the attack surface without buying defense. Fewer listening ears, fewer things running as root.
+* *One person and one machine.* One person with an AI holds one machine with discipline: deny by default in and out, automatic updates, a copy on another machine, in another place, under another authority. That discipline is frozen into procedures in Chapters 5 and 10 of link:/en/debian-server/[the server series]. One person holds that machine's root, and the failure domain closes at that machine.
+* *Outsourcing that hands over no root.* Outsourcing is fine. But under your own IDs, time-limited, with the logs on your side and no shared accounts. If the contractor disappears, root stays in your hands.
+
+AI works here. Have it write the defensive procedures, paste in logs for inspection, and draw up the list of who holds root. As link:/en/insights/ai-native-free-individual/[07] argued, AI is a tool that raises an individual's capability, and defense is its plainest use. At the same time AI strengthens the attacker. As link:/en/insights/mythos/[Structural Analysis 1-05] recorded, the ability to find thousands of zero-days autonomously has already been published. The stronger the attacker, the more it pays to reduce what must be defended rather than to buy more defense. Subtraction is a defense whose value rises in the age of AI.
+
+AI introduced from above becomes, within this structure, a fourth form. An AI product distributed across a company holds the rights to touch everything in order to see everything. Documents, mail, core data are handed over so that an agent can operate them on people's behalf. It is a product running as root, the same as EDR or a hypervisor. *The problem that defense cannot be bought is the problem of AI introduced from above, as it is.* One more place where the distance from entrance to root is zero, added after the defense products. AI held from below does not take this form. One person keeps root on one machine and has the AI write procedures, read logs, and freeze what it builds into code. What is handed to the AI is work, not root.
+
+Some things remain worth buying: absorbing sudden load, a thin window that takes the DDoS, a third party's inspecting eye. What they share is that *they can be bought without handing over root.* A borrowed window sits in front of the public face and never touches the machine inside. An inspection reads and holds no right to write. Buy anything except the defense that reaches root.
+
+== Conditions under which this forecast fails
+
+A forecast should state how it could fail. Three ways.
+
+First, *if AI truly multiplies the defenders.* If automated detection and response stand in for people, and a few can fully defend many customers, then the boom can defend. But that AI is itself a product running as root, and carries the risk of returning to the second form.
+
+Second, *if regulation and insurance demand purchased defense.* If audits require specific products and insurers require certified contractors, held defense alone will not suffice. Even then, the craft of buying in forms that do not reach root remains.
+
+Third, *if leaks that subtraction cannot remove become the norm.* In the SharePoint incident, the keys left in the response to an incoming request. Closing the exits does not stop what leaks in a response. As long as something sits on the public face, this leak remains. So the conclusion — put the minimum on the public face — does not change.
+
+== Implication — count who holds root
+
+Brought down to practice, three implications.
+
+* *If you outsource, do it without handing over root.* Time-limited, your own IDs, logs on your side, no shared accounts. Create no "exception" to multi-factor authentication; the exception is the road into the 97%.
+* *Count the products that run as root, and reduce them.* EDR, VPN appliances, remote-management tools, hypervisors. Each one removed is one fewer place where the distance from entrance to root is zero.
+* *Share no management plane.* Your own machine, and a borrowed window. Geographic separation and separation of authority are different things.
+
+All three can be checked now. Have an AI draw up the list of people, products, and providers that hold root-equivalent rights in your environment, and for each one set out whether it has an expiry, whether the logs are on your side, and what remains if it disappears. The length of that list is the length of the defense you have bought.
+
+____
+Defense cannot be bought. Only defense that does not reach root can be.
+Defense that reaches root, you hold yourself — subtracted to a size one person, one machine, and an AI can hold.
+____
+
+'''
+
+== Related articles
+
+* link:/en/insights/security-design/[Structural Analysis 03: Security Design in the Mythos Era]
+* link:/en/insights/cloud-independence/[Structural Analysis 04: Independence from the Cloud — AI Supports Only the Open Layer]
+* link:/en/blog/cloud-vanished/[Blog: The Day a Cloud Vanished — Five Lessons from the IDCF Incident]
+* link:/en/blog/shared-blast-radius/[Blog: Sharing Staff Means Sharing the Blast Radius]
+* link:/en/debian-server/05-security-basics/[Growing a Debian Server with Claude, Chapter 5 — The Basics of Defense]
+* link:/en/ai-native-software/auth/[2-05: Standing Up the Gatekeeper — One Login with PocketBase]
+endif::[]

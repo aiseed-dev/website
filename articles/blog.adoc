@@ -14509,3 +14509,136 @@ Anyone who wants the details can have an AI look them up. What stays here is the
 . IDC Frontier, "IDCF Cloud incident notice (7th report)" (October 2026, notice to customers)
 . List of affected services (Security Measures Lab, 7 October 2026) — https://rocket-boys.co.jp/security-measures-lab/idcf-cloud-outage-affected-services-2026/
 endif::[]
+
+// ===== article: 047-shared-blast-radius =====
+---
+slug: shared-blast-radius
+title.ja: 人手の共有は、爆心地の共有 ── 集中化の理由が一つ減った
+title.en: Sharing Staff Means Sharing the Blast Radius — Centralization Just Lost One of Its Reasons
+subtitle.ja: クラウドと共通基盤が売っていたのは、導入の手間、運用の手間、人手の共有、伸縮と置き場所の四つ。前の三つは AI を持った一人に移った
+subtitle.en: Cloud and shared platforms sold four things: setup, operations, shared staff, and elasticity with a place to sit. The first three moved to one person with an AI
+date: 2026.10.08
+description.ja: 人手不足を理由にした集中化は、理由を失った。導入と運用の手間は AI を持った一人に移り、残った「人手の共有」は爆心地の共有でもあった。IDCF と 2025 年秋の三つの大障害、戻す企業の数字で確かめる
+description.en: Centralization justified by staff shortages has lost its justification. Setup and operations moved to one person with an AI, and what remained, shared staff, turned out to be a shared blast radius. Checked against IDCF, three major outages in autumn 2025, and the numbers on companies moving back
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+---
+ifdef::lang-ja[]
+= 人手の共有は、爆心地の共有
+
+== 結論
+
+*人手不足を理由にした集中化は、理由を失った。* 人手不足の答えは共通基盤ではなく、AI を持った一人になった。そして残った「人手の共有」は、爆心地の共有でもあった。
+
+「集中化をやめる時期だ」とまでは言わない。集中する理由が一つ減った、が正確である。どの理由が減り、どの理由が残るかを分けて書く。
+
+== クラウドと共通基盤が売っていた四つのもの
+
+* *導入の手間。* ほぼ消えた。Debian 一台に Web サーバーと DB と控えの仕組みを立てるのは、AI に手順を書かせれば一晩の仕事になった(link:/debian-server/[サーバー編]はその手順そのものである)。
+* *運用の手間。* 大半が AI に移った。更新は自動、控えは timer、ログは貼って点検させる。残るのは「決める」部分だけで、それは委託しても残る。
+* *人手の共有。* 価値が反転した。夜中に見る人を共有していたつもりが、共有していたのは管理面と、その管理面が届く範囲だった。
+* *伸縮と置き場所。* ここだけは集中に理が残る。急に百倍になる負荷、DDoS の吸収、メール送信の評判、GPU の学習。ただし中小企業の基幹業務には当てはまらない。負荷は一台で足り、公開面は link:/ai-native-software/web/[借りた窓]で薄く覆えばよい。
+
+== 共有の規模は、一つの手違いが届く範囲
+
+2026年10月7日、IDCF クラウドの東日本第1リージョンが一度の侵入で丸ごと止まり、事業者は「スナップショットからの復元も困難、他リージョンでの再構築も当面推奨しない」と通知した(link:/blog/cloud-vanished/[前稿])。本体と控えと、別リージョンまでが、一つの管理面の下にあった。
+
+攻撃でなくても同じことが起きる。2025年の秋、AWS の us-east-1 が約15時間(10月20日、DynamoDB の DNS の競合)、Azure Front Door が約8時間(10月29日、設定変更)、Cloudflare が約6時間(11月18日、設定ファイルの肥大)止まった。三つとも自分の操作で止まっている。*共有の規模が大きいほど、一つの手違いが届く範囲も大きい。*
+
+守れる人が足りない時代に、人手の共有は「薄く伸ばした少人数で、巨大な爆心地を見る」構図になる。
+
+== 戻す企業の数字
+
+動きは、もう始まっている。Barclays の CIO 調査(2024年末)では 8 割超が「一部のワークロードを戻す」と答え、IDC は完全撤退を計画する企業を 8〜9% と見る。丸ごと戻すのは少数で、「部分的に戻す」が大勢だ。
+
+37signals は年 320 万ドルのクラウド費を、約 70 万ドルの機材を買って年 200 万ドル近く減らし、追加の人員なしで回していると自己申告している。負荷が安定した中堅企業の一例で、一般化はできないが、方向は示している。
+
+一方でクラウド市場は伸び続けている。Gartner は 2025 年の公共クラウド支出を前年比 21.5% 増と予測した(2024年11月)。だから「集中の終わり」ではない。*集中する理由のうち、人手不足という一本が折れた*、が正しい読みである。
+
+== 分散が効く条件
+
+分散すれば、守りの単位も分散する。放置された小さな箱が一万台あれば、攻撃側の AI はそれを機械的に舐める。*分散が効くのは、各箱が規律を持つ場合だけだ。* 入りも出も既定拒否(link:/debian-server/05-security-basics/[第5章])、更新は自動、耳は最小、控えは別の機械・別の場所・別の権限に(link:/debian-server/10-backup/[第10章])。この規律は、AI を持った一人が一台に対して守れる大きさに収まっている。だから分散の主張と、これらの手順は一組である。
+
+== 日本への読み替え
+
+日本の自治体システム標準化とガバメントクラウドは、「人手が足りないから共通化する」理屈で動いている。1,788 の自治体のうち 171 が 2025 年度末の期限に間に合わないとデジタル庁は公表した。共通化の難しさは、基幹を揃える難しさであって、人手の問題ではなかった。人手不足の答えが AI を持った一人に移った以上、共通化の理屈は、もう一度問い直される。
+
+'''
+
+== 関連
+
+* link:/blog/cloud-vanished/[クラウドが丸ごと消えた日 ── IDCF の事故から、五つの教訓] ── 前稿
+* link:/ai-native-software/ai-pc/[AI ネイティブなソフトウェア開発 2-02 AI に PC を一台渡す] ── 一人と一台の構え
+* link:/ai-native-software/web/[同 2-11 Web を公開する] ── 自分の一台か、借りた窓か
+* link:/debian-server/[Claudeと一緒に育てるDebian サーバー] ── 一台を規律をもって立てる手順
+
+== 出どころ
+
+. 37signals のクラウド撤退の節約額(Data Center Dynamics、2025年) ── https://www.datacenterdynamics.com/en/news/37signals-claims-it-saved-almost-2m-last-year-from-cloud-repatriation
+. Barclays CIO 調査と IDC の完全撤退率の読み方(Cloud Magazin、2026年6月) ── https://www.cloudmagazin.com/en/2026/06/10/cloud-repatriation-when-does-recovery-count/
+. AWS us-east-1 障害(2025年10月20日)の分析(InfoQ) ── https://www.infoq.com/news/2025/11/aws-disruption-cloud
+. Azure Front Door 障害(2025年10月29日)(The Stack) ── https://www.thestack.technology/azure-network-outage/
+. Cloudflare 障害(2025年11月18日) ── https://www.doublespark.co.uk/blog/cloudflare-outage-18-november-2025
+. Gartner、2025年の公共クラウド支出予測(2024年11月) ── https://www.gartner.com/en/newsroom/press-releases/2024-11-19-gartner-forecasts-worldwide-public-cloud-end-user-spending-to-total-723-billion-dollars-in-2025
+. デジタル庁、自治体システム標準化で移行困難な 171 団体(時事通信) ── https://sp.m.jiji.com/english/show/31624
+endif::[]
+ifdef::lang-en[]
+= Sharing Staff Means Sharing the Blast Radius
+
+== Conclusion
+
+*Centralization justified by staff shortages has lost its justification.* The answer to a staff shortage is no longer a shared platform but one person with an AI. And what remained, shared staff, turned out to be a shared blast radius as well.
+
+This does not go as far as "it is time to stop centralizing." The precise statement is that centralization has one reason fewer. Which reasons fell away and which remain is set out below.
+
+== The Four Things Cloud and Shared Platforms Sold
+
+* *Setup labor.* Mostly gone. Standing up a web server, a database, and a backup mechanism on one Debian machine became an evening's work once an AI writes the procedure (link:/en/debian-server/[the server series] is that procedure).
+* *Operations labor.* Mostly moved to the AI. Updates are automatic, backups run on a timer, logs are pasted in for inspection. What remains is the deciding, and that remains even if you outsource.
+* *Shared staff.* Its value reversed. You thought you were sharing the people who watch at night; what you were sharing was a management plane and everything it reaches.
+* *Elasticity and a place to sit.* Only here does centralization keep its case: load that suddenly grows a hundredfold, absorbing DDoS, mail-sending reputation, GPU training. None of this applies to the core business of a small or mid-sized company. One machine carries the load, and the public face can be covered thinly by a link:/en/ai-native-software/web/[borrowed window].
+
+== The Scale of Sharing Is the Reach of One Mistake
+
+On 7 October 2026 a single intrusion took down the whole of IDCF Cloud's East Japan Region 1, and the provider told customers that restoring from snapshots was difficult and that rebuilding in its other regions was not recommended for now (link:/en/blog/cloud-vanished/[previous piece]). The originals, the copies, and even the other regions sat under one management plane.
+
+The same thing happens without an attack. In autumn 2025, AWS us-east-1 was down for about 15 hours (20 October, a race in DynamoDB's DNS), Azure Front Door for about 8 hours (29 October, a configuration change), and Cloudflare for about 6 hours (18 November, an oversized configuration file). All three were stopped by their own operations. *The larger the scale of sharing, the farther one mistake reaches.*
+
+In an age short of people who can defend, shared staff becomes "a thin layer of a few people watching an enormous blast radius."
+
+== The Numbers on Companies Moving Back
+
+The movement has already begun. In Barclays' CIO survey (late 2024), more than 80% said they would move some workloads back, while IDC puts companies planning a full exit at 8–9%. Full exits are a minority; partial moves are the norm.
+
+37signals reports that it cut a $3.2 million annual cloud bill by nearly $2 million a year after buying about $700,000 of hardware, with no additional staff. It is one mid-sized company with stable load and cannot be generalized, but it shows the direction.
+
+Meanwhile the cloud market keeps growing: Gartner forecast public cloud spending in 2025 to rise 21.5% year on year (November 2024). So this is not the end of centralization. *Of the reasons to centralize, the one called staff shortage has snapped* — that is the correct reading.
+
+== The Condition Under Which Decentralization Works
+
+Decentralize, and the unit of defense decentralizes too. Ten thousand small neglected boxes will be combed through mechanically by the attackers' AI. *Decentralization works only when each box keeps a discipline.* Deny by default in and out (link:/en/debian-server/05-security-basics/[Chapter 5]), automatic updates, the fewest listening ears, and a copy on another machine, in another place, under another authority (link:/en/debian-server/10-backup/[Chapter 10]). That discipline fits within what one person with an AI can keep for one machine. So the case for decentralization and these procedures are one set.
+
+== Reading It for Japan
+
+Japan's standardization of municipal systems and its Government Cloud run on the logic "there are not enough people, so share." The Digital Agency has announced that 171 of 1,788 municipalities will miss the deadline at the end of fiscal 2025. The difficulty of sharing was the difficulty of aligning core systems, not a matter of staff. Now that the answer to staff shortages has moved to one person with an AI, the logic of sharing is up for questioning again.
+
+'''
+
+== Related
+
+* link:/en/blog/cloud-vanished/[The Day a Cloud Vanished — Five Lessons from the IDCF Incident] — the previous piece
+* link:/en/ai-native-software/ai-pc/[AI-Native Software Development 2-02 — Give the AI a PC] — one person and one machine
+* link:/en/ai-native-software/web/[2-11 — Publishing the Web] — your own machine, or a borrowed window
+* link:/en/debian-server/[Growing a Debian Server with Claude] — standing up one machine with discipline
+
+== References
+
+. 37signals' savings from leaving the cloud (Data Center Dynamics, 2025) — https://www.datacenterdynamics.com/en/news/37signals-claims-it-saved-almost-2m-last-year-from-cloud-repatriation
+. How to read the Barclays CIO survey and IDC's full-exit rate (Cloud Magazin, June 2026) — https://www.cloudmagazin.com/en/2026/06/10/cloud-repatriation-when-does-recovery-count/
+. Analysis of the AWS us-east-1 outage of 20 October 2025 (InfoQ) — https://www.infoq.com/news/2025/11/aws-disruption-cloud
+. Azure Front Door outage of 29 October 2025 (The Stack) — https://www.thestack.technology/azure-network-outage/
+. Cloudflare outage of 18 November 2025 — https://www.doublespark.co.uk/blog/cloudflare-outage-18-november-2025
+. Gartner, forecast of 2025 public cloud spending (November 2024) — https://www.gartner.com/en/newsroom/press-releases/2024-11-19-gartner-forecasts-worldwide-public-cloud-end-user-spending-to-total-723-billion-dollars-in-2025
+. Digital Agency: 171 municipalities facing difficulty with system standardization (Jiji Press) — https://sp.m.jiji.com/english/show/31624
+endif::[]

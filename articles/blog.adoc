@@ -14648,11 +14648,11 @@ endif::[]
 slug: project-folder-first
 title.ja: 文脈はフォルダーに書く ── Copilot の代わりに、プロジェクトフォルダーと Claude Code から始める
 title.en: Write the Context into a Folder — Instead of Copilot, Start with a Project Folder and Claude Code
-subtitle.ja: AI に文脈を渡す手間は本物だ。答えは文脈を集める層を買うことではなく、文脈を書く場所を持つこと。フォルダーを一つ作って、AI に見せる
-subtitle.en: The labor of handing context to an AI is real. The answer is not to buy a layer that gathers context but to have a place where context is written. Make one folder and show it to the AI
+subtitle.ja: AI に文脈を渡す手間は本物だ。答えは文脈を集める層を買うことではない。課題に対してフォルダーを作り、Claude Code の作業ディレクトリをそこにするだけ
+subtitle.en: The labor of handing context to an AI is real. The answer is not to buy a layer that gathers context. Make a folder for the task and set Claude Code's working directory to it
 date: 2026.10.08
-description.ja: Microsoft 365 Copilot の価値は「文脈を渡す作業を Microsoft 側が吸収した」ことだと、使う側が正確に書いている。散らばらせているのは Microsoft 365 の構造そのものだ。文脈を自分で書いた会社には、その層は要らない。最初の一歩は五つ
-description.en: A user of Microsoft 365 Copilot writes, accurately, that its value is that Microsoft absorbed the work of handing context to the AI. What scatters the context is the structure of Microsoft 365 itself. A company that writes its own context does not need that layer. The first step is five moves
+description.ja: Microsoft 365 Copilot の価値は「文脈を渡す作業を Microsoft 側が吸収した」ことだと、使う側が正確に書いている。散らばらせているのは Microsoft 365 の構造そのものだ。フォルダーを作って Claude Code の作業ディレクトリにするだけで、その層は要らない
+description.en: A user of Microsoft 365 Copilot writes, accurately, that its value is that Microsoft absorbed the work of handing context to the AI. What scatters the context is the structure of Microsoft 365 itself. Make a folder and set Claude Code's working directory to it, and that layer is not needed
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
@@ -14664,7 +14664,7 @@ ifdef::lang-ja[]
 
 Microsoft 365 Copilot を使い続ける理由を、使う側の人が正確に書いた投稿がある(皆実つづみ氏、2026年10月2日)。理由は AI が賢いからではなく、*AI に仕事の文脈を渡す作業そのものを、Microsoft 側が減らしてくれた*からだ、と。Teams の会話を拾い、メールを渡し、SharePoint の資料を探して AI に貼る手間を、Work IQ という層が吸収する。投稿者が引く公式価格は 1 ユーザー月額 4,497 円(税別・年払い、2026年10月時点)である。
 
-この観察は正しい。文脈を渡す手間は本物で、全社員にコンテキストエンジニアリングを求めるのは酷だ。だが答えは、文脈を集める層を買うことではない。*文脈を書く場所を持つことだ。* プロジェクトフォルダーを一つ作り、文脈をテキストで書き、Claude Code に見せる。それで同じ問題が消える。
+この観察は正しい。文脈を渡す手間は本物で、全社員にコンテキストエンジニアリングを求めるのは酷だ。だが答えは、文脈を集める層を買うことではない。*文脈の置き場所を持つことだ。* 課題に対してフォルダーを作り、Claude Code の作業ディレクトリをそこにする。それで同じ問題が消える。
 
 == Work IQ が解いている問題は、誰が作ったか
 
@@ -14672,20 +14672,16 @@ Microsoft 365 Copilot を使い続ける理由を、使う側の人が正確に�
 
 もう一つ。Work IQ は「そのユーザーとして実行」され、ユーザーが読めるものを全部読む。投稿者自身が、SharePoint の共有が雑なら「その雑な状態をものすごく高速に検索できるようになる」と書いている。全部を見るために全部に触れる製品で、link:/insights/defense-cannot-be-bought/[構造分析 3-10]の第四の形である。そして集められた文脈は、Microsoft の側に残る。文脈を会話ログに預けた会社は、AI を替えられない。
 
-== 最初の一歩、五つ
+== やること
 
-. *フォルダーを一つ作る。* 案件ごとに一つ。これが文脈の置き場所になる。git は要らない。履歴が欲しくなったら後から足せばよい。
-. *最初の一枚を書く。* `CLAUDE.md` に、この仕事は何か、決めたこと、決めていないこと、使う道具を書く。十行でよい。これが AI に渡す最初の仕様書になる(link:/ai-native-software/maintenance-shift/[1-02])。
-. *文書はテキストで置く。* 原稿は adoc、様式は後から。Word はフォルダーに置かない。メールも会議も、結論だけをその日のうちに adoc に写す(link:/ai-native-software/documents/[2-07])。
-. *Claude Code をそのフォルダーで開く。* 最初の一言は「このフォルダーを読んで、今日の仕事を整理して」。文脈は貼らない。読ませる。
-. *決まったことは書き戻す。* 会話は捨て、文脈は残す。翌日の AI は、昨日の会話ではなく、フォルダーを読んで始まる。
+課題に対してフォルダーを作り、Claude Code の作業ディレクトリをそこにするだけだ。AI はフォルダーを読んで始めるので、文脈を貼る作業はない。
 
 == 何が変わるか
 
-* *どの AI でも読める。* フォルダーはテキストなので、モデルは差し替えられる部品になる(link:/insights/ai-will-not-converge/[構造分析 3-09])。
+* *どの AI でも読める。* モデルは差し替えられる部品になる(link:/insights/ai-will-not-converge/[構造分析 3-09])。
 * *文脈が自分の側にある。* 会社が替わっても、契約が切れても、フォルダーは残る。
 * *AI に渡すのは仕事であって、root ではない。* AI が読むのはそのフォルダーだけで、メールも SharePoint も読まない。
-* *席の数ではなく、書く人から始まる。* 全社員に配らない。文脈を書く人が一人いればよく、それがビルダーである(link:/ai-native-software/builder/[1-04])。
+* *席の数ではなく、一人から始まる。* 全社員に配らない。一人いればよく、それがビルダーである(link:/ai-native-software/builder/[1-04])。
 
 全社員に CLI は使わせられない、という投稿者の指摘も正しい。だから全社員には使わせない。一人が一つのフォルダーで始め、動いたものから広げる。link:/ai-native-software/ai-pc/[2-02]の一台は、そのフォルダーを置く機械である。
 
@@ -14694,7 +14690,6 @@ Microsoft 365 Copilot を使い続ける理由を、使う側の人が正確に�
 == 関連
 
 * link:/ai-native-software/maintenance-shift/[AI ネイティブなソフトウェア開発 1-02 保守フェーズの構造変化こそ本質] ── 保守の単位は文脈へ
-* link:/ai-native-software/documents/[同 2-07 文書を取り戻す] ── 原稿は adoc
 * link:/ai-native-software/ai-pc/[同 2-02 AI に PC を一台渡す] ── フォルダーを置く一台
 * link:/insights/defense-cannot-be-bought/[構造分析 3-10 守りは買えない] ── 上から導入する AI は第四の形
 
@@ -14709,7 +14704,7 @@ ifdef::lang-en[]
 
 There is a post, by a user, that states precisely why they keep Microsoft 365 Copilot (Tsuzumi Minami, 2 October 2026). Not because the AI is smarter, but because *Microsoft reduced the very work of handing the AI the context of the job.* Picking up the Teams thread, passing the mail, finding the SharePoint file and pasting it in — a layer called Work IQ absorbs that labor. The official price the author cites is ¥4,497 per user per month (ex-tax, annual, as of October 2026).
 
-The observation is correct. The labor of handing over context is real, and demanding context engineering of every employee is harsh. But the answer is not to buy a layer that gathers context. *It is to have a place where context is written.* Make one project folder, write the context as text, and show it to Claude Code. The same problem disappears.
+The observation is correct. The labor of handing over context is real, and demanding context engineering of every employee is harsh. But the answer is not to buy a layer that gathers context. *It is to have a place where the context lives.* Make a folder for the task and set Claude Code's working directory to it. The same problem disappears.
 
 == Who created the problem Work IQ solves
 
@@ -14717,20 +14712,16 @@ Context is scattered across chat logs, mail, and attachments, so a layer is need
 
 One more thing. Work IQ "runs as the user" and reads everything the user can read. The author writes that if SharePoint sharing is sloppy, Copilot "lets you search that sloppy state at tremendous speed." It is a product that touches everything in order to see everything — the fourth form in link:/en/insights/defense-cannot-be-bought/[Structural Analysis 3-10]. And the gathered context stays on Microsoft's side. A company that has entrusted its context to chat logs cannot change its AI.
 
-== The first step, in five moves
+== What to do
 
-. *Make one folder.* One per project. This is where the context lives. Git is not required; add it later if you want the history.
-. *Write the first page.* In `CLAUDE.md`, write what this job is, what has been decided, what has not, and which tools are used. Ten lines will do. This is the first spec you hand to the AI (link:/en/ai-native-software/maintenance-shift/[1-02]).
-. *Keep documents as text.* Manuscripts in adoc; forms later. No Word files in the folder. From mail and meetings, copy only the conclusions into adoc, the same day (link:/en/ai-native-software/documents/[2-07]).
-. *Open Claude Code in that folder.* The first words: "Read this folder and lay out today's work." Do not paste context. Let it read.
-. *Write decisions back.* Discard the conversation, keep the context. Tomorrow's AI starts from the folder, not from yesterday's chat.
+Make a folder for the task and set Claude Code's working directory to it. That is all. The AI starts by reading the folder, so there is no work of pasting context.
 
 == What changes
 
-* *Any AI can read it.* The folder is text, so the model becomes a replaceable part (link:/en/insights/ai-will-not-converge/[Structural Analysis 3-09]).
+* *Any AI can read it.* The model becomes a replaceable part (link:/en/insights/ai-will-not-converge/[Structural Analysis 3-09]).
 * *The context is on your side.* Change company, let a contract lapse — the folder remains.
 * *What you hand the AI is work, not root.* The AI reads only that folder, never your mail or SharePoint.
-* *It starts with one writer, not with seat counts.* Do not distribute it to every employee. One person who writes the context is enough, and that person is the builder (link:/en/ai-native-software/builder/[1-04]).
+* *It starts with one person, not with seat counts.* Do not distribute it to every employee. One person is enough, and that person is the builder (link:/en/ai-native-software/builder/[1-04]).
 
 The author's point that you cannot make every employee use a CLI is also correct. So do not. One person starts with one folder, and what works spreads from there. The one machine of link:/en/ai-native-software/ai-pc/[2-02] is where that folder sits.
 
@@ -14739,7 +14730,6 @@ The author's point that you cannot make every employee use a CLI is also correct
 == Related
 
 * link:/en/ai-native-software/maintenance-shift/[AI-Native Software Development 1-02 — The Structural Shift Is in Maintenance] — the unit of maintenance moves to context
-* link:/en/ai-native-software/documents/[2-07 — Taking Documents Back] — manuscripts in adoc
 * link:/en/ai-native-software/ai-pc/[2-02 — Give the AI a PC] — the machine where the folder sits
 * link:/en/insights/defense-cannot-be-bought/[Structural Analysis 3-10 — Defense Cannot Be Bought] — AI from above as the fourth form
 

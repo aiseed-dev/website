@@ -14518,8 +14518,8 @@ title.en: Move to the Cloud and Harden It, and It Is Still Breached
 subtitle.ja: IDCF クラウドは侵入され、事業者は「スナップショットからの復元も困難、他リージョンも当面推奨しない」と通知した。守りを任せても、そのとき手元には何も残らない
 subtitle.en: IDCF Cloud was broken into, and the provider said snapshots could not be restored and its other regions were not recommended. Hand over the defense, and when it falls nothing remains in your hands
 date: 2026.10.08
-description.ja: クラウドにして守りを固めても、破られる。IDCF の事故で確かめる
-description.en: Move to the cloud and harden it, and it is still breached. Checked against the IDCF incident
+description.ja: 2026年10月、専業の事業者が運営する IDCF クラウドが侵入され、事業者は仮想マシンもスナップショットも復旧困難、他リージョンも当面推奨しないと通知した。戻せるのは、利用者が自分で持っていた控えだけである
+description.en: In October 2026, IDCF Cloud, run by a specialist provider, was broken into, and the provider said neither virtual machines nor snapshots could be recovered and other regions were not recommended. All that can be restored is the copy the customer kept themselves
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
@@ -14529,48 +14529,88 @@ ifdef::lang-ja[]
 
 == 結論
 
-*クラウドにして守りを固めても、破られる。*
+*クラウドにして守りを固めても、破られる。* 破られたとき、戻せるのは、利用者が自分で持っていた控えだけである。2026年10月の IDCF クラウドの事故は、このことを事業者自身の通知で示した。
 
-== 守りを固めたクラウドも、破られる
+== 何が起きたか
 
-2026年10月7日、IDCF クラウドの東日本第1リージョンが侵入され、丸ごと止まった。事業者は「スナップショットからの復元も困難、他リージョンでの再構築も当面推奨しない」と通知した(link:/blog/cloud-vanished/[前稿])。守りを専門の事業者に任せても、破られるときは破られる。そのとき、自分の手元には何も残らない。
+2026年10月7日の未明、IDCフロンティアの「IDCFクラウド」東日本第1リージョンに第三者が侵入し、ランサムウェアでリージョン全体が止まった。IDCフロンティアはソフトバンクの子会社で、クラウドを専業で運営する事業者である。
+
+このクラウドの上には、電話サービス、EC の在庫管理、セキュリティ製品の管理画面、音声認識アプリが載っていた。それぞれの利用者まで止まった。
+
+== 事業者の通知から分かること
+
+利用者向けの通知(第7報)には、次のことが書かれている。
+
+* 対象環境のデータと仮想マシンの復旧は、極めて困難である
+* スナップショットからの復元も、困難である
+* 他リージョンでの再構築は、安全性が確認できるまで推奨しない
+* データの復元は、利用者自身が持つバックアップからのみ可能である
+
+一つ目と二つ目から、事業者が取っていた控えも、本体と一緒に使えなくなったことが分かる。三つ目から、別のリージョンに移しても安全とは言えない状態だったことが分かる。四つ目は、クラウドの契約が以前から定めていたことを、事故の場で確かめたものである。
+
+== 守りは任せられても、控えは任せられない
+
+クラウドに移す理由の一つは、守りを専門の事業者に任せられることだった。今回、その事業者が破られた。事業者の側に戻せるものはなく、結果は、利用者の側に控えがあったかどうかで分かれた。
+
+侵入の経路と被害の正確な範囲は、この文章を書いた時点では公表されていない。それが分かっても、この結論は変わらない。どれだけ守りを固めても、破られる可能性は消えないからである。
 
 '''
 
 == 関連
 
-* link:/blog/cloud-vanished/[クラウドが丸ごと消えた日 ── IDCF の事故から、五つの教訓] ── 前稿
-* link:/ai-native-software/ai-pc/[AI ネイティブなソフトウェア開発 2-02 AI に PC を一台渡す] ── 一人と一台の構え
-* link:/ai-native-software/web/[同 2-11 Web を公開する] ── 自分の一台か、借りた窓か
-* link:/debian-server/[Claudeと一緒に育てるDebian サーバー] ── 一台を規律をもって立てる手順
+* link:/blog/cloud-vanished/[クラウドが丸ごと消えた日 ── IDCF の事故から、五つの教訓] ── 同じ事故から引いた教訓
+* link:/debian-server/10-backup/[Claudeと一緒に育てるDebian サーバー 第10章 データを守る] ── 控えを別の機械・別の場所・別の権限に置く手順
+* link:/insights/defense-cannot-be-bought/[構造分析 3-10 守りは買えない] ── 委託・製品・基盤が入口になった事例
 
 == 出どころ
 
 . ITmedia NEWS「IDCFクラウドに不正アクセス 東日本の第1リージョンで障害」(2026年10月7日) ── https://www.itmedia.co.jp/news/article/2610/07/2000002087/
+. IDCフロンティア「【障害連絡】IDCFクラウド障害発生のご連絡(第7報)」(2026年10月、利用者向け通知)
+. 影響を受けたサービスの一覧(セキュリティ対策Lab、2026年10月7日) ── https://rocket-boys.co.jp/security-measures-lab/idcf-cloud-outage-affected-services-2026/
 endif::[]
 ifdef::lang-en[]
 = Move to the Cloud and Harden It, and It Is Still Breached
 
 == Conclusion
 
-*Move to the cloud and harden it, and it is still breached.*
+*Move to the cloud and harden it, and it is still breached.* When it is breached, all that can be restored is the copy the customer kept themselves. The IDCF Cloud incident of October 2026 showed this through the provider's own notice.
 
-== A Hardened Cloud Is Still Breached
+== What Happened
 
-On 7 October 2026, IDCF Cloud's East Japan Region 1 was broken into and stopped entirely. The provider told customers that restoring from snapshots was difficult and that rebuilding in its other regions was not recommended for now (link:/en/blog/cloud-vanished/[previous piece]). Hand the defense to a specialist provider, and it is still breached when it is breached. When that happens, nothing remains in your own hands.
+In the early hours of 7 October 2026, a third party broke into East Japan Region 1 of IDCF Cloud, run by IDC Frontier, and ransomware stopped the whole region. IDC Frontier is a SoftBank subsidiary whose business is running cloud infrastructure.
+
+On top of this cloud sat telephone services, e-commerce inventory systems, the management consoles of security products, and a speech-recognition app. Each of their users was stopped too.
+
+== What the Provider's Notice Shows
+
+The notice to customers (seventh report) says the following.
+
+* Recovering the data and virtual machines in the affected environment is extremely difficult
+* Restoring from snapshots is also difficult
+* Rebuilding in other regions is not recommended until their safety is confirmed
+* Data can be restored only from backups the customers hold themselves
+
+The first two show that the copies the provider kept became unusable along with the originals. The third shows that moving to another region could not be called safe. The fourth confirms, at the scene of an incident, what cloud contracts had always stated.
+
+== Defense Can Be Handed Over; the Copy Cannot
+
+One reason to move to the cloud was that defense could be handed to a specialist provider. This time, that provider was breached. The provider had nothing to restore from, and the outcome split on whether the customer held a copy.
+
+The entry route and the exact extent of the damage had not been published when this was written. Knowing them will not change this conclusion, because however hard the defense, the possibility of a breach does not go away.
 
 '''
 
 == Related
 
-* link:/en/blog/cloud-vanished/[The Day a Cloud Vanished — Five Lessons from the IDCF Incident] — the previous piece
-* link:/en/ai-native-software/ai-pc/[AI-Native Software Development 2-02 — Give the AI a PC] — one person and one machine
-* link:/en/ai-native-software/web/[2-11 — Publishing the Web] — your own machine, or a borrowed window
-* link:/en/debian-server/[Growing a Debian Server with Claude] — standing up one machine with discipline
+* link:/en/blog/cloud-vanished/[The Day a Cloud Vanished — Five Lessons from the IDCF Incident] — lessons drawn from the same incident
+* link:/en/debian-server/10-backup/[Growing a Debian Server with Claude, Chapter 10 — Protecting Your Data] — keeping a copy on another machine, in another place, under another authority
+* link:/en/insights/defense-cannot-be-bought/[Structural Analysis 3-10 — Defense Cannot Be Bought] — cases where outsourcing, products, and platforms became the entrance
 
 == References
 
 . ITmedia NEWS, "Unauthorized access to IDCF Cloud; outage in East Japan Region 1" (7 October 2026) — https://www.itmedia.co.jp/news/article/2610/07/2000002087/
+. IDC Frontier, "IDCF Cloud incident notice (7th report)" (October 2026, notice to customers)
+. List of affected services (Security Measures Lab, 7 October 2026) — https://rocket-boys.co.jp/security-measures-lab/idcf-cloud-outage-affected-services-2026/
 endif::[]
 
 // ===== article: 048-project-folder-first =====

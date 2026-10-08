@@ -14513,23 +14513,23 @@ endif::[]
 // ===== article: 047-shared-blast-radius =====
 ---
 slug: shared-blast-radius
-title.ja: 人手の共有は、爆心地の共有 ── 集中化の理由が一つ減った
-title.en: Sharing Staff Means Sharing the Blast Radius — Centralization Just Lost One of Its Reasons
+title.ja: 人手を共有すると、事故も共有する ── 集中化の理由が一つ減った
+title.en: Share the Staff, Share the Failures — Centralization Just Lost One of Its Reasons
 subtitle.ja: クラウドと共通基盤が売っていたのは、導入の手間、運用の手間、人手の共有、伸縮と置き場所の四つ。前の三つは AI を持った一人に移った
 subtitle.en: Cloud and shared platforms sold four things: setup, operations, shared staff, and elasticity with a place to sit. The first three moved to one person with an AI
 date: 2026.10.08
-description.ja: 人手不足を理由にした集中化は、理由を失った。導入と運用の手間は AI を持った一人に移り、残った「人手の共有」は爆心地の共有でもあった。IDCF と 2025 年秋の三つの大障害、戻す企業の数字で確かめる
-description.en: Centralization justified by staff shortages has lost its justification. Setup and operations moved to one person with an AI, and what remained, shared staff, turned out to be a shared blast radius. Checked against IDCF, three major outages in autumn 2025, and the numbers on companies moving back
+description.ja: 人手不足を理由にした集中化は、理由を失った。導入と運用の手間は AI を持った一人に移り、残った「人手の共有」は事故の共有でもあった。IDCF と 2025 年秋の三つの大障害、戻す企業の数字で確かめる
+description.en: Centralization justified by staff shortages has lost its justification. Setup and operations moved to one person with an AI, and what remained, shared staff, turned out to mean shared failures. Checked against IDCF, three major outages in autumn 2025, and the numbers on companies moving back
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 ---
 ifdef::lang-ja[]
-= 人手の共有は、爆心地の共有
+= 人手を共有すると、事故も共有する
 
 == 結論
 
-*人手不足を理由にした集中化は、理由を失った。* 人手不足の答えは共通基盤ではなく、AI を持った一人になった。そして残った「人手の共有」は、爆心地の共有でもあった。
+*人手不足を理由にした集中化は、理由を失った。* 人手不足の答えは共通基盤ではなく、AI を持った一人になった。そして残った「人手の共有」は、事故の共有でもあった。
 
 「集中化をやめる時期だ」とまでは言わない。集中する理由が一つ減った、が正確である。どの理由が減り、どの理由が残るかを分けて書く。
 
@@ -14546,7 +14546,7 @@ ifdef::lang-ja[]
 
 攻撃でなくても同じことが起きる。2025年の秋、AWS の us-east-1 が約15時間(10月20日、DynamoDB の DNS の競合)、Azure Front Door が約8時間(10月29日、設定変更)、Cloudflare が約6時間(11月18日、設定ファイルの肥大)止まった。三つとも自分の操作で止まっている。*共有の規模が大きいほど、一つの手違いが届く範囲も大きい。*
 
-守れる人が足りない時代に、人手の共有は「薄く伸ばした少人数で、巨大な爆心地を見る」構図になる。
+守れる人が足りない時代に、人手の共有は「薄く伸ばした少人数で、巨大な範囲を見る」構図になる。
 
 == 戻す企業の数字
 
@@ -14584,11 +14584,11 @@ ifdef::lang-ja[]
 . デジタル庁、自治体システム標準化で移行困難な 171 団体(時事通信) ── https://sp.m.jiji.com/english/show/31624
 endif::[]
 ifdef::lang-en[]
-= Sharing Staff Means Sharing the Blast Radius
+= Share the Staff, Share the Failures
 
 == Conclusion
 
-*Centralization justified by staff shortages has lost its justification.* The answer to a staff shortage is no longer a shared platform but one person with an AI. And what remained, shared staff, turned out to be a shared blast radius as well.
+*Centralization justified by staff shortages has lost its justification.* The answer to a staff shortage is no longer a shared platform but one person with an AI. And what remained, shared staff, turned out to mean shared failures as well.
 
 This does not go as far as "it is time to stop centralizing." The precise statement is that centralization has one reason fewer. Which reasons fell away and which remain is set out below.
 
@@ -14605,7 +14605,7 @@ On 7 October 2026 a single intrusion took down the whole of IDCF Cloud's East Ja
 
 The same thing happens without an attack. In autumn 2025, AWS us-east-1 was down for about 15 hours (20 October, a race in DynamoDB's DNS), Azure Front Door for about 8 hours (29 October, a configuration change), and Cloudflare for about 6 hours (18 November, an oversized configuration file). All three were stopped by their own operations. *The larger the scale of sharing, the farther one mistake reaches.*
 
-In an age short of people who can defend, shared staff becomes "a thin layer of a few people watching an enormous blast radius."
+In an age short of people who can defend, shared staff becomes "a thin layer of a few people watching an enormous area."
 
 == The Numbers on Companies Moving Back
 

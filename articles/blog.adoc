@@ -14552,7 +14552,7 @@ ifdef::lang-ja[]
 
 動きは、もう始まっている。Barclays の CIO 調査(2024年末)では 8 割超が「一部のワークロードを戻す」と答え、IDC は完全撤退を計画する企業を 8〜9% と見る。丸ごと戻すのは少数で、「部分的に戻す」が大勢だ。
 
-37signals は年 320 万ドルのクラウド費を、約 70 万ドルの機材を買って年 200 万ドル近く減らし、追加の人員なしで回していると自己申告している。負荷が安定した中堅企業の一例で、一般化はできないが、方向は示している。
+37signals は年 320 万ドルのクラウド費を、約 70 万ドルの機材を買って年 200 万ドル近く減らし、追加の人員なしで回していると自己申告している。負荷が安定した中堅企業の例である。
 
 一方でクラウド市場は伸び続けている。Gartner は 2025 年の公共クラウド支出を前年比 21.5% 増と予測した(2024年11月)。だから「集中の終わり」ではない。*集中する理由のうち、人手不足という一本が折れた*、が正しい読みである。
 
@@ -14611,7 +14611,7 @@ In an age short of people who can defend, shared staff becomes "a thin layer of 
 
 The movement has already begun. In Barclays' CIO survey (late 2024), more than 80% said they would move some workloads back, while IDC puts companies planning a full exit at 8–9%. Full exits are a minority; partial moves are the norm.
 
-37signals reports that it cut a $3.2 million annual cloud bill by nearly $2 million a year after buying about $700,000 of hardware, with no additional staff. It is one mid-sized company with stable load and cannot be generalized, but it shows the direction.
+37signals reports that it cut a $3.2 million annual cloud bill by nearly $2 million a year after buying about $700,000 of hardware, with no additional staff. It is a mid-sized company with stable load.
 
 Meanwhile the cloud market keeps growing: Gartner forecast public cloud spending in 2025 to rise 21.5% year on year (November 2024). So this is not the end of centralization. *Of the reasons to centralize, the one called staff shortage has snapped* — that is the correct reading.
 

@@ -703,10 +703,11 @@ ____
 
 その設計書は、どこに住むのか。保守の単位が文脈に移るなら、文脈の置き場が、
 そのまま保守の基盤になる。答えは自立編で据える ── 原稿と同じく文字で持ち、
-git に入れる(link:/ai-native-software/code/[2-06: コードを手元に]・
-link:/ai-native-software/documents/[2-07: 文書を取り戻す])。文字なら、人も
-AI も同じものを読み、差分も履歴も残る。設計書が死ぬのは、文字でなく、
-履歴も残らない場所に置かれたときだ。
+課題ごとのフォルダーに置く(link:/ai-native-software/ai-pc/[2-02: AI に PC を一台渡す]・
+link:/ai-native-software/documents/[2-07: 文書を取り戻す])。git は必須ではない。
+履歴が欲しくなったら足す(link:/ai-native-software/code/[2-06: コードを手元に])。
+文字なら、人も AI も同じものを読む。設計書が死ぬのは、文字でない形で、
+AI の読めない場所に置かれたときだ。
 
 ここから、大きな帰結が一つ出る。*マニュアルを理解でき、それを現実に合わせ
 られる人なら、開発も保守もできる*。コードを読む必要も、書く必要もない。
@@ -884,11 +885,12 @@ the code.
 Where does that design document live? If the unit of maintenance moves to
 context, then where the context is kept becomes the foundation of maintenance
 itself. The Independence part settles it: hold it as text, like a manuscript,
-and commit it to git (link:/en/ai-native-software/code/[2-06: Bring Code
-In-House] and link:/en/ai-native-software/documents/[2-07: Take Documents
-Back]). As text, humans and AI read the same thing, and the diffs and the
-history stay. A design document dies when it is kept somewhere that is not
-text and keeps no history.
+in one folder per task (link:/en/ai-native-software/ai-pc/[2-02: Give the AI
+a PC] and link:/en/ai-native-software/documents/[2-07: Take Documents
+Back]). Git is not required; add it when you want the history
+(link:/en/ai-native-software/code/[2-06: Bring Code In-House]). As text,
+humans and AI read the same thing. A design document dies when it is kept
+in a form that is not text, in a place the AI cannot read.
 
 From here follows one large consequence. *Anyone who can understand the
 manual and fit it to their own reality can do both development and

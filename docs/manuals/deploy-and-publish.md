@@ -106,31 +106,12 @@ MCP サーバー・テーマ等だけ。代わりに **Tasks**（`.zed/tasks.jso
 
 ---
 
-## vegitage（野菜辞典）の取り込み
+## 野菜辞典・自然農法ページ(vegetage)
 
-`/vegitage/italian/…` は別プロジェクト `vegitage-data/` で生成し、シンボリックリンクで
-本体 `html/` に取り込む。デプロイは本体の Cloudflare 経路に相乗りする。
+野菜辞典は別リポジトリ `/home/dev/dev/vegetage`(aiseed-dev/vegetage)に帰属し、
+`aiseed.page` で公開する。この `html/` には取り込まない(シンボリックリンクは廃止した)。
+ビルドと公開は vegetage 側の手順に従う。
 
-正本パイプライン（詳細は `vegitage-data/README.md`）:
-
-```
-web/italian（人間確定稿） → web/build.py → web/site/italian（HTML）
-   → html/vegitage/italian（相対シンボリックリンク・追跡済み） → cloudflare_pages_deploy.py（リンクを辿る）
-```
-
-公開前にやること（本体ビルドの前に vegitage を1回ビルド）:
-
-```bash
-# 1. 野菜辞典をビルド（vegitage-data/ 内・専用venv）
-( cd vegitage-data && ./.venv/bin/python web/build.py )   # → web/site/italian/
-
-# 2. 本体をビルド＆確認＆デプロイ（このマニュアル上記の手順どおり）
-./.venv/bin/python tools/build_article.py --all
-./.venv/bin/python -m http.server --directory html 8000   # /vegitage/italian/ も確認
-./.venv/bin/python tools/cloudflare_pages_deploy.py html --project aiseed-dev --branch preview
-```
-
-- `html/vegitage/italian` はリンク（git 追跡済み）。リンク先 `vegitage-data/web/site/italian`
-  が未ビルドだとリンクは空振りし、`/vegitage/italian` は配信されない（壊れず欠落するだけ）。
-- `cloudflare_pages_deploy.py` はシンボリックリンクを辿って実体を配信する（対応済み）。
-- vegitage の依存（markdown・pyyaml）は `vegitage-data/.venv` に入れる（本体の `./.venv` とは別）。
+- 旧 URL `/vegitage/*` は `html/_redirects` の 301 で `https://aiseed.page/:splat` へ送る。
+- 自然農法・Light Farming・畑の記録・連載「リン資源枯渇と自然農法」も vegetage へ移行中
+  (2026-10-08 開始)。新しい URL が配信されてから、ここから削除して 301 を張る。

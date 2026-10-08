@@ -14460,7 +14460,7 @@ ifdef::lang-ja[]
 . *リージョンを分けても、管理面が一つなら障害領域は一つ。* 事業者自身が「他リージョンも当面推奨しない」と言った。地理の分散と、権限の分散は別のものである。
 . *委託の鎖の上にいる人ほど、契約を読んでいない。* クラウドの契約は昔から、データの控えを利用者の責任としている。SaaS に載せた会社も、その SaaS の利用者も、下の段が控えを持っていると思っていた。
 . *守る側の人数が、守れる範囲を決める。* 24時間監視をうたう基盤でも、見る人がいなければ看板にすぎない。自分の一台なら、管理面を握るのは自分一人で、障害領域もその一台で閉じる。
-. *教訓は読み物ではなく手順に置く。* 最初の二つは、link:/debian-server/10-backup/[サーバー編の第10章]の 3-2-1 ルールの項に書き足した。読んだだけの教訓は、次の事故までに消える。
+. *自社でやれるようにする。* 控えを取る・戻す・一台を立て直す、を自社の人が自社の機械でやった経験を持つ。委託先に「やっておいて」と言った瞬間、三段の鎖に戻る。手順は link:/debian-server/[サーバー編]に置き、最初の二つは link:/debian-server/10-backup/[第10章]の 3-2-1 ルールに書き足した。
 
 '''
 
@@ -14493,7 +14493,7 @@ Anyone who wants the details can have an AI look them up. What stays here is the
 . *Separate regions are one failure domain if the management plane is one.* The provider itself said its other regions were not recommended for now. Geographic separation and separation of authority are different things.
 . *The higher you sit in the chain of outsourcing, the less you have read the contract.* Cloud contracts have always made the customer responsible for keeping a copy of the data. The company that put its service on the cloud, and the users of that service, each assumed the tier below held a copy.
 . *The number of defenders decides what can be defended.* A platform that advertises 24-hour monitoring is a signboard if nobody is looking. On a machine of your own, one person holds the management plane, and the failure domain closes at that one machine.
-. *Put lessons in procedures, not in reading matter.* The first two were added to the 3-2-1 rule in link:/en/debian-server/10-backup/[Chapter 10 of the server series]. A lesson that was only read is gone by the next incident.
+. *Be able to do it in-house.* Your own people, on your own machine, have taken a copy, restored it, and rebuilt a server. The moment you tell a contractor "take care of it," you are back in the three-tier chain. The procedures are in link:/en/debian-server/[the server series]; the first two lessons were added to the 3-2-1 rule in link:/en/debian-server/10-backup/[Chapter 10].
 
 '''
 

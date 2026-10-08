@@ -14529,7 +14529,7 @@ ifdef::lang-ja[]
 
 == 結論
 
-*人手不足を理由にした集中化は、理由を失った。* 人手不足の答えは共通基盤ではなく、AI を持った一人になった。一方で、同じ基盤に集まる弱さは変わらない。集まれば、一つの事故で全員が止まる。
+*人手不足を理由にした集中化は、理由を失った。* 同じ基盤に集まる弱さは変わらない。集まれば、一つの事故で全員が止まる。
 
 「集中化をやめる時期だ」とまでは言わない。集中する理由が一つ減った、が正確である。どの理由が減り、どの理由が残るかを分けて書く。
 
@@ -14562,7 +14562,7 @@ ifdef::lang-ja[]
 
 == 日本への読み替え
 
-日本の自治体システム標準化とガバメントクラウドは、「人手が足りないから共通化する」理屈で動いている。1,788 の自治体のうち 171 が 2025 年度末の期限に間に合わないとデジタル庁は公表した。共通化の難しさは、基幹を揃える難しさであって、人手の問題ではなかった。人手不足の答えが AI を持った一人に移った以上、共通化の理屈は、もう一度問い直される。
+日本の自治体システム標準化とガバメントクラウドは、「人手が足りないから共通化する」理屈で動いている。1,788 の自治体のうち 171 が 2025 年度末の期限に間に合わないとデジタル庁は公表した。共通化の難しさは、基幹を揃える難しさであって、人手の問題ではなかった。
 
 '''
 
@@ -14588,7 +14588,7 @@ ifdef::lang-en[]
 
 == Conclusion
 
-*Centralization justified by staff shortages has lost its justification.* The answer to a staff shortage is no longer a shared platform but one person with an AI. Meanwhile the weakness of gathering on one platform has not changed. Gather, and one incident stops everyone.
+*Centralization justified by staff shortages has lost its justification.* The weakness of gathering on one platform has not changed. Gather, and one incident stops everyone.
 
 This does not go as far as "it is time to stop centralizing." The precise statement is that centralization has one reason fewer. Which reasons fell away and which remain is set out below.
 
@@ -14621,7 +14621,7 @@ Decentralize, and the unit of defense decentralizes too. Ten thousand small negl
 
 == Reading It for Japan
 
-Japan's standardization of municipal systems and its Government Cloud run on the logic "there are not enough people, so share." The Digital Agency has announced that 171 of 1,788 municipalities will miss the deadline at the end of fiscal 2025. The difficulty of sharing was the difficulty of aligning core systems, not a matter of staff. Now that the answer to staff shortages has moved to one person with an AI, the logic of sharing is up for questioning again.
+Japan's standardization of municipal systems and its Government Cloud run on the logic "there are not enough people, so share." The Digital Agency has announced that 171 of 1,788 municipalities will miss the deadline at the end of fiscal 2025. The difficulty of sharing was the difficulty of aligning core systems, not a matter of staff.
 
 '''
 

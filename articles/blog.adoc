@@ -14518,8 +14518,8 @@ title.en: Move to the Cloud and Harden It, and It Is Still Breached
 subtitle.ja: IDCF クラウドは侵入され、事業者は「スナップショットからの復元も困難、他リージョンも当面推奨しない」と通知した。守りを任せても、そのとき手元には何も残らない
 subtitle.en: IDCF Cloud was broken into, and the provider said snapshots could not be restored and its other regions were not recommended. Hand over the defense, and when it falls nothing remains in your hands
 date: 2026.10.08
-description.ja: クラウドにして守りを固めても、破られる。IDCF の事故と、戻す企業の数字で確かめる
-description.en: Move to the cloud and harden it, and it is still breached. Checked against the IDCF incident and the numbers on companies moving back
+description.ja: クラウドにして守りを固めても、破られる。IDCF の事故で確かめる
+description.en: Move to the cloud and harden it, and it is still breached. Checked against the IDCF incident
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
@@ -14535,18 +14535,6 @@ ifdef::lang-ja[]
 
 2026年10月7日、IDCF クラウドの東日本第1リージョンが侵入され、丸ごと止まった。事業者は「スナップショットからの復元も困難、他リージョンでの再構築も当面推奨しない」と通知した(link:/blog/cloud-vanished/[前稿])。守りを専門の事業者に任せても、破られるときは破られる。そのとき、自分の手元には何も残らない。
 
-== 戻す企業の数字
-
-動きは、もう始まっている。Barclays の CIO 調査(2024年末)では 8 割超が「一部のワークロードを戻す」と答え、IDC は完全撤退を計画する企業を 8〜9% と見る。丸ごと戻すのは少数で、「部分的に戻す」が大勢だ。
-
-37signals は年 320 万ドルのクラウド費を、約 70 万ドルの機材を買って年 200 万ドル近く減らし、追加の人員なしで回していると自己申告している。負荷が安定した中堅企業の例である。
-
-一方でクラウド市場は伸び続けている。Gartner は 2025 年の公共クラウド支出を前年比 21.5% 増と予測した(2024年11月)。だから「集中の終わり」ではない。
-
-== 日本への読み替え
-
-日本の自治体システム標準化とガバメントクラウドは、「人手が足りないから共通化する」理屈で動いている。1,788 の自治体のうち 171 が 2025 年度末の期限に間に合わないとデジタル庁は公表した。共通化の難しさは、基幹を揃える難しさであって、人手の問題ではなかった。
-
 '''
 
 == 関連
@@ -14558,10 +14546,7 @@ ifdef::lang-ja[]
 
 == 出どころ
 
-. 37signals のクラウド撤退の節約額(Data Center Dynamics、2025年) ── https://www.datacenterdynamics.com/en/news/37signals-claims-it-saved-almost-2m-last-year-from-cloud-repatriation
-. Barclays CIO 調査と IDC の完全撤退率の読み方(Cloud Magazin、2026年6月) ── https://www.cloudmagazin.com/en/2026/06/10/cloud-repatriation-when-does-recovery-count/
-. Gartner、2025年の公共クラウド支出予測(2024年11月) ── https://www.gartner.com/en/newsroom/press-releases/2024-11-19-gartner-forecasts-worldwide-public-cloud-end-user-spending-to-total-723-billion-dollars-in-2025
-. デジタル庁、自治体システム標準化で移行困難な 171 団体(時事通信) ── https://sp.m.jiji.com/english/show/31624
+. ITmedia NEWS「IDCFクラウドに不正アクセス 東日本の第1リージョンで障害」(2026年10月7日) ── https://www.itmedia.co.jp/news/article/2610/07/2000002087/
 endif::[]
 ifdef::lang-en[]
 = Move to the Cloud and Harden It, and It Is Still Breached
@@ -14574,18 +14559,6 @@ ifdef::lang-en[]
 
 On 7 October 2026, IDCF Cloud's East Japan Region 1 was broken into and stopped entirely. The provider told customers that restoring from snapshots was difficult and that rebuilding in its other regions was not recommended for now (link:/en/blog/cloud-vanished/[previous piece]). Hand the defense to a specialist provider, and it is still breached when it is breached. When that happens, nothing remains in your own hands.
 
-== The Numbers on Companies Moving Back
-
-The movement has already begun. In Barclays' CIO survey (late 2024), more than 80% said they would move some workloads back, while IDC puts companies planning a full exit at 8–9%. Full exits are a minority; partial moves are the norm.
-
-37signals reports that it cut a $3.2 million annual cloud bill by nearly $2 million a year after buying about $700,000 of hardware, with no additional staff. It is a mid-sized company with stable load.
-
-Meanwhile the cloud market keeps growing: Gartner forecast public cloud spending in 2025 to rise 21.5% year on year (November 2024). So this is not the end of centralization.
-
-== Reading It for Japan
-
-Japan's standardization of municipal systems and its Government Cloud run on the logic "there are not enough people, so share." The Digital Agency has announced that 171 of 1,788 municipalities will miss the deadline at the end of fiscal 2025. The difficulty of sharing was the difficulty of aligning core systems, not a matter of staff.
-
 '''
 
 == Related
@@ -14597,10 +14570,7 @@ Japan's standardization of municipal systems and its Government Cloud run on the
 
 == References
 
-. 37signals' savings from leaving the cloud (Data Center Dynamics, 2025) — https://www.datacenterdynamics.com/en/news/37signals-claims-it-saved-almost-2m-last-year-from-cloud-repatriation
-. How to read the Barclays CIO survey and IDC's full-exit rate (Cloud Magazin, June 2026) — https://www.cloudmagazin.com/en/2026/06/10/cloud-repatriation-when-does-recovery-count/
-. Gartner, forecast of 2025 public cloud spending (November 2024) — https://www.gartner.com/en/newsroom/press-releases/2024-11-19-gartner-forecasts-worldwide-public-cloud-end-user-spending-to-total-723-billion-dollars-in-2025
-. Digital Agency: 171 municipalities facing difficulty with system standardization (Jiji Press) — https://sp.m.jiji.com/english/show/31624
+. ITmedia NEWS, "Unauthorized access to IDCF Cloud; outage in East Japan Region 1" (7 October 2026) — https://www.itmedia.co.jp/news/article/2610/07/2000002087/
 endif::[]
 
 // ===== article: 048-project-folder-first =====

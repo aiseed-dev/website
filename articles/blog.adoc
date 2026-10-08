@@ -14676,6 +14676,8 @@ Microsoft 365 Copilot を使い続ける理由を、使う側の人が正確に�
 
 課題に対してフォルダーを作り、Claude Code の作業ディレクトリをそこにするだけだ。AI はフォルダーを読んで始めるので、文脈を貼る作業はない。
 
+メールなら、もっと簡単だ。*メールの文章を AI に貼り付けて聞けばいい。* Work IQ が省いているのは、この貼り付けである。
+
 == 何が変わるか
 
 * *どの AI でも読める。* モデルは差し替えられる部品になる(link:/insights/ai-will-not-converge/[構造分析 3-09])。
@@ -14715,6 +14717,8 @@ One more thing. Work IQ "runs as the user" and reads everything the user can rea
 == What to do
 
 Make a folder for the task and set Claude Code's working directory to it. That is all. The AI starts by reading the folder, so there is no work of pasting context.
+
+Mail is simpler still. *Paste the text of the mail into the AI and ask.* What Work IQ saves you is this paste.
 
 == What changes
 

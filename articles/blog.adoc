@@ -14664,7 +14664,7 @@ ifdef::lang-ja[]
 
 Microsoft 365 Copilot を使い続ける理由を、使う側の人が正確に書いた投稿がある(皆実つづみ氏、2026年10月2日)。理由は AI が賢いからではなく、*AI に仕事の文脈を渡す作業そのものを、Microsoft 側が減らしてくれた*からだ、と。Teams の会話を拾い、メールを渡し、SharePoint の資料を探して AI に貼る手間を、Work IQ という層が吸収する。投稿者が引く公式価格は 1 ユーザー月額 4,497 円(税別・年払い、2026年10月時点)である。
 
-この観察は正しい。文脈を渡す手間は本物で、全社員にコンテキストエンジニアリングを求めるのは酷だ。だが答えは、文脈を集める層を買うことではない。*文脈の置き場所を持つことだ。* 課題に対してフォルダーを作り、Claude Code の作業ディレクトリをそこにする。それで同じ問題が消える。
+この観察は正しい。文脈を渡す手間は本物で、全社員にコンテキストエンジニアリングを求めるのは酷だ。だが答えは、文脈を集める層を買うことではない。*文脈の置き場所を持つことだ。* 課題に対してフォルダーを作り、Claude Code の作業ディレクトリをそこにして、新規セッションを作る。それで同じ問題が消える。
 
 == Work IQ が解いている問題は、誰が作ったか
 
@@ -14674,9 +14674,7 @@ Microsoft 365 Copilot を使い続ける理由を、使う側の人が正確に�
 
 == やること
 
-課題に対してフォルダーを作り、Claude Code の作業ディレクトリをそこにするだけだ。AI はフォルダーを読んで始めるので、文脈を貼る作業はない。
-
-メールなら、もっと簡単だ。*メールの文章を AI に貼り付けて聞けばいい。* Work IQ が省いているのは、この貼り付けである。
+課題に対してフォルダーを作り、Claude Code の作業ディレクトリをそこにして、新規セッションを作るだけだ。関係するメールが来れば、文面をチャットにコピーペーストすればいい。*AI はフォルダーを読み、過去のチャット履歴を持っているので、文脈を貼る作業はない。* Work IQ が省いているのは、このコピーペーストである。
 
 == 何が変わるか
 
@@ -14706,7 +14704,7 @@ ifdef::lang-en[]
 
 There is a post, by a user, that states precisely why they keep Microsoft 365 Copilot (Tsuzumi Minami, 2 October 2026). Not because the AI is smarter, but because *Microsoft reduced the very work of handing the AI the context of the job.* Picking up the Teams thread, passing the mail, finding the SharePoint file and pasting it in — a layer called Work IQ absorbs that labor. The official price the author cites is ¥4,497 per user per month (ex-tax, annual, as of October 2026).
 
-The observation is correct. The labor of handing over context is real, and demanding context engineering of every employee is harsh. But the answer is not to buy a layer that gathers context. *It is to have a place where the context lives.* Make a folder for the task and set Claude Code's working directory to it. The same problem disappears.
+The observation is correct. The labor of handing over context is real, and demanding context engineering of every employee is harsh. But the answer is not to buy a layer that gathers context. *It is to have a place where the context lives.* Make a folder for the task, set Claude Code's working directory to it, and start a new session. The same problem disappears.
 
 == Who created the problem Work IQ solves
 
@@ -14716,9 +14714,7 @@ One more thing. Work IQ "runs as the user" and reads everything the user can rea
 
 == What to do
 
-Make a folder for the task and set Claude Code's working directory to it. That is all. The AI starts by reading the folder, so there is no work of pasting context.
-
-Mail is simpler still. *Paste the text of the mail into the AI and ask.* What Work IQ saves you is this paste.
+Make a folder for the task, set Claude Code's working directory to it, and start a new session. That is all. When a related mail arrives, copy and paste its text into the chat. *The AI reads the folder and holds the past chat history, so there is no work of pasting context.* What Work IQ saves you is this copy and paste.
 
 == What changes
 

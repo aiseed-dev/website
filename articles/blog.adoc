@@ -14668,7 +14668,7 @@ Microsoft 365 Copilot を使い続ける理由を、使う側の人が正確に�
 
 == Work IQ が解いている問題は、誰が作ったか
 
-文脈が会話ログとメールと添付の中に散らばっているから、横断して集める層が要る。散らばらせているのは Microsoft 365 の構造そのものだ。Word は文脈をテキストとして持ち出せず、Teams の会話はフォルダーに置けない。自分で作った問題に、月 4,497 円で解を売る。
+文脈が会話ログとメールと添付の中に散らばっているから、横断して集める層が要る。散らばらせているのは Microsoft 365 の構造そのものだ。Microsoft 365 では文書が共有フォルダーに住むので、課題ごとのフォルダーを作業ディレクトリにする、というやり方がしづらい。自分で作った問題に、月 4,497 円で解を売る。
 
 もう一つ。Work IQ は「そのユーザーとして実行」され、ユーザーが読めるものを全部読む。投稿者自身が、SharePoint の共有が雑なら「その雑な状態をものすごく高速に検索できるようになる」と書いている。全部を見るために全部に触れる製品で、link:/insights/defense-cannot-be-bought/[構造分析 3-10]の第四の形である。そして集められた文脈は、Microsoft の側に残る。文脈を会話ログに預けた会社は、AI を替えられない。
 
@@ -14708,7 +14708,7 @@ The observation is correct. The labor of handing over context is real, and deman
 
 == Who created the problem Work IQ solves
 
-Context is scattered across chat logs, mail, and attachments, so a layer is needed to gather it. What scatters it is the structure of Microsoft 365 itself. Word cannot carry context out as text; a Teams thread cannot be placed in a folder. A problem of one's own making, with a solution sold at ¥4,497 a month.
+Context is scattered across chat logs, mail, and attachments, so a layer is needed to gather it. What scatters it is the structure of Microsoft 365 itself. In Microsoft 365, documents live in shared folders, so making one folder per task the working directory is hard to do. A problem of one's own making, with a solution sold at ¥4,497 a month.
 
 One more thing. Work IQ "runs as the user" and reads everything the user can read. The author writes that if SharePoint sharing is sloppy, Copilot "lets you search that sloppy state at tremendous speed." It is a product that touches everything in order to see everything — the fourth form in link:/en/insights/defense-cannot-be-bought/[Structural Analysis 3-10]. And the gathered context stays on Microsoft's side. A company that has entrusted its context to chat logs cannot change its AI.
 

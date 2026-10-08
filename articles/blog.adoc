@@ -14674,7 +14674,7 @@ Microsoft 365 Copilot を使い続ける理由を、使う側の人が正確に�
 
 == やること
 
-課題に対してフォルダーを作り、Claude Code の作業ディレクトリをそこにして、新規セッションを作るだけだ。関係するメールが来れば、文面をチャットにコピーペーストすればいい。*AI はフォルダーを読み、過去のチャット履歴を持っているので、文脈を貼る作業はない。* Work IQ が省いているのは、このコピーペーストである。
+課題に対してフォルダーを作り、Claude Code の作業ディレクトリをそこにして、新規セッションを作るだけだ。関係するメールが来れば、文面をチャットにコピーペーストすればいい。*AI はフォルダーを読み、過去のチャット履歴を持っているので、文脈を貼る作業はない。*
 
 == 何が変わるか
 
@@ -14714,7 +14714,7 @@ One more thing. Work IQ "runs as the user" and reads everything the user can rea
 
 == What to do
 
-Make a folder for the task, set Claude Code's working directory to it, and start a new session. That is all. When a related mail arrives, copy and paste its text into the chat. *The AI reads the folder and holds the past chat history, so there is no work of pasting context.* What Work IQ saves you is this copy and paste.
+Make a folder for the task, set Claude Code's working directory to it, and start a new session. That is all. When a related mail arrives, copy and paste its text into the chat. *The AI reads the folder and holds the past chat history, so there is no work of pasting context.*
 
 == What changes
 

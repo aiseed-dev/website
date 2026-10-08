@@ -14518,8 +14518,8 @@ title.en: Move to the Cloud and Harden It, and It Is Still Breached — Centrali
 subtitle.ja: クラウドと共通基盤が売っていたのは、導入の手間、運用の手間、運用を任せる人、伸縮と置き場所の四つ。前の三つは AI を持った一人に移った
 subtitle.en: Cloud and shared platforms sold four things: setup, operations, people to run it for you, and elasticity with a place to sit. The first three moved to one person with an AI
 date: 2026.10.08
-description.ja: AI を持った一人で、サーバーを回せるようになった。人手不足は集中化の理由として弱くなった。クラウドにして守りを固めても、破られる。IDCF の事故と、戻す企業の数字で確かめる
-description.en: One person with an AI can now run a server. Staff shortage has weakened as a reason to centralize. Move to the cloud and harden it, and it is still breached. Checked against the IDCF incident and the numbers on companies moving back
+description.ja: クラウドにして守りを固めても、破られる。IDCF の事故と、戻す企業の数字で確かめる
+description.en: Move to the cloud and harden it, and it is still breached. Checked against the IDCF incident and the numbers on companies moving back
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
@@ -14528,8 +14528,6 @@ ifdef::lang-ja[]
 = クラウドにして守りを固めても、破られる
 
 == 結論
-
-*AI を持った一人で、サーバーを回せるようになった。* 人手不足は、集中化の理由として弱くなった。
 
 *クラウドにして守りを固めても、破られる。*
 
@@ -14552,7 +14550,7 @@ ifdef::lang-ja[]
 
 37signals は年 320 万ドルのクラウド費を、約 70 万ドルの機材を買って年 200 万ドル近く減らし、追加の人員なしで回していると自己申告している。負荷が安定した中堅企業の例である。
 
-一方でクラウド市場は伸び続けている。Gartner は 2025 年の公共クラウド支出を前年比 21.5% 増と予測した(2024年11月)。だから「集中の終わり」ではない。*集中する理由のうち、人手不足という一本が折れた*、が正しい読みである。
+一方でクラウド市場は伸び続けている。Gartner は 2025 年の公共クラウド支出を前年比 21.5% 増と予測した(2024年11月)。だから「集中の終わり」ではない。
 
 == 分散が効く条件
 
@@ -14583,8 +14581,6 @@ ifdef::lang-en[]
 
 == Conclusion
 
-*One person with an AI can now run a server.* Staff shortage has weakened as a reason to centralize.
-
 *Move to the cloud and harden it, and it is still breached.*
 
 This does not go as far as "it is time to stop centralizing." The precise statement is that centralization has one reason fewer. Which reasons fell away and which remain is set out below.
@@ -14606,7 +14602,7 @@ The movement has already begun. In Barclays' CIO survey (late 2024), more than 8
 
 37signals reports that it cut a $3.2 million annual cloud bill by nearly $2 million a year after buying about $700,000 of hardware, with no additional staff. It is a mid-sized company with stable load.
 
-Meanwhile the cloud market keeps growing: Gartner forecast public cloud spending in 2025 to rise 21.5% year on year (November 2024). So this is not the end of centralization. *Of the reasons to centralize, the one called staff shortage has snapped* — that is the correct reading.
+Meanwhile the cloud market keeps growing: Gartner forecast public cloud spending in 2025 to rise 21.5% year on year (November 2024). So this is not the end of centralization.
 
 == The Condition Under Which Decentralization Works
 

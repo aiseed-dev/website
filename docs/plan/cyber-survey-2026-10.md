@@ -38,6 +38,7 @@
 | 21 | 2026-04-29→08-04 | 「Mini Shai-Hulud」:SAP CAP→172 パッケージ→@antv→keyv/cacheable | 不明 | preinstall で Bun を落としスティーラー実行、npm トークンで自己増殖 | ○ | CI/CD・クラウド・SSH の秘密情報 | 8 月までに 2,225 コンポーネント版(Sonatype) | https://www.sonatype.com/blog/mini-shai-hulud-npm-attack-more-than-2200-components-impacted |
 | 22 | 2025-01〜 / 02-20 検知 | Oracle Health(旧 Cerner)旧サーバ→米病院 | 不明 | 「compromised customer credentials」で未移行の旧サーバへ | △ | 患者データ複製 | Oracle は顧客通知のみ | https://bleepingcomputer.com/news/security/oracle-health-breach-compromises-patient-data-at-us-hospitals |
 | 23 | 2026-08〜09 | ConnectWise ScreenConnect 利用 MSP | 不明 | クライアント側の権限管理不備 CVE-2026-84869 | ○(RMM) | 無承認のファイル転送・実行 | CISA KEV 2026-09-11 | https://cyber.gc.ca/fr/alertes-avis/bulletin-securite-connectwise-av26-903 |
+| 24 | 2026-10-07 03:40 ごろ | IDCF クラウド 東日本第 1 リージョン(IDC フロンティア=ソフトバンク子会社、IaaS 基盤)→上に載る SaaS(電話・EC 在庫・セキュリティ製品の管理画面・音声認識)→その利用者 | 未公表(管理コンソール改ざんページの声明は無署名。ESXi 239 台・データストア 225・スナップショット 55 万本を 7 分で暗号化と主張、未確認) | 未公表 | ○(基盤事業者が被害。利用者→SaaS→基盤の三段) | ハイパーバイザー層(ESXi)。本体と同じ基盤上のスナップショットも消失。事業者は「他リージョンでの再構築も当面推奨しない」(管理面の共有を示唆) | 第 7 報:仮想マシン・データの復旧は極めて困難、スナップショットからの復元も困難、復元は利用者自身のバックアップからのみ | https://www.itmedia.co.jp/news/article/2610/07/2000002087/ ・ https://rocket-boys.co.jp/security-measures-lab/idcf-cloud-outage-affected-services-2026/ ・ 声明の読み解き https://note.com/offtrack_notes/n/nbb12712b0e4d |
 
 比較(期間外):イセトー 2024-05(VPN から侵入、委託元多数に波及。再発防止「VPN 廃止と認証強化」https://www.iseto.co.jp/news/news_202410.html)、KADOKAWA 2024-06(従業員のフィッシング、委託先経路ではない)、Snowflake 2024(約 165 組織。インフォスティーラー由来の認証情報、MFA なし、「契約業者が私用兼用端末で作業」https://cloud.google.com/blog/topics/threat-intelligence/unc5537-snowflake-data-theft-extortion)。
 
@@ -165,9 +166,16 @@
 - 効く範囲:独自 C2、Rclone→攻撃者サーバ、Telegram、Discord、トンネル(7844)、未知のドメインへのツール取得。効かない範囲:許された宛先(GitHub、Azure、Graph、Cloudflare)への持ち出し、inbound の応答で出る鍵、暗号化経路の中身。
 - 小規模運用で現実的なのは、nftables の既定拒否 + systemd の `IPAddressAllow` + 送信プロキシでのドメイン許可、の三層。壊れる物(apt、ACME、NTP、GitHub、webhook)は一つずつ経路を決めれば済む。
 
+**追記 2026-10-08 ── IDCF(表の 24)が示す第三の形**
+- 委託先の特権の最大形は、基盤事業者の管理面(ハイパーバイザー層)である。そこを取られると、利用者が何段上にいても、本体とスナップショットが同じ爆心地で一緒に消える。事業者自身が「他リージョンでの再構築も当面推奨しない」と言った事実は、リージョン間で管理面(資格情報・経路)が共有されていた疑いを示す。地理の分散と権限の分散は別物。
+- 利用者→SaaS→基盤の三段で、各段が「下の段が控えを持っている」と思っていた。契約(責任共有)はデータの控えを利用者の責任にしているが、鎖の上にいる人ほど読んでいない。
+- 「24 時間監視」の基盤で脅迫文 225 本が 7 時間見つからなかったという主張(未確認)は、別メモの「守れる人が不足する」の実例になりうる。
+- 発注者の論点(2026-10-08):サーバーの集中化をやめる時期ではないか。AI で導入と運用の手間が下がり、クラウドや共通基盤が売っていた「人手の共有」の価値が減った。人手を共有すると爆心地も共有する。これは構造分析の新章候補(「守りは買えない」)と一本につながる。
+
 **連載で直す候補**(発注者が決める)
-- サーバー編 第 5 章 第二節:`ufw default allow outgoing` → 外向きも既定拒否。考え方(「デフォルトはすべて拒否」)と手順を一致させる。許可一覧(apt、ACME、NTP、DNS、アプリの API)の作り方と、壊れる物の対処、「Claude に聞いてみよう②」に外向きの設計を足す。
-- サーバー編 第 8 章(systemd の砂場):`IPAddressDeny=any` / `IPAddressAllow=` をサービスごとに。
+- [済 3e35db9] サーバー編 第 5 章 第二節:外向きも既定拒否にし、出てよい四つの相手(DNS・NTP・apt・Web)を名指しで許可。壊れる物とログの読み方、`IPAddressDeny=any` の三行を次の段として添えた。
+- [済 a5ed0a6] サーバー編 第 10 章 3-2-1 ルール:「スナップショットはバックアップではない」「管理面を共有する事業者はリージョンを分けても一つの障害領域」を足した。ブログ 046 で五つの教訓として公開。
+- サーバー編 第 8 章(systemd の砂場):`IPAddressDeny=any` / `IPAddressAllow=` をサービスごとに(第 5 章から「第 8 章の砂場の設定と同じ場所に足す」と前置きしてあるので、第 8 章側にも実際の行を入れる)。
 - 2-02(AI に PC を一台渡す):AI にも委託先と同じ規律 ── その一台の外向きを名指しで許す、他の機械と鍵には届かせない。
 - 2-05(門番):委託先・外部の人に常時の管理者権限を渡さない、期限付き、記録、共有アカウント禁止(CISA AA22-131A)。
 - 3-03(安全設計):「守りの製品が入口になる」(CrowdStrike、F5、Cisco、Citrix、SharePoint)の一段。

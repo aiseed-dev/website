@@ -14674,7 +14674,7 @@ Microsoft 365 Copilot を使い続ける理由を、使う側の人が正確に�
 
 == 最初の一歩、五つ
 
-. *フォルダーを一つ作る。* 案件ごとに一つ。中で `git init` する。これが文脈の置き場所になる。
+. *フォルダーを一つ作る。* 案件ごとに一つ。これが文脈の置き場所になる。git は要らない。履歴が欲しくなったら後から足せばよい。
 . *最初の一枚を書く。* `CLAUDE.md` に、この仕事は何か、決めたこと、決めていないこと、使う道具を書く。十行でよい。これが AI に渡す最初の仕様書になる(link:/ai-native-software/maintenance-shift/[1-02])。
 . *文書はテキストで置く。* 原稿は adoc、様式は後から。Word はフォルダーに置かない。メールも会議も、結論だけをその日のうちに adoc に写す(link:/ai-native-software/documents/[2-07])。
 . *Claude Code をそのフォルダーで開く。* 最初の一言は「このフォルダーを読んで、今日の仕事を整理して」。文脈は貼らない。読ませる。
@@ -14682,7 +14682,7 @@ Microsoft 365 Copilot を使い続ける理由を、使う側の人が正確に�
 
 == 何が変わるか
 
-* *どの AI でも読める。* フォルダーはテキストと git なので、モデルは差し替えられる部品になる(link:/insights/ai-will-not-converge/[構造分析 3-09])。
+* *どの AI でも読める。* フォルダーはテキストなので、モデルは差し替えられる部品になる(link:/insights/ai-will-not-converge/[構造分析 3-09])。
 * *文脈が自分の側にある。* 会社が替わっても、契約が切れても、フォルダーは残る。
 * *AI に渡すのは仕事であって、root ではない。* AI が読むのはそのフォルダーだけで、メールも SharePoint も読まない。
 * *席の数ではなく、書く人から始まる。* 全社員に配らない。文脈を書く人が一人いればよく、それがビルダーである(link:/ai-native-software/builder/[1-04])。
@@ -14719,7 +14719,7 @@ One more thing. Work IQ "runs as the user" and reads everything the user can rea
 
 == The first step, in five moves
 
-. *Make one folder.* One per project. Run `git init` inside it. This is where the context lives.
+. *Make one folder.* One per project. This is where the context lives. Git is not required; add it later if you want the history.
 . *Write the first page.* In `CLAUDE.md`, write what this job is, what has been decided, what has not, and which tools are used. Ten lines will do. This is the first spec you hand to the AI (link:/en/ai-native-software/maintenance-shift/[1-02]).
 . *Keep documents as text.* Manuscripts in adoc; forms later. No Word files in the folder. From mail and meetings, copy only the conclusions into adoc, the same day (link:/en/ai-native-software/documents/[2-07]).
 . *Open Claude Code in that folder.* The first words: "Read this folder and lay out today's work." Do not paste context. Let it read.
@@ -14727,7 +14727,7 @@ One more thing. Work IQ "runs as the user" and reads everything the user can rea
 
 == What changes
 
-* *Any AI can read it.* The folder is text and git, so the model becomes a replaceable part (link:/en/insights/ai-will-not-converge/[Structural Analysis 3-09]).
+* *Any AI can read it.* The folder is text, so the model becomes a replaceable part (link:/en/insights/ai-will-not-converge/[Structural Analysis 3-09]).
 * *The context is on your side.* Change company, let a contract lapse — the folder remains.
 * *What you hand the AI is work, not root.* The AI reads only that folder, never your mail or SharePoint.
 * *It starts with one writer, not with seat counts.* Do not distribute it to every employee. One person who writes the context is enough, and that person is the builder (link:/en/ai-native-software/builder/[1-04]).

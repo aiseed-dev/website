@@ -14510,13 +14510,13 @@ Anyone who wants the details can have an AI look them up. What stays here is the
 . List of affected services (Security Measures Lab, 7 October 2026) — https://rocket-boys.co.jp/security-measures-lab/idcf-cloud-outage-affected-services-2026/
 endif::[]
 
-// ===== article: 047-shared-blast-radius =====
+// ===== article: 047-cloud-still-breached =====
 ---
-slug: shared-blast-radius
-title.ja: クラウドにして守りを固めても、破られる ── 集中化の理由が一つ減った
-title.en: Move to the Cloud and Harden It, and It Is Still Breached — Centralization Just Lost One of Its Reasons
-subtitle.ja: クラウドと共通基盤が売っていたのは、導入の手間、運用の手間、運用を任せる人、伸縮と置き場所の四つ。前の三つは AI を持った一人に移った
-subtitle.en: Cloud and shared platforms sold four things: setup, operations, people to run it for you, and elasticity with a place to sit. The first three moved to one person with an AI
+slug: cloud-still-breached
+title.ja: クラウドにして守りを固めても、破られる
+title.en: Move to the Cloud and Harden It, and It Is Still Breached
+subtitle.ja: IDCF クラウドは侵入され、事業者は「スナップショットからの復元も困難、他リージョンも当面推奨しない」と通知した。守りを任せても、そのとき手元には何も残らない
+subtitle.en: IDCF Cloud was broken into, and the provider said snapshots could not be restored and its other regions were not recommended. Hand over the defense, and when it falls nothing remains in your hands
 date: 2026.10.08
 description.ja: クラウドにして守りを固めても、破られる。IDCF の事故と、戻す企業の数字で確かめる
 description.en: Move to the cloud and harden it, and it is still breached. Checked against the IDCF incident and the numbers on companies moving back
@@ -14531,15 +14531,6 @@ ifdef::lang-ja[]
 
 *クラウドにして守りを固めても、破られる。*
 
-「集中化をやめる時期だ」とまでは言わない。集中する理由が一つ減った、が正確である。どの理由が減り、どの理由が残るかを分けて書く。
-
-== クラウドと共通基盤が売っていた四つのもの
-
-* *導入の手間。* ほぼ消えた。Debian 一台に Web サーバーと DB と控えの仕組みを立てるのは、AI に手順を書かせれば一晩の仕事になった(link:/debian-server/[サーバー編]はその手順そのものである)。
-* *運用の手間。* 大半が AI に移った。更新は自動、控えは timer、ログは貼って点検させる。残るのは「決める」部分だけで、それは委託しても残る。
-* *運用を任せる人。* 価値が反転した。守りを任せたつもりが、任せた先が破られた。
-* *伸縮と置き場所。* ここだけは集中に理が残る。急に百倍になる負荷、DDoS の吸収、メール送信の評判、GPU の学習。ただし中小企業の基幹業務には当てはまらない。負荷は一台で足り、公開面は link:/ai-native-software/web/[借りた窓]で薄く覆えばよい。
-
 == 守りを固めたクラウドも、破られる
 
 2026年10月7日、IDCF クラウドの東日本第1リージョンが侵入され、丸ごと止まった。事業者は「スナップショットからの復元も困難、他リージョンでの再構築も当面推奨しない」と通知した(link:/blog/cloud-vanished/[前稿])。守りを専門の事業者に任せても、破られるときは破られる。そのとき、自分の手元には何も残らない。
@@ -14551,10 +14542,6 @@ ifdef::lang-ja[]
 37signals は年 320 万ドルのクラウド費を、約 70 万ドルの機材を買って年 200 万ドル近く減らし、追加の人員なしで回していると自己申告している。負荷が安定した中堅企業の例である。
 
 一方でクラウド市場は伸び続けている。Gartner は 2025 年の公共クラウド支出を前年比 21.5% 増と予測した(2024年11月)。だから「集中の終わり」ではない。
-
-== 分散が効く条件
-
-分散すれば、守りの単位も分散する。放置された小さな箱が一万台あれば、攻撃側の AI はそれを機械的に舐める。*分散が効くのは、各箱が規律を持つ場合だけだ。* 入りも出も既定拒否(link:/debian-server/05-security-basics/[第5章])、更新は自動、耳は最小、控えは別の機械・別の場所・別の権限に(link:/debian-server/10-backup/[第10章])。この規律は、AI を持った一人が一台に対して守れる大きさに収まっている。だから分散の主張と、これらの手順は一組である。
 
 == 日本への読み替え
 
@@ -14583,15 +14570,6 @@ ifdef::lang-en[]
 
 *Move to the cloud and harden it, and it is still breached.*
 
-This does not go as far as "it is time to stop centralizing." The precise statement is that centralization has one reason fewer. Which reasons fell away and which remain is set out below.
-
-== The Four Things Cloud and Shared Platforms Sold
-
-* *Setup labor.* Mostly gone. Standing up a web server, a database, and a backup mechanism on one Debian machine became an evening's work once an AI writes the procedure (link:/en/debian-server/[the server series] is that procedure).
-* *Operations labor.* Mostly moved to the AI. Updates are automatic, backups run on a timer, logs are pasted in for inspection. What remains is the deciding, and that remains even if you outsource.
-* *People to run it for you.* Its value reversed. You thought you had handed over the defense; the one you handed it to was breached.
-* *Elasticity and a place to sit.* Only here does centralization keep its case: load that suddenly grows a hundredfold, absorbing DDoS, mail-sending reputation, GPU training. None of this applies to the core business of a small or mid-sized company. One machine carries the load, and the public face can be covered thinly by a link:/en/ai-native-software/web/[borrowed window].
-
 == A Hardened Cloud Is Still Breached
 
 On 7 October 2026, IDCF Cloud's East Japan Region 1 was broken into and stopped entirely. The provider told customers that restoring from snapshots was difficult and that rebuilding in its other regions was not recommended for now (link:/en/blog/cloud-vanished/[previous piece]). Hand the defense to a specialist provider, and it is still breached when it is breached. When that happens, nothing remains in your own hands.
@@ -14603,10 +14581,6 @@ The movement has already begun. In Barclays' CIO survey (late 2024), more than 8
 37signals reports that it cut a $3.2 million annual cloud bill by nearly $2 million a year after buying about $700,000 of hardware, with no additional staff. It is a mid-sized company with stable load.
 
 Meanwhile the cloud market keeps growing: Gartner forecast public cloud spending in 2025 to rise 21.5% year on year (November 2024). So this is not the end of centralization.
-
-== The Condition Under Which Decentralization Works
-
-Decentralize, and the unit of defense decentralizes too. Ten thousand small neglected boxes will be combed through mechanically by the attackers' AI. *Decentralization works only when each box keeps a discipline.* Deny by default in and out (link:/en/debian-server/05-security-basics/[Chapter 5]), automatic updates, the fewest listening ears, and a copy on another machine, in another place, under another authority (link:/en/debian-server/10-backup/[Chapter 10]). That discipline fits within what one person with an AI can keep for one machine. So the case for decentralization and these procedures are one set.
 
 == Reading It for Japan
 

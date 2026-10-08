@@ -2666,16 +2666,16 @@ AI が一つの機械の中で全部を見られるほうが、調べるのも�
 
 == Debian の上に、apt と systemd で立てる
 
-OS は Debian にする。Python と apt は最初から入っていて、git も apt の一行で
-入る。更新で勝手に再起動されることもない。
+OS は Debian にする。Python と apt は最初から入っていて、要るなら git も apt の
+一行で入る。更新で勝手に再起動されることもない。
 
 以降の章で立てるサービスは、Debian の apt で入れ、systemd で動かす。apt に無い
 物は、公式が配る単体のファイルを置いて、systemd に登録する。Docker は使わない。
 
 *Docker は配るための道具で、作るための道具ではない*。作った物を、他人の環境で
 同じに動かしてもらうための箱だ。自分の一台で作って、そこで動かすなら、配る
-相手がいない。隔てるのは別の利用者と systemd の制限で足り、立て直しは git に
-入れた設定とデータの写しでやる。使わない理由は、具体的には三つある。
+相手がいない。隔てるのは別の利用者と systemd の制限で足り、立て直しはフォルダーに
+置いた設定とデータの写しでやる。使わない理由は、具体的には三つある。
 
 * *更新が一本になる* ── apt で入れた物は、Debian のセキュリティ更新に乗り、`apt upgrade` 一つでまとめて上がる。コンテナにすると、イメージごとに版を追う仕事が別に立つ
 * *AI が直接見られる* ── 設定は `/etc` に、ログは `journalctl` に、データは決まった場所にある。コンテナを挟むと、ボリューム・ネットワーク・口の対応・利用者 ID のずれという層が一つ増え、調べるのも直すのも、外と中の二か所になる。作っては直す開発では、この一層がそのまま手間になる
@@ -2701,10 +2701,14 @@ OS は Debian にする。Python と apt は最初から入っていて、git �
 命令とファイルの仕事で、やった結果が機械で確かめられる。1-01 で見た
 *ルールが明確で、答え合わせができる領域* に、そのまま当てはまる。
 
+仕事の単位はフォルダーだ。*課題ごとにフォルダーを一つ作り、Claude Code の作業
+ディレクトリをそこにする。それだけでよい。* AI は文脈をそのフォルダーから読み、
+作った物をそこに書く。git は必須ではない。履歴が欲しくなったら、後から足す。
+
 権限を渡してよい理由は一つだ。壊れても、初期化して始め直せる。ただし、初期化で
 戻るのは OS だけだ。設定とデータは、二つの決めで戻せるようにしておく。
 
-* AI がやった設定は、全部ファイルにして git に入れる。初期化した機械に、git から同じ設定を戻せる
+* AI がやった設定は、全部ファイルにして課題のフォルダーに置く。初期化した機械に、そのフォルダーから同じ設定を戻せる
 * データは、毎日、機械の外に写す(次の節)
 
 これで、初期化しても元の姿に戻る。だから、それでも戻らない物だけを人が持つ。
@@ -2726,7 +2730,7 @@ OS は Debian にする。Python と apt は最初から入っていて、git �
 * ssh は鍵だけにし、パスワードと root でのログインを切る
 * セキュリティ更新は自動で当てる(`unattended-upgrades`)
 * ログイン・ワンタイム・受け口には試行回数の制限を掛ける(`fail2ban` か、アプリの側で)
-* 依存は固定した版で入れる(`uv.lock` を git に入れる。2-10)
+* 依存は固定した版で入れる(`uv.lock` をフォルダーに置く。2-10)
 
 公開の側に穴が出たときに、AI の側のデータと鍵に届かないようにするためだ。
 2-05 で書く「中央は最小限、守りは各サーバーで多層に」は、機械が一台でも
@@ -2790,7 +2794,7 @@ link:/ai-native-software/lockin/[3-05] で見るロックインを避けるの�
 . 手元の PC から ssh の中を通して画面につなぎ、GNOME のデスクトップが見える
 . `systemctl --failed` が、止まったサービスを一つも返さない
 . 外から見て、80 と 443 と ssh 以外の口が閉じている
-. AI がやった設定が git に入っていて、データの写しが機械の外に届いている
+. AI がやった設定が課題のフォルダーに入っていて、データの写しが機械の外に届いている
 . AI に「この機械の状態を報告して」と言うと、報告が返る
 
 ```bash
@@ -2832,7 +2836,7 @@ sudo ss -tlnp               # 4 ── 待ち受けている口を見る
 * *OS は Debian* ── Python と apt が最初からあり、更新で勝手に再起動しない
 * *Docker は使わない* ── 配るための道具で、作るための道具ではない。apt で入れ、systemd で動かす。例外は公式がコンテナでしか配らない物だけで、イメージは自分で作らない
 * *画面も入れる* ── 文書を開く、頁を見る
-* *AI に root* ── 設定は git に、データは機械の外に写す。だから初期化で戻せる
+* *AI に root* ── 課題ごとのフォルダーを Claude Code の作業ディレクトリにする。設定はそのフォルダーに、データは機械の外に写す。だから初期化で戻せる。git は必須ではない
 * *人が持つのは三つ* ── 鍵と認証、外でやる操作、データの写し
 * *AI は複数* ── 別の会社の AI に、作った物と基準だけを渡して見張らせる
 * *費用* ── 作るあいだ月約 120 ドル、運用は月約 40 ドル(2026-10-05 時点、税抜)
@@ -2874,8 +2878,8 @@ server. It needs a GPU and a lot of memory, which nothing else here does.
 
 == Build on Debian, with apt and systemd
 
-The OS is Debian. Python and apt are there from the start, and git is one apt
-line away. Updates never reboot the machine on someone else's schedule.
+The OS is Debian. Python and apt are there from the start, and if you want git it
+is one apt line away. Updates never reboot the machine on someone else's schedule.
 
 The services the following chapters stand up are installed with Debian's apt and
 run under systemd. Anything apt does not carry is installed as the single file its
@@ -2884,8 +2888,8 @@ project publishes, and registered with systemd. No Docker.
 *Docker is a tool for distributing, not for building.* It is a box that lets
 someone else run what you made, unchanged, in their environment. When you build on
 your own machine and run it there, there is no one to distribute to. Isolation is
-covered by separate users and systemd's restrictions; rebuilding, by configuration
-in git and copies of the data. Concretely, there are three reasons not to use it.
+covered by separate users and systemd's restrictions; rebuilding, by the
+configuration kept in folders and copies of the data. Concretely, there are three reasons not to use it.
 
 * *One update stream* — what apt installs rides Debian's security updates, and one `apt upgrade` raises it all. Containers add a second job: tracking the version of every image
 * *The AI sees everything directly* — configuration in `/etc`, logs in `journalctl`, data in known places. A container adds a layer of volumes, networks, port mappings, and mismatched user IDs, so every diagnosis and every fix happens in two places, outside and inside. In development, where you build and fix over and over, that layer is the cost
@@ -2914,11 +2918,16 @@ repairing. Every one of those is work in commands and files, and the result can
 be checked mechanically. It falls squarely inside what 1-01 described as
 *a domain where the rules are explicit and the answer can be checked.*
 
+The unit of work is a folder. *Make one folder per task and set Claude Code's
+working directory to it. That is all.* The AI reads its context from that folder
+and writes what it builds into it. Git is not required; add it later if you want
+the history.
+
 There is one reason it is safe to hand over the privilege. If it breaks, you
 reinstall and start again. But a reinstall restores only the operating system.
 Two decisions make the configuration and the data restorable too.
 
-* Every configuration the AI makes is written to files and committed to git. A reinstalled machine gets the same configuration back from git
+* Every configuration the AI makes is written to files in the task's folder. A reinstalled machine gets the same configuration back from that folder
 * The data is copied off the machine every day (next section)
 
 With these, a reinstall brings the machine back as it was. So the human keeps
@@ -2940,7 +2949,7 @@ Everything other than these three can be left to the AI.
 * ssh is keys only; password and root logins are turned off
 * Security updates are applied automatically (`unattended-upgrades`)
 * Logins, one-time codes, and intake endpoints get an attempt limit (`fail2ban`, or in the app)
-* Dependencies are installed at pinned versions (`uv.lock` in git; 2-10)
+* Dependencies are installed at pinned versions (`uv.lock` in the folder; 2-10)
 
 The point is that a hole on the public side must not reach the data and keys on
 the AI's side. What 2-05 says, *central minimal and defense in depth at every
@@ -3008,7 +3017,7 @@ This chapter is done when these six hold.
 . You can connect to the desktop from your own PC through ssh and see GNOME
 . `systemctl --failed` lists no failed service
 . Seen from outside, nothing but 80, 443, and ssh is open
-. The AI's configuration is in git, and the copy of the data has arrived off the machine
+. The AI's configuration is in the task's folder, and the copy of the data has arrived off the machine
 . Asking the AI to report the state of this machine produces a report
 
 ```bash
@@ -3050,7 +3059,7 @@ Decide the machine the Independence part runs on, first.
 * *Debian as the OS* — Python and apt from the start, no reboots on someone else's schedule
 * *No Docker* — a tool for distributing, not for building. Install with apt, run under systemd. The only exception is software shipped only as a container, and you never build an image yourself
 * *Install the desktop too* — open documents, look at pages
-* *Root to the AI* — configuration in git, data copied off the machine, so a reinstall restores it
+* *Root to the AI* — one folder per task as Claude Code's working directory. Configuration in that folder, data copied off the machine, so a reinstall restores it. Git is not required
 * *Three things the human holds* — keys and accounts, outside actions, copies of the data
 * *More than one AI* — pair vendors and pass only the artifact and the criteria
 * *Cost* — about $120 a month while building, about $40 in operation (as of 2026-10-05, excluding tax)

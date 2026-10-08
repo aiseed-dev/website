@@ -15319,7 +15319,7 @@ ____
 
 だが人は増えない。ISC2 の 2024 年調査は、世界の不足を 480 万人と見積もった。2025 年調査(回答 16,029 人)は、人数よりも技能の不足が主な懸念に変わったと報告し、日本の回答者(1,225 人)は雇用は安定しているが予算と給与の競争力が弱いと答えている。攻撃が増えた分だけ守り手を増やすことは、どの国でもできていない。
 
-増やせない人を、薄く伸ばすしかない。薄く伸ばす形が、委託であり、製品であり、基盤である。少人数が多くの顧客を見るから、一人の管理者が多くの root を持つ。*同じ基盤に集まると、一つの事故で全員が止まる。* ここに矛盾がある。守りの特需は、守る人を増やさずに守りの約束を増やす。約束は売れるが、守りは人数でしか裏付けられない。だから、*守りの特需は、守れない。*
+増やせない人を、薄く伸ばすしかない。薄く伸ばす形が、委託であり、製品であり、基盤である。少人数が多くの顧客を見るから、一人の管理者が多くの root を持つ。*同じ基盤に集まれば、一つの事故で被害が大きくなる。* ここに矛盾がある。守りの特需は、守る人を増やさずに守りの約束を増やす。約束は売れるが、守りは人数でしか裏付けられない。だから、*守りの特需は、守れない。*
 
 これは「守りに金を使うな」ではない。買える守りと買えない守りを分けよ、である。
 
@@ -15369,7 +15369,7 @@ ____
 * link:/insights/security-design/[構造分析 03: Mythos時代のセキュリティ設計]
 * link:/insights/cloud-independence/[構造分析 04: クラウドからの自立——AIが支援するのは開いた層だけ]
 * link:/blog/cloud-vanished/[ブログ: クラウドが丸ごと消えた日 ── IDCF の事故から、五つの教訓]
-* link:/blog/shared-blast-radius/[ブログ: 同じ基盤に集まると、一つの事故で全員が止まる ── 集中化の理由が一つ減った]
+* link:/blog/shared-blast-radius/[ブログ: 同じ基盤に集まれば、一つの事故で被害が大きくなる ── 集中化の理由が一つ減った]
 * link:/debian-server/05-security-basics/[Claudeと一緒に育てるDebian サーバー 第5章 守りの基本]
 * link:/ai-native-software/auth/[2-05: 門番を立てる ── PocketBase で認証を一つに]
 endif::[]
@@ -15413,7 +15413,7 @@ Exposure to attack creates work: investigation, recovery, prevention, audit, rep
 
 But the people do not grow. ISC2's 2024 study estimated the global shortfall at 4.8 million. Its 2025 study (16,029 respondents) reports that the main concern has shifted from headcount to skills, and the Japanese respondents (1,225) say employment is stable while budgets and pay are uncompetitive. No country has added defenders in proportion to the attacks.
 
-People who cannot be added must be spread thin. The forms of spreading thin are outsourcing, products, and platforms. A few people watch many customers, so one administrator holds many roots. *Gather on one platform, and one incident stops everyone.* Here is the contradiction. A defense boom multiplies promises of defense without multiplying defenders. Promises sell, but defense is backed only by people. So *a defense boom cannot defend.*
+People who cannot be added must be spread thin. The forms of spreading thin are outsourcing, products, and platforms. A few people watch many customers, so one administrator holds many roots. *Gather on one platform, and one incident does more damage.* Here is the contradiction. A defense boom multiplies promises of defense without multiplying defenders. Promises sell, but defense is backed only by people. So *a defense boom cannot defend.*
 
 This is not "spend nothing on defense." It is: separate the defense you can buy from the defense you cannot.
 
@@ -15463,7 +15463,7 @@ ____
 * link:/en/insights/security-design/[Structural Analysis 03: Security Design in the Mythos Era]
 * link:/en/insights/cloud-independence/[Structural Analysis 04: Independence from the Cloud — AI Supports Only the Open Layer]
 * link:/en/blog/cloud-vanished/[Blog: The Day a Cloud Vanished — Five Lessons from the IDCF Incident]
-* link:/en/blog/shared-blast-radius/[Blog: Gather on One Platform, and One Incident Stops Everyone]
+* link:/en/blog/shared-blast-radius/[Blog: Gather on One Platform, and One Incident Does More Damage]
 * link:/en/debian-server/05-security-basics/[Growing a Debian Server with Claude, Chapter 5 — The Basics of Defense]
 * link:/en/ai-native-software/auth/[2-05: Standing Up the Gatekeeper — One Login with PocketBase]
 endif::[]

@@ -45,6 +45,7 @@ ifdef::lang-ja[]
 . *サーバーは自宅かVPSに置く。* 使わなくなった古いPCやミニPCを家で動かすか、月数百円のVPSを借りる。どちらでも、OSの中身——root権限——はあなたのものだ。どちらで始めるかは第2章で決める。
 . *データは自分で管理する。* 他社のクラウドサービスに預けず、自分のサーバーの上のデータベース（第7章）に置き、自分の手でバックアップする（第10章）。
 . *コンテナは使わない。* アプリは「ディレクトリ + venv + systemd」で動かし、権限とsystemdの砂場で隔離する（第8章）。
+. *機械は役割で分ける。重要な仕事は人が確認する。* この本は練習として一台から始めるが、公開を続けるなら、外に向く機械と、データを持つ機械を分ける（第9章、第11章）。鍵の作り直しや、外への口を開けるといった重要な操作は、Claudeに手順を聞いても、確かめて実行するのは自分だ。
 
 つまりこの本は「サーバーの一般論」ではなく、*自分のインフラを建てて、データの主導権を自分の手に戻す*ための本だ。なぜこの前提を選ぶのか——その理由は第二節で詰める。
 
@@ -222,6 +223,7 @@ Right at that entrance, let me declare this book's *premises*.
 . *The server lives in your home or on a VPS.* An old PC or mini PC running in your house, or a VPS rented for a few hundred yen a month. Either way, the inside of the OS — root — is yours. Which one to start with is decided in Chapter 2.
 . *You manage your own data.* It is not entrusted to someone else's cloud service — it lives in the databases on your own server (Chapter 7), and you back it up with your own hands (Chapter 10).
 . *No containers.* Apps run as "directory + venv + systemd," isolated by permissions and systemd's sandbox (Chapter 8).
+. *Split the machines by role. A person checks important work.* This book starts with one machine for practice, but if you keep publishing, separate the machine that faces outside from the machine that holds the data (Chapters 9 and 11). For important operations such as regenerating keys or opening a way out or in, you may ask Claude for the steps, but you check them and run them yourself.
 
 In other words, this is not a book of server generalities. It is a book about *building your own infrastructure and taking the initiative over your data back into your own hands.* Why choose these premises? Section 2 makes the case.
 
@@ -4140,6 +4142,8 @@ ____
 
 リバースプロキシとは、*一台の入口（443番ポート、つまり `https://`）が、後ろにある複数のサービスへ、ホスト名で振り分ける仕組み*だ。`blog.example.com` への接続はブログのサービスへ、`photos.example.com` への接続は写真サーバーへ、と一台が交通整理する。外から見える入口は一つだけで、TLSの面倒もこの入口がまとめて見る。第6章の作法で複数のサービスを動かしているなら、その出口をこのリバースプロキシ一つに集約できる。
 
+本番で公開するなら、入口は別の機械にする。*外に向く機械には Caddy だけを置き、アプリとデータベースは、外から届かない別の機械に置く。* Caddy は、家の中の網を通して後ろの機械へ渡す。入口が破られても、データを持つ機械には外から届かない。練習のうちは一台でよいが、公開を続けるなら、この形に移す。
+
 この章では *Caddy* を例にする。理由は、設定ファイル（Caddyfile）が数行で済み、しかも*TLS証明書の取得・更新まで全自動*だからだ。Let's Encrypt とのやり取りを、Caddyが裏で勝手にやってくれる。設定テキストが短いということは、Claudeと相性が良いということでもある。
 
 ```caddyfile
@@ -4318,6 +4322,8 @@ What moves are available for a publishing route changes with the nature of your 
 Whether you publish one service or several, modern publishing uses a pattern called a *reverse proxy*.
 
 A reverse proxy is *a mechanism where a single entrance (port 443, that is, `https://`) routes to several services behind it, by host name*. A connection to `blog.example.com` goes to the blog service; a connection to `photos.example.com` goes to the photo server — one machine directs traffic. The only entrance visible from outside is a single one, and this entrance handles the TLS work in bulk. If you run several services in the manner of Chapter 6, you can consolidate their exit into this one reverse proxy.
+
+If you publish for real, put the entrance on a separate machine. *The machine facing outside runs Caddy alone; the apps and the database sit on another machine that cannot be reached from outside.* Caddy hands traffic to the machine behind it over the home network. Even if the entrance is breached, the machine that holds the data is out of reach from outside. One machine is fine while practicing, but if you keep publishing, move to this shape.
 
 This chapter uses *Caddy* as the example. The reason is that its config file (the Caddyfile) takes only a few lines, and *it handles getting and renewing TLS certificates fully automatically*. Caddy does the back-and-forth with Let's Encrypt on its own, behind the scenes. A short config text also means a good fit with Claude.
 
@@ -4755,7 +4761,7 @@ ls -R /tmp/restore-test
 
 === 上級演習：サーバー再構築
 
-もう一段進んだ演習を提案しておく。*もう一台（または手元のVMやVPS）に、ゼロからサーバーを再現してみる*のだ。
+もう一段進んだ演習を提案しておく。*予備の機械に、ゼロからサーバーを再現してみる*のだ。予備の機械は、壊れたときに立て直す先として、一台置いておく。
 
 手順はこうなる。第3章の最小インストールから始め、git に置いた設定（`Caddyfile`、自作 unit、セットアップメモ）を clone し、restic でデータを書き戻し、データベースは `pg_dump` のダンプを `psql` で流し込んで戻す。これで、本番とほぼ同じサーバーが新しい機械の上に立ち上がるはずだ。
 
@@ -5067,7 +5073,7 @@ If the photos, the documents, and the config files all line up inside `/tmp/rest
 
 === Advanced Rehearsal: Rebuilding the Server
 
-Let me propose one step further. *Recreate the server from scratch on another machine (or a VM or VPS at hand).*
+Let me propose one step further. *Recreate the server from scratch on the spare machine.* Keep one spare machine as the place to rebuild when something breaks.
 
 The steps go like this. Start from the minimal install of Chapter 3, clone the config you put in git (the `Caddyfile`, home-grown units, setup notes), write the data back with restic, and feed the database back in from the `pg_dump` dump with `psql`. A server nearly identical to your live one should come up on the new machine.
 
@@ -5299,9 +5305,9 @@ ____
 
 そして最も面白いのは、*自分で作ったアプリを載せること*だ。本編link:/claude-debian/16-claude-development/[第16章「Claudeとの開発」]で、Claudeと一緒に小さなアプリを作る話をした。そこで作ったアプリを、このサーバーに載せて、いつでもどこからでも使えるようにする。「Claudeと作って、自分のサーバーで動かす」——これは、個人が持てる最も完結した循環だ。
 
-=== 二. 二台目を持つ
+=== 二. 役割で機械を分ける
 
-一台を回せるようになったら、二台目という選択がある。役割を分ける（一台はファイル、一台は公開Webサービス）、あるいは*互いをバックアップ先にする*（第10章の3-2-1ルールの「別の場所」を、二台目で満たす）。二台目は、一台目で学んだことの応用だから、最初の一台ほどは苦労しない。
+一台を回せるようになったら、*役割で機械を分ける*。外に向く機械（公開Webサービスの入口）と、データを持つ機械（ファイル、データベース、アプリ）を分け、予備を一台置く。壊れたら、予備に立て直す（第10章）。控えは、それとは別の場所に置く（第10章の3-2-1ルールの「別の場所」）。二台目からは、一台目で学んだことの応用だから、最初の一台ほどは苦労しない。
 
 === 三. 構成をコード化する
 
@@ -5523,9 +5529,9 @@ Add new services onto your current server. After the photo server, note sync; af
 
 And the most interesting of all is to *carry an app you built yourself.* In link:/en/claude-debian/16-claude-development/[Chapter 16, "Development with Claude"] of the main series, we talked about building a small app together with Claude. Take the app you built there, carry it on this server, and make it usable anytime, anywhere. "Build with Claude, run on your own server" — this is the most self-contained loop an individual can hold.
 
-=== 2. Own a Second Machine
+=== 2. Split the Machines by Role
 
-Once you can run one machine, owning a second becomes an option. Split the roles (one for files, one for public web services), or *make them each other's backup destination* (satisfy the "different location" of the Chapter 10 3-2-1 rule with the second machine). The second machine applies what you learned on the first, so it is not as much trouble as the first one.
+Once you can run one machine, *split the machines by role*. Separate the machine that faces outside (the entrance for public web services) from the machine that holds the data (files, the database, apps), and keep one spare. When something breaks, rebuild on the spare (Chapter 10). Keep the backup copy somewhere else again (the "different location" of the Chapter 10 3-2-1 rule). From the second machine on, you apply what you learned on the first, so it is not as much trouble as the first one.
 
 === 3. Encode the Configuration as Code
 

@@ -14662,7 +14662,7 @@ Microsoft 365 Copilot を使い続ける理由として、こういう声があ�
 == 関連
 
 * link:/ai-native-software/maintenance-shift/[AI ネイティブなソフトウェア開発 1-02 保守フェーズの構造変化こそ本質] ── 保守の単位は文脈へ
-* link:/ai-native-software/ai-pc/[同 2-02 AI に PC を一台渡す] ── フォルダーを置く一台
+* link:/ai-native-software/ai-pc/[同 2-02 機械を役割で分ける] ── フォルダーを置く作業機
 * link:/insights/defense-cannot-be-bought/[構造分析 3-10 守りは買えない] ── 上から導入する AI は第四の形
 
 endif::[]
@@ -14701,7 +14701,7 @@ The point that you cannot make every employee use a CLI is also correct. So do n
 == Related
 
 * link:/en/ai-native-software/maintenance-shift/[AI-Native Software Development 1-02 — The Structural Shift Is in Maintenance] — the unit of maintenance moves to context
-* link:/en/ai-native-software/ai-pc/[2-02 — Give the AI a PC] — the machine where the folder sits
+* link:/en/ai-native-software/ai-pc/[2-02 — Split the Machines by Role] — the workstation where the folder sits
 * link:/en/insights/defense-cannot-be-bought/[Structural Analysis 3-10 — Defense Cannot Be Bought] — AI from above as the fourth form
 
 endif::[]

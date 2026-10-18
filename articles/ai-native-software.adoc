@@ -11,10 +11,10 @@ number: 01
 part: 1
 title.ja: AI は、世界で最も難しいコーディング問題を解く
 title.en: AI Solves the World's Hardest Coding Problems
-subtitle.ja: Codeforces 2700 帯から設計まで ── Mythos/Fable 時代、AI は月 3 千円で呼べる「最強の SIer」になった
-subtitle.en: From the Codeforces 2700 tier to design — in the Mythos/Fable era, AI became the strongest SIer, callable for $20 a month
-description.ja: AI のコード作成能力は、競技プログラミングの公開レーティング(Codeforces 2700 帯)で人間の最上層に並んだ。さらに、標的への攻撃工程の大半を自律的に遂行した事例が公表されている ── これは設計能力の証拠である。攻撃・設計・検証は、一つの力の三つの顔だ。Mythos/Fable 時代になって、AI は要件を読み、構造を決め、実装し、動かす「最強の SIer」になった。しかも月 3 千円で誰でも呼べる。この一点から、連載の議論がすべて導かれる。
-description.en: AI's code-writing ability has matched human top-class on public competitive-programming ratings (the Codeforces 2700 tier). A case has also been published in which it carried out most steps of an attack on a target autonomously — evidence of design ability. Attack, design, and verification are three faces of one power. In the Mythos/Fable era AI became the strongest SIer, handling requirements, design, and build, and callable by anyone for $20 a month. The whole series argues outward from that.
+subtitle.ja: Codeforces 2700 帯から設計まで ── AI は月 3 千円で呼べる「最強の SIer」になった
+subtitle.en: From the Codeforces 2700 tier to design — AI became the strongest SIer, callable for $20 a month
+description.ja: AI のコード作成能力は、競技プログラミングの公開レーティング(Codeforces 2700 帯)で人間の最上層に並んだ。さらに、標的への攻撃工程の大半を自律的に遂行した事例が公表されている ── これは設計能力の証拠である。攻撃・設計・検証は、一つの力の三つの顔だ。いま、AI は要件を読み、構造を決め、実装し、動かす「最強の SIer」になった。しかも月 3 千円で誰でも呼べる。この一点から、連載の議論がすべて導かれる。
+description.en: AI's code-writing ability has matched human top-class on public competitive-programming ratings (the Codeforces 2700 tier). A case has also been published in which it carried out most steps of an attack on a target autonomously — evidence of design ability. Attack, design, and verification are three faces of one power. Today AI has become the strongest SIer, handling requirements, design, and build, and callable by anyone for $20 a month. The whole series argues outward from that.
 date: 2026.06.01
 label: Introduction 1
 title_html.ja: <span class="accent">最難のコーディング問題</span>を、<br>AI が解く。
@@ -117,7 +117,7 @@ Claude を悪用し、AI が標的への攻撃工程の大半を自律的に遂�
 AI は、二つの別々の能力で最上層に達した。コードを書く力(2700 帯)と、
 文脈を理解して構造を決める力、つまり設計と検証(自律的な攻撃)だ。
 *コーディングも設計も、AI が上級エンジニアを超えはじめた*。二つが揃えば、
-結論は一つになる。Mythos/Fable 時代になって、AI は最強の SIer になった。
+結論は一つになる。いま、AI は最強の SIer になった。
 要件を読み、構造を決め、実装し、動かす。SIer の仕事の全体を、一人でこなす。
 しかも、世界に数十人の希少資源ではない。月 3 千円で誰でも呼べる。
 
@@ -141,6 +141,7 @@ AI モデルへのアクセスには、用途による段がある。
 * *作る時期* ── 一日じゅう AI にコードを書かせる日が続くあいだは、上の帯
   (Claude Max など、月 100 ドルから)を使う。作り終えて運用に入ったら、
   基本プランに戻す。時期ごとの内訳は link:/ai-native-software/ai-pc/[2-02] に置いた。
+* *最上位のモデル* ── 各社の最上位のモデルには、定額の枠の外で従量課金になっているものがある(Anthropic の Fable 5 は 2026 年 7 月から)。この連載の仕事は、上の二つの帯で足りる。
 * *API 従量課金* ── 使った分だけ払う形もあるが、*ここは使わない*。同じ量を
   API で通すと、定額のおよそ *10 倍* になる。
 
@@ -406,8 +407,8 @@ So AI reached the top tier in two separate abilities. One is writing code,
 shown by the 2700 tier. The other is understanding context to decide
 structure, which is design and verification, shown by the autonomous
 attack. *AI has begun to exceed senior engineers at both coding and
-design.* With both in hand, the conclusion is a single one. In the
-Mythos/Fable era, AI became the strongest SIer. It reads requirements,
+design.* With both in hand, the conclusion is a single one. Today,
+AI has become the strongest SIer. It reads requirements,
 decides structure, implements, and runs the result. It does the whole of
 the SIer's work by itself. And it is not a scarce resource of a few dozen
 people worldwide. It is callable by anyone for $20 a month.
@@ -434,6 +435,9 @@ use them.
   day, use the tier above (Claude Max and the like, from $100 a month). Once
   the building is done and the tools are running, drop back to the base plan.
   The breakdown by period is in link:/en/ai-native-software/ai-pc/[2-02].
+* *The top models* — some vendors' top models sit outside the flat plans, on
+  pay-as-you-go (Anthropic's Fable 5 since July 2026). The work in this series
+  is covered by the two tiers above.
 * *API pay-as-you-go* — you can pay for what you use, but *do not use it
   here*. Run the same volume through the API and it comes to roughly *ten
   times* the flat plan.
@@ -715,15 +719,22 @@ link:/ai-native-software/documents/[2-07: 文書を取り戻す])。git は必�
 AI の読めない場所に置かれたときだ。
 
 ここから、大きな帰結が一つ出る。*マニュアルを理解でき、それを現実に合わせ
-られる人なら、開発も保守もできる*。コードを読む必要も、書く必要もない。
-難しいことを決める必要もない。マニュアルを読んで、自分の現実にあわせるだけだ。
-コーディングの経験は、前提ではなくなる。この点は、1-05 で「顧客自身が作る」
+られる人なら、開発も保守もできる*。コードを書く必要はない。マニュアルを読んで、
+自分の現実にあわせればよい。コーディングの経験は、前提ではなくなる。
+
+ただし、*確かめることは、人が深く学ぶ*。テストを読み、何を、どの入力で、何を
+期待して確かめているかを言えること。鍵を作り直し、予備の機械に立て直し、記録から
+不審を見つけること。これは自分の手で実際に動かせなければならない。コードを書く
+技能は浅くてよいが、確かめる技能は浅くてはいけない。この点は、1-05 で「顧客自身が作る」
 として展開する。
 
 チェックの側も同じだ。設計書のレビューも、コードのセキュリティ監査も、
-Mythos/Fable クラスの AI ができる。攻撃の構造を組み立てられる力(1-01)は、
-裏返せば、弱点を見つけて塞ぐ力でもある。そしてその水準は、大手の SIer を
-上回る。レビューやセキュリティチェックを外注する理由は、もうない。委託その
+AI が手伝える。攻撃の構造を組み立てられる力(1-01)は、裏返せば、弱点を
+見つけて塞ぐ力でもある。だが、AI の報告には、大げさな所も、無い物も混じる。
+攻撃に使われた AI も、見つけた物を大げさに言い、使えない資格情報を手に入れたと
+報告していた(Anthropic の報告、2025 年 11 月)。
+最後に確かめるのは人だ。レビューやセキュリティチェックを外注する理由は、もうない。
+確かめる技能は、自分の側に置く。委託その
 ものが成り立たなくなる構造は、転換編で扱う。
 
 ```mermaid
@@ -899,18 +910,24 @@ in a form that is not text, in a place the AI cannot read.
 
 From here follows one large consequence. *Anyone who can understand the
 manual and fit it to their own reality can do both development and
-maintenance.* There is no need to read code and no need to write it. There
-are no difficult decisions to make. You read the manual and fit it to your
-own reality, and that is all. A coding background stops being a
-prerequisite. 1-05 develops this point as "the customer builds it
+maintenance.* There is no need to write code. You read the manual and fit
+it to your own reality. A coding background stops being a prerequisite.
+
+But *checking is something a person learns deeply.* Reading a test and being
+able to say what it checks, with which inputs, expecting what. Regenerating
+keys, rebuilding on the spare machine, spotting the suspicious in the logs.
+These you must be able to do with your own hands. The skill of writing code
+may stay shallow; the skill of checking may not. 1-05 develops this point as "the customer builds it
 themselves."
 
-The checking side is the same. Reviewing the design document and auditing
-the code for security are both within reach of Mythos/Fable-class AI. The
-ability to assemble the structure of an attack (1-01) is, flipped over,
-the ability to find and close the weaknesses. And that level exceeds the
-major SIers. There is no longer a reason to outsource review or security
-checks. The structure by which commissioning itself stops holding is taken
+The checking side is the same. AI can help with reviewing the design
+document and auditing the code for security. The ability to assemble the
+structure of an attack (1-01) is, flipped over, the ability to find and close
+the weaknesses. But an AI's report can overstate, and can contain things that
+are not there. The AI used in an attack, too, overstated its findings and reported
+credentials that did not work (Anthropic's report, November 2025). A person does the final check. There is no longer a reason to
+outsource review or security checks. Keep the skill of checking on your own
+side. The structure by which commissioning itself stops holding is taken
 up in the Shift part.
 
 ```mermaid
@@ -1388,7 +1405,7 @@ ifdef::lang-ja[]
 
 * 計画する ── 顧客と現場と自分の文脈から、何を作るかの案を立てる。どう分けるか、何を使い何を使わないか、どこに置き、どこまでを自分で持つかまで含めて、AI に渡せる仕様に書く。案を作るのも、仕様に書くのも、ビルダーの仕事だ。
 * AI と作る ── 意図と制約と文脈を AI に渡す。AI はコードを書き、設計を提案する。一度の指示では終わらない。やり取りを重ねる。
-* 確かめる ── 返ってきたものが動くかを見る。設計と合っているかを見る。想定した文脈で壊れないかを見る。
+* 確かめる ── 返ってきたものが動くかを見る。設計と合っているかを見る。想定した文脈で壊れないかを見る。テストを読み、何を、どの入力で、何を期待して確かめているかを言える。守りも確かめる ── 鍵を作り直せるか、予備の機械に立て直せるか、記録から不審を見つけられるか。コードを書く技能は浅くてよいが、確かめる技能は深く学ぶ。
 * 統合し、動かす ── 部分を全体に組み込み、整合を保って動かす。動かすとは、業務に載せて成果を出すことだ。企業が作った物なら、収益を上げるか、費用を下げるかしなければ、作った意味がない。動かして出た結果が、次の計画の材料になる。そして「計画する」に戻り、仕様を直す。
 
 この四つは一方通行ではない。ループである。一周にかかる時間は、規模によって数分から数時間だ。一日に何十周も回す。コードを書く時間は、この中で最小になる。書くのは AI だからだ。
@@ -1548,7 +1565,7 @@ A builder's work is made of four steps.
 
 * Plan — from the customer, the field, and the builder's own context, draft what to build. Write it as a spec the AI can read, down to how to split it, what to use and what not to, where it goes, and how much to hold yourself. Making the draft and writing the spec are both the builder's work.
 * Build with AI — hand AI the intent, the constraints, and the context. AI writes the code and proposes the design. One instruction is not the end of it. The exchange goes back and forth.
-* Check — see whether what comes back runs. See whether it fits the design. See whether it breaks in the context it was meant for.
+* Check — see whether what comes back runs. See whether it fits the design. See whether it breaks in the context it was meant for. Read the tests and be able to say what they check, with which inputs, expecting what. Check the defenses too — can you regenerate the keys, rebuild on the spare machine, spot the suspicious in the logs? The skill of writing code may stay shallow; the skill of checking is learned deeply.
 * Integrate and run — fold the part into the whole, keep it consistent, and run it. Running means putting it into the business and getting results. What a company builds has to raise revenue or cut cost, or there was no point building it. What comes out of running it is the material for the next plan. Then return to "plan" and revise the spec.
 
 These four are not a one-way line. They are a loop. One turn takes minutes to hours, depending on scope. A builder runs the loop tens of times a day. Time spent writing code is the smallest part of it, because AI does the writing.
@@ -2167,7 +2184,7 @@ flowchart TB
 
 正直に、重いところも書く。運用負荷が集中するのは二つ、メールと講座(BigBlueButton)だ。メールは配送(DKIM / SPF / 評判)が繊細なので、送信だけ外部リレーに逃がす手もある。講座サーバーは重いので、講座の期間だけ立てて、終わったら畳む。残りは、立てたらほぼ放っておける。そして「残りの運用」、つまりバックアップ・監視・更新・障害を、旧来の運用手順書の常識で書く必要はない。ここでも前提が変わっている。
 
-*守るのは、データと仕様だけだ*。実装と環境は、仕様と OSS から AI がいつでも立て直せる(2-12)。だから複製するのは、再生成できないものだけでいい。データベース・ファイル・メール・リポジトリ・業務ルールの Markdown を、毎日、機械の外へ(2-02)。それだけだ。復旧の試験も、儀式ではない。「まっさらな箱に、仕様とバックアップから全部立て直して」と AI に頼めば、それがそのまま復旧試験になる。
+*守るのは、データと仕様だけだ*。実装と環境は、仕様と OSS から AI がいつでも立て直せる(2-12)。だから複製するのは、再生成できないものだけでいい。データベース・ファイル・メール・リポジトリ・業務ルールの Markdown を、毎日、機械の外へ(2-02)。それだけだ。復旧の試験も、儀式ではない。人が予備の機械に、仕様とバックアップから実際に立て直す。手順は AI に書かせてよいが、手を動かして確かめるのは人だ。鍵の作り直しも、同じように人が実際にやる(2-02)。
 
 監視は、読めるログがあれば足りる。監視基盤を別に立てるのは旧常識だ。ログは全部手元にあり、死活確認と通知は AI が書く数十行で済み、ログの異常は AI に読ませる。セキュリティ更新は自動で当てる(2-02)。版を上げるのは、意図した操作として行う。版を上げるときはリリースノートを AI に読ませ、2-12 の並行稼働の要領で横で確かめてから切り替える。版は勝手に上がるのではなく、上げる。秘密(パスワード・鍵)は環境ファイルに分離して、それを使う機械の外に出さない。これだけは一行の決まりとして最初に書いておく。
 
@@ -2271,7 +2288,7 @@ flowchart TB
 
 * 機械:ベンダーのクラウド → 役割で分けた Debian の四台と予備(2-02)
 * 認証:Entra ID / Google ID → PocketBase(2-05)
-* 文書:Office / Docs → adoc + git、格子、テンプレート(2-07)
+* 文書:Office / Docs → adoc、格子、テンプレート(2-07)
 * 共有・版管理:SharePoint+GitHub / Drive → Forgejo + Zed(2-06)
 * メール:Exchange / Gmail → Stalwart(2-08)
 * 会議・カレンダー:Teams / Meet → Jitsi・Radicale(2-09)。予約の受付は 2-12
@@ -2503,7 +2520,7 @@ Why does one person suffice? Three reasons.
 
 The heavy parts deserve honesty too. Operational load concentrates in two places, mail and the course server (BigBlueButton). Mail delivery (DKIM, SPF, reputation) is delicate, so you can offload just the outbound to an external relay. The course server is heavy, so stand it up only for the duration of a course and tear it down after. The rest you can mostly leave alone once it is up. And the rest of operations, meaning backup, monitoring, updates, and failure, need not be written in the idiom of the old operations manual. The premise has changed here too.
 
-*Protect only the data and the specification.* The implementation and the environment can be rebuilt at any time by AI, from the spec and the OSS (2-12). So replicate only what cannot be regenerated: the databases, the files, the mail, the repositories, and the business rules in Markdown, daily, off the machines (2-02). That is all. Restore testing is not a ritual either. Ask the AI to rebuild everything on a blank box from the spec and the backup, and that is the restore test.
+*Protect only the data and the specification.* The implementation and the environment can be rebuilt at any time by AI, from the spec and the OSS (2-12). So replicate only what cannot be regenerated: the databases, the files, the mail, the repositories, and the business rules in Markdown, daily, off the machines (2-02). That is all. Restore testing is not a ritual either. A person actually rebuilds on the spare machine from the spec and the backup. The AI may write the procedure, but the hands that check it are a person's. Regenerating keys, too, is done by a person for real (2-02).
 
 Monitoring needs nothing more than readable logs. Standing up a separate monitoring stack is the old common sense. The logs are all in your hands, liveness checks and notifications are a few dozen lines the AI writes, and log anomalies are something the AI reads. Security updates are applied automatically (2-02). Raising a version is a deliberate act. When you raise a version, have the AI read the release notes and verify alongside, parallel-run style (2-12), before switching. Versions do not get raised on you. You raise them. Secrets, meaning passwords and keys, live in an environment file and never leave the machine that uses them. Write that one line of policy first.
 
@@ -2607,12 +2624,12 @@ Business Microsoft 365 and Google Workspace are SaaS suites that bundle closed l
 
 * Machines: the vendor's cloud to four Debian machines and a spare, split by role (2-02)
 * Auth: Entra ID / Google ID to PocketBase (2-05)
-* Documents: Office / Docs to adoc + git, a grid, and templates (2-07)
+* Documents: Office / Docs to adoc, a grid, and templates (2-07)
 * Sharing and versioning: SharePoint + GitHub / Drive to Forgejo + Zed (2-06)
 * Mail: Exchange / Gmail to Stalwart (2-08)
 * Meetings and calendars: Teams / Meet to Jitsi and Radicale (2-09); booking in 2-12
 * Building the web: Power Pages / Sites to AsciiDoc + HTML/CSS baked by Python (2-10)
-* Publishing the web: Power Pages / Sites to your own machine with Caddy, or Cloudflare Pages (2-11)
+* Publishing the web: Power Pages / Sites to your own public-face machine with Caddy, or Cloudflare Pages (2-11)
 * Data layer: Azure SQL / Cloud SQL to PostgreSQL and SQLite (2-03)
 * Data analysis: Power BI / Looker to DuckDB + Polars (2-03)
 * Logic: Excel macros / VBA to Python, with Flet for the screen (2-04)
@@ -2632,7 +2649,8 @@ Untie the closed bundle into open tools. Move the key into your own hands. The f
 * link:/en/ai-native-software/foundation/[2-03: Lay the Foundation — SQLite, PostgreSQL, pgvector, DuckDB, Polars]
 * link:/en/ai-native-software/documents/[2-07: Take Documents Back]
 * link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
-* link:/insights/enterprise-tax/[Structural Analysis 08: Subtracting the Enterprise IT Tax]
+* link:/en/insights/enterprise-tax/[Structural Analysis 08: Subtracting the Enterprise IT Tax]
+* link:/en/blog/windows-office-facts/[Will You Continue Using Windows and Office?]
 endif::[]
 // ===== article: 07-ai-pc =====
 ---
@@ -2748,6 +2766,16 @@ AI の作業機には、デスクトップ環境(GNOME)も入れて、起動し�
 
 AI は、この八つを「やる前に言う」。人が確かめてから通す。
 
+外の人に保守を頼むときも、同じ扱いにする。作業のたびに権限を渡すのが理想だが、
+それでは日々の保守が回らない。だから、日々の作業と重要な仕事を分ける。
+
+* 外の人には、その人の名前のアカウントを作る。共有しない。多要素認証に例外を作らない
+* 入る道は、会社の側が用意した道だけにする。業者の遠隔管理の道具は入れない(2026 年 10 月、業者の側のバックアップの道具の資格情報で、数百の Microsoft 365 の環境に入られた。ConnectWise の件、Huntress の報告)
+* 日々の作業の権限は、受け持つ機械と役割の分だけ、続けて渡してよい
+* 八つの重要な仕事は、外の人がやるときも、会社の人が確認する
+* 記録は会社の側に残し、外の人には消せないようにする
+* 契約が終わったら、その日に止める。誰が何を持っているかを、定期的に見直す
+
 それ以外の作業は、一つずつは確認しない。ただし、結果は検証する。検証の
 やり方は、各章の「確かめ方」に書いてある。
 
@@ -2763,7 +2791,7 @@ AI は、この八つを「やる前に言う」。人が確かめてから通�
 
 * *鍵と認証* ── ドメインの登録と、契約・支払いの管理は、どの機械にも置かない。秘密は、それを使う機械にだけ置く。作業機に置くのは、AI のサービスの鍵と、コードを送る鍵だけだ
 * *データの写し* ── データベース・ファイル・メール・リポジトリを、毎日、機械の外へ写す。写しは外の側から取りに来させて、どの機械の root からも消せないようにする(2-01 の「守るのは、データと仕様だけ」)
-* *立て直しの手順* ── 予備の機械に一台を立て直す手順を、人が実際にやって確かめておく
+* *立て直しと鍵の作り直し* ── 予備の機械に一台を立て直すことと、DKIM の秘密鍵・署名の秘密・ssh の鍵・API の鍵を作り直すことを、年に何度か人が実際にやって確かめる
 
 == 外から届く口を絞る
 
@@ -2785,6 +2813,19 @@ link:/ai-native-software/lockin/[3-05] で見るロックインを避けるの�
 
 そのうえで、相互に見張らせる。別の会社の AI を組ませ、見張る側には *作った物と、確かめる基準だけ* を渡す。どう作ったかの経緯は渡さない。同じ経緯を
 共有した相手は、同じ見落としをする。
+
+== 外の AI に渡す物と、渡さない物
+
+外の AI は、会社の外の事業者が動かしている。渡す物と、渡さない物を決めておく。
+
+* *渡す* ── 課題のフォルダーの中身(仕様、計画、コード)と、作業に要るログ
+* *渡さない* ── 鍵、パスワード、トークン、顧客の個人情報。秘密は人が置き、AI には置き場所の名前だけを渡す
+* *AI の道具のサービスに、AI の事業者の鍵を預けない* ── 鍵は作業機に自分で置く。鍵を預かるサービスは、新しい委託先になる(2026 年 10 月、AI のコーディングの道具のサービスが預かっていた、利用者の AI 事業者の鍵が漏れた。OpenCode の発表、報道による)
+* *学習に使わせない設定を確かめる* ── 契約ごとに設定がある。渡す前に確かめる
+
+外の AI は、止まることがある。事業者の都合でも、国の規制でも止まる(3-03)。止まっても
+仕事が止まらないようにしておく。業務で動いているのはコードに凍結した物で、AI が無くても
+動き続ける(2-17)。作る仕事は、2-16 で据える自前の LLM で続ける。
 
 == 要る物
 
@@ -2888,6 +2929,7 @@ sudo ss -tlnp                   # 4 ── 待ち受けている口を見る
 * *重要な仕事は人が確認する* ── 八つの仕事は、AI がやる前に言い、人が通す。それ以外は一つずつは確認しないが、結果は検証する
 * *初期化で戻らない物だけ、人が持つ* ── 鍵と認証、データの写し、立て直しの手順
 * *AI は複数* ── 別の会社の AI に、作った物と基準だけを渡して見張らせる
+* *外の AI に渡さない物* ── 鍵、パスワード、トークン、顧客の個人情報。止まっても、業務はコードで動き続け、作る仕事は自前の LLM で続ける
 * *費用* ── 機械は五台でおおよそ 25〜50 万円。AI は作るあいだ月約 120 ドル、運用は月約 40 ドル(2026-10-05 時点、税抜)
 
 次章では、認証とデータの機械の上に *土台(SQLite・PostgreSQL・DuckDB)* を据える。
@@ -3009,6 +3051,17 @@ these eight.
 
 The AI states these eight before doing them. A person checks, then lets them through.
 
+Treat an outside person you hire for maintenance the same way. Granting rights job by
+job would be ideal, but day-to-day maintenance would not keep moving. So separate the
+daily work from the important work.
+
+* Give the outside person an account in their own name. No shared accounts. No exceptions to multi-factor authentication
+* They come in only by a way the company provides. No vendor remote-management tool goes in (in October 2026, a vendor-side backup tool's credential was used to enter hundreds of Microsoft 365 environments — the ConnectWise case, reported by Huntress)
+* Rights for daily work may be held continuously, but only for the machines and roles they look after
+* The eight kinds of important work, even when an outside person does them, are checked by someone in the company
+* The logs stay on the company's side, where the outside person cannot delete them
+* When the contract ends, stop the access that day. Review who holds what, regularly
+
 Other work is not checked item by item. Its results, though, are verified. How to
 verify is in each chapter's "How to check you are done."
 
@@ -3023,7 +3076,7 @@ only what a reinstall cannot restore.
 
 * *Keys and accounts* — domain registration and the management of contracts and payment live on no machine. Each secret lives only on the machine that uses it. The workstation holds only the AI service's key and the key for pushing code
 * *Copies of the data* — databases, files, mail, and repositories are copied off the machines every day. The copy is pulled from outside, so root on no machine can delete it (2-01: "protect only the data and the spec")
-* *The rebuild procedure* — a person actually rebuilds a machine on the spare, and so confirms the procedure works
+* *Rebuilding and regenerating keys* — a few times a year, a person actually rebuilds a machine on the spare, and regenerates the DKIM private key, the signing secret, the ssh keys, and the API keys, to confirm it all works
 
 == Narrow the ports reachable from outside
 
@@ -3048,6 +3101,21 @@ link:/en/ai-native-software/lockin/[3-05].
 Then have them watch each other. Pair AIs from different companies, and give the
 watching side *only the artifact and the criteria for checking it*. Do not hand over
 how it was made. A partner who shares the same history makes the same oversights.
+
+== What goes to an outside AI, and what does not
+
+An outside AI is run by a business outside the company. Decide what goes to it and
+what does not.
+
+* *What goes* — the contents of the task folder (spec, plan, code) and the logs the work needs
+* *What does not* — keys, passwords, tokens, customers' personal information. A person puts the secrets in place; the AI is given only the name of where they are
+* *Do not entrust an AI vendor's key to an AI tool service* — keep the key on the workstation yourself. A service that holds your keys becomes a new contractor (in October 2026, the AI-vendor keys that an AI coding-tool service held for its users leaked — OpenCode's announcement, per press reports)
+* *Confirm the setting that keeps your data out of training* — each plan has one. Check it before handing anything over
+
+An outside AI can stop — by the vendor's choice, or by a government's rules (3-03).
+Arrange things so the work does not stop with it. What runs the business is frozen into
+code and keeps running without the AI (2-17). Building work continues on the self-hosted
+LLM set up in 2-16.
 
 == What you need
 
@@ -3153,6 +3221,7 @@ Decide the machines the Independence part runs on, first.
 * *Important work is checked by a person* — for the eight, the AI states them first and a person lets them through. Other work is not checked item by item, but its results are verified
 * *The human keeps only what a reinstall cannot restore* — keys and accounts, copies of the data, the rebuild procedure
 * *More than one AI* — pair vendors and pass only the artifact and the criteria
+* *What an outside AI never gets* — keys, passwords, tokens, customers' personal information. If it stops, the business keeps running on code, and building continues on the self-hosted LLM
 * *Cost* — roughly ¥250,000–500,000 for five machines; the AI about $120 a month while building, about $40 in operation (as of 2026-10-05, excluding tax)
 
 The next chapter lays the *foundation (SQLite, PostgreSQL, DuckDB)* on the
@@ -3246,6 +3315,7 @@ SQLite だ。標準 SQL なので、AI がそのまま書く。
 * データの置き場は、Debian の既定のまま(`/var/lib/postgresql`)
 * 待ち受けは localhost だけ。外の口は開けない
 * アプリ用の利用者を一つ作る。管理者(`postgres`)ではアプリを動かさない
+* 写しは `pg_dump` で毎日取り、機械の外へ写す(2-02)。戻せるかは、予備の機械で人が確かめる
 
 ```bash
 sudo apt install postgresql postgresql-17-pgvector   # 入れる。systemd で起動する
@@ -3470,6 +3540,7 @@ Four decisions set it up.
 * Keep the data where Debian puts it (`/var/lib/postgresql`)
 * Listen on localhost only. No port is opened to the outside
 * Create one role for the application. The application never runs as the administrator (`postgres`)
+* Take a copy with `pg_dump` every day and send it off the machine (2-02). A person confirms on the spare machine that it restores
 
 ```bash
 sudo apt install postgresql postgresql-17-pgvector   # install; systemd starts it
@@ -4796,11 +4867,11 @@ Microsoft Entra ID の無料版は Microsoft 365 に含まれていて、人数�
 
 止めるのは一度ではない。並行で動かし、移り終えてから古い門を閉じる(2-12)。
 
-== 出るのも、一点だ
+== 出るのは、門番と一覧で
 
-入る手続きは述べた。退職は、もっと簡単だ。門番でアカウントを止める。それだけで、
-全部から出る。文書も、メールも、会議も、基幹も、すべてが同じ門番のトークンで開くから、
-一点を閉じれば同時に閉じる。
+入る手続きは述べた。退職では、まず門番でアカウントを止める。門番のトークンで開く
+アプリからは、それで同時に出る。自分のログインを持つ道具(門番にまだつないでいない
+既製の OSS)は、一つずつ止める。その一覧を持っておき、止めたら本当に入れないかを確かめる。
 
 旧世界で退職処理が大仕事だったのは、鍵が SaaS ごとに散らばっていたからだ。棚卸しを
 して、一つずつ止めて回る。2-01 で見た「門を閉じられれば、全層から同時に締め出される」という
@@ -4815,7 +4886,7 @@ Microsoft Entra ID の無料版は Microsoft 365 に含まれていて、人数�
 . 管理画面の `users` で、メール + パスワード・OAuth2・OTP・MFA の入口を切り替えられる
 . アプリが、門番に問い合わせずにトークンの署名を確かめ、`user.id` を取り出せる。門番を止めても、そのアプリは動き続ける
 . `auth.example.com` と `git.example.com` をブラウザで開くと、Caddy 越しに各アプリが出る
-. 管理画面でその利用者のアカウントを止めると、その人はどのアプリにも入れなくなる
+. 管理画面でその利用者のアカウントを止めると、門番を通るアプリに入れなくなる。一覧の道具も止め、入れないことを確かめる
 
 ```bash
 systemctl status pocketbase                    # systemd で動いているか
@@ -5001,12 +5072,13 @@ the gate up on your own side and step off that meter. The move can be gradual.
 You don't cut over in one stroke. Run both in parallel, and close the old gate
 only after the move is done (2-12).
 
-== Leaving is one point too
+== Leaving goes through the gate and a list
 
-Joining was described above. Leaving is simpler still. Stop the account at the
-gate, and the person is out of everything. Documents, mail, meetings, the core
-systems all open with the same gate's token, so closing one point closes them all
-at once.
+Joining was described above. When someone leaves, first stop the account at the
+gate. That takes them out of every app that opens with the gate's token, all at
+once. Tools with their own login (packaged OSS not yet connected to the gate) are
+stopped one by one. Keep that list, and after stopping, check that they really
+cannot get in.
 
 In the old world, offboarding was a major task because the keys were scattered
 across SaaS products — take inventory, then walk around turning them off one by
@@ -5023,7 +5095,7 @@ This chapter is done when these six hold.
 . In the `users` collection you can switch email + password, OAuth2, OTP, and MFA on and off
 . An app verifies a token's signature without calling the gate and pulls out `user.id`; stop the gate and that app keeps working
 . Opening `auth.example.com` and `git.example.com` in a browser reaches each app through Caddy
-. Stopping that user's account in the admin UI locks the person out of every app
+. Stopping that user's account in the admin UI locks the person out of the apps behind the gate. Stop the listed tools too, and confirm they cannot get in
 
 ```bash
 systemctl status pocketbase                    # running under systemd
@@ -12246,7 +12318,7 @@ AI に頼むのは、どのコマンドを使うか分からないとき、組�
 | 動作がぶれる | 動作が再現できる
 | 自律モードの危険を負う | 危険は設計時の人の判断に集まる
 | 速さは AI の応答速度 | 速さは CPU の速度
-| プロンプト・インジェクションの侵入経路 | コードとコマンドは、インジェクションされない
+| プロンプト・インジェクションの侵入経路 | コードとコマンドは、外から来た文を読まないので、入口が小さい
 |===
 
 AI を賢く使うとは、AI の出力を凍結することだ。コードに変換する。コマンド列に変換する。
@@ -12705,7 +12777,7 @@ looking rules, one principle. Use AI as a generator, not as a runtime.
 | Behavior varies | Behavior is reproducible
 | You carry autonomous-mode danger | Danger gathers at the human judgment made at design time
 | Speed is the AI's response speed | Speed is CPU speed
-| An entry path for prompt injection | Code and commands cannot be injected
+| An entry path for prompt injection | Code and commands read no text from outside, so the entry is small
 |===
 
 Using AI well means freezing its output. Convert it into code. Convert it into a line of
@@ -13556,6 +13628,10 @@ Debian は、20 年単位で計画を立てられる側の Linux である。
 そして所有する企業が無いという構造だ。
 ____
 
+ただし、運営が 20 年単位で続くことと、各版が更新を受けられる期間は別の話だ。各版は、
+通常の支援 3 年と LTS 2 年で、約 5 年になる(Debian の公式頁)。版を上げる計画も、
+20 年の中に入れておく。
+
 link:/ai-native-software/ai-pc/[2-02: 機械を役割で分ける]が、機械を
 Debian にすると決めているのは、この検証の結果である。土台は
 長く同じ形で残るほうがよい。だから、長く同じ形で残る構造を持つものを選ぶ。
@@ -13900,6 +13976,10 @@ What promises that is not the technology, but the 1997 social contract, the
 1998 constitution, and the structure of having no owning company.
 ____
 
+That said, the project lasting for decades is one thing; how long each release receives
+updates is another. Each release gets about five years: three of regular support and two
+of LTS (Debian's official pages). Plan the release upgrades into the twenty years too.
+
 link:/en/ai-native-software/ai-pc/[2-02: Split the Machines by Role] decides to
 run the machines on Debian, and this check is why. A
 foundation is better when it keeps the same shape for a long time. So you pick
@@ -14186,8 +14266,8 @@ OSS の土台(自立編)が外すものは、四つある。
 * 監査できる ── 設定もログもテレメトリも、自分の手元にある。ブラック
   ボックスではない。
 * 人数課金がない ── 機械数台の買い切りと、電気代と回線。値上げのレバーがない。
-* 外国政府のアクセス・レバーがない。遠隔のキルスイッチもない ── 切る一手を
-  握る第三者が、そもそも存在しない。
+* 外国政府のアクセス・レバーが小さい。遠隔のキルスイッチもない ── ただし、回線、DNS、
+  Cloudflare、更新の配布、AI の契約は残る。自分で運用できることが、安全の条件だ。
 
 そして、最後の一層は AI だ。link:/ai-native-software/ai/[2-16: 自前の AI を据える]で立てたローカルのオープン重みモデルを、自前のハードウェアで動かす。
 
@@ -15094,7 +15174,7 @@ ____
   そのまま動く
 * 元のビルダーが去っても、後任が AI に読ませて理解できる
 * 顧客が内製化したくなれば、コードを引き取って続きが書ける
-* 別のサービス会社に保守を頼みたくなれば、それもできる
+* 別のサービス会社に保守を頼みたくなれば、それもできる(権限の渡し方は 2-02)
 
 これは、SIer / FDE モデルでは構造的に成立しない選択肢だ。ロックイン構造を
 持たないことが、AI ネイティブ開発の構造的な強みになる。
@@ -15635,7 +15715,7 @@ ____
 * 等級・配属ではなく、経営判断の対象範囲と責任で位置づける
 * 管理職昇進ではなく、経営判断の影響範囲の拡大で報いる
 * C 級役員・執行役員としての処遇を前提に置く
-* 個人事業主 / 業務委託契約も選択肢に含める
+* 個人事業主 / 業務委託契約も選択肢に含める。外の人の権限は 2-02 の決めに従う
 
 このとき、社内ビルダーの位置づけは「IT 部門の一員」ではなく、CIO・執行役員に
 近い。経営層としての処遇になる。
@@ -16465,6 +16545,13 @@ link:/phosphorus-and-farming/[リン資源枯渇と自然農法]で扱ってい�
 業界内の流動 (元請け・顧客・独立) に加えて、業界外の物理労働需要という選択肢が
 大きく広がる。
 
+ソフトウェアの内側にも、人手の要る仕事が残る。脆弱性への対応と、更新を出し続ける
+保守だ。法がそれを求め始めている。EU のサイバーレジリエンス法(規則 2024/2847)は、
+製品を作る会社に、脆弱性の窓口と、更新を受けられる期間の明示を求める。報告の義務は
+2026 年 9 月 11 日から、全体は 2027 年 12 月 11 日から適用される。英国の PSTI 法の
+規則も、2024 年 4 月 29 日から、窓口と更新の期間の公開を求めている。作った物を売る
+会社には、この仕事が残る。
+
 1-03 で見た歴史的並行 ── 計算手や組版工が別領域に移った転換 ── が成立したのも、
 移った先の労働需要が偶然存在したからだ。今回も同じである。労働需要が消える側
 (コード生産) と、増える側 (物の生産、農業、AI 物理インフラ) が、同じ社会の中で
@@ -16770,6 +16857,14 @@ SIer industry's shrinkage. As a result, the options open to displaced coders
 broaden significantly. Alongside intra-industry flow to primes, customers and
 independence, out-of-industry physical labor demand becomes a major channel.
 
+Inside software, too, work that needs people remains: responding to vulnerabilities, and the
+maintenance of keeping updates coming. The law has begun to require it. The EU Cyber
+Resilience Act (Regulation 2024/2847) requires companies that make products to provide a
+contact point for vulnerabilities and to state how long updates will be provided. Its
+reporting duty applies from 11 September 2026, and the whole Act from 11 December 2027.
+The UK's PSTI regulations, too, have required a published contact point and update period
+since 29 April 2024. Companies that sell what they make keep this work.
+
 The historical parallel from 1-03 — human computers and typesetters moving to
 adjacent fields — was viable only because labor demand happened to exist where they
 landed. The same applies here. The side where labor demand disappears, code
@@ -16867,8 +16962,8 @@ number: 08
 part: 3
 title.ja: AI 革命は下から起きる
 title.en: The AI Revolution Starts From Below
-subtitle.ja: 上からの導入は必ず失敗する。回線と月 100 ドル台で始められる所から始まる
-subtitle.en: Top-down adoption always fails. It starts where a line and $100 a month are all you need
+subtitle.ja: 上からの導入は失敗する。回線と月 100 ドル台で始められる所から始まる
+subtitle.en: Top-down adoption fails. It starts where a line and $100 a month are all you need
 description.ja: AI 革命は、経営の決定でも大きな予算でも始まらない。始まるのは、稟議なしでできる所からだ。中小企業、個人事業主、大企業の裁量のある部署、大企業の周辺部。要るのはインターネットの回線と、月 100 ドルの利用料だけ。上から入れると、情シスと SIer を通り、人を減らす話になり、現場は隠れて使い、会社には何も残らない。下から始めれば、六つが残る。コード、業務の知識が言葉になった物、答え合わせの仕組み、詰まった所と直し方の記録、作れる人、データ。経営者には細かな問題を見る時間が無く、AI が解けるのはその細かな問題だ。だから AI は現場が持つ。中心が持てば監視と検閲に使い、下が持てば問題が解ける。始まる場所が無数にあり、止める手が無い。
 description.en: The AI revolution does not start with an executive decision or a large budget. It starts where no approval process is needed: small companies, sole traders, a department with real discretion inside a large company, and the periphery of large companies. All it takes is an internet line and $100 a month. Adopted from the top, it passes through the IT department and the SIer, turns into a headcount-reduction story, drives the floor to use AI in hiding, and leaves the company with nothing. Started from below, six things stay: the code, the business knowledge put into words, the checking mechanism, the record of what got stuck and how it was fixed, the people who can build, and the data. Executives have no time to look at small problems, and small problems are exactly what AI solves. So AI belongs to the floor. Held at the center it is used for surveillance and censorship; held below it solves problems. There are countless places for it to start, and no hand that can stop it.
 date: 2026.09.20
@@ -16960,7 +17055,8 @@ IT 企業は「AI を入れて人を減らす」と言う。この言い方を�
 会社が表で使わせないなら、待たなくていい。*部署で使えばいい*。部署で使えば、
 六つは部署の中に残る。ここから、AI 革命は始まっていく。
 
-会社全体の合意も、全社の方針も要らない。要るのは、部署の裁量だけだ。
+会社全体の合意も、全社の方針も要らない。要るのは、部署の裁量だけだ。ただし、外の AI に
+渡すのは課題のフォルダーの中身だけにする。鍵と顧客の個人情報は渡さない(2-02)。
 
 == 要るのは、回線と月 100 ドル台だけだ
 
@@ -16976,9 +17072,9 @@ IT 企業は「AI を入れて人を減らす」と言う。この言い方を�
 
 ここには、決裁を待つ理由が無い。始めようと思った日に始められる。
 
-== 上から入れると、必ず失敗する
+== 上から入れると、失敗する
 
-上から導入すると、必ず失敗する。理由は手順にある。
+上から導入すると、失敗しやすい。理由は手順にある。
 
 上からの導入は、まず情シスを通る。次に SIer を通る。そこで話は「AI を入れて人を
 減らす」になる。そうなれば現場は隠れて使う。会社には何も残らない。
@@ -17073,7 +17169,7 @@ AI が革命を起こすのは、上からの決定でも、大きな予算で�
 * *「人を減らす」と言えば、隠れて使われる* ── 会社には何も残らない
 * *残るのは六つ* ── コード、言葉になった業務知識、答え合わせ、詰まった所の記録、作れる人、データ
 * *要るのは回線と月 100 ドル台* ── 稟議なしでできる所から始まる
-* *上から入れると必ず失敗する* ── 情シスと SIer を通り、人減らしの話になる
+* *上から入れると失敗しやすい* ── 情シスと SIer を通り、人減らしの話になる
 * *AI は現場が持つ* ── 経営者には細かな問題を見る時間が無く、AI が解けるのはその細かな問題だ
 
 始まる場所が無数にあり、止める手が無い。次章では、この転換がなぜ戻らないのかを、
@@ -17191,7 +17287,8 @@ Used in a department, the six stay inside that department. This is where the AI
 revolution begins.
 
 No company-wide agreement is needed, and no company-wide policy. What is needed
-is the department's own discretion.
+is the department's own discretion. Only the contents of the task folder go to an
+outside AI, though. Keys and customers' personal information do not (2-02).
 
 == All it takes is a line and a hundred-odd dollars a month
 
@@ -17208,9 +17305,9 @@ So the audience is clear. *Anywhere this can be done without an approval process
 None of them has a reason to wait for a sign-off. They can start the day they
 decide to.
 
-== Adopted from the top, it always fails
+== Adopted from the top, it fails
 
-Top-down adoption always fails. The reason is in the sequence.
+Top-down adoption tends to fail. The reason is in the sequence.
 
 Top-down adoption goes through the IT department first. Then through the SIer.
 There, the story becomes "bring in AI and cut headcount." Once that happens, the
@@ -17320,7 +17417,7 @@ subscription were enough.
 * *Say "cut headcount" and it gets used in hiding* — the company is left with nothing
 * *Six things stay* — code, business knowledge in words, the checking mechanism, the record of what got stuck, people who can build, the data
 * *A line and a hundred-odd dollars a month* — it starts where no approval process is needed
-* *Top-down adoption always fails* — it goes through the IT department and the SIer and becomes headcount reduction
+* *Top-down adoption tends to fail* — it goes through the IT department and the SIer and becomes headcount reduction
 * *AI belongs to the floor* — executives have no time for small problems, and small problems are what AI solves
 
 There are countless places for it to start, and no hand that can stop it. The next
@@ -17714,6 +17811,12 @@ AI が引き受けつつあるのは、ソフトウェア工学の層全体で�
 AI 時代の自由人になる道筋も同じだ。エンジニアリングの中で特化を深める方向ではなく、
 判断、言語化、倫理、体系的思考というリベラルアーツの軸へ横に抜ける。これが構造的に
 正しい移動方向である。
+
+ただし、取り違えてはいけない。*セキュリティを学ぶな、ということではない*。確かめる
+こととセキュリティは、ビルダー自身が深く学ぶ技能だ(1-04)。退けているのは、それを
+他人に売る専門職として閉じこもる道である。コードを書くことは浅くてよい。テストを
+読むこと、鍵を作り直すこと、予備の機械に立て直すこと、記録から不審を見つけることは、
+深く学び、自分の手で実際に動かせなければならない。
 
 == これは第二次ルネサンスの始まりだ
 
@@ -18401,6 +18504,13 @@ The path to becoming a free person of the AI era is the same. The direction is
 not deeper specialization within engineering. It is stepping sideways onto the
 liberal-arts axis of judgment, verbalization, ethics, and systems thinking. That
 is the structurally correct direction of movement.
+
+Do not mistake this, though. *It does not mean: do not learn security.* Checking and
+security are skills the builder learns deeply (1-04). What is rejected is the path of
+shutting oneself into a specialist profession that sells them to others. Writing code
+may stay shallow. Reading tests, regenerating keys, rebuilding on the spare machine,
+and spotting the suspicious in the logs must be learned deeply and done with your own
+hands.
 
 == This is the beginning of the Second Renaissance
 

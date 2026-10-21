@@ -29,6 +29,16 @@ expand_all() はこれを既存ビルダーがそのまま読める従来型ツ�
 に展開し、config の各シリーズディレクトリを .build 側へ付け替える。
 下流(build_article.py, images.py, template_vars.py)は無変更で動く。
 
+GitHub でそのまま読めるようにする書き方(任意):
+
+- フロントマターの区切りは `---` の代わりに `////`(コメントブロック)でもよい。
+  GitHub の表示では隠れ、ビルドでは `---` と同じに読む。
+- `ifdef::env-github[]` 〜 `endif::[]` は GitHub の表示専用で、ビルドでは
+  丸ごと読み飛ばす。最初の区切りより前(文書タイトル・`:lang-ja:`・目次の
+  属性)と、各記事のフロントマター直後(章タイトル `= …`)に置ける。章
+  タイトルは title.ja(無ければ title)と一致しないとエラーにする——
+  フロントマターだけ直して GitHub 側の見出しが古いまま残る事故を防ぐため。
+
 資産は articles/assets/<シリーズ>/<記事ID>/ に、ai-native-ways の
 example-N/ コードは articles/examples/<シリーズ>/<章ID>/ に置き、
 展開時に記事ディレクトリへ symlink する。
@@ -109,6 +119,8 @@ def series_map(site_root):
 _SENTINEL_RE = re.compile(r"^//\s*=====\s*article:\s*(\S+)\s*=====\s*$")
 _IFDEF_RE = re.compile(r"^ifdef::lang-(ja|en)\[\]\s*$")
 _ENDIF_RE = re.compile(r"^endif::\[\]\s*$")
+_GITHUB_IFDEF_RE = re.compile(r"^ifdef::env-github\[\]\s*$")
+_FM_DELIMS = ("---", "////")
 
 
 class SeriesError(SystemExit):
@@ -148,12 +160,31 @@ def parse_series_file(path):
     ifdef_line = 0
     body = {"ja": [], "en": []}
     explicit = set()     # 明示的な ifdef があった言語
+    fm_delim = None      # フロントマターを開いた区切り("---" か "////")
+    gh_line = None       # ifdef::env-github[] ブロック内なら開始行
+    gh_lines = []
+
+    def close_github_block():
+        """GitHub 表示専用ブロックを閉じる。ビルドには何も渡さず、記事内の
+        章タイトル `= …` だけフロントマターと突き合わせる。"""
+        if unit is None:
+            return
+        want = unit.meta.get("title.ja") or unit.meta.get("title")
+        for off, gl in enumerate(gh_lines, start=gh_line + 1):
+            if gl.startswith("= ") and gl[2:].strip() != str(want).strip():
+                raise SeriesError(
+                    path, off,
+                    f"GitHub 用の章タイトルがフロントマターの title.ja と違います: "
+                    f"「{gl[2:].strip()}」≠「{want}」",
+                )
 
     def flush(end_line_no):
+        if gh_line is not None:
+            raise SeriesError(path, gh_line, "ifdef::env-github[] が endif::[] で閉じていません")
         if unit is None:
             return
         if fm_lines is not None and not fm_done:
-            raise SeriesError(path, unit.line_no, "フロントマターの --- が閉じていません")
+            raise SeriesError(path, unit.line_no, f"フロントマターの {fm_delim} が閉じていません")
         if cur_lang is not None:
             raise SeriesError(path, ifdef_line, f"ifdef::lang-{cur_lang}[] が endif::[] で閉じていません")
         if not unit.meta.get("slug"):
@@ -171,6 +202,26 @@ def parse_series_file(path):
         units.append(unit)
 
     for i, line in enumerate(lines, start=1):
+        # GitHub 表示専用ブロック: ビルドでは丸ごと読み飛ばす
+        if gh_line is not None:
+            # 区切りや次の ifdef が来たら閉じ忘れ(飲み込むと本文が黙って消える)
+            if _SENTINEL_RE.match(line) or line.startswith(("ifdef::", "ifndef::")):
+                raise SeriesError(path, gh_line, "ifdef::env-github[] が endif::[] で閉じていません")
+            if _ENDIF_RE.match(line):
+                close_github_block()
+                gh_line = None
+                gh_lines = []
+            else:
+                gh_lines.append(line)
+            continue
+        if _GITHUB_IFDEF_RE.match(line):
+            if unit is not None and not fm_done:
+                raise SeriesError(path, i, "ifdef::env-github[] はフロントマターの後に置きます")
+            if cur_lang is not None:
+                raise SeriesError(path, i, "ifdef の入れ子はできません")
+            gh_line = i
+            continue
+
         m = _SENTINEL_RE.match(line)
         if m:
             flush(i)
@@ -181,6 +232,7 @@ def parse_series_file(path):
             unit = ArticleUnit(article_id, i)
             fm_lines = None
             fm_done = False
+            fm_delim = None
             cur_lang = None
             body = {"ja": [], "en": []}
             explicit = set()
@@ -196,16 +248,21 @@ def parse_series_file(path):
                 )
             continue
 
-        # フロントマター(記事内の最初の --- ブロック)
+        # フロントマター(記事内の最初の --- ブロック。//// でもよい)
         if fm_lines is None and not fm_done:
-            if line.strip() == "---":
+            if line.strip() in _FM_DELIMS:
+                fm_delim = line.strip()
                 fm_lines = []
                 continue
             if line.strip() == "":
                 continue
-            raise SeriesError(path, i, "区切りコメントの直後はフロントマター(---)が必要です")
+            raise SeriesError(path, i, "区切りコメントの直後はフロントマター(--- か ////)が必要です")
         if fm_lines is not None and not fm_done:
-            if line.strip() == "---":
+            if line.strip() in _FM_DELIMS and line.strip() != fm_delim:
+                raise SeriesError(
+                    path, i, f"フロントマターを {fm_delim} で開いたら {fm_delim} で閉じます",
+                )
+            if line.strip() == fm_delim:
                 meta, _ = parse_frontmatter("---\n" + "\n".join(fm_lines) + "\n---\n")
                 unit.meta = meta
                 fm_done = True

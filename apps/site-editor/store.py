@@ -23,6 +23,8 @@ sys.path.insert(0, str(REPO / "tools"))
 from build.series import (  # noqa: E402
     site_series_defs,
     _ENDIF_RE,
+    _FM_DELIMS,
+    _GITHUB_IFDEF_RE,
     _IFDEF_RE,
     _SENTINEL_RE,
     SERIES_MAP,
@@ -208,16 +210,30 @@ def _write_validated(path: Path, original: str, text: str) -> None:
 
 
 def _frontmatter_span(lines: list[str], article_id: str) -> tuple[int, int]:
-    """フロントマターの中身の行範囲 [i0, i1)(--- 行は含まない)。"""
+    """フロントマターの中身の行範囲 [i0, i1)(--- か //// の行は含まない)。"""
     s, e = _article_range(lines, article_id)
     first = None
     for i in range(s, e):
-        if lines[i].strip() == "---":
-            if first is None:
-                first = i
-            else:
-                return first + 1, i
+        if first is None and lines[i].strip() in _FM_DELIMS:
+            first = i
+        elif first is not None and lines[i].strip() == lines[first].strip():
+            return first + 1, i
     raise KeyError(f"{article_id} のフロントマターが見つかりません")
+
+
+def _sync_github_title(lines: list[str], article_id: str, title: str) -> None:
+    """フロントマター直後の ifdef::env-github[] ブロックにある章タイトル
+    `= …` を title に揃える(ビルダーは食い違いをエラーにするため)。"""
+    _, fm_end = _frontmatter_span(lines, article_id)
+    _, e = _article_range(lines, article_id)
+    in_gh = False
+    for i in range(fm_end + 1, e):
+        if _GITHUB_IFDEF_RE.match(lines[i]):
+            in_gh = True
+        elif in_gh and _ENDIF_RE.match(lines[i]):
+            in_gh = False
+        elif in_gh and lines[i].startswith("= "):
+            lines[i] = f"= {title}"
 
 
 def read_meta_raw(name: str, article_id: str) -> dict:
@@ -244,6 +260,9 @@ def save_meta(name: str, article_id: str, meta: dict) -> None:
     lines[i0:i1] = [
         f"{k}: {v}" for k, v in meta.items() if str(v).strip() != ""
     ]
+    title = meta.get("title.ja") or meta.get("title")
+    if title:
+        _sync_github_title(lines, article_id, title)
     _write_validated(path, original, "\n".join(lines))
 
 
@@ -307,9 +326,15 @@ def add_article(name: str, slug: str, title_ja: str, title_en: str = "") -> str:
         meta_lines.append(f"title.ja: {title_ja}")
     meta_lines.append("draft: true")
 
-    section = [f"// ===== article: {article_id} =====", "---", *meta_lines, "---",
-               "ifdef::lang-ja[]", f"= {title_ja}", "", "(本文をここに書く)",
-               "endif::[]"]
+    # GitHub でも読める書き方(//// のフロントマター)のシリーズなら、新しい
+    # 記事も同じ形にする(章タイトルの env-github ブロック付き)
+    if re.search(r"^// =====.*\n////$", original, re.M):
+        section = [f"// ===== article: {article_id} =====", "////", *meta_lines, "////",
+                   "ifdef::env-github[]", f"= {title_ja}", "endif::[]"]
+    else:
+        section = [f"// ===== article: {article_id} =====", "---", *meta_lines, "---"]
+    section += ["ifdef::lang-ja[]", f"= {title_ja}", "", "(本文をここに書く)",
+                "endif::[]"]
     if title_en:
         section += ["ifdef::lang-en[]", f"= {title_en}", "",
                     "(Write the English body here)", "endif::[]"]

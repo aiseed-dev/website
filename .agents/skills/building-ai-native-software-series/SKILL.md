@@ -1,11 +1,11 @@
 ---
 name: building-ai-native-software-series
-description: Drives the series "AI ネイティブなソフトウェア開発" (articles/ai-native-software.adoc, URL /ai-native-software/) — an independent series of three parts (導入編 / 自立編 / 転換編, each numbered from 1) arguing that AI has drawn level with the top human tier at writing code, that the coder's and software engineer's work moves to AI while a new role, the builder who plans and writes the spec, arises on the customer's side, that a company can stand up its whole toolset off Microsoft and Google with one person plus AI, and that the SIer commission model has become structurally uneconomic. Use when adding or revising any chapter of this series, when checking that a chapter agrees with the others (the map in 2-01, the hand-offs between parts, the three-section block in 自立編), or when deciding what a chapter must contain. Pair with authoring-series-chapter (mechanics) and writing-series-voice (prose).
+description: Drives the series "AI ネイティブなソフトウェア開発" (articles/ai-native-software/, URL /ai-native-software/) — an independent series of three parts (導入編 / 自立編 / 転換編, each numbered from 1) arguing that AI has drawn level with the top human tier at writing code, that the coder's and software engineer's work moves to AI while a new role, the builder who plans and writes the spec, arises on the customer's side, that a company can stand up its whole toolset off Microsoft and Google with one person plus AI, and that the SIer commission model has become structurally uneconomic. Use when adding or revising any chapter of this series, when checking that a chapter agrees with the others (the map in 2-01, the hand-offs between parts, the three-section block in 自立編), or when deciding what a chapter must contain. Pair with authoring-series-chapter (mechanics) and writing-series-voice (prose).
 ---
 
 # Building "AI ネイティブなソフトウェア開発"
 
-An **independent series** in one file, `articles/ai-native-software.adoc`, registered in `site.json` with `url_base: /ai-native-software`. It replaced two retired series on 2026-09-21 — 「AIネイティブな仕事の作法」 (12 chapters) and its 「ソフトウェア開発編」 (23 chapters). The useful material from both was migrated in; old URLs 301 to the new ones via `html/_redirects`. Do not refer to either retired series in the text.
+An **independent series** in the folder `articles/ai-native-software/` (one `.adoc` per part, read in file-name order: `1-introduction`, `2a-independence` / `2b-independence` (自立編 06–15 / 16–22), `3-transition`), registered in `site.json` with `url_base: /ai-native-software`. It replaced two retired series on 2026-09-21 — 「AIネイティブな仕事の作法」 (12 chapters) and its 「ソフトウェア開発編」 (23 chapters). The useful material from both was migrated in; old URLs 301 to the new ones via `html/_redirects`. Do not refer to either retired series in the text.
 
 The series subtitle: 「SIer に頼まない ── 自分で立てて、自分で動かす」.
 
@@ -97,7 +97,7 @@ Refer to chapters as `{part}-{number}` in prose. The article IDs inside the file
 - The JA/EN parity script and the internal-link check from authoring-series-chapter.
 - Search with line breaks removed (prose is hard-wrapped; a phrase can straddle two lines). Then check the file for: `サブシリーズ`, `ソフトウェア開発編`, `親シリーズ`, `sub-series`, `parent series`, `本書`, `序章`, `/ai-native-ways/` — all should be zero.
 - `grep` for model names used as tiers (`Opus は`, `Fable / Mythos`).
-- If you change a chapter number, grep the other series files (`blog.adoc`, `insights.adoc`, `claude-debian.adoc`, `fable.adoc`, `phosphorus-and-farming.adoc`) for the old `{part}-{number}`.
+- If you change a chapter number, grep the other series files (`articles/blog/`, `articles/insights/`, `articles/claude-debian/`, `fable.adoc`, `articles/phosphorus-and-farming/`) for the old `{part}-{number}`.
 - If you change what 自立編 contains, update 2-01's table, order list, and summary, and 1-05's list.
 
 ## Review status

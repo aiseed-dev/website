@@ -1,11 +1,11 @@
 ---
 name: authoring-series-chapter
-description: Mechanics for adding, moving, renumbering, or splitting a chapter in an aiseed.dev series that is managed as one AsciiDoc file — chiefly "AI ネイティブなソフトウェア開発" (articles/ai-native-software.adoc), and the same format used by insights, blog, claude-debian, phosphorus-and-farming, and fable. Covers the `// ===== article:` separator, the bare-key / key.ja / key.en frontmatter, the ifdef::lang-ja[] / ifdef::lang-en[] bodies, part/number numbering, site.json series registration, the build and link checks, and the JA/EN parity checks. Use with writing-series-voice (prose) and building-ai-native-software-series (what each chapter of that series must contain).
+description: Mechanics for adding, moving, renumbering, or splitting a chapter in an aiseed.dev series that is managed as AsciiDoc series files (one file, or a folder of part files) — chiefly "AI ネイティブなソフトウェア開発" (articles/ai-native-software/), and the same format used by insights, blog, claude-debian, phosphorus-and-farming, and fable. Covers the `// ===== article:` separator, the bare-key / key.ja / key.en frontmatter, the ifdef::lang-ja[] / ifdef::lang-en[] bodies, part/number numbering, site.json series registration, the build and link checks, and the JA/EN parity checks. Use with writing-series-voice (prose) and building-ai-native-software-series (what each chapter of that series must contain).
 ---
 
-# Authoring a chapter in a one-file series
+# Authoring a chapter in a series file
 
-Every series on aiseed.dev is **one `.adoc` file** under `articles/`. A chapter is a block inside that file. There are no per-chapter folders, no `ja.md` / `en.md` pairs, and no hand-written prev/next chain. The old `articles/ai-native-ways/` layout (and its two series) was retired on 2026-09-21; ignore anything that still describes it.
+Every series on aiseed.dev is **one series of `.adoc` text** under `articles/`: either one file (`articles/fable.adoc`, `articles/debian-server.adoc`) or, for a series too large for GitHub to display, a folder of part files (`articles/blog/vol-01.adoc` …) that the build reads in file-name order as one continuous series. A chapter is a block inside one of those files. There are no per-chapter folders, no `ja.md` / `en.md` pairs, and no hand-written prev/next chain. The old `articles/ai-native-ways/` layout (and its two series) was retired on 2026-09-21; ignore anything that still describes it.
 
 ## The file
 
@@ -65,6 +65,19 @@ Rules the build relies on:
 
 ### GitHub-readable layout (every series file)
 
+**Size.** GitHub shows a rendered `.adoc` only up to a few hundred KB (384KB rendered; 650KB did not). Keep every file under about 380KB. The split series and their parts:
+
+| Series | Parts (file-name order) |
+|---|---|
+| `articles/ai-native-software/` | `1-introduction` (導入編), `2a-independence` (自立編 06–15), `2b-independence` (自立編 16–22), `3-transition` (転換編) |
+| `articles/insights/` | `part-1-collapse`, `part-2-emergence`, `part-3-design` |
+| `articles/blog/` | `vol-01` (001–011), `vol-02` (012–020), `vol-03` (021–029), `vol-04` (030–039), `vol-05` (040–) |
+| `articles/claude-debian/` | `part-1` (序章–12章), `part-2` (13–24章) |
+| `articles/phosphorus-and-farming/` | `part-1` (序章–5章), `part-2` (6–9章) |
+
+New articles go at the end of the last part (the site editor does this). When the last part passes ~350KB, start the next file (`vol-06.adoc`) with the same header block, its own `= <series> — <part>` title. Article IDs stay unique across all parts; the build fails on a duplicate. `articles/blog.adoc` and `articles/blog/` must not both exist.
+
+
 GitHub renders `.adoc` with neither `lang-ja` nor `lang-en` set, so without help every body is hidden and the frontmatter shows as one run-on paragraph. Every series file therefore uses a layout that reads on GitHub (Japanese bodies, a TOC, one heading per chapter); the build output is byte-identical to the plain layout:
 
 ```
@@ -91,7 +104,7 @@ ifdef::lang-ja[]
 - Fence the frontmatter with `////` (a comment block, hidden on GitHub), not `---`. Close it with the same fence it opened with.
 - `ifdef::env-github[]` … `endif::[]` is skipped entirely by the build. Use it only before the first separator (document title, `:lang-ja:`, TOC attributes) and right after an article's frontmatter.
 - **Chapter heading on GitHub**: if the Japanese body starts with `= Title` (most of ai-native-software, blog, fable, phosphorus-and-farming), that line is the heading — add nothing. If it starts at `==` (claude-debian, debian-server, most of insights), put `= <title.ja>` in the article's `env-github` block. That line must equal `title.ja` (or `title`) — the build fails otherwise. The site editor (`apps/site-editor`) updates it when the title is edited; by hand, change both.
-- **Images on GitHub**: when the article has an `articles/assets/<series>/<article-id>/` folder, put `:imagesdir: assets/<series>/<article-id>` in its `env-github` block so relative `image::` targets resolve on GitHub. Add it when you add the first asset to a new chapter.
+- **Images on GitHub**: when the article has an `articles/assets/<series>/<article-id>/` folder, put `:imagesdir:` in its `env-github` block so relative `image::` targets resolve on GitHub — `assets/<series>/<article-id>` from a one-file series, `../assets/<series>/<article-id>` from a part file in a folder. Add it when you add the first asset to a new chapter.
 
 ## Numbering (ai-native-software)
 
@@ -105,7 +118,7 @@ ifdef::lang-ja[]
 
 1. Write the block (frontmatter + JA body + EN body) and place it at the right position in the file. Give it an article ID whose numeric prefix falls between its neighbours' (see above).
 2. Set `part` / `number` / `label`. If you inserted into the middle of a part, renumber every later chapter in that part (`number` and `label`).
-3. Fix every prose reference that named a shifted number. Grep for the old `{part}-{number}` strings across the series file **and** `articles/blog.adoc`, `insights.adoc`, `claude-debian.adoc`, `fable.adoc`, `phosphorus-and-farming.adoc`.
+3. Fix every prose reference that named a shifted number. Grep for the old `{part}-{number}` strings across the series file **and** `articles/blog/`, `articles/insights/`, `articles/claude-debian/`, `fable.adoc`, `articles/phosphorus-and-farming/`.
 4. Update the previous chapter's closing paragraph (`次章では…` / `次の章は…`) and the new chapter's own. Every insertion moves a hand-off; check them all with the script below, not by eye.
 5. Run the checks below, then build.
 
@@ -117,7 +130,7 @@ ifdef::lang-ja[]
 python3 - <<'PY'
 import re
 from pathlib import Path
-t = Path("articles/ai-native-software.adoc").read_text(encoding="utf-8")
+t = "\n".join(p.read_text(encoding="utf-8") for p in sorted(Path("articles/ai-native-software").glob("*.adoc")))
 p = re.split(r"^// ===== article: (.+?) =====$", t, flags=re.M)
 it = iter(p[1:]); bad = 0
 for aid, body in zip(it, it):
@@ -162,7 +175,7 @@ PY
 python3 - <<'PY'
 import re
 from pathlib import Path
-t = Path("articles/ai-native-software.adoc").read_text(encoding="utf-8")
+t = "\n".join(p.read_text(encoding="utf-8") for p in sorted(Path("articles/ai-native-software").glob("*.adoc")))
 p = re.split(r"^// ===== article: (.+?) =====$", t, flags=re.M); it = iter(p[1:]); rows = []
 for aid, body in zip(it, it):
     fm = body.split("---")[1]

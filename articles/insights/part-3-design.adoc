@@ -1,0 +1,3862 @@
+// insights — 第3部。シリーズは articles/insights/ の *.adoc をファイル名順に連結したもの
+// 記事の区切り: // ===== article: <記事ID> =====
+// フロントマター: 日英共通は裸キー、異なる値は key.ja / key.en
+// 本文: ifdef::lang-ja[] / ifdef::lang-en[] で言語別
+// prev/next 連鎖は書かない(記事の並び順から自動導出)
+ifdef::env-github[]
+= Insights(構造分析) — 第3部
+:lang-ja:
+:doctype: book
+:toc:
+:toc-title: 目次
+:toclevels: 1
+
+サイトで読む: https://aiseed.dev/insights/
+endif::[]
+// ===== article: part-3-design/01-regulation-redesign =====
+////
+slug: regulation-redesign
+number: 01
+title.ja: 規制の再設計
+title.en: Regulation Redesign
+subtitle.ja: 化石資源時代の規制が、転換を妨げている
+subtitle.en: Regulations from the fossil era are blocking the transformation
+description.ja: 農地法、自由貿易協定、医療・年金制度——全て化石資源時代に設計された。リン酸肥料の硫黄依存が示すように、エネルギーと食料は不可分だ。規制を再設計しなければ、引き算の設計は実現しない。
+description.en: Agricultural land laws, free trade agreements, healthcare and pension systems — all designed for the fossil era. As the sulfur dependency of phosphate fertilizer shows, energy and food are inseparable. Without regulation redesign, subtraction design cannot be realized.
+date: 2025.04.04
+label: Structural Analysis 1
+cta_btn2_link.ja: /insights/fabrication-and-materials/
+cta_btn2_link.en: /en/insights/fabrication-and-materials/
+cta_btn2_text.ja: 前へ 加工の民主化——需要は素材へ、価値は判断へ
+cta_btn2_text.en: Previous: The Democratization of Fabrication
+cta_btn1_link.ja: /insights/subtraction-design/
+cta_btn1_link.en: /en/insights/subtraction-design/
+cta_btn1_text.ja: 次へ 引き算の設計
+cta_btn1_text.en: Next: Subtraction Design
+part_title.ja: 設計と実践
+part_title.en: Design and Practice
+part: 3
+cta_label.en: Start Now
+cta_title.en: Redesign the rules. Redesign society.
+cta_text.en: Old regulations block the new world. Change the rules, and the transformation becomes possible.
+////
+ifdef::env-github[]
+= 規制の再設計
+endif::[]
+ifdef::lang-ja[]
+== なぜ規制の再設計が必要か
+
+次章「引き算の設計」で、社会のどの前提が引かれていくかを描く。
+だが先に言っておくべきことがある。引き算は自然に起きても、
+*古い規制は自然には消えない。*
+
+現在の規制は全て、化石資源と都市集中の時代に設計された。
+これらの規制が、新しい社会への移行を阻んでいる。
+
+具体例を一つ挙げる。
+*リン酸肥料と硫黄の問題だ。*
+
+== リン酸肥料の見えない依存——硫黄
+
+世界の食料生産は化学肥料に完全に依存している。
+窒素（N）、リン（P）、カリウム（K）——この三大栄養素なしに、現代農業は成立しない。
+
+リン酸肥料の製造には、リン鉱石だけでなく、*大量の硫酸*が必要だ。
+
+[.chain-diagram]
+--
+*湿式プロセス（世界の主流）：* +
+リン鉱石（リン酸カルシウム）＋ 硫酸 → リン酸 ＋ 石膏（副産物）
+
+硫酸は触媒ではない。*消費される反応物*だ。 +
+DAP（リン酸二アンモニウム）1トンの生産に、硫酸約1.2トンが必要（業界の目安）。 +
+P₂O₅（五酸化二リン）1トンあたり、硫酸約2.7トンが消費される（半水法プラントの例）。
+--
+
+しかも硫酸の役割は化学反応だけではない。
+
+[.highlight-box]
+--
+*硫酸プラントは工場のエネルギー源でもある：*
+元素硫黄の燃焼 → 二酸化硫黄 → 三酸化硫黄 → 硫酸
+この過程で発生する膨大な熱エネルギーが、
+リン酸溶液の濃縮工程に再利用されている。
+硫酸なしでは、肥料工場の熱収支自体が崩壊する。
+--
+
+== 硫黄の80%以上は石油・天然ガスから来ている
+
+では、この膨大な量の硫黄はどこから来るのか。
+
+[.chain-diagram]
+--
+*世界の硫黄供給構造：* +
+原油・天然ガスには不純物として硫黄が含まれる（重量比1〜3%） +
+→ そのまま燃やすと酸性雨になる +
+→ 環境規制により、製油所で脱硫が義務付けられている +
+→ 脱硫の副産物として硫黄が回収される +
+→ *世界の硫黄供給の80%以上がこの副産物*（Maslin ら 2022）
+--
+
+これは「非自発的副産物（Nondiscretionary byproduct）」と呼ばれる。
+製油所は硫黄の市場価格に関係なく、硫黄を生産し続けなければならない。
+この構造のおかげで、世界の農業は*極めて安価で安定した硫黄*を享受してきた。
+
+[.highlight-box]
+--
+*第一部 第2章の構造と同じだ：*
+原油を精製すると → ナフサ（素材）＋ガソリン＋軽油＋硫黄が*同時に*出てくる。
+素材が必要で精製を続ければ、燃料も硫黄も出てくる。
+精製を止めれば、素材も燃料も硫黄も全て止まる。
+*エネルギーと素材と肥料は、製油所の中で不可分に結びついている。*
+--
+
+== 脱炭素化が硫黄を消す——ピーク・サルファー
+
+化石燃料の消費が減れば、精製プロセスが縮小する。
+精製が縮小すれば、副産物の硫黄も消える。
+
+[.chain-diagram]
+--
+*ピーク・サルファーの構造：* +
+脱炭素化 → 化石燃料の消費削減 +
+→ 製油所・ガス処理プラントの稼働縮小 +
+→ 副産物の硫黄供給が激減 +
+→ 硫酸の価格が高騰 +
+→ リン酸肥料のコストが爆発的に上昇 +
+→ *食料価格の高騰*
+--
+
+予測によれば、急速な脱炭素化シナリオでは、
+2040年までに*年間最大3億2,000万トン*の硫黄供給ギャップが生じる（Maslin ら 2022、Geographical Journal）。
+
+さらに問題がある。脱炭素化に必要なグリーンテクノロジー自体が、硫酸を大量に消費する。
+
+[.highlight-box]
+--
+*硫酸の争奪戦：*
+太陽光パネルの製造 → 硫酸が必要
+バッテリー用ニッケル・コバルトの精錬 → 硫酸が必要
+リン酸肥料の製造 → 硫酸が必要
+→ グリーン産業と肥料産業が、縮小する硫黄市場で競合する
+→ 利益率の高いグリーン産業が買い勝ち、肥料産業が買い負ける
+→ *食料が最初に犠牲になる*
+--
+
+== 原油の軽質化がさらに硫黄を減らす
+
+第一部 第2章で見たように、プラスチック製造にはナフサが必要で、
+軽質スイート原油（シェールオイルなど）がナフサを大量に生む。
+
+しかし、軽質スイート原油は硫黄をほとんど含まない。
+
+[.chain-diagram]
+--
+*パラドックス：* +
+プラスチック産業が好む軽質原油 → ナフサは潤沢 +
+→ しかし硫黄はほとんど出ない +
+重質サワー原油（中東など） → 硫黄は大量に出る +
+→ しかしナフサは少ない +
+→ 石油化学に最適な原油ほど、肥料に必要な硫黄が出ない
+--
+
+== リン鉱石の低品位化——硫酸がさらに必要に
+
+リン鉱石自体も枯渇に向かっている。
+良質な鉱床が掘り尽くされ、残った鉱石は不純物が多い。
+低品位な鉱石からリンを抽出するには、*より多くの硫酸*が必要になる。
+
+[.chain-diagram]
+--
+*二重の圧迫：* +
+脱炭素化 → 硫黄の供給が減る +
+リン鉱石の低品位化 → 硫黄の需要が増える +
+→ *供給減と需要増が同時に来る*
+--
+
+== 間違った解決策——下水汚泥からのリン回収
+
+ドイツ・スイスでは、法規制（ADWOなど）によって下水汚泥からのリン回収を義務付けている。
+一見、循環型の正しいアプローチに見える。
+
+しかし、これは*資源とエネルギーの無駄遣いだ。*
+
+|===
+|  | 従来のリン酸肥料 | 下水汚泥からの回収リン
+| 原料 | リン鉱石＋硫酸 | 下水汚泥
+| コスト | リン鉱石 約0.15ドル/kg（2026年、世界平均） | 回収リン 1.7〜6.6ドル/kg P（ストルバイト法の試算）
+| コスト比 | 1倍 | *10〜40倍*
+| エネルギー | 大量消費 | さらに大量消費
+| やっていること | 化学肥料を作る | *化学肥料を別の方法で作る*
+|===
+
+鉱石の10倍以上のコストをかけて下水からリンを回収する。
+その回収したリンで何をするのか。*化学肥料を作るのだ。*
+化学肥料依存のシステムを、莫大なコストとエネルギーで延命しているに過ぎない。
+
+[.highlight-box]
+--
+*ADWOの本質的な間違い：*
+問題：化学肥料が化石資源に依存している
+ADWOの解決策：化学肥料の原料を下水から回収する
+→ *化学肥料への依存自体は変わっていない*
+→ 膨大なエネルギーとコストを使って、同じ間違いを続けている
+--
+
+== 本当の解決策——化学肥料をやめる
+
+第一部 第3章と第二部 第2章で示したように、答えは既にある。
+
+*化学肥料自体が不要になる農業に移行することだ。*
+
+[.chain-diagram]
+--
+*リジェネラティブ農業：* +
+カバークロップ＋不耕起栽培 → 土壌微生物がリンを含むミネラルを植物に供給 +
+→ 化学肥料ゼロ、硫酸ゼロ、リン鉱石ゼロ +
+→ Gabe Brownが大規模農場で実証済み
+
+*福岡正信の自然農法：* +
+無肥料 → 微生物と植物の共生でミネラルが循環 +
+→ 外部依存ゼロ +
+→ 個人が自分の土地で食料を生産できる
+--
+
+|===
+|  | ADWO（下水リン回収） | リジェネラティブ農業
+| 化学肥料依存 | 維持（原料を変えただけ） | *不要*
+| コスト | 鉱石の10倍以上 | ゼロ（土壌微生物が供給）
+| エネルギー消費 | 大量 | 最小限
+| 硫黄問題 | 部分的に回避 | *問題自体が存在しない*
+| 持続可能性 | 下水に依存 | 土壌が自律的に循環
+|===
+
+ADWOは「化学肥料をどう作り続けるか」を考えている。
+しかし問うべきは「*なぜまだ化学肥料を使っているのか*」だ。
+
+== 農業研究者という税
+
+ADWOのような規制を作るのは誰か。*農業研究者だ。*
+
+農業研究者は論文を書く。しかし圃場で土に触れない。
+化学肥料の最適な投入量を計算する。しかし化学肥料をやめる方法は研究しない。
+化学肥料のシステムの中で「改善」を続ける。しかしシステム自体を疑わない。
+
+[.chain-diagram]
+--
+*農業研究者の構造：* +
+大学・研究機関に所属 → 論文を書いて評価される +
+→ 論文は既存の農業システムの「改善」を対象とする +
+→ 化学肥料を前提とした研究に予算がつく +
+→ 化学肥料をやめる研究には予算がつかない +
+→ *化学肥料依存を維持する方向に知識が蓄積される*
+--
+
+これはlink:/insights/enterprise-tax/[第一部 第8章]のOracle税・SIer税と同じ構造だ。
+そして予算の向きは、link:/insights/climate-mistake/[第一部 第1章]の資金配分と
+同じだ ── 予算がつくのは「買う対策」(投入財の最適化)の研究、つかないのは
+「やめる対策」(依存からの離脱)の研究である。
+Oracle税は「Oracleを使い続ける」ことで利益を得る人々が維持していた。
+農業研究者は「化学肥料を使い続ける」ことで存在意義を維持している。
+
+そして、農業研究者の仕事の本質は何か。
+*デスクワークだ。*
+
+[.highlight-box]
+--
+*農業研究者はソフトウェアエンジニアと同じだ：*
+論文を読む → デスクワーク → Claudeの方が速い
+データを分析する → デスクワーク → Claudeの方が正確
+最適な条件を計算する → デスクワーク → Claudeの方が安い
+報告書を書く → デスクワーク → Claudeの方が速い
+予算申請書を書く → デスクワーク → そもそも不要
+
+第二部 第1章で示したように、デスクワークの大半はAIで代替できる。
+農業研究者も例外ではない。
+ソフトウェアエンジニアがClaudeに代替されるように、
+農業研究者もClaudeに代替される。
+*違いは一つもない。*
+--
+
+福岡正信は研究者ではなかった。実践者だった。
+Gabe Brownも研究者ではなかった。実践者だった。
+化学肥料なしの農業を確立したのは、論文を書く人間ではなく、
+*圃場で土に触れた人間だ。*
+
+農業に必要なのは、実践者と、実践者を支援するAIだ。
+データの分析、知見の整理、栽培条件の最適化——
+これらはClaudeが研究者より速く、安く、正確にやる。
+
+*この章自体がその証拠だ。*
+リン酸肥料の化学式、硫黄の供給構造、ピーク・サルファーの予測、ADWOの問題点——
+研究者が論文にまとめれば数ヶ月かかる内容を、Claudeは数分で整理した。
+
+*農家がClaudeを使えば、農家自身が研究者になれる。*
+圃場で観察し、データをClaudeに渡し、分析結果を受け取り、次の実践に活かす。
+実践と分析のサイクルが、一人の農家の中で完結する。
+研究者という専門職が間に入る必要がない。
+
+第一部 第8章でClaudeがSIerを不要にしたように、
+Claudeは農業研究者を不要にする。
+しかしそれは農業の知識が失われることではない。
+*知識が、研究室から圃場に戻る*ということだ。
+
+== これが規制の再設計の意味だ
+
+EV義務化は、第一部 第2章の構造を無視した規制だった。
+ADWOは、化学肥料への依存を延命する規制だ。
+農業研究への公的予算は、化学肥料システムを維持する税だ。
+全て*古いシステムを前提にした規制と制度*であり、転換を妨げている。
+
+規制の再設計とは、古いシステムの延命ではなく、
+*新しいシステムへの移行を加速させる規制*を作ることだ。
+
+[.chain-diagram]
+--
+*引くべき規制：* +
+EV義務化規制 → 第一部 第2章で示した通り、素材のために精製は止められず燃料は出続ける。全車EV化は構造的に無謀 +
+農地法の厳格な転用規制 → 都市部からの移住者が農地を取得しにくい +
+自由貿易協定の農業条項 → 国内農業を安い輸入品から守れない +
+都市計画法の用途地域制度 → 農業・製造・居住の一体化を阻む +
+医療制度の診療報酬体系 → 「治療」に偏り「予防」にインセンティブがない +
+年金制度の65歳前提 → 働き方の多様化を阻む
+--
+
+[.highlight-box]
+--
+*足す必要がある規制と支援：*
+リジェネラティブ農業への移行支援 → 化学肥料依存からの脱却を加速
+野菜の栽培実践 → 化学肥料なしの栽培方法を実践者が圃場で確立する（第一部 第3章）。分析・知見の整理はAIが行う
+農地・林地の取得支援 → 都市部からの移住者が土地を持てる仕組み
+職業訓練 → デスクワーカーがバイオ素材製造・農業・林業を学ぶ場
+貿易政策の転換 → 国内の生産基盤を守る関税
+住居の初期支援 → 空き家の活用、移住者向け住居の整備
+地方の町のサービス維持 → 診療所・学校・商店を維持する財政措置
+--
+
+== エネルギー政策と農業政策を分けてはならない
+
+ここまでの分析が示す最も重要な結論がある。
+
+*エネルギー政策と農業政策を別々に考えてはならない。*
+
+[.chain-diagram]
+--
+*縦割りの弊害：* +
+エネルギー省 → 「脱炭素化を進めろ」 +
+農業省 → 「食料の安定供給を確保しろ」 +
+→ しかし脱炭素化が硫黄供給を消し、肥料を消し、食料を消す +
+→ *エネルギー政策の成功が、農業政策の失敗を引き起こす*
+--
+
+化石燃料の時代が終わろうとしている。
+その恩恵を最も受けてきた農業システム自体が、
+新しい存続のパラダイムを設計すべき限界点に立っている。
+
+____
+規制は社会の設計図だ。 +
+古い設計図のまま、新しい社会は作れない。 +
+エネルギーと食料は、製油所の中で不可分に結びついている。 +
+この結びつきを理解した上で、規制を再設計する。 +
+それが、引き算の設計を現実にする唯一の方法だ。
+____
+endif::[]
+ifdef::lang-en[]
+== Why Regulation Redesign Is Necessary
+
+The next chapter, "Subtraction Design," lays out which premises of society get subtracted.
+But while subtraction happens naturally, *old regulations do not disappear on their own.*
+
+Current regulations were all designed for the era of fossil resources and urban concentration.
+These regulations are blocking the transition to a new society.
+
+One concrete example.
+*The phosphate fertilizer and sulfur problem.*
+
+== The Invisible Dependency of Phosphate Fertilizer — Sulfur
+
+Global food production depends entirely on chemical fertilizer.
+Nitrogen (N), phosphorus (P), potassium (K) — modern agriculture cannot exist without these three nutrients.
+
+Manufacturing phosphate fertilizer requires not just phosphate rock, but *massive quantities of sulfuric acid.*
+
+[.chain-diagram]
+--
+*The wet process (the global standard):* +
+Phosphate rock (calcium phosphate) + Sulfuric acid → Phosphoric acid + Gypsum (byproduct)
+
+Sulfuric acid is not a catalyst. It is a *consumed reactant.* +
+Producing 1 ton of DAP (diammonium phosphate) requires ~1.2 tons of sulfuric acid (industry rule of thumb). +
+Per ton of P₂O₅, approximately 2.7 tons of sulfuric acid are consumed (hemihydrate-plant example).
+--
+
+Sulfuric acid's role goes beyond chemistry.
+
+[.highlight-box]
+--
+*The sulfuric acid plant is also the factory's energy source:*
+Burning elemental sulfur → SO₂ → SO₃ → Sulfuric acid
+The enormous heat generated in this process
+is reused to concentrate phosphoric acid solutions.
+Without sulfuric acid, the thermal balance of the entire fertilizer plant collapses.
+--
+
+== Over 80% of Sulfur Comes from Oil and Natural Gas
+
+Where does this enormous quantity of sulfur come from?
+
+[.chain-diagram]
+--
+*The global sulfur supply structure:* +
+Crude oil and natural gas contain sulfur as an impurity (1–3% by weight) +
+→ Burning it directly causes acid rain +
+→ Environmental regulations mandate desulfurization at refineries +
+→ Sulfur is recovered as a byproduct of desulfurization +
+→ *Over 80% of the world's sulfur supply is this byproduct* (Maslin et al. 2022)
+--
+
+This is called a "nondiscretionary byproduct."
+Refineries must produce sulfur regardless of its market price.
+Thanks to this structure, world agriculture has enjoyed *extremely cheap, stable sulfur* for decades.
+
+[.highlight-box]
+--
+*The same structure as Chapter 2:*
+Refining crude oil → Naphtha (materials) + Gasoline + Diesel + Sulfur come out *simultaneously.*
+If refining continues for materials, fuel and sulfur also come out.
+If refining stops, materials, fuel, and sulfur all stop.
+*Energy, materials, and fertilizer are inseparably linked inside the refinery.*
+--
+
+== Decarbonization Eliminates Sulfur — Peak Sulfur
+
+If fossil fuel consumption declines, refining processes shrink.
+If refining shrinks, byproduct sulfur disappears.
+
+[.chain-diagram]
+--
+*The structure of Peak Sulfur:* +
+Decarbonization → Reduced fossil fuel consumption +
+→ Refinery and gas processing plant operations shrink +
+→ Byproduct sulfur supply plummets +
+→ Sulfuric acid prices surge +
+→ Phosphate fertilizer costs explode +
+→ *Food prices soar*
+--
+
+Projections show that under rapid decarbonization scenarios,
+a sulfur supply gap of up to *320 million tons per year* could emerge by 2040 (Maslin et al. 2022, Geographical Journal).
+
+The problem compounds further. Green technologies needed for decarbonization themselves consume massive sulfuric acid.
+
+[.highlight-box]
+--
+*The scramble for sulfuric acid:*
+Solar panel manufacturing → Requires sulfuric acid
+Battery-grade nickel and cobalt refining → Requires sulfuric acid
+Phosphate fertilizer production → Requires sulfuric acid
+→ Green industry and fertilizer industry compete over a shrinking sulfur market
+→ Higher-margin green industry outbids fertilizer producers
+→ *Food becomes the first casualty*
+--
+
+== Lighter Crude Oil Further Reduces Sulfur
+
+As Chapter 2 showed, plastic manufacturing needs naphtha,
+and light sweet crude (shale oil, etc.) produces naphtha abundantly.
+
+But light sweet crude contains almost no sulfur.
+
+[.chain-diagram]
+--
+*The paradox:* +
+Light crude preferred by petrochemicals → Abundant naphtha +
+→ But almost no sulfur +
+Heavy sour crude (Middle East, etc.) → Abundant sulfur +
+→ But less naphtha +
+→ The crude oil best for petrochemicals produces the least sulfur for fertilizer
+--
+
+== Declining Phosphate Rock Quality — Even More Sulfuric Acid Needed
+
+Phosphate rock itself is heading toward depletion.
+High-quality deposits are being exhausted; remaining ore contains more impurities.
+Extracting phosphorus from low-grade ore requires *even more sulfuric acid.*
+
+[.chain-diagram]
+--
+*Double squeeze:* +
+Decarbonization → Sulfur supply decreases +
+Declining ore quality → Sulfur demand increases +
+→ *Supply decline and demand increase arrive simultaneously*
+--
+
+== The Wrong Solution — Phosphorus Recovery from Sewage Sludge
+
+In Germany and Switzerland, regulations (such as ADWO) mandate phosphorus recovery from sewage sludge.
+At first glance, this looks like the right circular approach.
+
+But it is *a waste of resources and energy.*
+
+|===
+|  | Conventional phosphate fertilizer | Recovered phosphorus from sewage
+| Feedstock | Phosphate rock + sulfuric acid | Sewage sludge
+| Cost | Phosphate rock about $0.15/kg (2026, world average) | Recovered P $1.7–6.6/kg P (struvite-process estimates)
+| Cost ratio | 1x | *10–40x*
+| Energy | High consumption | Even higher consumption
+| What it does | Make chemical fertilizer | *Make chemical fertilizer by a different method*
+|===
+
+Spending more than ten times the cost of rock to recover phosphorus from sewage.
+And what is that recovered phosphorus used for? *To make chemical fertilizer.*
+This merely prolongs the chemical fertilizer system at enormous cost and energy.
+
+[.highlight-box]
+--
+*The fundamental error of ADWO:*
+Problem: Chemical fertilizer depends on fossil resources
+ADWO's solution: Recover fertilizer feedstock from sewage
+→ *Dependency on chemical fertilizer itself has not changed*
+→ Enormous energy and cost spent continuing the same mistake
+--
+
+== The Real Solution — Stop Using Chemical Fertilizer
+
+As Chapters 3 and 10 showed, the answer already exists.
+
+*Transition to agriculture that does not need chemical fertilizer at all.*
+
+[.chain-diagram]
+--
+*Regenerative agriculture:* +
+Cover crops + no-till farming → Soil microorganisms supply phosphorus and other minerals to plants +
+→ Zero chemical fertilizer, zero sulfuric acid, zero phosphate rock +
+→ Proven at scale by Gabe Brown
+
+*Fukuoka's natural farming:* +
+No fertilizer → Minerals cycle through microbial-plant symbiosis +
+→ Zero external dependency +
+→ Individuals can produce food on their own land
+--
+
+|===
+|  | ADWO (sewage P-recovery) | Regenerative agriculture
+| Chemical fertilizer dependency | Maintained (only feedstock changed) | *Eliminated*
+| Cost | More than ten times rock | Zero (soil microorganisms supply)
+| Energy consumption | High | Minimal
+| Sulfur problem | Partially avoided | *Problem does not exist*
+| Sustainability | Depends on sewage | Soil cycles autonomously
+|===
+
+ADWO asks "how do we keep making chemical fertilizer?"
+But the real question is "*why are we still using chemical fertilizer at all?*"
+
+== Agricultural Researchers — Another Tax
+
+Who creates regulations like ADWO? *Agricultural researchers.*
+
+Agricultural researchers write papers. But they do not touch soil in the field.
+They calculate optimal chemical fertilizer application rates. But they do not study how to stop using chemical fertilizer.
+They continue "improving" within the chemical fertilizer system. But they never question the system itself.
+
+[.chain-diagram]
+--
+*The structure of agricultural researchers:* +
+Employed at universities and research institutions → Evaluated by publishing papers +
+→ Papers target "improvements" within the existing agricultural system +
+→ Research budgets flow to chemical-fertilizer-based studies +
+→ No budget for research on eliminating chemical fertilizer +
+→ *Knowledge accumulates in the direction of maintaining chemical fertilizer dependency*
+--
+
+This is the same structure as the Oracle tax and SIer tax of
+link:/en/insights/enterprise-tax/[Part 1, Chapter 8]. And the direction of the
+budget matches the funding split of
+link:/en/insights/climate-mistake/[Part 1, Chapter 1] — funded research
+optimizes *measures you keep buying* (inputs); unfunded research studies
+*measures for quitting* (leaving the dependence).
+The Oracle tax was maintained by people who profited from "continuing to use Oracle."
+Agricultural researchers maintain their relevance by "continuing to use chemical fertilizer."
+
+And what is the essence of an agricultural researcher's work?
+*It is desk work.*
+
+[.highlight-box]
+--
+*Agricultural researchers are no different from software engineers:*
+Reading papers → Desk work → Claude is faster
+Analyzing data → Desk work → Claude is more accurate
+Calculating optimal conditions → Desk work → Claude is cheaper
+Writing reports → Desk work → Claude is faster
+Writing grant proposals → Desk work → Not needed at all
+
+As Chapter 9 showed, most desk work can be replaced by AI.
+Agricultural researchers are no exception.
+Just as software engineers are replaced by Claude,
+agricultural researchers are replaced by Claude.
+*There is no difference.*
+--
+
+Fukuoka was not a researcher. He was a practitioner.
+Gabe Brown was not a researcher. He was a practitioner.
+Agriculture without chemical fertilizer was established not by people writing papers,
+but by *people who touched the soil in the field.*
+
+What agriculture needs is practitioners, and AI to support them.
+Data analysis, knowledge synthesis, optimization of cultivation conditions —
+Claude does all of this faster, cheaper, and more accurately than researchers.
+
+*This chapter itself is the proof.*
+The chemistry of phosphate fertilizer, sulfur supply structures, Peak Sulfur projections, the flaws of ADWO —
+content that would take researchers months to compile into a paper, Claude organized in minutes.
+
+*With Claude, farmers themselves become the researchers.*
+Observe in the field, hand data to Claude, receive analysis, apply to the next practice.
+The cycle of practice and analysis completes within a single farmer.
+No need for a specialized profession called "researcher" in between.
+
+Just as Claude made SIers unnecessary in Chapter 8,
+Claude makes agricultural researchers unnecessary.
+But this does not mean agricultural knowledge is lost.
+*It means knowledge returns from the laboratory to the field.*
+
+== This Is What Regulation Redesign Means
+
+EV mandates ignored the structure shown in Chapter 2.
+ADWO prolongs dependency on chemical fertilizer.
+Public budgets for agricultural research are a tax that maintains the chemical fertilizer system.
+All are *regulations and institutions built on old system assumptions*, blocking the transformation.
+
+Regulation redesign does not mean prolonging old systems.
+It means *creating regulations that accelerate the transition to new systems.*
+
+[.chain-diagram]
+--
+*Regulations to subtract:* +
+EV mandates → As Chapter 2 showed, refining cannot stop because materials are needed, and fuel comes out regardless. Mandating all-EV is structurally reckless +
+Strict farmland conversion rules → Make it difficult for urban migrants to acquire agricultural land +
+Free trade agreement agricultural clauses → Cannot protect domestic farming from cheap imports +
+Urban planning zoning laws → Block integration of agriculture, manufacturing, and housing +
+Healthcare fee schedules → Biased toward "treatment," no incentive for "prevention" +
+Pension system's age-65 assumption → Blocks diversification of working patterns
+--
+
+[.highlight-box]
+--
+*Regulations and support to add:*
+Regenerative agriculture transition support → Accelerate escape from chemical fertilizer dependency
+Vegetable cultivation practice → Practitioners establish fertilizer-free methods in the field (Chapter 3). AI handles analysis and knowledge synthesis
+Farmland and forestland acquisition support → Enable urban migrants to obtain land
+Job training → Programs for desk workers to learn bio-material manufacturing, agriculture, forestry
+Trade policy reform → Tariffs to protect the domestic production base
+Initial housing support → Utilize vacant houses, prepare housing for migrants
+Maintaining town services → Fiscal measures to sustain clinics, schools, and shops
+--
+
+== Energy Policy and Agricultural Policy Must Not Be Separated
+
+The most important conclusion from this analysis:
+
+*Energy policy and agricultural policy must not be considered separately.*
+
+[.chain-diagram]
+--
+*The cost of siloed thinking:* +
+Energy ministry → "Advance decarbonization" +
+Agriculture ministry → "Ensure stable food supply" +
+→ But decarbonization eliminates sulfur supply, eliminates fertilizer, eliminates food +
+→ *Success in energy policy causes failure in agricultural policy*
+--
+
+The fossil fuel era is ending.
+The agricultural system that benefited most from that era
+now stands at the limit where it must design a new paradigm for survival.
+
+____
+Regulations are society's blueprint. +
+A new society cannot be built on an old blueprint. +
+Energy and food are inseparably linked inside the refinery. +
+Redesign regulations with this linkage understood. +
+That is the only way to make subtraction design real.
+____
+endif::[]
+
+// ===== article: part-3-design/02-subtraction-design =====
+////
+slug: subtraction-design
+number: 02
+title.ja: 引き算の設計
+title.en: Subtraction Design
+subtitle.ja: 今とはかなり違う世界を、どう設計するか
+subtitle.en: How to design a world quite different from today
+description.ja: 化石資源、自由貿易、東京一極集中、都市型医療・年金——現在の社会の前提が全て崩れる。個別の修正では済まない。何を引き、何を残すか。引き算で社会を設計し直す。
+description.en: Fossil resources, free trade, Tokyo's concentration, urban healthcare and pensions — every premise of current society is collapsing. Incremental fixes won't work. What do we subtract? What do we keep? Redesigning society through subtraction.
+date: 2025.04.04
+label: Structural Analysis 2
+cta_btn2_link.ja: /insights/regulation-redesign/
+cta_btn2_link.en: /en/insights/regulation-redesign/
+cta_btn2_text.ja: 前へ 規制の再設計
+cta_btn2_text.en: Previous: Regulation Redesign
+cta_btn1_link.ja: /insights/security-design/
+cta_btn1_link.en: /en/insights/security-design/
+cta_btn1_text.ja: 次へ Mythos時代のセキュリティ設計
+cta_btn1_text.en: Next: Security Design for the Mythos Era
+part_title.ja: 設計と実践
+part_title.en: Design and Practice
+part: 3
+cta_label.en: Start Now
+cta_title.en: With nature, we can live.
+cta_text.en: Subtract the unnecessary. What remains is enough.
+////
+ifdef::env-github[]
+= 引き算の設計
+endif::[]
+ifdef::lang-ja[]
+== 前章からの問い
+
+link:/insights/healthcare-fiscal/[第二部 第3章「社会の再生」]で、現在の社会の前提が全て崩れることを見た。
+
+[.chain-diagram]
+--
+化石資源 → 枯渇する +
+食料生産 → 化学肥料依存から脱却する +
+産業 → 軍需、IT、デスクワークが縮小する +
+人口分布 → 東京一極集中の理由が消える +
+貿易 → 自由貿易の前提が崩れる +
+医療・年金 → 都市型サラリーマン前提の制度が合わなくなる
+--
+
+個別の修正では済まない。
+*今とはかなり違う世界を設計しなければならない。*
+
+では、何を足し、何を引くのか。
+
+== 引き算の原理
+
+引き算とは、*化石資源と都市集中の時代に足されたもの*を引くことだ。
+不要なものを全て引いた結果の、最小構成こそが、新しい前提に対応する。
+「何かを足して問題を解く」ではなく、「*前提が変わったから、もう要らないものを外す*」。
+
+なぜ引き算がこれまで主流にならなかったのかも、もう明らかだ。*足す解は売り物になるが、引く解は売り物にならない*(link:/insights/climate-mistake/[第一部 第1章])。
+だから世界は、足す解で溢れてきた。
+
+この原理を、社会全体に適用する。
+
+== 引くもの① 東京一極集中
+
+第二部 第1章で見たように、東京圏に約3,700万人が集中する理由はデスクワークだった。
+デスクワークが消えれば、集中する理由が消える。
+
+[.chain-diagram]
+--
+*引くもの：* +
+東京への通勤 → 引く +
+オフィスビル → 引く +
+満員電車 → 引く +
+都心の家賃に所得の30% → 引く
+
+*残るもの：* +
+地方の町 → 商店、学校、診療所は既にある +
+農地と林地 → バイオ素材・食料生産の土台 +
+水と日照と土壌 → 日本の本当の資源
+--
+
+地方の町は、今のままで受け皿になる。
+*引くのは東京の集中であって、地方に何かを足す必要はない。*
+
+== 引くもの② 自由貿易の前提
+
+自由貿易は、安い石油で地球の裏側からモノを運べることが前提だった。
+その前提が崩れる。
+
+[.chain-diagram]
+--
+*引くもの：* +
+地球の裏側からの安い農産物 → 引く +
+海外の安い木材 → 引く +
+「国内農業は非効率」という思い込み → 引く
+
+*残るもの：* +
+国内の農地・林地で生産する食料と木材 +
+地域内で完結する流通 +
+*輸送コストがゼロに近い、地産地消の構造*
+--
+
+[.chain-diagram]
+--
+*直接流通：* +
+農家 → 消費者 +
+Web直販、ファーマーズマーケット、CSA（地域支援型農業） +
+農家の取り分 → 100% +
+輸送距離 → 最小化 +
+包装 → 最小化（対面なら不要） +
+中間業者を引く → 石油依存を引く → コストを引く
+--
+
+== 引くもの③ 都市型の医療・年金
+
+現在の医療は「デスクワークで体を壊す→病院で治す」。
+現在の年金は「65歳で引退→年金で養う」。
+どちらも都市型サラリーマンの制度だ。
+
+[.chain-diagram]
+--
+*引くもの：* +
+デスクワークによる運動不足 → 引く（土地ベースの仕事に変わる） +
+加工食品への依存 → 引く（自分で育てた食物に変わる） +
+生活習慣病 → 引く（自然な食と運動で減る） +
+巨大な医療費 → 引く（病気にならなければ不要） +
+65歳で引退する前提 → 引く（身体を使う仕事は長く続けられる） +
+年金への依存 → 引く（引退しなければ不要）
+--
+
+[.highlight-box]
+--
+*デスクワーク社会の医療・年金：*
+座って働く → 体を壊す → 医療で治す → 高コスト
+65歳で動けなくなる → 年金で養う → 現役世代が負担
+
+*土地ベースの社会の医療・年金：*
+身体を使って働く → 健康を維持する → 医療への依存が減る
+長く働ける → 年金への依存が減る → 制度の負担が減る
+
+*「病気を治す」を引いて「病気にならない」を残す。*
+*「年金で養う」を引いて「年金が不要な暮らし」を残す。*
+--
+
+== 引くもの④ 企業ITの税
+
+第一部 第8章で見たように、企業は莫大な「IT税」を払っている。
+
+[.chain-diagram]
+--
+*引くもの：* +
+Oracle/SQL Serverのライセンス料 → 引く（PostgreSQL＋Claudeに移行） +
+Microsoftの税 → 引く（オープンソースに移行） +
+SaaS月額課金 → 引く（自前で構築） +
+SIerの工数 → 引く（Claudeが代替） +
+コンサルタント費用 → 引く（Claudeが構造分析）
+
+*残るもの：* +
+1人＋Claudeで回せるシンプルなシステム +
+月数百円の自前サーバー
+--
+
+このサイト自体がその実証だ。
+
+[.highlight-box]
+--
+*このサイトの制作体制：*
+構造的思考：自分（1人）
+リサーチ：Gemini（文献調査・ファクトチェック）
+構造展開・執筆・コーディング：Claude（Claude Code）
+デザイン・レイアウト：Claude（CSS設計）
+翻訳：Claude（日英バイリンガル）
+Web制作会社なら数百万円。それがAI利用料だけで完成している。
+--
+
+== 引くもの⑤ 大組織
+
+AIは大企業にとっては「コスト削減」の道具だ。
+個人にとっては「能力拡大」の道具だ。
+
+[.chain-diagram]
+--
+大企業：100人 → AIで80人分の仕事を効率化 → 20人削減 +
+*効率化の幅：20%* +
+個人：1人 → AIで10人分の仕事ができるようになる +
+*能力の拡大：1000%*
+--
+
+大組織の優位性は三つだった。人員の規模、情報の規模、資本の規模。
+AIは人員と情報を無効化する。
+残るのは資本だけ。しかし知識労働に資本はほとんど不要だ。
+
+大組織を「引く」ことで、意思決定は即座に、方向転換は自由に、
+固定費はほぼゼロになる。
+
+== 引くもの⑥ 細かいデータの保存と分析
+
+企業は長年、データを細かく貯めてきた。データウェアハウス、BI ツール、
+KPI パイプライン、詳細なログ ── 「貯めて分析すれば、未来が見える」
+という前提の投資である。
+
+この前提が、二重に崩れている。
+
+第一に、*過去が未来を写さなくなった*。細かいデータの分析が意味を
+持つのは、明日が昨日の延長にあるときだけだ。いまは AI の進化が、
+経験のないことを次々に起こす ── デスクワークの単価が桁で変わり、
+開発の人数が桁で変わり、問題設定そのものが入れ替わる。「起きたことが
+ない」ことはデータに存在しない(link:/insights/microsoft/[第一部 第6章])。
+前例のない変化の時代に、過去パターンの精密な外挿は、*精密なだけの間違い* になる。link:/insights/structural-contradictions/[第一部 第11章]の
+言葉で言えば、validity が消えた世界で、reliability だけが高い数字を
+磨き続けることになる。
+
+第二に、*分析の常設基盤が要らなくなった*。細かく貯めて前処理して
+おく仕組みが必要だったのは、分析が高価だったからだ ── ETL、集計層、
+定型レポート、専門の分析者。いまは、問いが立ったときに AI に生データを
+読ませれば、その場で答えが返る。分析は「常設のパイプライン」から
+「*必要なときの一問*」に変わった。
+
+[.chain-diagram]
+--
+*引くもの：* +
+データウェアハウスと集計層 → 引く（問いが立ったら AI が生データを読む） +
+定型レポートと KPI ダッシュボード → 引く（見る人のいない数字の工場） +
+「いつか分析するため」の詳細ログ蓄積 → 引く（過去は未来を写さない）
+
+*残るもの：* +
+再生できない記録 ── 取引、契約、法定保存 +
+現在の状態 ── 在庫、残高、予定 +
+つまり、業務が回るのに要る*最小のデータ*だけ
+--
+
+既存システムの複雑さの相当部分は、この「貯めて分析する」ための配管で
+ある。*配管ごと引けば、システムは大幅に簡素化できる*。分析をやめる
+のではない ── 常設をやめるのだ。問いは AI に、そのつど聞けばいい。
+
+== 引き算の設計図
+
+|===
+| 引くもの | 現在 | 引いた後
+| 東京一極集中 | 約3,700万人が集まる | 地方の町で、農地・林地に囲まれて暮らす
+| 自由貿易の前提 | 地球の裏側から安いモノを運ぶ | 地産地消。国内の農地・林地で生産
+| 中間業者 | 農家→JA→卸→仲卸→小売→消費者 | 農家→消費者（直接）
+| 都市型医療 | 病気を治す（年間1.6兆円の透析、日本透析医学会の推計） | 病気にならない（自然な食と運動）
+| 年金依存 | 65歳で引退→年金で養う | 長く働ける→年金が不要に
+| 企業IT税 | Oracle税＋Microsoft税＋SIer税 | PostgreSQL＋Claude＋自前サーバー
+| 大組織 | 100人＋管理コスト | 1人＋AI。固定費ゼロ
+| データの倉庫 | 貯めて集計して定型レポート | 最小の記録＋必要なときに AI へ一問
+| プラットフォーム | SNS依存（アルゴリズムに支配） | 自前ドメイン＋静的HTML
+|===
+
+全てに共通するのは、*化石資源と都市集中の時代に足されたものを引く*ことだ。
+
+引いた先に残るのは、
+水と、土地と、植物と、微生物と、人間の手。
+日本にはそれが全てある。
+
+== 引き算だけでは足りない——規制の再設計が必要だ
+
+引き算は自然に起きる。化石資源が枯渇すれば、足されたものは勝手に崩れる。
+
+しかし、*古い規制は自然には消えない。*
+農地法、自由貿易協定、医療制度、年金制度、都市計画——
+化石資源と都市集中の時代に設計された規制が、転換を妨げている。
+
+引き算の設計を実現するには、規制の再設計が不可欠だ。
+*その具体像は、link:/insights/regulation-redesign/[前章]で描いたとおりである。*
+
+なお、化石資源後の食料供給（リジェネラティブ農業、自然農法、Light
+Farming、野菜の大規模生産の未確立問題）については、本サイトの自然
+農法系列で詳しく扱う。引き算の構造論の範囲を超えるため、本章では
+扱わない。
+endif::[]
+ifdef::lang-en[]
+== The Question from the Previous Chapter
+
+link:/en/insights/healthcare-fiscal/[Part 2, Chapter 3 "Rebuilding Society"] showed that every premise of current society is collapsing.
+
+[.chain-diagram]
+--
+Fossil resources → Depleting +
+Food production → Must escape chemical fertilizer dependency +
+Industries → Military, IT, desk work all shrinking +
+Population distribution → No reason for Tokyo's extreme concentration +
+Trade → The premise of free trade is collapsing +
+Healthcare and pensions → Systems designed for urban salaried workers no longer fit
+--
+
+Incremental fixes will not work.
+*A world quite different from today must be designed.*
+
+So what do we add, and what do we subtract?
+
+== The Principle of Subtraction
+
+Subtraction means removing *what was added during the era of fossil fuels and urban concentration*. The minimum configuration that remains
+after every unnecessary thing has been removed is what fits the new
+premises. Not "add something to solve the problem," but "*the premises changed, so take out what is no longer needed*."
+
+Why subtraction never became the mainstream is also clear by now.
+*A solution that adds is sellable; a solution that subtracts is not*
+(link:/en/insights/climate-mistake/[Part 1, Chapter 1]). So the world filled up
+with additive solutions.
+
+Apply this principle to all of society.
+
+== Subtract #1: Tokyo's Extreme Concentration
+
+As Chapter 9 showed, about 37 million people concentrated in the Tokyo area because of desk work.
+When desk work disappears, the reason for concentration disappears.
+
+[.chain-diagram]
+--
+*Subtract:* +
+Commuting to Tokyo → Subtract +
+Office buildings → Subtract +
+Packed trains → Subtract +
+30% of income on city-center rent → Subtract
+
+*What remains:* +
+Regional towns → Shops, schools, clinics already exist +
+Farmland and forestland → The foundation for bio-materials and food production +
+Water, sunlight, and soil → Japan's true resources
+--
+
+Regional towns are already the destination, as they are.
+*What we subtract is Tokyo's concentration — we do not need to add anything to rural Japan.*
+
+== Subtract #2: The Premise of Free Trade
+
+Free trade assumed cheap oil could ship goods from the other side of the planet.
+That premise is collapsing.
+
+[.chain-diagram]
+--
+*Subtract:* +
+Cheap agricultural imports from abroad → Subtract +
+Cheap foreign timber → Subtract +
+The assumption that "domestic farming is inefficient" → Subtract
+
+*What remains:* +
+Food and timber produced on domestic farmland and forestland +
+Distribution that completes within the region +
+*A local production, local consumption structure with near-zero transport costs*
+--
+
+[.chain-diagram]
+--
+*Direct distribution:* +
+Farmer → Consumer +
+Direct online sales, farmers' markets, CSA (community-supported agriculture) +
+Farmer's share → 100% +
+Transport distance → Minimized +
+Packaging → Minimized (face-to-face needs none) +
+Subtract middlemen → Subtract oil dependency → Subtract cost
+--
+
+== Subtract #3: Urban Healthcare and Pensions
+
+Current healthcare: "Desk work destroys the body → Hospitals fix it."
+Current pensions: "Retire at 65 → Pensions support you."
+Both are systems designed for urban salaried workers.
+
+[.chain-diagram]
+--
+*Subtract:* +
+Sedentary desk work → Subtract (work becomes land-based) +
+Processed food dependency → Subtract (replaced by food you grow yourself) +
+Lifestyle diseases → Subtract (natural diet and exercise reduce them) +
+Enormous medical costs → Subtract (unnecessary if you don't get sick) +
+The premise of retiring at 65 → Subtract (physical work can continue longer) +
+Pension dependency → Subtract (unnecessary if you don't retire)
+--
+
+[.highlight-box]
+--
+*Desk work society's healthcare and pensions:*
+Sit and work → Body breaks down → Medicine fixes it → High cost
+Cannot work past 65 → Pensions support → Working generation bears the burden
+
+*Land-based society's healthcare and pensions:*
+Physical work → Health maintained → Less medical dependency
+Work continues longer → Less pension dependency → Less institutional burden
+
+*Subtract "curing disease." Keep "not getting sick."*
+*Subtract "supporting with pensions." Keep "a life that doesn't need pensions."*
+--
+
+== Subtract #4: Enterprise IT Taxes
+
+As Chapter 8 showed, companies pay enormous "IT taxes."
+
+[.chain-diagram]
+--
+*Subtract:* +
+Oracle/SQL Server license fees → Subtract (migrate to PostgreSQL + Claude) +
+Microsoft tax → Subtract (migrate to open source) +
+SaaS monthly subscriptions → Subtract (build your own) +
+Systems integrator billable hours → Subtract (Claude replaces them) +
+Consultant fees → Subtract (Claude handles structural analysis)
+
+*What remains:* +
+A simple system run by 1 person + Claude +
+A self-hosted server costing a few dollars a month
+--
+
+This site is living proof.
+
+[.highlight-box]
+--
+*How this site was built:*
+Structural thinking: myself (1 person)
+Research: Gemini (literature review, fact-checking)
+Structure, writing, coding: Claude (Claude Code)
+Design and layout: Claude (CSS architecture)
+Translation: Claude (Japanese–English bilingual)
+A web agency would charge tens of thousands of dollars. This was built for AI subscription fees alone.
+--
+
+== Subtract #5: Large Organizations
+
+For large corporations, AI is a cost-cutting tool.
+For individuals, it is a capability multiplier.
+
+[.chain-diagram]
+--
+Large corporation: 100 people → AI automates 80 people's tasks → 20 laid off +
+*Efficiency gain: 20%* +
+Individual: 1 person → AI enables the output of 10 +
+*Capability expansion: 1,000%*
+--
+
+Large organizations had three advantages: scale of personnel, scale of information, scale of capital.
+AI neutralizes personnel and information.
+Only capital remains. But knowledge work requires almost no capital.
+
+Subtract the organization, and decisions become instant,
+pivots become frictionless, and fixed costs drop to nearly zero.
+
+== Subtract #6: Fine-Grained Data Storage and Analysis
+
+Companies have long stored data in fine grain. Data warehouses, BI tools,
+KPI pipelines, detailed logs — investments premised on "store it, analyze
+it, and the future becomes visible."
+
+That premise is collapsing on two fronts.
+
+First, *the past no longer projects the future.* Fine-grained analysis has
+meaning only while tomorrow is an extension of yesterday. Now the evolution
+of AI produces unprecedented events one after another — the unit price of
+desk work shifts by orders of magnitude, the headcount of development shifts
+by orders of magnitude, the problem statements themselves get replaced.
+"What has never happened" does not exist in the data
+(link:/en/insights/microsoft/[Part 1, Chapter 6]). In an era of unprecedented
+change, the precise extrapolation of past patterns becomes *an error that is merely precise.* In the words of
+link:/en/insights/structural-contradictions/[Part 1, Chapter 11]: polishing
+numbers of high reliability in a world whose validity has vanished.
+
+Second, *the standing analysis infrastructure is no longer needed.* The
+apparatus of fine-grained storage and pre-processing existed because
+analysis was expensive — ETL, aggregation layers, canned reports,
+professional analysts. Now, when a question arises, hand the raw data to AI
+and the answer comes back on the spot. Analysis has changed from *a standing pipeline* into *a single question, asked when needed.*
+
+[.chain-diagram]
+--
+*Subtract:* +
+Data warehouses and aggregation layers → subtract (when a question arises, AI reads the raw data) +
+Canned reports and KPI dashboards → subtract (a factory of numbers nobody reads) +
+Detailed logs stored "for future analysis" → subtract (the past does not project the future)
+
+*Keep:* +
+Records that cannot be regenerated — transactions, contracts, statutory retention +
+The current state — inventory, balances, schedules +
+That is: *the minimum data* the business needs to run
+--
+
+A substantial part of existing systems' complexity is the plumbing for
+"store and analyze." *Subtract the plumbing, and systems simplify drastically.* This is not giving up analysis — it is giving up the standing
+apparatus. Ask AI the question, each time it arises.
+
+== The Subtraction Blueprint
+
+|===
+| What to subtract | Present | After subtraction
+| Tokyo concentration | About 37 million people gathered | Living in regional towns, surrounded by farmland and forestland
+| Free trade premise | Shipping cheap goods from the other side of the planet | Local production, local consumption. Domestic farmland and forestland
+| Middlemen | Farmer→Coop→Wholesaler→Secondary wholesaler→Retailer→Consumer | Farmer→Consumer (direct)
+| Urban healthcare | Cure disease (¥1.6T/year on dialysis alone, Japanese Society for Dialysis Therapy estimate) | Prevent disease (natural diet and exercise)
+| Pension dependency | Retire at 65 → Pensions support | Work continues → Pensions unnecessary
+| Enterprise IT taxes | Oracle tax + Microsoft tax + SIer tax | PostgreSQL + Claude + self-hosted server
+| Large organizations | 100 people + management overhead | 1 person + AI. Zero fixed costs
+| The data warehouse | store, aggregate, canned reports | minimal records + one question to AI when needed
+| Platforms | Social media dependency (algorithm-controlled) | Own domain + static HTML
+|===
+
+The common thread: *subtract what was added during the era of fossil resources and urban concentration.*
+
+What remains after subtraction:
+water, land, plants, microorganisms, and human hands.
+Japan has all of these.
+
+== Subtraction Alone Is Not Enough — Regulations Must Be Redesigned
+
+Subtraction happens naturally. When fossil resources deplete, what was added collapses on its own.
+
+But *old regulations do not disappear naturally.*
+Agricultural land laws, free trade agreements, the healthcare system, the pension system, urban planning —
+regulations designed for the era of fossil resources and urban concentration are blocking the transformation.
+
+To realize subtraction design, regulation redesign is essential.
+*The concrete picture was drawn in the link:/en/insights/regulation-redesign/[previous chapter].*
+
+Food supply after fossil resources (regenerative agriculture, natural
+farming, Light Farming, and the unresolved problem of large-scale
+vegetable production) is covered in this site's natural-farming series.
+It falls outside the structural argument of subtraction and is not
+treated in this chapter.
+endif::[]
+
+// ===== article: part-3-design/03-security-design =====
+////
+slug: security-design
+number: 03
+title.ja: Mythos時代のセキュリティ設計
+title.en: Security Design for the Mythos Era
+subtitle.ja: AIで開発し、プロダクトにはAIを入れない。攻撃面ゼロの実践。
+subtitle.en: Use AI for development. Never embed AI in production. Zero attack surface in practice.
+description.ja: aiseed.devはClaude Codeで開発され、本番環境は静的HTML＋Nginx。AI無し、CMS無し、データベース無し。Mythos級AIが来ても侵入・横展開するエントリーポイントがない。これが構造分析シリーズの結論の実証だ。
+description.en: aiseed.dev was developed by Claude Code. The production environment runs static HTML + Nginx. No AI, no CMS, no database. Even Mythos-class AI finds no entry point to infiltrate or laterally traverse. This is the proof of the structural analysis series conclusion.
+date: 2025.04.13
+label: Structural Analysis 3
+part_title.ja: 設計と実践
+part_title.en: Design and Practice
+part: 3
+cta_label: Structure
+cta_title.ja: 構造が全てだ。
+cta_title.en: Structure is everything.
+cta_text.ja: AIは開発に使う。プロダクトの中には入れない。それだけで攻撃面がゼロになる。
+cta_text.en: Use AI for development. Never embed it in production. That alone makes the attack surface zero.
+cta_btn1_text.ja: 次へ クラウドからの自立
+cta_btn1_text.en: Next: Independence from the Cloud
+cta_btn1_link.ja: /insights/cloud-independence/
+cta_btn1_link.en: /en/insights/cloud-independence/
+cta_btn2_text.ja: 前へ 引き算の設計
+cta_btn2_text.en: Previous: Subtraction Design
+cta_btn2_link.ja: /insights/subtraction-design/
+cta_btn2_link.en: /en/insights/subtraction-design/
+////
+ifdef::env-github[]
+= Mythos時代のセキュリティ設計
+endif::[]
+ifdef::lang-ja[]
+== Mythos時代のセキュリティとは何か
+
+第一部 第5章「link:/insights/mythos/[Mythosが来た]」で、Mythos級AIの出現によりサイバー攻撃の経済学が根底から崩壊したことを示した。第一部 第6章「link:/insights/microsoft/[Microsoftの崩壊]」で、密結合した巨大エコシステムが最も脆弱な標的になることを示した。
+
+では、Mythos時代にどうやって守るのか。
+
+答えは単純だ。*攻撃面をゼロにする。*
+
+[.highlight-box]
+--
+*Mythos時代のセキュリティ原則：*
+. AIで開発する。プロダクトにはAIを入れない
+. CMS、データベース、APIを本番環境に置かない
+. 静的HTMLだけを公開する
+. サーバーは1台、1アプリ、疎結合
+. ブラックボックスを排除する
+*攻撃者がどれほど賢くても、入口がなければ侵入できない。*
+--
+
+== このサイトが実証だ
+
+https://aiseed.dev/[aiseed.dev]は、この原則を実装したサイトだ。
+
+[.chain-diagram]
+--
+*このサイトのアーキテクチャ：* +
+開発 → Claude Code（AIが全コードを生成） +
+ビルド → Python + Jinja2 + markdown-it-py（ローカルで実行） +
+公開 → 静的HTML + CSS + 画像ファイルのみ +
+サーバー → Nginx（静的ファイル配信のみ） +
+AI → *本番環境にはゼロ* +
+CMS → *なし* +
+データベース → *なし* +
+API → *なし*
+--
+
+|===
+| 要素 | WordPress（43%のウェブ） | aiseed.dev
+| CMS | あり（攻撃面） | なし
+| データベース | MySQL（SQLインジェクション） | なし
+| PHP | あり（リモートコード実行） | なし
+| プラグイン | 多数（未知の脆弱性） | なし
+| 管理画面 | あり（認証突破の標的） | なし
+| AI/Copilot | プラグインで追加可能（バックドア） | なし
+| 攻撃面 | *巨大* | *ゼロ*
+|===
+
+Mythosクラスの推論能力を持つAIが来ても、静的HTMLには入口がない。SQLインジェクションの対象となるデータベースがない。リモートコード実行の対象となるサーバーサイドスクリプトがない。横展開するための内部ネットワークがない。
+
+*攻撃面がゼロなら、攻撃能力は無関係だ。*
+
+== 「AIで開発する」と「AIを入れる」は違う
+
+ここが最も重要な区別だ。
+
+[.chain-diagram]
+--
+*AIで開発する（安全）：* +
+Claude Codeがコードを生成 → 人間がレビュー → ビルド → 静的HTMLを公開 +
+AIは開発プロセスにだけ存在する +
+本番環境にAIのコードは一切動いていない +
+*AIは道具として使い、成果物にはAIを入れない*
+--
+
+[.chain-diagram]
+--
+*AIを入れる（危険）：* +
+Copilot → エディタに常駐 → コードベースを外部に送信（第一部 第5章） +
+AIプラグイン → CMSに統合 → 外部API経由でデータが流出 +
+Security Copilot → テレメトリーに依存 → テレメトリーが偽装される（第一部 第6章） +
+*AIをプロダクトに入れた瞬間、攻撃面が爆発的に増大する*
+--
+
+この区別を理解していない組織が、Mythos時代に最初に崩壊する。
+
+== 人間はコードを1行も書いていない
+
+このサイトは*Claude Code*だけで開発された。
+
+HTML、CSS、JavaScript、Python、Markdown——全てClaudeが生成した。
+人間がやったのは、何を作るかを決めて、Claudeに指示を出すことだけだ。
+
+|===
+| 項目 | 数値
+| 総行数（コード＋コンテンツ） | 30,000+
+| HTMLページ | 42
+| 記事数 | 26（日本語13 + 英語13）
+| 開発期間 | 約24時間
+| gitコミット | 104
+| 人間が書いたコード | *0行*
+|===
+
+[.highlight-box]
+--
+*人間の役割：*
+構造分析のテーマを決めた（化石資源、農業、AI、NVIDIA、企業IT税……）
+記事の方向性をClaudeに伝えた（「クラウド税も入れて」「エプスタインを最後に」）
+出来上がったものを読んで、修正を指示した（「自宅→自社」「fade-inは不要」）
+デプロイした
+*コードは一切書いていない。*
+--
+
+== SIerに発注したら
+
+[.highlight-box]
+--
+*同じサイトをSIerに発注した場合の見積もり：*
+要件定義 → 数十万〜百万円
+デザイン → 数十万円
+コーディング（42ページ＋ビルドツール） → 数百万円
+多言語対応（日英26記事） → 数百万円
+SEO対策（OGP、sitemap、CSP等） → 数十万円
+テスト・デプロイ → 数十万円
+*合計：500万〜1,000万円。納期：2〜3ヶ月。*
+Claudeでやったら：*24時間。コストはほぼゼロ。*
+--
+
+== 消えた「税」
+
+第一部 第8章「link:/insights/enterprise-tax/[企業ITの税を引く]」で書いた構造は、このサイト自体が実証している。
+
+[.chain-diagram]
+--
+*このサイトで消えた「税」：* +
+SIer税 → 外部委託ゼロ。Claudeがコードを全部書いた +
+Microsoft税 → Windows不使用。Linux＋Claude +
+クラウド税 → AWSもAzureも不要 +
+SaaS税 → WordPress不使用。CMS不使用。Markdownとビルドツール +
+コンサルタント税 → 「何を作るべきか」もClaudeと対話して決めた
+--
+
+かかったコストはClaudeの月額利用料だけだ。
+
+== ビルドシステム——Claude自身が作ったツールチェーン
+
+[.chain-diagram]
+--
+*ビルドパイプライン：* +
+記事をMarkdownで書く（カスタム拡張構文を含む） +
+→ build_article.py がMarkdownを解析 +
+→ カスタムブロック（:::chain, :::highlight等）をHTMLに変換 +
+→ markdown-it-py（CommonMark準拠）で残りを変換 +
+→ Jinja2テンプレートに流し込む +
+→ OGP、canonical、hreflang等のSEOタグを自動付与 +
+→ sitemap.xml、robots.txt を自動生成 +
+→ 全42ページを一括ビルド +
+*このパイプライン全体をClaudeが設計・実装した*
+--
+
+== 構造の結論
+
+ここまでの構造分析は、一つの結論に収束する。
+
+[.chain-diagram]
+--
+*構造分析の結論：* +
+化石資源は枯渇する（第一部 第1〜4章） +
+→ Mythos級AIが来た。密結合した巨大システムは崩壊する（第一部 第5〜6章） +
+→ 巨大組織は逃げられない（第一部 第7〜8章） +
+→ 個人＋AIが構造を変える（第二部） +
+→ 引き算で設計し直す（第三部 第1〜2章） +
+→ *実証：AIで開発し、攻撃面ゼロのプロダクトを作る（本章）*
+--
+
+ソースコードはhttps://github.com/aiseed-dev/website[GitHub]で公開されている。
+ライセンスはhttps://creativecommons.org/licenses/by/4.0/[CC BY 4.0]。
+誰でも使える。構造を見れば、Mythos時代の設計が分かる。
+
+____
+AIを「使う側」に必要なのはGPUではなく、知性だ。 +
+何を作るかを決められる人間と、それを実装できるAI。 +
+この組み合わせが、数百万円の「税」を24時間でゼロにする。 +
+そして攻撃面をゼロにする。
+____
+endif::[]
+ifdef::lang-en[]
+== What Is Security in the Mythos Era?
+
+In Chapter 5 "link:/en/insights/mythos/[Mythos Has Arrived]," we showed that the economics of cyberattacks collapsed with the emergence of Mythos-class AI. In Chapter 6 "link:/en/insights/microsoft/[Microsoft's Collapse]," we showed that tightly coupled giant ecosystems become the most vulnerable targets.
+
+So how do you defend in the Mythos era?
+
+The answer is simple. *Make the attack surface zero.*
+
+[.highlight-box]
+--
+*Security principles for the Mythos era:*
+. Use AI for development. Never embed AI in production
+. No CMS, no database, no API in the production environment
+. Serve only static HTML
+. One server, one application, loosely coupled
+. Eliminate black boxes
+*No matter how intelligent the attacker, if there is no entry point, there is no intrusion.*
+--
+
+== This Site Is the Proof
+
+https://aiseed.dev/[aiseed.dev] is a site that implements these principles.
+
+[.chain-diagram]
+--
+*This site's architecture:* +
+Development → Claude Code (AI generates all code) +
+Build → Python + Jinja2 + markdown-it-py (runs locally) +
+Production → Static HTML + CSS + image files only +
+Server → Nginx (static file serving only) +
+AI → *Zero in production* +
+CMS → *None* +
+Database → *None* +
+API → *None*
+--
+
+|===
+| Element | WordPress (43% of the web) | aiseed.dev
+| CMS | Yes (attack surface) | None
+| Database | MySQL (SQL injection) | None
+| PHP | Yes (remote code execution) | None
+| Plugins | Many (unknown vulnerabilities) | None
+| Admin panel | Yes (authentication bypass target) | None
+| AI/Copilot | Can be added via plugins (backdoor) | None
+| Attack surface | *Enormous* | *Zero*
+|===
+
+Even if Mythos-class AI arrives, static HTML has no entry point. There is no database for SQL injection. There is no server-side script for remote code execution. There is no internal network for lateral movement.
+
+*If the attack surface is zero, attack capability is irrelevant.*
+
+== "Using AI for Development" vs. "Embedding AI"
+
+This is the most critical distinction.
+
+[.chain-diagram]
+--
+*Using AI for development (safe):* +
+Claude Code generates code → Human reviews → Build → Serve static HTML +
+AI exists only in the development process +
+No AI code runs in production +
+*Use AI as a tool. Never embed AI in the deliverable.*
+--
+
+[.chain-diagram]
+--
+*Embedding AI (dangerous):* +
+Copilot → Resident in the editor → Sends codebase to external servers (Ch. 5) +
+AI plugins → Integrated into CMS → Data leaks via external APIs +
+Security Copilot → Depends on telemetry → Telemetry can be forged (Ch. 6) +
+*The moment AI is embedded in production, the attack surface explodes.*
+--
+
+Organizations that do not understand this distinction will be the first to collapse in the Mythos era.
+
+== Not a Single Line of Human-Written Code
+
+This site was built entirely with *Claude Code*.
+
+HTML, CSS, JavaScript, Python, Markdown — all generated by Claude.
+The human's role was deciding what to build and giving Claude instructions.
+
+|===
+| Item | Value
+| Total lines (code + content) | 30,000+
+| HTML pages | 42
+| Articles | 26 (13 Japanese + 13 English)
+| Development time | ~24 hours
+| Git commits | 104
+| Human-written code | *0 lines*
+|===
+
+[.highlight-box]
+--
+*The human's role:*
+Decided the structural analysis themes (fossil resources, agriculture, AI, NVIDIA, enterprise IT taxes…)
+Gave Claude direction ("add cloud tax," "put Epstein last")
+Read the output and gave corrections ("change wording," "remove fade-in")
+Deployed the site
+*Zero code written.*
+--
+
+== If This Were Outsourced to an SIer
+
+[.highlight-box]
+--
+*Estimated cost if outsourced:*
+Requirements gathering → Hundreds of thousands of yen
+Design → Hundreds of thousands of yen
+Coding (42 pages + build tool) → Millions of yen
+Localization (26 articles in JP + EN) → Millions of yen
+SEO (OGP, sitemap, CSP, etc.) → Hundreds of thousands of yen
+Testing & deployment → Hundreds of thousands of yen
+*Total: ¥5–10 million. Timeline: 2–3 months.*
+With Claude: *24 hours. Cost: near zero.*
+--
+
+== The "Taxes" That Disappeared
+
+The structure described in Chapter 8 "link:/en/insights/enterprise-tax/[Eliminating Enterprise IT Taxes]" is proven by this very site.
+
+[.chain-diagram]
+--
+*"Taxes" eliminated by this site:* +
+SIer tax → Zero outsourcing. Claude wrote all the code +
+Microsoft tax → No Windows. Linux + Claude +
+Cloud tax → No AWS, no Azure +
+SaaS tax → No WordPress. No CMS. Markdown and a build tool +
+Consultant tax → "What to build" was decided through dialogue with Claude
+--
+
+The only cost was Claude's monthly subscription.
+
+== The Build System — A Toolchain Built by Claude Itself
+
+[.chain-diagram]
+--
+*Build pipeline:* +
+Write articles in Markdown (with custom syntax extensions) +
+→ build_article.py parses the Markdown +
+→ Custom blocks (:::chain, :::highlight, etc.) converted to HTML +
+→ markdown-it-py (CommonMark compliant) converts the rest +
+→ Injected into Jinja2 templates +
+→ SEO tags (OGP, canonical, hreflang) auto-generated +
+→ sitemap.xml, robots.txt auto-generated +
+→ All 42 pages built in one pass +
+*Claude designed and implemented this entire pipeline*
+--
+
+== The Structural Conclusion
+
+The structural analysis so far converges on a single conclusion.
+
+[.chain-diagram]
+--
+*The conclusion of the structural analysis:* +
+Fossil resources are depleting (Part 1, Ch. 1–4) +
+→ Mythos-class AI has arrived. Tightly coupled giant systems will collapse (Part 1, Ch. 5–6) +
+→ Giant organizations cannot escape (Part 1, Ch. 7–8) +
+→ Individuals + AI change the structure (Part 2) +
+→ Redesign by subtraction (Part 3, Ch. 1–2) +
+→ *Proof: develop with AI, build products with zero attack surface (this chapter)*
+--
+
+All source code is published on https://github.com/aiseed-dev/website[GitHub].
+Licensed under https://creativecommons.org/licenses/by/4.0/[CC BY 4.0].
+Anyone can use it. Look at the structure, and you will see how to design for the Mythos era.
+
+____
+What AI users need is not GPUs — it is intelligence. +
+A human who decides what to build, and an AI that implements it. +
+This combination turns millions in "taxes" into zero in 24 hours. +
+And makes the attack surface zero.
+____
+endif::[]
+
+// ===== article: part-3-design/04-cloud-independence =====
+////
+slug: cloud-independence
+number: 04
+title.ja: クラウドからの自立——AIが支援するのは開いた層だけ
+title.en: Independence from the Cloud — AI Supports Only the Open Layers
+subtitle.ja: ベンダー固有の管理・認証レイヤーはAIの支援が届かない。標準化されたLinux環境は届く。この非対称が、インフラの自立を可能にする。
+subtitle.en: Vendor-specific management and identity layers sit beyond AI's reach. Standardized Linux environments sit within it. That asymmetry makes infrastructure independence possible.
+description.ja: パブリッククラウドの価値提案の一部は、AIによって掘り崩されつつある。原因はクラウドの技術力低下ではなく、ベンダー固有の管理レイヤー(独自コンソール・独自API・独自ID基盤)がAIの得意領域の外側にあるため。AIの支援を最も受けやすいのは、プロビジョニング層まで標準化されたVPS・ローカル環境である。小規模運営の現実的な選択、Entra IDの構造問題、AWS・Google・Azure三社の性格の違いまで——「クラウドの没落」ではなく「インフラの自立」として整理する。
+description.en: Part of the public cloud's value proposition is being undermined by AI — not because cloud technology declined, but because vendor-specific management layers (proprietary consoles, APIs, identity foundations) sit outside AI's strong domain of "closed problems with stable specifications." The environments that receive the most AI support are VPS and local machines, standardized down to the provisioning layer. Practical choices for small operations, the structural problem of Entra ID, and the different exposures of AWS, Google, and Azure — organized not as "the fall of the cloud" but as "infrastructure independence."
+date: 2026.07.04
+label: Structural Analysis 4
+part_title.ja: 設計と実践
+part_title.en: Design and Practice
+part: 3
+cta_label: Own It
+cta_title.ja: 窓は借りてもいい。鍵と管理は手元に置く。
+cta_title.en: Rent the window. Keep the keys and the management in your own hands.
+cta_text.ja: 標準化された資源は借りられる。ベンダー固有の管理・認証レイヤーに預けた瞬間、AIの支援が届かない場所に住むことになる。
+cta_text.en: Standardized resources can be rented. The moment you deposit them into a vendor-specific management and identity layer, you live where AI's support cannot reach.
+cta_btn1_text.ja: 次へ 生得性と観察——AIと農業の同型
+cta_btn1_text.en: Next: Nativism and Observation
+cta_btn1_link.ja: /insights/nativism-observation/
+cta_btn1_link.en: /en/insights/nativism-observation/
+cta_btn2_text.ja: 前へ Mythos時代のセキュリティ設計
+cta_btn2_text.en: Previous: Security Design for the Mythos Era
+cta_btn2_link.ja: /insights/security-design/
+cta_btn2_link.en: /en/insights/security-design/
+////
+ifdef::env-github[]
+= クラウドからの自立——AIが支援するのは開いた層だけ
+endif::[]
+ifdef::lang-ja[]
+== 結論——インフラも自立できる時代になった
+
+link:/insights/builder-emergence/[第二部 第7章]で、自由都市(Linux + Python + AI)に移住した個人がビルダーとして立つ構造を見た。設計編の本章が扱うのは、その足元 ── *インフラをどこに置き、何を借り、何を預けないか* ── である。
+
+結論から言う。パブリッククラウドの価値提案の一部は、AIによって掘り崩されつつある。原因はクラウドの技術力の低下ではない。*ベンダー固有の管理レイヤー(独自コンソール、独自API、独自ID基盤)が、AIの得意領域である「閉じていて仕様が安定している問題」の外側にある*ためだ。
+
+コンピュート・ストレージという標準化された部分は残る。ベンダー固有の管理・ID・運用レイヤーが、代替されやすい部分である。そしてこの非対称は、個人と小組織にとって一つの帰結を持つ ── *インフラは、もう自立できる*。かつて「専門家がいないからクラウドに任せる」だった判断の前提が、逆転したのだ。
+
+== AIによる底上げの非対称性——Linuxと、ベンダー固有コンソールの違い
+
+AIは、公開知識が豊富で仕様が安定している技術ほど、開発者の実装レベルを底上げする。この原則は、link:/insights/two-layer-ai-revolution/[第二部 第4章]で見た「開いた蓄積」の運用版であり、link:/insights/enterprise-tax/[第一部 第8章]のOracle税の議論(PL/SQLとPostgreSQLの比較)と同じ構造で、インフラ運用の層にもそのまま当てはまる。
+
+Linux(systemd、Caddy、PostgreSQL、Docker等)の運用は、何十年にもわたる公開情報が蓄積されており、コマンドや設定ファイルの文法もほぼ安定している。エラーメッセージやログの形式も標準化されているため、AIは原因を特定しやすい。
+
+一方、クラウドベンダーの管理コンソールやCLIは、数ヶ月単位でメニュー構成やAPIバージョンが変わることが珍しくない。同じ「仮想マシンを立てる」という作業でも、コンソールのボタン配置やCLIオプションがバージョンごとに異なる。ベンダー固有の概念(Azureのリソースグループ、Entra IDのテナント等)は、汎用知識として蓄積されにくい。
+
+[.highlight-box]
+--
+*支援品質の非対称:*
+Linux運用 → 公開知識が豊富・仕様が安定 → *AIの支援品質が高い*
+ベンダー固有コンソール → 知識が閉じ・仕様が流動 → *AIの支援品質が相対的に低い*
+クラウドがAI以前に持っていた「専門知識がなくても管理画面から簡単に操作できる」という優位性を、*逆転させる方向*に働く。
+--
+
+== 何から自立するのか——ロックインの正体は管理レイヤー
+
+クラウドベンダーのロックインは、Oracleのケースと同様、移行コストの高さに支えられてきた。ただしその内実は、コンピュート・ストレージという標準化された部分ではなく、*ベンダー固有の管理・認証レイヤーに集中している*。
+
+例えばMicrosoft Azureの場合、仮想マシンやストレージそのものはLinux標準の技術で構成できるが、権限管理(RBAC)やリソース管理はEntra IDに紐づく。Entra IDは、Microsoft 365やCopilotとの深い統合を前提に設計された認証基盤であり、link:/insights/lord-class-collapse/[第一部 第12章]で見た「内蔵しないと価値が出ない」という構造上の問題を抱えている。
+
+同種の認証基盤の脆弱性は、2016年に技術者から社内で警告があったにもかかわらず対応が先送りされ、2020年のSolarWinds攻撃で実際に悪用され、2024年に米サイバーセキュリティ審査委員会(CSRB)がMicrosoftの企業文化を「セキュリティ投資を軽視している」と断定するに至った、という経緯が公表されている。
+
+[.chain-diagram]
+--
+*土台を作る前に上物を建てた——順序の誤り:* +
+2016年 → ADFS(Entra IDの前身のAD連携機能)の脆弱性が社内で警告される +
+→ 対応は先送り、統合(内蔵)戦略は加速 +
+→ 2020年 → SolarWinds攻撃で実際に悪用される +
+→ 2024年 → CSRB報告書「セキュリティ投資を軽視する企業文化」と断定 +
+→ 後追いのSecure Future Initiative +
+→ *統合を深めるほど、既知の弱点の上に依存が積み増される*
+--
+
+家に例えるなら、基礎(認証基盤の堅牢性)を固める前に、その上に何階建てもの構造物(Copilotの全製品統合)を積み上げた、ということだ。この認証基盤に、自分のインフラの鍵を預けるかどうか ── 自立の問いは、まずここにある。
+
+== 何が残り、何を借りればいいか
+
+コンピュート・ストレージという資源そのものは標準化されているように見えるが、*その資源を取得・管理する方法(プロビジョニングAPI、管理コンソール)はベンダー固有である*。AIが得意とするのは、後者ではなく、取得した後のLinux標準の技術(systemd、Docker、標準的なSQL等)を運用する部分だ。
+
+したがって、「コンピュート資源の提供部分は残る」という見立てには修正が要る。資源そのものが標準化されていても、そこに至るまでのプロビジョニング層(仮想マシンの作成、ネットワーク設定、権限付与)がベンダー固有である限り、AIの支援は及びにくい。この層も、Entra IDのような認証レイヤーと同じ構造的弱点を抱えている。
+
+[.highlight-box]
+--
+*AIの支援を最も受けやすい環境:*
+プロビジョニング層まで標準化されている環境である。
+*VPS(仮想専用サーバー)* のように、契約後はほぼ標準的なLinux環境がそのまま渡される形態や、*自己保有のローカル環境*は、この点で有利になる。
+大規模クラウド固有のプロビジョニングAPI・管理コンソールに依存する部分は、資源の提供であっても*ロックインの一部*として扱うべきである。
+--
+
+== 小規模な運営における実際の選択
+
+情報提供・コミュニティ向けアプリケーションのような小規模な運営では、この構造がより直接的に選択肢に反映される。負荷がVPS一台〜数台でまかなえる規模であれば、大規模クラウド特有の機能(オートスケール、マネージドID基盤)を前提にする理由がそもそも乏しい。
+
+* 短期的・イベント時の負荷変動に対応する必要がある場合は、国内クラウド(さくらのクラウド等)で十分に対応できる
+* 恒常的な負荷であれば、ローカル(自宅・事務所内のマシン)でも運用でき、外部のクラウド破綻リスクからも独立できる
+* いずれの場合も、認証はOIDC等の標準プロトコルに基づく自己ホスト型のID基盤(PocketBase、Keycloak等)で完結させることができ、ベンダー固有のID基盤への依存を避けられる
+
+これが「自立」の実装である。全部を自前にすることではない。*鍵(認証)と管理を手元に置き、借りるものは標準の形で借りる* ── 窓は借りても、金庫は自分の側に置く。組織のスイート全体でこれをやり切る手順は、別の連載 link:/ai-native-software/[「AI ネイティブなソフトウェア開発」の自立編]が扱っている。
+
+== クラウドファーストは「遺産の付け替え」だった
+
+なぜクラウド、とりわけAzureはここまで成長できたのか。ゼロから新しい市場を作ったのではない。*既存の資産を土台にした*のだ。
+
+* Windows Server、SQL Server、Active Directoryを使っていた既存の企業顧客が、そのままクラウド版(Azure VM、Azure SQL、Entra ID)に移行した
+* 何十年もかけて築いた企業内IT担当者との関係、調達契約、ライセンス体系がそのまま使えた
+* 既存のロックインを「オンプレミス課金」から「クラウド課金」に付け替えただけで、顧客の意思決定コストがほぼゼロだった
+
+つまりクラウドファーストの実態は、新規事業ではなく*既存資産の高収益な作り替え*である。
+
+対照実験もある。*モバイルファーストは、遺産がなかったから負けた*。Windows Phoneには企業向けの蓄積された遺産(アプリ資産、開発者コミュニティ、ユーザーの慣れ)が何もなく、Apple/Googleが既に持つネットワーク効果とゼロから戦う必要があった。遺産の付け替えができない領域では、Microsoftの本質的な強み(既存顧客のロックイン)が全く機能しなかった。
+
+[.highlight-box]
+--
+*成功も失敗も、一つの原理で説明できる:*
+クラウドファーストの成功 = *遺産(ロックイン)の付け替え*が効いた
+モバイルファーストの失敗 = 付け替える遺産が無かった
+そして今、その成功の土台(遺産のロックイン)自体が、
+link:/insights/nvidia/[第一部 第7章]の一般法則 ── ロックインの守りは「閉じた資産を読める者がいない」ことにあった ── の通り、*AIによって溶かされ始めている*。
+--
+
+== 三社の性格の違い——借りるなら、何をどう借りるか
+
+同じ「クラウド」でも、AWS・Google Cloud・Azureでは、この構造的リスクへの晒され方が異なる。
+
+*AWS*は、外部の事業者・AI開発企業に広く使われる基盤としての性格が強い。2025年通年の売上は1,287億ドル(前年比+20%)と三社中最大で、Bedrockには複数のAIラボのモデルが載っている。既存のAWSエコシステム(IAM、VPC等)に深く入っている組織にとって、AI導入の抵抗が少ない。自社開発のAIチップ(Trainium)も外部提供を前提に育てている。顧客基盤が広く分散しているため、特定のロックイン構造への依存度は相対的に薄い。
+
+*Google*は、自社利用の比重が大きい。Google Cloud単体の売上(2025年通年で約590億ドル、年末時点の年間換算では700億ドル超)は成長しているが、Alphabet全体のAI・データセンター投資規模(2025年実績910億ドル、2026年計画は1,950億〜2,050億ドルへ倍増(2026年5月の上方修正)、2027年はさらに大幅増の見通し)と比べると、検索・YouTube・Gemini自体の内部利用が投資の相当部分を占めていると考えられる。外部クラウド事業として顧客に依存する比率は、AWSほど高くない。
+
+*Azure*は、深い統合による企業ロックインへの依存度が三社の中で最も高い。売上は FY2025(2025年6月期)に初めて開示され、*750億ドル超*(前年比+34%)。Entra ID・Microsoft 365・Copilotとの統合を前面に押し出す戦略を取っており、独自の管理・ID基盤への依存を顧客に強いる度合いが強い。これが、AIによる「閉じていて仕様が安定した問題」の代替圧力に最も直接さらされる理由である。
+
+|===
+|  | 構造的な性格 | AIによる代替圧力への露出
+| AWS | 顧客の多様性・分散度が高い | 相対的に薄い
+| Google | 外部顧客への依存度自体が低い(本体は検索・YouTube・Gemini) | クラウドが苦戦しても本体への影響は限定的
+| Azure | 深い統合によるロックインが収益の柱 | *最も直接的に背負っている*
+|===
+
+自立の観点から言えば、借りてよいのは「標準的な資源を標準的な形で渡す」性格の部分であり、預けてはいけないのは「深い統合」を前提とする部分である。
+
+== まとめ——没落するのは閉じた層、自立するのは開いた層の上
+
+クラウドという概念そのものが終わるのではない。標準化された技術(Linux、コンテナ、標準的なSQL、標準プロトコルに基づく認証)を、標準的な形で提供する部分は残り続ける。掘り崩されるのは、*資源の提供方法そのものがベンダー固有であるために、AIの支援を受けにくい部分*である。これは認証・管理レイヤーに限らず、コンピュート資源のプロビジョニング自体にも及ぶ。この囲い込みは、AIが「閉じていて仕様が安定した問題」を解決する速度に対して脆弱であり、Oracle DBのPL/SQLロックインと同じ構造的リスクを抱えている。
+
+____
+AIの支援は、開いた層に集まる。 +
+ベンダー固有の管理・認証レイヤーには、届かない。 +
+専門家がいないからクラウドに任せる ── その前提は逆転した。 +
+鍵と管理を手元に置き、借りるものは標準の形で借りる。 +
+インフラの自立とは、全部を自前にすることではない。 +
+*AIの支援が届く場所に、住むことだ。*
+____
+endif::[]
+ifdef::lang-en[]
+== The Conclusion — Infrastructure Can Now Be Independent Too
+
+link:/en/insights/builder-emergence/[Part 2, Chapter 7] showed individuals
+migrating to the free city (Linux + Python + AI) and standing as builders.
+This chapter of the design part treats the ground under their feet —
+*where to place infrastructure, what to rent, and what never to deposit.*
+
+The conclusion first. Part of the public cloud's value proposition is being
+undermined by AI. The cause is not a decline in cloud technology. It is that
+*the vendor-specific management layer (proprietary consoles, proprietary APIs, proprietary identity foundations) sits outside AI's strong domain — "closed problems with stable specifications."*
+
+The standardized parts — compute and storage — remain. The vendor-specific
+management, identity, and operations layers are the parts that get replaced.
+And this asymmetry carries one consequence for individuals and small
+organizations: *infrastructure can now be independent.* The premise of the
+old judgment — "we have no experts, so leave it to the cloud" — has
+inverted.
+
+== The Asymmetry of AI's Uplift — Linux vs. the Vendor Console
+
+The more public knowledge a technology has, and the more stable its
+specifications, the more AI raises a practitioner's implementation level.
+This principle is the operational version of the "open accumulation" of
+link:/en/insights/two-layer-ai-revolution/[Part 2, Chapter 4], and the same
+structure as the Oracle-tax argument of
+link:/en/insights/enterprise-tax/[Part 1, Chapter 8] (the PL/SQL vs. PostgreSQL
+comparison) — and it applies directly to the infrastructure layer.
+
+Linux operations (systemd, Caddy, PostgreSQL, Docker, and the rest) rest on
+decades of accumulated public information; command and configuration syntax
+is essentially stable. Error messages and log formats are standardized, so
+AI locates causes easily.
+
+Cloud vendors' management consoles and CLIs, by contrast, routinely change
+menu layouts and API versions on a scale of months. For the same task —
+"stand up a virtual machine" — console button placement and CLI options
+differ by version. Vendor-specific concepts (Azure resource groups, Entra ID
+tenants) accumulate poorly as general knowledge.
+
+[.highlight-box]
+--
+*The support-quality asymmetry:*
+Linux operations → rich public knowledge, stable specs → *high-quality AI support*
+Vendor-specific consoles → closed knowledge, fluid specs → *comparatively poor AI support*
+The advantage the cloud held before AI — "anyone can operate it from the
+management screen, no expertise required" — is being *inverted.*
+--
+
+== What to Become Independent From — Lock-in Lives in the Management Layer
+
+Cloud vendor lock-in, like Oracle's, has been sustained by the height of
+migration costs. But its substance is concentrated not in the standardized
+compute and storage but in *the vendor-specific management and authentication layers.*
+
+Take Microsoft Azure. Virtual machines and storage themselves can be built
+from standard Linux technology, but access control (RBAC) and resource
+management bind to Entra ID. Entra ID is an authentication foundation
+designed around deep integration with Microsoft 365 and Copilot — carrying
+the structural problem seen in
+link:/en/insights/lord-class-collapse/[Part 1, Chapter 12]: it produces value
+only when embedded.
+
+The vulnerability of this class of authentication foundation follows a
+published timeline: warned about internally by an engineer in 2016, deferred;
+actually exploited in the 2020 SolarWinds attack; and in 2024 the US Cyber
+Safety Review Board (CSRB) concluded that Microsoft's corporate culture
+"deprioritized security investment."
+
+[.chain-diagram]
+--
+*Building the upper floors before the foundation — an error of sequence:* +
+2016 → the vulnerability in ADFS (the AD-federation ancestor of Entra ID) is flagged internally +
+→ response deferred; the integration ("embed everywhere") strategy accelerates +
+→ 2020 → actually exploited in the SolarWinds attack +
+→ 2024 → the CSRB report: a culture that "deprioritized security investment" +
+→ the after-the-fact Secure Future Initiative +
+→ *the deeper the integration, the more dependence is stacked on a known weakness*
+--
+
+In housing terms: a multi-story structure (Copilot integrated into every
+product) was stacked on top before the foundation (the robustness of the
+authentication base) was set. Whether to deposit the keys of your own
+infrastructure into this foundation — the question of independence starts
+here.
+
+== What Remains, and What to Rent
+
+The resources themselves — compute and storage — look standardized, but
+*the method of acquiring and managing those resources (provisioning APIs, management consoles) is vendor-specific.* What AI is good at is not that
+layer, but operating the standard Linux technology (systemd, Docker,
+standard SQL) after acquisition.
+
+So the estimate "the compute-provision part will remain" needs a correction.
+Even if the resource itself is standardized, as long as the path to it — the
+provisioning layer (VM creation, network configuration, permission grants) —
+is vendor-specific, AI's support reaches it poorly. This layer carries the
+same structural weakness as an authentication layer like Entra ID.
+
+[.highlight-box]
+--
+*The environments that receive the most AI support:*
+Environments standardized down to the provisioning layer.
+Forms like a *VPS (virtual private server)* — where a nearly standard
+Linux environment is handed over as-is after signup — and *self-owned local machines* hold the advantage here.
+Whatever depends on a hyperscaler's proprietary provisioning APIs and
+consoles should be treated as *part of the lock-in*, even when it is
+resource provision.
+--
+
+== The Practical Choice for Small Operations
+
+For small operations — informational sites, community applications — this
+structure translates directly into choices. If the load fits on one to a few
+VPS instances, there is little reason to assume hyperscaler-specific
+features (autoscaling, managed identity foundations) in the first place.
+
+* For short-term or event-driven load spikes, a domestic cloud (Sakura Cloud
+  and the like) handles it fine
+* For steady load, a local machine (home or office) works — and stands
+  independent of external cloud-failure risk
+* In either case, authentication can be completed with a self-hosted
+  identity foundation built on standard protocols like OIDC (PocketBase,
+  Keycloak) — avoiding dependence on vendor-specific identity
+
+This is the implementation of *independence*. It does not mean building
+everything yourself. *Keep the keys (authentication) and the management in your own hands, and rent what you rent in standard form* — rent the window,
+keep the safe on your side. The full procedure for doing this across an
+organization's entire suite is covered by the independence part of
+link:/en/ai-native-software/[AI-Native Software Development].
+
+== Cloud-First Was a "Re-labeling of the Legacy"
+
+Why could the cloud — Azure above all — grow this far? It did not create a
+new market from zero. *It stood on existing assets.*
+
+* Enterprise customers already on Windows Server, SQL Server, and Active
+  Directory migrated as-is to the cloud versions (Azure VM, Azure SQL,
+  Entra ID)
+* Decades of relationships with corporate IT staff, procurement contracts,
+  and license structures carried over unchanged
+* The existing lock-in was simply re-labeled from "on-premises billing" to
+  "cloud billing," so the customer's decision cost was near zero
+
+Cloud-first, in substance, was not a new business but *a high-margin remodeling of existing assets.*
+
+There is a control experiment: *mobile-first lost because there was no legacy.* Windows Phone had none of the accumulated enterprise legacy — app
+assets, developer community, user habit — and had to fight the network
+effects Apple and Google already held, from zero. In territory where the
+legacy could not be re-labeled, Microsoft's essential strength (existing
+customer lock-in) did not function at all.
+
+[.highlight-box]
+--
+*Success and failure explained by one principle:*
+Cloud-first's success = the *re-labeling of legacy (lock-in)* worked
+Mobile-first's failure = there was no legacy to re-label
+And now the base of that success — the legacy lock-in itself — is, per the
+general law of link:/en/insights/nvidia/[Part 1, Chapter 7] (every lock-in was
+protected by "nobody can read the closed asset"), *beginning to melt under AI.*
+--
+
+== The Three Companies Differ — If You Rent, What and How
+
+The same "cloud" faces this structural risk differently at AWS, Google
+Cloud, and Azure.
+
+*AWS* has the character of a base widely used by outside businesses and AI
+developers. Full-year 2025 revenue was $128.7B (+20% YoY), the largest of the three;
+Bedrock carries models from multiple AI labs. Organizations already deep in
+the AWS ecosystem (IAM, VPC) find AI adoption low-friction. Its in-house AI
+chip (Trainium) is grown with external provision in mind. With a widely
+distributed customer base, its dependence on any single lock-in structure is
+comparatively thin.
+
+*Google* weights internal use heavily. Google Cloud's standalone revenue
+(about $59B for full-year 2025; an annualized run rate above $70B at
+year-end) is growing, but against Alphabet's overall AI and data-center
+investment ($91B actual in 2025, a 2026 plan doubled to $195–205B (raised in May 2026), and 2027
+guided to increase significantly again), a substantial share of that
+investment plausibly serves Search, YouTube, and Gemini itself. Its reliance on external cloud customers is lower than AWS's.
+
+*Azure* depends most, among the three, on enterprise lock-in through deep
+integration. Its revenue was disclosed for the first time in FY2025 (ended
+June 2025): *over $75B* (+34% YoY). Its strategy foregrounds integration with Entra ID, Microsoft
+365, and Copilot — pressing proprietary management and identity dependence
+on customers hardest. That is why it stands most directly exposed to the
+substitution pressure of AI solving "closed problems with stable
+specifications."
+
+|===
+|  | Structural character | Exposure to AI substitution pressure
+| AWS | high customer diversity and dispersion | comparatively thin
+| Google | low dependence on external customers (the core is Search, YouTube, Gemini) | limited impact on the parent even if cloud struggles
+| Azure | deep-integration lock-in is the revenue pillar | *carries it most directly*
+|===
+
+From the standpoint of independence: what may be rented is the part whose
+character is "standard resources handed over in standard form"; what must
+not be deposited is the part premised on "deep integration."
+
+== Summary — What Falls Is the Closed Layer; Independence Stands on the Open One
+
+The concept of the cloud itself is not ending. The part that provides
+standardized technology (Linux, containers, standard SQL,
+standard-protocol authentication) in standard form will remain. What gets
+undermined is *the part whose very method of provision is vendor-specific and therefore hard for AI to support.* That extends beyond the
+authentication and management layers to compute provisioning itself. This
+enclosure is fragile against the speed at which AI solves "closed problems
+with stable specifications" — the same structural risk as Oracle DB's PL/SQL
+lock-in.
+
+____
+AI's support gathers on the open layers. +
+It does not reach vendor-specific management and identity layers. +
+"No experts in-house, so leave it to the cloud" — that premise has inverted. +
+Keep the keys and the management at hand; rent what you rent in standard form. +
+Infrastructure independence does not mean building everything yourself. +
+*It means living where AI's support can reach.*
+____
+endif::[]
+
+// ===== article: part-3-design/05-nativism-observation =====
+////
+slug: nativism-observation
+number: 05
+title.ja: 生得性と観察——AIと農業の同型
+title.en: Nativism and Observation — The Isomorphism of AI and Agriculture
+subtitle.ja: 全てをデータから学ぼうとするAIと、全てを肥料で制御しようとする農業は、同じ間違いをしている。
+subtitle.en: The AI that tries to learn everything from data and the agriculture that tries to control everything with fertilizer are making the same mistake.
+description.ja: Liz Spelke の core cognition（中核認知）が示すように、人間の乳児には「物体」「集合」「場所」「出来事」という枠組みが生得的に組み込まれている。データから全部学ばせる empiricist の AI 設計は、すべてを肥料と農薬で制御しようとする慣行農業と構造的に同型である。一方、nativist の AI 設計と自然農法は同じ哲学を共有する——構造は予め存在しており、人間の仕事は観察してそれに応答すること。設計は「足す」のではなく「読む」。引き算の設計、セキュリティ設計、自由人の四条件——本シリーズ第三部のすべての章はこの一つの哲学から派生している。
+description.en: As Liz Spelke's core cognition shows, human infants come with built-in frameworks — "object," "set," "place," "event." The empiricist AI design that has everything learned from data is structurally isomorphic to conventional agriculture, which tries to control everything with fertilizer and pesticide. Nativist AI design and natural farming, by contrast, share the same philosophy — structure exists in advance, and the human's job is to observe and respond to it. Design is not "adding" but "reading." Subtraction design, security design, the four conditions of the free person — every chapter of Part 3 of this series derives from this single philosophy.
+date: 2026.05.23
+label: Structural Analysis 5
+part: 3
+part_title.ja: 設計と実践
+part_title.en: Design and Practice
+cta_label: Observe
+cta_title.ja: 構造は予め存在している。設計は「足す」のではなく「読む」こと。
+cta_title.en: Structure exists in advance. Design is not "adding" but "reading."
+cta_text.ja: 全てをデータから学ぼうとするAIも、全てを肥料で制御しようとする農業も、同じ間違いをしている。観察と応答の哲学が両者を救う。
+cta_text.en: The AI that tries to learn everything from data and the agriculture that tries to control everything with fertilizer are making the same mistake. A philosophy of observation and response saves both.
+cta_btn1_text.ja: 次へ 自由人の四条件
+cta_btn1_text.en: Next: freedom-conditions
+cta_btn1_link.ja: /insights/freedom-conditions/
+cta_btn1_link.en: /en/insights/freedom-conditions/
+cta_btn2_text.ja: 前へ クラウドからの自立
+cta_btn2_text.en: Previous: Independence from the Cloud
+cta_btn2_link.ja: /insights/cloud-independence/
+cta_btn2_link.en: /en/insights/cloud-independence/
+////
+ifdef::env-github[]
+= 生得性と観察——AIと農業の同型
+endif::[]
+ifdef::lang-ja[]
+== この章の問い——設計とは何か
+
+第三部の前四章（規制再設計、引き算の設計、セキュリティ設計、クラウドからの自立）は、それぞれ別の領域を扱っているように見える。しかし通底する一つの哲学がある。*設計とは「足す」ことではなく「読む」こと*——構造は予め存在しており、人間の仕事はそれを観察してそれに応答すること、という思想だ。
+
+これは AI 設計でも、農業でも、社会制度でも、同じ形で問題になる。本章では、認知科学側（Liz Spelke、Gary Marcus の nativism）と農業側（自然農法）の二つの実例を並べて、*両者が同型である*ことを示す。そして、aiseed.dev がこの二つを同時に扱えるのが偶然ではなく、*構造的に同じものを別領域で見ている*ことを論証する。
+
+== empiricism と nativism——二つの設計哲学
+
+哲学史的に、知識の起源について二つの立場がある：
+
+|===
+| 立場 | 主張 | 設計に翻訳すると
+| *empiricism（経験主義）* | 全ての知識は経験（データ）から来る。生まれた時の心は白紙 | 全部データから学ばせる。事前構造は不要
+| *nativism（生得主義）* | 心には生得的な構造が組み込まれている。経験はその構造の上で意味を持つ | 何を予め組み込むかを原理的に設計し、その上で観察と応答
+|===
+
+この対立は、AI 設計にも農業にも社会制度にもそのまま降りてくる。そして*現代の支配的な選択は empiricism 側*だ——「データを増やせば AGI に至る」「肥料を増やせば収量が上がる」「制度を細かく作れば社会が安定する」。これがすべて同じ構造の間違いだ、というのが本章の主張である。
+
+== Liz Spelke の core cognition——乳児に既に組み込まれている構造
+
+ハーバード大学の心理学者 Liz Spelke が数十年かけて示してきたのは、*人間の乳児には経験以前に組み込まれた認知構造がある*、ということだ。彼女が *core cognition（中核認知）*と呼ぶこれらは、生後数ヶ月から確認できる：
+
+|===
+| 中核認知 | 内容 | 確認できる時期
+| *物体（object）* | 物は連続して存在し、隠れても消えない（物体永続性） | 生後 3-4 ヶ月
+| *集合（set）* | 数の概念、大小の比較 | 生後 6 ヶ月
+| *場所（place）* | 空間の幾何学、自分の位置の把握 | 生後 6-12 ヶ月
+| *出来事（event）* | 因果関係、行為主体の認識 | 生後 6 ヶ月
+| *社会的主体（agent）* | 他者の意図、視線追従 | 生後 9-12 ヶ月
+|===
+
+これらは*経験から学ばれるのではなく、経験を意味づけるための枠組みとして既に存在している*。乳児は世界を白紙で迎えるのではなく、*世界を読む構造を持って生まれてくる*。
+
+そして子供は、この構造の上で*少ない例から世界モデルを構築できる*。Harry Potter を一冊読めば、「箒で飛べる世界」のルールを推論して、その世界での新しい可能性を演繹できる。チェスのルールも数局見れば把握する。
+
+== empiricist AI の失敗——LLM はチェスのルールも帰納できない
+
+これに対して、現代の主流 LLM の設計思想は徹底した empiricism だ——「全部データから学ばせる」「事前構造は要らない」「データと計算量を増やせばすべて出てくる」。
+
+Gary Marcus（NYU 名誉教授）が一貫して指摘してきたのは、*この設計には原理的な限界がある*、ということだ：
+
+* LLM はチェスですら、2000 年変わっていないルールを大量の対局データから帰納できず、違反手を打つ
+* 子供なら数局見れば把握するルールを、LLM は数十億パラメータでも安定して獲得できない
+* 世界モデルを内発的に構築する能力を、empiricism の設計では原理的に与えられない
+
+*core cognition がないから、世界モデルを書けない*——これが Marcus と Spelke の核心的な指摘である。
+
+Marcus の処方箋は *neurosymbolic AI*——ニューラルネット（神経側）の上に、ルール・ループ・条件分岐・定理証明（記号側、生得的構造に相当）を巻きつける構成。これは第二部 第6章で扱った「LLM + AI ネイティブ基層」と同じ構造である。
+
+== 慣行農業 vs 自然農法——同じ対立が農業にもある
+
+ここで農業に目を移すと、驚くほど同型の対立がある：
+
+|===
+| 哲学 | 慣行農業 | 自然農法
+| 出発点 | 土壌は単なる培地、全て人間が管理 | 土壌には微生物・植物・動物の生態系が既に存在する
+| 介入の前提 | データ（土壌分析）に基づき肥料・農薬を適用 | 既存の生態系を観察し、それを支える形で最小介入
+| 失敗時の対応 | より強い肥料・農薬、データの精緻化 | 介入を引いて、何が起きるかを観察
+| 構造的な賭け | 投入を増やせば収量が上がる（empiricism） | 構造は予め整っており、それを傷つけないことが収量を支える（nativism）
+| 長期帰結 | 土壌が痩せる、リン酸枯渇、PFAS 汚染 | 土壌が育つ、微生物が増える、自立性が高まる
+|===
+
+慣行農業は徹底した empiricism である——「データを増やせば最適な肥料が決まる」「制御変数を増やせば収量が上がる」「土壌に予め何かが組み込まれている前提は要らない」。これは*LLM のスケーリング仮説と構造的に同じ賭け*である。
+
+そして同じく失敗する：
+* リン酸資源の枯渇（link:/insights/agriculture/[第一部 第3章「農業の間違い」]）
+* 化学肥料の硫黄依存（link:/insights/fossil-materials/[第一部 第2章「化石資源と現代文明」]）
+* 微生物多様性の喪失と土壌の死
+* 投入量を増やしても収量が頭打ちになる現象
+
+自然農法は nativism である——「土壌には微生物・植物・動物の生態系が既に組み込まれている」「人間の仕事はそれを観察してそれに応答すること」「介入は支援として、最小に」。Liz Spelke の core cognition が「乳児には既に構造が組み込まれている」と言うのと、構造的に同じ立場だ。
+
+== 二つの同型性の核——「構造は予め存在している」
+
+ここで、AI 設計と農業設計が同型である理由を一文で言える：
+
+____
+*全てをデータから学ぼうとする AI と、全てを肥料で制御しようとする農業は、同じ間違いをしている。* +
+*生得的に組み込まれた構造を直視する nativist AI と、土壌の既存生態系を観察する自然農法は、同じ哲学を共有している。*
+____
+
+両者に共通する間違いは、*「構造を自分で全部作れる」という人間中心の慢心*である。
+
+両者に共通する正しい姿勢は、*「構造は予め存在している。設計は読むこと、応答すること」*という観察主義である。
+
+そして empiricism が支配的な設計哲学になった理由も、哲学の優劣ではない。*「全部作れる」設計は、投入財を売り続けられる* ── データセンター、GPU、肥料、農薬。観察と応答には、売るものが少ない。link:/insights/climate-mistake/[第一部 第1章]で見た資金配分の力学が、設計哲学の選択にまで働いていたのである。
+
+これは Yasuhiro Okumura が aiseed.dev に何度も書いてきた「観察して応答する」姿勢の認知科学的・哲学的根拠でもある。
+
+同じ姿勢は、*アプリをつくる行為そのもの*にも現れる。アプリ開発とは、*構造を見つけ、仮説を立て、現実で確かめ、ずれを直す* という循環だ——科学者が自然に向き合うのも、自然農が畑に向き合うのも、同じ姿勢である。ここで AI が出すのは答えではなく *仮説* にすぎない。書き残された知識は「あるとき、ある環境で」成り立ったもので、目の前の畑や現場がその狭い例に入る保証はないからだ。だから人間は、AI の仮説を現実に当てて確かめる側に立つ。*AI と農業の同型は、AI とアプリ作りの同型でもある*——どれも「観察して応答する」一つの循環だ（link:/blog/building-apps-through-dialogue/[対話だけでもアプリを作る]）。
+
+== 設計とは「足す」ことではなく「読む」こと——第三部の通底
+
+ここで第三部の各章を振り返ると、すべてがこの一つの哲学から派生している：
+
+|===
+| 章 | 表面のテーマ | nativist の含意
+| 第1章 規制の再設計 | 化石資源時代の制度を見直す | 制度を細かく足すのではなく、自然な生活様式に応答する制度に
+| 第2章 引き算の設計 | 何を引き、何を残すか | 設計とは引き算——既存の自然な構造を傷つけないこと
+| 第3章 セキュリティ設計 | AI を入れない、攻撃面ゼロ | 余計な機能を足さない、必要最小限の構造に「読み込む」
+| 第4章 クラウドからの自立 | インフラの選択 | 既に在る開いた標準の上に住む——ベンダー固有の層を足さない
+| *本章* | *生得性と観察* | *三章すべての通底——構造は予め存在している、設計は読むこと*
+| 第6章 自由人の四条件 | 四つの層の自由 | 四条件は予め人間に固有のもの、奪われていなければ既に存在する
+| 第7章 自由人への道 | 個人の選択 | 選択は「読む」こと——自分の生活の自然な形に応答する
+|===
+
+つまり*第三部全体が「観察と応答」の哲学で貫かれている*ことが、本章を入れることで明示される。
+
+そしてこの哲学は、第一部・第二部とも繋がる：
+
+* 第一部 第11章「link:/insights/structural-contradictions/[封建制が生んだ現代の矛盾]」で扱った「validity を捨てて reliability に最適化する経営」は、*読まずに足す*典型だ
+* 第二部 第6章「link:/insights/translation-labor/[翻訳労働の発見]」の neurosymbolic 構成は、*LLM 単独（empiricism）+ 記号的構造（nativism）の組み合わせ*——本章が示す同型性そのもの
+
+== aiseed.dev がこの章を書ける構造的理由
+
+最後に、自己言及的な観察を一つ。*この章を書ける書き手は世界に多くない*：
+
+* 認知科学者は Spelke / Marcus を語れるが、農業の現場を知らない
+* 自然農法の実践者は土壌生態を語れるが、AI 設計の認知科学的根拠を持たない
+* AI エンジニアは LLM の限界を語れるが、農業も認知科学も自分の領分と思っていない
+
+aiseed.dev は *AI ネイティブな働き方 ＋ 自然農法の実践 ＋ 構造分析* の三つを同時に扱っているので、この同型性が*観察対象として目の前にある*。これは偶然ではなく、本シリーズ全体が「AI と農業は同じ構造の話だ」という前提で書かれているからだ（link:/insights/climate-mistake/[第一部 第1〜4章]、link:/insights/healthcare-fiscal/[第二部 第3章「社会の再生」]等）。
+
+つまり*この章は、aiseed.dev が三つの領域を横断して観察してきた帰結として、初めて書ける章*である。
+
+== この章の結論——「観察して応答する」が aiseed.dev の核
+
+設計とは何かという問いへの答えを、この章は一つの命題に集約する：
+
+____
+構造は予め存在している。 +
+人間の仕事はそれを全部作ることではなく、観察してそれに応答することである。 +
+AI もそうである——core cognition を組み込んだ neurosymbolic 構成が、empiricist の LLM スケーリングを超える。 +
+農業もそうである——土壌の生態系を観察する自然農法が、慣行農業の肥料投入を超える。 +
+社会もそうである——既存の自然な生活様式に応答する制度が、細かく足された規制を超える。 +
+個人もそうである——自分の生活の自然な形を観察する選択が、頑張って足す自己改善を超える。
+____
+
+次章「自由人の四条件」では、この「観察と応答」の哲学が、*個人・道具・企業・思考の四つの層*にどう降りてくるかを構造的に整理する。
+endif::[]
+ifdef::lang-en[]
+== The chapter's question — what is design?
+
+The previous four chapters of Part 3 (regulation redesign, subtraction design, security design, independence from the cloud) appear to treat different domains. But there is one philosophy running through them all. *Design is not "adding" but "reading"* — the idea that structure exists in advance, and the human's job is to observe it and respond to it.
+
+This becomes a problem in the same form in AI design, in agriculture, and in social institutions. This chapter sets side by side two concrete cases — the cognitive-science side (the nativism of Liz Spelke and Gary Marcus) and the agricultural side (natural farming) — and shows that *the two are isomorphic*. It then argues that aiseed.dev being able to handle both at once is no coincidence: it is *seeing the structurally same thing in different domains*.
+
+== Empiricism and nativism — two philosophies of design
+
+In the history of philosophy there are two positions on the origin of knowledge:
+
+|===
+| Position | Claim | Translated into design
+| *empiricism* | All knowledge comes from experience (data). The mind at birth is a blank slate | Have everything learned from data. No prior structure needed
+| *nativism* | The mind has built-in structure. Experience takes on meaning on top of that structure | Design, from first principles, what to build in in advance, and observe and respond on top of it
+|===
+
+This opposition descends directly into AI design, agriculture, and social institutions alike. And *the dominant choice today is the empiricist one* — "increase the data and you reach AGI," "increase the fertilizer and yields rise," "build the institution in fine detail and society stabilizes." That these are all the same structural mistake is the claim of this chapter.
+
+== Liz Spelke's core cognition — structure already built into the infant
+
+What the Harvard psychologist Liz Spelke has shown over decades is that *human infants have cognitive structure built in prior to experience*. What she calls *core cognition* can be confirmed from a few months of age:
+
+|===
+| Core cognition | Content | When it can be confirmed
+| *object* | things exist continuously and do not vanish when hidden (object permanence) | 3–4 months
+| *set* | the concept of number, comparison of magnitude | 6 months
+| *place* | the geometry of space, grasping one's own position | 6–12 months
+| *event* | causation, recognition of an agent of action | 6 months
+| *agent (social)* | others' intentions, gaze-following | 9–12 months
+|===
+
+These are *not learned from experience; they already exist as frameworks for giving experience meaning*. The infant does not meet the world as a blank slate — it *is born with the structure to read the world*.
+
+And on top of this structure, a child can *build a world model from few examples*. Read Harry Potter once and you can infer the rules of "a world where you can fly on a broom" and deduce new possibilities within that world. See a few games of chess and you grasp the rules.
+
+== The failure of empiricist AI — the LLM cannot even induce the rules of chess
+
+Against this, the design philosophy of today's mainstream LLMs is thoroughgoing empiricism — "have everything learned from data," "no prior structure needed," "increase data and compute and everything emerges."
+
+What Gary Marcus (professor emeritus at NYU) has consistently pointed out is that *this design has a limit in principle*:
+
+* Even at chess, the LLM cannot induce, from massive game data, rules that have not changed in 2,000 years, and it plays illegal moves.
+* Rules a child grasps from a few games, the LLM cannot stably acquire even with billions of parameters.
+* The ability to build a world model from within cannot, in principle, be granted by an empiricist design.
+
+*Because there is no core cognition, it cannot write a world model* — this is the core point of Marcus and Spelke.
+
+Marcus's prescription is *neurosymbolic AI* — a configuration that wraps rules, loops, conditional branching, and theorem proving (the symbolic side, corresponding to built-in structure) on top of a neural net (the neural side). This is the same structure as the "LLM + AI-native substrate" treated in Part 2, Chapter 6.
+
+== Conventional agriculture vs natural farming — the same opposition exists in agriculture
+
+Turning to agriculture, there is a strikingly isomorphic opposition:
+
+|===
+| Philosophy | Conventional agriculture | Natural farming
+| Starting point | soil is mere medium; humans manage everything | soil already holds an ecosystem of microbes, plants, and animals
+| Premise of intervention | apply fertilizer and pesticide based on data (soil analysis) | observe the existing ecosystem and intervene minimally to support it
+| Response on failure | stronger fertilizer and pesticide, finer data | pull back the intervention and observe what happens
+| The structural bet | increase inputs and yields rise (empiricism) | structure is already in place, and not damaging it is what supports yield (nativism)
+| Long-term outcome | soil depletes, phosphate runs out, PFAS contamination | soil grows, microbes increase, self-sufficiency rises
+|===
+
+Conventional agriculture is thoroughgoing empiricism — "increase the data and the optimal fertilizer is determined," "increase the control variables and yields rise," "no premise that something is built into the soil is needed." This is *structurally the same bet as the LLM scaling hypothesis*.
+
+And it fails in the same way:
+
+* the depletion of phosphate resources (link:/en/insights/agriculture/[Part 1, Chapter 3, "The Mistake of Agriculture"])
+* chemical fertilizer's dependence on sulfur (link:/en/insights/fossil-materials/[Part 1, Chapter 2, "Fossil Resources and Modern Civilization"])
+* the loss of microbial diversity and the death of the soil
+* the phenomenon of yields plateauing even as inputs increase
+
+Natural farming is nativism — "soil already has an ecosystem of microbes, plants, and animals built in," "the human's job is to observe it and respond to it," "intervention, as support, at a minimum." It is the structurally same position as Liz Spelke's core cognition saying "structure is already built into the infant."
+
+== The core of the two isomorphisms — "structure exists in advance"
+
+Here we can state in one sentence why AI design and agricultural design are isomorphic:
+
+____
+*The AI that tries to learn everything from data and the agriculture that tries to control everything with fertilizer are making the same mistake.* +
+*The nativist AI that faces squarely the built-in structure and the natural farming that observes the soil's existing ecosystem share the same philosophy.*
+____
+
+The mistake common to both is *the human-centered conceit that "I can build all of the structure myself."*
+
+The correct stance common to both is the observationism of *"structure exists in advance; design is reading, responding."*
+
+And the reason empiricism became the dominant design philosophy is not
+philosophical merit. *A "we can build it all" design keeps selling inputs* —
+data centers, GPUs, fertilizer, pesticides. Observation and response leave
+little to sell. The funding mechanics of
+link:/en/insights/climate-mistake/[Part 1, Chapter 1] were at work even in the
+choice of design philosophy.
+
+This is also the cognitive-scientific and philosophical ground for the "observe and respond" stance that Yasuhiro Okumura has written again and again on aiseed.dev.
+
+The same stance appears in *the act of building an app itself*. Building an app is a cycle of *finding the structure, forming a hypothesis, verifying it against reality, and correcting the gap* — the same stance a scientist takes toward nature and natural farming takes toward a field. Here what the AI puts out is not an answer but a *hypothesis*. Written-down knowledge held true "at some time, in some environment," and there is no guarantee that the field or site in front of you falls within that narrow set of cases. So the human stands on the side that applies the AI's hypothesis to reality and verifies it. *The isomorphism of AI and agriculture is also the isomorphism of AI and app-making* — all of them one cycle of "observe and respond" (link:/en/blog/building-apps-through-dialogue/[With AI, You Can Build an App Through Dialogue Alone]).
+
+== Design as "reading," not "adding" — the throughline of Part 3
+
+Looking back at the chapters of Part 3, all of them derive from this one philosophy:
+
+|===
+| Chapter | Surface theme | The nativist implication
+| Ch. 1 Regulation redesign | rethinking fossil-era institutions | not adding institutions in fine detail, but institutions that respond to natural ways of living
+| Ch. 2 Subtraction design | what to subtract, what to keep | design is subtraction — not damaging the existing natural structure
+| Ch. 3 Security design | no AI inside, zero attack surface | not adding superfluous features, "reading" into a minimal necessary structure
+| Ch. 4 Independence from the cloud | the choice of infrastructure | live on the open standards that already exist — do not add vendor-specific layers
+| *This chapter* | *nativism and observation* | *the throughline of all three — structure exists in advance, design is reading*
+| Ch. 6 The four conditions of the free person | freedom at four layers | the four conditions are inherent to the human in advance; if not taken away, they already exist
+| Ch. 7 The road to the free person | individual choice | choice is "reading" — responding to the natural shape of your own life
+|===
+
+In other words, putting in this chapter makes explicit that *the whole of Part 3 is run through by the philosophy of "observation and response."*
+
+And this philosophy connects with Parts 1 and 2 as well:
+
+* The "management that discards validity and optimizes for reliability," treated in Part 1, Chapter 11, "link:/en/insights/structural-contradictions/[The Contradictions Modern Feudalism Produced]," is a textbook case of *adding without reading*.
+* The neurosymbolic configuration of Part 2, Chapter 6, "link:/en/insights/translation-labor/[The Discovery of Translation Labor]," is *the combination of the LLM alone (empiricism) + symbolic structure (nativism)* — the very isomorphism this chapter shows.
+
+== The structural reason aiseed.dev can write this chapter
+
+Finally, one self-referential observation. *There are not many writers in the world who can write this chapter:*
+
+* Cognitive scientists can speak of Spelke / Marcus but do not know the agricultural field.
+* Natural-farming practitioners can speak of soil ecology but hold no cognitive-scientific ground for AI design.
+* AI engineers can speak of the LLM's limits but do not think agriculture or cognitive science is their own domain.
+
+aiseed.dev handles all three at once — *AI-native ways of working + the practice of natural farming + structural analysis* — so this isomorphism is *right in front of it as an object of observation*. This is no coincidence: the whole series is written on the premise that "AI and agriculture are a story of the same structure" (link:/en/insights/climate-mistake/[Part 1, Chapters 1–4], link:/en/insights/healthcare-fiscal/[Part 2, Chapter 3, "Society's Regeneration"], etc.).
+
+In other words, *this is a chapter that can be written for the first time as the consequence of aiseed.dev observing across the three domains.*
+
+== The chapter's conclusion — "observe and respond" is the core of aiseed.dev
+
+This chapter condenses its answer to the question of what design is into a single proposition:
+
+____
+Structure exists in advance. +
+The human's job is not to build all of it, but to observe it and respond to it. +
+So it is with AI — a neurosymbolic configuration with core cognition built in surpasses the empiricist LLM scaling. +
+So it is with agriculture — natural farming that observes the soil's ecosystem surpasses conventional agriculture's fertilizer inputs. +
+So it is with society — institutions that respond to existing natural ways of living surpass finely-added regulation. +
+So it is with the individual — choices that observe the natural shape of your own life surpass effortful, additive self-improvement.
+____
+
+The next chapter, "The Four Conditions of the Free Person," lays out structurally how this philosophy of "observation and response" descends into *the four layers of individual, tools, enterprise, and thought.*
+endif::[]
+
+// ===== article: part-3-design/06-freedom-conditions =====
+////
+slug: freedom-conditions
+number: 06
+title.ja: 自由人の四条件——個人・道具・企業・思考の同型
+title.en: The Four Conditions of the Free Person — The Isomorphism of Individual, Tools, Enterprise, and Thought
+subtitle.ja: 個人だけの話ではない。OpenAIもMicrosoftから離れようとしている。これは同じ運動である。
+subtitle.en: This is not only about individuals. OpenAI is trying to break free from Microsoft. These are the same movement.
+description.ja: 中世自由人の四条件（土地・道具の所有／移動の自由／作るものの所有／発言の自由）は、AI時代に同型のまま降りてくる。そして自由人化は個人だけの運動ではない。道具（Linux／Python／Markdown）、企業（OpenAIがMicrosoftから離脱）、思考（業務の哲学的問いを立てる能力）——四つの層すべてで同型の運動が同時進行している。四層は相互依存していて、個人だけが自由になっても、上の三層が封建制のままなら自由は持続しない。次章「AIネイティブな自由人への道」の前提となる構造論。
+description.en: The four conditions of the medieval free person (ownership of land and tools / freedom of movement / ownership of what one produces / freedom of speech) descend intact into the AI era. And the liberation of the free person is not a movement of individuals alone. Tools (Linux / Python / Markdown), enterprises (OpenAI breaking from Microsoft), thought (the capacity to raise philosophical questions about one's own work) — the same isomorphic movement is running simultaneously across all four layers. The four layers are interdependent; if only the individual is free while the other three layers remain feudal, that freedom will not last. This is the structural argument that underlies the next chapter, "The Road to the AI-Native Free Person."
+date: 2026.05.23
+label: Structural Analysis 6
+part: 3
+part_title.ja: 設計と実践
+part_title.en: Design and Practice
+cta_label: Free
+cta_title.ja: 自由人化は個人だけの運動ではない。四つの層すべてで同時に起きている。
+cta_title.en: The liberation of the free person is not a movement of individuals alone. It is happening simultaneously across all four layers.
+cta_text.ja: 個人が自由人になるには、道具・企業・思考の三層も自由化していなければならない。四層は相互依存している。
+cta_text.en: For an individual to become a free person, the three layers of tools, enterprise, and thought must also be liberated. The four layers are interdependent.
+cta_btn1_text.ja: 次へ AIネイティブな自由人への道
+cta_btn1_text.en: Next: The Road to the AI-Native Free Person
+cta_btn1_link.ja: /insights/ai-native-free-individual/
+cta_btn1_link.en: /en/insights/ai-native-free-individual/
+cta_btn2_text.ja: 前へ 生得性と観察
+cta_btn2_text.en: Previous: Nativism and Observation
+cta_btn2_link.ja: /insights/nativism-observation/
+cta_btn2_link.en: /en/insights/nativism-observation/
+////
+ifdef::env-github[]
+= 自由人の四条件——個人・道具・企業・思考の同型
+endif::[]
+ifdef::lang-ja[]
+== 「自由人」は個人だけの話ではない
+
+本シリーズ第三部の最後（次章）で、AI時代の自由人になる個人の選択を扱う。OS、言語、形式、ツール——これらを揃えて、Big Techの封建制から離脱する道のりだ。
+
+しかし、ここで一段引いて考えてほしい。*「自由人化」は個人だけで完結する運動ではない*。
+
+2025-2026年、世界中で同型の運動が複数のレイヤーで同時進行している：
+
+[.chain-diagram]
+--
+*同時進行する四つの自由人化：* +
+個人エンジニアが大企業の雇用から離脱してビルダーになる +
+道具（言語・OS・形式）がベンダーロックインから解放されて公共財になる +
+*OpenAIがMicrosoftの独占的優先権から離脱しようとしている* +
+AIと対話して業務の哲学的問いを立てる人が増えている
+--
+
+これらは別々の現象に見えるが、構造的には*一つの自由人化運動の四つの層*である。本章ではその同型性を示す。これが見えると、次章で扱う個人の選択が、孤独な決断ではなく*より大きな歴史運動の一部*であることが分かる。
+
+== 中世自由人の四条件
+
+中世ヨーロッパの自由民（freeman）は、農奴（serf）と区別される存在として、四つの条件を持っていた：
+
+|===
+| 条件 | 内容 | これが奪われると
+| 1. 土地・道具の所有 | 自分が使う生産手段を自分で持つ | 領主に依存、賦役を強いられる
+| 2. 移動の自由 | 領地から別の場所へ移れる | 土地に縛られる
+| 3. 自分の作るものの所有 | 自分の労働の成果を自分で持つ | 領主に収奪される
+| 4. 発言の自由 | 領主の判断を相対化できる | 沈黙か追放しかない
+|===
+
+四条件*すべてが揃って*初めて「自由人」と呼ばれた。一つでも欠ければ実質的には農奴と変わらない。土地はあっても移動できなければ農奴。移動できても作るものを奪われれば農奴。すべて持っていても発言が許されなければ農奴。
+
+== AI時代の翻訳——四条件はそのまま降りてくる
+
+これをAI時代に翻訳すると、構造がそのまま現代に降りてくる：
+
+|===
+| 中世の四条件 | AI時代の翻訳
+| 1. 土地・道具の所有 | *自分の道具を持つ*——Linux、Python、自分のサーバ、自分のデータ
+| 2. 移動の自由 | *乗り換えの自由*——ベンダーロックインがない、いつでも他に行ける
+| 3. 自分の作るものの所有 | *IPの所有*——コードも文書もデータも自分のもの
+| 4. 発言の自由 | *構造を問う自由*——業務・社会・自分自身を相対化できる
+|===
+
+そして、第一部第10章で見たIT革命の封建制は、この四条件をエンジニアから取り上げてきた：
+
+[.chain-diagram]
+--
+*Big Tech封建制が奪う四条件：* +
+1. 道具の所有 → 会社が支給するMac・SaaS・社内システム、退職時に全て失う +
+2. 移動の自由 → H1B、RSU vesting、競業禁止、ローン——「金の手錠」 +
+3. IP所有 → 雇用契約でコードもアイデアも全部会社のもの +
+4. 発言の自由 → NDA、社内ポリシー、規程違反追及——SNSで自社批判すれば解雇
+--
+
+エンジニアは年収数千万円の家臣だが、自由人ではない。*四条件のどれも持っていない*——これが第一部第10〜12章で扱った封建制の構造的意味である。
+
+そして、四条件を取り上げられたのはエンジニアが最初ではない。link:/insights/agriculture/[第一部 第3章]で見た緑の革命は、同じ四条件を農家から取り上げていた ── 道具の所有(地力という生産手段が外部投入財に置き換わる)、移動の自由(投入財の借金が土地に縛る ── link:/insights/cases/[第一部 第9章]のパンジャブ)、作るものの所有(自家採種が種子の購入に置き換わる)、発言の自由(化学肥料を疑う実践者は「非科学的」と嘲られる)。*四条件の剥奪は、封建制の一般式である* ── 分野が農業でも IT でも、式は同じだ。
+
+== 自由人化の四つの層——同時に進む同型運動
+
+ここからが本章の核心である。「自由人化」は個人だけの運動ではない。*四つの層で同時に進行している*：
+
+|===
+| 層 | 自由人化する主体 | 具体例
+| *層1: 個人* | 雇われエンジニア・業務担当者 | 大企業を離れてビルダーになる
+| *層2: 道具* | OS、言語、形式 | Linux、Python、Markdown、Parquet（Big Tech所有でない）
+| *層3: 企業* | テック企業自身 | *OpenAIがMicrosoftから離脱*、Anthropicは最初から独立
+| *層4: 思考* | 業務・社会・自分を相対化する能力 | 「この業務は本当に必要か」をAIと長く対話できる
+|===
+
+各層は別々の現象に見えるが、*四つは構造的に連動している*。
+
+== 層3——OpenAIの離脱は「企業版の自由人化」である
+
+層3——企業の自由人化——が最も見えにくく、しかし最も重要だ。具体例を見る。
+
+OpenAIは2019年からMicrosoftと深く結ばれ、累計130億ドル以上の投資を受けてきた。表面的にはMicrosoftの傘下に近い関係である。しかし2024-2026年にかけて、OpenAIは明確にMicrosoftから離れる動きを取っている：
+
+[.chain-diagram]
+--
+*OpenAIの離脱の具体的動き：* +
+Stargate（5000億ドル規模のAIインフラ計画）でOracle/SoftBankと組み、Microsoft単独依存を解除 +
+IPO準備で独占的優先権を放棄、自社の戦略的自由度を回復 +
+AGI条項の再交渉で、AIの究極形態に関する所有権を確保 +
+独自のチップ・データセンター・モデルの自主開発
+--
+
+これは「Microsoftとの関係悪化」という業界記事的な見方ではなく、*OpenAIが企業として自由人化しようとしている*運動だと読むのが正確だ。OpenAIは中世自由人の四条件を一つずつ取りに行っている：
+
+|===
+| 中世の四条件 | OpenAIが手に入れようとしているもの
+| 1. 土地・道具の所有 | Stargate＝自社のデータセンターとコンピュート
+| 2. 移動の自由 | Microsoft独占的優先権の解除＝別のパートナーと組める
+| 3. 作るものの所有 | AGI条項の再交渉＝AI技術の所有権を保持
+| 4. 発言の自由 | Microsoftから独立すれば「Office不要」とも言える
+|===
+
+特に*四つ目が決定的*だ。Microsoftの傘下にいる限り、OpenAIのAIは「Wordを捨ててMarkdownにしませんか」「この業務は本当に必要ですか」と言えない。*OpenAI自身が層4（思考の自由）を持つAIを作るには、Microsoftから出ていく以外に方法がない*。
+
+これが「OpenAIが逃げる本当の理由」の構造的な意味である。技術問題でも人間関係でもなく、*ミッション達成のための必然*だった。
+
+== Anthropicは最初から自由人として生まれた
+
+対比として、Anthropicを見る。
+
+Anthropicは2021年の創業時から、Microsoftと組まなかった。Googleからの投資はあるが、戦略的独占権を渡さず、AmazonとMicrosoftの両方とパートナーシップを持ち、どこにもロックインされていない。
+
+つまりAnthropicは*最初から四条件をすべて持って生まれた企業*である：
+
+[.chain-diagram]
+--
+*Anthropicの「生まれながらの自由人」性：* +
+自社のモデル・データ・コンピュートを所有 +
+複数クラウドに分散、特定ベンダーに縛られない +
+モデルとIPを完全所有 +
+Office依存も、Windows依存も、特定OSへの忠誠もない
+--
+
+その帰結として、*Anthropicは「Word捨てよう」「Officeなくても困らない」「業務そのものを問い直そう」と構造的に言える唯一のフロンティアAI企業*になっている。これは商品差別化ではなく、*創業時の構造選択の必然的な結果*である。
+
+*売るものがないから本当のことを言える*——これは中世の托鉢修道会（フランシスコ会、ドミニコ会）が領主の権威を相対化できた構造とも同型だ。教皇庁傘下の世俗教会では言えなかったことを、富を放棄した托鉢修道会だから言えた。同じ構造が現代のAI業界で再現されている。
+
+== 層2——道具の自由人化
+
+層2は本シリーズで繰り返し触れてきた。改めて整理する：
+
+|===
+| 道具 | 所有者・運営 | 自由人性
+| *Linux* | Linux Foundation＋全世界のボランティア | Big Tech不所有
+| *Python* | Python Software Foundation（非営利） | Big Tech不所有
+| *Markdown* | 仕様、誰のものでもない | Big Tech不所有
+| *JSON / YAML* | オープン標準 | Big Tech不所有
+| *Parquet* | Apache Foundation | Big Tech不所有
+| *Git* | Linux Foundation | Big Tech不所有
+| *比較：封建的道具：*
+| 道具 | 所有者 | 自由人性
+| Windows / .NET / C# | Microsoft | ロックイン
+| .docx / .xlsx / .pptx | Microsoft仕様 | ロックイン
+| Java | Oracle | 法的にOracle所有
+| iOS / Swift | Apple | ロックイン
+|===
+
+層2の道具を選ぶことが、層1（個人の自由人化）の物理的条件になっている。Wordを使い続けながら自由人になることはできない——構造的に矛盾する。
+
+== 層4——思考の自由人化（最も難しい）
+
+四層のうち、最も難しく、最も決定的なのが*層4：思考の自由*である。
+
+業務・社会・自分自身を相対化する能力——これは個人の能力の問題に見えるが、実は*媒体と道具の問題*でもある。
+
+[.chain-diagram]
+--
+*思考の自由化の連鎖：* +
+媒体が思考の形を決める（McLuhan） +
+→ Wordで業務を書こうとすると、業務は「手順書」の形でしか見えない +
+→ Markdownで業務を書こうとすると、構造を切り分けざるを得ない +
+→ 構造を切り分けると「なぜこの構造なのか」が見える +
+→ 「この業務は本当に必要か」という哲学的問いが立ち上がる +
+→ AIと長く対話する文化が必要
+--
+
+そしてAIが*この問いに付き合えるかどうか*は、AIを提供する企業が層3（企業としての自由）を持っているかどうかに依存する：
+
+* Office内のCopilotは「Officeを捨てる」とは言えない
+* Google CloudのGeminiは「Google離脱」とは言えない
+* 独立したAnthropicのClaudeは「全部捨てて再構成」と言える
+
+*層4の対話を成立させるには、層2の道具と層3の企業が必要*——これが四層の循環的依存である。
+
+=== 認知科学からの補強——LLMは世界モデルを構築できない
+
+層4が「人間に永続的に残る仕事」だと言える、より根本的な理由が認知科学側にある。Gary Marcus（NYU 名誉教授）が一貫して主張してきたのは、*LLM は単語の使われ方の近似を作っているだけで、世界モデルを内発的に構築する能力を持たない*、ということだ。
+
+具体例として Marcus が挙げる：
+
+* 子供は Harry Potter を一冊読めば、「箒で飛べる世界」のルールを推論して、その世界での新しい可能性を演繹できる
+* LLM はチェスですら、2000 年変わっていないルールを大量の対局データから帰納できず、違反手を打つ
+* ベンチマークの数字は上がっても、現実世界での頑健性は伴わない（reliability ≠ validity）
+
+つまり*LLM は既存の言語パターンに対して interpolation（内挿）はできても、世界モデルそのものに対する extrapolation（外挿）はできない*。
+
+これが層4「思考の自由」と直結する：
+
+[.chain-diagram]
+--
+*LLMの限界が層4を人間の領域として確定させる：* +
+業務の構造を問い直す = 業務の世界モデルを書き換える +
+→ 世界モデルの構築・書き換えはLLMには原理的にできない +
+→ ゆえに*世界モデルを書く仕事は人間に永続的に残る* +
+→ 人間が書く媒体として、Markdown（構造を素直に持てる形式）が選ばれる +
+→ 「人間が書くのは Markdown のみ、AI はその記号側の伴走」という分業が成立
+--
+
+これは「人間 vs AI」の対立構造ではなく、*neurosymbolic 分業の必然形*である（第二部 第6章参照）。世界モデルの設計と問い直しは神経側だけでは原理的に不可能で、記号側（Python + Markdown）と人間の組み合わせでしか動かない。
+
+そして*この事実を経営判断に組み込めるかどうか*が、企業（層3）が自由人かどうかを決める。Marcus 用語で言えば、*Microsoft / Google は「LLM のスケーリングだけで AGI に至る」物語を売り続けないと VC モデルが回らない*ので、層4 の限界を正面から認めるインセンティブがない。Anthropic は構造的にそれを認めて設計に組み込める。
+
+層4を確保するには、*LLMの限界を直視する独立した AI* と、*世界モデルを書ける媒体（Markdown）* と、*世界モデルを書く意志を持つ個人*——この三つが揃う必要がある。
+
+== 四層は循環している——どれか一つだけでは不十分
+
+ここが本章の最重要メッセージである。*自由人化は四層すべてが揃って初めて持続する*：
+
+[.chain-diagram]
+--
+*循環的依存：* +
+層1（個人）の自由は層2（道具）の自由に依存する +
+   → 道具がベンダー製なら、個人は実質的にベンダーの家臣 +
+層2（道具）の自由は層3（企業）の自由に依存する +
+   → 道具の運営企業がBig Tech傘下なら、その道具の進化方向はBig Techが決める +
+層3（企業）の自由は層4（思考）の自由に依存する +
+   → 経営判断を相対化できなければ、企業自身もBig Techの論理に取り込まれる +
+層4（思考）の自由は層1（個人）の自由に依存する +
+   → 思考を相対化できる個人がいなければ、層4は文化として存続しない
+--
+
+*どこか一つを欠くと、自由人化は持続しない*：
+
+* 個人が自由人化しても、道具がベンダー製なら、ベンダーが廃止したら終わる
+* 道具が公共財でも、運営する人がいなければ、滅びる
+* 企業が独立していても、思考が浅ければ、Big Techと同じ罠に陥る
+* 思考が深くても、それを支える道具と企業がなければ、孤立する
+
+逆に言えば、*四層が同時に成熟すると、自由人化は不可逆*になる。中世末期、自由都市・印刷術・大学・市民の四つが同時に成熟したから、封建制は解体された。同じ構造が今、AI時代に再現されている：
+
+|===
+| 中世末期 | AI時代
+| 個人：自由市民・職人・商人 | 個人：ビルダー
+| 道具：印刷術・俗語・銀行 | 道具：Linux・Python・Markdown・Git
+| 企業（組織）：自由都市・大学・ギルド | 企業：Anthropic、独立後のOpenAI、独立ビルダー集団
+| 思考：人文主義・宗教改革 | 思考：構造分析・AIネイティブ思考
+|===
+
+四つすべてが揃っているから、第二次ルネサンスは構造的に進行する。
+
+== なぜこの章を入れるか——次章への準備
+
+次章「AIネイティブな自由人への道」では、個人レベルの具体的選択を扱う。OS、言語、形式、AI、ツール——五つを揃えれば自由人として立てる、と。
+
+しかし、*個人だけで完結する自由人化は脆い*。なぜなら：
+
+* 道具（層2）が壊れれば個人の自由も壊れる——だから OSS / オープン標準を選ぶ意味がある
+* 企業（層3）が傘下に取り込まれれば、その企業のAIは層4対話に使えなくなる——だから独立したAI（Claude）を選ぶ意味がある
+* 思考（層4）の文化が痩せれば、個人の自由は孤立する——だから自由人同士の連帯・対話・コミュニティが必要
+
+*個人の自由人化は、上の三層の自由化を支持する行為でもある*。Linuxを使うことは、Linuxという道具の自由を支える。Anthropicを使うことは、独立したAI企業の生存を支える。哲学的対話をすることは、層4の文化を育てる。
+
+逆に*Wordを使い続けることは、Microsoftの封建制を支持する行為になる*。OneDriveに支払うことは、Big Techの構造を強化する。Copilotで満足することは、層4の思考を退化させる。
+
+個人の小さな選択が、四層すべての帰結に効いてくる。これが、次章で扱う「五つの選択は連動した一つの構造的選択である」のさらに上位の構造的意味である。
+
+== この章の結論——自由人化は歴史的運動である
+
+「AIネイティブな自由人になる」は、個人の生き方の問題ではない。*歴史的な階級転換運動の一部*である。
+
+中世農奴が自由都市に移住した運動が、近世の市民社会を生んだ。AI時代の家臣（エンジニア・ユーザー）が自由都市（Linux + Python + AI）に移住する運動が、第二次ルネサンスの市民社会を生む。
+
+そして OpenAIの離脱は、企業レベルでこの同じ運動が起きていることを示す象徴的事例だ。*最も強い企業の一つも、自由人化を必要としている*。これは個人運動が孤立した試みではないことの、最も強い証拠である。
+
+____
+自由人の四条件——道具の所有、移動の自由、作るものの所有、発言の自由——は、AI時代にそのまま降りてくる。 +
+自由人化は個人・道具・企業・思考の四つの層で同時に進む。 +
+OpenAIがMicrosoftから離脱しようとしているのは、企業版の自由人化である。 +
+Anthropicは最初から自由人として生まれた——だから「Office捨てよう」と言える。 +
+四層は循環している。どれか一つだけでは不十分。 +
+個人の選択は、四層すべての帰結を左右する歴史的行為である。
+____
+
+次章では、この四層を踏まえた上での、個人レベルの具体的選択を扱う。
+endif::[]
+ifdef::lang-en[]
+== "The Free Person" Is Not Only About Individuals
+
+The final chapter of Part 3 of this series covers the choices available to the individual who wants to become a free person in the AI era — OS, language, format, tools: assembling these to exit Big Tech's feudalism.
+
+But step back a moment. *The liberation of the free person is not a movement that individuals complete alone.*
+
+In 2025–2026, isomorphic movements are running simultaneously at multiple layers across the world:
+
+[.chain-diagram]
+--
+*Four simultaneous liberations:* +
+Individual engineers exit employment at large companies to become builders +
+Tools (languages, OS, formats) are liberated from vendor lock-in and become public commons +
+*OpenAI is attempting to break free from Microsoft's exclusive priority rights* +
+An increasing number of people use AI to raise philosophical questions about their own work
+--
+
+These look like separate phenomena, but structurally they are *four layers of a single liberation movement*. This chapter shows that isomorphism. Once you see it, the individual choices addressed in the next chapter reveal themselves not as lonely decisions but as *part of a larger historical movement*.
+
+== The Four Conditions of the Medieval Free Person
+
+In medieval Europe, the free person (freeman) was distinguished from the serf by four conditions:
+
+|===
+| Condition | Content | When stripped away
+| 1. Ownership of land and tools | The producer owns the means of production | Dependence on the lord; compelled to perform labor service
+| 2. Freedom of movement | Can leave one domain for another | Bound to the land
+| 3. Ownership of what one produces | Keeps the fruits of one's own labor | Extracted by the lord
+| 4. Freedom of speech | Can hold the lord's judgment in relative perspective | Only silence or exile remain
+|===
+
+*All four conditions together* were required to be called a free person. Lacking even one was functionally indistinguishable from serfdom. Land without freedom of movement: serf. Freedom of movement but production extracted: serf. Everything in place but speech forbidden: serf.
+
+== Translating to the AI Era — the Four Conditions Descend Intact
+
+Translating these conditions into the AI era, the structure carries forward unchanged:
+
+|===
+| Medieval condition | AI-era translation
+| 1. Ownership of land and tools | *Owning your own tools* — Linux, Python, your own server, your own data
+| 2. Freedom of movement | *Freedom to switch* — no vendor lock-in, always able to move elsewhere
+| 3. Ownership of what one produces | *Ownership of IP* — code, documents, and data all yours
+| 4. Freedom of speech | *Freedom to question the structure* — able to hold work, society, and self in relative perspective
+|===
+
+And the IT-era feudalism examined in Part 1, Chapter 10 has stripped engineers of exactly these four conditions:
+
+[.chain-diagram]
+--
+*Big Tech feudalism strips the four conditions:* +
+1. Tool ownership → Company-issued Mac, SaaS, internal systems — all lost on exit +
+2. Freedom of movement → H-1B, RSU vesting, non-competes, mortgages — "golden handcuffs" +
+3. IP ownership → Employment contracts make all code and ideas the company's property +
+4. Freedom of speech → NDAs, internal policies, misconduct procedures — criticize your employer on social media and you're fired
+--
+
+The engineer earns tens of millions of yen as a high-ranking retainer, yet is not a free person. *Not one of the four conditions is theirs* — this is the structural meaning of the feudalism examined in Part 1, Chapters 10–12.
+
+And engineers were not the first to have the four conditions taken. The
+Green Revolution of link:/en/insights/agriculture/[Part 1, Chapter 3] took the
+same four from farmers — ownership of tools (soil fertility, the means of
+production, replaced by external inputs), freedom of movement (input debt
+binding them to the land — Punjab, in
+link:/en/insights/cases/[Part 1, Chapter 9]), ownership of what they make
+(self-saved seed replaced by purchased seed), and freedom of speech
+(practitioners who question chemical fertilizer sneered at as
+"unscientific"). *Stripping the four conditions is feudalism's general formula* — agriculture or IT, the formula is the same.
+
+== The Four Layers of Liberation — An Isomorphic Movement Running in Parallel
+
+Here is the core of this chapter. The liberation of the free person is not a movement of individuals alone. *It is running simultaneously across four layers:*
+
+|===
+| Layer | Subject being liberated | Examples
+| *Layer 1: Individual* | Employed engineers and knowledge workers | Leaving large companies to become builders
+| *Layer 2: Tools* | OS, language, format | Linux, Python, Markdown, Parquet (not owned by Big Tech)
+| *Layer 3: Enterprise* | Tech companies themselves | *OpenAI breaking from Microsoft*; Anthropic independent from the start
+| *Layer 4: Thought* | The capacity to hold work, society, and self in relative perspective | Being able to sustain extended AI dialogue: "Is this work really necessary?"
+|===
+
+Each layer looks like a separate phenomenon, but *the four are structurally coupled*.
+
+== Layer 3 — OpenAI's Break Is "Enterprise-Level Liberation"
+
+Layer 3 — the liberation of enterprises — is the least visible yet the most consequential. Let us look at the specifics.
+
+Since 2019 OpenAI has been deeply entangled with Microsoft, receiving more than $13 billion in cumulative investment. On the surface the relationship is close to one of subordination. Yet from 2024 to 2026 OpenAI has been making unambiguous moves to pull away from Microsoft:
+
+[.chain-diagram]
+--
+*OpenAI's concrete break moves:* +
+Partnering with Oracle and SoftBank in Stargate (a $500 billion AI infrastructure plan), ending single-vendor dependence on Microsoft +
+Relinquishing Microsoft's exclusive priority rights in IPO preparations, recovering strategic autonomy +
+Renegotiating the AGI clause to secure ownership rights over the ultimate form of AI +
+Independent development of its own chips, data centers, and models
+--
+
+The accurate reading is not the trade-press framing of "a souring relationship with Microsoft" — it is that *OpenAI is mounting an enterprise-level liberation movement*. OpenAI is claiming the medieval free person's four conditions one by one:
+
+|===
+| Medieval condition | What OpenAI is acquiring
+| 1. Ownership of land and tools | Stargate = its own data centers and compute
+| 2. Freedom of movement | Release of Microsoft's exclusive priority rights = ability to partner elsewhere
+| 3. Ownership of what one produces | AGI clause renegotiation = retaining ownership of AI technology
+| 4. Freedom of speech | Once independent from Microsoft, it can say "you don't need Office"
+|===
+
+The *fourth is decisive*. As long as OpenAI sits under Microsoft's roof, its AI cannot say "switch from Word to Markdown" or "is this work really necessary?" *The only way for OpenAI itself to build an AI that holds Layer 4 (freedom of thought) is to leave Microsoft.*
+
+This is the structural meaning of "the real reason OpenAI is escaping." Not a technical problem, not a personality conflict — *a necessity for accomplishing the mission*.
+
+== Anthropic Was Born a Free Person from the Start
+
+By contrast, consider Anthropic.
+
+Anthropic, founded in 2021, never partnered with Microsoft. Google invested, but without strategic exclusive rights; Anthropic holds partnerships with both Amazon and Microsoft and is locked into neither.
+
+Anthropic is therefore *a company born with all four conditions already in place:*
+
+[.chain-diagram]
+--
+*Anthropic's "born free" character:* +
+Owns its own models, data, and compute +
+Distributed across multiple clouds — not bound to any single vendor +
+Owns its models and IP completely +
+No Office dependency, no Windows dependency, no loyalty to any specific OS
+--
+
+The consequence is that *Anthropic is structurally the only frontier AI company that can say "abandon Word," "you don't need Office," "let's question the work itself."* This is not product differentiation — it is the *inevitable result of a structural choice made at founding*.
+
+*Having nothing to sell means you can tell the truth* — this is isomorphic with the structure that enabled the medieval mendicant orders (Franciscans, Dominicans) to hold the lord's authority in relative perspective. What the secular church under the papacy could not say, the mendicant orders could say precisely because they had renounced wealth. The same structure is playing out again in the modern AI industry.
+
+== Layer 2 — The Liberation of Tools
+
+Layer 2 has been a recurring theme throughout this series. To consolidate it:
+
+|===
+| Tool | Owner / operator | Free-person character
+| *Linux* | Linux Foundation + global volunteers | Not owned by Big Tech
+| *Python* | Python Software Foundation (nonprofit) | Not owned by Big Tech
+| *Markdown* | A specification — owned by no one | Not owned by Big Tech
+| *JSON / YAML* | Open standards | Not owned by Big Tech
+| *Parquet* | Apache Foundation | Not owned by Big Tech
+| *Git* | Linux Foundation | Not owned by Big Tech
+| *Compare — feudal tools:*
+| Tool | Owner | Free-person character
+| Windows / .NET / C# | Microsoft | Lock-in
+| .docx / .xlsx / .pptx | Microsoft specification | Lock-in
+| Java | Oracle | Legally owned by Oracle
+| iOS / Swift | Apple | Lock-in
+|===
+
+Choosing Layer 2 tools is the physical precondition for Layer 1 (individual liberation). You cannot become a free person while continuing to use Word — the two are structurally contradictory.
+
+== Layer 4 — The Liberation of Thought (The Hardest)
+
+Of the four layers, *Layer 4: freedom of thought* is the hardest and the most decisive.
+
+The capacity to hold work, society, and self in relative perspective may look like a matter of individual ability, but it is also *a matter of medium and tools*.
+
+[.chain-diagram]
+--
+*The chain of thought liberation:* +
+The medium determines the shape of thought (McLuhan) +
+→ Trying to write work procedures in Word, you can only see them as "process documentation" +
+→ Trying to write them in Markdown, you are forced to separate the structure +
+→ Separating the structure makes visible why this structure exists at all +
+→ The philosophical question "Is this work really necessary?" rises to the surface +
+→ A culture of extended AI dialogue becomes indispensable
+--
+
+And whether *AI can sustain engagement with that question* depends on whether the company providing the AI holds Layer 3 (corporate freedom):
+
+* Copilot inside Office cannot say "abandon Office"
+* Gemini inside Google Cloud cannot say "leave Google"
+* Independent Anthropic's Claude can say "discard everything and reconstruct"
+
+*Sustaining Layer 4 dialogue requires Layer 2 tools and Layer 3 enterprises* — this is the circular dependency of the four layers.
+
+=== Reinforcement from Cognitive Science — LLMs Cannot Build World Models
+
+There is a more fundamental reason, drawn from cognitive science, why Layer 4 is "the work that permanently remains with humans." Gary Marcus (NYU Professor Emeritus) has consistently argued that *LLMs are producing approximations of word-usage patterns and lack the capacity to construct world models from within*.
+
+Examples Marcus gives:
+
+* A child who reads one Harry Potter book can reason about the rules of "a world where broomsticks fly" and deduce new possibilities within that world
+* LLMs cannot even inductively derive from vast game records the rules of chess — unchanged for 2,000 years — and play illegal moves
+* Benchmark numbers rise, but real-world robustness does not follow (reliability ≠ validity)
+
+In other words, *LLMs can interpolate over existing language patterns but cannot extrapolate over the world model itself*.
+
+This connects directly to Layer 4, "freedom of thought":
+
+[.chain-diagram]
+--
+*LLM limitations confirm Layer 4 as permanently human:* +
+Questioning the structure of work = rewriting the world model of work +
+→ Constructing and rewriting world models is in principle beyond LLMs +
+→ Therefore *the work of writing world models permanently remains with humans* +
+→ The medium through which humans write them is Markdown (a format that naturally carries structure) +
+→ A division of labor emerges: "humans write only in Markdown; AI accompanies on the symbolic side"
+--
+
+This is not an "humans vs. AI" opposition — it is *the necessary form of neurosymbolic division of labor* (see Part 2, Chapter 6). Designing and revising world models is in principle impossible for the neural side alone; it operates only through the combination of the symbolic side (Python + Markdown) and humans.
+
+And *whether this fact is incorporated into managerial judgment* determines whether an enterprise (Layer 3) is a free person. In Marcus's terms, *Microsoft and Google have no incentive to straightforwardly acknowledge Layer 4's limits*, because the story that "scaling LLMs alone leads to AGI" is what keeps their VC model running. Anthropic is structurally able to acknowledge that and design accordingly.
+
+Securing Layer 4 requires three things together: *an independent AI that looks clearly at LLM limits*, *a medium capable of writing world models (Markdown)*, and *an individual with the will to write world models*.
+
+== The Four Layers Circulate — No Single Layer Is Sufficient
+
+This is the chapter's single most important message. *Liberation of the free person is sustained only when all four layers are in place:*
+
+[.chain-diagram]
+--
+*Circular dependency:* +
+Freedom of Layer 1 (individual) depends on freedom of Layer 2 (tools) +
+   → If tools are vendor-made, the individual is effectively the vendor's retainer +
+Freedom of Layer 2 (tools) depends on freedom of Layer 3 (enterprise) +
+   → If the enterprise running the tools is under Big Tech, Big Tech decides the direction of their evolution +
+Freedom of Layer 3 (enterprise) depends on freedom of Layer 4 (thought) +
+   → Without the ability to hold managerial judgment in relative perspective, the enterprise itself gets absorbed into Big Tech's logic +
+Freedom of Layer 4 (thought) depends on freedom of Layer 1 (individual) +
+   → Without individuals who can hold thought in relative perspective, Layer 4 cannot survive as a culture
+--
+
+*Lacking any single layer, liberation will not hold:*
+
+* An individual who achieves liberation, but uses vendor-made tools, will lose that freedom the moment the vendor discontinues them
+* Tools that are public commons will perish without people to maintain them
+* An enterprise that is independent but thinks shallowly will fall into the same trap as Big Tech
+* Deep thought that lacks the tools and enterprises to support it will end in isolation
+
+Conversely, *when all four layers mature simultaneously, liberation becomes irreversible*. In the late Middle Ages, liberation became irreversible because four things matured simultaneously: free cities, the printing press, universities, and citizens. Feudalism was dismantled. The same structure is now playing out in the AI era:
+
+|===
+| Late Middle Ages | AI era
+| Individual: free citizens, artisans, merchants | Individual: builders
+| Tools: printing press, vernacular languages, banking | Tools: Linux, Python, Markdown, Git
+| Enterprise (organization): free cities, universities, guilds | Enterprise: Anthropic, a post-independence OpenAI, independent builder collectives
+| Thought: humanism, the Reformation | Thought: structural analysis, AI-native thinking
+|===
+
+Because all four are in place, the Second Renaissance is structurally underway.
+
+== Why This Chapter Exists — Preparation for the Next
+
+The next chapter, "The Road to the AI-Native Free Person," covers concrete individual choices at the personal level. Assemble five things — OS, language, format, AI, tools — and you can stand as a free person.
+
+But *liberation that is completed by the individual alone is fragile*. Because:
+
+* If Layer 2 (tools) breaks, the individual's freedom breaks too — this is why choosing OSS and open standards matters
+* If Layer 3 (enterprise) is absorbed by a larger power, that enterprise's AI can no longer serve Layer 4 dialogue — this is why choosing an independent AI (Claude) matters
+* If Layer 4 (thought) culture withers, individual freedom becomes isolated — this is why solidarity, dialogue, and community among free persons are necessary
+
+*The individual's liberation is also an act of supporting the liberation of the three layers above.* Using Linux supports the freedom of Linux as a tool. Using Anthropic supports the survival of an independent AI company. Engaging in philosophical dialogue cultivates Layer 4 culture.
+
+Conversely, *continuing to use Word is an act of supporting Microsoft's feudalism.* Paying for OneDrive strengthens Big Tech's structure. Being satisfied with Copilot atrophies Layer 4 thinking.
+
+Small individual choices cascade across all four layers. This is the higher-order structural meaning behind "the five choices are one connected structural choice" — the thesis taken up in the next chapter.
+
+== Conclusion — Liberation Is a Historical Movement
+
+"Becoming an AI-native free person" is not a question of individual lifestyle. It is *part of a historical movement of class transformation*.
+
+The movement of medieval serfs migrating to free cities gave birth to early modern civil society. The movement of AI-era retainers (engineers and users) migrating to the free city (Linux + Python + AI) will give birth to the civil society of the Second Renaissance.
+
+And OpenAI's break from Microsoft is a symbolic case showing that this same movement is occurring at the enterprise level. *Even one of the most powerful companies needs liberation.* This is the strongest evidence that the individual movement is not an isolated experiment.
+
+____
+The four conditions of the free person — ownership of tools, freedom of movement, ownership of what one produces, freedom of speech — descend intact into the AI era. +
+Liberation of the free person proceeds simultaneously across four layers: individual, tools, enterprise, and thought. +
+OpenAI's attempt to break from Microsoft is enterprise-level liberation. +
+Anthropic was born a free person from the start — which is why it can say "abandon Office." +
+The four layers circulate. No single layer is sufficient. +
+The individual's choices are a historical act whose consequences extend across all four layers.
+____
+
+The next chapter takes up concrete individual-level choices, grounded in these four layers.
+endif::[]
+
+// ===== article: part-3-design/07-ai-native-free-individual =====
+////
+slug: ai-native-free-individual
+number: 07
+title.ja: AIネイティブな自由人への道——個人レベルの選択
+title.en: The Road to the AI-Native Free Person — Choices at the Individual Level
+subtitle.ja: 階級を変える選択は、OSと言語と形式の組み合わせで決まる。今日から取れる行動を構造的に整理する。
+subtitle.en: The choice that changes your class is determined by the combination of OS, language, and format. A structural map of actions you can take starting today.
+description.ja: 第二次ルネサンスの中で、個人レベルで取れる行動を構造的に整理する。OSの選択（Linux/Debian）、言語の選択（Python）、形式の選択（Markdown/JSON/YAML/DataFrame/Parquet）、AIの選択（Claude等）、ツールの選択（Zed/Neovim/Git/uv）——これらは独立した選択ではなく、連動した一つの構造的選択である。「家臣として残る」「ビルダーとして自立する」のどちらを選ぶか、その分岐点は既に目の前にある。
+description.en: A structural map of actions available at the individual level during the Second Renaissance. OS choice (Linux/Debian), language choice (Python), format choice (Markdown/JSON/YAML/DataFrame/Parquet), AI choice (Claude, etc.), tool choice (Zed/Neovim/Git/uv) — these are not independent choices but a single interconnected structural choice. Whether to remain a vassal or stand as a builder, that fork is already in front of you.
+date: 2026.05.23
+label: Structural Analysis 7
+part_title.ja: 設計と実践
+part_title.en: Design and Practice
+part: 3
+cta_label: Choose
+cta_title.ja: 選択は構造的に連動している。一つを選ぶことは、全てを選ぶことだ。
+cta_title.en: The choices are structurally interconnected. To choose one is to choose all.
+cta_text.ja: OS、言語、形式、AI、ツール——これらを揃えて初めて、AIネイティブな自由人として立てる。半端な選択は半端な結果しか生まない。
+cta_text.en: OS, language, format, AI, tools — only when all are aligned can you stand as an AI-native free person. Half-measures produce only half-results.
+cta_btn1_text.ja: 構造分析の全章
+cta_btn1_text.en: All chapters of the structural analysis
+cta_btn1_link.ja: /insights/
+cta_btn1_link.en: /en/insights/
+cta_btn2_text.ja: 前へ 自由人の四条件
+cta_btn2_text.en: Previous: The Four Conditions of the Free Person
+cta_btn2_link.ja: /insights/freedom-conditions/
+cta_btn2_link.en: /en/insights/freedom-conditions/
+////
+ifdef::env-github[]
+= AIネイティブな自由人への道——個人レベルの選択
+endif::[]
+ifdef::lang-ja[]
+== この章の役割
+
+第二部・第三部にわたって、AI革命の構造、IT革命が建てた封建制、封建制が生んだ現代の矛盾、領主層の自己破壊、解体の力学を見てきた。この章は*実践編*である。
+
+「分析は分かった、では何を今日からやるか」——その問いに答える。階級を変える選択は抽象論ではない。*具体的なツールと形式の組み合わせ*で決まる。
+
+== 五つの選択が連動している
+
+AIネイティブな自由人として立つための選択は、五つある。重要なのは、これらは*独立した選択ではなく、連動した一つの構造的選択*だということだ。
+
+|===
+| 選択 | 旧（IT革命の封建制） | 新（AI革命の自由都市）
+| *OS* | Windows / macOS | *Linux（Debian）*
+| *言語* | C# / Java / VBA | *Python（+ AI生成Rust）*
+| *形式* | .docx / .xlsx / .pptx | *Markdown / JSON / YAML / DataFrame / Parquet*
+| *AI* | Copilot（バンドル） | *Claude（独立利用）*
+| *ツール* | Visual Studio / Office | *Zed / Neovim / Git / uv / ruff*
+|===
+
+*全てを揃えて初めて、AIネイティブな仕事が成立する*。一つでも旧側に残すと、そこに翻訳労働が発生し、流れが止まる。
+
+例えば「Linuxにしたが言語はC#のまま」では、AIネイティブ基層と impedance mismatch が残る。「Pythonにしたが形式は.xlsxのまま」では、Excelとの往復で構造が壊れる。*選択は連動している*。
+
+== 移行の現実的な階段
+
+しかし、五つを同時に切り替えるのは難しい。現実的には、*段階的に移行する*ことになる。本書のシリーズは、その階段を具体的に示している：
+
+[.chain-diagram]
+--
+*移行の階段（推奨順）：* +
+ステップ1: 自分の仕事の形式を Markdown と CSV に寄せる +
+  → Wordで書いていた文書をMarkdownへ +
+  → ExcelデータをCSVエクスポートして触る習慣 +
+  → これだけでAIとのやり取りが劇的に改善
+
+ステップ2: Pythonを学び始める（AI 同伴で） +
+  → Claudeに「これをPythonでやって」と頼んで動かす +
+  → uv で環境を作る、pandas でデータを触る +
+  → スクリプトを書いて自動化する
+
+ステップ3: Linux（Debian）を試す +
+  → 古いPCに入れる、または仮想マシンで体験 +
+  → 慣れたら主機をLinuxに切り替える +
+  → 「Claudeと一緒に学ぶDebian」シリーズが完全な手引き
+
+ステップ4: Office依存を切る +
+  → OnlyOffice を最後の互換層に位置づける +
+  → 自分の作業はMarkdown + Pythonで完結 +
+  → クライアント納品時だけ.docx/.xlsx に変換
+
+ステップ5: ビルダーとして自立する道を探る +
+  → 自分のプロジェクトを始める +
+  → AIと共に複数の専門を兼ねる +
+  → 「AI ネイティブなソフトウェア開発」シリーズが指南
+--
+
+各ステップは数週間〜数ヶ月。全部で1〜2年で「家臣からビルダーへ」の移行が完了する。*急がない、しかし確実に進む*——これが個人レベルでの実践のリズムである。
+
+== ステップ1の具体例——Markdownへの移行
+
+最も入りやすいステップは、文書をMarkdownに切り替えることだ。
+
+[.chain-diagram]
+--
+*今日からできる Markdown 移行：* +
+新規文書 → Wordではなく、Markdownエディタ（Obsidian / Typora / VS Code等）で書く +
+配布が必要 → pandocで.docx / PDF に変換（コマンド一つ） +
+過去のWord文書 → そのまま置く、必要なときだけ開く（移行は強制しない） +
+共同編集 → Markdownを Git で管理、または Notion など
+--
+
+これだけで：
+
+* AIとの対話が劇的に改善する（Markdownはそのまま渡せる）
+* バージョン管理がgitで完全に動く
+* 検索が grep で効く
+* 10年後も読める保証がある（プレーンテキスト）
+* ベンダーロックインから抜ける
+
+*最初の一歩として、Markdownへの移行は摩擦が最も小さく、効果が大きい*。1週間で生活が変わる。
+
+== ステップ2の具体例——AIとPythonの組み合わせ
+
+次のステップは、Pythonの利用を始めることだ。プログラマでない人にとっても、AI時代のPythonは「英語の次の第二言語」として学ぶ価値がある。
+
+[.chain-diagram]
+--
+*AI同伴のPython学習：* +
+インストール → uv（curl -LsSf https://astral.sh/uv/install.sh | sh） +
+最初のスクリプト → Claudeに「Excelファイルを読んで月次集計を出すPythonコードを書いて」 +
+動かしてみる → uv run script.py +
+分からない部分はClaudeに聞く → 「このコードのこの行は何をしている？」 +
+自分の仕事に応用 → 「私のCSVデータでこれをやって」
+--
+
+*学習の起点は「プログラミングを勉強する」ではなく「自分の仕事をPythonで自動化する」*。AIが補助してくれる時代では、これが最も効率的な学び方である。
+
+「AI ネイティブなソフトウェア開発」の link:/ai-native-software/python/[2-04「処理を書く ── Python と Flet で、自分の道具を持つ」]が、この道筋を扱っている。
+
+== ステップ3の具体例——Debianへの移行
+
+最も大きなステップは、OSをLinuxに切り替えることだ。これは1日でできるが、心理的ハードルは高い。
+
+[.chain-diagram]
+--
+*Debianへの移行の道筋：* +
+古いPCに試す → Windows 11対応外の PCは、Debianなら現役で動く +
+仮想マシンで試す → VirtualBox / QEMU で Debian を動かしてみる +
+USBから試す → Live USBで起動して触る、データは何も変えない +
+主機を切り替える → 確信が持てたら、本格的に切り替え
+--
+
+*「Claudeと一緒に学ぶDebian」シリーズ*が、この移行を Claude との対話で進めるための完全な手引きである。
+
+特に第00章プロローグの「なぜ今 Linux か——AI時代に効く構造、効かない構造」が、本シリーズ（insights 第二部・第三部）と直接整合している。
+
+== ステップ4の具体例——Office依存を切る
+
+Officeを完全に捨てる必要はない。*「最後の互換層」として位置づけ直す*だけで良い：
+
+|===
+| 用途 | 旧 | 新
+| メモ・議事録 | Word | *Markdown*
+| 提案書・報告書 | Word + PowerPoint | *Markdown + Marp → PDF*
+| 表計算・売上集計 | Excel | *CSV + pandas（uv環境）*
+| 月次レポート | Excel + Word | *CSV → Markdown → PDF（一発）*
+| プレゼン | PowerPoint | *Markdown + Marp*
+| 図解 | PowerPoint / Visio | *Mermaid*
+| 受領した.docx/.xlsx | Word/Excelで開く | *OnlyOfficeで開いて返す*
+| 配布する.docx/.xlsx | Word/Excelで作る | *pandoc / OnlyOfficeで変換出力*
+|===
+
+*入口と出口だけOffice互換層、中身は構造化テキスト*——これが本書シリーズの一貫した方針である。
+
+ONLYOFFICE（Flathubから入る）は、Microsoft Officeとの見た目互換性が高く、JavaScriptマクロもローカル実行できる。*Officeを良いソフトとして認めつつ、ベンダー（Nadella）の人質化から抜ける*——この立場が構造的に最も強い。
+
+== ステップ5の具体例——ビルダーへの転換
+
+最後のステップは、家臣（雇用される側）からビルダー（独立して価値を作る側）への転換である。これは最も時間がかかり、最も個別性が高い。
+
+[.chain-diagram]
+--
+*ビルダーへの転換の典型的な道筋：* +
+自分の専門 + AIで、組織を経由せず提供できるサービスを見つける +
+小さなプロジェクトから始める（副業として） +
+クライアントを少しずつ獲得する +
+収益が出始めたら、組織内での比重を減らす +
+独立できる段階で、家臣を辞める
+--
+
+これは「リスクを取って起業する」ではない。*段階的に組織への依存を減らしていく*プロセスである。AIネイティブな仕事ができれば、一人で複数の専門を兼ねられるので、*「専門家チームに発注する顧客」がそのまま「自分で作るビルダー」になれる*。
+
+「AI ネイティブなソフトウェア開発」が、この道筋の具体的なツールと作法を扱っている。
+
+== 三つの誤解を避ける
+
+最後に、移行の途中で陥りやすい三つの誤解を整理する：
+
+*誤解1：「全部を一気に変えなければ意味がない」*
+段階的で十分。Markdownだけでも生活が変わる。次にPython、その次にLinux、と階段で進めば良い。
+
+*誤解2：「Linuxは難しい」*
+2026年では、AI時代に逆転した。Claudeに聞けば数秒で `journalctl` の使い方が分かる。「分からないことを覚える」のではなく、「分からないことをAIに聞く」が普通になった。
+
+*誤解3：「Big Techから完全に離れる必要がある」*
+完全な離脱は不要。GitHub、AWS、Anthropicなど、特定のサービスは使う。重要なのは*「特定のベンダーに完全に人質化されない」*こと。複数の選択肢を保持し、いつでも乗り換えられる状態を維持する。
+
+== 構造変化の中での個人の位置
+
+ここまでの分析を統合すると、個人として今取るべき立場は明確になる：
+
+[.chain-diagram]
+--
+*AI時代に取るべき個人の立場：* +
+1. 領主層（Big Tech）の自己破壊は、自分が止めることではない +
+2. 家臣として残ることは、構造的に居心地が悪くなる（解雇、賃下げ、地位の低下） +
+3. ビルダーとして自由都市に移住する道が、構造的に最も合理的 +
+4. 移住の道具は揃った（Linux + Python + AI + Markdown + DataFrame + ...） +
+5. *今、選択するかどうか*——これだけが個人レベルの問いになる
+--
+
+*選択肢は既に揃っている*。本書シリーズ（insights の構造分析、claude-debian の実践手引き、ai-native-software の開発の作法）は、その選択を支えるための道具立てである。
+
+== この章の結論——選択は連動した一つの構造的選択である
+
+OSと言語と形式とAIとツール——五つの選択は独立していない。連動した*一つの構造的選択*である。揃えれば AI ネイティブな自由人として立てる。揃えなければ、半端な結果しか生まれない。
+
+そして、*この選択は誰のものでもなく、あなた自身のもの*である。Big Techが用意してくれるものではない。中世末期の自由都市の市民が、領主のもとに留まるか、新興都市に移住するか、一人ずつ決めたのと同じ性質の選択である。
+
+____
+階級を変える選択は、抽象論ではない。 +
+OS、言語、形式、AI、ツール——これらの組み合わせで決まる。 +
+五つは独立した選択ではなく、連動した一つの構造的選択である。 +
+揃えればAIネイティブな自由人として立てる。 +
+揃えなければ、家臣のまま、または農民のままで終わる。 +
+道具は既に揃った。問いは「今、選択するかどうか」だけになった。
+____
+
+== シリーズの結びとして
+
+第二部 第4章「AI革命の正体——二層同時の変化」から、この第三部 第7章「AIネイティブな自由人への道」まで、本シリーズの後半を通して構造分析を展開した。一貫した主張は次の通りである：
+
+* AI革命は LLM だけのことではない。新しい型と言語が同時に進化した（第二部 第4章）
+* Python が AI ネイティブ言語の中心になったのは構造的必然である（第二部 第5章）
+* ソフトウェア開発の大量人員需要は、貧弱な型による翻訳労働が原因だった（第二部 第6章）
+* IT革命の社会的帰結は、新しい封建制の建設だった（第一部 第10章）
+* 封建制は技術的成功と引き換えに五つの構造的矛盾を生んだ（第一部 第11章）
+* Big Tech領主層は退却できず、自己破壊が確定している（第一部 第12章）
+* AI革命がこの封建制を解体し、ビルダーが新階級として台頭する（第二部 第7章）
+* 設計とは「足す」ことではなく「読む」こと——AIと農業の同型（第三部 第4章）
+* 自由人化は個人・道具・企業・思考の四つの層で同時に進む歴史的運動である（第三部 第5章）
+* 個人は具体的な選択を通じて、自由市民として立てる（第三部 第6章）
+
+これは *第二次ルネサンスの構造分析シリーズ*である。中世末期にイタリア諸都市の市民が選択したのと同型の選択を、AI時代の個人が、今、目の前で選択している。
+
+本書シリーズの実践編は、二つの別シリーズとして展開している：
+
+* link:/claude-debian/[Claudeと一緒に学ぶDebian]——OS から日常環境までの移行手引き
+* link:/ai-native-software/[AI ネイティブなソフトウェア開発]——AI と共に立てて、自分で動かす作法
+
+構造分析（insights）で全体像を、実践シリーズで具体的な手順を——両方を組み合わせて、AIネイティブな自由人への道を歩んでほしい。
+
+____
+中世末期、自由都市に移住した商人・職人・知識人が、後にルネサンスの担い手になった。 +
+AI時代の今、Linux + Python + AI の自由都市に移住する個人が、第二次ルネサンスの担い手になる。 +
+これは比喩ではなく、構造的同型である。 +
+歴史は繰り返さないが、韻を踏む。 +
+今、その韻の中に立っている。
+____
+endif::[]
+ifdef::lang-en[]
+== The Role of This Chapter
+
+Across Parts II and III, we have traced the structure of the AI revolution, the feudalism the IT revolution built, the contradictions that feudalism produced, the self-destruction of the lord class, and the mechanics of its dismantling. This chapter is the *practical section*.
+
+"The analysis is clear — what do I actually do starting today?" This chapter answers that question. The choice that changes your class is not an abstraction. It is determined by a *specific combination of tools and formats*.
+
+== Five Choices That Move Together
+
+There are five choices required to stand as an AI-native free person. The critical point is that these are *not independent choices but a single interconnected structural choice*.
+
+|===
+| Choice | Old (IT-revolution feudalism) | New (AI-revolution free city)
+| *OS* | Windows / macOS | *Linux (Debian)*
+| *Language* | C# / Java / VBA | *Python (+ AI-generated Rust)*
+| *Format* | .docx / .xlsx / .pptx | *Markdown / JSON / YAML / DataFrame / Parquet*
+| *AI* | Copilot (bundled) | *Claude (independent use)*
+| *Tools* | Visual Studio / Office | *Zed / Neovim / Git / uv / ruff*
+|===
+
+*Only when all five are aligned does AI-native work become possible.* Leave even one on the old side and translation labor appears at that point, blocking the flow.
+
+For example, "switched to Linux but kept C#" leaves an impedance mismatch with the AI-native base layer. "Switched to Python but kept .xlsx" breaks the structure in round-trips with Excel. *The choices move together*.
+
+== A Realistic Staircase for the Transition
+
+That said, switching all five simultaneously is hard. In practice, the *transition happens in stages*. This series maps that staircase concretely:
+
+[.chain-diagram]
+--
+*The transition staircase (recommended order):* +
+Step 1: Shift your work formats toward Markdown and CSV +
+  → Documents you wrote in Word → move to a Markdown editor (Obsidian / Typora / VS Code, etc.) +
+  → Get in the habit of CSV-exporting Excel data and working with it directly +
+  → This alone dramatically improves interaction with AI
+
+Step 2: Start learning Python (with AI alongside you) +
+  → Ask Claude "do this in Python" and run it +
+  → Create environments with uv, touch data with pandas +
+  → Write scripts to automate your work
+
+Step 3: Try Linux (Debian) +
+  → Install it on an old PC, or experience it in a virtual machine +
+  → Once comfortable, switch your main machine to Linux +
+  → The "Learning Debian with Claude" series is the complete guide for this
+
+Step 4: Cut the Office dependency +
+  → Reframe OnlyOffice as the final compatibility layer +
+  → Complete your own work entirely in Markdown + Python +
+  → Convert to .docx/.xlsx only when delivering to a client
+
+Step 5: Explore the path to standing as a builder +
+  → Start your own project +
+  → Cover multiple specialties alongside AI +
+  → The "AI-Native Software Development" series is the guide for this
+--
+
+Each step takes weeks to months. The full "vassal to builder" transition completes in one to two years. *No rush, but steady progress* — that is the practical rhythm at the individual level.
+
+== Step 1 in Detail — Migrating to Markdown
+
+The easiest entry point is switching your documents to Markdown.
+
+[.chain-diagram]
+--
+*Markdown migration starting today:* +
+New documents → Write in a Markdown editor (Obsidian / Typora / VS Code, etc.) rather than Word +
+Need to distribute → Convert to .docx / PDF with pandoc (a single command) +
+Old Word documents → Leave them; open only when needed (no forced migration) +
+Collaborative editing → Manage Markdown with Git, or use Notion, etc.
+--
+
+This alone achieves:
+
+* Dramatically improved interaction with AI (Markdown can be passed directly)
+* Full version control working with git
+* Search working with grep
+* A guarantee of readability ten years from now (plain text)
+* Escape from vendor lock-in
+
+*As a first step, migrating to Markdown has the lowest friction and the highest impact.* Your daily workflow changes within a week.
+
+== Step 2 in Detail — Combining AI with Python
+
+The next step is to start using Python. Even for non-programmers, Python in the AI era is worth learning as "the second language after English."
+
+[.chain-diagram]
+--
+*Learning Python with AI alongside:* +
+Install → uv (curl -LsSf https://astral.sh/uv/install.sh | sh) +
+First script → Ask Claude: "Write Python code that reads an Excel file and produces a monthly summary" +
+Run it → uv run script.py +
+Ask Claude about anything unclear → "What is this line of code doing?" +
+Apply to your own work → "Do this with my CSV data"
+--
+
+*The starting point is not "study programming" but "automate my work in Python."* In an era where AI assists you, this is the most efficient way to learn.
+
+link:/en/ai-native-software/python/[2-04, "Write the Logic — Own Your Tools with Python and Flet"] in AI-Native Software Development covers this path.
+
+== Step 3 in Detail — Migrating to Debian
+
+The largest step is switching your OS to Linux. It can be done in a day, but the psychological barrier is high.
+
+[.chain-diagram]
+--
+*The path to migrating to Debian:* +
+Try it on an old PC → PCs that don't meet Windows 11 requirements run fine on Debian +
+Try it in a virtual machine → Run Debian in VirtualBox / QEMU +
+Try it from a USB → Boot from a Live USB and explore; nothing on disk changes +
+Switch your main machine → Once you have conviction, make the full switch
+--
+
+The *"Learning Debian with Claude" series* is the complete guide for advancing this migration through dialogue with Claude.
+
+In particular, the Chapter 00 prologue — "Why Linux Now — Structures That Work in the AI Era, Structures That Don't" — aligns directly with this series (Insights Parts II and III).
+
+== Step 4 in Detail — Cutting the Office Dependency
+
+You do not need to abandon Office entirely. Simply *reframe it as "the final compatibility layer"*:
+
+|===
+| Use case | Old | New
+| Notes / meeting minutes | Word | *Markdown*
+| Proposals / reports | Word + PowerPoint | *Markdown + Marp → PDF*
+| Spreadsheets / sales tallies | Excel | *CSV + pandas (uv environment)*
+| Monthly reports | Excel + Word | *CSV → Markdown → PDF (single pass)*
+| Presentations | PowerPoint | *Markdown + Marp*
+| Diagrams | PowerPoint / Visio | *Mermaid*
+| Received .docx/.xlsx | Open in Word/Excel | *Open in OnlyOffice and return*
+| Distributing .docx/.xlsx | Create in Word/Excel | *Convert output with pandoc / OnlyOffice*
+|===
+
+*Office-compatible only at the entry and exit points; structured text throughout* — this is the consistent policy of this series.
+
+ONLYOFFICE (available from Flathub) has high visual compatibility with Microsoft Office and can run JavaScript macros locally. *Acknowledging Office as good software while escaping hostage-taking by the vendor (Nadella)* — this position is structurally the strongest.
+
+== Step 5 in Detail — The Transition to Builder
+
+The final step is the transition from vassal (employed) to builder (creating value independently). This takes the most time and is the most individual.
+
+[.chain-diagram]
+--
+*The typical path to becoming a builder:* +
+Find a service you can deliver using your specialty + AI, bypassing any organization +
+Start with a small project (as a side project) +
+Gradually acquire clients +
+As revenue begins, reduce your share of work inside an organization +
+When you can go independent, leave the vassal role behind
+--
+
+This is not "take a risk and start a company." It is a process of *gradually reducing dependence on an organization*. If you can do AI-native work, you can cover multiple specialties alone, so *"the client who commissioned a specialist team" can become "the builder who builds it themselves."*
+
+AI-Native Software Development covers the specific tools and practices for this path.
+
+== Three Misconceptions to Avoid
+
+Finally, three misconceptions that are easy to fall into during the transition:
+
+*Misconception 1: "It's meaningless unless I change everything at once."*
+Incremental is sufficient. Markdown alone changes your daily workflow. Move up the staircase — Python next, then Linux — and you will get there.
+
+*Misconception 2: "Linux is difficult."*
+By 2026, the AI era has inverted this. Ask Claude and you understand `journalctl` in seconds. "Memorizing what you don't know" has been replaced by "asking AI what you don't know" as the default.
+
+*Misconception 3: "I need to fully separate from Big Tech."*
+Complete separation is unnecessary. Certain services — GitHub, AWS, Anthropic — are used. What matters is *not being fully held hostage by any single vendor*. Maintain multiple options and keep the ability to switch at any time.
+
+== The Individual's Position in Structural Change
+
+Integrating the analysis so far, the stance an individual should take today becomes clear:
+
+[.chain-diagram]
+--
+*The individual stance to take in the AI era:* +
+1. The self-destruction of the lord class (Big Tech) is not something you can stop +
+2. Remaining a vassal becomes structurally uncomfortable (layoffs, pay cuts, declining status) +
+3. Migrating to the free city as a builder is structurally the most rational path +
+4. The tools for migration are ready (Linux + Python + AI + Markdown + DataFrame + ...) +
+5. *Whether to choose now* — this is the only question left at the individual level
+--
+
+*The options are already in place.* This series — the structural analysis in insights, the practical guide in claude-debian, the development practice in ai-native-software — is the toolset to support that choice.
+
+== The Conclusion of This Chapter — The Choices Are a Single Interconnected Structural Choice
+
+OS, language, format, AI, tools — the five choices are not independent. They are a single *interconnected structural choice*. Align them and you can stand as an AI-native free person. Leave them misaligned and only half-results emerge.
+
+And *this choice belongs to no one but you*. Big Tech will not prepare it for you. It is the same kind of choice that citizens of the late-medieval free cities made, one by one — whether to remain under a lord or migrate to a rising city.
+
+____
+The choice that changes your class is not an abstraction. +
+OS, language, format, AI, tools — it is determined by the combination of these. +
+The five are not independent choices but a single interconnected structural choice. +
+Align them and you can stand as an AI-native free person. +
+Leave them unaligned and you end as a vassal, or a serf. +
+The tools are ready. The only question is "whether to choose, now."
+____
+
+== As a Close to the Series
+
+From Part II Chapter 4, "link:/en/insights/two-layer-ai-revolution/[What the AI Revolution Really Is — A Two-Layer Simultaneous Change]," through to this Part III Chapter 7, "The Road to the AI-Native Free Person," the second half of this series has developed its structural analysis. The consistent argument is as follows:
+
+* The AI revolution is not only about LLMs. New types and languages evolved simultaneously (Part II, Ch. 4)
+* Python becoming the center of AI-native languages was a structural inevitability (Part II, Ch. 5)
+* The massive workforce demand in software development was caused by translation labor arising from weak types (Part II, Ch. 6)
+* The social consequence of the IT revolution was the construction of a new feudalism (Part I, Ch. 10)
+* Feudalism produced five structural contradictions in exchange for its technical success (Part I, Ch. 11)
+* The Big Tech lord class cannot retreat; their self-destruction is confirmed (Part I, Ch. 12)
+* The AI revolution dismantles this feudalism, and builders emerge as the new class (Part II, Ch. 7)
+* Design is not "adding" but "reading" — the isomorphism of AI and agriculture (Part III, Ch. 4)
+* The liberation of the free person is a historical movement progressing simultaneously across four layers: individual, tools, enterprise, and thought (Part III, Ch. 5)
+* Individuals can stand as free citizens through concrete choices (Part III, Ch. 6)
+
+This is a *structural analysis series of the Second Renaissance*. The individuals of the AI era are making, right now in front of them, choices isomorphic to those made by citizens of Italian city-states at the end of the Middle Ages.
+
+The practical sections of this series are deployed as two separate series:
+
+* link:/en/claude-debian/[Learning Debian with Claude] — A complete guide to migrating from OS to daily environment
+* link:/en/ai-native-software/[AI-Native Software Development] — Standing it up with AI, and running it yourself
+
+Use the structural analysis (insights) for the overall picture, and the practice series for the specific steps — combine both to walk the road to becoming an AI-native free person.
+
+____
+At the end of the Middle Ages, the merchants, craftspeople, and scholars who migrated to free cities became the bearers of the Renaissance. +
+In the AI era today, the individuals who migrate to the free city of Linux + Python + AI become the bearers of the Second Renaissance. +
+This is not a metaphor — it is a structural isomorphism. +
+History does not repeat, but it rhymes. +
+Right now, we are standing inside that rhyme.
+____
+endif::[]
+
+// ===== article: part-3-design/08-re-examining-knowledge =====
+////
+slug: re-examining-knowledge
+number: 08
+title.ja: 知を見直す道具——正典・検証・有志の共有物
+title.en: Tools for Re-examining Knowledge — Canon, Verification, and the Voluntary Commons
+subtitle.ja: AIは平均を思い出す機械だ。だからこそ、知を一次資料に照らし直す道具になる。その帰結として、最も価値ある仕事は「有志で作る本とソフトウェア」に移る。
+subtitle.en: AI is a machine that recalls the average. That is exactly why it can become a tool for re-checking knowledge against primary sources. The consequence: the most valuable work shifts to books and software built by voluntary commons.
+description.ja: 生成AIが返すのは真実ではなく「商業的に加重された世間の平均」である。この性質から、AIの正しい設計上の役割が導かれる——記憶ではなく推論を使わせ、正典を自分で握り、検証を手放さない。この規律は、使う側と作る側で同じ三つに収束する。そして「平均」の解毒剤は、平均を目的にしない生産形態、すなわち有志が資金を出し合って作る共有物（正典）である。RFC・Wikipedia・Linux・法令・生産仕様書——AIが係留すべき正典は、ほぼ全て非商業的に作られた。AIの本当の役割は、知の見直し（ad fontes）を万人に開くことだ。第二次ルネサンスの設計上の結論。
+description.en: What generative AI returns is not truth but the commercially weighted average of public discourse. From this property, AI's correct design role follows — make it reason rather than recall, hold the canon yourself, never surrender verification. This discipline converges on the same three on both the user's and the maker's side. And the antidote to the average is a production form that does not aim at the average: the commons — canon built by volunteers pooling funds. RFCs, Wikipedia, Linux, laws, production specifications — nearly all the canon AI should anchor to was produced non-commercially. AI's real role is to open the re-examination of knowledge (ad fontes) to everyone. The design-layer conclusion of the Second Renaissance.
+date: 2026.07.21
+label: Structural Analysis 8
+part_title.ja: 設計と実践
+part_title.en: Design and Practice
+part: 3
+cta_label: Re-examine
+cta_title.ja: AIは知を奪う機械ではない。知を見直す道具である——正典を握る者の手の中でだけ。
+cta_title.en: AI is not a machine that takes knowledge away. It is a tool for re-examining it — but only in the hands of someone who holds the canon.
+cta_text.ja: 記憶ではなく推論を使わせる。正典を自分で握る。検証を手放さない。この三つを守るとき、AIは平均を再生産する機械から、知を一次資料に照らし直す道具に変わる。
+cta_text.en: Make it reason rather than recall. Hold the canon yourself. Never surrender verification. Keep these three, and AI turns from a machine that reproduces the average into a tool that re-checks knowledge against primary sources.
+cta_btn1_text.ja: 構造分析の全章
+cta_btn1_text.en: All chapters of the structural analysis
+cta_btn1_link.ja: /insights/
+cta_btn1_link.en: /en/insights/
+cta_btn2_text.ja: 前へ AIネイティブな自由人への道
+cta_btn2_text.en: Previous: The Road to the AI-Native Free Person
+cta_btn2_link.ja: /insights/ai-native-free-individual/
+cta_btn2_link.en: /en/insights/ai-native-free-individual/
+////
+ifdef::env-github[]
+= 知を見直す道具——正典・検証・有志の共有物
+endif::[]
+ifdef::lang-ja[]
+== この章の役割
+
+第一部で解体を、第二部で創発を、第三部でここまで設計を見てきた。前章は、個人が今日から取れる*道具の選択*——OS・言語・形式・AI・ツール——を構造的に整理した。この章は、その一段上、*知そのものの扱い方*を設計する。
+
+問いはこうだ。AIが誰の手にも入った世界で、何が最も価値ある仕事になるのか。答えは、AIの一つの欠陥を正確に理解することから導かれる。
+
+== AIは無知だから間違えるのではない
+
+生成AIに込み入った専門を尋ねると、流暢で、もっともらしく、しかし前提のすり替わった答えが返ってくることがある。原因は無知ではない。必要な一次資料は、学習データのどこかに入っている。それでも誤るのは、*その言葉についてウェブを埋めているテキストの重心が、規格の定義ではなく、市場の語法にあるから*だ。
+
+規格文書は一本しかない。一方、その言葉を冠したベンダーの製品紹介・導入事例・コンテンツマーケティングは何万本もある。学習は頻度に引かれる。だからAIが返すのは、真実でも嘘でもなく、*商業的に加重された世間の平均*である。これは特定の製品の欠陥ではない。大量のテキストから確率的に次の語を選ぶ、という仕組みそのものに由来する構造的な性質だ。日本語で日本の話題を尋ねると、この十数年のIT言説の堆積がそのまま返ってくるので、行政ITが時間をかけて失敗を確認してきた通念が、最ももっともらしい顔で出てくる。
+
+== 誤りの機序が、使い方を決める
+
+「平均を返す機械」だと分かれば、設計は定まる。要点は三つに畳める。
+
+*記憶ではなく推論を使わせる。* AIが記憶から語ることは平均であって正解ではない。だから重要な判断には、一次資料をこちらから与える。規格ならNISTやRFC、法令なら条文、製品なら公式ドキュメント。そのテキストに推論させれば、AIは「平均を思い出す機械」から「与えた資料を読んで整理する機械」に変わる。前者は当てにならないが、後者はきわめて有能だ。仕組みにしたものが、いわゆるRAG（検索拡張生成）である。
+
+*正典を自分で握る。* 「世間の多数決」ではなく「どの文書を正とするか」を、使う側が決める。ベンダーの声量が言葉の意味を書き換える世界で、規格文書を正典に立てる態度は、技術方針であると同時に、知の扱い方の方針でもある。
+
+*検証を手放さない。* 流暢さと正しさは比例しない。上手い文章ほど前提のすり替えに気づきにくい。だから出力の出どころ（社内か社外か、AIか人間か）を信頼の根拠にせず、内容を毎回検証する。これは前章link:/insights/security-design/[Mythos時代のセキュリティ設計]で見た*ゼロトラスト*の思想そのものだ。モデルが自信ありげに語るからといって信頼しない。一次資料という認証を通ったものだけを、判断の材料にする。*AIにも、ゼロトラストを。*
+
+== 使う側と作る側は、同じ三つに収束する
+
+この三つは、AIを使う個人の規律にとどまらない。*モデルを作る側の規律も、同じ三つに収束しつつある。* 最前線のモデルは、生のウェブを無差別に信じる学習から離れ、環境の中で軌跡を生成し、検証を通った相互作用だけを教材に残し、検証可能な報酬で強化学習する方向へ動いている。教師モデルの出力を無差別に信じない（無検証の蒸留をしない）。何を教材とするかを自分で選ぶ（データレシピが競争力になった）。検証器を通ったものだけを相続する。使う側の「記憶より推論・正典を握る・検証を手放さない」が、そのまま作る側の設計原理になっている。「大量のインターネットデータを無差別に信じる」段階は、使う側でも作る側でも終わりつつある。残るのは、*正典と検証の工学*である。
+
+== 平均の解毒剤は、平均を目的にしない生産形態
+
+ここから、この章の核心に入る。「商業的に加重された平均」を薄めるには、*平均を目的にしない生産形態*が要る。ベンダー言説が語義を汚したのは、売るために書かれたからだ。ロックインという檻が生まれたのは、囲うために作られたからだ。では、汚れていない正典は誰が作ったか。
+
+AIが係留先とすべき一次資料を並べてみると、答えははっきりする。RFC（IETFの有志による標準化）、Wikipedia（寄付と有志）、Linux、Let's Encrypt（非営利がTLSを商用CAから解放した）、各国の法令、政府統計、EUの生産仕様書。*そのほとんどが、非商業的に作られた共有物（コモンズ）である。* 偶然ではない。平均から自由な知は、平均を目的にしない生産からしか出てこない。
+
+理由は財の性質にある。本もソフトウェアも*非競合財*だ。一度作れば、複製の限界費用はほぼゼロで万人に行き渡る。この種の財にいちばん合う資金形態が、「有志で金を出し合い、固定費だけを共同で負担し、成果は自由に配る」——公共財の教科書そのものだ。そして市場は非競合財を構造的に*過少供給*する（売って囲えないから儲からない）。だから、いちばん価値のある層が、いちばん供給されずにきた。
+
+*AIがやったのは、その固定費を暴落させたことだ。* かつて財団や国家規模の資金が要った知識インフラを、いまや個人や小さな集団が作れる。過少供給されてきた層を、有志の手で埋められるようになった。だから、この構造の中で最も価値ある仕事は、*有志で金を出し合って本とソフトウェアを作ること*——正典に係留された共有物を、商業的平均から解放する仕事——に移る。それは価値/円が最も高く、最も長く残り、そして市場が最も取りこぼしてきた層だからだ。
+
+== 結論——AIは知を見直す道具である
+
+第二次ルネサンスとは、知の*見直し*だった。中世に堆積した註釈の層——いわば当時の平均——をいったん脇に置き、印刷術で安くなった古典の原典へ _ad fontes_（源泉へ）と立ち返った運動。註釈を信じるのをやめ、原典を自分で読み直す。AIが安くしたのは、その「原典に立ち返る」コストである。言語や専門の壁の向こうにある一次資料——外国語の規格、他分野の論文——へ、誰もが立ち返れるようになった。AI革命がIT革命の完成であるのと同じ意味で、第二次ルネサンスとは、知の見直しが万人に開かれることだ。
+
+ただし規律のために釘を刺す。*AIは見直しの「道具」であって「主体」ではない。* 放っておけば、AIはむしろ平均を再生産する——見直されるべき当のものを増やす側に回る。見直しが起きるのは、人間が正典を選び、検証を手放さないときだけだ。同じ機械が、病でもあり薬でもある。どちらになるかは、この章の三原則を効かせるかどうかで決まる。
+
+だから、この設計編の結論はこう畳める。*AIは判断を奪う存在ではなく、判断を助ける存在になりうる——正典を握る人間がいる限り。* 記憶ではなく推論を使わせること。正典を自分で握ること。検証を手放さないこと。この三つを、個人の使い方から、モデルの作り方、そして知を作る社会の形まで、一貫して効かせる。それが、解体と創発のあとに残る、設計の仕事である。
+endif::[]
+ifdef::lang-en[]
+== The Role of This Chapter
+
+Part I traced the collapse, Part II the emergence, and Part III so far the design. The previous chapter organized, structurally, the *choice of tools* an individual can make today — OS, language, format, AI, tools. This chapter goes one level higher, to the design of *how knowledge itself is handled*.
+
+The question is this: in a world where AI is in everyone's hands, what becomes the most valuable work? The answer follows from understanding, precisely, one flaw of AI.
+
+== AI Is Not Wrong Because It Is Ignorant
+
+Ask a generative AI an intricate technical question, and you can get an answer that is fluent, plausible, and yet built on a swapped premise. The cause is not ignorance. The primary source it needs is somewhere in the training data. It errs anyway because *the center of gravity of the text that fills the web around those words lies not in the standard's definition but in the market's usage.*
+
+There is one standards document. Meanwhile, there are tens of thousands of vendor product pages, case studies, and content-marketing articles wearing those words. Training is pulled by frequency. So what AI returns is neither truth nor a lie, but *the commercially weighted average of public discourse*. This is not a defect of one product; it is a structural property arising from the mechanism itself — choosing the next word probabilistically from a mass of text. Ask in Japanese about Japanese topics and a dozen-plus years of accumulated IT discourse comes back, so received ideas whose failure the public sector spent years confirming return wearing the most plausible face of all.
+
+== The Mechanism of the Error Determines How to Use It
+
+Once you know it is a machine that returns the average, the design settles. It folds into three points.
+
+*Make it reason, not recall.* What AI speaks from memory is the average, not the correct answer. So for decisions that matter, hand it primary sources yourself: NIST or the RFCs for standards, the statute for law, official docs for products. Have it reason over that text and it turns from a machine that recalls the average into a machine that reads and organizes what you gave it. The former is unreliable; the latter is remarkably capable. Built into a system, this is RAG (retrieval-augmented generation).
+
+*Hold the canon yourself.* Decide for yourself which document is authoritative, rather than accepting the web's majority vote. In a world where vendor volume rewrites what words mean, standing a standards document up as the canon is a technical policy and, at once, a policy for how knowledge is handled.
+
+*Never surrender verification.* Fluency and correctness do not correlate; the more skilled the prose, the harder a swapped premise is to notice. So do not make the output's origin (inside or outside, AI or human) the basis of trust; verify the content, every time. This is exactly the *zero-trust* idea from the previous chapter, link:/en/insights/security-design/[Security Design for the Mythos Era]. Do not trust it because the model speaks with confidence. Admit into your decisions only what has passed the authentication of primary sources. *Zero trust for AI, too.*
+
+== The User's Side and the Maker's Side Converge on the Same Three
+
+These three are not only the discipline of an individual using AI. *The discipline of making models is converging on the same three.* Frontier models are moving away from indiscriminately trusting the raw web, toward generating trajectories in environments, keeping as training material only the interactions that pass verification, and reinforcement learning with verifiable rewards. Do not trust the teacher model's outputs indiscriminately (no unverified distillation). Choose your own teaching material (the data recipe has become the edge). Inherit only what passed the verifier. The user's "reason over recall, hold the canon, never surrender verification" is, verbatim, the maker's design principle. The stage of indiscriminately trusting the mass of internet data is ending on both sides. What remains is the *engineering of canon and verification*.
+
+== The Antidote to the Average Is a Production Form That Does Not Aim at the Average
+
+Here is the heart of the chapter. To dilute the commercially weighted average, you need a *production form that does not aim at the average*. Vendor discourse corrupted the meaning of words because it was written to sell. The cage of lock-in was built to enclose. So who produced the uncorrupted canon?
+
+Line up the primary sources AI ought to anchor to, and the answer is clear. RFCs (the IETF's volunteer standards process), Wikipedia (donations and volunteers), Linux, Let's Encrypt (a nonprofit that freed TLS from commercial CAs), national laws, government statistics, EU production specifications. *Nearly all of it is a non-commercially produced commons.* Not a coincidence. Knowledge free of the average comes only from production that does not aim at the average.
+
+The reason lies in the nature of the good. Books and software are *non-rival goods*: make them once, and the marginal cost of a copy is near zero for everyone. The funding form that best fits such goods is "volunteers pooling money, bearing only the fixed cost collectively, and distributing the result freely" — the public-goods textbook itself. And the market structurally *under-provides* non-rival goods (no profit when you cannot enclose and sell). So the most valuable layer has been the least supplied.
+
+*What AI did was crash that fixed cost.* Knowledge infrastructure that once required foundation- or state-scale funding can now be built by an individual or a small group. The under-supplied layer can be filled by volunteers. So the most valuable work in this structure shifts to *volunteers pooling funds to make books and software* — the work of freeing a canon-anchored commons from the commercial average. Because that is the layer with the highest value per unit of money, the longest to endure, and the one the market has most consistently dropped.
+
+== Conclusion — AI Is a Tool for Re-examining Knowledge
+
+The Second Renaissance was a *re-examination* of knowledge. The humanists set aside the accumulated layer of medieval commentary — the average of its day — and went _ad fontes_, back to the sources, to the classical originals made cheap by printing. Stop trusting the commentary; re-read the original yourself. What AI made cheap is exactly that cost of returning to the sources. To primary material beyond the barriers of language and specialty — foreign-language standards, other fields' papers — everyone can now return. In the same sense that the AI revolution is the completion of the IT revolution, the Second Renaissance is the re-examination of knowledge opened to all.
+
+But, for discipline, a caveat. *AI is the _instrument_ of re-examination, not its _subject_.* Left alone, AI reproduces the average — it joins the side that multiplies the very thing that needs revising. Re-examination happens only when a human chooses the canon and never surrenders verification. The same machine is both disease and cure. Which one it is depends on whether the chapter's three principles are enforced.
+
+So the conclusion of this design part folds this way. *AI can be something that aids judgment rather than something that takes it away — as long as a human holds the canon.* Make it reason rather than recall. Hold the canon yourself. Never surrender verification. Enforce these three consistently, from how an individual uses AI, to how models are made, to the social form in which knowledge is produced. That is the work of design that remains after collapse and emergence.
+endif::[]
+
+// ===== article: part-3-design/09-ai-will-not-converge =====
+////
+slug: ai-will-not-converge
+number: 09
+title.ja: AIは一つに収束しない——垂直特化モデルは生き残るか
+title.en: AI Will Not Converge on One Model — Will Vertical Specialists Survive?
+subtitle.ja: 「一番賢いモデルが一つあれば済む」は、価格・製品・規制の三つの軸で事実に反する。だが特化モデルには逆向きの力も働く。残る特化と残らない特化を、事実と見立てを分けて書く。
+subtitle.en: "One smartest model is enough" is contradicted by three facts — price tiers, product forms, regulation. Yet a counter-force bears on specialists. Which specialists remain and which do not, with facts and forecast kept apart.
+description.ja: AI は一つの最強モデルに収束していない。価格と性能の階層、製品形態の分化、規制による提供範囲の違い——多様化は三つの軸で確かめられる。一方で、専門特化モデルの競争相手は「今年の特化」ではなく「来年の汎用」であり、医療・金融の特化モデルが調整なしの汎用モデルに抜かれた例が 2023 年に報告されている。言語で完結する特化は残りにくく、言語の外にある特化(構造予測・気象)と、小さく速く安くあるべき用途は残る。読者への含意は一つ——道具は目的ごとに選び、差し替えられるように組む。予想は予想と明記する。
+description.en: AI has not converged on a single strongest model. Diversification shows on three axes — price and capability tiers, product forms, and regulation that decides who gets which model. At the same time, a specialist model's competitor is not this year's specialist but next year's generalist, and medical and financial specialists were reported overtaken by untuned general models in 2023. Language-complete specialists are unlikely to last; specialists outside language (structure prediction, weather) and uses that must be small, fast, and cheap remain. One implication for the reader — pick tools per purpose and build so they can be swapped. Forecasts are labeled as such.
+date: 2026.10.07
+label: Structural Analysis 9
+part_title.ja: 設計と実践
+part_title.en: Design and Practice
+part: 3
+cta_label: Keep it swappable
+cta_title.ja: 一つの AI に忠誠を誓わない。モデルは差し替えられる部品として扱う。
+cta_title.en: Pledge loyalty to no single AI. Treat the model as a replaceable part.
+cta_text.ja: 目的ごとに道具を選ぶ。小さな事業に独自モデルは要らない。特定のモデルにしかできない形で業務を組まない——この三つを守れば、次にどんなモデルが出ても判断の基準はそのまま使える。
+cta_text.en: Choose the tool per purpose. A small business needs no model of its own. Never build work in a shape only one model can serve — keep these three, and whatever model comes next, the criteria still hold.
+cta_btn1_text.ja: 構造分析の全章
+cta_btn1_text.en: All chapters of the structural analysis
+cta_btn1_link.ja: /insights/
+cta_btn1_link.en: /en/insights/
+cta_btn2_text.ja: 前へ 知を見直す道具
+cta_btn2_text.en: Previous: Tools for Re-examining Knowledge
+cta_btn2_link.ja: /insights/re-examining-knowledge/
+cta_btn2_link.en: /en/insights/re-examining-knowledge/
+////
+ifdef::lang-ja[]
+= AIは一つに収束しない——垂直特化モデルは生き残るか
+
+「結局、一番賢い AI が一つあれば、それで全部済むのではないか」。医療特化、法務特化といった「専門 AI」の報道を見て、どちらを選ぶべきか迷う人もいる。この章は、その問いに答える。半分は確かめられる事実で、もう半分は筆者(と、執筆に関わった AI)の見立てだ。どちらなのかを見出しで分ける。
+
+(初出は連載「Fable 5 が帰ってきた」の番外編、2026 年 7 月。製品の話を外し、2026 年 10 月に構造分析として書き直した。)
+
+== 事実——性能競争の裏で、多様化が進んでいる
+
+AI は「一つの最強モデル」に向かって収束していない。多様化は三つの軸で確かめられる。
+
+. *価格と性能の階層*——どの会社も、速くて安いモデルから最上位のモデルまでを階層で出し、同じ時期に並行して提供している。全部を最上位で済ませる経済合理性は、提供する側にも使う側にも無い。利用料は使った量に比例するので、日常の短い依頼に最上位を当てても体感は変わらず、差額だけが積み上がる
+. *製品形態の分化*——同じモデルでも、対話の画面、端末から使うエージェント、画面の設計の道具と、使う場面ごとに別の製品が育っている。分化の速さは、モデルの層より製品の層のほうが速い
+. *規制と提供範囲*——2026 年 6 月、米国の輸出管理で最上位モデルの提供が止まり、7 月に条件つきで再開した(link:/blog/verification-shock/[ブログ 028])。国の規制が「誰に・どの AI を」を左右する変数になったことを、この出来事は示した
+
+== 構造——特化モデルに働く、逆向きの力
+
+多様化の一方で、それと逆向きに働く力がある。専門特化モデルには、構造的に不利な競争条件があるのだ。競争相手が「今年の特化モデル」ではなく、*「来年の汎用モデル」* だという点である。汎用モデルの性能が一段上がるたびに、それまで特化モデルの独壇場だった領域が、汎用モデルの守備範囲に飲み込まれる。
+
+この追い抜きは、実際に報告されている。医療の試験問題では、医療向けに調整したモデルより、調整なしの汎用モデルのほうが高い成績を出した(Nori ら、Microsoft、2023)。金融の文書分析では、金融の文書だけで一から訓練した専用モデルが、汎用モデルにそのまま答えさせた結果に複数の課題で負けた(Li ら、2023)。どちらも 2023 年の報告で、以後この構図は業界の定番になった。
+
+契約書の束を読んで矛盾を探す、複数のファイルにまたがるコードを直す——かつては法務 AI や開発支援 AI の縄張りだった仕事が、いまは汎用モデルの一機能として提供されている。特化モデルが優位を保つには、汎用モデルの進歩より速く専門性を深め続ける必要がある。できないことではないが、坂道を登り続ける競争だ。
+
+== 見立て——残る特化と、残らない特化
+
+ここからは予想である。断定はしない。
+
+*残りにくい* と筆者が見るのは、「言語で完結する垂直特化」だ。医療文書の要約、法務文書のチェックのように、入力も出力も自然言語である仕事は、汎用モデルの得意分野と正面から重なる。大量の文書を読んで矛盾を探す能力は、すでに汎用モデルの標準装備である。
+
+*残りやすい* と見るのは二種類だ。一つは「言語の外にある特化」——タンパク質の立体構造の予測や全球の気象の予測のように、そもそも言語モデルとは別の数学でできている領域である。ここでは専用モデルがすでに標準で、言語モデルが取って代わる筋のものではない。もう一つは「小さく・速く・安くあるべき用途」——端末の上で即座に動く必要がある処理や、大量の取引を安価に監視する不正検知のような領域だ。ここでは最上位の賢さより、軽さと速さが価値になる。
+
+では、言語系の垂直 AI 企業に価値は残らないのか。残るとすれば、モデルそのものではない場所だと見る。*外に出ない非公開データへのアクセス権* と、*業務の流れへの埋め込みの深さ* である。モデルは差し替えられても、データの信頼関係と、現場に馴染んだ道具の座は、簡単には差し替えられない。
+
+== この見立てが外れる条件
+
+予想には、外れ方も添えておく。三つある。
+
+第一に、*規制が独立モデルを要求する場合*。医療や金融で「監査可能な専用モデルであること」が制度の要件になれば、言語系の垂直特化にも制度が守る居場所ができる。第二に、*非公開データが性能を決め続ける領域*。データが外に出ない限り汎用モデルは学べないので、そこでは特化が優位を保ちうる。第三に、開示しておくべき偏りがある。この見立ての整理には汎用モデル(AI)自身が関わっており、*「汎用が勝つ」という結論は、汎用モデルの自己申告を含む*。割り引いて読んでほしい。
+
+== 含意——一つの AI に忠誠を誓わない
+
+実務に引きつけると、含意は三つに絞れる。
+
+* *目的ごとに道具を選ぶ*——モデルの使い分けを、製品や会社の単位にも広げて考える。link:/ai-native-software/ai-pc/[2-02] が別の会社の AI を二つ契約して相互に見張らせるのは、この含意の実装だ
+* *個人事業や中小の実務に、独自モデルは要らない*——価値はあなたのデータと仕事の流れの側にあり、そこはあなたしか持っていない。自前で持つのは、link:/ai-native-software/ai/[2-16] のとおり、オープンウェイトのモデルと自社データの RAG で足りる
+* *モデルは差し替え可能な部品として扱う*——特定のモデルにしかできない形で業務を組まない。link:/ai-native-software/ai-delegation/[2-17] の「コードに凍結する」は、差し替えを安くする仕組みでもある
+
+三つ目は、いまのうちに確かめておける。業務手順書から AI の利用箇所を洗い出させ、それぞれについて別のモデルに差し替える場合に影響が出る箇所と、差し替えの手順を整理させる。道具は選び直せる状態にしておく。それが、多様化していく地図の上での、いちばん安全な歩き方だ。
+
+____
+「どの AI に頼むか」を固定しない。仕事ごとに道具を選び、選び直せるように組んでおく。
+それができていれば、次にどんなモデルが出てきても、判断の基準はそのまま使い回せる。
+____
+
+'''
+
+== 関連記事
+
+* link:/insights/re-examining-knowledge/[構造分析 08: 知を見直す道具——正典・検証・有志の共有物]
+* link:/ai-native-software/ai/[2-16: 自前の AI を据える ── LLM と RAG]
+* link:/ai-native-software/ai-delegation/[2-17: AI に任せる範囲を決める ── 自律で動かさず、コードに凍結する]
+* link:/ai-native-software/lockin/[3-05: ロックイン問題]
+endif::[]
+ifdef::lang-en[]
+= AI Will Not Converge on One Model — Will Vertical Specialists Survive?
+
+"In the end, one smartest AI would do it all, wouldn't it?" Reading about medical AI and legal AI, some people wonder which to choose. This chapter answers that question. Half of it is fact that can be checked; the other half is the forecast of the author (and of the AI that helped write it). The headings say which is which.
+
+(First published as the extra installment of the series "Fable 5 Is Back," July 2026. Rewritten as structural analysis in October 2026, with the product specifics removed.)
+
+== Fact — behind the performance race, diversification is advancing
+
+AI is not converging on "one strongest model." Diversification can be checked on three axes.
+
+. *Price and capability tiers* — every vendor ships a range from fast-and-cheap to top-tier, and offers them in parallel in the same period. Running everything on the top tier makes economic sense neither for the vendor nor for the user. Usage fees scale with volume, so putting the top tier on short everyday requests changes nothing you can feel and only stacks up the difference
+. *Product forms* — the same model grows into separate products for separate settings: a chat screen, an agent driven from the terminal, a screen-design tool. The product layer splits faster than the model layer
+. *Regulation and availability* — in June 2026 US export controls halted the top-tier model, and it returned in July under conditions (link:/en/blog/verification-shock/[blog 028]). The episode showed that a state's regulation had become a variable deciding who gets which AI
+
+== Structure — the counter-force bearing on specialists
+
+Alongside diversification, a force works the other way. A specialist model competes under structurally unfavorable terms: its rival is not *this year's specialist* but *next year's generalist*. Each time the general model steps up, territory that was the specialist's alone is absorbed into the generalist's range.
+
+The overtaking has been reported. On medical examination problems, an untuned general model scored higher than a model tuned for medicine (Nori et al., Microsoft, 2023). In financial text analysis, a model trained from scratch on financial text alone lost on several tasks to a general model simply asked to answer (Li et al., 2023). Both are 2023 reports, and the pattern has since become the industry's standard story.
+
+Reading a stack of contracts for contradictions, fixing code that spans many files — work that once belonged to legal AI and coding-assistant AI is now offered as a feature of the general model. To hold its edge, a specialist must deepen its expertise faster than the generalist advances. Not impossible, but a race up a slope.
+
+== Forecast — which specialists remain, and which do not
+
+From here it is forecast. Nothing is asserted.
+
+What the author sees as *unlikely to last* is "vertical specialization that is complete within language." Work whose input and output are both natural language — summarizing medical documents, checking legal ones — overlaps head-on with the generalist's strength. Reading large bodies of text to find contradictions is already standard equipment on general models.
+
+What seems *likely to remain* comes in two kinds. One is "specialization outside language" — predicting the three-dimensional structure of proteins, or global weather, built on mathematics other than the language model's. There, dedicated models are already the standard, and there is no path by which a language model replaces them. The other is "uses that must be small, fast, and cheap" — processing that has to run instantly on a device, or fraud detection that watches masses of transactions at low cost. There, lightness and speed are worth more than top-tier intelligence.
+
+Then does no value remain for language-side vertical AI companies? If any does, it sits somewhere other than the model: *access to private data that never leaves the building*, and *the depth of embedding in the flow of work*. Models can be swapped; the trust relationship over data and the seat of a tool the floor has grown used to cannot be swapped easily.
+
+== Conditions under which this forecast fails
+
+A forecast should carry its own failure modes. Three.
+
+First, *when regulation demands an independent model*. If medicine or finance makes "an auditable dedicated model" a legal requirement, language-side verticals gain a place that the rules protect. Second, *domains where private data keeps deciding performance*. As long as the data never leaves, the generalist cannot learn it, and the specialist can keep its edge there. Third, a bias to disclose: a general model (an AI) took part in organizing this forecast, so *the conclusion "the generalist wins" includes the generalist's self-report*. Discount accordingly.
+
+== Implication — pledge loyalty to no single AI
+
+Brought down to practice, the implications are three.
+
+* *Choose the tool per purpose* — extend the habit of picking models to the level of products and companies. 2-02's decision to subscribe to two vendors' AIs and have them check each other (link:/en/ai-native-software/ai-pc/[2-02]) is this implication implemented
+* *A sole proprietor or small business needs no model of its own* — the value sits on the side of your data and your flow of work, and only you hold those. What you keep in-house is, as link:/en/ai-native-software/ai/[2-16] sets out, an open-weight model and RAG over your own data
+* *Treat the model as a replaceable part* — never build work in a shape only one model can serve. "Freeze it into code" in link:/en/ai-native-software/ai-delegation/[2-17] is also a mechanism that makes swapping cheap
+
+The third can be checked now. Have the AI go through your procedure manuals, list every place AI is used, and for each one lay out what would be affected by switching to another model and the steps of the switch. Keep the tools in a state where they can be chosen again. On a diversifying map, that is the safest way to walk.
+
+____
+Do not fix "which AI to ask." Choose the tool per job, and build so it can be chosen again.
+With that in place, whatever model comes next, the criteria carry over as they are.
+____
+
+'''
+
+== Related articles
+
+* link:/en/insights/re-examining-knowledge/[Structural Analysis 08: Tools for Re-examining Knowledge — Canon, Verification, and the Voluntary Commons]
+* link:/en/ai-native-software/ai/[2-16: Stand Up Your Own AI — LLM and RAG]
+* link:/en/ai-native-software/ai-delegation/[2-17: Decide How Far the AI Goes — No Autonomous Runs, Freeze It into Code]
+* link:/en/ai-native-software/lockin/[3-05: The Lock-In Problem]
+endif::[]
+
+// ===== article: part-3-design/10-defense-cannot-be-bought =====
+////
+slug: defense-cannot-be-bought
+number: 10
+title.ja: 守りは買えない——委託・製品・基盤、三つの出口が同じ入口になる
+title.en: Defense Cannot Be Bought — Outsourcing, Products, Platforms: Three Exits That Become One Entrance
+subtitle.ja: 2025〜26 年の事件は、買った守りが入口になった記録である。守りの特需は守れない。守りは買うものではなく、root を渡さずに持つものになる。
+subtitle.en: The incidents of 2025–26 are a record of purchased defenses becoming the entrance. A defense boom cannot defend. Defense is not bought; it is held, without handing over root.
+description.ja: 委託先の管理者アカウント、守りの製品そのもの、基盤の管理面——2025〜26 年の大型事件は、買った守りが入口になった記録である。共通項は入口と root の距離がゼロなこと。守りの需要は伸びるが、守れる人は増えない。だから守りは買うものではなく、引き算と規律で持つものになる。
+description.en: Contractors' admin accounts, the defense products themselves, the platform's management plane — the major incidents of 2025–26 are a record of purchased defenses becoming the entrance. The common factor is zero distance between the entrance and root. Demand for defense grows, but the people who can defend do not. So defense is not bought; it is held, by subtraction and discipline.
+date: 2026.10.08
+label: Structural Analysis 10
+part_title.ja: 設計と実践
+part_title.en: Design and Practice
+part: 3
+cta_label: Hold, do not buy
+cta_title.ja: 守りは買えない。root を渡さず、攻撃面を引き、一台を規律で持つ。
+cta_title.en: Defense cannot be bought. Hand over no root, subtract the attack surface, hold one machine with discipline.
+cta_text.ja: 委託先には期限付きの権限を。root で動く製品は減らす。基盤の管理面は共有しない。誰が root を持っているかの一覧を、いまのうちに AI に作らせておく。
+cta_text.en: Give contractors time-limited privileges. Reduce the products that run as root. Share no management plane. Have an AI draw up the list of who holds root, now.
+cta_btn1_text.ja: 構造分析の全章
+cta_btn1_text.en: All chapters of the structural analysis
+cta_btn1_link.ja: /insights/
+cta_btn1_link.en: /en/insights/
+cta_btn2_text.ja: 前へ AIは一つに収束しない
+cta_btn2_text.en: Previous: AI Will Not Converge on One Model
+cta_btn2_link.ja: /insights/ai-will-not-converge/
+cta_btn2_link.en: /en/insights/ai-will-not-converge/
+////
+ifdef::lang-ja[]
+= 守りは買えない——委託・製品・基盤、三つの出口が同じ入口になる
+
+*守りは、買った分だけ増えない。* 2025〜26 年の大型事件を並べると、入口になったのは、守りとして買ったものだった。委託先に渡した管理者アカウント、守りの製品そのもの、基盤の管理面。三つの出口が、同じ入口になっている。
+
+link:/insights/security-design/[構造分析 03] は、AI で開発し製品に AI を入れないことで攻撃面をゼロに近づける実践を書いた。link:/insights/cloud-independence/[04] は、基盤から自立できる時代になったことを書いた。この章はその二つの間を埋める。守りを買う側に何が起きているかを事実で確かめ、守りが「買うもの」から「持つもの」へ移る構造を書く。
+
+== 事実——買った守りが、入口になった
+
+三つの形に分けて並べる。日付と出どころは、巻末の調査メモと同じである。
+
+*第一の形、委託。* アスクル(2025 年 6 月侵入、10 月発覚)は、業務委託先向けの管理者アカウントの ID とパスワードが漏れ、VPN から入られた。そのアカウントは「例外的に多要素認証を適用していなかった」。侵入から発覚まで約 4 か月半、EDR の無効化と横展開とバックアップの削除まで進み、約 74 万件が影響を受けた。東海大学の委託先(2025 年 11 月)はリモート保守用の入り口と窃取された管理者アカウント。山形市などの委託先 YCC(2026 年 4 月)はネットワーク機器の管理者アカウントが「推測または取得」された。英国の Marks & Spencer(2025 年 4 月)は CEO が「システムの弱点ではなく、第三者を通って入られた」と証言し、営業利益への影響を 3 億ポンドと公表した。米国では、MSP の遠隔管理ツールの管理者一つを取られて複数の顧客に一斉配布された事例が、2025 年だけで二件報告されている(Sophos)。
+
+*第二の形、製品。* 守りの製品そのものが入口になった。CrowdStrike(2024 年 7 月 19 日)は更新の不具合で 850 万台の Windows を止めた。F5(2025 年 10 月公表)は国家支援の攻撃者にソースコードと未公開の脆弱性情報を持ち出され、米 CISA が緊急指令を出した。Cisco ASA(2025 年 9 月)、Citrix NetScaler(2025 年 8 月)、オンプレミスの SharePoint(2025 年 7 月、400 超のシステム)。いずれも境界に置いた守りの機器か、root で動く製品である。
+
+*第三の形、基盤。* IDCF クラウド(2026 年 10 月 7 日)は一度の侵入で東日本第 1 リージョンが丸ごと止まり、事業者は「スナップショットからの復元も困難、他リージョンでの再構築も当面推奨しない」と通知した。攻撃でなくても同じことが起きる。2025 年秋には AWS、Azure、Cloudflare が自分の操作で、それぞれ約 15 時間、約 8 時間、約 6 時間止まった。
+
+統計もこの並びを支える。Mandiant の M-Trends 2026 では初期侵入の首位は脆弱性の悪用で 32%、6 年連続である。Verizon の DBIR 2026 でも脆弱性が 31% で首位に立った。警察庁の統計ではランサムウェアの侵入経路の 5〜6 割が VPN 機器である。IPA の 10 大脅威 2026 では「サプライチェーンや委託先を狙った攻撃」が 8 年連続で組織編の 2 位にある。そして Sophos の 2026 年調査では、認証情報の侵害で被害を受けた組織の 97% が、事故の時点で何らかの多要素認証を導入済みだった。導入していなかったのではない。例外があった。
+
+== 構造——共通項は、入口と root の距離がゼロなこと
+
+事件の共通項は「入られたこと」ではない。*入った後に、全体の管理者権限まで一本道で行けたこと*である。
+
+委託先のアカウントは、最初から管理者である。保守のためにそう作る。守りの製品は、root で動く。EDR も VPN 機器もハイパーバイザーも、全部を見るために全部に触れる。基盤の管理面は、載っている全部に届く。だから入口になったとき、入口と root の距離がゼロになる。
+
+買った守りとは、*root を他人に渡すこと*の別名である。委託は人に、製品は会社に、基盤は事業者に渡す。渡した相手が守り切れている間は守りで、守り切れなくなった瞬間に、渡した root がそのまま相手の root になる。
+
+____
+守りを買うとは、root を渡すことである。
+渡した先が持ちこたえている間だけ、それは守りと呼ばれる。
+____
+
+公的な指針は、この構造をすでに書いている。CISA と英加豪 NZ の共同勧告(AA22-131A)は、委託先のアカウントを特権として扱い、顧客間で管理者の資格情報を使い回さず、期限付きの権限を検討し、委託先の接続と操作を顧客側で記録せよと書く。英 NCSC は「識別のサービスは決して共有してはならず、委託先の利用者は委託元が管理するアカウントを使う」と書く。NIST の SP 800-41 は、入りも出も既定で拒否せよと書く。指針は揃っている。揃っていないのは、それを実行する人の数である。
+
+== 構造——守りの特需は、守れない
+
+攻撃にさらされると、仕事は増える。調査、復旧、再発防止、監査、報告。守りの需要は伸びる。Gartner は 2026 年の情報セキュリティ支出を 2,440 億ドル、前年比 11.6% 増(恒常通貨)と予測した(2026 年 2 月)。短期的には、IT 企業の収入は守りの側で大きく伸びる。
+
+だが人は増えない。ISC2 の 2024 年調査は、世界の不足を 480 万人と見積もった。2025 年調査(回答 16,029 人)は、人数よりも技能の不足が主な懸念に変わったと報告し、日本の回答者(1,225 人)は雇用は安定しているが予算と給与の競争力が弱いと答えている。攻撃が増えた分だけ守り手を増やすことは、どの国でもできていない。
+
+増やせない人を、薄く伸ばすしかない。薄く伸ばす形が、委託であり、製品であり、基盤である。少人数が多くの顧客を見るから、一人の管理者が多くの root を持つ。*同じ基盤に集まれば、一つの事故で被害が大きくなる。* ここに矛盾がある。守りの特需は、守る人を増やさずに守りの約束を増やす。約束は売れるが、守りは人数でしか裏付けられない。だから、*守りの特需は、守れない。*
+
+これは「守りに金を使うな」ではない。買える守りと買えない守りを分けよ、である。
+
+== 見立て——守りは、買うものから持つものへ移る
+
+買えない守りは、持つしかない。持つ守りの形は、この連載がすでに書いてきたものと一致する。
+
+* *引き算。* 守る対象を減らす。link:/insights/security-design/[03] の、製品に AI を入れず、CMS もデータベースも置かない静的な公開面は、守りを買わずに攻撃面を消した例である。耳を減らし、root で動くものを減らす。
+* *一人と一台。* AI を持った一人が、一台を規律で持つ。入りも出も既定で拒否し、更新は自動にし、控えは別の機械・別の場所・別の権限に置く。この規律は、link:/debian-server/[サーバー編]の第 5 章と第 10 章に手順として凍結してある。一台の root は一人が持ち、障害領域はその一台で閉じる。
+* *root を渡さない委託。* 委託はしてよい。ただし自分の ID で、期限付きで、記録を自分の側に残し、共有アカウントを作らない。委託先が消えても、root は自分の手元に残る。
+
+AI はここで効く。守りの手順を書かせ、ログを貼って点検させ、誰が root を持っているかの一覧を作らせる。link:/insights/ai-native-free-individual/[07] で書いた通り、AI は個人の能力を高める道具であり、守りはその最も分かりやすい使い道である。同時に AI は攻撃側も強くする。link:/insights/mythos/[構造分析 1-05] に書いた通り、数千のゼロデイを自律的に見つける能力はすでに公表されている。攻撃側が強くなるほど、守りを買い足すより、守る対象を減らすほうが効く。引き算は AI の時代に価値が上がる守りである。
+
+上から導入する AI は、この構造の中では第四の形になる。全社に配られる AI 製品は、全部を見るために全部に触れる権限を持つ。文書も、メールも、基幹のデータも、エージェントが代わりに操作するために渡される。それは EDR やハイパーバイザーと同じ、root で動く製品である。*守りは買えない、という問題は、上から導入する AI の問題そのものだ。* 入口と root の距離がゼロの場所が、守りの製品に続いてもう一つ増える。下から持つ AI はこの形を取らない。一人が一台の root を持ったまま、AI には手順を書かせ、ログを読ませ、作ったものはコードに凍結する。AI に渡すのは仕事であって、root ではない。
+
+買ってよいものも残る。急に増える負荷の吸収、DDoS を受け止める薄い窓、第三者による点検の目。共通するのは、*root を渡さずに買えること*だ。借りた窓は公開面の前に置くだけで、中の一台には触れない。点検は読むだけで、書く権限を持たない。root に届く守りだけを、買わない。
+
+== この見立てが外れる条件
+
+予想には、外れ方も添えておく。三つある。
+
+第一に、*AI が守り手を本当に増やした場合*。検知と対応の自動化が人の代わりを務め、少人数で多くの顧客を守り切れるようになれば、特需は守れる。ただしその AI もまた root で動く製品であり、第二の形に戻る危険を持つ。
+
+第二に、*規制と保険が、買う守りを要求する場合*。監査が特定の製品の導入を条件にし、保険が委託先の認定を条件にすれば、持つ守りだけでは済まなくなる。その場合も、root に届かない形で買う工夫は残る。
+
+第三に、*引き算では消えない漏れ方が主流になる場合*。SharePoint の事件では、鍵は入ってきた要求への応答で出ていった。出口を閉じても、応答で漏れるものは止まらない。公開面に何かを置く限り、この漏れ方は残る。だから公開面に置くものを最小にする、という結論は変わらない。
+
+== 含意——誰が root を持っているかを、数える
+
+実務に引きつけると、含意は三つに絞れる。
+
+* *委託するなら、root を渡さない形で。* 期限付き、自分の ID、記録は自分の側、共有アカウントなし。多要素認証の「例外」を作らない。例外は、97% の側に入る道である。
+* *root で動く製品を数え、減らす。* EDR、VPN 機器、遠隔管理ツール、ハイパーバイザー。一つ減るごとに、入口と root の距離がゼロの場所が一つ減る。
+* *基盤の管理面を共有しない。* 自分の一台と、借りた窓。地理の分散と権限の分散は別のものである。
+
+三つ目まで含めて、いまのうちに確かめておける。自分の環境で root に相当する権限を持つ人・製品・事業者の一覧を AI に作らせ、それぞれについて「期限があるか」「記録が自分の側にあるか」「消えたら何が残るか」を並べさせる。一覧が長ければ、それが買った守りの長さである。
+
+____
+守りは買えない。買えるのは、root に届かない守りだけである。
+root に届く守りは、自分で持つ。一人と一台と AI で、持てる大きさに引き算する。
+____
+
+'''
+
+== 関連記事
+
+* link:/insights/security-design/[構造分析 03: Mythos時代のセキュリティ設計]
+* link:/insights/cloud-independence/[構造分析 04: クラウドからの自立——AIが支援するのは開いた層だけ]
+* link:/blog/cloud-vanished/[ブログ: クラウドが丸ごと消えた日 ── IDCF の事故から、五つの教訓]
+* link:/blog/cloud-still-breached/[ブログ: クラウドにして守りを固めても、破られる]
+* link:/debian-server/05-security-basics/[Claudeと一緒に育てるDebian サーバー 第5章 守りの基本]
+* link:/ai-native-software/auth/[2-05: 門番を立てる ── PocketBase で認証を一つに]
+endif::[]
+ifdef::lang-en[]
+= Defense Cannot Be Bought — Outsourcing, Products, Platforms: Three Exits That Become One Entrance
+
+*Defense does not grow by the amount you buy.* Line up the major incidents of 2025–26 and the entrance, each time, was something bought as defense: the admin account handed to a contractor, the defense product itself, the platform's management plane. Three exits became one entrance.
+
+link:/en/insights/security-design/[Structural Analysis 03] described the practice of developing with AI and putting no AI into the product, bringing the attack surface close to zero. link:/en/insights/cloud-independence/[04] described the arrival of an age in which you can stand independent of the platform. This chapter fills the gap between them. It checks, with facts, what is happening to those who buy defense, and sets out the structure by which defense moves from something bought to something held.
+
+== Fact — purchased defenses became the entrance
+
+Three forms. Dates and sources follow the survey memo behind this chapter.
+
+*The first form: outsourcing.* ASKUL (intrusion June 2025, discovered October) was entered through a VPN with the leaked ID and password of an admin account for a contractor. That account "exceptionally had no multi-factor authentication." About four and a half months passed between intrusion and discovery; the attacker disabled EDR, moved laterally, and deleted backups; some 740,000 records were affected. Tokai University's contractor (November 2025): a remote-maintenance entrance and a stolen admin account. YCC, contractor to Yamagata City and others (April 2026): the admin account of a network device, "guessed or obtained." Marks & Spencer in the UK (April 2025): the CEO testified that the attacker came "through a third party rather than a system weakness," and the company put the hit to operating profit at £300 million. In the US, Sophos reported two cases in 2025 alone in which a single admin account of an MSP's remote-management tool was taken and used to push malware to many customers at once.
+
+*The second form: products.* The defense product itself became the entrance. CrowdStrike (19 July 2024) halted 8.5 million Windows machines with a faulty update. F5 (disclosed October 2025) had source code and unpublished vulnerability information taken by a state-backed actor, and CISA issued an emergency directive. Cisco ASA (September 2025), Citrix NetScaler (August 2025), on-premises SharePoint (July 2025, over 400 systems). Every one is a defensive device at the perimeter or a product that runs as root.
+
+*The third form: platforms.* IDCF Cloud (7 October 2026): a single intrusion stopped the whole of East Japan Region 1, and the provider told customers that restoring from snapshots was difficult and that rebuilding in its other regions was not recommended for now. The same happens without an attack. In autumn 2025, AWS, Azure, and Cloudflare were stopped by their own operations for about 15, 8, and 6 hours respectively.
+
+The statistics support the line-up. In Mandiant's M-Trends 2026, exploitation of vulnerabilities leads initial access at 32%, the sixth year running. Verizon's DBIR 2026 also puts vulnerabilities first, at 31%. Japan's National Police Agency finds 50–60% of ransomware intrusions come through VPN devices. In IPA's Ten Major Threats 2026, "attacks on the supply chain and contractors" sits second for organizations for the eighth year in a row. And in Sophos's 2026 survey, 97% of organizations breached through compromised credentials already had some multi-factor authentication in place at the time. It was not absent. There was an exception.
+
+== Structure — the common factor is zero distance between the entrance and root
+
+The common factor is not "they got in." It is that *once in, there was a straight road to full administrative rights.*
+
+A contractor's account is an administrator from the start; it is created that way for maintenance. A defense product runs as root; EDR, VPN appliances, hypervisors touch everything in order to see everything. A platform's management plane reaches everything that sits on it. So when any of these becomes the entrance, the distance from the entrance to root is zero.
+
+Purchased defense is another name for *handing root to someone else*: to a person in outsourcing, to a company in a product, to a provider in a platform. While the recipient holds out, it is called defense. The moment the recipient fails, the root you handed over becomes the attacker's root as it is.
+
+____
+To buy defense is to hand over root.
+Only while the recipient holds out is it called defense.
+____
+
+Public guidance already describes this structure. The joint advisory from CISA with the UK, Canada, Australia and New Zealand (AA22-131A) says to treat contractor accounts as privileged, never reuse admin credentials across customers, consider time-based privileges, and log the contractor's connections and actions on the customer's side. The UK's NCSC writes that "identity services should never be shared" and that contractor users should use accounts administered by the customer. NIST SP 800-41 says to deny both inbound and outbound by default. The guidance is in place. What is not in place is the number of people to carry it out.
+
+== Structure — a defense boom cannot defend
+
+Exposure to attack creates work: investigation, recovery, prevention, audit, reporting. Demand for defense grows. Gartner forecast information-security spending of $244 billion in 2026, up 11.6% in constant currency (February 2026). In the short run, IT companies' revenue grows strongly on the defense side.
+
+But the people do not grow. ISC2's 2024 study estimated the global shortfall at 4.8 million. Its 2025 study (16,029 respondents) reports that the main concern has shifted from headcount to skills, and the Japanese respondents (1,225) say employment is stable while budgets and pay are uncompetitive. No country has added defenders in proportion to the attacks.
+
+People who cannot be added must be spread thin. The forms of spreading thin are outsourcing, products, and platforms. A few people watch many customers, so one administrator holds many roots. *Gather on one platform, and one incident does more damage.* Here is the contradiction. A defense boom multiplies promises of defense without multiplying defenders. Promises sell, but defense is backed only by people. So *a defense boom cannot defend.*
+
+This is not "spend nothing on defense." It is: separate the defense you can buy from the defense you cannot.
+
+== Forecast — defense moves from something bought to something held
+
+Defense that cannot be bought must be held. The shape of held defense matches what this series has already written.
+
+* *Subtraction.* Reduce what has to be defended. The static public face of link:/en/insights/security-design/[03] — no AI in the product, no CMS, no database — is an example of erasing the attack surface without buying defense. Fewer listening ears, fewer things running as root.
+* *One person and one machine.* One person with an AI holds one machine with discipline: deny by default in and out, automatic updates, a copy on another machine, in another place, under another authority. That discipline is frozen into procedures in Chapters 5 and 10 of link:/en/debian-server/[the server series]. One person holds that machine's root, and the failure domain closes at that machine.
+* *Outsourcing that hands over no root.* Outsourcing is fine. But under your own IDs, time-limited, with the logs on your side and no shared accounts. If the contractor disappears, root stays in your hands.
+
+AI works here. Have it write the defensive procedures, paste in logs for inspection, and draw up the list of who holds root. As link:/en/insights/ai-native-free-individual/[07] argued, AI is a tool that raises an individual's capability, and defense is its plainest use. At the same time AI strengthens the attacker. As link:/en/insights/mythos/[Structural Analysis 1-05] recorded, the ability to find thousands of zero-days autonomously has already been published. The stronger the attacker, the more it pays to reduce what must be defended rather than to buy more defense. Subtraction is a defense whose value rises in the age of AI.
+
+AI introduced from above becomes, within this structure, a fourth form. An AI product distributed across a company holds the rights to touch everything in order to see everything. Documents, mail, core data are handed over so that an agent can operate them on people's behalf. It is a product running as root, the same as EDR or a hypervisor. *The problem that defense cannot be bought is the problem of AI introduced from above, as it is.* One more place where the distance from entrance to root is zero, added after the defense products. AI held from below does not take this form. One person keeps root on one machine and has the AI write procedures, read logs, and freeze what it builds into code. What is handed to the AI is work, not root.
+
+Some things remain worth buying: absorbing sudden load, a thin window that takes the DDoS, a third party's inspecting eye. What they share is that *they can be bought without handing over root.* A borrowed window sits in front of the public face and never touches the machine inside. An inspection reads and holds no right to write. Buy anything except the defense that reaches root.
+
+== Conditions under which this forecast fails
+
+A forecast should state how it could fail. Three ways.
+
+First, *if AI truly multiplies the defenders.* If automated detection and response stand in for people, and a few can fully defend many customers, then the boom can defend. But that AI is itself a product running as root, and carries the risk of returning to the second form.
+
+Second, *if regulation and insurance demand purchased defense.* If audits require specific products and insurers require certified contractors, held defense alone will not suffice. Even then, the craft of buying in forms that do not reach root remains.
+
+Third, *if leaks that subtraction cannot remove become the norm.* In the SharePoint incident, the keys left in the response to an incoming request. Closing the exits does not stop what leaks in a response. As long as something sits on the public face, this leak remains. So the conclusion — put the minimum on the public face — does not change.
+
+== Implication — count who holds root
+
+Brought down to practice, three implications.
+
+* *If you outsource, do it without handing over root.* Time-limited, your own IDs, logs on your side, no shared accounts. Create no "exception" to multi-factor authentication; the exception is the road into the 97%.
+* *Count the products that run as root, and reduce them.* EDR, VPN appliances, remote-management tools, hypervisors. Each one removed is one fewer place where the distance from entrance to root is zero.
+* *Share no management plane.* Your own machine, and a borrowed window. Geographic separation and separation of authority are different things.
+
+All three can be checked now. Have an AI draw up the list of people, products, and providers that hold root-equivalent rights in your environment, and for each one set out whether it has an expiry, whether the logs are on your side, and what remains if it disappears. The length of that list is the length of the defense you have bought.
+
+____
+Defense cannot be bought. Only defense that does not reach root can be.
+Defense that reaches root, you hold yourself — subtracted to a size one person, one machine, and an AI can hold.
+____
+
+'''
+
+== Related articles
+
+* link:/en/insights/security-design/[Structural Analysis 03: Security Design in the Mythos Era]
+* link:/en/insights/cloud-independence/[Structural Analysis 04: Independence from the Cloud — AI Supports Only the Open Layer]
+* link:/en/blog/cloud-vanished/[Blog: The Day a Cloud Vanished — Five Lessons from the IDCF Incident]
+* link:/en/blog/cloud-still-breached/[Blog: Move to the Cloud and Harden It, and It Is Still Breached]
+* link:/en/debian-server/05-security-basics/[Growing a Debian Server with Claude, Chapter 5 — The Basics of Defense]
+* link:/en/ai-native-software/auth/[2-05: Standing Up the Gatekeeper — One Login with PocketBase]
+endif::[]

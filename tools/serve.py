@@ -5,7 +5,8 @@ Watches <site>/{articles,tools/templates} and <site>/html/{css,js},
 rebuilds on changes, and serves <site>/html/ over HTTP.
 
 保存 → ビルド(ブラウザは手動で読み直す):
-  - articles/<series>.adoc の変更は、そのシリーズだけの差分ビルド(数秒)
+  - articles/<series>.adoc(フォルダに分けたシリーズは articles/<series>/*.adoc)
+    の変更は、そのシリーズだけの差分ビルド(数秒)
   - テンプレート・CSS/JS・資産の変更はフルビルド
   - ビルドが終わっても画面は書き換えない。見るときは手動で読み直す
   - ビルド失敗(シリーズファイルの書き損じ等)は、ブラウザ画面上部に
@@ -39,7 +40,7 @@ from watchdog.events import FileSystemEventHandler
 from watchdog.observers import Observer
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from build.series import SERIES_MAP  # noqa: E402
+from build.series import SERIES_MAP, series_name_for_path  # noqa: E402
 
 BUILD_SCRIPT = Path(__file__).resolve().parent / "build_article.py"
 DEBOUNCE_SEC = 0.4
@@ -174,15 +175,21 @@ class RebuildHandler(FileSystemEventHandler):
         articles_dir = self._site / "articles"
         series_targets: set[Path] = set()
         full = False
+        others = []
         for src in changed:
-            p = Path(src)
-            if p.parent == articles_dir and p.name in SERIES_MAP:
-                series_targets.add(p)
+            # フォルダに分けたシリーズ(articles/blog/vol-01.adoc)も、
+            # シリーズ名(articles/blog.adoc)にまとめて1回だけビルドする
+            try:
+                name = series_name_for_path(self._site, src)
+            except SystemExit:  # シリーズの置き方の誤り → フルビルドで報告
+                name = None
+            if name in SERIES_MAP:
+                series_targets.add(articles_dir / name)
             else:
                 full = True
+                others.append(Path(src).name)
 
         if full or not series_targets:
-            others = [Path(s).name for s in changed if Path(s).name not in SERIES_MAP]
             print(
                 f"[serve] change detected ({', '.join(sorted(others)[:5])}) — full rebuild…",
                 flush=True,

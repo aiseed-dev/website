@@ -2873,15 +2873,16 @@ def main():
         )
         return
 
-    # シリーズファイル(articles/blog.adoc 等)を指定されたら、そのシリーズを
-    # まるごとビルドする(展開は main 冒頭の expand_all() で済んでいる)
-    p_series = Path(arg)
-    if p_series.suffix == ".adoc":
-        if p_series.name in series_expansion.SERIES_MAP:
-            _build_series(series_expansion.SERIES_MAP[p_series.name])
+    # シリーズファイル(articles/blog.adoc 等、フォルダに分けたシリーズなら
+    # articles/blog/vol-01.adoc 等)を指定されたら、そのシリーズをまるごと
+    # ビルドする(展開は main 冒頭の expand_all() で済んでいる)
+    series_name = series_expansion.series_name_for_path(config.SITE_ROOT, arg)
+    if series_name:
+        if series_name in series_expansion.SERIES_MAP:
+            _build_series(series_expansion.SERIES_MAP[series_name])
             return
         for sdef in series_expansion.custom_series_defs(config.SITE_ROOT):
-            if sdef["file"] == p_series.name:
+            if sdef["file"] == series_name:
                 build_custom_series(sdef)
                 return
 

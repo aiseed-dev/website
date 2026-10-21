@@ -25,23 +25,30 @@ html/
 └── images/                # 画像素材
 ```
 
-記事ソース（ビルド入力）は **シリーズ = 1つの AsciiDoc ファイル**。
-日英両方の本文とフロントマターを1ファイルに持ち、
-[pyasciidoc](https://github.com/aiseed-dev/pyasciidoc) がレンダリングする:
+記事ソース（ビルド入力）は **シリーズ = 1つの AsciiDoc ファイル**（大きな
+シリーズは、そのファイルを分けたフォルダ）。日英両方の本文とフロントマターを
+同じファイルに持ち、[pyasciidoc](https://github.com/aiseed-dev/pyasciidoc) が
+レンダリングする:
 
 ```
 articles/
-├── insights.adoc                  # Insights 全28章
-├── blog.adoc                      # Blog 全44記事
-├── claude-debian.adoc             # Claudeと一緒に学ぶDebian 全24章
-├── claude-debian-server.adoc      # └ サーバー編 全11章
-├── ai-native-software.adoc        # AI ネイティブなソフトウェア開発（導入編・自立編・転換編）
-├── phosphorus-and-farming.adoc    # リンと農業 全10章
+├── insights/                      # Insights(第1部〜第3部の3ファイル)
+├── blog/                          # Blog(vol-01〜vol-05)
+├── claude-debian/                 # Claudeと一緒に学ぶDebian(前半・後半)
+├── debian-server.adoc             # Claudeと一緒に育てるDebian サーバー 全11章
+├── ai-native-software/            # AI ネイティブなソフトウェア開発(導入編・自立編×2・転換編)
+├── phosphorus-and-farming/        # リンと農業(前半・後半)
 ├── fable.adoc                     # Fable 5 が帰ってきた 全9章(日本語のみ)
 ├── assets/<シリーズ>/<記事ID>/     # 画像・PDF(en- プレフィックスは EN 専用)
 │   └── _root/                     # シリーズ直下のビルド入力(template-example.html 等)
 └── examples/<シリーズ>/           # example-N/ サンプルコード
 ```
+
+フォルダに分けたシリーズは、中の `*.adoc` をファイル名順に連結して1シリーズ
+として読む(記事の並び・prev/next 連鎖はファイルをまたいで続く)。分けるのは
+GitHub が大きなファイル(数百KB超)を表示しないため。1ファイルは約 380KB
+以下に保ち、超えたら次のファイルを足す(手順は `authoring-series-chapter`
+スキル)。サイト設定(`site.json`)上のシリーズ名は分けても `blog.adoc` のまま。
 
 シリーズファイルの中の1記事は次の形。記事の並び順がそのまま prev/next
 連鎖になる（手書きの連鎖キーは不要。隣の章の実タイトルと違う表記に

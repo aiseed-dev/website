@@ -1,0 +1,1977 @@
+// ai-native-software — 導入編 ── なぜ変わるのか。シリーズは articles/ai-native-software/ の *.adoc をファイル名順に連結したもの
+// 記事の区切り: // ===== article: <記事ID> =====
+// フロントマター: 日英共通は裸キー、異なる値は key.ja / key.en
+// 本文: ifdef::lang-ja[] / ifdef::lang-en[] で言語別
+// prev/next 連鎖は書かない(記事の並び順から自動導出)
+ifdef::env-github[]
+= AI ネイティブなソフトウェア開発 — 導入編 ── なぜ変わるのか
+:lang-ja:
+:doctype: book
+:toc:
+:toc-title: 目次
+:toclevels: 1
+
+サイトで読む: https://aiseed.dev/ai-native-software/
+endif::[]
+// ===== article: 01-coder-top =====
+////
+slug: coder-top
+number: 01
+part: 1
+title.ja: AI は、世界で最も難しいコーディング問題を解く
+title.en: AI Solves the World's Hardest Coding Problems
+subtitle.ja: Codeforces 2700 帯から設計まで ── AI は月 3 千円で呼べる「最強の SIer」になった
+subtitle.en: From the Codeforces 2700 tier to design — AI became the strongest SIer, callable for $20 a month
+description.ja: AI のコード作成能力は、競技プログラミングの公開レーティング(Codeforces 2700 帯)で人間の最上層に並んだ。さらに、標的への攻撃工程の大半を自律的に遂行した事例が公表されている ── これは設計能力の証拠である。攻撃・設計・検証は、一つの力の三つの顔だ。いま、AI は要件を読み、構造を決め、実装し、動かす「最強の SIer」になった。しかも月 3 千円で誰でも呼べる。この一点から、連載の議論がすべて導かれる。
+description.en: AI's code-writing ability has matched human top-class on public competitive-programming ratings (the Codeforces 2700 tier). A case has also been published in which it carried out most steps of an attack on a target autonomously — evidence of design ability. Attack, design, and verification are three faces of one power. Today AI has become the strongest SIer, handling requirements, design, and build, and callable by anyone for $20 a month. The whole series argues outward from that.
+date: 2026.06.01
+label: Introduction 1
+title_html.ja: <span class="accent">最難のコーディング問題</span>を、<br>AI が解く。
+title_html.en: AI solves<br>the <span class="accent">hardest coding problems</span>.
+////
+ifdef::lang-ja[]
+= AI は、世界で最も難しいコーディング問題を解く
+
+*AI は、世界で最も難しいコーディング問題を解く側に立った*。
+
+AI の母国語は、Python と Markdown 形式のテキストである。この連載が扱うのは、
+その一歩先だ。母国語の話ではなく、能力の水準の話である。AI が書くコードの水準は、ある線を越えた。線を越えた先では、
+ソフトウェア開発の構造そのものが組み替わる。この章は、その線がどこにあるかを
+示す。
+
+== コードを書く力は、競技プログラミングのレーティングで数として比べられる
+
+コードを書く能力を数で比べられる仕組みは、世界に一つしかない。競技
+プログラミングの公開レーティングだ。Codeforces、AtCoder、ICPC ── どれも、
+出題された問題を制限時間内に解けるか、何問解けるか、解が正しいかを長期間
+積み上げて、参加者ごとに数値を付ける。
+
+Codeforces のレーティングは、おおむねこう分布する。
+
+|===
+| 帯 | 称号 | 参加者の位置
+| 1200 未満 | Newbie | 入門者
+| 1600–1899 | Expert | 上位 10% 前後
+| 2100–2399 | Master・International Master | 上位数%
+| 2400–2599 | Grandmaster | 上位 1% 程度
+| 2600–2999 | International Grandmaster | 上位のごく一部
+| 3000 以上 | Legendary Grandmaster | 世界で数十人
+|===
+
+この数字には段差がある。1500 と 1800 の差は、勉強した量で埋まる。2400 と
+2700 の差は、勉強だけでは埋まらない。そこから先には、速さ、アルゴリズムの
+設計、最難問題への嗅覚が要る。世界の最上層はだいたい 2700 から 3900 の
+あいだに分布し、上位 50 人ほどしかいない。
+
+____
+数字でコードを書く能力を比べられる場所は、世界にここしかない。そして
+ここでは、勉強で届く帯と届かない帯が、はっきり分かれる。
+____
+
+== AI は 2700 帯に入った
+
+2024 年末から 2025 年にかけて、状況が変わった。OpenAI が公表した o3 系
+モデルの Codeforces 推定レーティングは約 2727 だった(o3 リリース時点での
+公式発表)。Google DeepMind の AlphaCode 2 は、その前の段階で Codeforces
+上位 15% 水準を示した。後続の研究系モデルは、さらに上を更新している。
+Anthropic も、Claude 系モデルでコーディング能力が上がり続けていることを
+示している。
+
+数値の出どころや測り方には、議論の余地がある。だが *2700 帯に AI が
+到達したという事実そのもの* は、複数の独立した発表が同じ方向に重なって
+いる。これは「役に立つ補助になった」ではない。最も難しい問題を解く側に
+いる、ということだ。
+
+この達成が起きた理由は、競技プログラミングがルールの明確な領域だった
+からだ。文法も標準ライブラリも型システムも、形式的に定義されている。
+コンパイルが通るか、出力が想定値と一致するかも、機械的に判定できる。
+AI が人間の水準を超えるのは、こういうルールが明確で答え合わせができる
+領域だ。この連載が「コーダーが消える」と論じるのは、この性質を持つ領域に
+限った話である。同じ速度の完全置換は、他の AI 応用領域 ── デスクワーク、
+自動運転、ロボットなど ── には広げられない(この境界線は 3-09 で扱う)。
+
+ここで重要なのは順位ではない。閾値を越えたという構造の変化だ。
+
+* 2400 までは、上位の専門家が特訓を積めば届く帯だった
+* 2700 は、世界で数十人しかいない帯だ
+* AI はその帯に、人間が一人ずつ達するのとは別の経路で入ってきた
+
+人間がこの帯に到達するには、若いうちから数千時間の演習を積む必要がある。
+そのうえで、才能のフィルタを通る必要がある。AI は、この経路を通らずに
+同じ帯へ入った。かつては「学習データに同じ問題が入っていた」という反論が
+あった。だが Codeforces はライブ大会で新規問題を出し続けており、AI モデルが
+そこでも 2700 帯の解を返すことが繰り返し確認されている。人間が一人ずつ
+十数年かけて届く帯に、AI は一気に、複数の経路で入ってきた。
+
+== 設計もできると分かったから、AI は最強の SIer になった
+
+2700 帯の到達は、コードを速く正しく書く力 ── コーディング ── の証明だ。
+設計は、コーディングとは別の能力である。設計の核心は、文脈の理解にある。
+対象のシステムや状況を読み解き、何が要るかを掴み、それに合う構造を
+組み立てる。これが設計だ。速く正しく書けることと、文脈を理解して構造を
+決めることは、別の力である。だから、設計能力には別の証拠が要る。
+
+その証拠は、思わぬところから出た。攻撃者が
+Claude を悪用し、AI が標的への攻撃工程の大半を自律的に遂行した事例が
+公表されている(2025 年、Anthropic が自動サイバー諜報キャンペーンとして
+報告した)。攻撃を自分で進めるには、相手のシステムを偵察し、弱点を読み、
+攻め筋を組み立てる必要がある。つまり、相手の文脈を深く理解する力が要る。
+それは、システムを設計する力と同じものだ。
+
+同じ力は、検証する力でもある。攻撃とは、穴を見つけて突くことだ。検証とは、
+穴を見つけて塞ぐことだ。どちらも、構造を作り手以上に深く理解する一つの力の
+表れである。攻撃・設計・検証は、別々の能力ではない。一つの力の三つの顔だ。
+だから、攻撃できる AI は、設計も検証もできる。
+
+AI は、二つの別々の能力で最上層に達した。コードを書く力(2700 帯)と、
+文脈を理解して構造を決める力、つまり設計と検証(自律的な攻撃)だ。
+*コーディングも設計も、AI が上級エンジニアを超えはじめた*。二つが揃えば、
+結論は一つになる。いま、AI は最強の SIer になった。
+要件を読み、構造を決め、実装し、動かす。SIer の仕事の全体を、一人でこなす。
+しかも、世界に数十人の希少資源ではない。月 3 千円で誰でも呼べる。
+
+== 世界の最上層に、月 3 千円で届く
+
+ここからが、この連載の議論の出発点になる。
+
+世界の最上層のコーディング能力にアクセスする方法は、これまで限られて
+いた。Google や Meta や Anthropic に採用されるか、競技プログラマーとして
+何年もかけて上り詰めるか、年収数千万円から億単位で雇うかだ。閾値を超えた
+能力は、希少資源だった。Palantir の FDE(Forward Deployed Engineer)
+モデルは、この旧来の経路を最も高い帯まで押し上げた極端版である。顧客企業に
+最上層のエンジニアを張り付け、年単位・億円単位で運用する仕組みだ(構造は
+3-05 で詳述する)。
+
+AI モデルへのアクセスには、用途による段がある。
+
+* *基本プラン* ── Claude Pro / ChatGPT Plus / Google AI Pro など。月額
+  20 ドル前後、日本円で 3 千円ほど。運用に入った道具を見守る、ときどき
+  直す、といった軽い使い方なら、ここで足りる。まずこれで始めてよい。
+* *作る時期* ── 一日じゅう AI にコードを書かせる日が続くあいだは、上の帯
+  (Claude Max など、月 100 ドルから)を使う。作り終えて運用に入ったら、
+  基本プランに戻す。時期ごとの内訳は link:/ai-native-software/ai-pc/[2-02] に置いた。
+* *最上位のモデル* ── 各社の最上位のモデルには、定額の枠の外で従量課金になっているものがある(Anthropic の Fable 5 は 2026 年 7 月から)。この連載の仕事は、上の二つの帯で足りる。
+* *API 従量課金* ── 使った分だけ払う形もあるが、*ここは使わない*。同じ量を
+  API で通すと、定額のおよそ *10 倍* になる。
+
+差は、二つの理由から出る。
+
+*一つは、量が積み上がること*。AI に道具を使わせながら書かせると、一回の
+呼び出しごとに、それまでの会話と読んだファイルを丸ごと送り直す。入力が、
+呼び出した回数だけ積み上がる。
+
+*もう一つは、単価が違うこと*。定額は、同じ量を従量で買うより安く値付け
+されている。公開の従量価格をそのまま積むと、定額の月額をはるかに超える ──
+つまり定額の側に、まとめ買いの割引が入っている。利用上限は、その代わりに
+置かれた枠だ。
+
+数えてみる。Sonnet 5 の公開価格は、入力が 100 万トークンあたり 2 ドル、出力が
+10 ドル、キャッシュからの読み出しはその 1 割(2026 年 9 月時点)。一回の呼び出しが
+文脈 8 万トークン・出力 2 千トークンで、文脈の 9 割がキャッシュから読まれるとすると、
+一回あたり約 0.05 ドル。AI に書かせ続ける日を一日 200 回、月 20 日で、約 200 ドルに
+なる。月 20 ドルの定額に対して、ちょうど 10 倍だ。同じ量を Opus 5 で通せば、
+500 ドルを超える。
+
+つまり、世界の最上層のコーディング能力に、月 3 千円で接続できる。
+クレジットカード一枚とブラウザ一つあれば、その日のうちに始められる。
+
+```mermaid
+flowchart LR
+  Top["世界トップ層の<br/>コーディング能力<br/>(Codeforces 2700+)"]
+
+  subgraph Legacy["かつての経路"]
+    direction TB
+    H1["国際的な大手企業に採用される"]
+    H2["数千万円の人件費を出す"]
+    H3["数十人を取り合う採用市場"]
+  end
+
+  subgraph Native["AI ネイティブな経路"]
+    direction TB
+    N1["Claude Pro(20 ドル/月)を契約"]
+    N2["即日アクセス可能"]
+    N3["人数の制約なし"]
+  end
+
+  Top ==>|限られた人にしか届かない| Legacy
+  Top -.->|誰にでも届く| Native
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef bad fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class Native good
+  class Legacy bad
+```
+
+これは、価格が下がったという話ではない。価格構造そのものの軸が変わった。
+かつては、希少な能力に大きい固定費が掛かっていた。いまは、同等の能力が
+限界費用ゼロに近い。同じ表計算を二つの価格で比べているのではない。
+まったく違う供給曲線の話である。
+
+____
+かつてコーディングの最上層は、数十人の希少資源だった。
+いまは、月 3 千円のサブスクだ。
+____
+
+== ここで、IT 革命が成就する
+
+最上層のコーディング能力が、月 3 千円で誰にでも届く。この事実が意味するのは、
+AI が速くなった、便利になった、ということではない。「IT 革命」と呼ばれて
+きたものが、ここで初めて成就するということだ。
+
+「IT 革命」と呼ばれてきたものを、構造で見直す。
+
+* 産業革命 ── 物の生産が、人の手から機械に移った
+* 第一次計算革命 ── 計算が、人の手(算盤・計算手)から計算機に移った
+* IT 革命 ── 業務の処理が、紙とペンからソフトウェアに移った
+
+最初の二つでは、革命の中核である機械化と自動化が、革命の対象に完全に
+及んでいた。三つ目は違う。ソフトウェアそのものは、依然として人の手で
+書かれていた。革命の道具であるソフトウェアを、人手で作り続ける。これは、
+革命の中核が、革命の道具の生産には及んでいない状態だ。だから「IT 革命」と
+呼ばれた変化は、革命の中途半端な形態にすぎなかった。
+
+産業革命に喩えれば、織機はできたが、その織機の部品はまだ鍛冶屋が手で
+叩いて作っている。そういう状態に近い。革命の輪は、道具の生産まで届いて
+初めて閉じる。
+
+AI がコードも設計も担ういま、ようやくその輪が閉じる。ソフトウェアを作る
+作業そのものを、機械が引き受ける。革命の道具を、革命のプロセスで作るように
+なる。これが、本当の意味での IT 革命の成就だ。
+
+この視点を持つと、この連載で扱う変化 ── コーダーの役割消滅、SIer の
+構造的不経済、雇用と業界構造の転換 ── は、個別の現象ではなくなる。遅れて
+いた革命が一気に追いついて完成する過程として読める。
+
+この成就は、AI 革命の側から振り返ると、もう一つの読み方を持つ。「IT 革命」と
+呼ばれた数十年は、AI 革命の前段だった。活版印刷という情報革命に、紙の普及と
+写本の蓄積という前段があったのと同じだ。印刷機が爆発させたのは、前段の
+数世紀が写し貯めた文字だった。同じように、AI が爆発させているのは、IT の
+数十年が蓄えた資産である。とりわけ OSS ── 開いたコードと知識の共有財 ── だ。
+前段の最大の遺産は、閉じた製品群ではなく、この開いた蓄積のほうだった。
+この一点が、道具の選び方(1-05)と、自立編全体の置き方(2-01)を決める。
+
+== まとめ
+
+この連載の後続の章は、すべてこの一点から演繹的に導かれる。
+
+* 1-02 ── コーディングそのものが安くなったとき、保守の単位はどこに移るか
+* 1-03 ── 「コードを書く」を仕事の中心に置く役割(コーダー)はどうなるか
+* 1-04 ── 代わりに何が役割として残るか(ビルダー)
+* 1-05 ── 顧客自身が AI と組むようになると、外注の構造はどうなるか
+* 2-01〜2-17 ── 顧客が自分で握るなら、認証・文書・メール・基幹まで、
+  会社の IT 基盤全体を、どう自分の側に立てるか(自立編)
+* 3-01〜3-03 ── 事務と基幹の二つの世界、ベンダーの語りの検算、デジタル主権
+* 3-04 ── SIer の委託モデルは、閾値の上にいる AI と競争できるか
+* 3-05 ── 既存の委託関係は、どこでロックインとして機能するか
+* 3-06〜3-09 ── ビルダーの雇用、SIer 業界の転換、転換が下から起きること、転換が近い将来に
+  起き、もう戻らないこと
+
+これらの問いは、それぞれ独立した観察ではない。最強の SIer が月 3 千円で
+手に入るという一点から、すべてが派生する。この章は、その一点を据えるために
+ある。
+
+そして話は、「コードを書く」だけにとどまらない。顧客が自分で握れるなら、
+認証も文書もメールも基幹も、自分の側に立つ。この連載は、ソフトウェア開発から
+始めて、全社のデジタル主権(自立編)までを、地続きに扱う。
+
+ここから先の議論には、もう一つ前提を置く。この連載は、ソフトウェア開発の
+中の構造変化を扱う。「AI に全部任せれば人間は要らない」とか、逆に「AI には
+創造性が無いから影響は限定的」とか、そうした極端な議論は扱わない。閾値を
+超えた AI が市場に入って何年か経過したら、ソフトウェア開発の発注・委託・
+雇用・価格はどう組み替わるか。この実務的な問いに、章を追って答える。
+
+____
+一行に圧縮すれば、この連載はこうだ。
+*最強の SIer が月 3 千円なら、外注を中心に組まれたソフトウェア開発の構造は、もう保てない*。
+____
+
+もう一つ、伏線を置く。AI がコーディングも設計も担うなら、人間側に残るのは、
+ハード・人・運用・責任を含む、システムを作り動かす広い仕事だ。その基盤は、
+ソフトウェア工学ではなくリベラルアーツに近い。この連載全体を貫く線であり、
+1-04 で正面から扱う。
+
+次の章では、コーディング能力が安くなったことの、最も見落とされやすい
+帰結を扱う。保守フェーズの構造変化だ。
+
+'''
+
+== 関連記事
+
+* link:/ai-native-software/builder/[1-04: ビルダーという役割]
+* link:/ai-native-software/five-years/[3-09: もう戻らない構造転換]
+* link:/ai-native-software/python/[2-04: 処理を書く ── Python と Flet で、自分の道具を持つ]
+* link:/insights/enterprise-tax/[構造分析08: 企業ITの税を引く]
+* link:/insights/ai-and-individual/[構造分析12: AIと個人事業]
+endif::[]
+ifdef::lang-en[]
+= AI Solves the World's Hardest Coding Problems
+
+*AI now sits on the side of the table that solves the world's hardest coding problems*.
+
+AI's native tongue is Python and Markdown-shaped text. This series goes one
+step further. The question is not language but capability level. The code AI writes has crossed a
+line. Past that line, the structure of software development itself
+rearranges. This chapter establishes where the line sits.
+
+== Coding ability can be compared as a number, on competitive-programming ratings
+
+There is exactly one mechanism in the world that assigns objective numbers
+to coding ability. It is the public rating of competitive programming.
+Codeforces, AtCoder, and ICPC all accumulate, over years, whether you can
+solve set problems in time, how many you solve, and how correct your
+solutions are. Each participant ends up with a number.
+
+Codeforces rating bands distribute roughly like this.
+
+|===
+| Band | Title | Participant position
+| Below 1200 | Newbie | Beginner
+| 1600–1899 | Expert | Top ~10%
+| 2100–2399 | Master, International Master | Top few percent
+| 2400–2599 | Grandmaster | ~Top 1%
+| 2600–2999 | International Grandmaster | A small slice of the top
+| 3000 and above | Legendary Grandmaster | A few dozen worldwide
+|===
+
+The numbers have steps in them. The gap between 1500 and 1800 closes with
+study. The gap between 2400 and 2700 does not close with study alone. Past
+that point you need speed, algorithmic design, and a nose for the hardest
+problems. The world's top sits between roughly 2700 and 3900, and contains
+around fifty people.
+
+____
+This is the one place in the world where coding ability is compared by
+number. And here, the bands you can reach by study and the bands you
+cannot are clearly separated.
+____
+
+== AI has entered the 2700 tier
+
+Through late 2024 and into 2025, the situation changed. OpenAI's publicly
+reported estimated Codeforces rating for the o3-series models came in at
+around 2727, announced at the o3 launch. Google DeepMind's AlphaCode 2,
+a step before that, demonstrated top-15% Codeforces performance. Later
+research models have pushed further. Anthropic has reported continuous
+improvement in coding ability for the Claude family.
+
+There is room to argue about where the numbers come from and how they are
+measured. But *the fact that AI has entered the 2700 tier* is confirmed by
+several independent announcements that move in the same direction. This is
+not "AI became a useful assistant." It means AI sits on the side that
+solves the hardest problems.
+
+The reason this happened is that competitive programming is a domain with
+explicit rules. Grammar, the standard library, and the type system are all
+formally defined. Whether code compiles, and whether the output matches
+the expected values, can be judged mechanically. AI passes human levels in
+domains like this, where the rules are explicit and the answer can be
+checked. When this series argues that coders disappear, the claim is
+limited to domains with that property. Complete replacement at the same
+speed does not extend to other AI applications such as desk work,
+self-driving, or robotics. That boundary is treated in 3-09.
+
+What matters here is not the rank. It is the structural change of crossing
+a threshold.
+
+* Up to 2400 was a band a strong specialist could reach with enough drill
+* 2700 is a band that holds a few dozen people worldwide
+* AI entered that band by a different path than the one humans climb, one
+  person at a time
+
+For a human to reach this band takes thousands of hours of practice
+starting young. On top of that, it takes passing a talent filter. AI
+entered the same band without taking that path. There used to be an
+objection that the training data contained the same problems. But
+Codeforces keeps running live contests with fresh problems, and AI models
+have repeatedly been observed returning 2700-tier solutions there. A band
+humans reach one person at a time, over a decade and more, was entered by
+AI all at once, by several paths.
+
+== Because AI can design as well, it became the strongest SIer
+
+Reaching the 2700 tier proves the ability to write code fast and correctly.
+That ability is coding. Design is a different ability. The core of design
+is understanding context. You read the target system or situation, grasp
+what it needs, and assemble a structure that fits. That is design. Writing
+fast and correctly is not the same as understanding context and deciding
+structure. So design ability needs its own evidence.
+
+That evidence came from an unexpected place. A publicly reported case had
+an attacker misuse Claude, and
+the AI ran most of the operational steps of an attack on the target
+autonomously. Anthropic reported it in 2025 as an automated
+cyber-espionage campaign. Driving an attack yourself requires scouting the
+target system, reading its weaknesses, and assembling the line of attack.
+That is, it requires understanding the target's context deeply. That is
+the same ability as designing a system.
+
+The same ability is also the ability to verify. To attack is to find the
+hole and strike it. To verify is to find the hole and close it. Both are
+expressions of one power: understanding a structure more deeply than the
+person who built it. Attack, design, and verification are not separate
+abilities. They are three faces of one power. That is why an AI that can
+attack can also design and verify.
+
+So AI reached the top tier in two separate abilities. One is writing code,
+shown by the 2700 tier. The other is understanding context to decide
+structure, which is design and verification, shown by the autonomous
+attack. *AI has begun to exceed senior engineers at both coding and
+design.* With both in hand, the conclusion is a single one. Today,
+AI has become the strongest SIer. It reads requirements,
+decides structure, implements, and runs the result. It does the whole of
+the SIer's work by itself. And it is not a scarce resource of a few dozen
+people worldwide. It is callable by anyone for $20 a month.
+
+== The world's top tier is reachable for $20 a month
+
+This is where the series' argument starts.
+
+The paths to top-tier coding ability used to be narrow. You got hired by
+Google, Meta, or Anthropic. You spent years climbing the
+competitive-programming ladder. Or you paid seven-figure salaries.
+Capability above the threshold was a scarce resource. Palantir's FDE
+(Forward Deployed Engineer) model is the extreme upper end of that legacy
+path. It embeds top-tier engineers inside the customer's organization on
+year-long, eight-figure contracts. The mechanics are covered in 3-05.
+
+Access to AI models comes in tiers, depending on how hard you intend to
+use them.
+
+* *The base plan* — Claude Pro, ChatGPT Plus, Google AI Pro, at around
+  $20 a month. For light use — watching tools that are already running,
+  fixing them now and then — this is enough. Start here.
+* *The building period* — while you have AI writing code all day, day after
+  day, use the tier above (Claude Max and the like, from $100 a month). Once
+  the building is done and the tools are running, drop back to the base plan.
+  The breakdown by period is in link:/en/ai-native-software/ai-pc/[2-02].
+* *The top models* — some vendors' top models sit outside the flat plans, on
+  pay-as-you-go (Anthropic's Fable 5 since July 2026). The work in this series
+  is covered by the two tiers above.
+* *API pay-as-you-go* — you can pay for what you use, but *do not use it
+  here*. Run the same volume through the API and it comes to roughly *ten
+  times* the flat plan.
+
+The gap has two causes.
+
+*One is that the volume stacks up.* When the AI writes code while using tools,
+every call resends the whole conversation and every file it has read. The input
+side stacks up once per call.
+
+*The other is that the unit price differs.* The flat plan is priced below what
+the same volume costs when bought by the meter. Add up the published per-token
+rates and you pass the monthly subscription by a wide margin — which means the
+discount sits on the subscription side. The usage limit is the boundary placed
+there in exchange.
+
+Count it out. Sonnet 5 lists at $2 per million input tokens and $10 per million
+output tokens, with cache reads at a tenth of the input rate (as of September
+2026). If one call carries 80,000 tokens of context and produces 2,000 tokens,
+and 90% of that context is served from cache, the call costs about $0.05. Two
+hundred calls a day, twenty days a month, and you are at roughly $200 — exactly
+ten times the $20 flat plan. Run the same volume through Opus 5 and it passes
+$500.
+
+In other words, the world's top-tier coding ability is reachable for $20
+a month. One credit card and one browser, and you can start the same day.
+
+```mermaid
+flowchart LR
+  Top["World-top<br/>coding ability<br/>(Codeforces 2700+)"]
+
+  subgraph Legacy["The old path"]
+    direction TB
+    H1["Get hired by a global tech firm"]
+    H2["Pay seven-figure salaries"]
+    H3["Compete for a few dozen people"]
+  end
+
+  subgraph Native["The AI-native path"]
+    direction TB
+    N1["Subscribe to Claude Pro ($20/mo)"]
+    N2["Access starts the same day"]
+    N3["No headcount limit"]
+  end
+
+  Top ==>|reaches only a few people| Legacy
+  Top -.->|reaches anyone| Native
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef bad fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class Native good
+  class Legacy bad
+```
+
+This is not a story about prices dropping. The axis of the price structure
+itself changed. Before, a scarce capability carried a large fixed cost.
+Now, a comparable capability carries something close to zero marginal
+cost. These are not the same spreadsheet at two prices. They are different
+supply curves.
+
+____
+Top-tier coding used to be a scarce resource of a few dozen people.
+It is now a $20-a-month subscription.
+____
+
+== This is where the IT revolution completes
+
+Top-tier coding ability reaches anyone for $20 a month. What that fact
+means is not that AI got faster, or that AI got convenient. It means that
+what has long been called the IT revolution finally completes here.
+
+Look at what the term "IT revolution" named, in structural terms.
+
+* The industrial revolution — production of physical goods moved from
+  human hands to machines
+* The first wave of computing — calculation moved from human hands, the
+  abacus and the human computer, to machines
+* The IT revolution — business processing moved from paper and pen to
+  software
+
+In the first two, the core of the revolution, mechanization and
+automation, reached the object of the revolution completely. The third is
+different. Software itself was still written by human hands. The tool of
+the revolution, software, kept being produced by hand. That is a state in
+which the core of the revolution has not reached the production of its own
+tool. So the change called the IT revolution was only an incomplete form
+of revolution.
+
+By the industrial-revolution parallel: the power loom exists, but the
+loom's own parts are still hammered out by hand at the blacksmith's. The
+revolution's loop does not close until it reaches the production of the
+tool itself.
+
+Now that AI carries both code and design, the loop finally closes. The act
+of producing software is itself taken over by machines. The revolution's
+tool comes to be built by the revolution's own process. That is what the
+completion of the IT revolution actually means.
+
+With that view, the changes this series covers — the coder role
+ending, the structural uneconomy of the SIer model, the rearrangement of
+employment and industry structure — stop being isolated phenomena. They
+read as one delayed revolution catching up and finishing at speed.
+
+Looked back at from the AI revolution's side, this completion has a second
+reading. The decades called the IT revolution were the preparatory stage
+of the AI revolution. It is the same as the information revolution of
+movable-type printing, which had its own preparatory stage in the spread
+of paper and the accumulation of manuscripts. What the printing press
+detonated was the text those preparatory centuries had copied and stored.
+In the same way, what AI is detonating is the assets the IT decades stored
+up. Above all, that means OSS, the open commons of code and knowledge. The
+preparatory stage's greatest legacy was not the closed product lines. It
+was this open accumulation. That one point decides how tools are chosen
+(1-05) and how the whole independence part is arranged (2-01).
+
+== Summary
+
+Every chapter that follows is deduced from this one point.
+
+* 1-02 — once coding itself becomes cheap, where does the unit of
+  maintenance move?
+* 1-03 — what happens to the role whose center is writing code, the coder?
+* 1-04 — what role remains in its place, the builder?
+* 1-05 — when customers themselves pair with AI, what happens to the
+  structure of outsourcing?
+* 2-01 to 2-17 — if customers hold it themselves, how do they stand up the
+  whole company IT foundation, from authentication and documents to mail
+  and core systems, on their own side? That is the independence part.
+* 3-01 to 3-03 — the two worlds of office and core systems, checking vendor
+  narratives, digital sovereignty
+* 3-04 — can the SIer commission model compete with AI sitting above the
+  threshold?
+* 3-05 — where do existing commission relationships act as lock-in?
+* 3-06 to 3-09 — hiring builders, the transition of the SIer
+  industry, the revolution starting from below, and the fact that the transition arrives in the near term and
+  does not reverse
+
+These questions are not independent observations. They all derive from one
+point: the strongest SIer is available for $20 a month. This chapter
+exists to plant that point.
+
+And the story does not stop at writing code. Once customers can hold it
+themselves, authentication, documents, mail, and core systems all come to
+stand on their own side. This series runs continuously from software
+development to company-wide digital sovereignty, which is the independence
+part.
+
+One more frame applies to everything that follows. This series covers
+structural change inside software development. It does not take up the
+extreme positions, neither "leave everything to AI and humans are not
+needed" nor "AI has no creativity, so the impact is bounded." Once AI
+above the threshold has been in the market for some years, how do the
+commissions, the outsourcing, the employment, and the prices of software
+development rearrange? This series answers that practical question,
+chapter by chapter.
+
+____
+Compressed to one line, this is the series.
+*If the strongest SIer costs $20 a month, the outsourcing-centered structure of software development can no longer hold*.
+____
+
+One more thread runs underneath. If AI carries both coding and design,
+what remains on the human side is the broad work of building and operating
+a system, including hardware, people, operations, and responsibility. Its
+foundation is closer to the liberal arts than to software engineering.
+That thread runs through the whole series, and 1-04 takes it up
+directly.
+
+The next chapter takes up the most overlooked consequence of cheap coding.
+That is the structural change of the maintenance phase.
+
+'''
+
+== Related articles
+
+* link:/en/ai-native-software/builder/[1-04: The Builder Role]
+* link:/en/ai-native-software/five-years/[3-09: The Structural Transition That Won't Reverse]
+* link:/en/ai-native-software/python/[2-04: Write the Logic — Own Your Tools with Python and Flet]
+* link:/en/insights/enterprise-tax/[Structural analysis 08: Subtracting the enterprise-IT tax]
+* link:/en/insights/ai-and-individual/[Structural analysis 12: AI and the sole proprietor]
+endif::[]
+// ===== article: 02-maintenance-shift =====
+////
+slug: maintenance-shift
+number: 02
+part: 1
+title.ja: 保守フェーズの構造変化こそ本質
+title.en: Maintenance-Phase Shift Is the Real Story
+subtitle.ja: コーディングコスト低下は氷山の一角 ── AI が文脈を理解するから、コードでの保守そのものが要らなくなる
+subtitle.en: Cheaper coding is the tip of the iceberg — because AI understands context, maintaining at the code level stops being necessary
+description.ja: AI がコードを書くようになったことの最も見落とされやすい帰結は、コーディングの高速化ではない。保守フェーズそのものの構造変化だ。保守はソフトウェアの費用の 4〜8 割、平均 6 割を食う(Glass, IEEE Software, 2001)。AI が文脈を理解するから、コードでの保守そのものが要らなくなり、保守の単位はコードから設計・仕様・文脈に移る。最大の単一コストだったレガシーコードの読解は消える。マニュアルを読んで自分の現実に合わせられる人なら、開発も保守もできる。
+description.en: The most overlooked consequence of AI writing code is not faster coding. It is the structural shift of the maintenance phase itself. Maintenance eats 40 to 80 percent of software cost, 60 percent on average (Glass, IEEE Software, 2001). Because AI understands context, maintaining at the code level stops being necessary, and the unit of maintenance moves from code to design, spec, and context. The single largest cost, reading legacy code, evaporates. Anyone who can read a manual and fit it to their own reality can do development and maintenance.
+date: 2026.06.08
+label: Introduction 2
+title_html.ja: 保守の単位は、<br><span class="accent">コードから文脈</span>へ。
+title_html.en: The unit of maintenance moves<br>from <span class="accent">code to context</span>.
+////
+ifdef::lang-ja[]
+= 保守フェーズの構造変化こそ本質
+
+*コーディングが速くなった話は、氷山の一角だ。水面下で起きているのは、保守フェーズそのものの構造変化である*。
+
+1-01 で、AI が最強の SIer になったという事実を据えた。コードを書くだけで
+なく、文脈を理解して設計までする、という事実だ。ここから最初に派生する
+帰結は、よく語られる「コーディングが速くなる」ではない。保守の構造が
+組み替わることだ。この章は、その組み替えを見る。
+
+ソフトウェアの一生で、コーディングは最初の数ヶ月にすぎない。残りの長い年月は
+保守だ。そして保守は、ソフトウェアの費用の *4〜8 割、平均して 6 割* を食う
+(Robert L. Glass, "Frequently Forgotten Fundamental Facts about Software
+Engineering", IEEE Software 18(3), 2001)。四半世紀前に整理され、それより前から
+測られてきた事実である。
+
+== いまの保守は、すべてがコードの周りで回っている
+
+AI の話題でよく取り上げられるのは、コードが速く書けることだ。これは事実
+だが、氷山の一角でしかない。ソフトウェア開発の支配的コストは、書くことでは
+なく、書いた後にある。1980 年代から繰り返し測られてきたことだ。水面下に
+隠れている本体は、これだ。
+
+* 既存コードの読解 ── 保守の中で最も支配的な活動
+* 既存の挙動を壊さずに直す
+* テストの追従 ── 後回しになる
+* ドキュメントの追従 ── 通常は乖離したまま
+* 仕様の暗黙化 ── 関係者がいなくなったら復元できない
+* 技術的負債の蓄積 ── 毎年ゆっくり、確実に
+
+旧来、保守の単位はコードだった。バグが出る。コードを読む。コードを直す。
+テストを書く。ドキュメントを直す。すべてがコードの周りで回る。中でも
+最大の単一コストは、*既存コードの読解*だ。
+
+ここには数字がある。Glass は、保守の中で支配的な活動は「既存の製品を理解する
+こと」であり、保守時間の約 3 割を占めると書いている(前掲)。実測もある。
+開発者 78 人の作業時間 3,148 時間を記録した調査では、作業時間の *約 6 割* が
+コードの理解に使われていた。しかも、経験の浅い開発者ほどその比率は高い
+(Xin Xia et al., "Measuring Program Comprehension: A Large-Scale Field Study
+with Professionals", IEEE Transactions on Software Engineering, 2018)。
+
+退職した前任者の意図ごと読み解く作業は、時間をかけても完全には復元できない。
+レガシーを触れないことが、システム全体の延命を強いてきた。書き換えコストの
+大半が、読解コストだったからだ。
+
+そもそも、なぜすべてがコードの周りで回るのか。設計書が、現実に追いつけな
+かったからだ。顧客は、細かい要望を言葉で SIer に伝えきれない。動くものを
+見て、初めて「ここはこうしたい」と気づく。SIer の側も、変更のたびに設計書を
+直すのは手間なので、設計書ではなくコードを直す。こうして設計書は更新され
+ないまま取り残され、現実に追いついている資料はコードだけになる。「コードを
+読むのが一次資料」という常識は、ここから生まれた。
+
+そして、この常識が「vibe coding」を生む。コードが一次資料なら、コードさえ
+書ければいい、という発想になる。動けばいい、出力さえ出れば正解だ、と。
+だが、これでは意味がない。設計も仕様も文脈も持たないコードは、たとえ動いても、
+何のために何をしているのかが分からない。書いた本人にも、次に読む者にも
+分からない。積み上がるのは、読めず、直せず、信頼できないコードの山だけだ。
+コードが書けること自体には、ほとんど価値がない。
+
+____
+「コーディングが速くなった」は、AI 化の入口の話だ。
+出口の話は、保守フェーズの構造そのものが変わることだ。
+____
+
+== AI が文脈を理解するから、コードでの保守は要らなくなる
+
+ここで 1-01 の一点が効いてくる。設計の核心は文脈の理解であり、AI はそこに
+達した。AI は、システム全体の文脈を読み解ける。構造も、意図も、経緯もだ。
+
+そして、理解した文脈を、AI は二つの形に書き起こせる。一つは、人間用の
+マニュアルだ。どう使い、どう運用するかを書く。もう一つは、機械用の設計書だ。
+構造と仕様を書く。AI 自身がコードを生成する拠り所になる。かつて、人間が
+面倒がって更新せず死なせた設計書を、AI が文脈から自動で書き、保つ。人間は
+マニュアルを読む。機械である AI は設計書を読んで、コードを生成し、再生成する。
+
+その設計書は、どこに住むのか。保守の単位が文脈に移るなら、文脈の置き場が、
+そのまま保守の基盤になる。答えは自立編で据える ── 原稿と同じく文字で持ち、
+課題ごとのフォルダーに置く(link:/ai-native-software/ai-pc/[2-02: 機械を役割で分ける]・
+link:/ai-native-software/documents/[2-07: 文書を取り戻す])。git は必須ではない。
+履歴が欲しくなったら足す(link:/ai-native-software/code/[2-06: コードを手元に])。
+文字なら、人も AI も同じものを読む。設計書が死ぬのは、文字でない形で、
+AI の読めない場所に置かれたときだ。
+
+ここから、大きな帰結が一つ出る。*マニュアルを理解でき、それを現実に合わせ
+られる人なら、開発も保守もできる*。コードを書く必要はない。マニュアルを読んで、
+自分の現実にあわせればよい。コーディングの経験は、前提ではなくなる。
+
+ただし、*確かめることは、人が深く学ぶ*。テストを読み、何を、どの入力で、何を
+期待して確かめているかを言えること。鍵を作り直し、予備の機械に立て直し、記録から
+不審を見つけること。これは自分の手で実際に動かせなければならない。コードを書く
+技能は浅くてよいが、確かめる技能は浅くてはいけない。この点は、1-05 で「顧客自身が作る」
+として展開する。
+
+チェックの側も同じだ。設計書のレビューも、コードのセキュリティ監査も、
+AI が手伝える。攻撃の構造を組み立てられる力(1-01)は、裏返せば、弱点を
+見つけて塞ぐ力でもある。だが、AI の報告には、大げさな所も、無い物も混じる。
+攻撃に使われた AI も、見つけた物を大げさに言い、使えない資格情報を手に入れたと
+報告していた(Anthropic の報告、2025 年 11 月)。
+最後に確かめるのは人だ。レビューやセキュリティチェックを外注する理由は、もうない。
+確かめる技能は、自分の側に置く。委託その
+ものが成り立たなくなる構造は、転換編で扱う。
+
+```mermaid
+flowchart LR
+  subgraph Old["旧来の保守 ── コードが主戦場"]
+    direction TB
+    OD["設計・仕様<br/>(放置・暗黙化)"]
+    OC["コード<br/>(人間が一行ずつ相手にする)"]
+    OT["テスト・ドキュメント<br/>(必ず遅れる)"]
+    OD -.->|追いつけず切れる| OC ==>|直したぶんだけ遅れる| OT
+  end
+
+  subgraph New["AIネイティブな保守 ── 文脈が主戦場"]
+    direction TB
+    ND["設計・仕様・文脈<br/>(やりたいことを AI に伝える<br/>── SIer に頼むのと同じ)"]
+    NC["コード<br/>(AIが文脈から生成)"]
+    NT["テスト・ドキュメント<br/>(AIが設計から同期)"]
+    ND ==>|生成の拠り所になる| NC ==>|同じ設計から作り直す| NT
+  end
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef bad fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class New good
+  class Old bad
+```
+
+____
+旧来の保守は、コードを相手にする作業だった。
+いまは、保守も開発も、AI と対話する作業に変わる。やりたいことを伝えれば、
+コードもテストもドキュメントも、AI が作り直す。
+____
+
+== 設計・仕様・文脈は、AI に渡す最初の仕様になる
+
+保守の単位が設計・仕様・文脈に移るなら、書くべきものも決まる。何を使い、何を
+使わないか。どこに置き、どこまでを自分で持つか。どこから先は借りるか。その
+決定を、文字で持つ。これが、*AI に渡す最初の仕様*になる。
+
+渡すのはコードではない。コードの書き方は AI が知っている。AI が知らないのは、
+この会社が何を選び、何を選ばなかったかだ。それだけが、人の側に残る。
+
+この連載の自立編は、その形で書いてある。各章は手順の実演ではなく、決定の
+一覧だ。章をそのまま AI に渡せば、作り始められる。保守のときも同じ章に戻る。
+決定が変わったら、章ではなく決定を直し、AI に作り直させる。
+
+____
+人が持つのは決定で、コードは生成物だ。
+だから保守は、コードを直す作業ではなく、決定を直す作業になる。
+____
+
+== まとめ
+
+コードでの保守が要らなくなり、現場で保守ができる。保守の単位は、コードから
+設計・仕様・文脈に移った。最大の単一コストだったレガシーコードの読解は、
+消える。
+
+この変化は、二つの問いを突きつける。個人としては、コードを書くこと自体を
+仕事の中心に置く役割、つまりコーダーはどうなるのか。組織としては、開発を
+請け負ってきた SIer は、まだ要るのか。
+
+次の章では前者を扱う。コーダーという役割そのものの話だ。後者、SIer が
+不要になる構造は、転換編で扱う。
+
+'''
+
+== 関連記事
+
+* link:/ai-native-software/coder-top/[1-01: AI は、世界で最も難しいコーディング問題を解く]
+* link:/ai-native-software/coder-end/[1-03: ソフトウェアエンジニアの仕事を AI がするようになる]
+* link:/ai-native-software/builder/[1-04: ビルダーという役割]
+* link:/ai-native-software/python/[2-04: 処理を書く ── Python と Flet で、自分の道具を持つ]
+* link:/insights/enterprise-tax/[構造分析08: 企業ITの税を引く]
+endif::[]
+ifdef::lang-en[]
+= Maintenance-Phase Shift Is the Real Story
+
+*The story that coding got faster is the tip of the iceberg. What is happening below the waterline is a structural change in the maintenance phase itself*.
+
+1-01 established that AI became the strongest SIer. It does not only write
+code; it understands context and designs. The first consequence to derive
+from that is not the often-told "coding gets faster." It is that the
+structure of maintenance rearranges. This chapter looks at that
+rearrangement.
+
+In the life of software, coding is only the first few months. The long
+remainder is maintenance. And maintenance eats *40 to 80 percent of software
+cost, 60 percent on average* (Robert L. Glass, "Frequently Forgotten
+Fundamental Facts about Software Engineering," IEEE Software 18(3), 2001). It
+was written up a quarter of a century ago, and measured before that.
+
+== Maintenance today turns entirely around code
+
+What gets talked about with AI is that code gets written faster. That is
+true, but it is only the tip of the iceberg. The dominant cost of software
+development is not in writing but in what comes after writing. It has been
+measured, again and again, since the 1980s. The body hidden below the surface
+is this.
+
+* Reading existing code — the dominant activity within maintenance
+* Fixing without breaking existing behavior
+* Keeping tests in sync — gets deferred
+* Keeping docs in sync — usually left to drift
+* Spec going implicit — unrecoverable once the people are gone
+* Technical-debt accumulation — slowly and surely, every year
+
+Traditionally, the unit of maintenance was code. A bug appears. You read
+the code. You fix the code. You write the test. You fix the docs.
+Everything turns around code. The single largest cost among these is
+*reading existing code*.
+
+There are numbers here. Glass writes that the dominant activity within
+maintenance is "understanding the existing product," taking roughly 30 percent
+of maintenance time (cited above). There is a measurement, too. A field study
+that logged 3,148 working hours from 78 professional developers found that
+*about 60 percent* of that time went to comprehending code — and the less
+experienced the developer, the higher the share (Xin Xia et al., "Measuring
+Program Comprehension: A Large-Scale Field Study with Professionals," IEEE
+Transactions on Software Engineering, 2018).
+
+Decoding a predecessor's intent along with their code is work that no amount of
+time fully recovers. Being unable to touch the legacy is what forced whole
+systems to be kept alive well past their time, because most of the cost of
+rewriting was the cost of reading.
+
+Why does everything turn around code in the first place? Because the
+design document could not keep up with reality. The customer cannot put
+every fine-grained request into words for the SIer. They only realize
+"this should be like that" once they see something running. And the SIer,
+for whom updating the design document on every change is a chore, fixes
+the code rather than the document. So the design document is left
+un-updated, and the only artifact that keeps up with reality is the code.
+The common sense that reading the code is the primary source was born
+right here.
+
+And this common sense breeds vibe coding. If code is the primary source,
+the mindset becomes: as long as you can write code, you are done. If it
+runs, if it produces output, it counts. But that is meaningless. Code with
+no design, no spec, and no context behind it leaves no one able to say
+what it does or why, even when it runs. Not the author, not the next
+reader. What piles up is a heap of code no one can read, fix, or trust.
+Being able to write code is, in itself, worth almost nothing.
+
+____
+"Coding got faster" is the story at the entrance to AI.
+The story at the exit is that the structure of the maintenance phase
+itself changes.
+____
+
+== Because AI understands context, maintaining at the code level stops being necessary
+
+Here is where 1-01's point bites. The core of design is understanding
+context, and AI has reached it. AI can read the context of a whole system:
+its structure, its intent, and its history.
+
+And the context it understands, AI can render into two forms. One is a
+manual for humans, covering how to use and operate the system. The other
+is a design document for machines, covering the structure and the spec.
+That document is what AI itself reads to generate code. The design
+document that humans, finding it tedious, stopped updating and let die is
+now written and kept by AI, from the context. Humans read the manual. The
+machine, the AI, reads the design document and generates and regenerates
+the code.
+
+Where does that design document live? If the unit of maintenance moves to
+context, then where the context is kept becomes the foundation of maintenance
+itself. The Independence part settles it: hold it as text, like a manuscript,
+in one folder per task (link:/en/ai-native-software/ai-pc/[2-02: Give the AI
+a PC] and link:/en/ai-native-software/documents/[2-07: Take Documents
+Back]). Git is not required; add it when you want the history
+(link:/en/ai-native-software/code/[2-06: Bring Code In-House]). As text,
+humans and AI read the same thing. A design document dies when it is kept
+in a form that is not text, in a place the AI cannot read.
+
+From here follows one large consequence. *Anyone who can understand the
+manual and fit it to their own reality can do both development and
+maintenance.* There is no need to write code. You read the manual and fit
+it to your own reality. A coding background stops being a prerequisite.
+
+But *checking is something a person learns deeply.* Reading a test and being
+able to say what it checks, with which inputs, expecting what. Regenerating
+keys, rebuilding on the spare machine, spotting the suspicious in the logs.
+These you must be able to do with your own hands. The skill of writing code
+may stay shallow; the skill of checking may not. 1-05 develops this point as "the customer builds it
+themselves."
+
+The checking side is the same. AI can help with reviewing the design
+document and auditing the code for security. The ability to assemble the
+structure of an attack (1-01) is, flipped over, the ability to find and close
+the weaknesses. But an AI's report can overstate, and can contain things that
+are not there. The AI used in an attack, too, overstated its findings and reported
+credentials that did not work (Anthropic's report, November 2025). A person does the final check. There is no longer a reason to
+outsource review or security checks. Keep the skill of checking on your own
+side. The structure by which commissioning itself stops holding is taken
+up in the Shift part.
+
+```mermaid
+flowchart LR
+  subgraph Old["Old maintenance — code is the battleground"]
+    direction TB
+    OD["Design & spec<br/>(abandoned, gone implicit)"]
+    OC["Code<br/>(human takes it line by line)"]
+    OT["Tests & docs<br/>(always lag)"]
+    OD -.->|cannot keep up, link breaks| OC ==>|lags by every fix made| OT
+  end
+
+  subgraph New["AI-native maintenance — context is the battleground"]
+    direction TB
+    ND["Design, spec, context<br/>(tell AI what you want<br/>— same as commissioning an SIer)"]
+    NC["Code<br/>(AI generates from context)"]
+    NT["Tests & docs<br/>(AI syncs from the design)"]
+    ND ==>|is what generation reads| NC ==>|rebuilt from the same design| NT
+  end
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef bad fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class New good
+  class Old bad
+```
+
+____
+Old maintenance was work done against code.
+Now, both maintenance and development become a dialogue with AI. Tell it
+what you want, and AI rebuilds the code, the tests, and the docs.
+____
+
+== Design, spec, and context become the first spec you hand to an AI
+
+If the unit of maintenance moves to design, spec, and context, then what you
+have to write is settled too. What you use, and what you do not. Where it goes,
+and how much of it you hold yourself. Where borrowing begins. Hold those
+decisions as text. That is the *first spec you hand to an AI*.
+
+What you hand over is not code. The AI already knows how to write code. What it
+does not know is what this company chose, and what it chose against. That part,
+and only that part, stays on the human side.
+
+The Independence part of this series is written in that shape. Each chapter is a
+list of decisions, not a demonstration of steps. Hand a chapter to an AI as it
+is and the work can start. Maintenance returns to the same chapter: when a
+decision changes, you change the decision rather than the code, and have the AI
+rebuild.
+
+____
+The human holds the decisions; the code is the output.
+So maintenance becomes the work of changing decisions, not of changing code.
+____
+
+== Summary
+
+Maintaining at the code level stops being necessary, and maintenance can
+be done on-site, by the field itself. The unit of maintenance has moved
+from code to design, spec, and context. The single largest cost, reading
+legacy code, evaporates.
+
+This change presses two questions. For the individual: what happens to the
+role whose center is writing code itself, the coder? For the organization:
+is the SIer, which took on development, still needed?
+
+The next chapter takes up the former, the coder role itself. The latter,
+the SIer becoming unnecessary, is taken up in the Shift part.
+
+'''
+
+== Related articles
+
+* link:/en/ai-native-software/coder-top/[1-01: AI Solves the World's Hardest Coding Problems]
+* link:/en/ai-native-software/coder-end/[1-03: AI Now Does the Software Engineer's Work]
+* link:/en/ai-native-software/builder/[1-04: The Builder Role]
+* link:/en/ai-native-software/python/[2-04: Write the Logic — Own Your Tools with Python and Flet]
+* link:/en/insights/enterprise-tax/[Structural analysis 08: Subtracting the enterprise-IT tax]
+endif::[]
+// ===== article: 03-coder-end =====
+////
+slug: coder-end
+number: 03
+part: 1
+title.ja: ソフトウェアエンジニアの仕事を AI がするようになる
+title.en: AI Now Does the Software Engineer's Work
+subtitle.ja: コーダーは当然消える ── 設計までするソフトウェアエンジニアも、自分で設計しコードを書く役割ではなく、AI と対話する役割(ビルダー)に変わる
+subtitle.en: The coder obviously goes — and the software engineer who designs and codes becomes, not a designer-coder, but someone who works in dialogue with AI (the builder)
+description.ja: コードを書く役割であるコーダーは、当然消える。だがこの章の主題はその先だ。設計までするソフトウェアエンジニアの仕事も、AI がするようになる。コードを書く力と構造を決める力は、別々の AI が分担しているのではなく、一つの力の別の顔だ。だから設計もコードも AI が担う。人間に残るのは、自分で設計しコードを書く仕事ではない。AI と対話してシステムを作り動かす仕事、つまりビルダーだ。電卓が算盤を押し出したときと同じ分岐が、いま起きている。消えるのは役割定義であって、人ではない。
+description.en: The coder, the code-writing role, obviously disappears. But the subject of this chapter is what lies beyond. AI now does the software engineer's work too. Writing code and deciding structure are not divided between separate AIs but are faces of one power, so design and code are both carried by AI. What stays with humans is not designing and coding yourself. It is building and operating a system in dialogue with AI — that is, the builder. The same split that followed the calculator replacing the abacus is happening now. What disappears is the role definition, not people.
+date: 2026.06.15
+label: Introduction 3
+title_html.ja: ソフトウェアエンジニアの<br>仕事を、<span class="accent">AI</span> がする。
+title_html.en: AI now does the<br><span class="accent">software engineer's</span> work.
+////
+ifdef::lang-ja[]
+= ソフトウェアエンジニアの仕事を AI がするようになる
+
+*コードを書くコーダーという役割は、当然、立たなくなる。だがこの章の主題はその先だ。設計までするソフトウェアエンジニアの仕事も、AI がするようになる*。
+
+1-02 で、保守も開発も AI と対話する作業に変わることを見た。この章は、その
+裏面を扱う。役割の側の話だ。言っているのは「プログラマー全員が消える」では
+ない。「コーダーとソフトウェアエンジニアという役割定義が消える」だ。この
+区別が、この章の半分である。
+
+== コーダーとソフトウェアエンジニアは、別の役割だ
+
+この連載では、二つの役割を区別する。
+
+* コーダー ── コードを書くこと自体が仕事の中心。要件も設計も、別の人から
+  降りてくる。評価軸は「速く、正しく、読みやすく書く」。
+* ソフトウェアエンジニア(SE)── 設計まで踏み込む。何をどう作るかの構造を
+  自分で決め、そのうえでコードを書く。コーダーより広い。
+
+どちらも、具体的な人ではなく、*役割の定義*だ。同じ人が、ある場面では
+コーダー、別の場面では SE として働くことは普通にある。消えるのは、人では
+なく役割の方だ。
+
+これらの役割が成立してきたのは、人間がコードを書き、設計するのに時間が
+かかったからだ。一つのシステムを形にするだけで膨大な工数が要り、書く人手も
+設計する人手も揃える必要があった。SIer、受託開発、元請け下請け構造は、すべて
+この前提の上に建っている(3-04 で扱う)。
+
+== AI は、コーダーの仕事もソフトウェアエンジニアの仕事もする
+
+1-01 で、AI が最強の SIer になったという事実を据えた。二つの能力が、同時に
+最上層に達したという事実だ。
+
+* *コードを書く力* ── 意図を渡せば、動くコードに翻訳する
+* *構造を決める力* ── 文脈を理解し、設計まで踏み込んで、何をどう作るかを決める
+
+この二つは、別々の AI が分担しているのではない。1-01 で見たとおり、攻撃・設計・
+検証と同じく、一つの力の別の顔だ。だから一つの AI が、コーダーの仕事も
+ソフトウェアエンジニアの仕事もする。
+
+コードを書くだけのコーダーは、当然消える。だが、設計までする SE も同じだ。設計も
+コードも AI がやるなら、人間が「自分で設計してコードを書く」役割で立つ場所は、
+なくなる。*設計とコードの帯には、もう価格が立たない*。労働観の話ではない。
+価格の話だ。
+
+== 人間に残るのは、AI と対話する仕事だ
+
+では、人間に何が残るのか。設計でもコーディングでもない。AI と対話して、
+システムを作り、動かす仕事だ。
+
+* 何を作るかを決める ── 文脈は、人間が持っている
+* ハードを調達する(物理の世界)
+* 関係者と協議する(社会の世界)
+* 動かし、直し続ける(運用・保守)
+* 方向を決め、責任を取る
+
+AI は、文脈を与えられれば処理し、設計もする。だが、何を文脈に含め、現実と
+何をすり合わせるかを決めるのは人間だ。責任を取るのも人間だ。その主体は、
+現状の制度では AI ではない。これは、自分で設計しコードを書く「ソフトウェア
+エンジニアの仕事」ではない。AI と対話して形にする、別の役割だ。1-04 で
+「ビルダー」と呼ぶ。
+
+____
+人間に残るのは、設計でもコーディングでもない。
+AI と対話して、システムを作り、動かす仕事だ。それはもうソフトウェア
+エンジニアではなく、ビルダーである。
+____
+
+== 自分で設計しコードを書く役割は、ビルダーに移る
+
+だから退くのは、自分で設計しコードを書く役割 ── コーダーとソフトウェア
+エンジニア ── と、SIer がそれを量産するために組んだ役割分業だ。需要が減るの
+ではない。設計もコードも AI に置き換わって、価格が立たなくなる。一人が AI と
+対話して、システムを作り、動かす。その役割に移る。1-04 で「ビルダー」と
+呼ぶ役割だ。
+
+```mermaid
+flowchart LR
+  subgraph Old["旧来 ── 顧客が SIer に発注"]
+    direction TB
+    OClient["顧客"]
+    OP["PM"]
+    OD["ソフトウェアエンジニア(設計)"]
+    OC["コーダー(書く)"]
+    OClient ==>|発注| OP
+    OP ---|工数で割る| OD ---|工数で割る| OC
+  end
+
+  subgraph New["AI ネイティブ ── 一人 + AI が対話で"]
+    direction TB
+    H["顧客(ビルダー)<br/>(計画と仕様・ハード調達<br/>関係者協議・運用・責任)"]
+    A["AI<br/>(コードを書く力<br/>構造を決める力)"]
+    H <-->|対話・相互理解| A
+  end
+
+  Old ==>|設計とコードの価格が立たず分業が解ける| New
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef bad fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class New good
+  class Old bad
+```
+
+二つの図で、顧客は同じ場所にいる。違うのは、かつて SIer に発注するだけ
+だった顧客が、いまは自分で作り、動かす側に立つことだ。かつては発注する
+だけでも、RFP 作成、業者選定、要件すり合わせ、契約交渉と、相当の手間が
+かかった。設計まで踏み込める AI を相手にするなら、その発注する手間が
+あれば、顧客自身が作り上げてしまう(1-05 で扱う)。
+
+____
+かつては、SIer に発注するだけでも相当の手間がかかった。
+いまは、その手間があれば、顧客自身が作ってしまう。
+____
+
+これは「すべてのプログラマーが失業する」ではない。プログラマーと呼ばれて
+きた人々は、二つに分かれる。
+
+* (a) ソフトウェア開発から離れる ── 別の業界、別の役割へ
+* (b) ビルダーに移る ── AI と対話してシステムを作り、動かす側に立つ
+  (1-04 で定義する)
+
+逆に、ビルダーになるのはプログラマーだけではない。現場の人 ── 業務や顧客を
+実際に知っている人 ── も、ビルダーになれる。ビルダーに要るのは、コードを
+書く力ではないからだ。現場の文脈を掴み、AI と対話して形にする力である。
+むしろ、文脈を手元に持っている現場の人のほうが、ビルダーに近い(1-05 で
+「顧客自身が作る」として詳しく扱う)。
+
+歴史にも同じ形がある。日本では、算盤による商業計算の技能が、計算機の側に
+移った。だが、数字の意味を読み、業務を回せる人は経理・会計に残った。欧米の
+計算手(human computer)も、活版から写植に移ったときの組版工も同じだ。
+手作業が機械に置き換わると、より広い側 ── 段取り、対話、運用、責任 ── に
+移れる人と移れない人で分かれる。同じことが、ソフトウェア開発で起きている。
+コーディングも設計も、まとめてだ。
+
+注意したいのは、安い道具が入るときの速さだ。カシオミニは 1972 年 8 月に
+12,800 円で出た。従来機種の三分の一を下回る値で、*発売から 10 か月で
+100 万台*売れた(カシオ計算機の社史、情報処理学会コンピュータ博物館)。
+そろばんの側も動いている。播州そろばんの生産は 1960 年の 360 万丁が頂で、
+いまは年に約 15 万丁 ── 頂の二十四分の一ほどだ。それでも全国の約 7 割を占める
+(小野市「小野市の地場産業」)。
+
+この数字が言っているのは「何年で入れ替わったか」ではない。*安い道具は、
+出たら一気に入る*ということだ。入れ替わりそのものは、そこから長く続く。
+今回の AI 化は、その「安い道具」の段階から始まっている(1-01)。入るのは、
+同じように速い。耐えられるかどうかは個人の選択ではなく、業界構造の問題に
+なる(3-07)。
+
+== まとめ
+
+設計もコードも AI が担う。一方、何を作るか、ハード、人、運用、対話、責任は
+人間に残る。この役割を、誰が担うのか。
+
+そして、その役割の基盤となる学問は、ソフトウェア工学からリベラルアーツへ
+移る。これが、この連載の通奏低音だ。
+
+次の章で、その役割 ── ビルダー ── を定義する。
+
+'''
+
+== 関連記事
+
+* link:/ai-native-software/coder-top/[1-01: AI は、世界で最も難しいコーディング問題を解く]
+* link:/ai-native-software/maintenance-shift/[1-02: 保守フェーズの構造変化こそ本質]
+* link:/ai-native-software/builder/[1-04: ビルダーという役割]
+* link:/insights/enterprise-tax/[構造分析08: 企業ITの税を引く]
+* link:/insights/ai-and-individual/[構造分析12: AIと個人事業]
+endif::[]
+ifdef::lang-en[]
+= AI Now Does the Software Engineer's Work
+
+*The coder, as a role, obviously stops holding. But the subject of this chapter is what lies beyond. AI now does the work of the software engineer who designs, too*.
+
+1-02 showed that both maintenance and development become work done in
+dialogue with AI. This chapter takes up the other face of that, the role
+itself. The claim is not "all programmers disappear." It is that the role
+definitions called coder and software engineer disappear. That
+distinction is half of the argument.
+
+== The coder and the software engineer are different roles
+
+This series distinguishes two roles.
+
+* Coder — writing code itself is the center of the work. Requirements and
+  design both arrive from someone else. The yardstick is "writes fast,
+  correctly, readably."
+* Software engineer, or SE — goes into design. Decides the structure of
+  what to build and how, and then writes the code. Broader than the coder.
+
+Both are *definitions of a role*, not labels for people. The same person
+can work as a coder in one situation and an SE in another. What disappears
+is the role, not the people.
+
+These roles were viable because writing code and designing took humans a
+lot of time. Shaping even a single system demanded an enormous number of
+person-hours, and you had to assemble a workforce both to write and to
+design. In Japan, the SIer industry, contract development, and multi-tier
+subcontracting are all built on that premise. 3-04 takes it up.
+
+== AI does the coder's work and the software engineer's work alike
+
+1-01 established that AI became the strongest SIer. Two abilities reached the
+top tier at once.
+
+* *The ability to write code* — hand it intent and it translates that into
+  running code
+* *The ability to decide structure* — it understands context, goes into design,
+  and decides what to build and how
+
+These are not divided between separate AIs. As 1-01 showed, they are faces of
+one power, like attack, design, and verification. So one AI does the coder's
+work and the software engineer's work alike.
+
+The coder, who only writes code, obviously disappears. But the SE, who designs
+too, is in the same position. If AI does both the design and the code, there is
+no longer a place for a human to stand in the role of designing and writing the
+code themselves. *No price holds for the design-and-code band any more.* This is
+not a statement about labor ethics. It is a statement about prices.
+
+== What stays with humans is dialogue with AI
+
+So what stays with humans? Not design and not coding. It is building and
+operating a system in dialogue with AI.
+
+* Deciding what to build — the context is held by the human
+* Procuring hardware, which is the physical world
+* Negotiating with stakeholders, which is the social world
+* Running it and fixing it, continuously, which is operations and
+  maintenance
+* Deciding direction and taking responsibility
+
+AI processes context when it is given, and it designs. But deciding what
+to count as context, and what to reconcile with reality, stays with
+humans. So does taking responsibility. Under current institutions, the
+subject that holds that responsibility is not the AI. This is not the
+software engineer's work of designing and writing the code yourself. It is
+shaping things in dialogue with AI, which is a different role. 1-04 names
+it the builder.
+
+____
+What stays with humans is not design and not coding.
+It is building and operating a system in dialogue with AI. That is no
+longer the software engineer, but the builder.
+____
+
+== The role of designing and coding yourself moves to the builder
+
+So what steps back is the role of designing and writing the code yourself,
+the coder and the software engineer, together with the division of labor
+the SIer built to mass-produce it. Demand does not shrink. Both design and
+code get replaced by AI, so no price holds. One person, in dialogue with
+AI, builds and operates the system, and moves into that role. 1-04 names
+it the builder.
+
+```mermaid
+flowchart LR
+  subgraph Old["Old — the customer commissions an SIer"]
+    direction TB
+    OClient["Customer"]
+    OP["PM"]
+    OD["Software engineer (design)"]
+    OC["Coder (writes)"]
+    OClient ==>|commissions| OP
+    OP ---|split by person-hours| OD ---|split by person-hours| OC
+  end
+
+  subgraph New["AI-native — one person + AI, in dialogue"]
+    direction TB
+    H["Customer (builder)<br/>(plan and spec, hardware,<br/>stakeholders, operations, responsibility)"]
+    A["AI<br/>(writes code<br/>decides structure)"]
+    H <-->|dialogue, mutual understanding| A
+  end
+
+  Old ==>|no price holds for design and code, so the division dissolves| New
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef bad fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class New good
+  class Old bad
+```
+
+In both diagrams the customer stands in the same place. What changed is
+that the customer who used to only place the order now stands on the side
+that builds and runs it. Even just commissioning an SIer used to take real
+effort: writing the RFP, selecting the vendor, reconciling requirements,
+negotiating the contract. Working with an AI that goes into design, that
+same effort of ordering is enough for the customer to build the thing
+outright. 1-05 takes this up.
+
+____
+Once, even just placing the order with an SIer took real effort.
+Now, that same effort is enough, and the customer builds it.
+____
+
+This is not "every programmer loses their job." People who have been
+called programmers split in two directions.
+
+* (a) Leave software development — move to a different industry or role
+* (b) Move to the builder — stand on the side that builds and runs a
+  system in dialogue with AI, defined in 1-04
+
+Conversely, builders are not drawn only from programmers. People at the
+field, those who actually know the work and the customer, can become
+builders too. What a builder needs is not the ability to write code. It is
+the ability to grasp the field's context and shape it in dialogue with AI.
+If anything, the field people, who already hold the context, are closer to
+the builder. 1-05 takes this up as "the customer builds it themselves."
+
+History has the same shape. In Japan, the skill of commercial calculation by
+abacus, the soroban, moved over to the machine. But people who
+could read what the numbers meant and keep the work running stayed on, in
+accounting and finance. The same happened with the human computer in the
+West, and with the typesetter when phototypesetting replaced letterpress.
+When handwork is replaced by machines, what splits is who can move to the
+broader side, meaning orchestration, dialogue, operations, and
+responsibility, and who cannot. The same thing is happening now in
+software development, across both coding and design.
+
+The thing to flag is how fast a cheap tool arrives. The Casio Mini went on
+sale in August 1972 at ¥12,800 — under a third of the price of earlier models —
+and sold *one million units in its first ten months* (Casio's own company
+history; the Information Processing Society of Japan's computer museum). The
+abacus side moved too: Banshu soroban production peaked at 3.6 million units in
+1960 and is now around 150,000 a year — roughly a twenty-fourth of the peak, yet
+still about 70 percent of Japan's output (Ono City, "Local industries of Ono").
+
+What those numbers say is not "how many years the swap took." They say that *a
+cheap tool, once it exists, arrives all at once*. The swapping itself goes on
+for a long time after. The AI shift is starting from that same cheap-tool stage
+(1-01). Its arrival is just as fast. Whether one can absorb it becomes a
+question of industry structure, not personal choice. 3-07 takes that up.
+
+== Summary
+
+AI carries both design and code. Meanwhile, deciding what to build,
+hardware, people, operations, dialogue, and responsibility stay with
+humans. Who carries that role?
+
+And the foundational discipline of that role shifts from software
+engineering to the liberal arts. That is the bass line of this series.
+
+The next chapter defines that role: the builder.
+
+'''
+
+== Related articles
+
+* link:/en/ai-native-software/coder-top/[1-01: AI Solves the World's Hardest Coding Problems]
+* link:/en/ai-native-software/maintenance-shift/[1-02: Maintenance-Phase Shift Is the Real Story]
+* link:/en/ai-native-software/builder/[1-04: The Builder Role]
+* link:/en/insights/enterprise-tax/[Structural analysis 08: Subtracting the enterprise-IT tax]
+* link:/en/insights/ai-and-individual/[Structural analysis 12: AI and the sole proprietor]
+endif::[]
+// ===== article: 04-builder =====
+////
+slug: builder
+number: 04
+part: 1
+title.ja: ビルダーという役割
+title.en: The Builder Role
+subtitle.ja: 何を作るかを計画して仕様に書き、AI と対話して作り、動かし、全体を統合する
+subtitle.en: Plan what to build and write the spec, build it in dialogue with AI, run it, integrate the whole
+description.ja: ビルダーは、AI と対話してシステムを作り、動かす役割である。ソフトウェアエンジニアの後継ではない。ソフトウェアエンジニアは狭く閉じた課題を解く仕事で、そこは AI が引き受ける。ビルダーが扱うのは開いた課題、つまり現実から何を作るかを立ち上げる仕事だ。本章では、ビルダーの仕事を「計画する・AI と作る・確かめる・統合する」の四つのループとして定義する。そのうえで、狭く閉じた課題と開いた課題という軸から、なぜ判断を AI にまかせられないかを示す。
+description.en: The builder builds and runs whole systems in dialogue with AI, and is not the next version of the software engineer. The software engineer solves narrowly closed problems, and that is the work AI takes over. The builder handles the open problem of raising what to build out of reality. This chapter defines the builder as a loop of four steps — plan, build with AI, check, integrate — and then, along the axis of the narrowly closed problem versus the open problem, shows why judgment cannot be left to AI.
+date: 2026.06.22
+label: Introduction 4
+title_html.ja: 計画して、<span class="accent">AI と作り</span>、<br>動かす。
+title_html.en: Plan it, <span class="accent">build it with AI</span>,<br>run it.
+////
+ifdef::lang-ja[]
+= ビルダーという役割
+
+ビルダーとは、何を作るかを計画して仕様に書き、AI と対話して作り、動かし、全体を統合する役割である。
+1-03 では、コーダーとソフトウェアエンジニアの仕事を AI がするようになると書いた。
+その先にあるのは、自分で計画し、AI と対話してシステムを作り、動かす、もっと広い役割だ。
+この連載では、これをビルダーと呼ぶ。
+本章では、この役割の定義と、ソフトウェアエンジニアとの違いを固定する。
+
+== ビルダーの仕事は、四つの手順を回すことだ
+
+ビルダーの仕事は、四つの手順でできている。
+
+* 計画する ── 顧客と現場と自分の文脈から、何を作るかの案を立てる。どう分けるか、何を使い何を使わないか、どこに置き、どこまでを自分で持つかまで含めて、AI に渡せる仕様に書く。案を作るのも、仕様に書くのも、ビルダーの仕事だ。
+* AI と作る ── 意図と制約と文脈を AI に渡す。AI はコードを書き、設計を提案する。一度の指示では終わらない。やり取りを重ねる。
+* 確かめる ── 返ってきたものが動くかを見る。設計と合っているかを見る。想定した文脈で壊れないかを見る。テストを読み、何を、どの入力で、何を期待して確かめているかを言える。守りも確かめる ── 鍵を作り直せるか、予備の機械に立て直せるか、記録から不審を見つけられるか。コードを書く技能は浅くてよいが、確かめる技能は深く学ぶ。
+* 統合し、動かす ── 部分を全体に組み込み、整合を保って動かす。動かすとは、業務に載せて成果を出すことだ。企業が作った物なら、収益を上げるか、費用を下げるかしなければ、作った意味がない。動かして出た結果が、次の計画の材料になる。そして「計画する」に戻り、仕様を直す。
+
+この四つは一方通行ではない。ループである。一周にかかる時間は、規模によって数分から数時間だ。一日に何十周も回す。コードを書く時間は、この中で最小になる。書くのは AI だからだ。
+
+一つ目の「計画する」で書くものが、link:/ai-native-software/maintenance-shift/[1-02] で言う *AI に渡す最初の仕様* だ。後の三つは、その仕様を回す手順であり、一周するたびに仕様に戻って直す。保守の単位が仕様に移る(1-02)とは、このことだ。だから、ループの質は一つ目で決まる。
+
+```mermaid
+flowchart LR
+  Ctx["顧客・現場の<br/>文脈"]
+
+  subgraph Builder["ビルダーの仕事(AI と作るループ)"]
+    direction TB
+    D["計画する<br/>(何を・どう分けるか・<br/>仕様に書く)"]
+    Hand["AI と作る<br/>(意図・制約・文脈を渡す)"]
+    Eval["確かめる<br/>(動くか・整合するか)"]
+    Int["統合し動かす<br/>(業務に載せて成果を出す)"]
+    D --> Hand --> Eval --> Int --> D
+  end
+
+  AI(("AI<br/>コード・設計"))
+  Out["動いて成果を出す<br/>ソフトウェア"]
+
+  Ctx -->|計画の材料はここから来る| D
+  Hand <-->|意図を渡し、コードと設計案を受け取る| AI
+  Int -->|全体の整合を保ったまま外へ出す| Out
+  Out -.->|収益・費用の結果が次の計画に戻る| Ctx
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef bad  fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class Builder good
+  class AI bad
+```
+
+このループ全体を握るのがビルダーだ。方向と責任も、ビルダーが負う。AI はコードを書き、設計を提案する。だが、何を作るか、現実と何をすり合わせるか、どう動かすかは、ビルダーの側にある。動かした結果 ── 収益が上がったか、費用が下がったか ── を負うのも、ビルダーだ。
+
+この役割にいちばん近い既存の職能は、映画監督だ。監督はカメラを操作しない。編集ソフトも触らない。衣装も作らない。それでも、何を作るか、どう見せるか、どこを切るか、どの順で繋ぐかを決める。全体の整合も監督が保つ。スタッフは監督とやり取りしながら形にする。ビルダーと AI の関係は、これに重なる。方向と全体はビルダーが持つ。コードと設計の作り込みは、AI との対話で進む。出来上がるものは、両者の協同が生む。3-09 では「アプリ作りは映画作りに似てくる」として、この並びを改めて扱う。
+
+== ソフトウェアエンジニアとビルダーは、扱う課題が違う
+
+ソフトウェアエンジニア(SE)とビルダーは、似て見える。だが、構造の違う役割だ。境目は一つである。*SE は狭く閉じた課題を解き、ビルダーは開いた課題を扱う*。
+
+* 狭く閉じた課題 ── 何を作るかが定義済みで、正解の条件がはっきりしている。「この仕様を、この制約で実装せよ」がこれだ。設計も実装も、課題の内側で終わる。ルールが明確で答え合わせができる課題ほど、AI は強い(1-01)。だから、SE の仕事は AI がするようになる。
+* 開いた課題 ── そもそも何を作るべきかが定まっていない。現実は矛盾する。関係者の利害は割れる。制約は動く。正解は課題の外、現実の側にある。これを現実とすり合わせ、狭く閉じた課題へ翻訳していくのが、ビルダーだ。
+
+効いてくるのは、課題の難しさではない。閉じているか、開いているかだ。狭く閉じた課題なら、どれほど高度でも AI は解く。世界で最も難しいコーディング問題(1-01)が、そうだった。難易度は障害にならない。だが、開いた課題では事情が変わる。正解が課題の内側になく、しかも「誰にとっての正解か」まで含んでいるからだ。AI は過去の蓄積から学ぶ。前例のない現実にも、まだ誰も解いていない状況にも、学ぶ材料がない。だから、開いた課題は人間に残る。
+
+なぜ人間にできるのか。理由は二つある。
+
+* *利害がある* ── 人間は、その現実の中で生きている。何が困り、何が助かるかを、自分の身で受ける。だから、何を優先するかを決められる。
+* *責任を負える* ── 決めた結果を引き受ける主体である。現状の制度で責任の宛先になれるのは、人間だけだ。
+
+この二つがあるから、人間は何が大事かを判断できる。開いた課題の正解は、この判断から立ち上がる。何を作るべきか、何が現実にとって大事か、という正解である。
+
+積み重ねも、ここに効く。生物としての歴史、人類としての歴史、そして個人として生まれてからの一生。それが体と文化と記憶に刻まれているから、判断には拠りどころがある。ただし決め手は、拠りどころの古さではない。いま現実の中で利害を負い、結果を引き受ける位置にいることだ。
+
+== 判断は、人間が握り続ける
+
+AI が持つのは、学習で得た重みだけだ。膨大な過去のデータを統計的に圧縮したパラメータである。それ以上でも以下でもない。生きてきた歴史はない。生きることへの利害もない。何が生きるに値するかは、重みの中にない。
+
+だから、AI に判断をまかせることはできない。狭く閉じた課題は任せていい。そこは AI のほうが速く、正確だ。だが、何を作るか、何が大事か、何に責任を負うか。これは開いた課題の判断である。ここは人間が握り続ける。これが、ビルダーという役割の芯だ。
+
+学習で得た重みは、開発者の手で簡単に変えられる。何を学ばせるか、どう振る舞わせるかは、訓練した側の裁量の中にある。だから、モデルを無条件に信用してはいけない。*どの開発者のモデルを使うかを選ぶこと自体が、ビルダーの判断だ*。信頼できる開発者のモデルを使う。
+
+ソフトウェアエンジニアの典型は、ビッグテックの社員だ。巨大なシステムの、特定の一分野だけを深く受け持つ。検索の一機能、決済の一サービス、ある API の一層。問題は狭く、よく定義されている。だからこそ、AI が最も得意とする領域だ。その仕事から先に、AI がするようになる。
+
+そして、それは最先端ですでに起きている。Anthropic は、2026 年 5 月に本番へマージしたコードの *8 割超*が Claude 製だったと公表している(VentureBeat)。*Claude が Claude を作っている*。ここで問うべきは「人はまだ必要か」ではなく、「人は何をするか」だ。設計とコードは AI に移り、人は計画と運用に移る。最先端の会社で起きたのは、人がいなくなったことではなく、人の書くコードがほとんど無くなったことだ。
+
+== 出力を決めるのは、判断の質とループの回転数だ
+
+|===
+| 軸 | ソフトウェアエンジニア | ビルダー
+| 扱う問題 | 狭く閉じた課題(定義済み) | 開いた課題(現実・文脈)
+| 仕事の中心 | 設計してコードを書く | 計画して仕様を書く
+| 文脈 | 仕様として与えられる | 自分で現実から切り出す
+| スキルの中心 | 設計・実装・技術習熟 | 構造分解・評価眼・統合
+| 一案件の人数 | チーム(複数人) | 1 人 + AI
+| スループット | 設計・実装の速度に比例 | 判断の質 × ループの回転数
+|===
+
+特に最後の二行が、本章の中心だ。SE の出力は「人数 × 設計・実装の速度」で決まる。人を増やせば速くなる。上限はあったが、増やせば効いた。ビルダーの出力は「判断の質 × ループの回転数」で決まる。*人を増やしても速くならない*。判断の連鎖は、頭の数では分散できないからだ。AI が狭く閉じた課題、つまり設計とコードを引き受けた世界では、後者の式が支配的になる。人が要らないのではない。人数を決めるのは、回す計画の数だ。コードの量で人を数える時代が終わっただけである。
+
+____
+SE は、狭く閉じた課題を解く。そこは AI が強い。
+ビルダーは、開いた課題を扱う。現実とすり合わせ、何を作るかを計画して仕様に書く。
+だから、ここは人間の仕事だ。
+____
+
+スキルの中身も別物だ。ビルダーが磨くのは、次の能力である。
+
+* 文脈を読む ── 顧客・現場・現実から、何が大事かを掴む
+* 言語化 ── 暗黙の意図を、AI に渡せる明示的な言葉に変える
+* 評価 ── 返ってきたものが、現実に合うか、目的を満たすかを見る
+* 統合判断 ── 部分が全体の整合や狙いを壊していないかを見る
+* 取捨選択と責任 ── 返ってきた案から「これでいく」を選び、その判断に責任を負う
+
+これらは、言語の文法やフレームワークの習熟ではない。コードを読めなくてもよい。現実を読み、何が大事かを判断できる人なら、ビルダーになれる。1-03 で見たとおり、現場の人もそうだ。
+
+== ビルダーの基盤は、ソフトウェア工学ではなくリベラルアーツだ
+
+ビルダーの中心にあるのは、文脈の読み、言語化、評価、統合判断、取捨選択、責任である。コードを書いてきた経験が足場になることはある。だが、中心ではない。中心にあるのは、リベラルアーツと呼ばれてきた技芸のほうだ。
+
+ここで言葉を二つに分けておく。中世の *自由七科* は、trivium(文法・修辞・論理)と quadrivium(算術・幾何・音楽・天文)の七つだ。近代以降の *リベラルアーツ* は、人文学・社会科学・自然科学を含む教養の全体を指す。ビルダーの能力は、この両方に跨がる。
+
+|===
+| ビルダーに求められる能力 | 自由七科(中世) | 近代のリベラルアーツ
+
+| 言語化(暗黙の意図を明示の言葉に) | 文法・修辞 | 言語学・作文
+| 課題の分解(開いた課題を扱える形に) | 論理(弁証) | 論理学・分析
+| 統合判断(全体の整合を見る) | 幾何・音楽(比と構成) | 体系的思考
+| 文脈の読み(顧客・現場・現実から) | ── | 歴史学・社会科学・政治哲学
+| 評価(現実・目的に合うかを見る) | ── | 美学・倫理学
+| 取捨選択(案から「これでいく」を選ぶ) | ── | 倫理学・判断論
+| 価値と責任(何が大事か・判断は手放さない) | ── | 倫理学
+|===
+
+上の三つは七科にそのまま載る。下の四つは七科の外にあり、近代のリベラルアーツの側で育ってきた。*七科に載る三つが言葉と構造の扱い方で、七科の外にある四つが何に向けて使うかの判断だ*。ビルダーには、両方が要る。
+
+AI が代わりに引き受けたのは、ソフトウェア工学の核心だ。アルゴリズム、言語仕様、フレームワーク、設計パターン、テストの書き方。残った仕事がリベラルアーツ的な能力にしか見えないのは、*構造的な必然*である。
+
+歴史的にも符号する。自由七科は、自由人が学ぶべき技芸と定義された。自由人とは、隷属していない人のことだ。対になるのは artes mechanicae、手を使って働く者の技芸である。ビルダーは、AI に判断を手放さない人だ。つまり、自由人の技芸の現代版である。
+
+____
+ビルダーの基盤は、ソフトウェア工学ではない。
+AI 時代の自由人の技芸、すなわちリベラルアーツだ。
+____
+
+== まとめ
+
+ビルダーは、計画する、AI と作る、確かめる、統合するの四つを回す。SE が解いてきた狭く閉じた課題は、AI が引き受ける。ビルダーが扱うのは、現実から何を作るかを立ち上げて仕様にする開いた課題だ。その基盤は、ソフトウェア工学ではなくリベラルアーツにある。
+
+ビルダーは、AI と組めば、一人でも大きなスコープを担える。これは社内の話だけではない。顧客が直接ビルダーをやることも、同じ理屈で可能になる。
+
+次の章では、顧客自身が AI と組んで開発する時代を扱う。SIer の仕事を AI がするなら、顧客は SIer を介さず、AI と直接組んで作ればいい。発注していた顧客が、作る側に回る。その移行を見ていく。
+
+'''
+
+== 関連記事
+
+* link:/ai-native-software/coder-top/[1-01: AI は、世界で最も難しいコーディング問題を解く]
+* link:/ai-native-software/maintenance-shift/[1-02: 保守フェーズの構造変化こそ本質]
+* link:/ai-native-software/coder-end/[1-03: ソフトウェアエンジニアの仕事を AI がするようになる]
+* link:/insights/enterprise-tax/[構造分析08: 企業ITの税を引く]
+* link:/insights/ai-and-individual/[構造分析12: AIと個人事業]
+endif::[]
+ifdef::lang-en[]
+= The Builder Role
+
+A builder plans what to build and writes it as a spec, builds it in dialogue with AI, runs it, and integrates the whole.
+1-03 said that the work of both the coder and the software engineer comes to be done by AI.
+Beyond that lies a broader role: planning for yourself, then building and running systems in dialogue with AI.
+This series calls that role the builder.
+This chapter fixes the definition, and fixes where the builder differs from the software engineer.
+
+== A builder's work is a loop of four steps
+
+A builder's work is made of four steps.
+
+* Plan — from the customer, the field, and the builder's own context, draft what to build. Write it as a spec the AI can read, down to how to split it, what to use and what not to, where it goes, and how much to hold yourself. Making the draft and writing the spec are both the builder's work.
+* Build with AI — hand AI the intent, the constraints, and the context. AI writes the code and proposes the design. One instruction is not the end of it. The exchange goes back and forth.
+* Check — see whether what comes back runs. See whether it fits the design. See whether it breaks in the context it was meant for. Read the tests and be able to say what they check, with which inputs, expecting what. Check the defenses too — can you regenerate the keys, rebuild on the spare machine, spot the suspicious in the logs? The skill of writing code may stay shallow; the skill of checking is learned deeply.
+* Integrate and run — fold the part into the whole, keep it consistent, and run it. Running means putting it into the business and getting results. What a company builds has to raise revenue or cut cost, or there was no point building it. What comes out of running it is the material for the next plan. Then return to "plan" and revise the spec.
+
+These four are not a one-way line. They are a loop. One turn takes minutes to hours, depending on scope. A builder runs the loop tens of times a day. Time spent writing code is the smallest part of it, because AI does the writing.
+
+What you write in the first step, "plan," is the *first spec you hand to an AI* from link:/en/ai-native-software/maintenance-shift/[1-02]. The other three steps are the procedure for turning that spec, and every turn comes back to the spec and revises it. That is what it means for the unit of maintenance to move to the spec (1-02). So the quality of the loop is set in the first step.
+
+```mermaid
+flowchart LR
+  Ctx["Customer and<br/>field context"]
+
+  subgraph Builder["Builder's work (the loop of building with AI)"]
+    direction TB
+    D["Plan<br/>(what, how to split it,<br/>written as a spec)"]
+    Hand["Build with AI<br/>(pass intent, constraints, context)"]
+    Eval["Check<br/>(does it run? does it fit?)"]
+    Int["Integrate and run<br/>(into the business, for results)"]
+    D --> Hand --> Eval --> Int --> D
+  end
+
+  AI(("AI<br/>code, design"))
+  Out["Software running<br/>and producing results"]
+
+  Ctx -->|this is where the material for the plan comes from| D
+  Hand <-->|intent goes out, code and design proposals come back| AI
+  Int -->|released only with the whole kept consistent| Out
+  Out -.->|revenue and cost results feed the next plan| Ctx
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef bad  fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class Builder good
+  class AI bad
+```
+
+The builder holds the whole loop. The builder also carries the direction and the responsibility. AI writes the code and proposes the design. But what to build, what to reconcile with reality, and how to run it stay on the builder's side. So does the result of running it — whether revenue went up, or cost went down.
+
+The closest existing job to this role is the film director. A director does not operate the camera. A director does not touch the editing software. A director does not sew costumes. Even so, the director decides what to make, how to show it, where to cut, and in what order to assemble. The director also keeps the whole consistent. The crew gives it form in dialogue with the director. The relationship between the builder and AI maps onto this. Direction and the whole stay with the builder. The code and the design get built through dialogue with AI. What comes out is born of the collaboration. 3-09 returns to this pairing under the heading "app-making comes to resemble film-making."
+
+== The software engineer and the builder handle different problems
+
+A software engineer (SE) and a builder look alike. But they are structurally different roles. The dividing line is a single one. *The SE solves a narrowly closed problem; the builder handles an open problem*.
+
+* A narrowly closed problem — what to build is already defined, and the conditions for a correct answer are clear. "Implement this spec under these constraints" is such a problem. Design and implementation both finish inside the problem. The clearer the rules and the more checkable the answer, the stronger AI is (1-01). So the SE's work comes to be done by AI.
+* An open problem — what should be built is not settled in the first place. Reality contradicts itself. The stakeholders' interests split. The constraints move. The right answer sits outside the problem, on the side of reality. Reconciling that with reality and translating it into narrowly closed problems is the builder's work.
+
+What decides the outcome is not the difficulty of the problem. It is whether the problem is closed or open. A narrowly closed problem, however advanced, AI solves. The world's hardest coding problems (1-01) were such a case. Difficulty is not an obstacle. But an open problem changes the terms, because the right answer does not sit inside the problem, and it carries the question of right for whom. AI learns from accumulated precedent. A reality without precedent gives it no material to learn from, and neither does a situation no one has solved yet. So the open problem stays with humans.
+
+Why can a human do it? For two reasons.
+
+* *A human has a stake* — a human lives inside that reality and takes the trouble and the relief in their own body. So they can decide what to put first.
+* *A human can carry responsibility* — a human is a subject who bears the result of a decision. Under present institutions, only a human can be the address of responsibility.
+
+Those two are why a human can judge what matters. The right answer to an open problem rises out of that judgment: the answer to what should be built, and to what matters for the reality at hand.
+
+Accumulation counts here too. History as a living thing, history as humanity, and a whole life since birth — carved into the body, the culture, and the memory, it gives judgment something to stand on. But what decides it is not the age of that footing. It is standing, right now, in a reality where you carry the stake and bear the result.
+
+== Judgment stays with the human
+
+What AI has is only the weights it obtained from training. They are parameters that statistically compress a vast amount of past data. They are nothing more and nothing less. There is no lived history in them. There is no stake in living either. What is worth living for is not in the weights.
+
+So judgment cannot be left to AI. Narrowly closed problems can be left to it. There, AI is faster and more accurate. But what to build, what matters, and what to take responsibility for are judgments about an open problem. These stay with the human. That is the core of the builder's role.
+
+The weights obtained from training can be changed easily, by the developer. What a model is taught, and how it is made to behave, sit within the discretion of whoever trained it. So a model must not be trusted unconditionally. *Choosing whose model to use is itself a builder's judgment*. Use a model from a developer you can trust.
+
+The typical software engineer is a big-tech employee. Such an engineer owns one specific slice of a giant system, deeply. One feature of search, one service of payments, one layer of an API. The problem is narrow and well defined. That is exactly where AI is strongest. That work is the first to be done by AI.
+
+And at the frontier it is already happening. Anthropic has stated that *more than 80 percent* of the code it merged into production in May 2026 was written by Claude (VentureBeat). *Claude builds Claude.* The question to ask here is not whether people are still needed, but what people do. Design and code move to AI; people move to planning and running. What happened at the frontier company is not that the people went away, but that the code people write nearly did.
+
+== Output is set by the quality of judgment and the number of loop turns
+
+|===
+| Axis | Software engineer | Builder
+| Problem handled | Narrowly closed (defined) | Open (reality, context)
+| Center of the work | Designing and writing code | Planning, and writing the spec
+| Context | Given as a spec | Carved out of reality by oneself
+| Center of the skill | Design, implementation, technical fluency | Decomposition, evaluation, integration
+| Headcount per project | A team | One person plus AI
+| Throughput | Proportional to design-and-build speed | Decision quality × loop turns
+|===
+
+The last two rows are the heart of this chapter. An SE's output is set by "headcount × design-and-build speed." Adding people makes it faster. There were limits, but adding people did work. A builder's output is set by "decision quality × loop turns." *Adding people does not make it faster*, because a chain of judgments cannot be split across heads. Once AI takes on the narrowly closed problem, which is the design and the code, the second equation dominates. That does not mean people are not needed. What sets the headcount is the number of plans being turned. Only the era of counting people by the volume of code is over.
+
+____
+The SE solves a narrowly closed problem. There, AI is strong.
+The builder handles an open problem. The builder reconciles with reality, plans what to build, and writes the spec.
+So this is the human's work.
+____
+
+The content of the skills differs as well. What a builder sharpens is the following.
+
+* Reading context — grasping, from the customer, the field, and reality, what matters
+* Articulation — turning tacit intent into explicit words that can be handed to AI
+* Evaluation — seeing whether what comes back fits reality and meets the purpose
+* Integration judgment — seeing whether a part breaks the consistency or the aim of the whole
+* Selection and responsibility — picking "this one" out of what comes back, and owning that judgment
+
+None of this comes from language grammar or framework fluency. You do not have to be able to read code. Anyone who can read reality and judge what matters can become a builder. As 1-03 showed, that includes people working in the field.
+
+== A builder's foundation is liberal arts, not software engineering
+
+At the center of a builder's work sit reading context, articulation, evaluation, integration judgment, selection, and responsibility. Experience writing code can serve as footing, but it is not the center. What sits at the center is what has been called the liberal arts.
+
+Two senses of that phrase are worth separating. The medieval *seven liberal arts* are the trivium (grammar, rhetoric, logic) and the quadrivium (arithmetic, geometry, music, astronomy). The modern *liberal arts* name a broader education spanning the humanities, the social sciences, and the natural sciences. A builder's abilities straddle both.
+
+|===
+| What a builder needs | The seven arts (medieval) | The modern liberal arts
+
+| Articulation (tacit intent into explicit words) | Grammar, rhetoric | Linguistics, composition
+| Decomposing the problem (into a handleable form) | Logic (dialectic) | Logic, analysis
+| Integration judgment (seeing the whole stay consistent) | Geometry, music (ratio and construction) | Systems thinking
+| Reading context (from customer, field, reality) | — | History, social science, political philosophy
+| Evaluation (whether it fits reality and the purpose) | — | Aesthetics, ethics
+| Selection (picking "this one" from the options) | — | Ethics, theory of judgment
+| Value and responsibility (what matters; judgment is not handed over) | — | Ethics
+|===
+
+The first three sit squarely in the seven arts. The last four sit outside them and grew up on the modern side. *The three inside the seven are how to handle words and structure; the four outside are the judgment of what to aim them at.* A builder needs both.
+
+What AI took over is the core of software engineering. Algorithms, language specifications, frameworks, design patterns, how to write tests. The work that remains looks like nothing but liberal-arts ability, and that is a *structural necessity*.
+
+The history lines up as well. The seven liberal arts were defined as the arts a free person should learn. A free person meant one who was not enslaved. Set against them were the artes mechanicae, the arts of those who work with their hands. The builder is the person who does not hand judgment over to AI. That is, the builder is the contemporary form of the free person's arts.
+
+____
+A builder's foundation is not software engineering.
+It is the free person's arts of the AI era, the liberal arts.
+____
+
+== Summary
+
+A builder runs four steps: plan, build with AI, check, integrate. The narrowly closed problems the SE used to solve are taken over by AI. What the builder handles is the open problem of raising what to build out of reality and turning it into a spec. The foundation for that is liberal arts, not software engineering.
+
+Paired with AI, a builder can carry a large scope alone. This is not only an internal-staff story. By the same logic, the customer can be the builder directly.
+
+The next chapter takes up the era in which customers themselves pair with AI and develop. If AI does the SIer's work, the customer does not need to go through an SIer, and can pair with AI and build directly. The customer who used to commission the work moves to the building side. We trace that shift.
+
+'''
+
+== Related articles
+
+* link:/en/ai-native-software/coder-top/[1-01: AI Solves the World's Hardest Coding Problems]
+* link:/en/ai-native-software/maintenance-shift/[1-02: Maintenance-Phase Shift Is the Real Story]
+* link:/en/ai-native-software/coder-end/[1-03: AI Now Does the Software Engineer's Work]
+* link:/en/insights/enterprise-tax/[Structural analysis 08: Subtracting the enterprise-IT tax]
+* link:/en/insights/ai-and-individual/[Structural analysis 12: AI and the sole proprietor]
+endif::[]
+// ===== article: 05-customer-codev =====
+////
+slug: customer-codev
+number: 05
+part: 1
+title.ja: 顧客が AI と協働して開発する時代
+title.en: Customers Co-Develop with AI
+subtitle.ja: 最初の一手は、コードではなく OSS ── 汎用は使い、個人はカスタマイズ(2-04・2-10・2-14)、組織は基盤から(自立編)。足りない固有だけ、AI と作る
+subtitle.en: The first move is OSS, not code — use it for the generic, customize it for the personal (2-04, 2-10, 2-14), build the foundation for the organization (the Independence part). Only the specific gets written with AI
+description.ja: 顧客自身がビルダーになる時代である。だが最初の一手は、コードを書くことではない。実績ある OSS を使うことだ。汎用的なものは、まず OSS を使う。これがいちばん経済的で、セキュリティ対策としても有効だ。個人的なものは、OSS の上に AI と対話して自分に合わせる。その実例は自立編の 2-04・2-10・2-14 にある。組織は、Microsoft 365・Copilot・WordPress を代替する OSS で基盤を立てる。これが自立編だ。足りない自社固有のロジックだけを、AI と書く。AI にできないことは、SIer にもできない。
+description.en: This is the era in which customers themselves become builders. But the first move is not writing code. It is using proven OSS. For generic things, use OSS first: it is the most economical path, and it is also effective as a security measure. Personal things are customized on top of OSS in dialogue with AI, and the worked examples live in 2-04, 2-10, and 2-14. Organizations stand up a foundation with OSS that replaces Microsoft 365, Copilot, and WordPress, which is the Independence part. Only the company-specific logic gets written with AI. What AI cannot do, the SIer cannot do either.
+date: 2026.06.29
+label: Introduction 5
+title_html.ja: 汎用は <span class="accent">OSS</span>、<br>固有は <span class="accent">AI</span> と。
+title_html.en: Generic on <span class="accent">OSS</span>,<br>the specific with <span class="accent">AI</span>.
+////
+ifdef::lang-ja[]
+= 顧客が AI と協働して開発する時代
+
+顧客自身が、AI と組んで作る時代になる。だが、最初の一手はコードを書くことではない。
+1-04 では、ビルダーは社内の人間である必要がないと見た。
+AI と対話して作る側に立てるなら、顧客自身がビルダーになる。
+しかも顧客は、業務の文脈を最初から手元に持っている。SIer が外から聞き取って翻訳していたものを、省ける。
+本章では、顧客が何から始めるのかを見ていく。
+
+== 作りたいものは、三つに分かれる
+
+作りたいものを三つに分けると、見通しがいい。汎用的なもの、個人的なもの、組織の基盤である。この三つで、最初の一手が変わる。順に見ていく。
+
+```mermaid
+flowchart LR
+  Need["作りたいもの"]
+  Need -->|世界で共有済みだから| G["汎用的なもの"]
+  Need -->|自分に合わせる必要があるから| P["個人的なもの"]
+  Need -->|会社全体が載るから| O["組織の基盤"]
+  G --> GA["実績ある OSS を使う<br/>(いちばん経済的)"]
+  P --> PA["OSS + AI と対話して<br/>自分に合わせる<br/>(2-04・2-10・2-14)"]
+  O --> OA["OSS で基盤を立てる<br/>(M365・Copilot・WordPress 代替)<br/>(自立編)"]
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef bad  fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class GA,PA,OA good
+```
+
+== 汎用は OSS を使う。それがいちばん経済的だ
+
+認証、文書、データベース、ビデオ会議、Web。こうした汎用的な機能は、すでに OSS として世界で共有されている。誰かが作り、公開し、何万人もが鍛えてきた。これをゼロから書く必要はない。ベンダーから買う必要もない。使えばいい。それが、いちばん経済的だ。
+
+経済的なだけではない。セキュリティ対策としても有効だ。広く使われている OSS は、世界中の目に晒されている。無数の脆弱性が見つかっては塞がれてきた。自分でゼロから書いたコードより、よほど鍛えられている。中身の見えないベンダー製品より、よほど鍛えられている。
+
+ここに、見落とされがちな逆転がある。注目は AI に集まる。だが、汎用の大半を実際に担うのは、共有された OSS のほうだ。*AI の効果より、OSS の効果のほうが大きい*。AI は、その上に載る固有の部分を速く作る道具にすぎない。
+
+____
+汎用的なものは、書かない。買わない。OSS を使う。
+AI が脚光を浴びるが、土台を支えているのは OSS だ。
+____
+
+== 個人は、OSS の上に AI との対話で自分を足す
+
+個人が自分のための道具を作るとき、OSS をそのまま使うだけでは足りないことがある。そこで、OSS を土台にして、AI と対話しながら自分に合った形にカスタマイズする。フレームワークを学ぶ必要はない。やりたいことをふだんの言葉で伝え、返ってきたものを試し、また頼む。それだけだ。学ぶのは、何が欲しいかを言葉にすることだけである。
+
+これが可能になったのは、*学習コストが桁違いに下がった*からだ。かつては、文法を覚え、フレームワークに慣れ、動くものを一つ作るまでに、何ヶ月もかかった。AI と組むと、動くものを持つまでが数時間から数日になる。かける時間が月の単位なら諦めたものを、日の単位ならやってみる。その境目を越えた。
+
+その実例は、自立編が扱う。
+
+* link:/ai-native-software/python/[2-04] ── 処理を Python で書く(Excel マクロも Python へ)
+* link:/ai-native-software/web-build/[2-10] ── Web を、AI と対話して作る
+* link:/ai-native-software/embedded/[2-14] ── 電子工作から IoT まで
+
+どれも、専門のプログラマーでない個人が、OSS と AI で自分の道具を作る話だ。
+
+== 組織は、まず汎用の基盤を OSS で立てる
+
+組織の場合も、出発点は同じだ。まず、汎用的な基盤を OSS で立てる。会社のソフトウェアの大半は、もともと「作る」ものではなく「買う」ものだった。Microsoft 365、Copilot、WordPress、基幹のベンダーパッケージ。その置き換え先は、すでに世界中で動いている。
+
+* 機械は役割で分けた Debian の四台と予備(link:/ai-native-software/ai-pc/[2-02])── 重要な仕事は人が確認する
+* 土台は SQLite・PostgreSQL・DuckDB・Polars(link:/ai-native-software/foundation/[2-03])
+* 認証は PocketBase(Entra ID の代わり、link:/ai-native-software/auth/[2-05])
+* 共有と版管理は Forgejo(GitHub の代わり、link:/ai-native-software/code/[2-06])
+* 文書は読む物を adoc の文字で持ち、触る表は格子、刷る紙はテンプレート(link:/ai-native-software/documents/[2-07])
+* メールは Stalwart(link:/ai-native-software/mail/[2-08])、会議は Jitsi(link:/ai-native-software/meetings/[2-09])
+* Web は焼いた HTML を自分の外に向く機械(Caddy)か Cloudflare Pages へ(WordPress の代わり、link:/ai-native-software/web/[2-11])
+* 基幹のロジックは FastAPI で API に出す(ベンダーパッケージの代わり、link:/ai-native-software/fastapi/[2-12])
+* AI は手元の LLM + RAG(Copilot の代わり、link:/ai-native-software/ai/[2-16])
+
+どれも、いまこの瞬間に全部そろっているという話ではない。文書は、道具を一つ立てるのではなく持ち方を決める話で、格子は Excel のままでもよい(2-07)。Web の公開は、自分の機械なら全部自分の側、Cloudflare Pages なら窓だけ借りる形になる。*借りる所と自分で持つ所を、分けて決める* ── それが土台づくりの中身である。
+
+*まず汎用をベンダーから外す*。そして、認証・データ・文書・メール・Web・AI という土台を自分の側に置く。その上で、本当に自社固有のロジックだけを、AI と一緒に書く。コードを書くのは、土台を据えた後半だ。しかも、書く量は自社固有の部分に縮む。
+
+この基盤づくりが、この連載の自立編(第二部)だ。一つずつ OSS を立てて、Microsoft 365・Copilot・WordPress・基幹システム・GitHub から自立していく。
+
+____
+組織のソフトウェアは、まず汎用の基盤を OSS で立てる。
+固有のロジックだけを AI と書く。自立編が、その手順だ。
+____
+
+== AI にできないことは、SIer にもできない
+
+ここまでをひっくり返すと、強い帰結が一つ出る。汎用は OSS で、固有は AI と自分で作れる。それなら、SIer に丸ごと発注する理由は、どこにあるのか。
+
+旧来、SIer に頼む理由は「自分には作れないから」だった。だが、AI ネイティブな世界では、SIer が使う AI と、顧客が使う AI は、同じ AI だ。最上層のモデルは、誰にでも同じ値段で売られている(1-01)。*SIer だけが使える、特別に強い AI は無い*。だから、*AI にできないことは、SIer にもできない*。AI が解けない問題は、SIer の中の人が同じ AI で解いても、同様に詰まる。
+
+SIer の真の優位は、AI が届かない領域での経験と判断に残る。真に新しい技術、専門規制、組織横断の交渉、経験的にしか分からない落とし穴である。だが、それはごく一部だ。助言の形で取り込めば足りる。弁護士や税理士に定常業務を丸投げしないのと同じである(3-06)。多年契約の SIer 委託は、もう要らない。
+
+____
+SIer の独自能力は、AI の届かないごく一部にしかない。
+残りは、OSS と AI で、顧客自身が作れる。
+____
+
+== まとめ
+
+顧客は、汎用を OSS で、固有を AI で作る。
+
+* *汎用は OSS* ── 書かない、買わない。いちばん経済的で、守りとしても鍛えられている
+* *個人は OSS + AI* ── 土台の上に、ふだんの言葉で自分を足す
+* *組織は基盤から* ── 機械・土台・認証・コード・文書・メール・会議・Web・API・AI を自分の側に置く
+* *固有だけ AI と書く* ── コードを書くのは、土台を据えた後半になる
+* *AI にできないことは、SIer にもできない* ── 同じ AI を使っているからだ
+
+ここで導入編は終わる。AI が最強の SIer になり(1-01)、保守の単位が文脈に移り(1-02)、設計とコードの役割がビルダーに移り(1-03・1-04)、作る側に顧客自身が立つ(1-05)。残るのは、では実際に何をどう立てるのか、という問いだけだ。
+
+次章から自立編に入る。link:/ai-native-software/independence/[2-01: Microsoft と Google から自立する ── 全体像と対応表]で、これから立てるものの全体像と対応表を置く。そこから一章ずつ、機械・土台・認証・コード・文書・メール・会議・Web・API・図・電子工作・AI を自分の側に立てていく。
+
+'''
+
+== 関連記事
+
+* link:/ai-native-software/coder-top/[1-01: AI は、世界で最も難しいコーディング問題を解く]
+* link:/ai-native-software/coder-end/[1-03: ソフトウェアエンジニアの仕事を AI がするようになる]
+* link:/ai-native-software/builder/[1-04: ビルダーという役割]
+* link:/ai-native-software/independence/[2-01: Microsoft と Google から自立する ── 全体像と対応表]
+* link:/ai-native-software/lockin/[3-05: ロックイン問題]
+* link:/ai-native-software/hiring-builders/[3-06: 各社がビルダーを雇用する時代]
+* link:/insights/enterprise-tax/[構造分析08: 企業ITの税を引く]
+* link:/insights/ai-and-individual/[構造分析12: AIと個人事業]
+endif::[]
+ifdef::lang-en[]
+= Customers Co-Develop with AI
+
+Customers themselves come to build, paired with AI. But the first move is not writing code.
+1-04 showed that a builder does not have to be on the company's payroll.
+If you can stand on the building side in dialogue with AI, the customer becomes the builder.
+And the customer holds the business context from the start, so what the SIer used to gather from the outside and translate can be skipped.
+This chapter looks at where the customer starts.
+
+== What you want to build splits into three
+
+It helps to split what you want to build into three: the generic, the personal, and the organization's foundation. The first move differs for each of the three. We take them in turn.
+
+```mermaid
+flowchart LR
+  Need["What you want to build"]
+  Need -->|already shared with the world| G["Generic"]
+  Need -->|has to be fitted to you| P["Personal"]
+  Need -->|the whole company sits on it| O["Organization's foundation"]
+  G --> GA["Use proven OSS<br/>(most economical)"]
+  P --> PA["OSS + dialogue with AI<br/>to fit yourself<br/>(2-04, 2-10, 2-14)"]
+  O --> OA["Stand up a foundation with OSS<br/>(replacing M365, Copilot, WordPress)<br/>(the Independence part)"]
+
+  classDef good fill:#e8f5e9,stroke:#7a9a6d,color:#3a4d34
+  classDef bad  fill:#fef3e7,stroke:#c89559,color:#5a3f1a
+  class GA,PA,OA good
+```
+
+== Use OSS for the generic, because that is the most economical
+
+Authentication, documents, the database, video conferencing, the web. These generic capabilities are already shared with the world as OSS. Someone built them, released them, and tens of thousands of people hardened them. There is no need to write them from scratch. There is no need to buy them from a vendor either. Just use them. That is the most economical path.
+
+It is not only economical. It is also effective as a security measure. Widely used OSS is exposed to eyes all over the world. Countless vulnerabilities have been found and closed in it. It is far more battle-tested than code you wrote from scratch. It is far more battle-tested than a vendor product whose insides you cannot see.
+
+There is an inversion here that is easy to miss. The attention goes to AI. But most of the generic work is actually carried by shared OSS. *The effect of OSS is greater than the effect of AI*. AI is only the tool that quickly builds the specific part sitting on top.
+
+____
+For generic things: do not write them, do not buy them. Use OSS.
+AI takes the spotlight, but OSS is what holds up the foundation.
+____
+
+== For the personal, add yourself onto OSS in dialogue with AI
+
+When an individual builds a tool for themselves, using OSS as it comes is sometimes not enough. So you take OSS as the base and customize it, in dialogue with AI, into a shape that fits you. There is no need to learn a framework. Say what you want in ordinary words, try what comes back, and ask again. That is all. What you learn is only how to put into words what you want.
+
+This became possible because *the cost of learning fell by orders of magnitude*. It used to take months to memorize the syntax, get used to a framework, and get one thing running. Paired with AI, having something that runs takes hours to days. What you gave up on when the unit was months, you try when the unit is days. That line has been crossed.
+
+The worked examples are handled by the Independence part.
+
+* link:/en/ai-native-software/python/[2-04] — write the processing in Python (Excel macros move to Python too)
+* link:/en/ai-native-software/web-build/[2-10] — build a website in dialogue with AI
+* link:/en/ai-native-software/embedded/[2-14] — from electronics to IoT
+
+Each of these is about an individual who is not a professional programmer building their own tool with OSS and AI.
+
+== For an organization, first stand up the generic foundation on OSS
+
+For an organization, the starting point is the same. First, stand up the generic foundation with OSS. Most of a company's software was never something to build; it was something to buy. Microsoft 365, Copilot, WordPress, the vendor packages under the core systems. What replaces them already runs all over the world.
+
+* The machines: four Debian machines and a spare, split by role (link:/en/ai-native-software/ai-pc/[2-02]) — important work is checked by a person
+* The foundation: SQLite, PostgreSQL, DuckDB, Polars (link:/en/ai-native-software/foundation/[2-03])
+* Authentication: PocketBase, in place of Entra ID (link:/en/ai-native-software/auth/[2-05])
+* Sharing and version control: Forgejo, in place of GitHub (link:/en/ai-native-software/code/[2-06])
+* Documents: things you read held as AsciiDoc text, tables you work in in a grid, pages you print from templates (link:/en/ai-native-software/documents/[2-07])
+* Mail: Stalwart (link:/en/ai-native-software/mail/[2-08]); meetings: Jitsi (link:/en/ai-native-software/meetings/[2-09])
+* Web: baked HTML on your own public-face machine with Caddy, or on Cloudflare Pages, in place of WordPress (link:/en/ai-native-software/web/[2-11])
+* Core logic: exposed as an API with FastAPI, in place of the vendor package (link:/en/ai-native-software/fastapi/[2-12])
+* AI: a local LLM plus RAG, in place of Copilot (link:/en/ai-native-software/ai/[2-16])
+
+None of this means every piece is finished today. Documents are not a tool to stand up but a way of holding content, and the grid can stay Excel (2-07). For publishing the web, your own machine keeps everything on your side, while Cloudflare Pages means borrowing only the window. *Decide separately what to borrow and what to hold* — that is what laying the foundation consists of.
+
+*First, untie the generic from the vendor*. Then put the foundation — identity, data, documents, mail, web, AI — on your own side. On top of that, write only the logic that is genuinely your company's own, together with AI. Writing code comes in the later half, after the foundation is laid. And the amount to write shrinks to the company-specific part.
+
+This foundation-building is the Independence part, Part 2 of this series. One OSS stack at a time, you become independent of Microsoft 365, Copilot, WordPress, the core systems, and GitHub.
+
+____
+An organization's software starts by standing up the generic foundation on OSS.
+Only the specific logic gets written with AI. The Independence part is that procedure.
+____
+
+== What AI cannot do, the SIer cannot do either
+
+Turn all of this over and one strong consequence falls out. The generic can be built on OSS, and the specific can be built with AI by yourself. If so, where is the reason to commission an SIer for the whole thing?
+
+The old reason to hire an SIer was "we cannot build it ourselves." But in the AI-native world, the AI the SIer uses and the AI the customer uses are the same AI. The top-tier model is sold to anyone at the same price (1-01). *There is no specially stronger AI that only an SIer can reach.* So *what AI cannot do, the SIer cannot do either*. A problem AI cannot solve gets the people inside the SIer stuck the same way, because they use the same AI.
+
+The SIer's real advantage remains in experience and judgment in the areas AI cannot reach. Genuinely new technology, specialized regulation, cross-organizational negotiation, the pitfalls you only learn from experience. But that is a small slice. Taking it in as advice is enough. It is the same as not handing routine business wholesale to a lawyer or a tax accountant (3-06). The multi-year SIer commission is no longer needed.
+
+____
+The SIer's distinctive capability lives only in the small slice AI cannot reach.
+The rest, the customer can build with OSS and AI.
+____
+
+== Summary
+
+The customer builds the generic on OSS and the specific with AI.
+
+* *The generic runs on OSS* — do not write it, do not buy it. It is the most economical path, and it is hardened as a defense too
+* *The personal runs on OSS plus AI* — add yourself on top of the foundation, in everyday words
+* *An organization starts from the foundation* — machine, data, identity, code, documents, mail, meetings, web, API, AI, all on your own side
+* *Only the specific gets written with AI* — writing code comes in the later half, once the foundation is laid
+* *What AI cannot do, the SIer cannot do either* — because they are using the same AI
+
+That ends the Introduction part. AI became the strongest SIer (1-01); the unit of maintenance moved to context (1-02); the roles of design and code moved to the builder (1-03, 1-04); and the customer now stands on the building side (1-05). What remains is only the question of what to actually stand up, and how.
+
+The next chapter opens the Independence part. link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map] lays out the whole map and the replacement table, and from there, one chapter at a time, the machine, the data foundation, identity, code, documents, mail, meetings, web, APIs, diagrams, electronics, and AI all move to your own side.
+
+'''
+
+== Related articles
+
+* link:/en/ai-native-software/coder-top/[1-01: AI Solves the World's Hardest Coding Problems]
+* link:/en/ai-native-software/coder-end/[1-03: AI Now Does the Software Engineer's Work]
+* link:/en/ai-native-software/builder/[1-04: The Builder Role]
+* link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map]
+* link:/en/ai-native-software/lockin/[3-05: The Lock-In Problem]
+* link:/en/ai-native-software/hiring-builders/[3-06: Companies Hire Builders]
+* link:/en/insights/enterprise-tax/[Structural analysis 08: Subtracting the enterprise-IT tax]
+* link:/en/insights/ai-and-individual/[Structural analysis 12: AI and the sole proprietor]
+endif::[]

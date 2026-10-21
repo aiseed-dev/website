@@ -1,11 +1,11 @@
 ---
 name: framing-second-renaissance
-description: The unified conceptual frame that underpins aiseed.dev's "AI ネイティブなソフトウェア開発" series (`articles/ai-native-software.adoc`, URL `/ai-native-software/`), the synthesizing blog post `021-software-three-transitions` in `articles/blog.adoc`, and the philosophical reading at `docs/plan/hegel.md`. Sixteen interlocking concepts — AI-era builder, master builder, liberal arts as the technical foundation, SE/CS distinction, medieval freeman 4 conditions, two pillars + middle layer, employment as serfdom, LLM vs printing press, "specialized engineer" misreading, Second Renaissance, AI revolution as IT revolution's completion, LLM as statistical-processing tool (not superintelligence), Renaissance as creation-AND-upheaval (Trump as the upheaval-side figure), multi-vector simultaneous transitions (AI revolution alone is too narrow), app-making coming to resemble film-making (engineering dissolves, apps survive), and the democratization of fabrication (digital and analog fabrication collapse at once; value moves to materials and judgment). Use when (1) extending the series with new chapters or essays, (2) drafting follow-up blog posts, (3) checking whether a new piece of writing aligns with the spine of the argument, or (4) responding to outside narratives ("specialize deeper", "AGI replaces white-collar in 12-18 months", "AI is a new revolution", "applications disappear entirely", "concentrate judgment in the leader/platform") with the structural reply.
+description: The unified conceptual frame that underpins aiseed.dev's "AI ネイティブなソフトウェア開発" series (`articles/ai-native-software/`, URL `/ai-native-software/`), the synthesizing blog post `021-software-three-transitions` in `articles/blog/`, and the philosophical reading at `docs/plan/hegel.md`. Sixteen interlocking concepts — AI-era builder, master builder, liberal arts as the technical foundation, SE/CS distinction, medieval freeman 4 conditions, two pillars + middle layer, employment as serfdom, LLM vs printing press, "specialized engineer" misreading, Second Renaissance, AI revolution as IT revolution's completion, LLM as statistical-processing tool (not superintelligence), Renaissance as creation-AND-upheaval (Trump as the upheaval-side figure), multi-vector simultaneous transitions (AI revolution alone is too narrow), app-making coming to resemble film-making (engineering dissolves, apps survive), and the democratization of fabrication (digital and analog fabrication collapse at once; value moves to materials and judgment). Use when (1) extending the series with new chapters or essays, (2) drafting follow-up blog posts, (3) checking whether a new piece of writing aligns with the spine of the argument, or (4) responding to outside narratives ("specialize deeper", "AGI replaces white-collar in 12-18 months", "AI is a new revolution", "applications disappear entirely", "concentrate judgment in the leader/platform") with the structural reply.
 ---
 
 # Framing aiseed.dev's "Second Renaissance" thesis
 
-This skill captures the analytical framework that emerged over a sequence of conversations and now underpins the "AI ネイティブなソフトウェア開発" series (`articles/ai-native-software.adoc`, URL `/ai-native-software/`) (it replaced the retired 「AIネイティブな仕事の作法」 series and its software sub-series on 2026-09-21), the synthesizing blog post `021-software-three-transitions` in `articles/blog.adoc`, and the philosophical reading at `docs/plan/hegel.md`. It is the **conceptual spine** that the argument hangs from. Use it to keep new writing aligned, and to position outside narratives against this spine.
+This skill captures the analytical framework that emerged over a sequence of conversations and now underpins the "AI ネイティブなソフトウェア開発" series (`articles/ai-native-software/`, URL `/ai-native-software/`) (it replaced the retired 「AIネイティブな仕事の作法」 series and its software sub-series on 2026-09-21), the synthesizing blog post `021-software-three-transitions` in `articles/blog/`, and the philosophical reading at `docs/plan/hegel.md`. It is the **conceptual spine** that the argument hangs from. Use it to keep new writing aligned, and to position outside narratives against this spine.
 
 ## The one-line thesis
 
@@ -90,7 +90,7 @@ Like the First, the Second was not born one morning: PC, Web, OSS, maker culture
 
 The "AI revolution" is **not a new, separate revolution** — it is the **completion of the 70-year IT revolution**. The original IT promise was "computers do the work, humans are freed." Yet for seventy years, the implementation side was hand-written code — a structural paradox: an automation industry that ran on manual labor. Programmers became one of the highest-paid professions; automation cost often exceeded manual cost; SIers, consultancies, and SaaS grew to enormous size doing "manual labor for automation." The LLM dissolves the twist by writing the automation code itself, finally fulfilling the original promise.
 
-The structural consequence: **SIer contraction and software-engineer → builder replacement are inevitable, not sudden shocks.** They are the IT revolution finally closing its own seventy-year logical inconsistency. Stated in blog `021-software-three-transitions` (`articles/blog.adoc`) (### AI 革命は、IT 革命の完成だ / The AI revolution is the completion of the IT revolution).
+The structural consequence: **SIer contraction and software-engineer → builder replacement are inevitable, not sudden shocks.** They are the IT revolution finally closing its own seventy-year logical inconsistency. Stated in blog `021-software-three-transitions` (`articles/blog/`) (### AI 革命は、IT 革命の完成だ / The AI revolution is the completion of the IT revolution).
 
 The same relation has a flip-side reading, stated in software 1-01 and 2-01: from the AI revolution's side, the IT decades were its **preparatory stage (前段)** — as paper + manuscript accumulation were to movable-type printing — and the 前段's greatest legacy is **OSS, the open commons of code and knowledge**, the substrate the new infrastructure runs fastest on. Completion and 前段 are the same event seen from either side, not competing frames. Corollary (software 2-01): the OS and the office suite are infrastructure, AI is *another, separate* infrastructure, so vendor built-in AI = a press set in the corner of the scriptorium — the 前段's custodians fitting the next revolution into their own workshop.
 
@@ -100,7 +100,7 @@ Coolly viewed, the LLM (Claude, GPT, Gemini, etc.) is **large-scale statistical 
 
 Structurally wrong: statistical-processing tools cannot bear judgment or responsibility. The LLM makes **writing, looking up, organizing** orders of magnitude faster, but **deciding what to build, evaluating whether it is right, taking responsibility** stay on the human side. This is the **logical basis of the builder role**.
 
-Read the AI revolution as "**the tool got strong, so the human role shifts to the judgment side**" — simple, structurally clear, no need for AGI mysticism. Pair with concept 7 (employment as serfdom) and concept 11 (IT revolution completion): together they form the cool, sober alternative to AGI-hype. Stated in blog `021-software-three-transitions` (`articles/blog.adoc`) (### LLM は超知能ではなく、強力な統計処理ツールだ / The LLM is a powerful statistical-processing tool).
+Read the AI revolution as "**the tool got strong, so the human role shifts to the judgment side**" — simple, structurally clear, no need for AGI mysticism. Pair with concept 7 (employment as serfdom) and concept 11 (IT revolution completion): together they form the cool, sober alternative to AGI-hype. Stated in blog `021-software-three-transitions` (`articles/blog/`) (### LLM は超知能ではなく、強力な統計処理ツールだ / The LLM is a powerful statistical-processing tool).
 
 ### 13. The Renaissance is creation AND upheaval (Trump as the upheaval-side figure)
 
@@ -110,7 +110,7 @@ The Second Renaissance's upheaval side is already unfolding. **Trump is the cano
 
 **Trump and Nadella are structurally parallel** — different means, same structural error. Nadella concentrates corporate judgment into a single Copilot; Trump concentrates national judgment into a single presidency. Both push the **old era's logic of judgment-concentration to its absolute limit**. Hegel's *cunning of reason* applies to both (see `docs/plan/hegel.md`).
 
-Both will exit when the new structure (distributed judgment, free person, individual sovereignty) takes hold. The interim is turbulent. **Both creation and upheaval sides must be read together**; looking at only one misreads the era. Stated in blog `021-software-three-transitions` (`articles/blog.adoc`) (### 創造の時代であり、混乱の時代でもある / An age of creation, and an age of upheaval).
+Both will exit when the new structure (distributed judgment, free person, individual sovereignty) takes hold. The interim is turbulent. **Both creation and upheaval sides must be read together**; looking at only one misreads the era. Stated in blog `021-software-three-transitions` (`articles/blog/`) (### 創造の時代であり、混乱の時代でもある / An age of creation, and an age of upheaval).
 
 ### 14. Multi-vector simultaneous transitions (the "AI revolution" frame is too narrow)
 
@@ -126,7 +126,7 @@ Calling the current era "the AI revolution era" **sees the present too narrowly*
 
 Just as the First Renaissance had to be understood as a **composite** (printing press + age of discovery + Reformation + scientific revolution + nation-state + bourgeoisie + post-plague labor shifts), the Second Renaissance cannot be captured by **the AI revolution alone**. Multiple independent transitions converge; their convergence point is what makes "an era that is no longer the same."
 
-This is the deepest reframe and the umbrella for the others: the Second Renaissance (concept 10) is the right scale because it captures multi-vector convergence; "AI era" only captures one vector. Stated in blog `021-software-three-transitions` (`articles/blog.adoc`) (### AI 革命だけの話ではない / Not only the AI revolution).
+This is the deepest reframe and the umbrella for the others: the Second Renaissance (concept 10) is the right scale because it captures multi-vector convergence; "AI era" only captures one vector. Stated in blog `021-software-three-transitions` (`articles/blog/`) (### AI 革命だけの話ではない / Not only the AI revolution).
 
 ### 15. App-making comes to resemble film-making (the engineering layer dissolves, apps survive)
 
@@ -167,7 +167,7 @@ The structural reasoning at each level:
 
 The crucial guard against overstatement: **never claim "apps shrink"**. What shrinks is (i) the monolithic-SIer labor model (which was particularly tied to large-scale custom projects), and (ii) the total labor count per app across all scales. The number of apps across the middle and personal scales actually **grows**.
 
-Stated in blog `021-software-three-transitions` (`articles/blog.adoc`) (### アプリ作りは映画作りに似てくる / App-making comes to resemble film-making) and 3-09 (### アプリは消えない、作り方が変わる ── 映画作りに似てくる). This concept resolves a tempting overstatement — that "applications" as a category disappear — by clarifying: the artifact survives, the engineering craft dissolves, and the model is film-making — at all scales from blockbuster to YouTube.
+Stated in blog `021-software-three-transitions` (`articles/blog/`) (### アプリ作りは映画作りに似てくる / App-making comes to resemble film-making) and 3-09 (### アプリは消えない、作り方が変わる ── 映画作りに似てくる). This concept resolves a tempting overstatement — that "applications" as a category disappear — by clarifying: the artifact survives, the engineering craft dissolves, and the model is film-making — at all scales from blockbuster to YouTube.
 
 ### 16. The democratization of fabrication — value moves to materials and judgment (加工の民主化)
 
@@ -181,7 +181,7 @@ When the scarcity of fabrication disappears on both fronts, value is pushed out 
 
 Hybrid digital×analog products (the drone is the canonical in-series example — 構造分析 2-02) become makeable by one person + AI, and they are the home ground of the **middle layer** (concept 6): builders who hold physical reality, benefiting from the collapse on *both* fronts, with physical reality itself as the barrier to entry. And the two pillars connect into one economy: free farmers **produce** materials; builders **integrate** them into products — the medieval free city and its surrounding countryside as a single economic sphere.
 
-Guard against overstatement: the claim is not "materials become expensive" or "manufacturing disappears" — it is a claim about **where scarcity sits in the chain**. Stated in `articles/insights.adoc`, article `part-2-emergence/08-fabrication-and-materials/` (構造分析 2-08 加工の民主化——需要は素材へ、価値は判断へ).
+Guard against overstatement: the claim is not "materials become expensive" or "manufacturing disappears" — it is a claim about **where scarcity sits in the chain**. Stated in `articles/insights/`, article `part-2-emergence/08-fabrication-and-materials/` (構造分析 2-08 加工の民主化——需要は素材へ、価値は判断へ).
 
 ## What this framework opposes
 
@@ -218,14 +218,14 @@ Quick lookup so future writing can cite the right anchor.
 | 8. LLM vs printing press | 2-01 `independence` (== AI は、束の中の一機能ではなく、独立したインフラだ) and 3-09 | 1-01, blog 021 |
 | 9. Specialized-engineer misreading | 3-09 `five-years` (「特化したエンジニアになれ」) | 3-06, blog 021 (opening hook) |
 | 10. Second Renaissance | 3-09 `five-years` (これは第二次ルネサンスの始まりだ) | blog 021 (full treatment) |
-| 11. AI revolution = IT revolution's completion | blog `021-software-three-transitions` (`articles/blog.adoc`) (### AI 革命は、IT 革命の完成だ) | — (concept introduced in blog) |
-| 12. LLM = statistical-processing tool (not superintelligence) | blog `021-software-three-transitions` (`articles/blog.adoc`) (### LLM は超知能ではなく…) | Pairs with `docs/plan/hegel.md` (Nadella/Suleyman as the contrary worldview) |
-| 13. Creation AND upheaval (Trump as upheaval-side) | blog `021-software-three-transitions` (`articles/blog.adoc`) (### 創造の時代であり、混乱の時代でもある) | blog `020-nadella-hegel-cunning-of-reason` (`articles/blog.adoc`) (Nadella as the parallel concentration figure) |
-| 14. Multi-vector simultaneous transitions | blog `021-software-three-transitions` (`articles/blog.adoc`) (### AI 革命だけの話ではない) | All of `articles/insights.adoc` (each insight is one of the vectors) |
-| 15. App-making resembles film-making (engineering dissolves, apps survive) | blog `021-software-three-transitions` (`articles/blog.adoc`) (### アプリ作りは映画作りに似てくる) | Concept 2 (master builder) and Concept 3 (liberal arts) — the director analogy sharpens both |
-| 16. Democratization of fabrication (value → materials & judgment) | `articles/insights.adoc`, article `part-2-emergence/08-fabrication-and-materials` (構造分析 2-08) | Concepts 6 (middle layer), 8 (printing press), 14 (fossil vector); 構造分析 1-02 fossil-materials, 1-04 fusion, 2-02 drone-defense |
-| — Hegel (master-slave, alienation, sublation, cunning of reason) | `docs/plan/hegel.md` | The Nadella blog post blog `020-nadella-hegel-cunning-of-reason` (`articles/blog.adoc`) |
-| — Synthesizing blog post | blog `021-software-three-transitions` (`articles/blog.adoc`) | The single piece that traverses concepts 1–14 in one read |
+| 11. AI revolution = IT revolution's completion | blog `021-software-three-transitions` (`articles/blog/`) (### AI 革命は、IT 革命の完成だ) | — (concept introduced in blog) |
+| 12. LLM = statistical-processing tool (not superintelligence) | blog `021-software-three-transitions` (`articles/blog/`) (### LLM は超知能ではなく…) | Pairs with `docs/plan/hegel.md` (Nadella/Suleyman as the contrary worldview) |
+| 13. Creation AND upheaval (Trump as upheaval-side) | blog `021-software-three-transitions` (`articles/blog/`) (### 創造の時代であり、混乱の時代でもある) | blog `020-nadella-hegel-cunning-of-reason` (`articles/blog/`) (Nadella as the parallel concentration figure) |
+| 14. Multi-vector simultaneous transitions | blog `021-software-three-transitions` (`articles/blog/`) (### AI 革命だけの話ではない) | All of `articles/insights/` (each insight is one of the vectors) |
+| 15. App-making resembles film-making (engineering dissolves, apps survive) | blog `021-software-three-transitions` (`articles/blog/`) (### アプリ作りは映画作りに似てくる) | Concept 2 (master builder) and Concept 3 (liberal arts) — the director analogy sharpens both |
+| 16. Democratization of fabrication (value → materials & judgment) | `articles/insights/`, article `part-2-emergence/08-fabrication-and-materials` (構造分析 2-08) | Concepts 6 (middle layer), 8 (printing press), 14 (fossil vector); 構造分析 1-02 fossil-materials, 1-04 fusion, 2-02 drone-defense |
+| — Hegel (master-slave, alienation, sublation, cunning of reason) | `docs/plan/hegel.md` | The Nadella blog post blog `020-nadella-hegel-cunning-of-reason` (`articles/blog/`) |
+| — Synthesizing blog post | blog `021-software-three-transitions` (`articles/blog/`) | The single piece that traverses concepts 1–14 in one read |
 
 ## Application guidelines
 
@@ -265,7 +265,7 @@ This skill was synthesized from a multi-session conversation that built the fram
    - **Multi-vector simultaneous transitions** ("AI revolution" alone captures less than half; the right scale is Second Renaissance)
 7. The framework's prediction of software-development's dissolution was first overstated as "applications dissolve as a category"; corrected through dialogue into concept 15:
    - **App-making comes to resemble film-making** — the engineering layer dissolves into AI, but apps survive as artifacts; the manuscript is natural language, the human is director/screenwriter, AI is the technical crew
-8. A conversational observation (2026-07, "both digital and analog parts become easy to fabricate — so demand for materials grows") was sharpened into concept 16 and written as 構造分析 2-08 (`articles/insights.adoc`, article `part-2-emergence/08-fabrication-and-materials/`):
+8. A conversational observation (2026-07, "both digital and analog parts become easy to fabricate — so demand for materials grows") was sharpened into concept 16 and written as 構造分析 2-08 (`articles/insights/`, article `part-2-emergence/08-fabrication-and-materials/`):
    - **The democratization of fabrication** — digital and analog fabrication collapse at once; value moves to the chain's two ends (materials and judgment); hybrid products become the middle layer's home ground; free farmers and builders form one economy
 
 The framework now stands at sixteen concepts. The blog post is the single point that ties them together for a reader; this skill is the source of truth for future writing that needs to extend or reference the framework.

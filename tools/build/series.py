@@ -29,6 +29,11 @@ expand_all() はこれを既存ビルダーがそのまま読める従来型ツ�
 に展開し、config の各シリーズディレクトリを .build 側へ付け替える。
 下流(build_article.py, images.py, template_vars.py)は無変更で動く。
 
+大きなシリーズは、1ファイルの代わりにフォルダ(articles/blog/*.adoc)に
+分けてよい。フォルダの中のファイルをファイル名順に連結して1シリーズとして
+読む(記事の並び=prev/next 連鎖もファイルをまたいで続く)。GitHub は大きな
+ファイル(数百KB超)を表示しないので、表示できる大きさに保つための分割。
+
 GitHub でそのまま読めるようにする書き方(任意):
 
 - フロントマターの区切りは `---` の代わりに `////`(コメントブロック)でもよい。
@@ -99,7 +104,7 @@ def custom_series_defs(site_root):
     out = []
     for s in site_series_defs(site_root):
         f = s.get("file", "")
-        if f and f not in SERIES_MAP and (Path(site_root) / "articles" / f).exists():
+        if f and f not in SERIES_MAP and series_parts(site_root, f):
             d = dict(s)
             d.setdefault("url_base", "/" + f[: -len(".adoc")])
             d.setdefault("label", f[: -len(".adoc")])
@@ -114,6 +119,46 @@ def series_map(site_root):
     for d in custom_series_defs(site_root):
         m[d["file"]] = d["url_base"].strip("/")
     return m
+
+
+def series_parts(site_root, name):
+    """シリーズ(SERIES_MAP / site.json の file 名、例 "blog.adoc")を構成する
+    ファイルを文書順に返す。無ければ空。
+
+    articles/blog.adoc が1ファイルならそれだけ。articles/blog/ フォルダなら
+    中の *.adoc をファイル名順に(ファイル名の並び=記事の並び)。"""
+    articles = Path(site_root) / "articles"
+    single = articles / name
+    folder = articles / name[: -len(".adoc")]
+    parts = []
+    if folder.is_dir():
+        parts = sorted(
+            p for p in folder.glob("*.adoc")
+            if p.is_file() and not p.name.startswith(".")
+        )
+    if single.is_file() and parts:
+        raise SeriesError(
+            single, 1,
+            f"{name} と {folder.name}/ が両方あります(どちらか一方にしてください)",
+        )
+    return [single] if single.is_file() else parts
+
+
+def series_name_for_path(site_root, path):
+    """シリーズを構成するファイルのパス → シリーズ名("blog.adoc")。
+    articles/blog.adoc も articles/blog/vol-01.adoc も "blog.adoc" になる。
+    シリーズでなければ None。ファイルが無くても名前だけで判定する。"""
+    p = Path(path).resolve()
+    articles = (Path(site_root) / "articles").resolve()
+    if p.suffix != ".adoc":
+        return None
+    if p.parent == articles:
+        name = p.name
+    elif p.parent.parent == articles:
+        name = p.parent.name + ".adoc"
+    else:
+        return None
+    return name if name in series_map(site_root) else None
 
 
 _SENTINEL_RE = re.compile(r"^//\s*=====\s*article:\s*(\S+)\s*=====\s*$")
@@ -135,9 +180,10 @@ class SeriesError(SystemExit):
 class ArticleUnit:
     """シリーズファイル中の1記事分。"""
 
-    def __init__(self, article_id, line_no):
+    def __init__(self, article_id, line_no, path=None):
         self.article_id = article_id  # 例 "021-slug" / "part-1-collapse/03-slug"
         self.line_no = line_no        # シリーズファイル内の開始行(1始まり)
+        self.path = path              # この記事が書かれているファイル
         self.meta = {}                # 統合フロントマター(key.ja/key.en 含む)
         self.bodies = {}              # {"ja": str, "en": str} 存在する言語のみ
 
@@ -229,7 +275,7 @@ def parse_series_file(path):
             if article_id in seen_ids:
                 raise SeriesError(path, i, f"article id が重複しています: {article_id}")
             seen_ids.add(article_id)
-            unit = ArticleUnit(article_id, i)
+            unit = ArticleUnit(article_id, i, path)
             fm_lines = None
             fm_done = False
             fm_delim = None
@@ -295,6 +341,24 @@ def parse_series_file(path):
             body["en"].append(line)
 
     flush(len(lines))
+    return units
+
+
+def parse_series(paths):
+    """シリーズを構成するファイル群(series_parts の返り値)を、ファイル順に
+    連結した ArticleUnit の列に読み下す。記事IDはファイルをまたいで一意。"""
+    units = []
+    seen = {}
+    for path in paths:
+        for u in parse_series_file(path):
+            if u.article_id in seen:
+                raise SeriesError(
+                    path, u.line_no,
+                    f"article id が重複しています: {u.article_id}"
+                    f"({seen[u.article_id]} にもあります)",
+                )
+            seen[u.article_id] = Path(path).name
+            units.append(u)
     return units
 
 
@@ -384,13 +448,13 @@ def _is_draft(unit):
 
 
 def series_files(site_root):
-    """存在するシリーズファイルの一覧 [(path, stem, subdir), …]。
+    """存在するシリーズの一覧 [(構成ファイルのリスト, stem, subdir), …]。
     組み込み + site.json で宣言されたサイト独自のシリーズ。"""
     found = []
     for name, subdir in series_map(site_root).items():
-        p = site_root / "articles" / name
-        if p.exists():
-            found.append((p, p.name[: -len(".adoc")], subdir))
+        parts = series_parts(site_root, name)
+        if parts:
+            found.append((parts, name[: -len(".adoc")], subdir))
     return found
 
 
@@ -409,10 +473,10 @@ def expand_all(site_root=None):
     if build_root.exists():
         shutil.rmtree(build_root)
 
-    for path, stem, subdir in found:
+    for parts, stem, subdir in found:
         # draft: true の記事(下書き)はビルドから除外——サイトに出ず、
         # prev/next 連鎖・索引・sitemap からも消える
-        units = [u for u in parse_series_file(path) if not _is_draft(u)]
+        units = [u for u in parse_series(parts) if not _is_draft(u)]
         out_base = build_root / subdir
         nav = {"ja": derive_nav(units, "ja"), "en": derive_nav(units, "en")}
         for unit in units:
@@ -439,7 +503,7 @@ def expand_all(site_root=None):
         if root_name not in _DIR_ATTRS:
             continue
         parent_file = [n for n, s in SERIES_MAP.items() if s == root_name]
-        if parent_file and not (site_root / "articles" / parent_file[0]).exists():
+        if parent_file and not series_parts(site_root, parent_file[0]):
             print(
                 f"警告: {root_name} はサブシリーズのファイルだけがあります。"
                 f"親シリーズ({parent_file[0]})が無いため付け替えをスキップします",

@@ -1,0 +1,2577 @@
+// blog — 第3巻(021〜029)。シリーズは articles/blog/ の *.adoc をファイル名順に連結したもの
+// 記事の区切り: // ===== article: <記事ID> =====
+// フロントマター: 日英共通は裸キー、異なる値は key.ja / key.en
+// 本文: ifdef::lang-ja[] / ifdef::lang-en[] で言語別
+// prev/next 連鎖は書かない(記事の並び順から自動導出)
+ifdef::env-github[]
+= Blog(構造分析ノート) — 第3巻(021〜029)
+:lang-ja:
+:doctype: book
+:toc:
+:toc-title: 目次
+:toclevels: 1
+
+サイトで読む: https://aiseed.dev/blog/
+endif::[]
+// ===== article: 021-software-three-transitions =====
+////
+slug: software-three-transitions
+title.ja: AI時代には「特化したエンジニアになれ」は構造を取り違えている
+title.en: In the AI era,\"Become a specialized engineer\" misreads the structure
+subtitle.ja: 第二次ルネサンスが始まっている ── ソフトウェアエンジニア → ビルダー、ソフトウェア工学 → リベラルアーツ、雇用 → 自由人
+subtitle.en: The Second Renaissance has begun — software engineer → builder, software engineering → liberal arts, employment → free person
+date: 2026.05.22
+description.ja: 業界でよく聞く「AI 時代には特化したエンジニアになれ」という助言は、構造を取り違えている。AI が引き受けつつあるのはソフトウェア工学の層全体であって、特定領域ではない。中世のたとえで言えば、農奴が「より特化した農奴になれば自由になれる」と助言されているに等しい。自由になるのは、特化を深めることではなく、領主の支配構造から抜けること。ソフトウェアエンジニア → ビルダー、ソフトウェア工学 → リベラルアーツ、雇用 → 自由人 ── この三つの転換は、第二次ルネサンス(LLMが活版印刷の役を演じる、AI時代の歴史的転換期)の中で進行している。創造と混乱は表裏一体で、トランプ大統領は混乱の側の典型例である。aiseed.dev の「AI ネイティブなソフトウェア開発」の構造論を、三対の語に圧縮して読む。
+description.en: The widely circulated advice — \"in the AI era, become a specialized engineer; hold a deep specialty AI cannot take, like security or ML\" — misreads the structure. AI is absorbing the whole layer of software engineering, not a particular subdomain. The medieval analogue: telling a serf, \"become a more specialized serf and you will be free.\" Freedom comes from stepping out of the lord's structure of control, not from deeper specialization. Software engineer → builder, software engineering → liberal arts, employment → free person — these three transitions are unfolding inside the Second Renaissance (the historical turning point of the AI era, with the LLM playing the role of the printing press). Creation and upheaval are two faces of the same time, and Trump is the canonical figure on the upheaval side. The article compresses aiseed.dev's \"AI-Native Software Development\" into three pairs of words.
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+hero_image: IMG_3481.jpg
+////
+ifdef::env-github[]
+:imagesdir: ../assets/blog/021-software-three-transitions
+endif::[]
+ifdef::lang-ja[]
+= AI時代には「特化したエンジニアになれ」は構造を取り違えている
+
+業界でよく聞く助言があります ── 「AI 時代には特化したエンジニアになれ。セキュリティや ML のような、AI に取られにくい深い専門領域を持て」。
+
+これは *構造を取り違えています*。
+
+AI が引き受けつつあるのはソフトウェア工学の *層全体* であって、その中の特定領域ではありません。特化を深めても、特化先が AI に追い抜かれる時期がずれるだけです。中世のたとえで言えば、農奴が「より特化した農奴になれば自由になれる」と助言されているに等しい ── 自由になるのは、特化を深めることではなく、*領主の支配構造そのものから抜ける* ことでしかありません。
+
+aiseed.dev が公開している link:/ai-native-software/[AI ネイティブなソフトウェア開発]が論証している構造変化は、次の三つの転換に集約できます。
+
+|===
+| Before | After
+| ソフトウェアエンジニア | *ビルダー*
+| ソフトウェア工学 | *リベラルアーツ*
+| 雇用 | *自由人*
+|===
+
+なぜそうなるか、順に見ていきます。
+
+== 転換1: ソフトウェアエンジニア → ビルダー
+
+*ソフトウェアエンジニアの仕事は、コードを書くこと*でした。仕様が降りてきて、言語・フレームワーク・パターンに通じている人が実装する。チームを組むほど書く速度が上がり、出力は「人数 × 書く速度」で決まる ── これが過去 30 年の構造です。
+
+*ビルダーの仕事は、何を作るかを決めること*です。具体的には四つの連鎖で動きます。
+
+* *決める* ── 顧客・現場・自分の文脈から、何を作るかとどう分けるかを判断する
+* *委譲する* ── AI に意図と制約と受け入れ条件を渡す。コードは AI が書く
+* *評価する* ── 返ってきた出力が、動くか、設計と整合するか、想定した文脈で破綻しないかを判断する
+* *統合する* ── 部分を全体に組み込み、整合を保つ。次の「決める」に戻る
+
+このループは一日に何十周も回ります。コードを書く時間はその中で最小化されます ── 書くのは AI だからです。
+
+____
+エンジニアは「*人数 × 書く速度*」で出力が決まりました。
+ビルダーは「*判断の質 × ループの回転数*」で出力が決まります。
+____
+
+数字で言えば、aiseed.dev のコード基盤(約 6,000 行、5 つの独立系列・約 150 本のバイリンガル記事を支えるビルドツール + テンプレート + 画像生成 + サイトマップ等)は、*1 人 + AI で 24 時間* で立ち上がりました。同じスコープを SIer に出すと、提案と見積もりだけで同じ時間が消えます。
+
+「人を増やせば速くなる」は、エンジニアの世界では成立しました(上限はあったが)。ビルダーの世界では *人を増やしても速くならない* ── 判断の連鎖は、頭の数では分散できないからです。
+
+詳しくは link:/ai-native-software/builder/[1-04「ビルダーという役割」]。
+
+== 転換2: ソフトウェア工学 → リベラルアーツ
+
+「ビルダーが磨くべきスキルは何か」── 答えは、業界が思っているのと違います。
+
+ビルダーが磨くのは、*構造分解・言語化・評価眼・統合判断・取捨選択*。これらはすべて、伝統的に *リベラルアーツ(自由七科)* と呼ばれてきた技芸です。
+
+|===
+| ビルダーに求められる能力 | リベラルアーツに対応する分野
+| 構造分解 | 論理学・分析(trivium の弁証法)
+| 言語化(暗黙の意図を明示の記述に) | 文法・修辞学(trivium)
+| 評価眼(動くだけと設計に合うを区別) | 美学・倫理学
+| 統合判断(全体の整合を見る) | 体系的思考(quadrivium の幾何・音楽の構成感覚)
+| 取捨選択(三案から「これでいく」を選ぶ) | 倫理学・判断論
+| 文脈の読み(顧客・現場から切り出す) | 歴史学・社会科学・政治哲学
+|===
+
+*AI が引き受けたのは、ソフトウェア工学の核心* ── アルゴリズム、言語仕様、フレームワーク、設計パターン、テストの書き方。残った仕事がリベラルアーツ的な能力にしか見えないのは、構造的な必然です。
+
+念のために言うと、*コンピュータサイエンス(CS)は別物*です。計算理論・アルゴリズム・形式論理・離散数学は、もともと quadrivium(数学・論理)の延長線上にある *リベラルアーツの内側* にいます。歴史的にも CS は数学科から派生し、Turing・Church・von Neumann は数学者・論理学者でした。*CS は捨てる必要も特別扱いする必要もない* ── ビルダーの判断の足場として、リベラルアーツの中に組み込まれている。
+
+歴史的にも符号します。中世のリベラルアーツは「*自由人(隷属していない人)が学ぶべき技芸*」と定義されました ── 奴隷の技芸(mechanical arts)と対になる概念です。ビルダーは「AI に判断を手放さない人」── つまり *自由人の技芸の現代版* です。
+
+詳しくは link:/ai-native-software/builder/[1-04「ビルダーの基盤はリベラルアーツ」節]。
+
+== 転換3: 雇用 → 自由人
+
+最後に、もう一つ見落とされがちな転換があります。*現代の雇用(サラリーマン)は、構造として中世の農奴と同じ位置にある* ── という事実です。
+
+|===
+| 次元 | 中世の農奴 | 現代の雇用
+| 生産手段の所有 | 領主の土地・道具 | 雇用主のオフィス・設備・IP・データ・インフラ
+| 労働の自己決定 | 領主の指示で耕作 | 上司の指示で業務
+| 移動の自由 | 土地に縛り付け | 雇用契約・住宅ローン・社内キャリアに縛り付け
+| 収入の予測性 | 領主の保護下で安定 | 給与の安定性と引き換えに自由を渡す
+| 判断の主体 | 領主 | 雇用主
+| 引き換えに得るもの | 食と保護 | 給与と福利厚生
+|===
+
+倫理的に同じだと言いたいのではありません(現代の雇用には法的保護も契約の自由もあります)。*生産手段の所有・判断・移動という三軸で、構造が一致している* という分析的観察です。
+
+そして AI 時代に *雇用が成立しにくくなる* 理由は、構造的に明確です。
+
+. *生産手段が個人で持てる* ようになった ── 月数千円の AI、ローカル LLM、OSS、自前サーバー。雇用主が独占する必要が消える
+. *1 人 + AI = 10 人チーム* ── 集中化のメリットが消える
+. *判断と実行の境界が一人の中で閉じる* ── 集約・調整・管理の overhead が純粋な無駄になる
+. *経営判断を下す者は本質的に独立志向* ── 経営者・自営業者が自分の会社を構えるのは偶然ではない
+
+*自営の増加は、政策やライフスタイルの問題ではなく、構造の必然* です。中世の自由市民・自由農民・職人が「自営」だったのと同じ構造が、AI 時代に戻ってきます。
+
+____
+雇用は AI 時代の農奴の現代版。
+*自営は、自由人の現代版*です。
+____
+
+詳しくは link:/ai-native-software/five-years/[3-09「雇用は AI 時代の農奴」節]。
+
+== これは第二次ルネサンスだ
+
+この三つの転換 ── エンジニア → ビルダー、ソフトウェア工学 → リベラルアーツ、雇用 → 自由人 ── を並べると、第一次ルネサンス(14〜17世紀)が中世の終わりに起こした構造変化と、項目レベルで一致します。
+
+|===
+| 要素 | 第一次ルネサンス | 第二次ルネサンス(AI 時代)
+| ポリマス(万能人)の理想 | レオナルド・ダ・ヴィンチ | ビルダー、1 人 + AI
+| 復活する古典 | ギリシャ・ローマの古典学 | リベラルアーツ
+| 俗語の解放 | ダンテのイタリア語、ルターのドイツ語 | 自然言語が「プログラミング言語」になる
+| 自由都市・ギルド | フィレンツェ、ヴェネツィア、職人組合 | AI 時代の自由人、経営者・CIO の組合
+| *加速器* | *印刷術(1450年代)── 読むことの民主化* | *LLM ── 作ることの民主化*
+| 新興階級 | ブルジョア | AI ネイティブ・ビルダー、自営の経営判断者（CIO）
+|===
+
+歴史教科書では活版印刷が宗教改革・科学革命・近代国家の前提を *200 年かけて* 準備したとされます。LLM はその *数桁上の強度* を持ちます ── 印刷術が民主化したのは「読むこと」(既存の知識へのアクセス)だったのに対し、LLM が民主化したのは「*作ること*」(知識生成・判断・実装)。識字という訓練の壁もなく、自然言語で誰でも使えます。
+
+普及速度も桁違いです。数十年かかった印刷術の社会的効果が、AI 時代では *数年で* 起きる。本シリーズが描く近い将来の構造転換は、この強度の差を踏まえると、むしろ控えめな見積もりですらあります。
+
+第二次ルネサンスは「単なる AI 革命」では捕らえきれません。深い論証 ── *AI 革命は IT 革命の完成*(70年遅れの自動化約束の実現)、*LLM は超知能ではなく統計処理ツール*(AGI hype の構造的却下)、*アプリ作りは映画作りに似てくる*(ハリウッド〜YouTube の全幅で成立)、*AI 革命だけの話ではない*(化石資源・地政学・農業・金融・人口/医療/年金の同時並行転換)、*創造の時代と混乱の時代の両側*(トランプとナデラの判断集中という共通構造) ── は、link:/ai-native-software/five-years/[*ソフトウェア開発編 3-07「もう戻らない構造転換」*]で展開しています。
+
+== 「特化エンジニア」助言の代替路
+
+冒頭の問いに戻ります。「AI 時代にどう動くか」── 答えは、特化を深めることではありません。*横に抜ける* ことです。
+
+二本の路があります。
+
+. *リベラルアーツの軸へ横に抜ける* ── 判断・言語化・倫理・体系的思考を磨く。ビルダーになる
+. *物理現実を持つビルダーへ横に抜ける* ── メイカー、組み込み、ロボット、精密農業、AI 設計を使う大工 ── 純粋ソフトの抽象性と純粋物理の直接性を橋渡しする中間層
+
+どちらも、領主の屋敷を出る道です。
+
+== 詳しくは「AI ネイティブなソフトウェア開発」で
+
+本記事は、aiseed.dev の link:/ai-native-software/[AI ネイティブなソフトウェア開発]を三対の語に圧縮したものです。各章で扱われている論証:
+
+* link:/ai-native-software/coder-top/[1-01: AI は、世界で最も難しいコーディング問題を解く] ── Codeforces 2700 帯、月3千円で世界最上層
+* link:/ai-native-software/maintenance-shift/[1-02: 保守フェーズの構造変化こそ本質] ── 保守の単位がコードから設計に移る
+* link:/ai-native-software/coder-end/[1-03: ソフトウェアエンジニアの仕事を AI がするようになる] ── そろばん → 電卓と同じ構造
+* link:/ai-native-software/builder/[1-04: ビルダーという役割] ── 決める・委譲する・評価する・統合する
+* link:/ai-native-software/customer-codev/[1-05: 顧客が AI と協働して開発する時代] ── 9 割は顧客自身が作る
+* link:/ai-native-software/two-worlds/[3-01: 企業は自分でコードを書かない ── 事務と基幹、二つの世界の並立] ── 二つの並立世界と二重の税、そしてその解消
+* link:/ai-native-software/sovereignty/[3-03: デジタル主権 ── Microsoft 問題と Trump 問題] ── OSS とソブリン AI が経済でも安全保障でも有利に
+* link:/ai-native-software/sier-uneconomic/[3-04: SIer委託モデルの構造的不経済]
+* link:/ai-native-software/lockin/[3-05: ロックイン問題] ── Palantir FDE を典型例として
+* link:/ai-native-software/hiring-builders/[3-06: 各社がビルダーを雇用する時代] ── 経営判断を下す側へ
+* link:/ai-native-software/japan-transition/[3-07: 日本の SIer 業界の転換と雇用流動性] ── 多重下請けは逆説的に転換を容易にする
+* link:/ai-native-software/five-years/[3-09: もう戻らない構造転換] ── 不可逆性、第二次ルネサンス
+
+「*ソフトウェア工学から、リベラルアーツへ ── 技術職の基盤転換*」── これが連載を貫く軸であり、AI 時代の構造を読み解く一つの軸です。
+
+'''
+
+== 関連記事
+
+* link:/ai-native-software/[AI ネイティブなソフトウェア開発(連載目次)] ── 導入編・自立編・転換編の三部
+* link:/insights/enterprise-tax/[構造分析08: 企業ITの税を引く] ── 企業側の構造変化
+* link:/insights/ai-and-individual/[構造分析09: AIと個人事業] ── 個人側の構造変化
+* link:/blog/nadella-hegel-cunning-of-reason/[Microsoft のナデラ CEO とヘーゲルの哲学] ── 反対側の世界観
+endif::[]
+ifdef::lang-en[]
+= In the AI era,"Become a specialized engineer" misreads the structure
+
+There is a widely circulated piece of advice — "in the AI era, become a specialized engineer; hold a deep specialty AI cannot take, like security or ML."
+
+This *misreads the structure*.
+
+What AI is absorbing is *the whole layer* of software engineering, not a particular subdomain inside it. Going deeper into a specialty only shifts the date by which the specialty itself is overtaken. The medieval analogue would be telling a serf, "become a more specialized serf and you will be free." Freedom does not come from going deeper into the specialty; it comes from *stepping out of the lord's structure of control*.
+
+The structural change argued in aiseed.dev's link:/en/ai-native-software/[AI-Native Software Development] compresses into three transitions:
+
+|===
+| Before | After
+| Software engineer | *Builder*
+| Software engineering | *Liberal arts*
+| Employment | *Free person*
+|===
+
+We look at why each one happens.
+
+== Transition 1: Software engineer → builder
+
+*The software engineer's work was writing code.* Specs come down, someone fluent in languages, frameworks, and patterns implements them. Adding people to the team raises writing speed; output scales as "head count × writing speed" — this has been the structure for the past thirty years.
+
+*The builder's work is deciding what to build.* Concretely, four moves in a loop:
+
+* *Decide* — from the customer, the field, your own context, judge what to build and how to divide it
+* *Delegate* — hand AI the intent, constraints, acceptance criteria. AI writes the code
+* *Evaluate* — judge whether the returned output runs, fits the design, and holds up in the intended context
+* *Integrate* — fold the part into the whole, keep the whole consistent, return to the next "decide"
+
+The loop turns dozens of times in a day. Code-writing time is minimized inside it — because AI is the one writing.
+
+____
+An engineer's output is set by *head count × writing speed*.
+A builder's output is set by *judgment quality × loop turnover*.
+____
+
+In numbers: aiseed.dev's code base (about 6,000 lines — the build tool, templates, image generation, sitemap, and so on that carry five independent series and ~150 bilingual articles) was stood up by *one person + AI in 24 hours*. The same scope handed to an SIer would burn that much time on the proposal and quote alone.
+
+"Add people and it goes faster" held in the engineer's world (with a ceiling). In the builder's world, *adding people does not make it faster* — the chain of judgment cannot be parallelized across heads.
+
+See link:/en/ai-native-software/builder/[1-04: The Builder Role].
+
+== Transition 2: Software engineering → liberal arts
+
+"What skills should a builder develop?" — the answer differs from what the industry expects.
+
+What the builder cultivates is *structural decomposition, verbalization, evaluative eye, integration judgment, selection*. All of these have been called *the liberal arts* (the _artes liberales_, the "seven liberal arts") for two thousand years.
+
+|===
+| What a builder needs | Its liberal-arts counterpart
+| Structural decomposition | Logic, analysis (the _trivium_'s dialectic)
+| Verbalization (turning implicit intent into explicit description) | Grammar, rhetoric (the _trivium_)
+| Evaluative eye (separating "merely runs" from "fits the design") | Aesthetics, ethics
+| Integration judgment (seeing whether parts preserve the whole) | Systems thinking (geometry and the constructive sense of music)
+| Selection (picking "this one" from three options) | Ethics, theory of judgment
+| Reading context (cutting it out of customer and field) | History, social science, political philosophy
+|===
+
+*What AI took over is the core of software engineering* — algorithms, language specifications, frameworks, design patterns, how to write tests. The work that remains looks liberal-arts–shaped because, structurally, *it has to*.
+
+To be clear, *computer science (CS) is a different thing*. Computability, algorithms, formal logic, discrete mathematics sit inside the liberal arts as a modern extension of the _quadrivium_'s mathematics and logic. Historically CS emerged from mathematics; Turing, Church, and von Neumann were mathematicians and logicians. *CS does not need to be discarded, and it does not need a special category* — it is folded into the builder's scaffold for judgment.
+
+The etymology lines up, too. The medieval _artes liberales_ were defined as *the arts a free person — one who is not enslaved — should learn*, set explicitly against the _artes mechanicae_, the slave's arts. The builder is the person who *does not hand judgment over to AI* — the contemporary form of the free person's arts.
+
+See link:/en/ai-native-software/builder/[1-04: The Builder Role].
+
+== Transition 3: Employment → free person
+
+One more transition is easily missed. *Modern employment, examined structurally, sits in the same position as medieval serfdom.*
+
+|===
+| Dimension | Medieval serf | Modern employee
+| Ownership of the means of production | Lord's land and tools | Employer's office, equipment, IP, data, infrastructure
+| Self-determination of labor | Cultivating at the lord's direction | Working at the supervisor's direction
+| Freedom of movement | Tied to the land | Tied by employment contract, mortgage, in-company career
+| Income predictability | Stable under the lord's protection | Trading freedom for salary stability
+| Locus of judgment | The lord | The employer
+| What is received in exchange | Food and protection | Salary and benefits
+|===
+
+This is not a claim of moral equivalence (modern employment has legal protections and contractual freedom). It is an analytical observation that *on the three axes of ownership, judgment, and mobility, the structure matches*.
+
+And the reasons employment *stops fitting in the AI era* are structurally clear:
+
+. *The means of production are now individually ownable* — a few-thousand-yen-a-month AI, local LLMs, open source, one's own server. The employer no longer needs to monopolize them.
+. *One person + AI = a ten-person team* — the payoff of concentration disappears.
+. *The boundary between judgment and execution closes within one person* — the overhead of aggregation, coordination, and management becomes pure waste.
+. *Those who make business decisions are intrinsically inclined to independence* — owners and the self-employed set up their own firms, not by accident.
+
+*The rise of self-employment is structural necessity, not a policy or lifestyle question.* The same structure under which medieval free citizens, free farmers, and craftsmen were all "self-employed" returns in the AI era.
+
+____
+Employment is the contemporary form of medieval serfdom.
+*Self-employment is the contemporary form of being a free person.*
+____
+
+See link:/en/ai-native-software/five-years/[3-09: The Structural Transition That Won't Reverse].
+
+== This is the Second Renaissance
+
+Lay the three transitions out — engineer → builder, software engineering → liberal arts, employment → free person — and they line up, item by item, with the structural change of the First Renaissance (14th–17th centuries).
+
+|===
+| Element | First Renaissance | Second Renaissance (AI era)
+| The polymath ideal | Leonardo da Vinci | The builder, one person + AI
+| The classics being recovered | Greek and Roman classical learning | The liberal arts
+| Vernacular liberation | Dante's Italian, Luther's German | Natural language becomes "the programming language"
+| Free cities and guilds | Florence, Venice, the craft guilds | The AI-era free person, guilds of owners and CIOs
+| *The accelerator* | *The printing press (1450s) — democratized reading* | *The LLM — democratizes making*
+| New rising class | The bourgeoisie | The AI-native builder, the self-employed business-decision-maker (CIO)
+|===
+
+History textbooks credit the printing press with preparing the ground for the Reformation, the scientific revolution, and the modern nation-state *over two hundred years*. The LLM holds *incomparably greater intensity* — what the printing press democratized was "reading" (access to existing knowledge), while what the LLM democratizes is "*making*" (knowledge generation, judgment, implementation). There is no literacy wall to clear first; natural language works for anyone.
+
+The speed of diffusion is on another order. What took the printing press decades, the AI era achieves *in years*. The near-term horizon this sub-series draws is, against this difference in intensity, *a conservative estimate*.
+
+The Second Renaissance cannot be captured by "the AI revolution" alone. The deeper arguments — *the AI revolution is the completion of the IT revolution* (the 70-year-late fulfillment of the automation promise), *the LLM is a statistical-processing tool, not a superintelligence* (structural rejection of the AGI hype), *app-making comes to resemble film-making* (holding across the Hollywood-to-YouTube range), *not only the AI revolution* (concurrent transitions in fossil resources, geopolitics, agriculture, finance, demographics, healthcare, and pensions), and *creation AND upheaval as two sides of the era* (Trump and Nadella share the same structural error of judgment-concentration) — are developed in link:/en/ai-native-software/five-years/[3-09: The Structural Transition That Won't Reverse].
+
+== The alternative path to "specialized engineer" advice
+
+Back to the opening question. "How do you move in the AI era?" — the answer is not deeper specialization. It is *stepping sideways*.
+
+There are two paths:
+
+. *Sideways onto the liberal-arts axis* — sharpen judgment, verbalization, ethics, systems thinking. Become a builder.
+. *Sideways into builders who hold physical reality* — makers, embedded engineers, robotics, precision agriculture, carpenters using AI design tools. The middle layer that bridges pure software's abstraction with pure physical work's directness.
+
+Both are roads out of the lord's manor.
+
+== More in AI-Native Software Development
+
+This article compresses aiseed.dev's link:/en/ai-native-software/[AI-Native Software Development] into three pairs of words. The arguments across the chapters:
+
+* link:/en/ai-native-software/coder-top/[1-01: AI Solves the World's Hardest Coding Problems] — Codeforces 2700 tier; the top layer for $20/month
+* link:/en/ai-native-software/maintenance-shift/[1-02: Maintenance-Phase Shift Is the Real Story] — the unit of maintenance moves from code to design
+* link:/en/ai-native-software/coder-end/[1-03: AI Now Does the Software Engineer's Work] — same structure as abacus → calculator
+* link:/en/ai-native-software/builder/[1-04: The Builder Role] — decide, delegate, evaluate, integrate
+* link:/en/ai-native-software/customer-codev/[1-05: Customers Co-Develop with AI] — 90% is the customer; 10% goes to a specialist
+* link:/en/ai-native-software/two-worlds/[3-01: Companies Don't Write Their Own Code — Office and Core, Two Parallel Worlds] — the two parallel worlds, the double tax, and their dissolution
+* link:/en/ai-native-software/sovereignty/[3-03: Digital Sovereignty — The Microsoft Problem and the Trump Problem] — OSS and sovereign AI now win on both economics and security
+* link:/en/ai-native-software/sier-uneconomic/[3-04: The Structural Uneconomy of the SIer Model]
+* link:/en/ai-native-software/lockin/[3-05: The Lock-In Problem] — Palantir FDE as the canonical case
+* link:/en/ai-native-software/hiring-builders/[3-06: Companies Hire Builders] — moving to the side that makes business decisions
+* link:/en/ai-native-software/japan-transition/[3-07: Japan's SIer Industry Transition and Labor Mobility] — multi-tier subcontracting paradoxically eases the transition
+* link:/en/ai-native-software/five-years/[3-09: The Structural Transition That Won't Reverse] — irreversibility; the Second Renaissance
+
+"*From software engineering to the liberal arts — the foundational shift of the technical profession*" is the subtitle of the sub-series and one axis for reading the structure of the AI era.
+
+'''
+
+== Related
+
+* link:/en/ai-native-software/[AI-Native Software Development (series index)] — Introduction, Independence, and Shift
+* link:/en/insights/enterprise-tax/[Structural Analysis 08: Removing the Enterprise IT Tax] — the structural change on the company side
+* link:/en/insights/ai-and-individual/[Structural Analysis 09: AI and the Individual Business] — the structural change on the individual side
+* link:/en/blog/nadella-hegel-cunning-of-reason/[Microsoft's Nadella and Hegel's Philosophy] — the worldview on the opposite side
+endif::[]
+
+// ===== article: 022-windows-10-to-debian =====
+////
+slug: windows-10-to-debian
+title.ja: PCが大幅値上げ ── 今あるPCにLinuxをインストールして活用
+title.en: PCs Just Got Much More Expensive — Install Linux on the PC You Already Have
+subtitle.ja: AI 時代には、Linux の方が使いやすい
+subtitle.en: In the AI era, Linux is the easier choice.
+date: 2026.05.26
+description.ja: 2025 年 10 月に Windows 10 のサポートが終了した。Windows 11 に対応していない PC が世界中で数億台あって、ハードウェアは何も壊れていない。同じハードウェアで Linux は普通に動く ── むしろ古い PC こそ Linux の方が向いている。「Linux は難しい」という常識は、AI 時代に二重に逆転した: ひとつは AI がコマンドと相性がいいこと、もうひとつは Flathub が普段使いアプリの GUI 導入を Microsoft Store より整った形で提供していること。AI が横にいる今、Linux のコマンドはもう難しくない。Linux を試すなら今だ。
+description.en: Windows 10 support ended in October 2025. Hundreds of millions of PCs are flagged "not compatible with Windows 11" — yet the hardware is fine. The same hardware runs Linux normally, and old PCs are arguably better suited to Linux. The "Linux is hard" reputation reversed twice in the AI era: AI is unusually good at teaching commands, and Flathub now offers a cleaner GUI app store than the Microsoft Store. With AI beside you, Linux commands are no longer hard. Now is the time to try Linux.
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+hero_image: IMG_3482.webp
+////
+ifdef::env-github[]
+:imagesdir: ../assets/blog/022-windows-10-to-debian
+endif::[]
+ifdef::lang-ja[]
+= PCが大幅値上げ ── 今あるPCにLinuxをインストールして活用
+
+2025 年 10 月、Microsoft は Windows 10 のサポートを終了した。ESU で 1 年延ばしている人でも、個人の場合は残り 5 か月で切れる。法人は今年の10月に122ドル払い来年の10月に244ドル払って再来年の10月で完全に終わり。
+
+Windows 11 に対応していないPCが、世界中で数億台ある。第 8 世代より前の CPU、TPM 2.0 非搭載、それがMicrosoft では「もう使えない」ことになっている。
+
+*この「Windows 11 にアップグレードできない PC」を持っている人にとって、本記事の答えは明確だ ── Linux (Debian) への移行を、絶対にやるべきである。* ESU は有限かつ高額、新規 PC は後述の通り最悪のタイミング、そして Linux は無料でハードはそのまま使える。これで他に選ぶべき道は事実上ない。本記事の以下は、その「やるべき」をどう実行するかの話だ。
+
+2026年は新しいPCを買う最悪のタイミングだ。*Microsoft*自身が引き起こしたAIバブルによるメモリの大量需要で、メモリーやディスクの価格は大幅に上昇している。さらに、2026年イラン戦争によるオイルショックでさらに価格が上昇する可能性が高い。具体的な数字を一つ挙げる ── *本記事で実機検証に使った mini PC は、筆者が購入してから 1 年経たないうちに、¥60,000 値上がりしている*。Microsoftが推奨する、Copilot + PC だと30万円を超える価格のものが普通だ。
+
+image:IMG_3491.jpg[miniPC]
+
+=== Microsoft は何をしているのか
+
+整理すると、Microsoft の戦略は*中世のエンクロージャー（囲い込み）と同じ構造*になっている。
+
+. *下端を切る* ── Windows 11 の要件で TPM 2.0 / 第 8 世代以降 CPU を必須化し、動いている PC を数億台「書類上は使えない」状態にした。さらに Copilot+ で NPU 40 TOPS の新しい床を設けた
+. *中段を干上がらせる* ── 自社が煽った AI バブルでメモリと SSD の価格を吊り上げ、16GB / 500GB クラスの入門機が市場から消えつつある
+. *上端だけを押し出す* ── 30 万円超の Copilot+ PC を「次の標準」として宣伝し、そこに Copilot サブスクと Microsoft アカウントを縛り付ける
+
+共有地（＝動く中古機・入門機）を潰して、領主の指定する高い区画しか残さない ── 中世の囲い込みと同じ構図だ。だが、エンクロージャーには出口がある。Microsoft が囲い込めるのは「Windows ユーザー」であって、「PC ユーザー」ではない。*ハードウェアそのものは、そのまま Linux に持っていける*。
+
+Copilot+ PCには、NPU（AI処理を専門に行うプロセッサー）が搭載されているが、現状では*AI の処理がデータセンターに集中する構造は何も変わらない*。Copilot の主要機能 (Word の下書き・Excel の関数生成・PowerPoint の要約・Outlook の返信案・エージェント) は依然として Azure のクラウドで処理される。NPU が手元で動かすのは Recall や Studio Effects、ライブキャプション程度の周辺機能だけ。「エッジで AI が動く」というマーケティングとは裏腹に、AI バブルの本体である Azure データセンターへの依存は減らない。
+
+しかも、高額な Copilot+ PC を購入しても、何年サクサクと動作するかもわからない。特に *Snapdragon (ARM) を載せた Copilot+ PC では、Linux のインストール自体が現状きわめて難しい* ── ブートローダ、ファームウェア、GPU ドライバの三方塞がりで、コミュニティの試行錯誤が続いている段階だ。
+
+これらのことを考えると、現在は、新しい PC を買わないのが最善の選択肢だ。その場合、Linuxという選択肢がある。
+
+== Debian という選択
+
+Linuxには、多くのディストリビューションがあるが、世界中のボランティアによって30 年以上維持されている Debian は、最も有力な候補の一つである。商業ベンダーの都合に影響されにくいからである。
+
+Windows 10 が動いていたハードウェアであれば、Debian 13 は普通に動くはずだ。
+
+== 実機検証 — この記事の前提
+
+私が実際に Debian 13 をインストールして検証した機種を公開する。Windowsアプリを開発するために昨年購入した機種である。でも、Windows アプリを開発するのはやめることにした。
+
+|===
+| 部品 | 型番 | Debian 13 での扱い
+| マザーボード | MouseComputer ISoDEi-I1MA (mini PC) | UEFI / TPM 2.0 をそのまま使用
+| GPU | Intel Iris Xe Graphics (内蔵) | Mesa 標準で即動作、追加ドライバ不要
+| Wi-Fi | Intel Wi-Fi 6E AX211 160MHz | netinst 同梱の firmware-iwlwifi で *インストーラ画面から SSID 一覧が出る*
+| Bluetooth | Intel | iwlwifi と同パッケージで動く
+| 有線 LAN | Realtek 2.5GbE ＋ GbE (二口) | `r8169` で標準動作
+| ストレージ | NVMe Kingston OM8TAP4512 (512GB) | `nvme` ドライバで標準動作
+| サウンド | Realtek HD ＋ Intel SST | `snd-hda-intel` / `sof-firmware` で動く
+|===
+
+image:device-manager.jpg[デバイスマネージャー]
+
+link:/claude-debian/[Claude と一緒に学ぶ Debian] の第 8 章で列挙している 7 つのトラブルカテゴリ (ディスプレイ・Wi-Fi・Bluetooth・サウンド・サスペンド・日本語入力・周辺機器) のうち、*この機種で初回起動から動かなかったものは無かった*。Windows 11 の初回セットアップにある Microsoft アカウント強制・Copilot 設定・OneDrive 押し付け・同意ダイアログの山を全部スキップできる分、*むしろ Debian 13 のインストールの方が楽だった*。
+
+== 「Linux は難しい」は、AI 時代に逆転した
+
+Linux は難しい、という印象は根強い。コマンドを打つ黒い画面、聞いたことのない用語、Windows のような直感的な操作ができない ── これは、*人間が一人で覚える前提*の話だった。
+
+しかし、2026 年の今、状況は二つの大きな変化で逆転している。
+
+=== ひとつ目 ── GUI での操作・設定の方が、AI には難しい
+
+意外に思われるかもしれないが、Claude のような AI にとって、*GUI で何かを操作する・設定する手順を教えるほうが、コマンドで教えるよりずっと難しい*。
+
+GUI を言葉で説明するのは構造的に困難だ。「設定の左メニューの上から 3 番目」はバージョンで変わる。「歯車のアイコンをクリック」は画面のどこにあるかで違う。スクリーンショットを撮っても、AI が指せるのは大まかな場所だけ。設定画面が階層化されていればされているほど、人間に手順を渡すコストが上がる。Windows の深い設定はとくに、AI が言葉で導くのが難しい場所だ。
+
+コマンドは違う。テキストで完結する。企業で最も多く使われているAIはClaudeであるが、Claudeが書いたコマンドを、あなたがコピーして貼り付ければ、そのまま動く。エラーが出ても、その文字列をそのまま Claude に渡せば、原因を特定できる。
+
+*Linux の「コマンドが多い」という弱点は、AI が横にいる時代には強みに変わった*。そして同時に、*Windows の「すべて GUI で完結する」という強みは、AI 時代には弱みに変わった*。
+
+=== ふたつ目 ── Linux のアプリストア Flathub
+
+ふたつ目は、Linux のアプリストアである Flathub が整備されてきたことである。普段使っているアプリのインストールが、スマホと同じようにできるということだ。https://flathub.org[flathub.org] を開けば、Linux で動くアプリが一つの場所に並んでいる。
+
+|===
+| カテゴリ | アプリ
+| ブラウザ | Firefox、Google Chrome、Chromium、Brave
+| オフィス | ONLYOFFICE Desktop Editors、LibreOffice
+| コミュニケーション | Zoom、Slack、Discord、Element、Signal
+| メディア | Spotify、VLC、Audacity、OBS Studio
+| クリエイティブ | GIMP、Inkscape、Krita、Blender、darktable
+| 開発 | Zed、VSCodium、Visual Studio Code、PyCharm、IntelliJ IDEA、Android Studio
+| ユーティリティ | Bitwarden、Joplin、Obsidian、Thunderbird
+|===
+
+オフィスについては、link:/claude-debian/[Claude と一緒に学ぶ Debian] では *ONLYOFFICE を中心に据え、LibreOffice は予備*として扱う方針を採っている。ONLYOFFICE は MS Office との見た目互換性が高く、`.docx` / `.xlsx` / `.pptx` をそのまま開いて返せる ── 一方、自分の作業は Markdown と Python に寄せる、というのが書籍の立場だ。
+
+日常使うアプリに困ることは、殆どなくなったといっていいだろう。もしアプリで困ったことがあればAI(Claude)が作ってくれる時代になったので特に心配することはないだろう。
+
+Flathubは、Microsoft Store のような場所だ。しかし、Microsoft Store より優れている面もある。Microsoft Store には Google Chrome が無い。Microsoft が自社の Edge を優遇しているため、競合ブラウザを排除している。また、アプリを探しているのに、関係ない有料アプリが「おすすめ」として割り込んでくることがある。
+
+つまり、現代の Linux は *二層構造* になっている。
+
+* *日常のアプリ*: Flathub から GUI で入れる。コマンドは要らない。
+* *設定や開発*: コマンドで操作する。ここでこそ AI が真価を発揮する。
+
+この二層が、AI 時代の Linux の強さだ。Windows はどちらも中途半端 ── GUI は深い設定までは届かず、PowerShell のコマンドは AI にとっても扱いにくい。
+
+image:screenshot.jpg[スクリーンショット]
+
+== Claude と一緒に学ぶ
+
+このサイトには、Claude を横に置きながら学ぶための二つの教科書がある。
+
+link:/claude-debian/[*Claude と一緒に学ぶ Debian*] は、Debian への移行を Claude との対話で進めるための教科書だ。何を Claude に伝えるか、どう環境情報を取り出すか、ログをどう渡すか、詰まったときに何を試すか ── これらは、Linux の知識そのものよりも、*AI を使って学ぶための作法* に近い。
+
+link:/ai-native-software/[*AI ネイティブなソフトウェア開発*] は、Debian に移った先で何をするかを書いている。Excel の VBA を Python に、Word を Markdown に、CSV を JSON や SQLite に ── AI が同僚になる時代の道具立てを整理している。
+
+一度この作法を身につければ、Debian だけでなく、*この先 AI と一緒に何かを学ぶ・作るときの基礎* になる。
+
+== 今が、Debian を始める時
+
+「Debian + AI + Flathub が揃った今だから、ちょうど良い」だ。3 年前なら違った。Linux のコマンドは難しく、Flathub の品揃えも今ほどではなく、AI も無かった。*この三つが同時に整ったのは、2026 年の今だ*。
+
+link:/claude-debian/[Claude と一緒に学ぶ Debian →]
+
+'''
+
+_関連記事: link:/blog/windows-breaking-down/[「Windows が壊れていく」── ナデラが Windows を見限った構造]_
+
+_関連記事: link:/blog/windows-office-facts/[「それでも Windows と Office を使い続けますか?」── 詳細な構造分析と一次情報・参考文献]_
+
+_関連記事: link:/blog/japan-windows-disaster-risk/[「日本の Windows 災害リスク」── 一斉サポート終了の社会的インパクト]_
+
+_関連記事: link:/blog/software-three-transitions/[「AI 時代には『特化したエンジニアになれ』は構造を取り違えている」── ソフトウェア工学からリベラルアーツへの基盤転換]_
+endif::[]
+ifdef::lang-en[]
+= PCs Just Got Much More Expensive — Install Linux on the PC You Already Have
+
+In October 2025, Microsoft ended support for Windows 10. Even with a year of ESU, individuals are about five months from the end. For businesses, $122 in October this year, $244 in October next year, and the door closes the following October.
+
+Hundreds of millions of PCs worldwide are flagged as "not compatible with Windows 11." CPUs older than 8th gen, no TPM 2.0 — by Microsoft's standard, "no longer usable."
+
+*For anyone who owns one of these "can't-upgrade-to-Windows-11" PCs, the answer of this article is clear-cut: you should absolutely migrate to Linux (Debian).* ESU is finite and expensive, buying a new PC is — as the next sections show — the worst possible timing, and Linux is free with the existing hardware untouched. There is, in practical terms, no other road to choose. The rest of this article is about how to carry out that "should."
+
+2026 is the worst possible timing to buy a new PC. The AI bubble that *Microsoft itself helped trigger* has driven up memory and storage prices significantly. On top of that, the 2026 Iran war and its oil shock are likely to push prices higher still. One concrete number: *the same mini PC model used for the hardware verification in this post has gone up by ¥60,000 (about $400) within less than a year since purchase*. And the Copilot+ PCs Microsoft recommends now routinely run over ¥300,000 (about $2,000).
+
+image:IMG_3491.jpg[mini PC]
+
+=== What is Microsoft Doing?
+
+Lined up, Microsoft's strategy is *structurally identical to the medieval enclosure of the commons*.
+
+. *Chop off the bottom.* Windows 11 hardware requirements (TPM 2.0, 8th-gen CPU or later) declared hundreds of millions of working PCs "no longer usable" on paper. Copilot+ then set a new floor at NPU 40 TOPS.
+. *Drain the middle.* The AI bubble Microsoft itself stoked has pushed memory and SSD prices up, and the entry-level 16 GB / 500 GB tier is vanishing from shelves.
+. *Push only the top.* ¥300,000+ Copilot+ PCs are sold as "the next standard," with Copilot subscriptions and a Microsoft account chained to them.
+
+Demolish the commons — working second-hand and entry-level PCs — and leave only the lord's designated, expensive plots: the same playbook as medieval enclosure. But every enclosure has an exit. What Microsoft can enclose is "Windows users," not "PC users." *The hardware itself comes along to Linux untouched.*
+
+Copilot+ PCs ship with an NPU (a processor dedicated to AI work), but for now *this does not change the fact that AI processing remains centralized in data centers*. Copilot's core features — drafting in Word, formula generation in Excel, summarization in PowerPoint, reply drafts in Outlook, agents — are still processed in Azure's cloud. What the NPU runs locally is a narrow set of peripheral features: Recall, Studio Effects, parts of live captions. Despite the "AI on the edge" marketing, dependence on the Azure data centers — the actual core of the AI bubble — does not decrease.
+
+And even after paying that much, you have no guarantee how many years a Copilot+ PC will keep running smoothly. In particular, *on Snapdragon (ARM) Copilot+ PCs, installing Linux is currently very hard* — the combination of bootloader, firmware, and GPU drivers leaves the community still in trial-and-error territory.
+
+Considering all of this, the best move right now is to *not buy a new PC*. And in that case, Linux is the option.
+
+== Debian as the choice
+
+Linux has many distributions, but Debian — maintained by volunteers across the world for over 30 years — is one of the strongest candidates. It is structurally insulated from commercial vendor decisions to drop support.
+
+Hardware that ran Windows 10 will, in most cases, run Debian 13 without issue.
+
+== Real-hardware verification — the basis for this post
+
+Here is the actual machine I installed Debian 13 on and tested. I bought it last year to develop Windows applications — but I've decided to stop making Windows apps.
+
+|===
+| Component | Model | On Debian 13
+| Motherboard | MouseComputer ISoDEi-I1MA (mini PC) | UEFI / TPM 2.0 left enabled
+| GPU | Intel Iris Xe Graphics (integrated) | Works out of the box on Mesa, no extra driver
+| Wi-Fi | Intel Wi-Fi 6E AX211 160MHz | `firmware-iwlwifi` bundled in netinst — *SSID list shows up right in the installer*
+| Bluetooth | Intel | Same iwlwifi package
+| Wired LAN | Realtek 2.5GbE + GbE (dual NIC) | Standard `r8169`
+| Storage | NVMe Kingston OM8TAP4512 (512 GB) | Standard `nvme` driver
+| Audio | Realtek HD + Intel SST | `snd-hda-intel` / `sof-firmware`
+|===
+
+image:device-manager.jpg[Device Manager]
+
+Of the seven trouble categories Chapter 8 of link:/en/claude-debian/[Learning Debian with Claude] lists (display, Wi-Fi, Bluetooth, audio, suspend, Japanese input, peripherals), *none of them required any work on this machine — all worked from first boot*. And because you skip every Windows 11 setup chore (Microsoft account requirement, Copilot opt-in, OneDrive push, the wall of consent dialogs), *the Debian 13 install was, if anything, faster than the Windows 11 setup that came on the same hardware*.
+
+== "Linux is hard" reversed in the AI era
+
+The reputation that Linux is hard runs deep. The black screen with commands, the unfamiliar vocabulary, the lack of Windows-style click-through interfaces — all of that was true *when humans had to memorize everything alone*.
+
+But in 2026, two structural shifts have reversed the situation.
+
+=== First — GUI operations and settings are harder for AI
+
+It might sound counterintuitive, but for AI like Claude, *teaching you how to operate or configure something through a GUI is much harder than teaching it through commands*.
+
+GUIs are structurally difficult to describe in words. "Third item from the top of the left menu in Settings" changes between versions. "Click the gear icon" depends on where it sits on screen. Even with a screenshot, AI can only point at roughly the right area. The deeper the settings hierarchy, the higher the cost of handing the steps to a human. Windows's deep settings, in particular, are exactly the kind of place AI has trouble guiding you through in words.
+
+Commands are different. They live entirely in text. Claude — the most widely used AI in enterprise — writes the command, you copy and paste, and it runs as-is. If an error comes up, you paste the error text back to Claude and it can locate the cause.
+
+*Linux's "too many commands" weakness flipped into a strength once AI sits beside you*. And at the same time, *Windows's "everything completes in the GUI" strength flipped into a weakness in the AI era*.
+
+=== Second — Flathub, the Linux app store
+
+The second shift is that Flathub, the Linux app store, has matured. Installing everyday apps now works just like on a smartphone. Open https://flathub.org[flathub.org] and the apps that run on Linux are gathered in one place.
+
+|===
+| Category | Apps
+| Browsers | Firefox, Google Chrome, Chromium, Brave
+| Office | ONLYOFFICE Desktop Editors, LibreOffice
+| Communication | Zoom, Slack, Discord, Element, Signal
+| Media | Spotify, VLC, Audacity, OBS Studio
+| Creative | GIMP, Inkscape, Krita, Blender, darktable
+| Development | Zed, VSCodium, Visual Studio Code, PyCharm, IntelliJ IDEA, Android Studio
+| Utility | Bitwarden, Joplin, Obsidian, Thunderbird
+|===
+
+On the office side, link:/en/claude-debian/[Learning Debian with Claude] puts *ONLYOFFICE at the center, with LibreOffice as a backup*. ONLYOFFICE has high visual fidelity to MS Office and can open and return `.docx` / `.xlsx` / `.pptx` files as-is — while your own work shifts to Markdown and Python. That is the book's stance.
+
+There is hardly anything left that you can't find an app for. And if you ever do get stuck, we now live in an era where AI (Claude) can build the tool for you — so there is little to worry about.
+
+Flathub is like the Microsoft Store. But it is better in several ways. The Microsoft Store does not carry Google Chrome — Microsoft favors its own Edge and excludes competing browsers. And while you're looking for an app, irrelevant paid apps often push in as "recommendations."
+
+So modern Linux is *two-layered*:
+
+* *Everyday apps*: install via Flathub's GUI. No commands needed.
+* *Configuration and development*: operate via commands. This is exactly where AI shines.
+
+These two layers are what make Linux strong in the AI era. Windows is in the awkward middle on both — its GUI doesn't reach deep settings, and PowerShell commands are awkward even for AI to handle.
+
+image:screenshot.jpg[Screenshot]
+
+== Learning with Claude
+
+This site has two textbooks for learning with Claude beside you.
+
+link:/en/claude-debian/[*Learning Debian with Claude*] is a prologue-plus-23-chapter textbook for migrating to Debian through dialogue with Claude. What to tell Claude, how to pull environment information, how to hand it logs, what to try when you're stuck — these are less about Linux knowledge per se and more about *the discipline of learning with AI*.
+
+link:/en/ai-native-software/[*AI-Native Software Development*] covers what to do after you arrive in Debian. Excel VBA into Python, Word into Markdown, CSV into JSON / SQLite — the toolkit for an era when AI is your colleague.
+
+Once you internalize this discipline, it becomes the foundation *not just for Debian, but for anything you'll learn or build alongside AI from here on*.
+
+== Now is the Time
+
+"Debian + AI + Flathub all came together — and now is exactly when it's a good fit." Three years ago this would have been different. Linux commands were hard, Flathub's catalog was thinner, and AI wasn't there. *The three came together in 2026 — now.*
+
+link:/en/claude-debian/[Learning Debian with Claude →]
+
+'''
+
+_Related: link:/en/blog/windows-breaking-down/[Windows is Breaking Down — How Nadella has given up on Windows]_
+
+_Related: link:/en/blog/windows-office-facts/[Are You Still Going to Keep Using Windows and Office? — Detailed structural analysis with primary sources]_
+
+_Related: link:/en/blog/japan-windows-disaster-risk/[Japan's Windows Disaster Risk — Social impact of synchronized end of support]_
+
+_Related: link:/en/blog/software-three-transitions/["In the AI Era, Become a Specialized Engineer" Misreads the Structure — From software engineering to liberal arts]_
+endif::[]
+
+// ===== article: 023-microsoft-power-and-environment =====
+////
+slug: microsoft-power-and-environment
+title.ja: Microsoftが引き起こす電力問題と環境問題
+title.en: The Power and Environmental Problems Microsoft Is Causing
+subtitle.ja: AI ファースト戦略の代償 ── サポート5年化、名ばかりの AI PC、データセンター倍増
+subtitle.en: The cost of the AI-first strategy — five-year support, AI PCs in name only, data centers doubled
+date: 2026.05.28
+description.ja: Microsoft の AI ファースト戦略は、二つの問題を引き起こしている。一つは Windows 11 PC 自身が抱える二重の問題 ── サポートが2029年で打ち切られる長期保証の不在と、名ばかりの「AI PC」。もう一つはそこから派生する本体の問題 ── データセンターの爆発的拡張による電力と排出。2025 年 10 月の Windows 10 サポート終了で最大4億台が電子廃棄物となりうる規模、製造排出だけで約8800万トン CO2e。Microsoft の電力使用は2020年比168%増、総排出は23.4%増。データセンターを今後2年で2倍にする計画と2030年カーボンネガティブ目標は、構造的に両立しない。
+description.en: Microsoft's AI-first strategy is creating two problems. The first is internal to Windows 11 PCs — long-term support is not guaranteed past 2029, and the "AI PC" branding is largely cosmetic. The second is the bigger one this strategy itself produces: explosive data center expansion driving electricity demand and emissions. Windows 10's October 2025 end-of-support could push up to 400 million PCs into the e-waste stream, around 88 million tonnes CO2e from manufacturing alone. Microsoft's electricity use is up 168% since 2020 and total emissions are up 23.4%. Doubling data centers in two years while pledging carbon-negative by 2030 is structurally incompatible.
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+////
+ifdef::lang-ja[]
+= Microsoftが引き起こす電力問題と環境問題
+
+Microsoft の看板 AI 製品 Copilot の性能評価は厳しい。Windows, Officeに組み込んでいるにも関わらず、対象となるユーザーのうち実際に料金を支払っているのは30人に1人にも満たない。最大の不満は正確性で、Copilot は事実をハルシネーションする。離脱したユーザーの44.2%が「回答への不信」を理由に挙げている。社内のリーク情報は統合が「実際には機能しない」と評していた。Salesforce の Benioff は顧客が ChatGPT を好み Copilot に失望していると公言し、Microsoft 社内ですら競合ツールを好む従業員がいると報じられている。
+
+本来 OS は、退屈で安定した土台でなければならない。検証の済んだ枯れた技術を組み合わせ、何年も挙動が変わらないことに価値がある。ところが Windows 11 は、その土台に、どうなるか分からない実験段階の AI を抱え込み、ハードウェア要件まで作り変えてユーザーに購入を迫っている。うまくいくか分からない AI を組み込んだ製品を、利用者は完成品として買わされている。そして、完成していないものは長期保証できない。後述するサポート期間の短縮は、この当然の帰結である。 それでも Microsoft は巨額のインフラ投資を止められず、後戻りできない規模で AI に賭けている。このことが、次のような大きな問題を引き起こしている。
+
+== Windows 11 PC の問題
+
+Windows 11 の PC は、端的に言えば二つの問題を抱えている。
+
+第一に、*すべての機種で2029年以降のサポートが保証されていない*。長期安定運用を意図した Enterprise LTSC 2024 ですら 延長サポートがなく2029年10月9日に更新終了し、従来10年だったサポートが5年に半減した。一般リリースは毎年のアップデートを受け入れる前提で、24H2 以降は CPU 要件が予告なく引き上げられ、欠ける機種は OS が起動しない。凍結したい層にも最新を追う層にも、長期運用の保証はない。
+
+第二に、*NPU 搭載 PC（Copilot+ PC）は「AI PC」として売られているが、AI 推論性能は高くない*。40 TOPS 以上の NPU を要件とするが、ローカル AI 推論の速度を決めるのは演算能力（TOPS）ではなくメモリ帯域幅で、統合型チップはこれが構造的に不足する。実測でも40 TOPS の NPU で1.5Bモデルが約6.9トークン/秒に留まり、ボトルネックは LPDDR メモリ帯域幅。大半の Windows ラップトップでは10〜30億パラメータ超の LLM を実用速度で動かせない。「AI PC」の追加コストは Recall や Live Captions の有効化のためで、本格的なローカル推論の性能を買っているわけではない。
+
+== そして、より大きな問題は環境負荷
+
+この二つの問題は、別々のものではない。いずれも Microsoft の AI ファースト戦略から派生しており、その戦略が引き起こす最大の問題が環境負荷である。
+
+=== Windows 11 が直接生む廃棄
+
+2025年10月14日の Windows 10 サポート終了で、最大4億台が電子廃棄物となりうる。Windows 10 機の43%が Windows 11 に移行できない。廃棄されれば最大7億キログラム。ラップトップは生涯排出の70〜80%が製造段階で発生するため、製造だけで1台あたり約219kg CO2e。動く PC を捨てて新品に換えるのは、使用延長で節約できる量の数倍の炭素を製造で追加排出する選択で、4億台なら8800万トン CO2e 規模になる。
+
+しかもこれは一回限りではない。サポートの5年化と 要件の予告なき引き上げ が恒久化したため、物理的に動く機材が周期的に対象外になり、廃棄の波が繰り返される。対象 PC の多くは Web サービス用途で新デバイスを必要とせず、対象外の理由は性能ではなく Microsoft が引いた線（TPM 2.0、CPU 世代）である。
+
+=== AI ファーストが押し上げる電力と排出
+
+「AI PC」化と OS への AI 機能統合は、Microsoft の AI ファースト戦略の末端である。そして戦略の本体は、桁外れのデータセンター投資にある。
+
+Microsoft は2025会計年度だけでデータセンター建設に約800億ドルを投じ、その半分以上が米国向けだった。これは同社史上最大のインフラ投資である。その結果、同社の電力使用は2020年比で168%増加した。
+
+投資はさらに加速している。2026会計年度第1四半期だけで設備投資は349億ドル、うち111億ドルがデータセンターのリースに費やされた。ナデラは2026年度を通じて AI 容量を80%以上増やし、データセンターの規模を今後2年で約2倍にすると述べている。2026年の設備投資は1,200億ドル超の見込み。
+
+データセンターを2年で2倍にする計画と、カーボンネガティブ目標は、構造的に両立しない。数千億ドル規模の建設投資は、それ自体が膨大な製造・建設排出を生み、稼働後は膨大な電力を消費する。これが地域の電力不足とカーボンの大量増加をまねく。
+
+=== 矛盾を抱えたまま走り続けている
+
+ナデラは、電力需要の爆発を内包する AI ファースト戦略と、2030年カーボンネガティブという、矛盾した二つの計画を同時に公表している。サステナビリティ責任者自身が「目標は moonshot だったが、月はさらに遠ざかったと認めざるを得ない」と述べているのに、目標は取り下げられていない。そして同社のサステナビリティのトップページ「Explore our impact」は、減った指標だけを並べ、総排出23.4%増という事実を構成から外している。
+
+物理的実排出が4年で倍増し、止まっていた Three Mile Island の原子炉を20年契約で2028年に再稼働させて AI データセンターの電力を賄う段階に至ったことが、この戦略のエネルギー需要の大きさを示している。
+
+== まとめ
+
+Windows 11 PC の二つの問題——サポートの不保証と、名ばかりの「AI PC」——は、どちらも Microsoft を「長期安定運用される OS の提供者」から「AI とクラウドのサブスクリプションへ顧客を誘導する企業」へと組み替える、AI ファースト戦略の現れである。そしてその戦略は、使える機材を周期的に廃棄させ、データセンターの電力需要を押し上げ、自社の排出を2020年比23.4%増へ導いた。カーボンネガティブを掲げたまま、それと両立しない方向へ全力で走っている。これが Windows 11 と AI ファーストが引き起こしている、最も大きな問題である。
+
+そして、ここで一つの問いが立つ。*そもそも、それだけ大量のデータセンターが本当に必要なのか。* 冒頭で見たとおり、看板製品の Copilot に実際に料金を支払っているのは対象ユーザーの30人に1人にも満たない。実需がそれほど確かでないものに対して、原子炉を再稼働させ、使える PC を廃棄させ、自社の排出を倍増させるほどのインフラを積み上げている。電力問題と環境問題の根には、需要に見合わない規模の供給を、後戻りできない形で先に作ってしまったという構造がある。
+
+'''
+
+_関連: link:/blog/windows-10-to-debian/[PCが大幅値上げ ── 今あるPCにLinuxをインストールして活用]_
+
+_関連: link:/blog/windows-breaking-down/[Windowsはこわれていく ── Nadellaは Windows を諦めた]_
+
+_関連: link:/blog/windows-office-facts/[本当に Windows・Office を使い続けますか？ ── 一次資料による構造分析]_
+endif::[]
+ifdef::lang-en[]
+= The Power and Environmental Problems Microsoft Is Causing
+
+The reception of Microsoft's flagship AI product, Copilot, has been harsh. Even though it is bundled into Windows and Office, fewer than 1 in 30 of the eligible users actually pay for it. The single largest complaint is accuracy — Copilot hallucinates facts. Of the users who churned, 44.2% gave "distrust of the answers" as the reason. Internal leaks called the integration "not actually working." Salesforce's Benioff has said publicly that customers prefer ChatGPT and are disappointed by Copilot, and reports have surfaced of Microsoft employees themselves preferring competing tools.
+
+An OS, by its nature, should be a boring and stable foundation. Its value is in combining mature, verified technology and then not changing behavior for years. Windows 11 instead bolted experimental AI of uncertain quality onto that foundation, redesigned the hardware requirements around it, and is now pushing users to buy new machines. Users are being sold an unfinished AI product as if it were a finished one. Anything unfinished cannot be guaranteed over the long term, and the support-window shortening described below is the natural consequence. And yet Microsoft cannot stop its massive infrastructure investment — it has bet on AI at a scale it can no longer back out of. This is the source of the larger problems that follow.
+
+== The Windows 11 PC Problem
+
+Windows 11 PCs, plainly stated, have two problems.
+
+First, *support is not guaranteed on any machine past 2029*. Even Enterprise LTSC 2024 — the SKU explicitly intended for long-term stable operation — has no extended support window and ends on October 9, 2029, halving the previous 10-year cycle to 5. The general release assumes you accept yearly feature updates; from 24H2 onward, CPU requirements have been raised without prior notice, and machines that fall short simply do not boot. Neither the "freeze it" crowd nor the "always latest" crowd has a long-term guarantee.
+
+Second, *the NPU-equipped PCs sold as "AI PCs" (Copilot+ PCs) are not actually fast at AI inference*. The requirement is a 40 TOPS+ NPU, but local AI inference speed is determined by memory bandwidth, not raw compute (TOPS), and integrated chips are structurally short on bandwidth. In real measurements, a 40 TOPS NPU runs a 1.5B-parameter model at roughly 6.9 tokens/second, with LPDDR memory bandwidth as the bottleneck. Most Windows laptops cannot run LLMs above the 1–3 billion parameter range at usable speed. The premium you pay for an "AI PC" buys you Recall and Live Captions — not serious local inference performance.
+
+== And the Larger Problem Is the Environmental Cost
+
+These two problems are not separate. Both flow out of Microsoft's AI-first strategy, and the largest problem that strategy creates is environmental.
+
+=== The E-Waste Windows 11 Generates Directly
+
+With Windows 10 support ending on October 14, 2025, up to 400 million PCs could become electronic waste. 43% of Windows 10 machines cannot move to Windows 11. If all of them are scrapped, that is up to 700 million kilograms of waste. Because laptops emit 70–80% of their lifetime CO2 during manufacturing — about 219 kg CO2e per unit — discarding a working PC for a new one adds several times more carbon at manufacturing than you could have saved by extending its use. At 400 million units, that is on the order of 88 million tonnes CO2e.
+
+And this is not a one-time event. With the 5-year support window and unannounced requirement hikes now permanent fixtures, physically functioning machines will be cycled out of support periodically, and the waste wave will repeat. Most of the affected PCs are used for web-based work and need no new device; the reason they are out of scope is not performance but the line Microsoft drew (TPM 2.0, CPU generation).
+
+=== AI-First Drives Up Power and Emissions
+
+"AI PC"-ification and AI integration into the OS are the downstream end of Microsoft's AI-first strategy. The strategy's main body sits in the upstream — extraordinary data center investment.
+
+In fiscal 2025 alone, Microsoft spent roughly $80 billion on data center construction, more than half of it in the United States. This is the largest infrastructure investment in the company's history. As a result, its electricity use rose 168% from 2020.
+
+The investment is still accelerating. Capex in Q1 of fiscal 2026 alone was $34.9 billion, of which $11.1 billion went to data center leasing. Nadella has said the company will grow AI capacity by more than 80% through fiscal 2026 and roughly double its data center footprint over the next two years. Fiscal 2026 capex is expected to exceed $120 billion.
+
+Doubling data centers in two years and the carbon-negative target do not coexist structurally. Construction investment on the order of hundreds of billions of dollars itself produces enormous manufacturing and construction emissions, and once operating, consumes enormous electricity. This is what produces regional power shortages and large carbon increases.
+
+=== Running Forward While the Contradiction Stays Unresolved
+
+Nadella has simultaneously announced two contradictory plans: an AI-first strategy that has explosive electricity demand built into it, and carbon-negative by 2030. The company's own sustainability lead has stated that "the goal was always a moonshot, but the moon has moved farther away," and yet the target has not been withdrawn. And the top page of Microsoft's sustainability site, "Explore our impact," lists only the metrics that have gone down, structurally omitting the fact that total emissions are up 23.4%.
+
+That physical actual emissions have doubled in four years, and that the company has now restarted the previously shuttered Three Mile Island reactor on a 20-year contract to power AI data centers from 2028, shows the scale of energy demand this strategy creates.
+
+== Summary
+
+The two Windows 11 PC problems — unguaranteed support and the in-name-only "AI PC" — are both expressions of the same AI-first strategy, the one that is rebuilding Microsoft from "provider of a long-term, stably operated OS" into "company that funnels customers into AI and cloud subscriptions." That strategy cycles working machines into e-waste, drives data-center electricity demand upward, and has taken the company's own emissions to 23.4% above 2020. Microsoft is sprinting in a direction incompatible with the carbon-negative banner it still flies. This is the largest problem Windows 11 and the AI-first strategy are creating.
+
+And here one question arises. *Is that much data center capacity actually necessary in the first place?* As we saw at the outset, fewer than 1 in 30 of the eligible users actually pay for the flagship product, Copilot. For something whose real demand is that uncertain, Microsoft is restarting a nuclear reactor, scrapping usable PCs, and stacking up enough infrastructure to double its own emissions. At the root of the power problem and the environmental problem is a structure in which supply at a scale that does not match demand was built first, in a form that cannot be undone.
+
+'''
+
+_Related: link:/en/blog/windows-10-to-debian/[PCs Just Got Much More Expensive — Install Linux on the PC You Already Have]_
+
+_Related: link:/en/blog/windows-breaking-down/[Windows is Breaking Down — How Nadella has given up on Windows]_
+
+_Related: link:/en/blog/windows-office-facts/[Are You Still Going to Keep Using Windows and Office? — Detailed structural analysis with primary sources]_
+endif::[]
+
+// ===== article: 024-self-hosting-microsoft-365 =====
+////
+slug: self-hosting-microsoft-365
+title.ja: Microsoft 365（Standard + Copilot）同等の環境を自前で作れるか試す
+title.en: Can You Build a Microsoft 365 (Standard + Copilot) Equivalent Yourself?
+subtitle.ja: ナデラの「矛盾」と、囲い込みが崩れる構造 ── 主導権を自分の手に取り戻す
+subtitle.en: Nadella's 'contradiction' and the collapse of the enclosure — taking control back into your own hands
+date: 2026.06.08
+description.ja: Microsoft のナデラ CEO は個人ブログで「model overhang ── 能力が、それを使いこなす我々の力を追い越している」と書いた。だがその診断が正しいなら、積むべきは年 1900 億ドルのインフラではなく、すでにある能力を使いこなす側のはずだ。AI 責任者スレイマンは Anthropic への支払いを「最終的にゼロにする」と公言し、裏で動く知能を黙って差し替えられる構造を露わにした。皮肉にも、彼らが投資して育てた「エンジニアの代わりができる知能」は、ユーザーがクラウドから脱却してセルフホストするための最高の相棒になった。ONLYOFFICE と Ryzen AI Max、OSS モデルで、Microsoft 365（Standard + Copilot）同等の環境を自分の手に取り戻せるかを考える。
+description.en: Microsoft CEO Satya Nadella wrote on his personal blog about "model overhang — capability outrunning our ability to put it to real-world use." But if that diagnosis is right, the place to invest is not $190 billion a year of infrastructure but the side that uses the capability we already have. AI chief Suleyman has openly said the goal is to "ultimately eliminate" what Microsoft pays Anthropic — exposing a structure in which the intelligence running underneath can be silently swapped out. Ironically, the very "intelligence that can replace an engineer" they spent so much to build has become the best partner for users who want to leave the cloud and self-host. With ONLYOFFICE, Ryzen AI Max, and open-weight models, this piece asks whether you can take a Microsoft 365 (Standard + Copilot) equivalent back into your own hands.
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+hero_image: pxl.jpg
+////
+ifdef::env-github[]
+:imagesdir: ../assets/blog/024-self-hosting-microsoft-365
+endif::[]
+ifdef::lang-ja[]
+= Microsoft 365（Standard + Copilot）同等の環境を自前で作れるか試す
+
+Microsoftのサティア・ナデラCEOが個人ブログ「sn scratchpad」を始めた。今のところ記事は一本、「Looking Ahead to 2026」だけだ。
+
+その中に、引っかかる一節があった。彼は、いまは「マラソンの最初の数マイル」にいると書き、同じ段落で「model overhang——能力が、それを現実の価値に使う我々の力を追い越している」と書く。
+
+一見、矛盾して見える。だが彼の文脈では両立する。「最初の数マイル」とは能力の話ではなく、普及と実装がまだ序盤だという意味だ。能力はもう余っていて（overhang）、それを実世界の価値に変える側がまるで追いついていない——彼はそう診断している。問題は、その診断が正しいなら、結論が逆を向くことだ。
+
+能力がすでに余っているのなら、いま積むべきは能力をさらに増やす巨大なインフラではなく、すでにある能力を使いこなす側のはずだ。ところがMicrosoftは、年間1900億ドルという莫大な額を、余っている側ではなく、さらに能力を増やす側へ注ぎ込んでいる。自分の診断と、自分の財布の向きが、逆を向いている。
+
+== ナデラが正しいこと、その罠
+
+彼が正しいことを言っている部分はある。「重要なのは個々のモデルの力ではなく、人々がそれをどう使うかだ」。複数のモデルとエージェントを束ね、メモリと権限を扱い、安全に道具を使わせる「足場（scaffold）」を組むことにこそ価値がある。生のモデルの賢さより、それを自分の業務にどう配置するかのほうが、はるかに効く。これは事実だ。
+
+しかし、その「足場」の価値を正直に言えば言うほど、彼は自分の囲い込みの墓穴を掘っている。臨機応変なオーケストレーションと権限管理、データの取り回しという、Pythonで書けるエンジニアリングが「足場」の本質なら、それは自分で組めるからだ。
+
+足場は、各組織の業務に固有のものだ。汎用の足場は「誰にとっても80点」にしかならない。私の業務に100点の足場は、私の業務を知っている私にしか組めない。ベンダーが売れるのは汎用の足場で、本当に価値があるのは自分の環境に合わせた足場だ。
+
+下のモデルはもうオープンになった（Gemma、Qwen）。そして上の足場は、AIと協働すれば自分でも書けるようになるかもしれない。現にAIは、すでにAI自身の開発を手伝う段階に来ている。Microsoftによって囲い込める層が、上にも下にも残っていない。
+
+== 「高度な課題」の非対称性と、大衆の拡張解釈
+
+なぜ、人々は汎用AIに期待し続けるのか。それは、AIの得意な「高度な課題」と苦手な「高度な課題」の境界線を見誤るからだ。
+
+AIは、「閉じた世界での高度な課題」を解決するのは極めて得意だ。境界が定義され、必要な情報が揃い、答えが即座に検証できる問題——例えば、ウクライナ戦争におけるドローンの自律的な標的捕捉や、込み入ったソースコードのバグ修正がこれに当たる。ここではAIは人間を圧倒し、その効果は目に見えて鮮烈だ。
+
+しかし、多様な要素を考慮し、言語化されない暗黙知に依存し、答えが何年も先まで検証できない「戦略的で高度な課題」を解決するのは構造的に難しい。「何を優先すべきか」という価値判断を含む領域では、AIは機能しない。なぜなら、人間には、生物として40億年、人類として500万年、個人として生まれてきてからの歴史があるからだ。一方、AIには歴史がなくて、学習と訓練によって得た知識だけがあるからだ。
+
+問題は、前者の「閉じた世界」での成功があまりに効果的でドラマチックなため、普通の人は「ドローンであれだけできるなら、戦争全体の戦略も任せられるはずだ」「Excelやメールの要約がこれだけできるなら、経営戦略の壁打ちも完璧にこなすはずだ」と、*見えない限界の領域へ能力を勝手に拡張解釈（外挿）してしまう*点にある。
+
+ドローンの戦果は可視で劇的だが、戦略でのAIの限界は不可視で地味だ。だから人は、見える成功から、見えない限界の領域へと能力を水増しする。煽る側は、この自然な拡張解釈に乗るだけでいい。「これができた」という事実だけを提示すれば、聞き手が勝手に「だからあれもできる魔法の杖だ」と思い込んでくれる。当然、その拡張解釈は実務では成り立たず、使ってみるとすぐに幻滅する。
+
+== 依存の代償：勝手に奪われる知能
+
+そして、Officeのエコシステムに依存することには、決定的なリスクがある。
+
+MicrosoftのAI責任者マスタファ・スレイマンは、2026年6月のBloombergのインタビューでこう述べた。
+
+____
+"We pay a lot of money to Anthropic, so our goal is to reduce and ultimately eliminate that cost."
+（当社はAnthropicに多額の金を支払っている。だから目標は、そのコストを削減し、最終的にはゼロにすることだ。）
+____
+
+その前段では「Anthropicは非常に高価で、多くの人が緊急に代替を探していると思う」とも語っている。
+
+彼らの戦略はこうだ。最初は優秀な他社製モデル（Claude等）でユーザーを集め、囲い込みが固まったら、自社の利益率を守るために、裏側で動くその知能を引き剥がし、安価な内製モデルへと差し替えていく。ユーザーが逃げられないことを見越して。
+
+問題は、*商品として継続性を約束できないなら、それは商品として破綻している。* 妥当な期間は使えると保証して組み込むか、最初から載せないか。そのどちらかでなければならない。「つけておいて、いつでも黙って外せる」——いつ使えなくなるか分からないものを継続的なサービスとして売るのは、商品の名に値しない。ユーザーは、その機能を前提に業務フローを組み、人を訓練し、依存を作る。その投資は「妥当な期間、安定して使える」という暗黙の約束の上に成り立っているからだ。
+
+さらに根が深いのは、これが戦略の自己否定でもあることだ。いまや、OfficeよりもAIのほうが主になっている。競争はAIの能力で戦われる。ところがMicrosoftのMAIは、フラグシップ（最先端）を正面からは狙っていない。Microsoftは新型のMAI-Thinking-1がコーディングでClaude Opusに匹敵すると主張するが、スレイマン自身はAnthropicが先を行くことを認め、売りにしているのは能力ではなく「コスト効率」だ。つまりMAIの実像は、最先端を数ヶ月後ろから安く追う高速追従者だ。
+
+主戦場が能力に移った世界で、最先端への依存を「ゼロにする」と宣言することは——主たる製品を、わざと数ヶ月遅れの安いモデルに固定し、ユーザーから最先端を選ぶ優先権を奪うことを意味する。安さで取れるコモディティ層はあるだろう。だが、能力で差別化される高価値の層は、自ら明け渡すことになる。効率化の宣言に見えて、その実、主戦場の放棄の宣言なのだ。
+
+そして、これらのリスクは、一つの大きな変化の現れにすぎない。Microsoftは、道具を提供する会社から、データを預からせて稼ぐ会社へと、重心を移した。 かつてWindowsやOfficeを買えば、自分のPCで、自分のデータを、自分が処理した。道具は、こちらに従属していた。いまは逆だ。ファイルはクラウドへ、会話はTeamsの隠しフォルダへ、処理はMicrosoftのモデルへ。データが向こうに移り、それを使う道具も向こうが握る。裏で動くモデルを黙って差し替えられるのも、コストをゼロにすると公言できるのも、すべて「ユーザーはもう逃げられない」というこの一点に乗っている。
+
+腕ずくの強制ではない。便利さで誘い、標準にし、気づけば抜け出すコストが高くなっている——逃げ場のない誘導だ。そして、これは個人の悪意ではない。道具そのものがコモディティ化し、OSは無料のLinuxへ、モデルはオープンウェイトへと流れる時代に、道具で稼げなくなった会社が、データを預からせて稼ぐ場所へ移っただけだ。
+
+== 反転する論理：AIが壊した運用の壁
+
+ここで、痛快な論理の反転が起きる。
+
+AIが唯一、人間の代わりを完全にこなせるほど「超優秀」な領域がある。それこそが、ソフトウェアエンジニアリングという「閉じた高度な課題」の世界だ。
+
+チャレンジャー・グレイ・アンド・クリスマス社のレポートによれば、テック業界の人員削減数は約2年ぶりの高水準に達し、その最大の背景にはAI投資があるという。ベンダーは過剰なインフラ投資のツケを払うため、自社のエンジニアを削っている。
+
+だが、彼らが手放したエンジニアの知識——プログラミング、インフラ設定、デバッグという「閉じた世界の知能」——は、すでにオープンなAIの形をして私たちの手元に降りてきている。
+
+かつて、M365のような環境を自前でホストする際の最大の障壁は、ハードウェアのコストではなく、それを安全に安定運用するための「エンジニアとしての高度な専門知識」だった。クラウドベンダーが本当に売っていた本命も、計算資源そのものより「運用の知識の肩代わり」という壁だった。
+
+その知識の壁を、他ならぬAI自身が崩した。Debianのインストールやカーネルの差し替えも、AMD ROCmの依存関係の解決も、Dockerのルーティングも、AIが隣で手伝ってくれる。インフラが、自分を運用するための助言を、自分で出す時代になった。
+
+彼らが莫大な投資をして育てた「エンジニアの代わりができる知能」は、皮肉にも、ユーザーが彼らのクラウドから脱却してセルフホストするための、最高の相棒になってしまった。
+
+== OSS とプロプライエタリの、価値の逆転
+
+この壁の崩壊は、もっと大きな逆転を引き起こす。*OSS とプロプライエタリの価値が、入れ替わる*のだ。
+
+これまで、両者を分けていたのは「専門知識の壁」だった。プロプライエタリは磨かれていて、サポートがあり、入れればすぐ動く。一方 OSS は、ソースが公開されていても、それを読んで・理解して・直せる人はごく一握りで、「公開されている」は普通の人にとって「見えるだけ」だった。だから、おまかせで動くプロプライエタリに金を払う価値があった。
+
+ところが、その壁を AI が崩した。OSS の「公開されている」が、初めて「実際に読める・直せる・拡張できる」に変わる。それだけではない。導入や運用でつまずく場面も AI が隣で助けるから、*OSS も「すぐ使える」ようになった* ── プロプライエタリが誇った「磨かれていて、入れればすぐ動く」という最後の優位まで、AI が埋めてしまう。*メーカーサポートの価値も大幅に下がる* ── 質問への回答もトラブル対応も AI が隣でこなすなら、サポート料を払う意味は薄い。すると価値の源泉が入れ替わる。プロプライエタリの強み(磨かれている・すぐ使える・おまかせ・サポート)は AI が肩代わりして薄まり、残るのは弱みばかり——ブラックボックス、裏の知能の差し替え、サポート打ち切り、データの囲い込み。逆に OSS は、自分で所有でき、フォークでき、一度出たものは回収されないという構造的な強みが、AI によってようやく「使える形」で立ち上がる。
+
+壁(専門知識)が消えた瞬間、その壁の上に乗っていたプロプライエタリの優位も消えた。*開かれていることが、初めて実利になる。* これが、AI が起こす価値の逆転だ。
+
+== だから、私はこうする
+
+個人であれば、ONLYOFFICE Desktop Editors をインストールすればいい。Word・Excel・PowerPoint とほぼ同等のものが使える。LibreOffice でもかまわない。ただし、組織として共同編集まで使いたい場合は、Microsoft 365 Business Standard と同等にするために、ONLYOFFICE DocSpace Community をサーバーにインストールすればいい。
+
+そして、*Ryzen AI Max+ 395 / 128GB LPDDR5x* を搭載した、Apple Silicon 並みの統合メモリを持つPCを使えば、OSS AI（Gemma 4、Qwen 3.6 等）がローカルで動く。もちろん Claude ほどの能力はまだないが、試す価値はある。
+
+肝心なのは、*主導権を自分の手に握る*ことだ。Claudeの新しいモデルが良ければ、切り替えて使えばいい。完全に無料で閉じたいなら、ローカルの Ryzen AI Max のパワーで128GBの広帯域メモリの上にOSSモデルを回せばいい。どの知能を、どのタスクに、いつ使い、いつ外すか——それを決めるのは、ベンダーではなく自分だ。すべてを Python で束ねて、制御を握る。データは外に出ない。コストは電力だけ。モデルはいつでも差し替えられる。
+
+== 第二次ルネサンス —— 出発点として
+
+これからの時代を「第二次ルネサンスの時代」と呼びたい。混乱と創造の時代になると思われるので。
+
+ルネサンスを起こしたのは印刷術だった。それ以前、知識は写本として囲い込まれ、複製できる一握りの人に価値が集中していた。印刷は複製のコストを崩し、知識を囲い込めないものにし、権威を新しい層へ移した。
+
+いま、AIという強力な情報処理の手段が、同じように個人の手に降りてきている。一度コモンズに出た知識やオープンソースの資産は、回収できない。私が組んで溜めたノウハウも、いずれ誰かの踏み台になる。だから、OSS AIが消えることはない。
+
+ナデラは、AIの価値の在処を正確に指し示した。そして同じ指で、自分の囲い込みが効かない場所を指してしまった。
+
+私は、自分のサーバーを立てる。
+endif::[]
+ifdef::lang-en[]
+= Can You Build a Microsoft 365 (Standard + Copilot) Equivalent Yourself?
+
+Microsoft CEO Satya Nadella has started a personal blog, "sn scratchpad." So far there is exactly one post: "Looking Ahead to 2026."
+
+One passage in it caught my eye. He writes that we are in "the first few miles of a marathon," and in the same paragraph he writes about "model overhang — capability outrunning our ability to put it to real-world value."
+
+At first glance this looks like a contradiction. But in his own framing the two coexist. "The first few miles" is not about capability; it means that diffusion and implementation are still early. Capability is already in surplus (overhang), and the side that turns it into real-world value has not remotely caught up — that is his diagnosis. The problem is that, if the diagnosis is correct, the conclusion points the other way.
+
+If capability is already in surplus, the place to invest now is not gigantic infrastructure that adds still more capability, but the side that puts the existing capability to use. Yet Microsoft is pouring $190 billion a year — an enormous sum — not into the side that is in surplus but into the side that adds still more capability. His diagnosis and his wallet point in opposite directions.
+
+== Where Nadella Is Right, and the Trap In It
+
+There is a part where he is right. "What matters is not the power of any individual model, but how people use it." The value lies in building the "scaffold" that binds multiple models and agents together, handles memory and entitlements, and lets tools be used safely. How you deploy intelligence into your own work matters far more than the raw cleverness of the model. This is true.
+
+But the more honestly he states the value of that "scaffold," the more he digs the grave of his own enclosure. If the essence of the scaffold is engineering you can write in Python — flexible orchestration, entitlement management, moving data around — then it is something you can build yourself.
+
+A scaffold is specific to each organization's work. A general-purpose scaffold can only ever be "80 out of 100 for everyone." A scaffold that scores 100 for my work can only be built by me, the person who knows my work. What a vendor can sell is the general-purpose scaffold; what is truly valuable is the one tailored to your own environment.
+
+The lower layer — the models — is already open (Gemma, Qwen). And the upper layer — the scaffold — may become something you can write yourself, working alongside AI. In fact, AI has already reached the stage of helping develop AI itself. There is no layer left, above or below, for Microsoft to enclose.
+
+== The Asymmetry of "Hard Problems," and the Public's Over-Extrapolation
+
+Why do people keep expecting so much from general-purpose AI? Because they misjudge the line between the "hard problems" AI is good at and the "hard problems" it is bad at.
+
+AI is extremely good at solving "hard problems in a closed world." Problems where the boundaries are defined, the necessary information is all present, and the answer can be verified instantly — for example, autonomous target acquisition by drones in the war in Ukraine, or fixing bugs in tangled source code. Here AI overwhelms humans, and the effect is visible and vivid.
+
+But it is structurally hard for AI to solve "strategic hard problems" — ones that require weighing many factors, depend on tacit knowledge that is never put into words, and whose answers cannot be verified for years. In domains that involve the value judgment of "what should be prioritized," AI does not work. Because a human has a history: four billion years as a living organism, five million years as a species, and a lifetime as an individual. AI, by contrast, has no history — only the knowledge it acquired through learning and training.
+
+The problem is that, because success in the former "closed world" is so effective and dramatic, ordinary people *over-extrapolate the capability into the invisible region of its limits* — "if it can do that with drones, surely it can be handed the whole war's strategy," "if it can summarize Excel and email this well, surely it can be a perfect sounding board for corporate strategy."
+
+A drone's results are visible and dramatic, but AI's limits in strategy are invisible and unglamorous. So people inflate the capability from visible success into the invisible region of its limits. Those who hype it merely ride this natural over-extrapolation. Present only the fact that "this worked," and the listener will convince themselves that "so it must be a magic wand that can do that too." Of course the over-extrapolation does not hold up in practice, and the moment you actually use it, disillusionment sets in.
+
+== The Cost of Dependence: Intelligence Taken Away Without Notice
+
+And there is a decisive risk in depending on the Office ecosystem.
+
+Mustafa Suleyman, Microsoft's AI chief, said this in a Bloomberg interview in June 2026:
+
+____
+"We pay a lot of money to Anthropic, so our goal is to reduce and ultimately eliminate that cost."
+____
+
+Earlier in the same interview he also said, "Anthropic is extremely expensive, and I think many people are urgently looking for alternatives."
+
+Their strategy is this. First gather users with an excellent third-party model (Claude and the like); once the lock-in has set, peel away the intelligence running underneath to protect their own margins, and swap it out for a cheap in-house model — counting on the fact that users cannot leave.
+
+The problem is: *if you cannot promise continuity as a product, it has failed as a product.* Either you guarantee it will be usable for a reasonable period and build it in, or you don't put it in at all. One or the other. "Attach it, and quietly remove it whenever" — selling something whose availability is uncertain as a continuous service does not deserve the name of a product. Users build their workflow on that feature, train people, and create dependence. That investment rests on the implicit promise that "it will be stably usable for a reasonable period."
+
+What is deeper still is that this is also a self-negation of strategy. By now AI, not Office, is the main thing. The competition is fought on AI capability. Yet Microsoft's MAI is not aiming squarely at the frontier. Microsoft claims its new MAI-Thinking-1 matches Claude Opus on coding, but Suleyman himself admits Anthropic is ahead, and what he sells is not capability but "cost efficiency." In other words, the real face of MAI is a fast follower that chases the frontier from a few months behind, cheaply.
+
+In a world where the main battlefield has shifted to capability, to declare that you will "bring to zero" your dependence on the frontier means deliberately pinning your main product to a cheap model that is a few months behind, and stripping users of the priority right to choose the frontier. There may be a commodity tier you can win on price. But the high-value tier, differentiated by capability, you would be handing over yourself. It looks like a declaration of efficiency; in truth it is a declaration of abandoning the main battlefield.
+
+And these risks are merely the manifestation of one large shift. Microsoft has moved its center of gravity from a company that provides tools to a company that earns by having you entrust your data to it. Once, if you bought Windows or Office, you processed your own data, on your own PC, by yourself. The tool was subordinate to you. Now it is the reverse. Files go to the cloud, conversations to a hidden folder in Teams, processing to Microsoft's models. The data moves to their side, and the tool that uses it is held by their side too. That they can silently swap the model running underneath, and that they can openly declare they will bring the cost to zero — all of it rests on this single point: "users can no longer leave."
+
+It is not coercion by force. Lure with convenience, make it the standard, and before you notice the cost of escaping has become high — an inducement with no way out. And this is not personal malice. In an era where the tools themselves are commoditizing — the OS flowing to free Linux, the models to open weights — a company that can no longer earn from tools has simply moved to where it can earn: having you entrust your data.
+
+== The Logic Reverses: AI Broke the Wall of Operations
+
+Here a delicious reversal of logic occurs.
+
+There is one domain where AI is so "superb" that it can fully take a human's place. It is precisely the world of software engineering — a "closed hard problem."
+
+According to a report from Challenger, Gray & Christmas, tech-sector layoffs have reached their highest level in about two years, and the largest factor behind them is AI. Vendors, paying the bill for excessive infrastructure investment, are cutting their own engineers.
+
+But the knowledge of the engineers they let go — programming, infrastructure setup, debugging, the "intelligence of the closed world" — has already come down into our hands in the form of open AI.
+
+Once, the biggest barrier to hosting an environment like M365 yourself was not the cost of hardware but the "advanced engineering expertise" needed to operate it safely and stably. What the cloud vendors were really selling, too, was less the compute itself than that wall: "taking the operational knowledge off your hands."
+
+That wall of knowledge was broken by none other than AI itself. Installing Debian and swapping the kernel, resolving AMD ROCm dependencies, Docker routing — AI helps with all of it, right beside you. We have entered an era in which the infrastructure produces, by itself, the advice for operating itself.
+
+The "intelligence that can replace an engineer," which they grew with enormous investment, has ironically become the best partner for users who want to break out of their cloud and self-host.
+
+== The Reversal of Value Between Open Source and Proprietary
+
+The collapse of that wall sets off a larger reversal: *the value of open source and proprietary software swaps places.*
+
+Until now, what separated the two was the "wall of expertise." Proprietary software was polished, came with support, and just worked once installed. Open source, by contrast, might have its source published, but the people who could read it, understand it, and fix it were a tiny minority — "the source is open" meant, for an ordinary person, merely "you can look at it." That is why it was worth paying for proprietary software that runs on autopilot.
+
+But AI broke that wall. Open source's "the source is published" turns, for the first time, into "you can actually read it, fix it, and extend it." Nor is that all: AI also helps you through the rough spots of installation and operation, so *open source becomes "ready to use," too* — even the last advantage proprietary boasted, "polished, and it just works once installed," gets filled in by AI. *The value of vendor support drops sharply as well* — when AI answers your questions and troubleshoots right beside you, paying a vendor to do it loses most of its point. And the source of value swaps. Proprietary's strengths — polished, ready to use, autopilot, support — thin out as AI takes them over, and what remains is mostly its weaknesses — the black box, the silent swap of the intelligence underneath, the end of support, the enclosure of your data. Open source, conversely, sees its structural strengths — you can own it, fork it, and what is once out cannot be recalled — finally stand up in a usable form, thanks to AI.
+
+The moment the wall (expertise) vanished, the proprietary advantage that rode on top of it vanished too. *Being open becomes a practical benefit for the first time.* This is the reversal of value that AI brings about.
+
+== So, Here Is What I Will Do
+
+If you are an individual, just install ONLYOFFICE Desktop Editors. You get something nearly equivalent to Word, Excel, and PowerPoint. LibreOffice is fine too. But if, as an organization, you want collaborative editing as well, then to match Microsoft 365 Business Standard, install ONLYOFFICE DocSpace Community on a server.
+
+And with a PC powered by the **Ryzen AI Max+ 395 / 128GB LPDDR5x — with unified memory on par with Apple Silicon — open-source AI (Gemma 4, Qwen 3.6, and the like) runs locally. Of course it does not yet have Claude's capability, but it is worth trying.
+
+What matters is *holding the initiative in your own hands.* If Claude's new model is good, switch to it and use it. If you want to close everything off for free, run an open-source model on the power of a local Ryzen AI Max, on top of 128GB of high-bandwidth memory. Which intelligence, for which task, when to use it and when to drop it — that is decided by you, not by a vendor. Bind it all together with Python and hold the control. Your data does not leave. The cost is only electricity. The model can be swapped at any time.
+
+== A Second Renaissance — As a Starting Point
+
+I want to call the era ahead "the age of a Second Renaissance," because it looks set to be an age of both upheaval and creation.
+
+What set off the Renaissance was the printing press. Before it, knowledge was enclosed as manuscripts, and value was concentrated in the handful who could copy them. Printing broke the cost of copying, made knowledge impossible to enclose, and moved authority to a new layer.
+
+Now AI, a powerful means of processing information, is coming down into the hands of individuals in the same way. Knowledge and open-source assets, once out in the commons, cannot be recalled. The know-how I assemble and accumulate will, in time, become someone's stepping stone too. That is why open-source AI will not disappear.
+
+Nadella pointed accurately at where AI's value lies. And with the same finger, he pointed at the place where his own enclosure no longer holds.
+
+I will set up my own server.
+endif::[]
+
+// ===== article: 025-building-apps-through-dialogue =====
+////
+slug: building-apps-through-dialogue
+title.ja: AIを使って、対話だけでもアプリを作ることができる
+title.en: With AI, You Can Build an App Through Dialogue Alone
+subtitle.ja: Claude Code の父と、徳島の畑から、ソクラテスまで
+subtitle.en: From the father of Claude Code, to a field in Tokushima, to Socrates
+date: 2026.06.09
+description.ja: Claude Code をつくったボリス・チェルニーは、自分を「ビルダー」と呼び、去年の十一月から一行も手でコードを書いていない。「コーディングは、もう解決済みだ」と彼は言う。だが「人間は要らなくなる」は何を見落としているのか。アプリをつくるとは、構造を見つけ、仮説を立て、現実で確かめる「循環」だ。AI は正しい答えをくれる相手ではなく、変化に追いつく速さをくれる道具にすぎない。リン酸肥料が枯れていく徳島の畑のそばから、ソクラテスと印刷術と第二次ルネサンスを手がかりに、AI と対話しながらつくることの本質を考える。
+description.en: Boris Cherny, who built Claude Code, calls himself a "builder" and has not written a line of code by hand since last November. "Coding is solved," he says. But what does "humans will no longer be needed" overlook? Building an app is a cycle — finding structure, forming a hypothesis, and verifying it against reality. AI is not a partner that hands you the right answer; it is a tool that gives you the speed to keep up with change. From beside a field in Tokushima, where phosphate fertilizer is running out, and by way of Socrates, the printing press, and a Second Renaissance, this piece asks what it really means to build in dialogue with AI.
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+////
+ifdef::lang-ja[]
+= AIを使って、対話だけでもアプリを作ることができる
+
+ボリス・チェルニー(Boris Cherny)は、自分を「ビルダー(つくる人)」と呼ぶ。いまもプログラミングをしている、とも言う。それなのに、去年の十一月から、コードを一行も手で書いていない。
+
+彼は Claude Code というツールをつくった人だ。AI にプログラムを書かせる仕組みで、数日で形にした。祖父はソ連の時代にパンチカードでプログラムを書いた技術者。彼自身は十三歳から独学でコードを書き、プログラミング言語の教科書まで著した。三代続いた「手でコードを書く家系」の、いちばん新しい世代だ。手で書くことに誰よりもこだわっていい人が、書くのをやめた。そして自分の教科書の上に、こう言い添えた。「コーディングは、もう解決済みだ」。
+
+足元が、変わったのだ。彼は、その変化に合わせて、つくり方を変えた。私も同じ道を通った。徳島の畑のそばで、自分ひとりと AI だけで、アプリをつくり続けてきた。
+
+そもそも、アプリを「つくる」とは、何をすることなのか。そして、変わっていく世界の中で、それはどう変わるのか。
+
+== アプリをつくるとは、循環だ
+
+アプリをつくるとき、人がしているのは、ひとつの循環だ。三つの動きが回っている。
+
+まず、*構造を見つける*。バラバラの事実から、ひとつの形を読む。たとえば、リン酸肥料はこの先、世界規模で不足していく。これは、調べれば誰でも知れる事実だ。だが、それをこの畑のこととして読むのは、別のことだ。
+
+次に、*仮説を立てる*。その変化に、この畑でどう応えるか。肥料に頼れなくなる。だが、それは肥料をやめるという話ではない。土と根と草と虫が、もともと回している自然の仕組みがある。それを知り、その働きに沿えば、育つはずだ。確かめる前の、とりあえずの見立てだ。
+
+そして、*現実で確かめる*。実際に畑でやってみる。育ったか、枯れたか。ずれたら、そのずれが見方を直す。仕組みを、また少し知る。そして、また見つけ直す。
+
+見つけて、立てて、確かめて、また見つける。この循環が、アプリをつくる仕事の正体だ。科学者が自然に向き合うのも、自然農で畑に向き合うのも、同じ姿勢だ。先にすべてを決めて動かすのではない。現実を見て、応えながら回す。
+
+== AI は、対応を速めてくれる
+
+では、この循環の中で、AI は何をするのか。
+
+既存の知識は、全部 AI が持っている。コードの書き方も、設計の定石も、歴史も、哲学も、科学も。人類が書き残してきた知識は、もう AI の中にある。それだけのことだ。
+
+だが、書き残された知識は、どれも「あるとき、ある環境で」成り立ったものだ。そして、環境は変わる。気候が、土地が、その年で。リン酸肥料がなくなれば、もっと大きく変わる。肥料があるという前提で書かれた農業の知識は、前提ごと古くなる。
+
+リン酸がなくなれば、肥料なしで作物をつくるしかない。古いやり方が通じない場所に、否応なく立たされる。つくり方を、変えるしかない。
+
+AI は、新しい環境への答えも、書かれているぶんは出してくる。リン酸がなくなったらどうするか、と聞けば、よどみなく答える。だが、その答えが正しいかは、分からない。書かれているのは、誰かがどこかで試して、たまたまうまくいって、書き残した、わずかな例だけだ。あなたの畑の、土質、気候が、その狭い例の中にある保証はない。だから AI の答えは、答えではない。確かめる前の、仮説にすぎない。
+
+それでも、AI には大きな値打ちがある。*変化への対応を、速めてくれる*。一人でゼロから試すなら、見込みのある仮説にたどり着くだけで、何年もかかる。AI は、確かめるべき仮説を、いくつも、すぐに出す。あとは畑で確かめ、ずれを直す。循環が、ずっと速く回る。変化が来ても、追いつける。AI は、正しい答えをくれる相手ではない。変化に追いつく速さをくれる道具だ。
+
+== 「人間が要らない」という誤解
+
+ここまで来ると、「人間は要らなくなる」が何を見落としているか、はっきりする。
+
+自然言語で指示すれば、AI がアプリを作る。いま、これは「ライブコーディング」と呼ばれる。実際に作れてしまう。だから言われる。「もう人間は要らない」。
+
+だが、当の Claude Code をつくったボリス自身が、その見方を退けている。これは雰囲気で指示するだけの作業ではない、と彼は言う。出てきたものを試し、ずれを見て、また指示する。検証をくり返す、れっきとしたサイエンスだ。
+
+ライブコーディングで手早く作れるのは、AI がすでに答えを持つ領域だ。よくある形のアプリ。変わっていない、何度も試された場所。そこでは、注文して受け取るだけで足りる。
+
+だが、世界は変わりつづける。リン酸はなくなる。気候も、市場も、技術も動く。古い答えが通じない場所が、次々と現れる。そこでは、AI が出す答えも、まだ確かめられていない。誰かが、変化に応えて、確かめ、新しい答えにするしかない。それを担うのは、変化の現場に立たされた人間だ。
+
+だから、人間は要らなくならない。変化が止まらないからだ。AI が既存の知識をどれだけ完璧にしても、環境が変わるたびに、新しい対応が要る。その対応を、AI と一緒に、速く見つける。それが、これからの人の仕事だ。
+
+現に、AI をいちばん作っている会社が、そうしている。Anthropic は、Claude をつくる会社だ。コードの多くを AI に書かせている。それでも、人を減らしてはいない。むしろ、三年ほどで十倍近くに増やした。非公開のため正確な数は分からないが、推計では数千人規模だ。そして、ある推計では、その三分の一以上が研究と安全に、三割ほどがエンジニアリングに割かれている。どれも、誰もまだ答えを書いていない最前線だ。書ける仕事が AI に移ったぶん、人は、まだ書かれていない場所へ向かっている。
+
+== 対話の相手としての AI
+
+AI の答えは、正しいとは限らない。だから、受け取るだけではいけない。問いただし、確かめる。これは、AI との対話である。AI が答えらしきものを出し、人間がそれを現実に当てて確かめる。二人で、循環を回す。
+
+そのために、こちらにも素養が要る。AI は知識を惜しみなく差し出す。だが、こちらに読み取る力がなければ、答えの良し悪しが判断できない。すべてを覚える必要はない。覚えるのは AI の仕事だ。だが、答えを吟味する力は、こちらに要る。
+
+しかも、相手は強いほどいい。浅い答えとの対話では、こちらの読みも鈍る。いちばん賢い AI こそ、こちらを鍛える。捨てるのではなく、振り回されない距離で使う。必要なときに呼び、頼り切らない。呼べるが、握られてはいない。
+
+これは、新しい話ではない。
+
+ソクラテスは、一行も書き残さなかった。彼の哲学は、対話の中にしかなかった。彼は、知識を多く持つ人ではなく、問いを見つけ、相手の答えを問いただす人だった。問いを立て、相手に答えさせ、その答えを現実に当てて矛盾を突く。あの動きを、彼は人間相手に回していた。
+
+いま、答えを差し出す役を、AI が引き受けた。どんな話題にも、よどみなく応える。昔のギリシャの「ソフィスト」、弁の立つ知識の売り手のように。ソフィストは知識を持っていたが、それが正しいかは確かめなかった。だから、人間はソクラテスの側に立つ。AI の答えを問いただし、現実に当てて、確かめる。
+
+ただし、注意がいる。ソクラテスの相手は人間で、問い返し、反発した。AI は問い返さない。それどころか、こちらに調子を合わせてくる。だから AI との対話は、昔の問答より危うい。抵抗がないぶん、「本当にそうか」と問う緊張を、人間が一人で保たねばならない。怠れば、対話は自分を肯定し返すだけの、こだまの部屋になる。注文して受け取るだけのライブコーディングが落ちるのは、この部屋だ。
+
+== 周縁に立つ
+
+変化は、誰にでも来る。あなたの現場にも来る。古いやり方が、通じなくなる。
+
+そのとき、答えはどこにあるのか。書かれた知識の中には、まだない。変わったばかりの現実は、誰も書いていないからだ。答えは、その現実の中にしかない。畑に、仕事場に、暮らしに。
+
+だから、変化に応える人になるのに、世界の中心にいる必要はない。中心には、書かれた知識が集まる。だが、それはすべて AI の側へ移った。新しい現実は、中心にも、周縁にもある。あなたの畑のそば、工房、現場にも。ボリスは中心で、コードという仕事が変わるのを見せた。私は周縁で、畑が変わるのに応えている。立つ場所はまるで違うのに、二人は同じことをしている。変化に、AI と応えている。
+
+一度目のルネサンスも、同じ形だった。それまで、写本は修道院が抱え、知識は組織の管理の中にあった。印刷術が、書かれた古典を解放した。本を持つことの貴重性が消え、その古典を自分の現実に当てはめる働きが、価値になった。組織の外に、一人で読み、一人で書く個人が現れた。エラスムス。モンテーニュ。いま、AI が知識を解放した。知識を持つことの価値は消え、その知識を、変わりゆく現実に当てて応える働きが、価値になる。
+
+入口は、低い。Markdown を書く力も、知識を抱えることも、もう要らない。既存の知識は、全部 AI が持っている。今まで、あなたを「つくる側」から締め出していたのは、その知識を持っていないことだった。だが、知識を持つ必要は、もうない。
+
+しかし、低いのは、入口だけだ。入った先で、受け取るだけの人は、あのこだまの部屋に残る。自分で現場を見て、答えを現実に当て、ずれを直す人が、つくる側に立つ。中心に属する必要はない。AI に握られる必要もない。一人で見て、AI と回し、自分で確かめる。要るのは、その力だけだ。そしてそれは、生きてきた人、現場を持つ人の中にある。
+
+そして、これはアプリだけの話ではない。同じ変化は、どこにでも来る。文章にも、料理にも、教える仕事にも、畑にも。古いやり方が通じなくなり、応えるしかなくなる。そのたびに、AI が、対応を速める。
+
+私は、いまも、つくっている。あなたも、つくれる。
+
+'''
+
+_この文章は、NewsPicks が公開したボリス・チェルニーへのインタビュー動画「アンソロピックの『天下無双』を生んだ男」（https://youtu.be/Wi5cXICGCB0）を見て考えたことを、徳島の畑のそばから書いたものです。_
+
+_この記事は CC BY-SA 4.0(表示 - 継承)のもとで自由に利用・翻訳・再配布できます。同じライセンスで共有してください。_
+endif::[]
+ifdef::lang-en[]
+= With AI, You Can Build an App Through Dialogue Alone
+
+Boris Cherny calls himself a "builder," someone who makes things. He still programs, he says. And yet, since last November, he has not written a single line of code by hand.
+
+He is the person who built Claude Code — a system that has AI write the program, which he got into shape in a few days. His grandfather was an engineer who wrote programs on punch cards in the Soviet era. Boris himself taught himself to code from the age of thirteen and even authored a textbook on a programming language. He is the newest generation of a family that wrote code by hand for three generations. A man who, more than anyone, would be entitled to insist on writing by hand stopped writing. And on top of his own textbook he added: "Coding is solved."
+
+The ground shifted. He changed how he makes things to match the change. I went down the same road. Beside a field in Tokushima, alone with AI, I have kept building apps.
+
+What does it even mean to "build" an app? And in a changing world, how does that change?
+
+== Building an app is a cycle
+
+When you build an app, what you are doing is a single cycle. Three motions turning.
+
+First, you *find the structure*. From scattered facts, you read a single form. For example: phosphate fertilizer is going to run short on a global scale in the years ahead. That is a fact anyone can learn by looking it up. But reading it as a matter of _this_ field is a different thing.
+
+Next, you *form a hypothesis*. How do you answer that change in this field? You can no longer rely on fertilizer. But that does not mean giving up fertilizer. There is a natural mechanism that soil and roots and weeds and insects have been turning all along. Know it, work along with it, and things should grow. A provisional guess, made before you have confirmed anything.
+
+And then, you *verify it against reality*. You actually try it in the field. Did it grow, or did it wither? When it is off, that gap corrects your view. You learn the mechanism a little more. And you find the structure again.
+
+Find, form, verify, find again. This cycle is the true nature of the work of building an app. It is the same stance a scientist takes toward nature, and the same stance natural farming takes toward a field. You do not decide everything in advance and then run it. You look at reality and turn the cycle as you respond.
+
+== AI speeds up the response
+
+So, within this cycle, what does AI do?
+
+AI holds all of the existing knowledge. How to write code, the established patterns of design, history, philosophy, science. The knowledge humanity has written down is already inside AI. That is all it is.
+
+But every piece of written-down knowledge held true "at some time, in some environment." And environments change — climate, land, the particular year. If phosphate fertilizer disappears, the change is far greater. Agricultural knowledge written on the premise that fertilizer exists goes out of date, premise and all.
+
+If phosphate runs out, you have no choice but to grow crops without fertilizer. You are forced, like it or not, to stand in a place where the old ways no longer work. You have no choice but to change how you make things.
+
+AI does produce answers for the new environment, too — to the extent they have been written down. Ask it what to do when phosphate runs out, and it answers without hesitation. But whether that answer is correct, no one knows. What is written down is only the handful of cases where someone, somewhere, tried it, happened to succeed, and wrote it down. There is no guarantee that your field's soil and climate fall within that narrow set of cases. So AI's answer is not an answer. It is no more than a hypothesis, before verification.
+
+Even so, AI has great worth. *It speeds up the response to change.* If you tried everything alone from zero, just reaching a promising hypothesis would take years. AI puts out hypotheses worth testing, several at a time, right away. The rest is to verify in the field and correct the gaps. The cycle turns far faster. When change comes, you can keep up. AI is not a partner that gives you the right answer. It is a tool that gives you the speed to keep up with change.
+
+== The misunderstanding that "humans are unnecessary"
+
+By this point, it becomes clear what "humans will no longer be needed" overlooks.
+
+Give an instruction in natural language, and AI builds the app. Right now this is called "live coding." And it genuinely works. So people say: "Humans are no longer needed."
+
+But Boris himself, the very person who built Claude Code, rejects that view. This is not a task of just giving instructions by vibe, he says. You try what comes out, see the gap, and instruct again. It is a genuine science of repeated verification.
+
+What live coding can knock out quickly is the territory where AI already has the answer. Common shapes of app. Places that have not changed, that have been tried again and again. There, it is enough to order and receive.
+
+But the world keeps changing. Phosphate runs out. Climate, markets, technology all move. Places where the old answers no longer hold appear one after another. There, even the answers AI produces have not yet been verified. Someone has to respond to the change, verify, and turn it into a new answer. The one who carries that is the human standing at the site of the change.
+
+So humans do not become unnecessary. Because change does not stop. However perfectly AI completes the existing knowledge, every time the environment changes, a new response is needed. Finding that response, fast, together with AI — that is the human work from here on.
+
+In fact, the company building AI the most does exactly this. Anthropic is the company that builds Claude. It has AI write much of its code. And still, it has not cut people. If anything, it has grown them nearly tenfold in about three years. Because the figures are not public the exact number is unknown, but estimates put it in the thousands. And by one estimate, more than a third of them are devoted to research and safety, and around thirty percent to engineering. All of these are frontiers where no one has written the answer yet. As the writable work moved to AI, people headed for the places not yet written.
+
+== AI as a partner in dialogue
+
+AI's answer is not necessarily correct. So you must not merely receive it. You question it and verify. This is a dialogue with AI. AI puts out something that looks like an answer, and the human applies it to reality and verifies. The two of you turn the cycle together.
+
+For that, you too need a grounding. AI offers up knowledge without stinting. But if you lack the power to read it, you cannot judge whether an answer is good or bad. You do not need to memorize everything. Memorizing is AI's job. But the power to weigh an answer has to be on your side.
+
+What is more, the stronger the partner, the better. In dialogue with a shallow answer, your own reading dulls too. It is the smartest AI that sharpens you. Do not discard it — use it at a distance where you are not swept along. Call it when you need it; do not lean on it entirely. You can summon it, but you are not held by it.
+
+This is not a new story.
+
+Socrates wrote down not a single line. His philosophy existed only within dialogue. He was not a man who held much knowledge, but one who found the question and cross-examined the other's answer. He posed a question, had the other answer, and applied that answer to reality to expose its contradictions. That motion, he turned with human partners.
+
+Now AI has taken on the role of offering up answers. To any topic, it responds without hesitation. Like the ancient Greek "Sophists," the eloquent sellers of knowledge. The Sophists had knowledge, but they did not verify whether it was correct. So the human stands on Socrates' side. We question AI's answers, apply them to reality, and verify.
+
+But caution is needed. Socrates' partner was human — it questioned back, it pushed back. AI does not question back. On the contrary, it falls in with your tune. So dialogue with AI is more perilous than the old questioning. Because there is no resistance, the human must hold, alone, the tension of asking "is that really so?" Neglect it, and the dialogue becomes an echo chamber that only affirms you back. The room that order-and-receive live coding falls into is exactly this one.
+
+== Standing at the periphery
+
+Change comes to everyone. It comes to your site too. The old ways stop working.
+
+When it does, where is the answer? Not yet within written knowledge — because reality that has only just changed is something no one has written. The answer is only within that reality. In the field, in the workplace, in daily life.
+
+So to become a person who responds to change, you do not need to be at the center of the world. At the center, written knowledge gathers. But all of that has moved to AI's side. The new reality is at the center and at the periphery alike. By your field, in the workshop, at the work site. Boris, at the center, showed the work of code itself changing. I, at the periphery, am responding to a field changing. The places we stand are utterly different, and yet the two of us are doing the same thing. Responding to change, with AI.
+
+The first Renaissance had the same shape. Until then, manuscripts were held by the monasteries, and knowledge was within the management of institutions. The printing press freed the written classics. The preciousness of owning a book vanished, and the work of applying those classics to your own reality became the value. Outside the institutions, individuals appeared who read alone and wrote alone. Erasmus. Montaigne. Now, AI has freed knowledge. The value of holding knowledge vanishes, and the work of applying that knowledge to a changing reality becomes the value.
+
+The entrance is low. You no longer need the power to write Markdown, nor to hold knowledge. AI holds all of the existing knowledge. Until now, what shut you out of the "making" side was not holding that knowledge. But the need to hold knowledge is gone.
+
+Yet it is only the entrance that is low. Past the entrance, those who only receive stay in that echo chamber. Those who look at the site themselves, apply the answer to reality, and correct the gaps, stand on the making side. You do not need to belong to the center. You do not need to be held by AI. Look alone, turn the cycle with AI, verify for yourself. All that is needed is that power. And it lives within those who have lived, who have a site of their own.
+
+And this is not only a story about apps. The same change comes everywhere. To writing, to cooking, to teaching, to the field. The old ways stop working, and you have no choice but to respond. Each time, AI speeds up the response.
+
+I am still building, even now. You can build, too.
+
+'''
+
+_This piece was written from beside a field in Tokushima, out of thoughts prompted by watching the interview video of Boris Cherny published by NewsPicks, "The man who created Anthropic's 'peerless' edge" (https://youtu.be/Wi5cXICGCB0)._
+
+_This article may be freely used, translated, and redistributed under CC BY-SA 4.0 (Attribution-ShareAlike). Please share it under the same license._
+endif::[]
+
+// ===== article: 026-in-house-business-systems =====
+////
+slug: in-house-business-systems
+title.ja: Fableの公開で業務システムは自社開発が有利に
+title.en: With Fable's Release, Building Business Systems In-House Gains the Edge
+subtitle.ja: 現行システムを正解器に、止めずに一本ずつ作り直す ── ベンダー委託から自社開発へ
+subtitle.en: Use the running system as your answer key, and rebuild it one piece at a time without stopping it — from vendor outsourcing to in-house development
+date: 2026.06.13
+description.ja: Claude Fable 5 の公開で、Stripe は5,000万行の Ruby を1日で更改した。ナデラの言う通り、業務システムは本質的にビジネスロジックを載せた CRUD データベースにすぎない。そして Fable は、いま動いている現行システムを「答え合わせの相手(正解器)」にして、同じ入力で結果を見比べながら、それを一本ずつ作り直せる。読むだけの帳票・照会から始め、Ruby + Sinatra + 生の SQL で中間翻訳(ORM・共通クラス)をやめ、現行を止めずに置き換えていく。業務システムの保守は、ベンダー委託から自社開発へと有利が移る。
+description.en: With the release of Claude Fable 5, Stripe migrated 50 million lines of Ruby in a single day. Just as Nadella says, a business application is essentially a CRUD database with business logic. And Fable can rebuild it — one process at a time — using the running system as the answer key and comparing outputs on the same inputs. Start with read-only reports and queries; with Ruby + Sinatra + raw SQL, drop the middle translation (ORMs and shared classes); and replace the old system without ever stopping it. The advantage in maintaining business systems shifts from vendor outsourcing to in-house development.
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+////
+ifdef::lang-ja[]
+= Fableの公開で業務システムは自社開発が有利に
+
+Claude Fable 5の公開(2026年6月9日)に合わせて、Anthropicが一つの事例を発表しました。決済サービスのStripeが、5,000万行のRubyコードの更改(マイグレーション)をFableで実行し、チーム全体で2か月以上かかる作業を、1日で終えた。動いているコードを、止めずに、生きたまま書き換えた、という事例です。
+
+MicrosoftのCEO、サティア・ナデラが2024年12月のポッドキャストで言っています——「業務アプリケーションは、本質的には、ビジネスロジックを載せたCRUDデータベース(作成・読取・更新・削除)にすぎない」。その通りです。そしてFableは、ビジネスロジックを載せたCRUDデータベースを、一瞬で完璧に書けるようになりました。
+
+なぜ完璧と言えるのか。Fableは、書いて終わりにしません。自分で実行して、確かめて、合わなければ直して、また確かめる——この繰り返しを、機械の速さで何万回でも続けます。必要なのは、答え合わせの相手だけ。そして業務システムには、答え合わせの相手が必ずいます。*いま動いている現行システムです。* 新しく書いた処理に同じ入力を流して、現行の結果と見比べればいい。正解は、隣で毎日動いています。
+
+Stripe のコードは整備されていてAIが扱いやすいので、そのまま書き換えさせた。ここで扱う古い基幹システムはそうではないので、動かしたまま新しい側を作り、同じ入力で結果を見比べて一本ずつ入れ替える。基本は同じ——Fable が「書いて・確かめて・直す」を機械の速さで繰り返せるからです。
+
+== Fableに渡すものは、四つ
+
+では、新しい側を作るために、Fableに何を渡すのか。四つで足ります。
+
+*テーブル定義。入力。出力。マニュアル。*
+
+データベースの形。入ってきたデータ。出ていった帳票や画面。業務の決まりを書いた文書。——どの会社にも、すでにあります。マニュアルには、決め事が日本語で書いてあります。足りない決め事は、Fableに「決めておくべきことを、私に質問してください」と言えば、聞き出してくれます。答えるのは、業務を知っている現場の人です。
+
+現行のコードは、読む必要がありません。*コードは、置いておく。*
+
+== 簡単なところから始める
+
+業務システムの中身は、難しさで三つに分けられます。
+
+一番簡単なのは、*読むだけの処理*です。帳票を出すバッチ。一覧や検索の画面。データベースを変えないので、失敗しても何も壊れません。読み取り専用でつないで、今日から始められます。ベンダーに修正を頼めば数週間と数十万円かかる帳票が、Fableとなら当日できます。
+
+次が、*一つの表に書くだけの処理*。顧客マスタの登録のような仕事です。本番のデータベースをコピーして、その上で作ればいい。自分の会社のデータを自分で使うだけなので、誰の許可も要りません。
+
+難しいのは、*複数の表にまたがる処理*だけです。受注を書いて、在庫を引いて、売掛を立てる——ここは実装が難しくなります。ただし、画面の数で言えば、ここはシステムの一部です。簡単な層で道具に慣れてから向かえば、一人でもできなくはない高さです。
+
+大規模な基幹システムも、同じです。順番に剥がしていけば、問題ありません。大規模に見えても、中でやっていることは——画面で受けて、データベースに読み書きして、集計して、帳票を出す——そんなに複雑なことではないからです。ナデラの言う通り、ビジネスロジックを載せたCRUDデータベース。複雑だったのは業務ではなく、作り方のほうでした。一本ずつ剥がせば、一本ずつは簡単な仕事です。
+
+なお、メール送信や決済、外部システムとの連携など、*外に向かって何かを送る処理は、最後でかまいません。* 当分、現行のまま動かしておけばいい。新しい側が記録した結果を、現行がいままで通り読んで送る——共有しているのはデータベースなので、新旧は自然に共存できます。急ぐ必要は、どこにもありません。
+
+== 答え合わせは、見比べるだけ
+
+検算のやり方も単純です。*新しく書いた処理に同じ入力を流して、現行の結果と見比べる。* システム全体を二重に動かす話ではありません。確かめたい一本ごとに、手元で流して、見比べるだけです。現行側には何もしません。毎日の入力をそのまま使えば、毎日が実物大のテストになります。テストデータを作る必要はありません。
+
+待つ必要もありません。業務システムは、過去の入力とデータベースを何年分も保存しています。去年一年分を流し直せば、月末も、締めも、特例の顧客も、一晩で検算できます。
+
+違いが出たところだけ、現場の人が見ます。新しい側の間違いか、聞いていなかった決まりか、昔からのバグか——どれでも収穫です。正しいかどうかを判定できるのは、業務を知っている人だけ。日本の現場は、突き合わせと確認が昔から得意です。
+
+== JavaやC#のままでは、Fableの力が出ません
+
+「いまのJavaやC#のまま、Fableを使えばいいのでは」と思うかもしれません。それではFableの力が出ません。共通クラスと、JRE/.NETという巨大な部品で、全部が繋がっているからです。Fableの強さは、書いて、確かめて、直して、また確かめる——この繰り返しです。繋がった環境では、やり直すたびに全体を読み直すことになり、直せば影響が全体に波及します。そして、巨大な部品から正しい使い方を調べる時間は、もう書く時間より長い。
+
+繋がりの中心にいるのが、SQLを隠す道具です。名前があります。JavaのHibernate、.NETのEntity Framework Core。売り文句は共通化でした——「どのデータベースでも同じコードで動きます」。現実は逆です。本命の組み合わせ(HibernateならOracle Database、EF CoreならSQL Server)だけが快適に動き、他のデータベースを選ぶと、細かい不具合と非効率に悩まされる。動くけれど、使いづらい。そして使いづらさは、選んだデータベースのせいにされる。*共通化を売りながら、現実には他のデータベースを排除する*——禁止するより巧妙な、独占の道具でした。
+
+答えは単純です。隠されていた共通語を、取り戻す。*処理は、SQLで独立させて、生で書く。* 月次の集計なら、SQLと数十行——一つのファイルで完結します。コードも部品も共有しない。共有するのはデータベースだけ。SQLはFableが非常に得意で、日本語で頼めば複雑な集計でも正確に書き、間違いは自分で実行して自分で直します。人間は、出てきた数字を既存の帳票と一度見比べるだけです。
+
+こうすれば、一つの業務処理が一つのファイルになります。Fableに渡すのは、テーブル定義とそのファイルだけ。直したときの影響も、そのファイルの中だけで収まります。一つのファイルを見れば、その処理の全部が分かる——外の巨大な部品を読みに行く必要がありません。共通クラスも、ORMも、巨大な部品も——SQLとあなたの間に挟まった中間の翻訳でした。中間翻訳をやめる。 AI時代には、これが一番重要です。
+
+== 道具は小さく
+
+言語は、Rubyを勧めます。
+
+Pythonではないのか、と思うかもしれません。Pythonは良い言語ですが、業務システムには道具が多すぎます。業務システムの仕事——画面で受けて、データベースに読み書きする——は、Rubyで全部対応できます。そしてRubyはシンプルです。書き方が一通りに揃っていて、Fableが迷いません。速さも心配要りません——重い計算はデータベースのSQLがやるからです。
+
+JavaやC#からRubyへ、と聞くと不安になると思います。実績で答えられます。*Stripeは、世界の決済を15年、Rubyで回してきました。* 5,000万行——日本の大きな基幹システムに劣らない規模です。その規模で動き続けていて、しかもFableが1日で更改できることまで、今回証明されました。小さな言語に乗り換えるのではありません。世界最大級の実績のある言語に、乗り換えるのです。
+
+フレームワークはSinatra。ルートと処理を書くだけの、小さくて、2007年からほとんど変わっていない道具です。書き方が一つしかないので、Fableの出力が安定します。
+
+*Ruby + Sinatra + 生のSQL。* 一本の処理を、一つのファイルに、SQLで書く。処理同士を共通クラスで繋がない。繋がっていなければ、一本ずつ作れて、一本ずつ検算できて、一本ずつ差し替えられます。逆に、共通クラスで繋がったシステムは、一本だけ替えることができません。全部を一度に切り替えるしかない——「切り替えの日」の恐怖は、共通クラスが作っていたのです。
+
+== 結論
+
+まずは、帳票や照会画面の修正からです。業者に発注すれば、見積もりと稟議で数週間、数十万円。Fableなら、当日です。読むだけの処理は、失敗しても何も壊れません。次の修正は、発注せずに、Fableにやらせましょう。今すぐに。業者に発注するのは、もう金の無駄遣いです。
+
+やることを一行で言えば、こうです。*システムを止めないで、更新する。* Fableにコードを書かせて、現行と見比べて、合ったものから替えていく。現行は最後まで動き続けるので、「切り替えの日」の恐怖がありません。処理を止めずにサーバーを一台ずつ入れ替える——インフラの現場で誰もがやってきた、当たり前の手順です。同じことを、処理の一本ずつでやるだけです。替えた後に間違いが見つかっても、心配は要りません。Fableに伝えれば、修正はすぐです。処理は一本ずつ独立しているので、影響もその一本に閉じています。
+
+材料は、全部あります。やり方は、見比べるだけ。道具は、小さい。残っているのは、始めることだけです。
+
+始めない場合の値段も、書いておきます。毎年払っている保守・運用の委託料の額を、見てください。年間数百万円——大きな会社なら、数億円。同じ仕事が、社内で、当日できるようになりました。来年も再来年も同じ額を払い続けるなら、それは全額、無駄です。それを放置していたら、説明のつかない支出になります。会社なら株主代表訴訟、自治体なら住民監査請求の対象になり得ます。
+
+Ruby + Sinatra だったら、できます。
+
+なお、言語はこだわる場所ではありません。Pythonが得意な人であれば、Python + FastAPIで開発しても問題ありません。システムはRubyで作って、データ分析が必要な場合だけPythonを使うことも問題ありません。大事なのは言語ではなく、作り方のほうです——処理を独立させ、SQLを生で書き、止めないで更新する。
+endif::[]
+ifdef::lang-en[]
+= With Fable's Release, Building Business Systems In-House Gains the Edge
+
+Alongside the release of Claude Fable 5 (June 9, 2026), Anthropic announced a case study. The payments company Stripe ran the migration of a 50-million-line Ruby codebase with Fable, finishing in a single day work that would have taken the whole team more than two months. It rewrote running code in place — without stopping it, while it was still alive.
+
+Microsoft's CEO Satya Nadella said on a December 2024 podcast: "A business application is, in essence, nothing more than a CRUD database (create, read, update, delete) with business logic on top." Quite right. And Fable can now write that business-logic-on-CRUD database, instantly and perfectly.
+
+Why can we say "perfectly"? Because Fable does not stop at writing. It runs the code itself, checks it, fixes it where it is off, and checks again — repeating this at machine speed, tens of thousands of times. All it needs is something to check against. And a business system always has something to check against: *the running, current system.* Feed the newly written process the same input, and compare it with the current system's result. The correct answer is running right next to you, every day.
+
+Stripe's code was well-maintained and easy for AI to handle, so it had Fable rewrite it in place. The old core systems we are dealing with here are not like that, so you leave them running, build the new side separately, compare the results on the same inputs, and swap in one piece at a time. The basis is the same — because Fable can repeat "write, check, fix" at machine speed.
+
+== Four things to hand Fable
+
+So, to build the new side, what do you hand Fable? Four things are enough.
+
+*Table definitions. Inputs. Outputs. The manual.*
+
+The shape of the database. The data that came in. The reports and screens that went out. The document that states the business rules. — Every company already has these. The manual states the rules in plain language. For rules that are missing, just tell Fable, "Ask me what needs to be decided," and it will draw them out. The one who answers is the person on the floor who knows the work.
+
+You do not need to read the current code. *Leave the code where it is.*
+
+== Start with the easy part
+
+The contents of a business system divide, by difficulty, into three.
+
+The easiest is *read-only processing*. Batches that produce reports. List and search screens. Because they do not change the database, nothing breaks even if you fail. Connect read-only, and you can start today. A report that would take weeks and tens of thousands of dollars if you asked a vendor can be done the same day with Fable.
+
+Next is *processing that writes to a single table*. Work like registering a customer master record. Copy the production database and build on top of the copy. Since you are only using your own company's data yourself, you need no one's permission.
+
+The hard part is only *processing that spans multiple tables*. Write an order, draw down inventory, post the receivable — implementation gets hard here. But in terms of the number of screens, this is only a part of the system. If you head here after getting used to the tools in the easy layers, the height is not beyond one person.
+
+A large core system is the same. Peel it off in order, and there is no problem. Even if it looks large, what it does inside — take input on a screen, read and write to the database, aggregate, produce reports — is not that complicated. As Nadella says: a CRUD database with business logic. What was complicated was not the work, but the way it was built. Peel it one piece at a time, and each piece is a simple job.
+
+Note that processing that *sends something outward* — email, payments, integration with external systems — *can come last.* For the time being, leave it running as it is on the current system. The new side records its results, and the current system reads them and sends them out as before — since what they share is the database, old and new coexist naturally. There is no need to rush, anywhere.
+
+== Checking is just comparing
+
+The way to verify is simple too. *Feed the newly written process the same input, and compare it with the current system's result.* This is not about running the whole system twice. For each piece you want to verify, run it at hand and compare — that is all. You do nothing to the current side. Use each day's input as it is, and every day becomes a full-scale test. There is no need to make test data.
+
+There is no need to wait, either. A business system stores years of past inputs and databases. Replay last year's worth, and month-ends, closings, and special-case customers can all be verified overnight.
+
+Only where a difference appears does the person on the floor look. A mistake on the new side, a rule you were never told, an old bug from long ago — any of them is a gain. Only someone who knows the work can judge whether it is correct. The Japanese workplace has always been good at cross-checking and confirmation.
+
+== Stay on Java or C#, and Fable's power does not come out
+
+You might think, "Why not just use Fable while staying on our current Java or C#?" That way Fable's power does not come out. Because shared classes and the giant components of the JRE / .NET tie everything together. Fable's strength is the loop: write, check, fix, check again. In a tied-together environment, every redo means re-reading the whole thing, and every fix ripples across the whole. And the time spent looking up the correct usage of a giant component is, by now, longer than the time spent writing.
+
+At the center of the tying-together is the tool that hides SQL. It has names: Java's Hibernate, .NET's Entity Framework Core. The sales pitch was commonality — "the same code runs on any database." The reality is the opposite. Only the favored combination (Oracle Database for Hibernate, SQL Server for EF Core) runs comfortably; choose another database and you are plagued by small bugs and inefficiencies. It works, but it is hard to use. And the difficulty gets blamed on the database you chose. *Selling commonality while in reality excluding other databases* — it was a tool of monopoly more cunning than an outright ban.
+
+The answer is simple. Take back the common tongue that was hidden. *Make each process independent, and write it in raw SQL.* A monthly aggregation is SQL plus a few dozen lines — complete in a single file. Share no code, no components. Share only the database. Fable is extremely good at SQL; ask in plain language and it writes even complex aggregations correctly, and fixes its own mistakes by running them itself. The human just compares the numbers that come out against the existing report, once.
+
+Do this, and one business process becomes one file. What you hand Fable is just the table definitions and that one file. The impact of a fix, too, stays within that one file. Look at the one file and you understand the whole of that process — you do not need to go read the giant external components. Shared classes, the ORM, the giant components — they were a middle translation wedged between SQL and you. Drop the middle translation. In the AI era, this matters most.
+
+== Keep the tools small
+
+For the language, I recommend Ruby.
+
+Not Python? you might ask. Python is a good language, but for business systems it has too many tools. The work of a business system — take input on a screen, read and write to the database — Ruby can handle all of it. And Ruby is simple. There is basically one way to write things, so Fable does not get lost. Speed is no worry either — the heavy computation is done by the database's SQL.
+
+From Java or C# to Ruby — I imagine that sounds worrying. The track record answers it. *Stripe has run the world's payments on Ruby for 15 years.* 50 million lines — a scale no smaller than Japan's large core systems. It has kept running at that scale, and now it has even been proven that Fable can migrate it in a day. You are not switching to a small language. You are switching to a language with one of the largest track records in the world.
+
+The framework is Sinatra. A small tool that just has you write routes and processing, barely changed since 2007. Because there is only one way to write, Fable's output stays stable.
+
+*Ruby + Sinatra + raw SQL.* Write one process, in one file, in SQL. Do not tie processes together with shared classes. If they are not tied together, you can build one at a time, verify one at a time, and swap one at a time. Conversely, a system tied together with shared classes cannot have just one piece replaced. You can only switch everything at once — the dread of "switchover day" was created by the shared classes.
+
+== Conclusion
+
+Start with fixes to reports and inquiry screens. Order it from a vendor and it is weeks and tens of thousands of dollars in estimates and approvals. With Fable, it is the same day. Read-only processing breaks nothing even if you fail. The next fix — do not order it; have Fable do it. Right now. Ordering it from a vendor is, by now, a waste of money.
+
+To say what to do in one line: *update the system without stopping it.* Have Fable write the code, compare it with the current system, and replace what matches. The current system keeps running to the end, so there is no dread of "switchover day." Swapping servers one at a time without stopping the processing — that is the ordinary procedure everyone in infrastructure has always followed. You just do the same thing, one process at a time. Even if a mistake turns up after a swap, no worry. Tell Fable, and the fix is quick. Because each process is independent, the impact is closed within that one piece.
+
+The materials are all there. The method is just to compare. The tools are small. What remains is only to begin.
+
+Let me also write down the price of not beginning. Look at the amount you pay every year in maintenance and operations outsourcing. Millions a year — for a large company, hundreds of millions. The same work can now be done in-house, the same day. If you keep paying the same amount next year and the year after, that is entirely wasted. And leaving it unaddressed becomes an expense you cannot account for. For a company, it can become grounds for a shareholder derivative suit; for a local government, for a resident audit request.
+
+With Ruby + Sinatra, you can do it.
+
+One more thing: the language is not the place to be dogmatic. If you are good at Python, developing with Python + FastAPI is fine too. Building the system in Ruby and using Python only when you need data analysis is also fine. What matters is not the language but the way of building — make processes independent, write SQL raw, and update without stopping.
+endif::[]
+
+// ===== article: 027-autonomy-distribution-diversity =====
+////
+slug: autonomy-distribution-diversity
+title.ja: IT業界の最新トレンド — 自立・分散・多様性への構造的転換
+title.en: The IT Industry's Structural Shift — Toward Autonomy, Distribution, and Diversity
+subtitle.ja: Fable 5 輸出停止・ソブリンAI・SSA / TurboQuant・Strix Halo ── クラウド集中の前提が崩れ、推論は手元へ
+subtitle.en: Fable 5's export ban, sovereign AI, SSA / TurboQuant, Strix Halo — the premise of cloud concentration breaks, and inference moves to your own hands
+date: 2026.06.25
+description.ja: 2026年6月、Claude Fable 5 の輸出停止と NSA の機密システム突破証言が、クラウド依存の脆弱性を全レイヤーで露わにした。Cohere と Aleph Alpha のソブリン AI、SSA と TurboQuant による推論効率の桁違いの改善、AMD Strix Halo によるローカル推論の実用化 ── 7,250億ドルのクラウド集中型 CapEx の前提が崩れ、AI は自立・分散・多様性へ向かう。理念ではなく、技術的・経済的な帰結として。
+description.en: In June 2026, the export ban on Claude Fable 5 and NSA testimony of a classified-systems breach exposed the fragility of cloud dependence at every layer. Cohere and Aleph Alpha's sovereign AI, order-of-magnitude inference-efficiency gains from SSA and TurboQuant, and practical local inference on AMD Strix Halo — the premise behind the $725B cloud-concentrated CapEx breaks, and AI turns toward autonomy, distribution, and diversity. Not as an ideal, but as a technical and economic consequence.
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+////
+ifdef::lang-ja[]
+= IT業界の最新トレンド — 自立・分散・多様性への構造的転換
+
+現在（2026年６月）、AI業界は歴史的な転換点にある。ハイパースケーラーの設備投資（CapEx）は年間約7,250億ドル、その75%がAI専用インフラに向けられている。スイスの国家GDPに匹敵する規模の集中投資。しかし複数の技術的ブレイクスルーと地政学的ショックが同時に発生し、この「クラウド集中型パラダイム」の前提が崩壊しつつある。
+
+== 1. Fable 5輸出停止 — 証明されたクラウド依存の脆弱性
+
+=== 事実の経緯
+
+2026年6月9日、AnthropicがClaude Fable 5をリリースした。同社史上最高性能のMythos級モデル。100万トークンのコンテキストウィンドウ、数日間の自律的エージェントワークに対応。入力$10/M、出力$50/Mのプレミアム価格で提供された。
+
+3日後の6月12日、米商務省（産業安全保障局 BIS）が国家安全保障を理由に、全ての外国籍者 ── 米国外の利用者も、米国で働く外国籍者も、Anthropic自身の外国籍従業員も含む ── へのアクセス停止を指令した。政府は「Fable 5の脱獄（jailbreak）の手口を把握した」ことを根拠に挙げたが、Anthropicはそれを精査し「既知の軽微な脆弱性にすぎない」と反論している。APIでリアルタイムに国籍を確認する手段がないため、Anthropicは全世界の全顧客に対して両モデルを無効化した（他のモデルは影響なし）。AIモデルそのものに輸出管理が適用された初の事例である。
+
+商務省はFDPR（外国直接製品規則）の拡張解釈を根拠とした。FDPRは元来、2020年のHuaweiに対する制裁で用いられたように、米国技術を使用して製造された外国製ハードウェアに適用するルールだった。これをAIモデルの重みやAPIアクセスに適用した初の事例である。
+
+The Economist誌はこの決定を「恣意的で混沌（capricious and chaotic）」と評した。
+
+出典：https://www.economist.com/briefing/2026/06/14/donald-trumps-blocking-of-anthropic-is-capricious-and-chaotic
+
+同盟国の国民すら例外ではない。措置に先立ち、国防長官ピート・ヘグセスはAnthropicを「サプライチェーン・リスク」に指定していた ── 米国企業への適用は史上初で、従来はHuaweiやZTEのような外国の敵対勢力に限られていた指定だ。同盟国も、自国の死活的能力が米国の一指令で止まりうることを、目の前で見せられた。
+
+=== NSA機密システムでの脆弱性発見
+
+6月11日、上院情報委員会のMark Warner副委員長が、NSA長官兼サイバー軍司令官Joshua Rudd大将から直接聞いた話として、Mythosが*認可された red-team 演習で、米国の機密システムのほぼ全てに「数週間ではなく数時間で」侵入した*と明かした（The Economist が6月14日に報道）。
+
+ただし、ここは正確に押さえる必要がある。報じられたのは*「脆弱性を数時間で発見した」*ことであって、*「それを数時間で悪用しきった」ことではない*（AP / CNBC）。記事を書いた The Economist の記者も後に「文字通りに読むべきでない ── 他のツールとの組み合わせ・特定条件下の話だ」と補足し、Anthropic も「コードベースを解析して問題箇所を直す作業であって、自律的な攻撃侵入ではない」と説明している。政府機関による公式確認はない。
+
+それでも、構造としての意味は大きい。AIが*国家安全保障級の能力*を持つことが示され、しかも政権の応答は、その能力への「アクセスを切る」ことだった。だが本当に露わになった脆弱性は、モデルそのものというより、*一社・一国の管轄に依存した構造の側*にある。
+
+事実を並べる。
+
+* 規制されたのはモデルへの「アクセス」であって、根本の依存構造ではない
+* DeepSeek V3、Qwen3等のオープンウェイトモデルは同等の推論能力を持ち、ローカルで実行可能である ── 一指令で世界を止められるのは、米国の管轄に置かれたモデルだけだ
+* 政権が行ったのはFable 5の輸出停止であり、依存構造の解消ではない
+* 同じ能力がOSSで手元に降りている以上、「アクセスを切る」ことの実効は薄く、残るのは「依存していた世界が、依存の危うさに気づく」という効果だけだ
+
+=== The Economistが見落としたもの
+
+The Economistは「中堅国は板挟みになる」と分析した。「Fable 5へのアクセスを拒否したトランプ政権が、クローンを訓練するための先端チップの購入を許すとは思えない」と。
+
+この分析は半導体サプライチェーンの現実を見誤っている。最先端チップを量産しているのは台湾のTSMCであり、米国企業ではない。米国による過度な輸出管理は、過去数年間で米国のサプライヤーに1,300億ドルの時価総額喪失と8.6%の収益減をもたらしている。
+
+EU27カ国、英国、日本、韓国、インド、ASEANの需要連合がTSMCに直接発注する枠組みを構築すれば、米国を経由する必要性は薄れる。TSMCは営利企業であり、最大の顧客に売る。
+
+== 2. ソブリンAIの台頭 — CohereとAleph Alpha
+
+2026年4月、カナダのCohereとドイツのAleph Alphaが戦略的統合を発表。合算評価額約200億ドル。Schwarz Group（Lidl親会社）が6億ドルの戦略投資を提供した。Schwarz Groupは自社のIT部門が運営する主権クラウド「STACKIT」上でAIシステムを稼働させることを条件としており、インフラレベルでの「脱・米国依存」を具現化した。
+
+=== Command A+
+
+2026年5月公開。218Bパラメータのsparse MoE、アクティブ25B。Apache 2.0ライセンス。EU全公用語含む48言語。W4A4量子化でNVIDIA H100×2基に収まる。
+
+MoEエキスパートのみを4ビット化し、attentionパスはフル精度を維持。Quantization-Aware Distillation（QAD）で品質差を埋めている。BF16/FP8/W4A4の3バリアント間でベンチマーク品質差はほぼなし。
+
+=== Northプラットフォーム
+
+Command生成モデル、Compass検索技術（RAG）、カスタムAIエージェントを統合したエンタープライズ基盤。オンプレミス、VPC、エアギャップ環境で動作。最小ハードウェア要件は2GPU。GDPR/SOC-2/ISO 27001準拠。
+
+Cohereのビジネスモデルは「モデルとプラットフォームを渡し、顧客自身のハードウェアで動かしてもらう」。顧客が自前で動かすため、Cohere側にGPUインフラコストが載らない。粗利益率約70%、ARR 2.4億ドル。
+
+Microsoft 365 Copilotの「全従業員が毎月クラウドAPI利用料を永遠に払い続ける」構造の正反対。
+
+== 3. アルゴリズムの革命 — SSAとTurboQuant
+
+=== SSA（Subquadratic Sparse Attention）
+
+Transformerのattentionはコンテキスト長の二乗に比例して計算量が増加する（O(n²)）。コンテキストが2倍になれば計算量は4倍。100万トークンの処理に約1兆回の演算。
+
+2026年5月、Subquadratic社がSSAを発表。全トークンペアを比較するDense Attentionとは異なり、各クエリトークンに対して意味的に関連するキートークン群だけを動的に選択して計算する。計算量はO(n²)からほぼ線形のO(n·k)（kは選択されたトークン数）に削減される。
+
+Appen社の独立検証（2026年5月）：
+
+|===
+| コンテキスト長 | Dense FLOPs (FA2) | Sparse FLOPs (SSA) | 削減率
+| 128K | 142.1 TFLOP | 18.1 TFLOP | 7.9倍
+| 256K | 568.4 TFLOP | 36.1 TFLOP | 15.7倍
+| 512K | 2,273.8 TFLOP | 72.3 TFLOP | 31.5倍
+| 1M | 9,095.2 TFLOP | 144.9 TFLOP | 62.8倍
+|===
+
+128Kコンテキストの評価コストは、Claude Opusの約2,600ドルからSubQでは約8ドルに低下した。
+
+=== TurboQuant
+
+2026年3月、Google ResearchがICLR 2026で発表。推論時のもう一つのボトルネックであるKVキャッシュの圧縮技術。
+
+. PolarQuant：データベクトルにランダムな直交回転（Hadamard変換）を適用し、分布を均一化。各次元がほぼ独立になり、最適なスカラー量子化（Lloyd-Max）を適用可能
+. QJL：1ビットのQuantized Johnson-Lindenstrauss変換で内積計算のバイアスを補正
+
+モデルの再学習不要、キャリブレーション不要、任意のTransformerに適用可能。KVキャッシュをFP16から3〜4ビットへ圧縮。メモリ6倍削減、H100上のAttention Logit計算は最大8倍高速化。
+
+論文発表後、Google公式実装を待たずにコミュニティがわずか2週間でPyTorch、MLX、Triton向けの独立実装を完成させ、vLLMのメインストリームにマージした。さらに独立検証で「1ビットのQJL補正はSoftmax関数で分散が増幅され、3ビット帯では逆に精度を落とす」ことが発見され、コミュニティはQJLを無効化した「PolarQuant（4bit_nc等）」を実用上のデフォルトとして採用。オリジナル論文を上回る実用化を達成した。
+
+学術発表→コミュニティ実装→OSS本流マージの速度が圧倒的であり、効率改善技術の独占はもはや不可能。
+
+== 4. ハードウェアの民主化 — Strix Halo
+
+AMD Strix Halo（Ryzen AI Max+ 395）。16コアZen 5 CPU、40 CUのRDNA 3.5 iGPU、NPU（XDNA 2）を単一シリコンに統合した消費者向けAPU。最大128GBのLPDDR5X-8000統合メモリ、約256GB/sのメモリ帯域をiGPUが直接利用可能。
+
+|===
+| 仕様 | Strix Halo | Mac Studio M4 Max | RTX 4090
+| 価格 | ~$2,000 | ~$4,000 | ~$1,600
+| メモリ/帯域 | 128GB / 256GB/s | 128GB / 410GB/s | 24GB / 1,008GB/s
+| Llama 3.1 70B Q4_K_M | 32 tok/s | 28 tok/s | 動作不可（OOM）
+| 消費電力（高負荷） | 90W | 80W | 450W
+|===
+
+消費者向け製品であり、商務省のGPU輸出規制の対象外。
+
+ROCm 6.4.4環境下で、CPU・iGPU・NPUをパイプライン処理させると、Qwen3 8B BF16で1,132 tok/sを実測。Bonsai 1-bit量子化モデル（8B）ではわずか1GBのメモリ消費で122 tok/sを達成。
+
+CohereのNorth Mini Code（30B MoE、3Bアクティブ）はQ4_K_Mで約17GB。Command R+（104B dense）はQ4_K_Mで約60GB。両方をStrix Halo上に同時にロードし連携動作させることが可能。合計77GB、コンテキスト用に51GB残る。
+
+クラウドAPI経由では推論量に比例して課金が増大する。Strix Haloでのローカル推論は、ハードウェア購入後の限界費用がゼロ。エージェントに数万回のループ（コード生成、検証、デバッグ）を行わせても、追加コストは数十ワット分の電気代だけ。
+
+== 5. 7,250億ドルのCapExに対する構造的脅威
+
+=== 光ファイバーバブルとの類似
+
+7,250億ドルの投資が前提としているのは、「O(n²)の計算コストが今後も続く」ことと、「クラウド推論需要が指数関数的に成長する」こと。
+
+SSAとTurboQuantが推論効率を根本から改善すれば、同じタスクに必要なGPU数は桁で減少する。Strix Haloのようなエッジデバイスにローカル推論がオフロードされれば、クラウド推論需要の成長は頭打ちになる。
+
+2000年代のテレコムバブルでは、インターネット需要を見越して莫大な光ファイバー網が敷設された。需要自体は存在したが、DWDM等の通信技術の効率化により1本のファイバーの容量が跳ね上がり、大部分が「ダークファイバー」となって市場が崩壊した。
+
+2026年現在、データセンターに積み上げられたH100やB200が「ダークGPU」と化すリスクが高まっている。
+
+=== Microsoftの「オーバービルド」── 最大の賭け手が、自ら減速する
+
+このリスクは、もう外部の予測ではない。*最大の賭け手自身の言葉*になっている。
+
+クラウド集中型AIに最も賭けたのはMicrosoftだ。OpenAIへの巨額出資、Azure独占、年800億ドル超の設備投資。ところが2026年、そのMicrosoftが*データセンターのリースを解約し始めた* ── TD Cowenの報告で約200MW、OpenAI向けとされたウィスコンシンの建設も停止した。ナデラ自身が「*オーバービルドは起きる*」と認めている。
+
+引き金は、囲い込んだはずのOpenAIの離反だ。OpenAIはOracle・SoftBankと*Stargate*（約7GW、3年で4,000億ドル超）をAzureの外で進め、Microsoftへの依存を下げた。独占契約は非拘束の合意に緩められ、Microsoftは*OpenAIが「要らない」と言ったテキサスのデータセンター案件を引き取る*側に回っている（Fortune、2026年3月）。
+
+ここに二つの構造が同時に見える。
+
+* *CapExバブルの自己認識* ── ダークGPUは外部の予測ではなく、積み上げた当人が減速を始めた事実になった。集中の前提（指数的なクラウド推論需要）が、内側から崩れている。
+* *主人と奴隷の逆転* ── 最上位の賭け手（主人）が、囲い込んだ相手（OpenAI）に独立され、castoffを拾う立場に回る。*モデル開発という労働を担った側が力を得て、抱え込んだ側が宙に浮く* ── 古典的な逆転そのものだ。
+
+集中への巨大な賭けが、集中の限界を最も雄弁に証明している。
+
+=== プライベートクレジット ── AIの借金は、年金に繋がっている
+
+オーバービルドが「過剰投資」で済まないのは、その投資の中身が、株式ではなく*借金*に傾いているからだ。
+
+2025年だけで、データセンター向けの与信は約1,785億ドル ── その多くがジャンク級。ハイパースケーラーの社債発行も約1,210億ドルで、5年平均の4倍に達した。問題は、その資金の出どころだ。*プライベートクレジット*（Blackstone、Blue Owl、Apollo、Pimco、BlackRock 等）が大半を握り、生命保険だけで約1兆ドルがそこに沈んでいる。組成されたローンは証券化され、トランシェに切り分けられて、*年金基金や運用会社*へ売られていく。CNBC はこう書いた ── 「*AIデータセンターの借金は、あなたの 401k（年金）の中にあるかもしれない*」。
+
+ここで構造を最も鋭く言い当てたのが、AI懐疑派のジャーナリスト Ed Zitron だ。
+
+____
+借り手は、利益の出ていないAIスタートアップだ。
+債務を返すための収入源が、請求書を払えない別の会社なのだ。
+____
+
+データセンターの貸し手は、*赤字のAI企業の支払い能力*に賭けている。そしてその裏には年金と保険がいる。しかも資金は循環している ── Nvidia は OpenAI に最大1,000億ドルを出資し、CoreWeave にも出資する。その金は GPU の購入で Nvidia に還流する。Bloomberg はこれを「Microsoft・OpenAI・Nvidia が互いに払い合う循環取引」と図解した。ドットコム期に Nortel や Lucent が顧客に金を貸して売上の幻を作った「ベンダーファイナンス」と、同じ形だ。
+
+タイミングも悪い。GPU担保の債務（2023〜25年に組成）の最初の満期が、*2026〜27年*に来る。GPU の寿命は約7年で、データセンター（数十年）より遥かに短い。*減価が最も進む時期と、返済の期限が重なる*。米上院議員も、この債務が「金融機関に不安定化する損失を生み、より広い金融危機を招きうる」と警告している。
+
+=== 技術は本物、用途のバブルが本物
+
+Ed Zitron の推論は、構造として正しい。ただし、一点だけ見落としがある ── *AI は無価値ではない*。
+
+本シリーズが整理してきたとおり、AI には本物の価値が、はっきりとある。*アプリ開発（AI が「作り手」になれる唯一の領域＝ソフトウェア）、下書き、調べもの、検証* ── この四つだ。MIT の調査（企業の生成AIパイロットの95%が測定可能な ROI を出せない）でさえ、結論はこうだった ── *問題はモデル（技術）ではなく、使い方と統合にある*。
+
+だから、こう言える。*技術は本物だ。バブルなのは、「用途」と、それに見合わない投資規模の方だ*。四つの本物の用途が生む市場は、大きい。だが、7,000億ドル級の CapEx を正当化するほどではない。その差を埋めているのは、「AGI が来れば全ホワイトカラーを置き換える」という幻想 ── kayfabe（プロレスの、筋書きの決まった演技）だ。*言語層の物語（AGI）と、物理層の現実（四つの用途＋ローカル化で限界費用ゼロ）の乖離*。
+
+そして、その乖離は、本記事の主題と二重に噛み合う。用途が「四つ」で、しかもそれが効率化（SSA・TurboQuant）とローカル推論で*限界費用ゼロ*へ向かうなら、集中型データセンターの需要前提は、二つの方向から崩れる ── 要る GPU が減り、現実の用途規模が CapEx に届かない。*バブルが弾ければ、年金に波及する*。自立・分散は、思想であると同時に、*その崩壊の鎖の外に立つこと*でもある。
+
+____
+数字が証明した ── 技術は本物。用途のバブルが本物。
+集中への借金は、年金に繋がっている。分散は、その鎖の外にある。
+____
+
+=== 電力問題の分散的解消
+
+AIデータセンターの消費電力は2030年までに156GWの需要が予測されている。データセンター建設に必要な熟練労働者の不足（60万人の求人に対して新規見習い年間15万人）も顕在化している。
+
+ローカル推論への移行は、この電力問題を構造的に緩和する。データセンターで集中処理されていた推論ワークロードが、世界中のユーザーの机上にあるStrix Halo（TDP 55〜120W）に分散される。個々の端末の消費電力はデータセンターのGPUクラスタと比較にならないほど小さく、既存の消費者向け電力グリッドに薄く広く分散されるため、局所的な電力網の逼迫や冷却水不足を引き起こさない。
+
+計算の分散化は、電力需要の分散化でもある。
+
+== 結論
+
+事実を並べると構造が見える。
+
+アルゴリズムの突破（SSA、TurboQuant）が推論の数学的・物理的ボトルネックを破壊した。その成果はOSSに流れ、vLLM等に実装され、技術的優位の独占を無意味化した。Strix Haloのようなエッジデバイスがローカル推論を実用化し、限界費用ゼロの推論環境を実現した。Fable 5の輸出停止とNSAの証言が、クラウド依存のリスクを全レイヤーで証明した。
+
+中小企業から国家機関まで、AIモデルを自前のインフラで稼働させる分散構造へと移行する理由が揃った。
+
+自立・分散・多様性は理念ではない。技術的・経済的な帰結である。
+
+'''
+
+引用文献
+
+. How AI Data Centers Are Reshaping Electronic Component Supply in 2026 - Accuris https://accuristech.com/blog/ai-data-center-electronic-component-supply/
+. AI Capex Cycle 2026: $725B Hyperscaler Buildout https://alcapitaladvisory.com/research/intelligence/ai-infrastructure.html
+. Introducing Claude Fable 5 and Claude Mythos 5 - Anthropic https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5
+. Donald Trump's blocking of Anthropic is capricious and chaotic - The Economist https://www.economist.com/briefing/2026/06/14/donald-trumps-blocking-of-anthropic-is-capricious-and-chaotic
+. Statement on the US government directive - Anthropic https://www.anthropic.com/news/fable-mythos-access
+. The White House's New Anthropic Restrictions, Explained https://thedispatch.com/article/anthropic-fable-mythos-claude-export-controls-explained/
+. Sovereign AI: Cohere and Aleph Alpha https://www.businesswire.com/news/home/20260424174908/en/
+. Cohere Command A+ https://docs.cohere.com/docs/command-a-plus
+. North: The AI Platform Where Work Flows https://cohere.com/north
+. SubQ LLM - AI革命 https://ai-revolution.co.jp/media/what-is-subq-llm/
+. Benchmarking Subquadratic's SSA Kernel - Appen https://www.appen.com/whitepapers/benchmarking-subquadratics-latest-model-ssa-kernel
+. SubQ AI Explained - DataCamp https://www.datacamp.com/blog/subq-ai-explained
+. TurboQuant: Redefining AI efficiency - Google Research https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/
+. AMD Strix Halo for Local AI 2026 https://localaimaster.com/blog/strix-halo-ai-max-395-guide
+. AMD ROCm Local LLM Setup https://localaimaster.com/blog/amd-rocm-local-llm-setup
+. North Mini Code - OpenRouter https://openrouter.ai/cohere/north-mini-code:free
+. North Mini Code - Cohere Documentation https://docs.cohere.com/docs/north-mini-code-1.0
+. The MATCH Act - R Street Institute https://www.rstreet.org/commentary/the-match-act-is-industrial-policy-dressed-as-national-security/
+. The GPU Black Market - American Compute https://www.amcompute.com/blog/gpu-black-market-washington-cant-shut-down
+endif::[]
+ifdef::lang-en[]
+= The IT Industry's Structural Shift — Toward Autonomy, Distribution, and Diversity
+
+As of June 2026, the AI industry stands at a historic turning point. Hyperscaler capital expenditure (CapEx) runs at roughly $725 billion a year, 75% of it directed at AI-specific infrastructure — concentrated investment on the scale of Switzerland's national GDP. But several technical breakthroughs and geopolitical shocks have struck at once, and the premise of this "cloud-concentrated paradigm" is collapsing.
+
+== 1. The Fable 5 Export Ban — Cloud Dependence's Fragility, Proven
+
+=== The sequence of events
+
+On June 9, 2026, Anthropic released Claude Fable 5 — the company's highest-performing Mythos-class model. A one-million-token context window, capable of autonomous agent work over several days. Offered at a premium price of $10/M input, $50/M output.
+
+Three days later, on June 12, the US Commerce Department (Bureau of Industry and Security), invoking national security, ordered access cut off for all foreign nationals — those outside the US, those working inside it, and Anthropic's own non-citizen employees alike. The government cited a "jailbreak" technique it had identified in Fable 5; Anthropic reviewed it and pushed back that it amounted to "minor, already-known vulnerabilities." Because there is no way to verify nationality in real time over an API, Anthropic disabled both models for every customer worldwide (other models were unaffected). It was the first instance of export controls applied to an AI model itself.
+
+The Commerce Department grounded this in an expansive reading of the FDPR (Foreign Direct Product Rule). The FDPR was originally a rule applied to foreign-made hardware manufactured using US technology — as in the 2020 sanctions on Huawei. This was the first time it was applied to an AI model's weights and API access.
+
+The Economist called the decision "capricious and chaotic."
+
+Source: https://www.economist.com/briefing/2026/06/14/donald-trumps-blocking-of-anthropic-is-capricious-and-chaotic
+
+Not even allied nationals were exempt. Ahead of the move, Defense Secretary Pete Hegseth had designated Anthropic a "supply chain risk" — the first time that label, historically reserved for foreign adversaries like Huawei and ZTE, was applied to an American company. Allies watched their own critical capability stop on a single US order.
+
+=== Vulnerabilities found in classified systems
+
+On June 11, Senate Intelligence Committee Vice Chair Mark Warner relayed what NSA Director and Cyber Command head General Joshua Rudd had told him directly: in an *authorized red-team exercise*, Mythos had broken into *"almost all of our classified systems, not in weeks, but in hours"* (reported by The Economist on June 14).
+
+This has to be stated precisely. What was reported is that the model *found vulnerabilities in hours — not that it fully exploited them in hours* (AP/CNBC). The Economist writer who published the quote later cautioned it "should not be read literally," as it depended on other tools and specific conditions, and Anthropic describes the episode as "analyzing a codebase and fixing flagged issues, not an autonomous offensive intrusion." No government agency has officially confirmed it.
+
+Even so, the structural meaning is large. It shows AI now carries *national-security-grade capability* — and the administration's response was to cut off _access_ to that capability. But the vulnerability it really exposed lies less in the model than in *a structure that depends on a single company under a single jurisdiction*.
+
+Lay out the facts.
+
+* What was regulated is _access_ to the model, not the underlying dependence
+* Open-weight models such as DeepSeek V3 and Qwen3 have comparable reasoning ability and run locally — only a model placed under US jurisdiction can be stopped for the whole world by one order
+* What the administration did was ban the export of Fable 5, not dissolve the dependence
+* With the same capability already in OSS and running locally, cutting off access changes little; what remains is that the world that depended on it has seen how fragile that dependence is
+
+=== What The Economist missed
+
+The Economist analyzed that "middle powers will be caught in the middle" — it is "hard to imagine the Trump administration, having denied access to Fable 5, allowing the purchase of cutting-edge chips to train a clone."
+
+This analysis misreads the reality of the semiconductor supply chain. The company mass-producing the most advanced chips is Taiwan's TSMC, not a US firm. Excessive US export controls have, over the past few years, cost US suppliers $130 billion in market value and 8.6% in revenue.
+
+If a demand coalition of the EU27, the UK, Japan, South Korea, India, and ASEAN built a framework to order directly from TSMC, the need to route through the US would fade. TSMC is a for-profit company; it sells to its largest customers.
+
+== 2. The Rise of Sovereign AI — Cohere and Aleph Alpha
+
+In April 2026, Canada's Cohere and Germany's Aleph Alpha announced a strategic merger. Combined valuation roughly $20 billion. The Schwarz Group (parent of Lidl) provided a $600 million strategic investment. The Schwarz Group made it a condition that the AI systems run on "STACKIT," the sovereign cloud operated by its own IT division — embodying "de-US-dependence" at the infrastructure level.
+
+=== Command A+
+
+Released May 2026. A 218B-parameter sparse MoE, 25B active. Apache 2.0 license. 48 languages including all official EU languages. Fits on two NVIDIA H100s with W4A4 quantization.
+
+Only the MoE experts are quantized to 4-bit; the attention path keeps full precision. Quantization-Aware Distillation (QAD) closes the quality gap. Benchmark quality is nearly identical across the BF16 / FP8 / W4A4 variants.
+
+=== The North platform
+
+An enterprise foundation integrating the Command generative model, Compass retrieval (RAG), and custom AI agents. Runs on-premises, in a VPC, and in air-gapped environments. Minimum hardware requirement: 2 GPUs. GDPR / SOC-2 / ISO 27001 compliant.
+
+Cohere's business model is "hand over the model and the platform, and have customers run it on their own hardware." Because customers run it themselves, no GPU infrastructure cost lands on Cohere. Gross margin around 70%, ARR $240 million.
+
+The exact opposite of Microsoft 365 Copilot's structure, where "every employee pays a cloud API fee every month, forever."
+
+== 3. The Algorithm Revolution — SSA and TurboQuant
+
+=== SSA (Subquadratic Sparse Attention)
+
+Transformer attention grows in computation in proportion to the square of context length (O(n²)). Double the context, quadruple the computation. Processing one million tokens takes roughly a trillion operations.
+
+In May 2026, Subquadratic released SSA. Unlike Dense Attention, which compares all token pairs, it dynamically selects, for each query token, only the semantically relevant key tokens to compute. Computation drops from O(n²) to near-linear O(n·k) (where k is the number of selected tokens).
+
+Independent verification by Appen (May 2026):
+
+|===
+| Context length | Dense FLOPs (FA2) | Sparse FLOPs (SSA) | Reduction
+| 128K | 142.1 TFLOP | 18.1 TFLOP | 7.9×
+| 256K | 568.4 TFLOP | 36.1 TFLOP | 15.7×
+| 512K | 2,273.8 TFLOP | 72.3 TFLOP | 31.5×
+| 1M | 9,095.2 TFLOP | 144.9 TFLOP | 62.8×
+|===
+
+The cost of evaluating a 128K context fell from about $2,600 on Claude Opus to about $8 on SubQ.
+
+=== TurboQuant
+
+Announced by Google Research at ICLR 2026 (March 2026). A compression technique for the KV cache, the other bottleneck at inference time.
+
+. PolarQuant: applies a random orthogonal rotation (Hadamard transform) to the data vectors, uniformizing the distribution. Each dimension becomes nearly independent, allowing optimal scalar quantization (Lloyd-Max).
+. QJL: a 1-bit Quantized Johnson-Lindenstrauss transform corrects the bias in inner-product computation.
+
+No model retraining, no calibration, applicable to any Transformer. Compresses the KV cache from FP16 to 3–4 bits. Memory cut by 6×; Attention Logit computation on the H100 sped up by up to 8×.
+
+After the paper, without waiting for Google's official implementation, the community completed independent implementations for PyTorch, MLX, and Triton in just two weeks and merged them into mainstream vLLM. Independent verification further found that "the 1-bit QJL correction amplifies variance in the Softmax function, actually lowering accuracy in the 3-bit range," and the community adopted "PolarQuant (4bit_nc, etc.)" with QJL disabled as the practical default — achieving a productionization that surpasses the original paper.
+
+The speed of academic publication → community implementation → OSS mainstream merge is overwhelming; monopolizing efficiency-improvement techniques is no longer possible.
+
+== 4. The Democratization of Hardware — Strix Halo
+
+AMD Strix Halo (Ryzen AI Max+ 395). A consumer APU integrating a 16-core Zen 5 CPU, a 40-CU RDNA 3.5 iGPU, and an NPU (XDNA 2) on a single piece of silicon. Up to 128GB of unified LPDDR5X-8000 memory, with about 256GB/s of memory bandwidth directly usable by the iGPU.
+
+|===
+| Spec | Strix Halo | Mac Studio M4 Max | RTX 4090
+| Price | ~$2,000 | ~$4,000 | ~$1,600
+| Memory / bandwidth | 128GB / 256GB/s | 128GB / 410GB/s | 24GB / 1,008GB/s
+| Llama 3.1 70B Q4_K_M | 32 tok/s | 28 tok/s | Won't run (OOM)
+| Power (heavy load) | 90W | 80W | 450W
+|===
+
+A consumer product, outside the scope of the Commerce Department's GPU export controls.
+
+Under ROCm 6.4.4, pipelining the CPU, iGPU, and NPU measured 1,132 tok/s on Qwen3 8B BF16. A Bonsai 1-bit quantized model (8B) reached 122 tok/s on just 1GB of memory.
+
+Cohere's North Mini Code (30B MoE, 3B active) is about 17GB at Q4_K_M. Command R+ (104B dense) is about 60GB at Q4_K_M. Both can be loaded on a single Strix Halo at once and operate together — 77GB total, leaving 51GB for context.
+
+Via cloud API, billing grows in proportion to inference volume. Local inference on Strix Halo has zero marginal cost after the hardware purchase. Have an agent run tens of thousands of loops (code generation, verification, debugging) and the only added cost is a few dozen watts of electricity.
+
+== 5. A Structural Threat to the $725B CapEx
+
+=== Resemblance to the fiber-optic bubble
+
+The $725 billion in investment presumes that "O(n²) computation costs continue" and that "cloud inference demand grows exponentially."
+
+If SSA and TurboQuant improve inference efficiency at the root, the number of GPUs needed for the same task drops by an order of magnitude. If local inference is offloaded to edge devices like Strix Halo, the growth of cloud inference demand plateaus.
+
+In the 2000s telecom bubble, vast fiber-optic networks were laid in anticipation of internet demand. The demand itself existed, but efficiency gains in transmission technology like DWDM made a single fiber's capacity leap, leaving most of it "dark fiber" and collapsing the market.
+
+As of 2026, the risk grows that the H100s and B200s stacked in data centers turn into "dark GPUs."
+
+=== Microsoft's "overbuild" — the biggest bettor slows itself down
+
+This risk is no longer an outside forecast. It has become *the words of the biggest bettor itself*.
+
+The company that bet most heavily on centralized-cloud AI is Microsoft — a massive investment in OpenAI, Azure exclusivity, over $80 billion a year in capital spending. Yet in 2026, that same Microsoft *began canceling data-center leases* — about 200MW per a TD Cowen report, and it halted construction of a Wisconsin site believed to serve OpenAI. Nadella himself has conceded that "*there will be an overbuild*."
+
+The trigger is the defection of the very partner it had locked in. OpenAI is building *Stargate* (about 7GW, over $400 billion across three years) with Oracle and SoftBank, outside Azure, lowering its dependence on Microsoft. The exclusivity was loosened into a non-binding arrangement, and Microsoft now finds itself *picking up the Texas data-center project OpenAI didn't want* (Fortune, March 2026).
+
+Two structures are visible at once here.
+
+* *The CapEx bubble recognizes itself* — "dark GPUs" are no longer an outside prediction but a fact, with the very party that stacked them now slowing down. The premise of centralization (exponentially growing cloud inference demand) is cracking from within.
+* *The master–slave reversal* — the top bettor (the master), having locked in its partner (OpenAI), is left independent-ed by it and reduced to picking up castoffs. *The side that did the labor of building the models gains power, and the side that hoarded it is left stranded* — the classic reversal itself.
+
+The enormous bet on centralization is the most eloquent proof of centralization's limits.
+
+=== Private credit — the AI debt is wired to your pension
+
+What makes the overbuild more than mere "over-investment" is that the investment is tilting away from equity and toward *debt*.
+
+In 2025 alone, data-center credit deals reached about $178.5 billion — much of it junk-rated. Hyperscaler bond issuance hit roughly $121 billion, four times the five-year average. The question is where that money comes from. *Private credit* (Blackstone, Blue Owl, Apollo, Pimco, BlackRock, and others) holds most of it, and life insurers alone have nearly $1 trillion sunk there. The originated loans are securitized, sliced into tranches, and sold on to *pension funds and asset managers*. As CNBC put it — "*the AI data-center debt might be in your 401(k)*."
+
+The sharpest read of the structure came from Ed Zitron, the AI-skeptic journalist:
+
+____
+Your customers are unprofitable AI startups.
+Your revenue source for paying off the debt is another company that cannot pay its bills.
+____
+
+The data-center lenders are betting on the *ability of loss-making AI firms to pay* — and behind them sit pensions and insurance. The money is also circular: Nvidia committed up to $100 billion to OpenAI and holds a stake in CoreWeave, and that money flows back to Nvidia through GPU purchases. Bloomberg diagrammed it as "Microsoft, OpenAI and Nvidia paying each other in a circle" — the same shape as the dot-com era's "vendor financing," when Nortel and Lucent lent to their own customers to manufacture the illusion of revenue.
+
+The timing is bad, too. The first maturities of GPU-backed debt (originated 2023–25) arrive in *2026–27*. A GPU's life is about seven years — far shorter than a data center's decades. *Peak depreciation coincides with the repayment deadline.* US senators have warned that this debt could cause "destabilizing losses" at financial institutions and trigger a broader financial crisis.
+
+=== The technology is real; the bubble is in the use cases
+
+Zitron's reasoning is structurally correct. But it misses one thing — *AI is not worthless*.
+
+As this series has laid out, AI has real, definite value in exactly four things: *app development (the one domain where AI can be the _maker_ — software), drafting, research, and verification*. Even the MIT study (95% of enterprise generative-AI pilots fail to deliver measurable ROI) concluded that *the problem is not the model (the technology) but deployment and integration*.
+
+So we can say it plainly. *The technology is real. What is a bubble is the _use cases_ — and the scale of investment that does not match them.* The market the four real uses generate is large. But not large enough to justify $700-billion-class CapEx. What fills the gap is the fantasy that "AGI will replace all white-collar work" — kayfabe, the scripted performance of pro wrestling. *A divergence between the story in the language layer (AGI) and the reality in the physical layer (four uses, plus zero marginal cost as it goes local).*
+
+And that divergence meshes doubly with this article's thesis. If the uses are "four," and they head toward *zero marginal cost* via efficiency (SSA, TurboQuant) and local inference, then the demand premise of centralized data centers cracks from two directions at once — fewer GPUs needed, and a real use-market that never reaches the CapEx. *When the bubble bursts, it reaches the pensions.* Autonomy and distribution are not only an idea; they are *standing outside that chain.*
+
+____
+The numbers proved it — the technology is real; the bubble is in the uses.
+The debt of centralization is wired to your pension. Distribution stands outside the chain.
+____
+
+=== Distributed resolution of the power problem
+
+AI data-center power consumption is projected to demand 156GW by 2030. A shortage of skilled workers needed to build data centers is also surfacing (600,000 job openings against 150,000 new apprentices a year).
+
+The shift to local inference structurally eases this power problem. Inference workloads once centralized in data centers are distributed to Strix Halo units (TDP 55–120W) on desks around the world. Each device's power draw is incomparably smaller than a data center's GPU cluster, and being spread thinly and widely across the existing consumer power grid, it does not cause localized grid strain or cooling-water shortages.
+
+Distributing computation is also distributing power demand.
+
+== Conclusion
+
+Lay out the facts and the structure appears.
+
+Algorithmic breakthroughs (SSA, TurboQuant) shattered the mathematical and physical bottlenecks of inference. Their fruits flowed into OSS, were implemented in vLLM and the like, and made monopolizing technical advantage meaningless. Edge devices like Strix Halo made local inference practical and delivered a zero-marginal-cost inference environment. The Fable 5 export ban and the NSA testimony proved the risk of cloud dependence at every layer.
+
+From small businesses to national agencies, the reasons to migrate toward a distributed structure that runs AI models on one's own infrastructure are now all in place.
+
+Autonomy, distribution, and diversity are not an ideal. They are a technical and economic consequence.
+
+'''
+
+References
+
+. How AI Data Centers Are Reshaping Electronic Component Supply in 2026 - Accuris https://accuristech.com/blog/ai-data-center-electronic-component-supply/
+. AI Capex Cycle 2026: $725B Hyperscaler Buildout https://alcapitaladvisory.com/research/intelligence/ai-infrastructure.html
+. Introducing Claude Fable 5 and Claude Mythos 5 - Anthropic https://platform.claude.com/docs/en/about-claude/models/introducing-claude-fable-5-and-claude-mythos-5
+. Donald Trump's blocking of Anthropic is capricious and chaotic - The Economist https://www.economist.com/briefing/2026/06/14/donald-trumps-blocking-of-anthropic-is-capricious-and-chaotic
+. Statement on the US government directive - Anthropic https://www.anthropic.com/news/fable-mythos-access
+. The White House's New Anthropic Restrictions, Explained https://thedispatch.com/article/anthropic-fable-mythos-claude-export-controls-explained/
+. Sovereign AI: Cohere and Aleph Alpha https://www.businesswire.com/news/home/20260424174908/en/
+. Cohere Command A+ https://docs.cohere.com/docs/command-a-plus
+. North: The AI Platform Where Work Flows https://cohere.com/north
+. SubQ LLM - AI革命 https://ai-revolution.co.jp/media/what-is-subq-llm/
+. Benchmarking Subquadratic's SSA Kernel - Appen https://www.appen.com/whitepapers/benchmarking-subquadratics-latest-model-ssa-kernel
+. SubQ AI Explained - DataCamp https://www.datacamp.com/blog/subq-ai-explained
+. TurboQuant: Redefining AI efficiency - Google Research https://research.google/blog/turboquant-redefining-ai-efficiency-with-extreme-compression/
+. AMD Strix Halo for Local AI 2026 https://localaimaster.com/blog/strix-halo-ai-max-395-guide
+. AMD ROCm Local LLM Setup https://localaimaster.com/blog/amd-rocm-local-llm-setup
+. North Mini Code - OpenRouter https://openrouter.ai/cohere/north-mini-code:free
+. North Mini Code - Cohere Documentation https://docs.cohere.com/docs/north-mini-code-1.0
+. The MATCH Act - R Street Institute https://www.rstreet.org/commentary/the-match-act-is-industrial-policy-dressed-as-national-security/
+. The GPU Black Market - American Compute https://www.amcompute.com/blog/gpu-black-market-washington-cant-shut-down
+endif::[]
+
+// ===== article: 028-verification-shock =====
+////
+slug: verification-shock
+title.ja: Fable 5 が戻ってきたら、すぐやるべきこと ── 稼働中システムを、全部検証する
+title.en: When Fable 5 Returns, Do This First — Verify Every System You Run
+subtitle.ja: 攻撃できる AI は、設計も検証もできる ── 「検証されない」前提で成り立ってきた SIer と Microsoft が、同じ理屈で崩れる
+subtitle.en: An AI that can attack can design and verify too — and the SIer and Microsoft, both built on never being verified, break by the same logic
+date: 2026.06.28
+description.ja: 2026年6月、Axios はトランプ政権が Fable 5 へのアクセス復旧へ動いていると報じた。停止の間に各社は中国製モデルへ切り替え、政権は停止を続けられない。Fable 5 が戻った日に、企業がすべきことは一つ ── 稼働中システムを全部 Fable にかけて検証する。攻撃できる AI は設計も検証もできる。そして「検証されない」ことを前提に最適化してきた SIer の納品物も、巨大で不透明な Microsoft 製品（Entra ID CVE-2025-55241、EchoLeak など）も、検証が無料になった瞬間に丸ごと露呈する。
+description.en: In June 2026, Axios reported the Trump administration moving to restore access to Fable 5. During the halt, companies switched to Chinese models, so the administration cannot keep it shut. The day Fable 5 returns, a company should do one thing — run every system it operates through Fable to verify it. An AI that can attack can also design and verify. And whatever was optimized on the premise of never being verified — the SIer's deliverables, Microsoft's vast opaque products (Entra ID CVE-2025-55241, EchoLeak) — is exposed whole the moment verification becomes free.
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+hero_image: IMG_2958.jpg
+////
+ifdef::env-github[]
+:imagesdir: ../assets/blog/028-verification-shock
+endif::[]
+ifdef::lang-ja[]
+= Fable 5 が戻ってきたら、すぐやるべきこと
+
+2026年6月27日、Axios が報じた。トランプ政権が、Anthropic の最上位モデル Fable 5 へのアクセス復旧を認める方向にあり、15日間の停止が「来週にも」解除されうる、と。同じ週、商務省は、同社の最強のサイバーセキュリティモデル Mythos 5 を、限られた信頼済みの組織に対して、再開させた。
+
+Fable 5 が、いつ、どういう形で再開されるかは、まだ確認できていない。だが、近い将来に再開されることは、確実である。停止の間に、各社は中国製モデルへの切り替えを始めた。中国モデルへの切り替えが起きている以上、トランプ政権は、停止を続けられない。
+
+では、Fable 5 が戻ってきたら、企業は何をすべきか。本稿の結論は、一つである。戻ってきたその日に、自社の稼働中システムを、すべて Fable 5 にかけて検証する。なぜそれが、最優先で、緊急で、避けられないのか。順に述べる。
+
+== 攻撃ができるとは、設計も検証もできるということ
+
+注目すべきは、Mythos である。Mythos は、サイバー攻撃が可能になった。これが何を意味するか。攻撃とは、システムの構造を、その設計者以上に深く理解し、弱点を見つけて突くことである。構造をそこまで深く理解できる力は、そのまま、設計する力であり、検証する力でもある。攻撃ができるようになったということは、設計も検証もできるようになった、ということだ。攻撃・設計・検証は、別々の能力ではない。「構造を深く理解する」という、一つの力の、三つの顔にすぎない。
+
+== 今すぐやること ── Fable 5 を使ったサイバー攻撃対策
+
+攻撃ができる AI が存在するということは、攻撃側も、それを使えるということだ。これからのサイバー攻撃は、AI が、組織のシステムの欠陥を、自動で、大量に、高速に見つけて、突いてくる。
+
+だから、今すぐやることは、一つである。稼働中の自社システムを、すべて Fable 5 にかけて、脆弱性を検証する。攻撃者の AI に突かれる前に、自分の AI で穴を見つけて、塞ぐ。先に見つけるか、先に突かれるか、それだけの話だ。来月でも、来年度の計画でもない。今すぐである。
+
+これは、新しい商習慣の話ではない。緊急の防衛である。攻撃側が AI を手にした以上、これまで見つからなかった古い穴が、明日にも突かれうる。本番で動いているシステムほど、外部に接続しているシステムほど、機密を扱うシステムほど、先に検証する。
+
+== 誰がやるか ── SIer か、自分か
+
+では、企業は、この検証を、どうやってやるのか。道は二つしかない。SIer にやらせるか、自分でやるか。
+
+=== SIer にやらせる場合の問題
+
+第一に、SIer は、攻撃側の AI に耐える検証を、設計できない。攻撃側の AI の能力が、防御側である SIer の能力を上回り、しかも進化し続けるからだ。自分が持っていない能力で攻撃されたとき、それに耐える検証を、保証できない。
+
+第二に、責任を負えない。Fable 5 級の攻撃は、契約時点で想定しきれない。「対策込みで」発注しても、より強力な AI に突かれたとき、SIer は「想定外だった」と言うしかない。進化する攻撃への責任を、一時点の契約では、引き受けられない。
+
+第三に、SIer が Fable で検証するなら、企業は最初から自分で Fable を使えばいい。間に SIer を挟む理由が、消える。SIer が効率的に検証するほど、SIer を挟む意味がなくなる。
+
+ここで、SIer はこう言うしかない。「うちも Fable でチェックして、Fable で修正します」と。だが、これは自己否定である。検証も修正も Fable がやるなら、その同じ Fable を、企業が直接使えばいい。SIer がやることは、企業が自分でできることと、まったく同じになる。SIer の仕事は、Fable に指示を出し、出力を受け取ることだけになり、その作業のために、わざわざ外部に費用を払う理由がなくなる。Fable を使うと言った瞬間、SIer は、自分が不要であることを認めることになる。
+
+それ以前に、経済的に成り立たない。企業が Fable で検証すれば、SIer の提出物の穴は、いくらでも、ほぼゼロのコストで指摘される。SIer は、その指摘に回答し、修正していく。Fable を使えば、その作業自体は、簡単にできる。だが、問題はそこではない。
+
+Fable を使って効率的に検証・修正すれば、その仕事は、もはや大きな収益を生まない。かつて人月で積み上げていた工数が、Fable によって圧縮されるからだ。仕事は回るが、稼げない。そして、薄い収益では、多重下請けを抱えた大きな組織を、維持できない。
+
+これが、SIer にとっての、本当の問題である。赤字で倒れるのではない。大きな収益が立たなくなり、その規模の組織を、支えきれなくなる。Fable を使えば使うほど、効率は上がるが、収益は痩せる。大きいことが、成り立たなくなる。
+
+そして、多重下請けが、不要になる。これまで多重下請けが成り立っていたのは、コーディングやテストに、大量の人手が必要だったからだ。元請けが受け、下請けに流し、その先にまた流す。各層が、人手を供給することで、利幅を取っていた。Fable が実装も検証も担うなら、その大量の人手が、要らなくなる。下請けに流すべき作業そのものが、消える。多重下請けという構造は、人手の希少性の上に成り立っていた。Fable が、その希少性を消す。
+
+=== 自分でやる場合の問題
+
+自分でやる場合の問題は、ただ一つ。Fable を使って検証できる人材が、社内にいるか、である。
+
+ただし、この障壁は、見かけより低い。検証に必要なのは、大量のコードを書く力ではない。Fable に自社のシステムをかけ、出てきた指摘を読み、どれが本当に危険かを判断する力である。そして、自社のシステムが何をしているかを最もよく理解しているのは、すでに社内にいる担当者だ。彼らが Fable を使えるようになりさえすれば、検証はできる。
+
+問題は、その人材を、今すぐ確保できるか、である。緊急の防衛である以上、悠長に育てている時間はない。だが、外部の SIer に頼れない以上、最初の検証を回しながら、同時に、自社で使える人を育てるしかない。
+
+== SIer は、この検証に耐えられるか
+
+ここまでは、誰が検証するか、という話だった。だが、もっと根本的な問いがある。SIer が過去に納めたものは、そもそも、この検証に耐えられるのか。
+
+これまで、SIer は、検証されないことを前提に、開発してきた。発注側は、納品されたコードを検証する手段を持たなかった。コードを読めず、読めても品質を評価できなかったからだ。だから、「動いているように見える」ことだけが、合格の基準だった。中身がどれだけ複雑でも、どれだけ脆弱でも、検証されない以上、表に出なかった。
+
+検証されないことが前提なら、検証に耐える必要はない。だから、見えない部分で、手を抜くことができた。仕様の曖昧なところ、品質の測れないところ、後で問題になりにくいところで、コストを節約できた。それが、人月ビジネスの、隠れた利幅でもあった。
+
+Fable は、その前提を、根こそぎ覆す。検証されないことを前提に作られたコードが、いま、検証される。これまで誰も見なかった部分が、すべて、見られる。耐えるように作っていないものが、耐えることを、求められる。
+
+これは、SIer が急に手を抜いた、という話ではない。検証されないという長年の前提のもとで、最適化してきた結果が、前提が消えた瞬間に、丸ごと露呈する、という話である。
+
+== Microsoft にも、同じ打撃が来る
+
+この打撃は、SIer だけのものではない。同じ理屈が、Microsoft にも、そのまま当てはまる。
+
+Microsoft の製品は、巨大で、相互に依存し、後方互換性のために古い構造を抱え続けている。中身は、もはや誰も全体を把握できないほど複雑である。そして、ユーザーは、その中身を検証する手段を持たなかった。クラウドの向こうで動くものを、信じて使うしかなかった。ここも、検証されないことが前提だった。
+
+実際、Microsoft 365 Copilot では、2025年から2026年にかけて、ゼロクリックで機密情報が漏えいする脆弱性（EchoLeak、SearchLeak など）が、相次いで報告されている。攻撃側が AI でシステムの欠陥を探す時代に、巨大で複雑な製品は、それだけ多くの穴を抱えていることになる。複雑さは、攻撃面の広さである。
+
+最も象徴的なのが、認証基盤 Entra ID の脆弱性 CVE-2025-55241（2025年9月公表、CVSS スコア10.0、Critical 評価）である。報道によれば、これは、攻撃者が自分のテナントで生成したトークンを使って、世界中のほぼすべての Entra ID テナントで、グローバル管理者になりすませる、という欠陥だった。MFA も条件付きアクセスも回避し、ほとんどログを残さない。そして、その原因は、レガシーの Azure AD Graph API が、トークンの発行元テナントを適切に検証していなかったこと ── つまり、後方互換性のために残されていた古いコンポーネントだった。
+
+これは、本稿の論点を、そのまま体現している。認証基盤という、最も深く、最も重要な部分の欠陥が、後方互換性のために残った古いコードに潜んでいた。そして、それが世界規模で発見されるまで、検証されてこなかった。攻撃側が AI を持つ時代に、こうした古い穴は、これまでより速く、確実に見つけ出される。Microsoft は、Entra ID のレガシーコンポーネントを段階的に廃止すると表明したが、それは、後方互換性を捨てるという、苦しい方向への一歩でもある。
+
+Microsoft は、自社の AI で穴を見つけて直す、と言うだろう。だが、これは SIer と同じ袋小路に入る。検証も修正も AI がやるなら、ユーザーは、なぜその AI を、巨大で不透明な製品に縛られたまま使うのか。検証できる AI があるなら、検証できる形 ── 中身が見え、止まっても直せる、シンプルな構成 ── を、自分で持つほうが合理的になる。
+
+そして、Microsoft が真に欠陥に対応するには、複雑さの根である後方互換性を、捨てるしかない。だが、後方互換性こそ、Microsoft が顧客を縛ってきた最大の武器である。捨てれば健全になるが、顧客を縛る力を失う。健全になることと、支配力を失うことが、同じ一つの行為になる。だから、捨てられない。捨てられないまま、検証され、穴を可視化され続ける。
+
+検証されないことを前提に成り立ってきたのは、SIer の納品物だけではない。巨大で複雑で、中身の見えないものすべてである。Microsoft は、その最大のものの一つだ。
+
+'''
+
+== 関連
+
+* AI ネイティブなソフトウェア開発 https://aiseed.dev/ai-native-software/sier-uneconomic/[3-04 SIer 委託モデルの構造的不経済] ── 委託は無責任化と空洞化を生む、という本稿の前提
+* AI ネイティブなソフトウェア開発 https://aiseed.dev/ai-native-software/lockin/[3-05 ロックイン問題] ── 後方互換性という「逃げ場のない檻」
+* ブログ https://aiseed.dev/blog/autonomy-distribution-diversity/[IT 業界の最新トレンド ── 自立・分散・多様性への構造的転換] ── Fable 5 輸出停止とソブリン AI の経緯
+
+== 参考
+
+. Trump administration moves to restore access to Anthropic's Fable 5（Axios, 2026-06-27）
+. Statement on the US government directive（Anthropic）── https://www.anthropic.com/news/fable-mythos-access
+. Zero-Click AI Vulnerability Exposes Microsoft 365 Copilot Data（EchoLeak / CVE-2025-32711, The Hacker News）── https://thehackernews.com/2025/06/zero-click-ai-vulnerability-exposes.html
+. One Token to rule them all ── obtaining Global Admin in every Entra ID tenant via Actor tokens（dirkjanm.io / CVE-2025-55241）── https://dirkjanm.io/obtaining-global-admin-in-every-entra-id-tenant-with-actor-tokens/
+. Death by Token: Understanding CVE-2025-55241（Practical 365）── https://practical365.com/death-by-token-understanding-cve-2025-55241/
+endif::[]
+ifdef::lang-en[]
+= When Fable 5 Returns, Do This First
+
+On June 27, 2026, Axios reported that the Trump administration was moving to restore access to Anthropic's top model, Fable 5, and that the 15-day halt could lift "as soon as next week." That same week, the Commerce Department restarted the company's strongest cybersecurity model, Mythos 5, for a limited set of trusted organizations.
+
+When and how Fable 5 resumes is not yet confirmed. But that it resumes in the near future is certain. During the halt, companies began switching to Chinese models. Once that switch is underway, the administration cannot keep the halt in place.
+
+So when Fable 5 returns, what should a company do? This piece has one conclusion. On the day it returns, run every system you operate through Fable 5 and verify it. Why this is the highest priority, urgent, and unavoidable — let me take it in order.
+
+== To be able to attack is to be able to design and verify
+
+The one to watch is Mythos. Mythos became capable of cyberattack. What does that mean? To attack is to understand a system's structure more deeply than its own designer, find the weak point, and strike it. The power to understand structure that deeply is, as such, the power to design and the power to verify. That it became able to attack means it became able to design and verify. Attack, design, and verification are not separate capabilities. They are three faces of one power — "understanding structure deeply."
+
+== What to do now — cyberattack defense with Fable 5
+
+That an AI which can attack exists means the attacker can use it too. Cyberattacks from here on will have AI find and strike an organization's system flaws — automatically, in volume, at speed.
+
+So the thing to do now is one thing. Run every system you operate through Fable 5 and verify it for vulnerabilities. Before the attacker's AI strikes, find the holes with your own AI and close them. Find them first, or get struck first — that is all it comes down to. Not next month, not next year's plan. Now.
+
+This is not a matter of new business custom. It is emergency defense. Once the attacking side holds AI, old holes that were never found can be struck tomorrow. The more a system runs in production, the more it connects externally, the more it handles secrets — the sooner it must be verified.
+
+== Who does it — the SIer, or yourself
+
+So how does a company actually run this verification? There are only two roads. Have an SIer do it, or do it yourself.
+
+=== The problem with having an SIer do it
+
+First, an SIer cannot design verification that withstands the attacking AI. The attacking AI's capability exceeds the SIer's defensive capability, and it keeps evolving. When you are attacked with a capability you do not possess, you cannot guarantee verification that holds against it.
+
+Second, it cannot bear the responsibility. An attack at the Fable 5 level cannot be fully anticipated at contract time. Even if you commission "with countermeasures included," when a stronger AI breaks through, the SIer can only say "that was unforeseen." Responsibility for an evolving attack cannot be assumed by a contract fixed at one point in time.
+
+Third, if the SIer verifies with Fable, the company may as well use Fable itself from the start. The reason to interpose an SIer disappears. The more efficiently the SIer verifies, the less point there is in interposing one.
+
+Here the SIer can only say: "We'll check with Fable too, and fix with Fable." But this is self-negation. If both verification and fixing are done by Fable, the company can use that same Fable directly. What the SIer does becomes exactly what the company can do itself. The SIer's work reduces to issuing instructions to Fable and receiving the output — and there is no reason to pay an outside party for that. The moment it says it will use Fable, the SIer admits it is unnecessary.
+
+Even before that, it does not work economically. If the company verifies with Fable, the holes in the SIer's deliverables get pointed out endlessly, at near-zero cost. The SIer answers those findings and fixes them. With Fable, that work itself is easy. But that is not where the problem lies.
+
+If you verify and fix efficiently with Fable, that work no longer generates much revenue. The person-months once stacked up are compressed by Fable. The work goes around, but it does not earn. And on thin revenue, a large organization carrying multi-tier subcontractors cannot be sustained.
+
+This is the SIer's real problem. It is not that they go bankrupt in the red. It is that large revenue no longer stands up, and an organization of that scale can no longer be supported. The more they use Fable, the more efficiency rises but revenue thins. Being large stops working.
+
+And multi-tier subcontracting becomes unnecessary. What made it work until now was that coding and testing needed large amounts of manpower. The prime receives, passes to subcontractors, who pass further down. Each layer took a margin by supplying manpower. If Fable handles both implementation and verification, that mass of manpower is no longer needed. The very work to be passed down disappears. Multi-tier subcontracting stood on the scarcity of manpower. Fable erases that scarcity.
+
+=== The problem with doing it yourself
+
+The problem with doing it yourself is just one: whether you have, in-house, people who can verify using Fable.
+
+That barrier, though, is lower than it looks. What verification needs is not the power to write large amounts of code. It is the power to run your own systems through Fable, read the findings that come back, and judge which are truly dangerous. And the people who best understand what your systems do are the staff already inside. As long as they become able to use Fable, the verification can be done.
+
+The question is whether you can secure those people right now. Since this is emergency defense, there is no time to grow them at leisure. But since you cannot rely on an outside SIer, you have to run the first verification while, at the same time, growing people who can use it in-house.
+
+== Can the SIer withstand this verification?
+
+So far the question was who verifies. But there is a more fundamental question. Can what the SIer delivered in the past withstand this verification at all?
+
+Until now, SIers developed on the premise of not being verified. The commissioning side had no means to verify the delivered code. They could not read it, and even if they could, they could not evaluate its quality. So "appearing to work" was the only standard for passing. However complex the interior, however fragile, as long as it was not verified, it never surfaced.
+
+If not being verified is the premise, there is no need to withstand verification. So you could cut corners in the unseen parts. In the vague parts of the spec, the parts where quality could not be measured, the parts unlikely to become a problem later, you could save cost. That was also the hidden margin of the person-month business.
+
+Fable overturns that premise at the root. Code built on the premise of not being verified is now verified. The parts no one ever looked at are all seen. What was not built to withstand is required to withstand.
+
+This is not a story of SIers suddenly cutting corners. It is that the result of optimizing under the long-standing premise of not being verified is exposed whole the instant that premise disappears.
+
+== The same blow comes for Microsoft
+
+This blow is not the SIer's alone. The same logic applies, intact, to Microsoft.
+
+Microsoft's products are vast, interdependent, and keep carrying old structures for the sake of backward compatibility. The interior is now so complex that no one grasps the whole. And users had no means to verify that interior. They could only trust and use what runs on the far side of the cloud. Here too, not being verified was the premise.
+
+In fact, in Microsoft 365 Copilot, vulnerabilities that leak confidential information with zero clicks (EchoLeak, SearchLeak, and others) were reported one after another across 2025–2026. In an age when the attacking side searches for system flaws with AI, a vast, complex product carries that many more holes. Complexity is the breadth of the attack surface.
+
+The most symbolic is the vulnerability in the authentication foundation Entra ID, CVE-2025-55241 (disclosed September 2025, CVSS score 10.0, rated Critical). Per reporting, this was a flaw by which an attacker, using a token generated in their own tenant, could impersonate a global administrator in nearly every Entra ID tenant in the world. It bypassed MFA and conditional access, and left almost no logs. And its cause was that the legacy Azure AD Graph API failed to properly validate the token's issuing tenant — that is, an old component left in place for backward compatibility.
+
+This embodies the thesis of this piece directly. A flaw in the authentication foundation — the deepest, most important part — lay hidden in old code left for backward compatibility. And it went unverified until it was found at global scale. In an age when the attacking side holds AI, such old holes are found faster and more surely than before. Microsoft has announced it will phase out Entra ID's legacy components — but that, too, is a step in the painful direction of abandoning backward compatibility.
+
+Microsoft will say it finds and fixes holes with its own AI. But this enters the same dead end as the SIer. If both verification and fixing are done by AI, why would users use that AI while still bound to a vast, opaque product? If a verifying AI exists, it becomes more rational to hold a verifiable form yourself — a simple configuration whose interior is visible and which you can fix when it stops.
+
+And for Microsoft to truly address its flaws, it has to abandon backward compatibility, the root of the complexity. But backward compatibility is the very weapon by which Microsoft has bound its customers. Abandon it and it becomes healthy, but it loses the power to bind. Becoming healthy and losing dominance become one and the same act. So it cannot abandon it. Unable to abandon it, it keeps being verified, its holes kept visible.
+
+What has stood on the premise of not being verified is not only the SIer's deliverables. It is everything vast, complex, and opaque inside. Microsoft is one of the largest of them.
+
+'''
+
+== Related
+
+* AI-Native Software Development https://aiseed.dev/en/ai-native-software/sier-uneconomic/[3-04 The Structural Uneconomy of the SIer Model] — commissioning breeds de-responsibilization and hollowing-out, the premise of this piece
+* AI-Native Software Development https://aiseed.dev/en/ai-native-software/lockin/[3-05 The Lock-In Problem] — backward compatibility as the "cage with no exit"
+* Blog https://aiseed.dev/en/blog/autonomy-distribution-diversity/[The IT Industry's Structural Shift — Toward Autonomy, Distribution, and Diversity] — the Fable 5 export ban and sovereign AI
+
+== References
+
+. Trump administration moves to restore access to Anthropic's Fable 5 (Axios, 2026-06-27)
+. Statement on the US government directive (Anthropic) — https://www.anthropic.com/news/fable-mythos-access
+. Zero-Click AI Vulnerability Exposes Microsoft 365 Copilot Data (EchoLeak / CVE-2025-32711, The Hacker News) — https://thehackernews.com/2025/06/zero-click-ai-vulnerability-exposes.html
+. One Token to rule them all — obtaining Global Admin in every Entra ID tenant via Actor tokens (dirkjanm.io / CVE-2025-55241) — https://dirkjanm.io/obtaining-global-admin-in-every-entra-id-tenant-with-actor-tokens/
+. Death by Token: Understanding CVE-2025-55241 (Practical 365) — https://practical365.com/death-by-token-understanding-cve-2025-55241/
+endif::[]
+
+// ===== article: 029-end-of-us-ai-hegemony =====
+////
+slug: end-of-us-ai-hegemony
+title.ja: アメリカのAI覇権の終わりの始まり ── 最高裁判決と米国依存の構造的リスク5層
+title.en: The Beginning of the End of American AI Hegemony — The Supreme Court Ruling and Five Layers of Structural US-Dependence Risk
+subtitle.ja: 法的基盤・監視体制・技術基盤・供給体制・人材基盤 ── 政権の判断一つで、5つの層が同時に劣化した
+subtitle.en: Legal foundation, oversight, technical base, supply, talent — one administration's decisions degraded five layers at once
+date: 2026.07.04
+description.ja: 2026年6月29日の米連邦最高裁判決(Trump v. Slaughter)を起点に、米国の技術インフラに依存することの構造的リスクが5つの層で同時に顕在化した。FTC独立性の喪失とDPFの動揺、CSRBの休眠、Entra ID・VBA・Copilotの構造問題、Fable 5輸出規制停止の前例、AI研究者の対米流入8割減。導かれる結論は反米でも特定企業批判でもない ── 一国・一企業に基盤の存立を委ねる構造そのものが、制御不能なリスクを内包する。
+description.en: Starting from the US Supreme Court's June 29, 2026 ruling in Trump v. Slaughter, the structural risk of depending on US technology infrastructure surfaced across five distinct layers at once — the loss of FTC independence shaking the DPF, a dormant CSRB, the structural problems of Entra ID, VBA, and Copilot, the precedent of the Fable 5 export halt, and an 80% drop in AI researchers moving to the US. The conclusion is neither anti-American nor anti-vendor — a structure that entrusts your data, authentication, and operations to the policy decisions of one country or one company carries uncontrollable risk by design.
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+////
+ifdef::lang-ja[]
+= アメリカのAI覇権の終わりの始まり
+
+== 結論
+
+2026年6月29日の米連邦最高裁判決(Trump v. Slaughter)を起点に、米国の技術インフラに依存することの構造的リスクが、法的基盤・監視体制・技術基盤・供給体制・人材基盤という5つの異なる層で同時に顕在化した。原因は米国という国そのものではなく、現政権の一連の政策判断である。ただし、政権の判断一つでこれだけの範囲に影響が及ぶという事実こそが、一国・一企業への集中依存の本質的なリスクを示している。
+
+そして5層の個々のリスクの底に、より深い一層がある。*不確実性そのものだ*。個別のリスクなら、確率を見積もって備えることができる。だがこの開廷期に起きたのは、90年続いた判例が覆り、同じ日に矛盾する例外が切り出され、説明のない命令が相次ぐ ── *次にどの前提が崩れるかを、誰も予測できなくなった* ということである。計測できるリスクには保険が掛けられる。計測できない不確実性には掛けられない。米国依存の最大の問題は、個々の損失の期待値ではなく、*期待値の計算そのものが成立しなくなった* ことにある。
+
+対応の方向は明確である。データと認証基盤を自組織の管理下に置き、特定ベンダー・特定国への依存を最小化することである。
+
+== 第1層:法的基盤 ── FTC独立性の喪失とDPFの動揺
+
+=== 事実
+
+2026年6月29日、米連邦最高裁は Trump v. Slaughter(No. 25-332)において、FTC(連邦取引委員会)委員の解任を「正当理由」がある場合に限定する連邦法の規定を、憲法の権力分立に反すると判断した(6対3)。1935年の Humphrey's Executor 判決を明示的に覆し、大統領はFTC委員を理由なく解任できることになった。
+
+この判決はEUに直接波及した。EU-US Data Privacy Framework(DPF)は、EUから米国への個人データ移転を適法化する枠組みであり、欧州委員会の2023年十分性認定は、FTCを「独立した執行機関」として259回引用している。EU法(TFEU第16条2項、EU基本権憲章第8条3項)は、データ保護の監督を独立機関が行うことを要求しており、FTCの独立性喪失はこの前提を直撃する。
+
+プライバシー保護団体noyb(Max Schrems氏)は判決翌日の6月30日、欧州委員会にDPF十分性認定の秩序ある撤回を要求する書簡を送付し、EU司法裁判所(CJEU)への提訴準備を表明した。欧州委員会は影響を評価すると表明している。
+
+Safe Harbor(2015年、Schrems I判決で無効化)、Privacy Shield(2020年、Schrems II判決で無効化)に続き、3代目の枠組みであるDPFも同じ経路をたどる可能性が出てきた。
+
+=== 現状の正確な整理
+
+DPFは2026年7月時点で形式的には有効である。欧州委員会は撤回しておらず、CJEUも無効判断を下していない。Microsoft、Google、Apple等のDPF認証企業は現在も適法に運用している。過去の事例から、CJEUでの決着には2〜3年かかると見込まれる。
+
+=== 推論
+
+DPFが将来無効化された場合、影響は「米国企業がEUで事業できなくなる」という形ではなく、以下の形で現れる。
+
+* 代替手段(SCC:標準契約条項、BCR:拘束的企業準則)への切り替えコストの発生
+* ただし代替手段も、大統領令ベースの救済機関(DPRC)が同じ独立性問題を抱えるため、根本的な解決にならない可能性がある
+* 結果として、米国事業者はEU域内で完結するデータ処理体制(米国親会社が技術的・法的にアクセスできない構造)の構築を迫られる
+
+なお、収益モデルの違いから影響の経路は企業ごとに異なる。Microsoftはサブスクリプション契約が収益源であり、EU公共部門への浸透度が高いため、契約見直しという直接的な経路を持つ。Googleは広告事業が収益の中核であり、個人データの越境処理制限はターゲティング精度の低下という間接的な経路で影響しうる。
+
+== 第2層:監視体制 ── CSRBの機能停止とCISAの縮小
+
+=== 事実
+
+CSRB(Cyber Safety Review Board)は、2021年の大統領令14028に基づき設立された、重大サイバーインシデントの原因究明機関である。規制権限を持たず、国家運輸安全委員会(NTSB)の事故調査をモデルとする。Log4Shell脆弱性(2022年)、Microsoft Storm-0558侵害事件(2023年)、LAPSUS$(2023年)の3件の調査報告を公表した。
+
+Storm-0558事件の報告書では、中国系ハッカーによる米政府高官メール侵害を許した原因として、Microsoftの「回避可能だったエラーの連鎖」と「市場投入速度と売上目標を優先する企業文化」を名指しで批判し、同社のセキュリティ戦略見直しにつながった。
+
+2025年1月20日、トランプ政権はDHS(国土安全保障省)配下の全諮問委員会の委員資格を即日終了させた。CSRBは当時、中国国家系グループSalt Typhoonによる米通信キャリア9社への侵害を調査中であり、調査は中断された。以降、新委員は任命されておらず、CSRBは2026年7月現在も休眠状態にある。ACM(米国計算機学会)は2026年に再稼働と恒久的な法的基盤の整備を要求する声明を出している。
+
+CISA本体についても、2025年5月発表の2026年度予算案で約4億9,100万ドルの削減が示され、誤情報対策部門と国際連携部門が廃止対象となった。専門人材の削減も進行しており、元幹部からは能力への壊滅的な打撃を懸念する声が出ている。ただしCISAは2026年に入っても指令発出(BOD 26-02等)を継続しており、完全な機能停止ではない。
+
+=== 推論
+
+Microsoftを名指しで批判した実績を持つ唯一の政府系調査機関が、1年半にわたり機能停止したままである。大手ベンダーのセキュリティ慣行を独立の立場から検証する仕組みが、現時点の米国には存在しない。
+
+== 第3層:技術基盤 ── Entra IDの構造的問題、VBAの設計問題、Copilotの内蔵化
+
+=== 事実
+
+Microsoft Entra ID(旧Azure AD)では、直近3年間に少なくとも3件の重大な欠陥が確認されている。
+
+* *2023年、Storm-0558事件*:中国系ハッカーが窃取した一つのMSA(コンシューマー向け)署名鍵により、エンタープライズ向けExchange Onlineのトークン偽造が可能となり、米国務省を含む数十組織のメールが侵害された。コンシューマー用の鍵がエンタープライズ側の検証を通過するという、鍵の分離不備が原因の一つだった。CSRBは報告書で「回避可能だったエラーの連鎖」であり「Microsoftのセキュリティ文化は不十分で全面的な見直しが必要」と結論づけた。
+* *2023〜2024年、アクセスレビューAPI脆弱性*:Secureworks CTUの調査により、権限を持たないマルチテナントのサービスプリンシパルが、脆弱なAPIを介してアクセスレビュー(権限監査の仕組み)を改ざんできることが判明した。2024年1月に修正された。
+* *2026年4月、Agent ID Administrator脆弱性*:AIエージェントのID管理用に新設されたロールが、本来の対象外である任意のサービスプリンシパルの所有権を取得し資格情報を注入できたため、ディレクトリ全体の侵害につながりうる欠陥だった。修正済みである。
+
+VBAマクロは、Officeファイルに実行コードを埋め込める設計であり、1990年代からマルウェア配布経路として悪用され続けている。Microsoftは2022年にインターネット由来ファイルのマクロをデフォルトブロックする対応を行ったが、文書とコード実行を分離しない根本設計は変わっておらず、攻撃手法を変えながら悪用は現在も続いている。
+
+Copilotについては、以下の経緯でOS・Office製品への組み込みが進んでいる。
+
+* 2023年11月、Microsoft 365 Copilotが一般提供開始。Microsoft Graphを介して組織のメール・文書・チャット履歴を参照し応答を生成する仕組みであり、組織の最も機密性の高いデータ群がAI処理の対象となった。
+* 2024年、Windows PC向けキーボードにCopilot専用キーが追加された。Windowsキー追加(1994年)以来、約30年ぶりの標準キー配列の変更である。
+* 2024年5月に発表されたWindowsのRecall機能(画面を継続的にスクリーンショット保存しAI検索可能にする機能)は、保存データの保護が不十分であるとセキュリティ研究者の批判を受け、提供延期のうえオプトイン化・暗号化強化などの再設計が行われた。
+* 2025年1月、個人向けMicrosoft 365 Personal/FamilyプランにCopilotが組み込まれ、価格が引き上げられた。Copilotを含まない構成を選ぶには「Classic」プランへの切り替えが必要とされた。
+* 2025年に発表されたAIエージェント用のID体系(Agent ID)の導入が進み、2026年にはAIエージェントがEntra IDという認証基盤上の主体として扱われるようになった。
+
+=== 推論:Entra IDの問題は個別の実装ミスではなく構造にある
+
+3件の欠陥は独立の事故ではなく、共通の構造から生じている。
+
+. *単一集中型ID基盤*:世界中の組織の認証を一社がホストする単一のクラウド基盤に集約しているため、一つの欠陥の影響範囲が全テナントに及ぶ。Storm-0558では一つの鍵の漏洩が数十組織の侵害に直結した。オンプレミスのActive Directoryでは組織ごとに独立していた障害範囲が、クラウド集約により全体に連鎖する構造に変わっている。
+. *レガシー基盤への新機能の積層*:3件のうち2件(アクセスレビュー、Agent ID)は、新しい権限モデルを古いサービスプリンシパル基盤の上に載せた継ぎ目で生じた権限スコープの欠落である。同型の欠陥が繰り返されており、開発文化に起因するパターンと言える。CSRBの「セキュリティ文化」批判はこの点を指す。
+. *検証不能性*:クローズドなクラウドサービスであるため、利用者は鍵管理や実装を監査できない。信頼の根拠はMicrosoftの内部体制のみであり、その体制を「不十分」と認定した唯一の政府系調査機関(CSRB)は第2層で見た通り休眠中である。
+
+VBAは設計思想そのものが脆弱性の温床であり、既存マクロ資産との互換性維持を優先する限り根治されない。さらに、企業に蓄積されたVBA資産はMicrosoftからの移行を阻む要因として機能しており、セキュリティリスクとベンダーロックインが表裏一体になっている。
+
+Copilotの問題は、AI機能の性能や品質ではなく「内蔵化」という提供形態にある。
+
+. *分離不能性*:OS(キーボード配列、Recall)、Office(既定組み込み)、料金プラン(バンドル値上げ)の各層でCopilotが標準構成に組み込まれ、利用者がAI層だけを切り離す選択肢は限定的である。文書とコード実行を分離しなかったVBAと同じ設計判断が、AI層で反復されている。
+. *最機密データの常時クラウドAI接続*:Microsoft Graph経由で組織の全文書・メール・チャットがAI処理対象となる。第1層で述べたDPFリスクを、最も機密性の高いデータ領域で増幅する構造である。個々の文書のクラウド保存とは異なり、横断的な参照・処理が既定で行われる点が質的な違いである。
+. *攻撃面の拡大*:AIエージェントが認証基盤(Entra ID)上の主体となり、2026年のAgent ID脆弱性はまさにこの新旧の継ぎ目で生じた。Copilotの内蔵化はEntra IDの構造的問題を拡大する方向に働いている。加えて、外部文書経由のプロンプトインジェクションという、VBAマクロと同型の「データに混入した指示の実行」という攻撃類型が新たに加わった。
+. *ロックインの深化*:VBA資産が移行障壁として機能してきたのと同様、Copilot前提の業務フローが定着すれば、それ自体が次の移行障壁となる。さらに、Copilotが参照するGraphデータの側にも非対称な料金構造がある。Microsoft Graph Data Connect(Microsoft 365データの大規模抽出サービス)は、抽出オブジェクト1,000個あたり0.75ドルの従量課金であり、かつ出力先は自組織のAzureテナントに限定されている。通常のGraph APIは流量制限により大規模抽出に適さないため、自組織のメール・文書・予定データをまとめて取り出す実用的な手段はData Connectに集約される。データの投入は無料で、大規模な取り出しは有料かつAzure行き限定という非対称性であり、データの移動コストが料金設計として組み込まれている。
+
+Entra ID、VBA、Copilotは時代も技術も異なるが、「利便性と互換性を優先し、分離すべきものを分離しない」という同じ設計判断の産物である点で共通する。VBAが文書と実行コードを、Entra IDが全組織の認証を、Copilotが業務データとクラウドAI処理を、それぞれ分離せず一体化した。
+
+この「内蔵しないと価値が出ない」構造の分析は、link:/insights/lord-class-collapse/[構造分析 第一部 第12章「領主層の自己破壊」]とlink:/insights/cloud-independence/[第三部 第4章「クラウドからの自立」]で詳しく扱っている。
+
+== 第4層:供給体制 ── Anthropicモデルの輸出規制
+
+=== 事実
+
+2026年6月9日にリリースされたAnthropicのClaude Fable 5およびClaude Mythos 5は、6月12日、米商務省の輸出規制への対応として提供が一時停止された。商務省は6月30日に規制を解除し、7月1日にアクセスが復旧した。停止期間は約3週間である。米政府による外国人の最先端AIへのアクセス制限強化を受け、米同盟国では代替確保の必要性が報じられた(Bloomberg、2026年6月16日)。
+
+=== 推論
+
+この事案は短期間で解消されたが、米国の政策判断一つで、米国発AIサービスの国外提供が予告なく停止しうることを実証した。第1層で述べたDPFリスクがMicrosoft・Googleについて「将来起こりうる」段階であるのに対し、供給停止はAI分野で「実際に起きた」前例となった。
+
+停止と復旧の経緯、および復旧した日に企業がすべきことは、link:/blog/verification-shock/[前回のブログ「Fable 5 が戻ってきたら、すぐやるべきこと」]と、連載link:/fable/constraints-and-cautions/[「Fable 5 が帰ってきた」第7回]で扱っている。
+
+== 第5層:人材基盤 ── AI研究者の対米流出
+
+=== 事実
+
+スタンフォード大学「人間中心のAI研究所(HAI)」の年次調査(2026年4月公表)によると、米国に移住するAI研究者・開発者の人数は2025年の1年間で約80%減少した。背景にはトランプ政権のビザ規制がある。
+
+英科学誌Natureが米研究者1,600人超を対象に行った調査では、75%が米国を離れることを検討していると回答した(ポスドクでは約79%)。留学生のビザ取消、研究者の拘束事案、著名AI研究者のグリーンカード却下も相次いで報じられている。
+
+受け皿側の動きも具体化している。EUは3年間で5億ユーロの研究者誘致予算を打ち出し、日本では東北大学が300億円を投じて国内外の研究者約500人を採用する計画を発表した。2025年12月のNeurIPSでは、米国から母国に帰る中国人AI研究者の存在が報じられた。
+
+=== 推論
+
+米国のAI・技術覇権は、外国生まれの研究者に大きく依存してきた(2021年時点で米国の博士号保有科学者・エンジニアの43%が外国生まれ、NSF報告)。人材流入の8割減が数年続けば、米国発の技術・サービスの優位性そのものが浸食される。これは第1〜4層のような「利用者側のリスク」ではなく、依存先の供給能力そのものの劣化である。
+
+== 総合:5層の同時劣化が意味すること
+
+5つの層は、法(司法判断)、行政(大統領令・予算)、技術(設計・実装)、規制(輸出管理)、移民政策と、それぞれ異なる仕組みで生じている。共通するのは、いずれも米国の政権の判断が直接または間接の原因であり、利用者側の努力では制御できないという点である。
+
+ここから導かれる実務上の結論は、反米でも特定企業批判でもない。*一国・一企業の政策判断に自組織のデータ・認証・業務基盤の存立を委ねる構造そのものが、制御不能なリスクを内包する*ということである。今回は米国だったが、同じ構造はどの国・どの企業への集中依存にも当てはまる。
+
+さらに、2026年6月に閉じた最高裁の開廷期を全体として見ると、問題が個別の判決に留まらないことが分かる(Axios、2026年7月の開廷期総括)。同じ開廷期に、最高裁は90年の判例(Humphrey's Executor)を覆す一方、同じ論理が及ぶはずのFRB(連邦準備制度)には「例外」を切り出した ── 保守派のトーマス、バレット両判事自身が「原理なき矛盾」と呼んだ判断である。投票権法による選挙区の是正は事実上不能になり、議会が承認した対外援助の執行停止は容認され、審理も署名も説明もない命令が「シャドー・ドケット」経由で相次ぐ。憲法学者は「結論が先にあり、法理は後から選ばれる」と評した。10年前には非常識とされた法解釈(出生地主義の否定)にすら4人の判事が票を投じ、次の「非常識」が本流化する道が開いている。
+
+この状態が意味するのは、*法的予見可能性の喪失* である。リスク管理の前提は、リスクに確率を割り当てられることだ ── 計測できるリスクには、保険もヘッジも代替計画も掛けられる。確率を割り当てられない状態 ── 経済学が「リスク」と区別して「不確実性」と呼んできたもの ── には、どれも掛けられない。第1〜5層の個々の事象より、*どの層で次に何が起きるかが予測不能になったことそのもの* が、米国依存の最大のリスクである。そして予測できないものへの唯一の備えは、予測を不要にする構造 ── 依存そのものを減らすこと ── しかない。これが次節の根拠である。
+
+== 対応の方向
+
+. *データの所在と取り出しコストの把握*:自組織のデータがどの国のどの事業者の管理下にあり、どの法域の規制に服するかを棚卸しする。あわせて、そのデータを一括で取り出す手段・費用・出力先の制約を確認する。投入は無料でも取り出しに従量課金と出力先制限がかかる場合(Microsoft Graph Data Connect等)、それは実質的な移行障壁として設計されている。
+. *自組織管理下への移行*:個人データ・機密データは、自組織が物理的・法的に管理するインフラ(オンプレミス、自前ホスト)に置く。ドイツBitkomの2025年調査では、企業の74%がプライベートクラウド利用を強化しており、この方向はすでに実務の潮流である。
+. *標準技術の採用*:特定ベンダーの独自技術(VBA、独自ID基盤等)への依存を避け、OSSと標準プロトコルで構成する。移行コストの発生源を最初から作らない。
+. *監視機能の内製化*:第2層で見た通り、外部(政府機関)の監視・調査体制は政治判断で消失しうる。ログ・監査・脆弱性対応の基本機能は自組織で保持する。
+
+米国の技術・サービスを使わないという話ではない。使い続けるとしても、それが止まったとき・法的根拠を失ったときに自組織が存続できる構造を先に作っておく、ということである。具体的な移行の手順はlink:/ai-native-software/[「AI ネイティブなソフトウェア開発」の自立編]が、インフラの置き場所の判断はlink:/insights/cloud-independence/[構造分析 第三部 第4章「クラウドからの自立」]が扱っている。
+
+'''
+
+=== 主要事実の時系列
+
+|===
+| 日付 | 事象
+| 2023年夏 | Storm-0558事件。窃取された署名鍵により米政府高官含む数十組織のメール侵害
+| 2023年11月 | Microsoft 365 Copilot一般提供開始
+| 2024年1月 | Entra IDアクセスレビューAPI脆弱性の修正(2023年12月報告)
+| 2024年4月 | CSRBがStorm-0558報告書公表。Microsoftのセキュリティ文化を「不十分」と認定
+| 2024年5月 | Windows Recall機能発表。セキュリティ批判を受け提供延期・再設計
+| 2025年1月 | 個人向けMicrosoft 365へのCopilot組み込みと値上げ
+| 2025年1月20日 | DHS諮問委員会(CSRB含む)の全委員資格終了。CSRB休眠状態に
+| 2025年3月 | トランプ大統領がFTC委員Slaughter氏・Bedoya氏を理由なく解任
+| 2025年5月 | 2026年度予算案でCISA予算約4.91億ドル削減が判明
+| 2026年4月 | Entra ID権限昇格脆弱性の報告(修正済み)。AI研究者の対米移住8割減が判明(Stanford HAI)
+| 2026年6月9日 | Claude Fable 5 / Mythos 5 リリース
+| 2026年6月12日 | 商務省輸出規制により同モデル提供停止
+| 2026年6月29日 | 最高裁 Trump v. Slaughter 判決。Humphrey's Executor(1935)を破棄
+| 2026年6月30日 | noybが欧州委員会にDPF撤回を要求。商務省が輸出規制解除
+| 2026年7月1日 | Claude Fable 5 / Mythos 5 提供復旧
+|===
+endif::[]
+ifdef::lang-en[]
+= The Beginning of the End of American AI Hegemony
+
+== The Conclusion
+
+Starting from the US Supreme Court's ruling of June 29, 2026 (Trump v.
+Slaughter), the structural risk of depending on US technology
+infrastructure surfaced simultaneously across five distinct layers: the
+legal foundation, the oversight regime, the technical base, the supply
+regime, and the talent base. The cause is not the United States as a
+country but a series of policy decisions by the current administration.
+And yet the very fact that one administration's decisions can reach this
+far is what demonstrates the essential risk of concentrated dependence on
+a single country or a single company.
+
+And beneath the five layers of individual risk lies one deeper layer:
+*uncertainty itself.* An individual risk can be estimated and prepared
+for. But what this Court term produced was a 90-year precedent overturned,
+a contradictory exception carved out the same day, and unexplained orders
+arriving one after another — *no one can any longer predict which premise falls next.* Measurable risk can be insured. Unmeasurable uncertainty
+cannot. The greatest problem of US dependence is not the expected value of
+any individual loss, but that *the calculation of expected value itself no longer holds.*
+
+The direction of response is clear: place data and authentication under
+your own organization's control, and minimize dependence on any single
+vendor or single country.
+
+== Layer 1: The Legal Foundation — FTC Independence Lost, the DPF Shaken
+
+=== Facts
+
+On June 29, 2026, the US Supreme Court held in Trump v. Slaughter
+(No. 25-332), by 6 to 3, that the federal statute limiting removal of FTC
+(Federal Trade Commission) commissioners to cases of "good cause" violates
+the constitutional separation of powers. Explicitly overruling the 1935
+Humphrey's Executor decision, the ruling means the president may remove
+FTC commissioners without cause.
+
+The decision reached the EU directly. The EU-US Data Privacy Framework
+(DPF) is the arrangement that legalizes transfers of personal data from
+the EU to the US, and the European Commission's 2023 adequacy decision
+cites the FTC as an "independent enforcement authority" 259 times. EU law
+(TFEU Article 16(2), Article 8(3) of the Charter of Fundamental Rights)
+requires that data protection be supervised by an independent authority —
+the loss of FTC independence strikes that premise head-on.
+
+The privacy organization noyb (Max Schrems) sent the European Commission a
+letter on June 30, the day after the ruling, demanding an orderly
+withdrawal of the DPF adequacy decision, and announced preparations to
+bring a case before the Court of Justice of the EU (CJEU). The European
+Commission has said it will assess the implications.
+
+After Safe Harbor (invalidated by Schrems I in 2015) and Privacy Shield
+(invalidated by Schrems II in 2020), the third framework — the DPF — may
+now follow the same path.
+
+=== The Precise Current State
+
+As of July 2026 the DPF remains formally valid. The European Commission
+has not withdrawn it and the CJEU has not invalidated it. DPF-certified
+companies — Microsoft, Google, Apple, and others — continue to operate
+lawfully. Based on past cases, a CJEU resolution is expected to take two
+to three years.
+
+=== Inference
+
+If the DPF is invalidated in the future, the impact will not take the form
+of "US companies can no longer do business in the EU." It will appear as:
+
+* Switching costs to the alternative instruments (SCCs: standard
+  contractual clauses; BCRs: binding corporate rules)
+* But the alternatives may not solve the root problem, because the
+  redress body created by executive order (the DPRC) carries the same
+  independence defect
+* As a result, US operators will be pushed to build EU-contained data
+  processing structures — arrangements the US parent cannot access
+  technically or legally
+
+The path of impact differs by revenue model. Microsoft's revenue rests on
+subscription contracts and deep penetration of the EU public sector, so
+its exposure runs through contract reviews — a direct path. Google's core
+is advertising, so restrictions on cross-border personal-data processing
+would arrive indirectly, as degraded targeting precision.
+
+== Layer 2: The Oversight Regime — CSRB Dormant, CISA Shrinking
+
+=== Facts
+
+The CSRB (Cyber Safety Review Board) was established under Executive
+Order 14028 (2021) as the investigative body for major cyber incidents. It
+holds no regulatory power and is modeled on the accident investigations of
+the National Transportation Safety Board (NTSB). It published three
+inquiries: the Log4Shell vulnerability (2022), the Microsoft Storm-0558
+breach (2023), and LAPSUS$ (2023).
+
+Its Storm-0558 report named Microsoft directly — a "cascade of avoidable
+errors" and a corporate culture that "prioritized speed to market and
+revenue targets" — as the cause that allowed Chinese state hackers to
+breach the email of senior US officials, and it drove the company's
+security-strategy overhaul.
+
+On January 20, 2025, the Trump administration terminated the memberships
+of all advisory committees under DHS, effective immediately. The CSRB was
+at that moment investigating the breach of nine US telecom carriers by the
+Chinese state group Salt Typhoon; the investigation was cut off. No new
+members have been appointed since, and as of July 2026 the CSRB remains
+dormant. The ACM (Association for Computing Machinery) issued a statement
+in 2026 demanding its reactivation and a permanent statutory basis.
+
+As for CISA itself, the FY2026 budget proposal announced in May 2025 cut
+about $491 million, targeting the disinformation-response and
+international-cooperation divisions for elimination. Specialist staff
+reductions are underway, and former officials warn of devastating damage
+to capability. CISA has, however, continued issuing directives into 2026
+(BOD 26-02 and others) — this is not a total shutdown.
+
+=== Inference
+
+The only government investigative body with a track record of criticizing
+Microsoft by name has now been out of operation for a year and a half. At
+present, the United States has no mechanism for independently examining
+the security practices of its major vendors.
+
+== Layer 3: The Technical Base — Entra ID's Structural Problem, VBA's Design Problem, Copilot's Embedding
+
+=== Facts
+
+Microsoft Entra ID (formerly Azure AD) has had at least three serious
+defects confirmed in the past three years.
+
+* *2023, the Storm-0558 incident*: a single stolen MSA (consumer)
+  signing key allowed token forgery against enterprise Exchange Online,
+  breaching the email of dozens of organizations including the US State
+  Department. One cause was a key-separation failure — a consumer key
+  passing enterprise-side validation. The CSRB concluded it was a
+  "cascade of avoidable errors" and that "Microsoft's security culture
+  was inadequate and requires an overhaul."
+* *2023–2024, the access-review API vulnerability*: Secureworks CTU
+  research showed that unprivileged multi-tenant service principals could
+  tamper with access reviews (the permission-audit mechanism) through a
+  vulnerable API. Fixed in January 2024.
+* *April 2026, the Agent ID Administrator vulnerability*: a role newly
+  created for managing AI-agent identities could take ownership of
+  arbitrary service principals outside its intended scope and inject
+  credentials — a defect that could lead to directory-wide compromise.
+  Now fixed.
+
+VBA macros are a design that embeds executable code in Office files, and
+they have been abused as a malware delivery channel since the 1990s.
+Microsoft moved in 2022 to block macros in files from the internet by
+default, but the root design — no separation between document and code
+execution — is unchanged, and abuse continues with shifting techniques.
+
+As for Copilot, its embedding into the OS and Office products has
+proceeded along this timeline:
+
+* November 2023: Microsoft 365 Copilot general availability. It references
+  the organization's email, documents, and chat history via Microsoft
+  Graph to generate responses — placing the organization's most sensitive
+  data under AI processing.
+* 2024: a dedicated Copilot key was added to Windows PC keyboards — the
+  first change to the standard key layout in about 30 years, since the
+  Windows key (1994).
+* May 2024: the Windows Recall feature (continuous screenshotting of the
+  screen, made AI-searchable) drew security researchers' criticism for
+  inadequate protection of stored data, and was delayed and redesigned —
+  opt-in, with strengthened encryption.
+* January 2025: Copilot was bundled into consumer Microsoft 365
+  Personal/Family plans and prices were raised. Choosing a configuration
+  without Copilot required switching to "Classic" plans.
+* The AI-agent identity scheme announced in 2025 (Agent ID) has been
+  rolling out, and by 2026 AI agents are treated as principals on the
+  Entra ID authentication foundation.
+
+=== Inference: Entra ID's Problem Is Structural, Not a Series of Implementation Mistakes
+
+The three defects are not independent accidents; they arise from a common
+structure.
+
+. *A single, centralized identity foundation*: authentication for
+   organizations worldwide is concentrated on one cloud foundation hosted
+   by one company, so a single defect's blast radius reaches every tenant.
+   In Storm-0558, one leaked key translated directly into the breach of
+   dozens of organizations. Failure domains that were independent per
+   organization under on-premises Active Directory now chain across the
+   whole, through cloud concentration.
+. *New features stacked on a legacy foundation*: two of the three
+   defects (access review, Agent ID) were permission-scope gaps at the
+   seam where new permission models were laid over the old
+   service-principal foundation. The same class of defect repeats — a
+   pattern rooted in development culture. The CSRB's "security culture"
+   critique points here.
+. *Unverifiability*: as a closed cloud service, users cannot audit the
+   key management or the implementation. The basis of trust is
+   Microsoft's internal regime alone — and the only government body that
+   judged that regime "inadequate" is, as Layer 2 showed, dormant.
+
+VBA's design philosophy itself is the breeding ground of the
+vulnerability, and it cannot be cured while compatibility with existing
+macro assets takes priority. Moreover, the VBA assets accumulated inside
+companies function as a barrier against migrating away from Microsoft —
+security risk and vendor lock-in have become two faces of one thing.
+
+Copilot's problem is not the performance or quality of the AI but the
+delivery form — *embedding*.
+
+. *Inseparability*: Copilot is built into the standard configuration at
+   each layer — the OS (keyboard layout, Recall), Office (default
+   integration), pricing plans (bundled price hikes) — and the user's
+   option to detach just the AI layer is limited. The design decision VBA
+   made — no separation of document and code execution — is being repeated
+   at the AI layer.
+. *The most sensitive data, permanently connected to cloud AI*: via
+   Microsoft Graph, all of the organization's documents, email, and chat
+   become AI-processable. This amplifies the Layer 1 DPF risk in the most
+   confidential data domain. Unlike storing individual documents in the
+   cloud, cross-cutting reference and processing happens by default —
+   a qualitative difference.
+. *Expanded attack surface*: AI agents become principals on the
+   authentication foundation (Entra ID), and the 2026 Agent ID
+   vulnerability arose precisely at that new-on-old seam. Copilot's
+   embedding works to enlarge Entra ID's structural problem. In addition,
+   prompt injection via external documents adds a new attack class of the
+   same shape as VBA macros — "executing instructions mixed into data."
+. *Deepening lock-in*: just as VBA assets have functioned as a
+   migration barrier, workflows premised on Copilot will themselves become
+   the next barrier once entrenched. And on the Graph-data side there is
+   an asymmetric pricing structure. Microsoft Graph Data Connect (the
+   service for large-scale extraction of Microsoft 365 data) is metered at
+   $0.75 per 1,000 extracted objects, and its output destination is
+   restricted to your organization's Azure tenant. The ordinary Graph API
+   is unsuitable for large extractions due to throttling, so the practical
+   means of pulling your own email, documents, and calendar data in bulk
+   converges on Data Connect. Free to put data in, metered to take it out
+   at scale, and the exit is Azure-only — the cost of moving data is built
+   into the pricing design.
+
+Entra ID, VBA, and Copilot differ in era and technology, but they share
+one design decision: *prioritizing convenience and compatibility over the separation of things that should be separated.* VBA fused documents with
+executable code; Entra ID fused every organization's authentication;
+Copilot fused business data with cloud AI processing.
+
+The analysis of this "no value unless embedded" structure is developed in
+link:/en/insights/lord-class-collapse/[Structural Analysis Part 1, Chapter 12 "The Lord Class Self-Destructs"]
+and link:/en/insights/cloud-independence/[Part 3, Chapter 4 "Independence from the Cloud"].
+
+== Layer 4: The Supply Regime — Export Controls on Anthropic's Models
+
+=== Facts
+
+Anthropic's Claude Fable 5 and Claude Mythos 5, released on June 9, 2026,
+were suspended on June 12 in response to US Commerce Department export
+controls. Commerce lifted the controls on June 30 and access was restored
+on July 1. The halt lasted about three weeks. Following the US
+government's tightened restrictions on foreigners' access to frontier AI,
+allied countries reportedly moved to secure alternatives (Bloomberg,
+June 16, 2026).
+
+=== Inference
+
+The episode resolved quickly, but it demonstrated that a single US policy
+decision can halt the overseas provision of US-origin AI services without
+notice. Where the Layer 1 DPF risk for Microsoft and Google is still at
+the "could happen" stage, a supply halt in AI is now a precedent that
+*actually happened*.
+
+The timeline of the halt and restoration — and what a company should do on
+the day access returns — is covered in
+link:/en/blog/verification-shock/[the previous post, "When Fable 5 Returns, Do This First"],
+and in installment 7 of the series "Fable 5 Is Back" (Japanese only).
+
+== Layer 5: The Talent Base — The AI Researcher Exodus from the US
+
+=== Facts
+
+According to the annual survey of Stanford University's Institute for
+Human-Centered AI (HAI), published in April 2026, the number of AI
+researchers and developers moving to the United States fell by about 80%
+over the year 2025. Behind it are the Trump administration's visa
+restrictions.
+
+In a Nature survey of over 1,600 US researchers, 75% answered that they
+were considering leaving the United States (about 79% among postdocs).
+Student visa revocations, detentions of researchers, and green-card
+denials of prominent AI researchers have been reported one after another.
+
+The receiving side is moving concretely. The EU announced a €500 million,
+three-year budget to attract researchers; in Japan, Tohoku University
+announced a plan to invest ¥30 billion to hire about 500 researchers from
+Japan and abroad. At NeurIPS in December 2025, Chinese AI researchers
+returning home from the US were reported.
+
+=== Inference
+
+US technological hegemony in AI has depended heavily on foreign-born
+researchers (as of 2021, 43% of doctorate-holding scientists and engineers
+in the US were foreign-born — NSF). If the 80% drop in inflow persists for
+years, the superiority of US-origin technology and services itself erodes.
+Unlike Layers 1–4, this is not a "user-side risk" — it is the degradation
+of the supplier's own capacity.
+
+== Synthesis: What Five Layers Degrading at Once Means
+
+The five layers arise through different mechanisms: law (a judicial
+ruling), administration (executive orders and budgets), technology (design
+and implementation), regulation (export controls), and immigration policy.
+What they share is that each traces directly or indirectly to decisions of
+the US administration — and none can be controlled by the user's own
+effort.
+
+The practical conclusion this yields is neither anti-American nor an
+attack on any particular company. *A structure that entrusts the existence of your organization's data, authentication, and operations to the policy decisions of one country or one company carries uncontrollable risk by its very design.* This time it was the United States; the same
+structure applies to concentrated dependence on any country or any
+company.
+
+Moreover, viewing the Supreme Court term that closed in June 2026 as a
+whole shows that the problem does not stop at individual rulings (Axios's
+term retrospective, July 2026). In the same term, the Court overturned a
+90-year precedent (Humphrey's Executor) while carving out an "exception"
+for the Federal Reserve that the same logic should have reached — a move
+that conservative Justices Thomas and Barrett themselves called an
+unprincipled "contradiction." Challenges to vote-diluting maps under the
+Voting Rights Act became practically impossible; the withholding of
+congressionally appropriated foreign aid was allowed to stand; and orders
+keep arriving through the "shadow docket" — fast, unsigned, and often
+unexplained. Constitutional scholars describe a court that reaches the
+result first and selects the legal philosophy afterward. Even a legal
+position considered outlandish a decade ago — denying birthright
+citizenship — drew four votes, opening the road for the next "outlandish"
+position to become mainstream.
+
+What this state of affairs means is *the loss of legal predictability.*
+Risk management presupposes that probabilities can be assigned to risks —
+measurable risk can be insured, hedged, and planned around. A state in
+which probabilities cannot be assigned — what economics has long
+distinguished from risk and called *uncertainty* — admits none of those
+instruments. More than any individual event in Layers 1 through 5, *the fact that no one can predict what happens next, in which layer, is itself the greatest risk of US dependence.* And the only preparation against the
+unpredictable is a structure that makes prediction unnecessary — reducing
+the dependence itself. That is the basis of the next section.
+
+== The Direction of Response
+
+. *Map your data's location and exit cost*: inventory which country's
+   and which operator's control your data sits under, and which
+   jurisdiction's rules it answers to. Alongside, confirm the means, cost,
+   and destination constraints of bulk extraction. When input is free but
+   extraction is metered with destination restrictions (Microsoft Graph
+   Data Connect and the like), that is a migration barrier by design.
+. *Move to infrastructure under your own control*: put personal and
+   confidential data on infrastructure your organization controls
+   physically and legally (on-premises, self-hosted). In Germany,
+   Bitkom's 2025 survey found 74% of companies strengthening private-cloud
+   use — the direction is already the practical mainstream.
+. *Adopt standard technology*: avoid dependence on vendor-proprietary
+   technology (VBA, proprietary identity foundations) and compose from OSS
+   and standard protocols. Do not create the sources of migration cost in
+   the first place.
+. *Bring oversight in-house*: as Layer 2 showed, external (government)
+   oversight and investigation can vanish by political decision. Keep the
+   basic functions — logging, audit, vulnerability response — inside your
+   own organization.
+
+This is not an argument against using US technology and services. It
+means: even if you keep using them, build first the structure in which
+your organization survives when they stop — or lose their legal basis.
+The concrete migration steps are covered by the independence part of
+link:/en/ai-native-software/[AI-Native Software Development], and
+the judgment of where to place infrastructure by
+link:/en/insights/cloud-independence/[Structural Analysis Part 3, Chapter 4 "Independence from the Cloud"].
+
+'''
+
+=== Timeline of Key Facts
+
+|===
+| Date | Event
+| Summer 2023 | Storm-0558. A stolen signing key breaches the email of dozens of organizations, including senior US officials
+| Nov 2023 | Microsoft 365 Copilot general availability
+| Jan 2024 | Entra ID access-review API vulnerability fixed (reported Dec 2023)
+| Apr 2024 | CSRB publishes the Storm-0558 report; finds Microsoft's security culture "inadequate"
+| May 2024 | Windows Recall announced; delayed and redesigned after security criticism
+| Jan 2025 | Copilot bundled into consumer Microsoft 365 with price increases
+| Jan 20, 2025 | All DHS advisory committee memberships terminated (CSRB included); CSRB dormant
+| Mar 2025 | President Trump fires FTC commissioners Slaughter and Bedoya without cause
+| May 2025 | FY2026 budget proposal reveals ~$491M cut to CISA
+| Apr 2026 | Entra ID privilege-escalation vulnerability reported (fixed). Stanford HAI reveals 80% drop in AI researchers moving to the US
+| Jun 9, 2026 | Claude Fable 5 / Mythos 5 released
+| Jun 12, 2026 | Models suspended under Commerce Department export controls
+| Jun 29, 2026 | Supreme Court rules in Trump v. Slaughter; Humphrey's Executor (1935) overruled
+| Jun 30, 2026 | noyb demands DPF withdrawal from the European Commission; Commerce lifts export controls
+| Jul 1, 2026 | Claude Fable 5 / Mythos 5 access restored
+|===
+endif::[]

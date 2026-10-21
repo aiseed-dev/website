@@ -78,10 +78,13 @@ def check(repo: Path) -> list[str]:
     """足りない物を並べて返す。空なら準備ができている。"""
     missing: list[str] = []
 
+    # 1ファイル(articles/ai-native-software.adoc)か、編ごとに分けたフォルダ
+    # (articles/ai-native-software/*.adoc)のどちらか
     adoc = repo / "articles" / SERIES_FILE
-    if not adoc.is_file():
+    folder = repo / "articles" / SERIES_FILE[: -len(".adoc")]
+    if not adoc.is_file() and not any(folder.glob("*.adoc")):
         missing.append(
-            f"articles/{SERIES_FILE} がありません。\n"
+            f"articles/{SERIES_FILE} も articles/{folder.name}/*.adoc もありません。\n"
             f"    受け取った {SERIES_FILE} を {repo / 'articles'} に置いてください。"
         )
 

@@ -3,6 +3,10 @@
 編集アプリ(main.py)から使う薄いバックエンド。フロントマターや区切り
 コメントには触れず、指定記事・指定言語の本文行だけを行単位で splice する。
 保存後は必ず parse_series_file で再パースし、壊れていたら元に戻す。
+
+シリーズは1ファイル(articles/blog.adoc)のほか、フォルダ(articles/blog/*.adoc)
+に分かれていることがある。記事の読み書きはその記事が書かれているファイルに
+対して行い、記事の追加は最後のファイルの末尾に足す。
 """
 
 from __future__ import annotations
@@ -28,7 +32,9 @@ from build.series import (  # noqa: E402
     _IFDEF_RE,
     _SENTINEL_RE,
     SERIES_MAP,
+    parse_series,
     parse_series_file,
+    series_parts,
     select_lang_meta,
 )
 
@@ -67,7 +73,25 @@ def is_draft_meta(meta: dict) -> bool:
 
 
 def series_path(name: str) -> Path:
+    """シリーズ名のパス(articles/blog.adoc)。フォルダに分けたシリーズでは
+    実在しないが、ビルドの指定にはそのまま使える。読み書きは parts() と
+    _article_file() で。"""
     return REPO / "articles" / name
+
+
+def parts(name: str) -> list[Path]:
+    """シリーズを構成するファイル(文書順)。"""
+    return series_parts(REPO, name)
+
+
+def _article_file(name: str, article_id: str) -> Path:
+    """その記事が書かれているファイル。"""
+    for path in parts(name):
+        for line in path.read_text(encoding="utf-8").split("\n"):
+            m = _SENTINEL_RE.match(line)
+            if m and m.group(1) == article_id:
+                return path
+    raise KeyError(f"記事が見つかりません: {article_id}")
 
 
 def list_series() -> list[tuple[str, str]]:
@@ -82,18 +106,18 @@ def list_series() -> list[tuple[str, str]]:
     seen: set[str] = set()
     for sdef in site_series_defs(REPO):
         name = sdef.get("file", "")
-        if name and name not in seen and series_path(name).exists():
+        if name and name not in seen and parts(name):
             out.append((name, sdef.get("label") or name))
             seen.add(name)
     for name, label in SERIES_LABELS.items():
-        if name not in seen and series_path(name).exists():
+        if name not in seen and parts(name):
             out.append((name, label))
             seen.add(name)
     return out
 
 
 def load_articles(name: str) -> list[Article]:
-    units = parse_series_file(series_path(name))
+    units = parse_series(parts(name))
     out = []
     for u in units:
         mj = select_lang_meta(u.meta, "ja")
@@ -172,7 +196,7 @@ def _body_span(lines: list[str], article_id: str, lang: str) -> tuple[int, int]:
 
 
 def read_body(name: str, article_id: str, lang: str) -> str:
-    lines = series_path(name).read_text(encoding="utf-8").split("\n")
+    lines = _article_file(name, article_id).read_text(encoding="utf-8").split("\n")
     i0, i1 = _body_span(lines, article_id, lang)
     return "\n".join(lines[i0:i1]).strip("\n")
 
@@ -180,7 +204,7 @@ def read_body(name: str, article_id: str, lang: str) -> str:
 def save_body(name: str, article_id: str, lang: str, text: str) -> None:
     """本文を差し替えて保存する。保存後に再パースし、壊れていたら復元して
     ValueError を投げる(編集画面にエラーメッセージを出すため)。"""
-    path = series_path(name)
+    path = _article_file(name, article_id)
     original = path.read_text(encoding="utf-8")
     lines = original.split("\n")
     i0, i1 = _body_span(lines, article_id, lang)
@@ -238,7 +262,7 @@ def _sync_github_title(lines: list[str], article_id: str, title: str) -> None:
 
 def read_meta_raw(name: str, article_id: str) -> dict:
     """統合フロントマターを接尾辞キー(key.ja/key.en)のまま順序付きで返す。"""
-    lines = series_path(name).read_text(encoding="utf-8").split("\n")
+    lines = _article_file(name, article_id).read_text(encoding="utf-8").split("\n")
     i0, i1 = _frontmatter_span(lines, article_id)
     meta = {}
     for line in lines[i0:i1]:
@@ -253,7 +277,7 @@ def read_meta_raw(name: str, article_id: str) -> dict:
 
 def save_meta(name: str, article_id: str, meta: dict) -> None:
     """フロントマターを dict の内容で置き換える(空値のキーは書かない)。"""
-    path = series_path(name)
+    path = _article_file(name, article_id)
     original = path.read_text(encoding="utf-8")
     lines = original.split("\n")
     i0, i1 = _frontmatter_span(lines, article_id)
@@ -273,7 +297,7 @@ def save_meta(name: str, article_id: str, meta: dict) -> None:
 
 def next_defaults(name: str) -> dict:
     """新規記事の既定値(次の番号・ラベル雛形・番号キーの有無)。"""
-    units = parse_series_file(series_path(name))
+    units = parse_series(parts(name))
     nums = []
     widths = []
     for u in units:
@@ -302,10 +326,11 @@ def add_article(name: str, slug: str, title_ja: str, title_en: str = "") -> str:
     num = str(d["next_num"]).zfill(d["width"])
     article_id = f"{num}-{slug}"
 
-    path = series_path(name)
+    # フォルダに分けたシリーズなら最後のファイルの末尾に足す
+    path = parts(name)[-1]
     original = path.read_text(encoding="utf-8")
     if any(u.article_id == article_id or u.meta.get("slug") == slug
-           for u in parse_series_file(path)):
+           for u in parse_series(parts(name))):
         raise ValueError(f"同じスラッグの記事があります: {slug}")
 
     today = datetime.date.today().strftime("%Y.%m.%d")
@@ -343,7 +368,7 @@ def add_article(name: str, slug: str, title_ja: str, title_en: str = "") -> str:
 
 def delete_article(name: str, article_id: str) -> None:
     """記事の節を削除する(復元は git でできる——ゴミ箱は無い)。"""
-    path = series_path(name)
+    path = _article_file(name, article_id)
     original = path.read_text(encoding="utf-8")
     lines = original.split("\n")
     s, e = _article_range(lines, article_id)
@@ -354,22 +379,57 @@ def delete_article(name: str, article_id: str) -> None:
 def move_article(name: str, article_id: str, delta: int) -> bool:
     """記事を前後に動かす(delta=-1 で上、+1 で下)。並び順は prev/next
     連鎖にそのまま反映される。動かせなければ False。"""
-    path = series_path(name)
-    original = path.read_text(encoding="utf-8")
-    lines = original.split("\n")
-    units = parse_series_file(path)
+    units = parse_series(parts(name))
     ids = [u.article_id for u in units]
     idx = ids.index(article_id)
     other = idx + delta
     if other < 0 or other >= len(ids):
         return False
     first_id, second_id = (ids[other], ids[idx]) if delta < 0 else (ids[idx], ids[other])
+    if units[idx].path != units[other].path:
+        _swap_across_files(units[ids.index(first_id)].path, first_id,
+                           units[ids.index(second_id)].path, second_id)
+        return True
+    path = units[idx].path
+    original = path.read_text(encoding="utf-8")
+    lines = original.split("\n")
     sA, eA = _article_range(lines, first_id)
     sB, eB = _article_range(lines, second_id)
     block_a, between, block_b = lines[sA:eA], lines[eA:sB], lines[sB:eB]
     lines[sA:eB] = block_b + between + block_a
     _write_validated(path, original, "\n".join(lines))
     return True
+
+
+def _swap_across_files(path_a: Path, id_a: str, path_b: Path, id_b: str) -> None:
+    """ファイルの境目をまたぐ並べ替え: path_a の最後の記事 id_a と、path_b の
+    最初の記事 id_b の節を入れ替える(並びは id_b, id_a になる)。どちらかの
+    ファイルが壊れたら両方とも元に戻す。"""
+    orig_a = path_a.read_text(encoding="utf-8")
+    orig_b = path_b.read_text(encoding="utf-8")
+    lines_a, lines_b = orig_a.split("\n"), orig_b.split("\n")
+    sA, eA = _article_range(lines_a, id_a)
+    sB, eB = _article_range(lines_b, id_b)
+    block_a, block_b = lines_a[sA:eA], lines_b[sB:eB]
+    # 節の末尾の空行はファイル側の区切りとして残す
+    def split_tail(block):
+        n = len(block)
+        while n > 1 and block[n - 1].strip() == "":
+            n -= 1
+        return block[:n], block[n:]
+    body_a, tail_a = split_tail(block_a)
+    body_b, tail_b = split_tail(block_b)
+    lines_a[sA:eA] = body_b + tail_a
+    lines_b[sB:eB] = body_a + tail_b
+    path_a.write_text("\n".join(lines_a), encoding="utf-8")
+    path_b.write_text("\n".join(lines_b), encoding="utf-8")
+    try:
+        parse_series_file(path_a)
+        parse_series_file(path_b)
+    except SystemExit as exc:
+        path_a.write_text(orig_a, encoding="utf-8")
+        path_b.write_text(orig_b, encoding="utf-8")
+        raise ValueError(str(exc)) from None
 
 
 # ---------------------------------------------------------------------------

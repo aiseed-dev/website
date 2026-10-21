@@ -330,3 +330,123 @@ def test_add_article_follows_github_layout(series_file):
     # 章見出しは本文の `= …` だけ(GitHub で二重にならない)
     assert tail.count("= 二つ目の記事") == 1
     assert "ifdef::lang-ja[]\n= 二つ目の記事" in tail
+
+
+# --- フォルダに分けたシリーズ(articles/blog/*.adoc)------------------------
+
+PART_1 = """\
+// テスト用シリーズ(前半)
+// ===== article: 01-first =====
+////
+slug: first
+number: 01
+title.ja: 最初の記事
+////
+ifdef::lang-ja[]
+= 最初の記事
+
+本文その1。
+endif::[]
+
+// ===== article: 02-second =====
+////
+slug: second
+number: 02
+title.ja: 二つ目
+////
+ifdef::lang-ja[]
+= 二つ目
+
+本文その2。
+endif::[]
+"""
+
+PART_2 = """\
+// テスト用シリーズ(後半)
+// ===== article: 03-third =====
+////
+slug: third
+number: 03
+title.ja: 三つ目
+////
+ifdef::lang-ja[]
+= 三つ目
+
+本文その3。
+endif::[]
+"""
+
+
+@pytest.fixture
+def series_folder(tmp_path, monkeypatch):
+    d = tmp_path / "articles" / "blog"
+    d.mkdir(parents=True)
+    (d / "part-1.adoc").write_text(PART_1, encoding="utf-8")
+    (d / "part-2.adoc").write_text(PART_2, encoding="utf-8")
+    monkeypatch.setattr(store, "REPO", tmp_path)
+    return d
+
+
+def test_folder_series_reads_parts_in_file_order(series_folder):
+    assert [a.article_id for a in store.load_articles("blog.adoc")] == [
+        "01-first", "02-second", "03-third"]
+    assert ("blog.adoc", "Blog(構造分析ノート)") in store.list_series()
+    assert "本文その3。" in store.read_body("blog.adoc", "03-third", "ja")
+
+
+def test_folder_series_edits_the_file_holding_the_article(series_folder):
+    store.save_body("blog.adoc", "03-third", "ja", "= 三つ目\n\n書き換えた。")
+    meta = store.read_meta_raw("blog.adoc", "01-first")
+    meta["subtitle.ja"] = "副題"
+    store.save_meta("blog.adoc", "01-first", meta)
+    p1 = (series_folder / "part-1.adoc").read_text(encoding="utf-8")
+    p2 = (series_folder / "part-2.adoc").read_text(encoding="utf-8")
+    assert "書き換えた。" in p2 and "書き換えた。" not in p1
+    assert "subtitle.ja: 副題" in p1
+
+
+def test_folder_series_adds_to_last_part(series_folder):
+    article_id = store.add_article("blog.adoc", "fourth", "四つ目")
+    assert article_id == "04-fourth"
+    p2 = (series_folder / "part-2.adoc").read_text(encoding="utf-8")
+    assert f"// ===== article: {article_id} =====\n////\n" in p2
+    with pytest.raises(ValueError):
+        store.add_article("blog.adoc", "first", "重複")  # 前半にある slug
+
+
+def test_folder_series_move_across_parts_swaps_blocks(series_folder):
+    assert store.move_article("blog.adoc", "03-third", -1)
+    assert [a.article_id for a in store.load_articles("blog.adoc")] == [
+        "01-first", "03-third", "02-second"]
+    p1 = (series_folder / "part-1.adoc").read_text(encoding="utf-8")
+    p2 = (series_folder / "part-2.adoc").read_text(encoding="utf-8")
+    assert "本文その3。" in p1 and "本文その2。" in p2
+    # 冒頭コメントはそれぞれのファイルに残る
+    assert p1.startswith("// テスト用シリーズ(前半)")
+    assert p2.startswith("// テスト用シリーズ(後半)")
+    # 戻せば元どおり
+    assert store.move_article("blog.adoc", "03-third", +1)
+    assert (series_folder / "part-1.adoc").read_text(encoding="utf-8") == PART_1
+    assert (series_folder / "part-2.adoc").read_text(encoding="utf-8") == PART_2
+
+
+def test_folder_series_rejects_duplicate_id_across_parts(series_folder):
+    (series_folder / "part-2.adoc").write_text(
+        PART_2.replace("03-third", "01-first"), encoding="utf-8")
+    with pytest.raises(SystemExit, match="重複"):
+        store.load_articles("blog.adoc")
+
+
+def test_series_file_and_folder_together_is_an_error(series_folder):
+    (series_folder.parent / "blog.adoc").write_text(PART_1, encoding="utf-8")
+    with pytest.raises(SystemExit, match="両方"):
+        store.parts("blog.adoc")
+
+
+def test_series_name_for_path(series_folder):
+    from build.series import series_name_for_path
+    root = series_folder.parent.parent
+    assert series_name_for_path(root, series_folder / "part-2.adoc") == "blog.adoc"
+    assert series_name_for_path(root, root / "articles" / "blog.adoc") == "blog.adoc"
+    assert series_name_for_path(root, root / "articles" / "nai" / "x.adoc") is None
+    assert series_name_for_path(root, root / "tools" / "templates" / "a.html") is None

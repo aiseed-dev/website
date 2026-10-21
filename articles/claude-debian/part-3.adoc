@@ -1,0 +1,3990 @@
+// claude-debian — 第3巻(第12章〜第17章)。シリーズは articles/claude-debian/ の *.adoc をファイル名順に連結したもの
+// 記事の区切り: // ===== article: <記事ID> =====
+// フロントマター: 日英共通は裸キー、異なる値は key.ja / key.en
+// 本文: ifdef::lang-ja[] / ifdef::lang-en[] で言語別
+// prev/next 連鎖は書かない(記事の並び順から自動導出)
+ifdef::env-github[]
+= Claudeと一緒に学ぶDebian — 第3巻(第12章〜第17章)
+:lang-ja:
+:doctype: book
+:toc:
+:toc-title: 目次
+:toclevels: 1
+
+サイトで読む: https://aiseed.dev/claude-debian/
+endif::[]
+// ===== article: 12-windows-vm =====
+////
+slug: claude-debian-12-windows-vm
+number: 12
+title.ja: 第12章 Windowsを仮想マシンに閉じ込める
+title.en: Chapter 12 — Confining Windows to a Virtual Machine
+subtitle.ja: 代替のないアプリだけを、Debianの中の小さなWindowsで動かす
+subtitle.en: Run only the apps with no substitute, in a small Windows inside Debian
+description.ja: 第4章の棚卸しで「代替なし」と出たものの行き先を作る。Debian 標準の KVM と virt-manager に、Windows 11 が要求する UEFI・Secure Boot・TPM 2.0 を ovmf と swtpm で足し、virtio のドライバで動かす。仮想マシンは本籍ではなく物置——何を入れ、何を入れないかを先に決め、スナップショットを取ってから使う。手順の細部は Claude に公式の最新を確かめさせる。
+description.en: Build the destination for whatever your Chapter 4 inventory marked "no substitute." Debian's standard KVM and virt-manager, plus ovmf and swtpm to satisfy the UEFI, Secure Boot and TPM 2.0 that Windows 11 demands, with virtio drivers to make it run. The VM is a storeroom, not your home — decide what goes in and what stays out first, take a snapshot, then use it. Have Claude check the official, current procedure for the details.
+date: 2026.10.07
+label: Claude × Debian 12
+cta_label.ja: Claudeと学ぶ
+cta_label.en: Learn with Claude
+cta_title.ja: 捨てられない物は、閉じ込めればいい。
+cta_title.en: What you cannot throw away, you can confine.
+cta_text.ja: Windows でしか動かない物は数えるほどしか残らない。その数えるほどを仮想マシンに入れれば、移行を止める理由は消える。何を入れるかの線引きは、あなたの棚卸し表を Claude に渡して決める。
+cta_text.en: Only a handful of things still need Windows. Put that handful in a virtual machine and the reason to stall the migration disappears. Where to draw the line is decided by handing Claude your inventory table.
+cta_btn1_text.ja: 第13章へ進む
+cta_btn1_text.en: Continue to Chapter 13
+cta_btn1_link.ja: /claude-debian/13-config-management/
+cta_btn1_link.en: /en/claude-debian/13-config-management/
+cta_btn2_text.ja: 第11章に戻る
+cta_btn2_text.en: Back to Chapter 11
+cta_btn2_link.ja: /claude-debian/11-application-selection/
+cta_btn2_link.en: /en/claude-debian/11-application-selection/
+////
+ifdef::env-github[]
+= 第12章 Windowsを仮想マシンに閉じ込める
+endif::[]
+ifdef::lang-ja[]
+== Windowsは捨てない。閉じ込める
+
+第4章の棚卸しで、*A「動かない」*に残ったものがある。役所や銀行の専用ソフト、業界でしか使われない業務アプリ、古い周辺機器の設定ツール、年に数回だけ開く何か。第11章で代替を探しても、*Windows でしか動かないものは数えるほど*残る。
+
+本書はここでデュアルブートを取らない（序章）。取るのは*仮想マシン*だ。Debian の中に小さな Windows を一台作り、その数えるほどを入れる。Debian が本籍で、Windows は物置。物置は、必要なときだけ開ける。
+
+線引きを先に決める。
+
+* *入れる*：代替がなく、年に数回でも確実に要るもの。専用ソフト、業務アプリ、周辺機器のユーティリティ
+* *入れない*：ブラウザ、メール、オフィス、日常のファイル。これは第11章で Debian 側に移した
+* *入れない*：LINE やゲームのように、別の道があるもの（第11章）
+
+物置に日常を持ち込むと、移行は終わらない。*仮想マシンに入れる物の一覧は、棚卸し表（第4章）に一列足して管理する*。
+
+== 第一節 道具は virt-manager（KVM）
+
+仮想化の道具は、Debian 標準の *KVM*（カーネルに入っている）と、それを操る *libvirt*、画面で扱う *virt-manager* を使う。VirtualBox は使わない。apt で入り、第17章で実験機に使う道具と同じで、カーネルと一緒に更新される——理由はそれで足りる。
+
+Windows 11 には、仮想マシンでも満たすべき要件がある。Microsoft の要件ページ（2026年7月版）は、UEFI で Secure Boot に対応した firmware、*TPM 2.0*、メモリ 4GB 以上、ディスク 64GB 以上、2 コア以上を挙げ、仮想マシンでの利用も対応と明記している。Debian 側で足す部品は二つ。
+
+* *ovmf*：仮想マシン用の UEFI firmware。Secure Boot に対応する（Debian 13 のパッケージ）
+* *swtpm*：TPM 2.0 をソフトウェアで模す。物理の TPM は要らない（Debian 13 のパッケージ）
+
+```bash
+# 仮想化の本体と、Windows 11 の要件を満たす部品
+sudo apt install qemu-system libvirt-daemon-system virt-manager ovmf swtpm swtpm-tools
+
+# 自分のユーザーで仮想マシンを扱えるようにする（ログインし直す）
+sudo adduser $USER libvirt
+
+# CPU の仮想化支援が有効か（0 なら UEFI/BIOS で VT-x / AMD-V を有効にする）
+grep -c -E 'vmx|svm' /proc/cpuinfo
+```
+
+=== Claudeに聞いてみよう①：自分の機械で動くか
+
+____
+私の PC は〔my-system.md を貼る〕です。Debian 13 の上で KVM と virt-manager を使い、Windows 11 の仮想マシンを動かしたいです。
+(1) この CPU とメモリで、Windows 11 の VM（4GB 以上、2 コア以上）を動かしながら Debian 側の日常作業も回せるか
+(2) UEFI/BIOS で確認・変更すべき項目（仮想化支援）
+(3) 入れるべき Debian のパッケージと、libvirt グループの設定
+(4) ディスクに 64GB 以上を割く余裕があるか、どこに置くべきか
+Debian 13 の公式の手順を確かめたうえで、私の機械に合わせて答えてください。
+____
+
+== 第二節 Windows の入手とライセンス
+
+Windows 11 の ISO は、Microsoft のサイトから直接ダウンロードする。第三者のサイトから取らない。
+
+ライセンスは、*自分の版を確かめてから*決める。移行元の PC に付いていた Windows（OEM 版）をそのまま仮想マシンに移せるかどうかは、版と条件によって違う。本書はここで断定しない。手元のプロダクトキーと版（Home / Pro、OEM / 小売）を確かめ、条件を Microsoft のページで読み、合わなければ買う。*数えるほどのアプリのためにライセンスを一本買う*のは、Windows を本籍のまま残すより安い。
+
+もう一つ、Microsoft の要件ページにある条件を知っておく。Windows 11 Home は初回セットアップにインターネット接続と Microsoft アカウントが要る。仮想マシンでも同じだ。
+
+== 第三節 仮想マシンを作る
+
+手順の細部は版が上がるたびに変わる。ここでは*決めること*だけを書き、手順は Claude に公式の最新を確かめさせる。
+
+virt-manager の「新しい仮想マシン」で、Windows の ISO を指定し、*インストール前に設定をカスタマイズ*を選ぶ。決めることは六つ。
+
+. *Firmware*：UEFI。ovmf の Secure Boot 対応の firmware を選ぶ
+. *TPM*：エミュレートの TPM を追加し、版は 2.0
+. *メモリと CPU*：最低は 4GB・2 コア。実用は 8GB・4 コアを目安に、自分の機械と相談する
+. *ディスク*：qcow2 で 64GB 以上。使った分だけ実際の容量が増える
+. *ディスクとネットワークの方式*：virtio。速いが、Windows は標準でドライバを持たない
+. *二枚目の CD*：virtio-win の ISO。インストール中にディスクが見えなければ、ここからドライバを読み込む
+
+virtio-win は Fedora プロジェクトが配っている Windows 用のドライバ集で、安定版の ISO を一つ落として CD として付ける。Windows 10 以降向けのドライバは Microsoft の署名付きなので、Secure Boot を有効にしたまま使える。インストールが終わったら、同じ ISO から guest tools を入れる。ネットワーク、画面の大きさの追従、クリップボードの共有が揃う。
+
+=== Claudeに聞いてみよう②：手順を書かせる
+
+____
+Debian 13 の virt-manager で Windows 11 の仮想マシンを作ります。決めたことは次のとおり：UEFI（ovmf、Secure Boot 対応）、エミュレートの TPM 2.0（swtpm）、メモリ〔〕GB、CPU〔〕コア、qcow2 のディスク〔〕GB、ディスクとネットワークは virtio、二枚目の CD に virtio-win の安定版 ISO。
+(1) virt-manager の画面でどこを選ぶか、順に
+(2) インストール中にディスクが見えないときの、viostor ドライバの読み込み方
+(3) インストール後に virtio-win の guest tools を入れる手順
+(4) 画面の大きさの追従とクリップボードの共有を効かせる設定
+Debian 13 と virt-manager の公式の最新の手順を確かめてから、私の環境に合わせて書いてください。
+____
+
+== 第四節 物置の作法
+
+仮想マシンができたら、使い方を三つ決める。
+
+=== 入れる前にスナップショットを取る
+
+virt-manager のスナップショットで、*アプリを入れる前の素の状態*を一枚残す。何かを入れて壊れたら、そこに戻す。これが仮想マシンの最大の利点で、実機の Windows にはなかった自由だ。
+
+=== ファイルの渡し方を一つに決める
+
+Debian 側と Windows 側でファイルを行き来させる経路は、一つに決める。クリップボード（guest tools）で足りるなら、それだけ。フォルダを共有するなら、virt-manager の共有フォルダ（virtiofs）を一つだけ作る。経路を増やすと、どこに何があるか分からなくなる。
+
+=== 開けるのは必要なときだけ
+
+年に数回しか使わないなら、起動したらまず Windows Update を済ませ、用事を済ませ、閉じる。常時起動しない。ネットワークは NAT のまま、外から入れる口は作らない。Windows 側に Debian のファイルを置かない。
+
+=== Claudeに聞いてみよう③：入れる物の線引き
+
+____
+第4章で作った私の棚卸し表〔貼る〕です。Debian への移行はほぼ終わり、Windows 11 の仮想マシンを一台作りました。
+(1) 表の中で、仮想マシンに入れるべきもの（代替がなく、確実に要るもの）
+(2) 入れるべきでないもの（Debian 側で済むもの、別の道があるもの）
+(3) 判断に迷うものと、その理由
+(4) 仮想マシンに入れる物の一覧を、棚卸し表の新しい列として
+表の形で返してください。
+____
+
+== 第五節 物置が空になる日
+
+仮想マシンに入れたものは、年に一度見直す。Web 版に移ったもの、使わなくなったもの、Debian で動くようになったものを外す。一覧が空になったら、仮想マシンを消す。*物置は、いつか空にするために作る*。
+
+== この章でやったこと
+
+. 仮想マシンに入れる物と入れない物の線引きを決めた
+. KVM・libvirt・virt-manager と、Windows 11 の要件を満たす ovmf・swtpm を入れた
+. Windows の入手先とライセンスの確かめ方を決めた
+. 仮想マシンの設定（UEFI・TPM 2.0・virtio・virtio-win）を決め、手順は Claude に書かせた
+. スナップショット、ファイルの渡し方、開け閉めの作法を決めた
+
+手元の状態：
+* 代替のないアプリだけが入った Windows 11 の仮想マシン
+* 棚卸し表に「仮想マシン」の列
+
+次の第13章「設定の理解と管理」では、Debianの設定ファイルの場所、dotfilesの管理、バックアップ、Gitでの追跡を扱う。自分の環境を*ドキュメントとして残す*作法を身につける。
+
+'''
+
+シリーズ全体はlink:/claude-debian/[Claudeと一緒に学ぶDebian 一覧]から辿れる。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
+endif::[]
+ifdef::lang-en[]
+== Don't throw Windows away. Confine it.
+
+Your Chapter 4 inventory left some items in *category A, "won't run."* A government or bank's dedicated software, a business app used only in your industry, the setup tool for an old peripheral, something you open a few times a year. Even after Chapter 11's search for substitutes, *the things that genuinely need Windows count on one hand.*
+
+This book does not take the dual-boot route (Prologue). It takes a *virtual machine*. Build one small Windows inside Debian and put that handful in it. Debian is home; Windows is the storeroom. You open the storeroom only when you need to.
+
+Draw the line first.
+
+* *Goes in*: anything with no substitute that you definitely need, even a few times a year — dedicated software, business apps, peripheral utilities
+* *Stays out*: browser, mail, office, everyday files. Chapter 11 moved these to the Debian side
+* *Stays out*: things with another route, such as LINE and games (Chapter 11)
+
+Carry daily life into the storeroom and the migration never ends. *Keep the list of what goes into the VM as one extra column in the Chapter 4 inventory table.*
+
+== Section 1 — The tool is virt-manager (KVM)
+
+For virtualization, use Debian's standard *KVM* (built into the kernel), *libvirt* to drive it, and *virt-manager* for the screen. Not VirtualBox. It installs from apt, it is the same tool Chapter 17 uses for the experiment machine, and it updates together with the kernel — reason enough.
+
+Windows 11 has requirements that a virtual machine must meet too. Microsoft's requirements page (July 2026 edition) lists UEFI firmware that is Secure Boot capable, *TPM 2.0*, 4 GB or more of memory, 64 GB or more of disk, and two or more cores, and states explicitly that Windows 11 is supported on a virtual machine. Debian needs two extra parts.
+
+* *ovmf*: UEFI firmware for virtual machines, with Secure Boot support (Debian 13 package)
+* *swtpm*: emulates TPM 2.0 in software. No physical TPM needed (Debian 13 package)
+
+```bash
+# the virtualization core, plus the parts that satisfy Windows 11
+sudo apt install qemu-system libvirt-daemon-system virt-manager ovmf swtpm swtpm-tools
+
+# let your own user manage VMs (log out and back in)
+sudo adduser $USER libvirt
+
+# is CPU virtualization support on? (0 means enable VT-x / AMD-V in UEFI/BIOS)
+grep -c -E 'vmx|svm' /proc/cpuinfo
+```
+
+=== Ask Claude ①: Will it run on my machine?
+
+____
+My PC is [paste my-system.md]. I want to run a Windows 11 virtual machine with KVM and virt-manager on Debian 13.
+(1) With this CPU and memory, can I run a Windows 11 VM (4 GB+, 2 cores+) while still doing my daily work on the Debian side?
+(2) What to check or change in UEFI/BIOS (virtualization support)
+(3) The Debian packages to install and the libvirt group setup
+(4) Whether I have room for 64 GB+ of disk, and where to put it
+Check the official Debian 13 procedure first, then answer for my machine.
+____
+
+== Section 2 — Obtaining Windows, and the license
+
+Download the Windows 11 ISO directly from Microsoft's site. Not from a third-party site.
+
+Decide the license *after checking your own edition.* Whether the Windows that came with your old PC (an OEM license) can move into a virtual machine depends on the edition and its terms. This book does not pronounce on it. Check the product key and edition you have (Home / Pro, OEM / retail), read the terms on Microsoft's pages, and if they don't fit, buy one. *Buying one license for a handful of apps* is cheaper than keeping Windows as your home.
+
+One more condition from Microsoft's requirements page worth knowing: Windows 11 Home needs an internet connection and a Microsoft account to complete first-time setup. The same holds in a VM.
+
+== Section 3 — Building the virtual machine
+
+The details of the procedure change with every version. Here we write down only the *decisions*; the steps, you have Claude check against the current official documentation.
+
+In virt-manager's "New virtual machine," point it at the Windows ISO and choose *customize configuration before install*. Six decisions.
+
+. *Firmware*: UEFI. Pick ovmf's Secure Boot-capable firmware
+. *TPM*: add an emulated TPM, version 2.0
+. *Memory and CPU*: the minimum is 4 GB and 2 cores. For real use, aim for 8 GB and 4 cores, within what your machine allows
+. *Disk*: qcow2, 64 GB or more. Actual space grows only as it is used
+. *Disk and network type*: virtio. Fast, but Windows carries no driver for it out of the box
+. *A second CD*: the virtio-win ISO. If the disk is not visible during installation, load the driver from here
+
+virtio-win is the Windows driver collection distributed by the Fedora project; download the stable ISO once and attach it as a CD. Its drivers for Windows 10 and later carry Microsoft signatures, so Secure Boot can stay on. When installation is done, install the guest tools from the same ISO — networking, display resizing, and clipboard sharing all come together.
+
+=== Ask Claude ②: Have it write the procedure
+
+____
+I am creating a Windows 11 virtual machine in virt-manager on Debian 13. My decisions: UEFI (ovmf, Secure Boot capable), emulated TPM 2.0 (swtpm), [ ] GB memory, [ ] CPU cores, a [ ] GB qcow2 disk, virtio for disk and network, and the stable virtio-win ISO as a second CD.
+(1) What to select in virt-manager's screens, in order
+(2) How to load the viostor driver when the disk is not visible during installation
+(3) How to install the virtio-win guest tools after installation
+(4) The settings that make display resizing and clipboard sharing work
+Check the current official procedures for Debian 13 and virt-manager first, then write it for my setup.
+____
+
+== Section 4 — Storeroom manners
+
+Once the VM exists, settle three habits.
+
+=== Take a snapshot before installing anything
+
+Use virt-manager's snapshots to keep one copy of the *clean state before any app goes in.* If something you install breaks it, go back there. This is the VM's greatest advantage — a freedom the physical Windows never had.
+
+=== Decide on one way to pass files
+
+Pick a single route for moving files between the Debian side and the Windows side. If the clipboard (guest tools) is enough, use only that. If you need a shared folder, create exactly one in virt-manager (virtiofs). Add routes and you stop knowing where anything is.
+
+=== Open it only when you need it
+
+If you use it a few times a year: start it, run Windows Update first, do the job, close it. Don't keep it running. Leave the network on NAT and open no port from outside. Don't keep Debian's files on the Windows side.
+
+=== Ask Claude ③: Drawing the line
+
+____
+Here is the inventory table I made in Chapter 4 [paste]. My migration to Debian is nearly done, and I have built one Windows 11 virtual machine.
+(1) Which items in the table should go into the VM (no substitute, definitely needed)
+(2) Which should not (handled on the Debian side, or with another route)
+(3) The ones that are hard to call, and why
+(4) The list of what goes into the VM, as a new column of the inventory table
+Answer as a table.
+____
+
+== Section 5 — The day the storeroom is empty
+
+Review what is in the VM once a year. Drop what moved to a web version, what you stopped using, and what now runs on Debian. When the list is empty, delete the VM. *A storeroom is built to be emptied one day.*
+
+== What we did in this chapter
+
+. Drew the line between what goes into the VM and what stays out
+. Installed KVM, libvirt and virt-manager, plus ovmf and swtpm to meet Windows 11's requirements
+. Settled where to obtain Windows and how to check the license
+. Fixed the VM configuration (UEFI, TPM 2.0, virtio, virtio-win) and had Claude write the steps
+. Settled the habits: snapshots, one file route, open-and-close
+
+Where you are now:
+* A Windows 11 virtual machine holding only the apps with no substitute
+* A "virtual machine" column in the inventory table
+
+In Chapter 13, "Understanding and Managing Configuration," we cover where Debian's configuration files live, dotfiles management, backup, and tracking with Git. Get into the practice of *leaving your environment as documentation*.
+
+'''
+
+The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
+endif::[]
+
+// ===== article: 13-config-management =====
+////
+slug: claude-debian-13-config-management
+number: 13
+title.ja: 第13章 設定の理解と管理
+title.en: Chapter 13 — Understanding and Managing Configuration
+subtitle.ja: dotfiles と apt を Git で追跡する
+subtitle.en: Track dotfiles and apt with Git
+description.ja: Debianの設定ファイルは全て開かれたテキスト。これをGitで管理すれば、あなたの環境は再現可能なドキュメントになる。dotfiles、aptパッケージ一覧、自動復元スクリプトまで、Claudeと設計する。
+description.en: Debian's configuration files are all open text. Manage them with Git and your environment becomes a reproducible document. Together with Claude, design dotfiles, an apt package list, and an auto-restore script.
+date: 2026.04.23
+label: Claude × Debian 13
+cta_label.ja: Claudeと学ぶ
+cta_label.en: Learn with Claude
+cta_title.ja: 環境は、ドキュメントとして残せる。
+cta_title.en: An environment can live as documentation.
+cta_text.ja: 二度目のインストール、新しいPCへの移行、別PCへの複製——全部コマンド一発になる。これがDebianの最大の強みの一つだ。
+cta_text.en: Reinstall, migrate to a new PC, replicate to another machine — all of it becomes a single command. This is one of Debian's biggest strengths.
+cta_btn1_text.ja: 第4部 第14章へ進む
+cta_btn1_text.en: Continue to Part 4 / Chapter 14
+cta_btn1_link.ja: /claude-debian/14-dev-tools/
+cta_btn1_link.en: /en/claude-debian/14-dev-tools/
+cta_btn2_text.ja: 第12章に戻る
+cta_btn2_text.en: Back to Chapter 12
+cta_btn2_link.ja: /claude-debian/12-windows-vm/
+cta_btn2_link.en: /en/claude-debian/12-windows-vm/
+////
+ifdef::env-github[]
+= 第13章 設定の理解と管理
+endif::[]
+ifdef::lang-ja[]
+== 設定ファイルがテキストである意味
+
+Debianでは、OS・アプリの設定の大半が*テキストファイル*で管理されている。これはWindowsやmacOSとの決定的な違いだ。
+
+レジストリでも、不透明なバイナリでもない。テキストなので：
+* 読める（何がどう設定されているか把握できる）
+* 変更できる（自分の手で編集できる）
+* 差分が取れる（変更前後をdiffで比較できる）
+* Git管理できる（履歴を残し、複数PCで共有できる）
+
+この章では、自分の環境をGitで追跡可能なドキュメントにする作法を身につける。
+
+== 第一節 設定ファイルの場所
+
+=== 三つの階層
+
+*1. システム全体の設定*：`/etc/` 配下
+`/etc/ssh/sshd_config`、`/etc/apt/sources.list`、`/etc/fstab` など。編集には `sudo` が要る。
+
+*2. ユーザー固有の設定*：`~/.config/` と `~/.〇〇` 配下
+`~/.config/fcitx5/`、`~/.config/Code/`、`~/.bashrc`、`~/.gitconfig`。ホームディレクトリにある。
+
+*3. アプリ固有の設定*：様々な場所
+`~/.mozilla/firefox/` のようにアプリごとに固有。
+
+=== よく触る設定ファイル(例)
+
+```
+~/.bashrc                       # bash の設定
+~/.profile                      # ログインシェルの設定
+~/.gitconfig                    # git のユーザー情報
+~/.ssh/config                   # SSH 接続の定義
+~/.config/fcitx5/               # 日本語入力
+~/.config/zed/settings.json     # Zed エディタの設定
+~/.config/nvim/                 # Neovim の設定(init.lua / lazy-lock.json)
+~/.config/JetBrains/PyCharmCE2026.1/  # PyCharm Community の設定
+~/.config/autostart/            # 自動起動アプリ
+```
+
+== 第二節 dotfiles を Git で管理する
+
+=== dotfiles リポジトリを作る
+
+ホームディレクトリ直下の「ドット始まり」ファイルを総称して dotfiles と呼ぶ。これをGit管理する。
+
+```bash
+# dotfilesディレクトリを作る
+mkdir ~/dotfiles
+cd ~/dotfiles
+git init
+
+# 個人用のGitHub/GitLab等にリポジトリを作り、プッシュ
+```
+
+=== シンボリックリンク方式
+
+元のファイルを dotfiles/ に移して、シンボリックリンクを張る。
+
+```bash
+# 例：.bashrc を管理下へ
+mv ~/.bashrc ~/dotfiles/bashrc
+ln -s ~/dotfiles/bashrc ~/.bashrc
+
+# 例：.gitconfig を管理下へ
+mv ~/.gitconfig ~/dotfiles/gitconfig
+ln -s ~/dotfiles/gitconfig ~/.gitconfig
+```
+
+=== 機密情報を分離する
+
+APIキー、アクセストークン、パスワードは dotfiles に含めない。
+
+* `.bashrc` 本体は Git 管理
+* `.bashrc.local` に機密項目を書き、`.bashrc` から `source` する
+* `.bashrc.local` は `.gitignore` で除外
+
+=== Claudeに聞いてみよう①：dotfilesの設計
+
+____
+私は自分の Debian 環境を dotfiles として Git 管理したいです。
+現在、〔bashrc, gitconfig, ssh/config, fcitx5 設定, Zed/Neovim 設定〕を
+管理対象にしたいです。
+
+(1) 推奨のディレクトリ構造
+(2) シンボリックリンクを自動で張る install スクリプト
+(3) 機密情報の分離方法
+(4) 新しいPCでクローンして復元する手順
+
+を教えてください。スクリプトは POSIX sh で。
+____
+
+返ってきた構造をベースに、自分で調整する。
+
+== 第三節 aptパッケージ一覧を再現可能にする
+
+=== 現在入っているパッケージを記録
+
+```bash
+# 手動で入れたパッケージの一覧
+apt list --manual-installed > ~/dotfiles/apt-manual.txt
+
+# または dpkg で全パッケージ
+dpkg --get-selections > ~/dotfiles/packages.txt
+```
+
+=== 別PCで同じ構成を再現
+
+```bash
+# packages.txtから復元
+sudo dpkg --set-selections < packages.txt
+sudo apt-get dselect-upgrade
+```
+
+=== 日常的に足したパッケージを追記する習慣
+
+アプリを一つ入れるたびに、`apt-manual.txt` を更新して Git にコミット。面倒なら月一回まとめてやる。
+
+```bash
+# 月次更新スクリプトの雛形
+apt list --manual-installed > ~/dotfiles/apt-manual.txt
+cd ~/dotfiles
+git add apt-manual.txt
+git commit -m "apt: $(date +%Y-%m) $(wc -l < apt-manual.txt) packages"
+```
+
+=== Claudeに聞いてみよう②：再現スクリプト
+
+____
+私のdotfiles/配下に `apt-manual.txt` があり、そこに入れたパッケージ名が並んでいます。
+新しいDebian 13に、このリストを元に全パッケージを入れるシェルスクリプトを書いてください。
+エラー処理（パッケージが存在しない場合の継続、権限確認、ミラー到達確認）を含めて、POSIX shで。
+____
+
+== 第四節 /etc の変更を追跡する
+
+=== etckeeper で自動追跡
+
+```bash
+sudo apt install etckeeper
+```
+
+`etckeeper` は `/etc/` 配下をGitリポジトリとして自動管理する。apt でパッケージを入れると、その時点の `/etc/` 全体がコミットされる。手動編集もコミットできる。
+
+```bash
+# /etc/ssh/sshd_config を編集したあと
+sudo etckeeper commit "sshd: PermitRootLogin no に変更"
+```
+
+これで、システム設定の全変更履歴が残る。「いつ、何を変えたか」が全部分かる。
+
+== 第五節 ホームディレクトリのバックアップ
+
+dotfiles は設定だけ。写真、書類、プロジェクトなどのデータは別途バックアップが必要。
+
+=== rsyncで外付けSSDへ
+
+```bash
+# 外付けSSDに /mnt/backup としてマウント
+rsync -av --delete --exclude='.cache' --exclude='node_modules' \
+  ~/ /mnt/backup/home-$(hostname)/
+```
+
+* `--delete`：元で消したファイルをバックアップ先からも消す
+* `--exclude`：キャッシュや再生成可能なものは除外
+
+=== Timeshift でシステムスナップショット
+
+```bash
+sudo apt install timeshift
+```
+
+Timeshift は*システム領域*のスナップショットを取る。`/home/` は通常対象外。アップデートで何か壊れたときの復旧に使える。
+
+ホームのバックアップは rsync または Syncthing、システムのスナップショットは Timeshift、という二重構成が実用的。
+
+=== Claudeに聞いてみよう③：バックアップ戦略
+
+____
+私の Debian PC の構成：
+* 主データ場所：~/Documents, ~/Pictures, ~/Projects
+* 保存先候補：外付けSSD 2TB、NAS、クラウド（〇〇）
+
+次の要件を満たすバックアップ戦略を立ててください：
+* 日次の自動バックアップ
+* 週次の完全コピー
+* 月次のオフサイト保管
+* 1ファイル誤削除からの復旧
+* OS全損からの復旧
+
+必要なツール、cron設定、手順を具体的に。
+____
+
+== 第六節 再インストールのシミュレーション
+
+=== 一度やってみる
+
+この章の仕上げとして、*もう一台のPCまたは仮想マシンで、dotfilesからの復元を試す*。
+
+```bash
+# 新しいDebianに初回ログイン後
+cd ~
+git clone https://github.com/あなた/dotfiles.git
+cd dotfiles
+./install.sh          # リンクを張る
+./apt-restore.sh      # パッケージを入れる
+./post-install.sh     # DE設定、fcitx5、等
+```
+
+この一連が*成功してこそ、あなたの環境はドキュメント化された*と言える。やってみて詰まった箇所を修正する。
+
+=== 成功の定義
+
+* 新規PCでクローン＋スクリプト実行で、日常作業ができる状態になる
+* 完璧でなくていい。9割復元できて、残り1割は手で調整できる程度
+* スクリプトの所要時間は合計30〜60分を目標
+
+== 第七節 Claudeを設定管理の相棒にする
+
+=== 変更をClaudeに要約させる
+
+定期的に、dotfiles の変更履歴を Claude に要約させる。
+
+____
+次のgit logを要約してください：
+```
+〔git log --oneline -n 30 の出力〕
+```
+私の Debian 環境が過去一ヶ月でどう変化したか、傾向を教えてください。
+____
+
+意識していなかった変化の方向性が見える。
+
+=== エラー時に全環境を渡す
+
+何かトラブったとき、dotfiles 一式とシステム情報を Claude に渡す。
+
+____
+私の環境は次の通りです：
+* `my-system.md` 〔貼る〕
+* `~/.bashrc` 〔貼る〕
+* `~/.config/fcitx5/` の主要ファイル 〔貼る〕
+
+次の症状について、原因を特定してください：〔症状〕
+____
+
+情報量が多いほど、Claudeの判断は具体的になる。
+
+== まとめ
+
+この章でやったこと：
+
+. 設定ファイルの三階層（system / user / app）を把握した
+. dotfilesをGit管理に乗せ、シンボリックリンクで運用を始めた
+. aptパッケージ一覧を `apt-manual.txt` として記録・復元可能にした
+. `/etc/` の変更を `etckeeper` で自動追跡するようにした
+. rsync と Timeshift でバックアップ戦略を組んだ
+. dotfilesからの復元を実際に試した（または計画した）
+
+手元に残ったもの：
+* `dotfiles/` リポジトリ（GitHub/GitLab 等でバックアップ）
+* 再現可能な環境のドキュメント
+* 月次で更新する習慣
+
+ここで第3部が終わる。*あなたのDebian環境は「作って使うだけ」から「再現可能な設計図」に進化した*。これは Windows では構造的に難しかったことだ。
+
+次の第4部（第14〜17章）では、開発環境の構築に入る。ターミナル、エディタ、Git、言語環境、そして Claude Code——これらを Debian 上で組み合わせて、ビルダーとしての一歩を踏み出す。
+
+'''
+
+シリーズ全体はlink:/claude-debian/[Claudeと一緒に学ぶDebian 一覧]から辿れる。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
+endif::[]
+ifdef::lang-en[]
+== What It Means That Configuration Files Are Text
+
+On Debian, most OS and app configuration is managed as *text files*. This is the decisive difference from Windows and macOS.
+
+Not a registry, not opaque binaries. Because it is text:
+* It can be read (you can grasp what is set, and how).
+* It can be edited (you can change it with your own hands).
+* It can be diffed (you can compare before and after).
+* It can be Git-managed (you keep history; you share across multiple PCs).
+
+This chapter establishes the practice of turning your environment into a Git-trackable document.
+
+== Section 1 — Where Configuration Files Live
+
+=== Three Layers
+
+*1. System-wide settings.* Under `/etc/`.
+`/etc/ssh/sshd_config`, `/etc/apt/sources.list`, `/etc/fstab`, and so on. Editing requires `sudo`.
+
+*2. User-specific settings.* Under `~/.config/` and `~/.[name]`.
+`~/.config/fcitx5/`, `~/.config/Code/`, `~/.bashrc`, `~/.gitconfig`. In your home directory.
+
+*3. App-specific settings.* Various places.
+Like `~/.mozilla/firefox/`. Different per app.
+
+=== Frequently Touched Files (Examples)
+
+```
+~/.bashrc                       # bash settings
+~/.profile                      # login shell settings
+~/.gitconfig                    # git user info
+~/.ssh/config                   # SSH connection definitions
+~/.config/fcitx5/               # Japanese input
+~/.config/zed/settings.json     # Zed editor settings
+~/.config/nvim/                 # Neovim (init.lua / lazy-lock.json)
+~/.config/JetBrains/PyCharmCE2026.1/  # PyCharm Community settings
+~/.config/autostart/            # apps that auto-start
+```
+
+== Section 2 — Manage dotfiles with Git
+
+=== Create a dotfiles Repository
+
+The "dot-prefixed" files in your home directory are collectively called dotfiles. Manage them with Git.
+
+```bash
+# Create the dotfiles directory
+mkdir ~/dotfiles
+cd ~/dotfiles
+git init
+
+# Create a personal repository on GitHub / GitLab and push
+```
+
+=== The Symbolic Link Approach
+
+Move the original files into `dotfiles/` and create symbolic links.
+
+```bash
+# Example: bring .bashrc under management
+mv ~/.bashrc ~/dotfiles/bashrc
+ln -s ~/dotfiles/bashrc ~/.bashrc
+
+# Example: bring .gitconfig under management
+mv ~/.gitconfig ~/dotfiles/gitconfig
+ln -s ~/dotfiles/gitconfig ~/.gitconfig
+```
+
+=== Separate Sensitive Information
+
+API keys, access tokens, and passwords don't go in dotfiles.
+
+* The main `.bashrc` is Git-managed.
+* Put sensitive items in `.bashrc.local` and `source` it from `.bashrc`.
+* Exclude `.bashrc.local` via `.gitignore`.
+
+=== Ask Claude ①: Designing the dotfiles
+
+____
+I want to manage my Debian environment as Git-tracked dotfiles.
+The files I want under management now are [bashrc, gitconfig, ssh/config, fcitx5, Zed and Neovim configuration].
+
+Please give me:
+(1) A recommended directory structure.
+(2) An install script that creates the symbolic links automatically.
+(3) How to separate sensitive information.
+(4) The procedure for cloning and restoring on a new PC.
+
+The script should be POSIX sh.
+____
+
+Use what comes back as the base and adjust by hand.
+
+== Section 3 — Make the apt Package List Reproducible
+
+=== Record What's Currently Installed
+
+```bash
+# List of manually installed packages
+apt list --manual-installed > ~/dotfiles/apt-manual.txt
+
+# Or, all packages via dpkg
+dpkg --get-selections > ~/dotfiles/packages.txt
+```
+
+=== Reproduce the Same Configuration on Another PC
+
+```bash
+# Restore from packages.txt
+sudo dpkg --set-selections < packages.txt
+sudo apt-get dselect-upgrade
+```
+
+=== Build the Habit of Updating the List
+
+Every time you install an app, update `apt-manual.txt` and commit to Git. If that's a hassle, batch it once a month.
+
+```bash
+# Skeleton of a monthly update script
+apt list --manual-installed > ~/dotfiles/apt-manual.txt
+cd ~/dotfiles
+git add apt-manual.txt
+git commit -m "apt: $(date +%Y-%m) $(wc -l < apt-manual.txt) packages"
+```
+
+=== Ask Claude ②: A Restore Script
+
+____
+Under my `dotfiles/` I have `apt-manual.txt` listing the packages I installed.
+Write a shell script that, on a fresh Debian 13, installs all of these packages from this list.
+Include error handling (continue when a package doesn't exist, permission checks, mirror reachability), in POSIX sh.
+____
+
+== Section 4 — Track Changes Under /etc
+
+=== Auto-Track with etckeeper
+
+```bash
+sudo apt install etckeeper
+```
+
+`etckeeper` automatically manages `/etc/` as a Git repository. When you install a package via apt, the state of `/etc/` at that moment is committed. Manual edits can also be committed.
+
+```bash
+# After editing /etc/ssh/sshd_config
+sudo etckeeper commit "sshd: change PermitRootLogin to no"
+```
+
+This gives you a complete change history of system settings. You always know "when, what was changed."
+
+== Section 5 — Backing Up the Home Directory
+
+dotfiles is just configuration. Photos, documents, and project data need a separate backup.
+
+=== To an External SSD with rsync
+
+```bash
+# Mount the external SSD as /mnt/backup
+rsync -av --delete --exclude='.cache' --exclude='node_modules' \
+  ~/ /mnt/backup/home-$(hostname)/
+```
+
+* `--delete`: also delete files on the backup that you've deleted at the source.
+* `--exclude`: leave caches and regenerable things out.
+
+=== System Snapshots with Timeshift
+
+```bash
+sudo apt install timeshift
+```
+
+Timeshift takes snapshots of the *system area*. `/home/` is generally excluded. Useful when an update breaks something.
+
+A practical setup is two-tier: rsync or Syncthing for home, Timeshift for system snapshots.
+
+=== Ask Claude ③: A Backup Strategy
+
+____
+My Debian PC layout:
+* Main data locations: ~/Documents, ~/Pictures, ~/Projects.
+* Storage candidates: external 2 TB SSD, NAS, cloud ([provider]).
+
+Build me a backup strategy that satisfies:
+* Daily automatic backup.
+* Weekly full copy.
+* Monthly off-site storage.
+* Recovery from accidental single-file deletion.
+* Recovery from total OS loss.
+
+Be concrete with the tools, cron settings, and steps.
+____
+
+== Section 6 — Simulate a Reinstall
+
+=== Try It Once
+
+As the finishing touch of this chapter, *on another PC or a virtual machine, try restoring from the dotfiles*.
+
+```bash
+# After first login on the new Debian
+cd ~
+git clone https://github.com/[you]/dotfiles.git
+cd dotfiles
+./install.sh          # create the links
+./apt-restore.sh      # install packages
+./post-install.sh     # DE settings, fcitx5, etc.
+```
+
+*Only when this end-to-end works can you say your environment is documented.* Try it and fix what gets stuck.
+
+=== What "Success" Means
+
+* A fresh PC, clone + run scripts, and you reach a state where you can do daily work.
+* It doesn't have to be perfect. 90% restored is fine; the last 10% you can adjust by hand.
+* Aim for total script time of 30–60 minutes.
+
+== Section 7 — Make Claude Your Configuration-Management Partner
+
+=== Have Claude Summarize Changes
+
+Periodically, have Claude summarize the dotfiles change history.
+
+____
+Please summarize the following git log:
+```
+[output of `git log --oneline -n 30`]
+```
+Tell me how my Debian environment has changed over the past month and what trends you see.
+____
+
+You see directions of change you weren't conscious of.
+
+=== When Things Break, Hand Over the Whole Environment
+
+When something goes wrong, hand the dotfiles set and the system info to Claude.
+
+____
+My environment is as follows:
+* `my-system.md` [paste]
+* `~/.bashrc` [paste]
+* main files under `~/.config/fcitx5/` [paste]
+
+Please identify the cause of the following symptom: [symptom]
+____
+
+The more information you provide, the more concrete Claude's judgment becomes.
+
+== Summary
+
+What you did in this chapter:
+
+. Got the three layers of configuration files (system / user / app) under your fingers.
+. Put dotfiles under Git management and started running them via symbolic links.
+. Made the apt package list recordable and restorable as `apt-manual.txt`.
+. Set up automatic tracking of changes under `/etc/` with `etckeeper`.
+. Built a backup strategy combining rsync and Timeshift.
+. Tried (or planned) restoring from dotfiles in practice.
+
+What you hold now:
+* A `dotfiles/` repository (backed up on GitHub / GitLab / similar).
+* Documentation of a reproducible environment.
+* The habit of monthly updates.
+
+This closes Part 3. *Your Debian environment has evolved from "made it and use it" to "a reproducible blueprint."* This was structurally hard on Windows.
+
+In Part 4 (Chapters 14–17), we move into building the development environment. Terminal, editor, Git, language runtimes, and Claude Code — combined on Debian, you take a step into being a builder.
+
+'''
+
+The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
+endif::[]
+
+// ===== article: 14-dev-tools =====
+////
+slug: claude-debian-14-dev-tools
+number: 14
+title.ja: 第14章 開発ツールの構築
+title.en: Chapter 14 — Building the Development Tools
+subtitle.ja: ターミナル、シェル、エディタ、Git——ビルダーの道具を揃える
+subtitle.en: Terminal, shell, editor, Git — the toolkit of a builder
+description.ja: Debianに開発のための基盤を整える。ターミナルエミュレータ、シェル（bash/zsh/fish）、エディタ（Zed/Neovim/PyCharm Community）、Git、SSH鍵。Claudeと一緒に、自分のワークフローに合った道具立てを決める。
+description.en: Lay the foundation for development on Debian. Terminal emulator, shell (bash / zsh / fish), editor (Zed / Neovim / PyCharm Community), Git, SSH keys. Together with Claude, decide on a toolkit that fits your workflow.
+date: 2026.04.23
+label: Claude × Debian 14
+cta_label.ja: Claudeと学ぶ
+cta_label.en: Learn with Claude
+cta_title.ja: 開発は、道具から始まる。
+cta_title.en: Development starts from the tools.
+cta_text.ja: 一番使うツールが一番手に馴染むことが、生産性の土台になる。派手な機能より、キー一つの反応速度が効く。
+cta_text.en: When the tools you use most fit your hands best, productivity has its foundation. The response speed of one keypress matters more than flashy features.
+cta_btn1_text.ja: 第15章へ進む
+cta_btn1_text.en: Continue to Chapter 15
+cta_btn1_link.ja: /claude-debian/15-widget-architecture/
+cta_btn1_link.en: /en/claude-debian/15-widget-architecture/
+cta_btn2_text.ja: 第13章に戻る
+cta_btn2_text.en: Back to Chapter 13
+cta_btn2_link.ja: /claude-debian/13-config-management/
+cta_btn2_link.en: /en/claude-debian/13-config-management/
+////
+ifdef::env-github[]
+= 第14章 開発ツールの構築
+endif::[]
+ifdef::lang-ja[]
+== この部の位置づけ
+
+第3部までで Debian を日常業務に使える状態にした。第4部は、その環境の上に*自分でものを作るための基盤*を組む。
+
+第4部は開発の話だが、「プログラマ向け」ではない。Claudeと一緒にコードを書く時代、*誰もが少しずつビルダーになれる*。この教科書を読んでいるあなたが、一行もコードを書いたことがなくても問題ない。ただ、道具立てだけは揃えておく。必要になったときに動ける状態にする——それが第14章の目的だ。
+
+== 第一節 ターミナルエミュレータ
+
+=== 候補
+
+* *GNOME Terminal*（GNOMEの標準）
+* *Konsole*（KDEの標準）
+* *Xfce Terminal*（Xfceの標準）
+* *Alacritty*：GPU描画で高速
+* *WezTerm*：高機能、設定はLua
+* *Kitty*：GPU描画、設定は独自形式
+
+=== 選び方
+
+最初は DE の標準ターミナルで十分。しばらく使って不満が出たら、Alacritty か WezTerm を試す。差は*描画速度と設定の柔軟さ*だ。
+
+=== 設定
+
+* フォント：等幅の日本語対応（Source Han Code JP、HackGen、BIZ UDゴシックなど）
+* フォントサイズ：普段は 11〜13pt、疲れた日は大きく
+* 配色：ダーク系（Solarized Dark、Dracula、Gruvbox）が疲れにくい
+* 透明度：低め（5〜15%）で背景がうっすら見える程度
+
+=== Claudeに聞いてみよう①：ターミナル選びとテーマ
+
+____
+私は〔DE名〕を使っていて、開発は〔コーディング頻度／主に何をする〕です。
+ターミナルエミュレータを選ぶとしたら、標準／Alacritty／WezTerm のどれが適切か理由付きで推薦してください。
+また、目が疲れない配色スキーム（ダーク系）を、モニタの色温度と時間帯別に提案してください。
+____
+
+== 第二節 シェル：bash か zsh か fish か
+
+=== 三つの候補
+
+* *bash*：Debianのデフォルト。全環境で動く
+* *zsh*：補完と履歴が強力、カスタマイズ性が高い
+* *fish*：補完とシンタックスハイライトが即時、学習曲線が緩やか
+
+=== 本書の推奨
+
+*初心者は bash のまま、しばらく使ってから zsh に移行*。fish も選択肢だが、POSIX 互換でない書き方があるので、業務スクリプト環境としては慎重に。
+
+=== bashの最低限のカスタマイズ
+
+`~/.bashrc` に次を足すと、体感が変わる。
+
+```bash
+# 履歴を豊富に
+export HISTSIZE=50000
+export HISTFILESIZE=100000
+export HISTCONTROL=ignoreboth:erasedups
+
+# カラフルな ls
+alias ll='ls -alFh --color=auto'
+alias la='ls -A --color=auto'
+
+# プロンプトをGit対応に（最小版）
+parse_git_branch() {
+    git branch 2>/dev/null | sed -n '/\* /s///p'
+}
+PS1='\[\e[32m\]\u@\h\[\e[m\] \[\e[34m\]\w\[\e[m\] \[\e[33m\]$(parse_git_branch)\[\e[m\]\n$ '
+```
+
+=== zshに移行する場合
+
+```bash
+sudo apt install zsh
+chsh -s $(which zsh)     # ログインシェルを zsh に
+```
+
+フレームワークは `oh-my-zsh` が有名だが、重いので `starship`（プロンプト）+ 最小限のプラグインで足りる。
+
+=== Claudeに聞いてみよう②：シェル選択と最小設定
+
+____
+私は〔コマンドライン経験〕です。bash、zsh、fish の三者から選ぶとしたら？
+選んだシェルの `.〇〇rc` を、実用的な最小構成で書いてください。
+履歴管理、補完、プロンプト、alias の主要部分を含めて。
+____
+
+== 第三節 エディタ
+
+=== 本書の三つの推奨
+
+VS Code は人気だが、本書では *あえて選ばない*。Microsoft 製で、テレメトリ
+の挙動・拡張機能の肥大・「全部入り」の重さが、Markdown と Python と
+テキストで仕事をする AI ネイティブな道具立てと噛み合わない。
+
+代わりに、*用途と気質で選べる三つ* を推す。
+
+==== 1. Zed ── 余計な機能が一切ない超高速 GUI
+
+VS Code からノイズと重さだけを完全に消し去り、*純粋にテキストと向き合いたい*
+ならこれ。Rust + GPU レンダリングで起動から入力反応までが圧倒的に速い。
+LSP・Copilot/Claude 連携も最初から入っているので、機能で困らない。
+拡張地獄から抜けたい人向け。
+
+```bash
+# Flatpak が一番楽
+flatpak install flathub dev.zed.Zed
+```
+
+==== 2. Neovim ── ターミナル完結の極致
+
+マウスすら不要になる。*画面の左にエディタ、右に Claude(または `tmux` で分割)を置き、手元(キーボード)の操作だけで全てを最速で完結させたい*ならこれ。
+SSH 越しのサーバ作業もそのまま同じ操作で続く。
+
+```bash
+sudo apt install neovim
+```
+
+最低限の設定(LSP, treesitter, Telescope) は LazyVim や AstroNvim を使えば
+1 分で完了。Vim キーバインドは一度覚えると 10 年 20 年使い続けられる。
+
+==== 3. PyCharm Community ── 圧倒的なコード解析力を持つ堅牢な要塞
+
+無料の Community 版で十分。*AI が書いたコードの構造的なミスを許さず、自社プロダクトのロジックを安全に守り抜く* ならこれ。型推論・リファクタ・
+デバッガの完成度は Zed と Neovim を圧倒する。Python が主な業務なら第一選択。
+
+```bash
+# Flatpak から
+flatpak install flathub com.jetbrains.PyCharm-Community
+```
+
+=== どう選ぶか
+
+|===
+| 気質・用途 | 選ぶ
+| 静寂と速度、UI の美しさを優先 | *Zed*
+| キーボード完結、SSH 越しでも同じ操作、長期投資 | *Neovim*
+| 大規模 Python コード、リファクタ多発、業務責任 | *PyCharm Community*
+|===
+
+迷ったら *Zed から始める*。学習コストが一番低い。Vim キーバインドが
+気に入れば Neovim に降りていけばいいし、Python の業務が増えたら
+PyCharm を併用すればいい。
+
+=== Vim 最低限は別途身につける
+
+主エディタが Zed でも PyCharm でも、*サーバーに入ったときに `vim` が触れる*
+のは最低限の基礎教養。
+
+```
+hjkl        カーソル移動
+i           挿入モード
+Esc         ノーマルモードに戻る
+:w          保存
+:q          終了
+:wq         保存して終了
+:q!         保存せず終了
+```
+
+これだけ覚えれば `sudo vim /etc/〇〇` の場面で困らない。
+Neovim を主にすれば、これも自然に身につく。
+
+=== Claudeに聞いてみよう③:エディタ構成
+
+____
+私は〔現在の主力エディタ:Word / メモ帳 / VS Code / その他〕で、
+書くのは〔日本語の文書 / Python / Markdown / その他〕が中心です。
+Zed / Neovim / PyCharm Community の三つから、私の用途に合うのは
+どれか、選定の根拠と最初の 30 分で何を設定すべきかを教えてください。
+副・緊急時用に何を併用するかも提案してください。
+____
+
+== 第四節 Git
+
+=== 初期設定
+
+```bash
+sudo apt install git
+
+# ユーザー情報
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+
+# エディタ(コミットメッセージなどを開く既定エディタ)
+git config --global core.editor "zed --wait"    # Zed の場合
+# git config --global core.editor "nvim"        # Neovim の場合
+# git config --global core.editor "charm"       # PyCharm の場合(JetBrains Toolbox から)
+
+# デフォルトブランチ名
+git config --global init.defaultBranch main
+
+# pull戦略
+git config --global pull.rebase false
+```
+
+=== SSH鍵を作る
+
+GitHubやGitLabに安全に接続するため、SSH鍵を作る。
+
+```bash
+ssh-keygen -t ed25519 -C "you@example.com"
+# パスフレーズを設定
+cat ~/.ssh/id_ed25519.pub
+# 出力をコピーして、GitHub → Settings → SSH and GPG keys に貼る
+```
+
+=== 最初の一連の操作
+
+```bash
+mkdir ~/my-project
+cd ~/my-project
+git init
+echo "# My Project" > README.md
+git add README.md
+git commit -m "initial commit"
+```
+
+GitHubにリポジトリを作って、リモート追加。
+
+```bash
+git remote add origin git@github.com:あなた/my-project.git
+git push -u origin main
+```
+
+=== Claudeに聞いてみよう④：Git の自分用チートシート
+
+____
+私は Git 初心者です。日常で使う操作を、次の分類で一枚にまとめたチートシートを作ってください：
+(1) 始める（init, clone）
+(2) 記録する（add, commit, log）
+(3) 送る／受ける（push, pull, fetch）
+(4) ブランチ（branch, checkout, merge）
+(5) 間違いを戻す（reset, restore, stash, revert）
+(6) 共同作業（pull request の基本フロー）
+
+各コマンドに、最小の例と「このときに使う」を添えてください。
+____
+
+== 第五節 開発者向けのシステム調整
+
+=== 重要なディレクトリ
+
+```
+~/Projects/           # プロジェクト置き場
+~/bin/                # 自作スクリプト（PATHに追加）
+~/.local/bin/         # pipx や cargo がここに入れることが多い
+```
+
+`~/.bashrc` に次を足して PATH を通す。
+
+```bash
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+```
+
+=== 基本の開発パッケージ
+
+```bash
+sudo apt install build-essential curl wget jq ripgrep fd-find tree htop
+```
+
+* `build-essential`：gcc等。多くのソフトのビルドに必要
+* `jq`：JSON整形
+* `ripgrep`（コマンド：`rg`）：grepの高速版
+* `fd-find`（`fd`）：findの高速版
+* `htop`：プロセス監視
+
+=== Claudeに聞いてみよう⑤：私の開発向けセットアップ
+
+____
+私の用途は〔Webフロントエンド／データ分析／スクリプト／その他〕です。
+Debian で開発を始めるための共通パッケージを、apt、pipx、npm、cargo のどれで入れるべきか、優先順にリストしてください。
+各パッケージの用途を一行で添えてください。
+____
+
+== 第六節 Claude Code のセットアップ
+
+Claude Code は、ターミナル上で Claude と対話しながらコードを読み書きする
+ツール。この教科書の第 4 部の核だ。
+
+=== 推奨: ネイティブインストーラ
+
+2025 年以降、*ネイティブインストーラが推奨*になった。Node.js / npm に
+依存せず、*バックグラウンドで自動更新*される。
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+これだけで `~/.local/bin/claude` 等に配置される。インストール後、
+新しいシェルで `claude --version` が通ることを確認。
+
+____
+補足: macOS / Linux / WSL すべて同じスクリプトで入る。
+Debian / Fedora / RHEL / Alpine では `apt` `dnf` `apk` 経由でも入る
+(Anthropic の公式リポジトリを案内に従って追加する形)。
+古い「`npm install -g @anthropic-ai/claude-code`」方式は今でも動くが、
+*ネイティブ版に乗り換える*のが今後の正解。
+____
+
+=== 初回ログインと起動
+
+```bash
+# 初回:ブラウザが開いて Anthropic アカウントでログイン
+claude
+
+# プロジェクトディレクトリに入って起動
+cd ~/Projects/my-project
+claude
+```
+
+これで対話が始まる。プロジェクトのファイルが Claude から見える状態。
+
+=== Claude Code の勘所
+
+* *プロジェクトディレクトリで起動する*: そのディレクトリ配下のファイルを読める
+* *明確に指示する*: 「この関数を書き換えて」「この機能を追加して」のように
+* *変更は確認する*: Claude Code は変更前に確認を求める。常に中身を見てから承認
+* *`/help` で機能を覚える*: 起動中に `/` を打つとスラッシュコマンド一覧
+* *CLAUDE.md でプロジェクト文脈を残す*: ルートに置くと毎回読み込まれる
+
+=== Claudeに聞いてみよう⑥:Claude Code 運用の原則
+
+____
+Claude Code を使う際の、初心者が気を付けるべき原則を五つ教えてください:
+(1) 始め方(プロジェクトの組み方)
+(2) 指示の仕方
+(3) 変更の承認の判断
+(4) トラブル時の対処
+(5) 使ってはいけない場面
+____
+
+== まとめ
+
+この章でやったこと：
+
+. ターミナルエミュレータを選び、フォントと配色を整えた
+. シェル（bash か zsh）を決め、`.bashrc` / `.zshrc` を整えた
+. エディタ（Zed / Neovim / PyCharm Community のいずれか + Vim 最低限）を構築した
+. Git を初期設定し、SSH鍵を作ってGitHubに繋いだ
+. 開発向け基本パッケージを入れた
+. Claude Code をインストールした
+
+手元の状態：
+* 手に馴染むターミナルとシェル
+* Git が使えるエディタ環境
+* Claudeとコードで対話できる環境
+
+次の第15章では、具体的に*Widgetアーキテクチャ*——シンプルで再利用可能なUIコンポーネントの作り方——を題材に、Claude と一緒にコードを書く実例を進める。題材は小さなGUIアプリだが、考え方は別の領域にも転用できる。
+
+'''
+
+シリーズ全体はlink:/claude-debian/[Claudeと一緒に学ぶDebian 一覧]から辿れる。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
+endif::[]
+ifdef::lang-en[]
+== Where This Part Fits
+
+Through Part 3, we got Debian to a state where you can do daily work. Part 4 builds, on top of that environment, *the foundation for making things yourself*.
+
+Part 4 is about development, but it isn't "for programmers." In an era when you write code together with Claude, *everyone can become a builder, a little at a time*. Even if you, reading this textbook, have never written a single line of code, that's fine. You just want the toolkit ready — so that when you need to act, you can. That is what Chapter 14 is for.
+
+== Section 1 — Terminal Emulators
+
+=== Candidates
+
+* *GNOME Terminal* (GNOME's standard).
+* *Konsole* (KDE's standard).
+* *Xfce Terminal* (Xfce's standard).
+* *Alacritty.* GPU-accelerated, fast.
+* *WezTerm.* Feature-rich, configured in Lua.
+* *Kitty.* GPU-accelerated, with its own configuration format.
+
+=== How to Choose
+
+The DE's standard terminal is enough at first. Use it for a while; if friction shows up, try Alacritty or WezTerm. The difference is *rendering speed and configuration flexibility*.
+
+=== Settings
+
+* Font: a Japanese-aware monospace (Source Han Code JP, HackGen, BIZ UD Gothic).
+* Font size: usually 11–13 pt; larger on tired days.
+* Color scheme: a dark theme (Solarized Dark, Dracula, Gruvbox) is easier on the eyes.
+* Transparency: low (5–15%) — so the background is faintly visible.
+
+=== Ask Claude ①: Terminal Choice and Theme
+
+____
+I use [DE name], and my development is [coding frequency / what I mainly do].
+Recommend, with reasons, which I should pick: the standard, Alacritty, or WezTerm.
+Also propose a dark color scheme that is gentle on the eyes, sorted by monitor color temperature and time of day.
+____
+
+== Section 2 — Shell: bash, zsh, or fish
+
+=== Three Candidates
+
+* *bash.* Debian's default. Works everywhere.
+* *zsh.* Powerful completion and history; highly customizable.
+* *fish.* Instant completion and syntax highlighting; gentle learning curve.
+
+=== What This Book Recommends
+
+*Beginners stay on bash, then switch to zsh after a while.* fish is also an option, but it has non-POSIX-compatible writing, so be careful when using it for business scripts.
+
+=== Minimum Customization for bash
+
+Adding the following to `~/.bashrc` changes the feel.
+
+```bash
+# More history
+export HISTSIZE=50000
+export HISTFILESIZE=100000
+export HISTCONTROL=ignoreboth:erasedups
+
+# Colorful ls
+alias ll='ls -alFh --color=auto'
+alias la='ls -A --color=auto'
+
+# Git-aware prompt (minimal)
+parse_git_branch() {
+    git branch 2>/dev/null | sed -n '/\* /s///p'
+}
+PS1='\[\e[32m\]\u@\h\[\e[m\] \[\e[34m\]\w\[\e[m\] \[\e[33m\]$(parse_git_branch)\[\e[m\]\n$ '
+```
+
+=== If You Switch to zsh
+
+```bash
+sudo apt install zsh
+chsh -s $(which zsh)     # change login shell to zsh
+```
+
+`oh-my-zsh` is the famous framework, but it is heavy. `starship` (a prompt) plus a minimal set of plugins is enough.
+
+=== Ask Claude ②: Shell Choice and Minimal Setup
+
+____
+My command-line experience is [describe]. Of bash, zsh, fish — which should I pick?
+Write the `.[shell]rc` for the chosen shell as a practical minimum.
+Include the main parts: history, completion, prompt, aliases.
+____
+
+== Section 3 — Editor
+
+=== Three Recommendations
+
+VS Code is popular, but this book *deliberately doesn't pick it*. It's
+Microsoft's, with telemetry that's hard to fully turn off, an extension
+ecosystem that bloats fast, and a "kitchen-sink" weight that doesn't fit
+the lean AI-native toolkit (Markdown + Python + plain text) we're after.
+
+Instead, we recommend *three editors, chosen by temperament and use case*.
+
+==== 1. Zed — silent, ultra-fast, modern GUI
+
+A clean wipe of VS Code's noise and weight. *If you want to face the text itself, nothing else*, this is it. Rust + GPU rendering give it
+near-instant launch and keystroke response. LSP and Copilot/Claude
+integrations are built in, so capability isn't the trade. For people
+done with extension hell.
+
+```bash
+# Flatpak is the easiest install
+flatpak install flathub dev.zed.Zed
+```
+
+==== 2. Neovim — terminal-only, taken to its limit
+
+Mouse becomes optional. *Editor on the left, Claude (or `tmux` split) on the right, every action stays under your fingers*, and SSH'd servers feel
+exactly the same. Pick this if you want maximum speed via the keyboard,
+and if a 10–20 year skill investment sounds good.
+
+```bash
+sudo apt install neovim
+```
+
+A minimal modern setup (LSP, treesitter, Telescope) is one minute away
+via LazyVim or AstroNvim.
+
+==== 3. PyCharm Community — robust fortress with deep code analysis
+
+The free Community edition is enough. *For when you need to refuse structural mistakes in AI-generated code and protect serious product logic.* Type inference, refactoring, debugger — these dwarf both Zed
+and Neovim. First choice if Python is your main work.
+
+```bash
+flatpak install flathub com.jetbrains.PyCharm-Community
+```
+
+=== How to Choose
+
+|===
+| Temperament / Use | Pick
+| Quiet, fast, beautiful UI | *Zed*
+| Keyboard-everything, same flow over SSH, long-term skill | *Neovim*
+| Large Python codebases, frequent refactors, business responsibility | *PyCharm Community*
+|===
+
+When in doubt, *start with Zed*. Lowest learning cost. If Vim bindings
+grow on you, descend to Neovim; if Python work scales up, add PyCharm
+beside it.
+
+=== Bare-Minimum Vim Is Still Required
+
+Whichever you pick as primary, *being able to use `vim` when you SSH into a server* is basic literacy.
+
+```
+hjkl        cursor movement
+i           insert mode
+Esc         back to normal mode
+:w          save
+:q          quit
+:wq         save and quit
+:q!         quit without saving
+```
+
+This much is enough for `sudo vim /etc/[whatever]` situations. If you
+choose Neovim as primary, this comes for free.
+
+=== Ask Claude ③: Editor Configuration
+
+____
+My current main editor is [Word / Notepad / VS Code / other], and what
+I write is mainly [Japanese documents / Python / Markdown / other].
+From the three options Zed, Neovim, and PyCharm Community, which fits
+my use? Tell me the reasoning and what to set up in the first 30 minutes.
+Also suggest what to keep beside it as secondary or emergency editor.
+____
+
+== Section 4 — Git
+
+=== Initial Settings
+
+```bash
+sudo apt install git
+
+# User info
+git config --global user.name "Your Name"
+git config --global user.email "you@example.com"
+
+# Editor (used to open commit messages, etc.)
+git config --global core.editor "zed --wait"    # for Zed
+# git config --global core.editor "nvim"        # for Neovim
+# git config --global core.editor "charm"       # for PyCharm (via JetBrains Toolbox)
+
+# Default branch name
+git config --global init.defaultBranch main
+
+# Pull strategy
+git config --global pull.rebase false
+```
+
+=== Make an SSH Key
+
+For secure connections to GitHub or GitLab, make an SSH key.
+
+```bash
+ssh-keygen -t ed25519 -C "you@example.com"
+# set a passphrase
+cat ~/.ssh/id_ed25519.pub
+# copy the output and paste it into GitHub → Settings → SSH and GPG keys
+```
+
+=== The First Round of Operations
+
+```bash
+mkdir ~/my-project
+cd ~/my-project
+git init
+echo "# My Project" > README.md
+git add README.md
+git commit -m "initial commit"
+```
+
+Create a repository on GitHub, then add the remote.
+
+```bash
+git remote add origin git@github.com:[you]/my-project.git
+git push -u origin main
+```
+
+=== Ask Claude ④: A Personal Git Cheatsheet
+
+____
+I'm a Git beginner. Make me a one-page cheatsheet of daily operations, sorted into:
+(1) Start (init, clone).
+(2) Record (add, commit, log).
+(3) Send / receive (push, pull, fetch).
+(4) Branches (branch, checkout, merge).
+(5) Undo mistakes (reset, restore, stash, revert).
+(6) Collaboration (the basic pull-request flow).
+
+For each command, add a minimal example and "use this when …".
+____
+
+== Section 5 — System Adjustments for Developers
+
+=== Important Directories
+
+```
+~/Projects/           # where projects live
+~/bin/                # personal scripts (added to PATH)
+~/.local/bin/         # pipx and cargo often install here
+```
+
+Add this to `~/.bashrc` to put them on PATH.
+
+```bash
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+```
+
+=== Basic Development Packages
+
+```bash
+sudo apt install build-essential curl wget jq ripgrep fd-find tree htop
+```
+
+* `build-essential`: gcc and friends. Required to build many things.
+* `jq`: JSON formatting.
+* `ripgrep` (command: `rg`): a fast grep.
+* `fd-find` (`fd`): a fast find.
+* `htop`: process monitor.
+
+=== Ask Claude ⑤: My Developer Setup
+
+____
+My use case is [web frontend / data analysis / scripting / other].
+List, in priority order, the common packages I should install for development on Debian, and whether each should come from apt, pipx, npm, or cargo.
+Add a one-line purpose for each package.
+____
+
+== Section 6 — Setting Up Claude Code
+
+Claude Code is the tool for reading and writing code in dialogue with
+Claude in the terminal. It is the core of Part 4 of this textbook.
+
+=== Recommended: Native Installer
+
+Since 2025, the *native installer is the recommended path*. It does not
+depend on Node.js / npm and *auto-updates in the background.*
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+That places `claude` under `~/.local/bin/` (or similar). Open a fresh
+shell and verify with `claude --version`.
+
+____
+Note: the same script works on macOS, Linux, and WSL. On Debian /
+Fedora / RHEL / Alpine, official `apt` / `dnf` / `apk` packages are
+also available — follow the install page. The older
+`npm install -g @anthropic-ai/claude-code` route still works, but
+*moving to the native install is the right thing now.*
+____
+
+=== First Login and Launch
+
+```bash
+# First run: a browser opens, sign in with your Anthropic account
+claude
+
+# Move into a project and start
+cd ~/Projects/my-project
+claude
+```
+
+The dialogue begins, and Claude can see the files under the directory.
+
+=== Knack of Claude Code
+
+* *Launch from the project directory.* It can read files under that directory.
+* *Be explicit in instructions.* "Rewrite this function," "add this feature," and so on.
+* *Confirm changes.* Claude Code asks before making changes. Always look at the content before approving.
+* *Use `/help`.* Type `/` inside a session to list slash commands.
+* *Leave project context in `CLAUDE.md`.* Drop a `CLAUDE.md` at the project root and it gets loaded each session.
+
+=== Ask Claude ⑥: Principles for Operating Claude Code
+
+____
+Tell me five principles a beginner should keep in mind when using Claude Code:
+(1) How to start (project layout).
+(2) How to phrase instructions.
+(3) How to judge whether to approve a change.
+(4) What to do when things go wrong.
+(5) When not to use it.
+____
+
+== Summary
+
+What you did in this chapter:
+
+. Picked a terminal emulator and tuned the font and color scheme.
+. Decided on a shell (bash or zsh) and tuned `.bashrc` / `.zshrc`.
+. Built up the editor (Zed / Neovim / PyCharm Community plus minimum Vim).
+. Configured Git, made an SSH key, and connected to GitHub.
+. Installed the basic developer packages.
+. Installed Claude Code.
+
+Where you are now:
+* A terminal and shell that fit your hands.
+* An editor environment with Git wired in.
+* An environment where you can dialogue with Claude through code.
+
+In Chapter 15, we move into a concrete example: writing code with Claude while exploring *the Widget architecture* — the practice of building simple, reusable UI components. The subject is a small GUI app, but the way of thinking transfers to other domains.
+
+'''
+
+The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
+endif::[]
+
+// ===== article: 15-widget-architecture =====
+////
+slug: claude-debian-15-widget-architecture
+number: 15
+title.ja: 第15章 Widget アーキテクチャの実装
+title.en: Chapter 15 — Implementing the Widget Architecture
+subtitle.ja: 小さな再利用可能な部品から、自分のアプリを組み立てる
+subtitle.en: Build your own app from small, reusable parts
+description.ja: Widgetアーキテクチャ——独立した小さな部品を組み合わせてアプリを作る設計——をClaudeと一緒に学ぶ。小さな時計アプリを題材に、Widget分割、状態管理、レイアウト、再利用の原則を実装してみる。
+description.en: Learn the Widget architecture — designing apps as a composition of small independent parts — together with Claude. Take a small clock app as the subject and implement Widget decomposition, state management, layout, and reuse.
+date: 2026.04.23
+label: Claude × Debian 15
+cta_label.ja: Claudeと学ぶ
+cta_label.en: Learn with Claude
+cta_title.ja: 大きな機能は、小さな部品の和。
+cta_title.en: A big feature is the sum of small parts.
+cta_text.ja: 一つのWidgetを、独立した小さな単位として作る。それを組み合わせる。このパターンを身につければ、あらゆるUIが手の届く範囲に入る。
+cta_text.en: Build a single Widget as an independent small unit. Combine them. Once this pattern is in your hands, every UI is within reach.
+cta_btn1_text.ja: 第16章へ進む
+cta_btn1_text.en: Continue to Chapter 16
+cta_btn1_link.ja: /claude-debian/16-claude-development/
+cta_btn1_link.en: /en/claude-debian/16-claude-development/
+cta_btn2_text.ja: 第14章に戻る
+cta_btn2_text.en: Back to Chapter 14
+cta_btn2_link.ja: /claude-debian/14-dev-tools/
+cta_btn2_link.en: /en/claude-debian/14-dev-tools/
+////
+ifdef::env-github[]
+= 第15章 Widget アーキテクチャの実装
+endif::[]
+ifdef::lang-ja[]
+== Widgetとは何か
+
+Widgetは、*独立して動く小さなUIの部品*のことだ。ボタン、入力欄、リスト、カード、時計、グラフ——一つ一つが自分の状態と見た目を持ち、他から切り離しても動く。
+
+大きなアプリは、Widgetを組み合わせて作る。階層的に重ねて、全体を構成する。ReactのComponent、Flutterの Widget、VueのComponent、FletのControl——呼び方は違っても、考え方は共通だ。
+
+この章では、小さな時計アプリを題材に、Widgetアーキテクチャを体得する。*コードそのものはClaudeが書く*。あなたが身につけるのは、*設計の考え方*と*Claudeへの指示の仕方*だ。
+
+== 第一節 題材：シンプルなダッシュボード
+
+作るのは次のようなアプリだ。
+
+```
++-------------------------------+
+|   時計（13:42:30）             |
++-------------------------------+
+|   今日の予定（3件）            |
+|   - 10:00 ミーティング          |
+|   - 14:00 資料提出             |
+|   - 18:00 夕食                 |
++-------------------------------+
+|   天気（晴れ、18°C）            |
++-------------------------------+
+```
+
+三つのWidgetが積み重なる構造。各Widgetは独立して動き、それぞれ別のデータ源を持つ。
+
+=== 使う言語とフレームワーク
+
+本書の推奨は *Python + Flet*(Flutter ベース、Python から扱える)。
+Dart / Flutter の準備が要らず、最短で動く。
+
+Python のパッケージ管理は *`uv`* を使う(第 17 章で詳述)。`pip` + `venv`
+の組み合わせよりも 10〜100 倍速く、*プロジェクトの再現性が高い*。
+`requirements.txt` の代わりに `pyproject.toml` + `uv.lock` を使う。
+
+```bash
+# uv を入れる(初回のみ)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# プロジェクト作成 + Flet 追加
+mkdir ~/Projects/my-dashboard && cd ~/Projects/my-dashboard
+uv init
+uv add flet
+```
+
+これで `pyproject.toml`、`uv.lock`、`.venv/` が自動で作られる。
+別の PC に持っていく時は `git clone && uv sync` の *2 行で完全再現* できる。
+
+== 第二節 Widgetに分割する
+
+=== 設計の第一歩
+
+書き始める前に、*どのWidgetに分けるか*を決める。
+
+* *ClockWidget*：現在時刻を1秒ごとに更新
+* *ScheduleWidget*：今日の予定を表示
+* *WeatherWidget*：現在の天気を表示
+* *DashboardApp*：上の三つを並べる親
+
+分けるときの原則：
+. *一つのWidgetは、一つの関心事しか持たない*（時計は時計、天気は天気）
+. *Widget間で直接データをやり取りしない*（親経由でのみ渡す）
+. *Widgetは外から使うAPIを最小限にする*（初期化と更新だけ）
+
+=== Claudeに聞いてみよう①：Widget分割の相談
+
+____
+Fletで、時計・予定・天気を並べたダッシュボードアプリを作ります。
+次の三つのWidgetに分けようと思います：
+* ClockWidget：時刻を1秒ごとに更新
+* ScheduleWidget：その日の予定リスト
+* WeatherWidget：現在の天気
+
+この分割は妥当か、改善案があるか、教えてください。
+各Widgetの責務（何を知り、何を表示し、外とどう通信するか）を表にしてください。
+____
+
+Claudeとの往復で、設計を固める。この段階ではコードは書かない。*設計だけで30分〜1時間使う価値がある。*
+
+== 第三節 一つ目のWidget：時計
+
+=== Claudeに書かせる指示
+
+最初のWidgetをClaudeに書かせる。
+
+____
+Flet で ClockWidget を書いてください。
+
+要件：
+* 現在時刻を `HH:MM:SS` 形式で表示
+* 1秒ごとに更新
+* 文字は大きく、中央揃え
+* 独立したクラスとして実装（main関数とは分離）
+
+コード全体を一ファイルで。実行するとClockWidget 単独で動くサンプルも添えてください。
+Python 3.11以上、Flet 最新版で動くことを前提に。
+____
+
+Claudeが返したコードを読む。*全部理解できなくてよい*。次の三点だけ確認する。
+
+. クラスの名前が `ClockWidget` になっているか
+. 時刻を更新するロジックがクラスの中にあるか
+. main関数でそのクラスを使うサンプルが動きそうか
+
+=== 実行してみる
+
+```bash
+cd ~/Projects/my-dashboard
+# Claudeのコードを clock_widget.py として保存
+python3 clock_widget.py
+```
+
+ウィンドウが開いて、時計が動けば成功。動かなければ、エラーをそのままClaudeに貼って聞く。
+
+=== Claudeに聞いてみよう②：エラー対応
+
+____
+次のコードを実行したところ、エラーが出ました：
+```
+〔コード〕
+```
+
+```
+〔エラーメッセージ全文〕
+```
+
+原因と修正方法を教えてください。修正後のコード全文を示してください。
+____
+
+== 第四節 Widget同士の組み合わせ
+
+=== 親 Widget を作る
+
+三つのWidgetを並べる親を作る。
+
+____
+ClockWidget、ScheduleWidget、WeatherWidget の三つを縦に並べて表示する DashboardApp を書いてください。
+各Widgetは既に別ファイル（clock_widget.py, schedule_widget.py, weather_widget.py）にあるとします。
+
+要件：
+* 各Widgetは独立したクラス
+* DashboardAppはそれらを import して配置するだけ
+* 画面サイズはウィンドウ幅に追従
+* 縦スクロール可能
+____
+
+これがWidgetアーキテクチャの核：*親は子を配置するだけ*。子の中身には口を出さない。
+
+=== ScheduleWidgetとWeatherWidget
+
+同じ流れで、残り二つもClaudeに書かせる。Scheduleは一旦ハードコードした予定を表示、Weatherはダミーデータで始める。
+
+*大事なのは：最初は動く最小版を作って、その後で本物のデータに繋ぐ*。いきなり外部APIに繋ぐと、デバッグが大変になる。
+
+== 第五節 状態管理の入り口
+
+=== Widget 内部の状態
+
+ClockWidgetは「現在時刻」という状態を持つ。Flet では次のように扱う。
+
+```python
+# Claudeに書かせた例（概念）
+class ClockWidget(ft.UserControl):
+    def build(self):
+        self.time_text = ft.Text(size=48)
+        return self.time_text
+
+    def did_mount(self):
+        # 1秒ごとに更新するタイマーを開始
+        ...
+```
+
+=== 親から子にデータを渡す
+
+WeatherWidget に「地名」を親から渡したいとき。
+
+```python
+class WeatherWidget(ft.UserControl):
+    def __init__(self, city: str):
+        super().__init__()
+        self.city = city
+```
+
+親が `WeatherWidget(city="Tokyo")` のように初期化する。
+
+=== Claudeに聞いてみよう③：状態管理の質問
+
+____
+Fletでの状態管理について教えてください：
+(1) Widget内部で持つべき状態（時計の現在時刻、天気の最新データ）
+(2) 親から子に渡すべきもの（表示地名、テーマ色）
+(3) 親子を跨ぐ状態の扱い（複数Widgetが共有する設定）
+
+初心者向けの単純な方針を、ダッシュボードアプリの例で示してください。
+過度に複雑な状態管理ライブラリは避けてください。
+____
+
+== 第六節 見た目を整える
+
+=== 色、フォント、余白
+
+一旦動いたら、見た目を整える。Claudeに指示する。
+
+____
+現在のDashboardAppの見た目を、次の原則で整えてください：
+* ダークテーマ（背景 #1a1a1a、前景 #e0e0e0）
+* 各Widget間の余白 16px
+* 角丸のカード風 (border_radius=12)
+* 時計は大きめ（72pt）、他は中くらい
+* 日本語対応フォント（Noto Sans JP）
+
+コード全体を書き換えるのではなく、スタイルをまとめた定数セクションを追加してください。
+____
+
+*見た目を整える過程で、コードの読みやすさも上がる*。色や大きさを定数にまとめる設計は、後の変更を楽にする。
+
+== 第七節 Widget の再利用
+
+=== 応用：タイマーWidget
+
+ClockWidgetができたので、同じ構造で「カウントダウンタイマー」も作れる。
+
+____
+ClockWidgetと同じ構造で、指定した分数をカウントダウンするTimerWidgetを作ってください。
+共通できる部分があれば、基底クラス BaseTimeWidget を作って両方を派生させてください。
+____
+
+ここで*コードの共通化*が起きる。同じ構造のWidgetが複数あるとき、共通部分をまとめる——これがソフトウェアの成長の仕方だ。
+
+=== 重要な禁じ手
+
+共通化を*やりすぎない*。最初から抽象化すると、後の変更が難しくなる。
+
+* 2回同じコードが出たら：まだコピペ
+* 3回目に出たら：共通化を検討
+* 4回以上出る予感：共通化する
+
+この感覚は、Claudeに相談しながら身につける。
+
+=== Claudeに聞いてみよう④：過剰設計の回避
+
+____
+私は Widget を作っています。今、ClockWidget と TimerWidget で似たコードが出てきました。
+次のどれが今の段階で適切ですか：
+(1) そのまま二つの独立したWidgetで置いておく
+(2) 共通部分を関数に抽出する
+(3) 基底クラス BaseTimeWidget を作って派生させる
+(4) イベントドリブンなアーキテクチャに作り変える
+
+現状のコード〔貼る〕と、今後の見通し〔Claude対話UIも作るかも〕を踏まえて判断してください。
+____
+
+== 第八節 この章で学んだ「考え方」
+
+コード以上に、次の考え方が残れば成功だ。
+
+. *書き始める前に分割を決める。* Widgetに分ける境界が、そのまま設計の品質になる
+. *まず動く最小版を。* 機能を足すのは後。最初は空のカードでもいい
+. *親は子を配置するだけ。* 子の中身に口を出さない
+. *状態は持つWidgetの中に閉じる。* 親子を跨いで状態を引き回さない
+. *共通化は3回目から。* 早すぎる抽象化はバグの温床
+
+これは Web、モバイル、GUI、全てに共通する。Python/Fletから入ったが、考え方は React や Flutter にも直接転用できる。
+
+== まとめ
+
+この章でやったこと：
+
+. 小さなダッシュボードアプリを題材に選んだ
+. Widget分割の設計をClaudeと議論した
+. 一つずつWidgetを Claude に書かせ、動かした
+. 親に組み上げて、全体像を作った
+. 状態管理の最小構成を身につけた
+. 見た目を整え、再利用（共通化）の感覚を掴んだ
+
+手元に残ったもの：
+* 動作するダッシュボードアプリ（Python/Flet）
+* Widget分割の設計メモ
+* 「小さく作って組み合わせる」という考え方
+
+次の第16章では、Claude Code を使って、*このアプリをもっと実用的な形に育てる実践*に入る。実データへの接続、エラー処理、テスト、ビルドと配布——本格的なアプリ開発の最初の一周を体験する。
+
+'''
+
+シリーズ全体はlink:/claude-debian/[Claudeと一緒に学ぶDebian 一覧]から辿れる。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
+endif::[]
+ifdef::lang-en[]
+== What Is a Widget
+
+A Widget is *a small UI part that runs independently*. A button, an input field, a list, a card, a clock, a graph — each one carries its own state and appearance, and works when separated from the rest.
+
+A large app is built by composing Widgets. Stacked hierarchically, they form the whole. React's Component, Flutter's Widget, Vue's Component, Flet's Control — the names differ, but the way of thinking is the same.
+
+In this chapter, we take a small clock app as the subject and internalize the Widget architecture. *Claude writes the code itself.* What you acquire is *the way of thinking about design* and *how to instruct Claude*.
+
+== Section 1 — The Subject: a Simple Dashboard
+
+We will build an app like this.
+
+```
++-------------------------------+
+|   Clock (13:42:30)            |
++-------------------------------+
+|   Today's schedule (3 items)  |
+|   - 10:00 Meeting             |
+|   - 14:00 Submit document     |
+|   - 18:00 Dinner              |
++-------------------------------+
+|   Weather (Sunny, 18°C)       |
++-------------------------------+
+```
+
+A structure of three stacked Widgets. Each one runs independently and has its own data source.
+
+=== Language and Framework
+
+This book recommends *Python + Flet* (Flutter-based, callable from Python).
+No Dart / Flutter setup required, runs as fast as possible.
+
+For Python package management we use *`uv`* (covered in Chapter 17).
+It's 10–100× faster than `pip` + `venv`, and *projects are far more reproducible*. Instead of `requirements.txt`, use `pyproject.toml` plus
+`uv.lock`.
+
+```bash
+# Install uv (one-time)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Create the project and add Flet
+mkdir ~/Projects/my-dashboard && cd ~/Projects/my-dashboard
+uv init
+uv add flet
+```
+
+This produces `pyproject.toml`, `uv.lock`, and `.venv/` automatically.
+Moving to another PC takes just `git clone && uv sync` — *two lines for full reproduction*.
+
+== Section 2 — Decompose into Widgets
+
+=== The First Step in Design
+
+Before you start writing, *decide which Widgets to split into*.
+
+* *ClockWidget.* Updates the current time every second.
+* *ScheduleWidget.* Shows today's schedule.
+* *WeatherWidget.* Shows current weather.
+* *DashboardApp.* The parent that lays the three out.
+
+Principles for splitting:
+. *One Widget has one concern* (clock is clock, weather is weather).
+. *Don't pass data directly between Widgets* (only through the parent).
+. *Keep the API a Widget exposes minimal* (initialize and update, that's it).
+
+=== Ask Claude ①: Discuss the Decomposition
+
+____
+I'm building a dashboard app in Flet that lays out a clock, a schedule, and weather.
+I'm thinking of splitting it into three Widgets:
+* ClockWidget: updates the time every second.
+* ScheduleWidget: today's schedule list.
+* WeatherWidget: current weather.
+
+Tell me whether this split is reasonable, and whether you can suggest improvements.
+Make a table for each Widget covering its responsibility (what it knows, what it shows, how it talks to the outside).
+____
+
+Through dialogue with Claude, pin down the design. *Don't write code at this stage.* Spending 30 minutes to an hour on design alone is worth it.
+
+== Section 3 — The First Widget: the Clock
+
+=== How to Instruct Claude to Write It
+
+Have Claude write the first Widget.
+
+____
+Please write a ClockWidget in Flet.
+
+Requirements:
+* Display the current time in `HH:MM:SS` format.
+* Update every second.
+* Large, centered text.
+* Implemented as an independent class (separated from the main function).
+
+Provide the full code in a single file, plus a small sample showing ClockWidget running standalone.
+Assume Python 3.11 or later, latest Flet.
+____
+
+Read the code Claude returns. *You don't have to understand all of it.* Just verify three things.
+
+. The class is named `ClockWidget`.
+. The time-update logic lives inside the class.
+. The main function uses that class in what looks like a runnable sample.
+
+=== Run It
+
+```bash
+cd ~/Projects/my-dashboard
+# save Claude's code as clock_widget.py
+python3 clock_widget.py
+```
+
+If a window opens and the clock ticks, you've succeeded. If not, paste the error to Claude as-is.
+
+=== Ask Claude ②: Handling the Error
+
+____
+When I ran the following code, I got an error:
+```
+[code]
+```
+
+```
+[the full error message]
+```
+
+Tell me the cause and how to fix it. Show the full corrected code.
+____
+
+== Section 4 — Composing Widgets
+
+=== Build the Parent Widget
+
+Build the parent that lays out the three Widgets.
+
+____
+Please write a DashboardApp that displays ClockWidget, ScheduleWidget, and WeatherWidget stacked vertically.
+Assume each Widget already exists in its own file (clock_widget.py, schedule_widget.py, weather_widget.py).
+
+Requirements:
+* Each Widget is an independent class.
+* DashboardApp only imports them and lays them out.
+* The screen size adapts to the window width.
+* Vertical scrolling is enabled.
+____
+
+This is the heart of the Widget architecture: *the parent only places children*. It doesn't reach into the contents of the children.
+
+=== ScheduleWidget and WeatherWidget
+
+In the same flow, have Claude write the remaining two. Schedule starts with hard-coded entries; Weather starts with dummy data.
+
+*The point: build the smallest version that runs first, then connect to real data.* Connecting straight to an external API makes debugging painful.
+
+== Section 5 — Entry to State Management
+
+=== State Inside a Widget
+
+ClockWidget holds the state "current time." In Flet you handle it like this.
+
+```python
+# Conceptual example written by Claude
+class ClockWidget(ft.UserControl):
+    def build(self):
+        self.time_text = ft.Text(size=48)
+        return self.time_text
+
+    def did_mount(self):
+        # start a timer that updates every second
+        ...
+```
+
+=== Passing Data from Parent to Child
+
+When you want to pass a "city name" from the parent to WeatherWidget.
+
+```python
+class WeatherWidget(ft.UserControl):
+    def __init__(self, city: str):
+        super().__init__()
+        self.city = city
+```
+
+The parent initializes it as `WeatherWidget(city="Tokyo")`.
+
+=== Ask Claude ③: A State-Management Question
+
+____
+Tell me about state management in Flet:
+(1) State a Widget should hold internally (the clock's current time, the latest weather data).
+(2) Things the parent should pass to the child (display city, theme color).
+(3) Handling state across parent and child (settings several Widgets share).
+
+Show beginner-friendly, simple guidance, with the dashboard app as the example.
+Avoid overly complex state-management libraries.
+____
+
+== Section 6 — Polish the Look
+
+=== Colors, Fonts, Spacing
+
+Once it works, polish the look. Instruct Claude.
+
+____
+Polish the look of the current DashboardApp under the following principles:
+* Dark theme (background #1a1a1a, foreground #e0e0e0).
+* 16 px gap between Widgets.
+* Rounded card style (border_radius=12).
+* The clock is large (72 pt), the rest medium.
+* A Japanese-aware font (Noto Sans JP).
+
+Don't rewrite the whole code; add a constants section that gathers the styles.
+____
+
+*Polishing the look raises the readability of the code at the same time.* Gathering colors and sizes into constants makes future changes easier.
+
+== Section 7 — Reusing a Widget
+
+=== An Application: a TimerWidget
+
+You have a ClockWidget; you can build a "countdown timer" with the same structure.
+
+____
+Please build a TimerWidget that counts down from a specified number of minutes, with the same structure as ClockWidget.
+Where the structures share something, create a base class BaseTimeWidget and derive both from it.
+____
+
+This is where *code consolidation* happens. When several Widgets share the same structure, gather the shared parts — that's how software grows.
+
+=== An Important "Don't"
+
+*Don't over-consolidate.* Abstracting too early makes future change harder.
+
+* The same code shows up twice: still copy-paste.
+* A third occurrence: consider consolidating.
+* A fourth, with hints of more: consolidate.
+
+You build this sense in dialogue with Claude.
+
+=== Ask Claude ④: Avoiding Over-Design
+
+____
+I am building Widgets. Right now ClockWidget and TimerWidget have similar code.
+Which is appropriate at this stage:
+(1) Leave them as two independent Widgets.
+(2) Extract the shared part into a function.
+(3) Build a base class BaseTimeWidget and derive from it.
+(4) Rebuild around an event-driven architecture.
+
+Decide based on the current code [paste] and the outlook ahead [I might also build a Claude dialogue UI].
+____
+
+== Section 8 — The "Way of Thinking" Earned in This Chapter
+
+If, beyond the code, the following stays with you, the chapter has succeeded.
+
+. *Decide the split before you start writing.* The boundaries between Widgets are themselves the quality of the design.
+. *First, build the smallest thing that runs.* Adding features comes later. Empty cards are fine to start.
+. *The parent only places children.* Don't reach into the children.
+. *Keep state inside the Widget that holds it.* Don't drag state across parent and child.
+. *Consolidate from the third occurrence on.* Premature abstraction is the breeding ground of bugs.
+
+This applies on the Web, on mobile, and in GUI — all of them. We came in through Python/Flet, but the way of thinking transfers directly to React and Flutter.
+
+== Summary
+
+What you did in this chapter:
+
+. Picked a small dashboard app as the subject.
+. Discussed Widget decomposition with Claude.
+. Had Claude write each Widget, one at a time, and made it run.
+. Composed the parent to form the whole.
+. Acquired the minimum of state management.
+. Polished the look and got a sense for reuse (consolidation).
+
+What you hold now:
+* A working dashboard app (Python / Flet).
+* Design notes for Widget decomposition.
+* The way of thinking: "build small and compose."
+
+In Chapter 16, we move into the practice of using Claude Code to *grow this app into something more practical*. Connecting to real data, error handling, tests, build and distribution — you experience the first lap of full-fledged app development.
+
+'''
+
+The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
+endif::[]
+
+// ===== article: 16-claude-development =====
+////
+slug: claude-debian-16-claude-development
+number: 16
+title.ja: 第16章 Claudeとの開発の実践
+title.en: Chapter 16 — Development with Claude in Practice
+subtitle.ja: 小さなアプリを、実データと使い続けられる形に育てる
+subtitle.en: Grow a small app into something connected to real data and worth using every day
+description.ja: 第15章のダッシュボードを実データに繋ぎ、テストを書き、エラーを扱い、配布可能にする。Claude Codeを使って「動くだけ」から「使えるアプリ」までの一周を体験する。
+description.en: Connect the Chapter 15 dashboard to real data, write tests, handle errors, and make it distributable. Use Claude Code to walk the lap from "it just runs" to "an app you can use."
+date: 2026.04.23
+label: Claude × Debian 16
+cta_label.ja: Claudeと学ぶ
+cta_label.en: Learn with Claude
+cta_title.ja: 動くだけでは、使えない。
+cta_title.en: Just running isn't usable.
+cta_text.ja: 実データに繋ぎ、失敗を扱い、テストを添え、配布可能な形にする。これが「動く」から「使える」までの距離。Claudeと一緒に、その距離を歩く。
+cta_text.en: Connect to real data, handle failures, add tests, make it distributable. That is the distance between "runs" and "usable." Walk it together with Claude.
+cta_btn1_text.ja: 第17章へ進む
+cta_btn1_text.en: Continue to Chapter 17
+cta_btn1_link.ja: /claude-debian/17-python-flutter-other/
+cta_btn1_link.en: /en/claude-debian/17-python-flutter-other/
+cta_btn2_text.ja: 第15章に戻る
+cta_btn2_text.en: Back to Chapter 15
+cta_btn2_link.ja: /claude-debian/15-widget-architecture/
+cta_btn2_link.en: /en/claude-debian/15-widget-architecture/
+////
+ifdef::env-github[]
+= 第16章 Claudeとの開発の実践
+endif::[]
+ifdef::lang-ja[]
+== 実アプリへの一周
+
+第15章で作ったダッシュボードは動くが、まだ「玩具」だ。実データに繋がっていない、エラーが起きたらクラッシュする、テストがない、他人に配布できない。
+
+第16章では、この玩具を*毎日使えるアプリ*に育てる。開発の基本サイクルを Claude Code と一緒に一周する。
+
+== 第一節 Claude Code の本格運用
+
+=== プロジェクトに入って起動
+
+```bash
+cd ~/Projects/my-dashboard
+claude
+```
+
+起動したら、Claude Code にプロジェクトの状況を伝える。
+
+____
+このディレクトリには、第15章で作ったFletベースのダッシュボードアプリがあります。
+今日は次を進めたい：
+(1) WeatherWidgetを実データ（Open-Meteo API）に接続
+(2) 失敗時のエラー表示
+(3) テストの追加
+(4) README と実行用スクリプト
+
+現在のファイル構成を読み取って、何から始めるか提案してください。
+____
+
+Claude Codeはファイルを読み、現状を把握した上で計画を返す。
+
+=== 変更を逐次レビュー
+
+Claude Code は自動で大量のファイルを書き換えることができる。だが*自動承認してはいけない*。
+
+* 一つのファイル変更ごとに、変更内容を確認
+* 意図が分からなければ聞き返す
+* 「なぜそうしたか」の根拠を必ず確認
+
+これは Copilot 問題（link:/blog/copilot-correct-looking-but-wrong/[第12章「MicrosoftのCopilotの課題」]）への対処と同じ姿勢だ。AIが書いたコードの最終責任は、人間が負う。
+
+== 第二節 実データに接続する
+
+=== 天気 API の選定
+
+無料で使える天気 API はいくつかある。
+
+* *Open-Meteo*：登録不要、商用もOK、緯度経度指定
+* *OpenWeatherMap*：登録要、無料枠あり
+* *気象庁のJSON*：公式データ、日本国内限定
+
+本書の推奨は *Open-Meteo*。登録不要で、すぐに試せる。
+
+=== Claudeに実装させる
+
+____
+WeatherWidgetを Open-Meteo APIに接続してください。
+
+要件：
+* 緯度経度（デフォルト：東京 35.6762, 139.6503）を親から渡せる
+* 30分ごとにデータを更新
+* 取得失敗時はエラーをUIに表示（クラッシュしない）
+* requestsの代わりに標準ライブラリ（urllib）または httpx を使う
+
+コードは既存のクラス構造を崩さないように。
+____
+
+返ってきたコードをレビュー。特に *エラー処理* を注意深く見る。ネットワーク障害、APIダウン、JSONパース失敗——この三つが必ず起こる。
+
+== 第三節 エラーとの付き合い方
+
+=== 三つの層
+
+エラーを扱う層は三つある。
+
+*層1：防御的プログラミング*
+想定内のエラー（ネットワーク失敗、API形式の変更）を `try / except` で受け止める。
+
+*層2：ユーザーに見せる表示*
+UIに「取得失敗」と出して、再試行ボタンを用意。クラッシュさせない。
+
+*層3：ログに残す*
+開発者（あなた）が原因を追えるよう、ファイルに書き残す。
+
+```python
+# Pythonの標準ロギング
+import logging
+from pathlib import Path
+
+log_dir = Path.home() / ".local" / "share" / "my-dashboard"
+log_dir.mkdir(parents=True, exist_ok=True)
+
+logging.basicConfig(
+    filename=log_dir / "app.log",
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s %(message)s'
+)
+```
+
+`logging.basicConfig(filename=...)` に `~` を直書きすると *展開されずそのまま `~` というディレクトリが作られる*(よくある落とし穴)。
+`Path.home()` で先に展開してから渡す。
+
+=== Claudeに聞いてみよう①：エラー処理の見直し
+
+____
+私のWeatherWidget〔コード貼る〕で、次のエラーケースを扱えているか確認してください：
+(1) ネットワーク切断
+(2) API からの 500 エラー
+(3) API レスポンスの JSON 形式が変わった
+(4) タイムアウト（10秒以上応答がない）
+(5) 正常だが予報データが空
+
+扱えていないケースについて、最小の変更で対処するコードを示してください。
+____
+
+== 第四節 テストを書く
+
+=== テストの最小単位
+
+`pytest` を使う。本書では *`uv add --dev pytest`* で入れる
+(プロジェクト固有の dev 依存として `pyproject.toml` に記録される)。
+`apt install python3-pytest` はシステム Python 用で、業務プロジェクトでは
+使わない。
+
+```python
+# tests/test_clock_widget.py
+def test_format_time():
+    from my_dashboard.clock_widget import format_time
+    assert format_time(13, 42, 30) == "13:42:30"
+    assert format_time(0, 0, 0) == "00:00:00"
+```
+
+=== Claudeに書かせる
+
+____
+私のClockWidget の時刻フォーマット関数 format_time と、WeatherWidget の JSON パース関数 parse_weather のユニットテストを pytest で書いてください。
+
+* 正常系：3ケースずつ
+* 異常系：無効な入力、空、極端な値——各3ケースずつ
+* テストは独立（お互いに依存しない）
+* モック（ネットワークアクセスをしない）
+
+既存のコードに合わせて、import パスを正しく。
+____
+
+=== テストを回す
+
+```bash
+uv run pytest tests/
+```
+
+`uv run` を頭に付けると、プロジェクトの `.venv/` にある pytest が走る。
+全部パスするのを確認。赤が出たら、コードかテストかどちらが正しいかを判断する。
+
+=== テストは生き物
+
+テストは「一度書いて終わり」ではない。新しい機能を追加するたびに、対応するテストも追加する。この習慣が、後々コードに自信を持たせる。
+
+== 第五節 設定を外出しする
+
+=== ハードコードを設定ファイルに
+
+アプリ内部に書いている定数（緯度経度、更新間隔、APIエンドポイント）を、外部の設定ファイルに出す。
+
+```toml
+# config.toml
+[weather]
+latitude = 35.6762
+longitude = 139.6503
+refresh_interval_minutes = 30
+
+[schedule]
+source = "~/Documents/schedule.ics"
+
+[theme]
+dark = true
+accent_color = "#4a7c59"
+```
+
+Python標準の `tomllib`（3.11以降）で読める。
+
+=== Claudeに聞いてみよう②：設定の設計
+
+____
+私のダッシュボードアプリのコードから、設定として外出しできる項目を列挙してください。
+config.toml の例と、それを読み込む最小のコードを書いてください。
+ユーザーが config.toml を書き換えたとき、アプリを再起動すれば反映されることを前提に。
+____
+
+== 第六節 配布できる形にする
+
+=== 依存関係はすでに `pyproject.toml`
+
+`uv add` で入れた依存はすべて `pyproject.toml` に記録され、`uv.lock` が
+*バージョンを完全固定*する。`requirements.txt` は要らない。
+
+```toml
+# pyproject.toml(uv add で自動生成・更新される)
+[project]
+name = "my-dashboard"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "flet>=0.20",
+    "httpx>=0.27",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.0"]
+```
+
+別 PC への移行は `git clone && uv sync` の *2 コマンド*で終わる。
+
+=== 実行スクリプト
+
+シェルスクリプトを書く必要はあまりない。`uv run` で直接動く。
+
+```bash
+# プロジェクト直下で
+uv run python -m my_dashboard
+```
+
+それでも 1 コマンドで呼びたい場合は、`uv tool install` で世界に
+公開できる:
+
+```bash
+# 自分のプロジェクトをツールとして PATH に登録
+uv tool install --editable .
+# あとはどこからでも
+my-dashboard
+```
+
+`pyproject.toml` の `[project.scripts]` でエントリポイントを定義しておくと、
+`uv tool install` が自動でコマンドを `~/.local/bin/` に置く。
+
+```toml
+[project.scripts]
+my-dashboard = "my_dashboard.__main__:main"
+```
+
+=== デスクトップエントリ
+
+メニューから起動できるように。
+
+```ini
+# ~/.local/share/applications/my-dashboard.desktop
+[Desktop Entry]
+Type=Application
+Name=My Dashboard
+Exec=my-dashboard
+Icon=/home/you/Projects/my-dashboard/assets/icon.png
+Categories=Utility;
+```
+
+`uv tool install` 済みなら `Exec=my-dashboard` で動く。
+
+=== Claudeに聞いてみよう③：配布の仕上げ
+
+____
+私のダッシュボードアプリを、次の三段階で使えるようにしたいです：
+(1) 自分で日常起動（デスクトップエントリ、メニューから一発）
+(2) 別PCに持っていける（git clone + 1 コマンドで動く）
+(3) 友人に配れる（手順書つき）
+
+各段階で必要なファイル（README、requirements、desktop entry、install.sh等）を作成してください。
+____
+
+== 第七節 Gitで育てる
+
+=== コミットの粒度
+
+機能追加・修正ごとに一コミット。メッセージは「何をしたか」と「なぜしたか」を一行で。
+
+```
+feat(weather): Open-Meteo API への接続を追加
+fix(clock): 午前0時の表示バグを修正
+test: format_time の異常系テストを追加
+refactor(config): 定数を config.toml に外出し
+docs: README に起動手順を追加
+```
+
+=== ブランチの使い方
+
+小さい個人プロジェクトでは、`main` だけで始めて問題ない。大きな変更を試すときだけ、ブランチを切る。
+
+```bash
+git checkout -b experiment/dark-theme
+# 試す
+# うまくいけば main に merge、ダメなら捨てる
+```
+
+== 第八節 「動く」から「使える」までの距離を振り返る
+
+第15章の「玩具」から、第16章の「実アプリ」まで、次を進めた。
+
+|===
+| 観点 | 玩具（Ch14） | 実アプリ（Ch15）
+| データ | ハードコード | 実API
+| エラー | クラッシュ | UI表示＋ログ
+| テスト | なし | ユニットテスト
+| 設定 | コード内 | 外部ファイル
+| 起動 | python file.py | desktop entry
+| 配布 | 不可 | git clone で動く
+|===
+
+「動くだけ」から「使える」までの距離を、数字にすればコード行数は2倍以上に膨らむ。*この距離を正直に踏むのが、エンジニアリングだ*。AIは、この各段階を補助してくれる。
+
+== 第九節 Claudeとの開発で気を付けること
+
+=== 小さく刻む
+
+「全部一気にやってください」と頼むと、Claudeは大量のコードを返す。読みきれず承認ミスが起きる。
+
+*指示は小さく刻む。* 一つの目的（天気APIを繋ぐ、エラー処理を追加する、テストを書く）ごとに一つの対話。
+
+=== 自分が理解できない範囲には進まない
+
+Claudeが返したコードで、ひとつも理解できない関数が出てきたら、それは*あなたが判断できない範囲*に入った合図だ。
+
+そのときは、Claude に「このコードの各行を説明してください。初心者向けに、何をしているかと、なぜそうするかを」と頼む。理解できない状態で本番に入れない。
+
+=== Claudeに聞いてみよう④：自己評価
+
+____
+私はこの章で、第15章から第16章までの一周を進めました。
+現在のコード〔最終版を貼る〕を見て、次を評価してください：
+(1) 保守性（半年後の私が読んで理解できるか）
+(2) 拡張性（新しいWidgetを足しやすいか）
+(3) 堅牢性（想定外のエラーで止まらないか）
+(4) テスト網羅（重要な挙動をカバーしているか）
+(5) 配布品質（別のPCで動くか）
+
+各項目を10点満点で評価し、改善点を優先順に3つ挙げてください。
+____
+
+== まとめ
+
+この章でやったこと：
+
+. Claude Code をプロジェクトで起動し、逐次レビューの作法を確立
+. 実データ（Open-Meteo API）に接続
+. エラー処理を三層（防御・UI・ログ）で整えた
+. pytestでユニットテストを書いた
+. 設定を config.toml に外出しした
+. デスクトップエントリで起動可能にした
+. Gitで育てるリズムを整えた
+
+手元に残ったもの：
+* 毎日使える自作ダッシュボードアプリ
+* Claude Code とのまっとうな協業パターン
+* 「動く」から「使える」までのエンジニアリングの一周の経験
+
+次の第17章では、Python と Flet 以外の環境——Flutter / Dart、Node.js、Rust——へ視野を広げる。必要になったときにClaudeと組み立てられる状態にする。
+
+'''
+
+シリーズ全体はlink:/claude-debian/[Claudeと一緒に学ぶDebian 一覧]から辿れる。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
+endif::[]
+ifdef::lang-en[]
+== A Lap of a Real App
+
+The dashboard you built in Chapter 15 runs, but it is still a "toy." It isn't connected to real data; it crashes if an error happens; it has no tests; you can't distribute it.
+
+In Chapter 16, we grow that toy into *an app you can use every day*. Walk the basic development cycle once around, with Claude Code.
+
+== Section 1 — Real-World Use of Claude Code
+
+=== Enter the Project and Launch
+
+```bash
+cd ~/Projects/my-dashboard
+claude
+```
+
+Once it's up, tell Claude Code the state of the project.
+
+____
+This directory holds the Flet-based dashboard app I built in Chapter 15.
+Today I want to do the following:
+(1) Connect WeatherWidget to real data (Open-Meteo API).
+(2) Show errors in the UI on failure.
+(3) Add tests.
+(4) README and a launcher script.
+
+Read the current file layout and propose where to start.
+____
+
+Claude Code reads the files, gets a sense of the current state, and returns a plan.
+
+=== Review Each Change as It Comes
+
+Claude Code can rewrite many files in a sweep. But *don't auto-approve*.
+
+* Confirm each file change one by one.
+* If the intent isn't clear, ask back.
+* Always confirm "the reasoning for why."
+
+This is the same posture as the answer to the Copilot problem (link:/en/blog/copilot-correct-looking-but-wrong/[Chapter 12, "The Copilot Problem"]). The final responsibility for code an AI wrote is borne by the human.
+
+== Section 2 — Connecting to Real Data
+
+=== Picking a Weather API
+
+There are several free weather APIs to choose from.
+
+* *Open-Meteo.* No registration; commercial use OK; latitude / longitude based.
+* *OpenWeatherMap.* Registration required; free tier available.
+* *JMA (Japan Meteorological Agency) JSON.* Official data; Japan only.
+
+This book recommends *Open-Meteo*. No registration; you can try it immediately.
+
+=== Have Claude Implement It
+
+____
+Connect WeatherWidget to the Open-Meteo API.
+
+Requirements:
+* Latitude / longitude (default: Tokyo 35.6762, 139.6503) can be passed in from the parent.
+* Refresh every 30 minutes.
+* On fetch failure, show the error in the UI (do not crash).
+* Use the standard library (urllib) or httpx instead of requests.
+
+Don't break the existing class structure.
+____
+
+Review what comes back. In particular, look closely at *error handling*. Network failure, API outage, JSON parsing failure — all three will happen.
+
+== Section 3 — Working with Errors
+
+=== Three Layers
+
+Errors are handled at three layers.
+
+*Layer 1: defensive programming.*
+Catch expected errors (network failure, API format change) with `try / except`.
+
+*Layer 2: what you show the user.*
+Show "fetch failed" in the UI and offer a retry button. Don't crash.
+
+*Layer 3: write to the log.*
+For the developer (you) to be able to follow the cause, write to a file.
+
+```python
+# Standard Python logging
+import logging
+from pathlib import Path
+
+log_dir = Path.home() / ".local" / "share" / "my-dashboard"
+log_dir.mkdir(parents=True, exist_ok=True)
+
+logging.basicConfig(
+    filename=log_dir / "app.log",
+    level=logging.INFO,
+    format='%(asctime)s %(levelname)s %(message)s'
+)
+```
+
+Common pitfall: passing a literal `'~/...'` to `logging.basicConfig`
+*won't expand the tilde* — it creates a directory literally named `~`.
+Use `Path.home()` to resolve it first.
+
+=== Ask Claude ①: Reviewing Error Handling
+
+____
+In my WeatherWidget [paste code], please verify that the following error cases are covered:
+(1) Network disconnection.
+(2) A 500 error from the API.
+(3) A change in the JSON format of the API response.
+(4) Timeout (no response within 10 seconds).
+(5) The response is fine, but the forecast data is empty.
+
+For cases that aren't covered, show the smallest code change to handle them.
+____
+
+== Section 4 — Writing Tests
+
+=== The Smallest Unit of a Test
+
+Use `pytest`. This book installs it via *`uv add --dev pytest`* so it
+gets recorded as a per-project dev dependency in `pyproject.toml`.
+`apt install python3-pytest` is for the system Python and isn't used in
+real projects.
+
+```python
+# tests/test_clock_widget.py
+def test_format_time():
+    from my_dashboard.clock_widget import format_time
+    assert format_time(13, 42, 30) == "13:42:30"
+    assert format_time(0, 0, 0) == "00:00:00"
+```
+
+=== Have Claude Write Them
+
+____
+Please write pytest unit tests for ClockWidget's time-format function `format_time` and WeatherWidget's JSON-parse function `parse_weather`.
+
+* Happy path: 3 cases each.
+* Sad path: invalid input, empty, extreme values — 3 cases each.
+* Tests are independent (no dependencies on each other).
+* Mocked (no network access).
+
+Match the existing code's structure; get the import paths right.
+____
+
+=== Run the Tests
+
+```bash
+uv run pytest tests/
+```
+
+Prefixing with `uv run` uses the pytest in your project's `.venv/`.
+
+Confirm they all pass. If something is red, judge whether the code is wrong or the test is wrong.
+
+=== Tests Are Living Things
+
+Tests aren't a "write once, done." Add tests every time you add a feature. This habit is what gives you confidence in your code over time.
+
+== Section 5 — Move Configuration Outside
+
+=== From Hard-Coded to a Config File
+
+Take the constants written into the app (latitude / longitude, refresh interval, API endpoint) and move them out into an external config file.
+
+```toml
+# config.toml
+[weather]
+latitude = 35.6762
+longitude = 139.6503
+refresh_interval_minutes = 30
+
+[schedule]
+source = "~/Documents/schedule.ics"
+
+[theme]
+dark = true
+accent_color = "#4a7c59"
+```
+
+It can be read with Python's standard `tomllib` (3.11+).
+
+=== Ask Claude ②: Designing the Config
+
+____
+List the items in my dashboard app's code that could be moved to external configuration.
+Give me an example of `config.toml` and the smallest code to load it.
+Assume that when the user edits `config.toml`, restarting the app picks up the change.
+____
+
+== Section 6 — Make It Distributable
+
+=== Dependencies Are Already in `pyproject.toml`
+
+Anything added with `uv add` is recorded in `pyproject.toml`, and `uv.lock`
+*fully pins versions*. No `requirements.txt` is needed.
+
+```toml
+# pyproject.toml (auto-updated by uv add)
+[project]
+name = "my-dashboard"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "flet>=0.20",
+    "httpx>=0.27",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.0"]
+```
+
+Moving to another machine takes just two commands: `git clone && uv sync`.
+
+=== Launching
+
+You usually don't need a shell wrapper; `uv run` runs it directly.
+
+```bash
+# In the project root
+uv run python -m my_dashboard
+```
+
+If you want a single command name, install your project as a tool:
+
+```bash
+# Install your own project as an editable tool
+uv tool install --editable .
+# Then from anywhere
+my-dashboard
+```
+
+Define an entry point in `pyproject.toml` and `uv tool install` puts the
+command in `~/.local/bin/`.
+
+```toml
+[project.scripts]
+my-dashboard = "my_dashboard.__main__:main"
+```
+
+=== Desktop Entry
+
+So you can launch it from the application menu.
+
+```ini
+# ~/.local/share/applications/my-dashboard.desktop
+[Desktop Entry]
+Type=Application
+Name=My Dashboard
+Exec=my-dashboard
+Icon=/home/you/Projects/my-dashboard/assets/icon.png
+Categories=Utility;
+```
+
+=== Ask Claude ③: Finishing for Distribution
+
+____
+I want to make my dashboard usable in three tiers:
+(1) For my own daily launch (desktop entry, one click from the menu).
+(2) Portable to another PC (git clone + 1 command and it runs).
+(3) Distributable to a friend (with documented steps).
+
+Create the files needed at each tier (README, requirements, desktop entry, install.sh, etc.).
+____
+
+== Section 7 — Grow It with Git
+
+=== Granularity of a Commit
+
+One commit per feature add or fix. The message is "what" and "why" in one line.
+
+```
+feat(weather): add Open-Meteo API connection
+fix(clock): fix display bug at midnight
+test: add edge-case tests for format_time
+refactor(config): move constants to config.toml
+docs: add launch instructions to README
+```
+
+=== How to Use Branches
+
+For a small personal project, starting on `main` only is fine. Cut a branch only when you're trying a large change.
+
+```bash
+git checkout -b experiment/dark-theme
+# try things
+# if it works, merge to main; if not, throw it away
+```
+
+== Section 8 — Look Back at the Distance from "Runs" to "Usable"
+
+From the "toy" of Chapter 15 to the "real app" of Chapter 16, here is what changed.
+
+|===
+| Aspect | Toy (Ch 14) | Real app (Ch 15)
+| Data | hard-coded | real API
+| Errors | crash | UI message + log
+| Tests | none | unit tests
+| Settings | inside the code | external file
+| Launch | python file.py | desktop entry
+| Distribution | impossible | works after git clone
+|===
+
+Put as numbers, the line count from "just runs" to "usable" more than doubles. *Walking that distance honestly is what engineering is.* AI helps at every step.
+
+== Section 9 — What to Watch for in Development with Claude
+
+=== Slice It Small
+
+Asking "do all of it at once" makes Claude return a wall of code. You can't read it through, and approval mistakes happen.
+
+*Slice the instructions small.* One purpose (connect to weather API, add error handling, write tests) per dialogue.
+
+=== Don't Go Beyond What You Understand
+
+If a function in Claude's reply is one you can't understand at all, that is a signal that you've stepped beyond *the range you can judge*.
+
+In that case, ask Claude: "Explain each line of this code. What it does, and why it's done that way — for a beginner." You can't put code you don't understand into production.
+
+=== Ask Claude ④: Self-Evaluation
+
+____
+I have walked the lap from Chapter 15 to Chapter 16 in this chapter.
+Looking at the current code [paste the final version], please evaluate:
+(1) Maintainability (will the future me, six months from now, read it and understand?).
+(2) Extensibility (is it easy to add a new Widget?).
+(3) Robustness (does it stay up under unexpected errors?).
+(4) Test coverage (are the important behaviors covered?).
+(5) Distribution quality (will it run on another PC?).
+
+Give a score out of 10 for each, and list the top three improvements in priority order.
+____
+
+== Summary
+
+What you did in this chapter:
+
+. Launched Claude Code in the project and established review-as-you-go.
+. Connected to real data (Open-Meteo API).
+. Wired up errors at three layers (defensive, UI, log).
+. Wrote unit tests with pytest.
+. Externalized configuration into `config.toml`.
+. Made it launchable via a desktop entry.
+. Set the rhythm of growing it with Git.
+
+What you hold now:
+* A self-built dashboard you can use every day.
+* A sound pattern of collaboration with Claude Code.
+* A lap's worth of experience of engineering, from "runs" to "usable."
+
+In Chapter 17, we widen the view beyond Python and Flet — to Flutter / Dart, Node.js, Rust. Get to a state where, when you need them, you can put them together with Claude.
+
+'''
+
+The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
+endif::[]
+
+// ===== article: 17-python-flutter-other =====
+////
+slug: claude-debian-17-python-flutter-other
+number: 17
+title.ja: 第17章 Python、Flutter、その他の環境
+title.en: Chapter 17 — Python, Flutter, and Other Environments
+subtitle.ja: 必要になったとき、その言語をClaudeと組み立てる
+subtitle.en: When you need a language, build it up with Claude
+description.ja: Python は uv を主軸に、データサイエンス・機械学習は miniforge を併用。GUI は Flutter/Dart、Rust は Python の高速化(PyO3)に絞る。Web/CLI など他の選択肢は地図として位置を把握。Claude と組むコツを整理する。
+description.en: Python on `uv` as the main line, miniforge alongside for data science and ML. GUI via Flutter/Dart; Rust narrowed to speeding up Python hot spots (PyO3). Other choices (web, CLI) live as a map for when you need them. Working alongside Claude on Debian.
+date: 2026.04.23
+label: Claude × Debian 17
+cta_label.ja: Claudeと学ぶ
+cta_label.en: Learn with Claude
+cta_title.ja: 地図として持っておく。
+cta_title.en: Keep it as a map.
+cta_text.ja: 今すぐ全部を覚える必要はない。必要になったときに戻ってこれる地図として、この章を残す。Claudeがあれば、地図の上でどこへでも行ける。
+cta_text.en: You don't need to memorize all of this right now. Keep this chapter as a map you can come back to when you need it. With Claude, you can travel anywhere on the map.
+cta_btn1_text.ja: 第5部 第18章へ進む
+cta_btn1_text.en: Continue to Part 5 / Chapter 18
+cta_btn1_link.ja: /claude-debian/18-updates-maintenance/
+cta_btn1_link.en: /en/claude-debian/18-updates-maintenance/
+cta_btn2_text.ja: 第16章に戻る
+cta_btn2_text.en: Back to Chapter 16
+cta_btn2_link.ja: /claude-debian/16-claude-development/
+cta_btn2_link.en: /en/claude-debian/16-claude-development/
+////
+ifdef::env-github[]
+= 第17章 Python、Flutter、その他の環境
+endif::[]
+ifdef::lang-ja[]
+== この章の読み方
+
+第17章は、*地図*として機能する。今すぐ全部を手を動かすのではなく、各言語・環境の位置関係、Debianでの入れ方、Claudeと組むときの勘所を整理しておく。
+
+必要になったときに戻ってきて、該当部分を読み、Claude Code を開く。*「覚える」ことを目的にしない*。
+
+== 第一節 Python(深掘り)
+
+=== 本書は `uv` を採用する
+
+Python のパッケージ管理は *`uv`(Astral 製、Rust 実装)* で統一する。
+`pip` + `venv` 比 10〜100 倍速く、`requirements.txt` を捨てて
+`pyproject.toml` + `uv.lock` で *完全な再現性* が出る。`poetry` の
+代替候補だが、*uv の方が速くシンプル*。第 15 章・第 16 章のすべてが
+uv 前提で動く。
+
+```bash
+# 初回のみ
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+=== プロジェクトの基本ループ
+
+```bash
+# 新規作成
+uv init my-project && cd my-project
+
+# 依存追加(pyproject.toml と uv.lock が自動更新)
+uv add requests pandas
+uv add --dev pytest ruff
+
+# 実行
+uv run python -m my_project
+uv run pytest
+
+# 別 PC への移動
+git clone <repo> && cd <repo> && uv sync   # ← これだけで完全再現
+```
+
+=== CLI ツールは `uv tool install`
+
+Python で書かれた CLI ツール(`ruff`、`httpie`、`pre-commit`、`yt-dlp` 等)は
+*プロジェクト依存ではないので別系統で管理*する。`pipx` の上位互換が
+*`uv tool`*。
+
+```bash
+uv tool install ruff
+uv tool install httpie
+uv tool install pre-commit
+
+# 一覧と更新
+uv tool list
+uv tool upgrade --all
+```
+
+`apt install pipx` も使えるが、*uv 一本で覚えた方が頭が軽い*。
+
+=== Python 自体のバージョン管理も `uv`
+
+`pyenv` も不要になった。
+
+```bash
+uv python install 3.12
+uv python install 3.13
+uv python list
+
+# プロジェクトで Python 3.13 を要求
+echo '3.13' > .python-version
+uv sync   # 必要なら自動でインストール
+```
+
+=== 日本語のデータ処理
+
+pandas、polars、numpy は apt より `uv add` で最新を入れる。
+
+* 大容量 CSV → *polars*(pandas より速い)
+* 統計 → scipy、statsmodels
+* 可視化 → matplotlib、plotly
+
+ただし *GPU を使う深層学習や、GDAL / OpenCV / R / Julia を絡める科学計算* では uv だけだと厳しい。次の節 *「DS / ML には miniforge」*
+を参照。
+
+=== Claudeに聞いてみよう①:現代的な Python プロジェクトの叩き台
+
+____
+私は Python で〔データ整理 / Web スクレイピング / GUI / ML / スクリプト〕を
+書きます。`uv` を前提に、次を含むプロジェクトの雛形を作ってください:
+(1) `pyproject.toml`(依存・dev 依存・scripts エントリ)
+(2) `.python-version` と `uv.lock`
+(3) `ruff` と `pytest` の設定
+(4) `tests/` ディレクトリの最小例
+(5) `README.md` に `git clone && uv sync && uv run` の手順
+____
+
+== 第二節 データサイエンス / 機械学習には miniforge
+
+`uv` は Python プロジェクトの 9 割をカバーするが、*データサイエンス / 機械学習* では足りない場面がある:
+
+* PyTorch + *CUDA / cuDNN*、TensorFlow + GPU
+* *R / Julia* との連携(rpy2 / PyJulia)
+* *GDAL / OpenCV / FFmpeg* のような Python 以外のネイティブ依存
+* RAPIDS、scikit-image、GeoPandas、PyMC 等の重い科学計算スタック
+* Apple Silicon の最初期サポート
+
+これらは PyPI のホイールでは不十分なことが多く、*conda-forge 経由でビルド済みバイナリを取る*のが現実的。本書では *miniforge* を入れる。
+
+=== なぜ miniforge であって Anaconda ではないのか
+
+Anaconda 公式インストーラ(Anaconda Distribution)には *商用ライセンス縛り*がある(2020 年以降、200 名超の組織は有料化、デフォルト `defaults`
+チャンネルも同条件)。*miniforge はそれを避けて*、
+
+* インストーラが小さい(150 MB 程度)
+* デフォルトチャンネルが *conda-forge 固定*(コミュニティ運営、
+  ライセンス安心、パッケージ数も最大)
+* 商用・個人問わず無料
+
+の 3 点で安心して使える。
+
+=== インストール
+
+```bash
+# Debian 13 (x86_64)
+curl -L https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh \
+  -o ~/miniforge.sh
+bash ~/miniforge.sh -b -p ~/miniforge3
+
+# シェル統合(.bashrc / .zshrc を書き換える、初回のみ)
+~/miniforge3/bin/conda init bash    # bash を使うなら
+~/miniforge3/bin/conda init zsh     # zsh を使うなら
+```
+
+ターミナルを一度開き直す。
+
+*重要*: 既定では `base` 環境が *シェル起動時に自動 activate* される。
+これは uv プロジェクトの `.venv` と干渉するので、最初に切る。
+
+```bash
+conda config --set auto_activate_base false
+```
+
+これで「conda env を使うときだけ `conda activate` する」運用になる。
+
+=== 基本のループ
+
+```bash
+# 環境作成(Python バージョン + 主要ライブラリを指定)
+conda create -n ds python=3.12 \
+  numpy pandas polars scipy scikit-learn jupyterlab matplotlib seaborn
+
+conda activate ds
+
+# あとから追加
+conda install -c conda-forge gdal opencv
+
+# 環境のエクスポート(チームで共有)
+conda env export --from-history > environment.yml
+
+# 別 PC で再現
+conda env create -f environment.yml
+```
+
+`--from-history` を付けると *明示的に入れたパッケージだけ* が記録される
+(自動依存は除外)。これがチーム配布で読みやすい。
+
+=== GPU(CUDA)を使う場合
+
+```bash
+conda create -n dl python=3.12 \
+  pytorch torchvision pytorch-cuda=12.1 \
+  -c pytorch -c nvidia
+
+conda activate dl
+python -c "import torch; print(torch.cuda.is_available())"   # True が出れば OK
+```
+
+CUDA toolkit を *conda env 内に閉じ込められる* のが大きい。Debian の apt で
+システム全体の CUDA を入れて他を壊す事故が起きない。プロジェクトごとに
+CUDA バージョンを変えることもできる。
+
+=== Jupyter Lab を立ち上げる
+
+```bash
+conda activate ds
+jupyter lab --no-browser --port 8888
+```
+
+ブラウザで `http://localhost:8888/?token=…` を開く。Jupyter は
+conda-forge 版が最も安定している。
+
+=== uv と miniforge の使い分け
+
+|===
+| 用途 | 道具
+| Web アプリ、API、CLI、業務スクリプト | *uv*
+| データ分析(pandas / polars 中心、CPU のみ) | *uv で十分*
+| 機械学習 / ディープラーニング(GPU) | *miniforge*
+| 科学計算(GDAL / OpenCV / R / Julia 連携) | *miniforge*
+| Jupyter ノートブック中心の探索 | *miniforge*(conda-forge の jupyterlab + ipykernel が安定)
+| Apple Silicon でビルドが通らない時 | *miniforge*
+|===
+
+*プロジェクトは uv で始めて、必要になったら miniforge を併用*が現実的。
+両者は別ディレクトリ(`~/miniforge3/envs/` と `<project>/.venv/`)に環境を
+作るので衝突しない。*強制 activate を切ってある限り、どちらの環境にも明示的に入る運用*で問題は出ない。
+
+=== Claudeに聞いてみよう②:DS / ML 環境を立ち上げる
+
+____
+私の用途は〔画像分類 / 自然言語処理 / 時系列分析 / 統計解析〕で、
+〔GPU あり / CPU のみ〕です。miniforge で環境を作るための
+`environment.yml` を、最低限のパッケージで雛形化してください。
+Jupyter Lab を立ち上げる手順、Python と R を併用する場合の組み合わせ、
+既存の uv プロジェクトと衝突させない運用も示してください。
+____
+
+== 第三節 Flutter / Dart
+
+=== Flet から Flutter へ
+
+第14・15章で Flet を使ったが、Flet は内部で Flutter を動かしている。*本格的なクロスプラットフォームアプリを作るなら Flutter 直接*も選択肢。
+
+=== Flutter のインストール
+
+Debian では公式の手順で。
+
+```bash
+# 必要な依存
+sudo apt install git curl unzip xz-utils clang cmake ninja-build pkg-config libgtk-3-dev
+
+# Flutter SDK を取得
+git clone https://github.com/flutter/flutter.git -b stable ~/flutter
+export PATH="$PATH:$HOME/flutter/bin"
+
+# 確認
+flutter doctor
+```
+
+=== Flutter の特徴
+
+* 一つのコードで、Linux・Windows・macOS・iOS・Android・Webの全てに出せる
+* 描画は Skia/Impeller で OS ネイティブ UIに依存しない
+* Dart 言語（TypeScript に似た記法）
+* *モバイルアプリを作りたい人には最適*
+
+=== Claudeに聞いてみよう③：Flet か Flutter か
+
+____
+私は〔目的〕のために GUI アプリを作りたいです。
+Flet（Python）と Flutter（Dart）のどちらが適切か、次の観点で比較してください：
+(1) 学習コスト
+(2) モバイル配布（iOS/Android）の必要性
+(3) パフォーマンス
+(4) AI補完（Claude/Copilot）の恩恵の大きさ
+(5) 長期保守性
+____
+
+== 第四節 Rust(Python の高速化のために)
+
+Rust は素晴らしい言語だが、本書では *単独では使わない*。日常のスクリプト・
+業務ロジック・GUI・Web ── これらは Python(+ uv)で書く方が速く、
+保守も楽で、AI が並走しやすい。
+
+Rust を使うのは *「Python のホットスポットを Rust に置き換える」* 場面だ。
+
+=== あなたは既に Rust の恩恵を受けている
+
+実は本書の主要ツールの多くは *中身が Rust 製*:
+
+|===
+| 道具 | 実装言語 | 効果
+| *uv* | Rust | pip + venv の 10〜100 倍速
+| *ruff* | Rust | flake8 + black + isort より 10〜100 倍速
+| *polars* | Rust | pandas より数倍〜十倍速い DataFrame
+| *pydantic v2* | Rust(コア部分) | データバリデーションが桁違いに速い
+| *fnm* | Rust | Node.js バージョン管理
+| *Zed* | Rust | エディタ(第14章で採用)
+|===
+
+つまり Rust を *書かなくても*、書かれた成果は享受できている。これが
+2026 年現在の Rust の主戦場 ── 「*裾野は Python が広く、底は Rust が速い*」という構造。
+
+=== 自分で Rust に降りるとき
+
+Python のプロファイラ(`cProfile` / `py-spy`)で計測して、*1 関数が処理時間の半分以上*を占めていたら、そこを Rust 化する候補。
+
+```bash
+# Rust toolchain
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+Python から呼ぶ Rust 拡張は *maturin + PyO3* が最も簡単:
+
+```bash
+uv tool install maturin
+maturin new --bindings pyo3 my_fastlib
+cd my_fastlib
+maturin develop   # ビルドして同一プロジェクトの uv 環境にインストール
+```
+
+これで Python 側で `import my_fastlib` できる。Rust の関数を Python の
+関数として呼び出せる。
+
+=== Rust を「書く」のではなく「使う」原則
+
+* 既製の Rust 製ツール(uv / ruff / polars 等)を選ぶ
+* 自分で Rust を書くのは *計測で詰まったホットスポットだけ*
+* 書く前に Python のテストで境界を固めてから、Rust に翻訳する
+* *Claude に「この Python 関数を maturin/PyO3 で Rust 化して」*で十分通る
+
+「Rust を勉強してから何か作ろう」と思わない。*Python で困ってから Rust* が
+正しい順番。
+
+=== Claudeに聞いてみよう④:Python のホットスポットを Rust に
+
+____
+私の Python コード〔貼る〕を `cProfile` で計測したところ、
+〔関数名〕が全体時間の〔割合〕を占めていました。この関数を
+maturin + PyO3 で Rust 化する手順を、最小サンプルで示してください。
+Python 側のインターフェースは変えない前提で。
+____
+
+== 第五節 データベース
+
+=== SQLite
+
+Debianに最初から入っている。単一ファイルのDB、個人用途のほとんどに十分。
+
+```bash
+# 使い始める
+sqlite3 ~/data/my.db
+```
+
+Pythonからは標準ライブラリの `sqlite3`。
+
+=== PostgreSQL
+
+本格的にやるなら PostgreSQL。
+
+```bash
+sudo apt install postgresql
+sudo -u postgres createuser $USER
+sudo -u postgres createdb $USER
+psql
+```
+
+=== どちらを選ぶか
+
+* 一人で使う、ファイル一個で完結したい → *SQLite*
+* 複数人、複数アプリ、本番運用 → *PostgreSQL*
+
+link:/insights/security-design/[第15章「Mythos時代のセキュリティ設計」]で書いた通り、*本番環境にはDBを置かない*設計が最強。個人開発では SQLite で足りることが多い。
+
+== 第六節 環境を切り替える習慣
+
+=== プロジェクトごとに隔離
+
+* Python:`uv`(プロジェクト直下の `.venv/`)
+* Node:`fnm`
+* Rust:`rustup` の toolchain
+
+*システムの Python や npm に直接インストールしない*。プロジェクトごとに
+独立した環境を持つことで、一つが壊れても他に波及しない。
+
+=== npm は構造的に脆弱である ── サプライチェーンに気をつける
+
+ここで一つ、強く意識しておく必要がある事実がある。
+
+____
+*npm は、サプライチェーンの観点でとても脆弱なエコシステムである*。
+____
+
+2026 年 4 月 29 日、*SAP の CAP 向け npm パッケージ 4 種*(`mbt`、`@cap-js/db-service`、`@cap-js/postgres`、`@cap-js/sqlite`)に悪意のあるコードが混ぜられ、開発機の認証情報やクラウドの秘密情報が、*被害者自身の GitHub アカウントに作られた公開リポジトリへ流出* した(The Register、2026-04-30)。これは特殊例ではない。
+
+過去にも、
+
+* `event-stream`(2018):暗号通貨ウォレット狙撃
+* `ua-parser-js`(2021):マイナーや RAT を仕込み
+* `colors` / `faker`(2022):メンテナーによる意図的破壊
+* 多数のタイポスクワッティング(似た名前のパッケージで誤インストールを誘う)
+
+など、*ほぼ毎年大規模事件が起きている*。
+
+=== なぜ npm は構造的に危ないのか
+
+* 一つのプロジェクトが *数百〜数千* のパッケージを推移的に依存する
+* それらは *世界中の個人メンテナー* が管理する野良パッケージ
+* `npm install` は依存ツリー全体を *無検査で取得・実行* する
+* `postinstall` フックで任意コードが走る
+* 依存先のうち 1 つが乗っ取られれば、依存しているプロジェクト全体が侵害される
+
+これは Debian の `apt` モデル ── *メンテナーが署名付きパッケージをレビュー・配布する* 体制 ── とは対極にある。Debian は遅いと言われる
+が、その遅さは *検証の遅さ* であり、安全性のコストである。
+
+____
+Debian の `apt install` と、npm の `npm install` は、似て非なる
+ものである。前者は *検証されたコード* を取得する。後者は *検証されていない他人のコード* を、推移的に数千個取得する。
+____
+
+=== Claude Code を使うなら、なおさら警戒する
+
+Claude Code は、エディタの裏でファイルを読み、コマンドを実行する。
+もし開発機の `node_modules` のどこかに悪意のあるパッケージが潜んで
+いれば、*AI 経由でその実行が引き起こされる* 可能性がある。
+
+依存を 1,000 個抱えるプロジェクトに Claude を入れることは、
+*信頼できない 1,000 人の他人を、自分の作業空間に招き入れること*
+と同じだ。
+
+=== 実用的な対策
+
+* *npm 依存の総数を把握する*:`npm ls --all | wc -l` で確認。数百
+  超えなら、依存を減らすことを真剣に考える
+* *lockfile をコミットする*:`package-lock.json` で正確なバージョン
+  を固定。*latest を勝手に拾わせない*
+* *`npm audit` を CI に組み込む*:既知脆弱性を自動チェック
+* *`postinstall` を信用しない*:`npm install --ignore-scripts` を
+  デフォルトにする習慣
+* *可能な限り、npm を使わない選択肢を検討する*:本書(と
+  link:/ai-native-software/web-build/[2-10「Web を作る」])
+  が推す Markdown + HTML + Python のスタックなら、フロントエンド
+  ビルドの大半は npm 抜きで済む
+
+____
+「便利だから使う」ではなく、「*使う必要がなければ使わない*」
+── これがサプライチェーンセキュリティの基本である。
+____
+
+=== 使っていない環境は消す
+
+使わないプロジェクト、使わない言語環境は、定期的に掃除する。
+ディスクが膨れる最大要因はこれだ。
+
+```bash
+# node_modules 一括削除
+find ~/Projects -name node_modules -type d -exec rm -rf {} +
+
+# uv のキャッシュ整理(`.venv` は各プロジェクト内なので Project ごと消せばよい)
+uv cache prune
+du -sh ~/.cache/uv ~/.local/share/uv
+
+# Flatpak Runtime の整理
+flatpak uninstall --unused -y
+```
+
+=== Claudeに聞いてみよう⑤：環境ダイエット
+
+____
+私のホームディレクトリを次のように消費しています：〔du -sh の出力〕。
+安全に削除できるもの、削除してはいけないもの、定期的に掃除すべきキャッシュを分類してください。
+シェルスクリプトで定期実行する場合の雛形もお願いします。
+____
+
+== 第七節 地図の読み方
+
+この章で挙げた環境は、全て必要になったときに読み返せばいい。*目次として次を覚えておく*だけで十分。
+
+|===
+| 用途 | 第一候補 | 第二候補
+| Python プロジェクト管理 | *uv* | —
+| データサイエンス / 機械学習 / GPU | *miniforge* | —
+| Jupyter ノートブック中心の探索 | *miniforge* | uv + jupyter も可
+| データ整理、スクリプト | Python(uv) | —
+| GUI アプリ | Flet / Flutter | —
+| Web フロントエンド | TypeScript + Vite | —
+| バックエンド / API | Python(uv + FastAPI) / Node.js / Go | —
+| CLI ツール | Rust / Go | Python
+| システム寄り、性能 | Rust | Go
+| データベース | SQLite | PostgreSQL
+|===
+
+第17章の最大の目的は、*この表が頭に入った状態*にすること。個々の技術の習熟は、必要になってから Claude と進めればよい。
+
+== まとめ
+
+この章でやったこと：
+
+. Python の現代的スタックを `uv` に統一(プロジェクト管理 + tool + Python バージョン)
+. データサイエンス / 機械学習用に *miniforge* を導入、uv と併用する運用を整理
+. Flutter / Dart の位置づけを把握
+. Rust は単独では使わず、*Python のホットスポット高速化*(maturin + PyO3)に絞る、と決めた
+. データベース(SQLite / PostgreSQL)の選び方
+. 環境を隔離し、掃除する習慣を仕込んだ
+
+ここで第4部が終わる。*あなたの Debian は、いつでも手を動かせる開発基盤になった*。何か作りたくなったとき、その言語の環境を30分で整えられる状態にある。
+
+第5部（第18〜21章）では、*運用と成長*に入る。アップデート、トラブル、育てる、コミュニティとの関わり——日常を回しながら、環境を長く保つ作法を身につける。
+
+'''
+
+シリーズ全体はlink:/claude-debian/[Claudeと一緒に学ぶDebian 一覧]から辿れる。コメント・議論は Facebook グループへ：https://www.facebook.com/groups/vegitage[AISeed — 生物多様性・食料・AIと暮らし]
+endif::[]
+ifdef::lang-en[]
+== How to Read This Chapter
+
+Chapter 17 functions as *a map*. Don't put your hands on every one of these right now. Just sort out where each language and environment sits, how to install it on Debian, and the knack of putting it together with Claude.
+
+When you need it, come back, read the relevant section, and open Claude Code. *Don't make "memorizing" the goal.*
+
+== Section 1 — Python (Going Deeper)
+
+=== This Book Picks `uv`
+
+For Python package management we standardize on *`uv`* (Astral, written
+in Rust). It's 10–100× faster than `pip` + `venv`, drops `requirements.txt`
+in favor of `pyproject.toml` + `uv.lock` for *fully reproducible*
+projects. It competes with `poetry`; we choose `uv` because it's
+*faster and simpler*. Chapters 14 and 15 all assume `uv`.
+
+```bash
+# One-time
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+=== The Project Loop
+
+```bash
+# Create
+uv init my-project && cd my-project
+
+# Add dependencies (auto-updates pyproject.toml and uv.lock)
+uv add requests pandas
+uv add --dev pytest ruff
+
+# Run
+uv run python -m my_project
+uv run pytest
+
+# Move to another machine
+git clone <repo> && cd <repo> && uv sync   # ← full reproduction
+```
+
+=== CLI Tools: `uv tool install`
+
+Python-written CLIs (`ruff`, `httpie`, `pre-commit`, `yt-dlp`, etc.) are
+*not project dependencies and live in their own stream*. `uv tool` is the
+upgraded successor to `pipx`.
+
+```bash
+uv tool install ruff
+uv tool install httpie
+uv tool install pre-commit
+
+# List and upgrade
+uv tool list
+uv tool upgrade --all
+```
+
+`apt install pipx` works too, but *knowing one tool (uv) keeps the head lighter*.
+
+=== Python Itself, Also Managed by `uv`
+
+`pyenv` is no longer needed.
+
+```bash
+uv python install 3.12
+uv python install 3.13
+uv python list
+
+# Pin Python 3.13 for this project
+echo '3.13' > .python-version
+uv sync   # installs it if missing
+```
+
+=== Data Processing
+
+Install pandas, polars, numpy via `uv add` rather than apt — you get the
+latest.
+
+* Large CSVs → *polars* (faster than pandas).
+* Statistics → scipy, statsmodels.
+* Visualization → matplotlib, plotly.
+
+For *GPU deep learning, or scientific stacks involving GDAL / OpenCV / R / Julia*, `uv` alone is not enough. See the next section,
+*"Data Science / ML: Use miniforge."*
+
+=== Ask Claude ①: A Modern Python Project Skeleton
+
+____
+I write Python for [data wrangling / web scraping / GUI / ML / scripting].
+Assuming `uv`, scaffold a project with:
+(1) `pyproject.toml` (dependencies, dev-deps, scripts entry point)
+(2) `.python-version` and `uv.lock`
+(3) configuration for `ruff` and `pytest`
+(4) a minimal `tests/` example
+(5) `README.md` showing `git clone && uv sync && uv run` flow
+____
+
+== Section 2 — Data Science / ML: Use miniforge
+
+`uv` covers 90% of Python projects, but it falls short for *data science and machine learning*:
+
+* PyTorch + *CUDA / cuDNN*, TensorFlow + GPU
+* *R / Julia* integration (rpy2 / PyJulia)
+* Non-Python native deps like *GDAL / OpenCV / FFmpeg*
+* Heavy scientific stacks: RAPIDS, scikit-image, GeoPandas, PyMC, ...
+* Earliest Apple Silicon support
+
+For these, PyPI wheels often aren't enough; the realistic path is to take
+*pre-built binaries via conda-forge*. This book installs *miniforge*.
+
+=== Why miniforge, Not Anaconda
+
+The Anaconda Distribution installer carries a *commercial-license restriction* (since 2020, organizations of 200+ are paid; the default
+`defaults` channel falls under the same terms). *miniforge avoids all that*:
+
+* Small installer (~150 MB).
+* Default channel pinned to *conda-forge* (community-run, license-clean,
+  largest package set).
+* Free for both commercial and personal use.
+
+=== Installing
+
+```bash
+# Debian 13 (x86_64)
+curl -L https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh \
+  -o ~/miniforge.sh
+bash ~/miniforge.sh -b -p ~/miniforge3
+
+# Shell integration (rewrites .bashrc / .zshrc, one-time)
+~/miniforge3/bin/conda init bash    # if you use bash
+~/miniforge3/bin/conda init zsh     # if you use zsh
+```
+
+Open a new terminal.
+
+*Important*: by default, the `base` environment is *auto-activated on shell startup*. This collides with uv project `.venv`s. Turn it off
+right away.
+
+```bash
+conda config --set auto_activate_base false
+```
+
+Now: "activate a conda env only when you mean to."
+
+=== The Loop
+
+```bash
+# Create an env (Python version + main libs)
+conda create -n ds python=3.12 \
+  numpy pandas polars scipy scikit-learn jupyterlab matplotlib seaborn
+
+conda activate ds
+
+# Add later
+conda install -c conda-forge gdal opencv
+
+# Export the env (share with the team)
+conda env export --from-history > environment.yml
+
+# Reproduce on another PC
+conda env create -f environment.yml
+```
+
+`--from-history` records *only the packages you explicitly asked for*
+(automatic dependencies are excluded). That's the readable form for
+team distribution.
+
+=== GPU (CUDA)
+
+```bash
+conda create -n dl python=3.12 \
+  pytorch torchvision pytorch-cuda=12.1 \
+  -c pytorch -c nvidia
+
+conda activate dl
+python -c "import torch; print(torch.cuda.is_available())"   # expect True
+```
+
+The big win: the CUDA toolkit is *scoped inside the conda env*. No more
+breaking the system by `apt install`-ing CUDA globally. Different
+projects can use different CUDA versions side by side.
+
+=== Jupyter Lab
+
+```bash
+conda activate ds
+jupyter lab --no-browser --port 8888
+```
+
+Open `http://localhost:8888/?token=…` in your browser. The conda-forge
+build of Jupyter is the most reliable.
+
+=== When to Use Which
+
+|===
+| Use | Tool
+| Web apps, APIs, CLIs, business scripts | *uv*
+| Data analysis (pandas / polars, CPU-only) | *uv is enough*
+| Machine learning / deep learning (GPU) | *miniforge*
+| Scientific computing (GDAL / OpenCV / R / Julia) | *miniforge*
+| Jupyter-notebook-centric exploration | *miniforge* (conda-forge's jupyterlab + ipykernel are the most stable)
+| When wheels won't build on Apple Silicon | *miniforge*
+|===
+
+*Start projects with uv; bring in miniforge when the problem demands it*.
+The two live in different directories (`~/miniforge3/envs/` and
+`<project>/.venv/`) so they don't fight. As long as you've turned off
+auto-activate, *you can step into either world by being explicit*.
+
+=== Ask Claude ②: Stand Up a DS / ML Environment
+
+____
+My use case is [image classification / NLP / time series / statistical
+analysis], with [GPU / CPU only]. Scaffold an `environment.yml` for
+miniforge with the minimum packages. Show me how to start Jupyter Lab,
+how to combine Python with R if needed, and how to run this without
+conflicting with my existing uv project.
+____
+
+== Section 3 — Flutter / Dart
+
+=== From Flet to Flutter
+
+We used Flet in Chapters 14 and 15, but Flet runs Flutter inside. *If you want to build a serious cross-platform app, Flutter directly* is also an option.
+
+=== Installing Flutter
+
+On Debian, follow the official steps.
+
+```bash
+# Required dependencies
+sudo apt install git curl unzip xz-utils clang cmake ninja-build pkg-config libgtk-3-dev
+
+# Get the Flutter SDK
+git clone https://github.com/flutter/flutter.git -b stable ~/flutter
+export PATH="$PATH:$HOME/flutter/bin"
+
+# Verify
+flutter doctor
+```
+
+=== What Flutter Offers
+
+* One codebase outputs to all of Linux, Windows, macOS, iOS, Android, and Web.
+* Rendering uses Skia / Impeller; it doesn't depend on OS-native UI.
+* Dart language (notation similar to TypeScript).
+* *Best fit for people who want to build mobile apps.*
+
+=== Ask Claude ③: Flet or Flutter
+
+____
+I want to build a GUI app for [purpose].
+Compare Flet (Python) and Flutter (Dart) along these axes:
+(1) Learning cost.
+(2) Need for mobile distribution (iOS / Android).
+(3) Performance.
+(4) Magnitude of the AI-completion benefit (Claude / Copilot).
+(5) Long-term maintainability.
+____
+
+== Section 4 — Rust (To Speed Up Python)
+
+Rust is a wonderful language, but in this book we *don't use it standalone*. Daily scripts, business logic, GUI, web — all of these go
+faster, stay easier to maintain, and pair better with AI when written in
+Python (with `uv`).
+
+The place we reach for Rust is *"replace a Python hot spot with Rust."*
+
+=== You Already Benefit from Rust
+
+Many of the main tools in this book are *written in Rust under the hood*:
+
+|===
+| Tool | Implementation | Effect
+| *uv* | Rust | 10–100× faster than pip + venv
+| *ruff* | Rust | 10–100× faster than flake8 + black + isort
+| *polars* | Rust | several to ten times faster than pandas DataFrames
+| *pydantic v2* | Rust (core) | data validation an order of magnitude faster
+| *fnm* | Rust | Node.js version management
+| *Zed* | Rust | the editor we adopted in Chapter 14
+|===
+
+You enjoy Rust without writing it. That is the 2026 reality of where
+Rust lives — *Python broad on the surface, Rust fast at the bottom.*
+
+=== When You Do Reach for Rust
+
+Profile your Python with `cProfile` or `py-spy`. *If a single function takes more than half* the running time, that's your Rust candidate.
+
+```bash
+# Rust toolchain
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+The cleanest way to call Rust from Python is *maturin + PyO3*:
+
+```bash
+uv tool install maturin
+maturin new --bindings pyo3 my_fastlib
+cd my_fastlib
+maturin develop   # build and install into the same project's uv venv
+```
+
+Now `import my_fastlib` works on the Python side — Rust functions called
+as Python functions.
+
+=== Use Rust, Don't Write It
+
+* Pick existing Rust-built tools (uv / ruff / polars, etc.).
+* Write Rust yourself *only for hot spots that profiling pointed to*.
+* Pin behavior with Python tests first, then translate to Rust.
+* *Ask Claude to "rewrite this Python function in Rust via maturin/PyO3"* — that prompt works fine.
+
+Don't "learn Rust first, then build something." *Get stuck in Python first, then drop to Rust* — that's the right order.
+
+=== Ask Claude ④: Move a Python Hot Spot to Rust
+
+____
+I profiled my Python code [paste] with `cProfile`. Function [name]
+accounted for [percentage] of total runtime. Show me, with a minimal
+example, how to rewrite it in Rust via maturin + PyO3, keeping the
+Python-side interface unchanged.
+____
+
+== Section 5 — Databases
+
+=== SQLite
+
+Comes with Debian. A single-file DB; enough for most personal use.
+
+```bash
+# Get going
+sqlite3 ~/data/my.db
+```
+
+From Python, the standard library's `sqlite3`.
+
+=== PostgreSQL
+
+If you want to go full-scale, PostgreSQL.
+
+```bash
+sudo apt install postgresql
+sudo -u postgres createuser $USER
+sudo -u postgres createdb $USER
+psql
+```
+
+=== Which to Choose
+
+* Single user, want it all in one file → *SQLite*.
+* Multi-user, multi-app, production → *PostgreSQL*.
+
+As discussed in link:/en/insights/security-design/[Chapter 15, "Security Design in the Mythos Era"], the strongest design is *not putting a DB into production*. For personal projects, SQLite often suffices.
+
+== Section 6 — The Habit of Switching Environments
+
+=== Isolate Per Project
+
+* Python: `uv` (project-local `.venv/`).
+* Node: `fnm`.
+* Rust: `rustup` toolchains.
+
+*Don't install directly into the system Python or system npm.* Each
+project gets its own isolated environment, so when one breaks, the rest
+don't go with it.
+
+=== npm Is Structurally Fragile — Watch the Supply Chain
+
+One fact here deserves to be kept firmly in mind.
+
+____
+*npm is a very fragile ecosystem from a supply-chain point of view.*
+____
+
+On 29 April 2026, *four SAP npm packages for CAP* (`mbt`, `@cap-js/db-service`,
+`@cap-js/postgres`, `@cap-js/sqlite`) were laced with malicious code, and
+credentials from developer machines and cloud secrets were
+*leaked to public GitHub repositories created on the victims' own accounts*
+(The Register, 2026-04-30). This was no isolated case.
+
+Before that,
+
+* `event-stream` (2018): targeting cryptocurrency wallets
+* `ua-parser-js` (2021): planting miners and a RAT
+* `colors` / `faker` (2022): deliberate sabotage by the maintainer
+* countless typosquats (look-alike package names that invite a mistaken install)
+
+— *a major incident almost every year.*
+
+=== Why npm Is Structurally Dangerous
+
+* One project depends, transitively, on *hundreds to thousands* of packages
+* Those are stray packages maintained by *individuals all over the world*
+* `npm install` fetches and runs the whole dependency tree *unchecked*
+* A `postinstall` hook runs arbitrary code
+* If one dependency is hijacked, every project that depends on it is compromised
+
+This is the opposite of Debian's `apt` model, where
+*maintainers review and distribute signed packages*. Debian is called slow, but that slowness is the
+*slowness of verification* — the cost of safety.
+
+____
+Debian's `apt install` and npm's `npm install` look alike and are not. The
+former fetches *verified code*. The latter fetches
+*unverified code written by strangers*, thousands of packages at a time,
+transitively.
+____
+
+=== If You Use Claude Code, Be Even More Careful
+
+Claude Code reads files and runs commands behind the editor. If a malicious
+package is lurking somewhere in `node_modules` on your development machine,
+*the AI could be what triggers it.*
+
+Bringing Claude into a project that carries 1,000 dependencies is
+*inviting 1,000 strangers you cannot vouch for into your workspace.*
+
+=== Practical Countermeasures
+
+* *Know your total npm dependency count*: check with `npm ls --all | wc -l`.
+  Past a few hundred, think seriously about cutting dependencies
+* *Commit the lockfile*: pin exact versions with `package-lock.json`.
+  *Never let it pick up latest on its own*
+* *Put `npm audit` into CI*: automatic checks for known vulnerabilities
+* *Don't trust `postinstall`*: make `npm install --ignore-scripts` the habit
+* *Wherever possible, consider the option of not using npm at all*: with the
+  Markdown + HTML + Python stack this book (and
+  link:/en/ai-native-software/web-build/[2-10, "Build the Web"]) recommends,
+  most front-end builds need no npm
+
+____
+Not "use it because it's convenient" but "*don't use it unless you have to*"
+— that is the basis of supply-chain security.
+____
+
+=== Throw Away Environments You Don't Use
+
+Periodically, prune projects and language environments you don't use.
+This is the biggest cause of disk bloat.
+
+```bash
+# Wipe all node_modules in one shot
+find ~/Projects -name node_modules -type d -exec rm -rf {} +
+
+# uv cache hygiene (per-project .venv lives in the project itself)
+uv cache prune
+du -sh ~/.cache/uv ~/.local/share/uv
+
+# Flatpak runtime cleanup
+flatpak uninstall --unused -y
+```
+
+=== Ask Claude ⑤: Environment Diet
+
+____
+My home directory is consuming the following: [output of `du -sh`].
+Sort what's safe to delete, what must not be deleted, and the caches I should clean periodically.
+Also draft a shell script for periodic cleanup.
+____
+
+== Section 7 — How to Read the Map
+
+The environments listed in this chapter can all be revisited when you need them. *It is enough if you remember the table of contents below.*
+
+|===
+| Use | First choice | Second choice
+| Python project management | *uv* | —
+| Data science / ML / GPU | *miniforge* | —
+| Notebook-centric exploration | *miniforge* | uv + jupyter also viable
+| Data wrangling, scripting | Python (uv) | —
+| GUI app | Flet / Flutter | —
+| Web frontend | TypeScript + Vite | —
+| Backend / API | Python (uv + FastAPI) / Node.js / Go | —
+| CLI tool | Rust / Go | Python
+| Systems-adjacent, performance | Rust | Go
+| Database | SQLite | PostgreSQL
+|===
+
+The biggest goal of Chapter 17 is *to have this table in your head*. Mastery of any one technology can wait until you need it, then proceed with Claude.
+
+== Summary
+
+What you did in this chapter:
+
+. Standardized the Python stack on `uv` (project + tools + Python versions).
+. Brought in *miniforge* for data science and ML, with a clean coexistence story alongside uv.
+. Got the position of Flutter / Dart.
+. Decided that Rust isn't used standalone — only to *speed up Python hot spots* (maturin + PyO3).
+. How to choose between SQLite and PostgreSQL.
+. Built the habit of isolating and pruning environments.
+
+This closes Part 4. *Your Debian is now a development foundation you can put your hands on at any time.* When something you want to build appears, you can have its language environment ready in 30 minutes.
+
+In Part 5 (Chapters 18–21), we move into *operation and growth*. Updates, troubles, growing the environment, engaging with the community — the practice of running the daily life and keeping the environment alive over time.
+
+'''
+
+The full series can be navigated from link:/en/claude-debian/[Learning Debian with Claude — All chapters]. Comments and discussion go to the Facebook group: https://www.facebook.com/groups/vegitage[AISeed — Biodiversity, Food, AI and Life].
+endif::[]

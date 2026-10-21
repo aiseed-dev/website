@@ -34,8 +34,8 @@ html/
 articles/
 ├── insights/                      # Insights(第1部〜第3部の3ファイル)
 ├── blog/                          # Blog(vol-01〜vol-05)
-├── claude-debian/                 # Claudeと一緒に学ぶDebian(前半・後半)
-├── debian-server.adoc             # Claudeと一緒に育てるDebian サーバー 全11章
+├── claude-debian/                 # Claudeと一緒に学ぶDebian(part-1〜part-4)
+├── debian-server/                 # Claudeと一緒に育てるDebian サーバー(前半・後半)
 ├── ai-native-software/            # AI ネイティブなソフトウェア開発(導入編・自立編×2・転換編)
 ├── phosphorus-and-farming/        # リンと農業(前半・後半)
 ├── fable.adoc                     # Fable 5 が帰ってきた 全9章(日本語のみ)
@@ -46,9 +46,11 @@ articles/
 
 フォルダに分けたシリーズは、中の `*.adoc` をファイル名順に連結して1シリーズ
 として読む(記事の並び・prev/next 連鎖はファイルをまたいで続く)。分けるのは
-GitHub が大きなファイル(数百KB超)を表示しないため。1ファイルは約 380KB
-以下に保ち、超えたら次のファイルを足す(手順は `authoring-series-chapter`
-スキル)。サイト設定(`site.json`)上のシリーズ名は分けても `blog.adoc` のまま。
+GitHub が大きなファイルを表示しないため(表示の上限は GitHub が描画した
+HTML で約 500KB。コードブロックの多い章は元の2倍以上に膨らむ)。1ファイルは
+文章中心なら約 350KB、コード中心なら約 200KB 以下に保ち、超えたら次の
+ファイルを足す(手順は `authoring-series-chapter` スキル)。サイト設定
+(`site.json`)上のシリーズ名は分けても `blog.adoc` のまま。
 
 シリーズファイルの中の1記事は次の形。記事の並び順がそのまま prev/next
 連鎖になる（手書きの連鎖キーは不要。隣の章の実タイトルと違う表記に

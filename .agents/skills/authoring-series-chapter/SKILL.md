@@ -5,7 +5,7 @@ description: Mechanics for adding, moving, renumbering, or splitting a chapter i
 
 # Authoring a chapter in a series file
 
-Every series on aiseed.dev is **one series of `.adoc` text** under `articles/`: either one file (`articles/fable.adoc`, `articles/debian-server.adoc`) or, for a series too large for GitHub to display, a folder of part files (`articles/blog/vol-01.adoc` …) that the build reads in file-name order as one continuous series. A chapter is a block inside one of those files. There are no per-chapter folders, no `ja.md` / `en.md` pairs, and no hand-written prev/next chain. The old `articles/ai-native-ways/` layout (and its two series) was retired on 2026-09-21; ignore anything that still describes it.
+Every series on aiseed.dev is **one series of `.adoc` text** under `articles/`: either one file (`articles/fable.adoc`) or, for a series too large for GitHub to display, a folder of part files (`articles/blog/vol-01.adoc` …) that the build reads in file-name order as one continuous series. A chapter is a block inside one of those files. There are no per-chapter folders, no `ja.md` / `en.md` pairs, and no hand-written prev/next chain. The old `articles/ai-native-ways/` layout (and its two series) was retired on 2026-09-21; ignore anything that still describes it.
 
 ## The file
 
@@ -65,14 +65,15 @@ Rules the build relies on:
 
 ### GitHub-readable layout (every series file)
 
-**Size.** GitHub shows a rendered `.adoc` only up to a few hundred KB (384KB rendered; 650KB did not). Keep every file under about 380KB. The split series and their parts:
+**Size.** GitHub shows a rendered `.adoc` only while the HTML it renders stays under roughly 500KB (492KB shown; 639KB not). The source size is not the measure: GitHub adds syntax-highlight markup to code blocks, so prose renders at about 1.1–1.3× the source but code-heavy chapters (claude-debian, debian-server) at 2–2.6×. Keep prose series files under ~350KB and code-heavy ones under ~200KB, and open a new or grown file on GitHub to confirm it renders (a too-large file shows only the Raw button). The split series and their parts:
 
 | Series | Parts (file-name order) |
 |---|---|
 | `articles/ai-native-software/` | `1-introduction` (導入編), `2a-independence` (自立編 06–15), `2b-independence` (自立編 16–22), `3-transition` (転換編) |
 | `articles/insights/` | `part-1-collapse`, `part-2-emergence`, `part-3-design` |
 | `articles/blog/` | `vol-01` (001–011), `vol-02` (012–020), `vol-03` (021–029), `vol-04` (030–039), `vol-05` (040–) |
-| `articles/claude-debian/` | `part-1` (序章–12章), `part-2` (13–24章) |
+| `articles/claude-debian/` | `part-1` (序章–5章), `part-2` (6–11章), `part-3` (12–17章), `part-4` (18–24章) |
+| `articles/debian-server/` | `part-1` (1–6章), `part-2` (7–11章) |
 | `articles/phosphorus-and-farming/` | `part-1` (序章–5章), `part-2` (6–9章) |
 
 New articles go at the end of the last part (the site editor does this). When the last part passes ~350KB, start the next file (`vol-06.adoc`) with the same header block, its own `= <series> — <part>` title. Article IDs stay unique across all parts; the build fails on a duplicate. `articles/blog.adoc` and `articles/blog/` must not both exist.

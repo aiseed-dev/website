@@ -4,8 +4,18 @@
 // 本文: ifdef::lang-ja[] / ifdef::lang-en[] で言語別
 // prev/next 連鎖は書かない(記事の並び順から自動導出)
 
+ifdef::env-github[]
+= AI ネイティブなソフトウェア開発
+:lang-ja:
+:doctype: book
+:toc:
+:toc-title: 目次
+:toclevels: 1
+
+サイトで読む: https://aiseed.dev/ai-native-software/
+endif::[]
 // ===== article: 01-coder-top =====
----
+////
 slug: coder-top
 number: 01
 part: 1
@@ -19,7 +29,7 @@ date: 2026.06.01
 label: Introduction 1
 title_html.ja: <span class="accent">最難のコーディング問題</span>を、<br>AI が解く。
 title_html.en: AI solves<br>the <span class="accent">hardest coding problems</span>.
----
+////
 ifdef::lang-ja[]
 = AI は、世界で最も難しいコーディング問題を解く
 
@@ -620,7 +630,7 @@ That is the structural change of the maintenance phase.
 * link:/en/insights/ai-and-individual/[Structural analysis 12: AI and the sole proprietor]
 endif::[]
 // ===== article: 02-maintenance-shift =====
----
+////
 slug: maintenance-shift
 number: 02
 part: 1
@@ -634,7 +644,7 @@ date: 2026.06.08
 label: Introduction 2
 title_html.ja: 保守の単位は、<br><span class="accent">コードから文脈</span>へ。
 title_html.en: The unit of maintenance moves<br>from <span class="accent">code to context</span>.
----
+////
 ifdef::lang-ja[]
 = 保守フェーズの構造変化こそ本質
 
@@ -1007,7 +1017,7 @@ the SIer becoming unnecessary, is taken up in the Shift part.
 * link:/en/insights/enterprise-tax/[Structural analysis 08: Subtracting the enterprise-IT tax]
 endif::[]
 // ===== article: 03-coder-end =====
----
+////
 slug: coder-end
 number: 03
 part: 1
@@ -1021,7 +1031,7 @@ date: 2026.06.15
 label: Introduction 3
 title_html.ja: ソフトウェアエンジニアの<br>仕事を、<span class="accent">AI</span> がする。
 title_html.en: AI now does the<br><span class="accent">software engineer's</span> work.
----
+////
 ifdef::lang-ja[]
 = ソフトウェアエンジニアの仕事を AI がするようになる
 
@@ -1375,7 +1385,7 @@ The next chapter defines that role: the builder.
 * link:/en/insights/ai-and-individual/[Structural analysis 12: AI and the sole proprietor]
 endif::[]
 // ===== article: 04-builder =====
----
+////
 slug: builder
 number: 04
 part: 1
@@ -1389,7 +1399,7 @@ date: 2026.06.22
 label: Introduction 4
 title_html.ja: 計画して、<span class="accent">AI と作り</span>、<br>動かす。
 title_html.en: Plan it, <span class="accent">build it with AI</span>,<br>run it.
----
+////
 ifdef::lang-ja[]
 = ビルダーという役割
 
@@ -1711,7 +1721,7 @@ The next chapter takes up the era in which customers themselves pair with AI and
 * link:/en/insights/ai-and-individual/[Structural analysis 12: AI and the sole proprietor]
 endif::[]
 // ===== article: 05-customer-codev =====
----
+////
 slug: customer-codev
 number: 05
 part: 1
@@ -1725,7 +1735,7 @@ date: 2026.06.29
 label: Introduction 5
 title_html.ja: 汎用は <span class="accent">OSS</span>、<br>固有は <span class="accent">AI</span> と。
 title_html.en: Generic on <span class="accent">OSS</span>,<br>the specific with <span class="accent">AI</span>.
----
+////
 ifdef::lang-ja[]
 = 顧客が AI と協働して開発する時代
 
@@ -1967,7 +1977,7 @@ The next chapter opens the Independence part. link:/en/ai-native-software/indepe
 * link:/en/insights/ai-and-individual/[Structural analysis 12: AI and the sole proprietor]
 endif::[]
 // ===== article: 06-independence =====
----
+////
 slug: independence
 number: 01
 part: 2
@@ -1981,7 +1991,7 @@ date: 2026.07.01
 label: Independence 1
 title_html.ja: <span class="accent">Microsoft と Google</span> を、<br>自前の道具に解く。
 title_html.en: Dissolve <span class="accent">Microsoft and Google</span><br>into tools you own.
----
+////
 ifdef::lang-ja[]
 = Microsoft と Google から自立する ── 全体像と対応表
 
@@ -2653,7 +2663,7 @@ Untie the closed bundle into open tools. Move the key into your own hands. The f
 * link:/en/blog/windows-office-facts/[Will You Continue Using Windows and Office?]
 endif::[]
 // ===== article: 07-ai-pc =====
----
+////
 slug: ai-pc
 number: 02
 part: 2
@@ -2667,7 +2677,7 @@ date: 2026.09.20
 label: Independence 2
 title_html.ja: 機械を<span class="accent">役割で</span>分ける。
 title_html.en: Split the machines<br><span class="accent">by role</span>.
----
+////
 ifdef::lang-ja[]
 = 機械を役割で分ける ── 重要な仕事は人が確認する
 
@@ -3237,7 +3247,7 @@ authentication-and-data machine.
 * link:/en/claude-debian/[Learning Debian with Claude — migrating to Debian, in dialogue]
 endif::[]
 // ===== article: 08-foundation =====
----
+////
 slug: foundation
 number: 03
 part: 2
@@ -3251,7 +3261,7 @@ date: 2026.07.01
 label: Independence 3
 title_html.ja: まず<span class="accent">データ基盤</span>を、<br>自分の手元に立てる。
 title_html.en: Stand up the <span class="accent">data layer</span><br>first, on your own side.
----
+////
 ifdef::lang-ja[]
 = 土台を据える ── SQLite・PostgreSQL・pgvector・DuckDB・Polars
 
@@ -3703,7 +3713,7 @@ putting a Flet screen on where one is needed.
 * link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
 endif::[]
 // ===== article: 09-python =====
----
+////
 slug: python
 number: 04
 part: 2
@@ -3717,7 +3727,7 @@ date: 2026.09.21
 label: Independence 4
 title_html.ja: 処理は Excel の外、<br><span class="accent">Python と Flet</span> の側に。
 title_html.en: Put the logic outside Excel,<br>into <span class="accent">Python and Flet</span>.
----
+////
 ifdef::lang-ja[]
 = 処理を書く ── Python と Flet で、自分の道具を持つ
 
@@ -4732,7 +4742,7 @@ one place, so every app comes through the same entrance.
 endif::[]
 
 // ===== article: 10-auth =====
----
+////
 slug: auth
 number: 05
 part: 2
@@ -4746,7 +4756,7 @@ date: 2026.07.02
 label: Independence 5
 title_html.ja: 身元は<span class="accent">一つ</span>、<br>守りは<span class="accent">各サーバー</span>で。
 title_html.en: One <span class="accent">identity</span>,<br>defense at <span class="accent">every server</span>.
----
+////
 ifdef::lang-ja[]
 = 門番を立てる ── PocketBase で認証を一つに
 
@@ -5153,7 +5163,7 @@ side.
 * link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic with FastAPI]
 endif::[]
 // ===== article: 11-code =====
----
+////
 slug: code
 number: 06
 part: 2
@@ -5167,7 +5177,7 @@ date: 2026.07.06
 label: Independence 6
 title_html.ja: コードの置き場を、<br><span class="accent">自分の側</span>に。
 title_html.en: Put the home of your code<br>on <span class="accent">your own side</span>.
----
+////
 ifdef::lang-ja[]
 = コードを手元に ── Forgejo と Zed
 
@@ -5502,7 +5512,7 @@ and Claude Docs into doors you pass through.
 * link:/en/ai-native-software/python/[2-04: Write the Logic — Own Your Tools with Python and Flet]
 endif::[]
 // ===== article: 12-documents =====
----
+////
 slug: documents
 number: 07
 part: 2
@@ -5516,7 +5526,7 @@ date: 2026.07.04
 label: Independence 7
 title_html.ja: 中身は<span class="accent">文字</span>で持ち、<br>見た目は<span class="accent">型</span>に分ける。
 title_html.en: Keep the content as <span class="accent">text</span>,<br>keep the look in a <span class="accent">template</span>.
----
+////
 ifdef::lang-ja[]
 = 文書を取り戻す ── 読む物は adoc、触る表は格子、刷る紙はテンプレート
 
@@ -6083,7 +6093,7 @@ The next chapter puts the other big piece of office work, mail, on your own side
 endif::[]
 
 // ===== article: 13-mail =====
----
+////
 slug: mail
 number: 08
 part: 2
@@ -6097,7 +6107,7 @@ date: 2026.07.09
 label: Independence 8
 title_html.ja: メールボックスを、<br><span class="accent">自分の側</span>に。
 title_html.en: Put the mailbox<br>on <span class="accent">your own side</span>.
----
+////
 ifdef::lang-ja[]
 = メールを自分の側に ── Stalwart と Thunderbird
 
@@ -6424,7 +6434,7 @@ Teams and calendar sharing to our own side.
 * link:/en/ai-native-software/independence/[2-01: Becoming Independent from Microsoft and Google — The Whole Map]
 endif::[]
 // ===== article: 14-meetings =====
----
+////
 slug: meetings
 number: 09
 part: 2
@@ -6438,7 +6448,7 @@ date: 2026.07.11
 label: Independence 9
 title_html.ja: 会議も予定も、<br><span class="accent">自分のドメイン</span>で。
 title_html.en: Meetings and calendars,<br>on <span class="accent">your own domain</span>.
----
+////
 ifdef::lang-ja[]
 = 会議とカレンダーを自分の側に ── Jitsi と CalDAV
 
@@ -6692,7 +6702,7 @@ them to the outside.
 endif::[]
 
 // ===== article: 15-web-build =====
----
+////
 slug: web-build
 number: 10
 part: 2
@@ -6706,7 +6716,7 @@ date: 2026.09.21
 label: Independence 10
 title_html.ja: 中身は AsciiDoc、<br>外枠だけ <span class="accent">HTML と CSS</span>。
 title_html.en: Content in AsciiDoc,<br>the frame only <span class="accent">HTML and CSS</span>.
----
+////
 ifdef::lang-ja[]
 = Web を作る ── HTML と CSS と JavaScript に戻る
 
@@ -7667,7 +7677,7 @@ publishes that `html/`. There are two homes for it: your own machine from 2-02
 * link:/en/ai-native-software/lockin/[3-05: The Lock-In Problem]
 endif::[]
 // ===== article: 16-web =====
----
+////
 slug: web
 number: 11
 part: 2
@@ -7681,7 +7691,7 @@ date: 2026.09.21
 label: Independence 11
 title_html.ja: 置き場は二つ、<br>手順は<span class="accent">一つ</span>。
 title_html.en: Two homes,<br><span class="accent">one</span> procedure.
----
+////
 ifdef::lang-ja[]
 = Web を公開する ── 自分の機械か、Cloudflare Pages か
 
@@ -8129,7 +8139,7 @@ it.
 * link:/en/ai-native-software/auth/[2-05: Stand Up the Gate — One Login with PocketBase]
 endif::[]
 // ===== article: 17-fastapi =====
----
+////
 slug: fastapi
 number: 12
 part: 2
@@ -8143,7 +8153,7 @@ date: 2026.07.15
 label: Independence 12
 title_html.ja: 基幹を<span class="accent">並行稼働</span>で書き換え、<br>ロジックを一箇所の API に。
 title_html.en: Rewrite the core in <span class="accent">parallel</span>,<br>gather your logic into one API.
----
+////
 ifdef::lang-ja[]
 = API を作る ── FastAPI で基幹のロジックを出す
 
@@ -9481,7 +9491,7 @@ documents. Structure diagrams, slides, and handouts all come from text and code.
 * link:/en/ai-native-software/meetings/[2-09: Meetings and Calendars on Your Own Side — Jitsi and CalDAV]
 endif::[]
 // ===== article: 18-design =====
----
+////
 slug: design
 number: 13
 part: 2
@@ -9495,7 +9505,7 @@ date: 2026.09.21
 label: Independence 13
 title_html.ja: <span class="accent">図</span>も資料も、<br>テキストから作る。
 title_html.en: <span class="accent">Diagrams</span> and documents,<br>made from text.
----
+////
 ifdef::lang-ja[]
 = 図と資料を作る ── Mermaid・Marp・そのほかの道具
 
@@ -10367,7 +10377,7 @@ things you can touch, from electronics to IoT.
 endif::[]
 
 // ===== article: 19-embedded =====
----
+////
 slug: embedded
 number: 14
 part: 2
@@ -10381,7 +10391,7 @@ date: 2026.09.21
 label: Independence 14
 title_html.ja: Python で考えて、<br><span class="accent">AI</span> に翻訳させる。
 title_html.en: Think in Python.<br>Have the <span class="accent">AI</span> translate.
----
+////
 ifdef::lang-ja[]
 = 電子工作から IoT まで ── Python で考え、AI に翻訳させる
 
@@ -11306,7 +11316,7 @@ into written form.
 * link:/en/ai-native-software/hiring-builders/[3-06: Companies Hire Builders]
 endif::[]
 // ===== article: 20-structure-knowledge =====
----
+////
 slug: structure-knowledge
 number: 15
 part: 2
@@ -11320,7 +11330,7 @@ date: 2026.07.16
 label: Independence 15
 title_html.ja: 整備こそ<span class="accent">本体</span>、<br>AI は最後の一手。
 title_html.en: Preparation is the <span class="accent">main body</span>,<br>AI the last move.
----
+////
 ifdef::lang-ja[]
 = 社内情報を整える ── 整備こそ本体、AI は最後の一手
 
@@ -11632,7 +11642,7 @@ In the next chapter, on top of this prepared information, we set up our own AI.
 * link:/en/ai-native-software/builder/[1-04: The Builder Role]
 endif::[]
 // ===== article: 21-ai =====
----
+////
 slug: ai
 number: 16
 part: 2
@@ -11646,7 +11656,7 @@ date: 2026.07.16
 label: Independence 16
 title_html.ja: 全ての上に、<br><span class="accent">自前の AI</span>を乗せる。
 title_html.en: Lay <span class="accent">your own AI</span><br>on top of everything.
----
+////
 ifdef::lang-ja[]
 = 自前の AI を据える ── LLM と RAG
 
@@ -12033,7 +12043,7 @@ Independence part.
 * link:/en/ai-native-software/sier-uneconomic/[3-04: The Structural Uneconomy of the SIer Model]
 endif::[]
 // ===== article: 22-ai-delegation =====
----
+////
 slug: ai-delegation
 number: 17
 part: 2
@@ -12047,7 +12057,7 @@ date: 2026.09.21
 label: Independence 17
 title_html.ja: AI は<span class="accent">生成器</span>。<br>動かすのは、コード。
 title_html.en: AI is the <span class="accent">generator</span>.<br>What runs is the code.
----
+////
 ifdef::lang-ja[]
 = AI に任せる範囲を決める ── 自律で動かさず、コードに凍結する
 
@@ -12961,7 +12971,7 @@ worlds, office work and core systems, stand side by side.
 endif::[]
 
 // ===== article: 23-two-worlds =====
----
+////
 slug: two-worlds
 number: 01
 part: 3
@@ -12975,7 +12985,7 @@ date: 2026.07.20
 label: Shift 1
 title_html.ja: 企業は<span class="accent">自分でコードを書かない</span>。<br>それは、当然だった。
 title_html.en: Companies <span class="accent">don't write their own code</span>.<br>And that was rational.
----
+////
 ifdef::lang-ja[]
 = 企業は自分でコードを書かない ── 事務と基幹、二つの世界の並立
 
@@ -13417,7 +13427,7 @@ sovereign AI are now better on both economics and security.
 * link:/en/ai-native-software/python/[2-04: Write the Logic — Own Your Tools with Python and Flet]
 endif::[]
 // ===== article: 24-verify-narratives =====
----
+////
 slug: verify-narratives
 number: 02
 part: 3
@@ -13431,7 +13441,7 @@ date: 2026.09.21
 label: Shift 2
 title_html.ja: ベンダーの語りを、<br><span class="accent">一次情報で検算する</span>。
 title_html.en: Check the vendor's story<br><span class="accent">against primary sources</span>.
----
+////
 ifdef::lang-ja[]
 = 物語を確かめる ── ベンダーの語りを一次情報で検算する
 
@@ -14122,7 +14132,7 @@ the premise on the office side inverted.
 endif::[]
 
 // ===== article: 25-sovereignty =====
----
+////
 slug: sovereignty
 number: 03
 part: 3
@@ -14136,7 +14146,7 @@ date: 2026.07.21
 label: Shift 3
 title_html.ja: <span class="accent">主権</span>は、いまや<br>経済でも安全保障でも有利だ。
 title_html.en: <span class="accent">Sovereignty</span> is now better on<br>both economics and security.
----
+////
 ifdef::lang-ja[]
 = デジタル主権 ── Microsoft 問題と Trump 問題
 
@@ -14590,7 +14600,7 @@ We examine that structure (3-04).
 * link:/en/ai-native-software/sier-uneconomic/[3-04: The Structural Uneconomy of the SIer Model]
 endif::[]
 // ===== article: 26-sier-uneconomic =====
----
+////
 slug: sier-uneconomic
 number: 04
 part: 3
@@ -14604,7 +14614,7 @@ date: 2026.07.21
 label: Shift 4
 title_html.ja: 外注の<span class="accent">手間</span>で、<br>自分で<span class="accent">作れて</span>しまう。
 title_html.en: With the effort of <span class="accent">outsourcing</span>,<br>you can <span class="accent">build it yourself</span>.
----
+////
 ifdef::lang-ja[]
 = SIer委託モデルの構造的不経済
 
@@ -15021,7 +15031,7 @@ chapter takes up that lock-in (3-05).
 * Blog link:/en/blog/verification-shock/[When Fable 5 Returns, Do This First] — the day verification becomes free, the commissioned deliverables built on "never being verified" are exposed (the applied, urgent version of this chapter)
 endif::[]
 // ===== article: 27-lockin =====
----
+////
 slug: lockin
 number: 05
 part: 3
@@ -15035,7 +15045,7 @@ date: 2026.08.04
 label: Shift 5
 title_html.ja: 独自フレームは<br><span class="accent">逃げ場のない檻</span>になる。
 title_html.en: A proprietary framework becomes<br>a <span class="accent">cage with no exit</span>.
----
+////
 ifdef::lang-ja[]
 = ロックイン問題
 
@@ -15539,7 +15549,7 @@ get positioned, how they are paid, and how they function.
 * link:/en/blog/self-hosting-microsoft-365/[Can You Build a Microsoft 365 (Standard + Copilot) Equivalent Yourself?]
 endif::[]
 // ===== article: 28-hiring-builders =====
----
+////
 slug: hiring-builders
 number: 06
 part: 3
@@ -15553,7 +15563,7 @@ date: 2026.08.11
 label: Shift 6
 title_html.ja: 上級ビルダーは<br><span class="accent">CIO</span>だ。
 title_html.en: The senior builder becomes<br>the <span class="accent">CIO</span>.
----
+////
 ifdef::lang-ja[]
 = 各社がビルダーを雇用する時代
 
@@ -16325,7 +16335,7 @@ subcontractor structure? Which intermediate forms appear during the transition?
 * link:/en/insights/ai-and-individual/[Structural analysis 12: AI and the sole proprietor]
 endif::[]
 // ===== article: 29-japan-transition =====
----
+////
 slug: japan-transition
 number: 07
 part: 3
@@ -16339,7 +16349,7 @@ date: 2026.08.18
 label: Shift 7
 title_html.ja: 多重下請けは、<br>逆説的に<span class="accent">転換を容易にする</span>。
 title_html.en: Multi-tier subcontracting<br>makes the transition <span class="accent">easier</span>.
----
+////
 ifdef::lang-ja[]
 = 日本の SIer 業界の転換と雇用流動性
 
@@ -16956,7 +16966,7 @@ long the transition takes to complete is treated in the final chapter, 3-09.
 * link:/en/insights/ai-and-individual/[Structural analysis 12: AI and the sole proprietor]
 endif::[]
 // ===== article: 30-revolution-from-below =====
----
+////
 slug: revolution-from-below
 number: 08
 part: 3
@@ -16970,7 +16980,7 @@ date: 2026.09.20
 label: Shift 8
 title_html.ja: AI 革命は、<br><span class="accent">下から</span>起きる。
 title_html.en: The AI revolution<br>starts <span class="accent">from below</span>.
----
+////
 ifdef::lang-ja[]
 = AI 革命は下から起きる
 
@@ -17434,7 +17444,7 @@ chapter looks at why this transition does not reverse, as a structure.
 * link:/en/ai-native-software/ai/[2-16: Stand Up Your Own AI — LLM and RAG]
 endif::[]
 // ===== article: 31-five-years =====
----
+////
 slug: five-years
 number: 09
 part: 3
@@ -17448,7 +17458,7 @@ date: 2026.08.25
 label: Shift 9
 title_html.ja: 主要な変化は<span class="accent">近い将来</span>に。<br>逆転したから、戻らない。
 title_html.en: The main changes are <span class="accent">near</span> —<br>and they don't reverse.
----
+////
 ifdef::lang-ja[]
 = もう戻らない構造転換
 

@@ -3,8 +3,18 @@
 // フロントマター: 日英共通は裸キー、異なる値は key.ja / key.en
 // 本文: ifdef::lang-ja[] / ifdef::lang-en[] で言語別
 // prev/next 連鎖は書かない(記事の並び順から自動導出)
+ifdef::env-github[]
+= Blog(構造分析ノート)
+:lang-ja:
+:doctype: book
+:toc:
+:toc-title: 目次
+:toclevels: 1
+
+サイトで読む: https://aiseed.dev/blog/
+endif::[]
 // ===== article: 001-grid-attack-naphtha =====
----
+////
 slug: grid-attack-naphtha
 title.ja: もしトランプ大統領がイランの発電所を破壊したら
 title.en: What If Trump Destroys Iran's Power Plants
@@ -18,7 +28,11 @@ og_image.en: https://aiseed.dev/en/blog/grid-attack-naphtha/001-trump-power-plan
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/001-grid-attack-naphtha
+= もしトランプ大統領がイランの発電所を破壊したら
+endif::[]
 ifdef::lang-ja[]
 2026年4月5日、イースターの朝。トランプ大統領がTruth Socialに投稿した。
 
@@ -431,7 +445,7 @@ Facebook https://www.facebook.com/groups/vegitage[AISeed - Biodiversity, Food & 
 endif::[]
 
 // ===== article: 002-middle-east-power-water-taboo =====
----
+////
 slug: middle-east-power-water-taboo
 title.ja: 中東で発電所を壊すということ——飲料水を失うのはイランではない
 title.en: What Destroying Power Plants in the Middle East Really Means — Iran Is Not the One That Loses Its Water
@@ -443,7 +457,11 @@ date: 2026.04.08
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/002-middle-east-power-water-taboo
+= 中東で発電所を壊すということ——飲料水を失うのはイランではない
+endif::[]
 ifdef::lang-ja[]
 トランプ大統領が4月7日、Truth Socialで「今夜、一つの文明が死ぬ」と投稿した。イランがホルムズ海峡を再開しなければ、発電所と橋を「二度と使えないように（never to be used again）」破壊すると宣言している。
 
@@ -680,7 +698,7 @@ Iran knew this. That is why, even facing the threat that "a civilization dies to
 endif::[]
 
 // ===== article: 003-markdown-it-cjk-fix =====
----
+////
 slug: markdown-it-cjk-fix
 title.ja: markdown-itの太字が**のまま残るバグをClaudeが修正してPull Requestまでした
 title.en: Claude Fixed a Bold Rendering Bug in markdown-it and Submitted the Pull Request
@@ -693,7 +711,10 @@ date.en: 2026.04.06
 label: Blog
 category.ja: AI開発ノート
 category.en: AI Development Notes
----
+////
+ifdef::env-github[]
+= markdown-itの太字が**のまま残るバグをClaudeが修正してPull Requestまでした
+endif::[]
 ifdef::lang-ja[]
 == 何が起きたか
 
@@ -884,7 +905,7 @@ All you need is the ability to describe the problem accurately and judge the res
 endif::[]
 
 // ===== article: 004-Fertilizer-crisis-natural-farming =====
----
+////
 slug: fertilizer-crisis-natural-farming
 title.ja: 肥料不足はホルムズ海峡が開いたら終わりではない——自然農法を強制される時代
 title.en: The Fertilizer Shortage Won't End When the Strait Reopens — The Age of Forced Natural Farming
@@ -896,7 +917,11 @@ date: 2026.04.08
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/004-Fertilizer-crisis-natural-farming
+= 肥料不足はホルムズ海峡が開いたら終わりではない——自然農法を強制される時代
+endif::[]
 ifdef::lang-ja[]
 4月7日、米国とイランの間で2週間の停戦が合意された。ホルムズ海峡はイラン軍の管理下で通航が再開される見通しとなり、市場は安堵の反応を示した。
 
@@ -1135,7 +1160,7 @@ _Fact-finding for this article was conducted using Gemini Deep Research. Structu
 endif::[]
 
 // ===== article: 005-Gas-turbine-ai-vs-food =====
----
+////
 slug: gas-turbine-ai-vs-food
 title.ja: ガスタービンは食糧とAI、どちらに使うべきか
 title.en: Should Gas Turbines Power Food or AI?
@@ -1147,7 +1172,11 @@ date: 2026.04.08
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/005-Gas-turbine-ai-vs-food
+= ガスタービンは食糧とAI、どちらに使うべきか
+endif::[]
 ifdef::lang-ja[]
 4月7日、イランとの停戦が合意され、ホルムズ海峡が再開される見通しとなった。原油先物は下落し、株式市場は反発した。
 
@@ -1316,7 +1345,7 @@ _Fact-finding for this article was conducted using Gemini Deep Research. Structu
 endif::[]
 
 // ===== article: 006-new-era-forced-transformation-food-systems =====
----
+////
 slug: new-era-forced-transformation-food-systems
 title.ja: 新時代——食料とシステムの強制転換が始まった
 title.en: New Era — The Forced Transformation of Food and Systems Has Begun
@@ -1328,7 +1357,11 @@ date: 2026.04.11
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/006-new-era-forced-transformation-food-systems
+= 新時代——食料とシステムの強制転換が始まった
+endif::[]
 ifdef::lang-ja[]
 == 新時代——二つの強制的な変化が同時に来てしまった。
 
@@ -1431,7 +1464,7 @@ Japan possesses the world's highest-performance physical technology that AI cann
 endif::[]
 
 // ===== article: 007-mythos-copilot-financial-crisis =====
----
+////
 slug: mythos-copilot-financial-crisis
 title.ja: Claude Mythos -- 米財務省・FRBが金融界首脳を緊急招集した理由を深堀してみる
 title.en: Claude Mythos — Why the U.S. Treasury and Fed Urgently Summoned Financial Leaders
@@ -1445,7 +1478,10 @@ category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 hero_image.ja: 007-IMG_3414.jpg
 hero_image.en: IMG_3414.jpg
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/007-mythos-copilot-financial-crisis
+endif::[]
 ifdef::lang-ja[]
 = Claude Mythos -- 米財務省・FRBが金融界首脳を緊急招集した理由を深堀してみる
 
@@ -1744,7 +1780,7 @@ _References_
 endif::[]
 
 // ===== article: 008-claude-mythos-wordpress-ai =====
----
+////
 slug: claude-mythos-wordpress-ai
 title.ja: Claude Mythos —— WordPress＋AIの脆弱性を深堀してみる
 title.en: Claude Mythos — The Vulnerability of WordPress + AI
@@ -1757,7 +1793,10 @@ label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 hero_image: IMG_3415.jpg
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/008-claude-mythos-wordpress-ai
+endif::[]
 ifdef::lang-ja[]
 = Claude Mythos —— WordPress＋AIの脆弱性を深堀してみる
 
@@ -2116,7 +2155,7 @@ _References_
 endif::[]
 
 // ===== article: 009-hormuz-naphtha-japan-us-crisis =====
----
+////
 slug: hormuz-naphtha-japan-us-crisis
 title.ja: ホルムズ封鎖——ナフサ由来製品で日本とアメリカに何が起きるかを深堀してみる
 title.en: Hormuz Blockade — What Happens to Japan and America When Naphtha-Derived Products Run Out
@@ -2129,7 +2168,10 @@ label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 hero_image: IMG_3414.jpg
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/009-hormuz-naphtha-japan-us-crisis
+endif::[]
 ifdef::lang-ja[]
 = ホルムズ封鎖——ナフサ由来製品で日本とアメリカに何が起きるかを深堀してみる
 
@@ -2831,7 +2873,7 @@ _References_
 endif::[]
 
 // ===== article: 010-naphtha-mythos =====
----
+////
 slug: naphtha-mythos
 title.ja: アメリカを同時に襲う二つの爆弾——ナフサとMythos
 title.en: Two Bombs Hitting America at Once — Naphtha and Mythos
@@ -2844,7 +2886,7 @@ label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 hero_image: IMG_3415.jpg
----
+////
 ifdef::lang-ja[]
 = アメリカを同時に襲う二つの爆弾——ナフサとMythos
 
@@ -3081,7 +3123,7 @@ The Trump administration is simultaneously severing the physical supply chain an
 endif::[]
 
 // ===== article: 011-software-dev-independence =====
----
+////
 slug: software-dev-independence
 title.ja: AI時代のデスクワークとシステム設計——Claude MythosとGemma 4
 title.en: Desk Work and System Design in the AI Era — Claude Mythos and Gemma 4
@@ -3094,7 +3136,7 @@ label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 hero_image: IMG_3415.jpg
----
+////
 ifdef::lang-ja[]
 = AI時代のデスクワークとシステム設計——Claude MythosとGemma 4
 
@@ -3307,7 +3349,7 @@ Join the discussion in the Facebook group: https://www.facebook.com/groups/vegit
 endif::[]
 
 // ===== article: 012-copilot_correct_looking_but_wrong =====
----
+////
 slug: copilot-correct-looking-but-wrong
 title.ja: MicrosoftのCopilotの課題 ― コードの「正しそうで間違っている」問題
 title.en: The Copilot Problem — Code That Looks Right but Is Wrong
@@ -3320,7 +3362,10 @@ label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 hero_image: 012-IMG_3424.jpg
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/012-copilot_correct_looking_but_wrong
+endif::[]
 ifdef::lang-ja[]
 = MicrosoftのCopilotの課題 ― コードの「正しそうで間違っている」問題
 
@@ -3525,7 +3570,7 @@ On top of that, Agent 365 — the control plane that centrally monitors, governs
 endif::[]
 
 // ===== article: 013-phosphate-crisis-2027 =====
----
+////
 slug: phosphate-crisis-2027
 title.ja: 日本ではリン酸肥料は手に入らなくなる——もう自然農法でやるしかない
 title.en: Japan Can No Longer Get Phosphate Fertilizer — Natural Farming Is the Only Option Left
@@ -3538,7 +3583,10 @@ label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 hero_image: 013-IMG_3426.jpg
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/013-phosphate-crisis-2027
+endif::[]
 ifdef::lang-ja[]
 = 日本ではリン酸肥料は手に入らなくなる——もう自然農法でやるしかない
 
@@ -3804,7 +3852,7 @@ In Japan, natural farming is the only option left — this is not a temporary re
 endif::[]
 
 // ===== article: 014-windows-office-facts =====
----
+////
 slug: windows-office-facts
 title.ja: それでも Windows と Office を使い続けますか？
 title.en: Will You Continue Using Windows and Office?
@@ -3817,7 +3865,10 @@ label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 hero_image: 014-IMG_3437.jpg
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/014-windows-office-facts
+endif::[]
 ifdef::lang-ja[]
 = それでも Windows と Office を使い続けますか？
 
@@ -5232,7 +5283,7 @@ _aiseed.dev_
 endif::[]
 
 // ===== article: 015-japan-windows-disaster-risk =====
----
+////
 slug: japan-windows-disaster-risk
 title.ja: 災害大国の日本では、業務をWindowsとクラウドに依存するのは危険
 title.en: In Disaster-Prone Japan, Depending on Windows and the Cloud for Business is Dangerous
@@ -5246,7 +5297,10 @@ category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 hero_image.ja: 015-IMG_3433.jpg
 hero_image.en: 016-japan-disaster.jpg
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/015-japan-windows-disaster-risk
+endif::[]
 ifdef::lang-ja[]
 = 災害大国の日本では、業務をWindowsとクラウドに依存するのは危険
 
@@ -5910,7 +5964,7 @@ For specific practical methods, please see "https://aiseed.dev/claude-debian/[Le
 endif::[]
 
 // ===== article: 016-musk-altman-trial-and-intelligence =====
----
+////
 slug: musk-altman-trial-and-intelligence
 title.ja: マスクとアルトマンの裁判から見えるもの
 title.en: What the Musk-Altman Trial Reveals
@@ -5923,7 +5977,10 @@ label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 hero_image: 016-IMG_2415.jpg
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/016-musk-altman-trial-and-intelligence
+endif::[]
 ifdef::lang-ja[]
 = マスクとアルトマンの裁判から見えるもの
 
@@ -6073,7 +6130,7 @@ Intelligence depends on embodiment and on a history of survival. AI has neither.
 endif::[]
 
 // ===== article: 017-windows-breaking-down =====
----
+////
 slug: windows-breaking-down
 title.ja: 今、Windows PC を買っても、2027年10月12日以降サポートがされる保証がない
 title.en: There is no guarantee Windows will be supported after October 12, 2027 — even if you buy a new PC today
@@ -6086,7 +6143,10 @@ label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 hero_image: IMG_3449.jpg
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/017-windows-breaking-down
+endif::[]
 ifdef::lang-ja[]
 = 今、Windows PC を買っても、2027年10月12日以降サポートがされる保証がない
 
@@ -6569,7 +6629,7 @@ _Related: link:/en/blog/windows-office-facts/[Are You Still Going to Keep Using 
 endif::[]
 
 // ===== article: 018-python-in-excel-eight-years-later =====
----
+////
 slug: python-in-excel-eight-years-later
 title.ja: ExcelにPythonが搭載？ — それから8年後、なぜExcelを捨てるべきか
 title.en: Python in Excel? — Eight Years Later, Why You Should Leave Excel
@@ -6582,7 +6642,10 @@ label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 hero_image: IMG_3470.jpg
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/018-python-in-excel-eight-years-later
+endif::[]
 ifdef::lang-ja[]
 = ExcelにPythonが搭載？ — それから8年後、なぜExcelを捨てるべきか
 
@@ -6779,7 +6842,7 @@ From Tokushima, Japan, I want to build — together with others — a movement t
 endif::[]
 
 // ===== article: 019-flet-as-modern-vb =====
----
+////
 slug: flet-as-modern-visual-basic
 title.ja: Flet で業務ソフトを開発 — 現代版 Visual Basic
 title.en: Building Line-of-Business Software with Flet — A Modern Visual Basic
@@ -6792,7 +6855,10 @@ label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 hero_image: screenshot.png
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/019-flet-as-modern-vb
+endif::[]
 ifdef::lang-ja[]
 = Flet で業務ソフトを開発 ― 現代版 Visual Basic
 
@@ -7833,7 +7899,7 @@ https://github.com/aiseed-dev/weather[`aiseed-weather`]
 endif::[]
 
 // ===== article: 020-nadella-hegel-cunning-of-reason =====
----
+////
 slug: nadella-hegel-cunning-of-reason
 title.ja: MicrosoftのナデラCEOとヘーゲルの哲学
 title.en: Microsoft's Nadella and Hegel's Philosophy
@@ -7846,7 +7912,10 @@ label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 hero_image: IMG_3478.jpg
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/020-nadella-hegel-cunning-of-reason
+endif::[]
 ifdef::lang-ja[]
 = MicrosoftのナデラCEOとヘーゲルの哲学——AI時代の絶対的覇者か、歴史的転換の踏み台か
 
@@ -8299,7 +8368,7 @@ The problem is the *direction* of that investment. *Every investment is aimed at
 endif::[]
 
 // ===== article: 021-software-three-transitions =====
----
+////
 slug: software-three-transitions
 title.ja: AI時代には「特化したエンジニアになれ」は構造を取り違えている
 title.en: In the AI era,\"Become a specialized engineer\" misreads the structure
@@ -8312,7 +8381,10 @@ label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 hero_image: IMG_3481.jpg
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/021-software-three-transitions
+endif::[]
 ifdef::lang-ja[]
 = AI時代には「特化したエンジニアになれ」は構造を取り違えている
 
@@ -8633,7 +8705,7 @@ This article compresses aiseed.dev's link:/en/ai-native-software/[AI-Native Soft
 endif::[]
 
 // ===== article: 022-windows-10-to-debian =====
----
+////
 slug: windows-10-to-debian
 title.ja: PCが大幅値上げ ── 今あるPCにLinuxをインストールして活用
 title.en: PCs Just Got Much More Expensive — Install Linux on the PC You Already Have
@@ -8646,7 +8718,10 @@ label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 hero_image: IMG_3482.webp
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/022-windows-10-to-debian
+endif::[]
 ifdef::lang-ja[]
 = PCが大幅値上げ ── 今あるPCにLinuxをインストールして活用
 
@@ -8901,7 +8976,7 @@ _Related: link:/en/blog/software-three-transitions/["In the AI Era, Become a Spe
 endif::[]
 
 // ===== article: 023-microsoft-power-and-environment =====
----
+////
 slug: microsoft-power-and-environment
 title.ja: Microsoftが引き起こす電力問題と環境問題
 title.en: The Power and Environmental Problems Microsoft Is Causing
@@ -8913,7 +8988,7 @@ description.en: Microsoft's AI-first strategy is creating two problems. The firs
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = Microsoftが引き起こす電力問題と環境問題
 
@@ -9026,7 +9101,7 @@ _Related: link:/en/blog/windows-office-facts/[Are You Still Going to Keep Using 
 endif::[]
 
 // ===== article: 024-self-hosting-microsoft-365 =====
----
+////
 slug: self-hosting-microsoft-365
 title.ja: Microsoft 365（Standard + Copilot）同等の環境を自前で作れるか試す
 title.en: Can You Build a Microsoft 365 (Standard + Copilot) Equivalent Yourself?
@@ -9039,7 +9114,10 @@ label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 hero_image: pxl.jpg
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/024-self-hosting-microsoft-365
+endif::[]
 ifdef::lang-ja[]
 = Microsoft 365（Standard + Copilot）同等の環境を自前で作れるか試す
 
@@ -9249,7 +9327,7 @@ I will set up my own server.
 endif::[]
 
 // ===== article: 025-building-apps-through-dialogue =====
----
+////
 slug: building-apps-through-dialogue
 title.ja: AIを使って、対話だけでもアプリを作ることができる
 title.en: With AI, You Can Build an App Through Dialogue Alone
@@ -9261,7 +9339,7 @@ description.en: Boris Cherny, who built Claude Code, calls himself a "builder" a
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = AIを使って、対話だけでもアプリを作ることができる
 
@@ -9450,7 +9528,7 @@ _This article may be freely used, translated, and redistributed under CC BY-SA 4
 endif::[]
 
 // ===== article: 026-in-house-business-systems =====
----
+////
 slug: in-house-business-systems
 title.ja: Fableの公開で業務システムは自社開発が有利に
 title.en: With Fable's Release, Building Business Systems In-House Gains the Edge
@@ -9462,7 +9540,7 @@ description.en: With the release of Claude Fable 5, Stripe migrated 50 million l
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = Fableの公開で業務システムは自社開発が有利に
 
@@ -9623,7 +9701,7 @@ One more thing: the language is not the place to be dogmatic. If you are good at
 endif::[]
 
 // ===== article: 027-autonomy-distribution-diversity =====
----
+////
 slug: autonomy-distribution-diversity
 title.ja: IT業界の最新トレンド — 自立・分散・多様性への構造的転換
 title.en: The IT Industry's Structural Shift — Toward Autonomy, Distribution, and Diversity
@@ -9635,7 +9713,7 @@ description.en: In June 2026, the export ban on Claude Fable 5 and NSA testimony
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = IT業界の最新トレンド — 自立・分散・多様性への構造的転換
 
@@ -10070,7 +10148,7 @@ References
 endif::[]
 
 // ===== article: 028-verification-shock =====
----
+////
 slug: verification-shock
 title.ja: Fable 5 が戻ってきたら、すぐやるべきこと ── 稼働中システムを、全部検証する
 title.en: When Fable 5 Returns, Do This First — Verify Every System You Run
@@ -10083,7 +10161,10 @@ label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
 hero_image: IMG_2958.jpg
----
+////
+ifdef::env-github[]
+:imagesdir: assets/blog/028-verification-shock
+endif::[]
 ifdef::lang-ja[]
 = Fable 5 が戻ってきたら、すぐやるべきこと
 
@@ -10280,7 +10361,7 @@ What has stood on the premise of not being verified is not only the SIer's deliv
 endif::[]
 
 // ===== article: 029-end-of-us-ai-hegemony =====
----
+////
 slug: end-of-us-ai-hegemony
 title.ja: アメリカのAI覇権の終わりの始まり ── 最高裁判決と米国依存の構造的リスク5層
 title.en: The Beginning of the End of American AI Hegemony — The Supreme Court Ruling and Five Layers of Structural US-Dependence Risk
@@ -10292,7 +10373,7 @@ description.en: Starting from the US Supreme Court's June 29, 2026 ruling in Tru
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = アメリカのAI覇権の終わりの始まり
 
@@ -10850,7 +10931,7 @@ link:/en/insights/cloud-independence/[Structural Analysis Part 3, Chapter 4 "Ind
 endif::[]
 
 // ===== article: 030-windows-account-danger =====
----
+////
 slug: windows-account-danger
 title.ja: あなたの Microsoft アカウント、盗まれたら戻ってきません ── いま起きていること
 title.en: If Your Microsoft Account Gets Stolen, You Won't Get It Back — What's Happening Now
@@ -10862,7 +10943,7 @@ description.en: Microsoft account takeovers are surging right now. Passwords cha
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = あなたの Microsoft アカウント、盗まれたら戻ってきません
 
@@ -11089,7 +11170,7 @@ Rather than searching for a way to recover after it's stolen, build in advance a
 endif::[]
 
 // ===== article: 031-ai-not-ignorance-but-average =====
----
+////
 slug: ai-not-ignorance-but-average
 title.ja: AIは無知だから間違えるのではない ── ある誤答から考える、AIとの付き合い方
 title.en: AI Isn't Wrong Because It's Ignorant — What One Bad Answer Teaches About Working With AI
@@ -11101,7 +11182,7 @@ description.en: I asked a generative AI about exchanging text data between syste
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = AIは無知だから間違えるのではない
 
@@ -11250,7 +11331,7 @@ One wrong answer showed the limits of AI — and at the same time traced the out
 endif::[]
 
 // ===== article: 032-kimi-k3-maker-side-zero-trust =====
----
+////
 slug: kimi-k3-maker-side-zero-trust
 title.ja: Kimi K3 は何から作られたのか ── 作る側にも、ゼロトラストを
 title.en: What Was Kimi K3 Made From? — Zero Trust for the Maker's Side, Too
@@ -11262,7 +11343,7 @@ description.en: On July 16, 2026, Moonshot AI announced Kimi K3 — 2.8 trillion
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = Kimi K3 は何から作られたのか
 
@@ -11427,7 +11508,7 @@ The stage of trusting the mass of internet data indiscriminately is ending on th
 endif::[]
 
 // ===== article: 033-kimi-k3-what-to-watch =====
----
+////
 slug: kimi-k3-what-to-watch
 title.ja: 7月27日、Kimi K3 の重み公開で本当に見るべきもの
 title.en: What to Actually Watch When Kimi K3's Weights Drop on July 27
@@ -11439,7 +11520,7 @@ description.en: Moonshot AI announced Kimi K3 on July 16 and promised the full w
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = 7月27日、Kimi K3の重み公開で本当に見るべきもの
 
@@ -11568,7 +11649,7 @@ This is the first of a five-part series.
 endif::[]
 
 // ===== article: 034-ai-companies-reality =====
----
+////
 slug: ai-companies-reality
 title.ja: AI企業の現実と、Kimi K3 がそこに与える影響
 title.en: The Reality of AI Companies, and What Kimi K3 Does to It
@@ -11580,7 +11661,7 @@ description.en: The claim that there is no demand for AI does not survive contac
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = AI企業の現実と、Kimi K3がそこに与える影響
 
@@ -11737,7 +11818,7 @@ This is the second of a five-part series.
 endif::[]
 
 // ===== article: 035-microsoft-earnings-verdict =====
----
+////
 slug: microsoft-earnings-verdict
 title.ja: 7月29日、Microsoft の決算で見るべきもの ── Kimi K3 が変えた問いの立て方
 title.en: What to Watch in Microsoft's July 29 Earnings — How Kimi K3 Changed the Question
@@ -11749,7 +11830,7 @@ description.en: Microsoft has already been sold off. The stock is down about 20 
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = 7月29日、Microsoftの決算で見るべきもの
 
@@ -11926,7 +12007,7 @@ This is the third of a five-part series.
 endif::[]
 
 // ===== article: 036-three-fronts-same-week =====
----
+////
 slug: three-fronts-same-week
 title.ja: 同じ週に、三つの決着が近づいている ── ウクライナ、イラン、中国の現状
 title.en: Three Reckonings Are Closing In, All in the Same Week — Ukraine, Iran, China
@@ -11938,7 +12019,7 @@ description.en: The first three parts covered the deadlines in AI's economy. Par
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = 同じ週に、三つの決着が近づいている
 
@@ -12159,7 +12240,7 @@ This is the fourth of a five-part series.
 endif::[]
 
 // ===== article: 037-after-it-industry =====
----
+////
 slug: after-it-industry
 title.ja: ITという産業が終わり、素材と組立の時代が始まる
 title.en: IT Ends as an Industry, and the Age of Materials and Assembly Begins
@@ -12171,7 +12252,7 @@ description.en: The first four parts covered AI's economic deadlines and geopoli
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = ITという産業が終わり、素材と組立の時代が始まる
 
@@ -12310,7 +12391,7 @@ This is the fifth and final part of the series.
 endif::[]
 
 // ===== article: 038-three-conditions-ai-era =====
----
+////
 slug: three-conditions-ai-era
 title.ja: AI時代に必要な人 ── ソフトが安くなれば、攻撃も安くなる
 title.en: Who the AI Era Needs — Cheap Software Means Cheap Attacks
@@ -12322,7 +12403,7 @@ description.en: Part five said the AI revolution drove the cost of software towa
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = AI時代に必要な人
 
@@ -12715,7 +12796,7 @@ This is the conclusion of the zero-trust trilogy, and the consequence of the fiv
 endif::[]
 
 // ===== article: 039-nadella-yang-what-to-do-now =====
----
+////
 slug: nadella-yang-what-to-do-now
 title.ja: AIファーストを主導して先見の明があると言われながら ── ナデラと楊植麟、いますぐすること
 title.en: Hailed as Prescient for Leading AI-First — Nadella, Yang Zhilin, and What to Do Right Now
@@ -12727,7 +12808,7 @@ description.en: Moonshot AI announced Kimi K3 on 16 July 2026 and promised the f
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = AIファーストを主導して先見の明があると言われながら
 
@@ -13232,7 +13313,7 @@ And the condition under which this piece is wrong: *if organizations that applie
 endif::[]
 
 // ===== article: 040-open-weights-dilemma =====
----
+////
 slug: open-weights-dilemma
 title.ja: オープンウェイト規制のジレンマ ── 50社の署名と、署名しない2社
 title.en: The Open-Weight Dilemma — Fifty Signatures, and the Two Companies Missing
@@ -13244,7 +13325,7 @@ description.en: On 24 July 2026 a letter titled "Open Weights and American AI Le
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = オープンウェイト規制のジレンマ
 
@@ -13529,7 +13610,7 @@ And the conditions under which this piece is wrong. If a broad restriction is im
 endif::[]
 
 // ===== article: 041-hegel-july-2026 =====
----
+////
 slug: hegel-july-2026
 title.ja: ヘーゲルで読む2026年7月 ── 買った主人、作った奴隷、そして理性の狡知
 title.en: Reading July 2026 Through Hegel — The Master Who Bought, the Slave Who Built, and the Cunning of Reason
@@ -13541,7 +13622,7 @@ description.en: From the Kimi K3 announcement on 16 July 2026, through the lette
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = ヘーゲルで読む2026年7月
 
@@ -13728,7 +13809,7 @@ The philosopher of two hundred years ago knew nothing of AI. He did know what be
 endif::[]
 
 // ===== article: 042-distilling-business-systems =====
----
+////
 slug: distilling-business-systems
 title.ja: 蒸留は、AIだけの話ではない ── AIが業務システムをつくる
 title.en: Distillation Is Not Only About AI — AI Builds the Business System
@@ -13740,7 +13821,7 @@ description.en: The word "distillation" is circulating around Kimi K3 — the te
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = 蒸留は、AIだけの話ではない
 
@@ -13875,7 +13956,7 @@ What is happening now is that the middle is being shaved from both sides. Judgme
 endif::[]
 
 // ===== article: 043-large-proves-small =====
----
+////
 slug: large-proves-small
 title.ja: 大規模ができるなら、小規模はすぐできる ── 100万行・2週間の実証を、5万行に換算する
 title.en: If Large-Scale Works, Small-Scale Is Immediate — Converting the Million-Line, Two-Week Proof to Fifty Thousand Lines
@@ -13887,7 +13968,7 @@ description.en: The previous piece cited the Bun port reported on Anthropic's en
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = 大規模ができるなら、小規模はすぐできる
 
@@ -14050,7 +14131,7 @@ This site carries a product of the same procedure: an old site that ran on ASP.N
 endif::[]
 
 // ===== article: 044-constraint-moved =====
----
+////
 slug: constraint-moved
 title.ja: 肥料危機、3か月で何が明確になったか ── 改善したもの、悪化したもの、まだ決まらないもの
 title.en: The Fertilizer Crisis, Three Months In — What Improved, What Worsened, What Remains Open
@@ -14062,7 +14143,7 @@ description.en: Three months after this site wrote that phosphate fertilizer wou
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = 肥料危機、3か月で何が明確になったか
 
@@ -14231,7 +14312,7 @@ Whichever way it falls, the result will be written here.
 endif::[]
 
 // ===== article: 045-nitrogen-balance =====
----
+////
 slug: nitrogen-balance
 title.ja: 窒素の需給 ── 急性期は峠を越えた。だが逃げ道は、みな窒素に合流する
 title.en: The Nitrogen Balance — The Acute Phase Has Peaked, but Every Escape Route Merges Into Nitrogen
@@ -14243,7 +14324,7 @@ description.en: The previous piece argued that the fertilizer constraint does no
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = 窒素の需給
 
@@ -14430,7 +14511,7 @@ Whichever way it falls, the result will be written here.
 endif::[]
 
 // ===== article: 046-cloud-vanished =====
----
+////
 slug: cloud-vanished
 title.ja: クラウドが丸ごと消えた日 ── IDCF の事故から、五つの教訓
 title.en: The Day a Cloud Vanished — Five Lessons from the IDCF Incident
@@ -14442,7 +14523,7 @@ description.en: On 7 October 2026 ransomware took down IDCF Cloud's East Japan R
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = クラウドが丸ごと消えた日
 
@@ -14511,7 +14592,7 @@ Anyone who wants the details can have an AI look them up. What stays here is the
 endif::[]
 
 // ===== article: 047-cloud-still-breached =====
----
+////
 slug: cloud-still-breached
 title.ja: クラウドにして守りを固めても、破られる
 title.en: Move to the Cloud and Harden It, and It Is Still Breached
@@ -14523,7 +14604,7 @@ description.en: In October 2026, IDCF Cloud, run by a specialist provider, was b
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = クラウドにして守りを固めても、破られる
 
@@ -14614,7 +14695,7 @@ The entry route and the exact extent of the damage had not been published when t
 endif::[]
 
 // ===== article: 048-project-folder-first =====
----
+////
 slug: project-folder-first
 title.ja: 文脈はフォルダーに書く ── Copilot の代わりに、プロジェクトフォルダーと Claude Code から始める
 title.en: Write the Context into a Folder — Instead of Copilot, Start with a Project Folder and Claude Code
@@ -14626,7 +14707,7 @@ description.en: Some say the value of Microsoft 365 Copilot is that Microsoft ab
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
----
+////
 ifdef::lang-ja[]
 = 文脈はフォルダーに書く
 

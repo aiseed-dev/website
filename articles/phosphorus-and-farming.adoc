@@ -3,8 +3,18 @@
 // フロントマター: 日英共通は裸キー、異なる値は key.ja / key.en
 // 本文: ifdef::lang-ja[] / ifdef::lang-en[] で言語別
 // prev/next 連鎖は書かない(記事の並び順から自動導出)
+ifdef::env-github[]
+= リンと農業
+:lang-ja:
+:doctype: book
+:toc:
+:toc-title: 目次
+:toclevels: 1
+
+サイトで読む: https://aiseed.dev/phosphorus-and-farming/
+endif::[]
 // ===== article: 00-prologue =====
----
+////
 slug: prologue
 number: 00
 title.ja: 序章 ── 経済が農法を決める
@@ -19,7 +29,10 @@ title_html.ja: 経済が、<br><span class="accent">農法を決める</span>。
 title_html.en: Economics decides<br><span class="accent">the method of farming</span>.
 next_title.ja: リン酸肥料の供給制約 ── 何が起きているか
 next_title.en: Phosphate Fertilizer Supply Constraints — What Is Happening
----
+////
+ifdef::env-github[]
+:imagesdir: assets/phosphorus-and-farming/00-prologue
+endif::[]
 ifdef::lang-ja[]
 = 序章 ── 経済が農法を決める
 
@@ -266,7 +279,7 @@ From the next chapter, that logic gets confirmed one strand at a time.
 endif::[]
 
 // ===== article: 01-supply-constraint =====
----
+////
 slug: supply-constraint
 number: 01
 title.ja: 第1章 リン酸肥料の供給制約 ── 何が起きているか
@@ -281,7 +294,10 @@ title_html.ja: 三つの供給ルートが、<br><span class="accent">同時に�
 title_html.en: Three supply routes,<br><span class="accent">thinning at once</span>.
 prev_title.en: Prologue — The Economy Decides the Farming Method
 next_title.en: Chapter 2: Phosphate Fertilizer Will Not Return to Cheap
----
+////
+ifdef::env-github[]
+:imagesdir: assets/phosphorus-and-farming/01-supply-constraint
+endif::[]
 ifdef::lang-ja[]
 = 第1章 リン酸肥料の供給制約 ── 何が起きているか
 
@@ -940,7 +956,7 @@ In the next chapter, we confirm — through the economics of low-grade ore and p
 endif::[]
 
 // ===== article: 02-no-cheap-return =====
----
+////
 slug: no-cheap-return
 number: 02
 title.ja: 第2章 リン酸肥料は安価には戻らない
@@ -957,7 +973,10 @@ prev_title.ja: 第1章 リン酸肥料の供給制約
 next_title.ja: 第3章 工業型農業は成立しない
 prev_title.en: Chapter 1: The Supply Constraint on Phosphate Fertilizer
 next_title.en: Chapter 3: Industrial Farming Will Not Hold
----
+////
+ifdef::env-github[]
+:imagesdir: assets/phosphorus-and-farming/02-no-cheap-return
+endif::[]
 ifdef::lang-ja[]
 = 第2章 リン酸肥料は安価には戻らない
 
@@ -2067,7 +2086,7 @@ That is what the next chapter examines.
 endif::[]
 
 // ===== article: 03-industrial-farming-fails =====
----
+////
 slug: industrial-farming-fails
 number: 03
 title.ja: 第3章 慣行農業は経済的に成立しなくなる
@@ -2083,7 +2102,10 @@ title_html.en: The more you grow,<br><span class="accent">the deeper the loss.</
 next_title.ja: 第4章 現実的な立ち位置
 prev_title.en: Chapter 2: Phosphate Fertilizer Will Not Return to Cheap
 next_title.en: Chapter 4: A Realistic Position
----
+////
+ifdef::env-github[]
+:imagesdir: assets/phosphorus-and-farming/03-industrial-farming-fails
+endif::[]
 ifdef::lang-ja[]
 = 第3章 工業型農業は成立しない
 
@@ -3744,7 +3766,7 @@ ____
 endif::[]
 
 // ===== article: 04-realistic-position =====
----
+////
 slug: realistic-position
 number: 04
 title.ja: 第4章 現実的な立ち位置 ── どこにも組みしない
@@ -3760,7 +3782,10 @@ title_html.en: Aligned with <span class="accent">neither extreme</span>.
 prev_title.ja: 第3章 工業型農業は成立しない
 prev_title.en: Chapter 3: Industrial Farming Doesn't Pencil Out
 next_title.en: Chapter 5: Soil Microbes as Strategy
----
+////
+ifdef::env-github[]
+:imagesdir: assets/phosphorus-and-farming/04-realistic-position
+endif::[]
 ifdef::lang-ja[]
 = 第4章 現実的な立ち位置 ── どこにも組みしない
 
@@ -5103,7 +5128,7 @@ mechanism it holds: biological mining by soil microbes.
 endif::[]
 
 // ===== article: 05-soil-microbes =====
----
+////
 slug: soil-microbes
 number: 05
 title.ja: 第5章 土壌微生物という戦略
@@ -5118,7 +5143,10 @@ title_html.ja: 化学肥料を、<br><span class="accent">微生物が肩代わ�
 title_html.en: Let microbes <br><span class="accent">stand in for chemical fertilizer</span>.
 prev_title.ja: 第4章 現実的な立ち位置
 prev_title.en: Chapter 4: A Realistic Position
----
+////
+ifdef::env-github[]
+:imagesdir: assets/phosphorus-and-farming/05-soil-microbes
+endif::[]
 ifdef::lang-ja[]
 = 第5章 土壌微生物という戦略
 
@@ -6779,7 +6807,7 @@ agriculture.
 endif::[]
 
 // ===== article: 06-co2-tailwind =====
----
+////
 slug: co2-tailwind
 number: 06
 title.ja: 第6章 CO2 という追い風
@@ -6795,7 +6823,7 @@ title_html.en: Pour the carbon of the air <br><span class="accent">into the soil
 next_title.ja: 第7章 どう実装するか
 prev_title.en: Chapter 5: Soil Microbes as a Strategy
 next_title.en: Chapter 7: How to Implement It
----
+////
 ifdef::lang-ja[]
 = 第6章 CO2 という追い風
 
@@ -7379,7 +7407,7 @@ The next chapter, Chapter 7, looks at *how to implement it* — concrete impleme
 endif::[]
 
 // ===== article: 07-implementation =====
----
+////
 slug: implementation
 number: 07
 title.ja: 第7章 どう実装するか ── 一反百姓と耕作放棄地
@@ -7395,7 +7423,7 @@ title_html.en: As many people as possible,<br><span class="accent">take part in 
 next_title.ja: 第8章 運用原則
 prev_title.en: Chapter 6: The CO2 Tailwind
 next_title.en: Chapter 8: Operating Principles
----
+////
 ifdef::lang-ja[]
 = 第7章 どう実装するか ── 一反百姓と耕作放棄地
 
@@ -10108,7 +10136,7 @@ distribution. And we present the conclusion of the entire series.
 endif::[]
 
 // ===== article: 08-operating-principles =====
----
+////
 slug: operating-principles
 number: 08
 title.ja: 第8章 運用原則 ── 何をして、何をしないか
@@ -10123,7 +10151,7 @@ title_html.ja: 何をして、<br><span class="accent">何をしないか</span>
 title_html.en: What to do,<br><span class="accent">what not to do.</span>
 prev_title.ja: 第7章 どう実装するか
 prev_title.en: Chapter 7: How to Implement
----
+////
 ifdef::lang-ja[]
 = 第8章 運用原則 ── 何をして、何をしないか
 
@@ -11099,7 +11127,7 @@ The end of each chapter also lists chapter-specific references.
 endif::[]
 
 // ===== article: 09-cuba-lessons =====
----
+////
 slug: cuba-lessons
 number: 09
 title.ja: 第9章 キューバの教訓
@@ -11114,7 +11142,10 @@ title_html.ja: キューバが示した、<br><span class="accent">成功と失�
 title_html.en: What Cuba showed us —<br><span class="accent">both success and failure</span>.
 prev_title.ja: 第8章 運用原則
 prev_title.en: Chapter 8: Operating Principles
----
+////
+ifdef::env-github[]
+:imagesdir: assets/phosphorus-and-farming/09-cuba-lessons
+endif::[]
 ifdef::lang-ja[]
 = 第9章 キューバの教訓 ── 国家規模の唯一の実例から
 

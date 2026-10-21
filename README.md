@@ -49,7 +49,7 @@ articles/
 
 ```asciidoc
 // ===== article: 021-software-three-transitions =====
----
+////
 slug: software-three-transitions
 date: 2026.05.22
 title.ja: 日本語タイトル
@@ -57,7 +57,7 @@ title.en: English title
 description.ja: …
 description.en: …
 hero_image: IMG_3481.jpg
----
+////
 ifdef::lang-ja[]
 = 日本語タイトル
 
@@ -72,6 +72,11 @@ endif::[]
 
 - フロントマター: 日英で同じ値のキーは裸(`date:`)、異なる値は
   `key.ja` / `key.en`。`lang` は書かない(ビルド時に合成)。
+- GitHub でもそのまま読める: フロントマターは `////`(コメントブロック)で
+  囲み、`ifdef::env-github[]` 〜 `endif::[]` に GitHub 表示専用の行
+  (ファイル冒頭の文書タイトル・`:lang-ja:`・目次、章ごとの `:imagesdir:`、
+  本文が `==` から始まる章の `= 章タイトル`)を置く。ビルドはこのブロックを
+  読み飛ばす。詳細は `authoring-series-chapter` スキル。
 - 本文は AsciiDoc: 見出し `==`、リスト `*`/`.`（入れ子は `**`/`..`）、
   引用 `____`、表 `|===`、区切り線 `'''`、強調 `*太字*`/`_斜体_`、
   チェーン図 `[.chain-diagram]` + `--`〜`--`（行末 ` +` で改行保持）、

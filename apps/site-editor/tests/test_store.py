@@ -326,5 +326,7 @@ def test_add_article_follows_github_layout(series_file):
     after = series_file.read_text(encoding="utf-8")
     tail = after.split(f"// ===== article: {article_id} =====")[1]
     assert tail.lstrip("\n").startswith("////\n")
-    assert "ifdef::env-github[]\n= 二つ目の記事\nendif::[]" in tail
     assert "\n---\n" not in tail
+    # 章見出しは本文の `= …` だけ(GitHub で二重にならない)
+    assert tail.count("= 二つ目の記事") == 1
+    assert "ifdef::lang-ja[]\n= 二つ目の記事" in tail

@@ -17,7 +17,7 @@ Every series on aiseed.dev is **one `.adoc` file** under `articles/`. A chapter 
 // prev/next 連鎖は書かない(記事の並び順から自動導出)
 
 // ===== article: 01-coder-top =====
----
+////
 slug: coder-top
 number: 01
 part: 1
@@ -31,7 +31,7 @@ date: 2026.06.01
 label: Introduction 1
 title_html.ja: …<br><span class="accent">…</span>
 title_html.en: …
----
+////
 ifdef::lang-ja[]
 = 章のタイトル
 
@@ -63,9 +63,9 @@ Rules the build relies on:
 - **Frontmatter**: a bare key applies to both languages; `key.ja` / `key.en` split it. Do not write prev/next keys.
 - **Bodies**: each language sits between `ifdef::lang-ja[]` (or `lang-en`) and `endif::[]`. The `= Title` line is stripped by the template (the hero already shows it) but write it anyway.
 
-### GitHub-readable layout (`articles/debian-server.adoc`)
+### GitHub-readable layout (every series file)
 
-GitHub renders `.adoc` with neither `lang-ja` nor `lang-en` set, so in the layout above every body is hidden and the frontmatter shows as one run-on paragraph. `debian-server.adoc` uses an optional layout that reads on GitHub; the build output is byte-identical:
+GitHub renders `.adoc` with neither `lang-ja` nor `lang-en` set, so without help every body is hidden and the frontmatter shows as one run-on paragraph. Every series file therefore uses a layout that reads on GitHub (Japanese bodies, a TOC, one heading per chapter); the build output is byte-identical to the plain layout:
 
 ```
 ifdef::env-github[]
@@ -81,16 +81,17 @@ title.ja: 第1章 サーバーとは何か
 …
 ////
 ifdef::env-github[]
+:imagesdir: assets/debian-server/01-what-is-a-server
 = 第1章 サーバーとは何か
 endif::[]
 ifdef::lang-ja[]
 …
 ```
 
-- The frontmatter may be fenced with `////` (a comment block, hidden on GitHub) instead of `---`. Close it with the same fence it opened with.
-- `ifdef::env-github[]` … `endif::[]` is skipped entirely by the build. Use it only before the first separator (document title, `:lang-ja:`, TOC attributes) and right after an article's frontmatter (the chapter title).
-- The GitHub chapter title must equal `title.ja` (or `title`) — the build fails otherwise. The site editor (`apps/site-editor`) updates it when the title is edited; by hand, change both.
-- A new chapter in this file needs both the `////` frontmatter and the `= <title.ja>` block.
+- Fence the frontmatter with `////` (a comment block, hidden on GitHub), not `---`. Close it with the same fence it opened with.
+- `ifdef::env-github[]` … `endif::[]` is skipped entirely by the build. Use it only before the first separator (document title, `:lang-ja:`, TOC attributes) and right after an article's frontmatter.
+- **Chapter heading on GitHub**: if the Japanese body starts with `= Title` (most of ai-native-software, blog, fable, phosphorus-and-farming), that line is the heading — add nothing. If it starts at `==` (claude-debian, debian-server, most of insights), put `= <title.ja>` in the article's `env-github` block. That line must equal `title.ja` (or `title`) — the build fails otherwise. The site editor (`apps/site-editor`) updates it when the title is edited; by hand, change both.
+- **Images on GitHub**: when the article has an `articles/assets/<series>/<article-id>/` folder, put `:imagesdir: assets/<series>/<article-id>` in its `env-github` block so relative `image::` targets resolve on GitHub. Add it when you add the first asset to a new chapter.
 
 ## Numbering (ai-native-software)
 

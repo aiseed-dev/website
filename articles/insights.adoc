@@ -3,8 +3,18 @@
 // フロントマター: 日英共通は裸キー、異なる値は key.ja / key.en
 // 本文: ifdef::lang-ja[] / ifdef::lang-en[] で言語別
 // prev/next 連鎖は書かない(記事の並び順から自動導出)
+ifdef::env-github[]
+= Insights(構造分析)
+:lang-ja:
+:doctype: book
+:toc:
+:toc-title: 目次
+:toclevels: 1
+
+サイトで読む: https://aiseed.dev/insights/
+endif::[]
 // ===== article: part-1-collapse/01-climate-mistake =====
----
+////
 slug: climate-mistake
 number: 01
 title.ja: 気候変動対策の過ち
@@ -30,7 +40,11 @@ part: 1
 cta_label.en: The Science
 cta_title.en: With nature, we can live.
 cta_text.en: The answer to climate change is not in technology. It is in soil.
----
+////
+ifdef::env-github[]
+:imagesdir: assets/insights/part-1-collapse/01-climate-mistake
+= 気候変動対策の過ち
+endif::[]
 ifdef::lang-ja[]
 == 2026 年イラン戦争が気づかせてくれたこと
 
@@ -467,7 +481,7 @@ ____
 endif::[]
 
 // ===== article: part-1-collapse/02-fossil-materials =====
----
+////
 slug: fossil-materials
 number: 02
 title.ja: 化石資源と現代文明
@@ -493,7 +507,10 @@ part: 1
 cta_label.en: Back to Soil
 cta_title.en: With nature, we can live.
 cta_text.en: The post-fossil world begins with rebuilding soil.
----
+////
+ifdef::env-github[]
+= 化石資源と現代文明
+endif::[]
 ifdef::lang-ja[]
 == あなたの生活のほぼ全てが石油でできている
 
@@ -1544,7 +1561,7 @@ ____
 endif::[]
 
 // ===== article: part-1-collapse/03-agriculture =====
----
+////
 slug: agriculture
 number: 03
 title.ja: 農業の間違い
@@ -1567,7 +1584,10 @@ cta_btn1_text.en: Next: The Nuclear Fusion and EV Mistake
 part_title.ja: 旧世界の崩壊と矛盾
 part_title.en: Crisis and Contradictions of the Old World
 part: 1
----
+////
+ifdef::env-github[]
+= 農業の間違い
+endif::[]
 ifdef::lang-ja[]
 == 製油所一つで崩壊する農業モデル
 
@@ -2068,7 +2088,7 @@ ____
 endif::[]
 
 // ===== article: part-1-collapse/04-fusion =====
----
+////
 slug: fusion
 number: 04
 title.ja: 核融合・EV化の間違い
@@ -2094,7 +2114,10 @@ part: 1
 cta_label.en: Structure
 cta_title.en: With nature, we can live.
 cta_text.en: Energy can be replaced. Materials cannot. But soil microbes can produce what refineries cannot.
----
+////
+ifdef::env-github[]
+= 核融合・EV化の間違い
+endif::[]
 ifdef::lang-ja[]
 == 原油がなくなれば核融合炉は止まる
 
@@ -2581,7 +2604,7 @@ The answer to food security lies not in fusion reactors or EVs, but in the soil.
 endif::[]
 
 // ===== article: part-1-collapse/05-mythos =====
----
+////
 slug: mythos
 number: 05
 title.ja: Mythosが来た
@@ -2608,7 +2631,10 @@ cta_btn2_text.ja: 前へ 核融合・EV化の間違い
 cta_btn2_text.en: Previous: The Nuclear Fusion and EV Mistake
 cta_btn2_link.ja: /insights/fusion/
 cta_btn2_link.en: /en/insights/fusion/
----
+////
+ifdef::env-github[]
+= Mythosが来た
+endif::[]
 ifdef::lang-ja[]
 == サイバー攻撃の経済学が崩壊した
 
@@ -2973,7 +2999,7 @@ ____
 endif::[]
 
 // ===== article: part-1-collapse/06-microsoft =====
----
+////
 slug: microsoft
 number: 06
 title.ja: Microsoftの崩壊
@@ -3000,7 +3026,10 @@ cta_btn2_text.ja: 前へ Mythosが来た
 cta_btn2_text.en: Previous: Mythos Has Arrived
 cta_btn2_link.ja: /insights/mythos/
 cta_btn2_link.en: /en/insights/mythos/
----
+////
+ifdef::env-github[]
+= Microsoftの崩壊
+endif::[]
 ifdef::lang-ja[]
 == Security Copilotは守れない
 
@@ -3303,7 +3332,7 @@ ____
 endif::[]
 
 // ===== article: part-1-collapse/07-nvidia =====
----
+////
 slug: nvidia
 number: 07
 title.ja: NVIDIAの崩壊
@@ -3329,7 +3358,10 @@ part: 1
 cta_label.en: Structure
 cta_title.en: With nature, we can live.
 cta_text.en: The AI gold rush will end. What remains is soil.
----
+////
+ifdef::env-github[]
+= NVIDIAの崩壊
+endif::[]
 ifdef::lang-ja[]
 == シャベル屋のビジネスモデル
 
@@ -3686,7 +3718,7 @@ ____
 endif::[]
 
 // ===== article: part-1-collapse/08-enterprise-tax =====
----
+////
 slug: enterprise-tax
 number: 08
 title.ja: 企業ITの税を引く
@@ -3712,7 +3744,10 @@ part: 1
 cta_label.en: Act Now
 cta_title.en: With nature, we can live.
 cta_text.en: Stop paying taxes to vendors. Start building what you actually need.
----
+////
+ifdef::env-github[]
+= 企業ITの税を引く
+endif::[]
 ifdef::lang-ja[]
 == 企業は「税」を払っている
 
@@ -4603,7 +4638,7 @@ ____
 endif::[]
 
 // ===== article: part-1-collapse/09-cases =====
----
+////
 slug: cases
 number: 09
 title.ja: 巨大な権力は悲劇を生む
@@ -4628,7 +4663,10 @@ part: 1
 cta_label.en: Return to Nature
 cta_title.en: Nature recovers. So do we.
 cta_text.en: Great power does not last. Nature does. The era of the individual has arrived.
----
+////
+ifdef::env-github[]
+= 巨大な権力は悲劇を生む
+endif::[]
 ifdef::lang-ja[]
 == 巨大な権力が繰り返してきたこと
 
@@ -5482,7 +5520,7 @@ ____
 endif::[]
 
 // ===== article: part-1-collapse/10-it-revolution-feudalism =====
----
+////
 slug: it-revolution-feudalism
 number: 10
 title.ja: IT革命の正体——新しい封建制の建設
@@ -5509,7 +5547,10 @@ cta_btn2_text.ja: 前へ 巨大な権力は悲劇を生む
 cta_btn2_text.en: Previous: Great Power Breeds Tragedy
 cta_btn2_link.ja: /insights/cases/
 cta_btn2_link.en: /en/insights/cases/
----
+////
+ifdef::env-github[]
+= IT革命の正体——新しい封建制の建設
+endif::[]
 ifdef::lang-ja[]
 == 情報革命の一段階としての IT 革命
 
@@ -5978,7 +6019,7 @@ The next chapter examines *what this feudal structure produced*. The structurall
 endif::[]
 
 // ===== article: part-1-collapse/11-structural-contradictions =====
----
+////
 slug: structural-contradictions
 number: 11
 title.ja: 封建制が生んだ現代の矛盾——フェイク、注意搾取、Mythos、物質的盲点
@@ -6005,7 +6046,10 @@ cta_btn2_text.ja: 前へ IT革命の正体——新しい封建制の建設
 cta_btn2_text.en: Previous: What the IT Revolution Really Was — Building a New Feudalism
 cta_btn2_link.ja: /insights/it-revolution-feudalism/
 cta_btn2_link.en: /en/insights/it-revolution-feudalism/
----
+////
+ifdef::env-github[]
+= 封建制が生んだ現代の矛盾——フェイク、注意搾取、Mythos、物質的盲点
+endif::[]
 ifdef::lang-ja[]
 == 矛盾は失敗ではなく成功の帰結
 
@@ -6556,7 +6600,7 @@ The next chapter examines how the lord class (Big Tech) is responding to this st
 endif::[]
 
 // ===== article: part-1-collapse/12-lord-class-collapse =====
----
+////
 slug: lord-class-collapse
 number: 12
 title.ja: 領主層の自己破壊——Big Techの囲い込みの限界
@@ -6583,7 +6627,10 @@ cta_btn2_text.ja: 前へ 封建制が生んだ現代の矛盾——フェイク�
 cta_btn2_text.en: Previous: The Contradictions Modern Feudalism Produced — Fakes, Attention Extraction, Mythos, and the Material Blind Spot
 cta_btn2_link.ja: /insights/structural-contradictions/
 cta_btn2_link.en: /en/insights/structural-contradictions/
----
+////
+ifdef::env-github[]
+= 領主層の自己破壊——Big Techの囲い込みの限界
+endif::[]
 ifdef::lang-ja[]
 == 領主層は新しい技術にどう反応するか
 
@@ -7040,7 +7087,7 @@ The next chapter examines *another movement* running in parallel with the lord c
 endif::[]
 
 // ===== article: part-2-emergence/01-ai-and-individual =====
----
+////
 slug: ai-and-individual
 number: 01
 title.ja: AIと個人事業
@@ -7065,7 +7112,10 @@ part: 2
 cta_label.en: Start Now
 cta_title.en: One person plus AI.
 cta_text.en: Every specialist's knowledge, available to every individual. The era of 1 + AI has arrived.
----
+////
+ifdef::env-github[]
+= AIと個人事業
+endif::[]
 ifdef::lang-ja[]
 == 1人＋AIで何ができるか
 
@@ -7462,7 +7512,7 @@ ____
 endif::[]
 
 // ===== article: part-2-emergence/02-drone-defense =====
----
+////
 slug: drone-defense
 number: 02
 title.ja: ドローン＋AIと中堅国防衛
@@ -7488,7 +7538,11 @@ part: 2
 cta_label.en: Structure
 cta_title.en: Small is a weapon.
 cta_text.en: In warfare, in agriculture, in business — distributed systems beat centralized ones.
----
+////
+ifdef::env-github[]
+:imagesdir: assets/insights/part-2-emergence/02-drone-defense
+= ドローン＋AIと中堅国防衛
+endif::[]
 ifdef::lang-ja[]
 == 400万ドル vs 数万ドル
 
@@ -8857,7 +8911,7 @@ ____
 endif::[]
 
 // ===== article: part-2-emergence/03-healthcare-fiscal =====
----
+////
 slug: healthcare-fiscal
 number: 03
 title.ja: 社会の再生
@@ -8882,7 +8936,11 @@ part: 2
 cta_label.en: Back to Life
 cta_title.en: With nature, we can live.
 cta_text.en: Not curing disease — preventing it. Not depending on pensions — not needing them.
----
+////
+ifdef::env-github[]
+:imagesdir: assets/insights/part-2-emergence/03-healthcare-fiscal
+= 社会の再生
+endif::[]
 ifdef::lang-ja[]
 == 軍需産業の世代交代——大型兵器からドローン+AIへ
 
@@ -9659,7 +9717,7 @@ The next chapter, "Subtraction Design," organizes structurally
 endif::[]
 
 // ===== article: part-2-emergence/04-two-layer-ai-revolution =====
----
+////
 slug: two-layer-ai-revolution
 number: 04
 title.ja: AI革命の正体——二層同時の変化
@@ -9686,7 +9744,10 @@ cta_btn2_text.ja: 前へ 社会の再生
 cta_btn2_text.en: Previous: Society's Regeneration
 cta_btn2_link.ja: /insights/healthcare-fiscal/
 cta_btn2_link.en: /en/insights/healthcare-fiscal/
----
+////
+ifdef::env-github[]
+= AI革命の正体——二層同時の変化
+endif::[]
 ifdef::lang-ja[]
 == 情報革命の流れの中の「AI革命」
 
@@ -10002,7 +10063,7 @@ The next chapter examines Layer 2 — the evolution of types in programming lang
 endif::[]
 
 // ===== article: part-2-emergence/05-types-and-python =====
----
+////
 slug: types-and-python
 number: 05
 title.ja: 型とPython——なぜAIネイティブ言語の中心になったか
@@ -10029,7 +10090,10 @@ cta_btn2_text.ja: 前へ AI革命の正体——二層同時の変化
 cta_btn2_text.en: Previous: What the AI Revolution Really Is — A Two-Layer Simultaneous Change
 cta_btn2_link.ja: /insights/two-layer-ai-revolution/
 cta_btn2_link.en: /en/insights/two-layer-ai-revolution/
----
+////
+ifdef::env-github[]
+= 型とPython——なぜAIネイティブ言語の中心になったか
+endif::[]
 ifdef::lang-ja[]
 == 型の歴史——4段階の進化
 
@@ -10504,7 +10568,7 @@ The next chapter examines what *social consequences* this "poverty of types" pro
 endif::[]
 
 // ===== article: part-2-emergence/06-translation-labor =====
----
+////
 slug: translation-labor
 number: 06
 title.ja: 翻訳労働の発見——大量の人が要った本当の理由
@@ -10531,7 +10595,10 @@ cta_btn2_text.ja: 前へ 型とPython——なぜAIネイティブ言語の中�
 cta_btn2_text.en: Previous: Types and Python — Why It Became the Center of the AI-Native Language
 cta_btn2_link.ja: /insights/types-and-python/
 cta_btn2_link.en: /en/insights/types-and-python/
----
+////
+ifdef::env-github[]
+= 翻訳労働の発見——大量の人が要った本当の理由
+endif::[]
 ifdef::lang-ja[]
 == なぜ大量の人が要ったのか
 
@@ -10952,7 +11019,7 @@ The structure this translation-labor demand built across society — the new feu
 endif::[]
 
 // ===== article: part-2-emergence/07-builder-emergence =====
----
+////
 slug: builder-emergence
 number: 07
 title.ja: 解体される封建制——ビルダーの台頭
@@ -10979,7 +11046,10 @@ cta_btn2_text.ja: 前へ 翻訳労働の発見——大量の人が要った本�
 cta_btn2_text.en: Previous: translation-labor
 cta_btn2_link.ja: /insights/translation-labor/
 cta_btn2_link.en: /en/insights/translation-labor/
----
+////
+ifdef::env-github[]
+= 解体される封建制——ビルダーの台頭
+endif::[]
 ifdef::lang-ja[]
 == 封建制を解体する力学
 
@@ -11375,7 +11445,7 @@ The next chapter shows that this dismantling reaches beyond software. The democr
 endif::[]
 
 // ===== article: part-2-emergence/08-fabrication-and-materials =====
----
+////
 slug: fabrication-and-materials
 number: 08
 title.ja: 加工の民主化——需要は素材へ、価値は判断へ
@@ -11402,7 +11472,10 @@ cta_btn2_text.ja: 前へ 解体される封建制——ビルダーの台頭
 cta_btn2_text.en: Previous: Feudalism Dismantled — The Rise of the Builder
 cta_btn2_link.ja: /insights/builder-emergence/
 cta_btn2_link.en: /en/insights/builder-emergence/
----
+////
+ifdef::env-github[]
+= 加工の民主化——需要は素材へ、価値は判断へ
+endif::[]
 ifdef::lang-ja[]
 == 価値連鎖を三つに切る
 
@@ -11645,7 +11718,7 @@ Part Two ends here. From the next chapter, Part Three — Design and Practice �
 endif::[]
 
 // ===== article: part-3-design/01-regulation-redesign =====
----
+////
 slug: regulation-redesign
 number: 01
 title.ja: 規制の再設計
@@ -11670,7 +11743,10 @@ part: 3
 cta_label.en: Start Now
 cta_title.en: Redesign the rules. Redesign society.
 cta_text.en: Old regulations block the new world. Change the rules, and the transformation becomes possible.
----
+////
+ifdef::env-github[]
+= 規制の再設計
+endif::[]
 ifdef::lang-ja[]
 == なぜ規制の再設計が必要か
 
@@ -12310,7 +12386,7 @@ ____
 endif::[]
 
 // ===== article: part-3-design/02-subtraction-design =====
----
+////
 slug: subtraction-design
 number: 02
 title.ja: 引き算の設計
@@ -12335,7 +12411,10 @@ part: 3
 cta_label.en: Start Now
 cta_title.en: With nature, we can live.
 cta_text.en: Subtract the unnecessary. What remains is enough.
----
+////
+ifdef::env-github[]
+= 引き算の設計
+endif::[]
 ifdef::lang-ja[]
 == 前章からの問い
 
@@ -12825,7 +12904,7 @@ treated in this chapter.
 endif::[]
 
 // ===== article: part-3-design/03-security-design =====
----
+////
 slug: security-design
 number: 03
 title.ja: Mythos時代のセキュリティ設計
@@ -12852,7 +12931,10 @@ cta_btn2_text.ja: 前へ 引き算の設計
 cta_btn2_text.en: Previous: Subtraction Design
 cta_btn2_link.ja: /insights/subtraction-design/
 cta_btn2_link.en: /en/insights/subtraction-design/
----
+////
+ifdef::env-github[]
+= Mythos時代のセキュリティ設計
+endif::[]
 ifdef::lang-ja[]
 == Mythos時代のセキュリティとは何か
 
@@ -13207,7 +13289,7 @@ ____
 endif::[]
 
 // ===== article: part-3-design/04-cloud-independence =====
----
+////
 slug: cloud-independence
 number: 04
 title.ja: クラウドからの自立——AIが支援するのは開いた層だけ
@@ -13234,7 +13316,10 @@ cta_btn2_text.ja: 前へ Mythos時代のセキュリティ設計
 cta_btn2_text.en: Previous: Security Design for the Mythos Era
 cta_btn2_link.ja: /insights/security-design/
 cta_btn2_link.en: /en/insights/security-design/
----
+////
+ifdef::env-github[]
+= クラウドからの自立——AIが支援するのは開いた層だけ
+endif::[]
 ifdef::lang-ja[]
 == 結論——インフラも自立できる時代になった
 
@@ -13581,7 +13666,7 @@ ____
 endif::[]
 
 // ===== article: part-3-design/05-nativism-observation =====
----
+////
 slug: nativism-observation
 number: 05
 title.ja: 生得性と観察——AIと農業の同型
@@ -13608,7 +13693,10 @@ cta_btn2_text.ja: 前へ クラウドからの自立
 cta_btn2_text.en: Previous: Independence from the Cloud
 cta_btn2_link.ja: /insights/cloud-independence/
 cta_btn2_link.en: /en/insights/cloud-independence/
----
+////
+ifdef::env-github[]
+= 生得性と観察——AIと農業の同型
+endif::[]
 ifdef::lang-ja[]
 == この章の問い——設計とは何か
 
@@ -13899,7 +13987,7 @@ The next chapter, "The Four Conditions of the Free Person," lays out structurall
 endif::[]
 
 // ===== article: part-3-design/06-freedom-conditions =====
----
+////
 slug: freedom-conditions
 number: 06
 title.ja: 自由人の四条件——個人・道具・企業・思考の同型
@@ -13926,7 +14014,10 @@ cta_btn2_text.ja: 前へ 生得性と観察
 cta_btn2_text.en: Previous: Nativism and Observation
 cta_btn2_link.ja: /insights/nativism-observation/
 cta_btn2_link.en: /en/insights/nativism-observation/
----
+////
+ifdef::env-github[]
+= 自由人の四条件——個人・道具・企業・思考の同型
+endif::[]
 ifdef::lang-ja[]
 == 「自由人」は個人だけの話ではない
 
@@ -14483,7 +14574,7 @@ The next chapter takes up concrete individual-level choices, grounded in these f
 endif::[]
 
 // ===== article: part-3-design/07-ai-native-free-individual =====
----
+////
 slug: ai-native-free-individual
 number: 07
 title.ja: AIネイティブな自由人への道——個人レベルの選択
@@ -14510,7 +14601,10 @@ cta_btn2_text.ja: 前へ 自由人の四条件
 cta_btn2_text.en: Previous: The Four Conditions of the Free Person
 cta_btn2_link.ja: /insights/freedom-conditions/
 cta_btn2_link.en: /en/insights/freedom-conditions/
----
+////
+ifdef::env-github[]
+= AIネイティブな自由人への道——個人レベルの選択
+endif::[]
 ifdef::lang-ja[]
 == この章の役割
 
@@ -14975,7 +15069,7 @@ ____
 endif::[]
 
 // ===== article: part-3-design/08-re-examining-knowledge =====
----
+////
 slug: re-examining-knowledge
 number: 08
 title.ja: 知を見直す道具——正典・検証・有志の共有物
@@ -15002,7 +15096,10 @@ cta_btn2_text.ja: 前へ AIネイティブな自由人への道
 cta_btn2_text.en: Previous: The Road to the AI-Native Free Person
 cta_btn2_link.ja: /insights/ai-native-free-individual/
 cta_btn2_link.en: /en/insights/ai-native-free-individual/
----
+////
+ifdef::env-github[]
+= 知を見直す道具——正典・検証・有志の共有物
+endif::[]
 ifdef::lang-ja[]
 == この章の役割
 
@@ -15095,7 +15192,7 @@ So the conclusion of this design part folds this way. *AI can be something that 
 endif::[]
 
 // ===== article: part-3-design/09-ai-will-not-converge =====
----
+////
 slug: ai-will-not-converge
 number: 09
 title.ja: AIは一つに収束しない——垂直特化モデルは生き残るか
@@ -15122,7 +15219,7 @@ cta_btn2_text.ja: 前へ 知を見直す道具
 cta_btn2_text.en: Previous: Tools for Re-examining Knowledge
 cta_btn2_link.ja: /insights/re-examining-knowledge/
 cta_btn2_link.en: /en/insights/re-examining-knowledge/
----
+////
 ifdef::lang-ja[]
 = AIは一つに収束しない——垂直特化モデルは生き残るか
 
@@ -15251,7 +15348,7 @@ ____
 endif::[]
 
 // ===== article: part-3-design/10-defense-cannot-be-bought =====
----
+////
 slug: defense-cannot-be-bought
 number: 10
 title.ja: 守りは買えない——委託・製品・基盤、三つの出口が同じ入口になる
@@ -15278,7 +15375,7 @@ cta_btn2_text.ja: 前へ AIは一つに収束しない
 cta_btn2_text.en: Previous: AI Will Not Converge on One Model
 cta_btn2_link.ja: /insights/ai-will-not-converge/
 cta_btn2_link.en: /en/insights/ai-will-not-converge/
----
+////
 ifdef::lang-ja[]
 = 守りは買えない——委託・製品・基盤、三つの出口が同じ入口になる
 

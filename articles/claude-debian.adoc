@@ -3,8 +3,18 @@
 // フロントマター: 日英共通は裸キー、異なる値は key.ja / key.en
 // 本文: ifdef::lang-ja[] / ifdef::lang-en[] で言語別
 // prev/next 連鎖は書かない(記事の並び順から自動導出)
+ifdef::env-github[]
+= Claudeと一緒に学ぶDebian
+:lang-ja:
+:doctype: book
+:toc:
+:toc-title: 目次
+:toclevels: 1
+
+サイトで読む: https://aiseed.dev/claude-debian/
+endif::[]
 // ===== article: 00-prologue =====
----
+////
 slug: claude-debian-prologue
 number: 00
 title.ja: Claudeと一緒に学ぶDebian — 序章
@@ -30,7 +40,10 @@ cta_btn2_text.ja: 全章一覧
 cta_btn2_text.en: All chapters
 cta_btn2_link.ja: /claude-debian/
 cta_btn2_link.en: /en/claude-debian/
----
+////
+ifdef::env-github[]
+= Claudeと一緒に学ぶDebian — 序章
+endif::[]
 ifdef::lang-ja[]
 == なぜ序章から始めるか
 
@@ -405,7 +418,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 01-what-you-lose-and-gain =====
----
+////
 slug: claude-debian-01-what-you-lose-and-gain
 number: 01
 title.ja: 第1章 何を失い、何を得るか
@@ -432,7 +445,10 @@ cta_btn2_link.ja: /claude-debian/prologue/
 cta_btn2_link.en: /en/claude-debian/prologue/
 prev_title.ja: 序章
 prev_title.en: Prologue
----
+////
+ifdef::env-github[]
+= 第1章 何を失い、何を得るか
+endif::[]
 ifdef::lang-ja[]
 == なぜ最初に「失うもの」を書くか
 
@@ -805,7 +821,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 02-starting-conversation =====
----
+////
 slug: claude-debian-02-starting-conversation
 number: 02
 title.ja: 第2章 Claude との対話の始め方
@@ -830,7 +846,10 @@ cta_btn2_text.ja: 第1章に戻る
 cta_btn2_text.en: Back to Chapter 1
 cta_btn2_link.ja: /claude-debian/01-what-you-lose-and-gain/
 cta_btn2_link.en: /en/claude-debian/01-what-you-lose-and-gain/
----
+////
+ifdef::env-github[]
+= 第2章 Claude との対話の始め方
+endif::[]
 ifdef::lang-ja[]
 == この章の位置づけ
 
@@ -1315,7 +1334,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 03-telling-environment =====
----
+////
 slug: claude-debian-03-telling-environment
 number: 03
 title.ja: 第3章 自分の環境を Claude に伝える方法
@@ -1340,7 +1359,10 @@ cta_btn2_text.ja: 第2章に戻る
 cta_btn2_text.en: Back to Chapter 2
 cta_btn2_link.ja: /claude-debian/02-starting-conversation/
 cta_btn2_link.en: /en/claude-debian/02-starting-conversation/
----
+////
+ifdef::env-github[]
+= 第3章 自分の環境を Claude に伝える方法
+endif::[]
 ifdef::lang-ja[]
 == なぜ「環境を伝える」専用の章があるか
 
@@ -1897,7 +1919,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 04-dependency-inventory =====
----
+////
 slug: claude-debian-04-dependency-inventory
 number: 04
 title.ja: 第4章 依存関係の棚卸し
@@ -1922,7 +1944,10 @@ cta_btn2_text.ja: 第3章に戻る
 cta_btn2_text.en: Back to Chapter 3
 cta_btn2_link.ja: /claude-debian/03-telling-environment/
 cta_btn2_link.en: /en/claude-debian/03-telling-environment/
----
+////
+ifdef::env-github[]
+= 第4章 依存関係の棚卸し
+endif::[]
 ifdef::lang-ja[]
 == この章の目的
 
@@ -2479,7 +2504,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 05-installation-overview =====
----
+////
 slug: claude-debian-05-installation-overview
 number: 05
 title.ja: 第5章 インストールの全体像を Claude と理解する
@@ -2504,7 +2529,10 @@ cta_btn2_text.ja: 第4章に戻る
 cta_btn2_text.en: Back to Chapter 4
 cta_btn2_link.ja: /claude-debian/04-dependency-inventory/
 cta_btn2_link.en: /en/claude-debian/04-dependency-inventory/
----
+////
+ifdef::env-github[]
+= 第5章 インストールの全体像を Claude と理解する
+endif::[]
 ifdef::lang-ja[]
 == なぜ「全体像」から入るか
 
@@ -2984,7 +3012,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 06-hardware-choice =====
----
+////
 slug: claude-debian-06-hardware-choice
 number: 06
 title.ja: 第6章 自分のハードウェアに合った選択
@@ -3009,7 +3037,10 @@ cta_btn2_text.ja: 第5章に戻る
 cta_btn2_text.en: Back to Chapter 5
 cta_btn2_link.ja: /claude-debian/05-installation-overview/
 cta_btn2_link.en: /en/claude-debian/05-installation-overview/
----
+////
+ifdef::env-github[]
+= 第6章 自分のハードウェアに合った選択
+endif::[]
 ifdef::lang-ja[]
 == この章の役割
 
@@ -3498,7 +3529,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 07-installation-execution =====
----
+////
 slug: claude-debian-07-installation-execution
 number: 07
 title.ja: 第7章 インストール実行の対話
@@ -3523,7 +3554,10 @@ cta_btn2_text.ja: 第6章に戻る
 cta_btn2_text.en: Back to Chapter 6
 cta_btn2_link.ja: /claude-debian/06-hardware-choice/
 cta_btn2_link.en: /en/claude-debian/06-hardware-choice/
----
+////
+ifdef::env-github[]
+= 第7章 インストール実行の対話
+endif::[]
 ifdef::lang-ja[]
 == この章で起こること——Debian 13 では驚くほど直線的
 
@@ -4048,7 +4082,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 08-first-troubleshooting =====
----
+////
 slug: claude-debian-08-first-troubleshooting
 number: 08
 title.ja: 第8章 最初のトラブルシューティング
@@ -4075,7 +4109,10 @@ cta_btn2_link.ja: /claude-debian/07-installation-execution/
 cta_btn2_link.en: /en/claude-debian/07-installation-execution/
 next_title.ja: 第9章 デスクトップ環境の選択
 next_title.en: Chapter 9 — Tuning the Desktop Environment
----
+////
+ifdef::env-github[]
+= 第8章 最初のトラブルシューティング
+endif::[]
 ifdef::lang-ja[]
 == まず、Debian 13 では「ほぼ全部動く」
 
@@ -4736,7 +4773,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 09-desktop-environment =====
----
+////
 slug: claude-debian-09-desktop-environment
 number: 09
 title.ja: 第9章 デスクトップ環境の選択（Claudeとの対話例）
@@ -4761,7 +4798,10 @@ cta_btn2_text.ja: 第8章に戻る
 cta_btn2_text.en: Back to Chapter 8
 cta_btn2_link.ja: /claude-debian/08-first-troubleshooting/
 cta_btn2_link.en: /en/claude-debian/08-first-troubleshooting/
----
+////
+ifdef::env-github[]
+= 第9章 デスクトップ環境の選択（Claudeとの対話例）
+endif::[]
 ifdef::lang-ja[]
 == 第6章の選択を再評価する
 
@@ -5188,7 +5228,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 10-japanese-input =====
----
+////
 slug: claude-debian-10-japanese-input
 number: 10
 title.ja: 第10章 日本語入力の設定
@@ -5215,7 +5255,10 @@ cta_btn2_link.ja: /claude-debian/09-desktop-environment/
 cta_btn2_link.en: /en/claude-debian/09-desktop-environment/
 prev_title.ja: 第9章 デスクトップ環境の選択
 prev_title.en: Chapter 9 — Tuning the Desktop Environment
----
+////
+ifdef::env-github[]
+= 第10章 日本語入力の設定
+endif::[]
 ifdef::lang-ja[]
 == なぜ丸一章を日本語入力に充てるか
 
@@ -5712,7 +5755,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 11-application-selection =====
----
+////
 slug: claude-debian-11-application-selection
 number: 11
 title.ja: 第11章 アプリケーションの選択
@@ -5737,7 +5780,10 @@ cta_btn2_text.ja: 第10章に戻る
 cta_btn2_text.en: Back to Chapter 10
 cta_btn2_link.ja: /claude-debian/10-japanese-input/
 cta_btn2_link.en: /en/claude-debian/10-japanese-input/
----
+////
+ifdef::env-github[]
+= 第11章 アプリケーションの選択
+endif::[]
 ifdef::lang-ja[]
 == まず Flatpak を入れる
 
@@ -7020,7 +7066,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 12-windows-vm =====
----
+////
 slug: claude-debian-12-windows-vm
 number: 12
 title.ja: 第12章 Windowsを仮想マシンに閉じ込める
@@ -7045,7 +7091,10 @@ cta_btn2_text.ja: 第11章に戻る
 cta_btn2_text.en: Back to Chapter 11
 cta_btn2_link.ja: /claude-debian/11-application-selection/
 cta_btn2_link.en: /en/claude-debian/11-application-selection/
----
+////
+ifdef::env-github[]
+= 第12章 Windowsを仮想マシンに閉じ込める
+endif::[]
 ifdef::lang-ja[]
 == Windowsは捨てない。閉じ込める
 
@@ -7306,7 +7355,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 13-config-management =====
----
+////
 slug: claude-debian-13-config-management
 number: 13
 title.ja: 第13章 設定の理解と管理
@@ -7331,7 +7380,10 @@ cta_btn2_text.ja: 第12章に戻る
 cta_btn2_text.en: Back to Chapter 12
 cta_btn2_link.ja: /claude-debian/12-windows-vm/
 cta_btn2_link.en: /en/claude-debian/12-windows-vm/
----
+////
+ifdef::env-github[]
+= 第13章 設定の理解と管理
+endif::[]
 ifdef::lang-ja[]
 == 設定ファイルがテキストである意味
 
@@ -7878,7 +7930,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 14-dev-tools =====
----
+////
 slug: claude-debian-14-dev-tools
 number: 14
 title.ja: 第14章 開発ツールの構築
@@ -7903,7 +7955,10 @@ cta_btn2_text.ja: 第13章に戻る
 cta_btn2_text.en: Back to Chapter 13
 cta_btn2_link.ja: /claude-debian/13-config-management/
 cta_btn2_link.en: /en/claude-debian/13-config-management/
----
+////
+ifdef::env-github[]
+= 第14章 開発ツールの構築
+endif::[]
 ifdef::lang-ja[]
 == この部の位置づけ
 
@@ -8612,7 +8667,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 15-widget-architecture =====
----
+////
 slug: claude-debian-15-widget-architecture
 number: 15
 title.ja: 第15章 Widget アーキテクチャの実装
@@ -8637,7 +8692,10 @@ cta_btn2_text.ja: 第14章に戻る
 cta_btn2_text.en: Back to Chapter 14
 cta_btn2_link.ja: /claude-debian/14-dev-tools/
 cta_btn2_link.en: /en/claude-debian/14-dev-tools/
----
+////
+ifdef::env-github[]
+= 第15章 Widget アーキテクチャの実装
+endif::[]
 ifdef::lang-ja[]
 == Widgetとは何か
 
@@ -9216,7 +9274,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 16-claude-development =====
----
+////
 slug: claude-debian-16-claude-development
 number: 16
 title.ja: 第16章 Claudeとの開発の実践
@@ -9241,7 +9299,10 @@ cta_btn2_text.ja: 第15章に戻る
 cta_btn2_text.en: Back to Chapter 15
 cta_btn2_link.ja: /claude-debian/15-widget-architecture/
 cta_btn2_link.en: /en/claude-debian/15-widget-architecture/
----
+////
+ifdef::env-github[]
+= 第16章 Claudeとの開発の実践
+endif::[]
 ifdef::lang-ja[]
 == 実アプリへの一周
 
@@ -9959,7 +10020,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 17-python-flutter-other =====
----
+////
 slug: claude-debian-17-python-flutter-other
 number: 17
 title.ja: 第17章 Python、Flutter、その他の環境
@@ -9984,7 +10045,10 @@ cta_btn2_text.ja: 第16章に戻る
 cta_btn2_text.en: Back to Chapter 16
 cta_btn2_link.ja: /claude-debian/16-claude-development/
 cta_btn2_link.en: /en/claude-debian/16-claude-development/
----
+////
+ifdef::env-github[]
+= 第17章 Python、Flutter、その他の環境
+endif::[]
 ifdef::lang-ja[]
 == この章の読み方
 
@@ -10978,7 +11042,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 18-updates-maintenance =====
----
+////
 slug: claude-debian-18-updates-maintenance
 number: 18
 title.ja: 第18章 アップデートとメンテナンス
@@ -11003,7 +11067,10 @@ cta_btn2_text.ja: 第17章に戻る
 cta_btn2_text.en: Back to Chapter 17
 cta_btn2_link.ja: /claude-debian/17-python-flutter-other/
 cta_btn2_link.en: /en/claude-debian/17-python-flutter-other/
----
+////
+ifdef::env-github[]
+= 第18章 アップデートとメンテナンス
+endif::[]
 ifdef::lang-ja[]
 == アップデートの三層
 
@@ -11781,7 +11848,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 19-when-things-break =====
----
+////
 slug: claude-debian-19-when-things-break
 number: 19
 title.ja: 第19章 問題が起きた時の対処
@@ -11806,7 +11873,10 @@ cta_btn2_text.ja: 第18章に戻る
 cta_btn2_text.en: Back to Chapter 18
 cta_btn2_link.ja: /claude-debian/18-updates-maintenance/
 cta_btn2_link.en: /en/claude-debian/18-updates-maintenance/
----
+////
+ifdef::env-github[]
+= 第19章 問題が起きた時の対処
+endif::[]
 ifdef::lang-ja[]
 == 危機の段階
 
@@ -12407,7 +12477,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 20-growing-environment =====
----
+////
 slug: claude-debian-20-growing-environment
 number: 20
 title.ja: 第20章 自分の環境を育てる
@@ -12432,7 +12502,10 @@ cta_btn2_text.ja: 第19章に戻る
 cta_btn2_text.en: Back to Chapter 19
 cta_btn2_link.ja: /claude-debian/19-when-things-break/
 cta_btn2_link.en: /en/claude-debian/19-when-things-break/
----
+////
+ifdef::env-github[]
+= 第20章 自分の環境を育てる
+endif::[]
 ifdef::lang-ja[]
 == 「育てる」という視点
 
@@ -12946,7 +13019,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 21-community =====
----
+////
 slug: claude-debian-21-community
 number: 21
 title.ja: 第21章 コミュニティとの関わり
@@ -12971,7 +13044,10 @@ cta_btn2_text.ja: 第20章に戻る
 cta_btn2_text.en: Back to Chapter 20
 cta_btn2_link.ja: /claude-debian/20-growing-environment/
 cta_btn2_link.en: /en/claude-debian/20-growing-environment/
----
+////
+ifdef::env-github[]
+= 第21章 コミュニティとの関わり
+endif::[]
 ifdef::lang-ja[]
 == なぜ「関わる」のか
 
@@ -13445,7 +13521,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 22-telling-others =====
----
+////
 slug: claude-debian-22-telling-others
 number: 22
 title.ja: 第22章 周囲に伝える
@@ -13470,7 +13546,10 @@ cta_btn2_text.ja: 第21章に戻る
 cta_btn2_text.en: Back to Chapter 21
 cta_btn2_link.ja: /claude-debian/21-community/
 cta_btn2_link.en: /en/claude-debian/21-community/
----
+////
+ifdef::env-github[]
+= 第22章 周囲に伝える
+endif::[]
 ifdef::lang-ja[]
 == 伝えるという難しさ
 
@@ -13828,7 +13907,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 23-organization-adoption =====
----
+////
 slug: claude-debian-23-organization-adoption
 number: 23
 title.ja: 第23章 組織での導入
@@ -13853,7 +13932,10 @@ cta_btn2_text.ja: 第22章に戻る
 cta_btn2_text.en: Back to Chapter 22
 cta_btn2_link.ja: /claude-debian/22-telling-others/
 cta_btn2_link.en: /en/claude-debian/22-telling-others/
----
+////
+ifdef::env-github[]
+= 第23章 組織での導入
+endif::[]
 ifdef::lang-ja[]
 == 組織導入の現実
 
@@ -14486,7 +14568,7 @@ The full series can be navigated from link:/en/claude-debian/[Learning Debian wi
 endif::[]
 
 // ===== article: 24-passing-on =====
----
+////
 slug: claude-debian-24-passing-on
 number: 24
 title.ja: 第24章 次世代への継承
@@ -14511,7 +14593,10 @@ cta_btn2_text.ja: 全章一覧
 cta_btn2_text.en: All Chapters
 cta_btn2_link.ja: /claude-debian/
 cta_btn2_link.en: /en/claude-debian/
----
+////
+ifdef::env-github[]
+= 第24章 次世代への継承
+endif::[]
 ifdef::lang-ja[]
 == 最終章の位置
 

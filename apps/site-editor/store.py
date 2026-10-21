@@ -327,12 +327,9 @@ def add_article(name: str, slug: str, title_ja: str, title_en: str = "") -> str:
     meta_lines.append("draft: true")
 
     # GitHub でも読める書き方(//// のフロントマター)のシリーズなら、新しい
-    # 記事も同じ形にする(章タイトルの env-github ブロック付き)
-    if re.search(r"^// =====.*\n////$", original, re.M):
-        section = [f"// ===== article: {article_id} =====", "////", *meta_lines, "////",
-                   "ifdef::env-github[]", f"= {title_ja}", "endif::[]"]
-    else:
-        section = [f"// ===== article: {article_id} =====", "---", *meta_lines, "---"]
+    # 記事も同じ形にする。章見出しは本文の `= …` が GitHub でもそのまま出る
+    fence = "////" if re.search(r"^// =====.*\n////$", original, re.M) else "---"
+    section = [f"// ===== article: {article_id} =====", fence, *meta_lines, fence]
     section += ["ifdef::lang-ja[]", f"= {title_ja}", "", "(本文をここに書く)",
                 "endif::[]"]
     if title_en:

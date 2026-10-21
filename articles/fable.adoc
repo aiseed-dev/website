@@ -3,15 +3,25 @@
 // フロントマター: 日英共通は裸キー、異なる値は key.ja / key.en
 // 本文: ifdef::lang-ja[] / ifdef::lang-en[] で言語別
 // prev/next 連鎖は書かない(記事の並び順から自動導出)
+ifdef::env-github[]
+= Fable 5 が帰ってきた
+:lang-ja:
+:doctype: book
+:toc:
+:toc-title: 目次
+:toclevels: 1
+
+サイトで読む: https://aiseed.dev/fable/
+endif::[]
 // ===== article: 01-what-is-fable-5 =====
----
+////
 slug: what-is-fable-5
 number: 01
 title.ja: Fable 5 とは何か、何が得意か
 subtitle.ja: 賢いチャットAIではなく、「長い仕事を任せられるAI」
 description.ja: 2026年7月、提供が再開された Anthropic の最上位モデル Claude Fable 5。何が従来のAIと違うのか。得意なこと3つ(大量資料の読解・コーディング・複数工程の自律作業)と、得意でないこと(コスト・ゼロからの独創)を、実務の目線で整理する。連載「Fable 5 が帰ってきた」第1回。
 date: 2026.07.02
----
+////
 ifdef::lang-ja[]
 = Fable 5 とは何か、何が得意か
 
@@ -89,14 +99,14 @@ ____
 endif::[]
 
 // ===== article: 02-cost-and-model-choice =====
----
+////
 slug: cost-and-model-choice
 number: 02
 title.ja: コストの仕組みとモデルの使い分け
 subtitle.ja: 「いくらかかるか」が分かれば、どこに使うかが決まる
 description.ja: Fable 5 の料金はトークン単位の従量課金。トークンとは何か、1回の依頼でいくらかかるのか、そして目の前の仕事を Sonnet / Opus / Fable 5 のどれに振り分けるべきか。判断フローチャート付きで、使い分けの基準を整理する。連載「Fable 5 が帰ってきた」第2回。
 date: 2026.07.02
----
+////
 ifdef::lang-ja[]
 = コストの仕組みとモデルの使い分け
 
@@ -175,14 +185,14 @@ ____
 endif::[]
 
 // ===== article: 03-reading-large-documents =====
----
+////
 slug: reading-large-documents
 number: 03
 title.ja: 大量の資料を読ませる ── 100万トークンの活かし方
 subtitle.ja: 「要約させる」から「全部読んだ相手に聞く」へ
 description.ja: Fable 5 のコンテキストは100万トークン。契約書一式のレビュー、社内規程の横断チェック、長い議事録群からの論点抽出 ── 資料をまるごと読ませると、AIへの頼み方が根本から変わる。依頼文の Before/After 付きで解説する。連載「Fable 5 が帰ってきた」第3回。
 date: 2026.07.02
----
+////
 ifdef::lang-ja[]
 = 大量の資料を読ませる ── 100万トークンの活かし方
 
@@ -260,14 +270,14 @@ Fable 5 は大量の資料を読めますが、その答えを *信じてよい�
 endif::[]
 
 // ===== article: 04-delegating-multi-step-work =====
----
+////
 slug: delegating-multi-step-work
 number: 04
 title.ja: 長い仕事を任せる ── 複数工程タスクの頼み方
 subtitle.ja: 1問1答をやめて、仕事を一区切りぶん渡す
 description.ja: Fable 5 には、工程を分解して指示する必要がない。目的・制約・完成条件の3要素を渡せば、自分で計画を立てて最後まで進める。競合5社の調査から示唆レポートまでを1回で任せる実例と、丸投げにしないための確認ポイント。連載「Fable 5 が帰ってきた」第4回。
 date: 2026.07.02
----
+////
 ifdef::lang-ja[]
 = 長い仕事を任せる ── 複数工程タスクの頼み方
 
@@ -330,14 +340,14 @@ ____
 endif::[]
 
 // ===== article: 05-coding-use-cases =====
----
+////
 slug: coding-use-cases
 number: 05
 title.ja: コーディングでの使いどころ
 subtitle.ja: 小さな修正は Sonnet で。Fable 5 は「規模」で選ぶ
 description.ja: 単発のスクリプトなら安いモデルで十分。Fable 5 が割に合うのは、複数ファイルにまたがる変更、大規模移行、テスト込みの品質が求められる開発だ。エンジニアでない人が業務ツールを作らせる依頼文の実例も。連載「Fable 5 が帰ってきた」第5回。
 date: 2026.07.02
----
+////
 ifdef::lang-ja[]
 = コーディングでの使いどころ
 
@@ -414,14 +424,14 @@ ____
 endif::[]
 
 // ===== article: 06-office-core-oss =====
----
+////
 slug: office-core-oss
 number: 06
 title.ja: Office スイートと業務システムを開く ── OSS につなぎ直す
 subtitle.ja: 会社の道具立ては、二つの「閉じた箱」でできている
 description.ja: Office スイートは独自形式と他社のアカウントに、業務システムは読めないコードと保守契約に閉じている。Fable 5 はこの二つの箱を開き、開いた形式で取り出した中身は OSS(オープンソースソフトウェア)に素直につながる。いきなり移行せず、まず「開けるかどうかの地図」を作る調査依頼から ── 依頼文の実物付き。連載「Fable 5 が帰ってきた」第6回。
 date: 2026.07.02
----
+////
 ifdef::lang-ja[]
 = Office スイートと業務システムを開く ── OSS につなぎ直す
 
@@ -501,7 +511,7 @@ ____
 endif::[]
 
 // ===== article: 07-constraints-and-cautions =====
----
+////
 slug: constraints-and-cautions
 number: 07
 title.ja: 制約と注意点 ── 安全分類器・利用上限・データ保持
@@ -509,7 +519,7 @@ subtitle.ja: トラブルの前に知っておく3つのこと、そして連載
 description.ja: Fable 5 には安全分類器があり、特定分野の依頼はブロックされて Opus 4.8 が代わりに応答する。利用上限と料金体系は移行中、通信は原則30日間保持される。3つの制約を整理し、「その仕事は Fable 5 に頼む価値があるか?」のチェックリストで連載を締めくくる。連載「Fable 5 が帰ってきた」第7回(最終回)。
 date: 2026.07.02
 next_title.ja: 番外編 AIは一つに収束しない ── 垂直特化モデルは生き残るか
----
+////
 ifdef::lang-ja[]
 = 制約と注意点 ── 安全分類器・利用上限・データ保持
 
@@ -573,7 +583,7 @@ Fable 5(と Mythos 5)でのやり取りは、*原則としてすべて30日間�
 endif::[]
 
 // ===== article: 08-ai-will-not-converge =====
----
+////
 slug: ai-will-not-converge
 number: 08
 chapter_label: 番外編
@@ -581,7 +591,7 @@ title.ja: AIは一つに収束しない ── 垂直特化モデルは生き残
 subtitle.ja: 「使い分け」の視点を、業界の地図に広げてみる
 description.ja: 最強のAIが一つあれば、他は要らなくなるのか。価格と性能の階層、製品形態、規制 ── 多様化を示す事実と、「言語で完結する垂直特化は残りにくい」という見立てを分けて示す。連載「Fable 5 が帰ってきた」番外編。予想には予想と明記する。
 date: 2026.07.02
----
+////
 ifdef::lang-ja[]
 = AIは一つに収束しない ── 垂直特化モデルは生き残るか
 
@@ -651,7 +661,7 @@ ____
 endif::[]
 
 // ===== article: 09-give-primary-sources =====
----
+////
 slug: give-primary-sources
 number: 09
 chapter_label: 実践追補
@@ -659,7 +669,7 @@ title.ja: 一次資料を与えて、検証させる ── 誤答をいちば�
 subtitle.ja: 「記憶で答えさせる」から「資料を読んで整理させる」へ
 description.ja: AIが自信ありげに間違えるのは、無知だからではない。記憶から語ると「世間の平均」が出てくるからだ。だから重要な判断では、一次資料をこちらから与え、根拠を原文から引用させ、反対意見をぶつける。今日から使える、誤答をいちばん減らす一手を、具体的な頼み方とともに整理する。連載「Fable 5 が帰ってきた」実践追補。
 date: 2026.07.21
----
+////
 ifdef::lang-ja[]
 = 一次資料を与えて、検証させる ── 誤答をいちばん減らす一手
 

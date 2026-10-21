@@ -126,6 +126,44 @@ def test_meta_roundtrip(series_file):
     assert "English body." in store.read_body("blog.adoc", "01-first", "en")
 
 
+GITHUB_SAMPLE = """\
+// GitHub でも読める書き方
+ifdef::env-github[]
+= テスト連載
+:lang-ja:
+:doctype: book
+endif::[]
+// ===== article: 01-first =====
+////
+slug: first
+title.ja: 最初の記事
+////
+ifdef::env-github[]
+= 最初の記事
+endif::[]
+ifdef::lang-ja[]
+== 日本語の節
+
+日本語の本文。
+endif::[]
+"""
+
+
+def test_github_layout_meta_and_title_sync(series_file):
+    series_file.write_text(GITHUB_SAMPLE, encoding="utf-8")
+    meta = store.read_meta_raw("blog.adoc", "01-first")
+    assert meta == {"slug": "first", "title.ja": "最初の記事"}
+    assert "日本語の本文。" in store.read_body("blog.adoc", "01-first", "ja")
+    # タイトルを変えると GitHub 用の章タイトルも追従する(ビルダーは
+    # 食い違いをエラーにするので、追従しないと保存できない)
+    meta["title.ja"] = "改めた記事"
+    store.save_meta("blog.adoc", "01-first", meta)
+    after = series_file.read_text(encoding="utf-8")
+    assert "\n= 改めた記事\n" in after
+    assert "= 最初の記事" not in after
+    assert "= テスト連載" in after
+
+
 def test_add_article_is_draft_and_parseable(series_file):
     aid = store.add_article("blog.adoc", "new-post", "新しい記事", "New post")
     assert aid == "03-new-post"
@@ -280,3 +318,13 @@ def test_article_url_uses_url_base_for_site_json_series(site_with_custom):
 def test_article_url_keeps_builtin_rules(series_file):
     assert store.article_url("blog.adoc", "aru-kiji") == "/blog/aru-kiji/"
     assert store.article_url("ai-native-ways-software.adoc", "x") == "/ai-native-ways/software/x/"
+
+
+def test_add_article_follows_github_layout(series_file):
+    series_file.write_text(GITHUB_SAMPLE, encoding="utf-8")
+    article_id = store.add_article("blog.adoc", "second", "二つ目の記事")
+    after = series_file.read_text(encoding="utf-8")
+    tail = after.split(f"// ===== article: {article_id} =====")[1]
+    assert tail.lstrip("\n").startswith("////\n")
+    assert "ifdef::env-github[]\n= 二つ目の記事\nendif::[]" in tail
+    assert "\n---\n" not in tail

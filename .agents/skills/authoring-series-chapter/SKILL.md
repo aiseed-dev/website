@@ -63,6 +63,35 @@ Rules the build relies on:
 - **Frontmatter**: a bare key applies to both languages; `key.ja` / `key.en` split it. Do not write prev/next keys.
 - **Bodies**: each language sits between `ifdef::lang-ja[]` (or `lang-en`) and `endif::[]`. The `= Title` line is stripped by the template (the hero already shows it) but write it anyway.
 
+### GitHub-readable layout (`articles/debian-server.adoc`)
+
+GitHub renders `.adoc` with neither `lang-ja` nor `lang-en` set, so in the layout above every body is hidden and the frontmatter shows as one run-on paragraph. `debian-server.adoc` uses an optional layout that reads on GitHub; the build output is byte-identical:
+
+```
+ifdef::env-github[]
+= Claudeと一緒に育てるDebian サーバー
+:lang-ja:
+:doctype: book
+:toc:
+endif::[]
+// ===== article: 01-what-is-a-server =====
+////
+slug: 01-what-is-a-server
+title.ja: 第1章 サーバーとは何か
+…
+////
+ifdef::env-github[]
+= 第1章 サーバーとは何か
+endif::[]
+ifdef::lang-ja[]
+…
+```
+
+- The frontmatter may be fenced with `////` (a comment block, hidden on GitHub) instead of `---`. Close it with the same fence it opened with.
+- `ifdef::env-github[]` … `endif::[]` is skipped entirely by the build. Use it only before the first separator (document title, `:lang-ja:`, TOC attributes) and right after an article's frontmatter (the chapter title).
+- The GitHub chapter title must equal `title.ja` (or `title`) — the build fails otherwise. The site editor (`apps/site-editor`) updates it when the title is edited; by hand, change both.
+- A new chapter in this file needs both the `////` frontmatter and the `= <title.ja>` block.
+
 ## Numbering (ai-native-software)
 
 - `part`: `1` 導入編 / `2` 自立編 / `3` 転換編.

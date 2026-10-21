@@ -3,8 +3,18 @@
 // フロントマター: 日英共通は裸キー、異なる値は key.ja / key.en
 // 本文: ifdef::lang-ja[] / ifdef::lang-en[] で言語別
 // prev/next 連鎖は書かない(記事の並び順から自動導出)
+ifdef::env-github[]
+= Claudeと一緒に育てるDebian サーバー
+:lang-ja:
+:doctype: book
+:toc:
+:toc-title: 目次
+:toclevels: 1
+
+サイトで読む: https://aiseed.dev/debian-server/
+endif::[]
 // ===== article: 01-what-is-a-server =====
----
+////
 slug: 01-what-is-a-server
 number: 01
 title.ja: 第1章 サーバーとは何か
@@ -30,7 +40,10 @@ cta_btn2_text.ja: 全章一覧
 cta_btn2_text.en: All chapters
 cta_btn2_link.ja: /debian-server/
 cta_btn2_link.en: /en/debian-server/
----
+////
+ifdef::env-github[]
+= 第1章 サーバーとは何か
+endif::[]
 ifdef::lang-ja[]
 == なぜサーバー編から始めるか
 
@@ -389,7 +402,7 @@ The server sub-series can be navigated from link:/en/debian-server/[Learning Deb
 endif::[]
 
 // ===== article: 02-where-to-run =====
----
+////
 slug: 02-where-to-run
 number: 02
 title.ja: 第2章 サーバーをどこに置くか
@@ -415,7 +428,10 @@ cta_btn2_text.ja: 第1章に戻る
 cta_btn2_text.en: Back to Chapter 1
 cta_btn2_link.ja: /debian-server/01-what-is-a-server/
 cta_btn2_link.en: /en/debian-server/01-what-is-a-server/
----
+////
+ifdef::env-github[]
+= 第2章 サーバーをどこに置くか
+endif::[]
 ifdef::lang-ja[]
 == なぜ「置き場所」が最初の設計判断か
 
@@ -770,7 +786,7 @@ The server sub-series can be navigated from link:/en/debian-server/[Learning Deb
 endif::[]
 
 // ===== article: 03-minimal-install =====
----
+////
 slug: 03-minimal-install
 number: 03
 title.ja: 第3章 最小インストール
@@ -796,7 +812,10 @@ cta_btn2_text.ja: 第2章に戻る
 cta_btn2_text.en: Back to Chapter 2
 cta_btn2_link.ja: /debian-server/02-where-to-run/
 cta_btn2_link.en: /en/debian-server/02-where-to-run/
----
+////
+ifdef::env-github[]
+= 第3章 最小インストール
+endif::[]
 ifdef::lang-ja[]
 == なぜ「最小」か
 
@@ -1179,7 +1198,7 @@ The server sub-series can be navigated from link:/en/debian-server/[Learning Deb
 endif::[]
 
 // ===== article: 04-ssh =====
----
+////
 slug: 04-ssh
 number: 04
 title.ja: 第4章 SSHという玄関
@@ -1205,7 +1224,10 @@ cta_btn2_text.ja: 第3章に戻る
 cta_btn2_text.en: Back to Chapter 3
 cta_btn2_link.ja: /debian-server/03-minimal-install/
 cta_btn2_link.en: /en/debian-server/03-minimal-install/
----
+////
+ifdef::env-github[]
+= 第4章 SSHという玄関
+endif::[]
 ifdef::lang-ja[]
 == なぜSSHが「玄関」か
 
@@ -1612,7 +1634,7 @@ The server sub-series can be navigated from link:/en/debian-server/[Learning Deb
 endif::[]
 
 // ===== article: 05-security-basics =====
----
+////
 slug: 05-security-basics
 number: 05
 title.ja: 第5章 守りの基本
@@ -1638,7 +1660,10 @@ cta_btn2_text.ja: 第4章に戻る
 cta_btn2_text.en: Back to Chapter 4
 cta_btn2_link.ja: /debian-server/04-ssh/
 cta_btn2_link.en: /en/debian-server/04-ssh/
----
+////
+ifdef::env-github[]
+= 第5章 守りの基本
+endif::[]
 ifdef::lang-ja[]
 == なぜ守りの章が、サービスを動かす章より先か
 
@@ -2211,7 +2236,7 @@ The server sub-series can be navigated from link:/en/debian-server/[Learning Deb
 endif::[]
 
 // ===== article: 06-systemd-services =====
----
+////
 slug: 06-systemd-services
 number: 06
 title.ja: 第6章 サービスという単位
@@ -2237,7 +2262,10 @@ cta_btn2_text.ja: 第5章に戻る
 cta_btn2_text.en: Back to Chapter 5
 cta_btn2_link.ja: /debian-server/05-security-basics/
 cta_btn2_link.en: /en/debian-server/05-security-basics/
----
+////
+ifdef::env-github[]
+= 第6章 サービスという単位
+endif::[]
 ifdef::lang-ja[]
 == なぜ「サービス」という単位を学ぶか
 
@@ -2758,7 +2786,7 @@ The server sub-series can be navigated from link:/en/debian-server/[Learning Deb
 endif::[]
 
 // ===== article: 07-database =====
----
+////
 slug: 07-database
 number: 07
 title.ja: 第7章 データベースという土台
@@ -2784,7 +2812,10 @@ cta_btn2_text.ja: 第6章に戻る
 cta_btn2_text.en: Back to Chapter 6
 cta_btn2_link.ja: /debian-server/06-systemd-services/
 cta_btn2_link.en: /en/debian-server/06-systemd-services/
----
+////
+ifdef::env-github[]
+= 第7章 データベースという土台
+endif::[]
 ifdef::lang-ja[]
 == なぜデータベースの章か
 
@@ -3333,7 +3364,7 @@ The server sub-series can be navigated from link:/en/debian-server/[Learning Deb
 endif::[]
 
 // ===== article: 08-fastapi =====
----
+////
 slug: 08-fastapi
 number: 08
 title.ja: 第8章 自作アプリを動かす
@@ -3359,7 +3390,10 @@ cta_btn2_text.ja: 第7章に戻る
 cta_btn2_text.en: Back to Chapter 7
 cta_btn2_link.ja: /debian-server/07-database/
 cta_btn2_link.en: /en/debian-server/07-database/
----
+////
+ifdef::env-github[]
+= 第8章 自作アプリを動かす
+endif::[]
 ifdef::lang-ja[]
 == なぜ自作アプリの章か
 
@@ -4075,7 +4109,7 @@ The server sub-series can be navigated from link:/en/debian-server/[Learning Deb
 endif::[]
 
 // ===== article: 09-publishing =====
----
+////
 slug: 09-publishing
 number: 09
 title.ja: 第9章 外の世界に公開する
@@ -4101,7 +4135,10 @@ cta_btn2_text.ja: 第8章に戻る
 cta_btn2_text.en: Back to Chapter 8
 cta_btn2_link.ja: /debian-server/08-fastapi/
 cta_btn2_link.en: /en/debian-server/08-fastapi/
----
+////
+ifdef::env-github[]
+= 第9章 外の世界に公開する
+endif::[]
 ifdef::lang-ja[]
 == なぜ公開が一つの章になるか
 
@@ -4466,7 +4503,7 @@ The server sub-series can be navigated from link:/en/debian-server/[Learning Deb
 endif::[]
 
 // ===== article: 10-backup =====
----
+////
 slug: 10-backup
 number: 10
 title.ja: 第10章 データを守る
@@ -4492,7 +4529,10 @@ cta_btn2_text.ja: 第9章に戻る
 cta_btn2_text.en: Back to Chapter 9
 cta_btn2_link.ja: /debian-server/09-publishing/
 cta_btn2_link.en: /en/debian-server/09-publishing/
----
+////
+ifdef::env-github[]
+= 第10章 データを守る
+endif::[]
 ifdef::lang-ja[]
 == なぜバックアップが独立した章か
 
@@ -5119,7 +5159,7 @@ The server sub-series can be navigated from link:/en/debian-server/[Learning Deb
 endif::[]
 
 // ===== article: 11-operations =====
----
+////
 slug: 11-operations
 number: 11
 title.ja: 第11章 サーバーを育てる
@@ -5145,7 +5185,10 @@ cta_btn2_text.ja: 本編（デスクトップ編）へ
 cta_btn2_text.en: To the Main (Desktop) Series
 cta_btn2_link.ja: /claude-debian/
 cta_btn2_link.en: /en/claude-debian/
----
+////
+ifdef::env-github[]
+= 第11章 サーバーを育てる
+endif::[]
 ifdef::lang-ja[]
 == なぜ「育てる」か
 

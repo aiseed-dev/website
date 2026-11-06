@@ -2706,6 +2706,30 @@ DB のパスワードはそこに無い。
 顧客の名前や連絡先のような個人情報を多く持つなら、それを認証とデータの機械から
 もう一台に分ける。データを持つ機械のディスクは暗号化する。
 
+== 機械をまたいでデータを見るときは、データの側が本人を確かめる
+
+入口の機械とデータの機械を分けても、入口のアプリはデータを見る必要がある。ここが
+一番難しい。
+
+入口の機械が「この人の分を出して」と頼み、データの機械がそれを信じて出す形にすると、
+入口が破られたとき、全員の分が出る。全員の分を読める鍵が、入口に置いてあるのと同じ
+だからだ。鍵の範囲を「読むだけ」「書く」に分けても、「誰の分か」は分けられない。
+
+だから、*データの機械は、利用者本人の証を自分で確かめる*。利用者が門番(2-05)から
+受け取った token を、入口はそのまま渡すだけにする。データの機械は、小さな API(2-12)で
+その署名を確かめ、その人の分だけを返す。入口が破られても、届くのは、破られている間に
+入ってきた人の分だけになる。
+
+決めは四つあり、上から順に重ねる。
+
+. データの機械は、利用者本人の証を自分で確かめる。入口の言うことを信じない
+. 入口の機械には、盗られても困らない物だけを置く。email のような個人情報は置かない
+. アカウントを分ける。人、AI、サービスの三つ。入口でも、データの機械でも同じ
+. 網を分け、届く相手を絞る。これは上の三つに重ねる物だ
+
+データの機械の記録は、入口から足すことしかできないようにする。API に「消す」と
+「書き換える」を出さない。
+
 == 小さな会社は、借りるところから
 
 小さな会社は、最初はサービスを借りてよい。四台を一度に揃えなくていい。
@@ -2933,6 +2957,7 @@ sudo ss -tlnp                   # 4 ── 待ち受けている口を見る
 自立編を動かす機械を、最初に決める。
 
 * *機械は役割で分ける* ── 外に向く口、メールと会議、認証とデータ、AI の作業機の四台と予備。仮想化ではなく物理の機械で分ける。自前の LLM は別のサーバー
+* *機械をまたぐときは、データの側が本人を確かめる* ── 入口の言うことを信じない。入口には、盗られても困らない物だけを置く
 * *小さな会社は、借りるところから* ── 借りる物は借りると書き、移す順番を決める
 * *OS は Debian* ── Python と apt が最初からあり、更新で勝手に再起動しない
 * *Docker は使わない* ── 配るための道具で、作るための道具ではない。apt で入れ、systemd で動かす。例外は公式がコンテナでしか配らない物だけで、イメージは自分で作らない
@@ -2995,6 +3020,32 @@ database passwords are not there.
 If you hold a lot of personal information, such as customers' names and contacts, split
 it off from the authentication-and-data machine onto one more machine. Encrypt the disks
 of the machines that hold data.
+
+== When data is read across machines, the data side checks the person
+
+Even with the entrance machine and the data machine split, the app on the entrance
+needs to read data. This is the hardest part.
+
+If the entrance asks "give me this person's records" and the data machine trusts it,
+then when the entrance is breached, everyone's records come out. It is the same as
+keeping a key to everyone's records on the entrance. Splitting the key's scope into
+"read only" and "write" does not split "whose records."
+
+So *the data machine checks the person's own proof itself.* The entrance only passes
+along the token the person received from the gate (2-05). The data machine, through a
+small API (2-12), checks its signature and returns only that person's records. If the
+entrance is breached, what can be reached is only the records of people who came in
+while it was breached.
+
+There are four rules, layered from the top.
+
+. The data machine checks the person's own proof itself. It does not trust the entrance
+. Keep only what can be stolen without harm on the entrance machine. No personal information such as email
+. Split the accounts: people, the AI, and services. The same on the entrance and on the data machine
+. Split the network and narrow who can reach what. This sits on top of the three above
+
+Records on the data machine can only be added to from the entrance. The API offers no
+"delete" and no "rewrite."
 
 == A small company can start by borrowing
 
@@ -3238,6 +3289,7 @@ sudo ss -tlnp                   # 4 — list the listening ports
 Decide the machines the Independence part runs on, first.
 
 * *Split the machines by role* — the public face, mail and meetings, authentication and data, the AI workstation, and a spare. Split with physical machines, not virtualization. The self-hosted LLM gets a separate server
+* *Across machines, the data side checks the person* — it does not trust the entrance. The entrance holds only what can be stolen without harm
 * *A small company can start by borrowing* — say what is borrowed, and decide the order of moving it in
 * *Debian as the OS* — Python and apt from the start, no reboots on someone else's schedule
 * *No Docker* — a tool for distributing, not for building. Install with apt, run under systemd. The only exception is software shipped only as a container, and you never build an image yourself

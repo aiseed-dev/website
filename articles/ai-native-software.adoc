@@ -2720,10 +2720,15 @@ DB のパスワードはそこに無い。
 その署名を確かめ、その人の分だけを返す。入口が破られても、届くのは、破られている間に
 入ってきた人の分だけになる。
 
+これが成り立つのは、門番の署名の鍵が入口に無いときだけだ。入口に門番があると、入口が
+破られたとき、誰の token でも作れてしまう。だから門番は、上の表のとおり認証とデータの
+機械に置く。署名の確かめに公開鍵の方式を使えば、確かめる側にも盗まれて困る鍵を置かずに
+済む。利用者の端末の鍵(パスキー)で署名させる形もある。
+
 決めは四つあり、上から順に重ねる。
 
 . データの機械は、利用者本人の証を自分で確かめる。入口の言うことを信じない
-. 入口の機械には、盗られても困らない物だけを置く。email のような個人情報は置かない
+. 入口の機械には、盗られても困らない物だけを置く。門番の署名の鍵と、email のような個人情報は置かない
 . アカウントを分ける。人、AI、サービスの三つ。入口でも、データの機械でも同じ
 . 網を分け、届く相手を絞る。これは上の三つに重ねる物だ
 
@@ -3037,10 +3042,16 @@ small API (2-12), checks its signature and returns only that person's records. I
 entrance is breached, what can be reached is only the records of people who came in
 while it was breached.
 
+This holds only when the gate's signing key is not on the entrance. With the gate on the
+entrance, a breached entrance can forge anyone's token. So the gate sits on the
+authentication-and-data machine, as in the table above. Verifying signatures with a
+public-key scheme means the verifying side, too, holds no key worth stealing. Having the
+person's own device key (a passkey) sign is another way.
+
 There are four rules, layered from the top.
 
 . The data machine checks the person's own proof itself. It does not trust the entrance
-. Keep only what can be stolen without harm on the entrance machine. No personal information such as email
+. Keep only what can be stolen without harm on the entrance machine. Not the gate's signing key, and no personal information such as email
 . Split the accounts: people, the AI, and services. The same on the entrance and on the data machine
 . Split the network and narrow who can reach what. This sits on top of the three above
 

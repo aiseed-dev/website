@@ -2703,6 +2703,9 @@ CVE-2026-64561。どちらも入れ子の仮想化が有効な場合)。だか�
 認証とデータの機械には外から届かない。メールの機械が破られても、署名の秘密と
 DB のパスワードはそこに無い。
 
+顧客の名前や連絡先のような個人情報を多く持つなら、それを認証とデータの機械から
+もう一台に分ける。データを持つ機械のディスクは暗号化する。
+
 == 小さな会社は、借りるところから
 
 小さな会社は、最初はサービスを借りてよい。四台を一度に揃えなくていい。
@@ -2791,14 +2794,16 @@ AI は、この八つを「やる前に言う」。人が確かめてから通�
 
 * *鍵と認証* ── ドメインの登録と、契約・支払いの管理は、どの機械にも置かない。秘密は、それを使う機械にだけ置く。作業機に置くのは、AI のサービスの鍵と、コードを送る鍵だけだ
 * *データの写し* ── データベース・ファイル・メール・リポジトリを、毎日、機械の外へ写す。写しは外の側から取りに来させて、どの機械の root からも消せないようにする(2-01 の「守るのは、データと仕様だけ」)
+* *鍵と秘密の一覧* ── どの秘密が、どの機械にあり、いつまで使い、どう作り直すかを一覧にする。値は書かない
+* *誰が何をしたかの記録* ── 人も AI も外の人も、やったことを記録に残す。追記だけにして、書き換えたら分かる形にする
 * *立て直しと鍵の作り直し* ── 予備の機械に一台を立て直すことと、DKIM の秘密鍵・署名の秘密・ssh の鍵・API の鍵を作り直すことを、年に何度か人が実際にやって確かめる
 
 == 外から届く口を絞る
 
 * 外から届くのは、外に向く口(80 と 443)と、メールと会議の機械(メールの口と会議の音声の口)だけにする。認証とデータの機械と、作業機には、外から届かない
 * 出ていく通信も、既定で止めて、出てよい相手だけを名指しで開ける
-* 網も分ける。外に向く口と、メールと会議の機械は、ルーターの LAN 分割で別の網に置き、網の間で通す物を決める。機械の防火壁を誤ったときの、もう一枚の守りになる(NIST SP 800-41 Rev.1)
-* ルーターの管理の画面と ssh には、外に向く機械から届かないようにする。公開の機械が破られると、次に試されるのは出口のルーターだ
+* 網も分ける。外に向く口と、メールと会議の機械は、ルーターの LAN 分割で別の網に置き、網の間で通す物を決める。増える守りは三つある。機械の防火壁を誤ったときのもう一枚になる。同じ網の機械が別の機械の番地を名乗る手が効かなくなる(MITRE ATT&CK T1557.002)。防火壁を持たない機器も守られる(NIST SP 800-41 Rev.1)。箱を足す前に、今のルーターが LAN を分けられるかを見る
+* ルーターの管理の画面と ssh には、外に向く機械から届かないようにする。公開の機械が破られると、次に出口のルーターを試せるからだ
 * 画面への接続は外に開けない。手元の PC から ssh の中を通す
 * サービスは、それぞれ専用の利用者で動かし、systemd の制限を掛ける
 * ssh は鍵だけにし、パスワードと root でのログインを切る
@@ -2882,7 +2887,7 @@ AI は月払いになる。2026-10-05 時点の公開価格(税抜・月払い)�
 . どの機械でも、`systemctl --failed` が、止まったサービスを一つも返さない
 . 外から見て、外に向く口は 80 と 443 だけ、メールと会議の機械はメールと会議の口だけが開いていて、残り二台はどの口も見えない
 . 設定が課題のフォルダーに入っていて、データの写しが機械の外に届いている。予備の機械に、一台を立て直せた
-. AI に「各機械の状態を報告して」と言うと、報告が返る
+. 各機械の状態(動いているサービス、開いている口、防火壁の向き、更新、控え)を、人が道具で一枚に出して読める
 
 ```bash
 ssh builder@web.example.com     # 1 ── 四台それぞれに
@@ -2929,7 +2934,7 @@ sudo ss -tlnp                   # 4 ── 待ち受けている口を見る
 * *Docker は使わない* ── 配るための道具で、作るための道具ではない。apt で入れ、systemd で動かす。例外は公式がコンテナでしか配らない物だけで、イメージは自分で作らない
 * *作業機には画面を入れる* ── 文書を開く、頁を見る
 * *重要な仕事は人が確認する* ── 八つの仕事は、AI がやる前に言い、人が通す。それ以外は一つずつは確認しないが、結果は検証する
-* *初期化で戻らない物だけ、人が持つ* ── 鍵と認証、データの写し、立て直しの手順
+* *初期化で戻らない物だけ、人が持つ* ── 鍵と認証、データの写し、立て直しと鍵の作り直し、鍵と秘密の一覧、誰が何をしたかの記録
 * *AI は複数* ── 別の会社の AI に、作った物と基準だけを渡して見張らせる
 * *外の AI に渡さない物* ── 鍵、パスワード、トークン、顧客の個人情報。止まっても、業務はコードで動き続け、作る仕事は自前の LLM で続ける
 * *費用* ── 機械は五台でおおよそ 25〜50 万円。AI は作るあいだ月約 120 ドル、運用は月約 40 ドル(2026-10-05 時点、税抜)
@@ -2982,6 +2987,10 @@ The lines follow two questions: is it reachable from outside, and which secrets 
 it hold. If the public face is breached, the authentication-and-data machine is still
 unreachable from outside. If the mail machine is breached, the signing secret and the
 database passwords are not there.
+
+If you hold a lot of personal information, such as customers' names and contacts, split
+it off from the authentication-and-data machine onto one more machine. Encrypt the disks
+of the machines that hold data.
 
 == A small company can start by borrowing
 
@@ -3078,14 +3087,16 @@ only what a reinstall cannot restore.
 
 * *Keys and accounts* — domain registration and the management of contracts and payment live on no machine. Each secret lives only on the machine that uses it. The workstation holds only the AI service's key and the key for pushing code
 * *Copies of the data* — databases, files, mail, and repositories are copied off the machines every day. The copy is pulled from outside, so root on no machine can delete it (2-01: "protect only the data and the spec")
+* *The list of keys and secrets* — which secret sits on which machine, until when it is used, and how it is regenerated. The values are not written down
+* *The record of who did what* — people, the AI, and outsiders alike leave what they did in a record. Append only, so that any rewrite shows
 * *Rebuilding and regenerating keys* — a few times a year, a person actually rebuilds a machine on the spare, and regenerates the DKIM private key, the signing secret, the ssh keys, and the API keys, to confirm it all works
 
 == Narrow the ports reachable from outside
 
 * Only the public face (80 and 443) and the mail-and-meetings machine (mail ports and the meeting audio port) are reachable from outside. The authentication-and-data machine and the workstation are not
 * Outgoing traffic is also stopped by default; only named destinations are opened
-* Split the network too. Put the public face and the mail-and-meetings machine on separate networks with the router's LAN division, and decide what may pass between networks. It is one more layer for when a machine's firewall is misconfigured (NIST SP 800-41 Rev.1)
-* Keep the router's admin page and ssh out of reach of the machines facing outside. When a public machine is breached, the next thing tried is the router at the exit
+* Split the network too. Put the public face and the mail-and-meetings machine on separate networks with the router's LAN division, and decide what may pass between networks. Three defenses are added. It is one more layer for when a machine's firewall is misconfigured. A machine on the same network can no longer claim another machine's address (MITRE ATT&CK T1557.002). Devices without a firewall of their own are covered (NIST SP 800-41 Rev.1). Before adding a box, check whether your current router can divide the LAN
+* Keep the router's admin page and ssh out of reach of the machines facing outside. A breached public machine could otherwise try the router at the exit next
 * The desktop connection is never opened to the outside. Reach it through ssh from your own PC
 * Each service runs under its own user, with systemd restrictions
 * ssh is key-only; password and root logins are turned off
@@ -3176,7 +3187,7 @@ This chapter is done when these six hold.
 . On every machine, `systemctl --failed` lists no failed service
 . Seen from outside, the public face shows only 80 and 443, the mail-and-meetings machine shows only its mail and meeting ports, and the other two show no ports at all
 . The configuration is in the task folders, the copy of the data has arrived off the machines, and you have rebuilt one machine on the spare
-. Asking the AI to report the state of each machine produces a report
+. A person can put the state of each machine (running services, open ports, firewall directions, updates, backups) on one sheet with a tool, and read it
 
 ```bash
 ssh builder@web.example.com     # 1 — for each of the four
@@ -3223,7 +3234,7 @@ Decide the machines the Independence part runs on, first.
 * *No Docker* — a tool for distributing, not for building. Install with apt, run under systemd. The only exception is software shipped only as a container, and you never build an image yourself
 * *A desktop on the workstation* — open documents, look at pages
 * *Important work is checked by a person* — for the eight, the AI states them first and a person lets them through. Other work is not checked item by item, but its results are verified
-* *The human keeps only what a reinstall cannot restore* — keys and accounts, copies of the data, the rebuild procedure
+* *The human keeps only what a reinstall cannot restore* — keys and accounts, copies of the data, rebuilding and regenerating keys, the list of keys and secrets, the record of who did what
 * *More than one AI* — pair vendors and pass only the artifact and the criteria
 * *What an outside AI never gets* — keys, passwords, tokens, customers' personal information. If it stops, the business keeps running on code, and building continues on the self-hosted LLM
 * *Cost* — roughly ¥250,000–500,000 for five machines; the AI about $120 a month while building, about $40 in operation (as of 2026-10-05, excluding tax)
@@ -4848,14 +4859,29 @@ ____
 * 一度のログインで全部を束ねる(SSO)のは、OIDC を話す層を足すときで、後でよい
 
 ```caddy
-# Caddyfile ── 名前ごとに振り分ける。証明書は Caddy が取る
-auth.example.com { reverse_proxy localhost:8090 }
-git.example.com  { reverse_proxy localhost:3000 }
+# Caddyfile(外に向く機械)── 名前ごとに振り分ける。証明書は Caddy が取る
+auth.example.com {
+	@admin path /_ /_/*
+	respond @admin 403          # 門番の管理画面は外から開かない
+	reverse_proxy data.internal:8090
+}
+git.example.com { reverse_proxy data.internal:3000 }
 ```
 
-`example.com` の部分は、人が決めたドメイン名に置き換える。まず身元を一つに共有する
+`example.com` の部分は、人が決めたドメイン名に置き換える。`data.internal` は、認証と
+データの機械の社内の名前に置き換える。門番の管理画面は、社内の網から開く。まず身元を一つに共有する
 ことが先で、完全な統合は後でよい。多くの社内利用は、門番と各アプリのログインで
 足りる。
+
+== 外の相手に渡す鍵は、相手ごとに分ける
+
+アプリが外の相手(招待した人、買い手、動かす機械)に鍵(token)を渡すときは、決めを
+四つ置く。
+
+* 相手ごとに別の token を出し、使える範囲と期限を決める
+* 台帳には token の値を置かず、ハッシュだけを置く
+* 取り消したら、次の要求から効かないようにする
+* 誰が、どの token で、何をしたかを、追記だけの記録に残す
 
 == Entra ID から降りる
 
@@ -5052,14 +5078,30 @@ packaged OSS directly. So the decisions are these.
 * Binding everything into one login (SSO) comes when you add a layer that speaks OIDC — later
 
 ```caddy
-# Caddyfile — route by name; Caddy takes the certificates
-auth.example.com { reverse_proxy localhost:8090 }
-git.example.com  { reverse_proxy localhost:3000 }
+# Caddyfile (on the public face) — route by name; Caddy takes the certificates
+auth.example.com {
+	@admin path /_ /_/*
+	respond @admin 403          # the gate's admin screen is never opened from outside
+	reverse_proxy data.internal:8090
+}
+git.example.com { reverse_proxy data.internal:3000 }
 ```
 
-The `example.com` part is replaced with the domain name the human decides. Sharing
+The `example.com` part is replaced with the domain name the human decides, and
+`data.internal` with the internal name of the authentication-and-data machine. The
+gate's admin screen is opened from the internal network. Sharing
 one identity comes first; full unification can wait. For most in-house use, the
 gate plus each app's own login is enough.
+
+== Give each outside party its own key
+
+When an app hands a key (a token) to an outside party (someone invited, a buyer, a
+machine that runs a job), set four rules.
+
+* Issue a separate token per party, with a defined scope and expiry
+* Keep only a hash in the ledger, never the token's value
+* Once revoked, it stops working from the next request
+* Record who did what with which token, append only
 
 == Step off Entra ID
 
@@ -6807,6 +6849,10 @@ link:/ai-native-software/fastapi/[2-12: API を作る ── FastAPI で基幹�
 費用も変わる。WordPress のホスティングには月額がかかるが、焼いた HTML は 2-02 の外に向く
 機械に置けば追加の費用が無い(置き場は 2-11)。
 
+WordPress には管理画面があり、技術者でない人も中身を直せた。移した後も、それに当たる
+物が要る。記事を書く、直す、公開する、のための管理の画面を作る。AI に作らせれば小さく
+済む(Flet、2-04)。管理の画面は外に開けず、門番の内側に置く(2-05)。
+
 ____
 WordPress も並行稼働で抜ける。文字へエクスポートし、外枠だけ HTML と CSS で書き、
 Python で生成して、静的に配る。これで WordPress を止められる。
@@ -7277,6 +7323,11 @@ link:/en/ai-native-software/fastapi/[2-12: Build an API — Expose Core Logic wi
 
 The cost changes too. WordPress hosting carries a monthly bill; baked HTML placed
 on the public-face machine of 2-02 costs nothing extra (where it goes is 2-11).
+
+WordPress had an admin screen, so people who are not engineers could fix the content.
+After the move, something must take its place. Build an admin screen for writing,
+fixing, and publishing articles. Have the AI build it and it stays small (Flet, 2-04).
+The admin screen is never opened to the outside; it sits behind the gate (2-05).
 
 ____
 WordPress, too, is left through parallel operation. Export to text, write only

@@ -1286,7 +1286,7 @@ ED25519 key fingerprint is SHA256:xxxxxxxx...
 Are you sure you want to continue connecting (yes/no)?
 ```
 
-これは「*この相手は本当に目的のサーバーか*」の確認だ。一度 `yes` と答えると、その指紋（フィンガープリント）が手元の `~/.ssh/known_hosts` に記録され、次回から無言で繋がる。家庭内LANの自分のサーバーなら `yes` でよいが、後日「指紋が変わった」と警告が出たら、それは経路上の改ざんかサーバー再構築のどちらかを意味する。意味を知らずに通すべきではない。
+これは「*この相手は本当に目的のサーバーか*」の確認だ。一度 `yes` と答えると、その指紋（フィンガープリント）が手元の `~/.ssh/known_hosts` に記録され、次回から無言で繋がる。`yes` と答える前に、サーバーの画面で `ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub` を打ち、出た指紋と同じかを比べる。家庭内LANの自分のサーバーでも、比べてから `yes` にする。後日「指紋が変わった」と警告が出たら、それは経路上の改ざんかサーバー再構築のどちらかを意味する。意味を知らずに通すべきではない。
 
 === Claudeに聞いてみよう①：接続できないときの診断
 
@@ -1495,7 +1495,7 @@ ED25519 key fingerprint is SHA256:xxxxxxxx...
 Are you sure you want to continue connecting (yes/no)?
 ```
 
-This is the check of "*is this really the server I meant?*" Answer `yes` once and that fingerprint is recorded in your local `~/.ssh/known_hosts`, and next time it connects silently. For your own server on a home LAN, `yes` is fine — but if a "the fingerprint has changed" warning later appears, that means either tampering on the path or a rebuild of the server. You should not wave it through without knowing which.
+This is the check of "*is this really the server I meant?*" Answer `yes` once and that fingerprint is recorded in your local `~/.ssh/known_hosts`, and next time it connects silently. Before answering `yes`, type `ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub` on the server's own screen and compare the fingerprint it prints. Even for your own server on a home LAN, compare first, then say `yes`. And if a "the fingerprint has changed" warning later appears, that means either tampering on the path or a rebuild of the server. You should not wave it through without knowing which.
 
 === Ask Claude ①: Diagnose When You Cannot Connect
 
@@ -1692,8 +1692,7 @@ sudo journalctl -u ssh --since "1 hour ago" | grep -i failed
 家庭内LANにだけ置いたサーバーなら、ここはほぼ静かなはずだ。失敗ログはせいぜい、自分が打ち間違えた数行だろう。この「静けさ」を一度自分の目で見ておくことに意味がある。*公開後に同じコマンドを打つと、見知らぬIPからの失敗ログが分単位で積み上がる*。その対比こそが、この章で何を守っているのかを体で理解させてくれる。
 
 ```bash
-# 古いシステムでは /var/log/auth.log にも同じ記録が残る
-sudo tail -n 50 /var/log/auth.log 2>/dev/null
+# Debian 13 の最小の入れ方では /var/log/auth.log は作られない。記録は journalctl で読む
 ```
 
 守りの濃さは、自分のサーバーがどこに置かれているかで変わる。整理すると二段階だ。
@@ -1724,7 +1723,7 @@ LISTEN  0       128     0.0.0.0:22           0.0.0.0:*          users:(("sshd",p
 LISTEN  0       4096    127.0.0.1:631        0.0.0.0:*          users:(("cupsd",pid=812,fd=7))
 ```
 
-ここで大事なのは、*各行が何を意味するかを一行残らず読むこと*だ。`0.0.0.0:22` は「すべてのネットワークインタフェースの22番ポートで待っている」——つまり外から届く。`127.0.0.1:631` は「ローカルホストだけで待っている」——外からは届かない。この違いが分かると、どのサービスが本当に外に晒されているかが見える。
+ここで大事なのは、*各行が何を意味するかを一行残らず読むこと*だ。`0.0.0.0:22` は「すべてのネットワークインタフェースの22番ポートで待っている」——外から届きうる。ただし、聞いていることと届くことは別だ。届くかは防火壁で決まるので、別の機械から試して確かめる。`127.0.0.1:631` は「ローカルホストだけで待っている」——外からは届かない。この違いが分かると、どのサービスが本当に外に晒されているかが見える。
 
 === Claudeに聞いてみよう①：`ss -tlnp` の出力を読み解く
 
@@ -1790,6 +1789,8 @@ sudo ufw enable
 # 5. いまのルールを確認
 sudo ufw status verbose
 ```
+
+`ufw status verbose` の `Default:` の行に `deny (incoming), deny (outgoing)` と出ていれば、入りも出も既定で拒否になっている。
 
 `enable` の直前に一拍置いて、`allow ssh` と `allow out 53` が入っているか必ず見返す癖をつける。いま繋いでいる SSH の返事は「確立済みの接続」として自動で通るので、出を閉じても切れない。だが DNS を忘れると、次の `apt` が名前を引けずに止まる。それが「出を閉じた」最初の手応えになる。リモートのサーバーで `allow ssh` を忘れると、物理コンソールか復旧手段がない限り入れなくなる。
 
@@ -1869,7 +1870,7 @@ sudo needrestart
 
 `needrestart` は、再起動なしで済むものはサービス再起動だけで済ませ、本当に再起動が要るものだけを教えてくれる。サーバーをむやみに再起動したくないとき、この見分けは効く。
 
-=== Claudeに聞いてみよう③：auth.log の不審な行を読み解く
+=== Claudeに聞いてみよう③：ssh の記録の不審な行を読み解く
 
 ____
 私のDebian 13サーバーで、`sudo journalctl -u ssh --since "today"` の出力に次のような行がありました：
@@ -1977,8 +1978,7 @@ sudo journalctl -u ssh --since "1 hour ago" | grep -i failed
 If your server lives only inside a home LAN, this should be nearly silent. The failure log will be, at most, the few lines where you mistyped your own password. There is value in seeing this "quiet" with your own eyes once. *Run the same command after you go public, and failure logs from unknown IPs pile up by the minute.* That contrast is what makes you understand, in your body, what this chapter is defending.
 
 ```bash
-# On older systems the same record also lives in /var/log/auth.log
-sudo tail -n 50 /var/log/auth.log 2>/dev/null
+# A minimal Debian 13 install has no /var/log/auth.log. Read the record with journalctl
 ```
 
 How heavy your defense needs to be depends on where your server sits. Sorted out, there are two levels.
@@ -2009,7 +2009,7 @@ LISTEN  0       128     0.0.0.0:22           0.0.0.0:*          users:(("sshd",p
 LISTEN  0       4096    127.0.0.1:631        0.0.0.0:*          users:(("cupsd",pid=812,fd=7))
 ```
 
-What matters here is to *read every single line and what it means*. `0.0.0.0:22` means "listening on port 22 on every network interface" — that is, reachable from outside. `127.0.0.1:631` means "listening on localhost only" — not reachable from outside. Once you see this difference, you can see which services are truly exposed.
+What matters here is to *read every single line and what it means*. `0.0.0.0:22` means "listening on port 22 on every network interface" — it can be reachable from outside. But listening and being reachable are different things. Whether it is reachable depends on the firewall, so try it from another machine. `127.0.0.1:631` means "listening on localhost only" — not reachable from outside. Once you see this difference, you can see which services are truly exposed.
 
 === Ask Claude ①: Decipher the `ss -tlnp` Output
 
@@ -2075,6 +2075,8 @@ sudo ufw enable
 # 5. Check the current rules
 sudo ufw status verbose
 ```
+
+If the `Default:` line of `ufw status verbose` reads `deny (incoming), deny (outgoing)`, both directions are denied by default.
 
 Make it a habit to pause right before `enable` and confirm that `allow ssh` and `allow out 53` are in place. The replies of the SSH session you are on pass automatically as an "established connection," so closing outgoing does not cut it. Forget DNS, though, and the next `apt` stops, unable to resolve a name. That is the first tangible sign that you have closed outgoing. Forget `allow ssh` on a remote server, and you cannot get back in short of a physical console or recovery means.
 
@@ -2154,7 +2156,7 @@ sudo needrestart
 
 `needrestart` handles what can be done without a reboot by just restarting the service, and tells you only about what truly needs a reboot. When you would rather not reboot a server needlessly, this distinction pays off.
 
-=== Ask Claude ③: Decipher Suspicious Lines in auth.log
+=== Ask Claude ③: Decipher Suspicious Lines in the ssh Log
 
 ____
 On my Debian 13 server, the output of `sudo journalctl -u ssh --since "today"` had lines like these:
@@ -4749,7 +4751,7 @@ Description=Run restic backup daily
 
 [Timer]
 # 毎日 04:00 に実行（時刻は負荷の低い時間帯を選ぶ）
-OnCalendar=daily
+OnCalendar=*-*-* 04:00:00
 # サーバーが止まっていて実行を逃したら、起動後に取り返す
 Persistent=true
 
@@ -5061,7 +5063,7 @@ Description=Run restic backup daily
 
 [Timer]
 # Run at 04:00 every day (pick a low-load time of day)
-OnCalendar=daily
+OnCalendar=*-*-* 04:00:00
 # If the server was off and missed a run, catch up after it boots
 Persistent=true
 
@@ -5223,7 +5225,7 @@ df -h                              # ディスクの空き（埋まりすぎて�
 free -h                            # メモリの空き
 journalctl -p err --since -7d      # 直近一週間のエラーログ
 systemctl --failed                 # 失敗しているサービスはないか
-sudo tail -n 30 /var/log/auth.log  # 不審なログイン試行の様子
+sudo journalctl -u ssh --since -7d | tail -n 30  # 不審なログイン試行の様子
 sudo fail2ban-client status sshd   # fail2ban が弾いた数（第5章で入れていれば）
 systemctl is-active postgresql     # データベースが生きているか（第7章で入れていれば）
 ```
@@ -5255,6 +5257,8 @@ chmod +x ~/weekly-check.sh
 === その先：軽い監視ツール
 
 週次の手動チェックに慣れて、もう一歩進みたくなったら、軽い監視ツールを入れるとよい。たとえば *Uptime Kuma* は、サービスが落ちたら通知してくれる軽い監視ツールだ。「自分が見ていない間にサービスが止まった」を、人間が気付くより先に教えてくれる。ただし焦らなくていい。まずは手動の週次チェックで「自分のサーバーの平常時の顔」を覚えるのが先だ。
+
+機械が何台かになったら、この連載の形に機械が今も合っているかを、同じ見方で確かめる道具がある。*kagi* は、防火壁の向き、ssh の設定、更新、控えの timer などを機械ごとに読み、違う所と直す手を一枚に出す(link:https://github.com/aiseed-dev/seed[aiseed-dev/seed] の中、AGPL)。筆者の三台に当てたら、三台とも出る向きを既定で通していた。
 
 === Claudeに聞いてみよう①：weekly-check.sh を自分の構成向けに書かせる
 
@@ -5447,7 +5451,7 @@ df -h                              # Free disk space (is it getting too full?)
 free -h                            # Free memory
 journalctl -p err --since -7d      # Error logs from the last week
 systemctl --failed                 # Are any services failing?
-sudo tail -n 30 /var/log/auth.log  # The state of suspicious login attempts
+sudo journalctl -u ssh --since -7d | tail -n 30  # The state of suspicious login attempts
 sudo fail2ban-client status sshd   # How many fail2ban blocked (if you set it up in Chapter 5)
 systemctl is-active postgresql     # Is the database alive (if you installed it in Chapter 7)?
 ```
@@ -5479,6 +5483,8 @@ The human does not need to judge the meaning of each line. Have Claude judge "is
 === Beyond That: A Light Monitoring Tool
 
 Once you are used to the weekly manual check and want to go a step further, a light monitoring tool is worth adding. *Uptime Kuma*, for instance, is a light monitoring tool that notifies you when a service goes down. It tells you "a service stopped while I wasn't watching" before the human would notice. But there is no need to rush. First, with the manual weekly check, learn "the normal face of your own server."
+
+Once you have several machines, there is a tool that checks, the same way on each, whether they still match the shape this series lays out. *kagi* reads the firewall directions, the ssh settings, updates, the backup timer and more for each machine, and puts the differences and the fixes on one sheet (inside link:https://github.com/aiseed-dev/seed[aiseed-dev/seed], AGPL). Run on the writer's own three machines, it found all three letting outgoing traffic through by default.
 
 === Ask Claude ①: Have It Write weekly-check.sh for Your Setup
 

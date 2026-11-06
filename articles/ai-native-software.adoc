@@ -2797,6 +2797,8 @@ AI は、この八つを「やる前に言う」。人が確かめてから通�
 
 * 外から届くのは、外に向く口(80 と 443)と、メールと会議の機械(メールの口と会議の音声の口)だけにする。認証とデータの機械と、作業機には、外から届かない
 * 出ていく通信も、既定で止めて、出てよい相手だけを名指しで開ける
+* 網も分ける。外に向く口と、メールと会議の機械は、ルーターの LAN 分割で別の網に置き、網の間で通す物を決める。機械の防火壁を誤ったときの、もう一枚の守りになる(NIST SP 800-41 Rev.1)
+* ルーターの管理の画面と ssh には、外に向く機械から届かないようにする。公開の機械が破られると、次に試されるのは出口のルーターだ
 * 画面への接続は外に開けない。手元の PC から ssh の中を通す
 * サービスは、それぞれ専用の利用者で動かし、systemd の制限を掛ける
 * ssh は鍵だけにし、パスワードと root でのログインを切る
@@ -3082,6 +3084,8 @@ only what a reinstall cannot restore.
 
 * Only the public face (80 and 443) and the mail-and-meetings machine (mail ports and the meeting audio port) are reachable from outside. The authentication-and-data machine and the workstation are not
 * Outgoing traffic is also stopped by default; only named destinations are opened
+* Split the network too. Put the public face and the mail-and-meetings machine on separate networks with the router's LAN division, and decide what may pass between networks. It is one more layer for when a machine's firewall is misconfigured (NIST SP 800-41 Rev.1)
+* Keep the router's admin page and ssh out of reach of the machines facing outside. When a public machine is breached, the next thing tried is the router at the exit
 * The desktop connection is never opened to the outside. Reach it through ssh from your own PC
 * Each service runs under its own user, with systemd restrictions
 * ssh is key-only; password and root logins are turned off

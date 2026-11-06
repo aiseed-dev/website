@@ -1310,7 +1310,7 @@ ____
 サーバー側で次を作る。
 
 ```bash
-sudo nano /etc/ssh/sshd_config.d/99-hardening.conf
+sudo nano /etc/ssh/sshd_config.d/10-hardening.conf
 ```
 
 ```text
@@ -1319,6 +1319,13 @@ PermitRootLogin no
 ```
 
 `PasswordAuthentication no` でパスワード認証を禁止し、鍵だけにする。`PermitRootLogin no` で root の直接ログインを禁じる（前章で root を空欄にしているなら二重の保険になる）。
+
+ファイルの名前の頭は、若い番号（`10-`）にする。sshd は、同じ項目が二度出ると*最初に読んだ値*を使い、`sshd_config.d/` のファイルは名前の順に読む。VPS の雛形には、`50-cloud-init.conf` のように `PasswordAuthentication yes` を書いたファイルが入っていることがある。自分のファイルが後ろの番号だと、その値が勝ち、パスワードで入れる口が残る。書いたら、実際に効いている値を確かめる。
+
+```bash
+sudo sshd -T | grep -Ei '^(passwordauthentication|permitrootlogin)'
+# passwordauthentication no と permitrootlogin no が出れば、効いている
+```
 
 === 締め出し防止の作法
 
@@ -1349,7 +1356,7 @@ sudo systemctl reload ssh
 === Claudeに聞いてみよう②：sshd_config をレビューさせる
 
 ____
-SSHを堅くするため、サーバーの `/etc/ssh/sshd_config.d/99-hardening.conf` に次を書こうとしています：
+SSHを堅くするため、サーバーの `/etc/ssh/sshd_config.d/10-hardening.conf` に次を書こうとしています：
 〔自分が書いた設定をそのまま貼る〕
 
 この内容で、私が自分自身を締め出してしまうリスクはありますか。反映前に確認すべきこと、安全な反映手順、もし入れなくなった時の戻し方を教えてください。私は〔自宅サーバー／VPS〕です。
@@ -1512,7 +1519,7 @@ The server's SSH settings live in `/etc/ssh/sshd_config`. Rather than rewriting 
 On the server, create:
 
 ```bash
-sudo nano /etc/ssh/sshd_config.d/99-hardening.conf
+sudo nano /etc/ssh/sshd_config.d/10-hardening.conf
 ```
 
 ```text
@@ -1521,6 +1528,13 @@ PermitRootLogin no
 ```
 
 `PasswordAuthentication no` forbids password authentication, leaving only the key. `PermitRootLogin no` forbids direct root login (if you left root blank last chapter, this is a double insurance).
+
+Start the file name with a low number (`10-`). When the same setting appears twice, sshd uses *the first value it reads*, and it reads the files in `sshd_config.d/` in name order. A VPS image may ship a file such as `50-cloud-init.conf` that says `PasswordAuthentication yes`. If your file sorts later, that value wins and the password door stays open. Once written, check the value actually in effect.
+
+```bash
+sudo sshd -T | grep -Ei '^(passwordauthentication|permitrootlogin)'
+# if you see passwordauthentication no and permitrootlogin no, it is in effect
+```
 
 === The Craft of Not Locking Yourself Out
 
@@ -1551,7 +1565,7 @@ In case you still get locked out, keep exactly one way back. *For a home server,
 === Ask Claude ②: Have It Review Your sshd_config
 
 ____
-To harden SSH, I am about to write the following into the server's `/etc/ssh/sshd_config.d/99-hardening.conf`:
+To harden SSH, I am about to write the following into the server's `/etc/ssh/sshd_config.d/10-hardening.conf`:
 [paste the settings you wrote, as-is]
 
 With this content, is there a risk I lock myself out? Tell me what to check before applying, the safe procedure to apply, and how to roll back if I can no longer get in. I am on [a home server / a VPS].
@@ -4179,7 +4193,7 @@ ____
 
 リバースプロキシとは、*一台の入口（443番ポート、つまり `https://`）が、後ろにある複数のサービスへ、ホスト名で振り分ける仕組み*だ。`blog.example.com` への接続はブログのサービスへ、`photos.example.com` への接続は写真サーバーへ、と一台が交通整理する。外から見える入口は一つだけで、TLSの面倒もこの入口がまとめて見る。第6章の作法で複数のサービスを動かしているなら、その出口をこのリバースプロキシ一つに集約できる。
 
-本番で公開するなら、入口は別の機械にする。*外に向く機械には Caddy だけを置き、アプリとデータベースは、外から届かない別の機械に置く。* Caddy は、家の中の網を通して後ろの機械へ渡す。入口が破られても、データを持つ機械には外から届かない。練習のうちは一台でよいが、公開を続けるなら、この形に移す。
+本番で公開するなら、入口は別の機械にする。*外に向く機械には Caddy だけを置き、アプリとデータベースは、外から届かない別の機械に置く。* Caddy は、家の中の網を通して後ろの機械へ渡す。入口が破られても、データを持つ機械には外から届かない。入口の機械は、ルーターの LAN 分割で別の網に置き、網の間で通す物を決める。ルーターの管理の口にも、入口の機械から届かないようにする。練習のうちは一台でよいが、公開を続けるなら、この形に移す。
 
 この章では *Caddy* を例にする。理由は、設定ファイル（Caddyfile）が数行で済み、しかも*TLS証明書の取得・更新まで全自動*だからだ。Let's Encrypt とのやり取りを、Caddyが裏で勝手にやってくれる。設定テキストが短いということは、Claudeと相性が良いということでもある。
 
@@ -4360,7 +4374,7 @@ Whether you publish one service or several, modern publishing uses a pattern cal
 
 A reverse proxy is *a mechanism where a single entrance (port 443, that is, `https://`) routes to several services behind it, by host name*. A connection to `blog.example.com` goes to the blog service; a connection to `photos.example.com` goes to the photo server — one machine directs traffic. The only entrance visible from outside is a single one, and this entrance handles the TLS work in bulk. If you run several services in the manner of Chapter 6, you can consolidate their exit into this one reverse proxy.
 
-If you publish for real, put the entrance on a separate machine. *The machine facing outside runs Caddy alone; the apps and the database sit on another machine that cannot be reached from outside.* Caddy hands traffic to the machine behind it over the home network. Even if the entrance is breached, the machine that holds the data is out of reach from outside. One machine is fine while practicing, but if you keep publishing, move to this shape.
+If you publish for real, put the entrance on a separate machine. *The machine facing outside runs Caddy alone; the apps and the database sit on another machine that cannot be reached from outside.* Caddy hands traffic to the machine behind it over the home network. Even if the entrance is breached, the machine that holds the data is out of reach from outside. Put the entrance machine on its own network with the router's LAN division, and decide what may pass between networks. Keep the router's admin ports out of the entrance machine's reach too. One machine is fine while practicing, but if you keep publishing, move to this shape.
 
 This chapter uses *Caddy* as the example. The reason is that its config file (the Caddyfile) takes only a few lines, and *it handles getting and renewing TLS certificates fully automatically*. Caddy does the back-and-forth with Let's Encrypt on its own, behind the scenes. A short config text also means a good fit with Claude.
 

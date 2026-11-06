@@ -2677,6 +2677,41 @@ ifdef::lang-ja[]
 この章は、その道具を載せる機械の話だ。決めることは二つ。機械は役割で分ける。
 重要な仕事は人が確認する。
 
+== 規模ごとの入り口 ── 個人なら、三台から
+
+この章の形(四台と予備)は、会社を想定している。個人のビルダーには重い。守る物が
+少ないうちは軽い形から始め、守る物が増えたら、この章の形に寄せる。
+
+|===
+| 規模 | 始める形
+| 個人 | 入口の機械、資料の機械、机の PC の三台(下の例)
+| 小さな会社 | サービスを借りるところから始め、この章の形へ移す
+| 会社 | 四台と予備(この章の形)
+|===
+
+個人の例として、畑のアプリ(link:https://github.com/aiseed-dev/seed[seed])を自分の
+機械で動かす場合を書く。
+
+* *入口の機械* ── 公開する物と、公開するために受け取った物だけを置く。ここに残る秘密(外の API の鍵、TLS の鍵、token の台帳、決済からの知らせを確かめる鍵)は一覧にし、漏れたときの止め方(一日の上限、取り消し)を決めておく。ほかの機械の控えと、人ごとの記録は置かない
+* *資料の機械* ── 分析用の資料を置く。入口の機械からは届かないようにする。元の資料は人が直し、AI は課題のフォルダーに書き出す
+* *机の PC* ── 資料の機械の控えを取る。机の PC から取りに行き、日ごとの版を残す(restic)。何を控えるかは、置き場と持ち主で先に決める。一度、実際に戻してみる
+* *お金* ── 支払いは外の決済に任せる。カードの情報は、自分の機械を通らない
+* *宣伝の email* ── 一覧は社内の側に置く。公開のサイトの窓で受け、社内の側が取りに行き、入口からは消す。確認のメールは社内の側から送る。配信を止めるリンクには、email ではなく人ごとの番号を入れる。送るには本人の同意と、その記録が要る(特定電子メール法)
+
+先にやるのは、閉じることだ。誰が入れるかから始める。
+
+. 入れる鍵の一覧を見て、表に無い鍵を外す
+. ssh のパスワードの入口を閉じる(link:/debian-server/04-ssh/[サーバー編 第4章])
+. ルーターの管理の口に、入口の機械から届かないようにする
+. 認証の無い口を閉じる
+. 出る向きを閉じる(link:/debian-server/05-security-basics/[サーバー編 第5章])
+
+AI のアカウントに sudo を渡さず、サービスを専用の利用者で動かすのは、規模によらず
+同じだ。
+
+重い形 ── 個人情報の機械、機械をまたぐときにデータの側で本人を確かめる形 ── は、
+守る物が増えてから入れる。販売を始める、個人情報を持つ、が、その時期だ。
+
 == 機械を役割で分ける
 
 機械は四台と予備にする。一台ずつ別の物理の機械で、安い小型の PC でよい。
@@ -2962,6 +2997,7 @@ sudo ss -tlnp                   # 4 ── 待ち受けている口を見る
 自立編を動かす機械を、最初に決める。
 
 * *機械は役割で分ける* ── 外に向く口、メールと会議、認証とデータ、AI の作業機の四台と予備。仮想化ではなく物理の機械で分ける。自前の LLM は別のサーバー
+* *規模ごとの入り口* ── 個人は三台(入口、資料、机の PC)から。重い形は守る物が増えてから
 * *機械をまたぐときは、データの側が本人を確かめる* ── 入口の言うことを信じない。入口には、盗られても困らない物だけを置く
 * *小さな会社は、借りるところから* ── 借りる物は借りると書き、移す順番を決める
 * *OS は Debian* ── Python と apt が最初からあり、更新で勝手に再起動しない
@@ -2992,6 +3028,43 @@ ifdef::lang-en[]
 2-01 drew the map for untying the layers that Microsoft and Google bundle into open
 tools. This chapter is about the machines those tools sit on. Two decisions. Split
 the machines by role. Important work is checked by a person.
+
+== An entry point for each scale — for an individual, start with three machines
+
+This chapter's shape (four machines and a spare) assumes a company. It is heavy for an
+individual builder. While there is little to protect, start light, and move toward this
+chapter's shape as what you protect grows.
+
+|===
+| Scale | Starting shape
+| Individual | Three machines: the entrance, the materials machine, the desk PC (example below)
+| Small company | Start by borrowing services, then move to this chapter's shape
+| Company | Four machines and a spare (this chapter's shape)
+|===
+
+As an individual's example, take running a farming app
+(link:https://github.com/aiseed-dev/seed[seed]) on your own machines.
+
+* *The entrance machine* — holds only what is published and what is received for publishing. List the secrets left here (outside API keys, the TLS key, the token ledger, the key that checks notices from the payment service), and decide in advance how to stop them if leaked (a daily cap, revocation). No copies of other machines, and no per-person records
+* *The materials machine* — holds the materials for analysis. Out of the entrance machine's reach. A person edits the originals; the AI writes its output into the task folder
+* *The desk PC* — keeps the materials machine's backup. The desk PC pulls it and keeps daily versions (restic). Decide first what to back up, by where it sits and who owns it. Actually restore once
+* *Money* — leave payment to an outside payment service. Card details never pass through your machines
+* *Email for promotion* — keep the list on the internal side. Take sign-ups through a window on the public site; the internal side pulls them and deletes them from the entrance. Send the confirmation mail from the internal side. Put a per-person number, not the email address, in the unsubscribe link. Sending needs the person's consent and a record of it (Japan's Act on Specified Electronic Mail)
+
+What comes first is closing. Start with who can get in.
+
+. Look at the list of keys that can log in, and remove any key not on your list
+. Close the ssh password door (link:/en/debian-server/04-ssh/[Server series, Chapter 4])
+. Keep the router's admin ports out of the entrance machine's reach
+. Close ports that have no authentication
+. Close the outgoing direction (link:/en/debian-server/05-security-basics/[Server series, Chapter 5])
+
+Giving the AI's account no sudo, and running services under their own users, is the same
+at every scale.
+
+The heavy shapes — a machine for personal information, the data side checking the person
+across machines — come in when what you protect grows: when you start selling, or start
+holding personal information.
 
 == Split the machines by role
 
@@ -3300,6 +3373,7 @@ sudo ss -tlnp                   # 4 — list the listening ports
 Decide the machines the Independence part runs on, first.
 
 * *Split the machines by role* — the public face, mail and meetings, authentication and data, the AI workstation, and a spare. Split with physical machines, not virtualization. The self-hosted LLM gets a separate server
+* *An entry point for each scale* — an individual starts with three machines (entrance, materials, desk PC); the heavy shapes come when there is more to protect
 * *Across machines, the data side checks the person* — it does not trust the entrance. The entrance holds only what can be stolen without harm
 * *A small company can start by borrowing* — say what is borrowed, and decide the order of moving it in
 * *Debian as the OS* — Python and apt from the start, no reboots on someone else's schedule

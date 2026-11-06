@@ -58,7 +58,7 @@ ifdef::lang-ja[]
 . *サーバーは自宅かVPSに置く。* 使わなくなった古いPCやミニPCを家で動かすか、月数百円のVPSを借りる。どちらでも、OSの中身——root権限——はあなたのものだ。どちらで始めるかは第2章で決める。
 . *データは自分で管理する。* 他社のクラウドサービスに預けず、自分のサーバーの上のデータベース（第7章）に置き、自分の手でバックアップする（第10章）。
 . *コンテナは使わない。* アプリは「ディレクトリ + venv + systemd」で動かし、権限とsystemdの砂場で隔離する（第8章）。
-. *機械は役割で分ける。重要な仕事は人が確認する。* この本は練習として一台から始めるが、公開を続けるなら、外に向く機械と、データを持つ機械を分ける（第9章、第11章）。鍵の作り直しや、外への口を開けるといった重要な操作は、Claudeに手順を聞いても、確かめて実行するのは自分だ。
+. *機械は役割で分ける。重要な仕事は人が確認する。* この本は練習として一台から始めるが、公開を続けるなら、外に向く機械と、データを持つ機械を分ける（第9章、第11章）。鍵の作り直しや、外への口を開けるといった重要な操作は、Claudeに手順を聞いても、確かめて実行するのは自分だ。Claudeを機械の上で動かすなら、そのアカウントに sudo は渡さない。機械を変えるのは自分だ。
 
 つまりこの本は「サーバーの一般論」ではなく、*自分のインフラを建てて、データの主導権を自分の手に戻す*ための本だ。なぜこの前提を選ぶのか——その理由は第二節で詰める。
 
@@ -236,7 +236,7 @@ Right at that entrance, let me declare this book's *premises*.
 . *The server lives in your home or on a VPS.* An old PC or mini PC running in your house, or a VPS rented for a few hundred yen a month. Either way, the inside of the OS — root — is yours. Which one to start with is decided in Chapter 2.
 . *You manage your own data.* It is not entrusted to someone else's cloud service — it lives in the databases on your own server (Chapter 7), and you back it up with your own hands (Chapter 10).
 . *No containers.* Apps run as "directory + venv + systemd," isolated by permissions and systemd's sandbox (Chapter 8).
-. *Split the machines by role. A person checks important work.* This book starts with one machine for practice, but if you keep publishing, separate the machine that faces outside from the machine that holds the data (Chapters 9 and 11). For important operations such as regenerating keys or opening a way out or in, you may ask Claude for the steps, but you check them and run them yourself.
+. *Split the machines by role. A person checks important work.* This book starts with one machine for practice, but if you keep publishing, separate the machine that faces outside from the machine that holds the data (Chapters 9 and 11). For important operations such as regenerating keys or opening a way out or in, you may ask Claude for the steps, but you check them and run them yourself. If you run Claude on the machine, its account gets no sudo. Changing the machine is your job.
 
 In other words, this is not a book of server generalities. It is a book about *building your own infrastructure and taking the initiative over your data back into your own hands.* Why choose these premises? Section 2 makes the case.
 

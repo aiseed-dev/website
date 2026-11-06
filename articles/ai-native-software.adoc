@@ -1405,7 +1405,7 @@ ifdef::lang-ja[]
 
 * 計画する ── 顧客と現場と自分の文脈から、何を作るかの案を立てる。どう分けるか、何を使い何を使わないか、どこに置き、どこまでを自分で持つかまで含めて、AI に渡せる仕様に書く。案を作るのも、仕様に書くのも、ビルダーの仕事だ。
 * AI と作る ── 意図と制約と文脈を AI に渡す。AI はコードを書き、設計を提案する。一度の指示では終わらない。やり取りを重ねる。
-* 確かめる ── 返ってきたものが動くかを見る。設計と合っているかを見る。想定した文脈で壊れないかを見る。テストを読み、何を、どの入力で、何を期待して確かめているかを言える。守りも確かめる ── 鍵を作り直せるか、予備の機械に立て直せるか、記録から不審を見つけられるか。コードを書く技能は浅くてよいが、確かめる技能は深く学ぶ。
+* 確かめる ── 返ってきたものが動くかを見る。設計と合っているかを見る。想定した文脈で壊れないかを見る。テストを読み、何を、どの入力で、何を期待して確かめているかを言える。守りも確かめる ── 鍵を作り直せるか、予備の機械に立て直せるか、記録から不審を見つけられるか。コードを書く技能は浅くてよいが、確かめる技能は深く学ぶ。確かめるのは、作ったときだけではない。動かしている間も、道具で見直す。出る向きの防火壁が開いたまま、パスワードの入口が残ったまま、表に無い鍵が入ったまま ── こういう形は、作った本人の機械でも、見直すまで分からない。
 * 統合し、動かす ── 部分を全体に組み込み、整合を保って動かす。動かすとは、業務に載せて成果を出すことだ。企業が作った物なら、収益を上げるか、費用を下げるかしなければ、作った意味がない。動かして出た結果が、次の計画の材料になる。そして「計画する」に戻り、仕様を直す。
 
 この四つは一方通行ではない。ループである。一周にかかる時間は、規模によって数分から数時間だ。一日に何十周も回す。コードを書く時間は、この中で最小になる。書くのは AI だからだ。
@@ -1565,7 +1565,7 @@ A builder's work is made of four steps.
 
 * Plan — from the customer, the field, and the builder's own context, draft what to build. Write it as a spec the AI can read, down to how to split it, what to use and what not to, where it goes, and how much to hold yourself. Making the draft and writing the spec are both the builder's work.
 * Build with AI — hand AI the intent, the constraints, and the context. AI writes the code and proposes the design. One instruction is not the end of it. The exchange goes back and forth.
-* Check — see whether what comes back runs. See whether it fits the design. See whether it breaks in the context it was meant for. Read the tests and be able to say what they check, with which inputs, expecting what. Check the defenses too — can you regenerate the keys, rebuild on the spare machine, spot the suspicious in the logs? The skill of writing code may stay shallow; the skill of checking is learned deeply.
+* Check — see whether what comes back runs. See whether it fits the design. See whether it breaks in the context it was meant for. Read the tests and be able to say what they check, with which inputs, expecting what. Check the defenses too — can you regenerate the keys, rebuild on the spare machine, spot the suspicious in the logs? The skill of writing code may stay shallow; the skill of checking is learned deeply. Checking is not only for when you build. While things run, look again with a tool. An outgoing firewall left open, a password door left in place, a key that is on no list — on the builder's own machines, too, these stay unseen until you look again.
 * Integrate and run — fold the part into the whole, keep it consistent, and run it. Running means putting it into the business and getting results. What a company builds has to raise revenue or cut cost, or there was no point building it. What comes out of running it is the material for the next plan. Then return to "plan" and revise the spec.
 
 These four are not a one-way line. They are a loop. One turn takes minutes to hours, depending on scope. A builder runs the loop tens of times a day. Time spent writing code is the smallest part of it, because AI does the writing.
@@ -2096,7 +2096,7 @@ ____
 任せる範囲)の三つで、どれもスイートに対応する層が無い。だが自立編の一部であり、
 解く順番には入る。
 
-一番上の行が、新しく入った層である。機械は役割で分けた Debian の四台と予備で、設定は AI がやり、重要な仕事は人が確認する。以降の道具は、それぞれの役割の機械に立てる(自前の LLM は別のサーバー)。文書の層は、道具を一つ立てるのではなく、持ち方を決める。読む物は adoc でフォルダーに、触る表は格子のまま、刷る紙はテンプレートに値を流す。2-07 が受け持つ。
+一番上の行が、新しく入った層である。機械は役割で分けた Debian の四台と予備で、設定は AI が書き、機械を変えるのは人だ。以降の道具は、それぞれの役割の機械に立てる(自前の LLM は別のサーバー)。文書の層は、道具を一つ立てるのではなく、持ち方を決める。読む物は adoc でフォルダーに、触る表は格子のまま、刷る紙はテンプレートに値を流す。2-07 が受け持つ。
 
 右側の道具は、別々の組織が作った、別々の開いた道具だ。中が読めて、形式が開いていて、データはどこへでも持ち出せる。だから、一本の方針変更が他に波及せず、一本を別のものに差し替えても、残りは何も変わらない。開いていて、鍵が自分の手元にある。これが核心で、束が解けているのはその帰結だ。
 
@@ -2432,7 +2432,7 @@ Some chapters do not appear in the table at all: 2-14 (electronics to IoT), 2-15
 a matching suite layer, but all three are part of the Independence part, and they
 are in the order below.
 
-The top row is the layer that is new. The machines are four Debian machines and a spare, split by role; the AI does the configuration, and important work is checked by a person. The tools that follow are stood up on the machine for their role (the self-hosted LLM goes on a separate server). With a suite you never had a machine of your own, because everything ran in the vendor's cloud. The document layer is not one tool stood up but a way of holding content: things you read as AsciiDoc in folders, tables you work in staying in a grid, pages you print poured from templates. That is 2-07's job.
+The top row is the layer that is new. The machines are four Debian machines and a spare, split by role; the AI writes the configuration, and a person changes the machine. The tools that follow are stood up on the machine for their role (the self-hosted LLM goes on a separate server). With a suite you never had a machine of your own, because everything ran in the vendor's cloud. The document layer is not one tool stood up but a way of holding content: things you read as AsciiDoc in folders, tables you work in staying in a grid, pages you print poured from templates. That is 2-07's job.
 
 The tools on the right are separate open tools built by separate organizations. You can read inside them, the formats are open, and the data can be carried anywhere. So one vendor's decision cannot ripple into the others, and swapping any one for something else changes nothing around it. Open, with the key in your own hands. That is the point, and the untied bundle is its consequence.
 
@@ -2661,8 +2661,8 @@ title.ja: 機械を役割で分ける ── 重要な仕事は人が確認す�
 title.en: Split the Machines by Role — Important Work Is Checked by a Person
 subtitle.ja: 外に向く口、メールと会議、認証とデータ、AI の作業機の四台と予備。重要な仕事は人が確認する
 subtitle.en: Four machines and a spare: the public face, mail and meetings, authentication and data, the AI workstation. Important work is checked by a person
-description.ja: 自立編で立てるものは、全部どこかで動く。その置き場をここで決める。機械は役割で分ける ── 外に向く口、メールと会議、認証とデータ、AI の作業機の四台と予備。仮想化ではなく物理の機械で分け、自前の LLM は別のサーバーに置く。小さな会社は、最初はサービスを借りてよい。OS は Debian、サービスは Docker を使わず apt で入れて systemd で動かす。設定は AI がやり、秘密のある機械への反映や鍵の作り直しなど八つの重要な仕事は、人が確認する。それ以外は一つずつは確認しないが、結果は検証する
-description.en: Everything the Independence part stands up runs somewhere. This chapter decides where. Split the machines by role — four machines and a spare: the public face, mail and meetings, authentication and data, the AI workstation. Split with physical machines, not virtualization, and put the self-hosted LLM on a separate server. A small company may borrow services at first. Debian as the OS; services installed with apt and run under systemd, without Docker. The AI does the configuration, and eight kinds of important work — applying changes to machines that hold secrets, regenerating keys, and the rest — are checked by a person. Other work is not checked item by item, but its results are verified
+description.ja: 自立編で立てるものは、全部どこかで動く。その置き場をここで決める。機械は役割で分ける ── 外に向く口、メールと会議、認証とデータ、AI の作業機の四台と予備。仮想化ではなく物理の機械で分け、自前の LLM は別のサーバーに置く。小さな会社は、最初はサービスを借りてよい。OS は Debian、サービスは Docker を使わず apt で入れて systemd で動かす。設定は AI が書き、機械を変えるのは人だ。AI が動くアカウントには sudo を渡さない。秘密のある機械への反映や鍵の作り直しなど八つの重要な仕事は、人が一行ずつ確かめて打つ
+description.en: Everything the Independence part stands up runs somewhere. This chapter decides where. Split the machines by role — four machines and a spare: the public face, mail and meetings, authentication and data, the AI workstation. Split with physical machines, not virtualization, and put the self-hosted LLM on a separate server. A small company may borrow services at first. Debian as the OS; services installed with apt and run under systemd, without Docker. The AI writes the configuration and a person changes the machine; the AI's account gets no sudo. Eight kinds of important work — applying changes to machines that hold secrets, regenerating keys, and the rest — are checked line by line and typed by a person
 date: 2026.09.20
 label: Independence 2
 title_html.ja: 機械を<span class="accent">役割で</span>分ける。
@@ -2746,8 +2746,9 @@ AI の作業機には、デスクトップ環境(GNOME)も入れて、起動し�
 
 == 重要な仕事は人が確認する
 
-サーバーの設定は、AI がやる。入れる、設定する、動かす、ログを読む、直し方を
-書く。どれも命令とファイルの仕事で、やった結果が機械で確かめられる。1-01 で
+サーバーの設定の仕事は、AI と人で分けて持つ。AI は、調べる、ログを読む、設定を
+書く、直し方を書く。機械を変えるのは人だ。*AI が動くアカウントには sudo を渡さない*。
+どれも命令とファイルの仕事で、やった結果が機械で確かめられる。1-01 で
 見た *ルールが明確で、答え合わせができる領域* に、そのまま当てはまる。
 
 仕事の単位はフォルダーだ。*課題ごとにフォルダーを一つ作り、作業機の Claude Code
@@ -2767,7 +2768,9 @@ AI の作業機には、デスクトップ環境(GNOME)も入れて、起動し�
 . 新しいソフトや外のサービスを入れる(依存のパッケージを足す、外の AI に渡すデータの範囲を広げる)
 . 控えと記録の設定を変える(控えの取り方・行き先、ログを止める・消す)
 
-AI は、この八つを「やる前に言う」。人が確かめてから通す。
+AI は、この八つを「やる前に言う」。AI が一行ずつ意味を添え、人が読んで確かめてから
+打つ。1 は、設定を変えて反映することを指す。セキュリティ更新は自動で当て、止まった
+サービスを起こすのは設定を変えないので、1 に入らない。
 
 外の人に保守を頼むときも、同じ扱いにする。作業のたびに権限を渡すのが理想だが、
 それでは日々の保守が回らない。だから、日々の作業と重要な仕事を分ける。
@@ -2779,8 +2782,9 @@ AI は、この八つを「やる前に言う」。人が確かめてから通�
 * 記録は会社の側に残し、外の人には消せないようにする
 * 契約が終わったら、その日に止める。誰が何を持っているかを、定期的に見直す
 
-それ以外の作業は、一つずつは確認しない。ただし、結果は検証する。検証の
-やり方は、各章の「確かめ方」に書いてある。
+それ以外で sudo の要る手(更新を当てる、止まったサービスを起こす)も、打つのは人だ。
+一行ずつの説明は求めず、結果を検証する。検証のやり方は、各章の「確かめ方」に
+書いてある。
 
 外から来たデータ(メールの本文、外の頁)を AI に読ませるときは、その AI に道具も
 秘密も持たせない。読ませた文の中に、AI への指示が紛れ込むことがあるからだ
@@ -2933,7 +2937,7 @@ sudo ss -tlnp                   # 4 ── 待ち受けている口を見る
 * *OS は Debian* ── Python と apt が最初からあり、更新で勝手に再起動しない
 * *Docker は使わない* ── 配るための道具で、作るための道具ではない。apt で入れ、systemd で動かす。例外は公式がコンテナでしか配らない物だけで、イメージは自分で作らない
 * *作業機には画面を入れる* ── 文書を開く、頁を見る
-* *重要な仕事は人が確認する* ── 八つの仕事は、AI がやる前に言い、人が通す。それ以外は一つずつは確認しないが、結果は検証する
+* *重要な仕事は人が確認する* ── AI が動くアカウントには sudo を渡さない。八つの仕事は、AI が一行ずつ意味を添え、人が読んで確かめてから打つ。それ以外で sudo の要る手も人が打ち、結果を検証する
 * *初期化で戻らない物だけ、人が持つ* ── 鍵と認証、データの写し、立て直しと鍵の作り直し、鍵と秘密の一覧、誰が何をしたかの記録
 * *AI は複数* ── 別の会社の AI に、作った物と基準だけを渡して見張らせる
 * *外の AI に渡さない物* ── 鍵、パスワード、トークン、顧客の個人情報。止まっても、業務はコードで動き続け、作る仕事は自前の LLM で続ける
@@ -3036,9 +3040,10 @@ three machines get no desktop.
 
 == Important work is checked by a person
 
-The AI does the server configuration: installing, configuring, running, reading logs,
-writing the fix. Every one of those is work in commands and files, and the result can
-be checked mechanically. It falls squarely inside what 1-01 described as
+The work of configuring servers is split between the AI and a person. The AI
+investigates, reads logs, writes the configuration, writes the fix. Changing the machine
+is a person's job. *The account the AI runs under gets no sudo.* Every one of those is
+work in commands and files, and the result can be checked mechanically. It falls squarely inside what 1-01 described as
 *a domain where the rules are explicit and the answer can be checked.*
 
 The unit of work is a folder. *Make one folder per task and set the working directory
@@ -3060,7 +3065,10 @@ these eight.
 . Bringing in new software or an outside service (adding a dependency, widening what data goes to an outside AI)
 . Changing how copies and logs are kept (how and where copies go, stopping or deleting logs)
 
-The AI states these eight before doing them. A person checks, then lets them through.
+The AI states these eight before doing them. The AI explains each line, and a person
+reads, checks, and types it. Item 1 means changing configuration and applying it.
+Security updates are applied automatically, and starting a stopped service changes no
+configuration, so neither falls under item 1.
 
 Treat an outside person you hire for maintenance the same way. Granting rights job by
 job would be ideal, but day-to-day maintenance would not keep moving. So separate the
@@ -3073,7 +3081,8 @@ daily work from the important work.
 * The logs stay on the company's side, where the outside person cannot delete them
 * When the contract ends, stop the access that day. Review who holds what, regularly
 
-Other work is not checked item by item. Its results, though, are verified. How to
+Other steps that need sudo (applying updates, starting a stopped service) are also typed
+by a person. No line-by-line explanation is required; the result is verified. How to
 verify is in each chapter's "How to check you are done."
 
 When an AI reads data from outside (the body of a mail, an outside page), that AI gets
@@ -3233,7 +3242,7 @@ Decide the machines the Independence part runs on, first.
 * *Debian as the OS* — Python and apt from the start, no reboots on someone else's schedule
 * *No Docker* — a tool for distributing, not for building. Install with apt, run under systemd. The only exception is software shipped only as a container, and you never build an image yourself
 * *A desktop on the workstation* — open documents, look at pages
-* *Important work is checked by a person* — for the eight, the AI states them first and a person lets them through. Other work is not checked item by item, but its results are verified
+* *Important work is checked by a person* — the AI's account gets no sudo. For the eight, the AI explains each line and a person reads, checks, and types it. Other steps that need sudo are typed by a person too, and their results are verified
 * *The human keeps only what a reinstall cannot restore* — keys and accounts, copies of the data, rebuilding and regenerating keys, the list of keys and secrets, the record of who did what
 * *More than one AI* — pair vendors and pass only the artifact and the criteria
 * *What an outside AI never gets* — keys, passwords, tokens, customers' personal information. If it stops, the business keeps running on code, and building continues on the self-hosted LLM
@@ -12173,10 +12182,11 @@ Web 頁、メール、ファイル名、PDF の中身 ── AI が外のデー�
 
 * AI に「次に何をするか」を提案させる
 * 人が提案を読んで、通す・直す・却下する
-* 通した分だけ、AI に実行させる
+* 通した分だけ、実行する。機械を変える手は、人が打つ(AI が動くアカウントには sudo を渡さない。2-02)
 * 結果を見て、次の提案を求める
 
-このループを回す。一つ一つの判断に、必ず人が関わる。
+このループを回す。2-02 の八つの重要な仕事は一行ずつ読んで確かめ、それ以外は結果を
+検証する。どちらも、機械を変えるのは人だ。
 
 これは遅くない。実際の作業では、提案を読む時間より、AI が考える時間のほうが長い。
 人の判断は数秒で終わる。全体の速さは、自律モードと変わらないか、上回る。自律モードは
@@ -12621,10 +12631,12 @@ The right way to use it is dialogue.
 
 * Have the AI propose what to do next
 * The human reads the proposal and approves, amends, or declines it
-* The AI executes only what was approved
+* Only what was approved is executed. Steps that change a machine are typed by a person (the AI's account gets no sudo; 2-02)
 * Look at the result, and ask for the next proposal
 
-Run that loop. Every single judgment has a human in it.
+Run that loop. The eight kinds of important work in 2-02 are read and checked line by
+line; for everything else, the result is verified. Either way, a person changes the
+machine.
 
 This is not slow. In real work, the AI spends more time thinking than the human spends
 reading the proposal. A human judgment takes seconds. Overall speed matches autonomous mode

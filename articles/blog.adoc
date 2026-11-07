@@ -14705,3 +14705,166 @@ The point that you cannot make every employee use a CLI is also correct. So do n
 * link:/en/insights/defense-cannot-be-bought/[Structural Analysis 3-10 — Defense Cannot Be Bought] — AI from above as the fourth form
 
 endif::[]
+
+// ===== article: 049-midterms-miller =====
+---
+slug: midterms-miller
+title.ja: 議会を失っても、戦争と関税は大統領が決める ── 米中間選挙とミラー首席補佐官
+title.en: Losing Congress, the President Still Decides War and Tariffs — The US Midterms and Chief of Staff Miller
+subtitle.ja: 民主党が上下両院を取った 3 日後、トランプ大統領は移民取り締まりを設計した側近を首席補佐官にした。議会が止められるのは予算と調査で、戦争と関税と外交は大統領の手に残る
+subtitle.en: Three days after Democrats took both chambers, Trump made the aide who designed his immigration crackdown his chief of staff. Congress can stop budgets and run investigations; war, tariffs and foreign policy stay with the president
+date: 2026.11.07
+description.ja: 2026 年 11 月 3 日の米中間選挙で民主党が上院と下院の多数を取り、6 日にトランプ大統領はスティーブン・ミラー氏を首席補佐官に任命した。民主党には拒否権を覆す 3 分の 2 がなく、関税は議会がすでに渡した権限で課され、イラン戦争は議会の承認なしに始まった。国内で法律を通せなくなった大統領が、方針を変えない側近を長に据え、議会に縛られにくい外交で動く。世界の混乱が増えると考える理由はこの組み合わせにある
+description.en: In the US midterms of November 3, 2026, Democrats won majorities in the Senate and the House, and on the 6th President Trump named Stephen Miller his chief of staff. Democrats lack the two-thirds needed to override a veto, tariffs are levied under powers Congress already handed over, and the Iran war began without congressional approval. A president who can no longer pass laws at home puts an aide who will not change course at the head of his staff and acts in foreign policy, where Congress binds him least. That combination is the reason to expect more turmoil in the world
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+---
+ifdef::lang-ja[]
+= 議会を失っても、戦争と関税は大統領が決める
+
+== 結論
+
+2026 年 11 月 3 日の米中間選挙で、民主党が上院と下院の両方で多数を取った。3 日後の 6 日、トランプ大統領は首席補佐官をスージー・ワイルズ氏からスティーブン・ミラー氏に替えた。ミラー氏は第 2 期の移民取り締まりを設計した側近である。ホワイトハウスの当局者は、この人事を方針を見直さないという意味だと説明している。
+
+民主党の議会が止められるのは、予算と調査と人事の承認である。大統領の拒否権を覆すには両院で 3 分の 2 が要り、民主党はそこに届いていない。*戦争と関税と外交は、これからの 2 年も大統領が決める。* 国内で法律を通せなくなった大統領が、方針を変えない側近を長に据え、議会に縛られにくい外交で動く。世界の混乱が増えると考える理由は、この組み合わせにある。
+
+== 何が起きたか
+
+* 上院:民主党が共和党の 7 議席を取った(カンザス、テキサス、アイオワ、サウスカロライナ、オハイオ、メイン、ノースカロライナ)。4 日朝の時点で民主 54、共和 44。アラスカとミシシッピは未確定である。
+* 下院:6 日の時点で、435 議席のうち民主党が 253 を取り、27 が未確定である。
+* 知事:民主党が 5 州で新たに勝ち、2010 年以来初めて知事の過半数を持つ。
+* 共和党は、民主党が持っていた議席、知事、州議会を一つも取れなかった(AP の集計、CNBC)。
+* NBC の出口調査では、投票者の約 3 分の 2 が、関税で経済的に損をしたと答えた。
+* 2 月 28 日に始まったイラン戦争でガソリンが上がり、8 月の Reuters/Ipsos 調査で大統領の支持率は 33% だった。
+* 新しい議会は 2027 年 1 月 3 日に始まる。
+
+== ミラー氏は何をしてきた人か
+
+ミラー氏は 41 歳で、2016 年の選挙からトランプ氏の側近である。第 1 期には、イスラム教徒の多い国からの入国を止める大統領令の設計に関わった。2025 年 1 月からは政策担当の次席補佐官と国土安全保障担当の補佐官を務め、第 2 期の移民取り締まりと強制送還を設計したとされる。2026 年 1 月にミネアポリスで移民当局の職員が米国市民 2 人を射殺した後、ホワイトハウスは方針の一部を戻した。イラン戦争も擁護してきた。
+
+首席補佐官は、大統領の日程と、大統領に上がる案と人を取りまとめる職である。ミラー氏は任命を受けて、大統領を支えるために全力で戦うと X に書いた。民主党は、下院の監督委員会でミラー氏を調査すると言っている。
+
+== 議会が止められる物と、止めにくい物
+
+|===
+| 議会が止められる物 | 議会では止めにくい物
+
+| 予算。外交と国防の歳出は下院から始まり、両院を通らなければならない | 拒否権。覆すには両院で 3 分の 2 が要る。大統領は、共和党が負ければ全部拒否すると言っていた
+
+| 調査。委員会は文書を求め、高官を呼び出せる | 関税。議会がすでに大統領に渡した権限で課されている
+
+| 人事と条約。上院が承認し、批准する | 戦争。イラン戦争は議会の承認なしに始まった。止める法案を通しても、拒否権がある
+|===
+
+関税は、裁判所で負けても残った。最高裁は 2026 年 2 月 20 日、国際緊急経済権限法(IEEPA)による関税を 6 対 3 で認めなかった。政権は別の法律に切り替え、7 月 24 日からは通商法 301 条で 60 の国と地域に追加関税をかけている。日本からの輸入品は、元の関税と合わせて 12.5% までになる(自動車など、通商拡大法 232 条の対象は別の扱い)。*法律を一つ止められても、別の法律で同じことができる。* 議会がこれを変えるには、渡した権限そのものを書き直す必要があり、その法案にも拒否権がかかる。
+
+== 国内で縛られた大統領は、外交で動く
+
+CSIS のジョン・アルターマン氏は、国内で政治的に縛られた大統領にとって、外交は比較的自由に動ける分野だと述べている(Reuters)。日本の官邸幹部も、国内で制約を受けると外交で発言してくる可能性を心配している(KAB、11 月 4 日)。
+
+これからの 2 年に大統領が単独で動かせる物は、次の通りである(CFR の整理による)。
+
+* *イラン戦争。* 4 月の停戦と 6 月の覚書の後に戦闘が戻り、覚書は 8 月に失効した。
+* *ウクライナ。* 大統領はウクライナに不利な条件で戦争を終わらせようとする可能性があり、欧州は NATO がロシアとの取引に含まれることを恐れている。
+* *アジア。* 関税と、安全保障の約束から引く姿勢で、多くのアジアの国が米国を信用しなくなった。11 月には中国・深圳で APEC の首脳会議があり、米中首脳会談も予定されている。
+
+議会は予算と調査で抵抗し、大統領は拒否権で返す。国内の政策はそこで止まり、動くのは大統領が単独で決められる外交と関税になる。その案を取りまとめる職に就いたのが、ミラー氏である。
+
+____
+議会が変わっても、戦争と関税は変わらない。変わったのは、国内で法律が通らなくなったことと、大統領の横にいる人である。
+____
+
+== 日本の会社にとって
+
+相手の判断が読めないときに打てる手は、相手の判断に左右される物を減らすことである。
+
+* *米国向けの輸出。* 関税の率は、根拠になる法律が替わるたびに変わる。2026 年だけでも、IEEPA、通商法 122 条、301 条と替わった。
+* *原油。* イラン戦争の行方で動く。
+* *仕事の道具と記録。* 米国の会社のクラウドに置けば、その会社は米国政府の命令に従う。link:/ai-native-software/sovereignty/[連載 3-03]で書いた「Trump 問題」である。議会がこれを止めにくいことは、今回の選挙でも変わらなかった。
+
+自分の側に置ける物を、自分の側に置く。link:/ai-native-software/independence/[連載の自立編]は、その手順である。
+
+'''
+
+== 関連
+
+* link:/ai-native-software/sovereignty/[AI ネイティブなソフトウェア開発 3-03 デジタル主権 ── Microsoft 問題と Trump 問題] ── 米国の会社に置いた物は、米国政府の判断に左右される
+* link:/blog/end-of-us-ai-hegemony/[アメリカのAI覇権の終わりの始まり] ── 政権の判断一つで、米国依存の五つの層が同時に動いた
+* link:/blog/grid-attack-naphtha/[もしトランプ大統領がイランの発電所を破壊したら] ── イラン戦争の初期に書いた分析
+
+endif::[]
+ifdef::lang-en[]
+= Losing Congress, the President Still Decides War and Tariffs
+
+== Conclusion
+
+In the US midterms of November 3, 2026, Democrats won majorities in both the Senate and the House. Three days later, on the 6th, President Trump replaced his chief of staff, Susie Wiles, with Stephen Miller. Miller is the aide who designed the second term's immigration crackdown. A White House official explained the appointment as a sign that the president is not rethinking his policies.
+
+What a Democratic Congress can stop is budgets, investigations and confirmations. Overriding a presidential veto takes two-thirds of both chambers, and Democrats do not have it. *For the next two years, the president still decides war, tariffs and foreign policy.* A president who can no longer pass laws at home puts an aide who will not change course at the head of his staff, and acts in foreign policy, where Congress binds him least. That combination is the reason to expect more turmoil in the world.
+
+== What happened
+
+* Senate: Democrats took seven Republican seats (Kansas, Texas, Iowa, South Carolina, Ohio, Maine, North Carolina). As of the morning of the 4th, Democrats held 54 and Republicans 44. Alaska and Mississippi were still uncalled.
+* House: as of the 6th, Democrats had won 253 of 435 seats, with 27 uncalled.
+* Governors: Democrats won five new states and hold a majority of governorships for the first time since 2010.
+* Republicans did not take a single Democratic-held seat, governorship or state legislative chamber (AP data, via CNBC).
+* In the NBC exit poll, about two-thirds of voters said tariffs had hurt them economically.
+* The Iran war, begun on February 28, pushed up gasoline prices, and the president's approval stood at 33% in the August Reuters/Ipsos poll.
+* The new Congress convenes on January 3, 2027.
+
+== What Miller has done
+
+Miller is 41 and has been at Trump's side since the 2016 campaign. In the first term he helped design the executive order barring entry from several Muslim-majority countries. From January 2025 he served as deputy chief of staff for policy and homeland security adviser, and is described as the designer of the second term's immigration crackdown and mass deportations. After immigration agents shot and killed two US citizens in Minneapolis in January 2026, the White House rolled back part of the policy. He has also defended the Iran war.
+
+The chief of staff controls the president's schedule and decides which proposals and which people reach the president. On his appointment, Miller wrote on X that he would fight with all his soul to support the president. Democrats say they will investigate him through the House Oversight Committee.
+
+== What Congress can stop, and what it can hardly stop
+
+|===
+| What Congress can stop | What Congress can hardly stop
+
+| Budgets. Foreign-affairs and defense appropriations start in the House and must pass both chambers | The veto. Overriding it takes two-thirds of both chambers. The president had said that if Republicans lost, he would veto everything
+
+| Investigations. Committees can demand documents and summon officials | Tariffs. They are levied under powers Congress has already handed to the president
+
+| Nominations and treaties. The Senate confirms and ratifies | War. The Iran war began without congressional approval. A bill to end it would still face the veto
+|===
+
+The tariffs survived even a loss in court. On February 20, 2026, the Supreme Court ruled 6–3 that the International Emergency Economic Powers Act (IEEPA) does not authorize tariffs. The administration switched to other statutes, and since July 24 it has imposed additional tariffs on 60 economies under Section 301 of the Trade Act. Imports from Japan are capped at 12.5% including the original duty (items under Section 232 of the Trade Expansion Act, such as cars, are handled separately). *When one statute is struck down, another can do the same thing.* For Congress to change this, it must rewrite the powers it handed over, and that bill also faces the veto.
+
+== A president constrained at home acts abroad
+
+Jon Alterman of CSIS says that for presidents who are politically constrained at home, foreign policy is the area where they can act with relative freedom (Reuters). A senior official in Japan's Prime Minister's Office shares the concern that a president constrained at home may speak out more on foreign affairs (KAB, November 4).
+
+What the president can move on his own in the next two years is the following (as laid out by CFR).
+
+* *The Iran war.* After the April ceasefire and the June memorandum, fighting resumed, and the memorandum expired in August.
+* *Ukraine.* The president may try to end the war on terms unfavorable to Ukraine, and Europeans fear NATO could become part of a deal with Moscow.
+* *Asia.* Tariffs and a retreat from security commitments have cost the US the trust of many Asian countries. In November, China hosts the APEC leaders' meeting in Shenzhen, and a US–China summit is planned.
+
+Congress resists with budgets and investigations; the president answers with the veto. Domestic policy stops there, and what moves is foreign policy and tariffs, which the president can decide alone. The person now in the post that assembles those proposals is Miller.
+
+____
+A new Congress does not change war or tariffs. What changed is that laws no longer pass at home, and who stands beside the president.
+____
+
+== For companies in Japan
+
+When you cannot read the other side's judgment, what you can do is reduce what depends on it.
+
+* *Exports to the US.* The tariff rate changes each time the statute behind it changes. In 2026 alone it moved from IEEPA to Section 122 to Section 301 of the Trade Act.
+* *Oil.* It moves with the course of the Iran war.
+* *The tools and records of your work.* Put them on a US company's cloud, and that company follows US government orders. This is the "Trump problem" described in link:/en/ai-native-software/sovereignty/[series chapter 3-03]. This election did not change the fact that Congress can hardly stop it.
+
+Keep on your own side what you can keep on your own side. link:/en/ai-native-software/independence/[The Independence part of the series] is the procedure for that.
+
+'''
+
+== Related
+
+* link:/en/ai-native-software/sovereignty/[AI-Native Software Development 3-03 — Digital Sovereignty: The Microsoft Problem and the Trump Problem] — what you place with a US company depends on the US government's judgment
+* link:/en/blog/end-of-us-ai-hegemony/[The Beginning of the End of American AI Hegemony] — one administration's decisions moved five layers of US dependence at once
+* link:/en/blog/grid-attack-naphtha/[What If Trump Destroys Iran's Power Plants] — an analysis written early in the Iran war
+
+endif::[]

@@ -151,13 +151,11 @@ def App():
             {"project": project, "folder": folder, "branch": branch}
         )
 
-    # FilePicker for the public directory. In Flet 0.85 the picker methods are
-    # awaitable and RETURN the chosen path (there is no on_result callback /
-    # FilePickerResultEvent). The picker must still live in the control tree.
-    file_picker = ft.FilePicker()
-
+    # FilePicker for the public directory. Since Flet 1.0 it is a service:
+    # create it when needed and await the returned path. It is not placed in
+    # the control tree.
     async def pick_folder(_e):
-        path = await file_picker.get_directory_path(
+        path = await ft.FilePicker().get_directory_path(
             dialog_title="Choose public folder"
         )
         if path:
@@ -204,12 +202,11 @@ def App():
 
     async def copy_url(_e):
         if result_url:
-            # Flet 0.85: clipboard is an awaitable Page.clipboard.set(...).
-            await page.clipboard.set(result_url)
+            await ft.Clipboard().set(result_url)
 
-    def open_url(_e):
+    async def open_url(_e):
         if result_url:
-            page.launch_url(result_url)
+            await ft.UrlLauncher().launch_url(result_url)
 
     # ── build the tree ──────────────────────────────────────────────────
     log_view = ft.ListView(
@@ -287,7 +284,6 @@ def App():
 
     return ft.Column(
         [
-            file_picker,
             SettingsDialog(
                 show=show_settings,
                 on_close=lambda: set_show_settings(False),
@@ -342,7 +338,7 @@ def App():
                         key=BRANCH_PREVIEW, text="preview"
                     ),
                 ],
-                on_change=lambda e: set_branch(e.control.value),
+                on_select=lambda e: set_branch(e.control.value),
                 disabled=running,
             ),
             ft.Row([publish_button]),

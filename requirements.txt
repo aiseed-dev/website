@@ -11,4 +11,6 @@ pyasciidoc>=0.5
 pywashi>=0.10  # [.form] の描画資産と form プラグイン
 # 記事エディタ(apps/site-editor)と .mcp.json の flet MCP サーバーが使う。
 # requirements に無いと venv 再構築で消える(2026-07-28 のリネーム時に発生)
-flet[all]>=0.86,<0.90
+flet[all]>=1.1.2,<1.2
+# flet 1.1 から `flet mcp` は別パッケージ(.mcp.json の flet MCP サーバー)
+flet-mcp>=1.1.2,<1.2

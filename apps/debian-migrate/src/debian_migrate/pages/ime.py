@@ -156,9 +156,9 @@ def _install_card() -> ft.Control:
 
 
 def _cmd_row(label: str, cmd: str) -> ft.Control:
-    def copy_cmd(_):
+    async def copy_cmd(_):
         page = ft.context.page
-        page.clipboard.set(cmd)
+        await ft.Clipboard().set(cmd)
         page.show_dialog(
             ft.SnackBar(content=ft.Text("コマンドをコピー"), duration=2000)
         )

@@ -157,9 +157,7 @@ def _next_steps() -> ft.Control:
                             ft.OutlinedButton(
                                 "「Claudeと一緒に学ぶDebian」を開く",
                                 icon=ft.Icons.OPEN_IN_NEW,
-                                on_click=lambda _: ft.context.page.launch_url(
-                                    "https://aiseed.dev/claude-debian/"
-                                ),
+                                url="https://aiseed.dev/claude-debian/",
                             ),
                         ]
                     ),

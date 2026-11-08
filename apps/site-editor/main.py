@@ -432,7 +432,7 @@ def _editor_body(series, article, draft, meta, assets, on_back, on_delete,
                             value=draft[lang],
                             multiline=True,
                             expand=True,
-                            border=ft.InputBorder.NONE,
+                            border=ft.NoInputBorder(),
                             text_style=ft.TextStyle(
                                 font_family="monospace", size=14, color=WP_TEXT
                             ),

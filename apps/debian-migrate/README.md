@@ -41,7 +41,7 @@ uv run flet build macos
 uv run flet build linux
 ```
 
-それぞれのバイナリは `build/<platform>/` に出力される。Flet 1.0 Beta (0.85+) を使用。
+それぞれのバイナリは `build/<platform>/` に出力される。Flet 1.1 を使用。
 
 ## ディレクトリ構成
 
@@ -65,7 +65,7 @@ apps/debian-migrate/
 
 ## 設計指針
 
-- **Flet 1.0 Beta (0.80.0 / 0.85.0+) の declarative API** を使う (`@ft.component`, `ft.Router`, hooks)。詳細は `.agents/skills/building-flet-apps/SKILL.md`。
+- **Flet 1.1 の declarative API** を使う (`@ft.component`, `ft.Router`, hooks)。詳細は `.agents/skills/building-flet-apps/SKILL.md`。
 - **GUI は wizard 形式** ── ユーザーは「次へ」だけで進める。各画面に「Claude 用プロンプトをコピー」ボタンを置く。
 - **読み取り中心** ── インストール済みアプリの検出、ハードウェア情報の取得などは行うが、**システムを書き換えない**。USB 書き込みも v1 では「ガイド表示」までで、実際の書き込みはユーザーが Balena Etcher 等で手動。安全側に倒す。
 - **API キー不要** ── AI 連携はプロンプトコピーボタンのみ。誰でもすぐ使える。

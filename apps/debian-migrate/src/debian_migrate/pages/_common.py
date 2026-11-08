@@ -30,10 +30,10 @@ def copy_prompt_button(prompt_factory) -> ft.Control:
     The factory is called at click time so it sees the latest state.
     """
 
-    def _click(e: ft.ControlEvent) -> None:
+    async def _click(e: ft.ControlEvent) -> None:
         text = prompt_factory()
         page = ft.context.page
-        page.clipboard.set(text)
+        await ft.Clipboard().set(text)
         page.show_dialog(
             ft.SnackBar(
                 content=ft.Text(

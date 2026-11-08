@@ -9,7 +9,7 @@ authors = [
     { name = "aiseed.dev" },
 ]
 dependencies = [
-    "flet[all]>=0.85.0,<0.90",
+    "flet[all]>=1.1.2,<1.2",
     "psutil>=5.9",
 ]
 

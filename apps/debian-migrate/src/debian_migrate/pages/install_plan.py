@@ -193,9 +193,9 @@ def _detail_list(lines: list[tuple[str, str, str, str]]) -> ft.Control:
 
 
 def _install_row(label: str, alt: str, cmd: str, note: str) -> ft.Control:
-    def copy_cmd(_):
+    async def copy_cmd(_):
         page = ft.context.page
-        page.clipboard.set(cmd)
+        await ft.Clipboard().set(cmd)
         page.show_dialog(
             ft.SnackBar(content=ft.Text(f"コピー: {alt}"), duration=2000)
         )
@@ -277,9 +277,9 @@ def _badge(text: str, color) -> ft.Control:
 def _batch_card(lines: list[tuple[str, str, str, str]]) -> ft.Control:
     script = _build_batch_script(lines)
 
-    def copy_script(_):
+    async def copy_script(_):
         page = ft.context.page
-        page.clipboard.set(script)
+        await ft.Clipboard().set(script)
         page.show_dialog(
             ft.SnackBar(content=ft.Text("一括スクリプトをコピー"), duration=2500)
         )

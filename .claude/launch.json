@@ -4,8 +4,51 @@
     {
       "name": "site",
       "runtimeExecutable": "./.venv/bin/python",
-      "runtimeArgs": ["tools/serve.py", "--port", "8099"],
+      "runtimeArgs": [
+        "tools/serve.py",
+        "--port",
+        "8099"
+      ],
       "port": 8099
+    },
+    {
+      "name": "site-editor (web)",
+      "runtimeExecutable": "./.venv/bin/flet",
+      "runtimeArgs": [
+        "run",
+        "--web",
+        "-p",
+        "8551",
+        "apps/site-editor/main.py"
+      ],
+      "port": 8551
+    },
+    {
+      "name": "cf-publish (web)",
+      "runtimeExecutable": "./.venv/bin/flet",
+      "runtimeArgs": [
+        "run",
+        "--web",
+        "-p",
+        "8552",
+        "apps/cf-publish/flet/main.py"
+      ],
+      "port": 8552
+    },
+    {
+      "name": "debian-migrate (web)",
+      "runtimeExecutable": "./.venv/bin/flet",
+      "runtimeArgs": [
+        "run",
+        "--web",
+        "-p",
+        "8553",
+        "apps/debian-migrate/src/debian_migrate/main.py"
+      ],
+      "port": 8553,
+      "env": {
+        "PYTHONPATH": "/home/dev/dev/website/apps/debian-migrate/src"
+      }
     }
   ]
 }

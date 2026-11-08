@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "No-terminal GUI to publish a folder to Cloudflare Pages (Flet)"
 requires-python = ">=3.11"
 dependencies = [
-    "flet[all]>=0.80,<0.86",
+    "flet[all]>=1.1.2,<1.2",
     "httpx>=0.27",
     "blake3>=0.4",
 ]

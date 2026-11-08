@@ -21,9 +21,9 @@ logic (`httpx` + `blake3`) while getting a Flutter-quality UI.
 
 | File | Purpose |
 |---|---|
-| `main.py` | Flet UI (declarative `@ft.component` + hooks, 1.0 Beta / 0.85 line). |
+| `main.py` | Flet UI (declarative `@ft.component` + hooks, Flet 1.1 line). |
 | `deploy_core.py` | UI-agnostic deploy logic. Raises `DeployError` (never `sys.exit`); reports progress via an `on_progress(str)` callback. |
-| `pyproject.toml` / `requirements.txt` | Pinned deps: `flet[all]>=0.80,<0.86`, `httpx`, `blake3`. |
+| `pyproject.toml` / `requirements.txt` | Pinned deps: `flet[all]>=1.1.2,<1.2`, `httpx`, `blake3`. |
 
 ## UI
 

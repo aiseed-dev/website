@@ -1410,6 +1410,8 @@ ifdef::lang-ja[]
 
 この四つは一方通行ではない。ループである。一周にかかる時間は、規模によって数分から数時間だ。一日に何十周も回す。コードを書く時間は、この中で最小になる。書くのは AI だからだ。
 
+作ることと守ることは、同じ速さでは進まない。AI と作れば、深い知識が無くても、動く物は数日で立つ。だが、それだけでは守れない。畑のアプリ link:https://github.com/aiseed-dev/seed[seed] を一週間で作ったときも、作る側の手引きと並べて、家の PC とサーバーを守る手引きを 10 章書いた。中身は、鍵、防火壁、網、控えが今どうなっているかを確かめる手順だ。ビルダーが深く学ぶのは、この確かめる側である。
+
 一つ目の「計画する」で書くものが、link:/ai-native-software/maintenance-shift/[1-02] で言う *AI に渡す最初の仕様* だ。後の三つは、その仕様を回す手順であり、一周するたびに仕様に戻って直す。保守の単位が仕様に移る(1-02)とは、このことだ。だから、ループの質は一つ目で決まる。
 
 ```mermaid
@@ -1569,6 +1571,8 @@ A builder's work is made of four steps.
 * Integrate and run — fold the part into the whole, keep it consistent, and run it. Running means putting it into the business and getting results. What a company builds has to raise revenue or cut cost, or there was no point building it. What comes out of running it is the material for the next plan. Then return to "plan" and revise the spec.
 
 These four are not a one-way line. They are a loop. One turn takes minutes to hours, depending on scope. A builder runs the loop tens of times a day. Time spent writing code is the smallest part of it, because AI does the writing.
+
+Building and protecting do not move at the same speed. Building with AI, something that runs stands up in a few days, even without deep knowledge. That alone does not protect it. When the farming app link:https://github.com/aiseed-dev/seed[seed] was built in a week, a guide for protecting the home PC and the server — 10 chapters — was written alongside the guides for building. What it holds are the steps for checking the current state of the keys, the firewall, the network, and the backups. What a builder learns deeply is this checking side.
 
 What you write in the first step, "plan," is the *first spec you hand to an AI* from link:/en/ai-native-software/maintenance-shift/[1-02]. The other three steps are the procedure for turning that spec, and every turn comes back to the spec and revises it. That is what it means for the unit of maintenance to move to the spec (1-02). So the quality of the loop is set in the first step.
 
@@ -2693,6 +2697,9 @@ ifdef::lang-ja[]
 機械で動かす場合を書く。
 
 * *入口の機械* ── 公開する物と、公開するために受け取った物だけを置く。ここに残る秘密(外の API の鍵、TLS の鍵、token の台帳、決済からの知らせを確かめる鍵)は一覧にし、漏れたときの止め方(一日の上限、取り消し)を決めておく。ほかの機械の控えと、人ごとの記録は置かない
+* *外の鍵の渡し方* ── 外の API の鍵は root だけが読めるファイルに置き、systemd が、それを使うサービスにだけ渡す。鍵がまだ無くてもサービスは起き、鍵の要る口だけが「準備中です」と返す。鍵を置く前に、紹介の頁だけを先に出せる(link:/debian-server/08-fastapi/[サーバー編 第8章])
+* *公開する記録* ── AI が下書きし、本人が全文を読んで「出す」と言った物だけを送る。入口の機械に届いた物も、機械を預かる人が読んでから載せる。読む前の物は、外から見えない場所に置く
+* *手順の文書* ── 立て方の手順は公開してよい。機械の番地と口の表、同じ機械に載っているほかの物は、公開しない別の場所に置く
 * *資料の機械* ── 分析用の資料を置く。入口の機械からは届かないようにする。元の資料は人が直し、AI は課題のフォルダーに書き出す
 * *机の PC* ── 資料の機械の控えを取る。机の PC から取りに行き、日ごとの版を残す(restic)。何を控えるかは、置き場と持ち主で先に決める。一度、実際に戻してみる
 * *お金* ── 支払いは外の決済に任せる。カードの情報は、自分の機械を通らない
@@ -3046,6 +3053,9 @@ As an individual's example, take running a farming app
 (link:https://github.com/aiseed-dev/seed[seed]) on your own machines.
 
 * *The entrance machine* — holds only what is published and what is received for publishing. List the secrets left here (outside API keys, the TLS key, the token ledger, the key that checks notices from the payment service), and decide in advance how to stop them if leaked (a daily cap, revocation). No copies of other machines, and no per-person records
+* *Handing over outside keys* — an outside API key sits in a file only root can read, and systemd hands it only to the service that uses it. The service starts even before the key is there; only the doors that need the key answer "not ready yet." You can put up the introduction page before placing the key (link:/en/debian-server/08-fastapi/[Server series, Chapter 8])
+* *Records to publish* — the AI drafts, and only what the person has read in full and said "publish" to is sent. What reaches the entrance machine is also read by the person who runs the machine before it goes up. Anything not yet read sits where the outside cannot see it
+* *The deployment document* — the steps for standing it up can be public. The machine's addresses and port table, and whatever else runs on the same machine, go in a separate place that is not published
 * *The materials machine* — holds the materials for analysis. Out of the entrance machine's reach. A person edits the originals; the AI writes its output into the task folder
 * *The desk PC* — keeps the materials machine's backup. The desk PC pulls it and keeps daily versions (restic). Decide first what to back up, by where it sits and who owns it. Actually restore once
 * *Money* — leave payment to an outside payment service. Card details never pass through your machines
@@ -12484,6 +12494,26 @@ AI の API を呼び、それ以外は普通のコードにする。後者を採
 0 7 * * * /home/builder/bin/invoice.py >> /var/log/invoice.log 2>&1
 ```
 
+== コードにできない知識は、手引きに書いて試す
+
+コードに凍結できるのは、手順が決まっている仕事だ。畑の写真をどう読むか、機械の
+守りをどこから見るか、のように、見る物によって答えが変わる仕事は、コードに
+できない。こういう知識は *手引き* に書く。手引きは、AI が仕事の前に読む文書で、
+課題のフォルダーに置く。仕様と同じく git に置き、外れたら直す(1-02)。
+
+書くのは、どこを見て、何と比べ、どの資料を引くかだ。答えの行(「この形なら、
+こうする」)は書かない。答えの行があると、AI は目の前の物を見ずに、その行を
+当てはめる。知らない事は、作って埋めずに空けておく。
+
+手引きは、書いたら試す。その課題を知らない AI に手引きだけを持たせ、使う人の
+頼みをそのまま渡す。迷った所と間違えた所を、手引きに書き足す。畑のアプリ
+link:https://github.com/aiseed-dev/seed[seed] では、この形で一週間に手引きを
+10 組作った(GitHub に在る物をフォルダーで数えた。2026-11-08)。試すと、読んで
+点検しただけでは見えなかった物が三つ出た。法令の頁から条文が取れない。資料の
+PDF が読めない。資料を記録に残す時の、項目の名が決まっていない。二度目の点検では、
+出る向きの防火壁を閉じると、番地をもらい直す要求(DHCP)まで止められる事も
+見つかった。
+
 == Linux のコマンドで済むことは、Linux で済ませる
 
 Python に書く前に、もう一段考える。Linux のコマンドでできないか。
@@ -12943,6 +12973,29 @@ says. The script stops once the PDF and the message are built.
 # Build the invoice PDF and message at 7 every morning. A person approves before sending
 0 7 * * * /home/builder/bin/invoice.py >> /var/log/invoice.log 2>&1
 ```
+
+== Knowledge that cannot be code goes into a guide, and the guide gets tested
+
+What can be frozen into code is work whose steps are fixed. Work whose answer changes
+with what is in front of you — how to read a photo of a field, where to start checking
+a machine's defenses — cannot be code. That knowledge goes into a *guide*: a document
+the AI reads before it starts, kept in the task folder. Like the spec, it lives in git
+and is fixed when it turns out wrong (1-02).
+
+A guide says where to look, what to compare, and which sources to cite. It does not
+carry answer lines ("if it looks like this, do that"). Given an answer line, the AI
+applies it without looking at what is in front of it. What you do not know is left
+blank, not invented.
+
+Once written, a guide is tested. Give an AI that does not know the task only the
+guide, and hand it a user's request as it would come. Add to the guide wherever it got
+lost or went wrong. The farming app link:https://github.com/aiseed-dev/seed[seed]
+built 10 guides this way in one week (counting the folders on GitHub, 2026-11-08).
+Testing turned up three things that reading and reviewing had missed: the law pages
+did not yield the text of the articles; a source PDF could not be read; and the names
+for the fields a source is recorded under had never been fixed. A second review also
+found that closing the outbound firewall blocks the request to renew the machine's
+address (DHCP).
 
 == What the Linux command line can do, let it do
 

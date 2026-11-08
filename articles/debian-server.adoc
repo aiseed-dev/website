@@ -1755,12 +1755,13 @@ ss -tlnp
 
 考え方は一つ。*入ってくる通信も、出ていく通信も、既定はすべて拒否。必要なものだけを名指しで許可する。* 多くの入門書は「入りは拒否、出は許可」で止める。この連載は出も閉じる。理由は 2025〜2026 年の侵入事例にある。入り込んだあとの攻撃者がすることは、盗んだデータを外へ送ることと、外の指令サーバーへ HTTPS で話しかけることだ。出が開いていると、入りをどれだけ固めても、一度入られたら後は素通りになる。出を閉じれば、入られても外へ出る道が無い。米 NIST のファイアウォール指針（SP 800-41 Rev.1、2009年）も、既定の方針は入りも出も拒否とするよう求めている。
 
-まず決めること。このサーバーが外へ話しかける相手は、普通は四つしかない。
+まず決めること。このサーバーが外へ話しかける相手は、普通は五つしかない。
 
 * 名前の解決（DNS、53番）
 * 時刻合わせ（NTP、UDP 123番。Debian既定の systemd-timesyncd が使う）
 * パッケージの更新（apt。Debianのミラーは HTTP 80番と HTTPS 443番）
 * 後の章で足すWeb公開と証明書の取得（Caddy。HTTPS 443番と HTTP 80番）
+* 番地をもらう要求（DHCP、UDP 67番。第3章でルーターの DHCP 予約を使った場合）
 
 これ以外へ出る必要が生まれたら、足すたびに「何が、どこへ、なぜ」を一行書き残す。
 
@@ -1778,10 +1779,11 @@ sudo ufw default deny outgoing
 # 2. 自分が締め出されないよう、SSHを先に許可する（最重要）
 sudo ufw allow ssh
 
-# 3. 出てよい相手を名指しで許可する（DNS・NTP・aptとWeb）
+# 3. 出てよい相手を名指しで許可する（DNS・NTP・aptとWeb・DHCP）
 sudo ufw allow out 53
 sudo ufw allow out 123/udp
 sudo ufw allow out 80,443/tcp
+sudo ufw allow out 67/udp
 
 # 4. ここでようやく有効化
 sudo ufw enable
@@ -1792,7 +1794,9 @@ sudo ufw status verbose
 
 `ufw status verbose` の `Default:` の行に `deny (incoming), deny (outgoing)` と出ていれば、入りも出も既定で拒否になっている。
 
-`enable` の直前に一拍置いて、`allow ssh` と `allow out 53` が入っているか必ず見返す癖をつける。いま繋いでいる SSH の返事は「確立済みの接続」として自動で通るので、出を閉じても切れない。だが DNS を忘れると、次の `apt` が名前を引けずに止まる。それが「出を閉じた」最初の手応えになる。リモートのサーバーで `allow ssh` を忘れると、物理コンソールか復旧手段がない限り入れなくなる。
+DHCP の一行は、第3章でルーターの DHCP 予約を選んだ人には必ず要る。予約でも、サーバーは番地を DHCP でもらい続けているからだ。ufw の既定の規則（`/usr/share/ufw/iptables/before.rules`）を読むと、DHCP の返事を受ける行はあるが、要求を外へ出す行は無い。出を閉じると、番地の期限が来たときのもらい直しの要求が止められる。番地が切れて網から落ちるかは DHCP のクライアントの作りによるので、この行を入れておく。サーバーの側で番地を固定したなら、この行は要らない。
+
+`enable` の直前に一拍置いて、`allow ssh` と `allow out 53` が入っているか必ず見返す癖をつける。いま繋いでいる SSH の返事は「確立済みの接続」として自動で通るので、出を閉じても切れない。ただしこれは、外から入ってくる SSH の話だ。この機械から外へ出る SSH（GitHub の 22番への `git push` など）は止まる。そして DNS を忘れると、次の `apt` が名前を引けずに止まる。それが「出を閉じた」最初の手応えになる。リモートのサーバーで `allow ssh` を忘れると、物理コンソールか復旧手段がない限り入れなくなる。
 
 出を閉じると何が止まるかも、先に知っておく。`apt` と `git clone`、証明書の取得は、上の 80番・443番で足りる。後の章で足すサービスが別の番号で外に出るとき（例：メール送信の 587番）は、その章で一行足す。何かが黙って止まったら、まずファイアウォールを疑い、カーネルのログを読む。
 
@@ -1800,6 +1804,38 @@ sudo ufw status verbose
 # 誰が、どこへ出ようとして止められたか
 sudo journalctl -k --grep UFW
 ```
+
+=== 動いている機械で出を閉じるときは、二段に分ける
+
+入れたばかりの機械なら、上の手順を一度に打ってよい。もう何かが動いている機械では、二段に分ける。一段目は入る向きだけ（`default deny incoming`、`allow ssh`、`enable`）。出る向きは、別の日の二段目で閉じる。
+
+二段目の前に、この機械がいま外のどこと話しているかを数える。
+
+```bash
+# いま確立している接続と、それを持つプロセス
+sudo ss -tnp state established
+```
+
+入ってきた ssh も並ぶ。手元の番号（左の番地の `:` の後）が大きい（32768 以上）行が、この機械から外へ出ている接続だ。ここに上の五つ以外の相手が出たら、それが何かを確かめ、要る物は先に `allow out` を足す。筆者の机の PC で測ると、22番（git の push）と、ほかに二つの番号へ出ていた。DNS・NTP・80/443 の三行だけで閉じたら、push と外への ssh が止まった。
+
+閉じるときは、戻す仕掛けを先に付ける。第4章の「退路を一本残す」と同じ考え方だ。
+
+```bash
+# 10分後に、出る向きを自動で「許可」に戻す
+sudo systemd-run --unit=ufw-undo --on-active=10min /usr/sbin/ufw default allow outgoing
+
+# 出る向きを閉じる
+sudo ufw default deny outgoing
+
+# 確かめる：更新が通るか、何が止められたか
+sudo apt update
+sudo journalctl -k --since -10min --grep 'UFW BLOCK'
+
+# 問題が無ければ、戻す仕掛けを取り消す
+sudo systemctl stop ufw-undo.timer
+```
+
+閉じた後に繋がらなくなっても、10分待てば出る向きは開く。そこで足りない許可を足して、もう一度やる。
 
 LAN内だけで使うサービスなら、「特定のネットワークからだけ許可する」と書ける。これが攻撃面をさらに絞る。
 
@@ -1814,7 +1850,7 @@ sudo ufw allow out to 192.168.1.0/24
 
 `from 192.168.1.0/24` は「このサブネット内の機器からだけ」という意味だ。外からはそもそも届かない設定になる。
 
-ここまでで、外へ出る道は四つの番号に絞れた。ただし 443番は、どのプロセスにも、どの相手にも開いている。*2025〜2026 年の侵入事例が使ったのは、まさにこの「誰でも通れる 443番」だ。* 次の段は、この穴をサービスごとに絞ることになる。第8章でアプリを systemd の unit で動かすとき、砂場の設定と同じ `[Service]` の場所に、次の三行を足す。
+ここまでで、外へ出る道は五つの番号に絞れた。ただし 443番は、どのプロセスにも、どの相手にも開いている。*2025〜2026 年の侵入事例が使ったのは、まさにこの「誰でも通れる 443番」だ。* 次の段は、この穴をサービスごとに絞ることになる。第8章でアプリを systemd の unit で動かすとき、砂場の設定と同じ `[Service]` の場所に、次の二行を足す。
 
 ```ini
 # このサービスは外へ話しかけない（必要な相手だけ IPAddressAllow に書く）
@@ -2041,12 +2077,13 @@ Once you have subtracted the attack surface, two things remain to decide: "of th
 
 The idea is one thing. *Deny everything by default, incoming and outgoing. Allow only what is needed, by name.* Most introductions stop at "deny in, allow out." This series closes outgoing too. The reason lies in the intrusions of 2025–2026. What an attacker does after getting in is send stolen data out, and talk to a command server outside over HTTPS. With outgoing open, however hard you make the way in, once they are in everything after that passes freely. With outgoing closed, even an intruder has no road out. The US NIST firewall guideline (SP 800-41 Rev.1, 2009) likewise asks that the default policy deny both inbound and outbound.
 
-Decide first. The parties this server needs to speak to are normally just four.
+Decide first. The parties this server needs to speak to are normally just five.
 
 * Name resolution (DNS, port 53)
 * Time sync (NTP, UDP 123. Used by Debian's default systemd-timesyncd)
 * Package updates (apt. Debian mirrors on HTTP 80 and HTTPS 443)
 * Web publishing and certificate issuance added in later chapters (Caddy. HTTPS 443 and HTTP 80)
+* Asking for an address (DHCP, UDP 67 — if you used a DHCP reservation on the router in Chapter 3)
 
 Whenever a need to reach anything else arises, write down one line — "what, to where, why" — each time you add it.
 
@@ -2064,10 +2101,11 @@ sudo ufw default deny outgoing
 # 2. Allow SSH first so you do not lock yourself out (most important)
 sudo ufw allow ssh
 
-# 3. Allow the outgoing destinations by name (DNS, NTP, apt and the web)
+# 3. Allow the outgoing destinations by name (DNS, NTP, apt and the web, DHCP)
 sudo ufw allow out 53
 sudo ufw allow out 123/udp
 sudo ufw allow out 80,443/tcp
+sudo ufw allow out 67/udp
 
 # 4. Only now, enable it
 sudo ufw enable
@@ -2078,7 +2116,9 @@ sudo ufw status verbose
 
 If the `Default:` line of `ufw status verbose` reads `deny (incoming), deny (outgoing)`, both directions are denied by default.
 
-Make it a habit to pause right before `enable` and confirm that `allow ssh` and `allow out 53` are in place. The replies of the SSH session you are on pass automatically as an "established connection," so closing outgoing does not cut it. Forget DNS, though, and the next `apt` stops, unable to resolve a name. That is the first tangible sign that you have closed outgoing. Forget `allow ssh` on a remote server, and you cannot get back in short of a physical console or recovery means.
+The DHCP line is required if you chose a DHCP reservation on the router in Chapter 3. With a reservation, the server still gets its address over DHCP. Reading ufw's default rules (`/usr/share/ufw/iptables/before.rules`), there is a line that accepts the DHCP reply, but none that lets the request go out. With outgoing closed, the request to renew the address when its lease runs out is blocked. Whether the address then actually lapses and the machine drops off the network depends on how the DHCP client is built, so put this line in. If you fixed the address on the server itself, you do not need this line.
+
+Make it a habit to pause right before `enable` and confirm that `allow ssh` and `allow out 53` are in place. The replies of the SSH session you are on pass automatically as an "established connection," so closing outgoing does not cut it. That, however, is about SSH coming in from outside. SSH going out from this machine (a `git push` to GitHub on port 22, say) does stop. And forget DNS, and the next `apt` stops, unable to resolve a name. That is the first tangible sign that you have closed outgoing. Forget `allow ssh` on a remote server, and you cannot get back in short of a physical console or recovery means.
 
 Know in advance what stops when outgoing is closed. `apt`, `git clone`, and certificate issuance are covered by ports 80 and 443 above. When a service added in a later chapter needs another port outward (say, 587 for sending mail), add one line in that chapter. If something stops silently, suspect the firewall first and read the kernel log.
 
@@ -2086,6 +2126,38 @@ Know in advance what stops when outgoing is closed. `apt`, `git clone`, and cert
 # Who tried to go where, and was stopped
 sudo journalctl -k --grep UFW
 ```
+
+=== On a Machine Already in Use, Close Outgoing in Two Steps
+
+On a freshly installed machine you can type the steps above in one go. On a machine where things already run, split it in two. The first step is incoming only (`default deny incoming`, `allow ssh`, `enable`). Outgoing is closed in a second step, on another day.
+
+Before the second step, count where this machine is talking to right now.
+
+```bash
+# Established connections and the processes holding them
+sudo ss -tnp state established
+```
+
+Incoming ssh shows up here too. Lines whose local port (after the `:` in the left-hand address) is high — 32768 or more — are connections going out from this machine. If anything other than the five above shows up, find out what it is, and add `allow out` first for what is needed. Measured on the writer's desk PC, it was talking out to port 22 (git push) and two other ports. Closing with only the three lines for DNS, NTP, and 80/443 stopped the push and outgoing ssh.
+
+When you close it, set up the way back first. It is the same idea as Chapter 4's "Leave Yourself One Way Back."
+
+```bash
+# In 10 minutes, set outgoing back to "allow" automatically
+sudo systemd-run --unit=ufw-undo --on-active=10min /usr/sbin/ufw default allow outgoing
+
+# Close outgoing
+sudo ufw default deny outgoing
+
+# Check: do updates get through, and what was blocked?
+sudo apt update
+sudo journalctl -k --since -10min --grep 'UFW BLOCK'
+
+# If all is well, cancel the way back
+sudo systemctl stop ufw-undo.timer
+```
+
+If you lose a connection after closing, outgoing opens again within 10 minutes. Add the missing allow, then try again.
 
 For a service used only inside your LAN, you can write "allow only from a specific network." This narrows the attack surface further.
 
@@ -2100,7 +2172,7 @@ sudo ufw allow out to 192.168.1.0/24
 
 `from 192.168.1.0/24` means "only from devices within this subnet." It becomes a setting that the outside cannot reach in the first place.
 
-By now the roads out are narrowed to four port numbers. Port 443, however, is open to every process and every destination. *What the intrusions of 2025–2026 used was exactly this "443 anyone can pass through."* The next step narrows this hole per service. When you run an app as a systemd unit in Chapter 8, add these lines in the same `[Service]` place as the sandbox settings.
+By now the roads out are narrowed to five port numbers. Port 443, however, is open to every process and every destination. *What the intrusions of 2025–2026 used was exactly this "443 anyone can pass through."* The next step narrows this hole per service. When you run an app as a systemd unit in Chapter 8, add these lines in the same `[Service]` place as the sandbox settings.
 
 ```ini
 # This service does not speak to the outside (write only the needed destinations in IPAddressAllow)
@@ -3685,6 +3757,48 @@ ReadWritePaths=/srv/myapp/data
 sudo systemctl restart myapp
 ```
 
+=== 外のサービスの鍵は、systemd からサービスにだけ渡す
+
+`.env` に置くのは、データベースの接続先のような、この機械の中で閉じた設定だ。外のサービスの鍵(AI の API の鍵、地図や決済の鍵)は違う。漏れると、他人があなたのお金で使える。こういう鍵は、もう一段奥に置く。
+
+systemd には、鍵を root だけが読めるファイルに置き、*サービスが動いている間だけ、そのサービスにだけ*渡す仕組みがある。置き場は `/etc/credstore` だ。
+
+```bash
+# 鍵の置き場を作る(root だけが入れる)
+sudo install -d -o root -g root -m 700 /etc/credstore
+
+# 鍵を一つ置く。打つと入力を待つので、鍵を貼って Enter、Ctrl-D
+sudo sh -c 'umask 077; cat > /etc/credstore/myapp.apikey'
+```
+
+この打ち方なら、鍵はシェルの履歴に残らない。ただし貼った鍵は画面に出るので、人に見られない所で打ち、終わったら `clear` で画面を消す。unit file の `[Service]` に一行足す。
+
+```ini
+# [Service] に追記する
+ImportCredential=myapp.apikey
+```
+
+サービスが起きると、鍵は `$CREDENTIALS_DIRECTORY/myapp.apikey` というファイルとして、そのサービスの中にだけ現れる。アプリはこのファイルを読む。`myapp` ユーザーでも、サービスの外からは `/etc/credstore` を読めない。環境変数に入れないのは、環境変数が子のプロセスに受け継がれ、エラーの報告やデバッグの出力に写りやすいからだ。
+
+鍵の渡し方には二つの書き方があり、鍵が無いときの動きが違う。
+
+|===
+| 書き方 | 鍵のファイルが無いとき | 向く鍵
+| `LoadCredential=名前:/etc/myapp/鍵のファイル` | サービスが起きない(`status=243/CREDENTIALS`) | 無いと動けない鍵(記録の署名の鍵など)
+| `ImportCredential=名前` | 飛ばして起きる | 後から置いてよい鍵(外の API の鍵)
+|===
+
+`ImportCredential=` は systemd 254 からの機能で、Debian 13 は 257 だ(`systemctl --version` の一行目で見る)。これを使うと、*鍵がまだ無くてもサービスは起きる*。アプリの側は、鍵の要る口だけ 503 で「準備中です」と返し、ほかの口(入口の頁、公開した記録)は普通に出す。鍵を置いたら `sudo systemctl restart myapp` で読ませる。筆者が畑の記録のアプリ(link:https://github.com/aiseed-dev/seed[seed])を自分の機械に置いたときは、この形で、鍵を置く前に紹介の頁だけを先に公開できた。
+
+鍵が届いたかは、鍵の値ではなく*在るか無いか*で確かめる。アプリに `/health` という口を作り、鍵ごとに `true` か `false` だけを返させる。
+
+```bash
+curl -s http://127.0.0.1:8000/health; echo
+# 例: {"db":true,"apikey":false}  ← 値は出さない
+```
+
+もう一つ、ログに秘密が残る道を塞ぐ。uvicorn は、受けた要求を一行ずつジャーナルに書く。URL の `?` の後ろ(クエリ)に招待コードや token を載せる口があると、それがそのままジャーナルに残る。*秘密はクエリに載せず、ヘッダーで受ける。* どうしても載せる口が残るなら、`ExecStart` の uvicorn に `--no-access-log` を付けて、その一行を書かせない。
+
 === Claudeに聞いてみよう③：起動失敗のエラーを診断させる
 
 ____
@@ -3719,8 +3833,34 @@ ____
 * 秘密は `.env` にあるか（コードやgitに漏れていないか）
 * バインドは `127.0.0.1` か（`ss -tlnp | grep 8000` で確かめる）
 * 専用ユーザー（`myapp`）で動いているか（`systemctl status myapp` の `User=` 行）
+* 外の鍵は `ImportCredential=` で渡し、値がログにも `/health` にも出ていないか（`journalctl -u myapp` を、鍵の種類ごとに決まった頭で探す。Anthropic の鍵なら `sk-ant-`。鍵ごとに違う文字を打つと、それがシェルの履歴に残る）
 
-この三点は、第5章の守りと第一節の構成が、アプリの上で正しく効いているかの確認だ。ここが通っていれば、第9章でリバースプロキシの後ろに置く準備が整っている。
+この四点は、第5章の守りと第一節の構成が、アプリの上で正しく効いているかの確認だ。ここが通っていれば、第9章でリバースプロキシの後ろに置く準備が整っている。
+
+=== AI が動くアカウントと、サービスの利用者を分ける
+
+Claude を機械の上で動かすなら、そのアカウントに sudo は渡さない（第1章）。するとアカウントは三つになる。誰が何をするかを先に決める。
+
+|===
+| アカウント | する事 | 読めない物
+| AI が動くアカウント（例：`dev`） | コードを置く（`git pull`、`pip install`） | 鍵、`.env`、データ
+| サービスの利用者（`myapp`。ログインしない） | サービスを動かし、`data/` に書く。コードは読むだけ | 鍵のファイルそのもの（systemd が渡した物だけ読める）
+| 人（sudo を持つ） | 利用者を作る、鍵を置く、unit file と Caddy、restart | —
+|===
+
+この形では、コードと `.venv` を AI のアカウントの持ち物にし（例：`/opt/myapp`）、`.env` とデータを `myapp` の持ち物にする（`/srv/myapp`）。AI は鍵とデータを直には読めない。ただ、AI が直したコードは、次の restart の後に鍵を持って動く。だから restart の前に、人が変更を読む（`git log -p` など）。restart を人の手に置くのは、そのためだ。
+
+更新のたびの順も、この分け方で決まる。
+
+```bash
+# AI のアカウントで：コードと依存を新しくする
+cd /opt/myapp && git pull --ff-only && .venv/bin/pip install -q -r requirements.txt
+
+# 人が：サービスに読み直させる
+sudo systemctl restart myapp
+```
+
+依存が増えたのに `pip install` を飛ばすと、restart の後にサービスが起きない。unit file を変えたときは、`daemon-reload` も要る。
 
 === Claudeに聞いてみよう④：公開前チェックリストを点検させる
 
@@ -4042,6 +4182,48 @@ Remember how to re-apply after editing code, too. After changing `app/main.py`, 
 sudo systemctl restart myapp
 ```
 
+=== Keys for Outside Services Go from systemd to the Service Only
+
+What belongs in `.env` is configuration that stays inside this machine, such as where the database is. Keys for outside services (an AI API key, a maps or payments key) are different. If one leaks, someone else can spend your money with it. Put such keys one layer deeper.
+
+systemd can keep a key in a file only root can read and hand it *only to that service, and only while it runs*. The place for it is `/etc/credstore`.
+
+```bash
+# Make the key store (root only)
+sudo install -d -o root -g root -m 700 /etc/credstore
+
+# Place one key. The command waits for input: paste the key, Enter, Ctrl-D
+sudo sh -c 'umask 077; cat > /etc/credstore/myapp.apikey'
+```
+
+Typed this way, the key does not stay in the shell history. The pasted key does show on screen, though, so type it where no one is looking, and wipe the screen with `clear` afterwards. Add one line to `[Service]` in the unit file.
+
+```ini
+# Add to [Service]
+ImportCredential=myapp.apikey
+```
+
+When the service starts, the key appears as the file `$CREDENTIALS_DIRECTORY/myapp.apikey`, inside that service only. The app reads that file. Even the `myapp` user cannot read `/etc/credstore` from outside the service. The reason not to use an environment variable: environment variables are inherited by child processes and easily end up in error reports and debug output.
+
+There are two ways to hand over a key, and they behave differently when the key is missing.
+
+|===
+| How | When the key file is missing | Suits
+| `LoadCredential=name:/etc/myapp/keyfile` | The service does not start (`status=243/CREDENTIALS`) | Keys it cannot run without (a key that signs the records, for example)
+| `ImportCredential=name` | Skipped; the service starts | Keys that may come later (outside API keys)
+|===
+
+`ImportCredential=` arrived in systemd 254; Debian 13 has 257 (see the first line of `systemctl --version`). With it, *the service starts even before the key is there*. On the app side, only the doors that need the key answer 503 "not ready yet," and the others (the front page, published records) work as usual. Once the key is placed, `sudo systemctl restart myapp` makes the service read it. When a farm-records app (link:https://github.com/aiseed-dev/seed[seed]) went onto the writer's own machine, this is how its introduction page went public before any key was placed.
+
+Check that the key arrived by *whether it is there*, not by its value. Give the app a `/health` door that returns only `true` or `false` per key.
+
+```bash
+curl -s http://127.0.0.1:8000/health; echo
+# e.g. {"db":true,"apikey":false}  ← never the value
+```
+
+One more thing: close the path by which secrets land in logs. uvicorn writes each request it receives as one line in the journal. If a door takes an invitation code or token in the URL after the `?` (the query), it stays in the journal as is. *Do not put secrets in the query; take them in a header.* If a door that does so remains, add `--no-access-log` to uvicorn in `ExecStart` so that line is never written.
+
 === Ask Claude ③: Diagnose a Startup Failure
 
 ____
@@ -4076,8 +4258,34 @@ And *"it works" is not the end.* After the service is up, always run one pre-pub
 * Are secrets in `.env`? (Not leaked into the code or git.)
 * Is the bind `127.0.0.1`? (Confirm with `ss -tlnp | grep 8000`.)
 * Is it running as the dedicated user (`myapp`)? (The `User=` line in `systemctl status myapp`.)
+* Are outside keys handed over with `ImportCredential=`, with the value showing neither in the logs nor in `/health`? (Search `journalctl -u myapp` for the fixed prefix that every key of that kind starts with — `sk-ant-` for an Anthropic key. Typing characters unique to one key leaves them in the shell history.)
 
-These three confirm that Chapter 5's defenses and Section 1's structure are working correctly on top of the app. Pass here and you are ready to place it behind a reverse proxy in Chapter 9.
+These four confirm that Chapter 5's defenses and Section 1's structure are working correctly on top of the app. Pass here and you are ready to place it behind a reverse proxy in Chapter 9.
+
+=== Separate the AI's Account from the Service's User
+
+If you run Claude on the machine, its account gets no sudo (Chapter 1). That makes three accounts. Decide first who does what.
+
+|===
+| Account | Does | Cannot read
+| The account the AI runs under (e.g. `dev`) | Places code (`git pull`, `pip install`) | Keys, `.env`, data
+| The service's user (`myapp`; no login) | Runs the service and writes to `data/`. Only reads the code | The key files themselves (it reads only what systemd hands it)
+| A person (with sudo) | Creates users, places keys, unit files and Caddy, restart | —
+|===
+
+In this shape, the code and `.venv` belong to the AI's account (say, `/opt/myapp`), and `.env` and the data belong to `myapp` (`/srv/myapp`). The AI cannot read the keys or the data directly. But code the AI changed runs with the keys after the next restart. So before the restart, a person reads the change (`git log -p` and the like). That is why the restart stays in a person's hands.
+
+The order for each update follows from the same split.
+
+```bash
+# As the AI's account: update the code and dependencies
+cd /opt/myapp && git pull --ff-only && .venv/bin/pip install -q -r requirements.txt
+
+# A person: make the service read it again
+sudo systemctl restart myapp
+```
+
+If dependencies were added and you skip `pip install`, the service will not start after the restart. When the unit file changes, `daemon-reload` is needed too.
 
 === Ask Claude ④: Review the Pre-Publish Checklist
 
@@ -4218,11 +4426,35 @@ photos.example.com {
 # Caddyを入れて、設定を反映する
 sudo apt install caddy
 sudo nano /etc/caddy/Caddyfile   # 上の内容を書く
+sudo caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile   # 先に書き間違いを見る
 sudo systemctl reload caddy      # 設定を読み直す
 systemctl status caddy           # 動いているか確認
 ```
 
+`reload` の前に `caddy validate` を打つ。書き間違いがあれば、どの行かが出る。通らなければ reload しない。その出力は、そのままClaudeに貼れる。
+
 なお、同じことは *nginx* でもできる。nginxは情報量が多く、細かい制御もきくが、TLSの自動化は certbot という別ツールを組み合わせる必要があり、設定テキストはCaddyより長くなる。*「短いテキストで自動TLSまで終わる」という一点でCaddyを推す*が、すでにnginxに慣れているなら無理に乗り換える必要はない。
+
+=== 静的な頁と API を、一つの名前で出す
+
+アプリが頁を HTML のファイルに書き出し、動く部分だけを API にする形もある。その場合、頁は Caddy が直に出し、`/api/` だけをアプリへ渡す。
+
+```caddyfile
+app.example.com {
+    root * /var/lib/myapp/site
+    handle /api/* {
+        reverse_proxy 127.0.0.1:8000
+    }
+    handle {
+        try_files {path} {path}/index.html {path}.html =404
+        file_server
+    }
+}
+```
+
+`try_files` の `{path}/index.html` を落とさない。畑の記録のアプリ（link:https://github.com/aiseed-dev/seed[seed]）を置いたとき、これが無い形では `/` だけが 404 になり、`/index.html` は 200 だった。置いたら、外から `/` と `/index.html` の両方を確かめる。
+
+`root` に指すフォルダーには、外に見せる物だけを置く。アプリの設定や、公開する前の物は、そのフォルダーの外に置く。Caddy が出せるのは `root` の下だけだからだ。
 
 === Claudeに聞いてみよう②：Caddyfile を書かせて各行を説明させる
 
@@ -4252,6 +4484,17 @@ CGNATの壁を越える、現代的な迂回路がいくつかある。いずれ
 ここで正直に書いておく。これらの迂回路は、どれも*「自分の手の外にある誰か」に依存先を一つ増やす*ことを意味する。これは本書が一貫して掲げてきた「依存先を減らし、自分の手で直せる範囲を広げる」という思想と、緊張関係にある。便利さと自立は、ここで一度ぶつかる。
 
 その緊張を踏まえたうえで、本書の前提（自宅サーバーかVPSで、データも自分で管理）に沿った整理を示す。*本体がVPSにあるなら、この難所はそもそも存在しない。* VPSにはグローバルIPがあるので、第二節のCaddyをそのまま外に向けて開けばいい。*本体が自宅にあるなら、本体は動かさず「入口」だけを借りる。* Cloudflare TunnelやTailscale Funnelはまさにこの形だし、安いVPSを入口（トンネルの出口）にして、データベースもファイルも自宅側に残す手もある。どちらの構えでも、データは自分がrootを持つ機械の上にあり、主導権は手放さない。
+
+=== Cloudflare を通すと、相手の番地が変わる
+
+Cloudflare の後ろ（DNS で橙の雲にした proxied、または Tunnel）に置くと、Caddy とアプリに届く相手の番地は、閲覧者の物ではなく Cloudflare の物になる。アプリが「同じ番地から何回間違えたら止める」と数えていると、一人の間違いで、同じ Cloudflare の番地を通る全員が止まる。管理の画面も止まる。
+
+閲覧者の本当の番地は、Cloudflare が付けるヘッダー `CF-Connecting-IP` にある。Caddy の全体の設定（Caddyfile の先頭の `{ }`）の `trusted_proxies` に Cloudflare の番地の範囲（https://www.cloudflare.com/ips/[cloudflare.com/ips] に載っている）を書くと、Caddy はその範囲から来たときだけヘッダーを信じる。Tunnel なら、届くのは同じ機械の `cloudflared` からなので、信じる相手は `127.0.0.1` になる。Caddy が取り出した番地は、`X-Forwarded-For` に入ってアプリに渡る。uvicorn は既定で、`127.0.0.1`（同じ機械の Caddy）から来たこのヘッダーを信じる。書き方は Caddy の版で変わるので、`caddy version` の出力を添えて Claude に書かせ、各行の意味を説明させる。
+
+```bash
+# 全体の設定に、信じる相手が書いてあるか
+grep -n 'trusted_proxies\|client_ip_headers\|CF-Connecting-IP' /etc/caddy/Caddyfile
+```
 
 === 静的サイトなら、Cloudflareで無料で公開できる
 
@@ -4297,6 +4540,16 @@ curl -I https://あなたのドメイン
 ```
 
 `HTTP/2 200` のような応答と、証明書のエラーが出ないことを確認できれば、公開は成立している。
+
+見せる物だけでなく、*見せない物が見えないこと*も、外から確かめる。設定ファイル、公開する前の物、管理の口。一つずつ番号だけを取る。
+
+```bash
+# 見せない道は 404（または 403）になるか
+curl -s -o /dev/null -w '%{http_code}\n' https://あなたのドメイン/.env
+curl -s -o /dev/null -w '%{http_code}\n' https://あなたのドメイン/〔見せない道〕
+```
+
+Cloudflare の後ろなら、Cloudflare が答えを覚えていることがある。置く前に取られた空の `robots.txt` が残っていた、ということも起きる。`curl -sI` の `cf-cache-status:` が `HIT` なら、それは Cloudflare が覚えていた答えだ。URL の後ろに `?x=1` を付けて取り直すと、サーバーの今の答えと比べられる。
 
 そして、公開直後ならではの体験がある。*何もしていないのに、ログには見知らぬアクセスが流れ始める。* 存在しないURL（`/wp-login.php` や `/.env` など）への執拗なアクセス、ありふれたユーザー名でのSSHログイン試行——これらはすべて、世界中の自動化された探査プログラムが、公開されたばかりのサーバーを機械的に叩いている痕跡だ。
 
@@ -4399,11 +4652,35 @@ That is all. It passes `https://` traffic arriving at `blog.example.com` to the 
 # Install Caddy and apply the configuration
 sudo apt install caddy
 sudo nano /etc/caddy/Caddyfile   # write the contents above
+sudo caddy validate --config /etc/caddy/Caddyfile --adapter caddyfile   # catch mistakes first
 sudo systemctl reload caddy      # re-read the configuration
 systemctl status caddy           # check that it is running
 ```
 
+Run `caddy validate` before `reload`. If there is a mistake, it shows which line. If it does not pass, do not reload. Its output can go straight to Claude.
+
 The same thing can be done with *nginx*. nginx has a large volume of information and allows fine control, but automating TLS requires combining a separate tool called certbot, and the config text grows longer than Caddy's. *I recommend Caddy on the single point of "short text, automatic TLS finished"*, but if you are already used to nginx, there is no need to force a switch.
+
+=== Static Pages and an API Under One Name
+
+Another shape: the app writes its pages out as HTML files, and only the moving parts are an API. Then Caddy serves the pages directly and passes only `/api/` to the app.
+
+```caddyfile
+app.example.com {
+    root * /var/lib/myapp/site
+    handle /api/* {
+        reverse_proxy 127.0.0.1:8000
+    }
+    handle {
+        try_files {path} {path}/index.html {path}.html =404
+        file_server
+    }
+}
+```
+
+Do not drop `{path}/index.html` from `try_files`. When a farm-records app (link:https://github.com/aiseed-dev/seed[seed]) was put up, the form without it returned 404 for `/` alone, while `/index.html` returned 200. Once it is up, check both `/` and `/index.html` from outside.
+
+The folder `root` points to holds only what is shown to the outside. The app's settings, and anything not yet published, sit outside that folder, because Caddy can serve only what is under `root`.
 
 === Ask Claude ②: Have It Write a Caddyfile and Explain Each Line
 
@@ -4433,6 +4710,17 @@ There are several modern detours past the CGNAT wall. Each has its trade-offs.
 Let me state this honestly. Each of these detours means *adding one more dependency to "someone outside your own hands."* This sits in tension with the philosophy this book has held throughout — "reduce dependencies, widen the range you can fix with your own hands." Convenience and self-reliance collide here, once.
 
 With that tension in mind, here is the way to sort it out under this book's premise (a home server or a VPS, with your data managed by you). *If the body lives on a VPS, this hard part simply does not exist.* A VPS has a global IP, so you open Section 2's Caddy straight to the world. *If the body lives at home, the body stays put and you borrow only the "entrance."* Cloudflare Tunnel and Tailscale Funnel are exactly this shape, and a cheap VPS can serve as the entrance (the tunnel's far end) while the databases and files stay home. In either setup, the data sits on a machine where you hold root, and the initiative stays in your hands.
+
+=== Behind Cloudflare, the Visitor's Address Changes
+
+Behind Cloudflare (proxied — the orange cloud in DNS — or a Tunnel), the address that reaches Caddy and the app is Cloudflare's, not the visitor's. If the app counts "this many mistakes from one address, then block," one person's mistakes block everyone who comes through the same Cloudflare address. The admin screen gets blocked too.
+
+The visitor's real address is in the `CF-Connecting-IP` header that Cloudflare adds. Write Cloudflare's address ranges (listed at https://www.cloudflare.com/ips/[cloudflare.com/ips]) into `trusted_proxies` in Caddy's global settings (the `{ }` at the top of the Caddyfile), and Caddy trusts the header only when the request comes from those ranges. With a Tunnel, requests arrive from `cloudflared` on the same machine, so the party to trust is `127.0.0.1`. The address Caddy takes out is passed to the app in `X-Forwarded-For`, and by default uvicorn trusts that header when it comes from `127.0.0.1` (Caddy on the same machine). The syntax varies with Caddy's version, so give Claude the output of `caddy version`, have it write the lines, and have it explain each one.
+
+```bash
+# Does the global configuration name who to trust?
+grep -n 'trusted_proxies\|client_ip_headers\|CF-Connecting-IP' /etc/caddy/Caddyfile
+```
 
 === A Static Site Publishes Free on Cloudflare
 
@@ -4478,6 +4766,16 @@ curl -I https://your-domain
 ```
 
 If you can confirm a response like `HTTP/2 200` and no certificate error, publishing has succeeded.
+
+Check from outside not only what you show, but also that *what you do not show stays unseen*: configuration files, anything not yet published, admin doors. Take only the status code, one at a time.
+
+```bash
+# Do the hidden paths return 404 (or 403)?
+curl -s -o /dev/null -w '%{http_code}\n' https://your-domain/.env
+curl -s -o /dev/null -w '%{http_code}\n' https://your-domain/[a hidden path]
+```
+
+Behind Cloudflare, Cloudflare may remember an answer. An empty `robots.txt` fetched before you put the real one in place can linger. If the `cf-cache-status:` line from `curl -sI` says `HIT`, that is an answer Cloudflare remembered. Add `?x=1` to the end of the URL and fetch again to compare with the server's current answer.
 
 And there is an experience unique to the moment right after publishing. *Though you have done nothing, unfamiliar accesses begin flowing into the logs.* Persistent accesses to URLs that do not exist (`/wp-login.php`, `/.env`, and the like), SSH login attempts with common user names — these are all traces of the world's automated scanners mechanically hammering a freshly published server.
 
@@ -5222,6 +5520,7 @@ ifdef::lang-ja[]
 
 ```bash
 df -h                              # ディスクの空き（埋まりすぎていないか）
+df -h /tmp                         # /tmp の空き（Debian 13 では /tmp がメモリの上にある）
 free -h                            # メモリの空き
 journalctl -p err --since -7d      # 直近一週間のエラーログ
 systemctl --failed                 # 失敗しているサービスはないか
@@ -5236,6 +5535,7 @@ systemctl is-active postgresql     # データベースが生きているか（�
 #!/bin/bash
 # ~/weekly-check.sh — 週次の健康診断
 echo "===== disk ====="            ; df -h
+echo "===== tmp ====="             ; df -h /tmp
 echo "===== memory ====="          ; free -h
 echo "===== errors (7d) ====="     ; journalctl -p err --since -7d --no-pager
 echo "===== failed units ====="    ; systemctl --failed --no-pager
@@ -5247,6 +5547,8 @@ echo "===== database ====="        ; systemctl is-active postgresql 2>/dev/null
 chmod +x ~/weekly-check.sh
 ./weekly-check.sh
 ```
+
+`/tmp` を別に見るのは、Debian 13 から `/tmp` が既定でメモリの上（tmpfs）に置かれ、大きさがメモリの半分までになったからだ。ディスクに空きがあっても、`/tmp` は先に満ちる。AI のエージェントを動かす機械では、作業の一時ファイルが `/tmp` に残りやすい。筆者の作業機では `/tmp` が満ち、テストがまとめて落ちた。大きい一時の物は `/var/tmp` の下に置き、使い終えたら消す。
 
 === 出力をまるごとClaudeに渡す
 
@@ -5448,6 +5750,7 @@ You need no special monitoring software to check a server's health. A plain set 
 
 ```bash
 df -h                              # Free disk space (is it getting too full?)
+df -h /tmp                         # Free space in /tmp (on Debian 13, /tmp lives in memory)
 free -h                            # Free memory
 journalctl -p err --since -7d      # Error logs from the last week
 systemctl --failed                 # Are any services failing?
@@ -5462,6 +5765,7 @@ Typing these by hand every week is tedious. So bundle them into one shell script
 #!/bin/bash
 # ~/weekly-check.sh — weekly health check
 echo "===== disk ====="            ; df -h
+echo "===== tmp ====="             ; df -h /tmp
 echo "===== memory ====="          ; free -h
 echo "===== errors (7d) ====="     ; journalctl -p err --since -7d --no-pager
 echo "===== failed units ====="    ; systemctl --failed --no-pager
@@ -5473,6 +5777,8 @@ echo "===== database ====="        ; systemctl is-active postgresql 2>/dev/null
 chmod +x ~/weekly-check.sh
 ./weekly-check.sh
 ```
+
+`/tmp` gets its own line because, starting with Debian 13, `/tmp` lives in memory (tmpfs) by default, sized up to half the memory. Even with disk space to spare, `/tmp` fills first. On a machine that runs an AI agent, work files tend to be left in `/tmp`. On the writer's workstation, `/tmp` filled up and the tests failed together. Put large temporary things under `/var/tmp`, and delete them when done.
 
 === Hand the Whole Output to Claude
 

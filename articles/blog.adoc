@@ -14868,3 +14868,602 @@ Keep on your own side what you can keep on your own side. link:/en/ai-native-sof
 * link:/en/blog/grid-attack-naphtha/[What If Trump Destroys Iran's Power Plants] — an analysis written early in the Iran war
 
 endif::[]
+
+// ===== article: 050-borrowed-phosphorus =====
+---
+slug: borrowed-phosphorus
+title.ja: 春肥は過去 2 番目の高値 ── 堆肥も鶏ふんも下水汚泥も、元は輸入のリンである
+title.en: Spring Fertilizer at Its Second-Highest Price — Compost, Chicken Manure and Sewage Sludge Are All Imported Phosphorus
+subtitle.ja: 全農の春肥は高度化成が 15.3% の値上げ。物はあるが高い。代わりに挙がる堆肥・鶏ふん・下水汚泥は、どれも輸入したリンの遠回りで、下水汚泥からの回収は費用が合わない。頼れるのは流れではなく、土に溜まった蓄えである
+subtitle.en: Spring Fertilizer at Its Second-Highest Price — Compost, Chicken Manure and Sewage Sludge Are All Imported Phosphorus
+date: 2026.11.11
+description.ja: 7 月に「11 月の全農の春肥価格を見る」と書いた。10 月 30 日に出た結果は、高度化成が秋肥比 15.3% の値上げで、2005 年以降 2 番目に高い水準。輸入尿素だけが下がり、硫酸を使う品目がそろって二桁上がった。備蓄は 3 か月分を超え、物はある。だが中国の輸出再開は早くて 2027 年 5 月と見られ、春作に値下がりは間に合わない。代わりに挙がる堆肥と鶏ふんは輸入飼料の、下水汚泥は輸入食料のリンであり、下水汚泥からの回収は国内最大の施設でも年 300 トン、製造費は輸入価格と大きな差がある。
+description.en: In July this site said it would watch Zen-Noh's spring prices in November. The result, set on October 30: the high-analysis compound rose 15.3% from autumn, the second-highest level since 2005. Only imported urea fell; the items made with sulfuric acid all rose by double digits. Stocks exceed three months, so the supply is there. But Chinese exports are not expected to resume before May 2027, so no fall arrives in time for spring planting. The substitutes are imported phosphorus too — compost and chicken manure from imported feed, sewage sludge from imported food — and recovery from sludge reaches only 300 tonnes a year even at the largest plant in Japan, at a cost far above the import price.
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+---
+ifdef::lang-ja[]
+= 春肥は過去 2 番目の高値
+
+== 結論
+
+7 月の link:/blog/constraint-moved/[肥料危機、3か月で何が明確になったか] で、観測点に「11 月。全農の春肥価格。窒素とリン酸の順位」と書き、どちらに転んでも結果を書くと約束した。その結果が出た。
+
+JA 全農は 10 月 30 日、2026 肥料年度の春肥(2026 年 11 月〜2027 年 5 月)の価格を決めた。基準銘柄の高度化成は、秋肥(6〜10 月)から *15.3% の値上げ* で、2005 年以降で 2 番目に高い水準である。
+
+読み取れることは四つある。
+
+* *物はある。高いだけである。* リン安と加里の備蓄は、年間に要る量の 3 か月分を超えた。春に店頭から消える見込みは低い。
+* *上がったのは、硫酸が通る所である。* 輸入の尿素は下がった。過石、硫安、硫酸加里が、そろって二桁上がった。
+* *春作に、値下がりは間に合わない。* 中国の輸出再開は、早くて 2027 年 5 月と見られている。日本の春肥の期間は 5 月で終わる。
+* *代わりに挙がる物も、元は輸入である。* 堆肥と鶏ふんのリンは輸入した飼料から、下水汚泥のリンは輸入した食料から来る。そして下水汚泥からリンを取り出す事業は、費用が合っていない。
+
+*毎年入ってくる流れは、どの経路をたどっても鉱石に行き着く。頼れるのは、もう土の中にある蓄えだけである。*
+
+== 全農の春肥を、品目ごとに読む
+
+=== 決まった値段
+
+全農が出した表は次の通りである。変動率は、前の期(2026 肥料年度の秋肥、6〜10 月)との比である。
+
+|===
+| 分類 | 品目 | 成分(%) | 前期比
+
+| 窒素質 | 尿素(輸入・大粒) | 46 | *▲2.7%*
+| 窒素質 | 尿素(国産・細粒) | 46 | +21.7%
+| 窒素質 | 硫安(大粒) | 21 | +14.8%
+| 窒素質 | 石灰窒素 | 21 | +3.1%
+| リン酸質 | 過石 | 17 | +14.3%
+| リン酸質 | 重焼りん | 35 | +3.4%
+| 加里質 | 塩化加里 | 60 | +5.1%
+| 加里質 | 硫酸加里 | 50 | +21.0%
+| 加里質 | けい酸加里 | 20 | +13.1%
+| 複合肥料 | 高度化成(基準) | 15-15-15 | *+15.3%*
+|===
+
+表の読み方に、注意が二つある。
+
+* この変動率は、全農が県の JA と経済連に渡す値段のものである。JA の店頭で農家が払う値段の変動率とは一致しない。
+* 高度化成は、値段の目安にする基準の銘柄で、実際に流通している銘柄とは違う。
+
+リン安は、単独の品目としては表に無い。高度化成の原料として、高度化成の値段に入っている。
+
+=== 一年で 2 割
+
+高度化成は、5 月に決まった秋肥で 5% 上がっていた。そこへ今回の 15.3% が乗る。
+
+----
+1.05 × 1.153 = 1.21
+----
+
+一年前の春肥(2025 年 11 月〜2026 年 5 月)と比べると、*およそ 21% 高い*。その一年前の春肥も、その前の期(2025 年の秋肥)から 4.3% 上がっていた。高度化成の値上げは、2025 年の秋肥から *四期続いている*(+3.3%、+4.3%、+5%、+15.3%)。
+
+2005 年以降で一番高かったのは、2022 肥料年度の春肥である。その直前の 2022 肥料年度の秋肥は、値上げ率が 50% を超えた。今回はそれに次ぐ水準まで来た。
+
+=== 窒素 ── 輸入は下がり、国産が上がった
+
+7 月の記事で「春肥の窒素には下げ余地がある」と書いた。輸入の尿素は ▲2.7% で、その通りになった。秋肥で +14.5% だった品目である。国際の値段が下落に転じたためと、全農は説明している。ただし全農は、中東の情勢がまた緊迫した事とインドの入札で、尿素の国際の値段は直近で上がり始めている、とも書いている。
+
+ところが、*国産の尿素は +21.7%、硫安は +14.8%* である。同じ尿素で、輸入が下がり、国産が大きく上がった。
+
+全農の説明では、国産の原料は、中東の情勢が長引いてエネルギーとアンモニアなどの原材料が高騰し、国内で作る費用も、重油や包装の袋が上がった。国際の値段が下がっても、国内で作る物は下がらない。*効いているのは、海外の相場ではなく、国内でエネルギーを使って作る費用である。*
+
+=== リン酸 ── 過石が 14.3%
+
+リン酸質は、過石が +14.3%、重焼りんが +3.4% である。秋肥のリン酸系は +4.5〜4.9% だったので、過石は上げ幅が 3 倍になった。
+
+過石(過リン酸石灰)は、リン鉱石を硫酸で溶かして作る。硫酸の値段を、一番直に受ける品目である。
+
+高度化成の原料になるリン安について、全農が挙げた値上げの理由は二つである。
+
+. 国際の値段が、高いまま下がらない。
+. 中国が輸出を絞ったので、輸入元を中国からモロッコに切り替えた。その分、船賃などの調達の費用が増えた。
+
+7 月の記事で「リン安の 72% は依然として中国から来る」と書いた。その形が、この半年で変わった。変わった結果が、値段に乗った。*輸入元を替える事はできた。ただで替えられたわけではない。*
+
+中国については、リン安の主な輸出国だが、硫黄と硫酸の調達が難しく、春の需要期が過ぎても輸出を再開する見通しが立っていない、と全農は説明している。
+
+=== 加里 ── ここにも硫酸
+
+塩化加里は +5.1% である。中国、ブラジル、インドなどの需要が堅い事が理由に挙がっている。
+
+目を引くのは *硫酸加里の +21.0%* である。原料の硫酸が高騰し、塩化加里より大幅に上がった、と説明されている。けい酸加里も +13.1% である。
+
+=== 並べ直すと、硫酸が見える
+
+品目を、上げ幅の大きい順に並べ直す。
+
+|===
+| 品目 | 前期比 | 作り方との関係
+
+| 尿素(国産) | +21.7% | 国内でアンモニアとエネルギーを使って作る
+| 硫酸加里 | +21.0% | 塩化加里を硫酸で処理して作る
+| 高度化成 | +15.3% | リン安、窒素、加里を合わせる
+| 硫安 | +14.8% | アンモニアと硫酸の塩
+| 過石 | +14.3% | リン鉱石を硫酸で溶かす
+| けい酸加里 | +13.1% |
+| 塩化加里 | +5.1% | 掘って精製する
+| 重焼りん | +3.4% |
+| 石灰窒素 | +3.1% |
+| 尿素(輸入) | ▲2.7% | 国際の値段が下がった
+|===
+
+二桁上がった品目のうち三つ ── 硫酸加里、硫安、過石 ── は、硫酸を使って作る物である。これは全農の説明をそのまま写した物ではなく、表を作り方で並べ直した、こちらの読みである。
+
+7 月の記事で、悪化した物の列に硫黄を入れ、「経路は想定どおり、水準が想定超え」と書いた。世界銀行によると、硫黄の値段は 1 月から 4 月の間におよそ 2 倍になった。その硫黄が、半年かけて、国内の肥料の値段表の上に出てきた。*リン酸の話は、鉱石より先に、硫黄の話になっている。*
+
+=== 為替
+
+全農の説明に出てくる為替の動きは、次の通りである(JAcom の記事による)。
+
+* 7 月の中旬から下旬に、およそ 40 年ぶりの 1 ドル 163 円台。
+* 7 月 31 日の日米の協調介入で、一時 155 円台の前半へ。
+* 直近は 157〜158 円台。
+
+7 月の記事で「円安が続けば、どの列にも上乗せされる」と書いた。介入で 163 円台からは戻したが、157〜158 円は、輸入する原料のどれにも乗る水準である。
+
+=== 量 ── 備蓄は 3 か月分を超えた
+
+7 月の時点で、経済安保推進法の備蓄は、塩化加里が目標の 3 か月分に届き、リン安は 2.4 か月分だった。今回、全農は、リン安と加里について、年間に要る量の 3 か月分以上を国内に備えていると説明している。
+
+輸入元もモロッコに移った。*春に物が無くなる見込みは低い。* 効くのは値段である。
+
+全農は、実際の需要に基づく予約と、計画を立てた製造と配送で、安定して届ける事に取り組むとしている。裏から読めば、予約をしていない分は後回しになる、という事である。
+
+=== 国内のメーカー
+
+全農の説明には、もう一つ、国内のメーカーの事情が書かれている。
+
+* 燃料と資材が上がった。
+* 2022 肥料年度の値上がりの時に、化成肥料から堆肥などへ切り替える農家が増え、販売する量が落ちた。その分、固定費の負担が重くなった。
+* 製造の設備が古くなり、修繕の費用が増えている。
+
+値段が上がると、買う量が減る。買う量が減ると、一袋あたりの固定費が増え、また値段が上がる。*値上がりが、次の値上がりの理由になる回り方に入っている。*
+
+== 春作に、値下がりは間に合わない
+
+この先の見方は、分かれている。
+
+|===
+| 見ている所 | 見方
+
+| Argus | 中国のリン安(DAP、MAP)の輸出の再開は 2027 年 5 月ごろ。硫黄と硫酸が高いままなら、遅れる
+| StoneX | ホルムズ海峡の船の流れが詰まっている間は、高いまま
+| 世界銀行(5 月) | DAP は 2026 年におよそ 6% 上がり、2027 年は新しい工場が動いておよそ 10% 下がる
+| Itafos(11 月 4 日の決算) | 中国の輸出の禁止は 9 月 1 日に公式には切れたが、年内に輸出が目立って増える見込みは低い。米国の MAP(ニューオーリンズ渡し)は、1 ショートトン 810 ドル前後のまま
+|===
+
+7 月の記事で、まだ決まらない事の一つ目に「中国国内の需給」を挙げ、8 月の判断を待った。中国の輸出の停止は、9 月 1 日に公式には期限が切れた。だが再開の指示は出ず、輸出は戻らなかった(Itafos)。
+
+どの見方を取っても、*日本の春の需要期(5 月まで)には間に合わない*。下がるとすれば、2027 年の 5 月に決まる秋肥(6〜10 月)からである。それも、中東の情勢と、中国の再開しだいである。
+
+== 堆肥も鶏ふんも、元は輸入である
+
+化成肥料が高くなると、堆肥と鶏ふんに目が向く。2022 年にも起きた事で、上で見た通り、メーカーの販売が落ちるほどの動きだった。国も、堆肥と下水汚泥を「国内資源」と呼んでいる。
+
+だが、その中のリンがどこから来たかをたどると、国内では終わらない。
+
+* *家畜のふんのリンは、えさから来る。* 日本の飼料の自給率は 24% である(農林水産省、令和 7 年度)。鶏と豚が食べる配合飼料は、ほとんどが輸入したトウモロコシと大豆かすである。
+* *そのトウモロコシも、リン酸肥料で育っている。* 米国やブラジルの畑に入れたリン鉱石が、穀物になり、船で来て、鶏の体を通って、ふんになる。
+* *えさには、リン酸カルシウムも足してある。* これもリン鉱石から作る。
+* *下水汚泥も同じである。* 食料の自給率は、熱量で 37% である(同)。人が食べた物のリンが、下水に流れる。
+
+*堆肥も鶏ふんも下水汚泥も、遠回りして来た輸入のリンである。*
+
+だから、鉱石が詰まれば、穀物が上がり、えさが上がり、家畜が減り、ふんも減る。肥料の値段より遅れて、同じ波が来る。「国内資源」という呼び方は、置いてある場所を言っているだけで、出どころを言っていない。
+
+== 下水汚泥 ── 費用が合わない
+
+連載の link:/phosphorus-and-farming/supply-constraint/[第1章] では、下水汚泥からの回収を三つ目の経路として挙げた。ここでは、費用の側から見る。
+
+=== 量の桁
+
+* 国内のリンの需要は、年に 30 万トン。全国の下水汚泥に含まれるリンは、年におよそ 5 万トン(時事通信、2026 年 5 月)。記事の数字で比べると、*全部を取り出せたとしても、需要の 6 分の 1 である。*
+* 肥料として使われている下水汚泥は、35.8 万トンで、全体の 15.4% である(国土交通省、令和 5 年度の実績)。これとは別に、リンの回収に回された汚泥が 1.7 万トンある。
+* 国の目標は、令和 5 年度に 15.4% だった肥料としての利用を、2030 年度に 30% にする事である(国土交通省の環境行動計画、2025 年 6 月の改定)。ほぼ 2 倍にする計画である。
+
+=== 回収の施設は、小さい
+
+リンを回収する施設を持つのは、2025 年度の末で、8 つの自治体の、合わせて 11 施設である(国土交通省)。
+
+|===
+| 所 | 動き始め | 作れる量(製品の重さ)
+
+| 福岡市 西部水処理センター | 2026 年 4 月 | 年 300 トン。国内で最大
+| 東京都 砂町水再生センター | 2024 年 1 月 | およそ 70 トン
+| 神戸市 東灘処理場 | 2013 年 2 月 | 年 100 トンまで作れる。2024 年の実績は 75 トン。数年前までの出荷は、年 20 トンほどだった
+|===
+
+*国内で一番大きい施設が、製品の重さで年に 300 トンである。* 中のリンはその一部である。下水汚泥のリン 5 万トン、需要 30 万トンとは、桁が二つ以上違う。
+
+=== 費用
+
+東京都の担当者は、再生リンを作る費用は高く、輸入の値段とは大きな差がある、と話している(時事通信)。費用を下げる技術の開発と、公の支援が要る、という見方である。国も、費用を下げる事を目的に、5 つの自治体で、実際の大きさの施設を国の事業として置いている(B-DASH)。
+
+古い数字だが、桁を知る手がかりはある。
+
+* 2009 年の国の検討会で、福岡市は、MAP 法(リン酸マグネシウムアンモニウムとして取り出す方法)の運転の費用を、製品 1 トンあたり 50 万円と報告している。引き取ってもらう値段は、1 トンあたり 2.1 万円だった。同じ席で、島根県は 1 トンあたり 5 万円ほどと話している。所によって、桁が一つ違う。
+* 2005 年の論文は、MAP 法と HAP 法は、薬品と動力の費用だけで、製品 1 キログラムあたり 60 円以上になる、としている。同じ論文が挙げる引き取りの値段は、1 キログラムあたり 0〜28 円である。
+* 2010 年の国の手引きは、焼却した灰からリンを取り出す一つの方式について、灰が年に 1 万トン以上集まる規模なら事業として成り立つ、と試算している。
+
+どれも今の物価の数字ではない。それでも、作る費用が売る値段を大きく上回る、という形は読み取れる。
+
+=== なぜ合わないか
+
+. *下水処理場の仕事は、水をきれいにする事である。* リンを取り出すには、そこに薬品(マグネシウム、アルカリ)と電気と人手を足す。肥料を作るために建てた工場ではない所で、肥料を作っている。
+. *薄い。* リン鉱石は、リンが濃く固まった物を掘る。下水は、薄く広がった物を集め直す。集め直す仕事に、エネルギーと薬品がかかる。
+. *小さい所では合わない。* 採算に乗るのは、灰が大量に集まる大きな都市だけである。全国の処理場の多くは、その規模に届かない。
+. *建てる金は、肥料の売り上げから出ていない。* 国土交通省は、令和 4 年度の補正予算の案に、下水汚泥の肥料利用のための国費をおよそ 30 億円積んだ(堆肥にする施設、案件づくり、リン回収の実証)。B-DASH の施設も国が置いている。肥料として売って元が取れるなら、国費は要らない。
+. *年中出るが、使うのは季節である。* 汚泥は毎日出る。肥料が要るのは、春と秋である。置いておく場所と、運ぶ費用がかかる。
+. *受け取る側の事情。* 国土交通省は、重金属(カドミウム、鉛、クロム、ヒ素、水銀、ニッケル)を年に 4 回ほど分析する事業を、延べ 169 の処理場で支援している。令和 6 年度に分析した処理場では、どの季節の分析も、法律の基準値以下だった。それでも、農家と消費者が受け取るかは別の話で、国は流通の経路を作る支援(延べ 37 団体)を別に立てている。*作れても、売れるとは限らない。*
+
+リンを取り出さずに、汚泥そのものを堆肥や乾かした肥料にする道もある。2023 年 10 月には「菌体りん酸肥料」という公定規格もできた。肥料として使われている 35.8 万トンには、堆肥、乾かした汚泥、焼いた灰などが入っていて、量が多いのは堆肥と乾かした汚泥である。こちらには、受け取る側の事情がそのまま残る。PFAS(有機フッ素化合物)について、農林水産省は、分析した汚泥肥料の含有量では、一生食べ続けても健康に影響が出ない量(耐容一日摂取量)を超えない、としている。基準値は、まだ定めていない。
+
+=== それでも、やる意味
+
+下水汚泥を焼いて埋めるより、畑に戻す方がよい。捨てていた物を捨てない、という意味はある。
+
+だが、*「鉱石の代わり」にはならない。* 全部を取っても需要の 6 分の 1 で、そのリンは輸入した食料から来ていて、取り出す費用は輸入より高い。量も、出どころも、費用も、代わりになる形をしていない。
+
+== 流れと、蓄え
+
+「国産か、輸入か」で分けると、見誤る。分けるなら、次の二つである。
+
+|===
+| | 中身 | これから
+
+| 毎年入ってくる流れ
+| 化成肥料、飼料、食料。堆肥と鶏ふんと下水汚泥は、この流れに乗っている
+| リン鉱石と一緒に細る
+
+| もう国内にある蓄え
+| 何十年も入れ続けて、畑の土に溜まったリン
+| 残っている。ただし、作物が吸いにくい形になっている
+|===
+
+連載の link:/phosphorus-and-farming/no-cheap-return/[第2章] で書いた通り、入れたリン酸肥料の大半は、土の中の鉄やアルミニウムやカルシウムと結び付いて、そのまま残っている。日本の畑は、入れた量より作物が持ち出した量の方がずっと少なく、差が土に溜まっている。
+
+流れに頼らないと言えるのは、この蓄えを使う事と、畑から出た物を畑に戻す事だけである。蓄えを作物に渡すのは、菌根菌と根の仕事である(link:/phosphorus-and-farming/soil-microbes/[第5章])。
+
+*リン鉱石の制約は、化成肥料だけの話ではない。堆肥を入れる有機の農業にも、同じ形で届く。*
+
+== 観測点
+
+*2027 年 5 月。* 全農の秋肥の値段。中国の輸出が戻ったか(Argus は 5 月と見ている)。
+
+*硫黄。* 過石、硫安、硫酸加里の次の値段は、硫黄と硫酸で決まる。
+
+*飼料と家畜。* 配合飼料の値段と、鶏と豚の数。堆肥と鶏ふんの量は、ここから遅れて動く。
+
+*再生リンの値段。* 東京都の再生リンを使った肥料は、2026 年度から、全農と組んで全国に出す計画である。店頭の値段が、輸入の原料で作った肥料と比べていくらになるか。
+
+*春(2027 年 3〜5 月)。* 予約をしていない分に、品薄や割り当てが出るか。
+
+どちらに転んでも、結果を書く。
+
+'''
+
+== 関連
+
+* 本サイト link:/blog/constraint-moved/[肥料危機、3か月で何が明確になったか] ── 7 月の整理。この記事は、その「11 月」の観測点の結果
+* 本サイト link:/blog/nitrogen-balance/[窒素の需給] ── 輸入の尿素が下がり、国産が上がった背景
+* リンと農業 link:/phosphorus-and-farming/supply-constraint/[第1章 リン酸肥料の供給制約] ── 三つの経路と、下水汚泥の PFAS
+* リンと農業 link:/phosphorus-and-farming/no-cheap-return/[第2章 リン酸肥料は安価には戻らない] ── 化学肥料の中でのリサイクルが成り立たない理由
+* リンと農業 link:/phosphorus-and-farming/soil-microbes/[第5章 土壌微生物という戦略] ── 土に溜まったリンと菌根菌
+
+== 参考
+
+* JA 全農「令和８肥料年度春肥の肥料価格について」(2026 年 10 月 30 日) https://www.zennoh.or.jp/press/release/2026/111396.html ── 品目ごとの前期比、値上げと値下げの理由
+* 農業協同組合新聞「2026肥料年度春肥 高度化成は15.3％値上げで過去2番目に高い水準 ＪＡ全農」(2026 年 10 月) https://www.jacom.or.jp/articles/ZDOEmc_EcMyOL0YbpvAkQ ── 品目ごとの表、値上げと値下げの理由、為替、備蓄、国内のメーカーの事情
+* 日本農業新聞「全農春肥、過去２番目の水準 高度化成１５％上げ 中東情勢響く」 https://www.agrinews.co.jp/news/index/415893
+* 農業協同組合新聞「2026肥料年度秋肥 高度化成は5％値上げ 全農「安定供給に注力」」(2026 年 5 月 15 日) https://www.jacom.or.jp/articles/FN-Ms7G3Z1Ty9yoWcC01P ── 5 月に決まった秋肥
+* 日本経済新聞「JA全農が肥料価格4%引き上げ」(2025 年 10 月 31 日) https://www.nikkei.com/article/DGXZQOUB293YN0Z21C25A0000000/ ── 一年前の春肥
+* JA 全農「令和７肥料年度春肥の肥料価格について」 https://www.zennoh.or.jp/press/release/2025/107160.html と「令和７肥料年度秋肥」 https://www.zennoh.or.jp/press/release/2025/104831.html ── 四期続く値上げ
+* World Bank "Fertilizer prices surge as Strait of Hormuz disruptions tighten supplies"(2026 年 5 月 14 日) https://blogs.worldbank.org/en/opendata/fertilizer-prices-surge-as-strait-of-hormuz-disruptions-tighten- ── 硫黄がおよそ 2 倍、DAP の 2026 年と 2027 年の見通し
+* The Western Producer "Analysts disagree on what's next for phosphate fertilizer prices"(2026 年 10 月 23 日) https://www.producer.com/markets/analysts-disagree-on-whats-next-for-phosphate-fertilizer-prices/ ── Argus と StoneX の見方
+* Itafos "Q3 2026 Financial Results and Operational Highlights"(2026 年 11 月 4 日) https://itafos.com/news/2026/itafos-reports-q3-2026-financial-results-and-operational-highlights/ ── 中国の輸出の禁止の期限、米国の MAP の値段
+* 農林水産省「食料自給率・食料自給力について」 https://www.maff.go.jp/j/zyukyu/zikyu_ritu/011.html ── 飼料の自給率 24%、食料の自給率 37%(令和 7 年度)
+* 時事通信「肥料原料のリン『国産化』 下水汚泥から回収、自治体で拡大」(2026 年 5 月 4 日) https://www.jiji.com/jc/article?k=2026050300220&g=eco ── 需要 30 万トン、下水汚泥のリン 5 万トン、8 自治体 11 施設、福岡市と東京都の施設、東京都の担当者の話
+* 国土交通省「下水汚泥資源の肥料利用の拡大に向けた取組」(令和 8 年 1 月) https://www.maff.go.jp/j/seisan/sien/sizai/s_hiryo/kokunaishigen/zenkokukyougikai/attach/pdf/kaigi-60.pdf ── 肥料としての利用 35.8 万トン(15.4%)、リンの回収 1.7 万トン、2030 年度の目標 30%、重金属の分析と流通の支援、B-DASH
+* 神戸市「リン回収設備における最適運転方法の検討」 https://www.city.kobe.lg.jp/documents/83325/file_kenkyu2023_01.pdf ── こうべ再生リンの動き始めと出荷の量
+* 神戸市 市長定例会見の資料(2025 年 3 月 26 日) https://www.city.kobe.lg.jp/documents/78756/20250326.pdf ── 東灘処理場の回収の能力 年 100 トン、2024 年の実績 75 トン
+* 国土交通省「平成20年度 第１回 下水・下水汚泥からのリン回収・活用に関する検討会 議事録」(2009 年 1 月 20 日) https://www.mlit.go.jp/common/000033268.pdf ── 福岡市と島根県の運転の費用、引き取りの値段
+* 国土交通省「下水道におけるリン資源化の手引き」(2010 年 3 月) https://www.mlit.go.jp/common/000113958.pdf ── 灰の量と事業として成り立つ規模(本文 64 頁)
+* 国土交通省「下水汚泥資源の肥料利用拡大に向けた施策について」 https://www.mlit.go.jp/mizukokudo/sewerage/content/001573711.pdf ── 令和 4 年度の補正予算の案(国費 2,979 百万円)
+* 農林水産省「汚泥肥料」 https://www.maff.go.jp/j/syouan/nouan/kome/k_hiryo/odei/index.html ── PFAS の含有の実態と、考え方
+* 萩野ほか「下水汚泥からのリン回収プロセスの開発」環境資源工学 52 巻(2005 年) https://www.jstage.jst.go.jp/article/rpsj/52/4/52_4_172/_pdf/-char/ja ── 薬品と動力の費用、引き取りの値段
+endif::[]
+ifdef::lang-en[]
+= Spring Fertilizer at Its Second-Highest Price
+
+== Conclusion
+
+In July, in link:/en/blog/constraint-moved/[The Fertilizer Crisis, Three Months In], this site listed a checkpoint — "November. Zen-Noh's spring prices. The ranking of nitrogen and phosphate" — and promised to report the result whichever way it went. The result is in.
+
+On October 30, JA Zen-Noh, the national federation of Japan's agricultural cooperatives, set its prices for spring fertilizer in the 2026 fertilizer year (November 2026 to May 2027). The benchmark high-analysis compound rose *15.3% from autumn* (June to October), the second-highest level since 2005.
+
+Four things can be read from it.
+
+* *The supply is there. It is only expensive.* Stocks of ammonium phosphate and potash now exceed three months of annual need. Shelves are unlikely to empty in spring.
+* *What rose is what passes through sulfuric acid.* Imported urea fell. Superphosphate, ammonium sulfate and potassium sulfate all rose by double digits.
+* *A price fall will not arrive in time for spring planting.* Chinese exports are expected to resume in May 2027 at the earliest. Japan's spring season ends in May.
+* *The substitutes are imported too.* The phosphorus in compost and chicken manure comes from imported feed; the phosphorus in sewage sludge comes from imported food. And recovering phosphorus from sewage sludge does not pay for itself.
+
+*The yearly inflow, by whichever route, traces back to ore. What can be relied on is the stock already in the soil.*
+
+== Zen-Noh's Spring Prices, Item by Item
+
+=== The prices set
+
+Zen-Noh's table is below. The change is against the previous period (autumn of the 2026 fertilizer year, June to October).
+
+|===
+| Group | Item | Analysis (%) | vs. previous period
+
+| Nitrogen | Urea (imported, granular) | 46 | *−2.7%*
+| Nitrogen | Urea (domestic, prilled) | 46 | +21.7%
+| Nitrogen | Ammonium sulfate (granular) | 21 | +14.8%
+| Nitrogen | Calcium cyanamide | 21 | +3.1%
+| Phosphate | Superphosphate | 17 | +14.3%
+| Phosphate | Double superphosphate (jūshō-rin) | 35 | +3.4%
+| Potash | Potassium chloride | 60 | +5.1%
+| Potash | Potassium sulfate | 50 | +21.0%
+| Potash | Potassium silicate | 20 | +13.1%
+| Compound | High-analysis compound (benchmark) | 15-15-15 | *+15.3%*
+|===
+
+Two cautions on reading the table.
+
+* These changes are for the price Zen-Noh charges prefectural cooperatives and federations. They do not equal the change in what a farmer pays at the cooperative's counter.
+* The high-analysis compound is a benchmark grade used as a price guide; it differs from the grades actually sold.
+
+Ammonium phosphate does not appear as an item on its own. It enters the price of the high-analysis compound as a raw material.
+
+=== Twenty percent in a year
+
+The high-analysis compound had already risen 5% in the autumn prices set in May. This 15.3% comes on top.
+
+----
+1.05 × 1.153 = 1.21
+----
+
+Against spring a year ago (November 2025 to May 2026), it is *about 21% higher*. That spring had itself risen 4.3% from the period before (autumn 2025). The high-analysis compound has now risen *four periods in a row* since autumn 2025 (+3.3%, +4.3%, +5%, +15.3%).
+
+The highest level since 2005 was spring of the 2022 fertilizer year. The autumn just before it rose more than 50%. This spring comes next after that.
+
+=== Nitrogen — imports fell, domestic rose
+
+In July this site wrote that "spring nitrogen has room to fall." Imported urea came in at −2.7%, as expected. It had risen 14.5% in autumn. Zen-Noh attributes the fall to international prices turning down. It also notes that urea prices have recently started to rise again, on renewed tension in the Middle East and an Indian tender.
+
+But *domestic urea rose 21.7% and ammonium sulfate 14.8%*. The same urea fell when imported and rose sharply when made at home.
+
+Zen-Noh's explanation: with the Middle East situation dragging on, the cost of energy and of raw materials such as ammonia has soared for domestic production, and domestic manufacturing costs — heavy oil, packaging bags — have risen too. A fall in international prices does not lower the price of what is made at home. *What is at work is not the overseas market but the cost of making fertilizer with energy at home.*
+
+=== Phosphate — superphosphate up 14.3%
+
+In the phosphate group, superphosphate rose 14.3% and double superphosphate 3.4%. Phosphate items had risen 4.5–4.9% in autumn, so superphosphate's increase is three times larger.
+
+Superphosphate (single superphosphate) is made by dissolving phosphate rock in sulfuric acid. It is the item most directly exposed to the price of sulfuric acid.
+
+For ammonium phosphate, the raw material of the compound, Zen-Noh gives two reasons for the increase.
+
+. International prices stay high and do not come down.
+. Because China cut its exports, the source was switched from China to Morocco. Procurement costs such as ocean freight rose accordingly.
+
+In July this site wrote that "72% of ammonium phosphate still comes from China." That pattern changed over the past half year, and the change has shown up in the price. *The source could be changed. It could not be changed for free.*
+
+On China, Zen-Noh explains that although it is the main exporter of ammonium phosphate, it is having difficulty procuring sulfur and sulfuric acid, and there is no prospect of exports resuming even after the spring season.
+
+=== Potash — sulfuric acid here too
+
+Potassium chloride rose 5.1%. Firm demand in China, Brazil, India and elsewhere is given as the reason.
+
+What stands out is *potassium sulfate at +21.0%*. Its raw material, sulfuric acid, soared, so it rose far more than potassium chloride. Potassium silicate also rose 13.1%.
+
+=== Re-sorted, sulfuric acid appears
+
+Here are the items again, from the largest increase down.
+
+|===
+| Item | vs. previous period | How it is made
+
+| Urea (domestic) | +21.7% | Made at home from ammonia, using energy
+| Potassium sulfate | +21.0% | Made by treating potassium chloride with sulfuric acid
+| High-analysis compound | +15.3% | Blends ammonium phosphate, nitrogen and potash
+| Ammonium sulfate | +14.8% | A salt of ammonia and sulfuric acid
+| Superphosphate | +14.3% | Phosphate rock dissolved in sulfuric acid
+| Potassium silicate | +13.1% |
+| Potassium chloride | +5.1% | Mined and refined
+| Double superphosphate | +3.4% |
+| Calcium cyanamide | +3.1% |
+| Urea (imported) | −2.7% | International prices fell
+|===
+
+Three of the double-digit items — potassium sulfate, ammonium sulfate and superphosphate — are made with sulfuric acid. This is not Zen-Noh's explanation copied over; it is this site's reading of the table re-sorted by how each item is made.
+
+In July this site put sulfur in the "worse" column and wrote, "the route as expected, the level beyond expectations." According to the World Bank, sulfur prices roughly doubled from January to April. Half a year on, that sulfur has surfaced in Japan's domestic fertilizer price table. *The phosphate story has become a sulfur story before it is an ore story.*
+
+=== Exchange rates
+
+The exchange-rate moves in Zen-Noh's explanation are as follows (as reported by JAcom).
+
+* In mid-to-late July, the yen fell to the 163 range against the dollar, its weakest in about 40 years.
+* The coordinated Japan–US intervention on July 31 took it briefly to the low 155s.
+* Recently it has been in the 157–158 range.
+
+In July this site wrote, "if the weak yen persists, it adds to every column." The intervention pulled the yen back from 163, but 157–158 is a level that adds to every imported raw material.
+
+=== Volume — stocks exceed three months
+
+In July, under the Economic Security Promotion Act, the potassium chloride stockpile had reached its three-month target and ammonium phosphate stood at 2.4 months. Now Zen-Noh says it holds in Japan more than three months of annual need for both ammonium phosphate and potash.
+
+The source has also moved to Morocco. *Supplies are unlikely to run out in spring.* What bites is the price.
+
+Zen-Noh says it will work to deliver stably through orders based on actual demand and planned manufacturing and delivery. Read from the other side, quantities not ordered in advance come later.
+
+=== Domestic manufacturers
+
+Zen-Noh's explanation also describes the situation of domestic manufacturers.
+
+* Fuel and materials have risen.
+* When prices jumped in the 2022 fertilizer year, more farmers switched from compound fertilizer to compost and the like, and sales volume fell. Fixed costs weigh more heavily as a result.
+* Manufacturing equipment is ageing, and repair costs are rising.
+
+When prices rise, purchases fall. When purchases fall, the fixed cost per bag rises, and the price rises again. *Price increases have entered a loop in which each one becomes a reason for the next.*
+
+== A Price Fall Will Not Arrive in Time for Spring
+
+Views of what comes next differ.
+
+|===
+| Who | View
+
+| Argus | Chinese ammonium phosphate (DAP, MAP) exports resume around May 2027. Later if sulfur and sulfuric acid stay high
+| StoneX | Prices stay high while shipping through the Strait of Hormuz is congested
+| World Bank (May) | DAP rises about 6% in 2026 and falls about 10% in 2027 as new plants come online
+| Itafos (results, November 4) | China's export ban officially expired on September 1, but a meaningful increase in exports this year is unlikely. US MAP (New Orleans) holds near $810 per short ton
+|===
+
+In July this site named "China's domestic balance" as the first of the undecided questions and waited for the August decision. China's export ban officially expired on September 1. But no instruction to resume came, and exports did not return (Itafos).
+
+Whichever view one takes, *a fall will not arrive in time for Japan's spring season (through May)*. If prices fall, it will start with the autumn prices (June to October) set in May 2027 — and even that depends on the Middle East and on China's restart.
+
+== Compost and Chicken Manure Are Imported Too
+
+When compound fertilizer gets expensive, attention turns to compost and chicken manure. It happened in 2022 too, and as seen above, the shift was large enough to cut manufacturers' sales. The government also calls compost and sewage sludge "domestic resources."
+
+But trace where the phosphorus in them came from, and the trail does not end in Japan.
+
+* *The phosphorus in livestock manure comes from feed.* Japan's feed self-sufficiency is 24% (Ministry of Agriculture, Forestry and Fisheries, fiscal 2025). The compound feed eaten by chickens and pigs is mostly imported maize and soybean meal.
+* *That maize was grown with phosphate fertilizer too.* Phosphate rock spread on fields in the United States and Brazil becomes grain, crosses the ocean, passes through a chicken and becomes manure.
+* *Calcium phosphate is also added to feed.* It too is made from phosphate rock.
+* *Sewage sludge is the same.* Food self-sufficiency is 37% on a calorie basis (same source). The phosphorus in what people eat flows into the sewers.
+
+*Compost, chicken manure and sewage sludge are all imported phosphorus that has taken the long way round.*
+
+So when ore is constrained, grain rises, feed rises, livestock numbers fall, and manure falls with them. The same wave arrives, later than the fertilizer price. Calling them "domestic resources" describes where they sit, not where they came from.
+
+== Sewage Sludge — The Costs Do Not Add Up
+
+link:/en/phosphorus-and-farming/supply-constraint/[Chapter 1] of the series named recovery from sewage sludge as the third route. Here it is looked at from the side of cost.
+
+=== The order of magnitude
+
+* Japan's demand for phosphorus is 300,000 tonnes a year. The phosphorus contained in all the country's sewage sludge is about 50,000 tonnes a year (Jiji Press, May 2026). Compared on those figures, *even recovering all of it would cover one-sixth of demand.*
+* Sewage sludge used as fertilizer was 358,000 tonnes, 15.4% of the total (Ministry of Land, Infrastructure, Transport and Tourism, actual figures for fiscal 2023). Separately, 17,000 tonnes of sludge went to phosphorus recovery.
+* The national target is to raise fertilizer use from 15.4% in fiscal 2023 to 30% in fiscal 2030 (the ministry's environmental action plan, revised June 2025). That means roughly doubling it.
+
+=== The recovery plants are small
+
+At the end of fiscal 2025, eight municipalities had phosphorus recovery plants, eleven in all (the land ministry).
+
+|===
+| Where | Started | Output (product weight)
+
+| Fukuoka City, Seibu Water Treatment Center | April 2026 | 300 tonnes a year, the largest in Japan
+| Tokyo, Sunamachi Water Reclamation Center | January 2024 | About 70 tonnes
+| Kobe City, Higashinada Treatment Plant | February 2013 | Up to 100 tonnes a year; 75 tonnes in 2024. Until a few years ago, shipments were about 20 tonnes a year
+|===
+
+*The largest plant in Japan makes 300 tonnes a year by product weight.* Only part of that is phosphorus. Against 50,000 tonnes of phosphorus in sludge and 300,000 tonnes of demand, it is more than two orders of magnitude short.
+
+=== Cost
+
+A Tokyo official says recycled phosphorus is costly to make and far from the import price (Jiji Press). The view is that cost-cutting technology and public support are needed. The government, aiming to cut costs, has installed full-scale plants in five municipalities as national projects (B-DASH).
+
+The figures are old, but they show the order of magnitude.
+
+* At a 2009 national study panel, Fukuoka City reported the operating cost of the MAP method (recovering phosphorus as magnesium ammonium phosphate) at ¥500,000 per tonne of product. The price at which buyers took it was ¥21,000 per tonne. At the same meeting, Shimane Prefecture said about ¥50,000 per tonne. The figure differs by an order of magnitude from place to place.
+* A 2005 paper put the cost of the MAP and HAP methods at ¥60 or more per kilogram of product for chemicals and power alone. The same paper gives buyers' prices of ¥0–28 per kilogram.
+* A 2010 national guide estimated that one method of recovering phosphorus from incinerator ash becomes viable as a business at a scale of 10,000 tonnes of ash or more a year.
+
+None of these are at today's prices. Even so, one shape can be read from them: the cost of making it is far above the price it sells for.
+
+=== Why it does not add up
+
+. *A sewage plant's job is to clean water.* Recovering phosphorus adds chemicals (magnesium, alkali), electricity and labor on top. It is making fertilizer in a place that was not built as a fertilizer factory.
+. *It is dilute.* Phosphate rock mines phosphorus concentrated in one place. Sewage gathers again what has been spread thin. The gathering costs energy and chemicals.
+. *Small plants do not pay.* Only large cities that collect large amounts of ash reach viability. Most of the country's treatment plants fall short of that scale.
+. *The money to build them does not come from fertilizer sales.* In its draft supplementary budget for fiscal 2022, the land ministry set aside about ¥3 billion of national funds for fertilizer use of sewage sludge (composting plants, project development, phosphorus recovery trials). The B-DASH plants are installed by the government too. If selling fertilizer recovered the cost, national funds would not be needed.
+. *It comes out all year, but is used by season.* Sludge comes out every day. Fertilizer is needed in spring and autumn. Storage and transport cost money.
+. *The receiving side.* The land ministry supports analysis for heavy metals (cadmium, lead, chromium, arsenic, mercury, nickel) about four times a year, at treatment plants — 169 in total, counted across years. At the plants analyzed in fiscal 2024, every analysis in every season was below the legal limits. Even so, whether farmers and consumers will accept it is another matter, and the government runs separate support for building distribution routes (37 organizations in total). *Being able to make it does not mean being able to sell it.*
+
+There is also the route of not extracting the phosphorus and turning the sludge itself into compost or dried fertilizer. In October 2023 an official standard, "microbial-biomass phosphate fertilizer," was created. The 358,000 tonnes used as fertilizer include compost, dried sludge, incinerator ash and more, and the largest volumes are compost and dried sludge. The receiving side's concerns remain here unchanged. On PFAS (per- and polyfluoroalkyl substances), the Ministry of Agriculture says the levels in the sludge fertilizers it analyzed do not exceed the tolerable daily intake — the amount that can be eaten every day for a lifetime without harm. It has not yet set a standard.
+
+=== Still worth doing
+
+Returning sewage sludge to fields is better than burning and burying it. Not throwing away what used to be thrown away has value.
+
+But *it is not a "substitute for ore."* Recovering all of it would cover one-sixth of demand, the phosphorus comes from imported food, and recovery costs more than importing. In volume, origin and cost alike, it does not have the shape of a substitute.
+
+== Flow and Stock
+
+Sorting by "domestic or imported" leads to the wrong conclusion. If it is to be sorted, it is into these two.
+
+|===
+| | What | Ahead
+
+| The yearly inflow
+| Compound fertilizer, feed, food. Compost, chicken manure and sewage sludge ride on this flow
+| Shrinks with phosphate rock
+
+| The stock already in Japan
+| Phosphorus built up in field soil over decades of application
+| Still there — but in forms crops find hard to take up
+|===
+
+As written in link:/en/phosphorus-and-farming/no-cheap-return/[Chapter 2] of the series, most of the phosphate fertilizer applied binds with iron, aluminium and calcium in the soil and stays there. Japan's fields lose far less to crops than they receive, and the difference has built up in the soil.
+
+The only ways to stop depending on the flow are to use this stock and to return to the field what came out of it. Handing the stock to crops is the work of mycorrhizal fungi and roots (link:/en/phosphorus-and-farming/soil-microbes/[Chapter 5]).
+
+*The phosphate-rock constraint is not only about compound fertilizer. It reaches organic farming, which applies compost, in the same way.*
+
+== Checkpoints
+
+*May 2027.* Zen-Noh's autumn prices. Whether Chinese exports have returned (Argus expects May).
+
+*Sulfur.* The next prices of superphosphate, ammonium sulfate and potassium sulfate will be set by sulfur and sulfuric acid.
+
+*Feed and livestock.* Compound feed prices and the numbers of chickens and pigs. The volume of compost and chicken manure follows these, with a lag.
+
+*The price of recycled phosphorus.* Fertilizer made with Tokyo's recycled phosphorus is planned to go nationwide from fiscal 2026 in partnership with Zen-Noh. What will it cost at the counter, compared with fertilizer made from imported raw materials?
+
+*Spring (March to May 2027).* Whether shortages or allocations appear for quantities not ordered in advance.
+
+Whichever way it goes, the result will be reported here.
+
+'''
+
+== Related
+
+* link:/en/blog/constraint-moved/[The Fertilizer Crisis, Three Months In] — the July review. This post reports the result of its "November" checkpoint
+* link:/en/blog/nitrogen-balance/[The Nitrogen Balance] — the background to imported urea falling while domestic urea rose
+* link:/en/phosphorus-and-farming/supply-constraint/[Phosphorus and Farming, Chapter 1] — the three routes, including sewage sludge
+* link:/en/phosphorus-and-farming/no-cheap-return/[Phosphorus and Farming, Chapter 2] — why recycling within chemical fertilizer does not work
+* link:/en/phosphorus-and-farming/soil-microbes/[Phosphorus and Farming, Chapter 5] — the phosphorus built up in soil, and mycorrhizal fungi
+
+== References
+
+The Japanese sources are listed with their original titles.
+
+* JA Zen-Noh, 令和８肥料年度春肥の肥料価格について (October 30, 2026) https://www.zennoh.or.jp/press/release/2026/111396.html — item-by-item changes and the reasons
+* JAcom, 2026肥料年度春肥 高度化成は15.3％値上げで過去2番目に高い水準 ＪＡ全農 (October 2026) https://www.jacom.or.jp/articles/ZDOEmc_EcMyOL0YbpvAkQ — the table, reasons, exchange rates, stocks, domestic manufacturers
+* The Japan Agricultural News, 全農春肥、過去２番目の水準 https://www.agrinews.co.jp/news/index/415893
+* JAcom, 2026肥料年度秋肥 高度化成は5％値上げ (May 15, 2026) https://www.jacom.or.jp/articles/FN-Ms7G3Z1Ty9yoWcC01P — the autumn prices set in May
+* Nikkei, JA全農が肥料価格4%引き上げ (October 31, 2025) https://www.nikkei.com/article/DGXZQOUB293YN0Z21C25A0000000/ — spring a year ago
+* JA Zen-Noh, spring 2025 https://www.zennoh.or.jp/press/release/2025/107160.html and autumn 2025 https://www.zennoh.or.jp/press/release/2025/104831.html price releases — four increases in a row
+* World Bank, "Fertilizer prices surge as Strait of Hormuz disruptions tighten supplies" (May 14, 2026) https://blogs.worldbank.org/en/opendata/fertilizer-prices-surge-as-strait-of-hormuz-disruptions-tighten- — sulfur roughly doubled; DAP outlook for 2026 and 2027
+* The Western Producer, "Analysts disagree on what's next for phosphate fertilizer prices" (October 23, 2026) https://www.producer.com/markets/analysts-disagree-on-whats-next-for-phosphate-fertilizer-prices/ — the Argus and StoneX views
+* Itafos, "Q3 2026 Financial Results and Operational Highlights" (November 4, 2026) https://itafos.com/news/2026/itafos-reports-q3-2026-financial-results-and-operational-highlights/ — expiry of China's export ban; US MAP prices
+* Ministry of Agriculture, Forestry and Fisheries, 食料自給率・食料自給力について https://www.maff.go.jp/j/zyukyu/zikyu_ritu/011.html — feed self-sufficiency 24%, food 37% (fiscal 2025)
+* Jiji Press, 肥料原料のリン『国産化』 下水汚泥から回収、自治体で拡大 (May 4, 2026) https://www.jiji.com/jc/article?k=2026050300220&g=eco — demand of 300,000 tonnes, 50,000 tonnes in sludge, eight municipalities and eleven plants, the Fukuoka and Tokyo plants, the Tokyo official
+* Ministry of Land, Infrastructure, Transport and Tourism, 下水汚泥資源の肥料利用の拡大に向けた取組 (January 2026) https://www.maff.go.jp/j/seisan/sien/sizai/s_hiryo/kokunaishigen/zenkokukyougikai/attach/pdf/kaigi-60.pdf — 358,000 tonnes (15.4%), 17,000 tonnes to recovery, the 30% target, heavy-metal analysis and distribution support, B-DASH
+* Kobe City, リン回収設備における最適運転方法の検討 https://www.city.kobe.lg.jp/documents/83325/file_kenkyu2023_01.pdf — the Higashinada plant's start and shipments
+* Kobe City, mayor's press conference materials (March 26, 2025) https://www.city.kobe.lg.jp/documents/78756/20250326.pdf — capacity of 100 tonnes a year, 75 tonnes in 2024
+* Ministry of Land, Infrastructure, Transport and Tourism, minutes of the first study panel on phosphorus recovery from sewage and sludge (January 20, 2009) https://www.mlit.go.jp/common/000033268.pdf — operating costs in Fukuoka and Shimane, buyers' price
+* Ministry of Land, Infrastructure, Transport and Tourism, 下水道におけるリン資源化の手引き (March 2010) https://www.mlit.go.jp/common/000113958.pdf — ash volume and viable scale (p. 64)
+* Ministry of Land, Infrastructure, Transport and Tourism, 下水汚泥資源の肥料利用拡大に向けた施策について https://www.mlit.go.jp/mizukokudo/sewerage/content/001573711.pdf — fiscal 2022 draft supplementary budget (¥2,979 million)
+* Ministry of Agriculture, Forestry and Fisheries, 汚泥肥料 https://www.maff.go.jp/j/syouan/nouan/kome/k_hiryo/odei/index.html — PFAS levels and the ministry's position
+* Hagino et al., 下水汚泥からのリン回収プロセスの開発, Kankyō Shigen Kōgaku (Resources Processing) vol. 52 (2005) https://www.jstage.jst.go.jp/article/rpsj/52/4/52_4_172/_pdf/-char/ja — chemical and power costs; buyers' prices
+endif::[]

@@ -753,7 +753,8 @@ def blog_index_vars(lang, post_list_html):
 
 
 def custom_index_vars(lang, chapter_list_html, *, title, subtitle="",
-                      description="", url_base="", has_translation=False):
+                      description="", url_base="", has_translation=False,
+                      first_label="", first_link=""):
     """サイト独自シリーズ(site.json の builder.series で宣言したもの)の
     索引ページ用。共有ナビゲーションは既存の索引と同じものを使い、
     シリーズ固有の見出し・説明・言語切替リンクだけ差し替える。"""
@@ -773,5 +774,23 @@ def custom_index_vars(lang, chapter_list_html, *, title, subtitle="",
         "meta_description": description or subtitle or title,
         "other_lang_link": (ja_url if lang == "en" else en_url) if has_translation else "",
         "series_title": title,
+        # 以下は Fable の索引の物が残っていた(canonical が /fable/ を指し、
+        # 引用と緑の欄に Fable の文が出ていた)。シリーズ自身の物に替える。
+        "canonical_url": f"{config.SITE_URL}{en_url if lang == 'en' else ja_url}",
+        "hreflang_ja": f"{config.SITE_URL}{ja_url}",
+        "hreflang_en": f"{config.SITE_URL}{en_url}" if has_translation else "",
+        "series_description": description,
+        "intro_html": "",
+        "method_html": "",
+        "quote_html": "",
+        # 他の索引(サーバー編・本編)と同じ言い方にする
+        "cta_title": _text(lang == "en", f"Start with {first_label}",
+                           f"{first_label}から読み始める"),
+        "cta_html": _text(lang == "en", f"Read in order from {first_label}.",
+                          f"{first_label}から、順に読み進めよう。"),
+        "cta_btn1_link": first_link,
+        "cta_btn1_text": _text(lang == "en", f"Start with {first_label}",
+                               f"{first_label}から読み始める"),
+        "cta_btn2_link": "",
     })
     return v

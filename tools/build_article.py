@@ -161,11 +161,13 @@ def _series_chapter_toc_html(entries, current_slug, lang, summary):
     )
 
 
-def _chapter_nav_html(prev_item, next_item, fallback, lang):
+def _chapter_nav_html(prev_item, next_item, fallback, lang, index_link=False):
     """Prev/next navigation rendered under the article body.
 
     prev_item / next_item: (href, title) or None. fallback: (href, label)
-    shown in the "next" slot at the end of a series.
+    shown in the "next" slot at the end of a series. index_link=True also
+    puts the fallback (the series contents) between prev and next, so a
+    reader can go back to the contents from any chapter.
     """
     is_en = lang == "en"
     prev_prefix = "Prev: " if is_en else "前: "
@@ -180,6 +182,9 @@ def _chapter_nav_html(prev_item, next_item, fallback, lang):
         right = f'<a href="{fallback[0]}">{fallback[1]} &rarr;</a>'
     else:
         right = ""
+    if index_link and next_item and fallback:
+        middle = f'<a href="{fallback[0]}">{fallback[1]}</a>'
+        return f'<nav class="chapter-nav">\n  {left}\n  {middle}\n  {right}\n</nav>'
     return f'<nav class="chapter-nav">\n  {left}\n  {right}\n</nav>'
 
 
@@ -2577,6 +2582,7 @@ def build_custom_chapter(md_path, sdef):
         (f"{url_base}/{next_slug}/", meta.get("next_title", "")) if next_slug else None,
         (series_index_url, "Contents" if is_en else "目次"),
         lang,
+        index_link=True,
     )
     variables = _chapter_vars(
         meta, body_html,
@@ -2679,8 +2685,20 @@ def build_custom_index(sdef, lang="ja"):
             items += _custom_index_item_html(url_base, c)
     else:
         items = "".join(_custom_index_item_html(url_base, c) for c in chapters)
+    # 索引に並べた順の最初の章(編があれば最初の編の頭)
+    ordered = []
+    for pcfg in parts_cfg:
+        key = str(pcfg.get("key", ""))
+        ordered += [c for c in chapters
+                    if str(c.get("part", "")).strip(chr(34)) == key]
+    first = (ordered or chapters)[0]
     variables = custom_index_vars(
         lang, items,
+        first_label=(_custom_chapter_badge(first)
+                     if str(first.get("part", "")).strip(chr(34))
+                     else _numbered_chapter_label(
+                         str(first.get("number", "")).strip(chr(34)), lang)),
+        first_link=f"{url_base}/{first.get('slug', '')}/",
         title=_sdef_text(sdef, "label", lang) or base,
         subtitle=_sdef_text(sdef, "subtitle", lang),
         description=_sdef_text(sdef, "description", lang),

@@ -482,8 +482,9 @@ ____
 * *神戸市*:下水汚泥からの「こうべ再生リン」の回収と、それを利用
   した有機配合肥料「こうべハーベスト」の製造・活用
 * 福岡市、鳥取市、大阪府でリン回収パイロットプロジェクト
-* 政府は *令和4年度補正予算から令和7年度にかけて累計 300 億円超*
-  の国費を措置し、インフラ整備を強力に後押し
+* 国土交通省は、令和4年度補正予算の案に、下水汚泥の肥料利用のための
+  国費 *約 30 億円(2,979 百万円)* を積み、堆肥化施設、案件づくり、
+  リン回収の実証を後押しした `[出典:国土交通省「下水汚泥資源の肥料利用拡大に向けた施策について」]`
 
 === PFAS(有機フッ素化合物)規制という致命的足枷
 
@@ -491,17 +492,20 @@ ____
 存在する。*PFAS(有機フッ素化合物)* による広範な汚染問題である。
 
 PFAS は、撥水剤、フライパンのコーティング、泡消火剤、フッ素樹脂など
-に広く使用されてきた数千種類に及ぶ人工化学物質の総称で、*自然界で極めて分解されにくく「永遠の化学物質(Forever Chemicals)」と形容される*。これは下水処理施設に集まる汚泥(ISSA:焼却下水汚泥
-灰などを含む)に高濃度で蓄積されやすい性質を持つ。
+に広く使用されてきた数千種類に及ぶ人工化学物質の総称で、*自然界で極めて分解されにくく「永遠の化学物質(Forever Chemicals)」と形容される*。これは下水処理施設に集まる汚泥に溜まりやすい。ただし、農林水産省が 2026 年 7 月に公表した検証では、汚泥を燃やした後の灰は、17 点のうち 1 点を除いて定量下限(0.5 µg/kg)未満だった。燃やせば、大半は分解される `[出典:農林水産省「汚泥資源を原料とする肥料中の PFOS、PFOA 及び PFHxS に関する科学的知見について」]`。
 
-規制は急速に進む。
+水道の規制は進んだ。肥料には、まだ基準値が無い。
 
 * *2020 年 3 月*:水質管理目標設定項目として暫定目標値が設定
 * *2026 年 4 月*:水道水中の *PFOS および PFOA(代表的な PFAS)*
   の合算値に対する基準値(*50 ng/L 以下*)が、法的義務を伴う
   正式な水質基準として施行 `[出典:envix.co.jp]`
-* *2026 年 6 月*:農林水産省も下水汚泥肥料に対する PFAS 暫定基準
-  を施行する見通し
+* *2024 年 4 月*:農林水産省は「汚泥肥料中の PFOS 及び PFOA について」で、
+  分析した中で最も濃い汚泥肥料(PFOA 250 µg/kg)を使い続けても、
+  耐容一日摂取量を超えない、という「現時点での考え方」を示した
+* *2026 年 7 月*:農林水産省は令和 7 年度の分析結果を公表した。80 点の
+  最大は PFOA の 59 µg/kg で、9 割以上は 10 µg/kg 以下。耐容一日摂取量を
+  超えないことを改めて確認した。汚泥肥料の PFAS の基準値は、まだ定めていない
 
 ただし、国際的な規制動向と比較すると *日本の基準は依然として緩やか*。米国では 2024 年 4 月に新規制案が提示され、PFOS、PFOA
 それぞれ単独で *「4 ng/L 未満」* という極めて厳格な基準値が設定
@@ -632,6 +636,12 @@ ____
 * 農林水産省「肥料をめぐる情勢」令和8年(2026年)4月版
 * 環境省 PFOS・PFOA 水質基準(2026 年 4 月施行)
 * 経済安全保障推進法に基づく特定重要物資指定
+* 国土交通省「下水汚泥資源の肥料利用拡大に向けた施策について」
+  (令和4年度補正予算の案、国費 2,979 百万円)
+  https://www.mlit.go.jp/mizukokudo/sewerage/content/001573711.pdf
+* 農林水産省「汚泥肥料」(汚泥肥料中の PFOS・PFOA の考え方、令和 7 年度の
+  分析結果、燃焼による低減の検証)
+  https://www.maff.go.jp/j/syouan/nouan/kome/k_hiryo/odei/index.html
 
 *業界レポート・解説*
 
@@ -804,19 +814,20 @@ In theory, the recoverable potential from Japan's sewage sludge is estimated at 
 
 * *Kobe City*: recovery of "Kobe Recovered Phosphorus" from sewage sludge, and the manufacture and use of an organic compound fertilizer ("Kobe Harvest") built on it
 * Phosphorus-recovery pilot projects in Fukuoka, Tottori, and Osaka
-* The government has allocated *more than 30 billion yen cumulatively in national funds from the FY2022 supplementary budget through FY2025*, strongly backing infrastructure development
+* In its draft FY2022 supplementary budget, the Ministry of Land, Infrastructure, Transport and Tourism set aside *about 3 billion yen (2,979 million yen)* in national funds for fertilizer use of sewage sludge — composting plants, project development, and phosphorus-recovery trials `[source: MLIT, measures to expand fertilizer use of sewage-sludge resources]`
 
 === The fatal shackle of PFAS regulation
 
 But there is a fatal wall blocking full deployment of this recycling route: the broad contamination problem from *PFAS (per- and polyfluoroalkyl substances)*.
 
-PFAS is the umbrella term for thousands of synthetic chemicals used in water repellents, frying-pan coatings, firefighting foam, fluoropolymers, and more. *They resist breakdown in nature so strongly they are called "forever chemicals."* They tend to accumulate at high concentration in sludge that gathers at sewage-treatment plants (including ISSA: incinerated sewage-sludge ash).
+PFAS is the umbrella term for thousands of synthetic chemicals used in water repellents, frying-pan coatings, firefighting foam, fluoropolymers, and more. *They resist breakdown in nature so strongly they are called "forever chemicals."* They tend to accumulate in sludge that gathers at sewage-treatment plants. However, in a study MAFF published in July 2026, the ash left after burning the sludge was below the limit of quantification (0.5 µg/kg) in all but 1 of 17 samples. Burning breaks most of it down `[source: MAFF, scientific findings on PFOS, PFOA and PFHxS in fertilizers made from sludge]`.
 
-Regulation is moving fast.
+Regulation of tap water has moved forward. Fertilizer has no standard yet.
 
 * *March 2020*: a provisional target value is set as a water-quality management item
 * *April 2026*: the standard for combined *PFOS and PFOA (representative PFAS)* in tap water (*at or below 50 ng/L*) takes effect as a formal water-quality standard with legal force `[source: envix.co.jp]`
-* *June 2026*: MAFF is expected to enact a provisional PFAS standard for sewage-sludge fertilizer
+* *April 2024*: in "PFOS and PFOA in sludge fertilizer," MAFF set out its "current view": even continued use of the most concentrated sludge fertilizer it analyzed (PFOA 250 µg/kg) would not exceed the tolerable daily intake
+* *July 2026*: MAFF published its FY2025 analysis. The maximum among 80 samples was PFOA at 59 µg/kg, and over 90% were at or below 10 µg/kg. It reconfirmed that the tolerable daily intake is not exceeded. It has not yet set a PFAS standard for sludge fertilizer
 
 Compared with international regulation, however, *Japan's standard remains lenient*. In April 2024, the United States proposed new rules with extremely strict thresholds of *"under 4 ng/L"* for PFOS and PFOA each on their own. *The 4 ng/L figure is essentially the limit of quantification of current testing, equivalent to demanding "no detection at all" — zero tolerance.*
 
@@ -919,6 +930,8 @@ In the next chapter, we confirm — through the economics of low-grade ore and p
 * MAFF, "Situation Surrounding Fertilizer," Reiwa 8 (2026) April edition
 * Ministry of the Environment PFOS/PFOA water-quality standards (in force April 2026)
 * Specified-critical-material designation under the Economic Security Promotion Act
+* Ministry of Land, Infrastructure, Transport and Tourism, measures to expand fertilizer use of sewage-sludge resources (draft FY2022 supplementary budget, 2,979 million yen in national funds) https://www.mlit.go.jp/mizukokudo/sewerage/content/001573711.pdf
+* Ministry of Agriculture, Forestry and Fisheries, sludge fertilizer page (its view on PFOS and PFOA in sludge fertilizer, the FY2025 analysis, and the study of reduction by burning) https://www.maff.go.jp/j/syouan/nouan/kome/k_hiryo/odei/index.html
 
 *Industry reports and commentary*
 

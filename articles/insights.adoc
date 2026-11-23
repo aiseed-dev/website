@@ -2630,7 +2630,7 @@ Firefoxエクスプロイト成功率 → 前世代の2回 → Mythosは181回�
 
 現在はAnthropicが「危険すぎる」と判断し一般公開していない。防御側の 12 の創設組織と約 40 の重要インフラ事業者にのみ限定提供している（Project Glasswing）。しかし他のAI企業——OpenAI、Google DeepMind、Meta——が同等の能力に到達すれば、非公開を維持する理由がなくなる。*一般公開は2026年後半から2027年前半が現実的な時間軸だ。*
 
-*【2026年11月23日追記】* 2026 年 6 月 9 日に、同じ基盤のモデルが、安全分類器の付いた Fable 5 として一般に出た。Mythos のモデルそのものは、今は、Anthropic の検証の制度(Cyber Verification Program)で承認を受けた組織と個人が、守りの仕事に使える。制度の今の決まりは link:/blog/verification-program-changed/[ブログ「Anthropic の検証の制度が変わった」] に書いた。
+*【2026年11月23日追記】* 2026 年 6 月 9 日に、Mythos 5 と同じ基盤のモデルが、安全分類器の付いた Fable 5 として一般に出た。Mythos のモデルそのものは、今は、Anthropic の検証の制度(Cyber Verification Program)で承認を受けた組織と個人が、守りの仕事に使える。制度の今の決まりは link:/blog/verification-program-changed/[ブログ「Anthropic の検証の制度が変わった」] に書いた。
 
 == 金融システムの三層構造——なぜ崩壊するのか
 
@@ -2813,7 +2813,7 @@ What state-sponsored elite hackers spent months and millions of dollars on can n
 
 Currently, Anthropic has deemed Mythos "too dangerous for public release" and provides it only to 12 founding partners and about 40 critical-infrastructure operators (Project Glasswing). But once other AI companies — OpenAI, Google DeepMind, Meta — reach equivalent capability, there is no reason to maintain the restriction. *Public release in late 2026 to early 2027 is a realistic timeline.*
 
-*[Added November 23, 2026]* On June 9, 2026, a model on the same base was released to the public as Fable 5, with safety classifiers. The Mythos models themselves can now be used for defensive work by organizations and individuals approved under Anthropic's Cyber Verification Program. The program's current rules are in link:/en/blog/verification-program-changed/[the blog post "Anthropic Changed Its Cyber Verification Program"].
+*[Added November 23, 2026]* On June 9, 2026, a model on the same base as Mythos 5 was released to the public as Fable 5, with safety classifiers. The Mythos models themselves can now be used for defensive work by organizations and individuals approved under Anthropic's Cyber Verification Program. The program's current rules are in link:/en/blog/verification-program-changed/[the blog post "Anthropic Changed Its Cyber Verification Program"].
 
 == The Financial System's Three-Layer Structure — Why It Will Collapse
 

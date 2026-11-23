@@ -141,7 +141,7 @@ AI モデルへのアクセスには、用途による段がある。
 * *作る時期* ── 一日じゅう AI にコードを書かせる日が続くあいだは、上の帯
   (Claude Max など、月 100 ドルから)を使う。作り終えて運用に入ったら、
   基本プランに戻す。時期ごとの内訳は link:/ai-native-software/ai-pc/[2-02] に置いた。
-* *最上位のモデル* ── 各社の最上位のモデルには、定額の枠の外で従量課金になっているものがある(Anthropic の Fable 5 は 2026 年 7 月から)。この連載の仕事は、上の二つの帯で足りる。
+* *最上位のモデル* ── 各社の最上位のモデルには、定額の枠に入らないか、枠の一部しか使えないものがある(Anthropic の Fable は、Pro では使った分の払いだけ、Max と Ultra では週の上限の半分まで。2026-11-23 に確認)。この連載の仕事は、上の二つの帯で足りる。
 * *API 従量課金* ── 使った分だけ払う形もあるが、*ここは使わない*。同じ量を
   API で通すと、定額のおよそ *10 倍* になる。
 
@@ -435,9 +435,10 @@ use them.
   day, use the tier above (Claude Max and the like, from $100 a month). Once
   the building is done and the tools are running, drop back to the base plan.
   The breakdown by period is in link:/en/ai-native-software/ai-pc/[2-02].
-* *The top models* — some vendors' top models sit outside the flat plans, on
-  pay-as-you-go (Anthropic's Fable 5 since July 2026). The work in this series
-  is covered by the two tiers above.
+* *The top models* — some vendors' top models sit outside the flat plans, or
+  can use only part of them (Anthropic's Fable: usage credits only on Pro, up to
+  half the weekly limit on Max and Ultra; checked 2026-11-23). The work in this
+  series is covered by the two tiers above.
 * *API pay-as-you-go* — you can pay for what you use, but *do not use it
   here*. Run the same volume through the API and it comes to roughly *ten
   times* the flat plan.

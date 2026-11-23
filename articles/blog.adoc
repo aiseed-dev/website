@@ -10165,6 +10165,10 @@ Microsoft は、自社の AI で穴を見つけて直す、と言うだろう。
 
 検証されないことを前提に成り立ってきたのは、SIer の納品物だけではない。巨大で複雑で、中身の見えないものすべてである。Microsoft は、その最大のものの一つだ。
 
+== 【11月23日追記】穴を探す仕事には、公式の道がある
+
+この記事の後、この仕事の道筋がはっきりした。コードを読む事、知られた問題を直す事、警告を仕分ける事は、申し込みなしに、ふつうに使える Claude でできる。穴が本当に使えるかを確かめる事や、許しを得た侵入の試験は、Claude の安全分類器に止められる事がある。そのために Anthropic は Cyber Verification Program を設けていて、自社のシステムを確かめる会社は Defense Access に申し込む。その決まりは 11 月に変わった。link:/blog/verification-program-changed/[Anthropic の検証の制度が変わった] に書いた。
+
 '''
 
 == 関連
@@ -10261,6 +10265,10 @@ Microsoft will say it finds and fixes holes with its own AI. But this enters the
 And for Microsoft to truly address its flaws, it has to abandon backward compatibility, the root of the complexity. But backward compatibility is the very weapon by which Microsoft has bound its customers. Abandon it and it becomes healthy, but it loses the power to bind. Becoming healthy and losing dominance become one and the same act. So it cannot abandon it. Unable to abandon it, it keeps being verified, its holes kept visible.
 
 What has stood on the premise of not being verified is not only the SIer's deliverables. It is everything vast, complex, and opaque inside. Microsoft is one of the largest of them.
+
+== [Added November 23, 2026] There Is an Official Route for Finding Vulnerabilities
+
+Since this post, the route for this work has become clearer. Reading code, patching known issues and triaging alerts can be done with the generally available Claude, without applying for anything. Validating whether a vulnerability is actually exploitable, or running authorized penetration tests, may be blocked by Claude's safety classifiers. For that, Anthropic runs the Cyber Verification Program, and a company checking its own systems applies for Defense Access. Its rules changed in November; see link:/en/blog/verification-program-changed/[Anthropic Changed Its Cyber Verification Program].
 
 '''
 
@@ -12468,6 +12476,8 @@ ____
 
 読ませる材料も、自分で選んだほうがいい。自社の設計判断の記録、公式の規格、一次資料。渡すものが自分のものであるほど、返ってくるものは世間の平均から離れる。*まず、確かめること。*
 
+*【11月23日追記】* コードを見直して、出てきた指摘を読む所までは、申し込みなしに、ふつうに使える AI でできる。穴が本当に使えるかを確かめる所から先は、Claude の安全装置に止められる事がある。その道として Anthropic は検証の制度を設けていて、自社のシステムを守る仕事の枠(Defense Access)には、組織でも個人でも申し込める。決まりは link:/blog/verification-program-changed/[Anthropic の検証の制度が変わった] に書いた。
+
 === 第三条件:端で決められること
 
 委託の往復が間に合わないのと同じ理由で、*組織の内部の往復も間に合わない。* 情報は全部集まっている。AIも導入済みだ。それでも、決裁が中央へ行って戻るまでに事象が終わるなら、端のセンサーは飾りになる。https://aiseed.dev/blog/three-fronts-same-week/[上海]が662か所の雨量観測点を持ちながら水に浸かったのは、この形である。センサーは足りていた。平均が局所を消し、判断が中央にあった。
@@ -12662,6 +12672,8 @@ Two parts of it must not be dropped.
 *The other is "yourself."* Having someone else run the verification and receiving their report is not verification; it is outsourced verification — and it rebuilds the round trip all over again. Read the findings yourself, then decide which are genuinely dangerous.
 
 Choose what you feed it, too. Your own records of design decisions, the official standards, primary sources. The more the material is your own, the further what comes back sits from the general average. *First, check.*
+
+*[Added November 23]* Reviewing code and reading the findings can be done with the generally available AI, without applying for anything. From validating whether a vulnerability is actually exploitable onward, Claude's safeguards may block the work. For that, Anthropic runs a verification program, and both organizations and individuals can apply for its tier for defending their own systems (Defense Access). The rules are in link:/en/blog/verification-program-changed/[Anthropic Changed Its Cyber Verification Program].
 
 === Third Condition: Being Able to Decide at the Edge
 
@@ -15707,4 +15719,284 @@ As a place to measure the power to build something complete in one week, the hac
 * Built with Claude: Japan 2026 (Cerebral Valley event page) https://cerebralvalley.ai/e/built-with-claude-japan2026 — dates; 250 participants (selected)
 * Masanobu Fukuoka, 無 III 自然農法 (_Mu III: Natural Farming_), Shunjūsha, 1985
 
+endif::[]
+
+// ===== article: 052-verification-program-changed =====
+---
+slug: verification-program-changed
+title.ja: Anthropic の検証の制度が変わった ── 自分のシステムを AI で確かめる会社が、今する事
+title.en: Anthropic Changed Its Cyber Verification Program — What a Company Checking Its Own Systems with AI Should Do Now
+subtitle.ja: 上の二つの枠は Enterprise と API だけになり、どの枠にも当たる決まりは七つある。12 月 15 日からは、フィッシングに強い多要素認証が要り、長く使う鍵は使えない
+subtitle.en: The two upper tiers are now Enterprise and API only, and seven rules apply to every tier. From December 15, phishing-resistant MFA is required and long-lived keys are out
+date: 2026.11.23
+description.ja: Anthropic は 11 月 18 日、Cyber Verification Program の記事を更新し、Red Team Access と Specialized Access を Enterprise と API の契約だけにした。Team の組織は Defense Access までである。決まりの頁には、どの枠にも当たる七つの決まり(事故の報告は 72 時間と 24 時間など)が書かれ、12 月 15 日からは、フィッシングに強い多要素認証と、長く使う鍵の禁止が始まる。コードを読む確かめには申し込みは要らない。穴を確かめる所まで進むなら、使う組織から Defense Access に申し込み、12 月 15 日までに認証を替える。
+description.en: On November 18, Anthropic updated its Cyber Verification Program announcement: Red Team Access and Specialized Access are now available only on Enterprise and API plans, and Team organizations are limited to Defense Access. A requirements page lists seven rules that apply to every tier (incident reports within 72 and 24 hours, among others), and from December 15 phishing-resistant MFA is required and long-lived keys are banned. Reviewing code needs no application. To go as far as validating vulnerabilities, apply for Defense Access from the organization you actually use, and change your authentication by December 15.
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+---
+ifdef::lang-ja[]
+= Anthropic の検証の制度が変わった
+
+== 結論
+
+Anthropic の Cyber Verification Program は、守りの仕事で Claude の安全装置に止められないようにする制度である。11 月に、その契約の条件が変わった。合わせて、今の決まりを並べる。
+
+* *上の二つの枠は、Enterprise と API の契約だけになった。* Anthropic の記事の 11 月 18 日の更新である。Team の組織が持てるのは、Defense Access だけになった。
+* *どの枠にも当たる決まりが、七つある。* 事故の報告は、疑いなら 72 時間、セキュリティの事故なら 24 時間のうちに Anthropic へ出す。
+* *12 月 15 日から、認証が変わる。* Defense Access には、フィッシングに強い多要素認証が要り、長く使う API の鍵は使えなくなる。
+
+自分のシステムを AI で確かめる会社が、今する事は三つである。
+
+. *コードを読む確かめは、今日から始める。* これには申し込みは要らない。
+. *穴が本当に使えるかを確かめる所まで進むなら、Defense Access に申し込む。* 申し込むのは、実際に Claude を使っている組織からである。後で侵入の試験に進むなら、Claude Console か Claude Enterprise の組織から出す。
+. *12 月 15 日までに、認証を替える。* セキュリティキーかパスキーにし、鍵を置いて動かす形をやめる。
+
+== 制度が要る仕事、要らない仕事
+
+制度の頁の頭には、日々の安全な開発には、この制度は要らない、と書いてある。コードを見直す事、知られた問題を直す事、警告を仕分ける事は、ふつうに使える Claude でできる。
+
+制度が要るのは、守りの仕事を安全装置が止める時である。頁は例として、穴が本当に使えるかを確かめる事と、許しを得た侵入の試験を挙げている。
+
+6 月の link:/blog/verification-shock/[Fable 5 が戻ってきたら、すぐやるべきこと] で、稼働中の自社システムを全部 AI にかけて確かめる、と書いた。今の形で言えば、コードを見直す所までは、申し込みなしで進められる、と頁は書いている。穴を探す仕事がどこから止められるかの線は、頁に書いていない。Anthropic の記事は、ふつうに使えるモデルの安全装置は、サイバーの仕事の大半を止める、と書いている。止められたら、言い換えて押し通さずに、Defense Access に申し込む。
+
+== 三つの枠
+
+制度は 10 月 6 日に、三つの枠になった。11 月 18 日の更新の後の形は、次の通りである。
+
+|===
+| | Defense Access | Red Team Access | Specialized Access
+
+| 仕事 | 守りの運用、事故の対応、マルウェアの解析、検知の仕組み、穴の仕分けと確かめ | 許しを得た侵入の試験、レッドチーム | 重要なインフラの侵入の試験と、最も重い手法の研究
+| 申し込める者 | 組織と個人 | 組織だけ | 組織だけ
+| 契約 | Pro、Max、Ultra、Team、Enterprise、API | Enterprise、API | Enterprise、API
+| 承認される人数 | 既定の上限は無い | 75 人まで | 25 人まで
+| 返事の目安 | 2 日 | 2 週間 | 決まっていない
+|===
+
+自分の会社のコードを読み、穴を仕分けて確かめ、直す仕事は、Defense Access に入る。
+
+== 11 月に変わった事
+
+Anthropic の記事は 10 月 6 日に出て、11 月 18 日に更新された。更新の注は、Red Team Access と Specialized Access の契約が変わった事と、Specialized Access の対象をはっきりさせた事を書いている。変わる前の形は、注には書いていない。筆者の側で 11 月 11 日に制度の頁を読んで書いた手引きでは、二つの枠の契約は、どちらも Team、Enterprise、API だった。それが、今は Enterprise と API だけになった。
+
+今の頁から読める事は、二つある。
+
+* *Team の組織は、Defense Access までである。* 頁の FAQ は、上の枠へ進めるのは、Claude Console か Claude Enterprise の組織として申し込んだ場合だけだ、と書いている。
+* *申し込む組織を、先に決める必要がある。* Claude のアカウントと Claude Console のアカウントは、別の組織である。承認は、ほかの組織には引き継がれない。後で侵入の試験まで進むつもりなら、Team から始めると、申し込みを出し直す事になる、と読める。
+
+申し込みは、出した後に直す事も取り消す事もできない、と頁は書いている。どの組織から、組織と個人のどちらとして出すかは、出す前に決める。
+
+== どの枠にも当たる七つの決まり
+
+決まりの全文は、別の頁「Cyber Verification Program Security Requirements」にある。どの枠にも当たるのは、次の七つである。
+
+. *セキュリティの連絡先。* 知らせを受けて動ける人を、名前で届ける。
+. *事故の報告。* 承認に関わる侵害や悪用の疑いは 72 時間のうちに、セキュリティの事故は 24 時間のうちに、Anthropic に報告する。
+. *協力。* Anthropic が見つけた悪用は 48 時間のうちに調べ、悪用についての問い合わせには 7 日のうちに答える。
+. *本人が使う。* 承認された人は、本人としてログインする。ログインやセッションを人と共有しない。
+. *誰が使ったかが分かる事。* 作業の場で、利用者のプロフィールを有効にしておく。
+. *変わった時の知らせ。* セキュリティの体制、持ち主、本社、連絡先が大きく変わったら、30 日のうちに知らせる。
+. *続く見直し。* Anthropic は、決まりを守っている証拠を求める事がある。
+
+個人として承認を受けた時に当たるのは、このうち、事故の報告、協力、続く見直しの三つである。
+
+一番重いのは、報告の期限である。事故の対応の手順で「知らせる」先に、Anthropic を入れておく。24 時間のうちに報告できる体制かどうかで、連絡先を誰にするかが決まる。
+
+== 12 月 15 日からの認証
+
+決まりの頁は、2026 年 12 月 15 日までに、Defense Access に次の二つが要ると書いている。
+
+* *フィッシングに強い多要素認証。* 認められるのは、FIDO2 / WebAuthn のセキュリティキー、パスキー(端末の中でも、パスワードの管理の道具の中でもよい)、IC カードの三つである。SMS、音声、メールで届く番号、認証のアプリの番号、プッシュの承認は、認められない。メールのリンクでのログインは切っておく。
+* *固定の鍵、長く使う鍵は不可。* API の鍵も入る。
+
+その日までの API の鍵には、四つの条件がある。秘密の保管の仕組みかパスワードの管理の道具に置く。一人の人か一つの仕組みに割り当てる。ソースコードに入れない。少なくとも 7 日ごとに替える。
+
+制度の頁は、短い間だけ有効な鍵に取り替える仕組み(Workload Identity Federation)へ、今のうちに移る事を勧めている。7 日ごとに鍵を替える運用を作り込むより、その移る準備に時間を使う方が、手戻りが少ない。
+
+== AI に渡した物は、保持される
+
+制度の頁は、制度に入った者は全員、データの保持が必須だと書いている。サイバーの悪用を見張り、防ぐためである。
+
+Mythos の級のモデルについては、別の頁が、入力と出力を 30 日保持する、と書いている(2026 年 6 月 9 日から)。30 日の後は自動で消える。ただし、自動の仕組みが害の恐れで印を付けた物と、法で残す必要がある物は除く。Anthropic の人は、既定では保持された会話を読めない。
+
+Free、Pro、Max、Ultra の個人向けの契約は、前から別の決まりで入力と出力が保持されていて、この 30 日の話の外である。Fable や Mythos のモデルについて保持の例外を持つ組織は、社内の使い道に限って、保持なしで制度を使える。個人の承認では、保持なしは選べない。
+
+ここから言える事は一つである。*AI に読ませた物は、Anthropic に送られ、保持される物として扱う。* コード、設定の定義、データベースの定義は渡す。鍵やパスワードは値を伏せる。顧客の名簿や取引の中身は渡さない。
+
+== 客のシステムを確かめる会社は、別の承認が要る
+
+頁は、既定では社内の使い道だけを認める、と書いている。客のための仕事には、社内の使い道で承認を受けた後に、別の申し込みが要る。承認は、客に出すサービスや製品の一つごとに要る。
+
+型は三つある。自社の人が Claude を使って客のために仕事をする請け負いのサービスは、受け付けている。客がモデルに指示できない製品は、Defense Access について、データの保持を条件に受け付けている。客がモデルに指示できる製品は、まだ受け付けていない。
+
+自社が持ち主のシステムを、自社のために確かめるなら、業者から納められたコードでも、社内の使い道と読める。業者が自分の客のために確かめるなら、業者の側に、この承認が要る。
+
+Team の契約は、組織の全員に効き、人ごとに分けられない。頁は、社外の使い道の承認を得るまで、制度の入った組織から客にサービスを出さないように、と書いている。システムの開発や運用を請け負う会社は、ここを先に確かめる。
+
+== 今する事
+
+もう一度、順に並べる。
+
+. *今日:* コードを読む確かめを始める。申し込みは要らない。読ませる物と伏せる物を決める。
+. *申し込む前:* どの組織から出すかを決める。後で侵入の試験まで進むなら、Console か Enterprise の組織にする。セキュリティの連絡先を決める。
+. *申し込み:* 自社の仕事を、その通りに書く。何を確かめるか、誰がするか、何を渡さないか。
+. *12 月 15 日まで:* 制度を使うアカウントの全部を、セキュリティキーかパスキーにする。鍵で動かしている仕組みは、短い間だけ有効な鍵に移る。
+. *事故の対応の手順:* 知らせる先に Anthropic を入れ、72 時間と 24 時間の期限を書き込む。
+
+== 観測点
+
+*12 月 15 日。* 決まりの通りに、作業の場の API の鍵が止まるか。
+
+*客に出す製品。* 客がモデルに指示できる製品の受け付けが始まるか。
+
+*保持の期間。* Opus と Sonnet を制度の下で使う時の保持の期間が、頁に書かれるか。今は、どちらの頁にも書いていない。
+
+'''
+
+== 関連
+
+* link:/blog/verification-shock/[Fable 5 が戻ってきたら、すぐやるべきこと] ── 稼働中の自社システムを、全部 AI で確かめる
+* link:/insights/defense-cannot-be-bought/[構造分析 3-10 守りは買えない] ── 委託・製品・基盤の三つの出口
+* link:/fable/constraints-and-cautions/[Fable 5 が帰ってきた 第7回 制約と注意点] ── 安全分類器と、データの保持
+
+== 参考
+
+* Anthropic「Cyber Verification Program」(サポートの頁) https://support.claude.com/en/articles/14604842-cyber-verification-program ── 三つの枠、要らない仕事、契約ごとの違い、社内と社外の使い道、データの保持、12 月 15 日からの決まり(2026 年 11 月 23 日に閲覧)
+* Anthropic「Cyber Verification Program Security Requirements」 https://support.claude.com/en/articles/17202708-cyber-verification-program-security-requirements ── どの枠にも当たる決まり、フィッシングに強い多要素認証、期限の日までの API の鍵(2026 年 11 月 23 日に閲覧)
+* Anthropic「Data retention practices for Covered Models」 https://support.claude.com/en/articles/15425996-data-retention-practices-for-covered-models ── 30 日の保持、人が見る時の決まり(2026 年 11 月 23 日に閲覧)
+* Anthropic「Expanding the Cyber Verification Program」(2026 年 10 月 6 日、11 月 18 日更新) https://www.anthropic.com/news/cyber-verification-program ── 11 月 18 日の更新の注、止められた時の報告のフォーム
+* 手引き「AI で自社のシステムを確かめる ── 始め方」 https://door.aiseed.dev/check/ ── この記事の元にした、申し込みから運用までの手順
+endif::[]
+ifdef::lang-en[]
+= Anthropic Changed Its Cyber Verification Program
+
+== Conclusion
+
+Anthropic's Cyber Verification Program is a scheme that keeps Claude's safeguards from blocking defensive security work. In November, its plan terms changed. Alongside that, here are the rules as they stand.
+
+* *The two upper tiers are now Enterprise and API only.* This is the November 18 update to Anthropic's announcement. Team organizations can hold Defense Access only.
+* *Seven rules apply to every tier.* Incidents must be reported to Anthropic within 72 hours if suspected, and within 24 hours for a security incident.
+* *Authentication changes on December 15.* Defense Access will require phishing-resistant MFA, and long-lived API keys will no longer be allowed.
+
+A company checking its own systems with AI has three things to do now.
+
+. *Start reviewing code today.* No application is needed for this.
+. *If you will go as far as validating whether a vulnerability is exploitable, apply for Defense Access.* Apply from the organization that actually uses Claude. If you may later move on to penetration testing, apply from a Claude Console or Claude Enterprise organization.
+. *Change your authentication by December 15.* Move to security keys or passkeys, and stop running things on stored keys.
+
+== Work That Needs the Program, and Work That Does Not
+
+The program's page says at the top that you do not need it for everyday secure development. Reviewing code, patching known issues and triaging alerts can be done with the generally available Claude.
+
+The program is for when safeguards block defensive work. The page gives validating exploits and running authorized penetration tests as examples.
+
+In June, in link:/en/blog/verification-shock/[When Fable 5 Returns, Do This First], this site wrote that a company should run every system it operates through AI to verify it. In today's terms, the page says reviewing code can proceed without applying. It does not say where the line falls at which hunting for vulnerabilities gets blocked. Anthropic's announcement says the generally available models have conservative cyber safeguards that block most cyber work. If you are blocked, do not rephrase to push through; apply for Defense Access.
+
+== The Three Tiers
+
+On October 6 the program was split into three tiers. After the November 18 update, they stand as follows.
+
+|===
+| | Defense Access | Red Team Access | Specialized Access
+
+| Work | Security operations, incident response, malware analysis, detection engineering, vulnerability triage and validation | Authorized penetration testing, red teaming | Penetration testing of critical infrastructure, and research on the most severe techniques
+| Who can apply | Organizations and individuals | Organizations only | Organizations only
+| Plans | Pro, Max, Ultra, Team, Enterprise, API | Enterprise, API | Enterprise, API
+| Approved users | No default limit | Up to 75 | Up to 25
+| Typical response | Two days | Two weeks | No set target
+|===
+
+Reading your own company's code, triaging and validating vulnerabilities, and fixing them falls under Defense Access.
+
+== What Changed in November
+
+Anthropic's announcement was published on October 6 and updated on November 18. The update note says plan availability changed for Red Team Access and Specialized Access, and that who qualifies for Specialized Access was clarified. The note does not say what the terms were before. In the guide we wrote after reading the program's page on November 11, the plans for both tiers were Team, Enterprise and API. Now they are Enterprise and API only.
+
+Two things can be read from the current page.
+
+* *Team organizations stop at Defense Access.* The page's FAQ says you can move to a higher tier only if you applied as a Claude Console or Claude Enterprise organization.
+* *You need to decide the applying organization first.* A Claude account and a Claude Console account are separate organizations. An approval does not carry over to another organization. If you intend to go as far as penetration testing later, starting from Team appears to mean applying again.
+
+The page says an application cannot be edited or withdrawn once submitted. Decide before you submit which organization applies, and whether as an organization or an individual.
+
+== Seven Rules for Every Tier
+
+The full rules are on a separate page, "Cyber Verification Program Security Requirements." These seven apply to every tier.
+
+. *Security contact.* Register a named person who can receive notices and act on them.
+. *Incident reporting.* Report suspected compromise or misuse involving the approval to Anthropic within 72 hours, and security incidents within 24 hours.
+. *Cooperation.* Investigate any abuse Anthropic identifies within 48 hours, and answer inquiries about misuse within seven days.
+. *Personal access.* Each approved user signs in as themselves. Logins and sessions are not shared.
+. *Usage attribution.* Keep user profiles enabled on the workspace.
+. *Notice of changes.* Notify Anthropic within 30 days of a material change to the security setup, ownership, headquarters or contact.
+. *Ongoing review.* Anthropic may ask for evidence of compliance.
+
+For an individual approval, three of these apply: incident reporting, cooperation and ongoing review.
+
+The heaviest of these is the reporting deadline. Put Anthropic among the parties to notify in your incident-response procedure. Whether you can report within 24 hours decides who should be the contact.
+
+== Authentication from December 15
+
+The requirements page says that by December 15, 2026, Defense Access requires the following two things.
+
+* *Phishing-resistant MFA.* Three methods qualify: a FIDO2 / WebAuthn security key, a passkey (on the device or in a password manager), and a smartcard. SMS, voice, emailed codes, authenticator-app codes and push approvals do not. Email magic-link sign-in must be turned off.
+* *No static or long-lived credentials.* This includes API keys.
+
+Until that date, API keys must meet four conditions: stored in a secrets manager or password manager; assigned to a single person or workload; kept out of source code; and replaced at least every seven days.
+
+The program's page recommends moving now to Workload Identity Federation, which exchanges short-lived credentials. Spending time preparing that move costs less rework than building out a seven-day key rotation.
+
+== What You Give the AI Is Retained
+
+The program's page says data retention is required for everyone enrolled, in order to monitor and prevent cyber misuse.
+
+For Mythos-class models, a separate page says inputs and outputs are retained for 30 days (since June 9, 2026). After 30 days they are deleted automatically, except what automated systems have flagged for potential harm and what the law requires keeping. By default, Anthropic personnel cannot read retained conversations.
+
+The consumer plans — Free, Pro, Max and Ultra — already retain inputs and outputs under other rules, and fall outside this 30-day change. Organizations with a data-retention exception for Fable or Mythos models can use the program without retention, for internal use only. An individual approval cannot opt out of retention.
+
+One conclusion follows. *Treat whatever the AI reads as sent to Anthropic and retained.* Give it code, configuration definitions and schema definitions. Redact the values of keys and passwords. Do not give it customer lists or transaction contents.
+
+== Companies That Check Customers' Systems Need a Separate Approval
+
+The page says that by default only internal use is allowed. Work for customers needs a separate application after approval for internal use, and approval is needed for each service or product offered to customers.
+
+There are three types. A managed service, where your own people use Claude to do work for customers, is accepted. A product where customers cannot prompt the model is accepted for Defense Access, with data retention required. A product where customers can prompt the model is not yet accepted.
+
+If you check systems your company owns, for your company, it reads as internal use — even code delivered by a contractor. If a contractor checks systems for its own customers, the contractor needs this approval.
+
+A Team plan applies to every user in the organization and cannot be split by person. The page says not to offer services to customers from an organization enrolled in the program until external use is approved. Companies that build or run systems under contract should check this first.
+
+== What to Do Now
+
+Once more, in order.
+
+. *Today:* start reviewing code. No application is needed. Decide what to give the AI and what to redact.
+. *Before applying:* decide which organization applies. If you may move on to penetration testing, make it a Console or Enterprise organization. Decide the security contact.
+. *Applying:* describe your company's work as it is — what you will check, who will do it, what you will not hand over.
+. *By December 15:* move every account that uses the program to security keys or passkeys. Move systems that run on keys to short-lived credentials.
+. *Incident-response procedure:* add Anthropic to the parties to notify, with the 72-hour and 24-hour deadlines.
+
+== Checkpoints
+
+*December 15.* Whether workspace API keys are stopped, as the rules say.
+
+*Products for customers.* Whether Anthropic starts accepting products where customers can prompt the model.
+
+*Retention periods.* Whether the pages state the retention period for Opus and Sonnet used under the program. Neither page says so now.
+
+'''
+
+== Related
+
+* link:/en/blog/verification-shock/[When Fable 5 Returns, Do This First] — verify every system your company runs with AI
+* link:/en/insights/defense-cannot-be-bought/[Structural Analysis 3-10: Defense Cannot Be Bought] — outsourcing, products, platforms: three exits
+
+== References
+
+* Anthropic, "Cyber Verification Program" (support article) https://support.claude.com/en/articles/14604842-cyber-verification-program — the three tiers, work that needs no application, plan differences, internal and external use, data retention, rules from December 15 (read November 23, 2026)
+* Anthropic, "Cyber Verification Program Security Requirements" https://support.claude.com/en/articles/17202708-cyber-verification-program-security-requirements — rules for every tier, phishing-resistant MFA, interim API keys (read November 23, 2026)
+* Anthropic, "Data retention practices for Covered Models" https://support.claude.com/en/articles/15425996-data-retention-practices-for-covered-models — 30-day retention, rules for human access (read November 23, 2026)
+* Anthropic, "Expanding the Cyber Verification Program" (October 6, 2026, updated November 18) https://www.anthropic.com/news/cyber-verification-program — the November 18 update note, the form for reporting blocks
+* Guide (Japanese), "Checking your own systems with AI — getting started" https://door.aiseed.dev/check/ — the step-by-step procedure this post draws on, from application to operation
 endif::[]

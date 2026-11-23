@@ -15467,3 +15467,244 @@ The Japanese sources are listed with their original titles.
 * Ministry of Agriculture, Forestry and Fisheries, 汚泥肥料 https://www.maff.go.jp/j/syouan/nouan/kome/k_hiryo/odei/index.html — PFAS levels and the ministry's position
 * Hagino et al., 下水汚泥からのリン回収プロセスの開発, Kankyō Shigen Kōgaku (Resources Processing) vol. 52 (2005) https://www.jstage.jst.go.jp/article/rpsj/52/4/52_4_172/_pdf/-char/ja — chemical and power costs; buyers' prices
 endif::[]
+
+// ===== article: 051-one-week-cannot-see =====
+---
+slug: one-week-cannot-see
+title.ja: 一週間では見えないもの ── Claude のハッカソンに畑のアプリを出して、入賞しなかった
+title.en: What One Week Cannot See — I Entered a Field App in the Claude Hackathon and Did Not Place
+subtitle.ja: 作る手間は AI が一週間に縮めた。三分の動画で見せられるのは、その作った物までだ。持ち続ける手間と、一年に一度しか答えの返らない畑は、一週間の外にある
+subtitle.en: AI has shrunk the work of making into a week. A three-minute video can show what was made, and no further. The work of keeping, and a field that answers once a year, lie outside the week
+date: 2026.11.11
+description.ja: 11 月 2 日から 8 日の「Built with Claude: Japan 2026」に、耕作放棄地で自然農法を始めるためのアプリ seed を出し、10 日に入賞しなかったと分かった。動画が分かりにくかった。指示しない時の Claude は入力欄の画面を作る事、PC のアプリにした理由、作る手間と持つ手間。一週間のハッカソンが測る物と、測れない物を整理する
+description.en: I entered seed, an app for starting natural farming on abandoned farmland, in Built with Claude: Japan 2026 (built November 2–8), and on the 10th learned it did not place. The video was hard to follow. Left to itself, Claude builds screens of input fields; why seed is a desktop app; the work of making and the work of keeping. What a one-week hackathon measures, and what it cannot
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+---
+ifdef::lang-ja[]
+= 一週間では見えないもの
+
+== 結論
+
+Anthropic と Cerebral Valley が開いた「Built with Claude: Japan 2026」に参加した。選ばれた参加者は 250 人で、11 月 2 日から 8 日までの一週間で作り、出した。出したのは seed、耕作放棄地で自然農法を始める人が、畑で写真を撮り、Claude と話し、それを記録として残すアプリである。*11 月 10 日、入賞しなかったと分かった。*
+
+理由は、私の見立てでは動画にある。三分の動画が分かりにくかった。審査基準の四分の一は動画で、「前提知識のない人でも、使う人にとっての価値が分かるか」と書いてある。私の動画はそうなっていなかった。ここは言い訳の余地がない。
+
+その上で、一週間やって分かった事を書いておく。*AI は、作る手間を一週間に縮めた。三分の動画で見せられるのは、その作った物までである。* 作った後に何年も持ち続ける手間と、一つの手を確かめるのに季節が一巡りする畑は、一週間の外にある。私が seed でやろうとしていた事の大半は、その外の側にあった。
+
+== 何を出したか
+
+提出するのは、概要、三分の動画、公開の GitHub リポジトリの三つで、すべて日本語。審査基準は、インパクト 30%、デモ 25%、Claude の活用 25%、深さと実行力 20% だった。テーマは二つあり、私は「あなたにしかない深さを」を選んだ。
+
+seed は、こういう物である。
+
+* 畑では写真を撮るだけ。文字を打つ所は、画面の下の一行しかない。
+* 写真を Claude が読む。草の名、土の様子を、一行ずつ確からしさを付けて返し、一つ問い返す。
+* 間違いは言葉で直す。Claude は白い穂の草を「ススキらしい」と読み、私が「オギ」と直した。その直しが記録に残り、次の読みに使われる。
+* 土地の成り立ち(地形、地質、土壌、昔の空中写真)は、公開の地図から出典を付けて引く。ここに AI は使わない。
+* 記録は素の文字のファイルで、自分の PC に残る。アプリが無くなっても読める。
+
+素の Claude は、肥料と農薬を前提に答える。そこで、福岡正信『無 III 自然農法』を Claude に読ませ、無肥料の畑を読むための手引き(Skill)を作った。提出の日の午後に数えると、手引きは 11 組、畑を読む手引きは 14 章、引く資料は 479、テストは 760、コミットは 148 だった。開発はすべて Claude Code で、私が形を言葉で決め、Claude が設計と確かめをし、別の Claude が実装を書いた。
+
+リポジトリは https://github.com/aiseed-dev/seed 、動画は https://www.youtube.com/watch?v=AkR-jltFTZg にある。
+
+== 一番詰まった所 ── Claude の既定は入力欄だった
+
+提出のフォームに「開発中に一番詰まった場面」という項目があった。書いたのは、11 月 6 日の夜の事である。
+
+その日まで、画面の形について私は何も指示していなかった。Claude は、機能を足すたびに、欄とチェックとボタンの並ぶ画面を作っていった。記録を人に見せる画面は、観察を選ぶ、行にチェックを付ける、粗さを選ぶ、一言を書く、送る、の五つの操作になっていた。
+
+畑の物は形がばらばらで、欄に入らない。Claude に話せば済む事なら、画面は要らない。私は画面を見て「全部の画面がこれまでの作り方」と言い、フォームは全部なくす、Claude Code のようにチャットの形にする、と言い直した。Claude はその夜のうちにアプリを全部作り直した。画面は「話す」と「写真」の二つになった。
+
+*指示しない時の Claude の作り方は、AI が無かった時代のアプリの形である。* 学んだ元がそうだから、当然そうなる。AI の時代の形は、人が言葉で言わないと出てこない。これは一週間の中で一番大きな発見だった。
+
+== PC のアプリにした理由
+
+ハッカソンの頁が公開している数は、参加者 250 人(選考あり)までである。応募作品の数は、11 月 11 日の時点で、公式には出ていない。
+
+審査する人にとっては、URL 一つで開ける Web の方が見やすい。それでも、seed は PC のアプリにした。理由は三つある。
+
+* *定額で読める。* PC のアプリは、その PC の Claude Code を本人の契約で動かす。畑は一回の確かめに一年かかり、写真は何百枚にもなる。一枚ごとに払う形だと、撮る前に「送るほどの物か」と迷う。定額なら迷わず送れ、記録が厚くなる。Web アプリは、その人の PC の Claude Code を呼べない。鍵を持たせるか、サーバーの側で払うかになる。
+* *記録が自分の所にある。* 記録は自分の PC の素の文字と写真で、サーバーが預かる物ではない。去年の観察も今日の写真も、同じフォルダーの中で Claude が読める。
+* *守る物が減る。* サーバーに置けば、人のデータと鍵を守る仕事が始まる。置かなければ、その仕事は無い。
+
+どれも、三分の動画には映らない。
+
+== 入賞しなかった理由
+
+審査基準のデモの項は、こう聞いている。冒頭で「誰の、どんな課題を、どう解決するか」が明確か。前提知識のない人でも、操作の流れを通じて価値が分かるか。最後まで見たくなるか。
+
+私の動画は、三分に、背丈を超える草の畑、アプリの画面、記録の形、足せる画面、スマートフォンから家の PC へ送る仕組み、作り方、を詰めた。台本は私が作った。私が台本を作ると、話が飛ぶ。構造の急所は掴めるが、知らない人に順に語るのは得意でない。動画は、言葉で説明できる人と作る物だった。
+
+もう一つ、seed の値打ちの多くが、そもそも三分で見せにくい側にあった。次の節で書く。ただ、それは入賞しなかった理由にはならない。見せにくい物を見せるのがデモで、基準は初めから公開されていた。
+
+== 作る手間と、持つ手間
+
+業務システムの世界で、AI が変えたのは作る手間である。作る事は AI が一日でする。残るのは守る事と持ち続ける事で、今の委託業者の仕事の大半もそこにある(link:/insights/defense-cannot-be-bought/[構造分析 3-10])。
+
+道具の選び方も、ここで変わる。npm は要る物がたいてい包みとして揃い、組み合わせればすぐ動く。その代わり、組み合わせた包みの数だけ、後で面倒を見る物が増える。版を上げる、壊れた所を直す、乗っ取りを疑う。作った後の方が長い。seed は Python と Flet(Flutter で画面を描く)で作った。最初は手間がかかる。足りない部品は自分で作った。その代わり、頼る包みは少なく、上げる版の数字は一つである。
+
+農家には、アプリを直す係の人がいない。天気、草、収穫の記録は何年も、何十年も続ける。途中で包みが壊れて動かなくなれば、記録が途切れる。だから、作りやすさより持ち続けやすさで選んだ。
+
+*管理の重さは、作っている間には見えず、何年も経ってから出る。一週間のハッカソンでは見えない。* これは誰かの落ち度ではない。一週間で測れるのは、一週間で出来る物である。
+
+== 欄と畑
+
+もう一つ、一週間の外にあるのが畑そのものである。
+
+業務システムは、表に書ける。どの機械に、どの鍵と口があるべきか。表に書けるので、AI が突き合わせられる。だから守りの仕事は、委託業者の代わりに AI にさせられる。
+
+自然農法の畑は、表に書けない。畑は一枚ずつ違う。答えは一年に一度しか返らない。何もしない事が判断である。言葉にできないので、委託できない。seed の手引きが「やり方」ではなく「読み方」なのは、このためだ。畑に立つのは本人で、Claude は隣で読み、記録を育てる。
+
+*AI で仕事が減るのは欄の側で、畑の側では仕事が増える。* 畑に立つ人。AI と一緒に始める人。畑で確かめた読み方を、AI が読める手引きに書く人。何年分かの記録を次に立つ人へ渡す人。化学肥料はリン鉱石に乗っていて、リン鉱石は偏り、減る(link:/blog/borrowed-phosphorus/[春肥は過去 2 番目の高値])。肥料を入れずに作れる人と畑は、値打ちが上がる。
+
+seed の本当の確かめは、育てる事である。Claude の読みが合っていたかは、来年の畑が返す。一週間では、種を播く所までも行かない。
+
+== 残った物
+
+* *自分で使うアプリ。* 提出の後も毎日開いている。その前に Meta Global AI Developer Hackathon(10 月 26 日〜11 月 4 日)に出した畑のアプリ fieldnotes を、11 月 11 日に seed に合わせて一本にした。
+* *手引き。* 畑を読む 14 章と、引く資料。足りない章を書き足し、Claude の読みを畑で確かめるのが、これからの仕事である。
+* *記録。* 写真、Claude の読み、私の直し。素の文字で手元にある。
+* *直す所の一覧。* 動画は作り直す。README の頭に、耕作放棄地と手引きを書く。
+
+ハッカソンは、一週間で作り切る力を測る場として、よく出来ていた。審査基準は具体的で、主催のセッションは実際に役に立った。私はそこに、一週間では答えの出ない物を持ち込んだ。入賞しなかった事と、やる事が変わらない事は、両方とも本当である。
+
+== 観測点
+
+* 2027 年の春。今年の秋に Claude が読んだ土と草の読みが、播いた物の育ちと合うか。
+* 2027 年の秋。一年分の記録が、手引きを何章書き換えさせたか。
+* 次の版の Flet に上げる時。PC とスマートフォンの両方を、版の数字一つで上げられるか。
+* 作者のほかに、手元の PC に入れて一周した人が出るか。
+
+'''
+
+== 関連
+
+* link:/ai-native-software/builder/[AI ネイティブなソフトウェア開発 1-04] ── 一人のビルダーから始まる
+* link:/ai-native-software/maintenance-shift/[同 1-02 保守フェーズの構造変化こそ本質] ── 手間は作る側から持つ側へ
+* link:/insights/defense-cannot-be-bought/[構造分析 3-10 守りは買えない]
+* link:/blog/project-folder-first/[文脈はフォルダーに書く] ── 記録を手元のフォルダーに置く
+* link:/blog/borrowed-phosphorus/[春肥は過去 2 番目の高値] ── 肥料を入れない畑の値打ち
+
+== 参考
+
+* seed のリポジトリ https://github.com/aiseed-dev/seed ── README、設計書、提出フォームの原稿(`docs/提出フォーム.md`)、審査基準の写し(`docs/提出.md`)
+* 提出した動画(3 分) https://www.youtube.com/watch?v=AkR-jltFTZg
+* Built with Claude: Japan 2026(Cerebral Valley の催しの頁) https://cerebralvalley.ai/e/built-with-claude-japan2026 ── 期間、参加者 250 人(選考あり)
+* 福岡正信『無 III 自然農法』(春秋社、1985 年)
+
+endif::[]
+ifdef::lang-en[]
+= What One Week Cannot See
+
+== Conclusion
+
+I took part in "Built with Claude: Japan 2026," held by Anthropic and Cerebral Valley. There were 250 selected participants, and we built and submitted in one week, from November 2 to 8. What I entered was seed, an app for people starting natural farming on abandoned farmland: you take photos in the field, talk with Claude, and keep that as a record. *On November 10, I learned it did not place.*
+
+The reason, as I see it, is the video. The three-minute video was hard to follow. A quarter of the judging criteria is the demo, and it asks whether "someone with no prior knowledge can understand the value to the user." My video did not do that. There is no excuse to make here.
+
+With that said, here is what one week taught me. *AI has shrunk the work of making into a week. A three-minute video can show what was made, and no further.* The work of keeping a thing going for years after it is made, and a field where checking one move takes a full turn of the seasons, lie outside the week. Most of what I was trying to do with seed lay on that outside.
+
+== What I Entered
+
+The submission was three things: a summary, a three-minute video, and a public GitHub repository, all in Japanese. The judging criteria were impact 30%, demo 25%, use of Claude 25%, and depth and execution 20%. There were two themes, and I chose "the depth only you have."
+
+This is what seed is.
+
+* In the field, you only take photos. The only place to type is one line at the bottom of the screen.
+* Claude reads the photo. It returns the names of plants and the state of the soil line by line, each with a confidence, and asks one question back.
+* Mistakes are corrected in words. Claude read a grass with white plumes as "probably susuki (Japanese silver grass)," and I corrected it to "ogi (Amur silver grass)." The correction stays in the record and is used in the next reading.
+* The history of the land (landform, geology, soil, old aerial photos) is drawn from public maps, with sources. No AI is used for this.
+* The record is plain-text files that stay on your own PC. They can be read even if the app disappears.
+
+Out of the box, Claude answers on the assumption of fertilizer and pesticides. So I had Claude read Masanobu Fukuoka's _Mu III: Natural Farming_ and built guides (Skills) for reading a field farmed without fertilizer. Counted on the afternoon of the deadline, there were 11 sets of guides, 14 chapters of field-reading guides, 479 sources cited, 760 tests and 148 commits. All development was done in Claude Code: I set the shape in words, one Claude designed and checked, and another Claude wrote the implementation.
+
+The repository is at https://github.com/aiseed-dev/seed and the video at https://www.youtube.com/watch?v=AkR-jltFTZg.
+
+== Where I Got Stuck Most — Claude's Default Was the Input Field
+
+The submission form had an item, "the moment you got stuck most during development." What I wrote about was the night of November 6.
+
+Until that day I had given no instructions about the shape of the screens. Each time a feature was added, Claude built a screen of fields, checkboxes and buttons. The screen for showing the record to someone had become five operations: choose observations, tick rows, choose a level of detail, write a note, send.
+
+Things in a field come in every shape and do not fit into fields. If talking to Claude is enough, no screen is needed. I looked at the screens and said, "every screen is the old way of building," and restated it: remove all the forms, make it a chat, like Claude Code. Claude rebuilt the whole app that night. The screens became two: "talk" and "photos."
+
+*Left without instructions, Claude builds apps in the shape they had before AI.* That is what it learned from, so it could hardly be otherwise. The shape for the age of AI does not appear until a person says it in words. This was the biggest discovery of the week.
+
+== Why a Desktop App
+
+The figure the hackathon's page publishes stops at 250 participants (selected). As of November 11, no official count of entries has been released.
+
+For the judges, a web app that opens from one URL is easier to look at. Even so, I made seed a desktop app. There are three reasons.
+
+* *Reading on a flat rate.* A desktop app runs Claude Code on that PC under the user's own subscription. In a field, one check takes a year, and photos run to hundreds. If you pay per photo, you hesitate before each shot: is this worth sending? On a flat rate you send without hesitation, and the record grows thick. A web app cannot call the Claude Code on the user's PC. It must either hold a key for them or pay on the server side.
+* *The record stays with you.* The record is plain text and photos on your own PC, not something a server holds. Last year's observations and today's photos sit in the same folder, where Claude can read them.
+* *Less to guard.* Put it on a server, and the work of guarding people's data and keys begins. Don't, and that work does not exist.
+
+None of these shows up in a three-minute video.
+
+== Why It Did Not Place
+
+The demo criterion asks this: is it clear at the start "whose problem, what problem, and how it is solved"? Can someone with no prior knowledge understand the value through the flow of operations? Do you want to watch to the end?
+
+Into three minutes, my video packed a field with grass taller than a person, the app's screens, the shape of the record, screens that can be added, the way records are sent from a phone to the PC at home, and how it was built. I wrote the script. When I write a script, the story jumps. I can grasp the key points of a structure, but telling it in order to someone who does not know it is not my strength. The video was something to make with a person who can explain in words.
+
+There is another point: much of seed's value lay on the side that is hard to show in three minutes to begin with. The next section is about that. But it is not a reason for not placing. Showing what is hard to show is what a demo is for, and the criteria were public from the start.
+
+== The Work of Making, and the Work of Keeping
+
+In the world of business systems, what AI changed is the work of making. AI does the making in a day. What remains is guarding and keeping things going, and that is where most of today's contractors' work is, too (link:/en/insights/defense-cannot-be-bought/[Structural Analysis 3-10]).
+
+The choice of tools changes here as well. With npm, what you need is usually there as packages, and combining them gets things running fast. In exchange, every package you combine is one more thing to look after later: raising versions, fixing what breaks, suspecting takeovers. The time after making is longer than the making. I built seed with Python and Flet (which draws screens with Flutter). It takes more work at first. I built the missing parts myself. In exchange, it depends on few packages, and there is one version number to raise.
+
+A farmer has no one whose job is fixing apps. Records of weather, plants and harvests go on for years, for decades. If a package breaks partway and the app stops, the record breaks off. So I chose by how easy it is to keep going, not by how easy it is to build.
+
+*The weight of maintenance cannot be seen while building; it appears years later. A one-week hackathon cannot see it.* This is no one's fault. What one week can measure is what can be made in one week.
+
+== Fields and the Field
+
+The other thing outside the week is the field itself.
+
+A business system can be written in a table: which machine should have which keys and which ports open. Because it can be written in a table, AI can check against it. So the work of guarding can be given to AI instead of a contractor.
+
+A naturally farmed field cannot be written in a table. Every field is different. Answers come back once a year. Doing nothing is a decision. Since it cannot be put into words, it cannot be outsourced. That is why seed's guides are about "how to read," not "what to do." The person stands in the field; Claude reads alongside and grows the record.
+
+*Where AI reduces work is on the side of the form fields; on the side of the field, work increases.* People who stand in fields. People who start with AI. People who write what they confirmed in the field into guides AI can read. People who hand years of records to whoever stands there next. Chemical fertilizer rides on phosphate rock, and phosphate rock is unevenly distributed and runs down (link:/en/blog/borrowed-phosphorus/[Spring Fertilizer at Its Second-Highest Price]). People and fields that can grow food without fertilizer gain in value.
+
+The real test of seed is growing things. Whether Claude's readings were right, next year's field will answer. In one week, you do not even get as far as sowing.
+
+== What Remains
+
+* *An app I use myself.* I open it every day after the submission too. On November 11 I merged into seed, as one app, fieldnotes — a field app I had entered earlier in the Meta Global AI Developer Hackathon (October 26 to November 4).
+* *The guides.* Fourteen chapters for reading a field, and the sources they cite. The work ahead is writing the missing chapters and checking Claude's readings in the field.
+* *The record.* Photos, Claude's readings, my corrections. Plain text, at hand.
+* *A list of things to fix.* Remake the video. Put abandoned farmland and the guides at the top of the README.
+
+As a place to measure the power to build something complete in one week, the hackathon was well made. The criteria were concrete, and the organizers' sessions were genuinely useful. I brought to it something whose answer one week cannot give. That it did not place, and that what I will do has not changed, are both true.
+
+== Checkpoints
+
+* Spring 2027. Whether the readings of soil and plants Claude made this autumn match how what was sown grows.
+* Autumn 2027. How many chapters of the guides a year of records made me rewrite.
+* When moving to the next version of Flet. Whether both the PC and the phone can be raised with one version number.
+* Whether anyone besides the author installs it on their own PC and goes through a full cycle.
+
+'''
+
+== Related
+
+* link:/en/ai-native-software/builder/[AI-Native Software Development 1-04] — it starts with one builder
+* link:/en/ai-native-software/maintenance-shift/[1-02: Maintenance-Phase Shift Is the Real Story] — the work moves from making to keeping
+* link:/en/insights/defense-cannot-be-bought/[Structural Analysis 3-10: Defense Cannot Be Bought]
+* link:/en/blog/project-folder-first/[Write the Context into a Folder] — keeping the record in a folder at hand
+* link:/en/blog/borrowed-phosphorus/[Spring Fertilizer at Its Second-Highest Price] — the value of a field without fertilizer
+
+== References
+
+* seed repository https://github.com/aiseed-dev/seed — README, design document, draft of the submission form (`docs/提出フォーム.md`), copy of the judging criteria (`docs/提出.md`)
+* The submitted video (3 minutes) https://www.youtube.com/watch?v=AkR-jltFTZg
+* Built with Claude: Japan 2026 (Cerebral Valley event page) https://cerebralvalley.ai/e/built-with-claude-japan2026 — dates; 250 participants (selected)
+* Masanobu Fukuoka, 無 III 自然農法 (_Mu III: Natural Farming_), Shunjūsha, 1985
+
+endif::[]

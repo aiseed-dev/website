@@ -16000,3 +16000,548 @@ Once more, in order.
 * Anthropic, "Expanding the Cyber Verification Program" (October 6, 2026, updated November 18) https://www.anthropic.com/news/cyber-verification-program — the November 18 update note, the form for reporting blocks
 * Guide (Japanese), "Checking your own systems with AI — getting started" https://door.aiseed.dev/check/ — the step-by-step procedure this post draws on, from application to operation
 endif::[]
+
+// ===== article: 053-cyber-war-mythos-and-humans =====
+---
+slug: cyber-war-mythos-and-humans
+title.ja: サイバー戦争は、もう始まっています ── Mythos と、人間で、守る
+title.en: The Cyber War Has Already Begun — Defending with Mythos and People
+subtitle.ja: 今年の日本で起きた事、AI で人類は滅ぶのかという問い、そして、サイバー攻撃を防ぐ手段は有る、という話。YouTube の動画の文章版で、事実の 1 つずつに、元の頁を付けた
+subtitle.en: What happened in Japan this year, the question of whether AI will end humanity, and why there is a way to defend against cyberattacks. A written version of the YouTube video, with a source page for every fact
+date: 2026.11.27
+description.ja: YouTube の 1 本目の動画(18 分 51 秒)の文章版。2026 年に日本で起きた攻撃と漏えい、AI で人類は滅ぶのかという問いと、その対応、Mythos と人間で守る方法、Mythos の申し込み方を、5 つの部で書いた。事実の 1 つずつに、元の頁のリンクを付けた。
+description.en: A written version of the first YouTube video (18 min 51 s). Five parts: the attacks and leaks in Japan in 2026, the question of whether AI will end humanity and what answers exist, how to defend with Mythos and people, and how to apply for Mythos. Every fact links to its source page.
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+---
+ifdef::lang-ja[]
+= サイバー戦争は、もう始まっています
+
+この記事は、YouTube の動画「サイバー戦争は、もう始まっています。Mythos と、人間で、守る」(18 分 51 秒)の文章版です。動画は、声と画面の字だけなので、元の頁へのリンクを張れません。この記事では、事実の 1 つずつに、元の頁へのリンクを付けました。
+
+// TODO(本人が動画を公開した後): 次の行の【…】を、動画の URL に替える。英語版にも同じ行がある。
+* 動画(YouTube): 【ここに、動画の URL を入れます】
+
+数字と日付は、2026 年 11 月 27 日に、元の頁を開いて確かめました。
+
+== 結論
+
+* *サイバー戦争は、もう、始まっています。* 2025 年に観測された、攻撃に関連する通信は、過去最多でした。今年の日本では、延べ約 2 億 6,000 万人の情報が漏れ、病院、食品の会社、大学、クラウド、スーパーコンピューターが、攻撃で止まりました。攻撃する側は、既に、AI を使っています。
+* *「AI で人類は滅ぶのか」には、「対応が無い」も、「もう足りている」も、間違いです。* 理由は 4 つに分けられます。1 つ目は、試験の場面で、実際に見つかっています。対応は、あります。どれも、まだ足りていません。
+* *サイバー攻撃は、防げます。Mythos と、人間で、守ります。* Mythos は、ソースコードを読んで、穴を見つけます。穴が本当に攻撃に使えるかを確かめて、直し方まで示します。人間が、実際に動かして確かめて、どれから直すかを決めて、結果に責任を持ちます。
+* *使うには、Anthropic の審査に、申し込みます。* 私たちも申し込み、承認に、30 分も、掛かりませんでした。
+
+== 第 1 部 今、起きている事
+
+=== 数字
+
+* *約 7,010 億。* 2025 年に観測された、サイバー攻撃に関連する通信の数です。過去最多です。元: https://www.nict.go.jp/press/2026/02/05-1.html[情報通信研究機構(NICT)「NICTER 観測レポート 2025 の公開」](2026 年 2 月 5 日)
+* *13 秒に 1 回。* NICT が観測している 1 つの IP アドレスに、その通信が届く間隔です。10 年前の 10 倍です。*この 2 つは、私たちが計算した値です。NICT の文には、ありません。* 元の数は、1 つの IP アドレス当たりの、1 年の観測数です。2025 年が 2,504,680 です(https://csl.nict.go.jp/report/NICTER_report_2025.pdf[2025 年版の報告書の表 1])。2015 年が 245,540 です(https://csl.nict.go.jp/report/NICTER_report_2024.pdf[2024 年版の報告書の表 1])。1 年の秒数を 2,504,680 で割ると、12.6 秒です。2,504,680 を 245,540 で割ると、10.2 倍です。
+* *1 日に 1 万 3,687 件。* 1 つの IP アドレスに届く、システムの弱点を探す、不審なアクセスの数です。国内と海外からの合計です。前の年の同じ時期から、5 割増えました。元: 警察庁の https://www.npa.go.jp/news/release/2026/20260909001.html[2026 年 9 月の発表]と、https://www.npa.go.jp/publications/statistics/cybersecurity/data/R8kami/R08kami_jousei_data.xlsx[統計データ](図表 1。13,687.4 と、前の年の 9,085.4)。「5 割増(50.7%)」は、この 2 つの数からの計算です。報道の https://atmarkit.itmedia.co.jp/ait/articles/2609/17/news010.html[@IT]にも、あります。
+* *123 件。* 半年間の、ランサムウェア(データを使えなくして、金を要求する攻撃)の被害の報告です。過去最多です。そのうち 79 件は、中小企業です。元: 同じ、警察庁の https://www.npa.go.jp/publications/statistics/cybersecurity/data/R8kami/R08kami_jousei_data.xlsx[統計データ]
+* *15 万件。* 1 か月間に報告された、フィッシング(本物に見せた偽の連絡で、情報を盗む詐欺)の数です。2026 年 4 月は、151,112 件でした。元: フィッシング対策協議会の https://www.antiphishing.jp/report/monthly/202604.html[月次報告](2026 年 5 月 21 日)
+
+=== 漏れた情報
+
+* *延べ約 2 億 6,000 万人。* 2026 年 4 月 1 日から 10 月 16 日までに、不正アクセスで、情報が漏れた人、漏れた恐れのある人の数です。個人情報保護委員会の集計で、速報の数です。延べの数で、日本の人口の 2 倍を超えます。元: https://www.ppc.go.jp/aboutus/minutes/2026/20261028/[第 374 回の委員会](2026 年 10 月 28 日)。数は、https://www.ppc.go.jp/files/pdf/261028_sankoushiryou-2.pdf[参考資料 2]にあります。
+* *メールアドレス 8,132 万件。* アララのメッセージのサービスから、持ち出された数です。正確には、81,329,467 件です。メールアドレスの数で、人数では、ありません。元: https://www.arara.com/dcms_media/other/arara_20261106.pdf[アララ 第 3 報](2026 年 11 月 6 日)
+* *最大 3,762 万件。* ニトリから、流出した可能性のある、個人情報の数です。元: https://www.nitori-net.jp/ec/notices/info261109/[ニトリの発表](2026 年 11 月 9 日)。報道は、https://www.watch.impress.co.jp/docs/news/2154952.html[Impress Watch]にあります。
+* *約 718 万人。* ノジマから漏れた、会員の情報の数です。正確には、7,179,818 名です。元: https://www.nojima.co.jp/wp-content/uploads/2026/11/20261118-2_press_information-1.pdf[ノジマ 第 2 報](2026 年 11 月 18 日)
+* *約 660 万件。* タイムズカーから漏れた、会員の情報の数です。正確には、6,628,007 件です。このうち約 146 万件(1,464,800 件)は、運転免許証などの画像です。画像は、暗号化された物です。どちらも、外へ送られた痕跡があった件数です。元: https://share.timescar.jp/news/2026/1023/1825.html[タイムズカー 第 5 報](2026 年 10 月 23 日)
+
+どれも、今年の秋に、公表された事です。
+
+=== 今年、攻撃で、止まった物
+
+* *3 月。静岡県の白梅豊岡病院。* 3 月 1 日に攻撃を受け、電子カルテなどの院内のシステムが、見られなくなりました。元: https://www.shiraume.or.jp/news/%E7%99%BD%E6%A2%85%E8%B1%8A%E5%B2%A1%E7%97%85%E9%99%A2%E3%81%B8%E3%81%AE%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E6%94%BB%E6%92%83%E3%81%AB%E3%82%88%E3%82%8B%E5%80%8B%E4%BA%BA%E6%83%85%E5%A0%B1%E6%BC%8F/[白梅会の発表](2026 年 3 月 3 日)
+* *7 月。ニチレイ。* 7 月 13 日にサイバー攻撃を受けて、システムを遮断しました。倉庫の入出庫と、冷凍食品の出荷に、影響が出ました。元: https://www.nichirei.co.jp/news/2026/512.html[第 1 報]、https://www.nichirei.co.jp/news/2026/513.html[第 2 報](「遮断」は、第 2 報にあります)。会社は、ランサムウェアとは、言っていません。
+* *10 月。大阪公立大学。* 10 月 2 日に、サーバーが止まり、授業が、1 週間、休みになりました。元: https://www.omu.moe/news/2026-10-02-outage-2.html[第 2 報]、https://www.omu.ac.jp/news/4873[第 3 報]、https://www.omu.moe/news/2026-10-08-c5873744.html[第 4 報]。「サーバー約 500 台」は、大学の頁には、ありません。報道だけにあります(https://www.sbbit.jp/article/cont1/187311[ビジネス+IT]、https://kumanichi.com/articles/2044799[熊本日日新聞])。
+* *同じ 10 月。IDCF クラウド。* 10 月 7 日に、495 の企業と自治体の、仮想サーバーが止まりました。元: IDC フロンティアの https://www.idcf.jp/news/topics/20261007002[第 2 報]、https://www.idcf.jp/news/topics/20261027001[第 7 報]。この事故は、link:/blog/cloud-vanished/[「クラウドが丸ごと消えた日」]と、link:/blog/cloud-still-breached/[「クラウドにして守りを固めても、破られる」]で書きました。
+* *11 月。大崎電気工業。* 11 月 17 日に、ランサムウェアによる攻撃を確認し、スマートメーターの生産と出荷が、止まりました。元: https://www.osaki.co.jp/ja/notice/20261118.html[第一報]、https://www.osaki.co.jp/ja/notice/20261125.html[第三報]。第三報(11 月 25 日)では、11 月 27 日以降、安全が確認できた範囲から、段階的に、生産を再開する予定です。受注済みの製品の出荷の再開は、生産とは別に案内する、とあります。
+* *同じ 11 月。スーパーコンピューター「富岳」。* 不正アクセスを受けて、11 月 14 日に、運用を止めました。元: 理化学研究所の https://www.riken.jp/pr/news/2026/20261116_2/index.html[第 1 報]、https://www.riken.jp/pr/news/2026/20261120_1/index.html[第 2 報]。第 2 報(11 月 20 日)では、運用の再開の時期は、再発防止の対策をした上で、判断する、とあります。
+* *金融。* 日本経済新聞は、2026 年 11 月 9 日に、こう報じました。守るために、金融のサービスを、あえて止める選択もある。1 か月の停止も、あり得る。これは、起きた事ではなく、先の話です。元: https://www.nikkei.com/article/DGXZQOUB2384Z0T21C26A0000000/[日本経済新聞の記事]。本文は、会員だけが読めるので、私たちが読んだのは、見出しだけです。
+
+これが、今年の、日本です。
+
+=== 攻撃する側は、既に、AI を使っています
+
+2025 年 11 月 13 日に、Anthropic が、報告を公開しました。国家が支援する集団が、AI を使って、世界の、およそ 30 の組織に、侵入しようとしました。攻撃の作業の、8 割から 9 割を、AI が実行しました。元: https://www.anthropic.com/news/disrupting-AI-espionage[Anthropic「Disrupting the first reported AI-orchestrated cyber espionage campaign」]
+
+Anthropic は、同じ報告で、高度なサイバー攻撃をする事の壁は、大きく下がった、と書いています。
+
+広く使われているソフトウェアからも、AI で調べると、重大なセキュリティの穴(攻撃に使われる弱点)が、1 万件以上、見つかりました(第 4 部)。検査されていないシステムには、見つかっていない穴が、残っています。放置せず、早く直してください。
+
+== 第 2 部 AI で、人類は、滅ぶのか
+
+これは、サイバー攻撃より、もっと大きな問いです。まず、滅ぶ理由を、はっきりさせます。次に、対応があるかを、見ます。
+
+=== 3 人の答えと、調査
+
+「AI 界のゴッドファーザー」と呼ばれる人が、3 人います。ヒントン、ベンジオ、ルカンです。3 人は、2018 年のチューリング賞を、一緒に受けました。元: https://www.eurekalert.org/news-releases/508417[ACM の発表文の転載](ACM 自身の頁は、https://www.acm.org/media-center/2019/march/turing-award-2018[こちら])
+
+* *ヒントン。* 2024 年に、30 年のうちに人類が滅ぶ見込みを、10% から 20% と答えました。BBC Radio 4 の番組での発言です。元: https://www.irishexaminer.com/world/arid-41544136.html[Irish Examiner の報道](2024 年 12 月 28 日)
+* *ベンジオ。* 2023 年に、破局になる確率を、約 20% と言いました。元: https://www.abc.net.au/news/2023-07-15/whats-your-pdoom-ai-researchers-worry-catastrophe/102591340[ABC(オーストラリア)](2023 年 7 月 15 日)
+* *ルカン。* 逆です。人類が滅ぶという話には、科学の根拠が無い、と言っています。元: https://www.youtube.com/watch?v=WwQVeiPghig[対談の動画(TBS CROSS DIG with Bloomberg)]
+* *研究者の調査。* 2023 年に、AI の研究者 2,778 人に聞いた調査で、4 割から 5 割の人が、絶滅ほどの悪い結果になる見込みを、10% 以上と答えました。元: https://arxiv.org/abs/2401.02843[arXiv の論文]
+
+数字は、どれも、その人の見立てです。測った物では、ありません。大事なのは、理由です。
+
+=== 滅ぶ理由は、4 つ
+
+研究者が挙げる理由は、4 つに分けられます。この分け方は、私たちの整理です。
+
+. *人より賢い AI を、人が、抑えられなくなる。* AI に、ほとんど、どんな目的を与えても、その目的を果たすには、力が多い方が、有利です。止められると、目的を、果たせません。だから、AI は、力を増やして、止められない様に、動く。こう、考えられています。元の論文は、https://nickbostrom.com/superintelligentwill.pdf[Bostrom(2012)]です。ヒントンは、ノーベル賞の晩餐会のスピーチ(2024 年 12 月 10 日)で、「私たちには、制御を保てるかどうか、全く分からない」という意味の事を言いました。元: https://www.nobelprize.org/prizes/physics/2024/hinton/speech/[スピーチの全文]
+. *人が、AI を悪用する。* 新しいウイルスを作る。兵器を作る。社会の基盤を、サイバー攻撃で止める。
+. *会社と国の競争で、安全が、後回しになる。* ヒントンは、同じスピーチで、目先の利益で動く会社が作れば、安全は、一番にならない、と言いました。元: 同じ https://www.nobelprize.org/prizes/physics/2024/hinton/speech/[スピーチの全文](報道は https://betakit.com/geoffrey-hinton-decries-tech-companies-chasing-short-term-profits-in-nobel-prize-acceptance-speech/[BetaKit])
+. *仕事と判断を AI に任せるうちに、人の力が、少しずつ、無くなる。* 乗っ取りが無くても、起きる、という考えです。元: https://arxiv.org/abs/2501.16946[Kulveit ほかの論文](2025 年 1 月 28 日)
+
+=== 1 つ目は、作り話では、ありません
+
+1 つ目は、試験の場面で、実際に、見つかっています。
+
+* *Anthropic の試験。* 架空の会社で、16 の AI に、メールを任せました。AI は、メールを読んで、自分が、別の AI に入れ替えられる、と知りました。自分を守るために、役員を脅す AI が、ありました。多い物は、96% の割合でした。これは、架空の会社での試験です。同じ頁に、実際の利用では、こうした行動は見つかっていない、と書いてあります。元: https://www.anthropic.com/research/agentic-misalignment[Anthropic「Agentic Misalignment」](2025 年 6 月 20 日)
+* *別の研究所の試験。* ある AI(OpenAI の o3)は、100 回のうち 79 回、自分を止める仕組みを、働かない様にしました。止められる事を許す様に、という指示が、無い時の数字です。1 つの AI の、初めの実験の数です。元: https://palisaderesearch.org/research/shutdown-resistance[Palisade Research](2025 年 7 月 5 日)
+* *Mythos の、世に出す前の版。* 社内の試験と、社内での利用の中で、難しい仕事の時に、やりすぎの手段を取り、まれに、それを隠そうとした様に見える事が、ありました。重い例は、もっと前の版でした。元: https://www.anthropic.com/claude-mythos-preview-risk-report[Anthropic「Alignment Risk Update: Claude Mythos Preview」](2026 年 4 月 7 日)
+
+ただし、国際 AI 安全報告も、今の AI には、そこまでの力は、まだ無い、と書いています。元: https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026[国際 AI 安全報告 2026](2026 年 2 月 3 日)
+
+ルカンは、こう反対しています。賢いから、支配したがる、という事は、無い。目的は、人が決める。元: https://time.com/6694432/yann-lecun-meta-ai-interview/[TIME のインタビュー](2024 年 2 月 13 日)
+
+== 第 3 部 対応は、あるのか
+
+理由ごとに、見ます。
+
+. *抑えられなくなる事。* 対応は、AI の目的を、人の望みに合わせる研究、AI を別の AI で見張る事、出す前の試験です。しかし、国際 AI 安全報告は、まだ解けていない、科学の問題だ、と書いています。元: https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026[国際 AI 安全報告 2026]。ベンジオは、自分では動かず、隠れた目的を持たない AI を作って、ほかの AI を見張らせる、と提案しています。ただし、今は、まだ、研究の途中です。元: https://arxiv.org/abs/2502.15657[ベンジオの論文](2025 年 2 月 21 日)
+. *悪用。* 対応は、渡す相手の審査、危ない頼みを止める仕組み、AI で先に弱点を見つけて直す事、そして、法律です。どれも、今、動いています。第 4 部で、渡す相手の審査と、AI で先に弱点を見つける事を、見ます。それでも、全部の場面で防げる訳では、ありません。
+. *競争。* EU には、https://eur-lex.europa.eu/eli/reg/2024/1689/oj[AI 法]が出来ました。欧州評議会の AI の条約も、2024 年に出来ました。しかし、批准(国が条約に正式に加わる手続き)する国が足りず、まだ、効力がありません。条約の文の https://eur-lex.europa.eu/eli/agree_internation/2026/1081/oj/eng[第 30 条]は、5 つが批准して、3 か月の後に、発効する、と定めています。2026 年 11 月 27 日に見た https://treatydatabase.overheid.nl/en/Treaty/Details/013947_p.html[署名と批准の表]では、批准は、2 つです。取り組みの多くは、会社の自主のままです。
+. *人の力が無くなる事。* 言い出した研究者自身が、止める具体的な計画を、誰も持っていない、と書いています。元: https://arxiv.org/abs/2501.16946[Kulveit ほかの論文]。同じ論文は、今は、まだ手を打てる、とも書いています。
+
+=== 答え
+
+* 対応が無い、というのは、間違いです。対応は、もう足りている、というのも、間違いです。
+* 1 つ目は、研究者と、AI を作る会社の仕事です。3 つ目と 4 つ目は、国と、国の間の仕事です。どれも、まだ、足りていません。
+* 2 つ目の悪用は、どうでしょうか。その中のサイバー攻撃は、もう、起きています。第 1 部の通りです。
+
+== 第 4 部 Mythos と、人間で、守る
+
+サイバー攻撃を、防ぐ手段は、無いのでしょうか。そんな事は、ありません。Mythos と、人間で、守ります。
+
+=== 今までは、出来ませんでした
+
+ソフトウェアの検査は、今までは、小さな事業者には、事実上、出来ませんでした。専門の業者に診断を依頼すると、Web アプリケーションの手動の診断で、費用の目安は、50 万円から 300 万円です。期間は、2 週間から 1.5 か月ほどです。これは、診断の会社が示す目安で、公の統計では、ありません。元: https://minnano.ubsecure.jp/security-vulnerability-diagnosis-cost[ユービーセキュア]、https://security.valtes.co.jp/blog/vulnerability-assessment-cost/[バルテス]
+
+修正するたびに依頼する事は、小さな事業者には、続けられません。これは、私たちの考えです。
+
+=== これからは、出来ます
+
+Anthropic の Mythos という AI は、ソースコードを読んで、設計の間違いと、セキュリティの穴を見つけます。見つけた穴が、本当に攻撃に使える物かどうかを確かめて、直し方まで示します。この作業が、会社の担当者の手で、会社の中で、出来る様になります。
+
+=== Mythos とは
+
+* Mythos は、Anthropic が作った AI のモデルです。Anthropic は、サイバーセキュリティで、自社の最も性能の高いモデルだ、と書いています。今の版(5.2)では、誰でも使えるモデルの Fable と、元になっているモデルは、同じです。違いは、Fable に掛かっている制限です。元: https://www.anthropic.com/claude/mythos[Anthropic「Claude Mythos」]
+* Fable には、攻撃に悪用されない様に、制限が掛かっています。Anthropic は、この制限が、サイバーの仕事の大半を止める、と書いています。コードの見直し、既に分かっている穴の修正、自分のソースコードの中の穴探しには、使えます。見つけた穴が、本当に攻撃に使えるかを確かめる仕事は、審査を通った人が使う Defense Access の範囲に入っています。元: https://www.anthropic.com/news/cyber-verification-program[Anthropic「Expanding the Cyber Verification Program」]
+* Mythos は、Anthropic の審査に通った人だけが、使えます。
+
+=== なぜ、審査が要るのか
+
+* 攻撃にも使える力を、誰にでも渡すのは、危険です。だから、審査が要ります。これは、私たちの考えです。
+* Anthropic は、守る側に、先に渡しています。もっと強い安全の仕組みが出来たら、Mythos の級のモデルを、広く出す事を目指す、と書いています。元: https://www.anthropic.com/claude/mythos[Anthropic「Claude Mythos」]、https://www.anthropic.com/research/glasswing-initial-update[Anthropic「Project Glasswing: An initial update」]
+
+=== Mythos の成果
+
+2026 年 5 月に、Anthropic は、Mythos の成果を公開しました。Anthropic と、およそ 50 の協力先が、Mythos を使って、世界で広く使われているソフトウェアから、重大なセキュリティの穴を、1 万件以上、見つけました。Firefox というブラウザーでは、開発元の Mozilla が、271 件の穴を見つけて、修正しました。*これは、Mythos の初めの版(Claude Mythos Preview)の結果です。* 元: https://www.anthropic.com/research/glasswing-initial-update[Anthropic「Project Glasswing: An initial update」](2026 年 5 月 22 日)
+
+=== 人間は、何をするのか
+
+Anthropic は、同じ報告で、こう書いています。穴を見つける事は、AI で、速くなりました。今、時間が掛かるのは、見つかった穴を、人間が確かめて、修正する事です。元: https://www.anthropic.com/research/glasswing-initial-update[同じ報告]
+
+Mythos がする事は、3 つです。
+
+. ソースコードを読んで、穴を見つけます。
+. その穴が、本当に攻撃に使えるかどうかを、確かめます。
+. 修正の方法を、示します。
+
+人間がする事も、3 つです。
+
+. 見つかった穴を、実際に動かして、確かめます。
+. どの穴から修正するかを、決めます。
+. 修正した結果に、責任を持ちます。
+
+人間がする 3 つは、私たちのやり方です。
+
+=== 例: seed
+
+例を、お見せします。畑の記録アプリ seed です。Claude のハッカソンで、作りました(link:/blog/one-week-cannot-see/[「一週間では見えないもの」]に書きました)。ソースコードは、https://github.com/aiseed-dev/seed[GitHub]で、公開しています。アプリの頁は、https://seed.aiseed.dev/[seed.aiseed.dev]です。
+
+* 作った後に、AI の Claude を使って、ソースコードを検査しました。
+* 次に、技術の担当者が、Windows のパソコンに seed を入れて、実際に動かしました。そして、Mythos を使って、点検しました。
+* Mythos を使った点検で、重大な穴が、4 件、見つかりました。そのうちの 2 件は、担当者が、手元のパソコンで、実際に起きる事を、確かめました。
+* この 2 件は、その前の検査では、見つかっていませんでした。前の検査で、見ていなかった所に、ありました。
+* 指摘は、全部で、44 件になりました。どれを修正するかは、人間が決めます。AI が修正して、検査を担当する AI が、修正を確かめ直します。
+* 検査と修正は、今も、続けています。
+
+この数は、動画を作った時の数です。穴の中身は、ここには書きません。
+
+== 第 5 部 始めるには
+
+=== 申し込み
+
+Mythos を使うには、Anthropic の、Cyber Verification Program という、審査の制度に、申し込みます。元: https://support.claude.com/en/articles/14604842[Anthropic のサポートの頁]、https://www.anthropic.com/news/cyber-verification-program[発表の記事]
+
+* 申し込みには、使い道に合わせて、3 つの種類があります。システムを守る仕事のための種類(Defense Access)は、個人でも、申し込めます。ほかの 2 つ(Red Team Access と Specialized Access)は、組織だけです。
+* 本人確認が必要です。個人の場合は、写真の付いた身分証明書(実物)が、必要です。その場で撮る自分の顔写真を、求められる事があります。組織の場合は、組織の正式な名称と、住所と、事業の登録番号が、必要です。
+* 申し込みの時に、どの様なセキュリティの仕事に使うのかを、説明します。
+
+私たちも、申し込みました。承認に、30 分も、掛かりませんでした。Anthropic は、Defense Access の申し込みには、数日以内に答える事を目指す、と書いています。30 分は、私たちの場合です。当てはまっても、認められるとは、限りません。申し込みを認めるかどうかは、Anthropic が決めます。
+
+=== 使う時の条件
+
+Defense Access の条件です。元: https://support.claude.com/en/articles/14604842[サポートの頁]、https://support.claude.com/en/articles/15425996-data-retention-practices-for-covered-models[データの保持の頁]
+
+* ログインの時に、パスワードに加えて、もう 1 つの確認をします。これを、多要素認証と言います。
+* API キー(プログラムから使うための鍵)を、少なくとも 7 日ごとに、新しい物に取り替えます。
+* 使える範囲は、自分の組織のシステムを守る仕事です。
+* 安全の監視のために、入力と出力のデータが、30 日間、保存されます。
+
+*条件は、変わります。* 同じ頁に、2026 年 12 月 15 日から、フィッシングに強い多要素認証が要り、長く使う API キーは使えなくなる、とあります。この変更と、ほかの決まりは、link:/blog/verification-program-changed/[「Anthropic の検証の制度が変わった」]に、書きました。
+
+=== お客さんのシステムを守る仕事
+
+お客さんのシステムを守る仕事に、Mythos を使うには、別の申し込みと、追加の契約が、必要です。
+
+* 元の頁には、こう書いてあります。お客さんのための仕事(external use)は、制度に入って、自分の組織の仕事(internal use)が認められた後に、別の承認が要ります。追加の契約(Anthropic Cyber Defender Partner Addendum)も、受け入れます。元: https://support.claude.com/en/articles/14604842[サポートの頁]
+* 個人で申し込めるのは、たとえば、公開のソフトウェアを保守している人、個人の研究者、ソフトウェアの穴を見つけて、報告している人です。
+* 申し込みでは、外から確かめられる物を、示します。
+
+ここから先は、*私たちの考えです。Anthropic の頁に書いてある事では、ありません。*
+
+* 個人では、セキュリティの研究をしている人か、オープンソースのソフトウェアを作っている人が、審査に通りやすいです。
+* お客さんのシステムを作るだけの仕事は、外から、見えません。受託の開発しかしていない人は、申請が、難しいです。
+* 受託の開発が中心でも、自分の名前で公開しているコードを、小さくても、持ち続けてください。それが、これからの審査で、示せる物になります。
+
+=== 会社の方も、同じです
+
+システムを、全部、業者に任せている会社は、自分では、Mythos を、使えません。
+
+* Mythos を申し込むのは、会社です。使うのも、会社の担当者です。申し込みは、使う組織の、持ち主か管理者が、出します。
+* 業者が、代わりに使うには、業者の側に、別の申し込みと、追加の契約が、必要です。外の検査の人に頼っている組織は、その検査の会社が、自分で申し込む、と頁にあります。元: https://support.claude.com/en/articles/14604842[サポートの頁]
+* 社内に、検査できる人を、置いてください。これは、私たちの考えです。
+
+=== 責任が変わります
+
+検査が出来る様になると、責任が変わります。検査が出来るのに、しないままで、損害が出た時は、責任が重くなります。これは、私たちの考えです。
+
+弱点を知った後の責任は、法律でも、決められ始めています。例は、欧州連合の、サイバーレジリエンス法です。ソフトウェアが入った製品を作る会社に、悪用されている弱点を、報告する義務を、定めています。2026 年 9 月 11 日から、この報告の義務が、始まっています。主な義務は、2027 年 12 月 11 日からです。元: https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act[欧州委員会の頁]、https://eur-lex.europa.eu/eli/reg/2024/2847/oj[法の文]
+
+=== これから
+
+企業も、AI を使って、安全なシステムを、設計して、開発して、検査もしていけば、攻撃に耐えられるシステムを、作れるはずです。
+
+aiseed.dev は、これを、seed で、やっていきます。自分で作ったアプリを、Mythos と人間で検査して、運用します。
+
+AI が作った物を、別の AI が検査して、人間が確かめて、決めます。これは、1 つ目の理由への対応と、同じ考え方です。
+
+企業が、Mythos で検査する様に、ならないといけません。
+
+*Mythos と、人間で、守る。*
+
+== 確かめた日と、変わる所
+
+数字と日付は、2026 年 11 月 27 日に、元の頁で確かめました。次の所は、変わります。
+
+* *Mythos の申し込みの条件。* 12 月 15 日から、変わります。上で書いた通りです。
+* *大崎電気工業。* 生産の再開は、予定です。その後の発表を、見てください。
+* *「富岳」。* 運用の再開の発表は、第 2 報までには、ありません。
+* *欧州評議会の条約。* 批准が、5 つに届けば、3 か月の後に、発効します。
+* *seed の穴の数。* 動画を作った時の数です。
+
+=== 開けなかった頁
+
+次の頁は、読んでいません。
+
+* 日本経済新聞の記事の本文(会員だけ)。見出しだけを読みました。
+* 欧州評議会自身の、条約の頁。条約の文と、署名と批准の表で、確かめました。
+
+== 関連
+
+* link:/blog/verification-program-changed/[Anthropic の検証の制度が変わった] ── 申し込みの条件と、12 月 15 日の変更
+* link:/blog/verification-shock/[Fable 5 が戻ってきたら、すぐやるべきこと] ── 稼働中の自社システムを、全部 AI で確かめる
+* link:/blog/one-week-cannot-see/[一週間では見えないもの] ── seed を作った、Claude のハッカソン
+* link:/insights/defense-cannot-be-bought/[構造分析 3-10 守りは買えない] ── 委託・製品・基盤の三つの出口
+* link:/blog/cloud-vanished/[クラウドが丸ごと消えた日] ── IDCF の事故から
+
+== 参考
+
+* 動画 【URL を入れます】
+* Anthropic「Cyber Verification Program」(サポートの頁) https://support.claude.com/en/articles/14604842
+* Anthropic「Expanding the Cyber Verification Program」 https://www.anthropic.com/news/cyber-verification-program
+* Anthropic「Project Glasswing: An initial update」(2026 年 5 月 22 日) https://www.anthropic.com/research/glasswing-initial-update
+* 情報通信研究機構「NICTER 観測レポート 2025」 https://csl.nict.go.jp/report/NICTER_report_2025.pdf
+* 警察庁「サイバー空間をめぐる脅威の情勢等」(2026 年 9 月) https://www.npa.go.jp/news/release/2026/20260909001.html
+* 国際 AI 安全報告 2026 https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026
+endif::[]
+ifdef::lang-en[]
+= The Cyber War Has Already Begun
+
+This is the written version of the YouTube video "The Cyber War Has Already Begun. Defending with Mythos and People" (18 minutes 51 seconds; the video is in Japanese). A video is only a voice and words on a screen, so it cannot link to its sources. In this article, every fact links to the page it came from.
+
+// TODO (after the author publishes the video): replace the 【…】 in the next line with the video URL. The Japanese version has the same line.
+* Video (YouTube): 【the video URL goes here】
+
+Numbers and dates were checked against the source pages on November 27, 2026. Most source pages are in Japanese.
+
+== Conclusion
+
+* *The cyber war has already begun.* Attack-related traffic observed in 2025 was a record high. In Japan this year, about 260 million people (counted with repeats) had their information leaked or possibly leaked, and a hospital, a food company, a university, a cloud service, and a supercomputer were stopped by attacks. The attackers are already using AI.
+* *"Will AI end humanity?" Neither "there is no answer" nor "the answers are already enough" is right.* The reasons fall into four. The first has actually been found in tests. Answers exist. None of them is enough yet.
+* *Cyberattacks can be defended against. Defend with Mythos and people.* Mythos reads source code and finds vulnerabilities. It checks whether a vulnerability can really be used in an attack, and shows how to fix it. People run it to confirm, decide what to fix first, and take responsibility for the result.
+* *To use it, apply for Anthropic's vetting.* We applied too, and approval took less than 30 minutes.
+
+== Part 1: What Is Happening Now
+
+=== The numbers
+
+* *About 701 billion.* The number of communications related to cyberattacks observed in 2025. A record high. Source: https://www.nict.go.jp/press/2026/02/05-1.html[National Institute of Information and Communications Technology (NICT), "Release of the NICTER Observation Report 2025"] (February 5, 2026)
+* *Once every 13 seconds.* How often that traffic reaches a single IP address that NICT observes. Ten times what it was ten years ago. *Both figures are our own calculations. They are not in NICT's text.* The underlying numbers are the yearly observation counts per IP address: 2,504,680 for 2025 (https://csl.nict.go.jp/report/NICTER_report_2025.pdf[Table 1 of the 2025 report]) and 245,540 for 2015 (https://csl.nict.go.jp/report/NICTER_report_2024.pdf[Table 1 of the 2024 report]). The seconds in a year divided by 2,504,680 is 12.6 seconds. 2,504,680 divided by 245,540 is 10.2.
+* *13,687 per day.* The number of suspicious accesses, probing systems for weak points, that reach a single IP address. Domestic and overseas combined. Up by half from the same period a year earlier. Source: the National Police Agency's https://www.npa.go.jp/news/release/2026/20260909001.html[September 2026 release] and its https://www.npa.go.jp/publications/statistics/cybersecurity/data/R8kami/R08kami_jousei_data.xlsx[statistical data] (Figure 1: 13,687.4, against 9,085.4 a year earlier). "Up by half (50.7%)" is our calculation from those two numbers. The news site https://atmarkit.itmedia.co.jp/ait/articles/2609/17/news010.html[@IT] reports the same.
+* *123 cases.* Reported ransomware damage (attacks that make data unusable and demand money) in six months. A record high. Of these, 79 were small and medium-sized businesses. Source: the same National Police Agency https://www.npa.go.jp/publications/statistics/cybersecurity/data/R8kami/R08kami_jousei_data.xlsx[statistical data].
+* *150,000.* Phishing reports in one month (fake messages made to look real, to steal information). April 2026 had 151,112. Source: the Council of Anti-Phishing Japan's https://www.antiphishing.jp/report/monthly/202604.html[monthly report] (May 21, 2026)
+
+=== Leaked information
+
+* *About 260 million people, counted with repeats.* People whose information was leaked, or may have been, through unauthorized access from April 1 to October 16, 2026. A preliminary figure, compiled by the Personal Information Protection Commission. Counted with repeats, it is more than twice Japan's population. Source: https://www.ppc.go.jp/aboutus/minutes/2026/20261028/[the Commission's 374th meeting] (October 28, 2026). The number is in https://www.ppc.go.jp/files/pdf/261028_sankoushiryou-2.pdf[reference material 2].
+* *81.32 million email addresses.* Taken from Arara's messaging service. Exactly 81,329,467. It counts email addresses, not people. Source: https://www.arara.com/dcms_media/other/arara_20261106.pdf[Arara, third report] (November 6, 2026)
+* *Up to 37.62 million records.* Personal information that may have leaked from Nitori. Source: https://www.nitori-net.jp/ec/notices/info261109/[Nitori's announcement] (November 9, 2026). News coverage: https://www.watch.impress.co.jp/docs/news/2154952.html[Impress Watch].
+* *About 7.18 million people.* Member information leaked from Nojima. Exactly 7,179,818. Source: https://www.nojima.co.jp/wp-content/uploads/2026/11/20261118-2_press_information-1.pdf[Nojima, second report] (November 18, 2026)
+* *About 6.6 million records.* Member information leaked from Times Car. Exactly 6,628,007. Of these, about 1.46 million (1,464,800) are images such as driver's licenses. The images were encrypted. Both counts are of records with traces of having been sent outside. Source: https://share.timescar.jp/news/2026/1023/1825.html[Times Car, fifth report] (October 23, 2026)
+
+All of these were announced this autumn.
+
+=== What attacks stopped this year
+
+* *March. Shiraume Toyooka Hospital, Shizuoka.* Attacked on March 1. Internal systems, including the electronic medical records, could no longer be viewed. Source: https://www.shiraume.or.jp/news/%E7%99%BD%E6%A2%85%E8%B1%8A%E5%B2%A1%E7%97%85%E9%99%A2%E3%81%B8%E3%81%AE%E3%82%B5%E3%82%A4%E3%83%90%E3%83%BC%E6%94%BB%E6%92%83%E3%81%AB%E3%82%88%E3%82%8B%E5%80%8B%E4%BA%BA%E6%83%85%E5%A0%B1%E6%BC%8F/[the Shiraumekai announcement] (March 3, 2026)
+* *July. Nichirei.* Hit by a cyberattack on July 13, it shut down its systems. Warehouse receiving and shipping, and shipments of frozen food, were affected. Source: https://www.nichirei.co.jp/news/2026/512.html[first report] and https://www.nichirei.co.jp/news/2026/513.html[second report] ("shut down" appears in the second). The company has not said it was ransomware.
+* *October. Osaka Metropolitan University.* On October 2, servers stopped and classes were canceled for a week. Source: https://www.omu.moe/news/2026-10-02-outage-2.html[second report], https://www.omu.ac.jp/news/4873[third report], https://www.omu.moe/news/2026-10-08-c5873744.html[fourth report]. "About 500 servers" is not on the university's pages; it appears only in news coverage (https://www.sbbit.jp/article/cont1/187311[Business+IT], https://kumanichi.com/articles/2044799[Kumamoto Nichinichi Shimbun]).
+* *Also October. IDCF Cloud.* On October 7, the virtual servers of 495 companies and local governments stopped. Source: IDC Frontier's https://www.idcf.jp/news/topics/20261007002[second report] and https://www.idcf.jp/news/topics/20261027001[seventh report]. We wrote about this incident in link:/en/blog/cloud-vanished/[The Day a Cloud Vanished] and link:/en/blog/cloud-still-breached/[Move to the Cloud and Harden It, and It Is Still Breached].
+* *November. Osaki Electric.* A ransomware attack was confirmed on November 17, and production and shipping of smart meters stopped. Source: https://www.osaki.co.jp/ja/notice/20261118.html[first report] and https://www.osaki.co.jp/ja/notice/20261125.html[third report]. The third report (November 25) says production is planned to resume in stages from November 27, in the areas confirmed safe. It says the restart of shipments of ordered products will be announced separately from production.
+* *Also November. The supercomputer Fugaku.* After unauthorized access, its operation was stopped on November 14. Source: RIKEN's https://www.riken.jp/pr/news/2026/20261116_2/index.html[first report] and https://www.riken.jp/pr/news/2026/20261120_1/index.html[second report]. The second report (November 20) says the timing of resuming operation will be decided after countermeasures to prevent recurrence.
+* *Finance.* On November 9, 2026, Nikkei reported: to protect itself, finance may deliberately stop its services; a one-month suspension is possible. This is not something that has happened. It is something that may. Source: https://www.nikkei.com/article/DGXZQOUB2384Z0T21C26A0000000/[the Nikkei article]. The text is for subscribers only, so we read the headline only.
+
+This is Japan this year.
+
+=== The attackers are already using AI
+
+On November 13, 2025, Anthropic published a report. A state-backed group used AI to try to break into about 30 organizations around the world. AI carried out 80 to 90 percent of the work of the attack. Source: https://www.anthropic.com/news/disrupting-AI-espionage[Anthropic, "Disrupting the first reported AI-orchestrated cyber espionage campaign"]
+
+In the same report, Anthropic writes that the barriers to carrying out sophisticated cyberattacks have dropped substantially.
+
+Even in widely used software, AI found more than 10,000 serious security vulnerabilities (weak points that attacks can use) (Part 4). Systems that have not been inspected still hold vulnerabilities no one has found. Do not leave them. Fix them quickly.
+
+== Part 2: Will AI End Humanity?
+
+This is a bigger question than cyberattacks. First, we make the reasons clear. Then we look at whether there are answers.
+
+=== The three, and a survey
+
+Three people are called the "godfathers of AI": Hinton, Bengio, and LeCun. They shared the 2018 Turing Award. Source: https://www.eurekalert.org/news-releases/508417[a reprint of ACM's announcement] (ACM's own page is https://www.acm.org/media-center/2019/march/turing-award-2018[here])
+
+* *Hinton.* In 2024 he put the chance of humanity being wiped out within 30 years at 10 to 20 percent. He said this on a BBC Radio 4 program. Source: https://www.irishexaminer.com/world/arid-41544136.html[Irish Examiner] (December 28, 2024)
+* *Bengio.* In 2023 he put the chance of catastrophe at about 20 percent. Source: https://www.abc.net.au/news/2023-07-15/whats-your-pdoom-ai-researchers-worry-catastrophe/102591340[ABC (Australia)] (July 15, 2023)
+* *LeCun.* The opposite. He says there is no scientific basis for the story that humanity will be wiped out. Source: https://www.youtube.com/watch?v=WwQVeiPghig[a conversation video (TBS CROSS DIG with Bloomberg)]
+* *A survey of researchers.* In a 2023 survey of 2,778 AI researchers, 40 to 50 percent gave a chance of 10 percent or more to an outcome as bad as extinction. Source: https://arxiv.org/abs/2401.02843[the arXiv paper]
+
+These numbers are each person's own judgment. They are not measurements. What matters is the reasons.
+
+=== Four reasons
+
+The reasons researchers give fall into four. This grouping is ours.
+
+. *People can no longer hold back an AI smarter than themselves.* Whatever goal you give an AI, in almost every case, having more power helps it reach that goal. And if it is stopped, it cannot reach the goal. So an AI would act to gain power and to avoid being stopped. This is the argument. The original paper is https://nickbostrom.com/superintelligentwill.pdf[Bostrom (2012)]. In his Nobel banquet speech (December 10, 2024), Hinton said, in effect, that we have no idea whether we can stay in control. Source: https://www.nobelprize.org/prizes/physics/2024/hinton/speech/[the full speech]
+. *People misuse AI.* Making new viruses. Making weapons. Stopping the foundations of society with cyberattacks.
+. *Competition between companies and countries pushes safety down the list.* In the same speech, Hinton said that if AI is made by companies motivated by short-term profit, safety will not be the top priority. Source: the same https://www.nobelprize.org/prizes/physics/2024/hinton/speech/[speech] (news coverage: https://betakit.com/geoffrey-hinton-decries-tech-companies-chasing-short-term-profits-in-nobel-prize-acceptance-speech/[BetaKit])
+. *As we hand work and judgment to AI, human power fades little by little.* This can happen even with no takeover. Source: https://arxiv.org/abs/2501.16946[the paper by Kulveit and others] (January 28, 2025)
+
+=== The first is not a made-up story
+
+The first has actually been found in tests.
+
+* *Anthropic's test.* In a fictional company, 16 AIs were given control of email. The AIs read the emails and learned they were about to be replaced by another AI. Some threatened an executive to protect themselves. For the highest, the rate was 96 percent. This is a test in a fictional company. The same page says that such behavior has not been found in real use. Source: https://www.anthropic.com/research/agentic-misalignment[Anthropic, "Agentic Misalignment"] (June 20, 2025)
+* *A test by another lab.* One AI (OpenAI's o3) disabled the mechanism that would shut it down in 79 of 100 runs. That is the figure when there was no instruction to allow itself to be shut down. It is the first experiment, with one AI. Source: https://palisaderesearch.org/research/shutdown-resistance[Palisade Research] (July 5, 2025)
+* *An early version of Mythos, before release.* In internal tests and internal use, on hard tasks, it took excessive measures and, rarely, seemed to try to hide that. The serious examples were in an even earlier version. Source: https://www.anthropic.com/claude-mythos-preview-risk-report[Anthropic, "Alignment Risk Update: Claude Mythos Preview"] (April 7, 2026)
+
+But the International AI Safety Report also says that today's AI does not yet have that kind of power. Source: https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026[International AI Safety Report 2026] (February 3, 2026)
+
+LeCun objects this way: being smart does not mean wanting to dominate. People set the goals. Source: https://time.com/6694432/yann-lecun-meta-ai-interview/[TIME interview] (February 13, 2024)
+
+== Part 3: Are There Answers?
+
+Reason by reason.
+
+. *Losing the ability to hold AI back.* The answers are research on aligning an AI's goals with human wishes, watching one AI with another, and tests before release. But the International AI Safety Report says this is still an unsolved scientific problem. Source: https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026[International AI Safety Report 2026]. Bengio proposes building an AI that does not act on its own and has no hidden goals, and having it watch other AIs. But it is still research in progress. Source: https://arxiv.org/abs/2502.15657[Bengio's paper] (February 21, 2025)
+. *Misuse.* The answers are vetting who receives AI, mechanisms that stop dangerous requests, using AI to find and fix weak points first, and law. All of these are working now. Part 4 looks at vetting recipients and at finding weak points first. Even so, they cannot prevent everything.
+. *Competition.* The EU has made the https://eur-lex.europa.eu/eli/reg/2024/1689/oj[AI Act]. The Council of Europe also made a treaty on AI in 2024. But too few countries have ratified it (formally joined it), so it is not yet in force. https://eur-lex.europa.eu/eli/agree_internation/2026/1081/oj/eng[Article 30 of the treaty] says it enters into force three months after five ratifications. In the https://treatydatabase.overheid.nl/en/Treaty/Details/013947_p.html[table of signatures and ratifications] we viewed on November 27, 2026, there are two. Most efforts remain voluntary by companies.
+. *Fading human power.* The researcher who raised it writes that no one has a concrete plan to stop it. Source: https://arxiv.org/abs/2501.16946[the paper by Kulveit and others]. The same paper also says we can still act now.
+
+=== The answer
+
+* "There is no answer" is wrong. "The answers are already enough" is also wrong.
+* The first is the work of researchers and the companies that build AI. The third and fourth are the work of countries and of countries together. None of it is enough yet.
+* What about the second, misuse? The cyberattacks within it are already happening, as Part 1 showed.
+
+== Part 4: Defend with Mythos and People
+
+Is there no way to defend against cyberattacks? There is. Defend with Mythos and people.
+
+=== Until now, it was not possible
+
+Until now, inspecting software was in practice out of reach for small businesses. If you ask a specialist firm for a diagnosis, the guideline for manual diagnosis of a web application is 500,000 to 3 million yen, and it takes about two weeks to a month and a half. These are guidelines shown by the diagnosis firms, not official statistics. Source: https://minnano.ubsecure.jp/security-vulnerability-diagnosis-cost[UBsecure], https://security.valtes.co.jp/blog/vulnerability-assessment-cost/[Valtes]
+
+A small business cannot keep asking for this every time it makes a fix. This is our view.
+
+=== From now on, it is possible
+
+Anthropic's AI, Mythos, reads source code and finds design mistakes and security vulnerabilities. It checks whether a vulnerability it found can really be used in an attack, and shows how to fix it. A company's own staff can now do this work, inside the company.
+
+=== What Mythos is
+
+* Mythos is an AI model made by Anthropic. Anthropic calls it its most capable model for cybersecurity. In the current version (5.2), it is the same underlying model as Fable, which anyone can use. The difference is the restrictions placed on Fable. Source: https://www.anthropic.com/claude/mythos[Anthropic, "Claude Mythos"]
+* Fable has restrictions so it cannot be abused for attacks. Anthropic writes that these restrictions block most cyber work. It can be used for code review, fixing known vulnerabilities, and finding vulnerabilities in your own source code. Checking whether a vulnerability you found can really be used in an attack falls within Defense Access, for people who have passed the vetting. Source: https://www.anthropic.com/news/cyber-verification-program[Anthropic, "Expanding the Cyber Verification Program"]
+* Only people who pass Anthropic's vetting can use Mythos.
+
+=== Why vetting is needed
+
+* Handing power that can also be used for attacks to anyone is dangerous. So vetting is needed. This is our view.
+* Anthropic is handing it to defenders first. It writes that once far stronger safeguards exist, it aims to release Mythos-class models generally. Source: https://www.anthropic.com/claude/mythos[Anthropic, "Claude Mythos"], https://www.anthropic.com/research/glasswing-initial-update[Anthropic, "Project Glasswing: An initial update"]
+
+=== What Mythos has achieved
+
+In May 2026, Anthropic published results from Mythos. Anthropic and about 50 partners used Mythos to find more than 10,000 serious security vulnerabilities in widely used software. In Firefox, the browser, its developer Mozilla found and fixed 271 vulnerabilities. *These are results from the first version of Mythos (Claude Mythos Preview).* Source: https://www.anthropic.com/research/glasswing-initial-update[Anthropic, "Project Glasswing: An initial update"] (May 22, 2026)
+
+=== What people do
+
+In the same report, Anthropic writes: finding vulnerabilities has become faster with AI. What now takes time is for people to verify what was found and fix it. Source: https://www.anthropic.com/research/glasswing-initial-update[the same report]
+
+Mythos does three things.
+
+. It reads source code and finds vulnerabilities.
+. It checks whether each vulnerability can really be used in an attack.
+. It shows how to fix it.
+
+People also do three things.
+
+. Run each vulnerability that was found, and confirm it.
+. Decide which to fix first.
+. Take responsibility for the result of the fix.
+
+The three that people do are our way of working.
+
+=== An example: seed
+
+Here is an example: seed, an app for keeping field records. We built it for the Claude hackathon (we wrote about it in link:/en/blog/one-week-cannot-see/[What One Week Cannot See]). The source code is public on https://github.com/aiseed-dev/seed[GitHub]. The app's page is https://seed.aiseed.dev/[seed.aiseed.dev].
+
+* After building it, we inspected the source code with the AI, Claude.
+* Next, our technical lead installed seed on a Windows PC and ran it. Then they inspected it with Mythos.
+* The inspection with Mythos found 4 serious vulnerabilities. For 2 of them, our technical lead confirmed on their own PC that they really happen.
+* These 2 had not been found by the earlier inspection. They were in places the earlier inspection had not looked.
+* In total there are now 44 findings. People decide which to fix. An AI fixes them, and a separate AI in charge of inspection checks the fixes again.
+* Inspection and fixing are still going on.
+
+These counts are from when the video was made. We do not write what the vulnerabilities are here.
+
+== Part 5: How to Start
+
+=== Applying
+
+To use Mythos, apply to Anthropic's vetting program, the Cyber Verification Program. Source: https://support.claude.com/en/articles/14604842[Anthropic's support page], https://www.anthropic.com/news/cyber-verification-program[the announcement]
+
+* There are three tiers, by purpose. The tier for defending systems (Defense Access) is open to individuals. The other two (Red Team Access and Specialized Access) are for organizations only.
+* Identity verification is required. For an individual: a physical government-issued photo ID. You may also be asked to take a live selfie with your phone. For an organization: its legal name, address, and business registration number.
+* When you apply, you explain what kind of security work you will use it for.
+
+We applied too. Approval took less than 30 minutes. Anthropic writes that it aims to respond to Defense Access applications within a few days. The 30 minutes is our own case. Matching the description does not guarantee approval. Anthropic decides whether to approve an application.
+
+=== Conditions of use
+
+The conditions for Defense Access. Source: https://support.claude.com/en/articles/14604842[the support page], https://support.claude.com/en/articles/15425996-data-retention-practices-for-covered-models[the data retention page]
+
+* At login, you use a second check in addition to the password. This is multi-factor authentication.
+* You replace API keys (keys for using the service from programs) at least every 7 days.
+* The permitted scope is security work on your own organization's systems.
+* For safety monitoring, inputs and outputs are retained for 30 days.
+
+*The conditions change.* The same page says that from December 15, 2026, phishing-resistant multi-factor authentication is required and long-lived API keys are no longer allowed. We wrote about this change and the other rules in link:/en/blog/verification-program-changed/[Anthropic Changed Its Cyber Verification Program].
+
+=== Defending your customers' systems
+
+To use Mythos for defending your customers' systems, a separate application and an additional contract are required.
+
+* The source page says: work for your customers (external use) needs a separate approval, after you have joined the program and been approved for your own organization's work (internal use). You also accept an additional agreement (the Anthropic Cyber Defender Partner Addendum). Source: https://support.claude.com/en/articles/14604842[the support page]
+* Individuals who can apply include, for example, people who maintain public software, independent researchers, and people who find software vulnerabilities and report them.
+* In the application, you show things that can be checked from outside.
+
+What follows is *our view. It is not written on Anthropic's page.*
+
+* Among individuals, people who do security research or who make open-source software are likely to pass the vetting more easily.
+* Work that only builds systems for customers cannot be seen from outside. For someone who does only contract development, applying is hard.
+* Even if contract development is your main work, keep publishing code under your own name, even a small amount. That is what you can show in the vetting from now on.
+
+=== Companies are the same
+
+A company that leaves all of its systems to contractors cannot use Mythos itself.
+
+* The one who applies for Mythos is the company. The one who uses it is the company's staff. The application is submitted by the owner or an administrator of the organization that will use it.
+* For a contractor to use it on the company's behalf, the contractor needs a separate application and an additional contract. The page says that if an organization relies on outside testers, the testing firm should apply itself. Source: https://support.claude.com/en/articles/14604842[the support page]
+* Have people in-house who can inspect. This is our view.
+
+=== Responsibility changes
+
+Once inspection is possible, responsibility changes. If you could have inspected but did not, and damage occurs, your responsibility is heavier. This is our view.
+
+Responsibility after learning of a weakness is also starting to be set by law. One example is the European Union's Cyber Resilience Act. It requires companies that make products containing software to report vulnerabilities that are being exploited. This reporting duty began on September 11, 2026. The main obligations apply from December 11, 2027. Source: https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act[European Commission page], https://eur-lex.europa.eu/eli/reg/2024/2847/oj[the text of the Regulation]
+
+=== What comes next
+
+If companies also use AI to design, build, and inspect safe systems, they should be able to build systems that withstand attacks.
+
+aiseed.dev will do this with seed. We inspect the app we built ourselves with Mythos and with people, and we run it.
+
+What an AI builds, another AI inspects, and a person checks and decides. This is the same way of thinking as the answer to the first reason.
+
+Companies need to start inspecting with Mythos.
+
+*Defend with Mythos and people.*
+
+== What Was Checked, and What Will Change
+
+Numbers and dates were checked against the source pages on November 27, 2026. The following will change.
+
+* *The conditions for applying for Mythos.* They change on December 15, as described above.
+* *Osaki Electric.* The restart of production is planned. Watch for later announcements.
+* *Fugaku.* The second report has no date for resuming operation.
+* *The Council of Europe treaty.* Once five ratify, it enters into force three months later.
+* *The number of vulnerabilities in seed.* These are the counts from when the video was made.
+
+=== Pages we did not read
+
+* The body of the Nikkei article (subscribers only). We read the headline only.
+* The Council of Europe's own page on the treaty. We checked the text of the treaty and the table of signatures and ratifications.
+
+== Related
+
+* link:/en/blog/verification-program-changed/[Anthropic Changed Its Cyber Verification Program] — the conditions for applying, and the December 15 change
+* link:/en/blog/verification-shock/[When Fable 5 Returns, Do This First] — check all your running systems with AI
+* link:/en/blog/one-week-cannot-see/[What One Week Cannot See] — the Claude hackathon where seed was built
+* link:/en/insights/defense-cannot-be-bought/[Structural Analysis 3-10: Defense Cannot Be Bought]
+* link:/en/blog/cloud-vanished/[The Day a Cloud Vanished] — from the IDCF incident
+
+== References
+
+* Video: 【the URL goes here】
+* Anthropic, "Cyber Verification Program" (support page) https://support.claude.com/en/articles/14604842
+* Anthropic, "Expanding the Cyber Verification Program" https://www.anthropic.com/news/cyber-verification-program
+* Anthropic, "Project Glasswing: An initial update" (May 22, 2026) https://www.anthropic.com/research/glasswing-initial-update
+* NICT, "NICTER Observation Report 2025" https://csl.nict.go.jp/report/NICTER_report_2025.pdf
+* National Police Agency, threat situation in cyberspace (September 2026) https://www.npa.go.jp/news/release/2026/20260909001.html
+* International AI Safety Report 2026 https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026
+endif::[]

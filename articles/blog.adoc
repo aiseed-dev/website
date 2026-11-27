@@ -16553,3 +16553,279 @@ Numbers and dates were checked against the source pages on November 27, 2026. Th
 * National Police Agency, threat situation in cyberspace (September 2026) https://www.npa.go.jp/news/release/2026/20260909001.html
 * International AI Safety Report 2026 https://internationalaisafetyreport.org/publication/international-ai-safety-report-2026
 endif::[]
+// ===== article: 054-vba-cannot-be-fixed =====
+---
+slug: vba-cannot-be-fixed
+title.ja: VBA は直せない ── Microsoft から出られないのは、Office と Entra ID があるから
+title.en: VBA Cannot Be Fixed — What Keeps Companies in Microsoft Is Office and Entra ID
+subtitle.ja: Microsoft は VBA を直さず、止める設定にしただけである。Mythos で穴が大量に見つかると、直せる物と止めるしかない物に分かれる。出口を塞いでいる Office と Entra ID を解けば、残りの移行は AI がやれる
+subtitle.en: Microsoft did not fix VBA; it only made blocking the default. As Mythos finds vulnerabilities in bulk, software splits into what can be fixed and what can only be blocked. Untie Office and Entra ID, which block the exit, and AI can do the rest of the move
+date: 2026.11.27
+description.ja: Microsoft は、インターネットから来たファイルの VBA のマクロを、2022 年から既定で止めている。VBA の作りは変えていない。業務でマクロが要る会社は止めた設定を外し、そこを攻撃される。Mythos で穴が大量に見つかると、互換を背負った製品ほど、直せず止めるだけの穴が増える。Windows は Debian に移ればよい。Microsoft 365 から出られないのは、Office と Entra ID があるからである。Office は aiseed office で、ログインは PocketBase で解く。
+description.en: Since 2022, Microsoft has blocked VBA macros in files from the internet by default. It did not change how VBA works. Companies that need macros for their work turn the block off, and are attacked there. As Mythos finds vulnerabilities in bulk, products that carry long compatibility accumulate holes that can only be blocked, not fixed. Windows can be replaced with Debian. What keeps companies in Microsoft 365 is Office and Entra ID. Office is untied with aiseed office, and sign-in with PocketBase.
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+---
+ifdef::lang-ja[]
+= VBA は直せない
+
+== 結論
+
+* *Microsoft は VBA を直さず、止める設定にしただけである。* インターネットから来たファイルのマクロを、2022 年から既定で止めている。業務でマクロが要る会社は、止めた設定を外す。外した所は攻撃される。
+* *Mythos で穴が大量に見つかると、直せる物と止めるしかない物に分かれる。* 互換を長く背負った製品ほど、止めるしかない物が増える。コードを読めるソフトウェアなら、使う側が自分で検査して直せる。これは私たちの考えである。
+* *Windows は Debian に移ればよい。* 出られないのは、Office と Entra ID があるからである。
+* *Microsoft の ID は、要る所が少ないのに、複雑で費用が掛かる。* 単に金儲けの道具である。だから、Microsoft の ID と Entra ID は外す。
+* *Office は aiseed office で、ログインは PocketBase で解く。* この二つが解ければ、残りの移行は AI がやれる。
+
+== VBA は、直さずに止めただけ
+
+VBA のマクロは、文書の中に入れたプログラムである。文書を開いた人の権限で動く。
+
+Microsoft は、インターネットから来たファイルのマクロを、既定で止める様に変えた。通常の版(Current Channel 2206)で、2022 年 7 月 27 日から配り始めた。止める対象は、Windows の Word、Excel、PowerPoint などである。元: https://learn.microsoft.com/en-us/microsoft-365-apps/security/internet-macros-blocked[Microsoft Learn「Macros from the internet are blocked by default in Office」]
+
+同じ頁には、止めた設定を外す方法も書いてある。ファイルの「ブロックの解除」の欄に印を付ける。フォルダーを「信頼できる場所」にする。
+
+つまり Microsoft は、VBA の作りを変えていない。文書を開くとプログラムが動く作りは、そのまま残っている。作りを変えれば、会社が何十年も積み上げてきたマクロが動かなくなる。だから止める事しか出来なかった。これは私たちの読み方である。
+
+業務でマクロが要る会社は、止めた設定を外して使う。外した所は、また攻撃される。使う会社は VBA を動かす側のコードを読めないので、自分で検査も出来ない。
+
+== 直せる物と、止めるしかない物
+
+同じ形は、Windows のほかの所にもある。
+
+* *VBScript。* Microsoft は、2027 年ごろに既定で使えない様にし、その後は Windows から外す、と書いている。外した後は、VBScript に頼る物は動かなくなる。VBScript を呼ぶ VBA も、後の段階で影響を受ける、とある。元: https://techcommunity.microsoft.com/blog/windows-itpro-blog/vbscript-deprecation-timelines-and-next-steps/4148301[Microsoft「VBScript deprecation: Timelines and next steps」](2024 年 5 月 22 日)
+* *NTLM(古い認証の方式)。* 2024 年 6 月に、開発をやめた機能になった。古い版の NTLMv1 は、Windows 11 の 24H2 と Windows Server 2025 で外された。NTLM そのものは、次の版でも動く、とある。元: https://learn.microsoft.com/en-us/windows/whats-new/deprecated-features[Microsoft Learn「Deprecated features in the Windows client」]
+
+どれも、直すのではなく、使わない様にして、やがて外す、という対応である。危険は消えない。まだ使っている会社の側に残る。
+
+Mythos は、ソースコードを読んで穴を見つける AI である。Anthropic と協力先は、広く使われているソフトウェアから、重大な穴を 1 万件以上見つけた。元: https://www.anthropic.com/research/glasswing-initial-update[Anthropic「Project Glasswing: An initial update」](2026 年 5 月 22 日)。詳しくは link:/blog/cyber-war-mythos-and-humans/[「サイバー戦争は、もう始まっています」]に書いた。
+
+ここから先は、*私たちの考えである。*
+
+* 穴が大量に見つかると、穴は「直せる物」と「止めるしかない物」に分かれる。互換を長く背負った製品ほど、止めるしかない物が増える。VBA はその例である。
+* 閉じた製品は、コードを読めるのが作った会社だけである。使う会社は、自分で検査できない。直すのも、作った会社を待つしかない。
+* コードを読めるソフトウェアなら、使う側が自分で検査して、直すか外すかを決められる。部品が小さく分かれていれば、直した時の影響も確かめやすい。
+* 今までは、大きな会社の製品の方が安全だと考えられてきた。これからは、自分で検査して直せるソフトウェアの方が安全になる。品質が逆転する。
+
+== Windows は、Debian に移ればよい
+
+仕事の多くは、ブラウザーの中で動く。OS を Debian に替えても、仕事の中身はほとんど変わらない。手順は link:/claude-debian/[「Claudeと一緒に学ぶDebian」]の連載に書いた。
+
+Windows は、出口を塞いでいない。
+
+== 出られないのは、Office と Entra ID があるから
+
+Microsoft 365 の会社向けの売上は、2026 年 7 月から 9 月の四半期に、前の年より 17% 増えた。元: https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast[Microsoft の決算の発表](2026 年 10 月 28 日)
+
+問題を残していても、売上は増えている。私たちは、出られないからだと考える。出口を塞いでいるのは、二つである。
+
+. *Office。* 会社の文書は、Word と Excel のファイルである。様式も、集計も、VBA のマクロも、その中にある。取引先とも、このファイルでやり取りする。
+. *Entra ID。* 会社のログインと権限の門である。文書もメールも共有も、まずこの門を通る。Windows のパソコンも、この門で管理されている。
+
+この二つ以外は、移す先がある。メールも予定もファイルも、中身を取り出して、別の道具に移せる。その作業は、AI がやれる。
+
+== Microsoft の ID は、要る所が少ないのに、複雑で費用が掛かる
+
+Microsoft の ID には、二つの種類がある。個人の Microsoft アカウントと、組織が作る職場または学校のアカウント(Entra ID)である。それぞれ、作られた用途のサービスでしか使えない。二つの間で、情報は同期しない。元: https://support.microsoft.com/account-billing/what-s-the-difference-between-a-microsoft-account-and-a-work-or-school-account-72f10e1e-cab8-4950-a8da-7c45339575b0[Microsoft サポート「Microsoft アカウントと職場または学校のアカウントの違い」]
+
+スマートフォンでは、Microsoft の ID は使われない。Microsoft のスマートフォンの OS(Windows 10 Mobile)は、2020 年 1 月 14 日にサポートが終わった。元: https://support.microsoft.com/help/4535289[Microsoft サポート KB4535289]。スマートフォンを使う限り、Google ID か Apple ID が要る。
+
+ここから先は、*私たちの考えである。*
+
+* Microsoft の ID が要るのは、Microsoft のサービスを使う時だけである。Office と Microsoft 365 をやめれば、要る所はほとんど無くなる。
+* それなのに、二つの種類があって紛らわしい。権限の設定も複雑で、扱える人を雇うか、業者に頼む事になる。
+* 費用も掛かる。Entra ID の無料の版は Microsoft 365 の人数の料金に含まれているが、会社が使いたい機能の多くは、上の版の料金になる。
+* 要る所が少ないのに、複雑で、費用が掛かりすぎる。
+
+これは、ナデラ氏の大きな失敗である。ナデラ氏は、2014 年 2 月 4 日に Microsoft の CEO になった。元: https://news.microsoft.com/source/2014/02/04/microsoft-board-names-satya-nadella-as-ceo/[Microsoft の発表]。スマートフォンの OS をやめたのは、その後である。
+
+* ID は、会社の仕事の入口である。多くの会社のログインと権限が、Microsoft の ID にぶら下がっている。
+* これほど多くの会社が頼る物なら、簡単に使えて、ほかへ移しやすい様に作る責任がある。Microsoft の ID は、そうなっていない。企業の社会的責任を果たしていない。
+* Microsoft の ID は、客を Microsoft のサービスにつなぎ止めて、人数の料金を取るための物になっている。単に金儲けの道具である。
+
+*だから、Microsoft の ID と Entra ID は外す。*
+
+== 解き方 ── Office は aiseed office、ログインは PocketBase
+
+=== Office は aiseed office
+
+aiseed office は、私たちが作っている Office である。コードは https://github.com/aiseed-dev/officework[GitHub]で公開している(AGPL)。
+
+* .xlsm や .docm の中の VBA は、決して実行しない。
+* マクロは、文書の中ではなく、別の Python のファイル(.py)に置く。文書を開いても、マクロは動かない。
+* Word と Excel のファイルを読み書きする。取引先とのやり取りは、今のファイルのまま続けられる。
+* コードが公開されているので、使う会社が自分で読んで、Mythos で検査できる。
+
+今は、テスト版(0.1.0-alpha.7)である。Windows では、アプリの中から動かす文書のマクロは、まだ動かない。元: https://github.com/aiseed-dev/officework[aiseed office の README]
+
+VBA のマクロがしていた処理は、AI と一緒に Python に書き直す。文書の作り方は、連載の link:/ai-native-software/documents/[2-07「文書を取り戻す」]に書いた。
+
+=== ログインは PocketBase
+
+PocketBase は、ログインと権限を一つにまとめる、オープンソースのソフトウェアである。Google や Apple のアカウントでのログイン(OAuth2)もつなげられる。元: https://pocketbase.io/docs/authentication/[PocketBase の文書]
+
+移る間は、PocketBase に Microsoft のログインを残しておく。今までのアカウントのまま入れる。全員が移ったら、Microsoft のログインを外す。手順は、連載の link:/ai-native-software/auth/[2-05「門番を立てる」]に書いた。
+
+Google ID と Apple ID は、スマートフォンを使う限り残る。
+
+=== 残りは AI がやる
+
+Office と Entra ID が解ければ、残りの移行は AI がやれる。メール、予定、ファイルの中身を取り出して、移す先に入れる作業である。全体の対応表は、連載の link:/ai-native-software/independence/[2-01「Microsoft と Google から自立する」]にある。
+
+== 確かめた日と、変わる所
+
+事実は、2026 年 11 月 27 日に、元の頁で確かめた。次の所は変わる。
+
+* *VBScript。* 既定で使えなくなるのは 2027 年ごろで、Windows から外す時期は決まっていない。
+* *NTLM。* 外す時期は、頁に書いていない。
+* *aiseed office。* テスト版である。版が進めば、出来る事が変わる。
+
+== 関連
+
+* link:/blog/cyber-war-mythos-and-humans/[サイバー戦争は、もう始まっています] ── Mythos と人間で守る
+* link:/blog/verification-shock/[Fable 5 が戻ってきたら、すぐやるべきこと] ── 稼働中の自社システムを、全部 AI で確かめる
+* link:/ai-native-software/independence/[2-01 Microsoft と Google から自立する] ── 全体像と対応表
+* link:/ai-native-software/auth/[2-05 門番を立てる] ── PocketBase で認証を一つに
+* link:/ai-native-software/documents/[2-07 文書を取り戻す] ── 読む物は adoc、触る表は格子
+
+== 参考
+
+* Microsoft Learn「Macros from the internet are blocked by default in Office」 https://learn.microsoft.com/en-us/microsoft-365-apps/security/internet-macros-blocked
+* Microsoft「VBScript deprecation: Timelines and next steps」(2024 年 5 月 22 日) https://techcommunity.microsoft.com/blog/windows-itpro-blog/vbscript-deprecation-timelines-and-next-steps/4148301
+* Microsoft Learn「Deprecated features in the Windows client」 https://learn.microsoft.com/en-us/windows/whats-new/deprecated-features
+* Microsoft「FY27 Q1 の決算の発表」(2026 年 10 月 28 日) https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast
+* aiseed office(officework) https://github.com/aiseed-dev/officework
+* PocketBase「Authentication」 https://pocketbase.io/docs/authentication/
+endif::[]
+ifdef::lang-en[]
+= VBA Cannot Be Fixed
+
+== Conclusion
+
+* *Microsoft did not fix VBA. It only made blocking the default.* Since 2022, macros in files from the internet are blocked by default. Companies that need macros for their work turn the block off. Where they turn it off, they are attacked.
+* *As Mythos finds vulnerabilities in bulk, software splits into what can be fixed and what can only be blocked.* The longer a product carries compatibility, the more it can only block. With software whose code you can read, the user can inspect it and fix it. This is our view.
+* *Windows can be replaced with Debian.* What keeps companies in is Office and Entra ID.
+* *Microsoft's ID is needed in few places, yet complex and costly.* It is simply a tool for making money. So we remove Microsoft's ID and Entra ID.
+* *Office is untied with aiseed office, and sign-in with PocketBase.* Once these two are untied, AI can do the rest of the move.
+
+== VBA was not fixed, only blocked
+
+A VBA macro is a program placed inside a document. It runs with the permissions of whoever opens the document.
+
+Microsoft changed Office to block macros in files from the internet by default. It began rolling this out to the regular release (Current Channel 2206) on July 27, 2022. The block covers Word, Excel, PowerPoint and other apps on Windows. Source: https://learn.microsoft.com/en-us/microsoft-365-apps/security/internet-macros-blocked[Microsoft Learn, "Macros from the internet are blocked by default in Office"]
+
+The same page also explains how to remove the block: tick the Unblock box on the file, or make the folder a Trusted Location.
+
+So Microsoft did not change how VBA works. A document that runs a program when it is opened is still the design. Changing the design would break the macros companies have built up over decades. That is why blocking was the only option. This is our reading.
+
+Companies that need macros for their work remove the block and use them. Where they remove it, they are attacked again. The company cannot read the code that runs VBA, so it cannot inspect it either.
+
+== What can be fixed, and what can only be blocked
+
+The same shape appears elsewhere in Windows.
+
+* *VBScript.* Microsoft writes that around 2027 it will no longer be enabled by default, and that it will later be removed from Windows. After removal, anything that relies on VBScript stops working. VBA projects that call VBScript will be affected in later phases. Source: https://techcommunity.microsoft.com/blog/windows-itpro-blog/vbscript-deprecation-timelines-and-next-steps/4148301[Microsoft, "VBScript deprecation: Timelines and next steps"] (May 22, 2024)
+* *NTLM (an old authentication method).* It was deprecated in June 2024 and is no longer developed. The old version, NTLMv1, was removed in Windows 11 24H2 and Windows Server 2025. NTLM itself will keep working in the next release. Source: https://learn.microsoft.com/en-us/windows/whats-new/deprecated-features[Microsoft Learn, "Deprecated features in the Windows client"]
+
+In each case the response is not a fix. It is to stop using the feature, then remove it. The danger does not go away. It stays with the companies still using it.
+
+Mythos is an AI that reads source code and finds vulnerabilities. Anthropic and its partners found more than 10,000 serious vulnerabilities in widely used software. Source: https://www.anthropic.com/research/glasswing-initial-update[Anthropic, "Project Glasswing: An initial update"] (May 22, 2026). We wrote more in link:/en/blog/cyber-war-mythos-and-humans/[The Cyber War Has Already Begun].
+
+What follows is *our view.*
+
+* When vulnerabilities are found in bulk, they split into those that can be fixed and those that can only be blocked. The longer a product carries compatibility, the more of the second kind it has. VBA is an example.
+* In a closed product, only the company that made it can read the code. The company using it cannot inspect it. For a fix, it can only wait for the maker.
+* With software whose code you can read, the user can inspect it and decide whether to fix or remove a part. If the parts are small and separate, the effect of a fix is also easier to check.
+* Until now, products from large companies were thought to be safer. From now on, software you can inspect and fix yourself will be safer. Quality reverses.
+
+== Windows can be replaced with Debian
+
+Most work runs inside a browser. Replacing the OS with Debian barely changes the work itself. The steps are in the link:/en/claude-debian/[Learning Debian with Claude] series.
+
+Windows does not block the exit.
+
+== What keeps companies in is Office and Entra ID
+
+Microsoft 365 commercial cloud revenue grew 17% year on year in the July–September 2026 quarter. Source: https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast[Microsoft's earnings release] (October 28, 2026)
+
+The problems remain, and revenue still grows. We think this is because companies cannot leave. Two things block the exit.
+
+. *Office.* A company's documents are Word and Excel files. Forms, calculations and VBA macros are inside them. The company exchanges these files with its business partners too.
+. *Entra ID.* The gate for the company's sign-in and permissions. Documents, mail and sharing all pass through it first. Windows PCs are managed through it as well.
+
+Everything else has somewhere to go. Mail, calendars and files can be exported and moved to other tools. AI can do that work.
+
+== Microsoft's ID is needed in few places, yet complex and costly
+
+Microsoft has two kinds of ID: a personal Microsoft account, and a work or school account (Entra ID) created by an organization. Each works only with the services it was set up for. Information does not sync between them. Source: https://support.microsoft.com/account-billing/what-s-the-difference-between-a-microsoft-account-and-a-work-or-school-account-72f10e1e-cab8-4950-a8da-7c45339575b0[Microsoft Support, "What's the difference between a Microsoft account and a work or school account?"]
+
+On smartphones, Microsoft's ID is not what is used. Microsoft's smartphone OS, Windows 10 Mobile, reached end of support on January 14, 2020. Source: https://support.microsoft.com/help/4535289[Microsoft Support, KB4535289]. As long as you use a smartphone, you need a Google ID or an Apple ID.
+
+What follows is *our view.*
+
+* Microsoft's ID is needed only to use Microsoft's services. Stop using Office and Microsoft 365, and there is almost nowhere left that needs it.
+* Even so, there are two kinds, which is confusing. Setting permissions is complex, so the company has to hire someone who can handle it or rely on a contractor.
+* It also costs money. The free edition of Entra ID is included in the per-seat price of Microsoft 365, but many of the features companies want are in the higher-priced editions.
+* It is needed in few places, yet it is complex and costs too much.
+
+This is a major failure of Satya Nadella. Nadella became Microsoft's CEO on February 4, 2014. Source: https://news.microsoft.com/source/2014/02/04/microsoft-board-names-satya-nadella-as-ceo/[Microsoft's announcement]. Microsoft gave up its smartphone OS after that.
+
+* An ID is the entrance to a company's work. The sign-in and permissions of a great many companies hang on Microsoft's ID.
+* Something so many companies depend on carries a responsibility to be simple to use and easy to move away from. Microsoft's ID is neither. It does not meet the company's social responsibility.
+* Microsoft's ID has become a means of keeping customers tied to Microsoft's services and charging per seat. It is simply a tool for making money.
+
+*So we remove Microsoft's ID and Entra ID.*
+
+== How to untie them — Office with aiseed office, sign-in with PocketBase
+
+=== Office: aiseed office
+
+aiseed office is an Office we are building. The code is public on https://github.com/aiseed-dev/officework[GitHub] (AGPL).
+
+* It never runs the VBA inside .xlsm or .docm files.
+* Macros live not inside documents but in separate Python files (.py). Opening a document never runs a macro.
+* It reads and writes Word and Excel files. Exchanges with business partners can continue with the same files.
+* Because the code is public, the company using it can read it and inspect it with Mythos.
+
+It is a test release today (0.1.0-alpha.7). On Windows, document macros run from inside the app do not work yet. Source: https://github.com/aiseed-dev/officework[the aiseed office README]
+
+The work VBA macros did is rewritten in Python together with AI. How to handle documents is in the series chapter link:/en/ai-native-software/documents/[2-07 "Take Documents Back"].
+
+=== Sign-in: PocketBase
+
+PocketBase is open-source software that brings sign-in and permissions together in one place. It can also connect sign-in with Google or Apple accounts (OAuth2). Source: https://pocketbase.io/docs/authentication/[PocketBase documentation]
+
+During the move, keep Microsoft sign-in in PocketBase, so people can sign in with their existing accounts. Once everyone has moved, remove the Microsoft sign-in. The steps are in the series chapter link:/en/ai-native-software/auth/[2-05 "Stand Up the Gate"].
+
+Google ID and Apple ID remain as long as you use smartphones.
+
+=== AI does the rest
+
+Once Office and Entra ID are untied, AI can do the rest of the move: exporting mail, calendars and files, and putting them in their new place. The full correspondence table is in the series chapter link:/en/ai-native-software/independence/[2-01 "Becoming Independent from Microsoft and Google"].
+
+== Checked on, and what will change
+
+The facts were checked against the source pages on November 27, 2026. The following will change.
+
+* *VBScript.* It will no longer be enabled by default around 2027. The date for removing it from Windows is not set.
+* *NTLM.* The page gives no date for removal.
+* *aiseed office.* It is a test release. What it can do will change as versions advance.
+
+== Related
+
+* link:/en/blog/cyber-war-mythos-and-humans/[The Cyber War Has Already Begun] — defending with Mythos and people
+* link:/en/blog/verification-shock/[When Fable 5 Returns, Do This First] — verify every system you run
+* link:/en/ai-native-software/independence/[2-01 Becoming Independent from Microsoft and Google] — the whole map
+* link:/en/ai-native-software/auth/[2-05 Stand Up the Gate] — one sign-in with PocketBase
+* link:/en/ai-native-software/documents/[2-07 Take Documents Back] — prose in AsciiDoc, forms in aiseed office
+
+== References
+
+* Microsoft Learn, "Macros from the internet are blocked by default in Office" https://learn.microsoft.com/en-us/microsoft-365-apps/security/internet-macros-blocked
+* Microsoft, "VBScript deprecation: Timelines and next steps" (May 22, 2024) https://techcommunity.microsoft.com/blog/windows-itpro-blog/vbscript-deprecation-timelines-and-next-steps/4148301
+* Microsoft Learn, "Deprecated features in the Windows client" https://learn.microsoft.com/en-us/windows/whats-new/deprecated-features
+* Microsoft, FY27 Q1 earnings release (October 28, 2026) https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast
+* aiseed office (officework) https://github.com/aiseed-dev/officework
+* PocketBase, "Authentication" https://pocketbase.io/docs/authentication/
+endif::[]

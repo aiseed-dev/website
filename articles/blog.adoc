@@ -16570,7 +16570,7 @@ category.en: Structural Analysis Notes
 ifdef::lang-ja[]
 = VBA は直せない
 
-// TODO(動画「無ければ、AI で作る。Excel と、互換の Office を、作っています。」(題は案)の公開の後): ここに、この記事が動画の文章版である事と、動画の URL を書く。「参考」の初めにも、動画の URL を入れる。英語版も同じ。
+// TODO(動画「「ExcelにPythonが搭載？」という記事を書いてから9年がたちました」の公開の後): ここに、この記事が動画の第 4 部(無ければ、AI で作る。11:49 から)と第 5 部(作るより、守る。15:16 から)の文章版である事と、動画の URL を書く。第 1 部から第 3 部は 055 と対。「参考」の初めにも、動画の URL を入れる。英語版も同じ。
 
 == 結論
 
@@ -16716,7 +16716,7 @@ endif::[]
 ifdef::lang-en[]
 = VBA Cannot Be Fixed
 
-// TODO (after the video "If It Does Not Exist, Build It with AI: We Are Building an Excel-Compatible Office" (title not final) is published): say here that this article is the written version of the video and give its URL. Also put the video URL first in References. The Japanese version has the same note.
+// TODO (after the video 「ExcelにPythonが搭載？」という記事を書いてから9年がたちました is published): say here that this article is the written version of Parts 4 (from 11:49) and 5 (from 15:16) of the video, and give its URL. Parts 1–3 pair with 055. Also put the video URL first in References. The Japanese version has the same note.
 
 == Conclusion
 
@@ -16876,7 +16876,7 @@ category.en: Structural Analysis Notes
 ifdef::lang-ja[]
 = もう、ナデラの Microsoft は必要ない
 
-// TODO(動画「「ExcelにPythonが搭載？」という記事を書いてから9年がたちました」の公開の後): ここに、この記事が動画の文章版である事と、動画の URL を書く。「参考」の初めにも、動画の URL を入れる。英語版も同じ。
+// TODO(動画「「ExcelにPythonが搭載？」という記事を書いてから9年がたちました」の公開の後): ここに、この記事が動画の第 1 部から第 3 部(0:33 から 11:49 まで)の文章版である事と、動画の URL を書く。第 4 部と第 5 部は 054 と対。「参考」の初めにも、動画の URL を入れる。英語版も同じ。
 
 == 結論
 
@@ -17123,7 +17123,7 @@ endif::[]
 ifdef::lang-en[]
 = No More Need for Nadella's Microsoft
 
-// TODO (after the video "Nine years since we wrote 'Python in Excel?'" (Japanese title 「ExcelにPythonが搭載？」という記事を書いてから9年がたちました) is published): say here that this article is the written version of the video and give its URL. Also put the video URL first in References. The Japanese version has the same note.
+// TODO (after the video "Nine years since we wrote 'Python in Excel?'" (Japanese title 「ExcelにPythonが搭載？」という記事を書いてから9年がたちました) is published): say here that this article is the written version of Parts 1–3 of the video (0:33 to 11:49) and give its URL. Parts 4–5 pair with 054. Also put the video URL first in References. The Japanese version has the same note.
 
 == Conclusion
 

@@ -16638,7 +16638,7 @@ Microsoft の ID には、二つの種類がある。個人の Microsoft アカ�
 
 会社で使う Entra ID の料金は、一人月 1,049 円(P1、税抜、年契約)である。条件付きアクセス(どこから、どの端末から入れるかを決める機能)は、P1 から入っている。P1 は Microsoft 365 Business Premium にも含まれている。元: https://www.microsoft.com/ja-jp/security/business/microsoft-entra-pricing[Microsoft「Microsoft Entra の価格」]
 
-100 人の会社で計算する。P1 の料金は、1,049 円 × 100 人 × 12 か月で、年 125 万 8,800 円である。管理の人手も掛かる。仮に、年の人件費 600 万円の担当者が、仕事の 4 分の 1 を ID の管理に使えば、年 150 万円である。合わせて、年 276 万円になる。人手の値は仮の値なので、会社ごとに入れ替えてほしい。P1 の 1,049 円は、Business Premium の一人月 3,298 円(2026 年 7 月の改定後。連載の link:/ai-native-software/independence/[2-01])の約 32% に当たる。
+100 人の会社で計算する。P1 の料金は、1,049 円 × 100 人 × 12 か月で、年 125 万 8,800 円である。これに、管理する人の手間が加わる。P1 の 1,049 円は、Business Premium の一人月 3,298 円(2026 年 7 月の改定後。連載の link:/ai-native-software/independence/[2-01])の約 32% に当たる。
 
 ここから先は、*私たちの考えである。*
 
@@ -16796,7 +16796,7 @@ Far fewer people use a PC than a smartphone. In 2024, 74.4% of individuals in Ja
 
 Entra ID for company use costs 1,049 yen per user per month (P1, excluding tax, annual contract). Conditional Access (deciding from where and from which devices people may sign in) starts at P1. P1 is also included in Microsoft 365 Business Premium. Source: https://www.microsoft.com/ja-jp/security/business/microsoft-entra-pricing[Microsoft, "Microsoft Entra pricing" (Japanese page)]
 
-Take a company of 100 people. P1 costs 1,049 yen × 100 people × 12 months, or 1,258,800 yen a year. Administration takes people's time too. Suppose a staff member costing 6 million yen a year spends a quarter of their work managing the ID: that is 1.5 million yen a year. Together, 2.76 million yen a year. The staffing figure is an assumption; replace it with your own. P1's 1,049 yen is about 32% of Business Premium's 3,298 yen per user per month (after the July 2026 revision; see link:/en/ai-native-software/independence/[2-01] in the series).
+Take a company of 100 people. P1 costs 1,049 yen × 100 people × 12 months, or 1,258,800 yen a year. The time of the people who administer it comes on top of that. P1's 1,049 yen is about 32% of Business Premium's 3,298 yen per user per month (after the July 2026 revision; see link:/en/ai-native-software/independence/[2-01] in the series).
 
 What follows is *our view.*
 

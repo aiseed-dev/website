@@ -16128,7 +16128,7 @@ Anthropic は同じ報告で、高度なサイバー攻撃をする事の壁は�
 
 === 今までは、出来ませんでした
 
-今まで、コードを後から検査されていたのは、有名なオープンソースのソフトウェアか、商用のソフトウェアだけでした。会社が業者に委託して作ったシステムも、自分で開発したシステムも、コードを後から検査する事は、事実上出来ませんでした。専門の業者に診断を依頼すると、Web アプリケーションの手動の診断で、費用の目安は 50 万円から 300 万円です。期間は 2 週間から 1.5 か月ほどです。これは診断の会社が示す目安で、公の統計ではありません。元: https://minnano.ubsecure.jp/security-vulnerability-diagnosis-cost[ユービーセキュア]、https://security.valtes.co.jp/blog/vulnerability-assessment-cost/[バルテス]
+今まで、コードを後から検査されていたのは、有名なオープンソースのソフトウェアか、商用のソフトウェアだけでした。そのソフトウェアでも、検査は完全ではありませんでした。Mythos で調べると、重大なセキュリティの穴が 1 万件以上見つかり、今、その修正が大量に進んでいます(下の「Mythos の成果」)。会社が業者に委託して作ったシステムも、自分で開発したシステムも、コードを後から検査する事は、事実上出来ませんでした。専門の業者に診断を依頼すると、Web アプリケーションの手動の診断で、費用の目安は 50 万円から 300 万円です。期間は 2 週間から 1.5 か月ほどです。これは診断の会社が示す目安で、公の統計ではありません。元: https://minnano.ubsecure.jp/security-vulnerability-diagnosis-cost[ユービーセキュア]、https://security.valtes.co.jp/blog/vulnerability-assessment-cost/[バルテス]
 
 この費用と期間では、修正するたびに依頼する事は続けられません。
 
@@ -16398,7 +16398,7 @@ Is there no way to defend against cyberattacks? There is. Defend with Mythos and
 
 === Until now, it was not possible
 
-Until now, the only software whose code was inspected after it was built was well-known open-source software or commercial software. For a company's own systems, whether built by a contractor or developed in-house, inspecting the code afterward was in practice not possible. If you ask a specialist firm for a diagnosis, the guideline for manual diagnosis of a web application is 500,000 to 3 million yen, and it takes about two weeks to a month and a half. These are guidelines shown by the diagnosis firms, not official statistics. Source: https://minnano.ubsecure.jp/security-vulnerability-diagnosis-cost[UBsecure], https://security.valtes.co.jp/blog/vulnerability-assessment-cost/[Valtes]
+Until now, the only software whose code was inspected after it was built was well-known open-source software or commercial software. Even that software was not fully inspected. When Mythos examined it, more than 10,000 serious security vulnerabilities were found, and a large number of fixes are now under way (see "What Mythos has achieved" below). For a company's own systems, whether built by a contractor or developed in-house, inspecting the code afterward was in practice not possible. If you ask a specialist firm for a diagnosis, the guideline for manual diagnosis of a web application is 500,000 to 3 million yen, and it takes about two weeks to a month and a half. These are guidelines shown by the diagnosis firms, not official statistics. Source: https://minnano.ubsecure.jp/security-vulnerability-diagnosis-cost[UBsecure], https://security.valtes.co.jp/blog/vulnerability-assessment-cost/[Valtes]
 
 At this cost and time, no one can keep asking for this every time a fix is made.
 

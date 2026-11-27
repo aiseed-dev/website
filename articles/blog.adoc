@@ -16556,13 +16556,13 @@ endif::[]
 // ===== article: 054-vba-cannot-be-fixed =====
 ---
 slug: vba-cannot-be-fixed
-title.ja: VBA は直せない ── Microsoft から出られないのは、Office と Entra ID があるから
-title.en: VBA Cannot Be Fixed — What Keeps Companies in Microsoft Is Office and Entra ID
-subtitle.ja: Microsoft は VBA を直さず、止める設定にしただけである。Mythos で穴が大量に見つかると、直せる物と止めるしかない物に分かれる。出口を塞いでいる Office と Entra ID を解けば、残りの移行は AI がやれる
-subtitle.en: Microsoft did not fix VBA; it only made blocking the default. As Mythos finds vulnerabilities in bulk, software splits into what can be fixed and what can only be blocked. Untie Office and Entra ID, which block the exit, and AI can do the rest of the move
+title.ja: VBA は直せない ── 無ければ AI で作る。作るより、守る
+title.en: VBA Cannot Be Fixed — If It Does Not Exist, Build It with AI. Protecting Matters More Than Building
+subtitle.ja: Microsoft は VBA を直さず、止める設定にしただけである。Linux に使いやすい Office が無いので、AI で直し、AI で作っている。誰でも作れる様になった今、大事なのは、作った物を検査して直し続ける事である
+subtitle.en: Microsoft did not fix VBA; it only made blocking the default. Linux had no easy-to-use Office, so we fixed one with AI and are building one with AI. Now that anyone can build, what matters is to keep inspecting and fixing what was built
 date: 2026.11.27
-description.ja: Microsoft は、インターネットから来たファイルの VBA のマクロを、2022 年から既定で止めている。VBA の作りは変えていない。業務でマクロが要る会社は止めた設定を外し、そこを攻撃される。Mythos で穴が大量に見つかると、互換を背負った製品ほど、直せず止めるだけの穴が増える。Windows は Debian に移ればよい。Microsoft 365 から出られないのは、Office と Entra ID があるからである。Office は aiseed office で、ログインは PocketBase で解く。
-description.en: Since 2022, Microsoft has blocked VBA macros in files from the internet by default. It did not change how VBA works. Companies that need macros for their work turn the block off, and are attacked there. As Mythos finds vulnerabilities in bulk, products that carry long compatibility accumulate holes that can only be blocked, not fixed. Windows can be replaced with Debian. What keeps companies in Microsoft 365 is Office and Entra ID. Office is untied with aiseed office, and sign-in with PocketBase.
+description.ja: Microsoft は、インターネットから来たファイルの VBA のマクロを、2022 年から既定で止めている。VBA の作りは変えていない。業務でマクロが要る会社は止めた設定を外し、そこを攻撃される。Mythos で穴が大量に見つかると、互換を背負った製品ほど、直せず止めるだけの穴が増える。私たちは、Euro-Office を日本語で正しく動く様に AI で直し(ja-office)、Office そのものを AI で作っている(aiseed office)。誰でも作れる様になると、攻撃の壁も下がる。作るより、守る。
+description.en: Since 2022, Microsoft has blocked VBA macros in files from the internet by default. It did not change how VBA works. Companies that need macros turn the block off, and are attacked there. As Mythos finds vulnerabilities in bulk, products that carry long compatibility accumulate holes that can only be blocked. We fixed Euro-Office with AI so that it handles Japanese correctly (ja-office), and we are building an Office itself with AI (aiseed office). When anyone can build, the barrier to attack falls too. Protecting matters more than building.
 label: Blog
 category.ja: 構造分析ノート
 category.en: Structural Analysis Notes
@@ -16570,14 +16570,14 @@ category.en: Structural Analysis Notes
 ifdef::lang-ja[]
 = VBA は直せない
 
+// TODO(動画「無ければ、AI で作る。作るより、守る」の公開の後): ここに、この記事が動画の文章版である事と、動画の URL を書く。「参考」の初めにも、動画の URL を入れる。英語版も同じ。
+
 == 結論
 
 * *Microsoft は VBA を直さず、止める設定にしただけである。* インターネットから来たファイルのマクロを、2022 年から既定で止めている。業務でマクロが要る会社は、止めた設定を外す。外した所は攻撃される。
 * *Mythos で穴が大量に見つかると、直せる物と止めるしかない物に分かれる。* 互換を長く背負った製品ほど、止めるしかない物が増える。コードを読めるソフトウェアなら、使う側が自分で検査して直せる。これは私たちの考えである。
-* *Windows は Debian に移ればよい。* 出られないのは、Office と Entra ID があるからである。
-* *Microsoft の ID は、要る所が少ないのに、複雑で費用が掛かる。* 単に金儲けの道具である。だから、Microsoft の ID と Entra ID は外す。
-* *Office は aiseed office で、ログインは PocketBase で解く。* この二つが解ければ、残りの移行は AI がやれる。
-* *情報システム部門には厳しいが、変わるしかない。* 新しい仕事は、コードとデータを手元に持ち、Mythos で検査する事である。
+* *無ければ、AI で作る。* Linux には、使いやすい Office が無かった。Euro-Office を日本語で正しく動く様に AI で直し(ja-office)、Office そのものを AI で作っている(aiseed office)。
+* *作るより、守る。* 誰でも作れる様になると、攻撃の壁も下がる。これから大事なのは、作った物を検査して直し続ける事である。
 
 == VBA は、直さずに止めただけ
 
@@ -16609,96 +16609,82 @@ Mythos は、ソースコードを読んで穴を見つける AI である。Ant
 * コードを読めるソフトウェアなら、使う側が自分で検査して、直すか外すかを決められる。部品が小さく分かれていれば、直した時の影響も確かめやすい。
 * 今までは、大きな会社の製品の方が安全だと考えられてきた。これからは、自分で検査して直せるソフトウェアの方が安全になる。品質が逆転する。
 
-== Windows は、Debian に移ればよい
+== 無ければ、AI で作る
 
-会社のシステムは、社内で使う物も、ほぼ Web になってきている。これは私たちの見方である。仕事の多くは、ブラウザーの中で動く。OS を Debian に替えても、仕事の中身はほとんど変わらない。手順は link:/claude-debian/[「Claudeと一緒に学ぶDebian」]の連載に書いた。
+Linux には、使いやすい Office が無かった。これは私たちの見方である。無ければ、AI で作る。
 
-Windows は、出口を塞いでいない。
+=== Euro-Office を、日本語で直した ── ja-office
 
-== 出られないのは、Office と Entra ID があるから
+Euro-Office は、ONLYOFFICE を元にした、オープンソースの Office である。日本語の文書と表が正しく表示される様に、AI と一緒に直した。直した版は、ja-office の名前で、Linux、Windows、Mac 用に配っている。直した事の全部と、直す前と後の画面は、README にある。元: https://github.com/aiseed-dev/ja-office[ja-office(GitHub)]
 
-Microsoft 365 の会社向けの売上は、2026 年 7 月から 9 月の四半期に、前の年より 17% 増えた。元: https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast[Microsoft の決算の発表](2026 年 10 月 28 日)
+表計算で直した事は、次の通りである。
 
-問題を残していても、売上は増えている。私たちは、出られないからだと考える。出口を塞いでいるのは、二つである。
+* 日付を和暦で表示できる様にした。公式の版で「ggg年m月d日」と崩れていた物が、「令和8年10月6日」になる。
+* 数を漢数字で表示できる様にした。1234 が「壱阡弐百参拾四」になる。
+* 全角の文字を半角にする関数(ASC)が動く様にした。
+* 文字をバイトで数える関数(LENB)が、Excel と同じ答えを返す様にした。
+* 全角の数字を、数として読める様にした。VALUE("１２３") が 123 を返す。
+* 数を漢数字にする関数(NUMBERSTRING)を足した。
+* 円の金額にする関数(YEN)が、Excel と同じ答えを返す様にした。
 
-. *Office。* 会社の文書は、Word と Excel のファイルである。様式も、集計も、VBA のマクロも、その中にある。取引先とも、このファイルでやり取りする。
-. *Entra ID。* 会社のログインと権限の門である。文書もメールも共有も、まずこの門を通る。Windows のパソコンも、この門で管理されている。
+文書で直した事は、次の通りである。
 
-この二つ以外は、移す先がある。メールも予定もファイルも、中身を取り出して、別の道具に移せる。その作業は、AI がやれる。
+* 行の先頭に、句読点が来ない様にした。
+* ひらがなやカタカナの途中でも、行を折り返せる様にした。
+* 縦書きで、文字が横向きに倒れない様にした。
+* 日本語の文が、日本語の書体で表示される様にした。
+* 日本語と英数字の間を、Word と同じ様に、少し空ける様にした。
+* Markdown のファイルを、日本語の文書として開ける様にした。
 
-== Microsoft の ID は、要る所が少ないのに、複雑で費用が掛かる
+=== AI で直す手順
 
-Microsoft の ID には、二つの種類がある。個人の Microsoft アカウントと、組織が作る職場または学校のアカウント(Entra ID)である。それぞれ、作られた用途のサービスでしか使えない。二つの間で、情報は同期しない。元: https://support.microsoft.com/account-billing/what-s-the-difference-between-a-microsoft-account-and-a-work-or-school-account-72f10e1e-cab8-4950-a8da-7c45339575b0[Microsoft サポート「Microsoft アカウントと職場または学校のアカウントの違い」]
+. 人が AI に渡すのは、画面の写真と、短い指示である。
+. AI が同じ文書を開いて、同じ不具合が起きる事を確かめる。そして、ソースコードを読んで原因を見つける。
+. AI がプログラムを直す。和暦の例では、アプリが「g」の文字を、元号を表す記号として扱っていなかった。AI が、元号として処理する仕組みを足した。
+. 直した後に、もう一度文書を開いて、正しく表示される事を確かめる。テストも AI が足す。
 
-スマートフォンでは、Microsoft の ID は使われない。Microsoft のスマートフォンの OS(Windows 10 Mobile)は、2020 年 1 月 14 日にサポートが終わった。元: https://support.microsoft.com/help/4535289[Microsoft サポート KB4535289]。スマートフォンを使う限り、Google ID か Apple ID が要る。
+=== Office そのものを AI で作る ── aiseed office
 
-個人の Microsoft アカウントは、Windows のパソコンを使い始める時に作る物である。個人向けの Windows 11 の Home と Pro は、初期設定の時に Microsoft アカウントが要る。元: https://www.microsoft.com/ja-jp/windows/windows-11-specifications[Microsoft「Windows 11 の仕様」]
-
-パソコンを使う人は、スマートフォンを使う人よりずっと少ない。2024 年に個人がインターネットに使った物は、スマートフォンが 74.4%、パソコンが 46.8% だった。元: https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r07/html/nd21b120.html[総務省「令和 7 年版 情報通信白書」]。個人のスマートフォンの保有率は 78.9% である。元: https://www.soumu.go.jp/menu_news/s-news/01tsushin02_02000183.html[総務省「令和 7 年 通信利用動向調査」]
-
-会社で使う Entra ID の料金は、一人月 1,049 円(P1、税抜、年契約)である。条件付きアクセス(どこから、どの端末から入れるかを決める機能)は、P1 から入っている。P1 は Microsoft 365 Business Premium にも含まれている。元: https://www.microsoft.com/ja-jp/security/business/microsoft-entra-pricing[Microsoft「Microsoft Entra の価格」]
-
-100 人の会社で計算する。P1 の料金は、1,049 円 × 100 人 × 12 か月で、年 125 万 8,800 円である。これに、管理する人の手間が加わる。P1 の 1,049 円は、Business Premium の一人月 3,298 円(2026 年 7 月の改定後。連載の link:/ai-native-software/independence/[2-01])の約 32% に当たる。
-
-ここから先は、*私たちの考えである。*
-
-* Microsoft の ID が要るのは、Microsoft のサービスを使う時だけである。Office と Microsoft 365 をやめれば、要る所はほとんど無くなる。
-* 個人で Microsoft の ID を持つのは、Windows のパソコンを持つ人である。家族で 1 台なら、持つのは一人だけで、そのアカウントを家族で共有して使う事になる。一つの ID が一人を表さないので、ID として使い物にならない。パソコンを持たない人は持たない。仕事のアカウントは、会社が渡す物である。自分から選んで使う人は少ない。
-* 家族でユーザーを分けないのは、Windows のアプリの作りのためである。全員で使うアプリは、入れる時と更新の時に管理者の権限が要る。権限の要らないアプリは、各ユーザーの AppData の下に入るので、入れた人しか使えない。ユーザーを分けると手間が増えるので、一つのアカウントを共有する事になる。
-* アプリは、管理者が一度入れれば全員が使え、設定は一人ずつのホームに分かれ、更新も管理者が一度すれば済む様に作るべきである。Linux(Debian)は、初めからそう作られている。
-* それなのに、二つの種類があって紛らわしい。権限の設定も複雑で、扱える人を雇うか、業者に頼む事になる。
-* Google ID と Apple ID は、ほぼ全員が持っていて、ほぼ無料で使える。Microsoft の ID は、会社が一人ずつ払って持たせる物である。
-* 要る所が少ないのに、複雑で、費用が掛かりすぎる。
-
-これは、ナデラ氏の大きな失敗である。ナデラ氏は、2014 年 2 月 4 日に Microsoft の CEO になった。元: https://news.microsoft.com/source/2014/02/04/microsoft-board-names-satya-nadella-as-ceo/[Microsoft の発表]。スマートフォンの OS をやめたのは、その後である。
-
-* ID は、会社の仕事の入口である。多くの会社のログインと権限が、Microsoft の ID にぶら下がっている。
-* これほど多くの会社が頼る物なら、簡単に使えて、ほかへ移しやすい様に作る責任がある。Microsoft の ID は、そうなっていない。企業の社会的責任を果たしていない。
-* Microsoft の ID は、客を Microsoft のサービスにつなぎ止めて、人数の料金を取るための物になっている。単に金儲けの道具である。
-
-*だから、Microsoft の ID と Entra ID は外す。*
-
-== 解き方 ── Office は aiseed office、ログインは PocketBase
-
-=== Office は aiseed office
-
-aiseed office は、私たちが作っている Office である。コードは https://github.com/aiseed-dev/officework[GitHub]で公開している(AGPL)。
+次は、Office そのものを AI で作っている。名前は aiseed office である。今は、試験公開の段階(0.1.0-alpha.7)である。コードは https://github.com/aiseed-dev/officework[GitHub]で公開している(AGPL)。
 
 * .xlsm や .docm の中の VBA は、決して実行しない。
 * マクロは、文書の中ではなく、別の Python のファイル(.py)に置く。文書を開いても、マクロは動かない。
+* Python で操作できる。Python で操作できれば、AI に頼んで自動化するのは簡単である。
+* 文書と表は、自分のパソコンの中のファイルである。AI を使いたい時だけ、自分で選んだ AI につなぐ。
 * Word と Excel のファイルを読み書きする。取引先とのやり取りは、今のファイルのまま続けられる。
 * コードが公開されているので、使う会社が自分で読んで、Mythos で検査できる。
 
-今は、テスト版(0.1.0-alpha.7)である。Windows では、アプリの中から動かす文書のマクロは、まだ動かない。元: https://github.com/aiseed-dev/officework[aiseed office の README]
+Windows では、アプリの中から動かす文書のマクロは、まだ動かない。元: https://github.com/aiseed-dev/officework[aiseed office の README]
+
+ja-office も aiseed office も、中が見える。自分で検査できる。Microsoft のクラウドに頼らない。これが、開発している理由である。
 
 VBA のマクロがしていた処理は、AI と一緒に Python に書き直す。文書の作り方は、連載の link:/ai-native-software/documents/[2-07「文書を取り戻す」]に書いた。
 
-=== ログインは PocketBase
+*Excel が作れるのなら、ほとんどのシステムやアプリは、自分で作れるはずである。* これは私たちの考えである。
 
-PocketBase は、ログインと権限を一つにまとめる、オープンソースのソフトウェアである。Google や Apple のアカウントでのログイン(OAuth2)もつなげられる。元: https://pocketbase.io/docs/authentication/[PocketBase の文書]。社内のシステムが Web なら、そのログインを PocketBase 一つにまとめられる。
+== 作るより、守る
 
-移る間は、PocketBase に Microsoft のログインを残しておく。今までのアカウントのまま入れる。全員が移ったら、Microsoft のログインを外す。手順は、連載の link:/ai-native-software/auth/[2-05「門番を立てる」]に書いた。
+誰でも作れる様になると、二つの事が起きる。
 
-Google ID と Apple ID は、スマートフォンを使う限り残る。
+* *作る仕事が減る。* 会社も、AI を使って自分でシステムを作れる。システムを作る仕事を外部に依頼する事が減る。頼まれて作る仕事だけで、個人の開発者が暮らしていくのは、難しくなっている。これは私たちの見方である。
+* *攻撃の壁が下がる。* Anthropic は、高度なサイバー攻撃をする事の壁は大きく下がった、と書いている。元: https://www.anthropic.com/news/disrupting-AI-espionage[Anthropic「Disrupting the first reported AI-orchestrated cyber espionage campaign」](2025 年 11 月 13 日)
 
-=== 残りは AI がやる
+今までのシステムも、設計の間違いやセキュリティの穴を持ったまま使われている。Mythos で調べると、広く使われているソフトウェアからも、重大な穴が 1 万件以上見つかった(上の「直せる物と、止めるしかない物」)。
 
-Office と Entra ID が解ければ、残りの移行は AI がやれる。メール、予定、ファイルの中身を取り出して、移す先に入れる作業である。全体の対応表は、連載の link:/ai-native-software/independence/[2-01「Microsoft と Google から自立する」]にある。
+*作るより、守る。* これから大事なのは、作った物を検査して直し続ける事である。検査は、開発者の新しい仕事になる。
 
-== 情報システム部門は、変わるしかない
+ここから先は、*私たちの考えである。*
 
-ここから先も、*私たちの考えである。*
+ソフトウェアの開発者と AI の関係者は、この事に早く気がつくべきである。しかし、気がつきにくい理由がある。
 
-会社の情報システム部門にとって、ここが厳しい所である。
+* 開発者は、AI を使うと自分の仕事が速くなる。それで、自分の値打ちが上がった、と感じる。実際は、誰でも同じ速さで作れる様になったので、作る事の値段が下がっている。
+* AI の関係者は、「AI で、もっと作れる」と言う。作った後に誰が責任を持つかは、あまり言わない。
 
-* 今の仕事の多くは、Microsoft の製品の管理である。アカウントと権限を Entra ID で管理する。Windows のパソコンを管理する。Microsoft 365 の契約と人数を管理する。業者とのやり取りをする。
-* Office と Entra ID を外せば、この仕事の多くが無くなる。今まで積み上げてきた知識と資格の多くも、使わなくなる。
+早く気がついた人は、作る仕事から、検査して責任を持つ仕事に、先に移れる。遅い人は、値段が下がってから移る事になる。AI で仕事が無くなるのは、「AI で、もっと作れる」と言っている人たちである。
 
-それでも、変わるしかない。
+作った物を守る方法は、link:/blog/cyber-war-mythos-and-humans/[「サイバー戦争は、もう始まっています」]に書いた。Mythos と人間で守る。
 
-* VBA は直らない。Microsoft の ID は、要る所が少ないのに費用が掛かる。外さなければ、危険と費用は会社の側に残り続ける。
-* 新しい仕事は、会社のコードとデータを自分の手元に持つ事である。VBA のマクロを、AI と一緒に Python に書き直す。PocketBase でログインと権限を管理する。
-* そして、自分の会社のシステムを、Mythos で検査する。見つかった穴を実際に動かして確かめ、どれから直すかを決める。link:/blog/cyber-war-mythos-and-humans/[「サイバー戦争は、もう始まっています」]で、社内に検査できる人を置いてほしい、と書いた。その人は、情報システム部門の人である。
+Microsoft から出られない理由と、Microsoft の ID を外す話は、link:/blog/no-more-nadella-microsoft/[「もう、ナデラの Microsoft は必要ない」]に書いた。
 
 == 確かめた日と、変わる所
 
@@ -16706,14 +16692,13 @@ Office と Entra ID が解ければ、残りの移行は AI がやれる。メ�
 
 * *VBScript。* 既定で使えなくなるのは 2027 年ごろで、Windows から外す時期は決まっていない。
 * *NTLM。* 外す時期は、頁に書いていない。
-* *aiseed office。* テスト版である。版が進めば、出来る事が変わる。
+* *ja-office と aiseed office。* 版が進めば、直した事と出来る事が変わる。aiseed office は試験公開の段階である。
 
 == 関連
 
+* link:/blog/no-more-nadella-microsoft/[もう、ナデラの Microsoft は必要ない] ── Office と Microsoft の ID を外す
 * link:/blog/cyber-war-mythos-and-humans/[サイバー戦争は、もう始まっています] ── Mythos と人間で守る
-* link:/blog/verification-shock/[Fable 5 が戻ってきたら、すぐやるべきこと] ── 稼働中の自社システムを、全部 AI で確かめる
-* link:/ai-native-software/independence/[2-01 Microsoft と Google から自立する] ── 全体像と対応表
-* link:/ai-native-software/auth/[2-05 門番を立てる] ── PocketBase で認証を一つに
+* link:/blog/python-in-excel-eight-years-later/[ExcelにPythonが搭載？ ── それから8年後] ── 2017 年の記事の答え合わせ
 * link:/ai-native-software/documents/[2-07 文書を取り戻す] ── 読む物は adoc、触る表は格子
 
 == 参考
@@ -16721,21 +16706,20 @@ Office と Entra ID が解ければ、残りの移行は AI がやれる。メ�
 * Microsoft Learn「Macros from the internet are blocked by default in Office」 https://learn.microsoft.com/en-us/microsoft-365-apps/security/internet-macros-blocked
 * Microsoft「VBScript deprecation: Timelines and next steps」(2024 年 5 月 22 日) https://techcommunity.microsoft.com/blog/windows-itpro-blog/vbscript-deprecation-timelines-and-next-steps/4148301
 * Microsoft Learn「Deprecated features in the Windows client」 https://learn.microsoft.com/en-us/windows/whats-new/deprecated-features
-* Microsoft「FY27 Q1 の決算の発表」(2026 年 10 月 28 日) https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast
+* ja-office https://github.com/aiseed-dev/ja-office
 * aiseed office(officework) https://github.com/aiseed-dev/officework
-* PocketBase「Authentication」 https://pocketbase.io/docs/authentication/
 endif::[]
 ifdef::lang-en[]
 = VBA Cannot Be Fixed
+
+// TODO (after the video "If It Does Not Exist, Build It with AI. Protecting Matters More Than Building" is published): say here that this article is the written version of the video and give its URL. Also put the video URL first in References. The Japanese version has the same note.
 
 == Conclusion
 
 * *Microsoft did not fix VBA. It only made blocking the default.* Since 2022, macros in files from the internet are blocked by default. Companies that need macros for their work turn the block off. Where they turn it off, they are attacked.
 * *As Mythos finds vulnerabilities in bulk, software splits into what can be fixed and what can only be blocked.* The longer a product carries compatibility, the more it can only block. With software whose code you can read, the user can inspect it and fix it. This is our view.
-* *Windows can be replaced with Debian.* What keeps companies in is Office and Entra ID.
-* *Microsoft's ID is needed in few places, yet complex and costly.* It is simply a tool for making money. So we remove Microsoft's ID and Entra ID.
-* *Office is untied with aiseed office, and sign-in with PocketBase.* Once these two are untied, AI can do the rest of the move.
-* *It is hard on the IT department, but it has no choice but to change.* The new work is to hold the code and data and inspect them with Mythos.
+* *If it does not exist, build it with AI.* Linux had no easy-to-use Office. We fixed Euro-Office with AI so that it handles Japanese correctly (ja-office), and we are building an Office itself with AI (aiseed office).
+* *Protecting matters more than building.* When anyone can build, the barrier to attack falls too. What matters from now on is to keep inspecting and fixing what was built.
 
 == VBA was not fixed, only blocked
 
@@ -16767,6 +16751,414 @@ What follows is *our view.*
 * With software whose code you can read, the user can inspect it and decide whether to fix or remove a part. If the parts are small and separate, the effect of a fix is also easier to check.
 * Until now, products from large companies were thought to be safer. From now on, software you can inspect and fix yourself will be safer. Quality reverses.
 
+== If it does not exist, build it with AI
+
+Linux had no easy-to-use Office. This is our view. If it does not exist, build it with AI.
+
+=== Fixing Euro-Office for Japanese — ja-office
+
+Euro-Office is an open-source Office based on ONLYOFFICE. We fixed it together with AI so that Japanese documents and spreadsheets display correctly. The fixed version is distributed as ja-office for Linux, Windows and Mac. The README lists every fix, with screens before and after. Source: https://github.com/aiseed-dev/ja-office[ja-office (GitHub)]
+
+In the spreadsheet, we fixed the following.
+
+* Dates can be shown in the Japanese era calendar. What the official version broke into "ggg年m月d日" now shows as "令和8年10月6日" (Reiwa 8, October 6).
+* Numbers can be shown in kanji numerals. 1234 becomes "壱阡弐百参拾四".
+* The function that turns full-width characters into half-width (ASC) now works.
+* The function that counts characters in bytes (LENB) now returns the same answer as Excel.
+* Full-width digits can be read as numbers. VALUE("１２３") returns 123.
+* We added the function that turns numbers into kanji numerals (NUMBERSTRING).
+* The function that formats yen amounts (YEN) now returns the same answer as Excel.
+
+In documents, we fixed the following.
+
+* Punctuation no longer comes at the start of a line.
+* Lines can break in the middle of hiragana and katakana.
+* In vertical writing, characters no longer fall over sideways.
+* Japanese text is shown in a Japanese typeface.
+* A small space is put between Japanese and Latin letters or digits, as Word does.
+* Markdown files open as Japanese documents.
+
+=== How AI fixes it
+
+. What a person gives the AI is a screenshot and a short instruction.
+. The AI opens the same document and confirms the same defect happens. Then it reads the source code and finds the cause.
+. The AI fixes the program. In the era-calendar example, the app did not treat the letter "g" as the symbol for the era name. The AI added a mechanism that handles it as the era.
+. After the fix, the document is opened again to confirm it displays correctly. The AI adds tests too.
+
+=== Building an Office itself with AI — aiseed office
+
+Next, we are building an Office itself with AI. It is called aiseed office. It is in test release (0.1.0-alpha.7). The code is public on https://github.com/aiseed-dev/officework[GitHub] (AGPL).
+
+* It never runs the VBA inside .xlsm or .docm files.
+* Macros live not inside documents but in separate Python files (.py). Opening a document never runs a macro.
+* It can be driven from Python. Once that is true, asking an AI to automate it is easy.
+* Documents and spreadsheets are files on your own computer. Only when you want AI do you connect the AI you chose.
+* It reads and writes Word and Excel files. Exchanges with business partners can continue with the same files.
+* Because the code is public, the company using it can read it and inspect it with Mythos.
+
+On Windows, document macros run from inside the app do not work yet. Source: https://github.com/aiseed-dev/officework[the aiseed office README]
+
+Both ja-office and aiseed office can be seen into. You can inspect them yourself. They do not depend on Microsoft's cloud. That is why we are building them.
+
+The work VBA macros did is rewritten in Python together with AI. How to handle documents is in the series chapter link:/en/ai-native-software/documents/[2-07 "Take Documents Back"].
+
+*If an Excel can be built, most systems and apps can be built yourself.* This is our view.
+
+== Protecting matters more than building
+
+When anyone can build, two things happen.
+
+* *Building work shrinks.* Companies, too, can build their own systems with AI. They send less system-building work outside. It is getting hard for an individual developer to make a living only from building to order. This is our view.
+* *The barrier to attack falls.* Anthropic writes that the barriers to performing sophisticated cyberattacks have dropped substantially. Source: https://www.anthropic.com/news/disrupting-AI-espionage[Anthropic, "Disrupting the first reported AI-orchestrated cyber espionage campaign"] (November 13, 2025)
+
+The systems in use today also carry design mistakes and security vulnerabilities. Examined with Mythos, even widely used software yielded more than 10,000 serious vulnerabilities (see "What can be fixed, and what can only be blocked" above).
+
+*Protecting matters more than building.* What matters from now on is to keep inspecting and fixing what was built. Inspection becomes the developer's new work.
+
+What follows is *our view.*
+
+Software developers and people in AI should notice this soon. But there are reasons it is hard to notice.
+
+* With AI, a developer's own work gets faster. So they feel their own value has gone up. In fact, anyone can now build at the same speed, so the price of building is falling.
+* People in AI say, "With AI, you can build more." They say little about who takes responsibility after it is built.
+
+Those who notice early can move first, from building to inspecting and taking responsibility. Those who are late will move after the price has fallen. The people whose work AI will take away are the ones saying, "With AI, you can build more."
+
+How to protect what was built is in link:/en/blog/cyber-war-mythos-and-humans/[The Cyber War Has Already Begun]: defend with Mythos and people.
+
+Why companies cannot leave Microsoft, and removing Microsoft's ID, are in link:/en/blog/no-more-nadella-microsoft/[No More Need for Nadella's Microsoft].
+
+== Checked on, and what will change
+
+The facts were checked against the source pages on November 27, 2026. The following will change.
+
+* *VBScript.* It will no longer be enabled by default around 2027. The date for removing it from Windows is not set.
+* *NTLM.* The page gives no date for removal.
+* *ja-office and aiseed office.* What has been fixed and what they can do will change as versions advance. aiseed office is in test release.
+
+== Related
+
+* link:/en/blog/no-more-nadella-microsoft/[No More Need for Nadella's Microsoft] — removing Office and Microsoft's ID
+* link:/en/blog/cyber-war-mythos-and-humans/[The Cyber War Has Already Begun] — defending with Mythos and people
+* link:/en/blog/python-in-excel-eight-years-later/[Python in Excel? — Eight Years Later] — checking the 2017 article against what happened
+* link:/en/ai-native-software/documents/[2-07 Take Documents Back] — prose in AsciiDoc, working tables in a grid
+
+== References
+
+* Microsoft Learn, "Macros from the internet are blocked by default in Office" https://learn.microsoft.com/en-us/microsoft-365-apps/security/internet-macros-blocked
+* Microsoft, "VBScript deprecation: Timelines and next steps" (May 22, 2024) https://techcommunity.microsoft.com/blog/windows-itpro-blog/vbscript-deprecation-timelines-and-next-steps/4148301
+* Microsoft Learn, "Deprecated features in the Windows client" https://learn.microsoft.com/en-us/windows/whats-new/deprecated-features
+* ja-office https://github.com/aiseed-dev/ja-office
+* aiseed office (officework) https://github.com/aiseed-dev/officework
+endif::[]
+// ===== article: 055-no-more-nadella-microsoft =====
+---
+slug: no-more-nadella-microsoft
+title.ja: もう、ナデラの Microsoft は必要ない ── Office と Microsoft の ID を外す
+title.en: No More Need for Nadella's Microsoft — Remove Office and Microsoft's ID
+subtitle.ja: Excel に Python が入るのを 9 年待った。データは自分でクラウドに移ったのではなく、Microsoft が移させている。この秋の Microsoft は、穴が月に 1,000 件を超え、6 万人に退職の申し出を出した。Microsoft から出られないのは Office と Entra ID があるからで、Microsoft の ID は外せる
+subtitle.en: We waited nine years for Python in Excel. Data did not move to the cloud by itself; Microsoft is moving it. This autumn Microsoft fixed over 1,000 vulnerabilities a month and offered 60,000 employees a voluntary exit. What keeps companies in is Office and Entra ID, and Microsoft's ID can be removed
+date: 2026.11.27
+description.ja: 2017 年に「Excel に Python が搭載?」を書いてから 9 年、Microsoft の Python in Excel は Microsoft のクラウドでしか動かない。ナデラ氏は 2026 年 11 月の対談で、Office の競争はアプリではなく、クラウドに移ったデータだと話した。データを移させているのは、強制と、手元で使う方を使いにくくする事である。この秋、Microsoft が直した穴は 10 月 1,474 件、11 月 1,094 件。Microsoft の ID は、要る所が少ないのに、複雑で費用が掛かる。Office は aiseed office で、ログインは PocketBase で解く。
+description.en: Nine years after we wrote "Python in Excel?" in 2017, Microsoft's Python in Excel runs only in Microsoft's cloud. In a November 2026 interview, Nadella said the Office competition is not about apps but about data that moved to the cloud. What moves the data is compulsion, and making local use harder. This autumn Microsoft fixed 1,474 vulnerabilities in October and 1,094 in November. Microsoft's ID is needed in few places, yet complex and costly. Office is untied with aiseed office, and sign-in with PocketBase.
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+---
+ifdef::lang-ja[]
+= もう、ナデラの Microsoft は必要ない
+
+// TODO(動画「「ExcelにPythonが搭載？」を書いてから9年」の公開の後): ここに、この記事が動画の文章版である事と、動画の URL を書く。「参考」の初めにも、動画の URL を入れる。英語版も同じ。
+
+== 結論
+
+* *Excel に Python が入るのを、9 年待った。* 今の Python in Excel は、Microsoft のクラウドの上でしか動かない。自分のパソコンの Python は使われない。
+* *データは、自分でクラウドに移ったのではない。移させているのは、ナデラ氏の Microsoft である。* やり方は、強制する事と、自分のパソコンで使う方を使いにくくする事である。利益のためである。これは私たちの考えである。
+* *この秋の Microsoft は、穴が月に 1,000 件を超え、約 6 万人に退職の申し出を出した。* 責任は使う側に置き、使う側は中を検査できない。社会的な責任を果たしていない。
+* *Microsoft から出られないのは、Office と Entra ID があるからである。* Microsoft の ID は、要る所が少ないのに、複雑で費用が掛かる。だから外す。Office は aiseed office で、ログインは PocketBase で解く。
+
+== 第 1 部 Excel に Python を、9 年待った
+
+2017 年 12 月に、「Excel に Python が搭載?」という記事を書いた。VBA は、Office 97 から、実質的な機能の追加が無かった。Excel に Python が入る事を期待した。その記事の答え合わせは、link:/blog/python-in-excel-eight-years-later/[「ExcelにPythonが搭載？ ── それから8年後」]に書いた。
+
+2018 年に、続きの記事を書いた。1 年たっても入らなかった。そこで、xlwings というライブラリーで、Python から Excel を操作する方法を書いた。ただし、xlwings を使うには Excel が要る。そのため、Linux では使えない。
+
+今の Excel には、Python in Excel という機能がある。しかし、次の通りである。
+
+* Python のコードは、Microsoft のクラウドの中の入れ物で動く。自分のパソコンや機器には触れない。元: https://support.microsoft.com/en-us/office/data-security-and-python-in-excel-33cc88a4-4a87-485e-9ff9-f35958278327[Microsoft サポート「Data security and Python in Excel」]
+* 使えるのは、有料の Microsoft 365 の契約がある人である。無料の版と、個人向けの買い切りの版では使えない。元: https://support.microsoft.com/en-us/office/python-in-excel-availability-781383e6-86b9-4156-84fb-93e786f7cab0[Microsoft サポート「Python in Excel availability」]
+
+VBA の方はどうか。Microsoft は、2022 年 7 月から、インターネットから来たファイルのマクロを、初めから止める様にした。止めただけである。「止めただけ」は、VBA の作りを変えていない事からの、私たちの読みである。元: https://learn.microsoft.com/en-us/microsoft-365-apps/security/internet-macros-blocked[Microsoft Learn「Macros from the internet are blocked by default in Office」]。詳しくは link:/blog/vba-cannot-be-fixed/[「VBA は直せない」]に書いた。
+
+*Microsoft は、9 年も、期待を裏切り続けた。*
+
+== 第 2 部 Microsoft の CEO の言葉
+
+Microsoft の CEO のナデラ氏は、2026 年 11 月 18 日に、The New York Times の催し(DealBook Summit)で対談した。元: https://www.youtube.com/watch?v=MsZmV9wzEZ8[対談の動画「Satya Nadella on the New Algorithm」]。言葉は、動画の字幕と、別の人が起こした文字起こし(https://singjupost.com/transcript-satya-nadella-on-new-algorithm-dealbook-summit-2026/[The Singju Post])の両方で確かめた。下の言葉は、話した事を短くまとめた物である。
+
+* ふつうの事務の仕事には、今の AI で、ほぼ足りている(6:41 ごろ)。
+* Office の競争は、アプリの競争ではない。Office の下にあるデータがクラウドに移り、会社ごとの財産になった事だ(16:18 ごろ)。
+* AI が何をするかの責任は、今は、AI を入れた側にある(13:03 ごろ)。
+* 利用者の文脈と記憶を、モデルとは別に持つ事が、Microsoft の値打ちだ(6:04 ごろ)。
+
+=== データは、自分で移ったのではない
+
+ナデラ氏は、Office の下にあるデータが、クラウドに移った、と言った。ここが、一番おかしい所である。データは、自分で移ったのではない。移させているのは、ナデラ氏の Microsoft である。これは私たちの考えで、根拠は次の事実である。やり方は二つある。
+
+まず、強制している事である。
+
+* Excel の Python は、Microsoft のクラウドの上でしか動かない。有料の契約が要る(第 1 部)。
+* 個人向けの Windows 11 の Home と Pro は、初期設定の時に、インターネットの接続と Microsoft のアカウントが要る。元: https://www.microsoft.com/ja-jp/windows/windows-11-specifications[Microsoft「Windows 11 の仕様」]。Microsoft は、初期設定でローカルのアカウントを作る、知られた方法を取り除く、と試験の版で書いている。元: https://blogs.windows.com/windows-insider/2025/10/06/announcing-windows-11-insider-preview-build-26220-6772-dev-channel/[Windows Insider Blog](2025 年 10 月 6 日)
+* Microsoft 365 Copilot(有料の版)は、Microsoft 365 の中にある、会社のメール、ファイル、会議、予定を使って答える。元: https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-overview[Microsoft Learn「Microsoft 365 Copilot overview」]。AI を使いたければ、データを Microsoft の中に置く事になる。
+
+次に、自分のパソコンで使う方を、使いにくくしている事である。これが、一番の問題である。
+
+* Word は、新しい文書を、初めからクラウドに保存する様に変わり始めた。試験の版(Microsoft 365 Insider)からである。元: https://techcommunity.microsoft.com/blog/microsoft365insiderblog/save-new-files-automatically-to-the-cloud-in-word-for-windows/4445216[Microsoft「Save new files automatically to the cloud in Word for Windows」](2025 年 8 月 26 日)
+* Windows のメールのアプリ(メール、カレンダー、People)は、2024 年 12 月 31 日でサポートが終わった。元: https://support.microsoft.com/en-us/office/outlook-for-windows-the-future-of-mail-calendar-and-people-on-windows-11-715fc27c-e0f4-4652-9174-47faa751b199[Microsoft サポート]
+* 代わりの新しい Outlook は、Gmail と Yahoo のメール、予定、連絡先の写しを、Microsoft のクラウドに同期する。元: https://support.microsoft.com/en-us/outlook/getstarted/sync-your-account-in-outlook-to-the-microsoft-cloud[Microsoft サポート「Sync your account in Outlook to the Microsoft Cloud」]
+* OneDrive は、デスクトップと書類のフォルダーを、初めからクラウドに写す設定になっている、と報じられている。元: https://www.androidheadlines.com/2026/01/why-windows-11-enables-onedrive-backup-by-default-and-how-to-turn-it-off.html[Android Headlines](2026 年 1 月)。Microsoft の頁には、初めから入っている、とは書いていない。
+
+切るには、利用者が自分で設定を探して変えないといけない。何もしない人のデータは、Microsoft のクラウドに入る。選んだのは、利用者ではない。Microsoft である。
+
+=== 利益のため
+
+Microsoft 365 の会社向けのクラウドの売上は、2026 年 7 月から 9 月に、前の年より 17% 増えた。元: https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast[Microsoft の決算の発表](2026 年 10 月 28 日)
+
+ナデラ氏は、利用者の文脈と記憶を持つ事が、Microsoft の値打ちだ、と話している。データを移させるのは、利益のためである。Microsoft にとって、競争は、Excel を良くする事ではなかった。これは私たちの考えである。
+
+== 第 3 部 この秋の Microsoft
+
+日付の順に並べる。
+
+* *10 月。* Microsoft が月例の更新で直した製品の穴(CVE)は、1,474 件だった。初めて 1,000 件を超えた。元: https://forest.watch.impress.co.jp/docs/news/2155377.html[窓の杜](2026 年 11 月 11 日)。記事が初めに出た時は 1,413 件で、後から直された数である。
+* *10 月 26 日。* Microsoft は、約 6 万人の従業員に、退職の申し出を出した。希望して辞める人を募る申し出である。6 月の終わりの従業員は 22 万 3,000 人で、約 4 分の 1 に当たる。対象には、Windows を作る部門も入っている。セキュリティの部門は、対象から外れている。元: https://thenextweb.com/news/microsoft-buyouts-60000-employees-voluntary-exit-offer[TNW](2026 年 10 月 26 日)。部門の話は、The Verge が関係者から聞いた話として、記事が伝えている。
+* *11 月 10 日。* 月例の更新で直した穴は、1,094 件だった。そのうち Windows は 726 件である。2 か月続けて 1,000 件を超えた。元: 同じ https://forest.watch.impress.co.jp/docs/news/2155377.html[窓の杜]。Microsoft は 11 月 5 日に、更新を早く当てる様に呼び掛けている。
+* *11 月 12 日。* Outlook のメール(Exchange Online)が、約 24 時間止まった。Microsoft の暫定の事後報告では、23 時間 50 分である。元: https://office365itpros.com/2026/11/16/exchange-online-outage-nov26/[Office 365 for IT Pros](2026 年 11 月 16 日)。原因の一つは、Microsoft が 7 月に、自分のサーバー(Microsoft 365 のネットワークの入口のサーバー)に入れた変更に隠れていた不具合である。元: https://www.theregister.com/2026/11/16/microsoft-blames-monster-email-outage-on-software-defect-introduced-in-july-fix/5310026[The Register](2026 年 11 月 16 日)
+* *11 月 18 日。* ナデラ氏は対談で、これからは修正を、試す間もなくすぐに当てる、それが不安定さを生む、と話した(2:43 ごろ。まとめ)。
+
+ここから先は、*私たちの考えである。*
+
+* 穴だらけの物を、売って来たのである。
+* 穴は、1 か月に 1,000 件を超える。ナデラ氏の答えは、6 万人への退職の申し出だった。それで本当に、Windows と Microsoft 365 を守れるのだろうか。
+
+=== 社会的な責任
+
+ナデラ氏は同じ対談で、自分の仕事は、Microsoft が市場と社会から仕事を許される様にする事だ、と言った(29:23 ごろ。まとめ)。しかし、AI がする事の責任は、使う側に置いている(13:03 ごろ)。
+
+Microsoft の Windows と Office は、ソースコードを公開していない。使う側は、中を自分で検査できない。
+
+ここから先は、*私たちの考えである。*
+
+* 責任を使う側に置きながら、使う側が中を検査できない様にしている。社会的な責任を、全く果たしていない。
+* サイバー攻撃への対策の、邪魔ばかりしている。
+* 対談の聞き手は、ナデラ氏が CEO になってから、Microsoft の株価が約 14 倍になった、と紹介した(0:06 ごろ。聞き手の言葉で、この数は私たちは確かめていない)。自社の株価の事しか考えていない。私たちには、そう見える。
+* 9 年待った者には、本当に腹が立つ話である。
+
+== Windows は、Debian に移ればよい
+
+会社のシステムは、社内で使う物も、ほぼ Web になってきている。これは私たちの見方である。仕事の多くは、ブラウザーの中で動く。OS を Debian に替えても、仕事の中身はほとんど変わらない。手順は link:/claude-debian/[「Claudeと一緒に学ぶDebian」]の連載に書いた。
+
+Windows は、出口を塞いでいない。
+
+== 出られないのは、Office と Entra ID があるから
+
+問題を残していても、売上は増えている(上の「利益のため」)。私たちは、出られないからだと考える。出口を塞いでいるのは、二つである。
+
+. *Office。* 会社の文書は、Word と Excel のファイルである。様式も、集計も、VBA のマクロも、その中にある。取引先とも、このファイルでやり取りする。
+. *Entra ID。* 会社のログインと権限の門である。文書もメールも共有も、まずこの門を通る。Windows のパソコンも、この門で管理されている。
+
+この二つ以外は、移す先がある。メールも予定もファイルも、中身を取り出して、別の道具に移せる。その作業は、AI がやれる。
+
+== Microsoft の ID は、要る所が少ないのに、複雑で費用が掛かる
+
+Microsoft の ID には、二つの種類がある。個人の Microsoft アカウントと、組織が作る職場または学校のアカウント(Entra ID)である。それぞれ、作られた用途のサービスでしか使えない。二つの間で、情報は同期しない。元: https://support.microsoft.com/account-billing/what-s-the-difference-between-a-microsoft-account-and-a-work-or-school-account-72f10e1e-cab8-4950-a8da-7c45339575b0[Microsoft サポート「Microsoft アカウントと職場または学校のアカウントの違い」]
+
+スマートフォンでは、Microsoft の ID は使われない。Microsoft のスマートフォンの OS(Windows 10 Mobile)は、2020 年 1 月 14 日にサポートが終わった。元: https://support.microsoft.com/help/4535289[Microsoft サポート KB4535289]。スマートフォンを使う限り、Google ID か Apple ID が要る。
+
+個人の Microsoft アカウントは、Windows のパソコンを使い始める時に作る物である(上の「Windows 11 の仕様」)。
+
+パソコンを使う人は、スマートフォンを使う人よりずっと少ない。2024 年に個人がインターネットに使った物は、スマートフォンが 74.4%、パソコンが 46.8% だった。元: https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r07/html/nd21b120.html[総務省「令和 7 年版 情報通信白書」]。個人のスマートフォンの保有率は 78.9% である。元: https://www.soumu.go.jp/menu_news/s-news/01tsushin02_02000183.html[総務省「令和 7 年 通信利用動向調査」]
+
+会社で使う Entra ID の料金は、一人月 1,049 円(P1、税抜、年契約)である。条件付きアクセス(どこから、どの端末から入れるかを決める機能)は、P1 から入っている。P1 は Microsoft 365 Business Premium にも含まれている。元: https://www.microsoft.com/ja-jp/security/business/microsoft-entra-pricing[Microsoft「Microsoft Entra の価格」]
+
+100 人の会社で計算する。P1 の料金は、1,049 円 × 100 人 × 12 か月で、年 125 万 8,800 円である。これに、管理する人の手間が加わる。P1 の 1,049 円は、Business Premium の一人月 3,298 円(2026 年 7 月の改定後。連載の link:/ai-native-software/independence/[2-01])の約 32% に当たる。
+
+ここから先は、*私たちの考えである。*
+
+* Microsoft の ID が要るのは、Microsoft のサービスを使う時だけである。Office と Microsoft 365 をやめれば、要る所はほとんど無くなる。
+* 個人で Microsoft の ID を持つのは、Windows のパソコンを持つ人である。家族で 1 台なら、持つのは一人だけで、そのアカウントを家族で共有して使う事になる。一つの ID が一人を表さないので、ID として使い物にならない。パソコンを持たない人は持たない。仕事のアカウントは、会社が渡す物である。自分から選んで使う人は少ない。
+* 家族でユーザーを分けないのは、Windows のアプリの作りのためである。全員で使うアプリは、入れる時と更新の時に管理者の権限が要る。権限の要らないアプリは、各ユーザーの AppData の下に入るので、入れた人しか使えない。ユーザーを分けると手間が増えるので、一つのアカウントを共有する事になる。
+* アプリは、管理者が一度入れれば全員が使え、設定は一人ずつのホームに分かれ、更新も管理者が一度すれば済む様に作るべきである。Linux(Debian)は、初めからそう作られている。
+* それなのに、二つの種類があって紛らわしい。権限の設定も複雑で、扱える人を雇うか、業者に頼む事になる。
+* Google ID と Apple ID は、ほぼ全員が持っていて、ほぼ無料で使える。Microsoft の ID は、会社が一人ずつ払って持たせる物である。
+* 要る所が少ないのに、複雑で、費用が掛かりすぎる。
+
+これは、ナデラ氏の大きな失敗である。ナデラ氏は、2014 年 2 月 4 日に Microsoft の CEO になった。元: https://news.microsoft.com/source/2014/02/04/microsoft-board-names-satya-nadella-as-ceo/[Microsoft の発表]。スマートフォンの OS をやめたのは、その後である。
+
+* ID は、会社の仕事の入口である。多くの会社のログインと権限が、Microsoft の ID にぶら下がっている。
+* これほど多くの会社が頼る物なら、簡単に使えて、ほかへ移しやすい様に作る責任がある。Microsoft の ID は、そうなっていない。
+* Microsoft の ID は、客を Microsoft のサービスにつなぎ止めて、人数の料金を取るための物になっている。単に金儲けの道具である。
+
+*だから、Microsoft の ID と Entra ID は外す。*
+
+== 解き方 ── Office は aiseed office、ログインは PocketBase
+
+=== Office は aiseed office
+
+aiseed office は、私たちが AI で作っている Office である。VBA を実行せず、マクロは別の Python のファイルに置き、文書と表は自分のパソコンに置く。コードは https://github.com/aiseed-dev/officework[GitHub]で公開している(AGPL)。詳しくは link:/blog/vba-cannot-be-fixed/[「VBA は直せない」]に書いた。
+
+=== ログインは PocketBase
+
+PocketBase は、ログインと権限を一つにまとめる、オープンソースのソフトウェアである。Google や Apple のアカウントでのログイン(OAuth2)もつなげられる。元: https://pocketbase.io/docs/authentication/[PocketBase の文書]。社内のシステムが Web なら、そのログインを PocketBase 一つにまとめられる。
+
+移る間は、PocketBase に Microsoft のログインを残しておく。今までのアカウントのまま入れる。全員が移ったら、Microsoft のログインを外す。手順は、連載の link:/ai-native-software/auth/[2-05「門番を立てる」]に書いた。
+
+Google ID と Apple ID は、スマートフォンを使う限り残る。
+
+=== 残りは AI がやる
+
+Office と Entra ID が解ければ、残りの移行は AI がやれる。メール、予定、ファイルの中身を取り出して、移す先に入れる作業である。全体の対応表は、連載の link:/ai-native-software/independence/[2-01「Microsoft と Google から自立する」]にある。
+
+== 情報システム部門は、変わるしかない
+
+ここから先も、*私たちの考えである。*
+
+会社の情報システム部門にとって、ここが厳しい所である。
+
+* 今の仕事の多くは、Microsoft の製品の管理である。アカウントと権限を Entra ID で管理する。Windows のパソコンを管理する。Microsoft 365 の契約と人数を管理する。業者とのやり取りをする。
+* Office と Entra ID を外せば、この仕事の多くが無くなる。今まで積み上げてきた知識と資格の多くも、使わなくなる。
+
+それでも、変わるしかない。
+
+* VBA は直らない。Microsoft の ID は、要る所が少ないのに費用が掛かる。外さなければ、危険と費用は会社の側に残り続ける。
+* 新しい仕事は、会社のコードとデータを自分の手元に持つ事である。VBA のマクロを、AI と一緒に Python に書き直す。PocketBase でログインと権限を管理する。
+* そして、自分の会社のシステムを、Mythos で検査する。見つかった穴を実際に動かして確かめ、どれから直すかを決める。link:/blog/cyber-war-mythos-and-humans/[「サイバー戦争は、もう始まっています」]で、社内に検査できる人を置いてほしい、と書いた。その人は、情報システム部門の人である。
+
+== もう、ナデラの Microsoft は必要ない
+
+AI を使えば、自分で作れる時代になった。ナデラ氏の三つの言葉は、そのまま、こちらの答えになる。これは私たちの考えである。
+
+* 事務の仕事には、今の AI で足りている。それなら、アプリは自分で作れる。
+* Office の競争は、データだ。それなら、データは自分の所に置ける。
+* 責任は、AI を入れた側にある。責任を持つのなら、中が見える物の方が良い。
+
+*もう、ナデラの Microsoft は必要ない。*
+
+== 確かめた日と、変わる所
+
+事実は、2026 年 11 月 27 日に、元の頁で確かめた。次の所は変わる。
+
+* *Word のクラウドへの保存。* 試験の版から始まった。全部の利用者に届いたかは、確かめていない。
+* *OneDrive のフォルダーの写し。* 報道だけで、Microsoft の頁では確かめていない。
+* *退職の申し出の対象の部門。* 関係者から聞いた話としての報道である。
+* *ナデラ氏の言葉。* 字幕と文字起こしからのまとめである。字幕は所々崩れている。
+
+== 関連
+
+* link:/blog/vba-cannot-be-fixed/[VBA は直せない] ── 無ければ AI で作る。作るより、守る
+* link:/blog/python-in-excel-eight-years-later/[ExcelにPythonが搭載？ ── それから8年後] ── 2017 年の記事の答え合わせ
+* link:/blog/cyber-war-mythos-and-humans/[サイバー戦争は、もう始まっています] ── Mythos と人間で守る
+* link:/ai-native-software/independence/[2-01 Microsoft と Google から自立する] ── 全体像と対応表
+* link:/ai-native-software/auth/[2-05 門番を立てる] ── PocketBase で認証を一つに
+
+== 参考
+
+* 対談の動画「Satya Nadella on the New Algorithm」(DealBook Summit 2026、2026 年 11 月 18 日) https://www.youtube.com/watch?v=MsZmV9wzEZ8
+* Microsoft「FY27 Q1 の決算の発表」(2026 年 10 月 28 日) https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast
+* 窓の杜「11 月の更新」(2026 年 11 月 11 日) https://forest.watch.impress.co.jp/docs/news/2155377.html
+* TNW「Microsoft buyouts」(2026 年 10 月 26 日) https://thenextweb.com/news/microsoft-buyouts-60000-employees-voluntary-exit-offer
+* Microsoft「Microsoft Entra の価格」 https://www.microsoft.com/ja-jp/security/business/microsoft-entra-pricing
+* PocketBase「Authentication」 https://pocketbase.io/docs/authentication/
+endif::[]
+ifdef::lang-en[]
+= No More Need for Nadella's Microsoft
+
+// TODO (after the video "Nine Years Since 'Python in Excel?'" (Japanese title 「ExcelにPythonが搭載？」を書いてから9年) is published): say here that this article is the written version of the video and give its URL. Also put the video URL first in References. The Japanese version has the same note.
+
+== Conclusion
+
+* *We waited nine years for Python in Excel.* Today's Python in Excel runs only in Microsoft's cloud. The Python on your own computer is not used.
+* *Data did not move to the cloud by itself. Nadella's Microsoft is moving it.* The means are compulsion, and making use on your own computer harder. It is for profit. This is our view.
+* *This autumn, Microsoft fixed over 1,000 vulnerabilities a month and offered about 60,000 employees a voluntary exit.* It places responsibility on the user, and the user cannot inspect what is inside. It does not meet its social responsibility.
+* *What keeps companies in Microsoft is Office and Entra ID.* Microsoft's ID is needed in few places, yet complex and costly, so we remove it. Office is untied with aiseed office, and sign-in with PocketBase.
+
+== Part 1: We waited nine years for Python in Excel
+
+In December 2017, we wrote an article titled "Python in Excel?" VBA had gained no real features since Office 97. We hoped Python would come to Excel. We checked that article against what happened in link:/en/blog/python-in-excel-eight-years-later/[Python in Excel? — Eight Years Later].
+
+In 2018, we wrote a follow-up. A year later it still had not come. So we wrote how to drive Excel from Python with a library called xlwings. But xlwings needs Excel, so it cannot be used on Linux.
+
+Today's Excel has a feature called Python in Excel. However:
+
+* The Python code runs in a container in Microsoft's cloud. It does not touch your own computer or devices. Source: https://support.microsoft.com/en-us/office/data-security-and-python-in-excel-33cc88a4-4a87-485e-9ff9-f35958278327[Microsoft Support, "Data security and Python in Excel"]
+* It is available to people with a paid Microsoft 365 subscription. Free versions and one-time-purchase consumer versions do not support it. Source: https://support.microsoft.com/en-us/office/python-in-excel-availability-781383e6-86b9-4156-84fb-93e786f7cab0[Microsoft Support, "Python in Excel availability"]
+
+What about VBA? From July 2022, Microsoft made Office block macros in files from the internet from the start. It only blocked them. "Only blocked" is our reading, based on the fact that the design of VBA was not changed. Source: https://learn.microsoft.com/en-us/microsoft-365-apps/security/internet-macros-blocked[Microsoft Learn, "Macros from the internet are blocked by default in Office"]. More in link:/en/blog/vba-cannot-be-fixed/[VBA Cannot Be Fixed].
+
+*Microsoft kept letting us down for nine years.*
+
+== Part 2: What Microsoft's CEO said
+
+Microsoft's CEO, Satya Nadella, was interviewed at The New York Times DealBook Summit on November 18, 2026. Source: https://www.youtube.com/watch?v=MsZmV9wzEZ8[the interview video, "Satya Nadella on the New Algorithm"]. We checked his words against both the video's captions and a transcript made by someone else (https://singjupost.com/transcript-satya-nadella-on-new-algorithm-dealbook-summit-2026/[The Singju Post]). The lines below are short summaries of what he said.
+
+* For ordinary office work, today's AI is nearly enough (around 6:41).
+* The Office competition is not a competition of apps. It is that the data underneath Office moved to the cloud and became each company's asset (around 16:18).
+* Responsibility for what AI does lies, for now, with whoever deployed it (around 13:03).
+* Microsoft's value is holding the user's context and memory separately from the model (around 6:04).
+
+=== Data did not move by itself
+
+Nadella said the data underneath Office moved to the cloud. This is the strangest part. Data did not move by itself. Nadella's Microsoft is moving it. This is our view, and the following facts are the grounds. There are two means.
+
+First, compulsion.
+
+* Python in Excel runs only in Microsoft's cloud and needs a paid subscription (Part 1).
+* Windows 11 Home and Pro for personal use require an internet connection and a Microsoft account at initial setup. Source: https://www.microsoft.com/ja-jp/windows/windows-11-specifications[Microsoft, "Windows 11 specifications" (Japanese page)]. In a test build, Microsoft wrote that it is removing the known ways to create a local account during setup. Source: https://blogs.windows.com/windows-insider/2025/10/06/announcing-windows-11-insider-preview-build-26220-6772-dev-channel/[Windows Insider Blog] (October 6, 2025)
+* Microsoft 365 Copilot (the paid edition) answers using the company's emails, files, meetings and calendars in Microsoft 365. Source: https://learn.microsoft.com/en-us/copilot/microsoft-365/microsoft-365-copilot-overview[Microsoft Learn, "Microsoft 365 Copilot overview"]. If you want to use the AI, your data ends up inside Microsoft.
+
+Second, making use on your own computer harder. This is the biggest problem.
+
+* Word has begun to save new documents to the cloud from the start, beginning with test builds (Microsoft 365 Insider). Source: https://techcommunity.microsoft.com/blog/microsoft365insiderblog/save-new-files-automatically-to-the-cloud-in-word-for-windows/4445216[Microsoft, "Save new files automatically to the cloud in Word for Windows"] (August 26, 2025)
+* Support for the Windows Mail apps (Mail, Calendar, People) ended on December 31, 2024. Source: https://support.microsoft.com/en-us/office/outlook-for-windows-the-future-of-mail-calendar-and-people-on-windows-11-715fc27c-e0f4-4652-9174-47faa751b199[Microsoft Support]
+* The new Outlook that replaces them syncs a copy of Gmail and Yahoo mail, calendars and contacts to Microsoft's cloud. Source: https://support.microsoft.com/en-us/outlook/getstarted/sync-your-account-in-outlook-to-the-microsoft-cloud[Microsoft Support, "Sync your account in Outlook to the Microsoft Cloud"]
+* OneDrive is reported to copy the Desktop and Documents folders to the cloud by default. Source: https://www.androidheadlines.com/2026/01/why-windows-11-enables-onedrive-backup-by-default-and-how-to-turn-it-off.html[Android Headlines] (January 2026). Microsoft's own pages do not say it is on by default.
+
+To turn these off, users have to find and change the settings themselves. The data of anyone who does nothing goes into Microsoft's cloud. It was not the user who chose. It was Microsoft.
+
+=== For profit
+
+Microsoft 365 commercial cloud revenue grew 17% year on year in July–September 2026. Source: https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast[Microsoft's earnings release] (October 28, 2026)
+
+Nadella says Microsoft's value is holding the user's context and memory. Moving the data is for profit. For Microsoft, the competition was never about making Excel better. This is our view.
+
+== Part 3: Microsoft this autumn
+
+In date order:
+
+* *October.* The vulnerabilities (CVEs) Microsoft fixed in its monthly update numbered 1,474, the first time over 1,000. Source: https://forest.watch.impress.co.jp/docs/news/2155377.html[Mado no Mori] (November 11, 2026). The article first gave 1,413; the figure was revised later.
+* *October 26.* Microsoft offered about 60,000 employees a voluntary exit, an offer inviting people who wish to leave. Headcount was 223,000 at the end of June, so this is about a quarter. The teams included Windows. Security was left out. Source: https://thenextweb.com/news/microsoft-buyouts-60000-employees-voluntary-exit-offer[TNW] (October 26, 2026). The article reports the team list as what The Verge heard from people familiar with the matter.
+* *November 10.* The monthly update fixed 1,094 vulnerabilities, 726 of them in Windows. It was over 1,000 for the second month running. Source: the same https://forest.watch.impress.co.jp/docs/news/2155377.html[Mado no Mori]. On November 5, Microsoft urged people to apply updates early.
+* *November 12.* Outlook mail (Exchange Online) stopped for about 24 hours: 23 hours 50 minutes in Microsoft's preliminary post-incident report. Source: https://office365itpros.com/2026/11/16/exchange-online-outage-nov26/[Office 365 for IT Pros] (November 16, 2026). One cause was a defect hidden in a change Microsoft made in July to its own servers (the Microsoft 365 network gateway servers). Source: https://www.theregister.com/2026/11/16/microsoft-blames-monster-email-outage-on-software-defect-introduced-in-july-fix/5310026[The Register] (November 16, 2026)
+* *November 18.* In the interview, Nadella said that from now on patches will be applied immediately, without time to test, and that this creates instability (around 2:43; summary).
+
+What follows is *our view.*
+
+* Microsoft has been selling products full of holes.
+* Over 1,000 holes a month. Nadella's answer was a voluntary exit offer to 60,000 people. Can that really protect Windows and Microsoft 365?
+
+=== Social responsibility
+
+In the same interview, Nadella said his job is to make sure Microsoft has permission from the market and society to operate (around 29:23; summary). Yet he places responsibility for what AI does on the user (around 13:03).
+
+Microsoft's Windows and Office do not publish their source code. Users cannot inspect what is inside.
+
+What follows is *our view.*
+
+* Microsoft places responsibility on users while keeping them from inspecting what is inside. It does not meet its social responsibility at all.
+* It does nothing but get in the way of defending against cyberattacks.
+* The interviewer noted that Microsoft's share price has risen about 14 times since Nadella became CEO (around 0:06; the interviewer's words, a figure we have not checked). It thinks only of its own share price. That is how it looks to us.
+* For those of us who waited nine years, it is truly infuriating.
+
 == Windows can be replaced with Debian
 
 A company's systems, including those used only inside the company, have mostly become web applications. This is our observation. Most work runs inside a browser. Replacing the OS with Debian barely changes the work itself. The steps are in the link:/en/claude-debian/[Learning Debian with Claude] series.
@@ -16775,9 +17167,7 @@ Windows does not block the exit.
 
 == What keeps companies in is Office and Entra ID
 
-Microsoft 365 commercial cloud revenue grew 17% year on year in the July–September 2026 quarter. Source: https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast[Microsoft's earnings release] (October 28, 2026)
-
-The problems remain, and revenue still grows. We think this is because companies cannot leave. Two things block the exit.
+The problems remain, and revenue still grows (see "For profit" above). We think this is because companies cannot leave. Two things block the exit.
 
 . *Office.* A company's documents are Word and Excel files. Forms, calculations and VBA macros are inside them. The company exchanges these files with its business partners too.
 . *Entra ID.* The gate for the company's sign-in and permissions. Documents, mail and sharing all pass through it first. Windows PCs are managed through it as well.
@@ -16790,7 +17180,7 @@ Microsoft has two kinds of ID: a personal Microsoft account, and a work or schoo
 
 On smartphones, Microsoft's ID is not what is used. Microsoft's smartphone OS, Windows 10 Mobile, reached end of support on January 14, 2020. Source: https://support.microsoft.com/help/4535289[Microsoft Support, KB4535289]. As long as you use a smartphone, you need a Google ID or an Apple ID.
 
-A personal Microsoft account is something you create when you start using a Windows PC. Windows 11 Home and Pro for personal use require a Microsoft account at initial setup. Source: https://www.microsoft.com/ja-jp/windows/windows-11-specifications[Microsoft, "Windows 11 specifications" (Japanese page)]
+A personal Microsoft account is something you create when you start using a Windows PC (see "Windows 11 specifications" above).
 
 Far fewer people use a PC than a smartphone. In 2024, 74.4% of individuals in Japan used a smartphone to access the internet, and 46.8% used a PC. Source: https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r07/html/nd21b120.html[Ministry of Internal Affairs and Communications, 2025 White Paper on Information and Communications]. Individual smartphone ownership is 78.9%. Source: https://www.soumu.go.jp/menu_news/s-news/01tsushin02_02000183.html[Ministry of Internal Affairs and Communications, 2025 Communications Usage Trend Survey]
 
@@ -16811,7 +17201,7 @@ What follows is *our view.*
 This is a major failure of Satya Nadella. Nadella became Microsoft's CEO on February 4, 2014. Source: https://news.microsoft.com/source/2014/02/04/microsoft-board-names-satya-nadella-as-ceo/[Microsoft's announcement]. Microsoft gave up its smartphone OS after that.
 
 * An ID is the entrance to a company's work. The sign-in and permissions of a great many companies hang on Microsoft's ID.
-* Something so many companies depend on carries a responsibility to be simple to use and easy to move away from. Microsoft's ID is neither. It does not meet the company's social responsibility.
+* Something so many companies depend on carries a responsibility to be simple to use and easy to move away from. Microsoft's ID is neither.
 * Microsoft's ID has become a means of keeping customers tied to Microsoft's services and charging per seat. It is simply a tool for making money.
 
 *So we remove Microsoft's ID and Entra ID.*
@@ -16820,16 +17210,7 @@ This is a major failure of Satya Nadella. Nadella became Microsoft's CEO on Febr
 
 === Office: aiseed office
 
-aiseed office is an Office we are building. The code is public on https://github.com/aiseed-dev/officework[GitHub] (AGPL).
-
-* It never runs the VBA inside .xlsm or .docm files.
-* Macros live not inside documents but in separate Python files (.py). Opening a document never runs a macro.
-* It reads and writes Word and Excel files. Exchanges with business partners can continue with the same files.
-* Because the code is public, the company using it can read it and inspect it with Mythos.
-
-It is a test release today (0.1.0-alpha.7). On Windows, document macros run from inside the app do not work yet. Source: https://github.com/aiseed-dev/officework[the aiseed office README]
-
-The work VBA macros did is rewritten in Python together with AI. How to handle documents is in the series chapter link:/en/ai-native-software/documents/[2-07 "Take Documents Back"].
+aiseed office is an Office we are building with AI. It does not run VBA, keeps macros in separate Python files, and keeps documents and spreadsheets on your own computer. The code is public on https://github.com/aiseed-dev/officework[GitHub] (AGPL). More in link:/en/blog/vba-cannot-be-fixed/[VBA Cannot Be Fixed].
 
 === Sign-in: PocketBase
 
@@ -16858,28 +17239,39 @@ Even so, it has no choice but to change.
 * The new work is to hold the company's code and data in its own hands: rewriting VBA macros in Python together with AI, and managing sign-in and permissions with PocketBase.
 * And to inspect the company's own systems with Mythos: run each vulnerability found, confirm it, and decide which to fix first. In link:/en/blog/cyber-war-mythos-and-humans/[The Cyber War Has Already Begun], we asked companies to have people in-house who can inspect. Those people are the IT department.
 
+== No more need for Nadella's Microsoft
+
+With AI, it is now possible to build things yourself. Nadella's three lines become our answer as they stand. This is our view.
+
+* Today's AI is enough for office work. Then apps can be built yourself.
+* The Office competition is about data. Then data can be kept where you are.
+* Responsibility lies with whoever deployed the AI. If you are taking responsibility, something you can see into is better.
+
+*We no longer need Nadella's Microsoft.*
+
 == Checked on, and what will change
 
 The facts were checked against the source pages on November 27, 2026. The following will change.
 
-* *VBScript.* It will no longer be enabled by default around 2027. The date for removing it from Windows is not set.
-* *NTLM.* The page gives no date for removal.
-* *aiseed office.* It is a test release. What it can do will change as versions advance.
+* *Word saving to the cloud.* It began in test builds. We have not confirmed whether it has reached all users.
+* *OneDrive folder backup.* Only reported in the press; not confirmed on Microsoft's pages.
+* *Teams covered by the voluntary exit offer.* Reported as what people familiar with the matter said.
+* *Nadella's words.* Summaries from the captions and a transcript. The captions are garbled in places.
 
 == Related
 
+* link:/en/blog/vba-cannot-be-fixed/[VBA Cannot Be Fixed] — if it does not exist, build it with AI; protecting matters more than building
+* link:/en/blog/python-in-excel-eight-years-later/[Python in Excel? — Eight Years Later] — checking the 2017 article against what happened
 * link:/en/blog/cyber-war-mythos-and-humans/[The Cyber War Has Already Begun] — defending with Mythos and people
-* link:/en/blog/verification-shock/[When Fable 5 Returns, Do This First] — verify every system you run
 * link:/en/ai-native-software/independence/[2-01 Becoming Independent from Microsoft and Google] — the whole map
-* link:/en/ai-native-software/auth/[2-05 Stand Up the Gate] — one sign-in with PocketBase
-* link:/en/ai-native-software/documents/[2-07 Take Documents Back] — prose in AsciiDoc, forms in aiseed office
+* link:/en/ai-native-software/auth/[2-05 Stand Up the Gate] — one login with PocketBase
 
 == References
 
-* Microsoft Learn, "Macros from the internet are blocked by default in Office" https://learn.microsoft.com/en-us/microsoft-365-apps/security/internet-macros-blocked
-* Microsoft, "VBScript deprecation: Timelines and next steps" (May 22, 2024) https://techcommunity.microsoft.com/blog/windows-itpro-blog/vbscript-deprecation-timelines-and-next-steps/4148301
-* Microsoft Learn, "Deprecated features in the Windows client" https://learn.microsoft.com/en-us/windows/whats-new/deprecated-features
+* Interview video, "Satya Nadella on the New Algorithm" (DealBook Summit 2026, November 18, 2026) https://www.youtube.com/watch?v=MsZmV9wzEZ8
 * Microsoft, FY27 Q1 earnings release (October 28, 2026) https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast
-* aiseed office (officework) https://github.com/aiseed-dev/officework
+* Mado no Mori, on the November update (November 11, 2026) https://forest.watch.impress.co.jp/docs/news/2155377.html
+* TNW, "Microsoft buyouts" (October 26, 2026) https://thenextweb.com/news/microsoft-buyouts-60000-employees-voluntary-exit-offer
+* Microsoft, "Microsoft Entra pricing" https://www.microsoft.com/ja-jp/security/business/microsoft-entra-pricing
 * PocketBase, "Authentication" https://pocketbase.io/docs/authentication/
 endif::[]

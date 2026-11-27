@@ -55,7 +55,7 @@ ifdef::lang-ja[]
 
 その入口で、この本の*前提*を最初に宣言しておく。
 
-. *サーバーは自宅かVPSに置く。* 使わなくなった古いPCやミニPCを家で動かすか、月数百円のVPSを借りる。どちらでも、OSの中身——root権限——はあなたのものだ。どちらで始めるかは第2章で決める。
+. *サーバーは自宅かVPSに置く。* 使わなくなった古いPCやミニPCを家で動かすか、月数百円のVPSを借りる。どちらでも、OSの中身——root権限——はあなたのものだ。どちらで始めるかは第2章で決める。ただし、続けるなら役ごとに機械を分けることになり、そのときは自宅に揃える方が向く。要るPCとルーターは買う（第2章）。
 . *データは自分で管理する。* 他社のクラウドサービスに預けず、自分のサーバーの上のデータベース（第7章）に置き、自分の手でバックアップする（第10章）。
 . *コンテナは使わない。* アプリは「ディレクトリ + venv + systemd」で動かし、権限とsystemdの砂場で隔離する（第8章）。
 . *機械は役割で分ける。重要な仕事は人が確認する。* この本は練習として一台から始めるが、公開を続けるなら、外に向く機械と、データを持つ機械を分ける（第9章、第11章）。鍵の作り直しや、外への口を開けるといった重要な操作は、Claudeに手順を聞いても、確かめて実行するのは自分だ。Claudeを機械の上で動かすなら、そのアカウントに sudo は渡さない。機械を変えるのは自分だ。
@@ -233,7 +233,7 @@ This server edition is open both to readers who have finished the main edition a
 
 Right at that entrance, let me declare this book's *premises*.
 
-. *The server lives in your home or on a VPS.* An old PC or mini PC running in your house, or a VPS rented for a few hundred yen a month. Either way, the inside of the OS — root — is yours. Which one to start with is decided in Chapter 2.
+. *The server lives in your home or on a VPS.* An old PC or mini PC running in your house, or a VPS rented for a few hundred yen a month. Either way, the inside of the OS — root — is yours. Which one to start with is decided in Chapter 2. But if you keep going, you will split the machines by role, and then gathering them at home suits better. Buy the PCs and the router you need (Chapter 2).
 . *You manage your own data.* It is not entrusted to someone else's cloud service — it lives in the databases on your own server (Chapter 7), and you back it up with your own hands (Chapter 10).
 . *No containers.* Apps run as "directory + venv + systemd," isolated by permissions and systemd's sandbox (Chapter 8).
 . *Split the machines by role. A person checks important work.* This book starts with one machine for practice, but if you keep publishing, separate the machine that faces outside from the machine that holds the data (Chapters 9 and 11). For important operations such as regenerating keys or opening a way out or in, you may ask Claude for the steps, but you check them and run them yourself. If you run Claude on the machine, its account gets no sudo. Changing the machine is your job.
@@ -567,7 +567,21 @@ ____
 
 電気代という「見えにくい月額」を数字にすると、自宅とVPSが初めて公平に比較できる。Claudeに計算させれば、桁を間違える心配もない。
 
-== 第四節 結論——どう決めるか
+== 第四節 一台では済まない——役ごとに分けると、VPSの弱さが出る
+
+練習は一台でいい。だが、続けるなら、自宅のサーバーでも一台では済まない時代になった。公開する機械、Claude（AI）が動く開発用の機械、人のデータを預かる機械、そして控え——役ごとに機械を分ける（第11章）。*AIが動く機械には、ほかの人のデータを置かない。*
+
+役ごとに分けると、VPSの弱さが出る。
+
+* *分けたつもりでも、同じ事業者の上に乗っている。* 事業者の障害は、全部の機械に一度に届く。2026年10月には、IDCFクラウドで、495の企業と自治体の仮想サーバーが止まった（link:/blog/cloud-vanished/[「クラウドが丸ごと消えた日」]）。
+* *「中から繋ぐ」形が作れない。* データを持つ機械を外から届かない所に置き、家の中の網からだけ繋ぐ——という形は、自宅なら作れるが、VPSでは作れない。
+* *台数の分だけ、毎月払う。* 機械を分けるほど、月額が積み上がる。
+
+公開する機械だけは、外に借りてもいい。ただ、前にCloudflareのような物を立てれば、自宅の機械でも外に出せる（第9章）。外に借りる値打ちは、前より小さい。
+
+だから、続けると決めたら、*要るPCとルーターは買う。* ルーターは、網を分けられる物にする。
+
+== 第五節 結論——どう決めるか
 
 ここまでの地図を踏まえて、このサーバー編が勧める道筋は明快だ。
 
@@ -575,7 +589,7 @@ ____
 
 *公開（第9章）の段階になって初めて、本番の構えを選ぶ。* 自宅に本体を置いたまま「入口」だけ借りるか、VPSに本体ごと載せるか——ここで第二節のCGNAT問題と第三節の比較が効いてくる。公開は重い決断であり、脅威モデル（第5章）を理解してから踏み出すべきものだ。だからこの決定を公開の段階まで先送りできるこの道筋が、最も安全で学びが深い。
 
-つまり、急いで決めるべきものは何もない。実験は自宅のLAN内（または数日借りたVPS）で始め、公開の段になって本番の構え——自宅＋入口か、VPS本体か——を決める。この二段構えが、費用と責任のリスクを最小にする。
+つまり、急いで決めるべきものは何もない。実験は自宅のLAN内（または数日借りたVPS）で始め、公開の段になって本番の構え——自宅＋入口か、VPS本体か——を決める。この二段構えが、費用と責任のリスクを最小にする。続けると決めて役ごとに機械を分ける段になったら、第四節のとおり、機械は自宅に揃える。
 
 === Claudeに聞いてみよう④：自分用の二段構え計画を立てる
 
@@ -743,7 +757,21 @@ ____
 
 Turning electricity, a "hard-to-see monthly fee," into a number lets you compare home and VPS fairly for the first time. Have Claude do the calculation, and there is no risk of getting an order of magnitude wrong.
 
-== Section 4 — Conclusion: How to Decide
+== Section 4 — One Machine Is No Longer Enough: Split by Role, and the VPS Shows Its Weaknesses
+
+One machine is fine for practice. But if you keep going, even a home server can no longer get by on one machine. The machine that publishes, the development machine where Claude (AI) runs, the machine that holds other people's data, and a spare — split the machines by role (Chapter 11). *Do not put other people's data on the machine where AI runs.*
+
+Once you split by role, the VPS shows its weaknesses.
+
+* *Even split, they sit on the same provider.* A provider's failure reaches every machine at once. In October 2026, virtual servers of 495 companies and local governments stopped on IDCF Cloud (link:/en/blog/cloud-vanished/[The Day a Cloud Vanished]).
+* *You cannot build the "connect from inside" shape.* Putting the data machine where nothing outside can reach it, and connecting to it only from the network inside the house, is possible at home but not on a VPS.
+* *You pay monthly for each machine.* The more you split, the more the monthly fees pile up.
+
+Only the publishing machine may be rented outside. But with something like Cloudflare in front, even a machine at home can be put on the outside (Chapter 9). Renting outside is worth less than it used to be.
+
+So once you decide to keep going, *buy the PCs and the router you need.* Choose a router that can split the network.
+
+== Section 5 — Conclusion: How to Decide
 
 Given the map so far, the path this server edition recommends is clear.
 
@@ -751,7 +779,7 @@ Given the map so far, the path this server edition recommends is clear.
 
 *Only at the stage of publishing (Chapter 9) do you choose the production setup.* Keep the body at home and borrow only the "entrance," or put the body on a VPS — this is where the CGNAT problem of Section 2 and the comparison of Section 3 come into play. Publishing is a heavy decision, one you should step into only after understanding the threat model (Chapter 5). So this path — which lets you defer the decision until the publishing stage — is the safest and the deepest in learning.
 
-In other words, there is nothing you must rush to decide. Start experimenting on your home LAN (or on a VPS rented for a few days), and decide the production setup — home plus entrance, or VPS as the body — when publishing comes around. This two-stage stance minimizes the risks of cost and responsibility.
+In other words, there is nothing you must rush to decide. Start experimenting on your home LAN (or on a VPS rented for a few days), and decide the production setup — home plus entrance, or VPS as the body — when publishing comes around. This two-stage stance minimizes the risks of cost and responsibility. When you decide to keep going and split the machines by role, gather them at home, as in Section 4.
 
 === Ask Claude ④: Build Your Own Two-Stage Plan
 
@@ -5702,6 +5730,8 @@ ____
 
 *Claudeが、その入口を崩した。* エラーを貼れば意味が返る。やりたいことを伝えれば設定例が返る。週次のチェック出力を貼れば健康診断が返る。かつて専任の管理者が要った仕事が、Claudeを横に置いた個人の手に届くようになった。あなたは今、その証拠を一台のサーバーとして手元に持っている。
 
+ただし、始めるところは個人でできても、人の物を預かって守り続けるには、小さな組織が要る。一人では、休んだときや倒れたときに守りが止まる。攻撃は、そのときを選ばない。三人は要る。ただし、大きくはしない。
+
 === あなたの問いの立て方とともに、サーバーは育つ
 
 最後に、本編の結章（link:/claude-debian/24-passing-on/[第24章「次世代への継承」]）と同じことを、サーバーの言葉で書いておく。
@@ -5931,6 +5961,8 @@ This Server Edition was about *"owning your own infrastructure."* About holding 
 Not long ago, standing up and operating a single server was the work of a dedicated system administrator. Read thick manuals, look up the meaning of error messages as if in a dictionary, memorize the grammar of config files — the height of that entrance kept individuals away.
 
 *Claude broke down that entrance.* Paste an error and the meaning comes back. State what you want to do and an example config comes back. Paste the weekly check output and a health check comes back. Work that once required a dedicated administrator has come within reach of an individual with Claude at their side. You now hold the proof of it, as a single server, on your desk.
+
+But while an individual can do the starting, holding other people's things and keeping them safe takes a small organization. With one person, protection stops when that person rests or falls ill. Attacks do not pick their moment for your convenience. It takes three people. But do not make it large.
 
 === The Server Grows Along with How You Frame Your Questions
 

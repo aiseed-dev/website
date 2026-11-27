@@ -2177,11 +2177,11 @@ flowchart TB
 
 各ステップは、2-12 の並行稼働で進める。旧(Microsoft / Google)を止めず、横で新を動かし、同じ仕事が回ることを確かめてから、旧を解約する。契約更新の時期に間に合わせる。これも 2-12 どおりだ。一気に乗り換える必要はない。解けた分だけ、束が緩む。
 
-== 運用は、一人 + AI で回る
+== 立てて動かすのは一人 + AI、守り続けるのは小さな組織
 
-ここで当然の疑問が出る。これだけ自前で抱えて、誰が面倒を見るのか。答えは一人 + AI だ。「一人 + AI」という新しい仕事の単位が、そのまま会社のインフラ運用に効く。
+ここで当然の疑問が出る。これだけ自前で抱えて、誰が面倒を見るのか。立てて動かすのは、一人 + AI だ。守り続けるには、小さな組織が要る(この節の終わり)。「一人 + AI」という新しい仕事の単位が、そのまま会社のインフラ運用に効く。
 
-なぜ一人で回るのか。理由は三つある。
+なぜ一人で立てて動かせるのか。理由は三つある。
 
 * どれも標準的なオープンな道具だ。Debian の apt か公式の単体ファイル一つで入り、systemd で動く。Docker は使わない(理由は 2-02)。AI が設定を書き、DNS と DKIM を整え、ログを読み、不調を切り分ける。運用の相棒が AI である
 * 束が解けているから、障害が連鎖しない。スイートなら一社の不調が全部を巻き込むが、ここでは Forgejo が落ちてもメールは生き、AI が止まっても会議は続く。一個ずつ、独立に直せる
@@ -2194,6 +2194,8 @@ flowchart TB
 監視は、読めるログがあれば足りる。監視基盤を別に立てるのは旧常識だ。ログは全部手元にあり、死活確認と通知は AI が書く数十行で済み、ログの異常は AI に読ませる。セキュリティ更新は自動で当てる(2-02)。版を上げるのは、意図した操作として行う。版を上げるときはリリースノートを AI に読ませ、2-12 の並行稼働の要領で横で確かめてから切り替える。版は勝手に上がるのではなく、上げる。秘密(パスワード・鍵)は環境ファイルに分離して、それを使う機械の外に出さない。これだけは一行の決まりとして最初に書いておく。
 
 可用性は、冗長化ではなく、再構築の速さで受ける。機械が壊れたら、予備の機械に仕様とバックアップから立て直す。復旧が AI の速度なら、クラスタは要らない。ただし、機械は役割で分ける。一台に集めると、一つの不具合か一つの破られた口が全部に届くからだ(2-02)。
+
+ただし、守り続けるには、小さな組織が要る。一人では、休んだときや倒れたときに守りが止まる。攻撃は、そのときを選ばない。人の物を預かるなら、三人は要る。ただし、大きくはしない。人が増えるほど、誰が何を持っているかが見えなくなる。
 
 ____
 守るのは、データと仕様だけ。
@@ -2513,11 +2515,11 @@ You do not have to do it all at once. Go in order of what is easiest to pull out
 
 Run each step in parallel, the way 2-12 describes. Do not stop the old suite. Run the new alongside it, confirm the same work flows through, and only then cancel the old. Time it to the renewal date. That, too, follows 2-12. You do not need to switch all at once. Each layer you untie loosens the bundle a little more.
 
-== Operating it — one person + AI
+== Building and running it takes one person + AI; keeping it safe takes a small organization
 
-The obvious question arises. With this much self-hosted, who maintains it? The answer is one person plus AI. That new unit of work — one person plus AI — applies directly to running the company's infrastructure.
+The obvious question arises. With this much self-hosted, who maintains it? Building and running it takes one person plus AI. Keeping it safe takes a small organization (the end of this section). That new unit of work — one person plus AI — applies directly to running the company's infrastructure.
 
-Why does one person suffice? Three reasons.
+Why can one person build and run it? Three reasons.
 
 * Every piece is a standard open tool. Each installs from Debian's apt or as a single file from its project, and runs under systemd. No Docker (the reasons are in 2-02). The AI writes the configuration, sets up DNS and DKIM, reads the logs, and isolates the fault. Your operations partner is the AI
 * Because the bundle is untied, faults do not cascade. With a suite, one vendor's trouble drags everything down. Here, mail lives even if Forgejo falls, and meetings continue even if the AI stops. You fix them one at a time, independently
@@ -2530,6 +2532,8 @@ The heavy parts deserve honesty too. Operational load concentrates in two places
 Monitoring needs nothing more than readable logs. Standing up a separate monitoring stack is the old common sense. The logs are all in your hands, liveness checks and notifications are a few dozen lines the AI writes, and log anomalies are something the AI reads. Security updates are applied automatically (2-02). Raising a version is a deliberate act. When you raise a version, have the AI read the release notes and verify alongside, parallel-run style (2-12), before switching. Versions do not get raised on you. You raise them. Secrets, meaning passwords and keys, live in an environment file and never leave the machine that uses them. Write that one line of policy first.
 
 Availability is taken by speed of rebuild, not by redundancy. If a machine dies, rebuild on the spare from the spec and the backup. When recovery runs at AI speed, you do not need a cluster. The machines, though, are split by role. Gather everything on one, and one defect or one breached port reaches all of it (2-02).
+
+Keeping it safe, though, takes a small organization. With one person, protection stops when that person rests or falls ill. Attacks do not pick their moment for your convenience. If you hold other people's things, it takes three people. But do not make it large. The more people, the harder it is to see who holds what.
 
 ____
 Protect only the data and the spec.
@@ -2748,6 +2752,22 @@ DB のパスワードはそこに無い。
 
 顧客の名前や連絡先のような個人情報を多く持つなら、それを認証とデータの機械から
 もう一台に分ける。データを持つ機械のディスクは暗号化する。
+
+AI の作業機には、ほかの人のデータを置かない。AI に渡すのは、課題のフォルダーと、
+自分の物だけにする。機械を分けるには、PC とルーターを買うしかない。ルーターは、
+網を分けられる物にする。
+
+== ブラウザーとメールは、守る物の無い機械で見る
+
+外から来た物を開くのは、メールとブラウザーだ。だから、*仕事の PC では、ブラウザーを使わず、メールを見ない*。見るのは、守る物の無い、別の機械にする。スマートフォンでも、タブレットでも、画面の大きな PC でもよい。字の大きさは人によるので、読める物を選ぶ。高いセキュリティが要る業務でなければ、社内で私物のスマートフォンを使ってよい。厳しい決まりだが、「気を付ける」に頼るより確かだ。
+
+ウイルス対策のソフトを入れたから安心、という常識も変える。
+
+* 侵入の入口で一番多いのは、盗んだログインの悪用だ。2025 年の報告では 22% で、穴を突く攻撃(20%)が続く(link:https://www.verizon.com/about/news/2025-data-breach-investigations-report[Verizon「2025 Data Breach Investigations Report」])。盗んだログインで入る相手は、ウイルスではない
+* マクロには、ウイルス対策のソフトが調べられる実行ファイルが無い、と Microsoft 自身が書いている(link:https://learn.microsoft.com/en-us/defender-endpoint/malware/fileless-threats[Microsoft Learn「Fileless threats」])
+* ウイルス対策のソフトの更新そのものが、Windows を止めたこともある。2024 年 7 月、CrowdStrike の更新で、850 万台の Windows が影響を受けた(link:https://blogs.microsoft.com/blog/2024/07/20/helping-our-customers-through-the-crowdstrike-outage/[Microsoft のブログ])
+
+OS に付いている守り(Debian の自動のセキュリティ更新、Windows の Defender)を切れ、という話ではない。守りの芯を、機械を分けること、ログインを固くすること(2-05)、更新を当てることに置く。
 
 == 機械をまたいでデータを見るときは、データの側が本人を確かめる
 
@@ -3109,6 +3129,22 @@ database passwords are not there.
 If you hold a lot of personal information, such as customers' names and contacts, split
 it off from the authentication-and-data machine onto one more machine. Encrypt the disks
 of the machines that hold data.
+
+Do not put other people's data on the AI workstation. Give the AI only the task folders
+and your own things. Splitting machines means buying PCs and a router; there is no other
+way. Choose a router that can split the network.
+
+== Read the browser and mail on a machine with nothing to protect
+
+What opens things that come from outside is mail and the browser. So *on work PCs, do not use the browser and do not read mail*. Read them on a separate machine with nothing to protect. A smartphone, a tablet, or a PC with a large screen will do. How large the text must be differs by person, so choose something you can read. Unless the work requires high security, personal smartphones may be used inside the company. The rule is strict, but more reliable than relying on "being careful."
+
+Change the common sense that installing antivirus software makes you safe, too.
+
+* The most common way in is the abuse of stolen logins: 22% in the 2025 report, followed by exploiting vulnerabilities (20%) (link:https://www.verizon.com/about/news/2025-data-breach-investigations-report[Verizon, "2025 Data Breach Investigations Report"]). Someone who comes in with a stolen login is not a virus
+* Microsoft itself writes that a macro has no binary executable that antivirus can inspect (link:https://learn.microsoft.com/en-us/defender-endpoint/malware/fileless-threats[Microsoft Learn, "Fileless threats"])
+* An antivirus update itself has stopped Windows. In July 2024, a CrowdStrike update affected 8.5 million Windows devices (link:https://blogs.microsoft.com/blog/2024/07/20/helping-our-customers-through-the-crowdstrike-outage/[Microsoft's blog])
+
+This is not a call to turn off the protection built into the OS (Debian's automatic security updates, Windows Defender). Put the core of protection in splitting machines, hardening logins (2-05), and applying updates.
 
 == When data is read across machines, the data side checks the person
 

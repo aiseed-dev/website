@@ -16632,11 +16632,20 @@ Microsoft の ID には、二つの種類がある。個人の Microsoft アカ�
 
 スマートフォンでは、Microsoft の ID は使われない。Microsoft のスマートフォンの OS(Windows 10 Mobile)は、2020 年 1 月 14 日にサポートが終わった。元: https://support.microsoft.com/help/4535289[Microsoft サポート KB4535289]。スマートフォンを使う限り、Google ID か Apple ID が要る。
 
+個人の Microsoft アカウントは、Windows のパソコンを使い始める時に作る物である。個人向けの Windows 11 の Home と Pro は、初期設定の時に Microsoft アカウントが要る。元: https://www.microsoft.com/ja-jp/windows/windows-11-specifications[Microsoft「Windows 11 の仕様」]
+
+パソコンを使う人は、スマートフォンを使う人よりずっと少ない。2024 年に個人がインターネットに使った物は、スマートフォンが 74.4%、パソコンが 46.8% だった。元: https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r07/html/nd21b120.html[総務省「令和 7 年版 情報通信白書」]。個人のスマートフォンの保有率は 78.9% である。元: https://www.soumu.go.jp/menu_news/s-news/01tsushin02_02000183.html[総務省「令和 7 年 通信利用動向調査」]
+
+会社で使う Entra ID の料金は、一人月 1,049 円(P1、税抜、年契約)である。条件付きアクセス(どこから、どの端末から入れるかを決める機能)は、P1 から入っている。P1 は Microsoft 365 Business Premium にも含まれている。元: https://www.microsoft.com/ja-jp/security/business/microsoft-entra-pricing[Microsoft「Microsoft Entra の価格」]
+
+100 人の会社で計算する。P1 の料金は、1,049 円 × 100 人 × 12 か月で、年 125 万 8,800 円である。管理の人手も掛かる。仮に、年の人件費 600 万円の担当者が、仕事の 4 分の 1 を ID の管理に使えば、年 150 万円である。合わせて、年 276 万円になる。人手の値は仮の値なので、会社ごとに入れ替えてほしい。P1 の 1,049 円は、Business Premium の一人月 3,298 円(2026 年 7 月の改定後。連載の link:/ai-native-software/independence/[2-01])の約 32% に当たる。
+
 ここから先は、*私たちの考えである。*
 
 * Microsoft の ID が要るのは、Microsoft のサービスを使う時だけである。Office と Microsoft 365 をやめれば、要る所はほとんど無くなる。
+* 個人で Microsoft の ID を持つのは、Windows のパソコンを持つ人である。家族で 1 台なら、持つのは一人だけになる。パソコンを持たない人は持たない。仕事のアカウントは、会社が渡す物である。自分から選んで使う人は少ない。
 * それなのに、二つの種類があって紛らわしい。権限の設定も複雑で、扱える人を雇うか、業者に頼む事になる。
-* 費用も掛かる。Entra ID の無料の版は Microsoft 365 の人数の料金に含まれているが、会社が使いたい機能の多くは、上の版の料金になる。
+* Google ID と Apple ID は、ほぼ全員が持っていて、ほぼ無料で使える。Microsoft の ID は、会社が一人ずつ払って持たせる物である。
 * 要る所が少ないのに、複雑で、費用が掛かりすぎる。
 
 これは、ナデラ氏の大きな失敗である。ナデラ氏は、2014 年 2 月 4 日に Microsoft の CEO になった。元: https://news.microsoft.com/source/2014/02/04/microsoft-board-names-satya-nadella-as-ceo/[Microsoft の発表]。スマートフォンの OS をやめたのは、その後である。
@@ -16779,11 +16788,20 @@ Microsoft has two kinds of ID: a personal Microsoft account, and a work or schoo
 
 On smartphones, Microsoft's ID is not what is used. Microsoft's smartphone OS, Windows 10 Mobile, reached end of support on January 14, 2020. Source: https://support.microsoft.com/help/4535289[Microsoft Support, KB4535289]. As long as you use a smartphone, you need a Google ID or an Apple ID.
 
+A personal Microsoft account is something you create when you start using a Windows PC. Windows 11 Home and Pro for personal use require a Microsoft account at initial setup. Source: https://www.microsoft.com/ja-jp/windows/windows-11-specifications[Microsoft, "Windows 11 specifications" (Japanese page)]
+
+Far fewer people use a PC than a smartphone. In 2024, 74.4% of individuals in Japan used a smartphone to access the internet, and 46.8% used a PC. Source: https://www.soumu.go.jp/johotsusintokei/whitepaper/ja/r07/html/nd21b120.html[Ministry of Internal Affairs and Communications, 2025 White Paper on Information and Communications]. Individual smartphone ownership is 78.9%. Source: https://www.soumu.go.jp/menu_news/s-news/01tsushin02_02000183.html[Ministry of Internal Affairs and Communications, 2025 Communications Usage Trend Survey]
+
+Entra ID for company use costs 1,049 yen per user per month (P1, excluding tax, annual contract). Conditional Access (deciding from where and from which devices people may sign in) starts at P1. P1 is also included in Microsoft 365 Business Premium. Source: https://www.microsoft.com/ja-jp/security/business/microsoft-entra-pricing[Microsoft, "Microsoft Entra pricing" (Japanese page)]
+
+Take a company of 100 people. P1 costs 1,049 yen × 100 people × 12 months, or 1,258,800 yen a year. Administration takes people's time too. Suppose a staff member costing 6 million yen a year spends a quarter of their work managing the ID: that is 1.5 million yen a year. Together, 2.76 million yen a year. The staffing figure is an assumption; replace it with your own. P1's 1,049 yen is about 32% of Business Premium's 3,298 yen per user per month (after the July 2026 revision; see link:/en/ai-native-software/independence/[2-01] in the series).
+
 What follows is *our view.*
 
 * Microsoft's ID is needed only to use Microsoft's services. Stop using Office and Microsoft 365, and there is almost nowhere left that needs it.
+* The people who hold a personal Microsoft ID are those who own a Windows PC. If a family shares one PC, only one person holds it. People without a PC do not hold one. A work account is handed out by the company. Few people choose to use it of their own accord.
 * Even so, there are two kinds, which is confusing. Setting permissions is complex, so the company has to hire someone who can handle it or rely on a contractor.
-* It also costs money. The free edition of Entra ID is included in the per-seat price of Microsoft 365, but many of the features companies want are in the higher-priced editions.
+* Google ID and Apple ID are held by almost everyone and cost almost nothing to use. Microsoft's ID is something a company pays for, person by person, to hand out.
 * It is needed in few places, yet it is complex and costs too much.
 
 This is a major failure of Satya Nadella. Nadella became Microsoft's CEO on February 4, 2014. Source: https://news.microsoft.com/source/2014/02/04/microsoft-board-names-satya-nadella-as-ceo/[Microsoft's announcement]. Microsoft gave up its smartphone OS after that.

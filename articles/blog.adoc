@@ -16611,7 +16611,7 @@ Mythos は、ソースコードを読んで穴を見つける AI である。Ant
 
 == Windows は、Debian に移ればよい
 
-仕事の多くは、ブラウザーの中で動く。OS を Debian に替えても、仕事の中身はほとんど変わらない。手順は link:/claude-debian/[「Claudeと一緒に学ぶDebian」]の連載に書いた。
+会社のシステムは、社内で使う物も、ほぼ Web になってきている。これは私たちの見方である。仕事の多くは、ブラウザーの中で動く。OS を Debian に替えても、仕事の中身はほとんど変わらない。手順は link:/claude-debian/[「Claudeと一緒に学ぶDebian」]の連載に書いた。
 
 Windows は、出口を塞いでいない。
 
@@ -16675,7 +16675,7 @@ VBA のマクロがしていた処理は、AI と一緒に Python に書き直�
 
 === ログインは PocketBase
 
-PocketBase は、ログインと権限を一つにまとめる、オープンソースのソフトウェアである。Google や Apple のアカウントでのログイン(OAuth2)もつなげられる。元: https://pocketbase.io/docs/authentication/[PocketBase の文書]
+PocketBase は、ログインと権限を一つにまとめる、オープンソースのソフトウェアである。Google や Apple のアカウントでのログイン(OAuth2)もつなげられる。元: https://pocketbase.io/docs/authentication/[PocketBase の文書]。社内のシステムが Web なら、そのログインを PocketBase 一つにまとめられる。
 
 移る間は、PocketBase に Microsoft のログインを残しておく。今までのアカウントのまま入れる。全員が移ったら、Microsoft のログインを外す。手順は、連載の link:/ai-native-software/auth/[2-05「門番を立てる」]に書いた。
 
@@ -16769,7 +16769,7 @@ What follows is *our view.*
 
 == Windows can be replaced with Debian
 
-Most work runs inside a browser. Replacing the OS with Debian barely changes the work itself. The steps are in the link:/en/claude-debian/[Learning Debian with Claude] series.
+A company's systems, including those used only inside the company, have mostly become web applications. This is our observation. Most work runs inside a browser. Replacing the OS with Debian barely changes the work itself. The steps are in the link:/en/claude-debian/[Learning Debian with Claude] series.
 
 Windows does not block the exit.
 
@@ -16833,7 +16833,7 @@ The work VBA macros did is rewritten in Python together with AI. How to handle d
 
 === Sign-in: PocketBase
 
-PocketBase is open-source software that brings sign-in and permissions together in one place. It can also connect sign-in with Google or Apple accounts (OAuth2). Source: https://pocketbase.io/docs/authentication/[PocketBase documentation]
+PocketBase is open-source software that brings sign-in and permissions together in one place. It can also connect sign-in with Google or Apple accounts (OAuth2). Source: https://pocketbase.io/docs/authentication/[PocketBase documentation]. If the company's internal systems are web applications, their sign-in can be brought together in PocketBase alone.
 
 During the move, keep Microsoft sign-in in PocketBase, so people can sign in with their existing accounts. Once everyone has moved, remove the Microsoft sign-in. The steps are in the series chapter link:/en/ai-native-software/auth/[2-05 "Stand Up the Gate"].
 

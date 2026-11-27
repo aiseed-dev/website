@@ -16570,7 +16570,7 @@ category.en: Structural Analysis Notes
 ifdef::lang-ja[]
 = VBA は直せない
 
-// TODO(動画「無ければ、AI で作る。作るより、守る」の公開の後): ここに、この記事が動画の文章版である事と、動画の URL を書く。「参考」の初めにも、動画の URL を入れる。英語版も同じ。
+// TODO(動画「無ければ、AI で作る。Excel と、互換の Office を、作っています。」(題は案)の公開の後): ここに、この記事が動画の文章版である事と、動画の URL を書く。「参考」の初めにも、動画の URL を入れる。英語版も同じ。
 
 == 結論
 
@@ -16653,7 +16653,7 @@ Euro-Office は、ONLYOFFICE を元にした、オープンソースの Office �
 * マクロは、文書の中ではなく、別の Python のファイル(.py)に置く。文書を開いても、マクロは動かない。
 * Python で操作できる。Python で操作できれば、AI に頼んで自動化するのは簡単である。
 * 文書と表は、自分のパソコンの中のファイルである。AI を使いたい時だけ、自分で選んだ AI につなぐ。
-* Word と Excel のファイルを読み書きする。取引先とのやり取りは、今のファイルのまま続けられる。
+* Excel と Word のファイルを、開いて、書き込んで、保存できる。表示と印刷は、Excel や Word と同じになる様に作っている。取引先とのやり取りは、今のファイルのまま続けられる。
 * コードが公開されているので、使う会社が自分で読んで、Mythos で検査できる。
 
 Windows では、アプリの中から動かす文書のマクロは、まだ動かない。元: https://github.com/aiseed-dev/officework[aiseed office の README]
@@ -16716,7 +16716,7 @@ endif::[]
 ifdef::lang-en[]
 = VBA Cannot Be Fixed
 
-// TODO (after the video "If It Does Not Exist, Build It with AI. Protecting Matters More Than Building" is published): say here that this article is the written version of the video and give its URL. Also put the video URL first in References. The Japanese version has the same note.
+// TODO (after the video "If It Does Not Exist, Build It with AI: We Are Building an Excel-Compatible Office" (title not final) is published): say here that this article is the written version of the video and give its URL. Also put the video URL first in References. The Japanese version has the same note.
 
 == Conclusion
 
@@ -16799,7 +16799,7 @@ Next, we are building an Office itself with AI. It is called aiseed office. It i
 * Macros live not inside documents but in separate Python files (.py). Opening a document never runs a macro.
 * It can be driven from Python. Once that is true, asking an AI to automate it is easy.
 * Documents and spreadsheets are files on your own computer. Only when you want AI do you connect the AI you chose.
-* It reads and writes Word and Excel files. Exchanges with business partners can continue with the same files.
+* It opens, edits and saves Excel and Word files. Display and printing are being built to match Excel and Word. Exchanges with business partners can continue with the same files.
 * Because the code is public, the company using it can read it and inspect it with Mythos.
 
 On Windows, document macros run from inside the app do not work yet. Source: https://github.com/aiseed-dev/officework[the aiseed office README]
@@ -17092,6 +17092,8 @@ AI を使えば、自分で作れる時代になった。ナデラ氏の三つ�
 
 *もう、ナデラの Microsoft は必要ない。*
 
+無ければ、AI で作る。Excel と互換の Office を、AI で作っている。その話は、link:/blog/vba-cannot-be-fixed/[「VBA は直せない」]に書いた。
+
 == 確かめた日と、変わる所
 
 事実は、2026 年 11 月 27 日に、元の頁で確かめた。次の所は変わる。
@@ -17336,6 +17338,8 @@ With AI, it is now possible to build things yourself. Nadella's three lines beco
 * Responsibility lies with whoever deployed the AI. If you are taking responsibility, something you can see into is better.
 
 *We no longer need Nadella's Microsoft.*
+
+If it does not exist, build it with AI. We are building an Office compatible with Excel, with AI. That story is in link:/en/blog/vba-cannot-be-fixed/[VBA Cannot Be Fixed].
 
 == Checked on, and what will change
 

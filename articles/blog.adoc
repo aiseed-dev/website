@@ -16643,7 +16643,7 @@ Microsoft の ID には、二つの種類がある。個人の Microsoft アカ�
 ここから先は、*私たちの考えである。*
 
 * Microsoft の ID が要るのは、Microsoft のサービスを使う時だけである。Office と Microsoft 365 をやめれば、要る所はほとんど無くなる。
-* 個人で Microsoft の ID を持つのは、Windows のパソコンを持つ人である。家族で 1 台なら、持つのは一人だけになる。パソコンを持たない人は持たない。仕事のアカウントは、会社が渡す物である。自分から選んで使う人は少ない。
+* 個人で Microsoft の ID を持つのは、Windows のパソコンを持つ人である。家族で 1 台なら、持つのは一人だけで、そのアカウントを家族で共有して使う事になる。一つの ID が一人を表さないので、ID として使い物にならない。パソコンを持たない人は持たない。仕事のアカウントは、会社が渡す物である。自分から選んで使う人は少ない。
 * それなのに、二つの種類があって紛らわしい。権限の設定も複雑で、扱える人を雇うか、業者に頼む事になる。
 * Google ID と Apple ID は、ほぼ全員が持っていて、ほぼ無料で使える。Microsoft の ID は、会社が一人ずつ払って持たせる物である。
 * 要る所が少ないのに、複雑で、費用が掛かりすぎる。
@@ -16799,7 +16799,7 @@ Take a company of 100 people. P1 costs 1,049 yen × 100 people × 12 months, or 
 What follows is *our view.*
 
 * Microsoft's ID is needed only to use Microsoft's services. Stop using Office and Microsoft 365, and there is almost nowhere left that needs it.
-* The people who hold a personal Microsoft ID are those who own a Windows PC. If a family shares one PC, only one person holds it. People without a PC do not hold one. A work account is handed out by the company. Few people choose to use it of their own accord.
+* The people who hold a personal Microsoft ID are those who own a Windows PC. If a family shares one PC, only one person holds it, and the family shares that one account. An ID that does not stand for one person is useless as an ID. People without a PC do not hold one. A work account is handed out by the company. Few people choose to use it of their own accord.
 * Even so, there are two kinds, which is confusing. Setting permissions is complex, so the company has to hire someone who can handle it or rely on a contractor.
 * Google ID and Apple ID are held by almost everyone and cost almost nothing to use. Microsoft's ID is something a company pays for, person by person, to hand out.
 * It is needed in few places, yet it is complex and costs too much.

@@ -16643,6 +16643,8 @@ Euro-Office は、ONLYOFFICE を元にした、オープンソースの Office �
 . AI がプログラムを直す。和暦の例では、アプリが「g」の文字を、元号を表す記号として扱っていなかった。AI が、元号として処理する仕組みを足した。
 . 直した後に、もう一度文書を開いて、正しく表示される事を確かめる。テストも AI が足す。
 
+18 件の修正を、GitHub で公開している(ja-office の今の版、9.3.8-ja.3)。
+
 === Office そのものを AI で作る ── aiseed office
 
 次は、Office そのものを AI で作っている。名前は aiseed office である。今は、試験公開の段階(0.1.0-alpha.7)である。コードは https://github.com/aiseed-dev/officework[GitHub]で公開している(AGPL)。
@@ -16785,6 +16787,8 @@ In documents, we fixed the following.
 . The AI fixes the program. In the era-calendar example, the app did not treat the letter "g" as the symbol for the era name. The AI added a mechanism that handles it as the era.
 . After the fix, the document is opened again to confirm it displays correctly. The AI adds tests too.
 
+We publish the 18 fixes on GitHub (the current ja-office release, 9.3.8-ja.3).
+
 === Building an Office itself with AI — aiseed office
 
 Next, we are building an Office itself with AI. It is called aiseed office. It is in test release (0.1.0-alpha.7). The code is public on https://github.com/aiseed-dev/officework[GitHub] (AGPL).
@@ -16868,7 +16872,7 @@ category.en: Structural Analysis Notes
 ifdef::lang-ja[]
 = もう、ナデラの Microsoft は必要ない
 
-// TODO(動画「「ExcelにPythonが搭載？」を書いてから9年」の公開の後): ここに、この記事が動画の文章版である事と、動画の URL を書く。「参考」の初めにも、動画の URL を入れる。英語版も同じ。
+// TODO(動画「「ExcelにPythonが搭載？」という記事を書いてから9年がたちました」の公開の後): ここに、この記事が動画の文章版である事と、動画の URL を書く。「参考」の初めにも、動画の URL を入れる。英語版も同じ。
 
 == 結論
 
@@ -17073,7 +17077,7 @@ endif::[]
 ifdef::lang-en[]
 = No More Need for Nadella's Microsoft
 
-// TODO (after the video "Nine Years Since 'Python in Excel?'" (Japanese title 「ExcelにPythonが搭載？」を書いてから9年) is published): say here that this article is the written version of the video and give its URL. Also put the video URL first in References. The Japanese version has the same note.
+// TODO (after the video "Nine years since we wrote 'Python in Excel?'" (Japanese title 「ExcelにPythonが搭載？」という記事を書いてから9年がたちました) is published): say here that this article is the written version of the video and give its URL. Also put the video URL first in References. The Japanese version has the same note.
 
 == Conclusion
 

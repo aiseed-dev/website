@@ -16577,6 +16577,7 @@ ifdef::lang-ja[]
 * *Windows は Debian に移ればよい。* 出られないのは、Office と Entra ID があるからである。
 * *Microsoft の ID は、要る所が少ないのに、複雑で費用が掛かる。* 単に金儲けの道具である。だから、Microsoft の ID と Entra ID は外す。
 * *Office は aiseed office で、ログインは PocketBase で解く。* この二つが解ければ、残りの移行は AI がやれる。
+* *情報システム部門には厳しいが、変わるしかない。* 新しい仕事は、コードとデータを手元に持ち、Mythos で検査する事である。
 
 == VBA は、直さずに止めただけ
 
@@ -16673,6 +16674,21 @@ Google ID と Apple ID は、スマートフォンを使う限り残る。
 
 Office と Entra ID が解ければ、残りの移行は AI がやれる。メール、予定、ファイルの中身を取り出して、移す先に入れる作業である。全体の対応表は、連載の link:/ai-native-software/independence/[2-01「Microsoft と Google から自立する」]にある。
 
+== 情報システム部門は、変わるしかない
+
+ここから先も、*私たちの考えである。*
+
+会社の情報システム部門にとって、ここが厳しい所である。
+
+* 今の仕事の多くは、Microsoft の製品の管理である。アカウントと権限を Entra ID で管理する。Windows のパソコンを管理する。Microsoft 365 の契約と人数を管理する。業者とのやり取りをする。
+* Office と Entra ID を外せば、この仕事の多くが無くなる。今まで積み上げてきた知識と資格の多くも、使わなくなる。
+
+それでも、変わるしかない。
+
+* VBA は直らない。Microsoft の ID は、要る所が少ないのに費用が掛かる。外さなければ、危険と費用は会社の側に残り続ける。
+* 新しい仕事は、会社のコードとデータを自分の手元に持つ事である。VBA のマクロを、AI と一緒に Python に書き直す。PocketBase でログインと権限を管理する。
+* そして、自分の会社のシステムを、Mythos で検査する。見つかった穴を実際に動かして確かめ、どれから直すかを決める。link:/blog/cyber-war-mythos-and-humans/[「サイバー戦争は、もう始まっています」]で、社内に検査できる人を置いてほしい、と書いた。その人は、情報システム部門の人である。
+
 == 確かめた日と、変わる所
 
 事実は、2026 年 11 月 27 日に、元の頁で確かめた。次の所は変わる。
@@ -16708,6 +16724,7 @@ ifdef::lang-en[]
 * *Windows can be replaced with Debian.* What keeps companies in is Office and Entra ID.
 * *Microsoft's ID is needed in few places, yet complex and costly.* It is simply a tool for making money. So we remove Microsoft's ID and Entra ID.
 * *Office is untied with aiseed office, and sign-in with PocketBase.* Once these two are untied, AI can do the rest of the move.
+* *It is hard on the IT department, but it has no choice but to change.* The new work is to hold the code and data and inspect them with Mythos.
 
 == VBA was not fixed, only blocked
 
@@ -16803,6 +16820,21 @@ Google ID and Apple ID remain as long as you use smartphones.
 === AI does the rest
 
 Once Office and Entra ID are untied, AI can do the rest of the move: exporting mail, calendars and files, and putting them in their new place. The full correspondence table is in the series chapter link:/en/ai-native-software/independence/[2-01 "Becoming Independent from Microsoft and Google"].
+
+== The IT department has no choice but to change
+
+What follows is also *our view.*
+
+For a company's IT department, this is the hard part.
+
+* Much of its work today is managing Microsoft's products: managing accounts and permissions in Entra ID, managing Windows PCs, managing the Microsoft 365 contract and seat count, and dealing with contractors.
+* Remove Office and Entra ID, and much of this work goes away. Much of the knowledge and the certifications built up so far will no longer be used.
+
+Even so, it has no choice but to change.
+
+* VBA will not be fixed. Microsoft's ID is needed in few places, yet costs money. Unless they are removed, the danger and the cost stay with the company.
+* The new work is to hold the company's code and data in its own hands: rewriting VBA macros in Python together with AI, and managing sign-in and permissions with PocketBase.
+* And to inspect the company's own systems with Mythos: run each vulnerability found, confirm it, and decide which to fix first. In link:/en/blog/cyber-war-mythos-and-humans/[The Cyber War Has Already Begun], we asked companies to have people in-house who can inspect. Those people are the IT department.
 
 == Checked on, and what will change
 

@@ -16887,9 +16887,49 @@ ifdef::lang-ja[]
 
 == 第 1 部 Excel に Python を、9 年待った
 
+// 保留(本人の確認待ち。2026-11-27、website の側で本人に確かめている。確認が取れたら、この注釈を消して、次の文を本文にする):
+// 2009 年。このころ、私は、徳島県の統計の課で、産業連関表を作っていた。毎日、Excel を使っていた。Excel は、もっと前から使っている。108 の部門の表は、縦も横も 108 である。数は 1 万を超える(108 × 108 = 11,664)。これも Excel のファイルである。元: https://www.pref.tokushima.lg.jp/statistics/year/io/[徳島県「平成 17 年徳島県産業連関表」](平成 22 年 3 月 17 日更新)
+// 2011 年には、県民経済計算をしていた。このころ、Python は、まだあまり知られていなかった。
+// 下の 2017 年と 2018 年の記事には、Qiita の頁へのリンクを付ける(https://qiita.com/yniji/items/2e80ace081c4b59bc327 、https://qiita.com/yniji/items/b38bc312e860027108ac )。英語版も同じ。
+
+私が Python を本格的に使い始めたのは、2016 年である。C# の限界が分かったからである。
+
+=== C# だけでは、何も出来ない
+
+C# だけでは、結局、何も出来ない。事実上、.NET を強制される。
+
+その .NET は、変わりすぎる。.NET Framework から .NET Core へ移り、そして .NET に統一された。.NET Core 1.0 が出たのは 2016 年 6 月、統一された .NET 5.0 は 2020 年 11 月である。長い時間が掛かっている。保守が難しい。元: https://devblogs.microsoft.com/dotnet/announcing-net-core-1-0/[Microsoft「Announcing .NET Core 1.0」]、https://devblogs.microsoft.com/dotnet/announcing-net-5-0/[Microsoft「Announcing .NET 5.0」]
+
+中でも、データベースを扱う部品の Entity Framework が、ひどかった。
+
+* 新しい Entity Framework Core では、前の版の、画面で設計する形(EDMX)が使えなくなった。対応する予定も無い。元: https://learn.microsoft.com/en-us/ef/efcore-and-ef6/[Microsoft Learn「Compare EF Core & EF6」]
+* 私が離れた後も続いた。2019 年の 3.0 では、それまで動いていた問い合わせが、動かした時にエラーで落ちる様になった。元: https://learn.microsoft.com/en-us/ef/core/what-is-new/ef-core-3.x/breaking-changes[Microsoft Learn「Breaking changes in EF Core 3.x」]
+* 2022 年の 7.0 では、データベースへの接続の、初めの設定が変わった。元: https://learn.microsoft.com/en-us/ef/core/what-is-new/ef-core-7.0/breaking-changes[Microsoft Learn「Breaking changes in EF Core 7.0」]
+
+使う側は、そのたびに直すしかない。
+
+SQL を直に書くのも、手間である。C# は、型を付ける必要があるからである。C# で手間を減らすなら、Dapper と record である。それなら、Python で足りる。
+
+=== 速さは、どうか
+
+* ふつうの業務のシステムは、使う人の数が、それほど多くない。たとえば、千人が 10 秒に 1 回画面を開いても、1 秒に 100 回である。Python で十分に捌ける。
+* 利用者が待つ時間を決めているのは、主にデータベースからの応答である。C# で書いても、縮むのは、1 回の画面で 1 ミリ秒ほどである。
+* 防災の情報の様に、多くの人が一度に見るシステムもある。これは情報を出すだけなので、頁を作り置きに出来る。
+* 多くの人が同時に書き込むシステムは、GAFA の様な大きなサービスの話である。ふつうの会社や役所の業務のシステムではない。
+
+「1 ミリ秒ほど」は、TechEmpower のデータベースを使う試験(23 回目)の数である。要求が少ない時の 1 回の応答は、ASP.NET Core が 1.18 ミリ秒、FastAPI が 2.36 ミリ秒だった。1 台で捌ける量は、C# の方が何倍も多い。それが効くのは、上の 4 つ目の様な大きなサービスである。元: https://www.techempower.com/benchmarks/#hw=ph&test=fortune&section=data-r23[TechEmpower Framework Benchmarks Round 23]
+
+*ここが重要である。GAFA のための道具とやり方を、ふつうの会社が、そのまま買わされている。* 使う人が千人のシステムに、何億人のための仕組みは要らない。これは私たちの考えである。
+
+=== Excel に Python が入るのを、待った
+
+それで、2016 年から Python を使っている。2017 年に、Excel に Python が搭載される、という話を聞いて、期待した。
+
 2017 年 12 月に、「Excel に Python が搭載?」という記事を書いた。VBA は、Office 97 から、実質的な機能の追加が無かった。Excel に Python が入る事を期待した。その記事の答え合わせは、link:/blog/python-in-excel-eight-years-later/[「ExcelにPythonが搭載？ ── それから8年後」]に書いた。
 
 2018 年に、続きの記事を書いた。1 年たっても入らなかった。そこで、xlwings というライブラリーで、Python から Excel を操作する方法を書いた。ただし、xlwings を使うには Excel が要る。そのため、Linux では使えない。
+
+*Microsoft は、9 年も、期待を裏切り続けた。*
 
 今の Excel には、Python in Excel という機能がある。しかし、次の通りである。
 
@@ -16897,8 +16937,6 @@ ifdef::lang-ja[]
 * 使えるのは、有料の Microsoft 365 の契約がある人である。無料の版と、個人向けの買い切りの版では使えない。元: https://support.microsoft.com/en-us/office/python-in-excel-availability-781383e6-86b9-4156-84fb-93e786f7cab0[Microsoft サポート「Python in Excel availability」]
 
 VBA の方はどうか。Microsoft は、2022 年 7 月から、インターネットから来たファイルのマクロを、初めから止める様にした。止めただけである。「止めただけ」は、VBA の作りを変えていない事からの、私たちの読みである。元: https://learn.microsoft.com/en-us/microsoft-365-apps/security/internet-macros-blocked[Microsoft Learn「Macros from the internet are blocked by default in Office」]。詳しくは link:/blog/vba-cannot-be-fixed/[「VBA は直せない」]に書いた。
-
-*Microsoft は、9 年も、期待を裏切り続けた。*
 
 == 第 2 部 Microsoft の CEO の言葉
 
@@ -17094,9 +17132,49 @@ ifdef::lang-en[]
 
 == Part 1: We waited nine years for Python in Excel
 
-In December 2017, we wrote an article titled "Python in Excel?" VBA had gained no real features since Office 97. We hoped Python would come to Excel. We checked that article against what happened in link:/en/blog/python-in-excel-eight-years-later/[Python in Excel? — Eight Years Later].
+// On hold (waiting for the owner's confirmation; being asked on the website side, 2026-11-27). Once confirmed, remove this comment and put these lines in the body:
+// 2009. Around then I was making input-output tables in the statistics division of Tokushima Prefecture. I used Excel every day; I had used it even before then. The 108-sector table is 108 rows by 108 columns, more than 10,000 figures (108 × 108 = 11,664). It, too, is an Excel file. Source: https://www.pref.tokushima.lg.jp/statistics/year/io/[Tokushima Prefecture, "2005 Tokushima Prefecture Input-Output Table"] (updated March 17, 2010)
+// In 2011 I was working on the prefectural accounts. Back then, Python was still not widely known.
+// Link the 2017 and 2018 articles below to their Qiita pages (https://qiita.com/yniji/items/2e80ace081c4b59bc327 , https://qiita.com/yniji/items/b38bc312e860027108ac ). The Japanese version has the same note.
 
-In 2018, we wrote a follow-up. A year later it still had not come. So we wrote how to drive Excel from Python with a library called xlwings. But xlwings needs Excel, so it cannot be used on Linux.
+I started using Python in earnest in 2016, because I had seen the limits of C#.
+
+=== C# alone can do nothing
+
+With C# alone, in the end, you can do nothing. You are, in effect, forced onto .NET.
+
+And .NET changes too much. It moved from .NET Framework to .NET Core, and was then unified as .NET. .NET Core 1.0 came out in June 2016; the unified .NET 5.0 in November 2020. That took a long time. Maintenance is hard. Sources: https://devblogs.microsoft.com/dotnet/announcing-net-core-1-0/[Microsoft, "Announcing .NET Core 1.0"], https://devblogs.microsoft.com/dotnet/announcing-net-5-0/[Microsoft, "Announcing .NET 5.0"]
+
+Worst of all was Entity Framework, the part that handles the database.
+
+* The new Entity Framework Core dropped the earlier version's visual designer (EDMX), with no plans to support it. Source: https://learn.microsoft.com/en-us/ef/efcore-and-ef6/[Microsoft Learn, "Compare EF Core & EF6"]
+* It went on after I left. In 3.0 (2019), queries that used to work started failing with errors at run time. Source: https://learn.microsoft.com/en-us/ef/core/what-is-new/ef-core-3.x/breaking-changes[Microsoft Learn, "Breaking changes in EF Core 3.x"]
+* In 7.0 (2022), the default settings for connecting to the database changed. Source: https://learn.microsoft.com/en-us/ef/core/what-is-new/ef-core-7.0/breaking-changes[Microsoft Learn, "Breaking changes in EF Core 7.0"]
+
+Each time, the user has no choice but to fix things.
+
+Writing SQL directly is also work, because C# needs types. If you cut the work in C# with Dapper and records, then Python is enough.
+
+=== What about speed?
+
+* Ordinary business systems do not have that many users. Even if a thousand people open a screen once every 10 seconds, that is 100 requests a second. Python handles it easily.
+* What sets how long users wait is mainly the database's response. Writing it in C# shortens each screen by about one millisecond.
+* Some systems, like disaster information, are viewed by many people at once. They only put information out, so the pages can be prepared in advance.
+* Systems where many people write at the same time belong to large services like GAFA. They are not the business systems of ordinary companies or public offices.
+
+"About one millisecond" comes from TechEmpower's database test (Round 23). At low load, one response took 1.18 ms on ASP.NET Core and 2.36 ms on FastAPI. The volume one machine can handle is several times higher in C#. That matters for large services like the fourth item above. Source: https://www.techempower.com/benchmarks/#hw=ph&test=fortune&section=data-r23[TechEmpower Framework Benchmarks Round 23]
+
+*This is the important part. Ordinary companies are being sold, as is, the tools and methods made for GAFA.* A system with a thousand users does not need machinery built for hundreds of millions. This is our view.
+
+=== Waiting for Python in Excel
+
+So I have used Python since 2016. In 2017, I heard that Python might come to Excel, and I had hopes.
+
+In December 2017, I wrote an article titled "Python in Excel?" VBA had gained no real features since Office 97. I hoped Python would come to Excel. I checked that article against what happened in link:/en/blog/python-in-excel-eight-years-later/[Python in Excel? — Eight Years Later].
+
+In 2018, I wrote a follow-up. A year later it still had not come. So I wrote how to drive Excel from Python with a library called xlwings. But xlwings needs Excel, so it cannot be used on Linux.
+
+*Microsoft kept letting us down for nine years.*
 
 Today's Excel has a feature called Python in Excel. However:
 
@@ -17104,8 +17182,6 @@ Today's Excel has a feature called Python in Excel. However:
 * It is available to people with a paid Microsoft 365 subscription. Free versions and one-time-purchase consumer versions do not support it. Source: https://support.microsoft.com/en-us/office/python-in-excel-availability-781383e6-86b9-4156-84fb-93e786f7cab0[Microsoft Support, "Python in Excel availability"]
 
 What about VBA? From July 2022, Microsoft made Office block macros in files from the internet from the start. It only blocked them. "Only blocked" is our reading, based on the fact that the design of VBA was not changed. Source: https://learn.microsoft.com/en-us/microsoft-365-apps/security/internet-macros-blocked[Microsoft Learn, "Macros from the internet are blocked by default in Office"]. More in link:/en/blog/vba-cannot-be-fixed/[VBA Cannot Be Fixed].
-
-*Microsoft kept letting us down for nine years.*
 
 == Part 2: What Microsoft's CEO said
 

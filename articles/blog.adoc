@@ -16071,6 +16071,10 @@ Anthropic は同じ報告で、高度なサイバー攻撃をする事の壁は�
 
 広く使われているソフトウェアからも、AI で調べると、重大なセキュリティの穴(攻撃に使われる弱点)が 1 万件以上見つかりました(第 4 部)。検査されていないシステムには、見つかっていない穴が残っています。放置せず、早く直してください。
 
+2026 年 11 月 13 日には、FBI が注意を出しました。ARTEX という、オープンソースの AI の攻撃の道具が、遅くとも 8 月から広く使われています。狙ってから特権を取るまで、3 時間掛からなかった侵入があります。技術の少ない者でも、多くの相手を同時に攻撃できます。元: https://www.ic3.gov/CSA/2026/261113.pdf[FBI「Threat Overview of ARTEX Autonomous Penetration Testing Framework」(FLASH-20261113-001)]
+
+11 月 27 日には、米空軍のクラウドの基盤「Cloud One」への侵入が報じられました。基盤を新しくする作業の中で、初めて見つかりました。ARTEX が使われたかは、分かっていません。元: https://www.cnbc.com/2026/11/27/hackers-breach-us-air-force-flagship-cloud-one-computing-platform.html[CNBC(Reuters の配信)]。詳しくは link:/blog/riemann-proof-and-cloud-one/[ブログ 056] に書きました(11 月 28 日に追記)。
+
 == 第 2 部 AI で人類は滅ぶのか
 
 これは、サイバー攻撃より大きな問いです。まず滅ぶ理由をはっきりさせ、次に対応があるかを見ます。
@@ -16340,6 +16344,10 @@ On November 13, 2025, Anthropic published a report. A state-backed group used AI
 In the same report, Anthropic writes that the barriers to carrying out sophisticated cyberattacks have dropped substantially.
 
 Even in widely used software, AI found more than 10,000 serious security vulnerabilities (weak points that attacks can use) (Part 4). Systems that have not been inspected still hold vulnerabilities no one has found. Do not leave them. Fix them quickly.
+
+On November 13, 2026, the FBI issued an alert. An open-source AI attack tool called ARTEX has been in wide use since at least August. Some intrusions went from targeting to privileged access in under three hours. People with little technical skill can attack many targets at once. Source: https://www.ic3.gov/CSA/2026/261113.pdf[FBI, "Threat Overview of ARTEX Autonomous Penetration Testing Framework" (FLASH-20261113-001)]
+
+On November 27, a breach of the US Air Force's cloud platform "Cloud One" was reported. It was found only during work to upgrade the platform. Whether ARTEX was used is not known. Source: https://www.cnbc.com/2026/11/27/hackers-breach-us-air-force-flagship-cloud-one-computing-platform.html[CNBC (Reuters)]. Details are in link:/en/blog/riemann-proof-and-cloud-one/[blog 056] (added November 28).
 
 == Part 2: Will AI End Humanity?
 
@@ -17366,4 +17374,335 @@ The facts were checked against the source pages on November 27, 2026. The follow
 * TNW, "Microsoft buyouts" (October 26, 2026) https://thenextweb.com/news/microsoft-buyouts-60000-employees-voluntary-exit-offer
 * Microsoft, "Microsoft Entra pricing" https://www.microsoft.com/ja-jp/security/business/microsoft-entra-pricing
 * PocketBase, "Authentication" https://pocketbase.io/docs/authentication/
+endif::[]
+
+// ===== article: 056-riemann-proof-and-cloud-one =====
+---
+slug: riemann-proof-and-cloud-one
+title.ja: AI がリーマン予想を証明し、米空軍のクラウドに侵入された ── 2026 年 11 月
+title.en: AI Proved the Riemann Hypothesis, and the US Air Force Cloud Was Breached — November 2026
+subtitle.ja: 同じ月に、数学の最難問の証明が機械で確かめられ、誰でも手に入る AI の攻撃の道具が国の仕組みに使われた。どちらも、コードを書いて読む同じ力から出ている。事実の 1 つずつに、元の頁を付けた
+subtitle.en: In the same month, a proof of mathematics' hardest problem was checked by machine, and an AI attack tool anyone can get was used against national systems. Both come from the same ability to write and read code. Every fact links to its source page
+date: 2026.11.28
+description.ja: 2026 年 11 月 20 日、Anthropic の数学者 Levent Alpöge が、Claude と一緒にリーマン予想の証明を見つけたと発表した。証明は約 1,700 万行の Lean のコードで、翌日、Lean と Mathlib の側が正しいと声明を出した。人が読める説明と査読は、まだこれからである。11 月 27 日には、米空軍のクラウドの基盤 Cloud One への侵入が報じられた。FBI は 11 月 13 日に、AI の攻撃の道具 ARTEX について注意を出している。何が確かめられ、何が分かっていないかを分けて書いた。
+description.en: On November 20, 2026, Anthropic mathematician Levent Alpöge announced that he had found a proof of the Riemann hypothesis with Claude. The proof is about 17 million lines of Lean code, and the next day the Lean and Mathlib side stated that it is correct. A human-readable account and peer review are still to come. On November 27, a breach of the US Air Force's cloud platform Cloud One was reported. On November 13, the FBI had issued an alert on the AI attack tool ARTEX. We separate what has been confirmed from what is not known.
+label: Blog
+category.ja: 構造分析ノート
+category.en: Structural Analysis Notes
+---
+ifdef::lang-ja[]
+= AI がリーマン予想を証明し、米空軍のクラウドに侵入された
+
+事実と日付は、2026 年 11 月 28 日に元の頁を開いて確かめた。開けなかった頁は、終わりの「確かめた日と、変わる所」に書いた。
+
+== 結論
+
+* *リーマン予想の証明が、機械で確かめられた。* 証明は、Anthropic の数学者 Levent Alpöge が、Claude と一緒に見つけた。約 1,700 万行の Lean のコードで、Lean と Mathlib の側が、主張と証明は正しいと声明を出した。人が読める説明と、学術誌での査読は、まだこれからである。
+* *米空軍のクラウドの基盤 Cloud One に、侵入されていた。* 基盤を新しくする作業の中で見つかった。誰が侵入したか、何が取られたかは、まだ分かっていない。
+* *誰でも手に入る AI の攻撃の道具が、既に広く使われている。* FBI によると、ARTEX という道具で、狙ってから特権を取るまで 3 時間掛からなかった侵入がある。空軍の件で使われたかは、分かっていない。
+* *私たちの考え: AI 革命は、ここまで進んだ。* 数学の証明も、攻撃も、コードを書いて読む同じ力から出ている。決める、確かめる、責任を持つ、は人間に残る。
+
+== リーマン予想の証明
+
+=== 何が発表されたか
+
+2026 年 11 月 20 日、Anthropic の数学者 Levent Alpöge が、4 頁の文を出した。元: https://alpo.ge/remark.pdf[Alpöge「remark」]、https://phys.org/news/2026-11-anthropic-claude-math-greatest-riddle.html[phys.org(AFP、2026 年 11 月 20 日)]
+
+* Claude と一緒に、リーマン予想の証明を見つけたと考えている、と書いている。
+* 同じ方法で、一般化リーマン予想も解ける、と書いている。
+* 証明は、仮定を置かずに、Lean で形式化した、と書いている。Lean は、数学の証明をコードとして書いて、機械で確かめる言語である。
+* 使ったのは、まだ公開されていない Claude である。元: https://en.wikipedia.org/wiki/Alp%C3%B6ge's_proof_of_the_Riemann_hypothesis[Wikipedia「Alpöge's proof of the Riemann hypothesis」]
+* 作業は、10 月 6 日から 11 月 16 日までの約 6 週間だった。この日付は、Claude がまとめた大まかな記録による。元: https://www.therundown.ai/news/claude-riemann-hypothesis-proof[The Rundown(2026 年 11 月 24 日)]
+
+リーマン予想は、1859 年に出された、素数の数え方についての問題である。クレイ数学研究所の懸賞の問題でもある(phys.org)。
+
+=== 何が確かめられたか
+
+11 月 21 日、Lean の開発元の Lean FRO と、Mathlib Initiative が、共同で声明を出した。元: https://leanprover-community.github.io/blog/posts/riemann-hypothesis/[Lean FRO と Mathlib Initiative の共同声明(2026 年 11 月 21 日)]
+
+* 元のリーマン予想について、主張と証明の両方が正しい、と書いている。
+* 証明のコードは、約 1,700 万行ある。
+* 証明が使っているのは、Mathlib(Lean の数学の共有の書庫)だけである。
+* 何人もの人が、同じ結果を作り直して確かめた。検査の道具も、いくつも使った。
+* 声明が触れているのは、元のリーマン予想だけである。一般化リーマン予想には触れていない。
+
+11 月 25 日には、Anthropic の Luke Sernau が、短くした版を公開した。読みやすい版が約 30 万行、詰めた版が約 7 万 6,000 行である。元のリーマン予想と、ディリクレの L 関数の一般化リーマン予想の証明を含む。元: https://github.com/lsernau/grh-lean[Sernau「grh-lean」]
+
+=== まだ確かめられていない事
+
+* *人が読める説明が、まだ無い。* Sernau の版の説明にも、通して読んだ数学者はまだいない、と書いてある。
+* *説明も、AI が書いている。* Waterloo 大学の Michael Rubinstein の求めで、Claude などの AI が、説明の下書きを書いている。証明の中心の不等式は、まだこの説明の中では証明されておらず、Lean のコードから借りている。元: https://www.math.uwaterloo.ca/~mrubinst/alpoge_claude_grh/zeta-paper.pdf[「The Alpöge–Claude proof of the Riemann hypothesis explained for the Riemann zeta function」(下書き、2026 年 11 月 21 日)]
+* *査読は、これからである。* クレイ数学研究所の懸賞には、査読のある学術誌に載り、2 年間の検討に耐える事が要る(phys.org)。
+* *批判もある。* 「人間の数学のための会」は、読めない証明は AI の会社の宣伝に過ぎない、と批判した。これは、Lean の側の声明の前日である(The Rundown)。数学者の Brian Conrey は、とても込み入っていて、人が見つけられる物ではなかっただろう、もっと簡単な方法があるはずだ、と話した(phys.org)。
+
+=== 人と AI の役割
+
+Alpöge の文では、二つの考えを組み合わせる向きを決めたのは、Alpöge である。その後の詰めでは、Claude が Alpöge を大きく追い越した、と書いている(remark)。Alpöge は、まだ全部の数学を自分のものにしていない、とも話している(phys.org)。これから自分で理解し、説明し、きちんと書く、と書いている(remark)。
+
+== 米空軍のクラウドへの侵入
+
+=== 何が起きたか
+
+2026 年 11 月 27 日、Reuters が、関係者の話として報じた。元: https://www.cnbc.com/2026/11/27/hackers-breach-us-air-force-flagship-cloud-one-computing-platform.html[CNBC(Reuters の配信、2026 年 11 月 27 日)]
+
+* 侵入されたのは、米空軍のクラウドの基盤「Cloud One」である。2017 年に始まり、Microsoft、Amazon、Oracle、Alphabet のクラウドを組み合わせている。人事、給与、物流、整備など、多くのアプリがこの上で動く。
+* 北米の防空レーダーなどのデータをまとめる指揮統制の仕組みと、世界の 200 か所を超える基地の爆弾とミサイルを管理する仕組みも、この上で動いている。
+* 侵入は、この 1 か月ほどの間に、基盤を新しくする作業の中で見つかった。
+* 一人の関係者によると、ソフトウェアの穴を使って、基盤を操作する部分に入った。どの穴かは分かっていない。
+* 見つかった後、アプリを移す作業が止まり、動いているアプリの更新も出来なくなった。管理者の権限を外された利用者もいる。
+* サイバー軍が、被害を調べている。空軍は、個々の仕組みの状態については話さない、としている。
+
+NBC News も、米国の当局者が侵入を認めた、と報じた。元: https://www.nbcnews.com/news/us-news/hackers-attack-penetrate-air-forces-computing-platform-rcna611559[NBC News(2026 年 11 月 27 日)]
+
+=== 分かっていない事
+
+* 誰が侵入したか。
+* どこまで入られたか。
+* データが盗まれたか。
+* AI の攻撃の道具が使われたか。元: https://www.bleepingcomputer.com/news/security/us-air-force-cloud-platform-reportedly-hacked-in-latest-federal-breach/[BleepingComputer(2026 年 11 月 27 日)]
+
+=== 同じ月の、ほかの侵入
+
+米国の政府の機関では、同じ月に、ほかの侵入も報じられている。どれも報道で、つながりがあるかは分かっていない(BleepingComputer)。
+
+* CIA など 3 つの情報機関が使う、公開されている情報を分析する仕組みに、侵入された。機密の情報ではない。ARTEX が使われた疑いがある。New York Times の 11 月 24 日の報道による。元: https://the-decoder.com/back-to-back-cyber-incidents-at-us-financial-investigators-and-spy-agencies-follow-a-string-of-federal-hacks-and-outages/[The Decoder(2026 年 11 月 25 日)]
+* 財務省の金融犯罪取締ネットワーク(FinCEN)が、システムの一部に不正なアクセスがあった、と発表した(The Decoder)。
+* FBI の犯罪情報の仕組み(NCIC)にも、侵入があった(The Decoder)。
+
+=== ARTEX
+
+2026 年 11 月 13 日、FBI が ARTEX について注意を出した。元: https://www.ic3.gov/CSA/2026/261113.pdf[FBI「Threat Overview of ARTEX Autonomous Penetration Testing Framework」(FLASH-20261113-001、2026 年 11 月 13 日)]
+
+* ARTEX は、オープンソースの、AI のエージェントで侵入の試験を自動で進める道具である。目的を言葉で与えると、偵察からデータの持ち出しまでを進める。
+* 2026 年 7 月に GitHub で公開された。攻撃に使われていると報じられ、作った人は 10 月 8 日に公開をやめた。写しと、売り物の版で、今も手に入る。
+* 遅くとも 2026 年 8 月から、金融、政府、防衛、医療など、多くの分野の攻撃に使われている。
+* 狙ってから特権を取るまで、3 時間掛からなかった侵入がある。
+* 技術の少ない者でも、多くの相手を同時に攻撃できる。
+* 11 月初めには、外から見える ARTEX の操作画面が、1,600 を超えて見つかった。
+* ARTEX は、外の AI のモデルにつないで動く。Claude や GPT にもつなげる。攻撃する側の使う物では、中国のモデルが一番多い。
+
+Microsoft も 11 月 25 日に、ARTEX の分析を出した。ARTEX は、新しい攻撃の手口を持ち込む物ではない。今ある道具を組み合わせて、速く進める物である。国が支える集団も使っている。守る側には、網を分ける事などを勧めている。元: https://www.microsoft.com/en-us/security/blog/2026/11/25/what-defenders-need-to-know-artex-agentic-ai-framework-threat-actors-abuse/[Microsoft Threat Intelligence(2026 年 11 月 25 日)]
+
+== AI 革命は、どこまで進んだか
+
+ここからは、私たちの考えである。
+
+=== 証明も、攻撃も、同じ力から出ている
+
+* *リーマン予想の証明は、コードとして書かれ、機械で確かめられた。* 正しいかは、AI を信じて決めたのではない。検査の道具で確かめた。
+* *攻撃も、AI のエージェントが手順を進める。* ARTEX は新しい手口を持たない。今ある穴と今ある道具を、速く、多く、組み合わせる。
+* どちらも、コードを書いて、読む力である。この力は、攻撃と、設計と、検査の三つに出る(link:/ai-native-software/coder-top/[1-01])。この月は、その力が、数学の最難問にも、国の防衛の仕組みにも届いた事を示した。
+
+=== 大きな仕組みほど、後から調べ切れない
+
+* Cloud One は、4 つの会社のクラウドを組み合わせた、多くのアプリの基盤である。侵入は、作業の中で初めて見つかった。
+* 大きく、多くの会社の物を組み合わせた仕組みほど、中のコードと設定を後から調べ切れない。これは、link:/blog/cyber-war-mythos-and-humans/[ブログ 053] の第 4 部と同じ問題である。
+* ARTEX が使うのは、今ある穴である。*知られた穴を早く直し、網を分ける事が、そのまま守りになる。* 守る側も AI で穴を探し、人が確かめて、どれから直すかを決める(ブログ 053 の第 4 部)。
+
+=== 決める、確かめる、責任を持つ、は人間に残る
+
+* 証明の向きを決めたのは Alpöge で、発表し、説明する責任を負うのも Alpöge である。
+* 証明の正しさは機械が確かめたが、人が理解して説明する仕事は、これからである。
+* 攻撃の道具を作った人は、許された試験のための物だと言っていた。使い方を決めたのは、使った人である。
+* AI は、強い道具になった。何に使うか、正しいか、誰が責任を持つかは、道具の側では決まらない(link:/ai-native-software/five-years/[3-09])。
+
+=== ソフトウェアの開発と運用は、根本から考え直す
+
+証明に使った Claude は、まだ公開されていない。いつ公開されるかは、分からない。それでも、*数学の最難問を解く力を持つ道具が、近いうちに手に入る、と考えて備える。* そうすると、ソフトウェアの開発と運用は、根本から考え直す事になる。
+
+* *作る。* 人が何を作るかを決め、AI がコードを書き、正しいかを機械で確かめる。数学の証明では、それが出来た。ソフトウェアでも、人が全部の行を読む事を前提にしない。
+* *守る。* 狙われてから特権を取られるまで、3 時間掛からない例がある。月に一度の更新や、年に一度の検査では、間に合わない。守る側も AI を使い、続けて調べて、直す。
+* *仕組みの大きさ。* 多くの会社の物を重ねた大きな仕組みは、後から調べ切れない。中を自分で読めて、すぐ直せる、小さな仕組みにする(link:/ai-native-software/independence/[2-01])。
+* *人。* 何を作るかを決め、確かめた結果を見て、責任を持つ。この仕事は、道具が強くなるほど重くなる。
+
+== 確かめた日と、変わる所
+
+事実は、2026 年 11 月 28 日に元の頁で確かめた。次の所は変わる。
+
+* *証明の評価。* 人が読める説明と査読が出れば、評価が変わる事がある。
+* *空軍の侵入の範囲と、誰がしたか。* 調べが進めば、分かる事が増える。
+* *ほかの侵入。* CIA など、FinCEN、FBI の件は、The Decoder の報道で確かめた。New York Times などの元の記事は、開いていない。
+
+=== 開けなかった頁
+
+* Reuters の元の記事。同じ記事を配信した CNBC で確かめた。
+* Anthropic の発表の頁。見つからなかった。
+* 「人間の数学のための会」の声明。The Rundown の記事で確かめた。
+* FinCEN の発表。The Decoder の記事で確かめた。
+
+== 関連
+
+* link:/blog/cyber-war-mythos-and-humans/[サイバー戦争は、もう始まっています] ── Mythos と人間で守る
+* link:/blog/vba-cannot-be-fixed/[VBA は直せない] ── 直せる物と、止めるしかない物
+* link:/ai-native-software/coder-top/[1-01 AI は、世界で最も難しいコーディング問題を解く]
+* link:/ai-native-software/independence/[2-01 Microsoft と Google から自立する]
+* link:/ai-native-software/five-years/[3-09 もう戻らない構造転換]
+
+== 参考
+
+* Alpöge「remark」(2026 年 11 月 20 日) https://alpo.ge/remark.pdf
+* Lean FRO と Mathlib Initiative の共同声明(2026 年 11 月 21 日) https://leanprover-community.github.io/blog/posts/riemann-hypothesis/
+* Sernau「grh-lean」 https://github.com/lsernau/grh-lean
+* phys.org(AFP、2026 年 11 月 20 日) https://phys.org/news/2026-11-anthropic-claude-math-greatest-riddle.html
+* CNBC(Reuters、2026 年 11 月 27 日) https://www.cnbc.com/2026/11/27/hackers-breach-us-air-force-flagship-cloud-one-computing-platform.html
+* FBI FLASH-20261113-001(2026 年 11 月 13 日) https://www.ic3.gov/CSA/2026/261113.pdf
+* Microsoft Threat Intelligence「ARTEX」(2026 年 11 月 25 日) https://www.microsoft.com/en-us/security/blog/2026/11/25/what-defenders-need-to-know-artex-agentic-ai-framework-threat-actors-abuse/
+endif::[]
+ifdef::lang-en[]
+= AI Proved the Riemann Hypothesis, and the US Air Force Cloud Was Breached
+
+We checked the facts and dates on the source pages on November 28, 2026. Pages we could not open are listed at the end, under "What was checked, and what will change".
+
+== Conclusion
+
+* *A proof of the Riemann hypothesis has been checked by machine.* Anthropic mathematician Levent Alpöge found the proof together with Claude. It is about 17 million lines of Lean code, and the Lean and Mathlib side has stated that the statement and the proof are correct. A human-readable account and peer review in a journal are still to come.
+* *The US Air Force's cloud platform Cloud One had been breached.* The breach was found during work to upgrade the platform. Who broke in, and what was taken, is not yet known.
+* *An AI attack tool that anyone can get is already in wide use.* According to the FBI, some intrusions with a tool called ARTEX went from targeting to privileged access in under three hours. Whether it was used against the Air Force is not known.
+* *Our view: the AI revolution has come this far.* The proof and the attacks both come from the same ability to write and read code. Deciding, checking, and carrying responsibility stay with people.
+
+== The proof of the Riemann hypothesis
+
+=== What was announced
+
+On November 20, 2026, Anthropic mathematician Levent Alpöge released a four-page note. Sources: https://alpo.ge/remark.pdf[Alpöge, "remark"], https://phys.org/news/2026-11-anthropic-claude-math-greatest-riddle.html[phys.org (AFP, November 20, 2026)]
+
+* He writes that he believes he found a proof of the Riemann hypothesis together with Claude.
+* He writes that the same method also resolves the generalized Riemann hypothesis.
+* He writes that the proof was formalized in Lean without assumptions. Lean is a language for writing mathematical proofs as code and checking them by machine.
+* The model was a version of Claude that has not been released. Source: https://en.wikipedia.org/wiki/Alp%C3%B6ge's_proof_of_the_Riemann_hypothesis[Wikipedia, "Alpöge's proof of the Riemann hypothesis"]
+* The work took about six weeks, from October 6 to November 16. These dates come from a rough chronology that Claude assembled. Source: https://www.therundown.ai/news/claude-riemann-hypothesis-proof[The Rundown (November 24, 2026)]
+
+The Riemann hypothesis was posed in 1859. It is a problem about how prime numbers are counted, and it carries a Clay prize (phys.org).
+
+=== What has been confirmed
+
+On November 21, the Lean FRO, which develops Lean, and the Mathlib Initiative issued a joint statement. Source: https://leanprover-community.github.io/blog/posts/riemann-hypothesis/[Joint statement by the Lean FRO and the Mathlib Initiative (November 21, 2026)]
+
+* It says that, for the classical Riemann hypothesis, both the statement and the proof are correct.
+* The proof code is about 17 million lines.
+* The proof depends only on Mathlib, Lean's shared library of mathematics.
+* Many people rebuilt the same result and checked it. Several checking tools were used.
+* The statement covers only the classical Riemann hypothesis. It does not mention the generalized one.
+
+On November 25, Luke Sernau of Anthropic published shorter versions: a readable one of about 300,000 lines and a compact one of about 76,000 lines. They contain proofs of the classical Riemann hypothesis and of the generalized Riemann hypothesis for Dirichlet L-functions. Source: https://github.com/lsernau/grh-lean[Sernau, "grh-lean"]
+
+=== What has not yet been confirmed
+
+* *There is no human-readable account yet.* The description of Sernau's version also says that no mathematician has read it through.
+* *The account is also being written by AI.* At the request of Michael Rubinstein of the University of Waterloo, Claude and other AI models are writing a draft explanation. The central inequality of the proof is not yet proved in that explanation; it is taken from the Lean code. Source: https://www.math.uwaterloo.ca/~mrubinst/alpoge_claude_grh/zeta-paper.pdf["The Alpöge–Claude proof of the Riemann hypothesis explained for the Riemann zeta function" (working draft, November 21, 2026)]
+* *Peer review is still to come.* The Clay prize requires publication in a peer-reviewed journal and two years of scrutiny (phys.org).
+* *There is criticism.* The Association for Human Mathematics criticized the proof as unreadable and called it little more than publicity for AI companies. This was the day before the Lean statement (The Rundown). Mathematician Brian Conrey said it looks very complicated, that no human was likely to find it, and that he expects simpler ways (phys.org).
+
+=== The roles of the person and the AI
+
+In Alpöge's note, it was Alpöge who set the direction of combining two ideas. After that, in the final stretch, he writes that Claude far outpaced him (remark). He also said he had not yet mastered all of the mathematics involved (phys.org). He writes that he will now work to understand it, explain it, and write it properly (remark).
+
+== The breach of the US Air Force cloud
+
+=== What happened
+
+On November 27, 2026, Reuters reported it, citing people familiar with the matter. Source: https://www.cnbc.com/2026/11/27/hackers-breach-us-air-force-flagship-cloud-one-computing-platform.html[CNBC (Reuters, November 27, 2026)]
+
+* The platform breached is the US Air Force's cloud platform "Cloud One". It began in 2017 and combines the clouds of Microsoft, Amazon, Oracle, and Alphabet. Many applications run on it, including personnel, pay, logistics, and maintenance.
+* A command-and-control system that collects air-defense radar and other data from across North America runs on it, and so does a system that tracks bombs and missiles at more than 200 Air Force locations worldwide.
+* The intrusion was found within the past month or so, during work to upgrade the platform.
+* According to one source, the attackers used a software vulnerability to reach the part that controls the platform. Which vulnerability is not known.
+* After the discovery, work to move applications stopped, and updates to running applications were blocked. Some users had their administrator rights removed.
+* Cyber Command is assessing the damage. The Air Force says it does not comment on the status of specific systems.
+
+NBC News also reported that a US official confirmed the breach. Source: https://www.nbcnews.com/news/us-news/hackers-attack-penetrate-air-forces-computing-platform-rcna611559[NBC News (November 27, 2026)]
+
+=== What is not known
+
+* Who broke in.
+* How far they got.
+* Whether data was stolen.
+* Whether AI attack tools were used. Source: https://www.bleepingcomputer.com/news/security/us-air-force-cloud-platform-reportedly-hacked-in-latest-federal-breach/[BleepingComputer (November 27, 2026)]
+
+=== Other breaches in the same month
+
+Other breaches at US government agencies were reported in the same month. All are press reports, and whether they are connected is not known (BleepingComputer).
+
+* A system used by the CIA and two other intelligence agencies to analyze publicly available information was breached. It does not hold classified information. ARTEX is suspected. This is from a New York Times report of November 24. Source: https://the-decoder.com/back-to-back-cyber-incidents-at-us-financial-investigators-and-spy-agencies-follow-a-string-of-federal-hacks-and-outages/[The Decoder (November 25, 2026)]
+* The Treasury's Financial Crimes Enforcement Network (FinCEN) announced unauthorized access to part of its systems (The Decoder).
+* The FBI's crime information system (NCIC) was also breached (The Decoder).
+
+=== ARTEX
+
+On November 13, 2026, the FBI issued an alert on ARTEX. Source: https://www.ic3.gov/CSA/2026/261113.pdf[FBI, "Threat Overview of ARTEX Autonomous Penetration Testing Framework" (FLASH-20261113-001, November 13, 2026)]
+
+* ARTEX is an open-source tool that uses AI agents to run penetration tests automatically. Given a goal in words, it moves from reconnaissance to taking data out.
+* It was published on GitHub in July 2026. After reports that it was being used in attacks, its developer took it down on October 8. It is still available through copies and a commercial version.
+* Since at least August 2026, it has been used in attacks across many sectors, including finance, government, defense, and healthcare.
+* Some intrusions went from targeting to privileged access in under three hours.
+* People with little technical skill can attack many targets at once.
+* In early November, more than 1,600 ARTEX consoles were found exposed on the internet.
+* ARTEX works by connecting to outside AI models. It can connect to Claude and GPT. Among attacker instances, Chinese models are the most common.
+
+Microsoft also published an analysis of ARTEX on November 25. ARTEX does not bring new attack techniques. It combines existing tools and runs them faster. State-backed groups use it too. For defenders, Microsoft recommends measures such as dividing the network. Source: https://www.microsoft.com/en-us/security/blog/2026/11/25/what-defenders-need-to-know-artex-agentic-ai-framework-threat-actors-abuse/[Microsoft Threat Intelligence (November 25, 2026)]
+
+== How far has the AI revolution come?
+
+From here on, this is our view.
+
+=== The proof and the attacks come from the same ability
+
+* *The proof of the Riemann hypothesis was written as code and checked by machine.* Its correctness was not decided by trusting the AI. It was checked with checking tools.
+* *In the attacks, too, AI agents run the steps.* ARTEX has no new techniques. It combines existing holes and existing tools, quickly and at scale.
+* Both are the ability to write and read code. That ability shows up as attack, design, and verification (link:/en/ai-native-software/coder-top/[1-01]). This month showed that it now reaches both the hardest problem in mathematics and a nation's defense systems.
+
+=== The larger the system, the less it can be inspected afterwards
+
+* Cloud One combines the clouds of four companies and carries many applications. The breach was found only during upgrade work.
+* The larger a system is, and the more companies' products it combines, the less its code and settings can be inspected afterwards. This is the same problem as in Part 4 of link:/en/blog/cyber-war-mythos-and-humans/[blog 053].
+* ARTEX uses existing holes. *Fixing known holes quickly and dividing the network is itself the defense.* Defenders also use AI to find holes, and people check them and decide which to fix first (Part 4 of blog 053).
+
+=== Deciding, checking, and carrying responsibility stay with people
+
+* It was Alpöge who set the direction of the proof, and it is Alpöge who carries the responsibility to announce and explain it.
+* A machine checked the proof's correctness, but the work of people understanding and explaining it is still ahead.
+* The developer of the attack tool said it was for authorized testing. How it was used was decided by those who used it.
+* AI has become a powerful tool. What to use it for, whether it is right, and who carries responsibility are not decided on the tool's side (link:/en/ai-native-software/five-years/[3-09]).
+
+=== Software development and operations must be rethought from the ground up
+
+The Claude used for the proof has not been released. When it will be is not known. Even so, *we prepare on the assumption that a tool able to solve the hardest problems in mathematics will soon be available.* Then software development and operations must be rethought from the ground up.
+
+* *Building.* People decide what to build, AI writes the code, and a machine checks whether it is correct. This has been done for a mathematical proof. In software too, we stop assuming that a person reads every line.
+* *Defending.* There are cases where privileged access was taken less than three hours after targeting. A monthly update or a yearly inspection is too slow. Defenders also use AI, and keep inspecting and fixing.
+* *The size of systems.* A large system stacked from many companies' products cannot be inspected afterwards. Make systems small enough that you can read the inside yourself and fix it at once (link:/en/ai-native-software/independence/[2-01]).
+* *People.* They decide what to build, look at the checked results, and carry the responsibility. The stronger the tool, the heavier this work becomes.
+
+== What was checked, and what will change
+
+We checked the facts on the source pages on November 28, 2026. The following may change.
+
+* *The assessment of the proof.* It may change once a human-readable account and peer review appear.
+* *The scope of the Air Force breach, and who did it.* More will be known as the investigation goes on.
+* *The other breaches.* We checked the CIA-related, FinCEN, and FBI cases through The Decoder's report. We did not open the original New York Times and other articles.
+
+=== Pages we did not read
+
+* Reuters' original article. We checked it through CNBC, which carried the same article.
+* An announcement page by Anthropic. We could not find one.
+* The statement of the Association for Human Mathematics. We checked it through The Rundown's article.
+* FinCEN's announcement. We checked it through The Decoder's article.
+
+== Related
+
+* link:/en/blog/cyber-war-mythos-and-humans/[The Cyber War Has Already Begun] — defending with Mythos and people
+* link:/en/blog/vba-cannot-be-fixed/[VBA Cannot Be Fixed] — what can be fixed, and what can only be stopped
+* link:/en/ai-native-software/coder-top/[1-01 AI Solves the World's Hardest Coding Problems]
+* link:/en/ai-native-software/independence/[2-01 Becoming Independent from Microsoft and Google]
+* link:/en/ai-native-software/five-years/[3-09 The Structural Transition That Won't Reverse]
+
+== References
+
+* Alpöge, "remark" (November 20, 2026) https://alpo.ge/remark.pdf
+* Joint statement by the Lean FRO and the Mathlib Initiative (November 21, 2026) https://leanprover-community.github.io/blog/posts/riemann-hypothesis/
+* Sernau, "grh-lean" https://github.com/lsernau/grh-lean
+* phys.org (AFP, November 20, 2026) https://phys.org/news/2026-11-anthropic-claude-math-greatest-riddle.html
+* CNBC (Reuters, November 27, 2026) https://www.cnbc.com/2026/11/27/hackers-breach-us-air-force-flagship-cloud-one-computing-platform.html
+* FBI FLASH-20261113-001 (November 13, 2026) https://www.ic3.gov/CSA/2026/261113.pdf
+* Microsoft Threat Intelligence, "ARTEX" (November 25, 2026) https://www.microsoft.com/en-us/security/blog/2026/11/25/what-defenders-need-to-know-artex-agentic-ai-framework-threat-actors-abuse/
 endif::[]
